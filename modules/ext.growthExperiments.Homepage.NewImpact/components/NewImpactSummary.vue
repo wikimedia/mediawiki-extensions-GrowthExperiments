@@ -5,7 +5,7 @@
 			v-if="data"
 			id="impact-summary"
 			:count-label="$i18n(
-				'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', userName
+				'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label'
 			).text()"
 			:chart-title="$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-title' ).text()"
 			:pageview-total="data.articlesViewsCount"
@@ -31,10 +31,6 @@ module.exports = exports = {
 		InfoBoxes
 	},
 	props: {
-		userName: {
-			type: String,
-			required: true
-		},
 		data: {
 			type: Object,
 			required: true

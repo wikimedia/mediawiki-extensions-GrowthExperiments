@@ -44,12 +44,12 @@ module.exports = exports = {
 		notFoundText() {
 			return this.renderThirdPerson ?
 				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-text-third-person' ).text() :
-				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-text', this.userName ).text();
+				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-text' ).text();
 		},
 		notFoundSubtext() {
 			return this.renderThirdPerson ?
 				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-subtext-third-person' ).text() :
-				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-subtext', this.userName ).text();
+				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-subtext' ).text();
 		}
 	}
 };

@@ -80,7 +80,7 @@
 					{{ $i18n( 'growthexperiments-homepage-impact-unactivated-subheader-text' ).text() }}
 				</c-text>
 				<c-text
-					v-i18n-html:growthexperiments-homepage-impact-unactivated-subheader-subtext="[ userName ]"
+					v-i18n-html:growthexperiments-homepage-impact-unactivated-subheader-subtext
 					class="ext-growthExperiments-NoEditsDisplay__content__messages__subtext"
 					:size="[ null, null, 'sm' ]"
 					:weight="subtextFontWeight"
@@ -110,11 +110,11 @@
 				:size="footerFontSize"
 				color="subtle"
 			>
-				{{ $i18n( 'growthexperiments-homepage-impact-unactivated-description', userName ).text() }}
+				{{ $i18n( 'growthexperiments-homepage-impact-unactivated-description' ).text() }}
 			</c-text>
 			<c-text
 				v-else
-				v-i18n-html:growthexperiments-homepage-impact-unactivated-suggested-edits-footer="[ userName ]"
+				v-i18n-html:growthexperiments-homepage-impact-unactivated-suggested-edits-footer
 				:size="footerFontSize"
 				color="subtle"
 			>
@@ -211,7 +211,7 @@ module.exports = exports = {
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text',
-					this.userName,
+					'', // used to be the username
 					this.$filters.convertNumber( DATA_ROWS_LIMIT )
 				).text();
 		},
@@ -223,7 +223,7 @@ module.exports = exports = {
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text',
-					this.userName,
+					'', // used to be the username
 					this.$filters.convertNumber( DATA_ROWS_LIMIT )
 				).text();
 		},

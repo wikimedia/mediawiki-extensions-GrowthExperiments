@@ -123,7 +123,7 @@ module.exports = exports = {
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-recent-activity-title',
-					this.userName,
+					'', // used to be the username
 					this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME )
 				).text();
 		},
@@ -138,12 +138,12 @@ module.exports = exports = {
 		countLabelText() {
 			return this.renderThirdPerson ?
 				this.$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person' ).text() :
-				this.$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label', this.userName ).text();
+				this.$i18n( 'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label' ).text();
 		},
 		articlesListTitleText() {
 			return this.renderThirdPerson ?
 				this.$i18n( 'growthexperiments-homepage-impact-subheader-text-third-person' ).text() :
-				this.$i18n( 'growthexperiments-homepage-impact-subheader-text', this.userName ).text();
+				this.$i18n( 'growthexperiments-homepage-impact-subheader-text' ).text();
 		}
 	},
 	mounted() {

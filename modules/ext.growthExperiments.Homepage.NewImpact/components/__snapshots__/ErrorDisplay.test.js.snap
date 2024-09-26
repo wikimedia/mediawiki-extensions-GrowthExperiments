@@ -12,7 +12,7 @@ exports[`ErrorDisplay displays appropriate text when disabled ( third person: fa
       class="ext-growthExperiments-CText ext-growthExperiments-CText--weight-bold"
     >
       
-      growthexperiments-homepage-impact-error-data-not-found-text:[Alice]
+      growthexperiments-homepage-impact-error-data-not-found-text
       
     </h3>
     <div
@@ -22,7 +22,7 @@ exports[`ErrorDisplay displays appropriate text when disabled ( third person: fa
       class="ext-growthExperiments-CText ext-growthExperiments-CText--color-subtle ext-growthExperiments-ErrorDisplay__subtext"
     >
       
-      growthexperiments-homepage-impact-error-data-not-found-subtext:[Alice]
+      growthexperiments-homepage-impact-error-data-not-found-subtext
       
     </div>
   </div>

@@ -68,10 +68,10 @@ describe( 'NoEditsDisplay', () => {
 		scorecards[ 1 ].find( '.ext-growthExperiments-ScoreCards__info-button' ).trigger( 'click' );
 		wrapper.vm.$nextTick().then( () => {
 			expect( wrapper.text() ).toContain(
-				'growthexperiments-homepage-impact-scores-thanks-info-text:[Alice,1000]'
+				'growthexperiments-homepage-impact-scores-thanks-info-text:[,1000]'
 			);
 			expect( wrapper.text() ).toContain(
-				'growthexperiments-homepage-impact-scores-best-streak-info-text:[Alice,1000]'
+				'growthexperiments-homepage-impact-scores-best-streak-info-text:[,1000]'
 			);
 		} );
 	} );

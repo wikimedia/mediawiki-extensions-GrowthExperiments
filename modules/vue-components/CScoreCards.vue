@@ -217,7 +217,7 @@ module.exports = exports = {
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text',
-					this.userName,
+					'', // used to be the username
 					this.$filters.convertNumber( DATA_ROWS_LIMIT )
 				).text();
 		},
@@ -277,7 +277,7 @@ module.exports = exports = {
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text',
-					this.userName,
+					'', // used to be the username
 					this.$filters.convertNumber( DATA_ROWS_LIMIT )
 				).text();
 		},
@@ -299,7 +299,7 @@ module.exports = exports = {
 				if ( this.renderThirdPerson ) {
 					message += '-third-person';
 				} else {
-					args = [ this.userName, ...args ];
+					args = [ '', ...args ]; // '' used to be the username
 				}
 				// The following messages are used here:
 				// * growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day
