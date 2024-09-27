@@ -771,17 +771,13 @@
 			]
 		},
 		"ext.growthExperiments.mobileMenu.icons": {
-			"class": "MediaWiki\\ResourceLoader\\ImageModule",
-			"selector": ".minerva-icon--{name}",
+			"class": "MediaWiki\\ResourceLoader\\OOUIIconPackModule",
+			"selectorWithoutVariant": ".minerva-icon.minerva-icon--{name}",
+			"useMaskImage": true,
 			"defaultColor": "#54595d",
-			"images": {
-				"newspaper": {
-					"file": {
-						"ltr": "../images/newspaper-ltr.svg",
-						"rtl": "../images/newspaper-rtl.svg"
-					}
-				}
-			}
+			"icons": [
+				"newspaper"
+			]
 		},
 		"ext.growthExperiments.SuggestedEditSession": {
 			"packageFiles": [
