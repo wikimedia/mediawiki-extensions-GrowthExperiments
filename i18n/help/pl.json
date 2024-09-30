@@ -12,7 +12,8 @@
 			"Rainbow P",
 			"Tar Lócesilion",
 			"Woytecr",
-			"Wpedzich"
+			"Wpedzich",
+			"Viatoro"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Włącz panel pomocy podczas edycji",
@@ -149,7 +150,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Potwierdź swój e-mail",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Jeżeli {{GENDER:$1|chciałbyś|chciałabyś|chcesz}} otrzymywać powiadomienia także poprzez e-mail, dodaj teraz swój adres.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Dodaj adres e-mail",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Więcej o pomocnym panelu",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Więcej o panelu pomocy",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Przy okazji: publikując to pytanie, dokonał{{GENDER:|e|a|e}}ś swojej pierwszej edycji strony. Gratulacje!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Wyłącz panel pomocy",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Nieprawidłowy tytuł.",
@@ -168,7 +169,7 @@
 	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|edycja|edycje|edycji}} · $2",
 	"growthexperiments-help-panel-general-help-title": "Ogólne wskazówki dotyczące edytowania",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "O sugerowanych edycjach",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;Używasz teraz edytora kodu źródłowego. Z tych porad najłatwiej korzystać, używając edytora wizualnego.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;Używasz teraz edytora kodu źródłowego. Z tych porad najlepiej korzystać, używając edytora wizualnego.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Przełącz na edytor wizualny",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;Używasz teraz edytora wizualnego. Z tych porad najłatwiej korzystać, używając edytora kodu źródłowego.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Przełącz na edytor kodu źródłowego"

@@ -16,13 +16,14 @@
 			"Vfc",
 			"Xavier Dengra",
 			"Robertgarrigos",
-			"SMP"
+			"SMP",
+			"Lluis Cat"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hola}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Espai de progrés d'usuari",
 	"tooltip-pt-homepage": "{{GENDER:|La teva}} pàgina d'inici",
-	"prefs-homepage": "Espai de progrés d'usuari",
+	"prefs-homepage": "Eines per a l'usuari nouvingut",
 	"growthexperiments-homepage-enable": "Mostra l'espai de progrés d'usuari",
 	"growthexperiments-homepage-pt-link": "Modificar l'enllaç del nom d'usuari a la barra personal perquè dirigeixi a la pàgina d'inici per a usuaris nous de forma predeterminada.",
 	"growthexperiments-homepage-email-header-noemail": "Afegiu la {{GENDER:$1|vostra}} adreça de correu electrònic",
@@ -70,7 +71,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Fàcil",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Mitjà",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difícil",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Recomanat mentre estiguis fent les teves primeres edicions",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Recomanat mentre estigueu fent les primeres edicions",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Després que hagis completat algunes edicions fàcils.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Quan hagis après sobre les millors pràctiques a Wikipedia.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Revisar articles i afegir-n'hi enllaços a d'altres.",
