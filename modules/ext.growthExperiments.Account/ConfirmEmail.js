@@ -12,15 +12,9 @@
 					.on( 'focus', () => {
 						let $warningBox = $emailInput.next( '.cdx-message--warning' );
 						if ( $warningBox.length === 0 ) {
-							$warningBox = $( '<div>' )
-								.addClass( 'cdx-message cdx-message--block cdx-message--warning' )
-								.attr( 'aria-live', 'polite' )
-								.append( $( '<span>' ).addClass( 'cdx-message__icon' ) )
-								.append( $( '<div>' )
-									.addClass( 'cdx-message__content' )
-									.text( mw.msg( 'growthexperiments-confirmemail-emailwarning' ) )
-								)
-								.hide();
+							$warningBox = $( mw.util.messageBox(
+								mw.msg( 'growthexperiments-confirmemail-emailwarning' ), 'warning'
+							) ).hide();
 							$emailInput.after( $warningBox );
 						}
 						// eslint-disable-next-line no-jquery/no-slide
