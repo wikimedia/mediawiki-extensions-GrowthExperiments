@@ -17,10 +17,6 @@ use Wikimedia\Rdbms\IDatabase;
 class ReassignMentees {
 	use LoggerAwareTrait;
 
-	public const STAGE_LISTED_AS_MENTOR = 1;
-	public const STAGE_NOT_LISTED_HAS_MENTEES = 2;
-	public const STAGE_NOT_LISTED_NO_MENTEES = 3;
-
 	private IDatabase $dbw;
 	private MentorManager $mentorManager;
 	private MentorProvider $mentorProvider;
@@ -70,24 +66,11 @@ class ReassignMentees {
 	}
 
 	/**
-	 * @return int One of ReassignMentees::STAGE_* constants
-	 */
-	public function getStage(): int {
-		if ( $this->mentorProvider->isMentor( $this->mentor ) ) {
-			return self::STAGE_LISTED_AS_MENTOR;
-		} elseif ( $this->mentorStore->hasAnyMentees( $this->mentor, MentorStore::ROLE_PRIMARY ) ) {
-			return self::STAGE_NOT_LISTED_HAS_MENTEES;
-		} else {
-			return self::STAGE_NOT_LISTED_NO_MENTEES;
-		}
-	}
-
-	/**
 	 * Reassign mentees currently assigned to the mentor via a job
 	 *
 	 * If no job is needed, use doReassignMentees directly.
 	 *
-	 * @param string $reassignMessageKey Message key used in in ChangeMentor notification; needs
+	 * @param string $reassignMessageKey Message key used in ChangeMentor notification; needs
 	 * to accept one parameter (username of the previous mentor). Additional parameters can be
 	 * passed via $reassignMessageAdditionalParams.
 	 * @param mixed ...$reassignMessageAdditionalParams
