@@ -9,6 +9,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityLookup;
+use Psr\Log\LoggerInterface;
 
 /**
  * Job to reassign all mentees operated by a given mentor
@@ -21,6 +22,7 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 
 	private UserIdentityLookup $userIdentityLookup;
 	private ReassignMenteesFactory $reassignMenteesFactory;
+	private LoggerInterface $logger;
 
 	/**
 	 * @inheritDoc
@@ -33,6 +35,7 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
 		$this->reassignMenteesFactory = GrowthExperimentsServices::wrap( $services )
 			->getReassignMenteesFactory();
+		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 	}
 
 	/**
@@ -68,7 +71,7 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 		$mentor = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['mentorId'] );
 		$performer = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['performerId'] );
 		if ( !$mentor || !$performer ) {
-			LoggerFactory::getInstance( 'GrowthExperiments' )->error(
+			$this->logger->error(
 				'ReassignMenteesJob trigerred with invalid parameters',
 				[
 					'performerId' => $this->params['performerId'],
@@ -83,10 +86,13 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 			$mentor,
 			RequestContext::getMain()
 		);
-		$reassignMentees->doReassignMentees(
+		$status = $reassignMentees->doReassignMentees(
 			$this->params['reassignMessageKey'],
 			...$this->params['reassignMessageAdditionalParams']
 		);
+		$this->logger->info( 'ReassignMenteesJob finished reassignment with {status} status', [
+			'status' => $status,
+		] );
 
 		return true;
 	}

@@ -127,7 +127,9 @@ class ReassignMentees {
 			WikiMap::getCurrentWikiId();
 		if ( !$this->dbw->lock( $lockName, __METHOD__, 0 ) ) {
 			$this->logger->warning(
-				__METHOD__ . ' failed to acquire a lock'
+				__METHOD__ . ' failed to acquire a lock for {mentor}', [
+					'mentor' => $this->mentor->getName(),
+				]
 			);
 			return false;
 		}
@@ -135,7 +137,13 @@ class ReassignMentees {
 		// only process primary mentors (T309984). Backup mentors will be automatically ignored by
 		// MentorPageMentorManager::getMentorForUser and replaced with a valid mentor if needed
 		$mentees = $this->mentorStore->getMenteesByMentor( $this->mentor, MentorStore::ROLE_PRIMARY );
+		$this->logger->info( __METHOD__ . ' processing {mentees} mentees', [
+			'mentees' => count( $mentees ),
+		] );
 		foreach ( $mentees as $mentee ) {
+			$this->logger->debug( __METHOD__ . ' processing {mentor}', [
+				'mentor' => $mentee->getName(),
+			] );
 			$changeMentor = $this->changeMentorFactory->newChangeMentor(
 				$mentee,
 				$this->performer
