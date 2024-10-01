@@ -16,7 +16,8 @@ const Utils = require( '../utils/Utils.js' );
  *  - enabled: whether to submit an event when calling log methods.
  * @return {EventLogger}
  */
-const useEventLogging = ( streamName, schemaId, options = {} ) => {
+const useInstrument = ( streamName, schemaId, options = {} ) => {
+	const instrument = mw.eventLog.newInstrument( streamName, schemaId );
 	/**
 	 * @param {string} action
 	 * @param {string|null|undefined} actionSubtype
@@ -56,10 +57,10 @@ const useEventLogging = ( streamName, schemaId, options = {} ) => {
 			// eslint-disable-next-line camelcase
 			interactionData.action_context = actionContext;
 		}
-		mw.eventLog.submitInteraction( streamName, schemaId, action, interactionData );
+		instrument.submitInteraction( action, interactionData );
 	};
 
 	return { logEvent };
 };
 
-module.exports = useEventLogging;
+module.exports = useInstrument;

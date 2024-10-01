@@ -1,6 +1,6 @@
 ( function () {
 	const Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
-		useEventLogging = require( '../ext.growthExperiments.Homepage.Logger/useEventLogging.js' ),
+		useInstrument = require( '../ext.growthExperiments.Homepage.Logger/useInstrument.js' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
@@ -9,9 +9,8 @@
 		$modules = $( '.growthexperiments-homepage-container .growthexperiments-homepage-module' ),
 		streamName = 'mediawiki.product_metrics.homepage_module_interaction',
 		schemaId = '/analytics/product_metrics/web/base/1.3.0',
-		analytics = useEventLogging( streamName, schemaId, {
+		analytics = useInstrument( streamName, schemaId, {
 			enabled: mw.config.get( 'wgGEHomepageLoggingEnabled' ) } ),
-
 		handleClick = function ( e ) {
 			const $link = $( this ),
 				$module = $link.closest( '.growthexperiments-homepage-module' ),
@@ -42,6 +41,7 @@
 			logger.log( moduleName, mode, 'impression' );
 			// Special casing for the SDS2.1.3 objective, T365889
 			if ( moduleName === 'community-updates' ) {
+				// TODO Expand to all modules once Community updates experiment concludes, T365889
 				const actionData = mw.config.get( 'wgGEHomepageModuleActionData-community-updates' );
 				analytics.logEvent( 'impression', null, moduleName, actionData ? actionData.context : null );
 			}
