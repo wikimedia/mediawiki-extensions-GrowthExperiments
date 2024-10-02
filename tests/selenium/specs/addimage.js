@@ -30,6 +30,7 @@ describe( 'add image', () => {
 		await addImageArticlePage.discardEdits();
 	} );
 
+	// Skipped on 2023-05-20 in 921608 because of T334626 and T337137
 	it.skip( 'mobile: user can close the image suggestion UI', async () => {
 		const addImageArticle = "Ma'amoul";
 		await addImageArticlePage.setup( addImageArticle, 'mobile' );
