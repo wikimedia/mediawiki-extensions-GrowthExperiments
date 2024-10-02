@@ -99,36 +99,28 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	public static function variantAssignmentByPlatformProvider(): array {
 		return [
 			[
-				'mobile: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to oldimpact.',
-				'oldimpact',
+				'mobile: GEHomepageNewAccountVariantsByPlatform assigns control variant for mobile users.',
+				'control',
 				[
 					'GEHomepageDefaultVariant' => 'control',
 					'GEHomepageNewAccountVariantsByPlatform' => [
-						'oldimpact' => [
-							'desktop' => 0,
-							'mobile' => 100
-						],
 						'control' => [
 							'desktop' => 100,
-							'mobile' => 0
+							'mobile' => 100
 						]
 					]
 				],
 				'mobile'
 			],
 			[
-				'desktop: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to control',
+				'desktop: GEHomepageNewAccountVariantsByPlatform assigns control variant for desktop users',
 				'control',
 				[
 					'GEHomepageDefaultVariant' => 'control',
 					'GEHomepageNewAccountVariantsByPlatform' => [
-						'oldimpact' => [
-							'desktop' => 0,
-							'mobile' => 100
-						],
 						'control' => [
 							'desktop' => 100,
-							'mobile' => 0
+							'mobile' => 100
 						]
 					]
 				],

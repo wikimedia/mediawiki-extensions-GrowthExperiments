@@ -8,7 +8,6 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\Banner;
 use GrowthExperiments\HomepageModules\CommunityUpdates;
 use GrowthExperiments\HomepageModules\Help;
-use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\MentorshipOptIn;
 use GrowthExperiments\HomepageModules\NewImpact;
@@ -16,7 +15,6 @@ use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\StartEmail;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\WelcomeSurveyReminder;
-use GrowthExperiments\VariantHooks;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\MediaWikiServices;
@@ -145,49 +143,17 @@ class HomepageModuleRegistry {
 				IContextSource $context
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
-				$experimentUserManager = $growthServices->getExperimentUserManager();
 				$userOptionsLookup = $services->getUserOptionsLookup();
-				$config = $context->getConfig();
-
-				// A/B test: use new impact module if explicitly requested,
-				// or the feature flag is on and user is in the test group.
-				if ( $context->getRequest()->getRawVal( 'new-impact' ) !== null ) {
-					$useNewImpactModule = $context->getRequest()->getBool( 'new-impact' );
-				} else {
-					$useNewImpactModule = $config->get( 'GEUseNewImpactModule' )
-						&& !$experimentUserManager->isUserInVariant(
-							$context->getUser(), VariantHooks::VARIANT_OLDIMPACT
-						);
-				}
-
-				if ( $useNewImpactModule ) {
-					return new NewImpact(
-						$context,
-						$growthServices->getGrowthWikiConfig(),
-						$growthServices->getExperimentUserManager(),
-						$context->getUser(),
-						$growthServices->getUserImpactStore(),
-						$growthServices->getUserImpactFormatter(),
-						$growthServices->getUserDatabaseHelper(),
-						SuggestedEdits::isEnabled( $context->getConfig() ),
-						SuggestedEdits::isActivated( $context->getUser(), $userOptionsLookup )
-					);
-				}
-				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
-				return new Impact(
+				return new NewImpact(
 					$context,
 					$growthServices->getGrowthWikiConfig(),
-					$services->getDBLoadBalancerFactory(),
 					$growthServices->getExperimentUserManager(),
-					[
-						'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context->getConfig() ),
-						'isSuggestedEditsActivated' => SuggestedEdits::isActivated(
-							$context->getUser(),
-							$userOptionsLookup
-						),
-					],
-					$services->getTitleFactory(),
-					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null
+					$context->getUser(),
+					$growthServices->getUserImpactStore(),
+					$growthServices->getUserImpactFormatter(),
+					$growthServices->getUserDatabaseHelper(),
+					SuggestedEdits::isEnabled( $context->getConfig() ),
+					SuggestedEdits::isActivated( $context->getUser(), $userOptionsLookup )
 				);
 			},
 
