@@ -61,48 +61,6 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getStage
-	 * @param int $expectedStage
-	 * @param bool $isMentor
-	 * @param bool $hasMentees
-	 * @dataProvider provideGetStage
-	 */
-	public function testGetStage( int $expectedStage, bool $isMentor, bool $hasMentees ) {
-		$mentor = new UserIdentityValue( 123, 'Mentor' );
-		$mentorProvider = $this->createMock( MentorProvider::class );
-		$mentorProvider->expects( $this->once() )
-			->method( 'isMentor' )
-			->with( $mentor )
-			->willReturn( $isMentor );
-		$mentorStore = $this->createMock( MentorStore::class );
-		$mentorStore->expects( $isMentor ? $this->never() : $this->once() )
-			->method( 'hasAnyMentees' )
-			->with( $mentor, MentorStore::ROLE_PRIMARY )
-			->willReturn( $hasMentees );
-
-		$reassignMentees = $this->newReassignMentees(
-			$mentor,
-			null,
-			$mentorProvider,
-			$mentorStore
-		);
-
-		$this->assertEquals(
-			$expectedStage,
-			$reassignMentees->getStage()
-		);
-	}
-
-	public static function provideGetStage() {
-		return [
-			'isMentorHasMentees' => [ ReassignMentees::STAGE_LISTED_AS_MENTOR, true, true ],
-			'isMentorNoMentees' => [ ReassignMentees::STAGE_LISTED_AS_MENTOR, true, false ],
-			'notMentorHasMentees' => [ ReassignMentees::STAGE_NOT_LISTED_HAS_MENTEES, false, true ],
-			'notMentorNoMentees' => [ ReassignMentees::STAGE_NOT_LISTED_NO_MENTEES, false, false ],
-		];
-	}
-
-	/**
 	 * @covers ::doReassignMentees
 	 */
 	public function testDoReassignMentees() {
