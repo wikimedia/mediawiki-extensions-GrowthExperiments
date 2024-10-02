@@ -78,7 +78,7 @@ class ReassignMenteesIntegrationTest extends MediaWikiIntegrationTestCase {
 			->getReassignMenteesFactory()
 			->newReassignMentees( $quittingMentorUser, $quittingMentorUser, $context );
 
-		$this->assertTrue( $reassignMentees->doReassignMentees( 'foo' ) );
+		$this->assertTrue( $reassignMentees->doReassignMentees( null, 'foo' ) );
 
 		$mentorStore = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorStore();
