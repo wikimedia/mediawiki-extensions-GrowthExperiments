@@ -13,7 +13,9 @@
 			"Tar Lócesilion",
 			"The Polish",
 			"WTM",
-			"Woytecr"
+			"Woytecr",
+			"Sp5uhe",
+			"Viatoro"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Witaj}}, {{bidi:$1}}!",
@@ -36,7 +38,7 @@
 	"growthexperiments-homepage-email-confirmlink": "potwierdź",
 	"growthexperiments-homepage-startediting-header": "Rozpocznij edytowanie",
 	"growthexperiments-homepage-startediting-subheader-edit-typo": "Zacznij wykonywać drobne poprawki według tych sugestii!",
-	"growthexperiments-homepage-startediting-subheader-add-image": "Spróbuj opanować łatwiejsze edycje, zanim zaczniesz dodawać obraz!",
+	"growthexperiments-homepage-startediting-subheader-add-image": "Spróbuj opanować łatwiejsze edycje, zanim zaczniesz dodawać obrazki!",
 	"growthexperiments-homepage-startediting-subheader-new-page": "Spróbuj opanować łatwiejsze edycje, zanim zaczniesz tworzyć nowy artykuł!",
 	"growthexperiments-homepage-startediting-subheader-other": "Pomóż współtworzyć zbiór światowej wiedzy poprzez parę prostych poprawek artykułów Wikipedii.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Zobacz sugerowane edycje",
@@ -119,7 +121,7 @@
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Liczba wyświetleń dla ostatnich edycji (z 60 dni):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Monitoruj wyświetlenia artykułów, które edytujesz",
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "Na razie 0 edycji",
-	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Pomóż rozbudowywać zasoby wolnej wiedzy poprzez edytowanie w dziedzinach którymi się {{GENDER:$1|interesujesz}}.",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Pomóż rozbudowywać zasoby wolnej wiedzy poprzez edytowanie w dziedzinach, którymi się {{GENDER:$1|interesujesz}}.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Zobacz propozycje edycji",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Zacznij od <strong>proponowanych edycji</strong>, a następnie zobacz jak wielu ludzi miało możliwość zobaczyć efekty {{GENDER:$1|twoich}} zmian.",
 	"growthexperiments-homepage-impact-unactivated-description": "Gdy już {{GENDER:$1|zaczniesz}} edytować, {{GENDER:$1|zobaczysz}} jak wielu ludzi obejrzało artykuły, które {{GENDER:$1|edytowałeś|edytowałaś}}.",
