@@ -9,7 +9,8 @@
 	"growthexperiments-help-panel-tog-help-panel": "Povoliť panel Potrebujem pomoc",
 	"growthexperiments-help-panel-cta-button-text": "Potrebujem pomoc",
 	"growthexperiments-help-panel-question-button-text": "Pokračovať",
-	"growthexperiments-help-panel-submit-question-button-text": "Odoslať",
+	"growthexperiments-help-panel-submit-question-button-text": "Zverejniť",
+	"growthexperiments-help-panel-return-home-button-text": "Hotovo",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Najdôležitejšie stránky s nápovedou",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobraziť viac stránok s nápovedou",
 	"growthexperiments-help-panel-question-widget-header": "Vložte svoju otázku na stránku Potrebujem pomoc",
@@ -17,7 +18,13 @@
 	"growthexperiments-help-panel-back-home": "Späť",
 	"growthexperiments-help-panel-close": "Hotovo",
 	"growthexperiments-help-panel-home-title": "Potrebujem pomoc",
-	"growthexperiments-help-panel-questionreview-title": "Položiť otázku",
+	"growthexperiments-help-panel-postedit-success-message-published": "Práve ste úspešne {{GENDER:|publikoval|publikovala|publikovali}} svoju úpravu. Ďakujeme a len tak ďalej!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "Práve ste {{GENDER:|uložil|uložila|uložili}} úpravu. Ďakujeme vám!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "Ďakujeme za kontrolu návrhov. Pokračujte ďalej!",
+	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "Znovu už nezobrazovať",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "Nie, vďaka",
+	"growthexperiments-help-panel-questionreview-title": "Spýtať sa komunity",
+	"growthexperiments-help-panel-questionreview-title-mentor": "Spýtajte sa svojho mentora",
 	"growthexperiments-help-panel-questionreview-header": "Pokiaľ tu vložíte svoju otázku, bude <strong>verejne dostupná</strong> pod vaším používateľským menom, „$2“, na stránke $1, čo je stránka, kde vám môžu ostatní redaktori zodpovedať vaše otázky. Odpoveď obvykle dostanete behom jedného dňa.",
 	"growthexperiments-help-panel-questionreview-label": "Vaša otázka",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Vložiť názov stránky, na ktorej som, spolu s mojou otázkou",
@@ -45,5 +52,6 @@
 	"growthexperiments-help-panel-search-label": "Hľadať v nápovede",
 	"growthexperiments-help-panel-search-no-results": "Neboli nájdené žiadne výsledky.",
 	"tag-help_panel_question": "Panel Potrebujem pomoc",
-	"tag-help_panel_question-description": "Otázka vložená prostredníctvom panelu Potrebujem pomoc"
+	"tag-help_panel_question-description": "Otázka vložená prostredníctvom panelu Potrebujem pomoc",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Požiadajte svojho {{GENDER:$1|mentora|mentorku}} o pomoc"
 }
