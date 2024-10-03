@@ -101,18 +101,20 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 			'status' => $status,
 		] );
 
-		if ( $status && $this->mentorStore->hasAnyMentees( $mentor, MentorStore::ROLE_PRIMARY ) ) {
-			$this->logger->info( 'ReassignMenteesJob did not reassign all mentees, scheduling new job', [
-				'mentor' => $mentor->getName(),
-			] );
-			$reassignMentees->scheduleReassignMenteesJob(
-				$this->params['reassignMessageKey'],
-				...$this->params['reassignMessageAdditionalParams']
-			);
-		} else {
-			$this->logger->info( 'ReassignMenteesJob finished reassigning all mentees', [
-				'mentor' => $mentor->getName(),
-			] );
+		if ( $status ) {
+			if ( $this->mentorStore->hasAnyMentees( $mentor, MentorStore::ROLE_PRIMARY ) ) {
+				$this->logger->info( 'ReassignMenteesJob did not reassign all mentees, scheduling new job', [
+					'mentor' => $mentor->getName(),
+				] );
+				$reassignMentees->scheduleReassignMenteesJob(
+					$this->params['reassignMessageKey'],
+					...$this->params['reassignMessageAdditionalParams']
+				);
+			} else {
+				$this->logger->info( 'ReassignMenteesJob finished reassigning all mentees', [
+					'mentor' => $mentor->getName(),
+				] );
+			}
 		}
 
 		return true;
