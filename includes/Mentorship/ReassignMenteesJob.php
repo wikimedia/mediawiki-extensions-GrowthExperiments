@@ -101,7 +101,7 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 			'status' => $status,
 		] );
 
-		if ( $this->mentorStore->hasAnyMentees( $mentor, MentorStore::ROLE_PRIMARY ) ) {
+		if ( $status && $this->mentorStore->hasAnyMentees( $mentor, MentorStore::ROLE_PRIMARY ) ) {
 			$this->logger->info( 'ReassignMenteesJob did not reassign all mentees, scheduling new job', [
 				'mentor' => $mentor->getName(),
 			] );
