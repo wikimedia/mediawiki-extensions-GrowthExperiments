@@ -53,7 +53,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Խորհուրդ է տրվում, երբ {{GENDER:$1|Դուք}} սկսում եք սովորել:",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Երբ {{GENDER:$1|դուք}} արդեն արել եք որոշ խմբագրումներ:",
 	"growthexperiments-homepage-suggested-edits-header": "Առաջարկվող խմբագրումներ",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ձեր}} ազդեցությունը",
 	"growthexperiments-homepage-impact-subheader-text": "Մարդիկ նայում են հոդվածները, որոնք {{GENDER:$1|Դուք}} խմբագրում եք։",
 	"growthexperiments-homepage-impact-subheader-subtext": "Դիտումները {{GENDER:$1|Ձեր}} խմբագրումից (վերջին 60 օրը) ի վեր։",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Դուք}} կատարել եք <strong>$1</strong> {{PLURAL:$1|խմբագրում|խմբագրումներ}} (տեսնել բոլորը)",

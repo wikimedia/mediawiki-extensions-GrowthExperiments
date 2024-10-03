@@ -79,7 +79,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Editační tipy",
 	"growthexperiments-homepage-new-impact-header": "Dosah {{GENDER:$1|vašich}} příspěvků",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Pro zobrazení této komponenty povolte JavaScript.",
-	"growthexperiments-homepage-impact-header": "Dosah {{GENDER:$1|vašich}} příspěvků",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Vaše}} nedávná aktivita ({{PLURAL:$2|poslední $2 den|poslední $2 dny|posledních $2 dní}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Nedávná aktivita ({{PLURAL:$1|poslední $1 den|poslední $1 dny|posledních $1 dní}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Poslední editace",

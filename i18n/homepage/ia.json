@@ -64,7 +64,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Modificationes suggerite",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Tu}} impacto",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Per favor activa JavaScript pro vider iste componente.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Tu}} impacto",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Tu}} activitate recente (ultime $2 die{{PLURAL:$2||s}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Activitate recente (ultime $1 die{{PLURAL:$1||s}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Ultime modification",

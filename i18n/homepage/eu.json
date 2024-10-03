@@ -56,7 +56,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Gaurkotu gabe dauden artikuluak hobetu eta iturri fidagarriak gehitu",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Artikulu berriak sortu eta artikulu laburrak hedatu.",
 	"growthexperiments-homepage-suggested-edits-header": "Gomendatutako aldaketak",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Zure}} inpaktua",
 	"growthexperiments-homepage-impact-subheader-text": "Jendea {{GENDER:$1|zuk}} egindako artikuluak ikusten ari da!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Azken 60 egunetan {{GENDER:$1|zuk}} aldatutakoek izandako ikustaldiak:",
 	"growthexperiments-homepage-impact-contributions-link": "{{PLURAL:$1|Aldaketa <strong>$1</strong> egin {{GENDER:$2|duzu}}|<strong>$1</strong> aldaketa egin {{GENDER:$2|dituzu}}}}",

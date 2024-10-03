@@ -69,7 +69,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Editări sugerate",
 	"growthexperiments-homepage-new-impact-header": "Impactul {{GENDER:$1|dvs.}}",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Vă rugăm să activați JavaScript pentru a vizualiza această componentă.",
-	"growthexperiments-homepage-impact-header": "Impactul {{GENDER:$1|dvs.}}",
 	"growthexperiments-homepage-impact-recent-activity-title": "Activitatea {{GENDER:$1|voastră}} recentă (din {{PLURAL:$2|ultima zi|ultimele $2 zile}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Activitate recentă ({{PLURAL:$1|ultima zi|ultimele $1 zile}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Ultima editare",

@@ -65,7 +65,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Кховдийна нисдарш",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Хьан}} нисдарийн Ӏаткъам",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Латайе JavaScript хӀокху компоненте хьажархьама.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Хьан}} нисдарийн Ӏаткъам",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Хьан}} жигаралла {{PLURAL:$2|тӀаьххьара дийнахь}}",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "ТӀаьхьара жигаралла ({{PLURAL:$1|тӀаьххьара де}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "ТӀаьххьара хийцамаш",

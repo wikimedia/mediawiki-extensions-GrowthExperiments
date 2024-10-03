@@ -81,7 +81,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Voorgestelde bewerkingen",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Uw}} impact",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Schakel JavaScript in om dit onderdeel te bekijken.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Uw}} impact",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Uw}} recente activiteit (laatste $2 dag{{PLURAL:$2||en}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Recente activiteit ({{PLURAL:$1|vandaag|laatste $1 dagen}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Laatst bewerkt",

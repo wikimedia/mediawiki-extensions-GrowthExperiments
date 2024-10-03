@@ -65,7 +65,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Evttohuvvon rievdadusat",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Du}} váikkuhus",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Bija johtui JavaScript čájehan dihte dán komponeantta.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Du}} váikkuhus",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Du}} easká aktivitehta (maŋemus {{PLURAL:$2|jándora|$2 beaivvi}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Easká aktivitehta ({{PLURAL:$1|maŋemus beaivvi|maŋemus $1 beaivvi}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Maŋemus rievdaduvvon",

@@ -66,7 +66,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Ännerungsvirschléi",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Ären}} Afloss",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Aktivéiert wgl. JavaScript fir dës Komponent kënnen ze gesinn.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ären}} Afloss",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Är}} rezent Aktivitéien ({{PLURAL:$2|leschten Dag|lescht $2 Deeg}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Rezent Aktivitéit ({{PLURAL:$1|leschten Dag|lescht $1 Deeg}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Lescht Ännerung",

@@ -59,7 +59,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Permakan nyang disaranin",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Lu punya}} sawaban",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Diharep nyalain JavaScript bakal ndeleng ni onderdil.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Lu punya}} sawaban",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Lu punya}} piil belakangan ($2 {{PLURAL:$2|ari}} belakangan)",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Piil belakangan ($1 {{PLURAL:$1|ari}} belakangan)",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Paling belakangan dipermak",

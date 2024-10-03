@@ -77,7 +77,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "עריכות מוצעות",
 	"growthexperiments-homepage-new-impact-header": "ההשפעה {{GENDER:$1|שלך}}",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "נא להפעיל JavaScript כדי להציג את הרכיב הזה.",
-	"growthexperiments-homepage-impact-header": "ההשפעה {{GENDER:$1|שלך}}",
 	"growthexperiments-homepage-impact-recent-activity-title": "הפעילות האחרונה {{GENDER:$1|שלך}} ({{PLURAL:$2|ביום האחרון|ביומיים האחרונים|ב־$2 הימים האחרונים}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "פעילות לאחרונה ({{PLURAL:$1|היום האחרון|היומיים האחרונים|$1 הימים האחרונים}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "עריכה אחרונה",

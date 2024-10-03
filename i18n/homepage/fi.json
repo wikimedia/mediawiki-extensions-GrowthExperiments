@@ -74,7 +74,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Ehdotetut muokkaukset",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Vaikutuksesi}}",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Ota JavaScript käyttöön nähdäksesi tämän komponentin.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Sinun}} vaikutuksesi",
 	"growthexperiments-homepage-impact-recent-activity-title": "Viimeaikainen {{GENDER:$1|toimintasi}} ({{PLURAL:$2|viimeinen päivä|viimeiset $2 päivää}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Viimeaikainen toiminta ({{PLURAL:$1|viimeinen päivä|viimeisimmät $1 päivää}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Viimeksi muokattu",

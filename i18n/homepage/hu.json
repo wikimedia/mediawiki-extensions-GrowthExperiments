@@ -77,7 +77,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Javasolt szerkesztések",
 	"growthexperiments-homepage-new-impact-header": "Hatásod",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Engedélyezd a JavaScriptet az összetevő megtekintéséhez.",
-	"growthexperiments-homepage-impact-header": "Hatásod",
 	"growthexperiments-homepage-impact-subheader-text": "Az emberek olvassák az általad szerkesztett szócikkeket!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Megtekintések a szerkesztésed óta (utóbbi 60 nap):",
 	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> szerkesztést végeztél (összes megtekintése)",

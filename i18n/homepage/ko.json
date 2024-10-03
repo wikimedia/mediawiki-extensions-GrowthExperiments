@@ -79,7 +79,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "편집 제안",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|당신의}} 영향",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "이 구성 요소를 보려면 자바스크립트를 활성화해 주십시오.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|당신}}의 영향",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|당신의}} 최근 활동 (지난 $2{{PLURAL:$2|일}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "최근 활동 (지난 $1{{PLURAL:일}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "마지막 편집",

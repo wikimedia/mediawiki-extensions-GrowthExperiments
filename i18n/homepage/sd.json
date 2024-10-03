@@ -63,7 +63,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "ڏسيل سنوارون",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|توھان جو}} اثر",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "مھرباني ڪري ھي ڀاڱو ڏسڻ لاءِ جاوا اسڪرپٽ کي فعال ڪيو.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|توھان جو}} اثر",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|توھان جي}} ويجهڙ ۾ سرگرمي (گذريل $2 {{PLURAL:$2|ڏينھن}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "ويجهڙ ۾ سرگرمي (گذريل $1 {{PLURAL:$1|ڏينھن}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "آخري ڀيرو سنوار ڪئي",

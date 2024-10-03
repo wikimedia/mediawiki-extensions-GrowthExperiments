@@ -74,7 +74,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Προτεινόμενες επεξεργασίες",
 	"growthexperiments-homepage-new-impact-header": "Ο αντίκτυπός {{GENDER:$1|σας}}",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Ενεργοποιήστε την JavaScript για να δείτε αυτό το στοιχείο.",
-	"growthexperiments-homepage-impact-header": "Ο αντίκτυπός {{GENDER:$1|σας}}",
 	"growthexperiments-homepage-impact-recent-activity-title": "Η δική {{GENDER:$1|σας}} πρόσφατη δραστηριότητα (τις τελευταίες $2 {{PLURAL:$2|ημέρα|ημέρες}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Πρόσφατη δραστηριότητα (τελευταία $1 {{PLURAL:$1| ημέρα|ημέρες}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Τελευταία επεξεργασία",

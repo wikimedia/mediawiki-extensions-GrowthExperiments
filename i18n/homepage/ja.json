@@ -82,7 +82,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "お勧めの編集",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|あなたの}}影響力",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "このコンポーネントを表示するには JavaScript を有効にしてください。",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|あなた}}の影響力",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|あなたの}}最近の活動（過去$2{{PLURAL:$2|日}}）",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "最近の活動（過去$1{{PLURAL:$1|日}}）",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "最終編集",

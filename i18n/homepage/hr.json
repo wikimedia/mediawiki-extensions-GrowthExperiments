@@ -68,7 +68,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Predložena uređivanja",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Vaši}} doprinosi",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Da biste vidjeli ovu komponentu, molimo omogućite JavaScript.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|}}Vaši doprinosi",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Vaši}} nedavni doprinosi ({{PLURAL:$2|posljednji $2 dan|posljednja $2 dana|posljednjih $2 dana}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "posljednje uređivanje",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "uređivanja zaredom",

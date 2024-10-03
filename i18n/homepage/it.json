@@ -82,7 +82,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Modifiche suggerite",
 	"growthexperiments-homepage-new-impact-header": "Il tuo impatto",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Abilita JavaScript per visualizzare questo componente.",
-	"growthexperiments-homepage-impact-header": "Il {{GENDER:$1|tuo}} impatto",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|La tua}} attività recente ({{PLURAL:$2|ultimo giorno|ultimi $2 giorni}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Attività recente ({{PLURAL:$1|ultimo giorno|ultimi $1 giorni}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Ultima modifica",

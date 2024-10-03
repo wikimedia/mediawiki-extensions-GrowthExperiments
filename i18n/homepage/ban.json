@@ -61,7 +61,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Uahan kanikayang",
 	"growthexperiments-homepage-new-impact-header": "Krana {{GENDER:$1|ragané}}",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Tulungin idupang JavaScript anggo ningalin komponén niki.",
-	"growthexperiments-homepage-impact-header": "Krana {{GENDER:$1|ragané}}",
 	"growthexperiments-homepage-impact-recent-activity-title": "Gegaén {{GENDER:$1|ragané}} mangkin ($2 {{PLURAL:$2|dina}} ungkur)",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Parilaksana mangkin ($1 {{PLURAL:$1|dina}} siduri)",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Siduri kauah",

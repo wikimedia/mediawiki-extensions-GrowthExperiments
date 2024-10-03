@@ -69,7 +69,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Предложене измене",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Ваш}} утицај",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Молимо омогућите JavaScript.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ваш}} утицај",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Ваша}} скорашња активност ({{PLURAL:$2|последњег дана|последњих $2 дана}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Скорашња активност ({{PLURAL:$1|последњег дана|последњих $1 дана}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Последња измена",

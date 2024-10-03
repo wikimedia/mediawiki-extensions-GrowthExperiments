@@ -49,7 +49,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "نئے مضامین کی تخلیق اور ناقص حوالہ جات میں اضافہ وغیرہ",
 	"growthexperiments-homepage-suggested-edits-header": "مجوزہ ترامیم",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|آپ}} کے اثرات",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|آپ}} کے اثرات",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1| آپ }} کی حالیہ سرگرمی (گذشتہ $2 {{PLURAL:$2|دن}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "آخری ترمیم",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "طویل ترین تسلسل",

@@ -74,7 +74,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Пропоновані редагування",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Ваш}} вплив",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Щоб переглянути цей компонент, будь ласка, увімкніть JavaScript.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ваш}} вплив",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Ваша}} нещодавня активність ({{PLURAL:$2|минулий $2 день|минулі $2 дні|минулі $2 днів}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Недавня активність ({{PLURAL:$1|минулий $1 день|минулі $1 дні|минулі $1 днів}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Минуле редагування",

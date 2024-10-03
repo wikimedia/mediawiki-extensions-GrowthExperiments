@@ -72,7 +72,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Прапанаваныя праўкі",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Ваш}} уплыў",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Калі ласка, уключыце JavaScript для прагляду гэтага кампанента.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ваш}} уплыў",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Ваша}} нядаўняя дзейнасць ({{PLURAL:$2|апошні дзень|апошнія $2 дні|апошнія $2 дзён}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Апошняя праўка",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Лепшая серыя",

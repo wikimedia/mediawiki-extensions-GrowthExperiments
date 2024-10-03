@@ -63,7 +63,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "ဆောင်းပါးသစ်များဖန်တီးပြီး ဆောင်းပါးတိုများကို တိုးချဲ့ရေးသားပါ။",
 	"growthexperiments-homepage-suggested-edits-header": "အကြံပြုထားသော ပြင်ဆင်မှုများ",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|သင်၏}} သက်ရောက်မှု",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|သင်၏}} သက်ရောက်မှု",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1| သင်}}၏ မကြာသေးမီက လုပ်ဆောင်မှု (နောက်ဆုံး $2 {{PLURAL:$2|ရက်}}က)",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "(လွန်ခဲ့သော $1 {{PLURAL:$1|ရက်|ရက်}})အကြာက လတ်တလောဆောင်ရွက်ချက်",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "နောက်ဆုံး တည်းဖြတ်ခဲ့သည်",

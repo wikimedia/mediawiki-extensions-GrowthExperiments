@@ -40,7 +40,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Создавајте нови статии и проширувајте ги кратките статии.",
 	"growthexperiments-homepage-suggested-edits-header": "Предложени уредувања",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Вашето}} влијание",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Вашето}} влијание",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Последно уредување: $1",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Уредување|Уредувања}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "Вкупно уредувања",

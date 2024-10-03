@@ -64,7 +64,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Bæta við áreiðanlegum heimildum og uppfæra greinar sem eru úreldar",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Búa til nýjar greinar og lengja styttri greinar.",
 	"growthexperiments-homepage-suggested-edits-header": "Tillögur að breytingum",
-	"growthexperiments-homepage-impact-header": "Áhrifin {{GENDER:$1|þín}}",
 	"growthexperiments-homepage-impact-subheader-text": "Fólk er að skoða greinarnar sem {{GENDER:$1|þú}} breyttir!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Skoðanir frá breytingu {{GENDER:$1|þinni}} (síðustu 60 dagar):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Þú}} hefur gert <strong>$1</strong> {{PLURAL:$1|breytingu|breytingar}} (sjá allar)",

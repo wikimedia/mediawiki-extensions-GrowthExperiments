@@ -66,7 +66,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Predlagana urejanja",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Vaš}} vpliv",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Za ogled te komponente omogočite JavaScript.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Vaš}} vpliv",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Vaša}} nedavna aktivnost ({{PLURAL:$2|zadnji dan|zadnja $2 dni|zadnji $2 dnevi|zadnjih $2 dni}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Nedavna dejavnost ({{PLURAL:$1|zadnji $1 dan|zadnja $1 dni|zadnje $1|zadnjih $1 dni}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Zadnje urejanje",

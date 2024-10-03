@@ -51,7 +51,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Skep nuwe artikels en brei kort artikels uit.",
 	"growthexperiments-homepage-suggested-edits-header": "Voorgestelde wysigings",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Jou}} impak",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Jou}} impak",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Jou}} onlangse aktiwiteit (afgelope $2 {{PLURAL:$2|dag|dae}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Onlangse aktiwiteit (laaste $1 {{PLURAL:$1|dag|dae}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Laas gewysig",

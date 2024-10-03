@@ -85,7 +85,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Önerilen düzenlemeler",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Etkiniz}}",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Bu bileşeni görüntülemek için lütfen JavaScript'i etkinleştirin.",
-	"growthexperiments-homepage-impact-header": "Etki{{GENDER:$1|niz}}",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Son etkinliğiniz}} (son $2 {{PLURAL:$2|gün}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Son etkinlik (son $1 {{PLURAL:$1|gün}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Son değişiklik",

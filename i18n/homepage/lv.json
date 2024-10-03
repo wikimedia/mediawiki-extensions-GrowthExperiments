@@ -64,7 +64,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Ieteiktie labojumi",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Tavs}} ieguldījums",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Lūdzu, iespējo JavaScript, lai skatītu šo komponentu.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Tavs}} ieguldījums",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Tava}} nesenā aktivitāte ({{PLURAL:$2|pēdējās $2 dienas|pēdējā $2 diena|pēdējās $2 dienas}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Pēdējais labojums",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dienas|diena|dienas}}",

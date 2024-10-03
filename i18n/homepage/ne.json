@@ -68,7 +68,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "सुझाइएका सम्पादनहरू",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|तपाईंको}} प्रभाव",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "यो हेर्नको लागि कृपया JavaScript सक्षम गर्नुहोस्।",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|तपाईंको}} प्रभाव",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "अन्तिम पटक सम्पादन",
 	"growthexperiments-homepage-impact-scores-edit-count": "जम्मा सम्पादनहरू",
 	"growthexperiments-homepage-impact-scores-thanks-count": "धन्यवाद प्राप्त भयाे",

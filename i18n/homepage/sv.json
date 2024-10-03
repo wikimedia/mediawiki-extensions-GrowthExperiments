@@ -74,7 +74,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Förslag på redigeringar",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Din}} påverkan",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Aktivera JavaScript för att se denna funktion.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påverkan",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Din}} senaste aktivitet (senaste $2 {{PLURAL:$2|dagen|dagarna}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Senaste aktiviteten (senaste $1 {{PLURAL:$1|dagen|dagarna}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Redigerade senast",

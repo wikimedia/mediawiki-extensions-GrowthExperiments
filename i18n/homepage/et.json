@@ -46,7 +46,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Soovitatud muudatused",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Sinu}} mõju",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Palun luba JavaScript, et näha seda komponenti.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Sinu}} mõju",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Sinu}} viimased toimingud ({{PLURAL:$2|viimane üks päev|viimased $2 päeva}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Viimased toimingud ({{PLURAL:$1|viimane üks päev|viimased $1 päeva}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Viimane muudatus",

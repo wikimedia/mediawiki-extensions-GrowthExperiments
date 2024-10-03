@@ -81,7 +81,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "পরামর্শকৃত সম্পাদনা",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|আপনার}} প্রভাব",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "এই উপাদানটি দেখতে দয়া করে জাভাস্ক্রিপ্ট সক্ষম করুন৷",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|আপনার}} প্রভাব",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1| আপনার}} সাম্প্রতিক সক্রিয়তা (গত $2 {{PLURAL:$2|দিনে}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "সাম্প্রতিক সক্রিয়তা (শেষ $1 {{PLURAL:$1|দিনে}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "সর্বশেষ অবদান রেখেছেন",

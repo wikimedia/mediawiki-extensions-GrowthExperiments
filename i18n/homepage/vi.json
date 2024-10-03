@@ -72,7 +72,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Thêm các nguồn đáng tin cậy và cập nhật các bài viết đã lỗi thời.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Tạo bài viết mới và mở rộng bài viết sơ khai.",
 	"growthexperiments-homepage-suggested-edits-header": "Các sửa đổi gợi ý",
-	"growthexperiments-homepage-impact-header": "Ảnh hưởng của {{GENDER:$1|bạn}}",
 	"growthexperiments-homepage-impact-subheader-text": "Mọi người đang xem các bài viết {{GENDER:$1|bạn}} đã sửa đổi!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Số lượng người xem trang mà {{GENDER:$1|bạn}} đã sửa đổi (60 ngày qua):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Bạn}} vừa thực hiện <strong>$1</strong> sửa đổi (xem tất cả)",

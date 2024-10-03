@@ -78,7 +78,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Sugerowane edycje",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Twój}} wpływ",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Zezwól na JavaScript, aby zobaczyć ten komponent.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Twój}} wpływ",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Twoja}} niedawna aktywność ({{PLURAL:$2|ostatni dzień|ostatnie $2 dni|ostatnich $2 dni}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Ostatnia aktywność ({{PLURAL:$1|ostatni dzień|ostatnie $1 dni}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Ostatnia edycja",

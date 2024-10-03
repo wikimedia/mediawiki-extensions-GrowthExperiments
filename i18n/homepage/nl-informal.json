@@ -11,7 +11,6 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Toen je jouw account aanmaakte, zei je dat je een nieuw artikel wilde aanmaken.</strong> Dat soort bewerking is weliswaar belangrijk maar geschikter voor gevorderden, dus raden we je aan om eerst wat kleine wijzigingen in bestaande artikelen uit te proberen. Als je toch liever meteen een nieuw artikel aanmaakt, kunt je [$1 hier leren hoe dat moet].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Kies enkele onderwerpen waarin je geïnteresseerd bent om te bewerken",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Gebruik onderwerpen om suggesties te krijgen die je interessant vindt. Je kan een onderwerp kiezen of meerdere.",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Jouw}} impact",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:$1|Jouw}} huidige langste reeks is één dag, wat {{GENDER:$1|je}} op $2 behaald hebt.",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Bekijk weergaven van artikelen die je hebt bewerkt",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Help gratis kennis te verspreiden over de wereld door onderwerpen te bewerken die voor {{GENDER:$1|jou}} van belang zijn.",

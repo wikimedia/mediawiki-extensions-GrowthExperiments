@@ -87,7 +87,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "建議編輯",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|您的}}影響",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "請啟用 JavaScript 來檢視此組件。",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|您的}}影響",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|您的}}近期活動（過去$2{{PLURAL:$2|天}}）",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "最近活動（過去$1{{PLURAL:$1|天}}）",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|次編輯}}",

@@ -64,7 +64,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "سەرچاوەی بڕواپێکراو زۆربکە و زانیارییە بەسەرچووەکانی وتارەکە نوێ بکەرەوە.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "وتارە نوێیەکان دروست بکە و وتارە کورتەکان فراوان بکە.",
 	"growthexperiments-homepage-suggested-edits-header": "دەستکارییە پێشنیارکراوەکان",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|کاریگەرییەکەت}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 ڕۆژ",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|دەستکاری|دەستکاری}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 دەستکاری لەسەر $2",

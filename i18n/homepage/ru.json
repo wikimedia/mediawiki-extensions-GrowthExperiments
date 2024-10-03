@@ -97,7 +97,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Предложенные правки",
 	"growthexperiments-homepage-new-impact-header": "Влияние {{GENDER:$1|ваших}} правок",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "Включите JavaScript для просмотра этого компонента.",
-	"growthexperiments-homepage-impact-header": "Влияние {{GENDER:$1|ваших}} правок",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Ваша}} недавняя активность за {{PLURAL:$2|последний день|последние $2 дня|последние $2 дней}}",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Недавняя активность ({{PLURAL:$1|последний $1 день|последние $1 дня|последние $1 дней}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Последнее изменение",

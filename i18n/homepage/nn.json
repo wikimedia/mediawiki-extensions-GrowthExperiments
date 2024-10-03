@@ -42,7 +42,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Ferdig",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Prøv nokre <strong>enkle</strong> tilråda endringar først",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Din}} påverknad",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påverknad",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Nyleg aktivitet ({{PLURAL:$1|den siste dagen|dei siste $1 dagane}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Sist endra",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dag|dagar}}",

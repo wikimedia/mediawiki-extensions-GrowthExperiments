@@ -75,7 +75,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "ویرایش‌های پیشنهادی",
 	"growthexperiments-homepage-new-impact-header": "اثرگذاری {{GENDER:$1|شما}}",
 	"growthexperiments-homepage-new-impact-no-js-fallback": "برای دیدن از مؤلفه، لطفاً جاوااسکریپت را فعال کنید.",
-	"growthexperiments-homepage-impact-header": "اثرگذاری {{GENDER:$1|شما}}",
 	"growthexperiments-homepage-impact-recent-activity-title": "فعالیت‌های اخیر {{GENDER:$1|شما}} (در $2 {{PLURAL:$2|روز}} گذشته)",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "فعالیت اخیر ($1 {{PLURAL:$1|روز}} گذشته)",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "آخرین ویرایش",
