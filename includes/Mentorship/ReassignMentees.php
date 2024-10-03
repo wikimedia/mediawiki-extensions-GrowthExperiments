@@ -5,6 +5,7 @@ namespace GrowthExperiments\Mentorship;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
+use JobSpecification;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentity;
@@ -12,6 +13,7 @@ use MediaWiki\WikiMap\WikiMap;
 use MessageLocalizer;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IDatabase;
 
 class ReassignMentees {
@@ -76,13 +78,28 @@ class ReassignMentees {
 		string $reassignMessageKey,
 	   ...$reassignMessageAdditionalParams
 	) {
-		$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
-			new ReassignMenteesJob( [
-				'mentorId' => $this->mentor->getId(),
-				'performerId' => $this->performer->getId(),
-				'reassignMessageKey' => $reassignMessageKey,
-				'reassignMessageAdditionalParams' => $reassignMessageAdditionalParams,
-			] )
+		$jobQueueGroup = $this->jobQueueGroupFactory->makeJobQueueGroup();
+		$jobQueue = $jobQueueGroup->get( ReassignMenteesJob::JOB_NAME );
+
+		$jobParams = [
+			'mentorId' => $this->mentor->getId(),
+			'performerId' => $this->performer->getId(),
+			'reassignMessageKey' => $reassignMessageKey,
+			'reassignMessageAdditionalParams' => $reassignMessageAdditionalParams,
+		];
+
+		// Opportunistically delay the job by a minute, as a lock handoff
+		// might be happening (T376124).
+		if ( $jobQueue->delayedJobsEnabled() ) {
+			$jobParams['jobReleaseTimestamp'] = (int)wfTimestamp() + ExpirationAwareness::TTL_MINUTE;
+		} else {
+			$this->logger->debug(
+				'ReassignMentees failed to delay reassignMenteesJob, delays are not supported'
+			);
+		}
+
+		$jobQueueGroup->lazyPush(
+			new JobSpecification( ReassignMenteesJob::JOB_NAME, $jobParams )
 		);
 	}
 
