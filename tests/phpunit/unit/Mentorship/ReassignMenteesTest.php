@@ -113,6 +113,6 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			$context
 		);
 
-		$this->assertTrue( $reassignMentees->doReassignMentees( 'foo' ) );
+		$this->assertTrue( $reassignMentees->doReassignMentees( null, 'foo' ) );
 	}
 }

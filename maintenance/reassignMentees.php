@@ -142,6 +142,7 @@ class ReassignMentees extends Maintenance {
 				$mentor,
 				RequestContext::getMain()
 			)->doReassignMentees(
+				null,
 				'growthexperiments-quit-mentorship-reassign-mentees-log-message',
 				$mentor->getName()
 			);
