@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments;
 
-use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
@@ -16,15 +15,13 @@ class TourHooks implements
 	BeforePageDisplayHook,
 	ResourceLoaderRegisterModulesHook,
 	GetPreferencesHook,
-	UserGetDefaultOptionsHook,
-	LocalUserCreatedHook
+	UserGetDefaultOptionsHook
 {
 
 	public const TOUR_COMPLETED_HELP_PANEL = 'growthexperiments-tour-help-panel';
 	public const TOUR_COMPLETED_HOMEPAGE_MENTORSHIP = 'growthexperiments-tour-homepage-mentorship';
 	public const TOUR_COMPLETED_HOMEPAGE_WELCOME = 'growthexperiments-tour-homepage-welcome';
 	public const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
-	public const TOUR_COMPLETED_NEWIMPACT_DISCOVERY = 'growthexperiments-tour-newimpact-discovery';
 
 	private UserOptionsLookup $userOptionsLookup;
 	private ExperimentUserManager $experimentUserManager;
@@ -167,9 +164,6 @@ class TourHooks implements
 			$preferences[self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY] = [
 				'type' => 'api',
 			];
-			$preferences[self::TOUR_COMPLETED_NEWIMPACT_DISCOVERY] = [
-				'type' => 'api',
-			];
 		}
 	}
 
@@ -195,34 +189,7 @@ class TourHooks implements
 				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => true,
 				self::TOUR_COMPLETED_HOMEPAGE_WELCOME => true,
 				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY => true,
-				// New impact is different from the tours above; no one has
-				// seen it yet, and we want all existing users with activated impact modules
-				// to see it, so its default value should be false.
-				self::TOUR_COMPLETED_NEWIMPACT_DISCOVERY => false,
 			];
 		}
-	}
-
-	/** @inheritDoc */
-	public function onLocalUserCreated( $user, $autocreated ) {
-		if ( $user->isTemp() ) {
-			return;
-		}
-		// Always set the new impact module discovery tour to seen, whether the user
-		// is autocreated or local to the wiki, and whether homepage is enabled or not.
-		// The only users who should see this tour are existing user accounts in the local
-		// wiki who had the old impact module, and now can see the new impact module.
-		$this->userOptionsManager->setOption(
-			$user,
-			self::TOUR_COMPLETED_NEWIMPACT_DISCOVERY,
-			// If the new impact module isn't enabled yet, mark the tour
-			// as not seen. That way, when the module is eventually enabled,
-			// users will see it.
-			// If the new impact module is enabled, the user doesn't need to
-			// see this tour.
-			// When GEUseNewImpactModule is removed, this value can simply be 1, to
-			// indicate that it was seen.
-			(int)$this->config->get( 'GEUseNewImpactModule' )
-		);
 	}
 }
