@@ -288,12 +288,11 @@ class Mentorship extends BaseModule {
 
 	private function getMentorUsernameElement( $link ) {
 		$iconElement = new IconWidget( [ 'icon' => 'mentor' ] );
-		$usernameElement = Html::element(
+		$dir = $this->getContext()->getLanguage()->getDir();
+		$usernameElement = Html::rawElement(
 			'span',
 			[ 'class' => 'growthexperiments-homepage-mentorship-username' ],
-			$this->getContext()->getLanguage()->embedBidi(
-				$this->getMentor()->getName()
-			)
+			Html::element( 'bdi', [ 'dir' => $dir ], $this->getMentor()->getName() )
 		);
 		if ( $link ) {
 			$content = Html::rawElement(
