@@ -207,7 +207,11 @@ class ReassignMentees {
 			}
 		}
 
-		$this->dbw->unlock( $lockName, __METHOD__ );
+		if ( !$this->dbw->unlock( $lockName, __METHOD__ ) ) {
+			$this->logger->error( 'ReassignMentees failed to release its lock', [
+				'mentor' => $this->mentor->getName(),
+			] );
+		}
 		return true;
 	}
 }
