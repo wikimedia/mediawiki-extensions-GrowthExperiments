@@ -15,10 +15,10 @@
 	"growthexperiments-homepage-email-header-unconfirmed": "ਤਸਦੀਕ ਕਰੋ {{GENDER:$1|ਤੁਹਾਡਾ}} ਈਮੇਲ",
 	"growthexperiments-homepage-email-header-confirmed": "ਈਮੇਲ ਜੋੜਿਆ ਗਿਆ",
 	"growthexperiments-homepage-email-header-startemail": "ਈਮੇਲ: $1",
-	"growthexperiments-homepage-email-text-unconfirmed": "ਇੱਕ ਪੁਸ਼ਟੀਕਰਨ ਲਿੰਕ ਲਈ {{GENDER:$1|ਤੁਹਾਡਾ}} ਈਮੇਲ ਚੈੱਕ ਕਰੋ, ਜਾਂ ਇੱਕ ਨਵਾਂ ਲਿੰਕ ਭੇਜੋ।",
+	"growthexperiments-homepage-email-text-unconfirmed": "ਪੁਸ਼ਟੀਕਰਨ ਕੜੀ ਲਈ {{GENDER:$1|ਆਪਣਾ}} ਈਮੇਲ ਵੇਖੋ, ਜਾਂ ਇੱਕ ਨਵੀ ਕੜੀ ਭੇਜੋ।",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|ਤੁਹਾਡੇ}} ਈਮੇਲ ਦੀ ਤਸਦੀਕ ਹੋ ਗਈ ਹੈ। ਤੁਸੀਂ ਤਰਜੀਹਾਂ ਵਿੱਚ ਆਪਣੀਆਂ ਈਮੇਲ ਸੈਟਿੰਗਾਂ ਬਦਲ ਸਕਦੇ ਹੋ।",
 	"growthexperiments-homepage-email-button-noemail": "ਈਮੇਲ ਜੋੜੋ",
-	"growthexperiments-homepage-email-button-unconfirmed": "ਇੱਕ ਨਵਾਂ ਲਿੰਕ ਪ੍ਰਾਪਤ ਕਰੋ",
+	"growthexperiments-homepage-email-button-unconfirmed": "ਇੱਕ ਨਵੀਂ ਕੜੀ ਲਵੋ",
 	"growthexperiments-homepage-email-button-confirmed": "ਤਰਜੀਹਾਂ",
 	"growthexperiments-homepage-email-changelink": "ਬਦਲੋ",
 	"growthexperiments-homepage-email-confirmlink": "ਤਸਦੀਕ ਕਰੋ",
@@ -39,5 +39,6 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "ਮੁਕੰਮਲ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "ਸੌਖਾ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "ਦਰਮਿਆਨਾ",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "ਔਖਾ"
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "ਔਖਾ",
+	"growthexperiments-homepage-suggestededits-topic-name-video-games": "ਵੀਡੀਓ ਖੇਡਾਂ"
 }
