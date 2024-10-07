@@ -21,6 +21,8 @@ use Psr\Log\LoggerInterface;
  */
 class ReassignMenteesJob extends Job implements GenericParameterJob {
 
+	public const JOB_NAME = 'reassignMenteesJob';
+
 	/** @var int Maximum number of mentees to reassign per one job */
 	private const BATCH_SIZE = 5000;
 
@@ -33,7 +35,7 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 	 * @inheritDoc
 	 */
 	public function __construct( $params = null ) {
-		parent::__construct( 'reassignMenteesJob', $params );
+		parent::__construct( self::JOB_NAME, $params );
 
 		// init services
 		$services = MediaWikiServices::getInstance();
