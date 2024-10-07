@@ -252,49 +252,9 @@
 }
 
 .overlay-enabled {
-	.drawer.homepage-newimpact-discovery {
-		// Override MobileFrontend, which wants to hide the drawer
-		// on an overlay.
-		display: block !important; // stylelint-disable-line declaration-no-important
-	}
-
 	.drawer-container {
 		// Display over Minerva's overlay content (@z-indexOverOverlay: 4).
 		z-index: 5;
 		position: relative;
-	}
-}
-
-.drawer.homepage-newimpact-discovery {
-	// Needed to provide a solid background to the 50% transparent on suggested
-	// edits background color used with main drawer contents.
-	background-color: @background-color-base;
-	padding: 16px;
-
-	main {
-		background-color: @suggestedEditsBackgroundColorLegacyLightOnly;
-		padding: 16px;
-		margin: -16px;
-
-		h4 {
-			font-size: 1.1em;
-			font-weight: bold;
-			text-align: left;
-		}
-
-		p {
-			font-size: 0.875em;
-			text-align: left;
-			padding: 8px 0;
-		}
-
-		footer {
-			background-color: @background-color-base;
-			min-height: 48px;
-			text-align: center;
-			font-weight: bold;
-			padding: 16px 0;
-			margin: 0 -16px -16px -16px;
-		}
 	}
 }
