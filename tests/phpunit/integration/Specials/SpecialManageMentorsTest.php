@@ -319,7 +319,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			->parse();
 
 		$this->assertIsString( $result );
-		$this->assertStringContainsString( 'cdx-message cdx-message--block cdx-message--warning', $result );
+		$this->assertStringContainsString( 'ext-growthExperiments-message--warning', $result );
 		$this->assertStringContainsString( $expectedMessage, $result );
 		$this->assertStringContainsString( $expectedConfigPage, $result );
 	}

@@ -421,21 +421,11 @@ class SpecialManageMentors extends SpecialPage {
 			? SpecialPage::getTitleFor( 'CommunityConfiguration', 'Mentorship' )->getPrefixedText()
 			: SpecialPage::getTitleFor( 'EditGrowthConfig' )->getPrefixedText();
 
-		return Html::rawElement( 'div', [
-			'class' => 'cdx-message cdx-message--block cdx-message--warning'
-		],
-			implode( "\n", [
-				Html::rawElement( 'span', [
-					'class' => 'cdx-message__icon'
-				], ),
-				Html::rawElement( 'span', [
-					'class' => 'cdx-message__content'
-					],
-				$this->msg( 'growthexperiments-mentor-dashboard-mentorship-disabled-with-link' )
-					->params( $configPage )
-					->parse() )
-				]
-			)
+		return Html::warningBox(
+			$this->msg( 'growthexperiments-mentor-dashboard-mentorship-disabled-with-link' )
+				->params( $configPage )
+				->parse(),
+			'ext-growthExperiments-message--warning'
 		);
 	}
 
