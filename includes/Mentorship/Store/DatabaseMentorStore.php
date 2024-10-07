@@ -9,6 +9,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use WANObjectCache;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class DatabaseMentorStore extends MentorStore {
@@ -81,6 +82,15 @@ class DatabaseMentorStore extends MentorStore {
 		return new UserIdentityValue( $user->getId(), $user->getName() );
 	}
 
+	private function getDBByFlags( int $flags ): IDatabase {
+		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
+			$db = $this->loadBalancer->getConnection( DB_PRIMARY );
+		} else {
+			$db = $this->loadBalancer->getConnection( DB_REPLICA );
+		}
+		return $db;
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -91,11 +101,7 @@ class DatabaseMentorStore extends MentorStore {
 		bool $includeInactiveUsers = true,
 		int $flags = 0
 	): array {
-		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
-			$db = $this->loadBalancer->getConnection( DB_PRIMARY );
-		} else {
-			$db = $this->loadBalancer->getConnection( DB_REPLICA );
-		}
+		$db = $this->getDBByFlags( $flags );
 
 		$queryBuilder = $db->newSelectQueryBuilder()
 			->select( 'gemm_mentee_id' )
@@ -128,6 +134,27 @@ class DatabaseMentorStore extends MentorStore {
 			->fetchUserIdentities() );
 	}
 
+	public function hasAnyMentees(
+		UserIdentity $mentor,
+		string $mentorRole,
+		bool $includeHiddenUsers = true,
+		int $flags = 0
+	): bool {
+		if ( !$includeHiddenUsers ) {
+			wfDeprecated( __METHOD__ . ' called with $includeHiddenUsers = false', '1.43' );
+		}
+
+		return (bool)$this->getDBByFlags( $flags )
+			->newSelectQueryBuilder()
+			->select( 'gemm_mentee_id' )
+			->from( 'growthexperiments_mentor_mentee' )
+			->where( [ 'gemm_mentor_id' => $mentor->getId(), 'gemm_mentor_role' => $mentorRole ] )
+			->limit( 1 )
+			->recency( $flags )
+			->caller( __METHOD__ )
+			->fetchField();
+	}
+
 	/**
 	 * Really set a mentor for a given user
 	 *
@@ -146,7 +173,7 @@ class DatabaseMentorStore extends MentorStore {
 				->deleteFrom( 'growthexperiments_mentor_mentee' )
 				->where( [
 					'gemm_mentee_id' => $mentee->getId(),
-					'gemm_mentor_role' => $mentorRole
+					'gemm_mentor_role' => $mentorRole,
 				] )
 				->caller( __METHOD__ )
 				->execute();
@@ -162,7 +189,7 @@ class DatabaseMentorStore extends MentorStore {
 			->onDuplicateKeyUpdate()
 			->uniqueIndexFields( [ 'gemm_mentee_id', 'gemm_mentor_role' ] )
 			->set( [
-				'gemm_mentor_id' => $mentor->getId()
+				'gemm_mentor_id' => $mentor->getId(),
 			] )
 			->caller( __METHOD__ )
 			->execute();

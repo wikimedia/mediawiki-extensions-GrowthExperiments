@@ -9,6 +9,9 @@ use MediaWikiIntegrationTestCase;
 use WANObjectCache;
 use Wikimedia\TestingAccessWrapper;
 
+/**
+ * @covers \GrowthExperiments\Mentorship\Store\MentorStore
+ */
 abstract class MentorStoreTestCase extends MediaWikiIntegrationTestCase {
 
 	/** @var WANObjectCache */
@@ -51,9 +54,6 @@ abstract class MentorStoreTestCase extends MediaWikiIntegrationTestCase {
 		$this->assertSameUser( $mentor, $actualMentor );
 	}
 
-	/**
-	 * @covers \GrowthExperiments\Mentorship\Store\MentorStore::hasAnyMentees
-	 */
 	public function testHasAnyMentees() {
 		$menteePrimary = $this->getMutableTestUser()->getUser();
 		$menteeBackup = $this->getMutableTestUser()->getUser();
@@ -72,9 +72,6 @@ abstract class MentorStoreTestCase extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $store->hasAnyMentees( $mentor, MentorStore::ROLE_BACKUP ) );
 	}
 
-	/**
-	 * @covers \GrowthExperiments\Mentorship\Store\MentorStore::isMentee
-	 */
 	public function testIsMentee() {
 		$mentee = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();
@@ -85,10 +82,6 @@ abstract class MentorStoreTestCase extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $store->isMentee( $mentee ) );
 	}
 
-	/**
-	 * @covers \GrowthExperiments\Mentorship\Store\MentorStore::isMenteeActive
-	 * @covers \GrowthExperiments\Mentorship\Store\MentorStore::isMenteeActiveUncached
-	 */
 	public function testIsMenteeActive() {
 		$mentee = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();

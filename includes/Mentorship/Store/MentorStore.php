@@ -162,20 +162,16 @@ abstract class MentorStore implements ExpirationAwareness, LoggerAwareInterface 
 	 *
 	 * @param UserIdentity $mentor
 	 * @param string $mentorRole
-	 * @param bool $includeHiddenUsers
+	 * @param bool $includeHiddenUsers Deprecated (and ignored) since 1.43
 	 * @param int $flags
 	 * @return bool
 	 */
-	public function hasAnyMentees(
+	abstract public function hasAnyMentees(
 		UserIdentity $mentor,
 		string $mentorRole,
-		bool $includeHiddenUsers = false,
+		bool $includeHiddenUsers = true,
 		int $flags = 0
-	): bool {
-		return $this->getMenteesByMentor(
-			$mentor, $mentorRole, $includeHiddenUsers, true, $flags
-		) !== [];
-	}
+	): bool;
 
 	/**
 	 * Assign a mentor to this user, overriding any previous assignments.
