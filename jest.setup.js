@@ -55,7 +55,8 @@ const mw = {
 		warn: jest.fn()
 	},
 	config: {
-		get: jest.fn()
+		get: jest.fn(),
+		set: jest.fn()
 	},
 	message: jest.fn( ( key ) => ( {
 		text: jest.fn( () => key ),
@@ -83,6 +84,18 @@ const mw = {
 	// other mw properties as needed...
 };
 
+// Make calls to OO.EventEmitter.call( this ) provide a this.emit() method
+function EventEmitterMock() {
+	this.emit = jest.fn();
+}
+function OOMock() {}
+OOMock.mixinClass = jest.fn();
+OOMock.EventEmitter = EventEmitterMock;
+OOMock.ui = {
+	isMobile: jest.fn()
+};
+
 // Assign things to "global" here if you want them to be globally available during tests
 global.$ = require( 'jquery' );
 global.mw = mw;
+global.OO = OOMock;

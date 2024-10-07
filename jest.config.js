@@ -43,6 +43,7 @@ module.exports = {
 	},
 	// A list of paths to directories that Jest should use to search for files in.
 	roots: [
+		'./modules/ext.growthExperiments.DataStore',
 		'./modules/ext.growthExperiments.MentorDashboard',
 		'./modules/ext.growthExperiments.Homepage.NewImpact',
 		'./modules/vue-components'

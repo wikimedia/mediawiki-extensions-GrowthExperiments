@@ -31,5 +31,16 @@
 				"SuggestionWidget": "SuggestionWidget"
 			}
 		}
-	}
+	},
+	"overrides": [
+		{
+			"files": [ "**/*.test.js" ],
+			"extends": [
+				"wikimedia/server"
+			],
+			"env": {
+				"jest": true
+			}
+		}
+	]
 }
