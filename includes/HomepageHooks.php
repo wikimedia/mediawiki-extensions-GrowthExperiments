@@ -1167,6 +1167,9 @@ class HomepageHooks implements
 		if ( !$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			return;
 		}
+		if ( $this->config->get( 'GETempLinkRecommendationSwitchTagClearHook' ) ) {
+			return;
+		}
 		$revId = $revision->getId();
 		if ( !$this->canAccessPrimary ) {
 			// A GET request; the hook might be called for diagnostic purposes, e.g. via
@@ -1201,6 +1204,15 @@ class HomepageHooks implements
 			} catch ( DBReadOnlyError $e ) {
 				// Leaving a dangling DB row behind doesn't cause any problems so just ignore this.
 			}
+		}
+	}
+
+	private function clearLinkRecommendationRecordForPage( WikiPage $wikiPage ): void {
+		try {
+			$this->linkRecommendationHelper->deleteLinkRecommendation(
+				$wikiPage->getTitle()->toPageIdentity(), true, true );
+		} catch ( DBReadOnlyError $e ) {
+			// Leaving a dangling DB row behind doesn't cause any problems so just ignore this.
 		}
 	}
 
@@ -1488,7 +1500,15 @@ class HomepageHooks implements
 	}
 
 	/** @inheritDoc */
-	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ) {
+	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ): void {
+		if (
+			$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) &&
+			$this->config->get( 'GETempLinkRecommendationSwitchTagClearHook' ) &&
+			$wikiPage->getNamespace() === NS_MAIN
+		) {
+			$this->clearLinkRecommendationRecordForPage( $wikiPage );
+		}
+
 		if ( $editResult->isRevert() ) {
 			$this->trackRevertedNewcomerTaskEdit( $editResult );
 		}

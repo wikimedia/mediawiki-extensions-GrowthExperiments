@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -9,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\RequestContext;
@@ -22,6 +24,7 @@ use MediaWikiIntegrationTestCase;
 use RecentChange;
 use StatusValue;
 use stdClass;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\TestingAccessWrapper;
 use WikiPage;
 
@@ -82,6 +85,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		TestingAccessWrapper::newFromObject( $homepageHooks )->canAccessPrimary = true;
 		TestingAccessWrapper::newFromObject( $homepageHooks )->config = new HashConfig( [
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
+			'GETempLinkRecommendationSwitchTagClearHook' => false,
 		] );
 		$linkRecommendationStore = $this->createNoOpMock( LinkRecommendationStore::class,
 			[ 'getByLinkTarget', 'getRevisionId' ] );
@@ -141,6 +145,80 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			'page has current recommendation + replag (purge after edit + generate)' => [ 100, 90, 100, true, false ],
 			'recommendation was deleted recently (purge after edit)' => [ 100, 90, null, true, false ],
 		];
+	}
+
+	public function testNoOnSearchDataForIndexIfSwitchFlagIsTrue(): void {
+		$homepageHooks = $this->getHomepageHooks();
+		TestingAccessWrapper::newFromObject( $homepageHooks )->config = new HashConfig( [
+			'GENewcomerTasksLinkRecommendationsEnabled' => true,
+			'GETempLinkRecommendationSwitchTagClearHook' => true,
+		] );
+		$linkRecommendationStore = $this->createNoOpMock( LinkRecommendationStore::class );
+		$linkRecommendationStore->expects( $this->never() )->method( 'getByLinkTarget' );
+		TestingAccessWrapper::newFromObject( $homepageHooks )->linkRecommendationStore = $linkRecommendationStore;
+		$fields = [];
+
+		$homepageHooks->doSearchDataForIndex(
+			$fields,
+			$this->createNoOpMock( WikiPage::class ),
+			$this->createNoOpMock( RevisionRecord::class ),
+		);
+	}
+
+	public function testClearLinkRecommendationOnPageSaveComplete(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
+		$wikiPage = $this->getExistingTestPage();
+		$expectedPageIdentity = $wikiPage->getTitle()->toPageIdentity();
+		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
+		$weightedTagsUpdaterMock->expects( $this->once() )
+			->method( 'resetWeightedTags' )
+			->with( $expectedPageIdentity, [ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ] );
+		$this->setService( WeightedTagsUpdater::SERVICE, $weightedTagsUpdaterMock );
+		$this->overrideConfigValues( [
+			'GENewcomerTasksLinkRecommendationsEnabled' => true,
+			'GETempLinkRecommendationSwitchTagClearHook' => true,
+		] );
+		$linkRecommendation = new LinkRecommendation(
+			$wikiPage->getTitle(),
+			$wikiPage->getId(),
+			0,
+			[],
+			LinkRecommendation::getMetadataFromArray( [] )
+		);
+		$linkRecommendationStore = $this->getServiceContainer()->get( 'GrowthExperimentsLinkRecommendationStore' );
+		$linkRecommendationStore->insert( $linkRecommendation );
+
+		$this->editPage( $wikiPage, 'new content' );
+
+		$fromPageId = 0;
+		$this->assertCount( 0, $linkRecommendationStore->getAllRecommendations( 100, $fromPageId ) );
+	}
+
+	public function testClearLinkRecommendationNoPrimaryWriteWithoutReplicaMatch(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
+		$wikiPage = $this->getExistingTestPage();
+		$expectedPageIdentity = $wikiPage->getTitle()->toPageIdentity();
+		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
+		$weightedTagsUpdaterMock->expects( $this->once() )
+			->method( 'resetWeightedTags' )
+			->with( $expectedPageIdentity, [ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ] );
+		$this->setService( WeightedTagsUpdater::SERVICE, $weightedTagsUpdaterMock );
+		$this->overrideConfigValues( [
+			'GENewcomerTasksLinkRecommendationsEnabled' => true,
+			'GETempLinkRecommendationSwitchTagClearHook' => true,
+		] );
+		$mockLinkRecommendationStore = $this->createMock( LinkRecommendationStore::class );
+		$mockLinkRecommendationStore->expects( $this->once() )
+			->method( 'getByPageId' )
+			->with( $wikiPage->getId(), IDBAccessObject::READ_NORMAL )
+			->willReturn( null );
+		$mockLinkRecommendationStore->expects( $this->never() )
+			->method( 'deleteByPageIds' );
+		$this->setService( 'GrowthExperimentsLinkRecommendationStore', $mockLinkRecommendationStore );
+
+		$this->editPage( $wikiPage, 'new content' );
 	}
 
 	/**
