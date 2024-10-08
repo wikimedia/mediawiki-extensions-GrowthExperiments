@@ -10,11 +10,13 @@
 				const $emailInput = $root.find( '#wpEmail' );
 				$emailInput
 					.on( 'focus', () => {
-						let $warningBox = $emailInput.next( '.cdx-message--warning' );
+						let $warningBox = $emailInput.next( '.ext-growthExperiments-message--warning' );
 						if ( $warningBox.length === 0 ) {
-							$warningBox = $( mw.util.messageBox(
+							const warning = mw.util.messageBox(
 								mw.msg( 'growthexperiments-confirmemail-emailwarning' ), 'warning'
-							) ).hide();
+							);
+							warning.classList.add( 'ext-growthExperiments-message--warning' );
+							$warningBox = $( warning ).hide();
 							$emailInput.after( $warningBox );
 						}
 						// eslint-disable-next-line no-jquery/no-slide
@@ -23,7 +25,7 @@
 					.on( 'blur', () => {
 						// Hide the warning again if the user leaves the email input without
 						// typing anything
-						const $warningBox = $emailInput.next( '.cdx-message--warning' );
+						const $warningBox = $emailInput.next( '.ext-growthExperiments-message--warning' );
 						if ( $warningBox.length && $emailInput.val().trim() === '' ) {
 							// eslint-disable-next-line no-jquery/no-slide
 							$warningBox.slideUp();
