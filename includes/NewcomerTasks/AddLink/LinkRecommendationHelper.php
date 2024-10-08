@@ -12,6 +12,7 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\ProperPageIdentity;
 use StatusValue;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * Shared functionality for various classes that consume link recommendations.
@@ -76,18 +77,29 @@ class LinkRecommendationHelper {
 	 * Delete recommendations for a given page from the database and optionally from the search index.
 	 * @param ProperPageIdentity $pageIdentity
 	 * @param bool $deleteFromSearchIndex
+	 * @param bool $allowJoiningSearchIndexDeletes if true, then CirrusSearch will join this with
+	 *                                             other events from the revision, waiting for up to 10 minutes
 	 */
 	public function deleteLinkRecommendation(
 		ProperPageIdentity $pageIdentity,
-		bool $deleteFromSearchIndex
+		bool $deleteFromSearchIndex,
+		bool $allowJoiningSearchIndexDeletes = false
 	): void {
-		DeferredUpdates::addCallableUpdate( function () use ( $pageIdentity ) {
-			$this->linkRecommendationStore->deleteByPageIds( [ $pageIdentity->getId() ] );
-		} );
+		if (
+			$this->linkRecommendationStore->getByPageId( $pageIdentity->getId(), IDBAccessObject::READ_NORMAL ) !== null
+		) {
+			DeferredUpdates::addCallableUpdate( function () use ( $pageIdentity ) {
+				$this->linkRecommendationStore->deleteByPageIds( [ $pageIdentity->getId() ] );
+			} );
+		}
 		if ( $deleteFromSearchIndex ) {
-			( $this->weightedTagsUpdaterProvider )()->resetWeightedTags(
-				$pageIdentity, [ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ]
-			);
+			DeferredUpdates::addCallableUpdate( function () use ( $pageIdentity, $allowJoiningSearchIndexDeletes ) {
+				( $this->weightedTagsUpdaterProvider )()->resetWeightedTags(
+					$pageIdentity,
+					[ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ],
+					$allowJoiningSearchIndexDeletes ? 'revision' : null
+				);
+			} );
 		}
 	}
 
