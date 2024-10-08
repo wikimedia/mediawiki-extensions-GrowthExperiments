@@ -622,5 +622,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Gjør en foreslått redigering",
 	"echo-category-title-ge-newcomer": "Growth-funksjoner",
 	"echo-pref-tooltip-ge-newcomer": "Varsle meg om nybegynneroppgaver og andre funksjoner som er laget for å hjelpe nye brukere.",
-	"growthexperiments-homepage-community-updates-header": "Oppdateringer fra fellesskapet"
+	"growthexperiments-homepage-community-updates-header": "Oppdateringer fra fellesskapet",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lær mer"
 }
