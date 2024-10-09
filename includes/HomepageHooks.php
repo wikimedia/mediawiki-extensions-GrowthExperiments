@@ -87,6 +87,7 @@ use MediaWiki\Specials\Contribute\Card\ContributeCard;
 use MediaWiki\Specials\Contribute\Card\ContributeCardActionLink;
 use MediaWiki\Specials\Contribute\Hook\ContributeCardsHook;
 use MediaWiki\Status\Status;
+use MediaWiki\Storage\EditResult;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
@@ -1488,46 +1489,8 @@ class HomepageHooks implements
 
 	/** @inheritDoc */
 	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ) {
-		// Monitoring: increment counters in statsd for reverted newcomer task edits.
 		if ( $editResult->isRevert() ) {
-			$revId = $editResult->getNewestRevertedRevisionId();
-			if ( !$revId ) {
-				return;
-			}
-			$tags = ChangeTags::getTags(
-				$this->lb->getConnection( DB_REPLICA ),
-				null,
-				$revId
-			);
-			$growthTasksChangeTags = array_merge(
-				TemplateBasedTaskTypeHandler::NEWCOMER_TASK_TEMPLATE_BASED_ALL_CHANGE_TAGS,
-				[
-					LinkRecommendationTaskTypeHandler::CHANGE_TAG,
-					ImageRecommendationTaskTypeHandler::CHANGE_TAG,
-					SectionImageRecommendationTaskTypeHandler::CHANGE_TAG,
-				]
-			);
-			foreach ( $tags as $tag ) {
-				// We can use more precise tags, skip this generic one applied to all suggested edits.
-				if ( $tag === TaskTypeHandler::NEWCOMER_TASK_TAG ||
-					// ...but make sure the tag is one we care about tracking.
-					!in_array( $tag, $growthTasksChangeTags ) ) {
-					continue;
-				}
-				// HACK: craft the task type ID from the change tag. We should probably add a method to
-				// TaskTypeHandlerRegistry to get a TaskType from a change tag.
-				$taskType = str_replace( 'newcomer task ', '', $tag );
-				if ( $tag === LinkRecommendationTaskTypeHandler::CHANGE_TAG ) {
-					$taskType = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
-				} elseif ( $tag === ImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
-					$taskType = ImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
-				} elseif ( $tag === SectionImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
-					$taskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
-				}
-				$this->perDbNameStatsdDataFactory->increment(
-					sprintf( 'GrowthExperiments.NewcomerTask.Reverted.%s', $taskType )
-				);
-			}
+			$this->trackRevertedNewcomerTaskEdit( $editResult );
 		}
 	}
 
@@ -1649,5 +1612,46 @@ class HomepageHooks implements
 	 */
 	public function setUserIdentity( UserIdentity $userIdentity ): void {
 		$this->userIdentity = $userIdentity;
+	}
+
+	private function trackRevertedNewcomerTaskEdit( EditResult $editResult ): void {
+		$revId = $editResult->getNewestRevertedRevisionId();
+		if ( !$revId ) {
+			return;
+		}
+		$tags = ChangeTags::getTags(
+			$this->lb->getConnection( DB_REPLICA ),
+			null,
+			$revId
+		);
+		$growthTasksChangeTags = array_merge(
+			TemplateBasedTaskTypeHandler::NEWCOMER_TASK_TEMPLATE_BASED_ALL_CHANGE_TAGS,
+			[
+				LinkRecommendationTaskTypeHandler::CHANGE_TAG,
+				ImageRecommendationTaskTypeHandler::CHANGE_TAG,
+				SectionImageRecommendationTaskTypeHandler::CHANGE_TAG,
+			]
+		);
+		foreach ( $tags as $tag ) {
+			// We can use more precise tags, skip this generic one applied to all suggested edits.
+			if ( $tag === TaskTypeHandler::NEWCOMER_TASK_TAG ||
+				// ...but make sure the tag is one we care about tracking.
+				!in_array( $tag, $growthTasksChangeTags ) ) {
+				continue;
+			}
+			// HACK: craft the task type ID from the change tag. We should probably add a method to
+			// TaskTypeHandlerRegistry to get a TaskType from a change tag.
+			$taskType = str_replace( 'newcomer task ', '', $tag );
+			if ( $tag === LinkRecommendationTaskTypeHandler::CHANGE_TAG ) {
+				$taskType = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
+			} elseif ( $tag === ImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
+				$taskType = ImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
+			} elseif ( $tag === SectionImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
+				$taskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
+			}
+			$this->perDbNameStatsdDataFactory->increment(
+				sprintf( 'GrowthExperiments.NewcomerTask.Reverted.%s', $taskType )
+			);
+		}
 	}
 }
