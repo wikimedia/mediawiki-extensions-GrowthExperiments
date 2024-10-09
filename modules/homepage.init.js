@@ -1,8 +1,4 @@
 ( function () {
-	if ( 'impact' in mw.config.get( 'homepagemodules' ) ) {
-		require( './ext.growthExperiments.Homepage.Impact/index.js' );
-	}
-
 	if ( 'welcomesurveyreminder' in mw.config.get( 'homepagemodules' ) ) {
 		require( './ext.growthExperiments.Homepage.WelcomeSurveyReminder/index.js' );
 	}
