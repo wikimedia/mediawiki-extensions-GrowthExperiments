@@ -26,13 +26,11 @@ use Wikimedia\TestingAccessWrapper;
 use WikiPage;
 
 /**
- * @coversDefaultClass \GrowthExperiments\HomepageHooks
+ * @covers \GrowthExperiments\HomepageHooks
  * @group Database
  */
 class HomepageHooksTest extends MediaWikiIntegrationTestCase {
-	/**
-	 * @covers ::getTaskTypesJson
-	 */
+
 	public function testGetTaskTypesJson() {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
 			->onlyMethods( [ 'loadTaskTypes' ] )
@@ -49,9 +47,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( [ 'tt1', 'tt2' ], array_keys( $configData ) );
 	}
 
-	/**
-	 * @covers ::getTaskTypesJson
-	 */
 	public function testGetTaskTypesJson_error() {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
 			->onlyMethods( [ 'loadTaskTypes' ] )
@@ -65,9 +60,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( [ '_error' => '(foo)' ], $configData );
 	}
 
-	/**
-	 * @covers ::getAQSConfigJson
-	 */
 	public function testGetAQSConfigJson() {
 		$config = HomepageHooks::getAQSConfigJson();
 		$this->assertInstanceOf( stdClass::class, $config );
@@ -76,7 +68,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideOnSearchDataForIndex
-	 * @covers ::onSearchDataForIndex
 	 */
 	public function testOnSearchDataForIndex(
 		int $pageRevId,
@@ -184,9 +175,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::onRecentChange_save
-	 */
 	public function testOnRecentChange_save() {
 		// FIXME: These tests should cover a success case as well, and should
 		// use a data provider for the test cases.
