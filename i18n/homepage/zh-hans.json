@@ -509,6 +509,8 @@
 	"growthexperiments-addimage-inspector-help-button": "获取编辑帮助",
 	"growthexperiments-addimage-inspector-details-button": "查看图像详情",
 	"growthexperiments-addimage-inspector-description-placeholder": "没有可用的说明",
+	"growthexperiments-addsectionimage-inspector-title": "将图片添加到条目章节中",
+	"growthexperiments-addsectionimage-inspector-cta": "将此图片添加到条目章节“$1”吗？",
 	"growthexperiments-addimage-detailsdialog-header": "图片详细资料",
 	"growthexperiments-addimage-detailsdialog-image": "文件名称：",
 	"growthexperiments-addimage-detailsdialog-description": "描述：",

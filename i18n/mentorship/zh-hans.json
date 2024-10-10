@@ -102,6 +102,7 @@
 	"growthexperiments-notification-header-mentee-claimed": "您的{{GENDER:$3|学员}}$3已被$1{{GENDER:$2|认领}}。",
 	"growthexperiments-notification-body-mentee-claimed": "原因：$1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "什么是“认领学员”？",
+	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "查看导师面板",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "分配给我的学员数量",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "无（我手动认领）",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "约平均水平的一半",

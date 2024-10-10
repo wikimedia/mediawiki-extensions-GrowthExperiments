@@ -4,5 +4,6 @@
 			"Yupik"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|Tiervâpuáttim}}, $1!"
+	"welcomesurvey": "{{GENDER:$1|Tiervâpuáttim}}, $1!",
+	"welcomesurvey-question-email-label": "Šleđgâpostâčujottâs (valjimiävtulâš)"
 }
