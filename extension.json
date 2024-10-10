@@ -446,6 +446,12 @@
 				"UserOptionsManager"
 			]
 		},
+		"experiments": {
+			"class": "GrowthExperiments\\ExperimentsHooks",
+			"services": [
+				"GrowthExperimentsExperimentUserDefaultsManager"
+			]
+		},
 		"variant": {
 			"class": "GrowthExperiments\\VariantHooks",
 			"services": [
@@ -516,6 +522,7 @@
 		"ContributeCards": "homepage",
 		"CommunityConfigurationSchemaBeforeEditor": "communityconfig",
 		"CommunityConfigurationProvider_initList": "communityconfig",
+		"ConditionalDefaultOptionsAddCondition": "experiments",
 		"EditFilterMergedContent": "config",
 		"FormatAutocomments": [
 			"homepage",

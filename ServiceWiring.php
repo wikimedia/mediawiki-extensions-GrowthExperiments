@@ -8,6 +8,7 @@ use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
+use GrowthExperiments\ExperimentUserDefaultsManager;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
@@ -220,6 +221,16 @@ return [
 			),
 			$services->getUserOptionsManager(),
 			$services->getUserOptionsLookup()
+		);
+	},
+
+	'GrowthExperimentsExperimentUserDefaultsManager' => static function (
+		MediaWikiServices $services
+	): ExperimentUserDefaultsManager {
+		return new ExperimentUserDefaultsManager(
+			static function () use ( $services ) {
+				return $services->getCentralIdLookup();
+			},
 		);
 	},
 
