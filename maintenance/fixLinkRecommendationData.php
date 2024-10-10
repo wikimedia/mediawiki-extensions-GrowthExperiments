@@ -7,6 +7,7 @@ use CirrusSearch\Query\ArticleTopicFeature;
 use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -110,6 +111,16 @@ class FixLinkRecommendationData extends Maintenance {
 				. 'know what you are doing, use --force.)' );
 		}
 		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+
+		if (
+			$this->configurationLoader instanceof AbstractDataConfigurationLoader &&
+			$services->getMainConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
+		) {
+			// Pretend link-recommendation is enabled (T371316)
+			// Task suggester is not be adapted to query disabled task types.
+			$this->configurationLoader->enableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
+		}
+
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
 		$this->weightedTagsUpdater = CirrusSearchServices::wrap( $services )->getWeightedTagsUpdater();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
@@ -131,6 +142,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$batchSize = $this->getBatchSize();
 		$randomize = $this->getOption( 'random', false );
 		$fixedCount = 0;
+		$okCount = 0;
 		$pageIdsFixed = [];
 
 		$oresTopics = array_keys( ArticleTopicFeature::TERMS_TO_LABELS );
@@ -160,12 +172,16 @@ class FixLinkRecommendationData extends Maintenance {
 				}
 				$from = min( 10000, $batchSize + $from );
 				$fixedCount += count( $pagesToFix );
+				$okCount += count( $pageIdsToCheck ) - count( $pagesToFix );
 				if ( $batchSize + $from > 10000 ) {
 					$this->error( "  topic $oresTopic had more than 10K tasks" );
 					break;
 				}
 			}
 		}
+
+		// phpcs:ignore Generic.Files.LineLength
+		$this->output( "Total number of OK search index entries: $okCount\n (results in multiple topics counted multiple times)" );
 		$this->maybeReportFixedCount( $fixedCount, 'search-index' );
 	}
 
@@ -173,6 +189,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
 		$from = null;
 		$fixedCount = 0;
+		$okCount = 0;
 		// phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 		while ( $pageIds = $this->linkRecommendationStore->listPageIds( $this->getBatchSize(), $from ) ) {
 			$this->verboseOutput( '  checking ' . count( $pageIds ) . " titles...\n" );
@@ -188,7 +205,9 @@ class FixLinkRecommendationData extends Maintenance {
 			}
 			$from = end( $pageIds );
 			$fixedCount += count( $pageIdsToFix );
+			$okCount += count( $pageIds ) - count( $pageIdsToFix );
 		}
+		$this->output( "Total number of OK db-table entries: $okCount\n" );
 		$this->maybeReportFixedCount( $fixedCount, 'db-table' );
 	}
 
@@ -263,6 +282,7 @@ class FixLinkRecommendationData extends Maintenance {
 	}
 
 	private function maybeReportFixedCount( int $count, string $type ) {
+		$this->output( "Total number of dangling $type entries: $count\n" );
 		if ( !$this->hasOption( 'statsd' ) ) {
 			return;
 		}
