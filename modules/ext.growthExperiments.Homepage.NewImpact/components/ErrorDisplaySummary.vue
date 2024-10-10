@@ -10,7 +10,7 @@
 				as="h3"
 				weight="bold"
 			>
-				{{ $i18n( 'growthexperiments-homepage-impact-error-data-not-found-text', userName ).text() }}
+				{{ $i18n( 'growthexperiments-homepage-impact-error-data-not-found-text' ).text() }}
 			</c-text>
 		</div>
 		<info-boxes class="ext-growthExperiments-ErrorDisplaySummary__boxes"></info-boxes>
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-const { inject } = require( 'vue' );
 const { CdxIcon } = require( '@wikimedia/codex' );
 const { cdxIconAlert } = require( '../../vue-components/icons.json' );
 const CText = require( '../../vue-components/CText.vue' );
@@ -34,9 +33,7 @@ module.exports = exports = {
 		InfoBoxes
 	},
 	setup() {
-		const userName = inject( 'RELEVANT_USER_USERNAME' );
 		return {
-			userName,
 			cdxIconAlert
 		};
 	}
