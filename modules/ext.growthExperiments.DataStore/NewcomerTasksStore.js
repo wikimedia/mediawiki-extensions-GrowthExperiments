@@ -298,7 +298,7 @@ NewcomerTasksStore.prototype.onCurrentTaskExtraDataChanged = function () {
 NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 	if ( this.apiPromise ) {
 		this.setTaskQueueLoading( false );
-		this.apiPromise.abort( 'cancel' );
+		this.apiPromise.abort();
 	}
 
 	const promise = $.Deferred(),
@@ -364,7 +364,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		promise.resolve();
 	} ).catch( ( error ) => {
 		// Don't update the loading state if the promise is aborted (the next promise is still in progress)
-		if ( error !== 'cancel' ) {
+		if ( error !== 'abort' ) {
 			this.setTaskQueueLoading( false );
 		}
 		this.setTaskQueueLoadingError( new Error( error ) );

@@ -435,7 +435,7 @@
 		let message;
 		if ( error === 'http' && details && details.textStatus === 'abort' ) {
 			// XHR abort, not a real error
-			message = null;
+			message = details.textStatus;
 			isRealError = false;
 		} else if ( error === 'http' && details && details.textStatus === 'parsererror' ) {
 			message = 'Failed to parse valid JSON response';
