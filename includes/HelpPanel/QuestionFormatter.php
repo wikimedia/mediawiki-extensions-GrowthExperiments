@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\HelpPanel;
 
 use GrowthExperiments\Util;
@@ -8,38 +10,20 @@ use MediaWiki\Html\Html;
 
 class QuestionFormatter {
 
-	/**
-	 * @var IContextSource
-	 */
-	private $contextSource;
-	/** @var string */
-	private $dataLinkId;
-	/** @var string */
-	private $postedOnMsgKey;
-	/** @var string */
-	private $archivedMsgKey;
-	/** @var string */
-	private $archivedTooltipMsgKey;
-	/**
-	 * @var QuestionRecord
-	 */
-	private $questionRecord;
+	private IContextSource $contextSource;
+	private string $dataLinkId;
+	private string $postedOnMsgKey;
+	private string $archivedMsgKey;
+	private string $archivedTooltipMsgKey;
+	private QuestionRecord $questionRecord;
 
-	/**
-	 * @param IContextSource $contextSource
-	 * @param QuestionRecord $questionRecord
-	 * @param string $dataLinkId
-	 * @param string $postedOnMsgKey
-	 * @param string $archivedMsgKey
-	 * @param string $archivedTooltipMsgKey
-	 */
 	public function __construct(
 		IContextSource $contextSource,
 		QuestionRecord $questionRecord,
-		$dataLinkId,
-		$postedOnMsgKey,
-		$archivedMsgKey,
-		$archivedTooltipMsgKey
+		string $dataLinkId,
+		string $postedOnMsgKey,
+		string $archivedMsgKey,
+		string $archivedTooltipMsgKey
 	) {
 		$this->contextSource = $contextSource;
 		$this->dataLinkId = $dataLinkId;
@@ -49,14 +33,11 @@ class QuestionFormatter {
 		$this->archivedTooltipMsgKey = $archivedTooltipMsgKey;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function format() {
+	public function format(): string {
 		return $this->questionRecord->isArchived() ? $this->formatArchived() : $this->formatUnarchived();
 	}
 
-	private function formatUnarchived() {
+	private function formatUnarchived(): string {
 		return Html::rawElement(
 			'div',
 			[ 'class' => 'question-link-wrapper' ],
@@ -72,7 +53,7 @@ class QuestionFormatter {
 		) .	$this->getPostedOnHtml();
 	}
 
-	private function formatArchived() {
+	private function formatArchived(): string {
 		return Html::rawElement(
 				'div',
 				[ 'class' => 'question-link-wrapper question-archived' ],
@@ -96,7 +77,7 @@ class QuestionFormatter {
 			$this->getPostedOnHtml();
 	}
 
-	private function getPostedOnHtml() {
+	private function getPostedOnHtml(): string {
 		return Html::element(
 				'span',
 				[ 'class' => 'question-posted-on' ],
@@ -107,7 +88,7 @@ class QuestionFormatter {
 		);
 	}
 
-	private function getRelativeTime() {
+	private function getRelativeTime(): string {
 		$elapsedTime = (int)wfTimestamp() - (int)wfTimestamp(
 			TS_UNIX,
 			$this->questionRecord->getTimestamp()

@@ -47,7 +47,7 @@ class QuestionStoreTest extends MediaWikiIntegrationTestCase {
 			$context,
 			HelpdeskQuestionPoster::QUESTION_PREF
 		);
-		$timestamp = wfTimestamp();
+		$timestamp = (int)wfTimestamp();
 		$question = new QuestionRecord(
 			'foo',
 			'bar',
@@ -76,7 +76,9 @@ class QuestionStoreTest extends MediaWikiIntegrationTestCase {
 				'isVisible' => true,
 				'contentModel' => CONTENT_MODEL_WIKITEXT,
 			],
-			$loadedQuestion->jsonSerialize()
+			$loadedQuestion->jsonSerialize(),
+			false,
+			true
 		);
 	}
 
