@@ -7,7 +7,7 @@
 			"RebecaRwanda"
 		]
 	},
-	"growthexperiments-homepage-impact-subheader-text": "Reba ku ngingo {{GENDER:$1| wahinduye}}",
+	"growthexperiments-homepage-impact-subheader-text": "Reba ku ngingo {{GENDER:| wahinduye}}",
 	"growthexperiments-homepage-impact-contributions-link": "Reba byose {{GENDER:$2| }} guhindura ( $1 )",
 	"action-managementors": "tunganganya urutonde rwabahugura",
 	"growthexperiments-homepage-mentorship-optin-header": "Umujyanama wo guhindura",
