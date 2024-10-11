@@ -5,7 +5,7 @@
 			"Hedeyohu22"
 		]
 	},
-	"growthexperiments-homepage-impact-unactivated-description": "Өңдеуді бастағаннан кейін  {{GENDER:$1|cіз}} өңдеген мақаланы қанша адам қарап отырғанын көресіз.",
+	"growthexperiments-homepage-impact-unactivated-description": "Өңдеуді бастағаннан кейін  {{GENDER:|cіз}} өңдеген мақаланы қанша адам қарап отырғанын көресіз.",
 	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks Жаңа қатысушыға тапсырма]",
 	"tag-newcomer_task-description": "Жаңа келген қатысушының бастапқы бетіндегі ұсынылған өңдемелер модулі ұсынған өңдеме",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Сілтемелерді қосқан адамдарға тезірек білім алуға көмектеседі.",

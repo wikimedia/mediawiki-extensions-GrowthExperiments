@@ -44,7 +44,7 @@
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Уредување|Уредувања}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "Вкупно уредувања",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Примени благодарници",
-	"growthexperiments-homepage-impact-subheader-text": "Најпосетени (по {{GENDER:$1|вашето}} уредување)",
+	"growthexperiments-homepage-impact-subheader-text": "Најпосетени (по {{GENDER:|вашето}} уредување)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Најпосетени (по направеното уредување)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Посети откако {{GENDER:$1|уредивте}} (изминативе 60 дена):",
 	"growthexperiments-homepage-impact-contributions-link": "Погледајте ги {{GENDER:$2|вашите}} уредувања ($1)",
