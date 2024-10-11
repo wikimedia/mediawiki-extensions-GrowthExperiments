@@ -298,8 +298,7 @@ NewcomerTasksStore.prototype.onCurrentTaskExtraDataChanged = function () {
 NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 	if ( this.apiPromise ) {
 		this.setTaskQueueLoading( false );
-		this.apiPromise.abort();
-		this.abortedPromise = true;
+		this.apiPromise.abort( 'cancel' );
 	}
 
 	const promise = $.Deferred(),
@@ -316,6 +315,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		// request to persist the updated preferences can take its time.
 		this.filters.savePreferences();
 	}
+
 	this.apiPromise = this.api.fetchTasks(
 		this.filters.getTaskTypesQuery(),
 		this.filters.getTopicsQuery(),
@@ -361,17 +361,13 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		}
 
 		this.synchronizeExtraData();
-		this.apiPromise = null;
 		promise.resolve();
 	} ).catch( ( error ) => {
 		// Don't update the loading state if the promise is aborted (the next promise is still in progress)
-		if ( this.abortedPromise ) {
-			this.abortedPromise = false;
-		} else {
+		if ( error !== 'cancel' ) {
 			this.setTaskQueueLoading( false );
 		}
 		this.setTaskQueueLoadingError( new Error( error ) );
-		this.apiPromise = null;
 		promise.reject( error );
 	} );
 	return promise;
