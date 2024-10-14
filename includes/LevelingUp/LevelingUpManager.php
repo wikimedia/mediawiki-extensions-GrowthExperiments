@@ -25,6 +25,7 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use Psr\Log\LoggerInterface;
+use RuntimeException;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
@@ -341,6 +342,16 @@ class LevelingUpManager {
 	 */
 	public function getSuggestedEditsCount( UserIdentity $userIdentity ): int {
 		$impact = $this->userImpactLookup->getUserImpact( $userIdentity );
+		if ( !$impact ) {
+			$this->logger->error(
+				'Unable to fetch suggested edits count for user {userId}; no user impact found.',
+				[
+					'userId' => $userIdentity->getId(),
+					'exception' => new RuntimeException,
+				]
+			);
+			return 0;
+		}
 		return $impact->getNewcomerTaskEditCount();
 	}
 
