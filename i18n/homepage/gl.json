@@ -114,6 +114,7 @@
 	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Considere editar e aprender máis en {{SITENAME}}, despois volva máis tarde para ver os detalles do impacto da súa edición.{{GENDER:|}}",
 	"growthexperiments-homepage-impact-error-data-not-found-subtext-third-person": "Volve máis tarde para ver os detalles do impacto da súa edición.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alertas da central de axuda",
+	"growthexperiments-tour-mentor-response-tip-personal-title": "Alertas {{GENDER:$1|do mentor|da mentora}}",
 	"growthexperiments-tour-response-button-okay": "Entendido",
 	"tag-help_module_question": "Pregunta do módulo de axuda",
 	"growthexperiments-homepage-help-header": "Busque axuda para editar",
