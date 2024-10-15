@@ -118,7 +118,7 @@ const {
 	cdxIconChart,
 	cdxIconInfoFilled
 } = require( './icons.json' );
-const { NO_DATA_CHARACTER, DATA_ROWS_LIMIT } = require( '../ext.growthExperiments.Homepage.NewImpact/constants.js' );
+const { NO_DATA_CHARACTER, DATA_ROWS_LIMIT } = require( '../ext.growthExperiments.Homepage.Impact/constants.js' );
 
 // @vue/component
 module.exports = exports = {

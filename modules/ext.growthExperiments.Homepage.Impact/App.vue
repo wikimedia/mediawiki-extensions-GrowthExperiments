@@ -30,10 +30,10 @@ const { useUserImpact } = require( './composables/useUserImpact.js' );
 const Layout = require( './components/LayoutWrapper.vue' );
 // TODO wrap NewImpact, NoEditsDisplay, ScoreCards...
 // components in async components so we only load one at a time.
-const NewImpact = require( './components/NewImpact.vue' );
+const NewImpact = require( './components/Impact.vue' );
 const ErrorDisplay = require( './components/ErrorDisplay.vue' );
 const ErrorDisplaySummary = require( './components/ErrorDisplaySummary.vue' );
-const NewImpactSummary = require( './components/NewImpactSummary.vue' );
+const NewImpactSummary = require( './components/ImpactSummary.vue' );
 const NoEditsDisplay = require( './components/NoEditsDisplay.vue' );
 const startTime = mw.now();
 

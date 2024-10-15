@@ -916,34 +916,34 @@
 				"oojs-ui-windows"
 			]
 		},
-		"ext.growthExperiments.Homepage.NewImpact": {
+		"ext.growthExperiments.Homepage.Impact": {
 			"styles": [
 				"utils/mixins.less",
 				"vue-components/Skeleton.less",
-				"ext.growthExperiments.Homepage.NewImpact/styles/NewImpact.less",
-				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
-				"ext.growthExperiments.Homepage.NewImpact/components/LayoutWrapper.less",
+				"ext.growthExperiments.Homepage.Impact/styles/Impact.less",
+				"ext.growthExperiments.Homepage.Impact/components/Impact.less",
+				"ext.growthExperiments.Homepage.Impact/components/LayoutWrapper.less",
 				"vue-components/mixins.less",
 				"vue-components/CScoreCard.less",
 				"vue-components/CScoreCards.less"
 			],
 			"packageFiles": [
-				"ext.growthExperiments.Homepage.NewImpact/init.js",
-				"ext.growthExperiments.Homepage.NewImpact/constants.js",
-				"ext.growthExperiments.Homepage.NewImpact/composables/useMWRestApi.js",
-				"ext.growthExperiments.Homepage.NewImpact/composables/useUserImpact.js",
-				"ext.growthExperiments.Homepage.NewImpact/App.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/LayoutWrapper.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/NoEditsDisplay.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/ErrorDisplay.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/ErrorDisplaySummary.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/InfoBoxes.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/TrendChart.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/NewImpactSummary.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/RecentActivity.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/StreakGraph.vue",
-				"ext.growthExperiments.Homepage.NewImpact/components/ArticlesList.vue",
+				"ext.growthExperiments.Homepage.Impact/init.js",
+				"ext.growthExperiments.Homepage.Impact/constants.js",
+				"ext.growthExperiments.Homepage.Impact/composables/useMWRestApi.js",
+				"ext.growthExperiments.Homepage.Impact/composables/useUserImpact.js",
+				"ext.growthExperiments.Homepage.Impact/App.vue",
+				"ext.growthExperiments.Homepage.Impact/components/LayoutWrapper.vue",
+				"ext.growthExperiments.Homepage.Impact/components/Impact.vue",
+				"ext.growthExperiments.Homepage.Impact/components/NoEditsDisplay.vue",
+				"ext.growthExperiments.Homepage.Impact/components/ErrorDisplay.vue",
+				"ext.growthExperiments.Homepage.Impact/components/ErrorDisplaySummary.vue",
+				"ext.growthExperiments.Homepage.Impact/components/InfoBoxes.vue",
+				"ext.growthExperiments.Homepage.Impact/components/TrendChart.vue",
+				"ext.growthExperiments.Homepage.Impact/components/ImpactSummary.vue",
+				"ext.growthExperiments.Homepage.Impact/components/RecentActivity.vue",
+				"ext.growthExperiments.Homepage.Impact/components/StreakGraph.vue",
+				"ext.growthExperiments.Homepage.Impact/components/ArticlesList.vue",
 				"ext.growthExperiments.Homepage.Logger/index.js",
 				"lib/d3/d3.min.js",
 				"utils/Utils.js",
@@ -1271,9 +1271,9 @@
 				"ext.growthExperiments.Homepage.styles/ConfirmEmailNotice.less",
 				"ext.growthExperiments.Homepage.styles/EllipsisMenu.less",
 				"vue-components/Skeleton.less",
-				"ext.growthExperiments.Homepage.NewImpact/styles/NewImpact.less",
-				"ext.growthExperiments.Homepage.NewImpact/components/NewImpact.less",
-				"ext.growthExperiments.Homepage.NewImpact/components/LayoutWrapper.less",
+				"ext.growthExperiments.Homepage.Impact/styles/Impact.less",
+				"ext.growthExperiments.Homepage.Impact/components/Impact.less",
+				"ext.growthExperiments.Homepage.Impact/components/LayoutWrapper.less",
 				"vue-components/CScoreCard.less",
 				"vue-components/CScoreCards.less",
 				"ext.growthExperiments.Homepage.styles/CommunityUpdates.less"
@@ -2029,7 +2029,7 @@
 				"vue-components/CPopper.vue",
 				"vue-components/CText.vue",
 				"vue-components/directives/click-outside.directive.js",
-				"ext.growthExperiments.Homepage.NewImpact/constants.js",
+				"ext.growthExperiments.Homepage.Impact/constants.js",
 				"utils/filters.js",
 				"utils/Utils.js",
 				{
@@ -2827,10 +2827,6 @@
 		},
 		"GELinkRecommendationsFrontendEnabled": {
 			"description": "Global ON/OFF switch for the link recommendations feature. Depending on the state, either the 'links' or the 'link-recommendation' task type is hidden. Can be overridden by SuggestedEdits::LINK_RECOMMENDATIONS_ENABLED_PREF.",
-			"value": true
-		},
-		"GEUseNewImpactModule": {
-			"description": "Whether the new impact module should be used instead of the old impact module",
 			"value": true
 		},
 		"GETopicsMatchModeEnabled": {

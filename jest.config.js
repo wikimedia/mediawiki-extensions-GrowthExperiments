@@ -26,7 +26,7 @@ module.exports = {
 	collectCoverage: true,
 	collectCoverageFrom: [
 		'modules/ext.growthExperiments.MentorDashboard/**/*.(js|vue)',
-		'modules/ext.growthExperiments.Homepage.NewImpact/**/*.(js|vue)',
+		'modules/ext.growthExperiments.Homepage.Impact/**/*.(js|vue)',
 		'modules/vue-components/**/*.(js|vue)'
 	],
 	// The directory where Jest should output its coverage files
@@ -45,7 +45,7 @@ module.exports = {
 	roots: [
 		'./modules/ext.growthExperiments.DataStore',
 		'./modules/ext.growthExperiments.MentorDashboard',
-		'./modules/ext.growthExperiments.Homepage.NewImpact',
+		'./modules/ext.growthExperiments.Homepage.Impact',
 		'./modules/vue-components'
 	],
 	setupFiles: [

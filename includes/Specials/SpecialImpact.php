@@ -4,7 +4,7 @@ namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
-use GrowthExperiments\HomepageModules\NewImpact;
+use GrowthExperiments\HomepageModules\Impact;
 use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserFactory;
@@ -53,7 +53,7 @@ class SpecialImpact extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function isIncludable(): bool {
-		return $this->getConfig()->get( 'GEUseNewImpactModule' ) === true;
+		return true;
 	}
 
 	/**
@@ -104,7 +104,7 @@ class SpecialImpact extends SpecialPage {
 		$out->enableOOUI();
 		$impact = $this->homepageModuleRegistry->get( 'impact', $this->getContext() );
 		// If an argument was supplied and passed user validation, set the relevant user to the informed by.
-		if ( $par && $impact instanceof NewImpact ) {
+		if ( $par && $impact instanceof Impact ) {
 			$impact->setUserDataIsFor( $impactUser );
 		}
 		$configVarName = 'specialimpact';

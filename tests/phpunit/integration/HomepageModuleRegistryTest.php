@@ -5,8 +5,6 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
-use GrowthExperiments\HomepageModules\NewImpact;
-use GrowthExperiments\VariantHooks;
 use MediaWiki\Context\RequestContext;
 use MediaWikiIntegrationTestCase;
 
@@ -31,14 +29,6 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 		foreach ( HomepageModuleRegistry::getModuleIds() as $moduleId ) {
 			yield [ $moduleId ];
 		}
-	}
-
-	public static function provideGetImpactModule() {
-		// configFlag, $requestData, $userVariant, $expectedModuleClass
-		return [
-			[ false, [ 'new-impact' => '1' ], VariantHooks::VARIANT_CONTROL, NewImpact::class ],
-			[ true, [], VariantHooks::VARIANT_CONTROL, NewImpact::class ],
-		];
 	}
 
 }

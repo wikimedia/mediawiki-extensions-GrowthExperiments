@@ -8,9 +8,9 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\Banner;
 use GrowthExperiments\HomepageModules\CommunityUpdates;
 use GrowthExperiments\HomepageModules\Help;
+use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\MentorshipOptIn;
-use GrowthExperiments\HomepageModules\NewImpact;
 use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\StartEmail;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -144,7 +144,7 @@ class HomepageModuleRegistry {
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				$userOptionsLookup = $services->getUserOptionsLookup();
-				return new NewImpact(
+				return new Impact(
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getExperimentUserManager(),
