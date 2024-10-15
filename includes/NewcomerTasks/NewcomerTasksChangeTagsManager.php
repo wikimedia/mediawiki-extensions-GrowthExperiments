@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use ChangeTags;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Logger\LoggerFactory;
@@ -40,6 +40,8 @@ class NewcomerTasksChangeTagsManager {
 	/** @var UserIdentity|null */
 	private $user;
 
+	private ChangeTagsStore $changeTagsStore;
+
 	/**
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
@@ -48,6 +50,7 @@ class NewcomerTasksChangeTagsManager {
 	 * @param RevisionLookup $revisionLookup
 	 * @param IConnectionProvider $connectionProvider
 	 * @param UserIdentityUtils $userIdentityUtils
+	 * @param ChangeTagsStore $changeTagsStore
 	 * @param Config|null $config
 	 * @param UserIdentity|null $user
 	 * FIXME $config and $user should be mandatory and injected by a factory
@@ -60,6 +63,7 @@ class NewcomerTasksChangeTagsManager {
 		RevisionLookup $revisionLookup,
 		IConnectionProvider $connectionProvider,
 		UserIdentityUtils $userIdentityUtils,
+		ChangeTagsStore $changeTagsStore,
 		Config $config = null,
 		UserIdentity $user = null
 	) {
@@ -70,6 +74,7 @@ class NewcomerTasksChangeTagsManager {
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->connectionProvider = $connectionProvider;
 		$this->userIdentityUtils = $userIdentityUtils;
+		$this->changeTagsStore = $changeTagsStore;
 		$this->config = $config;
 		$this->user = $user;
 	}
@@ -118,7 +123,7 @@ class NewcomerTasksChangeTagsManager {
 
 		$rc_id = null;
 		$log_id = null;
-		$result = ChangeTags::updateTags(
+		$result = $this->changeTagsStore->updateTags(
 			$tags,
 			null,
 			$rc_id,
@@ -129,7 +134,7 @@ class NewcomerTasksChangeTagsManager {
 			$userIdentity
 		);
 		LoggerFactory::getInstance( 'GrowthExperiments' )->debug(
-			'ChangeTags::updateTags result in NewcomerTaskCompleteHandler: ' . json_encode( $result )
+			'ChangeTagsStore::updateTags() result in NewcomerTaskCompleteHandler: ' . json_encode( $result )
 		);
 		// This is needed for non-VE edits.
 		// VE edits are incremented in the post-save VisualEditor hook.
@@ -146,7 +151,7 @@ class NewcomerTasksChangeTagsManager {
 	private function checkExistingTags( int $revId ): StatusValue {
 		$rc_id = null;
 		$log_id = null;
-		$existingTags = ChangeTags::getTags(
+		$existingTags = $this->changeTagsStore->getTags(
 			$this->connectionProvider->getReplicaDatabase(),
 			$rc_id,
 			$revId,

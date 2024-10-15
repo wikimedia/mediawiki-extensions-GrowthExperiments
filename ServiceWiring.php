@@ -392,6 +392,7 @@ return [
 			$services->getRevisionStore(),
 			$services->getNameTableStoreFactory()->getChangeTagDef(),
 			$services->getPageProps(),
+			$services->getChangeTagsStore(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			static function () use ( $services ) {
 				$cirrusSearchServices = CirrusSearchServices::wrap( $services );
@@ -1088,7 +1089,8 @@ return [
 			$services->getPerDbNameStatsdDataFactory(),
 			$services->getRevisionLookup(),
 			$services->getDBLoadBalancerFactory(),
-			$services->getUserIdentityUtils()
+			$services->getUserIdentityUtils(),
+			$services->getChangeTagsStore()
 		);
 	},
 

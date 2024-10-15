@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use ChangeTags;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -181,8 +180,10 @@ class FixSuggestedEditChangeTags extends Maintenance {
 			// Log entries are way more reliable (and we couldn't retroactively change log entries
 			// anyway), remove the change tag.
 			if ( $this->hasOption( 'fix' ) ) {
-				ChangeTags::updateTags( null, $this->changeTagName, $rc_id, $row->rev_id, $log_id,
-					null, null, $this->user );
+				$this->getServiceContainer()->getChangeTagsStore()
+					->updateTags(
+						null, $this->changeTagName, $rc_id, $row->rev_id, $log_id, null, null, $this->user
+					);
 			}
 			if ( $this->hasOption( 'verbose' ) ) {
 				$diffLink = wfExpandUrl( wfAppendQuery( wfScript(), [

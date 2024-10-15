@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ChangeTags;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter;
@@ -38,7 +37,7 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 			$tags,
 			array_intersect(
 				$tags,
-				ChangeTags::getTags(
+				$this->getServiceContainer()->getChangeTagsStore()->getTags(
 					$this->getServiceContainer()->getConnectionProvider()->getReplicaDatabase(),
 					null,
 					$revId

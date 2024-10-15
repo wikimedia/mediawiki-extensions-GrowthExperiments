@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ChangeTags;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use MediaWikiIntegrationTestCase;
@@ -37,7 +36,7 @@ class LevelingUpManagerTest extends MediaWikiIntegrationTestCase {
 		$user = $this->getMutableTestUser()->getUser();
 		$status = $this->editPage( 'Test', 'Test2-edit-1', 'Test', NS_MAIN, $user );
 		$revId = $status->getValue()['revision-record']->getId();
-		ChangeTags::addTags( TaskTypeHandler::NEWCOMER_TASK_TAG, null, $revId );
+		$this->getServiceContainer()->getChangeTagsStore()->addTags( TaskTypeHandler::NEWCOMER_TASK_TAG, null, $revId );
 		$this->editPage( 'Test', 'Test2-edit-2', 'Test', NS_MAIN, $user );
 		$this->assertFalse( $levelingUpManager->shouldInviteUserAfterNormalEdit( $user ) );
 	}
