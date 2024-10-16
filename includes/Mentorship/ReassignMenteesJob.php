@@ -6,6 +6,7 @@ use GenericParameterJob;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use Job;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -23,9 +24,7 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 
 	public const JOB_NAME = 'reassignMenteesJob';
 
-	/** @var int Maximum number of mentees to reassign per one job */
-	private const BATCH_SIZE = 5000;
-
+	private Config $config;
 	private UserIdentityLookup $userIdentityLookup;
 	private MentorStore $mentorStore;
 	private ReassignMenteesFactory $reassignMenteesFactory;
@@ -40,6 +39,7 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 		// init services
 		$services = MediaWikiServices::getInstance();
 		$geServices = GrowthExperimentsServices::wrap( $services );
+		$this->config = $services->getMainConfig();
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
 		$this->mentorStore = $geServices->getMentorStore();
 		$this->reassignMenteesFactory = $geServices->getReassignMenteesFactory();
@@ -72,6 +72,10 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 		return $info;
 	}
 
+	private function getBatchSize(): int {
+		return $this->config->get( 'GEMentorshipReassignMenteesBatchSize' );
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -95,7 +99,7 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 			RequestContext::getMain()
 		);
 		$status = $reassignMentees->doReassignMentees(
-			self::BATCH_SIZE,
+			$this->getBatchSize(),
 			$this->params['reassignMessageKey'],
 			...$this->params['reassignMessageAdditionalParams']
 		);

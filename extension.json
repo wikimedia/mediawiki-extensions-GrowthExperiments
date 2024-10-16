@@ -2667,6 +2667,10 @@
 			"description": "Minimum number of edits required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
 			"value": 500
 		},
+		"GEMentorshipReassignMenteesBatchSize": {
+			"description": "Batch size for reassignMenteesJob",
+			"value": 5000
+		},
 		"GEPersonalizedPraiseBackendEnabled": {
 			"description": "Feature flag controlling whether personalized praise's backend is enabled",
 			"value": true
