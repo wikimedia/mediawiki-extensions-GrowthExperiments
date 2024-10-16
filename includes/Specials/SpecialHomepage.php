@@ -13,6 +13,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
+use GrowthExperiments\VariantHooks;
 use InvalidArgumentException;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
@@ -224,7 +225,10 @@ class SpecialHomepage extends SpecialPage {
 			),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getConfig() ),
 			'community-updates' => Util::useCommunityConfiguration() &&
-				$this->getConfig()->get( 'GECommunityUpdatesEnabled' ),
+				$this->getConfig()->get( 'GECommunityUpdatesEnabled' ) &&
+				$this->experimentUserManager->isUserInVariant( $this->getUser(), [
+					VariantHooks::VARIANT_COMMUNITY_UPDATES_MODULE
+				] ),
 			'impact' => true,
 			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
 				$mentorshipState === MentorManager::MENTORSHIP_ENABLED,
