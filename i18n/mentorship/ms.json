@@ -195,7 +195,7 @@
 	"growthexperiments-manage-mentors-edit": "Sunting",
 	"growthexperiments-manage-mentors-edit-pretext": "{{GENDER:|Anda}} akan menyunting pilihan berkaitan sesi bimbingan untuk {{GENDER:$1|mentor}} bernama [[User:$1|$1]].",
 	"growthexperiments-manage-mentors-edit-intro-msg": "Mesej pengenalan",
-	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Adakah secara automatik diberi kepada pendatang baru?",
+	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Adakah secara automatik diberi kepada pengguna baharu?",
 	"growthexperiments-manage-mentors-edit-weight": "Bilangan pengguna baru diagihkan",
 	"growthexperiments-manage-mentors-edit-is-away": "Adakah tidak aktif?",
 	"growthexperiments-manage-mentors-edit-is-away-blocked": "Mentor \"$1\" sedang disekat dan status ketidakhadiran mereka tidak boleh ditukar.",
