@@ -18,12 +18,12 @@
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Alǵıslawlar qalay islewi haqqında kóbirek maǵlıwmatlar",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Eń uzın sızıq haqqında kóbirek maǵlıwmatlar",
 	"growthexperiments-homepage-impact-subheader-text": "Eń kóp kórilgen ({{GENDER:|siziń}} redaktorlawıńızdan berli)",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Siz}} kirgizgen barlıq ózgerislerdi kóriw ($1)",
 	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks Taza úyrenshiklerge tapsırma]",
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Filtrdi jańalaw",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Siltemeler qosıw adamlarǵa tezirek úyreniwge járdem beredi.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Mısal gáp",
 	"growthexperiments-homepage-special-contribute-title": "Usınıs etilgen ózgertiwler",
 	"growthexperiments-homepage-special-contribute-description": "Bar maqalalardı rawajlandırıw ushın olarǵa ańsat hám kishi ózgerisler kirgiziń (mısalı, silteme qosıń yamasa tekstti ózgertiń).",
-	"growthexperiments-homepage-special-contribute-cta": "Usınılǵan dúzetiwlerdi kóriw"
+	"growthexperiments-homepage-special-contribute-cta": "Usınılǵan dúzetiwlerdi kóriw",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Siz}} kirgizgen barlıq ózgerislerdi kóriw ($1)"
 }

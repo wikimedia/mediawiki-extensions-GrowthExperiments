@@ -70,8 +70,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Дадаванне надзейных крыніц і абнаўленне артыкулаў, якія састарэлі",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Стварэнне новых артыкулаў і пашырэнне кароткіх артыкулаў.",
 	"growthexperiments-homepage-suggested-edits-header": "Прапанаваныя праўкі",
-	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Ваш}} уплыў",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "Калі ласка, уключыце JavaScript для прагляду гэтага кампанента.",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ваш}} уплыў",
+	"growthexperiments-homepage-impact-no-js-fallback": "Калі ласка, уключыце JavaScript для прагляду гэтага кампанента.",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|Ваша}} нядаўняя дзейнасць ({{PLURAL:$2|апошні дзень|апошнія $2 дні|апошнія $2 дзён}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Апошняя праўка",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Лепшая серыя",
@@ -89,7 +89,6 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "{{GENDER:|Ваша}} цяперашняя самая доўгая серыя складае адзін дзень, які {{GENDER:|вы}} дасягнулі $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Найпрагляданае (пасля {{GENDER:|вашых}} правак)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Колькасць праглядаў старонак пасля {{GENDER:$1|вашай}} праўкі (за апошнія 60 дзён):",
-	"growthexperiments-homepage-impact-contributions-link": "Праглядзець усе {{GENDER:$2|вашыя}} праўкі ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Вы}} яшчэ не стваралі і не правілі ніводнага артыкула.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Гэтае акенца пакажа, колькі разоў людзі праглядалі артыкулы, створаныя або змененыя {{GENDER:|вамі}}.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> правак артыкулаў",
@@ -544,5 +543,5 @@
 	"growthexperiments-homepage-special-contribute-title": "Прапанаваныя праўкі",
 	"growthexperiments-homepage-special-contribute-description": "Унясіце невялікія і лёгкія змены (напрыклад, дадайце спасылку або невялікую папраўку), каб палепшыць існыя артыкулы.",
 	"growthexperiments-homepage-special-contribute-cta": "Паглядзець прапанаваныя праўкі",
-	"growthexperiments-homepage-newimpact-contributions-link": "Праглядзець усе праўкі"
+	"growthexperiments-homepage-impact-contributions-link": "Праглядзець усе {{GENDER:$2|вашыя}} праўкі ($1)"
 }

@@ -66,12 +66,12 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "విశ్వసనీయ మూలాలను చేర్చడం, కాలదోషం పట్టిన వ్యాసాలను తాజాకరించడం",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "కొత్త వ్యాసాలను సృష్టించడం, చిన్న వ్యాసాలను విస్తరించడం",
 	"growthexperiments-homepage-suggested-edits-header": "దిద్దుబాటు సూచనలు",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|మీ}} ప్రభావం",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|మీ}} ఇటీవలి కార్యకలాపం",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "ఉత్తమ ధార : $1",
 	"growthexperiments-homepage-impact-scores-edit-count": "మొత్తం దిద్దుబాట్లు",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:|మీరు}} దిద్దుబాటు చేసిన వ్యాసాలను ప్రజలు చూస్తున్నారు!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|మీరు}} దిద్దుబాటు చేసాక (60 రోజుల్లోపు) వచ్చిన పేజీవ్యూలు:",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|మీరు}} <strong>$1</strong> {{PLURAL:$1|దిద్దుబాటు|దిద్దుబాట్లు}} చేసారు (అన్నీ చూడండి)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|మీరు}} వ్యాసాలేమీ సృష్టించలేదు, దిద్దుబాటూ చెయ్యలేదు.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "{{GENDER:|మీరు}} సృష్టించిన, దిద్దుబాటు చేసిన వ్యాసాలను ప్రజలు ఎన్నిసార్లు చూసారో ఇక్కడ చూడవచ్చు.",
 	"growthexperiments-homepage-impact-body-no-edit": "వ్యాసాల్లో <strong>0</strong> దిద్దుబాట్లు",
@@ -516,5 +516,6 @@
 	"growthexperiments-homepage-special-contribute-title": "దిద్దుబాటు సూచనలు",
 	"growthexperiments-homepage-special-contribute-description": "వ్యాసాల్లో చిన్నవి, తేలికైన మార్పులు చెయ్యండి (ఉదాహరణకు ఒక లింకును చేర్చడం, భాషా దోషాలను సవరించడం వంటివి)",
 	"growthexperiments-homepage-special-contribute-cta": "దిద్దుబాటు సూచనలను చూడండి",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|మీరు}} <strong>$1</strong> {{PLURAL:$1|దిద్దుబాటు|దిద్దుబాట్లు}} చేసారు (అన్నీ చూడండి)",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "సూచించిన సవరణ చేయండి"
 }

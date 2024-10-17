@@ -69,13 +69,13 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Tilføjelse af pålidelige kilder og ajourføring af artikler der er forældede.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Opret nye artikler og udvid korte artikler.",
 	"growthexperiments-homepage-suggested-edits-header": "Foreslåede redigeringer",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påvirkning",
 	"growthexperiments-homepage-impact-scores-edit-count": "Redigeringer i alt",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Tak modtaget",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Oplysninger om, hvordan tak fungerer",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Oplysninger om, hvordan streaken udregnes",
 	"growthexperiments-homepage-impact-subheader-text": "Folk læser de artikler {{GENDER:|du}} har redigeret!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Antal visninger siden {{GENDER:$1|du}} redigerede (de sidste 60 dage):",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Du har}} foretaget <strong>$1</strong> {{PLURAL:$1|redigering|redigeringer}} (se alle)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Du}} har endnu ikke oprettet eller redigeret nogle artikler.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Dette område vil vise hvor mange gange folk har læst de artikler, {{GENDER:|du}} har oprettet eller redigeret.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> redigeringer af artikler",
@@ -336,5 +336,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Billedet er ikke relevant",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Billedet er stødende",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Jeg kan ikke læse sproget",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Modtaget"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Modtaget",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Du har}} foretaget <strong>$1</strong> {{PLURAL:$1|redigering|redigeringer}} (se alle)"
 }

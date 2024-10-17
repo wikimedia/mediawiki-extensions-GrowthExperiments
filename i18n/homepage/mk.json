@@ -39,7 +39,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Тешко",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Создавајте нови статии и проширувајте ги кратките статии.",
 	"growthexperiments-homepage-suggested-edits-header": "Предложени уредувања",
-	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Вашето}} влијание",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Вашето}} влијание",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Последно уредување: $1",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Уредување|Уредувања}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "Вкупно уредувања",
@@ -47,7 +47,6 @@
 	"growthexperiments-homepage-impact-subheader-text": "Најпосетени (по {{GENDER:|вашето}} уредување)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Најпосетени (по направеното уредување)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Посети откако {{GENDER:$1|уредивте}} (изминативе 60 дена):",
-	"growthexperiments-homepage-impact-contributions-link": "Погледајте ги {{GENDER:$2|вашите}} уредувања ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Засега {{GENDER:$1|немате}} создадено или уредено ниедна статија.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> уредувања на статии",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|уредување|уредувања}} на други видови статии (погл. сите)",
@@ -202,5 +201,6 @@
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Поднеси…",
 	"growthexperiments-structuredtask-editmode-selection-label": "Смени уредник",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Предлози",
-	"growthexperiments-structuredtask-editmode-selection-visual": "Нагледно уредување"
+	"growthexperiments-structuredtask-editmode-selection-visual": "Нагледно уредување",
+	"growthexperiments-homepage-impact-contributions-link": "Погледајте ги {{GENDER:$2|вашите}} уредувања ($1)"
 }

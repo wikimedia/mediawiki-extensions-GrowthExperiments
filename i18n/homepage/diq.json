@@ -26,6 +26,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Rehat",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Miyanên",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Huşk",
+	"growthexperiments-homepage-impact-header": "Tharba {{GENDER:$1|şıma}}",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Şo be meqale",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Fahm kerd",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}",

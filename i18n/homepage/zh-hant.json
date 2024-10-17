@@ -85,8 +85,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "新增可靠的來源，並更新內容過時的條目。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "建立新條目並擴充內容短小的條目。",
 	"growthexperiments-homepage-suggested-edits-header": "建議編輯",
-	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|您的}}影響",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "請啟用 JavaScript 來檢視此組件。",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|您的}}影響",
+	"growthexperiments-homepage-impact-no-js-fallback": "請啟用 JavaScript 來檢視此組件。",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|您的}}近期活動（過去$2{{PLURAL:$2|天}}）",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "最近活動（過去$1{{PLURAL:$1|天}}）",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|次編輯}}",
@@ -97,7 +97,6 @@
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}}由編者社群建立。每位貢獻者都可能因為自己的編輯而收到他人的感謝。收到的感謝數顯示於此。只會顯示最近$1編輯的感謝數據。",
 	"growthexperiments-homepage-impact-subheader-text": "瀏覽次數最多（自{{GENDER:|你}}編輯後）",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|您}}做出編輯後的檢視數（過去 60 天）：",
-	"growthexperiments-homepage-impact-contributions-link": "檢視{{GENDER:$2|您的}}所有編輯（$1）",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|您}}尚未建立或編輯過任何條目。",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "此區域會顯示出有多少人觀看過{{GENDER:|您}}曾建立或編輯到的條目。",
 	"growthexperiments-homepage-impact-body-no-edit": "條目 <strong>0</strong> 次編輯",
@@ -551,7 +550,7 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "退出導師計畫",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "如果{{GENDER:|您}}不希望現在就有一名特定的導師分配給{{GENDER:|您}}，請選擇下面的按鈕退出。若{{GENDER:|您}}改變了主意，{{GENDER:|您}}可隨時重新獲得一名新的導師。",
 	"growthexperiments-homepage-mentorship-about-done": "完成",
-	"growthexperiments-homepage-newimpact-contributions-link": "檢視全部編輯",
+	"growthexperiments-homepage-impact-contributions-link": "檢視{{GENDER:$2|您的}}所有編輯（$1）",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|您已經}}進行了$3個{{PLURAL:$3|建議編輯}}，繼續學習更多新技能。",
 	"growthexperiments-homepage-community-updates-header": "社群更新"
 }

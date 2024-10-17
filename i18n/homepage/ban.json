@@ -59,8 +59,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Nambahin sumber kapercaya lan nganyarin suratan lama.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Ngaé suratan anyar lan jimbarang suratan éndép",
 	"growthexperiments-homepage-suggested-edits-header": "Uahan kanikayang",
-	"growthexperiments-homepage-new-impact-header": "Krana {{GENDER:$1|ragané}}",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "Tulungin idupang JavaScript anggo ningalin komponén niki.",
+	"growthexperiments-homepage-impact-header": "Krana {{GENDER:$1|ragané}}",
+	"growthexperiments-homepage-impact-no-js-fallback": "Tulungin idupang JavaScript anggo ningalin komponén niki.",
 	"growthexperiments-homepage-impact-recent-activity-title": "Gegaén {{GENDER:|ragané}} mangkin ($2 {{PLURAL:$2|dina}} ungkur)",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Parilaksana mangkin ($1 {{PLURAL:$1|dina}} siduri)",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Siduri kauah",
@@ -78,7 +78,6 @@
 	"growthexperiments-homepage-impact-subheader-text": "Paling katingalin (uli {{GENDER:|ragané}} uah)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Liu kadeleng (uli uahan kagaé)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Liu ningalin uli {{GENDER:$1|ragané}} nguahin (60 dina siduri)",
-	"growthexperiments-homepage-impact-contributions-link": "Tingalin makejang {{GENDER:$2|ragané}} uah ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Ragané}} dereng ngaé utawi nguah suratan napi.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Wagian niki nujuang ping kuda suratan ané {{GENDER:|ragané}} gaé utawi uah tingalin.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> uahan di suratan",
@@ -358,5 +357,5 @@
 	"growthexperiments-homepage-special-contribute-title": "Uahan kanikayang",
 	"growthexperiments-homepage-special-contribute-description": "Ngae pagentosan cenik lan aluh (e.g., nambahin apranala utawi salinuah) antuk ngabecikang suratan sané wénten.",
 	"growthexperiments-homepage-special-contribute-cta": "Tingalin panikayan pauahan",
-	"growthexperiments-homepage-newimpact-contributions-link": "Tingalin makejang uahan"
+	"growthexperiments-homepage-impact-contributions-link": "Tingalin makejang {{GENDER:$2|ragané}} uah ($1)"
 }

@@ -44,8 +44,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Usaldusväärsete allikate lisamine ja ajakohastamist vajavate artiklite uuendamine.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Uute artiklite alustamine ja lühiartiklite täiendamine.",
 	"growthexperiments-homepage-suggested-edits-header": "Soovitatud muudatused",
-	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Sinu}} mõju",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "Palun luba JavaScript, et näha seda komponenti.",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Sinu}} mõju",
+	"growthexperiments-homepage-impact-no-js-fallback": "Palun luba JavaScript, et näha seda komponenti.",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|Sinu}} viimased toimingud ({{PLURAL:$2|viimane üks päev|viimased $2 päeva}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Viimased toimingud ({{PLURAL:$1|viimane üks päev|viimased $1 päeva}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Viimane muudatus",
@@ -64,7 +64,6 @@
 	"growthexperiments-homepage-impact-subheader-text": "Enim vaadatud (pärast {{GENDER:|sinu}} muudatust)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Enim vaadatud (pärast muudatuse tegemist)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Vaatamisi {{GENDER:$1|sinu}} muudatuste järel (viimased 60 päeva):",
-	"growthexperiments-homepage-impact-contributions-link": "Vaata kõiki {{GENDER:$2|enda}} muudatusi ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Sa}} pole veel alustanud ega muutnud ühtegi artiklit.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Siin näed, mitu korda on inimesed vaadanud artikleid, mille {{GENDER:|oled}} alustanud või mida oled muutnud.",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Mine artiklisse",
@@ -472,7 +471,7 @@
 	"growthexperiments-homepage-special-contribute-title": "Soovitatud muudatused",
 	"growthexperiments-homepage-special-contribute-description": "Tee väikseid ja lihtsaid muudatusi, näiteks lisa link või keeletoimeta, et täiustada olemasolevaid artikleid.",
 	"growthexperiments-homepage-special-contribute-cta": "Vaata soovitatud muudatusi",
-	"growthexperiments-homepage-newimpact-contributions-link": "Vaata kõiki muudatusi",
+	"growthexperiments-homepage-impact-contributions-link": "Vaata kõiki {{GENDER:$2|enda}} muudatusi ($1)",
 	"echo-category-title-ge-newcomer": "Growthi funktsioonid",
 	"echo-pref-tooltip-ge-newcomer": "Teavita mind uue kasutaja ülesannetest ja teistest funktsioonidest, mis on koostatud, et aidata uusi kasutajaid."
 }

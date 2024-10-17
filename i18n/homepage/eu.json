@@ -56,9 +56,9 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Gaurkotu gabe dauden artikuluak hobetu eta iturri fidagarriak gehitu",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Artikulu berriak sortu eta artikulu laburrak hedatu.",
 	"growthexperiments-homepage-suggested-edits-header": "Gomendatutako aldaketak",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Zure}} inpaktua",
 	"growthexperiments-homepage-impact-subheader-text": "Jendea {{GENDER:|zuk}} egindako artikuluak ikusten ari da!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Azken 60 egunetan {{GENDER:$1|zuk}} aldatutakoek izandako ikustaldiak:",
-	"growthexperiments-homepage-impact-contributions-link": "{{PLURAL:$1|Aldaketa <strong>$1</strong> egin {{GENDER:$2|duzu}}|<strong>$1</strong> aldaketa egin {{GENDER:$2|dituzu}}}}",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Ez {{GENDER:$1|duzu}} oraindik artikulurik sortu edo aldatu.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Eremu honetan ikus dezakezu zenbat aldiz ikusi duten pertsonek {{GENDER:|zuk}} sortu edo aldatutako artikuluak.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> aldaketa artikuluetan",
@@ -256,5 +256,6 @@
 	"growthexperiments-notification-learn-more": "Ikasi gehiago {{GENDER:$1|zure}} {{GENDER:$2|mentoreari}} buruz",
 	"right-setmentor": "Erabiltzailearen mentorea ezarri",
 	"action-setmentor": "erabiltzailearen mentorea ezarri",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Proposatutako aldaketa honi buruz gehiago jakin"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Proposatutako aldaketa honi buruz gehiago jakin",
+	"growthexperiments-homepage-impact-contributions-link": "{{PLURAL:$1|Aldaketa <strong>$1</strong> egin {{GENDER:$2|duzu}}|<strong>$1</strong> aldaketa egin {{GENDER:$2|dituzu}}}}"
 }

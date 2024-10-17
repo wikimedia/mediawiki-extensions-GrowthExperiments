@@ -64,8 +64,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "დაამატეთ სანდო წყაროები და განაახლეთ მოძველებული სტატიების განახლება",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "შექმენით ახალი სტატიები და განავრცეთ მოკლეები.",
 	"growthexperiments-homepage-suggested-edits-header": "შემოთავაზებული რედაქტირებები",
-	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|თქვენი}} რედაქტირებების ზეგავლენა",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "გთხოვთ, ამ კომპონენტის სანახავად ჩართოთ JavaScript.",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|თქვენი}} რედაქტირებების ზეგავლენა",
+	"growthexperiments-homepage-impact-no-js-fallback": "გთხოვთ, ამ კომპონენტის სანახავად ჩართოთ JavaScript.",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|თქვენი}} ბოლო აქტივობა (ბოლო $2 {{PLURAL:$2|დღე}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "ბოლო აქტივობა (ბოლო $1 {{PLURAL:$1|დღე}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "ბოლო რედაქტირება",
@@ -92,7 +92,6 @@
 	"growthexperiments-homepage-impact-subheader-text": "ყველაზე ნახვადები ({{GENDER:|თქვენი}} რედაქტირების შემდეგ)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "ყველაზე ნახვადები (რედაქტირების შემდეგ)",
 	"growthexperiments-homepage-impact-subheader-subtext": "გვერდის ნახვები {{GENDER:$1|თქვენი}} რედაქტირებების შემდეგ (ბოლო 60 დღე):",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|თქვენი}} ყველა რედაქტირების ($1) ნახვა",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "ჯერჯერობით {{GENDER:$1|თქვენ}} არცერთი სტატია არ შეგიქმნიათ ან დაგირედაქტირებიათ.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "აქ მოცემული იქნება ინფორმაცია, რამდენად ხშირად კითხულობს ხალხი {{GENDER:|თქვენ}} მიერ შექმნილ ან რედაქტირებულ სტატიებს.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> რედაქტირება სტატიებში",
@@ -553,5 +552,5 @@
 	"growthexperiments-homepage-special-contribute-title": "შემოთავაზებული რედაქტირებები",
 	"growthexperiments-homepage-special-contribute-description": "მცირე და ადვილი რედაქტირებების განხორციელება (მაგ., ბმულის დამატება ან კორექტურა) არსებული სტატიების გასაუმჯობესებლად.",
 	"growthexperiments-homepage-special-contribute-cta": "შემოთავაზებული რედაქტირებების ნახვა",
-	"growthexperiments-homepage-newimpact-contributions-link": "ყველა რედაქტირების ნახვა"
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|თქვენი}} ყველა რედაქტირების ($1) ნახვა"
 }

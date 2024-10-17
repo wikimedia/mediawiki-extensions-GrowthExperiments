@@ -65,13 +65,13 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Dodavanje pouzdanih izvora i ažuriranje članaka koji su zastareli",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Izradite nove članke i dopunite postojeće.",
 	"growthexperiments-homepage-suggested-edits-header": "Predložene izmene",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "Molimo omogućite JavaScript.",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Vaš}} uticaj",
+	"growthexperiments-homepage-impact-no-js-fallback": "Molimo omogućite JavaScript.",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Poslednja izmena",
 	"growthexperiments-homepage-impact-scores-edit-count": "Ukupno izmena",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Broj zahvaljivanja",
 	"growthexperiments-homepage-impact-subheader-text": "Najčitanije ({{GENDER:|od}} vaše izmene)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Prikazi otkako {{GENDER:$1|ste}} uredili (u poslednjih 60 dana):",
-	"growthexperiments-homepage-impact-contributions-link": "Objavili {{GENDER:$2|ste}} <strong>$1</strong> {{PLURAL:$1|izmenu|izmene|izmena}}",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Još {{GENDER:$1|niste}} izradili niti uredili neki članak.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "U ovoj kartici biće prikazano koliko puta su ljudi pročitali članke koje {{GENDER:|ste}} izradili ili uredili.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> izmena članaka",
@@ -360,5 +360,5 @@
 	"growthexperiments-homepage-mentorship-about-done": "Gotovo",
 	"growthexperiments-homepage-special-contribute-title": "Predložene izmene",
 	"growthexperiments-homepage-special-contribute-cta": "Prikaži predložene izmene",
-	"growthexperiments-homepage-newimpact-contributions-link": "Prikaži sve izmene"
+	"growthexperiments-homepage-impact-contributions-link": "Objavili {{GENDER:$2|ste}} <strong>$1</strong> {{PLURAL:$1|izmenu|izmene|izmena}}"
 }

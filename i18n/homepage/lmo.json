@@ -52,10 +52,9 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Sgiontà di font credibil e atualizà di vos andeghere",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Crea ona nowuva vos e sgrandiss i vos curte.",
 	"growthexperiments-homepage-suggested-edits-header": "Modifeghe sugeride",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "Dàgh l'abilitazzion al Javascript per vedé quellc oment chì",
+	"growthexperiments-homepage-impact-no-js-fallback": "Dàgh l'abilitazzion al Javascript per vedé quellc oment chì",
 	"growthexperiments-homepage-impact-subheader-text": "La sgent l'è 'dree a vardà i vos che {{GENDER:|t'}} hee modifegà!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Vardade del moment che {{GENDER:$1|t'}} hee modifegad (darer 60 dì):",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|T'hee}} fad <strong>$1</strong> {{PLURAL:$1|modifega|modifeghe}} (vardai tute)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|T'hee}} nan'mò cread o modifegad i vos.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Quell sit chì el te farà vedé quante volt i persone i hann vardad i vos che {{GENDER:|'t'hee}} cread o modifegad.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> modifeghe ai vos",
@@ -140,5 +139,6 @@
 	"growthexperiments-addimage-caption-info-dialog-guidelines-describe": "Dersciv l'imagin de manera che 'l sia ciar come l'è che l'è conligada a l'articol.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-review": "Varda ancamò a fond i detali de l'imagin per di informazion important de tirà dent.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-neutral": "Te gh'heet de vesser neutral donca evtà di coment compagn de “bell”, “brut”, o “bell bellent”.",
-	"growthexperiments-addimage-caption-info-dialog-confirm": "Capid"
+	"growthexperiments-addimage-caption-info-dialog-confirm": "Capid",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|T'hee}} fad <strong>$1</strong> {{PLURAL:$1|modifega|modifeghe}} (vardai tute)"
 }

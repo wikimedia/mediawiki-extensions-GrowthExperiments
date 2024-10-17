@@ -63,8 +63,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Engadir fontes fiables e actualizar artigos obsoletos",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Crear novos artigos e ampliar os artigos curtos.",
 	"growthexperiments-homepage-suggested-edits-header": "Edicións suxeridas",
-	"growthexperiments-homepage-new-impact-header": "O seu impacto{{GENDER:$1|}}",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "Active JavaScript para ver este compoñente.",
+	"growthexperiments-homepage-impact-header": "O seu impacto{{GENDER:$1|}}",
+	"growthexperiments-homepage-impact-no-js-fallback": "Active JavaScript para ver este compoñente.",
 	"growthexperiments-homepage-impact-recent-activity-title": "A súa actividade recente ({{PLURAL:$2|último día|últimos $2 días}}){{GENDER:|}}",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Actividade recente ({{PLURAL:$1|último día|últimos $1 días}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Última edición",
@@ -89,7 +89,6 @@
 	"growthexperiments-homepage-impact-subheader-text": "Máis vistos (dende a súa edición){{GENDER:|}}",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Máis vistos (dende que se fixo a edición)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visualizacións dende que vostede editou (últimos 60 días):{{GENDER:$1|}}",
-	"growthexperiments-homepage-impact-contributions-link": "Ver todas as súas edicións ($1) {{GENDER:$2|}}",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Ainda non creou nin editou ningún artigo.{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Esta área mostra cantas visualizacións teñen os artigos que creou ou editou.{{GENDER:|}}",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edicións de artigos",
@@ -288,5 +287,5 @@
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Entendido",
 	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-review": "Revisa os detalles da imaxe de novo para obter información relevante para incluír.",
 	"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button": "Entendido",
-	"growthexperiments-homepage-newimpact-contributions-link": "Ver todas as edicións"
+	"growthexperiments-homepage-impact-contributions-link": "Ver todas as súas edicións ($1) {{GENDER:$2|}}"
 }

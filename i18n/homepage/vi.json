@@ -72,9 +72,9 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Thêm các nguồn đáng tin cậy và cập nhật các bài viết đã lỗi thời.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Tạo bài viết mới và mở rộng bài viết sơ khai.",
 	"growthexperiments-homepage-suggested-edits-header": "Các sửa đổi gợi ý",
+	"growthexperiments-homepage-impact-header": "Ảnh hưởng của {{GENDER:$1|bạn}}",
 	"growthexperiments-homepage-impact-subheader-text": "Mọi người đang xem các bài viết {{GENDER:|bạn}} đã sửa đổi!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Số lượng người xem trang mà {{GENDER:$1|bạn}} đã sửa đổi (60 ngày qua):",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Bạn}} vừa thực hiện <strong>$1</strong> sửa đổi (xem tất cả)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Bạn}} vẫn chưa tạo mới hay sửa đổi bài viết nào.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Khu vực này sẽ hiển thị số lần mọi người đã xem các bài viết mà {{GENDER:|bạn}} đã tạo hoặc sửa đổi.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> sửa đổi bài viết",
@@ -409,5 +409,5 @@
 	"growthexperiments-addimage-summary-summary": "Tính năng gợi ý hình ảnh: Đã thêm $1 {{PLURAL:$1|hình ảnh}}.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
-	"growthexperiments-homepage-newimpact-contributions-link": "Xem tất cả các chỉnh sửa"
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Bạn}} vừa thực hiện <strong>$1</strong> sửa đổi (xem tất cả)"
 }

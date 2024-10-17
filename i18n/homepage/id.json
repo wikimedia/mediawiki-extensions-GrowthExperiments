@@ -78,7 +78,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Menambahkan sumber tepercaya dan memperbarui artikel lama.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Membuat artikel baru dan mengembangkan artikel pendek.",
 	"growthexperiments-homepage-suggested-edits-header": "Penyuntingan yang disarankan",
-	"growthexperiments-homepage-new-impact-header": "Dampak {{GENDER:$1|Anda}}",
+	"growthexperiments-homepage-impact-header": "Dampak {{GENDER:$1|Anda}}",
 	"growthexperiments-homepage-impact-recent-activity-title": " Aktivitas terbaru  {{GENDER:|Anda}}",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Terakhir diubah",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|hari}}",
@@ -91,7 +91,6 @@
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Informasi selengkapnya tentang cara kerja terima kasih",
 	"growthexperiments-homepage-impact-subheader-text": "Orang-orang melihat artikel yang {{GENDER:|Anda}} sunting!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Jumlah tayangan sejak {{GENDER:$1|Anda}} sunting (60 hari terakhir):",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Anda}} telah membuat <strong>$1</strong> {{PLURAL:$1|suntingan}} (lihat seluruhnya)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Anda}} belum membuat atau menyunting artikel apapun.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Bagian ini menunjukkan berapa kali artikel yang {{GENDER:|Anda}} buat atau sunting dilihat.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> suntingan di artikel",
@@ -549,6 +548,6 @@
 	"growthexperiments-homepage-mentorship-about-done": "Selesai",
 	"growthexperiments-homepage-special-contribute-title": "Saranan penyuntingan",
 	"growthexperiments-homepage-special-contribute-cta": "Lihat saranan penyuntingan",
-	"growthexperiments-homepage-newimpact-contributions-link": "Lihat semua hasil edit",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Anda}} telah membuat <strong>$1</strong> {{PLURAL:$1|suntingan}} (lihat seluruhnya)",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Pelajari lebih lanjut"
 }

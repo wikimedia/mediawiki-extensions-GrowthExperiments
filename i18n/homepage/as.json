@@ -31,6 +31,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "মধ্যম",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "কঠিন",
 	"growthexperiments-homepage-suggested-edits-header": "পৰামৰ্শকৃত সম্পাদনা",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|আপোনাৰ}} প্ৰভাৱ",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:|আপুনি}} সম্পাদনা কৰা প্ৰবন্ধবোৰ আনে পঢ়িছে!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|আপুনি}} সম্পাদনা কৰাৰ পিছৰ দৰ্শন সংখ্যা (যোৱা ৬০ দিনত):",
 	"growthexperiments-homepage-impact-article-link-tooltip": "প্ৰবন্ধলৈ যাওক",

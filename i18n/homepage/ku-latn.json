@@ -55,9 +55,9 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Dema cara ewil dest bi hînbûna guhartinan {{GENDER:$1|dikî}} tê pêşniyazkirin.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Piştî te çend guhartinên hêsan {{GENDER:$1|kirin}}.",
 	"growthexperiments-homepage-suggested-edits-header": "Guhartinên pêşniyazkirî",
+	"growthexperiments-homepage-impact-header": "Bandora {{GENDER:$1|te}}",
 	"growthexperiments-homepage-impact-subheader-text": "Kesên din li gotarên ku {{GENDER:|te}} guhartine dinêrin!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Nêrînên ji roja ku {{GENDER:$1|te}} guhartiye ve (60 rojên dawîn):",
-	"growthexperiments-homepage-impact-contributions-link": "Hejmara guhartinên {{GENDER:$2|te}}: <strong>$1</strong> {{PLURAL:$1|guhartin|guhartinan}} (hemû bibîne)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Te}} hîn ti gotar çênekiriye yan jî ti tişt neguhartiye.",
 	"tag-mentorship_module_question": "Pirsa modula mentoriyê",
 	"growthexperiments-homepage-mentorship-header": "Mentor{{GENDER:$1|ê|a|ê/a}} {{GENDER:$2|te}}",
@@ -113,5 +113,6 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Hemûyan hilbijêre",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Hemûyan jê bibe",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Dewam bike",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Min fêm kir"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Min fêm kir",
+	"growthexperiments-homepage-impact-contributions-link": "Hejmara guhartinên {{GENDER:$2|te}}: <strong>$1</strong> {{PLURAL:$1|guhartin|guhartinan}} (hemû bibîne)"
 }

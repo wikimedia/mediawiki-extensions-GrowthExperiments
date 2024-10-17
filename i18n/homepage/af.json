@@ -50,7 +50,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Voeg betroubare bronne by en opdatering van artikels wat verouderd is",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Skep nuwe artikels en brei kort artikels uit.",
 	"growthexperiments-homepage-suggested-edits-header": "Voorgestelde wysigings",
-	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Jou}} impak",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Jou}} impak",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|Jou}} onlangse aktiwiteit (afgelope $2 {{PLURAL:$2|dag|dae}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Onlangse aktiwiteit (laaste $1 {{PLURAL:$1|dag|dae}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Laas gewysig",
@@ -65,7 +65,6 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Meer inligting oor die langste reeks",
 	"growthexperiments-homepage-impact-subheader-text": "Meeste bladtrekke (sedert {{GENDER:|jou}} wysiging)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Mees besoek (sedert wysiging gemaak is)",
-	"growthexperiments-homepage-impact-contributions-link": "Sien al {{GENDER:$2|jou}} wysingings ($1)",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Hierdie area sal wys hoeveel keer mense die artikels wat {{GENDER:|jy}} geskep of geredigeer het, bekyk het.",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Gaan na artikel",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Bladtrekke is nog nie bereken nie. Kom kyk môre weer!",
@@ -300,6 +299,6 @@
 	"growthexperiments-addimage-reason-commons": "Een van verskeie beelde geskakel aan die Wikidata item vir hierdie artikel.",
 	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-language": "Skryf in die taal van hierdie artikel: $1.",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Ek wil glad nie 'n mentor hê nie",
-	"growthexperiments-homepage-newimpact-contributions-link": "Sien alle wysigings",
+	"growthexperiments-homepage-impact-contributions-link": "Sien al {{GENDER:$2|jou}} wysingings ($1)",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Leer meer"
 }

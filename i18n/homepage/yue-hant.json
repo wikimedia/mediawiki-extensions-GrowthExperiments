@@ -35,6 +35,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "建議畀啱啱開始學改嘢嘅{{GENDER:$1|你}}。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "當{{GENDER:$1|你}}作出咗一啲容易嘅修改之後。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "當{{GENDER:$1|你}}學識咗維基百科嘅最好實踐方法嘅時候。",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|你嘅}}影響",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|次修改}}",
 	"growthexperiments-homepage-impact-scores-edit-count": "總修改數",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}}係由{{GENDER:|你}}噉嘅編者組成社羣所建立。其他有份貢獻嘅人可能會為{{GENDER:|你}}所改嘅嘢向{{GENDER:|你}}致謝，而你亦可以多謝其他人。呢項尺度只會包含{{GENDER:|你}}最近$2次修改所收到嘅謝意。",
@@ -132,6 +133,5 @@
 	"growthexperiments-addlink-context-text-label": "字",
 	"growthexperiments-addlink-rejectiondialog-action-done": "搞掂",
 	"newcomertasksinfo": "新手任務",
-	"newcomertasksinfo-table-header-task-type-id": "ID",
-	"growthexperiments-homepage-newimpact-contributions-link": "睇晒全部編輯"
+	"newcomertasksinfo-table-header-task-type-id": "ID"
 }

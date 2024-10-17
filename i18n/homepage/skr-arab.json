@@ -25,7 +25,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "درمیانہ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "کُراڑا",
 	"growthexperiments-homepage-suggested-edits-header": "مجوزہ تبدیلیاں",
-	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|تہاݙا}} اثر",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|تہاݙا}} اثر",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "چھیکڑی تبدیلی",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|ݙین٘ہ|ݙیہاڑے}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|تبدیلی|تبدیلیاں}}",
@@ -149,7 +149,6 @@
 	"growthexperiments-homepage-mentorship-about-done": "تھی ڳیا",
 	"growthexperiments-homepage-special-contribute-title": "مجوزہ تبدیلیاں",
 	"growthexperiments-homepage-special-contribute-cta": "مجوزہ تبدیلیاں ݙیکھو",
-	"growthexperiments-homepage-newimpact-contributions-link": "ساریاں تبدیلیاں ݙیکھو",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "ٻیا سِکھو",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "ٻیا سِکھو"
 }

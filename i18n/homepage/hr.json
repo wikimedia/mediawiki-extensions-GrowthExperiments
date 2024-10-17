@@ -66,8 +66,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Dodavanje pouzdanih izvora i uređivanje zastarjelih članaka",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Stvorite nove članke ili proširite postojeće kratke.",
 	"growthexperiments-homepage-suggested-edits-header": "Predložena uređivanja",
-	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Vaši}} doprinosi",
-	"growthexperiments-homepage-new-impact-no-js-fallback": "Da biste vidjeli ovu komponentu, molimo omogućite JavaScript.",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|}}Vaši doprinosi",
+	"growthexperiments-homepage-impact-no-js-fallback": "Da biste vidjeli ovu komponentu, molimo omogućite JavaScript.",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|Vaši}} nedavni doprinosi ({{PLURAL:$2|posljednji $2 dan|posljednja $2 dana|posljednjih $2 dana}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "posljednje uređivanje",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "uređivanja zaredom",
@@ -83,7 +83,6 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day-third-person": "Sadašnji niz dana u kojima ste uređivali zaredom sastoji se od jednoga dana, bio je to $1.",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:|}}Vaši su članci čitani!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|}}Broj čitanja otkad ste uređivali članak (do 60 dana):",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|}}Napravili ste <strong>$1</strong> {{PLURAL:$1|uređivanje|uređivanja}} (pogledajte sve)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|}}Još niste stvorili ili uredili nijedan članak.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "{{GENDER:|}}Ovaj okvir prikazivat će koliko su čitani članci koje ste stvorili ili uređivali.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> uređivanja članaka",
@@ -405,5 +404,5 @@
 	"growthexperiments-addlink-daily-task-limit-exceeded": "Dovršili ste sve današnje prijedloge za poveznice.\n\nPrilagodite {{GENDER:|svoje}} razine težine kako biste vidjeli druge vrste uređivanja ili se vratite sutra po još prijedloga za poveznice.",
 	"growthexperiments-homepage-mentorship-optin-text": "Ako imate pitanja o uređivanju, sustav Vam može dodijeliti mentora koji će Vam pomagati.",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Pritisnite donju tipku ako želite napustiti sustav mentorstva. Poslije mu se uvijek možete vratiti.",
-	"growthexperiments-homepage-newimpact-contributions-link": "Pogledajte sva uređivanja"
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|}}Napravili ste <strong>$1</strong> {{PLURAL:$1|uređivanje|uređivanja}} (pogledajte sve)"
 }
