@@ -339,7 +339,7 @@
 	"growthexperiments-notification-learn-more": "Сазнајте више {{GENDER:$1|о}} {{GENDER:$2|новом ментору|новој менторки}}",
 	"right-setmentor": "постављање ментора корисницима",
 	"action-setmentor": "постављате ментора корисницима",
-	"right-managementors": "Уређивање списка ментора",
+	"right-managementors": "уређивање списка ментора",
 	"action-managementors": "уређујете списак ментора",
 	"right-enrollasmentor": "бити ментор",
 	"action-enrollasmentor": "будете ментор",
