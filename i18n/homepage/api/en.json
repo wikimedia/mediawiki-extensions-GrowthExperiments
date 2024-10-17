@@ -20,5 +20,9 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Title of the article the image recommendation task is for",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "The unprefixed filename for the image recommendation, e.g. <kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "The title of the section the image recommendation is for, e.g. <kbd>History</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "The 1-based index of the section the image recommendation is for, e.g. <kbd>3</kbd>"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "The 1-based index of the section the image recommendation is for, e.g. <kbd>3</kbd>",
+	"apihelp-query+linkrecommendations-summary": "Retrieve link recommendations for a specific page",
+	"apihelp-query+linkrecommendations-example-1": "Get link recommendations for page with ID 123",
+	"apihelp-query+linkrecommendations-example-2": "Get up to 5 link recommendations for page with ID 456",
+	"apihelp-query+linkrecommendations-param-pageid": "The page ID for which to retrieve link recommendations."
 }

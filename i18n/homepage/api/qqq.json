@@ -22,5 +22,9 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "{{doc-apihelp-param|growthinvalidateimagerecommendation|title}}",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "{{doc-apihelp-param|growthinvalidateimagerecommendation|filename}}",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "{{doc-apihelp-param|growthinvalidateimagerecommendation|sectiontitle}}",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "{{doc-apihelp-param|growthinvalidateimagerecommendation|sectionnumber}}"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "{{doc-apihelp-param|growthinvalidateimagerecommendation|sectionnumber}}",
+	"apihelp-query+linkrecommendations-summary": "{{doc-apihelp-summary|query+linkrecommendations}}",
+	"apihelp-query+linkrecommendations-example-1": "{{doc-apihelp-example|query+linkrecommendations}}",
+	"apihelp-query+linkrecommendations-example-2": "{{doc-apihelp-example|query+linkrecommendations}}",
+	"apihelp-query+linkrecommendations-param-pageid": "{{doc-apihelp-param|query+linkrecommendations|pageid}}"
 }
