@@ -3,7 +3,6 @@
 
 namespace GrowthExperiments;
 
-use ChangeTags;
 use CirrusSearch\Search\CirrusIndexField;
 use CirrusSearch\Search\Rescore\BoostFunctionBuilder;
 use CirrusSearch\Search\SearchContext;
@@ -1637,7 +1636,7 @@ class HomepageHooks implements
 		if ( !$revId ) {
 			return;
 		}
-		$tags = ChangeTags::getTags(
+		$tags = MediaWikiServices::getInstance()->getChangeTagsStore()->getTags(
 			$this->lb->getConnection( DB_REPLICA ),
 			null,
 			$revId

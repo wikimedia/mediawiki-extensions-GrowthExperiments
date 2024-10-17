@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\WikiConfigException;
 use IDBAccessObject;
+use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Page\PageProps;
@@ -37,6 +38,7 @@ class LinkRecommendationUpdater {
 	private NameTableStore $changeDefNameTableStore;
 	private PageProps $pageProps;
 	private ConfigurationLoader $configurationLoader;
+	private ChangeTagsStore $changeTagsStore;
 	/**
 	 * @var callable returning {@link \CirrusSearch\WeightedTagsUpdater}
 	 */
@@ -50,6 +52,7 @@ class LinkRecommendationUpdater {
 	 * @param RevisionStore $revisionStore
 	 * @param NameTableStore $changeDefNameTableStore
 	 * @param PageProps $pageProps
+	 * @param ChangeTagsStore $changeTagsStore
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param callable(): \CirrusSearch\WeightedTagsUpdater $weightedTagsUpdaterProvider
 	 * @param LinkRecommendationProvider $linkRecommendationProvider Note that this needs to be
@@ -61,6 +64,7 @@ class LinkRecommendationUpdater {
 		RevisionStore $revisionStore,
 		NameTableStore $changeDefNameTableStore,
 		PageProps $pageProps,
+		ChangeTagsStore $changeTagsStore,
 		ConfigurationLoader $configurationLoader,
 		callable $weightedTagsUpdaterProvider,
 		LinkRecommendationProvider $linkRecommendationProvider,
@@ -70,6 +74,8 @@ class LinkRecommendationUpdater {
 		$this->revisionStore = $revisionStore;
 		$this->changeDefNameTableStore = $changeDefNameTableStore;
 		$this->pageProps = $pageProps;
+		$this->changeTagsStore = $changeTagsStore;
+
 		$this->configurationLoader = $configurationLoader;
 		$this->weightedTagsUpdaterProvider = $weightedTagsUpdaterProvider;
 		$this->linkRecommendationStore = $linkRecommendationStore;
@@ -196,7 +202,7 @@ class LinkRecommendationUpdater {
 
 		// 5. exclude pages where the last edit is a link recommendation edit or its revert.
 		$dbr = $this->connectionProvider->getReplicaDatabase();
-		$tags = ChangeTags::getTagsWithData( $dbr, null, $revision->getId() );
+		$tags = $this->changeTagsStore->getTagsWithData( $dbr, null, $revision->getId() );
 		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
 			return $this->failure( 'last edit is a link recommendation' );
 		}

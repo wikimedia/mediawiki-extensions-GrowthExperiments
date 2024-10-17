@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\Rest\Handler\NewcomerTaskCompleteHandler;
+use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Rest\HttpException;
@@ -199,6 +200,7 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 			$revisionLookup ?? $this->createMock( RevisionLookup::class ),
 			$this->createMock( IConnectionProvider::class ),
 			$userIdentityUtils,
+			$this->createMock( ChangeTagsStore::class ),
 			new HashConfig( $config ),
 			$user
 		);

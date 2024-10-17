@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ChangeTags;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
@@ -23,7 +22,9 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 	public function testGetUserImpact_empty() {
 		// This is a lazy way of ensuring that the tag exists. Revision 1 is the main page,
 		// created by the installer.
-		ChangeTags::addTags( TemplateBasedTaskTypeHandler::NEWCOMER_TASK_COPYEDIT_TAG, null, 1 );
+		$this->getServiceContainer()->getChangeTagsStore()->addTags(
+			TemplateBasedTaskTypeHandler::NEWCOMER_TASK_COPYEDIT_TAG, null, 1
+		);
 
 		$userIdentity = $this->getMutableTestUser()->getUserIdentity();
 		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
@@ -65,7 +66,9 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$status->merge( $this->editPage( 'Foo', 'next-day test edit', '', NS_MAIN, $user ) );
 		$this->assertStatusGood( $status );
 		$newcomerTaskRevision = $status->getValue()['revision-record']->getId();
-		ChangeTags::addTags( TemplateBasedTaskTypeHandler::NEWCOMER_TASK_COPYEDIT_TAG, null, $newcomerTaskRevision );
+		$this->getServiceContainer()->getChangeTagsStore()->addTags(
+			TemplateBasedTaskTypeHandler::NEWCOMER_TASK_COPYEDIT_TAG, null, $newcomerTaskRevision
+		);
 
 		ConvertibleTimestamp::setFakeTime( '20221002130000' );
 		$thanker = $this->getTestUser()->getUser();
