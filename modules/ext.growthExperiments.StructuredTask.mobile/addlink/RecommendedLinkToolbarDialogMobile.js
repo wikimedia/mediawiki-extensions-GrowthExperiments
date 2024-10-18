@@ -130,9 +130,6 @@ RecommendedLinkToolbarDialogMobile.prototype.setupLabelPreview = function () {
 	);
 	this.$labelPreviewTextContainer = this.setUpAnimationContainer( this.$labelPreviewText );
 	this.$labelPreview.append( [
-		$( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-labelPreview-label' ).text(
-			mw.message( 'growthexperiments-addlink-context-text-label' ).text()
-		),
 		this.$labelPreviewTextContainer
 	] );
 };

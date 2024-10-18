@@ -400,7 +400,6 @@
 	"growthexperiments-addlink-notinstore": "Link suggestion not found for \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Tried to submit link suggestion reviews for revision \"$1\" which has already been reviewed.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "Text",
 	"growthexperiments-addlink-context-intro": "Should this link to the following article?",
 	"growthexperiments-addlink-context-button-accept": "Yes",
 	"growthexperiments-addlink-context-button-reject": "No",
