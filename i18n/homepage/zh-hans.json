@@ -615,7 +615,7 @@
 	"growthexperiments-homepage-special-contribute-title": "编辑建议",
 	"growthexperiments-homepage-special-contribute-description": "提交一些微小且简易的更改（例如添加链接或编修）来改善现有的条目。",
 	"growthexperiments-homepage-special-contribute-cta": "查看编辑建议",
-	"growthexperiments-homepage-impact-contributions-link": "查看{{GENDER:$2|您的}}所有编辑（$1）",
+	"growthexperiments-homepage-impact-contributions-link": "查看所有编辑",
 	"growthexperiments-levelingup-getstarted-notification-header": "试试建议的编辑，开始构建{{GENDER:$2|您的}}编辑技能",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "尝试编辑建议",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "了解更多",

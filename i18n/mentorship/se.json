@@ -174,7 +174,7 @@
 	"growthexperiments-manage-mentors-pretext-regular": "Hálddašeaddjit sáhttet sihkkut fáddariid mat rihkkot searvevuođa njuolggadusaid dahje válddahusaid. Sii sáhttet maid rievdadit fáddarheivehusaid, nugo omd. sin oahpistandieđuid.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "Fáddariid listu vurkejuvvo [[$1|MediaWiki-nammagomuvuhtii]], oktan historihkain.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Mana [[Special:EnrollAsMentor]] dieđihan dihte iežat fáttarin.",
-	"growthexperiments-manage-mentors-error-no-such-user": "Meattáhus: Ii gávdno oktage geavaheaddji $1 ID:iin. Dát lea doaivumis siskkáldas meattáhus.",
+	"growthexperiments-manage-mentors-error-no-such-user": "Meattáhus: Ii gávdno oktage geavaheaddji $1 ID:iin. Dát lea jáhkkimis siskkáldas meattáhus.",
 	"growthexperiments-manage-mentors-auto-assigned": "Automáhtalaččat juhkkojuvvon fáddarat",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Ođđa geavaheaddjidovddaldagat juhkkojuvvojit soaittáhagas dáid fáddariidda.",
 	"growthexperiments-manage-mentors-manually-assigned": "Manuálalaččat juhkkojuvvon fáddarat",

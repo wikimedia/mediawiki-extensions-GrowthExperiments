@@ -587,7 +587,7 @@
 	"growthexperiments-homepage-mentorship-about-done": "Готово",
 	"growthexperiments-homepage-special-contribute-title": "Предлагаемые правки",
 	"growthexperiments-homepage-special-contribute-cta": "Посмотреть предлагаемые правки",
-	"growthexperiments-homepage-impact-contributions-link": "Посмотреть все {{GENDER:$2|ваши}} правки ($1)",
+	"growthexperiments-homepage-impact-contributions-link": "Посмотреть все правки",
 	"growthexperiments-levelingup-getstarted-notification-header": "Попробуйте предложенное изменение и начните развивать  {{GENDER:$2|свои}} навыки редактирования",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Попробуйте предлагаемые правки",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Узнать больше",
