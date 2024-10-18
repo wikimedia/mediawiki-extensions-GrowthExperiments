@@ -9,6 +9,7 @@ use MediaWiki\User\UserIdentity;
 
 class ManageMentorsRemoveMentor extends ManageMentorsAbstractForm {
 
+	private UserIdentity $mentorUser;
 	private MentorRemover $mentorRemover;
 
 	/**
@@ -21,8 +22,8 @@ class ManageMentorsRemoveMentor extends ManageMentorsAbstractForm {
 		UserIdentity $mentorUser,
 		IContextSource $context
 	) {
+		$this->mentorUser = $mentorUser;
 		parent::__construct(
-			$mentorUser,
 			$context,
 			'growthexperiments-manage-mentors-'
 		);

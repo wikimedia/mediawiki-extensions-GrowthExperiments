@@ -9,13 +9,13 @@ use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm;
+use GrowthExperiments\Specials\Forms\ManageMentorsAddMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsEditMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
 use GrowthExperiments\Util;
 use LogicException;
 use MediaWiki\Config\Config;
 use MediaWiki\Html\Html;
-use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\Linker;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserEditTracker;
@@ -340,15 +340,22 @@ class SpecialManageMentors extends SpecialPage {
 
 	/**
 	 * @param string $action
-	 * @param UserIdentity $mentorUser
-	 * @return HTMLForm|null
+	 * @param UserIdentity|null $mentorUser
+	 * @return ManageMentorsAbstractForm|null
 	 */
-	private function getFormByAction( string $action, UserIdentity $mentorUser ): ?HTMLForm {
+	private function getFormByAction( string $action, ?UserIdentity $mentorUser ): ?ManageMentorsAbstractForm {
 		switch ( $action ) {
 			case 'remove-mentor':
 				return new ManageMentorsRemoveMentor(
 					$this->mentorRemover,
 					$mentorUser,
+					$this->getContext()
+				);
+			case 'add-mentor':
+				return new ManageMentorsAddMentor(
+					$this->userIdentityLookup,
+					$this->mentorProvider,
+					$this->mentorWriter,
 					$this->getContext()
 				);
 			case 'edit-mentor':
@@ -365,14 +372,19 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	private function parseSubpage( ?string $par ): ?array {
-		if ( !$par || strpos( $par, '/' ) === false ) {
+		if ( !$par ) {
 			return null;
 		}
 
-		[ $action, $data ] = explode( '/', $par, 2 );
+		$explodeResult = explode( '/', $par, 2 );
+		if ( count( $explodeResult ) === 2 ) {
+			[ $action, $data ] = $explodeResult;
+		} else {
+			[ $action, $data ] = [ $explodeResult[0], null ];
+		}
 		$mentorUserId = (int)$data;
 		if ( !$mentorUserId ) {
-			return null;
+			return [ $action, null ];
 		}
 
 		return [
@@ -392,12 +404,13 @@ class SpecialManageMentors extends SpecialPage {
 			throw new PermissionsError( 'managementors' );
 		}
 
-		if ( !$mentorUser ) {
+		if ( $mentorUser === null && $action !== 'add-mentor' ) {
+			// All forms besides add-mentor require a valid $mentorUser
 			$this->getOutput()->addHTML( Html::element(
 				'p',
 				[ 'class' => 'error' ],
 				$this->msg(
-					'growthexperiments-manage-mentors-error-no-such-user'
+					'growthexperiments-manage-mentors-error-no-such-user',
 				)->text()
 			) );
 			return true;
@@ -511,6 +524,14 @@ class SpecialManageMentors extends SpecialPage {
 				$this->msg( 'growthexperiments-manage-mentors-manually-assigned-text' )->text()
 			),
 			$this->getMentorsTable( $this->mentorProvider->getManuallyAssignedMentors() ),
+			$this->canManageMentors() ? new ButtonWidget( [
+				'label' => $this->msg( 'growhtexperiments-manage-mentors-add-mentor' )->text(),
+				'href' => SpecialPage::getTitleFor(
+					'ManageMentors',
+					'add-mentor'
+				)->getLocalURL(),
+				'flags' => [ 'primary', 'progressive' ],
+			] ) : '',
 		] ) );
 	}
 }
