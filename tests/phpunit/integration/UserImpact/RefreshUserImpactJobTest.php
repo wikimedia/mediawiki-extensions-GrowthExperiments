@@ -8,7 +8,6 @@ use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
-use IDBAccessObject;
 use LogicException;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -16,6 +15,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserSelectQueryBuilder;
 use MediaWiki\Utils\MWTimestamp;
 use MediaWikiIntegrationTestCase;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * @covers \GrowthExperiments\UserImpact\RefreshUserImpactJob

@@ -10,7 +10,6 @@ use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use HashBagOStuff;
 use JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
 use MediaWiki\Title\TitleValue;
@@ -18,7 +17,8 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\Stub\ReturnArgument;
 use StatusValue;
-use WANObjectCache;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator

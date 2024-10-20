@@ -4,10 +4,10 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\Maintenance\DeleteOldSurveys;
 use GrowthExperiments\WelcomeSurvey;
-use IDBAccessObject;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\TestingAccessWrapper;
 
 require_once __DIR__ . '/../../../maintenance/deleteOldSurveys.php';

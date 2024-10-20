@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
@@ -10,8 +9,8 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use IBufferingStatsdDataFactory;
 use ISearchResultSet;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Status\Status;
 use MediaWikiUnitTestCase;
@@ -19,6 +18,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use SearchEngine;
 use SearchEngineFactory;
 use StatusValue;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**

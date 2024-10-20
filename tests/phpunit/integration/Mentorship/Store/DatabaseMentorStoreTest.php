@@ -4,9 +4,9 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\NullLogger;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\TestingAccessWrapper;
 
 /**

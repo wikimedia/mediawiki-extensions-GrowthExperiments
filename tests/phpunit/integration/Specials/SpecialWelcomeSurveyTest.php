@@ -6,12 +6,12 @@ use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use GrowthExperiments\WelcomeSurvey;
-use IDBAccessObject;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Utils\MWTimestamp;
 use Psr\Log\NullLogger;
 use SpecialPageTestBase;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialWelcomeSurvey

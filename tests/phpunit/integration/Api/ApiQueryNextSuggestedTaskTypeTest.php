@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiUsageException;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
@@ -10,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\UserImpact\UserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Tests\Api\ApiTestCase;
 
 /**

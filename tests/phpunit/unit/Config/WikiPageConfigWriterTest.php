@@ -6,7 +6,6 @@ use GrowthExperiments\Config\Validation\IConfigValidator;
 use GrowthExperiments\Config\Validation\NoValidationValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriter;
-use IDBAccessObject;
 use InvalidArgumentException;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\JsonContent;
@@ -26,6 +25,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
 use RecentChange;
 use StatusValue;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\TestingAccessWrapper;
 use WikiPage;
 

@@ -4,11 +4,11 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\WikiPageConfig;
-use IDBAccessObject;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Config\HashConfig;
 use MediaWikiUnitTestCase;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Config\GrowthExperimentsMultiConfig

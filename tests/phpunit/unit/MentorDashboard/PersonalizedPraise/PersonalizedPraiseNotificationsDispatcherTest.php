@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseNotificationsDispatcher;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
-use HashBagOStuff;
 use LogicException;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\HashConfig;
@@ -13,6 +12,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\TestingAccessWrapper;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 

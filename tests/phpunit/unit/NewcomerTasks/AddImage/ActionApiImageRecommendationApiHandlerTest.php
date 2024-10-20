@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\AddImage\ActionApiImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWikiUnitTestCase;
 use StatusValue;

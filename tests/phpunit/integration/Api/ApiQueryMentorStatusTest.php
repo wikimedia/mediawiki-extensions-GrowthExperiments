@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiUsageException;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;

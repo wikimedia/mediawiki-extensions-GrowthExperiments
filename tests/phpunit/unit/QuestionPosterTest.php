@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionRecord;
+use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
@@ -13,7 +14,6 @@ use MediaWikiUnitTestCase;
 use StatusValue;
 use Wikimedia\ScopedCallback;
 use Wikimedia\TestingAccessWrapper;
-use WikitextContent;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster

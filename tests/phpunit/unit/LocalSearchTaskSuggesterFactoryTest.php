@@ -11,11 +11,11 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use IBufferingStatsdDataFactory;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\User\UserIdentityValue;
 use SearchEngineFactory;
 use StatusValue;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory

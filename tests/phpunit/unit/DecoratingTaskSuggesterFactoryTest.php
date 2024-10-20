@@ -7,11 +7,12 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
-use HashBagOStuff;
 use MediaWiki\Json\JsonCodec;
 use MediaWikiUnitTestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\ObjectFactory\ObjectFactory;
 use Wikimedia\TestingAccessWrapper;
 
@@ -32,7 +33,7 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 				'class' => CacheDecorator::class,
 				'args' => [
 					$this->createMock( \JobQueueGroup::class ),
-					new \WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
+					new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 					$this->createMock( TaskSetListener::class ),
 					new JsonCodec(),
 				],

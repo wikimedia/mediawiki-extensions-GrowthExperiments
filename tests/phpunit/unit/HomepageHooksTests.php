@@ -27,8 +27,8 @@ use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
-use PrefixingStatsdDataFactoryProxy;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HomepageHooks

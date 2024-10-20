@@ -8,10 +8,10 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
-use HashBagOStuff;
 use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use WANObjectCache;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\ImageRecommendationFilter

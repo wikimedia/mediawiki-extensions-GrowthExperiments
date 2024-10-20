@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiUsageException;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;

@@ -6,7 +6,7 @@ use Exception;
 use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
-use Language;
+use MediaWiki\Language\Language;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\Utils\MWTimestamp;
 use MediaWikiUnitTestCase;

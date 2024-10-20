@@ -2,14 +2,14 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use ApiRawMessage;
-use Content;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\Config\Validation\NoValidationValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
-use HashBagOStuff;
+use MediaWiki\Api\ApiRawMessage;
+use MediaWiki\Content\Content;
 use MediaWiki\Content\JsonContent;
+use MediaWiki\Content\WikitextContent;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionLookup;
@@ -20,12 +20,12 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\Utils\UrlUtils;
 use MediaWikiUnitTestCase;
-use MessageSpecifier;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
-use WANObjectCache;
-use WikitextContent;
+use Wikimedia\Message\MessageSpecifier;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
  * @covers \GrowthExperiments\Config\WikiPageConfigLoader

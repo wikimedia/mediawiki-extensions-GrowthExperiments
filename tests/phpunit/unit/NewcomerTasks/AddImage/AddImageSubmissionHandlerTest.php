@@ -15,7 +15,7 @@ use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use StatusValue;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler

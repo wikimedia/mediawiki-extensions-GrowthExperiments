@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\Task;
@@ -19,6 +18,7 @@ use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Tests\InvokedBetween;
 use GrowthExperiments\Util;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Cache\LinkBatch;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;

@@ -6,6 +6,7 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
 use JobQueueGroup;
+use MediaWiki\Language\Language;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\FauxRequest;
@@ -238,7 +239,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturn( $request );
 		$skinMock->getUser()->method( 'getName' )
 			->willReturn( 'Bar' );
-		$languageMock = $this->createMock( \Language::class );
+		$languageMock = $this->createMock( Language::class );
 		$languageMock->method( 'getSpecialPageAliases' )
 			->willReturn( [
 				'WelcomeSurvey' => [ 'WelcomeSurvey' ]
@@ -287,7 +288,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturn( $request );
 		$skinMock->getUser()->method( 'getName' )
 			->willReturn( 'Bar' );
-		$languageMock = $this->createMock( \Language::class );
+		$languageMock = $this->createMock( Language::class );
 		$languageMock->method( 'getSpecialPageAliases' )
 			->willReturn( [
 				'WelcomeSurvey' => [ 'WelcomeSurvey' ]

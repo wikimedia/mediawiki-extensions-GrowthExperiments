@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
+use MediaWiki\Content\WikitextContent;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
@@ -10,7 +11,6 @@ use MediaWiki\Storage\PageUpdater;
 use MediaWikiIntegrationTestCase;
 use MockTitleTrait;
 use Wikimedia\TestingAccessWrapper;
-use WikitextContent;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster

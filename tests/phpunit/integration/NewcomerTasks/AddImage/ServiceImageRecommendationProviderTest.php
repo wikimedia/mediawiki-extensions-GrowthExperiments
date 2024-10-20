@@ -11,7 +11,6 @@ use GrowthExperiments\NewcomerTasks\AddImage\MvpImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use IBufferingStatsdDataFactory;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
@@ -25,6 +24,7 @@ use MockTitleTrait;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider

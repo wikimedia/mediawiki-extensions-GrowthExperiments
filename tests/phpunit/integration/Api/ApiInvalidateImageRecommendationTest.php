@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiUsageException;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Tests\Api\ApiTestCase;
 

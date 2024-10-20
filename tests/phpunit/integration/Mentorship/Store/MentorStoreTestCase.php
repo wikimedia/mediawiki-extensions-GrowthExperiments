@@ -3,10 +3,10 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use HashBagOStuff;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
-use WANObjectCache;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\TestingAccessWrapper;
 
 /**

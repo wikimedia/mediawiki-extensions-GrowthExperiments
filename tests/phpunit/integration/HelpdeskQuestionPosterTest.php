@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ExtensionRegistry;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;

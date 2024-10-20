@@ -2,9 +2,8 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiUsageException;
 use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
-use IDBAccessObject;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Revision\RevisionRecord;
@@ -12,6 +11,7 @@ use MediaWiki\Status\Status;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * @group API

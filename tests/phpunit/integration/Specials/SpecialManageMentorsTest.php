@@ -2,17 +2,17 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ExtensionRegistry;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialManageMentors;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserIdentity;
 use PermissionsError;
 use ReflectionMethod;
-use SpecialPage;
 use SpecialPageTestBase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 

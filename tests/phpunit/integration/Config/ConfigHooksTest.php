@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ApiMain;
-use ApiQueryTokens;
-use ApiUsageException;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use MediaWiki\Api\ApiMain;
+use MediaWiki\Api\ApiQueryTokens;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
