@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments;
 
-use ApiBase;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\Hook\APIGetAllowedParamsHook;
 use MediaWiki\Extension\VisualEditor\ApiVisualEditorEdit;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
@@ -19,8 +19,8 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use OutOfBoundsException;
-use PrefixingStatsdDataFactoryProxy;
 use UnexpectedValueException;
+use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 
 /**
  * Hook handlers for hooks defined in VisualEditor.

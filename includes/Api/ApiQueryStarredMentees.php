@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiQuery;
-use ApiQueryBase;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryBase;
 
 class ApiQueryStarredMentees extends ApiQueryBase {
 	/** @var StarredMenteesStore */

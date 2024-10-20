@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Mentorship\Provider;
 
-use IDBAccessObject;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Extension\CommunityConfiguration\Store\WikiPageStore;
 use MediaWiki\Status\StatusFormatter;
@@ -10,6 +9,7 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use StatusValue;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class CommunityStructuredMentorWriter extends AbstractStructuredMentorWriter {
 	use CommunityGetMentorDataTrait;

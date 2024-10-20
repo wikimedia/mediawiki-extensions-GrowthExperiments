@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
-use IDBAccessObject;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class StarredMenteesStore {
 	public const STARRED_MENTEES_PREFERENCE = 'growthexperiments-starred-mentees';

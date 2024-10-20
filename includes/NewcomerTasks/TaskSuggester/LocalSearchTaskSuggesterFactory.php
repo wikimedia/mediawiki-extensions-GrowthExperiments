@@ -6,10 +6,10 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use IBufferingStatsdDataFactory;
 use MediaWiki\Cache\LinkBatchFactory;
 use SearchEngineFactory;
 use StatusValue;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * Factory for LocalSearchTaskSuggester.

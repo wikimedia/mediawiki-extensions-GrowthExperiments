@@ -2,16 +2,16 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiBase;
-use ApiMain;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use IDBAccessObject;
 use LogicException;
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class ApiManageMentorList extends ApiBase {
 

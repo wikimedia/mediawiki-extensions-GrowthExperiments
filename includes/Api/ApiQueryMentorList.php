@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiQuery;
-use ApiQueryBase;
 use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\User\UserIdentityLookup;
 
 class ApiQueryMentorList extends ApiQueryBase {

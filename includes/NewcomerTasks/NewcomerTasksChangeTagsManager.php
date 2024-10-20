@@ -15,9 +15,9 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
-use PrefixingStatsdDataFactoryProxy;
 use StatusValue;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 
 class NewcomerTasksChangeTagsManager {
 

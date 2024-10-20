@@ -4,11 +4,11 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use IBufferingStatsdDataFactory;
 use MediaWiki\Linker\LinkTarget;
 use StatusValue;
-use WANObjectCache;
 use Wikimedia\Assert\Assert;
+use Wikimedia\ObjectCache\WANObjectCache;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * Get image recommendation data from cache if possible; fall back to service provider otherwise.

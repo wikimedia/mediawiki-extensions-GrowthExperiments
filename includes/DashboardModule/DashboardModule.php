@@ -9,8 +9,8 @@ use MediaWiki\Html\Html;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\User;
-use MessageSpecifier;
 use OOUI\IconWidget;
+use Wikimedia\Message\MessageSpecifier;
 
 abstract class DashboardModule implements IDashboardModule {
 	/**

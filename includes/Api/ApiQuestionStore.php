@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiBase;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\RecentQuestionsFormatter;
 use JsonSerializable;
+use MediaWiki\Api\ApiBase;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiQuestionStore extends ApiBase {

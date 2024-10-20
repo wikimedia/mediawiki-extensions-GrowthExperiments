@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiQuery;
-use ApiQueryBase;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\ParamValidator\ParamValidator;

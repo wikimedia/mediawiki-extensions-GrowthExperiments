@@ -8,7 +8,6 @@ use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
-use IBufferingStatsdDataFactory;
 use JobQueueGroup;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
@@ -17,6 +16,7 @@ use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * Handler for POST and GET requests /growthexperiments/v0/user-impact/{user} endpoint.

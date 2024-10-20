@@ -4,7 +4,6 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use DomainException;
 use GrowthExperiments\Util;
-use IDBAccessObject;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageRecord;
@@ -15,6 +14,7 @@ use MediaWiki\User\UserIdentity;
 use RuntimeException;
 use stdClass;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 

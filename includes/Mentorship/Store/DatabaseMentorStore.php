@@ -2,14 +2,14 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
-use IDBAccessObject;
 use JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class DatabaseMentorStore extends MentorStore {

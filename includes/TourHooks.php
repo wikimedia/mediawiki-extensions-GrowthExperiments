@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 use MediaWiki\Config\Config;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
@@ -135,7 +136,7 @@ class TourHooks implements
 	 * @return bool
 	 */
 	public static function growthTourDependenciesLoaded() {
-		$extensionRegistry = \ExtensionRegistry::getInstance();
+		$extensionRegistry = ExtensionRegistry::getInstance();
 		return $extensionRegistry->isLoaded( 'GuidedTour' ) &&
 			   $extensionRegistry->isLoaded( 'Echo' ) &&
 			   $extensionRegistry->isLoaded( 'EventLogging' );

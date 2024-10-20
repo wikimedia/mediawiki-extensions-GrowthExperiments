@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
  * A CachedSuggestionsInfo decorator which uses WANObjectCache to get/set information about tasks

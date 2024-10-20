@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
@@ -11,14 +10,15 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use IBufferingStatsdDataFactory;
 use ISearchResultSet;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserIdentity;
 use SearchEngine;
 use SearchEngineFactory;
 use StatusValue;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * Suggest edits based on searching the wiki via SearchEngine.

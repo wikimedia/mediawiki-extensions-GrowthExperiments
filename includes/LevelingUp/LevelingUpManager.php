@@ -14,7 +14,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\VariantHooks;
-use IDBAccessObject;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
@@ -27,6 +26,7 @@ use MediaWiki\User\UserIdentityValue;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * Manage the "leveling up" of a user, as the user progresses in completing suggested edit tasks.

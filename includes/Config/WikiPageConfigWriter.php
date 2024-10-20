@@ -2,11 +2,10 @@
 
 namespace GrowthExperiments\Config;
 
-use Content;
 use GrowthExperiments\Config\Validation\IConfigValidator;
-use IDBAccessObject;
 use InvalidArgumentException;
 use MediaWiki\CommentStore\CommentStoreComment;
+use MediaWiki\Content\Content;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
@@ -24,6 +23,7 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use RecentChange;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class WikiPageConfigWriter {
 

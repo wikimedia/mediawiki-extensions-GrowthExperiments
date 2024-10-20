@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiQuery;
-use ApiQueryBase;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryBase;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**

@@ -2,9 +2,8 @@
 
 namespace GrowthExperiments;
 
-use ApiRawMessage;
-use ExtensionRegistry;
 use Iterator;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
@@ -17,6 +16,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Parser\Sanitizer;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;

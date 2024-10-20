@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use MessageLocalizer;
-use MessageSpecifier;
+use Wikimedia\Message\MessageSpecifier;
 
 /**
  * TaskTypeHandler subclass for structured tasks. Instead of freeform editing, structured tasks

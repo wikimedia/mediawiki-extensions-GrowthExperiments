@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments;
 
-use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
@@ -11,6 +10,7 @@ use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\Title;
 use MessageLocalizer;

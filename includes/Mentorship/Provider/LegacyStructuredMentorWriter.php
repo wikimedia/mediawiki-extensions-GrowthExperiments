@@ -4,12 +4,12 @@ namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
-use IDBAccessObject;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use StatusValue;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class LegacyStructuredMentorWriter extends AbstractStructuredMentorWriter {
 	use LegacyGetMentorDataTrait;

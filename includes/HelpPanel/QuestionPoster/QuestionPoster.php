@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
-use Content;
 use Flow\Container;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
@@ -10,6 +9,8 @@ use GrowthExperiments\Hooks\HookRunner;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Config\Config;
+use MediaWiki\Content\Content;
+use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
@@ -20,11 +21,10 @@ use MediaWiki\Status\Status;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
-use PrefixingStatsdDataFactoryProxy;
 use RecentChange;
 use RuntimeException;
 use UserNotLoggedIn;
-use WikitextContent;
+use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 
 /**
  * Base class for sending messages containing user questions to some target page.

@@ -8,12 +8,12 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
-use HashBagOStuff;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\SpecialPage\Hook\ChangesListSpecialPageStructuredFiltersHook;
 use MediaWiki\User\UserIdentity;
 use RecentChange;
+use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\Rdbms\IDatabase;
 
 /**

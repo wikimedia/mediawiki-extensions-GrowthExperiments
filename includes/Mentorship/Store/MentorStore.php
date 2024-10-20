@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
-use DBAccessObjectUtils;
-use IDBAccessObject;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use WANObjectCache;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\ObjectCache\WANObjectCache;
+use Wikimedia\Rdbms\DBAccessObjectUtils;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 abstract class MentorStore implements ExpirationAwareness, LoggerAwareInterface {
 	use LoggerAwareTrait;

@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
-use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Logger\LoggerFactory;

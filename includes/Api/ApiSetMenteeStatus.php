@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiBase;
-use ApiMain;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogicException;
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
 use MediaWiki\Config\Config;
 use Wikimedia\ParamValidator\ParamValidator;
 

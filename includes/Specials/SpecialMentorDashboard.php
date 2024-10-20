@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Specials;
 
 use ErrorPageError;
-use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\EventLogging\SpecialMentorDashboardLogger;
 use GrowthExperiments\MentorDashboard\MentorDashboardDiscoveryHooks;
@@ -13,6 +12,7 @@ use GrowthExperiments\Util;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Html\Html;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MWCryptRand;

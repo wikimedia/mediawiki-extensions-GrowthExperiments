@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiBase;
-use ApiMain;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\ParamValidator\ParamValidator;

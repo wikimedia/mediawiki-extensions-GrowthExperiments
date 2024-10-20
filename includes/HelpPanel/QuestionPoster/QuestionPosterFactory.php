@@ -7,9 +7,9 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
-use PrefixingStatsdDataFactoryProxy;
 use UserNotLoggedIn;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 
 /**
  * Factory class for selecting the right question poster based on where the questions should go

@@ -2,11 +2,10 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
-use ApiRawMessage;
 use File;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use IBufferingStatsdDataFactory;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
@@ -16,6 +15,7 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use StatusValue;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * Provides image recommendations via the Image Suggestion API.

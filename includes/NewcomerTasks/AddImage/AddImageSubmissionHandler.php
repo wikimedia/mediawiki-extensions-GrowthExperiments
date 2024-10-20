@@ -23,8 +23,8 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use StatusValue;
-use WANObjectCache;
 use Wikimedia\Assert\Assert;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
  * Record the user's decision on the recommendations for a given page.

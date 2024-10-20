@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\AtEase\AtEase;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class DatabaseUserImpactStore implements UserImpactStore {

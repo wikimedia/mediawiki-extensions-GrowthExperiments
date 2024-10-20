@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\EventLogging;
 
-use ExtensionRegistry;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use MediaWiki\Extension\EventLogging\EventLogging;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\WikiMap\WikiMap;
 

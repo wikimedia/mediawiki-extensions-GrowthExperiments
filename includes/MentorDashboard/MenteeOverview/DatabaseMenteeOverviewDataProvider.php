@@ -6,8 +6,8 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\User\UserIdentity;
 use stdClass;
-use WANObjectCache;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**

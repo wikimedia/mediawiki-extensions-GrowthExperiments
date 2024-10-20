@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\EventLogging;
 
-use ExtensionRegistry;
 use GrowthExperiments\Specials\SpecialEditGrowthConfig;
 use InvalidArgumentException;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\WikiMap\WikiMap;
 
 class SpecialEditGrowthConfigLogger {

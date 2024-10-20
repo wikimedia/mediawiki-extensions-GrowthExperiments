@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
-use ApiMessage;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\Util;
+use MediaWiki\Api\ApiMessage;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\LocalizedHttpException;

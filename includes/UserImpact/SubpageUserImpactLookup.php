@@ -3,12 +3,12 @@
 namespace GrowthExperiments\UserImpact;
 
 use GrowthExperiments\Util;
-use IDBAccessObject;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * Load user impact data from JSON stored at the page `User:<name>/userimpact.json`,

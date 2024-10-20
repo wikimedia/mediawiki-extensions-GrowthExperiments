@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
-use IDBAccessObject;
 use ManualLogEntry;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * Record information about a user accepting/rejecting parts of a link recommendation.

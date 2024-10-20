@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
-use BagOStuff;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\Notifications\Model\Event;
@@ -10,6 +9,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\ObjectCache\BagOStuff;
 
 class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 

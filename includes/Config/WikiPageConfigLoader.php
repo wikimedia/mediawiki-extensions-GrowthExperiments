@@ -2,12 +2,9 @@
 
 namespace GrowthExperiments\Config;
 
-use ApiRawMessage;
-use DBAccessObjectUtils;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Util;
-use HashBagOStuff;
-use IDBAccessObject;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Json\FormatJson;
@@ -18,8 +15,11 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Utils\UrlUtils;
 use StatusValue;
-use WANObjectCache;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\ObjectCache\WANObjectCache;
+use Wikimedia\Rdbms\DBAccessObjectUtils;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * This class allows callers to fetch various variables

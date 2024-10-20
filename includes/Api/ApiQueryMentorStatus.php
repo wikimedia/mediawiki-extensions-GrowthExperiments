@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiQuery;
-use ApiQueryBase;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryBase;
 
 class ApiQueryMentorStatus extends ApiQueryBase {
 

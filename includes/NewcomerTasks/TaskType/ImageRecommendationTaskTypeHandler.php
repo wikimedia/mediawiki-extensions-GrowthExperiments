@@ -7,7 +7,7 @@ use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Message\Message;
 use MessageLocalizer;
-use MessageSpecifier;
+use Wikimedia\Message\MessageSpecifier;
 
 class ImageRecommendationTaskTypeHandler extends ImageRecommendationBaseTaskTypeHandler {
 

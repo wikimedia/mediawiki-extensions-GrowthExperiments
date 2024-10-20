@@ -3,13 +3,13 @@
 namespace GrowthExperiments\HelpPanel;
 
 use Flow\Container;
-use IDBAccessObject;
 use JobQueueGroup;
-use Language;
 use MediaWiki\Content\TextContent;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Language\Language;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
@@ -17,6 +17,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use UserOptionsUpdateJob;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class QuestionStore {
 
@@ -140,7 +141,7 @@ class QuestionStore {
 					// timestamp if it's not set.
 					$checkedRecord->setTimestamp( (int)wfTimestamp( TS_UNIX ) );
 				}
-			} elseif ( \ExtensionRegistry::getInstance()->isLoaded( 'Flow' ) &&
+			} elseif ( ExtensionRegistry::getInstance()->isLoaded( 'Flow' ) &&
 				$questionRecord->getContentModel() === CONTENT_MODEL_FLOW_BOARD ) {
 				$workflowLoaderFactory = Container::get( 'factory.loader.workflow' );
 				$topicTitle = Title::newFromText( $checkedRecord->getRevId(), NS_TOPIC );

@@ -4,9 +4,9 @@ namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\ExperimentUserManager;
 use HtmlArmor;
-use IContextSource;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Html\Html;
@@ -15,7 +15,7 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserEditTracker;
 use stdClass;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 class CommunityUpdates extends BaseModule {
 	private ?IConfigurationProvider $provider = null;

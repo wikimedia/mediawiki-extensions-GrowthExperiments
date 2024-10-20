@@ -3,7 +3,6 @@
 
 namespace GrowthExperiments;
 
-use ExtensionRegistry;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
@@ -16,6 +15,7 @@ use MediaWiki\Hook\PostLoginRedirectHook;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;

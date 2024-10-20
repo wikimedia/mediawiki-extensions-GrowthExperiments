@@ -3,10 +3,10 @@
 namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Mentorship\Mentor;
-use IDBAccessObject;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 interface IMentorWriter {
 

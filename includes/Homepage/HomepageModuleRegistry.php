@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Homepage;
 
-use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\Banner;
@@ -18,6 +17,7 @@ use GrowthExperiments\HomepageModules\WelcomeSurveyReminder;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Registration\ExtensionRegistry;
 use OutOfBoundsException;
 
 /**

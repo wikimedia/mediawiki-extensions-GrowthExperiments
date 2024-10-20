@@ -4,17 +4,14 @@ namespace GrowthExperiments\UserImpact;
 
 use ChangeTags;
 use DateTime;
-use DBAccessObjectUtils;
-use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use IBufferingStatsdDataFactory;
-use IDBAccessObject;
 use LogicException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Extension\Thanks\ThanksQueryHelper;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\NameTableAccessException;
@@ -33,7 +30,10 @@ use PageImages\PageImages;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use StatusValue;
+use Wikimedia\Rdbms\DBAccessObjectUtils;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\IDBAccessObject;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 class ComputedUserImpactLookup implements UserImpactLookup {
 

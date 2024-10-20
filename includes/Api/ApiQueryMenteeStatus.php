@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiQuery;
-use ApiQueryBase;
 use GrowthExperiments\Mentorship\MentorManager;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryBase;
 
 class ApiQueryMenteeStatus extends ApiQueryBase {
 

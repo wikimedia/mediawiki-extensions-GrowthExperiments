@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\MentorDashboard\Modules;
 
-use ExtensionRegistry;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
@@ -11,6 +10,7 @@ use MediaWiki\Cache\GenderCache;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 
 class PersonalizedPraise extends BaseModule {

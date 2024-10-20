@@ -11,7 +11,7 @@ use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Title\TitleParser;
 use MessageLocalizer;
-use MessageSpecifier;
+use Wikimedia\Message\MessageSpecifier;
 
 class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 

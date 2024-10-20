@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
-use BagOStuff;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
@@ -12,6 +11,7 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareTrait;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\ScopedCallback;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 

@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\Api;
 
-use ApiBase;
-use ApiMain;
-use ApiUsageException;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
+use MediaWiki\Api\ApiUsageException;
 use UserNotLoggedIn;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\StringDef;

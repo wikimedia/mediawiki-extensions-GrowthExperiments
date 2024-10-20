@@ -4,12 +4,12 @@ namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorshipSummaryCreator;
-use IDBAccessObject;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerAwareTrait;
 use StatusValue;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * This class writes to the structured mentor list and allows to add/remove

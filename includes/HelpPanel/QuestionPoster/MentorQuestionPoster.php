@@ -10,8 +10,8 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
-use PrefixingStatsdDataFactoryProxy;
 use UserNotLoggedIn;
+use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 
 /**
  * QuestionPoster base class for asking a question from the assigned mentor.

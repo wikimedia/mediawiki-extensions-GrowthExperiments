@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments;
 
-use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
@@ -14,6 +13,7 @@ use MediaWiki\Hook\SpecialCreateAccountBenefitsHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;

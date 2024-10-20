@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -13,7 +14,6 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\Utils\MWTimestamp;
 use StatusValue;
 use Wikimedia\Assert\Assert;
-use WikitextContent;
 
 /**
  * A link recommendation provider that uses the link recommendation service.

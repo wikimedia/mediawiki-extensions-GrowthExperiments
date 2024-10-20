@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
  * Filter out image recommendation tasks that have been marked as invalid in a temporary cache

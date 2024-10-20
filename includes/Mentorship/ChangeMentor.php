@@ -8,6 +8,7 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use ManualLogEntry;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
@@ -174,7 +175,7 @@ class ChangeMentor {
 	 * @param string $reason Reason for the change
 	 */
 	protected function notify( string $reason ) {
-		if ( \ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
 			DeferredUpdates::addCallableUpdate( function () use ( $reason ) {
 				$this->logger->debug( 'Notify {mentee} about mentor change done by {performer}', [
 					'mentee' => $this->mentee,

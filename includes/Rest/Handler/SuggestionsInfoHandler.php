@@ -4,7 +4,7 @@ namespace GrowthExperiments\Rest\Handler;
 
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use MediaWiki\Rest\SimpleHandler;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
  * Provide information for monitoring suggested edit task pools by type and topic.

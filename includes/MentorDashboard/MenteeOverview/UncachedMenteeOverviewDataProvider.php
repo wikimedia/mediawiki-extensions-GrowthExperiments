@@ -3,12 +3,12 @@
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use ChangeTags;
-use ExtensionRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CentralAuth\CentralAuthServices;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\ActorMigration;

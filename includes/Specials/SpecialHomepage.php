@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Specials;
 
 use ErrorPageError;
-use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
 use GrowthExperiments\ExperimentUserManager;
@@ -14,19 +13,20 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
-use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsManager;
-use PrefixingStatsdDataFactoryProxy;
 use Throwable;
 use UserNotLoggedIn;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 
 class SpecialHomepage extends SpecialPage {
 

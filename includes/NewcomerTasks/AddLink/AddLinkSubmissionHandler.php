@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use IDBAccessObject;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Message\Message;
@@ -25,6 +24,7 @@ use Psr\Log\LoggerInterface;
 use StatusValue;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\DBReadOnlyError;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * Record the user's decision on the recommendations for a given page.

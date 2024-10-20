@@ -2,16 +2,16 @@
 
 namespace GrowthExperiments\MentorDashboard\MentorTools;
 
-use DBAccessObjectUtils;
-use HashBagOStuff;
-use IDBAccessObject;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use StatusValue;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\Rdbms\DBAccessObjectUtils;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class MentorStatusManager {

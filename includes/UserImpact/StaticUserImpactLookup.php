@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class StaticUserImpactLookup implements UserImpactLookup, UserImpactStore {
 
