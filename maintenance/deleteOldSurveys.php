@@ -3,10 +3,10 @@
 namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\WelcomeSurvey;
-use IDBAccessObject;
-use Maintenance;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\User;
 use MediaWiki\Utils\MWTimestamp;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {

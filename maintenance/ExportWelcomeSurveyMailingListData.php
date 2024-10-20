@@ -4,8 +4,8 @@ namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\WelcomeSurvey;
-use Maintenance;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;

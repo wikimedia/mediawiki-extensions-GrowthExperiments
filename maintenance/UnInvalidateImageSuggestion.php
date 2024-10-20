@@ -6,7 +6,7 @@ use CirrusSearch\CirrusSearchServices;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
-use Maintenance;
+use MediaWiki\Maintenance\Maintenance;
 
 class UnInvalidateImageSuggestion extends Maintenance {
 

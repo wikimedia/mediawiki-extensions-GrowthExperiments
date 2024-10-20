@@ -6,7 +6,7 @@ use DateTime;
 use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
-use Maintenance;
+use MediaWiki\Maintenance\Maintenance;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 

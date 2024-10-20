@@ -8,7 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
-use Maintenance;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;

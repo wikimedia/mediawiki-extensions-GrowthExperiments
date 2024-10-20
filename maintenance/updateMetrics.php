@@ -7,7 +7,7 @@ use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
-use Maintenance;
+use MediaWiki\Maintenance\Maintenance;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {

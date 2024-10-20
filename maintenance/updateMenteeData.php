@@ -7,7 +7,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\WikiConfigException;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
-use Maintenance;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 

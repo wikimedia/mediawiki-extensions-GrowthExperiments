@@ -3,7 +3,7 @@
 namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use Maintenance;
+use MediaWiki\Maintenance\Maintenance;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;

@@ -5,19 +5,19 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\GrowthExperimentsServices;
-use IDBAccessObject;
-use LoggedUpdateMaintenance;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Language\FormatterFactory;
+use MediaWiki\Maintenance\LoggedUpdateMaintenance;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use StatusValue;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {

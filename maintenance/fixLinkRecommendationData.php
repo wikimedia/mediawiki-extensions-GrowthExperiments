@@ -11,8 +11,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfiguratio
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
-use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
 use MediaWiki\Status\Status;

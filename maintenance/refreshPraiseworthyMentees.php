@@ -5,7 +5,7 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use Maintenance;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\UserIdentityLookup;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
