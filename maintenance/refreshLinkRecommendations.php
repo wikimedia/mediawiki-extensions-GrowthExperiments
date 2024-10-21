@@ -145,11 +145,12 @@ class RefreshLinkRecommendations extends Maintenance {
 				continue;
 			}
 
+			$totalExistingSuggestionsCount = $suggestions->getTotalCount();
 			$recommendationsNeeded = $this->recommendationTaskType->getMinimumTasksPerTopic()
-				- $suggestions->getTotalCount();
+				- $totalExistingSuggestionsCount;
 
 			if ( $recommendationsNeeded <= 0 ) {
-				$this->output( "    no new tasks needed\n" );
+				$this->output( "    no new tasks needed, $totalExistingSuggestionsCount existing suggestions\n" );
 				continue;
 			}
 			$this->output( "    $recommendationsNeeded new tasks needed\n" );
