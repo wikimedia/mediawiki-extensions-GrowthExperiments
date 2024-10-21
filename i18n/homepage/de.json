@@ -423,7 +423,6 @@
 	"growthexperiments-addlink-serviceerror": "Der Link-Vorschlags-Dienst hat einen Fehler für „$1“ zurückgegeben: $2",
 	"growthexperiments-addlink-notinstore": "Linkvorschlag für „$1“ nicht gefunden",
 	"growthexperiments-addlink-duplicatesubmission": "Es wurde versucht, Linkvorschläge für die Version „$1“ zu übermitteln, die bereits überprüft wurde.",
-	"growthexperiments-addlink-context-text-label": "Text",
 	"growthexperiments-addlink-context-intro": "Soll hier auf den folgenden Artikel verlinkt werden?",
 	"growthexperiments-addlink-context-button-accept": "Ja",
 	"growthexperiments-addlink-context-button-reject": "Nein",

@@ -411,7 +411,6 @@
 	"growthexperiments-addlink-serviceerror": "שירות הצעת הקישורים השיב עבור \"$1\" עם שגיאה: $2",
 	"growthexperiments-addlink-notinstore": "לא נמצאו הצעות קישור עבור \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "ניסיון לשלוח סקירות הצעות קישור עבור הגרסה \"$1\", שכבר נסקרה",
-	"growthexperiments-addlink-context-text-label": "טקסט",
 	"growthexperiments-addlink-context-intro": "האם זה צריך לקשר לערך הבא?",
 	"growthexperiments-addlink-context-button-accept": "כן",
 	"growthexperiments-addlink-context-button-reject": "לא",

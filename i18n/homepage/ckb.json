@@ -283,7 +283,6 @@
 	"growthexperiments-addlink-wrongmodel": "پێداچوونەوەی $1 لە «$2» ویکیدەق نییە",
 	"growthexperiments-addlink-notinstore": "پێشنیاری بەستەر بۆ «$1» نەدۆزرایەوە",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "دەق",
 	"growthexperiments-addlink-context-button-accept": "بەڵێ",
 	"growthexperiments-addlink-context-button-reject": "نەخێر",
 	"growthexperiments-addlink-context-button-help": "یارمەتی وەربگرە بۆ دەستکاریکردن",

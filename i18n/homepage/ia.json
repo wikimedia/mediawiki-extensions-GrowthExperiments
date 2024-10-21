@@ -394,7 +394,6 @@
 	"growthexperiments-addlink-serviceerror": "Le servicio de recommendation de ligamines ha respondite con un error pro \"$1\": $2",
 	"growthexperiments-addlink-notinstore": "Suggestion de ligamine non trovate pro \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Tentativa de submitter recensiones de suggestion de ligamine pro le version \"$1\" le qual ha jam essite recensite.",
-	"growthexperiments-addlink-context-text-label": "Texto",
 	"growthexperiments-addlink-context-intro": "Debe isto ligar al sequente articulo?",
 	"growthexperiments-addlink-context-button-accept": "Si",
 	"growthexperiments-addlink-context-button-reject": "No",

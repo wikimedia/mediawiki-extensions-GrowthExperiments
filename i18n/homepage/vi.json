@@ -331,7 +331,6 @@
 	"growthexperiments-addlink-notinstore": "Không tìm thấy gợi ý liên kết cho “$1”",
 	"growthexperiments-addlink-duplicatesubmission": "Cố gửi lần xem lại gợi ý liên kết cho phiên bản “$1” đã được xem lại rồi.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "Văn bản",
 	"growthexperiments-addlink-context-intro": "Từ này nên được liên kết tới bài viết sau?",
 	"growthexperiments-addlink-context-button-accept": "Có",
 	"growthexperiments-addlink-context-button-reject": "Không",

@@ -259,7 +259,6 @@
 	"growthexperiments-addlink-revdeleted": "Versioun $1 vu(n) „$2“ ass net zougänglech",
 	"growthexperiments-addlink-wrongmodel": "Versioun $1 vu(n) „$2“ ass kee Wikitext",
 	"growthexperiments-addlink-notinstore": "Linkvirschlag fir „$1“ net fonnt",
-	"growthexperiments-addlink-context-text-label": "Text",
 	"growthexperiments-addlink-context-intro": "Soll dëst op de follgenden Artikel verlinken?",
 	"growthexperiments-addlink-context-button-accept": "Jo",
 	"growthexperiments-addlink-context-button-reject": "Neen",

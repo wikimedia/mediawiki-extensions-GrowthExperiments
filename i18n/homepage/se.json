@@ -378,7 +378,6 @@
 	"growthexperiments-addlink-serviceerror": "Liŋkaevttohusbálvalus vástidii boastut «$1»:ii: $2",
 	"growthexperiments-addlink-notinstore": "Liŋkaevttohus ii gávdno siidui \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Geahččalii sáddet sisa liŋkkaevttohusaid siidoveršuvdnii «$1», mii lea juo čađahuvvon.",
-	"growthexperiments-addlink-context-text-label": "Teaksta",
 	"growthexperiments-addlink-context-intro": "Berrešii go dát liŋket čuovvovaš artihkkalii?",
 	"growthexperiments-addlink-context-button-accept": "Jua",
 	"growthexperiments-addlink-context-button-reject": "Aa",

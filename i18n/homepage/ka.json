@@ -381,7 +381,6 @@
 	"growthexperiments-addlink-notinstore": "ბმულის შემოთავაზება ვერ მოიძებნა გვერდისათვის „$1“",
 	"growthexperiments-addlink-duplicatesubmission": "ბმულის შემოთავაზების შემოწმების მცდელობა ვერსიისათვის „$1“, რომელიც უკვე შემოწმდა.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "ტექსტი",
 	"growthexperiments-addlink-context-intro": "საჭიროა ბმულის გაკეთება ქვემოთ მოცემულ სტატიაზე?",
 	"growthexperiments-addlink-context-button-accept": "დიახ",
 	"growthexperiments-addlink-context-button-reject": "არა",

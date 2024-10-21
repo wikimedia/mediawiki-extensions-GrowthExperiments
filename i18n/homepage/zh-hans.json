@@ -434,7 +434,6 @@
 	"growthexperiments-addlink-serviceerror": "链接推荐服务响应“$1”错误：$2",
 	"growthexperiments-addlink-notinstore": "未找到“$1”的链接建议",
 	"growthexperiments-addlink-duplicatesubmission": "尝试提交已审核的修订版本“$1”的链接建议审核",
-	"growthexperiments-addlink-context-text-label": "文字",
 	"growthexperiments-addlink-context-intro": "此链接应该链接至以下条目吗？",
 	"growthexperiments-addlink-context-button-accept": "是",
 	"growthexperiments-addlink-context-button-reject": "否",

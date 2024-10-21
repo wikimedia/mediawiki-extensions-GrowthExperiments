@@ -357,7 +357,6 @@
 	"growthexperiments-addlink-serviceerror": "\"$1\" కు చెందిన లింకు సూచన సేవ స్పందనలో లోపం దొర్లింది:$2",
 	"growthexperiments-addlink-notinstore": "\"$1\" కు చెందిన లింకు సూచన కనబడలేదు",
 	"growthexperiments-addlink-duplicatesubmission": "\"$1\" కూర్పుకు లింకు సూచన సమీక్షలను పంపేందుకు ప్రయత్నించారు. దీన్ని ఈసరికే సమీక్షించారు.",
-	"growthexperiments-addlink-context-text-label": "పాఠ్యం",
 	"growthexperiments-addlink-context-intro": "ఇది కింది వ్యాసానికి లింకవ్వాలా?",
 	"growthexperiments-addlink-context-button-accept": "ఔను",
 	"growthexperiments-addlink-context-button-reject": "కాదు",

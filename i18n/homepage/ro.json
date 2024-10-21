@@ -404,7 +404,6 @@
 	"growthexperiments-addlink-notinstore": "Sugestie de legături negăsită pentru „$1”",
 	"growthexperiments-addlink-duplicatesubmission": "Ați încercat să trimiteți revizuiri de sugestie de legături pentru versiunea „$1” care a fost deja revizuită.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "Text",
 	"growthexperiments-addlink-context-intro": "Ar trebui ca asta să se lege cu următorul articol _____?",
 	"growthexperiments-addlink-context-button-accept": "Da",
 	"growthexperiments-addlink-context-button-reject": "Nu",

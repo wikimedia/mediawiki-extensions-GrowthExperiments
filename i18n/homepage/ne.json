@@ -348,7 +348,6 @@
 	"growthexperiments-addlink-notinstore": "\"$1\"को लागि कडी सुझाव फेला परेन",
 	"growthexperiments-addlink-duplicatesubmission": "संशोधन \"$1\" को लागि कडी सुझाव समीक्षा पेश गर्ने प्रयास गरियो जुन पहिले नै समीक्षा भइसकेको छ।",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "शब्द",
 	"growthexperiments-addlink-context-intro": "के यो निम्न लेखमा कडी हुनुपर्छ?",
 	"growthexperiments-addlink-context-button-accept": "हो",
 	"growthexperiments-addlink-context-button-reject": "होइन",

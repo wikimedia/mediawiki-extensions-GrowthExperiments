@@ -380,7 +380,6 @@
 	"growthexperiments-addlink-serviceerror": "「$1」的連結推薦服務回應無效出現錯誤：$2",
 	"growthexperiments-addlink-notinstore": "未找到「$1」的連結建議",
 	"growthexperiments-addlink-duplicatesubmission": "嘗試提交已審核的修訂版本「$1」的連結建議稽核",
-	"growthexperiments-addlink-context-text-label": "文字",
 	"growthexperiments-addlink-context-intro": "這應該被連接至以下的條目嗎？",
 	"growthexperiments-addlink-context-button-accept": "是",
 	"growthexperiments-addlink-context-button-reject": "否",

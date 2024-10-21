@@ -405,7 +405,6 @@
 	"growthexperiments-addlink-serviceerror": "Η υπηρεσία προτάσεων συνδέσμου απάντησε με ένα σφάλμα για «$1»: $2",
 	"growthexperiments-addlink-notinstore": "Η πρόταση συνδέσμου δεν βρέθηκε για «$1»",
 	"growthexperiments-addlink-duplicatesubmission": "Προσπάθεια υποβολής επιθεωρήσεων προτάσεων συνδέσμου για την αναθεώρηση «$1» που έχει ήδη επιθεωρηθεί.",
-	"growthexperiments-addlink-context-text-label": "Κείμενο",
 	"growthexperiments-addlink-context-intro": "Θα πρέπει αυτό να συνδέει στο ακόλουθο λήμμα;",
 	"growthexperiments-addlink-context-button-accept": "Ναι",
 	"growthexperiments-addlink-context-button-reject": "Όχι",

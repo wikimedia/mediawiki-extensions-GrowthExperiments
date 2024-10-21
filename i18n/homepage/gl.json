@@ -242,7 +242,6 @@
 	"growthexperiments-addlink-pagenotfound": "A páxina \"$1\" non existe.",
 	"growthexperiments-addlink-revdeleted": "A revisión $1 de \"$2 \" é inaccesible",
 	"growthexperiments-addlink-wrongmodel": "A revisión $1 de \"$2\" non é texto wiki",
-	"growthexperiments-addlink-context-text-label": "Texto",
 	"growthexperiments-addlink-context-intro": "Debería ligar isto ao seguinte artigo?",
 	"growthexperiments-addlink-context-button-accept": "Si",
 	"growthexperiments-addlink-context-button-reject": "Non",

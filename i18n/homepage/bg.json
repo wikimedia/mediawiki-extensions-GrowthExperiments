@@ -229,7 +229,6 @@
 	"growthexperiments-addlink-pagenotfound": "Страницата „$1“ не съществува",
 	"growthexperiments-addlink-revdeleted": "Версия $1 на „$2“ е недостъпна",
 	"growthexperiments-addlink-wrongmodel": "Версия $1 на „$2“ не е уикитекст",
-	"growthexperiments-addlink-context-text-label": "Текст",
 	"growthexperiments-addlink-context-intro": "Трябва ли тази препратка да сочи към следната статия?",
 	"growthexperiments-addlink-context-button-accept": "Да",
 	"growthexperiments-addlink-context-button-reject": "Не",

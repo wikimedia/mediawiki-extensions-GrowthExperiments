@@ -414,7 +414,6 @@
 	"growthexperiments-addlink-serviceerror": "Služba pro doporučování odkazů odpověděla pro stránku „$1“ chybou $2",
 	"growthexperiments-addlink-notinstore": "Navržené odkazy pro stránku „$1“ nebyly nalezeny.",
 	"growthexperiments-addlink-duplicatesubmission": "Pokusil jste se zkontrolovat navržené odkazy pro revizi „$1“, které již byly zkontrolovány.",
-	"growthexperiments-addlink-context-text-label": "Text",
 	"growthexperiments-addlink-context-intro": "Měl by tento odkaz vést na následující článek?",
 	"growthexperiments-addlink-context-button-accept": "Ano",
 	"growthexperiments-addlink-context-button-reject": "Ne",

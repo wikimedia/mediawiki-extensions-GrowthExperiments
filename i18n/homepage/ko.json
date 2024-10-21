@@ -381,7 +381,6 @@
 	"growthexperiments-addlink-revdeleted": "\"$2\"의 $1 판에 접근할 수 없습니다",
 	"growthexperiments-addlink-wrongmodel": "\"$2\"의 $1 은 위키텍스트가 아닙니다",
 	"growthexperiments-addlink-notinstore": "\"$1\"에 대한 링크 추천을 찾을 수 없음",
-	"growthexperiments-addlink-context-text-label": "텍스트",
 	"growthexperiments-addlink-context-intro": "이 항목이 다음 문서에 연결되는 것이 맞습니까?",
 	"growthexperiments-addlink-context-button-accept": "예",
 	"growthexperiments-addlink-context-button-reject": "아니오",

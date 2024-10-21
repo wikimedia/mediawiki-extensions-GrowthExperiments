@@ -351,7 +351,6 @@
 	"growthexperiments-addlink-serviceerror": "Saišu rekomendācijas pakalpojums lapai \"$1\" atbildēja ar kļūdu: $2",
 	"growthexperiments-addlink-notinstore": "Saišu ieteikumi netika atrasti priekš \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Mēģināja iesniegt saišu ieteikumu pārskatījumus versijai \"$1\", kas jau ir pārbaudīta.",
-	"growthexperiments-addlink-context-text-label": "Teksts",
 	"growthexperiments-addlink-context-intro": "Vai šeit būtu jābūt saitei uz šo rakstu?",
 	"growthexperiments-addlink-context-button-accept": "Jā",
 	"growthexperiments-addlink-context-button-reject": "Nē",

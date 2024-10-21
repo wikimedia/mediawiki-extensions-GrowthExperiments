@@ -382,7 +382,6 @@
 	"growthexperiments-addlink-serviceerror": "Il servizio di raccomandazione collegamenti ha risposto con un errore per \"$1\": $2",
 	"growthexperiments-addlink-notinstore": "Suggerimenti sui collegamenti per \"$1\" non trovati",
 	"growthexperiments-addlink-duplicatesubmission": "Provato ad inviare la revisione sul suggerimento di un commento per la versione \"$1\", che è già stata revisionata.",
-	"growthexperiments-addlink-context-text-label": "Testo",
 	"growthexperiments-addlink-context-intro": "Questo dovrebbe collegare la seguente voce?",
 	"growthexperiments-addlink-context-button-accept": "Sì",
 	"growthexperiments-addlink-context-button-reject": "No",

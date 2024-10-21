@@ -364,7 +364,6 @@
 	"growthexperiments-addlink-serviceerror": "A linkajánló szolgáltatás a(z) \"$1\" hibával válaszolt: $2",
 	"growthexperiments-addlink-notinstore": "Nem található linkjavaslat a következő oldalhoz: \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Megpróbált linkre vonatkozó javaslatokat benyújtani az \"$1\" felülvizsgálathoz, amelyet már felülvizsgáltak.",
-	"growthexperiments-addlink-context-text-label": "Szöveg",
 	"growthexperiments-addlink-context-intro": "Hivatkozzon ez a szó a következő szócikkre?",
 	"growthexperiments-addlink-context-button-accept": "Igen",
 	"growthexperiments-addlink-context-button-reject": "Nem",

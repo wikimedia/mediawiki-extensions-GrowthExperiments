@@ -372,7 +372,6 @@
 	"growthexperiments-addlink-serviceerror": "Сэрвіс рэкамендацый спасылак адказаў памылкай для старонкі «$1»: $2",
 	"growthexperiments-addlink-notinstore": "Для артыкула «$1» не знойдзена прапанаваных спасылак",
 	"growthexperiments-addlink-duplicatesubmission": "Была спроба адправіць агляды прапаноў спасылак для версіі «$1», якая ўжо была разгледжана.",
-	"growthexperiments-addlink-context-text-label": "Тэкст",
 	"growthexperiments-addlink-context-intro": "Ці павінна гэта спасылацца на наступны артыкул?",
 	"growthexperiments-addlink-context-button-accept": "Так",
 	"growthexperiments-addlink-context-button-reject": "Не",

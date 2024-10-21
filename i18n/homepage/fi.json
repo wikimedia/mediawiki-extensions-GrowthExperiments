@@ -352,7 +352,6 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Selvä",
 	"growthexperiments-templatecollectionfeature-invalid-collection": "Virheellinen mallinekokoelma \"$1\".",
 	"growthexperiments-addlink-pagenotfound": "Sivua \"$1\" ei ole olemassa",
-	"growthexperiments-addlink-context-text-label": "Teksti",
 	"growthexperiments-addlink-context-intro": "Pitäisikö tässä olla linkki seuraavaan artikkeliin?",
 	"growthexperiments-addlink-context-button-accept": "Kyllä",
 	"growthexperiments-addlink-context-button-reject": "Ei",

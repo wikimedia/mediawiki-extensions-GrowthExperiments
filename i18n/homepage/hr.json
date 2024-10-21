@@ -338,7 +338,6 @@
 	"growthexperiments-addlink-serviceerror": "Servis za preporuke poveznica poslao je sljedeću poruku o greški za stranicu »$1«: $2",
 	"growthexperiments-addlink-notinstore": "Nije nađen nijedan prijedlog poveznica za stranicu »$1«.",
 	"growthexperiments-addlink-duplicatesubmission": "Izmjena $1 već je pregledana pa za nju ne možemo ponovo poslati prosudbu prijedloga za poveznice.",
-	"growthexperiments-addlink-context-text-label": "Tekst",
 	"growthexperiments-addlink-context-intro": "Treba li poveznica upućivati na ovaj članak?",
 	"growthexperiments-addlink-context-button-accept": "Da",
 	"growthexperiments-addlink-context-button-reject": "Ne",

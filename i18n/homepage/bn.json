@@ -416,7 +416,6 @@
 	"growthexperiments-addlink-notinstore": "\"$1\"-এর জন্য কোনো পরামর্শকৃত লিঙ্ক খুঁজে পাওয়া যায়নি",
 	"growthexperiments-addlink-duplicatesubmission": "\"$1\" সংস্করণের জন্য পরামর্শকৃত লিঙ্কের পর্যালোচনা জমা দেয়ার চেষ্টা করা হয়েছে, যা আগেই পর্যালোচিত হয়েছে।",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "লেখা",
 	"growthexperiments-addlink-context-intro": "এটার সাথে কি এই নিবন্ধটিকে লিঙ্ক করা উচিত?",
 	"growthexperiments-addlink-context-button-accept": "হ্যাঁ",
 	"growthexperiments-addlink-context-button-reject": "না",

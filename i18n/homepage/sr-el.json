@@ -297,7 +297,6 @@
 	"growthexperiments-addlink-pagenotfound": "Stranica „$1” ne postoji",
 	"growthexperiments-addlink-revdeleted": "Nije moguće pristupiti izmeni br. $1, stranice „$2”",
 	"growthexperiments-addlink-wrongmodel": "Izmena br. $1, stranice „$2”, nije u vidu vikitekta",
-	"growthexperiments-addlink-context-text-label": "Tekst",
 	"growthexperiments-addlink-context-button-accept": "Da",
 	"growthexperiments-addlink-context-button-reject": "Ne",
 	"growthexperiments-addlink-context-button-next": "Sledeće",

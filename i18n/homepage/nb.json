@@ -398,7 +398,6 @@
 	"growthexperiments-addlink-serviceerror": "Lenkeforslagstjenesten svarte med en feil for «$1»: $2",
 	"growthexperiments-addlink-notinstore": "Lenkeforslag ikke funnet for «$1»",
 	"growthexperiments-addlink-duplicatesubmission": "Prøvde å sende inn lenkeforslag for sideversjon «$1» som allerede er gått gjennom.",
-	"growthexperiments-addlink-context-text-label": "Tekst",
 	"growthexperiments-addlink-context-intro": "Burde dette lenke til følgende artikkel?",
 	"growthexperiments-addlink-context-button-accept": "Ja",
 	"growthexperiments-addlink-context-button-reject": "Nei",

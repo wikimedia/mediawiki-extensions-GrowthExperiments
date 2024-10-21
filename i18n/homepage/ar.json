@@ -417,7 +417,6 @@
 	"growthexperiments-addlink-notinstore": "لم يُعثر على رابط مُقترح لـ«$1»",
 	"growthexperiments-addlink-duplicatesubmission": "محاولة إرسال مراجعات اقتراحات الروابط لـ \"$1\" التي تمّت مراجعتها سابقا.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "النص",
 	"growthexperiments-addlink-context-intro": "هل يجب ربط هذا، إلى المقالة التالية؟",
 	"growthexperiments-addlink-context-button-accept": "نعم",
 	"growthexperiments-addlink-context-button-reject": "لا",

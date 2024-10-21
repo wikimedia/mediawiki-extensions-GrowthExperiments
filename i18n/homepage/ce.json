@@ -375,7 +375,6 @@
 	"growthexperiments-addlink-notinstore": "\"$1\" йаззамна рекомендаци йина хьажоргаш ца карийна",
 	"growthexperiments-addlink-duplicatesubmission": "ХӀинцале а теллина йолчу \"$1\" версин кховдийнчу хьажорган таллам дӀабахьийта гӀиртира.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "Текст",
 	"growthexperiments-addlink-context-intro": "РогӀерчу йаззамна тӀе хьажорг оьший?",
 	"growthexperiments-addlink-context-button-accept": "ХӀаъ",
 	"growthexperiments-addlink-context-button-reject": "ХӀан-хӀа",

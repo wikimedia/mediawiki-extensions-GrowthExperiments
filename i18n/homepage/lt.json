@@ -371,7 +371,6 @@
 	"growthexperiments-addlink-serviceerror": "„$1“ nuorodos rekomendacijos paslauga atsakė su klaida: $2",
 	"growthexperiments-addlink-notinstore": "„$1“ nuorodos pasiūlymas nerastas",
 	"growthexperiments-addlink-duplicatesubmission": "Bandyta pateikti nuorodų pasiūlymų, skirtų „$1“ versijai, kurios jau buvo peržiūrėtos, peržiūras.",
-	"growthexperiments-addlink-context-text-label": "Tekstas",
 	"growthexperiments-addlink-context-intro": "Ar tai turėtų būti nuoroda į šį straipsnį?",
 	"growthexperiments-addlink-context-button-accept": "Taip",
 	"growthexperiments-addlink-context-button-reject": "Ne",

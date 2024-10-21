@@ -350,7 +350,6 @@
 	"growthexperiments-addlink-revdeleted": "Није могуће приступити измени бр. $1, странице „$2”",
 	"growthexperiments-addlink-wrongmodel": "Измена бр. $1, странице „$2”, није у виду викитекта",
 	"growthexperiments-addlink-notinstore": "Предлог веза није пронађен за \"$1\"",
-	"growthexperiments-addlink-context-text-label": "Текст",
 	"growthexperiments-addlink-context-intro": "Треба ли ова веза да води на наведени чланак?",
 	"growthexperiments-addlink-context-button-accept": "Да",
 	"growthexperiments-addlink-context-button-reject": "Не",

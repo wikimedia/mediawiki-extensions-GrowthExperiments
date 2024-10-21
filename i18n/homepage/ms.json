@@ -397,7 +397,6 @@
 	"growthexperiments-addlink-serviceerror": "Perkhidmatan pengesyoran pautan membalas dengan ralat untuk \"$1\": $2",
 	"growthexperiments-addlink-notinstore": "Cadangan pautan tidak ditemui untuk \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Telah cuba menyerahkan ulasan cadangan pautan untuk semakan \"$1\" yang telah pun disemak.",
-	"growthexperiments-addlink-context-text-label": "Teks",
 	"growthexperiments-addlink-context-intro": "Perlukah ia dipaut ke rencana berikut?",
 	"growthexperiments-addlink-context-button-accept": "Ya",
 	"growthexperiments-addlink-context-button-reject": "Tidak",

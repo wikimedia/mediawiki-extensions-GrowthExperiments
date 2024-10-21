@@ -413,7 +413,6 @@
 	"growthexperiments-addlink-serviceerror": "Сервис рекомендаций ссылок возвратил ошибку для статьи «$1»: $2",
 	"growthexperiments-addlink-notinstore": "Для статьи «$1» не найдено рекомендованных ссылок",
 	"growthexperiments-addlink-duplicatesubmission": "Попытка отправить проверку предложенных ссылок для версии «$1», которая уже была проверена.",
-	"growthexperiments-addlink-context-text-label": "Текст",
 	"growthexperiments-addlink-context-intro": "Необходима ли ссылка на следующую статью?",
 	"growthexperiments-addlink-context-button-accept": "Да",
 	"growthexperiments-addlink-context-button-reject": "Нет",

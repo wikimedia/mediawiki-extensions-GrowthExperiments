@@ -170,6 +170,8 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Вы}} собираетесь убрать [[User:$1|$1]] в качестве своего {{GENDER:$1|наставника}}.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Причина удаления наставника",
 	"growthexperiments-manage-mentors-remove-mentor-success": "Пользователь [[User:$1|$1]] больше не является {{GENDER:$1|наставником}}.",
+	"growhtexperiments-manage-mentors-add-mentor": "Зарегистрируйте наставника",
+	"growthexperiments-manage-mentors-add-mentor-reason": "Причина добавления наставника",
 	"growthexperiments-manage-mentors-return-back": "Вы можете [[Special:ManageMentors|вернуться]] к списку наставников.",
 	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "Добавление $1 как {{GENDER:$1|наставника|наставницы}}",
 	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "Добавление $1 как {{GENDER:$1|наставника|наставницы}}: $2",

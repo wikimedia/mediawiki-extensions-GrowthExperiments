@@ -380,7 +380,6 @@
 	"growthexperiments-addlink-notinstore": "Saran pranala tidak ditemukan untuk \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Mencoba mengirimkan tinjauan saran prnala untuk revisi \"$1\" yang telah ditinjau.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "Teks",
 	"growthexperiments-addlink-context-intro": "Haruskah ini memiliki pranala ke artikel berikut?",
 	"growthexperiments-addlink-context-button-accept": "Ya",
 	"growthexperiments-addlink-context-button-reject": "Tidak",

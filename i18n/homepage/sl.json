@@ -403,7 +403,6 @@
 	"growthexperiments-addlink-notinstore": "Predlog za povezavo za stran »$1« ni bil najden",
 	"growthexperiments-addlink-duplicatesubmission": "Redakcija »$1« je že pregledana, zato zanjo ni več mogoče poslati presoje predloga za povezavo.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "Besedilo",
 	"growthexperiments-addlink-context-intro": "Ali naj se ta povezava doda v naslednji članek?",
 	"growthexperiments-addlink-context-button-accept": "Da",
 	"growthexperiments-addlink-context-button-reject": "Ne",

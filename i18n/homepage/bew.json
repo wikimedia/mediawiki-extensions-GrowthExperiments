@@ -304,7 +304,6 @@
 	"growthexperiments-addlink-serviceerror": "Ladènan penyaranan sènggètan diwaro paké kengabluan bakal \"$1\": $2",
 	"growthexperiments-addlink-notinstore": "Saran sènggètan kaga' ketemu bakal \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Ngejal nyerahin perèksa ulang saran sènggètan bakal perbaèkan \"$1\" nyang udah diperèksa ulang.",
-	"growthexperiments-addlink-context-text-label": "Tèks",
 	"growthexperiments-addlink-context-intro": "Apa ni kudunya nyènggèt ke ni makalah?",
 	"growthexperiments-addlink-context-button-accept": "Ya",
 	"growthexperiments-addlink-context-button-reject": "Kaga'",

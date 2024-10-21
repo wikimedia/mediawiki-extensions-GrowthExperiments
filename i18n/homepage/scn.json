@@ -53,7 +53,6 @@
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|argumentu|argumenti}}",
 	"growthexperiments-notification-body-mentor-change": "Mutivu: $1",
 	"growthexperiments-addlink-pagenotfound": "La pàggina \"$1\" nun esisti.",
-	"growthexperiments-addlink-context-text-label": "Testu",
 	"growthexperiments-addlink-context-button-accept": "Sì",
 	"growthexperiments-addlink-context-button-reject": "No",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Àutru",

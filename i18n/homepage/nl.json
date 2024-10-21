@@ -412,7 +412,6 @@
 	"growthexperiments-addlink-serviceerror": "Linkaanbevelingsservice reageerde met een fout voor \"$1\": $2",
 	"growthexperiments-addlink-notinstore": "Linksuggestie niet gevonden voor '$1'",
 	"growthexperiments-addlink-duplicatesubmission": "Geprobeerd om beoordelingen van linksuggesties in te dienen voor revisie \"$1\", die al is beoordeeld.",
-	"growthexperiments-addlink-context-text-label": "Tekst",
 	"growthexperiments-addlink-context-intro": "Moet deze link naar het volgende artikel?",
 	"growthexperiments-addlink-context-button-accept": "Ja",
 	"growthexperiments-addlink-context-button-reject": "Nee",

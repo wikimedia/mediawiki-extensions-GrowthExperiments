@@ -432,7 +432,6 @@
 	"growthexperiments-addlink-serviceerror": "El servicio de recomendación de enlaces respondió con un error para \"$1\": $2",
 	"growthexperiments-addlink-notinstore": "No se encuentran recomendaciones de enlaces para «$1»",
 	"growthexperiments-addlink-duplicatesubmission": "Se intentó enviar revisiones de sugerencias de enlaces para la revisión \"$1\", que ya ha sido revisada.",
-	"growthexperiments-addlink-context-text-label": "Texto",
 	"growthexperiments-addlink-context-intro": "¿Esto debería enlazar con el siguiente artículo?",
 	"growthexperiments-addlink-context-button-accept": "Sí",
 	"growthexperiments-addlink-context-button-reject": "No",

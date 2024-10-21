@@ -411,7 +411,6 @@
 	"growthexperiments-addlink-notinstore": "Не знайдено пропонованого посилання для «$1»",
 	"growthexperiments-addlink-duplicatesubmission": "Спроба подати розгляд пропозиції посилань для версії «$1», яку вже було розглянуто.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "Текст",
 	"growthexperiments-addlink-context-intro": "Чи треба тут посилання на вказану статтю?",
 	"growthexperiments-addlink-context-button-accept": "Так",
 	"growthexperiments-addlink-context-button-reject": "Ні",

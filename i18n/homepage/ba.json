@@ -316,7 +316,6 @@
 	"growthexperiments-addlink-serviceerror": "Һылтанма тәҡдим итеү хеҙмәтенең \"$1\" өсөн яуабы хаталы: $2",
 	"growthexperiments-addlink-notinstore": "\"$1\" өсөн һылтанма тәҡдиме табылманы",
 	"growthexperiments-addlink-duplicatesubmission": "Тикшерелгән \"$1\" өлгөһө өсөн һылтанма тәҡдиме тикшереүен ебәреп ҡаранығыҙ.",
-	"growthexperiments-addlink-context-text-label": "Текст",
 	"growthexperiments-addlink-context-intro": "Был киләһе мәҡәләгә һылтанһынмы?",
 	"growthexperiments-addlink-context-button-accept": "Эйе",
 	"growthexperiments-addlink-context-button-reject": "Юҡ",

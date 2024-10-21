@@ -393,7 +393,6 @@
 	"growthexperiments-addlink-notinstore": "Sugestão de link não encontrada para \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Tentei enviar comentários de sugestões de link para a revisão \"$1\", que já foi revisada.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "Texto",
 	"growthexperiments-addlink-context-intro": "Este deve ser um link para o seguinte artigo?",
 	"growthexperiments-addlink-context-button-accept": "Sim",
 	"growthexperiments-addlink-context-button-reject": "Não",

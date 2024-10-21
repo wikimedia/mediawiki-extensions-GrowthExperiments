@@ -408,7 +408,6 @@
 	"growthexperiments-addlink-serviceerror": "Länkrekommendationstjänsten svarade med ett fel för \"$1\": \"$2\"",
 	"growthexperiments-addlink-notinstore": "Hittade inget länkförslag för \"$1\".",
 	"growthexperiments-addlink-duplicatesubmission": "Försökte skicka in granskning av länkförslag för sidversion \"$1\" som redan granskats.",
-	"growthexperiments-addlink-context-text-label": "Text",
 	"growthexperiments-addlink-context-intro": "Borde detta länka till följande artikel?",
 	"growthexperiments-addlink-context-button-accept": "Ja",
 	"growthexperiments-addlink-context-button-reject": "Nej",

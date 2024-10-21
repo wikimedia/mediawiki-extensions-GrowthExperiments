@@ -100,7 +100,6 @@
 	"growthexperiments-addlink-pagenotfound": "पन्ना \"$1\" बिद्यमान न हे ।",
 	"growthexperiments-addlink-revdeleted": "\"$2\" के सन्शोधन $1 अक्षम हे",
 	"growthexperiments-addlink-wrongmodel": "\"$2\" के सन्शोधन $1 विकिपाठ नै हे",
-	"growthexperiments-addlink-context-text-label": "पाठ",
 	"growthexperiments-addlink-context-intro": "की ई अगिला लेखसे जुड़त?",
 	"growthexperiments-addlink-context-button-accept": "हँ",
 	"growthexperiments-addlink-context-button-reject": "नै",

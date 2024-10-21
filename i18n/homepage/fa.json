@@ -410,7 +410,6 @@
 	"growthexperiments-addlink-notinstore": "پیشنهاد پیوند برای «$1» یافت نشد",
 	"growthexperiments-addlink-duplicatesubmission": "تلاش برای ثبت بازبینی پیشنهاد پیوند برای نسخهٔ «$1» که هم‌اکنون بازبینی شده است.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
-	"growthexperiments-addlink-context-text-label": "متن",
 	"growthexperiments-addlink-context-intro": "آیا این پیوند باید به مقالهٔ زیر هدایت شود؟",
 	"growthexperiments-addlink-context-button-accept": "بله",
 	"growthexperiments-addlink-context-button-reject": "خیر",
