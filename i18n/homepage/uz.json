@@ -45,6 +45,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Yangi maqolalar yarating va chala maqolalarni toʻldiring.",
 	"growthexperiments-homepage-suggested-edits-header": "Tavsiya etiladigan tahrirlar",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Sizning}} taʼsiringiz",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Sizning}} taʼsiringiz",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Maqolaga oʻtish",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Tushunarli",
 	"growthexperiments-tour-response-button-okay": "Tushunarli",
