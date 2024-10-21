@@ -42,6 +42,7 @@ use OOUI\IconWidget;
 use OOUI\Tag;
 use RuntimeException;
 use StatusValue;
+use Wikimedia\Message\MessageParam;
 
 /**
  * Homepage module that displays a list of recommended tasks.
@@ -860,7 +861,7 @@ class SuggestedEdits extends BaseModule {
 	/**
 	 * Format site views count in a human-readable way.
 	 * @param int $siteViewsCount
-	 * @return string|array A Message::params() parameter
+	 * @return string|MessageParam A Message::params() parameter
 	 */
 	protected function formatSiteViews( int $siteViewsCount ) {
 		// We only get here when $siteViewsCount is not 0 so log is safe.
