@@ -48,7 +48,7 @@ StructuredTaskMobileArticleTarget.prototype.setupToolbar = function () {
 };
 
 /**
- * Update history as if the user were to navigate to edit mode from read mode
+ * Update history as if the user had navigated from read mode to edit mode
  *
  * This allows the close button to take the user to the article's read mode
  * instead of Special:Homepage and for OO.RouteReferenceMapper to show abandonededit dialog
@@ -57,11 +57,10 @@ StructuredTaskMobileArticleTarget.prototype.setupToolbar = function () {
  * @override
  */
 StructuredTaskMobileArticleTarget.prototype.updateHistory = function () {
-	router.navigateTo( 'read', { path: location.pathname + location.search, useReplaceState: true } );
-	router.navigateTo( 'edit', {
-		path: location.pathname + location.search + '#/editor/all',
-		useReplaceState: false
-	} );
+	// We don't use router to navigate here to avoid firing events
+	history.replaceState( null, document.title, location.pathname + location.search );
+	history.pushState( null, document.title, location.pathname + location.search + '#/editor/all' );
+	// Update oldHash state in router as we bypassed router
 	router.oldHash = '/editor/all';
 	this.maybeUpdateMobileEditorPreference();
 };
