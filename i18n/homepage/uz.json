@@ -45,6 +45,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Yangi maqolalar yarating va chala maqolalarni toʻldiring.",
 	"growthexperiments-homepage-suggested-edits-header": "Tavsiya etiladigan tahrirlar",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Sizning}} taʼsiringiz",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Sizning}} taʼsiringiz",
 	"growthexperiments-homepage-impact-recent-activity-title": "Yaqindagi faoliyatingiz (soʻnggi $2 {{PLURAL:$2|kun}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Yaqindagi faoliyat (soʻnggi $1 {{PLURAL:$1|kun}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Soʻnggi tahrir",
