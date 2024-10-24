@@ -3,9 +3,9 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\Util;
 use HtmlArmor;
 use MediaWiki\Config\Config;
-use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
@@ -14,10 +14,12 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserEditTracker;
+use Psr\Log\LoggerInterface;
 use stdClass;
 use Wikimedia\ObjectCache\WANObjectCache;
 
 class CommunityUpdates extends BaseModule {
+	private LoggerInterface $logger;
 	private ?IConfigurationProvider $provider = null;
 	private ConfigurationProviderFactory $providerFactory;
 	private UserEditTracker $userEditTracker;
@@ -26,18 +28,8 @@ class CommunityUpdates extends BaseModule {
 	private WANObjectCache $cache;
 	private HttpRequestFactory $httpRequestFactory;
 
-	/**
-	 * @param IContextSource $context
-	 * @param Config $wikiConfig
-	 * @param ExperimentUserManager $experimentUserManager
-	 * @param ConfigurationProviderFactory $providerFactory
-	 * @param UserEditTracker $userEditTracker
-	 * @param LinkRenderer $linkRenderer
-	 * @param TitleFactory $titleFactory
-	 * @param WANObjectCache $cache
-	 * @param HttpRequestFactory $httpRequestFactory
-	 */
 	public function __construct(
+		LoggerInterface $logger,
 		IContextSource $context,
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
@@ -49,6 +41,7 @@ class CommunityUpdates extends BaseModule {
 		HttpRequestFactory $httpRequestFactory
 	) {
 		parent::__construct( 'community-updates', $context, $wikiConfig, $experimentUserManager );
+		$this->logger = $logger;
 		$this->providerFactory = $providerFactory;
 		$this->userEditTracker = $userEditTracker;
 		$this->linkRenderer = $linkRenderer;
@@ -146,7 +139,10 @@ class CommunityUpdates extends BaseModule {
 	private function getThumbnailUrlFromCommonsApi( string $fileTitle ): string {
 		$apiUrl = $this->getGrowthWikiConfig()->get( 'CommunityConfigurationCommonsApiURL' );
 		if ( !$apiUrl ) {
-			throw new ConfigException( 'Invalid CommunityConfigurationCommonsApiURL' );
+			$this->logger->debug(
+				'CommunityUpdates module displaying without images support: Commons API URL is undefined'
+			);
+			return '';
 		}
 		// The thumbnail width is set to 120px, which is 3x the standard Codex thumbnail size (40px).
 		// This provides a high-quality image that can be scaled down for various display sizes
@@ -162,20 +158,34 @@ class CommunityUpdates extends BaseModule {
 		];
 
 		$url = wfAppendQuery( $apiUrl, $params );
-		$options = [ 'timeout' => 10 ];
-		$request = $this->httpRequestFactory->create( $url, $options, __METHOD__ );
-		$status = $request->execute();
+		$status = Util::getJsonUrl(
+			$this->httpRequestFactory,
+			$url,
+			// Assume we're on the same wikifarm, this enhances request with extra headers that
+			// are ocassionally useful for debugging
+			true
+		);
 
-		if ( $status->isOK() ) {
-			$response = json_decode( $request->getContent(), true );
+		if ( !$status->isOK() ) {
+			Util::logStatus( $status );
+			return '';
+		}
 
-			if ( isset( $response['query']['pages'] ) ) {
-				$page = reset( $response['query']['pages'] );
-				if ( isset( $page['imageinfo'][0]['thumburl'] ) ) {
-					return $page['imageinfo'][0]['thumburl'];
-				}
+		$response = $status->getValue();
+		if ( isset( $response['query']['pages'] ) ) {
+			$page = reset( $response['query']['pages'] );
+			if ( isset( $page['imageinfo'][0]['thumburl'] ) ) {
+				return $page['imageinfo'][0]['thumburl'];
 			}
 		}
+
+		$this->logger->error(
+			'CommunityUpdates failed to find thumburl in Commons API response',
+			[
+				'exception' => new \RuntimeException,
+				'response' => $response,
+			]
+		);
 		return '';
 	}
 

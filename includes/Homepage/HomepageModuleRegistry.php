@@ -16,6 +16,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\WelcomeSurveyReminder;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use OutOfBoundsException;
@@ -215,6 +216,7 @@ class HomepageModuleRegistry {
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				return new CommunityUpdates(
+					LoggerFactory::getInstance( 'GrowthExperiments' ),
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getExperimentUserManager(),
