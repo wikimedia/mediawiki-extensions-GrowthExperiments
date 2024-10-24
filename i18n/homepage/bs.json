@@ -39,6 +39,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Teško",
 	"growthexperiments-homepage-suggested-edits-header": "Predložene izmjene",
 	"growthexperiments-homepage-new-impact-header": "{{GENDER:$1|Vaš}} utjecaj",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Vaš}} utjecaj",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Nema više sugestija",
 	"growthexperiments-homepage-suggestededits-no-results": "Nema stranica za predložiti",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|Pronađen je|Pronađena su|Pronađeno je}} <strong>$1</strong> {{PLURAL:$1|članak|članka|članaka}}",

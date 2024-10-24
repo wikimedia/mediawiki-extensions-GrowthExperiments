@@ -71,7 +71,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påvirkning",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:$1|Din}} nylige aktivitet (siste {{PLURAL:$2|døgn|$2 dager}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Nylig aktivitet ({{PLURAL:$1|den siste dagen|de siste $1 dagene}})",
-	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Sist redigert",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Forrige redigering",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Lengste rekke",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dag|dager}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|redigering|redigeringer}}",
