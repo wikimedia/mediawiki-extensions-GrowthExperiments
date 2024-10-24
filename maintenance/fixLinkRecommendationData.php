@@ -75,7 +75,17 @@ class FixLinkRecommendationData extends Maintenance {
 		$this->addOption( 'dry-run', 'Run without making any changes.' );
 		$this->addOption( 'statsd', 'Report the number of fixes (or would-be fixes, '
 			. 'when called with --dry-run) to statsd' );
-		$this->addOption( 'verbose', 'Show debug output.' );
+		$this->addOption(
+			'verbose',
+			'Show debug output. (can be provided multiple times)',
+			// required
+			false,
+			// has arg
+			false,
+			'v',
+			// multiple occurrences allowed
+			true
+		);
 		$this->addOption( 'force', 'Force the script to run in production (use with care)' );
 		$this->setBatchSize( 100 );
 	}
@@ -87,7 +97,7 @@ class FixLinkRecommendationData extends Maintenance {
 			$this->fatalError( 'At least one of --search-index and --db-table must be specified.' );
 		}
 		if ( $this->hasOption( 'search-index' ) ) {
-			$this->verboseOutput( "Removing search index entries not found in the database...\n" );
+			$this->verboseOutput( "Removing search index entries not found or outdated in the database...\n" );
 			$this->fixSearchIndex();
 		}
 		if ( $this->hasOption( 'db-table' ) ) {
@@ -151,6 +161,8 @@ class FixLinkRecommendationData extends Maintenance {
 		foreach ( $oresTopics as $oresTopic ) {
 			$from = 0;
 			$this->verboseOutput( "  checking topic $oresTopic...\n" );
+			$topicFixedCount = 0;
+			$topicOKCount = 0;
 			$searchQuery = "hasrecommendation:link articletopic:$oresTopic";
 			// phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 			while ( $titles = $this->search( $searchQuery, $batchSize, $from, $randomize ) ) {
@@ -163,7 +175,8 @@ class FixLinkRecommendationData extends Maintenance {
 
 				foreach ( $pagesToFix as $pageRecord ) {
 					$this->verboseOutput(
-						"    $fixing " . $this->titleFormatter->getPrefixedText( $pageRecord ) . "\n"
+						"    $fixing " . $this->titleFormatter->getPrefixedText( $pageRecord ) . "\n",
+						2
 					);
 					if ( !$this->hasOption( 'dry-run' ) ) {
 						$this->weightedTagsUpdater->resetWeightedTags( $pageRecord, [ 'recommendation.link' ] );
@@ -172,16 +185,19 @@ class FixLinkRecommendationData extends Maintenance {
 				}
 				$from = min( 10000, $batchSize + $from );
 				$fixedCount += count( $pagesToFix );
+				$topicFixedCount += count( $pagesToFix );
 				$okCount += count( $pageIdsToCheck ) - count( $pagesToFix );
+				$topicOKCount += count( $pageIdsToCheck ) - count( $pagesToFix );
 				if ( $batchSize + $from > 10000 ) {
 					$this->error( "  topic $oresTopic had more than 10K tasks" );
 					break;
 				}
 			}
+			$this->verboseOutput( "  topic $oresTopic: $topicOKCount OK, $topicFixedCount fixed/fixable\n" );
 		}
 
 		// phpcs:ignore Generic.Files.LineLength
-		$this->output( "Total number of OK search index entries: $okCount\n (results in multiple topics counted multiple times)" );
+		$this->output( "Total number of OK search index entries: $okCount\n (results in multiple topics counted multiple times)\n" );
 		$this->maybeReportFixedCount( $fixedCount, 'search-index' );
 	}
 
@@ -197,7 +213,7 @@ class FixLinkRecommendationData extends Maintenance {
 				$this->getBatchSize(), 0 );
 			$pageIdsToFix = $this->titlesToPageIds( $titlesToFix );
 			foreach ( $titlesToFix as $title ) {
-				$this->verboseOutput( "    $fixing " . $title->getPrefixedText() . "\n" );
+				$this->verboseOutput( "    $fixing " . $title->getPrefixedText() . "\n", 2 );
 			}
 			if ( $pageIdsToFix && !$this->hasOption( 'dry-run' ) ) {
 				$this->linkRecommendationStore->deleteByPageIds( $pageIdsToFix );
@@ -275,8 +291,14 @@ class FixLinkRecommendationData extends Maintenance {
 		return iterator_to_array( $pageRecords );
 	}
 
-	private function verboseOutput( string $output ): void {
-		if ( $this->hasOption( 'verbose' ) ) {
+	private function verboseOutput( string $output, int $messageVerbosity = 1 ): void {
+		if ( !$this->hasOption( 'verbose' ) ) {
+			return;
+		}
+
+		$levelOfVerbosity = count( $this->getOption( 'verbose' ) );
+
+		if ( $levelOfVerbosity >= $messageVerbosity ) {
 			$this->output( $output );
 		}
 	}
