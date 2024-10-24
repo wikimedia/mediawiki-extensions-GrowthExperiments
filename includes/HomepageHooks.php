@@ -829,11 +829,6 @@ class HomepageHooks implements
 			// Growth features cannot be enabled, short-circuit
 			return;
 		}
-		$this->experimentUserManager->setPlatform(
-			Util::isMobile( RequestContext::getMain()->getSkin() ) ?
-				'mobile' :
-				'desktop'
-		);
 
 		// Enable the homepage for a percentage of non-autocreated users.
 		$enablePercentage = $this->config->get( 'GEHomepageNewAccountEnablePercentage' );
@@ -874,14 +869,16 @@ class HomepageHooks implements
 			}
 
 			// Variant assignment
+			// Get the variant assigned by ExperimentUserDefaultsManager
+			$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
+			// Maybe override variant with query parameter
 			if ( $geForceVariant !== null
 				 && $this->experimentUserManager->isValidVariant( $geForceVariant )
+				 && $geForceVariant !== $variant
 			) {
 				$variant = $geForceVariant;
-			} else {
-				$variant = $this->experimentUserManager->getRandomVariant();
+				$this->experimentUserManager->setVariant( $user, $variant );
 			}
-			$this->experimentUserManager->setVariant( $user, $variant );
 			$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.UserVariant.' . $variant );
 
 			// Place an empty user impact object in the database table cache, to avoid

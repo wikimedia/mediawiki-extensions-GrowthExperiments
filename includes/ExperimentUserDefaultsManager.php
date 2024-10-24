@@ -4,6 +4,11 @@ namespace GrowthExperiments;
 
 use MediaWiki\User\UserIdentity;
 
+/**
+ * Service for assigning experiment / variant to users using configured
+ * variants in conditional user options.
+ * @see https://www.mediawiki.org/wiki/Manual:$wgConditionalUserOptions
+ */
 class ExperimentUserDefaultsManager {
 
 	public const CUCOND_BUCKET_BY_USER_ID = 'user-bucket-growth';
