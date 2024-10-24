@@ -16,40 +16,24 @@ class ExperimentUserManager {
 	private UserOptionsLookup $userOptionsLookup;
 	private UserOptionsManager $userOptionsManager;
 
-	/** @var string|null One of 'mobile' or 'desktop' */
-	private ?string $platform;
-
 	public const CONSTRUCTOR_OPTIONS = [
 		'GEHomepageDefaultVariant',
-		'GEHomepageNewAccountVariantsByPlatform',
 	];
 
 	/**
 	 * @param ServiceOptions $options
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param string|null $platform
 	 */
 	public function __construct(
 		ServiceOptions $options,
 		UserOptionsManager $userOptionsManager,
-		UserOptionsLookup $userOptionsLookup,
-		?string $platform = null
+		UserOptionsLookup $userOptionsLookup
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userOptionsManager = $userOptionsManager;
-		$this->platform = $platform;
-	}
-
-	/**
-	 * Specify if the experiment manager is in a desktop/mobile platform context.
-	 *
-	 * @param string $platform One of "mobile" or "desktop"
-	 */
-	public function setPlatform( string $platform ): void {
-		$this->platform = $platform;
 	}
 
 	/**
@@ -96,28 +80,5 @@ class ExperimentUserManager {
 	 */
 	public function isValidVariant( string $variant ): bool {
 		return in_array( $variant, VariantHooks::VARIANTS );
-	}
-
-	/**
-	 * Get a random variant according to the distribution defined in $wgGEHomepageNewAccountVariantsByPlatform.
-	 *
-	 * @return string
-	 */
-	public function getRandomVariant(): string {
-		$variantProbabilities = $this->options->get( 'GEHomepageNewAccountVariantsByPlatform' );
-		$random = rand( 0, 99 );
-
-		$variant = $this->options->get( 'GEHomepageDefaultVariant' );
-		foreach ( $variantProbabilities as $candidateVariant => $percentageForVariant ) {
-			if ( !$this->isValidVariant( $candidateVariant ) ) {
-				continue;
-			}
-			if ( $random < $percentageForVariant[$this->platform] ) {
-				$variant = $candidateVariant;
-				break;
-			}
-			$random -= $percentageForVariant[$this->platform];
-		}
-		return $variant;
 	}
 }

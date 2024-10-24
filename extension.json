@@ -2645,15 +2645,6 @@
 			"description": "Percentage of new accounts to enable homepage for. Must be a whole number.",
 			"value": 100
 		},
-		"GEHomepageNewAccountVariantsByPlatform": {
-			"description": "Which percentage of new accounts to assign which A/B testing variant. For each variant, assign a percentage to \"mobile\" or \"desktop\" platforms. For legacy reasons this has 'Homepage' in the name and is only applied to new accounts for whom the homepage got enabled. Percentages must be whole numbers. If the percentages don't add up to 100, some new accounts will not be assigned a variant. Those accounts will fall back on GEHomepageDefaultVariant. The random choice can be overridden with the geForceVariant query parameter.",
-			"value": {
-				"control": {
-					"mobile": 100,
-					"desktop": 100
-				}
-			}
-		},
 		"GEHomepageDefaultVariant": {
 			"description": "Experiment variant to use for users who weren't assigned a variant at account creation time, or the variant they got is not valid anymore. Valid values: 'control'.",
 			"value": "control"

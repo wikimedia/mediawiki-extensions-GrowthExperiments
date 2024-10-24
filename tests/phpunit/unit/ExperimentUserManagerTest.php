@@ -29,7 +29,6 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
-					'GEHomepageNewAccountVariantsByPlatform' => []
 				]
 			),
 			$userOptionsLookupMock
@@ -56,7 +55,6 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
-					'GEHomepageNewAccountVariantsByPlatform' => []
 				]
 			),
 			$userOptionsLookupMock
@@ -68,75 +66,13 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 			$experimentUserManager->getVariant( $user2 ) );
 	}
 
-	/**
-	 * @covers ::getRandomVariant
-	 * @dataProvider variantAssignmentByPlatformProvider
-	 */
-	public function testVariantAssignmentByPlatform(
-		string $message, string $expectedVariant, array $serviceOptions, ?string $platform = null
-	) {
-		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
-		$userOptionsLookupMock->method( 'getOption' )
-			->willReturn( '' );
-		$this->assertEquals(
-			$expectedVariant,
-			$this->getExperimentUserManager(
-				new ServiceOptions(
-					ExperimentUserManager::CONSTRUCTOR_OPTIONS,
-					$serviceOptions
-				),
-				$userOptionsLookupMock,
-				$platform
-			)->getRandomVariant(),
-			$message
-		);
-	}
-
-	/**
-	 * @see ::testVariantAssignmentByPlatform
-	 * @return array[]
-	 */
-	public static function variantAssignmentByPlatformProvider(): array {
-		return [
-			[
-				'mobile: GEHomepageNewAccountVariantsByPlatform assigns control variant for mobile users.',
-				'control',
-				[
-					'GEHomepageDefaultVariant' => 'control',
-					'GEHomepageNewAccountVariantsByPlatform' => [
-						'control' => [
-							'desktop' => 100,
-							'mobile' => 100
-						]
-					]
-				],
-				'mobile'
-			],
-			[
-				'desktop: GEHomepageNewAccountVariantsByPlatform assigns control variant for desktop users',
-				'control',
-				[
-					'GEHomepageDefaultVariant' => 'control',
-					'GEHomepageNewAccountVariantsByPlatform' => [
-						'control' => [
-							'desktop' => 100,
-							'mobile' => 100
-						]
-					]
-				],
-				'desktop'
-			],
-		];
-	}
-
 	private function getExperimentUserManager(
-		ServiceOptions $options, UserOptionsLookup $lookup, ?string $platform = null
+		ServiceOptions $options, UserOptionsLookup $lookup
 	): ExperimentUserManager {
 		return new ExperimentUserManager(
 			$options,
 			$this->createMock( UserOptionsManager::class ),
-			$lookup,
-			$platform
+			$lookup
 		);
 	}
 }
