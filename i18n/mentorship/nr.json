@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bobbyshabangu"
+		]
+	},
+	"growthexperiments-manage-mentors-error-no-such-user": "Iphutha: Akekho umsebenzisi onjalo one-ID yomsebenzisi etjhiwoko. Lokhu mhlamunye kuliphutha langaphakathi.",
+	"growthexperiments-manage-mentors-add-mentor-pretext": "Ngokusebenzisa iforomo leli, kungenzeka ukufaka umeluleki omutjha erherhweni. Umsebenzisi ongezelelweko akutlhogeki bona ahlangabezane nemibandela yokufaneleka. Bafakwa njengomeluleki owabelwe ngesandla, begodu bayakghona ukutjhugulula amasethingi wabo.",
+	"growthexperiments-manage-mentors-add-mentor-username": "Ibizo lomsebenzisi lomeluleki ozokufaka",
+	"growthexperiments-manage-mentors-add-mentor-reason": "Isizathu sokungezelela umeluleki"
+}

@@ -183,7 +183,7 @@
 	"growthexperiments-manage-mentors-pretext-regular": "Administratores pote remover mentores que viola le normas o politicas del communitate. Illes pote tamben modificar lor optiones ligate al mentorato, como lor message de presentation.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "Le lista de mentores es immagazinate in le [[$1|spatio de nomines MediaWiki]], incluse le historia.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Pro inscriber te como mentor, visita [[Special:EnrollAsMentor]].",
-	"growthexperiments-manage-mentors-error-no-such-user": "Error: Non existe un usator con ID de $1. Isto es probabilemente un error interne.",
+	"growthexperiments-manage-mentors-error-no-such-user": "Error: Non existe un usator con le ID specificate. Isto es probabilemente un error interne.",
 	"growthexperiments-manage-mentors-auto-assigned": "Mentores automaticamente assignate a nove contos",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Quando un novicio crea su conto de {{SITENAME}}, un del sequente usatores es assignate automaticamente como su mentor.",
 	"growthexperiments-manage-mentors-manually-assigned": "Mentores qui selige manualmente lor apprentisses",

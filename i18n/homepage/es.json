@@ -653,5 +653,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Has}} hecho $3 {{PLURAL:$3|edición sugerida|ediciones sugeridas}}. Continúa para seguir aprendiendo nuevas habilidades.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Hacer una edición sugerida",
 	"echo-category-title-ge-newcomer": "Funcionalidades de Crecimiento",
-	"echo-pref-tooltip-ge-newcomer": "Notificarme de las tareas para personas novatas y otras funciones diseñadas para ayudar a quienes están empezando a editar."
+	"echo-pref-tooltip-ge-newcomer": "Notificarme de las tareas para personas novatas y otras funciones diseñadas para ayudar a quienes están empezando a editar.",
+	"growthexperiments-homepage-community-updates-header": "Actualidad de la Comunidad",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Aprende más"
 }
