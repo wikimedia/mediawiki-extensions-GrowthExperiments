@@ -10,17 +10,11 @@ use MediaWiki\User\UserIdentity;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiStarMentee extends ApiBase {
-	/** @var StarredMenteesStore */
-	private $starredMenteesStore;
+	private StarredMenteesStore $starredMenteesStore;
 
-	/**
-	 * @param ApiMain $mainModule
-	 * @param string $moduleName
-	 * @param StarredMenteesStore $starredMenteesStore
-	 */
 	public function __construct(
 		ApiMain $mainModule,
-		$moduleName,
+		string $moduleName,
 		StarredMenteesStore $starredMenteesStore
 	) {
 		parent::__construct( $mainModule, $moduleName );

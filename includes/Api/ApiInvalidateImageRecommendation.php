@@ -34,15 +34,6 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	private TitleFactory $titleFactory;
 	private ConfigurationLoader $configurationLoader;
 
-	/**
-	 * @param ApiMain $mainModule
-	 * @param string $moduleName
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param AddImageSubmissionHandler $imageSubmissionHandler
-	 * @param TaskSuggesterFactory $taskSuggesterFactory
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param TitleFactory $titleFactory
-	 */
 	public function __construct(
 		ApiMain $mainModule,
 		string $moduleName,

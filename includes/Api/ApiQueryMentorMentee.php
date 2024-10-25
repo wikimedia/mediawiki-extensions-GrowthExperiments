@@ -11,17 +11,11 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiQueryMentorMentee extends ApiQueryBase {
 
-	/** @var MentorStore */
-	private $mentorStore;
+	private MentorStore $mentorStore;
 
-	/**
-	 * @param ApiQuery $queryModule
-	 * @param string $moduleName
-	 * @param MentorStore $mentorStore
-	 */
 	public function __construct(
 		ApiQuery $queryModule,
-		$moduleName,
+		string $moduleName,
 		MentorStore $mentorStore
 	) {
 		parent::__construct( $queryModule, $moduleName );

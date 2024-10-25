@@ -8,17 +8,11 @@ use MediaWiki\Api\ApiQueryBase;
 
 class ApiQueryMenteeStatus extends ApiQueryBase {
 
-	/** @var MentorManager */
-	private $mentorManager;
+	private MentorManager $mentorManager;
 
-	/**
-	 * @param ApiQuery $queryModule
-	 * @param string $moduleName
-	 * @param MentorManager $mentorManager
-	 */
 	public function __construct(
 		ApiQuery $queryModule,
-		$moduleName,
+		string $moduleName,
 		MentorManager $mentorManager
 	) {
 		parent::__construct( $queryModule, $moduleName );

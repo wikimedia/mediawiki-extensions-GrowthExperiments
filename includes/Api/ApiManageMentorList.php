@@ -19,16 +19,9 @@ class ApiManageMentorList extends ApiBase {
 	private IMentorWriter $mentorWriter;
 	private MentorStatusManager $mentorStatusManager;
 
-	/**
-	 * @param ApiMain $mainModule
-	 * @param string $moduleName
-	 * @param MentorProvider $mentorProvider
-	 * @param IMentorWriter $mentorWriter
-	 * @param MentorStatusManager $mentorStatusManager
-	 */
 	public function __construct(
 		ApiMain $mainModule,
-		$moduleName,
+		string $moduleName,
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter,
 		MentorStatusManager $mentorStatusManager

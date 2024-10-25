@@ -19,16 +19,9 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 	private ConfigurationLoader $configurationLoader;
 	private UserImpactLookup $userImpactLookup;
 
-	/**
-	 * @param ApiQuery $queryModule
-	 * @param string $moduleName
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param LevelingUpManager $levelingUpManager
-	 * @param UserImpactLookup $userImpactLookup
-	 */
 	public function __construct(
 		ApiQuery $queryModule,
-		$moduleName,
+		string $moduleName,
 		ConfigurationLoader $configurationLoader,
 		LevelingUpManager $levelingUpManager,
 		UserImpactLookup $userImpactLookup

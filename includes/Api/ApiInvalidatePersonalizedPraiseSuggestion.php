@@ -21,17 +21,9 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 
 	private PersonalizedPraiseLogger $personalizedPraiseLogger;
 
-	/**
-	 * @param ApiMain $mainModule
-	 * @param string $moduleName
-	 * @param MentorProvider $mentorProvider
-	 * @param MentorStore $mentorStore
-	 * @param PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester
-	 * @param PersonalizedPraiseLogger $personalizedPraiseLogger
-	 */
 	public function __construct(
 		ApiMain $mainModule,
-		$moduleName,
+		string $moduleName,
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
 		PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester,

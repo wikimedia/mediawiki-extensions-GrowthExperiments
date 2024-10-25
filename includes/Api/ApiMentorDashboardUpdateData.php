@@ -10,21 +10,12 @@ use MediaWiki\Api\ApiMain;
 
 class ApiMentorDashboardUpdateData extends ApiBase {
 
-	/** @var MentorProvider */
-	private $mentorProvider;
+	private MentorProvider $mentorProvider;
+	private JobQueueGroup $jobQueueGroup;
 
-	/** @var JobQueueGroup */
-	private $jobQueueGroup;
-
-	/**
-	 * @param ApiMain $mainModule
-	 * @param string $moduleName
-	 * @param MentorProvider $mentorProvider
-	 * @param JobQueueGroup $jobQueueGroup
-	 */
 	public function __construct(
 		ApiMain $mainModule,
-		$moduleName,
+		string $moduleName,
 		MentorProvider $mentorProvider,
 		JobQueueGroup $jobQueueGroup
 	) {
