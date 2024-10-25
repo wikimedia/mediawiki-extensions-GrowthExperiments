@@ -10,6 +10,7 @@ use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefini
 
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
 class SuggestedEditsSchema extends JsonSchema {
+	public const VERSION = '1.0.0';
 
 	public const GEInfoboxTemplates = [
 		self::REF => [ 'class' => MediaWikiDefinitions::class, 'field' => 'PageTitles' ],

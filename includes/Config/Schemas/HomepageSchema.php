@@ -7,6 +7,8 @@ use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefini
 
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
 class HomepageSchema extends JsonSchema {
+	public const VERSION = '1.0.0';
+
 	public const GEHomepageSuggestedEditsIntroLinks = [
 		self::TYPE => self::TYPE_OBJECT,
 		self::PROPERTIES => [

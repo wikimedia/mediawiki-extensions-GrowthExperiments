@@ -6,6 +6,8 @@ use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
 class MentorshipSchema extends JsonSchema {
+	public const VERSION = '1.0.0';
+
 	public const GEMentorshipEnabled = [
 		self::TYPE => self::TYPE_BOOLEAN,
 		self::DEFAULT => false,
