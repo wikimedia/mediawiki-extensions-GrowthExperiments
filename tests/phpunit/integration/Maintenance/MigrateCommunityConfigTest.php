@@ -241,6 +241,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 		);
 		$this->assertExpectedToActualConfigWithOverrides(
 			[
+				'$version' => '1.0.0',
 				'GEMentorshipAutomaticEligibility' => true,
 				'GEMentorshipEnabled' => true,
 				'GEMentorshipMinimumAge' => 90,
@@ -251,6 +252,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 		);
 		$this->assertExpectedToActualConfigWithOverrides(
 			[
+				'$version' => '1.0.0',
 				'GEHomepageSuggestedEditsIntroLinks' => (object)[
 					'create' => 'Help:Creating pages',
 					'image' => 'Help:Viewing media',
@@ -262,6 +264,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 		);
 		$this->assertExpectedToActualConfigWithOverrides(
 			[
+				'$version' => '1.0.0',
 				'GEInfoboxTemplates' => [],
 				'copyedit' => (object)[
 					'disabled' => false,
@@ -357,17 +360,17 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 			'MediaWiki:GrowthExperimentsHelpPanel.json'
 		);
 		$this->assertExpectedToActualConfigWithOverrides(
-			[],
+			[ '$version' => '1.0.0' ],
 			[],
 			'MediaWiki:GrowthExperimentsMentorship.json'
 		);
 		$this->assertExpectedToActualConfigWithOverrides(
-			[],
+			[ '$version' => '1.0.0' ],
 			[],
 			'MediaWiki:GrowthExperimentsHomepage.json'
 		);
 		$this->assertExpectedToActualConfigWithOverrides(
-			[],
+			[ '$version' => '1.0.0' ],
 			[],
 			'MediaWiki:GrowthExperimentsSuggestedEdits.json'
 		);
@@ -548,6 +551,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 			'GEHelpPanelViewMoreTitle' => 'Main_Page',
 		];
 		$defaultMentorshipConfig = [
+			'$version' => '1.0.0',
 			'GEMentorshipAutomaticEligibility' => true,
 			'GEMentorshipEnabled' => true,
 			'GEMentorshipMinimumAge' => 90,
@@ -558,6 +562,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 			'GEPersonalizedPraiseDays' => 7,
 		];
 		$defaultHomepageConfig = [
+			'$version' => '1.0.0',
 			'GEHomepageSuggestedEditsIntroLinks' => (object)[
 				'create' => 'Help:Creating pages',
 				'image' => 'Help:Images',
@@ -566,6 +571,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 			'GELevelingUpKeepGoingNotificationThresholds' => 4,
 		];
 		$defaultSuggestedEditsConfig = [
+			'$version' => '1.0.0',
 			'link_recommendation' => (object)[
 				'disabled' => false,
 				'templates' => [],
