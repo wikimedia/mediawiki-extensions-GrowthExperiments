@@ -9,21 +9,12 @@ use MediaWiki\Api\ApiQueryBase;
 
 class ApiQueryMentorStatus extends ApiQueryBase {
 
-	/** @var MentorProvider */
-	private $mentorProvider;
+	private MentorProvider $mentorProvider;
+	private MentorStatusManager $mentorStatusManager;
 
-	/** @var MentorStatusManager */
-	private $mentorStatusManager;
-
-	/**
-	 * @param ApiQuery $mainModule
-	 * @param string $moduleName
-	 * @param MentorProvider $mentorProvider
-	 * @param MentorStatusManager $mentorStatusManager
-	 */
 	public function __construct(
 		ApiQuery $mainModule,
-		$moduleName,
+		string $moduleName,
 		MentorProvider $mentorProvider,
 		MentorStatusManager $mentorStatusManager
 	) {

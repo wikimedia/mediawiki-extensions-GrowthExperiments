@@ -37,17 +37,9 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 	private Config $config;
 	private TitleFactory $titleFactory;
 
-	/**
-	 * @param ApiQuery $mainModule
-	 * @param string $moduleName
-	 * @param ImageRecommendationProvider $imageRecommendationProvider
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param Config $config
-	 * @param TitleFactory $titleFactory
-	 */
 	public function __construct(
 		ApiQuery $mainModule,
-		$moduleName,
+		string $moduleName,
 		ImageRecommendationProvider $imageRecommendationProvider,
 		ConfigurationLoader $configurationLoader,
 		Config $config,

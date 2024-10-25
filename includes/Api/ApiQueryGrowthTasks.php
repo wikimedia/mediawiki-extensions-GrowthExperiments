@@ -36,19 +36,9 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	private ProtectionFilter $protectionFilter;
 	private JobQueueGroup $jobQueueGroup;
 
-	/**
-	 * @param ApiQuery $queryModule
-	 * @param string $moduleName
-	 * @param JobQueueGroup $jobQueueGroup
-	 * @param TaskSuggesterFactory $taskSuggesterFactory
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param LinkRecommendationFilter $linkRecommendationFilter
-	 * @param ImageRecommendationFilter $imageRecommendationFilter
-	 * @param ProtectionFilter $protectionFilter
-	 */
 	public function __construct(
 		ApiQuery $queryModule,
-		$moduleName,
+		string $moduleName,
 		JobQueueGroup $jobQueueGroup,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		ConfigurationLoader $configurationLoader,

@@ -15,25 +15,13 @@ use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Rdbms\IDBAccessObject;
 
 class ApiSetMentor extends ApiBase {
-	/** @var MentorManager */
-	private $mentorManager;
+	private MentorManager $mentorManager;
+	private ChangeMentorFactory $changeMentorFactory;
+	private UserIdentityUtils $userIdentityUtils;
 
-	/** @var ChangeMentorFactory */
-	private $changeMentorFactory;
-
-	/** @var UserIdentityUtils */
-	private $userIdentityUtils;
-
-	/**
-	 * @param ApiMain $mainModule
-	 * @param string $moduleName
-	 * @param MentorManager $mentorManager
-	 * @param ChangeMentorFactory $changeMentorFactory
-	 * @param UserIdentityUtils $userIdentityUtils
-	 */
 	public function __construct(
 		ApiMain $mainModule,
-		$moduleName,
+		string $moduleName,
 		MentorManager $mentorManager,
 		ChangeMentorFactory $changeMentorFactory,
 		UserIdentityUtils $userIdentityUtils

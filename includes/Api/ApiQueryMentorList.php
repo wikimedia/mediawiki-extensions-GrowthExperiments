@@ -13,15 +13,9 @@ class ApiQueryMentorList extends ApiQueryBase {
 	private UserIdentityLookup $userIdentityLookup;
 	private MentorProvider $mentorProvider;
 
-	/**
-	 * @param ApiQuery $queryModule
-	 * @param string $moduleName
-	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param MentorProvider $mentorProvider
-	 */
 	public function __construct(
 		ApiQuery $queryModule,
-		$moduleName,
+		string $moduleName,
 		UserIdentityLookup $userIdentityLookup,
 		MentorProvider $mentorProvider
 	) {

@@ -7,17 +7,11 @@ use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
 
 class ApiQueryStarredMentees extends ApiQueryBase {
-	/** @var StarredMenteesStore */
-	private $starredMenteesStore;
+	private StarredMenteesStore $starredMenteesStore;
 
-	/**
-	 * @param ApiQuery $mainModule
-	 * @param string $moduleName
-	 * @param StarredMenteesStore $starredMenteesStore
-	 */
 	public function __construct(
 		ApiQuery $mainModule,
-		$moduleName,
+		string $moduleName,
 		StarredMenteesStore $starredMenteesStore
 	) {
 		parent::__construct( $mainModule, $moduleName );

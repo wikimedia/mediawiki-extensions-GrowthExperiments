@@ -12,25 +12,13 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMenteeStatus extends ApiBase {
 
-	/** @var Config */
-	private $wikiConfig;
+	private Config $wikiConfig;
+	private MentorManager $mentorManager;
+	private MentorStore $mentorStore;
 
-	/** @var MentorManager */
-	private $mentorManager;
-
-	/** @var MentorStore */
-	private $mentorStore;
-
-	/**
-	 * @param ApiMain $mainModule
-	 * @param string $moduleName
-	 * @param Config $wikiConfig
-	 * @param MentorManager $mentorManager
-	 * @param MentorStore $mentorStore
-	 */
 	public function __construct(
 		ApiMain $mainModule,
-		$moduleName,
+		string $moduleName,
 		Config $wikiConfig,
 		MentorManager $mentorManager,
 		MentorStore $mentorStore
