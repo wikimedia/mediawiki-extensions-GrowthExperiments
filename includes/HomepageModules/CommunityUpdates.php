@@ -66,6 +66,18 @@ class CommunityUpdates extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getCssClasses(): array {
+		return array_merge( parent::getCssClasses(),
+			// Enable "Poor man's dark mode" per-module. Temporary workaround for T357699.
+			// FIXME: This should be removed when there is capacity for updating the extension
+			// to use Codex design tokens.
+			[ 'notheme skin-invert ' ],
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getHeaderText() {
 		return $this->getContext()->msg( 'growthexperiments-homepage-community-updates-header' )->text();
 	}
