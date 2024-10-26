@@ -341,6 +341,7 @@ class Mentorship extends BaseModule {
 	private function getEditCount() {
 		$text = $this->getContext()
 			->msg( 'growthexperiments-homepage-mentorship-mentor-edits' )
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable editcount always not-null
 			->numParams( MediaWikiServices::getInstance()->getUserEditTracker()
 				->getUserEditCount( $this->getMentor() ) )
 			->text();
