@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chidananda Kampa"
+			"Chidananda Kampa",
+			"BHARATHESHA ALASANDEMAJALU",
+			"ChiK",
+			"Mahaveer Indra"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "ಬಳಕೆದಾರೆರೆಪುದರ್",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "ಒಪ್ಪಿಸಾಲೆ"
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "ಪೊಸತ್ತ್"
 }
