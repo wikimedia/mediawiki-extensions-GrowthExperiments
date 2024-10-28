@@ -169,7 +169,8 @@ class HomepageModuleRegistry {
 					$growthServices->getExperimentUserManager(),
 					$growthServices->getMentorManager(),
 					$growthServices->getMentorStatusManager(),
-					$services->getGenderCache()
+					$services->getGenderCache(),
+					$services->getUserEditTracker()
 				);
 			},
 
