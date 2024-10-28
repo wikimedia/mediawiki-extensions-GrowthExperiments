@@ -183,6 +183,14 @@
 				"UserIdentityLookup",
 				"GrowthExperimentsMentorProvider"
 			]
+		},
+		"linkrecommendations": {
+			"class": "GrowthExperiments\\Api\\ApiQueryLinkRecommendations",
+			"services": [
+				"GrowthExperimentsLinkRecommendationStore",
+				"TitleFactory",
+				"GrowthExperimentsConfig"
+			]
 		}
 	},
 	"APIMetaModules": {
