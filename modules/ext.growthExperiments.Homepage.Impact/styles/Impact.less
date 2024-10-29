@@ -1,5 +1,5 @@
 /*
- * Top-level styles for the NewImpact module markup. All classes are added in the server.
+ * Top-level styles for the Impact module markup. All classes are added in the server.
  *
  * See includes/HomepageModules/Impact.php
  * TODO: Can switch to -impact when old impact module is retired and comply to selector pattern rule.
@@ -22,7 +22,7 @@
 
 	/* stylelint-disable-next-line selector-class-pattern */
 	&.growthexperiments-homepage-module-mobile-summary {
-		// NewImpact module is rendered on client-side only; set a minimum height based on what we
+		// Impact module is rendered on client-side only; set a minimum height based on what we
 		// think its rendered height will be.
 		min-height: 228px;
 	}
@@ -54,17 +54,17 @@
 
 /*
  * Styles used under the Vue application root element while Javascript is loading.
- * All HTML under "ext-growthExperiments-new-impact-app-root" will be replaced by the Vue application
+ * All HTML under "ext-growthExperiments-impact-app-root" will be replaced by the Vue application
  * while it loads. CSS rules will still exist but should not be used from Vue components.
  * See getBaseMarkup in includes/HomepageModules/Impact.php
  * See modules/vue-components/Skeleton.less
 */
 
-.ext-growthExperiments-new-impact-app-root--mobile {
+.ext-growthExperiments-impact-app-root--mobile {
 	width: 100%;
 }
 
-.ext-growthExperiments-new-impact-app-root {
+.ext-growthExperiments-impact-app-root {
 	// Add vertical gutter between each skeleton container
 	.ext-growthExperiments-Skeleton {
 		margin-top: 1em;

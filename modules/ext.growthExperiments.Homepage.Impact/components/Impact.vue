@@ -1,8 +1,8 @@
 <template>
 	<section
-		class="ext-growthExperiments-NewImpact"
+		class="ext-growthExperiments-Impact"
 		:class="{
-			'ext-growthExperiments-NewImpact--mobile': isMobileHomepage === true
+			'ext-growthExperiments-Impact--mobile': isMobileHomepage === true
 		}">
 		<!-- TODO: add skeletons, maybe use suspense, load sections only if data available -->
 		<div v-if="data">
@@ -16,7 +16,7 @@
 		</div>
 		<div v-if="data && hasIntl">
 			<c-text
-				class="ext-growthExperiments-NewImpact__section-title ext-growthExperiments-increaseSpecificity"
+				class="ext-growthExperiments-Impact__section-title ext-growthExperiments-increaseSpecificity"
 				as="h3"
 				size="md"
 				weight="bold"
@@ -40,19 +40,19 @@
 		</div>
 		<div v-if="data && data.articles.length > 0">
 			<c-text
-				class="ext-growthExperiments-NewImpact__section-title ext-growthExperiments-increaseSpecificity"
+				class="ext-growthExperiments-Impact__section-title ext-growthExperiments-increaseSpecificity"
 				as="h3"
 				size="md"
 				weight="bold"
 			>
 				{{ articlesListTitleText }}
 			</c-text>
-			<articles-list class="ext-growthExperiments-NewImpact__articles-list" :items="data.articles"></articles-list>
+			<articles-list class="ext-growthExperiments-Impact__articles-list" :items="data.articles"></articles-list>
 			<c-text weight="bold">
 				<a
 					data-link-id="impact-contributions"
 					:href="contributionsUrl"
-					class="ext-growthExperiments-NewImpact__contributions-link"
+					class="ext-growthExperiments-Impact__contributions-link"
 				>
 					{{ contributionsLinkText }}
 				</a>
