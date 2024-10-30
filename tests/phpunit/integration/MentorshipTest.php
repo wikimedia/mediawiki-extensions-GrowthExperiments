@@ -39,7 +39,8 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 			$growthServices->getExperimentUserManager(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
-			$services->getGenderCache()
+			$services->getGenderCache(),
+			$services->getUserEditTracker()
 		);
 
 		$this->assertSame( '', $mentorshipModule->render( IDashboardModule::RENDER_DESKTOP ) );
@@ -68,7 +69,8 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 			$growthServices->getExperimentUserManager(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
-			$services->getGenderCache()
+			$services->getGenderCache(),
+			$services->getUserEditTracker()
 		);
 		$context->getOutput()->enableOOUI();
 		$this->assertNotEmpty( $mentorshipModule->render( IDashboardModule::RENDER_DESKTOP ) );
@@ -108,7 +110,8 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 			$growthServices->getExperimentUserManager(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
-			$services->getGenderCache()
+			$services->getGenderCache(),
+			$services->getUserEditTracker()
 		);
 		$context->getOutput()->enableOOUI();
 

@@ -289,7 +289,10 @@ class HelpPanelHooks implements
 				__METHOD__
 			),
 			'editCount' => $this->userEditTracker->getUserEditCount( $mentor->getUserIdentity() ),
-			'lastActive' => Mentorship::getMentorLastActive( $mentor->getUserIdentity(), $user, $localizer ),
+			'lastActive' => Mentorship::getMentorLastActive(
+				$mentor->getUserIdentity(), $user,
+				$localizer, $this->userEditTracker
+			),
 			'backAt' => $language->date(
 				$this->mentorStatusManager->getMentorBackTimestamp( $mentor->getUserIdentity() ) ?? ''
 			)
