@@ -12,7 +12,8 @@
 			"OriginReboot",
 			"SpikeShroom",
 			"Warming Hearth",
-			"Zapipedia (WMF)"
+			"Zapipedia (WMF)",
+			"IZapico (WMF)"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Panel de control de mentoría",
@@ -147,7 +148,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-header": "(Optativo) ¿Por qué {{GENDER:|quieres}} saltarte a este {{GENDER:$1|aprendiz}}?",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-pretext": "Al omitir a una persona sugerida, se la eliminará temporalmente de la lista de personas candidatas a ser reconocidas (durante $1 {{PLURAL:$1|día|días}}). Pueden volver a mostrarse más adelante si su siguiente actividad cumple con {{GENDER:|tus}} parámetros establecidos.",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-already-praised": "Ya he enviado un mensaje de reconocimiento a esta {{GENDER:$1|persona}}",
-	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy": "No creo que esta persona deba ser reconocida por su labor wikipédica",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-praiseworthy": "Esta {{GENDER:$1|persona}} no cumple los criterios para ser reconocida",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-not-now": "No quiero enviar el reconocimiento ahora",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other": "Otras razones / Prefiero no decirlo",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "Enviar",

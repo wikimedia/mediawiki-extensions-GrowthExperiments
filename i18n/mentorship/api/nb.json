@@ -31,7 +31,7 @@
 	"apihelp-growthmanagementorlist-param-summary": "Årsak for endringen",
 	"apihelp-growthmanagementorlist-param-username": "Brukernavnet til fadderen som påvirkes av endringen. Hvis det ikke er angitt blir den nåværende innloggede brukeren brukt. Kan kun brukes av brukere som har rettigheten til det.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Hvis isaway er true må awaytimestamp også angis.",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Ugyldiggjør et forslag om fadderbarn som fortjener ros i modulen for personlig ros i fadderpanelet",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Ugyldiggjør et forslag om fadderbarn som fortjener skryt i modulen for personlig skryt i fadderpanelet",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "Fadderbarn som skal ugyldiggjøres",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Årsak til at forslaget skal ugyldiggjøres",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Hopp over årsaken til at forslaget skal ugyldiggjøres"

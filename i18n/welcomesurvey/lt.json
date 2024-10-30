@@ -3,8 +3,7 @@
 		"authors": [
 			"Eitvys200",
 			"Nokeoo",
-			"Tomasdd",
-			"Amire80"
+			"Tomasdd"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Sveiki}}, $1!",

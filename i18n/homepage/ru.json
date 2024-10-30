@@ -578,7 +578,7 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Готово",
 	"growthexperiments-homepage-mentorship-about-header": "О наставниках",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Кто {{GENDER:$1|{{GENDER:|ваш}} наставник|{{GENDER:|ваша}} наставница}}?",
-	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Ваш}} {{GENDER:$1|наставник}} — это человек с большим опытом редактирования на сайте {{SITENAME}}. {{GENDER:$1|Он добровольно решил|Она добровольно решила|Он добровольно решил}} помогать новичкам, таким как вы, учиться редактировать и может ответить на {{GENDER|ваши}} вопросы, связанные с использованием сайта.",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Ваш}} {{GENDER:$1|наставник}} — это человек с большим опытом редактирования на сайте {{SITENAME}}. {{GENDER:$1|Он добровольно решил|Она добровольно решила|Он добровольно решил}} помогать новичкам, таким как вы, учиться редактировать и может ответить на {{GENDER:|ваши}} вопросы, связанные с использованием сайта.",
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Когда {{GENDER:|Вы}} отправляете сообщение наставнику, {{GENDER:$1|он|она|он}} увидит его на своей странице обсуждения. {{GENDER:|Вам}} должно прийти уведомление, когда наставник ответит.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Отказаться от наставничества",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Выберите кнопку ниже, чтобы пока не назначать {{GENDER:|Вам}} определённого наставника. {{GENDER:|Вы}} сможете выбрать нового наставника позже, если {{GENDER:|Вам}} того захочется.",

@@ -7,8 +7,6 @@
 		]
 	},
 	"apihelp-growthstarmentee-summary": "현재 사용자가 지정한 멘티를 표시하거나 표시를 해제합니다 (비공개 상태로 저장되며 기록에 남지 않습니다)",
-	"apihelp-growthstarmentee-param-gesaction": "해야 할 조치(<kbd>�star</kbd> 아니면 <kbd>unstar</kbd>)",
-	"apihelp-growthstarmentee-param-gesmentee": "별표 (안) 할 멘티",
 	"apihelp-growthsetmentorstatus-summary": "현재 사용자의 멘토 상태를 활동 중/부재로 설정합니다",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "새 상태",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "멘토를 away로 설정할 때 이 값은 away 상태의 길이여야 합니다 (단위: 일)",

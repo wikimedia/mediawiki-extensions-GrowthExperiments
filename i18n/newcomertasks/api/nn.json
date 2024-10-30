@@ -1,8 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ranveig",
-			"Amire80"
+			"Ranveig"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Få foreslåtte oppgåver for nybyrjarar.",
