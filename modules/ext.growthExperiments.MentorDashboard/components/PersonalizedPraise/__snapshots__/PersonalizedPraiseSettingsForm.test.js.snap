@@ -30,7 +30,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
       </div>
       <div
         aria-disabled="false"
-        class="cdx-select-vue cdx-select-vue--enabled cdx-select-vue--value-selected cdx-select-vue--status-default ext-growthExperiments-PersonalizedPraiseSettings__input"
+        class="cdx-select-vue cdx-select-vue--enabled cdx-select-vue--no-selections cdx-select-vue--status-default ext-growthExperiments-PersonalizedPraiseSettings__input"
       >
         <div
           aria-controls="cdx-select-menu-0"
@@ -41,7 +41,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
           tabindex="0"
         >
           
-          growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week
+          
           
           <!--v-if-->
           <span
@@ -76,6 +76,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
             <!--v-if-->
             <!--v-if-->
             
+            
             <li
               aria-disabled="false"
               class="cdx-menu-item cdx-menu-item--enabled"
@@ -105,6 +106,8 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               </span>
               
             </li>
+            
+            
             <li
               aria-disabled="false"
               aria-selected="true"
@@ -135,6 +138,8 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               </span>
               
             </li>
+            
+            
             <li
               aria-disabled="false"
               class="cdx-menu-item cdx-menu-item--enabled"
@@ -164,6 +169,8 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               </span>
               
             </li>
+            
+            
             <li
               aria-disabled="false"
               class="cdx-menu-item cdx-menu-item--enabled"
@@ -193,6 +200,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               </span>
               
             </li>
+            
             
             <!--v-if-->
           </ul>
