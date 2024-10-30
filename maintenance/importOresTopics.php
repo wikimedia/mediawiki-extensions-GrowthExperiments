@@ -2,8 +2,9 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use CirrusSearch\CirrusSearch;
+use CirrusSearch\CirrusSearchServices;
 use CirrusSearch\Query\ArticleTopicFeature;
+use CirrusSearch\WeightedTagsUpdater;
 use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Util;
@@ -35,8 +36,8 @@ class ImportOresTopics extends Maintenance {
 	/** Use random topics. */
 	public const TOPIC_SOURCE_RANDOM = 'random';
 
-	/** @var CirrusSearch */
-	private $cirrusSearch;
+	/** @var WeightedTagsUpdater */
+	private $weightedTagsUpdater;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -93,8 +94,8 @@ class ImportOresTopics extends Maintenance {
 					$this->output( "Adding topics for $pageName: $topicList\n" );
 				}
 				try {
-					$this->cirrusSearch->updateWeightedTags( Title::newFromText( $pageName )->toPageIdentity(),
-						'classification.ores.articletopic', array_keys( $titleTopics ), $titleTopics );
+					$this->weightedTagsUpdater->updateWeightedTags( Title::newFromText( $pageName )->toPageIdentity(),
+						'classification.ores.articletopic', $titleTopics );
 				} catch ( PreconditionException $e ) {
 					// Page did not exist
 					$this->error( $pageName . ': ' . $e->getMessage() );
@@ -112,7 +113,8 @@ class ImportOresTopics extends Maintenance {
 				. 'environment is not production, $wgGEDeveloperSetup should be set to true.)' );
 		}
 
-		$this->cirrusSearch = new CirrusSearch();
+		$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+		$this->weightedTagsUpdater = $cirrusSearchServices->getWeightedTagsUpdater();
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
 		$this->isBeta = preg_match( '/\.beta\.wmflabs\./', $this->getConfig()->get( 'Server' ) );
