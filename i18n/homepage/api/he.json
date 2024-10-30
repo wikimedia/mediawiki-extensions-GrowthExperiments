@@ -23,5 +23,9 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "כותרת הערך שמשימת המלצת התמונה מיועדת אליו",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "שם הקובץ ללא תחילית של המלצת התמונה, למשל <kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "כותרת הפרק שהמלצת התמונה מיועדת אליו, למשל <kbd>History</kbd>.",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "מספר, מתחיל מ־1, של הפרק שההמלצה על התמונה מיועדת, אליו למשל <kbd>3</kbd>"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "מספר, מתחיל מ־1, של הפרק שההמלצה על התמונה מיועדת, אליו למשל <kbd>3</kbd>",
+	"apihelp-query+linkrecommendations-summary": "אחזור הצעות על קישורים עבור דף מסוים",
+	"apihelp-query+linkrecommendations-example-1": "קבלת הצעות על קישורים לדף עם המזהה 123",
+	"apihelp-query+linkrecommendations-example-2": "לקבל עד 5 הצעות על קישורים לדף עם המזהה 456",
+	"apihelp-query+linkrecommendations-param-pageid": "מזהה הדף שעבורו יש לאחזר הצעות על קישורים."
 }

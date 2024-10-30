@@ -62,6 +62,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Changements récents par {{GENDER:|}}vos tutorés",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|}}Vous pouvez afficher les modifications apportées par tous {{GENDER:|}}vos apprentis en affichant cette [$1 vue filtrée des modifications récentes].",
 	"growthexperiments-mentor-dashboard-mentee-overview-error-title": "Une erreur inconnue s'est produite lors du chargement de la liste des mentorés",
+	"growthexperiments-mentor-dashboard-mentee-overview-error-description": "Si cela persiste, veuillez le signaler en tant qu'erreur aux développeurs.",
 	"growthexperiments-mentor-dashboard-mentee-overview-error-notification": "Une erreur inconnue s’est produite. Veuillez essayer à nouveau ultérieurement.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressources",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gérer les tuteurs",
