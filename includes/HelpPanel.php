@@ -131,20 +131,23 @@ class HelpPanel {
 			return false;
 		}
 
+		if ( $checkAction ) {
+			$action = $out->getRequest()->getVal( 'action', 'view' );
+			if ( !in_array( $action, [ 'edit', 'submit' ] ) &&
+				!self::shouldShowForReadingMode( $out, $action ) ) {
+				return false;
+			}
+		}
+
+		if ( self::isSuggestedEditRequest( $out->getRequest() ) ) {
+			return true;
+		}
+
 		if ( in_array( $out->getTitle()->getNamespace(),
 			self::getGrowthWikiConfig()->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
 			return false;
 		}
-		if ( $checkAction ) {
-			$action = $out->getRequest()->getVal( 'action', 'view' );
-			if ( !in_array( $action, [ 'edit', 'submit' ] ) &&
-				 !self::shouldShowForReadingMode( $out, $action ) ) {
-				return false;
-			}
-		}
-		if ( self::isSuggestedEditRequest( $out->getRequest() ) ) {
-			return true;
-		}
+
 		return self::shouldShowHelpPanelToUser( $out->getUser() );
 	}
 

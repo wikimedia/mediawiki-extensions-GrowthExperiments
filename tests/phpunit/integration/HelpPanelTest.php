@@ -144,7 +144,26 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 				true,
 				false,
 				'gesuggestededit is true, but user is anonymous so the help pane should not show'
-			]
+			],
+			[
+				// title
+				new TitleValue( NS_MAIN, 'Foo' ),
+				// action=
+				'edit',
+				// getBool( 'gesuggestededit' )
+				true,
+				// user ID
+				1,
+				// user help panel pref
+				1,
+				// GEHelpPanelExcludedNamespaces,
+				[ NS_MAIN ],
+				// GEHelpPanelEnabled
+				true,
+				// assertion
+				true,
+				'Suggested edits mode and NS_MAIN excluded'
+			],
 		];
 	}
 }
