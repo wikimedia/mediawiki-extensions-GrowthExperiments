@@ -1,6 +1,8 @@
 import { defineConfig } from 'cypress';
 // eslint-disable-next-line n/no-missing-import
 import { mwApiCommands } from './cypress/support/MwApiPlugin';
+// eslint-disable-next-line n/no-missing-import
+import LocalSettingsSetup from './cypress/support/LocalSettingsSetup';
 
 const envLogDir = process.env.LOG_DIR ? process.env.LOG_DIR + '/GrowthExperiments' : null;
 
@@ -22,6 +24,14 @@ export default defineConfig( {
 		setupNodeEvents( on, config ) {
 			on( 'task', {
 				...mwApiCommands( config ),
+			} );
+			on( 'before:run', async () => {
+				LocalSettingsSetup.overrideLocalSettings();
+				await LocalSettingsSetup.restartPhpFpmService();
+			} );
+			on( 'after:run', async () => {
+				LocalSettingsSetup.restoreLocalSettings();
+				await LocalSettingsSetup.restartPhpFpmService();
 			} );
 		},
 		defaultCommandTimeout: 20000,

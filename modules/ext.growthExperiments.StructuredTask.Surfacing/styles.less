@@ -1,0 +1,18 @@
+@import 'mediawiki.skin.variables.less';
+
+#mw-content-text .growth-surfaced-task-button {
+	padding: 0 5px;
+	background-color: #fef5e5;
+	border: 1px solid #fedd82;
+	font-weight: inherit;
+	min-height: inherit;
+
+	&.growth-surfaced-task-popup-visible {
+		background-color: #f5f9ff;
+		border-color: #2252c2;
+	}
+
+	&__icon {
+		.cdx-mixin-css-icon( @cdx-icon-link, @param-size-icon: @size-icon-x-small, @param-is-button-icon: true );
+	}
+}
