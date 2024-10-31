@@ -180,7 +180,7 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 		array $config,
 		UserIdentity $user,
 		UserOptionsLookup $userOptionsLookup,
-		RevisionLookup $revisionLookup = null
+		?RevisionLookup $revisionLookup = null
 	): NewcomerTaskCompleteHandler {
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
 		$configurationLoader->method( 'getTaskTypes' )->willReturn(

@@ -301,7 +301,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @param IContextSource|null $context
 	 * @return MentorPageMentorManager
 	 */
-	private function getMentorManager( IContextSource $context = null ) {
+	private function getMentorManager( ?IContextSource $context = null ) {
 		$coreServices = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
 		$context ??= RequestContext::getMain();

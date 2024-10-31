@@ -114,7 +114,7 @@ class ConfigurationValidator {
 	 * @return StatusValue
 	 */
 	public function validateInteger(
-		array $config, string $field, string $taskTypeId, int $min = null
+		array $config, string $field, string $taskTypeId, ?int $min = null
 	) {
 		if ( !array_key_exists( $field, $config ) ) {
 			return StatusValue::newGood();

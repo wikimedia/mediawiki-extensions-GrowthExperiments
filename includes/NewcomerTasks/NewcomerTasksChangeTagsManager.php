@@ -64,8 +64,8 @@ class NewcomerTasksChangeTagsManager {
 		IConnectionProvider $connectionProvider,
 		UserIdentityUtils $userIdentityUtils,
 		ChangeTagsStore $changeTagsStore,
-		Config $config = null,
-		UserIdentity $user = null
+		?Config $config = null,
+		?UserIdentity $user = null
 	) {
 		$this->configurationLoader = $configurationLoader;
 		$this->revisionLookup = $revisionLookup;

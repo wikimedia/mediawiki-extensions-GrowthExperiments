@@ -19,7 +19,7 @@ abstract class TaskSuggesterFactory implements LoggerAwareInterface {
 	 * used for querying different topic types (growth vs ores)
 	 * @return TaskSuggester
 	 */
-	abstract public function create( ConfigurationLoader $customConfigurationLoader = null );
+	abstract public function create( ?ConfigurationLoader $customConfigurationLoader = null );
 
 	/**
 	 * Create a TaskSuggester which just returns a given error.

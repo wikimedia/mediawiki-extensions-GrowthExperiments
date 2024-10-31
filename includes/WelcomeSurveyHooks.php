@@ -104,7 +104,7 @@ class WelcomeSurveyHooks implements
 	 * @param array|null $query
 	 * @return bool
 	 */
-	private function isEditing( ?Title $title, array $query = null ): bool {
+	private function isEditing( ?Title $title, ?array $query = null ): bool {
 		return $title && $title->canExist() && (
 			// normal editor, VE with some settings
 			( $query['action'] ?? null ) === 'edit'
@@ -121,7 +121,7 @@ class WelcomeSurveyHooks implements
 	 * @param string|string[]|null $returnToQuery returntoquery parameter. Read from URL if omitted.
 	 * @return bool
 	 */
-	private function userWasEditing( string $returnTo = null, $returnToQuery = null ): bool {
+	private function userWasEditing( ?string $returnTo = null, $returnToQuery = null ): bool {
 		$context = RequestContext::getMain();
 		$returnTo ??= $context->getRequest()->getText( 'returnto' );
 		$returntoTitle = ( $returnTo !== '' ) ? $this->titleFactory->newFromText( $returnTo ) : null;

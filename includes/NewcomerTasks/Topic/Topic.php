@@ -30,7 +30,7 @@ class Topic implements JsonUnserializable {
 	 *   and dashes. E.g. 'biology'.
 	 * @param string|null $groupId Topic group, for visual grouping. E.g. 'science'.
 	 */
-	public function __construct( string $id, string $groupId = null ) {
+	public function __construct( string $id, ?string $groupId = null ) {
 		$this->id = $id;
 		$this->groupId = $groupId;
 	}

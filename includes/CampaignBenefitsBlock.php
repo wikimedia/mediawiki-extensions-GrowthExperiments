@@ -204,7 +204,7 @@ class CampaignBenefitsBlock {
 	 *   Theoretically a float, but non-integer support is broken: T228467
 	 * @return string Video player HTML
 	 */
-	private function getVideo( OutputPage $output, string $filename, int $thumbtime = null ) {
+	private function getVideo( OutputPage $output, string $filename, ?int $thumbtime = null ) {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'TimedMediaHandler' ) ) {
 			Util::logText( 'TimedMediaHandler not loaded' );
 			return '';

@@ -329,7 +329,7 @@ class ImportOresTopics extends Maintenance {
 	 * @param string[]|null &$missingTitles Returns the list of titles (as prefixed text) which are not found.
 	 * @return string[] Title => enwiki title
 	 */
-	private function getSiteLinks( array $titles, string $apiUrl, array &$missingTitles = null ): array {
+	private function getSiteLinks( array $titles, string $apiUrl, ?array &$missingTitles = null ): array {
 		$data = $this->getJsonData( $apiUrl, [
 			'action' => 'query',
 			'prop' => 'langlinks',
@@ -354,7 +354,7 @@ class ImportOresTopics extends Maintenance {
 	 * @param string[]|null &$missingTitles Returns the list of titles (as prefixed text) which are not found.
 	 * @return int[] title as prefixed text => rev ID
 	 */
-	private function titlesToRevisionIds( array $titles, string $apiUrl, array &$missingTitles = null ): array {
+	private function titlesToRevisionIds( array $titles, string $apiUrl, ?array &$missingTitles = null ): array {
 		$data = $this->getJsonData( $apiUrl, [
 			'action' => 'query',
 			'prop' => 'revisions',
