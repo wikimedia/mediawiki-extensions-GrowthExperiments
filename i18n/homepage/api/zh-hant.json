@@ -16,8 +16,13 @@
 	"apihelp-growthsetmentor-param-mentor": "導師的使用者名稱",
 	"apihelp-growthsetmentor-param-reason": "變更的原因",
 	"apihelp-query+growthimagesuggestiondata-summary": "獲取相關的[[mw:wikitech:Add_Image|圖片建議資料]]，若可用的話",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "任務類型 ID（指定是否取得頂層或章節層級圖片推薦的資料）",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "在 wiki 組態中找不到任務類型 ID「$1」。",
 	"apihelp-growthinvalidateimagerecommendation-summary": "作廢圖片推薦。",
 	"apihelp-growthinvalidateimagerecommendation-extended-description": "呼叫此 API 將會：\n\n*重新設定條目的 [[mw:wikitech:Add_Image|\"hasrecommendation:image\" 權重標籤]]，因此條目不會再回傳到圖片建議的搜尋結果裡。\n\n*將條目新增到短暫的快取中，當是在 [[Special:Homepage]] 或是透過 [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]] API 來存取時，[[mw:Extension:GrowthExperiments|GrowthExperiments]] 擴充的 ImageRecommendationFilter 會參考來決定是否應將條目從使用者建議的編輯佇列中排除 。\n\n*產生事件並發送至 EventGate 到[https://schema .wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback 圖片建議意見回饋串流]。這允許圖片建議管道的改進，因為在管道中的代碼當產生推薦時，能依據使用者的意見回饋。\n\n進一步閱讀：[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image]]",
+	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "任務類型（頂層或章節層級）",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "條目標題圖片推薦任務用於",
-	"apihelp-growthinvalidateimagerecommendation-param-filename": "用於圖片推薦的無前綴檔案名稱，例如：<kbd>Foo.jpg</kbd>"
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "用於圖片推薦的無前綴檔案名稱，例如：<kbd>Foo.jpg</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "圖片推薦所在章節的標題，例如：<kbd>歷史</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "圖片推薦所在章節從 1 開始的索引，例如：<kbd>3</kbd>"
 }

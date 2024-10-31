@@ -1,8 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Умар",
-			"Amire80"
+			"Умар"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Марша догӀийла}}, $1!",

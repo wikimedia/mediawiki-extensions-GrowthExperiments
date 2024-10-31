@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Afalau"
+			"Afalau",
+			"Ceirios"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Helo}}, {{bidi:$1}}!",
