@@ -61,8 +61,8 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 	/** @var ?callable */
 	private $campaignConfigCallback;
 
-	/** @var TaskType[] */
-	private array $disabledTaskTypes;
+	/** @var TaskType[]|null */
+	private ?array $disabledTaskTypes = null;
 
 	/**
 	 * @param ConfigurationValidator $configurationValidator
@@ -178,8 +178,7 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 
 	/** @inheritDoc */
 	public function getDisabledTaskTypes(): array {
-		// @phan-suppress-next-line PhanRedundantCondition
-		if ( !isset( $this->disabledTaskTypes ) ) {
+		if ( $this->disabledTaskTypes === null ) {
 			$this->loadTaskTypes();
 		}
 		return $this->disabledTaskTypes;
