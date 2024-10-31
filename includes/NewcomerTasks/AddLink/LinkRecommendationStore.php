@@ -187,7 +187,7 @@ class LinkRecommendationStore {
 	 * @param int|null $from ID to list from, exclusive
 	 * @return int[]
 	 */
-	public function listPageIds( int $limit, int $from = null ): array {
+	public function listPageIds( int $limit, ?int $from = null ): array {
 		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 		return array_map( 'intval', $dbr->newSelectQueryBuilder()
 			->select( 'gelr_page' )

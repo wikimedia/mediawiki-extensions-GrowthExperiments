@@ -44,7 +44,7 @@ class StaticTaskSuggesterFactory extends TaskSuggesterFactory {
 	}
 
 	/** @inheritDoc */
-	public function create( ConfigurationLoader $customConfigurationLoader = null ) {
+	public function create( ?ConfigurationLoader $customConfigurationLoader = null ) {
 		return $this->taskSuggester;
 	}
 

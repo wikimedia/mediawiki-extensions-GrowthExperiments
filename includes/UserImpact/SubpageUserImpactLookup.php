@@ -32,7 +32,7 @@ class SubpageUserImpactLookup implements UserImpactLookup {
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
-		UserImpactLookup $fallbackLookup = null
+		?UserImpactLookup $fallbackLookup = null
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->fallbackLookup = $fallbackLookup;

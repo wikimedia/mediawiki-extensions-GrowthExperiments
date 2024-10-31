@@ -28,7 +28,7 @@ class ErrorForwardingTaskSuggester implements TaskSuggester {
 	 * @param StatusValue|null $filterStatus The error to return for filter() (null means the
 	 *   method is a no-op).
 	 */
-	public function __construct( StatusValue $status, StatusValue $filterStatus = null ) {
+	public function __construct( StatusValue $status, ?StatusValue $filterStatus = null ) {
 		$this->status = $status;
 	}
 

@@ -39,7 +39,7 @@ class Task implements JsonUnserializable {
 	 * @param LinkTarget $title The page this task is about.
 	 * @param string|null $token
 	 */
-	public function __construct( TaskType $taskType, LinkTarget $title, string $token = null ) {
+	public function __construct( TaskType $taskType, LinkTarget $title, ?string $token = null ) {
 		$this->taskType = $taskType;
 		$this->title = $title;
 		$this->token = $token ?? Util::generateRandomToken();

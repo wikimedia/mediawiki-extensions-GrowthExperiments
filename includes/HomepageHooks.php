@@ -316,7 +316,7 @@ class HomepageHooks implements
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function isHomepageEnabled( UserIdentity $user = null ): bool {
+	public static function isHomepageEnabled( ?UserIdentity $user = null ): bool {
 		// keep the dependencies minimal, this is used from other hooks as well
 		$services = MediaWikiServices::getInstance();
 		return (

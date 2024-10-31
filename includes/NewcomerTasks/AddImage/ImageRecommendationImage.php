@@ -99,8 +99,8 @@ class ImageRecommendationImage implements JsonSerializable {
 		string $source,
 		array $projects = [],
 		array $metadata = [],
-		int $sectionNumber = null,
-		string $sectionTitle = null
+		?int $sectionNumber = null,
+		?string $sectionTitle = null
 	) {
 		$this->imageTitle = $imageTitle;
 		$this->source = $source;

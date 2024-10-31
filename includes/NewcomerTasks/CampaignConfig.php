@@ -45,7 +45,7 @@ class CampaignConfig {
 	public function __construct(
 		array $config = [],
 		array $topicConfig = [],
-		UserOptionsLookup $userOptionsLookup = null
+		?UserOptionsLookup $userOptionsLookup = null
 	) {
 		$this->config = $config;
 		$this->topicConfig = $topicConfig;
@@ -114,7 +114,7 @@ class CampaignConfig {
 	 * @param string|null $campaign
 	 * @return array
 	 */
-	public function getTopicsToExcludeForCampaign( string $campaign = null ): array {
+	public function getTopicsToExcludeForCampaign( ?string $campaign = null ): array {
 		if ( $campaign && array_key_exists( $campaign, $this->config ) ) {
 			// Make sure topics shared between multiple campaigns aren't excluded
 			return array_diff( $this->topics, $this->getTopicsForCampaign( $campaign ) );

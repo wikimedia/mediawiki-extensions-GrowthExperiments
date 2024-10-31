@@ -50,7 +50,7 @@ class DecoratingTaskSuggesterFactory extends TaskSuggesterFactory {
 	}
 
 	/** @inheritDoc */
-	public function create( ConfigurationLoader $customConfigurationLoader = null ) {
+	public function create( ?ConfigurationLoader $customConfigurationLoader = null ) {
 		$suggester = $this->taskSuggesterFactory->create( $customConfigurationLoader );
 		foreach ( $this->decorators as $spec ) {
 			$suggester = $this->objectFactory->createObject( $spec, [

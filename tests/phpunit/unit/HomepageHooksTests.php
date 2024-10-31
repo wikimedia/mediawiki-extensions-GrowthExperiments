@@ -119,10 +119,10 @@ class HomepageHooksTests extends MediaWikiUnitTestCase {
 	}
 
 	private function getHomepageHooksMock(
-		HashConfig $config = null,
-		TitleFactory $titleFactoryMock = null,
-		SpecialPageFactory $specialPageFactoryMock = null,
-		UserOptionsLookup $userOptionsLookup = null
+		?HashConfig $config = null,
+		?TitleFactory $titleFactoryMock = null,
+		?SpecialPageFactory $specialPageFactoryMock = null,
+		?UserOptionsLookup $userOptionsLookup = null
 	): HomepageHooks {
 		return new HomepageHooks(
 			$config ?? new HashConfig( [] ),

@@ -420,7 +420,7 @@ class SpecialHomepage extends SpecialPage {
 	 * @param string|null $par The URL path arguments after Special:Homepage
 	 * @return bool
 	 */
-	private function handleNewcomerTask( string $par = null ): bool {
+	private function handleNewcomerTask( ?string $par = null ): bool {
 		if ( !$par ||
 			!str_starts_with( $par, 'newcomertask/' ) ||
 			!SuggestedEdits::isEnabled( $this->getConfig() )

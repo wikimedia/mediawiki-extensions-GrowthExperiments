@@ -129,7 +129,7 @@ class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 		};
 	}
 
-	private function assertTimestampSame( int $expected, int $actual, string $message = null ) {
+	private function assertTimestampSame( int $expected, int $actual, ?string $message = null ) {
 		$this->assertSame(
 			wfTimestamp( TS_DB, $expected ),
 			wfTimestamp( TS_DB, $actual ),
