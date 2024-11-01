@@ -3,6 +3,7 @@
 		"authors": [
 			"Epok",
 			"Gomoko",
+			"Mahabarata",
 			"Pols12",
 			"Thibaut120094",
 			"Verdy p",
@@ -27,5 +28,9 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Titre de l’article auquel la tâche de recommandation d’image est destinée",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "Nom de fichier sans préfixe pour la recommandation d’image, par ex. <kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "Titre de la section à laquelle la recommandation d’image est destinée, par exemple <kbd>Historique</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "L’indice de base 1 de la section à laquelle la recommandation d’image est destinée, par exemple <kbd>3</kbd>"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "L’indice de base 1 de la section à laquelle la recommandation d’image est destinée, par exemple <kbd>3</kbd>",
+	"apihelp-query+linkrecommendations-summary": "Récupérer les recommandations de liens pour une page spécifique",
+	"apihelp-query+linkrecommendations-example-1": "Obtenir des recommandations de liens pour la page avec l'ID 123",
+	"apihelp-query+linkrecommendations-example-2": "Obtenez jusqu'à 5 recommandations de liens pour la page avec l'ID 456",
+	"apihelp-query+linkrecommendations-param-pageid": "L'ID de la page pour laquelle vous souhaitez récupérer des recommandations de liens."
 }
