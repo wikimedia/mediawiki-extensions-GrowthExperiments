@@ -17,10 +17,9 @@ trait CommunityGetMentorDataTrait {
 		$result = $this->provider->loadValidConfiguration();
 		if ( !$result->isOK() ) {
 			// Loading the mentor list failed. Log an error and return an empty array.
-			[ $message, $context ] = $this->statusFormatter->getPsr3MessageAndContext( $result );
-			$this->logger->error( $message, [
-					'impact' => 'No data about mentors can be found; wiki behaves as if it had no mentors at all',
-				] + $context );
+			$this->logger->error( ...$this->statusFormatter->getPsr3MessageAndContext( $result, [
+				'impact' => 'No data about mentors can be found; wiki behaves as if it had no mentors at all',
+			] ) );
 			return [];
 		}
 
