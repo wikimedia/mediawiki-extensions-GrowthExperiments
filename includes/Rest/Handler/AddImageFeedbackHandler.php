@@ -8,13 +8,11 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\Util;
 use MediaWiki\Api\ApiMessage;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
-use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\LocalizedHttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Rest\TokenAwareHandlerTrait;
 use MediaWiki\Rest\Validator\Validator;
 use MediaWiki\Revision\RevisionLookup;
-use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use Wikimedia\Message\MessageValue;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -108,10 +106,11 @@ class AddImageFeedbackHandler extends SimpleHandler {
 		}
 		if ( !$status->isGood() ) {
 			Util::logStatus( $status );
-			// There isn't any good way to convert a Message into a MessageValue.
-			$errorKey = ( new ApiMessage( Status::wrap( $status )->getMessage() ) )->getApiCode();
-			throw new HttpException(
-				Status::wrap( $status )->getMessage( false, false, 'en' )->text(),
+			// This assumes that there's no more than one message in the status object
+			$msg = $status->getMessages()[0];
+			$errorKey = ( new ApiMessage( $msg ) )->getApiCode();
+			throw new LocalizedHttpException(
+				MessageValue::newFromSpecifier( $msg ),
 				$status->isOK() ? 400 : 500,
 				[ 'errorKey' => $errorKey ]
 			);
