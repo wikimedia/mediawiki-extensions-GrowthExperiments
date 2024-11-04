@@ -3,7 +3,8 @@
 		"authors": [
 			"Elitre (WMF)",
 			"Lemure Saltante",
-			"ValeJappo"
+			"ValeJappo",
+			"Beta16"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Ricevi domande formattate inviate tramite il modulo della pagina iniziale",

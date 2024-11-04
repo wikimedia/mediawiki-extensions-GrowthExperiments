@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"NMW03"
+			"NMW03",
+			"Nemoralis"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Ana səhifə modulları vasitəsi ilə göndərilmiş formatlaşdırılmış sualları əldə edin",

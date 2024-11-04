@@ -41,7 +41,8 @@
 			"Tgr",
 			"Jack30",
 			"JDíaz32",
-			"No se"
+			"No se",
+			"IZapico (WMF)"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Te damos la bienvenida}}, {{bidi:$1}}!",
@@ -216,6 +217,11 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Selecciona otros intereses o niveles de dificultad para encontrar ediciones sugeridas.",
 	"growthexperiments-homepage-suggestededits-footer": "Otros usuarios han indicado que estos artículos necesitan mejoras. Ayuda a mejorar '''{{SITENAME}}''' para sus '''$1 de lectores''' cada día.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Otros usuarios han observado que estos artículos necesitan trabajo. Ayuda a mejorar '''{{SITENAME}}'''.",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
+	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1K",
+	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
+	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1B",
+	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "{{PLURAL:$1|edición|ediciones}} en el último día",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntarios como tú han contribuido a la mejora de {{SITENAME}} hoy. ¡Únete a nosotros!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Ver todas las sugerencias",
@@ -390,6 +396,7 @@
 	"growthexperiments-addlink-serviceerror": "El servicio de recomendación de enlaces respondió con un error para \"$1\": $2",
 	"growthexperiments-addlink-notinstore": "No se encuentran recomendaciones de enlaces para «$1»",
 	"growthexperiments-addlink-duplicatesubmission": "Se intentó enviar revisiones de sugerencias de enlaces para la revisión \"$1\", que ya ha sido revisada.",
+	"growthexperiments-addlink-context-title": "$1 / $2",
 	"growthexperiments-addlink-context-text-label": "Texto",
 	"growthexperiments-addlink-context-intro": "¿Esto debería enlazar con el siguiente artículo?",
 	"growthexperiments-addlink-context-button-accept": "Sí",

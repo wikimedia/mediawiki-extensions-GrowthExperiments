@@ -440,8 +440,8 @@
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "{{GENDER:|Du}} vil afgøre hvorvidt et foreslået billede skal placeres i en Wikipedia-artikel.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "Billeder kommer fra Wikimedia Commons, en samling af frit licenserede billeder, der bruges af Wikipedia.",
 	"growthexperiments-addimage-onboarding-content-imagedetails-title": "Se på det foreslåede billede",
-	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1": "Brug filnavnet, beskrivelsen og grunden til det blev foreslået for at hjælpe {{GENDER\n:|dig}} med at beslutte, om det skal placeres i artiklen.",
-	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2": "{{KØN:|Du}} kan også forstørre billedet for at se det mere tydeligt.",
+	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1": "Brug filnavnet, beskrivelsen og grunden til det blev foreslået for at hjælpe {{GENDER:|dig}} med at beslutte, om det skal placeres i artiklen.",
+	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2": "{{GENDER:|Du}} kan også forstørre billedet for at se det mere tydeligt.",
 	"growthexperiments-addimage-onboarding-content-article-title": "Se på artiklen",
 	"growthexperiments-addimage-onboarding-content-decision-title": "Beslut om billedet hører hjemme",
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph1": "Forslaget er muligvis ikke relateret til artiklen, lav kvalitet eller hører måske ikke til af andre årsager. Brug {{GENDER:|din}} dømmekraft til at afgøre, om forslaget er rigtigt eller forkert.",
@@ -499,5 +499,10 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-other": "Andet / jeg ønsker ikke at dele",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Udført",
 	"growthexperiments-homepage-mentorship-about-header": "Om mentorer",
-	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Hvem er {{GENDER:|din}} {{GENDER:$1|mentor}}?"
+	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Hvem er {{GENDER:|din}} {{GENDER:$1|mentor}}?",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Din}} {{GENDER:$1|mentor}} er en anden person med stor erfaring med redigering på {{SITENAME}}. {{GENDER:$1|Han|Hun|De har}} meldt sig frivilligt til at vejlede nyere mennesker som dig om, hvordan man redigerer, og kan besvare spørgsmål {{GENDER:|du}} måtte have om brugen af siden.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "Når {{GENDER:|du}} sender en besked til din mentor, {{GENDER:$1| han|hun|de}} vil se det på {{GENDER:$1| hans|hendes|deres}} brugerdiskussionsside og {{GENDER:|dig}} bør modtage en notifikation, når {{GENDER:$1|han svarer|hun svarer|de svarer}}.",
+	"growthexperiments-homepage-mentorship-about-subheader-optout": "Vælg fra mentorordningen",
+	"growthexperiments-homepage-mentorship-about-optout-par1": "Vælg knappen nedenfor for at fravælge, hvis {{GENDER:|du}} foretrækker ikke at have en specifik mentor tildelt {{GENDER:|dig}} lige nu. {{GENDER:|Du}} kan til enhver tid få en ny mentor igen, hvis {{GENDER:|du}} ændrer {{GENDER:|din}} mening.",
+	"growthexperiments-homepage-mentorship-about-done": "Udført"
 }

@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geraki"
+			"Geraki",
+			"P20kios",
+			"Spyridon Eftychios Kokotos"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Λάβετε προτάσεις εργασιών κατάλληλες για νεοεισερχόμενους."

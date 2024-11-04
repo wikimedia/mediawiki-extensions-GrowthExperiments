@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"EcheveriaJ"
+			"EcheveriaJ",
+			"Reedy"
 		]
 	},
 	"apihelp-growthsetmenteestatus-param-state": "New status of the mentee (warning: setting this to opt-out will permanently delete the mentee/mentor relationship)",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"1997kB"
+			"1997kB",
+			"Abijeet Patro"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|स्वागत}} $1 जी!",

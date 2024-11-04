@@ -3,10 +3,12 @@
 		"authors": [
 			"Dreamy Jazz",
 			"Piano1forte2",
-			"Reedy"
+			"Reedy",
+			"Samthecrazyman",
+			"Shirayuki"
 		]
 	},
 	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Unrecognised topic {{PLURAL:$2|name|names}} for the <kbd>growtharticletopic:</kbd> keyword: $1",
 	"growthexperiments-addimage-detailsdialog-license": "Licence:",
-	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "Images come from Wikimedia Commons, a collection of freely licenced images used by Wikipedia."
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "Images come from Wikimedia Commons, a collection of freely licensed images used by Wikipedia."
 }

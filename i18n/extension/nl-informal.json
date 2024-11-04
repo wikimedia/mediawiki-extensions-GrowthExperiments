@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bdijkstra"
+			"Bdijkstra",
+			"McDutchie"
 		]
 	},
 	"growthexperiments-edit-config-pretext": "Deze pagina maakt het mogelijk de configuratie van [[:mw:Special:MyLanguage/Growth|Growth]]-team-features te bewerken. Het zal $1 namens jou bewerken. Je kunt de veranderingen zien in de bewerkingsgeschiedenis van die pagina."
