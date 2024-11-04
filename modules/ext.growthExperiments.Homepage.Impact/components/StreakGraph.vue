@@ -10,10 +10,10 @@
 			</div>
 		</div>
 		<div class="ext-growthExperiments-StreakGraph__legend">
-			<c-text size="sm" color="placeholder">
+			<c-text size="sm" color="subtle">
 				{{ startLabel }}
 			</c-text>
-			<c-text size="sm" color="placeholder">
+			<c-text size="sm" color="subtle">
 				{{ endLabel }}
 			</c-text>
 		</div>
