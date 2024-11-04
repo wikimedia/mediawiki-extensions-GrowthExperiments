@@ -216,6 +216,7 @@ class FixLinkRecommendationData extends Maintenance {
 				$this->verboseOutput( "    $fixing " . $title->getPrefixedText() . "\n", 2 );
 			}
 			if ( $pageIdsToFix && !$this->hasOption( 'dry-run' ) ) {
+				$this->beginTransaction( $this->linkRecommendationStore->getDB( DB_PRIMARY ), __METHOD__ );
 				$this->linkRecommendationStore->deleteByPageIds( $pageIdsToFix );
 				$this->commitTransaction( $this->linkRecommendationStore->getDB( DB_PRIMARY ), __METHOD__ );
 			}
