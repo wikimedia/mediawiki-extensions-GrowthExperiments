@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"HitomiAkane"
+			"HitomiAkane",
+			"Meno25"
 		]
 	},
-	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link|اقتراح: اضافة لينكات]]",
+	"tag-newcomer_task_add_link": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link اقترح: اضيف روابط]",
 	"growthexperiments-addlink-summary-summary": "ميزة اقتراح اللينكات: انضاف {{PLURAL:$1|0 لينكات|لينك واحد|لينكين|$1 روابط|$1 لينك}}."
 }
