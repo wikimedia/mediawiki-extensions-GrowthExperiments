@@ -36,6 +36,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		parent::setUp();
 
 		$this->setMainCache( CACHE_NONE );
+		$this->setMwGlobals( [ 'GEUseCommunityConfigurationExtension' => true ] );
 
 		// add one mentor to the system
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );

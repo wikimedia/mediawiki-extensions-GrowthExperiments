@@ -14,6 +14,13 @@ use MediaWikiIntegrationTestCase;
  * @group Database
  */
 class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase {
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		$this->setMwGlobals( [ 'GEUseCommunityConfigurationExtension' => true ] );
+	}
+
 	/**
 	 * @param Title $title
 	 * @return int
