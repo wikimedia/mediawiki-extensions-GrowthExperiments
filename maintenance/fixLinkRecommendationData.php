@@ -163,10 +163,12 @@ class FixLinkRecommendationData extends Maintenance {
 			$this->verboseOutput( "  checking topic $oresTopic...\n" );
 			$topicFixedCount = 0;
 			$topicOKCount = 0;
+			$topicTotalCount = 0;
 			$searchQuery = "hasrecommendation:link articletopic:$oresTopic";
 			// phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 			while ( $titles = $this->search( $searchQuery, $batchSize, $from, $randomize ) ) {
-				$this->verboseOutput( '    checking ' . count( $titles ) . " titles...\n" );
+				$topicTotalCount += count( $titles );
+				$this->verboseOutput( '    checking ' . count( $titles ) . " titles... ($topicTotalCount so far)\n" );
 				$pageIdsToCheck = $this->titlesToPageIds( $titles );
 				$pageIdsToFix = array_diff( $pageIdsToCheck,
 					$this->linkRecommendationStore->filterPageIds( $pageIdsToCheck ) );
