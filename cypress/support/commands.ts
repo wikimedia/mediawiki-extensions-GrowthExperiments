@@ -7,3 +7,14 @@ Cypress.Commands.add( 'loginViaApi', ( username: string, password: string ): voi
 		await api.login( username, password );
 	} );
 } );
+
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+	namespace Cypress {
+		interface Chainable {
+			loginViaApi( username: string, password: string ): Chainable<JQuery<HTMLElement>>;
+		}
+	}
+}
+
+export {};

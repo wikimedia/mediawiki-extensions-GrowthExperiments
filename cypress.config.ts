@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress';
-import { mwApiCommands } from './cypress/support/MwApiPlugin.ts';
+// eslint-disable-next-line n/no-missing-import
+import { mwApiCommands } from './cypress/support/MwApiPlugin';
 
 const envLogDir = process.env.LOG_DIR ? process.env.LOG_DIR + '/GrowthExperiments' : null;
 
@@ -14,8 +15,10 @@ export default defineConfig( {
 	e2e: {
 		supportFile: 'cypress/support/e2e.ts',
 		baseUrl: process.env.MW_SERVER + process.env.MW_SCRIPT_PATH,
-		mediawikiAdminUsername: process.env.MEDIAWIKI_USER,
-		mediawikiAdminPassword: process.env.MEDIAWIKI_PASSWORD,
+		env: {
+			mediawikiAdminUsername: process.env.MEDIAWIKI_USER,
+			mediawikiAdminPassword: process.env.MEDIAWIKI_PASSWORD,
+		},
 		setupNodeEvents( on, config ) {
 			on( 'task', {
 				...mwApiCommands( config ),
