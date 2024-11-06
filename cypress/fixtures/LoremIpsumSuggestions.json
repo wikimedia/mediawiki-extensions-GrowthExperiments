@@ -58,7 +58,7 @@
 					"wikitext_offset": 2701
 				}
 			],
-			"taskURL": "http://default.mediawiki.mwdd.localhost:8080/wiki/Special:Homepage/newcomertask/277?genewcomertasktoken=dba9a02dd34e1b7aced1b509052501da&geclickid=29a5996a01c8ebc0df1e1bda5c2fcdb0&gesuggestededit=1&getasktype=link-recommendation"
+			"taskURL": "/example"
 		}
 	}
 }
