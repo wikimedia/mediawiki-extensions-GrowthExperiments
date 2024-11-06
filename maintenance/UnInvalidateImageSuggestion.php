@@ -46,7 +46,7 @@ class UnInvalidateImageSuggestion extends Maintenance {
 
 		$taskTypeHandler = $growthExperimentsServices->getTaskTypeHandlerRegistry()->get( $taskTypeId );
 		// update weighted tag in CirrusSearch index
-		$cirrusSearchServices->getCirrusSearch()->updateWeightedTags(
+		$cirrusSearchServices->getWeightedTagsUpdater()->updateWeightedTags(
 			$title->toPageIdentity(),
 			// @phan-suppress-next-line PhanUndeclaredConstantOfClass
 			$taskTypeHandler::WEIGHTED_TAG_PREFIX
