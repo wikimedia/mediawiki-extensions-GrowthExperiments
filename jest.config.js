@@ -22,6 +22,9 @@ module.exports = {
 		'.*\\.(vue)$': '<rootDir>/node_modules/@vue/vue3-jest'
 	},
 	testEnvironment: 'jsdom',
+	testEnvironmentOptions: {
+		customExportConditions: [ 'node', 'node-addons' ]
+	},
 	// Indicates whether the coverage information should be collected while executing the test
 	collectCoverage: true,
 	collectCoverageFrom: [
