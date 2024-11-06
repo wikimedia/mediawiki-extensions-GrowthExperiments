@@ -11,7 +11,8 @@
 			"Tryvix1509",
 			"Vanhdeeptryy",
 			"Doraemonluonbentoi",
-			"Hide on Rosé"
+			"Hide on Rosé",
+			"NguyenHung"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Bảng điều khiển cố vấn",
@@ -84,7 +85,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Nếu {{GENDER:|bạn}} không thể làm cố vấn trong một khoảng thời gian cụ thể (hơn 1 tuần), {{GENDER:|bạn}} có thể đặt trạng thái cố vấn {{GENDER:|của bạn}} thành đi vắng. Trong khoảng thời gian đó, cố vấn khác sẽ nhận được các câu hỏi từ người được cố vấn {{GENDER:|của bạn}}.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Bạn sẽ đi vắng trong:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ngày",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Thời gian vắng mặt {{GENDER:|bạn}} lựa chọn quá dài. Thời gian mà một cố vấn có thể lựa chọn vắng mặt là 365 ngày (một năm).",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Thời gian vắng mặt {{GENDER:|bạn}} lựa chọn quá dài. Thời gian mà một cố vấn có thể lựa chọn vắng mặt là $1 (một năm).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Đã gặp lỗi không rõ. Xin vui lòng thử lại sau.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Trạng thái của bạn đã được chuyển thành “Hoạt động”.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Tình trạng của bạn đã được chuyển thành “Đi vắng”.",
@@ -110,7 +111,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Lý do: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"Yêu cầu người cố vấn\" là gì?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Số người được cố vấn được phân cho tôi",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Không",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Không (tôi nhận theo cách thủ công)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Khoảng một nửa trung bình",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Trung bình (mặc định)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Khoảng gấp đôi trung bình",
