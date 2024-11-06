@@ -44,6 +44,7 @@ class VariantHooks implements
 	public const VARIANT_CONTROL = 'control';
 	/** A/B testing variant (treatment group) for the community-updates experiment. */
 	public const VARIANT_COMMUNITY_UPDATES_MODULE = 'community-updates-module';
+	public const VARIANT_NO_LINK_RECOMMENDATION = 'no-link-recommendation';
 
 	/**
 	 * This defines the allowed values for the variant preference. The default value is defined
@@ -65,7 +66,8 @@ class VariantHooks implements
 		//     Removed as part of consolidating on the new Impact module implementation.
 		//     See task T350077 for more details.
 		self::VARIANT_COMMUNITY_UPDATES_MODULE,
-		self::VARIANT_CONTROL
+		self::VARIANT_CONTROL,
+		self::VARIANT_NO_LINK_RECOMMENDATION,
 	];
 
 	/** User option name for storing variants. */

@@ -53,8 +53,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		] );
 		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
 			[ 'isUserInVariant' ] );
-		$experimentUserManager->method( 'isUserInVariant' )
-			->with( $this->anything(), 'imagerecommendation' )
+		$experimentUserManager->expects( $this->atLeastOnce() )
+			->method( 'isUserInVariant' )
+			->with( $this->anything(), 'no-link-recommendation' )
 			->willReturn( false );
 
 		$lookup = new NewcomerTasksUserOptionsLookup( $experimentUserManager, $userOptionsLookup,
@@ -119,8 +120,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		] );
 		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
 			[ 'isUserInVariant' ] );
-		$experimentUserManager->method( 'isUserInVariant' )
-			->with( $this->anything(), 'imagerecommendation' )
+		$experimentUserManager->expects( $this->atLeastOnce() )
+			->method( 'isUserInVariant' )
+			->with( $this->anything(), 'no-link-recommendation' )
 			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
 				return [
 					'User1' => false,
@@ -146,8 +148,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		);
 		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'link-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
-		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $lookup->getTaskTypeFilter( $user3 ) );
-		$this->assertSame( [ 'link-recommendation' ], $lookup->getTaskTypeFilter( $user4 ) );
+		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user3 ) );
+		$this->assertSame( [ 'links' ], $lookup->getTaskTypeFilter( $user4 ) );
 	}
 
 	/**
@@ -179,8 +181,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		] );
 		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
 			[ 'isUserInVariant' ] );
-		$experimentUserManager->method( 'isUserInVariant' )
-			->with( $this->anything(), 'imagerecommendation' )
+		$experimentUserManager->expects( $this->atLeastOnce() )
+			->method( 'isUserInVariant' )
+			->with( $this->anything(), 'no-link-recommendation' )
 			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
 				return [
 						   'User1' => false,
