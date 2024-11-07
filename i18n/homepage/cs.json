@@ -120,7 +120,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|editace|editace|editací}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Počet návštěv stránek, které jste v posledních 60 dnech editovali:",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Sledujte zobrazení stránky, které jste editovali",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "zatím žádná editace článku",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "Zatím žádná editace článku",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Rozšiřte svobodnou studnici vědomostí editováním článků o tématech, na kterých nejvíce záleží právě {{GENDER:$1|vám}}.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Zobrazit editační tipy",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Začněte s několika <strong>editačními tipy</strong>, poté zde uvidíte, kolik lidí si {{GENDER:$1|vaše příspěvky}} zobrazilo.",

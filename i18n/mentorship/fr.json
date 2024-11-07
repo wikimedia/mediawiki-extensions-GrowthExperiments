@@ -9,7 +9,8 @@
 			"Verdy p",
 			"Wladek92",
 			"SleaY",
-			"Goombiis"
+			"Goombiis",
+			"Mahabarata"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Tableau de bord du mentor",
@@ -64,7 +65,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gérer les tuteurs",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Afficher la liste des tuteurs",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Comment vous présenter en tant que tut{{GENDER:|eur|rice}}",
-	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Comment demander un apprenti",
+	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Comment réclamer un apprenti",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Outils de croissance",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Paramètres",
 	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit": "Quitter le mentorat",
