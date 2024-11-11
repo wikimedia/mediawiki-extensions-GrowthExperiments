@@ -16,8 +16,8 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 	public function onLoadExtensionSchemaUpdates( $updater ) {
 		global $wgGEDatabaseCluster;
 		if ( $wgGEDatabaseCluster ) {
-			throw new ConfigException( 'Cannot use automatic schema upgrades when not on the '
-				. 'default cluster' );
+			// Cannot use automatic schema upgrades when not on the default cluster
+			return;
 		}
 
 		$sqlDir = __DIR__ . '/../sql';
