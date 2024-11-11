@@ -4,7 +4,8 @@
 			"NMW03",
 			"Nemoralis",
 			"Serkanland",
-			"Toghrul Rahimli"
+			"Toghrul Rahimli",
+			"Əkrəm Cəfər"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentor idarəetmə paneli",
@@ -183,7 +184,7 @@
 	"growthexperiments-manage-mentors-pretext-regular": "İnzibatçılar icma standartlarını və ya siyasətlərini pozan mentorları silə bilər. Onlar həmçinin qarşılama mesajı kimi mentorluqla bağlı seçimlərini redaktə edə bilərlər.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "Mentorların siyahısı tarix daxil olmaqla [[$1|MediaWiki ad fəzasında]] saxlanılır.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Mentor kimi qeydiyyatdan keçmək üçün [[Special:EnrollAsMentor]] səhifəsinə gedin.",
-	"growthexperiments-manage-mentors-error-no-such-user": "Xəta: $1 ID-li istifadəçi mövcud deyil. Bu, yəqin ki, daxili səhvdir.",
+	"growthexperiments-manage-mentors-error-no-such-user": "Xəta: Belə identifikatora malik istifadəçi mövcud deyil. Bu, yəqin ki, daxili bir səhvdir.",
 	"growthexperiments-manage-mentors-auto-assigned": "Yeni hesablara avtomatik olaraq təyin olunan mentorlar",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Yeni gələn şəxs {{SITENAME}} hesabını qeydiyyatdan keçirdikdə, aşağıdakı istifadəçilərdən biri avtomatik olaraq onun mentoru təyin edilir.",
 	"growthexperiments-manage-mentors-manually-assigned": "İstifadəçiləri əl ilə seçən mentorlar",
