@@ -18,6 +18,7 @@ use MediaWiki\Page\PageStore;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFormatter;
+use MediaWiki\WikiMap\WikiMap;
 use StatusValue;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -306,14 +307,23 @@ class FixLinkRecommendationData extends Maintenance {
 		}
 	}
 
-	private function maybeReportFixedCount( int $count, string $type ) {
+	private function maybeReportFixedCount( int $count, string $type ): void {
 		$this->output( "Total number of dangling $type entries: $count\n" );
 		if ( !$this->hasOption( 'statsd' ) ) {
 			return;
 		}
 		$fixWord = $this->hasOption( 'dry-run' ) ? 'fixable' : 'fixed';
-		$dataFactory = $this->getServiceContainer()->getPerDbNameStatsdDataFactory();
-		$dataFactory->updateCount( "growthexperiments.$fixWord.link-recommendation.$type", $count );
+
+		$wiki = WikiMap::getCurrentWikiId();
+		$statsFactory = $this->getServiceContainer()->getStatsFactory();
+		$statsFactory
+			->withComponent( 'GrowthExperiments' )
+			->getGauge( 'link_recommendation_dangling_entries' )
+			->setLabel( 'type', $type )
+			->setLabel( 'wiki', $wiki )
+			->setLabel( 'fix-word', $fixWord )
+			->copyToStatsdAt( "$wiki.growthexperiments.$fixWord.link-recommendation.$type" )
+			->set( $count );
 	}
 
 }
