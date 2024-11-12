@@ -123,7 +123,8 @@ class SpecialClaimMentee extends FormSpecialPage {
 				'label-message' => 'growthexperiments-homepage-claimmentee-mentee',
 				'type'          => 'usersmultiselect',
 				'exists'        => true,
-				'required'      => true
+				'required'      => true,
+				'excludetemp'   => true,
 			],
 			'reason' => [
 				'label-message' => 'growthexperiments-homepage-claimmentee-reason',
