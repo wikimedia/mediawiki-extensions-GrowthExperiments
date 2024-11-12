@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
+use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\Config;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
@@ -110,9 +111,16 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Check if link recommendations are enabled. When true, the link-recommendation task type
 	 * should be made available to the user and the links task type hidden.
+	 * @note This has to be equivalent to areLinkRecommendationsEnabled in TaskTypesAbFilter.js
 	 * @return bool
 	 */
-	public function areLinkRecommendationsEnabled(): bool {
+	public function areLinkRecommendationsEnabled( UserIdentity $user ): bool {
+		if ( $this->experimentUserManager->isUserInVariant( $user,
+			VariantHooks::VARIANT_NO_LINK_RECOMMENDATION ) ) {
+			// Disabled by a variant (T377787)
+			return false;
+		}
+
 		return $this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
 			   && $this->config->get( 'GELinkRecommendationsFrontendEnabled' )
 			   && array_key_exists( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
@@ -122,6 +130,7 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Check if image recommendations are enabled. When true, the image-recommendation task type
 	 * should be made available to the user.
+	 * @note This has to be equivalent to areImageRecommendationsEnabled in TaskTypesAbFilter.js
 	 * @return bool
 	 */
 	public function areImageRecommendationsEnabled(): bool {
@@ -133,6 +142,7 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Check if section-level image recommendations are enabled. When true, the
 	 * section-image-recommendation task type should be made available to the user.
+	 * @note This has to be equivalent to areSectionImageRecommendationsEnabled in TaskTypesAbFilter.js
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
@@ -178,7 +188,7 @@ class NewcomerTasksUserOptionsLookup {
 	 */
 	private function getConversionMap( UserIdentity $user ): array {
 		$map = [];
-		if ( $this->areLinkRecommendationsEnabled() ) {
+		if ( $this->areLinkRecommendationsEnabled( $user ) ) {
 			$map += [ 'links' => LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
 			$map += [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];

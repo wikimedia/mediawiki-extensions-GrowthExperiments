@@ -35,7 +35,8 @@
 		const config = require( './config.json' ),
 			taskTypes = require( './TaskTypes.json' );
 		return config.GELinkRecommendationsEnabled &&
-			LINK_RECOMMENDATION_TASK_TYPE in taskTypes;
+			LINK_RECOMMENDATION_TASK_TYPE in taskTypes &&
+			ge.utils.getUserVariant() !== 'no-link-recommendation';
 	}
 
 	/**
