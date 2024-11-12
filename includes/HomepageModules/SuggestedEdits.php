@@ -243,10 +243,6 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	public function getCssClasses() {
 		return array_merge( parent::getCssClasses(),
-			// Enable "Poor man's dark mode" per-module. Temporary workaround for T357699.
-			// FIXME: This should be removed when there is capacity for updating the extension
-			// to use Codex design tokens.
-			[ 'notheme skin-invert ' ],
 			$this->userOptionsLookup->getOption( $this->getContext()->getUser(), self::ACTIVATED_PREF ) ?
 				[ 'activated' ] :
 				[ 'unactivated' ]

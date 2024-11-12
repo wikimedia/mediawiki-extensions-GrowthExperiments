@@ -62,7 +62,6 @@
 				$imageForCaching.remove();
 				// Now that the image has downloaded, remove the loading animation.
 				$imageContent.removeClass( 'skeleton no-image' );
-				$imageContent.addClass( 'mw-no-invert' );
 				// The image was already downloaded, so doing this does not make another request.
 				$imageContent.css( 'background-image', 'url("' + this.data.thumbnailSource + '")' );
 			} );
