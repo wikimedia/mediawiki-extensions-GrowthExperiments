@@ -176,7 +176,6 @@ abstract class DashboardModule implements IDashboardModule {
 
 	protected function outputDependencies() {
 		$out = $this->getContext()->getOutput();
-		$out->addModuleStyles( 'ext.growthExperiments.cssCustomProperties' );
 		$out->addModuleStyles( $this->getModuleStyles() );
 		$out->addModules( $this->getModules() );
 		$out->addJsConfigVars( $this->getJsConfigVars() );

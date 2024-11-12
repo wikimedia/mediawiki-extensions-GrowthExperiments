@@ -108,7 +108,6 @@ class SiteNoticeGenerator {
 	) {
 		$output = $skin->getOutput();
 		$output->addJsConfigVars( 'shouldShowConfirmEmailNotice', true );
-		$output->addModuleStyles( 'ext.growthExperiments.cssCustomProperties' );
 		$output->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
 		$baseCssClassName = 'mw-ge-homepage-confirmemail-nojs';
 		$cssClasses = [
