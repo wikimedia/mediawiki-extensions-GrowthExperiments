@@ -547,7 +547,7 @@
 	"growthexperiments-homepage-special-contribute-title": "편집 제안",
 	"growthexperiments-homepage-special-contribute-description": "약간의 쉬운 수정(예: 링크 추가 또는 교열)으로 기존 문서를 개선하세요.",
 	"growthexperiments-homepage-special-contribute-cta": "편집 제안 보기",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|당신의}} 모든 편집 보기 ($1)",
+	"growthexperiments-homepage-impact-contributions-link": "모든 편집 보기",
 	"growthexperiments-levelingup-getstarted-notification-header": "편집 제안을 사용해보고 {{GENDER:$2|내}} 편집 기술을 쌓아나가기",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "편집 제안 사용해 보기",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "더 알아보기",

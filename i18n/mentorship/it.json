@@ -130,7 +130,7 @@
 	"growthexperiments-mentor-writer-error-message-too-long": "Il messaggio introduttivo è troppo lungo (ID utente interessato: $2). La lunghezza massima è $1.",
 	"growthexperiments-manage-mentors-title": "Gestione tutor",
 	"growthexperiments-manage-mentors-pretext-purpose": "Questa pagina mostra un elenco di tutor.",
-	"growthexperiments-manage-mentors-error-no-such-user": "Errore: non esiste alcun utente con ID pari a $1. Probabilmente si tratta di un errore interno.",
+	"growthexperiments-manage-mentors-error-no-such-user": "Errore: non esiste alcun utente con l'ID indicato. Probabilmente si tratta di un errore interno.",
 	"growthexperiments-manage-mentors-auto-assigned": "Tutor assegnati automaticamente alle nuove utenze",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Quando un nuovo arrivato registra la propria utenza {{SITENAME}}, uno dei seguenti utenti viene assegnato automaticamente come suo tutor.",
 	"growthexperiments-manage-mentors-manually-assigned": "Tutor che selezionano manualmente i loro allievi",
@@ -146,6 +146,7 @@
 	"growthexperiments-manage-mentors-edit-is-away": "È via?",
 	"growthexperiments-manage-mentors-edit-reason": "Motivo",
 	"growthexperiments-manage-mentors-remove-mentor": "Rimuovi",
+	"growthexperiments-manage-mentors-add-mentor-username": "Nome utente del tutor da aggiungere",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Messaggio introduttivo",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Iscriviti",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Solo utenti con almeno $1 {{PLURAL:$1|modifica|modifiche}} e $2 {{PLURAL:$2|giorno|giorni}} di presenza possono iscriversi come tutor."

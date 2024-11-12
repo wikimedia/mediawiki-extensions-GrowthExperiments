@@ -4,7 +4,12 @@
 			"Cabal"
 		]
 	},
+	"growthexperiments-help-panel-question-widget-header": "ਆਪਣਾ ਸਵਾਲ ਭਾਈਚਾਰਾ ਸਹਾਇਤਾ ਕੇਂਦਰ 'ਤੇ ਲਿਖੋ",
 	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "ਨਹੀਂ ਧੰਨਵਾਦ",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "ਦੁਬਾਰਾ ਨਾ ਦਿਖਾਓ",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "ਬਦਲੋ"
+	"growthexperiments-help-panel-questionreview-title": "ਸਹਾਇਤਾ ਕੇਂਦਰ ਨੂੰ ਪੁੱਛੋ",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "ਸਹਾਇਤਾ ਕੇਂਦਰ 'ਤੇ ਆਪਣਾ ਸਵਾਲ ਵੇਖੋ",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "ਬਦਲੋ",
+	"growthexperiments-help-panel-community-help-desk-text": "ਭਾਈਚਾਰਾ ਸਹਾਇਤਾ ਕੇਂਦਰ",
+	"growthexperiments-help-panel-button-header-ask-help": "ਸਹਾਇਤਾ ਕੇਂਦਰ ਨੂੰ ਪੁੱਛੋ"
 }

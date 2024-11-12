@@ -155,6 +155,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultur",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regionar",
 	"growthexperiments-addlink-summary-summary": "Lenkjeframlegg: $1 {{PLURAL:$1|lenkje lagd|lenkjer lagde}} til.",
-	"growthexperiments-homepage-impact-contributions-link": "Syn {{PLURAL:$1|endringa {{GENDER:$2|di}}|alle endringane|2=båe endringane}} ($1)",
+	"growthexperiments-homepage-impact-contributions-link": "Syn alle endringane",
 	"echo-category-title-ge-newcomer": "Nybyrjarfunksjonar"
 }

@@ -193,7 +193,7 @@
 	"growthexperiments-manage-mentors-pretext-regular": "يمكن للإداريّين إزالة المرشِدين الذين ينتهكون معايير أو سياسات المجتمع. يمكنهم أيضًا تعديل الخيارات المتعلقة بالإرشاد، مثل رسالة التقديم الخاصة بهم.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "يتم تخزين قائمة المرشِدين في [[$1|نطاق الميدياويكي]]، بما في ذلك التاريخ.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "للتسجيل كمرشد، انتقلوا إلى [[Special:EnrollAsMentor]].",
-	"growthexperiments-manage-mentors-error-no-such-user": "خطأ: لا وجود لمستخدم مع معرّف $1. ربما يكون هذا خطأ داخلي.",
+	"growthexperiments-manage-mentors-error-no-such-user": "خطأ: لا يوجد مستخدم يحمل معرف المستخدم المحدد. ربما يكون هذا خطأ داخليًا.",
 	"growthexperiments-manage-mentors-auto-assigned": "المرشِدون المعيّنون تلقائيًا للحسابات الجدبدة",
 	"growthexperiments-manage-mentors-auto-assigned-text": "عندما يقوم أحد المستخدمين الجدد بتسجيل حساب {{SITENAME}} الخاص بهم، يتم تعيين أحد المستخدمين التاليين تلقائيًا كمرشد لهم.",
 	"growthexperiments-manage-mentors-manually-assigned": "المرشِدون الذين يختارون مرشَديهم يدويًا",

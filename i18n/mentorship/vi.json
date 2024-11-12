@@ -11,7 +11,8 @@
 			"Nguyenphutrong2",
 			"RiceCracker12",
 			"Tryvix1509",
-			"Vanhdeeptryy"
+			"Vanhdeeptryy",
+			"NguyenHung"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Bảng điều khiển cố vấn",
@@ -84,7 +85,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Nếu {{GENDER:|bạn}} không thể làm cố vấn trong một khoảng thời gian cụ thể (hơn 1 tuần), {{GENDER:|bạn}} có thể đặt trạng thái cố vấn {{GENDER:|của bạn}} thành đi vắng. Trong khoảng thời gian đó, cố vấn khác sẽ nhận được các câu hỏi từ người được cố vấn {{GENDER:|của bạn}}.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Bạn sẽ đi vắng trong:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ngày",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Thời gian vắng mặt {{GENDER:|bạn}} lựa chọn quá dài. Thời gian mà một cố vấn có thể lựa chọn vắng mặt là 365 ngày (một năm).",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Thời gian vắng mặt {{GENDER:|bạn}} lựa chọn quá dài. Thời gian mà một cố vấn có thể lựa chọn vắng mặt là $1 (một năm).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Đã gặp lỗi không rõ. Xin vui lòng thử lại sau.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Trạng thái của bạn đã được chuyển thành “Hoạt động”.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Tình trạng của bạn đã được chuyển thành “Đi vắng”.",
@@ -110,7 +111,7 @@
 	"growthexperiments-notification-body-mentee-claimed": "Lý do: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"Yêu cầu người cố vấn\" là gì?",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Số người được cố vấn được phân cho tôi",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Không",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Không (tôi nhận theo cách thủ công)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "Khoảng một nửa trung bình",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Trung bình (mặc định)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "Khoảng gấp đôi trung bình",
@@ -136,8 +137,8 @@
 	"growthexperiments-manage-mentors-pretext-regular": "Bảo quản viên có thể loại bỏ cố vấn vi phạm tiêu chuẩn cộng đồng hoặc quy định. Họ cũng có thể chỉnh sửa các tùy chọn có liên quan, chẳng hạn như lời giới thiệu.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "Danh sách cố vấn được lưu trữ tại [[$1|không gian tên MediaWiki]] kèm theo lịch sử.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Để đăng ký trở thành cố vấn, hãy đi tới [[Special:EnrollAsMentor]].",
-	"growthexperiments-manage-mentors-error-no-such-user": "Lỗi: Thành viên có ID $1 không tồn tại. Đây có thể là một lỗi nội bộ.",
-	"growthexperiments-manage-mentors-auto-assigned": "Cố vấn được chỉ định tự động",
+	"growthexperiments-manage-mentors-error-no-such-user": "Lỗi: Không tồn tại thành viên nào có ID như vậy. Đây có thể là một lỗi nội bộ.",
+	"growthexperiments-manage-mentors-auto-assigned": "Cố vấn được chỉ định tự động vào tài khoản mới",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Tài khoản mới được chỉ định ngẫu nhiên cho những người cố vấn này.",
 	"growthexperiments-manage-mentors-manually-assigned": "Cố vấn được chỉ định bằng tay",
 	"growthexperiments-manage-mentors-manually-assigned-text": "Tài khoản mới không được chỉ định ngẫu nhiên cho những người cố vấn này. Giống như những người cố vấn khác, những người cố vấn này có thể chọn tài khoản mà họ muốn cố vấn theo cách thủ công. Phần này chủ yếu dành cho những người tổ chức hội thảo, những người chỉ muốn cố vấn cho những người họ đã gặp.",

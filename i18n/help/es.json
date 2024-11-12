@@ -14,7 +14,8 @@
 			"Pedro Zimmer",
 			"Tiberius1701",
 			"Zapipedia (WMF)",
-			"ZebaX2010"
+			"ZebaX2010",
+			"IZapico (WMF)"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activar el panel de ayuda del editor",
@@ -115,7 +116,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "Los artículos se quedan desactualizados a medida que pasa el tiempo y ocurren nuevos eventos. {{GENDER:|Tú}} puedes actualizar el texto y agregar los detalles correctos para que {{SITENAME}} siempre contenga la mejor información.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-example-value": "La sonda <mark class=\"negative\">aterrizará</mark> en Marte <mark class=\"negative\">en 2018</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-calm": "Para marcar la diferencia, solo necesitas realizar una actualización al artículo. No necesitas trabajar en todo el artículo.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-rules1": "Sigue estas normas al actualizar el artículo:\n* Busca oraciones que describan eventos pasados como si sucedieran en el futuro.\n* Busca cifras que puedan estar desactualizadas, como la población de un país.\n* Busca situaciones que hayan cambiado bajo los acontecimientos actuales, como el alcalde de una ciudad.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-rules1": "Sigue estas normas al actualizar el artículo:\n* Busca frase que describan eventos pasados como si sucedieran en el futuro.\n* Busca cifras que puedan estar desactualizadas, como la población de un país.\n* Busca situaciones que hayan cambiado bajo los acontecimientos actuales, como el alcalde de una ciudad.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step1": "Cuando hayas visto información que necesite ser actualizada, haz clic en \"$1\" para comenzar.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-update-main-step1": "Cuando hayas visto información que necesite ser actualizada, toca el lápiz para comenzar.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step2": "Actualiza el artículo borrando y escribiendo como sea necesario. Si modificas o añades nueva información, debes [[$1|añadir una referencia]] para la fuente de dicha información.",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"NMW03",
-			"Nemoralis"
+			"Nemoralis",
+			"Əkrəm Cəfər"
 		]
 	},
 	"growthexperiments-desc": "Bu qadcet, İnkişaf komandası tərəfindən edilən təcrübələri ehtiva edir.",
@@ -160,7 +161,7 @@
 	"communityconfiguration-growthsuggestededits-title": "Tövsiyə edilən redaktələr",
 	"communityconfiguration-growthsuggestededits-description": "Yeni istifadəçi ana səhifəsinin Təklif edilən redaktə funksiyasını fərdiləşdirin.",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Məlumat qutusu şablonları",
-	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Bu şablonlar yeni gələnlər üçün şəkil tövsiyyəsi funksiyası üçün lazımdır. Bu şablonları ehtiva edən məqalələr şəkil tövsiyyəsi tapşırıqları kimi siyahıya alınmayacaq.",
+	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Bu şablonlar yeni gələnlər üçün nəzərdə tutulmuş [[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add an image|şəkil tövsiyəsi]] funksiyası üçün lazımdır. Bu şablonları ehtiva edən məqalələr şəkil tövsiyəsi tapşırıqları kimi siyahıya alınmayacaq.",
 	"communityconfiguration-growthsuggestededits-copyedit-label": "Korreksiya",
 	"communityconfiguration-growthsuggestededits-copyedit-disabled-control-label": "Tapşırıq deaktiv edilib.",
 	"communityconfiguration-growthsuggestededits-copyedit-templates-label": "Korreksiya: orfoqrafiya, qrammatika və durğu işarələrinin təkmilləşdirilməsi lazım olan məqalələri tapmaq üçün şablonlar.",

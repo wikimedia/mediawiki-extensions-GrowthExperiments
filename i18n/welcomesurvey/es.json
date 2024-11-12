@@ -2,7 +2,6 @@
 	"@metadata": {
 		"authors": [
 			"Agabi10",
-			"Amire80",
 			"DiegoAmbrocio",
 			"Fitoschido",
 			"Johny Weissmuller Jr",
@@ -12,7 +11,8 @@
 			"Madamebiblio",
 			"MarcoAurelio",
 			"Zapipedia (WMF)",
-			"ZebaX2010"
+			"ZebaX2010",
+			"IZapico (WMF)"
 		]
 	},
 	"welcomesurvey": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, $1!",
