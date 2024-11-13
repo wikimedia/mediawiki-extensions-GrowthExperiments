@@ -165,7 +165,6 @@ class HelpPanelHooks implements
 
 		if ( $definitelyShow ) {
 			$out->enableOOUI();
-			$out->addModuleStyles( 'ext.growthExperiments.cssCustomProperties' );
 			$out->addModuleStyles( 'ext.growthExperiments.HelpPanelCta.styles' );
 			$out->addModuleStyles( 'ext.growthExperiments.icons' );
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
