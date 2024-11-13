@@ -278,6 +278,13 @@ class CommunityUpdates extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getMobileSummaryHeader() {
+		return $this->getHeaderTextElement();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getHeaderIconName() {
 		return '';
 	}
