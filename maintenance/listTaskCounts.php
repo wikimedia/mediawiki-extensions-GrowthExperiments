@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\WikiMap\WikiMap;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -143,9 +144,16 @@ class ListTaskCounts extends Maintenance {
 	 * @param int[] $taskTypeCounts task type ID => total count
 	 */
 	private function reportTaskCounts( array $taskCounts, array $taskTypeCounts ): void {
-		$dataFactory = $this->getServiceContainer()->getPerDbNameStatsdDataFactory();
+		$wiki = WikiMap::getCurrentWikiId();
+		$statsFactory = $this->getServiceContainer()->getStatsFactory();
 		foreach ( $taskTypeCounts as $taskTypeId => $taskTypeCount ) {
-			$dataFactory->updateCount( "growthexperiments.tasktypecount.$taskTypeId", $taskTypeCount );
+			$statsFactory
+				->withComponent( 'GrowthExperiments' )
+				->getGauge( 'tasktype_count' )
+				->setLabel( 'wiki', $wiki )
+				->setLabel( 'tasktype', $taskTypeId )
+				->copyToStatsdAt( "$wiki.growthexperiments.tasktypecount.$taskTypeId" )
+				->set( $taskTypeCount );
 		}
 	}
 
