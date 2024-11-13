@@ -449,7 +449,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 
 	if ( this.topicsAvailable() ) {
 		const $topicMessage = $( '<div>' )
-			.addClass( 'mw-ge-startediting-dialog-intro-topic-message notheme skin-invert' )
+			.addClass( 'mw-ge-startediting-dialog-intro-topic-message' )
 			.append( responseData ?
 				responseData.labelHtml :
 				[
@@ -615,7 +615,7 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 	difficultyPanel.$element.append(
 		this.buildProgressIndicator( 2, 2 ),
 		$( '<div>' )
-			.addClass( 'mw-ge-startediting-dialog-difficulty-banner notheme skin-invert' )
+			.addClass( 'mw-ge-startediting-dialog-difficulty-banner' )
 			.append(
 				$( '<p>' )
 					.addClass( 'mw-ge-startediting-dialog-difficulty-header' )
