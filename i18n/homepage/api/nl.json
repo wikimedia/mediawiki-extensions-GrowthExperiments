@@ -23,5 +23,9 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Titel van het artikel waarvoor de afbeeldingsaanbevelingstaak is bedoeld",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "De bestandsnaam zonder voorvoegsel voor de afbeeldingsaanbeveling, bv. <kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "De titel van de sectie waarvoor de afbeeldingsaanbeveling bestemd is, bv. <kbd>Geschiedenis</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "De vanaf 1 getelde index van de sectie waarvoor de afbeeldingsaanbeveling geldt, bv. <kbd>3</kbd>"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "De vanaf 1 getelde index van de sectie waarvoor de afbeeldingsaanbeveling geldt, bv. <kbd>3</kbd>",
+	"apihelp-query+linkrecommendations-summary": "Koppelingsaanbevelingen voor een bepaalde pagina opvragen",
+	"apihelp-query+linkrecommendations-example-1": "Ontvang koppelingsaanbevelingen voor de pagina met ID 123",
+	"apihelp-query+linkrecommendations-example-2": "Ontvang tot 5 koppelingsaanbevelingen voor de pagina met ID 456",
+	"apihelp-query+linkrecommendations-param-pageid": "De pagina-ID waarvoor koppelingsaanbevelingen moeten worden opgevraagd."
 }
