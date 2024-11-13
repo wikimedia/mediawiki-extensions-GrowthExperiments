@@ -107,7 +107,7 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message-removed": "$2 {{GENDER:$2|entfernte}} $1 als Lotse",
 	"echo-category-title-ge-mentorship": "Betreuung durch Lotsen",
 	"echo-pref-tooltip-ge-mentorship": "Benachrichtigungen im Zusammenhang mit den vom Growth-Team gepflegten Lotsen-Funktionen. Diese Benachrichtigung teilt dir mit, dass du als Mentee übernommen wurdest oder dass einer deiner Mentees von jemand anderem übernommen wurde.",
-	"growthexperiments-notification-header-mentee-claimed": "Dein {{GENDER:$3|Neuling}} $3 wurde von $1{{GENDER:$2|übernommen}}.",
+	"growthexperiments-notification-header-mentee-claimed": "Dein {{GENDER:$3|Neuling}} $3 wurde von $1 {{GENDER:$2|übernommen}}.",
 	"growthexperiments-notification-body-mentee-claimed": "Grund: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Was heißt \"Mentee übernehmen\"?",
 	"growthexperiments-notification-header-new-praiseworthy-mentees": "Du hast Mentees, die lobenswert sind! Sende Ermutigungen an Mentees über dein Lotsen-Dashboard.",

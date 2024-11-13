@@ -87,6 +87,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Συνολικές επεξεργασίες",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Ανεστραμμένες επεξεργασίες",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Λήφθηκαν ευχαριστίες",
+	"growthexperiments-homepage-impact-scores-over-limit": "999+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Περισσότερες πληροφορίες σχετικά με το πώς λειτουργεί η αποστολή ευχαριστιών",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "Το {{SITENAME}} δημιουργείται από μια κοινότητα συντακτών όπως {{GENDER:$1|εσείς}}. {{GENDER:$1|Μπορείτε}} να δεχτείτε ευχαριστίες από κάποιον άλλο συνεργάτη για μια τροποποίηση {{GENDER:$1|έχετε κάνει}} και {{GENDER:$1|μπορείτε}} επίσης να ευχαριστήσετε άλλους για δικές τους τροποποιήσεις.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "Το {{SITENAME}} δημιουργείται από μια κοινότητα συντακτών. Οποιοσδήποτε συντάκτης μπορεί να δεχθεί ευχαριστίες από κάποιον άλλο για μια τροποποίηση που έχει κάνει. Ο αριθμός των ευχαριστιών που λήφθηκαν εμφανίζεται εδώ.",
