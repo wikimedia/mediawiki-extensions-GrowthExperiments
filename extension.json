@@ -342,6 +342,13 @@
 				"GrowthExperimentsMentorStatusManager"
 			]
 		},
+		"surfacingStructuredTasksOnBeforePageDisplay": {
+			"class": "GrowthExperiments\\NewcomerTasks\\SurfacingStructuredTasks\\BeforePageDisplayHookHandler",
+			"services": [
+				"MainConfig",
+				"GrowthExperimentsNewcomerTasksConfigurationLoader"
+			]
+		},
 		"homepage": {
 			"class": "GrowthExperiments\\HomepageHooks",
 			"services": [
@@ -513,7 +520,8 @@
 			"mentordashboarddiscovery",
 			"tour",
 			"welcomeSurvey",
-			"mentor"
+			"mentor",
+			"surfacingStructuredTasksOnBeforePageDisplay"
 		],
 		"CentralAuthPostLoginRedirect": [
 			"variant",
@@ -1641,6 +1649,20 @@
 				"oojs-ui-windows",
 				"ext.growthExperiments.SuggestedEditSession",
 				"ext.growthExperiments.DataStore"
+			]
+		},
+		"ext.growthExperiments.StructuredTask.Surfacing": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"packageFiles": [
+				"ext.growthExperiments.StructuredTask.Surfacing/index.js",
+				"ext.growthExperiments.StructuredTask.Surfacing/ArticleTextManipulator.js"
+			],
+			"styles": [
+				"ext.growthExperiments.StructuredTask.Surfacing/styles.less"
+			],
+			"codexStyleOnly": "true",
+			"codexComponents": [
+				"CdxButton"
 			]
 		},
 		"ext.growthExperiments.Help": {

@@ -12,7 +12,7 @@
 		"test:jest": "jest",
 		"test:doc": "cd documentation/frontend && npm ci && npm run test",
 		"test:jest:update": "jest -u",
-		"test:types": "tsc --noEmit -p cypress/tsconfig.json",
+		"test:types": "tsc --noEmit && tsc --noEmit -p cypress/tsconfig.json",
 		"coverage": "npm run test:jest",
 		"rollup": "rollup -c"
 	},

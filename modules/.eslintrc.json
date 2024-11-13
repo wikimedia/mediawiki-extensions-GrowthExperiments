@@ -12,6 +12,9 @@
 	"env": {
 		"commonjs": true
 	},
+	"parserOptions": {
+		"ecmaVersion": 8
+	},
 	"rules": {
 		"max-len": "off"
 	},
@@ -40,6 +43,23 @@
 			],
 			"env": {
 				"jest": true
+			}
+		},
+		{
+			"files": [ "ext.growthExperiments.StructuredTask.Surfacing/**/*.js" ],
+			"extends": [
+				"wikimedia/language/es2018"
+			],
+			"rules": {
+				"jsdoc/valid-types": "off",
+				"es-x/no-async-functions": "off",
+				"es-x/no-array-prototype-includes": "off",
+				"es-x/no-trailing-function-commas": "off",
+				"no-cond-assign": "off",
+				"comma-dangle": [
+					"error",
+					"always-multiline"
+				]
 			}
 		}
 	]

@@ -85,7 +85,7 @@ function mwApiCommands( cypressConfig: Cypress.PluginConfigOptions ): {
 				return Promise.reject( new Error( 'edit failed: ' + editResult.edit.result ) );
 			}
 
-			return Promise.resolve( null );
+			return Promise.resolve( editResult.edit );
 		},
 	};
 }
