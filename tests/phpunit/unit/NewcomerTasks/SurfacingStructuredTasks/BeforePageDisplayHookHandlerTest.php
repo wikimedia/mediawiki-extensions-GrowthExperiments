@@ -11,8 +11,11 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\Skins\Vector\SkinVector22;
 use MediaWiki\Skins\Vector\SkinVectorLegacy;
+use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Skin;
@@ -151,16 +154,16 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 	public function getMockOutputPage( array $overrides = [] ): OutputPage {
 		$mockOutputPage = $this->createMock( OutputPage::class );
 
-		$stubUser = $this->createStub( 'User' );
+		$stubUser = $this->createStub( User::class );
 		$stubUser->method( 'isNamed' )->willReturn( $overrides['isNamed'] ?? true );
 		$stubUser->method( 'getEditCount' )->willReturn( $overrides['getEditCount'] ?? 0 );
 		$mockOutputPage->method( 'getUser' )->willReturn( $stubUser );
 
-		$stubWikipage = $this->createStub( 'Title' );
+		$stubWikipage = $this->createStub( Title::class );
 		$stubWikipage->method( 'getNamespace' )->willReturn( $overrides['getNamespace'] ?? NS_MAIN );
 		$mockOutputPage->method( 'getTitle' )->willReturn( $stubWikipage );
 
-		$stubRequest = $this->createStub( 'WebRequest' );
+		$stubRequest = $this->createStub( WebRequest::class );
 		$stubRequest->method( 'getVal' )->willReturnMap( [
 			[ 'action', 'view', $overrides['action'] ?? 'view' ],
 			[ 'veaction', null, $overrides['veaction'] ?? null ],
