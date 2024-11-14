@@ -6,6 +6,7 @@ use GrowthExperiments\ExperimentUserDefaultsManager;
 use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Psr\Log\NullLogger;
 
 /**
  * @coversDefaultClass \GrowthExperiments\ExperimentUserDefaultsManager
@@ -115,6 +116,7 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 		CentralIdLookup $centralIdLookup
 	): ExperimentUserDefaultsManager {
 		return new ExperimentUserDefaultsManager(
+			new NullLogger(),
 			static function () use ( $centralIdLookup ) {
 				return $centralIdLookup;
 			}

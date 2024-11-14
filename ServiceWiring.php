@@ -230,6 +230,7 @@ return [
 		MediaWikiServices $services
 	): ExperimentUserDefaultsManager {
 		return new ExperimentUserDefaultsManager(
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			static function () use ( $services ) {
 				return $services->getCentralIdLookup();
 			},
