@@ -108,12 +108,7 @@ class GrowthExperimentsServices {
 	}
 
 	public function getLoadBalancer(): ILoadBalancer {
-		$databaseCluster = $this->getGrowthConfig()->get( 'GEDatabaseCluster' );
-		if ( $databaseCluster ) {
-			return $this->coreServices->getDBLoadBalancerFactory()->getExternalLB( $databaseCluster );
-		} else {
-			return $this->coreServices->getDBLoadBalancerFactory()->getMainLB();
-		}
+		return $this->coreServices->getDBLoadBalancerFactory()->getLoadBalancer( SchemaHooks::VIRTUAL_DOMAIN );
 	}
 
 	public function getExperimentUserManager(): ExperimentUserManager {
