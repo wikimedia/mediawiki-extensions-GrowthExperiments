@@ -74,7 +74,7 @@
 	"growthexperiments-edit-config-personalized-praise-max-edits": "الحد الأقصى لعدد التعديلات التي يمكن اعتبارها جديرة بالثناء للمستخدم",
 	"growthexperiments-edit-config-newcomertasks": "التعديلات المقترحة",
 	"growthexperiments-edit-config-newcomer-tasks-description": "تظهر بعض الأنواع من التعديلات المقترحة عير قوالب الصيانة. المقالات التي تتضمّن على تلك القوالب تضاف إلى خلاصة المقترحات. لمشاهدة كم عدد المقالات لكلّ نوع من المهام، شاهدوا [[Special:NewcomerTasksInfo|هذه الصفحة]].",
-	"growthexperiments-edit-config-newcomer-tasks-disabled": "مُعطَّل",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "معطل",
 	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "معطّلة في إعدادات الموقع",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "تحرير النسخ: القوالب المستخدمة للعثور على مقالات في حاجة إلى تحرير النسخ، مثل الرّسم، أو النحو، أو تحسين التنقيط.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "صفحة الوصول لتعلّم المزيد حول تحرير النسخ.",
