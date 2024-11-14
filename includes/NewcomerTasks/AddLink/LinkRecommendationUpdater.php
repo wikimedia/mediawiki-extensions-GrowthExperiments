@@ -150,7 +150,7 @@ class LinkRecommendationUpdater {
 			return Status::newFatal(
 				'Failed to request weighted tags update',
 				LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX,
-				$e
+				(string)$e
 			);
 		}
 
