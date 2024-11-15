@@ -2,7 +2,9 @@
 
 namespace GrowthExperiments;
 
+use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWiki\User\UserIdentity;
+use Psr\Log\LoggerInterface;
 
 /**
  * Service for assigning experiment / variant to users using configured
@@ -12,13 +14,17 @@ use MediaWiki\User\UserIdentity;
 class ExperimentUserDefaultsManager {
 
 	public const CUCOND_BUCKET_BY_USER_ID = 'user-bucket-growth';
+
+	private LoggerInterface $logger;
+
 	/**
 	 * CentralIdLookup must be provided as a callback function to avoid circular dependency
 	 * @var callable
 	 */
 	private $centralIdLookupCallback;
 
-	public function __construct( callable $centralIdLookupCallback ) {
+	public function __construct( LoggerInterface $logger, callable $centralIdLookupCallback ) {
+		$this->logger = $logger;
 		$this->centralIdLookupCallback = $centralIdLookupCallback;
 	}
 
@@ -33,11 +39,17 @@ class ExperimentUserDefaultsManager {
 		/** @var CentralIdLookup */
 		$centralIdLookup = $centralIdLookupCallback();
 		$userCentralId = $centralIdLookup->centralIdFromLocalUser( $userIdentity );
-		$sample = $this->getSample( $userCentralId, $experimentName );
-		if ( $this->isInSample( $args[0], $sample ) ) {
-			return true;
+		if ( $userCentralId === 0 ) {
+			// CentralIdLookup is documented to return a zero on failure
+			$this->logger->error( __METHOD__ . ' failed to get a central user ID', [
+				'exception' => new \RuntimeException,
+				'userName' => $userIdentity->getName(),
+			] );
+			// No point in hashing an error code
+			return false;
 		}
-		return false;
+		$sample = $this->getSample( $userCentralId, $experimentName );
+		return $this->isInSample( $args[0], $sample );
 	}
 
 	/**
