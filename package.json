@@ -37,6 +37,7 @@
 		"api-testing": "1.6.0",
 		"babel-core": "6.26.3",
 		"cypress": "^13.15.1",
+		"cypress-terminal-report": "^7.0.4",
 		"d3-array": "3.2.0",
 		"d3-interpolate": "3.0.1",
 		"d3-path": "3.0.1",
