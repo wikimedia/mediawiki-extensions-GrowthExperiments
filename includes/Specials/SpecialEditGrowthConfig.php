@@ -280,7 +280,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				if ( $lastRevisionUser !== null ) {
 					$form->addPreHtml( $this->msg(
 						'growthexperiments-edit-config-last-edit',
-						$lastRevisionUser,
+						$lastRevisionUser->getName(),
 						MWTimestamp::getInstance( $revision->getTimestamp() )
 							->getRelativeTimestamp(),
 						$configTitle->getPrefixedText(),
