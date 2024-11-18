@@ -27,9 +27,9 @@ class HelpPanel {
 	 * @return Tag
 	 * @throws ConfigException
 	 */
-	public static function getHelpPanelCtaButton() {
+	public static function getHelpPanelCtaButton( Config $wikiConfig ) {
 		$helpdeskTitle = self::getHelpDeskTitle(
-			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )->getGrowthWikiConfig()
+			$wikiConfig
 		);
 		$btnWidgetArr = [
 			'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
@@ -117,13 +117,17 @@ class HelpPanel {
 	/**
 	 * Check if we should show help panel to user.
 	 *
-	 * @param OutputPage $out
-	 * @param bool $checkAction
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function shouldShowHelpPanel( OutputPage $out, $checkAction = true ): bool {
-		if ( !self::isHelpPanelEnabled() ) {
+	public static function shouldShowHelpPanel(
+		OutputPage $out, bool $checkAction = true,
+		?Config $config = null, ?Config $wikiConfig = null
+	): bool {
+		$config ??= self::getGrowthConfig();
+		$wikiConfig ??= self::getGrowthWikiConfig();
+
+		if ( !self::isHelpPanelEnabled( $config ) ) {
 			return false;
 		}
 
@@ -134,7 +138,7 @@ class HelpPanel {
 		if ( $checkAction ) {
 			$action = $out->getRequest()->getVal( 'action', 'view' );
 			if ( !in_array( $action, [ 'edit', 'submit' ] ) &&
-				!self::shouldShowForReadingMode( $out, $action ) ) {
+				!self::shouldShowForReadingMode( $out, $action, $wikiConfig ) ) {
 				return false;
 			}
 		}
@@ -144,7 +148,7 @@ class HelpPanel {
 		}
 
 		if ( in_array( $out->getTitle()->getNamespace(),
-			self::getGrowthWikiConfig()->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
+			$wikiConfig->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
 			return false;
 		}
 
@@ -158,12 +162,12 @@ class HelpPanel {
 	 * so specifying 4 (NS_PROJECT) as a namespace for which to enable help panel reading mode
 	 * will also result in enabling 5 (NS_PROJECT_TALK) as an additional namespace.
 	 *
-	 * @param OutputPage $out
-	 * @param string $action
-	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function shouldShowForReadingMode( OutputPage $out, $action ) {
+	public static function shouldShowForReadingMode(
+		OutputPage $out, string $action,
+		Config $wikiConfig
+	): bool {
 		if ( $action !== 'view' ) {
 			return false;
 		}
@@ -181,14 +185,15 @@ class HelpPanel {
 			return true;
 		}
 		return in_array( $title->getSubjectPage()->getNamespace(),
-				   self::getGrowthWikiConfig()->get( 'GEHelpPanelReadingModeNamespaces' ) );
+				   $wikiConfig->get( 'GEHelpPanelReadingModeNamespaces' ) );
 	}
 
 	/**
 	 * @return bool
 	 */
-	public static function isHelpPanelEnabled() {
-		return MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelEnabled' );
+	public static function isHelpPanelEnabled( ?Config $config = null ) {
+		$config ??= MediaWikiServices::getInstance()->getMainConfig();
+		return $config->get( 'GEHelpPanelEnabled' );
 	}
 
 	/**
