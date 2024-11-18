@@ -14,7 +14,7 @@ const { SevereServiceError } = require( 'webdriverio' );
 exports.config = { ...config,
 	// Override, or add to, the setting from wdio-mediawiki.
 	// Learn more at https://webdriver.io/docs/configurationfile/
-	maxInstances: 4,
+	maxInstances: 1,
 	specFileRetries: 2,
 	specFileRetriesDelay: 3,
 	beforeSuite: async function () {
