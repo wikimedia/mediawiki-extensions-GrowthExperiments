@@ -20,6 +20,7 @@ use MediaWiki\Status\Status;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\Title\Title;
 use MediaWiki\Utils\MWTimestamp;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IConnectionProvider;
@@ -33,6 +34,7 @@ use Wikimedia\Rdbms\IDBAccessObject;
  */
 class LinkRecommendationUpdater {
 
+	private LoggerInterface $logger;
 	private IConnectionProvider $connectionProvider;
 	private RevisionStore $revisionStore;
 	private NameTableStore $changeDefNameTableStore;
@@ -48,6 +50,7 @@ class LinkRecommendationUpdater {
 	private ?LinkRecommendationTaskType $linkRecommendationTaskType = null;
 
 	/**
+	 * @param LoggerInterface $logger
 	 * @param IConnectionProvider $connectionProvider
 	 * @param RevisionStore $revisionStore
 	 * @param NameTableStore $changeDefNameTableStore
@@ -60,6 +63,7 @@ class LinkRecommendationUpdater {
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 */
 	public function __construct(
+		LoggerInterface $logger,
 		IConnectionProvider $connectionProvider,
 		RevisionStore $revisionStore,
 		NameTableStore $changeDefNameTableStore,
@@ -70,6 +74,7 @@ class LinkRecommendationUpdater {
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkRecommendationStore $linkRecommendationStore
 	) {
+		$this->logger = $logger;
 		$this->connectionProvider = $connectionProvider;
 		$this->revisionStore = $revisionStore;
 		$this->changeDefNameTableStore = $changeDefNameTableStore;
@@ -147,6 +152,10 @@ class LinkRecommendationUpdater {
 		} catch ( Exception $e ) {
 			$db->cancelAtomic( __METHOD__ );
 
+			$this->logger->error( __METHOD__ . ' failed to update weighted tags', [
+				'exception' => $e,
+				'pageTitle' => $title->getPrefixedText(),
+			] );
 			return Status::newFatal(
 				'Failed to request weighted tags update',
 				LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX,

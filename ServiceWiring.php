@@ -402,6 +402,7 @@ return [
 	): LinkRecommendationUpdater {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new LinkRecommendationUpdater(
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			$services->getDBLoadBalancerFactory(),
 			$services->getRevisionStore(),
 			$services->getNameTableStoreFactory()->getChangeTagDef(),
