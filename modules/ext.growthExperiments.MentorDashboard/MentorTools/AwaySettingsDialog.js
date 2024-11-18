@@ -84,17 +84,9 @@
 					);
 					dialog.emit( 'awayset', data.growthmanagementorlist.mentor.awayTimestampHuman );
 					dialog.close( { action: action } );
-				} ).catch( ( errorCode ) => {
-					let msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown';
-					if ( errorCode === 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh' ) {
-						msgCode = errorCode;
-					}
-
-					// Messages that can be used here:
-					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh
-					// * growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown
+				} ).catch( ( errorCode, response ) => {
 					mw.notify(
-						mw.msg( msgCode ),
+						response.error.info,
 						{ type: 'error' }
 					);
 				} );
