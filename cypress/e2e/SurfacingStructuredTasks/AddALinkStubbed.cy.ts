@@ -34,5 +34,17 @@ describe( 'Surfacing Link recommendations (with api responses stubbed)', () => {
 		cy.get( '.growth-surfaced-task-button' ).should( 'have.length', 3 );
 		cy.get( '.growth-surfaced-task-button:first' ).click();
 		cy.get( '.growth-surfaced-task-button:first' ).should( 'have.class', 'growth-surfaced-task-popup-visible' );
+		// { force: true } disables scrolling into view and thus inadvertently closing the popup
+		cy.get( '[data-testid="surfacing-tasks-popup-no"]:first' ).click( { force: true } );
+		cy.get( '.growth-surfaced-task-button:first' ).should( 'not.have.class', 'growth-surfaced-task-popup-visible' );
+
+		cy.get( '.growth-surfaced-task-button:first' ).click();
+		cy.get( '[data-testid="surfacing-tasks-popup-yes"]:first' ).click( { force: true } );
+
+		cy.location( 'pathname' ).should( 'equal', '/example' );
+		/*
+		 We are stubbing the tasks, thus the task-url is not real.
+		 Assert that the redirect to what is in linkrecommendations.taskURL has happened
+		*/
 	} );
 } );

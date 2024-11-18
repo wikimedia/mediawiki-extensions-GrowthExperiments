@@ -1,4 +1,5 @@
 const ArticleTextManipulator = require( './ArticleTextManipulator.js' );
+const SurfacedTaskPopup = require( './SurfacedTaskPopup.js' );
 
 class StructuredTaskSurfacer {
 
@@ -78,7 +79,7 @@ class StructuredTaskSurfacer {
 			 */
 			( rec ) => {
 				const textToLink = rec.link_text;
-				const buttonNode = this.createButtonNode( textToLink, taskUrl );
+				const buttonNode = this.createHighlightNode( textToLink, taskUrl );
 				const paragraphWithWord = this.articleTextManipulator.findFirstParagraphContainingText(
 					wikitextRootElement,
 					textToLink,
@@ -121,7 +122,86 @@ class StructuredTaskSurfacer {
 	 * @param {string} taskUrl
 	 * @return {Element}
 	 */
-	createButtonNode( textToLink, taskUrl ) {
+	createHighlightNode( textToLink, taskUrl ) {
+		const highlightButtonElement = this.createButtonNode( textToLink );
+		const popup = new SurfacedTaskPopup( textToLink );
+
+		const popupElement = popup.getElementToInsert();
+
+		/**
+		 * @param {Event} event
+		 */
+		const handleClickOutsidePopup = ( event ) => {
+			if ( event.target instanceof HTMLElement &&
+				( popupElement === event.target || popupElement.contains( event.target ) )
+			) {
+				// click inside popup => do nothing
+				return;
+			}
+
+			highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
+			popup.toggle( false );
+			document.removeEventListener( 'click', handleClickOutsidePopup, true );
+		};
+
+		highlightButtonElement.addEventListener( 'click',
+			() => {
+				// TODO: T377097 - add instrumentation here
+				highlightButtonElement.classList.add( 'growth-surfaced-task-popup-visible' );
+				document.addEventListener( 'click', handleClickOutsidePopup, true );
+				popup.toggle( true );
+			},
+		);
+		popup.addYesButtonClickHandler(
+			() => {
+				// TODO: T377097 - add instrumentation here
+				window.location.href = taskUrl;
+				document.removeEventListener( 'click', handleClickOutsidePopup, true );
+			},
+		);
+		popup.addNoButtonClickHandler(
+			() => {
+				// TODO: T377097 - add instrumentation here
+				highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
+				popup.toggle( false );
+				document.removeEventListener( 'click', handleClickOutsidePopup, true );
+			},
+		);
+		popup.addXButtonClickHandler(
+			() => {
+				// TODO: T377097 - add instrumentation here
+				highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
+				document.removeEventListener( 'click', handleClickOutsidePopup, true );
+			},
+		);
+
+		// eslint-disable-next-line compat/compat -- IntersectionObserver is widely available according to baseline
+		const observer = new IntersectionObserver( ( entries ) => {
+			entries.forEach( ( entry ) => {
+				if ( !entry.isIntersecting ) {
+					// TODO: T377097 - add instrumentation here
+					highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
+					popup.toggle( false );
+					document.removeEventListener( 'click', handleClickOutsidePopup, true );
+				}
+			} );
+		} );
+
+		// Start observing the target element
+		observer.observe( popupElement );
+
+		const highlightWrapper = document.createElement( 'span' );
+		highlightWrapper.insertBefore( highlightButtonElement, null );
+		highlightWrapper.insertBefore( popupElement, null );
+		return highlightWrapper;
+	}
+
+	/**
+	 * @private
+	 * @param {string} textToLink
+	 * @return {HTMLButtonElement}
+	 */
+	createButtonNode( textToLink ) {
 		const textNode = document.createTextNode( textToLink );
 		const iconNode = document.createElement( 'span' );
 		iconNode.classList.add( 'cdx-button__icon', 'growth-surfaced-task-button__icon' );
@@ -131,16 +211,7 @@ class StructuredTaskSurfacer {
 		buttonNode.classList.add( 'cdx-button', 'cdx-button--weight-quiet', 'growth-surfaced-task-button' );
 		buttonNode.insertBefore( textNode, null );
 		buttonNode.insertBefore( iconNode, null );
-		buttonNode.addEventListener( 'click', () => {
-			mw.notify(
-				'TODO: show surfacing tasks popup now! Redirecting to edit-session...',
-				{ type: 'success' },
-			);
-			buttonNode.classList.toggle( 'growth-surfaced-task-popup-visible' );
-			window.setTimeout( () => {
-				window.location.href = taskUrl;
-			}, 3000 );
-		} );
+
 		return buttonNode;
 	}
 }

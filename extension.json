@@ -1655,7 +1655,8 @@
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"packageFiles": [
 				"ext.growthExperiments.StructuredTask.Surfacing/index.js",
-				"ext.growthExperiments.StructuredTask.Surfacing/ArticleTextManipulator.js"
+				"ext.growthExperiments.StructuredTask.Surfacing/ArticleTextManipulator.js",
+				"ext.growthExperiments.StructuredTask.Surfacing/SurfacedTaskPopup.js"
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask.Surfacing/styles.less"
@@ -1663,6 +1664,12 @@
 			"codexStyleOnly": "true",
 			"codexComponents": [
 				"CdxButton"
+			],
+			"messages": [
+				"growthexperiments-surfacing-structured-tasks-highlight-popup-content",
+				"growthexperiments-surfacing-structured-tasks-highlight-popup-title",
+				"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label",
+				"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label"
 			]
 		},
 		"ext.growthExperiments.Help": {
