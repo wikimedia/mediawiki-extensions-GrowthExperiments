@@ -128,5 +128,9 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|您}}即将移除[[User:$1|$1]]的导师身份。",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "移除该导师的原因",
 	"growthexperiments-manage-mentors-remove-mentor-success": "用户[[User:$1|$1]]不再是一名{{GENDER:$1|导师}}。",
-	"growthexperiments-manage-mentors-return-back": "您可[[Special:ManageMentors|返回]]导师列表。"
+	"growthexperiments-manage-mentors-return-back": "您可[[Special:ManageMentors|返回]]导师列表。",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "感谢{{GENDER:|您}}自愿成为{{SITENAME}}上的{{GENDER:|导师}}。{{GENDER:|您}}可以通过填写这份表单来登记为导师。",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "介绍消息",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "介绍消息会对{{GENDER:|您}}的导师身份进行介绍。请控制内容在240个字符内，且不要使用wikitext。",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "登记"
 }
