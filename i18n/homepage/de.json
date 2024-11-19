@@ -30,7 +30,8 @@
 			"Umlaut",
 			"Wikipeter-HH",
 			"Wnme",
-			"Wolfdietmann"
+			"Wolfdietmann",
+			"Seewolf"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -148,7 +149,7 @@
 	"growthexperiments-tour-response-button-okay": "Verstanden",
 	"tag-help_module_question": "Hilfemodul-Frage",
 	"tag-help_module_question-description": "Bearbeitung durchgeführt vom Startseiten-Hilfsmodul „Stelle eine Frage“",
-	"tag-mentorship_module_question": "Frage zum Lotsenmodul",
+	"tag-mentorship_module_question": "Frage über das Lotsenmodul",
 	"tag-mentorship_module_question-description": "Bearbeitung durchgeführt im Modul „Frage deine(n) Lotsen/Lotsin“",
 	"tag-mentorship_panel_question": "„Frage deine(n) Lotsin/Lotsen“ im Hilfebereich",
 	"tag-mentorship_panel_question-description": "Bearbeitung durchgeführt mit der Funktion „Frage deine(n) Lotsin/Lotsen“ im Hilfebereich",
