@@ -4,6 +4,7 @@
 			"Amire80",
 			"Martin Urbanec (WMF)",
 			"McDutchie",
+			"Pppery",
 			"Robby",
 			"Xiplus",
 			"Ата"
@@ -83,7 +84,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Label in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Label in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "Label in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}\n\n{{identical|Day}}",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Error message in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module.\n\nParameters:\n* $1 - maximum number of allowed days\n\n\"You'll be gone for\" is {{msg-mw|Growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for}}\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Error message in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module and in Special:ManageMentors when an admin is editing someone else's mentor settings.\n\nParameters:\n* $1 - maximum number of allowed days\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Error message in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Success message displayed after changing mentor's status to active\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Success message displayed after changing mentor's status to away\n\n{{doc-growthexperiments-mentor-dashboard}}",
