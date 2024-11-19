@@ -41,7 +41,8 @@ class ExperimentUserDefaultsManager {
 		$userCentralId = $centralIdLookup->centralIdFromLocalUser( $userIdentity );
 		if ( $userCentralId === 0 ) {
 			// CentralIdLookup is documented to return a zero on failure
-			$this->logger->error( __METHOD__ . ' failed to get a central user ID', [
+			// TODO: Increase severity back to error, once it stops happening so frequently (T380271)
+			$this->logger->debug( __METHOD__ . ' failed to get a central user ID', [
 				'exception' => new \RuntimeException,
 				'userName' => $userIdentity->getName(),
 			] );
