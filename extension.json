@@ -634,7 +634,6 @@
 			"levelingup"
 		],
 		"UserGetRights": "mentor",
-		"UnitTestsAfterDatabaseSetup": "schema",
 		"UserSendConfirmationMail": "confirmEmail",
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
 		"VisualEditorApiVisualEditorEditPostSave": [
@@ -2558,10 +2557,6 @@
 			"description": "List of templates that provide Infobox functionality. Used for manually testing changes.",
 			"value": []
 		},
-		"GEDatabaseCluster": {
-			"description": "Which database cluster to use. False means the cluster of the current wiki will be used. The database name will be the database name configured for the wiki, regardless of this setting. Only set this if you manage the DB schema manually.",
-			"value": false
-		},
 		"GEWikiConfigPageTitle": {
 			"description": "Name of page used for on-wiki config; must be in NS_MEDIAWIKI and end with .json; only variables listed in GEOnWikiConfigAllowList may be overriden on wiki",
 			"value": "MediaWiki:GrowthExperimentsConfig.json"
@@ -3117,5 +3112,8 @@
 			]
 		}
 	},
+	"DatabaseVirtualDomains": [
+		"virtual-growthexperiments"
+	],
 	"manifest_version": 2
 }
