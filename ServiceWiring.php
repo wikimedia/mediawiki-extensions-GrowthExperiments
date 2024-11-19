@@ -217,12 +217,14 @@ return [
 		MediaWikiServices $services
 	): ExperimentUserManager {
 		return new ExperimentUserManager(
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			new ServiceOptions(
 				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
 			),
 			$services->getUserOptionsManager(),
-			$services->getUserOptionsLookup()
+			$services->getUserOptionsLookup(),
+			$services->getUserFactory()
 		);
 	},
 
