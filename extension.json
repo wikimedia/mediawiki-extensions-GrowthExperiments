@@ -1655,8 +1655,12 @@
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"packageFiles": [
 				"ext.growthExperiments.StructuredTask.Surfacing/index.js",
+				"utils/Utils.js",
+				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
+				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask.Surfacing/ArticleTextManipulator.js",
-				"ext.growthExperiments.StructuredTask.Surfacing/SurfacedTaskPopup.js"
+				"ext.growthExperiments.StructuredTask.Surfacing/SurfacedTaskPopup.js",
+				"ext.growthExperiments.StructuredTask.Surfacing/PageSummaryRepository.js"
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask.Surfacing/styles.less"
@@ -1664,6 +1668,9 @@
 			"codexStyleOnly": "true",
 			"codexComponents": [
 				"CdxButton"
+			],
+			"dependencies": [
+				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"messages": [
 				"growthexperiments-surfacing-structured-tasks-highlight-popup-content",

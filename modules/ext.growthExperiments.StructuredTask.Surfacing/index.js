@@ -1,5 +1,9 @@
 const ArticleTextManipulator = require( './ArticleTextManipulator.js' );
 const SurfacedTaskPopup = require( './SurfacedTaskPopup.js' );
+const PageSummaryRepository = require( './PageSummaryRepository.js' );
+const LinkSuggestionInteractionLogger = require(
+	'../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js',
+);
 
 class StructuredTaskSurfacer {
 
@@ -12,11 +16,27 @@ class StructuredTaskSurfacer {
 		this.api = mwApi;
 		this.articleTextManipulator = articleTextManipulator;
 		this.config = config;
+		this.trackingCounterPrefix = 'counter.growthExperiments.SuggestedEdits.Surfacing.LinkRecommendation.' +
+			mw.config.get( 'wgDBname' );
+		this.newcomerTaskToken = crypto.randomUUID();
+		this.clickId = crypto.randomUUID();
+		/**
+		 * @type any
+		 */
+		this.logger = new LinkSuggestionInteractionLogger( {
+			/* eslint-disable camelcase */
+			is_mobile: true,
+			active_interface: 'readmode_article_page',
+			homepage_pageview_token: this.clickId,
+			newcomer_task_token: this.newcomerTaskToken,
+			/* eslint-enable camelcase */
+		} );
 	}
 
 	/**
 	 * @typedef {Object} LinkRecommendation
 	 * @property {string} link_text
+	 * @property {string} link_target
 	 * @property {number} score
 	 */
 
@@ -51,7 +71,9 @@ class StructuredTaskSurfacer {
 			return;
 		}
 
-		const taskUrl = linkRecommendationResponse.taskURL;
+		const taskUrl = new URL( linkRecommendationResponse.taskURL );
+		taskUrl.searchParams.append( 'geclickid', this.clickId );
+		taskUrl.searchParams.append( 'genewcomertasktoken', this.newcomerTaskToken );
 		recs.sort(
 			/**
 			 * @param {{score: number}} a
@@ -73,13 +95,38 @@ class StructuredTaskSurfacer {
 			throw new Error( 'wikitext root-element not found!' );
 		}
 
+		const pageContentSummaryRepository = new PageSummaryRepository( new mw.Api() );
+		const linkPageData = await pageContentSummaryRepository.loadPageSummariesAndThumbnails(
+			topRecs.map( ( rec ) => rec.link_target ),
+		);
+
+		if ( topRecs.length ) {
+			mw.track( this.trackingCounterPrefix + '.highlight.page.impression', 1 );
+			this.logger.log( 'impression' );
+		}
+
+		let aHighlightHasBeenSeenByUser = false;
+
 		topRecs.forEach(
 			/**
-			 * @param {{link_text: string}} rec
+			 * @param {{link_text: string; link_target: string}} rec
 			 */
 			( rec ) => {
 				const textToLink = rec.link_text;
-				const buttonNode = this.createHighlightNode( textToLink, taskUrl );
+				const highlightNode = this.createHighlightNode( textToLink, taskUrl, linkPageData[ rec.link_target ] );
+
+				// eslint-disable-next-line compat/compat -- IntersectionObserver is widely available according to baseline
+				const highlightObserver = new IntersectionObserver( ( entries ) => {
+					entries.forEach( ( entry ) => {
+						if ( entry.isIntersecting && !aHighlightHasBeenSeenByUser ) {
+							aHighlightHasBeenSeenByUser = true;
+							mw.track( this.trackingCounterPrefix + '.highlight.viewport.impression', 1 );
+							this.logger.log( 'viewport_impression' );
+						}
+					} );
+				} );
+				highlightObserver.observe( highlightNode );
+
 				const paragraphWithWord = this.articleTextManipulator.findFirstParagraphContainingText(
 					wikitextRootElement,
 					textToLink,
@@ -91,7 +138,7 @@ class StructuredTaskSurfacer {
 				this.articleTextManipulator.replaceDirectTextWithElement(
 					paragraphWithWord,
 					textToLink,
-					buttonNode,
+					highlightNode,
 				);
 			},
 		);
@@ -119,12 +166,13 @@ class StructuredTaskSurfacer {
 	/**
 	 * @private
 	 * @param {string} textToLink
-	 * @param {string} taskUrl
+	 * @param {URL} taskUrl
+	 * @param { { title: string; description: string?; thumbnail: any } | null } extraData
 	 * @return {Element}
 	 */
-	createHighlightNode( textToLink, taskUrl ) {
+	createHighlightNode( textToLink, taskUrl, extraData ) {
 		const highlightButtonElement = this.createButtonNode( textToLink );
-		const popup = new SurfacedTaskPopup( textToLink );
+		const popup = new SurfacedTaskPopup( textToLink, extraData );
 
 		const popupElement = popup.getElementToInsert();
 
@@ -139,6 +187,7 @@ class StructuredTaskSurfacer {
 				return;
 			}
 
+			mw.track( this.trackingCounterPrefix + '.popup.clickOutside', 1 );
 			highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
 			popup.toggle( false );
 			document.removeEventListener( 'click', handleClickOutsidePopup, true );
@@ -146,7 +195,7 @@ class StructuredTaskSurfacer {
 
 		highlightButtonElement.addEventListener( 'click',
 			() => {
-				// TODO: T377097 - add instrumentation here
+				mw.track( this.trackingCounterPrefix + '.highlight.click', 1 );
 				highlightButtonElement.classList.add( 'growth-surfaced-task-popup-visible' );
 				document.addEventListener( 'click', handleClickOutsidePopup, true );
 				popup.toggle( true );
@@ -154,14 +203,19 @@ class StructuredTaskSurfacer {
 		);
 		popup.addYesButtonClickHandler(
 			() => {
-				// TODO: T377097 - add instrumentation here
-				window.location.href = taskUrl;
+				mw.track( this.trackingCounterPrefix + '.popup.Yes.click', 1 );
+				this.logger.log( 'suggestion_accept_yes', null, {
+					/* eslint-disable camelcase */
+					active_interface: 'readmode_suggestion_dialog',
+					/* eslint-enable camelcase */
+				} );
+				window.location.href = taskUrl.href;
 				document.removeEventListener( 'click', handleClickOutsidePopup, true );
 			},
 		);
 		popup.addNoButtonClickHandler(
 			() => {
-				// TODO: T377097 - add instrumentation here
+				mw.track( this.trackingCounterPrefix + '.popup.No.click', 1 );
 				highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
 				popup.toggle( false );
 				document.removeEventListener( 'click', handleClickOutsidePopup, true );
@@ -169,7 +223,7 @@ class StructuredTaskSurfacer {
 		);
 		popup.addXButtonClickHandler(
 			() => {
-				// TODO: T377097 - add instrumentation here
+				mw.track( this.trackingCounterPrefix + '.popup.X.click', 1 );
 				highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
 				document.removeEventListener( 'click', handleClickOutsidePopup, true );
 			},
@@ -179,7 +233,6 @@ class StructuredTaskSurfacer {
 		const observer = new IntersectionObserver( ( entries ) => {
 			entries.forEach( ( entry ) => {
 				if ( !entry.isIntersecting ) {
-					// TODO: T377097 - add instrumentation here
 					highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
 					popup.toggle( false );
 					document.removeEventListener( 'click', handleClickOutsidePopup, true );

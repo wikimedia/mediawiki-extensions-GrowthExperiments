@@ -1,3 +1,4 @@
+// @ts-nocheck - TODO: make this covered by typescript
 ( function () {
 
 	// internal methods
