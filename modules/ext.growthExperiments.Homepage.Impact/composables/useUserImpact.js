@@ -114,7 +114,7 @@ function useUserImpact( timeFrame, initialData ) {
 			} ) );
 
 		/**
-		 * Build an array of articles for use in NewImpact/App.vue.
+		 * Build an array of articles for use in Impact/App.vue.
 		 *
 		 * @param {Object} articleDataObject
 		 * @return {

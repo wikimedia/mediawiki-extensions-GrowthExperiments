@@ -67,12 +67,12 @@ class Impact extends BaseModule {
 	/** @inheritDoc */
 	protected function getJsConfigVars() {
 		return [
-			'GENewImpactRelevantUserName' => $this->userIdentity->getName(),
-			'GENewImpactRelevantUserId' => $this->userIdentity->getId(),
-			'GENewImpactRelevantUserUnactivated' => $this->isUnactivated(),
-			'GENewImpactThirdPersonRender' => $this->shouldShowForOtherUser(),
-			'GENewImpactIsSuggestedEditsEnabledForUser' => $this->isSuggestedEditsEnabledForUser,
-			'GENewImpactIsSuggestedEditsActivatedForUser' => $this->isSuggestedEditsActivatedForUser,
+			'GEImpactRelevantUserName' => $this->userIdentity->getName(),
+			'GEImpactRelevantUserId' => $this->userIdentity->getId(),
+			'GEImpactRelevantUserUnactivated' => $this->isUnactivated(),
+			'GEImpactThirdPersonRender' => $this->shouldShowForOtherUser(),
+			'GEImpactIsSuggestedEditsEnabledForUser' => $this->isSuggestedEditsEnabledForUser,
+			'GEImpactIsSuggestedEditsActivatedForUser' => $this->isSuggestedEditsActivatedForUser,
 		];
 	}
 
@@ -81,10 +81,10 @@ class Impact extends BaseModule {
 	 */
 	private function getUnactivatedModuleCssClass() {
 		// The following classes are used here:
-		// * growthexperiments-homepage-module-new-impact-unactivated-desktop
-		// * growthexperiments-homepage-module-new-impact-unactivated-mobile-details
-		// * growthexperiments-homepage-module-new-impact-unactivated-mobile-overlay
-		// * growthexperiments-homepage-module-new-impact-unactivated-mobile-summary
+		// * growthexperiments-homepage-module-impact-unactivated-desktop
+		// * growthexperiments-homepage-module-impact-unactivated-mobile-details
+		// * growthexperiments-homepage-module-impact-unactivated-mobile-overlay
+		// * growthexperiments-homepage-module-impact-unactivated-mobile-summary
 		return 'growthexperiments-homepage-module-impact-unactivated-' . $this->getMode();
 	}
 
@@ -133,8 +133,8 @@ class Impact extends BaseModule {
 	protected function getBody() {
 		return Html::rawElement( 'div',
 				[
-					'id' => 'new-impact-vue-root',
-					'class' => 'ext-growthExperiments-new-impact-app-root'
+					'id' => 'impact-vue-root',
+					'class' => 'ext-growthExperiments-impact-app-root'
 				],
 				$this->getBaseMarkup()
 			) .
@@ -148,10 +148,10 @@ class Impact extends BaseModule {
 	protected function getMobileSummaryBody() {
 		return Html::rawElement( 'div',
 				[
-					'id' => 'new-impact-vue-root--mobile',
+					'id' => 'impact-vue-root--mobile',
 					'class' => [
-						'ext-growthExperiments-new-impact-app-root',
-						'ext-growthExperiments-new-impact-app-root--mobile'
+						'ext-growthExperiments-impact-app-root',
+						'ext-growthExperiments-impact-app-root--mobile'
 					]
 				],
 				$this->getRecentActivityMarkup()
@@ -290,7 +290,7 @@ class Impact extends BaseModule {
 				],
 				Html::rawElement( 'div',
 					[
-						'class' => 'ext-growthExperiments-NewImpact'
+						'class' => 'ext-growthExperiments-Impact'
 					],
 					Html::rawElement( 'div',
 						[],

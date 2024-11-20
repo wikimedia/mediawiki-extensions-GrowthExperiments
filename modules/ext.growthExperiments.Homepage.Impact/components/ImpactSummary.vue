@@ -1,5 +1,5 @@
 <template>
-	<section class="ext-growthExperiments-NewImpactSummary">
+	<section class="ext-growthExperiments-ImpactSummary">
 		<!-- TODO: add skeletons, maybe use suspense, load sections only if data available -->
 		<trend-chart
 			v-if="data"

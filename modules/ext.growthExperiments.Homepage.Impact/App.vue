@@ -17,7 +17,7 @@
 				v-else-if="data && !error"
 				:user-name="userName"
 				:data="data"
-				@mounted="newImpactMounted"
+				@mounted="impactMounted"
 			></component>
 		</layout>
 	</div>
@@ -28,12 +28,12 @@ const { inject } = require( 'vue' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( './constants.js' );
 const { useUserImpact } = require( './composables/useUserImpact.js' );
 const Layout = require( './components/LayoutWrapper.vue' );
-// TODO wrap NewImpact, NoEditsDisplay, ScoreCards...
+// TODO wrap Impact, NoEditsDisplay, ScoreCards...
 // components in async components so we only load one at a time.
-const NewImpact = require( './components/Impact.vue' );
+const Impact = require( './components/Impact.vue' );
 const ErrorDisplay = require( './components/ErrorDisplay.vue' );
 const ErrorDisplaySummary = require( './components/ErrorDisplaySummary.vue' );
-const NewImpactSummary = require( './components/ImpactSummary.vue' );
+const ImpactSummary = require( './components/ImpactSummary.vue' );
 const NoEditsDisplay = require( './components/NoEditsDisplay.vue' );
 const startTime = mw.now();
 
@@ -42,8 +42,8 @@ module.exports = exports = {
 	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
-		NewImpact,
-		NewImpactSummary,
+		Impact,
+		ImpactSummary,
 		NoEditsDisplay,
 		ErrorDisplay,
 		ErrorDisplaySummary,
@@ -57,7 +57,7 @@ module.exports = exports = {
 		const isModuleUnactivated = inject( 'RELEVANT_USER_MODULE_UNACTIVATED' );
 		const isSuggestedEditsEnabled = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ENABLED' );
 		const isSuggestedEditsActivated = inject( 'RELEVANT_USER_SUGGESTED_EDITS_ACTIVATED' );
-		const impactComponent = renderMode === 'mobile-summary' ? 'NewImpactSummary' : 'NewImpact';
+		const impactComponent = renderMode === 'mobile-summary' ? 'ImpactSummary' : 'Impact';
 		const errorComponent = renderMode === 'mobile-summary' ? 'ErrorDisplaySummary' : 'ErrorDisplay';
 
 		const impactData = useUserImpact( DEFAULT_STREAK_TIME_FRAME, initialUserImpactData );
@@ -76,7 +76,7 @@ module.exports = exports = {
 		};
 	},
 	methods: {
-		newImpactMounted: function () {
+		impactMounted: function () {
 			mw.track( 'timing.growthExperiments.newImpact.' + inject( 'RENDER_MODE' ) + '.mounted', mw.now() - startTime );
 		}
 	}

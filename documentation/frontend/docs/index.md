@@ -38,7 +38,7 @@ with VitePress. Therefore the existing components under:
 
 - `/modules/vue-components`
 - `/modules/ext.growthExperiments.MentorDashboard`
-- `/modules/ext.growthExperiments.Homepage.NewImpact`
+- `/modules/ext.growthExperiments.Homepage.Impact`
 
 can't be directly imported into the **docs** project. Alternatives to
 solve this problem are being considered in [Phab T328125](https://phabricator.wikimedia.org/T328125).
