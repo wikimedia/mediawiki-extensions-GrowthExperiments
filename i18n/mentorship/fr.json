@@ -87,7 +87,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Si vous ne pouvez pas être mentor{{GENDER:||e}} pendant une période donnée (plus d’une semaine), {{GENDER:|}}vous pouvez {{GENDER:|}}vous mettre à l’écart. Pendant cette période, un autre mentor recevra les questions posées par vos apprentis.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Vous serez absent{{GENDER:|e|(e)}} durant :",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "jours",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "La valeur saisie dans « Vous serez absent{{GENDER:|e|(e)}} pendant » est trop élevée. Le nombre maximum de jours où {{GENDER:|un mentor|une mentore}} peut s’absenter ne peut excéder $1 (un an).",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Le nombre maximum de jours où {{GENDER:|un mentor|une mentore}} peut s’absenter ne peut excéder $1 (un an).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Une erreur inconnue s’est produite. Veuillez essayer à nouveau ultérieurement.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Votre statut a été changé en « Acti{{GENDER:|f|ve|f(ve)}} ».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Votre statut a été changé en « Absent{{GENDER:||e|(e)}} ».",
