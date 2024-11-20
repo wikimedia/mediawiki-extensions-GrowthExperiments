@@ -29,6 +29,7 @@
 	"apihelp-growthmanagementorlist-param-weight": "Вага",
 	"apihelp-growthmanagementorlist-param-autoassigned": "Чи призначається наставник новачкам автоматично?",
 	"apihelp-growthmanagementorlist-param-isaway": "Наставник зараз відсутній? Потрібно встановити (за замовчуванням значення false).",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "До якого часу наставник не на місці? Максимальне значення — 1 рік із сьогоднішнього дня. Ігнорується, якщо isaway не має значення true.",
 	"apihelp-growthmanagementorlist-param-summary": "Причина зміни",
 	"apihelp-growthmanagementorlist-param-username": "Ім’я користувача наставника, якого торкнуться зміни. Якщо не вказано, використовуватиметься поточний користувач. Може використовуватися лише привілейованими користувачами.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Якщо isaway має значення значення true, то треба вказати awaytimestamp.",
