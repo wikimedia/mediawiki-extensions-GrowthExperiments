@@ -73,7 +73,7 @@ class SurfacedTaskPopup {
 	getYesButton() {
 		if ( !this.yesButtonNode ) {
 			this.yesButtonNode = document.createElement( 'button' );
-			this.yesButtonNode.classList.add( 'cdx-button', 'cdx-button--action-progressive', 'cdx-button--weight-primary' );
+			this.yesButtonNode.classList.add( 'cdx-button' );
 			const testId = document.createAttribute( 'data-testid' );
 			testId.value = 'surfacing-tasks-popup-yes';
 			this.yesButtonNode.attributes.setNamedItem( testId );
