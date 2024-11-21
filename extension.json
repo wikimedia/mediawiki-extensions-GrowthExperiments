@@ -465,7 +465,8 @@
 		"experiments": {
 			"class": "GrowthExperiments\\ExperimentsHooks",
 			"services": [
-				"GrowthExperimentsExperimentUserDefaultsManager"
+				"GrowthExperimentsExperimentUserDefaultsManager",
+				"UserIdentityUtils"
 			]
 		},
 		"variant": {

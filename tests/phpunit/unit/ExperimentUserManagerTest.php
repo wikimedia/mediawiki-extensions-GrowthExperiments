@@ -7,9 +7,11 @@ use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Psr\Log\NullLogger;
 
 /**
  * @coversDefaultClass \GrowthExperiments\ExperimentUserManager
@@ -70,9 +72,11 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 		ServiceOptions $options, UserOptionsLookup $lookup
 	): ExperimentUserManager {
 		return new ExperimentUserManager(
+			new NullLogger(),
 			$options,
 			$this->createMock( UserOptionsManager::class ),
-			$lookup
+			$lookup,
+			$this->createMock( UserFactory::class ),
 		);
 	}
 }
