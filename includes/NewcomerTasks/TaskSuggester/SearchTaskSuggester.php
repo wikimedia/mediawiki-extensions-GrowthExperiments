@@ -273,7 +273,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			$key = $task->getTitle()->getNamespace() . ':' . $task->getTitle()->getDBkey();
 			$sourceTask = $taskMap[$key] ?? null;
 			if ( $sourceTask ) {
-				$task->setTopics( $sourceTask->getTopics(), $sourceTask->getTopicScores() );
+				$task->setTopics( $sourceTask->getTopics() );
 			}
 		}
 	}

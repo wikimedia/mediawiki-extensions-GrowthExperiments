@@ -48,10 +48,7 @@ QUnit.test( 'should get log metadata', ( assert ) => {
 		tasktype: 'copyedit',
 		title: 'Some title',
 		token: '1234',
-		pageviews: null,
-		topics: [
-			[ 'Art', 0.5 ]
-		]
+		pageviews: null
 	};
 	const data = logger.getLogData( task, 100 );
 
@@ -64,9 +61,7 @@ QUnit.test( 'should get log metadata', ( assert ) => {
 		page_id: 101,
 		page_title: 'Some title',
 		revision_id: 102,
-		task_type: 'copyedit',
-		topic: 'Art',
-		match_score: 0.5
+		task_type: 'copyedit'
 		/* eslint-enable camelcase */
 	} );
 } );

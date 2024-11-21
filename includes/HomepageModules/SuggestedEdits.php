@@ -384,7 +384,6 @@ class SuggestedEdits extends BaseModule {
 						'qualityGateIds' => $task->getTaskType()->getQualityGateIds(),
 						'qualityGateConfig' => $tasks->getQualityGateConfig(),
 						'title' => $title->getPrefixedText(),
-						'topics' => $task->getTopicScores(),
 						// The front-end code for constructing SuggestedEditCardWidget checks
 						// to see if pageId is set in order to construct a tracking URL.
 						'pageId' => $title->getArticleID(),

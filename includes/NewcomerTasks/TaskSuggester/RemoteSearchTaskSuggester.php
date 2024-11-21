@@ -3,7 +3,6 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use FauxSearchResultSet;
-use GrowthExperiments\NewcomerTasks\FauxSearchResultWithScore;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -92,13 +91,12 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		$data = $status->getValue();
 
 		$results = [];
-		foreach ( $data['query']['search'] ?? [] as $i => $result ) {
+		foreach ( $data['query']['search'] ?? [] as $result ) {
 			$title = $this->titleFactory->newFromText( $result['title'], $result['ns'] );
 			if ( !$title ) {
 				continue;
 			}
-			// The search API does not expose scores :( Put in something fake, just to ease testing.
-			$results[] = new FauxSearchResultWithScore( $title, 100 / ( $i + 1 ) );
+			$results[] = $title;
 		}
 		$resultSet = new FauxSearchResultSet( $results, (int)$data['query']['searchinfo']['totalhits'] );
 
