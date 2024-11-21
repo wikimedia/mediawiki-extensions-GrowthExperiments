@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BadDog"
+			"BadDog",
+			"Milicevic01"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Прибавља препоруке задатака за новајлије.",
@@ -11,5 +12,8 @@
 	"apihelp-query+growthtasks-param-limit": "Највећи број предлога задатака",
 	"apihelp-query+growthtasks-param-debug": "Додаје податке о отклањању грешке у испис.",
 	"apihelp-query+growthtasks-example-1": "Придобија препоруке чланака за лекторисање.",
-	"apihelp-query+growthtasks-example-2": "Придобија препоруке уз додатне информације о страницама."
+	"apihelp-query+growthtasks-example-2": "Придобија препоруке уз додатне информације о страницама.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Прегледајте предложене унутрашње везе и унапредите Википедијину мрежу информација.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Да",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Не"
 }
