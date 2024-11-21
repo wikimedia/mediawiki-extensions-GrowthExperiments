@@ -5,7 +5,6 @@ namespace GrowthExperiments;
 use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
-use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * Service for assigning experiment / variant to users using configured
@@ -41,22 +40,14 @@ class ExperimentUserDefaultsManager {
 		$centralIdLookup = $centralIdLookupCallback();
 		$userCentralId = $centralIdLookup->centralIdFromLocalUser( $userIdentity );
 		if ( $userCentralId === 0 ) {
-			// Try to retrieve the central id again to avoid possible DB lags issues, T379682 T379909
-			$userCentralId = $centralIdLookup->centralIdFromLocalUser(
-				$userIdentity,
-				CentralIdLookup::AUDIENCE_PUBLIC,
-				IDBAccessObject::READ_LATEST
-			);
-			if ( $userCentralId === 0 ) {
-				// CentralIdLookup is documented to return a zero on failure
-				// TODO: Increase severity back to error, once it stops happening so frequently (T380271)
-				$this->logger->debug( __METHOD__ . ' failed to get a central user ID', [
-					'exception' => new \RuntimeException,
-					'userName' => $userIdentity->getName(),
-				] );
-				// No point in hashing an error code
-				return false;
-			}
+			// CentralIdLookup is documented to return a zero on failure
+			// TODO: Increase severity back to error, once it stops happening so frequently (T380271)
+			$this->logger->debug( __METHOD__ . ' failed to get a central user ID', [
+				'exception' => new \RuntimeException,
+				'userName' => $userIdentity->getName(),
+			] );
+			// No point in hashing an error code
+			return false;
 		}
 		$sample = $this->getSample( $userCentralId, $experimentName );
 		return $this->isInSample( $args[0], $sample );
