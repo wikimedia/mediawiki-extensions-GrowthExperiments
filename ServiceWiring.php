@@ -292,7 +292,7 @@ return [
 				$services->getHttpRequestFactory(),
 				$config->get( 'GEImageRecommendationServiceUrl' ),
 				'wikipedia',
-				$services->getContentLanguage()->getCode(),
+				$services->getContentLanguageCode()->toString(),
 				$config->get( 'GEImageRecommendationServiceHttpProxy' ),
 				null,
 				$config->get( 'GEImageRecommendationServiceUseTitles' ) );
@@ -341,7 +341,7 @@ return [
 				$config->get( 'GELinkRecommendationServiceUrl' ),
 				$config->get( 'GELinkRecommendationServiceWikiIdMasquerade' ) ??
 					WikiMap::getCurrentWikiId(),
-				$services->getContentLanguage()->getCode(),
+				$services->getContentLanguageCode()->toString(),
 				$config->get( 'GELinkRecommendationServiceAccessToken' ),
 				$config->get( 'GELinkRecommendationServiceTimeout' )
 			);
@@ -1033,7 +1033,7 @@ return [
 			$services->getHttpRequestFactory(),
 			$services->getRepoGroup(),
 			$growthExperimentsServices->getGrowthConfig()->get( 'GEMediaInfoRepos' ),
-			$services->getContentLanguage()->getCode()
+			$services->getContentLanguageCode()->toString()
 		);
 	},
 
@@ -1043,7 +1043,7 @@ return [
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
 		return new ImageRecommendationMetadataProvider(
 			$growthExperimentsServices->getImageRecommendationMetadataService(),
-			$services->getContentLanguage()->getCode(),
+			$services->getContentLanguageCode()->toString(),
 			$services->getContentLanguage()->getFallbackLanguages(),
 			$services->getLanguageNameUtils(),
 			new DerivativeContext( RequestContext::getMain() ),

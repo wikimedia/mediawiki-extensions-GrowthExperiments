@@ -108,7 +108,7 @@ class SubpageImageRecommendationProvider
 					$recommendationProvider,
 					new StaticImageRecommendationMetadataProvider(
 						$growthServices->getImageRecommendationMetadataService(),
-						$services->getContentLanguage()->getCode(),
+						$services->getContentLanguageCode()->toString(),
 						$services->getContentLanguage()->getFallbackLanguages(),
 						$services->getLanguageNameUtils(),
 						new DerivativeContext( RequestContext::getMain() ),
