@@ -10,32 +10,15 @@ use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
-use MediaWikiIntegrationTestCase;
+use MediaWikiUnitTestCase;
 
 /**
  * @group medium
- * @coversDefaultClass \GrowthExperiments\HelpPanel
+ * @covers \GrowthExperiments\HelpPanel
  */
-class HelpPanelTest extends MediaWikiIntegrationTestCase {
+class HelpPanelTest extends MediaWikiUnitTestCase {
 
 	/**
-	 * @covers ::getHelpDeskTitle
-	 */
-	public function testGetHelpDeskTitle() {
-		$sitename = $this->getServiceContainer()->getMainConfig()->get( 'Sitename' );
-		$config = new HashConfig( [
-			'GEHelpPanelHelpDeskTitle' => 'HelpDesk/{{SITENAME}}'
-		] );
-
-		$title = HelpPanel::getHelpDeskTitle( $config );
-		$title->resetArticleID( 0 );
-
-		$this->assertSame( "HelpDesk/$sitename", $title->getText() );
-		$this->assertTrue( $title->isValid(), 'Title is valid' );
-	}
-
-	/**
-	 * @covers ::shouldShowHelpPanel
 	 * @dataProvider providerShouldShowHelpPanel
 	 */
 	public function testShouldShowHelpPanel(
@@ -71,12 +54,12 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 			->willReturn( $user );
 		$out->method( 'getRequest' )
 			->willReturn( $request );
-		$this->overrideConfigValues( [
-			'GEHelpPanelExcludedNamespaces' => $excludedNamespaces,
-			'GEHelpPanelEnabled' => $GEHelpPanelEnabled
-		] );
 
-		$result = HelpPanel::shouldShowHelpPanel( $out );
+		$result = HelpPanel::shouldShowHelpPanel(
+			$out, true,
+			new HashConfig( [ 'GEHelpPanelEnabled' => $GEHelpPanelEnabled ] ),
+			new HashConfig( [ 'GEHelpPanelExcludedNamespaces' => $excludedNamespaces ] )
+		);
 		$this->assertEquals( $expected, $result, $message );
 	}
 

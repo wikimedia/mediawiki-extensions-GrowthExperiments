@@ -169,7 +169,7 @@ class HelpPanelHooks implements
 			$out->addModuleStyles( 'ext.growthExperiments.icons' );
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
 
-			$out->addHTML( HelpPanel::getHelpPanelCtaButton() );
+			$out->addHTML( HelpPanel::getHelpPanelCtaButton( $this->wikiConfig ) );
 		}
 
 		if ( SuggestedEdits::isGuidanceEnabled( $out->getContext() ) ) {
