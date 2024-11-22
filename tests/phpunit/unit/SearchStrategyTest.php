@@ -170,10 +170,10 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 	private function assertTopicsInQueries( $queries, $topicIds ) {
 		[ $query1, $query2 ] = array_values( $queries );
 		foreach ( $topicIds as $id ) {
-			if ( $query1->getTopic()->getId() === $id ) {
-				$this->assertSame( $query1->getTopic()->getId(), $id );
-			} elseif ( $query2->getTopic()->getId() === $id ) {
-				$this->assertSame( $query2->getTopic()->getId(), $id );
+			if ( $query1->getTopics()[0]->getId() === $id ) {
+				$this->assertSame( $query1->getTopics()[0]->getId(), $id );
+			} elseif ( $query2->getTopics()[0]->getId() === $id ) {
+				$this->assertSame( $query2->getTopics()[0]->getId(), $id );
 			} else {
 				$this->fail( "$id not found in query." );
 			}

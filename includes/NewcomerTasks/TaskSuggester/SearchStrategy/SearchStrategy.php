@@ -77,7 +77,7 @@ class SearchStrategy {
 					$pageIdTerm, $excludedPageIdTerm ] ) );
 
 				$queryId = $taskType->getId() . ':multiple-topics';
-				$query = new SearchQuery( $queryId, $queryString, $taskType, $topics[0] );
+				$query = new SearchQuery( $queryId, $queryString, $taskType, $topics );
 				// don't randomize if we use topic matching with the morelike backend, which itself
 				// is a kind of sorting. Topic matching with the ORES backend already uses
 				// thresholds per topic so applying a random sort should be safe.
@@ -92,7 +92,7 @@ class SearchStrategy {
 						$pageIdTerm, $excludedPageIdTerm ] ) );
 
 					$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
-					$query = new SearchQuery( $queryId, $queryString, $taskType, $topic );
+					$query = new SearchQuery( $queryId, $queryString, $taskType, [ $topic ] );
 					// don't randomize if we use topic matching with the morelike backend, which itself
 					// is a kind of sorting. Topic matching with the ORES backend already uses
 					// thresholds per topic so applying a random sort should be safe.

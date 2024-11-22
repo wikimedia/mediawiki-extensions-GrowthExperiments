@@ -219,10 +219,10 @@ abstract class TaskTypeHandler {
 	 */
 	public function createTaskFromSearchResult( SearchQuery $query, SearchResult $match ): Task {
 		$taskType = $query->getTaskType();
-		$topic = $query->getTopic();
+		$topics = $query->getTopics();
 		$task = new Task( $taskType, $match->getTitle() );
-		if ( $topic ) {
-			$task->setTopics( [ $topic ] );
+		if ( $topics ) {
+			$task->setTopics( $topics );
 		}
 
 		return $task;
