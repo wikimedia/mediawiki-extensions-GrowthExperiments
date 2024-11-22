@@ -87,7 +87,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Eğer {{GENDER:|}} belli bir tarihe dek (bir haftadan fazla) danışmanlık yapamayacaksanız kendinizi uzakta olarak ayarlayabilirsiniz. Bu süre boyunca başka danışmanlar, danışanlarınızdan sorular alacaktır.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Şu vakte dek uzakta olacaksın:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "gün",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "\"Şu kadar {{GENDER:|yoksunuz}}\" girdisi çok yüksek. Bir danışanın uzak kalabileceği en fazla gün sayısı $1 (bir yıl).",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Bir danışanın uzak kalabileceği en fazla gün sayısı $1 (bir yıl).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Bilinmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Durumunuz \"Etkin\" olarak değiştirildi.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Durumunuz \"Uzakta\" olarak değiştirildi.",

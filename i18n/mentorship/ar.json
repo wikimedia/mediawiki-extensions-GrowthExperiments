@@ -88,7 +88,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "إذا كان من غير الممكن الإرشاد لفترة زمنية محددة (أكثر من أسبوع واحد)، فيمكنك إعداد وضعك على غير {{GENDER:|متوفّر|متوفّرة}}. خلال هذه المدّة، سيتلقى مرشِدون آخرون أسئلة مرشَديك.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "ستتغيّبون لمدّة:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "أيام",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "قيمة «{{GENDER:|ستتغيب|ستتغيبين}} لفترة» مرتفعة جدًا. الحد الأقصى لعدد الأيام التي يمكن أن يغيب عنها المرشد هو $1 (سنة واحدة).",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "الحد الأقصى لعدد الأيام التي يمكن للمرشد أن يغيب فيها هو $1 (سنة واحدة).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "لقد حدث خطأ. كرّر المحاولة لاحقا.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "غُيِّر وضعكم إلى «نشط».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "غُيِّر وضعكم إلى «غير متوفّر».",
