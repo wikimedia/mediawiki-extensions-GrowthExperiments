@@ -22,6 +22,7 @@ class ImageRecommendationMetadataProviderTest extends \MediaWikiIntegrationTestC
 		string $expectedReason
 	) {
 		$this->markTestSkippedIfExtensionNotLoaded( 'WikimediaMessages' );
+		$this->markTestSkippedIfExtensionNotLoaded( 'CLDR' );
 
 		$mockFileMetadata = $this->getMockFileMetadata();
 		$metadataService = $this->getMockService(
