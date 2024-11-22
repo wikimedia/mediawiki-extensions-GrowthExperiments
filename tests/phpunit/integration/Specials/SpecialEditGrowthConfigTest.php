@@ -14,6 +14,13 @@ use SpecialPageTestBase;
  */
 class SpecialEditGrowthConfigTest extends SpecialPageTestBase {
 
+	protected function setUp(): void {
+		parent::setUp();
+		// SpecialEditGrowthConfig is a part of legacy CommunityConfiguration,
+		// this test does not make sense with CC2.0.
+		$this->overrideConfigValue( 'GEUseCommunityConfigurationExtension', false );
+	}
+
 	/**
 	 * @inheritDoc
 	 */

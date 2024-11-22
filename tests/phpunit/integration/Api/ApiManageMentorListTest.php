@@ -7,6 +7,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\Api\ApiUsageException;
+use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
@@ -19,6 +20,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * @coversDefaultClass \GrowthExperiments\Api\ApiManageMentorList
  */
 class ApiManageMentorListTest extends ApiTestCase {
+	use CommunityConfigurationTestHelpers;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -59,8 +61,10 @@ class ApiManageMentorListTest extends ApiTestCase {
 	public function testNoPermissions() {
 		$this->overrideConfigValues( [
 			MainConfigNames::RevokePermissions => [ '*' => [ 'enrollasmentor' => true ] ],
-			'GEMentorshipAutomaticEligibility' => false,
 		] );
+		$this->overrideProviderConfig( [
+			'GEMentorshipAutomaticEligibility' => false
+		], 'Mentorship' );
 		$user = $this->getMutableTestUser()->getUser();
 
 		$this->expectException( ApiUsageException::class );
@@ -70,7 +74,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 				'action' => 'growthmanagementorlist',
 				'geaction' => 'add',
 				'message' => 'intro',
-				'weight' => IMentorWeights::WEIGHT_NORMAL
+				'weight' => IMentorWeights::WEIGHT_NORMAL,
 			],
 			null,
 			$user
@@ -81,10 +85,10 @@ class ApiManageMentorListTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testNoPermissionsChange() {
-		$this->overrideConfigValues( [
+		$this->overrideProviderConfig( [
 			'GEMentorshipMinimumAge' => 0,
 			'GEMentorshipMinimumEditcount' => 0,
-		] );
+		], 'Mentorship' );
 		$user = $this->getMutableTestUser()->getUser();
 
 		$this->expectException( ApiUsageException::class );
@@ -133,11 +137,11 @@ class ApiManageMentorListTest extends ApiTestCase {
 				'action' => 'growthmanagementorlist',
 				'geaction' => 'add',
 				'message' => 'intro',
-				'weight' => IMentorWeights::WEIGHT_NORMAL
+				'weight' => IMentorWeights::WEIGHT_NORMAL,
 			],
 			[
 				'message' => 'intro',
-				'weight' => IMentorWeights::WEIGHT_NORMAL
+				'weight' => IMentorWeights::WEIGHT_NORMAL,
 			],
 			$this->getMutableTestUser( 'mentors' )->getUser()
 		);
@@ -160,7 +164,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 		$this->checkSuccessfulApiCall(
 			$params + [
 				'action' => 'growthmanagementorlist',
-				'geaction' => 'add'
+				'geaction' => 'add',
 			],
 			$params + [
 				'message' => null,

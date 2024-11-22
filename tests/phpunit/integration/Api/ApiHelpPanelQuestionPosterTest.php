@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Status\Status;
@@ -21,6 +22,7 @@ use Wikimedia\Rdbms\IDBAccessObject;
  * @covers \GrowthExperiments\Api\ApiHelpPanelPostQuestion
  */
 class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
+	use CommunityConfigurationTestHelpers;
 
 	/**
 	 * @var User
@@ -32,8 +34,10 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		$this->mUser = $this->getMutableTestUser()->getUser();
 		$this->overrideConfigValues( [
 			MainConfigNames::EnableEmail => true,
-			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTest',
 		] );
+		$this->overrideProviderConfig( [
+			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTest',
+		], 'HelpPanel' );
 		$this->editPage( 'HelpDeskTest', 'Content' );
 	}
 

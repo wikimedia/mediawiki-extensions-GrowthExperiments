@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Title\Title;
@@ -22,6 +23,7 @@ use StatusValue;
  */
 class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTestCase {
 	use MockHttpTrait;
+	use CommunityConfigurationTestHelpers;
 
 	/**
 	 * @param UserIdentity $mentor
@@ -78,8 +80,10 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 		$this->mockPageviews();
 		$this->overrideConfigValues( [
 			'GEPersonalizedPraiseBackendEnabled' => true,
-			'GEPersonalizedPraiseMinEdits' => $minEdits,
 		] );
+		$this->overrideProviderConfig( [
+			'GEPersonalizedPraiseMinEdits' => $minEdits,
+		], 'Mentorship' );
 
 		$mentor = $this->getTestSysop()->getUserIdentity();
 		[ $praiseworthyMentee, $otherMentee ] = $this->getNMentees( $mentor, 2 );

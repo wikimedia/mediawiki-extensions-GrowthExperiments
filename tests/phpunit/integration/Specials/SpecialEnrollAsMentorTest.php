@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
+use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxResponse;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -15,6 +16,7 @@ use SpecialPageTestBase;
  * @group Database
  */
 class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
+	use CommunityConfigurationTestHelpers;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -43,8 +45,10 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 
 		$this->overrideConfigValues( [
 			MainConfigNames::RevokePermissions => [ '*' => [ 'enrollasmentor' => true ] ],
-			'GEMentorshipAutomaticEligibility' => false,
 		] );
+		$this->overrideProviderConfig( [
+			'GEMentorshipAutomaticEligibility' => false,
+		], 'Mentorship' );
 		$user = $this->getTestUser()->getUser();
 		$this->executeSpecialPage( '', null, null, $user );
 	}

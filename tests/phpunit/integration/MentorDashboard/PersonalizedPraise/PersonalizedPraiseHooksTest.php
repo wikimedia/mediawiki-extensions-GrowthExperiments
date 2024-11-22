@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
@@ -19,6 +20,7 @@ use StatusValue;
  */
 class PersonalizedPraiseHooksTest extends MediaWikiIntegrationTestCase {
 	use MockHttpTrait;
+	use CommunityConfigurationTestHelpers;
 
 	private function mockPageviews() {
 		$mwHttpRequest = $this->createMock( MWHttpRequest::class );
@@ -36,10 +38,10 @@ class PersonalizedPraiseHooksTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testCachePopulates() {
 		$this->mockPageviews();
-		$this->overrideConfigValues( [
+		$this->overrideProviderConfig( [
 			'GEPersonalizedPraiseBackendEnabled' => true,
 			'GEPersonalizedPraiseMinEdits' => 1,
-		] );
+		], 'Mentorship' );
 
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$store = $geServices->getMentorStore();

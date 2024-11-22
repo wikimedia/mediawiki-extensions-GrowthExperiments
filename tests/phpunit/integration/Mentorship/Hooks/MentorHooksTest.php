@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
@@ -16,6 +17,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * @coversDefaultClass \GrowthExperiments\Mentorship\Hooks\MentorHooks
  */
 class MentorHooksTest extends MediaWikiIntegrationTestCase {
+	use CommunityConfigurationTestHelpers;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -53,11 +55,11 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 		int $minAge,
 		int $minEditcount
 	) {
-		$this->overrideConfigValues( [
+		$this->overrideProviderConfig( [
 			'GEMentorshipAutomaticEligibility' => true,
 			'GEMentorshipMinimumAge' => $minAge,
 			'GEMentorshipMinimumEditcount' => $minEditcount,
-		] );
+		], 'Mentorship' );
 		// Pin time to avoid failure when next second starts - T316154
 		$now = strtotime( '2011-04-01T12:00Z' );
 		ConvertibleTimestamp::setFakeTime( $now );

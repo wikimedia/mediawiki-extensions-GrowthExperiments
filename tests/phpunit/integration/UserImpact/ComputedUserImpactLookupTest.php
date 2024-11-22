@@ -20,6 +20,9 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class ComputedUserImpactLookupTest extends ApiTestCase {
 
 	public function testGetUserImpact_empty() {
+		// TODO: Migrate testcase to CommunityConfiguration 2.0 (T380580)
+		$this->overrideConfigValue( 'GEUseCommunityConfigurationExtension', false );
+
 		// This is a lazy way of ensuring that the tag exists. Revision 1 is the main page,
 		// created by the installer.
 		$this->getServiceContainer()->getChangeTagsStore()->addTags(

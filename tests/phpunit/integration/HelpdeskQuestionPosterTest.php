@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Status\Status;
@@ -17,6 +18,7 @@ use MediaWikiIntegrationTestCase;
  * @group Database
  */
 class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
+	use CommunityConfigurationTestHelpers;
 
 	/**
 	 * @var User|null
@@ -27,7 +29,9 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::__construct
 	 */
 	public function testConstruct() {
-		$this->overrideConfigValue( 'GEHelpPanelHelpDeskTitle', 'HelpDeskTest' );
+		$this->overrideProviderConfig( [
+			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTest',
+		], 'HelpPanel' );
 		$context = $this->buildContext();
 		$context->setUser( new User() );
 
@@ -50,7 +54,9 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::submit
 	 */
 	public function testSubmitExistingTarget() {
-		$this->overrideConfigValue( 'GEHelpPanelHelpDeskTitle', 'HelpDeskTest' );
+		$this->overrideProviderConfig( [
+			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTest',
+		], 'HelpPanel' );
 		$this->insertPage( 'HelpDeskTest', '' );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
@@ -79,7 +85,9 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testSubmitNewTarget() {
 		$title = $this->getNonexistingTestPage()->getTitle();
-		$this->overrideConfigValue( 'GEHelpPanelHelpDeskTitle', $title->getPrefixedDBkey() );
+		$this->overrideProviderConfig( [
+			'GEHelpPanelHelpDeskTitle' => $title->getPrefixedDBkey(),
+		], 'HelpPanel' );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
@@ -104,7 +112,9 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::validateRelevantTitle
 	 */
 	public function testValidateRelevantTitle() {
-		$this->overrideConfigValue( 'GEHelpPanelHelpDeskTitle', 'sample' );
+		$this->overrideProviderConfig( [
+			'GEHelpPanelHelpDeskTitle' => 'sample',
+		], 'HelpPanel' );
 		$this->insertPage( 'sample' );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
