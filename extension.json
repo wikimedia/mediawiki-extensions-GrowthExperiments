@@ -1656,7 +1656,8 @@
 			"packageFiles": [
 				"ext.growthExperiments.StructuredTask.Surfacing/index.js",
 				"ext.growthExperiments.StructuredTask.Surfacing/ArticleTextManipulator.js",
-				"ext.growthExperiments.StructuredTask.Surfacing/SurfacedTaskPopup.js"
+				"ext.growthExperiments.StructuredTask.Surfacing/SurfacedTaskPopup.js",
+				"ext.growthExperiments.StructuredTask.Surfacing/PageSummaryRepository.js"
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask.Surfacing/styles.less"

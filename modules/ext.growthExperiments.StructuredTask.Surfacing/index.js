@@ -1,5 +1,6 @@
 const ArticleTextManipulator = require( './ArticleTextManipulator.js' );
 const SurfacedTaskPopup = require( './SurfacedTaskPopup.js' );
+const PageSummaryRepository = require( './PageSummaryRepository.js' );
 
 class StructuredTaskSurfacer {
 
@@ -17,6 +18,7 @@ class StructuredTaskSurfacer {
 	/**
 	 * @typedef {Object} LinkRecommendation
 	 * @property {string} link_text
+	 * @property {string} link_target
 	 * @property {number} score
 	 */
 
@@ -73,15 +75,20 @@ class StructuredTaskSurfacer {
 			throw new Error( 'wikitext root-element not found!' );
 		}
 
+		const pageContentSummaryRepository = new PageSummaryRepository( new mw.Api() );
+		const linkPageData = await pageContentSummaryRepository.loadPageSummariesAndThumbnails(
+			topRecs.map( ( rec ) => rec.link_target ),
+		);
+
 		let aHighlightHasBeenSeenByUser = false;
 
 		topRecs.forEach(
 			/**
-			 * @param {{link_text: string}} rec
+			 * @param {{link_text: string; link_target: string}} rec
 			 */
 			( rec ) => {
 				const textToLink = rec.link_text;
-				const highlightNode = this.createHighlightNode( textToLink, taskUrl );
+				const highlightNode = this.createHighlightNode( textToLink, taskUrl, linkPageData[ rec.link_target ] );
 
 				// eslint-disable-next-line compat/compat -- IntersectionObserver is widely available according to baseline
 				const highlightObserver = new IntersectionObserver( ( entries ) => {
@@ -136,11 +143,12 @@ class StructuredTaskSurfacer {
 	 * @private
 	 * @param {string} textToLink
 	 * @param {string} taskUrl
+	 * @param { { title: string; description: string?; thumbnail: any } | null } extraData
 	 * @return {Element}
 	 */
-	createHighlightNode( textToLink, taskUrl ) {
+	createHighlightNode( textToLink, taskUrl, extraData ) {
 		const highlightButtonElement = this.createButtonNode( textToLink );
-		const popup = new SurfacedTaskPopup( textToLink );
+		const popup = new SurfacedTaskPopup( textToLink, extraData );
 
 		const popupElement = popup.getElementToInsert();
 
