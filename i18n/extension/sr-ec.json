@@ -7,6 +7,7 @@
 		]
 	},
 	"growthexperiments-desc": "Овај додатак садржи пројекте Тима за развој.",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> је требало да буде <code>$2</code>, али је <code>$3</code>",
 	"growthexperiments-config-validator-array-toobig": "$1 има превише ставки (максимум: $2)",
 	"growthexperiments-edit-config-disabled": "Конфигурација заједнице је тренутно онемогућена.",
 	"growthexperiments-edit-config-title": "Мењање конфигурације развоја",
