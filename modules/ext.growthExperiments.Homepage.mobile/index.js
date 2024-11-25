@@ -27,13 +27,12 @@ const mobile = require( 'mobile.startup' );
 	 * between the homepage and the mobile overlay via mediawiki.router.
 	 */
 	function beforeMobileInit() {
-		const uri = new mw.Uri(),
-			query = uri.query || {};
-		if ( !query.overlay && !query.source ) {
+		const url = new URL( window.location.href );
+		if ( !url.searchParams.has( 'overlay' ) && !url.searchParams.has( 'source' ) ) {
 			return;
 		}
 		const Utils = require( '../utils/Utils.js' );
-		Utils.removeQueryParam( uri, [ 'overlay', 'source' ], true );
+		Utils.removeQueryParam( url, [ 'overlay', 'source' ] );
 	}
 
 	/**

@@ -522,15 +522,16 @@ SuggestedEditsModule.prototype.logEditTaskClick = function ( action ) {
  * this.currentCard is expected to contain a valid EditCardWidget.
  */
 SuggestedEditsModule.prototype.setupClickLogging = function () {
-	const $link = this.currentCard.$element.find( '.se-card-content' ),
-		clickId = mw.config.get( 'wgGEHomepagePageviewToken' ),
-		newUrl = $link.attr( 'href' ) ?
-			new mw.Uri( $link.attr( 'href' ) ).extend( {
-				geclickid: clickId,
-				genewcomertasktoken: this.tasksStore.getNewcomerTaskToken(),
-				gesuggestededit: 1
-			} ).toString() :
-			'';
+	const $link = this.currentCard.$element.find( '.se-card-content' );
+	const clickId = mw.config.get( 'wgGEHomepagePageviewToken' );
+	let newUrl = '';
+	if ( $link.attr( 'href' ) ) {
+		const url = new URL( $link.attr( 'href' ), window.location.origin );
+		url.searchParams.set( 'geclickid', clickId );
+		url.searchParams.set( 'genewcomertasktoken', this.tasksStore.getNewcomerTaskToken() );
+		url.searchParams.set( 'gesuggestededit', '1' );
+		newUrl = url.toString();
+	}
 	$link
 		.attr( 'href', newUrl )
 		.on( 'click', () => {
@@ -545,11 +546,13 @@ SuggestedEditsModule.prototype.setupClickLogging = function () {
  * Rewrite the link to contain the task type ID, for later user in guidance.
  */
 SuggestedEditsModule.prototype.setupEditTypeTracking = function () {
-	const $link = this.currentCard.$element.find( '.se-card-content' ),
-		newUrl = $link.attr( 'href' ) ?
-			new mw.Uri( $link.attr( 'href' ) )
-				.extend( { getasktype: this.currentCard.getTaskType() } ).toString() :
-			'';
+	const $link = this.currentCard.$element.find( '.se-card-content' );
+	let newUrl = '';
+	if ( $link.attr( 'href' ) ) {
+		const url = new URL( $link.attr( 'href' ), window.location.origin );
+		url.searchParams.set( 'getasktype', this.currentCard.getTaskType() );
+		newUrl = url.toString();
+	}
 	$link.attr( 'href', newUrl );
 	if ( this.editWidget ) {
 		this.editWidget.setHref( newUrl );

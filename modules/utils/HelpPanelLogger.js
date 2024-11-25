@@ -101,7 +101,8 @@
 	 * @return {boolean}
 	 */
 	HelpPanelLogger.prototype.isEditing = function () {
-		const uri = new mw.Uri();
+		const url = new URL( window.location.href );
+		const searchParams = url.searchParams;
 
 		if ( mw.config.get( 'wgCanonicalSpecialPageName' ) ) {
 			// Good enough for now; at some point special editing interfaces like ContentTranslate
@@ -110,7 +111,9 @@
 		} else if ( this.isMobile ) {
 			return Boolean( this.editor );
 		} else {
-			return Boolean( uri.query.veaction ) || uri.query.action === 'edit' || uri.query.action === 'submit';
+			return Boolean( searchParams.get( 'veaction' ) ) ||
+				searchParams.get( 'action' ) === 'edit' ||
+				searchParams.get( 'action' ) === 'submit';
 		}
 	};
 

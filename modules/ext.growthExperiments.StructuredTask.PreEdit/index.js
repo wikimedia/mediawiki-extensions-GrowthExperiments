@@ -63,8 +63,8 @@ module.exports = ( function () {
 		if ( !shouldShowOnboarding ) {
 			return;
 		}
-		const uri = new mw.Uri();
-		if ( uri.query[ 'new-onboarding' ] === '1' ) {
+		const url = new URL( window.location.href );
+		if ( url.searchParams.get( 'new-onboarding' ) === '1' ) {
 			/**
 			 * TODO use the Vue version of the dialog
 			 * https://phabricator.wikimedia.org/T331986
@@ -130,9 +130,9 @@ module.exports = ( function () {
 	 * @param {string|number} section Zero-based index of the section to edit or "all"
 	 */
 	function updateEditLinkSection( $editLink, section ) {
-		const editUri = new mw.Uri( $editLink.attr( 'href' ) );
-		editUri.query.section = section;
-		$editLink.attr( 'href', editUri.toString() );
+		const editUrl = new URL( $editLink.attr( 'href' ), window.location.origin );
+		editUrl.searchParams.set( 'section', section );
+		$editLink.attr( 'href', editUrl.toString() );
 	}
 
 	/**

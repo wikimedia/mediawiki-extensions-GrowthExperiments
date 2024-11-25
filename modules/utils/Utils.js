@@ -61,14 +61,11 @@
 	/**
 	 * Remove a query parameter from the URL, so the user does not see ugly URLs.
 	 *
-	 * @param {Object} url
-	 *  Object created by mw.Uri()
+	 * @param {URL} url - Object created by new URL()
 	 * @param {string|string[]} queryParam
 	 *   The query param(s) to remove from the URL.
-	 * @param {boolean} [useLiteralFragment]
-	 *   Whether to keep the fragment as is (instead of encoding it)
 	 */
-	function removeQueryParam( url, queryParam, useLiteralFragment ) {
+	function removeQueryParam( url, queryParam ) {
 		let queryParams;
 		if ( Array.isArray( queryParam ) ) {
 			queryParams = queryParam;
@@ -79,27 +76,21 @@
 		if ( !queryParams.length ) {
 			return;
 		}
+
 		queryParams.forEach( ( param ) => {
-			delete url.query[ param ];
+			url.searchParams.delete( param );
 		} );
 
 		let newUrl;
-		if ( Object.keys( url.query ).length === 1 && url.query.title ) {
+		if ( url.searchParams.size === 1 && url.searchParams.has( 'title' ) ) {
 			// After removing the param only title remains. Rewrite to a prettier URL.
-			newUrl = mw.util.getUrl( url.query.title );
+			newUrl = mw.util.getUrl( url.searchParams.get( 'title' ) );
 		} else {
 			newUrl = url;
 		}
 
-		let fragment = '';
-		// mw.uri.toString encodes fragment by default.
-		if ( useLiteralFragment && url.fragment ) {
-			fragment = '#' + url.fragment;
-			newUrl.fragment = '';
-		}
-
 		if ( history.replaceState ) {
-			history.replaceState( history.state, document.title, newUrl.toString() + fragment );
+			history.replaceState( history.state, document.title, newUrl.toString() );
 		}
 	}
 

@@ -19,10 +19,14 @@
 			url = new mw.Title( data.title ).getUrl();
 		}
 		// Get the new-onboarding query and pass it to the url
-		const uri = new mw.Uri();
-		if ( uri.query[ 'new-onboarding' ] ) {
-			url = new mw.Uri( url );
-			url = url.extend( { 'new-onboarding': uri.query[ 'new-onboarding' ] } );
+		const currentUrl = new URL( window.location.href );
+		if ( currentUrl.searchParams.has( 'new-onboarding' ) ) {
+			const finalUrl = new URL( url, window.location.origin );
+			finalUrl.searchParams.set(
+				'new-onboarding',
+				currentUrl.searchParams.get( 'new-onboarding' )
+			);
+			url = finalUrl.toString();
 		}
 		this.$element.append(
 			$( '<div>' ).addClass( 'suggested-edits-task-card-wrapper' )

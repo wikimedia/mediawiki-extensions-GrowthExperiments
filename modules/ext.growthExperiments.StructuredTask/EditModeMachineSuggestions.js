@@ -42,7 +42,7 @@ EditModeMachineSuggestions.prototype.switch = function () {
  */
 EditModeMachineSuggestions.prototype.onUpdateState = function () {
 	EditModeMachineSuggestions.super.prototype.onUpdateState.apply( this, arguments );
-	this.setActive( !new mw.Uri().query.hideMachineSuggestions );
+	this.setActive( !new URL( window.location.href ).searchParams.has( 'hideMachineSuggestions' ) );
 };
 
 module.exports = EditModeMachineSuggestions;

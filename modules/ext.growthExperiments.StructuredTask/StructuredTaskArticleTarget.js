@@ -192,16 +192,13 @@ StructuredTaskArticleTarget.prototype.switchToVisualWithSuggestions = function (
 		$( window ).off( 'beforeunload' );
 	}
 
-	const uri = new mw.Uri(),
-		fragment = uri.fragment;
+	const url = new URL( window.location.href );
 	this.hasSwitched = true;
 	// Only include veaction so VE is loaded regardless of the default editor preference.
-	delete uri.query.action;
-	uri.query.veaction = 'edit';
-	uri.query.hideMachineSuggestions = 1;
-	// uri.toString encodes fragment by default, breaking fragments such as "/editor/all".
-	uri.fragment = '';
-	location.href = uri.toString() + ( fragment ? '#' + fragment : '' );
+	url.searchParams.delete( 'action' );
+	url.searchParams.set( 'veaction', 'edit' );
+	url.searchParams.set( 'hideMachineSuggestions', '1' );
+	location.href = url.toString();
 };
 
 /**
@@ -327,16 +324,22 @@ StructuredTaskArticleTarget.prototype.saveComplete = function ( data ) {
 	this.hasSaved = true;
 	suggestedEditSession.onStructuredTaskSaved();
 
-	const uri = new mw.Uri();
-	delete uri.query.gesuggestededit;
-	delete uri.query.veaction;
+	const url = new URL( window.location.href );
+	url.searchParams.delete( 'gesuggestededit' );
+	url.searchParams.delete( 'veaction' );
+
+	// Explicitly clear the hash/fragment to prevent VE re-initialization
+	// VE uses fragments like #/editor/all to maintain editor state
+	// We must clear this when exiting the editor to ensure a clean return to reading mode
+	url.hash = '';
+
 	if ( this.saveDialog && this.saveDialog.isOpened() ) {
 		this.saveDialog.close();
 	}
 	// Skip default warnings when leaving the page
 	$( window ).off( 'beforeunload' );
 	window.onbeforeunload = null;
-	window.location.href = uri.toString();
+	window.location.href = url.toString();
 };
 
 module.exports = StructuredTaskArticleTarget;
