@@ -12,7 +12,8 @@
 			"Hamilton Abreu",
 			"Mansil",
 			"Mansil alfalb",
-			"Vinickw"
+			"Vinickw",
+			"Mbs262"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Olá, {{bidi:$1}}!{{GENDER:$1|}}",
@@ -619,7 +620,7 @@
 	"growthexperiments-homepage-special-contribute-title": "Edições sugeridas",
 	"growthexperiments-homepage-special-contribute-description": "Faça alterações pequenas e fáceis (por exemplo, adicione uma hiperligação ou faça uma correção) para melhorar artigos existentes.",
 	"growthexperiments-homepage-special-contribute-cta": "Ver edições sugeridas",
-	"growthexperiments-homepage-impact-contributions-link": "Ver as suas edições todas ($1){{GENDER:$2|}}",
+	"growthexperiments-homepage-impact-contributions-link": "Ver todas as edições",
 	"growthexperiments-levelingup-getstarted-notification-header": "Experimente uma edição sugerida e comece a desenvolver as suas competências de edição{{GENDER:$2|}}",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Tentar as edições sugeridas",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Saber mais",
