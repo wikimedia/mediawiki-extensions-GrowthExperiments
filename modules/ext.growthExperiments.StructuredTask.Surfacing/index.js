@@ -73,13 +73,29 @@ class StructuredTaskSurfacer {
 			throw new Error( 'wikitext root-element not found!' );
 		}
 
+		let aHighlightHasBeenSeenByUser = false;
+
 		topRecs.forEach(
 			/**
 			 * @param {{link_text: string}} rec
 			 */
 			( rec ) => {
 				const textToLink = rec.link_text;
-				const buttonNode = this.createHighlightNode( textToLink, taskUrl );
+				const highlightNode = this.createHighlightNode( textToLink, taskUrl );
+
+				// eslint-disable-next-line compat/compat -- IntersectionObserver is widely available according to baseline
+				const highlightObserver = new IntersectionObserver( ( entries ) => {
+					entries.forEach( ( entry ) => {
+						if ( entry.isIntersecting && !aHighlightHasBeenSeenByUser ) {
+							aHighlightHasBeenSeenByUser = true;
+							// TODO: remove console.log and add instrumentation here
+							// eslint-disable-next-line no-console
+							console.log( 'tracking that a highlight has been seen', entry );
+						}
+					} );
+				} );
+				highlightObserver.observe( highlightNode );
+
 				const paragraphWithWord = this.articleTextManipulator.findFirstParagraphContainingText(
 					wikitextRootElement,
 					textToLink,
@@ -91,7 +107,7 @@ class StructuredTaskSurfacer {
 				this.articleTextManipulator.replaceDirectTextWithElement(
 					paragraphWithWord,
 					textToLink,
-					buttonNode,
+					highlightNode,
 				);
 			},
 		);
