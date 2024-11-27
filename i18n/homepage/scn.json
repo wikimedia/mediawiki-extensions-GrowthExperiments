@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"GianAntonucci"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciau}}, {{bidi:$1}}!",
-	"growthexperiments-homepage-tab": "Pàggina principali",
+	"growthexperiments-homepage-tab": "Pàggina mastra",
 	"growthexperiments-homepage-email-header-noemail": "Agghiunci la {{GENDER:$1|tò}} email",
 	"growthexperiments-homepage-email-header-unconfirmed": "Cunferma la {{GENDER:$1|tò}} email",
 	"growthexperiments-homepage-email-header-confirmed": "Email agghiunciuta",
