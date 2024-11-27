@@ -11,7 +11,7 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use UserNotLoggedIn;
-use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * QuestionPoster base class for asking a question from the assigned mentor.
@@ -26,7 +26,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 * @param TitleFactory $titleFactory
 	 * @param MentorManager $mentorManager
 	 * @param PermissionManager $permissionManager
-	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @param bool $confirmEditInstalled
 	 * @param bool $flowInstalled
 	 * @param IContextSource $context
@@ -39,7 +39,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 		TitleFactory $titleFactory,
 		MentorManager $mentorManager,
 		PermissionManager $permissionManager,
-		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
+		StatsFactory $statsFactory,
 		bool $confirmEditInstalled,
 		bool $flowInstalled,
 		IContextSource $context,
@@ -51,7 +51,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 			$wikiPageFactory,
 			$titleFactory,
 			$permissionManager,
-			$perDbNameStatsdDataFactory,
+			$statsFactory,
 			$confirmEditInstalled,
 			$flowInstalled,
 			$context,

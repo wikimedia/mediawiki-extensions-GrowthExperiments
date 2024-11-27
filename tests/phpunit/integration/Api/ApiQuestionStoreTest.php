@@ -76,7 +76,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 				$user->getName() => new Mentor( $mentor, '', '', IMentorWeights::WEIGHT_NORMAL ),
 			] ),
 			$services->getPermissionManager(),
-			$services->getPerDbNameStatsdDataFactory(),
+			$services->getStatsFactory(),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$context,

@@ -6,7 +6,6 @@ use Flow\Container;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\Hooks\HookRunner;
-use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\Content;
@@ -21,10 +20,11 @@ use MediaWiki\Status\Status;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\WikiMap\WikiMap;
 use RecentChange;
 use RuntimeException;
 use UserNotLoggedIn;
-use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Base class for sending messages containing user questions to some target page.
@@ -117,9 +117,9 @@ abstract class QuestionPoster {
 	private $sectionHeader;
 
 	/**
-	 * @var PrefixingStatsdDataFactoryProxy
+	 * @var StatsFactory
 	 */
-	private $perDbNameStatsdDataFactory;
+	private StatsFactory $statsFactory;
 
 	private bool $confirmEditInstalled = false;
 	private bool $flowInstalled = false;
@@ -128,7 +128,7 @@ abstract class QuestionPoster {
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
 	 * @param PermissionManager $permissionManager
-	 * @param StatsdDataFactoryInterface $perDbNameStatsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @param bool $confirmEditInstalled
 	 * @param bool $flowInstalled
 	 * @param IContextSource $context
@@ -140,7 +140,7 @@ abstract class QuestionPoster {
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
 		PermissionManager $permissionManager,
-		StatsdDataFactoryInterface $perDbNameStatsdDataFactory,
+		StatsFactory $statsFactory,
 		bool $confirmEditInstalled,
 		bool $flowInstalled,
 		IContextSource $context,
@@ -161,7 +161,7 @@ abstract class QuestionPoster {
 		$page = $wikiPageFactory->newFromTitle( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->body = trim( $body );
-		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->statsFactory = $statsFactory;
 		$this->confirmEditInstalled = $confirmEditInstalled;
 		$this->flowInstalled = $flowInstalled;
 	}
@@ -316,7 +316,13 @@ abstract class QuestionPoster {
 		);
 		$this->setResultUrl( $target->getLinkURL() );
 		$tagId = str_replace( ' ', '_', $tag );
-		$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.QuestionPoster.' . $tagId );
+		$wiki = WikiMap::getCurrentWikiId();
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'question_poster_edits_total' )
+			->setLabel( 'tag', $tagId )
+			->setLabel( 'wiki', $wiki )
+			->copyToStatsdAt( $wiki . '.GrowthExperiments.QuestionPoster.' . $tagId )
+			->increment();
 
 		return Status::newGood();
 	}
