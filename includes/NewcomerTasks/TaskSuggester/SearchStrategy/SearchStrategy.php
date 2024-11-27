@@ -60,46 +60,31 @@ class SearchStrategy {
 		//   runs into query length limits (T242560)
 		// Empty topic array means doing a single search with no topic filter
 		$topics = $topics ?: [ null ];
+		$allTopicsAreOres = $this->isOresTopicSet( $topics );
 		foreach ( $taskTypes as $taskType ) {
 			$typeTerm = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )
 				->getSearchTerm( $taskType );
 			$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
 			$excludedPageIdTerm = $excludePageIds ? $this->getExcludedPageIdTerm( $excludePageIds ) : null;
 			if ( $topicsFilterMode === self::TOPIC_MATCH_MODE_AND ) {
-				$allTopicsAreOres = true;
-				$topicTerms = [];
-				foreach ( $topics as $topic ) {
-					$topicTerms[] = $this->getTopicTerm( $topic );
-					$allTopicsAreOres = $allTopicsAreOres && $topic instanceof OresBasedTopic;
-				}
-				$topicTerm = implode( ' ', array_filter( $topicTerms ) );
-				$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
-					$pageIdTerm, $excludedPageIdTerm ] ) );
-
-				$queryId = $taskType->getId() . ':multiple-topics';
-				$query = new SearchQuery( $queryId, $queryString, $taskType, $topics );
+				$query = $this->getMultiTopicQuery( $topics, $typeTerm, $pageIdTerm, $excludedPageIdTerm, $taskType );
 				// don't randomize if we use topic matching with the morelike backend, which itself
 				// is a kind of sorting. Topic matching with the ORES backend already uses
 				// thresholds per topic so applying a random sort should be safe.
 				if ( $allTopicsAreOres ) {
 					$query->setSort( 'random' );
 				}
-				$queries[$queryId] = $query;
+				$queries[$query->getId()] = $query;
 			} else {
 				foreach ( $topics as $topic ) {
-					$topicTerm = $this->getTopicTerm( $topic );
-					$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
-						$pageIdTerm, $excludedPageIdTerm ] ) );
-
-					$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
-					$query = new SearchQuery( $queryId, $queryString, $taskType, [ $topic ] );
+					$query = $this->getPerTopicQuery( $topic, $typeTerm, $pageIdTerm, $excludedPageIdTerm, $taskType );
 					// don't randomize if we use topic matching with the morelike backend, which itself
 					// is a kind of sorting. Topic matching with the ORES backend already uses
 					// thresholds per topic so applying a random sort should be safe.
 					if ( !$topic || $topic instanceof OresBasedTopic ) {
 						$query->setSort( 'random' );
 					}
-					$queries[$queryId] = $query;
+					$queries[$query->getId()] = $query;
 				}
 			}
 			if (
@@ -152,6 +137,12 @@ class SearchStrategy {
 			$topicTerm = $topic->getSearchExpression();
 		}
 		return $topicTerm;
+	}
+
+	private function isOresTopicSet( array $topics ): bool {
+		return array_reduce( $topics, static function ( $allAreOres, $topic ) {
+			return $allAreOres && $topic instanceof OresBasedTopic;
+		}, true );
 	}
 
 	/**
@@ -222,6 +213,42 @@ class SearchStrategy {
 			$shuffled[$key] = $queries[$key];
 		}
 		return $shuffled;
+	}
+
+	/**
+	 * Get a query for multiple topics intersection
+	 */
+	private function getMultiTopicQuery(
+		array $topics,
+		string $typeTerm,
+		?string $pageIdTerm,
+		?string $excludedPageIdTerm,
+		TaskType $taskType
+	): SearchQuery {
+		$topicTerms = [];
+		foreach ( $topics as $topic ) {
+			$topicTerms[] = $this->getTopicTerm( $topic );
+		}
+		$topicTerm = implode( ' ', array_filter( $topicTerms ) );
+		$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
+			$pageIdTerm, $excludedPageIdTerm ] ) );
+
+		$queryId = $taskType->getId() . ':multiple-topics';
+		return new SearchQuery( $queryId, $queryString, $taskType, $topics );
+	}
+
+	/**
+	 * Get a query for a single topic
+	 */
+	private function getPerTopicQuery(
+		?Topic $topic, string $typeTerm, ?string $pageIdTerm, ?string $excludedPageIdTerm, TaskType $taskType
+	): SearchQuery {
+		$topicTerm = $this->getTopicTerm( $topic );
+		$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
+			$pageIdTerm, $excludedPageIdTerm ] ) );
+
+		$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
+		return new SearchQuery( $queryId, $queryString, $taskType, [ $topic ] );
 	}
 
 }
