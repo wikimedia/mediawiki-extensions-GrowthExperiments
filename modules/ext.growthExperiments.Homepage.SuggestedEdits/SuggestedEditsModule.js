@@ -188,7 +188,7 @@ SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function () {
 		this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
 		return $.Deferred().resolve().promise();
 	} ).catch( ( message ) => {
-		if ( message === null ) {
+		if ( message === 'abort' ) {
 			// XHR abort, not a real error
 			return;
 		}
