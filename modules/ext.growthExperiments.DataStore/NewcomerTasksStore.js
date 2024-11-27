@@ -338,7 +338,13 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		this.allTasksFetched = false;
 		this.tasksFetchedCount = data.tasks.length;
 		this.currentTaskIndex = 0;
-		if ( this.preloadedFirstTask ) {
+		const assertFiltersAreEqual = () => {
+			const prefs = this.api.getPreferences();
+			return prefs.taskTypes === this.filters.taskTypes &&
+				prefs.topicFilters.topics.toString() === this.filters.topics.toString() &&
+				prefs.topicFilters.topicsMatchMode === this.filters.topicsMatchMode;
+		};
+		if ( this.preloadedFirstTask && assertFiltersAreEqual() ) {
 			const preloadedTask = this.preloadedFirstTask;
 			updatedTaskQueue = updatedTaskQueue.filter( ( task ) => task.title !== preloadedTask.title );
 			updatedTaskQueue = [ preloadedTask ].concat( updatedTaskQueue );
