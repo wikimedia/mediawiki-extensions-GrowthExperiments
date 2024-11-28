@@ -1,6 +1,9 @@
 const ArticleTextManipulator = require( './ArticleTextManipulator.js' );
 const SurfacedTaskPopup = require( './SurfacedTaskPopup.js' );
 const PageSummaryRepository = require( './PageSummaryRepository.js' );
+const LinkSuggestionInteractionLogger = require(
+	'../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js',
+);
 
 class StructuredTaskSurfacer {
 
@@ -15,6 +18,19 @@ class StructuredTaskSurfacer {
 		this.config = config;
 		this.trackingCounterPrefix = 'counter.growthExperiments.SuggestedEdits.Surfacing.LinkRecommendation.' +
 			mw.config.get( 'wgDBname' );
+		this.newcomerTaskToken = crypto.randomUUID();
+		this.clickId = crypto.randomUUID();
+		/**
+		 * @type any
+		 */
+		this.logger = new LinkSuggestionInteractionLogger( {
+			/* eslint-disable camelcase */
+			is_mobile: true,
+			active_interface: 'readmode_article_page',
+			homepage_pageview_token: this.clickId,
+			newcomer_task_token: this.newcomerTaskToken,
+			/* eslint-enable camelcase */
+		} );
 	}
 
 	/**
@@ -55,7 +71,9 @@ class StructuredTaskSurfacer {
 			return;
 		}
 
-		const taskUrl = linkRecommendationResponse.taskURL;
+		const taskUrl = new URL( linkRecommendationResponse.taskURL );
+		taskUrl.searchParams.append( 'geclickid', this.clickId );
+		taskUrl.searchParams.append( 'genewcomertasktoken', this.newcomerTaskToken );
 		recs.sort(
 			/**
 			 * @param {{score: number}} a
@@ -84,6 +102,7 @@ class StructuredTaskSurfacer {
 
 		if ( topRecs.length ) {
 			mw.track( this.trackingCounterPrefix + '.highlight.page.impression', 1 );
+			this.logger.log( 'impression' );
 		}
 
 		let aHighlightHasBeenSeenByUser = false;
@@ -102,9 +121,7 @@ class StructuredTaskSurfacer {
 						if ( entry.isIntersecting && !aHighlightHasBeenSeenByUser ) {
 							aHighlightHasBeenSeenByUser = true;
 							mw.track( this.trackingCounterPrefix + '.highlight.viewport.impression', 1 );
-							// TODO: remove console.log and add instrumentation here
-							// eslint-disable-next-line no-console
-							console.log( 'tracking that a highlight has been seen', entry );
+							this.logger.log( 'viewport_impression' );
 						}
 					} );
 				} );
@@ -149,7 +166,7 @@ class StructuredTaskSurfacer {
 	/**
 	 * @private
 	 * @param {string} textToLink
-	 * @param {string} taskUrl
+	 * @param {URL} taskUrl
 	 * @param { { title: string; description: string?; thumbnail: any } | null } extraData
 	 * @return {Element}
 	 */
@@ -186,9 +203,13 @@ class StructuredTaskSurfacer {
 		);
 		popup.addYesButtonClickHandler(
 			() => {
-				// TODO: T377097 - add instrumentation here
 				mw.track( this.trackingCounterPrefix + '.popup.Yes.click', 1 );
-				window.location.href = taskUrl;
+				this.logger.log( 'suggestion_accept_yes', null, {
+					/* eslint-disable camelcase */
+					active_interface: 'readmode_suggestion_dialog',
+					/* eslint-enable camelcase */
+				} );
+				window.location.href = taskUrl.href;
 				document.removeEventListener( 'click', handleClickOutsidePopup, true );
 			},
 		);
