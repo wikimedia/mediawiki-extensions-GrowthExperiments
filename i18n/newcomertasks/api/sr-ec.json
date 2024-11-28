@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BadDog"
+			"BadDog",
+			"Milicevic01"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Прибавља препоруке задатака за новајлије.",
