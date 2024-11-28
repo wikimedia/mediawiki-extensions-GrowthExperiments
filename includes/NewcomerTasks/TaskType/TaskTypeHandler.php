@@ -222,13 +222,7 @@ abstract class TaskTypeHandler {
 		$topic = $query->getTopic();
 		$task = new Task( $taskType, $match->getTitle() );
 		if ( $topic ) {
-			$score = 0;
-			// CirrusSearch and our custom FauxSearchResultWithScore have this.
-			if ( method_exists( $match, 'getScore' ) ) {
-				// @phan-suppress-next-line PhanUndeclaredMethod
-				$score = $match->getScore();
-			}
-			$task->setTopics( [ $topic ], [ $topic->getId() => $score ] );
+			$task->setTopics( [ $topic ] );
 		}
 
 		return $task;

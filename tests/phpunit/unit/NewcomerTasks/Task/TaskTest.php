@@ -25,12 +25,10 @@ class TaskTest extends MediaWikiUnitTestCase {
 		$topics = [ new Topic( 'a' ), new Topic( 'b' ) ];
 		$task->setTopics( $topics );
 		$this->assertSame( $topics, $task->getTopics() );
-		$this->assertSame( [ 'a' => 0, 'b' => 0 ], $task->getTopicScores() );
 
 		$topics = [ new Topic( 'a' ), new Topic( 'b' ), new Topic( 'c' ) ];
 		$task->setTopics( $topics, [ 'b' => 1.5, 'a' => 0.5, 'd' => 1.1 ] );
 		$this->assertSame( $topics, $task->getTopics() );
-		$this->assertSame( [ 'a' => 0.5, 'b' => 1.5, 'c' => 0 ], $task->getTopicScores() );
 	}
 
 	public function testJsonSerialization() {
@@ -39,7 +37,7 @@ class TaskTest extends MediaWikiUnitTestCase {
 		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_EASY );
 		$task = new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) );
 		$topics = [ new Topic( 'a' ), new Topic( 'b' ), new Topic( 'c' ) ];
-		$task->setTopics( $topics, [ 'b' => 1.5, 'a' => 0.5, 'c' => 1.1 ] );
+		$task->setTopics( $topics );
 		$task2 = $codec->unserialize( $codec->serialize( $task ) );
 		$this->assertEquals( $task, $task2 );
 	}

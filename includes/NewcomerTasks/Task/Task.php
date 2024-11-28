@@ -28,9 +28,6 @@ class Task implements JsonUnserializable {
 	/** @var Topic[] */
 	private $topics = [];
 
-	/** @var float[] Match scores associated to the topics in $topics, keyed by topic ID. */
-	private $topicScores = [];
-
 	/** @var string unique task identifier for analytics purposes */
 	private $token;
 
@@ -83,26 +80,10 @@ class Task implements JsonUnserializable {
 	}
 
 	/**
-	 * Get topic matching scores for each topic this task is in.
-	 * @return float[] Topic ID => score
-	 */
-	public function getTopicScores(): array {
-		// Make sure the set of returned items always matches getTopics().
-		$topicScores = [];
-		foreach ( $this->getTopics() as $topic ) {
-			$topicScores[$topic->getId()] = $this->topicScores[$topic->getId()] ?? 0;
-		}
-		return $topicScores;
-	}
-
-	/**
 	 * @param Topic[] $topics
-	 * @param float[] $topicScores Match scores associated to the topics in $topics,
-	 *   keyed by topic ID. Keys are a subset of those in $topics.
 	 */
-	public function setTopics( array $topics, array $topicScores = [] ): void {
+	public function setTopics( array $topics ): void {
 		$this->topics = $topics;
-		$this->topicScores = $topicScores;
 	}
 
 	/** @inheritDoc */
@@ -115,7 +96,6 @@ class Task implements JsonUnserializable {
 			'topics' => array_map( static function ( Topic $topic ) {
 				return $topic->jsonSerialize();
 			}, $this->getTopics() ),
-			'topicScores' => $this->getTopicScores(),
 			'token' => $this->getToken()
 		];
 	}
@@ -134,7 +114,7 @@ class Task implements JsonUnserializable {
 		}, $json['topics'] );
 
 		$task = new static( $taskType, $title, $json['token'] ?? null );
-		$task->setTopics( $topics, $json['topicScores'] );
+		$task->setTopics( $topics );
 		return $task;
 	}
 

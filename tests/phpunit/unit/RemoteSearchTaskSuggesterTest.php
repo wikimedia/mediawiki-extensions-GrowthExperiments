@@ -90,11 +90,11 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	public static function provideSuggest() {
-		$makeTask = static function ( TaskType $taskType, string $titleText, array $topicScores = [] ) {
+		$makeTask = static function ( TaskType $taskType, string $titleText, array $topics = [] ) {
 			$task = new Task( $taskType, new TitleValue( NS_MAIN, $titleText ) );
 			$task->setTopics( array_map( static function ( string $topicId ) {
 				return new Topic( $topicId );
-			}, array_keys( $topicScores ) ), $topicScores );
+			}, array_keys( $topics ) ) );
 			return $task;
 		};
 
@@ -408,12 +408,12 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'taskSetFilters' => new TaskSetFilters( [], [ 'art', 'science' ] ),
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
-					$makeTask( $copyedit, 'T1', [ 'art' => 100, ] ),
-					$makeTask( $copyedit, 'T2', [ 'art' => 100 / 2, ] ),
-					$makeTask( $copyedit, 'T3', [ 'art' => 100 / 3, ] ),
-					$makeTask( $copyedit, 'T4', [ 'science' => 100 / 2, ] ),
-					$makeTask( $link, 'T5', [ 'art' => 100 / 3 ] ),
-					$makeTask( $link, 'T6', [ 'science' => 100 / 3 ] ),
+					$makeTask( $copyedit, 'T1', [ 'art' ] ),
+					$makeTask( $copyedit, 'T2', [ 'art' ] ),
+					$makeTask( $copyedit, 'T3', [ 'art' ] ),
+					$makeTask( $copyedit, 'T4', [ 'science' ] ),
+					$makeTask( $link, 'T5', [ 'art' ] ),
+					$makeTask( $link, 'T6', [ 'science' ] ),
 				], 100, 0, new TaskSetFilters() ),
 			],
 			'http error' => [
@@ -501,7 +501,6 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				$this->assertSame( $expectedTask->getTitle()->getDBkey(),
 					$filteredTask->getTitle()->getDBkey() );
 				$this->assertEquals( $expectedTask->getTopics(), $filteredTask->getTopics() );
-				$this->assertSame( $expectedTask->getTopicScores(), $filteredTask->getTopicScores() );
 			}
 		}
 	}
@@ -609,14 +608,13 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @param array[] $taskTypeSpec Task type of the task. See getTaskTypes(); should have a single type.
 	 * @param string $title Task page title (assumed to be in the mainspace).
 	 * @param array[] $topicSpec Topics of the task. See getTopics().
-	 * @param float[] $topicScores Topic ID => score.
 	 * @return Task
 	 */
-	private static function getTask( $taskTypeSpec, $title, $topicSpec = [], $topicScores = [] ) {
+	private static function getTask( $taskTypeSpec, $title, $topicSpec = [] ) {
 		$taskTypes = self::getTaskTypes( $taskTypeSpec );
 		$topics = self::getTopics( $topicSpec );
 		$task = new Task( $taskTypes[0], new TitleValue( NS_MAIN, $title ) );
-		$task->setTopics( $topics, $topicScores );
+		$task->setTopics( $topics );
 		return $task;
 	}
 
@@ -787,7 +785,6 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'taskType' => $task->getTaskType()->getId(),
 				'titleNs' => $task->getTitle()->getNamespace(),
 				'titleDbkey' => $task->getTitle()->getDBkey(),
-				'topics' => $task->getTopicScores(),
 			];
 			return $taskData;
 		}, iterator_to_array( Util::getIteratorFromTraversable( $taskSet ) ) );

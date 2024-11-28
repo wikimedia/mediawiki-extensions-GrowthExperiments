@@ -126,13 +126,6 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				'qualityGateConfig' => $tasks->getQualityGateConfig(),
 				'token' => $task->getToken()
 			];
-			if ( $task->getTopics() ) {
-				foreach ( $task->getTopicScores() as $id => $score ) {
-					// Handling associative arrays is annoying in JS; return the data as
-					// a list of (topic ID, score) pairs instead.
-					$extraData['topics'][] = [ $id, $score ];
-				}
-			}
 
 			if ( $resultPageSet ) {
 				$titles[] = $title;
