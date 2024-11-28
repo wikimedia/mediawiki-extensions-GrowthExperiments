@@ -3,6 +3,7 @@
 		"authors": [
 			"Alan Mena",
 			"Amadalvarez",
+			"Arnaugir",
 			"Fitoschido",
 			"Jlrb+",
 			"Jmarchn",
@@ -101,6 +102,7 @@
 	"growthexperiments-homepage-impact-unactivated-description": "Un cop {{GENDER:|comencis}} a editar, Aquí {{GENDER:|veuràs}} quantes persones han vist els articles que {{GENDER:|has}} editat.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alertes d'ajuda",
 	"growthexperiments-tour-response-button-okay": "Entesos",
+	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks Tasca de nouvingut]",
 	"growthexperiments-homepage-help-header": "Us cal ajuda per editar",
 	"growthexperiments-homepage-help-subheader": "Principals pàgines d'ajuda sobre edició",
 	"growthexperiments-homepage-recent-questions-archived": "arxivat",
