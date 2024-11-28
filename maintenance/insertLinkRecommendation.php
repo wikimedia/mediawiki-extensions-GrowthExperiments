@@ -42,15 +42,19 @@ class InsertLinkRecommendation extends Maintenance {
 			$this->fatalError( 'Unable to decode JSON' );
 		}
 		$title = $services->getTitleFactory()->newFromText( $this->getOption( 'title' ) );
-		if ( !$title ) {
+		if ( !$title || !$title->exists() ) {
 			$this->fatalError( 'Unable to get a title for ' . $this->getOption( 'title' ) );
 		}
+
 		$linkRecommendation = new LinkRecommendation(
 			$title,
 			$title->getId(),
 			$title->getLatestRevID(),
 			LinkRecommendation::getLinksFromArray( $data['links'] ),
 			LinkRecommendation::getMetadataFromArray( $data['meta'] )
+		);
+		$this->output(
+			'Inserting ' . count( $data['links'] ) . ' link recommendation(s) for ' . $title->getPrefixedText() . "\n"
 		);
 		$linkRecommendationStore = $growthServices->getLinkRecommendationStore();
 		$linkRecommendationStore->insert( $linkRecommendation );
