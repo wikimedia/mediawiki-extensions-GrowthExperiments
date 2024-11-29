@@ -44,7 +44,13 @@ $specialPageAliases['az'] = [
 	'WelcomeSurvey' => [ 'XoşGəlmisinizAnketi', 'XoşAnket' ],
 	'Homepage' => [ 'AnaSəhifə' ],
 	'Impact' => [ 'Təsir' ],
-	'ClaimMentee' => [ 'YeniIstifadəçiTələbEdin' ],
+	'ClaimMentee' => [ 'YeniİstifadəçiTələbEdin' ],
+	'NewcomerTasksInfo' => [ 'YeniİstifadəçiTapşırıqlarıMəlumatı' ],
+	'EditGrowthConfig' => [ 'GrowthKonfiqurasiyasıRedaktə' ],
+	'MentorDashboard' => [ 'MentorPaneli' ],
+	'QuitMentorship' => [ 'MentorluqdanAyrıl' ],
+	'ManageMentors' => [ 'MentorlarıİdarəEt' ],
+	'EnrollAsMentor' => [ 'MentorOl' ],
 ];
 
 /** Bangla (বাংলা) */
