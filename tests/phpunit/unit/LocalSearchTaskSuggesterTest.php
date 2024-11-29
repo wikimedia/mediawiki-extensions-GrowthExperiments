@@ -59,7 +59,7 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 		$taskType = new TaskType( 'fake; wont be used', TaskType::DIFFICULTY_EASY );
 		$topic = $topic ? new Topic( $topic ) : null;
-		$query = new SearchQuery( $this->getName(), $searchTerm, $taskType, $topic );
+		$query = new SearchQuery( $this->getName(), $searchTerm, $taskType, [ $topic ] );
 
 		$result = $wrappedSuggester->search( $query, $limit, $offset, false );
 		if ( $expectedResult instanceof ApiRawMessage ) {

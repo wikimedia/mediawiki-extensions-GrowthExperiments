@@ -268,7 +268,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			$key = $task->getTitle()->getNamespace() . ':' . $task->getTitle()->getDBkey();
 			$taskMap[$key] = $task;
 		}
-
 		foreach ( $targetTasks as $task ) {
 			$key = $task->getTitle()->getNamespace() . ':' . $task->getTitle()->getDBkey();
 			$sourceTask = $taskMap[$key] ?? null;
