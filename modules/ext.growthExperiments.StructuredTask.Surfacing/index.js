@@ -71,7 +71,7 @@ class StructuredTaskSurfacer {
 			return;
 		}
 
-		const taskUrl = new URL( linkRecommendationResponse.taskURL );
+		const taskUrl = new URL( linkRecommendationResponse.taskURL, window.location.origin );
 		taskUrl.searchParams.append( 'geclickid', this.clickId );
 		taskUrl.searchParams.append( 'genewcomertasktoken', this.newcomerTaskToken );
 		recs.sort(
