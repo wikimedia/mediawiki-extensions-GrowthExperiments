@@ -58,7 +58,7 @@
 					"wikitext_offset": 2701
 				}
 			],
-			"taskURL": "/example"
+			"taskURL": "deliberate-invalid-url:override-in-tests"
 		}
 	}
 }

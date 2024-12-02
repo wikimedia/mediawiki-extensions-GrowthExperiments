@@ -99,11 +99,8 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 	 * @return string The generated task URL
 	 */
 	private function getTaskUrl( $pageId ) {
-		$newcomertaskToken = bin2hex( random_bytes( 16 ) );
 		return SpecialPage::getTitleFor( 'Homepage', 'newcomertask/' . $pageId )->getFullURL() .
-			   '?genewcomertasktoken=' . $newcomertaskToken .
-			   '&geclickid=' . bin2hex( random_bytes( 16 ) ) .
-			   '&gesuggestededit=1&getasktype=link-recommendation';
+			   '?gesuggestededit=1&getasktype=link-recommendation';
 	}
 
 	/**

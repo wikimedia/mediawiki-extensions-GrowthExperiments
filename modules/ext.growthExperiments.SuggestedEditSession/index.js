@@ -37,7 +37,7 @@
 		/** @member {boolean} Whether we are in a suggested edit session currently. */
 		this.active = false;
 		/**
-		 * @member {number|null} Suggested edit session ID. This will be used in
+		 * @member {number|string|null} Suggested edit session ID. This will be used in
 		 *   EditAttemptStep.editing_session_id and HelpPanel.help_panel_session_id
 		 *   in events logged during the session. It is set via the geclickid URL parameter
 		 *   (which is how a suggested edit session starts) and reset during page save.
