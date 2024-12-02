@@ -5,6 +5,7 @@ namespace GrowthExperiments\Api;
 use ApiQuery;
 use ApiQueryBase;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Config\Config;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -99,8 +100,10 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 	 * @return string The generated task URL
 	 */
 	private function getTaskUrl( $pageId ) {
-		return SpecialPage::getTitleFor( 'Homepage', 'newcomertask/' . $pageId )->getFullURL() .
-			   '?gesuggestededit=1&getasktype=link-recommendation';
+		return SpecialPage::getTitleFor( 'Homepage', 'newcomertask/' . $pageId )->getFullURL( [
+			'gesuggestededit' => 1,
+			'getasktype' => LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
+		], false, PROTO_CANONICAL );
 	}
 
 	/**
