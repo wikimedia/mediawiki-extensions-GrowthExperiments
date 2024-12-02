@@ -16,9 +16,9 @@
 	"apihelp-query+growthtasks-example-2": "Feladatjavaslatok lekérése az aktuális felhasználónak részletes adatokkal a lapokról.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Az 'accepted' paraméter hiányzik a Kép hozzáadása beépülő plugin adataiból",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Az 'accepted' paraméternek logikai értéknek kell lennie a Kép hozzáadása beépülő modulban, ez $1",
-	"apierror-growthexperiments-addimage-handler-reason-missing": "A „reason” paraméter hiányzik a Kép hozzáadása beépülő modul adataiból",
-	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "A „reason” paraméternek egy tömbnek kell lennie a Kép hozzáadása beépülő modulban, ez $1",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Érvénytelen „ $1 ” elem a „reason” paraméterben, a következők egyikének kell lennie: $2",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "A „reasons” paraméter hiányzik a Kép hozzáadása beépülő modul adataiból",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "A „reasons” paraméternek egy tömbnek kell lennie a Kép hozzáadása beépülő modulban, de $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Érvénytelen „$1” elem a „reasons” paraméterben, a következők egyikének kell lennie: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "A hivatkozási ajánlás rekordja nem található",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Váratlan linkajánlási célok: $1"
 }
