@@ -1,7 +1,6 @@
 // Override taskURL with CI's baseUrl so it can be resolved
 import suggestions from '../../fixtures/LoremIpsumSuggestions.json';
-const ciTaskUrl = new URL( Cypress.config( 'baseUrl' ) + '/task-test-url' );
-suggestions.query.linkrecommendations.taskURL = ciTaskUrl.toString();
+suggestions.query.linkrecommendations.taskURL = '/task-test-url';
 
 describe( 'Surfacing Link recommendations (with api responses stubbed)', () => {
 	it( 'highlights the results returned by the API', function () {
@@ -67,7 +66,7 @@ describe( 'Surfacing Link recommendations (with api responses stubbed)', () => {
 		cy.get( '.growth-surfaced-task-button:first' ).click();
 		cy.get( '[data-testid="surfacing-tasks-popup-yes"]:first' ).click( { force: true } );
 
-		cy.location( 'hostname' ).should( 'equal', ciTaskUrl.hostname );
+		cy.location( 'hostname' ).should( 'equal', ( new URL( Cypress.config( 'baseUrl' ) ) ).hostname );
 		cy.location( 'search' ).should( 'to.match', /\?geclickid=([a-f0-9]|-){36}&genewcomertasktoken=([a-f0-9]|-){36}/ );
 		/*
 		 We are stubbing the tasks, thus the task-url is not real, but needs to be valid.

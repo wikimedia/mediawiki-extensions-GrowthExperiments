@@ -100,10 +100,10 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 	 * @return string The generated task URL
 	 */
 	private function getTaskUrl( $pageId ) {
-		return SpecialPage::getTitleFor( 'Homepage', 'newcomertask/' . $pageId )->getFullURL( [
+		return SpecialPage::getTitleFor( 'Homepage', 'newcomertask/' . $pageId )->getLocalURL( [
 			'gesuggestededit' => 1,
 			'getasktype' => LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		], false, PROTO_CANONICAL );
+		] );
 	}
 
 	/**
