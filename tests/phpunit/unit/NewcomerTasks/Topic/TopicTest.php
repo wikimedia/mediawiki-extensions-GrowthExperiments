@@ -49,7 +49,7 @@ class TopicTest extends MediaWikiUnitTestCase {
 		// JsonCodec isn't stable to construct but there is not better way in a unit test.
 		$codec = new JsonCodec();
 		$topic = new Topic( 'foo', 'bar' );
-		$topic2 = $codec->unserialize( $codec->serialize( $topic ) );
+		$topic2 = $codec->deserialize( $codec->serialize( $topic ) );
 		$this->assertEquals( $topic, $topic2 );
 	}
 

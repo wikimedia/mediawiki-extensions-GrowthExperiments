@@ -32,7 +32,7 @@ class TemplateBasedTaskTypeTest extends MediaWikiUnitTestCase {
 				new TitleValue( NS_CATEGORY, 'Bar' ),
 			]
 		);
-		$taskType2 = $codec->unserialize( $codec->serialize( $taskType ) );
+		$taskType2 = $codec->deserialize( $codec->serialize( $taskType ) );
 		$this->assertEquals( $taskType, $taskType2 );
 	}
 

@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Message\Message;
@@ -72,7 +72,7 @@ class MorelikeBasedTopic extends Topic {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		$referencePages = array_map( static function ( array $page ) {
 			return new TitleValue( $page[0], $page[1] );
 		}, $json['referencePages'] );

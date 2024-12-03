@@ -3,9 +3,9 @@
 namespace GrowthExperiments\NewcomerTasks\Task;
 
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
-use MediaWiki\Json\JsonUnserializable;
-use MediaWiki\Json\JsonUnserializableTrait;
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializable;
+use MediaWiki\Json\JsonDeserializableTrait;
+use MediaWiki\Json\JsonDeserializer;
 
 /**
  * Class which contains the set of filters (task, topics) used to generate a TaskSet.
@@ -13,9 +13,9 @@ use MediaWiki\Json\JsonUnserializer;
  * JsonSerializable is implemented to provide the ability to compare TaskSetFilters across
  * TaskSets by JSON encoding the objects.
  */
-class TaskSetFilters implements JsonUnserializable {
+class TaskSetFilters implements JsonDeserializable {
 
-	use JsonUnserializableTrait;
+	use JsonDeserializableTrait;
 
 	/**
 	 * @var string[] List of task type IDs to limit the suggestions to.
@@ -86,7 +86,7 @@ class TaskSetFilters implements JsonUnserializable {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		return new self(
 			$json['task'],
 			$json['topic'],

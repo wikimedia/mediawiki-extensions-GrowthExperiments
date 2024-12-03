@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializer;
 
 /**
  * Represents a single ORES topic (as opposed to OresBasedTopic which is a combination of ORES
@@ -30,7 +30,7 @@ class RawOresTopic extends OresBasedTopic {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		return new self( $json['id'], $json['oresTopic'] );
 	}
 

@@ -3,9 +3,9 @@
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
-use MediaWiki\Json\JsonUnserializable;
-use MediaWiki\Json\JsonUnserializableTrait;
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializable;
+use MediaWiki\Json\JsonDeserializableTrait;
+use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\TitleValue;
@@ -14,9 +14,9 @@ use MessageLocalizer;
 /**
  * Describes a type of suggested edit.
  */
-class TaskType implements JsonUnserializable {
+class TaskType implements JsonDeserializable {
 
-	use JsonUnserializableTrait;
+	use JsonDeserializableTrait;
 
 	public const DIFFICULTY_EASY = 'easy';
 	public const DIFFICULTY_MEDIUM = 'medium';
@@ -239,7 +239,7 @@ class TaskType implements JsonUnserializable {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		$excludedTemplates = array_map( static function ( array $excludedTemplate ) {
 			return new TitleValue( $excludedTemplate[0], $excludedTemplate[1] );
 		}, $json['excludedTemplates'] ?? [] );

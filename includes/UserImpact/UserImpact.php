@@ -231,8 +231,8 @@ class UserImpact implements JsonSerializable {
 			$userImpact = ExpensiveUserImpact::newEmpty();
 		} elseif ( array_key_exists( 'topViewedArticles', $json ) ) {
 			// UserImpactFormatter::jsonSerialize() unsets the 'dailyArticleViews'
-			// field so unserializing it would be tricky, but it's not needed anyway.
-			throw new LogicException( 'UserImpactFormatter is not unserializable.' );
+			// field so deserializing it would be tricky, but it's not needed anyway.
+			throw new LogicException( 'UserImpactFormatter is not deserializable.' );
 		} else {
 			$userImpact = self::newEmpty();
 		}

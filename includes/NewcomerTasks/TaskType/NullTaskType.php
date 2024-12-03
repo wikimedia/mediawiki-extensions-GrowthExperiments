@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializer;
 
 /**
  * A "fake" task type which only exists to reuse task type related search functionality
@@ -39,7 +39,7 @@ class NullTaskType extends TaskType {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		return new NullTaskType( $json['id'], $json['extraSearchConditions'] );
 	}
 

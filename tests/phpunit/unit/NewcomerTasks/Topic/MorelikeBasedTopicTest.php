@@ -32,7 +32,7 @@ class MorelikeBasedTopicTest extends MediaWikiUnitTestCase {
 			new TitleValue( NS_MAIN, 'Title1' ),
 			new TitleValue( NS_MAIN, 'Title2' ),
 		] );
-		$topic2 = $codec->unserialize( $codec->serialize( $topic ) );
+		$topic2 = $codec->deserialize( $codec->serialize( $topic ) );
 		$this->assertEquals( $topic, $topic2 );
 	}
 

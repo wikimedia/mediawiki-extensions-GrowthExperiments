@@ -7,9 +7,9 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use LogicException;
-use MediaWiki\Json\JsonUnserializable;
-use MediaWiki\Json\JsonUnserializableTrait;
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializable;
+use MediaWiki\Json\JsonDeserializableTrait;
+use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Title\Title;
 use OutOfBoundsException;
@@ -21,9 +21,9 @@ use Wikimedia\Assert\Assert;
  * Used as a convenience class for queries with limit/offset to pass along some metadata
  * about the full result set (such as offset or total result count).
  */
-class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserializable {
+class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonDeserializable {
 
-	use JsonUnserializableTrait;
+	use JsonDeserializableTrait;
 
 	/** @var Task[] */
 	private $tasks;
@@ -241,20 +241,20 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
-		# T312589: In the future JsonCodec will take care of unserializing
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
+		# T312589: In the future JsonCodec will take care of deserializing
 		# the values in the $json array itself.
-		$tasks = array_map( static function ( $task ) use ( $unserializer ) {
+		$tasks = array_map( static function ( $task ) use ( $deserializer ) {
 			return $task instanceof Task ? $task :
-				$unserializer->unserialize( $task, Task::class );
+				$deserializer->deserialize( $task, Task::class );
 		}, $json['tasks'] );
-		$invalidTasks = array_map( static function ( $task ) use ( $unserializer ) {
+		$invalidTasks = array_map( static function ( $task ) use ( $deserializer ) {
 			return $task instanceof Task ? $task :
-				$unserializer->unserialize( $task, Task::class );
+				$deserializer->deserialize( $task, Task::class );
 		}, $json['invalidTasks'] );
 		$filters = $json['filters'] instanceof TaskSetFilters ?
 				 $json['filters'] :
-				 $unserializer->unserialize( $json['filters'], TaskSetFilters::class );
+				 $deserializer->deserialize( $json['filters'], TaskSetFilters::class );
 		$taskSet = new self( $tasks, $json['totalCount'], $json['offset'], $filters, $invalidTasks );
 		$taskSet->setQualityGateConfig( $json['qualityGateConfig'] );
 		return $taskSet;

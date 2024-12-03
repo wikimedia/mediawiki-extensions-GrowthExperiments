@@ -62,7 +62,7 @@ class TaskSetTest extends MediaWikiUnitTestCase {
 			]
 		);
 		$taskSet->setQualityGateConfigForTaskType( 'foo', [ 'gate' => 'value' ] );
-		$taskSet2 = $codec->unserialize( $codec->serialize( $taskSet ) );
+		$taskSet2 = $codec->deserialize( $codec->serialize( $taskSet ) );
 		$this->assertEquals( $taskSet, $taskSet2 );
 	}
 
