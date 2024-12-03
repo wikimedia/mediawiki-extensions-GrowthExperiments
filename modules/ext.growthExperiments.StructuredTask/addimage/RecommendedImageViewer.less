@@ -5,11 +5,16 @@
 		text-align: right;
 	}
 
-	.mw-ge-recommendedImageViewer-image-close-button {
+	.mw-ge-recommendedImageViewer-image-close-button.oo-ui-widget.oo-ui-buttonElement.oo-ui-iconElement {
 		position: fixed;
 		top: 5px;
 		right: 8px;
 		opacity: @opacity-icon-base;
+
+		html.skin-theme-clientpref-night & .oo-ui-buttonElement-button .oo-ui-iconElement-icon.oo-ui-icon-close-shadow {
+			filter: none;
+			color: @background-color-base-fixed;
+		}
 	}
 
 	.oo-ui-window-body {
