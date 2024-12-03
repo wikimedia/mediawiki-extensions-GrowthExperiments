@@ -1667,7 +1667,8 @@
 			],
 			"codexStyleOnly": "true",
 			"codexComponents": [
-				"CdxButton"
+				"CdxButton",
+				"CdxThumbnail"
 			],
 			"dependencies": [
 				"ext.growthExperiments.SuggestedEditSession"
