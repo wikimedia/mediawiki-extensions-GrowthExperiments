@@ -29,7 +29,7 @@ OO.inheritClass( FiltersDialog, OO.ui.ProcessDialog );
 /** @inheritDoc **/
 FiltersDialog.prototype.initialize = function () {
 	FiltersDialog.super.prototype.initialize.call( this );
-	this.$element.addClass( 'mw-ge-filtersDialog skin-invert notheme' );
+	this.$element.addClass( 'mw-ge-filtersDialog' );
 	this.$foot.addClass( 'mw-ge-filtersDialog-footer' );
 	this.content = new OO.ui.PanelLayout( {
 		padded: true,
