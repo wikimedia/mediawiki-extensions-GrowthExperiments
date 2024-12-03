@@ -1965,6 +1965,11 @@
 			"class": "MediaWiki\\ResourceLoader\\ImageModule",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
 			"selectorWithoutVariant": ".oo-ui-icon-{name},.mw-ui-icon-{name}",
+			"variants": {
+				"progressive": {
+					"color": "#3366cc"
+				}
+			},
 			"images": {
 				"growth-previous": {
 					"file": {
@@ -2034,7 +2039,8 @@
 					"file": {
 						"ltr": "../images/mentor-ltr.svg",
 						"rtl": "../images/mentor-rtl.svg"
-					}
+					},
+					"variants": [ "progressive" ]
 				},
 				"robot-task-type-easy": "../images/suggestededits/robot-easy.svg",
 				"robot-task-type-medium": "../images/suggestededits/robot-medium.svg"
