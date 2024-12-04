@@ -24,10 +24,12 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\WikiMap\WikiMap;
 use Throwable;
 use UserNotLoggedIn;
 use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
+use Wikimedia\Stats\StatsFactory;
 
 class SpecialHomepage extends SpecialPage {
 
@@ -50,6 +52,7 @@ class SpecialHomepage extends SpecialPage {
 	/** @var TitleFactory */
 	private $titleFactory;
 	private bool $isMobile;
+	private StatsFactory $statsFactory;
 
 	/**
 	 * @param HomepageModuleRegistry $moduleRegistry
@@ -60,6 +63,7 @@ class SpecialHomepage extends SpecialPage {
 	 * @param Config $wikiConfig
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param TitleFactory $titleFactory
+	 * @param StatsFactory $statsFactory
 	 */
 	public function __construct(
 		HomepageModuleRegistry $moduleRegistry,
@@ -69,7 +73,8 @@ class SpecialHomepage extends SpecialPage {
 		MentorManager $mentorManager,
 		Config $wikiConfig,
 		UserOptionsManager $userOptionsManager,
-		TitleFactory $titleFactory
+		TitleFactory $titleFactory,
+		StatsFactory $statsFactory
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->moduleRegistry = $moduleRegistry;
@@ -81,6 +86,7 @@ class SpecialHomepage extends SpecialPage {
 		$this->userOptionsManager = $userOptionsManager;
 		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->titleFactory = $titleFactory;
+		$this->statsFactory = $statsFactory;
 	}
 
 	/** @inheritDoc */
@@ -477,7 +483,16 @@ class SpecialHomepage extends SpecialPage {
 			],
 			$suggestedEdits instanceof SuggestedEdits ? $suggestedEdits->getRedirectParams( $taskTypeId ) : []
 		);
-		$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.NewcomerTask.' . $taskTypeId . '.Click' );
+
+		$statsAction = 'Click';
+		$wiki = WikiMap::getCurrentWikiId();
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+				->getCounter( 'newcomertask_total' )
+				->setLabel( 'taskType', $taskTypeId ?? '' )
+				->setLabel( 'wiki', $wiki )
+				->setLabel( 'action', $statsAction )
+				->copyToStatsdAt( "$wiki.GrowthExperiments.NewcomerTask." . $taskTypeId . '.' . $statsAction )
+				->increment();
 
 		$this->getOutput()->redirect(
 			$title->getFullUrlForRedirect( $redirectParams )

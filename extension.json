@@ -373,7 +373,8 @@
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
 				"GrowthExperimentsSuggestionsInfo",
 				"GrowthExperimentsUserImpactLookup_Computed",
-				"GrowthExperimentsUserImpactStore"
+				"GrowthExperimentsUserImpactStore",
+				"StatsFactory"
 			]
 		},
 		"impact": {

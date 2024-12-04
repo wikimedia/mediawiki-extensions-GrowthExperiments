@@ -43,7 +43,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			// there is no need to test this
 			GlobalVarConfig::newInstance(),
 			$this->getServiceContainer()->getUserOptionsManager(),
-			$this->getServiceContainer()->getTitleFactory()
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getStatsFactory()
 		);
 	}
 

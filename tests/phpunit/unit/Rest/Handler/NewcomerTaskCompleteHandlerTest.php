@@ -21,6 +21,7 @@ use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Rest\Handler\NewcomerTaskCompleteHandler
@@ -202,6 +203,7 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 			$this->createMock( IConnectionProvider::class ),
 			$userIdentityUtils,
 			$this->createMock( ChangeTagsStore::class ),
+			$this->createNoOpMock( StatsFactory::class ),
 			new HashConfig( $config ),
 			$user
 		);

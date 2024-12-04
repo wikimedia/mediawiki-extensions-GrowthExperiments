@@ -1107,7 +1107,8 @@ return [
 			$services->getRevisionLookup(),
 			$services->getDBLoadBalancerFactory(),
 			$services->getUserIdentityUtils(),
-			$services->getChangeTagsStore()
+			$services->getChangeTagsStore(),
+			$services->getStatsFactory()
 		);
 	},
 
