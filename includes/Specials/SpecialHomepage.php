@@ -27,14 +27,11 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\WikiMap\WikiMap;
 use Throwable;
 use UserNotLoggedIn;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
-use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 use Wikimedia\Stats\StatsFactory;
 
 class SpecialHomepage extends SpecialPage {
 
 	private HomepageModuleRegistry $moduleRegistry;
-	private IBufferingStatsdDataFactory $statsdDataFactory;
 	private ExperimentUserManager $experimentUserManager;
 	private MentorManager $mentorManager;
 	private Config $wikiConfig;
@@ -46,9 +43,6 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private $pageviewToken;
 
-	/** @var PrefixingStatsdDataFactoryProxy */
-	private $perDbNameStatsdDataFactory;
-
 	/** @var TitleFactory */
 	private $titleFactory;
 	private bool $isMobile;
@@ -56,37 +50,31 @@ class SpecialHomepage extends SpecialPage {
 
 	/**
 	 * @param HomepageModuleRegistry $moduleRegistry
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param MentorManager $mentorManager
 	 * @param Config $wikiConfig
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param TitleFactory $titleFactory
-	 * @param StatsFactory $statsFactory
 	 */
 	public function __construct(
 		HomepageModuleRegistry $moduleRegistry,
-		IBufferingStatsdDataFactory $statsdDataFactory,
-		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
+		StatsFactory $statsFactory,
 		ExperimentUserManager $experimentUserManager,
 		MentorManager $mentorManager,
 		Config $wikiConfig,
 		UserOptionsManager $userOptionsManager,
-		TitleFactory $titleFactory,
-		StatsFactory $statsFactory
+		TitleFactory $titleFactory
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->moduleRegistry = $moduleRegistry;
-		$this->statsdDataFactory = $statsdDataFactory;
+		$this->statsFactory = $statsFactory;
 		$this->pageviewToken = $this->generatePageviewToken();
 		$this->experimentUserManager = $experimentUserManager;
 		$this->mentorManager = $mentorManager;
 		$this->wikiConfig = $wikiConfig;
 		$this->userOptionsManager = $userOptionsManager;
-		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->titleFactory = $titleFactory;
-		$this->statsFactory = $statsFactory;
 	}
 
 	/** @inheritDoc */
@@ -160,10 +148,12 @@ class SpecialHomepage extends SpecialPage {
 			'growthexperiments-homepage-user-variant-' .
 			$this->experimentUserManager->getVariant( $this->getUser() )
 		);
-		$this->statsdDataFactory->timing(
-			'timing.growthExperiments.specialHomepage.serverSideRender.' . ( $this->isMobile ? 'mobile' : 'desktop' ),
-			microtime( true ) - $startTime
-		);
+		$platform = ( $this->isMobile ? 'mobile' : 'desktop' );
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getTiming( 'special_homepage_server_side_render_milliseconds' )
+			->setLabel( 'platform', $platform )
+			->copyToStatsdAt( "timing.growthExperiments.specialHomepage.serverSideRender." . $platform )
+			->observe( microtime( true ) - $startTime );
 
 		if ( $loggingEnabled &&
 			 ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&
@@ -318,14 +308,16 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	private function recordModuleRenderingTime( string $moduleName, string $mode, float $timeToRecord ): void {
-		$this->perDbNameStatsdDataFactory->timing(
-			implode( '.', [
-				'timing.growthExperiments.specialHomepage.ssr',
-				$moduleName,
-				$mode,
-			] ),
-			$timeToRecord
-		);
+		$wiki = WikiMap::getCurrentWikiId();
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getTiming( 'special_homepage_ssr_milliseconds' )
+			->setLabel( 'wiki', $wiki )
+			->setLabel( 'module', $moduleName )
+			->setLabel( 'mode', $mode )
+			->copyToStatsdAt( implode( '.', [
+				$wiki, 'timing.growthExperiments.specialHomepage.ssr', $moduleName, $mode
+			] ) )
+			->observe( $timeToRecord );
 	}
 
 	/**

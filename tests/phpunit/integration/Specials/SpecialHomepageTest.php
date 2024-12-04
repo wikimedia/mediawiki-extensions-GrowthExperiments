@@ -35,16 +35,14 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		return new SpecialHomepage(
 			$growthExperimentsServices->getHomepageModuleRegistry(),
-			$this->getServiceContainer()->getStatsdDataFactory(),
-			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
+			$this->getServiceContainer()->getStatsFactory(),
 			$growthExperimentsServices->getExperimentUserManager(),
 			$growthExperimentsServices->getMentorManager(),
 			// This would normally be wiki-powered config, but
 			// there is no need to test this
 			GlobalVarConfig::newInstance(),
 			$this->getServiceContainer()->getUserOptionsManager(),
-			$this->getServiceContainer()->getTitleFactory(),
-			$this->getServiceContainer()->getStatsFactory()
+			$this->getServiceContainer()->getTitleFactory()
 		);
 	}
 
