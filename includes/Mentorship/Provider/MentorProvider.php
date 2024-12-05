@@ -46,27 +46,6 @@ abstract class MentorProvider {
 	): Mentor;
 
 	/**
-	 * Get list of source Title objects
-	 *
-	 * A hook will run MentorProvider::invalidateCache() if it sees an edit made on any of those
-	 * pages.
-	 *
-	 * @internal To be used from MentorHooks only
-	 * @return Title[]
-	 */
-	public function getSourceTitles(): array {
-		return [];
-	}
-
-	/**
-	 * Invalidate the WAN cache
-	 *
-	 * @note Default implementation does not do anything.
-	 */
-	public function invalidateCache(): void {
-	}
-
-	/**
 	 * Checks if an user is a mentor (regardless of their auto-assignment status)
 	 * @param UserIdentity $user
 	 * @return bool

@@ -240,17 +240,6 @@ class MentorHooks implements
 	public function onPageSaveComplete(
 		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
 	) {
-		DeferredUpdates::addCallableUpdate( function () use ( $wikiPage ) {
-			$title = $wikiPage->getTitle();
-
-			$sourceTitles = $this->mentorProvider->getSourceTitles();
-			foreach ( $sourceTitles as $sourceTitle ) {
-				if ( $sourceTitle->equals( $title ) ) {
-					$this->mentorProvider->invalidateCache();
-					break;
-				}
-			}
-		} );
 		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
 			if ( $this->mentorStore->isMentee( $user ) ) {
 				$this->mentorStore->markMenteeAsActive( $user );
