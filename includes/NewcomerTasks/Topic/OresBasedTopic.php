@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializer;
 
 class OresBasedTopic extends Topic {
 
@@ -38,7 +38,7 @@ class OresBasedTopic extends Topic {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		return new OresBasedTopic( $json['id'], $json['groupId'], $json['oresTopics'] );
 	}
 

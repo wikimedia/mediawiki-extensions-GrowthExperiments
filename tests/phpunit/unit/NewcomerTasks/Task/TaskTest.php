@@ -38,7 +38,7 @@ class TaskTest extends MediaWikiUnitTestCase {
 		$task = new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) );
 		$topics = [ new Topic( 'a' ), new Topic( 'b' ), new Topic( 'c' ) ];
 		$task->setTopics( $topics );
-		$task2 = $codec->unserialize( $codec->serialize( $task ) );
+		$task2 = $codec->deserialize( $codec->serialize( $task ) );
 		$this->assertEquals( $task, $task2 );
 	}
 

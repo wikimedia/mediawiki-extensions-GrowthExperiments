@@ -14,7 +14,7 @@ class NullTaskTypeTest extends MediaWikiUnitTestCase {
 	public function testJsonSerialization() {
 		$codec = new JsonCodec();
 		$taskType = new NullTaskType( 'foo', 'bar' );
-		$taskType2 = $codec->unserialize( $codec->serialize( $taskType ) );
+		$taskType2 = $codec->deserialize( $codec->serialize( $taskType ) );
 		$this->assertEquals( $taskType, $taskType2 );
 	}
 

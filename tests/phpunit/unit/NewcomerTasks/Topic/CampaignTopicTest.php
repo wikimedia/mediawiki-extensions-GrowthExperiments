@@ -14,7 +14,7 @@ class CampaignTopicTest extends MediaWikiUnitTestCase {
 	public function testJsonSerialization() {
 		$codec = new JsonCodec();
 		$topic = new CampaignTopic( 'biology', 'science', 'hastemplate:Taxobox' );
-		$topic2 = $codec->unserialize( $codec->serialize( $topic ) );
+		$topic2 = $codec->deserialize( $codec->serialize( $topic ) );
 		$this->assertEquals( $topic, $topic2 );
 	}
 

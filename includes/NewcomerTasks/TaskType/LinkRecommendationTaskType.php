@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializer;
 use MessageLocalizer;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
@@ -260,7 +260,7 @@ class LinkRecommendationTaskType extends TaskType {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		$taskType = new LinkRecommendationTaskType(
 			$json['id'],
 			$json['difficulty'],

@@ -98,7 +98,7 @@ class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHa
 		}
 		$imageRecommendationArray = $apiResponse['query']['pages'][0]['growthimagesuggestiondata'][0];
 		// $imageRecommendationArray is a serialized ImageRecommendation; the nice thing to do here
-		// would be to just unserialize it, but ServiceImageRecommendationProvider / ApiHandler are
+		// would be to just deserialize it, but ServiceImageRecommendationProvider / ApiHandler are
 		// not structured right for that.
 
 		$imageData = [];

@@ -3,9 +3,9 @@
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
 use LogicException;
-use MediaWiki\Json\JsonUnserializable;
-use MediaWiki\Json\JsonUnserializableTrait;
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializable;
+use MediaWiki\Json\JsonDeserializableTrait;
+use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Message\Message;
 use MessageLocalizer;
 
@@ -15,9 +15,9 @@ use MessageLocalizer;
  * Topic objects should also contain all the configuration necessary for filtering
  * to that topic in TaskSuggester.
  */
-class Topic implements JsonUnserializable {
+class Topic implements JsonDeserializable {
 
-	use JsonUnserializableTrait;
+	use JsonDeserializableTrait;
 
 	/** @var string */
 	protected $id;
@@ -99,7 +99,7 @@ class Topic implements JsonUnserializable {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		return new static( $json['id'], $json['groupId'] );
 	}
 

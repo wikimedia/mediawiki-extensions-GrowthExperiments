@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Message\Message;
 use MessageLocalizer;
 
@@ -50,7 +50,7 @@ class CampaignTopic extends Topic {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		return new self( $json['id'], $json['searchExpression'] );
 	}
 

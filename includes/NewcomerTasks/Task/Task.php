@@ -5,9 +5,9 @@ namespace GrowthExperiments\NewcomerTasks\Task;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
-use MediaWiki\Json\JsonUnserializable;
-use MediaWiki\Json\JsonUnserializableTrait;
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializable;
+use MediaWiki\Json\JsonDeserializableTrait;
+use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleValue;
 
@@ -15,9 +15,9 @@ use MediaWiki\Title\TitleValue;
  * A single task recommendation.
  * A Task specifies a page and the type of the task to perform on it.
  */
-class Task implements JsonUnserializable {
+class Task implements JsonDeserializable {
 
-	use JsonUnserializableTrait;
+	use JsonDeserializableTrait;
 
 	/** @var TaskType */
 	private $taskType;
@@ -101,16 +101,16 @@ class Task implements JsonUnserializable {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
-		# T312589: In the future JsonCodec will take care of unserializing
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
+		# T312589: In the future JsonCodec will take care of deserializing
 		# the values in the $json array itself.
 		$taskType = $json['taskType'] instanceof TaskType ?
 			$json['taskType'] :
-			$unserializer->unserialize( $json['taskType'], TaskType::class );
+			$deserializer->deserialize( $json['taskType'], TaskType::class );
 		$title = new TitleValue( $json['title'][0], $json['title'][1] );
-		$topics = array_map( static function ( $topic ) use ( $unserializer ) {
+		$topics = array_map( static function ( $topic ) use ( $deserializer ) {
 			return $topic instanceof Topic ? $topic :
-				$unserializer->unserialize( $topic, Topic::class );
+				$deserializer->deserialize( $topic, Topic::class );
 		}, $json['topics'] );
 
 		$task = new static( $taskType, $title, $json['token'] ?? null );

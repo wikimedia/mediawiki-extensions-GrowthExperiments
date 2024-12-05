@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleValue;
 
@@ -51,7 +51,7 @@ class TemplateBasedTaskType extends TaskType {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		$templates = array_map( static function ( array $template ) {
 			return new TitleValue( $template[0], $template[1] );
 		}, $json['templates'] );

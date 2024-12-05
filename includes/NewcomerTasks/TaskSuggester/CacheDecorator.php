@@ -94,7 +94,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 				// deciding whether to return those contents or if they need to be regenerated.
 
 				if ( $oldValue !== false ) {
-					$oldValue = $this->unserialize( $oldValue );
+					$oldValue = $this->deserialize( $oldValue );
 				}
 
 				if ( $useCache
@@ -185,7 +185,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 			// callback comment for more on why.
 			[ 'minAsOf' => INF, 'version' => self::CACHE_VERSION ]
 		);
-		$result = $this->unserialize( $json );
+		$result = $this->deserialize( $json );
 
 		// Discard extra items when the method was called with $limit < DEFAULT_LIMIT,
 		// and run listeners.
@@ -229,16 +229,16 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 	}
 
 	/**
-	 * Unserialize a cached value. StatusValue is handled by PHP serialization so we just pass
+	 * Deserialize a cached value. StatusValue is handled by PHP serialization so we just pass
 	 * it through here.
 	 * @param string|StatusValue $value
 	 * @return TaskSet|StatusValue
 	 */
-	private function unserialize( $value ) {
+	private function deserialize( $value ) {
 		if ( $value instanceof StatusValue ) {
 			return $value;
 		} else {
-			return $this->jsonCodec->unserialize( $value, TaskSet::class );
+			return $this->jsonCodec->deserialize( $value, TaskSet::class );
 		}
 	}
 

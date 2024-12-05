@@ -14,7 +14,7 @@ class TaskSetFiltersTest extends MediaWikiUnitTestCase {
 	public function testJsonSerialization() {
 		$codec = new JsonCodec();
 		$taskSetFilters = new TaskSetFilters( [ 'x', 'y' ], [ 'z' ] );
-		$taskSetFilters2 = $codec->unserialize( $codec->serialize( $taskSetFilters ) );
+		$taskSetFilters2 = $codec->deserialize( $codec->serialize( $taskSetFilters ) );
 		$this->assertEquals( $taskSetFilters, $taskSetFilters2 );
 	}
 

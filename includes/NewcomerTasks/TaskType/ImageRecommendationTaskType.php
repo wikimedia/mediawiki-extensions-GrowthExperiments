@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Json\JsonDeserializer;
 
 class ImageRecommendationTaskType extends ImageRecommendationBaseTaskType {
 
@@ -17,7 +17,7 @@ class ImageRecommendationTaskType extends ImageRecommendationBaseTaskType {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
 		$taskType = new ImageRecommendationTaskType(
 			$json['id'],
 			$json['difficulty'],
