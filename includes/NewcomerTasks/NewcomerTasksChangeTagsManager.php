@@ -15,9 +15,11 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
+use MediaWiki\WikiMap\WikiMap;
 use StatusValue;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
+use Wikimedia\Stats\StatsFactory;
 
 class NewcomerTasksChangeTagsManager {
 
@@ -41,6 +43,7 @@ class NewcomerTasksChangeTagsManager {
 	private $user;
 
 	private ChangeTagsStore $changeTagsStore;
+	private StatsFactory $statsFactory;
 
 	/**
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -51,6 +54,7 @@ class NewcomerTasksChangeTagsManager {
 	 * @param IConnectionProvider $connectionProvider
 	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param ChangeTagsStore $changeTagsStore
+	 * @param StatsFactory $statsFactory
 	 * @param Config|null $config
 	 * @param UserIdentity|null $user
 	 * FIXME $config and $user should be mandatory and injected by a factory
@@ -64,6 +68,7 @@ class NewcomerTasksChangeTagsManager {
 		IConnectionProvider $connectionProvider,
 		UserIdentityUtils $userIdentityUtils,
 		ChangeTagsStore $changeTagsStore,
+		StatsFactory $statsFactory,
 		?Config $config = null,
 		?UserIdentity $user = null
 	) {
@@ -77,6 +82,7 @@ class NewcomerTasksChangeTagsManager {
 		$this->changeTagsStore = $changeTagsStore;
 		$this->config = $config;
 		$this->user = $user;
+		$this->statsFactory = $statsFactory;
 	}
 
 	/**
@@ -138,9 +144,17 @@ class NewcomerTasksChangeTagsManager {
 		);
 		// This is needed for non-VE edits.
 		// VE edits are incremented in the post-save VisualEditor hook.
-		$this->perDbNameStatsdDataFactory->increment(
-			'GrowthExperiments.NewcomerTask.' . $taskTypeId . '.Save'
-		);
+		$statsAction = 'Save';
+		$wiki = WikiMap::getCurrentWikiId();
+		$this->statsFactory
+			->withComponent( 'GrowthExperiments' )
+			->getCounter( 'newcomertask_total' )
+			->setLabel( 'taskType', $taskTypeId )
+			->setLabel( 'wiki', $wiki )
+			->setLabel( 'action', $statsAction )
+			->copyToStatsdAt( "$wiki.GrowthExperiments.NewcomerTask." . $taskTypeId . '.' . $statsAction )
+			->increment();
+
 		return StatusValue::newGood( $result );
 	}
 

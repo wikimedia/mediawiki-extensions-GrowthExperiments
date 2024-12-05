@@ -39,7 +39,8 @@ class SpecialHomepageBench extends GrowthExperimentsBench {
 			// there is no need to test this
 			GlobalVarConfig::newInstance(),
 			$userOptionManager,
-			$services->getTitleFactory()
+			$services->getTitleFactory(),
+			$services->getStatsFactory()
 		);
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$testUser = $services->getUserFactory()->newFromId( 1 );

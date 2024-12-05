@@ -98,6 +98,7 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
+use MediaWiki\WikiMap\WikiMap;
 use MessageLocalizer;
 use OOUI\ButtonWidget;
 use SearchEngine;
@@ -109,6 +110,7 @@ use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
+use Wikimedia\Stats\StatsFactory;
 use WikiPage;
 
 /**
@@ -182,6 +184,7 @@ class HomepageHooks implements
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
+	private StatsFactory $statsFactory;
 
 	/**
 	 * @param Config $config Uses PHP globals
@@ -206,6 +209,7 @@ class HomepageHooks implements
 	 * @param NewcomerTasksInfo $suggestionsInfo
 	 * @param UserImpactLookup $userImpactLookup
 	 * @param UserImpactStore $userImpactStore
+	 * @param StatsFactory $statsFactory
 	 */
 	public function __construct(
 		Config $config,
@@ -229,7 +233,8 @@ class HomepageHooks implements
 		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
 		NewcomerTasksInfo $suggestionsInfo,
 		UserImpactLookup $userImpactLookup,
-		UserImpactStore $userImpactStore
+		UserImpactStore $userImpactStore,
+		StatsFactory $statsFactory
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -253,6 +258,7 @@ class HomepageHooks implements
 		$this->suggestionsInfo = $suggestionsInfo;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->userImpactStore = $userImpactStore;
+		$this->statsFactory = $statsFactory;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -280,6 +286,7 @@ class HomepageHooks implements
 					'GrowthExperimentsCommunityConfig',
 					'UserOptionsManager',
 					'TitleFactory',
+					'StatsFactory',
 				]
 			];
 			if ( $pageViewInfoEnabled ) {
@@ -1669,9 +1676,14 @@ class HomepageHooks implements
 			} elseif ( $tag === SectionImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
 				$taskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
 			}
-			$this->perDbNameStatsdDataFactory->increment(
-				sprintf( 'GrowthExperiments.NewcomerTask.Reverted.%s', $taskType )
-			);
+			$wiki = WikiMap::getCurrentWikiId();
+			$this->statsFactory
+				->withComponent( 'GrowthExperiments' )
+				->getCounter( 'newcomertask_reverted_total' )
+				->setLabel( 'taskType', $taskType )
+				->setLabel( 'wiki', $wiki )
+				->copyToStatsdAt( sprintf( "$wiki.GrowthExperiments.NewcomerTask.Reverted.%s", $taskType ) )
+				->increment();
 		}
 	}
 }
