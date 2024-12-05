@@ -79,7 +79,7 @@ class ImportOresTopics extends Maintenance {
 		$this->addOption( 'pageList', 'Name of a file containing the list of pages to import topics for, '
 			. 'one title per line. When omitted, pages with no topics are selected randomly.', false, true );
 		$this->addOption( 'verbose', 'Use verbose output' );
-		$this->setBatchSize( 50 );
+		$this->setBatchSize( 20 );
 	}
 
 	public function execute() {
