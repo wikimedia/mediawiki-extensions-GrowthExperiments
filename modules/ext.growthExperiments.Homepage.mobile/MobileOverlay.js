@@ -20,9 +20,7 @@
 	function MobileOverlay( params ) {
 		Overlay.call( this,
 			Object.assign( {
-				className: 'overlay growthexperiments-homepage-container homepage-module-overlay' +
-					// Enable "Poor man's dark mode". Temporary workaround for T357699.
-					' notheme skin-invert'
+				className: 'overlay growthexperiments-homepage-container homepage-module-overlay'
 			}, params )
 		);
 	}
