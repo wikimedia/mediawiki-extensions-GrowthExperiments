@@ -18,7 +18,8 @@ use PHPUnit\Framework\MockObject\MockObject;
 use SearchEngine;
 use SearchEngineFactory;
 use StatusValue;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\Metrics\TimingMetric;
+use Wikimedia\Stats\StatsFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -44,7 +45,6 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	) {
 		$searchEngineFactory = $this->getMockSearchEngineFactory( $searchResults, $searchTerm,
 			$limit, $offset );
-
 		$suggester = new LocalSearchTaskSuggester(
 			$this->createMock( TaskTypeHandlerRegistry::class ),
 			$searchEngineFactory,
@@ -53,7 +53,7 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( LinkBatchFactory::class ),
 			[],
 			[],
-			$this->createMock( IBufferingStatsdDataFactory::class )
+			$this->getStatsFactory()
 		);
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 
@@ -160,4 +160,16 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		return $lookup;
 	}
 
+	private function getStatsFactory(): StatsFactory {
+		$stats = $this->createMock( StatsFactory::class );
+		$this->setService( 'StatsFactory', $stats );
+		$stats->method( 'withComponent' )->willReturnSelf();
+
+		$timing = $this->createMock( TimingMetric::class );
+		$timing->method( 'setLabel' )->willReturnSelf();
+		$timing->method( 'copyToStatsdAt' )->willReturnSelf();
+		$stats->method( 'getTiming' )->willReturn( $timing );
+
+		return $stats;
+	}
 }

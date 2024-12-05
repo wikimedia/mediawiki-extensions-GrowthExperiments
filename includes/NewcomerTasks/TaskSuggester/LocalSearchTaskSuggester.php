@@ -18,7 +18,7 @@ use MediaWiki\User\UserIdentity;
 use SearchEngine;
 use SearchEngineFactory;
 use StatusValue;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Suggest edits based on searching the wiki via SearchEngine.
@@ -28,8 +28,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	/** @var SearchEngineFactory */
 	private $searchEngineFactory;
 
-	/** @var IBufferingStatsdDataFactory */
-	private $statsdDataFactory;
+	private StatsFactory $statsFactory;
 
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
@@ -39,7 +38,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -49,12 +48,12 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		LinkBatchFactory $linkBatchFactory,
 		array $taskTypes,
 		array $topics,
-		IBufferingStatsdDataFactory $statsdDataFactory
+		StatsFactory $statsFactory
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
 			$linkBatchFactory, $taskTypes, $topics );
 		$this->searchEngineFactory = $searchEngineFactory;
-		$this->statsdDataFactory = $statsdDataFactory;
+		$this->statsFactory = $statsFactory->withComponent( 'GrowthExperiments' );
 	}
 
 	/** @inheritDoc */
@@ -67,9 +66,11 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	) {
 		$start = microtime( true );
 		$suggest = parent::suggest( $user, $taskSetFilters, $limit, $offset, $options );
-		$this->statsdDataFactory->timing(
-			'timing.growthExperiments.SearchTaskSuggester.suggest', microtime( true ) - $start
-		);
+		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
+			->setLabel( 'task_suggester', 'local' )
+			->setLabel( 'action', 'suggest' )
+			->copyToStatsdAt( "timing.growthExperiments.SearchTaskSuggester.suggest" )
+			->observe( microtime( true ) - $start );
 		return $suggest;
 	}
 
@@ -77,9 +78,11 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	public function filter( UserIdentity $user, TaskSet $taskSet ) {
 		$start = microtime( true );
 		$filter = parent::filter( $user, $taskSet );
-		$this->statsdDataFactory->timing(
-			'timing.growthExperiments.SearchTaskSuggester.filter', microtime( true ) - $start
-		);
+		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
+			->setLabel( 'task_suggester', 'local' )
+			->setLabel( 'action', 'filter' )
+			->copyToStatsdAt( "timing.growthExperiments.SearchTaskSuggester.filter" )
+			->observe( microtime( true ) - $start );
 		return $filter;
 	}
 
@@ -146,7 +149,11 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			'success' => $matches instanceof ISearchResultSet,
 			'elapsedTime' => $elapsed
 		] );
-		$this->statsdDataFactory->timing( 'timing.growthExperiments.LocalSearchTaskSuggester.search', $elapsed );
+		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
+			->setLabel( 'task_suggester', 'local' )
+			->setLabel( 'action', 'search' )
+			->copyToStatsdAt( "timing.growthExperiments.LocalSearchTaskSuggester.search" )
+			->observe( $elapsed );
 
 		return $matches;
 	}

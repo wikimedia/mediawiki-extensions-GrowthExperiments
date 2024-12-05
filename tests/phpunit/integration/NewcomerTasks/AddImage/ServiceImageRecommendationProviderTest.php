@@ -24,7 +24,8 @@ use MockTitleTrait;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\Metrics\TimingMetric;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider
@@ -84,7 +85,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$provider = new ServiceImageRecommendationProvider(
 			$titleFactory,
-			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$this->getStatsFactory(),
 			$apiHandler,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -133,7 +134,6 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider = $this->createMock(
 			ImageRecommendationMetadataProvider::class
 		);
-		$statsDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
 		$metadataProvider->method( 'getFileMetadata' )->willReturn( self::metadataFactory() );
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
@@ -154,6 +154,37 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			null,
 			$useTitle
 		);
+
+		$statsDataFactory = $this->createMock( StatsFactory::class );
+		$statsDataFactory->method( 'withComponent' )->willReturnSelf();
+		$timing = $this->createMock( TimingMetric::class );
+		$timing->method( 'setLabel' )->willReturnSelf();
+		$timing->method( 'copyToStatsdAt' )->willReturnSelf();
+		$timing->method( 'observe' )->willReturnSelf();
+		$statsDataFactory->method( 'getTiming' )->willReturn( $timing );
+
+		$expectedKeys = [
+			'get' => true,
+			'process_api_response_data' => true,
+		];
+		$timing->expects( $this->exactly( 2 ) )
+			->method( 'observe' )
+			->willReturnCallback( function ( $arg1 ) use ( &$expectedKeys ) {
+				$this->assertIsFloat( $arg1 );
+			} );
+		$timing->expects( $this->exactly( 2 ) )
+			->method( 'setLabel' )
+			->willReturnCallback( function ( $arg1, $arg2 ) use ( &$expectedKeys ) {
+				$this->assertSame( 'action', $arg1 );
+				$this->assertArrayHasKey( $arg2, $expectedKeys );
+				unset( $expectedKeys[$arg2] );
+			} );
+
+		$statsDataFactory->expects( $this->once() )
+			->method( 'getTiming' )
+			->with( "image_recommendation_provider_seconds" )
+			->willReturn( $timing );
+
 		$provider = new ServiceImageRecommendationProvider(
 			$titleFactory,
 			$statsDataFactory,
@@ -161,17 +192,6 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
 		);
-
-		$expectedKeys = [
-			'timing.growthExperiments.imageRecommendationProvider.get' => true,
-			'timing.growthExperiments.imageRecommendationProvider.processApiResponseData' => true,
-		];
-		$statsDataFactory->expects( $this->exactly( 2 ) )
-			->method( 'timing' )
-			->willReturnCallback( function ( $key ) use ( &$expectedKeys ): void {
-				$this->assertArrayHasKey( $key, $expectedKeys );
-				unset( $expectedKeys[$key] );
-			} );
 
 		$provider->get( new TitleValue( NS_MAIN, '15' ), $taskType );
 	}
@@ -205,7 +225,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$provider = new ServiceImageRecommendationProvider(
 			$titleFactory,
-			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$this->getStatsFactory(),
 			$apiHandler,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -250,7 +270,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$provider = new ServiceImageRecommendationProvider(
 			$this->getTitleFactory(),
-			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$this->getStatsFactory(),
 			$apiHandler,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -300,7 +320,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$provider = new ServiceImageRecommendationProvider(
 			$this->getTitleFactory(),
-			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$this->getStatsFactory(),
 			$apiHandler,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -699,4 +719,17 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		return $apiHandler->getSuggestionDataFromApiResponse( $data, $taskType );
 	}
 
+	private function getStatsFactory() {
+		$stats = $this->createMock( StatsFactory::class );
+		$this->setService( 'StatsFactory', $stats );
+		$stats->method( 'withComponent' )->willReturnSelf();
+
+		$timing = $this->createMock( TimingMetric::class );
+		$timing->method( 'setLabel' )->willReturnSelf();
+		$timing->method( 'copyToStatsdAt' )->willReturnSelf();
+		$timing->method( 'observe' )->willReturnSelf();
+		$stats->method( 'getTiming' )->willReturn( $timing );
+
+		return $stats;
+	}
 }

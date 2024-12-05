@@ -252,7 +252,7 @@ return [
 		return new CacheBackedImageRecommendationProvider(
 			$services->getMainWANObjectCache(),
 			$growthServices->getImageRecommendationProviderUncached(),
-			$services->getStatsdDataFactory()
+			$services->getStatsFactory()
 		);
 	},
 
@@ -262,7 +262,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new ServiceImageRecommendationProvider(
 			$services->getTitleFactory(),
-			$services->getStatsdDataFactory(),
+			$services->getStatsFactory(),
 			$growthServices->getImageRecommendationApiHandler(),
 			$growthServices->getImageRecommendationMetadataProvider(),
 			$growthServices->getAddImageSubmissionHandler(),
@@ -881,7 +881,7 @@ return [
 				$growthServices->getNewcomerTasksUserOptionsLookup(),
 				$services->getSearchEngineFactory(),
 				$services->getLinkBatchFactory(),
-				$services->getStatsdDataFactory()
+				$services->getStatsFactory()
 			);
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
 				$taskSuggesterFactory,
@@ -894,7 +894,7 @@ return [
 							$services->getMainWANObjectCache(),
 							new TaskSetListener(
 								$services->getMainWANObjectCache(),
-								$services->getStatsdDataFactory()
+								$services->getStatsFactory()
 							),
 							$services->getJsonCodec()
 						],
