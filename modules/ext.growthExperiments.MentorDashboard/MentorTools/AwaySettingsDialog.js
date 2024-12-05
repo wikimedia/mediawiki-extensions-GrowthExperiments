@@ -1,6 +1,9 @@
 ( function () {
 	'use strict';
 
+	// Keep in sync with MentorStatusManager::MAX_BACK_IN_DAYS
+	const MAX_DAYS_AWAY = 365;
+
 	function AwaySettingsDialog( config ) {
 		AwaySettingsDialog.super.call( this, config );
 	}
@@ -26,7 +29,7 @@
 		this.awayForDays = new OO.ui.NumberInputWidget( {
 			showButtons: false,
 			min: 0,
-			max: 365,
+			max: MAX_DAYS_AWAY,
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label' ),
 			step: 1,
 			required: true
@@ -67,10 +70,17 @@
 			this.emit( 'cancel' );
 		} else if ( action === 'save' ) {
 			return new OO.ui.Process( () => {
+				const awayForDays = Number( dialog.awayForDays.getValue() );
+				if ( awayForDays > MAX_DAYS_AWAY ) {
+					mw.notify(
+						mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh', MAX_DAYS_AWAY ),
+						{ type: 'error' }
+					);
+					return;
+				}
+
 				const backAtTimestamp = new Date();
-				backAtTimestamp.setDate(
-					backAtTimestamp.getDate() + Number( dialog.awayForDays.getValue() )
-				);
+				backAtTimestamp.setDate( backAtTimestamp.getDate() + awayForDays );
 
 				return new mw.Api().postWithToken( 'csrf', {
 					action: 'growthmanagementorlist',
