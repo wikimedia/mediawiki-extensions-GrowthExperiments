@@ -16,14 +16,12 @@ use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Notifications\AttributeManager;
 use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
-use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LogLevel;
@@ -34,7 +32,6 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class MentorHooks implements
 	LocalUserCreatedHook,
 	AuthChangeFormFieldsHook,
-	PageSaveCompleteHook,
 	ListDefinedTagsHook,
 	ChangeTagsListActiveHook,
 	FormatAutocommentsHook,
@@ -232,19 +229,6 @@ class MentorHooks implements
 				'default' => $forceMentor,
 			];
 		}
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function onPageSaveComplete(
-		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
-	) {
-		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-			if ( $this->mentorStore->isMentee( $user ) ) {
-				$this->mentorStore->markMenteeAsActive( $user );
-			}
-		} );
 	}
 
 	/**
