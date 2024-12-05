@@ -2,10 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
-use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -18,11 +15,6 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class MentorHooksTest extends MediaWikiIntegrationTestCase {
 	use CommunityConfigurationTestHelpers;
-
-	protected function setUp(): void {
-		parent::setUp();
-		$this->setMainCache( CACHE_NONE );
-	}
 
 	private function getUserByRegistrationAndEditcount(
 		$timestamp,
@@ -88,29 +80,5 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 			[ 4, 10 ],
 			[ 10, 4 ],
 		];
-	}
-
-	/**
-	 * @covers ::onPageSaveComplete
-	 */
-	public function testMarkMenteeAsActive() {
-		$mentorStore = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
-			->getMentorStore();
-
-		$mentor = $this->getTestSysop()->getUserIdentity();
-		$menteeTestUser = $this->getMutableTestUser();
-		$mentorStore->setMentorForUser( $menteeTestUser->getUserIdentity(), $mentor, MentorStore::ROLE_PRIMARY );
-		$mentorStore->markMenteeAsInactive( $menteeTestUser->getUserIdentity() );
-		$this->assertFalse( $mentorStore->isMenteeActive( $menteeTestUser->getUserIdentity() ) );
-
-		$this->editPage(
-			Title::newFromText( 'Sandbox' ),
-			'test',
-			'',
-			NS_MAIN,
-			$menteeTestUser->getAuthority()
-		);
-
-		$this->assertTrue( $mentorStore->isMenteeActive( $menteeTestUser->getUserIdentity() ) );
 	}
 }

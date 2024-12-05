@@ -15,7 +15,7 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:GrowthExperiments",
 	"requires": {
-		"MediaWiki": ">= 1.43.0",
+		"MediaWiki": ">= 1.44.0",
 		"extensions": {
 			"VisualEditor": "*"
 		}
@@ -579,7 +579,6 @@
 		"PageSaveComplete": [
 			"config",
 			"homepage",
-			"mentor",
 			"impact",
 			"personalizedpraise"
 		],
@@ -646,6 +645,13 @@
 			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"
 		]
 	},
+	"DomainEventSubscribers": [
+		{
+			"events": [ "PageUpdated" ],
+			"class": "GrowthExperiments\\Mentorship\\MediaWikiEventSubscribers\\PageUpdatedSubscriber",
+			"services": [ "GrowthExperimentsMentorStore" ]
+		}
+	],
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "GrowthExperiments/modules"
