@@ -197,10 +197,8 @@ class RevalidateLinkRecommendations extends Maintenance {
 	 */
 	private function regenerateRecommendation( LinkRecommendation $linkRecommendation ): Status {
 		$title = $this->titleFactory->newFromLinkTarget( $linkRecommendation->getTitle() );
-		// Deleting from the search index is instantaneous, adding to the search index takes a few
-		// hours, so in theory the script could deplete the existing pool temporarily. In practice
-		// fetching a new candidate takes about a second, so the script shouldn't progess fast
-		// enough for that to be a problem.
+		// Deletion and addition from/to the search index should be instantaneous (subject to the
+		// Search's SLO).
 		$this->linkRecommendationHelper->deleteLinkRecommendation( $title->toPageIdentity(), true );
 		try {
 			$force = $this->hasOption( 'force' );
