@@ -60,21 +60,20 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" morelikethis:"Einstein|Physics"' ] );
 
 		$oresQueries = $searchStrategy->getQueries( [ $taskType ], [ $oresTopic1, $oresTopic2 ], [] );
-		$this->assertCount( 2, $oresQueries );
+		$this->assertCount( 1, $oresQueries );
 		$this->assertTaskTypeInQueries( $oresQueries, [ 'copyedit' ] );
-		$this->assertTopicsInQueries( $oresQueries, [ 'art', 'science' ] );
+		$this->assertTopicsInMultiTopicQueries( $oresQueries, [ 'art', 'science' ] );
 		$this->assertQueryStrings( $oresQueries, [
-			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:painting|drawing',
-			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:physics|biology'
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:painting|drawing|physics|biology',
 		] );
 
 		$restrictedQueries = $searchStrategy->getQueries( [ $taskType ],
 			[ $oresTopic1, $oresTopic2 ], [ 1, 2, 3 ] );
-		$this->assertCount( 2, $restrictedQueries );
-		$this->assertTopicsInQueries( $restrictedQueries, [ 'art', 'science' ] );
+		$this->assertCount( 1, $restrictedQueries );
+		$this->assertTopicsInMultiTopicQueries( $restrictedQueries, [ 'art', 'science' ] );
 		$this->assertQueryStrings( $restrictedQueries, [
-			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:painting|drawing pageid:1|2|3',
-			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:physics|biology pageid:1|2|3'
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:painting|drawing|physics|biology ' .
+			'pageid:1|2|3',
 		] );
 
 		$searchExpressionBasedTopicQueries = $searchStrategy->getQueries( [ $taskType ],
@@ -180,17 +179,24 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	private function assertTaskTypeInQueries( $queries, $taskTypes ) {
-		[ $query1, $query2 ] = array_values( $queries );
-		foreach ( $taskTypes as $id ) {
-			if ( $query1->getTaskType()->getId() === $id ) {
-				$this->assertSame( $query1->getTaskType()->getId(), $id );
-			} elseif ( $query2->getTaskType()->getId() === $id ) {
-				$this->assertSame( $query2->getTaskType()->getId(), $id );
-			} else {
-				$this->fail( "$id not found in query." );
-			}
+	private function assertTopicsInMultiTopicQueries( $queries, $topicIds ) {
+		foreach ( $queries as $query ) {
+			$actualTopicIds = array_reduce( array_values( $query->getTopics() ), static function ( $acc, $topic ) {
+				$acc[] = $topic->getId();
+				return $acc;
+			}, [] );
+			$diff = array_diff( $actualTopicIds, $topicIds );
+			$this->assertSame( [], $diff );
 		}
+	}
+
+	private function assertTaskTypeInQueries( $queries, $taskTypes ) {
+		$actualTaskTypesIds = array_reduce( array_values( $queries ), static function ( $acc, $query ) {
+			$acc[] = $query->getTaskType()->getId();
+			return $acc;
+		}, [] );
+		$diff = array_diff( $actualTaskTypesIds, $taskTypes );
+		$this->assertSame( [], $diff );
 	}
 
 	/**
