@@ -3,7 +3,8 @@
 		"authors": [
 			"Bluehill",
 			"MemphisA5",
-			"Ykhwong"
+			"Ykhwong",
+			"Suleiman the Magnificent Television"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "멘토 대시보드",
@@ -167,8 +168,8 @@
 	"growthexperiments-manage-mentors-return-back": "멘토 목록으로 [[Special:ManageMentors|돌아갈]] 수 있습니다.",
 	"growthexperiments-manage-mentors-summary-add-self-no-reason": "자기 자신을 멘토로 추가함",
 	"growthexperiments-manage-mentors-summary-add-self-with-reason": "자기 자신을 멘토로 추가함: $2",
-	"growthexperiments-manage-mentors-summary-change-self-no-reason": "멘토십 옵션 변경",
-	"growthexperiments-manage-mentors-summary-change-self-with-reason": "멘토십 옵션 변경: $2",
+	"growthexperiments-manage-mentors-summary-change-self-no-reason": "멘토 역할 옵션 변경",
+	"growthexperiments-manage-mentors-summary-change-self-with-reason": "멘토 역할 옵션 변경: $2",
 	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "$1님을 멘토에서 제거함",
 	"growthexperiments-manage-mentors-summary-remove-admin-with-reason": "$1님을 멘토에서 제거함: $2",
 	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "멘토로 재할당",
