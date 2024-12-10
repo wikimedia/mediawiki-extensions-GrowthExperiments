@@ -127,7 +127,7 @@ class StructuredTaskSurfacer {
 				} );
 				highlightObserver.observe( highlightNode );
 
-				const paragraphWithWord = this.articleTextManipulator.findFirstParagraphContainingText(
+				const paragraphWithWord = this.articleTextManipulator.findFirstContentElementContainingText(
 					wikitextRootElement,
 					textToLink,
 				);
