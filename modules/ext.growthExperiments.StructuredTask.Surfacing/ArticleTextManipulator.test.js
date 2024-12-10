@@ -7,7 +7,7 @@ describe( 'ArticleTextManipulator', () => {
 	describe( 'findFirstParagraphContainingText', () => {
 		it( 'returns null if string is not found', () => {
 			const sut = new ArticleTextManipulator();
-			const result = sut.findFirstParagraphContainingText( document.createElement( 'p' ), 'foo' );
+			const result = sut.findFirstContentElementContainingText( document.createElement( 'p' ), 'foo' );
 			expect( result ).toBeNull();
 		} );
 
@@ -23,8 +23,26 @@ describe( 'ArticleTextManipulator', () => {
 			rootElement.appendChild( paragraph1 );
 			rootElement.appendChild( paragraph2 );
 			rootElement.appendChild( paragraph3 );
-			const result = sut.findFirstParagraphContainingText( rootElement, 'Donec' );
+			const result = sut.findFirstContentElementContainingText( rootElement, 'Donec' );
 			expect( result ).toBe( paragraph2 );
+		} );
+
+		it( 'returns also list items if they have matching text content', () => {
+			const sut = new ArticleTextManipulator();
+			const rootElement = document.createElement( 'div' );
+			const listWrapper = document.createElement( 'ul' );
+			rootElement.appendChild( listWrapper );
+			const listItem1 = document.createElement( 'li' );
+			const listItem2 = document.createElement( 'li' );
+			const listItem3 = document.createElement( 'li' );
+			listItem1.textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu mauris';
+			listItem2.textContent = 'Suspendisse potenti. Donec pharetra, quam sit amet mollis dapibus';
+			listItem3.textContent = 'Aliquam feugiat metus ut neque vehicula commodo. Donec non libero tortor.';
+			listWrapper.appendChild( listItem1 );
+			listWrapper.appendChild( listItem2 );
+			listWrapper.appendChild( listItem3 );
+			const result = sut.findFirstContentElementContainingText( rootElement, 'Donec' );
+			expect( result ).toBe( listItem2 );
 		} );
 	} );
 
