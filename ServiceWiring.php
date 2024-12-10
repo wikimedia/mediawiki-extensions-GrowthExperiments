@@ -1144,7 +1144,7 @@ return [
 			$services->getUserEditTracker(),
 			$services->getTitleFormatter(),
 			$services->getTitleFactory(),
-			$services->getStatsdDataFactory(),
+			$services->getStatsFactory(),
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
