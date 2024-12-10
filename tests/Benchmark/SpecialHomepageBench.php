@@ -31,16 +31,14 @@ class SpecialHomepageBench extends GrowthExperimentsBench {
 		$userOptionManager = $services->getUserOptionsManager();
 		$this->homepage = new SpecialHomepage(
 			$growthExperimentsServices->getHomepageModuleRegistry(),
-			$services->getStatsdDataFactory(),
-			$services->getPerDbNameStatsdDataFactory(),
+			$services->getStatsFactory(),
 			$growthExperimentsServices->getExperimentUserManager(),
 			$growthExperimentsServices->getMentorManager(),
 			// This would normally be wiki-powered config, but
 			// there is no need to test this
 			GlobalVarConfig::newInstance(),
 			$userOptionManager,
-			$services->getTitleFactory(),
-			$services->getStatsFactory()
+			$services->getTitleFactory()
 		);
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$testUser = $services->getUserFactory()->newFromId( 1 );

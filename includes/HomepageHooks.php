@@ -279,14 +279,12 @@ class HomepageHooks implements
 				'class' => SpecialHomepage::class,
 				'services' => [
 					'GrowthExperimentsHomepageModuleRegistry',
-					'StatsdDataFactory',
-					'PerDbNameStatsdDataFactory',
+					'StatsFactory',
 					'GrowthExperimentsExperimentUserManager',
 					'GrowthExperimentsMentorManager',
 					'GrowthExperimentsCommunityConfig',
 					'UserOptionsManager',
 					'TitleFactory',
-					'StatsFactory',
 				]
 			];
 			if ( $pageViewInfoEnabled ) {
