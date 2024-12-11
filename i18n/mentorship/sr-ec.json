@@ -169,6 +169,7 @@
 	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "Додат $1 за ментора: $2",
 	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Додавање себе као ментора",
 	"growthexperiments-manage-mentors-summary-add-self-with-reason": "Додајем себе као ментора: $2",
+	"growthexperiments-manage-mentors-summary-change-self-no-reason": "Промена сопствених менторских опција",
 	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "Уклоњен $1 као ментор",
 	"growthexperiments-manage-mentors-summary-remove-admin-with-reason": "Уклоњен $1 као ментор: $2",
 	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "Одустао од менторисања",
