@@ -235,7 +235,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			$services->getUserIdentityUtils(),
 			$services->getNamespaceInfo(),
 			$services->getTitleFactory(),
-			$services->getPerDbNameStatsdDataFactory(),
+			$services->getStatsFactory(),
 			$services->getJobQueueGroup(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getGrowthExperimentsCampaignConfig(),
@@ -249,8 +249,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			$growthServices->getNewcomerTasksChangeTagsManager(),
 			$growthServices->getSuggestionsInfo(),
 			$growthServices->getUserImpactLookup(),
-			$growthServices->getUserImpactStore(),
-			$services->getStatsFactory()
+			$growthServices->getUserImpactStore()
 		);
 	}
 

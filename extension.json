@@ -359,7 +359,7 @@
 				"UserIdentityUtils",
 				"NamespaceInfo",
 				"TitleFactory",
-				"PerDbNameStatsdDataFactory",
+				"StatsFactory",
 				"JobQueueGroup",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsCampaignConfig",
@@ -373,8 +373,7 @@
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
 				"GrowthExperimentsSuggestionsInfo",
 				"GrowthExperimentsUserImpactLookup_Computed",
-				"GrowthExperimentsUserImpactStore",
-				"StatsFactory"
+				"GrowthExperimentsUserImpactStore"
 			]
 		},
 		"impact": {
