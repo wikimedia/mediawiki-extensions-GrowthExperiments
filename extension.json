@@ -485,7 +485,7 @@
 				"TitleFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
-				"PerDbNameStatsdDataFactory",
+				"StatsFactory",
 				"UserIdentityUtils"
 			]
 		},
