@@ -318,12 +318,12 @@ class FixLinkRecommendationData extends Maintenance {
 		$statsFactory = $this->getServiceContainer()->getStatsFactory();
 		$statsFactory
 			->withComponent( 'GrowthExperiments' )
-			->getGauge( 'link_recommendation_dangling_entries' )
+			->getCounter( 'link_recommendation_dangling_entries' )
 			->setLabel( 'type', $type )
 			->setLabel( 'wiki', $wiki )
 			->setLabel( 'fix-word', $fixWord )
 			->copyToStatsdAt( "$wiki.growthexperiments.$fixWord.link-recommendation.$type" )
-			->set( $count );
+			->incrementBy( $count );
 	}
 
 }
