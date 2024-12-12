@@ -18,9 +18,10 @@ use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
+use MediaWiki\WikiMap\WikiMap;
 use OutOfBoundsException;
 use UnexpectedValueException;
-use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Hook handlers for hooks defined in VisualEditor.
@@ -40,8 +41,8 @@ class VisualEditorHooks implements
 	private $configurationLoader;
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
-	/** @var PrefixingStatsdDataFactoryProxy */
-	private $perDbNameStatsdDataFactory;
+
+	private StatsFactory $statsFactory;
 	/** @var UserIdentityUtils */
 	private $userIdentityUtils;
 
@@ -49,20 +50,20 @@ class VisualEditorHooks implements
 	 * @param TitleFactory $titleFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @param UserIdentityUtils $userIdentityUtils
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		ConfigurationLoader $configurationLoader,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
+		StatsFactory $statsFactory,
 		UserIdentityUtils $userIdentityUtils
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
-		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->statsFactory = $statsFactory;
 		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
@@ -151,9 +152,14 @@ class VisualEditorHooks implements
 			$apiResponse['gelogid'] = $status->getValue()['logId'] ?? null;
 			$apiResponse['gewarnings'][] = $status->getValue()['warnings'] ?? '';
 			if ( $newRevId ) {
-				$this->perDbNameStatsdDataFactory->increment(
-					'GrowthExperiments.NewcomerTask.' . $taskType->getId() . '.Save'
-				);
+				$wiki = WikiMap::getCurrentWikiId();
+				$this->statsFactory->withComponent( 'GrowthExperiments' )
+					->getCounter( 'newcomer_task_save_total' )
+					->setLabel( 'wiki', $wiki )
+					->setLabel( 'task_type_id', $taskType->getId() )
+					->copyToStatsdAt(
+					$wiki . '.GrowthExperiments.NewcomerTask.' . $taskType->getId() . '.Save'
+				)->increment();
 			}
 		} else {
 			// FIXME expose error formatter to hook so this can be handled better
