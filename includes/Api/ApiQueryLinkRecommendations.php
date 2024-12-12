@@ -2,16 +2,20 @@
 
 namespace GrowthExperiments\Api;
 
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\Config\Config;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\WikiMap\WikiMap;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Stats\StatsFactory;
 
 /**
@@ -20,6 +24,7 @@ use Wikimedia\Stats\StatsFactory;
 class ApiQueryLinkRecommendations extends ApiQueryBase {
 
 	private LinkRecommendationStore $linkRecommendationStore;
+	private LinkRecommendationUpdater $linkRecommendationUpdater;
 	private TitleFactory $titleFactory;
 	private StatsFactory $statsFactory;
 	private Config $wikiConfig;
@@ -30,6 +35,7 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 	 * @param ApiQuery $query The API query object
 	 * @param string $moduleName The name of this module
 	 * @param LinkRecommendationStore $linkRecommendationStore The store for link recommendations
+	 * @param LinkRecommendationUpdater $linkRecommendationUpdater
 	 * @param TitleFactory $titleFactory Factory for creating Title objects
 	 * @param StatsFactory $statsFactory
 	 * @param Config $wikiConfig Configuration object
@@ -38,12 +44,14 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 		ApiQuery $query,
 		string $moduleName,
 		LinkRecommendationStore $linkRecommendationStore,
+		LinkRecommendationUpdater $linkRecommendationUpdater,
 		TitleFactory $titleFactory,
 		StatsFactory $statsFactory,
 		Config $wikiConfig
 	) {
 		parent::__construct( $query, $moduleName, 'lr' );
 		$this->linkRecommendationStore = $linkRecommendationStore;
+		$this->linkRecommendationUpdater = $linkRecommendationUpdater;
 		$this->titleFactory = $titleFactory;
 		$this->statsFactory = $statsFactory;
 		$this->wikiConfig = $wikiConfig;
@@ -59,6 +67,9 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 		}
 
 		$params = $this->extractRequestParams();
+		/**
+		 * @var int $pageId
+		 */
 		$pageId = $params[ 'pageid' ];
 
 		$user = $this->getUser();
@@ -74,6 +85,11 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 		$linkRecommendation = $this->linkRecommendationStore->getByPageId( $pageId );
 		if ( !$linkRecommendation ) {
 			$this->incrementCounter( 'no_preexisting_recommendation_found' );
+
+			// This is not yet production ready, see T382251
+			if ( $this->wikiConfig->get( 'GESurfacingStructuredTasksReadModeUpdateEnabled' ) ) {
+				$linkRecommendation = $this->tryLoadingMoreLinkRecommendations( $title );
+			}
 		} else {
 			$this->incrementCounter( 'preexisting_recommendations_found' );
 		}
@@ -124,6 +140,27 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 			'gesuggestededit' => 1,
 			'getasktype' => LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
 		] );
+	}
+
+	private function tryLoadingMoreLinkRecommendations( Title $title ): ?LinkRecommendation {
+		$processingCandidateStartTimeSeconds = microtime( true );
+		$updateStatus = $this->linkRecommendationUpdater->processCandidate( $title, false );
+		if ( $updateStatus->isOK() ) {
+			$this->incrementCounter( 'new_recommendations_added' );
+			$linkRecommendation = $this->linkRecommendationStore->getByPageId(
+				$title->getArticleID(),
+				IDBAccessObject::READ_LATEST
+			);
+		} else {
+			$linkRecommendation = null;
+			$this->incrementCounter( 'no_recommendations_added' );
+			$this->addMessagesFromStatus( $updateStatus );
+		}
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getTiming( 'surfacing_link_recommendation_api_processing_candidate_seconds' )
+			->setLabel( 'wiki', WikiMap::getCurrentWikiId() )
+			->observe( microtime( true ) - $processingCandidateStartTimeSeconds );
+		return $linkRecommendation;
 	}
 
 	/**
