@@ -59,8 +59,16 @@ class NewcomersByMentorMetric implements IMetric {
 
 	/**
 	 * @inheritDoc
+	 * @deprecated Will be removed when StatsD support is dropped. Use getStatsLibKey() instead.
 	 */
 	public function getStatsdKey(): string {
 		return 'GrowthExperiments.Mentorship.NewcomerByMentors';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getStatsLibKey(): string {
+		return 'mentorship_newcomers_by_mentor';
 	}
 }
