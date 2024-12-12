@@ -145,15 +145,15 @@ class ListTaskCounts extends Maintenance {
 	 */
 	private function reportTaskCounts( array $taskCounts, array $taskTypeCounts ): void {
 		$wiki = WikiMap::getCurrentWikiId();
-		$statsFactory = $this->getServiceContainer()->getStatsFactory();
+		$counter = $this->getServiceContainer()->getStatsFactory()
+			->withComponent( 'GrowthExperiments' )
+			->getCounter( 'tasktype_count' );
 		foreach ( $taskTypeCounts as $taskTypeId => $taskTypeCount ) {
-			$statsFactory
-				->withComponent( 'GrowthExperiments' )
-				->getGauge( 'tasktype_count' )
+			$counter
 				->setLabel( 'wiki', $wiki )
 				->setLabel( 'tasktype', $taskTypeId )
 				->copyToStatsdAt( "$wiki.growthexperiments.tasktypecount.$taskTypeId" )
-				->set( $taskTypeCount );
+				->incrementBy( $taskTypeCount );
 		}
 	}
 
