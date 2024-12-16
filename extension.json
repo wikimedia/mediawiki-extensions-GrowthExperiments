@@ -189,6 +189,7 @@
 			"services": [
 				"GrowthExperimentsLinkRecommendationStore",
 				"TitleFactory",
+				"StatsFactory",
 				"GrowthExperimentsConfig"
 			]
 		}
