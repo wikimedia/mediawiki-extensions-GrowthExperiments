@@ -22,5 +22,9 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Tajuk rencana tugasan berkaitan fungsi pengesyoran imej",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "Nama fail yang tidak ditetapkan awalan untuk pengesyoran imej, cth <kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "Tajuk bahagian untuk pengesyoran imej, cth <kbd>Sejarah</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Indeks berasas 1 untuk fungsi bahagian yang dicadangkan imej, cth <kbd>3</kbd>"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Indeks berasas 1 untuk fungsi bahagian yang dicadangkan imej, cth <kbd>3</kbd>",
+	"apihelp-query+linkrecommendations-summary": "Dapatkan pengesyoran pautan untuk halaman tertentu",
+	"apihelp-query+linkrecommendations-example-1": "Dapatkan pengesyoran pautan untuk halaman dengan ID 123",
+	"apihelp-query+linkrecommendations-example-2": "Dapatkan sehingga 5 pengesyoran pautan untuk halaman dengan ID 456",
+	"apihelp-query+linkrecommendations-param-pageid": "ID halaman untuk mendapatkan pengesyoran pautan."
 }
