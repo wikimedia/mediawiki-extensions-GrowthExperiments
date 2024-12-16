@@ -188,6 +188,7 @@
 			"class": "GrowthExperiments\\Api\\ApiQueryLinkRecommendations",
 			"services": [
 				"GrowthExperimentsLinkRecommendationStore",
+				"GrowthExperimentsLinkRecommendationUpdater",
 				"TitleFactory",
 				"StatsFactory",
 				"GrowthExperimentsConfig"
@@ -2985,6 +2986,10 @@
 		},
 		"GESurfacingStructuredTasksEnabled": {
 			"description": "Feature flag to enable surfacing structured tasks within or alongside VisualEditor.",
+			"value": false
+		},
+		"GESurfacingStructuredTasksReadModeUpdateEnabled": {
+			"description": "Feature flag to enable requesting link-recommendations in read mode.",
 			"value": false
 		}
 	},
