@@ -109,7 +109,6 @@ use stdClass;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 use Wikimedia\Stats\StatsFactory;
 use WikiPage;
 
@@ -172,7 +171,6 @@ class HomepageHooks implements
 	private LinkRecommendationStore $linkRecommendationStore;
 	private LinkRecommendationHelper $linkRecommendationHelper;
 	private NewcomerTasksInfo $suggestionsInfo;
-	private PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory;
 	private JobQueueGroup $jobQueueGroup;
 	private SpecialPageFactory $specialPageFactory;
 	private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager;
@@ -194,7 +192,7 @@ class HomepageHooks implements
 	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param NamespaceInfo $namespaceInfo
 	 * @param TitleFactory $titleFactory
-	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @param JobQueueGroup $jobQueueGroup
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param CampaignConfig $campaignConfig
@@ -209,7 +207,6 @@ class HomepageHooks implements
 	 * @param NewcomerTasksInfo $suggestionsInfo
 	 * @param UserImpactLookup $userImpactLookup
 	 * @param UserImpactStore $userImpactStore
-	 * @param StatsFactory $statsFactory
 	 */
 	public function __construct(
 		Config $config,
@@ -219,7 +216,7 @@ class HomepageHooks implements
 		UserIdentityUtils $userIdentityUtils,
 		NamespaceInfo $namespaceInfo,
 		TitleFactory $titleFactory,
-		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
+		StatsFactory $statsFactory,
 		JobQueueGroup $jobQueueGroup,
 		ConfigurationLoader $configurationLoader,
 		CampaignConfig $campaignConfig,
@@ -233,8 +230,7 @@ class HomepageHooks implements
 		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
 		NewcomerTasksInfo $suggestionsInfo,
 		UserImpactLookup $userImpactLookup,
-		UserImpactStore $userImpactStore,
-		StatsFactory $statsFactory
+		UserImpactStore $userImpactStore
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -243,7 +239,7 @@ class HomepageHooks implements
 		$this->userIdentityUtils = $userIdentityUtils;
 		$this->namespaceInfo = $namespaceInfo;
 		$this->titleFactory = $titleFactory;
-		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->statsFactory = $statsFactory;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->configurationLoader = $configurationLoader;
 		$this->campaignConfig = $campaignConfig;
@@ -258,7 +254,6 @@ class HomepageHooks implements
 		$this->suggestionsInfo = $suggestionsInfo;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->userImpactStore = $userImpactStore;
-		$this->statsFactory = $statsFactory;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -837,12 +832,18 @@ class HomepageHooks implements
 
 		// Enable the homepage for a percentage of non-autocreated users.
 		$enablePercentage = $this->config->get( 'GEHomepageNewAccountEnablePercentage' );
+		$wiki = WikiMap::getCurrentWikiId();
 		if (
 			$growthOptInOptOutOverride === self::GROWTH_FORCE_OPTIN ||
 			$geForceVariant !== null ||
 			rand( 0, 99 ) < $enablePercentage
 		) {
-			$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.UsersOptedIntoGrowthFeatures' );
+			$this->statsFactory
+				->withComponent( 'GrowthExperiments' )
+				->getCounter( 'users_opted_into_growth_features_total' )
+				->setLabel( 'wiki', $wiki )
+				->copyToStatsdAt( $wiki . '.GrowthExperiments.UsersOptedIntoGrowthFeatures' )
+				->increment();
 			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_ENABLE, 1 );
 			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_PT_LINK, 1 );
 			// Default option is that the user has seen the tours/notices (so we don't prompt
@@ -877,7 +878,7 @@ class HomepageHooks implements
 			// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
 			// not guaranteed. This is necessary so the getOption call to the USER_PREFERENCE has a chance to retrieve
 			// a valid central user id. See also hook in ExperimentsHooks.php determining which a variant to assign
-			DeferredUpdates::addCallableUpdate( function () use ( $user, $geForceVariant ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $user, $geForceVariant, $wiki ) {
 				// Get the variant assigned by ExperimentUserDefaultsManager
 				$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
 				// Maybe override variant with query parameter
@@ -889,7 +890,13 @@ class HomepageHooks implements
 					$this->experimentUserManager->setVariant( $user, $variant );
 					$this->userOptionsManager->saveOptions( $user );
 				}
-				$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.UserVariant.' . $variant );
+				$this->statsFactory
+					->withComponent( 'GrowthExperiments' )
+					->getCounter( 'user_variant_total' )
+					->setLabel( 'wiki', $wiki )
+					->setLabel( 'variant', $variant )
+					->copyToStatsdAt( $wiki . '.GrowthExperiments.UserVariant.' . $variant )
+					->increment();
 			} );
 
 			// Place an empty user impact object in the database table cache, to avoid
@@ -945,7 +952,12 @@ class HomepageHooks implements
 				}
 			}
 		} else {
-			$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.UsersNotOptedIntoGrowthFeatures' );
+			$this->statsFactory
+				->withComponent( 'GrowthExperiments' )
+				->getCounter( 'users_not_opted_into_growth_features_total' )
+				->setLabel( 'wiki', $wiki )
+				->copyToStatsdAt( $wiki . '.GrowthExperiments.UsersNotOptedIntoGrowthFeatures' )
+				->increment();
 		}
 	}
 
