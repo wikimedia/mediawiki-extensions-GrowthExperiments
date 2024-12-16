@@ -33,7 +33,7 @@ use StatusValue;
 use Wikimedia\Rdbms\DBAccessObjectUtils;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDBAccessObject;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 class ComputedUserImpactLookup implements UserImpactLookup {
 
@@ -69,7 +69,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	private UserEditTracker $userEditTracker;
 	private TitleFormatter $titleFormatter;
 	private TitleFactory $titleFactory;
-	private IBufferingStatsdDataFactory $statsdDataFactory;
+	private StatsFactory $statsFactory;
 	private ?LoggerInterface $logger;
 	private ?PageViewService $pageViewService;
 	private ?ThanksQueryHelper $thanksQueryHelper;
@@ -84,7 +84,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @param UserEditTracker $userEditTracker
 	 * @param TitleFormatter $titleFormatter
 	 * @param TitleFactory $titleFactory
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param LoggerInterface|null $loggerFactory
@@ -99,7 +99,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		UserEditTracker $userEditTracker,
 		TitleFormatter $titleFormatter,
 		TitleFactory $titleFactory,
-		IBufferingStatsdDataFactory $statsdDataFactory,
+		StatsFactory $statsFactory,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
 		?LoggerInterface $loggerFactory,
@@ -113,7 +113,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$this->userEditTracker = $userEditTracker;
 		$this->titleFormatter = $titleFormatter;
 		$this->titleFactory = $titleFactory;
-		$this->statsdDataFactory = $statsdDataFactory;
+		$this->statsFactory = $statsFactory;
 		$this->logger = $loggerFactory ?? new NullLogger();
 		$this->pageViewService = $pageViewService;
 		$this->thanksQueryHelper = $thanksQueryHelper;
@@ -195,9 +195,11 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() ),
 			$this->userEditTracker->getUserEditCount( $user )
 		);
-		$this->statsdDataFactory->timing(
-			'timing.growthExperiments.ComputedUserImpactLookup.getExpensiveUserImpact', microtime( true ) - $start
-		);
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getTiming( 'computed_user_impact_lookup_expensive_seconds' )
+			->copyToStatsdAt(
+				'timing.growthExperiments.ComputedUserImpactLookup.getExpensiveUserImpact' )
+			->observe( microtime( true ) - $start );
 		return $expensiveUserImpact;
 	}
 
@@ -512,10 +514,11 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				Status::wrap( $status )->getWikiText( false, false, 'en' )
 			);
 		} else {
-			$this->statsdDataFactory->updateCount(
-				'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle',
-				$status->failCount
-			);
+			$this->statsFactory->withComponent( 'GrowthExperiments' )
+				->getCounter( 'computed_user_impact_lookup_errors_total' )
+				->setLabel( 'type', 'pvi_cached_error_title' )
+				->copyToStatsdAt( 'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle' )
+				->incrementBy( $status->failCount );
 		}
 	}
 

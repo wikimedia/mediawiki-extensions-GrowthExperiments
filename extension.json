@@ -303,7 +303,7 @@
 				"GrowthExperimentsUserImpactStore",
 				"GrowthExperimentsUserImpactLookup",
 				"GrowthExperimentsUserImpactFormatter",
-				"StatsdDataFactory",
+				"StatsFactory",
 				"JobQueueGroup",
 				"UserFactory"
 			]

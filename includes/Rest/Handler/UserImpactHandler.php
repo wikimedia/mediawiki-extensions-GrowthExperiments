@@ -16,7 +16,7 @@ use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\ParamValidator\ParamValidator;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Handler for POST and GET requests /growthexperiments/v0/user-impact/{user} endpoint.
@@ -29,7 +29,7 @@ class UserImpactHandler extends SimpleHandler {
 	private UserImpactStore $userImpactStore;
 	private UserImpactLookup $userImpactLookup;
 	private UserImpactFormatter $userImpactFormatter;
-	private IBufferingStatsdDataFactory $statsdDataFactory;
+	private StatsFactory $statsFactory;
 	private JobQueueGroup $jobQueueGroup;
 	private UserFactory $userFactory;
 
@@ -37,7 +37,7 @@ class UserImpactHandler extends SimpleHandler {
 	 * @param UserImpactStore $userImpactStore
 	 * @param UserImpactLookup $userImpactLookup
 	 * @param UserImpactFormatter $userImpactFormatter
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @param JobQueueGroup $jobQueueGroup
 	 * @param UserFactory $userFactory
 	 */
@@ -45,14 +45,14 @@ class UserImpactHandler extends SimpleHandler {
 		UserImpactStore $userImpactStore,
 		UserImpactLookup $userImpactLookup,
 		UserImpactFormatter $userImpactFormatter,
-		IBufferingStatsdDataFactory $statsdDataFactory,
+		StatsFactory $statsFactory,
 		JobQueueGroup $jobQueueGroup,
 		UserFactory $userFactory
 	) {
 		$this->userImpactStore = $userImpactStore;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->userImpactFormatter = $userImpactFormatter;
-		$this->statsdDataFactory = $statsdDataFactory;
+		$this->statsFactory = $statsFactory;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->userFactory = $userFactory;
 	}
@@ -72,9 +72,12 @@ class UserImpactHandler extends SimpleHandler {
 			$pageviewsUrlDisplayLanguageCode = $validParams[ 'lang' ];
 		}
 		$formattedJsonData = $this->userImpactFormatter->format( $userImpact, $pageviewsUrlDisplayLanguageCode );
-		$this->statsdDataFactory->timing(
-			'timing.growthExperiments.UserImpactHandler.run', microtime( true ) - $start
-		);
+
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getTiming( 'user_impact_handler_run_seconds' )
+			->copyToStatsdAt( 'timing.growthExperiments.UserImpactHandler.run' )
+			->observe( microtime( true ) - $start );
+
 		return $formattedJsonData;
 	}
 
@@ -90,33 +93,51 @@ class UserImpactHandler extends SimpleHandler {
 			$cachedUserImpact = $this->userImpactStore->getExpensiveUserImpact( $user );
 		}
 		if ( $cachedUserImpact ) {
-			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.Hit' );
+			$this->statsFactory->withComponent( 'GrowthExperiments' )
+				->getCounter( 'user_impact_handler_cache_total' )
+				->setLabel( 'status', 'hit' )
+				->copyToStatsdAt( 'GrowthExperiments.UserImpactHandler.Cache.Hit' )
+				->increment();
 		}
 
 		if ( $cachedUserImpact && $cachedUserImpact->isPageViewDataStale() ) {
 			// Page view data is stale; we will attempt to recalculate it.
 			$userImpact = null;
-			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.HitStalePageViewData' );
+			$this->statsFactory->withComponent( 'GrowthExperiments' )
+				->getCounter( 'user_impact_handler_cache_total' )
+				->setLabel( 'status', 'hit_stale' )
+				->copyToStatsdAt( 'GrowthExperiments.UserImpactHandler.Cache.HitStalePageViewData' )
+				->increment();
 		} else {
 			$userImpact = $cachedUserImpact;
 		}
 
 		if ( !$userImpact ) {
-			$this->statsdDataFactory->increment( 'GrowthExperiments.UserImpactHandler.Cache.Miss' );
+			$this->statsFactory->withComponent( 'GrowthExperiments' )
+				->getCounter( 'user_impact_handler_cache_total' )
+				->setLabel( 'status', 'miss' )
+				->copyToStatsdAt( 'GrowthExperiments.UserImpactHandler.Cache.Miss' )
+				->increment();
 			// Rate limit check.
 			$performingUser = $this->userFactory->newFromUserIdentity( $this->getAuthority()->getUser() );
 			if ( $performingUser->pingLimiter( 'growthexperimentsuserimpacthandler' ) ) {
 				if ( $cachedUserImpact ) {
-					$this->statsdDataFactory->increment(
-						'GrowthExperiments.UserImpactHandler.PingLimiterTripped.StaleImpactData'
-					);
+					$this->statsFactory->withComponent( 'GrowthExperiments' )
+						->getCounter( 'user_impact_handler_ping_limiter_total' )
+						->setLabel( 'status', 'stale_data' )
+						->copyToStatsdAt(
+							'GrowthExperiments.UserImpactHandler.PingLimiterTripped.StaleImpactData' )
+						->increment();
 					// Performing user is over the rate limit for requesting data for other users, but we have stale
 					// data so just return that, rather than nothing.
 					return $cachedUserImpact;
 				} else {
-					$this->statsdDataFactory->increment(
-						'GrowthExperiments.UserImpactHandler.PingLimiterTripped.NoData'
-					);
+					$this->statsFactory->withComponent( 'GrowthExperiments' )
+						->getCounter( 'user_impact_handler_ping_limiter_total' )
+						->setLabel( 'status', 'no_data' )
+						->copyToStatsdAt(
+							'GrowthExperiments.UserImpactHandler.PingLimiterTripped.NoData' )
+						->increment();
 					throw new HttpException( 'Too many requests to refresh user impact data', 429 );
 				}
 			}
