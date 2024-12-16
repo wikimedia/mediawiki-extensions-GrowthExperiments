@@ -10,7 +10,9 @@ use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\Config\Config;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\WikiMap\WikiMap;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * API module for retrieving link recommendations for a specific page.
@@ -19,6 +21,7 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 
 	private LinkRecommendationStore $linkRecommendationStore;
 	private TitleFactory $titleFactory;
+	private StatsFactory $statsFactory;
 	private Config $wikiConfig;
 
 	/**
@@ -28,6 +31,7 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 	 * @param string $moduleName The name of this module
 	 * @param LinkRecommendationStore $linkRecommendationStore The store for link recommendations
 	 * @param TitleFactory $titleFactory Factory for creating Title objects
+	 * @param StatsFactory $statsFactory
 	 * @param Config $wikiConfig Configuration object
 	 */
 	public function __construct(
@@ -35,11 +39,13 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 		string $moduleName,
 		LinkRecommendationStore $linkRecommendationStore,
 		TitleFactory $titleFactory,
+		StatsFactory $statsFactory,
 		Config $wikiConfig
 	) {
 		parent::__construct( $query, $moduleName, 'lr' );
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->titleFactory = $titleFactory;
+		$this->statsFactory = $statsFactory;
 		$this->wikiConfig = $wikiConfig;
 	}
 
@@ -66,6 +72,11 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 		}
 
 		$linkRecommendation = $this->linkRecommendationStore->getByPageId( $pageId );
+		if ( !$linkRecommendation ) {
+			$this->incrementCounter( 'no_preexisting_recommendation_found' );
+		} else {
+			$this->incrementCounter( 'preexisting_recommendations_found' );
+		}
 
 		$result = $this->getResult();
 		$path = [ 'query', $this->getModuleName() ];
@@ -91,6 +102,15 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 
 		$result->addValue( $path, 'recommendations', $recommendations );
 		$result->addValue( $path, 'taskURL', $this->getTaskUrl( $pageId ) );
+	}
+
+	private function incrementCounter( string $labelForEventToBeCounted ): void {
+		$wiki = WikiMap::getCurrentWikiId();
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'surfacing_link_recommendation_api_total' )
+			->setLabel( 'wiki', $wiki )
+			->setLabel( 'event', $labelForEventToBeCounted )
+			->increment();
 	}
 
 	/**
