@@ -41,7 +41,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 				$titleFactory,
 				$mentorManager,
 				$permissionManager,
-				$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
+				$this->getServiceContainer()->getStatsFactory(),
 				ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 				ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 				$context,

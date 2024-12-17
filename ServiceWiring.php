@@ -820,7 +820,7 @@ return [
 			$growthServices->getMentorManager(),
 			$services->getPermissionManager(),
 			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' ),
-			$services->getPerDbNameStatsdDataFactory(),
+			$services->getStatsFactory(),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' )
 		);

@@ -9,7 +9,7 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
 use UserNotLoggedIn;
 use Wikimedia\Assert\Assert;
-use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Factory class for selecting the right question poster based on where the questions should go
@@ -42,8 +42,8 @@ class QuestionPosterFactory {
 	/** @var bool */
 	private $helpDeskPostOnTop;
 
-	/** @var PrefixingStatsdDataFactoryProxy */
-	private $perDbNameStatsdDataFactory;
+	/** @var StatsFactory */
+	private $statsFactory;
 
 	private bool $confirmEditInstalled;
 	private bool $flowInstalled;
@@ -55,7 +55,7 @@ class QuestionPosterFactory {
 	 * @param PermissionManager $permissionManager
 	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
 	 *   (as opposed to the bottom). Only affects wikitext pages.
-	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
+	 * @param statsFactory $statsFactory
 	 * @param bool $confirmEditInstalled
 	 * @param bool $flowInstalled
 	 */
@@ -65,7 +65,7 @@ class QuestionPosterFactory {
 		MentorManager $mentorManager,
 		PermissionManager $permissionManager,
 		bool $helpDeskPostOnTop,
-		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
+		StatsFactory $statsFactory,
 		bool $confirmEditInstalled,
 		bool $flowInstalled
 	) {
@@ -74,7 +74,7 @@ class QuestionPosterFactory {
 		$this->mentorManager = $mentorManager;
 		$this->permissionManager = $permissionManager;
 		$this->helpDeskPostOnTop = $helpDeskPostOnTop;
-		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->statsFactory = $statsFactory;
 		$this->confirmEditInstalled = $confirmEditInstalled;
 		$this->flowInstalled = $flowInstalled;
 	}
@@ -107,7 +107,7 @@ class QuestionPosterFactory {
 				$this->wikiPageFactory,
 				$this->titleFactory,
 				$this->permissionManager,
-				$this->perDbNameStatsdDataFactory,
+				$this->statsFactory,
 				$this->confirmEditInstalled,
 				$this->flowInstalled,
 				$context,
@@ -122,7 +122,7 @@ class QuestionPosterFactory {
 				$this->titleFactory,
 				$this->mentorManager,
 				$this->permissionManager,
-				$this->perDbNameStatsdDataFactory,
+				$this->statsFactory,
 				$this->confirmEditInstalled,
 				$this->flowInstalled,
 				$context,
@@ -135,7 +135,7 @@ class QuestionPosterFactory {
 				$this->titleFactory,
 				$this->mentorManager,
 				$this->permissionManager,
-				$this->perDbNameStatsdDataFactory,
+				$this->statsFactory,
 				$this->confirmEditInstalled,
 				$this->flowInstalled,
 				$context,
