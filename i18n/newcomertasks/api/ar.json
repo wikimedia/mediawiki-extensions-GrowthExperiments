@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Drii10291",
-			"Dyolf77 (WMF)"
+			"Dyolf77 (WMF)",
+			"Meno25"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "{{GENDER:|تحصّل|تحصّلي}} على الاقتراحات الملائمة للوافدين الجدد",
@@ -46,5 +47,7 @@
 	"growthexperiments-addimage-feedback-revid-nonexistent": "لم يتم العثور على المراجعة المحددة في <var>editRevId</var>.",
 	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "المراجعة المحددة في <var>editRevId</var> تنتمي إلى صفحة مختلفة.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": " هل يجب وصل '$1'؟",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "قم بمراجعة بعض الروابط المقترحة وتحسين شبكة المعلومات في ويكيبيديا."
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "قم بمراجعة بعض الروابط المقترحة وتحسين شبكة المعلومات في ويكيبيديا.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "نعم",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "لا"
 }
