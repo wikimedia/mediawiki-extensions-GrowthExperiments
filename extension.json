@@ -598,11 +598,6 @@
 		"ResourceLoaderGetConfigVars": "variant",
 		"ResourceLoaderRegisterModules": "tour",
 		"SpecialContributionsBeforeMainOutput": "homepage",
-		"SearchDataForIndex": {
-			"handler": "homepage",
-			"deprecated": true
-		},
-		"SearchDataForIndex2": "homepage",
 		"SidebarBeforeOutput": "homepage",
 		"SiteNoticeAfter": "homepage",
 		"SkinAddFooterLinks": "variant",
@@ -2939,10 +2934,6 @@
 		"GELinkRecommendationServiceWikiIdMasquerade": {
 			"description": "The wiki ID to use in requests to the link recommendation service. Used for developer setups.",
 			"value": null
-		},
-		"GETempLinkRecommendationSwitchTagClearHook": {
-			"description": "Temporary config to switch clearing LinkRecommendations from the onSearchDataForIndex hooks to onPageSaveComplete",
-			"value": false
 		},
 		"GEStructuredTaskRejectionReasonTextInputEnabled": {
 			"description": "Whether free text input should be shown when prompting the user for reasons why a suggestion was rejected.",
