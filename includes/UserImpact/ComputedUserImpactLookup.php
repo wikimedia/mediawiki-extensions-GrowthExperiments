@@ -12,7 +12,6 @@ use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Extension\Thanks\ThanksQueryHelper;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\NameTableAccessException;
@@ -72,6 +71,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	private TitleFactory $titleFactory;
 	private StatsFactory $statsFactory;
 	private ?LoggerInterface $logger;
+	private ?PageImages $pageImages;
 	private ?PageViewService $pageViewService;
 	private ?ThanksQueryHelper $thanksQueryHelper;
 	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
@@ -89,6 +89,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param LoggerInterface|null $loggerFactory
+	 * @param PageImages|null $pageImages
 	 * @param PageViewService|null $pageViewService
 	 * @param ThanksQueryHelper|null $thanksQueryHelper
 	 */
@@ -104,6 +105,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
 		?LoggerInterface $loggerFactory,
+		?PageImages $pageImages,
 		?PageViewService $pageViewService,
 		?ThanksQueryHelper $thanksQueryHelper
 	) {
@@ -116,6 +118,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$this->titleFactory = $titleFactory;
 		$this->statsFactory = $statsFactory;
 		$this->logger = $loggerFactory ?? new NullLogger();
+		$this->pageImages = $pageImages;
 		$this->pageViewService = $pageViewService;
 		$this->thanksQueryHelper = $thanksQueryHelper;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
@@ -555,11 +558,11 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @return ?string
 	 */
 	private function getImage( Title $title ): ?string {
-		if ( !ExtensionRegistry::getInstance()->isLoaded( 'PageImages' ) ) {
+		if ( !$this->pageImages ) {
 			return null;
 		}
 
-		$imageFile = PageImages::getPageImage( $title );
+		$imageFile = $this->pageImages->getImage( $title );
 		if ( $imageFile ) {
 			$ratio = $imageFile->getWidth() / $imageFile->getHeight();
 			$options = [
