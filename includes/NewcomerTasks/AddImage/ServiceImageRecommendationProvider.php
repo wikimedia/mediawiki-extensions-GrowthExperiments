@@ -15,7 +15,7 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use StatusValue;
 use Wikimedia\Assert\Assert;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Provides image recommendations via the Image Suggestion API.
@@ -28,8 +28,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/** @var TitleFactory */
 	private $titleFactory;
 
-	/** @var IBufferingStatsdDataFactory */
-	private $statsdDataFactory;
+	private StatsFactory $statsFactory;
 
 	/** @var ImageRecommendationApiHandler */
 	private $apiHandler;
@@ -48,7 +47,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 	/**
 	 * @param TitleFactory $titleFactory
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @param ImageRecommendationApiHandler $apiHandler
 	 * @param ImageRecommendationMetadataProvider $metadataProvider Image metadata provider
 	 * @param AddImageSubmissionHandler $imageSubmissionHandler
@@ -58,7 +57,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
-		IBufferingStatsdDataFactory $statsdDataFactory,
+		StatsFactory $statsFactory,
 		ImageRecommendationApiHandler $apiHandler,
 		ImageRecommendationMetadataProvider $metadataProvider,
 		AddImageSubmissionHandler $imageSubmissionHandler,
@@ -66,7 +65,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		int $maxSuggestionsToProcess = 1
 	) {
 		$this->titleFactory = $titleFactory;
-		$this->statsdDataFactory = $statsdDataFactory;
+		$this->statsFactory = $statsFactory->withComponent( 'GrowthExperiments' );
 		$this->apiHandler = $apiHandler;
 		$this->metadataProvider = $metadataProvider;
 		$this->imageSubmissionHandler = $imageSubmissionHandler;
@@ -101,10 +100,10 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$startTime = microtime( true );
 		$status = $request->execute();
 
-		$this->statsdDataFactory->timing(
-			'timing.growthExperiments.imageRecommendationProvider.get',
-			microtime( true ) - $startTime
-		);
+		$timing = $this->statsFactory->getTiming( 'image_recommendation_provider_seconds' );
+		$timing->setLabel( 'action', 'get' )
+			->copyToStatsdAt( "timing.growthExperiments.imageRecommendationProvider.get" )
+			->observe( microtime( true ) - $startTime );
 
 		if ( !$status->isOK() && $request->getStatus() < 400 ) {
 			return $status;
@@ -143,10 +142,12 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			$this->maxSuggestionsToProcess
 		);
 
-		$this->statsdDataFactory->timing(
-			'timing.growthExperiments.imageRecommendationProvider.processApiResponseData',
-			microtime( true ) - $startTime
-		);
+		$timing
+			->setLabel( 'action', 'process_api_response_data' )
+			->copyToStatsdAt(
+				"timing.growthExperiments.imageRecommendationProvider.processApiResponseData"
+			)
+			->observe( microtime( true ) - $startTime );
 
 		return $responseData;
 	}

@@ -8,7 +8,7 @@ use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 use Wikimedia\Assert\Assert;
 use Wikimedia\ObjectCache\WANObjectCache;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Get image recommendation data from cache if possible; fall back to service provider otherwise.
@@ -24,22 +24,21 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 	/** @var ImageRecommendationProvider */
 	private $imageRecommendationProvider;
 
-	/** @var IBufferingStatsdDataFactory */
-	private $statsdDataFactory;
+	private StatsFactory $statsFactory;
 
 	/**
 	 * @param WANObjectCache $cache
 	 * @param ImageRecommendationProvider $imageRecommendationProvider
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 */
 	public function __construct(
 		WANObjectCache $cache,
 		ImageRecommendationProvider $imageRecommendationProvider,
-		IBufferingStatsdDataFactory $statsdDataFactory
+		StatsFactory $statsFactory
 	) {
 		$this->cache = $cache;
 		$this->imageRecommendationProvider = $imageRecommendationProvider;
-		$this->statsdDataFactory = $statsdDataFactory;
+		$this->statsFactory = $statsFactory;
 	}
 
 	/** @inheritDoc */
@@ -51,7 +50,7 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 			$taskType,
 			$title,
 			__METHOD__,
-			$this->statsdDataFactory
+			$this->statsFactory
 		);
 	}
 
@@ -61,7 +60,7 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 	 * @param TaskType $taskType
 	 * @param LinkTarget $title
 	 * @param string $fname The context in which this method is called. Used for instrumenting cache misses.
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @return false|mixed
 	 */
 	public static function getWithSetCallback(
@@ -70,21 +69,27 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 		TaskType $taskType,
 		LinkTarget $title,
 		string $fname,
-		IBufferingStatsdDataFactory $statsdDataFactory
+		StatsFactory $statsFactory
 	) {
 		return $cache->getWithSetCallback(
 			self::makeKey( $cache, $taskType->getId(), $title->getDBkey() ),
-			// The recommendation won't change, but other metadata might and caching for longer might be
-			// problematic if e.g. the image got vandalized.
+			// The recommendation won't change, but other metadata might and caching
+			// for longer might be problematic if e.g. the image got vandalized.
 			$cache::TTL_MINUTE * 5,
 			static function ( $oldValue, &$ttl ) use (
-				$title, $taskType, $imageRecommendationProvider, $cache, $fname, $statsdDataFactory
+				$title, $taskType, $imageRecommendationProvider, $cache, $fname, $statsFactory
 			) {
 				// This is a cache miss. That is expected when TaskSetListener->run calls the method, because we're
 				// warming the cache. We want to instrument cache misses when we get here from the ::get method,
 				// because that's called in BeforePageDisplay where we expect to have a cached result.
 				if ( $fname === __CLASS__ . '::get' ) {
-					$statsdDataFactory->increment( 'GrowthExperiments.CacheBackedImageRecommendationProvider.miss' );
+					$statsFactory->withComponent( 'GrowthExperiments' )
+						->getCounter( 'cache_backed_image_recommendation_provider_total' )
+						->setLabel( 'action', 'miss' )
+						->copyToStatsdAt(
+							"GrowthExperiments.CacheBackedImageRecommendationProvider.miss"
+						)
+						->increment();
 				}
 
 				$response = $imageRecommendationProvider->get( $title, $taskType );
