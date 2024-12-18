@@ -2,42 +2,34 @@
 
 namespace GrowthExperiments;
 
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\Options\Hook\ConditionalDefaultOptionsAddConditionHook;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserIdentityUtils;
 
 class ExperimentsHooks implements ConditionalDefaultOptionsAddConditionHook {
 
 	private ExperimentUserDefaultsManager $experimentsManager;
-	private UserIdentityUtils $userIdentityUtils;
 
-	public function __construct(
-		ExperimentUserDefaultsManager $experimentsManager, UserIdentityUtils $userIdentityUtils
-	) {
+	public function __construct( ExperimentUserDefaultsManager $experimentsManager ) {
 		$this->experimentsManager = $experimentsManager;
-		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
+	/**
+	 * Register additional conditions to be evaluated by ConditionalDefaultsLookup. CUCOND_BUCKET_BY_USER_ID
+	 * uses central user IDs as opposed to CUCOND_BUCKET_BY_LOCAL_USER_ID which uses local users.
+	 */
 	public function onConditionalDefaultOptionsAddCondition( array &$extraConditions ): void {
 		$experimentsManager = $this->experimentsManager;
-		$userIdentityUtils = $this->userIdentityUtils;
 		$extraConditions[ ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_USER_ID ] = static function (
 			UserIdentity $user, array $conditionArguments
-		) use ( $experimentsManager, $userIdentityUtils ) {
-			// Avoid assigning variant for anon and temporary users, T380294
-			if ( !$user->isRegistered() || $userIdentityUtils->isTemp( $user ) ) {
-				LoggerFactory::getInstance( 'GrowthExperiments' )
-					->debug( 'Suspicious evaluation of unamed user in ExperimentsHooks closure', [
-						'exception' => new \RuntimeException,
-						'userName' => $user->getName(),
-						'trace' => \debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS )
-					] );
-
-				return false;
-			}
+		) use ( $experimentsManager ) {
 			$experimentName = array_shift( $conditionArguments );
-			return $experimentsManager->shouldAssignBucket( $user, $experimentName, $conditionArguments );
+			return $experimentsManager->shouldAssignGlobalBucket( $user, $experimentName, $conditionArguments );
+		};
+		$extraConditions[ ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID ] = static function (
+			UserIdentity $user, array $conditionArguments
+		) use ( $experimentsManager ) {
+			$experimentName = array_shift( $conditionArguments );
+			return $experimentsManager->shouldAssignLocalBucket( $user, $experimentName, $conditionArguments );
 		};
 	}
 }
