@@ -22,6 +22,7 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWiki\Utils\UrlUtils;
+use MediaWiki\WikiMap\WikiMap;
 use MWExceptionHandler;
 use Psr\Log\LogLevel;
 use RuntimeException;
@@ -172,10 +173,17 @@ class Util {
 	 * @see ::STATSD_INCREMENTABLE_ERROR_MESSAGES
 	 */
 	public static function logStatus( StatusValue $status ) {
-		$statsdDataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
+		$statsFactory = MediaWikiServices::getInstance()->getStatsFactory();
 		foreach ( self::STATSD_INCREMENTABLE_ERROR_MESSAGES as $type => $message ) {
 			if ( $status->hasMessage( $message ) ) {
-				$statsdDataFactory->increment( "GrowthExperiments.$type.$message" );
+				$wiki = WikiMap::getCurrentWikiId();
+				$statsFactory->withComponent( 'GrowthExperiments' )
+					->getCounter( 'growthexperiments_errors' )
+					->setLabel( 'type', $type )
+					->setLabel( 'message', $message )
+					->setLabel( 'wiki', $wiki )
+					->copyToStatsdAt( "$wiki.GrowthExperiments.$type.$message" )
+					->increment();
 				break;
 			}
 		}
