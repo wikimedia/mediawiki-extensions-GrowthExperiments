@@ -16,7 +16,6 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Config\HashConfig;
@@ -40,6 +39,7 @@ use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
+use Wikimedia\Stats\StatsFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -158,7 +158,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$userOptionsLookupMock,
 			$linkRecommendationFilter,
 			$imageRecommendationFilter,
-			$this->createMock( StatsdDataFactoryInterface::class )
+			$this->createMock( StatsFactory::class )
 		) extends SuggestedEdits {
 
 			public function resetTaskCache(

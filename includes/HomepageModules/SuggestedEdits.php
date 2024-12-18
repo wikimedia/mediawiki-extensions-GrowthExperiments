@@ -21,7 +21,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
-use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -34,6 +33,7 @@ use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonGroupWidget;
 use OOUI\ButtonWidget;
 use OOUI\Exception;
@@ -43,6 +43,7 @@ use OOUI\Tag;
 use RuntimeException;
 use StatusValue;
 use Wikimedia\Message\MessageParam;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Homepage module that displays a list of recommended tasks.
@@ -140,7 +141,7 @@ class SuggestedEdits extends BaseModule {
 
 	private CampaignConfig $campaignConfig;
 
-	private StatsdDataFactoryInterface $perDbNameStatsdDataFactory;
+	private StatsFactory $statsFactory;
 
 	/**
 	 * @param IContextSource $context
@@ -156,6 +157,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param LinkRecommendationFilter $linkRecommendationFilter
 	 * @param ImageRecommendationFilter $imageRecommendationFilter
+	 * @param StatsFactory $statsFactory
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -171,7 +173,7 @@ class SuggestedEdits extends BaseModule {
 		UserOptionsLookup $userOptionsLookup,
 		LinkRecommendationFilter $linkRecommendationFilter,
 		ImageRecommendationFilter $imageRecommendationFilter,
-		StatsdDataFactoryInterface $perDbNameStatsdDataFactory
+		StatsFactory $statsFactory
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
 		$this->pageViewService = $pageViewService;
@@ -184,7 +186,7 @@ class SuggestedEdits extends BaseModule {
 		$this->linkRecommendationFilter = $linkRecommendationFilter;
 		$this->imageRecommendationFilter = $imageRecommendationFilter;
 		$this->campaignConfig = $campaignConfig;
-		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
+		$this->statsFactory = $statsFactory;
 	}
 
 	/** @inheritDoc */
@@ -349,12 +351,21 @@ class SuggestedEdits extends BaseModule {
 
 			return;
 		}
-		$this->perDbNameStatsdDataFactory->increment( implode( '.', [
-			'growthExperiments.suggestedEdits',
-			( $mode === self::RENDER_DESKTOP ? 'desktop' : 'mobile' ),
-			'queue',
-			$status,
-		] ) );
+		$wiki = WikiMap::getCurrentWikiId();
+		$platform = ( $mode === self::RENDER_DESKTOP ? 'desktop' : 'mobile' );
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'suggested_edits_queue_total' )
+			->setLabel( 'wiki', $wiki )
+			->setLabel( 'platform', $platform )
+			->setLabel( 'status', $status )
+			->copyToStatsdAt( implode( '.', [
+				$wiki,
+				'growthExperiments.suggestedEdits',
+				$platform,
+				'queue',
+				$status,
+			] ) )
+			->increment();
 	}
 
 	/** @inheritDoc */
