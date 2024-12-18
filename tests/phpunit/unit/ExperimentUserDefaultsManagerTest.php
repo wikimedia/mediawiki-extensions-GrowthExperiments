@@ -39,10 +39,9 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 
 		// Simulate conditional defaults execution
 		foreach ( $users as $user ) {
-			$ctx = [];
 			foreach ( $bucketConfig as $bucket ) {
 				[ $variant, $args ] = $bucket;
-				if ( $manager->shouldAssignBucket( $user, $args[1], array_slice( $args, 2 ), $ctx ) ) {
+				if ( $manager->shouldAssignBucket( $user, $args[1], array_slice( $args, 2 ) ) ) {
 					$results[ $variant ]++;
 					break;
 				}
