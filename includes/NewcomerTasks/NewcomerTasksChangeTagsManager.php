@@ -18,7 +18,6 @@ use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\WikiMap\WikiMap;
 use StatusValue;
 use Wikimedia\Rdbms\IConnectionProvider;
-use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 use Wikimedia\Stats\StatsFactory;
 
 class NewcomerTasksChangeTagsManager {
@@ -31,8 +30,6 @@ class NewcomerTasksChangeTagsManager {
 	private $taskTypeHandlerRegistry;
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
-	/** @var PrefixingStatsdDataFactoryProxy */
-	private $perDbNameStatsdDataFactory;
 	/** @var IConnectionProvider */
 	private $connectionProvider;
 	/** @var UserIdentityUtils */
@@ -49,7 +46,6 @@ class NewcomerTasksChangeTagsManager {
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
-	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param IConnectionProvider $connectionProvider
 	 * @param UserIdentityUtils $userIdentityUtils
@@ -63,7 +59,6 @@ class NewcomerTasksChangeTagsManager {
 		UserOptionsLookup $userOptionsLookup,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
-		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		RevisionLookup $revisionLookup,
 		IConnectionProvider $connectionProvider,
 		UserIdentityUtils $userIdentityUtils,
@@ -76,7 +71,6 @@ class NewcomerTasksChangeTagsManager {
 		$this->revisionLookup = $revisionLookup;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->userOptionsLookup = $userOptionsLookup;
-		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->connectionProvider = $connectionProvider;
 		$this->userIdentityUtils = $userIdentityUtils;
 		$this->changeTagsStore = $changeTagsStore;
