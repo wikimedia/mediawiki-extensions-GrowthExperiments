@@ -236,6 +236,7 @@ return [
 			static function () use ( $services ) {
 				return $services->getCentralIdLookup();
 			},
+			$services->getUserIdentityUtils()
 		);
 	},
 
