@@ -101,7 +101,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "نحتاج إلى هذه القوالب لميزة مهمة [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|اقتراح الصور]] للوافدين الجدد. لن يتم سرد المقالات التي تحتوي على هذه القوالب كمهام اقتراح الصور.",
 	"growthexperiments-edit-config-delayed": "لن تسري التغييرات على هذا الإعداد على الفور (راجع [[mw:Growth/FAQ#add-link-config|الأسئلة المتكرّرة]]).",
 	"growthexperiments-info-tooltip-close-label": "إغلاق",
-	"specialpages-group-growth-tools": "أدوات النموّ",
+	"specialpages-group-growth-tools": "أدوات النمو",
 	"growthexperiments-edit-config-level-up-notifications": "الإخطارات: مزايا النمو",
 	"growthexperiments-edit-config-level-up-notifications-description": "يتم إرسال هذه الإخطارات إلى الوافدين الجدد بعد 48 ساعة من إنشاء الحساب، وقد ثبت أنها تزيد من احتمالية تحرير الحسابات الجديدة في الأسبوع الذي يلي إرسال الإخطارات.",
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "تجرِبة إخطار التعديلات المقترحة",
