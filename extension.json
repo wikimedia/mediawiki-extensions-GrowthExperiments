@@ -350,7 +350,6 @@
 			"class": "GrowthExperiments\\HomepageHooks",
 			"services": [
 				"MainConfig",
-				"DBLoadBalancer",
 				"UserOptionsManager",
 				"UserOptionsLookup",
 				"UserIdentityUtils",
@@ -365,7 +364,6 @@
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 				"GrowthExperimentsLinkRecommendationStore",
-				"GrowthExperimentsLinkRecommendationHelper",
 				"SpecialPageFactory",
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
 				"GrowthExperimentsSuggestionsInfo",
@@ -573,7 +571,6 @@
 		"MessageCacheFetchOverrides": "earlylifecycle",
 		"PageSaveComplete": [
 			"config",
-			"homepage",
 			"impact",
 			"personalizedpraise"
 		],
@@ -640,6 +637,17 @@
 			"events": [ "PageUpdated" ],
 			"class": "GrowthExperiments\\Mentorship\\MediaWikiEventSubscribers\\PageUpdatedSubscriber",
 			"services": [ "GrowthExperimentsMentorStore" ]
+		},
+		{
+			"events": [ "PageUpdated" ],
+			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventSubscribers\\PageUpdatedSubscriber",
+			"services": [
+				"ChangeTagsStore",
+				"MainConfig",
+				"DBLoadBalancer",
+				"StatsFactory",
+				"GrowthExperimentsLinkRecommendationHelper"
+			]
 		}
 	],
 	"ResourceFileModulePaths": {
