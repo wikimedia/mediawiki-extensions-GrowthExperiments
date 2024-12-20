@@ -1104,7 +1104,6 @@ return [
 			$services->getUserOptionsLookup(),
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
-			$services->getPerDbNameStatsdDataFactory(),
 			$services->getRevisionLookup(),
 			$services->getDBLoadBalancerFactory(),
 			$services->getUserIdentityUtils(),

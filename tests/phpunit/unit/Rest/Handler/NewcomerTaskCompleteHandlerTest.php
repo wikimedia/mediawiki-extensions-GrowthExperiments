@@ -20,7 +20,6 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IConnectionProvider;
-use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
 use Wikimedia\Stats\StatsFactory;
 
 /**
@@ -198,7 +197,6 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 			$userOptionsLookup,
 			$this->createMock( TaskTypeHandlerRegistry::class ),
 			$configurationLoader,
-			$this->createNoOpMock( PrefixingStatsdDataFactoryProxy::class ),
 			$revisionLookup ?? $this->createMock( RevisionLookup::class ),
 			$this->createMock( IConnectionProvider::class ),
 			$userIdentityUtils,
