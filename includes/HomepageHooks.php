@@ -3,11 +3,9 @@
 
 namespace GrowthExperiments;
 
-use CirrusSearch\Search\CirrusIndexField;
 use CirrusSearch\Search\Rescore\BoostFunctionBuilder;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
-use CirrusSearch\Wikimedia\WeightedTagsHooks;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
@@ -55,8 +53,6 @@ use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
-use MediaWiki\Content\ContentHandler;
-use MediaWiki\Content\Hook\SearchDataForIndexHook;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -71,12 +67,10 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\SkinOptions;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\OutputPage;
-use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
-use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -101,7 +95,6 @@ use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\WikiMap\WikiMap;
 use MessageLocalizer;
 use OOUI\ButtonWidget;
-use SearchEngine;
 use Skin;
 use SkinTemplate;
 use StatusValue;
@@ -132,7 +125,6 @@ class HomepageHooks implements
 	SpecialContributionsBeforeMainOutputHook,
 	ConfirmEmailCompleteHook,
 	SiteNoticeAfterHook,
-	SearchDataForIndexHook,
 	FormatAutocommentsHook,
 	PageSaveCompleteHook,
 	RecentChange_saveHook,
@@ -1140,90 +1132,6 @@ class HomepageHooks implements
 		}
 	}
 
-	/**
-	 * @inheritDoc
-	 * Update link recommendation data in the search index. Used to deindex pages after they
-	 * have been edited (and thus the recommendation does not apply anymore).
-	 */
-	public function onSearchDataForIndex2(
-		array &$fields,
-		ContentHandler $handler,
-		WikiPage $page,
-		ParserOutput $output,
-		SearchEngine $engine,
-		RevisionRecord $revision
-	) {
-		$this->doSearchDataForIndex( $fields, $page, $revision );
-	}
-
-	/**
-	 * @inheritDoc
-	 * Update link recommendation data in the search index. Used to deindex pages after they
-	 * have been edited (and thus the recommendation does not apply anymore).
-	 */
-	public function onSearchDataForIndex( &$fields, $handler, $page, $output, $engine ) {
-		if ( !$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
-			return;
-		}
-		$revision = $page->getRevisionRecord();
-		if ( $revision === null ) {
-			// should not happen
-			return;
-		}
-		$this->doSearchDataForIndex( $fields, $page, $revision );
-	}
-
-	/**
-	 * Visible for testing
-	 *
-	 * @param array &$fields
-	 * @param WikiPage $page
-	 * @param RevisionRecord $revision
-	 */
-	public function doSearchDataForIndex( array &$fields, WikiPage $page, RevisionRecord $revision ): void {
-		if ( !$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
-			return;
-		}
-		if ( $this->config->get( 'GETempLinkRecommendationSwitchTagClearHook' ) ) {
-			return;
-		}
-		$revId = $revision->getId();
-		if ( !$this->canAccessPrimary ) {
-			// A GET request; the hook might be called for diagnostic purposes, e.g. via
-			// CirrusSearch\Api\QueryBuildDocument, but not for anything important.
-			return;
-		}
-
-		// The hook is called after edits, but also on purges or edits to transcluded content,
-		// so we mustn't delete recommendations that are still valid. Checking whether there is any
-		// recommendation stored for the current revision should do the trick.
-		//
-		// Both revision IDs might be incorrect due to replication lag but usually it won't
-		// matter. If $page is being edited, the cache has already been refreshed and $revId
-		// is correct, so we are guaranteed to end up on the delete branch. If this is a purge
-		// or other re-rendering-related update, and the page has been edited very recently,
-		// and it already has a recommendation (so the real recommendation revision is larger
-		// than what we see), we need to avoid erroneously deleting the recommendation - since
-		// new recommendations are added to the search index asynchronously, it would result
-		// in the DB and search index getting out of sync.
-		$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $page->getTitle(),
-			IDBAccessObject::READ_NORMAL, true );
-		if ( $linkRecommendation && $linkRecommendation->getRevisionId() < $revId ) {
-			$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $page->getTitle(),
-				IDBAccessObject::READ_LATEST, true );
-		}
-		if ( $linkRecommendation && $linkRecommendation->getRevisionId() < $revId ) {
-			$fields[WeightedTagsHooks::FIELD_NAME][] = LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
-				. '/' . CirrusIndexField::MULTILIST_DELETE_GROUPING;
-			try {
-				$this->linkRecommendationHelper->deleteLinkRecommendation(
-					$page->getTitle()->toPageIdentity(), false );
-			} catch ( DBReadOnlyError $e ) {
-				// Leaving a dangling DB row behind doesn't cause any problems so just ignore this.
-			}
-		}
-	}
-
 	private function clearLinkRecommendationRecordForPage( WikiPage $wikiPage ): void {
 		try {
 			$this->linkRecommendationHelper->deleteLinkRecommendation(
@@ -1520,7 +1428,6 @@ class HomepageHooks implements
 	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ): void {
 		if (
 			$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) &&
-			$this->config->get( 'GETempLinkRecommendationSwitchTagClearHook' ) &&
 			$wikiPage->getNamespace() === NS_MAIN
 		) {
 			$this->clearLinkRecommendationRecordForPage( $wikiPage );
