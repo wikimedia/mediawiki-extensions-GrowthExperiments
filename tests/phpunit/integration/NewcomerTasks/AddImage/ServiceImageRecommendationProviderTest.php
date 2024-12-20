@@ -424,30 +424,22 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	public function testProcessApiResponseDataFiltering( array $data, ?array $expectedResult ) {
 		$metadataProvider = $this->createNoOpMock(
 			ImageRecommendationMetadataProvider::class, [ 'getMetadata', 'getFileMetadata' ] );
-		$metadataProvider->method( 'getFileMetadata' )->willReturnCallback( function ( $filename ) {
-			if ( $filename === 'NoWidthInformed.png' ) {
-				return self::metadataFactory( false );
+		$getFileMetadata = function ( string $filename ) {
+			switch ( $filename ) {
+				case 'NoWidthInformed.png':
+					return self::metadataFactory( false );
+				case 'TooNarrow.png':
+					return self::metadataFactory( 99 );
+				case 'InvalidMediaType.png':
+					return self::metadataFactory( 200, MEDIATYPE_AUDIO );
+				default:
+					return self::metadataFactory( 101 );
 			}
-			if ( $filename === 'TooNarrow.png' ) {
-				return self::metadataFactory( 99 );
-			}
-			if ( $filename === 'InvalidMediaType.png' ) {
-				return self::metadataFactory( 200, MEDIATYPE_AUDIO );
-			}
-			return self::metadataFactory( 101 );
-		} );
-		$metadataProvider->method( 'getMetadata' )->willReturnCallback( function ( $suggestion ) {
-			if ( $suggestion['filename'] === 'NoWidthInformed.png' ) {
-				return self::metadataFactory( false );
-			}
-			if ( $suggestion['filename'] === 'TooNarrow.png' ) {
-				return self::metadataFactory( 99 );
-			}
-			if ( $suggestion['filename'] === 'InvalidMediaType.png' ) {
-				return self::metadataFactory( 200, MEDIATYPE_AUDIO );
-			}
-			return self::metadataFactory( 101 );
-		} );
+		};
+		$metadataProvider->method( 'getFileMetadata' )
+			->willReturnCallback( $getFileMetadata );
+		$metadataProvider->method( 'getMetadata' )
+			->willReturnCallback( fn ( $suggestion ) => $getFileMetadata( $suggestion['filename'] ) );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			$taskType,
@@ -471,10 +463,12 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider = $this->createNoOpMock(
 			ImageRecommendationMetadataProvider::class, [ 'getFileMetadata' ] );
 		$metadataProvider->method( 'getFileMetadata' )->willReturnCallback( function ( $filename ) {
-			if ( $filename === 'NoWidthInformed.png' ) {
-				return $this->metadataFactory( false );
+			switch ( $filename ) {
+				case 'NoWidthInformed.png':
+					return self::metadataFactory( false );
+				default:
+					return self::metadataFactory( 99 );
 			}
-			return $this->metadataFactory( 99 );
 		} );
 		$submissionHandler = $this->createMock( AddImageSubmissionHandler::class );
 		$context = $this;
