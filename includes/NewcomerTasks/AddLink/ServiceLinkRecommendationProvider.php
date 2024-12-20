@@ -80,7 +80,8 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 	/** @inheritDoc */
 	public function get( LinkTarget $title, TaskType $taskType ) {
 		Assert::parameterType( LinkRecommendationTaskType::class, $taskType, '$taskType' );
-		/** @var LinkRecommendationTaskType $taskType */'@phan-var LinkRecommendationTaskType $taskType';
+		/** @var LinkRecommendationTaskType $taskType */
+		'@phan-var LinkRecommendationTaskType $taskType';
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$pageId = $title->getArticleID();
 		$titleText = $title->getPrefixedDBkey();

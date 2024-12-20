@@ -214,9 +214,9 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		$taskCount = 0;
 		$suggestions = [];
 		foreach ( $matchIterator as $matchSlice ) {
+			/** @var SearchResult $match */
 			foreach ( array_filter( $matchSlice ) as $queryId => $match ) {
 				// TODO: Filter out pages that are protected.
-				/** @var $match SearchResult */
 				$query = $queries[$queryId];
 				$taskType = $query->getTaskType();
 				$suggestions[] = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )

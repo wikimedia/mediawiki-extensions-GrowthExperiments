@@ -97,7 +97,8 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, array $data
 	): StatusValue {
 		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
-		'@phan-var ImageRecommendationBaseTaskType $taskType';/** @var ImageRecommendationBaseTaskType $taskType */
+		'@phan-var ImageRecommendationBaseTaskType $taskType';
+		/** @var ImageRecommendationBaseTaskType $taskType */
 
 		$userErrorMessage = self::getUserErrorMessage( $this->userIdentityUtils, $user );
 		if ( $userErrorMessage ) {
@@ -112,7 +113,8 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		TaskType $taskType, ProperPageIdentity $page, UserIdentity $user, ?int $baseRevId, ?int $editRevId, array $data
 	): StatusValue {
 		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
-		'@phan-var ImageRecommendationBaseTaskType $taskType';/** @var ImageRecommendationBaseTaskType $taskType */
+		'@phan-var ImageRecommendationBaseTaskType $taskType';
+		/** @var ImageRecommendationBaseTaskType $taskType */
 
 		$status = $this->parseData( $taskType, $data );
 		if ( !$status->isGood() ) {

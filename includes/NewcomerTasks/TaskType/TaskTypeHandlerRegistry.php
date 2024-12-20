@@ -142,7 +142,8 @@ class TaskTypeHandlerRegistry {
 			'assertClass' => TaskTypeHandler::class,
 			'allowCallable' => true,
 		] );
-		/** @var TaskTypeHandler $handler */'@phan-var TaskTypeHandler $handler';
+		/** @var TaskTypeHandler $handler */
+		'@phan-var TaskTypeHandler $handler';
 		$this->handlers[$handlerId] = $handler;
 		return $handler;
 	}

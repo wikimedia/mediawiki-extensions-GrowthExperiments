@@ -79,7 +79,8 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 		}
 
 		Assert::parameterType( ImageRecommendationBaseTaskType::class, $taskType, '$taskType' );
-		'@phan-var ImageRecommendationBaseTaskType $taskType';/** @var ImageRecommendationBaseTaskType $taskType */
+		'@phan-var ImageRecommendationBaseTaskType $taskType';
+		/** @var ImageRecommendationBaseTaskType $taskType */
 		$titleValue = $params['title'];
 
 		$page = $this->titleFactory->newFromLinkTarget( $titleValue )->toPageIdentity();

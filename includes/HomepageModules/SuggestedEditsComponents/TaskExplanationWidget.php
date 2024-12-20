@@ -31,7 +31,6 @@ class TaskExplanationWidget extends Widget {
 			return;
 		}
 		$this->taskType = $taskSet[0]->getTaskType();
-		/** @var \MessageLocalizer $localizer */
 		$this->localizer = $config['localizer'];
 
 		$this->appendContent(
