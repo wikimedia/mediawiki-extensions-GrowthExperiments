@@ -23,13 +23,10 @@ class PraiseworthyConditionsLookup {
 	private UserFactory $userFactory;
 	private MentorManager $mentorManager;
 
-	/** @var string */
 	public const WAS_PRAISED_PREF = 'growthexperiments-mentorship-was-praised';
-
-	/** @var string */
 	public const SKIPPED_UNTIL_PREF = 'growthexperiments-personalized-praise-skipped-until';
 
-	/** @var int Number of days skipped mentees cannot be suggested for */
+	/** Number of days skipped mentees cannot be suggested for */
 	public const SKIP_MENTEES_FOR_DAYS = 10;
 
 	/**

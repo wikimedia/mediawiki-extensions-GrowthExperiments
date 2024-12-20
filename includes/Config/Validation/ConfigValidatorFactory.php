@@ -15,8 +15,6 @@ class ConfigValidatorFactory {
 	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
 
 	/**
-	 * @var string[]
-	 *
 	 * Maps variable to validator class.
 	 *
 	 * @note When adding a mapping, add an entry to ConfigValidatorFactory::constructValidator

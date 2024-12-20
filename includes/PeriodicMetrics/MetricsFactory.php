@@ -10,7 +10,6 @@ use Wikimedia\Rdbms\LoadBalancer;
 
 class MetricsFactory {
 
-	/** @var string[] */
 	public const METRICS = [
 		AutoAssignedMentorsMetric::class,
 		InactiveMentorsMetric::class,

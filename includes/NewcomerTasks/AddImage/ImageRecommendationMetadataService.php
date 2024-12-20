@@ -15,7 +15,6 @@ use StatusValue;
  */
 class ImageRecommendationMetadataService {
 
-	/** @var int */
 	private const THUMB_WIDTH = 120;
 
 	/** @var HttpRequestFactory */

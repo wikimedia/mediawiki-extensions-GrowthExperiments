@@ -30,11 +30,8 @@ class MentorStatusManager {
 		self::STATUS_AWAY
 	];
 
-	/** @var string */
 	public const AWAY_BECAUSE_TIMESTAMP = 'timestamp';
-	/** @var string */
 	public const AWAY_BECAUSE_BLOCK = 'block';
-	/** @var string */
 	public const AWAY_BECAUSE_LOCK = 'lock';
 
 	/** @var string Preference key to store mentor's away timestamp */
