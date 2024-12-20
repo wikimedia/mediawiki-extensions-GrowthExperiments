@@ -178,21 +178,13 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::loadTopics
-	 * @dataProvider provideLoadOresTopics_error
+	 * @dataProvider provideConfigurationLoaderErrors
 	 */
 	public function testLoadOresTopics_error( $error ) {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getOresTopicConfig( $error ),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$status = $configurationLoader->loadTopics();
 		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-' . $error, $status );
-	}
-
-	public static function provideLoadOresTopics_error() {
-		return [
-			[ 'wrongstructure' ],
-			[ 'invalidid' ],
-			[ 'missingfield' ],
-		];
 	}
 
 	/**
@@ -234,7 +226,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::loadTopics
-	 * @dataProvider provideLoadMorelikeTopics_error
+	 * @dataProvider provideConfigurationLoaderErrors
 	 */
 	public function testLoadMorelikeTopics_error( $error ) {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getMorelikeTopicConfig( $error ),
@@ -243,7 +235,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-' . $error, $status );
 	}
 
-	public static function provideLoadMorelikeTopics_error() {
+	public static function provideConfigurationLoaderErrors() {
 		return [
 			[ 'wrongstructure' ],
 			[ 'invalidid' ],
