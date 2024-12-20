@@ -34,7 +34,7 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			];
 		};
 		$pageViewUrl = static function ( string $title, ?string $endDate = null ) {
-			$endDate = $endDate ?? '2022-08-25';
+			$endDate ??= '2022-08-25';
 			$url = "https://pageviews.wmcloud.org/?project=enwiki&userlang=en"
 				. "&start=2022-08-24&end=$endDate&pages=$title";
 			return [ 'pageviewsUrl' => $url ];

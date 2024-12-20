@@ -82,11 +82,7 @@ class LegacyStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		$blockMock->expects( $expectCall ? $this->once() : $this->never() )
 			->method( 'appliesToTitle' )
 			->willReturnCallback( function ( $title ) use ( $isBlocked ) {
-				if ( !$isBlocked ) {
-					return false;
-				}
-
-				return $title === $this->mentorList;
+				return $isBlocked && $title === $this->mentorList;
 			} );
 
 		$userMock = $this->createMock( User::class );

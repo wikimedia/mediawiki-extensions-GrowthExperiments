@@ -327,17 +327,8 @@ class InitWikiConfig extends Maintenance {
 		$this->initServices();
 		$dryRun = $this->hasOption( 'dry-run' );
 
-		$status = $this->initGEConfig( $dryRun );
-		if ( !$status ) {
-			return false;
-		}
-
-		$status = $this->initSuggestedEditsConfig( $dryRun );
-		if ( !$status ) {
-			return false;
-		}
-
-		return true;
+		return $this->initGEConfig( $dryRun ) &&
+			$this->initSuggestedEditsConfig( $dryRun );
 	}
 
 	/**

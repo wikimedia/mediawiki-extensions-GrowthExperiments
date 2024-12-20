@@ -277,8 +277,8 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		?Config $config = null
 	): LevelingUpManager {
 		$defaultConfigValues = $this->getDefaultConfigValues();
-		$config = $config ?? new HashConfig( $defaultConfigValues );
-		$serviceOptions = $serviceOptions ?? new ServiceOptions(
+		$config ??= new HashConfig( $defaultConfigValues );
+		$serviceOptions ??= new ServiceOptions(
 			LevelingUpManager::CONSTRUCTOR_OPTIONS,
 			new HashConfig( $defaultConfigValues )
 		);
@@ -294,7 +294,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$taskSuggesterFactory ?? $this->getTaskSuggesterFactory(),
 			$newcomerTasksUserOptionsLookup ?? $this->getNewcomerTasksUserOptionsLookup(),
 			new NullLogger(),
-			$config,
+			$config
 		);
 	}
 
