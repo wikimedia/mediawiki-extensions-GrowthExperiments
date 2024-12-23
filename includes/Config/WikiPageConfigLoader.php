@@ -152,7 +152,6 @@ class WikiPageConfigLoader implements ICustomReadConstants {
 	}
 
 	/**
-	 *
 	 * @param int $flags Bitfield consisting of READ_* constants
 	 * @return int Bitfield consisting only of standard IDBAccessObject READ_* constants.
 	 */

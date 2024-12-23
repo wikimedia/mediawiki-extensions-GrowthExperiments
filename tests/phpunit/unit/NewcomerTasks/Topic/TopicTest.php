@@ -19,7 +19,6 @@ class TopicTest extends MediaWikiUnitTestCase {
 		$fakeContext->method( 'msg' )->willReturnCallback( function ( $id ) {
 			return $this->getMockMessage( $id );
 		} );
-		/** @var MessageLocalizer $fakeContext */
 
 		$topic = new Topic( 'foo' );
 		$this->assertSame( 'foo', $topic->getId() );

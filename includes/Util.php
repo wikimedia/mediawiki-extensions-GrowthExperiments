@@ -328,7 +328,8 @@ class Util {
 	public static function getIteratorFromTraversable( Traversable $t ) {
 		while ( !( $t instanceof Iterator ) ) {
 			// There are only two traversables, Iterator and IteratorAggregate
-			/** @var \IteratorAggregate $t */'@phan-var \IteratorAggregate $t';
+			/** @var \IteratorAggregate $t */
+			'@phan-var \IteratorAggregate $t';
 			$t = $t->getIterator();
 		}
 		// @phan-suppress-next-line PhanTypeMismatchReturnSuperType

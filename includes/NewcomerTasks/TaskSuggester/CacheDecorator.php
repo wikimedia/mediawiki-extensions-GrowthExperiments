@@ -202,7 +202,6 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 	}
 
 	/**
-	 *
 	 * @param TaskSet|StatusValue $taskSet
 	 */
 	private function runTaskSetListener( $taskSet ) {
