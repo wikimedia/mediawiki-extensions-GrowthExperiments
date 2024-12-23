@@ -64,7 +64,7 @@ class CommunityConfigurationHooks implements
 		}
 	}
 
-	private function isCalledFromBrokenTest() {
+	private function isCalledFromBrokenTest(): bool {
 		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
 			return false;
 		}

@@ -276,7 +276,7 @@ class Mentorship extends BaseModule {
 			$this->mentorManager->getEffectiveMentorForUserSafe( $this->getUser() ) !== null;
 	}
 
-	private function getMentorUsernameElement( $link ) {
+	private function getMentorUsernameElement( bool $link ): string {
 		$iconElement = new IconWidget( [ 'icon' => 'mentor' ] );
 		$dir = $this->getContext()->getLanguage()->getDir();
 		$usernameElement = Html::rawElement(
@@ -306,7 +306,7 @@ class Mentorship extends BaseModule {
 		], $content );
 	}
 
-	private function getMentorInfo() {
+	private function getMentorInfo(): string {
 		return Html::rawElement(
 			'div',
 			[
@@ -316,7 +316,7 @@ class Mentorship extends BaseModule {
 		);
 	}
 
-	private function getEditCount() {
+	private function getEditCount(): string {
 		$mentorEditCount = $this->userEditTracker->getUserEditCount( $this->getMentor() );
 		if ( !is_int( $mentorEditCount ) ) {
 			throw new LogicException(
@@ -333,7 +333,7 @@ class Mentorship extends BaseModule {
 		], $text );
 	}
 
-	private function getLastActive() {
+	private function getLastActive(): string {
 		$text = self::getMentorLastActive( $this->getMentor(), $this->getContext()->getUser(),
 			$this->getContext(), $this->userEditTracker );
 		return Html::element( 'span', [
@@ -341,7 +341,7 @@ class Mentorship extends BaseModule {
 		], $text );
 	}
 
-	private function getIntroText() {
+	private function getIntroText(): string {
 		$mentor = $this->mentorManager->getMentorForUser( $this->getContext()->getUser() );
 
 		$introText = $this->getContext()->getLanguage()->truncateForVisual(
@@ -362,7 +362,7 @@ class Mentorship extends BaseModule {
 		);
 	}
 
-	private function getQuestionButton() {
+	private function getQuestionButton(): ButtonWidget {
 		return new ButtonWidget( [
 			'id' => 'mw-ge-homepage-mentorship-cta',
 			'classes' => [ 'growthexperiments-homepage-mentorship-cta' ],
@@ -397,7 +397,7 @@ class Mentorship extends BaseModule {
 		return $this->mentor;
 	}
 
-	private function getRecentQuestionsSection() {
+	private function getRecentQuestionsSection(): string {
 		$recentQuestionFormatter = new RecentQuestionsFormatter(
 			$this->getContext(),
 			$this->getRecentQuestions(),
@@ -406,7 +406,7 @@ class Mentorship extends BaseModule {
 		return $recentQuestionFormatter->format();
 	}
 
-	private function getRecentQuestions() {
+	private function getRecentQuestions(): array {
 		if ( count( $this->recentQuestions ) ) {
 			return $this->recentQuestions;
 		}
@@ -417,7 +417,7 @@ class Mentorship extends BaseModule {
 		return $this->recentQuestions;
 	}
 
-	private function getAboutMentorshipElement() {
+	private function getAboutMentorshipElement(): string {
 		return Html::rawElement(
 			'p',
 			[ 'class' => 'growthexperiments-homepage-mentorship-about' ],

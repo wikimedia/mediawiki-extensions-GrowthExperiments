@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Maintenance;
 
+use Generator;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use MediaWiki\Maintenance\Maintenance;
 use Wikimedia\Rdbms\IDatabase;
@@ -40,7 +41,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 		$this->dbw = $this->getPrimaryDB();
 	}
 
-	private function getRows() {
+	private function getRows(): Generator {
 		yield from $this->dbr->newSelectQueryBuilder()
 			->select( [ 'up_user', 'up_value' ] )
 			->from( 'user_properties' )
@@ -48,7 +49,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 			->caller( __METHOD__ )->fetchResultSet();
 	}
 
-	private function filterAndBatch() {
+	private function filterAndBatch(): Generator {
 		$batch = [];
 		foreach ( $this->getRows() as $row ) {
 			if (
