@@ -6,10 +6,10 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\WikiConfigException;
-use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Stats\StatsFactory;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -31,8 +31,8 @@ class UpdateMenteeData extends Maintenance {
 	/** @var ILoadBalancer */
 	private $growthLoadBalancer;
 
-	/** @var StatsdDataFactoryInterface */
-	private $dataFactory;
+	/** @var StatsFactory */
+	private $statsFactory;
 
 	/** @var array */
 	private $detailedProfilingInfo = [];
@@ -64,7 +64,7 @@ class UpdateMenteeData extends Maintenance {
 		$this->mentorProvider = $geServices->getMentorProvider();
 		$this->userFactory = $services->getUserFactory();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
-		$this->dataFactory = $services->getStatsdDataFactory();
+		$this->statsFactory = $services->getStatsFactory();
 	}
 
 	private function addProfilingInfoForMentor( array $mentorProfilingInfo ): void {
@@ -161,19 +161,23 @@ class UpdateMenteeData extends Maintenance {
 		}
 
 		if ( $this->hasOption( 'statsd' ) && $this->hasOption( 'dbshard' ) ) {
-			$this->dataFactory->timing(
-				'timing.growthExperiments.updateMenteeData.' . $this->getOption( 'dbshard' ) . '.total',
-				$totalTime
-			);
+			$this->statsFactory->withComponent( 'GrowthExperiments' )
+				->getTiming( 'update_mentee_data_seconds' )
+				->setLabel( 'shard', $this->getOption( 'dbshard' ) )
+				->setLabel( 'type', 'total' )
+				->copyToStatsdAt( 'timing.growthExperiments.updateMenteeData.' .
+					$this->getOption( 'dbshard' ) . '.total' )
+				->observe( $totalTime );
 
 			foreach ( $profilingInfo as $section => $seconds ) {
-				$this->dataFactory->timing(
-					'timing.growthExperiments.updateMenteeData.' .
-					$this->getOption( 'dbshard' ) .
-					'.' .
-					$section,
-					$seconds
-				);
+				$this->statsFactory->withComponent( 'GrowthExperiments' )
+					->getTiming( 'update_mentee_data_seconds' )
+					->setLabel( 'shard', $this->getOption( 'dbshard' ) )
+					->setLabel( 'type', 'section' )
+					->setLabel( 'section', $section )
+					->copyToStatsdAt( 'timing.growthExperiments.updateMenteeData.' .
+						$this->getOption( 'dbshard' ) . '.' . $section )
+					->observe( $seconds );
 			}
 		}
 
