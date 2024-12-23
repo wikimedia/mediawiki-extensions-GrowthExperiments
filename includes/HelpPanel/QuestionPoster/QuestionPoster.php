@@ -31,94 +31,34 @@ use Wikimedia\Stats\StatsFactory;
  */
 abstract class QuestionPoster {
 
-	/**
-	 * @var WikiPageFactory
-	 */
-	private $wikiPageFactory;
-
-	/**
-	 * @var TitleFactory
-	 */
-	private $titleFactory;
-
-	/**
-	 * @var PermissionManager
-	 */
-	private $permissionManager;
-
-	/**
-	 * @var bool
-	 */
-	private $postOnTop = false;
-
-	/**
-	 * @var IContextSource
-	 */
-	private $context;
-
-	/**
-	 * @var bool
-	 */
-	private $isFirstEdit;
-
-	/**
-	 * @var Config
-	 */
-	private $config;
-
-	/**
-	 * @var Title
-	 */
-	private $targetTitle;
-
-	/**
-	 * @var string
-	 */
-	private $resultUrl;
-
-	/**
-	 * @var PageUpdater
-	 */
-	protected $pageUpdater;
+	private WikiPageFactory $wikiPageFactory;
+	private TitleFactory $titleFactory;
+	private PermissionManager $permissionManager;
+	private bool $postOnTop = false;
+	private IContextSource $context;
+	private bool $isFirstEdit;
+	private Config $config;
+	private Title $targetTitle;
+	private string $resultUrl;
+	protected PageUpdater $pageUpdater;
 
 	/**
 	 * @var mixed
 	 */
 	private $revisionId;
 
-	/**
-	 * @var string
-	 */
-	private $relevantTitleRaw;
+	private string $relevantTitleRaw;
 
-	/**
-	 * @var Title|null
-	 */
+	/** @var Title|null */
 	private $relevantTitle;
 
-	/**
-	 * @var string
-	 */
-	private $postedOnTimestamp;
+	private string $postedOnTimestamp;
 
-	/**
-	 * @var QuestionRecord[]
-	 */
-	private $existingQuestionsByUser;
+	/** @var QuestionRecord[] */
+	private array $existingQuestionsByUser;
 
-	/**
-	 * @var string
-	 */
-	private $body;
-
-	/**
-	 * @var string
-	 */
-	private $sectionHeader;
-
-	/**
-	 * @var StatsFactory
-	 */
+	private string $body;
+	private string $sectionHeader;
 	private StatsFactory $statsFactory;
 
 	private bool $confirmEditInstalled = false;

@@ -34,23 +34,14 @@ require_once $path . '/maintenance/Maintenance.php';
  */
 class RevalidateLinkRecommendations extends Maintenance {
 
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var LinkRecommendationStore */
-	private $linkRecommendationStore;
-
-	/** @var LinkRecommendationHelper */
-	private $linkRecommendationHelper;
-
-	/** @var LinkRecommendationUpdater */
-	private $linkRecommendationUpdater;
-
-	/** @var Config */
-	private $growthConfig;
+	private TitleFactory $titleFactory;
+	private LinkRecommendationStore $linkRecommendationStore;
+	private LinkRecommendationHelper $linkRecommendationHelper;
+	private LinkRecommendationUpdater $linkRecommendationUpdater;
+	private Config $growthConfig;
 
 	/** @var string[] */
-	private $allowedChecksums;
+	private array $allowedChecksums;
 
 	private ?int $olderThanTimestamp = null;
 

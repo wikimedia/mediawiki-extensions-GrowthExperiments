@@ -36,29 +36,14 @@ require_once "$IP/maintenance/Maintenance.php";
  */
 class FixLinkRecommendationData extends Maintenance {
 
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
-	/** @var LinkRecommendationStore */
-	private $linkRecommendationStore;
-
-	/** @var WeightedTagsUpdater */
-	private $weightedTagsUpdater;
-
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
-
-	/** @var PageStore */
-	private $pageStore;
-
-	/** @var TitleFormatter */
-	private $titleFormatter;
-
-	/** @var int|null */
-	private $randomSeed;
-
-	/** @var LinkRecommendationTaskType */
-	private $linkRecommendationTaskType;
+	private ConfigurationLoader $configurationLoader;
+	private LinkRecommendationStore $linkRecommendationStore;
+	private WeightedTagsUpdater $weightedTagsUpdater;
+	private LinkBatchFactory $linkBatchFactory;
+	private PageStore $pageStore;
+	private TitleFormatter $titleFormatter;
+	private ?int $randomSeed;
+	private LinkRecommendationTaskType $linkRecommendationTaskType;
 
 	public function __construct() {
 		parent::__construct();

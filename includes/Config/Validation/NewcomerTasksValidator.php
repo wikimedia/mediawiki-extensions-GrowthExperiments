@@ -63,12 +63,8 @@ class NewcomerTasksValidator implements IConfigValidator {
 		'section-image-recommendation'
 	];
 
-	/** @var TaskTypeHandlerRegistry */
-	private $taskTypeHandlerRegistry;
+	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
 
-	/**
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	) {

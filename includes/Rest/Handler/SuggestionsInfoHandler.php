@@ -10,19 +10,10 @@ use Wikimedia\ObjectCache\WANObjectCache;
  * Provide information for monitoring suggested edit task pools by type and topic.
  */
 class SuggestionsInfoHandler extends SimpleHandler {
-	/**
-	 * @var NewcomerTasksInfo
-	 */
-	private $suggestionsInfo;
-	/**
-	 * @var WANObjectCache
-	 */
-	private $cache;
 
-	/**
-	 * @param NewcomerTasksInfo $suggestionsInfo
-	 * @param WANObjectCache $cache
-	 */
+	private NewcomerTasksInfo $suggestionsInfo;
+	private WANObjectCache $cache;
+
 	public function __construct(
 		NewcomerTasksInfo $suggestionsInfo,
 		WANObjectCache $cache

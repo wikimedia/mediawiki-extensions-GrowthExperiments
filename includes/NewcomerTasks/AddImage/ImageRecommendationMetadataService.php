@@ -16,18 +16,12 @@ use StatusValue;
 class ImageRecommendationMetadataService {
 
 	private const THUMB_WIDTH = 120;
-
-	/** @var HttpRequestFactory */
-	private $httpRequestFactory;
-
-	/** @var RepoGroup */
-	private $repoGroup;
+	private HttpRequestFactory $httpRequestFactory;
+	private RepoGroup $repoGroup;
 
 	/** @var string[] */
-	private $mediaInfoRepos;
-
-	/** @var string */
-	private $contentLanguage;
+	private array $mediaInfoRepos;
+	private string $contentLanguage;
 
 	/**
 	 * @param HttpRequestFactory $httpRequestFactory

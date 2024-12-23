@@ -20,20 +20,12 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 class InitWikiConfig extends Maintenance {
-	/** @var TitleFactory */
-	private $titleFactory;
 
-	/** @var PageProps */
-	private $pageProps;
-
-	/** @var WikiPageConfigWriterFactory */
-	private $wikiPageConfigWriterFactory;
-
-	/** @var HttpRequestFactory */
-	private $httpRequestFactory;
-
-	/** @var SpecialEditGrowthConfig|null */
-	private $specialEditGrowthConfig;
+	private TitleFactory $titleFactory;
+	private PageProps $pageProps;
+	private WikiPageConfigWriterFactory $wikiPageConfigWriterFactory;
+	private HttpRequestFactory $httpRequestFactory;
+	private ?SpecialEditGrowthConfig $specialEditGrowthConfig;
 
 	public function __construct() {
 		parent::__construct();

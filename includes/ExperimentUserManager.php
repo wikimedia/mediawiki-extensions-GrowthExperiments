@@ -24,13 +24,6 @@ class ExperimentUserManager {
 		'GEHomepageDefaultVariant',
 	];
 
-	/**
-	 * @param LoggerInterface $logger
-	 * @param ServiceOptions $options
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param UserFactory $userFactory
-	 */
 	public function __construct(
 		LoggerInterface $logger,
 		ServiceOptions $options,

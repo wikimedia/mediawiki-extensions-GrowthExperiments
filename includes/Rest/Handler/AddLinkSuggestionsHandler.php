@@ -18,12 +18,8 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class AddLinkSuggestionsHandler extends SimpleHandler {
 
-	/** @var LinkRecommendationHelper */
-	private $linkRecommendationHelper;
+	private LinkRecommendationHelper $linkRecommendationHelper;
 
-	/**
-	 * @param LinkRecommendationHelper $linkRecommendationHelper
-	 */
 	public function __construct(
 		LinkRecommendationHelper $linkRecommendationHelper
 	) {

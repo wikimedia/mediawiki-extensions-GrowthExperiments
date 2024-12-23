@@ -23,11 +23,9 @@ abstract class MentorStore implements ExpirationAwareness, LoggerAwareInterface 
 		self::ROLE_BACKUP
 	];
 
-	/** @var WANObjectCache */
 	protected WANObjectCache $wanCache;
 	/** @var array Cache key =>¨value; custom in-process cache */
 	protected array $inProcessCache = [];
-	/** @var bool */
 	protected bool $wasPosted;
 
 	/**

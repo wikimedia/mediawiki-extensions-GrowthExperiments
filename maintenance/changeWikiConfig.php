@@ -19,11 +19,9 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 class ChangeWikiConfig extends Maintenance {
-	/** @var TitleFactory */
-	private $titleFactory;
 
-	/** @var WikiPageConfigWriterFactory */
-	private $wikiPageConfigWriterFactory;
+	private TitleFactory $titleFactory;
+	private WikiPageConfigWriterFactory $wikiPageConfigWriterFactory;
 
 	public function __construct() {
 		parent::__construct();
