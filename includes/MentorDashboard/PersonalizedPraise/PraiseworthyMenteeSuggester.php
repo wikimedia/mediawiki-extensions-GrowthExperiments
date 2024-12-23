@@ -176,11 +176,7 @@ class PraiseworthyMenteeSuggester {
 			return [];
 		}
 
-		$res = $this->globalCache->get( $key );
-		if ( !$res ) {
-			return [];
-		}
-		return $res;
+		return $this->globalCache->get( $key ) ?: [];
 	}
 
 	/**

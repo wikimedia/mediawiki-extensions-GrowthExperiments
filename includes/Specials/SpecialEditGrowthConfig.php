@@ -1122,11 +1122,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			return [];
 		}
 		return array_values( array_filter( array_map( function ( string $titleText ) {
-			$title = $this->titleFactory->newFromText( $titleText );
-			if ( $title === null ) {
-				return null;
-			}
-			return $title;
+			return $this->titleFactory->newFromText( $titleText );
 		}, explode( "\n", $list ) ) ) );
 	}
 

@@ -494,10 +494,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			->getMockForAbstractClass();
 		$localizer->method( 'msg' )
 			->willReturnCallback( function ( $key, ...$params ) use ( $customMessages ) {
-				if ( isset( $customMessages[$key] ) ) {
-					return $customMessages[$key];
-				}
-				return $this->getMockMessage( $key, ...$params );
+				return $customMessages[$key] ?? $this->getMockMessage( $key, ...$params );
 			} );
 		return $localizer;
 	}
@@ -528,10 +525,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			->onlyMethods( [ 'msg' ] )
 			->getMockForAbstractClass();
 		$context->method( 'msg' )->willReturnCallback( function ( $key ) use ( $customMessages ) {
-			if ( isset( $customMessages[$key] ) ) {
-				return $customMessages[$key];
-			}
-			return $this->getMockMessage( $key );
+			return $customMessages[$key] ?? $this->getMockMessage( $key );
 		} );
 		return $context;
 	}
