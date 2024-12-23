@@ -65,6 +65,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Одсутни сте?",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Откажи",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Паузирај",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Ако не можете да менторишете одређено време (више од 1 недеље) {{GENDER:|можете}} подесити себе одсутним. Током тог периода други ментор ће добијати питања Ваших новајлија.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Бићете одсутни:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "дана",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Дошло је до непознате грешке. Покушајте поново касније.",
@@ -117,6 +118,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Представљање себе као {{GENDER:|ментора|менторку}}. Не више од 240 карактера и без викитекста!",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "Разлог",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Упиши ме",
-	"growthexperiments-mentorship-enrollasmentor-summary": "Додавање себе као ментора",
+	"growthexperiments-mentorship-enrollasmentor-success": "Сада сте {{GENDER:|ментор|менторка}}. Наставите на [[Special:MentorDashboard|менторску таблу]] сада.",
+	"growthexperiments-mentorship-enrollasmentor-summary": "Додао себе као ментора",
 	"tag-mentor list change": "Промењен списак ментора"
 }
