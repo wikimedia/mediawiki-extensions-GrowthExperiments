@@ -9,12 +9,9 @@ use StatusValue;
 class StructuredMentorListValidator implements IConfigValidator {
 	use DatatypeValidationTrait;
 
-	/** @var string */
 	private const TOP_LEVEL_KEY = 'Mentors';
 
 	/**
-	 * @var string[]
-	 *
 	 * A mapping of keys to data types, used for validating mentor JSON object.
 	 *
 	 * All keys mentioned here (except keys listed in OPTIONAL_MENTOR_KEYS) will be required.
@@ -26,7 +23,7 @@ class StructuredMentorListValidator implements IConfigValidator {
 		'automaticallyAssigned' => 'bool',
 	];
 
-	/** @var string[] List of optional keys in mentor serialization. */
+	/** List of optional keys in mentor serialization. */
 	private const OPTIONAL_MENTOR_KEYS = [
 		'username',
 		'automaticallyAssigned',

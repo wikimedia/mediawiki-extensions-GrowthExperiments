@@ -39,7 +39,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var string Right required to write */
 	public const REQUIRED_RIGHT_TO_WRITE = 'editinterface';
 
-	/** @var string[] */
 	private const SUGGESTED_EDITS_INTRO_LINKS = [ 'create', 'image' ];
 
 	/** @var string[] Keys that will be present in $configPages */

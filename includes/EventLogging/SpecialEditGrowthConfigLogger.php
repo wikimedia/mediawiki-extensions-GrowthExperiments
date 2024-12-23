@@ -12,16 +12,13 @@ use MediaWiki\WikiMap\WikiMap;
 
 class SpecialEditGrowthConfigLogger {
 
-	/** @var string Versioned schema URL for $schema field */
+	/** Versioned schema URL for $schema field */
 	private const SCHEMA_VERSIONED = '/analytics/mediawiki/editgrowthconfig/1.0.2';
 
-	/** @var string Stream name for EventLogging::submit */
+	/** Stream name for EventLogging::submit */
 	private const STREAM = 'mediawiki.editgrowthconfig';
 
-	/** @var string */
 	public const ACTION_VIEW = 'view';
-
-	/** @var string */
 	public const ACTION_SAVE = 'save';
 
 	/**

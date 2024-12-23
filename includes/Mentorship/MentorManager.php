@@ -13,14 +13,10 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
  */
 abstract class MentorManager implements ExpirationAwareness {
 
-	/** @var int */
 	public const MENTORSHIP_DISABLED = 0;
-	/** @var int */
 	public const MENTORSHIP_ENABLED = 1;
-	/** @var int */
 	public const MENTORSHIP_OPTED_OUT = 2;
 
-	/** @var int[] */
 	protected const MENTORSHIP_STATES = [
 		self::MENTORSHIP_DISABLED,
 		self::MENTORSHIP_ENABLED,

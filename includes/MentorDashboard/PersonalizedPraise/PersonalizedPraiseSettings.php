@@ -22,14 +22,11 @@ use MessageLocalizer;
  */
 class PersonalizedPraiseSettings {
 
-	/** @var int */
 	public const NOTIFY_NEVER = -1;
-	/** @var int */
 	public const NOTIFY_IMMEDIATELY = 0;
 
-	/** @var string Note: This is hardcoded on the client side as well */
+	/** Note: This is hardcoded on the client side as well */
 	public const PREF_NAME = 'growthexperiments-personalized-praise-settings';
-	/** @var string */
 	public const USER_MESSAGE_PRELOAD_SUBPAGE_NAME = 'Personalized praise message';
 
 	private const SETTING_MESSAGE_SUBJECT = 'messageSubject';

@@ -15,13 +15,9 @@ use Wikimedia\Rdbms\IDBAccessObject;
 abstract class MentorStore implements ExpirationAwareness, LoggerAwareInterface {
 	use LoggerAwareTrait;
 
-	/** @var string */
 	public const ROLE_PRIMARY = 'primary';
-
-	/** @var string */
 	public const ROLE_BACKUP = 'backup';
 
-	/** @var string[] */
 	public const ROLES = [
 		self::ROLE_PRIMARY,
 		self::ROLE_BACKUP
