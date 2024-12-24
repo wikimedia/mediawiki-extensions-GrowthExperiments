@@ -627,7 +627,7 @@
 	"growthexperiments-homepage-special-contribute-title": "Editační tipy",
 	"growthexperiments-homepage-special-contribute-description": "Proveďte malé a jednoduché změny (přidání odkazu či korektury), abyste vylepšili existující články.",
 	"growthexperiments-homepage-special-contribute-cta": "Zobrazit editační tipy",
-	"growthexperiments-homepage-impact-contributions-link": "Zobrazit všechny {{GENDER:$2|vaše}} editace ($1)",
+	"growthexperiments-homepage-impact-contributions-link": "Zobrazit všechny vaše editace",
 	"growthexperiments-levelingup-getstarted-notification-header": "Vyzkoušejte Editační tipy a začněte tak tvořit {{GENDER:$2|své}} editační dovednosti",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Vyzkoušet editační tipy",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Další informace",
