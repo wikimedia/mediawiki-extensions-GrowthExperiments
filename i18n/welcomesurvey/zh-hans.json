@@ -18,7 +18,8 @@
 			"羊羊32521",
 			"魔琴",
 			"Stang",
-			"LittlePaw365"
+			"LittlePaw365",
+			"Winston Sung"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|欢迎}}，$1！",
@@ -34,7 +35,7 @@
 	"welcomesurvey-sidebar-editing-title": "开始编辑",
 	"welcomesurvey-sidebar-editing-text": "几乎每个页面都可以由任何人来编辑，每小时会有数百次修改，增加内容，纠正错误，提高可读性。如果{{GENDER:$1|您}}有兴趣作出贡献，下面的页面可以帮到{{GENDER:$1|您}}。",
 	"welcomesurvey-sidebar-editing-link1-text": "教程",
-	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:教程",
+	"welcomesurvey-sidebar-editing-link1-title": "Help:簡介",
 	"welcomesurvey-sidebar-editing-link2-text": "咨询台",
 	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:咨询台",
 	"welcomesurvey-question-reason-label": "{{GENDER:|您}}为什么想要创建账号呢？",
