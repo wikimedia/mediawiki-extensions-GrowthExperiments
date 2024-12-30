@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"O Breixo"
+			"O Breixo",
+			"Toliño"
 		]
 	},
-	"apihelp-query+growthtasks-param-topicsmode": "Modo de coincidencia dos temas."
+	"apihelp-query+growthtasks-param-topicsmode": "Modo de coincidencia dos temas.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Si",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Non"
 }
