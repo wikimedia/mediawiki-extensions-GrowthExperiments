@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"O Breixo"
+			"O Breixo",
+			"Toliño"
 		]
 	},
 	"apihelp-query+growthtasks-param-topicsmode": "Modo de coincidencia dos temas."

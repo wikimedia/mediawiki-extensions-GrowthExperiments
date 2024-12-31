@@ -11,7 +11,8 @@
 			"Michel Bakni",
 			"أيوب",
 			"أَحمد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Hubaishan"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "لوحة المرشدين",
@@ -194,7 +195,7 @@
 	"growthexperiments-manage-mentors-pretext-stored-at": "يتم تخزين قائمة المرشِدين في [[$1|نطاق الميدياويكي]]، بما في ذلك التاريخ.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "للتسجيل كمرشد، انتقلوا إلى [[Special:EnrollAsMentor]].",
 	"growthexperiments-manage-mentors-error-no-such-user": "خطأ: لا يوجد مستخدم يحمل معرف المستخدم المحدد. ربما يكون هذا خطأ داخليًا.",
-	"growthexperiments-manage-mentors-auto-assigned": "المرشِدون المعيّنون تلقائيًا للحسابات الجدبدة",
+	"growthexperiments-manage-mentors-auto-assigned": "المرشِدون المعيّنون تلقائيًا للحسابات الجديدة",
 	"growthexperiments-manage-mentors-auto-assigned-text": "عندما يقوم أحد المستخدمين الجدد بتسجيل حساب {{SITENAME}} الخاص بهم، يتم تعيين أحد المستخدمين التاليين تلقائيًا كمرشد لهم.",
 	"growthexperiments-manage-mentors-manually-assigned": "المرشِدون الذين يختارون مرشَديهم يدويًا",
 	"growthexperiments-manage-mentors-manually-assigned-text": "لا يتم تعيين حسابات جديدة تلقائيًا لهؤلاء المرشَدين. سيرشد المرشَدون في هذه القائمة فقط الحسابات التي يختارونها شخصياً، مما يجعل هذه الميزة مثالية لمقدمي ورشة عمل يرغبون في مواصلة إرشاد المتشاركين.",

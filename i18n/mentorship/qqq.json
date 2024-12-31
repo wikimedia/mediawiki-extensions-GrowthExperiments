@@ -6,7 +6,8 @@
 			"McDutchie",
 			"Robby",
 			"Xiplus",
-			"Ата"
+			"Ата",
+			"Pppery"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Title of a special page\n\n{{doc-growthexperiments-mentor-dashboard}}",
@@ -215,7 +216,7 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "Header of mentor removal form in Special:ManageMentors",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Label in mentor removal form in Special:ManageMentors",
 	"growthexperiments-manage-mentors-remove-mentor-success": "Success message shown after a mentor is successfully removed via Special:ManageMentors.",
-	"growhtexperiments-manage-mentors-add-mentor": "Button label in Special:ManageMentors",
+	"growhtexperiments-manage-mentors-add-mentor": "Button label in Special:ManageMentors to add another user as a new mentor",
 	"growthexperiments-manage-mentors-add-mentor-pretext": "Header of the mentor addition form in Special:ManageMentors",
 	"growthexperiments-manage-mentors-add-mentor-username": "Label in add a mentor form in Special:ManageMentors",
 	"growthexperiments-manage-mentors-add-mentor-reason": "Label in add a mentor form in Special:ManageMentors",
