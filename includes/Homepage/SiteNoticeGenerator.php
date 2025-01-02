@@ -71,6 +71,12 @@ class SiteNoticeGenerator {
 		}
 	}
 
+	/**
+	 * @param string &$siteNotice
+	 * @param \Skin $skin
+	 * @param bool &$minervaEnableSiteNotice
+	 * @return bool|void Hook return value (ie. false to prevent other notices from displaying)
+	 */
 	private function maybeShowIfUserAbandonedWelcomeSurvey(
 		&$siteNotice, \Skin $skin, &$minervaEnableSiteNotice
 	) {
