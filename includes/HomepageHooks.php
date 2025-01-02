@@ -591,7 +591,7 @@ class HomepageHooks implements
 		}
 	}
 
-	private static function titleIsUserPageOrUserTalk( Title $title, User $user ) {
+	private static function titleIsUserPageOrUserTalk( Title $title, User $user ): bool {
 		$userpage = $user->getUserPage();
 		$usertalk = $user->getTalkPage();
 		return $title->equals( $userpage ) ||
@@ -1055,7 +1055,7 @@ class HomepageHooks implements
 		}
 	}
 
-	private static function getZeroContributionsHtml( SpecialPage $sp, $wrapperClasses = '' ) {
+	private static function getZeroContributionsHtml( SpecialPage $sp, string $wrapperClasses = '' ): string {
 		$linkUrl = SpecialPage::getTitleFor( 'Homepage' )
 			->getFullURL( [ 'source' => 'specialcontributions' ] );
 		return Html::rawElement( 'div', [ 'class' => 'mw-ge-contributions-zero ' . $wrapperClasses ],

@@ -78,7 +78,7 @@ class InitWikiConfig extends Maintenance {
 			WikiMap::getCurrentWikiId();
 	}
 
-	private function getEditSummary() {
+	private function getEditSummary(): string {
 		$summary = 'Configuration for [[mw:Growth/Personalized first day/Newcomer homepage]].';
 		if ( $this->hasOption( 'phab' ) ) {
 			$summary .= ' See [[phab:' . $this->getOption( 'phab' ) . ']] for more information.';

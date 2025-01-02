@@ -232,13 +232,13 @@ class QuestionStore {
 		}
 	}
 
-	private function saveToUserSettings( $storage, $formattedQuestions ) {
+	private function saveToUserSettings( string $storage, string $formattedQuestions ) {
 		$updateUser = $this->user->getInstanceForUpdate();
 		$this->userOptionsManager->setOption( $updateUser, $storage, $formattedQuestions );
 		$updateUser->saveSettings();
 	}
 
-	private function saveToUserSettingsWithJob( $storage, $formattedQuestions ) {
+	private function saveToUserSettingsWithJob( string $storage, string $formattedQuestions ) {
 		$job = new UserOptionsUpdateJob( [
 			'userId' => $this->user->getId(),
 			'options' => [ $storage => $formattedQuestions ]
@@ -246,17 +246,17 @@ class QuestionStore {
 		$this->jobQueueGroup->lazyPush( $job );
 	}
 
-	private function encodeQuestionsToJson( array $questionRecords ) {
+	private function encodeQuestionsToJson( array $questionRecords ): string {
 		return FormatJson::encode( $questionRecords, false, FormatJson::ALL_OK );
 	}
 
-	private function prependQuestion( QuestionRecord $questionRecord ) {
+	private function prependQuestion( QuestionRecord $questionRecord ): array {
 		$questions = $this->loadQuestions();
 		array_unshift( $questions, $questionRecord );
 		return array_slice( $questions, 0, self::MAX_QUESTIONS );
 	}
 
-	private function assignArchiveUrl( QuestionRecord $questionRecord ) {
+	private function assignArchiveUrl( QuestionRecord $questionRecord ): QuestionRecord {
 		$revision = $this->revisionStore->getRevisionById( $questionRecord->getRevId(),
 			$this->wasPosted ? IDBAccessObject::READ_LATEST : IDBAccessObject::READ_NORMAL );
 		if ( !$revision ) {
@@ -288,7 +288,7 @@ class QuestionStore {
 		return $question;
 	}
 
-	private function isRevisionVisible( QuestionRecord $questionRecord ) {
+	private function isRevisionVisible( QuestionRecord $questionRecord ): bool {
 		$revision = $this->revisionStore->getRevisionById( $questionRecord->getRevId() );
 		return $revision && $revision->getVisibility() === 0;
 	}

@@ -368,7 +368,7 @@ abstract class QuestionPoster {
 		return Status::newGood();
 	}
 
-	private function getNumberedSectionHeaderIfDuplicatesExist( $sectionHeader ) {
+	private function getNumberedSectionHeaderIfDuplicatesExist( string $sectionHeader ): string {
 		$sectionHeaders = array_map(
 			static function ( QuestionRecord $questionRecord ) {
 				return $questionRecord->getSectionHeader();
@@ -637,7 +637,7 @@ abstract class QuestionPoster {
 		return $status;
 	}
 
-	private function getBody() {
+	private function getBody(): string {
 		return $this->body;
 	}
 

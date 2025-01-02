@@ -94,7 +94,7 @@ class WelcomeSurveyHooks implements
 		}
 	}
 
-	private function isWelcomeSurveyEnabled() {
+	private function isWelcomeSurveyEnabled(): bool {
 		return $this->config->get( 'WelcomeSurveyEnabled' );
 	}
 

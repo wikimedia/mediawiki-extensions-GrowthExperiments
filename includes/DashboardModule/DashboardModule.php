@@ -360,7 +360,7 @@ abstract class DashboardModule implements IDashboardModule {
 		return $icon . $text;
 	}
 
-	private function getBackIcon() {
+	private function getBackIcon(): string {
 		return Html::rawElement(
 			'a',
 			[

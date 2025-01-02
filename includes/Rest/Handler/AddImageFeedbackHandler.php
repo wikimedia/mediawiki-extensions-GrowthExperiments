@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
+use Exception;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
@@ -185,7 +186,7 @@ class AddImageFeedbackHandler extends SimpleHandler {
 		$this->validateToken();
 	}
 
-	private function makeException( string $messageKey, array $params = [], int $errorCode = 400 ) {
+	private function makeException( string $messageKey, array $params = [], int $errorCode = 400 ): Exception {
 		return new LocalizedHttpException( new MessageValue( $messageKey, $params ), $errorCode );
 	}
 

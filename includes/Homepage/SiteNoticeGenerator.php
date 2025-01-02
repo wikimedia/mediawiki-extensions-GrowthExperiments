@@ -88,7 +88,7 @@ class SiteNoticeGenerator {
 		}
 	}
 
-	private function isWelcomeSurveyInReferer( \Skin $skin ) {
+	private function isWelcomeSurveyInReferer( \Skin $skin ): bool {
 		foreach ( $skin->getLanguage()->getSpecialPageAliases()['WelcomeSurvey'] as $alias ) {
 			if ( strpos( $skin->getRequest()->getHeader( 'REFERER' ), $alias ) !== false ) {
 				return true;

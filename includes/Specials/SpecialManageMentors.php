@@ -108,7 +108,7 @@ class SpecialManageMentors extends SpecialPage {
 		return new MWTimestamp( $this->userEditTracker->getLatestEditTimestamp( $user ) );
 	}
 
-	private function makeUserLink( UserIdentity $user ) {
+	private function makeUserLink( UserIdentity $user ): string {
 		return Linker::userLink(
 			$user->getId(),
 			$user->getName()
