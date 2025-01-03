@@ -38,7 +38,7 @@
 		{
 			"files": [ "**/*.js" ],
 			"extends": [
-				"wikimedia/client-es6"
+				"wikimedia/client"
 			]
 		},
 		{
