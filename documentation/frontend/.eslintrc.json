@@ -1,6 +1,6 @@
 {
 	"root": true,
-	"extends": [ "wikimedia/mediawiki", "wikimedia/client-es6" ],
+	"extends": [ "wikimedia/mediawiki", "wikimedia/client" ],
 	"rules": {
 		"vue/component-name-in-template-casing": [ "error", "kebab-case" ],
 		"vue/no-unsupported-features": [
@@ -11,7 +11,7 @@
 	"overrides": [
 		{
 			"files": [ "docs/*.cjs" ],
-			"extends": [ "wikimedia/mediawiki", "wikimedia/client-es6" ]
+			"extends": [ "wikimedia/mediawiki", "wikimedia/client" ]
 		},
 		{
 			"files": [ "vite.components.config.js", "vitest.config.js" ],
