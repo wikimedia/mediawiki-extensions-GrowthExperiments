@@ -34,7 +34,8 @@
 			"Framawiki",
 			"SleaY",
 			"MacOS Weed",
-			"Goombiis"
+			"Goombiis",
+			"LD"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Bonjour, {{GENDER:$1|}}{{bidi:$1}} !",

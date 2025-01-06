@@ -7,10 +7,12 @@
 	},
 	"growthexperiments-homepage-email-changelink": "փոխել",
 	"growthexperiments-homepage-email-confirmlink": "հաստատել",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Եղած է",
 	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3-5 վայրկեան",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Եղած է",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Յղումներ",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Շարունակել",
 	"growthexperiments-addlink-context-button-accept": "Այո",
-	"growthexperiments-addlink-context-button-reject": "Ոչ"
+	"growthexperiments-addlink-context-button-reject": "Ոչ",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Եղած է"
 }
