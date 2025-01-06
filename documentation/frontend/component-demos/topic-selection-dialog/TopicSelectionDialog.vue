@@ -15,7 +15,6 @@ import { CdxDialog } from '@wikimedia/codex';
 
 export default {
 	name: 'TopicSelectionDialog',
-	compatConfig: { MODE: 3 },
 	components: {
 		CdxDialog
 	}

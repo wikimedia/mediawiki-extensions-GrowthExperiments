@@ -33,7 +33,6 @@ const { useModelWrapper, useSplitAttributes } = require( '@wikimedia/codex' );
 
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	name: 'CNumberInput',
 	/**

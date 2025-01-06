@@ -73,7 +73,6 @@ const LIMIT_OPTIONS = [ 5, 10, 15, 20, 25 ];
 // TODO: possibly create one or more Vuex stores for the table fields/rows/filters
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxIcon,

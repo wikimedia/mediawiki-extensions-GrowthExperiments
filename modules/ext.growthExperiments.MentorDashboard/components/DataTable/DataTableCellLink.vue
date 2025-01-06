@@ -15,7 +15,6 @@ const alignValidator = require( '../../validators/align-text.validator.js' );
 const DataTableCellValue = require( './DataTableCellValue.vue' );
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		DataTableCellValue

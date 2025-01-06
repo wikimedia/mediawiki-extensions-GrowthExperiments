@@ -163,7 +163,6 @@ import { useModelWrapper } from '@wikimedia/codex';
 import OnboardingDialog from './OnboardingDialog.vue';
 
 export default {
-	compatConfig: { MODE: 3 },
 	name: 'AddLinkDialog',
 	components: {
 		OnboardingDialog

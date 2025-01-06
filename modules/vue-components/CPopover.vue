@@ -70,7 +70,6 @@ const clickOutside = require( './directives/click-outside.directive.js' );
  */
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxButton,
