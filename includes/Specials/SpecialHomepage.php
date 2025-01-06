@@ -150,7 +150,7 @@ class SpecialHomepage extends SpecialPage {
 		);
 		$platform = ( $this->isMobile ? 'mobile' : 'desktop' );
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
-			->getTiming( 'special_homepage_server_side_render_milliseconds' )
+			->getTiming( 'special_homepage_server_side_render_seconds' )
 			->setLabel( 'platform', $platform )
 			->copyToStatsdAt( "timing.growthExperiments.specialHomepage.serverSideRender." . $platform )
 			->observe( microtime( true ) - $startTime );
