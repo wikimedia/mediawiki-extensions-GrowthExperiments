@@ -154,7 +154,6 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 		} else {
 			$linkRecommendation = null;
 			$this->incrementCounter( 'no_recommendations_added' );
-			$this->addMessagesFromStatus( $updateStatus );
 		}
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
 			->getTiming( 'surfacing_link_recommendation_api_processing_candidate_seconds' )
