@@ -32,7 +32,6 @@ const PersonalizedPraiseSettingsForm = require( './PersonalizedPraiseSettingsFor
 
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxButton,

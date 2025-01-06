@@ -27,7 +27,6 @@ const { cdxIconExpand, cdxIconCollapse } = require( '../../../vue-components/ico
 const MenteeFiltersForm = require( './MenteeFiltersForm.vue' );
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxButton,

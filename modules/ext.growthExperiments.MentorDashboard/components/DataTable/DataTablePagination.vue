@@ -34,7 +34,6 @@ const { cdxIconNext, cdxIconPrevious } = require( '../../../vue-components/icons
 
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxIcon,

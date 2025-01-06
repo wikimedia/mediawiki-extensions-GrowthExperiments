@@ -68,7 +68,6 @@ const CPopover = require( './CPopover.vue' );
 // growthexperiments-info-tooltip-close-label
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxButton,

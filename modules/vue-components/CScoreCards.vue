@@ -122,7 +122,6 @@ const { NO_DATA_CHARACTER, DATA_ROWS_LIMIT } = require( '../ext.growthExperiment
 
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CScoreCard,

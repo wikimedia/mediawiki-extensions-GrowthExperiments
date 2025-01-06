@@ -26,7 +26,6 @@ const CText = require( '../../vue-components/CText.vue' );
 
 // @vue/component
 module.exports = exports = {
-	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CText,
