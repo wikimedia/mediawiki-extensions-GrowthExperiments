@@ -23,10 +23,8 @@ require_once "$IP/maintenance/Maintenance.php";
 class ListTaskCounts extends Maintenance {
 
 	/** @var string 'growth' or 'ores' */
-	private $topicType;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
+	private string $topicType;
+	private ConfigurationLoader $configurationLoader;
 
 	public function __construct() {
 		parent::__construct();

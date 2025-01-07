@@ -9,12 +9,9 @@ use MediaWiki\Rest\SimpleHandler;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class MenteesPrefixSearchHandler extends SimpleHandler {
-	/** @var MenteeOverviewDataProvider */
-	private $dataProvider;
 
-	/**
-	 * @param MenteeOverviewDataProvider $dataProvider
-	 */
+	private MenteeOverviewDataProvider $dataProvider;
+
 	public function __construct(
 		MenteeOverviewDataProvider $dataProvider
 	) {

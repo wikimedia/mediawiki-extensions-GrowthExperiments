@@ -41,22 +41,11 @@ class SpecialHomepage extends SpecialPage {
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.
 	 * Used by various EventLogging schemas to correlate events.
 	 */
-	private $pageviewToken;
-
-	/** @var TitleFactory */
-	private $titleFactory;
+	private string $pageviewToken;
+	private TitleFactory $titleFactory;
 	private bool $isMobile;
 	private StatsFactory $statsFactory;
 
-	/**
-	 * @param HomepageModuleRegistry $moduleRegistry
-	 * @param StatsFactory $statsFactory
-	 * @param ExperimentUserManager $experimentUserManager
-	 * @param MentorManager $mentorManager
-	 * @param Config $wikiConfig
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param TitleFactory $titleFactory
-	 */
 	public function __construct(
 		HomepageModuleRegistry $moduleRegistry,
 		StatsFactory $statsFactory,

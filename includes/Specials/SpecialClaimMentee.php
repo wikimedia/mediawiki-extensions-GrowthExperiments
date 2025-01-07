@@ -25,11 +25,6 @@ class SpecialClaimMentee extends FormSpecialPage {
 	private ChangeMentorFactory $changeMentorFactory;
 	private Config $wikiConfig;
 
-	/**
-	 * @param MentorProvider $mentorProvider
-	 * @param ChangeMentorFactory $changeMentorFactory
-	 * @param Config $wikiConfig
-	 */
 	public function __construct(
 		MentorProvider $mentorProvider,
 		ChangeMentorFactory $changeMentorFactory,

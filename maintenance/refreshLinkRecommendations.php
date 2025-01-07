@@ -40,32 +40,15 @@ require_once "$IP/maintenance/Maintenance.php";
  */
 class RefreshLinkRecommendations extends Maintenance {
 
-	/** @var Config */
-	private $growthConfig;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
-	/** @var TaskSuggester */
-	private $taskSuggester;
-
-	/** @var LinkRecommendationStore */
-	private $linkRecommendationStore;
-
-	/** @var LinkRecommendationUpdater */
-	private $linkRecommendationUpdater;
-
-	/** @var LinkRecommendationTaskType */
-	private $recommendationTaskType;
-
-	/** @var User */
-	private $searchUser;
+	private Config $growthConfig;
+	private TitleFactory $titleFactory;
+	private LinkBatchFactory $linkBatchFactory;
+	private ConfigurationLoader $configurationLoader;
+	private TaskSuggester $taskSuggester;
+	private LinkRecommendationStore $linkRecommendationStore;
+	private LinkRecommendationUpdater $linkRecommendationUpdater;
+	private LinkRecommendationTaskType $recommendationTaskType;
+	private User $searchUser;
 
 	public function __construct() {
 		parent::__construct();

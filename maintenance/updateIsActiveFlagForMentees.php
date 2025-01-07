@@ -19,20 +19,11 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class UpdateIsActiveFlagForMentees extends Maintenance {
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var UserEditTracker */
-	private $userEditTracker;
-
-	/** @var UserFactory */
-	private $userFactory;
-
-	/** @var ILoadBalancer */
-	private $growthLoadBalancer;
-
-	/** @var MentorStore */
-	private $mentorStore;
+	private UserIdentityLookup $userIdentityLookup;
+	private UserEditTracker $userEditTracker;
+	private UserFactory $userFactory;
+	private ILoadBalancer $growthLoadBalancer;
+	private MentorStore $mentorStore;
 
 	public function __construct() {
 		parent::__construct();

@@ -31,11 +31,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 		'homepage-mentorship' =>
 			[ QuestionPosterFactory::SOURCE_MENTORSHIP_MODULE, QuestionPosterFactory::TARGET_MENTOR_TALK ],
 	];
-
-	/**
-	 * @var QuestionPosterFactory
-	 */
-	private $questionPosterFactory;
+	private QuestionPosterFactory $questionPosterFactory;
 
 	/**
 	 * @param ApiMain $mainModule

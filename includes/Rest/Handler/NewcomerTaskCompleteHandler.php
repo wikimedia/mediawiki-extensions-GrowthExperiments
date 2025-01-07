@@ -14,14 +14,8 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class NewcomerTaskCompleteHandler extends SimpleHandler {
 
-	/**
-	 * @var NewcomerTasksChangeTagsManager
-	 */
-	private $newcomerTasksChangeTagsManager;
+	private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager;
 
-	/**
-	 * @param NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
-	 */
 	public function __construct( NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager ) {
 		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
 	}

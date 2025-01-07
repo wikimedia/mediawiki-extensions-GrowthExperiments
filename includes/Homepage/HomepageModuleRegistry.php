@@ -26,18 +26,14 @@ use OutOfBoundsException;
  */
 class HomepageModuleRegistry {
 
-	/** @var MediaWikiServices */
-	private $services;
+	private MediaWikiServices $services;
 
-	/** @var callable[] id => factory method */
-	private $wiring;
+	/** @var callable[]|null id => factory method */
+	private ?array $wiring = null;
 
 	/** @var IDashboardModule[] id => module */
-	private $modules = [];
+	private array $modules = [];
 
-	/**
-	 * @param MediaWikiServices $services
-	 */
 	public function __construct( MediaWikiServices $services ) {
 		$this->services = $services;
 	}

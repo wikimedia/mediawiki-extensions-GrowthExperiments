@@ -36,32 +36,26 @@ class ImportOresTopics extends Maintenance {
 	/** Use random topics. */
 	public const TOPIC_SOURCE_RANDOM = 'random';
 
-	/** @var WeightedTagsUpdater */
-	private $weightedTagsUpdater;
+	private WeightedTagsUpdater $weightedTagsUpdater;
+	private TitleFactory $titleFactory;
+	private LinkBatchFactory $linkBatchFactory;
 
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
-
-	/** @var bool Are we on the beta cluster? */
-	private $isBeta;
+	private bool $isBeta;
 
 	/** @var string Source of ORES topic information; one of TOPIC_SOURCE_* */
-	private $topicSource;
+	private string $topicSource;
 
 	/** @var bool Use verbose output. */
-	private $verbose;
+	private bool $verbose;
 
 	/** @var string|null MediaWiki API URL for the production wiki. */
-	private $apiUrl;
+	private ?string $apiUrl;
 
 	/** @var string|null Wiki ID of the production wiki. */
-	private $wikiId;
+	private ?string $wikiId;
 
 	/** @var bool|null Does the wiki have an 'articletopic' ORES model? */
-	private $wikiHasOresModel;
+	private ?bool $wikiHasOresModel;
 
 	public function __construct() {
 		parent::__construct();

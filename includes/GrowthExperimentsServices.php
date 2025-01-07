@@ -73,8 +73,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
  */
 class GrowthExperimentsServices {
 
-	/** @var MediaWikiServices */
-	private $coreServices;
+	private MediaWikiServices $coreServices;
 
 	/**
 	 * @param MediaWikiServices $coreServices

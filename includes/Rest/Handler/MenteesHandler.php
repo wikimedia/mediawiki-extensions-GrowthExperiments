@@ -26,32 +26,14 @@ use Wikimedia\ParamValidator\ParamValidator;
  * mentees. Users who never were a mentor will receive an empty array anyway.
  */
 class MenteesHandler extends SimpleHandler {
-	/** @var MenteeOverviewDataProvider */
-	private $dataProvider;
 
-	/** @var StarredMenteesStore */
-	private $starredMenteesStore;
+	private MenteeOverviewDataProvider $dataProvider;
+	private StarredMenteesStore $starredMenteesStore;
+	private UserFactory $userFactory;
+	private TitleFactory $titleFactory;
+	private TitleParser $titleParser;
+	private LinkBatchFactory $linkBatchFactory;
 
-	/** @var UserFactory */
-	private $userFactory;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var TitleParser */
-	private $titleParser;
-
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
-
-	/**
-	 * @param MenteeOverviewDataProvider $dataProvider
-	 * @param StarredMenteesStore $starredMenteesStore
-	 * @param UserFactory $userFactory
-	 * @param TitleFactory $titleFactory
-	 * @param TitleParser $titleParser
-	 * @param LinkBatchFactory $linkBatchFactory
-	 */
 	public function __construct(
 		MenteeOverviewDataProvider $dataProvider,
 		StarredMenteesStore $starredMenteesStore,
