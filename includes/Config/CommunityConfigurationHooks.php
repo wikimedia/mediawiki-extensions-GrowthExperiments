@@ -57,7 +57,10 @@ class CommunityConfigurationHooks implements
 				if ( !LevelingUpManager::isEnabledForAnyone( $this->config ) ) {
 					unset(
 						$rootSchema['properties']['GELevelingUpGetStartedMaxTotalEdits'],
+						// TODO: remove once migration for adding GELevelingUpKeepGoingNotificationThresholdsMaximum,
+						//  is run T366139
 						$rootSchema['properties']['GELevelingUpKeepGoingNotificationThresholds'],
+						$rootSchema['properties']['GELevelingUpKeepGoingNotificationThresholdsMaximum'],
 					);
 				}
 				break;
