@@ -3249,6 +3249,10 @@
 		"GELinkRecommendationMinimumTasksPerTopic": {
 			"value": 500,
 			"description": "Minimum number of link recommendation tasks to maintain per ORES topic."
+		},
+		"GELevelingUpKeepGoingNotificationThresholdsMaximum": {
+			"description": "Maximum edit count threshold at which the user should receive a 'keep going' notification for suggested edits.",
+			"value": 4
 		}
 	},
 	"SpecialPages": {

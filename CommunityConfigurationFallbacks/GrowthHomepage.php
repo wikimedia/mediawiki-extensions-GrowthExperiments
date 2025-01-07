@@ -9,4 +9,5 @@ return (object) array(
   ),
    'GELevelingUpGetStartedMaxTotalEdits' => 10,
    'GELevelingUpKeepGoingNotificationThresholds' => 4,
+   'GELevelingUpKeepGoingNotificationThresholdsMaximum' => 4,
 );

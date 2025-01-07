@@ -54,10 +54,14 @@ class CommunityConfigurationHooks implements
 				}
 				break;
 			case 'GrowthHomepage':
+				// TODO: remove once migration for adding GELevelingUpKeepGoingNotificationThresholdsMaximum is run,
+				// T366139
+
+				unset( $rootSchema['properties']['GELevelingUpKeepGoingNotificationThresholds'] );
 				if ( !LevelingUpManager::isEnabledForAnyone( $this->config ) ) {
 					unset(
 						$rootSchema['properties']['GELevelingUpGetStartedMaxTotalEdits'],
-						$rootSchema['properties']['GELevelingUpKeepGoingNotificationThresholds'],
+						$rootSchema['properties']['GELevelingUpKeepGoingNotificationThresholdsMaximum'],
 					);
 				}
 				break;
