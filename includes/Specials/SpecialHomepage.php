@@ -20,6 +20,7 @@ use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleFactory;
@@ -138,11 +139,20 @@ class SpecialHomepage extends SpecialPage {
 			$this->experimentUserManager->getVariant( $this->getUser() )
 		);
 		$platform = ( $this->isMobile ? 'mobile' : 'desktop' );
+		$overallSsrTimeInSeconds = microtime( true ) - $startTime;
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
 			->getTiming( 'special_homepage_server_side_render_seconds' )
 			->setLabel( 'platform', $platform )
-			->copyToStatsdAt( "timing.growthExperiments.specialHomepage.serverSideRender." . $platform )
-			->observe( microtime( true ) - $startTime );
+			->observeSeconds( $overallSsrTimeInSeconds );
+
+		// Stay backward compatible with the legacy Graphite-based dashboard
+		// feeding on this data.
+		// TODO: remove after switching to Prometheus-based dashboards
+		$services = MediaWikiServices::getInstance();
+		$services->getStatsdDataFactory()->timing(
+			'timing.growthExperiments.specialHomepage.serverSideRender.' . $platform,
+			$overallSsrTimeInSeconds
+		);
 
 		if ( $loggingEnabled &&
 			 ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&
@@ -296,17 +306,27 @@ class SpecialHomepage extends SpecialPage {
 		}
 	}
 
-	private function recordModuleRenderingTime( string $moduleName, string $mode, float $timeToRecord ): void {
+	private function recordModuleRenderingTime( string $moduleName, string $mode, float $timeToRecordInSeconds ): void {
 		$wiki = WikiMap::getCurrentWikiId();
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
-			->getTiming( 'special_homepage_ssr_milliseconds' )
+			->getTiming( 'special_homepage_ssr_per_module_seconds' )
 			->setLabel( 'wiki', $wiki )
 			->setLabel( 'module', $moduleName )
 			->setLabel( 'mode', $mode )
-			->copyToStatsdAt( implode( '.', [
-				$wiki, 'timing.growthExperiments.specialHomepage.ssr', $moduleName, $mode
-			] ) )
-			->observe( $timeToRecord );
+			->observeSeconds( $timeToRecordInSeconds );
+
+		// Stay backward compatible with the legacy Graphite-based dashboard
+		// feeding on this data.
+		// TODO: remove after switching to Prometheus-based dashboards
+		$services = MediaWikiServices::getInstance();
+		$services->getPerDbNameStatsdDataFactory()->timing(
+			implode( '.', [
+				'timing.growthExperiments.specialHomepage.ssr',
+				$moduleName,
+				$mode,
+			] ),
+			$timeToRecordInSeconds
+		);
 	}
 
 	/**

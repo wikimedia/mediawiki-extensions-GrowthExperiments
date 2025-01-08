@@ -158,7 +158,7 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
 			->getTiming( 'surfacing_link_recommendation_api_processing_candidate_seconds' )
 			->setLabel( 'wiki', WikiMap::getCurrentWikiId() )
-			->observe( microtime( true ) - $processingCandidateStartTimeSeconds );
+			->observeSeconds( microtime( true ) - $processingCandidateStartTimeSeconds );
 		return $linkRecommendation;
 	}
 

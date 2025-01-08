@@ -889,7 +889,8 @@ return [
 				$growthServices->getNewcomerTasksUserOptionsLookup(),
 				$services->getSearchEngineFactory(),
 				$services->getLinkBatchFactory(),
-				$services->getStatsFactory()
+				$services->getStatsFactory(),
+				$services->getStatsdDataFactory()
 			);
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
 				$taskSuggesterFactory,

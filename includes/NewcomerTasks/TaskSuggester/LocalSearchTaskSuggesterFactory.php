@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Cache\LinkBatchFactory;
 use SearchEngineFactory;
 use StatusValue;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\Stats\StatsFactory;
 
 /**
@@ -20,6 +21,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	private $searchEngineFactory;
 
 	private StatsFactory $statsFactory;
+	private IBufferingStatsdDataFactory $statsdDataFactory;
 
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
@@ -29,6 +31,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param SearchEngineFactory $searchEngineFactory
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param StatsFactory $statsFactory
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -37,7 +40,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		SearchEngineFactory $searchEngineFactory,
 		LinkBatchFactory $linkBatchFactory,
-		StatsFactory $statsFactory
+		StatsFactory $statsFactory,
+		IBufferingStatsdDataFactory $statsdDataFactory
 	) {
 		parent::__construct(
 			$taskTypeHandlerRegistry,
@@ -48,6 +52,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		);
 		$this->searchEngineFactory = $searchEngineFactory;
 		$this->statsFactory = $statsFactory;
+		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**
@@ -72,7 +77,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->linkBatchFactory,
 			$taskTypes,
 			$topics,
-			$this->statsFactory
+			$this->statsFactory,
+			$this->statsdDataFactory
 		);
 		$suggester->setLogger( $this->logger );
 		return $suggester;

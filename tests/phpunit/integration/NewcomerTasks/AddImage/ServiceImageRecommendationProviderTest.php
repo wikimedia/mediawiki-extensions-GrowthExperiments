@@ -159,8 +159,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$statsDataFactory->method( 'withComponent' )->willReturnSelf();
 		$timing = $this->createMock( TimingMetric::class );
 		$timing->method( 'setLabel' )->willReturnSelf();
-		$timing->method( 'copyToStatsdAt' )->willReturnSelf();
-		$timing->method( 'observe' )->willReturnSelf();
+		$timing->method( 'observeSeconds' )->willReturnSelf();
 		$statsDataFactory->method( 'getTiming' )->willReturn( $timing );
 
 		$expectedKeys = [
@@ -168,7 +167,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			'process_api_response_data' => true,
 		];
 		$timing->expects( $this->exactly( 2 ) )
-			->method( 'observe' )
+			->method( 'observeSeconds' )
 			->willReturnCallback( function ( $arg1 ) use ( &$expectedKeys ) {
 				$this->assertIsFloat( $arg1 );
 			} );
@@ -720,8 +719,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 
 		$timing = $this->createMock( TimingMetric::class );
 		$timing->method( 'setLabel' )->willReturnSelf();
-		$timing->method( 'copyToStatsdAt' )->willReturnSelf();
-		$timing->method( 'observe' )->willReturnSelf();
+		$timing->method( 'observeSeconds' )->willReturnSelf();
 		$stats->method( 'getTiming' )->willReturn( $timing );
 
 		return $stats;
