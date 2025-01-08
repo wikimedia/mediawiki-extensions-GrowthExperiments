@@ -15,8 +15,8 @@ class SpecialWelcomeSurveyPage extends Page {
 		return $( "button[value='Finish']" );
 	}
 
-	open() {
-		super.openTitle( 'Special:WelcomeSurvey', { _group: 'control' } );
+	async open() {
+		return super.openTitle( 'Special:WelcomeSurvey', { _group: 'control' } );
 	}
 
 }

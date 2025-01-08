@@ -16,8 +16,8 @@ class PreferencesPage extends Page {
 		return $( '[name="wpgrowthexperiments-homepage-enable"]' );
 	}
 
-	open() {
-		super.openTitle( 'Special:Preferences' );
+	async open() {
+		return super.openTitle( 'Special:Preferences' );
 	}
 
 	clickHomepageCheckBox() {

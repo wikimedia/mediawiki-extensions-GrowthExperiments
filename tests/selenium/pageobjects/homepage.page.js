@@ -65,10 +65,10 @@ class HomepagePage extends Page {
 		return $( '.mw-ge-postEditDrawer .mw-ge-small-task-card' );
 	}
 
-	open( query, fragment ) {
+	async open( query, fragment ) {
 		query = query || {};
 		fragment = fragment || '';
-		super.openTitle( 'Special:Homepage', query, fragment );
+		return super.openTitle( 'Special:Homepage', query, fragment );
 	}
 
 	async assertCardTitleIs( titleText ) {
