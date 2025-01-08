@@ -7,6 +7,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Stats\StatsFactory;
@@ -149,7 +150,7 @@ class UpdateMenteeData extends Maintenance {
 			}
 		}
 
-		$totalTime = time() - $startTime;
+		$totalTimeInSeconds = time() - $startTime;
 		$profilingInfo = $this->getSummarizedProfilingInfoInSeconds();
 
 		if ( $this->hasOption( 'verbose' ) ) {
@@ -165,9 +166,16 @@ class UpdateMenteeData extends Maintenance {
 				->getTiming( 'update_mentee_data_seconds' )
 				->setLabel( 'shard', $this->getOption( 'dbshard' ) )
 				->setLabel( 'type', 'total' )
-				->copyToStatsdAt( 'timing.growthExperiments.updateMenteeData.' .
-					$this->getOption( 'dbshard' ) . '.total' )
-				->observe( $totalTime );
+				->observeSeconds( $totalTimeInSeconds );
+
+			// Stay backward compatible with the legacy Graphite-based dashboard
+			// feeding on this data.
+			// TODO: remove after switching to Prometheus-based dashboards
+			$statsdDataFactory = MediaWikiServices::getInstance()->getStatsdDataFactory();
+			$statsdDataFactory->timing(
+				'timing.growthExperiments.updateMenteeData.' . $this->getOption( 'dbshard' ) . '.total',
+				$totalTimeInSeconds
+			);
 
 			foreach ( $profilingInfo as $section => $seconds ) {
 				$this->statsFactory->withComponent( 'GrowthExperiments' )
@@ -177,11 +185,19 @@ class UpdateMenteeData extends Maintenance {
 					->setLabel( 'section', $section )
 					->copyToStatsdAt( 'timing.growthExperiments.updateMenteeData.' .
 						$this->getOption( 'dbshard' ) . '.' . $section )
-					->observe( $seconds );
+					->observeSeconds( $seconds );
+
+				// Stay backward compatible with the legacy Graphite-based dashboard
+				// feeding on this data.
+				// TODO: remove after switching to Prometheus-based dashboards
+				$statsdDataFactory->timing(
+					'timing.growthExperiments.updateMenteeData.' . $this->getOption( 'dbshard' ) . '.' . $section,
+					$seconds
+				);
 			}
 		}
 
-		$this->output( "Done. Took {$totalTime} seconds.\n" );
+		$this->output( "Done. Took {$totalTimeInSeconds} seconds.\n" );
 	}
 }
 

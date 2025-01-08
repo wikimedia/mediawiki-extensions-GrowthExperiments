@@ -18,6 +18,7 @@ use MediaWiki\User\UserIdentity;
 use SearchEngine;
 use SearchEngineFactory;
 use StatusValue;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\Stats\StatsFactory;
 
 /**
@@ -29,6 +30,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	private $searchEngineFactory;
 
 	private StatsFactory $statsFactory;
+	private IBufferingStatsdDataFactory $statsdDataFactory;
 
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
@@ -39,6 +41,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
 	 * @param StatsFactory $statsFactory
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -48,12 +51,14 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		LinkBatchFactory $linkBatchFactory,
 		array $taskTypes,
 		array $topics,
-		StatsFactory $statsFactory
+		StatsFactory $statsFactory,
+		IBufferingStatsdDataFactory $statsdDataFactory
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
 			$linkBatchFactory, $taskTypes, $topics );
 		$this->searchEngineFactory = $searchEngineFactory;
 		$this->statsFactory = $statsFactory->withComponent( 'GrowthExperiments' );
+		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/** @inheritDoc */
@@ -66,11 +71,18 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	) {
 		$start = microtime( true );
 		$suggest = parent::suggest( $user, $taskSetFilters, $limit, $offset, $options );
+		$suggestTimeInSeconds = microtime( true ) - $start;
 		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
 			->setLabel( 'task_suggester', 'local' )
 			->setLabel( 'action', 'suggest' )
-			->copyToStatsdAt( "timing.growthExperiments.SearchTaskSuggester.suggest" )
-			->observe( microtime( true ) - $start );
+			->observeSeconds( $suggestTimeInSeconds );
+
+		// Stay backward compatible with the legacy Graphite-based dashboard
+		// feeding on this data.
+		// TODO: remove after switching to Prometheus-based dashboards
+		$this->statsdDataFactory->timing(
+			'timing.growthExperiments.SearchTaskSuggester.suggest', $suggestTimeInSeconds
+		);
 		return $suggest;
 	}
 
@@ -78,11 +90,18 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	public function filter( UserIdentity $user, TaskSet $taskSet ) {
 		$start = microtime( true );
 		$filter = parent::filter( $user, $taskSet );
+		$filterTimeInSeconds = microtime( true ) - $start;
 		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
 			->setLabel( 'task_suggester', 'local' )
 			->setLabel( 'action', 'filter' )
-			->copyToStatsdAt( "timing.growthExperiments.SearchTaskSuggester.filter" )
-			->observe( microtime( true ) - $start );
+			->observeSeconds( $filterTimeInSeconds );
+
+		// Stay backward compatible with the legacy Graphite-based dashboard
+		// feeding on this data.
+		// TODO: remove after switching to Prometheus-based dashboards
+		$this->statsdDataFactory->timing(
+			'timing.growthExperiments.SearchTaskSuggester.filter', $filterTimeInSeconds
+		);
 		return $filter;
 	}
 
@@ -141,19 +160,25 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			$query->setDebugUrl( SpecialPage::getTitleFor( 'Search' )
 				->getFullURL( $params, false, PROTO_CANONICAL ) );
 		}
-		$elapsed = microtime( true ) - $start;
+		$elapsedInSeconds = microtime( true ) - $start;
 		$this->logger->debug( 'LocalSearchTaskSuggester query', [
 			'query' => $query->getQueryString(),
 			'sort' => $query->getSort(),
 			'limit' => $limit,
 			'success' => $matches instanceof ISearchResultSet,
-			'elapsedTime' => $elapsed
+			'elapsedTime' => $elapsedInSeconds
 		] );
 		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
 			->setLabel( 'task_suggester', 'local' )
 			->setLabel( 'action', 'search' )
-			->copyToStatsdAt( "timing.growthExperiments.LocalSearchTaskSuggester.search" )
-			->observe( $elapsed );
+			->observeSeconds( $elapsedInSeconds );
+
+		// Stay backward compatible with the legacy Graphite-based dashboard
+		// feeding on this data.
+		// TODO: remove after switching to Prometheus-based dashboards
+		$this->statsdDataFactory->timing(
+			'timing.growthExperiments.LocalSearchTaskSuggester.search', $elapsedInSeconds
+		);
 
 		return $matches;
 	}

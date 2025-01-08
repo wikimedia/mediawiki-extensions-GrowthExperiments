@@ -10,6 +10,7 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use JobQueueGroup;
 use MediaWiki\Deferred\DeferredUpdates;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
@@ -73,10 +74,17 @@ class UserImpactHandler extends SimpleHandler {
 		}
 		$formattedJsonData = $this->userImpactFormatter->format( $userImpact, $pageviewsUrlDisplayLanguageCode );
 
+		$runTimeInSeconds = microtime( true ) - $start;
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
 			->getTiming( 'user_impact_handler_run_seconds' )
-			->copyToStatsdAt( 'timing.growthExperiments.UserImpactHandler.run' )
-			->observe( microtime( true ) - $start );
+			->observeSeconds( $runTimeInSeconds );
+
+		// Stay backward compatible with the legacy Graphite-based dashboard
+		// feeding on this data.
+		// TODO: remove after switching to Prometheus-based dashboards
+		MediaWikiServices::getInstance()->getStatsdDataFactory()->timing(
+			'timing.growthExperiments.UserImpactHandler.run', $runTimeInSeconds
+		);
 
 		return $formattedJsonData;
 	}
