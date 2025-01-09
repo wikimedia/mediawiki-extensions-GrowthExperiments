@@ -33,7 +33,6 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 
 	public function testDefaultTaskTypesDataWithEmptyConfig(): void {
 		$this->overrideConfigValues( [
-			'GEUseCommunityConfigurationExtension' => true,
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GENewcomerTasksImageRecommendationsEnabled' => true,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => true,
@@ -203,7 +202,6 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 
 	public function testDefaultTaskTypesDataWithPartialConfig(): void {
 		$this->overrideConfigValues( [
-			'GEUseCommunityConfigurationExtension' => true,
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GENewcomerTasksImageRecommendationsEnabled' => true,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => true,
