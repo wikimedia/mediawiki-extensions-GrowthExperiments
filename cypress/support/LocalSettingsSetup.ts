@@ -6,7 +6,8 @@ import * as path from 'path';
 const phpVersion = process.env.PHP_VERSION;
 const phpFpmService = 'php' + phpVersion + '-fpm';
 const ip = path.resolve( __dirname + '/../../../../' );
-const localSettingsPath = path.resolve( ip + '/LocalSettings.php' );
+const localSettingsPath = ( process.env.LOCAL_SETTINGS_PATH || path.resolve( ip + '/LocalSettings.php' ) ).toString();
+// eslint-disable-next-line security/detect-non-literal-fs-filename
 const localSettingsContents = fs.readFileSync( localSettingsPath, 'utf-8' );
 
 /**
@@ -38,6 +39,7 @@ async function restartPhpFpmService(): Promise<void> {
  */
 function overrideLocalSettings(): true {
 	console.log( 'Setting up modified ' + localSettingsPath );
+	// eslint-disable-next-line security/detect-non-literal-fs-filename
 	fs.writeFileSync( localSettingsPath,
 		localSettingsContents + `
 // Cypress test code (is supposed to be removed after the test suite, safe to delete)
@@ -58,6 +60,7 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/cypress/support/setupFixture
  */
 function restoreLocalSettings(): true {
 	console.log( 'Restoring original ' + localSettingsPath );
+	// eslint-disable-next-line security/detect-non-literal-fs-filename
 	fs.writeFileSync( localSettingsPath, localSettingsContents );
 	return true;
 }
