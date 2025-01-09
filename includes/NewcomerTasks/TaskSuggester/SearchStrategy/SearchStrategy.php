@@ -128,14 +128,6 @@ class SearchStrategy {
 	}
 
 	/**
-	 * @param LinkTarget[] $templates
-	 * @return string|null
-	 */
-	protected function getTemplateTerm( array $templates ) {
-		return 'hastemplate:' . $this->escapeSearchTitleList( $templates );
-	}
-
-	/**
 	 * @param Topic|null $topic
 	 * @return string|null
 	 */

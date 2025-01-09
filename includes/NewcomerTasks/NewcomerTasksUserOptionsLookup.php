@@ -264,14 +264,4 @@ class NewcomerTasksUserOptionsLookup {
 		}
 		return $stored;
 	}
-
-	/**
-	 * Check if the user is an internal pseudo-user who should see all task types.
-	 * @param UserIdentity $user
-	 * @return bool
-	 */
-	private function shouldUserSeeAllTaskTypes( UserIdentity $user ) {
-		return $user->getId() === 0 && $user->getName() === SuggestionsInfo::USER;
-	}
-
 }
