@@ -6,8 +6,9 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
-use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\WikiMap\WikiMap;
+use Wikimedia\Stats\StatsFactory;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -17,8 +18,8 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class UpdateMetrics extends Maintenance {
 
-	/** @var StatsdDataFactoryInterface */
-	private $statsDataFactory;
+	/** @var StatsFactory */
+	private $statsFactory;
 
 	/** @var MetricsFactory */
 	private $metricsFactory;
@@ -37,7 +38,7 @@ class UpdateMetrics extends Maintenance {
 	private function initServices(): void {
 		$services = $this->getServiceContainer();
 
-		$this->statsDataFactory = $services->getPerDbNameStatsdDataFactory();
+		$this->statsFactory = $services->getStatsFactory();
 		$this->metricsFactory = GrowthExperimentsServices::wrap( $services )
 			->getMetricsFactory();
 	}
@@ -47,6 +48,7 @@ class UpdateMetrics extends Maintenance {
 	 */
 	public function execute() {
 		$this->initServices();
+		$wiki = WikiMap::getCurrentWikiId();
 
 		foreach ( MetricsFactory::METRICS as $metricName ) {
 			try {
@@ -58,10 +60,12 @@ class UpdateMetrics extends Maintenance {
 			}
 
 			$metricValue = $metric->calculate();
-			$this->statsDataFactory->gauge(
-				$metric->getStatsdKey(),
-				$metricValue
-			);
+			$statsLibKey = $metric->getStatsLibKey();
+			$this->statsFactory->withComponent( 'GrowthExperiments' )
+				->getGauge( $statsLibKey )
+				->setLabel( 'wiki', $wiki )
+				->copyToStatsdAt( "$wiki." . $metric->getStatsdKey() )
+				->set( $metricValue );
 
 			if ( $this->hasOption( 'verbose' ) ) {
 				$this->output( $metricName . ' is ' . $metricValue . '.' . PHP_EOL );

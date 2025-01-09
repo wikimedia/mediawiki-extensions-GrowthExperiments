@@ -19,6 +19,14 @@ interface IMetric {
 	 * This is a per-wiki key.
 	 *
 	 * @return string
+	 * @deprecated Will be removed when StatsD support is dropped. Use getStatsLibKey() instead.
 	 */
 	public function getStatsdKey(): string;
+
+	/**
+	 * Get StatsLib compatible key for the metric
+	 *
+	 * @return string
+	 */
+	public function getStatsLibKey(): string;
 }
