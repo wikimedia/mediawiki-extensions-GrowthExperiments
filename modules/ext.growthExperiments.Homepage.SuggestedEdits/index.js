@@ -65,26 +65,39 @@
 		}
 
 		suggestedEditsModule.updateControls();
+
+		const clientSideLoadDuration = mw.now() - initTime, // Time since module init
+			serverDuration = mw.now() - mw.config.get( 'GEHomepageStartTime' );
 		// Track the TTI on client-side.
 		mw.track(
 			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.' +
 			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
-			mw.now() - initTime
+			clientSideLoadDuration
+		);
+		mw.track(
+			'stats.mediawiki_GrowthExperiments_suggested_edits_tti_seconds',
+			clientSideLoadDuration,
+			{
+				platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
+				// eslint-disable-next-line camelcase
+				includes_server_response_time: false
+			}
 		);
 		// Track the server side render start time (first line in SpecialHomepage#execute()) to
 		// TTI on client-side.
 		mw.track(
 			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.serverSideStartInclusive.' +
 			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
-			mw.now() - mw.config.get( 'GEHomepageStartTime' )
+			serverDuration
 		);
-		// FIXME: suggestedEditsLoadingComplete could probably be removed as it is now a duplicate of
-		// suggestedEditsTimeToInteractive. We can leave it for now in case we decide to rollback this change
-		// or make other adjustments in loading behavior.
 		mw.track(
-			'timing.growthExperiments.specialHomepage.modules.suggestedEditsLoadingComplete.' +
-			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
-			mw.now() - initTime
+			'stats.mediawiki_GrowthExperiments_suggested_edits_server_tti_seconds',
+			serverDuration,
+			{
+				platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
+				// eslint-disable-next-line camelcase
+				includes_server_response_time: true
+			}
 		);
 		return $.Deferred().resolve();
 	}

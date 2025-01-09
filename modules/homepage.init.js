@@ -23,6 +23,15 @@
 				navigationEntries[ 0 ].duration
 			);
 			mw.track(
+				'stats.mediawiki_GrowthExperiments_navigation_duration_seconds',
+				navigationEntries[ 0 ].duration,
+				{
+					// eslint-disable-next-line camelcase
+					navigation_type: navigationEntries[ 0 ].type,
+					wiki: mw.config.get( 'wgDBname' )
+				}
+			);
+			mw.track(
 				// Using 'timing' for transfer size sounds conceptually wrong, but we want
 				// the various features that statsd timing gives us (see
 				// https://github.com/statsd/statsd/blob/master/docs/metric_types.md)
@@ -34,6 +43,13 @@
 			mw.track(
 				'timing.growthExperiments.specialHomepage.paintStartTime',
 				performanceEntries[ 0 ].startTime
+			);
+			mw.track(
+				'stats.mediawiki_GrowthExperiments_paint_start_seconds',
+				performanceEntries[ 0 ].startTime,
+				{
+					platform: OO.ui.isMobile() ? 'mobile' : 'desktop'
+				}
 			);
 		}
 	}
