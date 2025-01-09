@@ -70,12 +70,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [], $lookup->getTopics( $user3 ) );
 		$this->assertSame( SearchStrategy::TOPIC_MATCH_MODE_OR, $lookup->getTopicsMatchMode( $user3 ) );
 
-		$config->set( 'GENewcomerTasksTopicType', PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
-		$lookup = new NewcomerTasksUserOptionsLookup(
-			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
-		);
-		$this->assertSame( [ 'topics' ], $lookup->getTopics( $user1 ) );
-
 		$config = new HashConfig( [
 			'GENewcomerTasksTopicType' => PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,

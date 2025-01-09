@@ -6,10 +6,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
-use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use MediaWiki\Linker\LinkTarget;
 use Wikimedia\Assert\Assert;
 
 /**
@@ -70,21 +68,13 @@ class SearchStrategy {
 				$query = $this->getMultiTopicIntersectionQuery(
 					$topics, $typeTerm, $pageIdTerm, $excludedPageIdTerm, $taskType
 				);
-				// don't randomize if we use topic matching with the morelike backend, which itself
-				// is a kind of sorting. Topic matching with the ORES backend already uses
-				// thresholds per topic so applying a random sort should be safe.
-				if ( $allTopicsAreOres ) {
-					$query->setSort( 'random' );
-				}
+				$query->setSort( 'random' );
 				$queries[$query->getId()] = $query;
 			} else {
 				if ( $allTopicsAreOres ) {
 					$query = $this->getMultiTopicUnionQuery(
 						$topics, $typeTerm, $pageIdTerm, $excludedPageIdTerm, $taskType
 					);
-					// don't randomize if we use topic matching with the morelike backend, which itself
-					// is a kind of sorting. Topic matching with the ORES backend already uses
-					// thresholds per topic so applying a random sort should be safe.
 					$query->setSort( 'random' );
 					$queries[$query->getId()] = $query;
 				} else {
@@ -92,9 +82,7 @@ class SearchStrategy {
 						$query = $this->getPerTopicQuery(
 							$topic, $typeTerm, $pageIdTerm, $excludedPageIdTerm, $taskType
 						);
-						if ( !$topic || $topic instanceof OresBasedTopic ) {
-							$query->setSort( 'random' );
-						}
+						$query->setSort( 'random' );
 						$queries[$query->getId()] = $query;
 					}
 				}
@@ -123,8 +111,13 @@ class SearchStrategy {
 	 */
 	protected function validateParams( array $taskTypes, array $topics ) {
 		Assert::parameterElementType( TaskType::class, $taskTypes, '$taskTypes' );
-		Assert::parameterElementType( [ OresBasedTopic::class, MorelikeBasedTopic::class,
-			CampaignTopic::class ], $topics, '$topics' );
+		Assert::parameterElementType( [ OresBasedTopic::class, CampaignTopic::class ], $topics, '$topics' );
+	}
+
+	private function isOresTopicSet( array $topics ): bool {
+		return array_reduce( $topics, static function ( $allAreOres, $topic ) {
+			return $allAreOres && $topic instanceof OresBasedTopic;
+		}, true );
 	}
 
 	/**
@@ -135,18 +128,10 @@ class SearchStrategy {
 		$topicTerm = null;
 		if ( $topic instanceof OresBasedTopic ) {
 			$topicTerm = $this->getOresBasedTopicTerm( [ $topic ] );
-		} elseif ( $topic instanceof MorelikeBasedTopic ) {
-			$topicTerm = $this->getMorelikeBasedTopicTerm( [ $topic ] );
 		} elseif ( $topic instanceof CampaignTopic ) {
 			$topicTerm = $topic->getSearchExpression();
 		}
 		return $topicTerm;
-	}
-
-	private function isOresTopicSet( array $topics ): bool {
-		return array_reduce( $topics, static function ( $allAreOres, $topic ) {
-			return $allAreOres && $topic instanceof OresBasedTopic;
-		}, true );
 	}
 
 	/**
@@ -154,14 +139,12 @@ class SearchStrategy {
 	 * @return string|null
 	 */
 	protected function getTopicsTerms( array $topics ): ?string {
-		$topicsByType = [ [], [], [] ];
+		$topicsByType = [ [], [] ];
 		foreach ( $topics as $topic ) {
 			if ( $topic instanceof OresBasedTopic ) {
 				array_push( $topicsByType[0], $topic );
-			} elseif ( $topic instanceof MorelikeBasedTopic ) {
-				array_push( $topicsByType[1], $topic );
 			} elseif ( $topic instanceof CampaignTopic ) {
-				array_push( $topicsByType[2], $topic->getSearchExpression() );
+				array_push( $topicsByType[1], $topic->getSearchExpression() );
 			}
 		}
 		$terms = [];
@@ -169,10 +152,7 @@ class SearchStrategy {
 			array_push( $terms, $this->getOresBasedTopicTerm( $topicsByType[0] ) );
 		}
 		if ( count( $topicsByType[1] ) > 0 ) {
-			array_push( $terms, $this->getMorelikeBasedTopicTerm( $topicsByType[1] ) );
-		}
-		if ( count( $topicsByType[2] ) > 0 ) {
-			array_push( $terms, implode( '', $topicsByType[2] ) );
+			array_push( $terms, implode( ' ', $topicsByType[1] ) );
 		}
 		return implode( ' ', $terms );
 	}
@@ -202,31 +182,6 @@ class SearchStrategy {
 			static function ( array $carry, OresBasedTopic $topic ) {
 				return array_merge( $carry, $topic->getOresTopics() );
 			}, [] ) );
-	}
-
-	/**
-	 * @param MorelikeBasedTopic[] $topics
-	 * @return string
-	 * @see https://www.mediawiki.org/wiki/Help:CirrusSearch#Morelike
-	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html
-	 */
-	protected function getMorelikeBasedTopicTerm( array $topics ) {
-		return 'morelikethis:' . $this->escapeSearchTitleList(
-			array_reduce( $topics, static function ( array $carry, MorelikeBasedTopic $topic ) {
-				return array_merge( $carry, $topic->getReferencePages() );
-			}, [] ) );
-	}
-
-	/**
-	 * Turns an array of pages into a CirrusSearch keyword value (pipe-separated, escaped).
-	 * Namespaces are omitted entirely.
-	 * @param LinkTarget[] $titles
-	 * @return string
-	 */
-	protected function escapeSearchTitleList( array $titles ) {
-		return '"' . implode( '|', array_map( static function ( LinkTarget $title ) {
-			return str_replace( [ '"', '?' ], [ '\"', '\?' ], $title->getDBkey() );
-		}, $titles ) ) . '"';
 	}
 
 	/**

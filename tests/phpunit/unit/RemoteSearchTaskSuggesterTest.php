@@ -14,7 +14,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Tests\InvokedBetween;
 use GrowthExperiments\Util;
@@ -104,8 +104,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			'success' => [
 				// all configured task types on the server (see getTaskTypes() for format)
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ] ],
-				// all configured topics on the server (see getTopics() for format)
-				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				// all configured topics on the server (topic => ores topics)
+				'topics' => [ 'art' => [ 'visual-arts' ], 'science' => [ 'stem' ] ],
 				// expectations + response for each request the suggester should make
 				'requests' => [
 					[
@@ -141,7 +141,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'multiple queries' => [
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ], 'link' => [ 'Link-1' ] ],
-				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'topics' => [ 'art' => [ 'visual-arts' ], 'science' => [ 'stem' ] ],
 				'requests' => [
 					[
 						'params' => [
@@ -189,7 +189,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'limit' => [
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ], 'link' => [ 'Link-1' ] ],
-				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'topics' => [ 'art' => [ 'visual-arts' ], 'science' => [ 'stem' ] ],
 				'requests' => [
 					[
 						'params' => [
@@ -235,7 +235,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'task type filter' => [
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ], 'link' => [ 'Link-1' ] ],
-				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'topics' => [ 'art' => [ 'visual-arts' ], 'science' => [ 'stem' ] ],
 				'requests' => [
 					[
 						'params' => [
@@ -261,41 +261,27 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'topic filter' => [
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ], 'link' => [ 'Link-1' ] ],
-				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'topics' => [ 'art' => [ 'visual-arts' ], 'science' => [ 'stem' ] ],
 				'requests' => [
 					[
 						'params' => [
-							'srsearch' => 'hastemplate:"Copy-1|Copy-2" morelikethis:"Music|Painting"',
+							'srsearch' => 'hastemplate:"Copy-1|Copy-2" articletopic:visual-arts|stem',
 						],
 						'response' => [
 							'query' => [
 								'search' => [
 									[ 'ns' => 0, 'title' => 'Foo' ],
-								],
-								'searchinfo' => [
-									'totalhits' => 70,
-								],
-							],
-						],
-					],
-					[
-						'params' => [
-							'srsearch' => 'hastemplate:"Copy-1|Copy-2" morelikethis:"Physics|Biology"',
-						],
-						'response' => [
-							'query' => [
-								'search' => [
 									[ 'ns' => 0, 'title' => 'Bar' ],
 								],
 								'searchinfo' => [
-									'totalhits' => 30,
+									'totalhits' => 100,
 								],
 							],
 						],
 					],
 					[
 						'params' => [
-							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Music|Painting"',
+							'srsearch' => 'hastemplate:"Link-1" articletopic:visual-arts|stem',
 						],
 						'response' => [
 							'query' => [
@@ -305,19 +291,6 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 								],
 								'searchinfo' => [
 									'totalhits' => 50,
-								],
-							],
-						],
-					],
-					[
-						'params' => [
-							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Physics|Biology"',
-						],
-						'response' => [
-							'query' => [
-								'search' => [],
-								'searchinfo' => [
-									'totalhits' => 0,
 								],
 							],
 						],
@@ -335,11 +308,11 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'dedupe' => [
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1' ], 'link' => [ 'Link-1' ] ],
-				'topics' => [ 'art' => [ 'Music' ], 'science' => [ 'Physics' ] ],
+				'topics' => [ 'art' => [ 'visual-arts' ], 'science' => [ 'stem' ] ],
 				'requests' => [
 					[
 						'params' => [
-							'srsearch' => 'hastemplate:"Copy-1" morelikethis:"Music"',
+							'srsearch' => 'hastemplate:"Copy-1" articletopic:visual-arts|stem',
 						],
 						'response' => [
 							'query' => [
@@ -347,59 +320,29 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 									[ 'ns' => 0, 'title' => 'T1' ],
 									[ 'ns' => 0, 'title' => 'T2' ],
 									[ 'ns' => 0, 'title' => 'T3' ],
+									[ 'ns' => 0, 'title' => 'T4' ],
 								],
 								'searchinfo' => [
-									'totalhits' => 25,
+									'totalhits' => 50,
 								],
 							],
 						],
 					],
 					[
 						'params' => [
-							'srsearch' => 'hastemplate:"Copy-1" morelikethis:"Physics"',
+							'srsearch' => 'hastemplate:"Link-1" articletopic:visual-arts|stem',
 						],
 						'response' => [
 							'query' => [
 								'search' => [
 									[ 'ns' => 0, 'title' => 'T1' ],
-									[ 'ns' => 0, 'title' => 'T4' ],
-								],
-								'searchinfo' => [
-									'totalhits' => 25,
-								],
-							],
-						],
-					],
-					[
-						'params' => [
-							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Music"',
-						],
-						'response' => [
-							'query' => [
-								'search' => [
 									[ 'ns' => 0, 'title' => 'T2' ],
 									[ 'ns' => 0, 'title' => 'T4' ],
-									[ 'ns' => 0, 'title' => 'T5' ],
-								],
-								'searchinfo' => [
-									'totalhits' => 25,
-								],
-							],
-						],
-					],
-					[
-						'params' => [
-							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Physics"',
-						],
-						'response' => [
-							'query' => [
-								'search' => [
-									[ 'ns' => 0, 'title' => 'T1' ],
 									[ 'ns' => 0, 'title' => 'T5' ],
 									[ 'ns' => 0, 'title' => 'T6' ],
 								],
 								'searchinfo' => [
-									'totalhits' => 25,
+									'totalhits' => 50,
 								],
 							],
 						],
@@ -418,7 +361,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'http error' => [
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ] ],
-				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'topics' => [ 'art' => [ 'visual-arts' ], 'science' => [ 'stem' ] ],
 				'requests' => [
 					[
 						'params' => [],
@@ -431,7 +374,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'api error' => [
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ] ],
-				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'topics' => [ 'art' => [ 'visual-arts' ], 'science' => [ 'stem' ] ],
 				'requests' => [
 					[
 						'params' => [],
@@ -754,17 +697,13 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param array[] $spec [ topic id => [ title, ... ], ... ]
-	 * @return MorelikeBasedTopic[]
+	 * @param array[] $spec [ topic id => [ ores topic id, ... ], ... ]
+	 * @return OresBasedTopic[]
 	 */
 	private static function getTopics( array $spec ) {
 		$topics = [];
-		foreach ( $spec as $topicId => $titleNames ) {
-			$titleValues = [];
-			foreach ( $titleNames as $titleName ) {
-				$titleValues[] = new TitleValue( NS_MAIN, $titleName );
-			}
-			$topics[] = new MorelikeBasedTopic( $topicId, $titleValues );
+		foreach ( $spec as $topicId => $oresTopics ) {
+			$topics[] = new OresBasedTopic( $topicId, null, $oresTopics );
 		}
 		return $topics;
 	}
