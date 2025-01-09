@@ -3,12 +3,8 @@
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\Config\Providers\SuggestedEditsConfigProvider;
-use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\Util;
-use LogicException;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleFactory;
 use Psr\Log\LoggerInterface;
 
@@ -16,10 +12,7 @@ class CommunityConfigurationLoader extends AbstractDataConfigurationLoader {
 
 	private ?SuggestedEditsConfigProvider $suggestedEditsConfigProvider;
 	private TitleFactory $titleFactory;
-	private WikiPageConfigLoader $configLoader;
-
-	/** @var LinkTarget|string|null */
-	private $topicConfigurationPage;
+	private ?array $topicConfigData;
 	private LoggerInterface $logger;
 
 	/**
@@ -28,9 +21,8 @@ class CommunityConfigurationLoader extends AbstractDataConfigurationLoader {
 	 * @param string $topicType
 	 * @param ?SuggestedEditsConfigProvider $suggestedEditsConfigProvider
 	 * @param TitleFactory $titleFactory
-	 * @param WikiPageConfigLoader $configLoader
-	 * @param string|LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
-	 *   (local or interwiki). Can be omitted, in which case topic matching will be disabled.
+	 * @param array|null $topicConfigData Configuration data for topic mapping. Can be
+	 * omitted (set to null), in which case topic matching will be disabled.
 	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
@@ -39,16 +31,14 @@ class CommunityConfigurationLoader extends AbstractDataConfigurationLoader {
 		string $topicType,
 		?SuggestedEditsConfigProvider $suggestedEditsConfigProvider,
 		TitleFactory $titleFactory,
-		WikiPageConfigLoader $configLoader,
-		$topicConfigurationPage,
+		?array $topicConfigData,
 		LoggerInterface $logger
 	) {
 		parent::__construct( $configurationValidator, $taskTypeHandlerRegistry, $topicType );
 
 		$this->suggestedEditsConfigProvider = $suggestedEditsConfigProvider;
 		$this->titleFactory = $titleFactory;
-		$this->configLoader = $configLoader;
-		$this->topicConfigurationPage = $topicConfigurationPage;
+		$this->topicConfigData = $topicConfigData;
 		$this->logger = $logger;
 	}
 
@@ -91,32 +81,17 @@ class CommunityConfigurationLoader extends AbstractDataConfigurationLoader {
 	}
 
 	/**
-	 * @param string|LinkTarget|null $target
-	 * @return LinkTarget|null
-	 */
-	private function makeTitle( $target ) {
-		if ( is_string( $target ) ) {
-			$target = $this->titleFactory->newFromText( $target );
-		}
-		if ( $target && !$target->isExternal() && !$target->inNamespace( NS_MEDIAWIKI ) ) {
-			Util::logException( new LogicException( 'Configuration page not in NS_MEDIAWIKI' ),
-				[ 'title' => $target->__toString() ] );
-		}
-		return $target;
-	}
-
-	/**
 	 * @inheritDoc
 	 */
 	protected function loadTopicsConfig() {
-		return $this->configLoader->load( $this->makeTitle( $this->topicConfigurationPage ) );
+		return $this->topicConfigData;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function loadTopics() {
-		if ( $this->topicConfigurationPage === null ) {
+		if ( $this->topicConfigData === null ) {
 			return [];
 		}
 

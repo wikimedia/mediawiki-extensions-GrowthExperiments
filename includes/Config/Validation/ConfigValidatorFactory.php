@@ -23,7 +23,6 @@ class ConfigValidatorFactory {
 	private const CONFIG_VALIDATOR_MAP = [
 		'GEWikiConfigPageTitle' => GrowthConfigValidation::class,
 		'GENewcomerTasksConfigTitle' => NewcomerTasksValidator::class,
-		'GENewcomerTasksOresTopicConfigTitle' => NoValidationValidator::class,
 		'GENewcomerTasksTopicConfigTitle' => NoValidationValidator::class,
 		'GEStructuredMentorList' => StructuredMentorListValidator::class,
 	];
