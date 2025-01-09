@@ -318,13 +318,7 @@
 			]
 		},
 		"config": {
-			"class": "GrowthExperiments\\Config\\ConfigHooks",
-			"services": [
-				"GrowthExperimentsConfigValidatorFactory",
-				"GrowthExperimentsWikiPageConfigLoader",
-				"TitleFactory",
-				"MainConfig"
-			]
+			"factory": "GrowthExperiments\\Config\\ConfigHooks::newHandler"
 		},
 		"earlylifecycle": {
 			"class": "GrowthExperiments\\EarlyLifeCycleHooks",
