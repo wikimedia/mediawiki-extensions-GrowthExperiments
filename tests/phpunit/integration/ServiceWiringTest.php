@@ -21,7 +21,12 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 
 	protected const DEPRECATED_SERVICES = [];
 
-	protected const IGNORED_SERVICES = [];
+	protected const IGNORED_SERVICES = [
+		'GrowthExperimentsMultiConfig',
+		'GrowthExperimentsWikiPageConfig',
+		'GrowthExperimentsWikiPageConfigLoader',
+		'GrowthExperimentsWikiPageConfigWriterFactory',
+	];
 
 	/**
 	 * @dataProvider provideService

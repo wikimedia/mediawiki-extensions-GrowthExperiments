@@ -29,6 +29,7 @@ class WikiPageConfigWriterIntegrationTest extends MediaWikiIntegrationTestCase {
 
 		// Prevent GrowthExperimentsConfig.json caching
 		$this->setMainCache( CACHE_NONE );
+		$this->overrideConfigValue( 'GEUseCommunityConfigurationExtension', false );
 
 		$this->defaultConfigTitle = $this->getServiceContainer()
 			->getTitleFactory()
