@@ -6,13 +6,7 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
-use MediaWiki\Linker\Linker;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
-use MediaWiki\Output\OutputPage;
-use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\Title\MalformedTitleException;
-use MediaWiki\Title\Title;
 use MessageLocalizer;
 use OOUI\IconWidget;
 use Wikimedia\Assert\Assert;
@@ -86,10 +80,6 @@ class CampaignBenefitsBlock {
 	 *     Also used as a CSS class (.mw-ge-{messageKey}-block) for selecting a specific campaign.
 	 *   - showBenefitsList: whether to show the benefit list (three bullet items highlighting
 	 *     various Growth features), default false
-	 * - video: welcome text with video on top
-	 *   - messageKey, showBenefitsList: as above
-	 *   - file: video filename from Commons (without namespace)
-	 *   - thumbtime: timestamp to use for still image for the video (default: leave it to MediaWiki)
 	 * @param string $template
 	 * @param array $parameters
 	 * @return string
@@ -110,7 +100,6 @@ class CampaignBenefitsBlock {
 		$shouldShowBenefitListInPlatform = $shouldShowBenefitsList === true ||
 			( $shouldShowBenefitsList === 'desktop' && !$isMobile );
 		$benefitsList = '';
-		$videoHtml = '';
 		if ( $shouldShowBenefitListInPlatform ) {
 			foreach ( [ 'lightbulb', 'mentor', 'difficulty-easy-bw' ] as $i => $icon ) {
 				$index = $i + 1;
@@ -131,39 +120,19 @@ class CampaignBenefitsBlock {
 			}
 			$benefitsList = Html::rawElement( 'ul', [ 'class' => 'mw-ge-donorsignup-list' ], $benefitsList );
 		}
-		if ( $template === 'video' ) {
-			$filename = $parameters['file'];
-			$thumbtime = $parameters['thumbtime'] ?? null;
-			$videoHtml = $this->getVideo( $this->context->getOutput(), $filename, $thumbtime );
-		}
 
 		// The following message keys are used here:
 		// * growthexperiments-recurringcampaign-title
 		// * growthexperiments-signupcampaign-title
 		// * growthexperiments-josacampaign-title
 		// * growthexperiments-glamcampaign-title
-		// * growthexperiments-marketingvideocampaign-title
 		$titleMessage = $this->context->msg( "growthexperiments-$messageKey-title" );
 		// The following message keys are used here:
 		// * growthexperiments-recurringcampaign-body
 		// * growthexperiments-signupcampaign-body
 		// * growthexperiments-josacampaign-body
 		// * growthexperiments-glamcampaign-body
-		// * growthexperiments-marketingvideocampaign-body
 		$bodyMessage = $this->context->msg( "growthexperiments-$messageKey-body" );
-		if ( $isMobile ) {
-			// use mobile-specific title/body if they exist and aren't empty
-			if ( !$this->context->msg( "growthexperiments-$messageKey-title-mobile" )->isBlank() ) {
-				// The following message keys are used here:
-				// none as of now
-				$titleMessage = $this->context->msg( "growthexperiments-$messageKey-title-mobile" );
-			}
-			if ( !$this->context->msg( "growthexperiments-$messageKey-body-mobile" )->isBlank() ) {
-				// The following message keys are used here:
-				// * growthexperiments-marketingvideocampaign-body-mobile
-				$bodyMessage = $this->context->msg( "growthexperiments-$messageKey-body-mobile" );
-			}
-		}
 
 		$campaignTitle = '';
 		$campaignBody = '';
@@ -182,7 +151,6 @@ class CampaignBenefitsBlock {
 				. $campaignBody
 				. $benefitsList
 			)
-			. $videoHtml
 		);
 	}
 
@@ -194,56 +162,4 @@ class CampaignBenefitsBlock {
 	private function getCampaignValue(): string {
 		return $this->authForm->getField( 'campaign' )->getDefault();
 	}
-
-	/**
-	 * Add a video player to the output.
-	 *
-	 * @param OutputPage $output Used te register required assets.
-	 * @param string $filename Video file name (without the 'File:' prefix).
-	 * @param int|null $thumbtime Optional time position for thumbnail generation, in seconds.
-	 *   Theoretically a float, but non-integer support is broken: T228467
-	 * @return string Video player HTML
-	 */
-	private function getVideo( OutputPage $output, string $filename, ?int $thumbtime = null ) {
-		if ( !ExtensionRegistry::getInstance()->isLoaded( 'TimedMediaHandler' ) ) {
-			Util::logText( 'TimedMediaHandler not loaded' );
-			return '';
-		}
-		try {
-			$title = Title::newFromTextThrow( 'File:' . $filename );
-		} catch ( MalformedTitleException $e ) {
-			Util::logText( $e->getMessage(), [ 'filename' => $filename ] );
-			return '';
-		}
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
-		if ( !$file ) {
-			Util::logText( "File not found: $filename" );
-			return '';
-		}
-
-		$output->addModules( [ 'ext.tmh.player' ] );
-		$output->addModuleStyles( [ 'ext.tmh.player.styles' ] );
-
-		$params = [];
-		if ( Util::isMobile( $this->context->getSkin() ) ) {
-			// For mobile, we don't know the width, so we pick a somewhat arbitrary height
-			// to keep the controls for the video close to the thumbnail.
-			$params['height'] = 200;
-		} else {
-			// Set same width as benefits container on desktop.
-			$params['width'] = 400;
-		}
-		if ( $thumbtime !== null ) {
-			$params['thumbtime'] = $thumbtime;
-		}
-		$html = Linker::makeImageLink(
-			MediaWikiServices::getInstance()->getParser(),
-			$title,
-			$file,
-			[ 'align' => 'center' ],
-			$params
-		);
-		return Html::rawElement( 'div', [ 'class' => 'mw-ge-video' ], $html );
-	}
-
 }
