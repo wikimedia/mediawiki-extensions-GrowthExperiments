@@ -18,12 +18,9 @@ function SuggestionsArticleTarget() {
  * Switch to machine suggestions mode of Visual Editor
  */
 SuggestionsArticleTarget.prototype.switchToMachineSuggestions = function () {
-	const uri = new mw.Uri(),
-		fragment = uri.fragment;
-	delete uri.query.hideMachineSuggestions;
-	uri.fragment = '';
-	// uri.toString encodes fragment by default, breaking fragments such as "/editor/all".
-	location.href = uri.toString() + ( fragment ? '#' + fragment : '' );
+	const url = new URL( window.location.href );
+	url.searchParams.delete( 'hideMachineSuggestions' );
+	location.href = url.toString();
 };
 
 /**

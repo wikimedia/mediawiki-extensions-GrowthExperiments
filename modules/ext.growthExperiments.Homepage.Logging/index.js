@@ -46,11 +46,13 @@
 				analytics.logEvent( 'impression', null, moduleName, actionData ? actionData.context : null );
 			}
 		},
-		uri = new mw.Uri(),
+		url = new URL( window.location.href ),
 		// Matches routes like /homepage/moduleName or /homepage/moduleName/action
 		// FIXME or describe why it is okay
 
-		routeMatches = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/.exec( uri.fragment ),
+		// Using URL.hash but removing the leading # character
+		routeMatches = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/.exec(
+			url.hash.startsWith( '#' ) ? url.hash.slice( 1 ) : url.hash ),
 		routeMatchesModule = routeMatches && $modules.filter( function () {
 			return $( this ).data( 'module-name' ) === routeMatches[ 1 ];
 		} ).length > 0;

@@ -37,7 +37,7 @@ SuggestionsMobileArticleTarget.prototype.surfaceReady = function () {
 	SuggestionsMobileArticleTarget.super.prototype.surfaceReady.apply( this, arguments );
 	// Upon save, the page is reloaded so veaction=edit query param needs to be removed so that
 	// the editor doesn't re-open.
-	removeQueryParam( new mw.Uri(), 'veaction', true );
+	removeQueryParam( new URL( window.location.href ), 'veaction' );
 };
 
 module.exports = SuggestionsMobileArticleTarget;

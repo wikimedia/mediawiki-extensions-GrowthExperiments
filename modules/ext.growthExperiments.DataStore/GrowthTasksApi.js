@@ -133,7 +133,7 @@
 	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, topicFilters, config ) {
 		const startTime = mw.now(),
 			self = this,
-			url = new mw.Uri( window.location.href );
+			url = new URL( window.location.href );
 		const defaultConfig = {
 			getDescription: false,
 			size: this.pageSize,
@@ -182,7 +182,7 @@
 		if ( config.excludePageIds && config.excludePageIds.length ) {
 			apiParams.ggtexcludepageids = config.excludePageIds;
 		}
-		if ( 'debug' in url.query ) {
+		if ( url.searchParams.has( 'debug' ) ) {
 			apiParams.ggtdebug = 1;
 		}
 

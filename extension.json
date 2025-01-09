@@ -807,7 +807,6 @@
 			"dependencies": [
 				"oojs",
 				"mediawiki.Title",
-				"mediawiki.Uri",
 				"mediawiki.user",
 				"mediawiki.util",
 				"mediawiki.api",
@@ -931,7 +930,6 @@
 				"growthexperiments-homepage-impact-empty-pageviews-tooltip-button"
 			],
 			"dependencies": [
-				"mediawiki.Uri",
 				"mediawiki.user",
 				"oojs-ui-core",
 				"oojs-ui-windows"
@@ -1151,7 +1149,6 @@
 				"mediawiki.pulsatingdot",
 				"mediawiki.router",
 				"mediawiki.Title",
-				"mediawiki.Uri",
 				"mediawiki.user",
 				"mediawiki.util",
 				"oojs-ui-core",
@@ -1645,7 +1642,6 @@
 				"mediawiki.jqueryMsg",
 				"mediawiki.language",
 				"mediawiki.user",
-				"mediawiki.Uri",
 				"mediawiki.util",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
@@ -1715,7 +1711,6 @@
 			"dependencies": [
 				"mediawiki.jqueryMsg",
 				"mediawiki.storage",
-				"mediawiki.Uri",
 				"mediawiki.user",
 				"mediawiki.util",
 				"mediawiki.language",

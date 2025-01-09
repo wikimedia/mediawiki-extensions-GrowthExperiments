@@ -263,15 +263,15 @@
 	 * @return {boolean} Whether the session has been initiated.
 	 */
 	SuggestedEditSession.prototype.maybeStart = function () {
-		const url = new mw.Uri();
+		const url = new URL( window.location.href );
 
 		if ( this.active ) {
 			throw new Error( 'Trying to start an already started active edit session' );
 		}
 
-		if ( url.query.geclickid ) {
+		if ( url.searchParams.get( 'geclickid' ) ) {
 			this.active = true;
-			this.clickId = url.query.geclickid;
+			this.clickId = parseInt( url.searchParams.get( 'geclickid' ) );
 			this.title = this.getCurrentTitle();
 			this.taskType = mw.config.get( 'wgGESuggestedEditTaskType' );
 			this.taskData = mw.config.get( 'wgGESuggestedEditData' );
@@ -279,13 +279,13 @@
 			this.taskState = states.STARTED;
 
 			Utils.removeQueryParam( url, 'geclickid' );
-			if ( url.query.getasktype ) {
+			if ( url.searchParams.get( 'getasktype' ) ) {
 				Utils.removeQueryParam( url, 'getasktype' );
 			}
 		}
 
-		if ( url.query.genewcomertasktoken ) {
-			this.newcomerTaskToken = url.query.genewcomertasktoken;
+		if ( url.searchParams.get( 'genewcomertasktoken' ) ) {
+			this.newcomerTaskToken = url.searchParams.get( 'genewcomertasktoken' );
 			Utils.removeQueryParam( url, 'genewcomertasktoken' );
 		}
 
@@ -294,7 +294,7 @@
 		// when the preference is switched off T284088)
 
 		// Don't show help panel & mobile peek if the article is in edit mode
-		this.shouldOpenArticleInEditMode = url.query.veaction === 'edit';
+		this.shouldOpenArticleInEditMode = url.searchParams.get( 'veaction' ) === 'edit';
 		this.helpPanelShouldOpen = !this.shouldOpenArticleInEditMode;
 		this.mobilePeekShown = this.shouldOpenArticleInEditMode;
 
@@ -359,10 +359,10 @@
 		// WikiEditor doesn't use mw.track. But it doesn't load dynamically either so
 		// we can check it at page load time.
 		$( () => {
-			const uri = new mw.Uri();
+			const url = new URL( window.location.href );
 			// "submit" can be in the URL query if the user switched from VE to source
 			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
-			if ( [ 'edit', 'submit' ].indexOf( uri.query.action ) !== -1 && $( '#wpTextbox1:visible' ).length ) {
+			if ( [ 'edit', 'submit' ].indexOf( url.searchParams.get( 'action' ) ) !== -1 && $( '#wpTextbox1:visible' ).length ) {
 				saveEditorChanges( self, 'wikitext' );
 			}
 		} );
@@ -380,12 +380,10 @@
 		mw.config.set( 'wgWMESchemaEditAttemptStepSamplingRate', 1 );
 		$( () => {
 			$( linkSelector ).each( function () {
-				const linkUrl = new mw.Uri( this.href );
-				linkUrl.extend( {
-					editingStatsId: self.clickId,
-					editingStatsOversample: 1,
-					gesuggestededit: 1
-				} );
+				const linkUrl = new URL( this.href, window.location.origin );
+				linkUrl.searchParams.set( 'editingStatsId', self.clickId );
+				linkUrl.searchParams.set( 'editingStatsOversample', 1 );
+				linkUrl.searchParams.set( 'gesuggestededit', 1 );
 				$( this ).attr( 'href', linkUrl.toString() );
 			} );
 		} );
@@ -426,8 +424,8 @@
 	 *   Will only be set for edits done via mobile.
 	 */
 	SuggestedEditSession.prototype.showPostEditDialog = function ( config ) {
-		const self = this,
-			uri = new mw.Uri();
+		const url = new URL( window.location.href );
+		const self = this;
 
 		config = config || {};
 		// T283120: avoid opening the dialog multiple times at once. This shouldn't be
@@ -451,7 +449,7 @@
 		if ( !config.nextRequest && mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) &&
 			// Never show the dialog on an edit screen, just defer it to the next request.
 			// This can happen when VisualEditor fires the postEdit hook before reloading the page.
-			!( uri.query.veaction || uri.query.action === 'edit' )
+			!( url.searchParams.get( 'veaction' ) || url.searchParams.get( 'action' ) === 'edit' )
 		) {
 			this.postEditDialogIsOpen = true;
 			mw.hook( 'helpPanel.hideCta' ).fire();
@@ -568,11 +566,10 @@
 		if ( mw.config.get( 'wgAction' ) === 'history' ) {
 			return;
 		}
-		const self = this,
-			currentTitle = this.getCurrentTitle(),
-			uri = new mw.Uri(),
-			hasSwitchedFromMachineSuggestions = uri.query.hideMachineSuggestions;
-
+		const self = this;
+		const currentTitle = this.getCurrentTitle();
+		const url = new URL( window.location.href );
+		const hasSwitchedFromMachineSuggestions = url.searchParams.get( 'hideMachineSuggestions' ) !== null;
 		// Only show the post-edit dialog on the task page, not e.g. on talk page edits.
 		// Skip the dialog if the user saved an edit w/VE after switching from suggestions mode.
 		if ( !currentTitle || !this.title ||

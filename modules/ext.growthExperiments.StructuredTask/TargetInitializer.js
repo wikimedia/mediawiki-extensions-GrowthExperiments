@@ -103,7 +103,7 @@ TargetInitializer.prototype.registerEditModeToggle = function () {
  * @return {boolean}
  */
 TargetInitializer.prototype.shouldShowRegularVeMode = function () {
-	return ( new mw.Uri().query || {} ).hideMachineSuggestions;
+	return new URL( window.location.href ).searchParams.has( 'hideMachineSuggestions' );
 };
 
 /**

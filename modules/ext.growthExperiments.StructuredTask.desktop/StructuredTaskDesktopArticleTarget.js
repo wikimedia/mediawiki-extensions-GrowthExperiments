@@ -75,7 +75,7 @@ StructuredTaskDesktopArticleTarget.prototype.onBeforeUnload = function () {
  * @override
  */
 StructuredTaskDesktopArticleTarget.prototype.updateHistory = function () {
-	Utils.removeQueryParam( mw.Uri(), 'action' );
+	Utils.removeQueryParam( new URL( window.location.href ), 'action' );
 };
 
 /** @override **/
