@@ -10,7 +10,6 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
-use UserNotLoggedIn;
 use Wikimedia\Stats\StatsFactory;
 
 /**
@@ -21,19 +20,6 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	/** @var MentorManager */
 	protected $mentorManager;
 
-	/**
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param TitleFactory $titleFactory
-	 * @param MentorManager $mentorManager
-	 * @param PermissionManager $permissionManager
-	 * @param StatsFactory $statsFactory
-	 * @param bool $confirmEditInstalled
-	 * @param bool $flowInstalled
-	 * @param IContextSource $context
-	 * @param string $body
-	 * @param string $relevantTitleRaw
-	 * @throws UserNotLoggedIn
-	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
@@ -43,8 +29,8 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 		bool $confirmEditInstalled,
 		bool $flowInstalled,
 		IContextSource $context,
-		$body,
-		$relevantTitleRaw = ''
+		string $body,
+		string $relevantTitleRaw = ''
 	) {
 		$this->mentorManager = $mentorManager;
 		parent::__construct(

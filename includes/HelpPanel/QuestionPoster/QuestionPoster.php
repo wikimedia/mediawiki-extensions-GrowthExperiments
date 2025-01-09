@@ -48,9 +48,7 @@ abstract class QuestionPoster {
 	private $revisionId;
 
 	private string $relevantTitleRaw;
-
-	/** @var Title|null */
-	private $relevantTitle;
+	private ?Title $relevantTitle = null;
 
 	private string $postedOnTimestamp;
 
@@ -64,18 +62,6 @@ abstract class QuestionPoster {
 	private bool $confirmEditInstalled = false;
 	private bool $flowInstalled = false;
 
-	/**
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param TitleFactory $titleFactory
-	 * @param PermissionManager $permissionManager
-	 * @param StatsFactory $statsFactory
-	 * @param bool $confirmEditInstalled
-	 * @param bool $flowInstalled
-	 * @param IContextSource $context
-	 * @param string $body
-	 * @param string $relevantTitleRaw
-	 * @throws UserNotLoggedIn
-	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
@@ -84,8 +70,8 @@ abstract class QuestionPoster {
 		bool $confirmEditInstalled,
 		bool $flowInstalled,
 		IContextSource $context,
-		$body,
-		$relevantTitleRaw = ''
+		string $body,
+		string $relevantTitleRaw = ''
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
