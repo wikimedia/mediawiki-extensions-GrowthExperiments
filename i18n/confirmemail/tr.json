@@ -20,7 +20,6 @@
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Merhaba}} $2,\n\n$1 IP adresinden kayıtlı olan {{SITENAME}} hesabınıza bir e-posta eklediğiniz için teşekkür ederiz.\n\nBunu \"$2\" hesabınıza bağlamak istediğiniz e-posta adresi olarak onaylamak için lütfen aşağıdaki bağlantıya tıklayın:\n\n$3\n\nNot: bu onay kodu $4 tarihinde bitiyor.\n\nTeşekkürler,\n\n{{SITENAME}}\n\n----\n\nE-posta adresi onayını iptal etmek için (bu hesap sizin değil veya başka bir nedenle), bu iptal bağlantısına tıklayın:\n\n$5",
 	"growthexperiments-signupcampaign-title": "Bağış yaptığınız için teşekkürler! Şimdi Vikipedi'yi bugün daha iyi hale getiren editörler topluluğuna katılın.",
 	"growthexperiments-signupcampaign-body": "Wikipedia'yı düzenlemek; bir bağlantı eklemek veya bir kelimeyi değiştirmek kadar basit olabilir. Hesabınızı oluşturduktan sonra ilgilendiğiniz konularda madde önerileri alın!",
-	"growthexperiments-marketingvideocampaign-title": "Vikipedi sizin gibi insanlar tarafından oluşturulmuştur",
 	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|Sizin}} ilgi alanlarınızda önerilen maddeler",
 	"growthexperiments-signupcampaign-bullet2": "Deneyimli bir editörden yardım isteyin",
 	"growthexperiments-signupcampaign-bullet3": "Küçük, kolay düzenlemelerle başlayın",
