@@ -641,13 +641,21 @@ return [
 
 		$topicType = $config->get( 'GENewcomerTasksTopicType' );
 		$topicConfigTitle = null;
+		$topicConfigData = null;
 		if ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
-			$topicConfigTitle = $config->get( 'GENewcomerTasksOresTopicConfigTitle' );
+			$topicConfigData = $config->get( 'GENewcomerTasksOresTopicConfig' );
 		} elseif ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE ) {
 			$topicConfigTitle = $config->get( 'GENewcomerTasksTopicConfigTitle' );
 		}
 
 		if ( Util::useCommunityConfiguration() ) {
+			if ( $topicType !== PageConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
+				throw new LogicException(
+					'Topic type ' . $topicType . ' is not supported when ' .
+					'the CommunityConfiguration extension is enabled.'
+				);
+			}
+
 			$providerFactory = CommunityConfigurationServices::wrap( $services )
 				->getConfigurationProviderFactory();
 			$suggestedEditsProvider = in_array( 'GrowthSuggestedEdits', $providerFactory->getSupportedKeys() ) ?
@@ -659,8 +667,7 @@ return [
 				$topicType,
 				$suggestedEditsProvider,
 				$services->getTitleFactory(),
-				$growthServices->getWikiPageConfigLoader(),
-				$topicConfigTitle,
+				$topicConfigData,
 				LoggerFactory::getInstance( 'GrowthExperiments' ),
 			);
 		} else {
