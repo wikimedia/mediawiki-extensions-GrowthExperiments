@@ -9,7 +9,7 @@
 	"growthexperiments-edit-config-title": "دەستکاریی ڕێکخستنی گەشە بکە",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: دوا جار لەلایەن [[User:$1|$1]] $2 نوێ کراوەتەوە ([$4 جیاوازی]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: دوا جار لەلایەن بەکارھێنەرێکی نەناسراو $1 نوێ کراوەتەوە ([$3 جیاوازی]).",
-	"growthexperiments-edit-config-pretext": "ئەم پەڕە ڕێگەت پێ دەدات تا دەستکاریی ڕێکخستنی تایبەتمەندییەکانی دەستەی [[:mw:Special:MyLanguage/Growth|گەشە]] بکەیت. ئەمە لە بری تۆ دەستکاریی $1 دەکات. دەتوانیت گۆڕانکارییەکانت لە پەڕەی مێژووی ئەو پەڕە ببینیت.",
+	"growthexperiments-edit-config-pretext": "ئەم پەڕە ڕێگەت پێ دەدات تا دەستکاریی ڕێکخستنی تایبەتمەندییەکانی دەستەی [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth گەشە] بکەیت. ئەمە لە بری تۆ دەستکاریی $1 دەکات. دەتوانیت گۆڕانکارییەکانت لە پەڕەی مێژووی ئەو پەڕە ببینیت.",
 	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|دەشتوانیت}} بانەرێک لەسەر پەڕەی دەستپێکی تازەکار پیشان بدەیت، تا ئاگاداری لەسەر ڕووداوە گرنگەکان بۆ تازەکارەکان بگرێتە خۆ. ئەگەر {{GENDER:|دەتەوێت}} وا بکەیت، ئەوا پێویستە بە دەست بۆ [[$1]] {{GENDER:|زیادی بکەیت}}. ھەر ناوەڕۆکێکی زیادکراو بۆ ئەوێ، بە بانەرێکی زەرد لە سەرەوەی [[Special:Homepage]] پیشان دەدرێت.",
 	"growthexperiments-edit-config-feedback-headline": "بیرۆکە یان پرسیارت لەسەر ئەم فۆڕمە ھەیە؟",
 	"growthexperiments-edit-config-feedback-cta": "فیدباکمان پێ بدە",
@@ -51,6 +51,17 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "ئەو وتارانەی کە داڕێژەکانی خوارەوەی تێدایە وەک ئەرکەکانی ئەم جۆرە ئەرکە بۆ بەکارھێنەران پیشان نادرێن.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "ئەو وتارانەی کە پۆلەکانی خوارەوەی تێدایە وەک ئەرکەکانی ئەم جۆرە ئەرکە بۆ بەکارھێنەران پیشان نادرێن.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "داڕێژەکانی سندووقی زانیاریدان",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "ئەم داڕێژانە بۆ تایبەتمەندیی ئەرکی تازەکاری [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|پێشنیارەکانی وێنە]] پێویستن. ئەو وتارانەی ئەم داڕێژانەی تێدایە وەک ئەرکەکانی پێشنیاری وێنە پێڕست ناکرێن.",
-	"specialpages-group-growth-tools": "ئامرازەکانی گەشە"
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "ئەم داڕێژانە بۆ تایبەتمەندیی ئەرکی تازەکاری [https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image پێشنیارەکانی وێنە] پێویستن. ئەو وتارانەی ئەم داڕێژانەی تێدایە وەک ئەرکەکانی پێشنیاری وێنە پێڕست ناکرێن.",
+	"specialpages-group-growth-tools": "ئامرازەکانی گەشە",
+	"communityconfiguration-growthsuggestededits-copyedit-disabled-control-label": "ئەرکەکە ناچالاک کراوە.",
+	"communityconfiguration-growthsuggestededits-links-disabled-control-label": "ئەرکەکە ناچالاک کراوە.",
+	"communityconfiguration-growthsuggestededits-references-label": "سەرچاوەکان بدۆزەوە",
+	"communityconfiguration-growthsuggestededits-references-disabled-control-label": "ئەرکەکە ناچالاک کراوە.",
+	"communityconfiguration-growthsuggestededits-update-label": "وتارەکان نوێ بکەوە",
+	"communityconfiguration-growthsuggestededits-update-disabled-control-label": "ئەرکەکە ناچالاک کراوە.",
+	"communityconfiguration-growthsuggestededits-expand-label": "وتارە کورتەکان فراوان بکە",
+	"communityconfiguration-growthsuggestededits-expand-disabled-control-label": "ئەرکەکە ناچالاک کراوە.",
+	"communityconfiguration-growthsuggestededits-image_recommendation-disabled-control-label": "ئەرکەکە ناچالاک کراوە.",
+	"communityconfiguration-growthsuggestededits-section_image_recommendation-disabled-control-label": "ئەرکەکە ناچالاک کراوە.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "ئەرکەکە ناچالاک کراوە."
 }

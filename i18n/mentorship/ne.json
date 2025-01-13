@@ -32,7 +32,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "अधिकतम",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "सबैभन्दा हालको सम्पादन",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "हालसालैका दिनहरू",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "हालैका महिनाहरू",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "वर्तमानका महिनाहरू",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title": "पछिल्लो $2 {{PLURAL:$1|दिन}} मा सक्रिय विद्यार्थीहरूलाई छनौट गर्नुहोस्",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "पछिल्लो $2 {{PLURAL:$1|महिना}}मा सक्रिय विद्यार्थीहरूलाई छनौट गर्नुहोस्",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "ताराङ्कित विद्यार्थीहरू मात्र देखाउनुहोस्",
