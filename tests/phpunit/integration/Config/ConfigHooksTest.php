@@ -19,7 +19,8 @@ use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Config\ConfigHooks
+ * @covers \GrowthExperiments\Config\ConfigHooks
+ * @covers \GrowthExperiments\Config\LegacyConfigHooks
  * @group Database
  * @group medium
  *
@@ -27,6 +28,11 @@ use MediaWikiIntegrationTestCase;
  * an edit.
  */
 class ConfigHooksTest extends MediaWikiIntegrationTestCase {
+
+	protected function setUp(): void {
+		parent::setUp();
+		$this->overrideConfigValue( 'GEUseCommunityConfigurationExtension', false );
+	}
 
 	/**
 	 * Attempt to save an edit to the config page
@@ -82,7 +88,6 @@ class ConfigHooksTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers ::onEditFilterMergedContent
 	 * @dataProvider provideApiEdit
 	 * @param string|null $expectedError
 	 * @param array $content
