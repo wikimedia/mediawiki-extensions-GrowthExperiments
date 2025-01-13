@@ -6,7 +6,6 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\User\UserIdentity;
 use stdClass;
-use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -19,7 +18,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
  * The table is populated with data from UncachedMenteeOverviewDataProvider, see
  * that class for details about generating the data.
  */
-class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, ExpirationAwareness {
+class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 	private MentorStore $mentorStore;
 	private ILoadBalancer $growthLB;
@@ -82,11 +81,11 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, 
 		$method = __METHOD__;
 		return $this->wanCache->getWithSetCallback(
 			$this->makeCacheKey( $mentor ),
-			self::TTL_DAY,
+			WANObjectCache::TTL_DAY,
 			function ( $oldValue, &$ttl, &$setOpts ) use ( $mentor, $method ) {
 				$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
 				if ( $mentees === [] ) {
-					$ttl = self::TTL_HOUR;
+					$ttl = WANObjectCache::TTL_HOUR;
 					return [];
 				}
 

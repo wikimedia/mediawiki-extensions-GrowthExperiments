@@ -6,12 +6,11 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
-use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 /**
  * A service for handling mentors.
  */
-abstract class MentorManager implements ExpirationAwareness {
+abstract class MentorManager {
 
 	public const MENTORSHIP_DISABLED = 0;
 	public const MENTORSHIP_ENABLED = 1;

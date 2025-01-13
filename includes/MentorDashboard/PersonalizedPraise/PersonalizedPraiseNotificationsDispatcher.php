@@ -8,10 +8,9 @@ use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
-use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\ObjectCache\BagOStuff;
 
-class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
+class PersonalizedPraiseNotificationsDispatcher {
 
 	private Config $config;
 	private BagOStuff $cache;
@@ -76,7 +75,7 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 		$this->cache->set(
 			$this->makeLastNotifiedKey( $userIdentity ),
 			$lastNotified,
-			self::TTL_INDEFINITE
+			BagOStuff::TTL_INDEFINITE
 		);
 	}
 
@@ -199,7 +198,7 @@ class PersonalizedPraiseNotificationsDispatcher implements ExpirationAwareness {
 
 		if (
 			$rawLastNotifiedTS === null ||
-			$notifiedSecondsAgo >= $hoursToWait * ExpirationAwareness::TTL_HOUR
+			$notifiedSecondsAgo >= $hoursToWait * BagOStuff::TTL_HOUR
 		) {
 			$this->notifyMentor( $mentor );
 			return true;

@@ -7,12 +7,11 @@ use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\DBAccessObjectUtils;
 use Wikimedia\Rdbms\IDBAccessObject;
 
-abstract class MentorStore implements ExpirationAwareness, LoggerAwareInterface {
+abstract class MentorStore implements LoggerAwareInterface {
 	use LoggerAwareTrait;
 
 	public const ROLE_PRIMARY = 'primary';
@@ -110,7 +109,7 @@ abstract class MentorStore implements ExpirationAwareness, LoggerAwareInterface 
 
 		$res = $this->wanCache->getWithSetCallback(
 			$cacheKey,
-			self::TTL_DAY,
+			WANObjectCache::TTL_DAY,
 			function () use ( $mentee, $mentorRole, $flags ) {
 				return $this->loadMentorUserUncached( $mentee, $mentorRole, $flags );
 			}
@@ -279,7 +278,7 @@ abstract class MentorStore implements ExpirationAwareness, LoggerAwareInterface 
 	public function isMenteeActive( UserIdentity $mentee ): ?bool {
 		return $this->wanCache->getWithSetCallback(
 			$this->makeIsMenteeActiveCacheKey( $mentee ),
-			self::TTL_DAY,
+			WANObjectCache::TTL_DAY,
 			function () use ( $mentee ) {
 				return $this->isMenteeActiveUncached( $mentee );
 			}
