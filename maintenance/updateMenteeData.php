@@ -179,12 +179,9 @@ class UpdateMenteeData extends Maintenance {
 
 			foreach ( $profilingInfo as $section => $seconds ) {
 				$this->statsFactory->withComponent( 'GrowthExperiments' )
-					->getTiming( 'update_mentee_data_seconds' )
+					->getTiming( 'update_mentee_data_section_seconds' )
 					->setLabel( 'shard', $this->getOption( 'dbshard' ) )
-					->setLabel( 'type', 'section' )
 					->setLabel( 'section', $section )
-					->copyToStatsdAt( 'timing.growthExperiments.updateMenteeData.' .
-						$this->getOption( 'dbshard' ) . '.' . $section )
 					->observeSeconds( $seconds );
 
 				// Stay backward compatible with the legacy Graphite-based dashboard
