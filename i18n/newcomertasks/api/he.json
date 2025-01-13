@@ -7,7 +7,7 @@
 		]
 	},
 	"apihelp-query+growthtasks-summary": "קבלת המלצות של משימות שמתאימות למתחילים.",
-	"apihelp-query+growthtasks-extended-description": "הצעת ערכה של ערכים שיש בהם עניינים מסוימים שצריך לטפל, ושלעורך מתחיל יהיה קל לעשות את זה.",
+	"apihelp-query+growthtasks-extended-description": "הצעת ערכה של ערכים שיש בהם סוגיות מסוימות שצריך לטפל בהן, ושלעורך מתחיל יהיה קל לעשות את זה.",
 	"apihelp-query+growthtasks-param-tasktypes": "סוגי משימות שהתוצאות יהיו מוגבלות אליהם. יש להשאיר את זה ריק כדי לקבל את כל ההצעות.",
 	"apihelp-query+growthtasks-param-topics": "נושאי ערכים להעדפה בהצעת משימות.",
 	"apihelp-query+growthtasks-param-limit": "מספר מרבי של הצעות משימות להחזיר.",

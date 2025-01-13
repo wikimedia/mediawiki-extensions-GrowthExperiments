@@ -412,5 +412,13 @@
 	"growthexperiments-addimage-summary-copyrightwarning": "Bằng việc ấn đăng, bạn đồng ý với [https://foundation.wikimedia.org/wiki/Terms_of_Use Điều khoản sử dụng] và đồng ý phát hành đóng góp của mình theo giấy phép [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] và [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
 	"growthexperiments-addimage-summary-summary": "Tính năng gợi ý hình ảnh: Đã thêm $1 {{PLURAL:$1|hình ảnh}}.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
-	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Đã hiểu"
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Đã hiểu",
+	"growthexperiments-homepage-mentorship-optin-header": "Cố vấn chỉnh sửa",
+	"growthexperiments-homepage-mentorship-optin-text": "Nếu {{GENDER:|bạn}} có thắc mắc về việc chỉnh sửa, một biên tập viên có kinh nghiệm có thể được chỉ định làm cố vấn hỗ trợ cho bạn.",
+	"growthexperiments-homepage-mentorship-optin-button": "Chọn một cố vấn",
+	"growthexperiments-homepage-mentorship-confirm-dialog-header": "Chọn một cố vấn?",
+	"growthexperiments-homepage-mentorship-confirm-dialog-text": "Tiếp tục chọn một biên tập viên có kinh nghiệm làm cố vấn chỉnh sửa của {{GENDER:|bạn}}.",
+	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Hủy bỏ",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "Tiếp tục",
+	"growthexperiments-homepage-mentorship-optout-cancel": "Hủy bỏ"
 }

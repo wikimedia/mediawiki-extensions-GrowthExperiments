@@ -4,10 +4,32 @@
 			"Cabal"
 		]
 	},
+	"growthexperiments-help-panel-submit-question-button-text": "ਛਾਪੋ",
+	"growthexperiments-help-panel-return-home-button-text": "ਮੁਕੰਮਲ",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "ਹੋਰ ਸਹਾਇਕ ਲੇਖ ਵੇਖੋ",
 	"growthexperiments-help-panel-question-widget-header": "ਆਪਣਾ ਸਵਾਲ ਭਾਈਚਾਰਾ ਸਹਾਇਤਾ ਕੇਂਦਰ 'ਤੇ ਲਿਖੋ",
+	"growthexperiments-help-panel-back-home": "ਪਿਛਾਂਹ",
+	"growthexperiments-help-panel-close": "ਹੋ ਗਿਆ",
+	"growthexperiments-help-panel-home-title": "ਸੋਧ ਵਿੱਚ ਮਦਦ ਪ੍ਰਾਪਤ ਕਰੋ",
+	"growthexperiments-help-panel-postedit-subheader-image-recommendation": "ਸੋਧ ਕਰਨ ਦੇ ਹੋਰ ਤਰੀਕੇ",
+	"growthexperiments-help-panel-postedit-subheader-link-recommendation": "ਸੋਧ ਕਰਨ ਦੇ ਹੋਰ ਤਰੀਕੇ",
+	"growthexperiments-help-panel-postedit-subheader": "ਇੱਕ ਹੋਰ ਸੁਝਾਅ ਸੋਧੋ:",
+	"growthexperiments-help-panel-postedit-subheader-notsaved": "ਅਗਲਾ ਸੁਝਾਅ:",
+	"growthexperiments-help-panel-postedit-footer": "ਸਾਰੇ ਸੁਝਾਏ ਗਏ ਸੋਧ ਵੇਖੋ",
 	"growthexperiments-help-panel-questionreview-title": "ਸਹਾਇਤਾ ਕੇਂਦਰ ਨੂੰ ਪੁੱਛੋ",
+	"growthexperiments-help-panel-questionreview-title-mentor": "ਆਪਣੇ ਸਲਾਹਕਾਰ ਨੂੰ ਪੁੱਛੋ",
+	"growthexperiments-help-panel-questionreview-label": "ਤੁਹਾਡਾ ਸਵਾਲ",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "ਤੇਜ਼ ਸ਼ੁਰੂਆਤੀ ਸੁਝਾਅ",
+	"growthexperiments-help-panel-questioncomplete-title": "ਇੱਕ ਸਵਾਲ ਪੁੱਛੋ",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "ਸਹਾਇਤਾ ਕੇਂਦਰ 'ਤੇ ਆਪਣਾ ਸਵਾਲ ਵੇਖੋ",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "ਬਦਲੋ",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "ਈਮੇਲ ਜੋੜੋ",
+	"growthexperiments-help-panel-questionposter-invalid-title": "ਗਲਤ ਸਿਰਲੇਖ।",
 	"growthexperiments-help-panel-community-help-desk-text": "ਭਾਈਚਾਰਾ ਸਹਾਇਤਾ ਕੇਂਦਰ",
-	"growthexperiments-help-panel-button-header-ask-help": "ਸਹਾਇਤਾ ਕੇਂਦਰ ਨੂੰ ਪੁੱਛੋ"
+	"growthexperiments-help-panel-search-label": "ਮਦਦ ਲਈ ਖੋਜ ਕਰੋ",
+	"growthexperiments-help-panel-search-no-results": "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲਿਆ।",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "ਸੁਝਾਏ ਗਏ ਸੋਧ",
+	"growthexperiments-help-panel-button-header-ask-help": "ਸਹਾਇਤਾ ਕੇਂਦਰ ਨੂੰ ਪੁੱਛੋ",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "ਤੇਜ਼ ਸ਼ੁਰੂਆਤੀ ਸੁਝਾਅ",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "ਸੁਝਾਈਆਂ ਸੋਧਾਂ ਬਾਰੇ"
 }
