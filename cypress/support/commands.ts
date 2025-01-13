@@ -48,6 +48,15 @@ Cypress.Commands.add( 'saveCommunityConfigurationForm', ( editSummary: string ):
 	cy.contains( 'Your changes were saved' ).should( 'be.visible' );
 } );
 
+Cypress.Commands.add( 'setUserOptions', ( options ): void => {
+	cy.visit( '/index.php' );
+	cy.window().its( 'mw.Api' ).should( 'exist' );
+	cy.window().then( async ( { mw }: Cypress.AUTWindow & { mw: MediaWiki } ): Promise<void> => {
+		const api = new mw.Api();
+		await api.saveOptions( options );
+	} );
+} );
+
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
 	namespace Cypress {
@@ -56,6 +65,7 @@ declare global {
 			loginAsAdmin(): Chainable<JQuery<HTMLElement>>;
 			logout(): Chainable<JQuery<HTMLElement>>;
 			saveCommunityConfigurationForm( editSummary: string ): Chainable<JQuery<HTMLElement>>;
+			setUserOptions( options: Record<string, string> ): Chainable<JQuery<HTMLElement>>;
 		}
 	}
 }

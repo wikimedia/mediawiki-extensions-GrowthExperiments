@@ -84,25 +84,4 @@ describe( 'Homepage', () => {
 		assert.strictEqual( result.query.recentchanges[ 0 ].revid, savedRevId );
 	} );
 
-	// Skipped on 2023-05-20 in 921608 because of T334626 and T337137
-	it.skip( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', async () => {
-		await HomepagePage.open();
-		await assert( HomepagePage.suggestedEditsCard.isExisting() );
-		await HomepagePage.assertCardTitleIs( 'Classical kemençe' );
-		await HomepagePage.waitForInteractiveTaskFeed();
-		// Previous button should be disabled when on first card.
-		await HomepagePage.assertPreviousButtonIsDisabled();
-		await HomepagePage.advanceToNextCard();
-		await HomepagePage.assertCardTitleIs( 'Cretan lyra' );
-		await HomepagePage.goBackToPreviousCard();
-		// Previous button should still be disabled on first card.
-		await HomepagePage.assertPreviousButtonIsDisabled();
-		await HomepagePage.advanceToNextCard();
-		// Go to the end of queue card.
-		await HomepagePage.advanceToNextCard();
-		await HomepagePage.assertCardTitleIs( 'No more suggestions' );
-		// Users should not be able to navigate past the end of queue card.
-		await HomepagePage.assertNextButtonIsDisabled();
-	} );
-
 } );

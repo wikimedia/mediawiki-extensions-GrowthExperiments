@@ -11,3 +11,4 @@
 /cypress/screenshots
 /cypress/.cache
 .DS_Store
+.env

@@ -487,6 +487,11 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 	}
 
 	const pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig ).fail( () => {
+		if ( this.taskQueue[ this.currentTaskIndex ] === undefined ) {
+			throw new Error(
+				'No task found at index ' + this.currentTaskIndex + ' for taskQueue of length ' + this.taskQueue.length
+			);
+		}
 		// Set the PCS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
 		this.taskQueue[ this.currentTaskIndex ].description = null;
