@@ -15,7 +15,12 @@ function subscribeWhenAvailable(
 	}
 
 	if ( attempts > 10 ) {
-		throw new Error( 'Failed to subscribe to resourceloader.exception' );
+		const timeSinceNavigation = win.performance.now() / 1000;
+		const currentPage = win.location.toString();
+		throw new Error(
+			`Failed to subscribe to resourceloader.exception on ${ currentPage } after ${ timeSinceNavigation } seconds.` +
+			'`window.document` ' + ( win.document ? 'still exists' : 'is falsy.' ),
+		);
 	}
 
 	if ( win.mw.trackSubscribe ) {
