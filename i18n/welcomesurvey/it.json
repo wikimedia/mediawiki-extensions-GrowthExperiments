@@ -13,7 +13,7 @@
 			"Vivbod"
 		]
 	},
-	"welcomesurvey": "Benvenut{{GENDER:$1|o|a|o/a}}, $1!",
+	"welcomesurvey": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Grazie! Le {{GENDER:|tue}} risposte sono state salvate.",
 	"welcomesurvey-save-confirmation-text": "Le {{GENDER:|tue}} risposte ci aiuteranno a rendere più semplice il tuo inizio su Wikipedia.",
 	"welcomesurvey-subtitle": "{{GENDER:|Aiutaci}} a migliorare la tua esperienza su Wikipedia rispondendo ad alcune domande facoltative.",
@@ -54,11 +54,11 @@
 	"welcomesurvey-question-languages-placeholder": "Aggiungi fino a {{PLURAL:$1|una lingua|$1 lingue}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Hai}} raggiunto il numero massimo di lingue disponibili.",
 	"welcomesurvey-question-user-research-label": "Voglio essere contattato via email per partecipare alla ricerca utente",
-	"welcomesurvey-question-user-research-help": "Se {{GENDER:|tu}} acconsenti, potremmo contattare {{GENDER:|tu}} in futuro per studi di ricerca volti a migliorare i nostri servizi.",
+	"welcomesurvey-question-user-research-help": "Se {{GENDER:|acconsenti}}, potremmo {{GENDER:|contattarti}} in futuro per studi di ricerca volti a migliorare i nostri servizi.",
 	"welcomesurvey-reminder": "Aiutaci a migliorare la tua esperienza su Wikipedia rispondendo ad alcune domande facoltative nel nostro Sondaggio di Benvenuto. $1",
 	"welcomesurvey-reminder-link": "Partecipa al sondaggio",
 	"welcomesurvey-reminder-dismiss": "Nascondi",
-	"welcomesurvey-mideditsignup-title": "Benvenut{{GENDER:$1|o|a|o/a}} $1!",
+	"welcomesurvey-mideditsignup-title": "Benvenuto $1!",
 	"welcomesurvey-mideditsignup-body": "Grazie per contribuire! Adesso puoi vedere l'impatto delle tue modifiche e ricevere più suggerimenti di modifiche nella tua pagina principale.",
 	"welcomesurvey-mideditsignup-button-homepage": "Vai alla mia pagina principale",
 	"welcomesurvey-mideditsignup-button-close": "Chiudi"
