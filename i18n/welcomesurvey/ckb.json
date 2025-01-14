@@ -43,5 +43,9 @@
 	"welcomesurvey-question-email-help": "تێبینیمان کردووە کە {{GENDER:|ئیمەیلت}} داخڵ نەکردووە لە کاتی درووستکردنی هەژمارەکەت. دانانی ئیمەیل <strong>زۆر پێویستە</strong> لەکاتی بیرچوونەوەی وشەی نهێنییەکەت. تێبینی: لەکاتی بەکارهێنان و پەیوەندیکردن لەنێوان بەکارهێنەران ئەوا ناونیشانی ئیمەیلەکەت پارێزراوە و لای کەس دەرناکەوێت.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} بەردەستە بەنزیکەی ٣٠٠ زمان. ئایا هیچ زمانێکی دیکە هەیە کە {{GENDER:|تۆ}} پێی دەخوێنیتەوە و دەنووسیت؟",
 	"welcomesurvey-question-languages-placeholder": "تا {{PLURAL:$1|یەک زمان|$1 زمان}} زیاد بکە...",
-	"welcomesurvey-question-languages-maximum": "{{GENDER:|تۆ}} زۆرترین زمانت داخڵ کردووە"
+	"welcomesurvey-question-languages-maximum": "{{GENDER:|تۆ}} زۆرترین زمانت داخڵ کردووە",
+	"welcomesurvey-reminder-dismiss": "لای بە",
+	"welcomesurvey-mideditsignup-title": "بە خێر بێیت $1!",
+	"welcomesurvey-mideditsignup-button-homepage": "بڕۆ بۆ پەڕەی سەرەکیم",
+	"welcomesurvey-mideditsignup-button-close": "دای بخە"
 }
