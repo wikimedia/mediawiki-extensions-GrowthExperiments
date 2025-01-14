@@ -4,8 +4,6 @@ import * as installCypressLogsCollector from 'cypress-terminal-report/src/instal
 
 installCypressLogsCollector();
 
-const consoleSpies = [];
-
 function subscribeWhenAvailable(
 	win: Cypress.AUTWindow & { mw: MediaWiki },
 	attempts: number,
@@ -43,8 +41,11 @@ function subscribeWhenAvailable(
 		win.setTimeout( () => subscribeWhenAvailable( win, attempts + 1 ), 100 );
 	}
 }
-beforeEach( () => {
-	consoleSpies.length = 0;
+
+function failOnConsoleError(): void {
+
+	const consoleSpies = [];
+
 	Cypress.on( 'window:before:load', ( win ) => {
 		consoleSpies.push( cy.spy( win.console, 'error' ) );
 	} );
@@ -55,10 +56,16 @@ beforeEach( () => {
 
 		win.setTimeout( () => subscribeWhenAvailable( win, 0 ), 0 );
 	} );
-} );
 
-afterEach( () => {
-	consoleSpies.forEach( ( spy ) => {
-		expect( spy ).to.have.callCount( 0 );
+	beforeEach( () => {
+		consoleSpies.length = 0;
 	} );
-} );
+
+	afterEach( () => {
+		consoleSpies.forEach( ( spy ) => {
+			expect( spy ).to.have.callCount( 0 );
+		} );
+	} );
+}
+
+failOnConsoleError();
