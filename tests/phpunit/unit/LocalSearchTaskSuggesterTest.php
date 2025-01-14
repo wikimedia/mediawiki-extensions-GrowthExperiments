@@ -18,6 +18,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use SearchEngine;
 use SearchEngineFactory;
 use StatusValue;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\Stats\Metrics\TimingMetric;
 use Wikimedia\Stats\StatsFactory;
 use Wikimedia\TestingAccessWrapper;
@@ -53,7 +54,8 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( LinkBatchFactory::class ),
 			[],
 			[],
-			$this->getStatsFactory()
+			$this->getStatsFactory(),
+			$this->createMock( IBufferingStatsdDataFactory::class )
 		);
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 

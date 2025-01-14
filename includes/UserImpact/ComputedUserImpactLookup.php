@@ -11,6 +11,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Extension\Thanks\ThanksQueryHelper;
 use MediaWiki\MainConfigNames;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Status\Status;
@@ -195,11 +196,20 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() ),
 			$this->userEditTracker->getUserEditCount( $user )
 		);
+		$userImpactLookupDurationInSeconds = microtime( true ) - $start;
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
 			->getTiming( 'computed_user_impact_lookup_expensive_seconds' )
-			->copyToStatsdAt(
-				'timing.growthExperiments.ComputedUserImpactLookup.getExpensiveUserImpact' )
-			->observe( microtime( true ) - $start );
+			->observeSeconds( $userImpactLookupDurationInSeconds );
+
+		// Stay backward compatible with the legacy Graphite-based dashboard
+		// feeding on this data.
+		// TODO: remove after switching to Prometheus-based dashboards
+		$services = MediaWikiServices::getInstance();
+		$services->getStatsdDataFactory()->timing(
+			'timing.growthExperiments.ComputedUserImpactLookup.getExpensiveUserImpact',
+			$userImpactLookupDurationInSeconds
+		);
+
 		return $expensiveUserImpact;
 	}
 

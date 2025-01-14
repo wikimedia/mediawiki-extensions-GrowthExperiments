@@ -15,6 +15,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\User\UserIdentityValue;
 use SearchEngineFactory;
 use StatusValue;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\Stats\StatsFactory;
 
 /**
@@ -39,7 +40,8 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 			$this->createNoOpMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createNoOpMock( SearchEngineFactory::class ),
 			$this->createNoOpMock( LinkBatchFactory::class ),
-			$this->createMock( StatsFactory::class )
+			$this->createMock( StatsFactory::class ),
+			$this->createMock( IBufferingStatsdDataFactory::class )
 		);
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
