@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\TitleValue;
 use MediaWikiIntegrationTestCase;
+use Psr\Log\NullLogger;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore
@@ -30,7 +31,8 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getDBLoadBalancer(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getLinkBatchFactory(),
-			$this->getServiceContainer()->getPageStore()
+			$this->getServiceContainer()->getPageStore(),
+			new NullLogger(),
 		);
 
 		$pageIds = [];

@@ -396,7 +396,8 @@ return [
 			$loadBalancer,
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory(),
-			$services->getPageStore()
+			$services->getPageStore(),
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
 		);
 	},
 

@@ -11,6 +11,7 @@ use MediaWiki\Page\PageStore;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
+use Psr\Log\LoggerInterface;
 use RuntimeException;
 use stdClass;
 use Wikimedia\Rdbms\IDatabase;
@@ -27,23 +28,27 @@ class LinkRecommendationStore {
 	private TitleFactory $titleFactory;
 	private LinkBatchFactory $linkBatchFactory;
 	private PageStore $pageStore;
+	private LoggerInterface $logger;
 
 	/**
 	 * @param ILoadBalancer $loadBalancer
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param PageStore $pageStore
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		ILoadBalancer $loadBalancer,
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
-		PageStore $pageStore
+		PageStore $pageStore,
+		LoggerInterface $logger
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->titleFactory = $titleFactory;
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->pageStore = $pageStore;
+		$this->logger = $logger;
 	}
 
 	// growthexperiments_link_recommendations
@@ -121,7 +126,16 @@ class LinkRecommendationStore {
 			if ( $revId === 0 ) {
 				return null;
 			}
-			return $this->getByRevId( $revId, $flags );
+			$linkRecommendation = $this->getByRevId( $revId, $flags );
+			if ( !$linkRecommendation ) {
+				$this->logger->debug( 'Unable to find link recommendation for title {title} ' .
+					'with getByRevId().', [
+					'title' => $title->getPrefixedDBkey(),
+					'revId' => $revId,
+					'trace' => \debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS )
+				] );
+			}
+			return $linkRecommendation;
 		}
 	}
 
