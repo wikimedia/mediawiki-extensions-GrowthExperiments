@@ -4,14 +4,17 @@ namespace GrowthExperiments\Tests\Integration;
 
 use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\HookContainer\HookRunner;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\ResourceLoader as RL;
 use MediaWikiIntegrationTestCase;
@@ -167,7 +170,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$recentChange->setAttribs( [
 			'tags' => [ 'foo' ],
 			'rc_user' => 0,
-			'rc_user_text' => 'Anonymous'
+			'rc_user_text' => 'Anonymous',
 		] );
 		$homepageHooks->onRecentChange_save( $recentChange );
 		$this->assertArrayEquals( [ 'foo' ], $recentChange->getAttribute( 'tags' ) );
@@ -181,10 +184,55 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$recentChange = new RecentChange();
 		$recentChange->setAttribs( [
 			'tags' => [ 'foo' ],
-			'rc_user' => $user->getId()
+			'rc_user' => $user->getId(),
 		] );
 		$homepageHooks->onRecentChange_save( $recentChange );
 		$this->assertArrayEquals( [ 'foo' ], $recentChange->getAttribute( 'tags' ) );
 	}
 
+	public static function provideTestNewUserProperties() {
+		return [
+			[ true, true, MentorManager::MENTORSHIP_ENABLED, [
+				'GEHomepageNewAccountEnablePercentage' => 100,
+				'GEMentorshipNewAccountEnablePercentage' => 100,
+			] ],
+			[ true, true, MentorManager::MENTORSHIP_DISABLED, [
+				'GEHomepageNewAccountEnablePercentage' => 100,
+				'GEMentorshipNewAccountEnablePercentage' => 0,
+			] ],
+			[ false, false, MentorManager::MENTORSHIP_ENABLED, [
+				'GEHomepageNewAccountEnablePercentage' => 0,
+				'GEMentorshipNewAccountEnablePercentage' => 0,
+			] ],
+			[ false, false, MentorManager::MENTORSHIP_ENABLED, [
+				'GEHomepageNewAccountEnablePercentage' => 0,
+				'GEMentorshipNewAccountEnablePercentage' => 100,
+			] ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideTestNewUserProperties
+	 */
+	public function testNewUserProperties(
+		bool $expectedHomepage, bool $expectedHelpPanel, int $expectedMentorshipStateForUser,
+		array $configOverrides
+	) {
+		$this->overrideConfigValues( $configOverrides );
+
+		$user = $this->getMutableTestUser()->getUser();
+		// TODO: Remove the hook runner once the logic does not involve setting options on
+		// registration (T383700).
+		$runner = new HookRunner( $this->getServiceContainer()->getHookContainer() );
+		$runner->onLocalUserCreated( $user, false );
+
+		$this->assertSame( $expectedHomepage, HomepageHooks::isHomepageEnabled( $user ) );
+		$this->assertSame( $expectedHelpPanel, HelpPanel::shouldShowHelpPanelToUser( $user ) );
+		$this->assertSame(
+			$expectedMentorshipStateForUser,
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+				->getMentorManager()
+				->getMentorshipStateForUser( $user )
+		);
+	}
 }
