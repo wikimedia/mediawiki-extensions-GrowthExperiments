@@ -14,6 +14,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\LevelingUp\NotificationGetStartedJob;
 use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
+use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -862,7 +863,7 @@ class HomepageHooks implements
 				$this->userOptionsManager->setOption(
 					$user,
 					MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
-					0
+					MentorManager::MENTORSHIP_DISABLED
 				);
 			}
 
