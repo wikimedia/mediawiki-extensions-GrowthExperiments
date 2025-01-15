@@ -5,8 +5,10 @@ describe( 'Special:MentorDashboard', () => {
 		cy.get( '#GEMentorshipEnabled' ).should( 'be.visible' );
 		cy.get( '#GEMentorshipEnabled input' ).check();
 		cy.get( '#GEMentorshipAutomaticEligibility input' ).check();
-		cy.get( '#GEMentorshipMinimumAge input' ).clear().type( '0' );
-		cy.get( '#GEMentorshipMinimumEditcount input' ).clear().type( '0' );
+		cy.get( '#GEMentorshipMinimumAge input' ).clear();
+		cy.get( '#GEMentorshipMinimumAge input' ).type( '0' );
+		cy.get( '#GEMentorshipMinimumEditcount input' ).clear();
+		cy.get( '#GEMentorshipMinimumEditcount input' ).type( '0' );
 		cy.saveCommunityConfigurationForm( 'Automated test: Make it easy to enroll as a mentor in CI' );
 		cy.logout();
 
