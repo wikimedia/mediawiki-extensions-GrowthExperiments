@@ -5,7 +5,7 @@
 CREATE TABLE /*_*/growthexperiments_link_recommendations (
   gelr_revision INT UNSIGNED NOT NULL,
   gelr_page INT UNSIGNED NOT NULL,
-  gelr_data MEDIUMBLOB NOT NULL,
+  gelr_data MEDIUMBLOB DEFAULT NULL,
   INDEX gelr_page (gelr_page),
   PRIMARY KEY(gelr_revision)
 ) /*$wgDBTableOptions*/;
