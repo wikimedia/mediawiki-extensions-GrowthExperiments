@@ -28,7 +28,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Посмотрите на {{GENDER:|своих}} подопечных ниже. Используйте фильтры, чтобы изменить отображение подопечных.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Эта таблица требует JavaScript. Пожалуйста, включите JavaScript, чтобы воспользоваться этим модулем.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Кто в {{GENDER:|вашей}} таблице?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "В таблице приведены только ваши подопечные, которые создали {{GENDER:свой}} аккаунт в течение последних двух недель или редактировали в течение последних шести месяцев, а также у кого включена [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH домашняя страница новичка]. Данные обновляются каждые три часа.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "В таблице приведены только ваши подопечные, которые создали {{GENDER:свои}} учётные записи в течение последних двух недель или редактировали в течение последних шести месяцев, а также у кого включена [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH домашняя страница новичка]. Данные обновляются каждые три часа.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Легенда",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Добавить подопечных в закладки",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Имя участника",
