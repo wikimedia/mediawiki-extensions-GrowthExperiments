@@ -85,7 +85,8 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		$block = new DatabaseBlock();
 		$block->setTarget( $this->mUser );
 		$block->setBlocker( $this->getTestSysop()->getUser() );
-		$block->insert();
+		$this->getServiceContainer()->getDatabaseBlockStore()
+			->insertBlock( $block );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'Your username or IP address has been blocked' );
