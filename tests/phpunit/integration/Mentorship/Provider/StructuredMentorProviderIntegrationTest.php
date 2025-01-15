@@ -14,12 +14,6 @@ use MediaWikiIntegrationTestCase;
  */
 class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCase {
 
-	protected function setUp(): void {
-		parent::setUp();
-
-		$this->setMwGlobals( [ 'GEUseCommunityConfigurationExtension' => true ] );
-	}
-
 	public function testNoMentorList() {
 		// ensure the mentor list indeed doesn't exist at this point
 		$this->overrideConfigValue( 'GEStructuredMentorList', 'MediaWiki:DoesNotExist.json' );
