@@ -107,7 +107,7 @@
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Упозорења {{GENDER:$1|ментора|менторке|ментора}}",
 	"growthexperiments-tour-mentor-response-tip-personal-text": "{{GENDER:$1|Када}} {{GENDER:$2|ментор|менторка}} одговори, добићете овде ново обавештење.",
 	"growthexperiments-tour-response-button-okay": "Разумем",
-	"tag-help_module_question": "постављање питања",
+	"tag-help_module_question": "постављено питање",
 	"tag-help_module_question-description": "Измене објављене функцијом постављања питања из помоћног модула на почетној страници",
 	"tag-mentorship_module_question": "питање из менторског модула",
 	"tag-mentorship_module_question-description": "Измене објављене функцијом постављања питања ментору из менторског модула на почетној страници",
