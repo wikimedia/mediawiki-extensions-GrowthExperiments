@@ -109,7 +109,7 @@
 	"growthexperiments-notification-header-mentee-claimed": "Votre apprenti{{GENDER:$3|e}}, $3, a été réclamé{{GENDER:$3|e}} par {{GENDER:$2|}}$1.",
 	"growthexperiments-notification-body-mentee-claimed": "Motif : $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Qu’est-ce que « Réclamer un apprenti » ?",
-	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|}}Vous avez des tutorés dignes de félicitations ! Envoyez-leur des encouragements via votre tableau de bord du tuteur.",
+	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|}}Vous avez des mentorés dignes de félicitations ! Envoyez-leur des encouragements via votre tableau de bord du mentor.",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Afficher le tableau de bord du tuteur",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Nombre d’apprentis qui me sont affectés",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Aucun (je les demande manuellement)",

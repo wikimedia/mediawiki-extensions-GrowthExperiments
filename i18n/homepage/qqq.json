@@ -21,7 +21,8 @@
 			"Umherirrender",
 			"Verdy p",
 			"Zoranzoki21",
-			"Msz2001"
+			"Msz2001",
+			"Dreamy Jazz"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage, which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
@@ -452,7 +453,7 @@
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Title on the third of three screens explaining how to add machine-suggested links to an article, as part of the \"newcomer tasks\" workflow. This third screen lists rules to follow when adding links.\n\n{{doc-growthexperiments-addlink}}",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "Text on the third of three screens explaining how to add machine-suggested links to an article, as part of the \"newcomer tasks\" workflow. This third screen lists rules to follow when adding links.\n\n{{doc-growthexperiments-addlink}}",
 	"growthexperiments-addlink-onboarding-content-linking-image-alt-text": "Alternative text for the image on the third of three screens illustrating how to add links to an article, as part of the \"newcomer tasks\" workflow. This illustration represents suggestions for two different words.\n\n{{doc-growthexperiments-addlink}}",
-	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "Text of the button that allows the user to dismiss all the onboarding screens for the structured task.\n\n{{doc-growthexperiments-structuredtask}}",
+	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "Text of the button that allows the user to dismiss all the onboarding screens for the structured task.\n\n{{doc-growthexperiments-structuredtask}}\n{{Identical|Skip all}}",
 	"growthexperiments-structuredtask-onboarding-dialog-title": "Title shown at the top of a dialog introducing the structured task.\n\n{{doc-growthexperiments-structuredtask}}",
 	"growthexperiments-structuredtask-onboarding-dialog-progress": "Progress indicator shown at the top of the dialog introducing the structured task. Parameters:\n*$1 - Sequence number of the page the user is currently on.\n* $2 - Total number of pages\n\n{{doc-growthexperiments-structuredtask}}",
 	"growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox": "Text on the checkbox label on a dialog introducing the structured task. When selected, the dialog will not be shown when the user returns.\n\n{{doc-growthexperiments-structuredtask}}",
@@ -468,7 +469,7 @@
 	"growthexperiments-addlink-summary-summary": "Edit summary for \"add a link\" tasks. Parameters:\n* $1 - Number of links added, can be used with PLURAL.\n\n{{doc-growthexperiments-addlink}}",
 	"growthexperiments-addlink-skip-title": "Header of the dialog shown when the user has skipped all suggestions.\n\n{{doc-growthexperiments-addlink}}",
 	"growthexperiments-addlink-skip-body": "Body of the dialog shown when the user has skipped all suggestions.\n\n{{doc-growthexperiments-addlink}}",
-	"growthexperiments-addlink-skip-accept": "\"Leave\" option of the dialog shown when the user has skipped all suggestions.\n\n{{doc-growthexperiments-addlink}}",
+	"growthexperiments-addlink-skip-accept": "\"Leave\" option of the dialog shown when the user has skipped all suggestions.\n\n{{doc-growthexperiments-addlink}}\n{{Identical|Skip all}}",
 	"growthexperiments-addlink-skip-reject": "\"Stay\" option of the dialog shown when the user has skipped all suggestions.\n\n{{doc-growthexperiments-addlink}}",
 	"grant-managementorship": "Name for grant \"managementorship\".\n{{Related|Grant}}",
 	"newcomertasksinfo": "Header for the special page that shows statistics about task suggestions available on this wiki.\n\n{{doc-growthexperiments-homepage}}",
