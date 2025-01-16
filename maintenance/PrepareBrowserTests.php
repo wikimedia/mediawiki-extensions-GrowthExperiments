@@ -18,6 +18,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class PrepareBrowserTests extends Maintenance {
 	public function execute(): void {
 		$this->importPages();
+		$this->importImageSuggestions();
 	}
 
 	private function importPages(): void {
@@ -43,6 +44,25 @@ class PrepareBrowserTests extends Maintenance {
 				'bot' => true,
 			],
 			$pages,
+		);
+		$importScript->execute();
+	}
+
+	private function importImageSuggestions(): void {
+		$articleTitle = 'Ma\'amoul';
+
+		$imageSuggestionsDirectory = __DIR__ . '/../cypress/support/setupFixtures/imageSuggestions/';
+		$pagePath = $imageSuggestionsDirectory . $articleTitle . '/addimage.json.json';
+		$importScript = $this->createChild( ImportTextFiles::class );
+		$importScript->loadParamsAndArgs(
+			null,
+			[
+				'overwrite' => true,
+				'rc' => true,
+				'bot' => true,
+				'prefix' => $articleTitle . '/',
+			],
+			[ $pagePath ],
 		);
 		$importScript->execute();
 	}
