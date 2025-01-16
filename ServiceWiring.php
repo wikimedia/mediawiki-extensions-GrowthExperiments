@@ -195,6 +195,13 @@ return [
 	},
 
 	'GrowthExperimentsMultiConfig' => static function ( MediaWikiServices $services ): Config {
+		if ( Util::useCommunityConfiguration() ) {
+			wfDeprecated(
+				'GrowthExperimentsMultiConfig service',
+				'1.44', 'GrowthExperiments'
+			);
+		}
+
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new GrowthExperimentsMultiConfig(
 			$geServices->getWikiPageConfig(),
@@ -203,6 +210,13 @@ return [
 	},
 
 	'GrowthExperimentsWikiPageConfig' => static function ( MediaWikiServices $services ): Config {
+		if ( Util::useCommunityConfiguration() ) {
+			wfDeprecated(
+				'GrowthExperimentsWikiPageConfig service',
+				'1.44', 'GrowthExperiments'
+			);
+		}
+
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new WikiPageConfig(
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
@@ -991,6 +1005,13 @@ return [
 	'GrowthExperimentsWikiPageConfigLoader' => static function (
 		MediaWikiServices $services
 	): WikiPageConfigLoader {
+		if ( Util::useCommunityConfiguration() ) {
+			wfDeprecated(
+				'GrowthExperimentsWikiPageConfigLoader service',
+				'1.44', 'GrowthExperiments'
+			);
+		}
+
 		return new WikiPageConfigLoader(
 			$services->getMainWANObjectCache(),
 			GrowthExperimentsServices::wrap( $services )
@@ -1006,6 +1027,13 @@ return [
 	'GrowthExperimentsWikiPageConfigWriterFactory' => static function (
 		MediaWikiServices $services
 	): WikiPageConfigWriterFactory {
+		if ( Util::useCommunityConfiguration() ) {
+			wfDeprecated(
+				'GrowthExperimentsWikiPageConfigWriterFactory service',
+				'1.44', 'GrowthExperiments'
+			);
+		}
+
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
 		return new WikiPageConfigWriterFactory(
 			$growthExperimentsServices->getWikiPageConfigLoader(),

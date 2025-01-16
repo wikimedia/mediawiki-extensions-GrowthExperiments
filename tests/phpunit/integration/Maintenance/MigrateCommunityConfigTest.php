@@ -19,6 +19,7 @@ class MigrateCommunityConfigTest extends MaintenanceBaseTestCase {
 	public function setUp(): void {
 		parent::setUp();
 		$this->markTestSkippedIfExtensionNotLoaded( 'CommunityConfiguration' );
+		$this->hideDeprecated( 'GrowthExperimentsWikiPageConfigLoader' );
 	}
 
 	protected function getMaintenanceClass(): string {

@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Config;
 
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
+use GrowthExperiments\Util;
 use InvalidArgumentException;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
@@ -65,6 +66,10 @@ class WikiPageConfigWriterFactory {
 		LinkTarget $configPage,
 		?UserIdentity $performer = null
 	): WikiPageConfigWriter {
+		if ( Util::useCommunityConfiguration() ) {
+			wfDeprecated( WikiPageConfigWriter::class, '1.44', 'GrowthExperiments' );
+		}
+
 		$performerTmp = $performer
 			?? $this->systemUser
 			?? User::newSystemUser( 'MediaWiki default', [ 'steal' => true ] );
