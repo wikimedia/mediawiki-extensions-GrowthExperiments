@@ -20,7 +20,7 @@
 			},
 			{
 				"name": "gemm_mentee_is_active",
-				"type": "boolean",
+				"type": "mwtinyint",
 				"options": { "notnull": true, "default": 1 }
 			}
 		],

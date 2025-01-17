@@ -6,7 +6,7 @@ CREATE TABLE /*_*/growthexperiments_mentor_mentee (
   gemm_mentee_id INTEGER UNSIGNED NOT NULL,
   gemm_mentor_role BLOB NOT NULL,
   gemm_mentor_id INTEGER UNSIGNED NOT NULL,
-  gemm_mentee_is_active BOOLEAN DEFAULT 1 NOT NULL,
+  gemm_mentee_is_active SMALLINT DEFAULT 1 NOT NULL,
   PRIMARY KEY(
     gemm_mentee_id, gemm_mentor_role
   )

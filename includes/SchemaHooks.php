@@ -43,6 +43,11 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook {
 			'growthexperiments_link_recommendations', 'gelr_data',
 			"$sqlDir/patch-modify_gelr_data_nullable.sql", true,
 		] );
+		$updater->addExtensionUpdateOnVirtualDomain( [
+			self::VIRTUAL_DOMAIN, 'modifyField',
+			'growthexperiments_mentor_mentee', 'gemm_mentee_is_active',
+			"$sqlDir/patch-modify_gemm_mentee_is_active_mwtinyint.sql", true,
+		] );
 	}
 
 }

@@ -1,0 +1,73 @@
+{
+	"comment": "Make growthexperiments_mentor_mentee.gemm_mentee_is_active a mwtinyint",
+	"before": {
+		"name": "growthexperiments_mentor_mentee",
+		"comment": "Table having mentor/mentee relationship.",
+		"columns": [
+			{
+				"name": "gemm_mentee_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gemm_mentor_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gemm_mentor_role",
+				"type": "binary",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "gemm_mentee_is_active",
+				"type": "boolean",
+				"options": { "notnull": true, "default": 1 }
+			}
+		],
+		"indexes": [
+			{
+				"name": "gemm_mentor",
+				"comment": "This index is here to facilitate quick queries by mentor",
+				"columns": [ "gemm_mentor_id", "gemm_mentee_is_active" ],
+				"unique": false
+			}
+		],
+		"pk": [ "gemm_mentee_id", "gemm_mentor_role" ]
+	},
+	"after": {
+		"name": "growthexperiments_mentor_mentee",
+		"comment": "Table having mentor/mentee relationship.",
+		"columns": [
+			{
+				"name": "gemm_mentee_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gemm_mentor_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gemm_mentor_role",
+				"type": "binary",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "gemm_mentee_is_active",
+				"type": "mwtinyint",
+				"options": { "notnull": true, "default": 1 }
+			}
+		],
+		"indexes": [
+			{
+				"name": "gemm_mentor",
+				"comment": "This index is here to facilitate quick queries by mentor",
+				"columns": [ "gemm_mentor_id", "gemm_mentee_is_active" ],
+				"unique": false
+			}
+		],
+		"pk": [ "gemm_mentee_id", "gemm_mentor_role" ]
+	}
+}
