@@ -22,30 +22,16 @@ class UserImpact implements JsonSerializable {
 	/** Cache version, to be increased when breaking backwards compatibility. */
 	public const VERSION = 10;
 
-	/** @var UserIdentity */
-	private $user;
-
-	/** @var int */
-	private $receivedThanksCount;
-
+	private UserIdentity $user;
+	private int $receivedThanksCount;
 	/** @var int[] */
-	private $editCountByNamespace;
-
+	private array $editCountByNamespace;
 	/** @var int[] */
-	private $editCountByDay;
-
+	private array $editCountByDay;
 	private int $revertedEditCount;
-
-	/** @var int */
-	private $newcomerTaskEditCount;
-
-	/** @var int|null */
-	private $lastEditTimestamp;
-
-	/** @var int */
-	private $generatedAt;
-
-	/** @var EditingStreak */
+	private int $newcomerTaskEditCount;
+	private ?int $lastEditTimestamp = null;
+	private int $generatedAt;
 	private EditingStreak $longestEditingStreak;
 	private array $editCountByTaskType;
 

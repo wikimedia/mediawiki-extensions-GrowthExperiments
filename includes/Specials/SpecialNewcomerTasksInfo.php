@@ -8,12 +8,8 @@ use OOUI\Tag;
 
 class SpecialNewcomerTasksInfo extends SpecialPage {
 
-	/** @var NewcomerTasksInfo */
-	private $cachedSuggestionsInfo;
+	private NewcomerTasksInfo $cachedSuggestionsInfo;
 
-	/**
-	 * @param NewcomerTasksInfo $cachedSuggestionsInfo
-	 */
 	public function __construct( NewcomerTasksInfo $cachedSuggestionsInfo ) {
 		parent::__construct( 'NewcomerTasksInfo' );
 		$this->cachedSuggestionsInfo = $cachedSuggestionsInfo;

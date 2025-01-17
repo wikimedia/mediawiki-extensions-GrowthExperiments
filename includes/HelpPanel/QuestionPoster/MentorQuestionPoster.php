@@ -17,8 +17,7 @@ use Wikimedia\Stats\StatsFactory;
  */
 abstract class MentorQuestionPoster extends QuestionPoster {
 
-	/** @var MentorManager */
-	protected $mentorManager;
+	protected MentorManager $mentorManager;
 
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,

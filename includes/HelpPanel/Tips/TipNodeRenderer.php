@@ -12,26 +12,14 @@ use OOUI\IconWidget;
  * Transform an array of TipNodes into an array of rendered HTML.
  */
 class TipNodeRenderer {
-	/**
-	 * @var MessageLocalizer
-	 */
-	private $messageLocalizer;
 
-	/**
-	 * @var string
-	 */
-	private $extensionAssetsPath;
+	private MessageLocalizer $messageLocalizer;
+	private string $extensionAssetsPath;
 
-	/**
-	 * @param string $extensionAssetsPath
-	 */
 	public function __construct( string $extensionAssetsPath ) {
 		$this->extensionAssetsPath = $extensionAssetsPath;
 	}
 
-	/**
-	 * @param MessageLocalizer $messageLocalizer
-	 */
 	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ) {
 		$this->messageLocalizer = $messageLocalizer;
 	}
@@ -54,12 +42,6 @@ class TipNodeRenderer {
 		}, $nodes ) );
 	}
 
-	/**
-	 * @param TipNode $node
-	 * @param string $skin
-	 * @param string $dir
-	 * @return string
-	 */
 	private function buildHtml( TipNode $node, string $skin, string $dir ): string {
 		switch ( $node->getType() ) {
 			case 'header':
@@ -91,11 +73,6 @@ class TipNodeRenderer {
 		], $variants );
 	}
 
-	/**
-	 * @param TipNode $node
-	 * @param string $skinName
-	 * @return string
-	 */
 	private function mainAndTextRender( TipNode $node, string $skinName ): string {
 		$tipTextVariants = array_values( array_map( static function ( $item ) {
 			if ( $item['type'] == TipTree::TIP_DATA_TYPE_TEXT_VARIANT ) {

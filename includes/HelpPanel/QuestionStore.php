@@ -25,38 +25,14 @@ class QuestionStore {
 	private const QUESTION_CHAR_LIMIT = 60;
 	private const MAX_QUESTIONS = 3;
 
-	/**
-	 * @var User
-	 */
-	private $user;
-	/**
-	 * @var string
-	 */
-	private $preference;
-	/**
-	 * @var RevisionStore
-	 */
-	private $revisionStore;
-	/**
-	 * @var Language
-	 */
-	private $language;
-	/**
-	 * @var UserOptionsManager
-	 */
-	private $userOptionsManager;
-	/**
-	 * @var UserOptionsLookup
-	 */
-	private $userOptionsLookup;
-	/**
-	 * @var JobQueueGroup
-	 */
-	private $jobQueueGroup;
-	/**
-	 * @var bool
-	 */
-	private $wasPosted;
+	private User $user;
+	private string $preference;
+	private RevisionStore $revisionStore;
+	private Language $language;
+	private UserOptionsManager $userOptionsManager;
+	private UserOptionsLookup $userOptionsLookup;
+	private JobQueueGroup $jobQueueGroup;
+	private bool $wasPosted;
 
 	/**
 	 * @param User $user

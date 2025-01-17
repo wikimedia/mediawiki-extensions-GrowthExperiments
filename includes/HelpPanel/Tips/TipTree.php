@@ -33,18 +33,10 @@ abstract class TipTree {
 		'graphic',
 		'text'
 	];
-	/**
-	 * @var string|null
-	 */
-	protected $learnMoreLink;
-	/**
-	 * @var array
-	 */
-	protected $extraData;
 
-	/**
-	 * @param array $extraData
-	 */
+	protected ?string $learnMoreLink = null;
+	protected array $extraData;
+
 	public function __construct( array $extraData ) {
 		$this->learnMoreLink = $extraData[$this->getTaskTypeId()]['learnMoreLink'] ?? null;
 		$this->extraData = $extraData;

@@ -22,27 +22,14 @@ use Wikimedia\Rdbms\IDatabase;
  */
 class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 
-	/** @var Config */
-	private $config;
-
-	/** @var MentorStore */
-	private $mentorStore;
-
-	/** @var StarredMenteesStore */
-	private $starredMenteesStore;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
+	private Config $config;
+	private MentorStore $mentorStore;
+	private StarredMenteesStore $starredMenteesStore;
+	private MentorProvider $mentorProvider;
 
 	/** @var HashBagOStuff Mentor [starred|unstarred]:username => UserIdentity[] list of mentees */
-	private $menteeCache;
+	private HashBagOStuff $menteeCache;
 
-	/**
-	 * @param Config $config
-	 * @param MentorStore $mentorStore
-	 * @param StarredMenteesStore $starredMenteesStore
-	 * @param MentorProvider $mentorProvider
-	 */
 	public function __construct(
 		Config $config,
 		MentorStore $mentorStore,

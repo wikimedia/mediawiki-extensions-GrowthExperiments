@@ -19,17 +19,9 @@ class SubpageUserImpactLookup implements UserImpactLookup {
 	use ExpensiveUserImpactFallbackTrait;
 
 	private const SUBPAGE_NAME = 'userimpact.json';
+	private WikiPageFactory $wikiPageFactory;
+	private ?UserImpactLookup $fallbackLookup;
 
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
-	/** @var UserImpactLookup */
-	private $fallbackLookup;
-
-	/**
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param UserImpactLookup|null $fallbackLookup
-	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		?UserImpactLookup $fallbackLookup = null

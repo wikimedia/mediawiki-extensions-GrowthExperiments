@@ -23,14 +23,11 @@ abstract class MentorStore implements LoggerAwareInterface {
 	];
 
 	protected WANObjectCache $wanCache;
-	/** @var array Cache key =>¨value; custom in-process cache */
+
+	/** @var array Cache key => value; custom in-process cache */
 	protected array $inProcessCache = [];
 	protected bool $wasPosted;
 
-	/**
-	 * @param WANObjectCache $wanCache
-	 * @param bool $wasPosted
-	 */
 	public function __construct(
 		WANObjectCache $wanCache,
 		bool $wasPosted

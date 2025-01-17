@@ -35,24 +35,13 @@ class VisualEditorHooks implements
 	/** Prefix used for the VisualEditor API's plugin parameter. */
 	public const PLUGIN_PREFIX = 'ge-task-';
 
-	/** @var TitleFactory */
-	private $titleFactory;
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-	/** @var TaskTypeHandlerRegistry */
-	private $taskTypeHandlerRegistry;
+	private TitleFactory $titleFactory;
+	private ConfigurationLoader $configurationLoader;
+	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
 
 	private StatsFactory $statsFactory;
-	/** @var UserIdentityUtils */
-	private $userIdentityUtils;
+	private UserIdentityUtils $userIdentityUtils;
 
-	/**
-	 * @param TitleFactory $titleFactory
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param StatsFactory $statsFactory
-	 * @param UserIdentityUtils $userIdentityUtils
-	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		ConfigurationLoader $configurationLoader,
