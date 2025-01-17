@@ -5,7 +5,7 @@
 		"api-testing": "mocha --timeout 20000 --require tests/api-testing/fixtures.cjs --parallel --recursive tests/api-testing",
 		"doc": "cd documentation/frontend && npm ci && npm run docs:build",
 		"minify:svg": "svgo --config=.svgo.config.js --quiet --recursive --folder images/",
-		"selenium-test": "npm run cy:run && wdio tests/selenium/wdio.conf.js",
+		"selenium-test": "npm run cy:run",
 		"cy:open": "CYPRESS_CACHE_FOLDER=./cypress/.cache cypress open",
 		"cy:run": "CYPRESS_CACHE_FOLDER=./cypress/.cache cypress run",
 		"test": "npm run test:types && grunt test && npm run test:jest && npm run test:doc",

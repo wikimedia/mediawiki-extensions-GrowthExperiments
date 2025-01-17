@@ -19,6 +19,7 @@ class PrepareBrowserTests extends Maintenance {
 	public function execute(): void {
 		$this->importPages();
 		$this->importImageSuggestions();
+		$this->importLinkSuggestions();
 	}
 
 	private function importPages(): void {
@@ -66,6 +67,29 @@ class PrepareBrowserTests extends Maintenance {
 		);
 		$importScript->execute();
 	}
+
+	private function importLinkSuggestions(): void {
+		$recommendationTitles = [
+			'Douglas_Adams',
+			'The_Hitchhiker\'s_Guide_to_the_Galaxy',
+		];
+		$linkSuggestionsDirectory = __DIR__ . '/../cypress/support/setupFixtures/linkSuggestions/';
+		foreach ( $recommendationTitles as $title ) {
+			$importScript = $this->createChild(
+				InsertLinkRecommendation::class,
+				__DIR__ . '/insertLinkRecommendation.php',
+			);
+			$importScript->loadParamsAndArgs(
+				null,
+				[
+					'title' => $title,
+					'json-file' => $linkSuggestionsDirectory . $title . '.suggestions.json',
+				]
+			);
+			$importScript->execute();
+		}
+	}
+
 }
 
 $maintClass = PrepareBrowserTests::class;
