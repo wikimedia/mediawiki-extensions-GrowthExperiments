@@ -34,25 +34,15 @@ class QuestionStore {
 	private JobQueueGroup $jobQueueGroup;
 	private bool $wasPosted;
 
-	/**
-	 * @param User $user
-	 * @param string $preference
-	 * @param RevisionStore $revisionStore
-	 * @param Language $language
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param JobQueueGroup $jobQueueGroup
-	 * @param bool $wasPosted
-	 */
 	public function __construct(
-		$user,
-		$preference,
+		User $user,
+		string $preference,
 		RevisionStore $revisionStore,
 		Language $language,
 		UserOptionsManager $userOptionsManager,
 		UserOptionsLookup $userOptionsLookup,
 		JobQueueGroup $jobQueueGroup,
-		$wasPosted
+		bool $wasPosted
 	) {
 		$this->user = $user;
 		$this->preference = $preference;
