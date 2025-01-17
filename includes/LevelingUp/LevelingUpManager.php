@@ -58,6 +58,7 @@ class LevelingUpManager {
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 	private LoggerInterface $logger;
 	private Config $growthConfig;
+	private const KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM = 1;
 
 	/**
 	 * @param ServiceOptions $options
@@ -367,7 +368,8 @@ class LevelingUpManager {
 	public function shouldSendKeepGoingNotification( UserIdentity $userIdentity ): bool {
 		$suggestedEditCount = $this->getSuggestedEditsCount( $userIdentity );
 		$thresholds = $this->growthConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' );
-		return $suggestedEditCount >= $thresholds[0] && $suggestedEditCount <= $thresholds[1];
+		return $suggestedEditCount >= self::KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM
+			&& $suggestedEditCount <= $thresholds[1];
 	}
 
 	/**
