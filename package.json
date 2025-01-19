@@ -69,7 +69,7 @@
 		"vue": "3.4.27",
 		"vuex": "4.0.2",
 		"wdio-intercept-service": "4.2.2",
-		"wdio-mediawiki": "2.5.0"
+		"wdio-mediawiki": "2.6.0"
 	},
 	"engines": {
 		"npm": ">=7.21.0",
