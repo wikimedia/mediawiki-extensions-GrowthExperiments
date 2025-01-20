@@ -1111,8 +1111,8 @@ return [
 	): CampaignConfig {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new CampaignConfig(
-			$growthServices->getGrowthWikiConfig()->get( 'GECampaigns' ) ?? [],
-			$growthServices->getGrowthWikiConfig()->get( 'GECampaignTopics' ) ?? [],
+			$growthServices->getGrowthConfig()->get( 'GECampaigns' ) ?? [],
+			$growthServices->getGrowthConfig()->get( 'GECampaignTopics' ) ?? [],
 			$services->getUserOptionsLookup()
 		);
 	},
