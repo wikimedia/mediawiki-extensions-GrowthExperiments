@@ -6,13 +6,11 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
-use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Message\Message;
-use MediaWiki\Title\TitleValue;
 use StatusValue;
 
 /**
@@ -28,12 +26,9 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 
 	/** @var string Use the configuration for OresBasedTopic topics. */
 	public const CONFIGURATION_TYPE_ORES = 'ores';
-	/** @var string Use the configuration for MorelikeBasedTopic topics. */
-	public const CONFIGURATION_TYPE_MORELIKE = 'morelike';
 
 	private const VALID_TOPIC_TYPES = [
 		self::CONFIGURATION_TYPE_ORES,
-		self::CONFIGURATION_TYPE_MORELIKE,
 	];
 
 	/** @var TaskTypeHandlerRegistry */
@@ -247,7 +242,6 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 			$status->merge( $this->configurationValidator->validateIdentifier( $topicId ) );
 			$requiredFields = [
 				self::CONFIGURATION_TYPE_ORES => [ 'group', 'oresTopics' ],
-				self::CONFIGURATION_TYPE_MORELIKE => [ 'label', 'titles' ],
 			][$this->topicType];
 			foreach ( $requiredFields as $field ) {
 				if ( !isset( $topicConfiguration[$field] ) ) {
@@ -269,14 +263,6 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 				}
 				$topic = new OresBasedTopic( $topicId, $topicConfiguration['group'], $oresTopics );
 				$status->merge( $this->configurationValidator->validateTopicMessages( $topic ) );
-			} elseif ( $this->topicType === self::CONFIGURATION_TYPE_MORELIKE ) {
-				'@phan-var array{label:string,titles:string[]} $topicConfiguration';
-				$linkTargets = [];
-				foreach ( $topicConfiguration['titles'] as $title ) {
-					$linkTargets[] = new TitleValue( NS_MAIN, $title );
-				}
-				$topic = new MorelikeBasedTopic( $topicId, $linkTargets );
-				$topic->setName( $topicConfiguration['label'] );
 			} else {
 				throw new LogicException( 'Impossible but this makes phan happy.' );
 			}

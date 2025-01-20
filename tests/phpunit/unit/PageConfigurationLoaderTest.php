@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
-use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Collation\CollationFactory;
@@ -187,54 +186,6 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-' . $error, $status );
 	}
 
-	/**
-	 * @covers ::loadTopics
-	 */
-	public function testLoadMorelikeTopics() {
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getMorelikeTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
-		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
-		// in getMockWikiPageConfigLoader() will fail.
-		foreach ( range( 1, 2 ) as $_ ) {
-			$topics = $configurationLoader->loadTopics();
-			$this->assertIsArray( $topics );
-			$this->assertNotEmpty( $topics );
-			$this->assertInstanceOf( Topic::class, $topics[0] );
-			$this->assertSame( [ 'art', 'science' ], array_map( static function ( Topic $t ) {
-				return $t->getId();
-			}, $topics ) );
-			// FIXME can't test this while the RawMessage hack is used
-			// $this->assertSame( [ 'Art', 'Science' ], array_map( function ( Topic $t ) {
-			//	return $t->getName( $this->getMockMessageLocalizer() );
-			// }, $topics ) );
-			$this->assertSame( [ [ 'Music', 'Painting' ], [ 'Physics', 'Biology' ] ],
-				array_map( static function ( MorelikeBasedTopic $t ) {
-					return array_map( static function ( LinkTarget $lt ) {
-						return $lt->getText();
-					}, $t->getReferencePages() );
-				}, $topics ) );
-		}
-
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], StatusValue::newFatal( 'foo' ),
-			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
-		foreach ( range( 1, 2 ) as $_ ) {
-			$topics = $configurationLoader->loadTopics();
-			$this->assertInstanceOf( StatusValue::class, $topics );
-			$this->assertStatusError( 'foo', $topics );
-		}
-	}
-
-	/**
-	 * @covers ::loadTopics
-	 * @dataProvider provideConfigurationLoaderErrors
-	 */
-	public function testLoadMorelikeTopics_error( $error ) {
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getMorelikeTopicConfig( $error ),
-			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
-		$status = $configurationLoader->loadTopics();
-		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-' . $error, $status );
-	}
-
 	public static function provideConfigurationLoaderErrors() {
 		return [
 			[ 'wrongstructure' ],
@@ -378,32 +329,6 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$config['topics']['*'] = [ 'group' => 'test', 'oresTopics' => [ 'test' ] ];
 		} elseif ( $error === 'missingfield' ) {
 			unset( $config['topics']['science']['group'] );
-		}
-		return $config;
-	}
-
-	/**
-	 * Test configuration
-	 * @param string|null $error
-	 * @return array|int
-	 */
-	protected function getMorelikeTopicConfig( $error = null ) {
-		$config = [
-			'art' => [
-				'label' => 'Art',
-				'titles' => [ 'Music', 'Painting' ],
-			],
-			'science' => [
-				'label' => 'Science',
-				'titles' => [ 'Physics', 'Biology' ],
-			],
-		];
-		if ( $error === 'wrongstructure' ) {
-			return 0;
-		} elseif ( $error === 'invalidid' ) {
-			return [ '*' => [] ];
-		} elseif ( $error === 'missingfield' ) {
-			unset( $config['science']['titles'] );
 		}
 		return $config;
 	}

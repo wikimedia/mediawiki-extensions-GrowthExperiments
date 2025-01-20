@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
-use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\Title\TitleValue;
@@ -27,18 +26,10 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 	public function testGetQueries() {
 		$taskType = new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY,
 			[], [ new TitleValue( NS_TEMPLATE, 'Copyedit' ) ], [ new TitleValue( NS_TEMPLATE, 'DontCopyedit' ) ] );
-		$morelikeTopic1 = new MorelikeBasedTopic( 'art', [
-			new TitleValue( NS_MAIN, 'Picasso' ),
-			new TitleValue( NS_MAIN, 'Watercolor' ),
-		] );
-		$morelikeTopic2 = new MorelikeBasedTopic( 'science', [
-			new TitleValue( NS_MAIN, 'Einstein' ),
-			new TitleValue( NS_MAIN, 'Physics' ),
-		] );
 		$oresTopic1 = new OresBasedTopic( 'art', 'culture', [ 'painting', 'drawing' ] );
 		$oresTopic2 = new OresBasedTopic( 'science', 'stem', [ 'physics', 'biology' ] );
 		$campaignTopic1 = new CampaignTopic( 'biology', 'hastemplate:Taxobox' );
-		$campaignTopic2 = new CampaignTopic( 'argentina', 'morelike:Argentina' );
+		$campaignTopic2 = new CampaignTopic( 'argentina', 'hastemplate:Argentina' );
 
 		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
@@ -47,17 +38,6 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 			->willReturn( 'hastemplate:"Copyedit" -hastemplate:"DontCopyedit"' );
 
 		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
-
-		$morelikeQueries = $searchStrategy->getQueries( [ $taskType ],
-			[ $morelikeTopic1, $morelikeTopic2 ] );
-		$this->assertCount( 2, $morelikeQueries );
-
-		$this->assertTopicsInQueries( $morelikeQueries, [ 'art', 'science' ] );
-		$this->assertTaskTypeInQueries( $morelikeQueries, [ 'copyedit' ] );
-
-		$this->assertQueryStrings( $morelikeQueries, [
-			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" morelikethis:"Picasso|Watercolor"',
-			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" morelikethis:"Einstein|Physics"' ] );
 
 		$oresQueries = $searchStrategy->getQueries( [ $taskType ], [ $oresTopic1, $oresTopic2 ], [] );
 		$this->assertCount( 1, $oresQueries );
@@ -83,7 +63,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$this->assertTopicsInQueries( $searchExpressionBasedTopicQueries, [ 'biology', 'argentina' ] );
 		$this->assertQueryStrings( $searchExpressionBasedTopicQueries, [
 			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" hastemplate:Taxobox',
-			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" morelike:Argentina',
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" hastemplate:Argentina',
 		] );
 	}
 

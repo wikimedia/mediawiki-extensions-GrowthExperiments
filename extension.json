@@ -2771,7 +2771,7 @@
 			"value": "MediaWiki:NewcomerTasks.json"
 		},
 		"GENewcomerTasksTopicType": {
-			"description": "How the topic of an article is identified. One of: morelike - use CirrusSearch morelikethis search with a predefined set of representetative articles for each topic; ores - use ORES articletopic predictions.",
+			"description": "How the topic of an article is identified. Only supported value is ores - use ORES articletopic predictions.",
 			"value": "ores"
 		},
 		"GENewcomerTasksOresTopicConfig": {
