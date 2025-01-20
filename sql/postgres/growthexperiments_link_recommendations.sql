@@ -5,7 +5,7 @@
 CREATE TABLE growthexperiments_link_recommendations (
   gelr_revision INT NOT NULL,
   gelr_page INT NOT NULL,
-  gelr_data TEXT NOT NULL,
+  gelr_data TEXT DEFAULT NULL,
   PRIMARY KEY(gelr_revision)
 );
 

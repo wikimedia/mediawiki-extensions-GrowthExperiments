@@ -1,0 +1,59 @@
+{
+	"comment": "Make the growthexperiments_link_recommendations.gelr_data field nullable",
+	"before": {
+		"name": "growthexperiments_link_recommendations",
+		"comment": "Recommended wikilinks to add to articles. Cache table for results from an external recommendation service which is too slow to use directly.",
+		"columns": [
+			{
+				"name": "gelr_page",
+				"comment": "The page the recommendations are for. Foreign key to page.page_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gelr_revision",
+				"comment": "The revision the recommendations are for. Foreign key to revision.rev_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gelr_data",
+				"comment": "Link recommendation data as an arbitrary JSON object.",
+				"type": "binary",
+				"options": { "length": 16777215, "notnull": true }
+			}
+		],
+		"indexes": [
+			{ "name": "gelr_page", "columns": [ "gelr_page" ], "unique": false }
+		],
+		"pk": [ "gelr_revision" ]
+	},
+	"after": {
+		"name": "growthexperiments_link_recommendations",
+		"comment": "Recommended wikilinks to add to articles. Cache table for results from an external recommendation service which is too slow to use directly.",
+		"columns": [
+			{
+				"name": "gelr_page",
+				"comment": "The page the recommendations are for. Foreign key to page.page_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gelr_revision",
+				"comment": "The revision the recommendations are for. Foreign key to revision.rev_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "gelr_data",
+				"comment": "Link recommendation data as an arbitrary JSON object.",
+				"type": "binary",
+				"options": { "length": 16777215, "notnull": false }
+			}
+		],
+		"indexes": [
+			{ "name": "gelr_page", "columns": [ "gelr_page" ], "unique": false }
+		],
+		"pk": [ "gelr_revision" ]
+	}
+}

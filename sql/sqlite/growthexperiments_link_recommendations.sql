@@ -5,7 +5,7 @@
 CREATE TABLE /*_*/growthexperiments_link_recommendations (
   gelr_revision INTEGER UNSIGNED NOT NULL,
   gelr_page INTEGER UNSIGNED NOT NULL,
-  gelr_data BLOB NOT NULL,
+  gelr_data BLOB DEFAULT NULL,
   PRIMARY KEY(gelr_revision)
 );
 
