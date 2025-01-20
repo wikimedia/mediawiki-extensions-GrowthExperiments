@@ -323,7 +323,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Culture",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regions",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Campaign event",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Unrecognized topic {{PLURAL:$2|name|names}} for the <kbd>growtharticletopic:</kbd> keyword: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Invalid suggested edits configuration: bad structure",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Invalid suggested edits configuration for task type \"$1\": \"$2\" must be an integer",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Invalid suggested edits configuration for task type \"$1\": \"$2\" must be larger than $3",

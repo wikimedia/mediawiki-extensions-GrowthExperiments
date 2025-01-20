@@ -20,7 +20,6 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\GrowthArticleTopicFeature;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -1420,9 +1419,6 @@ class HomepageHooks implements
 			}
 		}
 		$extraFeatures[] = $templateCollectionFeature;
-
-		// FIXME T301030 remove when campaign is over
-		$extraFeatures[] = new GrowthArticleTopicFeature();
 	}
 
 	/** @inheritDoc */
