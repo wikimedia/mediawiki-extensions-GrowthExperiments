@@ -346,7 +346,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Text shown in the topic filter dialog in the suggested edits module for the 'culture' topic group.",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Text shown in the topic filter dialog in the suggested edits module for the 'geography' topic group.\n{{identical|Region}}",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Text shown in the topic filter dialog in the suggested edits module for the 'campaign' topic group.",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Warning shown when the <kbd>growtharticletopic:</kbd> search keyword is used with an unrecognized topic name.\n\nParameters:\n* $1 - comma-separated list of topic names.\n* $2 - number of unrecognized topic names.\n\nSimilar to {{msg-mw|Cirrussearch-articletopic-invalid-topic}}.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Error message when the on-wiki topic configuration page has bad structure (something that should be an object isn't).",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Error message when a field for MediaWiki:NewcomerTasks.json should be an integer, but it isn't. Parameters: \n* $1 Task type ID.\n* $2 the field name",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Error message when an integer field for MediaWiki:NewcomerTasks.json is too small. Parameters: \n* $1 Task type ID.\n* $2 the field name\n* $3 minimum allowed value",

@@ -210,25 +210,11 @@
 		} );
 	}
 
-	/**
-	 * Opt the user into growth-glam-2022 campaign
-	 *
-	 * @private For debug/QA purposes only.
-	 * @param {string} id
-	 * @return {jQuery.Promise|undefined}
-	 */
-	function enableCampaign( id ) {
-		return saveOptions( {
-			'growthexperiments-campaign': id
-		} );
-	}
-
 	// Expose some methods for debugging.
 	window.ge = window.ge || {};
 	ge.utils = {
 		getUserVariant: getUserVariant,
-		setUserVariant: setUserVariant,
-		enableCampaign: enableCampaign
+		setUserVariant: setUserVariant
 	};
 
 	module.exports = {
