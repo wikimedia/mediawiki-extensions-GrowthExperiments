@@ -6,7 +6,7 @@ CREATE TABLE /*_*/growthexperiments_mentor_mentee (
   gemm_mentee_id INT UNSIGNED NOT NULL,
   gemm_mentor_role VARBINARY(255) NOT NULL,
   gemm_mentor_id INT UNSIGNED NOT NULL,
-  gemm_mentee_is_active TINYINT(1) DEFAULT 1 NOT NULL,
+  gemm_mentee_is_active TINYINT DEFAULT 1 NOT NULL,
   INDEX gemm_mentor (
     gemm_mentor_id, gemm_mentee_is_active
   ),
