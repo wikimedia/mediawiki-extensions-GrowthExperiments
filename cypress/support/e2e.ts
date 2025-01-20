@@ -17,10 +17,15 @@ function subscribeWhenAvailable(
 	if ( attempts > 10 ) {
 		const timeSinceNavigation = win.performance.now() / 1000;
 		const currentPage = win.location.toString();
-		throw new Error(
+		console.warn(
 			`Failed to subscribe to resourceloader.exception on ${ currentPage } after ${ timeSinceNavigation } seconds.` +
 			'`window.document` ' + ( win.document ? 'still exists' : 'is falsy.' ),
 		);
+		/**
+		 * TODO: figure out why win.mw.trackSubscribe is sometimes not available
+		 *       and if this is correlated to other issues.
+		 */
+		return;
 	}
 
 	if ( win.mw.trackSubscribe ) {
