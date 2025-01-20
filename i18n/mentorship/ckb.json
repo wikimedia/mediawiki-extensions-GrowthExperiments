@@ -90,7 +90,7 @@
 	"growthexperiments-manage-mentors-last-active": "کۆتا چالاک",
 	"growthexperiments-manage-mentors-intro-msg": "پەیام بۆ تازەکاران",
 	"growthexperiments-manage-mentors-remove-mentor": "لابردن",
-	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|تۆ}} خەریکیت [[User:$1]] لە {{GENDER:$1|مامۆستایەتی}} لادەبەیت.",
+	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|تۆ}} خەریکیت [[User:$1|$1]] لە {{GENDER:$1|مامۆستایەتی}} لادەبەیت.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "ھۆکاری لابردنی مامۆستاکە",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "ھۆکار",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "ناونووسین",

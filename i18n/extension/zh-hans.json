@@ -82,6 +82,9 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "否",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "包含要自动分配给新手的导师列表的页面",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "包含只能手动分配的导师列表的页面",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "用户是否应该自动获得导师资格？",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "是，允许满足以下所有准入资格的用户登记为导师。",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "否，不允许任何用户登记为导师。",
 	"growthexperiments-edit-config-newcomertasks": "编辑提议",
 	"growthexperiments-edit-config-newcomer-tasks-description": "某些类型的编辑建议通过维护模板显示出来。包含这些模板的条目将添加到订阅源中。要查看每种类型的任务有多少条目可用，请参阅 [[Special:NewcomerTasksInfo|这个页面]]。",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "已禁用",
@@ -103,7 +106,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "了解图片建议任务类型更多信息的目标页面。",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "新手每天可以完成的“添加图像”建议任务的最大数量。",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "此任务类型与机器建议关系，并且不使用模板来产生任务池。",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "包含此处定义的模板的文章将不会显示为用户作为任务类型的任务。",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "含有此处定义的模板的条目将不会包含在此种任务中显示给用户。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "包含此处定义分类的条目将不会以此任务类型向用户显示为任务。",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "信息框模版",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|图片建议]]新手任务功能需要这些模板，包含这些模板的条目将不会列在图片建议任务内。"
