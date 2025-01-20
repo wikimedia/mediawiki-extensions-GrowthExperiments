@@ -479,34 +479,29 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 	const apiConfig = {
 			context: context || 'suggestedEditsModule.getExtraDataAndUpdateQueue'
 		},
-		suggestedEditData = this.taskQueue[ taskIndex ],
+		taskAtIndex = this.taskQueue[ taskIndex ],
 		promise = $.Deferred();
 
-	if ( !suggestedEditData ) {
+	if ( !taskAtIndex ) {
 		return $.Deferred().resolve().promise();
 	}
 
-	const pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig ).fail( () => {
-		if ( this.taskQueue[ this.currentTaskIndex ] === undefined ) {
-			throw new Error(
-				'No task found at index ' + this.currentTaskIndex + ' for taskQueue of length ' + this.taskQueue.length
-			);
-		}
+	const pcsPromise = this.api.getExtraDataFromPcs( taskAtIndex, apiConfig ).fail( () => {
 		// Set the PCS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
-		this.taskQueue[ this.currentTaskIndex ].description = null;
-		this.taskQueue[ this.currentTaskIndex ].thumbnailSource = null;
+		taskAtIndex.description = null;
+		taskAtIndex.thumbnailSource = null;
 	} );
-	const aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData, apiConfig ).fail( () => {
+	const aqsPromise = this.api.getExtraDataFromAqs( taskAtIndex, apiConfig ).fail( () => {
 		// Set the AQS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
-		this.taskQueue[ this.currentTaskIndex ].pageviews = null;
+		taskAtIndex.pageviews = null;
 	} );
 
-	const preloaded = this.preloadCardImage( suggestedEditData );
+	const preloaded = this.preloadCardImage( taskAtIndex );
 	if ( !preloaded ) {
 		pcsPromise.done( () => {
-			this.preloadCardImage( suggestedEditData );
+			this.preloadCardImage( taskAtIndex );
 		} );
 	}
 
