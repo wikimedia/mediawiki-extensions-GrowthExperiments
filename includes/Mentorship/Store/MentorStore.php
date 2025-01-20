@@ -155,14 +155,12 @@ abstract class MentorStore implements LoggerAwareInterface {
 	 *
 	 * @param UserIdentity $mentor
 	 * @param string $mentorRole
-	 * @param bool $includeHiddenUsers Deprecated (and ignored) since 1.43
 	 * @param int $flags
 	 * @return bool
 	 */
 	abstract public function hasAnyMentees(
 		UserIdentity $mentor,
 		string $mentorRole,
-		bool $includeHiddenUsers = true,
 		int $flags = 0
 	): bool;
 

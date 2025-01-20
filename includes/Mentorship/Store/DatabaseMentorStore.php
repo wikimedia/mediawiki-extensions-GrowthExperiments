@@ -137,13 +137,8 @@ class DatabaseMentorStore extends MentorStore {
 	public function hasAnyMentees(
 		UserIdentity $mentor,
 		string $mentorRole,
-		bool $includeHiddenUsers = true,
 		int $flags = 0
 	): bool {
-		if ( !$includeHiddenUsers ) {
-			wfDeprecated( __METHOD__ . ' called with $includeHiddenUsers = false', '1.43' );
-		}
-
 		return (bool)$this->getDBByFlags( $flags )
 			->newSelectQueryBuilder()
 			->select( 'gemm_mentee_id' )
