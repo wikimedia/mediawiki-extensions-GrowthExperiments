@@ -689,6 +689,11 @@
 					"class": "GrowthExperiments\\Config\\Providers\\SuggestedEditsConfigProvider"
 				}
 			},
+			"Validators": {
+				"GrowthMentorship": {
+					"class": "GrowthExperiments\\Config\\Validation\\CommunityStructuredMentorListValidator"
+				}
+			},
 			"Providers": {
 				"HelpPanel": {
 					"store": {
@@ -773,7 +778,7 @@
 						}
 					},
 					"validator": {
-						"type": "noop"
+						"type": "GrowthMentorship"
 					},
 					"type": "data",
 					"options": {
