@@ -21,19 +21,9 @@ class TipsHandler extends SimpleHandler {
 
 	private const MAX_CACHE_AGE_SECONDS = 3600;
 
-	/**
-	 * @var TipsAssembler
-	 */
-	private $tipsAssembler;
-	/**
-	 * @var ConfigurationLoader
-	 */
-	private $configurationLoader;
+	private TipsAssembler $tipsAssembler;
+	private ConfigurationLoader $configurationLoader;
 
-	/**
-	 * @param TipsAssembler $tipsAssembler
-	 * @param ConfigurationLoader $configurationLoader
-	 */
 	public function __construct(
 		TipsAssembler $tipsAssembler, ConfigurationLoader $configurationLoader
 	) {

@@ -27,23 +27,12 @@ class QuestionPosterFactory {
 	/** The question is sent to the talk page of the asking user's mentor. */
 	public const TARGET_MENTOR_TALK = 'mentor talk page';
 
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var MentorManager */
-	private $mentorManager;
-
-	/** @var PermissionManager */
-	private $permissionManager;
-
-	/** @var bool */
-	private $helpDeskPostOnTop;
-
-	/** @var StatsFactory */
-	private $statsFactory;
+	private WikiPageFactory $wikiPageFactory;
+	private TitleFactory $titleFactory;
+	private MentorManager $mentorManager;
+	private PermissionManager $permissionManager;
+	private bool $helpDeskPostOnTop;
+	private StatsFactory $statsFactory;
 
 	private bool $confirmEditInstalled;
 	private bool $flowInstalled;

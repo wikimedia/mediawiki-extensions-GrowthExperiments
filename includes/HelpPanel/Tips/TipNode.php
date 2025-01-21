@@ -7,24 +7,11 @@ namespace GrowthExperiments\HelpPanel\Tips;
  * to an HTML node.
  */
 class TipNode {
-	/**
-	 * @var string
-	 */
-	private $type;
-	/**
-	 * @var array
-	 */
-	private $data;
-	/**
-	 * @var string
-	 */
-	private $messageKey;
 
-	/**
-	 * @param string $type
-	 * @param string $messageKey
-	 * @param array $data
-	 */
+	private string $type;
+	private array $data;
+	private string $messageKey;
+
 	public function __construct(
 		string $type, string $messageKey, array $data = [] ) {
 		$this->type = $type;

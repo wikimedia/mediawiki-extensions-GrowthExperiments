@@ -12,24 +12,10 @@ use MessageLocalizer;
  */
 class TipsAssembler {
 
-	/**
-	 * @var IContextSource
-	 */
-	private $messageLocalizer;
-	/**
-	 * @var ConfigurationLoader
-	 */
-	private $configurationLoader;
+	private IContextSource $messageLocalizer;
+	private ConfigurationLoader $configurationLoader;
+	private TipNodeRenderer $tipNodeRenderer;
 
-	/**
-	 * @var TipNodeRenderer
-	 */
-	private $tipNodeRenderer;
-
-	/**
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param TipNodeRenderer $tipNodeRenderer
-	 */
 	public function __construct(
 		ConfigurationLoader $configurationLoader, TipNodeRenderer $tipNodeRenderer
 	) {
@@ -37,9 +23,6 @@ class TipsAssembler {
 		$this->tipNodeRenderer = $tipNodeRenderer;
 	}
 
-	/**
-	 * @param MessageLocalizer $messageLocalizer
-	 */
 	public function setMessageLocalizer(
 		MessageLocalizer $messageLocalizer
 	): void {

@@ -9,23 +9,13 @@ use MessageLocalizer;
 
 class TipLoader {
 
-	/**
-	 * @var ConfigurationLoader
-	 */
-	private $configurationLoader;
+	private ConfigurationLoader $configurationLoader;
 
 	private const DEFAULT_EDITOR = 'visualeditor';
 
 	private const DEFAULT_SKIN = 'vector';
-	/**
-	 * @var MessageLocalizer
-	 */
-	private $messageLocalizer;
+	private MessageLocalizer $messageLocalizer;
 
-	/**
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param MessageLocalizer $messageLocalizer
-	 */
 	public function __construct(
 		ConfigurationLoader $configurationLoader, MessageLocalizer $messageLocalizer
 	) {
