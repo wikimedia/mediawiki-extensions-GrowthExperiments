@@ -11,7 +11,8 @@
 			"Robertgarrigos",
 			"Skurz0",
 			"Toniher",
-			"Xavier Dengra"
+			"Xavier Dengra",
+			"Amire80"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activa el Plafó d'Ajuda d'edició",
@@ -89,7 +90,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-publish": "Podeu seguir editant, o bé feu clic a «$1» per desar les vostres edicions!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-update-main-publish": "Afegeix més referències, o bé clica el botó de la fletxa blava per desar la teva edicióǃ",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-value": "Molts articles de {{SITENAME}}, siguin curts o molt llargs, es poden ampliar amb més informació. Així ajudem els lectors a saber més sobre un tema.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-rules1": "Seguiu aquestes directrius per ampliar l'article:\n* Mireu articles sobre temes similars per aconseguir idees sobre contingut que falta.\n* Només afegir informació de fets que poden ser verificats per altres persones.\n* Escriviu fent servir un to neutre, sense expressar les {{GENDER:|}}vostres opinions pròpies.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-rules1": "Seguiu aquestes directrius per ampliar l'article:\n* Mireu articles sobre temes similars per aconseguir idees sobre contingut que falta.\n* Només afegir informació de fets que poden ser verificats per altres persones.\n* Escriviu fent servir un to neutre, sense expressar les {{GENDER:|vos}}tres opinions pròpies.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step1": "Quan trobeu una secció que vulgueu ampliar, cliqueu \"$1\" per començar. Si voleu, podeu afegir un encapçalament per començar una secció.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-step1": "Quan trobeu una secció que vulgueu ampliar, premeu el llapis d'edició per començar. Si voleu, podeu afegir un encapçalament per començar una secció.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2": "Quan afegiu nova informació, assegureu-vos d'[[$1|afegir una referència]], perquè es pugui saber d'on prové la informació.",
