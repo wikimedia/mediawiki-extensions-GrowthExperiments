@@ -4,7 +4,6 @@ namespace GrowthExperiments\Config;
 
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Specials\SpecialEditGrowthConfig;
-use GrowthExperiments\Specials\SpecialEditGrowthConfigRedirect;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\Content;
 use MediaWiki\Content\Hook\JsonValidateSaveHook;
@@ -16,7 +15,6 @@ use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Page\PageIdentity;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
@@ -169,27 +167,20 @@ class LegacyConfigHooks implements
 	 * @inheritDoc
 	 */
 	public function onSpecialPage_initList( &$list ) {
-		if (
-			ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) &&
-			$this->config->get( 'GEUseCommunityConfigurationExtension' )
-		) {
-			$list['EditGrowthConfig'] = [
-				'class' => SpecialEditGrowthConfigRedirect::class,
-			];
-		} else {
-			$list['EditGrowthConfig'] = [
-				'class' => SpecialEditGrowthConfig::class,
-				'services' => [
-					'TitleFactory',
-					'RevisionLookup',
-					'PageProps',
-					'DBLoadBalancer',
-					'ReadOnlyMode',
-					'GrowthExperimentsWikiPageConfigLoader',
-					'GrowthExperimentsWikiPageConfigWriterFactory',
-					'GrowthExperimentsCommunityConfig'
-				]
-			];
-		}
+		// The hook is only executed if CommunityConfiguration extension is not in use,
+		// no need to check that again.
+		$list['EditGrowthConfig'] = [
+			'class' => SpecialEditGrowthConfig::class,
+			'services' => [
+				'TitleFactory',
+				'RevisionLookup',
+				'PageProps',
+				'DBLoadBalancer',
+				'ReadOnlyMode',
+				'GrowthExperimentsWikiPageConfigLoader',
+				'GrowthExperimentsWikiPageConfigWriterFactory',
+				'GrowthExperimentsCommunityConfig'
+			]
+		];
 	}
 }
