@@ -319,7 +319,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Cultura",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regiões",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Evento de campanha",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Nome de tópico não reconhecido|Nomes de tópicos não reconhecidos}} para a palavra-chave <kbd>articletopic:</kbd> $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuração de edições sugeridas inválida: estrutura incorreta",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuração de edições sugeridas inválida para o tipo de tarefa \"$1\": \"$2\" tem de ser um número inteiro",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Configuração de edições sugeridas inválida para o tipo de tarefa \"$1\": \"$2\" tem de ser maior do que $3",

@@ -312,7 +312,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultuvra",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Guovllut",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampánjadáhpáhusat",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Ii/eai {{PLURAL:$2|oahpes|oahpes}} fáttanamma/fáttánamat <kbd>growtharticletopic:</kbd> čoavddasátnái: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Dohkkemeahttumis konfigurašuvdna evttohuvvon rievdademiide: dohkkemeahttumis struktuvra",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Dohkkemeahttumis konfigurašuvdna evttohuvvon rievdademiide bargobihttái «$1»: «$2» ferte leat olleslohku",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Dohkkemeahttumis konfigurašuvdna evttohuvvon rievdademiide bargobihttái «$1»: «$2» ferte leat stuorit go $3.",

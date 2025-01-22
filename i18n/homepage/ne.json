@@ -287,7 +287,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "संस्कृति",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "क्षेत्रहरू",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "अभियान कार्यक्रम",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "<kbd>growtharticletopic:</kbd>का लागि अपरिचित विषय {{PLURAL:$2|नाम|नामहरू}}: महत्त्वपूर्ण शब्द: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "अमान्य सुझाव गरिएको सम्पादन कन्फिगरेसन: खराब संरचना",
 	"growthexperiments-homepage-suggestededits-error-title": "यस समयमा कुनै पनि सुझाव गरिएका सम्पादनहरू उपलब्ध छैनन्।",
 	"growthexperiments-homepage-suggestededits-error-description": "फेरी प्रयास गर्नु होला।",

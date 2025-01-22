@@ -338,7 +338,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultura",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regiony",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Událost",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Nerozpoznané jméno|Nerozpoznaná jména}} pro klíčové slovo <kbd>growtharticletopic:</kbd>: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Neplatná konfigurace editačních tipů: špatná struktura",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Neplatná konfigurace editačních tipů pro \"$1\": \"$2\" musí být číslo",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Neplatná konfigurace editačních tipů pro „$1“: „$2“ musí být větší než $3",

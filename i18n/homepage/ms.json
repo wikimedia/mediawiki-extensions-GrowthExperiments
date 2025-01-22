@@ -321,7 +321,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Budaya",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Rantauan",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Acara kempen",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Nama}} topik yang tidak dikenali untuk kata kunci <kbd>growtharticletopic:</kbd>: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Konfigurasi suntingan yang dicadangkan tidak sah: struktur buruk",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Konfigurasi suntingan yang dicadangkan tidak sah untuk jenis tugas \"$1\": \"$2\" mestilah nombor integer",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Konfigurasi suntingan yang dicadangkan tidak sah untuk jenis tugas \"$1\": \"$2\" mestilah lebih besar daripada $3",

@@ -287,7 +287,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "సంస్కృతి",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "ప్రాంతాలు",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "క్యాంపెయిన్ ఘటన",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "<kbd>growtharticletopic:</kbd> కీలకపదం కొరకు గుర్తు తెలియని టాపిక్కు {{PLURAL:$2|పేరు|పేర్లు}}: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "చెల్లని సూచిత దిద్దుబాట్ల అమరిక:తప్పు ఆకృతి",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "\"$1\" రకం పనికి చెల్లని సూచనల కాన్ఫిగరేషను: \"$2\" పూర్ణాంకమై ఉండాలి",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "\"$1\" రకం పనికి చెల్లని సూచనల కాన్ఫిగరేషను: \"$2\" $3 కంటే పెద్దదిగా ఉండాలి",

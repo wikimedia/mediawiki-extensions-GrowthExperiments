@@ -338,7 +338,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "文化",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "地域",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "キャンペーン",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "<kbd>growtharticletopic:</kbd> キーワード用の未分類のトピックの{{PLURAL:$2|名称}} : $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "お勧めの編集の設定が無効 : 構造が正しくありません",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "タスクの種類「$1」に対するお勧め編集の設定が無効 : 「$2」は必ず整数を指定します",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "タスクの種類「$1」に対するお勧め編集の設定が無効 : 「$2」は必ず$3以上を指定します",

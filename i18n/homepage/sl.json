@@ -326,7 +326,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultura",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regije",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Dogodek kampanje",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Neprepoznano ime|Neprepoznani imeni|Neprepoznana imena}} teme za ključno besedo <kbd>growtharticletopic:</kbd>: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Neveljavna konfiguracija predlaganih urejanj: strukturna napaka",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Neveljavna predlagana konfiguracija urejanja za vrsto nalog »$1«: »$2« mora biti celo število",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Neveljavna predlagana konfiguracija urejanja za vrsto nalog »$1«: »$2« mora biti večje od $3",

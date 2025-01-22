@@ -322,7 +322,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Mədəniyyət",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regionlar",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampaniya tədbiri",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "<kbd>growtharticletopic:</kbd> açar sözü üçün tanınmayan mövzu {{PLURAL:$2|adları}}: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Səhv tövsiyə olunan redaktə konfiqurasiyası: pis struktur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "\"$1\" tapşırıq növü etibarsız konfiqurasiya: \"$2\" tam ədəd olmalıdır",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "\"$1\" tapşırıq növü konfiqurasiya: \"$2\" $3-dən böyük olmalıdır",

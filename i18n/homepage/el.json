@@ -333,7 +333,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Πολιτισμός",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Περιοχές",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Εκδήλωση εκστρατείας",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Μη {{PLURAL:$2|αναγνωρισμένο όνομα|αναγνωρισμένα ονόματα}} για τη λέξη-κλειδί <kbd>growtharticletopic:</kbd>: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Λανθασμένη ρύθμιση προτεινόμενων επεξεργασιών: κακή δομή",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Μη έγκυρη διαμόρφωση προτεινόμενων επεξεργασιών για τον τύπο εργασίας «$1»: Το «$2» πρέπει να είναι ακέραιος",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Μη έγκυρη διαμόρφωση προτεινόμενων επεξεργασιών για τον τύπο εργασίας «$1»: Το «$2» πρέπει να είναι μεγαλύτερο από $3",

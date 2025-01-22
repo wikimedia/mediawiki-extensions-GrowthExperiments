@@ -333,7 +333,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "فرهنگ",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "منطقه‌ها",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "رویداد پویش",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|نام}} موضوع ناشناخته برای <kbd>growtharticletopic:</kbd>\nکلیدواژه: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "پیکربندی نامعتبر برای ویرایش‌های پیشنهادی: ساختار بد",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "پیکربندی نامعتبر ویرایش‌های پیشنهادی برای نوع وظیفهٔ «$1»: «$2» باید یک عدد باشد.",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "پیکربندی نامعتبر ویرایش‌های پیشنهادی برای نوع وظیفهٔ «$1»: «$2» باید بزرگ‌تر از $3 باشد",

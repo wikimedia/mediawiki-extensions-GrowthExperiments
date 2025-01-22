@@ -335,7 +335,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "תרבות",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "אזורים",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "אירוע",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|שם נושא|שמות נושאים}} עבור מילת המפתח <kbd>growtharticletopic\n:</kbd> {{PLURAL:$2|אינו מוכר|אינם מוכר}}: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "הגדרות בלתי־תקינות של עריכות מוצעות: מבנה גרוע.",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "הגדרות עריכות מוצעות בלתי־תקינות לסוג המשימה \"$1\": הערך \"$2\" חייב להיות מספר שלם",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "הגדרות עריכות מוצעות בלתי־תקינות לסוג המשימה \"$1\": הערך \"$2\" חייב להיות גדול מ־$3",

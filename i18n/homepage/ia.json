@@ -318,7 +318,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Cultura",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regiones",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Evento de campania",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Nomine{{PLURAL:$2||s}} de topico non recognoscite pro le parola clave <kbd>growtharticletopic:</kbd>: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuration de modificationes suggerite non valide: mal structura",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuration de modificationes suggerite non valide pro le typo de carga \"$1\": \"$2\" debe esser un numero integre",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Configuration de modificationes suggerite non valide pro le typo de carga \"$1\": \"$2\" debe esser plus grande que $3",

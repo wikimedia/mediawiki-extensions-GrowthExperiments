@@ -249,7 +249,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Мәҙәниәт",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Төбәктәр",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Кампания ваҡиғаһы",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "<kbd>growtharticletopic:</kbd> асҡыс һүҙе өсөн танылмаған тема {{PLURAL:$2|исеме}}: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: насар структура",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "«$1» эш төрө өсөн тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: «$2» бөтөн һан булырға тейеш",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "«$1» эш төрө өсөн тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: «$2» $3 һанынан ҙур булырға тейеш",

@@ -308,7 +308,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "文化",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "區域",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "活動",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "用於 <kbd>growtharticletopic:</kbd> 關鍵字的無法識別主題{{PLURAL:$2|名稱}}：$1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "無效建議編輯設置：不良結構",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "無效的用於任務類型「$1」之建議編輯設置：「$2」必須是整數。",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "無效的用於任務類型「$1」之建議編輯設置：「$2」必須大於 $3。",

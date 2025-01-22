@@ -348,7 +348,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultur",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regionen",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Veranstaltung der Kampagne",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Nicht {{PLURAL:$2|erkannter Topic-Name|erkannte Topic-Namen}} für das <kbd>growtharticletopic:</kbd>-Stichwort: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ungültige Konfiguration der Bearbeitungsvorschläge: Falsche Struktur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Ungültige Konfiguration der vorgeschlagenen Bearbeitungen für Aufgabentyp „$1“: „$2“ muss eine Integer-Zahl sein",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Ungültige Konfiguration der vorgeschlagenen Bearbeitungen für Aufgabentyp „$1“: „$2“ muss größer sein als $3",

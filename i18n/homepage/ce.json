@@ -298,7 +298,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Культура",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Регионаш",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Кампанин хилам",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Йовзаза йолу теманан цӀе}} <kbd>йаззамна тема:</kbd> коьрта дош: $1.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Кховдийнчу нисдарийн нийса йоцу конфигураци: ледара структура",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "\"$1\" тайпанан гӀуллакхан кховдийна хийцамашна нийса йоцуш конфигураци йина: \"$2\" массив хила йеза",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "\"$1\" тайпанна кховдийна хийцамашна нийса йоцу конфигураци йина: \"$2\" $3 сов хила йеза.",

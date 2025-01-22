@@ -338,7 +338,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultura",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Geografia",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Wydarzenie kampanii",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Nierozpoznana nazwa tematu|Nierozpoznane nazwy tematów}} dla słowa kluczowego <kbd>growtharticletopic:</kbd>: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Nieprawidłowa konfiguracja sugerowanych edycji: zła struktura",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Nieprawidłowa konfiguracja sugerowanych edycji dla zadania typu \"$1\": \"$2\" musi być liczbą całkowitą",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Nieprawidłowa konfiguracja sugerowanych edycji dla zadania typu \"$1\": \"$2\" musi być większe niż $3.",

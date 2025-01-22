@@ -337,7 +337,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Культура",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Регионы",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Событие кампании",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Нераспознанное название темы|Нераспознанных названия тем}} для <kbd>темы статьи:</kbd> ключевое слово: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Некорректная конфигурация предлагаемых правок: плохая структура",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Некорректная конфигурация предлагаемых изменений для типа задачи «$1»: «$2» должно быть массивом",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Некорректная конфигурация предлагаемых изменений для типа задачи «$1»: «$2» должно быть больше $3",

@@ -339,7 +339,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "সংস্কৃতি",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "অঞ্চল",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "ক্যাম্পেইন কার্যক্রম",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "অজানা বিষয় {{PLURAL:$2|নাম|নামসমূহ}} <kbd>growtharticletopic:</kbd> মূলশব্দ: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "পরামর্শকৃত সম্পাদনায় গাঠনিক ত্রুটি: কাঠামোজনিত সমস্যা",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "কাজের ধরন \"$1\"-এর পরামর্শকৃত সম্পাদনার কনফিগারেশন ত্রুটিপূর্ণ : \"$2\" একটি সংখ্যা হবে",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "কাজের ধরন \"$1\"-এর পরামর্শকৃত সম্পাদনার কনফিগারেশন ত্রুটিপূর্ণ : \"$2\"কে $3-এর চেয়ে বড় হতে হবে",

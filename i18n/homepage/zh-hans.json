@@ -361,7 +361,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "文化",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "地区",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "活动",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "<kbd>growtharticletopic:</kbd>关键词有无法识别的话题{{PLURAL:$2|名称}}：$1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "无效的建议编辑配置：错误结构",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "对任务类型“$1”的建议编辑配置无效：“$2”需为整数",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "对任务类型“$1”的建议编辑配置无效：“$2”需大于“$3”",

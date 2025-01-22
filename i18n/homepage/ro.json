@@ -327,7 +327,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Cultură",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Religie",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Eveniment de campanie",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Nume de subiect {{PLURAL:$2|nerecunoscut|nerecunoscute}} pentru <kbd>growtharticletopic:</kbd> cuvânt-cheie: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configurare a editărilor sugerate invalidă: structură defectă",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configurație invalidă de editări sugerate pentru tipul de sarcină „$1”: „$2” trebuie să fie un întreg",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Configurație invalidă de editări sugerate pentru tipul de sarcină „$1”: „$2” trebuie să fie mai mare decât $3",

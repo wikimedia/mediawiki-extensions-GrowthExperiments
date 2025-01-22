@@ -298,7 +298,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultūra",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regionai",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampanijos įvykis",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Neatpažintas temos pavadinimas|Neatpažinti temos pavadinimai}} kbd>growtharticletopic:</kbd> raktažodžiui: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Netinkama siūlomų pakeitimų konfigūracija: bloga struktūra",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Netinkama siūlomų pakeitimų konfigūracija užduoties tipui „$1“: „$2“ turi būti sveikasis skaičius",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Netinkama siūlomų pakeitimų konfigūracija užduoties tipui „$1“: „$2“ turi būti didesnis nei „$3“",

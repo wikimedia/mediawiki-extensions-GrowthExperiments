@@ -332,7 +332,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultur",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regioner",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampanjevenemang",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Okänt {{PLURAL:$2|ämnesnamn}} för nyckelordet <kbd>growtharticletopic:</kbd> : $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ogiltig konfigurering för föreslagna redigeringar: dålig struktur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Ogiltigt föreslagen redigeringskonfigurering för uppgiftstyp \"$1\": \"$2\" måste vara ett heltal",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Ogiltigt föreslagen redigeringskonfigurering för uppgiftstyp \"$1\": \"$2\" måste vara större än $3",

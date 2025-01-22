@@ -307,7 +307,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "კულტურა",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "რეგიონები",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "კამპანიის მოვლენა",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "თემის უცნობი {{PLURAL:$2|სახელი|სახელები}} <kbd>growtharticletopic:</kbd>-ის საკვანძო სიტყვისათვის: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია: ცუდი სტრუქტურა",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია დავალების ტიპისათვის „$1“: „$2“ უნდა იყოს მთელი რიცხვი",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია დავალების ტიპისათვის „$1“: „$2“ უნდა იყოს „$3“-ზე დიდი",

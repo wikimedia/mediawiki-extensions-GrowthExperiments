@@ -336,7 +336,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Cultuur",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regio's",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Campagne-evenement",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Onbekende onderwerp{{PLURAL:$2|naam|namen}} voor het sleutelwoord <kbd>growtharticletopic:</kbd>: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ongeldige configuratie voor voorgestelde bewerkingen: slechte structuur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "De instellingen voor gesuggereerde bewerkingen zijn niet geldig voor het taaktype “$1”: “$2” moet een geheel getal zijn",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "De instellingen voor gesuggereerde bewerkingen zijn niet geldig voor het taaktype “$1”: “$2” moet groter dan $3 zijn",

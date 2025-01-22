@@ -297,7 +297,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultúra",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Régiók",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampány esemény",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Ismeretlen téma {{PLURAL:$2|név|nevek}} a <kbd>growtharticletopic szócikkhez:</kbd> kulcsszó: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Szabálytalan szerkesztési javaslat: hibás szerkezet.",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Érvénytelen javasolt szerkesztési konfiguráció a(z) \"$1\" feladattípushoz: \"$2\" egész számnak kell lennie",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Érvénytelen javasolt szerkesztési konfiguráció a(z) \"$1\" feladattípushoz: \"$2\" nagyobbnak kell lennie, mint $3",

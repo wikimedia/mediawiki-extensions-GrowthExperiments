@@ -334,7 +334,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Культура",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Регіони",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Кампанія",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Нерозпізнана назва теми|Нерозпізнані назви тем}} для <kbd>growtharticletopic:</kbd>, ключове слово: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Недійсна конфігурація пропонованих редагувань: погана структура",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Недійсна конфігурація запропонованих змін для типу завдання «$1»: «$2» має бути цілим числом",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Недійсна конфігурація запропонованих змін для типу завдання «$1»: «$2» має бути більшим, ніж $3",

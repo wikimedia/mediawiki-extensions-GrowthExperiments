@@ -322,7 +322,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultur",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regioner",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampanjehendelse",
-	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "Ikke {{PLURAL:$2|gjenkjent|gjenkjente}} emnenavn for <kbd>growtharticletopic:</kbd> nøkkelord: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ugyldig konfigurasjon for foreslåtte redigeringer: ugyldig struktur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Ugyldig konfigurasjon for foreslåtte endringer for oppgavetypen «$1»: «$2» må være et heltall",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Ugyldig konfigurasjon for foreslåtte endringer for oppgavetypen «$1»: «$2» må være større enn $3",
