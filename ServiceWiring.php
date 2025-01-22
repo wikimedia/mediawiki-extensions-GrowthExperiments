@@ -536,7 +536,8 @@ return [
 				$services->getUserIdentityLookup(),
 				new DerivativeContext( RequestContext::getMain() ),
 				CommunityConfigurationServices::wrap( $services )
-					->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' )
+					->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' ),
+				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
 			);
 		} else {
 			$provider = new LegacyStructuredMentorProvider(
