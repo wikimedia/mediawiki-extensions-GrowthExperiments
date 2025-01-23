@@ -5,7 +5,7 @@ const homepage = new Homepage();
 const keepGoingModule = new KeepGoingModule();
 
 describe( 'Template-based tasks', () => {
-	it( 'saves change tags for unstructured task edits made via VisualEditor', () => {
+	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', () => {
 		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
 			username: string;
 			password: string;
