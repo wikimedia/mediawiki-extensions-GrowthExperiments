@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
 use LogicException;
+use MediaWiki\Config\Config;
 use MediaWiki\Title\TitleParser;
 use MessageLocalizer;
 use Wikimedia\Message\MessageSpecifier;
@@ -26,22 +27,26 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 
 	private LinkRecommendationProvider $recommendationProvider;
 	private AddLinkSubmissionHandler $submissionHandler;
+	private Config $config;
 
 	/**
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param TitleParser $titleParser
 	 * @param LinkRecommendationProvider $recommendationProvider
 	 * @param AddLinkSubmissionHandler $submissionHandler
+	 * @param Config $config
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,
 		LinkRecommendationProvider $recommendationProvider,
-		AddLinkSubmissionHandler $submissionHandler
+		AddLinkSubmissionHandler $submissionHandler,
+		Config $config
 	) {
 		parent::__construct( $configurationValidator, $titleParser );
 		$this->recommendationProvider = $recommendationProvider;
 		$this->submissionHandler = $submissionHandler;
+		$this->config = $config;
 	}
 
 	/** @inheritDoc */
@@ -70,6 +75,7 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 		$extraData = [ 'learnMoreLink' => $config['learnmore'] ?? null ];
 		// FIXME add settings validation
 		$settings = array_intersect_key( $config, LinkRecommendationTaskType::DEFAULT_SETTINGS );
+		$settings['minimumTasksPerTopic'] = $this->config->get( 'GELinkRecommendationMinimumTasksPerTopic' );
 
 		$taskType = new LinkRecommendationTaskType(
 			$taskTypeId,
