@@ -22,7 +22,8 @@
 			"Sayginer",
 			"Stonecy",
 			"ToprakM",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Leo"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Merhaba}}, {{bidi:$1}}!",
@@ -150,7 +151,7 @@
 	"tag-newcomer_task": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks|Yeni gelen görev]]",
 	"tag-newcomer_task-description": "Yeni gelen ana sayfanın önerilen değiştirme modülü tarafından önerilen değişiklik",
 	"tag-newcomer_task_copyedit": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#copyedit|Yenigelen görevi: copyedit]]",
-	"tag-newcomer_task_copyedit-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Tashih\" görev düzenlemesi",
+	"tag-newcomer_task_copyedit-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Tashih\" görevi düzenlemesi",
 	"tag-newcomer_task_references": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#addref|Yeni gelen görevi: kaynaklar]]",
 	"tag-newcomer_task_references-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Kaynaklar\" görev düzenlemesi",
 	"tag-newcomer_task_update": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#update|Yeni gelen görevi: güncelleme]]",
@@ -160,9 +161,9 @@
 	"tag-newcomer_task_links": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#addlink|Yeni gelen görevi: bağlantılar]]",
 	"tag-newcomer_task_links-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Bağlantılar\" görev düzenlemesi",
 	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link|Önerilen: bağlantı ekleyin]]",
-	"tag-newcomer_task_add_link-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Bağlantı ekle\" görev düzenlemesi",
+	"tag-newcomer_task_add_link-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Bağlantı ekle\" görevi düzenlemesi",
 	"tag-newcomer_task_image_suggestion": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-image|Yeni gelen görevi: görsel ekleme]]",
-	"tag-newcomer_task_image_suggestion-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Görsel ekleme\" görev düzenlemesi",
+	"tag-newcomer_task_image_suggestion-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Görsel ekle\" görevi düzenlemesi",
 	"tag-newcomer_task_section_image_suggestion": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-section-image|Önerildi: bölümlere görsel ekle]]",
 	"tag-newcomer_task_section_image_suggestion-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Bölüme görsel ekleme\" görev düzenlemesi",
 	"growthexperiments-homepage-help-dialog-title": "Danışma masasına sorun",
