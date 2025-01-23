@@ -3065,7 +3065,8 @@
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
 						"TitleParser",
 						"GrowthExperimentsLinkRecommendationProvider",
-						"GrowthExperimentsAddLinkSubmissionHandler"
+						"GrowthExperimentsAddLinkSubmissionHandler",
+						"GrowthExperimentsConfig"
 					]
 				},
 				"image-recommendation": {
@@ -3236,6 +3237,10 @@
 		"GESurfacingStructuredTasksReadModeUpdateEnabled": {
 			"description": "Feature flag to enable requesting link-recommendations in read mode.",
 			"value": false
+		},
+		"GELinkRecommendationMinimumTasksPerTopic": {
+			"value": 500,
+			"description": "Minimum number of link recommendation tasks to maintain per ORES topic."
 		}
 	},
 	"SpecialPages": {
