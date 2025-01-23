@@ -2559,10 +2559,6 @@
 			"description": "List of templates that provide Infobox functionality.",
 			"value": []
 		},
-		"GEInfoboxTemplatesTest": {
-			"description": "List of templates that provide Infobox functionality. Used for manually testing changes.",
-			"value": []
-		},
 		"GEWikiConfigPageTitle": {
 			"description": "Name of page used for on-wiki config; must be in NS_MEDIAWIKI and end with .json; only variables listed in GEOnWikiConfigAllowList may be overriden on wiki",
 			"value": "MediaWiki:GrowthExperimentsConfig.json"
