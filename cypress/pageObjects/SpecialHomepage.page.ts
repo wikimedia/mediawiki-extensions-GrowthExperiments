@@ -3,6 +3,10 @@ class SpecialHomepage {
 		return cy.get( '.se-card-title' );
 	}
 
+	public get suggestedEditsCardLink(): ReturnType<typeof cy.get> {
+		return cy.get( 'a.se-card-content' );
+	}
+
 	public get suggestedEditsPreviousButton(): ReturnType<typeof cy.get> {
 		return cy.get( '.suggested-edits-previous .oo-ui-buttonElement-button' );
 	}

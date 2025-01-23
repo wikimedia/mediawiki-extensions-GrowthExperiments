@@ -26,7 +26,14 @@ npm run cypress:run
 ```
 
 ### With a GUI
-First prepare your local system by executing the `cypress/support/PrepareBrowserTestss.php` maintenance script.
+When running with a GUI, you need to include the config-overrides at the end of your LocalSettings.php file.
+For example by appending the following, though you may need to adjust the path for your local setup:
+
+```php
+require "$IP/extensions/GrowthExperiments/cypress/support/setupFixtures/GrowthExperiments.LocalSettings.php";
+```
+
+Next, prepare your local system by executing the `cypress/support/PrepareBrowserTestss.php` maintenance script.
 This will import some pages and recommendations into the system.
 
 Then open Cypress's GUI with this command:
@@ -35,3 +42,5 @@ npm run cypress:open
 ```
 Some tests complete suggestions and edit pages, so it might be necessary to run the above script again before running
 those test again.
+
+Remove the configuration overrides again after you're done running the browser tests.

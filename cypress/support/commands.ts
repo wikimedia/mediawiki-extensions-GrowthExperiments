@@ -57,6 +57,34 @@ Cypress.Commands.add( 'setUserOptions', ( options ): void => {
 	} );
 } );
 
+Cypress.Commands.add( 'assertTagsOfCurrentPageRevision', ( expectedTags: string[] ): void => {
+	cy.window().its( 'mw.config' ).invoke( 'get', 'wgCurRevisionId' ).then( ( revId ) => {
+		cy.request( {
+			method: 'GET',
+			url: 'api.php',
+			qs: {
+				action: 'query',
+				prop: 'revisions',
+				rvprop: 'tags',
+				revids: revId,
+				format: 'json',
+			},
+		} ).then( ( response ) => {
+
+			interface PageWithRevisionInfoWithTags {
+				revisions: { tags: string[] }[];
+			}
+
+			const firstPage = Object.values(
+				response.body.query.pages,
+			)[ 0 ] as PageWithRevisionInfoWithTags;
+
+			const tags = firstPage.revisions[ 0 ].tags;
+			expect( tags ).to.include.members( expectedTags );
+		} );
+	} );
+} );
+
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
 	namespace Cypress {
@@ -66,6 +94,9 @@ declare global {
 			logout(): Chainable<JQuery<HTMLElement>>;
 			saveCommunityConfigurationForm( editSummary: string ): Chainable<JQuery<HTMLElement>>;
 			setUserOptions( options: Record<string, string> ): Chainable<JQuery<HTMLElement>>;
+			assertTagsOfCurrentPageRevision(
+				expectedTags: string[],
+			): Chainable<JQuery<HTMLElement>>;
 		}
 	}
 }
