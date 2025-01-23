@@ -147,10 +147,6 @@ class QualityGateDecorator implements TaskSuggester {
 			>= $imageRecommendationTaskType->getMaxTasksPerDay();
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @return int
-	 */
 	private function getImageRecommendationTasksDoneByUserForCurrentDay(
 		UserIdentity $user
 	): int {
@@ -181,10 +177,6 @@ class QualityGateDecorator implements TaskSuggester {
 			>= $linkRecommendationTaskType->getMaxTasksPerDay();
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @return int
-	 */
 	private function getLinkRecommendationTasksDoneByUserForCurrentDay(
 		UserIdentity $user
 	): int {
@@ -215,10 +207,6 @@ class QualityGateDecorator implements TaskSuggester {
 			>= $sectionImageRecommendationTaskType->getMaxTasksPerDay();
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @return int
-	 */
 	private function getSectionImageRecommendationTasksDoneByUserForCurrentDay(
 		UserIdentity $user
 	): int {

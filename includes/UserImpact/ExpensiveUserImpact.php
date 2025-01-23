@@ -18,7 +18,6 @@ class ExpensiveUserImpact extends UserImpact {
 	/** @var int[] */
 	private array $dailyTotalViews;
 
-	/** @var array */
 	private array $dailyArticleViews;
 
 	/**

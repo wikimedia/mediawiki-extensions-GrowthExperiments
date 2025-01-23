@@ -89,9 +89,6 @@ class WikiPageConfigLoader implements ICustomReadConstants {
 			'config', $configPage->getNamespace(), $configPage->getDBkey() );
 	}
 
-	/**
-	 * @param LinkTarget $configPage
-	 */
 	public function invalidate( LinkTarget $configPage ) {
 		$cacheKey = $this->makeCacheKey( $configPage );
 		$this->cache->delete( $cacheKey );

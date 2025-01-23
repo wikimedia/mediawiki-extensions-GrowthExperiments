@@ -107,10 +107,6 @@ class PraiseworthyMenteeSuggester {
 		} );
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @return string
-	 */
 	private function makeCacheKeyForMentor( UserIdentity $mentor ): string {
 		return $this->globalCache->makeKey(
 			'GrowthExperiments', 'PraiseworthyMenteeSuggester',
@@ -140,8 +136,6 @@ class PraiseworthyMenteeSuggester {
 
 	/**
 	 * Refresh the mentor's cache of their praiseworthy mentees
-	 *
-	 * @param UserIdentity $mentor
 	 */
 	public function refreshPraiseworthyMenteesForMentor( UserIdentity $mentor ): void {
 		$key = $this->makeCacheKeyForMentor( $mentor );
@@ -225,8 +219,6 @@ class PraiseworthyMenteeSuggester {
 
 	/**
 	 * Remove a mentee from the list of praiseworthy mentees
-	 *
-	 * @param UserIdentity $mentee
 	 */
 	private function removeMenteeFromSuggestions( UserIdentity $mentee ): void {
 		$mentor = $this->mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
@@ -249,8 +241,6 @@ class PraiseworthyMenteeSuggester {
 
 	/**
 	 * Mark a mentee as already praised
-	 *
-	 * @param UserIdentity $mentee
 	 */
 	public function markMenteeAsPraised( UserIdentity $mentee ): void {
 		$this->userOptionsManager->setOption(
@@ -268,8 +258,6 @@ class PraiseworthyMenteeSuggester {
 	 *
 	 * The mentee will not be re-suggested for PraiseworthyConditionsLookup::SKIP_MENTEES_FOR_DAYS
 	 * days.
-	 *
-	 * @param UserIdentity $mentee
 	 */
 	public function markMenteeAsSkipped( UserIdentity $mentee ): void {
 		$this->userOptionsManager->setOption(

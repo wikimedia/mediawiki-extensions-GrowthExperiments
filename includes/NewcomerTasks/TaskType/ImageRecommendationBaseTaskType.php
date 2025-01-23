@@ -71,8 +71,6 @@ abstract class ImageRecommendationBaseTaskType extends TaskType {
 
 	/**
 	 * The maximum number of image recommendation tasks that a user can perform each calendar day.
-	 *
-	 * @return int
 	 */
 	public function getMaxTasksPerDay(): int {
 		return $this->maxTasksPerDay;
@@ -80,8 +78,6 @@ abstract class ImageRecommendationBaseTaskType extends TaskType {
 
 	/**
 	 * The minimum number of characters needed for a caption to be submittable.
-	 *
-	 * @return int
 	 */
 	public function getMinimumCaptionCharacterLength(): int {
 		return $this->minimumCaptionCharacterLength;

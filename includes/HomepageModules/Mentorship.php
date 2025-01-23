@@ -454,8 +454,6 @@ class Mentorship extends BaseModule {
 
 	/**
 	 * Get the gender of the mentor
-	 *
-	 * @return string
 	 */
 	private function getMentorGender(): string {
 		return $this->getUserGender( $this->getMentor() );

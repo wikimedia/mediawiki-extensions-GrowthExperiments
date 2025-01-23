@@ -29,10 +29,6 @@ class StructuredMentorWriterIntegrationTest extends MediaWikiIntegrationTestCase
 			->getId();
 	}
 
-	/**
-	 * @param array $tags
-	 * @param int $revId
-	 */
 	private function assertEditTagged( array $tags, int $revId ) {
 		$this->assertSameSize(
 			$tags,

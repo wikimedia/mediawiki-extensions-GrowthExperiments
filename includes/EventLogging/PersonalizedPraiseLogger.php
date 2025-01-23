@@ -21,9 +21,6 @@ class PersonalizedPraiseLogger {
 
 	private PersonalizedPraiseSettings $personalizedPraiseSettings;
 
-	/**
-	 * @param PersonalizedPraiseSettings $personalizedPraiseSettings
-	 */
 	public function __construct( PersonalizedPraiseSettings $personalizedPraiseSettings ) {
 		$this->personalizedPraiseSettings = $personalizedPraiseSettings;
 	}
@@ -88,9 +85,6 @@ class PersonalizedPraiseLogger {
 		}
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 */
 	public function logNotified( UserIdentity $mentor ): void {
 		if ( $this->isEventLoggingAvailable() ) {
 			$this->doLog(
@@ -106,10 +100,6 @@ class PersonalizedPraiseLogger {
 		}
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @param UserIdentity $mentee
-	 */
 	public function logPraised( UserIdentity $mentor, UserIdentity $mentee ): void {
 		if ( $this->isEventLoggingAvailable() ) {
 			$this->doLog(

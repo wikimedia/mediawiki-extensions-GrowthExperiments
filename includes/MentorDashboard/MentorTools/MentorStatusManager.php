@@ -96,10 +96,6 @@ class MentorStatusManager {
 		}
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @return string
-	 */
 	private function makeAwayReasonCacheKey( UserIdentity $mentor ): string {
 		return $this->inprocessCache->makeKey(
 			'GrowthExperiments', __CLASS__, 'awayReason',
@@ -107,9 +103,6 @@ class MentorStatusManager {
 		);
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 */
 	private function invalidateAwayReasonCache( UserIdentity $mentor ): void {
 		$this->inprocessCache->delete( $this->makeAwayReasonCacheKey( $mentor ) );
 	}

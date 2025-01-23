@@ -621,7 +621,6 @@ class SuggestedEdits extends BaseModule {
 	 *
 	 * This function should be kept in sync with
 	 * SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon
-	 * @return ButtonGroupWidget
 	 */
 	private function getFiltersButtonGroupWidget(): ButtonGroupWidget {
 		$buttons = [];
@@ -969,9 +968,6 @@ class SuggestedEdits extends BaseModule {
 		return $redirectParams;
 	}
 
-	/**
-	 * @return NavigationWidgetFactory
-	 */
 	private function getNavigationWidgetFactory(): NavigationWidgetFactory {
 		if ( !$this->navigationWidgetFactory ) {
 			$this->navigationWidgetFactory = new NavigationWidgetFactory(

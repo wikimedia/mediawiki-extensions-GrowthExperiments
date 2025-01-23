@@ -15,10 +15,6 @@ class SpecialQuitMentorship extends FormSpecialPage {
 	private MentorProvider $mentorProvider;
 	private MentorRemover $mentorRemover;
 
-	/**
-	 * @param MentorProvider $mentorProvider
-	 * @param MentorRemover $mentorRemover
-	 */
 	public function __construct(
 		MentorProvider $mentorProvider,
 		MentorRemover $mentorRemover
@@ -64,8 +60,6 @@ class SpecialQuitMentorship extends FormSpecialPage {
 
 	/**
 	 * Check if mentor dashboard is enabled via GEMentorDashboardEnabled
-	 *
-	 * @return bool
 	 */
 	private function isEnabled(): bool {
 		return $this->getConfig()->get( 'GEMentorDashboardEnabled' );

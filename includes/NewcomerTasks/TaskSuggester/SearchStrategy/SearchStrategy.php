@@ -26,9 +26,6 @@ class SearchStrategy {
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
 
-	/**
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	) {
@@ -165,10 +162,6 @@ class SearchStrategy {
 		return 'pageid:' . implode( '|', $pageIds );
 	}
 
-	/**
-	 * @param array $pageIds
-	 * @return string
-	 */
 	private function getExcludedPageIdTerm( array $pageIds ): string {
 		return '-pageid:' . implode( '|', $pageIds );
 	}

@@ -254,8 +254,6 @@ class SpecialMentorDashboard extends SpecialPage {
 
 	/**
 	 * Check if mentor dashboard is enabled via GEMentorDashboardEnabled
-	 *
-	 * @return bool
 	 */
 	private function isEnabled(): bool {
 		return $this->getConfig()->get( 'GEMentorDashboardEnabled' );

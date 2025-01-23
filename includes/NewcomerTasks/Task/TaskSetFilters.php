@@ -48,9 +48,6 @@ class TaskSetFilters implements JsonDeserializable {
 		$this->topicFiltersMode = $topicFiltersMode ?? SearchStrategy::TOPIC_MATCH_MODE_OR;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getTopicFiltersMode(): string {
 		return $this->topicFiltersMode;
 	}

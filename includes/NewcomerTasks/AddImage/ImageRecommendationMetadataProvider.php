@@ -293,8 +293,6 @@ class ImageRecommendationMetadataProvider {
 
 	/**
 	 * Get the name of the content language localized in the user's language
-	 *
-	 * @return string
 	 */
 	private function getLocalizedContentLanguage(): string {
 		$inLanguage = $this->localizer->getLanguage()->getCode();

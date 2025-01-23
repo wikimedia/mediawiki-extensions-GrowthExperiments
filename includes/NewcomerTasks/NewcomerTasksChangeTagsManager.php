@@ -152,10 +152,6 @@ class NewcomerTasksChangeTagsManager {
 		return StatusValue::newGood( $result );
 	}
 
-	/**
-	 * @param int $revId
-	 * @return StatusValue
-	 */
 	private function checkExistingTags( int $revId ): StatusValue {
 		$rc_id = null;
 		$log_id = null;
@@ -173,10 +169,6 @@ class NewcomerTasksChangeTagsManager {
 		return StatusValue::newGood();
 	}
 
-	/**
-	 * @param UserIdentity $userIdentity
-	 * @return StatusValue
-	 */
 	private function checkUserAccess( UserIdentity $userIdentity ): StatusValue {
 		if ( !$this->userIdentityUtils->isNamed( $userIdentity ) ) {
 			return StatusValue::newFatal( 'You must be logged-in' );

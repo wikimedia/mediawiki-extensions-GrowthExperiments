@@ -91,7 +91,6 @@ class UserImpact implements JsonSerializable {
 	/**
 	 * Number of thanks the user has received.
 	 * Might exclude thanks received a long time ago.
-	 * @return int
 	 */
 	public function getReceivedThanksCount(): int {
 		return $this->receivedThanksCount;
@@ -129,7 +128,6 @@ class UserImpact implements JsonSerializable {
 	/**
 	 * Number of edits the user made which have the newcomer task tag.
 	 * Might exclude edits made a long time ago or many edits ago.
-	 * @return int
 	 */
 	public function getNewcomerTaskEditCount(): int {
 		return $this->newcomerTaskEditCount;
@@ -146,7 +144,6 @@ class UserImpact implements JsonSerializable {
 
 	/**
 	 * Number of total edits by the user that got reverted.
-	 * @return int
 	 */
 	public function getRevertedEditCount(): int {
 		return $this->revertedEditCount;
@@ -162,7 +159,6 @@ class UserImpact implements JsonSerializable {
 
 	/**
 	 * Unix timestamp of when the user impact data was generated.
-	 * @return int
 	 */
 	public function getGeneratedAt(): int {
 		return $this->generatedAt;

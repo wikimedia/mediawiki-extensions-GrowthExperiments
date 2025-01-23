@@ -25,7 +25,6 @@ class NullTaskType extends TaskType {
 
 	/**
 	 * Extra conditions to append to the search query.
-	 * @return string
 	 */
 	public function getExtraSearchConditions(): string {
 		return $this->extraSearchConditions;

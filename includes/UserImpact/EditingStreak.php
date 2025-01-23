@@ -11,9 +11,7 @@ use JsonSerializable;
  */
 class EditingStreak implements JsonSerializable {
 
-	/** @var DatePeriod|null */
 	private ?DatePeriod $datePeriod;
-	/** @var int */
 	private int $totalEditCountForPeriod;
 
 	/**
@@ -41,39 +39,24 @@ class EditingStreak implements JsonSerializable {
 		] : [];
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getStreakNumberOfDays(): int {
 		return $this->datePeriod ?
 			$this->datePeriod->getEndDate()->diff( $this->datePeriod->getStartDate() )->days + 1 :
 			0;
 	}
 
-	/**
-	 * @return DatePeriod|null
-	 */
 	public function getDatePeriod(): ?DatePeriod {
 		return $this->datePeriod;
 	}
 
-	/**
-	 * @param DatePeriod $datePeriod
-	 */
 	public function setDatePeriod( DatePeriod $datePeriod ): void {
 		$this->datePeriod = $datePeriod;
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getTotalEditCountForPeriod(): int {
 		return $this->totalEditCountForPeriod;
 	}
 
-	/**
-	 * @param int $totalEditCountForPeriod
-	 */
 	public function setTotalEditCountForPeriod( int $totalEditCountForPeriod ): void {
 		$this->totalEditCountForPeriod = $totalEditCountForPeriod;
 	}

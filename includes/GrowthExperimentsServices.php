@@ -75,9 +75,6 @@ class GrowthExperimentsServices {
 
 	private MediaWikiServices $coreServices;
 
-	/**
-	 * @param MediaWikiServices $coreServices
-	 */
 	public function __construct( MediaWikiServices $coreServices ) {
 		$this->coreServices = $coreServices;
 	}

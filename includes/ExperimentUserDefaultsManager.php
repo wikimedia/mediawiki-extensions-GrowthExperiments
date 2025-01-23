@@ -130,9 +130,6 @@ class ExperimentUserDefaultsManager {
 		return intval( substr( md5( $userIdExperimentName ), 0, 6 ), 16 ) / ( 0xffffff + 1 );
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 */
 	private function logSuspiciousEvaluation( UserIdentity $user ): void {
 		LoggerFactory::getInstance( 'GrowthExperiments' )
 			->debug( 'Suspicious evaluation of unamed user in ExperimentsHooks closure', [

@@ -18,9 +18,6 @@ class EarlyLifeCycleHooks implements MessageCacheFetchOverridesHook {
 
 	private UserOptionsLookup $userOptionsLookup;
 
-	/**
-	 * @param UserOptionsLookup $userOptionsLookup
-	 */
 	public function __construct( UserOptionsLookup $userOptionsLookup ) {
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
@@ -46,10 +43,6 @@ class EarlyLifeCycleHooks implements MessageCacheFetchOverridesHook {
 		};
 	}
 
-	/**
-	 * @param User $user
-	 * @return bool
-	 */
 	private function userHasPersonalToolsPrefEnabled( User $user ): bool {
 		return $user->isNamed()
 			&& $this->userOptionsLookup->getBoolOption( $user, HomepageHooks::HOMEPAGE_PREF_PT_LINK );

@@ -68,7 +68,6 @@ class EditData {
 	/**
 	 * Number of total edits by the user that got reverted (determined
 	 * by the mw-reverted tag).
-	 * @return int
 	 */
 	public function getRevertedEditCount(): int {
 		return $this->revertedEditCount;
@@ -76,7 +75,6 @@ class EditData {
 
 	/**
 	 * Number of edits with "newcomer task" tag (suggested edits).
-	 * @return int
 	 */
 	public function getNewcomerTaskEditCount(): int {
 		return $this->newcomerTaskEditCount;

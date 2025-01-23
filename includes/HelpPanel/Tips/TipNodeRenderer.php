@@ -149,10 +149,6 @@ class TipNodeRenderer {
 			$filename . '-' . $dir . '.' . $suffix;
 	}
 
-	/**
-	 * @param TipNode $node
-	 * @return string
-	 */
 	private function exampleRender( TipNode $node ): string {
 		$exampleLabelKey = $node->getData()[0]['data']['labelKey'] ?? null;
 		$exampleLabel = $exampleLabelKey ?

@@ -13,10 +13,6 @@ use MediaWiki\Json\JsonDeserializer;
  */
 class RawOresTopic extends OresBasedTopic {
 
-	/**
-	 * @param string $id
-	 * @param string $oresTopic
-	 */
 	public function __construct( string $id, string $oresTopic ) {
 		parent::__construct( $id, null, [ $oresTopic ] );
 	}

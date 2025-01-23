@@ -249,7 +249,6 @@ class FixLinkRecommendationData extends Maintenance {
 
 	/**
 	 * Helper method for a random value that remains the same during successive calls.
-	 * @return int
 	 */
 	private function getRandomSeed(): int {
 		if ( $this->randomSeed === null ) {

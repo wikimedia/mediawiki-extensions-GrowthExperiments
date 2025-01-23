@@ -159,8 +159,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 	/**
 	 * Determines if wiki config is enabled
-	 *
-	 * @return bool
 	 */
 	private function isWikiConfigEnabled(): bool {
 		return $this->growthWikiConfig->isWikiConfigEnabled();
@@ -243,8 +241,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * 	* Hides the form if there is an error
 	 * 	* Displays "last edited by" message
 	 * 	* Displays an introduction message
-	 *
-	 * @param HTMLForm $form
 	 */
 	protected function alterForm( HTMLForm $form ) {
 		if ( $this->errorMsgKey !== null ) {
@@ -720,8 +716,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 	/**
 	 * Get newcomer tasks config. Avoid normal cache, use in-process cache only.
-	 *
-	 * @return array
 	 */
 	private function getNewcomerTasksConfig(): array {
 		if ( $this->newcomerTasksConfig !== null ) {

@@ -156,8 +156,6 @@ class CampaignBenefitsBlock {
 
 	/**
 	 * Get the campaign from the account creation form
-	 *
-	 * @return string
 	 */
 	private function getCampaignValue(): string {
 		return $this->authForm->getField( 'campaign' )->getDefault();

@@ -205,7 +205,6 @@ class TaskType implements JsonDeserializable {
 
 	/**
 	 * Get icon data that should be shown for the task type
-	 * @return array
 	 */
 	public function getIconData(): array {
 		if ( static::IS_MACHINE_SUGGESTION ) {
@@ -275,7 +274,6 @@ class TaskType implements JsonDeserializable {
 
 	/**
 	 * Whether the corresponding article for the task type should be opened in edit mode
-	 * @return bool
 	 */
 	public function shouldOpenInEditMode(): bool {
 		return false;
@@ -283,7 +281,6 @@ class TaskType implements JsonDeserializable {
 
 	/**
 	 * Get the default edit section for the task type
-	 * @return string
 	 */
 	public function getDefaultEditSection(): string {
 		return '';
@@ -291,8 +288,6 @@ class TaskType implements JsonDeserializable {
 
 	/**
 	 * Get CSS classes to add to the small task card image element.
-	 *
-	 * @return array
 	 */
 	public function getSmallTaskCardImageCssClasses(): array {
 		return [ 'mw-ge-small-task-card-image-skeleton' ];
@@ -310,8 +305,6 @@ class TaskType implements JsonDeserializable {
 
 	/**
 	 * Return the filters to apply to the recommendation
-	 *
-	 * @return array
 	 */
 	public function getSuggestionFilters(): array {
 		return [];

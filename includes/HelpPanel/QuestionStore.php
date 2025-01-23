@@ -56,7 +56,6 @@ class QuestionStore {
 
 	/**
 	 * Add the content to the user preference.
-	 * @param QuestionRecord $question
 	 */
 	public function add( QuestionRecord $question ) {
 		$question = $this->assignArchiveUrl( $question );

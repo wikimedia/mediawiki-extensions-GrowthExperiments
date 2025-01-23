@@ -260,9 +260,6 @@ class ImportOresTopics extends Maintenance {
 		return $topicScores;
 	}
 
-	/**
-	 * @return string
-	 */
 	private function getApiUrl(): string {
 		$title = Title::newFromText( 'Title' );
 		$devUrl = $title->getFullURL();

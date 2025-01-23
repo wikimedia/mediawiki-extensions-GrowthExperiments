@@ -39,10 +39,6 @@ class PersonalizedPraiseNotificationsDispatcher {
 		$this->eventLogger = $personalizedPraiseLogger;
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @return string
-	 */
 	private function makeLastNotifiedKey( UserIdentity $mentor ): string {
 		return $this->cache->makeKey(
 			'GrowthExperiments', self::class,
@@ -79,10 +75,6 @@ class PersonalizedPraiseNotificationsDispatcher {
 		);
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @return string
-	 */
 	private function makePendingMenteesKey( UserIdentity $mentor ): string {
 		return $this->cache->makeKey(
 			'GrowthExperiments', self::class,
@@ -105,17 +97,11 @@ class PersonalizedPraiseNotificationsDispatcher {
 	 * Purge the list of mentees the mentor was not yet notified about
 	 *
 	 * This should be called upon mentor getting a notification.
-	 *
-	 * @param UserIdentity $mentor
 	 */
 	private function purgePendingMenteesForMentor( UserIdentity $mentor ): void {
 		$this->cache->delete( $this->makePendingMenteesKey( $mentor ) );
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @param UserIdentity $mentee
-	 */
 	private function markMenteeAsPendingForMentor(
 		UserIdentity $mentor, UserIdentity $mentee
 	): void {
@@ -133,8 +119,6 @@ class PersonalizedPraiseNotificationsDispatcher {
 
 	/**
 	 * Notify a mentor about new praiseworthy mentees
-	 *
-	 * @param UserIdentity $mentor
 	 */
 	private function notifyMentor( UserIdentity $mentor ) {
 		if ( !$this->config->get( 'GEPersonalizedPraiseNotificationsEnabled' ) ) {

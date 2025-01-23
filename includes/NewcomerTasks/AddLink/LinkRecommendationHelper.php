@@ -103,10 +103,6 @@ class LinkRecommendationHelper {
 		}
 	}
 
-	/**
-	 * @param string $errorMessage
-	 * @return ErrorException
-	 */
 	private function configError( string $errorMessage ): ErrorException {
 		Util::logException( new WikiConfigException( $errorMessage ) );
 		return new ErrorException( StatusValue::newFatal( 'rawmessage', $errorMessage ) );

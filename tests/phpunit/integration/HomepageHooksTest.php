@@ -119,9 +119,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$this->editPage( $wikiPage, 'new content' );
 	}
 
-	/**
-	 * @return HomepageHooks
-	 */
 	private function getHomepageHooks(): HomepageHooks {
 		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );

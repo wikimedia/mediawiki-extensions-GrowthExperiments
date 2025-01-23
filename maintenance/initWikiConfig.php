@@ -61,9 +61,6 @@ class InitWikiConfig extends Maintenance {
 		$this->specialEditGrowthConfig = $services->getSpecialPageFactory()->getPage( 'EditGrowthConfig' );
 	}
 
-	/**
-	 * @return string
-	 */
 	private function getWikidataWikiId(): string {
 		return $this->hasOption( 'wikidata-wikiid' ) ?
 			$this->getOption( 'wikidata-wikiid' ) :
@@ -117,9 +114,6 @@ class InitWikiConfig extends Maintenance {
 		return null;
 	}
 
-	/**
-	 * @return array
-	 */
 	private function getGEConfigVariables(): array {
 		// Init list of variables
 		$variables = [];
@@ -247,9 +241,6 @@ class InitWikiConfig extends Maintenance {
 		];
 	}
 
-	/**
-	 * @return array
-	 */
 	private function getSuggestedEditsVariables(): array {
 		$taskTemplatesQIDs = [
 			'copyedit' => [ 'Q6292692', 'Q6706206', 'Q6931087', 'Q7656698', 'Q6931386' ],
@@ -364,10 +355,6 @@ class InitWikiConfig extends Maintenance {
 		return true;
 	}
 
-	/**
-	 * @param bool $dryRun
-	 * @return bool
-	 */
 	private function initSuggestedEditsConfig( bool $dryRun ): bool {
 		$title = $this->titleFactory->newFromText(
 			$this->getConfig()->get( 'GENewcomerTasksConfigTitle' )

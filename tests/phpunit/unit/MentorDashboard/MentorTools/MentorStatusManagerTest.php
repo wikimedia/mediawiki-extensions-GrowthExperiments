@@ -19,9 +19,6 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @return UserIdentity
-	 */
 	private function getTestMentor(): UserIdentity {
 		return new UserIdentityValue(
 			123,

@@ -18,10 +18,6 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 	/** @var array|null */
 	private static $testingData = null;
 
-	/**
-	 * @param int $secondsAgo
-	 * @return string
-	 */
 	private static function getLastActive( int $secondsAgo ): string {
 		return ConvertibleTimestamp::convert(
 			TS_MW,

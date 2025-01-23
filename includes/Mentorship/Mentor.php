@@ -38,9 +38,6 @@ class Mentor implements IMentorWeights {
 		$this->weight = $weight;
 	}
 
-	/**
-	 * @return UserIdentity
-	 */
 	public function getUserIdentity(): UserIdentity {
 		return $this->mentorUser;
 	}
@@ -74,9 +71,6 @@ class Mentor implements IMentorWeights {
 		$this->introText = $introText;
 	}
 
-	/**
-	 * @param int $weight
-	 */
 	public function setWeight( int $weight ): void {
 		$this->weight = $weight;
 	}

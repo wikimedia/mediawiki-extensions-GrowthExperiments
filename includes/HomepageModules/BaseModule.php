@@ -66,7 +66,6 @@ abstract class BaseModule extends DashboardModule {
 	/**
 	 * Sets the page base URL where the module is being rendered.
 	 * Can be later used for generating links from inside the module.
-	 * @param string $url
 	 */
 	public function setPageURL( string $url ): void {
 		$this->pageURL = $url;
@@ -83,7 +82,6 @@ abstract class BaseModule extends DashboardModule {
 	/**
 	 * Gets whether the module will be wrapped in a link to its
 	 * full screen view or not
-	 * @return bool
 	 */
 	public function shouldWrapModuleWithLink(): bool {
 		return $this->shouldWrapModuleWithLink;
@@ -135,9 +133,6 @@ abstract class BaseModule extends DashboardModule {
 		);
 	}
 
-	/**
-	 * @return Config
-	 */
 	final protected function getGrowthWikiConfig(): Config {
 		return $this->wikiConfig;
 	}
@@ -219,16 +214,11 @@ abstract class BaseModule extends DashboardModule {
 	/**
 	 * The component for mw.router to use when routing clicks from mobile
 	 * summary HTML. If this is an empty string, no routing occurs.
-	 *
-	 * @return string
 	 */
 	protected function getModuleRoute(): string {
 		return '#/homepage/' . $this->name;
 	}
 
-	/**
-	 * @return string
-	 */
 	private function getUserVariant(): string {
 		return $this->experimentUserManager->getVariant( $this->getContext()->getUser() );
 	}

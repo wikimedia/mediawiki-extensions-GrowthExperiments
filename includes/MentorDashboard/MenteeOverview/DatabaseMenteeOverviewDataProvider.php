@@ -39,10 +39,6 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$this->growthLB = $growthLB;
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @return string
-	 */
 	private function makeCacheKey( UserIdentity $mentor ): string {
 		return $this->wanCache->makeKey(
 			'GrowthExperiments',
@@ -55,7 +51,6 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 	/**
 	 * Invalidate cache for given mentor
-	 * @param UserIdentity $mentor
 	 */
 	public function invalidateCacheForMentor( UserIdentity $mentor ): void {
 		$this->wanCache->delete( $this->makeCacheKey( $mentor ) );

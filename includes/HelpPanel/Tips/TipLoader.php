@@ -52,10 +52,6 @@ class TipLoader {
 		}, $tipTree->getStepNames() ) );
 	}
 
-	/**
-	 * @param array $taskTypes
-	 * @return array
-	 */
 	private function buildExtraData( array $taskTypes ): array {
 		return array_map( static function ( TaskType $taskType ) {
 			return [ 'learnMoreLink' => $taskType->getLearnMoreLink() ];

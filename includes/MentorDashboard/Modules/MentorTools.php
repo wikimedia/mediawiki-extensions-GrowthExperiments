@@ -216,9 +216,6 @@ class MentorTools extends BaseModule {
 		] );
 	}
 
-	/**
-	 * @return string
-	 */
 	private function maybeGetAwayMessage(): string {
 		$awayReason = $this->mentorStatusManager->getAwayReason( $this->getUser() );
 		if ( $awayReason === null ) {

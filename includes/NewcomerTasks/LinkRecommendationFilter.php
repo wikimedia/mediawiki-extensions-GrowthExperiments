@@ -14,9 +14,6 @@ class LinkRecommendationFilter extends AbstractTaskSetFilter implements TaskSetF
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	/**
-	 * @param LinkRecommendationStore $linkRecommendationStore
-	 */
 	public function __construct( LinkRecommendationStore $linkRecommendationStore ) {
 		$this->linkRecommendationStore = $linkRecommendationStore;
 	}

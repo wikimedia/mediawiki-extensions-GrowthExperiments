@@ -32,10 +32,6 @@ abstract class TaskTypeHandler {
 	/** @var TitleParser */
 	private $titleParser;
 
-	/**
-	 * @param ConfigurationValidator $configurationValidator
-	 * @param TitleParser $titleParser
-	 */
 	public function __construct( ConfigurationValidator $configurationValidator, TitleParser $titleParser ) {
 		$this->configurationValidator = $configurationValidator;
 		$this->titleParser = $titleParser;

@@ -243,8 +243,6 @@ class MenteeOverviewDataFilter {
 	 * This function uses $this->sortBy to decide what to filter by,
 	 * and calls doSortByTimestamp or doSortByNumber depending
 	 * on the data type of the field.
-	 *
-	 * @param array &$data
 	 */
 	private function doSort( array &$data ) {
 		if ( in_array( $this->sortBy, self::TIMESTAMP_SORTS ) ) {
@@ -259,8 +257,6 @@ class MenteeOverviewDataFilter {
 	 *
 	 * This ignores offset and limit, and is useful
 	 * for pagination purposes.
-	 *
-	 * @return int
 	 */
 	public function getTotalRows(): int {
 		if ( $this->totalRows !== null ) {

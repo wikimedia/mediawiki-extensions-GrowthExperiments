@@ -21,9 +21,6 @@ class WelcomeSurveySkipHandler extends Handler {
 	/** @var WelcomeSurveyFactory */
 	private $welcomeSurveyFactory;
 
-	/**
-	 * @param WelcomeSurveyFactory $welcomeSurveyFactory
-	 */
 	public function __construct(
 		WelcomeSurveyFactory $welcomeSurveyFactory
 	) {

@@ -253,10 +253,6 @@ class WelcomeSurveyHooks implements
 		return false;
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @return bool
-	 */
 	private function shouldShowWelcomeSurvey( IContextSource $context ): bool {
 		return $this->isWelcomeSurveyEnabled()
 			&& !$context->getUser()->isTemp()

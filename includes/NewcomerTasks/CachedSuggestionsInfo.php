@@ -19,10 +19,6 @@ class CachedSuggestionsInfo implements NewcomerTasksInfo {
 	 */
 	private $cache;
 
-	/**
-	 * @param SuggestionsInfo $suggestionsInfo
-	 * @param WANObjectCache $cache
-	 */
 	public function __construct(
 		SuggestionsInfo $suggestionsInfo,
 		WANObjectCache $cache

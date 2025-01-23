@@ -61,8 +61,6 @@ class CampaignConfig {
 
 	/**
 	 * Get an array of mappings between topic ID and its search expression
-	 *
-	 * @return array
 	 */
 	public function getCampaignTopics(): array {
 		$topicConfig = $this->topicConfig;

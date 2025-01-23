@@ -59,10 +59,6 @@ class GrowthExperimentsMultiConfig implements Config, ICustomReadConstants {
 		'GECampaigns' => 'array_merge',
 	];
 
-	/**
-	 * @param WikiPageConfig $wikiPageConfig
-	 * @param Config $globalVarConfig
-	 */
 	public function __construct(
 		WikiPageConfig $wikiPageConfig,
 		Config $globalVarConfig

@@ -86,9 +86,6 @@ class MentorshipOptIn extends BaseModule {
 		) . $this->getOptInButton();
 	}
 
-	/**
-	 * @return string
-	 */
 	private function getIntroductionElement(): string {
 		return Html::element(
 			'p',
@@ -103,9 +100,6 @@ class MentorshipOptIn extends BaseModule {
 		return false;
 	}
 
-	/**
-	 * @return string
-	 */
 	private function getOptInButton(): string {
 		return new ButtonWidget( [
 			'id' => 'mw-ge-homepage-mentorship-optin',

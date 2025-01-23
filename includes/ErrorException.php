@@ -18,9 +18,6 @@ class ErrorException extends Exception {
 
 	private StatusValue $status;
 
-	/**
-	 * @param StatusValue $error
-	 */
 	public function __construct( StatusValue $error ) {
 		parent::__construct( $error->__toString() );
 		$this->status = $error;
@@ -28,7 +25,6 @@ class ErrorException extends Exception {
 
 	/**
 	 * Get the raw error status.
-	 * @return StatusValue
 	 */
 	public function getStatus(): StatusValue {
 		return $this->status;
@@ -36,7 +32,6 @@ class ErrorException extends Exception {
 
 	/**
 	 * Get the error status as a localized string (intended for displaying errors to the user).
-	 * @return string
 	 */
 	public function getErrorMessage(): string {
 		return Status::wrap( $this->status )->getWikiText();
@@ -44,7 +39,6 @@ class ErrorException extends Exception {
 
 	/**
 	 * Get the error status as an English string (intended for logging).
-	 * @return string
 	 */
 	public function getErrorMessageInEnglish(): string {
 		return Status::wrap( $this->status )->getWikiText( false, false, 'en' );

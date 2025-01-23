@@ -216,7 +216,6 @@ class LinkRecommendationStore {
 
 	/**
 	 * Insert a new link recommendation.
-	 * @param LinkRecommendation $linkRecommendation
 	 */
 	public function insert( LinkRecommendation $linkRecommendation ): void {
 		$pageId = $linkRecommendation->getPageId();

@@ -16,10 +16,6 @@ abstract class AbstractStructuredMentorProvider extends MentorProvider {
 	private UserIdentityLookup $userIdentityLookup;
 	private MessageLocalizer $messageLocalizer;
 
-	/**
-	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param MessageLocalizer $messageLocalizer
-	 */
 	public function __construct(
 		UserIdentityLookup $userIdentityLookup,
 		MessageLocalizer $messageLocalizer

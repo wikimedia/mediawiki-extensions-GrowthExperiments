@@ -52,9 +52,6 @@ class MenteeOverview extends BaseModule {
 	 *
 	 * Should only have a no-js-fallback in it, to display meaningful
 	 * information for no-JS clients.
-	 *
-	 *
-	 * @return string
 	 */
 	protected function getClientSideBody(): string {
 		return Html::rawElement(
@@ -71,9 +68,6 @@ class MenteeOverview extends BaseModule {
 		);
 	}
 
-	/**
-	 * @return string
-	 */
 	private function getRecentEditsByMenteesBody(): string {
 		return Html::rawElement(
 			'div',

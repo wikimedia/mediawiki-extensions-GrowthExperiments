@@ -408,7 +408,6 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 
 	/**
 	 * Load ResourceLoader module dependencies defined by questions.
-	 * @param array $questions
 	 */
 	private function loadDependencies( array $questions ) {
 		array_walk( $questions, function ( $question ) {
