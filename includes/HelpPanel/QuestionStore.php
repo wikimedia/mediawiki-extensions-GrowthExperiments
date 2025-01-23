@@ -165,9 +165,7 @@ class QuestionStore {
 			return false;
 		}
 
-		$latestPageRevision = $this->revisionStore->getRevisionByTitle(
-			$revision->getPageAsLinkTarget()
-		);
+		$latestPageRevision = $this->revisionStore->getRevisionByTitle( $revision->getPage() );
 		/** @var TextContent|null $content */
 		$content = $latestPageRevision->getContent( SlotRecord::MAIN );
 		return $content instanceof TextContent
