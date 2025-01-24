@@ -94,22 +94,40 @@ class PruningLinkRecommendationProvider implements LinkRecommendationProvider {
 				$linkRecommendation->getLinks()
 			)
 		)->execute();
-		$goodLinks = array_filter( $linkRecommendation->getLinks(),
-			function ( LinkRecommendationLink $link ) use ( $excludedLinkIds ) {
+		$prunedRedLinksCounter = 0;
+		$prunedExcludedLinksCounter = 0;
+		$goodLinks = array_filter(
+			$linkRecommendation->getLinks(),
+			function ( LinkRecommendationLink $link ) use (
+				$excludedLinkIds,
+				&$prunedRedLinksCounter,
+				&$prunedExcludedLinksCounter
+			) {
 				$pageId = $this->titleFactory->newFromTextThrow( $link->getLinkTarget() )->getArticleID();
 				if ( $this->pruneRedLinks && !$pageId ) {
+					$prunedRedLinksCounter++;
 					return false;
 				}
-				return !in_array( $pageId, $excludedLinkIds );
-			} );
+				if ( in_array( $pageId, $excludedLinkIds ) ) {
+					$prunedExcludedLinksCounter++;
+					return false;
+				}
+				return true;
+			}
+		);
+		$returnStatus = LinkRecommendationEvalStatus::newGood();
+		$returnStatus->setNumberOfPrunedRedLinks( $prunedRedLinksCounter );
+		$returnStatus->setNumberOfPrunedExcludedLinks( $prunedExcludedLinksCounter );
 
 		if ( !$goodLinks ) {
+			$returnStatus->setNotGoodCause( LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_ALL_RECOMMENDATIONS_PRUNED );
 			// Message used for debugging, keep it in English to reduce translator burden.
-			return LinkRecommendationEvalStatus::newGood()->warning( 'rawmessage',
+			return $returnStatus->warning( 'rawmessage',
 				'All of the links in the recommendation have been pruned' );
 		}
 		// In most cases we could just return the original object; opt for consistency instead.
-		return LinkRecommendationEvalStatus::newGood(
+		return $returnStatus->setResult(
+			true,
 			new LinkRecommendation(
 				$linkRecommendation->getTitle(),
 				$linkRecommendation->getPageId(),

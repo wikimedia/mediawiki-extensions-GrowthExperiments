@@ -111,16 +111,29 @@ class LinkRecommendationUpdater {
 		// Skip them to ensure $recommendationsFound is only nonzero then we have
 		// actually added a new recommendation.
 		// FIXME there is probably a better way to do this via search offsets.
-		if ( $this->linkRecommendationStore->getByRevId( $lastRevision->getId(),
-			IDBAccessObject::READ_LATEST )
-		) {
+		$revId = $lastRevision->getId();
+		$recommendationState = $this->linkRecommendationStore->getRecommendationStateByRevision(
+			$revId,
+			IDBAccessObject::READ_LATEST,
+		);
+		if ( $recommendationState === LinkRecommendationStore::RECOMMENDATION_AVAILABLE ) {
 			return $this->failure( 'link recommendation already stored' );
+		}
+		if ( $recommendationState === LinkRecommendationStore::RECOMMENDATION_NOT_AVAILABLE && !$force ) {
+			return $this->failure( 'link recommendation known to not exist' );
 		}
 
 		$recommendationStatus = $this->linkRecommendationProvider->getDetailed( $title,
 			$this->getLinkRecommendationTaskType() );
 		if ( !$recommendationStatus->isGood() ) {
-			// Returning a StatusValue is always an error for the provider. When returning it
+			if (
+				$recommendationStatus->getNotGoodCause() ===
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_ALL_RECOMMENDATIONS_PRUNED &&
+				$recommendationStatus->getNumberOfPrunedRedLinks() === 0
+			) {
+				$this->linkRecommendationStore->insertNoLinkRecommendationFound( $title->getArticleID(), $revId );
+			}
+			// Returning a StatusValue that is not good is always an error for the provider. When returning it
 			// from this class, it isn't necessarily interpreted that way.
 			$recommendationStatus->setOK( false );
 			return $recommendationStatus;
@@ -133,6 +146,9 @@ class LinkRecommendationUpdater {
 		}
 		$status = $this->checkTaskTypeCriteria( $recommendation, $force );
 		if ( !$status->isOK() ) {
+			if ( $recommendationStatus->getNumberOfPrunedRedLinks() === 0 ) {
+				$this->linkRecommendationStore->insertNoLinkRecommendationFound( $title->getArticleID(), $revId );
+			}
 			return $status;
 		}
 

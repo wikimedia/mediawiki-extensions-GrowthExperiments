@@ -26,6 +26,10 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
  */
 class LinkRecommendationStore {
 
+	public const RECOMMENDATION_AVAILABLE = 'recomendation_available';
+	public const RECOMMENDATION_NOT_AVAILABLE = 'recomendation_not_available';
+	public const RECOMMENDATION_UNKNOWN = 'recomendation_unknown';
+
 	private ILoadBalancer $loadBalancer;
 	private TitleFactory $titleFactory;
 	private LinkBatchFactory $linkBatchFactory;
@@ -136,6 +140,35 @@ class LinkRecommendationStore {
 	}
 
 	/**
+	 * TODO: replace return values with ENUM once PHP 8.1 is available
+	 * @param int $revId
+	 * @param int $flags IDBAccessObject flags
+	 * @return string One of the LinkRecommendationStore::RECOMMENDATION_* constants
+	 */
+	public function getRecommendationStateByRevision( int $revId, int $flags = 0 ): string {
+		if ( ( $flags & IDBAccessObject::READ_LATEST ) === IDBAccessObject::READ_LATEST ) {
+			$db = $this->getDB( DB_PRIMARY );
+		} else {
+			$db = $this->getDB( DB_REPLICA );
+		}
+		$recommendationData = $db->newSelectQueryBuilder()
+			->select( [ 'gelr_data' ] )
+			->from( 'growthexperiments_link_recommendations' )
+			->where( [ 'gelr_revision' => $revId ] )
+			->caller( __METHOD__ )
+			->recency( $flags )
+			->fetchField();
+
+		if ( $recommendationData === false ) {
+			return self::RECOMMENDATION_UNKNOWN;
+		}
+		if ( $recommendationData === null ) {
+			return self::RECOMMENDATION_NOT_AVAILABLE;
+		}
+		return self::RECOMMENDATION_AVAILABLE;
+	}
+
+	/**
 	 * Iterate through all link recommendations, in ascending page ID order.
 	 * @param int $limit
 	 * @param int &$fromPageId Starting page ID. Will be set to the last fetched page ID plus one.
@@ -143,7 +176,7 @@ class LinkRecommendationStore {
 	 *   omitted from the result.) Will be set to false when there are no more rows.
 	 * @return LinkRecommendation[]
 	 */
-	public function getAllRecommendations( int $limit, int &$fromPageId ): array {
+	public function getAllExistingRecommendations( int $limit, int &$fromPageId ): array {
 		$dbr = $this->getDB( DB_REPLICA );
 		$res = $dbr->newSelectQueryBuilder()
 			->select( [ 'gelr_revision', 'gelr_page', 'gelr_data' ] )
@@ -157,6 +190,31 @@ class LinkRecommendationStore {
 		$fromPageId = ( $res->numRows() === $limit ) ? end( $rows )->gelr_page + 1 : false;
 		reset( $rows );
 		return $this->getLinkRecommendationsFromRows( $rows );
+	}
+
+	/**
+	 * Method to get all recommendation entries, both for pages with a recommendation and those without
+	 *
+	 * @param int $limit
+	 * @param int &$fromPageId Starting page ID. Will be set to the last fetched page ID plus one.
+	 *                         Will be set to false when there are no more rows.
+	 *
+	 * @return (LinkRecommendation|NullLinkRecommendation)[]
+	 */
+	public function getAllRecommendationEntries( int $limit, int &$fromPageId ): array {
+		$dbr = $this->getDB( DB_REPLICA );
+		$res = $dbr->newSelectQueryBuilder()
+			->select( [ 'gelr_revision', 'gelr_page', 'gelr_data' ] )
+			->from( 'growthexperiments_link_recommendations' )
+			->where( $dbr->expr( 'gelr_page', '>=', $fromPageId ) )
+			->orderBy( 'gelr_page ASC' )
+			->limit( $limit )
+			->caller( __METHOD__ )->fetchResultSet();
+		$rows = iterator_to_array( $res );
+		$fromPageId = ( $res->numRows() === $limit ) ? end( $rows )->gelr_page + 1 : false;
+		reset( $rows );
+
+		return $this->getAllRecommendationsFromAllRows( $rows );
 	}
 
 	/**
@@ -223,6 +281,20 @@ class LinkRecommendationStore {
 			'gelr_revision' => $revisionId,
 			'gelr_page' => $pageId,
 			'gelr_data' => json_encode( $linkRecommendation->toArray() ),
+		];
+		$this->loadBalancer->getConnection( DB_PRIMARY )->newReplaceQueryBuilder()
+			->replaceInto( 'growthexperiments_link_recommendations' )
+			->uniqueIndexFields( 'gelr_revision' )
+			->row( $row )
+			->caller( __METHOD__ )
+			->execute();
+	}
+
+	public function insertNoLinkRecommendationFound( int $pageId, int $revisionId ): void {
+		$row = [
+			'gelr_revision' => $revisionId,
+			'gelr_page' => $pageId,
+			'gelr_data' => null,
 		];
 		$this->loadBalancer->getConnection( DB_PRIMARY )->newReplaceQueryBuilder()
 			->replaceInto( 'growthexperiments_link_recommendations' )
@@ -421,8 +493,7 @@ class LinkRecommendationStore {
 		$linkRecommendations = [];
 		foreach ( $rows as $row ) {
 			if ( $row->gelr_data === null ) {
-				// TODO: B/C measure, change to exception once we actually work with `null` rows.
-				continue;
+				throw new \InvalidArgumentException( __METHOD__ . ' called with row with null data' );
 			}
 			// TODO use JSON_THROW_ON_ERROR once we require PHP 7.3
 			$data = json_decode( $row->gelr_data, true );
@@ -449,6 +520,27 @@ class LinkRecommendationStore {
 			);
 		}
 		return $linkRecommendations;
+	}
+
+	/**
+	 * @return (LinkRecommendation|NullLinkRecommendation)[]
+	 */
+	private function getAllRecommendationsFromAllRows( array $rows ): array {
+		$existingRecommendationsData = [];
+		$unavailableLinkRecommendations = [];
+		foreach ( $rows as $row ) {
+			if ( $row->gelr_data !== null ) {
+				$existingRecommendationsData[] = $row;
+			} else {
+				$unavailableLinkRecommendations[] = new NullLinkRecommendation(
+					(int)$row->gelr_page,
+					(int)$row->gelr_revision,
+				);
+			}
+		}
+		$existingLinkRecommendations = $this->getLinkRecommendationsFromRows( $existingRecommendationsData );
+
+		return array_merge( $existingLinkRecommendations, $unavailableLinkRecommendations );
 	}
 
 }
