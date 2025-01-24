@@ -3,6 +3,7 @@
 namespace GrowthExperiments\EventLogging;
 
 use GrowthExperiments\Specials\SpecialEditGrowthConfig;
+use GrowthExperiments\Util;
 use InvalidArgumentException;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\EventLogging\EventLogging;
@@ -75,6 +76,10 @@ class SpecialEditGrowthConfigLogger {
 		string $action,
 		Authority $authority
 	): void {
+		if ( Util::useCommunityConfiguration() ) {
+			wfDeprecated( __METHOD__, '1.44', 'GrowthExperiments' );
+		}
+
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) ) {
 			DeferredUpdates::addCallableUpdate( function () use ( $action, $authority ) {
 				switch ( $action ) {

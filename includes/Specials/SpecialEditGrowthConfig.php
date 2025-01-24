@@ -16,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
+use GrowthExperiments\Util;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Message\Message;
@@ -86,6 +87,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		WikiPageConfigWriterFactory $configWriterFactory,
 		GrowthExperimentsMultiConfig $growthWikiConfig
 	) {
+		if ( Util::useCommunityConfiguration() ) {
+			wfDeprecated( __CLASS__, '1.44', 'GrowthExperiments' );
+		}
+
 		parent::__construct( 'EditGrowthConfig' );
 
 		$this->titleFactory = $titleFactory;
