@@ -162,7 +162,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$services = MediaWikiServices::getInstance();
 		$services->getStatsdDataFactory()->timing(
 			'timing.growthExperiments.imageRecommendationProvider.processApiResponseData',
-			$getRequestTimeInSeconds
+			$processingTimeInSeconds
 		);
 
 		return $responseData;
