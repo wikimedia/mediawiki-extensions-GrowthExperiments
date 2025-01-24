@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
+use GrowthExperiments\NewcomerTasks\AddLink\NullLinkRecommendation;
 use GrowthExperiments\WikiConfigException;
 use LogicException;
 use MediaWiki\Config\Config;
@@ -64,6 +65,12 @@ class RevalidateLinkRecommendations extends Maintenance {
 			. 'a lower score than this one.', false, true );
 		$this->addOption( 'limit', 'Limit the number of changes.', false, true );
 		$this->addOption( 'force', 'Store the new recommendation even if it fails quality criteria.' );
+
+		$this->addOption(
+			'deleteNullRecommendations',
+			// phpcs:ignore Generic.Files.LineLength.TooLong
+			'Delete the data about which pages have no valid recommendations. Use when the configuration has become more permissive.'
+		);
 		$this->addOption( 'dry-run', 'Do not actually make any changes.' );
 		$this->addOption( 'verbose', 'Show debug output.' );
 		$this->setBatchSize( 500 );
@@ -92,19 +99,45 @@ class RevalidateLinkRecommendations extends Maintenance {
 		}
 		$this->initServices();
 
+		$isDeleteNullRecommendationsEnabled = $this->getOption( 'deleteNullRecommendations' );
+		$isDryRun = (bool)$this->getOption( 'dry-run' );
+
 		$this->output( "Revalidating link recommendations:\n" );
 
-		$replaced = $discarded = 0;
+		$replaced = $discarded = $nullRecommendationsDeleted = 0;
 		$fromPageId = (int)$this->getOption( 'fromPageId', 0 );
 		while ( $fromPageId !== false ) {
 			$this->output( "  fetching task batch starting with page $fromPageId\n" );
-			$linkRecommendations = $this->linkRecommendationStore->getAllRecommendations(
-				$this->getBatchSize(), $fromPageId );
+			if ( $isDeleteNullRecommendationsEnabled ) {
+				$linkRecommendations = $this->linkRecommendationStore->getAllRecommendationEntries(
+					$this->getBatchSize(),
+					$fromPageId,
+				);
+			} else {
+				$linkRecommendations = $this->linkRecommendationStore->getAllExistingRecommendations(
+					$this->getBatchSize(),
+					$fromPageId
+				);
+			}
 			foreach ( $linkRecommendations as $linkRecommendation ) {
+				if ( $replaced + $discarded + $nullRecommendationsDeleted == $this->getOption( 'limit', -1 ) ) {
+					$this->verboseLog( "Limit reached, aborting.\n" );
+					break 2;
+				}
+				if ( $linkRecommendation instanceof NullLinkRecommendation ) {
+					if ( !$isDeleteNullRecommendationsEnabled ) {
+						throw new LogicException(
+							'NullLinkRecommendation encountered but deleteNullRecommendations is not enabled'
+						);
+					}
+					$this->handleNullRecommendation( $linkRecommendation, $isDryRun );
+					$nullRecommendationsDeleted += 1;
+					continue;
+				}
 				if ( !$this->validateRecommendation( $linkRecommendation ) ) {
 					$this->verboseLog( '  ' . $this->getTitle( $linkRecommendation )->getPrefixedText()
 						. ' is outdated, regenerating... ' );
-					if ( $this->getOption( 'dry-run' ) ) {
+					if ( $isDryRun ) {
 						$replaced++;
 						$this->verboseLog( "(dry-run)\n" );
 					} else {
@@ -114,14 +147,12 @@ class RevalidateLinkRecommendations extends Maintenance {
 						$replaced += $status->isOK() ? 1 : 0;
 						$discarded += $status->isOK() ? 0 : 1;
 					}
-					if ( $replaced + $discarded == $this->getOption( 'limit', -1 ) ) {
-						$this->verboseLog( "Limit reached, aborting.\n" );
-						break 2;
-					}
 				}
 			}
 		}
-		$this->output( "Done; replaced $replaced, discarded $discarded\n" );
+		$this->output(
+			"Done; replaced $replaced, discarded $discarded, null recommendations deleted $nullRecommendationsDeleted\n"
+		);
 	}
 
 	protected function initGrowthConfig(): void {
@@ -251,6 +282,20 @@ class RevalidateLinkRecommendations extends Maintenance {
 			$this->olderThanTimestamp = (int)$rawTS;
 		}
 		return $this->olderThanTimestamp;
+	}
+
+	private function handleNullRecommendation( NullLinkRecommendation $nullLinkRecommendation, bool $isDryRun ): void {
+		$this->verboseLog(
+			'  scheduling deleting null recommendation for page ID ' . $nullLinkRecommendation->getPageId() . '... '
+		);
+
+		if ( $isDryRun ) {
+			$this->verboseLog( "(dry-run)\n" );
+			return;
+		}
+
+		$this->linkRecommendationStore->deleteByPageIds( [ $nullLinkRecommendation->getPageId() ] );
+		$this->verboseLog( "done.\n" );
 	}
 
 }

@@ -21,8 +21,28 @@ class RevalidateLinkRecommendationsTest extends MaintenanceBaseTestCase {
 		return RevalidateLinkRecommendations::class;
 	}
 
-	public function testDeleteInvalidLinkRecsFromCirrusAndDatabase(): void {
+	public static function provideScenarios(): iterable {
+		yield 'only existing recommendations' => [
+			[],
+			1,
+		];
+		yield 'existing recommendations and unavailable recommendations' => [
+			[
+				'deleteNullRecommendations' => true,
+			],
+			0,
+		];
+	}
+
+	/**
+	 * @dataProvider provideScenarios
+	 */
+	public function testDeleteInvalidLinkRecsFromCirrusAndDatabase(
+		array $additionalOptions,
+		int $expectedCountInDbAfterRevalidate
+	): void {
 		$wikiPage = $this->getExistingTestPage();
+		$wikiPageWithNoRecommendation = $this->getExistingTestPage();
 		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
 		$weightedTagsUpdaterMock->expects( $this->once() )
 			->method( 'resetWeightedTags' )
@@ -47,21 +67,28 @@ class RevalidateLinkRecommendationsTest extends MaintenanceBaseTestCase {
 
 		$linkRecommendationStore = $geServices->getLinkRecommendationStore();
 		$linkRecommendationStore->insertExistingLinkRecommendation( $linkRecommendation );
+		$linkRecommendationStore->insertNoLinkRecommendationFound(
+			$wikiPageWithNoRecommendation->getId(),
+			$wikiPageWithNoRecommendation->getLatest(),
+		);
 
 		$this->maintenance->loadParamsAndArgs(
 			null,
-			[
-				'all' => true,
-				'verbose' => true
-			],
+			array_merge(
+				[
+					'all' => true,
+					'verbose' => true,
+				],
+				$additionalOptions,
+			)
 		);
 
 		$this->maintenance->execute();
 
 		$limit = 10;
 		$fromPageId = 0;
-		$allRecs = $linkRecommendationStore->getAllRecommendations( $limit, $fromPageId );
-		$this->assertCount( 0, $allRecs );
+		$allRecs = $linkRecommendationStore->getAllRecommendationEntries( $limit, $fromPageId );
+		$this->assertCount( $expectedCountInDbAfterRevalidate, $allRecs );
 	}
 
 }
