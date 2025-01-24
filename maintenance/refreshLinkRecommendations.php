@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Maintenance;
 
 use CirrusSearch\Query\ArticleTopicFeature;
@@ -64,7 +66,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->setBatchSize( 500 );
 	}
 
-	public function checkRequiredExtensions() {
+	public function checkRequiredExtensions(): void {
 		// Hack: must be early enough for requireExtension to work but late enough for config
 		// to be available.
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
@@ -74,7 +76,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		parent::checkRequiredExtensions();
 	}
 
-	public function execute() {
+	public function execute(): void {
 		$this->initGrowthConfig();
 		if ( !$this->growthConfig->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$this->output( "Disabled\n" );
@@ -230,7 +232,7 @@ class RefreshLinkRecommendations extends Maintenance {
 	 * @param string $oresTopic
 	 * @return Generator<Title[]>
 	 */
-	private function findArticlesInTopic( $oresTopic ) {
+	private function findArticlesInTopic( string $oresTopic ) {
 		$batchSize = $this->getBatchSize();
 		do {
 			$this->output( "    fetching $batchSize tasks...\n" );

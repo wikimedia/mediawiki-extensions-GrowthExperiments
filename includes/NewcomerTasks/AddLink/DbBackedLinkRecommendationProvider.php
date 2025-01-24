@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -18,14 +20,11 @@ use Wikimedia\Assert\Assert;
  */
 class DbBackedLinkRecommendationProvider implements LinkRecommendationProvider {
 
-	/** @var LinkRecommendationStore */
-	private $linkRecommendationStore;
+	private LinkRecommendationStore $linkRecommendationStore;
 
-	/** @var LinkRecommendationProvider|null */
-	private $fallbackProvider;
+	private ?LinkRecommendationProvider $fallbackProvider;
 
-	/** @var TitleFormatter */
-	private $titleFormatter;
+	private TitleFormatter $titleFormatter;
 
 	/**
 	 * @param LinkRecommendationStore $linkRecommendationStore

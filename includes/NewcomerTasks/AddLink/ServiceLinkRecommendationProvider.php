@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -21,29 +23,22 @@ use Wikimedia\Assert\Assert;
  */
 class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 
-	/** @var TitleFactory */
-	private $titleFactory;
+	private TitleFactory $titleFactory;
 
-	/** @var RevisionLookup */
-	private $revisionLookup;
+	private RevisionLookup $revisionLookup;
 
-	/** @var HttpRequestFactory */
-	private $httpRequestFactory;
+	private HttpRequestFactory $httpRequestFactory;
 
-	/** @var string */
-	private $url;
+	private string $url;
 
-	/** @var string */
-	private $wikiId;
+	private string $wikiId;
 
-	/** @var string */
-	private $languageCode;
+	private string $languageCode;
 
-	/** @var string|null */
-	private $accessToken;
+	private ?string $accessToken;
 
 	/** @var int|null Service request timeout in seconds. */
-	private $requestTimeout;
+	private ?int $requestTimeout;
 
 	/**
 	 * @param TitleFactory $titleFactory

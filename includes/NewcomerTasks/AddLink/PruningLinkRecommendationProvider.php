@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -16,20 +18,15 @@ use StatusValue;
  */
 class PruningLinkRecommendationProvider implements LinkRecommendationProvider {
 
-	/** @var TitleFactory */
-	private $titleFactory;
+	private TitleFactory $titleFactory;
 
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
+	private LinkBatchFactory $linkBatchFactory;
 
-	/** @var LinkRecommendationStore */
-	private $linkRecommendationStore;
+	private LinkRecommendationStore $linkRecommendationStore;
 
-	/** @var LinkRecommendationProvider */
-	private $innerProvider;
+	private LinkRecommendationProvider $innerProvider;
 
-	/** @var bool */
-	private $pruneRedLinks;
+	private bool $pruneRedLinks;
 
 	/**
 	 * @param TitleFactory $titleFactory

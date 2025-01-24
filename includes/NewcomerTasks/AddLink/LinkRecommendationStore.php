@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use DomainException;
@@ -30,13 +32,6 @@ class LinkRecommendationStore {
 	private PageStore $pageStore;
 	private LoggerInterface $logger;
 
-	/**
-	 * @param ILoadBalancer $loadBalancer
-	 * @param TitleFactory $titleFactory
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param PageStore $pageStore
-	 * @param LoggerInterface $logger
-	 */
 	public function __construct(
 		ILoadBalancer $loadBalancer,
 		TitleFactory $titleFactory,
@@ -433,8 +428,13 @@ class LinkRecommendationStore {
 
 			$linkRecommendations[] = new LinkRecommendation(
 				$linkTarget,
-				$row->gelr_page,
-				$row->gelr_revision,
+				/**
+				 * Some DB drivers always return data as strings, regardless of column type.
+				 * Thus casting to int is necessary.
+				 * See {@link https://bugs.php.net/bug.php?id=44341}
+				 */
+				(int)$row->gelr_page,
+				(int)$row->gelr_revision,
 				LinkRecommendation::getLinksFromArray( $data['links'] ),
 				// Backwards compatibility for recommendations added before metadata was included in output and stored.
 				LinkRecommendation::getMetadataFromArray( $data['meta'] ?? [] )
