@@ -85,8 +85,11 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			[],
 			LinkRecommendation::getMetadataFromArray( [] )
 		);
+		/**
+		 * @var LinkRecommendationStore $linkRecommendationStore
+		 */
 		$linkRecommendationStore = $this->getServiceContainer()->get( 'GrowthExperimentsLinkRecommendationStore' );
-		$linkRecommendationStore->insert( $linkRecommendation );
+		$linkRecommendationStore->insertExistingLinkRecommendation( $linkRecommendation );
 
 		$this->editPage( $wikiPage, 'new content' );
 

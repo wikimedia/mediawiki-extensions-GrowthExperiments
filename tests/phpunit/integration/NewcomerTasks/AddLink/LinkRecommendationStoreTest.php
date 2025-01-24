@@ -19,7 +19,7 @@ use Psr\Log\NullLogger;
 class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers ::insert
+	 * @covers ::insertExistingLinkRecommendation
 	 * @covers ::getByRevId
 	 * @covers ::getByPageId
 	 * @covers ::getByLinkTarget
@@ -68,7 +68,7 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 					$i
 				);
 			}
-			$store->insert( new LinkRecommendation(
+			$store->insertExistingLinkRecommendation( new LinkRecommendation(
 				new TitleValue( 0, $titleText ),
 				$pageIds[$titleText],
 				$revisionIds[$titleText][$revisionText],

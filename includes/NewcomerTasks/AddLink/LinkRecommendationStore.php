@@ -212,7 +212,7 @@ class LinkRecommendationStore {
 	/**
 	 * Insert a new link recommendation.
 	 */
-	public function insert( LinkRecommendation $linkRecommendation ): void {
+	public function insertExistingLinkRecommendation( LinkRecommendation $linkRecommendation ): void {
 		$pageId = $linkRecommendation->getPageId();
 		$revisionId = $linkRecommendation->getRevisionId();
 		$row = [
