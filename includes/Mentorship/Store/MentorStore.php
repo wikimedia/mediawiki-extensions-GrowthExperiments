@@ -251,8 +251,6 @@ abstract class MentorStore implements LoggerAwareInterface {
 
 	/**
 	 * Invalidates cache for isMenteeActive()
-	 *
-	 * @param UserIdentity $user
 	 */
 	protected function invalidateIsMenteeActive( UserIdentity $user ): void {
 		$this->wanCache->delete( $this->makeIsMenteeActiveCacheKey( $user ) );
@@ -302,8 +300,6 @@ abstract class MentorStore implements LoggerAwareInterface {
 	 *
 	 * Method should only make a write query if the mentee is not
 	 * already marked as active.
-	 *
-	 * @param UserIdentity $mentee
 	 */
 	abstract public function markMenteeAsActive( UserIdentity $mentee ): void;
 
@@ -318,8 +314,6 @@ abstract class MentorStore implements LoggerAwareInterface {
 	 *
 	 * Method should only make a write query if the mentee is not
 	 * already marked as inactive.
-	 *
-	 * @param UserIdentity $mentee
 	 */
 	abstract public function markMenteeAsInactive( UserIdentity $mentee ): void;
 }

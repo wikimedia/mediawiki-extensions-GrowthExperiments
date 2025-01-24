@@ -29,7 +29,6 @@ class CampaignTopic extends Topic {
 
 	/**
 	 * The search expression which selects articles belonging to this topic.
-	 * @return string
 	 */
 	public function getSearchExpression(): string {
 		return $this->searchExpression;

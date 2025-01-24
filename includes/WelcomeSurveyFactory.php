@@ -32,10 +32,6 @@ class WelcomeSurveyFactory {
 		$this->ulsInstalled = $ulsInstalled;
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @return WelcomeSurvey
-	 */
 	public function newWelcomeSurvey( IContextSource $context ): WelcomeSurvey {
 		return new WelcomeSurvey(
 			$context,

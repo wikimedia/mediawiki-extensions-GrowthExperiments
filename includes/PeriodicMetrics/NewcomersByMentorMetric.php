@@ -13,10 +13,6 @@ class NewcomersByMentorMetric implements IMetric {
 	/** @var IReadableDatabase */
 	private $dbr;
 
-	/**
-	 * @param MetricsFactory $metricsFactory
-	 * @param IReadableDatabase $dbr
-	 */
 	public function __construct(
 		MetricsFactory $metricsFactory,
 		IReadableDatabase $dbr

@@ -8,10 +8,6 @@ use MediaWiki\User\UserIdentity;
 
 class LinkRecommendationSubmissionLogFactory extends NewcomerTasksLogFactory {
 
-	/**
-	 * @param UserIdentity $user
-	 * @return NewcomerTasksLog
-	 */
 	public function newLinkRecommendationSubmissionLog(
 		UserIdentity $user
 	): NewcomerTasksLog {

@@ -16,9 +16,6 @@ class UserImpactFormatter {
 
 	private stdClass $AQSConfig;
 
-	/**
-	 * @param stdClass $AQSConfig
-	 */
 	public function __construct(
 		stdClass $AQSConfig
 	) {

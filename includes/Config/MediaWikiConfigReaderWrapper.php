@@ -26,10 +26,6 @@ class MediaWikiConfigReaderWrapper implements Config {
 
 	private Config $mainConfig;
 
-	/**
-	 * @param Config $mediawikiConfigReader
-	 * @param Config $mainConfig
-	 */
 	public function __construct(
 		Config $mediawikiConfigReader,
 		Config $mainConfig

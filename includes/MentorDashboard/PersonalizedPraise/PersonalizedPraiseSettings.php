@@ -64,20 +64,12 @@ class PersonalizedPraiseSettings {
 		$this->revisionLookup = $revisionLookup;
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @return array
-	 */
 	private function loadSettings( UserIdentity $user ): array {
 		return FormatJson::decode( $this->userOptionsLookup->getOption(
 			$user, self::PREF_NAME
 		), true ) ?? [];
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @return array
-	 */
 	public function toArray( UserIdentity $user ): array {
 		$conditions = $this->getPraiseworthyConditions( $user );
 		return array_merge( [
@@ -179,10 +171,6 @@ class PersonalizedPraiseSettings {
 		);
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @return string
-	 */
 	public function getPraisingMessageContent( UserIdentity $user ): string {
 		$revision = $this->revisionLookup->getRevisionByTitle( $this->getPraisingMessageTitle( $user ) );
 		if ( !$revision ) {

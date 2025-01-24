@@ -21,10 +21,6 @@ class EventGateImageSuggestionFeedbackUpdater {
 	private EventBusFactory $eventBusFactory;
 	private WikiPageFactory $wikiPageFactory;
 
-	/**
-	 * @param EventBusFactory $eventBusFactory
-	 * @param WikiPageFactory $wikiPageFactory
-	 */
 	public function __construct( EventBusFactory $eventBusFactory, WikiPageFactory $wikiPageFactory ) {
 		$this->eventBusFactory = $eventBusFactory;
 		$this->wikiPageFactory = $wikiPageFactory;

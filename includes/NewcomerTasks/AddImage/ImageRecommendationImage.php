@@ -112,7 +112,6 @@ class ImageRecommendationImage implements JsonSerializable {
 
 	/**
 	 * Get the recommended image.
-	 * @return LinkTarget
 	 */
 	public function getImageTitle(): LinkTarget {
 		return $this->imageTitle;
@@ -153,9 +152,6 @@ class ImageRecommendationImage implements JsonSerializable {
 		return $this->sectionTitle;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function toArray(): array {
 		$filename = $this->imageTitle->getDBkey();
 		return [

@@ -101,8 +101,6 @@ class Impact extends BaseModule {
 
 	/**
 	 * Check if the user requesting the data matches the user data is requested
-	 *
-	 * @return bool
 	 */
 	private function isOwnData(): bool {
 		return $this->getContext()->getUser()->equals( $this->userIdentity );
@@ -110,8 +108,6 @@ class Impact extends BaseModule {
 
 	/**
 	 * Check if texts should show first person or third person
-	 *
-	 * @return bool
 	 */
 	private function shouldShowForOtherUser(): bool {
 		return !$this->isOwnData() || $this->forceShowingForOther;
@@ -316,8 +312,6 @@ class Impact extends BaseModule {
 	/**
 	 * Set the relevant user to return data for. This will also force the module to display third person texts even if
 	 * the user requesting it is the same the data is requested
-	 *
-	 * @param UserIdentity $user
 	 */
 	public function setUserDataIsFor( UserIdentity $user ) {
 		$this->userIdentity = $user;
@@ -342,8 +336,6 @@ class Impact extends BaseModule {
 
 	/**
 	 * Check if impact module is unactivated.
-	 *
-	 * @return bool
 	 */
 	private function isUnactivated(): bool {
 		return $this->getState() === self::MODULE_STATE_UNACTIVATED;
@@ -418,7 +410,6 @@ class Impact extends BaseModule {
 		return $this->formattedUserImpact;
 	}
 
-	/** @return bool|null */
 	private function hasMainspaceEdits(): ?bool {
 		// The cache has four states: true/false/null (valid hasMainspaceEdits() return values)
 		// and uninitialized. Use an array hack to differentiate.

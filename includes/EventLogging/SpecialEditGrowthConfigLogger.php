@@ -23,8 +23,6 @@ class SpecialEditGrowthConfigLogger {
 
 	/**
 	 * Log an `view` event
-	 *
-	 * @param Authority $authority
 	 */
 	private function doLogView(
 		Authority $authority
@@ -45,8 +43,6 @@ class SpecialEditGrowthConfigLogger {
 
 	/**
 	 * Log a `save` interaction
-	 *
-	 * @param Authority $authority
 	 */
 	private function doLogSave(
 		Authority $authority

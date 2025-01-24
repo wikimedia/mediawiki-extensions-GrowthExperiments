@@ -53,7 +53,6 @@ class SearchQuery {
 	/**
 	 * Get a human-readable unique ID for this search query. This is used internally by the
 	 * task suggester for deduplication and for debug logging.
-	 * @return string
 	 */
 	public function getId(): string {
 		return $this->id;
@@ -62,7 +61,6 @@ class SearchQuery {
 	/**
 	 * Get the search query string represented by this object. This is a string suitable for
 	 * passing to SearchEngine::searchText() or the srsearch parameter of the search API.
-	 * @return string
 	 */
 	public function getQueryString(): string {
 		return $this->queryString;
@@ -70,7 +68,6 @@ class SearchQuery {
 
 	/**
 	 * Results from the search query will belong to this task type.
-	 * @return TaskType
 	 */
 	public function getTaskType(): TaskType {
 		return $this->taskType;

@@ -65,8 +65,6 @@ class NavigationWidgetFactory {
 
 	/**
 	 * Return edit button
-	 *
-	 * @return ButtonWidget
 	 */
 	public function getEditButton(): ButtonWidget {
 		return new ButtonWidget( [

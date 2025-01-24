@@ -299,8 +299,6 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 
 	/**
 	 * Data provider for testDisplayMentorshipWarningMessage
-	 *
-	 * @return array
 	 */
 	public function configProvider(): array {
 		return [

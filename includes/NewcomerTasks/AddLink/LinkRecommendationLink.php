@@ -66,7 +66,6 @@ class LinkRecommendationLink {
 	/**
 	 * The text fragment which would be linked (as plaintext). This text is present and unlinked
 	 * in the article revision that was used for generating recommendations.
-	 * @return string
 	 */
 	public function getText(): string {
 		return $this->linkText;
@@ -74,7 +73,6 @@ class LinkRecommendationLink {
 
 	/**
 	 * The title to link to, in any format that can be parsed by TitleParser.
-	 * @return string
 	 */
 	public function getLinkTarget(): string {
 		return $this->linkTarget;
@@ -85,7 +83,6 @@ class LinkRecommendationLink {
 	 * of the (top-level wikitext that's not part of any kind of wikitext construct). This is
 	 * roughly equivalent to the match index in the text of top-level (within a `<section>`)
 	 * `<p>` nodes in Parsoid HTML.
-	 * @return int
 	 */
 	public function getMatchIndex(): int {
 		return $this->matchIndex;
@@ -94,7 +91,6 @@ class LinkRecommendationLink {
 	/**
 	 * The 0-based index of the first character of the link text in the wikitext,
 	 * in Unicode characters.
-	 * @return int
 	 */
 	public function getWikitextOffset(): int {
 		return $this->wikitextOffset;
@@ -102,7 +98,6 @@ class LinkRecommendationLink {
 
 	/**
 	 * The confidence score of the recommended link (a number between 0 and 1).
-	 * @return float
 	 */
 	public function getScore(): float {
 		return $this->score;
@@ -112,7 +107,6 @@ class LinkRecommendationLink {
 	 * A few characters of text from the article right before the text to be linked. Might
 	 * be omitted (set to empty string) if the recommended link is preceded by something
 	 * that cannot easily be converted to plaintext (such as a template).
-	 * @return string
 	 */
 	public function getContextBefore(): string {
 		return $this->contextBefore;
@@ -122,7 +116,6 @@ class LinkRecommendationLink {
 	 * A few characters of text from the article right after the text to be linked. Might
 	 * be omitted (set to empty string) if the recommended link is followed by something
 	 * that cannot easily be converted to plaintext (such as a template).
-	 * @return string
 	 */
 	public function getContextAfter(): string {
 		return $this->contextAfter;
@@ -130,15 +123,11 @@ class LinkRecommendationLink {
 
 	/**
 	 * 0-based position in the list of recommendations (in the order they occur in the article).
-	 * @return int
 	 */
 	public function getLinkIndex(): int {
 		return $this->linkIndex;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function toArray(): array {
 		return [
 			'link_text' => $this->linkText,

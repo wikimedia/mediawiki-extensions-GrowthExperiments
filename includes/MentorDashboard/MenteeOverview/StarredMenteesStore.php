@@ -18,10 +18,6 @@ class StarredMenteesStore {
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
-	/**
-	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param UserOptionsManager $userOptionsManager
-	 */
 	public function __construct(
 		UserIdentityLookup $userIdentityLookup,
 		UserOptionsManager $userOptionsManager
@@ -76,10 +72,6 @@ class StarredMenteesStore {
 		);
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @param UserIdentity $mentee
-	 */
 	public function starMentee( UserIdentity $mentor, UserIdentity $mentee ): void {
 		$starredMentees = $this->getStarredMenteeIds( $mentor, IDBAccessObject::READ_LOCKING );
 		$menteeId = $mentee->getId();
@@ -99,10 +91,6 @@ class StarredMenteesStore {
 		$this->userOptionsManager->saveOptions( $mentor );
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @param UserIdentity $mentee
-	 */
 	public function unstarMentee( UserIdentity $mentor, UserIdentity $mentee ): void {
 		$starredMentees = $this->getStarredMenteeIds( $mentor, IDBAccessObject::READ_LOCKING );
 		$menteeId = $mentee->getId();

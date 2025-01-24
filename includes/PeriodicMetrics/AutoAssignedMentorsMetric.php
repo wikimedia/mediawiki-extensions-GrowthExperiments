@@ -9,9 +9,6 @@ class AutoAssignedMentorsMetric implements IMetric {
 	/** @var MentorProvider */
 	private $mentorProvider;
 
-	/**
-	 * @param MentorProvider $mentorProvider
-	 */
 	public function __construct(
 		MentorProvider $mentorProvider
 	) {

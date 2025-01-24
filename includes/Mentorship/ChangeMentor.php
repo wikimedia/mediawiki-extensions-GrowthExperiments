@@ -62,8 +62,6 @@ class ChangeMentor {
 
 	/**
 	 * Was mentee's mentor already changed?
-	 *
-	 * @return bool
 	 */
 	public function wasMentorChanged(): bool {
 		$res = $this->connectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
@@ -127,8 +125,6 @@ class ChangeMentor {
 
 	/**
 	 * Verify the mentor change is possible
-	 *
-	 * @return Status
 	 */
 	private function validate(): Status {
 		$this->logger->debug(

@@ -66,7 +66,6 @@ class ImageRecommendation implements Recommendation, JsonSerializable {
 
 	/**
 	 * Get the version of the recommendations dataset.
-	 * @return string
 	 */
 	public function getDatasetId(): string {
 		return $this->datasetId;

@@ -77,16 +77,12 @@ class SpecialManageMentors extends SpecialPage {
 		return true;
 	}
 
-	/**
-	 * @return bool
-	 */
 	private function renderInReadOnlyMode(): bool {
 		return $this->including() ?? false;
 	}
 
 	/**
 	 * Can manage mentors?
-	 * @return bool
 	 */
 	private function canManageMentors(): bool {
 		return !$this->renderInReadOnlyMode() &&
@@ -100,10 +96,6 @@ class SpecialManageMentors extends SpecialPage {
 		return $this->msg( 'growthexperiments-manage-mentors-title' );
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @return MWTimestamp
-	 */
 	private function getLastActiveTimestamp( UserIdentity $user ): MWTimestamp {
 		return new MWTimestamp( $this->userEditTracker->getLatestEditTimestamp( $user ) );
 	}
@@ -442,9 +434,6 @@ class SpecialManageMentors extends SpecialPage {
 		);
 	}
 
-	/**
-	 * @return string
-	 */
 	private function makePreHTML(): string {
 		if ( $this->including() ) {
 			// included version should only include the table
@@ -479,10 +468,6 @@ class SpecialManageMentors extends SpecialPage {
 		);
 	}
 
-	/**
-	 * @param string $text
-	 * @return string
-	 */
 	private function makeHeadlineElement( string $text ): string {
 		return Html::element(
 			$this->including() ? 'h3' : 'h2',

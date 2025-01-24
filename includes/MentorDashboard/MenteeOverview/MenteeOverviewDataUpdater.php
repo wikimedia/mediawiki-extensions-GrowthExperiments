@@ -51,16 +51,10 @@ class MenteeOverviewDataUpdater {
 		$this->growthLoadBalancer = $growthLoadBalancer;
 	}
 
-	/**
-	 * @param int $batchSize
-	 */
 	public function setBatchSize( int $batchSize ) {
 		$this->batchSize = $batchSize;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function getMentorProfilingInfo(): array {
 		return $this->mentorProfilingInfo;
 	}

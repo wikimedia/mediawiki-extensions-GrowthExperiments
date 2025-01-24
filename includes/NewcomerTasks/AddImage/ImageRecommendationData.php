@@ -77,8 +77,6 @@ class ImageRecommendationData {
 
 	/**
 	 * Get an array of projects in which the image recommendation can be found
-	 *
-	 * @return array
 	 */
 	public function getFormattedProjects(): array {
 		if ( $this->projects ) {

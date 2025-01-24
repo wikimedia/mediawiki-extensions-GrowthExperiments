@@ -21,7 +21,6 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 	/** @var LinkTarget|string|null */
 	private $topicConfigurationPage;
 
-	/** @var Config */
 	private Config $growthConfig;
 
 	/**

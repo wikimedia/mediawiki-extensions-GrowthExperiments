@@ -59,10 +59,6 @@ abstract class SubpageRecommendationProvider implements RecommendationProvider {
 		array $suggestionFilters = []
 	);
 
-	/**
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param RecommendationProvider $fallbackRecommendationProvider
-	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		RecommendationProvider $fallbackRecommendationProvider

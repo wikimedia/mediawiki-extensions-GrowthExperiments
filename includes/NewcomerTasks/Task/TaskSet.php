@@ -138,7 +138,6 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonDeserial
 
 	/**
 	 * Get arbitrary non-task-specific debug data.
-	 * @return array
 	 */
 	public function getDebugData(): array {
 		return $this->debugData;
@@ -146,23 +145,17 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonDeserial
 
 	/**
 	 * Set arbitrary non-task-specific debug data.
-	 * @param array $debugData
 	 */
 	public function setDebugData( array $debugData ): void {
 		$this->debugData = $debugData;
 	}
 
-	/**
-	 * @return TaskSetFilters
-	 */
 	public function getFilters(): TaskSetFilters {
 		return $this->filters;
 	}
 
 	/**
 	 * Truncate the set of tasks.
-	 *
-	 * @param int $limit
 	 */
 	public function truncate( int $limit ): void {
 		if ( $this->count() ) {
@@ -197,18 +190,12 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonDeserial
 		return $this->qualityGateConfig;
 	}
 
-	/**
-	 * @param string $taskTypeId
-	 * @param array $config
-	 */
 	public function setQualityGateConfigForTaskType( string $taskTypeId, array $config ): void {
 		$this->qualityGateConfig[$taskTypeId] = $config;
 	}
 
 	/**
 	 * Set the quality gate data for a TaskSet. Useful when constructing a new TaskSet from an old one.
-	 *
-	 * @param array $config
 	 */
 	public function setQualityGateConfig( array $config ): void {
 		$this->qualityGateConfig = $config;

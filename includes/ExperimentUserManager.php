@@ -39,10 +39,6 @@ class ExperimentUserManager {
 		$this->userFactory = $userFactory;
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @return string
-	 */
 	public function getVariant( UserIdentity $user ): string {
 		if ( !$this->userFactory->newFromUserIdentity( $user )->isNamed() ) {
 			$this->logger->debug( __METHOD__ . ' suspicious evaluation of unamed user', [
@@ -84,10 +80,6 @@ class ExperimentUserManager {
 		return in_array( $this->getVariant( $user ), (array)$variant );
 	}
 
-	/**
-	 * @param string $variant
-	 * @return bool
-	 */
 	public function isValidVariant( string $variant ): bool {
 		return in_array( $variant, VariantHooks::VARIANTS );
 	}

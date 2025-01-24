@@ -72,7 +72,6 @@ class CommunityUpdates extends BaseModule {
 
 	/**
 	 * Determines if the CommunityUpdates module can be rendered based on configuration and other conditions.
-	 * @return bool
 	 */
 	protected function canRender(): bool {
 		$this->initializeProvider();

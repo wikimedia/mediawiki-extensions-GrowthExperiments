@@ -49,9 +49,6 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 		$this->executeSpecialPage( '', null, null, $user );
 	}
 
-	/**
-	 * @return User
-	 */
 	private function getTestMentor(): User {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$mentorProvider = $geServices->getMentorProvider();

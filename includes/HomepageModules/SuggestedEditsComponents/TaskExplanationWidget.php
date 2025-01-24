@@ -44,9 +44,6 @@ class TaskExplanationWidget extends Widget {
 		);
 	}
 
-	/**
-	 * @return Tag
-	 */
 	private function getInfoRow(): Tag {
 		return ( new Tag( 'div' ) )
 			->addClasses( [ 'suggested-edits-taskexplanation-additional-info' ] )
@@ -56,18 +53,12 @@ class TaskExplanationWidget extends Widget {
 			);
 	}
 
-	/**
-	 * @return Tag
-	 */
 	private function getName(): Tag {
 		return ( new Tag( 'span' ) )
 			->addClasses( [ 'suggested-edits-task-explanation-heading' ] )
 			->appendContent( $this->taskType->getName( $this->localizer )->text() );
 	}
 
-	/**
-	 * @return ButtonWidget
-	 */
 	private function getInfo(): ButtonWidget {
 		return new ButtonWidget( [
 			'icon' => 'info-unpadded',
@@ -78,9 +69,6 @@ class TaskExplanationWidget extends Widget {
 		] );
 	}
 
-	/**
-	 * @return IconWidget|null
-	 */
 	private function getIcon(): ?IconWidget {
 		$iconData = $this->taskType->getIconData();
 		if ( array_key_exists( 'icon', $iconData ) ) {
@@ -94,18 +82,12 @@ class TaskExplanationWidget extends Widget {
 		return null;
 	}
 
-	/**
-	 * @return Tag
-	 */
 	private function getDescriptionRow(): Tag {
 		return ( new Tag( 'p' ) )
 			->addClasses( [ 'suggested-edits-short-description' ] )
 			->appendContent( $this->taskType->getShortDescription( $this->localizer )->text() );
 	}
 
-	/**
-	 * @return Tag
-	 */
 	private function getDifficultyAndTime(): Tag {
 		$difficulty = $this->taskType->getDifficulty();
 		return ( new Tag( 'div' ) )

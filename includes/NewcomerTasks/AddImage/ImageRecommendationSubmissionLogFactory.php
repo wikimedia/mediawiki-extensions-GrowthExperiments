@@ -8,10 +8,6 @@ use MediaWiki\User\UserIdentity;
 
 class ImageRecommendationSubmissionLogFactory extends NewcomerTasksLogFactory {
 
-	/**
-	 * @param UserIdentity $user
-	 * @return NewcomerTasksLog
-	 */
 	public function newImageRecommendationSubmissionLog(
 		UserIdentity $user
 	): NewcomerTasksLog {

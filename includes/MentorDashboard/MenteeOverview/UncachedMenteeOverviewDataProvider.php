@@ -104,10 +104,6 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		return $this->profilingInfo;
 	}
 
-	/**
-	 * @param string $section
-	 * @param float $seconds
-	 */
 	private function storeProfilingData( string $section, float $seconds ): void {
 		$this->profilingInfo[$section] = $seconds;
 	}

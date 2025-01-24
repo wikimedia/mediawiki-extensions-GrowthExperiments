@@ -19,25 +19,17 @@ class TipNode {
 		$this->messageKey = $messageKey;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function getData(): array {
 		return $this->data;
 	}
 
 	/**
 	 * Get the message key if defined.
-	 *
-	 * @return string
 	 */
 	public function getMessageKey(): string {
 		return $this->messageKey;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getType(): string {
 		return $this->type;
 	}

@@ -74,8 +74,6 @@ class WikiPageConfigWriter {
 
 	/**
 	 * Return current wiki config, loaded via WikiPageConfigLoader
-	 *
-	 * @return array
 	 */
 	private function getCurrentWikiConfig(): array {
 		if ( $this->titleFactory->newFromLinkTarget( $this->configPage )->exists() ) {
@@ -177,9 +175,6 @@ class WikiPageConfigWriter {
 		return true;
 	}
 
-	/**
-	 * @param array $variables
-	 */
 	public function setVariables( array $variables ): void {
 		foreach ( $variables as $variable => $value ) {
 			$this->setVariable( $variable, $value );

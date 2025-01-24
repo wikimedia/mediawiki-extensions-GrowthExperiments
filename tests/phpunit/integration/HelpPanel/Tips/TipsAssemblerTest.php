@@ -43,9 +43,6 @@ class TipsAssemblerTest extends MediaWikiIntegrationTestCase {
 		$this->assertCount( $expected['tipCount'], $tips );
 	}
 
-	/**
-	 * @return array
-	 */
 	public static function getTipsProvider(): array {
 		return [
 			[

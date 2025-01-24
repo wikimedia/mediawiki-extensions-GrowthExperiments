@@ -16,9 +16,6 @@ class ImageRecommendationFilter extends AbstractTaskSetFilter implements TaskSet
 	/** @var WANObjectCache */
 	private $cache;
 
-	/**
-	 * @param WANObjectCache $cache
-	 */
 	public function __construct( WANObjectCache $cache ) {
 		$this->cache = $cache;
 	}

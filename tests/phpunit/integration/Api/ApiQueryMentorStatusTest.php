@@ -25,9 +25,6 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 		$this->setMainCache( CACHE_NONE );
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 */
 	private function addMentor( UserIdentity $user ): void {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$this->assertStatusGood( $geServices->getMentorWriter()->addMentor(

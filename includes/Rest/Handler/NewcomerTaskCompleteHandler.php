@@ -55,10 +55,6 @@ class NewcomerTaskCompleteHandler extends SimpleHandler {
 		];
 	}
 
-	/**
-	 * @param string $message
-	 * @return int
-	 */
 	private function getErrorCodeForMessage( string $message ): int {
 		if ( strpos( $message, 'Invalid task type ID' ) !== false ) {
 			return 400;

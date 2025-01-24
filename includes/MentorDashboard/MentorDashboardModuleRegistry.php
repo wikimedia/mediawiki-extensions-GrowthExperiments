@@ -23,9 +23,6 @@ class MentorDashboardModuleRegistry {
 	/** @var IDashboardModule[] */
 	private array $modules;
 
-	/**
-	 * @param MediaWikiServices $services
-	 */
 	public function __construct(
 		MediaWikiServices $services
 	) {
@@ -50,9 +47,6 @@ class MentorDashboardModuleRegistry {
 		return $this->modules[$moduleId];
 	}
 
-	/**
-	 * @return array
-	 */
 	public static function getModules(): array {
 		return array_keys( self::getWiring() );
 	}

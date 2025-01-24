@@ -112,7 +112,6 @@ class LinkRecommendationTaskType extends TaskType {
 	 * Recommendations are filled up every hour to this level.
 	 * Note: these are individual ORES topics, not the combined Growth topics defined via
 	 * $wgGENewcomerTasksOresTopicConfig.
-	 * @return int
 	 */
 	public function getMinimumTasksPerTopic(): int {
 		return $this->minimumTasksPerTopic;
@@ -120,7 +119,6 @@ class LinkRecommendationTaskType extends TaskType {
 
 	/**
 	 * Each recommendation must contain at least this many suggested links.
-	 * @return int
 	 */
 	public function getMinimumLinksPerTask(): int {
 		return $this->minimumLinksPerTask;
@@ -128,7 +126,6 @@ class LinkRecommendationTaskType extends TaskType {
 
 	/**
 	 * Required confidence score for each link.
-	 * @return float
 	 */
 	public function getMinimumLinkScore(): float {
 		return $this->minimumLinkScore;
@@ -156,7 +153,6 @@ class LinkRecommendationTaskType extends TaskType {
 
 	/**
 	 * At least this much time (in seconds) needs to have passed since the article was last edited.
-	 * @return int
 	 */
 	public function getMinimumTimeSinceLastEdit(): int {
 		return $this->minimumTimeSinceLastEdit;
@@ -165,7 +161,6 @@ class LinkRecommendationTaskType extends TaskType {
 	/**
 	 * Only use articles with this at least many words for link recommendations.
 	 * (The word count will be some naive wikitext-based estimation.)
-	 * @return int
 	 */
 	public function getMinimumWordCount(): int {
 		return $this->minimumWordCount;
@@ -174,7 +169,6 @@ class LinkRecommendationTaskType extends TaskType {
 	/**
 	 * Only use articles with this at most many words for link recommendations.
 	 * (The word count will be some naive wikitext-based estimation.)
-	 * @return int
 	 */
 	public function getMaximumWordCount(): int {
 		return $this->maximumWordCount;
@@ -182,8 +176,6 @@ class LinkRecommendationTaskType extends TaskType {
 
 	/**
 	 * The maximum number of image recommendation tasks that a user can perform each calendar day.
-	 *
-	 * @return int
 	 */
 	public function getMaxTasksPerDay(): int {
 		return $this->maxTasksPerDay;
@@ -202,7 +194,6 @@ class LinkRecommendationTaskType extends TaskType {
 	 * Weight of the underlinkedness metric (vs. a random factor) in sorting.
 	 * Higher is less random. E.g. a weight of 0.25 means the scoring function will be
 	 * 0.25 * <underlinkedness> + 0.75 * random(0,1).
-	 * @return float
 	 */
 	public function getUnderlinkedWeight(): float {
 		return $this->underlinkedWeight;
@@ -212,7 +203,6 @@ class LinkRecommendationTaskType extends TaskType {
 	 * Minimum length above which an article can be considered underlinked.
 	 * If the article size is smaller than this, its underlinkedness score will be 0.
 	 * FIXME is this useful given that we already have a min words limit?
-	 * @return int
 	 */
 	public function getUnderlinkedMinLength(): int {
 		return $this->underlinkedMinLength;

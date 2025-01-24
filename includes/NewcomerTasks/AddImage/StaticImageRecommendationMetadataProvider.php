@@ -19,8 +19,6 @@ class StaticImageRecommendationMetadataProvider extends ImageRecommendationMetad
 
 	/**
 	 * TODO: Parametrize this function.
-	 *
-	 * @return array
 	 */
 	private function getStaticData(): array {
 		return [

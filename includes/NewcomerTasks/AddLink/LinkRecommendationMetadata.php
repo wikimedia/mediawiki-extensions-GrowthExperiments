@@ -35,27 +35,22 @@ class LinkRecommendationMetadata {
 		$this->taskTimestamp = $taskTimestamp;
 	}
 
-	/** @return array */
 	public function getDatasetChecksums(): array {
 		return $this->datasetChecksums;
 	}
 
-	/** @return int */
 	public function getFormatVersion(): int {
 		return $this->formatVersion;
 	}
 
-	/** @return string */
 	public function getApplicationVersion(): string {
 		return $this->applicationVersion;
 	}
 
-	/** @return int */
 	public function getTaskTimestamp(): int {
 		return $this->taskTimestamp;
 	}
 
-	/** @return array */
 	public function toArray(): array {
 		return [
 			'application_version' => $this->applicationVersion,

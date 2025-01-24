@@ -24,10 +24,6 @@ class TaskSetListener {
 
 	private StatsFactory $statsFactory;
 
-	/**
-	 * @param WANObjectCache $cache
-	 * @param StatsFactory $statsFactory
-	 */
 	public function __construct( WANObjectCache $cache, StatsFactory $statsFactory ) {
 		$this->cache = $cache;
 		$this->statsFactory = $statsFactory;
@@ -39,8 +35,6 @@ class TaskSetListener {
 	 *
 	 * FIXME Find a better way to structure the actions that different task types can require when a TaskSet is
 	 * constructed.
-	 *
-	 * @param TaskSet $taskSet
 	 */
 	public function run( TaskSet $taskSet ): void {
 		$fname = __METHOD__;

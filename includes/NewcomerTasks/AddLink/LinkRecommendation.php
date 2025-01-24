@@ -104,7 +104,6 @@ class LinkRecommendation implements Recommendation {
 
 	/**
 	 * Get the ID of the page for which the recommendations were generated.
-	 * @return int
 	 */
 	public function getPageId(): int {
 		return $this->pageId;
@@ -112,7 +111,6 @@ class LinkRecommendation implements Recommendation {
 
 	/**
 	 * Get the revision ID for which the recommendations were generated.
-	 * @return int
 	 */
 	public function getRevisionId(): int {
 		return $this->revisionId;
@@ -126,7 +124,6 @@ class LinkRecommendation implements Recommendation {
 		return $this->links;
 	}
 
-	/** @return LinkRecommendationMetadata */
 	public function getMetadata(): LinkRecommendationMetadata {
 		return $this->metadata;
 	}

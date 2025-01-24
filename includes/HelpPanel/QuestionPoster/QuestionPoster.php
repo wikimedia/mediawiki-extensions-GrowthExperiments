@@ -95,7 +95,6 @@ abstract class QuestionPoster {
 	/**
 	 * Whether to post on top of the help desk (as opposed to the bottom). Defaults to false.
 	 * Only affects wikitext pages.
-	 * @param bool $postOnTop
 	 */
 	public function setPostOnTop( bool $postOnTop ): void {
 		$this->postOnTop = $postOnTop;
@@ -123,8 +122,6 @@ abstract class QuestionPoster {
 	 *
 	 * This returns [[$title->getPrefixedText()]] for most pages, and
 	 * [[:$title->getPrefixedText()]] for files and categories.
-	 *
-	 * @return string
 	 */
 	public function getWikitextLinkTarget(): string {
 		$title = $this->getRelevantTitle();

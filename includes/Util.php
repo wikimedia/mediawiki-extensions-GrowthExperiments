@@ -363,7 +363,6 @@ class Util {
 
 	/**
 	 * Generate a 32 character random token for analytics purposes
-	 * @return string
 	 */
 	public static function generateRandomToken(): string {
 		return \Wikimedia\base_convert( \MWCryptRand::generateHex( 40 ), 16, 32, 32 );
@@ -371,8 +370,6 @@ class Util {
 
 	/**
 	 * Should CommunityConfiguration be used?
-	 *
-	 * @return bool
 	 */
 	public static function useCommunityConfiguration(): bool {
 		return ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) &&

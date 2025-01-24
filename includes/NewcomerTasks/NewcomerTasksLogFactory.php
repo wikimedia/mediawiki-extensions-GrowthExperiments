@@ -15,10 +15,6 @@ class NewcomerTasksLogFactory {
 	private IConnectionProvider $connectionProvider;
 	private UserOptionsLookup $userOptionsLookup;
 
-	/**
-	 * @param IConnectionProvider $connectionProvider
-	 * @param UserOptionsLookup $userOptionsLookup
-	 */
 	public function __construct( IConnectionProvider $connectionProvider, UserOptionsLookup $userOptionsLookup ) {
 		$this->connectionProvider = $connectionProvider;
 		$this->userOptionsLookup = $userOptionsLookup;

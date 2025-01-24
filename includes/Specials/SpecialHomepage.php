@@ -329,9 +329,6 @@ class SpecialHomepage extends SpecialPage {
 		);
 	}
 
-	/**
-	 * @param IDashboardModule $module
-	 */
 	private function renderMobileDetails( IDashboardModule $module ) {
 		$out = $this->getContext()->getOutput();
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-details' );

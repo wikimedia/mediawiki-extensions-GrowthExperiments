@@ -51,9 +51,6 @@ abstract class DashboardModule implements IDashboardModule {
 		$this->ctx = $ctx;
 	}
 
-	/**
-	 * @return IContextSource
-	 */
 	final protected function getContext(): IContextSource {
 		return $this->ctx;
 	}
@@ -62,8 +59,6 @@ abstract class DashboardModule implements IDashboardModule {
 	 * Get current user
 	 *
 	 * Short for $this->getContext()->getUser().
-	 *
-	 * @return User
 	 */
 	final protected function getUser(): User {
 		return $this->getContext()->getUser();
@@ -73,8 +68,6 @@ abstract class DashboardModule implements IDashboardModule {
 	 * Shortcut to get main config object
 	 *
 	 * Short for $this->getContext()->getConfig().
-	 *
-	 * @return Config
 	 */
 	final protected function getConfig(): Config {
 		return $this->getContext()->getConfig();
@@ -87,9 +80,6 @@ abstract class DashboardModule implements IDashboardModule {
 		return $this->mode;
 	}
 
-	/**
-	 * @return string
-	 */
 	final protected function getName(): string {
 		return $this->name;
 	}

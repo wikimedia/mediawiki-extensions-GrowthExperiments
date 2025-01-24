@@ -997,7 +997,6 @@ class HomepageHooks implements
 
 	/**
 	 * Helper method to update the "Profile" menu entry in menus
-	 * @param array &$links
 	 */
 	private function updateProfileMenuEntry( array &$links ) {
 		$userItem = $links['user-menu']['userpage'] ?? [];
@@ -1023,8 +1022,6 @@ class HomepageHooks implements
 	 *
 	 * We want "Home" to read "Main Page", because Special:Homepage is intended to be "Home"
 	 * for users with Growth features.
-	 *
-	 * @param array &$sidebar
 	 */
 	private function updateHomeMenuEntry( array &$sidebar ) {
 		foreach ( $sidebar['navigation'] ?? [] as $key => $item ) {
@@ -1289,10 +1286,6 @@ class HomepageHooks implements
 		return $growthServices->getNewcomerTasksConfigurationLoader();
 	}
 
-	/**
-	 * @param User $user
-	 * @return bool
-	 */
 	private function userHasPersonalToolsPrefEnabled( User $user ): bool {
 		return $user->isNamed() &&
 			$this->userOptionsLookup->getBoolOption( $user, self::HOMEPAGE_PREF_PT_LINK );

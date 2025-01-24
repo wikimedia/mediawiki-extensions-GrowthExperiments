@@ -28,9 +28,6 @@ class WelcomeSurveyLogger {
 	/** @var array */
 	private $loggedActions = [];
 
-	/**
-	 * @param LoggerInterface $logger
-	 */
 	public function __construct( LoggerInterface $logger ) {
 		$this->logger = $logger;
 	}
@@ -48,8 +45,6 @@ class WelcomeSurveyLogger {
 
 	/**
 	 * Log user interactions with the WelcomeSurvey form.
-	 *
-	 * @param string $action
 	 */
 	public function logInteraction( string $action ): void {
 		$event = [

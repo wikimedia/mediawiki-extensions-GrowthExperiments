@@ -31,13 +31,10 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 		self::CONFIGURATION_TYPE_ORES,
 	];
 
-	/** @var TaskTypeHandlerRegistry */
 	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
 
-	/** @var ConfigurationValidator */
 	private ConfigurationValidator $configurationValidator;
 
-	/** @var array */
 	private array $disabledTaskTypeIds = [];
 	/** @var string[] */
 	private array $enabledTaskTypeIds = [];
@@ -81,7 +78,6 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 	/**
 	 * Hide the existence of the given task type. Must be called before task types are loaded.
 	 * This is equivalent to setting the 'disabled' field in community configuration.
-	 * @param string $taskTypeId
 	 */
 	public function disableTaskType( string $taskTypeId ): void {
 		if ( $this->taskTypes !== null ) {
@@ -286,8 +282,6 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 
 	/**
 	 * Set the callback used to retrieve CampaignConfig, used to show campaign-specific topics
-	 *
-	 * @param callable $callback
 	 */
 	public function setCampaignConfigCallback( callable $callback ) {
 		$this->campaignConfigCallback = $callback;
@@ -295,8 +289,6 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 
 	/**
 	 * Get campaign-specific topics
-	 *
-	 * @return array
 	 */
 	private function getCampaignTopics(): array {
 		if ( is_callable( $this->campaignConfigCallback ) ) {

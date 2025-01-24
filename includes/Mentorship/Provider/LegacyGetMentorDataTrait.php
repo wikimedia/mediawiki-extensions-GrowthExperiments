@@ -27,8 +27,6 @@ trait LegacyGetMentorDataTrait {
 	 * using the wiki page, it constructs an empty mentor list instead and logs an error.
 	 *
 	 * This is cached within WikiPageConfigLoader.
-	 *
-	 * @return array
 	 */
 	protected function getMentorData(): array {
 		$res = $this->configLoader->load( $this->mentorList );

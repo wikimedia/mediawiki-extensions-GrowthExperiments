@@ -130,10 +130,6 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 		return true;
 	}
 
-	/**
-	 * @param UserImpact $impact
-	 * @return bool
-	 */
 	private function isFresh( UserImpact $impact ): bool {
 		return $impact->getGeneratedAt() >= $this->staleBefore;
 	}

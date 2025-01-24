@@ -181,10 +181,6 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		return is_numeric( $res ) ? intval( $res ) : null;
 	}
 
-	/**
-	 * @param array $data
-	 * @return void
-	 */
 	private function writeToHandle( array $data ): void {
 		if ( $this->outputFormat === 'text' ) {
 			fputs( $this->handle, implode( "\t", $data ) . PHP_EOL );
