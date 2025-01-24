@@ -54,8 +54,8 @@ class LinkRecommendationStore {
 	 * @param int $flags IDBAccessObject flags
 	 * @return LinkRecommendation|null
 	 */
-	protected function getByCondition( array $condition, int $flags = 0 ): ?LinkRecommendation {
-		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
+	private function getByCondition( array $condition, int $flags = 0 ): ?LinkRecommendation {
+		if ( ( $flags & IDBAccessObject::READ_LATEST ) === IDBAccessObject::READ_LATEST ) {
 			$db = $this->getDB( DB_PRIMARY );
 		} else {
 			$db = $this->getDB( DB_REPLICA );
@@ -363,7 +363,7 @@ class LinkRecommendationStore {
 	 * @return bool
 	 */
 	public function hasSubmission( LinkRecommendation $linkRecommendation, int $flags ): bool {
-		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
+		if ( ( $flags & IDBAccessObject::READ_LATEST ) === IDBAccessObject::READ_LATEST ) {
 			$db = $this->getDB( DB_PRIMARY );
 		} else {
 			$db = $this->getDB( DB_REPLICA );
