@@ -19,7 +19,8 @@
 			"ValeJappo",
 			"GpieroMW",
 			"Pierpao",
-			"Vivbod"
+			"Vivbod",
+			"Bultro"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
@@ -149,7 +150,7 @@
 	"growthexperiments-homepage-mentorship-question-subject": "Domanda da [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Domanda da [[User:$1|$1]] su [[$2]]",
 	"growthexperiments-specialimpact-title": "Impatto",
-	"growthexperiments-specialimpact-showing-for-other-user": "Visualizzando i dati d'impatto per $1",
+	"growthexperiments-specialimpact-showing-for-other-user": "Visualizzazione dei dati d'impatto per $1",
 	"growthexperiments-specialimpact-invalid-username": "Nome utente mancante o non valido.",
 	"growthexperiments-homepage-claimmentee-no-user": "Questo allievo non esiste",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Sei}} già tutor di {{GENDER:$1|$1}}",

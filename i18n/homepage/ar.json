@@ -387,7 +387,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "ربط إلى المقالة الخاطئة (مثال: ربط «قمر» إلى «كوكب»)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "{{GENDER:|انقر|انقري}} على قلم التعديل $1 بجانب الرابط لتغيير وجهة الرّابط",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "آخر",
-	"growthexperiments-addlink-rejectiondialog-action-done": "تمّ",
+	"growthexperiments-addlink-rejectiondialog-action-done": "تم",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "{{GENDER:|حدّد|حدّدي}} سبب اعتبار هذا الرابط غير جيّد",
 	"growthexperiments-addlink-onboarding-content-intro-title": "إضافة الروابط ستساهم في تعلّم أسرع للأشخاص.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|ستقرّر|ستقرّرين}} ما إذا كانت بعض كلمات من مقالة ما في {{SITENAME}} عليها أن تربط إلى مقالات أخرى من {{SITENAME}}.",
@@ -540,5 +540,5 @@
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "عندما {{GENDER:|ترسل|ترسلين}} رسالة إلى {{GENDER:$1|مرشدك، سيشاهدها|مرشدتك، ستشاهدها}} على صفحة النقاش الخاصة {{GENDER:$1|به|بها}} ويجب أن {{GENDER:|تتلقى|تتلقّي}} إشعارًا عندما {{GENDER:$1|يردّ|تردّ}}.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "الانسحاب من الإرشاد",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "{{GENDER:|اختر|اختاري}} الزرّ أدناه للخروج إذا كنت لا {{GENDER:|تريد|تريدين}} تعيين مرشد خاصّ بك في الوقت الحالي. يمكنك في أيّ وقت الحصول مرّة أخرى على مرشد جديد إذا ما غيّرت رأيك.",
-	"growthexperiments-homepage-mentorship-about-done": "تمّ"
+	"growthexperiments-homepage-mentorship-about-done": "تم"
 }

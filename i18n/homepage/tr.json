@@ -22,7 +22,8 @@
 			"ToprakM",
 			"Vito Genovese",
 			"Rapsar",
-			"LostMyMind"
+			"LostMyMind",
+			"Leo"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Merhaba}}, {{bidi:$1}}!",
@@ -121,7 +122,7 @@
 	"tag-newcomer_task": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Yeni gelen görev]]",
 	"tag-newcomer_task-description": "Yeni gelen ana sayfanın önerilen değiştirme modülü tarafından önerilen değişiklik",
 	"tag-newcomer_task_copyedit": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Yenigelen görevi: copyedit]]",
-	"tag-newcomer_task_copyedit-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Tashih\" görev düzenlemesi",
+	"tag-newcomer_task_copyedit-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Tashih\" görevi düzenlemesi",
 	"tag-newcomer_task_references": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Yeni gelen görevi: kaynaklar]]",
 	"tag-newcomer_task_references-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Kaynaklar\" görev düzenlemesi",
 	"tag-newcomer_task_update": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Yeni gelen görevi: güncelleme]]",
@@ -131,9 +132,9 @@
 	"tag-newcomer_task_links": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Newcomer_tasks|Yeni gelen görevi: bağlantılar]]",
 	"tag-newcomer_task_links-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Bağlantılar\" görev düzenlemesi",
 	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add a link|Önerilen: bağlantı ekleyin]]",
-	"tag-newcomer_task_add_link-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Bağlantı ekle\" görev düzenlemesi",
+	"tag-newcomer_task_add_link-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Bağlantı ekle\" görevi düzenlemesi",
 	"tag-newcomer_task_image_suggestion": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Structured_tasks/Add_an_image|Yeni gelen görevi: görsel ekleme]]",
-	"tag-newcomer_task_image_suggestion-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Görsel ekleme\" görev düzenlemesi",
+	"tag-newcomer_task_image_suggestion-description": "Yeni gelen ana sayfasının önerilen düzenlemeler modülü tarafından önerilen \"Görsel ekle\" görevi düzenlemesi",
 	"growthexperiments-homepage-help-dialog-title": "Danışma masasına sorun",
 	"growthexperiments-homepage-help-header": "Düzenleme ile ilgili yardım alın",
 	"growthexperiments-homepage-help-subheader": "Düzenleme ile ilgili en yararlı yardım sayfaları",
