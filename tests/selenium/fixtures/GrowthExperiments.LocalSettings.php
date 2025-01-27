@@ -1,12 +1,10 @@
 <?php
 
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\NewcomerTasks\AddImage\SubpageImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\SubpageLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\TourHooks;
@@ -34,9 +32,6 @@ $wgGEDeveloperSetup = true;
 $wgPageViewInfoWikimediaDomain = 'en.wikipedia.org';
 
 $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services ) {
-	$imageRecommendationTaskType = new ImageRecommendationTaskType(
-		'image-recommendation', GrowthExperiments\NewcomerTasks\TaskType\TaskType::DIFFICULTY_MEDIUM, []
-	);
 	$linkRecommendationTaskType = new LinkRecommendationTaskType(
 		'link-recommendation', TaskType::DIFFICULTY_EASY, []
 	);
@@ -45,11 +40,9 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 	$services->redefineService(
 		'GrowthExperimentsTaskSuggesterFactory',
 		static function () use (
-			$imageRecommendationTaskType, $linkRecommendationTaskType, $services
+			$linkRecommendationTaskType, $services
 		): TaskSuggesterFactory {
 			return new StaticTaskSuggesterFactory( [
-				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
-				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "1886_in_Chile" ) ),
 				new Task( $linkRecommendationTaskType, new TitleValue( NS_MAIN, 'Douglas Adams' ) ),
 				new Task(
 					$linkRecommendationTaskType, new TitleValue( NS_MAIN, "The_Hitchhiker's_Guide_to_the_Galaxy" )
@@ -117,12 +110,6 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 $wgHooks['MediaWikiServices'][] = SubpageLinkRecommendationProvider::class . '::onMediaWikiServices';
 $wgHooks['ContentHandlerDefaultModelFor'][] =
 	SubpageLinkRecommendationProvider::class . '::onContentHandlerDefaultModelFor';
-# Same for image recommendations, with addimage.json and http://image-suggestion-api.wmcloud.org/?doc
-$wgHooks['MediaWikiServices'][] = SubpageImageRecommendationProvider::class . '::onMediaWikiServices';
-$wgHooks['ContentHandlerDefaultModelFor'][] =
-	SubpageImageRecommendationProvider::class . '::onContentHandlerDefaultModelFor';
-// Use Commons as a foreign file repository.
-$wgUseInstantCommons = true;
 // Set up service URL for links.
 $wgGELinkRecommendationServiceUrl = 'https://api.wikimedia.org/service/linkrecommendation';
 
