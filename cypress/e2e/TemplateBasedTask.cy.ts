@@ -5,7 +5,7 @@ const homepage = new Homepage();
 const keepGoingModule = new KeepGoingModule();
 
 describe( 'Template-based tasks', () => {
-	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', () => {
+	it( 'saves change tags for unstructured task edits made via VisualEditor', () => {
 		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
 			username: string;
 			password: string;
@@ -14,6 +14,7 @@ describe( 'Template-based tasks', () => {
 		} );
 		cy.setUserOptions( {
 			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'copyedit' ] ),
+			'visualeditor-hidebetawelcome': '1',
 		} );
 
 		cy.visit( 'index.php?title=Special:Homepage' );
@@ -43,14 +44,24 @@ function editAndSaveCurrentPage( textToType: string, closeHelpPanel: boolean = f
 		cy.get( '.mw-ge-help-panel-processdialog .oo-ui-processDialog-actions-primary .oo-ui-buttonElement-button' )
 			.should( 'be.visible' ).click();
 	}
-	cy.get( '.mw-ge-help-panel-processdialog .oo-ui-processDialog-actions-primary .oo-ui-buttonElement-button' )
-		.should( 'not.exist' );
 
 	cy.get( '.mw-body-content.ve-ui-surface .ve-ce-surface', { timeout: 60000 } )
 		.should( 'be.visible' );
 
-	cy.get( '.mw-body-content.ve-ui-surface .ve-ce-surface [contenteditable]' ).first().type( textToType );
+	cy.get( '.mw-body-content.ve-ui-surface .ve-ce-surface [contenteditable]' ).first().type(
+		textToType,
+		/**
+		 * Using { force: true } works around errors of the type:
+		 *
+		 * `cy.type()` failed because the center of this element is hidden from view
+		 *
+		 * They seem to happen for unknown reasons despite the center of the element being visible.
+		 */
+		{ force: true },
+	);
 
+	cy.get( '.mw-ge-help-panel-processdialog .oo-ui-processDialog-actions-primary .oo-ui-buttonElement-button' )
+		.should( 'not.exist' );
 	cy.get( '.ve-ui-toolbar-saveButton' ).should( 'be.visible' ).click();
 	cy.get( '.ve-ui-mwSaveDialog .oo-ui-processDialog-actions-primary' ).should( 'be.visible' ).click();
 	keepGoingModule.postEditDrawer.should( 'be.visible' );
