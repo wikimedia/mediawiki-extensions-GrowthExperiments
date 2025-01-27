@@ -37,6 +37,7 @@ class StructuredTaskSurfacer {
 	 * @typedef {Object} LinkRecommendation
 	 * @property {string} link_text
 	 * @property {string} link_target
+	 * @property {number} link_index
 	 * @property {number} score
 	 */
 
@@ -109,11 +110,11 @@ class StructuredTaskSurfacer {
 
 		topRecs.forEach(
 			/**
-			 * @param {{link_text: string; link_target: string}} rec
+			 * @param {{link_text: string; link_target: string, link_index: number }} rec
 			 */
 			( rec ) => {
 				const textToLink = rec.link_text;
-				const highlightNode = this.createHighlightNode( textToLink, taskUrl, linkPageData[ rec.link_target ] );
+				const highlightNode = this.createHighlightNode( textToLink, taskUrl, linkPageData[ rec.link_target ], rec.link_index );
 
 				// eslint-disable-next-line compat/compat -- IntersectionObserver is widely available according to baseline
 				const highlightObserver = new IntersectionObserver( ( entries ) => {
@@ -168,9 +169,10 @@ class StructuredTaskSurfacer {
 	 * @param {string} textToLink
 	 * @param {URL} taskUrl
 	 * @param { { title: string; description: string?; thumbnail: any } | null } extraData
+	 * @param {number} recommendationId
 	 * @return {Element}
 	 */
-	createHighlightNode( textToLink, taskUrl, extraData ) {
+	createHighlightNode( textToLink, taskUrl, extraData, recommendationId ) {
 		const highlightButtonElement = this.createButtonNode( textToLink );
 		const popup = new SurfacedTaskPopup( textToLink, extraData );
 
@@ -209,6 +211,10 @@ class StructuredTaskSurfacer {
 					active_interface: 'readmode_suggestion_dialog',
 					/* eslint-enable camelcase */
 				} );
+				// Use the `link_index` as returned by ApiQueryLinkRecommendations
+				// as a recommendation id (gerecommendationid), expecting it to match the order
+				// in the taskData array the suggested edit session
+				taskUrl.searchParams.append( 'gerecommendationid', recommendationId.toString() );
 				window.location.href = taskUrl.href;
 				document.removeEventListener( 'click', handleClickOutsidePopup, true );
 			},

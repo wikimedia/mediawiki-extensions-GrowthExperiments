@@ -41,9 +41,6 @@ RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 	this.setupHelpButton(
 		mw.message( 'growthexperiments-addlink-context-button-help' ).text()
 	);
-	this.$acceptanceButtonsContainer = this.setUpAnimationContainer(
-		this.$acceptanceButtonGroup, this.$buttons
-	);
 };
 
 /**
@@ -61,6 +58,11 @@ RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
 		mw.message( 'growthexperiments-addlink-context-button-show-suggestion' ).text()
 	);
 	RecommendedLinkToolbarDialogMobile.super.prototype.afterSetupProcess.call( this );
+	if ( this.linkRecommendationFragments.length > 1 ) {
+		this.$acceptanceButtonsContainer = this.setUpAnimationContainer(
+			this.$acceptanceButtonGroup, this.$buttons
+		);
+	}
 };
 
 /**

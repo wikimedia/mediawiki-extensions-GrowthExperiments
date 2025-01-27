@@ -414,6 +414,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Other",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Done",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Select reason this is not a good link",
+	"growthexperiments-addlink-single-recommendation-title": "Add a suggested link",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Adding links will help people learn faster.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|You}} will decide whether words in one {{SITENAME}} article should link to other {{SITENAME}} articles.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Example sentence",
