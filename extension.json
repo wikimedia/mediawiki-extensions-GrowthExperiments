@@ -1668,6 +1668,8 @@
 				"CdxThumbnail"
 			],
 			"dependencies": [
+				"oojs",
+				"oojs-ui-core",
 				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"messages": [

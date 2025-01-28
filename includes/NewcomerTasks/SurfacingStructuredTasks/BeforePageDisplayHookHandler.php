@@ -71,6 +71,7 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 			'maxLinks' => $maxLinks,
 			'minScore' => $minScore,
 		] );
+		$out->enableOOUI();
 		$out->addModules( 'ext.growthExperiments.StructuredTask.Surfacing' );
 	}
 }
