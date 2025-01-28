@@ -133,7 +133,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-description": "简短标题，可以最准确地描述将要强调的活动、专题，或社群动议。",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-label": "正文",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "简短友好的信息，以激发参与热情。",
-	"communityconfiguration-communityupdates-gehomepagecommunityupdatesminedits-label": "用户最少需要进行多少次编辑，以在这个横幅中得到展示",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesminedits-label": "向用户展示此横幅需要完成的最少编辑数",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "图片",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "输入维基共享资源上的图片名称以搜索并在列表中选择。为保证最佳显示效果，请尽量选择接近正方形的图片。",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "行动号召",

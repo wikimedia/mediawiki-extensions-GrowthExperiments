@@ -17,6 +17,7 @@
 			"NEHAOUA",
 			"Shbib Al-Subaie",
 			"Sonic N800",
+			"XIDME",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
 		]
@@ -506,7 +507,7 @@
 	"growthexperiments-addimage-rejectiondialog-header": "لم لا؟",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|إجاباتك}} ستُحسّن الاقتراحات المستقبلية.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "إرسال",
-	"growthexperiments-addimage-rejectiondialog-action-cancel": "تراجع",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "إلغاء",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "صورة غير ملائمة",
 	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "لا توجد معلومات كافية للتقرير",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "صورة فيها تهجّم",
@@ -551,7 +552,7 @@
 	"growthexperiments-addimage-skip-dialog-title": "غير {{GENDER:|واثق|واثقة}} من هذه الصورة؟",
 	"growthexperiments-addimage-skip-dialog-body": "{{GENDER:|أكّد|أكّدي}} رغبتك في تخطّي هذا الاقتراح.",
 	"growthexperiments-addimage-skip-dialog-confirm": "تخطّي الاقتراح",
-	"growthexperiments-addimage-skip-dialog-cancel": "تراجع",
+	"growthexperiments-addimage-skip-dialog-cancel": "إلغاء",
 	"growthexperiments-newcomertasks-invalid-tasktype": "نوع اقتراح غير صالح: $1",
 	"growthexperiments-addimage-caption-title": "إضافة شرح",
 	"growthexperiments-addimage-loading-title": "تحميل معاينة الصورة…",
