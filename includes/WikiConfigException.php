@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments;
 
-use Throwable;
 use Wikimedia\NormalizedException\NormalizedException;
 
 /**
@@ -13,15 +12,4 @@ use Wikimedia\NormalizedException\NormalizedException;
  * engineering.
  */
 class WikiConfigException extends NormalizedException {
-
-	/** @inheritDoc */
-	public function __construct(
-		string $normalizedMessage,
-		array $messageContext = [],
-		int $code = 0,
-		?Throwable $previous = null
-	) {
-		parent::__construct( $normalizedMessage, $messageContext, $code, $previous );
-	}
-
 }
