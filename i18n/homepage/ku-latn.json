@@ -55,7 +55,12 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Dema cara ewil dest bi hînbûna guhartinan {{GENDER:$1|dikî}} tê pêşniyazkirin.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Piştî te çend guhartinên hêsan {{GENDER:$1|kirin}}.",
 	"growthexperiments-homepage-suggested-edits-header": "Guhartinên pêşniyazkirî",
-	"growthexperiments-homepage-impact-header": "Bandora {{GENDER:$1|te}}",
+	"growthexperiments-homepage-impact-header": "Tesîra {{GENDER:$1|te}}",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Guhartina dawî",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Seriya herî dirêj",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|roj}}",
+	"growthexperiments-homepage-impact-scores-edit-count": "Hemû guhartin",
+	"growthexperiments-homepage-impact-scores-thanks-count": "Spas li te hate kirin",
 	"growthexperiments-homepage-impact-subheader-text": "Kesên din li gotarên ku {{GENDER:|te}} guhartine dinêrin!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Nêrînên ji roja ku {{GENDER:$1|te}} guhartiye ve (60 rojên dawîn):",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Te}} hîn ti gotar çênekiriye yan jî ti tişt neguhartiye.",
@@ -114,5 +119,8 @@
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Hemûyan jê bibe",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Dewam bike",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Min fêm kir",
+	"growthexperiments-homepage-special-contribute-title": "Guhartinên pêşniyazkirî",
+	"growthexperiments-homepage-special-contribute-description": "Gotarên hêyî guhartinên biçûk û hêsan (nimûne: lînkek lê zêde bike an jî sererast bike) bi pêş bixe.",
+	"growthexperiments-homepage-special-contribute-cta": "Guhartinên pêşniyazkirî bibîne",
 	"growthexperiments-homepage-impact-contributions-link": "Hejmara guhartinên {{GENDER:$2|te}}: <strong>$1</strong> {{PLURAL:$1|guhartin|guhartinan}} (hemû bibîne)"
 }

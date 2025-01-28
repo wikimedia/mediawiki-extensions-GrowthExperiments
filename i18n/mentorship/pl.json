@@ -3,7 +3,8 @@
 		"authors": [
 			"Msz2001",
 			"Nux",
-			"Woytecr"
+			"Woytecr",
+			"PanWor"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Panel przewodników",
@@ -185,7 +186,7 @@
 	"growthexperiments-manage-mentors-pretext-regular": "Administratorzy mogą usuwać przewodników, którzy naruszają zasady lub standardy społeczności. Mogą również edytować ich opcje związane z przewodniczeniem, takie jak treść wiadomości powitalnej.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "Lista przewodników jest przechowywana na [[$1|stronie w przestrzeni MediaWiki]], włączając w to historię.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Aby zostać przewodnikiem, przejdź na stronę [[Special:EnrollAsMentor|Specjalna:Zostań przewodnikiem]].",
-	"growthexperiments-manage-mentors-error-no-such-user": "Błąd: nie istnieje użytkownik o identyfikatorze $1. To prawdopodobnie błąd wewnętrzny.",
+	"growthexperiments-manage-mentors-error-no-such-user": "Błąd: Nie istnieje użytkownik o podanym identyfikatorze. Jest to prawdopodobnie błąd wewnętrzny.",
 	"growthexperiments-manage-mentors-auto-assigned": "Przewodnicy przydzielani automatycznie nowym użytkownikom",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Kiedy nowicjusz utworzy konto na {{GRAMMAR:MS.lp|{{SITENAME}}}}, jeden z niżej wymienionych użytkowników zostanie do niego przypisany jako przewodnik.",
 	"growthexperiments-manage-mentors-manually-assigned": "Przewodnicy, którzy wybierają podopiecznych ręcznie",
@@ -211,6 +212,10 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "Właśnie próbujesz usunąć [[User:$1|$1]] z grona przewodników.",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Powód usunięcia przewodnika",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Użytkownik|Użytkowniczka|Użytkownik(-czka)}} [[User:$1|$1]] już nie jest {{GENDER:$1|przewodnikiem|przewodniczką|przewodnikiem(-czką)}}.",
+	"growhtexperiments-manage-mentors-add-mentor": "Zarejestruj przewodnika",
+	"growthexperiments-manage-mentors-add-mentor-username": "Nazwa użytkownika przewodnika, którego chcesz dodać",
+	"growthexperiments-manage-mentors-add-mentor-reason": "Powód dodania przewodnika",
+	"growthexperiments-manage-mentors-add-mentor-success": "{{GENDER:$1|Użytkownik}} $1 {{GENDER:$1|został dodany|została dodana|został dodany}} jako przewodnik.",
 	"growthexperiments-manage-mentors-return-back": "Możesz [[Special:ManageMentors|wrócić]] do listy przewodników.",
 	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "Dodanie $1 do listy przewodników",
 	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "Dodanie $1 do listy przewodników: $2",
