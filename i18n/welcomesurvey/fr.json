@@ -8,7 +8,8 @@
 			"Trizek (WMF)",
 			"Urhixidur",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Pamputt"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Bienvenue}}, $1 !",
@@ -19,7 +20,7 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Ne pas répondre}} à cette enquête",
 	"welcomesurvey-close-btn": "Fermer et retourner sur $1",
 	"welcomesurvey-privacy-policy-link-text": "En savoir plus à propos des données concernant les nouveau contributeurs",
-	"welcomesurvey-privacy-footer-text": "La Fondation Wikimédia utilisera {{GENDER:$1|vos}} réponses pour vous aider à commencer à éditer {{SITENAME}}. [$2 En savoir plus dans notre déclaration de confidentialité].",
+	"welcomesurvey-privacy-footer-text": "La Fondation Wikimédia utilisera {{GENDER:$1|vos}} réponses pour vous aider à commencer à modifier {{SITENAME}}. [$2 En savoir plus dans notre déclaration de confidentialité].",
 	"welcomesurvey-sidebar-editing-title": "Contribuer pour la première fois",
 	"welcomesurvey-sidebar-editing-text": "Presque toutes les pages peuvent être modifiées par chacun, et des centaines de modifications sont faites chaque heure pour ajouter du contenu, corriger des erreurs, ou améliorer la lisibilité. Les pages suivantes peuvent vous aider si vous êtes intéressé{{GENDER:$1||e}} pour contribuer.",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutoriel",
