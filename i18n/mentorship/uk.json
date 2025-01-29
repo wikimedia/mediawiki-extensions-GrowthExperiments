@@ -83,7 +83,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Якщо певний час ви не можете бути {{GENDER:|наставником|наставницею}} (більше 1 тижня), ви можете вказати, що недоступні. Упродовж цього періоду інший наставник буде отримувати запитання від ваших підопічних.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Ви будете недоступні стільки часу:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "днів",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Введене в полі «{{GENDER:|Ви будете}} недоступні» є завеликим числом. Максимальна кількість днів, на які наставник може бути недоступним — $1 (один рік).",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Максимальна кількість днів, на які наставник може бути недоступним — $1 (один рік).",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Сталася невідома помилка. Будь ласка, спробуйте пізніше.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Ваш статус змінено на «Активний».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Ваш статус змінено на «Не на місці».",
