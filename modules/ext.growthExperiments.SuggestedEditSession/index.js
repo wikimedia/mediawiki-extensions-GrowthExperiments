@@ -271,7 +271,7 @@
 
 		if ( url.searchParams.get( 'geclickid' ) ) {
 			this.active = true;
-			this.clickId = parseInt( url.searchParams.get( 'geclickid' ) );
+			this.clickId = url.searchParams.get( 'geclickid' );
 			this.title = this.getCurrentTitle();
 			this.taskType = mw.config.get( 'wgGESuggestedEditTaskType' );
 			this.taskData = mw.config.get( 'wgGESuggestedEditData' );
