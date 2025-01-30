@@ -47,8 +47,7 @@ class GrowthExperimentsMultiConfig implements Config, ICustomReadConstants {
 		'GEPersonalizedPraiseMinEdits',
 		'GEPersonalizedPraiseMaxEdits',
 		'GEPersonalizedPraiseMaxReverts',
-		'GELevelingUpGetStartedMaxTotalEdits',
-		'GELevelingUpKeepGoingNotificationThresholds'
+		'GELevelingUpGetStartedMaxTotalEdits'
 	];
 
 	/**

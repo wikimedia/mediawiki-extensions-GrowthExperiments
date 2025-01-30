@@ -2548,14 +2548,6 @@
 			"description": "Send a 'keep going' notification to new editors after this many seconds. Defaults to 48 hours.",
 			"value": 172800
 		},
-		"GELevelingUpKeepGoingNotificationThresholds": {
-			"description": "Article namespace edit count thresholds at which the user should receive a notification to keep going with suggested edits. The user can receive a notification if their edit count is greater than or equal to the first number in the array, and lower than or equal to the second number in the array.",
-			"value": [
-				1,
-				4
-			],
-			"merge_strategy": "provide_default"
-		},
 		"GELevelingUpGetStartedNotificationSendAfterSeconds": {
 			"description": "Send a 'get started' notification to new editors after this many seconds. Defaults to 48 hours.",
 			"value": 172800

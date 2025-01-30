@@ -14,11 +14,22 @@ use SpecialPageTestBase;
  */
 class SpecialEditGrowthConfigTest extends SpecialPageTestBase {
 
+	/**
+	 * NOTE: We're marking this test as skipped since SpecialEditGrowthConfig
+	 * is being deprecated in favor of the CommunityConfiguration extension.
+	 * This entire test class will be removed once the migration is complete.
+	 *
+	 * @see T366139 for migration details
+	 */
 	protected function setUp(): void {
 		parent::setUp();
 		// SpecialEditGrowthConfig is a part of legacy CommunityConfiguration,
 		// this test does not make sense with CC2.0.
 		$this->overrideConfigValue( 'GEUseCommunityConfigurationExtension', false );
+		$this->markTestSkipped(
+			'SpecialEditGrowthConfig is deprecated in favor of CommunityConfiguration. ' .
+			'This test will be removed as part of T366139.'
+		);
 	}
 
 	/**

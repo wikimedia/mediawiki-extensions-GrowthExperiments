@@ -367,9 +367,8 @@ class LevelingUpManager {
 	 */
 	public function shouldSendKeepGoingNotification( UserIdentity $userIdentity ): bool {
 		$suggestedEditCount = $this->getSuggestedEditsCount( $userIdentity );
-		$thresholds = $this->growthConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' );
 		return $suggestedEditCount >= self::KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM
-			&& $suggestedEditCount <= $thresholds[1];
+			&& $suggestedEditCount <= $this->growthConfig->get( 'GELevelingUpKeepGoingNotificationThresholdsMaximum' );
 	}
 
 	/**
