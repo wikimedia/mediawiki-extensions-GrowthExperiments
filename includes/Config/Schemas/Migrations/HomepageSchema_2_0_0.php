@@ -1,16 +1,18 @@
 <?php
 
-namespace GrowthExperiments\Config\Schemas;
+namespace GrowthExperiments\Config\Schemas\Migrations;
 
-use GrowthExperiments\Config\Schemas\Converters\HomepageSchemaConverter_2_0_1;
+use GrowthExperiments\Config\Schemas\Converters\HomepageSchemaConverter_2_0_0;
 use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefinitions;
 
+// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
-class HomepageSchema extends JsonSchema {
-	public const VERSION = '2.0.1';
-	public const SCHEMA_PREVIOUS_VERSION = '2.0.0';
-	public const SCHEMA_CONVERTER = HomepageSchemaConverter_2_0_1::class;
+class HomepageSchema_2_0_0 extends JsonSchema {
+	public const VERSION = '2.0.0';
+	public const SCHEMA_PREVIOUS_VERSION = '1.0.0';
+	public const SCHEMA_NEXT_VERSION = '2.0.1';
+	public const SCHEMA_CONVERTER = HomepageSchemaConverter_2_0_0::class;
 
 	public const GEHomepageSuggestedEditsIntroLinks = [
 		self::TYPE => self::TYPE_OBJECT,

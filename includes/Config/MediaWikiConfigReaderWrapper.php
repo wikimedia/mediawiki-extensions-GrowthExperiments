@@ -46,10 +46,6 @@ class MediaWikiConfigReaderWrapper implements Config {
 		if ( $name === 'GEHelpPanelAskMentor' ) {
 			$value = self::MAP_ASK_MENTOR_VALUES[$value];
 		}
-		if ( $name === 'GELevelingUpKeepGoingNotificationThresholds' ) {
-			$thresholds = $this->mainConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' );
-			$value = [ $thresholds[ 0 ], $value ];
-		}
 		return $value;
 	}
 

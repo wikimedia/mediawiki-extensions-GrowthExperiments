@@ -92,9 +92,6 @@ class GrowthConfigValidation implements IConfigValidator {
 			'GELevelingUpGetStartedMaxTotalEdits' => [
 				'type' => 'int',
 			],
-			'GELevelingUpKeepGoingNotificationThresholds' => [
-				'type' => 'int[]',
-			],
 		];
 	}
 

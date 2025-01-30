@@ -575,15 +575,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'required' => true,
 					// NOTE: zero is used to disable the notification
 					'min' => 0,
-				],
-				'geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum' => [
-					'type' => 'int',
-					'label-message' => 'growthexperiments-edit-config-keep-going-notification-title',
-					'section' => 'level-up-notifications',
-					'help-message' => 'growthexperiments-edit-config-keep-going-notification-description',
-					'required' => true,
-					// NOTE: zero is used to disable the notification
-					'min' => 0,
 				]
 			];
 
