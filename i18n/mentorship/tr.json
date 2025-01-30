@@ -10,7 +10,8 @@
 			"Oyuncu",
 			"Rapsar",
 			"SaldırganSincap",
-			"ToprakM"
+			"ToprakM",
+			"Wooze"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Danışman kontrol paneli",
@@ -218,8 +219,8 @@
 	"growthexperiments-manage-mentors-return-back": "Danışman listesine [[Special:ManageMentors|geri dönebilirsiniz]].",
 	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "$1 danışman olarak ekleniyor",
 	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "$1 danışman olarak ekleniyor: $2",
-	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Kendim danışman olarak ekleniyor",
-	"growthexperiments-manage-mentors-summary-add-self-with-reason": "Kendim danışman olarak ekleniyor: $2",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Kendimi danışman olarak ekliyorum",
+	"growthexperiments-manage-mentors-summary-add-self-with-reason": "Kendim danışman olarak ekliyorum: $2",
 	"growthexperiments-manage-mentors-summary-change-admin-no-reason": "$1 için danışmanlık seçenekleri değiştiriliyor",
 	"growthexperiments-manage-mentors-summary-change-admin-with-reason": "$1 için danışmanlık seçenekleri değiştiriliyor: $2",
 	"growthexperiments-manage-mentors-summary-change-self-no-reason": "Danışmanlık seçeneklerim değiştiriliyor",

@@ -8,12 +8,13 @@
 			"VulpesVulpes825",
 			"Zhang8569",
 			"科劳",
-			"LittlePaw365"
+			"LittlePaw365",
+			"Diskdance"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|这是什么？]])",
 	"growthexperiments-confirmemail-emailhelp": "如果您忘记密码，您需要通过电子邮件来恢复您的账户。",
-	"growthexperiments-confirmemail-emailrecommended": "电子邮箱地址 (推荐)",
+	"growthexperiments-confirmemail-emailrecommended": "电子邮箱地址（推荐）",
 	"growthexperiments-confirmemail-emailwarning": "我们将向您发送一封验证邮件，稍后请查看您的邮箱。",
 	"growthexperiments-confirmemail-confirm-subject": "欢迎来到{{SITENAME}}；请确认您的邮箱地址。",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|您好，}} $2：\n\n感谢您给您的{{SITENAME}}账户添加了电子邮箱地址，该操作来自IP地址 $1。\n\n请点击下方按钮，确认您将要添加至$2用户名下的电子邮箱地址：\n\n$3\n\n请注意：此验证码将在$4后失效。\n\n我们一会儿见！\n\n{{SITENAME}}\n\n----\n\n要取消电子邮件地址确认（例如因为您没有注册账户等原因），请点击此取消链接：\n\n$5",
