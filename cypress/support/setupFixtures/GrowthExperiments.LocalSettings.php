@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\TitleValue;
@@ -17,6 +18,11 @@ $wgGEUseCommunityConfigurationExtension = true;
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
 $wgGESurfacingStructuredTasksEnabled = true;
+
+$wgMaxArticleSize = 100;
+$wgParsoidSettings['wt2htmlLimits']['wikitextSize'] = 100 * 1024;
+$wgParsoidSettings['html2wtLimits']['htmlSize'] = 500 * 1024;
+$wgGEDeveloperSetup = true;
 
 $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services ) {
 	$copyEditTaskType = new TemplateBasedTaskType(
@@ -28,6 +34,9 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 	$imageRecommendationTaskType = new ImageRecommendationTaskType(
 		'image-recommendation', GrowthExperiments\NewcomerTasks\TaskType\TaskType::DIFFICULTY_MEDIUM, []
 	);
+	$linkRecommendationTaskType = new LinkRecommendationTaskType(
+		'link-recommendation', GrowthExperiments\NewcomerTasks\TaskType\TaskType::DIFFICULTY_EASY, []
+	);
 
 	# Mock the task suggester to specify what article(s) will be suggested.
 	$services->redefineService(
@@ -35,9 +44,14 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 		static function () use (
 			$copyEditTaskType,
 			$imageRecommendationTaskType,
+			$linkRecommendationTaskType,
 			$services
 		): TaskSuggesterFactory {
 			$staticSuggesterFactory = new StaticTaskSuggesterFactory( [
+				new Task( $linkRecommendationTaskType, new TitleValue( NS_MAIN, 'Douglas Adams' ) ),
+				new Task(
+					$linkRecommendationTaskType, new TitleValue( NS_MAIN, "The_Hitchhiker's_Guide_to_the_Galaxy" )
+				),
 				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Classical kemençe' ) ),
 				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Cretan lyra' ) ),
 				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
@@ -74,6 +88,11 @@ $wgHooks['ContentHandlerDefaultModelFor'][] =
 // Use Commons as a foreign file repository.
 $wgUseInstantCommons = true;
 
+/*
+ * Set up service URL for links.
+ * It is not actually used, but GrowthExperimentsLinkRecommendationProviderUncached does check for it.
+ */
+$wgGELinkRecommendationServiceUrl = 'https://example.com/service/linkrecommendation';
 
 // Activate suggested edits for new users, complete various tours.
 $wgHooks['UserGetDefaultOptions'][] = static function ( &$defaultOptions ) {
