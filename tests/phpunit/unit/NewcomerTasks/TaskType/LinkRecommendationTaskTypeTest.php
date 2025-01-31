@@ -15,6 +15,7 @@ class LinkRecommendationTaskTypeTest extends MediaWikiUnitTestCase {
 
 	public function testJsonSerialization() {
 		$codec = new JsonCodec();
+
 		$taskType = new LinkRecommendationTaskType(
 			'foo',
 			TaskType::DIFFICULTY_MEDIUM,
