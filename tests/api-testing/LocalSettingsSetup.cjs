@@ -6,7 +6,7 @@ const childProcess = require( 'child_process' ),
 	phpFpmService = 'php' + phpVersion + '-fpm',
 	fs = require( 'fs' ),
 	path = require( 'path' ),
-	ip = path.resolve( __dirname + '/../../../' ),
+	ip = path.resolve( __dirname + '/../../../../' ),
 	localSettingsPath = path.resolve( ip + '/LocalSettings.php' ),
 	localSettingsContents = fs.readFileSync( localSettingsPath );
 
@@ -39,8 +39,8 @@ async function overrideLocalSettings() {
 	console.log( 'Setting up modified ' + localSettingsPath );
 	fs.writeFileSync( localSettingsPath,
 		localSettingsContents + `
-if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php" ) ) {
-	require_once "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php";
+if ( file_exists( "$IP/extensions/GrowthExperiments/tests/api-testing/GrowthExperiments.LocalSettings.php" ) ) {
+	require_once "$IP/extensions/GrowthExperiments/tests/api-testing/GrowthExperiments.LocalSettings.php";
 }
 ` );
 }
