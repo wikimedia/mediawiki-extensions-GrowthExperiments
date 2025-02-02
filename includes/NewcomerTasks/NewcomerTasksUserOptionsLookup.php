@@ -162,7 +162,7 @@ class NewcomerTasksUserOptionsLookup {
 	public function filterTaskTypes( array $taskTypes, UserIdentity $user ): array {
 		$conversionMap = $this->getConversionMap( $user );
 		$taskTypes = array_filter( $taskTypes,
-			fn ( $taskTypeId ) => !array_key_exists( $taskTypeId, $conversionMap )
+			static fn ( $taskTypeId ) => !array_key_exists( $taskTypeId, $conversionMap )
 		);
 		return $this->filterNonExistentTaskTypes( $taskTypes );
 	}

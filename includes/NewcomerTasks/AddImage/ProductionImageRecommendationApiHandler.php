@@ -159,7 +159,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 				] );
 			}
 			if ( $knownKinds ) {
-				$knownSources = array_map( fn ( $kind ) => self::KIND_TO_SOURCE[$kind], $knownKinds );
+				$knownSources = array_map( static fn ( $kind ) => self::KIND_TO_SOURCE[$kind], $knownKinds );
 				$intersectionSources = [
 					ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_TOPICS,
 					ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_ALIGNMENT,

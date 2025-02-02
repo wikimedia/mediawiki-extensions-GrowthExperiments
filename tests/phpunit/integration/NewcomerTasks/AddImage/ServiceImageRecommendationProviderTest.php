@@ -438,7 +438,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider->method( 'getFileMetadata' )
 			->willReturnCallback( $getFileMetadata );
 		$metadataProvider->method( 'getMetadata' )
-			->willReturnCallback( fn ( $suggestion ) => $getFileMetadata( $suggestion['filename'] ) );
+			->willReturnCallback( static fn ( $suggestion ) => $getFileMetadata( $suggestion['filename'] ) );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
 			$taskType,
