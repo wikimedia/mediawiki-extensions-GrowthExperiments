@@ -6,7 +6,8 @@
 			"Dan Mihai Pitea",
 			"Firilacroco",
 			"NGC 54",
-			"Paloi Sciurala"
+			"Paloi Sciurala",
+			"Strainu"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bun-venit}}, {{bidi:$1}}!",
@@ -129,7 +130,7 @@
 	"tag-mentorship_module_question-description": "Editare făcută de la funcția „Întrebați-vă mentorul” a modului de învățat de la mentor din pagina acasă",
 	"tag-mentorship_panel_question": "Întrebare de la panoul de învățat de la mentor",
 	"tag-mentorship_panel_question-description": "Editare făcută de la funcția „Întrebați-vă mentorul” a panoului de ajutor",
-	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_TasksSarcină de nou-venit]",
+	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks Sarcină de nou-venit]",
 	"tag-newcomer_task-description": "Editare sugerate de modulul de editări sugerate din pagina acasă pentru nou-veniți",
 	"tag-newcomer_task_copyedit": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#copyedit Sarcină de nou-venit: corectare]",
 	"tag-newcomer_task_copyedit-description": "Sarcina de editare „Corectare” sugerată de către modulul de editări sugerate a paginii acasă a nou-venitului",
