@@ -43,6 +43,11 @@ AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
 	const data = response.visualeditor || response.visualeditoredit;
 	const doc = ve.createDocumentFromHtml( data.content );
 	const addlinkData = suggestedEditSession.taskData;
+	const recommendationId = new URL( window.location ).searchParams.get( 'gerecommendationid' );
+	if ( recommendationId ) {
+		// Since there's no UI support for a single link recommendation, create an array of one element
+		addlinkData.links = [ suggestedEditSession.taskData.links[ recommendationId ] ];
+	}
 	// TODO start loading this earlier (T267691)
 	this.annotateSuggestions( doc, addlinkData.links );
 	data.content = '<!doctype html>' + ve.properOuterHtml( doc.documentElement );

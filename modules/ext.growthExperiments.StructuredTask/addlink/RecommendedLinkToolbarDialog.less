@@ -114,7 +114,10 @@
 			text-align: left;
 			left: ~'calc( @{imageThumbnailSize} + @{gutterSize} )';
 			display: block;
-			position: absolute;
+
+			&__with-nav-buttons {
+				position: absolute;
+			}
 
 			&.overflow-state {
 				position: absolute;
