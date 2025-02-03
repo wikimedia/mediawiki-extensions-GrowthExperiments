@@ -7,8 +7,26 @@
 			"Jinoytommanjaly"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|നമസ്കാരം}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "പ്രധാന താൾ",
+	"tooltip-pt-homepage": "{{GENDER:|താങ്കളുടെ}} പ്രധാന താൾ",
+	"prefs-homepage": "പുതുമുഖ ലേഖകർക്കുള്ള സൗകര്യങ്ങൾ",
+	"growthexperiments-homepage-enable": "പുതുമുഖങ്ങൾക്കുള്ള പ്രധാന താൾ പ്രദർശിപ്പിക്കുക",
+	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1| താങ്കളുടെ ഇമെയിൽ}} ചേർക്കുക",
+	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1| താങ്കളുടെ ഇമെയിൽ}} സ്ഥിരീകരിക്കുക",
+	"growthexperiments-homepage-email-header-confirmed": "ഇമെയിൽ ചേർത്തു",
+	"growthexperiments-homepage-email-header-startemail": "ഇമെയിൽ: $1",
+	"growthexperiments-homepage-email-text-noemail": "അംഗത്വം വീണ്ടെടുക്കാൻ ആവശ്യമാണ്",
+	"growthexperiments-homepage-email-button-noemail": "ഇമെയിൽ ചേർക്കുക",
+	"growthexperiments-homepage-email-button-unconfirmed": "പുതിയ കണ്ണി എടുക്കുക",
+	"growthexperiments-homepage-email-button-confirmed": "ക്രമീകരണങ്ങൾ",
 	"growthexperiments-homepage-email-changelink": "മാറ്റുക",
+	"growthexperiments-homepage-email-confirmlink": "സ്ഥിരീകരിക്കുക",
+	"growthexperiments-homepage-startediting-header": "തിരുത്തി തുടങ്ങുക",
 	"growthexperiments-homepage-startediting-dialog-header": "നിർദ്ദേശിച്ച തിരുത്തലുകൾ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "ചെയ്തു",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "ലളിതം",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "ഇടത്തരം",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "കഠിനം",
 	"growthexperiments-homepage-suggestededits-topic-name-general-science": "പൊതു ശാസ്ത്രം"
 }

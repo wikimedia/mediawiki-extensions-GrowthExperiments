@@ -55,7 +55,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Dema cara ewil dest bi hînbûna guhartinan {{GENDER:$1|dikî}} tê pêşniyazkirin.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Piştî te çend guhartinên hêsan {{GENDER:$1|kirin}}.",
 	"growthexperiments-homepage-suggested-edits-header": "Guhartinên pêşniyazkirî",
-	"growthexperiments-homepage-impact-header": "Bandora {{GENDER:$1|te}}",
+	"growthexperiments-homepage-impact-header": "Tesîra {{GENDER:$1|te}}",
 	"growthexperiments-homepage-impact-subheader-text": "Kesên din li gotarên ku {{GENDER:$1|te}} guhartine dinêrin!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Nêrînên ji roja ku {{GENDER:$1|te}} guhartiye ve (60 rojên dawîn):",
 	"growthexperiments-homepage-impact-contributions-link": "Hejmara guhartinên {{GENDER:$2|te}}: <strong>$1</strong> {{PLURAL:$1|guhartin|guhartinan}} (hemû bibîne)",
