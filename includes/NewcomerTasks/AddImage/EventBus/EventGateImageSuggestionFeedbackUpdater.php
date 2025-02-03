@@ -76,7 +76,7 @@ class EventGateImageSuggestionFeedbackUpdater {
 			self::STREAM,
 			$attrs
 		);
-		DeferredUpdates::addCallableUpdate( fn () => $eventBus->send( [ $event ] ) );
+		DeferredUpdates::addCallableUpdate( static fn () => $eventBus->send( [ $event ] ) );
 	}
 
 }

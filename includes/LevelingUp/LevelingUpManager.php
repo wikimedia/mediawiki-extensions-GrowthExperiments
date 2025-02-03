@@ -248,7 +248,7 @@ class LevelingUpManager {
 
 		$taskTypes = $this->getTaskTypesOrderedByDifficultyLevel();
 		// Remove the active task type from the candidates.
-		$taskTypes = array_filter( $taskTypes, fn ( $item ) => $item !== $activeTaskTypeId );
+		$taskTypes = array_filter( $taskTypes, static fn ( $item ) => $item !== $activeTaskTypeId );
 		// Find any task type that has fewer than GELevelingUpManagerTaskTypeCountThresholdMultiple completed
 		// tasks, and offer it as the next task type.
 		$taskSuggester = $this->taskSuggesterFactory->create();
