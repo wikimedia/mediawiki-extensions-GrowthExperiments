@@ -137,7 +137,7 @@ class LinkRecommendationUpdater {
 		// will usually be called from maintenance scripts).
 		$db = $this->linkRecommendationStore->getDB( DB_PRIMARY );
 		$db->startAtomic( __METHOD__, IDatabase::ATOMIC_CANCELABLE );
-		$this->linkRecommendationStore->insert( $recommendation );
+		$this->linkRecommendationStore->insertExistingLinkRecommendation( $recommendation );
 
 		$pageIdentity = new PageIdentityValue(
 			$lastRevision->getPageId( $lastRevision->getWikiId() ),

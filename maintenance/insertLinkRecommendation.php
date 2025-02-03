@@ -57,7 +57,7 @@ class InsertLinkRecommendation extends Maintenance {
 			'Inserting ' . count( $data['links'] ) . ' link recommendation(s) for ' . $title->getPrefixedText() . "\n"
 		);
 		$linkRecommendationStore = $growthServices->getLinkRecommendationStore();
-		$linkRecommendationStore->insert( $linkRecommendation );
+		$linkRecommendationStore->insertExistingLinkRecommendation( $linkRecommendation );
 	}
 }
 

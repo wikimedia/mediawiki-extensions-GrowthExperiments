@@ -60,7 +60,7 @@ class GrowthExperimentsBench {
 				[],
 				new LinkRecommendationMetadata( 1, 2, [], 0 )
 			);
-			$linkRecommendationStore->insert( $linkRecommendation );
+			$linkRecommendationStore->insertExistingLinkRecommendation( $linkRecommendation );
 		}
 		$taskSuggesterFactory = new StaticTaskSuggesterFactory(
 			$tasks,
