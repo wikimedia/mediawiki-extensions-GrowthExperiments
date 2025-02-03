@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
@@ -12,21 +14,13 @@ use MediaWikiIntegrationTestCase;
 use Psr\Log\NullLogger;
 
 /**
- * @coversDefaultClass \GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore
+ * @covers \GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore
  * @group medium
  * @group Database
  */
 class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 
-	/**
-	 * @covers ::insertExistingLinkRecommendation
-	 * @covers ::getByRevId
-	 * @covers ::getByPageId
-	 * @covers ::getByLinkTarget
-	 * @covers ::deleteByPageIds
-	 * @covers ::deleteByLinkTarget
-	 */
-	public function testGrowthexperimentsLinkRecommendationsCrud() {
+	public function testGrowthexperimentsLinkRecommendationsCrud(): void {
 		$store = new LinkRecommendationStore(
 			$this->getServiceContainer()->getDBLoadBalancer(),
 			$this->getServiceContainer()->getTitleFactory(),
@@ -117,6 +111,13 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 		$linkRecommendation = $store->getByLinkTarget( new TitleValue( 0, 'T1' ), 0, true );
 		$this->assertInstanceOf( LinkRecommendation::class, $linkRecommendation );
 		$this->assertSame( $revisionIds['T1']['r2'], $linkRecommendation->getRevisionId() );
+
+		$fromPageId = 0;
+		$allRecommendations = $store->getAllRecommendations( 10, $fromPageId );
+		$this->assertCount( 4, $allRecommendations );
+
+		$allPageIds = $store->listPageIds( 10 );
+		$this->assertCount( 3, $allPageIds );
 
 		// deleteByLinkTarget
 		$this->assertFalse( $store->deleteByLinkTarget( new TitleValue( 0, 'T3' ) ) );
