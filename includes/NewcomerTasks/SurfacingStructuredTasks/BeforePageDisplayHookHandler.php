@@ -4,7 +4,6 @@ namespace GrowthExperiments\NewcomerTasks\SurfacingStructuredTasks;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
-use GrowthExperiments\Util;
 use MediaWiki\Config\Config;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 
@@ -46,10 +45,6 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 
 		$veaction = $out->getRequest()->getVal( 'veaction', null );
 		if ( $veaction !== null ) {
-			return;
-		}
-
-		if ( !Util::isMobile( $skin ) ) {
 			return;
 		}
 

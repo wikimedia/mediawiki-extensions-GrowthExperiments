@@ -12,8 +12,6 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\WebRequest;
-use MediaWiki\Skins\Vector\SkinVector22;
-use MediaWiki\Skins\Vector\SkinVectorLegacy;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
@@ -77,18 +75,6 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			null,
 			[ 'veaction' => 'edit' ],
 			null
-		];
-		yield 'using Vector2022 skin' => [
-			[],
-			null,
-			[],
-			SkinVector22::class
-		];
-		yield 'using Vector skin' => [
-			[],
-			null,
-			[],
-			SkinVectorLegacy::class
 		];
 		yield 'user has edited' => [
 			[],
