@@ -98,7 +98,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Créer de nouveaux articles et développer les articles courts.",
 	"growthexperiments-homepage-suggested-edits-header": "Modifications suggérées",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Votre}} impact",
-	"growthexperiments-homepage-impact-no-js-fallback": "Veuillez activer JavaScript pour afficher ce composant.",
+	"growthexperiments-homepage-impact-no-js-fallback": "Veuillez activer JavaScript pour afficher ce composant, s’il vous plaît.",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|Votre}} activité récente ({{PLURAL:$2|ces dernières 24 heures|ces $2 derniers jours}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Activité récente ({{PLURAL:$1|ce dernier jour|ces $1 derniers jours}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Dernière modification",

@@ -213,6 +213,7 @@
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Powód usunięcia przewodnika",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Użytkownik|Użytkowniczka|Użytkownik(-czka)}} [[User:$1|$1]] już nie jest {{GENDER:$1|przewodnikiem|przewodniczką|przewodnikiem(-czką)}}.",
 	"growhtexperiments-manage-mentors-add-mentor": "Zarejestruj przewodnika",
+	"growthexperiments-manage-mentors-add-mentor-pretext": "Za pomocą tego formularza można dodać nowego przewodnika do systemu. Dodany użytkownik nie musi spełniać kryteriów kwalifikowalności. Są oni dodawani jako ręcznie przypisywani przewodnicy i mogą zmieniać własne ustawienia.",
 	"growthexperiments-manage-mentors-add-mentor-username": "Nazwa użytkownika przewodnika, którego chcesz dodać",
 	"growthexperiments-manage-mentors-add-mentor-reason": "Powód dodania przewodnika",
 	"growthexperiments-manage-mentors-add-mentor-success": "{{GENDER:$1|Użytkownik}} $1 {{GENDER:$1|został dodany|została dodana|został dodany}} jako przewodnik.",
