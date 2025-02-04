@@ -412,6 +412,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Digər",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Oldu",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Bunun niyə uyğun bir keçid olmadığı səbəbini seçin",
+	"growthexperiments-addlink-single-recommendation-title": "Təklif olunan keçid əlavə et",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Keçidlər əlavə etmək insanların daha sürətli öyrənməsinə kömək edəcək.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Bir {{SITENAME}} məqaləsindəki sözlərin digər {{SITENAME}} məqalələrinə daxili keçid verib-verməyəcəyinə qərar {{GENDER:$1|verəcəksiniz}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Nümunə cümlə",
