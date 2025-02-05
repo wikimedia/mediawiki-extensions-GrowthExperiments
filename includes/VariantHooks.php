@@ -177,7 +177,6 @@ class VariantHooks implements
 	 *
 	 * @param IContextSource $context
 	 * @return string
-	 * @codeCoverageIgnore
 	 */
 	public static function getCampaign( IContextSource $context ): string {
 		$campaignFromRequestQueryParameter = $context->getRequest()->getVal( 'campaign', '' );
@@ -191,6 +190,11 @@ class VariantHooks implements
 		if ( !$user->isSafeToLoad() ) {
 			return $campaignFromRequestQueryParameter;
 		}
+		// URL parameter takes precedence if present
+		if ( $campaignFromRequestQueryParameter !== '' ) {
+			return $campaignFromRequestQueryParameter;
+		}
+		// fallback to user preference if no URL parameter exists
 		return MediaWikiServices::getInstance()->getUserOptionsLookup()->getOption(
 			$user, self::GROWTH_CAMPAIGN,
 			$campaignFromRequestQueryParameter
