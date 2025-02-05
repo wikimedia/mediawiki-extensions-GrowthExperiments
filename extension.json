@@ -24,6 +24,7 @@
 		"GrowthExperiments\\": "includes/"
 	},
 	"TestAutoloadClasses": {
+		"GrowthExperiments\\Maintenance\\RevalidateLinkRecommendations": "maintenance/revalidateLinkRecommendations.php",
 		"GrowthExperiments\\Tests\\InvokedBetween": "tests/phpunit/InvokedBetween.php",
 		"GrowthExperiments\\Tests\\Unit\\SearchTaskSuggesterFactoryTestBase": "tests/phpunit/unit/SearchTaskSuggesterFactoryTestBase.php",
 		"GrowthExperiments\\Tests\\Integration\\MentorStoreTestCase": "tests/phpunit/integration/Mentorship/Store/MentorStoreTestCase.php",

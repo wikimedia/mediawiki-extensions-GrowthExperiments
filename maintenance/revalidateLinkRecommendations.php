@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\GrowthExperimentsServices;
@@ -67,7 +69,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 		$this->setBatchSize( 500 );
 	}
 
-	public function checkRequiredExtensions() {
+	public function checkRequiredExtensions(): void {
 		// Hack: must be early enough for requireExtension to work but late enough for config
 		// to be available.
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
@@ -79,7 +81,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 		parent::checkRequiredExtensions();
 	}
 
-	public function execute() {
+	public function execute(): void {
 		$this->initGrowthConfig();
 		if ( !$this->growthConfig->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$this->output( "Disabled\n" );
@@ -143,8 +145,6 @@ class RevalidateLinkRecommendations extends Maintenance {
 
 	/**
 	 * Check whether the recommendation still meets our standards.
-	 * @param LinkRecommendation $linkRecommendation
-	 * @return bool
 	 */
 	private function validateRecommendation( LinkRecommendation $linkRecommendation ): bool {
 		if ( $this->hasOption( 'all' ) ) {
@@ -183,8 +183,6 @@ class RevalidateLinkRecommendations extends Maintenance {
 
 	/**
 	 * Discard the existing recommendation and try to fetch a new one.
-	 * @param LinkRecommendation $linkRecommendation
-	 * @return Status
 	 */
 	private function regenerateRecommendation( LinkRecommendation $linkRecommendation ): Status {
 		$title = $this->titleFactory->newFromLinkTarget( $linkRecommendation->getTitle() );
@@ -240,7 +238,6 @@ class RevalidateLinkRecommendations extends Maintenance {
 
 	/**
 	 * Helper method to handle caching/fetching of the older than timestamp
-	 * @return int
 	 */
 	private function getOlderThanTimestamp(): int {
 		if ( !$this->olderThanTimestamp ) {
