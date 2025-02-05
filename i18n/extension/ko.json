@@ -51,7 +51,7 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) 다섯 번째 도움말 패널 링크 레이블 (권장: \"문서를 만드는 방법\")",
 	"growthexperiments-edit-config-homepage": "신입 사용자 홈페이지",
 	"growthexperiments-edit-config-homepage-intro-links-create": "새 문서를 만들기에 관한 링크의 도착 문서",
-	"growthexperiments-edit-config-homepage-intro-links-image": "시각 편집기에서 그림을 추가하는 방법에 관한 링크의 도착 문서",
+	"growthexperiments-edit-config-homepage-intro-links-image": "시각 편집기에서 이미지를 추가하는 방법에 관한 링크의 목적지 문서",
 	"growthexperiments-edit-config-mentorship": "멘토",
 	"growthexperiments-edit-config-mentorship-description-structured": "멘토는 2가지 역할을 가질 수 있습니다. 기본적으로 멘토는 신입 사용자에게 무작위로 할당됩니다. 이벤트나 수업을 통해 들어온 사람들의 멘토가 되고 싶은 멘토에게만 선택권이 있습니다: 이들은 이들에게 할당된 신입 사용자들을 받지 않으나 요구는 가능합니다.\n\n멘토의 이상적인 숫자는 다음과 같습니다: 500개의 새 계정의 각 그룹마다 한 명의 멘토, 그리고 최소 3명의 멘토입니다.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|멘토십의 동작 방식에 관해 더 알아보세요]]",
 	"growthexperiments-edit-config-mentorship-enabled": "멘토 기능을 활성화합니까?",
