@@ -78,7 +78,7 @@ RecommendedLinkToolbarDialog.prototype.setupControls = function ( fragmentsSize 
 		this.$buttons.append( this.setupAcceptanceButtons( fragmentsSize ), this.setupNavigationButtons() );
 		this.$head.prepend( [ this.getRobotIcon(), this.$progressTitle, this.$progress ] );
 	}
-	this.$body.append( [ introLabel.$element, this.setupLinkPreview() ] );
+	this.$body.prepend( [ introLabel.$element, this.setupLinkPreview() ] );
 };
 
 /**
