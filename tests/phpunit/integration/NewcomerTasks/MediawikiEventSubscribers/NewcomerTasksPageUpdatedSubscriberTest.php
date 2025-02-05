@@ -80,6 +80,19 @@ class NewcomerTasksPageUpdatedSubscriberTest extends MediaWikiIntegrationTestCas
 		$this->editPage( $wikiPage, 'new content' );
 	}
 
+	public function testDoNotClearLinkRecommendationForNewPage(): void {
+		$wikiPage = $this->getNonexistingTestPage();
+		$this->overrideConfigValues( [
+			'GENewcomerTasksLinkRecommendationsEnabled' => true,
+		] );
+		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
+		$weightedTagsUpdaterMock->expects( $this->never() )
+			->method( 'resetWeightedTags' );
+		$this->setService( WeightedTagsUpdater::SERVICE, $weightedTagsUpdaterMock );
+
+		$this->editPage( $wikiPage, 'new content' );
+	}
+
 	public static function provideRevertScenarios(): iterable {
 		yield 'Add Link tag' => [
 			LinkRecommendationTaskTypeHandler::CHANGE_TAG,
