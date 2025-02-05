@@ -395,6 +395,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "其他",
 	"growthexperiments-addlink-rejectiondialog-action-done": "完成",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "選擇這不是一個好連結的原因",
+	"growthexperiments-addlink-single-recommendation-title": "加入建議連結",
 	"growthexperiments-addlink-onboarding-content-intro-title": "新增連結會幫人學得更快。",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|您}}將決定一篇{{SITENAME}}條目中的詞是否應該連結到其他{{SITENAME}}的條目。",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "例句",

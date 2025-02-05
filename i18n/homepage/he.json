@@ -425,6 +425,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "אחר",
 	"growthexperiments-addlink-rejectiondialog-action-done": "סיום",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "נא לבחור סיבה למה זה קישור לא טוב",
+	"growthexperiments-addlink-single-recommendation-title": "הוספת קישור מוצע",
 	"growthexperiments-addlink-onboarding-content-intro-title": "הוספת קישורים תעזור לאנשים ללמוד מהר יותר.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|אתה תחליט|את תחיליטי}} האם מילים בערך אחד באתר {{SITENAME}} צריכות לקשר לערכים אחרים באתר {{SITENAME}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "משפט לדוגמה",

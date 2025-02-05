@@ -424,6 +424,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "سایر",
 	"growthexperiments-addlink-rejectiondialog-action-done": "انجام شد",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "دلیل اینکه این پیوند خوبی نیست را انتخاب کنید",
+	"growthexperiments-addlink-single-recommendation-title": "یک پیوند پیشنهادی بیفزایید",
 	"growthexperiments-addlink-onboarding-content-intro-title": "افزودن پیوند‌ها به افراد کمک می‌کند تا سریعتر یاد بگیرند.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|شما}} تصمیم خواهید گرفت که آیا کلمات یک مقاله {{SITENAME}} باید به مقاله‌های {{SITENAME}} دیگر پیوند داده شود یا خیر.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "جمله مثال",

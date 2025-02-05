@@ -14,5 +14,9 @@
 	"apihelp-query+growthtasks-param-limit": "حداکثر تعداد فعالیت‌های پیشنهادی",
 	"apihelp-query+growthtasks-param-debug": "داده‌های اشکال‌زدایی بیشتری به خروجی اضافه کن.",
 	"apihelp-query+growthtasks-example-1": "توصیه‌های لازم برای وظایف ویرایش کپی، برای کاربر فعلی را دریافت کنید.",
-	"apihelp-query+growthtasks-example-2": "بدست‌آوردن توصیه‌های لازم برای کاربر فعلی، با اطلاعات گسترده در مورد صفحات."
+	"apihelp-query+growthtasks-example-2": "بدست‌آوردن توصیه‌های لازم برای کاربر فعلی، با اطلاعات گسترده در مورد صفحات.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "آیا باید «$1» را به یک پیوند تبدیل کرد؟",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "بازبینی تعدادی از پیوندهای پیشنهادی و بهبود شبکه اطلاعات ویکی‌پدیا",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "بله",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "خیر"
 }

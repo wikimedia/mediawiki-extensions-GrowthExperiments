@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Cookai1205",
 			"Kly",
 			"SunAfterRain",
 			"Winston Sung",
@@ -46,5 +47,9 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "當 <var>accepted</var> 參數設定成 <kbd>false</kbd> 時，不能使用 <var>editRevId</var> 參數。",
 	"growthexperiments-addimage-feedback-accepted-caption": "當 <var>accepted</var> 參數設定成 <kbd>true</kbd> 時，需要 <var>caption</var> 參數。",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "找不到在 <var>editRevId</var> 指定的修訂。",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "在 <var>editRevId</var> 指定的修訂屬於別的頁面。"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "在 <var>editRevId</var> 指定的修訂屬於別的頁面。",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "應該為「$1」加上連結嗎？",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "檢閱一些建議連結，並改善維基百科的資訊網路。",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "是",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "否"
 }

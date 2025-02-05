@@ -429,6 +429,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Inne",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Gotowe",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Wybierz powód, dla którego to nie jest dobry link",
+	"growthexperiments-addlink-single-recommendation-title": "Dodaj sugerowany link",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Dodawanie linków pomoże ludziom uczyć się szybciej.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Zdecydujesz}}, które słowa w artykule {{GRAMMAR:D.lp|{{SITENAME}}}} powinny linkować do innych stron na {{GRAMMAR:MS.lp|{{SITENAME}}}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Przykładowe zdanie",

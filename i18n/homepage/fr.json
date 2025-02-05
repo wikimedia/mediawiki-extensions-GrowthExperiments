@@ -450,6 +450,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Autre",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Fait",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Sélectionner la raison pour laquelle ce n’est pas un bon lien",
+	"growthexperiments-addlink-single-recommendation-title": "Ajouter un lien suggéré",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Ajouter des liens aidera les utilisateurs à apprendre plus vite.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Vous}} déciderez si des mots dans un article sur {{SITENAME}} devraient être liés vers d’autres articles sur {{SITENAME}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Phrase d’exemple",

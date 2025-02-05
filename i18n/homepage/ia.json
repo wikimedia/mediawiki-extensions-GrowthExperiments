@@ -408,6 +408,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Altere",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Facite",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Selige le ration pro le qual isto non es un bon ligamine",
+	"growthexperiments-addlink-single-recommendation-title": "Adder un ligamine suggerite",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Adder ligamines adjuta le gente a apprender plus rapidemente.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Tu}} decidera si parolas in un articulo de {{SITENAME}} debe ligar verso altere articulos de {{SITENAME}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Phrase de exemplo",
