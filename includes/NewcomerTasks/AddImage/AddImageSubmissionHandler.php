@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
+use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
@@ -57,10 +58,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID => 'addsectionimage',
 	];
 
-	/**
-	 * @var callable returning {@link \CirrusSearch\WeightedTagsUpdater}
-	 */
-	private $weightedTagsUpdaterProvider;
+	private WeightedTagsUpdater $weightedTagsUpdater;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 	private WANObjectCache $cache;
@@ -68,23 +66,15 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 
 	private ?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater;
 
-	/**
-	 * @param callable(): \CirrusSearch\WeightedTagsUpdater $weightedTagsUpdaterProvider
-	 * @param TaskSuggesterFactory $taskSuggesterFactory
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param WANObjectCache $cache
-	 * @param UserIdentityUtils $userIdentityUtils
-	 * @param EventGateImageSuggestionFeedbackUpdater|null $eventGateImageFeedbackUpdater
-	 */
 	public function __construct(
-		callable $weightedTagsUpdaterProvider,
+		WeightedTagsUpdater $weightedTagsUpdater,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		WANObjectCache $cache,
 		UserIdentityUtils $userIdentityUtils,
 		?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
 	) {
-		$this->weightedTagsUpdaterProvider = $weightedTagsUpdaterProvider;
+		$this->weightedTagsUpdater = $weightedTagsUpdater;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->cache = $cache;
@@ -338,11 +328,11 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		array $rejectionReasons = []
 	) {
 		if ( $taskType->getId() === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
-			( $this->weightedTagsUpdaterProvider )()->resetWeightedTags(
+			$this->weightedTagsUpdater->resetWeightedTags(
 				$page, [ ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ]
 			);
 		} elseif ( $taskType->getId() === SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
-			( $this->weightedTagsUpdaterProvider )()->resetWeightedTags(
+			$this->weightedTagsUpdater->resetWeightedTags(
 				$page, [
 					SectionImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX,
 					ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX

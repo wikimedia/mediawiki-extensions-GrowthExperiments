@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use ChangeTags;
+use CirrusSearch\WeightedTagsUpdater;
 use Exception;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -43,10 +44,7 @@ class LinkRecommendationUpdater {
 	private PageProps $pageProps;
 	private ConfigurationLoader $configurationLoader;
 	private ChangeTagsStore $changeTagsStore;
-	/**
-	 * @var callable returning {@link \CirrusSearch\WeightedTagsUpdater}
-	 */
-	private $weightedTagsUpdaterProvider;
+	private WeightedTagsUpdater $weightedTagsUpdater;
 	private LinkRecommendationStore $linkRecommendationStore;
 	private LinkRecommendationProvider $linkRecommendationProvider;
 	private ?LinkRecommendationTaskType $linkRecommendationTaskType = null;
@@ -59,7 +57,7 @@ class LinkRecommendationUpdater {
 	 * @param PageProps $pageProps
 	 * @param ChangeTagsStore $changeTagsStore
 	 * @param ConfigurationLoader $configurationLoader
-	 * @param callable(): \CirrusSearch\WeightedTagsUpdater $weightedTagsUpdaterProvider
+	 * @param WeightedTagsUpdater $weightedTagsUpdater
 	 * @param LinkRecommendationProvider $linkRecommendationProvider Note that this needs to be
 	 *   the uncached provider, as caching is done by LinkRecommendationUpdater.
 	 * @param LinkRecommendationStore $linkRecommendationStore
@@ -72,7 +70,7 @@ class LinkRecommendationUpdater {
 		PageProps $pageProps,
 		ChangeTagsStore $changeTagsStore,
 		ConfigurationLoader $configurationLoader,
-		callable $weightedTagsUpdaterProvider,
+		WeightedTagsUpdater $weightedTagsUpdater,
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkRecommendationStore $linkRecommendationStore
 	) {
@@ -84,7 +82,7 @@ class LinkRecommendationUpdater {
 		$this->changeTagsStore = $changeTagsStore;
 
 		$this->configurationLoader = $configurationLoader;
-		$this->weightedTagsUpdaterProvider = $weightedTagsUpdaterProvider;
+		$this->weightedTagsUpdater = $weightedTagsUpdater;
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
 	}
@@ -169,7 +167,7 @@ class LinkRecommendationUpdater {
 		);
 
 		try {
-			( $this->weightedTagsUpdaterProvider )()->updateWeightedTags(
+			$this->weightedTagsUpdater->updateWeightedTags(
 				$pageIdentity,
 				LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
 			);
