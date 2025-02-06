@@ -425,6 +425,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Інше",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Готово",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Вибрати причину, чому це погане посилання",
+	"growthexperiments-addlink-single-recommendation-title": "Додати запропоноване посилання",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Додавання посилань допоможе людям швидше вчитися.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Ви}} вирішуєте, чи слова у статті {{GRAMMAR:Genitive|{{SITENAME}}}} мають бути посиланнями на інші статті {{GRAMMAR:Genitive|{{SITENAME}}}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Речення-приклад",

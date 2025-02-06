@@ -432,6 +432,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "آخر",
 	"growthexperiments-addlink-rejectiondialog-action-done": "تم",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "{{GENDER:|حدّد|حدّدي}} سبب اعتبار هذا الرابط غير جيّد",
+	"growthexperiments-addlink-single-recommendation-title": "إضافة رابط مقترح",
 	"growthexperiments-addlink-onboarding-content-intro-title": "إضافة الروابط ستساهم في تعلّم أسرع للأشخاص.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|ستقرّر|ستقرّرين}} ما إذا كانت بعض كلمات من مقالة ما في {{SITENAME}} عليها أن تربط إلى مقالات أخرى من {{SITENAME}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "مثال في جملة",

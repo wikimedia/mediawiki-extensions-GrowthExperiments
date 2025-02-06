@@ -68,6 +68,7 @@
 	"growthexperiments-homepage-suggested-edits-header": "దిద్దుబాటు సూచనలు",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|మీ}} ప్రభావం",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|మీ}} ఇటీవలి కార్యకలాపం (గత $2 {{PLURAL:$2|రోజు|రోజులు}})",
+	"growthexperiments-homepage-impact-recent-activity-title-third-person": "ఇటీవలి కార్యకలాపం (గత $1 {{PLURAL:$1|రోజు|రోజులు}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "చివరిగా దిద్దుబాటు చేసినది",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "అత్యంత దీర్ఘమైన దిద్దుబాటు ధార",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|రోజు|రోజులు}}",
