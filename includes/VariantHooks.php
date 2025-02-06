@@ -42,8 +42,6 @@ class VariantHooks implements
 {
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
-	/** A/B testing variant (treatment group) for the community-updates experiment. */
-	public const VARIANT_COMMUNITY_UPDATES_MODULE = 'community-updates-module';
 	public const VARIANT_NO_LINK_RECOMMENDATION = 'no-link-recommendation';
 
 	/**
@@ -65,7 +63,8 @@ class VariantHooks implements
 		// 'oldimpact' Doesn't exist anymore. Was used for A/B testing the new Impact module.
 		//     Removed as part of consolidating on the new Impact module implementation.
 		//     See task T350077 for more details.
-		self::VARIANT_COMMUNITY_UPDATES_MODULE,
+		// 'community-updates-module' Doesn't exist anymore. Was used for A/B testing the Community Updates .
+		//     module. See task T385338 for more details.
 		self::VARIANT_CONTROL,
 		self::VARIANT_NO_LINK_RECOMMENDATION,
 	];
