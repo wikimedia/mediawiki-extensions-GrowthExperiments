@@ -125,7 +125,12 @@ class LinkRecommendationUpdater {
 			$recommendation->setOK( false );
 			return $recommendation;
 		}
-		$status = $this->evaluateRecommendation( $recommendation, $lastRevision, $force );
+		$status = $this->checkRaceConditions( $recommendation, $lastRevision, $force );
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
+		$status = $this->checkTaskTypeCriteria( $recommendation, $force );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -246,14 +251,13 @@ class LinkRecommendationUpdater {
 	}
 
 	/**
-	 * Validate a recommendation against the criteria in the task type and safety checks.
 	 * @param LinkRecommendation $recommendation
 	 * @param RevisionRecord $revision The current revision of the page the recommendation is for.
 	 * @param bool $force Ignore all failed conditions that can be safely ignored.
 	 * @return StatusValue Success status. Note that the error messages are not intended
 	 *   for users (and as such not localizable).
 	 */
-	private function evaluateRecommendation(
+	private function checkRaceConditions(
 		LinkRecommendation $recommendation,
 		RevisionRecord $revision,
 		bool $force
@@ -264,8 +268,12 @@ class LinkRecommendationUpdater {
 		}
 
 		// T291253
-		if ( !$force && $this->linkRecommendationStore->hasSubmission( $recommendation,
-			IDBAccessObject::READ_LATEST )
+		if (
+			!$force &&
+			$this->linkRecommendationStore->hasSubmission(
+				$recommendation,
+				IDBAccessObject::READ_LATEST
+			)
 		) {
 			return $this->failure( 'submission already exists for revision ' . $revision->getId() );
 		}
@@ -275,6 +283,20 @@ class LinkRecommendationUpdater {
 		// conditions to happen, so we'll have to deal with them on the client side anyway. No
 		// point in getting a primary database connection just for that.
 
+		return StatusValue::newGood();
+	}
+
+	/**
+	 * Validate a recommendation against the criteria in the task type
+	 * @param LinkRecommendation $recommendation
+	 * @param bool $force Ignore all failed conditions that can be safely ignored.
+	 * @return StatusValue Success status. Note that the error messages are not intended
+	 *   for users (and as such not localizable).
+	 */
+	private function checkTaskTypeCriteria(
+		LinkRecommendation $recommendation,
+		bool $force
+	): StatusValue {
 		$goodLinks = array_filter( $recommendation->getLinks(), function ( LinkRecommendationLink $link ) {
 			return $link->getScore() >= $this->getLinkRecommendationTaskType()->getMinimumLinkScore();
 		} );
