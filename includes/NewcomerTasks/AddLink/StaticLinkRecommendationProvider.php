@@ -39,4 +39,12 @@ class StaticLinkRecommendationProvider implements LinkRecommendationProvider {
 		return $ret;
 	}
 
+	public function getDetailed( LinkTarget $title, TaskType $taskType ): LinkRecommendationEvalStatus {
+		$recommendation = $this->get( $title, $taskType );
+		if ( $recommendation instanceof LinkRecommendationEvalStatus ) {
+			return $recommendation;
+		}
+		return LinkRecommendationEvalStatus::newGood( $recommendation );
+	}
+
 }
