@@ -117,19 +117,20 @@ class LinkRecommendationUpdater {
 			return $this->failure( 'link recommendation already stored' );
 		}
 
-		$recommendation = $this->linkRecommendationProvider->get( $title,
+		$recommendationStatus = $this->linkRecommendationProvider->getDetailed( $title,
 			$this->getLinkRecommendationTaskType() );
-		if ( $recommendation instanceof StatusValue ) {
+		if ( !$recommendationStatus->isGood() ) {
 			// Returning a StatusValue is always an error for the provider. When returning it
 			// from this class, it isn't necessarily interpreted that way.
-			$recommendation->setOK( false );
-			return $recommendation;
+			$recommendationStatus->setOK( false );
+			return $recommendationStatus;
 		}
+
+		$recommendation = $recommendationStatus->getLinkRecommendation();
 		$status = $this->checkRaceConditions( $recommendation, $lastRevision, $force );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
-
 		$status = $this->checkTaskTypeCriteria( $recommendation, $force );
 		if ( !$status->isOK() ) {
 			return $status;

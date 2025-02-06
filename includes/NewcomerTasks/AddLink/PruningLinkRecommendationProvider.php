@@ -56,9 +56,20 @@ class PruningLinkRecommendationProvider implements LinkRecommendationProvider {
 	 * @throws MalformedTitleException
 	 */
 	public function get( LinkTarget $title, TaskType $taskType ) {
+		$status = $this->getDetailed( $title, $taskType );
+		if ( $status->isGood() ) {
+			return $status->getValue();
+		}
+		return $status;
+	}
+
+	/**
+	 * @throws MalformedTitleException
+	 */
+	public function getDetailed( LinkTarget $title, TaskType $taskType ): LinkRecommendationEvalStatus {
 		$recommendation = $this->innerProvider->get( $title, $taskType );
 		if ( $recommendation instanceof StatusValue ) {
-			return $recommendation;
+			return LinkRecommendationEvalStatus::newGood()->merge( $recommendation );
 		}
 
 		return $this->pruneLinkRecommendation( $recommendation );
@@ -67,11 +78,10 @@ class PruningLinkRecommendationProvider implements LinkRecommendationProvider {
 	/**
 	 * Remove exclusion-listed links and optionally red links from a LinkRecommendation.
 	 * Returns a warning status when all links have been removed.
-	 * @param LinkRecommendation $linkRecommendation
-	 * @return LinkRecommendation|StatusValue
+	 *
 	 * @throws MalformedTitleException
 	 */
-	private function pruneLinkRecommendation( LinkRecommendation $linkRecommendation ) {
+	private function pruneLinkRecommendation( LinkRecommendation $linkRecommendation ): LinkRecommendationEvalStatus {
 		$excludedLinkIds = $this->linkRecommendationStore->getExcludedLinkIds(
 			$linkRecommendation->getPageId(),
 			LinkRecommendationTaskType::REJECTION_EXCLUSION_LIMIT
@@ -95,16 +105,18 @@ class PruningLinkRecommendationProvider implements LinkRecommendationProvider {
 
 		if ( !$goodLinks ) {
 			// Message used for debugging, keep it in English to reduce translator burden.
-			return StatusValue::newGood()->warning( 'rawmessage',
+			return LinkRecommendationEvalStatus::newGood()->warning( 'rawmessage',
 				'All of the links in the recommendation have been pruned' );
 		}
 		// In most cases we could just return the original object; opt for consistency instead.
-		return new LinkRecommendation(
-			$linkRecommendation->getTitle(),
-			$linkRecommendation->getPageId(),
-			$linkRecommendation->getRevisionId(),
-			$goodLinks,
-			$linkRecommendation->getMetadata()
+		return LinkRecommendationEvalStatus::newGood(
+			new LinkRecommendation(
+				$linkRecommendation->getTitle(),
+				$linkRecommendation->getPageId(),
+				$linkRecommendation->getRevisionId(),
+				$goodLinks,
+				$linkRecommendation->getMetadata()
+			)
 		);
 	}
 

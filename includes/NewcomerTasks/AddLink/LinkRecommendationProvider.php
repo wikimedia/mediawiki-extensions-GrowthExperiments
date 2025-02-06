@@ -20,4 +20,14 @@ interface LinkRecommendationProvider extends RecommendationProvider {
 	 */
 	public function get( LinkTarget $title, TaskType $taskType );
 
+	/**
+	 * Return a detailed Status that includes additional meta-data.
+	 * If the status is good, then its value will be the same LinkRecommendation object returned by ::get().
+	 *
+	 * @param LinkTarget $title
+	 * @param LinkRecommendationTaskType $taskType
+	 * @phan-param TaskType $taskType
+	 */
+	public function getDetailed( LinkTarget $title, TaskType $taskType ): LinkRecommendationEvalStatus;
+
 }
