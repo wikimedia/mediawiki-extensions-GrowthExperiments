@@ -51,7 +51,7 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) 다섯 번째 도움말 패널 링크 레이블 (권장: \"문서를 만드는 방법\")",
 	"growthexperiments-edit-config-homepage": "신입 사용자 홈페이지",
 	"growthexperiments-edit-config-homepage-intro-links-create": "새 문서를 만들기에 관한 링크의 도착 문서",
-	"growthexperiments-edit-config-homepage-intro-links-image": "시각 편집기에서 그림을 추가하는 방법에 관한 링크의 도착 문서",
+	"growthexperiments-edit-config-homepage-intro-links-image": "시각 편집기에서 이미지를 추가하는 방법에 관한 링크의 목적지 문서",
 	"growthexperiments-edit-config-mentorship": "멘토",
 	"growthexperiments-edit-config-mentorship-description-structured": "멘토는 2가지 역할을 가질 수 있습니다. 기본적으로 멘토는 신입 사용자에게 무작위로 할당됩니다. 이벤트나 수업을 통해 들어온 사람들의 멘토가 되고 싶은 멘토에게만 선택권이 있습니다: 이들은 이들에게 할당된 신입 사용자들을 받지 않으나 요구는 가능합니다.\n\n멘토의 이상적인 숫자는 다음과 같습니다: 500개의 새 계정의 각 그룹마다 한 명의 멘토, 그리고 최소 3명의 멘토입니다.\n\n[[mw:Special:MyLanguage/Growth/FAQ#Mentorship|멘토십의 동작 방식에 관해 더 알아보세요]]",
 	"growthexperiments-edit-config-mentorship-enabled": "멘토 기능을 활성화합니까?",
@@ -96,5 +96,6 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "신입 사용자가 이 알림을 받을 수 있는 최대 편집 수입니다. 0으로 설정하면 신입 사용자는 </br> 이 알림을 받지 않습니다. 숫자가 높을수록 더 많은 신입 사용자가 이 알림을 받게 됩니다.<br> 이 알림은 제안된 편집을 마치지 않은 신입 사용자에게만 전송됩니다.",
 	"growthexperiments-edit-config-keep-going-notification-title": "계속 알림",
 	"growthexperiments-edit-config-keep-going-notification-description": "이 알림을 받을 자격을 얻기 위해 신입 사용자가 마칠 수 있는 최대 제안 편집 수입니다. 0으로 설정하면<br> 신입 사용자는 이 알림을 받지 않습니다. 숫자가 높을수록 더 많은 신입 사용자가 이 알림을 받게 됩니다.<br> 이 알림은 이미 하나 이상의 제안 편집을 마친 신입 사용자에게만 전송됩니다.",
-	"communityconfiguration-mentorship-title": "멘토"
+	"communityconfiguration-mentorship-title": "멘토",
+	"communityconfiguration-mentorship-description": "멘토와 칭찬받을 만한 멘티에 대한 편집 최소 한도와 기간을 조정하는 동시에, 멘토십 설정과 자격을 맞춤 설정합니다."
 }

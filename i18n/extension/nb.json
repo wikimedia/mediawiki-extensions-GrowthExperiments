@@ -104,6 +104,7 @@
 	"growthexperiments-edit-config-keep-going-notification-title": "Varsel for å fortsette",
 	"growthexperiments-edit-config-keep-going-notification-description": "Maksimalt antall foreslåtte redigeringer en nykommer kan fullføre for å kvalifisere til å motta dette varselet. Hvis det er satt til 0 vil ingen nykommere få dette varselet. Jo høyere tall, jo flere får varselet. Dette varselet sendes kun til nykommere som har fullført minst én foreslått redigering.",
 	"communityconfiguration-mentorship-title": "Fadderskap",
+	"communityconfiguration-mentorship-description": "Tilpass innstillinger for fadderskap og kvalifikasjoner for dette, og juster minimum antall redigeringer og tidsrom for faddere og rosverdige fadderbarn.",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Bør brukere automatisk kvalifisere for fadderprogrammet?",
 	"communityconfiguration-mentorship-gementorshipenabled-label": "Er fadderskapsfunksjonene slått på?",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Minimalt antall dager en bruker må være registrert for å kunne melde seg som fadder",

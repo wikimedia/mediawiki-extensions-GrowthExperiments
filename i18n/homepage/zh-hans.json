@@ -478,7 +478,7 @@
 	"growthexperiments-addlink-summary-summary": "链接建议功能：已添加$1{{PLURAL:$1|个链接}}。",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|你}}已经跳过这个文章的所有推荐",
 	"growthexperiments-addlink-skip-body": "{{GENDER:|你}}确定你不要接受或拒绝一些推荐吗？",
-	"growthexperiments-addlink-skip-accept": "跳过全部",
+	"growthexperiments-addlink-skip-accept": "全部跳过",
 	"growthexperiments-addlink-skip-reject": "再回顾",
 	"grant-managementorship": "管理导师",
 	"newcomertasksinfo": "新手任务",
