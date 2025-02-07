@@ -2,15 +2,17 @@
 
 #mw-content-text {
 	.growth-surfaced-task-button {
-		padding: 0 5px;
-		background-color: #fef5e5;
-		border: 1px solid #fedd82;
+		margin: 0 4px;
+		padding: 2px 8px;
+		background-color: @background-color-warning-subtle;
+		border: 1px dashed @border-color-warning;
 		font-weight: inherit;
 		min-height: inherit;
 
 		&.growth-surfaced-task-popup-visible {
-			background-color: #f5f9ff;
-			border-color: #2252c2;
+			background-color: @background-color-progressive-subtle;
+			border-color: @border-color-progressive;
+			border-style: solid;
 		}
 
 		&__icon {
