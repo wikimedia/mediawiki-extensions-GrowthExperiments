@@ -437,6 +437,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Diğer",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Tamam",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Bunun iyi bir bağlantı olmamasının nedenini seçin",
+	"growthexperiments-addlink-single-recommendation-title": "Önerilen bir bağlantı ekleyin",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Bağlantı eklemek insanların hızlı öğrenmelerine yardımcı olur.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Bir {{SITENAME}} sayfasındaki kelimelerin başka {{SITENAME}} sayfalarına bağlantı eklenip eklenmemesine karar {{GENDER:$1|vereceksiniz}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Örnek cümle",

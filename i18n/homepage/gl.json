@@ -410,6 +410,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Outra",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Feito",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Selecciona o motivo pola que esta non é unha boa ligazón",
+	"growthexperiments-addlink-single-recommendation-title": "Engadir unha ligazón suxerida",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Engadir ligazóns axudará ás persoas a aprender máis rápido.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Ti}} decides se as palabras dun artigo de {{SITENAME}} deben ligar cara a outros artigos de {{SITENAME}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Oración de exemplo",
