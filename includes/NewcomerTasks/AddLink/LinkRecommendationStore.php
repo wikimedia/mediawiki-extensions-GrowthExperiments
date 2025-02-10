@@ -64,6 +64,7 @@ class LinkRecommendationStore {
 			->select( [ 'gelr_page', 'gelr_revision', 'gelr_data' ] )
 			->from( 'growthexperiments_link_recommendations' )
 			->where( $condition )
+			->andWhere( 'gelr_data IS NOT NULL' )
 			->caller( __METHOD__ )
 			->recency( $flags )
 			// $condition is supposed to be unique, but if somehow that isn't the case,
@@ -148,6 +149,7 @@ class LinkRecommendationStore {
 			->select( [ 'gelr_revision', 'gelr_page', 'gelr_data' ] )
 			->from( 'growthexperiments_link_recommendations' )
 			->where( $dbr->expr( 'gelr_page', '>=', $fromPageId ) )
+			->andWhere( 'gelr_data IS NOT NULL' )
 			->orderBy( 'gelr_page ASC' )
 			->limit( $limit )
 			->caller( __METHOD__ )->fetchResultSet();
@@ -186,6 +188,7 @@ class LinkRecommendationStore {
 			->select( 'gelr_page' )
 			->from( 'growthexperiments_link_recommendations' )
 			->where( $dbr->orExpr( $conds ) )
+			->andWhere( 'gelr_data IS NOT NULL' )
 			->caller( __METHOD__ )
 			->fetchFieldValues() );
 	}
@@ -202,6 +205,7 @@ class LinkRecommendationStore {
 			->select( 'gelr_page' )
 			->from( 'growthexperiments_link_recommendations' )
 			->where( $from ? $dbr->expr( 'gelr_page', '>', $from ) : [] )
+			->andWhere( 'gelr_data IS NOT NULL' )
 			->groupBy( 'gelr_page' )
 			->orderBy( 'gelr_page ASC' )
 			->limit( $limit )
@@ -416,6 +420,10 @@ class LinkRecommendationStore {
 
 		$linkRecommendations = [];
 		foreach ( $rows as $row ) {
+			if ( $row->gelr_data === null ) {
+				// TODO: B/C measure, change to exception once we actually work with `null` rows.
+				continue;
+			}
 			// TODO use JSON_THROW_ON_ERROR once we require PHP 7.3
 			$data = json_decode( $row->gelr_data, true );
 			if ( $data === null ) {
