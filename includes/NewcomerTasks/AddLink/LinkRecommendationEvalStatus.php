@@ -8,6 +8,13 @@ use StatusValue;
 class LinkRecommendationEvalStatus extends StatusValue {
 
 	public const NOT_GOOD_CAUSE_ALL_RECOMMENDATIONS_PRUNED = 'all-recommendations-pruned';
+	public const NOT_GOOD_CAUSE_ALREADY_STORED = 'already-stored';
+	public const NOT_GOOD_CAUSE_KNOWN_UNAVAILABLE = 'known-unavailable';
+	public const NOT_GOOD_CAUSE_GOOD_LINKS_COUNT_TOO_SMALL = 'good-links-count-too-small';
+	public const NOT_GOOD_CAUSE_MINIMUM_TIME_DID_NOT_PASS = 'minimum-time-since-last-edit-did-not-pass';
+	public const NOT_GOOD_CAUSE_DISAMBIGUATION_PAGE = 'disambiguation-page';
+	public const NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION = 'last-edit-link-recommendation';
+	public const NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION_REVERT = 'last-edit-link-recommendation-revert';
 	public const NOT_GOOD_CAUSE_OTHER = 'other';
 
 	public function getLinkRecommendation(): LinkRecommendation {

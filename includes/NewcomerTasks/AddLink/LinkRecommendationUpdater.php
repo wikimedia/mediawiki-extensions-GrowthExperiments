@@ -115,10 +115,16 @@ class LinkRecommendationUpdater {
 			IDBAccessObject::READ_LATEST,
 		);
 		if ( $recommendationState === LinkRecommendationStore::RECOMMENDATION_AVAILABLE ) {
-			return $this->failure( 'link recommendation already stored' );
+			return $this->failure(
+				'link recommendation already stored',
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_ALREADY_STORED
+			);
 		}
 		if ( $recommendationState === LinkRecommendationStore::RECOMMENDATION_NOT_AVAILABLE && !$force ) {
-			return $this->failure( 'link recommendation known to not exist' );
+			return $this->failure(
+				'link recommendation known to not exist',
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_KNOWN_UNAVAILABLE
+			);
 		}
 
 		$recommendationStatus = $this->linkRecommendationProvider->getDetailed( $title,
@@ -223,19 +229,28 @@ class LinkRecommendationUpdater {
 		// 3. exclude articles which have been edited very recently.
 		$revisionTime = (int)MWTimestamp::convert( TS_UNIX, $revision->getTimestamp() );
 		if ( time() - $revisionTime < $this->getLinkRecommendationTaskType()->getMinimumTimeSinceLastEdit() ) {
-			return $this->failure( 'minimum time since last edit did not pass' );
+			return $this->failure(
+				'minimum time since last edit did not pass',
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_MINIMUM_TIME_DID_NOT_PASS
+			);
 		}
 
 		// 4. exclude disambiguation pages.
 		if ( $this->pageProps->getProperties( $title, 'disambiguation' ) ) {
-			return $this->failure( 'disambiguation page' );
+			return $this->failure(
+				'disambiguation page',
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_DISAMBIGUATION_PAGE
+			);
 		}
 
 		// 5. exclude pages where the last edit is a link recommendation edit or its revert.
 		$dbr = $this->connectionProvider->getReplicaDatabase();
 		$tags = $this->changeTagsStore->getTagsWithData( $dbr, null, $revision->getId() );
 		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
-			return $this->failure( 'last edit is a link recommendation' );
+			return $this->failure(
+				'last edit is a link recommendation',
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION
+			);
 		}
 		$revertTagData = null;
 		foreach ( ChangeTags::REVERT_TAGS as $revertTagName ) {
@@ -259,7 +274,10 @@ class LinkRecommendationUpdater {
 				->caller( __METHOD__ )
 				->fetchRowCount();
 			if ( $revertedAddLinkEditCount > 0 ) {
-				return $this->failure( 'last edit reverts a link recommendation edit' );
+				return $this->failure(
+					'last edit reverts a link recommendation edit',
+					LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION_REVERT
+				);
 			}
 		}
 		return StatusValue::newGood();
@@ -326,7 +344,10 @@ class LinkRecommendationUpdater {
 		if ( $goodLinkCount === 0
 			 || ( !$force && $goodLinkCount < $this->getLinkRecommendationTaskType()->getMinimumLinksPerTask() )
 		) {
-			return $this->failure( "number of good links too small ($goodLinkCount)" );
+			return $this->failure(
+				"number of good links too small ($goodLinkCount)",
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_GOOD_LINKS_COUNT_TOO_SMALL
+			);
 		}
 
 		return StatusValue::newGood();
@@ -359,10 +380,16 @@ class LinkRecommendationUpdater {
 	/**
 	 * Convenience shortcut for making StatusValue objects with non-localized messages.
 	 * @param string $error
+	 * @param string $cause one of the LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_* constants
 	 * @return StatusValue
 	 */
-	private function failure( string $error ): StatusValue {
-		return StatusValue::newFatal( new RawMessage( $error ) );
+	private function failure(
+		string $error,
+		string $cause = LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_OTHER
+	): StatusValue {
+		$status = LinkRecommendationEvalStatus::newFatal( new RawMessage( $error ) );
+		$status->setNotGoodCause( $cause );
+		return $status;
 	}
 
 }
