@@ -280,6 +280,30 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		$mentorStore->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
 
 		// getMentorForUserSafe() should claim there is no mentor...
+		// NOTE: While this is an assert, it is not the main point of the test. This line mainly
+		// prepares the right conditions for the final assert at the next line.
+		$this->assertNull( $mentorManager->getMentorForUserSafe( $mentee, MentorStore::ROLE_PRIMARY ) );
+
+		// ...and there should be no in the database either (this is the key assert).
+		$this->assertNull( $mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
+	}
+
+	public function testBlockDropsRelationship() {
+		$mentee = $this->getTestUser()->getUser();
+		$mentor = $this->getTestSysop()->getUser();
+
+		$blockUserFactory = $this->getServiceContainer()->getBlockUserFactory();
+		$mentorManager = $this->getMentorManager();
+		$mentorStore = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorStore();
+
+		// Must be in this order; otherwise, blocking the mentee would drop the relationship
+		$blockUserFactory->newBlockUser( $mentee, $mentor, 'indefinite' )->placeBlockUnsafe();
+		$mentorStore->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
+
+		// getMentorForUserSafe() should claim there is no mentor...
+		// NOTE: While this is an assert, it is not the main point of the test. This line mainly
+		// prepares the right conditions for the final assert at the next line.
 		$this->assertNull( $mentorManager->getMentorForUserSafe( $mentee, MentorStore::ROLE_PRIMARY ) );
 
 		// ...and there should be no in the database either (this is the key assert).
@@ -326,6 +350,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			$growthServices->getMentorStatusManager(),
 			$growthServices->getMentorProvider(),
 			$coreServices->getUserIdentityLookup(),
+			$coreServices->getUserFactory(),
 			$coreServices->getUserOptionsLookup(),
 			$coreServices->getUserOptionsManager(),
 			$context->getRequest()->wasPosted()

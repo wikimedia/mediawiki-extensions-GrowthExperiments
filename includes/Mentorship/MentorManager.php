@@ -9,6 +9,7 @@ use GrowthExperiments\WikiConfigException;
 use InvalidArgumentException;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerAwareInterface;
@@ -26,36 +27,46 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 	private MentorProvider $mentorProvider;
 	private UserIdentityLookup $userIdentityLookup;
 	private UserOptionsLookup $userOptionsLookup;
+	private UserFactory $userFactory;
 	private UserOptionsManager $userOptionsManager;
 	private bool $wasPosted;
 
-	/**
-	 * @param MentorStore $mentorStore
-	 * @param MentorStatusManager $mentorStatusManager
-	 * @param MentorProvider $mentorProvider
-	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param bool $wasPosted Is this a POST request?
-	 */
 	public function __construct(
 		MentorStore $mentorStore,
 		MentorStatusManager $mentorStatusManager,
 		MentorProvider $mentorProvider,
 		UserIdentityLookup $userIdentityLookup,
+		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup,
 		UserOptionsManager $userOptionsManager,
-		$wasPosted
+		bool $wasPosted
 	) {
 		$this->mentorStore = $mentorStore;
 		$this->mentorStatusManager = $mentorStatusManager;
 		$this->mentorProvider = $mentorProvider;
 		$this->userIdentityLookup = $userIdentityLookup;
+		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->wasPosted = $wasPosted;
 
 		$this->setLogger( new NullLogger() );
+	}
+
+	/**
+	 * Determine whether an user is ineligible for mentorship
+	 *
+	 * Users can only have mentors if they meet _all_ following criteria:
+	 * 	(1) is not opted out from mentorship
+	 *	(2) is not indefinitely blocked
+	 *
+	 * @param UserIdentity $user
+	 * @return bool True if the user should not have a mentor assigned
+	 */
+	private function isUserIneligibleForMentorship( UserIdentity $user ): bool {
+		$block = $this->userFactory->newFromUserIdentity( $user )->getBlock();
+		return $this->getMentorshipStateForUser( $user ) === self::MENTORSHIP_OPTED_OUT ||
+			( $block && $block->isIndefinite() );
 	}
 
 	private function getMentorUserIdentityIfExists(
@@ -64,15 +75,15 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 	): ?UserIdentity {
 		$mentorUser = $this->mentorStore->loadMentorUser( $user, $role );
 
-		if ( $this->getMentorshipStateForUser( $user ) === self::MENTORSHIP_OPTED_OUT ) {
+		if ( $this->isUserIneligibleForMentorship( $user ) ) {
 			if ( $mentorUser ) {
-				// The user is opted out, but the database contains a mentor anyway. Drop it from
-				// the DB as well. This has to happen to ensure false mentor/mentee assignment is
-				// not visible in dumps etc.
+				// User is ineligible for mentorship, but has a mentor anyway. Clean up the
+				// invalid relationship. This is necessary to ensure falsy relationships are not
+				// included in dumps etc.
 				$this->mentorStore->dropMenteeRelationship( $user );
 			}
 
-			// Never offer any mentor to users who opted out of mentorship (T351415)
+			// Regardless of what is in the database, the user should not have any mentor (T351415)
 			return null;
 		}
 
@@ -126,8 +137,8 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 		UserIdentity $mentee,
 		string $role
 	): ?UserIdentity {
-		if ( $this->getMentorshipStateForUser( $mentee ) === self::MENTORSHIP_OPTED_OUT ) {
-			// Do not assign any mentor to users who opted out explicitly
+		if ( $this->isUserIneligibleForMentorship( $mentee ) ) {
+			// Do not assign any mentors for ineligible users
 			return null;
 		}
 

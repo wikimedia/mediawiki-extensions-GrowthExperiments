@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
@@ -11,7 +13,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 /**
  * @group Database
  * @group medium
- * @coversDefaultClass \GrowthExperiments\Mentorship\Hooks\MentorHooks
+ * @covers \GrowthExperiments\Mentorship\Hooks\MentorHooks
  */
 class MentorHooksTest extends MediaWikiIntegrationTestCase {
 	use CommunityConfigurationTestHelpers;
@@ -27,7 +29,7 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 			->update( 'user' )
 			->set( [
 				'user_registration' => $dbw->timestamp( $timestamp ),
-				'user_editcount' => $editcount
+				'user_editcount' => $editcount,
 			] )
 			->where( [ 'user_id' => $user->getId() ] )
 			->caller( __METHOD__ )
@@ -41,7 +43,6 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 	 * @param int $minAge
 	 * @param int $minEditcount
 	 * @dataProvider provideOnUserGetRights
-	 * @covers ::onUserGetRights
 	 */
 	public function testOnUserGetRights(
 		int $minAge,
@@ -80,5 +81,36 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 			[ 4, 10 ],
 			[ 10, 4 ],
 		];
+	}
+
+	public static function provideOnBlockIpComplete() {
+		return [
+			'Temporary block' => [ true, '1 day' ],
+			'Sitewide block' => [ false, 'indefinite' ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideOnBlockIpComplete
+	 * @param bool $expectedSurvival
+	 * @param string $expiry
+	 */
+	public function testOnBlockIpComplete( bool $expectedSurvival, string $expiry ) {
+		$mentorStore = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorStore();
+		$blockUserFactory = $this->getServiceContainer()->getBlockUserFactory();
+
+		$mentee = $this->getTestUser()->getUserIdentity();
+		$sysop = $this->getTestSysop()->getUser();
+		$mentorStore->setMentorForUser( $mentee, $sysop, MentorStore::ROLE_PRIMARY );
+
+		$blockStatus = $blockUserFactory->newBlockUser( $mentee, $sysop, $expiry )->placeBlock();
+		$this->assertStatusOK( $blockStatus, 'Failed to block mentor' );
+
+		if ( $expectedSurvival ) {
+			$this->assertEquals( $sysop, $mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
+		} else {
+			$this->assertNull( $mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
+		}
 	}
 }

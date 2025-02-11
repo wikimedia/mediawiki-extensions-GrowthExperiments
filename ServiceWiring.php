@@ -502,6 +502,7 @@ return [
 			$geServices->getMentorStatusManager(),
 			$geServices->getMentorProvider(),
 			$services->getUserIdentityLookup(),
+			$services->getUserFactory(),
 			$services->getUserOptionsLookup(),
 			$services->getUserOptionsManager(),
 			RequestContext::getMain()->getRequest()->wasPosted()

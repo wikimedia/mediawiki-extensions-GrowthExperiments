@@ -18,12 +18,15 @@ use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\Notifications\AttributeManager;
 use MediaWiki\Extension\Notifications\UserLocator;
+use MediaWiki\Hook\BlockIpCompleteHook;
 use MediaWiki\Hook\FormatAutocommentsHook;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
+use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use Throwable;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -36,7 +39,8 @@ class MentorHooks implements
 	ChangeTagsListActiveHook,
 	FormatAutocommentsHook,
 	UserGetRightsHook,
-	BeforePageDisplayHook
+	BeforePageDisplayHook,
+	BlockIpCompleteHook
 {
 
 	private Config $config;
@@ -46,16 +50,8 @@ class MentorHooks implements
 	private IMentorManager $mentorManager;
 	private MentorProvider $mentorProvider;
 	private MentorStore $mentorStore;
+	private LoggerInterface $logger;
 
-	/**
-	 * @param Config $config
-	 * @param Config $wikiConfig
-	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param GenderCache $genderCache
-	 * @param IMentorManager $mentorManager
-	 * @param MentorProvider $mentorProvider
-	 * @param MentorStore $mentorStore
-	 */
 	public function __construct(
 		Config $config,
 		Config $wikiConfig,
@@ -72,6 +68,9 @@ class MentorHooks implements
 		$this->mentorManager = $mentorManager;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorStore = $mentorStore;
+
+		// TODO: This is not a service (yet), but should be
+		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 	}
 
 	/**
@@ -324,6 +323,33 @@ class MentorHooks implements
 				}
 			}
 			$out->addJsConfigVars( $jsConfigVars );
+		}
+	}
+
+	/** @inheritDoc */
+	public function onBlockIpComplete( $block, $user, $priorBlock ) {
+		if (
+			// Non-users cannot be mentored
+			$block->getType() !== $block::TYPE_USER ||
+			// Temporary blocks should not reset mentorship
+			!$block->isIndefinite()
+		) {
+			return;
+		}
+
+		// Ensure a valid $target is present
+		$target = $block->getTargetUserIdentity();
+		if ( !$target ) {
+			throw new \LogicException(
+				'Block #' . $block->getId() . ' is TYPE_USER, but has no target identity'
+			);
+		}
+
+		if ( $this->mentorStore->isMentee( $target ) ) {
+			$this->logger->info( 'Dropping mentor/mentee relationship for {user}, indefinitely blocked', [
+				'user' => $target,
+			] );
+			$this->mentorStore->dropMenteeRelationship( $target );
 		}
 	}
 }
