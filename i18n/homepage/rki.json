@@ -3,10 +3,11 @@
 		"authors": [
 			"Cakkaparla",
 			"ReyLon Mrat",
-			"YaThaWinTha"
+			"YaThaWinTha",
+			"Tejoebāsa"
 		]
 	},
-	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|Your}} လောလောလတ်လတ်လုပ်ဆောင်မှု (last $2 {{PLURAL:$2|day|days}})",
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|သင်ဧ့}} လောလောလတ်လတ်လုပ်ဆောင်မှု (last $2 {{PLURAL:$2|နိန့်|နိန့်တိ}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "နောက်ဆုံးတီဖြတ်ခရေ",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "အရှည်ကြီး",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|တီးဖြတ်|တီးဖြတ်ခြင်းတိ}}",
