@@ -66,7 +66,7 @@ class PruningLinkRecommendationProviderTest extends MediaWikiIntegrationTestCase
 		$linkRecommendationStore = $this->createNoOpMock( LinkRecommendationStore::class,
 			[ 'getExcludedLinkIds' ] );
 		if ( $recommendation instanceof LinkRecommendation ) {
-			$linkRecommendationStore->expects( $this->once() )->method( 'getExcludedLinkIds' )
+			$linkRecommendationStore->expects( $this->exactly( 2 ) )->method( 'getExcludedLinkIds' )
 				->with( $recommendation->getPageId() )
 				->willReturn( $excludedLinkIds );
 		} else {
@@ -81,15 +81,19 @@ class PruningLinkRecommendationProviderTest extends MediaWikiIntegrationTestCase
 		);
 
 		$actualValue = $provider->get( $title, $taskType );
+		$actualDetailedStatus = $provider->getDetailed( $title, $taskType );
 		if ( $expectedValue instanceof LinkRecommendation ) {
 			if ( $actualValue instanceof StatusValue ) {
 				$this->fail( 'Provider returned error: ' . Status::wrap( $actualValue )->getWikiText() );
 			}
 			$this->assertInstanceOf( LinkRecommendation::class, $actualValue );
 			$this->assertSame( $expectedValue->toArray(), $actualValue->toArray() );
+			$this->assertStatusGood( $actualDetailedStatus );
+			$this->assertSame( $expectedValue->toArray(), $actualDetailedStatus->getValue()->toArray() );
 		} else {
 			$this->assertInstanceOf( StatusValue::class, $actualValue );
 			$this->assertSame( $expectedValue->isOK(), $actualValue->isOK() );
+			$this->assertStatusNotGood( $actualDetailedStatus );
 		}
 	}
 

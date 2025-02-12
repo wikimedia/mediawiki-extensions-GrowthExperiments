@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 use GrowthExperiments\NewcomerTasks\SubpageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\Title;
 use StatusValue;
 
@@ -50,4 +51,11 @@ class SubpageLinkRecommendationProvider
 		);
 	}
 
+	public function getDetailed( LinkTarget $title, TaskType $taskType ): LinkRecommendationEvalStatus {
+		$recommendation = $this->get( $title, $taskType );
+		if ( $recommendation instanceof StatusValue ) {
+			return LinkRecommendationEvalStatus::newGood()->merge( $recommendation );
+		}
+		return LinkRecommendationEvalStatus::newGood( $recommendation );
+	}
 }
