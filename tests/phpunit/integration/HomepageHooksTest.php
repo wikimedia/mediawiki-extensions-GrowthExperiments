@@ -94,7 +94,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$this->editPage( $wikiPage, 'new content' );
 
 		$fromPageId = 0;
-		$this->assertCount( 0, $linkRecommendationStore->getAllRecommendations( 100, $fromPageId ) );
+		$this->assertCount( 0, $linkRecommendationStore->getAllExistingRecommendations( 100, $fromPageId ) );
 	}
 
 	public function testClearLinkRecommendationNoPrimaryWriteWithoutReplicaMatch(): void {
