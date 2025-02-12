@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dyolf77 (WMF)",
 			"HitomiAkane",
 			"Meno25"
 		]
 	},
 	"tag-newcomer_task_add_link": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link اقترح: اضيف روابط]",
+	"growthexperiments-addlink-single-recommendation-title": "إضافة رابط مقترح",
 	"growthexperiments-addlink-summary-summary": "ميزة اقتراح اللينكات: انضاف {{PLURAL:$1|0 لينكات|لينك واحد|لينكين|$1 روابط|$1 لينك}}."
 }

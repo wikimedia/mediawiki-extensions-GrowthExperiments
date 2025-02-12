@@ -13,6 +13,7 @@
 			"Mansil",
 			"Mansil alfalb",
 			"Mbs262",
+			"Trizek (WMF)",
 			"Vinickw"
 		]
 	},
@@ -420,6 +421,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Outra",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Concluído",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Selecione a razão pela qual esta hiperligação não é boa",
+	"growthexperiments-addlink-single-recommendation-title": "Insere um link sugerido",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Adicionar hiperligações ajuda as pessoas a aprenderem mais depressa.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Você vai decidir se palavras de um artigo da wiki {{SITENAME}} devem conduzir a outros artigos da wiki {{SITENAME}}.{{GENDER:$1|}}",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Frase de exemplo",

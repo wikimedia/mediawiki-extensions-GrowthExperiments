@@ -4,7 +4,8 @@
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Re demz",
-			"Stephanyb76"
+			"Stephanyb76",
+			"Trizek (WMF)"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Obtenha recomendações de tarefas adequadas para os novatos.",
@@ -33,6 +34,8 @@
 	"growthexperiments-addimage-feedback-accepted-caption": "O parâmetro <var>caption</var> é obrigatório quando o parâmetro <var>accepted</var> está definido como <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "A revissão especificada em <var>editRevId</var> não foi encontrada.",
 	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "A revisão especificada em <var>editRevId</var> pertence a uma página diferente.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "\"$1\" deve ser vinculado?",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Reveja alguns links sugeridos e melhore a rede de informação da Wikipédia.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Sim",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Não"
 }

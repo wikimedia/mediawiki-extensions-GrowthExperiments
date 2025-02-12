@@ -456,6 +456,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Otro",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Hecho",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Seleccione la razón por la que este no es un buen enlace",
+	"growthexperiments-addlink-single-recommendation-title": "Añadir un enlace sugerido",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Añadir enlaces ayudará a las personas a aprender más rápido.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Tú}} decidirás si las palabras de un artículo de {{SITENAME}} deben enlazar con otros artículos de {{SITENAME}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Oración de ejemplo",

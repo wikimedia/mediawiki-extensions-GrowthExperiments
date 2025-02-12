@@ -16,6 +16,7 @@
 			"Stanglavine",
 			"Teles",
 			"TheEduGobi",
+			"Trizek (WMF)",
 			"Trooper57",
 			"YuriNikolai"
 		]
@@ -407,6 +408,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Outro",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Feito",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Selecione o motivo pelo qual este não é um bom link",
+	"growthexperiments-addlink-single-recommendation-title": "Insere um link sugerido",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Adicionar links ajudará as pessoas a aprender mais rápido.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Você}} vai decidir se as palavras em um artigo no {{SITENAME}} deve ter link para outros artigos {{SITENAME}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Frase de exemplo",

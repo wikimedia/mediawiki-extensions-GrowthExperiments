@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"GoEThe",
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Trizek (WMF)"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Obter recomendações de tarefas adequadas para principiantes.",
@@ -44,5 +45,9 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "O parâmetro <var>editRevId</var> não pode ser usado quando o parâmetro <var>accepted</var> está definido como <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "O parâmetro <var>caption</var> é obrigatório quando o parâmetro <var>accepted</var> está definido como <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "A revisão especificada em <var>editRevId</var> não foi encontrada.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "A revisão especificada em <var>editRevId</var> pertence a uma página diferente."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "A revisão especificada em <var>editRevId</var> pertence a uma página diferente.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "\"$1\" deve ser vinculado?",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Reveja alguns links sugeridos e melhore a rede de informação da Wikipédia.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Sim",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Não"
 }
