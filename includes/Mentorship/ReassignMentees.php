@@ -20,7 +20,7 @@ class ReassignMentees {
 	use LoggerAwareTrait;
 
 	private IDatabase $dbw;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private MentorProvider $mentorProvider;
 	private MentorStore $mentorStore;
 	private ChangeMentorFactory $changeMentorFactory;
@@ -32,7 +32,7 @@ class ReassignMentees {
 
 	/**
 	 * @param IDatabase $dbw
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
 	 * @param ChangeMentorFactory $changeMentorFactory
@@ -44,7 +44,7 @@ class ReassignMentees {
 	 */
 	public function __construct(
 		IDatabase $dbw,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
 		ChangeMentorFactory $changeMentorFactory,
@@ -155,7 +155,7 @@ class ReassignMentees {
 		}
 
 		// only process primary mentors (T309984). Backup mentors will be automatically ignored by
-		// MentorPageMentorManager::getMentorForUser and replaced with a valid mentor if needed
+		// MentorManager::getMentorForUser and replaced with a valid mentor if needed
 		$mentees = $this->mentorStore->getMenteesByMentor( $this->mentor, MentorStore::ROLE_PRIMARY );
 		$this->logger->info( __METHOD__ . ' processing {mentees} mentees', [
 			'mentees' => count( $mentees ),

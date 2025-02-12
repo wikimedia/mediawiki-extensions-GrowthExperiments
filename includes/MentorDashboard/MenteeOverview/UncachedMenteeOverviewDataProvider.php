@@ -5,7 +5,7 @@ namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 use ChangeTags;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CentralAuth\CentralAuthServices;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -220,7 +220,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 					->select( 'up_user' )
 					->from( 'user_properties' )
 					->where( [
-						'up_property' => MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+						'up_property' => MentorManager::MENTORSHIP_ENABLED_PREF,
 						// sanity check, should never match (1 is the default value)
 						$dbr->expr( 'up_value', '!=', '1' ),
 					] )

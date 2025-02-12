@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Api;
 
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogicException;
 use MediaWiki\Api\ApiBase;
@@ -13,14 +13,14 @@ use Wikimedia\ParamValidator\ParamValidator;
 class ApiSetMenteeStatus extends ApiBase {
 
 	private Config $wikiConfig;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private MentorStore $mentorStore;
 
 	public function __construct(
 		ApiMain $mainModule,
 		string $moduleName,
 		Config $wikiConfig,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		MentorStore $mentorStore
 	) {
 		parent::__construct( $mainModule, $moduleName );
@@ -46,13 +46,13 @@ class ApiSetMenteeStatus extends ApiBase {
 
 		switch ( $params['state'] ) {
 			case 'enabled':
-				$newState = MentorManager::MENTORSHIP_ENABLED;
+				$newState = IMentorManager::MENTORSHIP_ENABLED;
 				break;
 			case 'disabled':
-				$newState = MentorManager::MENTORSHIP_DISABLED;
+				$newState = IMentorManager::MENTORSHIP_DISABLED;
 				break;
 			case 'optout':
-				$newState = MentorManager::MENTORSHIP_OPTED_OUT;
+				$newState = IMentorManager::MENTORSHIP_OPTED_OUT;
 				break;
 			default:
 				$newState = null;

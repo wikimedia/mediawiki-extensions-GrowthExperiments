@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\ChangeMentor;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
@@ -40,7 +40,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 					'',
 					IMentorWeights::WEIGHT_NORMAL
 				),
-				$this->createMock( MentorManager::class ),
+				$this->createMock( IMentorManager::class ),
 				$this->createMock( MentorStore::class ),
 				$this->getMockUserFactory(),
 				$this->createMock( IConnectionProvider::class )
@@ -85,7 +85,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'',
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( MentorManager::class ),
+			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
 			$connProvider
@@ -107,7 +107,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'',
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( MentorManager::class ),
+			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
 			$this->createMock( IConnectionProvider::class )
@@ -133,7 +133,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'',
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( MentorManager::class ),
+			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
 			$this->createMock( IConnectionProvider::class )
@@ -159,7 +159,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'',
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( MentorManager::class ),
+			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
 			$this->createMock( IConnectionProvider::class )
@@ -186,7 +186,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				'',
 				IMentorWeights::WEIGHT_NORMAL
 			),
-			$this->createMock( MentorManager::class ),
+			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
 			$this->getMockUserFactory(),
 			$this->createMock( IConnectionProvider::class )
@@ -216,7 +216,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$menteeMock = $this->getUserMock( 'Mentee', 1 );
 		$newMentorMock = $this->getUserMock( 'NewMentor', 4 );
 
-		$mentorManagerMock = $this->createMock( MentorManager::class );
+		$mentorManagerMock = $this->createMock( IMentorManager::class );
 		$mentorManagerMock->expects( $this->atLeastOnce() )
 			->method( 'getMentorshipStateForUser' )
 			->with( $menteeMock )
@@ -271,57 +271,57 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		return [
 			'enabled, nonbulk' => [
 				'expectedError' => null,
-				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'expectedMentorshipStatus' => IMentorManager::MENTORSHIP_ENABLED,
 				'expectedNotify' => true,
-				'originalMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'originalMentorshipStatus' => IMentorManager::MENTORSHIP_ENABLED,
 				'isMentorshipEnabled' => true,
 				'bulkChange' => false,
 			],
 			'enabled, bulk' => [
 				'expectedError' => null,
-				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'expectedMentorshipStatus' => IMentorManager::MENTORSHIP_ENABLED,
 				'expectedNotify' => true,
-				'originalMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'originalMentorshipStatus' => IMentorManager::MENTORSHIP_ENABLED,
 				'isMentorshipEnabled' => true,
 				'bulkChange' => true,
 			],
 			'enabled, no mentorship' => [
 				'expectedError' => null,
-				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'expectedMentorshipStatus' => IMentorManager::MENTORSHIP_ENABLED,
 				'expectedNotify' => false,
-				'originalMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'originalMentorshipStatus' => IMentorManager::MENTORSHIP_ENABLED,
 				'isMentorshipEnabled' => false,
 				'bulkChange' => false,
 			],
 			'disabled, nonbulk' => [
 				'expectedError' => null,
-				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_ENABLED,
+				'expectedMentorshipStatus' => IMentorManager::MENTORSHIP_ENABLED,
 				'expectedNotify' => false,
-				'originalMentorshipStatus' => MentorManager::MENTORSHIP_DISABLED,
+				'originalMentorshipStatus' => IMentorManager::MENTORSHIP_DISABLED,
 				'isMentorshipEnabled' => true,
 				'bulkChange' => false,
 			],
 			'disabled, bulk' => [
 				'expectedError' => null,
-				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_DISABLED,
+				'expectedMentorshipStatus' => IMentorManager::MENTORSHIP_DISABLED,
 				'expectedNotify' => false,
-				'originalMentorshipStatus' => MentorManager::MENTORSHIP_DISABLED,
+				'originalMentorshipStatus' => IMentorManager::MENTORSHIP_DISABLED,
 				'isMentorshipEnabled' => true,
 				'bulkChange' => true,
 			],
 			'opted_out, nonbulk' => [
 				'expectedError' => 'growthexperiments-homepage-claimmentee-opt-out',
-				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_OPTED_OUT,
+				'expectedMentorshipStatus' => IMentorManager::MENTORSHIP_OPTED_OUT,
 				'expectedNotify' => false,
-				'originalMentorshipStatus' => MentorManager::MENTORSHIP_OPTED_OUT,
+				'originalMentorshipStatus' => IMentorManager::MENTORSHIP_OPTED_OUT,
 				'isMentorshipEnabled' => true,
 				'bulkChange' => false,
 			],
 			'opted_out, bulk' => [
 				'expectedError' => 'growthexperiments-homepage-claimmentee-opt-out',
-				'expectedMentorshipStatus' => MentorManager::MENTORSHIP_OPTED_OUT,
+				'expectedMentorshipStatus' => IMentorManager::MENTORSHIP_OPTED_OUT,
 				'expectedNotify' => false,
-				'originalMentorshipStatus' => MentorManager::MENTORSHIP_OPTED_OUT,
+				'originalMentorshipStatus' => IMentorManager::MENTORSHIP_OPTED_OUT,
 				'isMentorshipEnabled' => true,
 				'bulkChange' => true,
 			],

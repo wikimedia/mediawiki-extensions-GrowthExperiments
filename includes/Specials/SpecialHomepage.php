@@ -10,7 +10,7 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
@@ -33,7 +33,7 @@ class SpecialHomepage extends SpecialPage {
 
 	private HomepageModuleRegistry $moduleRegistry;
 	private ExperimentUserManager $experimentUserManager;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private Config $wikiConfig;
 	private UserOptionsManager $userOptionsManager;
 
@@ -50,7 +50,7 @@ class SpecialHomepage extends SpecialPage {
 		HomepageModuleRegistry $moduleRegistry,
 		StatsFactory $statsFactory,
 		ExperimentUserManager $experimentUserManager,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		Config $wikiConfig,
 		UserOptionsManager $userOptionsManager,
 		TitleFactory $titleFactory
@@ -215,9 +215,9 @@ class SpecialHomepage extends SpecialPage {
 				$this->getConfig()->get( 'GECommunityUpdatesEnabled' ),
 			'impact' => true,
 			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
-				$mentorshipState === MentorManager::MENTORSHIP_ENABLED,
+				$mentorshipState === IMentorManager::MENTORSHIP_ENABLED,
 			'mentorship-optin' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
-				$mentorshipState === MentorManager::MENTORSHIP_OPTED_OUT,
+				$mentorshipState === IMentorManager::MENTORSHIP_OPTED_OUT,
 			'help' => true
 		] );
 		$modules = [];

@@ -3,7 +3,7 @@
 namespace GrowthExperiments\Mentorship\Hooks;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
@@ -23,7 +23,7 @@ class MentorUserOptionsHooks implements
 
 	/** @inheritDoc */
 	public function onGetPreferences( $user, &$preferences ) {
-		$preferences[ MentorPageMentorManager::MENTORSHIP_ENABLED_PREF ] = [
+		$preferences[ MentorManager::MENTORSHIP_ENABLED_PREF ] = [
 			'type' => 'api'
 		];
 		$preferences[ MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF ] = [
@@ -36,7 +36,7 @@ class MentorUserOptionsHooks implements
 	 */
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		$defaultOptions += [
-			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF => 1,
+			MentorManager::MENTORSHIP_ENABLED_PREF => 1,
 		];
 	}
 

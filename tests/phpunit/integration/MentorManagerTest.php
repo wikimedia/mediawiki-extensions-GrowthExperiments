@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests\Integration;
 
 use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Context\DerivativeContext;
@@ -15,10 +15,10 @@ use MediaWiki\Json\FormatJson;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
+ * @covers \GrowthExperiments\Mentorship\MentorManager
  * @group Database
  */
-class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
+class MentorManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @inheritDoc
@@ -177,7 +177,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$enabledUser = $this->getMutableTestUser()->getUser();
 		$optionManager->setOption(
 			$enabledUser,
-			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+			MentorManager::MENTORSHIP_ENABLED_PREF,
 			1
 		);
 		$optionManager->saveOptions( $enabledUser );
@@ -185,7 +185,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$disabledUser = $this->getMutableTestUser()->getUser();
 		$optionManager->setOption(
 			$disabledUser,
-			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+			MentorManager::MENTORSHIP_ENABLED_PREF,
 			0
 		);
 		$optionManager->saveOptions( $disabledUser );
@@ -193,22 +193,22 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$optedOutUser = $this->getMutableTestUser()->getUser();
 		$optionManager->setOption(
 			$optedOutUser,
-			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+			MentorManager::MENTORSHIP_ENABLED_PREF,
 			2
 		);
 		$optionManager->saveOptions( $optedOutUser );
 
 		$mentorManager = $this->getMentorManager();
 		$this->assertEquals(
-			MentorManager::MENTORSHIP_ENABLED,
+			IMentorManager::MENTORSHIP_ENABLED,
 			$mentorManager->getMentorshipStateForUser( $enabledUser )
 		);
 		$this->assertEquals(
-			MentorManager::MENTORSHIP_DISABLED,
+			IMentorManager::MENTORSHIP_DISABLED,
 			$mentorManager->getMentorshipStateForUser( $disabledUser )
 		);
 		$this->assertEquals(
-			MentorManager::MENTORSHIP_OPTED_OUT,
+			IMentorManager::MENTORSHIP_OPTED_OUT,
 			$mentorManager->getMentorshipStateForUser( $optedOutUser )
 		);
 	}
@@ -219,13 +219,13 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
 		$optionManager->setOption(
 			$brokenUser,
-			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+			MentorManager::MENTORSHIP_ENABLED_PREF,
 			123
 		);
 		$optionManager->saveOptions( $brokenUser );
 
 		$this->assertEquals(
-			MentorManager::MENTORSHIP_DISABLED,
+			IMentorManager::MENTORSHIP_DISABLED,
 			$this->getMentorManager()->getMentorshipStateForUser( $brokenUser )
 		);
 	}
@@ -251,7 +251,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
 		// assert default behaviour matches expectations
 		$this->assertEquals(
-			MentorManager::MENTORSHIP_ENABLED,
+			IMentorManager::MENTORSHIP_ENABLED,
 			$mentorManager->getMentorshipStateForUser( $menteeUser )
 		);
 		$this->assertEquals(
@@ -260,7 +260,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		);
 
 		// opt out of mentorship; this should drop the mentor mentee relationship
-		$mentorManager->setMentorshipStateForUser( $menteeUser, MentorManager::MENTORSHIP_OPTED_OUT );
+		$mentorManager->setMentorshipStateForUser( $menteeUser, IMentorManager::MENTORSHIP_OPTED_OUT );
 
 		// assert mentor mentee relationship is dropped
 		$this->assertNull(
@@ -281,7 +281,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
 		// Must be in this order; otherwise, setMentorshipStateForUser() would negate the
 		// setMentorForUser()
-		$mentorManager->setMentorshipStateForUser( $mentee, MentorManager::MENTORSHIP_OPTED_OUT );
+		$mentorManager->setMentorshipStateForUser( $mentee, IMentorManager::MENTORSHIP_OPTED_OUT );
 		$mentorStore->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
 
 		// getMentorForUserSafe() should claim there is no mentor...
@@ -319,14 +319,14 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @param IContextSource|null $context
-	 * @return MentorPageMentorManager
+	 * @return MentorManager
 	 */
 	private function getMentorManager( ?IContextSource $context = null ) {
 		$coreServices = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
 		$context ??= RequestContext::getMain();
 
-		return new MentorPageMentorManager(
+		return new MentorManager(
 			$growthServices->getMentorStore(),
 			$growthServices->getMentorStatusManager(),
 			$growthServices->getMentorProvider(),

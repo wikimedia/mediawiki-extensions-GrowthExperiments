@@ -2,18 +2,18 @@
 
 namespace GrowthExperiments\Api;
 
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
 
 class ApiQueryMenteeStatus extends ApiQueryBase {
 
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 
 	public function __construct(
 		ApiQuery $queryModule,
 		string $moduleName,
-		MentorManager $mentorManager
+		IMentorManager $mentorManager
 	) {
 		parent::__construct( $queryModule, $moduleName );
 
@@ -29,13 +29,13 @@ class ApiQueryMenteeStatus extends ApiQueryBase {
 		}
 
 		switch ( $this->mentorManager->getMentorshipStateForUser( $this->getUser() ) ) {
-			case MentorManager::MENTORSHIP_ENABLED:
+			case IMentorManager::MENTORSHIP_ENABLED:
 				$statusHumanReadable = 'enabled';
 				break;
-			case MentorManager::MENTORSHIP_DISABLED:
+			case IMentorManager::MENTORSHIP_DISABLED:
 				$statusHumanReadable = 'disabled';
 				break;
-			case MentorManager::MENTORSHIP_OPTED_OUT:
+			case IMentorManager::MENTORSHIP_OPTED_OUT:
 				$statusHumanReadable = 'optout';
 				break;
 			default:

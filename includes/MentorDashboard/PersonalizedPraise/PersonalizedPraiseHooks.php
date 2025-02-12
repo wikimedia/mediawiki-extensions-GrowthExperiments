@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Config\Config;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -17,21 +17,14 @@ class PersonalizedPraiseHooks implements
 {
 
 	private Config $config;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private UserImpactLookup $userImpactLookup;
 	private PraiseworthyConditionsLookup $praiseworthyConditionsLookup;
 	private PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester;
 
-	/**
-	 * @param Config $config
-	 * @param MentorManager $mentorManager
-	 * @param UserImpactLookup $userImpactLookup
-	 * @param PraiseworthyConditionsLookup $praiseworthyConditionsLookup
-	 * @param PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester
-	 */
 	public function __construct(
 		Config $config,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		UserImpactLookup $userImpactLookup,
 		PraiseworthyConditionsLookup $praiseworthyConditionsLookup,
 		PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester

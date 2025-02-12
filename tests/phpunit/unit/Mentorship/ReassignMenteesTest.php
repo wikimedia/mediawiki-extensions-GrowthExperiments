@@ -4,7 +4,7 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\ReassignMentees;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -25,7 +25,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param UserIdentity $mentor
-	 * @param MentorManager|null $mentorManagerMock
+	 * @param IMentorManager|null $mentorManagerMock
 	 * @param MentorProvider|null $mentorProviderMock
 	 * @param MentorStore|null $mentorStoreMock
 	 * @param ChangeMentorFactory|null $changeMentorFactoryMock
@@ -34,7 +34,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 	 */
 	private function newReassignMentees(
 		UserIdentity $mentor,
-		?MentorManager $mentorManagerMock = null,
+		?IMentorManager $mentorManagerMock = null,
 		?MentorProvider $mentorProviderMock = null,
 		?MentorStore $mentorStoreMock = null,
 		?ChangeMentorFactory $changeMentorFactoryMock = null,
@@ -48,7 +48,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 
 		return new ReassignMentees(
 			$dbw,
-			$mentorManagerMock ?? $this->createNoOpMock( MentorManager::class ),
+			$mentorManagerMock ?? $this->createNoOpMock( IMentorManager::class ),
 			$mentorProviderMock ?? $this->createNoOpMock( MentorProvider::class ),
 			$mentorStoreMock ?? $this->createNoOpMock( MentorStore::class ),
 			$changeMentorFactoryMock ?? $this->createNoOpMock( ChangeMentorFactory::class ),
@@ -80,7 +80,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			->method( 'msg' )
 			->with( 'foo', $mentor->getName() )
 			->willReturn( $msg );
-		$mentorManager = $this->createMock( MentorManager::class );
+		$mentorManager = $this->createMock( IMentorManager::class );
 		$mentorManager->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'getRandomAutoAssignedMentor' )
 			->willReturnMap( array_map(

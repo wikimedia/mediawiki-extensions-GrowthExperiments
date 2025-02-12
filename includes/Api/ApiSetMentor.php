@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Api;
 
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
@@ -15,14 +15,14 @@ use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Rdbms\IDBAccessObject;
 
 class ApiSetMentor extends ApiBase {
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private ChangeMentorFactory $changeMentorFactory;
 	private UserIdentityUtils $userIdentityUtils;
 
 	public function __construct(
 		ApiMain $mainModule,
 		string $moduleName,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		ChangeMentorFactory $changeMentorFactory,
 		UserIdentityUtils $userIdentityUtils
 	) {

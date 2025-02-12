@@ -6,7 +6,7 @@ use DateInterval;
 use DatePeriod;
 use DateTime;
 use GrowthExperiments\HomepageHooks;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserFactory;
@@ -21,7 +21,7 @@ class PraiseworthyConditionsLookup {
 	private PersonalizedPraiseSettings $settings;
 	private UserOptionsLookup $userOptionsLookup;
 	private UserFactory $userFactory;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 
 	public const WAS_PRAISED_PREF = 'growthexperiments-mentorship-was-praised';
 	public const SKIPPED_UNTIL_PREF = 'growthexperiments-personalized-praise-skipped-until';
@@ -33,13 +33,13 @@ class PraiseworthyConditionsLookup {
 	 * @param PersonalizedPraiseSettings $settings
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param UserFactory $userFactory
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 */
 	public function __construct(
 		PersonalizedPraiseSettings $settings,
 		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory,
-		MentorManager $mentorManager
+		IMentorManager $mentorManager
 	) {
 		$this->settings = $settings;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -139,7 +139,7 @@ class PraiseworthyConditionsLookup {
 
 		$menteeUser = $this->userFactory->newFromUserIdentity( $mentee );
 		return $this->userOptionsLookup->getBoolOption( $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE ) &&
-			$this->mentorManager->getMentorshipStateForUser( $mentee ) === MentorManager::MENTORSHIP_ENABLED &&
+			$this->mentorManager->getMentorshipStateForUser( $mentee ) === IMentorManager::MENTORSHIP_ENABLED &&
 			$menteeUser->isNamed() &&
 			$menteeUser->getBlock() === null &&
 			!$this->wasMenteePraised( $mentee ) &&

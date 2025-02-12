@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
@@ -29,7 +29,7 @@ class QuestionPosterFactory {
 
 	private WikiPageFactory $wikiPageFactory;
 	private TitleFactory $titleFactory;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private PermissionManager $permissionManager;
 	private bool $helpDeskPostOnTop;
 	private StatsFactory $statsFactory;
@@ -40,7 +40,7 @@ class QuestionPosterFactory {
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 * @param PermissionManager $permissionManager
 	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
 	 *   (as opposed to the bottom). Only affects wikitext pages.
@@ -51,7 +51,7 @@ class QuestionPosterFactory {
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		PermissionManager $permissionManager,
 		bool $helpDeskPostOnTop,
 		StatsFactory $statsFactory,

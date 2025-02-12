@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
@@ -11,20 +11,20 @@ use OOUI\ButtonWidget;
 
 class MentorshipOptIn extends BaseModule {
 
-	/** @var MentorManager */
+	/** @var IMentorManager */
 	private $mentorManager;
 
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
 	 * @param ExperimentUserManager $experimentUserManager
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 */
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
-		MentorManager $mentorManager
+		IMentorManager $mentorManager
 	) {
 		parent::__construct( 'mentorship-optin', $context, $wikiConfig, $experimentUserManager );
 
@@ -37,7 +37,7 @@ class MentorshipOptIn extends BaseModule {
 	protected function canRender() {
 		return $this->mentorManager->getMentorshipStateForUser(
 			$this->getUser()
-		) === MentorManager::MENTORSHIP_OPTED_OUT;
+		) === IMentorManager::MENTORSHIP_OPTED_OUT;
 	}
 
 	/**

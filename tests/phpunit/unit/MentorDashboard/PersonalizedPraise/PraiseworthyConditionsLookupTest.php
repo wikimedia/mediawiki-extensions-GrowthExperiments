@@ -6,7 +6,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSettings;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditions;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
@@ -47,10 +47,10 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 			->method( 'getPraiseworthyConditions' )
 			->willReturn( new PraiseworthyConditions( $maxEdits, $minEdits, $maxReverts, $days ) );
 
-		$mentorManagerMock = $this->createMock( MentorManager::class );
+		$mentorManagerMock = $this->createMock( IMentorManager::class );
 		$mentorManagerMock->expects( $this->once() )
 			->method( 'getMentorshipStateForUser' )
-			->willReturn( MentorManager::MENTORSHIP_ENABLED );
+			->willReturn( IMentorManager::MENTORSHIP_ENABLED );
 
 		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->expects( $this->atLeastOnce() )

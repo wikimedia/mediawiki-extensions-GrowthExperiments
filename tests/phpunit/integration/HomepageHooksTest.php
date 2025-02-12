@@ -6,7 +6,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Context\RequestContext;
@@ -128,19 +128,19 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 
 	public static function provideTestNewUserProperties() {
 		return [
-			[ true, true, MentorManager::MENTORSHIP_ENABLED, [
+			[ true, true, IMentorManager::MENTORSHIP_ENABLED, [
 				'GEHomepageNewAccountEnablePercentage' => 100,
 				'GEMentorshipNewAccountEnablePercentage' => 100,
 			] ],
-			[ true, true, MentorManager::MENTORSHIP_DISABLED, [
+			[ true, true, IMentorManager::MENTORSHIP_DISABLED, [
 				'GEHomepageNewAccountEnablePercentage' => 100,
 				'GEMentorshipNewAccountEnablePercentage' => 0,
 			] ],
-			[ false, false, MentorManager::MENTORSHIP_ENABLED, [
+			[ false, false, IMentorManager::MENTORSHIP_ENABLED, [
 				'GEHomepageNewAccountEnablePercentage' => 0,
 				'GEMentorshipNewAccountEnablePercentage' => 0,
 			] ],
-			[ false, false, MentorManager::MENTORSHIP_ENABLED, [
+			[ false, false, IMentorManager::MENTORSHIP_ENABLED, [
 				'GEHomepageNewAccountEnablePercentage' => 0,
 				'GEMentorshipNewAccountEnablePercentage' => 100,
 			] ],

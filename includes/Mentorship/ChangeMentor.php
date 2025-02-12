@@ -23,7 +23,7 @@ class ChangeMentor {
 	private ?UserIdentity $newMentor;
 	private UserIdentity $performer;
 	private LoggerInterface $logger;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private MentorStore $mentorStore;
 	private UserFactory $userFactory;
 	private IConnectionProvider $connectionProvider;
@@ -34,7 +34,7 @@ class ChangeMentor {
 	 * @param UserIdentity $performer Performer's user object
 	 * @param LoggerInterface $logger
 	 * @param Mentor|null $mentor Old mentor
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 * @param MentorStore $mentorStore
 	 * @param UserFactory $userFactory
 	 * @param IConnectionProvider $connectionProvider
@@ -44,7 +44,7 @@ class ChangeMentor {
 		UserIdentity $performer,
 		LoggerInterface $logger,
 		?Mentor $mentor,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		MentorStore $mentorStore,
 		UserFactory $userFactory,
 		IConnectionProvider $connectionProvider
@@ -249,7 +249,7 @@ class ChangeMentor {
 	): Status {
 		// Ensure mentor/mentee relationship is dropped if the mentee is opted out from mentorship (T354259)
 		if ( $this->mentorManager->getMentorshipStateForUser( $this->mentee ) ===
-			MentorManager::MENTORSHIP_OPTED_OUT ) {
+			IMentorManager::MENTORSHIP_OPTED_OUT ) {
 			$this->logger->info(
 				'ChangeMentor dropped mentee relationship for {user} '
 				. 'because the user is opted out of mentorship',
@@ -280,11 +280,11 @@ class ChangeMentor {
 		if ( $this->isMentorshipEnabledForUser( $this->mentee ) ) {
 			$mentorshipState = $this->mentorManager->getMentorshipStateForUser( $this->mentee );
 
-			if ( $mentorshipState === MentorManager::MENTORSHIP_ENABLED ) {
+			if ( $mentorshipState === IMentorManager::MENTORSHIP_ENABLED ) {
 				$this->notify( $reason );
 			}
 
-			if ( !$bulkChange && $mentorshipState === MentorManager::MENTORSHIP_DISABLED ) {
+			if ( !$bulkChange && $mentorshipState === IMentorManager::MENTORSHIP_DISABLED ) {
 				// For non-bulk changes when MENTORSHIP_DISABLED (=GrowthExperiments decided not
 				// to include the mentorship module), set the state to MENTORSHIP_ENABLED to ensure
 				// the user can benefit from mentorship (T327206).
@@ -296,7 +296,7 @@ class ChangeMentor {
 
 				$this->mentorManager->setMentorshipStateForUser(
 					$this->mentee,
-					MentorManager::MENTORSHIP_ENABLED
+					IMentorManager::MENTORSHIP_ENABLED
 				);
 			}
 		}

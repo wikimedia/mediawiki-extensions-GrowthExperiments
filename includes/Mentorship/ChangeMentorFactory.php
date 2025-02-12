@@ -11,21 +11,21 @@ use Wikimedia\Rdbms\IConnectionProvider;
 class ChangeMentorFactory {
 
 	private LoggerInterface $logger;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private MentorStore $mentorStore;
 	private UserFactory $userFactory;
 	private IConnectionProvider $connectionProvider;
 
 	/**
 	 * @param LoggerInterface $logger
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 * @param MentorStore $mentorStore
 	 * @param UserFactory $userFactory
 	 * @param IConnectionProvider $connectionProvider
 	 */
 	public function __construct(
 		LoggerInterface $logger,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		MentorStore $mentorStore,
 		UserFactory $userFactory,
 		IConnectionProvider $connectionProvider

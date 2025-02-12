@@ -28,8 +28,8 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSetti
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorProvider;
@@ -494,10 +494,10 @@ return [
 
 	'GrowthExperimentsMentorManager' => static function (
 		MediaWikiServices $services
-	): MentorManager {
+	): IMentorManager {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		$manager = new MentorPageMentorManager(
+		$manager = new MentorManager(
 			$geServices->getMentorStore(),
 			$geServices->getMentorStatusManager(),
 			$geServices->getMentorProvider(),

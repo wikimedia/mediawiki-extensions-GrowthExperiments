@@ -14,7 +14,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 class ReassignMenteesFactory {
 
 	private ILoadBalancer $dbLoadBalancer;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private MentorProvider $mentorProvider;
 	private MentorStore $mentorStore;
 	private ChangeMentorFactory $changeMentorFactory;
@@ -23,7 +23,7 @@ class ReassignMenteesFactory {
 
 	/**
 	 * @param ILoadBalancer $dbLoadBalancer
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
 	 * @param ChangeMentorFactory $changeMentorFactory
@@ -32,7 +32,7 @@ class ReassignMenteesFactory {
 	 */
 	public function __construct(
 		ILoadBalancer $dbLoadBalancer,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
 		ChangeMentorFactory $changeMentorFactory,

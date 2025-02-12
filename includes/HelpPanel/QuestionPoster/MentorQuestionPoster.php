@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Page\WikiPageFactory;
@@ -17,12 +17,12 @@ use Wikimedia\Stats\StatsFactory;
  */
 abstract class MentorQuestionPoster extends QuestionPoster {
 
-	protected MentorManager $mentorManager;
+	protected IMentorManager $mentorManager;
 
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		PermissionManager $permissionManager,
 		StatsFactory $statsFactory,
 		bool $confirmEditInstalled,

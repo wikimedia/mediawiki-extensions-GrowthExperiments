@@ -7,7 +7,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Cache\GenderCache;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
@@ -44,7 +44,7 @@ class HelpPanelHooks implements
 	private GenderCache $genderCache;
 	private UserEditTracker $userEditTracker;
 	private UserOptionsManager $userOptionsManager;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private MentorStatusManager $mentorStatusManager;
 
 	/**
@@ -53,7 +53,7 @@ class HelpPanelHooks implements
 	 * @param GenderCache $genderCache
 	 * @param UserEditTracker $userEditTracker
 	 * @param UserOptionsManager $userOptionsManager
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 * @param MentorStatusManager $mentorStatusManager
 	 */
 	public function __construct(
@@ -62,7 +62,7 @@ class HelpPanelHooks implements
 		GenderCache $genderCache,
 		UserEditTracker $userEditTracker,
 		UserOptionsManager $userOptionsManager,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		MentorStatusManager $mentorStatusManager
 	) {
 		$this->config = $config;
@@ -203,7 +203,7 @@ class HelpPanelHooks implements
 					$this->wikiConfig->get( 'GEHelpPanelAskMentor' ) &&
 					$this->mentorManager->getMentorshipStateForUser(
 						$out->getUser()
-					) === MentorManager::MENTORSHIP_ENABLED &&
+					) === IMentorManager::MENTORSHIP_ENABLED &&
 					$this->mentorManager->getEffectiveMentorForUserSafe( $out->getUser() ) !== null,
 			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 

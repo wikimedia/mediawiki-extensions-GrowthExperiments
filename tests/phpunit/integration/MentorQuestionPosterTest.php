@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -25,7 +25,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$wikiPageFactory = $this->getServiceContainer()->getWikiPageFactory();
 		$titleFactory = $this->getServiceContainer()->getTitleFactory();
 		$permissionManager = $this->getServiceContainer()->getPermissionManager();
-		$mentorManager = $this->createMock( MentorManager::class );
+		$mentorManager = $this->createMock( IMentorManager::class );
 		$mentorUser = $this->getTestSysop()->getUser();
 		$mentor = new Mentor( $mentorUser, '*', '', IMentorWeights::WEIGHT_NORMAL );
 		$mentorManager->method( 'getMentorForUser' )->willReturn( $mentor );

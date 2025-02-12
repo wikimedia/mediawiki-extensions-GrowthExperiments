@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments;
 
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Parser\Parser;
 use MediaWiki\User\UserFactory;
 
@@ -14,7 +14,7 @@ class HomepageParserFunctions {
 	 * Handler for {{#mentor:Username}}
 	 *
 	 * @param UserFactory $userFactory
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 * @param Parser $parser
 	 * @param string $username Mentee's username
 	 *
@@ -22,7 +22,7 @@ class HomepageParserFunctions {
 	 */
 	public static function mentorRender(
 		UserFactory $userFactory,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		Parser $parser,
 		$username
 	): string {

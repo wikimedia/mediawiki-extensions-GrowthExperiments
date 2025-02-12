@@ -5,7 +5,7 @@ namespace GrowthExperiments\Mentorship\Hooks;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\EchoNewPraiseworthyMenteesPresentationModel;
 use GrowthExperiments\Mentorship\EchoMenteeClaimPresentationModel;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -43,7 +43,7 @@ class MentorHooks implements
 	private Config $wikiConfig;
 	private UserIdentityLookup $userIdentityLookup;
 	private GenderCache $genderCache;
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 	private MentorProvider $mentorProvider;
 	private MentorStore $mentorStore;
 
@@ -52,7 +52,7 @@ class MentorHooks implements
 	 * @param Config $wikiConfig
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param GenderCache $genderCache
-	 * @param MentorManager $mentorManager
+	 * @param IMentorManager $mentorManager
 	 * @param MentorProvider $mentorProvider
 	 * @param MentorStore $mentorStore
 	 */
@@ -61,7 +61,7 @@ class MentorHooks implements
 		Config $wikiConfig,
 		UserIdentityLookup $userIdentityLookup,
 		GenderCache $genderCache,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore
 	) {

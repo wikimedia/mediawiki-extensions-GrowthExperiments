@@ -8,7 +8,7 @@ use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use LogicException;
 use MediaWiki\Cache\GenderCache;
@@ -38,7 +38,7 @@ class Mentorship extends BaseModule {
 
 	/** @var QuestionRecord[] */
 	private array $recentQuestions = [];
-	private MentorManager $mentorManager;
+	private IMentorManager $mentorManager;
 
 	private MentorStatusManager $mentorStatusManager;
 	private GenderCache $genderCache;
@@ -48,7 +48,7 @@ class Mentorship extends BaseModule {
 		IContextSource $context,
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
-		MentorManager $mentorManager,
+		IMentorManager $mentorManager,
 		MentorStatusManager $mentorStatusManager,
 		GenderCache $genderCache,
 		UserEditTracker $userEditTracker
@@ -272,7 +272,7 @@ class Mentorship extends BaseModule {
 	protected function canRender() {
 		return $this->mentorManager->getMentorshipStateForUser(
 			$this->getUser()
-		) === MentorManager::MENTORSHIP_ENABLED &&
+		) === IMentorManager::MENTORSHIP_ENABLED &&
 			$this->mentorManager->getEffectiveMentorForUserSafe( $this->getUser() ) !== null;
 	}
 
