@@ -134,11 +134,11 @@ class WelcomeSurvey {
 		$submitted = ( $data->_submit_date ?? null ) !== null;
 
 		if ( !$data ) {
-			// Either the user is past the data retention period and all data was discarded
-			// (in which case we don't know if they ever filled out the survey but months
-			// have passed since they registered so it's fine to consider the survey as
-			// intentionally not filled out), or WelcomeSurveyHooks::onBeforeWelcomeCreation()
-			// did not run for some reason (maybe the feature wasn't enabled when they registered).
+			// Either the user is past the data retention period and all data was discarded (in
+			// which case we don't know if they ever filled out the survey but months have
+			// passed since they registered so it's fine to consider the survey as intentionally
+			// not filled out), or WelcomeSurveyHooks::on[CentralAuth]PostLoginRedirect() did
+			// not run for some reason (maybe the feature wasn't enabled when they registered).
 			return false;
 		} elseif ( $skipped ) {
 			// User chose not to fill out the survey. Somewhat arbitrarily, we consider that
