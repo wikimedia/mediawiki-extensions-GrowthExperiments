@@ -23,6 +23,7 @@ use MediaWiki\Utils\MWTimestamp;
 use MessageLocalizer;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
+use Wikimedia\Assert\Assert;
 
 /**
  * This is the "Mentorship" module. It shows your mentor and
@@ -342,7 +343,11 @@ class Mentorship extends BaseModule {
 	}
 
 	private function getIntroText(): string {
-		$mentor = $this->mentorManager->getMentorForUser( $this->getContext()->getUser() );
+		$mentor = $this->mentorManager->getMentorForUserSafe( $this->getContext()->getUser() );
+		Assert::invariant(
+			$mentor !== null,
+			'Mentorship module rendered despite canRender() returning false'
+		);
 
 		$introText = $this->getContext()->getLanguage()->truncateForVisual(
 			$mentor->getIntroText(),

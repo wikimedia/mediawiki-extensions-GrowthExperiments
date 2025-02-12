@@ -2,12 +2,10 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\WikiConfigException;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
@@ -45,10 +43,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			],
 		] ) );
 
-		$this->expectException( Exception::class );
-		$this->expectExceptionMessage( 'No mentor available' );
-
-		$this->getMentorManager()->getMentorForUser( $this->getTestUser()->getUser() );
+		$this->assertNull( $this->getMentorManager()->getMentorForUserSafe( $this->getTestUser()->getUser() ) );
 	}
 
 	/**
@@ -64,7 +59,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		) );
 
 		$mentorManager = $this->getMentorManager();
-		$mentor = $mentorManager->getMentorForUser( $this->getTestUser()->getUser() );
+		$mentor = $mentorManager->getMentorForUserSafe( $this->getTestUser()->getUser() );
 		$this->assertEquals( $sysop->getId(), $mentor->getUserIdentity()->getId() );
 	}
 
@@ -78,7 +73,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			->getMentorStore()
 			->setMentorForUser( $user, $sysop, MentorStore::ROLE_PRIMARY );
 
-		$mentor = $this->getMentorManager()->getMentorForUser( $user );
+		$mentor = $this->getMentorManager()->getMentorForUserSafe( $user );
 		$this->assertEquals( $sysop->getName(), $mentor->getUserIdentity()->getName() );
 	}
 
@@ -91,8 +86,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			''
 		) );
 
-		$this->expectException( WikiConfigException::class );
-		$this->assertNull( $this->getMentorManager()->getMentorForUser( $user ) );
+		$this->assertNull( $this->getMentorManager()->getMentorForUserSafe( $user ) );
 	}
 
 	public function testMentorCannotBeMenteeMoreMentors() {
@@ -112,13 +106,14 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			''
 		) );
 
-		$mentor = $this->getMentorManager()->getMentorForUser( $userMentee );
+		$mentor = $this->getMentorManager()->getMentorForUserSafe( $userMentee );
 		$this->assertEquals( $mentor->getUserIdentity()->getName(), $userMentor->getName() );
 	}
 
 	public function testNoMentorAvailable() {
-		$this->expectException( WikiConfigException::class );
-		$this->getMentorManager()->getMentorForUser( $this->getMutableTestUser()->getUser() );
+		$this->assertNull(
+			$this->getMentorManager()->getMentorForUserSafe( $this->getMutableTestUser()->getUser() )
+		);
 	}
 
 	/**
@@ -143,7 +138,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		$context->setUser( $mentee );
 		$mentorManager = $this->getMentorManager( $context );
 
-		$mentor = $mentorManager->getMentorForUser( $mentee );
+		$mentor = $mentorManager->getMentorForUserSafe( $mentee );
 		$this->assertEquals( 'This is a sample text.', $mentor->getIntroText() );
 	}
 
@@ -164,7 +159,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		$context->setUser( $mentee );
 		$mentorManager = $this->getMentorManager( $context );
 
-		$mentor = $mentorManager->getMentorForUser( $mentee );
+		$mentor = $mentorManager->getMentorForUserSafe( $mentee );
 		$this->assertStringContainsString(
 			'This experienced user knows you\'re new and can help you with editing.',
 			$mentor->getIntroText()

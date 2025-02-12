@@ -108,18 +108,6 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 		return $this->mentorProvider->newMentorFromUserIdentity( $mentorUser, $user );
 	}
 
-	/** @inheritDoc */
-	public function getMentorForUser(
-		UserIdentity $user,
-		string $role = MentorStore::ROLE_PRIMARY
-	): Mentor {
-		$mentorUser = $this->getMentorForUserSafe( $user, $role );
-		if ( !$mentorUser ) {
-			throw new WikiConfigException( 'Mentorship: No mentor available' );
-		}
-		return $mentorUser;
-	}
-
 	/**
 	 * Wrapper for getRandomAutoAssignedMentor
 	 *

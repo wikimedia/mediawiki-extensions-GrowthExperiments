@@ -34,19 +34,6 @@ interface IMentorManager {
 	): ?Mentor;
 
 	/**
-	 * Get the mentor assigned to this user.
-	 * If the user did not have a mentor before, this will assign one on the fly.
-	 * @param UserIdentity $user
-	 * @param string $role MentorStore::ROLE_* constant
-	 * @return Mentor
-	 * @throws WikiConfigException If it is not possible to obtain a mentor due to misconfiguration.
-	 */
-	public function getMentorForUser(
-		UserIdentity $user,
-		string $role = MentorStore::ROLE_PRIMARY
-	): Mentor;
-
-	/**
 	 * Get the mentor assigned to this user. Suppress configuration errors and return null
 	 * if a mentor cannot be assigned.
 	 * @param UserIdentity $user

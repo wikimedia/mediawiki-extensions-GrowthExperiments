@@ -37,19 +37,6 @@ class StaticMentorManager implements IMentorManager {
 	}
 
 	/** @inheritDoc */
-	public function getMentorForUser(
-		UserIdentity $user,
-		string $role = MentorStore::ROLE_PRIMARY
-	): Mentor {
-		$mentor = $this->getMentorForUserSafe( $user );
-		if ( !$mentor ) {
-			throw new WikiConfigException( __METHOD__ . ': No mentor for {user}',
-				[ 'user' => $user->getName() ] );
-		}
-		return $mentor;
-	}
-
-	/** @inheritDoc */
 	public function getMentorForUserSafe(
 		UserIdentity $user,
 		string $role = MentorStore::ROLE_PRIMARY

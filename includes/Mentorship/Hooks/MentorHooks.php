@@ -183,7 +183,7 @@ class MentorHooks implements
 				MentorStore::ROLE_PRIMARY
 			);
 			// Select a random backup mentor
-			$this->mentorManager->getMentorForUser( $user, MentorStore::ROLE_BACKUP );
+			$this->mentorManager->getMentorForUserSafe( $user, MentorStore::ROLE_BACKUP );
 			return true;
 		}
 		return false;
@@ -203,8 +203,8 @@ class MentorHooks implements
 
 				// Select a primary & backup mentor. FIXME Not really necessary, but avoids a
 				// change in functionality after introducing MentorManager, making debugging easier.
-				$this->mentorManager->getMentorForUser( $user, MentorStore::ROLE_PRIMARY );
-				$this->mentorManager->getMentorForUser( $user, MentorStore::ROLE_BACKUP );
+				$this->mentorManager->getMentorForUserSafe( $user, MentorStore::ROLE_PRIMARY );
+				$this->mentorManager->getMentorForUserSafe( $user, MentorStore::ROLE_BACKUP );
 			} catch ( Throwable $throwable ) {
 				Util::logException( $throwable, [
 					'user' => $user->getId(),

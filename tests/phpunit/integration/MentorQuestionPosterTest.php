@@ -28,7 +28,6 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$mentorManager = $this->createMock( IMentorManager::class );
 		$mentorUser = $this->getTestSysop()->getUser();
 		$mentor = new Mentor( $mentorUser, '*', '', IMentorWeights::WEIGHT_NORMAL );
-		$mentorManager->method( 'getMentorForUser' )->willReturn( $mentor );
 		$mentorManager->method( 'getMentorForUserSafe' )->willReturn( $mentor );
 		$mentorManager->method( 'getEffectiveMentorForUser' )->willReturn( $mentor );
 		$mentorManager->method( 'getEffectiveMentorForUserSafe' )->willReturn( $mentor );
