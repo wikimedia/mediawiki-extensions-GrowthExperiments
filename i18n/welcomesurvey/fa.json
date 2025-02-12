@@ -51,6 +51,9 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} در نزدیک به ۳۰۰ زبان موجود است. آیا زبان‌های دیگری هستند که شما به آن‌ها می‌خوانید یا می‌نویسید؟",
 	"welcomesurvey-question-languages-placeholder": "می‌توانید تا {{PLURAL:$1|یک زبان|$1 زبان}} را بیافزایید...",
 	"welcomesurvey-question-languages-maximum": "حداکثر تعداد مجاز زبان‌ها را وارد کرده‌اید.",
+	"welcomesurvey-reminder-link": "آغاز نظرسنجی",
+	"welcomesurvey-reminder-dismiss": "نپذیرفتن",
 	"welcomesurvey-mideditsignup-title": "$1 خوش آمدید!",
+	"welcomesurvey-mideditsignup-button-homepage": "رفتن به صفحهٔ اصلی من",
 	"welcomesurvey-mideditsignup-button-close": "بستن"
 }
