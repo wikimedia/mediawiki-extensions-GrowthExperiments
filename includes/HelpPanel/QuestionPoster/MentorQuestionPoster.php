@@ -4,12 +4,12 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\IMentorManager;
-use GrowthExperiments\WikiConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Stats\StatsFactory;
 
 /**
@@ -63,10 +63,12 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 
 	/**
 	 * @inheritDoc
-	 * @throws WikiConfigException If there's anything wrong with the current user's mentor
 	 */
 	protected function getDirectTargetTitle() {
-		$mentor = $this->mentorManager->getEffectiveMentorForUser( $this->getContext()->getUser() );
+		$mentor = $this->mentorManager->getEffectiveMentorForUserSafe( $this->getContext()->getUser() );
+		// TODO: This is actually not guaranteed by anything; invalid API calls will violate this
+		// condition. See T386567.
+		Assert::invariant( $mentor !== null, 'MentorQuestionPoster called without a mentor present' );
 		return User::newFromIdentity( $mentor->getUserIdentity() )->getTalkPage();
 	}
 

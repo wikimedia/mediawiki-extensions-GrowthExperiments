@@ -46,18 +46,6 @@ interface IMentorManager {
 	): ?Mentor;
 
 	/**
-	 * Get the effective mentor assigned to this user.
-	 *
-	 * This returns the primary mentor if they're active, otherwise,
-	 * it returns the backup mentor.
-	 *
-	 * @param UserIdentity $menteeUser
-	 * @return Mentor
-	 * @throws WikiConfigException If it is not possible to obtain a mentor due to misconfiguration.
-	 */
-	public function getEffectiveMentorForUser( UserIdentity $menteeUser ): Mentor;
-
-	/**
 	 * Get the effective mentor assigned to this user, suppressing configuration errors.
 	 *
 	 * This returns the primary mentor if they're active, otherwise,

@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\WikiConfigException;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
 
@@ -48,15 +47,6 @@ class StaticMentorManager implements IMentorManager {
 		} else {
 			throw new InvalidArgumentException( 'Invalid role' );
 		}
-	}
-
-	/** @inheritDoc */
-	public function getEffectiveMentorForUser( UserIdentity $menteeUser ): Mentor {
-		$mentor = $this->getEffectiveMentorForUserSafe( $menteeUser );
-		if ( !$mentor ) {
-			throw new WikiConfigException( __METHOD__ . ': No effective mentor for ' . $menteeUser->getName() );
-		}
-		return $mentor;
 	}
 
 	/** @inheritDoc */

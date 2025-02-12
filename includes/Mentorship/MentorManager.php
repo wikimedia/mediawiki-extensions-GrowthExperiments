@@ -179,15 +179,6 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 	}
 
 	/** @inheritDoc */
-	public function getEffectiveMentorForUser( UserIdentity $menteeUser ): Mentor {
-		$mentor = $this->getEffectiveMentorForUserSafe( $menteeUser );
-		if ( !$mentor ) {
-			throw new WikiConfigException( 'Unable to assign a mentor' );
-		}
-		return $mentor;
-	}
-
-	/** @inheritDoc */
 	public function getEffectiveMentorForUserSafe( UserIdentity $menteeUser ): ?Mentor {
 		$primaryMentor = $this->getMentorForUserSafe( $menteeUser, MentorStore::ROLE_PRIMARY );
 		if ( $primaryMentor === null ) {
