@@ -92,7 +92,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$mentorUser = $this->mentorStore->loadMentorUser( $user, $role );
 
 		if ( $this->getMentorshipStateForUser( $user ) === self::MENTORSHIP_OPTED_OUT ) {
-			if ( !$mentorUser ) {
+			if ( $mentorUser ) {
 				// The user is opted out, but the database contains a mentor anyway. Drop it from
 				// the DB as well. This has to happen to ensure false mentor/mentee assignment is
 				// not visible in dumps etc.
