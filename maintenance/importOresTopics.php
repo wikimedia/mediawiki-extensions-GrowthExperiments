@@ -55,7 +55,7 @@ class ImportOresTopics extends Maintenance {
 	private ?string $wikiId;
 
 	/** @var bool|null Does the wiki have an 'articletopic' ORES model? */
-	private ?bool $wikiHasOresModel;
+	private ?bool $wikiHasOresModel = null;
 
 	public function __construct() {
 		parent::__construct();
