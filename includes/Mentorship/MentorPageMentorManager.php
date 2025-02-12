@@ -58,37 +58,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$this->setLogger( new NullLogger() );
 	}
 
-	/** @inheritDoc */
-	public function getMentorForUserIfExists(
+	private function getMentorUserIdentityIfExists(
 		UserIdentity $user,
 		string $role = MentorStore::ROLE_PRIMARY
-	): ?Mentor {
-		$mentorUser = $this->mentorStore->loadMentorUser( $user, $role );
-
-		if ( $this->getMentorshipStateForUser( $user ) === self::MENTORSHIP_OPTED_OUT ) {
-			if ( !$mentorUser ) {
-				// The user is opted out, but the database contains a mentor anyway. Drop it from
-				// the DB as well. This has to happen to ensure false mentor/mentee assignment is
-				// not visible in dumps etc.
-				$this->mentorStore->dropMenteeRelationship( $user );
-			}
-
-			// Never offer any mentor to users who opted out of mentorship (T351415)
-			return null;
-		}
-
-		if ( !$mentorUser ) {
-			return null;
-		}
-
-		return $this->mentorProvider->newMentorFromUserIdentity( $mentorUser, $user );
-	}
-
-	/** @inheritDoc */
-	public function getMentorForUser(
-		UserIdentity $user,
-		string $role = MentorStore::ROLE_PRIMARY
-	): Mentor {
+	): ?UserIdentity {
 		$mentorUser = $this->mentorStore->loadMentorUser( $user, $role );
 
 		if ( $this->getMentorshipStateForUser( $user ) === self::MENTORSHIP_OPTED_OUT ) {
@@ -100,13 +73,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			}
 
 			// Never offer any mentor to users who opted out of mentorship (T351415)
-			throw new WikiConfigException( 'Mentorship: Mentee opted out' );
+			return null;
 		}
 
-		if (
-			$role === MentorStore::ROLE_BACKUP &&
-			$mentorUser !== null
-		) {
+		if ( $mentorUser && $role === MentorStore::ROLE_BACKUP ) {
 			// Only use the saved backup mentor if they're still eligible to be a backup mentor.
 			// Ignore the current backup mentor relationship if any of the following applies:
 			//     a) the backup mentor is away
@@ -122,16 +92,32 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			}
 		}
 
+		return $mentorUser;
+	}
+
+	/** @inheritDoc */
+	public function getMentorForUserIfExists(
+		UserIdentity $user,
+		string $role = MentorStore::ROLE_PRIMARY
+	): ?Mentor {
+		$mentorUser = $this->getMentorUserIdentityIfExists( $user, $role );
 		if ( !$mentorUser ) {
-			$mentorUser = $this->getRandomAutoAssignedMentorForUserAndRole( $user, $role );
-			if ( !$mentorUser ) {
-				// TODO: Remove this call (T290371)
-				throw new WikiConfigException( 'Mentorship: No mentor available' );
-			}
-			$this->mentorStore->setMentorForUser( $user, $mentorUser, $role );
+			return null;
 		}
 
 		return $this->mentorProvider->newMentorFromUserIdentity( $mentorUser, $user );
+	}
+
+	/** @inheritDoc */
+	public function getMentorForUser(
+		UserIdentity $user,
+		string $role = MentorStore::ROLE_PRIMARY
+	): Mentor {
+		$mentorUser = $this->getMentorForUserSafe( $user, $role );
+		if ( !$mentorUser ) {
+			throw new WikiConfigException( 'Mentorship: No mentor available' );
+		}
+		return $mentorUser;
 	}
 
 	/**
@@ -152,6 +138,11 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		UserIdentity $mentee,
 		string $role
 	): ?UserIdentity {
+		if ( $this->getMentorshipStateForUser( $mentee ) === self::MENTORSHIP_OPTED_OUT ) {
+			// Do not assign any mentor to users who opted out explicitly
+			return null;
+		}
+
 		$excludedUsers = [];
 		if ( $role !== MentorStore::ROLE_PRIMARY ) {
 			$primaryMentor = $this->mentorStore->loadMentorUser(
@@ -178,13 +169,20 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		string $role = MentorStore::ROLE_PRIMARY
 	): ?Mentor {
 		try {
-			return $this->getMentorForUser( $user, $role );
-		} catch ( WikiConfigException $e ) {
-			// WikiConfigException is thrown when no mentor is available
-			// Do not log, as not-yet-developed wikis may have
-			// zero mentors for long period of time (T274035)
+			$mentorUser = $this->getMentorUserIdentityIfExists( $user, $role );
+
+			if ( !$mentorUser ) {
+				$mentorUser = $this->getRandomAutoAssignedMentorForUserAndRole( $user, $role );
+				if ( $mentorUser ) {
+					$this->mentorStore->setMentorForUser( $user, $mentorUser, $role );
+				}
+			}
+
+			if ( $mentorUser ) {
+				$mentorUser = $this->mentorProvider->newMentorFromUserIdentity( $mentorUser, $user );
+			}
+			return $mentorUser;
 		} catch ( DBReadOnlyError $e ) {
-			// @phan-suppress-previous-line PhanPluginDuplicateCatchStatementBody
 			// Just pretend the user doesn't have a mentor. It will be set later, and often
 			// this call is made in the context of something not specifically mentorship-
 			// related, such as the homepage, so it's better than erroring out.
@@ -194,15 +192,11 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @inheritDoc */
 	public function getEffectiveMentorForUser( UserIdentity $menteeUser ): Mentor {
-		$primaryMentor = $this->getMentorForUser( $menteeUser, MentorStore::ROLE_PRIMARY );
-		if (
-			$this->mentorStatusManager
-				->getMentorStatus( $primaryMentor->getUserIdentity() ) === MentorStatusManager::STATUS_ACTIVE
-		) {
-			return $primaryMentor;
-		} else {
-			return $this->getMentorForUser( $menteeUser, MentorStore::ROLE_BACKUP );
+		$mentor = $this->getEffectiveMentorForUserSafe( $menteeUser );
+		if ( !$mentor ) {
+			throw new WikiConfigException( 'Unable to assign a mentor' );
 		}
+		return $mentor;
 	}
 
 	/** @inheritDoc */
@@ -233,7 +227,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			$this->logger->debug(
 				'Mentorship: No mentor available for user {user}',
 				[
-					'user' => $mentee->getName()
+					'user' => $mentee->getName(),
 				]
 			);
 			return null;
@@ -247,7 +241,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			$this->logger->debug(
 				'Mentorship: No mentor available for {user} but excluded users',
 				[
-					'user' => $mentee->getName()
+					'user' => $mentee->getName(),
 				]
 			);
 			return null;
@@ -257,7 +251,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			$this->logger->debug(
 				'Mentorship: No mentor available for {user} but themselves',
 				[
-					'user' => $mentee->getName()
+					'user' => $mentee->getName(),
 				]
 			);
 			return null;
@@ -287,7 +281,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 				[
 					'user' => $user->getName(),
 					'property' => self::MENTORSHIP_ENABLED_PREF,
-					'impact' => 'defaulting to MENTORSHIP_DISABLED'
+					'impact' => 'defaulting to MENTORSHIP_DISABLED',
 				]
 			);
 			return self::MENTORSHIP_DISABLED;

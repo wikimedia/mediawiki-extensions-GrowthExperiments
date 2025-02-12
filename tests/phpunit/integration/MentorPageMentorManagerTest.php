@@ -291,6 +291,32 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull( $mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
 	}
 
+	public function testBackupMentorIsValid() {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorStore = $geServices->getMentorStore();
+		$mentorProvider = $geServices->getMentorProvider();
+		$mentorWriter = $geServices->getMentorWriter();
+		$mentorManager = $this->getMentorManager();
+
+		$mentee = $this->getMutableTestUser()->getUser();
+		$otherUser = $this->getMutableTestUser()->getUser();
+		$mentorWriter->addMentor(
+			$mentorProvider->newMentorFromUserIdentity( $otherUser ), $otherUser,
+			'Test'
+		);
+
+		$mentorStore->setMentorForUser( $mentee, $otherUser, MentorStore::ROLE_BACKUP );
+		$this->assertTrue( $otherUser->equals(
+			$mentorManager->getMentorForUserSafe( $mentee, MentorStore::ROLE_BACKUP )->getUserIdentity()
+		) );
+
+		$mentorWriter->removeMentor(
+			$mentorProvider->newMentorFromUserIdentity( $otherUser ), $otherUser,
+			'Test'
+		);
+		$this->assertNull( $mentorManager->getMentorForUserSafe( $mentee, MentorStore::ROLE_BACKUP ) );
+	}
+
 	/**
 	 * @param IContextSource|null $context
 	 * @return MentorPageMentorManager
