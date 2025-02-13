@@ -343,7 +343,8 @@
 			"class": "GrowthExperiments\\NewcomerTasks\\SurfacingStructuredTasks\\BeforePageDisplayHookHandler",
 			"services": [
 				"MainConfig",
-				"GrowthExperimentsNewcomerTasksConfigurationLoader"
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
+				"UserOptionsLookup"
 			]
 		},
 		"homepage": {

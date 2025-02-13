@@ -8,26 +8,30 @@ describe( 'Surfacing Link recommendations (with api responses stubbed)', () => {
 		const articleName = 'Surfacing Link recommendations cypress test page';
 		cy.fixture( 'LoremIpsum.txt' ).as( 'loremIpsumText' );
 
-		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: { username: string; password: string } ) => {
+		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } )
+			.then( ( { username, password }: { username: string; password: string } ) => {
 
-			cy.task( 'MwApi:Edit', {
-				username: 'root',
-				title: articleName,
-				text: this.loremIpsumText,
-				summary: 'GrowthExperiments Cypress browser test edit',
-			} ).then( ( { pageid }: { pageid: number } ) => {
-				cy.loginViaApi( username, password );
+				cy.task( 'MwApi:Edit', {
+					username: 'root',
+					title: articleName,
+					text: this.loremIpsumText,
+					summary: 'GrowthExperiments Cypress browser test edit',
+				} ).then( ( { pageid }: { pageid: number } ) => {
+					cy.loginViaApi( username, password );
 
-				cy.intercept( {
-					method: 'GET',
-					pathname: '**/api.php',
-					query: {
-						action: 'query',
-						list: 'linkrecommendations',
-						lrpageid: `${ pageid }`,
-					},
-				}, suggestions ).as( 'getLinkRecommendations' );
+					cy.intercept( {
+						method: 'GET',
+						pathname: '**/api.php',
+						query: {
+							action: 'query',
+							list: 'linkrecommendations',
+							lrpageid: `${ pageid }`,
+						},
+					}, suggestions ).as( 'getLinkRecommendations' );
+				} );
 			} );
+		cy.setUserOptions( {
+			'growthexperiments-homepage-variant': 'surfacing-structured-task',
 		} );
 
 		cy.intercept( {
