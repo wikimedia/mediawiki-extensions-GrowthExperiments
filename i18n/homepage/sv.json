@@ -116,7 +116,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|redigering|redigeringar}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Visningar från senaste redigeringar (senaste 60 dagarna):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Överblicka visningar av artiklar du har redigerat",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 redigeringar hittills",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 redigeringar av artiklar hittills",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Hjälp till med att utöka världens fria kunskap genom att redigera ämnen som betyder mest för {{GENDER:$1|dig}}.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Se förslag på redigeringar",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Börja med några <strong>föreslagna redigeringar</strong>, sedan kan du se hur många som sett {{GENDER:$1|dina}} bidrag här.",

@@ -3,7 +3,9 @@
 		"authors": [
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
-			"Re demz"
+			"Re demz",
+			"Stephanyb76",
+			"Trizek (WMF)"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Obtenha recomendações de tarefas adequadas para os novatos.",
@@ -15,7 +17,7 @@
 	"apihelp-query+growthtasks-param-debug": "Adicione dados de depuração à saída.",
 	"apihelp-query+growthtasks-example-1": "Obtenha recomendações de tarefas para tarefas do tipo edição de cópia para o usuário atual.",
 	"apihelp-query+growthtasks-example-2": "Obtenha recomendações de tarefas para o usuário atual, com informações estendidas sobre as páginas.",
-	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "Um texto JSON de um objeto com estas chaves:\n* <var>accepted</var>: Valor booliano que indica se o usuário aceitou a imagem recomendada.\n* <var>reasons</var>: Matriz de textos que identificam um valor booliano indicativo do motivo por que o utilizador rejeitou a imagem recomendada. Valores válidos: $1\n* <var>caption</var>: Legenda da imagem, fornecida pelo utilizador (tem de ter pelo menos $2 caracteres).",
+	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "Um texto JSON de um objeto com estas chaves:\n* <var>accepted</var>: Valor booliano que indica se o usuário aceitou a imagem recomendada.\n* <var>reasons</var>: Matriz de textos que identificam um valor booliano indicativo do motivo por que o utilizador rejeitou a imagem recomendada. Valores válidos: $1\n* <var>caption</var>: Legenda da imagem, fornecida pelo utilizador (tem de ter pelo menos $2 {{PLURAL:$2|character|caracteres}}.)",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Usar ao salvar uma edição estruturada \"[[mw:Growth/Personalized_first_day/Structured_tasks/Add_a_link|Adicionar um link]]\" das experiências de crescimento GrowthExperiments.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "Usar ao salvar uma edição estruturada [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|Adicionar uma imagem]]\" das experiências de crescimento GrowthExperiments.",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Para o plugin <var>ge-task-link-recommendation</var</dt><dd>\n$1\n</dd></dl>",
