@@ -1,22 +1,4 @@
 {
-	"argentina": {
-		"id": "argentina",
-		"name": "⧼growth-campaign-topic-name-argentina⧽",
-		"groupId": "campaign",
-		"groupName": "Campaign event"
-	},
-	"chile": {
-		"id": "chile",
-		"name": "⧼growth-campaign-topic-name-chile⧽",
-		"groupId": "campaign",
-		"groupName": "Campaign event"
-	},
-	"mexico": {
-		"id": "mexico",
-		"name": "⧼growth-campaign-topic-name-mexico⧽",
-		"groupId": "campaign",
-		"groupName": "Campaign event"
-	},
 	"architecture": {
 		"id": "architecture",
 		"name": "Architecture",

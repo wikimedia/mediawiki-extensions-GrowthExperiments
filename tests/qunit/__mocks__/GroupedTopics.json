@@ -1,28 +1,4 @@
 {
-	"campaign": {
-		"id": "campaign",
-		"name": "Campaign event",
-		"topics": [
-			{
-				"id": "argentina",
-				"name": "⧼growth-campaign-topic-name-argentina⧽",
-				"groupId": "campaign",
-				"groupName": "Campaign event"
-			},
-			{
-				"id": "chile",
-				"name": "⧼growth-campaign-topic-name-chile⧽",
-				"groupId": "campaign",
-				"groupName": "Campaign event"
-			},
-			{
-				"id": "mexico",
-				"name": "⧼growth-campaign-topic-name-mexico⧽",
-				"groupId": "campaign",
-				"groupName": "Campaign event"
-			}
-		]
-	},
 	"culture": {
 		"id": "culture",
 		"name": "Culture",
