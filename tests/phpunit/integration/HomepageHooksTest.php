@@ -2,16 +2,12 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookRunner;
@@ -21,7 +17,6 @@ use MediaWikiIntegrationTestCase;
 use RecentChange;
 use StatusValue;
 use stdClass;
-use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -65,69 +60,11 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertObjectHasProperty( 'project', $config );
 	}
 
-	public function testClearLinkRecommendationOnPageSaveComplete(): void {
-		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
-
-		$wikiPage = $this->getExistingTestPage();
-		$expectedPageIdentity = $wikiPage->getTitle()->toPageIdentity();
-		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
-		$weightedTagsUpdaterMock->expects( $this->once() )
-			->method( 'resetWeightedTags' )
-			->with( $expectedPageIdentity, [ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ] );
-		$this->setService( WeightedTagsUpdater::SERVICE, $weightedTagsUpdaterMock );
-		$this->overrideConfigValues( [
-			'GENewcomerTasksLinkRecommendationsEnabled' => true,
-		] );
-		$linkRecommendation = new LinkRecommendation(
-			$wikiPage->getTitle(),
-			$wikiPage->getId(),
-			0,
-			[],
-			LinkRecommendation::getMetadataFromArray( [] )
-		);
-		/**
-		 * @var LinkRecommendationStore $linkRecommendationStore
-		 */
-		$linkRecommendationStore = $this->getServiceContainer()->get( 'GrowthExperimentsLinkRecommendationStore' );
-		$linkRecommendationStore->insertExistingLinkRecommendation( $linkRecommendation );
-
-		$this->editPage( $wikiPage, 'new content' );
-
-		$fromPageId = 0;
-		$this->assertCount( 0, $linkRecommendationStore->getAllExistingRecommendations( 100, $fromPageId ) );
-	}
-
-	public function testClearLinkRecommendationNoPrimaryWriteWithoutReplicaMatch(): void {
-		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
-
-		$wikiPage = $this->getExistingTestPage();
-		$expectedPageIdentity = $wikiPage->getTitle()->toPageIdentity();
-		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
-		$weightedTagsUpdaterMock->expects( $this->once() )
-			->method( 'resetWeightedTags' )
-			->with( $expectedPageIdentity, [ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ] );
-		$this->setService( WeightedTagsUpdater::SERVICE, $weightedTagsUpdaterMock );
-		$this->overrideConfigValues( [
-			'GENewcomerTasksLinkRecommendationsEnabled' => true,
-		] );
-		$mockLinkRecommendationStore = $this->createMock( LinkRecommendationStore::class );
-		$mockLinkRecommendationStore->expects( $this->once() )
-			->method( 'getByPageId' )
-			->with( $wikiPage->getId(), IDBAccessObject::READ_NORMAL )
-			->willReturn( null );
-		$mockLinkRecommendationStore->expects( $this->never() )
-			->method( 'deleteByPageIds' );
-		$this->setService( 'GrowthExperimentsLinkRecommendationStore', $mockLinkRecommendationStore );
-
-		$this->editPage( $wikiPage, 'new content' );
-	}
-
 	private function getHomepageHooks(): HomepageHooks {
 		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new HomepageHooks(
 			$services->getMainConfig(),
-			$services->getDBLoadBalancer(),
 			$services->getUserOptionsManager(),
 			$services->getUserOptionsLookup(),
 			$services->getUserIdentityUtils(),
@@ -142,7 +79,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
 			$growthServices->getLinkRecommendationStore(),
-			$growthServices->getLinkRecommendationHelper(),
 			$services->getSpecialPageFactory(),
 			$growthServices->getNewcomerTasksChangeTagsManager(),
 			$growthServices->getSuggestionsInfo(),

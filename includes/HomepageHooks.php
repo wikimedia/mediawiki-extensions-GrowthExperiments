@@ -16,7 +16,6 @@ use GrowthExperiments\LevelingUp\NotificationGetStartedJob;
 use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -33,13 +32,10 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilde
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
@@ -79,8 +75,6 @@ use MediaWiki\Specials\Contribute\Card\ContributeCard;
 use MediaWiki\Specials\Contribute\Card\ContributeCardActionLink;
 use MediaWiki\Specials\Contribute\Hook\ContributeCardsHook;
 use MediaWiki\Status\Status;
-use MediaWiki\Storage\EditResult;
-use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -99,11 +93,8 @@ use Skin;
 use SkinTemplate;
 use StatusValue;
 use stdClass;
-use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IDBAccessObject;
-use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Stats\StatsFactory;
-use WikiPage;
 
 /**
  * Hook implementations that related directly or indirectly to Special:Homepage.
@@ -126,7 +117,6 @@ class HomepageHooks implements
 	ConfirmEmailCompleteHook,
 	SiteNoticeAfterHook,
 	FormatAutocommentsHook,
-	PageSaveCompleteHook,
 	RecentChange_saveHook,
 	ContributeCardsHook
 {
@@ -148,7 +138,6 @@ class HomepageHooks implements
 	public const REGISTRATION_GROWTHEXPERIMENTS_ENABLED = 'geEnabled';
 
 	private Config $config;
-	private ILoadBalancer $lb;
 	private UserOptionsManager $userOptionsManager;
 	private UserOptionsLookup $userOptionsLookup;
 	private UserIdentityUtils $userIdentityUtils;
@@ -161,7 +150,6 @@ class HomepageHooks implements
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 	private LinkRecommendationStore $linkRecommendationStore;
-	private LinkRecommendationHelper $linkRecommendationHelper;
 	private NewcomerTasksInfo $suggestionsInfo;
 	private JobQueueGroup $jobQueueGroup;
 	private SpecialPageFactory $specialPageFactory;
@@ -178,7 +166,6 @@ class HomepageHooks implements
 
 	/**
 	 * @param Config $config Uses PHP globals
-	 * @param ILoadBalancer $lb
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param UserIdentityUtils $userIdentityUtils
@@ -193,7 +180,6 @@ class HomepageHooks implements
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkRecommendationStore $linkRecommendationStore
-	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 * @param SpecialPageFactory $specialPageFactory
 	 * @param NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
 	 * @param NewcomerTasksInfo $suggestionsInfo
@@ -202,7 +188,6 @@ class HomepageHooks implements
 	 */
 	public function __construct(
 		Config $config,
-		ILoadBalancer $lb,
 		UserOptionsManager $userOptionsManager,
 		UserOptionsLookup $userOptionsLookup,
 		UserIdentityUtils $userIdentityUtils,
@@ -217,7 +202,6 @@ class HomepageHooks implements
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkRecommendationStore $linkRecommendationStore,
-		LinkRecommendationHelper $linkRecommendationHelper,
 		SpecialPageFactory $specialPageFactory,
 		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
 		NewcomerTasksInfo $suggestionsInfo,
@@ -225,7 +209,6 @@ class HomepageHooks implements
 		UserImpactStore $userImpactStore
 	) {
 		$this->config = $config;
-		$this->lb = $lb;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userIdentityUtils = $userIdentityUtils;
@@ -240,7 +223,6 @@ class HomepageHooks implements
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->linkRecommendationStore = $linkRecommendationStore;
-		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
 		$this->suggestionsInfo = $suggestionsInfo;
@@ -1129,15 +1111,6 @@ class HomepageHooks implements
 		}
 	}
 
-	private function clearLinkRecommendationRecordForPage( WikiPage $wikiPage ): void {
-		try {
-			$this->linkRecommendationHelper->deleteLinkRecommendation(
-				$wikiPage->getTitle()->toPageIdentity(), true, true );
-		} catch ( DBReadOnlyError $e ) {
-			// Leaving a dangling DB row behind doesn't cause any problems so just ignore this.
-		}
-	}
-
 	/**
 	 * ResourceLoader callback used by our custom ResourceLoaderFileModuleWithLessVars class.
 	 * @param RL\Context $context
@@ -1413,20 +1386,6 @@ class HomepageHooks implements
 	}
 
 	/** @inheritDoc */
-	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ): void {
-		if (
-			$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) &&
-			$wikiPage->getNamespace() === NS_MAIN
-		) {
-			$this->clearLinkRecommendationRecordForPage( $wikiPage );
-		}
-
-		if ( $editResult->isRevert() ) {
-			$this->trackRevertedNewcomerTaskEdit( $editResult );
-		}
-	}
-
-	/** @inheritDoc */
 	public function onRecentChange_save( $recentChange ) {
 		$context = RequestContext::getMain();
 		$request = $context->getRequest();
@@ -1544,51 +1503,5 @@ class HomepageHooks implements
 	 */
 	public function setUserIdentity( UserIdentity $userIdentity ): void {
 		$this->userIdentity = $userIdentity;
-	}
-
-	private function trackRevertedNewcomerTaskEdit( EditResult $editResult ): void {
-		$revId = $editResult->getNewestRevertedRevisionId();
-		if ( !$revId ) {
-			return;
-		}
-		$tags = MediaWikiServices::getInstance()->getChangeTagsStore()->getTags(
-			$this->lb->getConnection( DB_REPLICA ),
-			null,
-			$revId
-		);
-		$growthTasksChangeTags = array_merge(
-			TemplateBasedTaskTypeHandler::NEWCOMER_TASK_TEMPLATE_BASED_ALL_CHANGE_TAGS,
-			[
-				LinkRecommendationTaskTypeHandler::CHANGE_TAG,
-				ImageRecommendationTaskTypeHandler::CHANGE_TAG,
-				SectionImageRecommendationTaskTypeHandler::CHANGE_TAG,
-			]
-		);
-		foreach ( $tags as $tag ) {
-			// We can use more precise tags, skip this generic one applied to all suggested edits.
-			if ( $tag === TaskTypeHandler::NEWCOMER_TASK_TAG ||
-				// ...but make sure the tag is one we care about tracking.
-				!in_array( $tag, $growthTasksChangeTags ) ) {
-				continue;
-			}
-			// HACK: craft the task type ID from the change tag. We should probably add a method to
-			// TaskTypeHandlerRegistry to get a TaskType from a change tag.
-			$taskType = str_replace( 'newcomer task ', '', $tag );
-			if ( $tag === LinkRecommendationTaskTypeHandler::CHANGE_TAG ) {
-				$taskType = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
-			} elseif ( $tag === ImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
-				$taskType = ImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
-			} elseif ( $tag === SectionImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
-				$taskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
-			}
-			$wiki = WikiMap::getCurrentWikiId();
-			$this->statsFactory
-				->withComponent( 'GrowthExperiments' )
-				->getCounter( 'newcomertask_reverted_total' )
-				->setLabel( 'taskType', $taskType )
-				->setLabel( 'wiki', $wiki )
-				->copyToStatsdAt( sprintf( "$wiki.GrowthExperiments.NewcomerTask.Reverted.%s", $taskType ) )
-				->increment();
-		}
 	}
 }
