@@ -35,7 +35,6 @@ RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 		'mw-ge-recommendedLinkToolbarDialog-labelPreview'
 	);
 	this.setupLabelPreview();
-	this.$body.prepend( this.$labelPreview );
 	this.$foot.append( this.$buttons );
 	this.setupSwipeNavigation();
 	this.setupHelpButton(
@@ -47,6 +46,7 @@ RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
+	this.$body.prepend( this.$labelPreview );
 	MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 	this.surface.getView().$documentNode.on( 'click', this.onDocumentNodeClick );
 	mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add( () => {

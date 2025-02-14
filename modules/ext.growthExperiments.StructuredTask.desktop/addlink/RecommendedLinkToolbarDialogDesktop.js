@@ -33,7 +33,6 @@ RecommendedLinkToolbarDialogDesktop.static.position = 'inline';
  */
 RecommendedLinkToolbarDialogDesktop.prototype.initialize = function () {
 	RecommendedLinkToolbarDialogDesktop.super.prototype.initialize.call( this );
-	this.$body.append( this.$buttons );
 	this.$anchor = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-desktop-anchor' );
 	this.$element.prepend( this.$anchor );
 };
@@ -43,6 +42,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.initialize = function () {
  */
 RecommendedLinkToolbarDialogDesktop.prototype.afterSetupProcess = function () {
 	RecommendedLinkToolbarDialogDesktop.super.prototype.afterSetupProcess.call( this );
+	this.$body.append( this.$buttons );
 	this.isRtl = this.surface.getDir() === 'rtl';
 	this.setupMinification();
 	this.moveDialogToSurfaceView();
