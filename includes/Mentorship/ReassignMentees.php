@@ -194,7 +194,8 @@ class ReassignMentees {
 				continue;
 			}
 
-			$status = $changeMentor->execute(
+			// ChangeMentor takes care of appropriately logging the outcome
+			$changeMentor->execute(
 				$newMentor,
 				$this->messageLocalizer->msg(
 					$reassignMessageKey,
@@ -203,16 +204,6 @@ class ReassignMentees {
 				)->text(),
 				true
 			);
-			if ( !$status->isOK() ) {
-				$this->logger->warning(
-					'ReassignMentees failed to assign {mentor} as {user}\'s mentor for {reason}',
-					[
-						'mentor' => $newMentor->getName(),
-						'user' => $mentee->getName(),
-						'reason' => $this->statusFormatter->getWikiText( $status, [ 'lang' => 'en' ] ),
-					]
-				);
-			}
 
 			$numberOfProcessedMentees += 1;
 			if ( $limit && $numberOfProcessedMentees >= $limit ) {
