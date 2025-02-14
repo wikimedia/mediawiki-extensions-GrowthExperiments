@@ -15,7 +15,7 @@ use MediaWiki\Json\FormatJson;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Mentorship\MentorPageMentorManager
+ * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
  * @group Database
  */
 class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
@@ -34,9 +34,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$this->setMainCache( CACHE_NONE );
 	}
 
-	/**
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
-	 */
 	public function testRenderInvalidMentor() {
 		$this->insertPage( 'MediaWiki:GrowthMentors.json', FormatJson::encode( [
 			'Mentors' => [
@@ -44,8 +41,8 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 					'message' => null,
 					'weight' => 2,
 					'automaticallyAssigned' => true,
-				]
-			]
+				],
+			],
 		] ) );
 
 		$this->expectException( Exception::class );
@@ -55,7 +52,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
 	 * @covers \GrowthExperiments\Mentorship\Mentor::getUserIdentity
 	 */
 	public function testGetMentorUserNew() {
@@ -73,7 +69,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
 	 * @covers \GrowthExperiments\Mentorship\Mentor::getUserIdentity
 	 */
 	public function testGetMentorUserExisting() {
@@ -87,9 +82,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $sysop->getName(), $mentor->getUserIdentity()->getName() );
 	}
 
-	/**
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
-	 */
 	public function testMentorCannotBeMentee() {
 		$user = $this->getMutableTestUser()->getUser();
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
@@ -103,9 +95,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull( $this->getMentorManager()->getMentorForUser( $user ) );
 	}
 
-	/**
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
-	 */
 	public function testMentorCannotBeMenteeMoreMentors() {
 		$userMentee = $this->getMutableTestUser()->getUser();
 		$userMentor = $this->getTestSysop()->getUser();
@@ -127,16 +116,12 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $mentor->getUserIdentity()->getName(), $userMentor->getName() );
 	}
 
-	/**
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
-	 */
 	public function testNoMentorAvailable() {
 		$this->expectException( WikiConfigException::class );
 		$this->getMentorManager()->getMentorForUser( $this->getMutableTestUser()->getUser() );
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
 	 * @covers \GrowthExperiments\Mentorship\Mentor::getIntroText
 	 */
 	public function testRenderMentorText() {
@@ -163,7 +148,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
 	 * @covers \GrowthExperiments\Mentorship\Mentor::getIntroText
 	 */
 	public function testRenderFallbackMentorText() {
@@ -187,9 +171,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::getMentorshipStateForUser
-	 */
 	public function testGetMentorshipStateForUser() {
 		$optionManager = $this->getServiceContainer()->getUserOptionsManager();
 
@@ -232,9 +213,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::getMentorshipStateForUser
-	 */
 	public function testGetMentorshipStateForUserBroken() {
 		$optionManager = $this->getServiceContainer()->getUserOptionsManager();
 		$brokenUser = $this->getMutableTestUser()->getUser();
@@ -253,10 +231,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers ::getMentorshipStateForUser
-	 * @covers ::setMentorshipStateForUser
-	 * @covers ::getMentorForUserSafe
-	 * @covers ::getMentorForUserIfExists
 	 * @see T351415
 	 */
 	public function testSetMentorshipStateForUserOptOut() {
@@ -271,8 +245,8 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 					'message' => null,
 					'weight' => 2,
 					'automaticallyAssigned' => true,
-				]
-			]
+				],
+			],
 		] ) );
 
 		// assert default behaviour matches expectations
@@ -295,6 +269,26 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull(
 			$mentorManager->getMentorForUserIfExists( $menteeUser )
 		);
+	}
+
+	public function testOptOutMentorshipDropsRelationship() {
+		$mentee = $this->getTestUser()->getUser();
+		$mentor = $this->getTestSysop()->getUser();
+
+		$mentorManager = $this->getMentorManager();
+		$mentorStore = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorStore();
+
+		// Must be in this order; otherwise, setMentorshipStateForUser() would negate the
+		// setMentorForUser()
+		$mentorManager->setMentorshipStateForUser( $mentee, MentorManager::MENTORSHIP_OPTED_OUT );
+		$mentorStore->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
+
+		// getMentorForUserSafe() should claim there is no mentor...
+		$this->assertNull( $mentorManager->getMentorForUserSafe( $mentee, MentorStore::ROLE_PRIMARY ) );
+
+		// ...and there should be no in the database either (this is the key assert).
+		$this->assertNull( $mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
 	}
 
 	/**
