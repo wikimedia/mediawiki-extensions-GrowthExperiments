@@ -103,6 +103,7 @@ class StructuredTaskSurfacer {
 
 		if ( topRecs.length ) {
 			mw.track( this.trackingCounterPrefix + '.highlight.page.impression', 1 );
+			this.incrementPerformanceCounter( 'page_impression' );
 			this.logger.log( 'impression' );
 		}
 
@@ -122,6 +123,7 @@ class StructuredTaskSurfacer {
 						if ( entry.isIntersecting && !aHighlightHasBeenSeenByUser ) {
 							aHighlightHasBeenSeenByUser = true;
 							mw.track( this.trackingCounterPrefix + '.highlight.viewport.impression', 1 );
+							this.incrementPerformanceCounter( 'viewport_impression' );
 							this.logger.log( 'viewport_impression' );
 						}
 					} );
@@ -141,6 +143,22 @@ class StructuredTaskSurfacer {
 					textToLink,
 					highlightNode,
 				);
+			},
+		);
+	}
+
+	/**
+	 * @private
+	 * @param {string} metricName
+	 */
+	incrementPerformanceCounter( metricName ) {
+		mw.track(
+			'stats.mediawiki_GrowthExperiments_surfacing_addlink_' + metricName + '_total',
+			1,
+			// @ts-expect-error signature update pending in https://github.com/wikimedia/typescript-types/pull/54
+			{
+				wiki: mw.config.get( 'wgDBname' ),
+				platform: this.isMobile() ? 'mobile' : 'desktop',
 			},
 		);
 	}
@@ -190,6 +208,7 @@ class StructuredTaskSurfacer {
 			}
 
 			mw.track( this.trackingCounterPrefix + '.popup.clickOutside', 1 );
+			this.incrementPerformanceCounter( 'popup_click_outside' );
 			highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
 			popup.toggle( false );
 			document.removeEventListener( 'click', handleClickOutsidePopup, true );
@@ -198,6 +217,7 @@ class StructuredTaskSurfacer {
 		highlightButtonElement.addEventListener( 'click',
 			() => {
 				mw.track( this.trackingCounterPrefix + '.highlight.click', 1 );
+				this.incrementPerformanceCounter( 'highlight_click' );
 				highlightButtonElement.classList.add( 'growth-surfaced-task-popup-visible' );
 				document.addEventListener( 'click', handleClickOutsidePopup, true );
 				popup.toggle( true );
@@ -206,6 +226,7 @@ class StructuredTaskSurfacer {
 		popup.addYesButtonClickHandler(
 			() => {
 				mw.track( this.trackingCounterPrefix + '.popup.Yes.click', 1 );
+				this.incrementPerformanceCounter( 'popup_yes_click' );
 				this.logger.log( 'suggestion_accept_yes', null, {
 					/* eslint-disable camelcase */
 					active_interface: 'readmode_suggestion_dialog',
@@ -222,6 +243,7 @@ class StructuredTaskSurfacer {
 		popup.addNoButtonClickHandler(
 			() => {
 				mw.track( this.trackingCounterPrefix + '.popup.No.click', 1 );
+				this.incrementPerformanceCounter( 'popup_no_click' );
 				highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
 				popup.toggle( false );
 				document.removeEventListener( 'click', handleClickOutsidePopup, true );
@@ -230,6 +252,7 @@ class StructuredTaskSurfacer {
 		popup.addXButtonClickHandler(
 			() => {
 				mw.track( this.trackingCounterPrefix + '.popup.X.click', 1 );
+				this.incrementPerformanceCounter( 'popup_x_click' );
 				highlightButtonElement.classList.remove( 'growth-surfaced-task-popup-visible' );
 				document.removeEventListener( 'click', handleClickOutsidePopup, true );
 			},
