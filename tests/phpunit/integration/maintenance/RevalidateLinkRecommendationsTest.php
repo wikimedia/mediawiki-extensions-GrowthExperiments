@@ -21,6 +21,11 @@ class RevalidateLinkRecommendationsTest extends MaintenanceBaseTestCase {
 		return RevalidateLinkRecommendations::class;
 	}
 
+	protected function setUp(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+		parent::setUp();
+	}
+
 	public static function provideScenarios(): iterable {
 		yield 'only existing recommendations' => [
 			[],
