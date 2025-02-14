@@ -38,8 +38,7 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 		UserIdentityLookup $userIdentityLookup,
 		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup,
-		UserOptionsManager $userOptionsManager,
-		bool $wasPosted
+		UserOptionsManager $userOptionsManager
 	) {
 		$this->mentorStore = $mentorStore;
 		$this->mentorStatusManager = $mentorStatusManager;
@@ -48,7 +47,6 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userOptionsManager = $userOptionsManager;
-		$this->wasPosted = $wasPosted;
 
 		$this->setLogger( new NullLogger() );
 	}

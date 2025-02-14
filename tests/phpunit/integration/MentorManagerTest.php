@@ -6,9 +6,6 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use MediaWiki\Context\DerivativeContext;
-use MediaWiki\Context\IContextSource;
-use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWikiIntegrationTestCase;
 
@@ -43,7 +40,10 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			],
 		] ) );
 
-		$this->assertNull( $this->getMentorManager()->getMentorForUserSafe( $this->getTestUser()->getUser() ) );
+		$this->assertNull( GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorManager()
+			->getMentorForUserSafe( $this->getTestUser()->getUser() )
+		);
 	}
 
 	/**
@@ -58,7 +58,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			''
 		) );
 
-		$mentorManager = $this->getMentorManager();
+		$mentorManager = $geServices->getMentorManager();
 		$mentor = $mentorManager->getMentorForUserSafe( $this->getTestUser()->getUser() );
 		$this->assertEquals( $sysop->getId(), $mentor->getUserIdentity()->getId() );
 	}
@@ -73,7 +73,9 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			->getMentorStore()
 			->setMentorForUser( $user, $sysop, MentorStore::ROLE_PRIMARY );
 
-		$mentor = $this->getMentorManager()->getMentorForUserSafe( $user );
+		$mentor = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorManager()
+			->getMentorForUserSafe( $user );
 		$this->assertEquals( $sysop->getName(), $mentor->getUserIdentity()->getName() );
 	}
 
@@ -86,7 +88,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			''
 		) );
 
-		$this->assertNull( $this->getMentorManager()->getMentorForUserSafe( $user ) );
+		$this->assertNull( $geServices->getMentorManager()->getMentorForUserSafe( $user ) );
 	}
 
 	public function testMentorCannotBeMenteeMoreMentors() {
@@ -106,13 +108,15 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			''
 		) );
 
-		$mentor = $this->getMentorManager()->getMentorForUserSafe( $userMentee );
+		$mentor = $geServices->getMentorManager()->getMentorForUserSafe( $userMentee );
 		$this->assertEquals( $mentor->getUserIdentity()->getName(), $userMentor->getName() );
 	}
 
 	public function testNoMentorAvailable() {
 		$this->assertNull(
-			$this->getMentorManager()->getMentorForUserSafe( $this->getMutableTestUser()->getUser() )
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+				->getMentorManager()
+				->getMentorForUserSafe( $this->getMutableTestUser()->getUser() )
 		);
 	}
 
@@ -134,9 +138,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 				$mentorUser,
 				MentorStore::ROLE_PRIMARY
 			);
-		$context = new DerivativeContext( RequestContext::getMain() );
-		$context->setUser( $mentee );
-		$mentorManager = $this->getMentorManager( $context );
+		$mentorManager = $geServices->getMentorManager();
 
 		$mentor = $mentorManager->getMentorForUserSafe( $mentee );
 		$this->assertEquals( 'This is a sample text.', $mentor->getIntroText() );
@@ -146,18 +148,16 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\Mentorship\Mentor::getIntroText
 	 */
 	public function testRenderFallbackMentorText() {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$mentee = $this->getMutableTestUser()->getUser();
-		GrowthExperimentsServices::wrap( $this->getServiceContainer() )
-			->getMentorStore()
+		$geServices->getMentorStore()
 			->setMentorForUser(
 				$mentee,
 				$mentorUser,
 				MentorStore::ROLE_PRIMARY
 			);
-		$context = new DerivativeContext( RequestContext::getMain() );
-		$context->setUser( $mentee );
-		$mentorManager = $this->getMentorManager( $context );
+		$mentorManager = $geServices->getMentorManager();
 
 		$mentor = $mentorManager->getMentorForUserSafe( $mentee );
 		$this->assertStringContainsString(
@@ -193,7 +193,8 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		);
 		$optionManager->saveOptions( $optedOutUser );
 
-		$mentorManager = $this->getMentorManager();
+		$mentorManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorManager();
 		$this->assertEquals(
 			IMentorManager::MENTORSHIP_ENABLED,
 			$mentorManager->getMentorshipStateForUser( $enabledUser )
@@ -221,7 +222,9 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertEquals(
 			IMentorManager::MENTORSHIP_DISABLED,
-			$this->getMentorManager()->getMentorshipStateForUser( $brokenUser )
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+				->getMentorManager()
+				->getMentorshipStateForUser( $brokenUser )
 		);
 	}
 
@@ -229,7 +232,8 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 	 * @see T351415
 	 */
 	public function testSetMentorshipStateForUserOptOut() {
-		$mentorManager = $this->getMentorManager();
+		$mentorManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorManager();
 		$menteeUser = $this->getMutableTestUser()->getUserIdentity();
 		$mentorUser = $this->getMutableTestUser()->getUserIdentity();
 
@@ -270,7 +274,8 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		$mentee = $this->getTestUser()->getUser();
 		$mentor = $this->getTestSysop()->getUser();
 
-		$mentorManager = $this->getMentorManager();
+		$mentorManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorManager();
 		$mentorStore = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorStore();
 
@@ -292,10 +297,10 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		$mentee = $this->getTestUser()->getUser();
 		$mentor = $this->getTestSysop()->getUser();
 
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$blockUserFactory = $this->getServiceContainer()->getBlockUserFactory();
-		$mentorManager = $this->getMentorManager();
-		$mentorStore = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
-			->getMentorStore();
+		$mentorManager = $geServices->getMentorManager();
+		$mentorStore = $geServices->getMentorStore();
 
 		// Must be in this order; otherwise, blocking the mentee would drop the relationship
 		$blockUserFactory->newBlockUser( $mentee, $mentor, 'indefinite' )->placeBlockUnsafe();
@@ -315,7 +320,7 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		$mentorStore = $geServices->getMentorStore();
 		$mentorProvider = $geServices->getMentorProvider();
 		$mentorWriter = $geServices->getMentorWriter();
-		$mentorManager = $this->getMentorManager();
+		$mentorManager = $geServices->getMentorManager();
 
 		$mentee = $this->getMutableTestUser()->getUser();
 		$otherUser = $this->getMutableTestUser()->getUser();
@@ -334,26 +339,5 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			'Test'
 		);
 		$this->assertNull( $mentorManager->getMentorForUserSafe( $mentee, MentorStore::ROLE_BACKUP ) );
-	}
-
-	/**
-	 * @param IContextSource|null $context
-	 * @return MentorManager
-	 */
-	private function getMentorManager( ?IContextSource $context = null ) {
-		$coreServices = $this->getServiceContainer();
-		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
-		$context ??= RequestContext::getMain();
-
-		return new MentorManager(
-			$growthServices->getMentorStore(),
-			$growthServices->getMentorStatusManager(),
-			$growthServices->getMentorProvider(),
-			$coreServices->getUserIdentityLookup(),
-			$coreServices->getUserFactory(),
-			$coreServices->getUserOptionsLookup(),
-			$coreServices->getUserOptionsManager(),
-			$context->getRequest()->wasPosted()
-		);
 	}
 }

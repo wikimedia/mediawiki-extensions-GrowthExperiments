@@ -504,8 +504,7 @@ return [
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
 			$services->getUserOptionsLookup(),
-			$services->getUserOptionsManager(),
-			RequestContext::getMain()->getRequest()->wasPosted()
+			$services->getUserOptionsManager()
 		);
 		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $manager;
