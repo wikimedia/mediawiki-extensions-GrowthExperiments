@@ -18,27 +18,27 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\WikiMap\WikiMap;
 use Wikimedia\Rdbms\DBReadOnlyError;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Stats\StatsFactory;
 
 class PageUpdatedSubscriber extends EventSubscriberBase {
 
 	private ChangeTagsStore $changeTagsStore;
 	private Config $config;
-	private ILoadBalancer $lb;
+	private IConnectionProvider $connectionProvider;
 	private StatsFactory $statsFactory;
 	private LinkRecommendationHelper $linkRecommendationHelper;
 
 	public function __construct(
 		ChangeTagsStore $changeTagsStore,
 		Config $config,
-		ILoadBalancer $lb,
+		IConnectionProvider $connectionProvider,
 		StatsFactory $statsFactory,
 		LinkRecommendationHelper $linkRecommendationHelper
 	) {
 		$this->changeTagsStore = $changeTagsStore;
 		$this->config = $config;
-		$this->lb = $lb;
+		$this->connectionProvider = $connectionProvider;
 		$this->statsFactory = $statsFactory;
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 	}
@@ -76,7 +76,7 @@ class PageUpdatedSubscriber extends EventSubscriberBase {
 			return;
 		}
 		$tags = $this->changeTagsStore->getTags(
-			$this->lb->getConnection( DB_REPLICA ),
+			$this->connectionProvider->getReplicaDatabase(),
 			null,
 			$revId
 		);
