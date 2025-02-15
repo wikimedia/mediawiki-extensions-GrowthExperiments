@@ -122,12 +122,9 @@ return [
 		MediaWikiServices $services
 	): AddImageSubmissionHandler {
 		$geServices = GrowthExperimentsServices::wrap( $services );
+		$cirrusSearchServices = CirrusSearchServices::wrap( $services );
 		return new AddImageSubmissionHandler(
-			static function () use ( $services ) {
-				$cirrusSearchServices = CirrusSearchServices::wrap( $services );
-
-				return $cirrusSearchServices->getWeightedTagsUpdater();
-			},
+			$cirrusSearchServices->getWeightedTagsUpdater(),
 			$geServices->getTaskSuggesterFactory(),
 			$geServices->getNewcomerTasksUserOptionsLookup(),
 			$services->getMainWANObjectCache(),
@@ -326,15 +323,12 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationHelper {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$cirrusSearchServices = CirrusSearchServices::wrap( $services );
 		return new LinkRecommendationHelper(
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getLinkRecommendationProvider(),
 			$growthServices->getLinkRecommendationStore(),
-			static function () use ( $services ) {
-				$cirrusSearchServices = CirrusSearchServices::wrap( $services );
-
-				return $cirrusSearchServices->getWeightedTagsUpdater();
-			}
+			$cirrusSearchServices->getWeightedTagsUpdater(),
 		);
 	},
 
@@ -419,6 +413,7 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationUpdater {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$cirrusSearchServices = CirrusSearchServices::wrap( $services );
 		return new LinkRecommendationUpdater(
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			$services->getDBLoadBalancerFactory(),
@@ -427,11 +422,7 @@ return [
 			$services->getPageProps(),
 			$services->getChangeTagsStore(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
-			static function () use ( $services ) {
-				$cirrusSearchServices = CirrusSearchServices::wrap( $services );
-
-				return $cirrusSearchServices->getWeightedTagsUpdater();
-			},
+			$cirrusSearchServices->getWeightedTagsUpdater(),
 			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' ),
 			$growthServices->getLinkRecommendationStore()
 		);

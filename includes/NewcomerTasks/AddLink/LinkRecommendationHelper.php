@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
+use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -28,22 +29,13 @@ class LinkRecommendationHelper {
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	/**
-	 * @var callable returning {@link \CirrusSearch\WeightedTagsUpdater}
-	 */
-	private $weightedTagsUpdaterProvider;
+	private WeightedTagsUpdater $weightedTagsUpdaterProvider;
 
-	/**
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param LinkRecommendationProvider $linkRecommendationProvider
-	 * @param LinkRecommendationStore $linkRecommendationStore
-	 * @param callable(): \CirrusSearch\WeightedTagsUpdater $weightedTagsUpdaterProvider
-	 */
 	public function __construct(
 		ConfigurationLoader $configurationLoader,
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkRecommendationStore $linkRecommendationStore,
-		callable $weightedTagsUpdaterProvider
+		WeightedTagsUpdater $weightedTagsUpdaterProvider
 	) {
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
@@ -94,10 +86,10 @@ class LinkRecommendationHelper {
 		}
 		if ( $deleteFromSearchIndex ) {
 			DeferredUpdates::addCallableUpdate( function () use ( $pageIdentity, $allowJoiningSearchIndexDeletes ) {
-				( $this->weightedTagsUpdaterProvider )()->resetWeightedTags(
+				$this->weightedTagsUpdaterProvider->resetWeightedTags(
 					$pageIdentity,
 					[ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ],
-					$allowJoiningSearchIndexDeletes ? 'revision' : null
+					$allowJoiningSearchIndexDeletes ? 'revision' : null,
 				);
 			} );
 		}

@@ -28,7 +28,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 		$userIdentityUtilsMock->method( 'isNamed' )->willReturn( true );
 		$imageTaskType = new ImageRecommendationTaskType( 'image', TaskType::DIFFICULTY_EASY );
 		$handler = new AddImageSubmissionHandler(
-			static fn () => $weightedTagsUpdaterMock,
+			$weightedTagsUpdaterMock,
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
 			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createMock( WANObjectCache::class ),
@@ -123,7 +123,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			->method( 'isNamed' )
 			->willReturn( true );
 		$handler = new AddImageSubmissionHandler(
-			static fn () => $weightedTagsUpdaterMock,
+			$weightedTagsUpdaterMock,
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
 			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createMock( WANObjectCache::class ),
