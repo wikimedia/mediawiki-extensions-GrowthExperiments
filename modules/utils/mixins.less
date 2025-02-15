@@ -44,12 +44,12 @@
 
 // Set font-size in em based on the default font size
 .rel-font-size( @parentFontSize, @targetFontSize ) {
-	font-size: unit( @targetFontSize / @parentFontSize, em );
+	font-size: unit( ( @targetFontSize / @parentFontSize ), em );
 }
 
 // Set line-height based on the container's font size
 .rel-line-height( @parentFontSize, @targetLineHeight ) {
-	line-height: unit( @targetLineHeight / @parentFontSize );
+	line-height: unit( ( @targetLineHeight / @parentFontSize ) );
 }
 
 // Set font-size and line-height in em based on the target font size
@@ -71,8 +71,8 @@
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: @lines;
-	@lineHeightValue: unit( @targetLineHeight / @targetFontSize );
-	@fontSizeValue: unit( @targetFontSize / @parentFontSize, em );
+	@lineHeightValue: unit( ( @targetLineHeight / @targetFontSize ) );
+	@fontSizeValue: unit( ( @targetFontSize / @parentFontSize ), em );
 	line-height: @lineHeightValue;
 	// For IE 11 and various old browsers, limit height for the same effect, except
 	// for the ellipsis. Height is <# of lines> * <line height> * <font size>
