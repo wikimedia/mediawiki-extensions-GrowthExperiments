@@ -126,13 +126,6 @@ abstract class AbstractStructuredMentorProvider extends MentorProvider {
 	/**
 	 * @inheritDoc
 	 */
-	public function getMentorsSafe(): array {
-		return $this->getMentors();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function getAutoAssignedMentors(): array {
 		$userIDs = array_keys( array_filter(
 			$this->getMentorData(),

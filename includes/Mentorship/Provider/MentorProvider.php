@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Mentorship\Provider;
 
 use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\WikiConfigException;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareTrait;
@@ -51,12 +50,11 @@ abstract class MentorProvider {
 	 * @return bool
 	 */
 	public function isMentor( UserIdentity $user ): bool {
-		return $user->isRegistered() && in_array( $user->getName(), $this->getMentorsSafe() );
+		return $user->isRegistered() && in_array( $user->getName(), $this->getMentors() );
 	}
 
 	/**
 	 * Get all mentors, regardless on their auto-assignment status
-	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 * @return string[] List of mentors usernames.
 	 */
 	public function getMentors(): array {
@@ -69,29 +67,7 @@ abstract class MentorProvider {
 	}
 
 	/**
-	 * Get all mentors, regardless of their auto-assignment status
-	 *
-	 * This does the same thing as getMentors(), but it suppresses any instance
-	 * of WikiConfigException (and returns an empty array instead).
-	 *
-	 * @return string[]
-	 */
-	public function getMentorsSafe(): array {
-		$mentors = [];
-		try {
-			$mentors = array_merge( $mentors, $this->getAutoAssignedMentors() );
-		} catch ( WikiConfigException $e ) {
-		}
-		try {
-			$mentors = array_merge( $mentors, $this->getManuallyAssignedMentors() );
-		} catch ( WikiConfigException $e ) {
-		}
-		return array_unique( $mentors );
-	}
-
-	/**
 	 * Get all the mentors who are automatically assigned to mentees.
-	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 * @return string[] List of mentor usernames.
 	 */
 	abstract public function getAutoAssignedMentors(): array;
@@ -108,7 +84,6 @@ abstract class MentorProvider {
 
 	/**
 	 * Get a list of mentors who are not automatically assigned to mentees.
-	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 * @return string[] List of mentors usernames.
 	 */
 	abstract public function getManuallyAssignedMentors(): array;

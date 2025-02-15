@@ -52,7 +52,7 @@ class RefreshPraiseworthyMentees extends Maintenance {
 			return;
 		}
 
-		$mentors = $this->mentorProvider->getMentorsSafe();
+		$mentors = $this->mentorProvider->getMentors();
 		foreach ( $mentors as $mentorName ) {
 			$mentor = $this->userIdentityLookup->getUserIdentityByName( $mentorName );
 			if ( !$mentor ) {

@@ -256,7 +256,6 @@ class LegacyStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	public static function provideGetMentors() {
 		return [
 			[ [ 123, 42, 33, 12 ], 'getMentors' ],
-			[ [ 123, 42, 33, 12 ], 'getMentorsSafe' ],
 			[ [ 123, 42, 12 ], 'getAutoAssignedMentors' ],
 			[ [ 33 ], 'getManuallyAssignedMentors' ],
 		];

@@ -23,7 +23,6 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 			->getMentorProviderStructured();
 
 		$this->assertArrayEquals( [], $mentorProvider->getMentors() );
-		$this->assertArrayEquals( [], $mentorProvider->getMentorsSafe() );
 		$this->assertArrayEquals( [], $mentorProvider->getAutoAssignedMentors() );
 		$this->assertArrayEquals( [], $mentorProvider->getWeightedAutoAssignedMentors() );
 		$this->assertArrayEquals( [], $mentorProvider->getManuallyAssignedMentors() );
@@ -40,7 +39,6 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorProviderStructured();
 		$this->assertArrayEquals( [], $mentorProvider->getMentors() );
-		$this->assertArrayEquals( [], $mentorProvider->getMentorsSafe() );
 		$this->assertArrayEquals( [], $mentorProvider->getAutoAssignedMentors() );
 		$this->assertArrayEquals( [], $mentorProvider->getWeightedAutoAssignedMentors() );
 		$this->assertArrayEquals( [], $mentorProvider->getManuallyAssignedMentors() );
@@ -70,10 +68,6 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 		$this->assertArrayEquals(
 			[ $mentorAuto->getName(), $mentorManual->getName() ],
 			$mentorProvider->getMentors()
-		);
-		$this->assertArrayEquals(
-			[ $mentorAuto->getName(), $mentorManual->getName() ],
-			$mentorProvider->getMentorsSafe()
 		);
 		$this->assertArrayEquals(
 			[ $mentorAuto->getName() ],

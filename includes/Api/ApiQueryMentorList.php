@@ -29,7 +29,7 @@ class ApiQueryMentorList extends ApiQueryBase {
 	 */
 	public function execute() {
 		$result = [];
-		$mentorNames = $this->mentorProvider->getMentorsSafe();
+		$mentorNames = $this->mentorProvider->getMentors();
 		foreach ( $mentorNames as $mentorName ) {
 			$mentorUser = $this->userIdentityLookup->getUserIdentityByName( $mentorName );
 			if ( !$mentorUser ) {
