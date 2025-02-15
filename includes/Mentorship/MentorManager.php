@@ -220,11 +220,7 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 			);
 			return null;
 		}
-		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors,
-			array_map( static function ( UserIdentity $excludedUser ) {
-				return $excludedUser->getName();
-			}, $excluded )
-		) );
+		$autoAssignedMentors = array_diff( $autoAssignedMentors, $excluded );
 		if ( count( $autoAssignedMentors ) === 0 ) {
 			$this->logger->debug(
 				'Mentorship: No mentor available for {user} but excluded users',
@@ -234,7 +230,7 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 			);
 			return null;
 		}
-		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors, [ $mentee->getName() ] ) );
+		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors, [ $mentee ] ) );
 		if ( count( $autoAssignedMentors ) === 0 ) {
 			$this->logger->debug(
 				'Mentorship: No mentor available for {user} but themselves',
@@ -245,16 +241,7 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 			return null;
 		}
 
-		$selectedMentorName = $autoAssignedMentors[ rand( 0, count( $autoAssignedMentors ) - 1 ) ];
-		$result = $this->userIdentityLookup->getUserIdentityByName( $selectedMentorName );
-		if ( $result === null ) {
-			throw new WikiConfigException(
-				'Mentorship: Mentor {user} does not have a valid username',
-				[ 'user' => $selectedMentorName ]
-			);
-		}
-
-		return $result;
+		return $autoAssignedMentors[ rand( 0, count( $autoAssignedMentors ) - 1 ) ];
 	}
 
 	/**

@@ -45,8 +45,8 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 	}
 
 	public function testWithMentors() {
-		$mentorAuto = $this->getMutableTestUser()->getUser();
-		$mentorManual = $this->getMutableTestUser()->getUser();
+		$mentorAuto = $this->getMutableTestUser()->getUserIdentity();
+		$mentorManual = $this->getMutableTestUser()->getUserIdentity();
 		$this->insertPage(
 			'MediaWiki:GrowthMentors.json',
 			FormatJson::encode( [
@@ -66,22 +66,22 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorProviderStructured();
 		$this->assertArrayEquals(
-			[ $mentorAuto->getName(), $mentorManual->getName() ],
+			[ $mentorAuto, $mentorManual ],
 			$mentorProvider->getMentors()
 		);
 		$this->assertArrayEquals(
-			[ $mentorAuto->getName() ],
+			[ $mentorAuto ],
 			$mentorProvider->getAutoAssignedMentors()
 		);
 		$this->assertArrayEquals(
-			[ $mentorManual->getName() ],
+			[ $mentorManual ],
 			$mentorProvider->getManuallyAssignedMentors()
 		);
 	}
 
 	public function testGetWeightedAutoAssignedMentors() {
-		$mentorAuto = $this->getMutableTestUser()->getUser();
-		$mentorManual = $this->getMutableTestUser()->getUser();
+		$mentorAuto = $this->getMutableTestUser()->getUserIdentity();
+		$mentorManual = $this->getMutableTestUser()->getUserIdentity();
 		$this->insertPage(
 			'MediaWiki:GrowthMentors.json',
 			FormatJson::encode( [
@@ -103,7 +103,7 @@ class StructuredMentorProviderIntegrationTest extends MediaWikiIntegrationTestCa
 		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorProviderStructured();
 		$this->assertArrayEquals(
-			[ $mentorAuto->getName(), $mentorAuto->getName() ],
+			[ $mentorAuto, $mentorAuto ],
 			$mentorProvider->getWeightedAutoAssignedMentors()
 		);
 	}

@@ -181,7 +181,6 @@
 		"growthmentorlist": {
 			"class": "GrowthExperiments\\Api\\ApiQueryMentorList",
 			"services": [
-				"UserIdentityLookup",
 				"GrowthExperimentsMentorProvider"
 			]
 		},

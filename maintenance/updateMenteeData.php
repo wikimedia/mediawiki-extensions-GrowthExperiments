@@ -5,10 +5,8 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use GrowthExperiments\WikiConfigException;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Stats\StatsFactory;
 
@@ -20,23 +18,11 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class UpdateMenteeData extends Maintenance {
 
-	/** @var MenteeOverviewDataUpdater */
-	private $menteeOverviewDataUpdater;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/** @var UserFactory */
-	private $userFactory;
-
-	/** @var ILoadBalancer */
-	private $growthLoadBalancer;
-
-	/** @var StatsFactory */
-	private $statsFactory;
-
-	/** @var array */
-	private $detailedProfilingInfo = [];
+	private MenteeOverviewDataUpdater $menteeOverviewDataUpdater;
+	private MentorProvider $mentorProvider;
+	private ILoadBalancer $growthLoadBalancer;
+	private StatsFactory $statsFactory;
+	private array $detailedProfilingInfo = [];
 
 	public function __construct() {
 		parent::__construct();
@@ -63,7 +49,6 @@ class UpdateMenteeData extends Maintenance {
 		$this->menteeOverviewDataUpdater = $geServices->getMenteeOverviewDataUpdater();
 		$this->menteeOverviewDataUpdater->setBatchSize( $this->getBatchSize() );
 		$this->mentorProvider = $geServices->getMentorProvider();
-		$this->userFactory = $services->getUserFactory();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
 		$this->statsFactory = $services->getStatsFactory();
 	}
@@ -102,22 +87,12 @@ class UpdateMenteeData extends Maintenance {
 		if ( $this->hasOption( 'mentor' ) ) {
 			$mentors = [ $this->getOption( 'mentor' ) ];
 		} else {
-			try {
-				$mentors = $this->mentorProvider->getMentors();
-			} catch ( WikiConfigException $e ) {
-				$this->fatalError( 'List of mentors cannot be fetched.' );
-			}
+			$mentors = $this->mentorProvider->getMentors();
 		}
 
 		$allUpdatedMenteeIds = [];
 		$dbw = $this->growthLoadBalancer->getConnection( DB_PRIMARY );
-		foreach ( $mentors as $mentorRaw ) {
-			$mentor = $this->userFactory->newFromName( $mentorRaw );
-			if ( $mentor === null ) {
-				$this->output( 'Skipping ' . $mentorRaw . ", invalid user\n" );
-				continue;
-			}
-
+		foreach ( $mentors as $mentor ) {
 			$updatedMenteeIds = $this->menteeOverviewDataUpdater->updateDataForMentor( $mentor );
 			$allUpdatedMenteeIds = array_merge( $allUpdatedMenteeIds, $updatedMenteeIds );
 			$this->addProfilingInfoForMentor(

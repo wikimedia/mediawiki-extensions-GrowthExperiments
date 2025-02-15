@@ -627,7 +627,6 @@ return [
 		return new MetricsFactory(
 			$services->getDBLoadBalancer(),
 			$services->getUserEditTracker(),
-			$services->getUserIdentityLookup(),
 			GrowthExperimentsServices::wrap( $services )->getMentorProvider(),
 		);
 	},

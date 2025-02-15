@@ -6,21 +6,17 @@ use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
-use MediaWiki\User\UserIdentityLookup;
 
 class ApiQueryMentorList extends ApiQueryBase {
 
-	private UserIdentityLookup $userIdentityLookup;
 	private MentorProvider $mentorProvider;
 
 	public function __construct(
 		ApiQuery $queryModule,
 		string $moduleName,
-		UserIdentityLookup $userIdentityLookup,
 		MentorProvider $mentorProvider
 	) {
 		parent::__construct( $queryModule, $moduleName );
-		$this->userIdentityLookup = $userIdentityLookup;
 		$this->mentorProvider = $mentorProvider;
 	}
 
@@ -29,12 +25,8 @@ class ApiQueryMentorList extends ApiQueryBase {
 	 */
 	public function execute() {
 		$result = [];
-		$mentorNames = $this->mentorProvider->getMentors();
-		foreach ( $mentorNames as $mentorName ) {
-			$mentorUser = $this->userIdentityLookup->getUserIdentityByName( $mentorName );
-			if ( !$mentorUser ) {
-				continue;
-			}
+		$mentorUsers = $this->mentorProvider->getMentors();
+		foreach ( $mentorUsers as $mentorUser ) {
 			$mentor = $this->mentorProvider->newMentorFromUserIdentity( $mentorUser );
 			$result[$mentorUser->getId()] = AbstractStructuredMentorWriter::serializeMentor( $mentor );
 

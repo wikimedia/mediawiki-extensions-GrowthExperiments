@@ -8,6 +8,7 @@ use GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorProvider;
 use MediaWiki\Message\Message;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserSelectQueryBuilder;
@@ -262,18 +263,15 @@ class LegacyStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testGetWeightedAutoAssignedMentors() {
+		$userIdentities = self::USERNAME_MAP;
+		array_walk( $userIdentities, static function ( &$user, $userId ) {
+			$user = new UserIdentityValue( $userId, $user );
+		} );
 		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
 		$userIdentityLookup->expects( $this->atLeastOnce() )
 			->method( 'getUserIdentityByUserId' )
-			->willReturnCallback( static function ( $userId ) {
-				if ( !array_key_exists( $userId, self::USERNAME_MAP ) ) {
-					return null;
-				}
-
-				return new UserIdentityValue(
-					$userId,
-					self::USERNAME_MAP[$userId]
-				);
+			->willReturnCallback( static function ( $userId ) use ( $userIdentities ) {
+				return $userIdentities[$userId] ?? null;
 			} );
 
 		$provider = new LegacyStructuredMentorProvider(
@@ -285,7 +283,8 @@ class LegacyStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 
 		$this->assertArrayEquals(
 			[ 'Jane', 'Jane', 'Peter', 'Peter', 'Peter', 'Peter', 'Robert' ],
-			$provider->getWeightedAutoAssignedMentors()
+			array_map( static fn ( UserIdentity $user ) => $user->getName(),
+				$provider->getWeightedAutoAssignedMentors() )
 		);
 	}
 }

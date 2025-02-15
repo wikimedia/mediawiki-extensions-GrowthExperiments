@@ -53,13 +53,7 @@ class RefreshPraiseworthyMentees extends Maintenance {
 		}
 
 		$mentors = $this->mentorProvider->getMentors();
-		foreach ( $mentors as $mentorName ) {
-			$mentor = $this->userIdentityLookup->getUserIdentityByName( $mentorName );
-			if ( !$mentor ) {
-				$this->output( 'Skipping ' . $mentorName . ", invalid user\n" );
-				continue;
-			}
-
+		foreach ( $mentors as $mentor ) {
 			$this->praiseworthyMenteeSuggester->refreshPraiseworthyMenteesForMentor( $mentor );
 		}
 

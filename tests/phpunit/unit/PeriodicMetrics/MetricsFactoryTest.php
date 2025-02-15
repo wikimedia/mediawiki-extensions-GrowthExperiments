@@ -6,7 +6,6 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use InvalidArgumentException;
 use MediaWiki\User\UserEditTracker;
-use MediaWiki\User\UserIdentityLookup;
 use MediaWikiUnitTestCase;
 use Wikimedia\Rdbms\LoadBalancer;
 
@@ -19,7 +18,6 @@ class MetricsFactoryTest extends MediaWikiUnitTestCase {
 		$metricsFactory = new MetricsFactory(
 			$this->createNoOpMock( LoadBalancer::class ),
 			$this->createNoOpMock( UserEditTracker::class ),
-			$this->createNoOpMock( UserIdentityLookup::class ),
 			$this->createNoOpMock( MentorProvider::class )
 		);
 

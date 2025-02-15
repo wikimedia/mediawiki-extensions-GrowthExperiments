@@ -224,24 +224,21 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
-	 * @param string[] $mentorNames
+	 * @param UserIdentity[] $mentors
 	 * @return string
 	 */
-	private function getMentorsTableBody( array $mentorNames ): string {
+	private function getMentorsTableBody( array $mentors ): string {
 		// sort mentors alphabetically
-		sort( $mentorNames );
+		usort(
+			$mentors,
+			static fn ( UserIdentity $a, UserIdentity $b ) => $a->getName() <=> $b->getName()
+		);
 
 		$mentorsHtml = [];
 		$i = 1;
-		foreach ( $mentorNames as $mentorName ) {
-			$mentorUser = $this->userIdentityLookup->getUserIdentityByName( $mentorName );
-			if ( !$mentorUser ) {
-				// TODO: Log an error?
-				continue;
-			}
-
+		foreach ( $mentors as $mentor ) {
 			$mentorsHtml[] = $this->getMentorAsHtmlRow(
-				$this->mentorProvider->newMentorFromUserIdentity( $mentorUser ),
+				$this->mentorProvider->newMentorFromUserIdentity( $mentor ),
 				$i
 			);
 			$i++;
@@ -251,11 +248,11 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
-	 * @param string[] $mentorNames
+	 * @param UserIdentity[] $mentors
 	 * @return string
 	 */
-	private function getMentorsTable( array $mentorNames ): string {
-		if ( $mentorNames === [] ) {
+	private function getMentorsTable( array $mentors ): string {
+		if ( $mentors === [] ) {
 			return Html::element(
 				'p',
 				[],
@@ -324,7 +321,7 @@ class SpecialManageMentors extends SpecialPage {
 				Html::rawElement(
 					'tbody',
 					[],
-					$this->getMentorsTableBody( $mentorNames )
+					$this->getMentorsTableBody( $mentors )
 				)
 			] )
 		);

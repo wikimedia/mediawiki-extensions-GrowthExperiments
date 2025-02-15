@@ -5,8 +5,7 @@ namespace GrowthExperiments\PeriodicMetrics;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use InvalidArgumentException;
 use MediaWiki\User\UserEditTracker;
-use MediaWiki\User\UserIdentityLookup;
-use Wikimedia\Rdbms\LoadBalancer;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class MetricsFactory {
 
@@ -16,33 +15,17 @@ class MetricsFactory {
 		NewcomersByMentorMetric::class,
 	];
 
-	/** @var LoadBalancer */
-	private $loadBalancer;
+	private ILoadBalancer $loadBalancer;
+	private UserEditTracker $userEditTracker;
+	private MentorProvider $mentorProvider;
 
-	/** @var UserEditTracker */
-	private $userEditTracker;
-
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
-
-	/**
-	 * @param LoadBalancer $loadBalancer
-	 * @param UserEditTracker $userEditTracker
-	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param MentorProvider $mentorProvider
-	 */
 	public function __construct(
-		LoadBalancer $loadBalancer,
+		ILoadBalancer $loadBalancer,
 		UserEditTracker $userEditTracker,
-		UserIdentityLookup $userIdentityLookup,
 		MentorProvider $mentorProvider
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->userEditTracker = $userEditTracker;
-		$this->userIdentityLookup = $userIdentityLookup;
 		$this->mentorProvider = $mentorProvider;
 	}
 
@@ -58,7 +41,6 @@ class MetricsFactory {
 			case InactiveMentorsMetric::class:
 				return new InactiveMentorsMetric(
 					$this->userEditTracker,
-					$this->userIdentityLookup,
 					$this->mentorProvider
 				);
 			case NewcomersByMentorMetric::class:

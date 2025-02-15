@@ -116,11 +116,11 @@ abstract class AbstractStructuredMentorProvider extends MentorProvider {
 			return [];
 		}
 
-		return $this->userIdentityLookup->newSelectQueryBuilder()
+		return iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserIds( $mentorIds )
 			->registered()
 			->caller( __METHOD__ )
-			->fetchUserNames();
+			->fetchUserIdentities() );
 	}
 
 	/**
@@ -142,21 +142,20 @@ abstract class AbstractStructuredMentorProvider extends MentorProvider {
 			return [];
 		}
 
-		return $this->userIdentityLookup->newSelectQueryBuilder()
+		return iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserIds( $userIDs )
 			->registered()
 			->caller( __METHOD__ )
-			->fetchUserNames();
+			->fetchUserIdentities() );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getWeightedAutoAssignedMentors(): array {
-		$mentors = $this->getMentorData();
-
-		$usernames = [];
-		foreach ( $mentors as $userId => $mentorData ) {
+		$mentorsData = $this->getMentorData();
+		$result = [];
+		foreach ( $mentorsData as $userId => $mentorData ) {
 			$user = $this->userIdentityLookup->getUserIdentityByUserId( $userId );
 			if ( !$user ) {
 				continue;
@@ -170,13 +169,13 @@ abstract class AbstractStructuredMentorProvider extends MentorProvider {
 				continue;
 			}
 
-			$usernames = array_merge( $usernames, array_fill(
+			$result = array_merge( $result, array_fill(
 				0,
-				$mentorData['weight'],
-				$user->getName()
+				$mentor->getWeight(),
+				$user
 			) );
 		}
-		return $usernames;
+		return $result;
 	}
 
 	/**
@@ -198,10 +197,10 @@ abstract class AbstractStructuredMentorProvider extends MentorProvider {
 			return [];
 		}
 
-		return $this->userIdentityLookup->newSelectQueryBuilder()
+		return iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
 			->whereUserIds( $userIDs )
 			->registered()
 			->caller( __METHOD__ )
-			->fetchUserNames();
+			->fetchUserIdentities() );
 	}
 }

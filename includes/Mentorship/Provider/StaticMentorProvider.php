@@ -59,7 +59,7 @@ class StaticMentorProvider extends MentorProvider {
 	 */
 	public function getAutoAssignedMentors(): array {
 		return array_unique( array_values( array_map( static function ( Mentor $mentor ) {
-			return $mentor->getUserIdentity()->getName();
+			return $mentor->getUserIdentity();
 		}, $this->autoMentors ) ) );
 	}
 
@@ -75,7 +75,7 @@ class StaticMentorProvider extends MentorProvider {
 	 */
 	public function getManuallyAssignedMentors(): array {
 		return array_unique( array_values( array_map( static function ( Mentor $mentor ) {
-			return $mentor->getUserIdentity()->getName();
+			return $mentor->getUserIdentity();
 		}, $this->manualMentors ) ) );
 	}
 }

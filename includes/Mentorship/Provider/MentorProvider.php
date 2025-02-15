@@ -50,12 +50,21 @@ abstract class MentorProvider {
 	 * @return bool
 	 */
 	public function isMentor( UserIdentity $user ): bool {
-		return $user->isRegistered() && in_array( $user->getName(), $this->getMentors() );
+		return $user->isRegistered() && array_reduce(
+			$this->getMentors(),
+			static function ( bool $carry, UserIdentity $mentorUser ) use ( $user ) {
+				if ( $carry ) {
+					return true;
+				}
+				return $user->equals( $mentorUser );
+			},
+			false
+		);
 	}
 
 	/**
 	 * Get all mentors, regardless on their auto-assignment status
-	 * @return string[] List of mentors usernames.
+	 * @return UserIdentity[] List of mentors
 	 */
 	public function getMentors(): array {
 		return array_unique(
@@ -68,7 +77,7 @@ abstract class MentorProvider {
 
 	/**
 	 * Get all the mentors who are automatically assigned to mentees.
-	 * @return string[] List of mentor usernames.
+	 * @return UserIdentity[] List of mentors.
 	 */
 	abstract public function getAutoAssignedMentors(): array;
 
@@ -78,13 +87,13 @@ abstract class MentorProvider {
 	 * If a mentor is configured to receive more mentees than others, the returned array will
 	 * have their name multiple times.
 	 *
-	 * @return string[] Array of usernames
+	 * @return UserIdentity[] Array of mentors
 	 */
 	abstract public function getWeightedAutoAssignedMentors(): array;
 
 	/**
 	 * Get a list of mentors who are not automatically assigned to mentees.
-	 * @return string[] List of mentors usernames.
+	 * @return UserIdentity[] List of mentors.
 	 */
 	abstract public function getManuallyAssignedMentors(): array;
 }
