@@ -46,6 +46,7 @@ class PageUpdatedSubscriber extends EventSubscriberBase {
 	public function handlePageUpdatedEventAfterCommit( PageUpdatedEvent $event ): void {
 		if (
 			$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) &&
+			!$event->isNew() &&
 			$event->getPage()->getNamespace() === NS_MAIN
 		) {
 			$this->clearLinkRecommendationRecordForPage( $event->getPage() );
