@@ -1,7 +1,5 @@
 <?php
 
-use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\TourHooks;
 use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactLookup;
@@ -81,12 +79,3 @@ if ( defined( 'MW_QUIBBLE_CI' ) && !is_dir( "$IP/services/parsoid" ) ) {
 	$PARSOID_INSTALL_DIR = "$IP/vendor/wikimedia/parsoid";
 	wfLoadExtension( 'Parsoid', "$PARSOID_INSTALL_DIR/extension.json" );
 }
-
-// Activate suggested edits for new users, complete various tours.
-$wgHooks['UserGetDefaultOptions'][] = static function ( &$defaultOptions ) {
-	$defaultOptions[SuggestedEdits::ACTIVATED_PREF] = true;
-	$defaultOptions[TourHooks::TOUR_COMPLETED_HELP_PANEL] = true;
-	$defaultOptions[TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY] = true;
-	$defaultOptions[TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP] = true;
-	$defaultOptions[TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME] = true;
-};
