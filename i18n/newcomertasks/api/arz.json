@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dyolf77 (WMF)"
+			"Dyolf77 (WMF)",
+			"Meno25"
 		]
 	},
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "هل يجب ربط '$1'؟",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "قم بمراجعة بعض الروابط المقترحة وتحسين شبكة المعلومات في ويكيبيديا.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "راجع رابط مقترح وحسن شبكه المعلومات في ويكيبيديا.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "نعم",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "لا"
 }

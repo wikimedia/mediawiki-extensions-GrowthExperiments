@@ -22,5 +22,9 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Titulo del articulo pro le qual es le carga de recommendation de imagine",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "Le nomine de file sin prefixo pro le recommendation de imagine, p.ex. <kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "Le titulo del section al qual le recommendation de imagine es destinate, p.ex. <kbd>Historia</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Le indice de base 1 del section al qual le recommendation de imagine es destinate, p.ex. <kbd>3</kbd>"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Le indice de base 1 del section al qual le recommendation de imagine es destinate, p.ex. <kbd>3</kbd>",
+	"apihelp-query+linkrecommendations-summary": "Recuperar recommendationes de ligamines pro un pagina specific",
+	"apihelp-query+linkrecommendations-example-1": "Obtener recommendationes pro le pagina con ID 123",
+	"apihelp-query+linkrecommendations-example-2": "Obtener usque a 5 recommendationes de ligamines pro le pagina con ID 456",
+	"apihelp-query+linkrecommendations-param-pageid": "Le ID del pagina pro le qual recuperar recommendationes de ligamines."
 }

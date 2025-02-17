@@ -47,7 +47,7 @@
 	"growthexperiments-addimage-feedback-revid-nonexistent": "הגרסה שצוינה ב־<var>editRevId</var> לא נמצאה.",
 	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "הגרסה המצוינת ב־<var>editRevId</var> שייכת לדף אחר.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "האם לקשר את \"$1\"?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "סקירת קישורים מוצעים ושיפור מארג המידע של ויקיפדיה.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "סקירת קישור מוצע ושיפור מארג המידע של ויקיפדיה.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "כן",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "לא"
 }

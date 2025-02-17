@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"NGC 54",
-			"Paloi Sciurala"
+			"Paloi Sciurala",
+			"Trotinel Iftode"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Primiți recomandări de sarcini potrivite pentru nou-veniți.",
@@ -44,5 +45,6 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Parametrul <var>editRevId</var> este solicitat atunci când parametrul <var>accepted</var> este setat la <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Parametrul <var>caption</var> este solicitat atunci când parametrul <var>accepted</var> este setat la <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Versiunea specificată în <var>editRevId</var> nu a fost găsită.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Versiunea specificată în <var>editRevId</var> aparține unei pagini diferite."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Versiunea specificată în <var>editRevId</var> aparține unei pagini diferite.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Examinați un link sugerat și îmbunătățiți rețeaua de informații Wikipedia."
 }
