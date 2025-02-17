@@ -66,7 +66,9 @@ RecommendedLinkToolbarDialog.prototype.setupControls = function ( fragmentsSize 
 	} );
 	if ( fragmentsSize === 1 ) {
 		this.$buttons.append( this.setupAcceptanceButtons( fragmentsSize ) );
-		this.$headTitle = $( '<span>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-title' );
+		this.$headTitle = $( '<span>' );
+		this.$headTitle.addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-title' );
+		this.$headTitle.addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-title--single' );
 		this.$headTitle.text(
 			mw.msg( 'growthexperiments-addlink-single-recommendation-title' )
 		);
