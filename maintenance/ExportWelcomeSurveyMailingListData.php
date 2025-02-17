@@ -185,7 +185,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 		if ( $this->outputFormat === 'text' ) {
 			fputs( $this->handle, implode( "\t", $data ) . PHP_EOL );
 		} else {
-			fputcsv( $this->handle, $data );
+			fputcsv( $this->handle, $data, ',', '"', "\\" );
 		}
 	}
 }
