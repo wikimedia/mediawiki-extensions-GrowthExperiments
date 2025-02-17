@@ -1,5 +1,4 @@
 'use strict';
-const fs = require( 'fs' );
 const path = require( 'path' );
 const childProcess = require( 'child_process' );
 const ip = path.resolve( __dirname + '/../../../../' );
@@ -13,11 +12,6 @@ exports.mochaGlobalSetup = async function () {
 		'php',
 		[ 'maintenance/run.php', 'importDump', path.resolve( __dirname + '/SuggestedEditsContent.xml' ) ],
 		{ cwd: ip }
-	);
-	childProcess.spawnSync(
-		'php',
-		[ 'maintenance/run.php', 'edit', '--user=Admin', 'MediaWiki:NewcomerTasks.json' ],
-		{ input: fs.readFileSync( path.resolve( __dirname + '/MediaWikiNewcomerTasks.json' ) ), cwd: ip }
 	);
 };
 

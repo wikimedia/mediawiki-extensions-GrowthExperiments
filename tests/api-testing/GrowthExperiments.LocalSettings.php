@@ -90,6 +90,3 @@ $wgHooks['UserGetDefaultOptions'][] = static function ( &$defaultOptions ) {
 	$defaultOptions[TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP] = true;
 	$defaultOptions[TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME] = true;
 };
-
-// TODO: Migrate browser tests to CommunityConfiguration 2.0 and remove this line (T380581)
-$wgGEUseCommunityConfigurationExtension = false;
