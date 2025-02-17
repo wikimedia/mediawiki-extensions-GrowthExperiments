@@ -43,6 +43,7 @@ class VariantHooks implements
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
 	public const VARIANT_NO_LINK_RECOMMENDATION = 'no-link-recommendation';
+	public const VARIANT_SURFACING_STRUCTURED_TASK = 'surfacing-structured-task';
 
 	/**
 	 * This defines the allowed values for the variant preference. The default value is defined
@@ -67,6 +68,7 @@ class VariantHooks implements
 		//     module. See task T385338 for more details.
 		self::VARIANT_CONTROL,
 		self::VARIANT_NO_LINK_RECOMMENDATION,
+		self::VARIANT_SURFACING_STRUCTURED_TASK
 	];
 
 	/** User option name for storing variants. */

@@ -4,20 +4,25 @@ namespace GrowthExperiments\NewcomerTasks\SurfacingStructuredTasks;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\Config;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
+use MediaWiki\User\Options\UserOptionsLookup;
 
 class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 
 	private Config $config;
 	private ConfigurationLoader $configurationLoader;
+	private UserOptionsLookup $userOptionsLookup;
 
 	public function __construct(
 		Config $config,
-		ConfigurationLoader $configurationLoader
+		ConfigurationLoader $configurationLoader,
+		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->config = $config;
 		$this->configurationLoader = $configurationLoader;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -27,9 +32,13 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 		if ( !$this->config->get( 'GESurfacingStructuredTasksEnabled' ) ) {
 			return;
 		}
-
 		$user = $out->getUser();
 		if ( !$user->isNamed() ) {
+			return;
+		}
+
+		$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
+		if ( $variant !== VariantHooks::VARIANT_SURFACING_STRUCTURED_TASK ) {
 			return;
 		}
 

@@ -8,11 +8,13 @@ use GrowthExperiments\NewcomerTasks\SurfacingStructuredTasks\BeforePageDisplayHo
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\Title;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -41,7 +43,11 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			->method( 'addModules' )
 			->with( 'ext.growthExperiments.StructuredTask.Surfacing' );
 
-		$hookHandler = new BeforePageDisplayHookHandler( $config, $configurationLoader );
+		$hookHandler = new BeforePageDisplayHookHandler(
+			$config,
+			$configurationLoader,
+			$this->getUserOptionsLookupMock()
+		);
 		$hookHandler->onBeforePageDisplay( $mockOutputPage, $skin );
 	}
 
@@ -112,7 +118,11 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			->expects( $this->never() )
 			->method( 'addModules' );
 
-		$hookHandler = new BeforePageDisplayHookHandler( $config, $configurationLoader );
+		$hookHandler = new BeforePageDisplayHookHandler(
+			$config,
+			$configurationLoader,
+			$this->getUserOptionsLookupMock()
+		);
 		$hookHandler->onBeforePageDisplay( $mockOutputPage, $skin );
 	}
 
@@ -158,7 +168,18 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		return $mockOutputPage;
 	}
 
-	public function getStubSkin( ?string $skinOverride = null ): Skin {
+	private function getStubSkin( ?string $skinOverride = null ): Skin {
 		return $this->createMock( $skinOverride ?? SkinMinerva::class );
+	}
+
+	/**
+	 * @return UserOptionsLookup|mixed|MockObject
+	 */
+	private function getUserOptionsLookupMock() {
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
+		$userOptionsLookupMock->method( 'getOption' )
+			->with( $this->anything(), VariantHooks::USER_PREFERENCE )
+			->willReturn( VariantHooks::VARIANT_SURFACING_STRUCTURED_TASK );
+		return $userOptionsLookupMock;
 	}
 }
