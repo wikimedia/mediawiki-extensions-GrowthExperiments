@@ -79,6 +79,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "తాజాకరణ గురించి మరింత వివరించే పేజీ.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "లింకు సూచన టాస్కు రకానికి సంబంధించి మరింత తెలుసుకునేందుకు వెళ్ళవలసిన గమ్యం పేజీ.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-links-to-show": "సూచించిన ప్రతీ పని లోనూ చూపించాల్సిన గరిష్ఠ లింకు సూచనల సంఖ్య.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "కొత్త వాడుకరి ఒకరోజులో గరిష్ఠంగా చెయ్యగలిగే \"లింకును చేర్చే\" పనుల సంఖ్య.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "బొమ్మ సూచన టాస్కు రకానికి సంబంధించి మరింత తెలుసుకునేందుకు వెళ్ళవలసిన గమ్యం పేజీ.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "ఈ టాస్కు రకం యాంత్రిక సూచనలకు చెందినది, టాస్కులను సృష్టించేందుకు మూసలను వాడదు.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "ఇక్కడ చూపిన మూసలు ఉన్న వ్యాసాలను, ఈ పనికి సంబంధించి వాడుకరులు చెయ్యదగ్గ పనుల్లో చూపించం.",
