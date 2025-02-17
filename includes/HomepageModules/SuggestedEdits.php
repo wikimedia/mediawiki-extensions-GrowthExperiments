@@ -7,8 +7,8 @@ use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -295,7 +295,7 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public static function getTopicFiltersPref( Config $config ) {
 		$topicType = $config->get( 'GENewcomerTasksTopicType' );
-		if ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
+		if ( $topicType === AbstractDataConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
 			return self::TOPICS_ORES_PREF;
 		}
 		return self::TOPICS_PREF;

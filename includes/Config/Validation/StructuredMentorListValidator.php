@@ -7,7 +7,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use InvalidArgumentException;
 use StatusValue;
 
-class StructuredMentorListValidator implements IConfigValidator {
+class StructuredMentorListValidator {
 	use DatatypeValidationTrait;
 
 	private const TOP_LEVEL_KEY = 'Mentors';

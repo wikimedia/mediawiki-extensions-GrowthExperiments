@@ -17,6 +17,7 @@
 	"requires": {
 		"MediaWiki": ">= 1.44.0",
 		"extensions": {
+			"CommunityConfiguration": "*",
 			"VisualEditor": "*"
 		}
 	},
@@ -319,7 +320,7 @@
 			]
 		},
 		"config": {
-			"factory": "GrowthExperiments\\Config\\ConfigHooks::newHandler"
+			"class": "GrowthExperiments\\Config\\ConfigHooks"
 		},
 		"earlylifecycle": {
 			"class": "GrowthExperiments\\EarlyLifeCycleHooks",
@@ -536,7 +537,6 @@
 		"CommunityConfigurationSchemaBeforeEditor": "communityconfig",
 		"CommunityConfigurationProvider_initList": "communityconfig",
 		"ConditionalDefaultOptionsAddCondition": "experiments",
-		"EditFilterMergedContent": "config",
 		"FormatAutocomments": [
 			"homepage",
 			"mentor"
@@ -551,7 +551,6 @@
 			"variant",
 			"welcomeSurvey"
 		],
-		"JsonValidateSave": "config",
 		"ListDefinedTags": [
 			"helppanel",
 			"homepage",
@@ -570,9 +569,6 @@
 		],
 		"MediaWikiServices": "mediawikiservices",
 		"MessageCacheFetchOverrides": "earlylifecycle",
-		"PageSaveComplete": [
-			"config"
-		],
 		"ParserFirstCallInit": "parserfunctions",
 		"PostLoginRedirect": [
 			"variant",
@@ -596,7 +592,6 @@
 			"GrowthExperiments\\HomepageHooks::onSkinMinervaOptionsInit"
 		],
 		"SkinTemplateNavigation::Universal": [
-			"config",
 			"homepage",
 			"mentordashboarddiscovery"
 		],
@@ -2592,10 +2587,6 @@
 			"description": "If set to false, on-wiki configuration will be ignored. WARNING: This will fallback to PHP-globals for all config. By setting this to false, you can break most of the features.",
 			"value": true
 		},
-		"GEUseCommunityConfigurationExtension": {
-			"description": "If set to true, the CommunityConfiguration extension is used to power on-wiki config.",
-			"value": true
-		},
 		"GEHelpPanelReadingModeNamespaces": {
 			"description": "Numerical IDs of the MediaWiki namespaces in which to show the help panel in reading mode. Specifying a namespace will also include its talk namespace. Defaults to NS_PROJECT and NS_HELP namespaces.",
 			"value": [
@@ -3247,7 +3238,7 @@
 			}
 		},
 		"GECommunityUpdatesEnabled": {
-			"description": "Are Community Updates enabled? NOTE: For this setting to work, GEUseCommunityConfigurationExtension needs to be true and CommunityConfiguration extension must be present.",
+			"description": "Are Community Updates enabled?",
 			"value": true
 		},
 		"GESurfacingStructuredTasksEnabled": {

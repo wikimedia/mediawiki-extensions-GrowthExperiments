@@ -297,24 +297,9 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		$this->assertEquals( IMentorWeights::WEIGHT_NONE, $mentor->getWeight() );
 	}
 
-	/**
-	 * Data provider for testDisplayMentorshipWarningMessage
-	 */
-	public function configProvider(): array {
-		return [
-			[ false, SpecialPage::getTitleFor( 'EditGrowthConfig' )->getPrefixedText() ],
-			[ true, SpecialPage::getTitleFor(
-				'CommunityConfiguration', 'Mentorship' )->getPrefixedText() ],
-		];
-	}
-
-	/**
-	 * @dataProvider configProvider
-	 */
-	public function testDisplayMentorshipWarningMessage( $useCommunityConfig, $expectedConfigPage ) {
+	public function testDisplayMentorshipWarningMessage() {
 		$this->overrideConfigValues( [
 			'GEMentorshipEnabled' => false,
-			'GEUseCommunityConfiguration' => $useCommunityConfig,
 		] );
 		$extensionRegistry = $this->getMockBuilder( ExtensionRegistry::class )
 			->disableOriginalConstructor()
@@ -322,7 +307,6 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		// Simulate CC extension is loaded
 		$extensionRegistry->method( 'isLoaded' )
 			->willReturn( true );
-		$this->overrideConfigValue( 'GEUseCommunityConfigurationExtension', $useCommunityConfig );
 		$this->getMockBuilder( GrowthExperimentsServices::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -332,6 +316,8 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		$reflectionMethod->setAccessible( true );
 		$result = $reflectionMethod->invoke( $specialPage );
 
+		$expectedConfigPage = SpecialPage::getTitleFor( 'CommunityConfiguration', 'Mentorship' )
+			->getPrefixedText();
 		$expectedMessage = wfMessage( 'growthexperiments-mentor-dashboard-mentorship-disabled-with-link' )
 			->params( $expectedConfigPage )
 			->parse();

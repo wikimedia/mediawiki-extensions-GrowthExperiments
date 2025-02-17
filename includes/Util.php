@@ -16,7 +16,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Parser\Sanitizer;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
@@ -366,15 +365,6 @@ class Util {
 	 */
 	public static function generateRandomToken(): string {
 		return \Wikimedia\base_convert( \MWCryptRand::generateHex( 40 ), 16, 32, 32 );
-	}
-
-	/**
-	 * Should CommunityConfiguration be used?
-	 */
-	public static function useCommunityConfiguration(): bool {
-		return ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) &&
-			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-				->getGrowthConfig()->get( 'GEUseCommunityConfigurationExtension' );
 	}
 
 	public static function isNewcomerTasksAvailable(): bool {
