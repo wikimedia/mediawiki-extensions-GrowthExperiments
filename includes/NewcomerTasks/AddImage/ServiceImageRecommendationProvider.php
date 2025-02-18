@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use File;
@@ -26,25 +28,13 @@ use Wikimedia\Stats\StatsFactory;
  */
 class ServiceImageRecommendationProvider implements ImageRecommendationProvider {
 
-	/** @var TitleFactory */
-	private $titleFactory;
-
+	private TitleFactory $titleFactory;
 	private StatsFactory $statsFactory;
-
-	/** @var ImageRecommendationApiHandler */
-	private $apiHandler;
-
-	/** @var ImageRecommendationMetadataProvider */
-	private $metadataProvider;
-
-	/** @var AddImageSubmissionHandler */
-	private $imageSubmissionHandler;
-
-	/** @var bool */
-	private $geDeveloperSetup;
-
-	/** @var int */
-	private $maxSuggestionsToProcess;
+	private ImageRecommendationApiHandler $apiHandler;
+	private ImageRecommendationMetadataProvider $metadataProvider;
+	private AddImageSubmissionHandler $imageSubmissionHandler;
+	private bool $geDeveloperSetup;
+	private int $maxSuggestionsToProcess;
 
 	/**
 	 * @param TitleFactory $titleFactory
@@ -282,22 +272,10 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		return new ImageRecommendation( $linkTarget, $images, $datasetId );
 	}
 
-	/**
-	 * @param int $maxSuggestionsToProcess
-	 * @return void
-	 */
-	public function setMaxSuggestionsToProcess( int $maxSuggestionsToProcess ) {
+	public function setMaxSuggestionsToProcess( int $maxSuggestionsToProcess ): void {
 		$this->maxSuggestionsToProcess = $maxSuggestionsToProcess;
 	}
 
-	/**
-	 * @param int $minimumWidth
-	 * @param int $imageWidth
-	 * @param string $filename
-	 * @param string $pageTitleText
-	 * @param StatusValue $status
-	 * @return bool
-	 */
 	private static function hasMinimumWidth(
 		int $minimumWidth,
 		int $imageWidth,
@@ -315,14 +293,6 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		return $res;
 	}
 
-	/**
-	 * @param array $validMediaTypes
-	 * @param string $mediaType
-	 * @param string $filename
-	 * @param string $pageTitleText
-	 * @param StatusValue $status
-	 * @return bool
-	 */
 	private static function isValidMediaType(
 		array $validMediaTypes,
 		string $mediaType,
