@@ -34,26 +34,15 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	private ImageRecommendationMetadataProvider $metadataProvider;
 	private AddImageSubmissionHandler $imageSubmissionHandler;
 	private bool $geDeveloperSetup;
-	private int $maxSuggestionsToProcess;
+	private int $maxSuggestionsToProcess = 1;
 
-	/**
-	 * @param TitleFactory $titleFactory
-	 * @param StatsFactory $statsFactory
-	 * @param ImageRecommendationApiHandler $apiHandler
-	 * @param ImageRecommendationMetadataProvider $metadataProvider Image metadata provider
-	 * @param AddImageSubmissionHandler $imageSubmissionHandler
-	 * @param bool $geDeveloperSetup
-	 * @param int $maxSuggestionsToProcess Maximum number of valid suggestions to process and return with
-	 * an ImageRecommendation object.
-	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		StatsFactory $statsFactory,
 		ImageRecommendationApiHandler $apiHandler,
 		ImageRecommendationMetadataProvider $metadataProvider,
 		AddImageSubmissionHandler $imageSubmissionHandler,
-		bool $geDeveloperSetup = false,
-		int $maxSuggestionsToProcess = 1
+		bool $geDeveloperSetup = false
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->statsFactory = $statsFactory->withComponent( 'GrowthExperiments' );
@@ -61,7 +50,6 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$this->metadataProvider = $metadataProvider;
 		$this->imageSubmissionHandler = $imageSubmissionHandler;
 		$this->geDeveloperSetup = $geDeveloperSetup;
-		$this->maxSuggestionsToProcess = $maxSuggestionsToProcess;
 	}
 
 	/** @inheritDoc */
