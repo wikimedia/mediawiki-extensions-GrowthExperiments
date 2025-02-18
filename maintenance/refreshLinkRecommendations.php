@@ -7,6 +7,7 @@ namespace GrowthExperiments\Maintenance;
 use CirrusSearch\Query\ArticleTopicFeature;
 use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationEvalStatus;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfigurationLoader;
@@ -51,6 +52,8 @@ class RefreshLinkRecommendations extends Maintenance {
 	private LinkRecommendationUpdater $linkRecommendationUpdater;
 	private LinkRecommendationTaskType $recommendationTaskType;
 	private User $searchUser;
+	private array $metrics = [];
+	private array $seen = [];
 
 	public function __construct() {
 		parent::__construct();
@@ -161,6 +164,22 @@ class RefreshLinkRecommendations extends Maintenance {
 			}
 			$this->output( ( $recommendationsNeeded === 0 ) ? "    task pool filled\n"
 				: "    topic exhausted, $recommendationsNeeded tasks still needed\n" );
+		}
+
+		$this->sendMetricsToStatslib();
+	}
+
+	private function sendMetricsToStatslib(): void {
+		$services = $this->getServiceContainer();
+		$statsFactory = $services->getStatsFactory()->withComponent( 'GrowthExperiments' );
+		$counter = $statsFactory->getCounter( 'refreshLinks_total' );
+		$wiki = WikiMap::getCurrentWikiId();
+		foreach ( $this->metrics as $outcomeName => $outcomeCount ) {
+			$counter->setLabel( 'wiki', $wiki );
+			$counter->setLabel( 'outcome', $outcomeName );
+			$counter->incrementBy( $outcomeCount );
+			// TODO: print summary with --verbose option?
+			$this->verboseLog( "    $outcomeName: $outcomeCount\n" );
 		}
 	}
 
@@ -275,6 +294,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->verboseLog( "    checking candidate " . $title->getPrefixedDBkey() . "... " );
 		try {
 			$status = $this->linkRecommendationUpdater->processCandidate( $title, $force );
+			$this->trackProcessingOutcome( $title, $status );
 			if ( $status->isOK() ) {
 				$this->verboseLog( "success, updating index\n" );
 				return true;
@@ -291,6 +311,29 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->fatalError( $e->getMessage() );
 		}
 		return false;
+	}
+
+	/**
+	 * The metrics will be sent to statslib when the script is done in
+	 * the private ::sendMetricsToStatslib method.
+	 */
+	private function trackProcessingOutcome( Title $title, StatusValue $candidateStatus ): void {
+		if ( isset( $this->seen[$title->getPrefixedDBkey()] ) ) {
+			// don't double-count
+			return;
+		}
+		$this->seen[$title->getPrefixedDBkey()] = true;
+		if ( $candidateStatus->isGood() ) {
+			$this->metrics['success']++;
+			return;
+		}
+		if ( $candidateStatus instanceof LinkRecommendationEvalStatus ) {
+			$cause = $candidateStatus->getNotGoodCause();
+			$this->metrics[$cause]++;
+			return;
+		}
+
+		$this->metrics[LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_OTHER]++;
 	}
 
 	private function verboseLog( string $message ): void {
