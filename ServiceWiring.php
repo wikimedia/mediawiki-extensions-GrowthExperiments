@@ -99,6 +99,7 @@ use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
+use GrowthExperiments\UserImpact\GrowthExperimentsUserImpactUpdater;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
@@ -1138,6 +1139,22 @@ return [
 			$services->getUserIdentityUtils(),
 			$services->getChangeTagsStore(),
 			$services->getStatsFactory()
+		);
+	},
+
+	'GrowthExperimentsUserImpactUpdater' => static function (
+		MediaWikiServices $services
+	): GrowthExperimentsUserImpactUpdater {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new GrowthExperimentsUserImpactUpdater(
+			$services->getUserIdentityUtils(),
+			$services->getUserOptionsLookup(),
+			$services->getUserEditTracker(),
+			$services->getUserFactory(),
+			$services->getJobQueueGroup(),
+			$growthServices->getUncachedUserImpactLookup(),
+			$growthServices->getUserImpactStore(),
+			$growthServices->getUserImpactFormatter()
 		);
 	},
 

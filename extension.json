@@ -379,14 +379,8 @@
 			"class": "GrowthExperiments\\ImpactHooks",
 			"services": [
 				"MainConfig",
-				"GrowthExperimentsUserImpactLookup_Computed",
-				"GrowthExperimentsUserImpactStore",
-				"GrowthExperimentsUserImpactFormatter",
-				"UserOptionsLookup",
-				"UserFactory",
-				"UserEditTracker",
-				"JobQueueGroup",
-				"UserIdentityUtils"
+				"GrowthExperimentsUserImpactUpdater",
+				"UserFactory"
 			]
 		},
 		"levelingup": {
@@ -578,7 +572,6 @@
 		"MessageCacheFetchOverrides": "earlylifecycle",
 		"PageSaveComplete": [
 			"config",
-			"impact",
 			"personalizedpraise"
 		],
 		"ParserFirstCallInit": "parserfunctions",
@@ -654,6 +647,13 @@
 				"ConnectionProvider",
 				"StatsFactory",
 				"GrowthExperimentsLinkRecommendationHelper"
+			]
+		},
+		{
+			"events": [ "PageUpdated" ],
+			"class": "GrowthExperiments\\UserImpact\\MediaWikiEventSubscribers\\PageUpdatedSubscriber",
+			"services": [
+				"GrowthExperimentsUserImpactUpdater"
 			]
 		}
 	],
