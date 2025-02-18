@@ -212,8 +212,9 @@ RecommendedLinkToolbarDialogDesktop.prototype.setupMinification = function () {
 		label: mw.message( 'growthexperiments-addlink-context-button-show-suggestion' ).text()
 	} );
 	this.toolbarDialogButton.on( 'click', this.onToolbarDialogButtonClicked.bind( this ) );
-	this.surface.getGlobalOverlay().$element
-		.append( this.toolbarDialogButton.$element );
+	const minimizedButtonLocationDock = mw.util.addPortletLink( 'p-dock-bottom', '#', '' );
+	const $minimizedButtonLocation = $( minimizedButtonLocationDock ).html( '' );
+	this.toolbarDialogButton.$element.appendTo( $minimizedButtonLocation );
 };
 
 /**
