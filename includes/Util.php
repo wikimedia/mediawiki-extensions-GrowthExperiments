@@ -376,4 +376,21 @@ class Util {
 			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
 				->getGrowthConfig()->get( 'GEUseCommunityConfigurationExtension' );
 	}
+
+	public static function isNewcomerTasksAvailable(): bool {
+		$wikiSettings = MediaWikiServices::getInstance()->getMainConfig();
+		$extensionRegistry = MediaWikiServices::getInstance()->getExtensionRegistry();
+		return $extensionRegistry->isLoaded( 'WikimediaMessages' ) &&
+			$wikiSettings->get( 'GEHomepageSuggestedEditsEnabled' );
+	}
+
+	public static function isLinkRecommendationsAvailable(): bool {
+		$services = MediaWikiServices::getInstance();
+		$wikiSettings = $services->getMainConfig();
+		$extensionRegistry = $services->getExtensionRegistry();
+		return self::isNewcomerTasksAvailable() &&
+			$extensionRegistry->isLoaded( 'CirrusSearch' ) &&
+			$extensionRegistry->isLoaded( 'VisualEditor' ) &&
+			$wikiSettings->get( 'GENewcomerTasksLinkRecommendationsEnabled' );
+	}
 }
