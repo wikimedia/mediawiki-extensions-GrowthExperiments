@@ -155,44 +155,35 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			$useTitle
 		);
 
-		$statsDataFactory = $this->createMock( StatsFactory::class );
-		$statsDataFactory->method( 'withComponent' )->willReturnSelf();
-		$timing = $this->createMock( TimingMetric::class );
-		$timing->method( 'setLabel' )->willReturnSelf();
-		$timing->method( 'observeSeconds' )->willReturnSelf();
-		$statsDataFactory->method( 'getTiming' )->willReturn( $timing );
-
-		$expectedKeys = [
-			'get' => true,
-			'process_api_response_data' => true,
-		];
-		$timing->expects( $this->exactly( 2 ) )
-			->method( 'observeSeconds' )
-			->willReturnCallback( function ( $arg1 ) use ( &$expectedKeys ) {
-				$this->assertIsFloat( $arg1 );
-			} );
-		$timing->expects( $this->exactly( 2 ) )
-			->method( 'setLabel' )
-			->willReturnCallback( function ( $arg1, $arg2 ) use ( &$expectedKeys ) {
-				$this->assertSame( 'action', $arg1 );
-				$this->assertArrayHasKey( $arg2, $expectedKeys );
-				unset( $expectedKeys[$arg2] );
-			} );
-
-		$statsDataFactory->expects( $this->once() )
-			->method( 'getTiming' )
-			->with( "image_recommendation_provider_seconds" )
-			->willReturn( $timing );
-
+		$unitTestingHelper = StatsFactory::newUnitTestingHelper();
 		$provider = new ServiceImageRecommendationProvider(
 			$titleFactory,
-			$statsDataFactory,
+			$unitTestingHelper->getStatsFactory(),
 			$apiHandler,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
 		);
 
 		$provider->get( new TitleValue( NS_MAIN, '15' ), $taskType );
+
+		$this->assertSame(
+			1,
+			$unitTestingHelper->count( 'GrowthExperiments.image_recommendation_provider_seconds{action=get}' )
+		);
+		$this->assertIsFloat(
+			$unitTestingHelper->last( 'GrowthExperiments.image_recommendation_provider_seconds{action=get}' )
+		);
+		$this->assertSame(
+			1,
+			$unitTestingHelper->count(
+				'GrowthExperiments.image_recommendation_provider_seconds{action=process_api_response_data}'
+			)
+		);
+		$this->assertIsFloat(
+			$unitTestingHelper->last(
+				'GrowthExperiments.image_recommendation_provider_seconds{action=process_api_response_data}'
+			)
+		);
 	}
 
 	/**
