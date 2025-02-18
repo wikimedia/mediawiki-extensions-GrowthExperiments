@@ -25,7 +25,7 @@ class StructuredTaskSurfacer {
 		 */
 		this.logger = new LinkSuggestionInteractionLogger( {
 			/* eslint-disable camelcase */
-			is_mobile: true,
+			is_mobile: this.isMobile(),
 			active_interface: 'readmode_article_page',
 			homepage_pageview_token: this.clickId,
 			newcomer_task_token: this.newcomerTaskToken,
@@ -272,6 +272,15 @@ class StructuredTaskSurfacer {
 		buttonNode.insertBefore( iconNode, null );
 
 		return buttonNode;
+	}
+
+	/**
+	 * @private
+	 * @return {boolean}
+	 */
+	isMobile() {
+		// @ts-expect-error type to be added in wikimedia/typescript-types#55
+		return OO.ui.isMobile();
 	}
 }
 
