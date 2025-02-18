@@ -1684,6 +1684,7 @@
 			"dependencies": [
 				"oojs",
 				"oojs-ui-core",
+				"oojs-ui.styles.icons-editing-core",
 				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"messages": [
