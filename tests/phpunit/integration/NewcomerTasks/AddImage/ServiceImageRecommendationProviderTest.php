@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider
 use GrowthExperiments\NewcomerTasks\AddImage\MvpImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -123,10 +124,22 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertSame( [ 'enwiki', 'dewiki' ], $recommendation->getImages()[0]->getProjects() );
 	}
 
+	public static function provideTaskTypes(): iterable {
+		return [
+			'image suggestions' => [
+				new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_MEDIUM )
+			],
+			'section-level image suggestions' => [
+				new SectionImageRecommendationTaskType( 'section-image-recommendation', TaskType::DIFFICULTY_MEDIUM )
+			],
+		];
+	}
+
 	/**
+	 * @dataProvider provideTaskTypes
 	 * @covers ::get
 	 */
-	public function testGet_instrumentation() {
+	public function testGet_instrumentation( TaskType $taskType ) {
 		$titleFactory = $this->getTitleFactory();
 		$url = 'http://example.com';
 		$wikiProject = 'wikipedia';
@@ -136,7 +149,6 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$metadataProvider->method( 'getFileMetadata' )->willReturn( self::metadataFactory() );
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
-		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = true;
 		$apiHandler = new MvpImageRecommendationApiHandler(
 			$this->getHttpRequestFactory( [
@@ -166,23 +178,25 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 
 		$provider->get( new TitleValue( NS_MAIN, '15' ), $taskType );
 
+		$taskTypeFilter = 'task_type=' . $taskType->getId();
+		$requestSelector = "GrowthExperiments.image_recommendation_provider_seconds{action=get,$taskTypeFilter}";
 		$this->assertSame(
 			1,
-			$unitTestingHelper->count( 'GrowthExperiments.image_recommendation_provider_seconds{action=get}' )
+			$unitTestingHelper->count( $requestSelector )
 		);
 		$this->assertIsFloat(
-			$unitTestingHelper->last( 'GrowthExperiments.image_recommendation_provider_seconds{action=get}' )
+			$unitTestingHelper->last( $requestSelector )
 		);
+
+		$processingSelector = 'GrowthExperiments.image_recommendation_provider_seconds{'
+		 . 'action=process_api_response_data,'
+		 . $taskTypeFilter . '}';
 		$this->assertSame(
 			1,
-			$unitTestingHelper->count(
-				'GrowthExperiments.image_recommendation_provider_seconds{action=process_api_response_data}'
-			)
+			$unitTestingHelper->count( $processingSelector )
 		);
 		$this->assertIsFloat(
-			$unitTestingHelper->last(
-				'GrowthExperiments.image_recommendation_provider_seconds{action=process_api_response_data}'
-			)
+			$unitTestingHelper->last( $processingSelector )
 		);
 	}
 

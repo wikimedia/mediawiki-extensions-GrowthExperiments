@@ -82,6 +82,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 		$timing = $this->statsFactory->getTiming( 'image_recommendation_provider_seconds' );
 		$timing->setLabel( 'action', 'get' )
+			->setLabel( 'task_type', $taskType->getId() )
 			->observeSeconds( $getRequestTimeInSeconds );
 
 		// Stay backward compatible with the legacy Graphite-based dashboard
@@ -132,6 +133,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$processingTimeInSeconds = microtime( true ) - $startTime;
 		$timing
 			->setLabel( 'action', 'process_api_response_data' )
+			->setLabel( 'task_type', $taskType->getId() )
 			->observeSeconds( $processingTimeInSeconds );
 
 		// Stay backward compatible with the legacy Graphite-based dashboard
