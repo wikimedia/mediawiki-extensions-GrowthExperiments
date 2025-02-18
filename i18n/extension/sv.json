@@ -80,5 +80,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artiklar som innehåller mallar som definieras här visas inte för användare som uppgifter för den här uppgiftstypen.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artiklar som innehåller kategorier som definieras här visas inte för användare som uppgifter för den här uppgiftstypen.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infoboxmallar",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Dessa mallar behövs för nybörjarfunktionen för [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|bildförslag]]. Artiklar som innehåller dessa mallar kommer inte att listas som bildförslagsuppgifter."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Dessa mallar behövs för nybörjarfunktionen för [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|bildförslag]]. Artiklar som innehåller dessa mallar kommer inte att listas som bildförslagsuppgifter.",
+	"communityconfiguration-communityupdates-title": "Gemenskapsuppdateringar"
 }
