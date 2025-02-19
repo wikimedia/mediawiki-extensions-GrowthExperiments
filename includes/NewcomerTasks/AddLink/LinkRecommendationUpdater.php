@@ -14,14 +14,14 @@ use GrowthExperiments\WikiConfigException;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Language\RawMessage;
-use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Page\PageProps;
+use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\NameTableStore;
-use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\Utils\MWTimestamp;
 use Psr\Log\LoggerInterface;
 use StatusValue;
@@ -90,16 +90,16 @@ class LinkRecommendationUpdater {
 	/**
 	 * Evaluate a task candidate and generate the task if the candidate is viable.
 	 * If a link recommendation task already exists for the given page, it will be overwritten.
-	 * @param Title $title
+	 * @param ProperPageIdentity $pageIdentity
 	 * @param bool $force Ignore all failed conditions that can be safely ignored.
 	 * @return StatusValue Success status. Note that the error messages are not intended
 	 *   for users (and as such not localizable).
 	 * @throws WikiConfigException if the task type is not properly configured.
 	 * @throws DBReadOnlyError
 	 */
-	public function processCandidate( Title $title, bool $force = false ): StatusValue {
-		$lastRevision = $this->revisionStore->getRevisionByTitle( $title );
-		$status = $this->evaluateTitle( $title, $lastRevision, $force );
+	public function processCandidate( ProperPageIdentity $pageIdentity, bool $force = false ): StatusValue {
+		$lastRevision = $this->revisionStore->getRevisionByTitle( $pageIdentity );
+		$status = $this->evaluateTitle( $pageIdentity, $lastRevision, $force );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -127,15 +127,20 @@ class LinkRecommendationUpdater {
 			);
 		}
 
-		$recommendationStatus = $this->linkRecommendationProvider->getDetailed( $title,
-			$this->getLinkRecommendationTaskType() );
+		$recommendationStatus = $this->linkRecommendationProvider->getDetailed(
+			TitleValue::newFromPage( $pageIdentity ),
+			$this->getLinkRecommendationTaskType()
+		);
 		if ( !$recommendationStatus->isGood() ) {
 			if (
 				$recommendationStatus->getNotGoodCause() ===
 				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_ALL_RECOMMENDATIONS_PRUNED &&
 				$recommendationStatus->getNumberOfPrunedRedLinks() === 0
 			) {
-				$this->linkRecommendationStore->insertNoLinkRecommendationFound( $title->getArticleID(), $revId );
+				$this->linkRecommendationStore->insertNoLinkRecommendationFound(
+					$pageIdentity->getId(),
+					$revId
+				);
 			}
 			// Returning a StatusValue that is not good is always an error for the provider. When returning it
 			// from this class, it isn't necessarily interpreted that way.
@@ -151,7 +156,10 @@ class LinkRecommendationUpdater {
 		$status = $this->checkTaskTypeCriteria( $recommendation, $force );
 		if ( !$status->isOK() ) {
 			if ( $recommendationStatus->getNumberOfPrunedRedLinks() === 0 ) {
-				$this->linkRecommendationStore->insertNoLinkRecommendationFound( $title->getArticleID(), $revId );
+				$this->linkRecommendationStore->insertNoLinkRecommendationFound(
+					$pageIdentity->getId(),
+					$revId
+				);
 			}
 			return $status;
 		}
@@ -165,13 +173,6 @@ class LinkRecommendationUpdater {
 		$db->startAtomic( __METHOD__, IDatabase::ATOMIC_CANCELABLE );
 		$this->linkRecommendationStore->insertExistingLinkRecommendation( $recommendation );
 
-		$pageIdentity = new PageIdentityValue(
-			$lastRevision->getPageId( $lastRevision->getWikiId() ),
-			$lastRevision->getPage()->getNamespace(),
-			$lastRevision->getPage()->getDBkey(),
-			$lastRevision->getWikiId()
-		);
-
 		try {
 			$this->weightedTagsUpdater->updateWeightedTags(
 				$pageIdentity,
@@ -182,7 +183,8 @@ class LinkRecommendationUpdater {
 
 			$this->logger->error( __METHOD__ . ' failed to update weighted tags', [
 				'exception' => $e,
-				'pageTitle' => $title->getPrefixedText(),
+				'pageTitle' => $pageIdentity->getDBkey(),
+				'namespace' => $pageIdentity->getNamespace(),
 			] );
 			return Status::newFatal(
 				'Failed to request weighted tags update',
@@ -197,13 +199,17 @@ class LinkRecommendationUpdater {
 
 	/**
 	 * Check all conditions which are not related to the recommendation.
-	 * @param Title $title The title for which a recommendation is being requested.
+	 * @param ProperPageIdentity $pageIdentity The title for which a recommendation is being requested.
 	 * @param RevisionRecord|null $revision The current revision of the title.
 	 * @param bool $force Ignore all failed conditions that can be safely ignored.
 	 * @return StatusValue Success status. Note that the error messages are not intended
 	 *   for users (and as such not localizable).
 	 */
-	private function evaluateTitle( Title $title, ?RevisionRecord $revision, bool $force ): StatusValue {
+	private function evaluateTitle(
+		ProperPageIdentity $pageIdentity,
+		?RevisionRecord $revision,
+		bool $force
+	): StatusValue {
 		// 1. the revision must exist and the mwaddlink service must be able to interpret it.
 		if ( $revision === null ) {
 			// Maybe the article has just been deleted and the search index is behind?
@@ -236,7 +242,7 @@ class LinkRecommendationUpdater {
 		}
 
 		// 4. exclude disambiguation pages.
-		if ( $this->pageProps->getProperties( $title, 'disambiguation' ) ) {
+		if ( $this->pageProps->getProperties( $pageIdentity, 'disambiguation' ) ) {
 			return $this->failure(
 				'disambiguation page',
 				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_DISAMBIGUATION_PAGE
@@ -266,7 +272,7 @@ class LinkRecommendationUpdater {
 				->from( 'revision' )
 				->join( 'change_tag', null, [ 'rev_id = ct_rev_id' ] )
 				->where( [
-					'rev_page' => $title->getArticleID(),
+					'rev_page' => $pageIdentity->getId(),
 					$dbr->expr( 'rev_id', '<=', (int)$revertTagData['newestRevertedRevId'] ),
 					$dbr->expr( 'rev_id', '>=', (int)$revertTagData['oldestRevertedRevId'] ),
 					'ct_tag_id' => $linkRecommendationChangeTagId,

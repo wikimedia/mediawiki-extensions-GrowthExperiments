@@ -144,7 +144,7 @@ class ApiQueryLinkRecommendations extends ApiQueryBase {
 
 	private function tryLoadingMoreLinkRecommendations( Title $title ): ?LinkRecommendation {
 		$processingCandidateStartTimeSeconds = microtime( true );
-		$updateStatus = $this->linkRecommendationUpdater->processCandidate( $title, false );
+		$updateStatus = $this->linkRecommendationUpdater->processCandidate( $title->toPageIdentity(), false );
 		if ( $updateStatus->isOK() ) {
 			$this->incrementCounter( 'new_recommendations_added' );
 			$linkRecommendation = $this->linkRecommendationStore->getByPageId(

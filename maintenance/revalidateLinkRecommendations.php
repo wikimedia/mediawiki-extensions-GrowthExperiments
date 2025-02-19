@@ -222,7 +222,10 @@ class RevalidateLinkRecommendations extends Maintenance {
 		$this->linkRecommendationHelper->deleteLinkRecommendation( $title->toPageIdentity(), true );
 		try {
 			$force = $this->hasOption( 'force' );
-			return Status::wrap( $this->linkRecommendationUpdater->processCandidate( $title, $force ) );
+			return Status::wrap( $this->linkRecommendationUpdater->processCandidate(
+				$title->toPageIdentity(),
+				$force
+			) );
 		} catch ( DBReadOnlyError $e ) {
 			$this->fatalError( 'DB is readonly, aborting' );
 		} catch ( WikiConfigException $e ) {

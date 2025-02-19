@@ -22,6 +22,8 @@ use GrowthExperiments\WikiConfigException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Config\Config;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\Page\PageIdentity;
+use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -103,7 +105,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		if ( $pageName ) {
 			$title = $this->titleFactory->newFromText( $pageName );
 			if ( $title ) {
-				$this->processCandidate( $title, $force );
+				$this->processCandidate( $title->toPageIdentity(), $force );
 			} else {
 				$this->fatalError( 'Invalid title: ' . $pageName );
 			}
@@ -146,7 +148,7 @@ class RefreshLinkRecommendations extends Maintenance {
 				$recommendationsFound = 0;
 				foreach ( $titleBatch as $title ) {
 					// TODO filter out protected pages. Needs to be batched. Or wait for T259346.
-					$success = $this->processCandidate( $title, $force );
+					$success = $this->processCandidate( $title->toPageIdentity(), $force );
 					if ( $success ) {
 						$recommendationsFound++;
 						$recommendationsNeeded--;
@@ -286,15 +288,15 @@ class RefreshLinkRecommendations extends Maintenance {
 
 	/**
 	 * Evaluate a task candidate and potentially generate the task.
-	 * @param Title $title
+	 * @param ProperPageIdentity $pageIdentity
 	 * @param bool $force Ignore all failed conditions that can be safely ignored.
 	 * @return bool Whether a new task was generated.
 	 */
-	private function processCandidate( Title $title, bool $force = false ): bool {
-		$this->verboseLog( "    checking candidate " . $title->getPrefixedDBkey() . "... " );
+	private function processCandidate( ProperPageIdentity $pageIdentity, bool $force = false ): bool {
+		$this->verboseLog( "    checking candidate " . $pageIdentity->__toString() . "... " );
 		try {
-			$status = $this->linkRecommendationUpdater->processCandidate( $title, $force );
-			$this->trackProcessingOutcome( $title, $status );
+			$status = $this->linkRecommendationUpdater->processCandidate( $pageIdentity, $force );
+			$this->trackProcessingOutcome( $pageIdentity, $status );
 			if ( $status->isOK() ) {
 				$this->verboseLog( "success, updating index\n" );
 				return true;
@@ -317,12 +319,13 @@ class RefreshLinkRecommendations extends Maintenance {
 	 * The metrics will be sent to statslib when the script is done in
 	 * the private ::sendMetricsToStatslib method.
 	 */
-	private function trackProcessingOutcome( Title $title, StatusValue $candidateStatus ): void {
-		if ( isset( $this->seen[$title->getPrefixedDBkey()] ) ) {
+	private function trackProcessingOutcome( PageIdentity $page, StatusValue $candidateStatus ): void {
+		if ( isset( $this->seen[$page->__toString()] ) ) {
 			// don't double-count
 			return;
 		}
-		$this->seen[$title->getPrefixedDBkey()] = true;
+		$this->seen[$page->__toString()] = true;
+
 		if ( $candidateStatus->isGood() ) {
 			$this->metrics['success']++;
 			return;
