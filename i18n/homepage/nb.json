@@ -371,6 +371,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Annet",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Ferdig",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Velg årsaken til at dette ikke er en god lenke",
+	"growthexperiments-addlink-single-recommendation-title": "Legg til en foreslått lenke",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Å legge til lenker hjelper folk til å lære raskere.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Du}} vil bestemme hvorvidt ord i en {{SITENAME}}-artikkel bør lenke til andre {{SITENAME}}-artikler.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Eksempelsetning",

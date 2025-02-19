@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Adriendelucca"
+			"Adriendelucca",
+			"Huñvreüs"
 		]
 	},
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-top-label": "Krec'h ar bajenn",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-bottom-label": "Traoñ ar bajenn",
 	"communityconfiguration-growthsuggestededits-update-label": "Hizivaat ar pennadoù",
-	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Ouzhpennañ ul liamm"
+	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Ouzhpennañ ul liamm (Oberenn frammet)"
 }
