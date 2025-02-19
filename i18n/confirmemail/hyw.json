@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Շահէն"
+			"Շահէն",
+			"Azniv Stepanian"
 		]
 	},
+	"growthexperiments-confirmemail-emailhelp": "Իմակի հասցէն պարտադիր է, որպէսզի կարողանաք վերականգնել ձեր հաշիւը՝ անցաբառը մոռնալու պարագային",
+	"growthexperiments-confirmemail-emailrecommended": "Իմակի հասցէ (յանձնարարելի է)",
 	"growthexperiments-marketingvideocampaign-title": "Ուիքիփետիան կառուցուած է քեզի պէս մարդոց կողմէ:"
 }
