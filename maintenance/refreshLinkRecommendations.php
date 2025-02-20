@@ -327,16 +327,15 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->seen[$page->__toString()] = true;
 
 		if ( $candidateStatus->isGood() ) {
-			$this->metrics['success']++;
-			return;
-		}
-		if ( $candidateStatus instanceof LinkRecommendationEvalStatus ) {
-			$cause = $candidateStatus->getNotGoodCause();
-			$this->metrics[$cause]++;
-			return;
+			$metricKey = 'success';
+		} elseif ( $candidateStatus instanceof LinkRecommendationEvalStatus ) {
+			$metricKey = $candidateStatus->getNotGoodCause();
+		} else {
+			$metricKey = LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_OTHER;
 		}
 
-		$this->metrics[LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_OTHER]++;
+		$this->metrics[$metricKey] ??= 0;
+		$this->metrics[$metricKey]++;
 	}
 
 	private function verboseLog( string $message ): void {
