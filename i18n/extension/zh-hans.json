@@ -165,7 +165,7 @@
 	"communityconfiguration-mentorship-info-text": "新手会自动分配导师，这些导师在[[Special:ManageMentors|导师列表]]中分类为“自动分配的导师”。导师也可以在导师面板中更新设置，只允许自行认领学员。这些导师在列表中归为“手动分配的导师”。理想的导师数量是：每500个新账号配备1名导师，最少3名导师。学员也可以接收资深编者的鼓励消息，以提升新编者的留存率。\n\n个性化表彰模块将值得表彰的新编者推荐给他们的导师，以帮助高产的新编者更积极地参与社群活动。",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "导师资格",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-control-label": "满足所有准入条件的编者将自动获得登记为导师的资格",
-	"communityconfiguration-mentorship-gementorshipautomaticeligibility-description": "如果此项设置未选中，而导师功能为开启状态，那么潜在的导师将无法登记加入导师计划，除非其拥有“enrollasmentor”权限，或者由管理员编辑[[MediaWiki:GrowthMentors.json]]添加为新导师。",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-description": "如果此项设置未选中，而导师功能为开启状态，那么潜在的导师将无法登记加入导师计划，除非其拥有“enrollasmentor”权限，或者由管理员编辑[[Special:ManageMentors]]添加为新导师。",
 	"communityconfiguration-mentorship-gementorshipenabled-control-label": "导师计划功能已开启",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "用户可以登记为导师的最少注册天数",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "用户可以登记为导师的最少编辑次数（包括所有命名空间）",

@@ -234,7 +234,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message": "הודעת היכרות",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "הודעת ההיכרות מציגה אותך {{GENDER:|כחונך|כחונכת}}. נא שמור על כך שזה יהיה קצר מ־240 תווים. אסור להשתמש בקוד ויקי.",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "הרשמה",
-	"growthexperiments-mentorship-enrollasmentor-success": "עכשיו {{GENDER:|אתה רשום כחונך|את רשומה כחונכת}}. זה הזמן אפשר להמשיך אל [[Special:MentorDashboard|לוח המחוונים של החומכים]].",
+	"growthexperiments-mentorship-enrollasmentor-success": "עכשיו {{GENDER:|אתה רשום כחונך|את רשומה כחונכת}}. זה הזמן אפשר להמשיך אל [[Special:MentorDashboard|לוח הבקרה של החונכים]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "הוספה של עצמי לחונכות",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "רק משתמשים שעשו לפחות {{PLURAL:$1|עריכה אחת|$1 עריכות}} וצברו לפחות {{PLURAL:$2|יום נוכחות אחד|יומיים נוכחות|$2 ימי נוכחות}} יכולים להירשם כחונכים.",
 	"tag-mentor list change": "שינוי רשימת החונכים",
