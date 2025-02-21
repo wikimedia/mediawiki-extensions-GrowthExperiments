@@ -71,6 +71,7 @@
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Минимални број измена који корисник мора имати да би био ментор",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Минималан број измена које новајлија треба да има да би био похваљен",
 	"communityconfiguration-growthhomepage-title": "Почетна страница за новајлије",
+	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-label": "Подстрек",
 	"communityconfiguration-growthsuggestededits-title": "Предложене измене",
 	"communityconfiguration-growthsuggestededits-copyedit-label": "Лектура",
 	"communityconfiguration-growthsuggestededits-copyedit-disabled-control-label": "Задатак је онемогућен.",
