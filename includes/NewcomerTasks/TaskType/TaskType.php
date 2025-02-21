@@ -192,7 +192,7 @@ class TaskType implements JsonDeserializable {
 			'difficulty' => $this->getDifficulty(),
 			'messages' => [
 				'name' => $this->getName( $messageLocalizer )->text(),
-				'description' => $this->getDescription( $messageLocalizer )->text(),
+				'description' => $this->getDescription( $messageLocalizer )->parse(),
 				'shortdescription' => $this->getShortDescription( $messageLocalizer )->text(),
 				'label' => $this->getLabel( $messageLocalizer )->text(),
 				'timeestimate' => $this->getTimeEstimate( $messageLocalizer )->text(),
