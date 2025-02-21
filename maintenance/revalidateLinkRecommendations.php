@@ -44,7 +44,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 	private Config $growthConfig;
 
 	/** @var string[] */
-	private array $allowedChecksums;
+	private array $allowedChecksums = [];
 
 	private ?int $olderThanTimestamp = null;
 
