@@ -177,13 +177,16 @@ class ChangeMentor {
 					'mentee' => $this->mentee,
 					'performer' => $this->performer
 				] );
+				$extraData = [
+					'mentee' => $this->mentee->getId(),
+				];
+				if ( $this->mentor !== null ) {
+					$extraData['oldMentor'] = $this->mentor->getName();
+				}
 				Event::create( [
 					'type' => 'mentor-changed',
 					'title' => $this->getMenteeUser()->getUserPage(),
-					'extra' => [
-						'mentee' => $this->mentee->getId(),
-						'oldMentor' => $this->mentor->getName(),
-					],
+					'extra' => $extraData,
 					'agent' => $this->newMentor,
 				] );
 
