@@ -13,7 +13,7 @@
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "לפני שיהיה אפשר להשתמש בלוח בקרה לחונכים, חובה להגדיר רשימת חונכים תחילה. מפעיל יכול להשתמש בדף [[Special:EditGrowthConfig|מיוחד:עריכת הגדרות חונך]] למטרה הזאת.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "החניכים {{GENDER:|שלך}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "ר' את החניכים שלך להלן. {{GENDER:|השתמש|השתמשי}} במסננים כדי לשנות אילו חניכים מוצגים.",
-	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "הטבלה הזאת מחייבת JavaScript. נא להפעיל את JavaScript כדי להשתמש במודול הזה.",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "הטבלה הזאת דורשת הפעלת JavaScript. נא להפעיל את JavaScript כדי להשתמש במודול הזה.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "מי בטבלה {{GENDER:|שלך}}?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "מידע נוסף על מי שנמצא בטבלה {{GENDER:|שלך}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "הטבלה הזאת מציגה רק את החניכים {{GENDER:|שלך}} שהחשבון שלהם נוצר בשבועיים האחרונים או שערכו בששת החודשים האחרונים וש[https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH הפעילו את דף הבית למתחילים]. הנתונים מעודכנים מדי שלוש שעות.",
@@ -138,7 +138,7 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "הודעת ההיכרות מציגה אותך {{GENDER:|כחונך|כחונכת}}. נא שמור על כך שזה יהיה קצר מ־240 תווים. אסור להשתמש בקוד ויקי.",
 	"growthexperiments-mentorship-enrollasmentor-form-reason": "סיבה",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "הרשמה",
-	"growthexperiments-mentorship-enrollasmentor-success": "עכשיו {{GENDER:|אתה רשום כחונך|את רשומה כחונכת}}. זה הזמן אפשר להמשיך אל [[Special:MentorDashboard|לוח המחוונים של החומכים]].",
+	"growthexperiments-mentorship-enrollasmentor-success": "עכשיו {{GENDER:|אתה רשום כחונך|את רשומה כחונכת}}. זה הזמן אפשר להמשיך אל [[Special:MentorDashboard|לוח הבקרה של החונכים]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "הוספה של עצמי לחונכות",
 	"tag-mentor list change": "שינוי רשימת החונכים",
 	"tag-mentor list change-description": "תג שחל על עריכות שבוצעו ברשימת החונכים המובנית באמצעות GrowthExperiments"

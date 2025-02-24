@@ -11,7 +11,7 @@
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|що це таке?]])",
 	"growthexperiments-confirmemail-emailhelp": "Електронна пошта потрібна, щоб відновити ваш обліковий запис, якщо ви втратите пароль.",
 	"growthexperiments-confirmemail-emailrecommended": "Електронна пошта (рекомендовано)",
-	"growthexperiments-confirmemail-emailwarning": "Будь ласка, пошукайте у своїй електронній скриньці лист від нас з підтвердженням вашої пошти.",
+	"growthexperiments-confirmemail-emailwarning": "Після реєстрації пошукайте у своїй електронній скриньці лист від нас з підтвердженням вашої пошти.",
 	"growthexperiments-confirmemail-confirm-subject": "Вітаємо на сайті {{SITENAME}}: Будь ласка, підтвердіть свою електронну пошту",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Привіт}}, $2!\n\nДякуємо, що додали адресу електронної пошти до свого облікового запису на сайті {{SITENAME}}, зареєстрованого з IP-адреси $1.\n\nБудь ласка, натисніть на кнопку нижче, щоб підтвердити прив'язування цієї електронної скриньки до свого облікового запису «$2»:\n\n$3\n\nЗверніть увагу, термін дії цього коду підтвердження <strong>завершується $4</strong>.\n\nДякуємо,\n\n{{SITENAME}}\n\n----\n\nЩоб скасувати підтвердження електронної пошти (якщо ви насправді не реєстрували обліковий запис чи з будь-якої іншої причини), натисніть на це посилання скасування:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Підтвердження адреси ел. пошти",

@@ -5,7 +5,8 @@
 			"MITO",
 			"Markus Mikkonen",
 			"Pyscowicz",
-			"Rönttönen"
+			"Rönttönen",
+			"Samoasambia"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Selitys",
@@ -22,11 +23,12 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Viimeisin muokkaus",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Viimeisimmät päivät",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Viimeisimmät kuukaudet",
-	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Etsi",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Hae",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktiivinen $1 sitten",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "tuntematon",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Näytä $1",
 	"growthexperiments-mentor-dashboard-resources-headline": "Resurssit",
+	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Hallinnoi mentoreita",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Asetukset",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktiivinen",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Peruuta",
@@ -44,6 +46,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Peruuta",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Esittelyviesti",
 	"growthexperiments-mentor-list-missing-key": "Avain <code>$1</code> puuttuu",
+	"growthexperiments-manage-mentors-title": "Hallinnoi mentoreita",
 	"growthexperiments-manage-mentors-username": "Käyttäjänimi",
 	"growthexperiments-manage-mentors-last-active": "Viimeisin toiminta",
 	"growthexperiments-manage-mentors-remove-mentor": "Poista"
