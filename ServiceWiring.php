@@ -323,12 +323,17 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationHelper {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+		if ( Util::isLinkRecommendationsAvailable() ) {
+			$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+			$weightedTagsUpdater = $cirrusSearchServices->getWeightedTagsUpdater();
+		} else {
+			$weightedTagsUpdater = null;
+		}
 		return new LinkRecommendationHelper(
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getLinkRecommendationProvider(),
 			$growthServices->getLinkRecommendationStore(),
-			$cirrusSearchServices->getWeightedTagsUpdater(),
+			$weightedTagsUpdater
 		);
 	},
 

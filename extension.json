@@ -17,7 +17,6 @@
 	"requires": {
 		"MediaWiki": ">= 1.44.0",
 		"extensions": {
-			"CirrusSearch": "*",
 			"VisualEditor": "*"
 		}
 	},

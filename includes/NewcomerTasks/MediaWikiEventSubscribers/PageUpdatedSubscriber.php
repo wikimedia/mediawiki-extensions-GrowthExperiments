@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
+use GrowthExperiments\Util;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Config\Config;
 use MediaWiki\DomainEvent\EventSubscriberBase;
@@ -45,7 +46,7 @@ class PageUpdatedSubscriber extends EventSubscriberBase {
 
 	public function handlePageUpdatedEventAfterCommit( PageUpdatedEvent $event ): void {
 		if (
-			$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) &&
+			Util::isLinkRecommendationsAvailable() &&
 			!$event->isNew() &&
 			$event->getPage()->getNamespace() === NS_MAIN
 		) {

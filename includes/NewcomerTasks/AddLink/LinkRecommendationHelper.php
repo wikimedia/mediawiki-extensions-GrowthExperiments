@@ -13,6 +13,7 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\ProperPageIdentity;
 use StatusValue;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
@@ -29,18 +30,18 @@ class LinkRecommendationHelper {
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	private WeightedTagsUpdater $weightedTagsUpdaterProvider;
+	private ?WeightedTagsUpdater $weightedTagsUpdater;
 
 	public function __construct(
 		ConfigurationLoader $configurationLoader,
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkRecommendationStore $linkRecommendationStore,
-		WeightedTagsUpdater $weightedTagsUpdaterProvider
+		?WeightedTagsUpdater $weightedTagsUpdaterProvider
 	) {
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
 		$this->linkRecommendationStore = $linkRecommendationStore;
-		$this->weightedTagsUpdaterProvider = $weightedTagsUpdaterProvider;
+		$this->weightedTagsUpdater = $weightedTagsUpdaterProvider;
 	}
 
 	/**
@@ -85,8 +86,12 @@ class LinkRecommendationHelper {
 			} );
 		}
 		if ( $deleteFromSearchIndex ) {
+			Assert::invariant(
+				$this->weightedTagsUpdater !== null,
+				'CirrusSearch is required if Link Recommendations are enabled'
+			);
 			DeferredUpdates::addCallableUpdate( function () use ( $pageIdentity, $allowJoiningSearchIndexDeletes ) {
-				$this->weightedTagsUpdaterProvider->resetWeightedTags(
+				$this->weightedTagsUpdater->resetWeightedTags(
 					$pageIdentity,
 					[ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ],
 					$allowJoiningSearchIndexDeletes ? 'revision' : null,
