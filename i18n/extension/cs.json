@@ -143,7 +143,7 @@
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentoři si toto nastavení mohou pro sebe přizpůsobit prostřednictvím Nástěnky mentora.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Stránka popisující přidávání obrázků ve vizuálním editoru",
 	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-label": "Upozornění \"Vyzkoušejte editační tipy\"",
-	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-label": "Upozornění \"Jen tak dál\"",
+	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-label": "Upozornění \"Jen tak dál\"",
 	"communityconfiguration-growthsuggestededits-title": "Editační tipy",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Šablony infoboxů",
 	"communityconfiguration-growthsuggestededits-copyedit-label": "Korektury",

@@ -119,8 +119,8 @@
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "시각 편집기에서 이미지를 추가하는 방법에 관한 링크의 목적지 문서",
 	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-label": "편집 제안 알림 사용해 보기",
 	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-help-text": "신입 사용자가 이 알림을 받을 수 있는 최대 편집 수입니다. 0으로 설정하면 신입 사용자는 이 알림을 받지 않습니다. 숫자가 높을수록 더 많은 신입 사용자가 이 알림을 받게 됩니다. 이 알림은 제안된 편집을 마치지 않은 신입 사용자에게만 전송됩니다.",
-	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-label": "계속 알림",
-	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-help-text": "이 알림을 받을 자격을 얻기 위해 신입 사용자가 마칠 수 있는 최대 제안 편집 수입니다. 0으로 설정하면 신입 사용자는 이 알림을 받지 않습니다. 숫자가 높을수록 더 많은 신입 사용자가 이 알림을 받게 됩니다. 이 알림은 이미 하나 이상의 제안된 편집을 마친 신입 사용자에게만 전송됩니다.",
+	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-label": "계속 알림",
+	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-help-text": "이 알림을 받을 자격을 얻기 위해 신입 사용자가 마칠 수 있는 최대 제안 편집 수입니다. 0으로 설정하면 신입 사용자는 이 알림을 받지 않습니다. 숫자가 높을수록 더 많은 신입 사용자가 이 알림을 받게 됩니다. 이 알림은 이미 하나 이상의 제안된 편집을 마친 신입 사용자에게만 전송됩니다.",
 	"communityconfiguration-growthsuggestededits-title": "편집 제안",
 	"communityconfiguration-growthsuggestededits-description": "신입 사용자 홈페이지의 편집 제안 기능을 맞춤화합니다.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "링크 추가"

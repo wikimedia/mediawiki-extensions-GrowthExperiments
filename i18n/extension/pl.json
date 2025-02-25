@@ -163,8 +163,8 @@
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Strona docelowa dla linku, opisująca tworzenie nowego artykułu",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Strona docelowa dla linku jak wstawić ilustracje w edytorze wizualnym",
 	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-label": "Powiadomienie o możliwości wypróbowania edycji sugerowanych",
-	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-label": "Powiadomienie zachęcające do dalszych edycji",
-	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-help-text": "Maksymalna liczba sugerowanych zmian, które ma wykonać nowicjusz, zanim otrzyma to powiadomienie. Jeśli ustawione na 0, żaden nowicjusz nie otrzyma powiadomienia. Im wyższa liczba, tym więcej nowych użytkowników je otrzyma. Powiadomienie jest wyświetlane tylko nowym użytkownikom, którzy wykonali co najmniej jedną z Sugerowanych edycji.",
+	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-label": "Powiadomienie zachęcające do dalszych edycji",
+	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-help-text": "Maksymalna liczba sugerowanych zmian, które ma wykonać nowicjusz, zanim otrzyma to powiadomienie. Jeśli ustawione na 0, żaden nowicjusz nie otrzyma powiadomienia. Im wyższa liczba, tym więcej nowych użytkowników je otrzyma. Powiadomienie jest wyświetlane tylko nowym użytkownikom, którzy wykonali co najmniej jedną z Sugerowanych edycji.",
 	"communityconfiguration-growthsuggestededits-title": "Sugerowane edycje",
 	"communityconfiguration-growthsuggestededits-description": "Dostosuj moduł Sugerowane edycje dostępny na stronie domowej dla nowicjuszy.",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Szablony infoboksów"
