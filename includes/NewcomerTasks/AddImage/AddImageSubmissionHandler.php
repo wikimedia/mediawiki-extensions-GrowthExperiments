@@ -58,7 +58,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID => 'addsectionimage',
 	];
 
-	private WeightedTagsUpdater $weightedTagsUpdater;
+	private ?WeightedTagsUpdater $weightedTagsUpdater;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 	private WANObjectCache $cache;
@@ -67,7 +67,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	private ?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater;
 
 	public function __construct(
-		WeightedTagsUpdater $weightedTagsUpdater,
+		?WeightedTagsUpdater $weightedTagsUpdater,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		WANObjectCache $cache,
@@ -327,6 +327,10 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		?int $sectionNumber,
 		array $rejectionReasons = []
 	) {
+		Assert::invariant(
+			$this->weightedTagsUpdater !== null,
+			'CirrusSearch is required if (Section-) Image Recommendations are enabled'
+		);
 		if ( $taskType->getId() === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
 			$this->weightedTagsUpdater->resetWeightedTags(
 				$page, [ ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ]
