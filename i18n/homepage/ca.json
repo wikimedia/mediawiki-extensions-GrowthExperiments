@@ -80,6 +80,11 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Crear nous articles i expandir-ne de curts.",
 	"growthexperiments-homepage-suggested-edits-header": "Edicions suggerides",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|El vostre}} impacte",
+	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|La vostra}} activitat recent (darrers $2 {{PLURAL:$2|dia|dies}})",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Darrera edició",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Ratxa més llarga",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "visualitzacions en articles {{GENDER:|que heu}} editat",
+	"growthexperiments-homepage-impact-scores-thanks-count": "Agraïments rebuts",
 	"growthexperiments-homepage-impact-subheader-text": "La gent consulta els articles que {{GENDER:|heu}} editat!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visites als articles que {{GENDER:$1|has}} editat (darrers 60 dies)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Encara no {{GENDER:$1|has}} creat o editat cap article.",
@@ -218,5 +223,5 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Has}} completat tots els suggeriments d'imatge per avui.\n\nAjusta els {{GENDER:|teus}} nivells de dificultat per veure altres tipus d'edicions o tornat demà per a més suggeriments d'imatge.",
 	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Has}} completat tots els suggeriments d'enllaç per avui.\n\nAjusta els {{GENDER:|teus}} nivells de dificultat per veure altres tipus d'edicions o tornat demà per a més suggeriments d'enllaç.",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Fet",
-	"growthexperiments-homepage-impact-contributions-link": "Visualitzeu totes les vostres edicions ($1)"
+	"growthexperiments-homepage-impact-contributions-link": "Visualitzeu totes les vostres edicions"
 }
