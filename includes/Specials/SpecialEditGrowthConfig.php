@@ -779,11 +779,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 		}
 
-		if ( LevelingUpManager::isEnabledForAnyone( $this->getConfig() ) ) {
-			$descriptors['geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum']['default'] =
-				$this->growthWikiConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' )[1];
-		}
-
 		// Add default values for newcomertasks variables
 		$newcomerTasksConfig = $this->getNewcomerTasksConfig();
 		foreach ( $this->getDefaultDataForEnabledTaskTypes() as $taskType => $group ) {
@@ -1127,11 +1122,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		}
 
 		$dataToSave = $this->preprocessSubmittedData( $data );
-
-		$geconfigThresholds = $this->growthWikiConfig->get( 'GELevelingUpKeepGoingNotificationThresholds' );
-		$geconfigThresholds[1] = intval( $data['geconfig-GELevelingUpKeepGoingNotificationThresholds-maximum'] );
-		$dataToSave['geconfig']['GELevelingUpKeepGoingNotificationThresholds'] = $geconfigThresholds;
-
 		// Normalize complex variables
 		$dataToSave['geconfig']['GEHomepageSuggestedEditsIntroLinks'] =
 			$this->normalizeSuggestedEditsIntroLinks( $data );

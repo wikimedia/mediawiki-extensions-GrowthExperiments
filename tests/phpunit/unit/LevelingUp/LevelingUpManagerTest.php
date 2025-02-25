@@ -50,7 +50,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			new HashConfig( [
 				'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,
 				'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
-				'GELevelingUpKeepGoingNotificationThresholds' => [ 1, 4 ],
 				'GENewcomerTasksLinkRecommendationsEnabled' => false,
 				'GELevelingUpGetStartedMaxTotalEdits' => 10,
 			] )
@@ -261,7 +260,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		return [
 			'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,
 			'GELevelingUpManagerInvitationThresholds' => [ 3, 7 ],
-			'GELevelingUpKeepGoingNotificationThresholds' => [ 1, 4 ],
 			'GELevelingUpGetStartedMaxTotalEdits' => 10,
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 		];
