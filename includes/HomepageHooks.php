@@ -943,7 +943,7 @@ class HomepageHooks implements
 	 * @param array &$tags The list of tags.
 	 * @throws ConfigException
 	 */
-	public function onListDefinedTags( &$tags ) {
+	public function onListDefinedTags( &$tags ): void {
 		if ( self::isHomepageEnabled() ) {
 			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
@@ -953,6 +953,9 @@ class HomepageHooks implements
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			array_push( $tags, ...$this->taskTypeHandlerRegistry->getChangeTags() );
+		}
+		if ( $this->config->get( 'GESurfacingStructuredTasksEnabled' ) ) {
+			$tags[] = NewcomerTasksChangeTagsManager::SURFACED_CHANGE_TAG;
 		}
 	}
 
@@ -964,7 +967,7 @@ class HomepageHooks implements
 	 * @param array &$tags The list of tags.
 	 * @throws ConfigException
 	 */
-	public function onChangeTagsListActive( &$tags ) {
+	public function onChangeTagsListActive( &$tags ): void {
 		if ( self::isHomepageEnabled() ) {
 			// Help::HELP_MODULE_QUESTION_TAG is no longer active (T232548)
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
@@ -974,6 +977,9 @@ class HomepageHooks implements
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			array_push( $tags, ...$this->taskTypeHandlerRegistry->getChangeTags() );
+		}
+		if ( $this->config->get( 'GESurfacingStructuredTasksEnabled' ) ) {
+			$tags[] = NewcomerTasksChangeTagsManager::SURFACED_CHANGE_TAG;
 		}
 	}
 
@@ -1407,9 +1413,11 @@ class HomepageHooks implements
 		}
 		if ( SuggestedEdits::isActivated( $context->getUser(), $this->userOptionsLookup ) ) {
 			$taskTypeId = $pluginData['taskType'];
+			$wasTaskSurfaced = $pluginData['surfaced'] ?? false;
 			$tags = $this->newcomerTasksChangeTagsManager->getTags(
 				$taskTypeId,
-				$recentChange->getPerformerIdentity()
+				$recentChange->getPerformerIdentity(),
+				$wasTaskSurfaced
 			);
 			if ( $tags->isGood() ) {
 				$recentChange->addTags( $tags->getValue() );

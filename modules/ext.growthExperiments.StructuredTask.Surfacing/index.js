@@ -236,6 +236,7 @@ class StructuredTaskSurfacer {
 				// as a recommendation id (gerecommendationid), expecting it to match the order
 				// in the taskData array the suggested edit session
 				taskUrl.searchParams.append( 'gerecommendationid', recommendationId.toString() );
+				taskUrl.searchParams.append( 'surfaced', '1' );
 				window.location.href = taskUrl.href;
 				document.removeEventListener( 'click', handleClickOutsidePopup, true );
 			},

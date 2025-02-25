@@ -474,7 +474,8 @@ class SpecialHomepage extends SpecialPage {
 				'genewcomertasktoken' => $newcomerTaskToken,
 				// Query parameter to show the onboarding Vue dialog
 				'new-onboarding' => $request->getVal( 'new-onboarding' ),
-				'gerecommendationid' => $request->getVal( 'gerecommendationid' )
+				'gerecommendationid' => $request->getVal( 'gerecommendationid' ),
+				'surfaced' => $request->getVal( 'surfaced' ),
 			],
 			$suggestedEdits instanceof SuggestedEdits ? $suggestedEdits->getRedirectParams( $taskTypeId ) : []
 		);
