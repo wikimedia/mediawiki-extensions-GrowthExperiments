@@ -419,12 +419,15 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 			skippedTargets.push( state.title );
 		}
 	} );
+
+	const surfaced = new URL( window.location ).searchParams.get( 'surfaced' ) === '1';
 	// This data will be processed in VisualEditorHooks::onVisualEditorApiVisualEditorEditPostSave
 	options[ 'data-ge-task-link-recommendation' ] = JSON.stringify( {
 		taskType: 'link-recommendation',
 		acceptedTargets: acceptedTargets,
 		rejectedTargets: rejectedTargets,
-		skippedTargets: skippedTargets
+		skippedTargets: skippedTargets,
+		surfaced: surfaced
 	} );
 	options.plugins = 'ge-task-link-recommendation';
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )

@@ -140,6 +140,8 @@
 	"tag-newcomer_task_image_suggestion-description": "\"Add images\" task edit suggested by the suggested edits module of the newcomer homepage",
 	"tag-newcomer_task_section_image_suggestion": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-section-image Suggested: add images to sections]",
 	"tag-newcomer_task_section_image_suggestion-description": "\"Add images to sections\" task edit suggested by the suggested edits module of the newcomer homepage",
+	"tag-newcomer_task_read_view_suggestion": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#readview|Suggested: in read view]]",
+	"tag-newcomer_task_read_view_suggestion-description": "An edit suggested to a newcomer while reading an article",
 	"growthexperiments-homepage-help-dialog-title": "Ask the help desk",
 	"growthexperiments-homepage-help-header": "Get help with editing",
 	"growthexperiments-homepage-help-subheader": "Top help pages about editing",
