@@ -4,16 +4,13 @@ namespace GrowthExperiments\Tests\Unit;
 
 use Collation;
 use GrowthExperiments\Config\WikiPageConfigLoader;
-use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
-use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
-use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use GrowthExperiments\NewcomerTasks\Topic\EmptyTopicRegistry;
 use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\IContextSource;
@@ -147,56 +144,6 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::loadTopics
 	 */
-	public function testLoadOresTopics() {
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
-		// in getMockWikiPageConfigLoader() will fail.
-		foreach ( range( 1, 2 ) as $_ ) {
-			$topics = $configurationLoader->loadTopics();
-			$this->assertIsArray( $topics );
-			$this->assertNotEmpty( $topics );
-			$this->assertInstanceOf( Topic::class, $topics[0] );
-			$this->assertSame( [ 'art', 'food', 'science' ], array_map( static function ( Topic $t ) {
-				return $t->getId();
-			}, $topics ) );
-			$this->assertSame( [ [ 'music', 'painting' ], [ 'food' ], [ 'physics', 'biology' ] ],
-				array_map( static function ( OresBasedTopic $t ) {
-					return $t->getOresTopics();
-				}, $topics ) );
-		}
-
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], StatusValue::newFatal( 'foo' ),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		foreach ( range( 1, 2 ) as $_ ) {
-			$topics = $configurationLoader->loadTopics();
-			$this->assertInstanceOf( StatusValue::class, $topics );
-			$this->assertStatusError( 'foo', $topics );
-		}
-	}
-
-	/**
-	 * @covers ::loadTopics
-	 * @dataProvider provideConfigurationLoaderErrors
-	 */
-	public function testLoadOresTopics_error( $error ) {
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getOresTopicConfig( $error ),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$status = $configurationLoader->loadTopics();
-		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-' . $error, $status );
-	}
-
-	public static function provideConfigurationLoaderErrors() {
-		return [
-			[ 'wrongstructure' ],
-			[ 'invalidid' ],
-			[ 'missingfield' ],
-		];
-	}
-
-	/**
-	 * @covers ::loadTopics
-	 */
 	public function testLoadTopics_noLoader() {
 		$taskTitle = new TitleValue( NS_MEDIAWIKI, 'TaskConfiguration' );
 		$wikiPageConfigLoader = $this->getMockWikiPageConfigLoader( [ '8:TaskConfiguration' => [] ] );
@@ -205,54 +152,11 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = new PageConfigurationLoader( $configurationValidator, $taskHandlerRegistry,
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES, $this->getMockTitleFactory( [], false ),
 			$wikiPageConfigLoader, $taskTitle, null,
-			new HashConfig()
+			new HashConfig(),
+			new EmptyTopicRegistry()
 		);
 		$topics = $configurationLoader->loadTopics();
 		$this->assertSame( [], $topics );
-	}
-
-	/**
-	 * @coversNothing
-	 */
-	public function testLinkTitleArguments() {
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(),
-			$this->getOresTopicConfig(), PageConfigurationLoader::CONFIGURATION_TYPE_ORES, [], true );
-		$taskTypes = $configurationLoader->loadTaskTypes();
-		$this->assertIsArray( $taskTypes );
-		$this->assertNotEmpty( $taskTypes );
-		$this->assertInstanceOf( TaskType::class, $taskTypes[0] );
-		$this->assertSame( [ 'copyedit', 'references', 'update' ],
-			array_map( static function ( TaskType $tt ) {
-				return $tt->getId();
-			}, $taskTypes )
-		);
-
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(),
-			$this->getOresTopicConfig(), PageConfigurationLoader::CONFIGURATION_TYPE_ORES, [], true );
-		$topics = $configurationLoader->loadTopics();
-		$this->assertIsArray( $topics );
-		$this->assertNotEmpty( $topics );
-		$this->assertInstanceOf( Topic::class, $topics[0] );
-		$this->assertSame( [ 'art', 'food', 'science' ], array_map( static function ( Topic $t ) {
-			return $t->getId();
-		}, $topics ) );
-	}
-
-	public function testLoadTopics_campaign() {
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$configurationLoader->setCampaignConfigCallback( static function () {
-			return new CampaignConfig( [
-				'growth-glam-2022' => [
-					'topics' => [ 'argentina' ],
-					'pattern' => '/^growth-glam-2022$/'
-				]
-			], [
-				'argentina' => 'growtharticletopic:argentina'
-			] );
-		} );
-		$campaignTopic = $configurationLoader->loadTopics()[0];
-		$this->assertInstanceOf( CampaignTopic::class, $campaignTopic );
 	}
 
 	/**
@@ -312,23 +216,23 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 					'group' => 'culture',
 					'oresTopics' => [ 'music', 'painting' ],
 				],
-				'science' => [
-					'group' => 'stem',
+				'general-science' => [
+					'group' => 'science-technology-and-math',
 					'oresTopics' => [ 'physics', 'biology' ],
 				],
-				'food' => [
-					'group' => 'culture',
+				'food-and-drink' => [
+					'group' => 'history-and-society',
 					'oresTopics' => [ 'food' ],
 				],
 			],
-			'groups' => [ 'culture', 'stem' ],
+			'groups' => [ 'culture', 'science-technology-and-math', 'history-and-society' ],
 		];
 		if ( $error === 'wrongstructure' ) {
 			return 0;
 		} elseif ( $error === 'invalidid' ) {
 			$config['topics']['*'] = [ 'group' => 'test', 'oresTopics' => [ 'test' ] ];
 		} elseif ( $error === 'missingfield' ) {
-			unset( $config['topics']['science']['group'] );
+			unset( $config['topics']['general-science']['group'] );
 		}
 		return $config;
 	}
@@ -367,7 +271,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry( $configurationValidator );
 		return new PageConfigurationLoader( $configurationValidator, $taskTypeHandlerRegistry,
 			$topicType, $titleFactory, $wikiPageConfigLoader, $taskConfigTitle, $topicConfigTitle,
-			new HashConfig()
+			new HashConfig(),
+			new EmptyTopicRegistry()
 		);
 	}
 

@@ -291,8 +291,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Choose the option to \"Match all selected topics\" for more specific results",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Match all selected topics",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Match at least one selected topic",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "History and Society",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Science, Technology, and Math",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Campaign event",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Invalid suggested edits configuration: bad structure",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Invalid suggested edits configuration for task type \"$1\": \"$2\" must be an integer",

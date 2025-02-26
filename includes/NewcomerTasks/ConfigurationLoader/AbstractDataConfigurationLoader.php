@@ -6,10 +6,13 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use InvalidArgumentException;
 use LogicException;
+use MediaWiki\Language\RawMessage;
 use MediaWiki\Message\Message;
 use StatusValue;
 
@@ -55,19 +58,23 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 
 	/** @var TaskType[]|null */
 	private ?array $disabledTaskTypes = null;
+	private ITopicRegistry $topicRegistry;
 
 	/**
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param string $topicType One of the PageConfigurationLoader::CONFIGURATION_TYPE constants.
+	 * @param ITopicRegistry $topicRegistry
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		string $topicType
+		string $topicType,
+		ITopicRegistry $topicRegistry
 	) {
 		$this->configurationValidator = $configurationValidator;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
+		$this->topicRegistry = $topicRegistry;
 		$this->topicType = $topicType;
 
 		if ( !in_array( $this->topicType, self::VALID_TOPIC_TYPES, true ) ) {
@@ -156,11 +163,15 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 			return $this->topics;
 		}
 
-		$config = $this->loadTopicsConfig();
-		if ( $config instanceof StatusValue ) {
-			$topics = $config;
-		} else {
-			$topics = $this->parseTopicsFromConfig( $config );
+		$topics = [];
+		// T386018: Handle this more gracefully. Do not allow changing ORES-based topic definitions per wiki.
+		if ( $this->topicRegistry instanceof WikimediaTopicRegistry ) {
+			$config = $this->loadTopicsConfig();
+			if ( $config instanceof StatusValue ) {
+				$topics = $config;
+			} else {
+				$topics = $this->parseTopicsFromConfig( $config );
+			}
 		}
 
 		$this->topics = $topics;
@@ -234,8 +245,13 @@ abstract class AbstractDataConfigurationLoader implements ConfigurationLoader {
 			$config = $config['topics'];
 		}
 
+		$validORESTopics = $this->topicRegistry->getAllTopics();
 		foreach ( $config as $topicId => $topicConfiguration ) {
 			$status->merge( $this->configurationValidator->validateIdentifier( $topicId ) );
+			if ( !in_array( $topicId, $validORESTopics, true ) ) {
+				// T386018: Handle this more gracefully. Do not allow changing ORES-based topic definitions via config.
+				$status->fatal( new RawMessage( "'$topicId' is not a valid topic ID." ) );
+			}
 			$requiredFields = [
 				self::CONFIGURATION_TYPE_ORES => [ 'group', 'oresTopics' ],
 			][$this->topicType];
