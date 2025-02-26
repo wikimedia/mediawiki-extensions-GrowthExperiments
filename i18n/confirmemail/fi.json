@@ -9,7 +9,7 @@
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|mikä tämä on?]])",
-	"growthexperiments-confirmemail-emailhelp": "Sähköpostiosoitetta tarvitaan käyttäjätilisi palauttamiseksi, jos unohdat salasanasi.",
+	"growthexperiments-confirmemail-emailhelp": "Sähköpostiosoitetta tarvitaan käyttäjätunnuksesi palauttamiseksi, jos unohdat salasanasi.",
 	"growthexperiments-confirmemail-emailrecommended": "Sähköpostiosoite (suositeltava)",
 	"growthexperiments-confirmemail-emailwarning": "Ole hyvä ja etsi lähettämämme sähköposti varmentaaksesi osoitteesi.",
 	"growthexperiments-confirmemail-confirm-subject": "Tervetuloa {{GRAMMAR:illative|{{SITENAME}}}}: Varmenna sähköpostiosoitteesi",
