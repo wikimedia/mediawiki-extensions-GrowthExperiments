@@ -114,7 +114,9 @@ QUnit.test( 'should update the selected topics and topics match mode for updateS
 } );
 
 QUnit.test( 'should save the selected filters to preferences and set the mw.user.options object with savePreferences', function ( assert ) {
-	const saveOptionsSpy = this.sandbox.spy( mw.Api.prototype, 'saveOptions' );
+	const saveOptionsStub = this.sandbox.stub( mw.Api.prototype, 'saveOptions' ).returns(
+		$.Deferred().resolve( {} ).promise()
+	);
 	const setOptionsSpy = this.sandbox.spy( mw.user.options, 'set' );
 	const selectedTaskTypes = [ 'copyedit' ];
 	const selectedTopics = [ 'architecture' ];
@@ -128,7 +130,7 @@ QUnit.test( 'should save the selected filters to preferences and set the mw.user
 	const updatedPreferences = {};
 	updatedPreferences[ 'growthexperiments-homepage-se-filters' ] = JSON.stringify( selectedTaskTypes );
 	updatedPreferences[ 'growthexperiments-homepage-se-topic-filters' ] = JSON.stringify( selectedTopics );
-	assert.deepEqual( saveOptionsSpy.firstCall.args[ 0 ], updatedPreferences );
+	assert.deepEqual( saveOptionsStub.firstCall.args[ 0 ], updatedPreferences );
 	assert.deepEqual( setOptionsSpy.firstCall.args[ 0 ], updatedPreferences );
 } );
 
