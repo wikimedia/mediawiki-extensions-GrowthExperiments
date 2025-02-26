@@ -47,8 +47,8 @@ class PageUpdatedSubscriber extends EventSubscriberBase {
 	public function handlePageUpdatedEventAfterCommit( PageUpdatedEvent $event ): void {
 		if (
 			Util::isLinkRecommendationsAvailable() &&
-			!$event->isNew() &&
-			$event->getPage()->getNamespace() === NS_MAIN
+			$event->getPage()->getNamespace() === NS_MAIN &&
+			!$event->isCreation()
 		) {
 			$this->clearLinkRecommendationRecordForPage( $event->getPage() );
 		}
