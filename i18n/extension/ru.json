@@ -97,5 +97,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Эти шаблоны нужны для функции задач для новичков [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|«предложения изображений»]]. Статьи, содержащие эти шаблоны, не будут выбираться для задач с предложением изображений.",
 	"growthexperiments-edit-config-delayed": "Изменения этого парамента вступят в силу не сразу (см. [[mw:Growth/FAQ#add-link-config|ЧЗВ]])",
 	"growthexperiments-info-tooltip-close-label": "Закрыть",
-	"specialpages-group-growth-tools": "Инструменты от команды роста"
+	"specialpages-group-growth-tools": "Инструменты от команды роста",
+	"communityconfiguration-mentorship-title": "Наставничество",
+	"communityconfiguration-mentorship-description": "Настройте параметры наставничества и критерии отбора, а также измените минимальные значения и сроки редактирования для наставников и заслуживающих похвалы подопечных."
 }
