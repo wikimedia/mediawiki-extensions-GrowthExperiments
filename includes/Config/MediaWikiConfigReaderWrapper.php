@@ -4,6 +4,7 @@ namespace GrowthExperiments\Config;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Access\MediaWikiConfigReader;
+use MediaWiki\Extension\CommunityConfiguration\Access\MediaWikiConfigRouter;
 
 /**
  * Wrapper around MediaWikiConfigReader from CommunityConfiguration, in order
@@ -22,12 +23,12 @@ class MediaWikiConfigReaderWrapper implements Config {
 		'help-desk-page' => false,
 	];
 
-	private Config $mediawikiConfigReader;
+	private MediaWikiConfigRouter $mediawikiConfigRouter;
 
 	public function __construct(
-		Config $mediawikiConfigReader
+		MediaWikiConfigRouter $mediaWikiConfigRouter
 	) {
-		$this->mediawikiConfigReader = $mediawikiConfigReader;
+		$this->mediawikiConfigRouter = $mediaWikiConfigRouter;
 	}
 
 	/**
@@ -35,7 +36,7 @@ class MediaWikiConfigReaderWrapper implements Config {
 	 * @return mixed
 	 */
 	public function get( $name ) {
-		$value = $this->mediawikiConfigReader->get( $name );
+		$value = $this->mediawikiConfigRouter->get( $name );
 		if ( $name === 'GEHelpPanelHelpDeskPostOnTop' ) {
 			$value = self::MAP_POST_ON_TOP_VALUES[$value];
 		}
@@ -50,6 +51,6 @@ class MediaWikiConfigReaderWrapper implements Config {
 	 * @return bool
 	 */
 	public function has( $name ): bool {
-		return $this->mediawikiConfigReader->has( $name );
+		return $this->mediawikiConfigRouter->has( $name );
 	}
 }
