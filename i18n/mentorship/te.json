@@ -142,6 +142,7 @@
 	"growthexperiments-mentor-list-unexpected-key-mentor": "గురువు నిర్వచనంలో అనుకోని కీ <code>$1</code> ఉంది",
 	"growthexperiments-mentor-writer-error-already-added": "గురువు $1, ఈసరికే గురువుల జాబితాలో ఉన్నారు",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "గురువు $1 గురువుల జాబితాలో లేదు",
+	"growthexperiments-manage-mentors-pretext-stored-at": "గురువుల జాబితా, దాని చరిత్రతో పాటు [[$1|మీడియావికీ పేరుబరిలో]]  ఉంటుంది.",
 	"growthexperiments-manage-mentors-manually-assigned": "శిష్యులను మానవికంగా ఎంచుకునే గురువులు",
 	"growthexperiments-manage-mentors-edit-intro-msg": "పరిచయ సందేశం",
 	"growthexperiments-manage-mentors-edit-reason": "కారణం"

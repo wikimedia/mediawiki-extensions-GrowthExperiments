@@ -59,6 +59,7 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "అవును",
 	"growthexperiments-edit-config-mentorship-enabled-false": "లేదు",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility": "వాడుకరులు ఆటోమాటిగ్గా గురువులుగా అర్హులవ్వాలా?",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "గురువుగా చేరేందుకు, వాడుకరి చేసి ఉండాల్సిన కనీసమాత్రపు దిద్దుబాట్లు (ఏ పేరుబరిలోనైనా సరే)",
 	"growthexperiments-edit-config-personalized-praise": "వ్యక్తిగతీకరించిన ప్రశంసలు",
 	"growthexperiments-edit-config-personalized-praise-max-edits": "ప్రశంసార్హత పొందాలంటే, కొత్తవారికి ఉండదగ్గ గరిష్ఠ దిద్దుబాట్లు",
 	"growthexperiments-edit-config-newcomertasks": "సూచించిన దిద్దుబాట్లు",
