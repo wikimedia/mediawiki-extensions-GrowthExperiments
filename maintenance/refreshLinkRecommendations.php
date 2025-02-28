@@ -146,6 +146,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->output( "    $recommendationsNeeded new tasks needed\n" );
 			foreach ( $this->findArticlesInTopic( $oresTopic ) as $titleBatch ) {
 				$recommendationsFound = 0;
+				$this->beginTransactionRound( __METHOD__ );
 				foreach ( $titleBatch as $title ) {
 					// TODO filter out protected pages. Needs to be batched. Or wait for T259346.
 					$success = $this->processCandidate( $title->toPageIdentity(), $force );
@@ -153,11 +154,12 @@ class RefreshLinkRecommendations extends Maintenance {
 						$recommendationsFound++;
 						$recommendationsNeeded--;
 						if ( $recommendationsNeeded <= 0 ) {
+							$this->commitTransactionRound( __METHOD__ );
 							break 2;
 						}
 					}
 				}
-				$this->waitForReplication();
+				$this->commitTransactionRound( __METHOD__ );
 				// findArticlesInTopic() picks articles at random, so we need to abort the loop
 				// at some point. Do it when no new tasks were generated from the current batch.
 				if ( $recommendationsFound === 0 ) {
