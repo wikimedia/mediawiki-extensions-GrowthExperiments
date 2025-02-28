@@ -47,7 +47,7 @@
 	"growthexperiments-addimage-feedback-revid-nonexistent": "De in <var>editRevId</var> opgegeven versie is niet gevonden.",
 	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "De in <var>editRevId</var> opgegeven versie behoort tot een andere pagina.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Moet ‘$1’ een koppeling worden?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Bekijk enkele voorgestelde koppelingen en verbeter het informatieweb van Wikipedia.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Beoordeel een voorgestelde koppeling en verbeter het informatieweb van Wikipedia.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Ja",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Nee"
 }

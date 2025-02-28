@@ -385,6 +385,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Overige",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Afgerond",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Selecteer reden waarom dit geen goede link is",
+	"growthexperiments-addlink-single-recommendation-title": "Een voorgestelde koppeling toevoegen",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Door links toe te voegen, leren mensen sneller.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Jij}} bepaalt of woorden in één {{SITENAME}}-artikel moeten linken naar andere {{SITENAME}}-artikelen.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Voorbeeld zin",
