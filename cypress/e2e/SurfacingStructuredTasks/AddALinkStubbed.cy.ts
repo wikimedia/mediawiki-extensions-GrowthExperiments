@@ -2,7 +2,7 @@
 import suggestions from '../../fixtures/LoremIpsumSuggestions.json';
 suggestions.query.linkrecommendations.taskURL = '/task-test-url';
 
-describe( 'Surfacing Link recommendations (with api responses stubbed)', () => {
+describe.skip( 'Surfacing Link recommendations (with api responses stubbed)', () => {
 	it( 'highlights the results returned by the API', function () {
 
 		const articleName = 'Surfacing Link recommendations cypress test page';

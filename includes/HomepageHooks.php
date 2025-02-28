@@ -7,6 +7,7 @@ use CirrusSearch\Search\Rescore\BoostFunctionBuilder;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
+use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -163,6 +164,7 @@ class HomepageHooks implements
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
 	private StatsFactory $statsFactory;
+	private GrowthExperimentsInteractionLogger $growthInteractionLogger;
 
 	/**
 	 * @param Config $config Uses PHP globals
@@ -206,7 +208,8 @@ class HomepageHooks implements
 		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
 		NewcomerTasksInfo $suggestionsInfo,
 		UserImpactLookup $userImpactLookup,
-		UserImpactStore $userImpactStore
+		UserImpactStore $userImpactStore,
+		GrowthExperimentsInteractionLogger $growthInteractionLogger
 	) {
 		$this->config = $config;
 		$this->userOptionsManager = $userOptionsManager;
@@ -228,6 +231,7 @@ class HomepageHooks implements
 		$this->suggestionsInfo = $suggestionsInfo;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->userImpactStore = $userImpactStore;
+		$this->growthInteractionLogger = $growthInteractionLogger;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -864,6 +868,12 @@ class HomepageHooks implements
 					$this->experimentUserManager->setVariant( $user, $variant );
 					$this->userOptionsManager->saveOptions( $user );
 				}
+
+				$this->growthInteractionLogger->log( $user, 'experiment_enrollment', [
+					'action_source' => 'LocalUserCreatedHook',
+					'variant' => $variant
+				] );
+
 				$this->statsFactory
 					->withComponent( 'GrowthExperiments' )
 					->getCounter( 'user_variant_total' )

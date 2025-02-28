@@ -2,6 +2,9 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\SurfacingStructuredTasks\BeforePageDisplayHookHandler;
@@ -46,7 +49,9 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		$hookHandler = new BeforePageDisplayHookHandler(
 			$config,
 			$configurationLoader,
-			$this->getUserOptionsLookupMock()
+			$this->getUserOptionsLookupMock(),
+			$this->getStubLinkRecommendationStore( $this->createMock( LinkRecommendation::class ) ),
+			$this->createMock( GrowthExperimentsInteractionLogger::class )
 		);
 		$hookHandler->onBeforePageDisplay( $mockOutputPage, $skin );
 	}
@@ -95,6 +100,13 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			[],
 			null
 		];
+		yield 'No recommendations for page' => [
+			[],
+			null,
+			[],
+			null,
+			false
+		];
 	}
 
 	/**
@@ -104,7 +116,8 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		$configOverrides,
 		$configLoaderOverrides,
 		$outputPageOverrides,
-		$skinOverride
+		$skinOverride,
+		$pageHasRecommendations = true
 	): void {
 		$config = $this->getConfig( $configOverrides );
 		$configurationLoader = $this->getConfigurationLoader( $configLoaderOverrides );
@@ -121,7 +134,11 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		$hookHandler = new BeforePageDisplayHookHandler(
 			$config,
 			$configurationLoader,
-			$this->getUserOptionsLookupMock()
+			$this->getUserOptionsLookupMock(),
+			$this->getStubLinkRecommendationStore(
+				$pageHasRecommendations ? $this->createMock( LinkRecommendation::class ) : null
+			),
+			$this->createMock( GrowthExperimentsInteractionLogger::class )
 		);
 		$hookHandler->onBeforePageDisplay( $mockOutputPage, $skin );
 	}
@@ -144,6 +161,15 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		] );
 	}
 
+	private function getStubLinkRecommendationStore( $returnValue ) {
+		$linkRecommendationStore = $this->createMock( LinkRecommendationStore::class );
+
+		$linkRecommendationStore
+			->method( 'getByPageId' )
+			->willReturn( $returnValue );
+		return $linkRecommendationStore;
+	}
+
 	/**
 	 * @return OutputPage|(OutputPage&MockObject)
 	 */
@@ -157,6 +183,7 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 
 		$stubWikipage = $this->createStub( Title::class );
 		$stubWikipage->method( 'getNamespace' )->willReturn( $overrides['getNamespace'] ?? NS_MAIN );
+		$stubWikipage->method( 'getArticleID' )->willReturn( 123 );
 		$mockOutputPage->method( 'getTitle' )->willReturn( $stubWikipage );
 
 		$stubRequest = $this->createStub( WebRequest::class );
