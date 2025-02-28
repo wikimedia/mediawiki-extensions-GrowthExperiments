@@ -179,6 +179,7 @@
 	"growthexperiments-mentor-list-missing-key": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
 	"growthexperiments-mentor-list-datatype-mismatch": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
+	"growthexperiments-mentor-list-invalid-weight": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
 	"growthexperiments-mentor-writer-error-already-added": "Error message displayed when a change to MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) tries to add a mentor who is already added",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Error message displayed when a change to MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) tries to remove/change a mentor who is not in the list",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Error message displayed when a change to MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) tries to remove/change a mentor who is not in the list",

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Config\Validation;
 
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use InvalidArgumentException;
 use StatusValue;
@@ -96,6 +97,15 @@ class StructuredMentorListValidator implements IConfigValidator {
 					$key,
 					self::MENTOR_KEY_DATATYPES[$key],
 					gettype( $value )
+				);
+			}
+
+			if ( $key === 'weight' && !in_array( $value, IMentorWeights::WEIGHTS ) ) {
+				return StatusValue::newFatal(
+					'growthexperiments-mentor-list-invalid-weight',
+					$key,
+					\FormatJson::encode( IMentorWeights::WEIGHTS ),
+					$value
 				);
 			}
 		}
