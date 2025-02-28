@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\SurfacingStructuredTasks;
 
+use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\VariantHooks;
@@ -14,15 +16,21 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 	private Config $config;
 	private ConfigurationLoader $configurationLoader;
 	private UserOptionsLookup $userOptionsLookup;
+	private GrowthExperimentsInteractionLogger $growthInteractionLogger;
+	private LinkRecommendationStore $linkRecommendationStore;
 
 	public function __construct(
 		Config $config,
 		ConfigurationLoader $configurationLoader,
-		UserOptionsLookup $userOptionsLookup
+		UserOptionsLookup $userOptionsLookup,
+		LinkRecommendationStore $linkRecommendationStore,
+		GrowthExperimentsInteractionLogger $growthInteractionLogger
 	) {
 		$this->config = $config;
 		$this->configurationLoader = $configurationLoader;
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->linkRecommendationStore = $linkRecommendationStore;
+		$this->growthInteractionLogger = $growthInteractionLogger;
 	}
 
 	/**
@@ -34,11 +42,6 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 		}
 		$user = $out->getUser();
 		if ( !$user->isNamed() ) {
-			return;
-		}
-
-		$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
-		if ( $variant !== VariantHooks::VARIANT_SURFACING_STRUCTURED_TASK ) {
 			return;
 		}
 
@@ -61,8 +64,21 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 			return;
 		}
 
+		if ( $this->linkRecommendationStore->getByPageId( $page->getArticleID() ) === null ) {
+			return;
+		}
+
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		if ( !isset( $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ) ) {
+			return;
+		}
+
+		$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
+		$this->growthInteractionLogger->log( $user, 'experiment_enrollment', [
+			'action_source' => 'BeforePageDisplayHook',
+			'variant' => $variant
+		] );
+		if ( $variant !== VariantHooks::VARIANT_SURFACING_STRUCTURED_TASK ) {
 			return;
 		}
 

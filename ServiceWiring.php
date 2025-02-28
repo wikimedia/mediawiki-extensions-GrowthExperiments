@@ -7,6 +7,7 @@ use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
+use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\ExperimentUserDefaultsManager;
 use GrowthExperiments\ExperimentUserManager;
@@ -317,6 +318,12 @@ return [
 		} else {
 			throw new DomainException( 'Invalid GEImageRecommendationApiHandler value: ' );
 		}
+	},
+
+	'GrowthExperimentsInteractionLogger' => static function (
+		MediaWikiServices $services
+	): GrowthExperimentsInteractionLogger {
+		return new GrowthExperimentsInteractionLogger();
 	},
 
 	'GrowthExperimentsLinkRecommendationHelper' => static function (

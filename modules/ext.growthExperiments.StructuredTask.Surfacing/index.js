@@ -20,6 +20,7 @@ class StructuredTaskSurfacer {
 			mw.config.get( 'wgDBname' );
 		this.newcomerTaskToken = crypto.randomUUID();
 		this.clickId = crypto.randomUUID();
+		this.userVariant = ge.utils.getUserVariant();
 		/**
 		 * @type any
 		 */
@@ -104,7 +105,8 @@ class StructuredTaskSurfacer {
 		if ( topRecs.length ) {
 			mw.track( this.trackingCounterPrefix + '.highlight.page.impression', 1 );
 			this.incrementPerformanceCounter( 'page_impression' );
-			this.logger.log( 'impression' );
+			// eslint-disable-next-line camelcase
+			this.logger.log( 'impression', { user_variant: this.userVariant } );
 		}
 
 		let aHighlightHasBeenSeenByUser = false;
@@ -124,7 +126,8 @@ class StructuredTaskSurfacer {
 							aHighlightHasBeenSeenByUser = true;
 							mw.track( this.trackingCounterPrefix + '.highlight.viewport.impression', 1 );
 							this.incrementPerformanceCounter( 'viewport_impression' );
-							this.logger.log( 'viewport_impression' );
+							// eslint-disable-next-line camelcase
+							this.logger.log( 'viewport_impression', { user_variant: this.userVariant } );
 						}
 					} );
 				} );
@@ -227,7 +230,8 @@ class StructuredTaskSurfacer {
 			() => {
 				mw.track( this.trackingCounterPrefix + '.popup.Yes.click', 1 );
 				this.incrementPerformanceCounter( 'popup_yes_click' );
-				this.logger.log( 'suggestion_accept_yes', null, {
+				// eslint-disable-next-line camelcase
+				this.logger.log( 'suggestion_accept_yes', { user_variant: this.userVariant }, {
 					/* eslint-disable camelcase */
 					active_interface: 'readmode_suggestion_dialog',
 					/* eslint-enable camelcase */
