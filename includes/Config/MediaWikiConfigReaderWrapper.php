@@ -24,14 +24,10 @@ class MediaWikiConfigReaderWrapper implements Config {
 
 	private Config $mediawikiConfigReader;
 
-	private Config $mainConfig;
-
 	public function __construct(
-		Config $mediawikiConfigReader,
-		Config $mainConfig
+		Config $mediawikiConfigReader
 	) {
 		$this->mediawikiConfigReader = $mediawikiConfigReader;
-		$this->mainConfig = $mainConfig;
 	}
 
 	/**

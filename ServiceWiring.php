@@ -172,8 +172,7 @@ return [
 	'GrowthExperimentsCommunityConfig' => static function ( MediaWikiServices $services ): Config {
 		if ( Util::useCommunityConfiguration() ) {
 			return new MediaWikiConfigReaderWrapper(
-				$services->get( 'CommunityConfiguration.MediaWikiConfigReader' ),
-				$services->getMainConfig()
+				$services->get( 'CommunityConfiguration.MediaWikiConfigReader' )
 			);
 		} else {
 			return $services->get( 'GrowthExperimentsMultiConfig' );
