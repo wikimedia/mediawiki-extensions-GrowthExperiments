@@ -343,7 +343,9 @@
 			"services": [
 				"MainConfig",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
-				"UserOptionsLookup"
+				"UserOptionsLookup",
+				"GrowthExperimentsLinkRecommendationStore",
+				"GrowthExperimentsInteractionLogger"
 			]
 		},
 		"homepage": {
@@ -368,7 +370,8 @@
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
 				"GrowthExperimentsSuggestionsInfo",
 				"GrowthExperimentsUserImpactLookup_Computed",
-				"GrowthExperimentsUserImpactStore"
+				"GrowthExperimentsUserImpactStore",
+				"GrowthExperimentsInteractionLogger"
 			]
 		},
 		"impact": {

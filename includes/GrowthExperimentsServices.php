@@ -6,6 +6,7 @@ use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
+use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
@@ -109,6 +110,10 @@ class GrowthExperimentsServices {
 
 	public function getExperimentUserManager(): ExperimentUserManager {
 		return $this->coreServices->get( 'GrowthExperimentsExperimentUserManager' );
+	}
+
+	public function getGrowthExperimentsInteractionLogger(): GrowthExperimentsInteractionLogger {
+		return $this->coreServices->get( 'GrowthExperimentsInteractionLogger' );
 	}
 
 	public function getHomepageModuleRegistry(): HomepageModuleRegistry {
