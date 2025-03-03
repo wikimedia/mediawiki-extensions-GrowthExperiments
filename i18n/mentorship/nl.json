@@ -178,6 +178,7 @@
 	"growthexperiments-mentor-list-missing-key": "Sleutel <code>$1</code> ontbreekt",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> zou <code>$2</code> moeten zijn, maar is <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Mentordefinitie bevat een onverwachte sleutel <code>$1</code>",
+	"growthexperiments-mentor-list-invalid-weight": "<code>$1</code> moet één van de volgende zijn: <code>$2</code>, maar is <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 is al toegevoegd aan de mentorlijst",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 staat niet in de mentorlijst",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Mentor $1 is geen geregistreerde gebruiker",
