@@ -21,6 +21,7 @@ use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Stats\StatsFactory;
 
 class NewcomerTasksChangeTagsManager {
+	public const SURFACED_CHANGE_TAG = 'newcomer task read view suggestion';
 
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
@@ -189,9 +190,14 @@ class NewcomerTasksChangeTagsManager {
 	/**
 	 * @param string $taskTypeId
 	 * @param UserIdentity $userIdentity
+	 * @param bool $wasTaskSurfaced was the task surfaced in read-mode?
 	 * @return StatusValue
 	 */
-	public function getTags( string $taskTypeId, UserIdentity $userIdentity ): StatusValue {
+	public function getTags(
+		string $taskTypeId,
+		UserIdentity $userIdentity,
+		bool $wasTaskSurfaced = false
+	): StatusValue {
 		$result = $this->checkUserAccess( $userIdentity );
 		if ( !$result->isGood() ) {
 			return $result;
@@ -202,6 +208,9 @@ class NewcomerTasksChangeTagsManager {
 		}
 		$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
 		$tags = $taskTypeHandler->getChangeTags( $taskType->getId() );
+		if ( $wasTaskSurfaced ) {
+			$tags[] = self::SURFACED_CHANGE_TAG;
+		}
 		return StatusValue::newGood( $tags );
 	}
 
