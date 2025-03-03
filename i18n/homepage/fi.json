@@ -329,7 +329,7 @@
 	"growthexperiments-addlink-notinstore": "Sivulle ”$1” ei löytynyt linkkiehdotuksia",
 	"growthexperiments-addlink-duplicatesubmission": "Yritit lähettää linkkiehdotuksen arvioinnin versiolle ”$1”, joka on jo arvioitu.",
 	"growthexperiments-addlink-context-text-label": "Teksti",
-	"growthexperiments-addlink-context-intro": "Pitäisikö tässä olla linkki seuraavaan artikkeliin?",
+	"growthexperiments-addlink-context-intro": "Tulisiko tässä olla linkki seuraavaan artikkeliin?",
 	"growthexperiments-addlink-context-button-accept": "Kyllä",
 	"growthexperiments-addlink-context-button-reject": "Ei",
 	"growthexperiments-addlink-context-button-help": "Saa apua muokkaamisessa",

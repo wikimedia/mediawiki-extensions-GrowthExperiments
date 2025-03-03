@@ -1,7 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"O Breixo"
+			"O Breixo",
+			"Toliño"
 		]
-	}
+	},
+	"apihelp-homepagequestionstore-summary": "Obter preguntas con formato publicadas a través de módulos da páxina de inicio",
+	"apihelp-homepagequestionstore-param-questionformat": "O formato no que devolver as preguntas; por exemplo, HTML.",
+	"apihelp-homepagequestionstore-param-storage": "A localización do almacenamento das preguntas.",
+	"apihelp-homepagequestionstore-param-userid": "O identificador de usuario para o que obter as preguntas.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Non se atoparon preguntas.",
+	"apihelp-growthsetmentor-summary": "Establecer o mentor do usuario. O cambio quedará rexistrado publicamente.",
+	"apihelp-growthsetmentor-param-mentee": "Nome de usuario do aprendiz",
+	"apihelp-growthsetmentor-param-mentor": "Nome de usuario do mentor",
+	"apihelp-growthsetmentor-param-reason": "Motivo para o cambio",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Título do artigo para o cal é a tarefa de recomendación de imaxes"
 }

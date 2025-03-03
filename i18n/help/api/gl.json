@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Xestiona as preguntas publicadas a través do panel de axuda para o usuario actual.",
+	"apihelp-helppanelquestionposter-param-body": "O texto da pregunta feita polo usuario.",
+	"apihelp-helppanelquestionposter-param-source": "O método utilizado para publicar a pregunta.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "O panel \"Pregunta na Taberna\".",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "O panel \"Pregúntalle ao teu mentor\" na páxina de inicio do usuario novato",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "A pantalla \"Pregúntalle ao teu mentor\" no panel de axuda",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "O panel \"Pregunta na Taberna\" (nome antigo)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "O panel \"Pregúntalle ao teu mentor\" na páxina de inicio do usuario novato (nome antigo)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se está seleccionado, a incluír coa pregunta.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Cómpre iniciar sesión para formular unha pregunta."
+}

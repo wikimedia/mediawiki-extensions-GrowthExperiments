@@ -21,5 +21,17 @@
 	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|మీ}} ఆసక్తులను బట్టి మీకు సూచించబడిన వ్యాసాలు",
 	"growthexperiments-signupcampaign-bullet2": "అనుభవజ్ఞులైన సంపాదకులను సాయం అడగండి",
 	"growthexperiments-signupcampaign-bullet3": "చిన్నపాటి, తేలికైన దిద్దుబాట్లతో మొదలుపెట్టండి",
+	"growthexperiments-recurringcampaign-title": "వికీపీడియాకు దన్నుగా ఉన్నందుకు ధన్యవాదాలు. {{GENDER:|మీ}}వంటి పాఠకులు చేసే తోడ్పాటు వల్లనే వికీపీడియా వర్థిల్లుతోంది.",
+	"growthexperiments-thankyoupage-body": "వికీపీడియాను {{GENDER:|మీ}}వంటి వారే కలిసి నిర్మిస్తున్నారు. వ్యాసాల్లో దిద్దుబాటు చెయ్యడమనేది, {{GENDER:|మీరు}} అనుకుంటున్నదాని కంటే సులువైనది!\n\nమీ ఖాతాతో, మీకు ఈ కిందివి అందుబాటులో ఉంటాయి:",
+	"growthexperiments-thankyoupage-body-mobile": "వికీపీడియాను {{GENDER:|మీ}}వంటి వారే కలిసి నిర్మిస్తున్నారు. వ్యాసాల్లో దిద్దుబాటు చెయ్యడమనేది, {{GENDER:|మీరు}} అనుకుంటున్నదాని కంటే సులువైనది!",
+	"growthexperiments-thankyoupage-bullet1": "{{GENDER:|మీ}} ఆసక్తులకు అనుగుణంగా ఉండే చిన్నచిన్న పనులు",
+	"growthexperiments-thankyoupage-bullet2": "{{GENDER:|మీరు}} దిద్దుబాటు చేస్తూ ఉంటే వెన్నంటి ఉండే సహాయమూ, మార్గదర్శనమూ",
+	"growthexperiments-thankyoupage-bullet3": "{{GENDER:|మీ}} పనిని ఎంతమంది చూస్తున్నారనే విషయంపై చూపు",
+	"growthexperiments-thankyoubanner-title": "వికీపీడియాలో సవరించడం, మెరుగుపరచడం మొదలుపెట్టేందుకు ఖాతాను సృష్టించుకోండి.",
+	"growthexperiments-thankyoubanner-body": "వికీపీడియాను {{GENDER:|మీ}}వంటి వారే కలిసి నిర్మిస్తున్నారు. వ్యాసాల్లో దిద్దుబాటు చెయ్యడమనేది, {{GENDER:|మీరు}} అనుకుంటున్నదాని కంటే సులువైనది!\n\nమీ ఖాతాతో, మీకు ఈ కిందివి అందుబాటులో ఉంటాయి:",
+	"growthexperiments-thankyoubanner-body-mobile": "వికీపీడియాను {{GENDER:|మీ}}వంటి వారే కలిసి నిర్మిస్తున్నారు. వ్యాసాల్లో దిద్దుబాటు చెయ్యడమనేది, {{GENDER:|మీరు}} అనుకుంటున్నదాని కంటే సులువైనది!",
+	"growthexperiments-thankyoubanner-bullet1": "{{GENDER:|మీ}} ఆసక్తులకు అనుగుణంగా ఉండే చిన్నచిన్న పనులు",
+	"growthexperiments-thankyoubanner-bullet2": "{{GENDER:|మీరు}} దిద్దుబాటు చేస్తూ ఉంటే వెన్నంటి ఉండే సహాయమూ, మార్గదర్శనమూ",
+	"growthexperiments-thankyoubanner-bullet3": "{{GENDER:|మీ}} పనిని ఎంతమంది చూస్తున్నారనే విషయంపై చూపు",
 	"growthexperiments-campaigns-footer": "ఈ పేజీలో {{GENDER:|మీ}} ఖాతాను సృష్టించినపుడు అనుభవం, విశ్లేషణల కోసం అది ఈ ప్రచారంతో అనుబంధించబడుతుంది."
 }
