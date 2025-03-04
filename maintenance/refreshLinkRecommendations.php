@@ -31,6 +31,7 @@ use MediaWiki\User\User;
 use MediaWiki\WikiMap\WikiMap;
 use RuntimeException;
 use StatusValue;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\DBReadOnlyError;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -67,6 +68,20 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->addOption( 'topic', 'Only update articles in the given ORES topic.', false, true );
 		$this->addOption( 'page', 'Only update a specific page.', false, true );
 		$this->addOption( 'force', 'Generate recommendations even if they fail quality criteria.' );
+		$this->addOption(
+			'limit',
+			// phpcs:ignore Generic.Files.LineLength.TooLong
+			'approximate Number of pages to process overall. Only used when GELinkRecommendationsRefreshByIteratingThroughAllTitles is true in settings. Default: 5000',
+			false,
+			true,
+		);
+		$this->addOption(
+			'setLastPageIdInStash',
+			// phpcs:ignore Generic.Files.LineLength.TooLong
+			'Only sets the lastPageId in the stash where the script will start from in the next run if GELinkRecommendationsRefreshByIteratingThroughAllTitles is true',
+			false,
+			true,
+		);
 		$this->addOption( 'verbose', 'Show debug output.' );
 		$this->setBatchSize( 500 );
 	}
@@ -98,6 +113,12 @@ class RefreshLinkRecommendations extends Maintenance {
 			return;
 		}
 
+		$setLastPageIdInStash = $this->getOption( 'setLastPageIdInStash', null );
+		if ( $setLastPageIdInStash !== null ) {
+			$this->setLastPageIdInStash( (int)$setLastPageIdInStash );
+			return;
+		}
+
 		$force = $this->hasOption( 'force' );
 		$this->output( "Refreshing link recommendations...\n" );
 
@@ -112,9 +133,85 @@ class RefreshLinkRecommendations extends Maintenance {
 			return;
 		}
 
-		$this->refreshViaOresTopics( $force );
+		$iterateThroughAllPages = $this->growthConfig->get( 'GELinkRecommendationsRefreshByIteratingThroughAllTitles' );
+		if ( $iterateThroughAllPages ) {
+			$this->refreshByIteratingThroughAllPages( $force );
+		} else {
+			$this->refreshViaOresTopics( $force );
+		}
 
 		$this->sendMetricsToStatslib();
+	}
+
+	private function setLastPageIdInStash( int $lastPageId ): void {
+		$this->output( 'Setting lastPageId in stash: ' . $lastPageId . "\n" );
+		$services = $this->getServiceContainer();
+		$mainStash = $services->getMainObjectStash();
+		$lastPageIdKey = $mainStash->makeKey(
+			'GrowthExperiments',
+			'RefreshLinkRecommendations',
+			'lastPageId'
+		);
+		$success = $mainStash->set( $lastPageIdKey, $lastPageId, ExpirationAwareness::TTL_INDEFINITE );
+		if ( !$success ) {
+			$this->output( 'Failed to set lastPageId in stash!' . "\n" );
+		} else {
+			$this->output( 'Successfully set lastPageId in stash' . "\n" );
+		}
+		$this->output( 'Exiting.' . "\n" );
+	}
+
+	private function refreshByIteratingThroughAllPages( bool $force ): void {
+		$batchSize = $this->getBatchSize();
+
+		$limit = $this->getOption( 'limit', 5000 );
+
+		$services = $this->getServiceContainer();
+
+		$mainStash = $services->getMainObjectStash();
+		$lastPageIdKey = $mainStash->makeKey(
+			'GrowthExperiments',
+			'RefreshLinkRecommendations',
+			'lastPageId'
+		);
+		$this->verboseLog( 'Getting last used page-id from stash with: ' . $lastPageIdKey . "\n" );
+		$lastPageId = $mainStash->get( $lastPageIdKey ) ?: 0;
+		$this->verboseLog( 'Iterating through pages in the wiki, starting at page-id ' . $lastPageId . "\n" );
+
+		$pageStore = $services->getPageStore();
+
+		$pageRowsProcessed = 0;
+
+		while ( $pageRowsProcessed < $limit ) {
+			$pageRecordsIterator = $pageStore->newSelectQueryBuilder()
+				->whereNamespace( 0 )
+				->andWhere( 'page_is_redirect = 0' )
+				->andWhere( 'page_id > ' . $lastPageId )
+				->orderByPageId()
+				->limit( $batchSize )
+				->fetchPageRecords();
+
+			$this->beginTransactionRound( __METHOD__ );
+			foreach ( $pageRecordsIterator as $pageRecord ) {
+				$pageRowsProcessed++;
+				$title = $this->titleFactory->newFromID( $pageRecord->getId() );
+				if ( $title ) {
+					$this->processCandidate( $title->toPageIdentity(), $force );
+				}
+			}
+			$this->commitTransactionRound( __METHOD__ );
+
+			if ( !isset( $pageRecord ) ) {
+				$this->verboseLog( 'Finished processing all pages in the wiki. Resetting lastPageId.' . "\n" );
+				$mainStash->delete( $lastPageIdKey );
+				return;
+			}
+
+			$lastPageId = $pageRecord->getId();
+			unset( $pageRecord );
+		}
+		$this->verboseLog( 'Limit reached, handover-point is at page-id ' . $lastPageId . "\n" );
+		$mainStash->set( $lastPageIdKey, $lastPageId, ExpirationAwareness::TTL_INDEFINITE );
 	}
 
 	private function sendMetricsToStatslib(): void {
