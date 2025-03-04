@@ -1,8 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"O Breixo"
+			"O Breixo",
+			"Toliño"
 		]
 	},
-	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "O título da sección para a que se recomenda a imaxe, por exemplo, <kbd>Historia</kbd>"
+	"apihelp-homepagequestionstore-summary": "Obter preguntas con formato publicadas a través de módulos da páxina de inicio",
+	"apihelp-homepagequestionstore-param-questionformat": "O formato no que devolver as preguntas; por exemplo, HTML.",
+	"apihelp-homepagequestionstore-param-storage": "A localización do almacenamento das preguntas.",
+	"apihelp-homepagequestionstore-param-userid": "O identificador de usuario para o que obter as preguntas.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Non se atoparon preguntas.",
+	"apihelp-growthsetmentor-summary": "Establecer o mentor do usuario. O cambio quedará rexistrado publicamente.",
+	"apihelp-growthsetmentor-param-mentee": "Nome de usuario do aprendiz",
+	"apihelp-growthsetmentor-param-mentor": "Nome de usuario do mentor",
+	"apihelp-growthsetmentor-param-reason": "Motivo para o cambio",
+	"apihelp-query+growthimagesuggestiondata-summary": "Obter os [https://www.mediawiki.org/wiki/wikitech:Add_Image datos de suxestión de imaxe] asociados, se están dispoñibles",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "Identificador do tipo de tarefa (para especificar se queres obter datos para as recomendacións de imaxes de nivel superior ou de sección)",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "Non se atopou o identificador do tipo de tarefa \"$1\" na configuración do wiki.",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar unha recomendación de imaxe.",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "Ao utilizares esta API:\n\n* Restablecerás a [https://www.mediawiki.org/wiki/wikitech:Add_Image etiqueta ponderada \"hasrecommendation:image\"] do artigo, polo que o artigo xa non aparecerá nos resultados da busca para as suxestións de imaxes.\n\n* Engadirás o artigo a unha caché de curta duración, que consulta a extensión ImageRecommendationFilter de [https://www.mediawiki.org/wiki/Extension:GrowthExperiments GrowthExperiments] para decidir se o artigo debe excluírse da cola de edicións suxeridas do usuario cando se accede a ela desde [[Special:Homepage]] ou a través da API [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]]\n\n* Xerarás e enviarás un evento a EventGate ao [https://schema.wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback fluxo \"image-suggestion-feedback\"]. Isto permite melloras na canalización de suxestión de imaxes, xa que o código da canalización pode ter en conta os comentarios dos usuarios cando se xeran as recomendacións.\n\nMáis información: [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Structured_tasks/Add_an_image mediawiki.org]",
+	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "Tipo de tarefa (nivel superior ou nivel de sección)",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Título do artigo para o cal é a tarefa de recomendación de imaxes",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "O nome de ficheiro sen prefixo para a recomendación de imaxe; por exemplo, <kbd>Foo.jpg</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "O título da sección para a que se recomenda a imaxe; por exemplo, <kbd>History</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "O índice de base 1 da sección para a que se recomenda a imaxe; por exemplo, <kbd>3</kbd>"
 }
