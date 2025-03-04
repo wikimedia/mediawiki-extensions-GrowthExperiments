@@ -69,6 +69,12 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			[ 'isNamed' => false ],
 			null
 		];
+		yield 'protected page' => [
+			[],
+			null,
+			[ 'canEdit' => false ],
+			null
+		];
 		yield 'page not in main namespace' => [
 			[],
 			null,
@@ -179,6 +185,7 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		$stubUser = $this->createStub( User::class );
 		$stubUser->method( 'isNamed' )->willReturn( $overrides['isNamed'] ?? true );
 		$stubUser->method( 'getEditCount' )->willReturn( $overrides['getEditCount'] ?? 0 );
+		$stubUser->method( 'probablyCan' )->willReturn( $overrides['canEdit'] ?? true );
 		$mockOutputPage->method( 'getUser' )->willReturn( $stubUser );
 
 		$stubWikipage = $this->createStub( Title::class );

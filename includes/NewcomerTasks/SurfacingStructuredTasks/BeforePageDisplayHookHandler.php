@@ -50,6 +50,10 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 			return;
 		}
 
+		if ( !$user->probablyCan( 'edit', $page ) ) {
+			return;
+		}
+
 		$action = $out->getRequest()->getVal( 'action', 'view' );
 		if ( $action !== 'view' ) {
 			return;
