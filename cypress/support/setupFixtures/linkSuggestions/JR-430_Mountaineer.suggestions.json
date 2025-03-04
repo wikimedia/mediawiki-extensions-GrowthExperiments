@@ -1,0 +1,36 @@
+{
+	"links": [
+		{
+			"link_text": "4-8-2",
+			"link_target": "4-8-2",
+			"match_index": 0,
+			"wikitext_offset": 98,
+			"score": 0.8720020055770874,
+			"context_before": " with a ",
+			"context_after": " (\"Mountai",
+			"link_index": 0
+		},
+		{
+			"link_text": "North America",
+			"link_target": "North America",
+			"match_index": 0,
+			"wikitext_offset": 1999,
+			"score": 0.6051948070526123,
+			"context_before": "gement in ",
+			"context_after": ".\n\n",
+			"link_index": 1
+		}
+	],
+	"meta": {
+		"application_version": "9f1bd22",
+		"dataset_checksums": {
+			"anchors": "2219871657cd968f79c72f670c0f6100b62cd25a4393562f7f8d8b76975d6dbb",
+			"model": "60ec6ebaaf35995b2131c895e6d19ec29c7f239a99d2c5a319703af3c46b9c77",
+			"pageids": "983d0853d4cb9c1e4f22d004878197561966ce26f93a402a9af870d4d93ff4f4",
+			"redirects": "751a4ab62d1b03c5315130261e7a9bb3ed21a77983f482f4fadbf6a270bb3d0e",
+			"w2vfiltered": "d45ffba0ad87165dbb0fe9e409e1aa0772007269f946562f24ee1b356a306a40"
+		},
+		"format_version": 1,
+		"task_timestamp": 1741081360
+	}
+}

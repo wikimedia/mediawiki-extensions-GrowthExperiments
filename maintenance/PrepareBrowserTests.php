@@ -72,6 +72,7 @@ class PrepareBrowserTests extends Maintenance {
 		$recommendationTitles = [
 			'Douglas_Adams',
 			'The_Hitchhiker\'s_Guide_to_the_Galaxy',
+			'JR-430_Mountaineer',
 		];
 		$linkSuggestionsDirectory = __DIR__ . '/../cypress/support/setupFixtures/linkSuggestions/';
 		foreach ( $recommendationTitles as $title ) {
