@@ -5,6 +5,7 @@ namespace GrowthExperiments\EventLogging;
 use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\WikiMap\WikiMap;
 
 class GrowthExperimentsInteractionLogger {
 	/** @var string Versioned schema URL for $schema field */
@@ -36,6 +37,7 @@ class GrowthExperimentsInteractionLogger {
 			'variant' => $variant,
 			'action_source' => $actionSource
 		] = $additionalData;
+		$wiki = WikiMap::getCurrentWikiId();
 		// FIXME override http.request_headers.user-agent to reduce data collection risk tier. This should
 		// be done via stream configs or instrument config. It's done as an override because the setting control
 		// is only supported for JS clients, see T385180
@@ -44,6 +46,9 @@ class GrowthExperimentsInteractionLogger {
 				'request_headers' => [
 					'user-agent' => ''
 				]
+			],
+			'mediawiki' => [
+				'database' => $wiki
 			],
 			'$schema' => self::SCHEMA_VERSIONED,
 			'action' => $action,
