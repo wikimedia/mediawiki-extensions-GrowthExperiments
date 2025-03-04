@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Samoasambia"
+		]
+	},
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Tulisiko ”$1” linkittää?",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Tarkasta ehdotettu linkki ja auta parantamaan Wikipediaa.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Kyllä",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Ei"
+}

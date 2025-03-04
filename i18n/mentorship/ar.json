@@ -183,6 +183,7 @@
 	"growthexperiments-mentor-list-missing-key": "مفتاح <code>$1</code> مفقود",
 	"growthexperiments-mentor-list-datatype-mismatch": "من المتوقّع لـ<code>$1</code> أن يكون <code>$2</code>، لكنّه <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "تعريف المرشد يحتوي على مفتاح غير متوقع <code>$1</code>",
+	"growthexperiments-mentor-list-invalid-weight": "يُتوقع أن يكون <code>$1</code> واحدًا من: <code>$2</code>، ولكنه <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "تمت إضافة المرشد $1 سابقًا إلى قائمة المرشدين",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "لا وجود للمرشد $1 على قائمة المرشدين",
 	"growthexperiments-mentor-writer-error-anonymous-user": "المرشد $1 ليس مستخدمًا مسجلاً",

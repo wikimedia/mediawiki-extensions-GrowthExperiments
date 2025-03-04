@@ -154,6 +154,8 @@
 	"tag-newcomer_task_image_suggestion-description": "עריכה במסגרת משימת \"הוספת תמונות\" שהוצעה על־ידי מודול העריכות המוצעות של דף הבית למתחילים",
 	"tag-newcomer_task_section_image_suggestion": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-section-image מוצע: הוספת תמונות לפרקים]",
 	"tag-newcomer_task_section_image_suggestion-description": "עריכה במסגרת משימת \"הוספת תמונות לפרקים\" שהוצעה על־ידי מודול העריכות המוצעות של דף הבית למתחילים",
+	"tag-newcomer_task_read_view_suggestion": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#readview|מוצע: בתצוגת קריאה]]",
+	"tag-newcomer_task_read_view_suggestion-description": "עריכה שהוצעה לעורך חדש בעת קריאת ערך",
 	"growthexperiments-homepage-help-dialog-title": "לשאול בחממה",
 	"growthexperiments-homepage-help-header": "{{GENDER:|קבל|קבלי}} עזרה עם עריכה",
 	"growthexperiments-homepage-help-subheader": "דפי העזרה העיקריים בנושא עריכה",
