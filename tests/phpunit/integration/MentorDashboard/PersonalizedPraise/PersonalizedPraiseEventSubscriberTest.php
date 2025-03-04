@@ -16,9 +16,9 @@ use StatusValue;
 /**
  * @group medium
  * @group Database
- * @coversDefaultClass \GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseHooks
+ * @coversDefaultClass \GrowthExperiments\MentorDashboard\PersonalizedPraise\MediaWikiEventSubscribers\PersonalizedPraiseEventSubscriber
  */
-class PersonalizedPraiseHooksTest extends MediaWikiIntegrationTestCase {
+class PersonalizedPraiseEventSubscriberTest extends MediaWikiIntegrationTestCase {
 	use MockHttpTrait;
 	use CommunityConfigurationTestHelpers;
 
@@ -32,7 +32,7 @@ class PersonalizedPraiseHooksTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers ::onPageSaveComplete
+	 * @covers ::handlePageUpdatedEventAfterCommit
 	 * @covers \GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester::getPraiseworthyMenteesForMentor
 	 * @covers \GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester::refreshPraiseworthyMenteesForMentor
 	 */

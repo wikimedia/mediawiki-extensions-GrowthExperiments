@@ -571,8 +571,7 @@
 		"MediaWikiServices": "mediawikiservices",
 		"MessageCacheFetchOverrides": "earlylifecycle",
 		"PageSaveComplete": [
-			"config",
-			"personalizedpraise"
+			"config"
 		],
 		"ParserFirstCallInit": "parserfunctions",
 		"PostLoginRedirect": [
@@ -654,6 +653,17 @@
 			"class": "GrowthExperiments\\UserImpact\\MediaWikiEventSubscribers\\PageUpdatedSubscriber",
 			"services": [
 				"GrowthExperimentsUserImpactUpdater"
+			]
+		},
+		{
+			"events": [ "PageUpdated" ],
+			"class": "GrowthExperiments\\MentorDashboard\\PersonalizedPraise\\MediaWikiEventSubscribers\\PersonalizedPraiseEventSubscriber",
+			"services": [
+				"GrowthExperimentsConfig",
+				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsUserImpactLookup",
+				"GrowthExperimentsPraiseworthyConditionsLookup",
+				"GrowthExperimentsPraiseworthyMenteeSuggester"
 			]
 		}
 	],
