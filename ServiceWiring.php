@@ -417,7 +417,6 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationProvider {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$useFallback = $growthServices->getGrowthConfig()->get( 'GELinkRecommendationFallbackOnDBMiss' );
 		$uncachedProvider = $services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' );
 		// In developer setups, the recommendation service is usually suggestion link targets
 		// from a different wiki, which might end up being red links locally. Allow these,
@@ -426,7 +425,6 @@ return [
 		if ( !$uncachedProvider instanceof StaticLinkRecommendationProvider ) {
 			$rawProvider = new DbBackedLinkRecommendationProvider(
 				GrowthExperimentsServices::wrap( $services )->getLinkRecommendationStore(),
-				$useFallback ? $uncachedProvider : null,
 				$services->getTitleFormatter()
 			);
 			return new PruningLinkRecommendationProvider(

@@ -14,29 +14,21 @@ use Wikimedia\Assert\Assert;
  * A provider which reads the recommendation from the database. It is the caller's
  * responsibility to make sure the recommendation has been stored there (this is
  * usually done via refreshLinkRecommendations.php).
- *
- * Can fall back to a web service for convenience during debugging / local setups.
  */
 class DbBackedLinkRecommendationProvider implements LinkRecommendationProvider {
 
 	private LinkRecommendationStore $linkRecommendationStore;
-
-	private ?LinkRecommendationProvider $fallbackProvider;
-
 	private TitleFormatter $titleFormatter;
 
 	/**
 	 * @param LinkRecommendationStore $linkRecommendationStore
-	 * @param LinkRecommendationProvider|null $fallbackProvider
 	 * @param TitleFormatter $titleFormatter
 	 */
 	public function __construct(
 		LinkRecommendationStore $linkRecommendationStore,
-		?LinkRecommendationProvider $fallbackProvider,
 		TitleFormatter $titleFormatter
 	) {
 		$this->linkRecommendationStore = $linkRecommendationStore;
-		$this->fallbackProvider = $fallbackProvider;
 		$this->titleFormatter = $titleFormatter;
 	}
 
@@ -57,9 +49,6 @@ class DbBackedLinkRecommendationProvider implements LinkRecommendationProvider {
 		$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $title );
 		if ( $linkRecommendation ) {
 			return LinkRecommendationEvalStatus::newGood( $linkRecommendation );
-		}
-		if ( $this->fallbackProvider ) {
-			return $this->fallbackProvider->getDetailed( $title, $taskType );
 		}
 		// This can happen due to race conditions - the search index update is late so the
 		// user is sent to a task which has just been deleted from the DB. It could also be
