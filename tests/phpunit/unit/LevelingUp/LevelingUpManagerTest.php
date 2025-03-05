@@ -23,6 +23,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \GrowthExperiments\LevelingUp\LevelingUpManager
@@ -330,6 +331,72 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 
 	private function getNewcomerTasksUserOptionsLookup(): NewcomerTasksUserOptionsLookup {
 		return $this->createMock( NewcomerTasksUserOptionsLookup::class );
+	}
+
+	/**
+	 * @dataProvider provideShouldSendKeepGoingNotification
+	 */
+	public function testShouldSendKeepGoingNotification(
+		int $editCount,
+		int $maxThreshold,
+		bool $expected
+	) {
+		$minThreshold = TestingAccessWrapper::constant(
+			LevelingUpManager::class,
+			'KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM'
+		);
+
+		$userIdentity = new UserIdentityValue( 1, 'TestUser' );
+
+		$userImpact = $this->createMock( UserImpact::class );
+		$userImpact->method( 'getNewcomerTaskEditCount' )
+			->willReturn( $editCount );
+
+		$userImpactLookup = $this->createMock( UserImpactLookup::class );
+		$userImpactLookup->method( 'getUserImpact' )
+			->with( $userIdentity )
+			->willReturn( $userImpact );
+
+		$growthConfig = new HashConfig( [
+			'GELevelingUpKeepGoingNotificationThresholdsMaximum' => $maxThreshold
+		] );
+
+		$levelingUpManager = $this->getLevelingUpManager(
+			null,
+			null,
+			$userImpactLookup,
+			null,
+			null,
+			null,
+			$growthConfig
+		);
+
+		$this->assertSame(
+			$expected,
+			$levelingUpManager->shouldSendKeepGoingNotification( $userIdentity ),
+			"Expected shouldSendKeepGoingNotification to return " .
+			( $expected ? 'true' : 'false' ) .
+			" when edit count is $editCount and thresholds are min=$minThreshold, max=$maxThreshold"
+		);
+	}
+
+	/**
+	 * Data provider for testShouldSendKeepGoingNotification
+	 *
+	 * Structure: [ editCount, maxThreshold, expectedResult ]
+	 *
+	 * @return array
+	 */
+	public static function provideShouldSendKeepGoingNotification() {
+		return [
+			'Below minimum threshold' => [ 0, 5, false ],
+			'At minimum threshold' => [ 1, 5, true ],
+			'Between min and max' => [ 3, 5, true ],
+			'At maximum threshold' => [ 5, 5, true ],
+			'Above maximum threshold' => [ 6, 5, false ],
+			'At maximum threshold when max=3' => [ 3, 3, true ],
+			'Above maximum threshold when max=3' => [ 4, 3, false ],
+		];
 	}
 
 }
