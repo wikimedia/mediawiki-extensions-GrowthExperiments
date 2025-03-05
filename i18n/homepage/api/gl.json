@@ -1,8 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"O Breixo"
+			"O Breixo",
+			"Toliño"
 		]
 	},
-	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "O título da sección para a que se recomenda a imaxe, por exemplo, <kbd>Historia</kbd>"
+	"apihelp-homepagequestionstore-summary": "Obter preguntas con formato publicadas a través de módulos da páxina de inicio",
+	"apihelp-homepagequestionstore-param-questionformat": "O formato no que devolver as preguntas; por exemplo, HTML.",
+	"apihelp-homepagequestionstore-param-storage": "A localización do almacenamento das preguntas.",
+	"apihelp-homepagequestionstore-param-userid": "O identificador de usuario para o que obter as preguntas.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Non se atoparon preguntas.",
+	"apihelp-growthsetmentor-summary": "Establecer o mentor do usuario. O cambio quedará rexistrado publicamente.",
+	"apihelp-growthsetmentor-param-mentee": "Nome de usuario do aprendiz",
+	"apihelp-growthsetmentor-param-mentor": "Nome de usuario do mentor",
+	"apihelp-growthsetmentor-param-reason": "Motivo para o cambio",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "Identificador do tipo de tarefa (para especificar se queres obter datos para as recomendacións de imaxes de nivel superior ou de sección)",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "Non se atopou o identificador do tipo de tarefa \"$1\" na configuración do wiki.",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Invalidar unha recomendación de imaxe.",
+	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "Tipo de tarefa (nivel superior ou nivel de sección)",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Título do artigo para o cal é a tarefa de recomendación de imaxes",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "O nome de ficheiro sen prefixo para a recomendación de imaxe; por exemplo, <kbd>Foo.jpg</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "O título da sección para a que se recomenda a imaxe; por exemplo, <kbd>History</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "O índice de base 1 da sección para a que se recomenda a imaxe; por exemplo, <kbd>3</kbd>"
 }
