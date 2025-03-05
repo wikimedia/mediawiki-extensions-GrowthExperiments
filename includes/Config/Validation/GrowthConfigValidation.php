@@ -99,7 +99,7 @@ class GrowthConfigValidation implements IConfigValidator {
 	 * Validate a given field
 	 *
 	 * @param string $fieldName Name of the field to be validated
-	 * @param array $descriptor Descriptor of the field (
+	 * @param array $descriptor Descriptor of the field
 	 * @param array $data
 	 * @return StatusValue
 	 */
