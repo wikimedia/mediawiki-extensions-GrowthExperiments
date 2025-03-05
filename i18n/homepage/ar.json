@@ -159,6 +159,8 @@
 	"tag-newcomer_task_image_suggestion-description": "مهمة تعديل «إضافة صور» مقترحة من وحدة التعديلات المقترحة من لوحة المستخدم للوافدين الجدد",
 	"tag-newcomer_task_section_image_suggestion": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-section-image مقترح: إضافة صور إلى الأقسام]",
 	"tag-newcomer_task_section_image_suggestion-description": "مهمة تعديل «إضافة صور إلى الأقسام» مقترحة من وحدة التعديلات المقترحة من لوحة المستخدم للوافدين الجدد",
+	"tag-newcomer_task_read_view_suggestion": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#readview|مقترح: في عرض القراءة]]",
+	"tag-newcomer_task_read_view_suggestion-description": "تعديل تم اقتراحه على وافد جديد أثناء قراءة مقال",
 	"growthexperiments-homepage-help-dialog-title": "طرح السؤال على فريق المساعدة",
 	"growthexperiments-homepage-help-header": "{{GENDER:|احصل|احصلي}} على المساعدة في التحرير",
 	"growthexperiments-homepage-help-subheader": "صفحات المساعدة الأكثر قراءة حول التحرير",

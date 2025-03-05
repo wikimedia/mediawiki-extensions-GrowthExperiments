@@ -143,6 +143,8 @@
 	"tag-newcomer_task_image_suggestion-description": "Tarefa de edición \"engadir imaxes\" suxerida polo módulo de edicións suxeridas da páxina de inicio das persoas principiantes",
 	"tag-newcomer_task_section_image_suggestion": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-section-image Suxerido: engadir imaxes a seccións]",
 	"tag-newcomer_task_section_image_suggestion-description": "Tarefa de edición \"engadir imaxes a seccións\" suxerida polo módulo de edicións suxeridas da páxina de inicio das persoas principiantes",
+	"tag-newcomer_task_read_view_suggestion": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#readview|Suxerido: en modo lectura]]",
+	"tag-newcomer_task_read_view_suggestion-description": "Unha edición suxerida a un novato mentres lía un artigo",
 	"growthexperiments-homepage-help-dialog-title": "Pregunta na Taberna",
 	"growthexperiments-homepage-help-header": "Busca axuda para editar",
 	"growthexperiments-homepage-help-subheader": "Páxinas principais de axuda sobre a edición",
