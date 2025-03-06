@@ -58,7 +58,10 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "అవును",
 	"growthexperiments-edit-config-mentorship-enabled-false": "లేదు",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility": "వాడుకరులు ఆటోమాటిగ్గా గురువులుగా అర్హులవ్వాలా?",
+	"growthexperiments-edit-config-mentorship-minimum-age": "గురువుగా చేరేందుకు, వాడుకరిగా నమోదై ఉండాల్సిన కనీసమాత్రపు రోజులు",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "గురువుగా చేరేందుకు, వాడుకరి చేసి ఉండాల్సిన కనీసమాత్రపు దిద్దుబాట్లు (ఏ పేరుబరిలోనైనా సరే)",
 	"growthexperiments-edit-config-personalized-praise": "వ్యక్తిగతీకరించిన ప్రశంసలు",
+	"growthexperiments-edit-config-personalized-praise-min-edits": "ప్రశంసార్హులుగా పరిగణించబడాలంటే, శిష్యులకు డిఫాల్టుగా ఉండాల్సిన కనీస దిద్దుబాట్లు",
 	"growthexperiments-edit-config-personalized-praise-max-edits": "ప్రశంసార్హత పొందాలంటే, కొత్తవారికి ఉండదగ్గ గరిష్ఠ దిద్దుబాట్లు",
 	"growthexperiments-edit-config-newcomertasks": "సూచించిన దిద్దుబాట్లు",
 	"growthexperiments-edit-config-newcomer-tasks-description": "నిర్వహణ మూసల ద్వారా కొన్ని దిద్దుబాటు సూచనలు బయట పడతాయి. అలాంటి మూసలున్న వ్యాసాలు ఈ ఫీడు లోకి చేరుతాయి. ఒక్కో పనినీ ఎన్నేసి వ్యాసాల్లో చెయ్యాల్సి ఉందో చూసేందుకు, [[Special:NewcomerTasksInfo|ఈ పేజీ చూడండి]].",
@@ -89,10 +92,14 @@
 	"growthexperiments-info-tooltip-close-label": "మూసివేయి",
 	"specialpages-group-growth-tools": "గ్రోత్ ఉపకరణాలు",
 	"growthexperiments-edit-config-level-up-notifications": "గమనింపులు: గ్రోత్ విశేషాలు",
+	"communityconfiguration-mentorship-title": "గురుత్వం",
 	"communityconfiguration-mentorship-description": "గురువుల కనీసపు దిద్దుబాట్లు, కాలవ్యవధులు, అభినందనీయులైన శిష్యులు వంటి వాటిని సెట్ చేసుకుంటూ, గురుత్వపు అమరికలు, అర్హతలను అనుకూలీకరించండి",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "గురువుగా చేరేందుకు, వాడుకరిగా నమోదై ఉండాల్సిన కనీసమాత్రపు రోజులు",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "గురువుగా చేరేందుకు, వాడుకరి చేసి ఉండాల్సిన కనీసమాత్రపు దిద్దుబాట్లు (ఏ పేరుబరిలోనైనా సరే)",
 	"communityconfiguration-mentorship-gepersonalizedpraisedays-label": "శిష్యుల ప్రశంసార్హతను లెక్కించేందుకు పరిగణించే రోజులు",
+	"communityconfiguration-mentorship-gepersonalizedpraisedays-help-text": "గురువులు స్వయంగా తమ వాడుకరికి సంబంధించిన ఈ వికల్పాన్ని గురువు డ్యాష్‌బోర్డులో మార్చుకోవచ్చు.",
+	"communityconfiguration-mentorship-gepersonalizedpraisedefaultnotificationsfrequency-help-text": "గురువులు స్వయంగా తమ వాడుకరికి సంబంధించిన ఈ వికల్పాన్ని గురువు డ్యాష్‌బోర్డులో మార్చుకోవచ్చు.",
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "ప్రశంసార్హులుగా పరిగణించబడాలంటే, ఓ వాడుకరికి ఉండదగ్గ గరిష్ఠ దిద్దుబాట్లు",
-	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "ప్రశంసార్హులుగా పరిగణించబడాలంటే, ఓ వాడుకరికి డిఫాల్టుగా ఉండాల్సిన కనీస దిద్దుబాట్లు"
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "ప్రశంసార్హులుగా పరిగణించబడాలంటే, ఓ వాడుకరికి డిఫాల్టుగా ఉండాల్సిన కనీస దిద్దుబాట్లు",
+	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "గురువులు స్వయంగా తమ వాడుకరికి సంబంధించిన ఈ వికల్పాన్ని గురువు డ్యాష్‌బోర్డులో మార్చుకోవచ్చు."
 }

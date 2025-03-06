@@ -3,15 +3,37 @@
 		"authors": [
 			"Naufal06",
 			"Notanotheramy",
-			"Rachmat04"
+			"Rachmat04",
+			"BAPerdana-WMF"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Dapatkan saranan tugas yang sesuai bagi pendatang baru.",
 	"apihelp-query+growthtasks-extended-description": "Sarankan sekelompok artikel yang mempunyai isu menarik yang cukup mudah diselesaikan oleh pengguna baru.",
 	"apihelp-query+growthtasks-param-tasktypes": "Jenis tugas untuk membatasi saran yang ditampilkan. Tinggalkan kosong untuk mendapatkan semua saran.",
 	"apihelp-query+growthtasks-param-topics": "Topik artikel untuk dipilih di saranan tugas.",
+	"apihelp-query+growthtasks-param-topicsmode": "Mode pencocokan untuk pencarian topik.",
 	"apihelp-query+growthtasks-param-limit": "Jumlah maksimum saranan tugas yang perlu tampil.",
-	"apihelp-query+growthtasks-param-debug": "Tambah data awakutu pada keluaran.",
+	"apihelp-query+growthtasks-param-excludepageids": "ID halaman untuk dikecualikan dari kueri.",
+	"apihelp-query+growthtasks-param-debug": "Tambah data awakutu (''debug'') pada keluaran.",
 	"apihelp-query+growthtasks-example-1": "Dapatkan saranan tugas untuk tugas berbentuk penyutingan naskah untuk pengguna sekarang.",
-	"apihelp-query+growthtasks-example-2": "Dapatkan saranan tugas untuk pengguna sekarang, dengan informasi lebih lengkap tentang halaman."
+	"apihelp-query+growthtasks-example-2": "Dapatkan saranan tugas untuk pengguna sekarang, dengan informasi lebih lengkap tentang halaman.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Dapatkan jenis tugas yang disarankan untuk pengguna coba berikutnya.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Jenis tugas yang saat ini sedang dikerjakan pengguna.",
+	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "Sebuah kode JSON dari objek dengan kata kunci berikut:\n* <var>acceptedTargets</var>: (opsional) Susun berdasarkan judul halaman, yaitu rekomendasi pranala yang disetujui oleh pengguna.\n* <var>rejectedTargets</var>: (opsional) Susun berdasarkan judul halaman, yaitu rekomendasi pranala yang ditolak oleh pengguna.\n* <var>skippedTargets</var>: (opsional) Susun berdasarkan judul halaman, yaitu rekomendasi pranala yang dilewatkan oleh pengguna.",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Untuk plugin <var>ge-task-link-recommendation</var> </dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Untuk plugin <var>ge-task-image-recommendation</var> </dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt>Untuk plugin <var>ge-task-section-image-recommendation</var> </dt><dd>\n$1\n</dd></dl>",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Parameter 'accepted' tidak ditemukan dalam data plugin Add Image",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Parameter 'accepted' harus berupa boolean di data plugin Add Image yakni $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "Parameter 'reasons' tidak ditemukan dalam data plugin Add Image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Parameter 'reasons' harus berupa array di data plugin Add Image yakni $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Item '$1' tidak valid karena parameter 'reasons', harus salah satu dari: $2",
+	"apierror-growthexperiments-addimage-handler-section-title-missing": "Parameter 'sectionTitle' tidak ditemukan dalam data plugin Add Image",
+	"apierror-growthexperiments-addimage-handler-section-title-wrongtype": "Parameter 'sectionTitle' harus berupa null di data plugin Add Image yakni $1",
+	"apierror-growthexperiments-addimage-handler-section-number-missing": "Parameter 'sectionNumber' tidak ditemukan dalam data plugin Add Image",
+	"apierror-growthexperiments-addimage-handler-section-number-wrongtype": "Parameter 'sectionNumber' harus berupa null di data plugin Add Image yakni $1",
+	"apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype": "Parameter 'sectionTitle' harus berupa string di data plugin Add Image yakni $1",
+	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "Parameter 'sectionNumber' harus berupa integer di data plugin Add Image yakni $1",
+	"apierror-growthexperiments-addlink-handler-notfound": "Catatan rekomendasi pranala tidak ditemukan",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Target rekomendasi pranala tidak terduga: $1"
 }
