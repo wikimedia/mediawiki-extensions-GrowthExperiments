@@ -97,17 +97,5 @@ class CommunityConfigurationHooks implements
 		if ( !$this->config->get( 'GEHelpPanelEnabled' ) ) {
 			unset( $providers['HelpPanel'] );
 		}
-
-		// HACK: Do not break ApiStructureTest
-		// TODO: Figure out why ApiStructureTest is failing with a validator defined here and
-		// remove this (T380585)
-		if (
-			array_key_exists( 'GrowthSuggestedEdits', $providers ) &&
-			$this->isCalledFromBrokenTest()
-		) {
-			$providers['GrowthSuggestedEdits']['validator'] = [
-				'type' => 'noop',
-			];
-		}
 	}
 }
