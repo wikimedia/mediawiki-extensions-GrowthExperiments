@@ -112,63 +112,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			return;
 		}
 
-		$oresTopics = $this->getOresTopics();
-		foreach ( $oresTopics as $oresTopic ) {
-			$this->output( "  processing topic $oresTopic...\n" );
-			$suggestions = $this->taskSuggester->suggest(
-				$this->searchUser,
-				new TaskSetFilters(
-					[ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ],
-					[ $oresTopic ]
-				),
-				1,
-				0,
-				// Enabling the debug flag is relatively harmless, and disables all caching,
-				// which we need here. useCache would prevent reading the cache, but would
-				// still write it, which would be just a waste of space.
-				[ 'debug' => true ]
-			);
-
-			// TaskSuggester::suggest() only returns StatusValue when there's an error.
-			if ( $suggestions instanceof StatusValue ) {
-				$this->error( Status::wrap( $suggestions )->getWikiText( false, false, 'en' ) );
-				continue;
-			}
-
-			$totalExistingSuggestionsCount = $suggestions->getTotalCount();
-			$recommendationsNeeded = $this->recommendationTaskType->getMinimumTasksPerTopic()
-				- $totalExistingSuggestionsCount;
-
-			if ( $recommendationsNeeded <= 0 ) {
-				$this->output( "    no new tasks needed, $totalExistingSuggestionsCount existing suggestions\n" );
-				continue;
-			}
-			$this->output( "    $recommendationsNeeded new tasks needed\n" );
-			foreach ( $this->findArticlesInTopic( $oresTopic ) as $titleBatch ) {
-				$recommendationsFound = 0;
-				$this->beginTransactionRound( __METHOD__ );
-				foreach ( $titleBatch as $title ) {
-					// TODO filter out protected pages. Needs to be batched. Or wait for T259346.
-					$success = $this->processCandidate( $title->toPageIdentity(), $force );
-					if ( $success ) {
-						$recommendationsFound++;
-						$recommendationsNeeded--;
-						if ( $recommendationsNeeded <= 0 ) {
-							$this->commitTransactionRound( __METHOD__ );
-							break 2;
-						}
-					}
-				}
-				$this->commitTransactionRound( __METHOD__ );
-				// findArticlesInTopic() picks articles at random, so we need to abort the loop
-				// at some point. Do it when no new tasks were generated from the current batch.
-				if ( $recommendationsFound === 0 ) {
-					break;
-				}
-			}
-			$this->output( ( $recommendationsNeeded === 0 ) ? "    task pool filled\n"
-				: "    topic exhausted, $recommendationsNeeded tasks still needed\n" );
-		}
+		$this->refreshViaOresTopics( $force );
 
 		$this->sendMetricsToStatslib();
 	}
@@ -343,6 +287,66 @@ class RefreshLinkRecommendations extends Maintenance {
 	private function verboseLog( string $message ): void {
 		if ( $this->hasOption( 'verbose' ) ) {
 			$this->output( $message );
+		}
+	}
+
+	public function refreshViaOresTopics( bool $force ): void {
+		$oresTopics = $this->getOresTopics();
+		foreach ( $oresTopics as $oresTopic ) {
+			$this->output( "  processing topic $oresTopic...\n" );
+			$suggestions = $this->taskSuggester->suggest(
+				$this->searchUser,
+				new TaskSetFilters(
+					[ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ],
+					[ $oresTopic ]
+				),
+				1,
+				0,
+				// Enabling the debug flag is relatively harmless, and disables all caching,
+				// which we need here. useCache would prevent reading the cache, but would
+				// still write it, which would be just a waste of space.
+				[ 'debug' => true ]
+			);
+
+			// TaskSuggester::suggest() only returns StatusValue when there's an error.
+			if ( $suggestions instanceof StatusValue ) {
+				$this->error( Status::wrap( $suggestions )->getWikiText( false, false, 'en' ) );
+				continue;
+			}
+
+			$totalExistingSuggestionsCount = $suggestions->getTotalCount();
+			$recommendationsNeeded = $this->recommendationTaskType->getMinimumTasksPerTopic()
+				- $totalExistingSuggestionsCount;
+
+			if ( $recommendationsNeeded <= 0 ) {
+				$this->output( "    no new tasks needed, $totalExistingSuggestionsCount existing suggestions\n" );
+				continue;
+			}
+			$this->output( "    $recommendationsNeeded new tasks needed\n" );
+			foreach ( $this->findArticlesInTopic( $oresTopic ) as $titleBatch ) {
+				$recommendationsFound = 0;
+				$this->beginTransactionRound( __METHOD__ );
+				foreach ( $titleBatch as $title ) {
+					// TODO filter out protected pages. Needs to be batched. Or wait for T259346.
+					$success = $this->processCandidate( $title->toPageIdentity(), $force );
+					if ( $success ) {
+						$recommendationsFound++;
+						$recommendationsNeeded--;
+						if ( $recommendationsNeeded <= 0 ) {
+							$this->commitTransactionRound( __METHOD__ );
+							break 2;
+						}
+					}
+				}
+				$this->commitTransactionRound( __METHOD__ );
+				// findArticlesInTopic() picks articles at random, so we need to abort the loop
+				// at some point. Do it when no new tasks were generated from the current batch.
+				if ( $recommendationsFound === 0 ) {
+					break;
+				}
+			}
+			$this->output( ( $recommendationsNeeded === 0 ) ? "    task pool filled\n"
+				: "    topic exhausted, $recommendationsNeeded tasks still needed\n" );
 		}
 	}
 
