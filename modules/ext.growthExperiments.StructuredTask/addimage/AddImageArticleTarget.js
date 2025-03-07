@@ -745,15 +745,13 @@ AddImageArticleTarget.prototype.logSuggestionInteraction = function (
  * @param {boolean|null} accepted Whether the image suggestion is accepted;
  *  null indicates that the user hasn't decided.
  * @param {string[]} reasons List of rejection reason IDs (when accepted is false)
- * @param {string} [otherRejectionReason] Rejection reason the user entered
  */
 AddImageArticleTarget.prototype.updateSuggestionState = function (
-	index, accepted, reasons, otherRejectionReason
+	index, accepted, reasons
 ) {
 	this.selectedImageIndex = index;
 	this.recommendationAccepted = accepted;
 	this.recommendationRejectionReasons = reasons;
-	this.recommendationOtherRejectionReason = otherRejectionReason;
 };
 
 /**

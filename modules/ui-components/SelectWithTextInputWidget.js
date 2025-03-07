@@ -1,9 +1,6 @@
-const OptionWithTextInputWidget = require( './OptionWithTextInputWidget.js' );
-
 /**
  * Wrapper around OOUI's select widgets for converting a list of options into a widget
- * and for normalizing methods for single & multiple selections. Options can be accompanied by
- * a text input.
+ * and for normalizing methods for single & multiple selections.
  *
  * @class mw.libs.ge.SelectWithTextInputWidget
  * @constructor
@@ -15,9 +12,6 @@ const OptionWithTextInputWidget = require( './OptionWithTextInputWidget.js' );
 function SelectWithTextInputWidget( config ) {
 	this.options = config.options;
 	this.isMultiSelect = typeof config.isMultiSelect === 'boolean' ? config.isMultiSelect : false;
-	// Mapping between option data and OptionWithTextInputWidget; used to retrieve free text data
-	// associated with the option
-	this.optionWithTextInputWidgets = {};
 	this.widget = this.constructWidget();
 }
 
@@ -41,20 +35,6 @@ SelectWithTextInputWidget.prototype.constructItem = function ( itemData ) {
 		label: itemData.label,
 		classes: itemData.classes || []
 	} );
-
-	// Additional changes are needed for RadioOptionWidget to work (change event is not emitted when
-	// the selection changes; DOM structure needs to be updated so that the TextInput can be selected
-	// even within a radio button group)
-	if ( itemData.hasTextInput && this.isMultiSelect ) {
-		this.optionWithTextInputWidgets[ itemData.data ] = new OptionWithTextInputWidget(
-			optionWidget,
-			{
-				placeholder: itemData.textInputPlaceholder,
-				maxLength: itemData.textInputMaxLength
-			}
-		);
-		return this.optionWithTextInputWidgets[ itemData.data ].getOptionWidget();
-	}
 	return optionWidget;
 };
 
@@ -110,33 +90,6 @@ SelectWithTextInputWidget.prototype.findSelection = function () {
 		selectedItems = selectedItem ? [ selectedItem ] : [];
 	}
 	return selectedItems.map( ( item ) => item.getData() );
-};
-
-/**
- * Get the text input value associated with the specified data
- *
- * @param {string} data Option data
- * @return {string}
- */
-SelectWithTextInputWidget.prototype.getTextInputValueForData = function ( data ) {
-	const widgetForData = this.optionWithTextInputWidgets[ data ];
-	if ( widgetForData instanceof OptionWithTextInputWidget ) {
-		return widgetForData.getTextInputValue();
-	}
-	return '';
-};
-
-/**
- * Set the text input value associated with the specified data
- *
- * @param {string} data Option data
- * @param {string} value Text input value
- */
-SelectWithTextInputWidget.prototype.updateTextInputValueForData = function ( data, value ) {
-	const widgetForData = this.optionWithTextInputWidgets[ data ];
-	if ( widgetForData instanceof OptionWithTextInputWidget ) {
-		widgetForData.setTextInputValue( value );
-	}
 };
 
 module.exports = SelectWithTextInputWidget;

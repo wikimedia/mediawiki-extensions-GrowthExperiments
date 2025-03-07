@@ -382,8 +382,6 @@ class HomepageHooks implements
 					$this->userOptionsLookup
 				),
 				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' ),
-				'wgGEStructuredTaskRejectionReasonTextInputEnabled' =>
-					$this->config->get( 'GEStructuredTaskRejectionReasonTextInputEnabled' ),
 				// Always output, it's used throughout the suggested editing session.
 				'wgGELevelingUpEnabledForUser' => $isLevelingUpEnabledForUser,
 			] );

@@ -902,8 +902,7 @@
 				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
-				"ui-components/SelectWithTextInputWidget.js",
-				"ui-components/OptionWithTextInputWidget.js"
+				"ui-components/SelectWithTextInputWidget.js"
 			],
 			"styles": [
 				"ext.growthExperiments.Homepage.mobile/index.less"
@@ -1073,8 +1072,7 @@
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipDetailsModal.js",
-				"ui-components/SelectWithTextInputWidget.js",
-				"ui-components/OptionWithTextInputWidget.js"
+				"ui-components/SelectWithTextInputWidget.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.Help",
@@ -1368,13 +1366,11 @@
 				"ext.growthExperiments.StructuredTask/addsectionimage/RecommendedSectionImageRejectionDialog.js",
 				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",
-				"ui-components/SelectWithTextInputWidget.js",
-				"ui-components/OptionWithTextInputWidget.js"
+				"ui-components/SelectWithTextInputWidget.js"
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask/MachineSuggestionsMode.less",
 				"ext.growthExperiments.StructuredTask/EditModeConfirmationDialog.less",
-				"ui-components/OptionWithTextInputWidget.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialog.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskMessageDialog.less",
@@ -1428,7 +1424,6 @@
 				"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel",
 				"growthexperiments-structuredtask-no-suggestions-found-dialog-button",
 				"growthexperiments-structuredtask-summary-submit",
-				"growthexperiments-structuredtask-other-rejectionreason-placeholder",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-addlink-suggestions-outdated",
 				"growthexperiments-addimage-inspector-title",
@@ -2496,7 +2491,6 @@
 			"modules/ui-components/CollapsibleDrawer.js",
 			"tests/qunit/ui-components/CollapsibleDrawer.test.js",
 			"modules/ui-components/SelectWithTextInputWidget.js",
-			"modules/ui-components/OptionWithTextInputWidget.js",
 			"tests/qunit/ui-components/SelectWithTextInputWidget.test.js",
 			"tests/qunit/__mocks__/config.json",
 			"tests/qunit/__mocks__/GroupedTopics.json",
@@ -3210,10 +3204,6 @@
 		"GELinkRecommendationServiceWikiIdMasquerade": {
 			"description": "The wiki ID to use in requests to the link recommendation service. Used for developer setups.",
 			"value": null
-		},
-		"GEStructuredTaskRejectionReasonTextInputEnabled": {
-			"description": "Whether free text input should be shown when prompting the user for reasons why a suggestion was rejected.",
-			"value": false
 		},
 		"GELevelingUpManagerInvitationThresholds": {
 			"description": "Article namespace edit count thresholds at which the user should be invited to try suggested edits (assuming they haven't before).",
