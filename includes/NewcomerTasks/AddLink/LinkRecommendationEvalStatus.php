@@ -24,6 +24,9 @@ class LinkRecommendationEvalStatus extends StatusValue {
 		if ( $this->getValue() === null ) {
 			throw new \LogicException( 'Cannot get LinkRecommendation from a status without a value' );
 		}
+		if ( $this->getValue() instanceof StatusValue ) {
+			throw new \LogicException( 'Unexpected status as value:' . "\n" . $this->getValue() );
+		}
 		if ( !( $this->getValue() instanceof LinkRecommendation ) ) {
 			throw new \LogicException( 'Value is of unexpected type ' . get_debug_type( $this->value ) );
 		}

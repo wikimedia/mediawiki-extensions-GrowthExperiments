@@ -40,11 +40,14 @@ class StaticLinkRecommendationProvider implements LinkRecommendationProvider {
 	}
 
 	public function getDetailed( LinkTarget $title, TaskType $taskType ): LinkRecommendationEvalStatus {
-		$recommendation = $this->get( $title, $taskType );
-		if ( $recommendation instanceof LinkRecommendationEvalStatus ) {
-			return $recommendation;
+		$recommendationOrStatus = $this->get( $title, $taskType );
+		if ( $recommendationOrStatus instanceof LinkRecommendationEvalStatus ) {
+			return $recommendationOrStatus;
 		}
-		return LinkRecommendationEvalStatus::newGood( $recommendation );
+		if ( $recommendationOrStatus instanceof StatusValue ) {
+			return LinkRecommendationEvalStatus::newGood()->merge( $recommendationOrStatus );
+		}
+		return LinkRecommendationEvalStatus::newGood( $recommendationOrStatus );
 	}
 
 }
