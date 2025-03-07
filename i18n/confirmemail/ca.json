@@ -1,9 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Leptictidium"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|què és açò?]])",
-	"growthexperiments-confirmemail-confirm-subject": "Us donem la benvinguda a {{SITENAME}}. Confirmeu la vostra adreça electrònica"
+	"growthexperiments-confirmemail-emailhelp": "Cal un correu electrònic per recuperar el vostre compte si perdeu la contrasenya.",
+	"growthexperiments-confirmemail-emailrecommended": "Adreça de correu electrònic (recomanat)",
+	"growthexperiments-confirmemail-emailwarning": "Si us plau, aneu al correu electrònic que us hem enviat per verificar la vostra adreça.",
+	"growthexperiments-confirmemail-confirm-subject": "Us donem la benvinguda a {{SITENAME}}. Confirmeu la vostra adreça electrònica",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2| Hola}} $2 ,\n\n Gràcies per afegir un correu electrònic al vostre compte de {{SITENAME}}, registrat des de l'adreça IP $1 .\n\n Feu clic al botó següent per confirmar-lo com a adreça electrònica que voleu enllaçar al vostre compte \" $2 \":\n\n $3 \n\nNota: aquest codi de confirmació <strong>caduca a $4</strong> .\n\nGràcies,\n\n{{SITENAME}}\n\n----\n\nPer cancel·lar la confirmació de l'adreça de correu electrònic (sia perquè no heu registrat el compte o per qualsevol altre motiu), feu clic en aquest enllaç de cancel·lació:\n\n $5",
+	"growthexperiments-confirmemail-confirm-button": "Confirmeu l'adreça de correu electrònic",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2| Hola}} $2 ,\n\n Gràcies per afegir un correu electrònic al vostre compte de {{SITENAME}}, registrat des de l'adreça IP $1 .\n\n Feu clic al botó següent per confirmar-lo com a adreça electrònica que voleu enllaçar al vostre compte \" $2 \":\n\n $3 \n\nNota: aquest codi de confirmació <strong>caduca a $4</strong> .\n\nGràcies,\n\n{{SITENAME}}\n\n----\n\nPer cancel·lar la confirmació de l'adreça de correu electrònic (sia perquè no heu registrat el compte o per qualsevol altre motiu), feu clic en aquest enllaç de cancel·lació:\n\n $5",
+	"growthexperiments-signupcampaign-title": "Gràcies per la vostra donació! Uniu-vos avui mateix a la comunitat d'editors que treballen per millorar la Viquipèdia",
+	"growthexperiments-signupcampaign-body": "Editar la Viquipèdia pot ser tan fàcil com afegir un enllaç o canviar una paraula. Obtingueu suggeriments d'articles dels vostres temes d'interès un cop us hàgiu creat un compte!",
+	"growthexperiments-signupcampaign-bullet1": "Suggeriments d'articles que poden ser del vostre interès",
+	"growthexperiments-signupcampaign-bullet2": "Demaneu ajuda a un editor veterà",
+	"growthexperiments-signupcampaign-bullet3": "Comenceu amb edicions petites i fàcils de fer",
+	"growthexperiments-campaigns-footer": "El compte que creeu en aquesta pàgina serà associat a aquesta campanya per a fins d'experiència i anàlisi."
 }

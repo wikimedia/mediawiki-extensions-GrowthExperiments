@@ -112,6 +112,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "అనుభవజ్ఞులు, గురువుల నుండి వెళ్ళే ప్రోత్సాహక సందేశాలు కొత్తవారిని నిలుపుకోవడంలో తోడ్పడతాయి.",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-headline": "మరింత సమాచారం",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "ప్రశంసార్హులైన శిష్యుల జాబితాను ఇక్కడ చూడవచ్చు.",
+	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "$1 చర్చ వికల్పాలు",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$2 మంది ప్రశంసార్హులైన {{PLURAL:$2|శిష్యులలో}} $1",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "మునుపటి పేజీ",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "తరువాతి పేజీ",
