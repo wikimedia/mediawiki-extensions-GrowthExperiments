@@ -1,6 +1,8 @@
 import Homepage from '../pageObjects/SpecialHomepage.page';
+import GuidedTour from '../pageObjects/GuidedTour.module';
 
 const homepage = new Homepage();
+const guidedTour = new GuidedTour();
 
 describe( 'Special:Homepage', () => {
 	it( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', () => {
@@ -12,11 +14,11 @@ describe( 'Special:Homepage', () => {
 		} );
 		cy.setUserOptions( {
 			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'copyedit' ] ),
-			'growthexperiments-tour-homepage-welcome': '1',
-			'growthexperiments-tour-homepage-discovery': '1',
 		} );
+		guidedTour.close( 'homepage_discovery' );
 
 		cy.visit( 'index.php?title=Special:Homepage' );
+		guidedTour.close( 'homepage_welcome' );
 
 		homepage.suggestedEditsCardTitle.should( 'have.text', 'Classical kemençe' );
 		homepage.suggestedEditsPreviousButton.should( 'have.attr', 'aria-disabled', 'true' );

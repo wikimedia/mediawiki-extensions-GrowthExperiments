@@ -1,9 +1,11 @@
 // Override taskURL with CI's baseUrl so it can be resolved
 import AddALinkVEModule from '../../pageObjects/AddALinkVE.module';
 import KeepGoingModule from '../../pageObjects/KeepGoing.module';
+import GuidedTour from '../../pageObjects/GuidedTour.module';
 
 const addALinkVEModule = new AddALinkVEModule();
 const keepGoingModule = new KeepGoingModule();
+const guidedTour = new GuidedTour();
 
 describe( 'Surfacing Link recommendations', () => {
 	it( 'highlights the results returned by the API', () => {
@@ -15,8 +17,10 @@ describe( 'Surfacing Link recommendations', () => {
 			} );
 		cy.setUserOptions( {
 			'growthexperiments-homepage-variant': 'surfacing-structured-task',
-			'growthexperiments-tour-homepage-discovery': '1',
+			// eslint-disable-next-line camelcase
+			homepage_mobile_discovery_notice_seen: '1',
 		} );
+		guidedTour.close( 'homepage_discovery' );
 
 		cy.viewport( 'samsung-s10' );
 		cy.visit( 'index.php?title=' + articleName + '&mobileaction=toggle_view_mobile' );
