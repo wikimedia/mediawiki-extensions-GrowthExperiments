@@ -5,8 +5,8 @@
 			"190246": {
 				"pageid": 190246,
 				"ns": 0,
-				"title": "Lorem ipsum",
-				"description": "Placeholder text used in publishing and graphic design",
+				"title": "4-8-2",
+				"description": "Locomotive wheel arrangement",
 				"descriptionsource": "local",
 				"thumbnail": {
 					"source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Lorem_ipsum_design.svg/56px-Lorem_ipsum_design.svg.png",
@@ -17,12 +17,7 @@
 			},
 			"-2": {
 				"ns": 0,
-				"title": "Viverra",
-				"missing": ""
-			},
-			"-3": {
-				"ns": 0,
-				"title": "Habitants",
+				"title": "North America",
 				"missing": ""
 			}
 		}
