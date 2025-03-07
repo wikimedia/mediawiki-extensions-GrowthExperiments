@@ -1,4 +1,5 @@
-// @ts-nocheck - TODO: make this covered by typescript
+/* eslint-disable jsdoc/no-undefined-types */
+
 ( function () {
 
 	// internal methods
@@ -8,7 +9,7 @@
 	 *
 	 * @private
 	 * @param {Object} prefData Updated preferences
-	 * @return {jQuery.Promise}
+	 * @return {JQuery.Promise<unknown>}
 	 */
 	function saveOptions( prefData ) {
 		return mw.loader.using( 'mediawiki.api' ).then( () => new mw.Api().saveOptions( prefData ) );
@@ -19,7 +20,7 @@
 	 *
 	 * @private
 	 * @param {Object} prefData Updated preferences
-	 * @return {jQuery.Promise}
+	 * @return {JQuery.Promise<unknown>}
 	 */
 	function updateTaskPreference( prefData ) {
 		return $.when( saveOptions( prefData ), mw.loader.using( 'mediawiki.util' ) ).then(
@@ -36,7 +37,7 @@
 	/**
 	 * Serialize data for use with action_data event logging property.
 	 *
-	 * @param {Object|string|boolean|number|Array} data
+	 * @param {Record<string,string|number>|string|boolean|number|Array<string|number>} data
 	 * @return {string|*}
 	 */
 	function serializeActionData( data ) {
@@ -84,7 +85,7 @@
 		let newUrl;
 		if ( url.searchParams.size === 1 && url.searchParams.has( 'title' ) ) {
 			// After removing the param only title remains. Rewrite to a prettier URL.
-			newUrl = mw.util.getUrl( url.searchParams.get( 'title' ) );
+			newUrl = mw.util.getUrl( /** @type {string} */ ( url.searchParams.get( 'title' ) ) );
 		} else {
 			newUrl = url;
 		}
@@ -159,10 +160,12 @@
 		if ( source ) {
 			queryParams.source = source;
 		}
+		// @ts-expect-error OO.ui.isMobile() is not yet available in the upstream type definitions
 		if ( OO.ui.isMobile() ) {
 			titleHash = '#/homepage/suggested-edits';
 			queryParams.overlay = 1;
 		}
+		// @ts-expect-error mw.Title.newFromText is not yet available in the upstream type definitions
 		return mw.Title.newFromText(
 			'Special:Homepage' + titleHash
 		).getUrl( queryParams );
@@ -202,7 +205,7 @@
 	 *
 	 * @private For debug/QA purposes only.
 	 * @param {string|null} variant The new variant, or null to unset.
-	 * @return {jQuery.Promise}
+	 * @return {JQuery.Promise<unknown>}
 	 */
 	function setUserVariant( variant ) {
 		return updateTaskPreference( {
@@ -211,11 +214,10 @@
 	}
 
 	// Expose some methods for debugging.
+	// @ts-expect-error for debugging only, should not be used in production
 	window.ge = window.ge || {};
-	ge.utils = {
-		getUserVariant: getUserVariant,
-		setUserVariant: setUserVariant
-	};
+	// @ts-expect-error for debugging only, should not be used in production
+	ge.utils = { getUserVariant: getUserVariant, setUserVariant: setUserVariant };
 
 	module.exports = {
 		serializeActionData: serializeActionData,

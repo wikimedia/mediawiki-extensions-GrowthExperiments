@@ -4,6 +4,7 @@
  * - HomepageHooks::getSuggestedEditsConfigJson() as ./config.json
  * - HomepageHooks::getTaskTypesJson() as ./TaskTypes.json
  * - HomepageHooks::getDefaultTaskTypesJson() as ./DefaultTaskTypes.json
+ * - ../utils/Utils.js
  */
 ( function () {
 	const OLD_LINK_TASK_TYPE = 'links',
@@ -34,9 +35,10 @@
 	function areLinkRecommendationsEnabled() {
 		const config = require( './config.json' ),
 			taskTypes = require( './TaskTypes.json' );
+		const { getUserVariant } = require( '../utils/Utils.js' );
 		return config.GELinkRecommendationsEnabled &&
 			LINK_RECOMMENDATION_TASK_TYPE in taskTypes &&
-			ge.utils.getUserVariant() !== 'no-link-recommendation';
+			getUserVariant() !== 'no-link-recommendation';
 	}
 
 	/**

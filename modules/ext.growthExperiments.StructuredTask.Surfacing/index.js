@@ -4,6 +4,7 @@ const PageSummaryRepository = require( './PageSummaryRepository.js' );
 const LinkSuggestionInteractionLogger = require(
 	'../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js',
 );
+const { getUserVariant } = require( '../utils/Utils.js' );
 
 class StructuredTaskSurfacer {
 
@@ -20,7 +21,7 @@ class StructuredTaskSurfacer {
 			mw.config.get( 'wgDBname' );
 		this.newcomerTaskToken = crypto.randomUUID();
 		this.clickId = crypto.randomUUID();
-		this.userVariant = ge.utils.getUserVariant();
+		this.userVariant = getUserVariant();
 		/**
 		 * @type any
 		 */
