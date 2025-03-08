@@ -1177,6 +1177,8 @@ return [
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$services->hasService( 'PageImages.PageImages' ) ?
+			$services->getService( 'PageImages.PageImages' ) : null,
 			$pageViewInfoLoaded ? $services->get( 'PageViewService' ) : null,
 			$thanksQueryHelper
 		);
