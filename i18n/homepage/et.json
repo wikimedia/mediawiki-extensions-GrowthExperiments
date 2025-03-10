@@ -3,6 +3,7 @@
 		"authors": [
 			"Kareyac",
 			"Pikne",
+			"Rivoz",
 			"Yupik"
 		]
 	},
@@ -101,7 +102,7 @@
 	"tag-newcomer_task_links-description": "Linkide lisamise ülesande muudatus, mida soovitas uue kasutaja kodulehel soovitatud muudatuste moodul",
 	"tag-newcomer_task_add_link": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link Soovitatud: lisa linke]",
 	"tag-newcomer_task_add_link-description": "Linkide lisamise ülesande muudatus, mida soovitas uue kasutaja kodulehel soovitatud muudatuste moodul",
-	"tag-newcomer_task_image_suggestion": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-image Soovitatud: lisa pilte]",
+	"tag-newcomer_task_image_suggestion": "Soovitatud: Lisa pilte",
 	"tag-newcomer_task_image_suggestion-description": "Piltide lisamise ülesande muudatus, mida soovitas uue kasutaja kodulehel soovitatud muudatuste moodul",
 	"tag-newcomer_task_section_image_suggestion": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-section-image Soovitatud: lisa pilte alaosasse]",
 	"tag-newcomer_task_section_image_suggestion-description": "Alaosasse piltide lisamise ülesande muudatus, mida soovitas uue kasutaja kodulehel soovitatud muudatuste moodul",
