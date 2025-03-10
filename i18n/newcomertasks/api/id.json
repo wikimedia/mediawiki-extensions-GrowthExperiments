@@ -3,7 +3,8 @@
 		"authors": [
 			"Naufal06",
 			"Notanotheramy",
-			"Rachmat04"
+			"Rachmat04",
+			"BAPerdana-WMF"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Dapatkan saranan tugas yang sesuai bagi pendatang baru.",
@@ -11,7 +12,12 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Jenis tugas untuk membatasi saran yang ditampilkan. Tinggalkan kosong untuk mendapatkan semua saran.",
 	"apihelp-query+growthtasks-param-topics": "Topik artikel untuk dipilih di saranan tugas.",
 	"apihelp-query+growthtasks-param-limit": "Jumlah maksimum saranan tugas yang perlu tampil.",
-	"apihelp-query+growthtasks-param-debug": "Tambah data awakutu pada keluaran.",
+	"apihelp-query+growthtasks-param-excludepageids": "ID halaman untuk dikecualikan dari kueri.",
+	"apihelp-query+growthtasks-param-debug": "Tambah data awakutu (''debug'') pada keluaran.",
 	"apihelp-query+growthtasks-example-1": "Dapatkan saranan tugas untuk tugas berbentuk penyutingan naskah untuk pengguna sekarang.",
-	"apihelp-query+growthtasks-example-2": "Dapatkan saranan tugas untuk pengguna sekarang, dengan informasi lebih lengkap tentang halaman."
+	"apihelp-query+growthtasks-example-2": "Dapatkan saranan tugas untuk pengguna sekarang, dengan informasi lebih lengkap tentang halaman.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Parameter 'accepted' tidak ditemukan dalam data plugin Add Image",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Parameter 'accepted' harus berupa boolean di data plugin Add Image yakni $1",
+	"apierror-growthexperiments-addlink-handler-notfound": "Catatan rekomendasi pranala tidak ditemukan",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Target rekomendasi pranala tidak terduga: $1"
 }
