@@ -12,8 +12,7 @@
 		"commonjs": true
 	},
 	"rules": {
-		"max-len": "warn",
-		"compat/compat": "warn"
+		"max-len": "warn"
 	},
 	"overrides": [
 		{
