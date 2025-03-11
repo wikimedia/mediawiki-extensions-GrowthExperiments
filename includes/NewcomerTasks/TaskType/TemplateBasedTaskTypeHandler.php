@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use GrowthExperiments\Config\Validation\GrowthConfigValidation;
+use GrowthExperiments\Config\Schemas\SuggestedEditsSchema;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
@@ -66,7 +66,7 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 		$status->merge( $this->configurationValidator->validateFieldIsArray( 'templates', $config, $taskTypeId ) );
 		if ( $status->isOK() ) {
 			$status->merge( $this->configurationValidator->validateArrayMaxSize(
-				GrowthConfigValidation::MAX_TEMPLATES_IN_COLLECTION, $config['templates'],
+				SuggestedEditsSchema::MAX_INFOBOX_TEMPLATES, $config['templates'],
 				$taskTypeId, 'templates' ) );
 			foreach ( $config['templates'] as $template ) {
 				$this->validateTemplate( $template, $taskTypeId, $status );

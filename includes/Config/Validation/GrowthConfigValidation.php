@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Config\Validation;
 
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
+use GrowthExperiments\Config\Schemas\SuggestedEditsSchema;
 use InvalidArgumentException;
 use MediaWiki\Message\Message;
 use StatusValue;
@@ -17,7 +18,7 @@ class GrowthConfigValidation implements IConfigValidator {
 	 * Copy of TemplateCollectionFeature::MAX_TEMPLATES_IN_COLLECTION. We avoid a direct reference
 	 * to keep CirrusSearch an optional dependency.
 	 */
-	public const MAX_TEMPLATES_IN_COLLECTION = 800;
+	public const MAX_TEMPLATES_IN_COLLECTION = SuggestedEditsSchema::MAX_INFOBOX_TEMPLATES;
 
 	private function getConfigDescriptors(): array {
 		return [

@@ -5,6 +5,7 @@ namespace GrowthExperiments\Config\Schemas;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
+use MediaWiki\Extension\CommunityConfiguration\Controls\PageTitlesControl;
 use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefinitions;
 
@@ -12,8 +13,16 @@ use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefini
 class SuggestedEditsSchema extends JsonSchema {
 	public const VERSION = '1.0.0';
 
+	public const MAX_INFOBOX_TEMPLATES = 800;
 	public const GEInfoboxTemplates = [
-		self::REF => [ 'class' => MediaWikiDefinitions::class, 'field' => 'PageTitles' ],
+		self::TYPE => self::TYPE_ARRAY,
+		self::ITEMS => [
+			self::TYPE => self::TYPE_STRING,
+			self::DEFAULT => '',
+		],
+		self::DEFAULT => [],
+		'control' => PageTitlesControl::class,
+		self::MAX_ITEMS => self::MAX_INFOBOX_TEMPLATES,
 	];
 
 	// ***** TEMPLATE BASED TASKS *****
