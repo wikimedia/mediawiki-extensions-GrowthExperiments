@@ -158,7 +158,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			}, $mentees ) )
 			->whereLocked( true )
 			->caller( __METHOD__ )
-			->fetchLocalUserIdentitites();
+			->fetchLocalUserIdentities();
 
 		return array_map( static function ( UserIdentity $user ) {
 			return $user->getId();
