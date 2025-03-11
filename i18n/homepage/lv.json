@@ -516,5 +516,6 @@
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Izmēģini ieteiktos labojumus",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Uzzināt vairāk",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Veikt ieteikto labojumu",
-	"echo-pref-tooltip-ge-newcomer": "Paziņot man par jaunpienācēju uzdevumiem un citām funkcijām, kas paredzētas, lai palīdzētu jauniem dalībniekiem."
+	"echo-pref-tooltip-ge-newcomer": "Paziņot man par jaunpienācēju uzdevumiem un citām funkcijām, kas paredzētas, lai palīdzētu jauniem dalībniekiem.",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Uzzināt vairāk"
 }

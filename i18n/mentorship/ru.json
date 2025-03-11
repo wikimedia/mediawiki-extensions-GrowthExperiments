@@ -134,6 +134,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly": "Еженедельно",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly": "Ежемесячно",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never": "Никогда",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Сохранить",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Отмена",
 	"growthexperiments-mentor-list-missing-key": "Ключ <code>$1</code> отсутствует",
 	"growthexperiments-mentor-list-datatype-mismatch": "Ожидается, что <code>$1</code> - это <code>$2</code>, но это <code>$3</code>",
