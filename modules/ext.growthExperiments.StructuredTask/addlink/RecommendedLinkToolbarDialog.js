@@ -304,15 +304,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		attributes = {
 			recommendationAccepted: accepted,
 			rejectionReason: undefined
-		},
-		getRejectionDialogLogActionData = function ( rejectionReason, otherReason ) {
-			return Object.assign( this.getSuggestionLogActionData(), {
-				/* eslint-disable camelcase */
-				rejection_reason: rejectionReason,
-				other_reason: otherReason ? encodeURIComponent( otherReason ) : undefined
-				/* eslint-enable camelcase */
-			} );
-		}.bind( this );
+		};
 
 	// Temporarily disable read-only mode
 	surfaceModel.setReadOnly( false );
@@ -323,19 +315,15 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		this.updateAnnotation( fragment, annotation, attributes );
 
 		const openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
-			'recommendedLinkRejection', {
-				selection: this.currentDataModel.getRejectionReason(),
-				otherRejectionReason: this.currentDataModel.getOtherRejectionReason()
-			}
-		);
+			'recommendedLinkRejection', this.currentDataModel.getRejectionReason() );
 
 		openRejectionDialogWindowPromise.opening.then( () => {
 			this.logger.log(
 				'impression',
-				getRejectionDialogLogActionData(
-					this.currentDataModel.getRejectionReason(),
-					this.currentDataModel.getOtherRejectionReason()
-				),
+				Object.assign( this.getSuggestionLogActionData(), {
+					// eslint-disable-next-line camelcase
+					rejection_reason: this.currentDataModel.getRejectionReason()
+				} ),
 				// eslint-disable-next-line camelcase
 				{ active_interface: 'rejection_dialog' }
 			);
@@ -346,27 +334,21 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 				this.currentDataModel.getRejectionReason();
 			this.logger.log(
 				'close',
-				getRejectionDialogLogActionData( rejectionReason, closedData.otherRejectionReason ),
+				Object.assign( this.getSuggestionLogActionData(), {
+					// eslint-disable-next-line camelcase
+					rejection_reason: rejectionReason
+				} ),
 				// eslint-disable-next-line camelcase
 				{ active_interface: 'rejection_dialog' }
 			);
-			return closedData;
+			return closedData && rejectionReason;
 		} );
 	}
 
-	acceptancePromise.then( ( closedData ) => {
-		closedData = closedData || {};
-
-		const rejectionReason = closedData.reason,
-			otherRejectionReason = closedData.otherRejectionReason;
+	acceptancePromise.then( ( rejectionReason ) => {
 		if ( rejectionReason ) {
 			attributes.rejectionReason = rejectionReason;
 		}
-
-		if ( otherRejectionReason ) {
-			attributes.otherRejectionReason = otherRejectionReason;
-		}
-
 		return this.updateAnnotation( fragment, annotation, attributes );
 	} ).then( () => {
 		// Re-enable read-only mode (if it was previously enabled)

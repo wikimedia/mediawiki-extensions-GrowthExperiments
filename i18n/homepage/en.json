@@ -436,7 +436,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Switch without submitting",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Cancel",
 	"growthexperiments-structuredtask-summary-submit": "Submit",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "Enter reason (optional)",
 	"growthexperiments-addlink-suggestions-outdated": "Another user edited this article while {{GENDER:|you}} were reviewing it, and {{GENDER:|your}} changes could not be published.",
 	"growthexperiments-addimage-inspector-title": "Add an image to an unillustrated article",
 	"growthexperiments-addimage-inspector-cta": "Add this image to the start of the article?",

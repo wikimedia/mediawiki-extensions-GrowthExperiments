@@ -88,10 +88,6 @@ DMRecommendedLinkAnnotation.prototype.getRejectionReason = function () {
 	return this.getAttribute( 'rejectionReason' );
 };
 
-DMRecommendedLinkAnnotation.prototype.getOtherRejectionReason = function () {
-	return this.getAttribute( 'otherRejectionReason' );
-};
-
 /**
  * Return acceptance state of the annotation as a string
  *

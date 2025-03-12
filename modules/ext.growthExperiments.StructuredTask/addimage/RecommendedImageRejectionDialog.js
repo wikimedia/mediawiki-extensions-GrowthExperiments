@@ -48,27 +48,18 @@ RecommendedImageRejectionDialog.static.rejectionReasons = [
 RecommendedImageRejectionDialog.prototype.initialize = function () {
 	RecommendedImageRejectionDialog.super.prototype.initialize.call( this );
 	this.message.$element.addClass( 'oo-ui-inline-help' );
-	const selectOptions = this.constructor.static.rejectionReasons.map( ( reason ) => {
-		const optionData = {
-			data: reason,
-			// Messages used:
-			// * growthexperiments-addimage-rejectiondialog-reason-notrelevant
-			// * growthexperiments-addimage-rejectiondialog-reason-noinfo
-			// * growthexperiments-addimage-rejectiondialog-reason-offensive
-			// * growthexperiments-addimage-rejectiondialog-reason-lowquality
-			// * growthexperiments-addimage-rejectiondialog-reason-unfamiliar
-			// * growthexperiments-addimage-rejectiondialog-reason-foreignlanguage
-			// * growthexperiments-addimage-rejectiondialog-reason-other
-			label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-' + reason ).text()
-		};
-
-		if ( reason === 'other' ) {
-			optionData.hasTextInput = mw.config.get( 'wgGEStructuredTaskRejectionReasonTextInputEnabled' );
-			optionData.textInputPlaceholder = mw.message( 'growthexperiments-structuredtask-other-rejectionreason-placeholder' ).text();
-			optionData.textInputMaxLength = 100;
-		}
-		return optionData;
-	} );
+	const selectOptions = this.constructor.static.rejectionReasons.map( ( reason ) => ( {
+		data: reason,
+		// Messages used:
+		// * growthexperiments-addimage-rejectiondialog-reason-notrelevant
+		// * growthexperiments-addimage-rejectiondialog-reason-noinfo
+		// * growthexperiments-addimage-rejectiondialog-reason-offensive
+		// * growthexperiments-addimage-rejectiondialog-reason-lowquality
+		// * growthexperiments-addimage-rejectiondialog-reason-unfamiliar
+		// * growthexperiments-addimage-rejectiondialog-reason-foreignlanguage
+		// * growthexperiments-addimage-rejectiondialog-reason-other
+		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-' + reason ).text()
+	} ) );
 	this.reasonSelect = new SelectWithTextInputWidget( {
 		options: selectOptions,
 		isMultiSelect: true
@@ -95,8 +86,7 @@ RecommendedImageRejectionDialog.prototype.getActionProcess = function ( action )
 		const selectedItems = ( action === 'cancel' ) ? [] : this.reasonSelect.findSelection();
 		this.close( {
 			action: action,
-			reasons: selectedItems,
-			otherRejectionReason: this.reasonSelect.getTextInputValueForData( 'other' )
+			reasons: selectedItems
 		} );
 	}, this );
 };

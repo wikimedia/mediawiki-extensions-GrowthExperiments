@@ -223,14 +223,9 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 		// eslint-disable-next-line camelcase
 		metadataOverride = { active_interface: 'rejection_dialog' },
 		getLogActionData = function () {
-			const otherRejectionReason = ve.init.target.recommendationOtherRejectionReason;
 			return Object.assign( this.getSuggestionLogActionData(), {
-				/* eslint-disable camelcase */
-				rejection_reasons: ve.init.target.recommendationRejectionReasons || [],
-				other_reason: otherRejectionReason ?
-					encodeURIComponent( ve.init.target.recommendationOtherRejectionReason ) :
-					undefined
-				/* eslint-enable camelcase */
+				// eslint-disable-next-line camelcase
+				rejection_reasons: ve.init.target.recommendationRejectionReasons || []
 			} );
 		}.bind( this );
 
@@ -245,7 +240,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 
 	rejectionDialogLifecycle.closed.then( ( data ) => {
 		if ( data && data.action === 'done' ) {
-			this.setState( false, data.reasons, data.otherRejectionReason );
+			this.setState( false, data.reasons );
 			this.getArticleTarget().saveWithoutShowingDialog();
 			this.logger.log( 'confirm_reject_suggestion', getLogActionData(), metadataOverride );
 		}
@@ -458,10 +453,9 @@ RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
  * @param {boolean} accepted True for accepted, false for rejected.
  * @param {string[]} [reasons] List of reasons (RecommendedImageRejectionDialog option IDs
  *   such as 'no-info'), only when the recommendation was rejected.
- * @param {string} [otherRejectionReason] Rejection reason the user entered
  */
-RecommendedImageToolbarDialog.prototype.setState = function ( accepted, reasons, otherRejectionReason ) {
-	this.getArticleTarget().updateSuggestionState( this.currentIndex, accepted, reasons, otherRejectionReason );
+RecommendedImageToolbarDialog.prototype.setState = function ( accepted, reasons ) {
+	this.getArticleTarget().updateSuggestionState( this.currentIndex, accepted, reasons );
 	mw.hook( 'growthExperiments.suggestionAcceptanceChange' ).fire();
 };
 
