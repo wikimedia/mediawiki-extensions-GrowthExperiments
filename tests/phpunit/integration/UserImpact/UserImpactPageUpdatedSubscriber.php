@@ -18,9 +18,9 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @group Database
- * @covers \GrowthExperiments\ImpactHooks
+ * @covers \GrowthExperiments\UserImpact\MediaWikiEventSubscribers\PageUpdatedSubscriber
  */
-class ImpactHooksTest extends MediaWikiIntegrationTestCase {
+class UserImpactPageUpdatedSubscriber extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * Test full integration from editing a page to retrieving stored impact
