@@ -5,6 +5,7 @@
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Bures boahtin}}, $1!",
+	"welcomesurvey-dropdown-option-select-label": "Vállje...",
 	"welcomesurvey-question-email-label": "E-poastačujuhus (eaktodáhtolaš)",
 	"welcomesurvey-mideditsignup-title": "Bures boahtin, $1!"
 }
