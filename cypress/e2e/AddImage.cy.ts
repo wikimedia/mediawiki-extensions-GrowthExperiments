@@ -1,6 +1,8 @@
 import Homepage from '../pageObjects/SpecialHomepage.page';
+import GuidedTour from '../pageObjects/GuidedTour.module';
 
 const homepage = new Homepage();
+const guidedTour = new GuidedTour();
 
 describe( 'Add Image Structured Task', () => {
 
@@ -12,10 +14,13 @@ describe( 'Add Image Structured Task', () => {
 			cy.loginViaApi( username, password );
 		} );
 		cy.setUserOptions( {
+			'growthexperiments-tour-homepage-welcome': '1',
 			'growthexperiments-addimage-onboarding': '1',
 			'growthexperiments-addimage-caption-onboarding': '1',
 			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] ),
 		} );
+		guidedTour.close( 'homepage_discovery' );
+
 		cy.visit( 'index.php?title=Special:Homepage' );
 		homepage.suggestedEditsCardTitle.should( 'have.text', 'Ma\'amoul' );
 		homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );

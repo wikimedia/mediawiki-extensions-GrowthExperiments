@@ -1,8 +1,10 @@
 import Homepage from '../pageObjects/SpecialHomepage.page';
 import KeepGoingModule from '../pageObjects/KeepGoing.module';
+import GuidedTour from '../pageObjects/GuidedTour.module';
 
 const homepage = new Homepage();
 const keepGoingModule = new KeepGoingModule();
+const guidedTour = new GuidedTour();
 
 describe( 'Template-based tasks', () => {
 	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', () => {
@@ -14,8 +16,10 @@ describe( 'Template-based tasks', () => {
 		} );
 		cy.setUserOptions( {
 			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'copyedit' ] ),
+			'growthexperiments-tour-homepage-welcome': '1',
 			'visualeditor-hidebetawelcome': '1',
 		} );
+		guidedTour.close( 'homepage_discovery' );
 
 		cy.visit( 'index.php?title=Special:Homepage' );
 

@@ -1,10 +1,12 @@
 import Homepage from '../pageObjects/SpecialHomepage.page';
 import KeepGoingModule from '../pageObjects/KeepGoing.module';
 import AddALinkVEModule from '../pageObjects/AddALinkVE.module';
+import GuidedTour from '../pageObjects/GuidedTour.module';
 
 const homepage = new Homepage();
 const keepGoingModule = new KeepGoingModule();
 const addALinkVEModule = new AddALinkVEModule();
+const guidedTour = new GuidedTour();
 
 describe( 'Add a Link', () => {
 	it( 'link inspector can be used to accept/reject links and save an article.', () => {
@@ -16,10 +18,10 @@ describe( 'Add a Link', () => {
 			cy.loginViaApi( username, password );
 		} );
 		cy.setUserOptions( {
-			'growthexperiments-tour-homepage-discovery': '1',
 			'growthexperiments-tour-homepage-welcome': '1',
 			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'link-recommendation' ] ),
 		} );
+		guidedTour.close( 'homepage_discovery' );
 
 		cy.visit( 'index.php?title=Special:Homepage' );
 		homepage.suggestedEditsCardTitle.should( 'be.visible' ).and( 'have.text', addlinkArticle );
