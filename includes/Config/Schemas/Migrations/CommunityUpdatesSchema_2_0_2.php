@@ -1,17 +1,18 @@
 <?php
 
-namespace GrowthExperiments\Config\Schemas;
+namespace GrowthExperiments\Config\Schemas\Migrations;
 
-use GrowthExperiments\Config\Schemas\Converters\CommunityUpdatesConverter_2_0_3;
+use GrowthExperiments\Config\Schemas\Converters\CommunityUpdatesConverter_2_0_2;
 use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefinitions;
 
+// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
-class CommunityUpdatesSchema extends JsonSchema {
-
-	public const SCHEMA_PREVIOUS_VERSION = '2.0.2';
-	public const VERSION = '2.0.3';
-	public const SCHEMA_CONVERTER = CommunityUpdatesConverter_2_0_3::class;
+class CommunityUpdatesSchema_2_0_2 extends JsonSchema {
+	public const SCHEMA_PREVIOUS_VERSION = '2.0.1';
+	public const SCHEMA_NEXT_VERSION = '2.0.3';
+	public const VERSION = '2.0.2';
+	public const SCHEMA_CONVERTER = CommunityUpdatesConverter_2_0_2::class;
 
 	public const GEHomepageCommunityUpdatesEnabled = [
 		self::TYPE => self::TYPE_BOOLEAN,
@@ -28,11 +29,6 @@ class CommunityUpdatesSchema extends JsonSchema {
 		self::REF => [
 			'class' => MediaWikiDefinitions::class, 'field' => 'CommonsFile'
 		]
-	];
-
-	public const GEHomepageCommunityUpdatesThumbnailAddDarkModeBackground = [
-		self::TYPE => self::TYPE_BOOLEAN,
-		self::DEFAULT => false
 	];
 
 	public const GEHomepageCommunityUpdatesContentBody = [

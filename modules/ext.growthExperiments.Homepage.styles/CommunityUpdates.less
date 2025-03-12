@@ -36,6 +36,19 @@
 			background-color: @background-color-transparent;
 		}
 
+		@media screen {
+			.client-darkmode & .cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode,
+			.skin-theme-clientpref-night & .cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode {
+				background-color: @background-color-base-fixed;
+			}
+		}
+
+		@media screen and ( prefers-color-scheme: dark ) {
+			.skin-theme-clientpref-os & .cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode {
+				background-color: @background-color-base-fixed;
+			}
+		}
+
 		.cdx-card__text__title {
 			font-weight: bold;
 		}
