@@ -486,7 +486,7 @@
 	};
 
 	/**
-	 * Log time spent since startTime to Statsd.
+	 * Log time spent since startTime to Statsd and Prometheus.
 	 *
 	 * @param {string} name Name of the thing (e.g. method call) that's timed.
 	 * @param {number} startTime Start timestamp, e.g. from mw.now().
@@ -494,10 +494,22 @@
 	 * @private
 	 */
 	GrowthTasksApi.prototype.logTiming = function ( name, startTime, contextOverride ) {
+		const duration = mw.now() - startTime;
+		const platform = this.isMobile ? 'mobile' : 'desktop';
 		mw.track(
 			'timing.growthExperiments.specialHomepage.growthTasksApi.' + name + '.' +
-				( contextOverride || this.logContext ) + '.' + ( this.isMobile ? 'mobile' : 'desktop' ),
-			mw.now() - startTime
+			( contextOverride || this.logContext ) + '.' + platform, duration );
+
+		mw.track(
+			'stats.mediawiki_GrowthExperiments_special_homepage_seconds',
+			duration,
+			{
+				module: 'growthTasksApi',
+				operation: name,
+				context: contextOverride || this.logContext,
+				platform: platform,
+				wiki: mw.config.get( 'wgDBname' )
+			}
 		);
 	};
 

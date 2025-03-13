@@ -620,10 +620,22 @@
 		if ( !this.startTime || !this.shouldTrackPerformance ) {
 			return;
 		}
+		const duration = window.performance.now() - this.startTime;
 		mw.track(
 			'timing.growthExperiments.suggestedEdits.taskEditorReady.' + this.taskType +
 			( OO.ui.isMobile() ? '.mobile' : '.desktop' ),
-			window.performance.now() - this.startTime
+			duration
+		);
+		mw.track(
+			'stats.mediawiki_GrowthExperiments_task_editor_ready_seconds',
+			duration,
+			{
+				// eslint-disable-next-line camelcase
+				task_type: this.taskType,
+				platform: ( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
+				operation: 'editor_shown',
+				wiki: mw.config.get( 'wgDBname' )
+			}
 		);
 	};
 
@@ -639,10 +651,22 @@
 		if ( this.shouldOpenArticleInEditMode || !this.startTime || !this.shouldTrackPerformance ) {
 			return;
 		}
+		const guidanceDisplayDuration = window.performance.now() - this.startTime;
 		mw.track(
 			'timing.growthExperiments.suggestedEdits.guidanceShown.' + this.taskType +
 			( OO.ui.isMobile() ? '.mobile' : '.desktop' ),
-			window.performance.now() - this.startTime
+			guidanceDisplayDuration
+		);
+		mw.track(
+			'stats.mediawiki_GrowthExperiments_suggested_edits_session_seconds',
+			guidanceDisplayDuration,
+			{
+				// eslint-disable-next-line camelcase
+				task_type: this.taskType,
+				platform: ( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
+				operation: 'guidance_shown',
+				wiki: mw.config.get( 'wgDBname' )
+			}
 		);
 	};
 
