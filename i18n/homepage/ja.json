@@ -431,7 +431,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "送信せずに切り替える",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "キャンセル",
 	"growthexperiments-structuredtask-summary-submit": "送信する",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "理由を入力 (省略可能)",
 	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|あなた}}がレビューしている間に別の利用者がこの記事を編集したため、{{GENDER:|あなたの}}変更を公開することができませんでした。",
 	"growthexperiments-addimage-inspector-title": "画像がない記事に画像を追加",
 	"growthexperiments-addimage-inspector-cta": "この画像を記事の最初に追加しますか？",

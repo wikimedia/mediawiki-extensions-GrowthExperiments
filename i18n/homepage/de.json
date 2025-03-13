@@ -449,7 +449,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Wechsle den Modus ohne Speicherung",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Abbrechen",
 	"growthexperiments-structuredtask-summary-submit": "Speichern",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "Grund eingeben (optional)",
 	"growthexperiments-addlink-suggestions-outdated": "Ein anderer Benutzer hat diesen Artikel bearbeitet, während {{GENDER:|du}} ihn überarbeitet hast; {{GENDER:|deine}} Änderungen konnten nicht veröffentlicht werden.",
 	"growthexperiments-addimage-inspector-title": "Einem nicht bebilderten Artikel ein Bild hinzufügen",
 	"growthexperiments-addimage-inspector-cta": "Dieses Bild an den Anfang des Artikels stellen?",

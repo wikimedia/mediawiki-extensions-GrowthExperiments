@@ -411,7 +411,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Sulje lähettämättä",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Peruuta",
 	"growthexperiments-structuredtask-summary-submit": "Lähetä",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "Anna syy (vapaaehtoinen)",
 	"growthexperiments-addlink-suggestions-outdated": "Sillä aikaa, kun {{GENDER:|sinä}} kävit tätä artikkelia läpi, toinen käyttäjä muokkasi sitä, eikä {{GENDER:|sinun}} tekemiäsi muutoksia siksi voitu julkaista.",
 	"growthexperiments-addimage-inspector-title": "Lisää kuva kuvittamattomaan artikkeliin",
 	"growthexperiments-addimage-inspector-cta": "Lisää tämä kuva artikkelin alkuun?",

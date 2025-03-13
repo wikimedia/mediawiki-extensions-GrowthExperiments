@@ -432,7 +432,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Εναλλαγή χωρίς υποβολή",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Ακύρωση",
 	"growthexperiments-structuredtask-summary-submit": "Υποβολή",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "Εισαγάγετε τον λόγο (προαιρετικό)",
 	"growthexperiments-addlink-suggestions-outdated": "Ένας άλλος χρήστης επεξεργάστηκε αυτό το άρθρο ενώ {{GENDER:|εσείς}} το ελέγχατε, και δεν ήταν δυνατή η δημοσίευση των αλλαγών {{GENDER:|σας}}.",
 	"growthexperiments-addimage-inspector-title": "Προσθέστε μια εικόνα σε ένα μη εικονογραφημένο άρθρο",
 	"growthexperiments-addimage-inspector-cta": "Να προστεθεί αυτή η εικόνα στην αρχή του λήμματος;",

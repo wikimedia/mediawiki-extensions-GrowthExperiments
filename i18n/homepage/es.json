@@ -465,7 +465,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Cambiar sin enviar",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Cancelar",
 	"growthexperiments-structuredtask-summary-submit": "Enviar",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "Escribir motivo (opcional)",
 	"growthexperiments-addlink-suggestions-outdated": "Otro usuario ha editado este artículo mientras {{GENDER:|tú}} lo estabas revisando, y {{GENDER:|tus}} cambios no pueden ser publicados.",
 	"growthexperiments-addimage-inspector-title": "Añade una imagen a un artículo sin ilustrar",
 	"growthexperiments-addimage-inspector-cta": "¿Añadir esta imagen al inicio del artículo?",

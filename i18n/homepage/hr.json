@@ -355,7 +355,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Napusti prijedloge?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Odustani",
 	"growthexperiments-structuredtask-summary-submit": "Pošalji",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "Unesite razlog (nije obavezno)",
 	"growthexperiments-addimage-rejectiondialog-header": "Zašto ne?",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "Dovršili ste sve današnje prijedloge za slike.\n\nPrilagodite {{GENDER:|svoje}} razine težine kako biste vidjeli druge vrste uređivanja ili se vratite sutra po još prijedloga za slike.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "U redu",

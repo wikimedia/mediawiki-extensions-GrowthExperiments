@@ -436,7 +436,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Přepnout bez odeslání",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Zrušit",
 	"growthexperiments-structuredtask-summary-submit": "Potvrdit",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "Zadejte důvod (nepovinné)",
 	"growthexperiments-addlink-suggestions-outdated": "Jiný uživatel editoval tento článek, zatímco jste {{GENDER:|posuzoval|posuzovala|posuzovali}} návrhy. {{GENDER:|Vaše}} změny proto nemohly být uloženy.",
 	"growthexperiments-addimage-inspector-title": "Přidat obrázek do článku bez obrázku",
 	"growthexperiments-addimage-inspector-cta": "Přidat tento obrázek na začátek článku?",

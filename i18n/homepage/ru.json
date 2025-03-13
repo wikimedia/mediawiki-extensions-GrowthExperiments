@@ -433,7 +433,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Переключить без отправки",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Отмена",
 	"growthexperiments-structuredtask-summary-submit": "Отправить",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "Введите причину (по желанию)",
 	"growthexperiments-addlink-suggestions-outdated": "Другой пользователь редактировал статью, пока {{GENDER:|вы}} ее просматривали, и {{GENDER:|ваши}} изменения не удалось опубликовать.",
 	"growthexperiments-addimage-inspector-title": "Добавить изображение к неиллюстрированной статье",
 	"growthexperiments-addimage-inspector-cta": "Добавить это изображение в начало статьи?",

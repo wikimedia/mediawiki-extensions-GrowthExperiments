@@ -459,7 +459,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "在不发送的情况下转换",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "取消",
 	"growthexperiments-structuredtask-summary-submit": "提交",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "输入原因（可选）",
 	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|您}}预览此条目时其他用户进行了编辑，{{GENDER:|您}}作出的更改无法发布。",
 	"growthexperiments-addimage-inspector-title": "为无插图的条目添加图像",
 	"growthexperiments-addimage-inspector-cta": "将此图片加入到条目的开头？",

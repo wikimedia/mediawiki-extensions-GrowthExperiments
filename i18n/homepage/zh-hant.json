@@ -401,7 +401,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "切換但不提交編輯",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "取消",
 	"growthexperiments-structuredtask-summary-submit": "提交",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "請輸入原因（非必填）",
 	"growthexperiments-addlink-suggestions-outdated": "有人在您審核時編輯了條目，您的變更無法發佈。",
 	"growthexperiments-addimage-inspector-title": "為無插圖的條目新增圖片",
 	"growthexperiments-addimage-inspector-cta": "將此圖片加入到條目的開頭？",

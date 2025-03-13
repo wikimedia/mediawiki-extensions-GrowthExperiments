@@ -298,7 +298,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "เปลี่ยนโหมดโดยไม่ส่ง",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "ยกเลิก",
 	"growthexperiments-structuredtask-summary-submit": "ส่ง",
-	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "ป้อนเหตุผล (ไม่บังคับ)",
 	"growthexperiments-addimage-inspector-yes-button": "ใช่",
 	"growthexperiments-addimage-inspector-no-button": "ไม่",
 	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|ไม่แน่ใจ}}",
