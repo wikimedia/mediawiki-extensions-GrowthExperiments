@@ -8,3 +8,4 @@
 /tests/selenium/log
 /.api-testing.config.json
 .DS_Store
+/.stylelintcache
