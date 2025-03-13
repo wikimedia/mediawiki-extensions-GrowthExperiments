@@ -20,6 +20,8 @@
 	"apihelp-query+growthnextsuggestedtasktype-summary": "Dapatkan jenis tugas yang disarankan untuk pengguna coba berikutnya.",
 	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Jenis tugas yang saat ini sedang dikerjakan pengguna.",
 	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "Sebuah kode JSON dari objek dengan kata kunci berikut:\n* <var>acceptedTargets</var>: (opsional) Susun berdasarkan judul halaman, yaitu rekomendasi pranala yang disetujui oleh pengguna.\n* <var>rejectedTargets</var>: (opsional) Susun berdasarkan judul halaman, yaitu rekomendasi pranala yang ditolak oleh pengguna.\n* <var>skippedTargets</var>: (opsional) Susun berdasarkan judul halaman, yaitu rekomendasi pranala yang dilewatkan oleh pengguna.",
+	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "Rentetan JSON objek dengan kekunci ini:\n* <var>accpeted</var> : Boolean yang menunjukkan sama ada pengguna menerima imej yang disyorkan.\n* <var>reasons</var> : Tatasusunan rentetan yang mengidentifikasi pasti boolean yang menunjukkan mengapa pengguna menolak imej yang disyorkan. Nilai sah: $1\n* <var>caption</var> : Kapsyen imej disediakan oleh pengguna. (Harus memiliki setidaknya $2 {{PLURAL:$2|aksara}}.)",
+	"apihelp-growthexperiments-structured-task-submit-data-format-section-image-recommendation": "Rentetan JSON objek dengan kekunci ini:\n* <var>accepted</var>: kelogikan Boolean yang menunjukkan sama ada pengguna menerima imej yang disyorkan.\n* <var>reasons</var>: Tatasusunan rentetan yang mengidentifikasi pasti kelogikan boolean yang menunjukkan mengapa pengguna menolak imej yang disyorkan. Nilai sah: $1\n* <var>caption</var>: Kapsyen imej disediakan oleh pengguna. (Harus memiliki setidaknya $2 {{PLURAL:$2|aksara}}.)\n* <var>sectionTitle</var>: Judul bagian yang dicadangkan.\n* <var>sectionNumber</var>: Nomor ordinal bagian artikel yang dicadangkan.",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Untuk plugin <var>ge-task-link-recommendation</var> </dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Untuk plugin <var>ge-task-image-recommendation</var> </dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt>Untuk plugin <var>ge-task-section-image-recommendation</var> </dt><dd>\n$1\n</dd></dl>",
@@ -35,5 +37,11 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype": "Parameter 'sectionTitle' harus berupa string di data plugin Add Image yakni $1",
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "Parameter 'sectionNumber' harus berupa integer di data plugin Add Image yakni $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Catatan rekomendasi pranala tidak ditemukan",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Target rekomendasi pranala tidak terduga: $1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Target rekomendasi pranala tidak terduga: $1",
+	"growthexperiments-underlinked-rescore-profile": "Profil penilaian ulang internal yang digunakan dalam GrowthExperiments menghubungkan rekomendasi untuk memprioritaskan artikel yang belum memiliki cukup tautan.",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "Parameter <var>editRevId</var> dibutuhkan ketika parameter <var>accepted</var> diubah ke <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "Parameter <var>editRevId</var> tidak dapat digunakan ketika parameter <var>accepted</var> diubah ke <kbd>false</kbd>.",
+	"growthexperiments-addimage-feedback-accepted-caption": "Parameter <var>caption</var> dibutuhkan ketika parameter <var>accepted</var> diubah ke <kbd>true</kbd>.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "Revisi yang ditetapkan dalam <var>editRevId</var> tidak ditemukan.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Revisi yang ditetapkan dalam <var>editRevId</var> merupakan milik halaman lain."
 }

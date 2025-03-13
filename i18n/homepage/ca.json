@@ -83,6 +83,7 @@
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Darrera edició",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Ratxa més llarga",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Agraïments rebuts",
+	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Aquest és el número més llarg de dies seguits en que es va fer almanco una edició. Aquesta mètrica només reflectirà ratxes d'edició incloses en les darreres $1 edicions.",
 	"growthexperiments-homepage-impact-subheader-text": "La gent consulta els articles que {{GENDER:$1|heu}} editat!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visites als articles que {{GENDER:$1|has}} editat (darrers 60 dies)",
 	"growthexperiments-homepage-impact-contributions-link": "Visualitzeu totes les vostres edicions ($1)",
