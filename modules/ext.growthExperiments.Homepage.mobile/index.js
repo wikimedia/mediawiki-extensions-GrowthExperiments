@@ -105,7 +105,7 @@ const mobile = require( 'mobile.startup' );
 		overlayManager.add( routeRegex, ( moduleName ) => {
 			if ( overlays[ moduleName ] === undefined ) {
 				const moduleData = getModuleData( moduleName );
-				const overlay = new MobileOverlay( {
+				const overlay = MobileOverlay.make( {
 					moduleName: moduleName,
 					html: moduleData.$overlay,
 					rlModules: moduleData.rlModules,

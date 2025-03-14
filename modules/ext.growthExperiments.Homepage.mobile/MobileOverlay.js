@@ -7,34 +7,15 @@
 		initEllipsisMenu = require( '../ext.growthExperiments.Homepage.Mentorship/EllipsisMenu.js' );
 
 	/**
-	 * @typedef {Object} Overlay
-	 * @see MobileFrontend/src/mobile.startup/Overlay.js
-	 */
-	/**
-	 * Displays homepage module in an overlay.
+	 * Creates the header actions for the overlay. It also returns
+	 * a promise that will resolve when the header actions are ready.
 	 *
-	 * @class mw.libs.ge.MobileOverlay
-	 * @extends Overlay
-	 * @param {Object} params Configuration options
+	 * @param {Object} options
+	 * @return {{headerActions:{Array}, headerPromise:jQuery.Promise}}
 	 */
-	function MobileOverlay( params ) {
-		Overlay.call( this,
-			Object.assign( {
-				className: 'overlay growthexperiments-homepage-container homepage-module-overlay'
-			}, params )
-		);
-	}
-
-	OO.inheritClass( MobileOverlay, Overlay );
-
-	/**
-	 * @inheritdoc
-	 * @memberof mw.libs.ge.MobileOverlay
-	 * @instance
-	 */
-	MobileOverlay.prototype.preRender = function () {
-		const options = this.options;
+	function prepareHeader( options ) {
 		let headerActions = [];
+		let headerPromise = $.Deferred().resolve().promise();
 
 		function shouldShowInfoButton( moduleName ) {
 			return moduleName === 'suggested-edits';
@@ -43,9 +24,8 @@
 		function shouldShowEllipsisMenu( moduleName ) {
 			return moduleName === 'mentorship';
 		}
-
 		if ( shouldShowInfoButton( options.moduleName ) ) {
-			this.headerPromise = mw.loader.using( 'oojs-ui' ).then( () => {
+			headerPromise = mw.loader.using( 'oojs-ui' ).then( () => {
 				const infoButton = new OO.ui.ButtonWidget( {
 					id: 'mw-ge-homepage-suggestededits-info',
 					icon: 'info-unpadded',
@@ -67,9 +47,9 @@
 					[ infoButton.$element ]
 				);
 			} );
-			headerActions = [ promisedView( this.headerPromise ) ];
+			headerActions = [ promisedView( headerPromise ) ];
 		} else if ( shouldShowEllipsisMenu( options.moduleName ) ) {
-			this.headerPromise = mw.loader.using( 'oojs-ui' ).then( () => {
+			headerPromise = mw.loader.using( 'oojs-ui' ).then( () => {
 				// eslint-disable-next-line no-jquery/no-global-selector
 				const ellipsisMenu = initEllipsisMenu( $( '.growthexperiments-homepage-container' ) );
 				return View.make(
@@ -78,83 +58,113 @@
 				);
 
 			} );
-			headerActions = [ promisedView( this.headerPromise ) ];
-		} else {
-			this.headerPromise = $.Deferred().resolve().promise();
+			headerActions = [ promisedView( headerPromise ) ];
 		}
 
-		this.options.headers = [
+		return { headerActions, headerPromise };
+	}
+
+	/**
+	 * Prepare overlay options before rendering
+	 *
+	 * @param {Object} options
+	 * @return {Object} options
+	 */
+	const preRender = ( options ) => {
+		const { headerActions, headerPromise } = prepareHeader( options );
+		const $button = $( '<button>' )
+			.addClass( [
+				'cdx-button',
+				'cdx-button--weight-quiet',
+				'cdx-button--size--large',
+				'cdx-button--icon-only',
+				'back'
+			] )
+			.append(
+				$( '<span>' )
+					.attr( 'aria-hidden', 'true' )
+					.addClass( [
+						'growthexperiments-icon-previous',
+						'cdx-button__icon'
+					] ),
+				$( '<span>' )
+					.text(
+						mw.msg( 'mobile-frontend-overlay-close' )
+					)
+			);
+		options.headers = [
 			header(
 				mw.html.escape( options.heading ),
 				headerActions,
-				new View( {
-					el: $( '<button>' )
-						.addClass( [
-							'cdx-button',
-							'cdx-button--weight-quiet',
-							'cdx-button--size--large',
-							'cdx-button--icon-only',
-							'back'
-						] )
-						.append(
-							$( '<span>' )
-								.attr( 'aria-hidden', 'true' )
-								.addClass( [
-									'growthexperiments-icon-previous',
-									'cdx-button__icon'
-								] ),
-							$( '<span>' )
-								.text(
-									mw.msg( 'mobile-frontend-overlay-close' )
-								)
-						)
-				} ),
+				View.make( {}, [ $button ] ),
 				'initial-header homepage-module-overlay-header'
 			)
 		];
+		options.headerPromise = headerPromise;
+		return options;
 	};
 
 	/**
-	 * @inheritdoc
-	 * @memberof mw.libs.ge.MobileOverlay
-	 * @instance
+	 * @typedef {Object} View
+	 * @see MobileFrontend/src/mobile.startup/View.js
 	 */
-	MobileOverlay.prototype.postRender = function () {
-		const resourceLoaderModules = this.options.rlModules,
-			moduleName = this.options.moduleName,
-			moduleHtml = this.options.html,
-			appendHtml = function ( html ) {
-				this.$el.find( '.overlay-content' ).append( html );
-			}.bind( this );
-		Overlay.prototype.postRender.apply( this );
+	/**
+	 * Creates a view for the overlay content appending
+	 * the module HTML and loading its RL modules.
+	 *
+	 * @param {Object} options
+	 * @return {View} view
+	 */
+	const postRender = function ( options ) {
+		const $el = $( '<div>' ).addClass( [
+			'growthexperiments-homepage-container',
+			'homepage-module-overlay'
+		] );
 		// Load the RL modules if they were not loaded before the user tapped on the
 		// module. Then add the HTML to the DOM, then fire a hook so that the JS in the RL
 		// modules can operate on the HTML in the overlay.
-		mw.loader.using( resourceLoaderModules )
-			.then( () => {
-				appendHtml( moduleHtml );
-				// Wait for the header promise to finish before firing the hook
-				return this.headerPromise;
-			} )
-			.then( () => {
-				// It's important to always call the hook from a promise so it executes
-				// after postRender() has finished. It ensures the module content is in
-				// the overlay and can be manipulated.
-				mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).fire(
-					moduleName,
-					this.$el
-				);
-				this.onOverlayShown();
-			} );
+		mw.loader.using( options.rlModules )
+			.then( () => $el.append( options.html ) );
+
+		return View.make( {}, [ $el ] );
 	};
 
 	/**
 	 * Remove loading class once the overlay is shown
 	 */
-	MobileOverlay.prototype.onOverlayShown = function () {
+	const onOverlayShown = function () {
 		$( document.body ).removeClass(
 			'growthexperiments-homepage-mobile-summary--opening-overlay'
 		);
+	};
+
+	/**
+	 * @typedef {Object} Overlay
+	 * @see MobileFrontend/src/mobile.startup/Overlay.js
+	 */
+	const MobileOverlay = {
+		/**
+		 * @param {Object} options
+		 * @return {Object} Overlay
+		 */
+		make: ( options ) => {
+			const opts = preRender( options );
+			const view = postRender( opts );
+			let overlay = null;
+			// Wait for the header promise to finish before firing the hook
+			opts.headerPromise.then( () => {
+				// It's important to always call the hook from a promise so it executes
+				// after postRender() has finished. It ensures the module content is in
+				// the overlay and can be manipulated.
+				mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).fire(
+					opts.moduleName,
+					overlay.$el
+				);
+				onOverlayShown();
+			} );
+			overlay = Overlay.make( opts, view );
+			return overlay;
+		}
 	};
 
 	module.exports = MobileOverlay;
