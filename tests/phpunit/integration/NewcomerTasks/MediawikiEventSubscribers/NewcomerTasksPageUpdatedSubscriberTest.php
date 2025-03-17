@@ -13,10 +13,12 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\WikitextContent;
+use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\WikiMap\WikiMap;
 use MediaWikiIntegrationTestCase;
+use PHPUnit\Framework\Assert;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Stats\Metrics\CounterMetric;
 use Wikimedia\Stats\StatsFactory;
@@ -27,14 +29,28 @@ use Wikimedia\Stats\StatsFactory;
  */
 class NewcomerTasksPageUpdatedSubscriberTest extends MediaWikiIntegrationTestCase {
 
+	public function makeResetWeightedTagCallback( ProperPageIdentity $expectedPage, array $expectedTagPrefix ) {
+		return static function ( ProperPageIdentity $page, array $tagPrefix )
+			use ( $expectedPage, $expectedTagPrefix )
+		{
+			Assert::assertTrue( $page->isSamePageAs( $expectedPage ) );
+			Assert::assertEquals( $expectedTagPrefix, $tagPrefix );
+		};
+	}
+
 	public function testClearLinkRecommendationOnPageSaveComplete(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
 
 		$wikiPage = $this->getExistingTestPage();
 		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
 		$weightedTagsUpdaterMock->expects( $this->once() )
-			->method( 'resetWeightedTags' )
-			->with( $wikiPage, [ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ] );
+			->method( 'resetWeightedTags' )->willReturnCallback(
+				$this->makeResetWeightedTagCallback(
+					$wikiPage,
+					[ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ]
+				)
+			);
+
 		$this->setService( WeightedTagsUpdater::SERVICE, $weightedTagsUpdaterMock );
 		$this->overrideConfigValues( [
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
@@ -62,8 +78,13 @@ class NewcomerTasksPageUpdatedSubscriberTest extends MediaWikiIntegrationTestCas
 		$wikiPage = $this->getExistingTestPage();
 		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
 		$weightedTagsUpdaterMock->expects( $this->once() )
-			->method( 'resetWeightedTags' )
-			->with( $wikiPage, [ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ] );
+			->method( 'resetWeightedTags' )->willReturnCallback(
+				$this->makeResetWeightedTagCallback(
+					$wikiPage,
+					[ LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX ]
+				)
+			);
+
 		$this->setService( WeightedTagsUpdater::SERVICE, $weightedTagsUpdaterMock );
 		$this->overrideConfigValues( [
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
