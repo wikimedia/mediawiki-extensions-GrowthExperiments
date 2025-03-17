@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 
-	const SelectWithTextInputWidget = require( '../ui-components/SelectWithTextInputWidget.js' ),
+	const AdaptiveSelectWidget = require( '../ui-components/AdaptiveSelectWidget.js' ),
 		HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
@@ -55,7 +55,7 @@
 			// * growthexperiments-homepage-mentorship-optout-confirmation-reason-other
 			label: mw.msg( 'growthexperiments-homepage-mentorship-optout-confirmation-reason-' + reason )
 		} ) );
-		this.reasonSelect = new SelectWithTextInputWidget( {
+		this.reasonSelect = new AdaptiveSelectWidget( {
 			options: selectOptions,
 			isMultiSelect: false
 		} );
