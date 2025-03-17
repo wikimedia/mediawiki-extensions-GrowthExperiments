@@ -3,6 +3,7 @@
 		"authors": [
 			"Edwingudfriend",
 			"Jon Harald Søby",
+			"Muddyb",
 			"Wangombe"
 		]
 	},
@@ -13,5 +14,5 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Inatumika}} {{PLURAL:$2|siku}} $2 zilizopita",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> kati ya <strong>$2</strong> {{PLURAL:$2|pendekezo|mapendekezo}}",
 	"growthexperiments-homepage-suggestededits-more-info": "Habari zaidi kuhusu mabadiliko yaliyopendekezwa",
-	"growthexperiments-homepage-mentorship-about-done": "Maliza"
+	"growthexperiments-homepage-mentorship-about-done": "Imefanyika"
 }

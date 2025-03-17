@@ -172,6 +172,7 @@
 	"growthexperiments-mentor-list-missing-key": "Le clave <code>$1</code> manca",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> es expectate de esser <code>$2</code> ma es <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Le definition del mentor contine un clave non expectate <code>$1</code>",
+	"growthexperiments-mentor-list-invalid-weight": "<code>$1</code> debe esser un del sequentes: <code>$2</code>, ma es <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Le mentor $1 ha ja essite addite al lista de mentores",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Le mentor $1 non es in le lista de mentores",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Le mentor $1 non es un usator registrate",
