@@ -496,9 +496,10 @@
 	GrowthTasksApi.prototype.logTiming = function ( name, startTime, contextOverride ) {
 		const duration = mw.now() - startTime;
 		const platform = this.isMobile ? 'mobile' : 'desktop';
+		const originalContext = contextOverride || this.logContext || 'unknown_context';
 		mw.track(
 			'timing.growthExperiments.specialHomepage.growthTasksApi.' + name + '.' +
-			( contextOverride || this.logContext ) + '.' + platform, duration );
+			originalContext + '.' + platform, duration );
 
 		mw.track(
 			'stats.mediawiki_GrowthExperiments_special_homepage_seconds',
@@ -506,7 +507,7 @@
 			{
 				module: 'growthTasksApi',
 				operation: name,
-				context: contextOverride || this.logContext,
+				context: originalContext.replace( /\./g, '_' ),
 				platform: platform,
 				wiki: mw.config.get( 'wgDBname' )
 			}
