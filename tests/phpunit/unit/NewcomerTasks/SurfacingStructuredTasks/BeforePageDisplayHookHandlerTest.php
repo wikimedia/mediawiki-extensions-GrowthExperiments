@@ -28,11 +28,25 @@ use Skin;
  */
 class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 
-	public function testLoadsModuleAndAddsConfigData(): void {
+	public static function provideSurfacingTaskScenarios(): iterable {
+		yield 'User has not edited' => [];
+		yield 'User has edited less than MAX_USER_EDITS' => [
+			[
+				'getEditCount' => BeforePageDisplayHookHandler::MAX_USER_EDITS - 1
+			]
+		];
+	}
+
+	/**
+	 * @dataProvider provideSurfacingTaskScenarios
+	 */
+	public function testLoadsModuleAndAddsConfigData(
+		array $outputPageOverrides = []
+	): void {
 		$config = $this->getConfig();
 		$configurationLoader = $this->getConfigurationLoader();
 		$skin = $this->getStubSkin();
-		$mockOutputPage = $this->getMockOutputPage();
+		$mockOutputPage = $this->getMockOutputPage( $outputPageOverrides );
 
 		$mockOutputPage
 			->expects( $this->once() )
@@ -93,10 +107,10 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			[ 'veaction' => 'edit' ],
 			null
 		];
-		yield 'user has edited' => [
+		yield 'user has reached the max of edits' => [
 			[],
 			null,
-			[ 'getEditCount' => 1 ],
+			[ 'getEditCount' => BeforePageDisplayHookHandler::MAX_USER_EDITS ],
 			null
 		];
 		yield 'LinkRecommendations task being disabled in CommunityConfiguration' => [
