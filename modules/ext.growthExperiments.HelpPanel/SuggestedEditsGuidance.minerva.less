@@ -1,4 +1,8 @@
 body.skin-minerva {
+	#page-actions-edit {
+		position: relative;
+	}
+
 	.edit-page {
 		// Show dot in the corner of the pencil icon for editing. Do not flip, the pencil
 		// is not flipped either. When the page is wide enough that the edit button includes
@@ -7,8 +11,9 @@ body.skin-minerva {
 			position: absolute;
 			/* @noflip */
 			left: 70%;
+			top: 80%;
 
-			@media ( min-width: 1000px ) {
+			@media ( min-width: 1119px ) {
 				left: 50%;
 			}
 		}

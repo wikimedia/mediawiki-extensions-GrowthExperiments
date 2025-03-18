@@ -68,7 +68,7 @@
 	}
 
 	if ( $editLink.length && taskTypeId ) {
-		$editLink.append( $( '<div>' ).addClass( 'mw-pulsating-dot' ) );
+		$editLink.prepend( $( '<div>' ).addClass( 'mw-pulsating-dot' ) );
 		guidancePrefValue[ skin ][ taskTypeId ] = true;
 		$editLink.on( 'click', function () {
 			new mw.Api().saveOption( guidancePrefName, JSON.stringify( guidancePrefValue ) );
