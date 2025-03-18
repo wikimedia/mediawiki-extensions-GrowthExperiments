@@ -4,12 +4,12 @@ namespace GrowthExperiments\EventLogging;
 
 use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\User\UserIdentity;
+use MediaWiki\User\User;
 use MediaWiki\WikiMap\WikiMap;
 
 class GrowthExperimentsInteractionLogger {
 	/** @var string Versioned schema URL for $schema field */
-	private const SCHEMA_VERSIONED = '/analytics/product_metrics/web/base/1.3.0';
+	private const SCHEMA_VERSIONED = '/analytics/product_metrics/web/base/1.3.1';
 	/** @var string Stream name for EventLogging::submit */
 	private const STREAM = 'mediawiki.product_metrics.growth_product_interaction';
 	/** @var string Unique identifier for the single experiment name used for
@@ -25,11 +25,11 @@ class GrowthExperimentsInteractionLogger {
 	/**
 	 * Log an event to Growth's product interaction stream
 	 *
-	 * @param UserIdentity $user
+	 * @param User $user
 	 * @param string $action
 	 * @param array $additionalData
 	 */
-	public function log( UserIdentity $user, string $action, array $additionalData = [] ): void {
+	public function log( User $user, string $action, array $additionalData = [] ): void {
 		if ( !$this->isEventLoggingAvailable() ) {
 			return;
 		}
@@ -59,6 +59,7 @@ class GrowthExperimentsInteractionLogger {
 			'action_source' => $actionSource,
 			'performer' => [
 				'id' => $user->getId(),
+				'edit_count' => $user->getEditCount()
 			],
 			'experiments' => [
 				'enrolled' => [ self::GROWTH_EXPERIMENTS_EXPERIMENT_ID ],
