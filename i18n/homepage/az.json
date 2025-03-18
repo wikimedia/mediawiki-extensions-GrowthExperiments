@@ -4,7 +4,8 @@
 			"NMW03",
 			"Nemoralis",
 			"Serkanland",
-			"Toghrul Rahimli"
+			"Toghrul Rahimli",
+			"Əkrəm"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salam}}, {{bidi:$1}}!",
@@ -111,7 +112,7 @@
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:|Sizin}} üçün ən vacib olan mövzuları redaktə edərək dünyaya açıq məlumat ensiklopediya yaratmağa kömək edin.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Tövsiyə edilən redaktələrə bax",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Bir neçə <strong>tövsiyə edilən redaktə</strong> ilə başlayın, daha sonra {{GENDER:|redaktələrinizin}} neçə dəfə oxunduğuna baxın.",
-	"growthexperiments-homepage-impact-unactivated-description": "Redaktəyə başladıqdan sonra burda redaktə etdiyiniz məqalələrə gələn oxunuş sayına baxa {{GENDER:|bilərsiniz}}.",
+	"growthexperiments-homepage-impact-unactivated-description": "Redaktəyə başladıqdan sonra burada redaktə {{GENDER:etdiyiniz}} məqalələrin neçə nəfər tərəfindən oxunmağına baxa {{GENDER:|bilərsiniz}}.",
 	"growthexperiments-homepage-impact-error-data-not-found-text": "{{GENDER:|Məlumatlarınızın}} əldə olunmasında müvəqqəti gecikmə",
 	"growthexperiments-homepage-impact-error-data-not-found-text-third-person": "Məlumat əldə etməkdə müvəqqəti gecikmə",
 	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Redaktə etməyi və {{SITENAME}} haqqında daha çox öyrənməyi nəzərə alın, sonra {{GENDER:|redaktələrinizin}} təsirinə baxmaq üçün geri qayıdın.",
