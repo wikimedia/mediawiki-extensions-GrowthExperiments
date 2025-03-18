@@ -19,6 +19,7 @@ use stdClass;
 use Wikimedia\ObjectCache\WANObjectCache;
 
 class CommunityUpdates extends BaseModule {
+
 	private LoggerInterface $logger;
 	private ?IConfigurationProvider $provider = null;
 	private ConfigurationProviderFactory $providerFactory;
@@ -127,11 +128,19 @@ class CommunityUpdates extends BaseModule {
 	 * @return string The generated HTML for the thumbnail
 	 */
 	private function generateThumbnailHtml( string $thumbUrl ): string {
-		$thumbnailContent = Html::rawElement( 'span', [
-			'class' => 'cdx-thumbnail__image ext-growthExperiments-CommunityUpdates__thumbnail__image',
+		// mw-no-invert is added to avoid invert color in images for non-Vector night dark modes
+		$darkModeClass = $this->shouldAddWhiteBackground() ?
+			' ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode mw-no-invert' : '';
+		$thumbnailContent = Html::rawElement( 'div', [
+			'class' => 'cdx-thumbnail__image ext-growthExperiments-CommunityUpdates__thumbnail__image' . $darkModeClass,
 			'style' => 'background-image: url( ' . $thumbUrl . ' )',
 		] );
 		return Html::rawElement( 'div', [ 'class' => 'cdx-card__thumbnail' ], $thumbnailContent );
+	}
+
+	private function shouldAddWhiteBackground(): bool {
+		$config = $this->provider->loadValidConfiguration()->getValue();
+		return $config->GEHomepageCommunityUpdatesThumbnailAddDarkModeBackground;
 	}
 
 	private function getThumbnailUrlFromCommonsApi( string $fileTitle ): string {

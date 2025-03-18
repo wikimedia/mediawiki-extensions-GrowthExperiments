@@ -9,6 +9,7 @@ return (object) array(
      'title' => '',
      'url' => '',
   ),
+   'GEHomepageCommunityUpdatesThumbnailAddDarkModeBackground' => false,
    'GEHomepageCommunityUpdatesContentBody' => '',
    'GEHomepageCommunityUpdatesCallToAction' => 
   (object) array(

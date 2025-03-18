@@ -115,6 +115,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Call to action",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Destination page",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Label",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Add a white background to the image in dark mode",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "If your image has a transparent background, it may be difficult to see in dark mode. If the text or icon is dark, adding a white background can ensure it remains visible in dark mode.",
 	"communityconfiguration-helppanel-title": "Help panel",
 	"communityconfiguration-helppanel-description": "Customize Help panel settings to align with your community's requirements and define resources within it to assist and guide new editors.",
 	"communityconfiguration-helppanel-info-text": "The help panel can be available in any namespace, in reading or edit mode, as configured below. It includes the ability to search for help, click help links, and ask questions to either mentors or to the help desk. Links can be configured to be any links in the wiki, but recommendations are included below.",
