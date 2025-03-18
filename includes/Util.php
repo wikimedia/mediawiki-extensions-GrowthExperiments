@@ -393,4 +393,12 @@ class Util {
 			$extensionRegistry->isLoaded( 'VisualEditor' ) &&
 			$wikiSettings->get( 'GENewcomerTasksLinkRecommendationsEnabled' );
 	}
+
+	public static function areImageRecommendationDependenciesSatisfied(): bool {
+		$services = MediaWikiServices::getInstance();
+		$extensionRegistry = $services->getExtensionRegistry();
+		return self::isNewcomerTasksAvailable() &&
+			$extensionRegistry->isLoaded( 'CirrusSearch' ) &&
+			$extensionRegistry->isLoaded( 'VisualEditor' );
+	}
 }

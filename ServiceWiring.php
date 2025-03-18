@@ -124,9 +124,15 @@ return [
 		MediaWikiServices $services
 	): AddImageSubmissionHandler {
 		$geServices = GrowthExperimentsServices::wrap( $services );
-		$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+		if ( Util::areImageRecommendationDependenciesSatisfied() ) {
+			$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+			$weightedTagsUpdater = $cirrusSearchServices->getWeightedTagsUpdater();
+		} else {
+			$weightedTagsUpdater = null;
+		}
+
 		return new AddImageSubmissionHandler(
-			$cirrusSearchServices->getWeightedTagsUpdater(),
+			$weightedTagsUpdater,
 			$geServices->getTaskSuggesterFactory(),
 			$geServices->getNewcomerTasksUserOptionsLookup(),
 			$services->getMainWANObjectCache(),
