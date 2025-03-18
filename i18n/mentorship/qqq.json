@@ -243,7 +243,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Success message shown after enrolling as a mentor via Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Edit summary used after an user enrolls via Special:EnrollAsMentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Error shown when an user is not auto-eligible to enroll a a mentor.\n\n{{doc-growthexperiments-mentor-dashboard}}",
-	"tag-mentor list change": "Short change tag name for edits made to the structured mentor list via GrowthExperiments",
-	"tag-mentor list change-description": "Description of a change tag name used for edits made to the structured mentor list via GrowthExperiments",
+	"tag-mentor_list_change": "Short change tag name for edits made to the structured mentor list via GrowthExperiments",
+	"tag-mentor_list_change-description": "Description of a change tag name used for edits made to the structured mentor list via GrowthExperiments",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Notice message text shown at Special:ManageMentors to show that mentorship is not enabled.Links to Special:EditGrowthConfig when the Community Configuration extension is disabled. Links to Special:CommunityConfiguration when the Community Configuration extension is enabled"
 }

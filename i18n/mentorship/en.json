@@ -235,7 +235,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|You}} are now enrolled as a mentor. {{GENDER:|You}} can continue to [[Special:MentorDashboard|the mentor dashboard]] now.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Adding myself as a mentor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Only users with at least $1 {{PLURAL:$1|edit|edits}} and $2 {{PLURAL:$2|day|days}} of presence can enroll as mentors.",
-	"tag-mentor list change": "Change of the mentor list",
-	"tag-mentor list change-description": "Tag applied to edits made to the structured mentor list via GrowthExperiments",
+	"tag-mentor_list_change": "Change of the mentor list",
+	"tag-mentor_list_change-description": "Tag applied to edits made to the structured mentor list via GrowthExperiments",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorship is currently turned off. Administrators can turn on Mentorship via [[$1]]."
 }
