@@ -1,4 +1,4 @@
-const SelectWithTextInputWidget = require( '../../ui-components/SelectWithTextInputWidget.js' );
+const AdaptiveSelectWidget = require( '../../ui-components/AdaptiveSelectWidget.js' );
 
 /**
  * Dialog with a list of reasons for rejecting a suggestions
@@ -53,7 +53,7 @@ RecommendedLinkRejectionDialog.prototype.initialize = function () {
 		data: 'other',
 		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-other' )
 	} ];
-	this.reasonSelect = new SelectWithTextInputWidget( {
+	this.reasonSelect = new AdaptiveSelectWidget( {
 		options: selectOptions,
 		isMultiSelect: true
 	} );

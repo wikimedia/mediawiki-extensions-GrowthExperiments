@@ -912,7 +912,7 @@
 				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
 				"utils/Utils.js",
 				"utils/IconUtils.js",
-				"ui-components/SelectWithTextInputWidget.js"
+				"ui-components/AdaptiveSelectWidget.js"
 			],
 			"styles": [
 				"ext.growthExperiments.Homepage.mobile/index.less"
@@ -1082,7 +1082,7 @@
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutReasonDialog.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipOptoutProcess.js",
 				"ext.growthExperiments.Homepage.Mentorship/MentorshipDetailsModal.js",
-				"ui-components/SelectWithTextInputWidget.js"
+				"ui-components/AdaptiveSelectWidget.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.Help",
@@ -1376,7 +1376,7 @@
 				"ext.growthExperiments.StructuredTask/addsectionimage/RecommendedSectionImageRejectionDialog.js",
 				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",
-				"ui-components/SelectWithTextInputWidget.js"
+				"ui-components/AdaptiveSelectWidget.js"
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask/MachineSuggestionsMode.less",
@@ -2500,8 +2500,8 @@
 			"tests/qunit/ext.growthExperiments.DataStore/NewcomerTasksStore.test.js",
 			"modules/ui-components/CollapsibleDrawer.js",
 			"tests/qunit/ui-components/CollapsibleDrawer.test.js",
-			"modules/ui-components/SelectWithTextInputWidget.js",
-			"tests/qunit/ui-components/SelectWithTextInputWidget.test.js",
+			"modules/ui-components/AdaptiveSelectWidget.js",
+			"tests/qunit/ui-components/AdaptiveSelectWidget.test.js",
 			"tests/qunit/__mocks__/config.json",
 			"tests/qunit/__mocks__/GroupedTopics.json",
 			"tests/qunit/__mocks__/Topics.json",

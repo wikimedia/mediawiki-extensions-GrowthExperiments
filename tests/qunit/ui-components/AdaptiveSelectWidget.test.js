@@ -1,8 +1,8 @@
 'use strict';
 
-const SelectWithTextInputWidget = require( '../../../modules/ui-components/SelectWithTextInputWidget.js' );
+const AdaptiveSelectWidget = require( '../../../modules/ui-components/AdaptiveSelectWidget.js' );
 
-QUnit.module( 'ui-components/SelectWithTextInputWidget.js', QUnit.newMwEnvironment() );
+QUnit.module( 'ui-components/AdaptiveSelectWidget.js', QUnit.newMwEnvironment() );
 
 QUnit.test( 'constructor based on isMultiSelect option ', ( assert ) => {
 	const options = [ {
@@ -12,10 +12,10 @@ QUnit.test( 'constructor based on isMultiSelect option ', ( assert ) => {
 		data: 'option2',
 		label: 'Option 2'
 	} ];
-	const selectWithTextInput = new SelectWithTextInputWidget( { options } );
-	const selectWithTextInputMultiSelect = new SelectWithTextInputWidget( { options, isMultiSelect: true } );
-	assert.true( selectWithTextInput.widget instanceof OO.ui.RadioSelectWidget );
-	assert.true( selectWithTextInputMultiSelect.widget instanceof OO.ui.CheckboxMultiselectWidget );
+	const adaptiveSelectWidget = new AdaptiveSelectWidget( { options } );
+	const adaptiveSelectWidgetMultiSelect = new AdaptiveSelectWidget( { options, isMultiSelect: true } );
+	assert.true( adaptiveSelectWidget.widget instanceof OO.ui.RadioSelectWidget );
+	assert.true( adaptiveSelectWidgetMultiSelect.widget instanceof OO.ui.CheckboxMultiselectWidget );
 } );
 
 QUnit.test( 'should return the selected options for multi-select widget', ( assert ) => {
@@ -29,7 +29,7 @@ QUnit.test( 'should return the selected options for multi-select widget', ( asse
 		data: 'option3',
 		label: 'Option 3'
 	} ];
-	const multiSelectWidget = new SelectWithTextInputWidget( { options, isMultiSelect: true } );
+	const multiSelectWidget = new AdaptiveSelectWidget( { options, isMultiSelect: true } );
 	assert.deepEqual( multiSelectWidget.findSelection(), [] );
 	const selection = [ 'option1', 'option3' ];
 	multiSelectWidget.updateSelection( selection );
@@ -44,7 +44,7 @@ QUnit.test( 'should return the selected option for single-select widget', ( asse
 		data: 'option2',
 		label: 'Option 2'
 	} ];
-	const selectWidget = new SelectWithTextInputWidget( { options } );
+	const selectWidget = new AdaptiveSelectWidget( { options } );
 	assert.deepEqual( selectWidget.findSelection(), [] );
 	// Support both array and string for single-select widget
 	selectWidget.updateSelection( 'option1' );

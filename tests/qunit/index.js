@@ -24,4 +24,4 @@ require( './ext.growthExperiments.DataStore/GrowthTasksApi.test.js' );
 require( './ext.growthExperiments.DataStore/FiltersStore.test.js' );
 require( './ext.growthExperiments.DataStore/NewcomerTasksStore.test.js' );
 require( './ui-components/CollapsibleDrawer.test.js' );
-require( './ui-components/SelectWithTextInputWidget.test.js' );
+require( './ui-components/AdaptiveSelectWidget.test.js' );
