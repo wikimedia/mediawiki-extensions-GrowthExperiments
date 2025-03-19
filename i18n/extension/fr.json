@@ -135,6 +135,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Appel à action",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Page de destination",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Libellé",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Ajouter un fond blanc à l'image en mode sombre",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Si votre image a un fond transparent, elle peut être difficile à voir en mode sombre. Si le texte ou l'icône est sombre, ajouter un fond blanc peut garantir sa visibilité en mode sombre.",
 	"communityconfiguration-helppanel-title": "Panneau d'aide",
 	"communityconfiguration-helppanel-description": "Personnaliser les paramètres du panneau d'aide pour qu’il respecte les exigences de votre communauté et définissez les ressources qu’il contient pour aider et guider les nouveaux contributeurs.",
 	"communityconfiguration-helppanel-info-text": "Le panneau d'aide peut être disponible dans n'importe quel espace de noms, en mode lecture ou modification, comme configuré ci-dessous. Il comprend la possibilité de rechercher de l'aide, de cliquer sur les liens d'aide et de poser des questions aux tuteurs ou sur le forum d’aide. Les liens peuvent être configurés pour être n’importe quel lien dans le wiki, mais des recommandations sont présentées ci-dessous.",

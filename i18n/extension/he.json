@@ -118,6 +118,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "קריאה לפעולה",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "דף היעד",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "תווית",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "הוספת רקע לבן לתמונה במצב כהה",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "אם לתמונה שלך יש רקע שקוף, ייתכן שיהיה קשה לראות אותה במצב כהה. אם הטקסט או הסמל כהים, הוספת רקע לבן יכולה להבטיח שאפשר יהיה לראות אותם במצב כהה.",
 	"communityconfiguration-helppanel-title": "חלונית עזרה",
 	"communityconfiguration-helppanel-description": "התאמה אישית של חלונית עזרה כדי להתאים לדרישות הקהילה שלך ולהגדיר משאבים בתוכה כדי לסייע ולהנחות עורכים חדשים.",
 	"communityconfiguration-helppanel-info-text": "חלונית העזרה יכולה להיות זמינה בכל מרחב שם, במצב קריאה או עריכה, כפי שהוגדר להלן. היא כוללת את היכולת לחפש עזרה, ללחוץ על קישורי עזרה ולשלוח שאלות לחונכים או לדלפק הייעוץ. ניתן להגדיר אותם לכל קישור בוויקי, אבל יש כמה יעדים מומלצים להלן.",

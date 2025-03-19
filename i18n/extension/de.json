@@ -128,6 +128,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Aufruf zum Handeln",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Zielseite",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Bezeichnung",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Fügt dem Bild im Dunkelmodus einen weißen Hintergrund hinzu",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Wenn dein Bild einen transparenten Hintergrund hat, kann es im Dunkelmodus schwer zu erkennen sein. Wenn der Text oder das Symbol dunkel ist, kann ein weißer Hintergrund dafür sorgen, dass es im Dunkelmodus sichtbar bleibt.",
 	"communityconfiguration-helppanel-title": "Hilfebereich",
 	"communityconfiguration-helppanel-description": "Passe die Einstellungen des Hilfebereichs an die Anforderungen deiner Community an und definiere darin Ressourcen, die neuen Benutzern helfen und sie anleiten.",
 	"communityconfiguration-helppanel-info-text": "Das Hilfefenster kann in jedem Namensraum im Lese- oder Bearbeitungsmodus verfügbar sein, wie unten konfiguriert. Es bietet die Möglichkeit, nach Hilfe zu suchen, Hilfelinks anzuklicken und Fragen an Lotsen oder das Helpdesk zu stellen. Links können als beliebige Links im Wiki konfiguriert werden; unten finden sich Empfehlungen.",
