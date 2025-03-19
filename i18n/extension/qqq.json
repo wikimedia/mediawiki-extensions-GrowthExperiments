@@ -128,6 +128,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Label for the Community updates module field description setting an image for the update banner",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Field label for Call to action in Community configuration",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Label for the destination page link field in the Community Updates configuration form.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "Help-text for the destination page link field in the Community Updates configuration form. The example page mentioned in the help-text does not exist. It is there to show how to create a link to meta-wiki. That is, without brackets and with the meta: prefix.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Label for the call to action button text field in the Community Updates configuration form.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Label for the dark mode background for thumbnails checkbox in the Community Updates configuration form.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Help text for the dark mode background for thumbnails checkbox in the Community Updates configuration form.",
