@@ -11,6 +11,8 @@
 	"growthexperiments-config-validator-array-toobig": "$1 има превише ставки (максимум: $2)",
 	"growthexperiments-edit-config-disabled": "Конфигурација заједнице је тренутно онемогућена.",
 	"growthexperiments-edit-config-title": "Мењање конфигурације развоја",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Последњи уредио/ла [[User:$1|$1]] $2 ([$4 разл]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последњи уредио анонимац $1 ([$3 разл]).",
 	"growthexperiments-edit-config-feedback-headline": "Идеје и питања о формулару?",
 	"growthexperiments-edit-config-feedback-cta": "Повратне информације",
 	"growthexperiments-edit-config-error-invalid-title": "Страница за конфигурацију није конфигурисана исправно",

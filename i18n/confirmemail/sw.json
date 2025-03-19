@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Muddyb"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|hili ni nini?]])",
+	"growthexperiments-confirmemail-emailhelp": "Barua pepe inahitajika ili kurejesha akaunti yako endapo utapoteza nenosiri lako.",
+	"growthexperiments-confirmemail-emailrecommended": "Anwani ya barua pepe (inapendekezwa)",
+	"growthexperiments-confirmemail-emailwarning": "Tafadhali angalia barua pepe kutoka kwetu ili kuthibitisha anwani yako.",
+	"growthexperiments-confirmemail-confirm-subject": "Karibu kwenye {{SITENAME}}: Tafadhali thibitisha anwani yako ya barua pepe.",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Habari}} $2,\n\nAhsante kwa kujaza barua pepe kwenye akaunti yako ya {{SITENAME}}, iliyosajiliwa kutoka anwani ya IP $1.\n\nTafadhali bonyeza kitufe kilicho hapa chini ili kuthibitisha kuwa hii ndiyo barua pepe unayotaka kuhusisha na akaunti yako \"$2\":\n\n$3\n\nAngalizo: msimbo huu wa uthibitisho utakoma kutumika saa $4.\n\nAhsante,\n\n{{SITENAME}}\n\n----\n\nIli kufuta uthibitisho wa barua pepe (ikiwa hukusajili akaunti hii au kwa sababu nyingine yoyote), bonyeza kiungo hiki cha kufuta:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Thibitisha anwani ya barua pepe",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Habari}} $2,\n\nAhsante kwa kujaza barua pepe kwenye akaunti yako ya {{SITENAME}}, iliyosajiliwa kutoka kwa anuani ya IP $1.\n\nTafadhali bonyeza kiungo kilicho hapa chini ili kuthibitisha kuwa hii ndiyo barua pepe unayotaka kuhusisha na akaunti yako \"$2\":\n\n$3\n\nAngalizo: msimbo huu wa uthibitisho utatimia saa $4.\n\nAhsante,\n\n{{SITENAME}}\n\n----\n\nIli kufuta uthibitisho wa anwani ya barua pepe (ikiwa hukusajili akaunti hii au kwa sababu nyingine yoyote), bonyeza kiungo hiki cha kufuta:\n\n$5",
+	"growthexperiments-signupcampaign-title": "Ahsante kwa kuchangia! Sasa jiunge na jumuiya ya wahariri wanaoiboresha Wikipedia leo",
+	"growthexperiments-signupcampaign-body": "Kuhariri Wikipedia kunaweza kuwa rahisi kama kuongeza kiungo au kubadilisha neno. Pata mapendekezo ya makala katika maeneo {{GENDER:|yako}} unayoyapenda baada ya kuunda akaunti yako!",
+	"growthexperiments-signupcampaign-bullet1": "Makala zilizopendekezwa katika maeneo {{GENDER:|yako}} unayopendelea",
+	"growthexperiments-signupcampaign-bullet2": "Omba msaada kutoka kwa mhariri mzoefu",
+	"growthexperiments-signupcampaign-bullet3": "Anza na mabadiliko madogo na rahisi",
+	"growthexperiments-campaigns-footer": "Kwa kuunda akaunti {{GENDER:|yako}} kwenye ukurasa huu, itahusishwa na kampeni hii kwa madhumuni ya uzoefu na uchambuzi."
+}
