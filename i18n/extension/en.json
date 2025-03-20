@@ -114,6 +114,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Search for an image on Wikimedia Commons by typing its name and selecting it from the list. For the best display, choose an image with a square aspect ratio.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Call to action",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Destination page",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "This can be a page on the local wiki, or an interwiki page like \"meta:Event:Wikipedians_unite!\"",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Label",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Add a white background to the image in dark mode",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "If your image has a transparent background, it may be difficult to see in dark mode. If the text or icon is dark, adding a white background can ensure it remains visible in dark mode.",
