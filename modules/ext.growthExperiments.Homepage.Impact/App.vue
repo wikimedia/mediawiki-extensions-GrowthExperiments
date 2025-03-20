@@ -83,7 +83,7 @@ module.exports = exports = {
 				duration,
 				{
 					// eslint-disable-next-line camelcase
-					render_mode: inject( 'RENDER_MODE' ),
+					render_mode: inject( 'RENDER_MODE' ).replace( '-', '_' ),
 					wiki: mw.config.get( 'wgDBname' )
 				}
 			);
