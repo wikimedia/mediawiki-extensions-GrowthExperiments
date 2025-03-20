@@ -161,7 +161,8 @@ export default {
 	}
 
 	.right-leave-to {
-		transform: translateX( -@size-full );
+		// Use `calc()` for negative calculation to not rely on Less, but standard CSS.
+		transform: translateX( calc( -1 * @size-full ) );
 	}
 
 	.left-leave-to {
@@ -169,7 +170,7 @@ export default {
 	}
 
 	.left-enter-from {
-		transform: translateX( -@size-full );
+		transform: translateX( calc( -1 * @size-full ) );
 	}
 
 	.right-leave-active,
