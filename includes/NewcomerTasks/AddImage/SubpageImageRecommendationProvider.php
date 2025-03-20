@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use GrowthExperiments\GrowthExperimentsServices;
@@ -30,18 +32,10 @@ class SubpageImageRecommendationProvider
 	implements ImageRecommendationProvider
 {
 
-	/** @var ImageRecommendationMetadataProvider */
-	private $metadataProvider;
+	private ImageRecommendationMetadataProvider $metadataProvider;
 
-	/** @var ImageRecommendationApiHandler */
-	private $apiHandler;
+	private ImageRecommendationApiHandler $apiHandler;
 
-	/**
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param RecommendationProvider $fallbackRecommendationProvider
-	 * @param ImageRecommendationMetadataProvider $metadataProvider
-	 * @param ImageRecommendationApiHandler $imageRecommendationApiHandler
-	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		RecommendationProvider $fallbackRecommendationProvider,
@@ -97,14 +91,14 @@ class SubpageImageRecommendationProvider
 	}
 
 	/** @inheritDoc */
-	public static function onMediaWikiServices( MediaWikiServices $services ) {
+	public static function onMediaWikiServices( MediaWikiServices $services ): void {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$services->addServiceManipulator( static::$serviceName,
 			static function (
 				RecommendationProvider $recommendationProvider,
 				MediaWikiServices $services
-			) use ( $growthServices ) {
-				return new static(
+			) use ( $growthServices ): ImageRecommendationProvider {
+				$subpageProvider = new static(
 					$services->getWikiPageFactory(),
 					$recommendationProvider,
 					new StaticImageRecommendationMetadataProvider(
@@ -116,6 +110,11 @@ class SubpageImageRecommendationProvider
 						$services->getSiteStore()
 					),
 					$growthServices->getImageRecommendationApiHandler()
+				);
+				return new CacheBackedImageRecommendationProvider(
+					$services->getMainWANObjectCache(),
+					$subpageProvider,
+					$services->getStatsFactory()
 				);
 			}
 		);
