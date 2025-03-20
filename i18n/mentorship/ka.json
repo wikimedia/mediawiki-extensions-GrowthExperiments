@@ -150,6 +150,6 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "ჩაწერა",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|თქვენ}} ახლა ჩაწერილი ხართ მენტორად. {{GENDER:|შეგიძლიათ}} ახლავე გადახვიდეთ [[Special:MentorDashboard|მენტორის დაფაზე]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "ჩემი თავის დამატება მენტორად",
-	"tag-mentor list change": "მენტორების სიის შეცვლა",
-	"tag-mentor list change-description": "იარლიყი გამოყენებულია GrowthExperiments-ის მიერ შემუშავებულ მენტორების სიაში განხორციელებული რედაქტირებებისათვის"
+	"tag-mentor_list_change": "მენტორების სიის შეცვლა",
+	"tag-mentor_list_change-description": "იარლიყი გამოყენებულია GrowthExperiments-ის მიერ შემუშავებულ მენტორების სიაში განხორციელებული რედაქტირებებისათვის"
 }

@@ -246,7 +246,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Du}} bist nun als Lotse angemeldet. {{GENDER:|Du}} kannst jetzt zur [[Special:MentorDashboard|Lotsen-Verwaltungsseite]] gehen.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Mich selbst als Lotsen hinzufügen",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Nur Benutzer mit mindestens $1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} und $2 {{PLURAL:$2|Anwesenheitstag|Anwesenheitstagen}} können sich als Lotsen anmelden.",
-	"tag-mentor list change": "Änderung der Lotsenliste",
-	"tag-mentor list change-description": "Tag angewendet auf Änderungen, die über GrowthExperiments an der strukturierten Lotsenliste vorgenommen wurden",
+	"tag-mentor_list_change": "Änderung der Lotsenliste",
+	"tag-mentor_list_change-description": "Tag angewendet auf Änderungen, die über GrowthExperiments an der strukturierten Lotsenliste vorgenommen wurden",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Lotsenschaft ist derzeit deaktiviert. Administratoren können die Lotsenschaft über [[$1]] aktivieren."
 }

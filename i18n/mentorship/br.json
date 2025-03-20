@@ -101,6 +101,6 @@
 	"growthexperiments-manage-mentors-remove-mentor-reason": "Abeg evit dilemel ar mentor",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Implijer|Implijerez}} [[User:$1|$1]] n'eo ket ken ur {{GENDER:$1|mentor|ventorez}}.",
 	"growthexperiments-manage-mentors-return-back": "Gallout a rit [[Special:ManageMentors|distreiñ]] da roll ar ventored.",
-	"tag-mentor list change": "Kemm roll ar ventored",
+	"tag-mentor_list_change": "Kemm roll ar ventored",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Diweredekaet eo ar ventorelezh evit ar mare. Ar verourien a c'hall gweredekaat ar ventorelezh dre [[$1]]."
 }

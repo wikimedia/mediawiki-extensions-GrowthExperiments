@@ -188,5 +188,5 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Упиши ме",
 	"growthexperiments-mentorship-enrollasmentor-success": "Сада сте {{GENDER:|ментор|менторка}}. Наставите на [[Special:MentorDashboard|менторску таблу]] сада.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Додао себе као ментора",
-	"tag-mentor list change": "Промењен списак ментора"
+	"tag-mentor_list_change": "Промењен списак ментора"
 }

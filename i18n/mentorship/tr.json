@@ -246,7 +246,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|}}Danışman olarak kaydoldunuz. [[Special:MentorDashboard|Danışman kontrol paneline]] devam edebilirsiniz.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Kendimi danışman olarak ekliyorum",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "En az $1 değişikliği olan ve $2 gün önce kaydolmuş kullanıcılar danışmanlığa katılabilir.{{PLURAL:|}}",
-	"tag-mentor list change": "Danışman listesinin değiştirilmesi",
-	"tag-mentor list change-description": "GrowthExperiments aracılığıyla yapılandırılmış danışman listesinde yapılan düzenlemelere uygulanan etiket",
+	"tag-mentor_list_change": "Danışman listesinin değiştirilmesi",
+	"tag-mentor_list_change-description": "GrowthExperiments aracılığıyla yapılandırılmış danışman listesinde yapılan düzenlemelere uygulanan etiket",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Danışmanlık şu anda kapalı. Yöneticiler, Danışmanlığı [[$1]] ile açabilirler."
 }

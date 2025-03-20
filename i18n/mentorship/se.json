@@ -217,6 +217,6 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Dieđit iežat",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Don}} leat dál dieđihuvvon fáttarin. Don sáhtát joatkit [[Special:MentorDashboard|fáddariid gozihanpanelii]] dál.",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Dušše geavaheaddjit geain lea/leat unnimusat $1 {{PLURAL:$1|rievdadus|rievdadusat}} ja geat leat leamaš dás $2 {{PLURAL:$1|beaivve|beaivve}}, sáhttet dieđihit iežaset fáttarin.",
-	"tag-mentor list change": "Fáttarlisttu rievdadeapmi",
-	"tag-mentor list change-description": "Gilkorat mat gusket fáddariid struktuvrralaš listu rievdademiide GrowthExperiments bokte"
+	"tag-mentor_list_change": "Fáttarlisttu rievdadeapmi",
+	"tag-mentor_list_change-description": "Gilkorat mat gusket fáddariid struktuvrralaš listu rievdademiide GrowthExperiments bokte"
 }

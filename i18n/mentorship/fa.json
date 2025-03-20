@@ -187,6 +187,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|شما}} به‌عنوان یک مربی نام‌نویسی کردید. اکنون می‌توانید به [[Special:MentorDashboard|پیش‌خوان مربی]] بروید.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "افزودن خودم به‌عنوان مربی",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "تنها کاربرانی که دست کم $1 {{PLURAL:$1|ویرایش}} انجام داده‌اند و عمر حساب آن‌ها دست کم $2 {{PLURAL:$2|روز}} باشد قادر به ثبت نام به‌عنوان مربی هستند.",
-	"tag-mentor list change": "تغییر فهرست مربی‌ها",
-	"tag-mentor list change-description": "برچسبی که از طریق آزمون‌های رشد به ویرایش‌های انجام‌شده در فهرست ساختارمند مربی‌ها افزوده می‌شود"
+	"tag-mentor_list_change": "تغییر فهرست مربی‌ها",
+	"tag-mentor_list_change-description": "برچسبی که از طریق آزمون‌های رشد به ویرایش‌های انجام‌شده در فهرست ساختارمند مربی‌ها افزوده می‌شود"
 }

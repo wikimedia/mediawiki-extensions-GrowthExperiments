@@ -238,7 +238,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Właśnie {{GENDER:|zostałeś przewodnikiem|zostałaś przewodniczką|zostałeś(-aś) przewodnikiem(-czką)}}. Możesz teraz przejść do [[Special:MentorDashboard|Panelu przewodników]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Dodanie siebie do listy przewodników",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Wyłącznie użytkownicy, którzy wykonali co najmniej $1 {{PLURAL:$1|edycję|edycje|edycji}} i mają konto od $2 {{PLURAL:$2|dnia|dni}} mogą zostać przewodnikami.",
-	"tag-mentor list change": "Zmiana na liście przewodników",
-	"tag-mentor list change-description": "Znacznik dodawany do zmian na liście przewodników, wykonywanych poprzez rozszerzenie Growth",
+	"tag-mentor_list_change": "Zmiana na liście przewodników",
+	"tag-mentor_list_change-description": "Znacznik dodawany do zmian na liście przewodników, wykonywanych poprzez rozszerzenie Growth",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Moduł przewodników jest aktualnie wyłączony. Administratorzy mogą go włączyć za pośrednictwem [[$1]]."
 }

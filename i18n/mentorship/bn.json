@@ -227,6 +227,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|আপনি}} এখন একজন মেন্টর হিসেবে নথিভুক্ত হয়েছেন। {{GENDER:|আপনি}} এখন [[Special:MentorDashboard|মেন্টর ড্যাশবোর্ডে]] প্রবেশ করতে পারবেন।",
 	"growthexperiments-mentorship-enrollasmentor-summary": "নিজেকে একজন মেন্টর হিসেবে যুক্ত করেছি",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "ন্যূনতম $1 {{PLURAL:$1|সম্পাদনা|সম্পাদনাসমূহ}} এবং $2 {{PLURAL:$2|দিন}} অভিজ্ঞতাবিশিষ্ট অবদানকারী মেন্টর হিসেবে নিজেকে অন্তর্ভুক্ত করতে পারেন।",
-	"tag-mentor list change": "মেন্টরের তালিকা পরিবর্তন",
-	"tag-mentor list change-description": "GrowthExperiments-এর মাধ্যমে কাঠামোগত মেন্টর তালিকায় করা সম্পাদনাগুলোতে ট্যাগ প্রয়োগ করা হয়েছে"
+	"tag-mentor_list_change": "মেন্টরের তালিকা পরিবর্তন",
+	"tag-mentor_list_change-description": "GrowthExperiments-এর মাধ্যমে কাঠামোগত মেন্টর তালিকায় করা সম্পাদনাগুলোতে ট্যাগ প্রয়োগ করা হয়েছে"
 }

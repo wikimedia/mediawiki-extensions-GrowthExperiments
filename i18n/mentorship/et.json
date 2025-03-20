@@ -43,6 +43,6 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Registreeru",
 	"growthexperiments-mentorship-enrollasmentor-success": "Oled nüüd mentoriks registreeritud. Saad nüüd mina edasi [[Special:MentorDashboard|mentori andmelauale]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Lisan ennast mentoriks",
-	"tag-mentor list change": "Mentorite loendi muudatus",
-	"tag-mentor list change-description": "Muudatus, mis tehti mentorite struktureeritud loendis GrowthExperimentsi kaudu"
+	"tag-mentor_list_change": "Mentorite loendi muudatus",
+	"tag-mentor_list_change-description": "Muudatus, mis tehti mentorite struktureeritud loendis GrowthExperimentsi kaudu"
 }

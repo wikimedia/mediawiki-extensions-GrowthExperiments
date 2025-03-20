@@ -165,6 +165,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Зараз вы запісаны ў якасці {{GENDER:|настаўніка|настаўніцы}}. Цяпер вы можаце перайсці да [[Special:MentorDashboard|панэлі настаўніка]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Дадаю сябе ў настаўнікі",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Толькі ўдзельнікі, які маюць $1 {{PLURAL:$1|праўку|правак}} і $2 {{PLURAL:$2|дзень|дні|дзён}} стажу, могуць запісацца настаўнікамі.",
-	"tag-mentor list change": "Змена спісу настаўнікаў",
-	"tag-mentor list change-description": "Тэг, які прымяняецца да правак, унесеных у структураваны спіс настаўнікаў праз GrowthExperiments"
+	"tag-mentor_list_change": "Змена спісу настаўнікаў",
+	"tag-mentor_list_change-description": "Тэг, які прымяняецца да правак, унесеных у структураваны спіс настаўнікаў праз GrowthExperiments"
 }

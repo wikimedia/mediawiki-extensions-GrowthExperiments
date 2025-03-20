@@ -121,6 +121,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Заклик до дії",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Цільова сторінка",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Мітка",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Додати білий фон до зображення в темному режимі",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Якщо ваше зображення має прозорий фон, його може бути важко побачити в темному режимі. Якщо текст або піктограма темні, додавання білого фону може забезпечити їх видимість у темному режимі.",
 	"communityconfiguration-helppanel-title": "Панель довідки",
 	"communityconfiguration-helppanel-description": "Налаштуйте параметри панелі довідки, щоб вони відповідали вимогам вашої спільноти, і вкажіть в ній ресурси, що будуть корисними для нових редакторів.",
 	"communityconfiguration-helppanel-info-text": "Панель довідки може бути доступна в будь-якому просторі назв, у режимі читання чи редагування, залежно від налаштувань нижче. Сюди входить можливість шукати довідку, натискати посилання на довідку та публікувати запитання до наставників або довідкової служби. Посилання можна налаштувати і встановити будь-які сторінки у вікі, але рекомендовані посилання наведено нижче.",

@@ -236,7 +236,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Anda}} kini didaftarkan sebagai seorang mentor. {{GENDER:|Anda}} boleh terus ke [[Special:MentorDashboard|papan pemuka mentor]] sekarang.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Menambah diri saya sebagai seorang mentor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Hanya pengguna dengan sekurang-kurangnya $1 {{PLURAL:$1|suntingan}} dan $2 {{PLURAL:$2|hari}} kehadiran boleh mendaftar menjadi seorang mentor.",
-	"tag-mentor list change": "Tukar senarai mentor",
-	"tag-mentor list change-description": "Teg digunakan pada suntingan yang dibuat pada senarai mentor berstruktur melalui GrowthExperiments",
+	"tag-mentor_list_change": "Tukar senarai mentor",
+	"tag-mentor_list_change-description": "Teg digunakan pada suntingan yang dibuat pada senarai mentor berstruktur melalui GrowthExperiments",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Ciri bimbingan kini ditutup. Penyelia boleh buka semula ciri bimbingan melalui [[$1]]."
 }

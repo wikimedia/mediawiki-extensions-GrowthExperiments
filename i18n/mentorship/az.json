@@ -240,7 +240,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Mentor kimi qeydiyyatdan keçdiniz. [[Special:MentorDashboard|Mentor idarəetmə panelinə]] keçid edə bilərsiniz.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Özümü mentor kimi əlavə edirəm",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Ən azı $1 {{PLURAL:$1|redaktə}} və $2 {{PLURAL:$2|gün}} fəaliyyəti olanlar mentor kimi qeydiyyatdan keçə bilər.",
-	"tag-mentor list change": "Mentor siyahısının dəyişdirilməsi",
-	"tag-mentor list change-description": "GrowthExperiments vasitəsilə strukturlaşdırılmış mentor siyahısına edilən redaktələrə tətbiq edilən teq",
+	"tag-mentor_list_change": "Mentor siyahısının dəyişdirilməsi",
+	"tag-mentor_list_change-description": "GrowthExperiments vasitəsilə strukturlaşdırılmış mentor siyahısına edilən redaktələrə tətbiq edilən teq",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorluq hazırda söndürülüb. Administratorlar [[$1]] vasitəsilə Mentorluğu aktivləşdirə bilərlər."
 }

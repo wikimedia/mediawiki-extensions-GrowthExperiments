@@ -231,6 +231,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Sunteți acum {{GENDER:|înscris|înscrisă}} ca mentor. Acum {{GENDER:|puteți}} merge la [[Special:MentorDashboard|pagina mentorului]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Mă adaug ca mentor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Numai utilizatorii cu cel puțin $1 {{PLURAL:$1|editare|editări}} și $2 {{PLURAL:$2|zi|zile}} de prezență se pot înscrie ca mentori.",
-	"tag-mentor list change": "Schimbare la lista mentorilor",
-	"tag-mentor list change-description": "Etichetă aplicată editărilor făcute listei structurate de mentori via GrowthExperiments"
+	"tag-mentor_list_change": "Schimbare la lista mentorilor",
+	"tag-mentor_list_change-description": "Etichetă aplicată editărilor făcute listei structurate de mentori via GrowthExperiments"
 }

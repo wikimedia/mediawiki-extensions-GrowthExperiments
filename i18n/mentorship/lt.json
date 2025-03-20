@@ -207,6 +207,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Jūs}} dabar užsiregistravote kaip mentorius. {{GENDER:|Jūs}} dabar galite tęsti [[Special:MentorDashboard|mentoriaus prietaisų skydelyje]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Pridedu save kaip mentorių",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Tik naudotojai, atlikę bent $1 {{PLURAL:$1|keitimą|keitimus}} ir esantys $2 {{PLURAL:$2|dieną|dienas}} gali registruotis kaip mentoriai.",
-	"tag-mentor list change": "Mentorių sąrašo keitimas",
-	"tag-mentor list change-description": "Žyma, taikoma struktūrinio mentorių sąrašo keitimams naudojant „GrowthExperiments“."
+	"tag-mentor_list_change": "Mentorių sąrašo keitimas",
+	"tag-mentor_list_change-description": "Žyma, taikoma struktūrinio mentorių sąrašo keitimams naudojant „GrowthExperiments“."
 }

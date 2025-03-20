@@ -178,5 +178,5 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "بحیثیت {{GENDER:|مرشد|مرشدہ}} آپ کا نام لکھ لیا گیا ہے۔ اب آپ [[Special:MentorDashboard| مجلس ارشاد]] میں تشریف لا سکتے ہیں۔",
 	"growthexperiments-mentorship-enrollasmentor-summary": "شمولیت بحیثیت مرشد",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "محض وہ صارفین مرشد کی حیثیت سے اپنا نام درج کروا سکتے ہیں جن کی {{PLURAL:$1|ترمیم|ترامیم}} کی تعداد کم از کم $1 ہو اور $2 {{PLURAL:$2|دن}} حاضر رہے ہوں۔",
-	"tag-mentor list change": "فہرست مرشدین میں تبدیلی"
+	"tag-mentor_list_change": "فہرست مرشدین میں تبدیلی"
 }

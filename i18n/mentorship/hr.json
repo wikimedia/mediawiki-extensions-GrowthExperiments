@@ -100,5 +100,5 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Poruka novacima i novakinjama",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Poruka novacima i novakinjama predstavlja {{GENDER:|Vas}} kao mentora. Vodite računa da bude kraća od 240 znakova. Wikitekst nije dopušten.",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Prijavi me",
-	"tag-mentor list change": "Promjena popisa mentora"
+	"tag-mentor_list_change": "Promjena popisa mentora"
 }

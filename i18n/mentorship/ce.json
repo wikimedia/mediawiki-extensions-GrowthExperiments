@@ -199,7 +199,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Хьо дӀайазвина ву|Хьо дӀайазйина йу}} {{GENDER:|хьехамча}} санна. {{GENDER:|Хьан}} йиш йу [[Special:MentorDashboard|хьехамчан панеле]] хӀинца.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Хьехамчана хьой тӀетохар",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Хьехамча санна дӀайазбала йиш йу $1 лаххара а {{PLURAL:$1|хийцам}} а, $2 лаххара {{PLURAL:$2|де}} а жигара болу декъашхой.",
-	"tag-mentor list change": "хьехамчийн могӀам хийцар",
-	"tag-mentor list change-description": "Билгало лелайо структурайиначу хьехамчийн могӀамера хийцамашна GrowthExperiments чухула",
+	"tag-mentor_list_change": "хьехамчийн могӀам хийцар",
+	"tag-mentor_list_change-description": "Билгало лелайо структурайиначу хьехамчийн могӀамера хийцамашна GrowthExperiments чухула",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Хьехамалла хӀинца дӀадайина ду. Администраторша из лато мега [[$1]] чухула."
 }

@@ -172,6 +172,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Bạn}} đã đăng ký làm cố vấn thành công. {{GENDER:|Bạn}} giờ có thể tới [[Special:MentorDashboard|bảng điều khiển cho cố vấn]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Thêm bản thân vào vị trí cố vấn.",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Chỉ các thành viên có ít nhất $1 {{PLURAL:$1|edit|sửa đổi}} và đã mở tài khoản {{PLURAL:$2|day|ngày}} mới có thể đăng ký làm cố vấn.",
-	"tag-mentor list change": "Thay đổi về danh sách cố vấn",
-	"tag-mentor list change-description": "Đã áp dụng thẻ cho các sửa đổi được thực hiện cho danh sách cố vấn có cấu trúc thông qua GrowthExperiments"
+	"tag-mentor_list_change": "Thay đổi về danh sách cố vấn",
+	"tag-mentor_list_change-description": "Đã áp dụng thẻ cho các sửa đổi được thực hiện cho danh sách cố vấn có cấu trúc thông qua GrowthExperiments"
 }

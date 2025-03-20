@@ -242,7 +242,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|U}} staat nu ingeschreven als mentor. U kunt nu doorgaan naar het [[Special:MentorDashboard|mentordashboard]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Ik heb mezelf toegevoegd als mentor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Alleen gebruikers met tenminste $1 bewerking{{PLURAL:$1||en}} en $2 dag{{PLURAL:$2||en}} van aanwezigheid kunnen zich inschrijven als mentor.",
-	"tag-mentor list change": "Wijziging van de mentorlijst",
-	"tag-mentor list change-description": "Label toegepast op bewerkingen die zijn aangebracht in de gestructureerde mentorlijst via GrowthExperiments",
+	"tag-mentor_list_change": "Wijziging van de mentorlijst",
+	"tag-mentor_list_change-description": "Label toegepast op bewerkingen die zijn aangebracht in de gestructureerde mentorlijst via GrowthExperiments",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorschap is momenteel uitgeschakeld. Moderators kunnen Mentorschap inschakelen via [[$1]]."
 }

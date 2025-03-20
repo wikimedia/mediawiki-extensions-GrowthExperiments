@@ -212,6 +212,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Εσείς}} πρόκειται να εγγραφείτε ως {{GENDER:|καθοδηγητής|καθοδηγήτρια}}. Μπορείτε να συνεχίσετε στο [[Special:MentorDashboard|στο ταμπλό του {{GENDER:|καθοδηγητή|καθοδηγήτριας}}]] τώρα.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Προσθέτω τον ευατό μου ως {{GENDER:|καθοδηγητή|καθοδηγήτρια}}",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Χρήστες μόνο με τουλάχιστον $1 {{PLURAL:$1|επεξεργασία|επεξεργασίες}} και $2 {{PLURAL:$2|ημέρα|ημέρες}} παρουσίας μπορούν να εγγραφούν ως {{GENDER:|καθοδηγητές|καθοδηγήτριες}}.",
-	"tag-mentor list change": "Αλλαγή της λίστας καθοδηγητών",
-	"tag-mentor list change-description": "Εφαρμόστηκε ετικέτα σε τροποποιήσεις που έγιναν στη λίστα δομημένων καθοδηγητών μέσω του GrowthExperiments"
+	"tag-mentor_list_change": "Αλλαγή της λίστας καθοδηγητών",
+	"tag-mentor_list_change-description": "Εφαρμόστηκε ετικέτα σε τροποποιήσεις που έγιναν στη λίστα δομημένων καθοδηγητών μέσω του GrowthExperiments"
 }

@@ -238,7 +238,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "עכשיו {{GENDER:|אתה רשום כחונך|את רשומה כחונכת}}. זה הזמן אפשר להמשיך אל [[Special:MentorDashboard|לוח הבקרה של החונכים]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "הוספה של עצמי לחונכות",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "רק משתמשים שעשו לפחות {{PLURAL:$1|עריכה אחת|$1 עריכות}} וצברו לפחות {{PLURAL:$2|יום נוכחות אחד|יומיים נוכחות|$2 ימי נוכחות}} יכולים להירשם כחונכים.",
-	"tag-mentor list change": "שינוי רשימת החונכים",
-	"tag-mentor list change-description": "תג שחל על עריכות שבוצעו ברשימת החונכים המובנית באמצעות GrowthExperiments",
+	"tag-mentor_list_change": "שינוי רשימת החונכים",
+	"tag-mentor_list_change-description": "תג שחל על עריכות שבוצעו ברשימת החונכים המובנית באמצעות GrowthExperiments",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "החונכות מושבתת כרגע. מפעילי יכולים להפעיל חונכות דרך [[$1]]."
 }

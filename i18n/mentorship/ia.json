@@ -236,7 +236,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Tu es ora inscribite como mentor. Continua al [[Special:MentorDashboard|tabuliero de instrumentos pro mentores]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Addition de me mesme como mentor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Solmente usatores con al minus $1 modification{{PLURAL:$1||es}} e $2 die{{PLURAL:$2||s}} de presentia pote inscriber se como mentores.",
-	"tag-mentor list change": "Cambio del lista de mentores",
-	"tag-mentor list change-description": "Etiquetta applicate al modificationes apportate al lista structurate de mentores per medio de GrowthExperiments",
+	"tag-mentor_list_change": "Cambio del lista de mentores",
+	"tag-mentor_list_change-description": "Etiquetta applicate al modificationes apportate al lista structurate de mentores per medio de GrowthExperiments",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Le mentorato es actualmente disactivate. Administratores pote reactivar le mentorato desde [[$1]]."
 }

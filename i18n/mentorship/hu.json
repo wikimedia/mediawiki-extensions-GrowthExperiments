@@ -168,6 +168,6 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Feliratkozás",
 	"growthexperiments-mentorship-enrollasmentor-success": "Mostantól mentorként szerepelsz. Most már folytathatod a [[Special:MentorDashboard|a mentor irányítópultján]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Hozzáadom magam mentornak",
-	"tag-mentor list change": "A mentorlista módosítása",
-	"tag-mentor list change-description": "Címke alkalmazva a strukturált mentorlistán a GrowthExperimentsen keresztül végzett szerkesztésekre"
+	"tag-mentor_list_change": "A mentorlista módosítása",
+	"tag-mentor_list_change-description": "Címke alkalmazva a strukturált mentorlistán a GrowthExperimentsen keresztül végzett szerkesztésekre"
 }

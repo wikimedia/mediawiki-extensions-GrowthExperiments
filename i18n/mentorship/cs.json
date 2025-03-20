@@ -240,7 +240,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Úspěšně jste se {{GENDER:|zapsal|zapsala}} jako {{GENDER:|mentor|mentorka}}. Nyní {{GENDER:|můžete}} pokračovat na [[Special:MentorDashboard|nástěnku mentora]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Přidávám se jako mentor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Jako mentoři se mohou zapsat pouze uživatelé s alespoň {{PLURAL:$1|jednou editací|$1 editacemi}} a {{PLURAL:$2|jedním dnem|$2 dny}} od registrace.",
-	"tag-mentor list change": "Změna seznamu mentorů",
-	"tag-mentor list change-description": "Značka aplikovaná na změny strukturovaného seznamu mentorů, které byly uloženy prostřednictvím rozšíření GrowthExperiments.",
+	"tag-mentor_list_change": "Změna seznamu mentorů",
+	"tag-mentor_list_change-description": "Značka aplikovaná na změny strukturovaného seznamu mentorů, které byly uloženy prostřednictvím rozšíření GrowthExperiments.",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorství je momentálně vypnuté. Správci jej mohou zapnout pomocí [[$1]]."
 }

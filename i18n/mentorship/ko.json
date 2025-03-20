@@ -181,5 +181,5 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "등록",
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|당신은}} 지금 멘토로 등록되었습니다. 지금 [[Special:MentorDashboard|멘토 대시보드]]로 계속할 수 있습니다.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "자기 자신을 멘토로 추가함",
-	"tag-mentor list change": "멘토 목록 변경"
+	"tag-mentor_list_change": "멘토 목록 변경"
 }

@@ -227,6 +227,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Agora está {{GENDER:|inscrito como mentor|inscrita como mentora}}. Pode prosseguir para o [[Special:MentorDashboard|painel de controlo do mentor]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Acrescentar-me como {{GENDER:|mentor|mentora}}",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Só utilizadores com pelo menos $1 {{PLURAL:$1|edição|edições}} e $2 {{PLURAL:$2|dia|dias}} de presença podem inscrever-se como mentores.",
-	"tag-mentor list change": "Alteração da lista de mentores",
-	"tag-mentor list change-description": "Etiqueta aplicada às edições realizadas na lista estruturada de mentores via GrowthExperiments"
+	"tag-mentor_list_change": "Alteração da lista de mentores",
+	"tag-mentor_list_change-description": "Etiqueta aplicada às edições realizadas na lista estruturada de mentores via GrowthExperiments"
 }

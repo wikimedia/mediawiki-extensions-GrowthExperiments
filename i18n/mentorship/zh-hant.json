@@ -240,7 +240,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|您}}現在已登記為導師。{{GENDER:|您}}可以繼續前往到[[Special:MentorDashboard|導師面板]]。",
 	"growthexperiments-mentorship-enrollasmentor-summary": "將自己新增為導師",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "只有擁有至少$1次{{PLURAL:$1|編輯}}及註冊$2{{PLURAL:$2|天}}的使用者可以註冊為導師。",
-	"tag-mentor list change": "導師清單的變更",
-	"tag-mentor list change-description": "標籤應用於透過 GrowthExperiments 對結構化導師清單所做的編輯",
+	"tag-mentor_list_change": "導師清單的變更",
+	"tag-mentor_list_change-description": "標籤應用於透過 GrowthExperiments 對結構化導師清單所做的編輯",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "導師計畫目前已關閉。管理員可以透過[[$1]]來開啟導師計畫。"
 }

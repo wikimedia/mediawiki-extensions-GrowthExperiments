@@ -241,7 +241,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Ви тепер записані як {{GENDER:|наставник|наставниця}}. {{GENDER:|Ви}} можете перейти до [[Special:MentorDashboard|панелі наставника]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Додавання себе до списку наставників",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Лише користувачі, які мають принаймні $1 {{PLURAL:$1|редагування|редагування|редагувань}} та $2 {{PLURAL:$2|день|дні|днів}} активності, можуть записатися як наставники.",
-	"tag-mentor list change": "Зміна списку наставників",
-	"tag-mentor list change-description": "Тег, який застосовується до змін, внесених до структурованого списку наставників за допомогою GrowthExperiments",
+	"tag-mentor_list_change": "Зміна списку наставників",
+	"tag-mentor_list_change-description": "Тег, який застосовується до змін, внесених до структурованого списку наставників за допомогою GrowthExperiments",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Наставництво зараз вимкнене. Адміністратори можуть увімкнути наставництво на сторінці [[$1]]."
 }

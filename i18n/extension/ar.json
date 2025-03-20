@@ -122,6 +122,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "دعوة للعمل",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "صفحة الوجهة",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "تسمية",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "إضافة خلفية بيضاء للصورة في الوضع الداكن",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "إذا كانت خلفية صورتك شفافة، فقد يصعب رؤيتها في الوضع الداكن. إذا كان النص أو الرمز داكنًا، فإن إضافة خلفية بيضاء تضمن بقاءه مرئيًا في الوضع الداكن.",
 	"communityconfiguration-helppanel-title": "لوحة المساعدة",
 	"communityconfiguration-helppanel-description": "تخصيص إعدادات لوحة المساعدة لتتناسب مع متطلبات مجتمعكم وتحديد الموارد داخلها لمساعدة المحررين الجدد وتوجيههم.",
 	"communityconfiguration-helppanel-info-text": "يمكن أن تكون لوحة المساعدة متاحة في أي نطاق، في وضع القراءة أو التحرير، مثلما تم إعدادها أدناه. وتتضمن القدرة على البحث عن المساعدة، والنقر فوق روابط المساعدة، وطرح الأسئلة على المرشدين أو على ميدان المساعدة. يمكن إعداد الروابط لتكون أي روابط من الويكي، لكن التوصيات مضمّنة أدناه.",

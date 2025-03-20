@@ -118,6 +118,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Appello a action",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Pagina de destination",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Etiquetta",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Adder un fundo blanc al imagine in modo obscur",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Si tu imagine ha un fundo transparente, pote esser difficile vider lo in modo obscur. Si le texto o icone es obscur, adder un fundo blanc pote garantir su visibilitate in modo obscur.",
 	"communityconfiguration-helppanel-title": "Pannello de adjuta",
 	"communityconfiguration-helppanel-description": "Adaptar le parametros del pannello de adjuta al requisitos de tu communitate e definir le ressources in illo pro adjutar e orientar le nove redactores.",
 	"communityconfiguration-helppanel-info-text": "Le pannello de adjuta pote esser disponibile in qualcunque spatio de nomines, in modo de lectura o de modification, como configurate infra. Illo include le capacitate de cercar adjuta, cliccar sur ligamines de adjuta, e poner questiones a mentores o al servicio de adjuta. Le ligamines pote esser configurate a esser qualcunque ligamines in le wiki, ma infra se trova recommendationes.",

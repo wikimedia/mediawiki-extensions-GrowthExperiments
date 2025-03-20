@@ -197,5 +197,5 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "自己紹介メッセージでは、{{GENDER:|あなた}}を指導役として自己紹介してください（240 文字未満、ウィキ構文は使用不可）。",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "登録",
 	"growthexperiments-mentorship-enrollasmentor-summary": "自分を指導役として追加する",
-	"tag-mentor list change": "指導役一覧の変更"
+	"tag-mentor_list_change": "指導役一覧の変更"
 }

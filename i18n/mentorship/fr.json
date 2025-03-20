@@ -247,7 +247,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Vous êtes maintenant inscrit{{GENDER:||e}} en tant que mentor{{GENDER:||e}}. Vous pouvez maintenant continuer sur le [[Special:MentorDashboard|tableau de bord du mentor]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "M’ajoute moi-même en tant que mentor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Seuls les utilisateurs avec au moins $1 {{PLURAL:$1|modification|modifications}} et $2 {{PLURAL:$2|jour|jours}} de présence peuvent s’inscrire en tant que mentors.",
-	"tag-mentor list change": "Modification de la liste des mentors",
-	"tag-mentor list change-description": "Balise appliquée aux modifications apportées à la liste structurée des tuteurs via GrowthExperiments",
+	"tag-mentor_list_change": "Modification de la liste des mentors",
+	"tag-mentor_list_change-description": "Balise appliquée aux modifications apportées à la liste structurée des tuteurs via GrowthExperiments",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Le tutorat n'est actuellement pas disponible. Les administrateurs peuvent l'activer via [[$1]]."
 }

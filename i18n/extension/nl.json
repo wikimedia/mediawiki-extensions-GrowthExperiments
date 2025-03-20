@@ -127,6 +127,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Oproep tot actie",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Bestemmingspagina",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Label",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "In de donkere modus een witte achtergrond aan de afbeelding toevoegen",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Als uw afbeelding een transparante achtergrond heeft, kan die in de donkere modus moeilijk te zien zijn. Als de tekst of het pictogram donker is, kan een witte achtergrond ervoor zorgen dat alles in de donkere modus zichtbaar blijft.",
 	"communityconfiguration-helppanel-title": "Hulppaneel",
 	"communityconfiguration-helppanel-description": "Pas de instellingen van het hulppaneel zo aan dat ze aansluiten bij de vereisten van je gemeenschap. Definieer bronnen erin die nieuwe redacteuren kunnen helpen en begeleiden.",
 	"communityconfiguration-helppanel-info-text": "Het helppaneel kan beschikbaar zijn in elke naamruimte, in lees- of bewerkingsmodus, zoals hieronder geconfigureerd. Het omvat de mogelijkheid om hulp te zoeken, op helplinks te klikken en vragen te stellen aan mentoren of op de helpdesk. Links kunnen worden geconfigureerd als links in de wiki, maar aanbevelingen staan hieronder.",

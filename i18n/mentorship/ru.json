@@ -197,6 +197,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|Вы}} записаны в качестве {{GENDER:|наставника|наставницы}}. {{GENDER:|Вы}} можете перейти и продолжить на [[Special:MentorDashboard|панели наставника]] прямо сейчас.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Добавление себя в наставники",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "В наставники могут записываться только участники_цы, имеющие не менее $1 {{PLURAL:$1|правки|правок}} и активные не менее $2 {{PLURAL:$2|дня|дней}}.",
-	"tag-mentor list change": "изменение списка наставников",
-	"tag-mentor list change-description": "Метка, применяемая к изменениям структурированного списка наставников через GrowthExperiments"
+	"tag-mentor_list_change": "изменение списка наставников",
+	"tag-mentor_list_change-description": "Метка, применяемая к изменениям структурированного списка наставников через GrowthExperiments"
 }

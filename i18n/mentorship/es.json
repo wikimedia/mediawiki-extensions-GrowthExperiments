@@ -249,7 +249,7 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Estás inscrito como {{GENDER:|mentor|mentora}}. Puedes continuar al [[Special:MentorDashboard|panel de control de mentoría]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Añadirme como {{GENDER:|mentor|mentora}}",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Solo quienes tengan al menos $1 {{PLURAL:$1|edición|ediciones}} y $2 {{PLURAL:$2|día|días}} de antigüedad pueden convertirse en mentores/as.",
-	"tag-mentor list change": "Cambio de la lista de mentores y mentoras",
-	"tag-mentor list change-description": "Etiqueta aplicada a las ediciones realizadas en la lista estructurada de mentoría a través de GrowthExperiments",
+	"tag-mentor_list_change": "Cambio de la lista de mentores y mentoras",
+	"tag-mentor_list_change-description": "Etiqueta aplicada a las ediciones realizadas en la lista estructurada de mentoría a través de GrowthExperiments",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "La mentoría está actualmente desactivada. Las personas bibliotecarias pueden activarla a través de [[$1]]."
 }
