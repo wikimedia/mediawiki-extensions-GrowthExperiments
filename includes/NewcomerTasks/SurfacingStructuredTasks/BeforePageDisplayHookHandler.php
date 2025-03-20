@@ -13,6 +13,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 
 class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 
+	public const MAX_USER_EDITS = 100;
 	private Config $config;
 	private ConfigurationLoader $configurationLoader;
 	private UserOptionsLookup $userOptionsLookup;
@@ -64,7 +65,7 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 			return;
 		}
 
-		if ( $user->getEditCount() !== 0 ) {
+		if ( $user->getEditCount() >= self::MAX_USER_EDITS ) {
 			return;
 		}
 
