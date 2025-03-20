@@ -1,4 +1,9 @@
 ( function () {
+	if ( mw.eventLog === undefined ) {
+		// EventLogging is not available.
+		return;
+	}
+
 	const Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		useInstrument = require( '../ext.growthExperiments.Homepage.Logger/useInstrument.js' ),
 		logger = new Logger(
