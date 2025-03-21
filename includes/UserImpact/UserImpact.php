@@ -20,10 +20,11 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class UserImpact implements JsonSerializable {
 
 	/** Cache version, to be increased when breaking backwards compatibility. */
-	public const VERSION = 10;
+	public const VERSION = 11;
 
 	private UserIdentity $user;
 	private int $receivedThanksCount;
+	private int $givenThanksCount;
 	/** @var int[] */
 	private array $editCountByNamespace;
 	/** @var int[] */
@@ -42,6 +43,8 @@ class UserImpact implements JsonSerializable {
 	 * @param UserIdentity $user
 	 * @param int $receivedThanksCount Number of thanks the user has received. Might exclude
 	 *   thanks received a long time ago.
+	 * @param int $givenThanksCount Number of thanks the user has given. Might exclude thanks
+	 *    given a long time ago.
 	 * @param int[] $editCountByNamespace Namespace ID => number of edits the user made in some
 	 *   namespace. Might exclude edits made a long time ago or many edits ago.
 	 * @param int[] $editCountByDay Day => number of edits the user made on that day. Indexed with
@@ -58,6 +61,7 @@ class UserImpact implements JsonSerializable {
 	public function __construct(
 		UserIdentity $user,
 		int $receivedThanksCount,
+		int $givenThanksCount,
 		array $editCountByNamespace,
 		array $editCountByDay,
 		array $editCountByTaskType,
@@ -69,6 +73,7 @@ class UserImpact implements JsonSerializable {
 	) {
 		$this->user = $user;
 		$this->receivedThanksCount = $receivedThanksCount;
+		$this->givenThanksCount = $givenThanksCount;
 		$this->editCountByNamespace = $editCountByNamespace;
 		$this->editCountByDay = $editCountByDay;
 		$this->editCountByTaskType = $editCountByTaskType;
@@ -94,6 +99,14 @@ class UserImpact implements JsonSerializable {
 	 */
 	public function getReceivedThanksCount(): int {
 		return $this->receivedThanksCount;
+	}
+
+	/**
+	 * Number of thanks the user has given.
+	 * Might exclude thanks given a long time ago.
+	 */
+	public function getGivenThanksCount(): int {
+		return $this->givenThanksCount;
 	}
 
 	/**
@@ -192,6 +205,7 @@ class UserImpact implements JsonSerializable {
 		return new UserImpact(
 			new UserIdentityValue( 0, '' ),
 			0,
+			0,
 			[],
 			[],
 			[],
@@ -238,6 +252,7 @@ class UserImpact implements JsonSerializable {
 
 		$this->user = UserIdentityValue::newRegistered( $json['userId'], $json['userName'] );
 		$this->receivedThanksCount = $json['receivedThanksCount'];
+		$this->givenThanksCount = $json['givenThanksCount'];
 		$this->editCountByNamespace = $json['editCountByNamespace'];
 		$this->editCountByDay = $json['editCountByDay'];
 		$this->editCountByTaskType = $json['editCountByTaskType'];
@@ -270,6 +285,7 @@ class UserImpact implements JsonSerializable {
 			'userId' => $this->user->getId(),
 			'userName' => $this->user->getName(),
 			'receivedThanksCount' => $this->receivedThanksCount,
+			'givenThanksCount' => $this->givenThanksCount,
 			'editCountByNamespace' => $this->editCountByNamespace,
 			'editCountByDay' => $this->editCountByDay,
 			'editCountByTaskType' => $this->editCountByTaskType,
@@ -279,7 +295,7 @@ class UserImpact implements JsonSerializable {
 			'lastEditTimestamp' => $this->lastEditTimestamp,
 			'generatedAt' => $this->generatedAt,
 			'longestEditingStreak' => $longestEditingStreak,
-			'totalEditsCount' => $this->getTotalEditsCount()
+			'totalEditsCount' => $this->getTotalEditsCount(),
 		];
 	}
 

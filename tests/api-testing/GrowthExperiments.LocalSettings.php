@@ -26,6 +26,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 			1 => new GrowthExperiments\UserImpact\ExpensiveUserImpact(
 				new UserIdentityValue( 1, 'Admin' ),
 				10,
+				5,
 				[ 0 => 2 ],
 				[
 					'2022-08-24' => 1,

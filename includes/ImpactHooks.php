@@ -34,6 +34,8 @@ class ImpactHooks implements
 
 	/** @inheritDoc */
 	public function onManualLogEntryBeforePublish( $logEntry ): void {
+		// If the log entry is related to the thanks feature, check if the recipient or performer
+		// is in the UserImpactUpdater cohort, and refresh their cached user impact data if so.
 		if ( $logEntry->getType() === 'thanks' && $logEntry->getSubtype() === 'thank' ) {
 			$recipientUserPage = $logEntry->getTarget();
 			$user = $this->userFactory->newFromName( $recipientUserPage->getDBkey() );
@@ -43,6 +45,12 @@ class ImpactHooks implements
 			) {
 				DeferredUpdates::addCallableUpdate( function () use ( $user ) {
 					$this->userImpactUpdater->refreshUserImpactData( $user );
+				} );
+			}
+			$performer = $logEntry->getPerformerIdentity();
+			if ( $this->userImpactUpdater->userIsInCohort( $performer ) ) {
+				DeferredUpdates::addCallableUpdate( function () use ( $performer ) {
+					$this->userImpactUpdater->refreshUserImpactData( $performer );
 				} );
 			}
 		}

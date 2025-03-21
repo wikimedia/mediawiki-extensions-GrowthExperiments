@@ -133,11 +133,13 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		}
 
 		$editData = $this->getEditData( $user, $flags );
-		$thanksCount = $this->getThanksCount( $user, $flags );
+		$thanksReceivedCount = $this->getThanksReceivedCount( $user, $flags );
+		$thanksGivenCount = $this->getThanksGivenCount( $user, $flags );
 
 		return new UserImpact(
 			$user,
-			$thanksCount,
+			$thanksReceivedCount,
+			$thanksGivenCount,
 			$editData->getEditCountByNamespace(),
 			$editData->getEditCountByDay(),
 			$editData->getEditCountByTaskType(),
@@ -165,7 +167,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		}
 
 		$editData = $this->getEditData( $user, $flags );
-		$thanksCount = $this->getThanksCount( $user, $flags );
+		$thanksReceivedCount = $this->getThanksReceivedCount( $user, $flags );
+		$thanksGivenCount = $this->getThanksGivenCount( $user, $flags );
 		// Use priority articles if known, otherwise make use of the last edited articles
 		// as "top articles" .
 		// This won't exclude retrieving data for other articles, but ensures that we fetch page
@@ -187,7 +190,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 		$expensiveUserImpact = new ExpensiveUserImpact(
 			$user,
-			$thanksCount,
+			$thanksReceivedCount,
+			$thanksGivenCount,
 			$editData->getEditCountByNamespace(),
 			$editData->getEditCountByDay(),
 			$editData->getEditCountByTaskType(),
@@ -356,9 +360,20 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @param int $flags
 	 * @return int Number of thanks received for the user ID
 	 */
-	private function getThanksCount( User $user, int $flags ): int {
+	private function getThanksReceivedCount( User $user, int $flags ): int {
 		return $this->thanksQueryHelper
 			? $this->thanksQueryHelper->getThanksReceivedCount( $user, self::MAX_THANKS, $flags )
+			: 0;
+	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @param int $flags
+	 * @return int Number of thanks given for the user
+	 */
+	private function getThanksGivenCount( UserIdentity $user, int $flags ): int {
+		return $this->thanksQueryHelper
+			? $this->thanksQueryHelper->getThanksGivenCount( $user, self::MAX_THANKS, $flags )
 			: 0;
 	}
 

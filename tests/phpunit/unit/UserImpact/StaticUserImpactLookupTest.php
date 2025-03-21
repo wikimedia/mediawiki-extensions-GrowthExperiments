@@ -19,6 +19,7 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 			1 => new UserImpact(
 				UserIdentityValue::newRegistered( 1, 'User1' ),
 				10,
+				5,
 				[ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 				[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 				[ 'copyedit' => 10, 'link-recommendation' => 100 ],
@@ -31,6 +32,7 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 			2 => new ExpensiveUserImpact(
 				UserIdentityValue::newRegistered( 2, 'User2' ),
 				20,
+				10,
 				[ NS_MAIN => 200, NS_TALK => 20, NS_USER_TALK => 30 ],
 				[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 				[ 'copyedit' => 10, 'link-recommendation' => 100 ],

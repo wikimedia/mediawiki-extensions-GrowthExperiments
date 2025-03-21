@@ -33,6 +33,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 		$userImpact = new ExpensiveUserImpact(
 			UserIdentityValue::newRegistered( 1, 'User1' ),
 			10,
+			5,
 			[ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
@@ -60,6 +61,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 		$userImpact = new ExpensiveUserImpact(
 			UserIdentityValue::newRegistered( 1, 'User1' ),
 			10,
+			5,
 			[ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
@@ -97,6 +99,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 		$userImpact = new ExpensiveUserImpact(
 			UserIdentityValue::newRegistered( 1, 'User1' ),
 			10,
+			5,
 			[ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
