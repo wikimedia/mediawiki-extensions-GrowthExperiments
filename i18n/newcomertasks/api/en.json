@@ -36,7 +36,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "'sectionNumber' parameter must be an integer in Add Section Image plugin data, is $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Link recommendation record not found",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Unexpected link recommendation targets: $1",
-	"growthexperiments-underlinked-rescore-profile": "Internal rescore profile used in GrowthExperiments link recommendations for prioritizing articles which do not yet have enough links.",
+	"growthexperiments-underlinked-rescore-profile": "Internal rescore profile used in GrowthExperiments link recommendations for prioritizing articles which do not yet have enough links. This is a no-op when Link Recommendations are disabled.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "The <var>editRevId</var> parameter is required when the <var>accepted</var> parameter is set to <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "The <var>editRevId</var> parameter cannot be used when the <var>accepted</var> parameter is set to <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "The <var>caption</var> parameter is required when the <var>accepted</var> parameter is set to <kbd>true</kbd>.",

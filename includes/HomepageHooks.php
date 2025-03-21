@@ -3,9 +3,11 @@
 
 namespace GrowthExperiments;
 
+use CirrusSearch\Search\Rescore\BoostedQueriesFunction;
 use CirrusSearch\Search\Rescore\BoostFunctionBuilder;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
+use Elastica\Query\MatchNone;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
@@ -1453,11 +1455,15 @@ class HomepageHooks implements
 					$linkRecommendationTaskType->getUnderlinkedWeight(),
 					$linkRecommendationTaskType->getUnderlinkedMinLength()
 				);
-				return false;
+			} else {
+				// Link recommendations don't exist on this wiki. It might be nice if underlinked was
+				// a conditionally registered rescore profile, it would give a nice error message about
+				// it not being a valid api parameter, but this also works.
+				// The expectation is that this is being invoked by a user who saw the rescore profile
+				// available in the list of valid api parameters and is simply trying it out.
+				$builder = new BoostedQueriesFunction( [ new MatchNone() ], [ 0 ] );
 			}
-			// Not doing anything will result in a Cirrus error about a non-existent function type,
-			// which seems like a reasonable way to handle the case of using underlinked weighting
-			// on a wiki with no link recommendation task type.
+			return false;
 		}
 	}
 
