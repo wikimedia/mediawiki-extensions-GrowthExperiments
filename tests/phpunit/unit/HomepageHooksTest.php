@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -13,6 +13,8 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\UserImpact\UserImpactLookup;
+use GrowthExperiments\UserImpact\UserImpactStore;
 use JobQueueGroup;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Message\Message;
@@ -27,13 +29,12 @@ use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
-use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Stats\PrefixingStatsdDataFactoryProxy;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HomepageHooks
  */
-class HomepageHooksTests extends MediaWikiUnitTestCase {
+class HomepageHooksTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::__construct
@@ -122,29 +123,31 @@ class HomepageHooksTests extends MediaWikiUnitTestCase {
 		?HashConfig $config = null,
 		?TitleFactory $titleFactoryMock = null,
 		?SpecialPageFactory $specialPageFactoryMock = null,
-		?UserOptionsLookup $userOptionsLookup = null
+		?UserOptionsLookup $userOptionsLookup = null,
+		?ConfigurationLoader $configurationLoaderMock = null
 	): HomepageHooks {
 		return new HomepageHooks(
 			$config ?? new HashConfig( [] ),
-			$this->createNoOpMock( ILoadBalancer::class ),
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$userOptionsLookup ?? $this->createNoOpMock( UserOptionsLookup::class ),
 			$this->createNoOpMock( UserIdentityUtils::class ),
 			$this->createNoOpMock( NamespaceInfo::class ),
 			$titleFactoryMock ?? $this->createNoOpMock( TitleFactory::class ),
-			$this->createNoOpMock( PrefixingStatsdDataFactoryProxy::class ),
+			$this->createNoOpMock( StatsFactory::class ),
 			$this->createNoOpMock( JobQueueGroup::class ),
-			$this->createNoOpMock( ConfigurationLoader::class ),
+			$configurationLoaderMock ?? $this->createNoOpMock( ConfigurationLoader::class ),
 			$this->createNoOpMock( CampaignConfig::class ),
 			$this->createNoOpMock( ExperimentUserManager::class ),
 			$this->createNoOpMock( TaskTypeHandlerRegistry::class ),
 			$this->createNoOpMock( TaskSuggesterFactory::class ),
 			$this->createNoOpMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createNoOpMock( LinkRecommendationStore::class ),
-			$this->createNoOpMock( LinkRecommendationHelper::class ),
 			$specialPageFactoryMock ?? $this->createNoOpMock( SpecialPageFactory::class ),
 			$this->createNoOpMock( NewcomerTasksChangeTagsManager::class ),
-			$this->createNoOpMock( NewcomerTasksInfo::class )
+			$this->createNoOpMock( NewcomerTasksInfo::class ),
+			$this->createNoOpMock( UserImpactLookup::class ),
+			$this->createNoOpMock( UserImpactStore::class ),
+			$this->createNoOpMock( GrowthExperimentsInteractionLogger::class )
 		);
 	}
 }
