@@ -127,6 +127,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Suche ein Bild auf Wikimedia Commons, indem du seinen Namen eingibst und es aus der Liste auswählst. Für die beste Anzeige wähle ein Bild mit einem quadratischen Seitenverhältnis.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Aufruf zum Handeln",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Zielseite",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "Dies kann eine Seite im lokalen Wiki sein oder eine Interwiki-Seite wie „meta:Event:Wikipedians_unite!“",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Bezeichnung",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Fügt dem Bild im Dunkelmodus einen weißen Hintergrund hinzu",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Wenn dein Bild einen transparenten Hintergrund hat, kann es im Dunkelmodus schwer zu erkennen sein. Wenn der Text oder das Symbol dunkel ist, kann ein weißer Hintergrund dafür sorgen, dass es im Dunkelmodus sichtbar bleibt.",
