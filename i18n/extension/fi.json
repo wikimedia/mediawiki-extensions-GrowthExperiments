@@ -35,7 +35,7 @@
 	"growthexperiments-edit-config-help-panel-links-description": "Ohjepaneeli näyttää viisi linkkiä ja yhden ”katso lisää” -linkin. Nämä voidaan määrittää wikissä miksi tahansa, mutta suositukset on mainittu alla.",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "1) Kohdesivu ohjepaneelin ensimmäiselle linkille (suositus: tyyliopas)",
 	"growthexperiments-edit-config-help-panel-links-mos-label": "1) Ohjepaneelin ensimmäisen linkin nimi (suositus: ”Tyyliopas”)",
-	"growthexperiments-edit-config-help-panel-links-editing-title": "2) Kohdesivu ohjepaneelin toiselle linkille (suositus: visuaalisen muokkaimen ohje)",
+	"growthexperiments-edit-config-help-panel-links-editing-title": "2) Kohdesivu ohjepaneelin toiselle linkille (suositus: visuaalisen muokkaimen käyttöpas)",
 	"growthexperiments-edit-config-help-panel-links-editing-label": "2) Ohjepaneelin toisen linkin nimi (suositus: ”Sivun muokkaaminen”)",
 	"growthexperiments-edit-config-help-panel-links-images-title": "3) Kohdesivu ohjepaneelin kolmannelle linkille (suositus: kuvien lisääminen visuaalisessa muokkaimessa)",
 	"growthexperiments-edit-config-help-panel-links-images-label": "3) Ohjepaneelin kolmannen linkin nimi (suositus: ”Kuvien lisääminen”)",
@@ -65,7 +65,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Kohdesivu, josta saa lisätietoja artikkelien päivittämisestä.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "”Lisää linkki” -ehdotusten enimmäismäärä, jonka tulokas voi suorittaa päivittäin.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Kohdesivu, josta saat lisätietoja kuvaehdotus-tehtävätyypistä.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Tässsä kentässä määriteltyjä mallineita sisältäviä artikkeleita ei näytetä käyttäjille tämän tehtävätyypin tehtävinä.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Tässsä kentässä määriteltyjä luokkia sisältäviä artikkeleita ei näytetä käyttäjille tämän tehtävätyypin tehtävinä.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Tässä kentässä määriteltyjä mallineita sisältäviä artikkeleita ei näytetä käyttäjille tämän tehtävätyypin tehtävinä.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Tässä kentässä määriteltyjä luokkia sisältäviä artikkeleita ei näytetä käyttäjille tämän tehtävätyypin tehtävinä.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Tietolaatikkomallineet"
 }

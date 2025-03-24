@@ -316,7 +316,7 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "پێشنیار",
 	"growthexperiments-addlink-summary-column-header-linked": "بەسترا؟",
 	"growthexperiments-addlink-summary-copyrightwarning": "بە بڵاوکردنەوەی گۆڕانکارییەکان، {{GENDER:|تۆ}} ڕازیت بە [https://foundation.wikimedia.org/wiki/Terms_of_Use مەرجەکانی بەکارھێنان] و ڕازیت بەشدارییەکەت بڵاوبکرێتەوە لەژێر مۆڵەتەکانی «[https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0]» و «[https://www.gnu.org/licenses/fdl-1.3.html GFDL]».",
-	"growthexperiments-addlink-summary-summary": "تایبەتمەندیی پێشنیارکردنی بەستەردان: $1 بەستەر زیاد کرا.",
+	"growthexperiments-addlink-summary-summary": "تایبەتمەندیی پێشنیارکردنی بەستەردان: $1 {{PLURAL:$1|بەستەر}} زیاد کرا.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|تۆ}} ھەموو پێشنیارەکانت بۆ ئەم وتارە پەڕاند.",
 	"growthexperiments-addlink-skip-body": "ئایا {{GENDER:|تۆ}} دڵنیاییت کە ناتەوێت هیچ یەکێک لەم پێشنیارانە قبووڵ بکەیت یان ڕەتی بکەیتەوە؟",
 	"growthexperiments-addlink-skip-accept": "ھەموویان بپەڕێنە",
