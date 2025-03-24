@@ -66,10 +66,9 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 		$taskType = $allTaskTypes[$params['tasktype']] ?? null;
 		if ( $taskType === null ) {
 			$this->logger->warning(
-				'Task type {tasktype} was not found in {configpage}',
+				'Task type {tasktype} was not found in configuration',
 				[
 					'tasktype' => $params['tasktype'],
-					'configpage' => $this->getConfig()->get( 'GENewcomerTasksConfigTitle' ),
 				]
 			);
 			$this->dieWithError(

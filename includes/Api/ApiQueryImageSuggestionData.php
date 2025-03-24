@@ -73,10 +73,9 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 
 		if ( $taskType === null ) {
 			$this->logger->warning(
-				'Task type {tasktype} was not found in {configpage}',
+				'Task type {tasktype} was not found in configuration',
 				[
 					'tasktype' => $params['tasktype'],
-					'configpage' => $this->getConfig()->get( 'GENewcomerTasksConfigTitle' ),
 				]
 			);
 			$this->dieWithError(
