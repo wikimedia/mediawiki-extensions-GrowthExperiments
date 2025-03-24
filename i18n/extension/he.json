@@ -117,6 +117,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "נא לחפש תמונה בוויקישיתוף על־ידי הקלדת שמה ובחירתה מהרשימה. לתצוגה הטובה ביותר, יש לבחור תמונה עם יחס רוחב–גובה מרובע.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "קריאה לפעולה",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "דף היעד",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "זה יכול להיות דף בוויקי המקומי, או דף בינוויקי כמו \"<span dir=\"ltr\">meta:Event:Wikipedians_unite!</span>\"",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "תווית",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "הוספת רקע לבן לתמונה במצב כהה",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "אם לתמונה שלך יש רקע שקוף, ייתכן שיהיה קשה לראות אותה במצב כהה. אם הטקסט או הסמל כהים, הוספת רקע לבן יכולה להבטיח שאפשר יהיה לראות אותם במצב כהה.",

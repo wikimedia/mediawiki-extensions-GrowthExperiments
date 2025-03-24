@@ -5,5 +5,18 @@
 			"~aanzx"
 		]
 	},
-	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ಇದು ಏನು?]])"
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ಇದು ಏನು?]])",
+	"growthexperiments-confirmemail-emailhelp": "ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್ ಕಳೆದುಹೋದರೆ ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಮರುಪಡೆಯಲು ಇ-ಅಂಚೆ ವಿಳಾಸದ ಅಗತ್ಯವಿದೆ.",
+	"growthexperiments-confirmemail-emailrecommended": "ಇ-ಅಂಚೆ ವಿಳಾಸ (ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ)",
+	"growthexperiments-confirmemail-emailwarning": "ನಿಮ್ಮ ಇ-ಅಂಚೆ ವಿಳಾಸವನ್ನು ಪ್ರಮಾಣೀಕರಿಸಲು ದಯವಿಟ್ಟು ನಮ್ಮಿಂದ ನಿಮಗೆ  ಕಳುಹಿಸಲಾದ ಇ-ಅಂಚೆ ನೋಡಿ.",
+	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}}ಗೆ ಸ್ವಾಗತ: ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇ-ಅಂಚೆ ವಿಳಾಸವನ್ನು ದೃಢೀಕರಿಸಿ.",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|ನಮಸ್ಕಾರ}} $2,\n\nನಿಮ್ಮ {{SITENAME}} ಖಾತೆಗೆ $1 IP ವಿಳಾಸದಿಂದ ನೋಂದಾಯಿಸಲಾದ ಇ-ಅಂಚೆಯನ್ನು ಸೇರಿಸಿದ್ದಕ್ಕಾಗಿ ಧನ್ಯವಾದಗಳು.\n\nನಿಮ್ಮ \"$2\" ಖಾತೆಗೆ ಲಿಂಕ್ ಮಾಡಲು ಬಯಸುವ ಇ-ಅಂಚೆ ವಿಳಾಸ ಇದಾಗಿದೆ ಎಂದು ದೃಢೀಕರಿಸಲು ದಯವಿಟ್ಟು ಕೆಳಗಿನ ಬಟನ್ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ:\n\n$3 \n\nಗಮನಿಸಿ: ಈ ದೃಢೀಕರಣ ಕೋಡ್ <strong>$4 ಅವಧಿವರೆಗು ಚಾಲ್ತಿಯಲ್ಲಿರುತ್ತದೆ</strong>.\n\nಧನ್ಯವಾದಗಳು,\n\n{{SITENAME}}\n\n----\n\nಇ-ಅಂಚೆ ವಿಳಾಸ ದೃಢೀಕರಣವನ್ನು ರದ್ದುಗೊಳಿಸಲು (ನೀವು ಖಾತೆಯನ್ನು ನೋಂದಾಯಿಸದ ಕಾರಣ ಅಥವಾ ಬೇರೆ ಯಾವುದೇ ಕಾರಣಕ್ಕಾಗಿ), ಕೆಳಗಿನ ರದ್ದತಿ ಲಿಂಕ್‌ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "ಇ-ಅಂಚೆ ವಿಳಾಸವನ್ನು ಧೃಡೀಕರಿಸಿ",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|ನಮಸ್ಕಾರ}} $2,\n\nನಿಮ್ಮ {{SITENAME}} ಖಾತೆಗೆ $1 IP ವಿಳಾಸದಿಂದ ನೋಂದಾಯಿಸಲಾದ ಇ-ಅಂಚೆಯನ್ನು ಸೇರಿಸಿದ್ದಕ್ಕಾಗಿ ಧನ್ಯವಾದಗಳು.\n\nನಿಮ್ಮ \"$2\" ಖಾತೆಗೆ ಲಿಂಕ್ ಮಾಡಲು ಬಯಸುವ ಇ-ಅಂಚೆ ವಿಳಾಸ ಇದಾಗಿದೆ ಎಂದು ದೃಢೀಕರಿಸಲು ದಯವಿಟ್ಟು ಕೆಳಗಿನ ಬಟನ್ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ:\n\n$3 \n\nಗಮನಿಸಿ: ಈ ದೃಢೀಕರಣ ಕೋಡ್ <strong>$4 ಅವಧಿವರೆಗು ಚಾಲ್ತಿಯಲ್ಲಿರುತ್ತದೆ</strong>.\n\nಧನ್ಯವಾದಗಳು,\n\n{{SITENAME}}\n\n----\n\nಇ-ಅಂಚೆ ವಿಳಾಸ ದೃಢೀಕರಣವನ್ನು ರದ್ದುಗೊಳಿಸಲು (ನೀವು ಖಾತೆಯನ್ನು ನೋಂದಾಯಿಸದ ಕಾರಣ ಅಥವಾ ಬೇರೆ ಯಾವುದೇ ಕಾರಣಕ್ಕಾಗಿ), ಕೆಳಗಿನ ರದ್ದತಿ ಲಿಂಕ್‌ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ:\n\n$5",
+	"growthexperiments-signupcampaign-title": "ದೇಣಿಗೆ ನೀಡಿದ್ದಕ್ಕಾಗಿ ಧನ್ಯವಾದಗಳು! ಇಂದೇ ವಿಕಿಪೀಡಿಯಾವನ್ನು ಉತ್ತಮಗೊಳಿಸುವ ಸಂಪಾದಕರ ಸಮುದಾಯಕ್ಕೆ ಸೇರಿ.",
+	"growthexperiments-signupcampaign-body": "ವಿಕಿಪೀಡಿಯಾವನ್ನು ಸಂಪಾದಿಸುವುದು ಲಿಂಕ್ ಸೇರಿಸುವ ಅಥವಾ ಪದವನ್ನು ಬದಲಾಯಿಸುವಷ್ಟು ಸರಳವಾಗಿರುತ್ತದೆ. ನೀವು ನಿಮ್ಮ ಖಾತೆಯನ್ನು ರಚಿಸಿದ ನಂತರ {{GENDER:|ನಿಮ್ಮ}} ಆಸಕ್ತಿಯ ವಿಷಯಗಳ ಲೇಖನಗಳಿಗೆ ಸಲಹೆಗಳನ್ನು ಪಡೆಯಿರಿ!",
+	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|ನಿಮ್ಮ}} ಆಸಕ್ತಿಗಳಲ್ಲಿ ಸೂಚಿಸಲಾದ ಲೇಖನಗಳು",
+	"growthexperiments-signupcampaign-bullet2": "ಅನುಭವಿ ಸಂಪಾದಕರಿಂದ ಸಹಾಯ ಕೇಳಿ",
+	"growthexperiments-signupcampaign-bullet3": "ಸಣ್ಣ, ಸುಲಭ ಸಂಪಾದನೆಗಳೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸಿ",
+	"growthexperiments-campaigns-footer": "ಈ ಪುಟದಲ್ಲಿ {{GENDER:|ನಿಮ್ಮ}} ಖಾತೆಯನ್ನು ರಚಿಸುವ ಮೂಲಕ, ಅನುಭವ ಮತ್ತು ವಿಶ್ಲೇಷಣಾ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಇದನ್ನು ಈ ಅಭಿಯಾನದೊಂದಿಗೆ ಸಂಯೋಜಿಸಲಾಗುತ್ತದೆ."
 }

@@ -134,6 +134,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Recherchez une image sur Wikimedia Commons en saisissant son nom et la sélectionnant dans la liste. Pour un affichage optimal, choisissez une image carrée.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Appel à action",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Page de destination",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "Cela peut être une page sur le wiki local ou une page interwiki comme « meta:Event:Wikipedians_unite! »",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Libellé",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Ajouter un fond blanc à l'image en mode sombre",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Si votre image a un fond transparent, elle peut être difficile à voir en mode sombre. Si le texte ou l'icône est sombre, ajouter un fond blanc peut garantir sa visibilité en mode sombre.",

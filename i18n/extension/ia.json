@@ -117,6 +117,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Cerca un imagine sur Wikimedia Commons inserente le nomine de illo e seligente lo del lista. Pro le melior presentation, elige un imagine con un ration de aspecto quadrate.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Appello a action",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Pagina de destination",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "Isto pote esser un pagina sur le wiki local, o un pagina interwiki como “meta:Event:Wikipedians_unite!”",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Etiquetta",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Adder un fundo blanc al imagine in modo obscur",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Si tu imagine ha un fundo transparente, pote esser difficile vider lo in modo obscur. Si le texto o icone es obscur, adder un fundo blanc pote garantir su visibilitate in modo obscur.",

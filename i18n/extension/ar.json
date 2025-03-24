@@ -121,6 +121,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "ابحث عن صورة على ويكيميديا كومونز عن طريق كتابة اسمها واختياره من القائمة. لتحقيق أفضل عرض، اختر صورة ذات نسبة أبعاد مربعة.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "دعوة للعمل",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "صفحة الوجهة",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "يمكن أن تكون هذه صفحة على ويكي محلي، أو صفحة بين ويكي مثل \"meta:Event:Wikipedians_unite!\"",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "تسمية",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "إضافة خلفية بيضاء للصورة في الوضع الداكن",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "إذا كانت خلفية صورتك شفافة، فقد يصعب رؤيتها في الوضع الداكن. إذا كان النص أو الرمز داكنًا، فإن إضافة خلفية بيضاء تضمن بقاءه مرئيًا في الوضع الداكن.",

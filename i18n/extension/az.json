@@ -119,6 +119,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Wikimedia Commons-da şəklin adını yazıb siyahıdan seçməklə axtarın. Ən yaxşı ekran üçün kvadrat tərəf nisbəti olan bir şəkil seçin.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Tədbirə çağırış",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Hədəf səhifəsi",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "Bu, lokal vikidəki səhifə və ya \"meta:Event:Wikipedians_unite!\" kimi vikilərarası səhifə ola bilər.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Nişan",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Qaranlıq rejimdə şəkilə ağ fon əlavə et",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Şəkilinizin şəffaf fonu varsa, qaranlıq rejimdə onu görmək çətin ola bilər. Mətn və ya ikona qaranlıqdırsa, ağ fonun əlavə edilməsi onun qaranlıq rejimdə görünməsini təmin edə bilər.",

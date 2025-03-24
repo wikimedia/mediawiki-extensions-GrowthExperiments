@@ -126,6 +126,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Zoek naar een afbeelding op Wikimedia Commons door de naam in te typen en deze uit de lijst te selecteren. Voor de beste weergave kiest u een afbeelding met een vierkante aspectverhouding.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Oproep tot actie",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Bestemmingspagina",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "Dit kan een pagina op de lokale wiki zijn, of een interwiki-pagina zoals “meta:Event:Wikipedians_unite!”",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Label",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "In de donkere modus een witte achtergrond aan de afbeelding toevoegen",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Als uw afbeelding een transparante achtergrond heeft, kan die in de donkere modus moeilijk te zien zijn. Als de tekst of het pictogram donker is, kan een witte achtergrond ervoor zorgen dat alles in de donkere modus zichtbaar blijft.",

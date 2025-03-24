@@ -93,6 +93,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Hae kuva Wikimedia Commonsista kirjoittamalla sen nimi ja valitsemalla se listasta. Neliön muotoiset kuvat sopivat parhaiten.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Toimintakehotus",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Kohdesivu",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "Tämä voi olla sivu paikallisessa wikissä tai interwiki-sivu, kuten ”meta:Event:Wikipedians_unite!”",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Nimike",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Lisää kuvaan valkoinen tausta tummassa tilassa",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Mikäli kuvassasi on läpinäkyvä tausta, sitä voi olla vaikea nähdä tummassa tilassa. Valkoisen taustan lisääminen varmistaa, että tumma teksti tai kuvake pysyy näkyvänä tummassa tilasssa.",

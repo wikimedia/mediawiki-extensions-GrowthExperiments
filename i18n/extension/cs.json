@@ -6,7 +6,8 @@
 			"Kotlis23",
 			"Martin Urbanec",
 			"Martin Urbanec (WMF)",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Mormegil"
 		]
 	},
 	"growthexperiments-desc": "Toto rozšíření obsahuje experimenty týmu Growth.",
@@ -114,7 +115,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Výzva k akci",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Cílová stránka",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Popisek",
-	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Přidat A bílý\n pozadí na a obraz v tmavé režimu",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "K obrázku přidat v tmavém režimu bílé pozadí",
 	"communityconfiguration-helppanel-title": "Panel Potřebuji pomoci",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-label": "Kam by měly být vkládány otázky položené pomocí panelu Potřebuji pomoc?",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Na diskusní stránky mentorů",
