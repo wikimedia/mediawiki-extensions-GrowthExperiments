@@ -300,7 +300,6 @@ class HomepageHooks implements
 		// keep the dependencies minimal, this is used from other hooks as well
 		$services = MediaWikiServices::getInstance();
 		return (
-			$services->getMainConfig()->get( 'GEHomepageEnabled' ) &&
 			(
 				$user === null ||
 				$services->getUserOptionsLookup()->getBoolOption(
@@ -317,9 +316,8 @@ class HomepageHooks implements
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	private function isHomepageEnabledGloballyAndForUser( UserIdentity $user ): bool {
-		return $this->config->get( 'GEHomepageEnabled' ) &&
-			$this->userOptionsLookup->getBoolOption( $user, self::HOMEPAGE_PREF_ENABLE );
+	private function isHomepageEnabledForUser( UserIdentity $user ): bool {
+		return $this->userOptionsLookup->getBoolOption( $user, self::HOMEPAGE_PREF_ENABLE );
 	}
 
 	/**
@@ -1470,7 +1468,7 @@ class HomepageHooks implements
 	/** @inheritDoc */
 	public function onContributeCards( array &$cards ): void {
 		$userIdentity = $this->userIdentity ?? RequestContext::getMain()->getUser();
-		if ( !$this->isHomepageEnabledGloballyAndForUser( $userIdentity ) ) {
+		if ( !$this->isHomepageEnabledForUser( $userIdentity ) ) {
 			return;
 		}
 		$messageLocalizer = $this->messageLocalizer ?? RequestContext::getMain();

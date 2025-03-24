@@ -2670,10 +2670,6 @@
 			"description": "Number of days a reminder on Special:Homepage should be shown for if the user has not filled out the welcome survey yet. Set to 0 to disable the reminder.",
 			"value": 30
 		},
-		"GEHomepageEnabled": {
-			"description": "Global ON/OFF switch for the Homepage feature.",
-			"value": true
-		},
 		"GEHomepageNewAccountEnablePercentage": {
 			"description": "Percentage of new accounts to enable homepage for. Must be a whole number.",
 			"value": 100

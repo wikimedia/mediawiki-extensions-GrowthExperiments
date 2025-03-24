@@ -93,7 +93,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 
 	private function enableHomepageForTesting(): User {
 		$this->overrideConfigValues( [
-			'GEHomepageEnabled' => true,
 			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTitle',
 		] );
 		$user = $this->getMutableTestUser()->getUser()->getInstanceForUpdate();

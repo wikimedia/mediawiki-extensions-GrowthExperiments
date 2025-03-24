@@ -114,9 +114,7 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 			->with( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE )
 			->willReturn( true );
 		$homepageHooks = $this->getHomepageHooksMock(
-			new HashConfig( [
-				'GEHomepageEnabled' => true,
-			] ),
+			new HashConfig( [] ),
 			$titleFactoryMock,
 			$specialPageFactoryMock,
 			$userOptionsLookupMock
@@ -144,22 +142,13 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 			] ]
 		], $cards );
 
-		// Scenario if Homepage is globally disabled, user has pref enabled
-		$homepageHooks = $this->getHomepageHooksMock(
-			new HashConfig( [ 'GEHomepageEnabled' => false ] ),
-		);
-		$homepageHooks->setUserIdentity( $userIdentity );
-		$cards = [];
-		$homepageHooks->onContributeCards( $cards );
-		$this->assertArrayEquals( [], $cards );
-
-		// Scenario if Homepage is globally enabled, user has pref disabled
+		// Scenario if user has pref disabled
 		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
 		$userOptionsLookupMock->method( 'getBoolOption' )
 			->with( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE )
 			->willReturn( false );
 		$homepageHooks = $this->getHomepageHooksMock(
-			new HashConfig( [ 'GEHomepageEnabled' => true ] ),
+			new HashConfig( [] ),
 			$titleFactoryMock,
 			$specialPageFactoryMock,
 			$userOptionsLookupMock
