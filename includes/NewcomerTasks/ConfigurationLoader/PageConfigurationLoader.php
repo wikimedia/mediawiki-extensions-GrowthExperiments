@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\EmptyTopicRegistry;
 use GrowthExperiments\Util;
 use LogicException;
 use MediaWiki\Config\Config;
@@ -45,7 +46,7 @@ class PageConfigurationLoader extends AbstractDataConfigurationLoader {
 		$topicConfigurationPage,
 		Config $growthConfig
 	) {
-		parent::__construct( $configurationValidator, $taskTypeHandlerRegistry, $topicType );
+		parent::__construct( $configurationValidator, $taskTypeHandlerRegistry, $topicType, new EmptyTopicRegistry() );
 
 		$this->titleFactory = $titleFactory;
 		$this->configLoader = $configLoader;

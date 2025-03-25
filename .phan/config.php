@@ -21,6 +21,7 @@ $cfg['directory_list'] = array_merge(
 		'../../extensions/Thanks',
 		'../../extensions/TimedMediaHandler',
 		'../../extensions/VisualEditor',
+		'../../extensions/WikimediaMessages',
 		'../../skins/MinervaNeue',
 	]
 );
@@ -42,6 +43,7 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 		'../../extensions/Thanks',
 		'../../extensions/TimedMediaHandler',
 		'../../extensions/VisualEditor',
+		'../../extensions/WikimediaMessages',
 		'../../skins/MinervaNeue',
 	]
 );

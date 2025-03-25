@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\Config\Providers\SuggestedEditsConfigProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Title\TitleFactory;
 use Psr\Log\LoggerInterface;
@@ -18,6 +19,7 @@ class CommunityConfigurationLoader extends AbstractDataConfigurationLoader {
 	/**
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
+	 * @param ITopicRegistry $topicsRegistry
 	 * @param string $topicType
 	 * @param ?SuggestedEditsConfigProvider $suggestedEditsConfigProvider
 	 * @param TitleFactory $titleFactory
@@ -28,13 +30,14 @@ class CommunityConfigurationLoader extends AbstractDataConfigurationLoader {
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
+		ITopicRegistry $topicsRegistry,
 		string $topicType,
 		?SuggestedEditsConfigProvider $suggestedEditsConfigProvider,
 		TitleFactory $titleFactory,
 		?array $topicConfigData,
 		LoggerInterface $logger
 	) {
-		parent::__construct( $configurationValidator, $taskTypeHandlerRegistry, $topicType );
+		parent::__construct( $configurationValidator, $taskTypeHandlerRegistry, $topicType, $topicsRegistry );
 
 		$this->suggestedEditsConfigProvider = $suggestedEditsConfigProvider;
 		$this->titleFactory = $titleFactory;

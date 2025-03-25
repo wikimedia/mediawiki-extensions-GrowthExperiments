@@ -95,6 +95,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\Topic\EmptyTopicRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
@@ -678,6 +681,7 @@ return [
 			$configurationLoader = new CommunityConfigurationLoader(
 				$growthServices->getNewcomerTasksConfigurationValidator(),
 				$growthServices->getTaskTypeHandlerRegistry(),
+				$growthServices->getTopicRegistry(),
 				$topicType,
 				$suggestedEditsProvider,
 				$services->getTitleFactory(),
@@ -947,6 +951,15 @@ return [
 		}
 		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $taskSuggesterFactory;
+	},
+
+	'GrowthExperimentsTopicRegistry' => static function (
+		MediaWikiServices $services
+	): ITopicRegistry {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikimediaMessages' ) ) {
+			return new WikimediaTopicRegistry();
+		}
+		return new EmptyTopicRegistry();
 	},
 
 	'GrowthExperimentsSuggestionsInfo' => static function (

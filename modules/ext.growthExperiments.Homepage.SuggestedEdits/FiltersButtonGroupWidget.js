@@ -147,7 +147,9 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 
 	this.filtersStore.on( CONSTANTS.EVENTS.FILTER_SELECTION_CHANGED, () => {
 		this.taskTypeFiltersDialog.taskTypeSelector.setSelected( this.filtersStore.getSelectedTaskTypes() );
-		this.topicFiltersDialog.topicSelector.setFilters( this.filtersStore.getTopicsQuery() );
+		if ( this.topicFiltersDialog ) {
+			this.topicFiltersDialog.topicSelector.setFilters( this.filtersStore.getTopicsQuery() );
+		}
 	} );
 
 	rootStore.newcomerTasks.on( CONSTANTS.EVENTS.TASK_QUEUE_LOADING, ( isLoading ) => {

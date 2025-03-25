@@ -60,6 +60,7 @@ use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
@@ -146,6 +147,10 @@ class GrowthExperimentsServices {
 
 	public function getLinkSubmissionRecorder(): LinkSubmissionRecorder {
 		return $this->coreServices->get( 'GrowthExperimentsLinkSubmissionRecorder' );
+	}
+
+	public function getTopicRegistry(): ITopicRegistry {
+		return $this->coreServices->get( 'GrowthExperimentsTopicRegistry' );
 	}
 
 	public function getMenteeOverviewDataProvider(): MenteeOverviewDataProvider {

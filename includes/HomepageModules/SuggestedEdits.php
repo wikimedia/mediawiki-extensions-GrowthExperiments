@@ -29,6 +29,7 @@ use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
@@ -264,7 +265,8 @@ class SuggestedEdits extends BaseModule {
 		UserOptionsLookup $userOptionsLookup
 	) {
 		return self::isEnabled( $context->getConfig() ) &&
-			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' );
+			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' ) &&
+			ExtensionRegistry::getInstance()->isLoaded( 'WikimediaMessages' );
 	}
 
 	/**

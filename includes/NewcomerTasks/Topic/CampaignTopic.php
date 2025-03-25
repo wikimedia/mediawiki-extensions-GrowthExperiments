@@ -41,6 +41,11 @@ class CampaignTopic extends Topic {
 	}
 
 	/** @inheritDoc */
+	public function getGroupName( MessageLocalizer $messageLocalizer ): Message {
+		return $messageLocalizer->msg( 'growthexperiments-homepage-suggestededits-topic-group-name-campaign' );
+	}
+
+	/** @inheritDoc */
 	protected function toJsonArray(): array {
 		return [
 			'id' => $this->getId(),
