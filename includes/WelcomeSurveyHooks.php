@@ -67,17 +67,15 @@ class WelcomeSurveyHooks implements
 	 * @param array &$list
 	 */
 	public function onSpecialPage_initList( &$list ) {
-		if ( $this->isWelcomeSurveyEnabled() ) {
-			$list[ 'WelcomeSurvey' ] = function () {
-				return new SpecialWelcomeSurvey(
-					$this->specialPageFactory,
-					$this->welcomeSurveyFactory,
-					new WelcomeSurveyLogger(
-						LoggerFactory::getInstance( 'GrowthExperiments' )
-					)
-				);
-			};
-		}
+		$list[ 'WelcomeSurvey' ] = function () {
+			return new SpecialWelcomeSurvey(
+				$this->specialPageFactory,
+				$this->welcomeSurveyFactory,
+				new WelcomeSurveyLogger(
+					LoggerFactory::getInstance( 'GrowthExperiments' )
+				)
+			);
+		};
 	}
 
 	/**
@@ -87,15 +85,9 @@ class WelcomeSurveyHooks implements
 	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
-		if ( $this->isWelcomeSurveyEnabled() ) {
-			$preferences[WelcomeSurvey::SURVEY_PROP] = [
-				'type' => 'api',
-			];
-		}
-	}
-
-	private function isWelcomeSurveyEnabled(): bool {
-		return $this->config->get( 'WelcomeSurveyEnabled' );
+		$preferences[WelcomeSurvey::SURVEY_PROP] = [
+			'type' => 'api',
+		];
 	}
 
 	/**
@@ -254,8 +246,7 @@ class WelcomeSurveyHooks implements
 	}
 
 	private function shouldShowWelcomeSurvey( IContextSource $context ): bool {
-		return $this->isWelcomeSurveyEnabled()
-			&& !$context->getUser()->isTemp()
+		return !$context->getUser()->isTemp()
 			&& HomepageHooks::getGrowthFeaturesOptInOptOutOverride() !== HomepageHooks::GROWTH_FORCE_OPTOUT
 			&& !VariantHooks::shouldCampaignSkipWelcomeSurvey(
 				VariantHooks::getCampaign( $context ), $this->campaignConfig

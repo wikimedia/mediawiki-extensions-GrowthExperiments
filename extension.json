@@ -2658,10 +2658,6 @@
 			"description": "When using the help panel's question-asking functionality, post on the mentor's talk page instead of on the help desk page.",
 			"value": true
 		},
-		"WelcomeSurveyEnabled": {
-			"description": "Global ON/OFF switch for the Welcome survey feature.",
-			"value": true
-		},
 		"WelcomeSurveyAllowFreetextResponses": {
 			"description": "If set to true, freetext responses with the welcome survey are allowed.",
 			"value": false
