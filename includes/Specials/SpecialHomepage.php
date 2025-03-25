@@ -208,8 +208,7 @@ class SpecialHomepage extends SpecialPage {
 				!SuggestedEdits::isActivated( $this->getUser(), $this->userOptionsManager )
 			),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getConfig() ),
-			'community-updates' => Util::useCommunityConfiguration() &&
-				$this->getConfig()->get( 'GECommunityUpdatesEnabled' ),
+			'community-updates' => $this->getConfig()->get( 'GECommunityUpdatesEnabled' ),
 			'impact' => true,
 			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
 				$mentorshipState === IMentorManager::MENTORSHIP_ENABLED,

@@ -12,7 +12,6 @@ use GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm;
 use GrowthExperiments\Specials\Forms\ManageMentorsAddMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsEditMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
-use GrowthExperiments\Util;
 use LogicException;
 use MediaWiki\Config\Config;
 use MediaWiki\Html\Html;
@@ -419,9 +418,8 @@ class SpecialManageMentors extends SpecialPage {
 	 * @return string Display HTML for the warning message.
 	 */
 	private function displayMentorshipWarningMessage(): string {
-		$configPage = Util::useCommunityConfiguration()
-			? SpecialPage::getTitleFor( 'CommunityConfiguration', 'Mentorship' )->getPrefixedText()
-			: SpecialPage::getTitleFor( 'EditGrowthConfig' )->getPrefixedText();
+		$configPage = SpecialPage::getTitleFor( 'CommunityConfiguration', 'Mentorship' )
+			->getPrefixedText();
 
 		return Html::warningBox(
 			$this->msg( 'growthexperiments-mentor-dashboard-mentorship-disabled-with-link' )

@@ -2,10 +2,6 @@
 
 namespace GrowthExperiments;
 
-use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
-use GrowthExperiments\Config\WikiPageConfig;
-use GrowthExperiments\Config\WikiPageConfigLoader;
-use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
@@ -287,22 +283,6 @@ class GrowthExperimentsServices {
 
 	public function getWelcomeSurveyFactory(): WelcomeSurveyFactory {
 		return $this->coreServices->get( 'GrowthExperimentsWelcomeSurveyFactory' );
-	}
-
-	public function getWikiPageConfig(): WikiPageConfig {
-		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfig' );
-	}
-
-	public function getWikiPageConfigLoader(): WikiPageConfigLoader {
-		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfigLoader' );
-	}
-
-	public function getWikiPageConfigValidatorFactory(): ConfigValidatorFactory {
-		return $this->coreServices->get( 'GrowthExperimentsConfigValidatorFactory' );
-	}
-
-	public function getWikiPageConfigWriterFactory(): WikiPageConfigWriterFactory {
-		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfigWriterFactory' );
 	}
 
 	public function getImageRecommendationMetadataService(): ImageRecommendationMetadataService {

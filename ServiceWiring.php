@@ -1,12 +1,7 @@
 <?php
 
 use CirrusSearch\CirrusSearchServices;
-use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
-use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
-use GrowthExperiments\Config\WikiPageConfig;
-use GrowthExperiments\Config\WikiPageConfigLoader;
-use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\ExperimentUserDefaultsManager;
@@ -36,8 +31,6 @@ use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
-use GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorProvider;
-use GrowthExperiments\Mentorship\Provider\LegacyStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\ReassignMenteesFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
@@ -68,11 +61,10 @@ use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddSectionImage\SectionImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
@@ -110,7 +102,6 @@ use GrowthExperiments\Util;
 use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Config\Config;
-use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
@@ -181,56 +172,8 @@ return [
 	},
 
 	'GrowthExperimentsCommunityConfig' => static function ( MediaWikiServices $services ): Config {
-		if ( Util::useCommunityConfiguration() ) {
-			return new MediaWikiConfigReaderWrapper(
-				$services->get( 'CommunityConfiguration.MediaWikiConfigRouter' )
-			);
-		} else {
-			return $services->get( 'GrowthExperimentsMultiConfig' );
-		}
-	},
-
-	'GrowthExperimentsConfigValidatorFactory' => static function (
-		MediaWikiServices $services
-	): ConfigValidatorFactory {
-		$geServices = GrowthExperimentsServices::wrap( $services );
-		return new ConfigValidatorFactory(
-			$services->getMainConfig(),
-			$services->getTitleFactory(),
-			$geServices->getTaskTypeHandlerRegistry()
-		);
-	},
-
-	'GrowthExperimentsMultiConfig' => static function ( MediaWikiServices $services ): Config {
-		if ( Util::useCommunityConfiguration() ) {
-			wfDeprecated(
-				'GrowthExperimentsMultiConfig service',
-				'1.44', 'GrowthExperiments'
-			);
-		}
-
-		$geServices = GrowthExperimentsServices::wrap( $services );
-		return new GrowthExperimentsMultiConfig(
-			$geServices->getWikiPageConfig(),
-			GlobalVarConfig::newInstance()
-		);
-	},
-
-	'GrowthExperimentsWikiPageConfig' => static function ( MediaWikiServices $services ): Config {
-		if ( Util::useCommunityConfiguration() ) {
-			wfDeprecated(
-				'GrowthExperimentsWikiPageConfig service',
-				'1.44', 'GrowthExperiments'
-			);
-		}
-
-		$geServices = GrowthExperimentsServices::wrap( $services );
-		return new WikiPageConfig(
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
-			$services->getTitleFactory(),
-			$geServices->getWikiPageConfigLoader(),
-			$services->getMainConfig()->get( 'GEWikiConfigPageTitle' ),
-			defined( 'MW_PHPUNIT_TEST' ) && $services->isStorageDisabled()
+		return new MediaWikiConfigReaderWrapper(
+			$services->get( 'CommunityConfiguration.MediaWikiConfigRouter' )
 		);
 	},
 
@@ -543,25 +486,13 @@ return [
 	): AbstractStructuredMentorProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		if ( Util::useCommunityConfiguration() ) {
-			$provider = new CommunityStructuredMentorProvider(
-				$services->getUserIdentityLookup(),
-				new DerivativeContext( RequestContext::getMain() ),
-				CommunityConfigurationServices::wrap( $services )
-					->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' ),
-				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
-			);
-		} else {
-			$provider = new LegacyStructuredMentorProvider(
-				$services->getUserIdentityLookup(),
-				new DerivativeContext( RequestContext::getMain() ),
-				$geServices->getWikiPageConfigLoader(),
-				$services->getTitleFactory()->newFromText(
-					$services->getMainConfig()->get( 'GEStructuredMentorList' )
-				)
-			);
-		}
-
+		$provider = new CommunityStructuredMentorProvider(
+			$services->getUserIdentityLookup(),
+			new DerivativeContext( RequestContext::getMain() ),
+			CommunityConfigurationServices::wrap( $services )
+				->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' ),
+			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
+		);
 		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $provider;
 	},
@@ -616,28 +547,14 @@ return [
 	): IMentorWriter {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		if ( Util::useCommunityConfiguration() ) {
-			$writer = new CommunityStructuredMentorWriter(
-				$geServices->getMentorProvider(),
-				$services->getUserIdentityLookup(),
-				$services->getUserFactory(),
-				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
-				CommunityConfigurationServices::wrap( $services )
-					->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' )
-			);
-		} else {
-			$writer = new LegacyStructuredMentorWriter(
-				$geServices->getMentorProvider(),
-				$services->getUserIdentityLookup(),
-				$services->getUserFactory(),
-				$geServices->getWikiPageConfigLoader(),
-				$geServices->getWikiPageConfigWriterFactory(),
-				$services->getTitleFactory()->newFromText(
-					$services->getMainConfig()->get( 'GEStructuredMentorList' )
-				)
-			);
-		}
-
+		$writer = new CommunityStructuredMentorWriter(
+			$geServices->getMentorProvider(),
+			$services->getUserIdentityLookup(),
+			$services->getUserFactory(),
+			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+			CommunityConfigurationServices::wrap( $services )
+				->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' )
+		);
 		$writer->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $writer;
 	},
@@ -658,48 +575,27 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$config = $growthServices->getGrowthConfig();
 
-		$taskConfigTitle = $config->get( 'GENewcomerTasksConfigTitle' );
-		if ( !$taskConfigTitle ) {
-			return new ErrorForwardingConfigurationLoader( StatusValue::newFatal( new ApiRawMessage(
-				'The ConfigurationLoader has not been configured!',
-				'configurationloader-not-configured'
-			) ) );
-		}
-
 		$topicType = $config->get( 'GENewcomerTasksTopicType' );
-		if ( $topicType !== PageConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
+		if ( $topicType !== AbstractDataConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
 			throw new LogicException( 'Unsupported topic type of ' . $topicType );
 		}
 
 		$topicConfigData = $config->get( 'GENewcomerTasksOresTopicConfig' );
-		if ( Util::useCommunityConfiguration() ) {
-			$providerFactory = CommunityConfigurationServices::wrap( $services )
-				->getConfigurationProviderFactory();
-			$suggestedEditsProvider = in_array( 'GrowthSuggestedEdits', $providerFactory->getSupportedKeys() ) ?
-				$providerFactory->newProvider( 'GrowthSuggestedEdits' ) : null;
+		$providerFactory = CommunityConfigurationServices::wrap( $services )
+			->getConfigurationProviderFactory();
+		$suggestedEditsProvider = in_array( 'GrowthSuggestedEdits', $providerFactory->getSupportedKeys() ) ?
+			$providerFactory->newProvider( 'GrowthSuggestedEdits' ) : null;
 
-			$configurationLoader = new CommunityConfigurationLoader(
-				$growthServices->getNewcomerTasksConfigurationValidator(),
-				$growthServices->getTaskTypeHandlerRegistry(),
-				$growthServices->getTopicRegistry(),
-				$topicType,
-				$suggestedEditsProvider,
-				$services->getTitleFactory(),
-				$topicConfigData,
-				LoggerFactory::getInstance( 'GrowthExperiments' ),
-			);
-		} else {
-			$configurationLoader = new PageConfigurationLoader(
-				$growthServices->getNewcomerTasksConfigurationValidator(),
-				$growthServices->getTaskTypeHandlerRegistry(),
-				$topicType,
-				$services->getTitleFactory(),
-				$growthServices->getWikiPageConfigLoader(),
-				$taskConfigTitle,
-				null,
-				$growthServices->getGrowthWikiConfig(),
-			);
-		}
+		$configurationLoader = new CommunityConfigurationLoader(
+			$growthServices->getNewcomerTasksConfigurationValidator(),
+			$growthServices->getTaskTypeHandlerRegistry(),
+			$growthServices->getTopicRegistry(),
+			$topicType,
+			$suggestedEditsProvider,
+			$services->getTitleFactory(),
+			$topicConfigData,
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
+		);
 
 		if ( !$config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$configurationLoader->disableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
@@ -1011,50 +907,6 @@ return [
 			$services->getLanguageNameUtils(),
 			$services->getUserOptionsManager(),
 			ExtensionRegistry::getInstance()->isLoaded( 'UniversalLanguageSelector' )
-		);
-	},
-
-	'GrowthExperimentsWikiPageConfigLoader' => static function (
-		MediaWikiServices $services
-	): WikiPageConfigLoader {
-		if ( Util::useCommunityConfiguration() ) {
-			wfDeprecated(
-				'GrowthExperimentsWikiPageConfigLoader service',
-				'1.44', 'GrowthExperiments'
-			);
-		}
-
-		return new WikiPageConfigLoader(
-			$services->getMainWANObjectCache(),
-			GrowthExperimentsServices::wrap( $services )
-				->getWikiPageConfigValidatorFactory(),
-			$services->getHttpRequestFactory(),
-			$services->getRevisionLookup(),
-			$services->getTitleFactory(),
-			$services->getUrlUtils(),
-			defined( 'MW_PHPUNIT_TEST' ) && $services->isStorageDisabled()
-		);
-	},
-
-	'GrowthExperimentsWikiPageConfigWriterFactory' => static function (
-		MediaWikiServices $services
-	): WikiPageConfigWriterFactory {
-		if ( Util::useCommunityConfiguration() ) {
-			wfDeprecated(
-				'GrowthExperimentsWikiPageConfigWriterFactory service',
-				'1.44', 'GrowthExperiments'
-			);
-		}
-
-		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
-		return new WikiPageConfigWriterFactory(
-			$growthExperimentsServices->getWikiPageConfigLoader(),
-			$growthExperimentsServices->getWikiPageConfigValidatorFactory(),
-			$services->getWikiPageFactory(),
-			$services->getTitleFactory(),
-			$services->getUserFactory(),
-			$services->getHookContainer(),
-			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
 	},
 

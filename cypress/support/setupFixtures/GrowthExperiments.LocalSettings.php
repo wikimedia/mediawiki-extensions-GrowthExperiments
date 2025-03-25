@@ -14,7 +14,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\TitleValue;
 
-$wgGEUseCommunityConfigurationExtension = true;
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
 $wgGESurfacingStructuredTasksEnabled = true;
