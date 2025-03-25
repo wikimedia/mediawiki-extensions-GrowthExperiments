@@ -33,6 +33,7 @@ use RuntimeException;
 use StatusValue;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\DBReadOnlyError;
+use Wikimedia\Stats\StatsFactory;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -55,6 +56,7 @@ class RefreshLinkRecommendations extends Maintenance {
 	private LinkRecommendationUpdater $linkRecommendationUpdater;
 	private LinkRecommendationTaskType $recommendationTaskType;
 	private User $searchUser;
+	private StatsFactory $statsFactory;
 	private array $metrics = [];
 	private array $seen = [];
 
@@ -134,13 +136,22 @@ class RefreshLinkRecommendations extends Maintenance {
 		}
 
 		$iterateThroughAllPages = $this->growthConfig->get( 'GELinkRecommendationsRefreshByIteratingThroughAllTitles' );
+		$sessionDurationCounter = $this->statsFactory->getCounter( 'refreshLinks_session_seconds_total' )
+			->setLabel( 'wiki', WikiMap::getCurrentWikiId() );
 		if ( $iterateThroughAllPages ) {
+			$sessionDurationCounter->setLabel( 'type', 'by-iterating-pages' );
+			$startNanoSeconds = hrtime( true );
 			$this->refreshByIteratingThroughAllPages( $force );
 		} else {
+			$sessionDurationCounter->setLabel( 'type', 'by-ores-topic' );
+			$startNanoSeconds = hrtime( true );
 			$this->refreshViaOresTopics( $force );
 		}
+		$durationSeconds = ( hrtime( true ) - $startNanoSeconds ) / 1e9;
+		$sessionDurationCounter->incrementBy( $durationSeconds );
 
 		$this->sendMetricsToStatslib();
+		$this->verboseLog( "    duration: $durationSeconds seconds\n" );
 	}
 
 	private function setLastPageIdInStash( int $lastPageId ): void {
@@ -215,15 +226,13 @@ class RefreshLinkRecommendations extends Maintenance {
 	}
 
 	private function sendMetricsToStatslib(): void {
-		$services = $this->getServiceContainer();
-		$statsFactory = $services->getStatsFactory()->withComponent( 'GrowthExperiments' );
-		$counter = $statsFactory->getCounter( 'refreshLinks_total' );
+		$counter = $this->statsFactory->getCounter( 'refreshLinks_total' );
 		$wiki = WikiMap::getCurrentWikiId();
+		$this->verboseLog( "Outcomes:\n" );
 		foreach ( $this->metrics as $outcomeName => $outcomeCount ) {
 			$counter->setLabel( 'wiki', $wiki );
 			$counter->setLabel( 'outcome', $outcomeName );
 			$counter->incrementBy( $outcomeCount );
-			// TODO: print summary with --verbose option?
 			$this->verboseLog( "    $outcomeName: $outcomeCount\n" );
 		}
 	}
@@ -263,6 +272,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->taskSuggester = $growthServices->getTaskSuggesterFactory()->create( $this->configurationLoader );
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
 		$this->linkRecommendationUpdater = $growthServices->getLinkRecommendationUpdater();
+		$this->statsFactory = $services->getStatsFactory()->withComponent( 'GrowthExperiments' );
 	}
 
 	protected function initConfig(): void {
