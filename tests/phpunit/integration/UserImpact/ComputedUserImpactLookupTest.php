@@ -96,6 +96,9 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertSame( 1, $userImpact->getNewcomerTaskEditCount() );
 		$this->assertSame( (int)wfTimestamp( TS_UNIX, '20221002120000' ), $userImpact->getLastEditTimestamp() );
 		$this->assertSame( 1, $userImpact->getReceivedThanksCount() );
+		$this->assertSame( 0, $userImpact->getGivenThanksCount() );
+		$thankerUserImpact = $userImpactLookup->getUserImpact( $thanker );
+		$this->assertSame( 1, $thankerUserImpact->getGivenThanksCount() );
 	}
 
 	public function testGetUserImpact_offset() {

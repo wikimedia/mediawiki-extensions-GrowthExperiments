@@ -87,6 +87,7 @@ class UserImpactPageUpdatedSubscriber extends MediaWikiIntegrationTestCase {
 		return new ExpensiveUserImpact(
 			$user,
 			2,
+			1,
 			[
 				NS_MAIN => 10,
 				NS_USER => 3,

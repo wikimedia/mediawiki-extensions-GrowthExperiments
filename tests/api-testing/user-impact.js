@@ -8,10 +8,11 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 
 	function getExpectedResponse() {
 		return {
-			'@version': 10,
+			'@version': 11,
 			userId: 1,
 			userName: 'Admin',
 			receivedThanksCount: 10,
+			givenThanksCount: 5,
 			recentEditsWithoutPageviews: [],
 			editCountByNamespace: [
 				2

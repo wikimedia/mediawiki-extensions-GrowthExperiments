@@ -24,6 +24,8 @@ class ExpensiveUserImpact extends UserImpact {
 	 * @param UserIdentity $user
 	 * @param int $receivedThanksCount Number of thanks the user has received. Might exclude
 	 *   thanks received a long time ago.
+	 * @param int $givenThanksCount Number of thanks the user has given. Might exclude
+	 *    thanks given a long time ago.
 	 * @param int[] $editCountByNamespace Namespace ID => number of edits the user made in some
 	 *   namespace. Might exclude edits made a long time ago or many edits ago.
 	 * @param int[] $editCountByDay Day => number of edits the user made on that day. Indexed with
@@ -44,6 +46,7 @@ class ExpensiveUserImpact extends UserImpact {
 	public function __construct(
 		UserIdentity $user,
 		int $receivedThanksCount,
+		int $givenThanksCount,
 		array $editCountByNamespace,
 		array $editCountByDay,
 		array $editCountByTaskType,
@@ -55,7 +58,7 @@ class ExpensiveUserImpact extends UserImpact {
 		EditingStreak $longestEditingStreak,
 		?int $totalUserEditCount
 	) {
-		parent::__construct( $user, $receivedThanksCount, $editCountByNamespace, $editCountByDay,
+		parent::__construct( $user, $receivedThanksCount, $givenThanksCount, $editCountByNamespace, $editCountByDay,
 			$editCountByTaskType, $revertedEditCount, $newcomerTaskEditCount, $lastEditTimestamp,
 			$longestEditingStreak, $totalUserEditCount );
 		$this->dailyTotalViews = $dailyTotalViews;
@@ -96,6 +99,7 @@ class ExpensiveUserImpact extends UserImpact {
 	protected static function newEmpty(): self {
 		return new ExpensiveUserImpact(
 			new UserIdentityValue( 0, '' ),
+			0,
 			0,
 			[],
 			[],

@@ -17,6 +17,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 		$userImpact = new UserImpact(
 			UserIdentityValue::newRegistered( 1, 'User1' ),
 			10,
+			5,
 			[ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
@@ -28,6 +29,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 		);
 		$this->assertInstanceOf( UserImpact::class, $userImpact );
 		$this->assertSame( 10, $userImpact->getReceivedThanksCount() );
+		$this->assertSame( 5, $userImpact->getGivenThanksCount() );
 		$this->assertSame( [ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 			$userImpact->getEditCountByNamespace() );
 		$this->assertSame( 1, $userImpact->getRevertedEditCount() );
@@ -43,6 +45,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 		$userImpact = new UserImpact(
 			UserIdentityValue::newRegistered( 1, 'User1' ),
 			10,
+			5,
 			[ NS_MAIN => 100, NS_TALK => 10, NS_USER_TALK => 15 ],
 			[ '2022-08-24' => 10, '2022-08-25' => 20 ],
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
