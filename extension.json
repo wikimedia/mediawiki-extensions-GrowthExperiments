@@ -2783,10 +2783,6 @@
 			"description": "Enable topic filters for suggested edits",
 			"value": true
 		},
-		"GEConfirmEmailEnabled": {
-			"description": "Global ON/OFF switch for the email confirmation changes.",
-			"value": true
-		},
 		"GENewcomerTasksConfigTitle": {
 			"description": "Title of a MediaWiki page which contains suggested edits configuration. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should be in the MediaWiki: namespace, have JSON content type and contain a map of task type -> task configuration where task configuration consists of the following fields: type  - a task type handler ID; group - 'easy', 'medium' or 'hard'. An optional 'disabled' field, when present and truthy, will make the system ignore that task type. Depending on the task type, there might be other fields, specifically:\n- type=template-based: templates - an array of template names (without namespace) for the maintenance templates\n- type=link-recommendation: minimumTasksPerTopic, minimumLinksPerTask, minimumLinkScore, maximumLinksPerTask, maximumLinksToShowPerTask, minimumTimeSinceLastEdit, minimumWordCount, maximumWordCount: parameters of acceptable tasks.\n\nThe system messages growthexperiments-homepage-suggestededits-tasktype-name-<tasktype> and growthexperiments-homepage-suggestededits-tasktype-description-<tasktype> will be used for task name and description; both must exist.",
 			"value": "MediaWiki:NewcomerTasks.json"
