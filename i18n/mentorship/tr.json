@@ -103,7 +103,7 @@
 	"growthexperiments-quit-mentorship-title": "Danışmanlığı bırak",
 	"growthexperiments-quit-mentorship-error-not-a-mentor": "{{GENDER:|}}Danışman değilsiniz.",
 	"growthexperiments-quit-mentorship-has-mentees-pretext": "Ayrıldığınızı görmek üzücü. Danışmanlığı bırakmak için aşağıdaki formu doldurmanız gerekiyor. Formu gönderdiğinizde tüm danışanlarınız farklı danışmanlara atanacaktır. <strong>Bu geri alınamaz.</strong> Eğer sadece ara vermek istiyorsanız durumunuzu \"uzakta\" olarak ayarlayabilirsiniz veya danışan sayınızı azaltabilirsiniz. Bu değişiklikleri [[Special:MentorDashboard|danışman kontrol paneli]] üzerinden yapabilirsiniz.",
-	"growthexperiments-quit-mentorship-reason": "Sebep",
+	"growthexperiments-quit-mentorship-reason": "Gerekçe",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Evet, danışanlarınızı yeniden ata",
 	"growthexperiments-quit-mentorship-success": "Danışanlarınız kısa süre içinde diğer danışmanlara atanacaktır.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 danışmanlıktan emekli oldu.",
