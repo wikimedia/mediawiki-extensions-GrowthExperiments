@@ -26,7 +26,8 @@
 			"Tanzun",
 			"Teretalexev",
 			"Urfiner",
-			"Vlad5250"
+			"Vlad5250",
+			"Smigles"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Включить панель помощи редактору",
@@ -102,7 +103,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-value": "Всё в {{GRAMMAR:prepositional|{{SITENAME}}}} изложено на основе надежных источников, таких как книги и статьи. Когда читатели видят сноски на эти источники в статье, они могут получить больше уверенности в прочитанном.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "Сатурн, вероятно, наиболее известен системой планетарных колец, которая делает его визуально уникальным.<sup>[3]</sup>",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-value": "Это предложение имеет в конце сноску, которая ведет к примечаниям.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-calm": "Чтобы изменить ситуацию, {{GENDER:|вам}} нужно добавить только сноски в этой статье. {{GENDER:|Вам}} не нужно работать над изменение всей статьи в целом.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-calm": "Чтобы изменить ситуацию, {{GENDER:|вам}} нужно лишь добавить одну сноску в этой статье. {{GENDER:|Вам}} не нужно работать над изменением всей статьи в целом.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-rules1": "Предложения нуждаются в сносках когда в них упоминаются конкретные факты, такие как числа, даты или исторические события.\nЕсли в предложении содержится информация с которой люди могут быть не согласны или информация которая не общеизвестна большинству людей, то скорее всего оно должно быть снабжено сноской на источник.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step1": "Когда {{GENDER:|вы}} найдёте предложение, к которому требуется добавить сноску, кликните «$1» чтобы начать.\n\nНекоторые предложения также содержат пометки, показывающие в каком конкретно месте не хватает сноски на источник.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-step1": "Когда {{GENDER:|вы}} найдёте предложение, которому необходимо примечание, кликните на знак карандаша для того, чтобы начать редактирование.\n\nНекоторые предложения также содержат пометки, показывающие в каком конкретно месте не хватает сноски на источник.",

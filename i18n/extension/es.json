@@ -16,7 +16,8 @@
 			"SpikeShroom",
 			"Zapipedia (WMF)",
 			"ZebaX2010",
-			"IZapico (WMF)"
+			"IZapico (WMF)",
+			"PoLuX124"
 		]
 	},
 	"growthexperiments-desc": "Esta extensión contiene experimentos llevados a cabo por el \"Growth team\" de la Fundación Wikimedia.",
@@ -181,7 +182,7 @@
 	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-help-text": "Número máximo de ediciones sugeridas para recibir esta notificación. Si se establece en 0, nadie recibirá esta notificación. Cuanto mayor sea el número, más principiantes recibirán esta notificación. Esta notificación sólo se envía a quienes ya han completado al menos una edición sugerida.",
 	"communityconfiguration-growthsuggestededits-title": "Ediciones sugeridas",
 	"communityconfiguration-growthsuggestededits-description": "Personaliza la función de ediciones sugeridas de la página de inicio para personas novatas.",
-	"communityconfiguration-growthsuggestededits-info-text": "Las ediciones sugeridas ayudan a quienes están empezando a editar en la web y a la web móvil tienen, desde donde tienen acceso a las ediciones sugeridas a través de su página de inicio para principiantes. Las ediciones sugeridas reciben la etiqueta «Tarea para principiantes».\n\nTen en cuenta que las actualizaciones de este formulario no afectarán a las ediciones sugeridas en las aplicaciones de Wikipedia para iOS y Android. Por favor, ponte en contacto con el equipo de aplicaciones a través de [https://www.mediawiki.org/wiki/Talk:Wikimedia_Apps Talk:Wikimedia_Apps] para discutir las funcionalidades de las aplicaciones móviles.''",
+	"communityconfiguration-growthsuggestededits-info-text": "Las ediciones sugeridas ayudan a los recién llegados a empezar a editar. Los recién llegados, tanto a través de la versión de escritorio y web móvil, tienen acceso a las ediciones sugeridas a través de su página de inicio para principiantes. Las ediciones sugeridas reciben la etiqueta «Tarea para principiantes». <br> \n<em>Ten en cuenta que las actualizaciones de este formulario no afectarán a las ediciones sugeridas en las aplicaciones de Wikipedia para iOS y Android. Por favor, ponte en contacto con el equipo de aplicaciones a través de [https://www.mediawiki.org/wiki/Talk:Wikimedia_Apps Talk:Wikimedia_Apps] para discutir las funcionalidades de las aplicaciones móviles.</em>\n\nAlgunos tipos de tareas para usuarios nuevos aparecen a través de plantillas de mantenimiento. Los artículos que contienen esas plantillas se añaden a la lista de ediciones sugeridas en la página de inicio. Para ver cuántos artículos están disponibles para cada tarea, consúltese [[Special:NewcomerTasksInfo]].",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Plantillas de ficha",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Se necesitan estas plantillas para sugerir imágenes como tareas para los recién llegados. Los artículos que contengan estas plantillas no aparecerán en las tareas de sugerencia de imágenes.",
 	"communityconfiguration-growthsuggestededits-copyedit-label": "Corrección de errores",

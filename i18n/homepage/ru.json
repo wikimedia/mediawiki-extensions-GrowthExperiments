@@ -35,7 +35,8 @@
 			"UniCollab",
 			"Urfiner",
 			"Wileyfoxyx",
-			"Etonkovidova"
+			"Etonkovidova",
+			"Mitte27"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здравствуйте}}, {{bidi:$1}}!",
@@ -112,9 +113,9 @@
 	"growthexperiments-homepage-impact-scores-thanks-count": "Благодарностей получено",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Дополнительная информация о том, как работают благодарности",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "Сайт «{{SITENAME}}» создан сообществом таких же редакторов, как и {{GENDER:|вы}}. Другой участник может поблагодарить {{GENDER:|вас}} за {{GENDER:|ваши}} правки, и {{GENDER:|вы}} также можете поблагодарить других за их правки. Этот показатель включает только благодарности, которые {{GENDER:|вы}} получили за последние $2 правок.",
-	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "Сайт «{{SITENAME}}» создан сообществом таких редакторов. Любой участник может поблагодарить других за их правки. Здесь показано количество полученных благодарностей. Этот показатель включает только благодарности, полученные за последнюю $1 правок.",
+	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "Сайт «{{SITENAME}}» создан сообществом таких редакторов. Любой участник может поблагодарить других за их правки. Здесь показано количество полученных благодарностей. Этот показатель включает только благодарности, полученные за ограниченное число последних правок ($1).",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Самое большое число дней подряд, когда {{GENDER:|вы}} редактировали хотя бы раз. Данный показатель включает только редактирования из ваших последних $2 правок.",
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:|Ваша}} самая длинная серия на данный момент $2 {{PLURAL:$2|день|дней}}, которую {{GENDER:|вы}} достигли $3",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:|Ваша}} самая длинная серия на данный момент — $2 {{PLURAL:$2|день|дня|дней}}, которую {{GENDER:|вы}} достигли в период $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Самые просматриваемые (после {{GENDER:| вашего}} редактирования)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Самые просматриваемые (с момента редактирования)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Просмотров после {{GENDER:$1|ваших}} правок (за 60 дней):",
@@ -595,5 +596,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Внесите предложенную правку",
 	"echo-category-title-ge-newcomer": "Функции «Роста»",
 	"echo-pref-tooltip-ge-newcomer": "Уведомлять меня о задачах для новичков и других функциях, призванных помочь новым участникам.",
+	"growthexperiments-homepage-community-updates-header": "Новости сообщества",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Узнать больше"
 }
