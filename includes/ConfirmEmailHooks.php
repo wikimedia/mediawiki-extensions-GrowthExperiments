@@ -110,9 +110,12 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 			],
 			wfMessage( 'growthexperiments-confirmemail-confirm-button' )->text()
 		) );
-		$logoImage = Html::rawElement( 'p', [],
-			Html::element( 'img', [ 'src' => wfExpandUrl( $config->get( 'Logo' ), PROTO_CANONICAL ) ] )
-		);
+
+		$services = MediaWikiServices::getInstance();
+
+		$logoImage = Html::rawElement( 'p', [], Html::element(
+			'img', [ 'src' => $services->getUrlUtils()->expand( $config->get( 'Logo' ), PROTO_CANONICAL ) ]
+		) );
 
 		$mail['subject'] = wfMessage( 'growthexperiments-confirmemail-confirm-subject' )->text();
 		$mail['body'] = [
