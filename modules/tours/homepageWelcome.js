@@ -2,7 +2,6 @@
 	const HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		tourUtils = require( './tourUtils.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
-			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
 		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' );

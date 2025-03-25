@@ -16,20 +16,9 @@ QUnit.module( 'ext.growthExperiments.Homepage.Logger/index.js', QUnit.newMwEnvir
 	}
 } ) );
 
-QUnit.test( 'disabled/enabled', function ( assert ) {
-	this.sandbox.spy( mw, 'track' );
-	let homepageModuleLogger = new HomepageModuleLogger( false, 'blah' );
-	homepageModuleLogger.log();
-	assert.strictEqual( mw.track.notCalled, true );
-
-	homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
-	homepageModuleLogger.log();
-	assert.strictEqual( mw.track.calledOnce, true );
-} );
-
 QUnit.test( 'log', function ( assert ) {
 	this.sandbox.spy( mw, 'track' );
-	const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
+	const homepageModuleLogger = new HomepageModuleLogger( 'blah' );
 	homepageModuleLogger.log( 'foo', 'desktop', 'impression', { foo: 'bar' } );
 
 	assert.strictEqual( mw.track.calledOnce, true );
@@ -52,7 +41,7 @@ QUnit.test( 'log', function ( assert ) {
 
 QUnit.test( 'do not include state in event if empty', function ( assert ) {
 	this.sandbox.spy( mw, 'track' );
-	const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
+	const homepageModuleLogger = new HomepageModuleLogger( 'blah' );
 	mw.config.set( 'wgGEHomepageModuleState-mentor', '' );
 	homepageModuleLogger.log( 'mentor', 'desktop', 'impression' );
 

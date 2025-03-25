@@ -93,11 +93,9 @@ class SpecialHomepage extends SpecialPage {
 
 		$out = $this->getContext()->getOutput();
 		$this->isMobile = Util::isMobile( $out->getSkin() );
-		$loggingEnabled = $this->getConfig()->get( 'GEHomepageLoggingEnabled' );
 		$userVariant = $this->experimentUserManager->getVariant( $this->getUser() );
 		$out->addJsConfigVars( [
-			'wgGEHomepagePageviewToken' => $this->pageviewToken,
-			'wgGEHomepageLoggingEnabled' => $loggingEnabled
+			'wgGEHomepagePageviewToken' => $this->pageviewToken
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();
@@ -153,8 +151,7 @@ class SpecialHomepage extends SpecialPage {
 			$overallSsrTimeInSeconds
 		);
 
-		if ( $loggingEnabled &&
-			 ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&
 			 count( $modules ) ) {
 			$logger = new SpecialHomepageLogger(
 				$this->pageviewToken,

@@ -12,13 +12,11 @@
 	const Utils = require( '../utils/Utils.js' );
 
 	/**
-	 * @param {boolean} enabled
 	 * @param {string} homepagePageviewToken
 	 * @class mw.libs.ge.HomepageModuleLogger
 	 * @constructor
 	 */
-	function HomepageModuleLogger( enabled, homepagePageviewToken ) {
-		this.enabled = enabled;
+	function HomepageModuleLogger( homepagePageviewToken ) {
 		this.userId = mw.user.getId();
 		this.userEditCount = mw.config.get( 'wgUserEditCount' ) || 0;
 		this.isMobile = mw.config.get( 'homepagemobile' ) || false;
@@ -37,10 +35,6 @@
 	 * @param {Object} [extraData] Additional data related to the action or the state of the module
 	 */
 	HomepageModuleLogger.prototype.log = function ( module, mode, action, extraData ) {
-		if ( !this.enabled ) {
-			return;
-		}
-
 		if ( this.exclusions[ module ] && this.exclusions[ module ].indexOf( action ) !== -1 ) {
 			return;
 		}

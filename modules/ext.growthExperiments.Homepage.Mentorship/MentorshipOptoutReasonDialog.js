@@ -4,7 +4,6 @@
 	const AdaptiveSelectWidget = require( '../ui-components/AdaptiveSelectWidget.js' ),
 		HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
-			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		);
 

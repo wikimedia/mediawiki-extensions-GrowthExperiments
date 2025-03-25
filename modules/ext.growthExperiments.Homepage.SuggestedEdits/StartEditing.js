@@ -2,7 +2,6 @@
 	const StartEditingDialog = require( './StartEditingDialog.js' ),
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		logger = new Logger(
-			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
 		rootStore = require( 'ext.growthExperiments.DataStore' );

@@ -2695,10 +2695,6 @@
 			"description": "Experiment variant to use for users who weren't assigned a variant at account creation time, or the variant they got is not valid anymore. Valid values: 'control'.",
 			"value": "control"
 		},
-		"GEHomepageLoggingEnabled": {
-			"description": "ON/OFF switch for the homepage event logging feature.",
-			"value": true
-		},
 		"GEMentorshipEnabled": {
 			"description": "Are the mentorship features enabled?",
 			"value": true

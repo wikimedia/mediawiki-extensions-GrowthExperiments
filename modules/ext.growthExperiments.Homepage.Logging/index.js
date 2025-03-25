@@ -7,15 +7,13 @@
 	const Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		useInstrument = require( '../ext.growthExperiments.Homepage.Logger/useInstrument.js' ),
 		logger = new Logger(
-			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$modules = $( '.growthexperiments-homepage-container .growthexperiments-homepage-module' ),
 		streamName = 'mediawiki.product_metrics.homepage_module_interaction',
 		schemaId = '/analytics/product_metrics/web/base/1.3.0',
-		analytics = useInstrument( streamName, schemaId, {
-			enabled: mw.config.get( 'wgGEHomepageLoggingEnabled' ) } ),
+		analytics = useInstrument( streamName, schemaId, {} ),
 		handleClick = function ( e ) {
 			const $link = $( this ),
 				$module = $link.closest( '.growthexperiments-homepage-module' ),

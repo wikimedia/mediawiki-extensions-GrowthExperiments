@@ -98,7 +98,6 @@
 		app.use( logger, {
 			mode,
 			logger: new HomepageLogger(
-				mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			)
 		} );

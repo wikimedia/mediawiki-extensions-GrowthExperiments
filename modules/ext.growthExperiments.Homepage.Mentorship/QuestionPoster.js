@@ -56,7 +56,6 @@
 		const Help = require( 'ext.growthExperiments.Help' );
 		const QuestionPosterDialog = Help.HelpPanelProcessDialog;
 		const loggerInstance = new Help.HelpPanelLogger(
-			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			{
 				context: config.context,
 				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' )
