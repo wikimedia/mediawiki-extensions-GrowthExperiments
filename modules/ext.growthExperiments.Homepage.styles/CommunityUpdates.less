@@ -7,52 +7,46 @@
 }
 
 .cdx-card-content {
-	display: flex;
-	flex-direction: column;
+	.cdx-card__thumbnail {
+		float: left;
+		margin-right: 1em;
+		// Mobile size
+		width: 47px;
+		height: 47px;
+		overflow: hidden;
 
-	&-row-1 {
-		display: flex;
-
-		.cdx-card__thumbnail {
-			margin-right: 1em;
-			// Mobile size
-			width: 47px;
-			height: 47px;
-			overflow: hidden;
-
-			// Desktop size
-			@media ( min-width: @min-width-breakpoint-tablet ) {
-				width: 74px;
-				height: 74px;
-			}
+		// Desktop size
+		@media ( min-width: @min-width-breakpoint-tablet ) {
+			width: 74px;
+			height: 74px;
 		}
+	}
 
-		.cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image {
-			// stylelint-disable-next-line declaration-property-value-disallowed-list
-			border: none;
-			width: 100%;
-			height: 100%;
-			background-size: contain;
-			background-color: @background-color-transparent;
-			background-repeat: no-repeat;
-		}
+	.cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image {
+		// stylelint-disable-next-line declaration-property-value-disallowed-list
+		border: none;
+		width: 100%;
+		height: 100%;
+		background-size: contain;
+		background-color: @background-color-transparent;
+		background-repeat: no-repeat;
+	}
 
-		@media screen {
-			.client-darkmode & .cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode,
-			.skin-theme-clientpref-night & .cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode {
-				background-color: @background-color-base-fixed;
-			}
+	@media screen {
+		.client-darkmode & .cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode,
+		.skin-theme-clientpref-night & .cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode {
+			background-color: @background-color-base-fixed;
 		}
+	}
 
-		@media screen and ( prefers-color-scheme: dark ) {
-			.skin-theme-clientpref-os & .cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode {
-				background-color: @background-color-base-fixed;
-			}
+	@media screen and ( prefers-color-scheme: dark ) {
+		.skin-theme-clientpref-os & .cdx-thumbnail__image.ext-growthExperiments-CommunityUpdates__thumbnail__image--dark-mode {
+			background-color: @background-color-base-fixed;
 		}
+	}
 
-		.cdx-card__text__title {
-			font-weight: bold;
-		}
+	.cdx-card__text__title {
+		font-weight: bold;
 	}
 
 	.ext-growthExperiments-CommunityUpdates__CallToAction__link {
