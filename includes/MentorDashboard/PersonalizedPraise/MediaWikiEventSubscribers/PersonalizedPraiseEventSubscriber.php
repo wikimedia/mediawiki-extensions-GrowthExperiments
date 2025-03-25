@@ -7,7 +7,6 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSugge
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Config\Config;
-use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\DomainEvent\EventSubscriberBase;
 use MediaWiki\Page\Event\PageUpdatedEvent;
 
@@ -57,26 +56,24 @@ class PersonalizedPraiseEventSubscriber extends EventSubscriberBase {
 
 		$user = $event->getPerformer();
 
-		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-			$mentor = $this->mentorManager->getMentorForUserIfExists( $user );
-			if ( !$mentor ) {
-				return;
-			}
+		$mentor = $this->mentorManager->getMentorForUserIfExists( $user );
+		if ( !$mentor ) {
+			return;
+		}
 
-			$menteeImpact = $this->userImpactLookup->getUserImpact( $user );
-			if ( !$menteeImpact ) {
-				return;
-			}
+		$menteeImpact = $this->userImpactLookup->getUserImpact( $user );
+		if ( !$menteeImpact ) {
+			return;
+		}
 
-			if ( $this->praiseworthyConditionsLookup->isMenteePraiseworthyForMentor(
+		if ( $this->praiseworthyConditionsLookup->isMenteePraiseworthyForMentor(
+			$menteeImpact,
+			$mentor->getUserIdentity()
+		) ) {
+			$this->praiseworthyMenteeSuggester->markMenteeAsPraiseworthy(
 				$menteeImpact,
 				$mentor->getUserIdentity()
-			) ) {
-				$this->praiseworthyMenteeSuggester->markMenteeAsPraiseworthy(
-					$menteeImpact,
-					$mentor->getUserIdentity()
-				);
-			}
-		} );
+			);
+		}
 	}
 }
