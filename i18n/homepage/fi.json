@@ -61,7 +61,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Valmis",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Valmis",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Kokeile aluksi joitakin <strong>helppoja</strong> muokkauksia",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "On monta tapaa tehdä {{SITENAME}}sta parempi.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "On monta tapaa tehdä {{GRAMMAR:elative|{{SITENAME}}}} parempi.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Helppo",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Kohtalainen",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Vaativa",
