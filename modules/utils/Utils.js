@@ -213,6 +213,19 @@
 		} );
 	}
 
+	/**
+	 * Normalize a label for statistics by replacing dots and hyphens with underscores.
+	 *
+	 * @param {string} label The label to normalize.
+	 * @return {string} The normalized label.
+	 */
+	function normalizeLabelForStats( label ) {
+		if ( !label ) {
+			return label;
+		}
+		return label.replace( /\.|-/g, '_' );
+	}
+
 	// Expose some methods for debugging.
 	// @ts-expect-error for debugging only, should not be used in production
 	window.ge = window.ge || {};
@@ -220,6 +233,7 @@
 	ge.utils = { getUserVariant: getUserVariant, setUserVariant: setUserVariant };
 
 	module.exports = {
+		normalizeLabelForStats,
 		serializeActionData: serializeActionData,
 		removeQueryParam: removeQueryParam,
 		isValidEditor: isValidEditor,
