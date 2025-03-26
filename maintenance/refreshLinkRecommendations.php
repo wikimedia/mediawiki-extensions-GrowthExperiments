@@ -10,7 +10,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationEvalStatus;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
@@ -257,7 +257,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
-		if ( $newcomerTaskConfigurationLoader instanceof AbstractDataConfigurationLoader ) {
+		if ( $newcomerTaskConfigurationLoader instanceof CommunityConfigurationLoader ) {
 			// Pretend link-recommendation is enabled (T371316)
 			// Task suggester cannot be adapted to query disabled task types, because it is also
 			// used in Homepage (where the disabled flag has to be honored).

@@ -7,7 +7,7 @@ use CirrusSearch\Query\ArticleTopicFeature;
 use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -109,7 +109,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 
 		if (
-			$this->configurationLoader instanceof AbstractDataConfigurationLoader &&
+			$this->configurationLoader instanceof CommunityConfigurationLoader &&
 			$services->getMainConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
 		) {
 			// Pretend link-recommendation is enabled (T371316)
