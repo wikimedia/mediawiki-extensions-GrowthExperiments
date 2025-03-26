@@ -6,6 +6,7 @@ use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\StartEmail;
 use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\User\User;
 
@@ -59,6 +60,7 @@ class SpecialHomepageLogger {
 	 * Log an event to HomepageVisit.
 	 */
 	public function log() {
+		$services = MediaWikiServices::getInstance();
 		$event = [];
 		$event['is_mobile'] = $this->isMobile;
 		$referer = $this->request->getHeader( 'REFERER' );
@@ -74,7 +76,7 @@ class SpecialHomepageLogger {
 		}
 		$event['referer_action'] = 'view';
 		if ( $referer ) {
-			$referer = wfParseUrl( $referer );
+			$referer = $services->getUrlUtils()->parse( $referer );
 			if ( isset( $referer['query'] ) ) {
 				$referer_query = wfCgiToArray( $referer['query'] );
 				if ( isset( $referer_query['action'] ) ) {
