@@ -321,8 +321,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Elige \"Combinar todos los seleccionados\" para obtener resultados más específicos",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Combinar todos los seleccionados",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Mostrar al menos uno de estos temas",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historia y Sociedad",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Ciencia, Tecnología, y Matemáticas",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Evento de la campaña",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuración de ediciones sugeridas no válida: la estructura es incorrecta",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuración de ediciones sugeridas no válida para el tipo de tarea \"$1\": \"$2\" debe ser un número entero",

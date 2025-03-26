@@ -300,8 +300,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "{{GENDER:|اختر|اختاري}} خِيار «تطابق كلّ المواضيع المحدّدة» {{GENDER:|لتحصل|لتحصلي}} على نتائج أكثر تحديدًا",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "تطابق كلّ المواضيع المحدّدة",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "تطابق، على الأقلّ، مع موضوع محدّد",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "تاريخ ومجتمع",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "علوم وتكنولوجيا ورياضيات",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "حدث حَملة",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "ترتيب غير سليم للتعديلات المقترحة: تركيبة سيئة",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "ضبط التعديلات المقترحة خاطئ لنوع المهمّة «$1»: «$2» يجب أن يكون عددا صحيحا",

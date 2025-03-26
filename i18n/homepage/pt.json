@@ -287,8 +287,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Escolha a opção \"Correspondência com todos os tópicos selecionados\" para obter resultados mais específicos",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Correspondência com todos os tópicos selecionados",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Correspondência com pelo menos um tópico selecionado",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "História e sociedade",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Ciência, tecnologia e matemática",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Evento de campanha",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuração de edições sugeridas inválida: estrutura incorreta",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuração de edições sugeridas inválida para o tipo de tarefa \"$1\": \"$2\" tem de ser um número inteiro",

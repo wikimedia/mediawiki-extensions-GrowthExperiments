@@ -263,8 +263,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "მეტად ზუსტი შედეგებისათვის, აირჩიეთ „ყველა შერჩეულ თემასთან შესაბამება“",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "ყველა შერჩეულ თემასთან შესაბამება",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "სულ მცირე ერთ შერჩეულ თემასთან შესაბამება",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "ისტორია და საზოგადოება",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "მეცნიერება, ტექნოლოგიები და მათემატიკა",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "კამპანიის მოვლენა",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია: ცუდი სტრუქტურა",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია დავალების ტიპისათვის „$1“: „$2“ უნდა იყოს მთელი რიცხვი",

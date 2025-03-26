@@ -40,7 +40,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "הפרמטר \"sectionNumber\" חייב להיות מספר שלם בנתוני תוסף Add Section Image, כעת הוא $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "רישום המלצות קישורים לא נמצא",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "יעדי המלצות קישור בלתי־צפויים: $1",
-	"growthexperiments-underlinked-rescore-profile": "פרופיל ניקוד חוזר פנימי המשמש בהמלצות קישורים של GrowthExperiments לתעדוף ערכים שעדיין אין בהם מספיק קישורים.",
+	"growthexperiments-underlinked-rescore-profile": "פרופיל ניקוד חוזר פנימי המשמש בהמלצות קישורים של GrowthExperiments לתעדוף ערכים שעדיין אין בהם מספיק קישורים. זה לא עושה שום דבר כשתכונת הקישורים המוצעים (Link Recommendations) כבויה.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "הפרמטר <var>editRevId</var> נדרש כאשר הפרמטר <var>accepted</var> מוגדר כ־<kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "לא ניתן להשתמש בפרמטר <var>editRevId</var> כאשר הפרמטר <var>accepted</var> מוגדר כ־<kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "הפרמטר <var>caption</var> נדרש כאשר הפרמטר <var>accepted</var> מוגדר כ־<kbd>true</kbd>.",

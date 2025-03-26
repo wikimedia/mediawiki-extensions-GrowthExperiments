@@ -120,6 +120,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Знайдіть зображення у Вікісховищі, ввівши його назву та вибравши зі списку. Для найкращого відображення виберіть зображення з квадратним співвідношенням сторін.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Заклик до дії",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Цільова сторінка",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "Це може бути сторінка у локальній вікі або інтервікі-сторінка, наприклад «meta:Event:Вікіпедисти_разом»",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Мітка",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Додати білий фон до зображення в темному режимі",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Якщо ваше зображення має прозорий фон, його може бути важко побачити в темному режимі. Якщо текст або піктограма темні, додавання білого фону може забезпечити їх видимість у темному режимі.",

@@ -177,8 +177,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Artikuluak gaurkotu",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Artikulu laburrak luzatu",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Artikuluen arteko loturak txertatu",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historia eta gizartea",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Zientzia, teknologia eta matematika",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Gomendatutako aldaketen konfigurazio okerra: egitura ez dago ondo",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Gomendatutako aldaketen konfigurazio okerra: \"$1\" id ez da baliagarria - a-z, 0-9, - (minus) karaktereak baino ezin ditu izan.",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Gomendatutako aldaketen konfigurazio okerra: ez dago $1 eremua ataza motarako edo $2 gaia",

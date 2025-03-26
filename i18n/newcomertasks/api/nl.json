@@ -40,7 +40,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "De parameter ‘sectionnumber’ moet een geheel getal zijn in de plugin-gegevens van “Add Section Image”, maar is $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Gegevens voor koppelingsaanbeveling niet gevonden",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Onverwachte doelen voor koppelingsaanbeveling: $1",
-	"growthexperiments-underlinked-rescore-profile": "Intern herschikkingsprofiel gebruikt in koppelingsaanbevelingen van GrowthExperiments om prioriteit te geven aan artikelen waarnaar er nog niet voldoende koppelingen zijn.",
+	"growthexperiments-underlinked-rescore-profile": "Intern herschikkingsprofiel dat in koppelingsaanbevelingen van GrowthExperiments wordt gebruikt om prioriteit te geven aan artikelen waarnaar er nog niet voldoende koppelingen zijn. Dit heeft geen effect als de koppelingsaanbevelingen zijn uitgeschakeld.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "De parameter <var>editRevId</var> is vereist wanneer de parameter <var>accepted</var> is ingesteld op <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "De parameter <var>editRevId</var> kan niet worden gebruikt als de parameter <var>accepted</var> is ingesteld op <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "De parameter <var>caption</var> is vereist wanneer de parameter <var>accepted</var> is ingesteld op <kbd>true</kbd>.",

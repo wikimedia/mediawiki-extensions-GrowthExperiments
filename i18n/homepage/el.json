@@ -289,8 +289,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Επιλέξτε την επιλογή «Αντιστοίχιση όλων των επιλεγμένων θεμάτων» για πιο συγκεκριμένα αποτελέσματα",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Αντιστοιχίστε όλα τα επιλεγμένα θέματα",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Αντιστοιχίστε τουλάχιστον ένα επιλεγμένο θέμα",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Ιστορία και Κοινωνία",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Επιστήμη, Τεχνολογία, και Μαθηματικά",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Εκδήλωση εκστρατείας",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Λανθασμένη ρύθμιση προτεινόμενων επεξεργασιών: κακή δομή",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Μη έγκυρη διαμόρφωση προτεινόμενων επεξεργασιών για τον τύπο εργασίας «$1»: Το «$2» πρέπει να είναι ακέραιος",

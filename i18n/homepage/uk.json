@@ -290,8 +290,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Оберіть «Збіг усіх вибраних тем» для більш точних результатів",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Збіг усіх вибраних тем",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Збіг з хоча б одною обраною темою",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Історія і суспільство",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Наука, технології та математика",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Кампанія",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Недійсна конфігурація пропонованих редагувань: погана структура",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Недійсна конфігурація запропонованих змін для типу завдання «$1»: «$2» має бути цілим числом",

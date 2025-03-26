@@ -294,8 +294,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "より限定的な結果を得るには、「選択したトピックのすべてに合致」を選択してください",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "選択したトピックのすべてに合致",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "選択したトピックの少なくともひとつに合致",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "歴史と社会",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "科学、技術、数学",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "キャンペーン",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "お勧めの編集の設定が無効 : 構造が正しくありません",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "タスクの種類「$1」に対するお勧め編集の設定が無効 : 「$2」は必ず整数を指定します",

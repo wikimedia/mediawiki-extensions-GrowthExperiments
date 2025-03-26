@@ -280,8 +280,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Velg alternativet for å «matche alle valgte emner» for mer spesifikke resultater",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Match alle valgte emner",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Match minst ett valgt emne",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historie og samfunn",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Vitenskap, teknologi og matematikk",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampanjehendelse",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ugyldig konfigurasjon for foreslåtte redigeringer: ugyldig struktur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Ugyldig konfigurasjon for foreslåtte endringer for oppgavetypen «$1»: «$2» må være et heltall",

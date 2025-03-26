@@ -264,8 +264,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "選擇「匹配所有選定的主題」選項以獲得更具體的結果",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "符合所有選擇的主題",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "符合至少一個選擇的主題",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "歷史與社會",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "科學、技術、數學",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "活動",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "無效建議編輯設置：不良結構",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "無效的用於任務類型「$1」之建議編輯設置：「$2」必須是整數。",

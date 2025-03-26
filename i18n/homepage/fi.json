@@ -286,8 +286,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Valitse ”Sopii kaikkiin valittuihin aiheisiin” -vaihtoehto saadaksesi täsmällisempiä tuloksia",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Sopii kaikkiin valittuihin aiheisiin",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Sopii vähintään yhteen valittuun aiheeseen",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historia ja yhteiskunta",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Tiede, teknologia ja matematiikka",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampanjatapahtuma",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Virheellinen ehdotettujen muokkausten konfiguraatio: virheellinen rakenne",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Virheellinen konfiguraatio ehdotettujen muokkausten tehtävätyypissä ”$1”: kentän ”$2” arvon on oltava kokonaisluku",

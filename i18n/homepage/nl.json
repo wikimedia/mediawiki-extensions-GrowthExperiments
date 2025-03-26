@@ -294,8 +294,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Kies de optie “Moet overeenkomen met alle geselecteerde onderwerpen” voor specifiekere resultaten",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Moet overeenkomen met alle geselecteerde onderwerpen",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Moet overeenkomen met tenminste één geselecteerd onderwerp",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Geschiedenis en Maatschappij",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Wetenschap, Technologie en Wiskunde",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Campagne-evenement",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ongeldige configuratie voor voorgestelde bewerkingen: slechte structuur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "De instellingen voor gesuggereerde bewerkingen zijn niet geldig voor het taaktype “$1”: “$2” moet een geheel getal zijn",

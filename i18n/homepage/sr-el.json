@@ -207,8 +207,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Dopuna kratkih članaka",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Dodavanje veza među člancima",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Dodavanje linkova među člancima",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Istorija i društvo",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Nauka, tehnologija i matematika",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Predložena konfiguracija izmena nije važeća: loša struktura.",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Nevažeća konfiguracija predloženih izmenaː ID „$1” nije važeći — sme da sadrži samo latinična slova (a-z), brojeve (0-9) i znak minus (-)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Nevažeća konfiguracija predloženih izmena: nedostaje polje $1 za vrstu zadatka ili temu $2",

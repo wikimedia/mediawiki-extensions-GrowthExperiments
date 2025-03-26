@@ -295,8 +295,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Выберите опцию \"Соответствовать всем выбранным темам\" для более специфичных результатов.",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Соответствовать всем выбранным темам",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Соответствовать хотя бы одной выбранной теме",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "История и общество",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Наука, технологии и математика",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Событие кампании",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Некорректная конфигурация предлагаемых правок: плохая структура",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Некорректная конфигурация предлагаемых изменений для типа задачи «$1»: «$2» должно быть массивом",

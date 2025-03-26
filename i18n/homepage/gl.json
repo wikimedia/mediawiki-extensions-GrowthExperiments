@@ -278,8 +278,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Escolle a opción \"Relacionar todos os temas seleccionados\" para obter resultados máis específicos",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Relacionar todos os temas seleccionados",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Relacionar, polo menos, un tema seleccionado",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historia e sociedade",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Ciencia, tecnoloxía e matemáticas",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Evento da campaña",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuración de edicións suxeridas non válida: estrutura incorrecta",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuración de edicións suxeridas non válida para o tipo de tarefa \"$1\": \"$2\" debe ser un número enteiro",

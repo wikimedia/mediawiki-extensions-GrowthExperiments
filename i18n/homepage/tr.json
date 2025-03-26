@@ -304,8 +304,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Daha spesifik sonuçlar için \"Seçilen tüm konuları eşleştir\" seçeneğini belirleyin",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Seçilen tüm konuları eşleştir",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Seçilen en az bir konuyu eşleştir",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Tarih ve Toplum",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Bilim, Teknoloji ve Matematik",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampanya etkinliği",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Geçersiz önerilen düzenleme yapılandırması: bozuk yapı",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "\"$1\" görev türü için geçersiz önerilen düzenlemeler yapılandırması: \"$2\" tam sayı olmalı",

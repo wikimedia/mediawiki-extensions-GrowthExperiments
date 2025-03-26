@@ -299,8 +299,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Pilih opsi \"Cocokkan semua topik yang dipilih\" untuk hasil yang lebih spesifik",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Cocokkan semua topik yang dipilih",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Cocokkan setidaknya satu topik yang dipilih",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Sejarah dan Sosial",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Sains, Teknologi, dan Matematika",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Acara kampanye",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Konfigurasi saranan penyuntingan tidak sah: struktur jelek",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Konfigurasi suntingan yang disarankan tidak valid untuk jenis tugas \"$1\": \"$2\" harus berupa bilangan bulat",

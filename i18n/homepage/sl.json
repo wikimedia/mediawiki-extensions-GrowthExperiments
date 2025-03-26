@@ -282,8 +282,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Za natančnejše zadetke izberite možnost »Ujemanje z vsemi izbranimi temami«.",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Ujemanje z vsemi izbranimi temami",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Ujemanje z vsaj eno izbrano temo",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Zgodovina in družba",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Znanost, tehnika in matematika",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Dogodek kampanje",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Neveljavna konfiguracija predlaganih urejanj: strukturna napaka",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Neveljavna predlagana konfiguracija urejanja za vrsto nalog »$1«: »$2« mora biti celo število",

@@ -270,8 +270,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Scegli l'opzione \"Abbina tutti gli argomenti selezionati\" per risultati più specifici",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Abbina tutti gli argomenti selezionati",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Abbina almeno un argomento selezionato",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Storia e società",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Scienza, tecnologia e matematica",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configurazione delle modifiche suggerite errata: struttura scorretta",
 	"growthexperiments-homepage-suggestededits-config-fieldarray": "Configurazione delle modifiche suggerite invalida per l'attività di tipo \"$1\": \"$2\" deve essere un array",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configurazione delle modifiche suggerite errata: ID \"$1\" non valido - può contenere solo: a-z, 0-9, - (meno)",

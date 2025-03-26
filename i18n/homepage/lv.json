@@ -250,8 +250,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Automātiskie ieteikumi",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Atbilst visām atlasītajām tēmām",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Atbilst vismaz vienai atlasītajai tēmai",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Vēsture un sabiedrība",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Zinātne, tehnoloģijas un matemātika",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampaņas pasākums",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Nederīga ieteikto labojumu konfigurācija: nepareiza struktūra",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Nederīga ieteikto labojumu konfigurācija: nederīgs id \"$1\" — jāsatur tikai a-z, 0-9, - (mīnuss)",

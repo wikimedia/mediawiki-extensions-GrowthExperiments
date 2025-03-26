@@ -42,8 +42,6 @@
 	"growthexperiments-homepage-suggestededits-no-more-results": "Nema više sugestija",
 	"growthexperiments-homepage-suggestededits-no-results": "Nema stranica za predložiti",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|Pronađen je|Pronađena su|Pronađeno je}} <strong>$1</strong> {{PLURAL:$1|članak|članka|članaka}}",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historija i društvo",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Nauka, tehnologija i matematika",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Izaberi sve",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Ukloni sve",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Izaberite teme koje {{GENDER:$1|Vas}} zanimaju",

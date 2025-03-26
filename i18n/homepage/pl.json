@@ -294,8 +294,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Wybierz opcję „Dopasuj wszystkie wybrane tematy”, aby uzyskać bardziej szczegółowe wyniki",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Dopasuj wszystkie wybrane tematy",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Dopasuj przynajmniej jeden z wybranych",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historia i społeczeństwo",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Nauka, technologia i matematyka",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Wydarzenie kampanii",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Nieprawidłowa konfiguracja sugerowanych edycji: zła struktura",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Nieprawidłowa konfiguracja sugerowanych edycji dla zadania typu \"$1\": \"$2\" musi być liczbą całkowitą",

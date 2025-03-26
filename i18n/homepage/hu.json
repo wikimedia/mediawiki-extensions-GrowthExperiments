@@ -253,8 +253,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Konkrétabb eredményekért válasszad az „Összes kiválasztott téma egyezése” lehetőséget",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Egyezzen az összes kiválasztott témával",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Egyezzen meg legalább egy kiválasztott témával",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Történelem és társadalom",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Természettudomány, technológia és matematika",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampány esemény",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Szabálytalan szerkesztési javaslat: hibás szerkezet.",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Érvénytelen javasolt szerkesztési konfiguráció a(z) \"$1\" feladattípushoz: \"$2\" egész számnak kell lennie",

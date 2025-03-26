@@ -40,7 +40,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "Der Parameter „sectionNumber“ muss im Add-Image-Plug-in ein Integerwert sein; beträgt $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Linkempfehlungsdatensatz nicht gefunden",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Unerwartete Link-Empfehlungsziele: $1",
-	"growthexperiments-underlinked-rescore-profile": "Internes Rescore-Profil, das in den Linkempfehlungen von GrowthExperiments verwendet wird, um Artikel zu priorisieren, die noch nicht genügend Links haben.",
+	"growthexperiments-underlinked-rescore-profile": "Internes Rescore-Profil, das in den Linkempfehlungen von GrowthExperiments verwendet wird, um Artikel zu priorisieren, die noch nicht genügend Links haben. Dies hat keine Funktion, wenn Linkempfehlungen deaktiviert sind.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "Der Parameter <var>editRevId</var> ist erforderlich, wenn der Parameter <var>accepted</var> auf <kbd>true</kbd> gesetzt ist.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Der Parameter <var>editRevId</var> kann nicht verwendet werden, wenn der Parameter <var>accepted</var> auf <kbd>false</kbd> gesetzt ist.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Der Parameter <var>caption</var> ist erforderlich, wenn der Parameter <var>accepted</var> auf <kbd>true</kbd> gesetzt ist.",

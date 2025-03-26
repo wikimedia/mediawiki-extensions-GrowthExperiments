@@ -238,8 +238,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Dodavanje slike u članak bez ilustracija",
 	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Dodavanje slike u odjeljak članka",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Strojni prijedlozi",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Povijest i društvo",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Znanost, tehnologija i matematika",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Pogrešne postavke za predložena uređivanja: kriva struktura",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Pogrešne postavke za predložena uređivanja: ID \"$1\" može se sastojati samo od slova, brojaka i crtice",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Pogrešne postavke za predložena uređivanja: pogrešan <code>type</code> parametar $1 za zadatak tipa $2 – mora biti jedan od $3",

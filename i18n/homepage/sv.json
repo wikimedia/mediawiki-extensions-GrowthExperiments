@@ -290,8 +290,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Välj alternativet att \"Matcha alla valda ämnen\" för mer specifika resultat",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Matcha alla valda ämnen",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Matcha minst ett valt ämne",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historia och samhälle",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Vetenskap, teknik och matematik",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampanjevenemang",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ogiltig konfigurering för föreslagna redigeringar: dålig struktur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Ogiltigt föreslagen redigeringskonfigurering för uppgiftstyp \"$1\": \"$2\" måste vara ett heltal",

@@ -276,8 +276,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Selige le option pro \"requirer tote le topicos seligite\" pro resultatos plus specific",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Requirer tote le topicos seligite",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Requirer al minus un topico seligite",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historia e societate",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Scientia, technologia e mathematica",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Evento de campania",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuration de modificationes suggerite non valide: mal structura",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuration de modificationes suggerite non valide pro le typo de carga \"$1\": \"$2\" debe esser un numero integre",

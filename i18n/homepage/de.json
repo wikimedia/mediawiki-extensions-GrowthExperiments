@@ -306,8 +306,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Wähle die Option „Alle ausgewählten Themen abgleichen“ für spezifischere Ergebnisse",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Alle ausgewählten Themen abgleichen",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Mindestens ein ausgewähltes Thema zuordnen",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Geschichte und Gesellschaft",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Wissenschaft, Technologie und Mathematik",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Veranstaltung der Kampagne",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ungültige Konfiguration der Bearbeitungsvorschläge: Falsche Struktur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Ungültige Konfiguration der vorgeschlagenen Bearbeitungen für Aufgabentyp „$1“: „$2“ muss eine Integer-Zahl sein",

@@ -277,8 +277,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "보다 구체적인 결과를 얻으려면 \"선택한 모든 주제와 일치\" 옵션을 선택하십시오",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "선택한 모든 주제와 일치",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "적어도 선택한 1개의 주제와 일치",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "역사와 사회",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "과학, 기술, 수학",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "캠페인 이벤트",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "추천 문서 설정의 구조가 잘못되었습니다",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "추천 문서 설정에 문제가 있습니다: \"$1\" id는 유효하지 않습니다 - a-z, 0-9, - (마이너스 표시)만을 포함해야 합니다",

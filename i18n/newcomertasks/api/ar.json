@@ -40,7 +40,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "يجب أن تكون معلمة 'رقم_قسم' عددًا صحيحًا في البيانات الخاصة بالإضافة إضافة صورة في قسم، هي $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "سجل توصية الروابط غير موجود",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "أهداف توصية الروابط غير متوقعة: $1",
-	"growthexperiments-underlinked-rescore-profile": "الملف الشخصي لإعادة التقييم الداخلي المستخدم في GrowthExperiments يربط التوصيات لتحديد أولويات المقالات التي لا تحتوي حتى الآن على روابط كافية.",
+	"growthexperiments-underlinked-rescore-profile": "ملف تعريف إعادة التقييم الداخلي المستخدم في توصيات الروابط في GrowthExperiments لتحديد أولوية المقالات التي لا تحتوي على روابط كافية. هذا لا يعمل عند تعطيل توصيات الروابط.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "تكون المعلمة <var>editRevId</var> مطلوبة عند ضبط المعلمة <var>accepted</var> على <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "لا يمكن استخدام المعلمة <var>editRevId</var> عند ضبط المعلمة <var>accepted</var> على <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "معلمة <var>caption</var> مطلوبة عند تعيين المعلمة <var>accepted</var> على <kbd>true</kbd>.",

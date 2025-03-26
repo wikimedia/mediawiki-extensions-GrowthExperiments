@@ -249,8 +249,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Додај слику у неилустрован чланак",
 	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Додај слику у одељак чланка",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Машински предлог",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Историја и друштво",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Наука, технологија и математика",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Предложена конфигурација измена није важећа: лоша структура.",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Неважећа конфигурација предложених изменаː ID „$1” није важећи — сме да садржи само латинична слова (a-z), бројеве (0-9) и знак минус (-)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Неважећа конфигурација предложених измена: недостаје поље $1 за врсту задатка или тему $2",

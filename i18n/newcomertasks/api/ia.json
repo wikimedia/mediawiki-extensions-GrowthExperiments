@@ -38,7 +38,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "le parametro 'sectionNumber' debe esser un numero integre in le datos del plug-in Add Image, ma es $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Le registro del recommendation de ligamine non ha essite trovate",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Destinationes de recommendation de ligamine non expectate: $1",
-	"growthexperiments-underlinked-rescore-profile": "Profilo \"rescore\" interne usate in recommendationes de ligamines de GrowthExperiments pro priorisar articulos que non ha ancora satis ligamines.",
+	"growthexperiments-underlinked-rescore-profile": "Profilo \"rescore\" interne usate in recommendationes de ligamines de GrowthExperiments pro priorisar articulos que non ha ancora satis ligamines. Isto non ha effecto quando le recommendationes de ligamines es disactivate.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "Le parametro <var>editRevId</var> es obligatori quando le parametro <var>accepted</var> es mittite a <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Le parametro <var>editRevId</var> non pote esser usate quando le parametro <var>accepted</var> es mittite a <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Le parametro <var>caption</var> es obligatori quando le parametro <var>accepted</var> es mittite a <kbd>true</kbd>.",

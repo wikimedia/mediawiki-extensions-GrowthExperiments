@@ -294,8 +294,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Vyberte \"Všechna vybraná témata\", abyste {{GENDER:|dostal|dostala|dostali}} více specifické výsledky.",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Všechna vybraná témata",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Alespoň jedno z vybraných témat",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Historie a společnost",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Věda, technologie a matematika",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Událost",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Neplatná konfigurace editačních tipů: špatná struktura",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Neplatná konfigurace editačních tipů pro \"$1\": \"$2\" musí být číslo",

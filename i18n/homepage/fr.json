@@ -318,8 +318,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Choisir l’option pour « Correspondre à tous les sujets sélectionnés » pour des résultats plus spécifiques",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Correspondre à tous les sujets sélectionnés",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Correspondre à au moins un sujet sélectionné",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Histoire et société",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Science, technologie et mathématiques",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Événement de la campagne",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuration des modifications suggérées non valide : mauvaise structure",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuration des éditions suggérées non valide pour le type de tâche « $1 » : « $2 » doit être un nombre entier.",

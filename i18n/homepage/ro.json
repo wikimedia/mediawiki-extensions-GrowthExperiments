@@ -284,8 +284,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Alegeți opțiunea „Potrivește toate subiectele selectate” pentru rezultate mai specifice",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Potrivește toate subiectele selectate",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Potrivește cel puțin un singur subiect selectat",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Istorie și societate",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Știință, tehnologie și matematică",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Eveniment de campanie",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configurare a editărilor sugerate invalidă: structură defectă",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configurație invalidă de editări sugerate pentru tipul de sarcină „$1”: „$2” trebuie să fie un întreg",

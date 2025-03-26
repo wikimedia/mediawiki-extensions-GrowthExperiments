@@ -277,8 +277,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Pilih pilihan tersebut untuk \"Padankan semua topik yang dipilih\" supaya mendapat hasil yang lebih khusus",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Padankan semua topik yang dipilih",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Padankan sekurang-kurangnya satu topik yang dipilih",
-	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Sejarah dan Masyarakat",
-	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Sains, Teknologi dan Matematik",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Acara kempen",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Konfigurasi suntingan yang dicadangkan tidak sah: struktur buruk",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Konfigurasi suntingan yang dicadangkan tidak sah untuk jenis tugas \"$1\": \"$2\" mestilah nombor integer",
