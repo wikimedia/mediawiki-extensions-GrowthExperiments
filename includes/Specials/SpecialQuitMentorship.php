@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Specials;
 
-use ErrorPageError;
 use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\HTMLForm\HTMLForm;
@@ -59,32 +58,9 @@ class SpecialQuitMentorship extends FormSpecialPage {
 	}
 
 	/**
-	 * Check if mentor dashboard is enabled via GEMentorDashboardEnabled
-	 */
-	private function isEnabled(): bool {
-		return $this->getConfig()->get( 'GEMentorDashboardEnabled' );
-	}
-
-	/**
-	 * Ensure mentor dashboard feature flag is on
-	 *
-	 * @throws ErrorPageError
-	 */
-	private function requireMentorDashboardEnabled() {
-		if ( !$this->isEnabled() ) {
-			// Mentor dashboard is disabled, display a meaningful restriction error
-			throw new ErrorPageError(
-				'growthexperiments-quit-mentorship-title',
-				'growthexperiments-quit-mentorship-disabled'
-			);
-		}
-	}
-
-	/**
 	 * @inheritDoc
 	 */
 	public function execute( $par ) {
-		$this->requireMentorDashboardEnabled();
 		$this->requireNamedUser();
 
 		parent::execute( $par );

@@ -4,7 +4,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentor dashboard",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentor dashboard",
-	"growthexperiments-mentor-dashboard-disabled": "Mentor dashboard is not enabled at this wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "To enable mentor dashboard, {{GENDER:|you}} first need to [[$1|enroll as a mentor]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Before mentor dashboard can be used, mentor list first needs to be configured. An administrator can use [[Special:EditGrowthConfig]] for that purpose.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Your}} mentees",

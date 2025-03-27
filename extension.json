@@ -2729,10 +2729,6 @@
 			"description": "Title of the wiki page that has the mentor list in JSON format (used by StructuredMentorProvider)",
 			"value": "MediaWiki:GrowthMentors.json"
 		},
-		"GEMentorDashboardEnabled": {
-			"description": "Should users be allowed to access Special:MentorDashboard?",
-			"value": true
-		},
 		"GEMentorDashboardEnabledModules": {
 			"description": "List of enabled modules in the Mentor dashboard",
 			"value": {

@@ -45,12 +45,9 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 
 	/** @inheritDoc */
 	public function onChangesListSpecialPageStructuredFilters( $special ) {
-		// Somewhat arbitrarily, use the dashboard feature flag to expose the mentor filters.
-		// Also make sure the user is actually a mentor.
+		// Make sure the user is actually a mentor.
 		try {
-			if ( !$this->config->get( 'GEMentorDashboardEnabled' )
-				 || !$this->mentorProvider->isMentor( $special->getUser() )
-			) {
+			if ( !$this->mentorProvider->isMentor( $special->getUser() ) ) {
 				return;
 			}
 		} catch ( WikiConfigException $wikiConfigException ) {

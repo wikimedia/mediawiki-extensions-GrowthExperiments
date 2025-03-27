@@ -29,10 +29,7 @@ class ApiMentorDashboardUpdateData extends ApiBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		if (
-			!$this->getConfig()->get( 'GEMentorDashboardEnabled' ) ||
-			!$this->mentorProvider->isMentor( $this->getUser() )
-		) {
+		if ( !$this->mentorProvider->isMentor( $this->getUser() ) ) {
 			$this->dieWithError( [ 'apierror-permissiondenied-generic' ] );
 		}
 

@@ -12,7 +12,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Title of a special page\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-pt-link": "Description for the link displayed in personal tools\n\n{{doc-growthexperiments-mentor-dashboard}}",
-	"growthexperiments-mentor-dashboard-disabled": "Error message shown when user tries to load mentor dashboard when it is disabled\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Error message shown when user tries to load mentor dashboard while not being a mentor\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Error message shown when Special:MentorDashboard is accessed without wiki having configured a valid mentor list\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Headline for the \"Mentee overview\" mentor dashboard module\n\n{{doc-growthexperiments-mentor-dashboard}}",
