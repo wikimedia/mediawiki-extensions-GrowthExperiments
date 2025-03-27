@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Api;
 
-use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter;
+use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
@@ -28,7 +28,7 @@ class ApiQueryMentorList extends ApiQueryBase {
 		$mentorUsers = $this->mentorProvider->getMentors();
 		foreach ( $mentorUsers as $mentorUser ) {
 			$mentor = $this->mentorProvider->newMentorFromUserIdentity( $mentorUser );
-			$result[$mentorUser->getId()] = AbstractStructuredMentorWriter::serializeMentor( $mentor );
+			$result[$mentorUser->getId()] = CommunityStructuredMentorWriter::serializeMentor( $mentor );
 
 			// for convenience of the consumers
 			$result[$mentorUser->getId()]['username'] = $mentorUser->getName();

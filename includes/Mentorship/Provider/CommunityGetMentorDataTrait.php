@@ -40,11 +40,11 @@ trait CommunityGetMentorDataTrait {
 			);
 			return [];
 		}
-		if ( !array_key_exists( AbstractStructuredMentorWriter::CONFIG_KEY, $data ) ) {
+		if ( !array_key_exists( CommunityStructuredMentorWriter::CONFIG_KEY, $data ) ) {
 			// TODO: Remove this when the mentor list gets a JSON schema (CONFIG_KEY will be then
 			// populated via the defaults system).
 			return [];
 		}
-		return $data[AbstractStructuredMentorWriter::CONFIG_KEY];
+		return $data[CommunityStructuredMentorWriter::CONFIG_KEY];
 	}
 }
