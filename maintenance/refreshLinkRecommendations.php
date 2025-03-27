@@ -200,6 +200,7 @@ class RefreshLinkRecommendations extends Maintenance {
 				->andWhere( 'page_id > ' . $lastPageId )
 				->orderByPageId()
 				->limit( $batchSize )
+				->caller( __METHOD__ )
 				->fetchPageRecords();
 
 			$this->beginTransactionRound( __METHOD__ );
