@@ -35,7 +35,8 @@
 			"UniCollab",
 			"Urfiner",
 			"Wileyfoxyx",
-			"Etonkovidova"
+			"Etonkovidova",
+			"Mitte27"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здравствуйте}}, {{bidi:$1}}!",
@@ -113,7 +114,7 @@
 	"growthexperiments-homepage-impact-scores-thanks-count": "Благодарностей получено",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Дополнительная информация о том, как работают благодарности",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "Сайт «{{SITENAME}}» создан сообществом таких же редакторов, как и {{GENDER:$1|вы}}. Другой участник может поблагодарить {{GENDER:$1|вас}} за {{GENDER:$1|ваши}} правки, и {{GENDER:$1|вы}} также можете поблагодарить других за их правки. Этот показатель включает только благодарности, которые {{GENDER:|вы}} получили за последние $2 правок.",
-	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "Сайт «{{SITENAME}}» создан сообществом таких редакторов. Любой участник может поблагодарить других за их правки. Здесь показано количество полученных благодарностей. Этот показатель включает только благодарности, полученные за последнюю $1 правок.",
+	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "Сайт «{{SITENAME}}» создан сообществом таких редакторов. Любой участник может поблагодарить других за их правки. Здесь показано количество полученных благодарностей. Этот показатель включает только благодарности, полученные за ограниченное число последних правок ($1).",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Самое большое число дней подряд, когда {{GENDER:$1|вы}} редактировали хотя бы раз. Данный показатель включает только редактирования из ваших последних $2 правок.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:$1|Ваша}} самая длинная серия на данный момент $2 {{PLURAL:$2|день|дней}}, которую {{GENDER:$1|вы}} достигли $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Самые просматриваемые (после {{GENDER:$1| вашего}} редактирования)",
