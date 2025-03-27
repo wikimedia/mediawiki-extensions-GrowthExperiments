@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use StatusValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler
@@ -38,15 +37,7 @@ class TaskTypeHandlerTest extends MediaWikiUnitTestCase {
 	}
 
 	private function getTaskTypeHandler(): TaskTypeHandler {
-		$configurationValidator = $this->createNoOpMock( ConfigurationValidator::class, [
-			'validateIdentifier', 'validateRequiredField', 'validateFieldIsArray' ] );
-		foreach ( [
-			'validateIdentifier' => StatusValue::newGood(),
-			'validateRequiredField' => StatusValue::newGood(),
-			'validateFieldIsArray' => StatusValue::newGood(),
-		] as $method => $returnValue ) {
-			$configurationValidator->method( $method )->willReturn( $returnValue );
-		}
+		$configurationValidator = $this->createNoOpMock( ConfigurationValidator::class );
 		$titleParser = $this->createNoOpMock( TitleParser::class, [ 'parseTitle' ] );
 		$titleParser->method( 'parseTitle' )->willReturnCallback(
 			static function ( $title, $defaultNs = 0 ) {

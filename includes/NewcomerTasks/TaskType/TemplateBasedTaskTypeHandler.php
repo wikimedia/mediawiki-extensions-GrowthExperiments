@@ -60,17 +60,12 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 	/** @inheritDoc */
 	public function validateTaskTypeConfiguration( string $taskTypeId, array $config ): StatusValue {
 		$status = parent::validateTaskTypeConfiguration( $taskTypeId, $config );
-		$templateFieldStatus = $this->configurationValidator->validateRequiredField( 'templates',
-			$config, $taskTypeId );
-		$status->merge( $templateFieldStatus );
-		$status->merge( $this->configurationValidator->validateFieldIsArray( 'templates', $config, $taskTypeId ) );
-		if ( $status->isOK() ) {
-			$status->merge( $this->configurationValidator->validateArrayMaxSize(
-				SuggestedEditsSchema::MAX_INFOBOX_TEMPLATES, $config['templates'],
-				$taskTypeId, 'templates' ) );
-			foreach ( $config['templates'] as $template ) {
-				$this->validateTemplate( $template, $taskTypeId, $status );
-			}
+
+		$status->merge( $this->configurationValidator->validateArrayMaxSize(
+			SuggestedEditsSchema::MAX_INFOBOX_TEMPLATES, $config['templates'],
+			$taskTypeId, 'templates' ) );
+		foreach ( $config['templates'] as $template ) {
+			$this->validateTemplate( $template, $taskTypeId, $status );
 		}
 		return $status;
 	}

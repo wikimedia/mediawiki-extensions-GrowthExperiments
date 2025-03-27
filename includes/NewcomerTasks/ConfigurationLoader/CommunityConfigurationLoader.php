@@ -301,9 +301,6 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 
 		$validORESTopics = $this->topicRegistry->getAllTopics();
 		foreach ( $config as $topicId => $topicConfiguration ) {
-			// Probably not necessary anymore since topics are now a server config not
-			// editable by communities and task types keys are defined as constants in SuggestedEditsSchema
-			$status->merge( $this->configurationValidator->validateIdentifier( $topicId ) );
 			if ( !in_array( $topicId, $validORESTopics, true ) ) {
 				// T386018: Handle this more gracefully. Do not allow changing ORES-based topic definitions via config.
 				$status->fatal( new RawMessage( "'$topicId' is not a valid topic ID." ) );
