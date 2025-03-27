@@ -22,7 +22,6 @@ use Wikimedia\TestingAccessWrapper;
 /**
  * @covers \GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorProvider
  * @covers \GrowthExperiments\Mentorship\Provider\CommunityGetMentorDataTrait
- * @covers \GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorProvider
  */
 class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	private const TEST_MENTOR_DATA = [
