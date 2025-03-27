@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\LevelingUp;
 
-use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\VisualEditorHooks;
 use MediaWiki\Config\Config;
@@ -26,24 +25,20 @@ class LevelingUpHooks implements
 
 	private Config $config;
 	private ConfigurationLoader $configurationLoader;
-	private ExperimentUserManager $experimentUserManager;
 	private LevelingUpManager $levelingUpManager;
 
 	/**
 	 * @param Config $config
 	 * @param ConfigurationLoader $configurationLoader
-	 * @param ExperimentUserManager $experimentUserManager
 	 * @param LevelingUpManager $levelingUpManager
 	 */
 	public function __construct(
 		Config $config,
 		ConfigurationLoader $configurationLoader,
-		ExperimentUserManager $experimentUserManager,
 		LevelingUpManager $levelingUpManager
 	) {
 		$this->config = $config;
 		$this->configurationLoader = $configurationLoader;
-		$this->experimentUserManager = $experimentUserManager;
 		$this->levelingUpManager = $levelingUpManager;
 	}
 
@@ -73,7 +68,7 @@ class LevelingUpHooks implements
 		// (shouldInviteUserAfterNormalEdit() would discard that case anyway).
 		if ( $page->getNamespace() !== NS_MAIN
 			|| $isSuggestedEdit
-			|| !LevelingUpManager::isEnabledForUser( $user, $this->config, $this->experimentUserManager )
+			|| !LevelingUpManager::isEnabledForUser( $user, $this->config )
 			|| !$this->levelingUpManager->shouldInviteUserAfterNormalEdit( $user )
 		) {
 			return;
@@ -101,7 +96,7 @@ class LevelingUpHooks implements
 			// an article, and the user just passed the threshold for the invite.
 			!$isPostEditReload
 			|| ( !$out->getTitle() || !$out->getTitle()->inNamespace( NS_MAIN ) )
-			|| !LevelingUpManager::isEnabledForUser( $out->getUser(), $this->config, $this->experimentUserManager )
+			|| !LevelingUpManager::isEnabledForUser( $out->getUser(), $this->config )
 			|| !$this->levelingUpManager->shouldInviteUserAfterNormalEdit( $out->getUser() )
 		) {
 			return;
