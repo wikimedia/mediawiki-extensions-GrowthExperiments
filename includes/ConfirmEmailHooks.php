@@ -15,13 +15,6 @@ use MediaWiki\User\User;
 class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmationMailHook {
 
 	/**
-	 * @return bool Whether the email confirmation improvements are enabled
-	 */
-	public static function isConfirmEmailEnabled() {
-		return MediaWikiServices::getInstance()->getMainConfig()->get( 'GEConfirmEmailEnabled' );
-	}
-
-	/**
 	 * AuthChangeFormFields hook
 	 * @param array $requests
 	 * @param array $fieldInfo
@@ -31,9 +24,6 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 	public function onAuthChangeFormFields(
 		$requests, $fieldInfo, &$formDescriptor, $action
 	) {
-		if ( !self::isConfirmEmailEnabled() ) {
-			return;
-		}
 		if ( !in_array( $action, [
 			AuthManager::ACTION_CREATE,
 			AuthManager::ACTION_CREATE_CONTINUE
@@ -87,9 +77,6 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 	 * @param array $info
 	 */
 	public function onUserSendConfirmationMail( $user, &$mail, $info ) {
-		if ( !self::isConfirmEmailEnabled() ) {
-			return;
-		}
 		$lang = RequestContext::getMain()->getLanguage();
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
