@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use MediaWiki\Collation\CollationFactory;
-use MediaWiki\Title\TitleParser;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 
@@ -20,14 +19,6 @@ class ConfigurationValidatorTest extends MediaWikiUnitTestCase {
 			$validator->validateIdentifier( 'abc<tag>def' ) );
 		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-invalidid',
 			$validator->validateIdentifier( 'x y' ) );
-	}
-
-	public function testValidateTitle() {
-		$validator = $this->getValidator();
-		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-invalidtitle',
-			$validator->validateTitle( 123 ) );
-		$this->assertStatusError( 'growthexperiments-homepage-suggestededits-config-invalidtitle',
-			$validator->validateTitle( [ 123 ] ) );
 	}
 
 	public function testValidateRequiredField() {
@@ -68,8 +59,7 @@ class ConfigurationValidatorTest extends MediaWikiUnitTestCase {
 	private function getValidator() {
 		return new ConfigurationValidator(
 			$this->createNoOpMock( MessageLocalizer::class, [ 'msg' ] ),
-			$this->createNoOpMock( CollationFactory::class ),
-			$this->createNoOpMock( TitleParser::class )
+			$this->createNoOpMock( CollationFactory::class )
 		);
 	}
 
