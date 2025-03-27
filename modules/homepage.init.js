@@ -33,13 +33,27 @@
 					wiki: mw.config.get( 'wgDBname' )
 				}
 			);
+
+			const sizeBytes = navigationEntries[ 0 ].transferSize;
 			mw.track(
 				// Using 'timing' for transfer size sounds conceptually wrong, but we want
 				// the various features that statsd timing gives us (see
 				// https://github.com/statsd/statsd/blob/master/docs/metric_types.md)
 				'timing.growthExperiments.specialHomepage.navigationTransferSize',
-				navigationEntries[ 0 ].transferSize
+				sizeBytes
 			);
+
+			const buckets = [ 8, 16, 32, 64, 128 ]
+				.filter( ( ceil ) => ( sizeBytes / 1024 ) <= ceil )
+				.map( ( ceil ) => ceil + '_KiB' )
+				.concat( 'all' );
+			for ( const bucket of buckets ) {
+				mw.track(
+					'stats.mediawiki_GrowthExperiments_homepage_transfersize_bytes_total',
+					1,
+					{ bucket }
+				);
+			}
 		}
 		if ( performanceEntries.length ) {
 			mw.track(
