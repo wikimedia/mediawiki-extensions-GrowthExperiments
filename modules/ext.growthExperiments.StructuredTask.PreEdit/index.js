@@ -108,7 +108,10 @@ module.exports = ( function () {
 		mw.track(
 			'stats.mediawiki_GrowthExperiments_structuredtask_nosuggestionsdialog_total',
 			1,
-			{ taskType }
+			{
+				// eslint-disable-next-line camelcase
+				task_type: Utils.normalizeLabelForStats( taskType )
+			}
 		);
 
 		OO.ui.alert( mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-message' ).text(), {

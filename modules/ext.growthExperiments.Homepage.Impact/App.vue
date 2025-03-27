@@ -26,6 +26,7 @@
 <script>
 const { inject } = require( 'vue' );
 const { DEFAULT_STREAK_TIME_FRAME } = require( './constants.js' );
+const { normalizeLabelForStats } = require( '../utils/Utils.js' );
 const { useUserImpact } = require( './composables/useUserImpact.js' );
 const Layout = require( './components/LayoutWrapper.vue' );
 // TODO wrap Impact, NoEditsDisplay, ScoreCards...
@@ -83,7 +84,7 @@ module.exports = exports = {
 				duration,
 				{
 					// eslint-disable-next-line camelcase
-					render_mode: inject( 'RENDER_MODE' ).replace( '-', '_' ),
+					render_mode: normalizeLabelForStats( inject( 'RENDER_MODE' ) ),
 					wiki: mw.config.get( 'wgDBname' )
 				}
 			);

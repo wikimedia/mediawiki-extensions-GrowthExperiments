@@ -9,7 +9,7 @@
  */
 ( function () {
 
-	const formatTitle = require( '../utils/Utils.js' ).formatTitle;
+	const { formatTitle, normalizeLabelForStats } = require( '../utils/Utils.js' );
 	const TopicFilters = require( './TopicFilters.js' );
 	const DEFAULT_LOOKAHEAD_SIZE = 5;
 
@@ -507,7 +507,7 @@
 			{
 				module: 'growthTasksApi',
 				operation: name,
-				context: originalContext.replace( /\./g, '_' ),
+				context: normalizeLabelForStats( originalContext ),
 				platform: platform,
 				wiki: mw.config.get( 'wgDBname' )
 			}

@@ -631,7 +631,7 @@
 			duration,
 			{
 				// eslint-disable-next-line camelcase
-				task_type: this.taskType,
+				task_type: Utils.normalizeLabelForStats( this.taskType ),
 				platform: ( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
 				operation: 'editor_shown',
 				wiki: mw.config.get( 'wgDBname' )
@@ -662,7 +662,7 @@
 			guidanceDisplayDuration,
 			{
 				// eslint-disable-next-line camelcase
-				task_type: this.taskType,
+				task_type: Utils.normalizeLabelForStats( this.taskType ),
 				platform: ( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
 				operation: 'guidance_shown',
 				wiki: mw.config.get( 'wgDBname' )
