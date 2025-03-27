@@ -81,11 +81,7 @@ class HelpPanelHooks implements
 	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
-		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$preferences[HelpdeskQuestionPoster::QUESTION_PREF] = [
-				'type' => 'api',
-			];
-		}
+		$preferences[HelpdeskQuestionPoster::QUESTION_PREF] = [ 'type' => 'api', ];
 
 		// FIXME: Guidance doesn't need an opt-in anymore, let's remove this.
 		if ( SuggestedEdits::isGuidanceEnabledForAnyone( RequestContext::getMain() )
@@ -103,11 +99,9 @@ class HelpPanelHooks implements
 	 * @param array &$defaultOptions
 	 */
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
-		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$defaultOptions += [
-				self::HELP_PANEL_PREFERENCES_TOGGLE => false
-			];
-		}
+		$defaultOptions += [
+			self::HELP_PANEL_PREFERENCES_TOGGLE => false
+		];
 	}
 
 	/** @inheritDoc */
@@ -124,9 +118,6 @@ class HelpPanelHooks implements
 	/** @inheritDoc */
 	public function onLocalUserCreated( $user, $autocreated ) {
 		if ( $user->isTemp() ) {
-			return;
-		}
-		if ( !HelpPanel::isHelpPanelEnabled() ) {
 			return;
 		}
 
@@ -186,10 +177,7 @@ class HelpPanelHooks implements
 
 		// If the help panel would be shown but for the value of the 'action' parameter,
 		// add the email config var anyway. We'll need it if the user loads an editor via JS.
-		// Also set wgGEHelpPanelEnabled to let our JS modules know it's safe to display the help panel.
 		$out->addJsConfigVars( [
-				// We know the help panel is enabled, otherwise we wouldn't get here
-				'wgGEHelpPanelEnabled' => true,
 				'wgGEHelpPanelMentorData' => $this->getMentorData(
 					$this->wikiConfig,
 					$out->getUser(),
@@ -242,16 +230,12 @@ class HelpPanelHooks implements
 
 	/** @inheritDoc */
 	public function onListDefinedTags( &$tags ) {
-		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$tags[] = HelpPanel::HELPDESK_QUESTION_TAG;
-		}
+		$tags[] = HelpPanel::HELPDESK_QUESTION_TAG;
 	}
 
 	/** @inheritDoc */
 	public function onChangeTagsListActive( &$tags ) {
-		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$tags[] = HelpPanel::HELPDESK_QUESTION_TAG;
-		}
+		$tags[] = HelpPanel::HELPDESK_QUESTION_TAG;
 	}
 
 	/**

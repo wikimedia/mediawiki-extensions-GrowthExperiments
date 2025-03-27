@@ -150,11 +150,9 @@ class TourHooks implements
 		if ( !self::growthTourDependenciesLoaded() ) {
 			return;
 		}
-		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$preferences[self::TOUR_COMPLETED_HELP_PANEL] = [
-				'type' => 'api',
-			];
-		}
+		$preferences[self::TOUR_COMPLETED_HELP_PANEL] = [
+			'type' => 'api',
+		];
 		if ( HomepageHooks::isHomepageEnabled() ) {
 			$preferences[self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP] = [
 				'type' => 'api',
@@ -180,11 +178,9 @@ class TourHooks implements
 		if ( !self::growthTourDependenciesLoaded() ) {
 			return;
 		}
-		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$defaultOptions += [
-				self::TOUR_COMPLETED_HELP_PANEL => true
-			];
-		}
+		$defaultOptions += [
+			self::TOUR_COMPLETED_HELP_PANEL => true
+		];
 		if ( HomepageHooks::isHomepageEnabled() ) {
 			$defaultOptions += [
 				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => true,

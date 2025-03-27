@@ -51,10 +51,6 @@ class HelpPanel {
 		MessageLocalizer $ml,
 		Config $wikiConfig
 	) {
-		if ( !self::isHelpPanelEnabled() ) {
-			return [];
-		}
-
 		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
 		$helpPanelLinks = Html::openElement( 'ul', [ 'class' => 'mw-ge-help-panel-links' ] );
@@ -106,10 +102,6 @@ class HelpPanel {
 	 * @return bool
 	 */
 	public static function shouldShowHelpPanelToUser( UserIdentity $user ) {
-		if ( !self::isHelpPanelEnabled() ) {
-			return false;
-		}
-
 		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 		return (bool)$userOptionsLookup->getOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
 	}
@@ -121,15 +113,9 @@ class HelpPanel {
 	 * @throws ConfigException
 	 */
 	public static function shouldShowHelpPanel(
-		OutputPage $out, bool $checkAction = true,
-		?Config $config = null, ?Config $wikiConfig = null
+		OutputPage $out, bool $checkAction = true, ?Config $wikiConfig = null
 	): bool {
-		$config ??= self::getGrowthConfig();
 		$wikiConfig ??= self::getGrowthWikiConfig();
-
-		if ( !self::isHelpPanelEnabled( $config ) ) {
-			return false;
-		}
 
 		if ( !$out->getUser()->isNamed() ) {
 			return false;
@@ -186,14 +172,6 @@ class HelpPanel {
 		}
 		return in_array( $title->getSubjectPage()->getNamespace(),
 				   $wikiConfig->get( 'GEHelpPanelReadingModeNamespaces' ) );
-	}
-
-	/**
-	 * @return bool
-	 */
-	public static function isHelpPanelEnabled( ?Config $config = null ) {
-		$config ??= MediaWikiServices::getInstance()->getMainConfig();
-		return $config->get( 'GEHelpPanelEnabled' );
 	}
 
 	/**

@@ -16,11 +16,4 @@ class HelpPanelSchemaProviderTest extends SchemaProviderTestCase {
 	protected function getProviderId(): string {
 		return 'HelpPanel';
 	}
-
-	public function setUp(): void {
-		parent::setUp();
-
-		$this->overrideConfigValue( 'GEHelpPanelEnabled', true );
-	}
-
 }

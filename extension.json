@@ -2619,10 +2619,6 @@
 			"description": "MediaWiki title for view more articles on help link.",
 			"value": "Main_Page"
 		},
-		"GEHelpPanelEnabled": {
-			"description": "Global ON/OFF switch for the help panel feature.",
-			"value": true
-		},
 		"GEHelpPanelLinks": {
 			"description": "List of links to display in the help panel.",
 			"merge_strategy": "array_plus",

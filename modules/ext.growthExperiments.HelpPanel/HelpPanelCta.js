@@ -22,11 +22,6 @@
 	const taskTypeLogData = taskTypeId ? { taskType: taskTypeId } : null;
 	const guidanceAvailable = guidanceEnabled && taskTypeId && TASK_TYPES[ taskTypeId ];
 
-	// This shouldn't happen, but just to be sure
-	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
-		return;
-	}
-
 	$( () => {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		const $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
