@@ -11,20 +11,22 @@
 	}
 
 	// Performance instrumentation for Special:Homepage:
-	// - navigation duration
-	// - navigation transfer size
-	// - first paint
+	// - page load time (loadEventEnd from Navigation Timing)
+	// - download size (transferSize, from Resource Timing)
+	// - render time (first-contentful-paint, from Paint Timing)
 	if ( window.performance && window.performance.getEntriesByType ) {
-		const navigationEntries = window.performance.getEntriesByType( 'navigation' ),
-			performanceEntries = window.performance.getEntries().filter( ( entry ) => entry.name === 'first-contentful-paint' );
-		if ( navigationEntries.length ) {
+		const navigationEntries = window.performance.getEntriesByType( 'navigation' );
+		const performanceEntries = window.performance.getEntriesByType( 'paint' )
+			.filter( ( entry ) => entry.name === 'first-contentful-paint' );
+
+		if ( navigationEntries[ 0 ] ) {
 			mw.track(
 				'timing.growthExperiments.specialHomepage.navigationDuration',
-				navigationEntries[ 0 ].duration
+				navigationEntries[ 0 ].loadEventEnd
 			);
 			mw.track(
-				'stats.mediawiki_GrowthExperiments_navigation_duration_seconds',
-				navigationEntries[ 0 ].duration,
+				'stats.mediawiki_GrowthExperiments_homepage_loadeventend_seconds',
+				navigationEntries[ 0 ].loadEventEnd,
 				{
 					// eslint-disable-next-line camelcase
 					navigation_type: navigationEntries[ 0 ].type,
