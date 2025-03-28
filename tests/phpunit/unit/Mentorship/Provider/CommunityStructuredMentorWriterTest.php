@@ -25,7 +25,6 @@ use StatusValue;
 
 /**
  * @covers \GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorWriter
- * @covers \GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorWriter
  * @covers \GrowthExperiments\Mentorship\Provider\CommunityGetMentorDataTrait
  */
 class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
