@@ -372,7 +372,6 @@ class HomepageHooks implements
 			$isLevelingUpEnabledForUser = LevelingUpManager::isEnabledForUser(
 				$context->getUser(),
 				$this->config,
-				$this->experimentUserManager
 			);
 			$out->addJsConfigVars( [
 				// Always output these config vars since they are used by ext.growthExperiments.DataStore
@@ -913,7 +912,6 @@ class HomepageHooks implements
 
 				$jobQueue = $this->jobQueueGroup->get( NotificationKeepGoingJob::JOB_NAME );
 				if ( LevelingUpManager::isEnabledForAnyone( $this->config ) &&
-					$this->experimentUserManager->isUserInVariant( $user, VariantHooks::VARIANT_CONTROL ) &&
 					$jobQueue->delayedJobsEnabled() ) {
 					$this->jobQueueGroup->lazyPush(
 						new JobSpecification( NotificationKeepGoingJob::JOB_NAME, [

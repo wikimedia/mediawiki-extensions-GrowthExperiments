@@ -389,7 +389,6 @@
 			"services": [
 				"MainConfig",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
-				"GrowthExperimentsExperimentUserManager",
 				"GrowthExperimentsLevelingUpManager"
 			]
 		},
