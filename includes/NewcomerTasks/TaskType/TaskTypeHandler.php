@@ -58,52 +58,21 @@ abstract class TaskTypeHandler {
 	 */
 	public function validateTaskTypeConfiguration( string $taskTypeId, array $config ): StatusValue {
 		$status = StatusValue::newGood();
-		$status->merge( $this->configurationValidator->validateIdentifier( $taskTypeId ) );
 
-		$groupFieldStatus = $this->configurationValidator->validateRequiredField( 'group',
-			$config, $taskTypeId );
-		$status->merge( $groupFieldStatus );
-		if ( $groupFieldStatus->isOK() &&
-			 !in_array( $config['group'], TaskType::DIFFICULTY_CLASSES, true )
-		) {
-			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidgroup',
-				$config['group'], $taskTypeId );
+		if ( !isset( $config['excludedTemplates'] ) ) {
+			$config['excludedTemplates'] = [];
 		}
-
-		if ( $status->isOK() ) {
-			if ( !isset( $config['excludedTemplates'] ) ) {
-				$config['excludedTemplates'] = [];
-			}
-			$status->merge(
-				$this->configurationValidator->validateFieldIsArray( 'excludedTemplates', $config, $taskTypeId )
-			);
-			if ( $status->isOK() ) {
-				foreach ( $config['excludedTemplates'] as $template ) {
-					$this->validateTemplate( $template, $taskTypeId, $status );
-				}
-			}
+		foreach ( $config['excludedTemplates'] as $template ) {
+			$this->validateTemplate( $template, $taskTypeId, $status );
 		}
 
 		if ( $status->isOK() ) {
 			if ( !isset( $config['excludedCategories'] ) ) {
 				$config['excludedCategories'] = [];
 			}
-			$status->merge(
-				$this->configurationValidator->validateFieldIsArray( 'excludedCategories', $config, $taskTypeId )
-			);
-			if ( $status->isOK() ) {
-				foreach ( $config['excludedCategories'] as $category ) {
-					$this->validateCategory( $category, $taskTypeId, $status );
-				}
+			foreach ( $config['excludedCategories'] as $category ) {
+				$this->validateCategory( $category, $taskTypeId, $status );
 			}
-		}
-
-		// Link recommendation specific.
-		// FIXME: would be nice to define this and other type definitions in the task type.
-		if ( $status->isOK() && isset( $config['excludedSections'] ) ) {
-			$status->merge(
-				$this->configurationValidator->validateFieldIsArray( 'excludedSections', $config, $taskTypeId )
-			);
 		}
 
 		return $status;

@@ -50,31 +50,6 @@ class ConfigurationValidator {
 	}
 
 	/**
-	 * Validate a task or topic ID
-	 * @param string $id
-	 * @return StatusValue
-	 */
-	public function validateIdentifier( $id ) {
-		return preg_match( '/^[a-z\d\-]+$/', $id )
-			? StatusValue::newGood()
-			: StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidid', $id );
-	}
-
-	/**
-	 * Verify that a required field is present.
-	 * @param string $field Configuration field name
-	 * @param array $config Configuration
-	 * @param string $taskTypeId Task type ID, for better error reporting
-	 * @return StatusValue
-	 */
-	public function validateRequiredField( $field, $config, $taskTypeId ) {
-		return isset( $config[$field] )
-			? StatusValue::newGood()
-			: StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-missingfield',
-				$field, $taskTypeId );
-	}
-
-	/**
 	 * Verify that a field is an integer, and optionally within some bounds. The field doesn't have
 	 * to exist.
 	 * @param array $config Configuration
@@ -98,27 +73,6 @@ class ConfigurationValidator {
 				$field, $taskTypeId, $min );
 		}
 		return StatusValue::newGood();
-	}
-
-	/**
-	 * Verify that a field exists and is a non-associative array.
-	 *
-	 * @param string $field Configuration field name
-	 * @param array $config Configuration
-	 * @param string $taskTypeId Task type ID, for better error reporting.
-	 * @return StatusValue
-	 */
-	public function validateFieldIsArray( string $field, array $config, string $taskTypeId ): StatusValue {
-		$status = StatusValue::newGood();
-		$status->merge( $this->validateRequiredField( $field, $config, $taskTypeId ) );
-		if ( $status->isOK() ) {
-			if ( !is_array( $config[$field] ) || array_values( $config[$field] ) !== $config[$field] ) {
-				$status->fatal(
-					'growthexperiments-homepage-suggestededits-config-fieldarray', $taskTypeId, $field
-				);
-			}
-		}
-		return $status;
 	}
 
 	/**
