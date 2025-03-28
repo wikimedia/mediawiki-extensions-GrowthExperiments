@@ -27,7 +27,6 @@ use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorRemover;
-use GrowthExperiments\Mentorship\Provider\AbstractStructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
@@ -482,9 +481,7 @@ return [
 
 	'GrowthExperimentsMentorProviderStructured' => static function (
 		MediaWikiServices $services
-	): AbstractStructuredMentorProvider {
-		$geServices = GrowthExperimentsServices::wrap( $services );
-
+	): CommunityStructuredMentorProvider {
 		$provider = new CommunityStructuredMentorProvider(
 			$services->getUserIdentityLookup(),
 			new DerivativeContext( RequestContext::getMain() ),
