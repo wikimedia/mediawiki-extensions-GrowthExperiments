@@ -1,33 +1,27 @@
 'use strict';
 
-const pathToWidget = 'ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js';
-const SuggestedEditPagerWidget = require( pathToWidget );
+const SuggestedEditPagerWidget = require( 'ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js' );
 
-let sandbox, suggestedEditPagerWidget;
+let suggestedEditPagerWidget;
 
-QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js', QUnit.newMwEnvironment( {
+QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js', {
 	beforeEach() {
-		sandbox = sinon.sandbox.create();
 		suggestedEditPagerWidget = new SuggestedEditPagerWidget();
-	},
-
-	afterEach() {
-		sandbox.restore();
 	}
-} ) );
+} );
 
 QUnit.test( 'constructor', ( assert ) => {
 	assert.true( new SuggestedEditPagerWidget() instanceof SuggestedEditPagerWidget );
 } );
 
-QUnit.test( 'setMessage with currentPosition < totalCount', ( assert ) => {
-	const spy = sandbox.spy( mw, 'message' );
+QUnit.test( 'setMessage with currentPosition < totalCount', function ( assert ) {
+	const spy = this.spy( mw, 'message' );
 	suggestedEditPagerWidget.setMessage( 1, 2 );
 	assert.true( spy.calledWithExactly( 'growthexperiments-homepage-suggestededits-pager', '1', '2' ) );
 } );
 
-QUnit.test( 'setMessage with currentPosition === totalCount', ( assert ) => {
-	const spy = sandbox.spy( mw, 'message' );
+QUnit.test( 'setMessage with currentPosition === totalCount', function ( assert ) {
+	const spy = this.spy( mw, 'message' );
 	suggestedEditPagerWidget.setMessage( 2, 2 );
 	assert.true( spy.calledWithExactly(
 		'growthexperiments-homepage-suggestededits-pager',
@@ -36,8 +30,8 @@ QUnit.test( 'setMessage with currentPosition === totalCount', ( assert ) => {
 	) );
 } );
 
-QUnit.test( 'setMessage with currentPosition > totalCount', ( assert ) => {
-	const spy = sandbox.spy( mw, 'message' );
+QUnit.test( 'setMessage with currentPosition > totalCount', function ( assert ) {
+	const spy = this.spy( mw, 'message' );
 	suggestedEditPagerWidget.setMessage( 3, 2 );
 	assert.true( spy.getCall( 0 ).calledWithExactly( 'growthexperiments-homepage-suggestededits-pager-end' ) );
 	assert.true( spy.getCall( 1 ).calledWithExactly(
