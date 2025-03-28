@@ -300,7 +300,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Invalid suggested edits configuration: invalid id \"$1\" - must contain a-z, 0-9, - (minus) only",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Invalid suggested edits configuration: invalid <code>type</code> parameter $1 for task type $2 - must be one of $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Invalid suggested edits configuration: missing field $1 for task type or topic $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Invalid suggested edits configuration: invalid title \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Invalid suggested edits configuration: invalid group $1 for task type $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Invalid suggested edits configuration: invalid template name $1 for task type $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Invalid suggested edits configuration: invalid category name $1 for task type $2",

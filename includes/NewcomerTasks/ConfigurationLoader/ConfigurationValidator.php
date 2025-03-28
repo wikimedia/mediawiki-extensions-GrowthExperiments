@@ -6,8 +6,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Message\Message;
-use MediaWiki\Title\MalformedTitleException;
-use MediaWiki\Title\TitleParser;
 use MessageLocalizer;
 use StatusValue;
 
@@ -22,22 +20,16 @@ class ConfigurationValidator {
 	/** @var CollationFactory */
 	private $collationFactory;
 
-	/** @var TitleParser */
-	private $titleParser;
-
 	/**
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param CollationFactory $collationFactory
-	 * @param TitleParser $titleParser
 	 */
 	public function __construct(
 		MessageLocalizer $messageLocalizer,
-		CollationFactory $collationFactory,
-		TitleParser $titleParser
+		CollationFactory $collationFactory
 	) {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->collationFactory = $collationFactory;
-		$this->titleParser = $titleParser;
 	}
 
 	/**
@@ -66,28 +58,6 @@ class ConfigurationValidator {
 		return preg_match( '/^[a-z\d\-]+$/', $id )
 			? StatusValue::newGood()
 			: StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidid', $id );
-	}
-
-	/**
-	 * @param mixed $title Page title. Must be a string (but at the PHP level we need to allow
-	 *   any type, so we can handle errors via status objects).
-	 * @return StatusValue
-	 */
-	public function validateTitle( $title ) {
-		if ( !is_string( $title ) ) {
-			if ( !is_scalar( $title ) ) {
-				$title = '[' . gettype( $title ) . ']';
-			}
-			return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidtitle',
-				$title );
-		}
-		try {
-			$this->titleParser->parseTitle( $title );
-		} catch ( MalformedTitleException $e ) {
-			return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidtitle',
-				$title );
-		}
-		return StatusValue::newGood();
 	}
 
 	/**
