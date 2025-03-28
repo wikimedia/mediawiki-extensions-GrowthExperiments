@@ -61,7 +61,6 @@ use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddSectionImage\SectionImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
@@ -576,7 +575,7 @@ return [
 		$config = $growthServices->getGrowthConfig();
 
 		$topicType = $config->get( 'GENewcomerTasksTopicType' );
-		if ( $topicType !== AbstractDataConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
+		if ( $topicType !== CommunityConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
 			throw new LogicException( 'Unsupported topic type of ' . $topicType );
 		}
 

@@ -4,7 +4,7 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\AbstractDataConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -45,7 +45,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => AbstractDataConfigurationLoader::CONFIGURATION_TYPE_ORES,
+			'GENewcomerTasksTopicType' => CommunityConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -71,7 +71,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( SearchStrategy::TOPIC_MATCH_MODE_OR, $lookup->getTopicsMatchMode( $user3 ) );
 
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => AbstractDataConfigurationLoader::CONFIGURATION_TYPE_ORES,
+			'GENewcomerTasksTopicType' => CommunityConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GELinkRecommendationsFrontendEnabled' => true,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -106,7 +106,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => AbstractDataConfigurationLoader::CONFIGURATION_TYPE_ORES,
+			'GENewcomerTasksTopicType' => CommunityConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -167,7 +167,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => AbstractDataConfigurationLoader::CONFIGURATION_TYPE_ORES,
+			'GENewcomerTasksTopicType' => CommunityConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -222,7 +222,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => AbstractDataConfigurationLoader::CONFIGURATION_TYPE_ORES,
+			'GENewcomerTasksTopicType' => CommunityConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -290,7 +290,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'User2' => [],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => AbstractDataConfigurationLoader::CONFIGURATION_TYPE_ORES,
+			'GENewcomerTasksTopicType' => CommunityConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
