@@ -287,7 +287,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuración de edicións suxeridas non válida: o identificador \"$1\" non é válido, xa que só pode conter caracteres a-z, 0-9 e - (signo menos)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configuración de edicións suxeridas non válida: o valor \"$1\" do parámetro <code>type</code> non é válido para o tipo de tarefa \"$2\" (valores posibles: $3)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuración de edicións suxeridas non válida: falta o campo \"$1\" para o tipo de tarefa ou tema \"$2\"",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Configuración de edicións suxeridas non válida: o título \"$1\" non é válido",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuración de edicións suxeridas non válida: o grupo \"$1\" non é válido para o tipo de tarefa \"$2\"",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configuración de edicións suxeridas non válida: o nome de modelo \"$1\" non é válido para o tipo de tarefa \"$2\"",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Configuración de edicións suxeridas non válida: o nome de categoría \"$1\" non é válido para o tipo de tarefa \"$2\"",

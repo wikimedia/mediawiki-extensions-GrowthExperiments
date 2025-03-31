@@ -302,7 +302,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "הגדרות בלתי־תקינות של עריכות מוצעות: מזהה בלתי־תקין \"$1\" - חייב להכיל אותיות a-z, ספרות 0-9, - (מינוס) בלבד",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "הגדרות שגויות של עריכות מוצעות: פרמטר <code>type</code> שגוי $1 עבור סוג משימה $2 – חייב להיות אחד מתוך $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "הגדרות בלתי־תקינות של עריכות מוצעות: חסר השדה $1 עבור סוג המשימה או הנושא $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "הגדרות בלתי־תקינות של עריכות מוצעות: כותרת בלתי־תקינה \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "הגדרות בלתי־תקינות של עריכות מוצעות: קבוצה בלתי־תקינה $1 לסוג משימה $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "הגדרות בלתי־תקינות של עריכות מוצעות: שם תבנית בלתי־תקין $1 עבור סוג משימה $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "הגדרות בלתי־תקינות של עריכות מוצעות: שם קטגוריה בלתי־תקין $1 עבור סוג משימה $2",

@@ -309,7 +309,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "ترتيب غير سليم للتعديلات المقترحة: هوية \"$1\" غير سليمة - يجب أن تحتوي فقط على أ-ي، 0-9، - (ناقص)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "تكوين خاطئ للتعديلات المقترحة: <code>نمط</code> خاطئ للمعلّمة $1 الخاصة بنوع المهمة $2 - يجب أن تكون واحدة من $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "ضبط التعديلات المقترحة غير صالح: الحقل المفقود $1 لنوع المهمة أو الموضوع $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "إعداد غير سليم للتعديلات المقترحة: «$1» عنوان غير سليم",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "ضبط التعديلات المقترحة غير صالح: مجموعة غير صالحة $1 لنوع المهمة $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "تركيبة خاطئة للتعديلات المقترحة: اسم القالب $1 غير سليم لنوع المهمّة $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "ضبط التعديلات المقترحة خاطئ: اسم التصنيف $1 خاطئ لنوع المهمة $2",

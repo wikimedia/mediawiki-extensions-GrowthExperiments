@@ -263,7 +263,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Кховдийнчу хийцамийн нийса йоцу конфигураци: нийса йоцу id \"$1\" - цу чохь хила деза элпаш a-z, терахьаш 0-9 а, - (минус) хьаьрк",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Кховдийнчу хийцамийн нийса йоцу конфигураци: нийса йоцу параметр <code> тайпа </code> $1 гӀуллакхан тайпанна $2 - $3-х цхьаъ хила йеза.",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Кховдийнчу хийцамийн нийса йоцу конфигураци: $1 меттиг йац тӀедиллинчун тайпанна йа $2 темана.",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Кховдийнчу хийцамийн нийса йоцу конфигураци: нийса боцу корта \"$1\".",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Кховдийнчу хийцамийн нийса йоцу конфигураци: нийса йоцу $1 тоба $2 тайпана",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Кховдийнчу хийцамийн нийса йоцу конфигураци: нийса йоцу кепан цӀе $1, $2 гӀуллакхан тайпанна.",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Кховдийнчу хийцамийн нийса йоцу конфигураци: нийса йоцу категорин цӀе $1, $2 гӀуллакхан тайпанна.",

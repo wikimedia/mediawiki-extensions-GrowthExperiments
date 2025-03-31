@@ -285,7 +285,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuration de modificationes suggerite non valide: ID \"$1\" non valide – debe continer a-z, 0-9, - (minus) solmente",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configuration de modificationes suggerite non valide: le parametro <code>type</code> non pote valer $1 pro le typo de carga $2; valores possibile: $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuration de modificationes suggerite non valide: campo $1 mancante pro le typo de carga o le subjecto $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Configuration de modificationes suggerite non valide: titulo \"$1\" non valide",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuration de modificationes suggerite non valide: gruppo $1 non valide pro le typo de carga $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configuration de modificationes suggerite non valide: nomine de patrono $1 non valide pro le typo de carga $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Configuration de modificationes suggerite non valide: nomine de categoria $1 non valide pro le typo de carga $2",

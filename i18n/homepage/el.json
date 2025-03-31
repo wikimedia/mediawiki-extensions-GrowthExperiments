@@ -298,7 +298,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Λανθασμένη ρύθμιση προτεινόμενων επεξεργασιών: λάθος id «$1» - πρέπει να περιέχει μόνο a-z, 0-9, - (μείον)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Λανθασμένη ρύθμιση προτεινόμενων επεξεργασιών: λάθος παράμετρος <code>type</code> $1 για τον τύπο εργασίας $2 - πρέπει να είναι μία από $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Λανθασμένη ρύθμιση προτεινόμενων επεξεργασιών: λείπει το πεδίο $1 για τον τύπο εργασίας ή θέμα $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Λανθασμένη ρύθμιση προτεινόμενων επεξεργασιών: λάθος τίτλος «$1»",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Λανθασμένη ρύθμιση προτεινόμενων επεξεργασιών: λάθος ομάδα $1 για τύπο εργασίας $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Λανθασμένη ρύθμιση προτεινόμενων επεξεργασιών: λάθος όνομα προτύπου $1 για τύπο εργασίας $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Μη έγκυρη διαμόρφωση προτεινόμενων επεξεργασιών: μη έγκυρο όνομα κατηγορίας $1 για τύπο εργασίας $2",

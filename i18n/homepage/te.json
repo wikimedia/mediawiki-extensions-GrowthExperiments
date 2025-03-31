@@ -293,7 +293,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "చెల్లని సూచిత దిద్దుబాట్ల అమరిక:చెల్లని ఐడీ \"$1\" - అక్షరాలు, అంకెలు, - (మైనస్ గుర్తు) మాత్రమే ఉండాలి",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "చెల్లని సూచిత దిద్దుబాట్ల అమరిక:చెల్లని <code>రకం</code> పని రకం $2 కు పరామితి $1, $3 లలో ఒకటై ఉండాలి",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "చెల్లని సూచిత దిద్దుబాట్ల అమరిక: పని రకం లేదా విషయం $2 కు చెందిన ఫీల్డు $1 మిస్సైంది",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "చెల్లని సూచిత దిద్దుబాట్ల అమరిక:చెల్లని శీర్షిక \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "చెల్లని సూచిత దిద్దుబాట్ల అమరిక:టాస్కు రకం $2 కు చెల్లని గ్రూపు $1",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "చెల్లని సూచిత దిద్దుబాట్ల అమరిక:టాస్కు రకం $2 కు చెల్లని మూస పేరు $1",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "చెల్లని దిద్దుబాటు సూచనల కాన్ఫిగరేషను: $2 రకం పనికి $1 అనే వర్గం పేరు చెల్లదు",

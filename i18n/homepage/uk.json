@@ -299,7 +299,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Недійсна конфігурація пропонованих редагувань: недійсний ідентифікатор «$1» — має містити лише символи a-z, 0-9, - (мінус)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Неправильне налаштування пропонованих редагувань: неправильний параметр <code>type</code> $1 для типу завдання $2 — мусить бути одним з $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Недійсна конфігурація пропонованих редагувань: відсутнє поле $1 для типу завдання чи теми $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Недійсна конфігурація пропонованих редагувань: недійсна назва «$1»",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Недійсна конфігурація пропонованих редагувань: недійсна група $1 для типу завдання $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Недійсна конфігурація пропонованих редагувань: недійсна назва шаблону $1 для типу завдання $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Недійсна конфігурація запропонованих редагувань: недійсна назва категорії $1 для типу завдання $2",

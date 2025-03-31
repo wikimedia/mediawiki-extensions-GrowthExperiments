@@ -303,7 +303,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Nieprawidłowa konfiguracja sugerowanych edycji: nieprawidłowe id „$1” – może zawierać jedynie: a–z, 0–9, − (minus)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Nieprawidłowa konfiguracja sugerowanych edycji: nieprawidłowy parametr <code>type</code> $1 dla rodzaju zadania $2 - powinien być to jeden z tych: $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Nieprawidłowa konfiguracja sugerowanych edycji: brak pola $1 dla typu zadaniu lub tematu $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Nieprawidłowa konfiguracja sugerowanych edycji: niepoprawny tytuł \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Nieprawidłowa konfiguracja sugerowanych edycji: nieprawidłowa grupa $1 dla typu zadania $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Nieprawidłowa konfiguracja sugerowanych edycji: nieprawidłowa nazwa szablonu $1 dla typu zadania $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Nieprawidłowa konfiguracja sugerowanych edycji: błędna nazwa kategorii $1 dla zadania typu $2",

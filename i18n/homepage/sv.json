@@ -299,7 +299,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Ogiltig konfigurering för föreslagna redigeringar: id \"$1\" - får bara innehålla a-z, 0-9, - (minus)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Ogiltig konfigurering för föreslagna redigeringar: ogiltig <code>typ</code>-parameter $1 för uppgiftstyp $2 - måste vara en av $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Ogiltig konfigurering för föreslagna redigeringar: saknar fält $1 för uppgiftstyp eller ämne $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Ogiltig konfigurering för föreslagna redigeringar: ogiltig titel \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Ogiltig konfigurering för föreslagna redigeringar: ogiltig grupp $1 för uppgiftstyp $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Ogiltig konfigurering för föreslagna redigeringar: ogiltigt mallnamn $1 för uppgiftstyp $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Ogiltig förslag till konfiguration: ogiltigt kategorinamn $1 för uppgiftstyp $2",

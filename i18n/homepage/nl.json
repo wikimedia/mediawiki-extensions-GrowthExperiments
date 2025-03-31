@@ -303,7 +303,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Ongeldige configuratie voor voorgestelde bewerkingen: ongeldige id \"$1\" - mag alleen a-z, 0-9, - (min) bevatten",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Ongeldige configuratie voor voorgestelde bewerkingen: ongeldige parameter <code>type</code> $1 voor taaktype $2 - moet een van $3 zijn",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Ongeldige configuratie voor voorgestelde bewerkingen: veld $1 ontbreekt voor taaktype of onderwerp $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Ongeldige configuratie voor voorgestelde bewerkingen: ongeldige titel '$1'",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Ongeldige configuratie voor voorgestelde bewerkingen: ongeldige groep $1 voor taaktype $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Ongeldige configuratie voor voorgestelde bewerkingen: ongeldige sjabloonnaam $1 voor taaktype $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "De instellingen voor gesuggereerde bewerkingen zijn niet geldig: ongeldige categorienaam $1 voor taaktype $2",

@@ -304,7 +304,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Некорректная конфигурация предлагаемых правок: некорректный id \"$1\" - он должен содержать только буквы a-z, цифры 0-9 и знак - (минус)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Недопустимая конфигурация предлагаемых правок: недопустимый параметр <code> тип </code> $1 для задачи типа $2 - должен быть одним из $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Некорректная конфигурация предлагаемых правок: отсутствует поле $1 для типа задачи или темы $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Недопустимая конфигурация предложенных изменений: недопустимый заголовок \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Некорректная конфигурация предлагаемых правок: некорректная группа $1 для типа задачи $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Некорректная конфигурация предлагаемых правок: недопустимое имя шаблона $1 для типа задачи $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Некорректная конфигурация предлагаемых правок: недействительное название категории $1 для типа задачи $2",

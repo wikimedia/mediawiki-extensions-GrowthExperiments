@@ -303,7 +303,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "お勧め編集の設定が無効: \"$1\" id が無効です - 記入できるのは欧文文字 a-z と数字の 0-9、- (マイナス記号) に限定されます",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "お勧め編集の設定が無効 : 作業タイプ$2の<code>type</code>パラメータ$1は無効 - $3のうちの1つを指定する必要が亜あります",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "お勧め編集の設定が無効 : 作業についてタイプの $1 欄もしくは主題欄 $2 を記入していません",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "お勧め編集の設定が無効 : ページ名「$1」は無効",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "お勧め編集の設定が無効 : 作業タイプ$2に対するグループ$1が無効です",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "お勧め編集の設定が無効 : 作業のタイプ$2のテンプレート名$1が無効です",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "お勧め編集の設定が無効 : 作業タイプ$2に対するカテゴリ名$1が無効",

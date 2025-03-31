@@ -313,7 +313,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Geçersiz önerilen düzenleme yapılandırması: geçersiz kimlik \"$1\" - yalnızca a-z, 0-9, - (eksi) içermelidir",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Geçersiz önerilen düzenleme yapılandırması: $2 görev türü için geçersiz <code>type</code> parametresi $1. $3 değerlerinden biri olmalıdır",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Önerilen önerilen düzenleme yapılandırması: görev türü veya konu $2 için eksik alan $1",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Geçersiz önerilen düzenleme yapılandırması: geçersiz başlık \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Önerilen önerilen düzenleme yapılandırması: $2 görev türü için geçersiz grup $1",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Geçersiz önerilen düzenleme yapılandırması: $2 görev türü için geçersiz $1 şablon adı",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Geçersiz önerilen düzenlemeler yapılandırması:  görev türü $2 için geçersiz kategori adı $1",

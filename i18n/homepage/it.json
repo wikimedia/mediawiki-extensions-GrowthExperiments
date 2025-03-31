@@ -275,7 +275,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configurazione delle modifiche suggerite errata: ID \"$1\" non valido - può contenere solo: a-z, 0-9, - (meno)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configurazione delle modifiche suggerite invalida: parametro <code>type</code> $1 invalido per l'attività di tipo $2 - deve essere tra $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configurazione delle modifiche suggerite errata: campo $1 mancante per il tipo o l'argomento $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Configurazione delle modifiche suggerite invalida: titolo \"$1\" invalido",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configurazione delle modifiche suggerite errata: gruppo $1 non valido per attività di tipo $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configurazione delle modifiche suggerite invalida: nome del template \"$1\" invalido per il tipo di attività $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Configurazione delle modifiche suggerite invalida: nome della categoria $1 invalido per il tipo di attività $2",

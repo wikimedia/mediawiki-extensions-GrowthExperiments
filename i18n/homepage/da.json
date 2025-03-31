@@ -290,7 +290,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Ugyldig konfiguration for foreslåede redigeringer: ugyldigt id \"$1\" - kan kun indeholde a-z, 0-9 og - (minus)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Ugyldig konfiguration for foreslåede redigeringer: ugyldig <code>type</code> parameter $1 for opgavetype $2 - skal være et af $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Ugyldig konfiguration for foreslåede redigeringer: manglende felt $1 til opgavetype eller emne $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Ugyldig konfiguration for foreslåede redigeringer: ugyldig titel \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Ugyldig konfiguration for foreslåede redigeringer: ugyldig gruppe $1 for opgavetype $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Ugyldig konfiguration for foreslåede redigeringer: ugyldigt skabelonnavn $1 for opgavetype $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Ugyldig konfiguration for foreslåede redigeringer: ugyldigt kategorinavn $1 for opgavetype $2",

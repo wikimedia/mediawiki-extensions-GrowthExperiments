@@ -277,7 +277,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Dohkkemeahttumis konfigurašuvdna evttohuvvon rievdademiide: Dohkkemeahttumis ID «$1» – sáhttá dušše sisttisdoallat a-z, 0-9 ja - (goallossázu)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Dohkkemeahttumis heivehusat evttohuvvon rievdademiide: Dohkkemeahttumis <code>type</code>-paramehter $1, $2-bargobihttái – ferte leat okta $3:s.",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Dohkkemeahttumis konfigurašuvdna evttohuvvon rievdademiide: váilu fealta $1 bargobihttái dahje fáddái $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Dohkkemeahttumis konfigurašuvdna evttohuvvon rievdademiide: Dohkkemeahttumis namma «$1»",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Dohkkemeahttumis konfigurašuvdna evttohuvvon rievdademiide: Dohkkemeahttumis joavku $1, bargobihttášládjii $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Dohkkemeahttumis konfigurašuvdna evttohuvvon rievdademiide: Dohkkemeahttumis kategoriijanamma $1, bargobihttášládjii $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Dohkkemeahttumis konfigurašuvdna evttohuvvon rievdademiide: váilu diehtu $1, $2 feltii",

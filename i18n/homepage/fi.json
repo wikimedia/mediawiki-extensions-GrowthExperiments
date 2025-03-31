@@ -295,7 +295,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Virheellinen ehdotettujen muokkausten konfiguraatio: virheellinen tunniste ”$1” – saa sisältää vain a-z, 0-9 tai - (väliviiva)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Virheellinen ehdotettujen muokkausten konfiguraatio: virheellinen <code>type</code>-parametri $1 tehtävätyypille $2 – tulee olla yksi seuraavista: $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Virheellinen ehdotettujen muokkausten konfiguraatio: tehtävätyypistä tai aiheesta $2 puuttuu kenttä $1",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Virheellinen ehdotettujen muokkausten konfiguraatio: virheellinen otsikko ”$1”",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Virheellinen ehdotettujen muokkausten konfiguraatio: virheellinen ryhmä $1 tehtävätyypissä $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Virheellinen ehdotettujen muokkausten konfiguraatio: virheellinen mallinenimi $1 tehtävätyypissä $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Virheellinen ehdotettujen muokkausten konfiguraatio: virheellinen luokkanimi $1 tehtävätyypissä $2",

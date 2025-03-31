@@ -315,7 +315,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültige ID „$1“ - darf nur a-z, 0-9 und „-“ (Minus) enthalten",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültiger <code>type</code> Parameter $1 für Aufgabentyp $2 - erlaubt sind $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Ungültige Konfiguration der Bearbeitungsvorschläge: Fehlendes Feld $1 für Aufgabentyp oder Thema $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Ungültige Konfiguration der Bearbeitungsvorschläge: ungültiger Titel „$1“",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültige Gruppe $1 für Aufgabentyp $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültiger Vorlagenname $1 für Aufgabentyp $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Ungültige Konfiguration der vorgeschlagenen Bearbeitungen: Ungültiger Kategoriename $1 für Aufgabentyp $2",

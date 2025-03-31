@@ -42,7 +42,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "在新增圖片外掛資料中的「sectionNumber」參數應為整數，實際為$1",
 	"apierror-growthexperiments-addlink-handler-notfound": "找不到連結建議紀錄",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "未預期的連結建議目標：$1",
-	"growthexperiments-underlinked-rescore-profile": "使用在 GrowthExperiments 連結建議的內部重新評分個人設定，優先用於尚未有足夠連結的條目。",
+	"growthexperiments-underlinked-rescore-profile": "使用在 GrowthExperiments 連結建議的內部重新評分個人設定，優先用於尚未有足夠連結的條目。若停用連結建議，則此功能無效。",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "當 <var>accepted</var> 參數設定成 <kbd>true</kbd> 時，需要 <var>editRevId</var> 參數。",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "當 <var>accepted</var> 參數設定成 <kbd>false</kbd> 時，不能使用 <var>editRevId</var> 參數。",
 	"growthexperiments-addimage-feedback-accepted-caption": "當 <var>accepted</var> 參數設定成 <kbd>true</kbd> 時，需要 <var>caption</var> 參數。",

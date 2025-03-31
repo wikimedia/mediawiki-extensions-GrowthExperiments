@@ -308,7 +308,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Konfigurasi saranan penyuntingan tidak sah: id tidak sah \"$1\" - wajib berisi hanya a-z, 0-9, - (tanda hubung)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Konfigurasi saran penyuntingan tidak valid: parameter <code>type</code> tidak valid $1 untuk jenis tugas $2 - harus salah satu dari $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Konfigurasi saran penyuntingan tidak valid: bidang $1 untuk jenis tugas atau topik $2 tidak ada",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Konfigurasi saranan penyuntingan tidak sah: judul tidak sah \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Konfigurasi saran penyuntingan tidak valid: grup $1 tidak valid untuk jenis tugas $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Konfigurasi saran penyuntingan tidak valid: nama template tidak valid $1 untuk jenis tugas $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Konfigurasi saran penyuntingan tidak valid: nama kategori tidak valid $1 untuk jenis tugas $2",

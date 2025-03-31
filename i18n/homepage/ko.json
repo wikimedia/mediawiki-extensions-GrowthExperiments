@@ -281,7 +281,6 @@
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "추천 문서 설정의 구조가 잘못되었습니다",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "추천 문서 설정에 문제가 있습니다: \"$1\" id는 유효하지 않습니다 - a-z, 0-9, - (마이너스 표시)만을 포함해야 합니다",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "잘못된 편집 요청 설정: 작업 종류 또는 주제 $2 에 대한 값 $1 이(가) 없습니다",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "제안된 편집 구성이 유효하지 않습니다: 유효하지 않은 제목 \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "잘못된 편집 요청 설정: 작업 종류 $2 에 대한 그룹 $1 이(가) 없습니다",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "잘못된 편집 요청 설정: 작업 종류 또는 주제 $2 에 대한 메시지 $1 이(가) 없습니다",
 	"growthexperiments-homepage-suggestededits-error-title": "현재 편집할 수 있는 추천 편집이 없습니다.",

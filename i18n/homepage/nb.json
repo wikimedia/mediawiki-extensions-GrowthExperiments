@@ -289,7 +289,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Ugyldig konfigurasjon for foreslåtte redigeringer: ugyldig ID «$1» – kan kun inneholde a-z, 0-9 og - (bindestrek)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Ugyldig konfigurasjon for foreslåtte redigeringer: ugyldig <code>type</code>-parameter $1 for oppgavetype $2 – må være én av $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Ugyldig konfigurasjon for foreslåtte redigeringer: mangler felt $1 for oppgavetype eller emne $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Ugyldig konfigurasjon for foreslåtte redigeringer: ugyldig tittel «$1»",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Ugyldig konfigurasjon for foreslåtte redigeringer: ugyldig gruppe $1 for oppgavetypen $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Ugyldig konfigurasjon for foreslåtte redigeringer: ugyldig malnavn $1 for oppgavetype $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Ugyldig konfigurasjon for foreslåtte redigeringer: ugyldig kategorinavn $1 for oppgavetype $2",

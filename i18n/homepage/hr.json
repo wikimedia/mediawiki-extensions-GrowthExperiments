@@ -242,7 +242,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Pogrešne postavke za predložena uređivanja: ID \"$1\" može se sastojati samo od slova, brojaka i crtice",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Pogrešne postavke za predložena uređivanja: pogrešan <code>type</code> parametar $1 za zadatak tipa $2 – mora biti jedan od $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Nevažeća konfiguracija predloženih izmjena: nedostaje polje $1 za vrstu zadatka ili temu $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Pogrešne postavke za predložena uređivanja: pogrešan naslov \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Pogrešne postavke u predloženim uređivanjima: kriva grupa $1 za zadaću tipa $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Pogrešne postavke u predloženim uređivanjima: krivo ime predloška $1 za zadaću tipa $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Pogrešne postavke u predloženim uređivanjima: nedostaje poruka $1 za polje $2",

@@ -286,7 +286,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Konfigurasi suntingan yang dicadangkan tidak sah: id \"$1\" tidak sah - mesti mengandungi az, 0-9, - (tolak) sahaja",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Konfigurasi suntingan yang dicadangkan tidak sah: parameter <code>type</code> $1 tidak sah untuk jenis tugasan $2 - mestilah salah satu daripada $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Konfigurasi suntingan yang dicadangkan tidak sah: tiada medan $1 untuk jenis tugasan atau topik $2",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Konfigurasi suntingan yang dicadangkan tidak sah: tajuk tidak sah \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Konfigurasi suntingan yang dicadangkan tidak sah: kumpulan $1 tidak sah untuk jenis tugasan $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Konfigurasi suntingan yang dicadangkan tidak sah: nama templat $1 tidak sah untuk jenis tugasan $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Konfigurasi suntingan yang dicadangkan tidak sah: nama kategori $1 tidak sah untuk jenis tugasan $2",

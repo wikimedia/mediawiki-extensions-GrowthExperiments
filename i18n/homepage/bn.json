@@ -307,7 +307,6 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "পরামর্শকৃত সম্পাদনার গাঠনিক ত্রুটি: \"$1\" - অবশ্যই অ-য়, ০-৯, - (বিয়োগচিহ্ন) হতে হবে",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "পরামর্শকৃত সম্পাদনার কাঠামোতে ত্রুটি: $2 কাজের ধরনের ক্ষেত্রে <code>ধরন</code> $1 প্যারামিটারে ত্রুটি রয়েছে – হয়তো সঠিকটি হবে এটা: $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "পরামর্শকৃত সম্পাদনায় গাঠনিক ত্রুটি: $2 কাজের ধরন বা বিষয়ের জন্য $1 ক্ষেত্রেটি ফাঁকা",
-	"growthexperiments-homepage-suggestededits-config-invalidtitle": "পরামর্শকৃত সম্পাদনায় গাঠনিক ত্রুটি: \"$1\" শিরোনামটি অবৈধ",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "পরামর্শকৃত সম্পাদনায় গাঠনিক ত্রুটি: কাজের ধরন $2-এর জন্য $1 গুচ্ছটি ত্রুটিপূর্ণ",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "পরামর্শকৃত সম্পাদনায় গাঠনিক ত্রুটি: কাজের ধরন $2-এর জন্য $1 টেমপ্লেট নামটি ত্রুটিপূর্ণ",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "পরামর্শকৃত সম্পাদনার কনফিগারেশন ত্রুটিপূর্ণ: কাজের ধরন $2 এর জন্য বিষয়শ্রেণীর নাম $1 ত্রুটিপূর্ণ",
