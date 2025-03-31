@@ -24,17 +24,14 @@ const useInstrument = ( streamName, schemaId ) => {
 	 */
 	const logEvent = ( action, actionSubtype, actionSource, actionContext ) => {
 		const interactionData = {
-			// Fill fragment/analytics/product_metrics/experiments data
+			// Fill fragment/analytics/product_metrics/experiment data
 			// There's no multi experiment capability, experiments manager
 			// assumes a single current experiment is always in course. Named
-			// as 'growth-experiments' for the T365889 experiment.
-			experiments: {
-				assigned: {
-					'growth-experiments': Utils.getUserVariant()
-				},
-				enrolled: [
-					'growth-experiments'
-				]
+			// as 'growth-experiments' for all experiments.
+			experiment: {
+				coordinator: 'custom',
+				assigned: Utils.getUserVariant(),
+				enrolled: 'growth-experiments'
 			}
 		};
 		if ( actionSubtype ) {

@@ -12,7 +12,7 @@
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$modules = $( '.growthexperiments-homepage-container .growthexperiments-homepage-module' ),
 		streamName = 'mediawiki.product_metrics.homepage_module_interaction',
-		schemaId = '/analytics/product_metrics/web/base/1.3.0',
+		schemaId = '/analytics/product_metrics/web/base/1.4.1',
 		analytics = useInstrument( streamName, schemaId ),
 		handleClick = function ( e ) {
 			const $link = $( this ),

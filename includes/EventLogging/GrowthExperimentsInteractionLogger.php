@@ -9,7 +9,7 @@ use MediaWiki\WikiMap\WikiMap;
 
 class GrowthExperimentsInteractionLogger {
 	/** @var string Versioned schema URL for $schema field */
-	private const SCHEMA_VERSIONED = '/analytics/product_metrics/web/base/1.3.1';
+	private const SCHEMA_VERSIONED = '/analytics/product_metrics/web/base/1.4.1';
 	/** @var string Stream name for EventLogging::submit */
 	private const STREAM = 'mediawiki.product_metrics.growth_product_interaction';
 	/** @var string Unique identifier for the single experiment name used for
@@ -61,11 +61,17 @@ class GrowthExperimentsInteractionLogger {
 				'id' => $user->getId(),
 				'edit_count' => $user->getEditCount()
 			],
+			// TODO: remove once Surfacing Structured tasks experiment is over, T377098
 			'experiments' => [
 				'enrolled' => [ self::GROWTH_EXPERIMENTS_EXPERIMENT_ID ],
 				'assigned' => [
 					self::GROWTH_EXPERIMENTS_EXPERIMENT_ID => $variant
 				],
+			],
+			'experiment' => [
+				'coordinator' => 'custom',
+				'enrolled' => self::GROWTH_EXPERIMENTS_EXPERIMENT_ID,
+				'assigned' => $variant,
 			]
 		];
 
