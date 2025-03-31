@@ -1,7 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
-			"O Breixo"
+			"O Breixo",
+			"Toliño"
 		]
-	}
+	},
+	"apihelp-growthstarmentee-summary": "Marcar ou desmarcar un aprendiz como destacado polo usuario actual (almacenado de forma privada e non rexistrado)",
+	"apihelp-growthstarmentee-param-gesaction": "Acción a realizar (<kbd>star</kbd> ou <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Aprendiz a (des)marcar como destacado",
+	"apihelp-query+growthstarredmentees-summary": "Obter a lista dos aprendices destacados polo mentor que está conectado actualmente",
+	"apihelp-growthsetmentorstatus-summary": "Establecer o estado de mentor do usuario actual como activo/ausente",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Novo estado",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Ao establecer o mentor como ausente, isto debe ter a duración do estado de ausencia (en días)",
+	"apihelp-query+growthmentorstatus-summary": "Consultar o estado de mentor do usuario actual",
+	"apihelp-growthmentordashboardupdatedata-summary": "Programar unha actualización extraordinaria do módulo de visión xeral do mentor no panel de mentoría. Só podes programar unha actualización cada dúas horas por motivos de rendemento.",
+	"apihelp-growthsetmenteestatus-summary": "Establecer o estado do aprendiz (permítelles aos aprendices activar/desactivar o módulo de mentoría ou desactivarlo por completo, o que elimina a relación mentor/aprendiz)",
+	"apihelp-growthsetmenteestatus-param-state": "Novo estado do aprendiz (aviso: ao establecerse esta opción en non participar borrarase permanentemente a relación mentor/aprendiz)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "O módulo de mentoría está activado",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "O módulo de mentoría está totalmente desactivado. Normalmente isto está establecido polo software e utilízase para probas A/B.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "O aprendiz abandonou a mentoría; eliminarase a relación entre aprendiz/mentor, substituirase o módulo de mentoría pola posibilidade de volvelo activar",
+	"apihelp-query+growthmenteestatus-summary": "Consultar o estado de aprendiz do usuario actual; consulta a documentación de \"action=growthsetmenteestatus\" para obter información detallada sobre os estados individuais.",
+	"apihelp-query+growthmentormentee-summary": "Obter todos os aprendices asignados a un mentor determinado",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor para o que consultar os aprendices",
+	"apihelp-growthmanagementorlist-summary": "Xestionar a información da lista estruturada de mentores (normalmente almacénase en [[MediaWiki:GrowthMentors.json]]). Este módulo pódeno utilizar tanto os mentores actuais como os futuros (para engadirse ou cambiar os seus datos), así como os administradores (para todos os usuarios).",
+	"apihelp-growthmanagementorlist-param-geaction": "Acción",
+	"apihelp-growthmanagementorlist-param-message": "Mensaxe de presentación (utiliza unha cadea baleira para a mensaxe predeterminada do mentor)",
+	"apihelp-growthmanagementorlist-param-weight": "Peso",
+	"apihelp-growthmanagementorlist-param-summary": "Motivo para o cambio",
+	"apihelp-growthmanagementorlist-param-username": "Nome de usuario do mentor afectado polo cambio. Se non se indica, utilizarase o usuario coa sesión iniciada. Só o poden utilizar os usuarios con privilexios."
 }

@@ -4,5 +4,17 @@
 			"O Breixo",
 			"Toliño"
 		]
-	}
+	},
+	"apihelp-query+growthtasks-summary": "Obter recomendacións de tarefas axeitadas para as persoas principiantes.",
+	"apihelp-query+growthtasks-extended-description": "Suxire un conxunto de artigos que teñan algúns problemas pendentes o suficientemente fáciles de abordar para un editor principiante.",
+	"apihelp-query+growthtasks-param-tasktypes": "Tipos de tarefas para limitar os resultados. Deixa o campo baleiro para recibir todas as suxestións.",
+	"apihelp-query+growthtasks-param-topics": "Temas de artigo preferidos para as suxestións de tarefas.",
+	"apihelp-query+growthtasks-param-limit": "Número máximo de suxestións de tarefas a devolver.",
+	"apihelp-query+growthtasks-param-excludepageids": "Identificadores de páxina a excluír da consulta.",
+	"apihelp-query+growthtasks-param-debug": "Engadir os datos de depuración á saída.",
+	"apihelp-query+growthtasks-example-2": "Obter recomendacións de tarefas para o usuario actual, con información ampliada sobre as páxinas.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Falta o parámetro \"accepted\" nos datos do complemento para engadir imaxes",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "O parámetro \"accepted\" debe ser un booleano nos datos do complemento para engadir imaxes, pero é $1",
+	"apierror-growthexperiments-addlink-handler-notfound": "Non se atopou o rexistro de recomendación da ligazón",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Obxectivos de recomendación de ligazóns inesperados: $1"
 }
