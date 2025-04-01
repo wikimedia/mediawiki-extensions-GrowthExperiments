@@ -12,11 +12,9 @@ const Utils = require( '../utils/Utils.js' );
  * @param {string} streamName The name of the stream to submit events to
  * as configured in wgEventStreams.
  * @param {string} schemaId The id of the schema to validate the event.
- * @param {Object} options A map of options to configure the logger:
- *  - enabled: whether to submit an event when calling log methods.
  * @return {EventLogger}
  */
-const useInstrument = ( streamName, schemaId, options = {} ) => {
+const useInstrument = ( streamName, schemaId ) => {
 	const instrument = mw.eventLog.newInstrument( streamName, schemaId );
 	/**
 	 * @param {string} action
@@ -25,10 +23,6 @@ const useInstrument = ( streamName, schemaId, options = {} ) => {
 	 * @param {string|null|undefined} actionContext
 	 */
 	const logEvent = ( action, actionSubtype, actionSource, actionContext ) => {
-		if ( !options.enabled ) {
-			return;
-		}
-
 		const interactionData = {
 			// Fill fragment/analytics/product_metrics/experiments data
 			// There's no multi experiment capability, experiments manager

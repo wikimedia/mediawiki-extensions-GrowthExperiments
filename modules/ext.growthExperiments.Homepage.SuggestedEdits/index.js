@@ -41,7 +41,6 @@
 				qualityGateConfig: taskPreviewData.qualityGateConfig || {}
 			},
 			new Logger(
-				mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			),
 			rootStore
