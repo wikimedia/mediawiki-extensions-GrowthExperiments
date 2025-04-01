@@ -3,6 +3,7 @@
 		"authors": [
 			"Bdijkstra",
 			"HanV",
+			"Jeroen N",
 			"Mainframe98",
 			"McDutchie",
 			"Romaine",
@@ -74,7 +75,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentorstatus",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Actief",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Afwezig",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Aangezien u weg bent tot de $1, worden uw leerlingen tijdelijk toegewezen aan een andere mentor.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Aangezien u weg bent tot $1, worden uw leerlingen tijdelijk toegewezen aan een andere mentor.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "U bent momenteel geblokkeerd. Uw status is tijdelijk ingesteld op ‘afwezig’ en uw leerlingen worden tijdelijk aan een andere mentor toegewezen. Als u gedeblokkeerd wordt (of de blokkade verloopt), wordt uw status weer op ‘actief’ gezet en worden uw leerlingen opnieuw aan u toegewezen.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "U bent momenteel geblokkeerd. U kunt uw mentorstatus niet wijzigen terwijl u geblokkeerd bent.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1 is momenteel vergrendeld. {{GENDER:$1|Zijn|Haar|Diens}} mentorstatus kan niet gewijzigd worden terwijl {{GENDER:$1|hij|ze|die}} vergrendeld is.",

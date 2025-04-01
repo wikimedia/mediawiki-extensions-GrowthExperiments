@@ -3,6 +3,7 @@
 		"authors": [
 			"DreZhsh",
 			"Gomoko",
+			"JLTRY",
 			"Mahabarata",
 			"Thibaut120094",
 			"Verdy p",
@@ -43,7 +44,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "Le paramètre « sectionNumber » (numéro de section) doit être un entier dans les données du greffon « Ajouter une image de section », mais il vaut $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Enregistrement de la suggestion de lien non trouvé",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Cibles de recommandation de lien inattendues : $1",
-	"growthexperiments-underlinked-rescore-profile": "Profil de rescore interne utilisé dans les recommandations de liens de GrowthExperiments pour prioriser les articles qui n’ont pas encore assez de liens.",
+	"growthexperiments-underlinked-rescore-profile": "Profil de rescore interne utilisé dans les recommandations de liens de GrowthExperiments pour prioriser les articles qui n’ont pas encore assez de liens. Cette fonctionnalité est désactivée lorsque les recommandations de liens sont désactivées.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "Le paramètre <var>editRevId</var> est obligatoire quand le paramètre <var>accepted</var> (accepté) est positionné à <kbd>true</kbd> (vrai).",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Le paramètre <var>editRevId</var> ne peut pas être utilisé quand le paramètre <var>accepted</var> (accepté) est positionné à <kbd>false</kbd> (faux).",
 	"growthexperiments-addimage-feedback-accepted-caption": "Le paramètre <var>caption</var> (légende) est obligatoire quand le paramètre <var>accepted</var> (accepté) est positionné à <kbd>true</kbd> (vrai).",
