@@ -635,13 +635,11 @@ class HomepageHooks implements
 			'hide-if' => [ '!==', self::HOMEPAGE_PREF_ENABLE, '1' ],
 		];
 
-		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$preferences[ HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE ] = [
-				'type' => 'toggle',
-				'section' => 'personal/homepage',
-				'label-message' => HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE
-			];
-		}
+		$preferences[ HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE ] = [
+			'type' => 'toggle',
+			'section' => 'personal/homepage',
+			'label-message' => HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE
+		];
 
 		$preferences[ self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ] = [
 			'type' => 'api',
@@ -831,8 +829,7 @@ class HomepageHooks implements
 			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 0 );
 
 			if (
-				$this->config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&
-				HelpPanel::isHelpPanelEnabled()
+				$this->config->get( 'GEHelpPanelNewAccountEnableWithHomepage' )
 			) {
 				$this->userOptionsManager->setOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 			}
@@ -954,9 +951,7 @@ class HomepageHooks implements
 			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
 		}
-		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
-		}
+		$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			array_push( $tags, ...$this->taskTypeHandlerRegistry->getChangeTags() );
 		}
@@ -978,9 +973,7 @@ class HomepageHooks implements
 			// Help::HELP_MODULE_QUESTION_TAG is no longer active (T232548)
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
 		}
-		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
-		}
+		$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			array_push( $tags, ...$this->taskTypeHandlerRegistry->getChangeTags() );
 		}

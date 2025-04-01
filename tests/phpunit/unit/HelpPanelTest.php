@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests\Integration;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanelHooks;
@@ -28,7 +28,6 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 		int $userId,
 		int $userHelpPanelPref,
 		array $excludedNamespaces,
-		bool $GEHelpPanelEnabled,
 		bool $expected,
 		string $message
 	) {
@@ -57,7 +56,6 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 
 		$result = HelpPanel::shouldShowHelpPanel(
 			$out, true,
-			new HashConfig( [ 'GEHelpPanelEnabled' => $GEHelpPanelEnabled ] ),
 			new HashConfig( [ 'GEHelpPanelExcludedNamespaces' => $excludedNamespaces ] )
 		);
 		$this->assertEquals( $expected, $result, $message );
@@ -78,8 +76,6 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				1,
 				// GEHelpPanelExcludedNamespaces,
 				[],
-				// GEHelpPanelEnabled
-				true,
 				// assertion
 				true,
 				'Normal scenario - edit on a main namespace, suggested edit flag, user has pref enabled'
@@ -91,7 +87,6 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				1,
 				1,
 				[ NS_PROJECT ],
-				true,
 				false,
 				'Namespace of title is in excluded namespaces, help panel should not show'
 			],
@@ -102,7 +97,6 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				1,
 				1,
 				[],
-				true,
 				false,
 				'Action of "blah" should result in help panel not showing'
 			],
@@ -114,7 +108,6 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				0,
 				[],
 				true,
-				true,
 				'User has help panel disabled, but gesuggestededit is set, so the help panel should show'
 			],
 			[
@@ -124,7 +117,6 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				0,
 				0,
 				[],
-				true,
 				false,
 				'gesuggestededit is true, but user is anonymous so the help pane should not show'
 			],
@@ -141,8 +133,6 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				1,
 				// GEHelpPanelExcludedNamespaces,
 				[ NS_MAIN ],
-				// GEHelpPanelEnabled
-				true,
 				// assertion
 				true,
 				'Suggested edits mode and NS_MAIN excluded'

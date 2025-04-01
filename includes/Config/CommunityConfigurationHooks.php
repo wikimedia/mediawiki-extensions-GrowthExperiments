@@ -94,8 +94,5 @@ class CommunityConfigurationHooks implements
 		if ( !$this->config->get( 'GEHomepageSuggestedEditsEnabled' ) ) {
 			unset( $providers['GrowthSuggestedEdits'] );
 		}
-		if ( !$this->config->get( 'GEHelpPanelEnabled' ) ) {
-			unset( $providers['HelpPanel'] );
-		}
 	}
 }
