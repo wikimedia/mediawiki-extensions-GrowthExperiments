@@ -36,6 +36,11 @@
 	"growthexperiments-manage-mentors-status": "Olek",
 	"growthexperiments-manage-mentors-status-away-until": "Eemal kuni: $1",
 	"growthexperiments-manage-mentors-intro-msg": "Sõnum uutele kasutajatele",
+	"growhtexperiments-manage-mentors-add-mentor": "Registreeri mentor",
+	"growthexperiments-manage-mentors-add-mentor-pretext": "Selle vormi abil saab lisada süsteemi uue mentori. Lisatav kasutaja ei pea vastama sobivuskriteeriumitele. Ta lisatakse käsitsi määratud mentorina ja ta saab muuta enda sätteid.",
+	"growthexperiments-manage-mentors-add-mentor-username": "Lisatava mentori kasutajanimi",
+	"growthexperiments-manage-mentors-add-mentor-reason": "Mentori lisamise põhjus",
+	"growthexperiments-manage-mentors-add-mentor-success": "Kasutaja $1 lisati mentoriks.",
 	"growthexperiments-mentorship-enrollasmentor-title": "Mentoriks registreerumine",
 	"growthexperiments-mentorship-enrollasmentor-pretext": "Aitäh, et hakkad vabatahtlikuna {{GRAMMAR:genitive|{{SITENAME}}}} mentoriks. Saad ennast mentorina kirja panna, täites selle vormi.",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "Tutvustav sõnum",
@@ -44,5 +49,6 @@
 	"growthexperiments-mentorship-enrollasmentor-success": "Oled nüüd mentoriks registreeritud. Saad nüüd mina edasi [[Special:MentorDashboard|mentori andmelauale]].",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Lisan ennast mentoriks",
 	"tag-mentor list change": "Mentorite loendi muudatus",
-	"tag-mentor list change-description": "Muudatus, mis tehti mentorite struktureeritud loendis GrowthExperimentsi kaudu"
+	"tag-mentor list change-description": "Muudatus, mis tehti mentorite struktureeritud loendis GrowthExperimentsi kaudu",
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorluse funktsioon on praegu välja lülitatud. Administraatorid saavad selle sisse lülitada leheküljel [[$1]]."
 }
