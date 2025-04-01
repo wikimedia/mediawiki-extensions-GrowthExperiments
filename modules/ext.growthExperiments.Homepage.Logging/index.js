@@ -13,7 +13,7 @@
 		$modules = $( '.growthexperiments-homepage-container .growthexperiments-homepage-module' ),
 		streamName = 'mediawiki.product_metrics.homepage_module_interaction',
 		schemaId = '/analytics/product_metrics/web/base/1.3.0',
-		analytics = useInstrument( streamName, schemaId, {} ),
+		analytics = useInstrument( streamName, schemaId ),
 		handleClick = function ( e ) {
 			const $link = $( this ),
 				$module = $link.closest( '.growthexperiments-homepage-module' ),
