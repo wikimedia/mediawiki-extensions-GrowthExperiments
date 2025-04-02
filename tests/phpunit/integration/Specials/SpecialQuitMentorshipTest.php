@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use ErrorPageError;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialQuitMentorship;
@@ -49,19 +48,6 @@ class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 			''
 		) );
 		return $mentorUser;
-	}
-
-	/**
-	 * @covers ::requireMentorDashboardEnabled
-	 * @covers ::isEnabled
-	 * @covers ::execute
-	 */
-	public function testDashboardDisabled() {
-		$this->expectException( ErrorPageError::class );
-		$this->expectExceptionMessage( 'growthexperiments-quit-mentorship-disabled' );
-
-		$this->overrideConfigValue( 'GEMentorDashboardEnabled', false );
-		$this->executeSpecialPage();
 	}
 
 	/**

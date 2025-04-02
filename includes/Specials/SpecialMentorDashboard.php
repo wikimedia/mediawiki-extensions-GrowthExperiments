@@ -124,21 +124,6 @@ class SpecialMentorDashboard extends SpecialPage {
 	}
 
 	/**
-	 * Ensure mentor dashboard is enabled
-	 *
-	 * @throws ErrorPageError
-	 */
-	private function requireMentorDashboardEnabled() {
-		if ( !$this->isEnabled() ) {
-			// Mentor dashboard is disabled, display a meaningful restriction error
-			throw new ErrorPageError(
-				'growthexperiments-mentor-dashboard-title',
-				'growthexperiments-mentor-dashboard-disabled'
-			);
-		}
-	}
-
-	/**
 	 * Ensure the automatic mentor list is configured
 	 *
 	 * @throws ErrorPageError if mentor list is missing
@@ -158,7 +143,6 @@ class SpecialMentorDashboard extends SpecialPage {
 	public function execute( $par ) {
 		$this->requireNamedUser();
 		$this->maybeRedirectToEnrollAsMentor();
-		$this->requireMentorDashboardEnabled();
 		$this->requireMentorList();
 
 		parent::execute( $par );
@@ -250,13 +234,6 @@ class SpecialMentorDashboard extends SpecialPage {
 				]
 			] ) );
 		} );
-	}
-
-	/**
-	 * Check if mentor dashboard is enabled via GEMentorDashboardEnabled
-	 */
-	private function isEnabled(): bool {
-		return $this->getConfig()->get( 'GEMentorDashboardEnabled' );
 	}
 
 	/**

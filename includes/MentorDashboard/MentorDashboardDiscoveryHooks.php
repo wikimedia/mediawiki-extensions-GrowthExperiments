@@ -40,9 +40,7 @@ class MentorDashboardDiscoveryHooks implements SkinTemplateNavigation__Universal
 	 * @return bool
 	 */
 	private function isDiscoveryEnabled( User $user ): bool {
-		return $this->config->get( 'GEMentorDashboardEnabled' ) &&
-			$user->isNamed() &&
-			$this->mentorProvider->isMentor( $user );
+		return $user->isNamed() && $this->mentorProvider->isMentor( $user );
 	}
 
 	/**
