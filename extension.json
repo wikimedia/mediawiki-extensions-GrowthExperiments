@@ -2542,10 +2542,6 @@
 			"description": "Number of items to fetch lookahead when querying the GrowthTasks API.",
 			"value": null
 		},
-		"GELevelingUpFeaturesEnabled": {
-			"description": "Feature flag to enable \"leveling up\" (phab:#growthexperiments-levelingup) functionality.",
-			"value": true
-		},
 		"GELevelingUpKeepGoingNotificationSendAfterSeconds": {
 			"description": "Send a 'keep going' notification to new editors after this many seconds. Defaults to 48 hours.",
 			"value": 172800

@@ -233,15 +233,9 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 	public static function provideIsEnabledForAnyone() {
 		return [
 			'no Suggested edits' => [ false, [
-				'GELevelingUpFeaturesEnabled' => true,
 				'GEHomepageSuggestedEditsEnabled' => false,
 			] ],
-			'no Levelling up' => [ false, [
-				'GELevelingUpFeaturesEnabled' => false,
-				'GEHomepageSuggestedEditsEnabled' => true,
-			] ],
 			'all OK' => [ true, [
-				'GELevelingUpFeaturesEnabled' => true,
 				'GEHomepageSuggestedEditsEnabled' => true,
 			] ],
 		];

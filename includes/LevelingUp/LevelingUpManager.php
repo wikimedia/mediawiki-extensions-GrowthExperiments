@@ -107,8 +107,7 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public static function isEnabledForAnyone( Config $config ): bool {
-		return SuggestedEdits::isEnabledForAnyone( $config )
-			&& $config->get( 'GELevelingUpFeaturesEnabled' );
+		return SuggestedEdits::isEnabledForAnyone( $config );
 	}
 
 	/**
