@@ -60,6 +60,16 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 			return;
 		}
 
+		$oldId = $out->getRequest()->getVal( 'oldid', null );
+		if ( $oldId !== null ) {
+			return;
+		}
+
+		$diff = $out->getRequest()->getVal( 'diff', null );
+		if ( $diff !== null ) {
+			return;
+		}
+
 		$veaction = $out->getRequest()->getVal( 'veaction', null );
 		if ( $veaction !== null ) {
 			return;
