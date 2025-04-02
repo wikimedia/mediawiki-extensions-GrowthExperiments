@@ -4,9 +4,17 @@ namespace GrowthExperiments\NewcomerTasks\Topic;
 
 interface ITopicRegistry {
 	/**
-	 * Returns a plain list of topic IDs, for validation and the like.
-	 * @return string[]
-	 * @phan-return list<string>
+	 * Load all topics.
+	 * @return Topic[]
 	 */
-	public function getAllTopics(): array;
+	public function loadTopics(): array;
+
+	/**
+	 * Convenience method to get topics as an array of topic id => topic.
+	 *
+	 * If an error is generated while loading, an empty array is returned.
+	 *
+	 * @return Topic[] Array of topic id => topic
+	 */
+	public function getTopics(): array;
 }

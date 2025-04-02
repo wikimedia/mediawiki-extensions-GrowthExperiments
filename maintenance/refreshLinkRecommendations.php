@@ -265,6 +265,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		}
 		$this->configurationLoader = new TopicDecorator(
 			$newcomerTaskConfigurationLoader,
+			$growthServices->getTopicRegistry(),
 			true,
 			[ $linkRecommendationCandidateTaskType ]
 		);

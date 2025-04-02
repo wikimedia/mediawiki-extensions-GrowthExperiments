@@ -110,8 +110,7 @@ class LinkRecommendationTaskType extends TaskType {
 	/**
 	 * Try to have at least this many link recommendations prepared for each ORES topic.
 	 * Recommendations are filled up every hour to this level.
-	 * Note: these are individual ORES topics, not the combined Growth topics defined via
-	 * $wgGENewcomerTasksOresTopicConfig.
+	 * Note: these are individual ORES topics, not the combined Growth topics defined in WikimediaTopicRegistry
 	 */
 	public function getMinimumTasksPerTopic(): int {
 		return $this->minimumTasksPerTopic;

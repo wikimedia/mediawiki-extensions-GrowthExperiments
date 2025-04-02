@@ -3,8 +3,6 @@
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Message\Message;
 use MessageLocalizer;
 use StatusValue;
@@ -17,19 +15,13 @@ class ConfigurationValidator {
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
-	/** @var CollationFactory */
-	private $collationFactory;
-
 	/**
 	 * @param MessageLocalizer $messageLocalizer
-	 * @param CollationFactory $collationFactory
 	 */
 	public function __construct(
-		MessageLocalizer $messageLocalizer,
-		CollationFactory $collationFactory
+		MessageLocalizer $messageLocalizer
 	) {
 		$this->messageLocalizer = $messageLocalizer;
-		$this->collationFactory = $collationFactory;
 	}
 
 	/**
@@ -123,45 +115,4 @@ class ConfigurationValidator {
 			$taskType->getTimeEstimate( $this->messageLocalizer )
 		], $taskType->getId() );
 	}
-
-	/**
-	 * Ensure that all messages used by the topic exist.
-	 * @param Topic $topic
-	 * @return StatusValue
-	 */
-	public function validateTopicMessages( Topic $topic ) {
-		$messages = [ $topic->getName( $this->messageLocalizer ) ];
-		if ( $topic->getGroupId() ) {
-			$messages[] = $topic->getGroupName( $this->messageLocalizer );
-		}
-		return $this->validateMessages( $messages, $topic->getId() );
-	}
-
-	/**
-	 * Sorts topics in-place, based on the group configuration and alphabetically within that.
-	 * @param Topic[] &$topics
-	 * @param string[] $groups
-	 */
-	public function sortTopics( array &$topics, $groups ) {
-		if ( !$topics ) {
-			return;
-		}
-
-		$collation = $this->collationFactory->getCategoryCollation();
-
-		usort( $topics, function ( Topic $left, Topic $right ) use ( $groups, $collation ) {
-			$leftGroup = $left->getGroupId();
-			$rightGroup = $right->getGroupId();
-			if ( $leftGroup !== $rightGroup ) {
-				return array_search( $leftGroup, $groups, true ) - array_search( $rightGroup, $groups, true );
-			}
-
-			$leftSortKey = $collation->getSortKey(
-				$left->getName( $this->messageLocalizer )->text() );
-			$rightSortKey = $collation->getSortKey(
-				$right->getName( $this->messageLocalizer )->text() );
-			return strcmp( $leftSortKey, $rightSortKey );
-		} );
-	}
-
 }

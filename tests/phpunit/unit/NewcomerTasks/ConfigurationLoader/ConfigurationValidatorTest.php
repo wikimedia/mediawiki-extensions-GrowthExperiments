@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
-use MediaWiki\Collation\CollationFactory;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 
@@ -26,8 +25,7 @@ class ConfigurationValidatorTest extends MediaWikiUnitTestCase {
 	 */
 	private function getValidator() {
 		return new ConfigurationValidator(
-			$this->createNoOpMock( MessageLocalizer::class, [ 'msg' ] ),
-			$this->createNoOpMock( CollationFactory::class )
+			$this->createNoOpMock( MessageLocalizer::class, [ 'msg' ] )
 		);
 	}
 

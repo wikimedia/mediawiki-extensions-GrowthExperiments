@@ -4,11 +4,11 @@ namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\Maintenance\MaintenanceFatalError;
 use MediaWiki\WikiMap\WikiMap;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -24,7 +24,7 @@ class ListTaskCounts extends Maintenance {
 
 	/** @var string 'growth' or 'ores' */
 	private string $topicType;
-	private ConfigurationLoader $configurationLoader;
+	private TopicDecorator $taskTypesAndTopics;
 
 	public function __construct() {
 		parent::__construct();
@@ -40,7 +40,9 @@ class ListTaskCounts extends Maintenance {
 		$this->addOption( 'output', "'ascii-table' (default), 'json' or 'none'", false, true );
 	}
 
-	/** @inheritDoc */
+	/** @inheritDoc
+	 * @throws MaintenanceFatalError
+	 */
 	public function execute() {
 		if ( $this->getConfig()->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
 			$this->output( "Local tasks disabled\n" );
@@ -54,12 +56,14 @@ class ListTaskCounts extends Maintenance {
 
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
-		$this->configurationLoader = new TopicDecorator(
+		$this->taskTypesAndTopics = new TopicDecorator(
 			$newcomerTaskConfigurationLoader,
+			$growthServices->getTopicRegistry(),
 			$this->topicType == 'ores'
 		);
 
-		[ $taskTypes, $topics ] = $this->getTaskTypesAndTopics();
+		$taskTypes = $this->getTaskTypes();
+		$topics = $this->getTopics();
 		[ $taskCounts, $taskTypeCounts, $topicCounts ] = $this->getStats( $taskTypes, $topics );
 		if ( $this->hasOption( 'statsd' ) ) {
 			$this->reportTaskCounts( $taskCounts, $taskTypeCounts );
@@ -68,24 +72,34 @@ class ListTaskCounts extends Maintenance {
 	}
 
 	/**
-	 * Get task types and topics to list task counts for
+	 * Get task types to list task counts for
 	 *
-	 * @return array{0:string[],1:string[]} [ task type ID list, topic ID list ]
+	 * @return string[] task type ID list
+	 * @throws MaintenanceFatalError
 	 */
-	private function getTaskTypesAndTopics(): array {
-		$allTaskTypes = array_keys( $this->configurationLoader->getTaskTypes() );
+	private function getTaskTypes(): array {
+		$allTaskTypes = array_keys( $this->taskTypesAndTopics->getTaskTypes() );
 		$taskTypes = $this->getOption( 'tasktype', $allTaskTypes );
 		if ( array_diff( $taskTypes, $allTaskTypes ) ) {
 			$this->fatalError( 'Invalid task types: ' . implode( ', ', array_diff( $taskTypes, $allTaskTypes ) ) );
 		}
 
-		$allTopics = array_keys( $this->configurationLoader->getTopics() );
+		return $taskTypes;
+	}
+
+	/**
+	 * Get topics to list task counts for
+	 *
+	 * @return string[] topic ID list
+	 * @throws MaintenanceFatalError
+	 */
+	private function getTopics(): array {
+		$allTopics = array_keys( $this->taskTypesAndTopics->getTopics() );
 		$topics = $this->getOption( 'topic', $allTopics );
 		if ( array_diff( $topics, $allTopics ) ) {
 			$this->fatalError( 'Invalid topics: ' . implode( ', ', array_diff( $topics, $allTopics ) ) );
 		}
-
-		return [ $taskTypes, $topics ];
+		return $topics;
 	}
 
 	/**
@@ -109,7 +123,8 @@ class ListTaskCounts extends Maintenance {
 		$suggestionsInfoService = new SuggestionsInfo(
 			$services->getTaskSuggesterFactory(),
 			$services->getTaskTypeHandlerRegistry(),
-			$this->configurationLoader
+			$this->taskTypesAndTopics,
+			$this->taskTypesAndTopics
 		);
 		if ( $shouldCacheStats ) {
 			$suggestionsInfo = new CachedSuggestionsInfo(

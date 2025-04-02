@@ -3,9 +3,11 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Cache\LinkBatchFactory;
 use SearchEngineFactory;
 use StatusValue;
@@ -22,6 +24,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 
 	private StatsFactory $statsFactory;
 	private IBufferingStatsdDataFactory $statsdDataFactory;
+	private ITopicRegistry $topicRegistry;
 
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
@@ -32,6 +35,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param StatsFactory $statsFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param ITopicRegistry $topicRegistry
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -41,7 +45,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		SearchEngineFactory $searchEngineFactory,
 		LinkBatchFactory $linkBatchFactory,
 		StatsFactory $statsFactory,
-		IBufferingStatsdDataFactory $statsdDataFactory
+		IBufferingStatsdDataFactory $statsdDataFactory,
+		ITopicRegistry $topicRegistry
 	) {
 		parent::__construct(
 			$taskTypeHandlerRegistry,
@@ -53,6 +58,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		$this->searchEngineFactory = $searchEngineFactory;
 		$this->statsFactory = $statsFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
+		$this->topicRegistry = $topicRegistry;
 	}
 
 	/**
@@ -65,9 +71,10 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}
-		$topics = $configurationLoader->loadTopics();
-		if ( $topics instanceof StatusValue ) {
-			return $this->createError( $topics );
+		if ( $configurationLoader instanceof TopicDecorator ) {
+			$topics = $configurationLoader->getTopics();
+		} else {
+			$topics = $this->topicRegistry->loadTopics();
 		}
 		$suggester = new LocalSearchTaskSuggester(
 			$this->taskTypeHandlerRegistry,

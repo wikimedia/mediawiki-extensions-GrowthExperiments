@@ -7,7 +7,6 @@ use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
@@ -19,7 +18,9 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\Util;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
@@ -143,6 +144,7 @@ class SuggestedEdits extends BaseModule {
 	private CampaignConfig $campaignConfig;
 
 	private StatsFactory $statsFactory;
+	private ITopicRegistry $topicRegistry;
 
 	/**
 	 * @param IContextSource $context
@@ -174,7 +176,8 @@ class SuggestedEdits extends BaseModule {
 		UserOptionsLookup $userOptionsLookup,
 		LinkRecommendationFilter $linkRecommendationFilter,
 		ImageRecommendationFilter $imageRecommendationFilter,
-		StatsFactory $statsFactory
+		StatsFactory $statsFactory,
+		ITopicRegistry $topicRegistry
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
 		$this->pageViewService = $pageViewService;
@@ -188,6 +191,7 @@ class SuggestedEdits extends BaseModule {
 		$this->imageRecommendationFilter = $imageRecommendationFilter;
 		$this->campaignConfig = $campaignConfig;
 		$this->statsFactory = $statsFactory;
+		$this->topicRegistry = $topicRegistry;
 	}
 
 	/** @inheritDoc */
@@ -295,7 +299,7 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public static function getTopicFiltersPref( Config $config ) {
 		$topicType = $config->get( 'GENewcomerTasksTopicType' );
-		if ( $topicType === CommunityConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
+		if ( $topicType === WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES ) {
 			return self::TOPICS_ORES_PREF;
 		}
 		return self::TOPICS_PREF;
@@ -637,7 +641,7 @@ class SuggestedEdits extends BaseModule {
 			if ( $topicPreferences && count( $excludedTopics ) ) {
 				$topicPreferences = array_diff( $topicPreferences, $excludedTopics );
 			}
-			$topicData = $this->configurationLoader->getTopics();
+			$topicData = $this->topicRegistry->getTopics();
 			$topicLabel = '';
 			$addPulsatingDot = false;
 			$topicFilterMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );

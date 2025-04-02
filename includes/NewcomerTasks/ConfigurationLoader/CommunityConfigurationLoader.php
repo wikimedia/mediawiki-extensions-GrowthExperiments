@@ -6,15 +6,8 @@ use GrowthExperiments\Config\Providers\SuggestedEditsConfigProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
-use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
-use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
-use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
-use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\Language\RawMessage;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\TitleFactory;
 use Psr\Log\LoggerInterface;
@@ -22,30 +15,19 @@ use StatusValue;
 
 /**
  * Load configuration from the suggested edits provider of
- * CommunityConfiguration. Also load topics configuration
- * from server.
+ * CommunityConfiguration.
  *
  * For syntax on the task types see:
  * GrowthExperiments\Config\Schemas\SuggestedEditsSchema.php
  * https://cs.wikipedia.org/wiki/MediaWiki:GrowthExperimentsSuggestedEdits.json
  *
- * For syntax on the topics see:
- * extension.json#config.GENewcomerTasksOresTopicConfig
  */
 class CommunityConfigurationLoader implements ConfigurationLoader {
 
 	use ConfigurationLoaderTrait;
 
-	/** @var string Use the configuration for OresBasedTopic topics. */
-	public const CONFIGURATION_TYPE_ORES = 'ores';
-
-	private const VALID_TOPIC_TYPES = [
-		self::CONFIGURATION_TYPE_ORES,
-	];
-
 	private ?SuggestedEditsConfigProvider $suggestedEditsConfigProvider;
 	private TitleFactory $titleFactory;
-	private ?array $topicConfigData;
 	private LoggerInterface $logger;
 
 	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
@@ -55,20 +37,11 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	/** @var string[] */
 	private array $enabledTaskTypeIds = [];
 
-	/** @var Topic[]|StatusValue|null Cached topic set (or an error). */
-	private $topics;
-
-	/**
-	 * @var string One of the self::VALID_TOPIC_TYPES constants.
-	 */
-	private string $topicType;
-
 	/** @var ?callable */
 	private $campaignConfigCallback;
 
 	/** @var TaskType[]|null */
 	private ?array $disabledTaskTypes = null;
-	private ITopicRegistry $topicRegistry;
 	/** @var TaskType[]|StatusValue|null Cached task type set (or an error). */
 	private $taskTypes;
 
@@ -77,36 +50,22 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	/**
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param ITopicRegistry $topicRegistry
-	 * @param string $topicType
 	 * @param ?SuggestedEditsConfigProvider $suggestedEditsConfigProvider
 	 * @param TitleFactory $titleFactory
-	 * @param array|null $topicConfigData Configuration data for topic mapping. Can be
-	 * omitted (set to null), in which case topic matching will be disabled.
 	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		ITopicRegistry $topicRegistry,
-		string $topicType,
 		?SuggestedEditsConfigProvider $suggestedEditsConfigProvider,
 		TitleFactory $titleFactory,
-		?array $topicConfigData,
 		LoggerInterface $logger
 	) {
 		$this->configurationValidator = $configurationValidator;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
-		$this->topicRegistry = $topicRegistry;
-		$this->topicType = $topicType;
 		$this->suggestedEditsConfigProvider = $suggestedEditsConfigProvider;
 		$this->titleFactory = $titleFactory;
-		$this->topicConfigData = $topicConfigData;
 		$this->logger = $logger;
-
-		if ( !in_array( $this->topicType, self::VALID_TOPIC_TYPES, true ) ) {
-			throw new InvalidArgumentException( 'Invalid topic type ' . $this->topicType );
-		}
 	}
 
 	/**
@@ -251,120 +210,6 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 			return $result->getValue()->{'GEInfoboxTemplates'};
 		}
 		return $result;
-	}
-
-	protected function loadTopicsConfig(): ?array {
-		return $this->topicConfigData;
-	}
-
-	/** @inheritDoc */
-	public function loadTopics() {
-		if ( $this->topicConfigData === null ) {
-			return [];
-		}
-		if ( $this->topics !== null ) {
-			return $this->topics;
-		}
-
-		$topics = [];
-		// T386018: Handle this more gracefully. Do not allow changing ORES-based topic definitions per wiki.
-		if ( $this->topicRegistry instanceof WikimediaTopicRegistry ) {
-			$topics = $this->parseTopicsFromConfig( $this->topicConfigData );
-		}
-
-		$this->topics = $topics;
-		return $topics;
-	}
-
-	/**
-	 * Like loadTopics() but without caching.
-	 * @param mixed $config A JSON value.
-	 * @return TaskType[]|StatusValue
-	 */
-	private function parseTopicsFromConfig( $config ) {
-		$status = StatusValue::newGood();
-		$topics = [];
-		if ( !is_array( $config ) || array_filter( $config, 'is_array' ) !== $config ) {
-			return StatusValue::newFatal(
-				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
-		}
-
-		$groups = [];
-		if ( $this->topicType === self::CONFIGURATION_TYPE_ORES ) {
-			if ( !isset( $config['topics'] ) || !isset( $config['groups'] ) ) {
-				return StatusValue::newFatal(
-					'growthexperiments-homepage-suggestededits-config-wrongstructure' );
-			}
-			$groups = $config['groups'];
-			$config = $config['topics'];
-		}
-
-		$validORESTopics = $this->topicRegistry->getAllTopics();
-		foreach ( $config as $topicId => $topicConfiguration ) {
-			if ( !in_array( $topicId, $validORESTopics, true ) ) {
-				// T386018: Handle this more gracefully. Do not allow changing ORES-based topic definitions via config.
-				$status->fatal( new RawMessage( "'$topicId' is not a valid topic ID." ) );
-			}
-			$requiredFields = [
-				self::CONFIGURATION_TYPE_ORES => [ 'group', 'oresTopics' ],
-			][$this->topicType];
-			foreach ( $requiredFields as $field ) {
-				if ( !isset( $topicConfiguration[$field] ) ) {
-					$status->fatal( 'growthexperiments-homepage-suggestededits-config-missingfield',
-						'titles', $topicId );
-				}
-			}
-
-			if ( !$status->isGood() ) {
-				// don't try to load if the config data format was invalid
-				continue;
-			}
-
-			if ( $this->topicType === self::CONFIGURATION_TYPE_ORES ) {
-				'@phan-var array{group:string,oresTopics:string[]} $topicConfiguration';
-				$oresTopics = [];
-				foreach ( $topicConfiguration['oresTopics'] as $oresTopic ) {
-					$oresTopics[] = (string)$oresTopic;
-				}
-				$topic = new OresBasedTopic( $topicId, $topicConfiguration['group'], $oresTopics );
-				$status->merge( $this->configurationValidator->validateTopicMessages( $topic ) );
-			} else {
-				throw new LogicException( 'Impossible but this makes phan happy.' );
-			}
-			$topics[] = $topic;
-		}
-
-		if ( $this->topicType === self::CONFIGURATION_TYPE_ORES && $status->isGood() ) {
-			$this->configurationValidator->sortTopics( $topics, $groups );
-		}
-
-		// FIXME T301030 remove when campaign is done.
-		$campaignTopics = array_map( static function ( $topic ) {
-			return new CampaignTopic( $topic[ 'id' ], $topic[ 'searchExpression' ] );
-		}, $this->getCampaignTopics() );
-		if ( count( $campaignTopics ) ) {
-			array_unshift( $topics, ...$campaignTopics );
-		}
-
-		return $status->isGood() ? $topics : $status;
-	}
-
-	/**
-	 * Get campaign-specific topics
-	 */
-	private function getCampaignTopics(): array {
-		if ( is_callable( $this->campaignConfigCallback ) ) {
-			$getCampaignConfig = $this->campaignConfigCallback;
-			return $getCampaignConfig()->getCampaignTopics();
-		}
-		return [];
-	}
-
-	/**
-	 * Set the callback used to retrieve CampaignConfig, used to show campaign-specific topics
-	 */
-	public function setCampaignConfigCallback( callable $callback ) {
-		$this->campaignConfigCallback = $callback;
 	}
 
 	/**

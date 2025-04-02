@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Title\TitleFactory;
@@ -16,14 +17,10 @@ use StatusValue;
  */
 class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 
-	/** @var HttpRequestFactory */
-	private $requestFactory;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var string */
-	private $apiUrl;
+	private HttpRequestFactory $requestFactory;
+	private TitleFactory $titleFactory;
+	private string $apiUrl;
+	private ITopicRegistry $topicRegistry;
 
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
@@ -34,6 +31,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param string $apiUrl Base URL of the remote API (ending with 'api.php').
+	 * @param ITopicRegistry $topicRegistry
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -43,7 +41,8 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		HttpRequestFactory $requestFactory,
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
-		string $apiUrl
+		string $apiUrl,
+		ITopicRegistry $topicRegistry
 	) {
 		parent::__construct(
 			$taskTypeHandlerRegistry,
@@ -55,6 +54,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
 		$this->apiUrl = $apiUrl;
+		$this->topicRegistry = $topicRegistry;
 	}
 
 	/**
@@ -67,10 +67,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}
-		$topics = $configurationLoader->loadTopics();
-		if ( $topics instanceof StatusValue ) {
-			return $this->createError( $topics );
-		}
+		$topics = $this->topicRegistry->loadTopics();
 		$suggester = new RemoteSearchTaskSuggester(
 			$this->taskTypeHandlerRegistry,
 			$this->searchStrategy,

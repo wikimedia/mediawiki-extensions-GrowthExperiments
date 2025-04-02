@@ -12,6 +12,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\NewcomerTasksCacheRefreshJob;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use JobQueueGroup;
 use MediaWiki\Api\ApiBase;
@@ -35,6 +36,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	private ImageRecommendationFilter $imageRecommendationFilter;
 	private ProtectionFilter $protectionFilter;
 	private JobQueueGroup $jobQueueGroup;
+	private ITopicRegistry $topicRegistry;
 
 	public function __construct(
 		ApiQuery $queryModule,
@@ -44,7 +46,8 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		ConfigurationLoader $configurationLoader,
 		LinkRecommendationFilter $linkRecommendationFilter,
 		ImageRecommendationFilter $imageRecommendationFilter,
-		ProtectionFilter $protectionFilter
+		ProtectionFilter $protectionFilter,
+		ITopicRegistry $topicRegistry
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
@@ -53,6 +56,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$this->imageRecommendationFilter = $imageRecommendationFilter;
 		$this->protectionFilter = $protectionFilter;
 		$this->jobQueueGroup = $jobQueueGroup;
+		$this->topicRegistry = $topicRegistry;
 	}
 
 	/** @inheritDoc */
@@ -240,11 +244,8 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	/**
 	 * @return Topic[] Array of topic id => topic
 	 */
-	protected function getTopics() {
-		$topics = $this->configurationLoader->loadTopics();
-		if ( $topics instanceof StatusValue ) {
-			return [];
-		}
+	protected function getTopics(): array {
+		$topics = $this->topicRegistry->loadTopics();
 		return array_combine( array_map( static function ( Topic $topic ) {
 			return $topic->getId();
 		}, $topics ), $topics ) ?: [];

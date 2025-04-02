@@ -4,14 +4,16 @@ namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use CirrusSearch\Query\ArticleTopicFeature;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\RawOresTopic;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use StatusValue;
 
 /**
  * Configuration loader for customizing topic types (ores or growth) and task types;
  * used in listTaskCounts maintenance script
  */
-class TopicDecorator implements ConfigurationLoader {
+class TopicDecorator implements ConfigurationLoader, ITopicRegistry {
 
 	use ConfigurationLoaderTrait;
 
@@ -25,20 +27,24 @@ class TopicDecorator implements ConfigurationLoader {
 	 * @var TaskType[]
 	 */
 	private $extraTaskTypes;
+	private ITopicRegistry $topicRegistry;
 
 	/**
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param ITopicRegistry $topicRegistry
 	 * @param bool $useOresTopics Whether raw ORES topic should be used
 	 * @param TaskType[] $extraTaskTypes Extra task types to extend the task configuration with.
 	 */
 	public function __construct(
 		ConfigurationLoader $configurationLoader,
+		ITopicRegistry $topicRegistry,
 		bool $useOresTopics,
 		array $extraTaskTypes = []
 	) {
 		$this->configurationLoader = $configurationLoader;
 		$this->useOresTopics = $useOresTopics;
 		$this->extraTaskTypes = $extraTaskTypes;
+		$this->topicRegistry = $topicRegistry;
 	}
 
 	/** @inheritDoc */
@@ -51,7 +57,7 @@ class TopicDecorator implements ConfigurationLoader {
 	}
 
 	/** @inheritDoc */
-	public function loadTopics() {
+	public function loadTopics(): array {
 		if ( $this->useOresTopics ) {
 			$topics = array_map( static function ( string $oresId ) {
 				return new RawOresTopic( $oresId, $oresId );
@@ -60,7 +66,15 @@ class TopicDecorator implements ConfigurationLoader {
 				return $topics;
 			}
 		}
-		return $this->configurationLoader->loadTopics();
+		return $this->topicRegistry->loadTopics();
+	}
+
+	/** @inheritDoc */
+	public function getTopics(): array {
+		$topics = $this->loadTopics();
+		return array_combine( array_map( static function ( Topic $topic ) {
+			return $topic->getId();
+		}, $topics ), $topics );
 	}
 
 	/** @inheritDoc */

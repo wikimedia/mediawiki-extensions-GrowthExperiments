@@ -34,13 +34,14 @@ class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTes
 	public function testCreate( $taskTypes, $topics, $expectedError ) {
 		$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory(
 			$this->createMock( TaskTypeHandlerRegistry::class ),
-			$this->getNewcomerTasksConfigurationLoader( $taskTypes, $topics ),
+			$this->getNewcomerTasksConfigurationLoader( $taskTypes ),
 			$this->createNoOpMock( SearchStrategy::class ),
 			$this->createNoOpMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createNoOpMock( HttpRequestFactory::class ),
 			$this->createNoOpMock( TitleFactory::class ),
 			$this->createNoOpMock( LinkBatchFactory::class ),
-			'https://example.com'
+			'https://example.com',
+			$this->getTopicRegistry( $topics ),
 		);
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {

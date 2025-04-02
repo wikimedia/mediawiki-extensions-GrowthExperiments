@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Status\Status;
 use MediaWikiUnitTestCase;
@@ -29,26 +30,25 @@ abstract class SearchTaskSuggesterFactoryTestBase extends MediaWikiUnitTestCase 
 				'topics' => [ new Topic( 't' ) ],
 				'expectedError' => $error,
 			],
-			'topic error' => [
-				'taskTypes' => [
-					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [], [] ),
-				],
-				'topics' => $error,
-				'expectedError' => $error,
-			],
 		];
 	}
 
 	/**
 	 * @param TaskType[]|StatusValue $taskTypes
-	 * @param Topic[]|StatusValue $topics
 	 * @return ConfigurationLoader|MockObject
 	 */
-	protected function getNewcomerTasksConfigurationLoader( $taskTypes, $topics ) {
-		$loader = $this->createNoOpMock( ConfigurationLoader::class, [ 'loadTaskTypes', 'loadTopics' ] );
+	protected function getNewcomerTasksConfigurationLoader( $taskTypes ) {
+		$loader = $this->createNoOpMock( ConfigurationLoader::class, [ 'loadTaskTypes' ] );
 		$loader->method( 'loadTaskTypes' )->willReturn( $taskTypes );
-		$loader->method( 'loadTopics' )->willReturn( $topics );
 		return $loader;
+	}
+
+	/**
+	 * @param Topic[] $topics
+	 * @return StaticTopicRegistry
+	 */
+	protected function getTopicRegistry( array $topics ) {
+		return new StaticTopicRegistry( $topics );
 	}
 
 }

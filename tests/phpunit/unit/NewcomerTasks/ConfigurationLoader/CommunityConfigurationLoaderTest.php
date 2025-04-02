@@ -7,8 +7,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLo
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
-use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use LogicException;
 use MediaWiki\Title\TitleFactory;
 use MediaWikiUnitTestCase;
@@ -31,21 +29,14 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$suggestedEditsConfigProvider = array_key_exists( 'suggestedEditsConfigProvider', $overrides )
 			? $overrides['suggestedEditsConfigProvider']
 			: $this->createStub( SuggestedEditsConfigProvider::class );
-		$topicConfigData = array_key_exists( 'topicConfigData', $overrides )
-			? $overrides['topicConfigData']
-			: null;
 
 		return new CommunityConfigurationLoader(
 			$overrides['configurationValidator'] ?? $this->createStub(
 				ConfigurationValidator::class ),
 			$overrides['taskTypeHandlerRegistry'] ?? $this->createStub(
 				TaskTypeHandlerRegistry::class ),
-				$overrides['topicsRegistry'] ?? $this->createStub(
-					ITopicRegistry::class ),
-			$overrides['topicType'] ?? 'ores',
 			$suggestedEditsConfigProvider,
 			$overrides['titleFactory'] ?? $this->createStub( TitleFactory::class ),
-			$topicConfigData,
 			$overrides['logger'] ?? $this->createStub( LoggerInterface::class ) );
 	}
 
@@ -166,65 +157,6 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$result = $loader->loadInfoboxTemplates();
 
 		$this->assertSame( $errorStatus, $result );
-	}
-
-	public function testLoadTopicsConfig() {
-		$topicConfigData = [
-			'topics' => [
-				'art' => [
-					'group' => 'culture',
-					'oresTopics' => [ 'music', 'painting' ],
-				],
-				'science' => [
-					'group' => 'stem',
-					'oresTopics' => [ 'physics', 'biology' ],
-				]
-			],
-			'groups' => [ 'culture', 'stem' ]
-		];
-
-		$loader = $this->newLoader( [
-			'topicConfigData' => $topicConfigData
-		] );
-
-		$wrappedLoader = TestingAccessWrapper::newFromObject( $loader );
-		$result = $wrappedLoader->loadTopicsConfig();
-
-		$this->assertSame( $topicConfigData, $result );
-	}
-
-	public function testLoadTopicsWithNullConfig() {
-		$loader = $this->newLoader();
-		$result = $loader->loadTopics();
-
-		$this->assertSame( [], $result );
-	}
-
-	public function testLoadTopicsSuccess() {
-		$topicConfigData = [
-			'topics' => [
-				'art' => [
-					'group' => 'culture',
-					'oresTopics' => [ 'music', 'painting' ],
-				],
-			],
-			'groups' => [ 'culture' ]
-		];
-
-		$mockTopic = $this->createMock( OresBasedTopic::class );
-		$mockTopic->method( 'getId' )->willReturn( 'art' );
-
-		$loader = $this->newLoader( [
-			'topicConfigData' => $topicConfigData
-		] );
-
-		$wrappedLoader = TestingAccessWrapper::newFromObject( $loader );
-		$wrappedLoader->topics = [ $mockTopic ];
-
-		$result = $loader->loadTopics();
-
-		$this->assertCount( 1, $result );
-		$this->assertSame( $mockTopic, $result[0] );
 	}
 
 	public function testDisableAndEnableTaskTypeState() {

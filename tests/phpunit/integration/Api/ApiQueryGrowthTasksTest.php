@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Api\ApiUsageException;
@@ -136,10 +137,11 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$topic1 = new Topic( 'art' );
 		$topic2 = new Topic( 'science' );
 		$suggesterFactory = new StaticTaskSuggesterFactory( [] );
-		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2 ],
-			[ $topic1, $topic2 ] );
+		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2 ] );
+		$topicRegistry = new StaticTopicRegistry( [ $topic1, $topic2 ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
+		$this->setService( 'GrowthExperimentsTopicRegistry', $topicRegistry );
 
 		[ $data ] = $this->doApiRequest( [ 'action' => 'paraminfo',
 			'modules' => 'query+growthtasks' ] );

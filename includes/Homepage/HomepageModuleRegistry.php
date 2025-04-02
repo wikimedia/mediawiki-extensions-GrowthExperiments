@@ -132,6 +132,7 @@ class HomepageModuleRegistry {
 					$growthServices->getLinkRecommendationFilter(),
 					$growthServices->getImageRecommendationFilter(),
 					$services->getStatsFactory(),
+					$growthServices->getTopicRegistry()
 				);
 			},
 

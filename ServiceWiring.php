@@ -85,8 +85,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\Topic\EmptyTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\UserDatabaseHelper;
@@ -571,12 +571,6 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$config = $growthServices->getGrowthConfig();
 
-		$topicType = $config->get( 'GENewcomerTasksTopicType' );
-		if ( $topicType !== CommunityConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
-			throw new LogicException( 'Unsupported topic type of ' . $topicType );
-		}
-
-		$topicConfigData = $config->get( 'GENewcomerTasksOresTopicConfig' );
 		$providerFactory = CommunityConfigurationServices::wrap( $services )
 			->getConfigurationProviderFactory();
 		$suggestedEditsProvider = in_array( 'GrowthSuggestedEdits', $providerFactory->getSupportedKeys() ) ?
@@ -585,11 +579,8 @@ return [
 		$configurationLoader = new CommunityConfigurationLoader(
 			$growthServices->getNewcomerTasksConfigurationValidator(),
 			$growthServices->getTaskTypeHandlerRegistry(),
-			$growthServices->getTopicRegistry(),
-			$topicType,
 			$suggestedEditsProvider,
 			$services->getTitleFactory(),
-			$topicConfigData,
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
 		);
 
@@ -603,20 +594,13 @@ return [
 			$configurationLoader->disableTaskType( SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID );
 		}
 
-		$configurationLoader->setCampaignConfigCallback( static function () use ( $growthServices ) {
-			return $growthServices->getGrowthExperimentsCampaignConfig();
-		} );
-
 		return $configurationLoader;
 	},
 
 	'GrowthExperimentsNewcomerTasksConfigurationValidator' => static function (
 		MediaWikiServices $services
 	): ConfigurationValidator {
-		return new ConfigurationValidator(
-			RequestContext::getMain(),
-			$services->getCollationFactory()
-		);
+		return new ConfigurationValidator( RequestContext::getMain() );
 	},
 
 	'GrowthExperimentsNewcomerTasksUserOptionsLookup' => static function (
@@ -788,7 +772,8 @@ return [
 				$services->getHttpRequestFactory(),
 				$services->getTitleFactory(),
 				$services->getLinkBatchFactory(),
-				$growthConfig->get( 'GENewcomerTasksRemoteApiUrl' )
+				$growthConfig->get( 'GENewcomerTasksRemoteApiUrl' ),
+				$growthServices->getTopicRegistry()
 			);
 		} elseif ( $isCirrusSearchLoadedAndConfigured ) {
 			$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory(
@@ -799,7 +784,8 @@ return [
 				$services->getSearchEngineFactory(),
 				$services->getLinkBatchFactory(),
 				$services->getStatsFactory(),
-				$services->getStatsdDataFactory()
+				$services->getStatsdDataFactory(),
+				$growthServices->getTopicRegistry()
 			);
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
 				$taskSuggesterFactory,
@@ -848,9 +834,24 @@ return [
 		MediaWikiServices $services
 	): ITopicRegistry {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikimediaMessages' ) ) {
-			return new WikimediaTopicRegistry();
+			$growthServices = GrowthExperimentsServices::wrap( $services );
+			$config = $growthServices->getGrowthConfig();
+			$topicType = $config->get( 'GENewcomerTasksTopicType' );
+			if ( $topicType !== WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES ) {
+				throw new LogicException( 'Unsupported topic type of ' . $topicType );
+			}
+
+			$registry = new WikimediaTopicRegistry(
+				RequestContext::getMain(),
+				$services->getCollationFactory()
+			);
+			$registry->setCampaignConfigCallback( static function () use ( $growthServices ) {
+				return $growthServices->getGrowthExperimentsCampaignConfig();
+			} );
+
+			return $registry;
 		}
-		return new EmptyTopicRegistry();
+		return new StaticTopicRegistry();
 	},
 
 	'GrowthExperimentsSuggestionsInfo' => static function (
@@ -861,7 +862,8 @@ return [
 			new SuggestionsInfo(
 				$growthServices->getTaskSuggesterFactory(),
 				$growthServices->getTaskTypeHandlerRegistry(),
-				$growthServices->getNewcomerTasksConfigurationLoader()
+				$growthServices->getNewcomerTasksConfigurationLoader(),
+				$growthServices->getTopicRegistry()
 			),
 			$services->getMainWANObjectCache()
 		);

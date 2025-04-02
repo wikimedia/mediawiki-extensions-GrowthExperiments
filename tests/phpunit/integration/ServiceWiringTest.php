@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\MainConfigNames;
 use MediaWikiIntegrationTestCase;
 
@@ -70,8 +71,9 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 		$this->resetServices();
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
-		$configurationLoader->method( 'loadTopics' )->willReturn( [] );
 		$configurationLoader->method( 'loadTaskTypes' )->willReturn( [] );
+		$topicRegistry = $this->createMock( ITopicRegistry::class );
+		$topicRegistry->method( 'loadTopics' )->willReturn( [] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 		$taskSuggesterFactory = $growthServices->getTaskSuggesterFactory();
 		$this->assertInstanceOf( RemoteSearchTaskSuggesterFactory::class, $taskSuggesterFactory );

@@ -29,19 +29,20 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 	/**
 	 * @dataProvider provideCreate
 	 * @param TaskType[]|StatusValue $taskTypes
-	 * @param Topic[]|StatusValue $topics
+	 * @param Topic[] $topics
 	 * @param StatusValue|null $expectedError
 	 */
-	public function testCreate( $taskTypes, $topics, $expectedError ) {
+	public function testCreate( $taskTypes, array $topics, ?StatusValue $expectedError ) {
 		$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory(
 			$this->createMock( TaskTypeHandlerRegistry::class ),
-			$this->getNewcomerTasksConfigurationLoader( $taskTypes, $topics ),
+			$this->getNewcomerTasksConfigurationLoader( $taskTypes ),
 			$this->createNoOpMock( SearchStrategy::class ),
 			$this->createNoOpMock( NewcomerTasksUserOptionsLookup::class ),
 			$this->createNoOpMock( SearchEngineFactory::class ),
 			$this->createNoOpMock( LinkBatchFactory::class ),
 			$this->createMock( StatsFactory::class ),
-			$this->createMock( IBufferingStatsdDataFactory::class )
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$this->getTopicRegistry( $topics )
 		);
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {

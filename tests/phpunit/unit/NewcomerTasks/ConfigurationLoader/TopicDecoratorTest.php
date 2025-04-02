@@ -5,9 +5,12 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\RawOresTopic;
+use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWikiUnitTestCase;
+use StatusValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator
@@ -22,7 +25,8 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 			new Topic( 'topic1' )
 		];
 		$configurationLoader = new TopicDecorator(
-			$this->getConfigurationLoaderMock( $taskTypes, $topics ),
+			$this->getConfigurationLoaderMock( $taskTypes ),
+			$this->getTopicRegistryMock( $topics ),
 			false,
 			[]
 		);
@@ -41,9 +45,10 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 			new TaskType( '_null', TaskType::DIFFICULTY_HARD )
 		];
 		$configurationLoader = new TopicDecorator(
-			$this->getConfigurationLoaderMock( $taskTypes, $topics ),
+			$this->getConfigurationLoaderMock( $taskTypes ),
+			$this->getTopicRegistryMock( $topics ),
 			false,
-			$additionalTaskTypes
+			$additionalTaskTypes,
 		);
 		$this->assertArrayEquals(
 			$configurationLoader->loadTaskTypes(),
@@ -56,7 +61,8 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY )
 		];
 		$configurationLoader = new TopicDecorator(
-			$this->getConfigurationLoaderMock( $taskTypes, [ new Topic( 'topic1' ) ] ),
+			$this->getConfigurationLoaderMock( $taskTypes ),
+			$this->getTopicRegistryMock( [ new Topic( 'topic1' ) ] ),
 			true,
 			[]
 		);
@@ -74,7 +80,8 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 			new TaskType( '_null', TaskType::DIFFICULTY_HARD )
 		];
 		$configurationLoader = new TopicDecorator(
-			$this->getConfigurationLoaderMock( $taskTypes, [ new Topic( 'topic1' ) ] ),
+			$this->getConfigurationLoaderMock( $taskTypes ),
+			$this->getTopicRegistryMock( [ new Topic( 'topic1' ) ] ),
 			true,
 			$additionalTaskTypes
 		);
@@ -84,10 +91,17 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	private function getConfigurationLoaderMock( $taskTypes = [], $topics = [] ): ConfigurationLoader {
+	private function getConfigurationLoaderMock( $taskTypes = [] ): ConfigurationLoader {
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
 		$configurationLoader->method( 'loadTaskTypes' )->willReturn( $taskTypes );
-		$configurationLoader->method( 'loadTopics' )->willReturn( $topics );
 		return $configurationLoader;
+	}
+
+	/**
+	 * @param Topic[]|StatusValue $topics
+	 * @return ITopicRegistry
+	 */
+	protected function getTopicRegistryMock( $topics = [] ) {
+		return new StaticTopicRegistry( $topics );
 	}
 }

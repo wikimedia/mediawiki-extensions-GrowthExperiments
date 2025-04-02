@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests\Unit\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoaderTrait;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWikiUnitTestCase;
 use StatusValue;
 
@@ -15,29 +14,22 @@ class ConfigurationLoaderTraitTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param mixed $taskTypesResult The value to return from loadTaskTypes()
-	 * @param mixed $topicsResult The value to return from loadTopics()
 	 * @return mixed Instance of anonymous class using ConfigurationLoaderTrait
 	 * @phan-return object
 	 */
-	private function createTraitImplementation( $taskTypesResult, $topicsResult ) {
+	private function createTraitImplementation( $taskTypesResult ) {
 		// @phpcs:ignore MediaWiki.Commenting.FunctionComment.ObjectTypeHintReturn
-		return new class( $taskTypesResult, $topicsResult ) {
+		return new class( $taskTypesResult ) {
 			use ConfigurationLoaderTrait;
 
 			private $taskTypesResult;
-			private $topicsResult;
 
-			public function __construct( $taskTypesResult, $topicsResult ) {
+			public function __construct( $taskTypesResult ) {
 				$this->taskTypesResult = $taskTypesResult;
-				$this->topicsResult = $topicsResult;
 			}
 
 			public function loadTaskTypes() {
 				return $this->taskTypesResult;
-			}
-
-			public function loadTopics() {
-				return $this->topicsResult;
 			}
 		};
 	}
@@ -65,34 +57,6 @@ class ConfigurationLoaderTraitTest extends MediaWikiUnitTestCase {
 		$traitImpl = $this->createTraitImplementation( $errorStatus, [] );
 
 		$result = $traitImpl->getTaskTypes();
-
-		$this->assertIsArray( $result );
-		$this->assertSame( [], $result, 'Should return an empty array when StatusValue error is returned' );
-	}
-
-	public function testGetTopics(): void {
-		$topic1 = $this->createMock( Topic::class );
-		$topic1->method( 'getId' )->willReturn( 'art' );
-
-		$topic2 = $this->createMock( Topic::class );
-		$topic2->method( 'getId' )->willReturn( 'science' );
-
-		$topics = [ $topic1, $topic2 ];
-		$traitImpl = $this->createTraitImplementation( [], $topics );
-
-		$result = $traitImpl->getTopics();
-
-		$this->assertIsArray( $result );
-		$this->assertCount( 2, $result );
-		$this->assertArrayHasKey( 'art', $result );
-		$this->assertArrayHasKey( 'science', $result );
-		$this->assertSame( $topic1, $result['art'] );
-		$this->assertSame( $topic2, $result['science'] );
-
-		$errorStatus = StatusValue::newFatal( 'some-error' );
-		$traitImpl = $this->createTraitImplementation( [], $errorStatus );
-
-		$result = $traitImpl->getTopics();
 
 		$this->assertIsArray( $result );
 		$this->assertSame( [], $result, 'Should return an empty array when StatusValue error is returned' );

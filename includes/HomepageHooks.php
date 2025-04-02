@@ -39,6 +39,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
@@ -1186,29 +1187,22 @@ class HomepageHooks implements
 	 * Some UI elements will be disabled if this returns an empty array.
 	 * @param RL\Context $context
 	 * @return array
-	 *   - on success: [ topic id => topic data, ... ]; see Topic::toArray for data format.
+	 *   - [ topic id => topic data, ... ]; see Topic::toArray for data format.
 	 *     Note that the messages in the task data are plaintext and it is the caller's
 	 *     responsibility to escape them.
-	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
 	public static function getTopicsJson( RL\Context $context ) {
-		$configurationLoader = self::getConfigurationLoaderForResourceLoader( $context );
-		$topics = $configurationLoader->loadTopics();
-		if ( $topics instanceof StatusValue ) {
-			$errorMessages = array_map(
-				static fn ( $spec ) => $context->msg( $spec )->parse(),
-				$topics->getMessages()
-			);
-			return [
-				'_error' => $errorMessages[0],
-			];
-		} else {
-			$topicsData = [];
-			foreach ( $topics as $topic ) {
-				$topicsData[$topic->getId()] = $topic->getViewData( $context );
-			}
-			return $topicsData;
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$registry = $growthServices->getTopicRegistry();
+		if ( $registry instanceof WikimediaTopicRegistry ) {
+			$registry->setMessageLocalizer( $context );
 		}
+		$topics = $registry->loadTopics();
+		$topicsData = [];
+		foreach ( $topics as $topic ) {
+			$topicsData[$topic->getId()] = $topic->getViewData( $context );
+		}
+		return $topicsData;
 	}
 
 	/**

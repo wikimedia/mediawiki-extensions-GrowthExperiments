@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentityValue;
 use StatusValue;
@@ -25,6 +26,7 @@ class SuggestionsInfo implements NewcomerTasksInfo {
 	 * @var TaskSuggesterFactory
 	 */
 	private $taskSuggesterFactory;
+	private ITopicRegistry $topicRegistry;
 
 	/**
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
@@ -34,11 +36,13 @@ class SuggestionsInfo implements NewcomerTasksInfo {
 	public function __construct(
 		TaskSuggesterFactory $taskSuggesterFactory,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		ConfigurationLoader $configurationLoader
+		ConfigurationLoader $configurationLoader,
+		ITopicRegistry $topicRegistry
 	) {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->configurationLoader = $configurationLoader;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
+		$this->topicRegistry = $topicRegistry;
 	}
 
 	/** @inheritDoc */
@@ -46,15 +50,10 @@ class SuggestionsInfo implements NewcomerTasksInfo {
 		$user = new UserIdentityValue( 0, 'SuggestionsInfo' );
 		$taskSuggester = $this->taskSuggesterFactory->create( $this->configurationLoader );
 		$taskTypes = $this->configurationLoader->loadTaskTypes();
-		$topics = $this->configurationLoader->loadTopics();
+		$topics = $this->topicRegistry->loadTopics();
 		$data = [];
 		if ( $taskTypes instanceof StatusValue ) {
 			$data['error']['taskTypes'] = Status::wrap( $taskTypes )->getWikiText();
-		}
-		if ( $topics instanceof StatusValue ) {
-			$data['error']['topics'] = Status::wrap( $topics )->getWikiText();
-		}
-		if ( $taskTypes instanceof StatusValue || $topics instanceof StatusValue ) {
 			return $data;
 		}
 		$totalCount = 0;
