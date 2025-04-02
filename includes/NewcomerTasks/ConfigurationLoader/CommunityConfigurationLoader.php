@@ -131,7 +131,7 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 		return $result;
 	}
 
-	public function loadTaskTypes() {
+	public function loadTaskTypes(): array {
 		if ( $this->taskTypes !== null ) {
 			return $this->taskTypes;
 		}

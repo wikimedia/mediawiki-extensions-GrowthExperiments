@@ -42,6 +42,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 		return 'growth-tools';
 	}
 
+	/** @inheritDoc */
 	public function doesWrites() {
 		return true;
 	}
@@ -53,6 +54,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 		return $this->msg( 'growthexperiments-homepage-claimmentee-title' );
 	}
 
+	/** @inheritDoc */
 	protected function preHtml() {
 		return Html::element(
 			'p',
@@ -220,7 +222,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 		}
 	}
 
-	private function validateMentees() {
+	private function validateMentees(): bool {
 		foreach ( $this->mentees as $mentee ) {
 			if ( !( $mentee instanceof User && $mentee->isNamed() ) ) {
 				return false;

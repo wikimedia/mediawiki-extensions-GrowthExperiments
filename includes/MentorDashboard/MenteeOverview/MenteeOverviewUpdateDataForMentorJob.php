@@ -39,6 +39,7 @@ class MenteeOverviewUpdateDataForMentorJob extends Job implements GenericParamet
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
 	}
 
+	/** @inheritDoc */
 	public function run() {
 		$mentor = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['mentorId'] );
 		if ( !$mentor ) {

@@ -62,6 +62,7 @@ class TipsHandler extends SimpleHandler {
 		return $response;
 	}
 
+	/** @inheritDoc */
 	public function needsWriteAccess() {
 		return false;
 	}
