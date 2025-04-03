@@ -3,6 +3,8 @@
 /tests/qunit/__mocks__/**
 /vendor/
 /coverage/
-/documentation/frontend/coverage
 /node_modules/
 /docs
+
+# This is linted by the dedicated eslint run in that directory which then also has the dependencies installed
+/documentation/frontend/

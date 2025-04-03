@@ -16,7 +16,8 @@
 		"ecmaVersion": 8
 	},
 	"rules": {
-		"max-len": "off"
+		"max-len": "off",
+		"unicorn/prefer-includes": "off"
 	},
 	"settings": {
 		"jsdoc": {
@@ -54,7 +55,6 @@
 				"jsdoc/valid-types": "off",
 				"jsdoc/no-undefined-types": "off",
 				"es-x/no-async-functions": "off",
-				"es-x/no-array-prototype-includes": "off",
 				"es-x/no-object-values": "off",
 				"es-x/no-trailing-function-commas": "off",
 				"no-cond-assign": "off",

@@ -6,7 +6,8 @@
 		"vue/no-unsupported-features": [
 			"error",
 			{ "version": "^3.2.27", "ignores": [] }
-		]
+		],
+		"unicorn/prefer-includes": "off"
 	},
 	"overrides": [
 		{
@@ -25,8 +26,8 @@
 		},
 		{
 			"files": [ "{component-demos,components}/**/*.test.js" ],
-			"extends": [ "wikimedia/language/es6", "wikimedia/mediawiki" ],
-			"rules": { "compat/compat": "off" }
+			"extends": [ "wikimedia/server" ],
+			"parserOptions": { "ecmaVersion": 2020, "sourceType": "module" }
 		}
 	],
 	"parserOptions": { "ecmaVersion": 2020, "sourceType": "module" }
