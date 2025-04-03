@@ -101,6 +101,18 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			[ 'action' => 'edit' ],
 			null
 		];
+		yield 'viewing a specific revision of the page' => [
+			[],
+			null,
+			[ 'oldid' => '12345' ],
+			null
+		];
+		yield 'viewing a diff of the page' => [
+			[],
+			null,
+			[ 'diff' => 'next' ],
+			null
+		];
 		yield 'editing the page with VisualEditor' => [
 			[],
 			null,
@@ -211,6 +223,8 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		$stubRequest->method( 'getVal' )->willReturnMap( [
 			[ 'action', 'view', $overrides['action'] ?? 'view' ],
 			[ 'veaction', null, $overrides['veaction'] ?? null ],
+			[ 'oldid', null, $overrides['oldid'] ?? null ],
+			[ 'diff', null, $overrides['diff'] ?? null ],
 		] );
 		$mockOutputPage->method( 'getRequest' )->willReturn( $stubRequest );
 		return $mockOutputPage;
