@@ -33,10 +33,10 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
         class="cdx-select-vue cdx-select-vue--enabled cdx-select-vue--no-selections cdx-select-vue--status-default ext-growthExperiments-PersonalizedPraiseSettings__input"
       >
         <div
-          aria-controls="cdx-select-menu-0"
+          aria-controls="v-0"
           aria-expanded="false"
           class="cdx-select-vue__handle"
-          id="cdx-select-handle-1"
+          id="v-1"
           role="combobox"
           tabindex="0"
         >
@@ -53,7 +53,6 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               viewBox="0 0 20 20"
               width="20"
               xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
             >
               <!--v-if-->
               <g>
@@ -70,8 +69,9 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
         >
           <ul
             class="cdx-menu__listbox"
-            id="cdx-select-menu-0"
+            id="v-0"
             role="listbox"
+            tabindex="-1"
           >
             <!--v-if-->
             <!--v-if-->
@@ -80,7 +80,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
             <li
               aria-disabled="false"
               class="cdx-menu-item cdx-menu-item--enabled"
-              id="cdx-menu-item-2"
+              id="v-2-1"
               role="option"
             >
               
@@ -112,7 +112,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               aria-disabled="false"
               aria-selected="true"
               class="cdx-menu-item cdx-menu-item--selected cdx-menu-item--enabled"
-              id="cdx-menu-item-3"
+              id="v-2-2"
               role="option"
             >
               
@@ -143,7 +143,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
             <li
               aria-disabled="false"
               class="cdx-menu-item cdx-menu-item--enabled"
-              id="cdx-menu-item-4"
+              id="v-2-3"
               role="option"
             >
               
@@ -174,7 +174,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
             <li
               aria-disabled="false"
               class="cdx-menu-item cdx-menu-item--enabled"
-              id="cdx-menu-item-5"
+              id="v-2-4"
               role="option"
             >
               
