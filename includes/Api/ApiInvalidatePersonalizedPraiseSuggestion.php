@@ -81,6 +81,7 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 		}
 	}
 
+	/** @inheritDoc */
 	public function needsToken() {
 		return 'csrf';
 	}

@@ -382,7 +382,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		return $html;
 	}
 
-	private function buildSidebar() {
+	private function buildSidebar(): string {
 		return Html::rawElement(
 			'div',
 			[ 'class' => 'welcomesurvey-sidebar' ],

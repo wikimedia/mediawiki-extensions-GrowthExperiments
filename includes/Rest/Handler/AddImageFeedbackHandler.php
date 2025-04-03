@@ -48,6 +48,7 @@ class AddImageFeedbackHandler extends SimpleHandler {
 		$this->addImageSubmissionHandler = $addImageSubmissionHandler;
 	}
 
+	/** @inheritDoc */
 	public function run() {
 		$authority = $this->getAuthority();
 		$user = $authority->getUser();
