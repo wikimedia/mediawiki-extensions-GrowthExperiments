@@ -68,7 +68,7 @@ function mwApiCommands( cypressConfig: Cypress.PluginConfigOptions ): {
 
 			state.users[ username ] = userClient;
 
-			return Promise.resolve( { username, password } );
+			return { username, password };
 		},
 
 		async 'MwApi:Edit'( { username, title, text, summary } ) {
@@ -82,10 +82,10 @@ function mwApiCommands( cypressConfig: Cypress.PluginConfigOptions ): {
 
 			if ( editResult.edit.result !== 'Success' ) {
 				console.error( 'Edit failed', editResult );
-				return Promise.reject( new Error( 'edit failed: ' + editResult.edit.result ) );
+				throw new Error( 'edit failed: ' + editResult.edit.result );
 			}
 
-			return Promise.resolve( editResult.edit );
+			return editResult.edit;
 		},
 	};
 }
