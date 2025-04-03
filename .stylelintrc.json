@@ -1,10 +1,12 @@
 {
 	"extends": "stylelint-config-wikimedia",
+	"reportNeedlessDisables": null,
 	"rules": {
 		"selector-max-id": null,
 		"no-descending-specificity": null,
 		"declaration-property-unit-disallowed-list": null,
 		"@stylistic/declaration-colon-space-after": null,
-		"@stylistic/indentation": null
+		"@stylistic/indentation": null,
+		"declaration-no-important": null
 	}
 }
