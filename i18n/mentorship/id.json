@@ -12,7 +12,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Dasbor guru",
 	"growthexperiments-mentor-dashboard-pt-link": "Dasbor pembimbing",
-	"growthexperiments-mentor-dashboard-disabled": "Dasbor guru tidak diaktifkan di wiki ini.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Untuk mengaktifkan dasbor guru, {{GENDER:|Anda}} harus [[$1|mendaftar sebagai guru]] terlebih dahulu.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Sebelum dasbor guru dapat digunakan, daftar mentor perlu dikonfigurasi terlebih dahulu. Seorang pengurus dapat menggunakan [[Special:EditGrowthConfig]] untuk melakukan hal tersebut.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Murid {{GENDER:|Anda}}",

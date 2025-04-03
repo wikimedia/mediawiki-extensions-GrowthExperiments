@@ -11,7 +11,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Nástěnka mentora",
 	"growthexperiments-mentor-dashboard-pt-link": "Nástěnka mentora",
-	"growthexperiments-mentor-dashboard-disabled": "Nástěnka mentora na tomto projektu zatím není aktivovaná.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Pro aktivování nástěnky mentorů se nejprve {{GENDER:|musíte}} [[$1|zapsat jako mentor]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Předtím, než můžete nástěnku mentorů použít, musí být nakonfigurován seznam mentorů. Správce může za tímto účelem využít stránky [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Vaši}} nováčci",

@@ -9,7 +9,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "داشبۆردی مامۆستا",
 	"growthexperiments-mentor-dashboard-pt-link": "داشبۆردی مامۆستا",
-	"growthexperiments-mentor-dashboard-disabled": "داشبۆردی مامۆستا لەم ویکییە چالاک نەکراوە.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "بۆ چالاککردنی داشبۆردی مامۆستا، پێویستە سەرەتا {{GENDER:|خۆت}}  [[$1|وەک مامۆستا ناونووس بکەیت]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "پێش ئەوەی داشبۆردی مامۆستا بەکاربھێندرێت، سەرەتا پێویستە پێڕستی مامۆستا ڕێک بخرێت. بۆ ئەو مەبەستە بەڕێوەبەرێک دەتوانێت [[Special:EditGrowthConfig]] بەکاربێنێت.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|قوتابییەکانت}}",

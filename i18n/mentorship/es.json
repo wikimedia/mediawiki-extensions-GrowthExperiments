@@ -19,7 +19,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Panel de control de mentoría",
 	"growthexperiments-mentor-dashboard-pt-link": "Panel de mentoría",
-	"growthexperiments-mentor-dashboard-disabled": "El panel de control de mentoría no está habilitado en esta wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Para habilitar el panel de mentoría, necesitas [[$1|inscribirte como mentor o mentora]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Antes de que se pueda utilizar el panel de control de mentoría, es necesario configurar antes la lista de mentores y mentoras. Un administrador/a puede usar [[Special:EditGrowthConfig]] para ese propósito.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Tus aprendices",

@@ -11,7 +11,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Fadderpanel",
 	"growthexperiments-mentor-dashboard-pt-link": "Fadderpanel",
-	"growthexperiments-mentor-dashboard-disabled": "Fadderpanelen har inte aktiverats på denna wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "För att slå på fadderpanelen måste {{GENDER:|du}} först [[$1|anmäla dig som fadder]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Innan fadderpanelen kan användas måste en fadderlista konfigureras. En administratör kan använda [[Special:EditGrowthConfig]] till det.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Dina}} nybörjare",

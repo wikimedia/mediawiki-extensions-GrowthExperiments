@@ -12,7 +12,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "মেন্টর ড্যাশবোর্ড",
 	"growthexperiments-mentor-dashboard-pt-link": "মেন্টর ড্যাশবোর্ড",
-	"growthexperiments-mentor-dashboard-disabled": "এই উইকিতে মেন্টর ড্যাশবোর্ড সক্রিয় করা নেই।",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "মেন্টর ড্যাশবোর্ড চালু করার জন্য {{GENDER:|আপনাকে}} প্রথমে [[$1|একজন মেন্টর হিসেবে নিজেকে নথিভুক্ত করতে হবে]]।",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "মেন্টর ড্যাশবোর্ড ব্যবহারের পূর্বে মেন্টরের তালিকা তৈরি করতে হবে। একজন প্রশাসক [[Special:EditGrowthConfig]]-এ গিয়ে এই কাজ করতে পারবেন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|আপনার}} পরামর্শগ্রহীতা",

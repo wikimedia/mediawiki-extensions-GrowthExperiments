@@ -16,7 +16,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Tableau de bord du mentor",
 	"growthexperiments-mentor-dashboard-pt-link": "Tableau de bord du mentor",
-	"growthexperiments-mentor-dashboard-disabled": "Le tableau de bord du mentor n’est pas activé sur ce wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Pour activer le tableau de bord du tutorat, vous devez d’abord [[$1|vous inscrire comme tut{{GENDER:|eur|trice}} candidat{{GENDER:||e}}]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Avant de pouvoir utiliser le tableau de bord du tutorat, la liste des tuteurs doit être configurée. Un administrateur peut utiliser [[Special:EditGrowthConfig]] pour cela.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Vos}} apprentis",

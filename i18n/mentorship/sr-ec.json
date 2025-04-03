@@ -9,7 +9,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Менторска табла",
 	"growthexperiments-mentor-dashboard-pt-link": "Менторска табла",
-	"growthexperiments-mentor-dashboard-disabled": "Менторска контролна табла није омогућена на овом пројекту.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Да бисте укључили менторску контролну таблу, {{GENDER:|морате}} се најпре [[$1|пријавити за ментора]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Пре употребе менторске контролне табле треба подесити списак ментора. Ради тога се администратор може користити страницом [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Ваше}} новајлије",

@@ -8,7 +8,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Taboleiro de mentoría",
 	"growthexperiments-mentor-dashboard-pt-link": "Taboleiro de mentoría",
-	"growthexperiments-mentor-dashboard-disabled": "O taboleiro de mentoría non está activado neste wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Para activar o taboleiro de mentoría, primeiro tes que [[$1|inscribirte como {{GENDER:|mentor|mentora}}]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Antes de que se poida utilizar o taboleiro de mentoría, cómpre configurar a lista de mentores. Un administrador ten que usar [[Special:EditGrowthConfig]] para iso.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Os teus|As túas}} aprendices",

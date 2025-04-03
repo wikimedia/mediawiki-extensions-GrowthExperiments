@@ -7,7 +7,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentoren-Dashboard",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentoren-Dashboard",
-	"growthexperiments-mentor-dashboard-disabled": "De Mentoren-Dashboard ass op dëser Wiki net aktivéiert.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Fir de Mentoren-Dashboard z'aktivéiere muss Dir Iech fir d'éischt [[$1|als Mentor aschreiwen]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Ier de Mentoren-Dashboard benotzt ka ginn, muss d'Lëscht vun de Mentore konfiguréiert ginn. Fir dat ze maache kann een Administrateur [[Special:EditGrowthConfig]] benotzen.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "D'Tabell brauch JavaScript. Aktivéiert wgl. JavaScript fir dëst Modul benotzen ze kënnen.",

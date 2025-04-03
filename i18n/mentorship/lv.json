@@ -7,7 +7,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentora panelis",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentora panelis",
-	"growthexperiments-mentor-dashboard-disabled": "Mentora panelis šajā vikivietnē nav iespējots.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Lai iespējotu mentora paneli, {{GENDER:|tev}} vispirms [[$1|jāpiesakās par mentoru]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Tavi}} audzēkņi",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Zemāk redzami {{GENDER:|tavi}} audzēkņi. Izmanto filtrus, lai mainītu to, kuri audzēkņi ir redzami.",

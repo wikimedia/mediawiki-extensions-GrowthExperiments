@@ -6,7 +6,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentoriaus prietaisų skydelis",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentoriaus prietaisų skydelis",
-	"growthexperiments-mentor-dashboard-disabled": "Mentoriaus prietaisų skydelis neįjungtas šiame viki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Norėdami įjungti mentoriaus prietaisų skydelį, {{GENDER:|jums}} pirma reikia [[$1|užsiregistruoti kaip mentoriui]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Prieš tai, kol galėsite naudoti mentoriaus prietaisų skydelį, mentorių sąrašas turi būti sukonfigūruotas. Administratorius tam gali naudoti [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Jūsų}} mentees",

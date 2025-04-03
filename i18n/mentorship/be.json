@@ -12,7 +12,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Панэль настаўніка",
 	"growthexperiments-mentor-dashboard-pt-link": "Панэль настаўніка",
-	"growthexperiments-mentor-dashboard-disabled": "Панэль настаўніка не ўключана ў гэтай вікі.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Каб уключыць панэль настаўніка, спачатку {{GENDER:|трэба}} [[$1|запісацца ў настаўніцтва]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Перш чым выкарыстоўваць панэль настаўніка, спачатку трэба наладзіць спіс настаўнікаў. Адміністратар можа выкарыстоўваць для гэтага [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Вашы}} падапечныя",

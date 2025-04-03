@@ -6,7 +6,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Tabuliero de instrumentos del mentor",
 	"growthexperiments-mentor-dashboard-pt-link": "Tabuliero de instrumentos del mentor",
-	"growthexperiments-mentor-dashboard-disabled": "Le tabuliero de instrumentos del mentor non es activate sur iste wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Pro activar le tabuliero de instrumentos del mentor, tu debe primo [[$1|inscriber te como mentor]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Ante que le tabuliero de instrumentos del mentor pote esser usate, le lista de mentores debe primo esser configurate. Un administrator pote usar [[Special:EditGrowthConfig]] pro isto.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Tu apprentisses",

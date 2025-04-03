@@ -7,7 +7,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "سکيا ڏيندڙن جو ڊيشبورڊ",
 	"growthexperiments-mentor-dashboard-pt-link": "سکيا ڏيندڙن جو ڊيشبورڊ",
-	"growthexperiments-mentor-dashboard-disabled": "ھن وڪي تي سکيا ڏيندڙن جي ڊيشبورڊ کي فعال ناھي بڻايو ويو.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "سکيا ڏيندڙن جي ڊيشبورڊ کي فعال ڪرڻ لاءِ، {{GENDER:|توھان}} کي پھريان [[$1| بطور ھڪ سکيا ڏيندڙ طور داخلا]] جي ضرورت آھي.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "ان کان اڳ جو سکيا ڏيندڙن جي ڊيشبورڊ کي استعمال ڪري سگهجي، پھريان سکيا ڏيندڙن جي فھرست کي ترتيب ڏيڻ جي ضرورت آھي. ڪو منتظم [[Special:EditGrowthConfig]] کي استعمال ڪري ايئن ڪري سگهي ٿو.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|توھان}} جي سکيا ھيٺ",

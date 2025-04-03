@@ -16,7 +16,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Lotsen-Dashboard",
 	"growthexperiments-mentor-dashboard-pt-link": "Lotsen-Dashboard",
-	"growthexperiments-mentor-dashboard-disabled": "Die Lotsen-Verwaltungsseite ist in diesem Wiki nicht aktiviert.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Um die Lotsen-Verwaltungsseite zu aktivieren, musst du dich zunächst [[$1|als {{Gender:|Lotse|Lotsin}} eintragen]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Bevor die Lotsen-Verwaltungsseite benutzt werden kann, muss die Growth-Erweiterung konfiguriert werden. Ein Administrator kann [[Special:EditGrowthConfig]] dafür verwenden.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Deine Neulinge",

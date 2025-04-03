@@ -8,7 +8,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "గురువు డ్యాష్‌బోర్డు",
 	"growthexperiments-mentor-dashboard-pt-link": "గురువు డ్యాష్‌బోర్డు",
-	"growthexperiments-mentor-dashboard-disabled": "ఈ వికీలో గురువు డ్యాష్‌బోర్డును చేతనం చెయ్యలేదు.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "గురువు డ్యాష్‌బోర్డును చేతనం చేసుకోవాలంటే, ముందు {{GENDER:|మీరు}} [[$1|గురువుగా నమోదు చేసుకోవాలి]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "గురువు డ్యాష్‌బోర్డును వాడే ముందు, గురువుల జాబితాను కాన్ఫిగరు చెయ్యాలి. అందు కోసం నిర్వాహకులు [[Special:EditGrowthConfig]] ను వాడవచ్చు.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|మీ}} శిష్యులు",

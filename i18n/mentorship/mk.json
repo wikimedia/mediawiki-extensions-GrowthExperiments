@@ -7,7 +7,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Управувачница на подучувачот",
 	"growthexperiments-mentor-dashboard-pt-link": "Управувачница на подучувачот",
-	"growthexperiments-mentor-dashboard-disabled": "Управувачницата на подучувачот не е овозможена на ова вики.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "За да овозможите управувачница за подочувач, најпрво {{GENDER:|ќе треба}} да [[$1|се пријавите за подучувач]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Пред да може да се користи управувачницата на подучувачот, ќе треба да се постави список на подочвувачи. Администраторот може да се послужи со [[Special:EditGrowthConfig]] за таа цел.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Ваши}} подученици",

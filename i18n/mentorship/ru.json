@@ -21,7 +21,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
 	"growthexperiments-mentor-dashboard-pt-link": "Панель наставника",
-	"growthexperiments-mentor-dashboard-disabled": "Панель наставника не включена в этой вики.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Чтобы включить информационную панель наставника, сначала нужно [[$1|зарегистрироваться как {{GENDER:|наставник|наставница}}]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Прежде чем можно будет использовать информационную панель наставника, нужно настроить список наставников. Администратор может использовать для этого [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Ваши}} подопечные",

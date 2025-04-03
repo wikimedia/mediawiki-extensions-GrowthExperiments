@@ -6,7 +6,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "مجلس ارشاد",
 	"growthexperiments-mentor-dashboard-pt-link": "مجلس ارشاد",
-	"growthexperiments-mentor-dashboard-disabled": "مجلس ارشاد اس ویکی پر نہیں ہے۔",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "مجلس ارشاد کو فعال کرنے کے ليے اولاً {{GENDER:|آپ}} کو اپنا نام [[$1|بحیثیت مرشد درج کرانا ہوگا]]۔",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "مجلس ارشاد کو استعمال کرنے سے قبل مرشدین کی فہرست کو مرتب کرنے کی ضرورت ہے۔ اس مقصد کے لیے کوئی منتظم [[Special:EditGrowthConfig]] کی مدد لے سکتا ہے۔",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|آپ}} کے مسترشدین",

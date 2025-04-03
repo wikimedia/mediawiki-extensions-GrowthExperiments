@@ -14,7 +14,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Pannello di tutoraggio",
 	"growthexperiments-mentor-dashboard-pt-link": "tutoraggio",
-	"growthexperiments-mentor-dashboard-disabled": "Il pannello di tutoraggio non è abilitato su questa wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Per abilitare il pannello di tutoraggio, prima {{GENDER:|devi}} [[$1|essere un tutor]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Prima che il pannello di tutoraggio possa essere utilizzato, la lista dei tutor deve venire configurata. Un amministratore d'interfaccia può usare [[Special:EditGrowthConfig|la pagina speciale apposita]] per questo scopo.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "I {{GENDER:|tuoi}} allievi",

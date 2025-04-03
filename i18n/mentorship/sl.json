@@ -7,7 +7,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentorska nadzorna plošča",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentorska nadzorna plošča",
-	"growthexperiments-mentor-dashboard-disabled": "Mentorska nadzorna plošča v tem vikiju ni omogočena.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Da omogočite mentorsko nadzorno ploščo, se {{GENDER:|morate}} najprej [[$1|vpisati kot {{GENDER:|mentor|mentorica|mentor_ica}}]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Da boste lahko uporabljali mentorsko nadzorno ploščo, je treba najprej konfigurirati mentorski seznam. Administrator lahko v ta namen uporabi posebno stran [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Vaši}} mentoriranci",

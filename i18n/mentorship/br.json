@@ -7,7 +7,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Taolenn-stur ar mentor",
 	"growthexperiments-mentor-dashboard-pt-link": "Taolenn-stur ar mentor",
-	"growthexperiments-mentor-dashboard-disabled": "N'eo ket gweredekaet taolenn-stur ar mentor er wiki-mañ.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Evit gweredekaat taolenn-stur ar mentor e {{GENDER:|rankit}} [[$1|lakaat oc’h anv evel mentor]] da gentañ.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "A-raok ma c'hallfe bezañ implijet taolenn-stur ar mentor e ranker kefluniañ roll ar mentored da gentañ. Gallout a ra ur merour ober gant [[Special:EditGrowthConfig]] evit se.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Ho}} teskarded",

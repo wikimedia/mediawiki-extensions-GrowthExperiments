@@ -11,7 +11,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentorvezérlőpult",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentorvezérlőpult",
-	"growthexperiments-mentor-dashboard-disabled": "A mentorvezérlőpult nincs engedélyezve ezen a wikin.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "A mentorvezérlőpult engedélyezéséhez először [[$1|jelentkezned kell mentornak]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "A mentorvezérlőpult használata előtt be kell állítani a mentorlistát, amit egy adminisztrátor tehet meg a [[Special:EditGrowthConfig]] lapon.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "A mentoráltjaid",

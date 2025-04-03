@@ -11,7 +11,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Πίνακας εργασίας καθοδηγητή",
 	"growthexperiments-mentor-dashboard-pt-link": "Πίνακας εργασίας καθοδηγητή",
-	"growthexperiments-mentor-dashboard-disabled": "Ο πίνακας εργασίας καθοδηγητή δεν είναι ενεργοποιημένος σε αυτό το wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Για να ενεργοποιήσετε τον πίνακα εργασίας καθοδηγητή, χρειάζεται πρώτα να [[$1|εγγραφείτε ως {{GENDER:|καθοδηγητής|καθοδηγήτρια}}]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Πριν μπορέσει να χρησιμοποιηθεί ο πίνακας καθοδηγητή, πρέπει πρώτα να ρυθμιστεί ο κατάλογος καθοδηγητών. Ένας διαχειριστής μπορεί να χρησιμοποιήσει το [[Special:EditGrowthConfig]] για αυτό τον σκοπό.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Οι καθοδηγούμενοί {{GENDER:|σας}}",

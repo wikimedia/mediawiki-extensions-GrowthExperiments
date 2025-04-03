@@ -5,7 +5,6 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentori andmelaud",
-	"growthexperiments-mentor-dashboard-disabled": "Mentori andmelaud pole selles vikis lubatud.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Mentori andmelaua kasutamiseks pead kõigepealt ennast [[$1|mentorina kirja panema]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Mentori andmelauda ei saa kasutada enne, kui mentorite loend on häälestatud. Administraator saab seda teha lehekülje [[Special:EditGrowthConfig]] kaudu.",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Kuidas juhendatavat võtta",

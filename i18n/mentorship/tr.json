@@ -16,7 +16,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Danışman kontrol paneli",
 	"growthexperiments-mentor-dashboard-pt-link": "Danışman paneli",
-	"growthexperiments-mentor-dashboard-disabled": "Danışman kontrol paneli, bu vikide etkinleştirilmemiştir.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Danışman panosunu etkinleştirmek için önce [[$1|bir danışman olarak kaydolmanız]] gerekiyor.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Danışman kontrol panelinin kullanılabilmesi için önce danışman listesinin yapılandırılması gerekir. Bir hizmetli bu amaçla [[Special:EditGrowthConfig]] kullanabilir.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Danışanlarınız",

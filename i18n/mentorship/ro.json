@@ -9,7 +9,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Pagina mentorului",
 	"growthexperiments-mentor-dashboard-pt-link": "Pagina mentorului",
-	"growthexperiments-mentor-dashboard-disabled": "Pagina mentorului nu este activată la acest wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Pentru a activa pagina mentorului, {{GENDER:|trebuie}} mai întâi să [[$1|vă înscrieți ca mentor]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Înainte ca pagina mentorului să poată fi folosită, trebuia mai întâi să fie configurată lista mentorilor. Un administrator poate utiliza [[Special:EditGrowthConfig]] pentru acest lucru.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Ucenicii {{GENDER:|dvs.}}",

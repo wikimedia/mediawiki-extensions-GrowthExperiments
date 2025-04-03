@@ -17,7 +17,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Bảng điều khiển cố vấn",
 	"growthexperiments-mentor-dashboard-pt-link": "Bảng điều khiển cố vấn",
-	"growthexperiments-mentor-dashboard-disabled": "Bảng điều khiển cố vấn không được bật ở wiki này.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Để bật trang chủ cố vấn, trước hết {{GENDER:|bạn}} cần phải [[$1|đăng ký làm cố vấn]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Trước khi có thể sử dụng bảng điều khiển cố vấn, đầu tiên danh sách cố vấn cần phải được thiết lập. Một bảo quản viên có thể sử dụng [[Special:EditGrowthConfig]] để làm việc đó.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Người được cố vấn {{GENDER:|của bạn}}",

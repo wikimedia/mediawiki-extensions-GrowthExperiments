@@ -8,7 +8,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "לוח בקרה לחונכים",
 	"growthexperiments-mentor-dashboard-pt-link": "לוח בקרה לחונכים",
-	"growthexperiments-mentor-dashboard-disabled": "לוח בקרה לחונכים אינו מופעל בוויקי הזה.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "כדי להפעיל את לוח הבקרה לחונכים, {{GENDER:|אתה צריך|את צריכה}} קודם [[$1|להירשם {{GENDER:|כחונך|כחונכת}}]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "לפני שיהיה אפשר להשתמש בלוח בקרה לחונכים, חובה להגדיר רשימת חונכים תחילה. מפעיל יכול להשתמש בדף [[Special:EditGrowthConfig|מיוחד:עריכת הגדרות חונך]] למטרה הזאת.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "החניכים {{GENDER:|שלך}}",

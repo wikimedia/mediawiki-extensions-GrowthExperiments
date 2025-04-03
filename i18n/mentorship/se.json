@@ -8,7 +8,6 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Fáddariid gozihanpanela",
-	"growthexperiments-mentor-dashboard-disabled": "Fáddariid gozihanpanela ii leat vel biddjojuvvon johtui dán wikis.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Jus áiggut bidjat ala fáddariid gozihanpanela, de fertet {{GENDER:|don}} vuos [[$1|dieđihit iežat fáttarin]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Ovdal go fáddariid gozihanpanela sáhttá váldojuvvot atnui, ferte fáttarlistu heivehuvvot. Soames hálddašeaddji sáhttá dan dahkat [[Special:EditGrowthConfig]]:s.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Du}} fáttarmánát",

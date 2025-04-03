@@ -4,7 +4,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentorska tabla",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentorska tabla",
-	"growthexperiments-mentor-dashboard-disabled": "Mentorska kontrolna tabla nije omogućena na ovom projektu.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Da biste uključili mentorsku kontrolnu tablu, {{GENDER:|morate}} se najpre [[$1|prijaviti za mentora]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Pre upotrebe mentorske kontrolne table treba podesiti spisak mentora. Radi toga se administrator može koristiti stranicom [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Vaše}} novajlije",

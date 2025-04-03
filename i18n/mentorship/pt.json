@@ -6,7 +6,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Painel de controlo do mentor",
 	"growthexperiments-mentor-dashboard-pt-link": "Painel de controlo do mentor",
-	"growthexperiments-mentor-dashboard-disabled": "O painel de controlo do mentor não está ativado nesta wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Para ativar o painel de controlo do mentor, tem primeiro de [[$1|inscrever-se como {{GENDER:|mentor|mentora}}]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Antes de o painel de controlo do mentor poder ser usado, a lista de mentores tem de ser configurada. Um administrador pode usar [[Special:EditGrowthConfig]] para esse fim.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Os seus mentorados",

@@ -16,7 +16,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "導師面板",
 	"growthexperiments-mentor-dashboard-pt-link": "導師面板",
-	"growthexperiments-mentor-dashboard-disabled": "此 wiki 尚未啟用導師面板。",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "若想啟用導師面板，{{GENDER:|您}}必須先[[$1|登記成為一名導師]]。",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "在使用導師面板前需要設定導師列表，為此管理員可以使用[[Special:EditGrowthConfig]]。",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|您的}}學員",

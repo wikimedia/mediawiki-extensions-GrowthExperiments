@@ -8,7 +8,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "सल्लाहकार गृह पृष्ठ",
 	"growthexperiments-mentor-dashboard-pt-link": "सल्लाहकार गृह पृष्ठ",
-	"growthexperiments-mentor-dashboard-disabled": "यस विकिमा सल्लाहकार गृह पृष्ठ सक्षम गरिएको छैन।",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "सल्लाहकार गृह पृष्ठ सक्षम गर्नको लागि, {{GENDER:|तपाईंले}} पहिले एक [[$1|सल्लाहकारको रूपमा भर्ना गर्न आवश्यक छ]]।",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "सल्लाहकार गृह पृष्ठ प्रयोग गर्न सक्नु अघि, सल्लाहकार सूची पहिले सम्पादन गर्न आवश्यक छ। प्रशासकले त्यस उद्देश्यका लागि [[Special:EditGrowthConfig]] प्रयोग गर्न सक्छन्।",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|तपाईंको}} विद्यार्थीहरू",

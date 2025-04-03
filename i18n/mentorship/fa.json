@@ -9,7 +9,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "پیشخوان مربی",
 	"growthexperiments-mentor-dashboard-pt-link": "پیشخوان مربی",
-	"growthexperiments-mentor-dashboard-disabled": "پیش‌خوان مربی در این ویکی فعال نشده است.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "برای فعال‌سازی پیش‌خوان مربی، {{GENDER:|شما}} باید ابتدا [[$1|به‌عنوان مربی ثبت‌نام کنید]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "پیش از آنکه استفاده از داشبورد مربی امکان‌پذیر باشد، ابتدا لازم است که پیکربندی فهرست مربی‌ها انجام شود. هر مدیری می‌تواند از [[Special:EditGrowthConfig|ویژه:ویرایش پیکربندی رشد]] به این منظور استفاده کند.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "کارآموزهای {{GENDER:|شما}}",

@@ -6,7 +6,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Plang atur mursid",
 	"growthexperiments-mentor-dashboard-pt-link": "Plang atur mursid",
-	"growthexperiments-mentor-dashboard-disabled": "Plang atur mursid kaga' dinyalain di ni wiki.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Lu punya}} murid",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Ni jadwal mbutuhin JavaScript. Padol dah, nyalain JavaScript-nya dulu bakal maké ni modul.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Sapa nyang ada di {{GENDER:|lu punya}} jadwal?",

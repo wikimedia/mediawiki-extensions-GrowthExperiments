@@ -7,7 +7,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Хьехамчан панель",
 	"growthexperiments-mentor-dashboard-pt-link": "Хьехамчан панель",
-	"growthexperiments-mentor-dashboard-disabled": "ХӀокху вики чохь латина йац хьехамчан панель.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Хьехамчан панель лато, хьалха [[$1|хьехамча санна дӀайазло]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Хьехамчан панель лелайале хьехамчийн могӀам нисбан беза. Иза кхочушдан куьйгалхочо лело мега [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Хьо}} тӀехьожурш",

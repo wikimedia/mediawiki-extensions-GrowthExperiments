@@ -9,7 +9,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Panel przewodników",
 	"growthexperiments-mentor-dashboard-pt-link": "Panel przewodników",
-	"growthexperiments-mentor-dashboard-disabled": "Panel przewodników nie jest aktywny na tej wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Aby aktywować panel przewodników, {{GENDER:|musisz}} najpierw [[$1|nim zostać]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Przed włączeniem panelu przewodników należy skonfigurować listę przewodników. Może to zrobić admin za pomocą [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Twoi}} podopieczni",

@@ -8,7 +8,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Kontrollpanel for faddere",
 	"growthexperiments-mentor-dashboard-pt-link": "Kontrollpanel for faddere",
-	"growthexperiments-mentor-dashboard-disabled": "Kontrollpanelet for faddere er ikke slått på på denne wikien.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "For å slå på kontrollpanelet for faddere må {{GENDER:|du}} først [[$1|melde deg opp som fadder]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Før kontrollpanelet for faddere kan brukes må ei fadderliste konfigureres. En administrator kan gjøre det på [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Fadderbarna {{GENDER:|dine}}",

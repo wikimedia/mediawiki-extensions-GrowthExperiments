@@ -6,7 +6,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Papan pemuka mentor",
 	"growthexperiments-mentor-dashboard-pt-link": "Papan pemuka mentor",
-	"growthexperiments-mentor-dashboard-disabled": "Papan pemuka mentor tidak didayakan di wiki ini.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Untuk mendayakan papan pemuka mentor, {{GENDER:|anda}} perlu terlebih dahulu [[$1|mendaftar sebagai seorang mentor]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Sebelum papan pemuka mentor boleh digunakan, senarai mentor perlu dikonfigurasikan terlebih dahulu. Penyelia boleh menggunakan [[Special:EditGrowthConfig]] untuk tujuan itu.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Menti {{GENDER:|anda}}",

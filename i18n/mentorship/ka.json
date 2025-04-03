@@ -6,7 +6,6 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "მენტორის დაფა",
 	"growthexperiments-mentor-dashboard-pt-link": "მენტორის დაფა",
-	"growthexperiments-mentor-dashboard-disabled": "ამ ვიკისათვის მენტორის დაფა ხელმისაწვდომი არ არის.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "მენტორის დაფის ჩასართავად, ჯერ [[$1|მენტორად უნდა დარეგისტრირდეთ]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "მენტორის დაფის გამოყენებამდე, საჭიროა მოწაფეების სიის კონფიგურაცია. ადმინისტრატორს ამისათვის შეუძლია გამოიყენოს გვერდი [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "თქვენი მოწაფეები",
