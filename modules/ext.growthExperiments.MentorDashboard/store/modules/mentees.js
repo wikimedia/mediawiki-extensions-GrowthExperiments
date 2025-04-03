@@ -165,7 +165,7 @@ const aggregateMentees = ( mentees, starredMentees ) => mentees.map( ( mentee ) 
 	{},
 	mentee,
 	{
-		isStarred: starredMentees.indexOf( Number( mentee.user_id ) ) !== -1,
+		isStarred: starredMentees.includes( Number( mentee.user_id ) ),
 		questions: {
 			value: mw.language.convertNumber( mentee.questions ),
 			link: mwLink( `Special:Contributions/${ mentee.username }`, {

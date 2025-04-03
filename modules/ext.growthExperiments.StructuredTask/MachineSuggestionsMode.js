@@ -74,7 +74,7 @@ module.exports = ( function () {
 	 * @return {Object[]}
 	 */
 	function getMobileTools( currentTools ) {
-		const activeTools = currentTools.filter( ( tool ) => [ 'save', 'back' ].indexOf( tool.name ) !== -1 );
+		const activeTools = currentTools.filter( ( tool ) => [ 'save', 'back' ].includes( tool.name ) );
 		activeTools.push(
 			{
 				name: 'machineSuggestionsPlaceholder',
@@ -93,7 +93,7 @@ module.exports = ( function () {
 	 */
 	function getToolbarGroups( currentGroups ) {
 		const activeGroups = currentGroups.filter( ( tool ) => tool.align !== 'after' ||
-				[ 'editMode', 'back' ].indexOf( tool.name ) !== -1 );
+				[ 'editMode', 'back' ].includes( tool.name ) );
 		const saveGroup = {
 			name: 'save',
 			type: 'bar',

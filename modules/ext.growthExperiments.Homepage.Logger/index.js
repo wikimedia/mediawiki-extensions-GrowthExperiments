@@ -40,7 +40,7 @@
 		if ( this.disabled ) {
 			return;
 		}
-		if ( this.exclusions[ module ] && this.exclusions[ module ].indexOf( action ) !== -1 ) {
+		if ( this.exclusions[ module ] && this.exclusions[ module ].includes( action ) ) {
 			return;
 		}
 

@@ -36,7 +36,7 @@
 		// First, delete all filtering API params
 		const menteeOverviewApi = this;
 		Object.keys( this.apiParams ).forEach( ( key ) => {
-			if ( menteeOverviewApi.nonFilterKeys.indexOf( key ) === -1 ) {
+			if ( !menteeOverviewApi.nonFilterKeys.includes( key ) ) {
 				delete menteeOverviewApi.apiParams[ key ];
 			}
 		} );
@@ -60,7 +60,7 @@
 				return false;
 			}
 
-			if ( menteeOverviewApi.nonFilterKeys.indexOf( key ) === -1 ) {
+			if ( !menteeOverviewApi.nonFilterKeys.includes( key ) ) {
 				res = true;
 				return false;
 			}
@@ -138,7 +138,7 @@
 			const mentees = [];
 			for ( let i = 0; i < data.growthstarredmentees.mentees.length; i++ ) {
 				const menteeId = Number( data.growthstarredmentees.mentees[ i ].id );
-				if ( mentees.indexOf( menteeId ) === -1 ) {
+				if ( !mentees.includes( menteeId ) ) {
 					mentees.push( menteeId );
 				}
 			}
@@ -183,7 +183,7 @@
 
 	MenteeOverviewApi.prototype.isMenteeStarred = function ( userId ) {
 		return this.getStarredMentees().then(
-			( mentees ) => mentees.indexOf( Number( userId ) ) !== -1
+			( mentees ) => mentees.includes( Number( userId ) )
 		);
 	};
 

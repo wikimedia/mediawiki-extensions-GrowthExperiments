@@ -110,7 +110,7 @@ TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 	this.updating = true;
 	this.topicSelector.suggestions.forEach( ( suggestion ) => {
 		suggestion.toggleSuggestion(
-			presets.getTopics().indexOf( suggestion.suggestionData.id ) > -1
+			presets.getTopics().includes( suggestion.suggestionData.id )
 		);
 	} );
 

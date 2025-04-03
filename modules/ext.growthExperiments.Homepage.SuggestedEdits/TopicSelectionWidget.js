@@ -66,7 +66,7 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 		const suggestionWidgets = group.topics.map( ( topic ) => new SuggestionWidget( { suggestionData: {
 			id: topic.id,
 			text: topic.name,
-			confirmed: config.filters.getTopics().indexOf( topic.id ) !== -1
+			confirmed: config.filters.getTopics().includes( topic.id )
 		} } ) );
 		let displayedSuggestionWidgets = suggestionWidgets;
 		let hiddenSuggestionWidgets = [];
@@ -130,7 +130,7 @@ TopicSelectionWidget.prototype.getSelectedTopics = function () {
  */
 TopicSelectionWidget.prototype.setSelectedTopics = function ( topics ) {
 	this.suggestions.forEach( ( suggestion ) => {
-		suggestion.confirmed = topics.indexOf( suggestion.suggestionData.id ) !== -1;
+		suggestion.confirmed = topics.includes( suggestion.suggestionData.id );
 	} );
 };
 

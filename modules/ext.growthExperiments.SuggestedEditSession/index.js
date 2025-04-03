@@ -325,7 +325,7 @@
 	 * @param {string} state One of the states.* constants.
 	 */
 	SuggestedEditSession.prototype.setTaskState = function ( state ) {
-		if ( allStates.indexOf( state ) !== -1 ) {
+		if ( allStates.includes( state ) ) {
 			this.taskState = state;
 			this.save();
 		} else {
@@ -362,7 +362,7 @@
 			const url = new URL( window.location.href );
 			// "submit" can be in the URL query if the user switched from VE to source
 			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
-			if ( [ 'edit', 'submit' ].indexOf( url.searchParams.get( 'action' ) ) !== -1 && $( '#wpTextbox1:visible' ).length ) {
+			if ( [ 'edit', 'submit' ].includes( url.searchParams.get( 'action' ) ) && $( '#wpTextbox1:visible' ).length ) {
 				saveEditorChanges( self, 'wikitext' );
 			}
 		} );
@@ -723,7 +723,7 @@
 			'link-recommendation',
 			'image-recommendation',
 			'section-image-recommendation'
-		].indexOf( taskType ) !== -1;
+		].includes( taskType );
 	};
 
 	// Always initiate. We need to do this to be able to terminate the session when the user

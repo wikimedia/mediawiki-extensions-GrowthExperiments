@@ -107,7 +107,7 @@
 			'wikitext-2017',
 			'visualeditor',
 			'other'
-		].indexOf( editor ) >= 0;
+		].includes( editor );
 	}
 
 	/**
@@ -118,7 +118,7 @@
 	function getUserVariant() {
 		let variant = mw.user.options.get( 'growthexperiments-homepage-variant' );
 		if ( variant === null ||
-			mw.config.get( 'wgGEUserVariants' ).indexOf( variant ) === -1
+			!mw.config.get( 'wgGEUserVariants' ).includes( variant )
 		) {
 			variant = mw.config.get( 'wgGEDefaultUserVariant' );
 		}
@@ -133,7 +133,7 @@
 		if ( typeof variants === 'string' ) {
 			variants = [ variants ];
 		}
-		return variants.indexOf( getUserVariant() ) !== -1;
+		return variants.includes( getUserVariant() );
 	}
 
 	/**

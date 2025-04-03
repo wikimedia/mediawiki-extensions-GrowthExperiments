@@ -58,7 +58,7 @@ module.exports = ( function () {
 		subtleParagraphIndices = subtleParagraphIndices || [];
 		const $content = $( '<div>' ).append( paragraphs.map( ( paragraphText, index ) => {
 			const $p = $( '<p>' ).text( paragraphText );
-			if ( subtleParagraphIndices.indexOf( index ) !== -1 ) {
+			if ( subtleParagraphIndices.includes( index ) ) {
 				$p.addClass( 'addsectionimage-onboarding-content--color-subtle' );
 			}
 			return $p;

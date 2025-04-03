@@ -74,7 +74,7 @@
 		const defaultEditor = this.getEditor(),
 			defaultContext = this.getContext(),
 			editingModes = [ 'editing', 'postedit', 'postedit-nonsuggested' ],
-			readingMode = ( editingModes.indexOf( defaultContext ) === -1 );
+			readingMode = ( !editingModes.includes( defaultContext ) );
 		/* eslint-disable camelcase */
 		return {
 			user_id: mw.user.getId(),

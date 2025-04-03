@@ -437,7 +437,7 @@ AddImageArticleTarget.prototype.isEndOfMetadata = function ( data, offset ) {
 		'comment', 'mwLanguageVariantHidden',
 		// automatically generated to wrap content, which could be templates
 		'paragraph'
-	].indexOf( right.type ) !== -1 ) {
+	].includes( right.type ) ) {
 		return false;
 	}
 	return true;

@@ -202,7 +202,7 @@
 				// A next suggested task type is available for the user
 				suggestedEditSession.nextSuggestedTaskType &&
 				// The user hasn't opted out of seeing the prompt for this task type
-				tryNewTaskOptOuts.indexOf( suggestedEditSession.taskType ) === -1
+				!tryNewTaskOptOuts.includes( suggestedEditSession.taskType )
 			) {
 				const tryNewTaskPanel = new TryNewTaskPanel( {
 					nextSuggestedTaskType: suggestedEditSession.nextSuggestedTaskType,
