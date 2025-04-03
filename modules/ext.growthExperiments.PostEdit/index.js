@@ -59,7 +59,7 @@
 		} else {
 			drawer.openWithIntroContent();
 		}
-		drawer.opened.done( () => {
+		drawer.opened.then( () => {
 			// Hide the drawer if the user opens the editor again.
 			// HACK ignore memorized previous ve.activationComplete events.
 			suppressClose = true;
@@ -71,7 +71,7 @@
 			}
 			suppressClose = false;
 		} );
-		drawer.closed.done( () => {
+		drawer.closed.then( () => {
 			if ( OO.ui.isMobile() ) {
 				mw.hook( 'mobileFrontend.editorOpened' ).remove( closeDrawer );
 			} else {
@@ -176,10 +176,10 @@
 					mw.log.error( errorMessage );
 					mw.errorLogger.logError( new Error( errorMessage ), 'error.growthexperiments' );
 				}
-				setupResult.openPromise.done( logPanelImpression( setupResult.panel, errorMessage ) );
+				setupResult.openPromise.then( logPanelImpression( setupResult.panel, errorMessage ) );
 			} );
 			setupResult = setup( showToast );
-			setupResult.openPromise.done( logPanelImpression( setupResult.panel ) );
+			setupResult.openPromise.then( logPanelImpression( setupResult.panel ) );
 			return setupResult;
 		},
 		/**
@@ -211,7 +211,7 @@
 					tryNewTaskOptOuts: tryNewTaskOptOuts
 				} );
 				const displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger, true );
-				displayPanelPromises.openPromise.done( () => {
+				displayPanelPromises.openPromise.then( () => {
 					tryNewTaskPanel.logImpression( {
 						// Increment the count for the task type, because the try new task panel
 						// is triggered at GELevelingUpManagerTaskTypeCountThresholdMultiple - 1,

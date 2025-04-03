@@ -18,7 +18,7 @@
 				router.addRoute( route, () => {
 					const lifecycle = windowManager.openWindow( dialog, { panel: 'ask-help' } );
 					logger.log( 'ask-help' );
-					lifecycle.closing.done( () => {
+					lifecycle.closing.then( () => {
 						if ( router.getPath() === route ) {
 							// The user clicked the "close" button on the dialog, go back to
 							// previous route.

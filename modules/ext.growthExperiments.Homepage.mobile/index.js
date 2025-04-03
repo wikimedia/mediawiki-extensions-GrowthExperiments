@@ -293,7 +293,7 @@ const mobile = require( 'mobile.startup' );
 	if ( mw.loader.getState( 'mobile.init' ) ) {
 		beforeMobileInit();
 
-		mw.loader.using( 'mobile.init' ).done( () => {
+		mw.loader.using( 'mobile.init' ).then( () => {
 			onMobileInit();
 		} );
 	}

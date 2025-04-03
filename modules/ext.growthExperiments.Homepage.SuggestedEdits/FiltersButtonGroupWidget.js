@@ -103,7 +103,7 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 		const lifecycle = windowManager.openWindow( this.taskTypeFiltersDialog );
 		logger.log( 'suggested-edits', config.mode, 'se-taskfilter-open' );
 		this.emit( 'open' );
-		lifecycle.closing.done( ( data ) => {
+		lifecycle.closing.then( ( data ) => {
 			if ( data && data.action === 'done' ) {
 				logger.log( 'suggested-edits', config.mode, 'se-taskfilter-done',
 					{ taskTypes: this.taskTypeFiltersDialog.getEnabledFilters() } );
@@ -124,7 +124,7 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 				logger.log( 'suggested-edits', config.mode, 'se-topicmatchmode-impression' );
 			}
 			this.emit( 'open' );
-			lifecycle.closing.done( ( data ) => {
+			lifecycle.closing.then( ( data ) => {
 				const closeExtraData = {
 					topics: this.topicFiltersDialog.getEnabledFilters().getTopics()
 				};

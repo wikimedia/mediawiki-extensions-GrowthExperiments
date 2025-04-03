@@ -46,7 +46,7 @@
 			uselang: mw.config.get( 'wgUserLanguage' ),
 			formatversion: 2
 		} )
-			.done( ( data ) => {
+			.then( ( data ) => {
 				if ( !data.homepagequestionstore ) {
 					return;
 				}

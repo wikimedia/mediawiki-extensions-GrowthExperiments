@@ -164,14 +164,11 @@ SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogProcess
 	this.isFirstRender = true;
 	this.onFilterClose();
 	const apiPromise = this.tasksStore.fetchTasks( 'suggestedEditsModule.filterSelection' );
-	apiPromise.then( () => {
-		if ( filtersDialogProcess ) {
-			filtersDialogProcess.resolve();
-		}
-	} );
 
 	if ( filtersDialogProcess ) {
-		apiPromise.fail( () => {
+		apiPromise.then( () => {
+			filtersDialogProcess.resolve();
+		}, () => {
 			filtersDialogProcess.reject();
 		} );
 	}

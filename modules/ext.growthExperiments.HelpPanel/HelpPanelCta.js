@@ -217,7 +217,7 @@
 				helpPanelProcessDialog.updateEditMode();
 				helpCtaButton.setOpen( true );
 			} );
-			lifecycle.closing.done( () => {
+			lifecycle.closing.then( () => {
 				if ( OO.ui.isMobile() ) {
 					$body.append( $mfOverlay, $veUiOverlay );
 				}
@@ -329,7 +329,7 @@
 					// help panel opens.
 					$overlay.addClass( 'mw-ge-help-panel-popup-guidance' );
 					openHelpPanel( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ).closing
-						.done( () => {
+						.then( () => {
 							$overlay.removeClass( 'mw-ge-help-panel-popup-guidance' );
 						} );
 				}
@@ -360,7 +360,7 @@
 				mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).add(
 					( helpPanelButton ) => {
 						const prevScrollPosition = $( document ).scrollTop();
-						openHelpPanel( 'suggested-edits' ).closing.done( () => {
+						openHelpPanel( 'suggested-edits' ).closing.then( () => {
 							// When help panel closes, article is scrolled to 0.
 							// Make sure annotation is visible.
 							$( document ).scrollTop( prevScrollPosition );

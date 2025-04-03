@@ -28,7 +28,7 @@ AddImageMobileArticleTarget.prototype.prepareSaveWithoutShowingDialog = function
 	const promise = ve.createDeferred(),
 		$overlay = this.getSurface().getGlobalOverlay().$element;
 	$overlay.addClass( 'mw-ge-addImageMobileArticleTarget--overlay-shown' );
-	promise.done( () => {
+	promise.then( () => {
 		this.restorePlaceholderTitle();
 		$overlay.removeClass( 'mw-ge-addImageMobileArticleTarget--overlay-shown' );
 	} );

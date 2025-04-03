@@ -234,7 +234,7 @@ AddSectionImageArticleTarget.prototype.scrollToTargetSection = function () {
 		duration: 'slow',
 		padding: this.surface.padding,
 		direction: 'y'
-	} ).done( () => {
+	} ).then( () => {
 		this.suppressSurfaceSelectEvents( false );
 	} );
 };

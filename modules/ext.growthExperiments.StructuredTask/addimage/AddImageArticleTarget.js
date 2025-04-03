@@ -531,7 +531,7 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	// This data will be processed in VisualEditorHooks::onVisualEditorApiVisualEditorEditPostSave
 	options[ 'data-ge-task-' + this.TASK_TYPE_ID ] = JSON.stringify( this.getVEPluginData() );
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
-		.done( () => {
+		.then( () => {
 			this.madeNullEdit = !this.recommendationAccepted;
 			this.onSaveDone();
 		} );

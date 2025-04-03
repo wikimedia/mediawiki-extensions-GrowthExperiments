@@ -444,7 +444,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 		config
 	);
 
-	this.apiFetchMoreTasksPromise.done( ( data ) => {
+	this.apiFetchMoreTasksPromise.then( ( data ) => {
 		const newTasks = data.tasks || [];
 		// accumulate the number of tasks fetched
 		this.tasksFetchedCount += newTasks.length;
@@ -486,13 +486,13 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 		return $.Deferred().resolve().promise();
 	}
 
-	const pcsPromise = this.api.getExtraDataFromPcs( taskAtIndex, apiConfig ).fail( () => {
+	const pcsPromise = this.api.getExtraDataFromPcs( taskAtIndex, apiConfig ).catch( () => {
 		// Set the PCS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
 		taskAtIndex.description = null;
 		taskAtIndex.thumbnailSource = null;
 	} );
-	const aqsPromise = this.api.getExtraDataFromAqs( taskAtIndex, apiConfig ).fail( () => {
+	const aqsPromise = this.api.getExtraDataFromAqs( taskAtIndex, apiConfig ).catch( () => {
 		// Set the AQS provided data to null so the subscribed widgets stop showing
 		// the loading interfaces like skeletons for them.
 		taskAtIndex.pageviews = null;
@@ -500,7 +500,7 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 
 	const preloaded = this.preloadCardImage( taskAtIndex );
 	if ( !preloaded ) {
-		pcsPromise.done( () => {
+		pcsPromise.then( () => {
 			this.preloadCardImage( taskAtIndex );
 		} );
 	}

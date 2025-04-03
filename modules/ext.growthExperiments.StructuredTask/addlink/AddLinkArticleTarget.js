@@ -431,7 +431,7 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	} );
 	options.plugins = 'ge-task-link-recommendation';
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
-		.done( () => {
+		.then( () => {
 			const hasAccepts = annotationStates.some( ( state ) => state.accepted );
 			if ( !hasAccepts ) {
 				this.madeNullEdit = true;
@@ -464,7 +464,7 @@ AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
 	$( window ).off( 'beforeunload' );
 	OO.ui.alert( mw.message( 'growthexperiments-addlink-suggestions-outdated' ).text(), {
 		actions: [ { action: 'accept', label: mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
-	} ).done( () => {
+	} ).then( () => {
 		window.location.href = mw.Title.newFromText( 'Special:Homepage' ).getUrl();
 	} );
 };

@@ -120,7 +120,7 @@ module.exports = ( function () {
 				label: mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-button' ).text(),
 				flags: 'primary'
 			} ]
-		} ).done( () => {
+		} ).then( () => {
 			// Allow redirecting user even if the document
 			// has unsaved changes, which we don't care about in this context.
 			$( window ).off( 'beforeunload' );

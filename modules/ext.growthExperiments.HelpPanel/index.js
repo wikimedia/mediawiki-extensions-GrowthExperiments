@@ -13,7 +13,7 @@
 	// This loads it alongside VE's modules when VE is activated, but doesn't load VE's init module
 	// if it wasn't already going to be loaded
 	if ( veState === 'loading' || veState === 'loaded' || veState === 'ready' ) {
-		mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( () => {
+		mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).then( () => {
 			mw.libs.ve.addPlugin( 'ext.growthExperiments.HelpPanel' );
 		} );
 	}

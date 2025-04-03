@@ -98,7 +98,7 @@ StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
 		}
 		// On cancel, return focus to the inspector
 		if ( action === '' ) {
-			this.manager.lifecycle.closed.done( () => {
+			this.manager.lifecycle.closed.then( () => {
 				mw.hook( 'inspector-regainfocus' ).fire();
 			} );
 		}

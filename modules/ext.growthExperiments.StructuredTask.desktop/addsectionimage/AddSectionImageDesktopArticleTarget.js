@@ -55,7 +55,7 @@ AddSectionImageDesktopArticleTarget.prototype.prepareSaveWithoutShowingDialog = 
 	// FIXME modify?
 	$element.addClass( 'mw-ge-addImageDesktopArticleTarget--overlay-shown' );
 	$container.append( $desktopLoadingOverlay );
-	promise.done( () => {
+	promise.then( () => {
 		$desktopLoadingOverlay.remove();
 		// FIXME modify?
 		$element.removeClass( 'mw-ge-addImageDesktopArticleTarget--overlay-shown' );

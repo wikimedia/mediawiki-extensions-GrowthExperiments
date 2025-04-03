@@ -314,7 +314,7 @@
 		// Do this only if VE's init module was already going to be loaded; we don't want to trigger
 		// it if it wasn't going to be loaded otherwise
 		if ( veState === 'loading' || veState === 'loaded' || veState === 'ready' ) {
-			mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( () => {
+			mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).then( () => {
 				mw.libs.ve.disableWelcomeDialog();
 				mw.libs.ve.disableEducationPopups();
 			} );
@@ -473,7 +473,7 @@
 					tryNewTaskResult.closeData,
 					!tryNewTaskResult.shown
 				);
-				postEditDialogLifecycle.openPromise.done( () => {
+				postEditDialogLifecycle.openPromise.then( () => {
 					self.postEditDialogNeedsToBeShown = false;
 					self.save();
 					if ( self.editorInterface !== 'visualeditor' ) {
@@ -489,7 +489,7 @@
 				return postEditDialogLifecycle.closePromise;
 			} ) );
 
-			postEditDialogClosePromise.done( () => {
+			postEditDialogClosePromise.then( () => {
 				// Make sure we'll show the dialog again if the page is edited again in VE
 				// without a page reload.
 				self.postEditDialogIsOpen = false;
@@ -517,7 +517,7 @@
 			rvlimit: 1,
 			rvuser: mw.config.get( 'wgUserName' )
 		} );
-		return revIdPromise.done( ( data ) => {
+		return revIdPromise.then( ( data ) => {
 			// We didn't have the new revision ID already, so get it from the API response.
 			if ( !this.newRevId && data && data.query && data.query.pages ) {
 				const response = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
@@ -529,7 +529,7 @@
 			}
 			const apiUrl = '/growthexperiments/v0/newcomertask/complete';
 			return new mw.Rest().post( apiUrl + '?' + $.param( { taskTypeId: taskType, revId: this.newRevId } ) )
-				.fail( ( err, errObject ) => {
+				.then( () => {}, ( err, errObject ) => {
 					mw.log.error( errObject );
 					let errMessage = errObject.exception;
 					if ( errObject.xhr &&
@@ -539,6 +539,7 @@
 						errMessage = errObject.xhr.responseJSON.messageTranslations.en;
 					}
 					mw.errorLogger.logError( new Error( errMessage ), 'error.growthexperiments' );
+					throw new Error( errMessage );
 				} );
 		} );
 	};
