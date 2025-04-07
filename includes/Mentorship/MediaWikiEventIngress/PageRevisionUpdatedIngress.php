@@ -2,14 +2,14 @@
 
 declare( strict_types = 1 );
 
-namespace GrowthExperiments\Mentorship\MediaWikiEventSubscribers;
+namespace GrowthExperiments\Mentorship\MediaWikiEventIngress;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use MediaWiki\DomainEvent\EventSubscriberBase;
-use MediaWiki\Storage\PageUpdatedEvent;
+use MediaWiki\DomainEvent\DomainEventIngress;
+use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
 use MediaWiki\User\UserIdentity;
 
-class PageUpdatedSubscriber extends EventSubscriberBase {
+class PageRevisionUpdatedIngress extends DomainEventIngress {
 
 	private MentorStore $mentorStore;
 
@@ -17,7 +17,7 @@ class PageUpdatedSubscriber extends EventSubscriberBase {
 		$this->mentorStore = $mentorStore;
 	}
 
-	public function handlePageUpdatedEventAfterCommit( PageUpdatedEvent $event ): void {
+	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
 		$this->setMenteeActive( $event->getAuthor() );
 	}
 

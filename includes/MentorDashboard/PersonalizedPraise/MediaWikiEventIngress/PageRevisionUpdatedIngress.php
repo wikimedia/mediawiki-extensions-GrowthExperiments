@@ -1,21 +1,21 @@
 <?php
 
-namespace GrowthExperiments\MentorDashboard\PersonalizedPraise\MediaWikiEventSubscribers;
+namespace GrowthExperiments\MentorDashboard\PersonalizedPraise\MediaWikiEventIngress;
 
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Config\Config;
-use MediaWiki\DomainEvent\EventSubscriberBase;
-use MediaWiki\Page\Event\PageUpdatedEvent;
+use MediaWiki\DomainEvent\DomainEventIngress;
+use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
 
 /**
  * Event subscriber for PersonalizedPraise functionality.
  * Handles PageUpdated events to check for praiseworthy edits.
  *
  */
-class PersonalizedPraiseEventSubscriber extends EventSubscriberBase {
+class PageRevisionUpdatedIngress extends DomainEventIngress {
 	private Config $config;
 	private IMentorManager $mentorManager;
 	private UserImpactLookup $userImpactLookup;
@@ -47,9 +47,9 @@ class PersonalizedPraiseEventSubscriber extends EventSubscriberBase {
 	 * Handler for PageUpdated events.
 	 * Executed after database commit.
 	 *
-	 * @param PageUpdatedEvent $event The page update event
+	 * @param PageRevisionUpdatedEvent $event The page update event
 	 */
-	public function handlePageUpdatedEventAfterCommit( PageUpdatedEvent $event ): void {
+	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
 		if ( !$this->config->get( 'GEPersonalizedPraiseBackendEnabled' ) ) {
 			return;
 		}

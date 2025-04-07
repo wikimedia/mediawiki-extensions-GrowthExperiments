@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace GrowthExperiments\NewcomerTasks\MediaWikiEventSubscribers;
+namespace GrowthExperiments\NewcomerTasks\MediaWikiEventIngress;
 
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
@@ -13,8 +13,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\Util;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Config\Config;
-use MediaWiki\DomainEvent\EventSubscriberBase;
-use MediaWiki\Page\Event\PageUpdatedEvent;
+use MediaWiki\DomainEvent\DomainEventIngress;
+use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\WikiMap\WikiMap;
@@ -22,7 +22,7 @@ use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Stats\StatsFactory;
 
-class PageUpdatedSubscriber extends EventSubscriberBase {
+class PageRevisionUpdatedIngress extends DomainEventIngress {
 
 	private ChangeTagsStore $changeTagsStore;
 	private Config $config;
@@ -44,7 +44,7 @@ class PageUpdatedSubscriber extends EventSubscriberBase {
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 	}
 
-	public function handlePageUpdatedEventAfterCommit( PageUpdatedEvent $event ): void {
+	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
 		if (
 			Util::isLinkRecommendationsAvailable() &&
 			$event->getPage()->getNamespace() === NS_MAIN &&

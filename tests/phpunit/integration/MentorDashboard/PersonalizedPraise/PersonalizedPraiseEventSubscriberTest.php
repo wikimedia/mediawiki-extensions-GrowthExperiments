@@ -16,7 +16,7 @@ use StatusValue;
 /**
  * @group medium
  * @group Database
- * @coversDefaultClass \GrowthExperiments\MentorDashboard\PersonalizedPraise\MediaWikiEventSubscribers\PersonalizedPraiseEventSubscriber
+ * @coversDefaultClass \GrowthExperiments\MentorDashboard\PersonalizedPraise\MediaWikiEventIngress\PageRevisionUpdatedIngress
  */
 class PersonalizedPraiseEventSubscriberTest extends MediaWikiIntegrationTestCase {
 	use MockHttpTrait;
@@ -32,7 +32,7 @@ class PersonalizedPraiseEventSubscriberTest extends MediaWikiIntegrationTestCase
 	}
 
 	/**
-	 * @covers ::handlePageUpdatedEventAfterCommit
+	 * @covers ::handlePageRevisionUpdatedEvent
 	 * @covers \GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester::getPraiseworthyMenteesForMentor
 	 * @covers \GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester::refreshPraiseworthyMenteesForMentor
 	 */
