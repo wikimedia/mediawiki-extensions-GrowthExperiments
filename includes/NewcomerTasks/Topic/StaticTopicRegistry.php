@@ -13,11 +13,15 @@ class StaticTopicRegistry implements ITopicRegistry {
 		$this->topics = $topics;
 	}
 
-	public function loadTopics(): array {
+	public function getTopics(): array {
 		return $this->topics;
 	}
 
-	public function getTopics(): array {
-		return $this->topics;
+	/** @inheritDoc */
+	public function getTopicsMap(): array {
+		$topics = $this->getTopics();
+		return array_combine( array_map( static function ( Topic $topic ) {
+			return $topic->getId();
+		}, $topics ), $topics );
 	}
 }

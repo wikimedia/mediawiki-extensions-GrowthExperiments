@@ -50,7 +50,7 @@ class SuggestionsInfo implements NewcomerTasksInfo {
 		$user = new UserIdentityValue( 0, 'SuggestionsInfo' );
 		$taskSuggester = $this->taskSuggesterFactory->create( $this->configurationLoader );
 		$taskTypes = $this->configurationLoader->loadTaskTypes();
-		$topics = $this->topicRegistry->loadTopics();
+		$topics = $this->topicRegistry->getTopics();
 		$data = [];
 		if ( $taskTypes instanceof StatusValue ) {
 			$data['error']['taskTypes'] = Status::wrap( $taskTypes )->getWikiText();

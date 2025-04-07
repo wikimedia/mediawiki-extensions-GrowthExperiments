@@ -56,8 +56,7 @@ class TopicDecorator implements ConfigurationLoader, ITopicRegistry {
 		return array_merge( $taskTypes, $this->extraTaskTypes );
 	}
 
-	/** @inheritDoc */
-	public function loadTopics(): array {
+	private function loadTopics(): array {
 		if ( $this->useOresTopics ) {
 			$topics = array_map( static function ( string $oresId ) {
 				return new RawOresTopic( $oresId, $oresId );
@@ -66,7 +65,7 @@ class TopicDecorator implements ConfigurationLoader, ITopicRegistry {
 				return $topics;
 			}
 		}
-		return $this->topicRegistry->loadTopics();
+		return $this->topicRegistry->getTopics();
 	}
 
 	/** @inheritDoc */
@@ -75,6 +74,11 @@ class TopicDecorator implements ConfigurationLoader, ITopicRegistry {
 		return array_combine( array_map( static function ( Topic $topic ) {
 			return $topic->getId();
 		}, $topics ), $topics );
+	}
+
+	/** @inheritDoc */
+	public function getTopicsMap(): array {
+		return $this->getTopics();
 	}
 
 	/** @inheritDoc */

@@ -245,7 +245,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	 * @return Topic[] Array of topic id => topic
 	 */
 	protected function getTopics(): array {
-		$topics = $this->topicRegistry->loadTopics();
+		$topics = $this->topicRegistry->getTopics();
 		return array_combine( array_map( static function ( Topic $topic ) {
 			return $topic->getId();
 		}, $topics ), $topics ) ?: [];

@@ -155,6 +155,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param LinkRecommendationFilter $linkRecommendationFilter
 	 * @param ImageRecommendationFilter $imageRecommendationFilter
 	 * @param StatsFactory $statsFactory
+	 * @param ITopicRegistry $topicRegistry
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -599,7 +600,7 @@ class SuggestedEdits extends BaseModule {
 			if ( $topicPreferences && count( $excludedTopics ) ) {
 				$topicPreferences = array_diff( $topicPreferences, $excludedTopics );
 			}
-			$topicData = $this->topicRegistry->getTopics();
+			$topicData = $this->topicRegistry->getTopicsMap();
 			$topicLabel = '';
 			$addPulsatingDot = false;
 			$topicFilterMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );

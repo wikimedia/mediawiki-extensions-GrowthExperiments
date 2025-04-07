@@ -74,7 +74,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		if ( $configurationLoader instanceof TopicDecorator ) {
 			$topics = $configurationLoader->getTopics();
 		} else {
-			$topics = $this->topicRegistry->loadTopics();
+			$topics = $this->topicRegistry->getTopics();
 		}
 		$suggester = new LocalSearchTaskSuggester(
 			$this->taskTypeHandlerRegistry,

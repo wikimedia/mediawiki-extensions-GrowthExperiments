@@ -1196,7 +1196,7 @@ class HomepageHooks implements
 		if ( $registry instanceof WikimediaTopicRegistry ) {
 			$registry->setMessageLocalizer( $context );
 		}
-		$topics = $registry->loadTopics();
+		$topics = $registry->getTopics();
 		$topicsData = [];
 		foreach ( $topics as $topic ) {
 			$topicsData[$topic->getId()] = $topic->getViewData( $context );

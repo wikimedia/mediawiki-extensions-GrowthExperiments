@@ -218,7 +218,7 @@ class WikimediaTopicRegistry implements ITopicRegistry {
 	}
 
 	/** @inheritDoc */
-	public function loadTopics(): array {
+	public function getTopics(): array {
 		if ( $this->topics !== null ) {
 			return $this->topics;
 		}
@@ -243,8 +243,8 @@ class WikimediaTopicRegistry implements ITopicRegistry {
 	}
 
 	/** @inheritDoc */
-	public function getTopics(): array {
-		$topics = $this->loadTopics();
+	public function getTopicsMap(): array {
+		$topics = $this->getTopics();
 		return array_combine( array_map( static function ( Topic $topic ) {
 			return $topic->getId();
 		}, $topics ), $topics );
