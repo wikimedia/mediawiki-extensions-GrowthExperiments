@@ -7,7 +7,8 @@
 			"Romaine",
 			"Siebrand",
 			"HanV",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Jeroen N"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentordashboard",
@@ -68,7 +69,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentorstatus",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Actief",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Afwezig",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Aangezien u weg bent tot de $1, worden uw leerlingen tijdelijk toegewezen aan een andere mentor.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Aangezien u weg bent tot $1, worden uw leerlingen tijdelijk toegewezen aan een andere mentor.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Als ‘afwezig’ instellen",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Annuleren",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pauzeren",
