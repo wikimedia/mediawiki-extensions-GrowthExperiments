@@ -5,9 +5,10 @@
 			"Volvox"
 		]
 	},
-	"growthexperiments-desc": "An dëser Erweiderung sinn Experimenter vum 'Growth team'.",
+	"growthexperiments-desc": "An dëser Erweiderung sinn Experimenter vum „Growth Team“.",
 	"growthexperiments-config-validator-datatype-mismatch": "Als <code>$1</code> gouf <code>$2</code> erwaart, mee et ass <code>$3</code>",
 	"growthexperiments-config-validator-array-toobig": "$1 huet ze vill Elementer (maximal $2 sinn erlaabt)",
+	"growthexperiments-edit-config-disabled": "D'Community-Konfiguratioun ass momentan desaktivéiert.",
 	"growthexperiments-edit-config-title": "Growth-Konfiguratioun änneren",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Lescht Aktualiséierung vum [[User:$1|$1]] $2 ([$4 Ënnerscheed]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Lescht Aktualiséierung vun onbekanntem Benotzer $1 ([$3 Ënnerscheed]).",
@@ -26,6 +27,8 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Jo",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Neen",
 	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Solle Benotzer automatesch eligibel si fir Mentor ze ginn?",
+	"growthexperiments-edit-config-mentorship-minimum-age": "Mindestzuel vun Deeg, déi e Benotzer registréiert muss si fir sech als Mentor umellen ze kënnen",
+	"growthexperiments-edit-config-mentorship-minimum-editcount": "Mindestzuel vun Ännerungen, déi e Benotzer (an egal wat fir engem Nummraum) gemaach muss hu fir sech als Mentor umellen ze kënnen",
 	"growthexperiments-edit-config-personalized-praise": "Personaliséierte Luef",
 	"growthexperiments-edit-config-newcomertasks": "Ännerungsvirschléi",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Desaktivéiert",
