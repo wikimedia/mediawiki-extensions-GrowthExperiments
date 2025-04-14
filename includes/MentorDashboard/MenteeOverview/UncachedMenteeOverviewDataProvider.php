@@ -194,6 +194,78 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 		$dbr = $this->getReadConnection();
 
+		$menteeIds = $dbr->newSelectQueryBuilder()
+			->select( 'up_user' )
+			->from( 'user_properties' )
+			->where( [
+				'up_property' => HomepageHooks::HOMEPAGE_PREF_ENABLE,
+				'up_value' => '1',
+				'up_user' => $menteeIds,
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		if ( $menteeIds === [] ) {
+			return [];
+		}
+
+		$menteeIdsWithMentorshipDisabled = $dbr->newSelectQueryBuilder()
+			->select( 'up_user' )
+			->from( 'user_properties' )
+			->where( [
+				'up_property' => MentorManager::MENTORSHIP_ENABLED_PREF,
+				// sanity check, should never match (1 is the default value)
+				$dbr->expr( 'up_value', '!=', '1' ),
+				'up_user' => $menteeIds,
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		$menteeIds = array_diff(
+			$menteeIds,
+			$menteeIdsWithMentorshipDisabled,
+		);
+		if ( $menteeIds === [] ) {
+			return [];
+		}
+
+		$menteeIdsWithBotGroup = $dbr->newSelectQueryBuilder()
+			->select( 'ug_user' )
+			->from( 'user_groups' )
+			->where( [
+				'ug_group' => 'bot',
+				'ug_user' => $menteeIds,
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		$menteeIds = array_diff(
+			$menteeIds,
+			$menteeIdsWithBotGroup,
+		);
+		if ( $menteeIds === [] ) {
+			return [];
+		}
+
+		$menteeIdsWithInfinityBlock = $dbr->newSelectQueryBuilder()
+			->select( 'bt_user' )
+			->from( 'block' )
+			->join( 'block_target', null, [
+				'bt_id=bl_target'
+			] )
+			->where( [
+				'bt_user' => $menteeIds,
+				'bl_expiry' => $dbr->getInfinity(),
+				// not an IP block
+				$dbr->expr( 'bt_user', '!=', null )
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		$menteeIds = array_diff(
+			$menteeIds,
+			$menteeIdsWithInfinityBlock,
+		);
+		if ( $menteeIds === [] ) {
+			return [];
+		}
+
 		$queryBuilder = $dbr->newSelectQueryBuilder()
 			->select( [
 				'user_id',
@@ -204,37 +276,6 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				// filter to mentees only
 				'user_id' => $menteeIds,
 
-				// ensure mentees have homepage enabled
-				'user_id IN (' . $dbr->newSelectQueryBuilder()
-					->select( 'up_user' )
-					->from( 'user_properties' )
-					->where( [
-						'up_property' => HomepageHooks::HOMEPAGE_PREF_ENABLE,
-						'up_value' => '1',
-					] )
-					->getSQL() .
-				')',
-
-				// ensure mentees do not have mentorship disabled
-				'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
-					->select( 'up_user' )
-					->from( 'user_properties' )
-					->where( [
-						'up_property' => MentorManager::MENTORSHIP_ENABLED_PREF,
-						// sanity check, should never match (1 is the default value)
-						$dbr->expr( 'up_value', '!=', '1' ),
-					] )
-					->getSQL() .
-				')',
-
-				// user is not a bot,
-				'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
-					->select( 'ug_user' )
-					->from( 'user_groups' )
-					->where( [ 'ug_group' => 'bot' ] )
-					->getSQL() .
-				')',
-
 				// only users who either made an edit or registered less than 2 weeks ago
 				$dbr->expr( 'user_editcount', '>', 0 )
 					->or( 'user_registration', '>', $dbr->timestamp(
@@ -242,23 +283,6 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 					) ),
 			] )
 			->caller( __METHOD__ );
-
-		// Exclude users which are indefinitely blocked
-		$queryBuilder->andWhere(
-			'user_id NOT IN (' . $dbr->newSelectQueryBuilder()
-				->select( 'bt_user' )
-				->from( 'block' )
-				->join( 'block_target', null, [
-					'bt_id=bl_target'
-				] )
-				->where( [
-					'bl_expiry' => $dbr->getInfinity(),
-					// not an IP block
-					$dbr->expr( 'bt_user', '!=', null )
-				] )
-				->getSQL() .
-			')'
-		);
 
 		// exclude temporary accounts, if enabled (T341389)
 		if ( $this->tempUserConfig->isKnown() ) {
