@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Don Alessandro"
+		]
+	},
+	"growthexperiments-confirmemail-emailhelp": "Paroliñizni unutsañız, esabıñıznı qurtarmaq içün e-mail kerek olur.",
+	"growthexperiments-confirmemail-emailrecommended": "E-mail adresi (tevsiye etile)",
+	"growthexperiments-confirmemail-emailwarning": "Adresiñizni tasdıqlamaq içün bizden kelgen e-mail mektübine baqıñız.",
+	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}} saytına hoş keldiñiz: Lütfen e-mail adresiñizni tasdıqlasañız",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Meraba}} $2,\n\n$1 IP adresinen qayd olğan {{SITENAME}} esabıñızğa bir e-mail qoşqanıñız içün sağ oluñız.\n\nBunı \"$2\" esabıñızğa bağlamaq istegeniñiz e-mail adresi olaraq tasdıqlamaq içün lütfen aşağıdaki dögmege basıñız:\n\n$3\n\nQayd: bu tasdıq kodu <strong>$4 tarihında bite</strong>.\n\nSağ oluñız,\n\n{{SITENAME}}\n\n----\n\nE-mail adresi tasdıqını lâğu etmek içün (bu esap siziñ degil ya da başqa bir sebepnen), bu lâğu bağlantısına basıñız:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "E-mail adresini tasdıqla",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Meraba}} $2,\n\n$1 IP adresinen qayd olğan {{SITENAME}} esabıñızğa bir e-mail qoşqanıñız içün sağ oluñız.\n\nBunı \"$2\" esabıñızğa bağlamaq istegeniñiz e-mail adresi olaraq tasdıqlamaq içün lütfen aşağıdaki dögmege basıñız:\n\n$3\n\nQayd: bu tasdıq kodu <strong>$4 tarihında bite</strong>.\n\nSağ oluñız,\n\n{{SITENAME}}\n\n----\n\nE-mail adresi tasdıqını lâğu etmek içün (bu esap siziñ degil ya da başqa bir sebepnen), bu lâğu bağlantısına basıñız:\n\n$5"
+}
