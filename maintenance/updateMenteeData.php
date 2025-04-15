@@ -26,7 +26,7 @@ class UpdateMenteeData extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->setBatchSize( 200 );
+		$this->setBatchSize( 100 );
 		$this->requireExtension( 'GrowthExperiments' );
 
 		$this->addDescription( 'Update growthexperiments_mentee_data database table' );

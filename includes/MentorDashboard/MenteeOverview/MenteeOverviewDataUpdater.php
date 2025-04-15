@@ -24,7 +24,7 @@ class MenteeOverviewDataUpdater {
 	private UserOptionsManager $userOptionsManager;
 	private LBFactory $lbFactory;
 	private ILoadBalancer $growthLoadBalancer;
-	private int $batchSize = 200;
+	private int $batchSize = 100;
 	private array $mentorProfilingInfo = [];
 
 	/**
@@ -44,6 +44,7 @@ class MenteeOverviewDataUpdater {
 		ILoadBalancer $growthLoadBalancer
 	) {
 		$this->uncachedMenteeOverviewDataProvider = $uncachedMenteeOverviewDataProvider;
+		$this->uncachedMenteeOverviewDataProvider->setBatchSize( $this->batchSize );
 		$this->menteeOverviewDataProvider = $menteeOverviewDataProvider;
 		$this->mentorStore = $mentorStore;
 		$this->userOptionsManager = $userOptionsManager;
@@ -53,6 +54,7 @@ class MenteeOverviewDataUpdater {
 
 	public function setBatchSize( int $batchSize ) {
 		$this->batchSize = $batchSize;
+		$this->uncachedMenteeOverviewDataProvider->setBatchSize( $this->batchSize );
 	}
 
 	public function getMentorProfilingInfo(): array {
