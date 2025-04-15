@@ -59,6 +59,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 		];
 
 		$sut = $this->getDataProvider();
+		$sut->setBatchSize( 3 );
 
 		$actualData = $sut->getFormattedDataForMentor( $mentor );
 
