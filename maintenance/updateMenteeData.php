@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\GrowthExperimentsServices;
@@ -41,7 +43,7 @@ class UpdateMenteeData extends Maintenance {
 		);
 	}
 
-	private function initServices() {
+	private function initServices(): void {
 		$services = $this->getServiceContainer();
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
@@ -70,6 +72,9 @@ class UpdateMenteeData extends Maintenance {
 		return $res;
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function execute() {
 		$this->initServices();
 
