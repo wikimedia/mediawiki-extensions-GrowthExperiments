@@ -89,7 +89,7 @@ class ImportOresTopics extends Maintenance {
 				}
 				try {
 					$this->weightedTagsUpdater->updateWeightedTags( Title::newFromText( $pageName )->toPageIdentity(),
-						'classification.ores.articletopic', $titleTopics );
+						'classification.prediction.articletopic', $titleTopics );
 				} catch ( PreconditionException $e ) {
 					// Page did not exist
 					$this->error( $pageName . ': ' . $e->getMessage() );
