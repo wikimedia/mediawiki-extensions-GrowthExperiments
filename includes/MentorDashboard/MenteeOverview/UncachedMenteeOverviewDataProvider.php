@@ -20,6 +20,7 @@ use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -33,6 +34,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 	/** @var int Number of seconds in a day */
 	private const SECONDS_DAY = 86400;
+	private int $batchSize = 100;
 
 	private MentorStore $mentorStore;
 
@@ -80,6 +82,10 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->tempUserConfig = $tempUserConfig;
 		$this->mainConnProvider = $mainConnProvider;
+	}
+
+	public function setBatchSize( int $batchSize ): void {
+		$this->batchSize = $batchSize;
 	}
 
 	private function getReadConnection(): IReadableDatabase {
@@ -192,116 +198,18 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			return [];
 		}
 
-		$dbr = $this->getReadConnection();
-
-		$menteeIds = $dbr->newSelectQueryBuilder()
-			->select( 'up_user' )
-			->from( 'user_properties' )
-			->where( [
-				'up_property' => HomepageHooks::HOMEPAGE_PREF_ENABLE,
-				'up_value' => '1',
-				'up_user' => $menteeIds,
-			] )
-			->caller( __METHOD__ )
-			->fetchFieldValues();
-		if ( $menteeIds === [] ) {
-			return [];
-		}
-
-		$menteeIdsWithMentorshipDisabled = $dbr->newSelectQueryBuilder()
-			->select( 'up_user' )
-			->from( 'user_properties' )
-			->where( [
-				'up_property' => MentorManager::MENTORSHIP_ENABLED_PREF,
-				// sanity check, should never match (1 is the default value)
-				$dbr->expr( 'up_value', '!=', '1' ),
-				'up_user' => $menteeIds,
-			] )
-			->caller( __METHOD__ )
-			->fetchFieldValues();
-		$menteeIds = array_diff(
-			$menteeIds,
-			$menteeIdsWithMentorshipDisabled,
-		);
-		if ( $menteeIds === [] ) {
-			return [];
-		}
-
-		$menteeIdsWithBotGroup = $dbr->newSelectQueryBuilder()
-			->select( 'ug_user' )
-			->from( 'user_groups' )
-			->where( [
-				'ug_group' => 'bot',
-				'ug_user' => $menteeIds,
-			] )
-			->caller( __METHOD__ )
-			->fetchFieldValues();
-		$menteeIds = array_diff(
-			$menteeIds,
-			$menteeIdsWithBotGroup,
-		);
-		if ( $menteeIds === [] ) {
-			return [];
-		}
-
-		$menteeIdsWithInfinityBlock = $dbr->newSelectQueryBuilder()
-			->select( 'bt_user' )
-			->from( 'block' )
-			->join( 'block_target', null, [
-				'bt_id=bl_target'
-			] )
-			->where( [
-				'bt_user' => $menteeIds,
-				'bl_expiry' => $dbr->getInfinity(),
-				// not an IP block
-				$dbr->expr( 'bt_user', '!=', null )
-			] )
-			->caller( __METHOD__ )
-			->fetchFieldValues();
-		$menteeIds = array_diff(
-			$menteeIds,
-			$menteeIdsWithInfinityBlock,
-		);
-		if ( $menteeIds === [] ) {
-			return [];
-		}
-
-		$queryBuilder = $dbr->newSelectQueryBuilder()
-			->select( [
-				'user_id',
-				'has_edits' => 'user_editcount > 0'
-			] )
-			->from( 'user' )
-			->where( [
-				// filter to mentees only
-				'user_id' => $menteeIds,
-
-				// only users who either made an edit or registered less than 2 weeks ago
-				$dbr->expr( 'user_editcount', '>', 0 )
-					->or( 'user_registration', '>', $dbr->timestamp(
-						(int)wfTimestamp( TS_UNIX ) - 2 * 7 * self::SECONDS_DAY
-					) ),
-			] )
-			->caller( __METHOD__ );
-
-		// exclude temporary accounts, if enabled (T341389)
-		if ( $this->tempUserConfig->isKnown() ) {
-			foreach ( $this->tempUserConfig->getMatchPatterns() as $pattern ) {
-				$queryBuilder->andWhere(
-					$dbr->expr( 'user_name', IExpression::NOT_LIKE, $pattern->toLikeValue( $dbr ) )
-				);
-			}
-		}
-
-		$res = $queryBuilder->fetchResultSet();
-
+		$menteeIdBatches = array_chunk( $menteeIds, $this->batchSize );
 		$editingUsers = [];
 		$notEditingUsers = [];
-		foreach ( $res as $row ) {
-			if ( $row->has_edits ) {
-				$editingUsers[] = (int)$row->user_id;
-			} else {
-				$notEditingUsers[] = (int)$row->user_id;
+		foreach ( $menteeIdBatches as $menteeIdBatch ) {
+			$res = $this->filterMenteeBatch( $menteeIdBatch );
+
+			foreach ( $res as $row ) {
+				if ( $row->has_edits ) {
+					$editingUsers[] = (int)$row->user_id;
+				} else {
+					$notEditingUsers[] = (int)$row->user_id;
+				}
 			}
 		}
 
@@ -640,5 +548,114 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$this->storeProfilingData( 'editcount', microtime( true ) - $startTime );
 
 		return $res;
+	}
+
+	/**
+	 * @param int[] $menteeIds
+	 * @return IResultWrapper|array
+	 */
+	public function filterMenteeBatch( array $menteeIds ) {
+		$dbr = $this->getReadConnection();
+
+		$menteeIds = $dbr->newSelectQueryBuilder()
+			->select( 'up_user' )
+			->from( 'user_properties' )
+			->where( [
+				'up_property' => HomepageHooks::HOMEPAGE_PREF_ENABLE,
+				'up_value' => '1',
+				'up_user' => $menteeIds,
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		if ( $menteeIds === [] ) {
+			return [];
+		}
+
+		$menteeIdsWithMentorshipDisabled = $dbr->newSelectQueryBuilder()
+			->select( 'up_user' )
+			->from( 'user_properties' )
+			->where( [
+				'up_property' => MentorManager::MENTORSHIP_ENABLED_PREF,
+				// sanity check, should never match (1 is the default value)
+				$dbr->expr( 'up_value', '!=', '1' ),
+				'up_user' => $menteeIds,
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		$menteeIds = array_diff(
+			$menteeIds,
+			$menteeIdsWithMentorshipDisabled,
+		);
+		if ( $menteeIds === [] ) {
+			return [];
+		}
+
+		$menteeIdsWithBotGroup = $dbr->newSelectQueryBuilder()
+			->select( 'ug_user' )
+			->from( 'user_groups' )
+			->where( [
+				'ug_group' => 'bot',
+				'ug_user' => $menteeIds,
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		$menteeIds = array_diff(
+			$menteeIds,
+			$menteeIdsWithBotGroup,
+		);
+		if ( $menteeIds === [] ) {
+			return [];
+		}
+
+		$menteeIdsWithInfinityBlock = $dbr->newSelectQueryBuilder()
+			->select( 'bt_user' )
+			->from( 'block' )
+			->join( 'block_target', null, [
+				'bt_id=bl_target'
+			] )
+			->where( [
+				'bt_user' => $menteeIds,
+				'bl_expiry' => $dbr->getInfinity(),
+				// not an IP block
+				$dbr->expr( 'bt_user', '!=', null )
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+		$menteeIds = array_diff(
+			$menteeIds,
+			$menteeIdsWithInfinityBlock,
+		);
+		if ( $menteeIds === [] ) {
+			return [];
+		}
+
+		$queryBuilder = $dbr->newSelectQueryBuilder()
+			->select( [
+				'user_id',
+				'has_edits' => 'user_editcount > 0'
+			] )
+			->from( 'user' )
+			->where( [
+				// filter to mentees only
+				'user_id' => $menteeIds,
+
+				// only users who either made an edit or registered less than 2 weeks ago
+				$dbr->expr( 'user_editcount', '>', 0 )
+					->or( 'user_registration', '>', $dbr->timestamp(
+						(int)wfTimestamp( TS_UNIX ) - 2 * 7 * self::SECONDS_DAY
+					) ),
+			] )
+			->caller( __METHOD__ );
+
+		// exclude temporary accounts, if enabled (T341389)
+		if ( $this->tempUserConfig->isKnown() ) {
+			foreach ( $this->tempUserConfig->getMatchPatterns() as $pattern ) {
+				$queryBuilder->andWhere(
+					$dbr->expr( 'user_name', IExpression::NOT_LIKE, $pattern->toLikeValue( $dbr ) )
+				);
+			}
+		}
+
+		return $queryBuilder->fetchResultSet();
 	}
 }
