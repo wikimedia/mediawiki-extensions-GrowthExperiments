@@ -2550,10 +2550,6 @@
 			"description": "Send a 'get started' notification to new editors after this many seconds. Defaults to 48 hours.",
 			"value": 172800
 		},
-		"GELevelingUpGetStartedMaxTotalEdits": {
-			"description": "Do not send a 'get started' notification to users with more than this edits.",
-			"value": 10
-		},
 		"GELevelingUpManagerTaskTypeCountThresholdMultiple": {
 			"description": "The task type count threshold to use when determining whether to prompt a user to try a new task type. If the user has completed more than this number of a particular task type, it will not be suggested as a next task type to try. If a user completes edits for a task type in a multiple of of this number (e.g. 3, 6, or 12 with the default value), then the user is prompted to try a new task type.",
 			"value": 3
@@ -2570,30 +2566,6 @@
 			"description": "The maximum amount of time, in seconds, that may be used to fetch page view data from AQS. Currently used in job queue context. Default is 5 minutes.",
 			"value": 300
 		},
-		"GEInfoboxTemplates": {
-			"description": "List of templates that provide Infobox functionality.",
-			"value": []
-		},
-		"GEWikiConfigPageTitle": {
-			"description": "Name of page used for on-wiki config; must be in NS_MEDIAWIKI and end with .json; only variables listed in GEOnWikiConfigAllowList may be overriden on wiki",
-			"value": "MediaWiki:GrowthExperimentsConfig.json"
-		},
-		"GEWikiConfigEnabled": {
-			"description": "If set to false, on-wiki configuration will be ignored. WARNING: This will fallback to PHP-globals for all config. By setting this to false, you can break most of the features.",
-			"value": true
-		},
-		"GEHelpPanelReadingModeNamespaces": {
-			"description": "Numerical IDs of the MediaWiki namespaces in which to show the help panel in reading mode. Specifying a namespace will also include its talk namespace. Defaults to NS_PROJECT and NS_HELP namespaces.",
-			"value": [
-				2,
-				4,
-				12
-			]
-		},
-		"GEHelpPanelExcludedNamespaces": {
-			"description": "MediaWiki namespaces that the help panel will be excluded from.",
-			"value": []
-		},
 		"GEHelpPanelNewAccountEnableWithHomepage": {
 			"description": "By default, the help panel is enabled for new accounts in lockstep with the homepage, controlled by GEHomepageNewAccountEnablePercentage. To disable this behavior and use GEHelpPanelNewAccountEnablePercentage instead, set this to false.",
 			"value": true
@@ -2601,36 +2573,6 @@
 		"GEHelpPanelNewAccountEnablePercentage": {
 			"description": "Percentage of new accounts to enable help panel for. Must be a whole number. Ignored by default, only used if GEHelpPanelNewAccountEnableWithHomepage is false.",
 			"value": 100
-		},
-		"GEHelpPanelHelpDeskTitle": {
-			"description": "MediaWiki title for help panel CTA when users have disabled JS. Templates or magic words contained in this string will be expanded.",
-			"value": "Main_Page"
-		},
-		"GEHelpPanelHelpDeskPostOnTop": {
-			"description": "Whether to post new questions on the top of the help desk. Default is to post on the bottom (like section=new does). Only affects wikitext pages.",
-			"value": false
-		},
-		"GEHelpPanelViewMoreTitle": {
-			"description": "MediaWiki title for view more articles on help link.",
-			"value": "Main_Page"
-		},
-		"GEHelpPanelLinks": {
-			"description": "List of links to display in the help panel.",
-			"merge_strategy": "array_plus",
-			"value": [
-				{
-					"title": "Project:Help",
-					"text": "Site help",
-					"id": "help"
-				}
-			]
-		},
-		"GEHelpPanelSearchNamespaces": {
-			"description": "List of namespaces to include in the search for help content.",
-			"value": [
-				4,
-				12
-			]
 		},
 		"GEHelpPanelSearchForeignAPI": {
 			"description": "api.php URL of a foreign wiki to search instead of the current wiki. Used for testing/development to get more/better results.",
@@ -2644,10 +2586,6 @@
 				"image-recommendation": "machineSuggestions",
 				"section-image-recommendation": "machineSuggestions"
 			}
-		},
-		"GEHelpPanelAskMentor": {
-			"description": "When using the help panel's question-asking functionality, post on the mentor's talk page instead of on the help desk page.",
-			"value": true
 		},
 		"WelcomeSurveyAllowFreetextResponses": {
 			"description": "If set to true, freetext responses with the welcome survey are allowed.",
@@ -2677,18 +2615,6 @@
 			"description": "Percentage of new homepage-enabled users who will receive the mentorship module. Note that user must fall into _both_ GEHomepageNewAccountEnablePercentage and this percentage to be considered for mentorship.",
 			"value": 100
 		},
-		"GEMentorshipAutomaticEligibility": {
-			"description": "Automatically grant \"enrollasmentor\" to users who are eligible to enroll as mentors. See GEMentorshipMinimumAge and GEMentorshipMinimumEditcount to define eligibility rules (requirements set by both variables need to be met to make users eligible).",
-			"value": true
-		},
-		"GEMentorshipMinimumAge": {
-			"description": "Minimum tenure (in days) required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
-			"value": 90
-		},
-		"GEMentorshipMinimumEditcount": {
-			"description": "Minimum number of edits required for users to be eligible as mentors. Only used if GEMentorshipAutomaticEligibility is true. To make an user eligible for mentorship, they need to satisfy both GEMentorshipMinimumAge and GEMentorshipMinimumEditcount.",
-			"value": 500
-		},
 		"GEMentorshipReassignMenteesBatchSize": {
 			"description": "Batch size for reassignMenteesJob",
 			"value": 5000
@@ -2700,22 +2626,6 @@
 		"GEPersonalizedPraiseNotificationsEnabled": {
 			"description": "Feature flag controlling whether personalized praise notifications are enabled",
 			"value": true
-		},
-		"GEPersonalizedPraiseDefaultNotificationsFrequency": {
-			"description": "Default frequency of notifications (in hours) related to personalized praise. Mentors can customize this.",
-			"value": "168"
-		},
-		"GEPersonalizedPraiseDays": {
-			"description": "Number of days to consider when checking whether a mentee is praiseworthy (used together with GEPersonalizedPraiseMinEdits). This must not be longer than wgRCMaxAge.",
-			"value": 7
-		},
-		"GEPersonalizedPraiseMinEdits": {
-			"description": "Number of article edits a mentee needs to have within GEPersonalizedPraiseDays to be considered praiseworthy",
-			"value": 8
-		},
-		"GEPersonalizedPraiseMaxEdits": {
-			"description": "Maximum number of total edits a mentee can have to be considered praiseworthy (used to avoid suggesting experienced users)",
-			"value": 500
 		},
 		"GEPersonalizedPraiseMaxReverts": {
 			"description": "Maximum number of total reverted edits a mentee can have to be considered praiseworthy or null if check should be skipped.",
@@ -2738,20 +2648,9 @@
 			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",
 			"value": true
 		},
-		"GEHomepageSuggestedEditsIntroLinks": {
-			"description": "Titles of local help pages linked from the suggested edits intro dialog.",
-			"value": {
-				"create": "Help:Creating pages",
-				"image": "Help:Images"
-			}
-		},
 		"GEHomepageSuggestedEditsEnableTopics": {
 			"description": "Enable topic filters for suggested edits",
 			"value": true
-		},
-		"GENewcomerTasksConfigTitle": {
-			"description": "Title of a MediaWiki page which contains suggested edits configuration. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should be in the MediaWiki: namespace, have JSON content type and contain a map of task type -> task configuration where task configuration consists of the following fields: type  - a task type handler ID; group - 'easy', 'medium' or 'hard'. An optional 'disabled' field, when present and truthy, will make the system ignore that task type. Depending on the task type, there might be other fields, specifically:\n- type=template-based: templates - an array of template names (without namespace) for the maintenance templates\n- type=link-recommendation: minimumTasksPerTopic, minimumLinksPerTask, minimumLinkScore, maximumLinksPerTask, maximumLinksToShowPerTask, minimumTimeSinceLastEdit, minimumWordCount, maximumWordCount: parameters of acceptable tasks.\n\nThe system messages growthexperiments-homepage-suggestededits-tasktype-name-<tasktype> and growthexperiments-homepage-suggestededits-tasktype-description-<tasktype> will be used for task name and description; both must exist.",
-			"value": "MediaWiki:NewcomerTasks.json"
 		},
 		"GENewcomerTasksTopicType": {
 			"description": "How the topic of an article is identified. Only supported value is ores - use ORES articletopic predictions.",
@@ -3026,10 +2925,6 @@
 				]
 			}
 		},
-		"GENewcomerTasksTopicConfigTitle": {
-			"description": "Title of a MediaWiki page which contains morelike topic configuration for suggested edits. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should be in the MediaWiki: namespace, have JSON content type and contain a map of topic id -> topic configuration, which is an object with the properties 'titles' (list of mainspace page names of pages which are considered representative of the topic, to be used for text similarity comparision) and 'label' (human-readable name).",
-			"value": "MediaWiki:NewcomerTopics.json"
-		},
 		"GENewcomerTasksTaskTypeHandlers": {
 			"description": "Used for registering TaskTypeHandlers to the TaskTypeHandlerRegistry. An associative array with handler ID => handler specification, which is an ObjectFactory specification or a factory callable. Handlers IDs correspond to the 'type' parameters in the task config page.",
 			"value": {
@@ -3223,10 +3118,6 @@
 		"GELinkRecommendationMinimumTasksPerTopic": {
 			"value": 500,
 			"description": "Minimum number of link recommendation tasks to maintain per ORES topic."
-		},
-		"GELevelingUpKeepGoingNotificationThresholdsMaximum": {
-			"description": "Maximum edit count threshold at which the user should receive a 'keep going' notification for suggested edits.",
-			"value": 4
 		}
 	},
 	"SpecialPages": {
