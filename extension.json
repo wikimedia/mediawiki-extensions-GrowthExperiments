@@ -3118,6 +3118,14 @@
 		"GELinkRecommendationMinimumTasksPerTopic": {
 			"value": 500,
 			"description": "Minimum number of link recommendation tasks to maintain per ORES topic."
+		},
+		"GEUserImpactMaxEdits": {
+			"value": 1000,
+			"description": "Maximum number of edits to process for Impact Module statistics"
+		},
+		"GEUserImpactMaxThanks": {
+			"value": 1000,
+			"description": "Maximum number of thanks to process for Impact Module statistics"
 		}
 	},
 	"SpecialPages": {

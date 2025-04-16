@@ -133,7 +133,7 @@ const {
 } = require( '../../vue-components/icons.json' );
 const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 const CText = require( '../../vue-components/CText.vue' );
-const { NO_DATA_CHARACTER, DATA_ROWS_LIMIT } = require( '../constants.js' );
+const { NO_DATA_CHARACTER } = require( '../constants.js' );
 
 // @vue/component
 module.exports = exports = {
@@ -164,6 +164,8 @@ module.exports = exports = {
 	setup( props ) {
 		const renderMode = inject( 'RENDER_MODE' );
 		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
+		const maxEdits = inject( 'IMPACT_MAX_EDITS' );
+		const maxThanks = inject( 'IMPACT_MAX_THANKS' );
 		const onSuggestedEditsClick = () => {
 			if ( !props.isActivated ) {
 				mw.track( 'growthexperiments.startediting', {
@@ -187,7 +189,9 @@ module.exports = exports = {
 			onSuggestedEditsClick,
 			cdxIconUserTalk,
 			cdxIconChart,
-			cdxIconInfoFilled
+			cdxIconInfoFilled,
+			maxEdits,
+			maxThanks
 		};
 	},
 	computed: {
@@ -206,24 +210,24 @@ module.exports = exports = {
 			return this.renderThirdPerson ?
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text-third-person',
-					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+					this.$filters.convertNumber( this.maxThanks )
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text',
 					'', // used to be the username
-					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+					this.$filters.convertNumber( this.maxThanks )
 				).text();
 		},
 		longestEditingStreakFirstParagraph() {
 			return this.renderThirdPerson ?
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text-third-person',
-					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+					this.$filters.convertNumber( this.maxEdits )
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text',
 					'', // used to be the username
-					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+					this.$filters.convertNumber( this.maxEdits )
 				).text();
 		},
 		thanksUrl() {

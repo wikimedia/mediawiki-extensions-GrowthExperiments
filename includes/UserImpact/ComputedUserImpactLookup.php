@@ -41,6 +41,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		MainConfigNames::LocalTZoffset,
 		'GEUserImpactMaxArticlesToProcessForPageviews',
 		'GEUserImpactMaximumProcessTimeSeconds',
+		'GEUserImpactMaxEdits',
+		'GEUserImpactMaxThanks'
 	];
 
 	/**
@@ -49,12 +51,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * in the impact module.
 	 */
 	private const THUMBNAIL_SIZE = 40;
-
-	/** Cutoff for edit statistics. See also DATA_ROWS_LIMIT in ScoreCards.vue. */
-	private const MAX_EDITS = 1000;
-
-	/** Cutoff for thanks count. See also DATA_ROWS_LIMIT in ScoreCards.vue. */
-	private const MAX_THANKS = 1000;
 
 	/** How many articles to use for $priorityTitles in getPageViewData(). */
 	private const PRIORITY_ARTICLES_LIMIT = 5;
@@ -286,7 +282,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$queryBuilder->where( $db->bitAnd( 'rev_deleted', RevisionRecord::DELETED_USER ) . ' = 0' );
 		// hopefully able to use the rev_actor_timestamp index for an efficient query
 		$queryBuilder->orderBy( 'rev_timestamp', 'DESC' );
-		$queryBuilder->limit( self::MAX_EDITS );
+		$queryBuilder->limit( $this->config->get( 'GEUserImpactMaxEdits' ) );
 		$queryBuilder->recency( $flags );
 		$queryBuilder->caller( __METHOD__ );
 		// T331264
@@ -362,7 +358,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 */
 	private function getThanksReceivedCount( User $user, int $flags ): int {
 		return $this->thanksQueryHelper
-			? $this->thanksQueryHelper->getThanksReceivedCount( $user, self::MAX_THANKS, $flags )
+			? $this->thanksQueryHelper->getThanksReceivedCount(
+				$user, $this->config->get( 'GEUserImpactMaxThanks' ), $flags )
 			: 0;
 	}
 
@@ -373,7 +370,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 */
 	private function getThanksGivenCount( UserIdentity $user, int $flags ): int {
 		return $this->thanksQueryHelper
-			? $this->thanksQueryHelper->getThanksGivenCount( $user, self::MAX_THANKS, $flags )
+			? $this->thanksQueryHelper->getThanksGivenCount(
+				$user, $this->config->get( 'GEUserImpactMaxThanks' ), $flags )
 			: 0;
 	}
 

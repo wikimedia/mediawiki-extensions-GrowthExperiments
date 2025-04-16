@@ -95,6 +95,8 @@
 		app.provide( 'RENDER_IN_THIRD_PERSON', mw.config.get( 'GEImpactThirdPersonRender' ) );
 		app.provide( 'BROWSER_HAS_INTL', hasIntl() );
 		app.provide( 'RENDER_MODE', mode );
+		app.provide( 'IMPACT_MAX_EDITS', mw.config.get( 'GEImpactMaxEdits' ) );
+		app.provide( 'IMPACT_MAX_THANKS', mw.config.get( 'GEImpactMaxThanks' ) );
 		app.use( logger, {
 			mode,
 			logger: new HomepageLogger(
