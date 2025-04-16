@@ -38,14 +38,14 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "Parameter 'sectionNumber' mestilah merupakan sebuah integer pada data pemalam Tambah Imej Bahagian, ialah $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Rekod pengesyoran pautan tidak ditemui",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Sasaran pengesyoran pautan yang tidak dijangka: $1",
-	"growthexperiments-underlinked-rescore-profile": "Profil skor dalaman yang digunakan dalam pengesyoran pautan GrowthExperiments untuk mengutamakan rencana yang belum mempunyai pautan yang mencukupi.",
+	"growthexperiments-underlinked-rescore-profile": "Profil skor dalaman yang digunakan dalam pengesyoran pautan GrowthExperiments untuk mengutamakan rencana yang belum mempunyai pautan yang mencukupi. Hal ini tidak dibenarkan apabila Pengesyoran Pautan dilumpuhkan.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "Parameter <var>editRevId</var> diperlukan apabila parameter <var>accepted</var> ditetapkan kepada <kbd>true</kbd> .",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Parameter <var>editRevId</var> tidak boleh digunakan apabila parameter <var>accepted</var> ditetapkan kepada <kbd>false</kbd> .",
 	"growthexperiments-addimage-feedback-accepted-caption": "Parameter <var>caption</var> diperlukan apabila parameter <var>accepted</var> ditetapkan kepada <kbd>true</kbd> .",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Semakan yang dinyatakan pada <var>editRevId</var> tidak ditemui.",
 	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Semakan yang dinyatakan pada <var>editRevId</var> adalah milik halaman lain.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Patutkah '$1' dipautkan?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Semak beberapa pautan yang dicadangkan dan perbaiki laman web maklumat Wikipedia.",
+	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Semak pautan yang dicadangkan dan perbaiki web maklumat Wikipedia.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Ya",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Tidak"
 }
