@@ -172,6 +172,7 @@
 	"growthexperiments-mentor-list-missing-key": "Kunci <code>$1</code> hilang",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> dijangka sebagai <code>$2</code>, tetapi menjadi <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Definisi mentor mengandungi kunci <code>$1</code> yang tidak dijangka",
+	"growthexperiments-mentor-list-invalid-weight": "<code>$1</code> dijangka menjadi salah satu daripada: <code>$2</code>, tetapi sebenarnya <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 telah ditambahkan pada senarai mentor",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 tiada dalam senarai mentor",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Mentor $1 bukan seorang pengguna berdaftar",
