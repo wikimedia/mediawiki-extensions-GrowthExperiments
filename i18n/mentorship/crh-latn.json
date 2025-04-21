@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Don Alessandro",
 			"TayfunEt.",
 			"Zolgoyo"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-talk": "muzakere",
+	"echo-category-title-ge-mentorship": "Mentorlıq",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Soñraki saife",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Sazlamalar",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "Mevzu",
