@@ -5,7 +5,6 @@ namespace GrowthExperiments;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
@@ -13,7 +12,6 @@ use MediaWiki\Cache\GenderCache;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Config\Config;
-use MediaWiki\Context\RequestContext;
 use MediaWiki\Language\Language;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
@@ -82,15 +80,6 @@ class HelpPanelHooks implements
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
 		$preferences[HelpdeskQuestionPoster::QUESTION_PREF] = [ 'type' => 'api', ];
-
-		// FIXME: Guidance doesn't need an opt-in anymore, let's remove this.
-		if ( SuggestedEdits::isGuidanceEnabledForAnyone( RequestContext::getMain() )
-			&& $this->config->get( 'GENewcomerTasksGuidanceRequiresOptIn' )
-		) {
-			$preferences[SuggestedEdits::GUIDANCE_ENABLED_PREF] = [
-				'type' => 'api',
-			];
-		}
 	}
 
 	/**
@@ -111,7 +100,6 @@ class HelpPanelHooks implements
 	): void {
 		$keysToExclude = array_merge( $keysToExclude, [
 			HelpdeskQuestionPoster::QUESTION_PREF,
-			SuggestedEdits::GUIDANCE_ENABLED_PREF,
 		] );
 	}
 
@@ -163,17 +151,14 @@ class HelpPanelHooks implements
 			$out->addHTML( HelpPanel::getHelpPanelCtaButton( $this->wikiConfig ) );
 		}
 
-		if ( SuggestedEdits::isGuidanceEnabled( $out->getContext() ) ) {
-			// Note: wgGELinkRecommendationsFrontendEnabled reflects the configuration flag.
-			// Checking whether Add Link has been disabled in community configuration is the
-			// frontend code's responsibility.
-			$out->addJsConfigVars( [
-				'wgGENewcomerTasksGuidanceEnabled' => true,
-				'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle( $this->wikiConfig ) !== null,
-				'wgGELinkRecommendationsFrontendEnabled' =>
-					$out->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' )
-			] );
-		}
+		// Note: wgGELinkRecommendationsFrontendEnabled reflects the configuration flag.
+		// Checking whether Add Link has been disabled in community configuration is the
+		// frontend code's responsibility.
+		$out->addJsConfigVars( [
+			'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle( $this->wikiConfig ) !== null,
+			'wgGELinkRecommendationsFrontendEnabled' =>
+				$out->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' )
+		] );
 
 		// If the help panel would be shown but for the value of the 'action' parameter,
 		// add the email config var anyway. We'll need it if the user loads an editor via JS.

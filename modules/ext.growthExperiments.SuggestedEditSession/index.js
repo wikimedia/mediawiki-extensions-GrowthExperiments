@@ -446,7 +446,7 @@
 		this.newRevId = self.newRevId || config.newRevId;
 		this.save();
 
-		if ( !config.nextRequest && mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) &&
+		if ( !config.nextRequest &&
 			// Never show the dialog on an edit screen, just defer it to the next request.
 			// This can happen when VisualEditor fires the postEdit hook before reloading the page.
 			!( url.searchParams.get( 'veaction' ) || url.searchParams.get( 'action' ) === 'edit' )

@@ -27,7 +27,6 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
@@ -66,8 +65,6 @@ class SuggestedEdits extends BaseModule {
 	public const TOPICS_MATCH_MODE_PREF = 'growthexperiments-homepage-se-topic-filters-mode';
 	/** User preference used to remember the user's task type selection. */
 	public const TASKTYPES_PREF = 'growthexperiments-homepage-se-filters';
-	/** User preference for opting into guidance, when $wgGENewcomerTasksGuidanceRequiresOptIn is true. */
-	public const GUIDANCE_ENABLED_PREF = 'growthexperiments-guidance-enabled';
 	/**
 	 * Default value for TASKTYPES_PREF.
 	 *
@@ -287,29 +284,6 @@ class SuggestedEdits extends BaseModule {
 				$context->getUser(),
 				'growth-glam-2022'
 			);
-	}
-
-	/**
-	 * Check if guidance feature is enabled for suggested edits.
-	 *
-	 * @param IContextSource $context
-	 * @return bool
-	 */
-	public static function isGuidanceEnabledForAnyone( IContextSource $context ): bool {
-		return $context->getConfig()->get( 'GENewcomerTasksGuidanceEnabled' );
-	}
-
-	/**
-	 * Check if guidance feature is enabled for suggested edits.
-	 *
-	 * @param IContextSource $context
-	 * @return bool
-	 */
-	public static function isGuidanceEnabled( IContextSource $context ): bool {
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		return self::isGuidanceEnabledForAnyone( $context ) && (
-			!$context->getConfig()->get( 'GENewcomerTasksGuidanceRequiresOptIn' ) ||
-			$userOptionsLookup->getBoolOption( $context->getUser(), self::GUIDANCE_ENABLED_PREF ) );
 	}
 
 	/** @inheritDoc */

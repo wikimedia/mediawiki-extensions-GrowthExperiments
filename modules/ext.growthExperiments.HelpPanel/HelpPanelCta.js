@@ -11,16 +11,15 @@
 		configData = Help.configData,
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
-		guidanceEnabled = mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
 		askHelpEnabled = mw.config.get( 'wgGEAskQuestionEnabled' );
-	if ( guidanceEnabled && suggestedEditSession.active &&
+	if ( suggestedEditSession.active &&
 		!suggestedEditSession.postEditDialogNeedsToBeShown
 	) {
 		require( './SuggestedEditsGuidance.js' );
 	}
 	const taskTypeId = suggestedEditSession.taskType;
 	const taskTypeLogData = taskTypeId ? { taskType: taskTypeId } : null;
-	const guidanceAvailable = guidanceEnabled && taskTypeId && TASK_TYPES[ taskTypeId ];
+	const guidanceAvailable = taskTypeId && TASK_TYPES[ taskTypeId ];
 
 	$( () => {
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -52,7 +51,6 @@
 				size: Math.max( document.documentElement.clientWidth, window.innerWidth || 0 ) > 1366 ? 'medium' : size,
 				logger: logger,
 				questionPosterAllowIncludingTitle: true,
-				guidanceEnabled: guidanceEnabled,
 				askHelpEnabled: askHelpEnabled,
 				taskTypeId: taskTypeId,
 				suggestedEditSession: suggestedEditSession

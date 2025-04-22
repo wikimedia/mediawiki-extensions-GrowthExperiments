@@ -4,7 +4,6 @@ namespace GrowthExperiments;
 
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\HelpPanelButton;
-use GrowthExperiments\HomepageModules\SuggestedEdits;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Html\Html;
@@ -144,7 +143,7 @@ class HelpPanel {
 	/**
 	 * If action=view, check if we are in allowed namespace.
 	 *
-	 * Note that views to talk titles will perform a look up for the subject title namespace,
+	 * Note that views to talk titles will perform a look-up for the subject title namespace,
 	 * so specifying 4 (NS_PROJECT) as a namespace for which to enable help panel reading mode
 	 * will also result in enabling 5 (NS_PROJECT_TALK) as an additional namespace.
 	 *
@@ -166,7 +165,6 @@ class HelpPanel {
 			return false;
 		}
 		if ( $title->inNamespaces( NS_MAIN, NS_TALK ) &&
-			SuggestedEdits::isGuidanceEnabled( $out->getContext() ) &&
 			HomepageHooks::getClickId( $out->getContext() ) ) {
 			return true;
 		}

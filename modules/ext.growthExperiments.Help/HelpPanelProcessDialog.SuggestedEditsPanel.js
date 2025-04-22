@@ -12,7 +12,6 @@
 	 * @param {Object} config The standard config to pass to OO.ui.PanelLayout,
 	 *  plus configuration specific to building the suggested edits panel.
 	 * @param {Object} config.taskTypeData The data for a particular task.
-	 * @param {boolean} config.guidanceEnabled If guidance is available for this user and task type.
 	 * @param {string} config.editorInterface The editor interface in use
 	 * @param {string} config.preferredEditor The preferred editor interface for
 	 * suggested edits.
@@ -27,7 +26,7 @@
 			continuous: true
 		}, config ) );
 		this.config = config;
-		if ( !config.taskTypeData || !config.guidanceEnabled ) {
+		if ( !config.taskTypeData ) {
 			return;
 		}
 		this.editorInterface = config.editorInterface;
