@@ -7,7 +7,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialHomepage;
 use InvalidArgumentException;
-use MediaWiki\Config\GlobalVarConfig;
+use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
 use SpecialPageTestBase;
@@ -33,14 +33,13 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$this->installMockHttp( $mwHttpRequest );
 
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$communityConfigServices = CommunityConfigurationServices::wrap( $this->getServiceContainer() );
 		return new SpecialHomepage(
 			$growthExperimentsServices->getHomepageModuleRegistry(),
 			$this->getServiceContainer()->getStatsFactory(),
 			$growthExperimentsServices->getExperimentUserManager(),
 			$growthExperimentsServices->getMentorManager(),
-			// This would normally be wiki-powered config, but
-			// there is no need to test this
-			GlobalVarConfig::newInstance(),
+			$communityConfigServices->getMediaWikiConfigRouter(),
 			$this->getServiceContainer()->getUserOptionsManager(),
 			$this->getServiceContainer()->getTitleFactory()
 		);
