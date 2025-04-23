@@ -2649,10 +2649,6 @@
 			"description": "Enable topic filters for suggested edits",
 			"value": true
 		},
-		"GENewcomerTasksTopicType": {
-			"description": "How the topic of an article is identified. Only supported value is ores - use ORES articletopic predictions.",
-			"value": "ores"
-		},
 		"GENewcomerTasksTaskTypeHandlers": {
 			"description": "Used for registering TaskTypeHandlers to the TaskTypeHandlerRegistry. An associative array with handler ID => handler specification, which is an ObjectFactory specification or a factory callable. Handlers IDs correspond to the 'type' parameters in the task config page.",
 			"value": {

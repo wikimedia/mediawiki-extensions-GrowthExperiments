@@ -2,19 +2,11 @@
 
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
-use InvalidArgumentException;
 use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Extension\WikimediaMessages\ArticleTopicFiltersRegistry;
 use MessageLocalizer;
 
 class WikimediaTopicRegistry implements ITopicRegistry {
-
-	/** @var string Use the configuration for OresBasedTopic topics. */
-	public const CONFIGURATION_TYPE_ORES = 'ores';
-
-	private const VALID_TOPIC_TYPES = [
-		self::CONFIGURATION_TYPE_ORES,
-	];
 
 	public const GROWTH_ORES_TOPIC_GROUPS = [
 		"culture",
@@ -188,10 +180,6 @@ class WikimediaTopicRegistry implements ITopicRegistry {
 	];
 	/** @var Topic[]|null */
 	private ?array $topics;
-	/**
-	 * @var string One of the self::VALID_TOPIC_TYPES constants.
-	 */
-	private string $topicType;
 
 	/** @var ?callable */
 	private $campaignConfigCallback;
@@ -200,16 +188,11 @@ class WikimediaTopicRegistry implements ITopicRegistry {
 
 	public function __construct(
 		MessageLocalizer $messageLocalizer,
-		CollationFactory $collationFactory,
-		string $topicType = self::CONFIGURATION_TYPE_ORES
+		CollationFactory $collationFactory
 	) {
 		$this->topics = null;
 		$this->collationFactory = $collationFactory;
 		$this->messageLocalizer = $messageLocalizer;
-		$this->topicType = $topicType;
-		if ( !in_array( $this->topicType, self::VALID_TOPIC_TYPES, true ) ) {
-			throw new InvalidArgumentException( 'Invalid topic type ' . $this->topicType );
-		}
 	}
 
 	/**

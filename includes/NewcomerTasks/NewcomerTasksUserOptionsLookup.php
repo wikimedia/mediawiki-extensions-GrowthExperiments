@@ -105,7 +105,7 @@ class NewcomerTasksUserOptionsLookup {
 	 *   no preference set, or null if preference wasn't set or is invalid.
 	 */
 	public function getTopicFilterWithoutFallback( UserIdentity $user ): ?array {
-		return $this->getJsonListOption( $user, SuggestedEdits::getTopicFiltersPref( $this->config ) );
+		return $this->getJsonListOption( $user, SuggestedEdits::TOPICS_ORES_PREF );
 	}
 
 	/**

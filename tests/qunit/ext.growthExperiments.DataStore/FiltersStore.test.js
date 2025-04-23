@@ -10,7 +10,7 @@ const setupOptionsStub = ( sandbox, { taskTypes, topics, topicsMatchMode } ) => 
 	getOptionsStub.withArgs( 'growthexperiments-homepage-se-filters' ).returns(
 		JSON.stringify( taskTypes )
 	);
-	getOptionsStub.withArgs( 'growthexperiments-homepage-se-topic-filters' ).returns(
+	getOptionsStub.withArgs( 'growthexperiments-homepage-se-ores-topic-filters' ).returns(
 		JSON.stringify( topics )
 	);
 	if ( topicsMatchMode ) {
@@ -129,7 +129,7 @@ QUnit.test( 'should save the selected filters to preferences and set the mw.user
 	filtersStore.savePreferences();
 	const updatedPreferences = {};
 	updatedPreferences[ 'growthexperiments-homepage-se-filters' ] = JSON.stringify( selectedTaskTypes );
-	updatedPreferences[ 'growthexperiments-homepage-se-topic-filters' ] = JSON.stringify( selectedTopics );
+	updatedPreferences[ 'growthexperiments-homepage-se-ores-topic-filters' ] = JSON.stringify( selectedTopics );
 	assert.deepEqual( saveOptionsStub.firstCall.args[ 0 ], updatedPreferences );
 	assert.deepEqual( setOptionsSpy.firstCall.args[ 0 ], updatedPreferences );
 } );

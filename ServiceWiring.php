@@ -835,12 +835,6 @@ return [
 	): ITopicRegistry {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikimediaMessages' ) ) {
 			$growthServices = GrowthExperimentsServices::wrap( $services );
-			$config = $growthServices->getGrowthConfig();
-			$topicType = $config->get( 'GENewcomerTasksTopicType' );
-			if ( $topicType !== WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES ) {
-				throw new LogicException( 'Unsupported topic type of ' . $topicType );
-			}
-
 			$registry = new WikimediaTopicRegistry(
 				RequestContext::getMain(),
 				$services->getCollationFactory()

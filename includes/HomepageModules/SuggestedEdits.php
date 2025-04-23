@@ -20,7 +20,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\Util;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
@@ -61,8 +60,6 @@ class SuggestedEdits extends BaseModule {
 	public const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
 	/** User preference to track that suggested edits were enabled this user automatically on signup. Not used. */
 	public const PREACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-preactivated';
-	/** User preference used to remember the user's topic selection, when using morelike topics. */
-	public const TOPICS_PREF = 'growthexperiments-homepage-se-topic-filters';
 	/** User preference used to remember the user's topic selection, when using ORES topics. */
 	public const TOPICS_ORES_PREF = 'growthexperiments-homepage-se-ores-topic-filters';
 	/** User preference used to remember the user's topic mode selection, when using any type of topics. */
@@ -290,19 +287,6 @@ class SuggestedEdits extends BaseModule {
 				$context->getUser(),
 				'growth-glam-2022'
 			);
-	}
-
-	/**
-	 * Get the name of the preference to use for storing topic filters.
-	 * @param Config $config
-	 * @return string
-	 */
-	public static function getTopicFiltersPref( Config $config ) {
-		$topicType = $config->get( 'GENewcomerTasksTopicType' );
-		if ( $topicType === WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES ) {
-			return self::TOPICS_ORES_PREF;
-		}
-		return self::TOPICS_PREF;
 	}
 
 	/**
