@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Xnet1234",
-			"חיים"
+			"חיים",
+			"Guycn2"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "לוח בקרה לחונכים",
@@ -68,7 +69,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "{{GENDER:|פעיל|פעילה}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "לא בסביבה",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "מכיוון שלא {{GENDER:|תהיה|תהיי}} בסביבה עד $1, החניכים שלך ישויכו זמינות לחונך אחר.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "{{GENDER:|אתה חסום|את חסומה}} כרגע. המצב GENDER מוגדר באופן זמני ל\"לא בסביבה\" והחניכים שלך מוקצים מחדש באופן זמני לחונך אחר. אם החסימה שלך מתבטלת (או פוקעת), המצב {{GENDER:|שלך}} יוגדר ל\"פעיל\" והחניכים שלך יוקצו לך מחדש.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "החשבון {{GENDER:|שלך}} חסום כרגע. המצב {{GENDER:|שלך}} מוגדר באופן זמני ל\"לא בסביבה\" והחניכים {{GENDER:|שלך}} מוקצים באופן זמני לחונך אחר. אם החסימה {{GENDER:|שלך}} תבוטל (או תפקע), המצב {{GENDER:|שלך}} יוגדר ל\"פעיל\" והחניכים {{GENDER:|שלך}} יוקצו לך מחדש.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "{{GENDER:|אתה חסום עכשיו. אינך יכול|את חסומה עכשיו. אינך יכולה}} לשנות את מצב החונכות שלך בזמן החסימה.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1 {{GENDER:$1|נעול|נעולה}} כעת. לא ניתן לשנות את {{GENDER:$1|מצבו כחונך בזמן שהוא נעול|מצבה כחונכת בזמן שהיא נעולה}}.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "להגדיר את עצמך \"לא בסביבה\"",
