@@ -299,7 +299,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "پیکربندی نامعتبر ویرایش‌های پیشنهادی برای نوع وظیفهٔ «$1» در فیلد «$2»: حداکثر $3 عنصر مجاز است",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "پیکربندی نامعتبر برای ویرایش‌های پیشنهادی: شناسهٔ \"$1\" نامعتبر - تنها می‌تواند شامل الف-ی، ۰-۹ یا - (منفی) باشد",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "پیکربندی نامعتبر برای ویرایش‌های پیشنهادی: پارامتر <code>type</code> نامعتبر $1 برای نوع وظیفه $2 - باید یکی از $3 باشد",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "پیکربندی نامعتبر برای ویرایش‌های پیشنهادی: فیلد $1 برای نوع یا موضوع وظیفه $2 خالی است",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "پیکربندی نامعتبر برای ویرایش‌های پیشنهادی: گروه نامعتبر $1 برای نوع وظیفه $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "پیکربندی نامعتبر برای ویرایش‌های پیشنهادی: عنوان الگوی $1 نامعتبر برای نوع وظیفه $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "پیکربندی نامعتبر ویرایش‌های پیشنهادی: نام ردهٔ $1 برای نوع وظیفهٔ $2 نامعتبر است",

@@ -302,7 +302,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Neplatná konfigurace editačních tipů pro \"$1\", položka \"$2\": {{PLURAL:$3|povolen maximálně jeden prvek|povoleny maximálně $3 prvky|povoleno maximálně $3 prvků}}",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Neplatná konfigurace editačních tipů: neplatný identifikátor $1 - musí obsahovat pouze znaky a-z, 0-9 nebo - (spojovník)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Neplatná konfigurace editačních tipů: $1 není platnou hodnotou parametru <code>type</code> pro typ úkolu $2 - musí být jedna z následujících: $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Neplatná konfigurace editačních tipů: chybějící pole $1 pro typ úkolu nebo téma $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Neplatná konfigurace editačních tipů: neplatná skupina $1 pro typ úkolu $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Neplatná konfigurace editačních tipů: neplatný název šablony $1 pro druh tipu $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Neplatná konfigurace editačních tipů: neplatné jméno kategorie \"$1\" pro úkol $2",

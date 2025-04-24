@@ -292,7 +292,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Neveljavna predlagana konfiguracija urejanja za vrsto nalog »$1«, polje »$2«: dovoljenih je največ $3 elementov",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Neveljavna konfiguracija predlaganih urejanj: neveljaven identifikator »$1« – vsebuje lahko samo znake a–z, 0–9 in - (minus)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Neveljavna konfiguracija predlaganih urejanj: neveljaven parameter <code>vrsta</code> $1 za nalogo vrste $2 – biti mora eden izmed naslednjih: $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Neveljavna konfiguracija predlaganih urejanj: za vrsto naloge ali temo $2 manjka polje $1",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Neveljavna konfiguracija predlaganih urejanj: neveljavna skupina $1 za nalogo vrste $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Neveljavna konfiguracija predlaganih urejanj: neveljavno ime predloge $1 za nalogo vrste $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Neveljavna predlagana konfiguracija urejanja: neveljavno ime kategorije $1 za vrsto nalog $2",

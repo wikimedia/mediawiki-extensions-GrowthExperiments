@@ -329,7 +329,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "对任务类型“$1”中“$2”栏的建议编辑配置无效：最多允许“$3”个元素",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "无效的建议编辑配置：无效的id“$1” - 必须包含a-z、0-9、-（减号）",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "无效的编辑建议配置：任务类型“$2”的无效<code>type</code>参数“$1”——必须是“$3”之一",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "无效的建议编辑配置：任务类型或主题“$2”中缺失“$1”字段",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "无效的建议编辑配置：任务类型“$2”的任务组“$1”无效",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "编辑建议配置无效：任务类型“$2”的模板名称“$1”无效",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "无效的建议编辑设置：无效的用于任务类型“$2”的分类名称“$1”",

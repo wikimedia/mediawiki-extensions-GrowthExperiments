@@ -330,7 +330,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Configuración de ediciones sugeridas no válida para el tipo de tarea \"$1\" campo \"$2\": máximo de elementos $3 permitidos",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuración de ediciones sugeridas no válida: el identificador «$1» es incorrecto; debe contener solo caracteres entre a-z, 0-9 o guiones",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configuración de ediciones sugeridas inválida: parámetro <code>tipo</code> inválido $1 para el tipo de tarea $2 - debe ser uno de $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuración de ediciones sugeridas no válida: falta el campo $1 para el tipo de tarea o tema $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuración de ediciones sugeridas inválida: grupo inválido $1 para tipo de tarea $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configuración de ediciones sugeridas inválida: nombre de plantilla inválida $1 para el tipo de tarea $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Configuración de ediciones sugeridas no válida: nombre de categoría $1 para el tipo de tarea $2",

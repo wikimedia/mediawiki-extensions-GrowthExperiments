@@ -263,7 +263,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Няслушная канфігурацыя прапанаваных правак для задання тыпу «$1» поле «$2»: дапускаецца не больш за $3 элементаў",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Няслушная канфігурацыя прапанаваных правак: няслушны ідэнтыфікатар «$1» — павінен змяшчаць толькі a-z, 0-9, - (мінус)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Няслушная канфігурацыя прапанаваных правак: няслушны параметр <code>type</code> $1 для задання тыпу $2 — павінен быць адным з $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Няслушная канфігурацыя прапанаваных правак: адсутнічае поле $1 для тыпу задання або тэмы $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Няслушная канфігурацыя прапанаваных правак: няслушная група $1 для задання тыпу $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Няслушная канфігурацыя прапанаваных правак: няслушная назва шаблону $1 для задання тыпа $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Няслушная канфігурацыя прапанаваных правак: няслушная назва катэгорыі $1 для задання тыпу $2",

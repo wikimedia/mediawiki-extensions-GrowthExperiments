@@ -254,7 +254,6 @@
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Nederīga ieteikto labojumu konfigurācija: nepareiza struktūra",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Nederīga ieteikto labojumu konfigurācija: nederīgs id \"$1\" — jāsatur tikai a-z, 0-9, - (mīnuss)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Nederīga ieteikto labojumu konfigurācija: nederīgs <code>type</code> parametrs $1 uzdevuma veidam $2 - jābūt vienam no $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Nederīga ieteikto labojumu konfigurācija: uzdevumu veidam vai tēmai $2 trūkst lauks $1",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Nederīga ieteikto labojumu konfigurācija: uzdevumu veidam $2 ir nederīga grupa $1",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Nederīga ieteikto labojumu konfigurācija: nederīgs veidnes nosaukums $1 uzdevuma veidam $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Nederīga ieteikto labojumu konfigurācija: laukam $2 trūkst ziņojums $1",

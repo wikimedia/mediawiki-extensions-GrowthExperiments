@@ -292,7 +292,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Configurare invalidă de editări sugerate pentru tipul de sarcină „$1”, câmpul „$2”: maxim $3 elemente permise",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configurare a editărilor sugerate invalidă: id-ul „$1” invalid - trebuie să conțină doar a-z, 0-9, - (minus)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configurare a editărilor sugerate invalidă: invalid <code>tipul</code> parametrului $1 pentru tipul sarcinii $2 - trebuie să fie unul dintre $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Configurare a editărilor sugerate invalidă: lipsește câmpul $1 pentru tipul sau subiectul sarcinii $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configurare a editărilor sugerate invalidă: grupul $1 invalid pentru tipul sarcinii $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configurare a editărilor sugerate invalidă: numele formatului $1 invalid pentru tipul sarcinii $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Configurare a editărilor sugerate invalidă: numele categoriei $1 invalid pentru tipul sarcinii $2",

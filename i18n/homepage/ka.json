@@ -271,7 +271,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია დავალების ტიპ „$1“-ის ველისათვის „$2“: დასაშვებია მაქსიმუმ „$3“ ელემენტი",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია: არასწორი ID „$1“ – უნდა შეიცავდეს მხოლოდ ასოებს a-z, ციფრებს 0-9, მინუსის ნიშანს (-)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია: <code>type</code>-ის არასწორი პარამეტრი „$1“ დავალების ტიპისთვის „$2“; უნდა იყოს ერთ ერთი შემდეგი – $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია: აკლია ველი „$1“ დავალების ტიპ ან თემა „$2“-ისათვის",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია: არასწორი ჯგუფი „$1“ დავალების ტიპისათვის „$2“",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია: თარგის არასწორი სახელი „$1“ დავალების ტიპისათვის „$2“",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "შემოთავაზებულ ცვლილებათა არასწორი კონფიგურაცია: კატეგორიის არასწორი სახელი „$1“ დავალების ტიპისათვის „$2“",

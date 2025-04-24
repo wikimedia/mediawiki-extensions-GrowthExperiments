@@ -262,7 +262,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Netinkama siūlomų pakeitimų konfigūracija užduoties tipo „$1“: laukui „$2“: maksimaliai leidžiama $3 elementų",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Netinkama siūlomų pakeitimų konfigūracija: negalimas id „$1“ - turi būti tik a-z, 0-9, - (minusas)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Netinkama siūlomų pakeitimų konfigūracija: netinkamas <code>type</code> parametras $1, skirtas užduoties tipui $2 - turi būti vienas iš $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Netinkama siūlomų pakeitimų konfigūracija: trūksta lauko $1 užduoties tipui ar temai $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Netinkama siūlomų pakeitimų konfigūracija: negalima grupė $1, skirta užduoties tipui $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Netinkama siūlomų pakeitimų konfigūracija: negalimas šablono pavadinimas $1, skirtas užduoties tipui $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Netinkama siūlomų pakeitimų konfigūracija: negalimas kategorijos pavadinimas $1 užduoties tipui $2",

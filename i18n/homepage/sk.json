@@ -218,7 +218,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Strojové návrhy",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Neplatná konfigurácia navrhovaných úprav: zlá štruktúra",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Neplatná konfigurácia navrhovaných úprav: neplatný identifikátor $1 – musí obsahovať len znaky a-z, 0-9 alebo - (spojovník)",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Neplatná konfigurácia navrhovaných úprav: chýbajúce pole $1 pre typ úlohy alebo tému $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Neplatná konfigurácia navrhovaných úprav: neplatná skupina $1 pre typ úlohy $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Neplatná konfigurácia navrhovaných úprav: chýbajúca správa $1 pre pole $2",
 	"growthexperiments-homepage-suggestededits-error-title": "Neboli nájdené žiadne navrhované úpravy.",

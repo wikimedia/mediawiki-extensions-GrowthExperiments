@@ -251,7 +251,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Машински предлог",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Предложена конфигурација измена није важећа: лоша структура.",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Неважећа конфигурација предложених изменаː ID „$1” није важећи — сме да садржи само латинична слова (a-z), бројеве (0-9) и знак минус (-)",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Неважећа конфигурација предложених измена: недостаје поље $1 за врсту задатка или тему $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Неважећа конфигурација предложених измена: неважећа група $1 за врсту задатка $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Неважећа конфигурација предложених измена: недостаје порука $1 за поље $2",
 	"growthexperiments-homepage-suggestededits-error-title": "Тренутно нису доступне предложене измене.",

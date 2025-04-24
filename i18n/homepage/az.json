@@ -289,7 +289,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "\"$1\" tapşırıq növünün \"$2\" sahəsi üçün etibarsız konfiqurasiya: icazə verilən maksimum element sayı $3",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Səhv tövsiyə olunan redaktə konfiqurasiyası: \"$1\" səhvdir - sadəcə a-z, 0-9, - (defis) ehtiva edə bilər",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Səhv tövsiyə olunan redaktə konfiqurasiyası: səhv <code>type</code> parametri: $1 ($2) - bunlardan biri olmalıdır: $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Səhv tövsiyə olunan redaktə konfiqurasiyası: $2 mövzusu və ya tipində mövcud olmayan $1 parametri",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Səhv tövsiyə olunan redaktə konfiqurasiyası: $2 tipi üçün səhv $1 qrupu",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Səhv tövsiyə olunan redaktə konfiqurasiyası: $2 tipi üçün səhv şablon adı: $1",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Etibarsız konfiqurasiya: $2 tapşırıq növü üçün etibarsız kateqoriya adı ($1)",

@@ -295,7 +295,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Configuração de edições sugeridas inválida para o tipo de tarefa \"$1\" campo \"$2\": máximo de elementos permitidos é $3",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuração de edições sugeridas inválida: ID inválido \"$1\" - deve conter apenas a-z, 0-9, - (menos)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configuração de edições sugeridas inválida: parâmetro <code>type</code> inválido $1 para o tipo de tarefa $2 - tem de ser um de entre $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuração de edições sugeridas inválida: campo $1 ausente para o tipo de tarefa ou tópico $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuração de edições sugeridas inválida: grupo inválido $1 para o tipo de tarefa $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configuração de edições sugeridas inválida: nome de predefinição inválido $1 para o tipo de tarefa $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Configuração de edições sugeridas inválida: nome de categoria inválido $1 para o tipo de tarefa $2",

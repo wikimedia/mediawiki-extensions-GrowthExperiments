@@ -213,7 +213,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "«$1» эш төрө, «$2» юлы өсөн тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: иң күбе $3 элемент рөхсәт ителгән",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: \"$1\" - хаталы идентификатор, a-z, 0-9, - (минус) билдәләренән генә торорға тейеш",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: $2 эш төрө өсөн хаталы $1 <code>төр</code> параметры, $3 араһынан булырға тейеш",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: $2 эш төрө йәки тема өсөн $1 юлы етмәй",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: $2 эш төрө өсөн $1 яраҡһыҙ төркөм",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: $2 эш төрө өсөн $1 яраҡһыҙ ҡалып исеме",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Тәҡдим ителгән үҙгәртеүҙәр конфигурацияһы дөрөҫ түгел: $2 эш төрө өсөн $1 яраҡһыҙ категория исеме",

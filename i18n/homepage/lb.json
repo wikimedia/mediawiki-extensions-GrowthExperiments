@@ -231,7 +231,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi fir d'Feld „$2“ vum Aufgabentyp „$1“: Maximal $3 Elementer erlaabt",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi: Ongülteg ID „$1“ – däerf nëmmen a-z, 0-9 a - (Minus) enthalen",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi: Ongültegen <code>Typ</code>-Parameter $1 fir den Aufgabentyp $2 – erlaabt sinn $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi: Feelend Feld $1 fir den Aufgabentyp oder d'Theema $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi: Ongülteg Grupp $1 fir den Aufgabentyp $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi: Ongültege Schablounennumm $1 fir den Aufgabentyp $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi: Ongültege Kategoriennumm $1 fir den Aufgabentyp $2",

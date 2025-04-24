@@ -326,7 +326,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Configuration des modifications suggérées non valide pour le type de tâche « $1 », champ « $2 » : $3 éléments maximum autorisés.",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuration des modifications suggérées non valide : identifiant « $1 » non valide — ne doit contenir seulement que les caractères a–z, 0–9 ou le signe moins -",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configuration des modifications suggérées non valide : le paramètre <code>type</code> ne peut pas valoir $1 pour le type de tâche $2 ; valeurs possibles : $3",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuration des modifications suggérées non valide : champ $1 manquant pour le type de tâche ou le sujet $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuration de modifications suggérées non valide : groupe $1 non valide pour le type de tâche $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configuration des modifications suggérées non valide : nom de modèle $1 non valide pour le type de tâche $2",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Configuration des modifications suggérées non valide : nom de catégorie $1 non valide pour le type de tâche $2",

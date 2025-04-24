@@ -179,7 +179,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Artikuluen arteko loturak txertatu",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Gomendatutako aldaketen konfigurazio okerra: egitura ez dago ondo",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Gomendatutako aldaketen konfigurazio okerra: \"$1\" id ez da baliagarria - a-z, 0-9, - (minus) karaktereak baino ezin ditu izan.",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Gomendatutako aldaketen konfigurazio okerra: ez dago $1 eremua ataza motarako edo $2 gaia",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Gomendatutako aldaketen konfigurazio okerra: ez dago $1 taldea $2 motako atazarako",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Gomendatutako aldaketen konfigurazio okerra: $1 mezua falta da $2 eremuan",
 	"growthexperiments-homepage-suggestededits-error-title": "Ez dago gomendatutako aldaketarik eskuragarri une honetan.",

@@ -261,7 +261,6 @@
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Érvénytelen javasolt szerkesztési konfiguráció a(z) \"$1\" feladattípus \"$1\" \"$2\" mezőjéhez: legfeljebb $3 elem megengedett",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Szabálytalan szerkesztési javaslat: az azonosító („$1”) érvénytelen, mert kizárólag a-z, 0-9 vagy - (kötőjel) karaktereket tartalmazhat.",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Szabálytalan szerkesztési javaslat: szabálytalan <code>type</code> $1 paraméter A $2 feladat típushoz, ezek közül lehet: $3.",
-	"growthexperiments-homepage-suggestededits-config-missingfield": "Nem megfelelő szerkesztés: a $1 mező hiányzik a $2 feladathoz vagy témához",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Nem megfelelő szerkesztés: nem megfelelő $1 csoport a $2 feladathoz",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Hiba a javasolt szerkesztések beállítása közben: $1 sablonnév nem felel meg a $2 feladathoz",
 	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Hiba a javasolt szerkesztések beállítása közben: $1 kategórianév nem felel meg a $2 feladathoz",
