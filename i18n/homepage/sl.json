@@ -446,7 +446,7 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "Predlog",
 	"growthexperiments-addlink-summary-column-header-linked": "Povezano?",
 	"growthexperiments-addlink-summary-copyrightwarning": "Z objavo sprememb {{GENDER:|izražate}} strinjanje s [https://foundation.wikimedia.org/wiki/Terms_of_Use Pogoji uporabe] in privoljujete v objavo svojega prispevka pod licencama [https://creativecommons.org/licences/by-sa/4.0/deed.sl CC BY-SA 4.0] in [https://www.gnu.org/licenses/fdl-1.3.html GFDL 1.3].",
-	"growthexperiments-addlink-summary-summary": "možnost predlogov za povezave: {{PLURAL:$1|dodana|dodani|dodane|dodanih}} $1 {{PLURAL:$1|povezava|povezavi|povezave|povezav}}.",
+	"growthexperiments-addlink-summary-summary": "predlogi za povezave: {{PLURAL:$1|dodana|dodani|dodane|dodanih}} $1 {{PLURAL:$1|povezava|povezavi|povezave|povezav}}.",
 	"growthexperiments-addlink-skip-title": "Za ta članek {{GENDER:|ste preskočili}} vse predloge.",
 	"growthexperiments-addlink-skip-body": "Ali res ne {{GENDER:|želite}} sprejeti ali zavrniti nobenega predloga?",
 	"growthexperiments-addlink-skip-accept": "Preskoči vse",
