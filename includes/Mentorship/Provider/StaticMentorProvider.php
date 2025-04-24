@@ -57,6 +57,18 @@ class StaticMentorProvider extends MentorProvider {
 	/**
 	 * @inheritDoc
 	 */
+	public function getMentors(): array {
+		return array_unique(
+			array_merge(
+				$this->getAutoAssignedMentors(),
+				$this->getManuallyAssignedMentors()
+			)
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function getAutoAssignedMentors(): array {
 		return array_unique( array_values( array_map( static function ( Mentor $mentor ) {
 			return $mentor->getUserIdentity();

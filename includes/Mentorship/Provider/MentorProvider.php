@@ -66,14 +66,7 @@ abstract class MentorProvider {
 	 * Get all mentors, regardless on their auto-assignment status
 	 * @return UserIdentity[] List of mentors
 	 */
-	public function getMentors(): array {
-		return array_unique(
-			array_merge(
-				$this->getAutoAssignedMentors(),
-				$this->getManuallyAssignedMentors()
-			)
-		);
-	}
+	abstract public function getMentors(): array;
 
 	/**
 	 * Get all the mentors who are automatically assigned to mentees.
