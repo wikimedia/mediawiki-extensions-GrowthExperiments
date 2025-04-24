@@ -13,10 +13,12 @@
 
 	/**
 	 * @param {string} homepagePageviewToken
+	 * @param {boolean} disabled
 	 * @class mw.libs.ge.HomepageModuleLogger
 	 * @constructor
 	 */
-	function HomepageModuleLogger( homepagePageviewToken ) {
+	function HomepageModuleLogger( homepagePageviewToken, disabled = false ) {
+		this.disabled = disabled;
 		this.userId = mw.user.getId();
 		this.userEditCount = mw.config.get( 'wgUserEditCount' ) || 0;
 		this.isMobile = mw.config.get( 'homepagemobile' ) || false;
@@ -35,6 +37,9 @@
 	 * @param {Object} [extraData] Additional data related to the action or the state of the module
 	 */
 	HomepageModuleLogger.prototype.log = function ( module, mode, action, extraData ) {
+		if ( this.disabled ) {
+			return;
+		}
 		if ( this.exclusions[ module ] && this.exclusions[ module ].indexOf( action ) !== -1 ) {
 			return;
 		}
