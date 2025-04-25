@@ -28,7 +28,7 @@
 	"apihelp-growthmanagementorlist-param-weight": "Peso",
 	"apihelp-growthmanagementorlist-param-isaway": "O mentor está ausente nestes intres? Cómpre establecelo (por defecto, \"false\").",
 	"apihelp-growthmanagementorlist-param-awaytimestamp": "Ata cando está fóra o mentor? O máximo é dun ano a partir de hoxe. Ignorado a menos que \"isaway\" sexa \"true\".",
-	"apihelp-growthmanagementorlist-param-summary": "Motivo para o cambio",
+	"apihelp-growthmanagementorlist-param-summary": "Motivo do cambio",
 	"apihelp-growthmanagementorlist-param-username": "Nome de usuario do mentor afectado polo cambio. Se non se indica, utilizarase o usuario coa sesión iniciada. Só o poden utilizar os usuarios con privilexios.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "Se \"isaway\" é \"true\", entón cómpre indicar \"awaytimestamp\".",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Invalida unha suxestión dun mentor digno de eloxio no módulo de eloxios personalizados do panel de mentoría",
