@@ -7,7 +7,7 @@ const keepGoingModule = new KeepGoingModule();
 const guidedTour = new GuidedTour();
 
 describe( 'Template-based tasks', () => {
-	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', () => {
+	it( 'saves change tags for unstructured task edits made via VisualEditor', () => {
 		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
 			username: string;
 			password: string;
@@ -45,7 +45,7 @@ function editAndSaveCurrentPage( textToType: string, closeHelpPanel: boolean = f
 	cy.get( '#ca-ve-edit' ).should( 'be.visible' ).click();
 
 	if ( closeHelpPanel ) {
-		cy.get( '.mw-ge-help-panel-processdialog .oo-ui-processDialog-actions-primary .oo-ui-buttonElement-button' )
+		cy.get( '.mw-ge-help-panel-cta .oo-ui-buttonElement-button' )
 			.should( 'be.visible' ).click();
 	}
 
