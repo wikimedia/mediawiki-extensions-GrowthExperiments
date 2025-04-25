@@ -64,7 +64,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	 */
 	protected function newSpecialPage() {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
-		$mainConfig = $this->getServiceContainer()->getMainConfig();
+		$growthWikiConfig = $geServices->getGrowthWikiConfig();
 
 		return new SpecialManageMentors(
 			$this->getServiceContainer()->getUserIdentityLookup(),
@@ -73,7 +73,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$geServices->getMentorWriter(),
 			$geServices->getMentorStatusManager(),
 			$geServices->getMentorRemover(),
-			$mainConfig
+			$growthWikiConfig
 		);
 	}
 

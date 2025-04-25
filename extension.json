@@ -2608,10 +2608,6 @@
 			"description": "Experiment variant to use for users who weren't assigned a variant at account creation time, or the variant they got is not valid anymore. Valid values: 'control'.",
 			"value": "control"
 		},
-		"GEMentorshipEnabled": {
-			"description": "Are the mentorship features enabled?",
-			"value": true
-		},
 		"GEMentorshipNewAccountEnablePercentage": {
 			"description": "Percentage of new homepage-enabled users who will receive the mentorship module. Note that user must fall into _both_ GEHomepageNewAccountEnablePercentage and this percentage to be considered for mentorship.",
 			"value": 100
