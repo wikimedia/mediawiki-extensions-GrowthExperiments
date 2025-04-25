@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -27,14 +29,6 @@ class MenteeOverviewDataUpdater {
 	private int $batchSize = 100;
 	private array $mentorProfilingInfo = [];
 
-	/**
-	 * @param UncachedMenteeOverviewDataProvider $uncachedMenteeOverviewDataProvider
-	 * @param MenteeOverviewDataProvider $menteeOverviewDataProvider
-	 * @param MentorStore $mentorStore
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param LBFactory $lbFactory
-	 * @param ILoadBalancer $growthLoadBalancer
-	 */
 	public function __construct(
 		UncachedMenteeOverviewDataProvider $uncachedMenteeOverviewDataProvider,
 		MenteeOverviewDataProvider $menteeOverviewDataProvider,
@@ -52,7 +46,7 @@ class MenteeOverviewDataUpdater {
 		$this->growthLoadBalancer = $growthLoadBalancer;
 	}
 
-	public function setBatchSize( int $batchSize ) {
+	public function setBatchSize( int $batchSize ): void {
 		$this->batchSize = $batchSize;
 		$this->uncachedMenteeOverviewDataProvider->setBatchSize( $this->batchSize );
 	}

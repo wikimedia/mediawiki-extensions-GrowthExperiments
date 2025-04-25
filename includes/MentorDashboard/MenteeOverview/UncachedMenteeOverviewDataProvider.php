@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use ChangeTags;
@@ -48,7 +50,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private IConnectionProvider $mainConnProvider;
 
 	/** @var array Cache used by getLastEditTimestampForUsers */
-	private $lastTimestampCache = [];
+	private array $lastTimestampCache = [];
 
 	/**
 	 * @var array Profiling information
@@ -56,7 +58,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * Stored by storeProfilingData, can be printed from
 	 * updateMenteeData.php maintenance script.
 	 */
-	private $profilingInfo = [];
+	private array $profilingInfo = [];
 
 	/**
 	 * @param MentorStore $mentorStore
@@ -402,7 +404,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param int[] $userIds
 	 * @return int[]
 	 */
-	private function getTaggedEditsForUsers( array $tags, array $userIds ) {
+	private function getTaggedEditsForUsers( array $tags, array $userIds ): array {
 		$tagIds = [];
 		foreach ( $tags as $tag ) {
 			try {
