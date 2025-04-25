@@ -62,6 +62,12 @@ function PostEditPanel( config ) {
 	this.togglePrevNavigation( false );
 	this.toggleNextNavigation( false );
 
+	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_LOADING, ( isLoading ) => {
+		if ( isLoading ) {
+			return;
+		}
+		this.getMainArea();
+	} );
 	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, () => {
 		const currentTask = this.tasksStore.getCurrentTask();
 		if ( currentTask ) {
