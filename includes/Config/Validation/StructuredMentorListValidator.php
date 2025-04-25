@@ -5,6 +5,7 @@ namespace GrowthExperiments\Config\Validation;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use InvalidArgumentException;
+use MediaWiki\Json\FormatJson;
 use StatusValue;
 
 class StructuredMentorListValidator {
@@ -104,7 +105,7 @@ class StructuredMentorListValidator {
 				return StatusValue::newFatal(
 					'growthexperiments-mentor-list-invalid-weight',
 					$key,
-					\FormatJson::encode( IMentorWeights::WEIGHTS ),
+					FormatJson::encode( IMentorWeights::WEIGHTS ),
 					$value
 				);
 			}

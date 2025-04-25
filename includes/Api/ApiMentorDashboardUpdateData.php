@@ -4,9 +4,9 @@ namespace GrowthExperiments\Api;
 
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewUpdateDataForMentorJob;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use JobQueueGroup;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
+use MediaWiki\JobQueue\JobQueueGroup;
 
 class ApiMentorDashboardUpdateData extends ApiBase {
 

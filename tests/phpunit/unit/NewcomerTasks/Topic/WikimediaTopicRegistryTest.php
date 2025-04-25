@@ -10,7 +10,7 @@ use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Extension\WikimediaMessages\ArticleTopicFiltersRegistry;
 use MediaWiki\Languages\LanguageFactory;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;

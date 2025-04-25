@@ -4,10 +4,10 @@ namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
+use MediaWiki\Exception\PermissionsError;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\User\User;
-use PermissionsError;
 
 class SpecialQuitMentorship extends FormSpecialPage {
 

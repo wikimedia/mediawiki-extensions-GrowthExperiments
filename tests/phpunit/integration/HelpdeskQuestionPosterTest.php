@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
@@ -35,7 +36,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$context = $this->buildContext();
 		$context->setUser( new User() );
 
-		$this->expectException( \UserNotLoggedIn::class );
+		$this->expectException( UserNotLoggedIn::class );
 
 		new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),

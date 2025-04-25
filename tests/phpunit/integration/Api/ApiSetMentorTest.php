@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
-use JobQueueGroup;
 use MediaWiki\Api\ApiUsageException;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;

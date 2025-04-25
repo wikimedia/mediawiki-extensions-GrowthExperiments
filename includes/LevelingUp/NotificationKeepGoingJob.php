@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\LevelingUp;
 
-use Job;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\JobQueue\Job;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentityLookup;

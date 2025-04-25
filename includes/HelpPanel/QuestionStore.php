@@ -3,9 +3,9 @@
 namespace GrowthExperiments\HelpPanel;
 
 use Flow\Container;
-use JobQueueGroup;
 use MediaWiki\Content\TextContent;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Language\Language;
 use MediaWiki\Logger\LoggerFactory;

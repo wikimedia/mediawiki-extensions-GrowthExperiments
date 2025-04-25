@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\Mentorship;
 
-use LogEntry;
-use LogFormatter;
+use MediaWiki\Logging\LogEntry;
+use MediaWiki\Logging\LogFormatter;
 use MediaWiki\Title\TitleParser;
 
 class MentorChangeLogFormatter extends LogFormatter {

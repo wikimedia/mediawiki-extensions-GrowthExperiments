@@ -4,13 +4,13 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
-use ChangeTags;
 use CirrusSearch\WeightedTagsUpdater;
 use Exception;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\WikiConfigException;
+use MediaWiki\ChangeTags\ChangeTags;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Language\RawMessage;

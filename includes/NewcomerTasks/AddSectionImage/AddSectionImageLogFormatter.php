@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddSectionImage;
 
-use LogFormatter;
+use MediaWiki\Logging\LogFormatter;
 
 class AddSectionImageLogFormatter extends LogFormatter {
 

@@ -16,12 +16,12 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\WebRequest;
+use MediaWiki\Skin\Skin;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
-use Skin;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\SurfacingStructuredTasks\BeforePageDisplayHookHandler

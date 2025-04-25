@@ -5,11 +5,12 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
-use JobQueueGroup;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Language\Language;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Skin\Skin;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
@@ -18,7 +19,6 @@ use OOUI\BlankTheme;
 use OOUI\IconWidget;
 use OOUI\Theme;
 use PHPUnit\Framework\MockObject\MockObject;
-use Skin;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Homepage\SiteNoticeGenerator

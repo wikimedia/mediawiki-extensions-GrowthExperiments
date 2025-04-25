@@ -6,7 +6,7 @@ namespace GrowthExperiments\UserImpact;
 
 use DateTime;
 use GrowthExperiments\HomepageHooks;
-use JobQueueGroup;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;

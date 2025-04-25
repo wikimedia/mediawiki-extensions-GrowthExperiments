@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
 use MediaWikiUnitTestCase;
 use Psr\Container\ContainerExceptionInterface;
@@ -32,7 +33,7 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 			[
 				'class' => CacheDecorator::class,
 				'args' => [
-					$this->createMock( \JobQueueGroup::class ),
+					$this->createMock( JobQueueGroup::class ),
 					new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 					$this->createMock( TaskSetListener::class ),
 					new JsonCodec(),

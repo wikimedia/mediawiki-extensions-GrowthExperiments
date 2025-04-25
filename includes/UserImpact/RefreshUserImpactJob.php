@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use GenericParameterJob;
 use GrowthExperiments\GrowthExperimentsServices;
-use Job;
+use MediaWiki\JobQueue\GenericParameterJob;
+use MediaWiki\JobQueue\Job;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserFactory;

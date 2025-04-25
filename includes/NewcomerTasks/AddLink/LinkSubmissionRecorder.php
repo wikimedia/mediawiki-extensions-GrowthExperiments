@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
-use ManualLogEntry;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\User\UserIdentity;
 use StatusValue;

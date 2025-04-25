@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
-use JobQueueGroup;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;

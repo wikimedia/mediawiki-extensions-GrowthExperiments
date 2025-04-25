@@ -5,9 +5,9 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use FormatMetadata;
 use GrowthExperiments\Util;
 use MediaTransformError;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Language\RawMessage;
-use RepoGroup;
 use StatusValue;
 
 /**
