@@ -1,10 +1,12 @@
 import Homepage from '../pageObjects/SpecialHomepage.page';
 import KeepGoingModule from '../pageObjects/KeepGoing.module';
 import GuidedTour from '../pageObjects/GuidedTour.module';
+import TryNewTask from '../pageObjects/TryNewTask.module';
 
 const homepage = new Homepage();
 const keepGoingModule = new KeepGoingModule();
 const guidedTour = new GuidedTour();
+const tryNewTask = new TryNewTask();
 
 describe( 'Template-based tasks', () => {
 	it( 'saves change tags for unstructured task edits made via VisualEditor', () => {
@@ -32,12 +34,17 @@ describe( 'Template-based tasks', () => {
 
 		editAndSaveCurrentPage( 'second edit' );
 		cy.assertTagsOfCurrentPageRevision( [ 'newcomer task', 'newcomer task copyedit' ] );
-
 		keepGoingModule.smallTaskCardLink.should( 'have.attr', 'href' );
 		keepGoingModule.smallTaskCardLink.click();
 
 		editAndSaveCurrentPage( 'third edit', true );
 		cy.assertTagsOfCurrentPageRevision( [ 'newcomer task', 'newcomer task copyedit' ] );
+
+		tryNewTask.postEditDrawer.should( 'be.visible' );
+		tryNewTask.secondaryAction.click();
+		keepGoingModule.postEditDrawer.should( 'be.visible' );
+		keepGoingModule.smallTaskCardLink.should( 'have.attr', 'href' );
+
 	} );
 } );
 
