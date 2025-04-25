@@ -6,9 +6,9 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use MediaWiki\Config\GlobalVarConfig;
+use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
-use PermissionsError;
 use SpecialPageTestBase;
 
 /**

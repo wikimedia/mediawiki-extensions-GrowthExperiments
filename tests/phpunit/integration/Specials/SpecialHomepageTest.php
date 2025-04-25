@@ -7,6 +7,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialHomepage;
 use InvalidArgumentException;
+use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
@@ -51,7 +52,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	public function testHomepageDoesNotRenderWhenPreferenceIsDisabled() {
 		$user = $this->getTestUser()->getUser();
 
-		$this->expectException( \ErrorPageError::class );
+		$this->expectException( ErrorPageError::class );
 		$this->expectExceptionMessage( 'To enable the newcomer homepage, visit your' );
 
 		$this->executeSpecialPage( '', null, null, $user );

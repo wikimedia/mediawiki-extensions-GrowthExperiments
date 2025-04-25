@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use Job;
+use MediaWiki\JobQueue\Job;
 use MediaWikiIntegrationTestCase;
 
 /**

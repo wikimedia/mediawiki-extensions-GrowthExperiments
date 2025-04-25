@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\MentorDashboard;
 
-use ChangeTags;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\Modules\MenteeOverview;
+use MediaWiki\ChangeTags\ChangeTags;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;

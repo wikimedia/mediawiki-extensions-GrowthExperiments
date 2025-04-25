@@ -5,6 +5,7 @@ namespace GrowthExperiments\Specials;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Config\Config;
+use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Logger\LoggerFactory;
@@ -13,7 +14,6 @@ use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
-use PermissionsError;
 
 class SpecialClaimMentee extends FormSpecialPage {
 

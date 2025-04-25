@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use ChangeTags;
 use DateTime;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use LogicException;
+use MediaWiki\ChangeTags\ChangeTags;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Extension\Thanks\ThanksQueryHelper;

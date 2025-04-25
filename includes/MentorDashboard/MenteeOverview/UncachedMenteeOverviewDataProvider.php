@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
-use ChangeTags;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\ChangeTags\ChangeTags;
 use MediaWiki\Extension\CentralAuth\CentralAuthServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Storage\NameTableAccessException;

@@ -5,9 +5,10 @@ namespace GrowthExperiments\Homepage;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
-use JobQueueGroup;
 use MediaWiki\Html\Html;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Skin\Skin;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use OOUI\IconWidget;
@@ -38,11 +39,11 @@ class SiteNoticeGenerator {
 	/**
 	 * @param string $name
 	 * @param string &$siteNotice
-	 * @param \Skin $skin
+	 * @param Skin $skin
 	 * @param bool &$minervaEnableSiteNotice Reference to $wgMinervaEnableSiteNotice
 	 * @return bool|void Hook return value (ie. false to prevent other notices from displaying)
 	 */
-	public function setNotice( $name, &$siteNotice, \Skin $skin, &$minervaEnableSiteNotice ) {
+	public function setNotice( $name, &$siteNotice, Skin $skin, &$minervaEnableSiteNotice ) {
 		if ( $skin->getTitle()->isSpecial( 'WelcomeSurvey' ) ) {
 			// Don't show any notices on the welcome survey.
 			return;
@@ -73,12 +74,12 @@ class SiteNoticeGenerator {
 
 	/**
 	 * @param string &$siteNotice
-	 * @param \Skin $skin
+	 * @param Skin $skin
 	 * @param bool &$minervaEnableSiteNotice
 	 * @return bool|void Hook return value (ie. false to prevent other notices from displaying)
 	 */
 	private function maybeShowIfUserAbandonedWelcomeSurvey(
-		&$siteNotice, \Skin $skin, &$minervaEnableSiteNotice
+		&$siteNotice, Skin $skin, &$minervaEnableSiteNotice
 	) {
 		if ( $this->isWelcomeSurveyInReferer( $skin )
 			|| ( Util::isMobile( $skin ) && !$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin ) )
@@ -94,7 +95,7 @@ class SiteNoticeGenerator {
 		}
 	}
 
-	private function isWelcomeSurveyInReferer( \Skin $skin ): bool {
+	private function isWelcomeSurveyInReferer( Skin $skin ): bool {
 		foreach ( $skin->getLanguage()->getSpecialPageAliases()['WelcomeSurvey'] as $alias ) {
 			if ( strpos( $skin->getRequest()->getHeader( 'REFERER' ), $alias ) !== false ) {
 				return true;
@@ -105,12 +106,12 @@ class SiteNoticeGenerator {
 
 	/**
 	 * @param string &$siteNotice
-	 * @param \Skin $skin
+	 * @param Skin $skin
 	 * @param bool &$minervaEnableSiteNotice
 	 * @return bool|void Hook return value (ie. false to prevent other notices from displaying)
 	 */
 	private function setConfirmEmailSiteNotice(
-		&$siteNotice, \Skin $skin, &$minervaEnableSiteNotice
+		&$siteNotice, Skin $skin, &$minervaEnableSiteNotice
 	) {
 		$output = $skin->getOutput();
 		$output->addJsConfigVars( 'shouldShowConfirmEmailNotice', true );
@@ -136,13 +137,13 @@ class SiteNoticeGenerator {
 
 	/**
 	 * @param string &$siteNotice
-	 * @param \Skin $skin
+	 * @param Skin $skin
 	 * @param string $contextName
 	 * @param bool &$minervaEnableSiteNotice
 	 * @return bool|void Hook return value (ie. false to prevent other notices from displaying)
 	 */
 	private function setDiscoverySiteNotice(
-		&$siteNotice, \Skin $skin, $contextName, &$minervaEnableSiteNotice
+		&$siteNotice, Skin $skin, $contextName, &$minervaEnableSiteNotice
 	) {
 		if ( Util::isMobile( $skin ) ) {
 			$this->setMobileDiscoverySiteNotice( $siteNotice, $skin, $contextName,
@@ -159,10 +160,10 @@ class SiteNoticeGenerator {
 	/**
 	 * Check and set seen flag for the mobile homapage discovery sitenotice.
 	 * (Desktop uses a different mechanism based on guided tours, which has its own seen logic.)
-	 * @param \Skin $skin
+	 * @param Skin $skin
 	 * @return bool True if the user has seen the notice already.
 	 */
-	private function checkAndMarkMobileDiscoveryNoticeSeen( \Skin $skin ) {
+	private function checkAndMarkMobileDiscoveryNoticeSeen( Skin $skin ) {
 		// Make multiple calls to this method within the same request a no-op.
 		// Note this would be necessary even if we only called it once, because
 		// Minerva calls sitenotice hooks multiple times.
@@ -186,11 +187,11 @@ class SiteNoticeGenerator {
 
 	/**
 	 * @param string &$siteNotice
-	 * @param \Skin $skin
+	 * @param Skin $skin
 	 * @param string $contextName
 	 */
 	private function setDesktopDiscoverySiteNotice(
-		&$siteNotice, \Skin $skin, $contextName
+		&$siteNotice, Skin $skin, $contextName
 	) {
 		// No-JS banner (hidden from CSS when there's JS support). The JS version is in
 		// tours/homepageDiscovery.js.
@@ -227,12 +228,12 @@ class SiteNoticeGenerator {
 
 	/**
 	 * @param string &$siteNotice
-	 * @param \Skin $skin
+	 * @param Skin $skin
 	 * @param string $contextName
 	 * @param bool &$minervaEnableSiteNotice
 	 */
 	private function setMobileDiscoverySiteNotice(
-		&$siteNotice, \Skin $skin, $contextName, &$minervaEnableSiteNotice
+		&$siteNotice, Skin $skin, $contextName, &$minervaEnableSiteNotice
 	) {
 		$output = $skin->getOutput();
 		$output->enableOOUI();

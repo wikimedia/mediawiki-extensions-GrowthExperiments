@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
-use File;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\Language\RawMessage;
 use StatusValue;
 

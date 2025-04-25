@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
-use GenericParameterJob;
 use GrowthExperiments\GrowthExperimentsServices;
-use Job;
+use MediaWiki\JobQueue\GenericParameterJob;
+use MediaWiki\JobQueue\Job;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityLookup;
 

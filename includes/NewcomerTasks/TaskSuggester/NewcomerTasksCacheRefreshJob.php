@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use GenericParameterJob;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
-use Job;
+use MediaWiki\JobQueue\GenericParameterJob;
+use MediaWiki\JobQueue\Job;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 

@@ -4,10 +4,10 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
-use File;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Api\ApiRawMessage;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;

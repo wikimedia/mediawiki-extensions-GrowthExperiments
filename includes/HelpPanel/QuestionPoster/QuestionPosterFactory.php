@@ -4,10 +4,10 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
-use UserNotLoggedIn;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Stats\StatsFactory;
 

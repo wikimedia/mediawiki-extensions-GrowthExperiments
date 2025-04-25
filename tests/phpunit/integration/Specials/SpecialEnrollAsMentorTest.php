@@ -4,11 +4,11 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
+use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxResponse;
 use MediaWiki\SpecialPage\SpecialPage;
-use PermissionsError;
 use SpecialPageTestBase;
 
 /**

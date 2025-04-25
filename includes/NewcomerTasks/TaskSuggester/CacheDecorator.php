@@ -5,8 +5,9 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
-use JobQueueGroup;
 use LogicException;
+use MediaWiki\JobQueue\Exceptions\JobQueueError;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareInterface;
@@ -161,7 +162,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 										( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
 								] )
 							);
-						} catch ( \JobQueueError $jobQueueError ) {
+						} catch ( JobQueueError $jobQueueError ) {
 							// Ignore jobqueue errors.
 						}
 					}

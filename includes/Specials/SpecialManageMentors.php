@@ -14,6 +14,7 @@ use GrowthExperiments\Specials\Forms\ManageMentorsEditMentor;
 use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
 use LogicException;
 use MediaWiki\Config\Config;
+use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -22,7 +23,6 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\Utils\MWTimestamp;
 use OOUI\ButtonWidget;
-use PermissionsError;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class SpecialManageMentors extends SpecialPage {

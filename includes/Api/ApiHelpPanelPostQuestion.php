@@ -7,7 +7,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
-use UserNotLoggedIn;
+use MediaWiki\Exception\UserNotLoggedIn;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\StringDef;
 
