@@ -82,22 +82,38 @@
 				includes_server_response_time: false
 			}
 		);
-		// Track the server side render start time (first line in SpecialHomepage#execute()) to
-		// TTI on client-side.
-		mw.track(
-			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.serverSideStartInclusive.' +
-			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
-			serverDuration
-		);
-		mw.track(
-			'stats.mediawiki_GrowthExperiments_suggested_edits_server_tti_seconds',
-			serverDuration,
-			{
-				platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
-				// eslint-disable-next-line camelcase
-				includes_server_response_time: true
-			}
-		);
+
+		try {
+			// Track the server side render start time (first line in SpecialHomepage#execute()) to
+			// TTI on client-side.
+			mw.track(
+				'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.serverSideStartInclusive.' +
+				( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
+				serverDuration
+			);
+			mw.track(
+				'stats.mediawiki_GrowthExperiments_suggested_edits_server_tti_seconds',
+				serverDuration,
+				{
+					platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
+					// eslint-disable-next-line camelcase
+					includes_server_response_time: true
+				}
+			);
+		} catch ( err ) {
+			const geHomepageStartTime = mw.config.get( 'GEHomepageStartTime' );
+			// eslint-disable-next-line camelcase
+			err.error_context = {
+				serverDuration: serverDuration,
+				serverDurationType: typeof serverDuration,
+				GEHomepageStartTime: geHomepageStartTime,
+				GEHomepageStartTimeType: typeof geHomepageStartTime
+			};
+			mw.errorLogger.logError(
+				err,
+				'error.growthexperiments'
+			);
+		}
 		return $.Deferred().resolve();
 	}
 
