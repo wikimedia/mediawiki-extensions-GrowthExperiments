@@ -618,8 +618,6 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			->where( [
 				'bt_user' => $menteeIds,
 				'bl_expiry' => $dbr->getInfinity(),
-				// not an IP block
-				$dbr->expr( 'bt_user', '!=', null )
 			] )
 			->caller( __METHOD__ )
 			->fetchFieldValues();
