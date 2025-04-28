@@ -98,7 +98,8 @@
 		app.use( logger, {
 			mode,
 			logger: new HomepageLogger(
-				mw.config.get( 'wgGEHomepagePageviewToken' )
+				mw.config.get( 'wgGEHomepagePageviewToken' ),
+				mw.config.get( 'wgGEDisableLogging' )
 			)
 		} );
 		app.mount( mountPoint );
