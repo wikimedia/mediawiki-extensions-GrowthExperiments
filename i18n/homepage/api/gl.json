@@ -13,6 +13,6 @@
 	"apihelp-growthsetmentor-summary": "Establecer o mentor do usuario. O cambio quedará rexistrado publicamente.",
 	"apihelp-growthsetmentor-param-mentee": "Nome de usuario do aprendiz",
 	"apihelp-growthsetmentor-param-mentor": "Nome de usuario do mentor",
-	"apihelp-growthsetmentor-param-reason": "Motivo para o cambio",
+	"apihelp-growthsetmentor-param-reason": "Motivo do cambio",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Título do artigo para o cal é a tarefa de recomendación de imaxes"
 }

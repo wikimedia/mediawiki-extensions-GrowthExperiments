@@ -26,6 +26,6 @@
 	"apihelp-growthmanagementorlist-param-geaction": "Acción",
 	"apihelp-growthmanagementorlist-param-message": "Mensaxe de presentación (utiliza unha cadea baleira para a mensaxe predeterminada do mentor)",
 	"apihelp-growthmanagementorlist-param-weight": "Peso",
-	"apihelp-growthmanagementorlist-param-summary": "Motivo para o cambio",
+	"apihelp-growthmanagementorlist-param-summary": "Motivo do cambio",
 	"apihelp-growthmanagementorlist-param-username": "Nome de usuario do mentor afectado polo cambio. Se non se indica, utilizarase o usuario coa sesión iniciada. Só o poden utilizar os usuarios con privilexios."
 }
