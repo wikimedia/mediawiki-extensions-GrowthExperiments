@@ -8,7 +8,8 @@
 			"Omotecho",
 			"Shirayuki",
 			"Sou0012",
-			"春春眠眠"
+			"春春眠眠",
+			"Kokage si"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "指導役ダッシュボード",
@@ -165,8 +166,8 @@
 	"growthexperiments-mentor-writer-error-blocked": "{{GENDER:|あなた}}は指導役一覧の編集をブロックされています",
 	"growthexperiments-manage-mentors-title": "指導役の管理",
 	"growthexperiments-manage-mentors-pretext-purpose": "このページには指導役の一覧が表示されます。",
-	"growthexperiments-manage-mentors-auto-assigned": "自動で割り当てられる指導役",
-	"growthexperiments-manage-mentors-auto-assigned-text": "新規アカウントはこれらの指導役にランダムに割り当てられます。",
+	"growthexperiments-manage-mentors-auto-assigned": "新規アカウントに自動で割り当てられる指導役",
+	"growthexperiments-manage-mentors-auto-assigned-text": "新規参加者が{{SITENAME}}アカウントを登録すると、以下の利用者のうちひとりが自動的に指導役として割り当てられます。",
 	"growthexperiments-manage-mentors-manually-assigned": "手動で割り当てられる指導役",
 	"growthexperiments-manage-mentors-manually-assigned-text": "新規アカウントはこれらの指導役にランダムに割り当てられません。他の指導役と同様、これらの指導役は指導したいアカウントを手動で選択できます。この節は主に、出会った人々を指導したいだけのワークショップ主催者を対象としています。",
 	"growthexperiments-manage-mentors-none": "なし",

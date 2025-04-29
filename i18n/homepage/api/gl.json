@@ -13,7 +13,7 @@
 	"apihelp-growthsetmentor-summary": "Establecer o mentor do usuario. O cambio quedará rexistrado publicamente.",
 	"apihelp-growthsetmentor-param-mentee": "Nome de usuario do aprendiz",
 	"apihelp-growthsetmentor-param-mentor": "Nome de usuario do mentor",
-	"apihelp-growthsetmentor-param-reason": "Motivo para o cambio",
+	"apihelp-growthsetmentor-param-reason": "Motivo do cambio",
 	"apihelp-query+growthimagesuggestiondata-summary": "Obter os [https://www.mediawiki.org/wiki/wikitech:Add_Image datos de suxestión de imaxe] asociados, se están dispoñibles",
 	"apihelp-query+growthimagesuggestiondata-param-tasktype": "Identificador do tipo de tarefa (para especificar se queres obter datos para as recomendacións de imaxes de nivel superior ou de sección)",
 	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "Non se atopou o identificador do tipo de tarefa \"$1\" na configuración do wiki.",
