@@ -21,7 +21,6 @@ abstract class BaseModule extends DashboardModule {
 	protected const MODULE_STATE_UNACTIVATED = 'unactivated';
 	protected const MODULE_STATE_NOEMAIL = 'noemail';
 	protected const MODULE_STATE_UNCONFIRMED = 'unconfirmed';
-	protected const MODULE_STATE_CONFIRMED = 'confirmed';
 	protected const MODULE_STATE_NOTRENDERED = 'notrendered';
 
 	/**

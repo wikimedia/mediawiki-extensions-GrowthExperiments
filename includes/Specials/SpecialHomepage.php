@@ -199,7 +199,7 @@ class SpecialHomepage extends SpecialPage {
 		$moduleConfig = array_filter( [
 			'banner' => true,
 			'welcomesurveyreminder' => true,
-			'startemail' => true,
+			'startemail' => !$this->getUser()->isEmailConfirmed(),
 			// Only load start-startediting code (the uninitiated view of suggested edits) for desktop users who
 			// haven't activated SE yet.
 			'start-startediting' => SuggestedEdits::isEnabledForAnyone(
