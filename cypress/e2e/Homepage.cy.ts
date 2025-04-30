@@ -5,7 +5,8 @@ const homepage = new Homepage();
 const guidedTour = new GuidedTour();
 
 describe( 'Special:Homepage', () => {
-	it( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', () => {
+	// T392940
+	it.skip( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', () => {
 		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
 			username: string;
 			password: string;
