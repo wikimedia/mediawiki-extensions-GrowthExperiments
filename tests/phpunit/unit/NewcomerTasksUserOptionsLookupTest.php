@@ -11,7 +11,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentity;
@@ -35,17 +34,14 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [
 				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit" ]',
-				SuggestedEdits::TOPICS_PREF => '[ "topics" ]',
 				SuggestedEdits::TOPICS_ORES_PREF => '[ "ores" ]',
 			],
 			'User2' => [
 				SuggestedEdits::TASKTYPES_PREF => '123',
-				SuggestedEdits::TOPICS_PREF => '()%=',
 				SuggestedEdits::TOPICS_ORES_PREF => 'true',
 			],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -71,7 +67,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( SearchStrategy::TOPIC_MATCH_MODE_OR, $lookup->getTopicsMatchMode( $user3 ) );
 
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GELinkRecommendationsFrontendEnabled' => true,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -106,7 +101,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -167,7 +161,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -222,7 +215,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
@@ -290,7 +282,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'User2' => [],
 		] );
 		$config = new HashConfig( [
-			'GENewcomerTasksTopicType' => WikimediaTopicRegistry::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,

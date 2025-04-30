@@ -658,7 +658,7 @@ class HomepageHooks implements
 			'type' => 'api',
 		];
 
-		$preferences[ SuggestedEdits::getTopicFiltersPref( $this->config ) ] = [
+		$preferences[ SuggestedEdits::TOPICS_ORES_PREF ] = [
 			'type' => 'api'
 		];
 
@@ -1235,7 +1235,7 @@ class HomepageHooks implements
 			'GENewcomerTasksRemoteArticleOrigin' => $config->get( 'GENewcomerTasksRemoteArticleOrigin' ),
 			'GEHomepageSuggestedEditsIntroLinks' => self::getGrowthWikiConfig()
 				->get( 'GEHomepageSuggestedEditsIntroLinks' ),
-			'GENewcomerTasksTopicFiltersPref' => SuggestedEdits::getTopicFiltersPref( $config ),
+			'GENewcomerTasksTopicFiltersPref' => SuggestedEdits::TOPICS_ORES_PREF,
 			'GELinkRecommendationsEnabled' => $config->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
 				&& $config->get( 'GELinkRecommendationsFrontendEnabled' ),
 			'GEImageRecommendationsEnabled' => $config->get( 'GENewcomerTasksImageRecommendationsEnabled' ),

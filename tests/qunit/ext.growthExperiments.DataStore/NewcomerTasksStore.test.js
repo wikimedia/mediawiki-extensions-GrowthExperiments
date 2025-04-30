@@ -59,7 +59,7 @@ QUnit.module( 'ext.growthExperiments.DataStore/NewcomerTasksStore.js', QUnit.new
 		getOptionsStub.withArgs( 'growthexperiments-homepage-se-filters' ).returns(
 			JSON.stringify( [ 'copyedit' ] )
 		);
-		getOptionsStub.withArgs( 'growthexperiments-homepage-se-topic-filters' ).returns(
+		getOptionsStub.withArgs( 'growthexperiments-homepage-se-ores-topic-filters' ).returns(
 			JSON.stringify( [ 'architecture' ] )
 		);
 	}
