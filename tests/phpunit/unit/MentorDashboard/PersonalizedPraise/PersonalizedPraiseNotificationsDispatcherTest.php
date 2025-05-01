@@ -99,7 +99,7 @@ class PersonalizedPraiseNotificationsDispatcherTest extends MediaWikiUnitTestCas
 		}
 	}
 
-	public function provideOnMenteeSuggested() {
+	public static function provideOnMenteeSuggested() {
 		return [
 			'immediately' => [ PersonalizedPraiseSettings::NOTIFY_IMMEDIATELY, 'notification' ],
 			'never' => [ PersonalizedPraiseSettings::NOTIFY_NEVER, 'none' ],
@@ -159,7 +159,7 @@ class PersonalizedPraiseNotificationsDispatcherTest extends MediaWikiUnitTestCas
 		}
 	}
 
-	public function provideMaybeNotifyAboutPendingMentees() {
+	public static function provideMaybeNotifyAboutPendingMentees() {
 		return [
 			'immediately, no pending' => [ false, false, null, PersonalizedPraiseSettings::NOTIFY_IMMEDIATELY ],
 			'never, no pending' => [ false, false, null, PersonalizedPraiseSettings::NOTIFY_NEVER ],

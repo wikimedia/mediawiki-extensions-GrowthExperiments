@@ -203,7 +203,7 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	 *
 	 * @return array[] Test cases
 	 */
-	public function provideAddMentorCases() {
+	public static function provideAddMentorCases() {
 		return [
 			'Success case' => [
 				[ 'id' => 456, 'intro' => 'Custom intro', 'weight' => IMentorWeights::WEIGHT_HIGH ],
@@ -288,7 +288,7 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	 *
 	 * @return array[] Test cases
 	 */
-	public function provideRemoveMentorCases() {
+	public static function provideRemoveMentorCases() {
 		return [
 			'Existing mentor' => [
 				123,

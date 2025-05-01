@@ -34,7 +34,7 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideTestLoadTopics(): iterable {
+	public static function provideTestLoadTopics(): iterable {
 		yield 'All WM topics recognized' => [
 			ArticleTopicFiltersRegistry::getTopicList(),
 			WikimediaTopicRegistry::GROWTH_ORES_TOPICS

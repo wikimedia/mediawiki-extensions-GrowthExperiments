@@ -119,7 +119,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 	 * Data provider for testGetCampaign
 	 * @return array[]
 	 */
-	public function provideCampaignScenarios(): array {
+	public static function provideCampaignScenarios(): array {
 		return [
 			'URL parameter exists' => [
 				'winter2024',

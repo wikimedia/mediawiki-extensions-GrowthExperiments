@@ -115,7 +115,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expectedStale, $userImpact->isPageViewDataStale() );
 	}
 
-	public function provideIsPageViewDataStale() {
+	public static function provideIsPageViewDataStale() {
 		return [
 			'fresh' => [ false, [ '2022-08-24' => 100, '2022-08-25' => 150 ] ],
 			'stale' => [ false, [ '2022-07-24' => 100, '2022-08-25' => 150 ] ],
