@@ -106,6 +106,7 @@
 </template>
 
 <script>
+const { inject } = require( 'vue' );
 const moment = require( 'moment' );
 const { getIntlLocale } = require( '../utils/Utils.js' );
 const CScoreCard = require( './CScoreCard.vue' );
@@ -118,7 +119,7 @@ const {
 	cdxIconChart,
 	cdxIconInfoFilled
 } = require( './icons.json' );
-const { NO_DATA_CHARACTER, DATA_ROWS_LIMIT } = require( '../ext.growthExperiments.Homepage.Impact/constants.js' );
+const { NO_DATA_CHARACTER } = require( '../ext.growthExperiments.Homepage.Impact/constants.js' );
 
 // @vue/component
 module.exports = exports = {
@@ -178,13 +179,17 @@ module.exports = exports = {
 	},
 	emits: [ 'interaction' ],
 	setup() {
+		const maxEdits = inject( 'IMPACT_MAX_EDITS' );
+		const maxThanks = inject( 'IMPACT_MAX_THANKS' );
 		return {
 			cdxIconEdit,
 			cdxIconEditUndo,
 			cdxIconUserTalk,
 			cdxIconClock,
 			cdxIconChart,
-			cdxIconInfoFilled
+			cdxIconInfoFilled,
+			maxEdits,
+			maxThanks
 		};
 	},
 	computed: {
@@ -203,7 +208,7 @@ module.exports = exports = {
 		receivedThanksCount() {
 			if ( !this.data ) {
 				return NO_DATA_CHARACTER;
-			} else if ( this.data.receivedThanksCount >= DATA_ROWS_LIMIT ) {
+			} else if ( this.data.receivedThanksCount >= this.maxThanks ) {
 				return this.$i18n( 'growthexperiments-homepage-impact-scores-over-limit' );
 			}
 			return this.$filters.convertNumber( this.data.receivedThanksCount );
@@ -212,12 +217,12 @@ module.exports = exports = {
 			return this.renderThirdPerson ?
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text-third-person',
-					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+					this.$filters.convertNumber( this.maxThanks )
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text',
 					'', // used to be the username
-					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+					this.$filters.convertNumber( this.maxThanks )
 				).text();
 		},
 		lastEditFormattedTimeAgo() {
@@ -272,12 +277,12 @@ module.exports = exports = {
 			return this.renderThirdPerson ?
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text-third-person',
-					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+					this.$filters.convertNumber( this.maxEdits )
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text',
 					'', // used to be the username
-					this.$filters.convertNumber( DATA_ROWS_LIMIT )
+					this.$filters.convertNumber( this.maxEdits )
 				).text();
 		},
 		longestEditingStreakSecondParagraph() {

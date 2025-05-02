@@ -73,6 +73,8 @@ class Impact extends BaseModule {
 			'GEImpactThirdPersonRender' => $this->shouldShowForOtherUser(),
 			'GEImpactIsSuggestedEditsEnabledForUser' => $this->isSuggestedEditsEnabledForUser,
 			'GEImpactIsSuggestedEditsActivatedForUser' => $this->isSuggestedEditsActivatedForUser,
+			'GEImpactMaxEdits' => $this->getConfig()->get( 'GEUserImpactMaxEdits' ),
+			'GEImpactMaxThanks' => $this->getConfig()->get( 'GEUserImpactMaxThanks' ),
 		];
 	}
 

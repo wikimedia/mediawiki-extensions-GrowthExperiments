@@ -16,7 +16,9 @@ const renderComponent = ( props, mocks = {}, renderMode = 'desktop' ) => mount( 
 	global: {
 		provide: {
 			RENDER_MODE: renderMode,
-			RENDER_IN_THIRD_PERSON: false
+			RENDER_IN_THIRD_PERSON: false,
+			IMPACT_MAX_EDITS: 1000,
+			IMPACT_MAX_THANKS: 1000
 		},
 		mocks: Object.assign( {
 			$filters: {
@@ -140,5 +142,50 @@ describe( 'NoEditsDisplay', () => {
 		expect( logSpy ).toHaveBeenNthCalledWith( 3, 'impact', 'open-streak-info-tooltip' );
 		scorecards[ 1 ].vm.$emit( 'close' );
 		expect( logSpy ).toHaveBeenNthCalledWith( 4, 'impact', 'close-streak-info-tooltip' );
+	} );
+	it( 'displays different limits for edits and thanks in tooltips', () => {
+		const props = {
+			userName: 'Alice',
+			isDisabled: true,
+			data: {
+				receivedThanksCount: 123
+			}
+		};
+
+		const wrapper = mount( NoEditsDisplay, {
+			props,
+			global: {
+				provide: {
+					RENDER_MODE: 'desktop',
+					RENDER_IN_THIRD_PERSON: false,
+					IMPACT_MAX_EDITS: 5000,
+					IMPACT_MAX_THANKS: 2000
+				},
+				mocks: {
+					$filters: {
+						convertNumber: jest.fn( ( x ) => `${ x }` )
+					},
+					$log: jest.fn(),
+					$i18n: jest.fn( ( key, ...args ) => ( {
+						text: () => `${ key }:[${ args.join( ',' ) }]`
+					} ) )
+				}
+			}
+		} );
+
+		const scorecards = wrapper.findAllComponents( CScoreCard );
+		scorecards[ 0 ].find( '.ext-growthExperiments-ScoreCards__info-button' ).trigger( 'click' );
+		scorecards[ 1 ].find( '.ext-growthExperiments-ScoreCards__info-button' ).trigger( 'click' );
+
+		return wrapper.vm.$nextTick().then( () => {
+			// Thanks tooltip should use IMPACT_MAX_THANKS value
+			expect( wrapper.text() ).toContain(
+				'growthexperiments-homepage-impact-scores-thanks-info-text:[,2000]'
+			);
+			// Streak tooltip should use IMPACT_MAX_EDITS value
+			expect( wrapper.text() ).toContain(
+				'growthexperiments-homepage-impact-scores-best-streak-info-text:[,5000]'
+			);
+		} );
 	} );
 } );

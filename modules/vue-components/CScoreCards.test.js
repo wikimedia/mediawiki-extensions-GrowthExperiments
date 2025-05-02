@@ -18,11 +18,11 @@ const renderComponent = ( { props = {}, provide = {} } = {} ) => mount( ScoreCar
 		renderThirdPerson: false,
 		hasIntl: true
 	}, props ),
-	provide: Object.assign( {
-		RENDER_MODE: 'desktop'
-	}, provide ),
 	global: {
 		provide: Object.assign( {
+			RENDER_MODE: 'desktop',
+			IMPACT_MAX_EDITS: 1000,
+			IMPACT_MAX_THANKS: 1000,
 			$log: jest.fn()
 		}, provide ),
 		mocks: {
