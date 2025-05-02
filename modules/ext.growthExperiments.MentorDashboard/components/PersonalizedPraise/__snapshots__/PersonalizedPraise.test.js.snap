@@ -12,45 +12,48 @@ exports[`PersonalizedPraise NoResult when no mentees 1`] = `
     >
       growthexperiments-mentor-dashboard-personalized-praise-intro
     </p>
-    <div
-      class="ext-growthExperiments-Popover ext-growthExperiments-PersonalizedPraise__info-box"
-      icon="info-icon"
+    <button
+      aria-label="growthexperiments-mentor-dashboard-personalized-praise-info-icon-label"
+      aria-pressed="false"
+      class="cdx-toggle-button cdx-toggle-button--quiet cdx-toggle-button--toggled-off cdx-toggle-button--icon-only ext-growthExperiments-PersonalizedPraise__info-button"
+      type="button"
     >
-      <div>
-        <div>
-          
-          <button
-            aria-label="growthexperiments-mentor-dashboard-personalized-praise-info-icon-label"
-            class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium cdx-button--icon-only ext-growthExperiments-PersonalizedPraise__info-button"
-          >
-            
-            <span
-              class="cdx-icon cdx-icon--medium"
-            >
-              <svg
-                aria-hidden="true"
-                height="20"
-                viewBox="0 0 20 20"
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <!--v-if-->
-                <g>
-                  info-icon
-                </g>
-              </svg>
-            </span>
-            
-          </button>
-          
-        </div>
-        <div
-          class="ext-growthExperiments-Popover__surface-container"
+      
+      <span
+        class="cdx-icon cdx-icon--medium"
+      >
+        <svg
+          aria-hidden="true"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <!--v-if-->
-        </div>
-      </div>
-    </div>
+          <g>
+            info-icon
+          </g>
+        </svg>
+      </span>
+      
+    </button>
+    <!--
+				CdxPopover uses the floating-ui library in a way that causes infinite recursion when
+				mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
+				is provided, because vue-test-utils is unable to stringify the HTML element held within
+				the ref. Work around the situation by using shallow rendering in tests and use a well-known
+				window name to avoid passing the anchor in this case.
+			-->
+    <cdx-popover-stub
+      closebuttonlabel="Close"
+      icon="info-icon"
+      open="false"
+      placement="bottom-start"
+      renderinplace="true"
+      stackedactions="false"
+      title="growthexperiments-mentor-dashboard-personalized-praise-info-headline"
+      useclosebutton="true"
+    />
   </div>
   <p>
     growthexperiments-mentor-dashboard-personalized-praise-metrics (1,14)
@@ -111,14 +114,29 @@ exports[`PersonalizedPraise full data when has mentees 1`] = `
     >
       growthexperiments-mentor-dashboard-personalized-praise-intro
     </p>
-    <c-popover-stub
-      class="ext-growthExperiments-PersonalizedPraise__info-box"
-      closeicon="close-icon"
-      closeiconlabel="growthexperiments-info-tooltip-close-label"
-      headericon="info-icon"
-      headericonlabel="growthexperiments-mentor-dashboard-personalized-praise-info-icon-label"
+    <cdx-toggle-button-stub
+      aria-label="growthexperiments-mentor-dashboard-personalized-praise-info-icon-label"
+      class="ext-growthExperiments-PersonalizedPraise__info-button"
+      disabled="false"
+      modelvalue="false"
+      quiet="true"
+    />
+    <!--
+				CdxPopover uses the floating-ui library in a way that causes infinite recursion when
+				mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
+				is provided, because vue-test-utils is unable to stringify the HTML element held within
+				the ref. Work around the situation by using shallow rendering in tests and use a well-known
+				window name to avoid passing the anchor in this case.
+			-->
+    <cdx-popover-stub
+      closebuttonlabel="Close"
       icon="info-icon"
+      open="false"
+      placement="bottom-start"
+      renderinplace="true"
+      stackedactions="false"
       title="growthexperiments-mentor-dashboard-personalized-praise-info-headline"
+      useclosebutton="true"
     />
   </div>
   <p>

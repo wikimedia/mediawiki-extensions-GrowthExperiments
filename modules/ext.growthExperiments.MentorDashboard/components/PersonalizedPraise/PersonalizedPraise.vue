@@ -4,33 +4,37 @@
 			<p class="ext-growthExperiments-PersonalizedPraise__intro">
 				{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-intro' ).text() }}
 			</p>
-			<c-popover
-				class="ext-growthExperiments-PersonalizedPraise__info-box"
-				:icon="cdxIconInfo"
-				:header-icon="cdxIconInfo"
-				:header-icon-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-icon-label' ).text()"
-				:title="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-headline' ).text()"
-				:close-icon="cdxIconClose"
-				:close-icon-label="$i18n( 'growthexperiments-info-tooltip-close-label' ).text()"
+			<cdx-toggle-button
+				ref="infoToggleButton"
+				v-model="showPopover"
+				:aria-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-icon-label' ).text()"
+				:quiet="true"
+				class="ext-growthExperiments-PersonalizedPraise__info-button"
 			>
-				<template #trigger="{ onClick }">
-					<cdx-button
-						weight="quiet"
-						class="ext-growthExperiments-PersonalizedPraise__info-button"
-						:aria-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-icon-label' ).text()"
-						@click="onClick"
-					>
-						<cdx-icon :icon="cdxIconInfo"></cdx-icon>
-					</cdx-button>
-				</template>
-				<template #content>
-					<div class="ext-growthExperiments-PersonalizedPraise__info-content">
-						<p>{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-par1' ).text() }}</p>
-						<p>{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-par2' ).text() }}</p>
-						<p>{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-par3' ).text() }}</p>
-					</div>
-				</template>
-			</c-popover>
+				<cdx-icon :icon="cdxIconInfo"></cdx-icon>
+			</cdx-toggle-button>
+			<!--
+				CdxPopover uses the floating-ui library in a way that causes infinite recursion when
+				mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
+				is provided, because vue-test-utils is unable to stringify the HTML element held within
+				the ref. Work around the situation by using shallow rendering in tests and use a well-known
+				window name to avoid passing the anchor in this case.
+			-->
+			<cdx-popover
+				v-model:open="showPopover"
+				:anchor="windowName !== 'PersonalizedPraiseJestTests' ? infoToggleButton : null"
+				placement="bottom-start"
+				:render-in-place="true"
+				:title="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-headline' ).text()"
+				:use-close-button="true"
+				:icon="cdxIconInfo"
+			>
+				<div class="ext-growthExperiments-PersonalizedPraise__info-content">
+					<p>{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-par1' ).text() }}</p>
+					<p>{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-par2' ).text() }}</p>
+					<p>{{ $i18n( 'growthexperiments-mentor-dashboard-personalized-praise-info-par3' ).text() }}</p>
+				</div>
+			</cdx-popover>
 		</div>
 		<p
 			v-i18n-html:growthexperiments-mentor-dashboard-personalized-praise-metrics="[
@@ -60,22 +64,21 @@
 </template>
 
 <script>
-const { inject } = require( 'vue' );
-const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
+const { inject, ref } = require( 'vue' );
+const { CdxIcon, CdxToggleButton, CdxPopover } = require( '@wikimedia/codex' );
 const PersonalizedPraiseSettings = require( './PersonalizedPraiseSettings.vue' );
 const PersonalizedPraisePagination = require( './PersonalizedPraisePagination.vue' );
 const UserCard = require( './UserCard.vue' );
 const NoResults = require( './NoResults.vue' );
-const CPopover = require( '../../../vue-components/CPopover.vue' );
-const { cdxIconInfo, cdxIconClose } = require( '../../../vue-components/icons.json' );
+const { cdxIconInfo } = require( '../../../vue-components/icons.json' );
 
 // @vue/component
 module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxIcon,
-		CdxButton,
-		CPopover,
+		CdxToggleButton,
+		CdxPopover,
 		PersonalizedPraiseSettings,
 		PersonalizedPraisePagination,
 		UserCard,
@@ -83,13 +86,19 @@ module.exports = exports = {
 	},
 	setup() {
 		const log = inject( '$log' );
+		const showPopover = ref( false );
+		const infoToggleButton = ref( null );
 		return {
 			log,
 			cdxIconInfo,
-			cdxIconClose
+			showPopover,
+			infoToggleButton
 		};
 	},
 	computed: {
+		windowName() {
+			return window.name;
+		},
 		currentPage() {
 			return this.$store.getters[ 'praiseworthyMentees/currentPage' ];
 		},
@@ -150,13 +159,8 @@ module.exports = exports = {
 		display: inline;
 	}
 
-	// NOTE: This is needed to make the selector more specific than .ext-growthExperiments-Popover
-	// from CPopover.vue.
-	& &__info-box {
-		display: inline-block;
-	}
-
 	&__info-button {
+		display: inline-block;
 		.codex-icon-only-button( @color-subtle, 24px);
 	}
 
