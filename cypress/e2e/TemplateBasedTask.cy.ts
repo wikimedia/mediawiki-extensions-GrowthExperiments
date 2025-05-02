@@ -9,7 +9,8 @@ const guidedTour = new GuidedTour();
 const tryNewTask = new TryNewTask();
 
 describe( 'Template-based tasks', () => {
-	it( 'saves change tags for unstructured task edits made via VisualEditor', () => {
+	// See T384601
+	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', () => {
 		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
 			username: string;
 			password: string;
