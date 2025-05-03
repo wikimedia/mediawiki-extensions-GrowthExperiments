@@ -129,6 +129,7 @@ class UserImpactPageUpdatedSubscriber extends MediaWikiIntegrationTestCase {
 					new DateTime( '03-10-2022' )
 				)
 			),
+			0,
 			50
 		);
 	}

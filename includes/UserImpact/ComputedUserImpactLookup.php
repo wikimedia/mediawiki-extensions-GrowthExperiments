@@ -143,6 +143,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editData->getNewcomerTaskEditCount(),
 			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
 			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() ),
+			$editData->getCreatedArticlesCount(),
 			$this->userEditTracker->getUserEditCount( $user )
 		);
 	}
@@ -197,6 +198,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$pageViewData['dailyTotalViews'],
 			$pageViewData['dailyArticleViews'],
 			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() ),
+			$editData->getCreatedArticlesCount(),
 			$this->userEditTracker->getUserEditCount( $user )
 		);
 		$userImpactLookupDurationInSeconds = microtime( true ) - $start;
@@ -340,6 +342,22 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editedArticles[$titleDbKey]['newestEdit'] ??= $row->rev_timestamp;
 		}
 
+		$queryBuilder = $db->newSelectQueryBuilder();
+		$queryBuilder->from( 'page' )
+			->join(
+				'revision',
+				null,
+				'page.page_id = rev_page'
+			)
+			->where( [
+				'page.page_namespace' => NS_MAIN,
+				'rev_actor' => $user->getActorId(),
+				'rev_parent_id' => 0,
+			] )
+			->caller( __METHOD__ )
+			->limit( $this->config->get( 'GEUserImpactMaxEdits' ) );
+		$createdArticleCount = $queryBuilder->fetchRowCount();
+
 		return new EditData(
 			$editCountByNamespace,
 			array_reverse( $this->updateToIso8601DateKeys( $editCountByDay ) ),
@@ -347,7 +365,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$revertedEditCount,
 			$newcomerTaskEditCount,
 			$lastEditTimestamp,
-			$editedArticles
+			$editedArticles,
+			$createdArticleCount
 		);
 	}
 

@@ -41,6 +41,7 @@ class ExpensiveUserImpact extends UserImpact {
 	 *   Might exclude edits made many days or many edits ago.
 	 * @param array $dailyArticleViews @see ::getDailyArticleViews
 	 * @param EditingStreak $longestEditingStreak
+	 * @param int $totalArticlesCreatedCount
 	 * @param int|null $totalUserEditCount Copy of user.user_editcount
 	 */
 	public function __construct(
@@ -56,11 +57,12 @@ class ExpensiveUserImpact extends UserImpact {
 		array $dailyTotalViews,
 		array $dailyArticleViews,
 		EditingStreak $longestEditingStreak,
+		int $totalArticlesCreatedCount,
 		?int $totalUserEditCount
 	) {
 		parent::__construct( $user, $receivedThanksCount, $givenThanksCount, $editCountByNamespace, $editCountByDay,
 			$editCountByTaskType, $revertedEditCount, $newcomerTaskEditCount, $lastEditTimestamp,
-			$longestEditingStreak, $totalUserEditCount );
+			$longestEditingStreak, $totalArticlesCreatedCount, $totalUserEditCount );
 		$this->dailyTotalViews = $dailyTotalViews;
 		$this->dailyArticleViews = $dailyArticleViews;
 	}
@@ -110,6 +112,7 @@ class ExpensiveUserImpact extends UserImpact {
 			[],
 			[],
 			new EditingStreak(),
+			0,
 			0
 		);
 	}

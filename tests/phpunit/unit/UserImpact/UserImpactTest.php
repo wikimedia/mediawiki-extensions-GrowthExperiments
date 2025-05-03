@@ -25,6 +25,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			new EditingStreak(),
+			0,
 			10
 		);
 		$this->assertInstanceOf( UserImpact::class, $userImpact );
@@ -53,6 +54,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			80,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			new EditingStreak(),
+			0,
 			10
 		);
 

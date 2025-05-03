@@ -13,6 +13,7 @@ class EditData {
 	private int $newcomerTaskEditCount;
 	private ?string $lastEditTimestamp;
 	private array $editedArticles;
+	private int $createdArticlesCount;
 
 	/**
 	 * @param int[] $editCountByNamespace Number of edits made by the user per namespace ID.
@@ -27,6 +28,7 @@ class EditData {
 	 * @param array[] $editedArticles List of article-space titles the user has edited, sorted from
 	 *   most recently edited to least recently edited. Keyed by article title (in dbkey format),
 	 *   the value is an array with 'oldestEdit' and 'newestEdit' fields, each with an MW_TS date.
+	 * @param int $createdArticlesCount Count of article-space titles the user has created
 	 */
 	public function __construct(
 		array $editCountByNamespace,
@@ -35,16 +37,17 @@ class EditData {
 		int $revertedEditCount,
 		int $newcomerTaskEditCount,
 		?string $lastEditTimestamp,
-		array $editedArticles
+		array $editedArticles,
+		int $createdArticlesCount = 0
 	) {
 		$this->editCountByNamespace = $editCountByNamespace;
 		$this->editCountByDay = $editCountByDay;
-		$this->editCountByTaskType = $editCountByTaskType;
 		$this->revertedEditCount = $revertedEditCount;
 		$this->newcomerTaskEditCount = $newcomerTaskEditCount;
 		$this->lastEditTimestamp = $lastEditTimestamp;
 		$this->editedArticles = $editedArticles;
 		$this->editCountByTaskType = $editCountByTaskType;
+		$this->createdArticlesCount = $createdArticlesCount;
 	}
 
 	/**
@@ -105,6 +108,15 @@ class EditData {
 	 */
 	public function getEditedArticles(): array {
 		return $this->editedArticles;
+	}
+
+	/**
+	 * Count of article-space titles the user has created.
+	 *
+	 * @return int
+	 */
+	public function getCreatedArticlesCount(): int {
+		return $this->createdArticlesCount;
 	}
 
 }

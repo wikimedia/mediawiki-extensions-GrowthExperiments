@@ -61,6 +61,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 					]
 				],
 				new EditingStreak(),
+				0,
 				2
 			)
 		] );

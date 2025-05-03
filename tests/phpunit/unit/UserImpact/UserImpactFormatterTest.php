@@ -71,6 +71,7 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),
+			0,
 			null
 		);
 
@@ -144,6 +145,7 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),
+			0,
 			null
 		);
 
