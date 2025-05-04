@@ -20,7 +20,6 @@ use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleFactory;
@@ -141,15 +140,6 @@ class SpecialHomepage extends SpecialPage {
 			->getTiming( 'special_homepage_server_side_render_seconds' )
 			->setLabel( 'platform', $platform )
 			->observeSeconds( $overallSsrTimeInSeconds );
-
-		// Stay backward compatible with the legacy Graphite-based dashboard
-		// feeding on this data.
-		// TODO: remove after switching to Prometheus-based dashboards
-		$services = MediaWikiServices::getInstance();
-		$services->getStatsdDataFactory()->timing(
-			'timing.growthExperiments.specialHomepage.serverSideRender.' . $platform,
-			$overallSsrTimeInSeconds
-		);
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&
 			 count( $modules ) ) {
@@ -306,19 +296,6 @@ class SpecialHomepage extends SpecialPage {
 			->setLabel( 'module', $moduleName )
 			->setLabel( 'mode', $mode )
 			->observeSeconds( $timeToRecordInSeconds );
-
-		// Stay backward compatible with the legacy Graphite-based dashboard
-		// feeding on this data.
-		// TODO: remove after switching to Prometheus-based dashboards
-		$services = MediaWikiServices::getInstance();
-		$services->getPerDbNameStatsdDataFactory()->timing(
-			implode( '.', [
-				'timing.growthExperiments.specialHomepage.ssr',
-				$moduleName,
-				$mode,
-			] ),
-			$timeToRecordInSeconds
-		);
 	}
 
 	private function renderMobileDetails( IDashboardModule $module ) {
