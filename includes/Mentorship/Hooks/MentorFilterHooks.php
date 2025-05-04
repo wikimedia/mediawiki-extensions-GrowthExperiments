@@ -6,7 +6,6 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
-use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\RecentChanges\ChangesListStringOptionsFilter;
 use MediaWiki\RecentChanges\ChangesListStringOptionsFilterGroup;
@@ -22,7 +21,6 @@ use Wikimedia\Rdbms\IDatabase;
  */
 class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 
-	private Config $config;
 	private MentorStore $mentorStore;
 	private StarredMenteesStore $starredMenteesStore;
 	private MentorProvider $mentorProvider;
@@ -31,12 +29,10 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 	private HashBagOStuff $menteeCache;
 
 	public function __construct(
-		Config $config,
 		MentorStore $mentorStore,
 		StarredMenteesStore $starredMenteesStore,
 		MentorProvider $mentorProvider
 	) {
-		$this->config = $config;
 		$this->mentorStore = $mentorStore;
 		$this->starredMenteesStore = $starredMenteesStore;
 		$this->mentorProvider = $mentorProvider;

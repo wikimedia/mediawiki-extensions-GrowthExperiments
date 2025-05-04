@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments;
 
-use MediaWiki\Config\Config;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -10,7 +9,6 @@ use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsLookup;
-use MediaWiki\User\Options\UserOptionsManager;
 
 class TourHooks implements
 	BeforePageDisplayHook,
@@ -25,26 +23,11 @@ class TourHooks implements
 	public const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
 
 	private UserOptionsLookup $userOptionsLookup;
-	private ExperimentUserManager $experimentUserManager;
-	private Config $config;
-	private UserOptionsManager $userOptionsManager;
 
-	/**
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param ExperimentUserManager $experimentUserManager
-	 * @param Config $config
-	 * @param UserOptionsManager $userOptionsManager
-	 */
 	public function __construct(
-		UserOptionsLookup $userOptionsLookup,
-		ExperimentUserManager $experimentUserManager,
-		Config $config,
-		UserOptionsManager $userOptionsManager
+		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->userOptionsLookup = $userOptionsLookup;
-		$this->experimentUserManager = $experimentUserManager;
-		$this->config = $config;
-		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	/** @inheritDoc */

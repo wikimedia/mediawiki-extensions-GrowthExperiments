@@ -43,7 +43,6 @@ class MentorHooks implements
 	BlockIpCompleteHook
 {
 
-	private Config $config;
 	private Config $wikiConfig;
 	private UserIdentityLookup $userIdentityLookup;
 	private GenderCache $genderCache;
@@ -53,7 +52,6 @@ class MentorHooks implements
 	private LoggerInterface $logger;
 
 	public function __construct(
-		Config $config,
 		Config $wikiConfig,
 		UserIdentityLookup $userIdentityLookup,
 		GenderCache $genderCache,
@@ -61,7 +59,6 @@ class MentorHooks implements
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore
 	) {
-		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->genderCache = $genderCache;

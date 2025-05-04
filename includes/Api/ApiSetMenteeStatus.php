@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Api;
 
 use GrowthExperiments\Mentorship\IMentorManager;
-use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogicException;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
@@ -14,20 +13,17 @@ class ApiSetMenteeStatus extends ApiBase {
 
 	private Config $wikiConfig;
 	private IMentorManager $mentorManager;
-	private MentorStore $mentorStore;
 
 	public function __construct(
 		ApiMain $mainModule,
 		string $moduleName,
 		Config $wikiConfig,
-		IMentorManager $mentorManager,
-		MentorStore $mentorStore
+		IMentorManager $mentorManager
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
 		$this->wikiConfig = $wikiConfig;
 		$this->mentorManager = $mentorManager;
-		$this->mentorStore = $mentorStore;
 	}
 
 	/**

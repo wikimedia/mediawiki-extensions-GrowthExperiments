@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialClaimMentee;
-use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
@@ -33,10 +32,7 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 
 		return new SpecialClaimMentee(
 			$geServices->getMentorProvider(),
-			$geServices->getChangeMentorFactory(),
-			// This would normally be GrowthExperimentsMultiConfig, but there
-			// is no need to test the on-wiki config here
-			GlobalVarConfig::newInstance()
+			$geServices->getChangeMentorFactory()
 		);
 	}
 

@@ -7,7 +7,6 @@ use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
-use MediaWiki\Config\Config;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
@@ -34,27 +33,17 @@ class WelcomeSurveyHooks implements
 	BeforePageDisplayHook
 {
 
-	private Config $config;
 	private TitleFactory $titleFactory;
 	private SpecialPageFactory $specialPageFactory;
 	private WelcomeSurveyFactory $welcomeSurveyFactory;
 	private CampaignConfig $campaignConfig;
 
-	/**
-	 * @param Config $config
-	 * @param TitleFactory $titleFactory
-	 * @param SpecialPageFactory $specialPageFactory
-	 * @param WelcomeSurveyFactory $welcomeSurveyFactory
-	 * @param CampaignConfig $campaignConfig
-	 */
 	public function __construct(
-		Config $config,
 		TitleFactory $titleFactory,
 		SpecialPageFactory $specialPageFactory,
 		WelcomeSurveyFactory $welcomeSurveyFactory,
 		CampaignConfig $campaignConfig
 	) {
-		$this->config = $config;
 		$this->titleFactory = $titleFactory;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->welcomeSurveyFactory = $welcomeSurveyFactory;

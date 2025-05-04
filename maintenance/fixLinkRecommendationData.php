@@ -43,7 +43,6 @@ class FixLinkRecommendationData extends Maintenance {
 	private PageStore $pageStore;
 	private TitleFormatter $titleFormatter;
 	private ?int $randomSeed;
-	private LinkRecommendationTaskType $linkRecommendationTaskType;
 
 	public function __construct() {
 		parent::__construct();
@@ -128,8 +127,6 @@ class FixLinkRecommendationData extends Maintenance {
 		if ( !$linkRecommendationTaskType instanceof LinkRecommendationTaskType ) {
 			$this->fatalError( sprintf( "'%s' is not a link recommendation task type",
 				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) );
-		} else {
-			$this->linkRecommendationTaskType = $linkRecommendationTaskType;
 		}
 	}
 

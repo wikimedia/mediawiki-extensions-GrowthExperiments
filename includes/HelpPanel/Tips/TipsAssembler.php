@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HelpPanel\Tips;
 
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Context\IContextSource;
 use MessageLocalizer;
@@ -13,13 +12,9 @@ use MessageLocalizer;
 class TipsAssembler {
 
 	private IContextSource $messageLocalizer;
-	private ConfigurationLoader $configurationLoader;
 	private TipNodeRenderer $tipNodeRenderer;
 
-	public function __construct(
-		ConfigurationLoader $configurationLoader, TipNodeRenderer $tipNodeRenderer
-	) {
-		$this->configurationLoader = $configurationLoader;
+	public function __construct( TipNodeRenderer $tipNodeRenderer ) {
 		$this->tipNodeRenderer = $tipNodeRenderer;
 	}
 
@@ -49,7 +44,7 @@ class TipsAssembler {
 	public function getTips(
 		string $skinName, string $editor, array $taskTypes, string $taskTypeId, string $dir
 	): array {
-		$tipLoader = new TipLoader( $this->configurationLoader, $this->messageLocalizer );
+		$tipLoader = new TipLoader( $this->messageLocalizer );
 		return array_values( array_map( function ( $tipNodes ) use ( $skinName, $dir ) {
 			return $this->tipNodeRenderer->render( $tipNodes, $skinName, $dir );
 		}, $tipLoader->loadTipNodes( $skinName, $editor, $taskTypes, $taskTypeId ) ) );

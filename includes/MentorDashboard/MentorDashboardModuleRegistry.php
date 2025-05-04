@@ -74,8 +74,7 @@ class MentorDashboardModuleRegistry {
 					'resources',
 					$context,
 					$services->getTitleParser(),
-					$services->getLinkRenderer(),
-					$geServices->getMentorProvider()
+					$services->getLinkRenderer()
 				);
 			},
 			'mentor-tools' => static function (

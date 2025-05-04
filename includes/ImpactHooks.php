@@ -3,7 +3,6 @@
 namespace GrowthExperiments;
 
 use GrowthExperiments\UserImpact\GrowthExperimentsUserImpactUpdater;
-use MediaWiki\Config\Config;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Hook\ManualLogEntryBeforePublishHook;
 use MediaWiki\User\UserFactory;
@@ -12,22 +11,13 @@ use MediaWiki\User\UserIdentity;
 class ImpactHooks implements
 	ManualLogEntryBeforePublishHook
 {
-
-	private Config $config;
 	private GrowthExperimentsUserImpactUpdater $userImpactUpdater;
 	private UserFactory $userFactory;
 
-	/**
-	 * @param Config $config
-	 * @param GrowthExperimentsUserImpactUpdater $userImpactUpdater
-	 * @param UserFactory $userFactory
-	 */
 	public function __construct(
-		Config $config,
 		GrowthExperimentsUserImpactUpdater $userImpactUpdater,
 		UserFactory $userFactory
 	) {
-		$this->config = $config;
 		$this->userImpactUpdater = $userImpactUpdater;
 		$this->userFactory = $userFactory;
 	}

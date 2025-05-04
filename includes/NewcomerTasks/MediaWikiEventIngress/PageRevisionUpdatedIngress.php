@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\Util;
 use MediaWiki\ChangeTags\ChangeTagsStore;
-use MediaWiki\Config\Config;
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
 use MediaWiki\Page\ProperPageIdentity;
@@ -25,20 +24,17 @@ use Wikimedia\Stats\StatsFactory;
 class PageRevisionUpdatedIngress extends DomainEventIngress {
 
 	private ChangeTagsStore $changeTagsStore;
-	private Config $config;
 	private IConnectionProvider $connectionProvider;
 	private StatsFactory $statsFactory;
 	private LinkRecommendationHelper $linkRecommendationHelper;
 
 	public function __construct(
 		ChangeTagsStore $changeTagsStore,
-		Config $config,
 		IConnectionProvider $connectionProvider,
 		StatsFactory $statsFactory,
 		LinkRecommendationHelper $linkRecommendationHelper
 	) {
 		$this->changeTagsStore = $changeTagsStore;
-		$this->config = $config;
 		$this->connectionProvider = $connectionProvider;
 		$this->statsFactory = $statsFactory;
 		$this->linkRecommendationHelper = $linkRecommendationHelper;

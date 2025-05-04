@@ -7,7 +7,6 @@ use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\Hooks\HookRunner;
 use MediaWiki\CommentStore\CommentStoreComment;
-use MediaWiki\Config\Config;
 use MediaWiki\Content\Content;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\DerivativeContext;
@@ -37,7 +36,6 @@ abstract class QuestionPoster {
 	private bool $postOnTop = false;
 	private IContextSource $context;
 	private bool $isFirstEdit;
-	private Config $config;
 	private Title $targetTitle;
 	private string $resultUrl;
 	protected PageUpdater $pageUpdater;
@@ -81,7 +79,6 @@ abstract class QuestionPoster {
 		if ( !$this->getContext()->getUser()->isNamed() ) {
 			throw new UserNotLoggedIn();
 		}
-		$this->config = $this->getContext()->getConfig();
 		$this->isFirstEdit = ( $this->getContext()->getUser()->getEditCount() === 0 );
 		$this->targetTitle = $this->getTargetTitle();
 		$page = $wikiPageFactory->newFromTitle( $this->targetTitle );

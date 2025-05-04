@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\MentorDashboard\Modules;
 
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
@@ -11,34 +10,25 @@ use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleParser;
 
 class Resources extends BaseModule {
-	/** @var TitleParser */
-	private $titleParser;
-
-	/** @var LinkRenderer */
-	private $linkRenderer;
-
-	/** @var MentorProvider */
-	private $mentorProvider;
+	private TitleParser $titleParser;
+	private LinkRenderer $linkRenderer;
 
 	/**
 	 * @param string $name
 	 * @param IContextSource $ctx
 	 * @param TitleParser $titleParser
 	 * @param LinkRenderer $linkRenderer
-	 * @param MentorProvider $mentorProvider
 	 */
 	public function __construct(
 		$name,
 		IContextSource $ctx,
 		TitleParser $titleParser,
-		LinkRenderer $linkRenderer,
-		MentorProvider $mentorProvider
+		LinkRenderer $linkRenderer
 	) {
 		parent::__construct( $name, $ctx );
 
 		$this->titleParser = $titleParser;
 		$this->linkRenderer = $linkRenderer;
-		$this->mentorProvider = $mentorProvider;
 	}
 
 	/**

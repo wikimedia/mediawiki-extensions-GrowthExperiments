@@ -106,8 +106,7 @@
 			"class": "GrowthExperiments\\Api\\ApiSetMenteeStatus",
 			"services": [
 				"GrowthExperimentsCommunityConfig",
-				"GrowthExperimentsMentorManager",
-				"GrowthExperimentsMentorStore"
+				"GrowthExperimentsMentorManager"
 			]
 		},
 		"growthmanagementorlist": {
@@ -380,7 +379,6 @@
 		"impact": {
 			"class": "GrowthExperiments\\ImpactHooks",
 			"services": [
-				"MainConfig",
 				"GrowthExperimentsUserImpactUpdater",
 				"UserFactory"
 			]
@@ -399,7 +397,6 @@
 		"mentor": {
 			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorHooks",
 			"services": [
-				"MainConfig",
 				"GrowthExperimentsCommunityConfig",
 				"UserIdentityLookup",
 				"GenderCache",
@@ -414,7 +411,6 @@
 		"mentordashboarddiscovery": {
 			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardDiscoveryHooks",
 			"services": [
-				"GrowthExperimentsConfig",
 				"GrowthExperimentsMentorProvider",
 				"UserOptionsLookup"
 			]
@@ -422,7 +418,6 @@
 		"mentorfilters": {
 			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorFilterHooks",
 			"services": [
-				"GrowthExperimentsConfig",
 				"GrowthExperimentsMentorStore",
 				"GrowthExperimentsStarredMenteesStore",
 				"GrowthExperimentsMentorProvider"
@@ -450,10 +445,7 @@
 		"tour": {
 			"class": "GrowthExperiments\\TourHooks",
 			"services": [
-				"UserOptionsLookup",
-				"GrowthExperimentsExperimentUserManager",
-				"MainConfig",
-				"UserOptionsManager"
+				"UserOptionsLookup"
 			]
 		},
 		"experiments": {
@@ -484,7 +476,6 @@
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
 			"services": [
-				"MainConfig",
 				"TitleFactory",
 				"SpecialPageFactory",
 				"GrowthExperimentsWelcomeSurveyFactory",
@@ -637,7 +628,6 @@
 			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
 			"services": [
 				"ChangeTagsStore",
-				"MainConfig",
 				"ConnectionProvider",
 				"StatsFactory",
 				"GrowthExperimentsLinkRecommendationHelper"

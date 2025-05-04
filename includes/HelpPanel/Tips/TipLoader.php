@@ -2,14 +2,11 @@
 
 namespace GrowthExperiments\HelpPanel\Tips;
 
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use LogicException;
 use MessageLocalizer;
 
 class TipLoader {
-
-	private ConfigurationLoader $configurationLoader;
 
 	private const DEFAULT_EDITOR = 'visualeditor';
 
@@ -17,9 +14,8 @@ class TipLoader {
 	private MessageLocalizer $messageLocalizer;
 
 	public function __construct(
-		ConfigurationLoader $configurationLoader, MessageLocalizer $messageLocalizer
+		MessageLocalizer $messageLocalizer
 	) {
-		$this->configurationLoader = $configurationLoader;
 		$this->messageLocalizer = $messageLocalizer;
 	}
 

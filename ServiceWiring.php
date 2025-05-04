@@ -147,7 +147,6 @@ return [
 			$services->getUserIdentityUtils(),
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
-			$growthServices->getNewcomerTasksConfigurationLoader(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
 	},
@@ -878,7 +877,6 @@ return [
 	): TipsAssembler {
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
 		return new TipsAssembler(
-			$growthExperimentsServices->getNewcomerTasksConfigurationLoader(),
 			$growthExperimentsServices->getTipNodeRenderer()
 		);
 	},

@@ -6,7 +6,6 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\User\UserIdentityLookup;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -16,7 +15,6 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class RefreshPraiseworthyMentees extends Maintenance {
 
-	private UserIdentityLookup $userIdentityLookup;
 	private MentorProvider $mentorProvider;
 	private PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester;
 
@@ -33,7 +31,6 @@ class RefreshPraiseworthyMentees extends Maintenance {
 		$services = $this->getServiceContainer();
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		$this->userIdentityLookup = $services->getUserIdentityLookup();
 		$this->mentorProvider = $geServices->getMentorProvider();
 		$this->praiseworthyMenteeSuggester = $geServices->getPraiseworthyMenteeSuggester();
 	}

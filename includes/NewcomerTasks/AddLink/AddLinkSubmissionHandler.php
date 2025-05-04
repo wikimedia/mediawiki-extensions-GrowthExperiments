@@ -3,7 +3,6 @@
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -31,39 +30,16 @@ use Wikimedia\Rdbms\IDBAccessObject;
  */
 class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements SubmissionHandler {
 
-	/** @var LinkRecommendationHelper */
-	private $linkRecommendationHelper;
-	/** @var LinkSubmissionRecorder */
-	private $addLinkSubmissionRecorder;
-	/** @var TitleFactory */
-	private $titleFactory;
-	/** @var UserIdentityUtils */
-	private $userIdentityUtils;
-	/** @var LinkRecommendationStore */
-	private $linkRecommendationStore;
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
-	/** @var TaskSuggesterFactory */
-	private $taskSuggesterFactory;
-	/** @var NewcomerTasksUserOptionsLookup */
-	private $newcomerTasksUserOptionsLookup;
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-	/** @var LoggerInterface */
-	private $logger;
+	private LinkRecommendationHelper $linkRecommendationHelper;
+	private LinkSubmissionRecorder $addLinkSubmissionRecorder;
+	private TitleFactory $titleFactory;
+	private UserIdentityUtils $userIdentityUtils;
+	private LinkRecommendationStore $linkRecommendationStore;
+	private LinkBatchFactory $linkBatchFactory;
+	private TaskSuggesterFactory $taskSuggesterFactory;
+	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private LoggerInterface $logger;
 
-	/**
-	 * @param LinkRecommendationHelper $linkRecommendationHelper
-	 * @param LinkRecommendationStore $linkRecommendationStore
-	 * @param LinkSubmissionRecorder $addLinkSubmissionRecorder
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param TitleFactory $titleFactory
-	 * @param UserIdentityUtils $userIdentityUtils
-	 * @param TaskSuggesterFactory $taskSuggesterFactory
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param LoggerInterface $logger
-	 */
 	public function __construct(
 		LinkRecommendationHelper $linkRecommendationHelper,
 		LinkRecommendationStore $linkRecommendationStore,
@@ -73,7 +49,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		UserIdentityUtils $userIdentityUtils,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		ConfigurationLoader $configurationLoader,
 		LoggerInterface $logger
 	) {
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
@@ -84,7 +59,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		$this->userIdentityUtils = $userIdentityUtils;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->configurationLoader = $configurationLoader;
 		$this->logger = $logger;
 	}
 

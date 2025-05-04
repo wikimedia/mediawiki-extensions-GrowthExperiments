@@ -279,7 +279,6 @@ class HomepageHooks implements
 				'services' => [
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsChangeMentorFactory',
-					'GrowthExperimentsCommunityConfig'
 				]
 			];
 

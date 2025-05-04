@@ -4,7 +4,6 @@ namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use MediaWiki\Config\Config;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
@@ -23,18 +22,15 @@ class SpecialClaimMentee extends FormSpecialPage {
 	private ?User $newMentor;
 	private MentorProvider $mentorProvider;
 	private ChangeMentorFactory $changeMentorFactory;
-	private Config $wikiConfig;
 
 	public function __construct(
 		MentorProvider $mentorProvider,
-		ChangeMentorFactory $changeMentorFactory,
-		Config $wikiConfig
+		ChangeMentorFactory $changeMentorFactory
 	) {
 		parent::__construct( 'ClaimMentee' );
 
 		$this->mentorProvider = $mentorProvider;
 		$this->changeMentorFactory = $changeMentorFactory;
-		$this->wikiConfig = $wikiConfig;
 	}
 
 	/** @inheritDoc */
