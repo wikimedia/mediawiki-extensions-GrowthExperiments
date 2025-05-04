@@ -13,19 +13,12 @@ class Resources extends BaseModule {
 	private TitleParser $titleParser;
 	private LinkRenderer $linkRenderer;
 
-	/**
-	 * @param string $name
-	 * @param IContextSource $ctx
-	 * @param TitleParser $titleParser
-	 * @param LinkRenderer $linkRenderer
-	 */
 	public function __construct(
-		$name,
 		IContextSource $ctx,
 		TitleParser $titleParser,
 		LinkRenderer $linkRenderer
 	) {
-		parent::__construct( $name, $ctx );
+		parent::__construct( 'resources', $ctx );
 
 		$this->titleParser = $titleParser;
 		$this->linkRenderer = $linkRenderer;

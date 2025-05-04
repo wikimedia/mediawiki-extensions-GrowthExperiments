@@ -30,21 +30,16 @@ abstract class DashboardModule implements IDashboardModule {
 		self::RENDER_MOBILE_DETAILS
 	];
 
-	/** @var IContextSource */
-	private $ctx;
+	private IContextSource $ctx;
 
 	/** @var string Name of the module */
-	protected $name;
+	protected string $name;
 
 	/** @var string Rendering mode (one of RENDER_* constants) */
-	private $mode;
+	private string $mode;
 
-	/**
-	 * @param string $name
-	 * @param IContextSource $ctx
-	 */
 	public function __construct(
-		$name,
+		string $name,
 		IContextSource $ctx
 	) {
 		$this->name = $name;

@@ -20,19 +20,12 @@ class MentorTools extends BaseModule {
 	private MentorProvider $mentorProvider;
 	private MentorStatusManager $mentorStatusManager;
 
-	/**
-	 * @param string $name
-	 * @param IContextSource $ctx
-	 * @param MentorProvider $mentorProvider
-	 * @param MentorStatusManager $mentorStatusManager
-	 */
 	public function __construct(
-		$name,
 		IContextSource $ctx,
 		MentorProvider $mentorProvider,
 		MentorStatusManager $mentorStatusManager
 	) {
-		parent::__construct( $name, $ctx );
+		parent::__construct( 'mentor-tools', $ctx );
 
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorStatusManager = $mentorStatusManager;

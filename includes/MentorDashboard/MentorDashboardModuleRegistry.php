@@ -61,7 +61,6 @@ class MentorDashboardModuleRegistry {
 				IContextSource $context
 			): IDashboardModule {
 				return new MenteeOverview(
-					'mentee-overview',
 					$context
 				);
 			},
@@ -71,7 +70,6 @@ class MentorDashboardModuleRegistry {
 			): IDashboardModule {
 				$geServices = GrowthExperimentsServices::wrap( $services );
 				return new Resources(
-					'resources',
 					$context,
 					$services->getTitleParser(),
 					$services->getLinkRenderer()
@@ -83,7 +81,6 @@ class MentorDashboardModuleRegistry {
 			): IDashboardModule {
 				$geServices = GrowthExperimentsServices::wrap( $services );
 				return new MentorTools(
-					'mentor-tools',
 					$context,
 					$geServices->getMentorProvider(),
 					$geServices->getMentorStatusManager()
@@ -95,7 +92,6 @@ class MentorDashboardModuleRegistry {
 			) {
 				$geServices = GrowthExperimentsServices::wrap( $services );
 				return new PersonalizedPraise(
-					'personalized-praise',
 					$context,
 					$geServices->getPraiseworthyMenteeSuggester(),
 					$geServices->getPersonalizedPraiseSettings(),

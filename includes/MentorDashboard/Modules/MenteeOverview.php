@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\MentorDashboard\Modules;
 
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
 
@@ -9,6 +10,10 @@ class MenteeOverview extends BaseModule {
 
 	/** @var string Option name to store user presets. This is client-side hardcoded. */
 	public const PRESETS_PREF = 'growthexperiments-mentee-overview-presets';
+
+	public function __construct( IContextSource $ctx ) {
+		parent::__construct( 'mentee-overview', $ctx );
+	}
 
 	/**
 	 * @inheritDoc

@@ -19,21 +19,13 @@ class PersonalizedPraise extends BaseModule {
 	private PersonalizedPraiseSettings $personalizedPraiseSettings;
 	private GenderCache $genderCache;
 
-	/**
-	 * @param string $name
-	 * @param IContextSource $ctx
-	 * @param PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester
-	 * @param PersonalizedPraiseSettings $personalizedPraiseSettings
-	 * @param GenderCache $genderCache
-	 */
 	public function __construct(
-		$name,
 		IContextSource $ctx,
 		PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester,
 		PersonalizedPraiseSettings $personalizedPraiseSettings,
 		GenderCache $genderCache
 	) {
-		parent::__construct( $name, $ctx );
+		parent::__construct( 'personalized-praise', $ctx );
 
 		$this->praiseworthyMenteeSuggester = $praiseworthyMenteeSuggester;
 		$this->personalizedPraiseSettings = $personalizedPraiseSettings;

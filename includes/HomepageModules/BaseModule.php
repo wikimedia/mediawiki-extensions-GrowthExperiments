@@ -50,7 +50,7 @@ abstract class BaseModule extends DashboardModule {
 	 * @param bool $shouldWrapModuleWithLink
 	 */
 	public function __construct(
-		$name,
+		string $name,
 		IContextSource $ctx,
 		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
