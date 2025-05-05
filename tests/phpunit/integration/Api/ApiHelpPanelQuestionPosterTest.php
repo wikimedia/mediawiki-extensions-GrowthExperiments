@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
 use MediaWiki\Api\ApiUsageException;
-use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Revision\RevisionRecord;
@@ -82,11 +81,11 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::checkUserPermissions
 	 */
 	public function testBlockedUserCantPostQuestion() {
-		$block = new DatabaseBlock();
-		$block->setTarget( $this->mUser );
-		$block->setBlocker( $this->getTestSysop()->getUser() );
 		$this->getServiceContainer()->getDatabaseBlockStore()
-			->insertBlock( $block );
+			->insertBlockWithParams( [
+				'targetUser' => $this->mUser,
+				'by' => $this->getTestSysop()->getUser(),
+			] );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'Your username or IP address has been blocked' );
