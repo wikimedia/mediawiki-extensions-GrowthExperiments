@@ -319,8 +319,8 @@ class LevelingUpManager {
 		}
 		$articleEdits = (int)$editCounts->article_edits;
 		if ( !$wasPosted && $editCounts->last_edit_timestamp < $db->timestamp( time() - 3 ) ) {
-			// If the last edit was more than 5 seconds ago, we are probably not seeing the actual
-			// last edit due to replication lag. 5 is chosen arbitrarily to be large enough to
+			// If the last edit was more than 3 seconds ago, we are probably not seeing the actual
+			// last edit due to replication lag. 3 is chosen arbitrarily to be large enough to
 			// account for slow saves and the VE reload, but small enough to account for the user
 			// making edits in quick succession.
 			$articleEdits++;
