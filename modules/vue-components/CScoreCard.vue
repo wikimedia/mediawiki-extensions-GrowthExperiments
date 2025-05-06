@@ -24,45 +24,44 @@
 			<span
 				v-if="hasInfoContent"
 			>
-				<c-popover
-					:close-icon="cdxIconClose"
-					:close-icon-label="$i18n( 'growthexperiments-info-tooltip-close-label' ).text()"
-					:header-icon="infoHeaderIcon"
-					:header-icon-label="infoIconLabel"
-					:title="iconLabel"
-					@open="$emit( 'open' )"
-					@close="$emit( 'close' );"
+				<cdx-toggle-button
+					ref="infoToggleButton"
+					v-model="showPopover"
+					:aria-label="infoIconLabel"
+					:quiet="true"
+					class="ext-growthExperiments-ScoreCards__info-button"
 				>
-					<template #trigger="{ onClick }">
-						<cdx-button
-							weight="quiet"
-							class="ext-growthExperiments-ScoreCards__info-button"
-							:aria-label="infoIconLabel"
-							@click="onClick"
-						>
-							<cdx-icon
-								:icon="cdxIconInfo"
-							></cdx-icon>
-						</cdx-button>
-					</template>
-					<template #content>
-						<slot name="info-content"></slot>
-					</template>
-				</c-popover>
+					<cdx-icon :icon="cdxIconInfo"></cdx-icon>
+				</cdx-toggle-button>
+				<!--
+					CdxPopover uses the floating-ui library in a way that causes infinite recursion when
+					mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
+					is provided, because vue-test-utils is unable to stringify the HTML element held within
+					the ref. Work around the situation by using shallow rendering in tests and use a well-known
+					window name to avoid passing the anchor in this case.
+				-->
+				<cdx-popover
+					v-model:open="showPopover"
+					:anchor="windowName !== 'CScoreCardJestTests' ? infoToggleButton : null"
+					placement="bottom-start"
+					:render-in-place="true"
+					:title="iconLabel"
+					:use-close-button="true"
+					:icon="infoHeaderIcon || cdxIconInfo"
+					@update:open=" ( val ) => $emit( val ? 'open' : 'close' )"
+				>
+					<slot name="info-content"></slot>
+				</cdx-popover>
 			</span>
 		</div>
 	</div>
 </template>
 
 <script>
-const { useSlots } = require( 'vue' );
-const {
-	cdxIconClose,
-	cdxIconInfo
-} = require( './icons.json' );
-const { CdxIcon, CdxButton } = require( '@wikimedia/codex' );
+const { computed, ref, useSlots } = require( 'vue' );
+const { CdxIcon, CdxToggleButton, CdxPopover } = require( '@wikimedia/codex' );
+const { cdxIconInfo } = require( './icons.json' );
 const CText = require( './CText.vue' );
-const CPopover = require( './CPopover.vue' );
 
 // Uses the following message keys:
 // growthexperiments-info-tooltip-close-label
@@ -70,9 +69,9 @@ const CPopover = require( './CPopover.vue' );
 module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
-		CdxButton,
 		CdxIcon,
-		CPopover,
+		CdxToggleButton,
+		CdxPopover,
 		CText
 	},
 	props: {
@@ -119,10 +118,15 @@ module.exports = exports = {
 	],
 	setup() {
 		const hasInfoContent = Boolean( useSlots()[ 'info-content' ] );
+		const infoToggleButton = ref( null );
+		const showPopover = ref( false );
+		const windowName = computed( () => window.name );
 		return {
 			hasInfoContent,
-			cdxIconClose,
-			cdxIconInfo
+			infoToggleButton,
+			cdxIconInfo,
+			showPopover,
+			windowName
 		};
 	}
 };

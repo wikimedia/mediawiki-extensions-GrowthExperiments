@@ -107,44 +107,41 @@ exports[`ScoreCards renders correctly with data 1`] = `
         
       </span>
       <span>
-        <div
-          class="ext-growthExperiments-Popover"
+        <button
+          aria-label="growthexperiments-homepage-impact-scores-thanks-info-label"
+          aria-pressed="false"
+          class="cdx-toggle-button cdx-toggle-button--quiet cdx-toggle-button--toggled-off cdx-toggle-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+          type="button"
         >
-          <div>
-            <div>
-              
-              <button
-                aria-label="growthexperiments-homepage-impact-scores-thanks-info-label"
-                class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
-              >
-                
-                <span
-                  class="cdx-icon cdx-icon--medium"
-                >
-                  <svg
-                    aria-hidden="true"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <!--v-if-->
-                    <path
-                      d=""
-                    />
-                  </svg>
-                </span>
-                
-              </button>
-              
-            </div>
-            <div
-              class="ext-growthExperiments-Popover__surface-container"
+          
+          <span
+            class="cdx-icon cdx-icon--medium"
+          >
+            <svg
+              aria-hidden="true"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <!--v-if-->
-            </div>
-          </div>
-        </div>
+              <path
+                d=""
+              />
+            </svg>
+          </span>
+          
+        </button>
+        <!--
+					CdxPopover uses the floating-ui library in a way that causes infinite recursion when
+					mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
+					is provided, because vue-test-utils is unable to stringify the HTML element held within
+					the ref. Work around the situation by using shallow rendering in tests and use a well-known
+					window name to avoid passing the anchor in this case.
+				-->
+        <!--teleport start-->
+        <!--v-if-->
+        <!--teleport end-->
       </span>
     </div>
   </div>
@@ -238,44 +235,41 @@ exports[`ScoreCards renders correctly with data 1`] = `
         
       </span>
       <span>
-        <div
-          class="ext-growthExperiments-Popover"
+        <button
+          aria-label="growthexperiments-homepage-impact-scores-streak-info-label"
+          aria-pressed="false"
+          class="cdx-toggle-button cdx-toggle-button--quiet cdx-toggle-button--toggled-off cdx-toggle-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+          type="button"
         >
-          <div>
-            <div>
-              
-              <button
-                aria-label="growthexperiments-homepage-impact-scores-streak-info-label"
-                class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
-              >
-                
-                <span
-                  class="cdx-icon cdx-icon--medium"
-                >
-                  <svg
-                    aria-hidden="true"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <!--v-if-->
-                    <path
-                      d=""
-                    />
-                  </svg>
-                </span>
-                
-              </button>
-              
-            </div>
-            <div
-              class="ext-growthExperiments-Popover__surface-container"
+          
+          <span
+            class="cdx-icon cdx-icon--medium"
+          >
+            <svg
+              aria-hidden="true"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <!--v-if-->
-            </div>
-          </div>
-        </div>
+              <path
+                d=""
+              />
+            </svg>
+          </span>
+          
+        </button>
+        <!--
+					CdxPopover uses the floating-ui library in a way that causes infinite recursion when
+					mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
+					is provided, because vue-test-utils is unable to stringify the HTML element held within
+					the ref. Work around the situation by using shallow rendering in tests and use a well-known
+					window name to avoid passing the anchor in this case.
+				-->
+        <!--teleport start-->
+        <!--v-if-->
+        <!--teleport end-->
       </span>
     </div>
   </div>
@@ -389,44 +383,41 @@ exports[`ScoreCards renders correctly without data 1`] = `
         
       </span>
       <span>
-        <div
-          class="ext-growthExperiments-Popover"
+        <button
+          aria-label="growthexperiments-homepage-impact-scores-thanks-info-label"
+          aria-pressed="false"
+          class="cdx-toggle-button cdx-toggle-button--quiet cdx-toggle-button--toggled-off cdx-toggle-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+          type="button"
         >
-          <div>
-            <div>
-              
-              <button
-                aria-label="growthexperiments-homepage-impact-scores-thanks-info-label"
-                class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
-              >
-                
-                <span
-                  class="cdx-icon cdx-icon--medium"
-                >
-                  <svg
-                    aria-hidden="true"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <!--v-if-->
-                    <path
-                      d=""
-                    />
-                  </svg>
-                </span>
-                
-              </button>
-              
-            </div>
-            <div
-              class="ext-growthExperiments-Popover__surface-container"
+          
+          <span
+            class="cdx-icon cdx-icon--medium"
+          >
+            <svg
+              aria-hidden="true"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <!--v-if-->
-            </div>
-          </div>
-        </div>
+              <path
+                d=""
+              />
+            </svg>
+          </span>
+          
+        </button>
+        <!--
+					CdxPopover uses the floating-ui library in a way that causes infinite recursion when
+					mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
+					is provided, because vue-test-utils is unable to stringify the HTML element held within
+					the ref. Work around the situation by using shallow rendering in tests and use a well-known
+					window name to avoid passing the anchor in this case.
+				-->
+        <!--teleport start-->
+        <!--v-if-->
+        <!--teleport end-->
       </span>
     </div>
   </div>
@@ -520,44 +511,41 @@ exports[`ScoreCards renders correctly without data 1`] = `
         
       </span>
       <span>
-        <div
-          class="ext-growthExperiments-Popover"
+        <button
+          aria-label="growthexperiments-homepage-impact-scores-streak-info-label"
+          aria-pressed="false"
+          class="cdx-toggle-button cdx-toggle-button--quiet cdx-toggle-button--toggled-off cdx-toggle-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+          type="button"
         >
-          <div>
-            <div>
-              
-              <button
-                aria-label="growthexperiments-homepage-impact-scores-streak-info-label"
-                class="cdx-button cdx-button--action-default cdx-button--weight-quiet cdx-button--size-medium cdx-button--icon-only ext-growthExperiments-ScoreCards__info-button"
-              >
-                
-                <span
-                  class="cdx-icon cdx-icon--medium"
-                >
-                  <svg
-                    aria-hidden="true"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <!--v-if-->
-                    <path
-                      d=""
-                    />
-                  </svg>
-                </span>
-                
-              </button>
-              
-            </div>
-            <div
-              class="ext-growthExperiments-Popover__surface-container"
+          
+          <span
+            class="cdx-icon cdx-icon--medium"
+          >
+            <svg
+              aria-hidden="true"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <!--v-if-->
-            </div>
-          </div>
-        </div>
+              <path
+                d=""
+              />
+            </svg>
+          </span>
+          
+        </button>
+        <!--
+					CdxPopover uses the floating-ui library in a way that causes infinite recursion when
+					mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
+					is provided, because vue-test-utils is unable to stringify the HTML element held within
+					the ref. Work around the situation by using shallow rendering in tests and use a well-known
+					window name to avoid passing the anchor in this case.
+				-->
+        <!--teleport start-->
+        <!--v-if-->
+        <!--teleport end-->
       </span>
     </div>
   </div>
