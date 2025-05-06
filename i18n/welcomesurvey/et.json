@@ -11,6 +11,7 @@
 	"welcomesurvey-save-btn": "Valmis",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Jäta}} küsitlus vahele",
 	"welcomesurvey-privacy-policy-link-text": "Loe veel uute toimetajate andmete kohta",
+	"welcomesurvey-privacy-footer-text": "Wikimedia Foundation kasutab {{GENDER:$1|sinu}} vastuseid selleks, et aidata sul alustada {{GRAMMAR:genitive|{{SITENAME}}}} muutmisega. [$2 Loe rohkem meie andmekaitseavaldusest].",
 	"welcomesurvey-sidebar-editing-title": "Muutmisega algust tegemine",
 	"welcomesurvey-sidebar-editing-text": "Igaüks saab muuta peaaegu iga lehekülge. Igas tunnis tehakse sadu muudatusi, et lisada sisu ning parandada vigu ja loetavust. Järgmised leheküljed on abiks, kui {{GENDER:$1|oled}} kaastöö tegemisest huvitatud.",
 	"welcomesurvey-sidebar-editing-link1-text": "Õppekäik",
@@ -37,5 +38,7 @@
 	"welcomesurvey-question-email-help": "Märkasime, et konto loomisel ei sisestanud sa e-posti aadressi. See on <strong>väga soovitatav</strong>, sest e-posti aadressi läheb vaja konto tagasisaamiseks, kui kaotad parooli. Sinu e-posti aadressi seejuures ei avaldata, kui teised kasutajad sinuga ühendust võtavad.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} on saadaval rohkem kui 300 keeles. Kas loed või kirjutad veel mõnes keeles?",
 	"welcomesurvey-question-languages-placeholder": "Lisa kuni {{PLURAL:$1|üks keel|$1 keelt}}...",
-	"welcomesurvey-question-languages-maximum": "Oled lisanud suurima võimaliku arvu keeli."
+	"welcomesurvey-question-languages-maximum": "Oled lisanud suurima võimaliku arvu keeli.",
+	"welcomesurvey-reminder": "Aita meil parandada {{GENDER:|sinu}} kogemust Vikipeedias, vastates mõnele valikulisele küsimusele meie tervitusküsimustikus. $1",
+	"welcomesurvey-reminder-link": "Vasta küsimustikule"
 }

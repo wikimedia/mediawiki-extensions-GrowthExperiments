@@ -71,6 +71,8 @@
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth工具",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "设置",
 	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit": "退出导师计划",
+	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-headline": "您确定要退出导师计划吗？",
+	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-text": "如果您想要永久退出导师计划，可通过 Special:QuitMentorship 进行。单击“确定”将重定向到该页。",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "导师状态",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "活跃",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "离开",
