@@ -1,1 +1,4 @@
 modules/lib
+vendor/
+documentation/frontend/coverage/
+coverage/

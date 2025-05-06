@@ -5,30 +5,9 @@ module.exports = function ( grunt ) {
 		messageDirs = conf.MessagesDirs.GrowthExperiments,
 		messageDirsWithoutApi = messageDirs.filter( ( dir ) => !dir.includes( '/api' ) );
 
-	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
-	grunt.loadNpmTasks( 'grunt-stylelint' );
 
 	grunt.initConfig( {
-		eslint: {
-			options: {
-				cache: true,
-				maxWarnings: 0,
-				fix: grunt.option( 'fix' )
-			},
-			all: [
-				'.'
-			]
-		},
-		stylelint: {
-			options: {
-				cache: true
-			},
-			all: [
-				'modules/**/*.{less,vue}',
-				'documentation/frontend/{component-demos,components}/**/*.{less,vue}'
-			]
-		},
 		banana: {
 			docs: {
 				files: {
@@ -58,6 +37,6 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'test', [ 'eslint', 'banana:docs', 'stylelint' ] );
+	grunt.registerTask( 'test', [ 'banana:docs' ] );
 	grunt.registerTask( 'default', 'test' );
 };
