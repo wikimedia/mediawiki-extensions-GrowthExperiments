@@ -91,10 +91,12 @@ const renderComponent = ( { props = {}, provide = {} } = {} ) => {
 				RENDER_IN_THIRD_PERSON: false,
 				BROWSER_HAS_INTL: true,
 				IMPACT_MAX_EDITS: 1000,
-				IMPACT_MAX_THANKS: 1000
+				IMPACT_MAX_THANKS: 1000,
+				logger: {
+					log: jest.fn()
+				}
 			}, provide ),
 			mocks: {
-				$log: jest.fn(),
 				$filters: {
 					convertNumber: jest.fn( ( x ) => `${ x }` )
 				}

@@ -972,6 +972,7 @@
 				"ext.growthExperiments.Homepage.Impact/components/RecentActivity.vue",
 				"ext.growthExperiments.Homepage.Impact/components/StreakGraph.vue",
 				"ext.growthExperiments.Homepage.Impact/components/ArticlesList.vue",
+				"ext.growthExperiments.Homepage.Impact/components/ArticlesListItem.vue",
 				"ext.growthExperiments.Homepage.Logger/index.js",
 				"lib/d3/d3.min.js",
 				"utils/Utils.js",
