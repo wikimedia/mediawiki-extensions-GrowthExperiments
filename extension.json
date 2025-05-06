@@ -548,6 +548,9 @@
 			"welcomeSurvey"
 		],
 		"RecentChange_save": "homepage",
+		"RenameUserComplete": [
+			"mentor"
+		],
 		"ResourceLoaderExcludeUserOptions": [
 			"helppanel",
 			"homepage",

@@ -12,18 +12,23 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MessageLocalizer;
+use WANObjectCache;
 
 class CommunityStructuredMentorProvider extends MentorProvider {
 	use CommunityGetMentorDataTrait;
 
 	private UserIdentityLookup $userIdentityLookup;
 	private MessageLocalizer $messageLocalizer;
+	private ?array $mentors = null;
+	private WANObjectCache $cache;
+	private const CACHE_TTL = 86400;
 
 	public function __construct(
 		UserIdentityLookup $userIdentityLookup,
 		MessageLocalizer $messageLocalizer,
 		IConfigurationProvider $provider,
-		StatusFormatter $statusFormatter
+		StatusFormatter $statusFormatter,
+		WANObjectCache $cache
 	) {
 		parent::__construct();
 
@@ -31,6 +36,7 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->provider = $provider;
 		$this->statusFormatter = $statusFormatter;
+		$this->cache = $cache;
 	}
 
 	/**
@@ -108,19 +114,54 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 	}
 
 	/**
+	 * Gets the cache key for mentor list
+	 *
+	 * @return string
+	 */
+	private function getMentorsCacheKey(): string {
+		return $this->cache->makeKey(
+			'growthexperiments',
+			'mentors-list'
+		);
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function getMentors(): array {
-		$mentorIds = array_keys( $this->getMentorData() );
-		if ( $mentorIds === [] ) {
-			return [];
+		if ( $this->mentors !== null ) {
+			return $this->mentors;
 		}
 
-		return iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
-			->whereUserIds( $mentorIds )
-			->registered()
-			->caller( __METHOD__ )
-			->fetchUserIdentities() );
+		$cacheKey = $this->getMentorsCacheKey();
+		$method = __METHOD__;
+		$this->mentors = $this->cache->getWithSetCallback(
+			$cacheKey,
+			self::CACHE_TTL,
+			function () use ( $method ) {
+				$mentorIds = array_keys( $this->getMentorData() );
+				if ( $mentorIds === [] ) {
+					return [];
+				}
+				return iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
+					->whereUserIds( $mentorIds )
+					->registered()
+					->caller( $method )
+					->fetchUserIdentities() );
+			}
+		);
+
+		return $this->mentors;
+	}
+
+	/**
+	 * Invalidate the mentors cache
+	 */
+	public function invalidateMentorsCache(): void {
+		$this->cache->delete( $this->getMentorsCacheKey() );
+
+		// Reset in-memory cache
+		$this->mentors = null;
 	}
 
 	/**

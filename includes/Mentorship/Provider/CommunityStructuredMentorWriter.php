@@ -125,13 +125,18 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 
 			$mentorData[$mentorId]['username'] = $mentorUser->getName();
 		}
-
-		return $this->doSaveMentorData(
+		$result = $this->doSaveMentorData(
 			$mentorData,
 			$summary,
 			$performer,
 			$bypassWarnings
 		);
+
+		if ( $result->isOK() ) {
+			$this->mentorProvider->invalidateMentorsCache();
+		}
+
+		return $result;
 	}
 
 	/**

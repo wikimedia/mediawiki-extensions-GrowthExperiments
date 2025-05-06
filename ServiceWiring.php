@@ -592,7 +592,8 @@ return [
 			new DerivativeContext( RequestContext::getMain() ),
 			CommunityConfigurationServices::wrap( $services )
 				->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' ),
-			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
+			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+			$services->getMainWANObjectCache()
 		);
 		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $provider;

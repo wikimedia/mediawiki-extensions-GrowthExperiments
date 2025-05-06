@@ -45,21 +45,21 @@ abstract class MentorProvider {
 	): Mentor;
 
 	/**
-	 * Checks if an user is a mentor (regardless of their auto-assignment status)
+	 * Checks if a user is a mentor (regardless of their auto-assignment status)
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
 	public function isMentor( UserIdentity $user ): bool {
 		return $user->isRegistered() && array_reduce(
-			$this->getMentors(),
-			static function ( bool $carry, UserIdentity $mentorUser ) use ( $user ) {
-				if ( $carry ) {
-					return true;
-				}
-				return $user->equals( $mentorUser );
-			},
-			false
-		);
+				$this->getMentors(),
+				static function ( bool $carry, UserIdentity $mentorUser ) use ( $user ) {
+					if ( $carry ) {
+						return true;
+					}
+					return $user->equals( $mentorUser );
+				},
+				false
+			);
 	}
 
 	/**
@@ -89,4 +89,15 @@ abstract class MentorProvider {
 	 * @return UserIdentity[] List of mentors.
 	 */
 	abstract public function getManuallyAssignedMentors(): array;
+
+	/**
+	 * Invalidate any cached mentor data
+	 *
+	 * This method should be implemented by providers that use caching
+	 * to ensure cache consistency when mentor data changes.
+	 *
+	 * @since 1.43
+	 */
+	public function invalidateMentorsCache(): void {
+	}
 }

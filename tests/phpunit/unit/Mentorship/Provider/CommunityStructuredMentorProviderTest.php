@@ -17,6 +17,9 @@ use MediaWikiUnitTestCase;
 use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -107,7 +110,8 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->createMock( UserIdentityLookup::class ),
 			$this->createMock( MessageLocalizer::class ),
 			$this->getMockConfigurationProvider(),
-			$this->getMockStatusFormatter()
+			$this->getMockStatusFormatter(),
+			$this->createMock( WANObjectCache::class )
 		);
 
 		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
@@ -136,7 +140,8 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->createMock( UserIdentityLookup::class ),
 			$this->createMock( MessageLocalizer::class ),
 			$ccProvider,
-			$this->getMockStatusFormatter()
+			$this->getMockStatusFormatter(),
+			$this->createMock( WANObjectCache::class )
 		);
 
 		$provider->setLogger( $logger );
@@ -155,7 +160,8 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->createMock( UserIdentityLookup::class ),
 			$this->createMock( MessageLocalizer::class ),
 			$this->getMockConfigurationProvider(),
-			$this->getMockStatusFormatter()
+			$this->getMockStatusFormatter(),
+			$this->createMock( WANObjectCache::class )
 		);
 		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
 
@@ -221,7 +227,8 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->createMock( UserIdentityLookup::class ),
 			$this->getMockMessageLocalizer(),
 			$this->getMockConfigurationProvider(),
-			$this->getMockStatusFormatter()
+			$this->getMockStatusFormatter(),
+			$this->createMock( WANObjectCache::class )
 		);
 
 		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
@@ -269,11 +276,19 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		$userIdentityLookup->expects( $this->once() )->method( 'newSelectQueryBuilder' )
 			->willReturn( $queryBuilder );
 
+		$cache = new HashBagOStuff();
+		$wanCache = new WANObjectCache( [
+			'cache' => $cache,
+			'logger' => new NullLogger(),
+			'asyncHandler' => null
+		] );
+
 		$provider = new CommunityStructuredMentorProvider(
 			$userIdentityLookup,
 			$this->getMockMessageLocalizer(),
 			$this->getMockConfigurationProvider(),
-			$this->getMockStatusFormatter()
+			$this->getMockStatusFormatter(),
+			$wanCache
 		);
 
 		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
@@ -305,7 +320,8 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$userIdentityLookup,
 			$this->getMockMessageLocalizer(),
 			$this->getMockConfigurationProvider(),
-			$this->getMockStatusFormatter()
+			$this->getMockStatusFormatter(),
+			$this->createMock( WANObjectCache::class )
 		);
 
 		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
