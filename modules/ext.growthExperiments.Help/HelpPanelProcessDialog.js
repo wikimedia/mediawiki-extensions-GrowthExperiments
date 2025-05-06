@@ -11,7 +11,6 @@
 	 *   (standard OOUI process dialog look). Default is 'helppanel'. This only affects the few
 	 *   layout options which have to be handled dynamically in JS code.
 	 * @param {string} config.askSource Logical name of the source to use with the HelpPanelPostQuestion API
-	 * @param {boolean} config.guidanceEnabled Whether guidance feature is enabled.
 	 * @param {SuggestedEditSession} config.suggestedEditSession The suggested edit session
 	 * @param {string} config.taskTypeId The ID of the suggested edit task type.
 	 * @param {boolean} [config.isQuestionPoster] Whether the dialog from QuestionPoster (Special:Homepage)
@@ -28,7 +27,6 @@
 				save: 'onSuggestedEditSessionSave'
 			} );
 			this.logger = config.logger;
-			this.guidanceEnabled = config.guidanceEnabled;
 			this.askHelpEnabled = config.askHelpEnabled;
 			this.taskTypeId = config.taskTypeId;
 			this.panelTitleMessages = {
@@ -246,7 +244,7 @@
 				data: 'more-about-this-feature'
 			} )
 		);
-		if ( this.guidanceEnabled && this.taskTypeId ) {
+		if ( this.taskTypeId ) {
 			links.push(
 				new OO.ui.ButtonWidget( {
 					href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Suggested_edits',
@@ -287,7 +285,7 @@
 		if ( this.askHelpEnabled || mw.config.get( 'wgGEHelpPanelAskMentor' ) ) {
 			buttonIds.unshift( 'ask-help' );
 		}
-		if ( this.guidanceEnabled && this.taskTypeId ) {
+		if ( this.taskTypeId ) {
 			buttonIds.unshift( 'suggested-edits' );
 		}
 		buttonIds.forEach( ( id ) => {
@@ -362,7 +360,6 @@
 			// because of the design that has the navigation and header
 			// content of the panel with a solid constant background color.
 			taskTypeData: TASK_TYPES[ this.taskTypeId ],
-			guidanceEnabled: this.guidanceEnabled,
 			editorInterface: this.logger.getEditor(),
 			currentTip: this.suggestedEditSession.helpPanelCurrentTip,
 			parentWindow: this,
@@ -801,7 +798,7 @@
 	 */
 	HelpPanelProcessDialog.prototype.setGuidanceAutoAdvance = function ( enable ) {
 		const self = this;
-		if ( enable && this.guidanceEnabled && !this.guidanceAutoAdvanceTimer ) {
+		if ( enable && !this.guidanceAutoAdvanceTimer ) {
 			this.guidanceAutoAdvanceTimer = window.setInterval( () => {
 				// Skip if the panel is not active or not loaded yet.
 				if ( self.currentPanel !== 'suggested-edits' || !self.suggestededitsPanel.tipsPanel ) {
