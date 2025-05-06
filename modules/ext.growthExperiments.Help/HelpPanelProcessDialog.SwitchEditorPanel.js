@@ -122,7 +122,7 @@
 		if ( this.currentEditor === this.preferredEditor ) {
 			return true;
 		}
-		return ( editorModes[ this.currentEditor ] || [] ).indexOf( this.preferredEditor ) !== -1;
+		return ( editorModes[ this.currentEditor ] || [] ).includes( this.preferredEditor );
 	};
 
 	module.exports = SwitchEditorPanel;

@@ -88,7 +88,7 @@ StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
 		// * editsummary_review
 		// * editsummary_approve
 		// * editsummary_report
-		if ( [ 'save', 'review', 'approve', 'report' ].indexOf( action ) >= 0 ) {
+		if ( [ 'save', 'review', 'approve', 'report' ].includes( action ) ) {
 			SuggestionInteractionLogger.log( 'editsummary_' + action, this.getLogMetadata(), {
 				/* eslint-disable camelcase */
 				homepage_pageview_token: this.homepagePageviewToken,
@@ -177,7 +177,7 @@ StructuredTaskSaveDialog.prototype.getDialogData = function ( data ) {
 	const checkboxesByName = data.checkboxesByName || {},
 		allowList = [ checkboxesByName.wpWatchthis, checkboxesByName.wpWatchlistExpiry ];
 
-	checkboxFields = checkboxFields.filter( ( fieldLayout ) => allowList.indexOf( fieldLayout.getField() ) !== -1 );
+	checkboxFields = checkboxFields.filter( ( fieldLayout ) => allowList.includes( fieldLayout.getField() ) );
 	return Object.assign( {}, data, {
 		checkboxFields: checkboxFields
 	} );

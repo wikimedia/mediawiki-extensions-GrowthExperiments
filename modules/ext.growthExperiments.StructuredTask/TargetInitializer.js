@@ -201,7 +201,7 @@ TargetInitializer.prototype.disableContextItems = function () {
  */
 TargetInitializer.prototype.getToolsToDisable = function () {
 	const safeTools = this.safeTools;
-	return Object.keys( ve.ui.toolFactory.registry ).filter( ( toolName ) => safeTools.indexOf( toolName ) === -1 );
+	return Object.keys( ve.ui.toolFactory.registry ).filter( ( toolName ) => !safeTools.includes( toolName ) );
 };
 
 /**
@@ -223,7 +223,7 @@ TargetInitializer.prototype.disableTools = function ( toolsToDisable ) {
 TargetInitializer.prototype.disableCommands = function () {
 	const safeCommands = this.safeCommands;
 	Object.keys( ve.ui.commandRegistry.registry ).forEach( ( commandItem ) => {
-		if ( safeCommands.indexOf( commandItem ) === -1 ) {
+		if ( !safeCommands.includes( commandItem ) ) {
 			ve.ui.commandRegistry.unregister( commandItem );
 		}
 	} );

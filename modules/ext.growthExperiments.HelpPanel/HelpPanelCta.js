@@ -129,7 +129,7 @@
 			helpPanelProcessDialog.updateEditMode();
 			// If the help panel should show for the namespace, then don't detach the button
 			// and also log an impression.
-			if ( configData.GEHelpPanelReadingModeNamespaces.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 ) {
+			if ( configData.GEHelpPanelReadingModeNamespaces.includes( mw.config.get( 'wgNamespaceNumber' ) ) ) {
 				// When closing the wikitext editor, the url is only updated some time after
 				// so there is a chance that we need to log an impression event but we'll
 				// only know for sure a little later ;)

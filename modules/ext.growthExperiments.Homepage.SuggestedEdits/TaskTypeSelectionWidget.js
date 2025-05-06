@@ -151,7 +151,7 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
 		if ( this.TASK_TYPES[ taskType ].difficulty === difficulty ) {
 			checkboxes.push( this.makeCheckbox(
 				this.TASK_TYPES[ taskType ],
-				selectedTaskTypes.indexOf( this.TASK_TYPES[ taskType ].id ) !== -1
+				selectedTaskTypes.includes( this.TASK_TYPES[ taskType ].id )
 			) );
 		}
 	}

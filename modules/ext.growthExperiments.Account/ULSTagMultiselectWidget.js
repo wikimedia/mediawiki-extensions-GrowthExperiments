@@ -84,7 +84,7 @@
 		const selectedLangCodes = items.map( ( item ) => item.getData() );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( 'input[name="wplanguages[]"]' ).each( ( index, checkbox ) => {
-			$( checkbox ).prop( 'checked', selectedLangCodes.indexOf( checkbox.value ) !== -1 );
+			$( checkbox ).prop( 'checked', selectedLangCodes.includes( checkbox.value ) );
 		} );
 
 		// Show or hide the error message about selecting too many languages

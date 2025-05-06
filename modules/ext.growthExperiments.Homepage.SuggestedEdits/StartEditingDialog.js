@@ -166,7 +166,7 @@ StartEditingDialog.prototype.showingTopicSelector = function () {
 };
 
 StartEditingDialog.prototype.swapPanel = function ( panel ) {
-	if ( ( [ 'intro', 'difficulty' ].indexOf( panel ) ) === -1 ) {
+	if ( ![ 'intro', 'difficulty' ].includes( panel ) ) {
 		throw new Error( 'Unknown panel: ' + panel );
 	}
 

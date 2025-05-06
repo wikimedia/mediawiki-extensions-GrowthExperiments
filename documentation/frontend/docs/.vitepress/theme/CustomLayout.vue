@@ -44,7 +44,7 @@ if ( !isServer ) {
 	const urlParams = new URLSearchParams( window.location.search );
 	const locale = urlParams.get( 'uselang' ) || DEFAULT_LOCALE;
 
-	if ( VALID_LOCALES.indexOf( locale ) === -1 ) {
+	if ( !VALID_LOCALES.includes( locale ) ) {
 		// eslint-disable-next-line no-console
 		console.error( `Invalid locale ${ locale }. Supported locales are: ${ VALID_LOCALES.join( ', ' ) }` );
 	}

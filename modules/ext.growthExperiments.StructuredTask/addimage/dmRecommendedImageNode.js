@@ -22,7 +22,7 @@ DMRecommendedImageNode.static.matchFunction = function ( element ) {
 	// already in the article will be a match candidate. Additional class name check ensures that
 	// existing images in the article don't get treated as a suggested image.
 	const hasImage = ve.dm.BlockImageNode.static.matchFunction( element );
-	return hasImage && element.classList.indexOf( 'mw-ge-recommendedImage' ) !== -1;
+	return hasImage && element.classList.includes( 'mw-ge-recommendedImage' );
 };
 
 module.exports = DMRecommendedImageNode;

@@ -350,7 +350,7 @@ AddLinkArticleTarget.prototype.getTreeWalker = function ( doc ) {
 				// OL/UL are absent because of the weird way mwparserfromhell (the parser used
 				// by the link recommendation service) handles them, see
 				// https://github.com/earwig/mwparserfromhell/issues/46
-				[ 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TABLE', 'B', 'I', 'BLOCKQUOTE' ].indexOf( node.tagName ) !== -1
+				[ 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TABLE', 'B', 'I', 'BLOCKQUOTE' ].includes( node.tagName )
 			) {
 				return NodeFilter.FILTER_REJECT;
 			}

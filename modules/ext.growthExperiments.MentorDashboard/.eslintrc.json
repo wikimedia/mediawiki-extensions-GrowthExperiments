@@ -42,10 +42,7 @@
 			"files": [ "**/*.js" ],
 			"extends": [
 				"wikimedia/client"
-			],
-			"rules": {
-				"unicorn/prefer-includes": "off"
-			}
+			]
 		},
 		{
 			"files": [ "**/*.test.js" ],

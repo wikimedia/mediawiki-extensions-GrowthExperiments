@@ -16,8 +16,7 @@
 		"ecmaVersion": 8
 	},
 	"rules": {
-		"max-len": "off",
-		"unicorn/prefer-includes": "off"
+		"max-len": "off"
 	},
 	"settings": {
 		"jsdoc": {

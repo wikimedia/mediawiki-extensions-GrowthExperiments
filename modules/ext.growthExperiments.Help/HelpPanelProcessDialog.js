@@ -111,13 +111,13 @@
 
 		this.title.setLabel( titleMsg );
 
-		if ( ( [
+		if ( ![
 			'home',
 			'suggested-edits',
 			'general-help',
 			'ask-help',
 			'questioncomplete'
-		].indexOf( panelToSwitchTo ) ) === -1 ) {
+		].includes( panelToSwitchTo ) ) {
 			throw new Error( 'Unknown panel: ' + panelToSwitchTo );
 		}
 
@@ -832,7 +832,7 @@
 	HelpPanelProcessDialog.prototype.getDefaultPanelForSuggestedEditSession = function () {
 		function shouldDefaultToSuggestedEdits( suggestedEditSession ) {
 			const targetTaskTypes = [ 'link-recommendation' ];
-			return targetTaskTypes.indexOf( suggestedEditSession.taskType ) !== -1;
+			return targetTaskTypes.includes( suggestedEditSession.taskType );
 		}
 		if ( shouldDefaultToSuggestedEdits( this.suggestedEditSession ) ) {
 			return 'suggested-edits';
