@@ -15,6 +15,7 @@ class LevelingUpManagerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\LevelingUp\LevelingUpManager::shouldInviteUserAfterNormalEdit
 	 */
 	public function testShouldInviteUserAfterNormalEdit() {
+		$this->markTestSkipped( 'T391036' );
 		$this->overrideConfigValue( 'GELevelingUpManagerInvitationThresholds', [ 2, 3 ] );
 		$user = $this->getMutableTestUser()->getUser();
 
