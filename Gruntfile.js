@@ -21,6 +21,9 @@ module.exports = function ( grunt ) {
 			]
 		},
 		stylelint: {
+			options: {
+				cache: true
+			},
 			all: [
 				'modules/**/*.{less,vue}',
 				'documentation/frontend/{component-demos,components}/**/*.{less,vue}'
