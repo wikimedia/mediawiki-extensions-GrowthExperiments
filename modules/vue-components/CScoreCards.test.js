@@ -71,4 +71,38 @@ describe( 'ScoreCards', () => {
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );
+	it( 'displays the formatted limit in the over-limit message', () => {
+		const props = {
+			data: {
+				receivedThanksCount: 5000
+			},
+			hasIntl: true
+		};
+
+		const wrapper = mount( ScoreCards, {
+			props,
+			global: {
+				provide: {
+					RENDER_MODE: 'desktop',
+					IMPACT_MAX_EDITS: 1000,
+					IMPACT_MAX_THANKS: 2000
+				},
+				mocks: {
+					$i18n: ( key, ...args ) => ( {
+						text: () => {
+							if ( key === 'growthexperiments-homepage-impact-scores-over-limit' ) {
+								return `${ args[ 0 ] }+`;
+							}
+							return key;
+						}
+					} ),
+					$filters: {
+						convertNumber: jest.fn( ( x ) => `${ x }` )
+					}
+				}
+			}
+		} );
+
+		expect( wrapper.vm.receivedThanksCount ).toBe( '2000+' );
+	} );
 } );

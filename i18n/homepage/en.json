@@ -74,7 +74,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Total edits",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Reverted edits",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Thanks received",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "More information about how thanks works",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} is created by a community of editors like {{GENDER:|you}}. {{GENDER:|You}} may be thanked by other contributors for an edit {{GENDER:|you’ve}} made, and {{GENDER:|you}} can thank others for their edits too. The metric will only include thanks received for {{GENDER:|your}} most recent $2 edits.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} is created by a community of editors. Any contributor may be thanked by another for an edit. The number of thanks received is shown here. The metric will only include thanks received for the most recent $1 edits.",
