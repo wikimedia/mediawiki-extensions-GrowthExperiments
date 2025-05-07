@@ -33,6 +33,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			10,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			new EditingStreak(),
+			0,
 			null
 		);
 		$store->setUserImpact( $userImpact );
@@ -50,6 +51,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			20,
 			wfTimestamp( TS_UNIX, '20200102000000' ),
 			new EditingStreak(),
+			0,
 			null
 		);
 		$store->setUserImpact( $userImpact2 );
@@ -77,6 +79,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ '2020-01-01' => 1000, '2020-01-02' => 2000 ],
 			[ '2020-01-01' => [ 'Foo' => 500, 'Bar' => 500 ], '2020-01-02' => [ 'Foo' => 1000, 'Bar' => 1000 ] ],
 			new EditingStreak(),
+			0,
 			null
 		);
 		$store->setUserImpact( $expensiveUserImpact );
@@ -100,6 +103,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			10,
 			wfTimestamp( TS_UNIX, '20200101000000' ),
 			new EditingStreak(),
+			0,
 			null
 		);
 		$updatedUserImpact = new UserImpact(
@@ -113,6 +117,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			15,
 			wfTimestamp( TS_UNIX, '20200101120000' ),
 			new EditingStreak(),
+			0,
 			null
 		);
 

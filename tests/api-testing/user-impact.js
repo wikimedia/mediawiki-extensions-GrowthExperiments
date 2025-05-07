@@ -8,7 +8,7 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 
 	function getExpectedResponse() {
 		return {
-			'@version': 11,
+			'@version': 12,
 			userId: 1,
 			userName: 'Admin',
 			receivedThanksCount: 10,
@@ -30,6 +30,7 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 			lastEditTimestamp: 1661385600,
 			longestEditingStreak: '',
 			totalEditsCount: 2,
+			totalArticlesCreatedCount: 0,
 			dailyTotalViews: {
 				'2022-08-24': 1000,
 				'2022-08-25': 2000

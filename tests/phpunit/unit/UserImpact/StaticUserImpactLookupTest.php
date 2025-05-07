@@ -27,6 +27,7 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 				80,
 				wfTimestamp( TS_UNIX, '20200101000000' ),
 				new EditingStreak(),
+				0,
 				null
 			),
 			2 => new ExpensiveUserImpact(
@@ -45,6 +46,7 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 					'Bar' => [ '2022-08-24' => 30, '2022-08-25' => 40 ],
 				],
 				new EditingStreak(),
+				0,
 				null
 			),
 		];

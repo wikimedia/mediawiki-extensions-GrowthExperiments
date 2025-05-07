@@ -35,6 +35,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 				ComputeEditingStreaks::makeDatePeriod( '2022-08-24', '2022-08-25' ),
 				30
 			),
+			0,
 			125
 		);
 		$fallbackUserImpact1 = new UserImpact(
@@ -48,6 +49,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			100,
 			wfTimestamp( TS_UNIX, '20200909000000' ),
 			new EditingStreak(),
+			0,
 			null
 		);
 		$userImpact2 = new UserImpact(
@@ -61,6 +63,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			110,
 			wfTimestamp( TS_UNIX, '20220101000000' ),
 			new EditingStreak(),
+			0,
 			null
 		);
 		$this->makeJsonPage( 'User:User1/userimpact.json', [
@@ -85,6 +88,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 				],
 				'totalEditCountForPeriod' => 30
 			],
+			'totalArticlesCreatedCount' => 0,
 			'totalUserEditCount' => 125,
 		] );
 

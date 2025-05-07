@@ -43,6 +43,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			$dailyTotalViews,
 			$dailyArticleViews,
 			 new EditingStreak(),
+			0,
 			null
 		);
 		$this->assertInstanceOf( ExpensiveUserImpact::class, $userImpact );
@@ -71,6 +72,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),
+			0,
 			null
 		);
 		$data = $userImpact->jsonSerialize();
@@ -109,6 +111,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),
+			0,
 			null
 		);
 
