@@ -16,7 +16,8 @@
 			"Ykhwong",
 			"렌즈",
 			"밝은소년",
-			"Dr1t jg"
+			"Dr1t jg",
+			"아라"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -436,7 +437,7 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "취소",
 	"growthexperiments-structuredtask-summary-submit": "제출",
 	"growthexperiments-structuredtask-other-rejectionreason-placeholder": "이유 입력 (선택사항)",
-	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|당신}}이 검토하는 중에 다른 사용자가 이 문서를 편집하였으며 {{GENDER:|당신의}} 변경 내용은 게시되지 못했습니다.",
+	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|당신}}이 검토하는 중에 다른 사용자가 이 문서를 편집하였으며 {{GENDER:|당신의}} 변경사항은 게시되지 못했습니다.",
 	"growthexperiments-addimage-inspector-title": "일러스트가 없는 문서에 이미지 추가",
 	"growthexperiments-addimage-inspector-cta": "이 이미지를 문서의 시작부에 추가합니까?",
 	"growthexperiments-addimage-inspector-yes-button": "예",
