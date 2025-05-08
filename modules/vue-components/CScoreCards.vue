@@ -209,7 +209,8 @@ module.exports = exports = {
 			if ( !this.data ) {
 				return NO_DATA_CHARACTER;
 			} else if ( this.data.receivedThanksCount >= this.maxThanks ) {
-				return this.$i18n( 'growthexperiments-homepage-impact-scores-over-limit' );
+				return this.$i18n( 'growthexperiments-homepage-impact-scores-over-limit',
+					this.$filters.convertNumber( this.maxThanks ) ).text();
 			}
 			return this.$filters.convertNumber( this.data.receivedThanksCount );
 		},
