@@ -49,6 +49,10 @@ describe( 'MenteeOverview', () => {
 				}
 			}
 		} );
+		// Use a well-known window name to have the component avoid passing an anchor to CdxPopover.
+		// CdxPopover needs to be shallow rendered for reasons outlined above, and vue-test-utils
+		// is unable to stringify references holding an HTML element.
+		global.window.name = 'MenteeOverviewJestTests';
 	} );
 	it( 'it dispatches "mentees/getAllMentees" when mounted', () => {
 		shallowMount( MenteeOverview, {

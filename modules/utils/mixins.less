@@ -100,7 +100,8 @@
 */
 .codex-icon-only-button( @param-color: @color-subtle, @param-size: 20px ) {
 	// Overwrite .cdx-button:enabled color
-	&.cdx-button {
+	&.cdx-button,
+	&.cdx-toggle-button {
 		color: @param-color;
 
 		.cdx-icon {
