@@ -54,7 +54,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "ਕੁੱਲ ਸੋਧਾਂ",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "ਵਾਪਸ ਕੀਤੀਆਂ ਸੋਧਾਂ",
 	"growthexperiments-homepage-impact-scores-thanks-count": "ਧੰਨਵਾਦ ਪ੍ਰਾਪਤ ਹੋਏ",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "ਧੰਨਵਾਦ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ ਇਸ ਬਾਰੇ ਹੋਰ ਜਾਣਕਾਰੀ",
 	"growthexperiments-homepage-impact-subheader-text": "ਸਭ ਤੋਂ ਵੱਧ ਦੇਖੇ ਗਏ ({{GENDER:|ਤੁਹਾਡੇ}} ਸੋਧ ਤੋਂ ਬਾਅਦ)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "ਸਭ ਤੋਂ ਵੱਧ ਦੇਖੇ ਗਏ (ਸੋਧ ਕੀਤੇ ਜਾਣ ਤੋਂ ਬਾਅਦ)",

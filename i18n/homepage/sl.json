@@ -78,7 +78,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Skupno urejanj",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Vrnjena urejanja",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Prejete zahvale",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Več informacij o tem, kako deluje zahvala",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} ustvarja skupnost urejevalcev, kot {{GENDER:|ste}} vi. Morda se vam bodo drugi sodelavci zahvalili za urejanje, ki {{GENDER:|ste}} ga {{GENDER:|opravili}}, vi pa se lahko drugim {{GENDER:|zahvalite}} za njihova urejanja. Ta metrika bo vključevala samo zahvale, prejete za vaših zadnjih $2 urejanj.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} ustvarja skupnost urejevalcev. Vsakemu sodelujočemu se lahko drugi zahvalijo za urejanje. Število prejetih zahval je prikazano tukaj. Metrika  vključuje samo zahvale, prejete za zadnjih $1 urejanj.",

@@ -86,7 +86,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Sammanlagda redigeringar",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Återställda redigeringar",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Mottagna tack",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Mer information om hur \"tack\" fungerar",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} skapas av en gemenskap av redigerare som {{GENDER:|du}}. {{GENDER:|Du}} kan tackas av andra bidragsgivare för en redigering du {{GENDER:|gjort}}, och {{GENDER:|du}} kan också tacka andra för deras redigeringar. Mätvärdet inkluderar bara mottagna tack för dina senaste $2 redigeringar.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} skapas av en gemenskap av redigerare. Alla bidragsgivare kan tackas av andra för en redigering. Antalet mottagna tack visas här. Mätvärdet inkluderar bara mottagna tack för dina senaste $1 redigeringar.",

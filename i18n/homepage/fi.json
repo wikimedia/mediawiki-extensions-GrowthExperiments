@@ -86,7 +86,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Muokkauksia yhteensä",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Kumotut muokkaukset",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Saadut kiitokset",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Lisätietoa kiittämistoiminnosta",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} on {{GENDER:|sinun}} kaltaistesi muokkaajien tekemä. Muut muokkaajat voivat kiittää {{GENDER:|sinua muokkauksistasi}}, ja {{GENDER:|sinä voit}} myös kiittää muita muokkaajia heidän muokkauksistaan. Mittari laskee kiitokset ainoastaan viimeisimmästä $2 muokkauksestasi.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} on muokkaajayhteisön tekemä. Muokkaajat voivat kiittää toisia heidän muokkauksistaan. Saatujen kiitosten määrä näytetään tässä. Mittari laskee kiitokset ainoastaan viimeisimmästä $1 muokkauksesta.",

@@ -117,7 +117,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Contribuciones",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Ediciones revertidas",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Agradecimientos recibidos",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Información sobre el funcionamiento de Agradecer",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} se hace por una comunidad de personas editoras como {{GENDER:|tú}}. {{GENDER:|Podrías}} recibir un agradecimiento por parte de otra persona por alguna de {{GENDER:|tus ediciones}}, al igual que {{GENDER:|tú}} puedes agradecer a los demás por sus ediciones más recientes $2.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} es creado por una comunidad de personas editoras. Cualquier de ellas puede ser agradecida por otra por una de sus ediciones. Aquí se muestra el número de agradecimientos recibidos. La métrica solo incluye los agradecimientos recibidos por sus ediciones más recientes $1.",

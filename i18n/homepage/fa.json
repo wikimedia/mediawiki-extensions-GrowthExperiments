@@ -87,7 +87,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "مجموع ویرایش‌ها",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "ویرایش‌های برگردانده‌شده",
 	"growthexperiments-homepage-impact-scores-thanks-count": "تشکرهای دریافتی",
-	"growthexperiments-homepage-impact-scores-over-limit": "+۹۹۹",
+	"growthexperiments-homepage-impact-scores-over-limit": "+$1",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "اطلاعات بیشتر پیرامون چگونگی عملکرد تشکر",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} توسط اجتماعی از ویرایشگرانی مانند {{GENDER:|شما}} ایجاد شده است. مشارکت‌کنندگان دیگر می‌توانند از {{GENDER:|شما}} بابت ویرایشی که {{GENDER:|انجام دادید}} تشکر کنند و {{GENDER:|شما}} نیز می‌توانید از دیگران برای ویرایش‌هایشان تشکر کنید.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} توسط اجتماعی از ویرایشگران ساخته شده است. هر مشارکت‌کننده‌ای می‌تواند بابت یک ویرایش از دیگران تشکر دریافت کند. تعداد تشکرهای دریافتی در اینجا نمایش یافته است.",

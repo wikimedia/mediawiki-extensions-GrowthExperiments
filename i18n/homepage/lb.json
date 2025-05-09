@@ -78,7 +78,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Total vun den Ännerungen",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Zréckgesaten Ännerungen",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Mercie kritt",
-	"growthexperiments-homepage-impact-scores-over-limit": "méi wéi 999",
+	"growthexperiments-homepage-impact-scores-over-limit": "méi wéi $1",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Méi Informatiounen doriwwer, wéi Mercie funktionéieren",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Méi Informatiounen iwwer de längste Laf",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:|Ären}} aktuell längste Laf ass $2 {{PLURAL:$2|Dag|Deeg}} a gouf am Zäitraum $3 erreecht.",

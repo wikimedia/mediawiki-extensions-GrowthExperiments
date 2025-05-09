@@ -80,7 +80,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Toplam redaktə sayı",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Geri qaytarılmış redaktələr",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Qəbul edilən təşəkkürlər",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Təşəkkürün necə işlədiyi haqqında ətraflı məlumat",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} {{GENDER:|sizin}} kimi redaktorlar icması tərəfindən yazılır.\nEtdiyiniz redaktəyə görə digər istifadəçilər sizə təşəkkür edə bilər və başqalarının redaktəsinə görə də siz təşəkkür edə bilərsiniz. Bu saya sadəcə son $2 redaktəyə alınan təşəkkürlər aiddir.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} redaktorlar icması tərəfindən yaradılmışdır. İstənilən redaktora etdiyi redaktə üçün başqası təşəkkür edə bilər. Alınan təşəkkürlərin sayı burada göstərilir. Bu saya sadəcə son $1 redaktəyə alınan təşəkkürlər aiddir.",

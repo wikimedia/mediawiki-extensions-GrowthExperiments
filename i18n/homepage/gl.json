@@ -77,7 +77,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Edicións totais",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Edicións desfeitas",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Agradecementos recibidos",
-	"growthexperiments-homepage-impact-scores-over-limit": "+999",
+	"growthexperiments-homepage-impact-scores-over-limit": "+$1",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Máis información sobre como funcionan os agradecementos",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "Unha comunidade de editores coma {{GENDER:|ti}} crea {{SITENAME}}. Poderás recibir agradecementos polas túas edicións e tamén poderás enviar o agradecementos aos demais. Só se inclúen os agradecementos recibidos polas túas $2 edicións máis recentes.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "Unha comunidade de editores crea {{SITENAME}}. Calquera colaborador pode recibir agradecementos polas súas edición. Aquí se amosan os agradecementos recibidos. Só se inclúen os agradecementos recibidos polas $1 edicións máis recentes.",
