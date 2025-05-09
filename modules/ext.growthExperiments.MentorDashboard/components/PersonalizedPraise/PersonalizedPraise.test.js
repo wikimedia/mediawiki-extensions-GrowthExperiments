@@ -62,12 +62,19 @@ describe( 'PersonalizedPraise', () => {
 				}
 			}
 		} );
+		// Use a well-known window name to have the component avoid passing an anchor to CdxPopover.
+		// CdxPopover needs to be shallow rendered for reasons outlined above, and vue-test-utils
+		// is unable to stringify references holding an HTML element.
+		global.window.name = 'PersonalizedPraiseJestTests';
 	} );
 
 	it( 'NoResult when no mentees', () => {
 		hasData = false;
 		const wrapper = mount( PersonalizedPraise, {
 			global: {
+				stubs: {
+					CdxPopover: true
+				},
 				provide: {
 					$log: jest.fn()
 				},
