@@ -67,6 +67,25 @@
 
 		const clientSideLoadDuration = mw.now() - initTime, // Time since module init
 			serverDuration = mw.now() - mw.config.get( 'GEHomepageStartTime' );
+		// TODO: Remove the log of additional data for T382003
+		mw.trackSubscribe( 'error.caught', ( _topic, err ) => {
+			if ( /mediawiki_GrowthExperiments_suggested_edits/.test( err.message ) ) {
+				const geHomepageStartTime = mw.config.get( 'GEHomepageStartTime' );
+				// eslint-disable-next-line camelcase
+				err.error_context = {
+					serverDuration: serverDuration,
+					serverDurationType: typeof serverDuration,
+					GEHomepageStartTime: geHomepageStartTime,
+					GEHomepageStartTimeType: typeof geHomepageStartTime
+				};
+				err.message = err.message + ' [Additional data]';
+				mw.errorLogger.logError(
+					err,
+					'error.growthexperiments'
+				);
+
+			}
+		} );
 		// Track the TTI on client-side.
 		mw.track(
 			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.' +
@@ -83,37 +102,23 @@
 			}
 		);
 
-		try {
-			// Track the server side render start time (first line in SpecialHomepage#execute()) to
-			// TTI on client-side.
-			mw.track(
-				'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.serverSideStartInclusive.' +
+		// Track the server side render start time (first line in SpecialHomepage#execute()) to
+		// TTI on client-side.
+		mw.track(
+			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.serverSideStartInclusive.' +
 				( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
-				serverDuration
-			);
-			mw.track(
-				'stats.mediawiki_GrowthExperiments_suggested_edits_server_tti_seconds',
-				serverDuration,
-				{
-					platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
-					// eslint-disable-next-line camelcase
-					includes_server_response_time: true
-				}
-			);
-		} catch ( err ) {
-			const geHomepageStartTime = mw.config.get( 'GEHomepageStartTime' );
-			// eslint-disable-next-line camelcase
-			err.error_context = {
-				serverDuration: serverDuration,
-				serverDurationType: typeof serverDuration,
-				GEHomepageStartTime: geHomepageStartTime,
-				GEHomepageStartTimeType: typeof geHomepageStartTime
-			};
-			mw.errorLogger.logError(
-				err,
-				'error.growthexperiments'
-			);
-		}
+			serverDuration
+		);
+		mw.track(
+			'stats.mediawiki_GrowthExperiments_suggested_edits_server_tti_seconds',
+			serverDuration,
+			{
+				platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
+				// eslint-disable-next-line camelcase
+				includes_server_response_time: true
+			}
+		);
+
 		return $.Deferred().resolve();
 	}
 
