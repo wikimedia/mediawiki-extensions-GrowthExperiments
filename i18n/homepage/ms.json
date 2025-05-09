@@ -78,7 +78,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Jumlah suntingan",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Suntingan terbatal",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Ucapan terima kasih yang diterima",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Maklumat lanjut tentang bagaimana terima kasih berfungsi",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} dicipta oleh komuniti penyunting seperti {{GENDER:|anda}}. {{GENDER:|Anda}} mungkin diberi penghargaan oleh penyumbang lain atas suntingan yang {{GENDER:|anda telah}} buat dan {{GENDER:|anda}} juga boleh berterima kasih kepada orang lain atas suntingan mereka juga. Metrik ini hanya akan merangkumi ucapan terima kasih yang diterima untuk $2 suntingan terbaharu {{GENDER:|anda}}.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} dicipta oleh komuniti penyunting. Mana-mana penyumbang boleh diberi penghargaan oleh yang lain untuk setiap suntingan. Jumlah terima kasih yang diterima ditunjukkan di sini. Metrik ini hanya akan menyertakan ucapan terima kasih yang diterima untuk $1 suntingan terbaharu.",

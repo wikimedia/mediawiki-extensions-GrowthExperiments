@@ -86,7 +86,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Разом редагувань",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Відкочені редагування",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Отримано подяк",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Детальніше про те, як працюють подяки",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} твориться спільнотою таких редакторів, як {{GENDER:|ви}}. Інші учасники можуть подякувати вам за редагування, яке ви зробили, і ви також можете подякувати іншим за їхні редагування. Статистика включає лише подяки, отримані за {{PLURAL:$2|ваше $2 найсвіжіше редагування|ваші $2 найсвіжіші редагування|ваші $2 найсвіжіших редагувань}}.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} твориться спільнотою редакторів. Будь-який дописувач може отримати подяку за редагування. Тут показано кількість отриманих подяк. Статистика включає лише подяки, отримані за ваші $1 найсвіжіших редагувань.",

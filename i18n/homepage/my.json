@@ -75,7 +75,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "စုစုပေါင်း တည်းဖြတ်မှုများ",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "နောက်ပြန် တည်းဖြတ်မှုများ",
 	"growthexperiments-homepage-impact-scores-thanks-count": "ကျေးဇူးစကား လက်ခံရရှိ",
-	"growthexperiments-homepage-impact-scores-over-limit": "၉၉၉+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}}သည် {{GENDER:|သင်}}ကဲ့သို့သော တည်းဖြတ်သူ အသိုင်းအဝိုင်းမှတဆင့် ဖန်တီးခြင်းဖြစ်သည်။ {{GENDER:|သင်}}ပြုလုပ်ခဲ့သော တည်းဖြတ်မှုအတွက် အခြားပံ့ပိုးသူများထံမှ ကျေးဇူးတင်စကား လက်ခံရရှိနိုင်ပါသည်၊ သင်လည်း အခြားတည်းဖြတ်သူများကို ကျေးဇူးတင်နိုင်ပါသည်။ လတ်တလောအဖြစ်ဆုံး $2 တည်းဖြတ်မှုများကိုသာ ပြသပါမည်။",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "ဤသည်မှာ အနည်းဆုံး တည်းဖြတ်မှုတခုကို {{GENDER:|သင်}}ရက်ပေါင်းအများဆုံးတည်းဖြတ်ခဲ့သည့် အရေအတွက်ဖြစ်သည်။ သင်၏ မကြာသေးခင်က $2 တည်းဖြတ်မှုများကိုသာ ထင်ဟပ်မည်ဖြစ်ပါသည်။",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "ဤသည်မှာ အနည်းဆုံး တည်းဖြတ်မှုတခုကို ရက်ပေါင်းအများဆုံးတည်းဖြတ်ခဲ့သည့် အရေအတွက်ဖြစ်သည်။ သင်၏ မကြာသေးခင်က $1 တည်းဖြတ်မှုများကိုသာ ထင်ဟပ်မည်ဖြစ်ပါသည်။",

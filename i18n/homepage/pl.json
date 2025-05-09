@@ -90,7 +90,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Łączna liczba edycji",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Wycofane edycje",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Otrzymane podziękowania",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Więcej informacji o tym, jak działają podziękowania",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} jest tworzona przez społeczność edytorów, takich jak {{GENDER:|Ty}}. Inni użytkownicy mogą podziękować {{GENDER:|Ci}} za {{GENDER:|Twój}} wkład. Również {{GENDER:|Ty}} możesz podziękować innym za ich zmiany. Ta wartość odzwierciedla wyłącznie podziękowania za $2 {{PLURAL:$2|Twoją najnowszą edycję|Twoje najnowsze edycje|Twoich najnowszych edycji}}.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} jest tworzona przez społeczność edytorów. Każdy współautor może otrzymać od innego podziękowania za edycję. Tutaj pokazana jest liczba otrzymanych podziękowań. Ta wartość odzwierciedla wyłącznie podziękowania za $1 {{PLURAL:$1|Twoją najnowszą edycję|Twoje najnowsze edycje|Twoich najnowszych edycji}}.",

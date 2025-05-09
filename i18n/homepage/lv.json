@@ -75,7 +75,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Labojumi kopā",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Atceltie labojumi",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Saņemtās pateicības",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Plašāka informācija par to, kā darbojas pateciības",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Šis ir lielākais dienu skaits pēc kārtas ar vismaz vienu {{GENDER:|tevis}} veiktu labojumu. Šī metrika atspoguļos rediģēšanas sērijas tikai pēdējos $2 veiktajos labojumos.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Šis ir lielākais dienu skaits pēc kārtas ar vismaz vienu veiktu labojumu. Šī metrika atspoguļos rediģēšanas sērijas tikai pēdējos $1 veiktajos labojumos.",

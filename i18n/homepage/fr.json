@@ -112,7 +112,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Total des modifications",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Modifications annulées",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Remerciements reçus",
-	"growthexperiments-homepage-impact-scores-over-limit": ">999",
+	"growthexperiments-homepage-impact-scores-over-limit": ">$1",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Plus d’informations sur le fonctionnement des remerciements",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} est créé par une communauté de contributeurs comme vous. Vous pouvez être remercié{{GENDER:||e}} par d’autres contributeurs pour une modification que vous avez effectuée et vous pouvez également remercier les autres pour leurs modifications. Cette métrique n’inclura que les remerciements reçus pour vos $2 dernières modifications.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} est créé par une communauté de contributeurs. Chacun d’eux peut être remercié par un autre pour ses modifications. Le nombre de remerciements reçus est indiqué ici. La métrique n’inclura que les remerciements reçus pour vos $1 dernières modifications.",

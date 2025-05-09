@@ -76,7 +76,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "سەرجەمی دەستکارییەکان",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "دەستکارییە گەڕێندراوەکان",
 	"growthexperiments-homepage-impact-scores-thanks-count": "سوپاسە وەرگیراوەکان",
-	"growthexperiments-homepage-impact-scores-over-limit": "+٩٩٩",
+	"growthexperiments-homepage-impact-scores-over-limit": "+$1",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "زانیاریی زیاتر لەسەر ئەوەی کە چۆن سپاسکردن کار دەکات",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} لەلایەن کۆمەڵێک دەستکاریکەری وەک {{GENDER:|تۆ}} دروست کراوە. لەوانەیە لەلایەن بەشداربووانی ترەوە بۆ دەستکارییەک کە {{GENDER:|تۆ}} کردووتە سپاس بکرێیت، و {{GENDER:|تۆش}} دەتوانیت لەبەر دەستکارییەکانیان سپاسی ئەوان بکەیت. پێوەرەکە تەنھا ئەو سپاسانە دەگرێتە خۆ کە لە دوایین $2 {{GENDER:|دەستکاریت}} وەرگیراون.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} لەلایەن کۆمەڵگەیەک لە دەستکاریکەران دروست کراوە. لەوانەیە ھەر بەشداریکەرێک لەبەر دەستکارییەکی لەلایەنی یەکێکی ترەوە سپاسی بکرێت. ژمارەی سپاسە وەرگیراوەکان لێرە پیشان دراوە. پێوەرەکە تەنھا ئەو سپاسانە دەگرێتە خۆ کە بۆ دوایین $1 دەستکاری کراون.",

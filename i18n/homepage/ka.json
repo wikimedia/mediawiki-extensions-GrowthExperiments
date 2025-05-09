@@ -78,7 +78,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "სულ რედაქტირებები",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "გაუქმებული რედაქტირებები",
 	"growthexperiments-homepage-impact-scores-thanks-count": "მიღებული მადლობები",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "მეტი ინფორმაცია იმის შესახებ, თუ როგორ მუშაობს მადლობა",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} შექმნილია თქვენნაირი რედაქტორების საზოგადოების მიერ. {{GENDER:|თქვენ}} მიერ განხორციელებული რედაქტირებისათვის, შეიძლება, მადლობა გადაგიხადონ სხვა რედაქტორებმა. ასევე, {{GENDER:|თავადაც}} შეგიძლიათ სხვებს გადაუხადოთ მადლობა მათი რედაქტირებისთვის. სტატისტიკა მოიცავს მიღებულ მადლობებს {{GENDER:|თქვენი}} უახლესი $2 რედაქტირებისთვის.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} შექმნილია რედაქტორთა საზოგადოების მიერ. ნებისმიერ რედაქტორს შესაძლოა სხვამ მადლობა გადაუხადოს რედაქტირებისთვის. მიღებული მადლობის რაოდენობა ნაჩვენებია აქ. სტატისტიკა მოიცავს მიღებულ მადლობებს უახლესი $2 რედაქტირებისთვის. ეს მაჩვენებელი მოიცავს მხოლოდ ბოლო $1 რედაქტირებისათვის მიღებულ მადლობებს.",

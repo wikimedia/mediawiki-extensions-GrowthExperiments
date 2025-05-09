@@ -98,7 +98,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Toplam değişiklik",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Geri alınan değişiklikler",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Alınan teşekkürler",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Teşekkürün nasıl çalıştığı hakkında daha fazla bilgi",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} sizin gibi bir kullanıcı topluluğu tarafından oluşturulmaktadır. {{GENDER:|}}Yaptığınız bir değişiklik için başkaları size teşekkür edebilir ve siz de başkalarının değişiklikleri için onlara teşekkür edebilirsiniz. Ölçüm sadece en son $2 değişikliğiniz için alınan teşekkürleri içerir.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} bir kullanıcı topluluğu tarafından oluşturulmuştur. Katkıda bulunan herhangi bir kişiye yaptığı bir değişiklik için teşekkür edilebilir. Alınan teşekkür sayısı burada gösterilir. Ölçüm sadece en son $1 değişiklik için alınan teşekkürleri içerir.",

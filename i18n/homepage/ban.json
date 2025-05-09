@@ -75,7 +75,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Total uahan",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Uliang uahan",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Suksma katarima",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Informasi lantur indik cara ngaé suksma",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Informasi lantur indik ''streak'' paling lantang",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:|Ragané}} ané pinih dawa mangkin nika $2 {{PLURAL:$2|dina}} ané {{GENDER:|ragané}} bakatang antara $3.",

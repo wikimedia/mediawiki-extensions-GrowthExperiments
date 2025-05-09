@@ -82,7 +82,7 @@
 	"growthexperiments-homepage-impact-scores-edit-count": "Editări totale",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Editări anulate",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Mulțumiri primite",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Mai multe informații despre cum funcționează mulțumirile",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} este creată de o comunitate de editori precum {{GENDER:|dvs}}. {{GENDER:|Puteți}} primi mulțumiri din partea altui {{GENDER:|contribuitor}} pentru o editare pe care ați efectuat-o, dar și {{GENDER:|dvs.}} le puteți mulțumi altora pentru editările lor. Măsura va include numai mulțumirile primite pentru ultimele {{GENDER:|voastre}} $2 modificări.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} este creată de o comunitate de editori. Oricare colaborator poate primi mulțumiri de la altul pentru o editare. Numărul de mulțumiri primite este afișat aici. Măsura va include numai mulțumirile primite pentru ultimele $1 modificări.",

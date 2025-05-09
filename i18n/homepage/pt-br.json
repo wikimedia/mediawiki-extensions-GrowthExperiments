@@ -93,7 +93,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Visualizações de artigos editados",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total de edições",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Agradecimentos recebidos",
-	"growthexperiments-homepage-impact-scores-over-limit": "999+",
+	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Mais informações sobre como funcionam os Agradecimentos",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} é criado por uma comunidade de editores. Qualquer contribuidor pode ser agradecido por outro por uma edição. O número de agradecimentos recebidos é mostrado aqui.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Este é o maior número de dias consecutivos em que pelo menos uma edição foi feita.",
