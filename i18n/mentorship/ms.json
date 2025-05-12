@@ -13,7 +13,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Jadual tersebut memerlukan JavaScript. Sila dayakan JavaScript supaya dapat menggunakan modul ini.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Siapakah yang terdapat di jadual {{GENDER:|anda}}?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Maklumat lanjut tentang siapa yang berada dalam jadual {{GENDER:|anda}}.",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Jadual ini menunjukkan menti{{GENDER:|anda}} yang akaunnya telah dicipta dalam tempoh dua minggu yang lalu atau yang telah menyunting dalam tempoh enam bulan yang lalu dan mempunyai [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH halaman utama pendatang baru yang didayakan]. Data dikemas kini setiap tiga jam.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Jadual ini menunjukkan menti{{GENDER:|anda}} yang akaunnya telah dicipta dalam tempoh dua minggu yang lalu atau yang telah menyunting dalam tempoh enam bulan yang lalu dan mempunyai [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH laman pemula pengguna baharu yang didayakan]. Data dikemas kini setiap tiga jam.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Petunjuk",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Tandakan menti",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nama pengguna",
