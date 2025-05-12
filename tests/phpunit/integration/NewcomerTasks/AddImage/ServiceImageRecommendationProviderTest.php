@@ -27,6 +27,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
 use Wikimedia\Stats\Metrics\TimingMetric;
 use Wikimedia\Stats\StatsFactory;
+use Wikimedia\Stats\StatsUtils;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider
@@ -140,6 +141,10 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	 * @covers ::get
 	 */
 	public function testGet_instrumentation( TaskType $taskType ) {
+		$this->markTestSkipped(
+			'Skipped until MediaWiki change I8f2a361be342141a4c388a0e3771ea8ee4063016 is merged'
+		);
+
 		$titleFactory = $this->getTitleFactory();
 		$url = 'http://example.com';
 		$wikiProject = 'wikipedia';
@@ -178,7 +183,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 
 		$provider->get( new TitleValue( NS_MAIN, '15' ), $taskType );
 
-		$taskTypeFilter = 'task_type=' . $taskType->getId();
+		$taskTypeFilter = 'task_type=' . StatsUtils::normalizeString( $taskType->getId() );
 		$requestSelector = "GrowthExperiments.image_recommendation_provider_seconds{action=get,$taskTypeFilter}";
 		$this->assertSame(
 			1,
