@@ -141,10 +141,6 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	 * @covers ::get
 	 */
 	public function testGet_instrumentation( TaskType $taskType ) {
-		$this->markTestSkipped(
-			'Skipped until MediaWiki change I8f2a361be342141a4c388a0e3771ea8ee4063016 is merged'
-		);
-
 		$titleFactory = $this->getTitleFactory();
 		$url = 'http://example.com';
 		$wikiProject = 'wikipedia';
