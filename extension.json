@@ -1488,7 +1488,8 @@
 				"growthexperiments-structuredtask-user-error-login-cta",
 				"colon-separator",
 				"comma-separator",
-				"growthexperiments-addimage-caption-warning-tooshort"
+				"growthexperiments-addimage-caption-warning-tooshort",
+				"growthexperiments-addlink-done-button"
 			],
 			"dependencies": [
 				"mediawiki.language",

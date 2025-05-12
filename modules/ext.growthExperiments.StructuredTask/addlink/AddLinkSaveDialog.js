@@ -129,6 +129,14 @@ AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
 			skippedCount += !!state.skipped;
 		} );
 
+		// Change button label to "Done" if at least one suggestion is rejected and none are accepted
+		if ( rejectedCount > 0 && acceptedCount === 0 ) {
+			const saveButton = this.actions.get( { actions: 'save' } ).pop();
+			if ( saveButton ) {
+				saveButton.setLabel( mw.message( 'growthexperiments-addlink-done-button' ).text() );
+			}
+		}
+
 		this.updateSummary( annotationStates );
 		// Edit summary will be localized in the content language via FormatAutocomments hook
 		this.editSummaryInput.setValue(

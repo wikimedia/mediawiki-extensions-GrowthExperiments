@@ -237,5 +237,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-label": "Field label for Suggested Edits in Community configuration. \"Underlinked\" means that an article doesn't have enough links.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Help text for Suggested Edits in Community configuration.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Field label for Suggested Edits in Community configuration",
-	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Help text for Suggested Edits in Community configuration."
+	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Help text for Suggested Edits in Community configuration.",
+	"growthexperiments-addlink-done-button": "Label for the completion button in the AddLink dialog when the user has rejected at least one link suggestion and accepted none. This replaces the default 'Publish changes' label in this specific scenario."
 }
