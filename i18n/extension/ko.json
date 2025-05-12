@@ -4,7 +4,8 @@
 			"Bluehill",
 			"MemphisA5",
 			"Revi",
-			"Ykhwong"
+			"Ykhwong",
+			"아라"
 		]
 	},
 	"growthexperiments-desc": "이 확장 기능은 성장 팀의 실험적인 기능을 포함합니다.",
@@ -24,7 +25,7 @@
 	"growthexperiments-edit-config-feedback-cta": "의견 남기기",
 	"growthexperiments-edit-config-error-invalid-title": "구성 페이지가 제대로 구성되지 않았습니다",
 	"growthexperiments-edit-config-edit-summary": "편집 요약",
-	"growthexperiments-edit-config-config-changed": "구성이 변경되었습니다. 변경 사항이 적용되려면 몇 분 정도 기다려야 할 수 있습니다.",
+	"growthexperiments-edit-config-config-changed": "구성이 변경되었습니다. 변경사항이 적용되려면 몇 분 정도 기다려야 할 수 있습니다.",
 	"growthexperiments-edit-config-return-to-form": "편집 양식으로 [[Special:EditGrowthConfig|다시 돌아갈]] 수 있습니다.",
 	"growthexperiments-edit-config-help-panel": "도움말 패널 설정",
 	"growthexperiments-edit-config-help-panel-description": "도움말 패널은 아래의 구성에 따라 읽기 모드나 편집 모드로 모든 이름공간에서 사용할 수 있습니다. 도움말 검색 기능, 도움말 링크 클릭, 멘토나 질문방에 질문하기가 포함됩니다.",
