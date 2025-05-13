@@ -33,7 +33,7 @@ For example by appending the following, though you may need to adjust the path f
 require "$IP/extensions/GrowthExperiments/cypress/support/setupFixtures/GrowthExperiments.LocalSettings.php";
 ```
 
-Next, prepare your local system by executing the `cypress/support/PrepareBrowserTestss.php` maintenance script.
+Next, prepare your local system by executing the `maintenance/PrepareBrowserTests.php` maintenance script.
 This will import some pages and recommendations into the system.
 
 Then open Cypress's GUI with this command:
