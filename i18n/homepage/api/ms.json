@@ -4,7 +4,7 @@
 			"Hakimi97"
 		]
 	},
-	"apihelp-homepagequestionstore-summary": "Dapatkan soalan berformat yang disiarkan melalui modul halaman utama",
+	"apihelp-homepagequestionstore-summary": "Dapatkan soalan berformat yang disiarkan melalui modul laman pemula",
 	"apihelp-homepagequestionstore-param-questionformat": "Format untuk mengembalikan soalan, cth HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Lokasi penyimpanan soalan.",
 	"apihelp-homepagequestionstore-param-userid": "ID pengguna untuk mendapatkan soalan.",

@@ -197,7 +197,7 @@
 	"growthexperiments-specialimpact-invalid-username": "Eksik veya geçersiz kullanıcı adı.",
 	"growthexperiments-specialimpact-invalid-inclusion-without-username": "\"Etki\" özel sayfasını eklerken ilk değişken olarak bir kullanıcı adı sağlanmalıdır.",
 	"growthexperiments-homepage-claimmentee-no-user": "Danışmanlığı yapılan kullanıcı yok",
-	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Siz}} zaten danışmansınız {{GENDER:$1|$1}}",
+	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Siz}} zaten {{GENDER:$1|$1}} kullanıcısının danışmanısınız",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} danışmanlıktan ayrıldı",
 	"growthexperiments-homepage-enable-preference": "Yeni gelen anasayfayı etkinleştirmek için, [[Special:Preferences#mw-prefsection-personal-homepage|Tercihler]]'deki \"Yeni gelen düzenleyici özellikleri\" ayarlarınızı ziyaret edin.",
 	"growthexperiments-homepage-contributions-zero-title": "Henüz herhangi bir katkıda {{GENDER:$1|bulunmadınız}}.",

@@ -514,7 +514,7 @@
 	"growthexperiments-addimage-loading-title": "Ladataan kuvan esikatselua...",
 	"growthexperiments-addimage-submitting-title": "Lähetetään...",
 	"growthexperiments-addimage-caption-info-dialog-message": "Artikkelin <strong>$1</strong> lukijat näkevät kuvan alla kuvatekstin.",
-	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "Kirjoita tämän artikkelin kielellä: $1 .",
+	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "Kirjoita tämän artikkelin kielellä: $1.",
 	"growthexperiments-addimage-caption-info-dialog-confirm": "Selvä",
 	"growthexperiments-addimage-caption-help-button": "Apua kuvatekstin kirjoittamiseen",
 	"growthexperiments-structuredtask-user-error": "Emme voineet julkaista {{GENDER:|muutoksiasi}} koska {{GENDER:|et}} ole enää kirjautuneena sisään. Kirjaudu sisään ja yritä uudestaan.",

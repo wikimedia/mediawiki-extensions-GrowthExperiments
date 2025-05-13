@@ -9,7 +9,8 @@
 			"Revi",
 			"Sadopaul",
 			"Ykhwong",
-			"밝은소년"
+			"밝은소년",
+			"YeBoy371"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "편집 도움말 패널 활성화하기",
@@ -41,7 +42,7 @@
 	"growthexperiments-help-panel-postedit-suggestededits-info": "{{SITENAME}}의 다른 사용자가 작업이 필요한 문서를 찾았습니다. 제안된 이 편집을 둘러보면서 편집을 계속 이어나가세요.",
 	"growthexperiments-help-panel-questionreview-title": "질문방에 질문하기",
 	"growthexperiments-help-panel-questionreview-title-mentor": "내 멘토에게 질문하기",
-	"growthexperiments-help-panel-questionreview-header": "질문을 제출하면, 질문이 \"$2\" 계정명으로 $1에 <strong>공개적으로 게시</strong>되며, 다른 자원봉사자들이 며칠 안에 답변을 드리고자 노력할 것입니다.",
+	"growthexperiments-help-panel-questionreview-header": "질문을 제출하면, 질문이 \"$2\" 계정명으로 $1에 <strong>공개적으로 게시</strong>되며, 다른 지원자들이 며칠 안에 답변을 드리고자 노력할 것입니다.",
 	"growthexperiments-help-panel-questionreview-label": "질문",
 	"growthexperiments-help-panel-questionreview-include-article-title": "내 질문에 문서 제목을 포함",
 	"growthexperiments-help-panel-question-subject-template": "도움말 패널 질문",
