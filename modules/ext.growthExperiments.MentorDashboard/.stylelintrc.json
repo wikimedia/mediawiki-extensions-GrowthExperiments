@@ -4,6 +4,7 @@
 		"stylelint-config-recommended-vue"
 	],
 	"rules": {
-		"selector-class-pattern": "^ext-growthExperiments-"
+		"selector-class-pattern": "^ext-growthExperiments-",
+		"declaration-no-important": null
 	}
 }
