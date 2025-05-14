@@ -409,6 +409,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "其他",
 	"growthexperiments-addlink-rejectiondialog-action-done": "完成",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "选择链接不佳的原因",
+	"growthexperiments-addlink-single-recommendation-title": "添加建议链接",
 	"growthexperiments-addlink-onboarding-content-intro-title": "添加链接将帮助人们更快速地了解事物。",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|您}}将决定一个{{SITENAME}}条目中的词是否应该链接到其他{{SITENAME}}条目。",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "例句",
