@@ -302,7 +302,7 @@ class FixLinkRecommendationData extends Maintenance {
 			->getCounter( 'link_recommendation_dangling_entries' )
 			->setLabel( 'type', $type )
 			->setLabel( 'wiki', $wiki )
-			->setLabel( 'fix-word', $fixWord )
+			->setLabel( 'fix_word', $fixWord )
 			->copyToStatsdAt( "$wiki.growthexperiments.$fixWord.link-recommendation.$type" )
 			->incrementBy( $count );
 	}
