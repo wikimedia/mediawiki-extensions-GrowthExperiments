@@ -159,7 +159,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$userOptionsLookupMock,
 			$linkRecommendationFilter,
 			$imageRecommendationFilter,
-			$this->createMock( StatsFactory::class ),
+			StatsFactory::newNull(),
 			$this->createMock( ITopicRegistry::class )
 		) extends SuggestedEdits {
 
