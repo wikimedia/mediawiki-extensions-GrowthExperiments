@@ -207,10 +207,9 @@ class UserImpact implements JsonSerializable {
 
 	/**
 	 * Helper method for newFromJsonArray.
-	 * @return UserImpact
 	 */
 	protected static function newEmpty(): self {
-		return new UserImpact(
+		return new self(
 			new UserIdentityValue( 0, '' ),
 			0,
 			0,
@@ -227,11 +226,9 @@ class UserImpact implements JsonSerializable {
 	}
 
 	/**
-	 * @param array $json
-	 * @return UserImpact
 	 * @throws ParameterAssertionException when trying to load an incompatible old JSON format.
 	 */
-	public static function newFromJsonArray( array $json ): UserImpact {
+	public static function newFromJsonArray( array $json ): self {
 		if ( array_key_exists( 'dailyTotalViews', $json ) ) {
 			$userImpact = ExpensiveUserImpact::newEmpty();
 		} elseif ( array_key_exists( 'topViewedArticles', $json ) ) {

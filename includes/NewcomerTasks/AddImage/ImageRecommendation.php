@@ -25,11 +25,9 @@ class ImageRecommendation implements Recommendation, JsonSerializable {
 	/**
 	 * Create an ImageRecommendation object from an array representation.
 	 * This is the inverse of toArray().
-	 * @param array $recommendationData
-	 * @return self
 	 */
-	public static function fromArray( array $recommendationData ): ImageRecommendation {
-		return new ImageRecommendation(
+	public static function fromArray( array $recommendationData ): self {
+		return new self(
 			new TitleValue( $recommendationData['titleNamespace'], $recommendationData['titleText'] ),
 			array_map( [ ImageRecommendationImage::class, 'fromArray' ], $recommendationData['images'] ),
 			$recommendationData['datasetId']
