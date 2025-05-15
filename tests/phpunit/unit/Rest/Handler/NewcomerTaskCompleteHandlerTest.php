@@ -201,7 +201,7 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 			$this->createMock( IConnectionProvider::class ),
 			$userIdentityUtils,
 			$this->createMock( ChangeTagsStore::class ),
-			$this->createNoOpMock( StatsFactory::class ),
+			StatsFactory::newNull(),
 			new HashConfig( $config ),
 			$user
 		);
