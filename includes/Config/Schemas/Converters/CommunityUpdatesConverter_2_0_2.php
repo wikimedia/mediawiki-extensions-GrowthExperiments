@@ -10,9 +10,10 @@ use stdClass;
 class CommunityUpdatesConverter_2_0_2 implements ISchemaConverter {
 
 	public function upgradeFromOlder( stdClass $data ): stdClass {
-		$data->GEHomepageCommunityUpdatesCallToAction = new StdClass();
-		$data->GEHomepageCommunityUpdatesCallToAction->pageTitle = '';
-		$data->GEHomepageCommunityUpdatesCallToAction->buttonText = '';
+		$data->GEHomepageCommunityUpdatesCallToAction = (object)[
+			'pageTitle' => '',
+			'buttonText' => '',
+		];
 		return $data;
 	}
 

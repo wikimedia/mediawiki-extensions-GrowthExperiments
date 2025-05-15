@@ -10,9 +10,10 @@ use stdClass;
 class CommunityUpdatesConverter_2_0_1 implements ISchemaConverter {
 
 	public function upgradeFromOlder( stdClass $data ): stdClass {
-		$data->GEHomepageCommunityUpdatesThumbnailFile = new StdClass();
-		$data->GEHomepageCommunityUpdatesThumbnailFile->title = '';
-		$data->GEHomepageCommunityUpdatesThumbnailFile->url = '';
+		$data->GEHomepageCommunityUpdatesThumbnailFile = (object)[
+			'title' => '',
+			'url' => '',
+		];
 		return $data;
 	}
 
