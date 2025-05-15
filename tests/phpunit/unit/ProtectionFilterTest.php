@@ -14,7 +14,6 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
-use stdClass;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -117,9 +116,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 						$key = "0:Page$id";
 						// $map[$key][1] means that the article is protected, see $pageMap
 						if ( isset( $map[$key] ) && $map[$key][1] ) {
-							$item = new stdClass();
-							$item->pr_page = $id;
-							$data[] = $item;
+							$data[] = (object)[ 'pr_page' => $id ];
 						}
 					}
 					return new FakeResultWrapper( $data );
