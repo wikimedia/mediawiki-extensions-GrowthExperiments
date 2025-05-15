@@ -8,7 +8,7 @@
 * be moved to MenteeOverview.vue or MenteeOverview.less.
 */
 @container (min-width: 600px) {
-    .ext-growthExperiments-DataTable__table thead th:first-child {
-        width: 30% !important;
-    }
+	.ext-growthExperiments-DataTable__table thead th:first-child {
+		width: 30% !important;
+	}
 }
