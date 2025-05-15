@@ -160,7 +160,7 @@ class QuestionStore {
 		}
 
 		$oldUrl = explode( '#', $questionRecord->getResultUrl() )[0];
-		$newUrl = Title::newFromLinkTarget( $revision->getPageAsLinkTarget() )->getLinkURL();
+		$newUrl = Title::newFromPageIdentity( $revision->getPage() )->getLinkURL();
 		if ( $oldUrl !== $newUrl ) {
 			return false;
 		}
@@ -225,7 +225,7 @@ class QuestionStore {
 		if ( !$revision ) {
 			return $questionRecord;
 		}
-		$title = Title::newFromLinkTarget( $revision->getPageAsLinkTarget() );
+		$title = Title::newFromPageIdentity( $revision->getPage() );
 		// Hack: Extract fragment from result URL, so we can use it for archive URL.
 		$fragment = substr(
 			$questionRecord->getResultUrl(),
