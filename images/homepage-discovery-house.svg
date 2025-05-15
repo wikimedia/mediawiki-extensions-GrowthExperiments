@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="96" height="87">
-	<g id="Discovery-aid" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+	<g fill="none">
 		<g id="house-illu-copy-5" transform="translate(-12 -15)">
 			<g id="house-illu" transform="translate(15 18)">
 				<path id="Path-4" fill="#54595d" stroke="#54595d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M63 13.854V7h8l-.003 13"/>

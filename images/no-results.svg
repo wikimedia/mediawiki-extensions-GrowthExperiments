@@ -32,8 +32,7 @@
 			</feMerge>
 		</filter>
 	</defs>
-	<g fill="none" fill-rule="evenodd" transform="translate(-2 -8)">
-		<path d="M0 0h144v144H0z"/>
+	<g fill="none" transform="translate(-2 -8)">
 		<circle cx="66" cy="72" r="64" fill="#eaecf0"/>
 		<path stroke="#c8ccd1" stroke-dasharray="2,8" stroke-linecap="square" stroke-width="2" d="M90 128c28.719 0 52-23.281 52-52s-23.281-52-52-52-52 23.281-52 52 23.281 52 52 52z"/>
 		<rect width="70" height="14" x="45" y="43" fill="#f8f9fa" stroke="#c8ccd1" stroke-width="2" rx="7"/>

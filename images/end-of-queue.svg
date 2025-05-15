@@ -3,8 +3,7 @@
 		<rect id="a" width="120" height="20" x="12" y="40" rx="1"/>
 		<rect id="b" width="120" height="20" x="12" y="80" rx="1"/>
 	</defs>
-	<g fill="none" fill-rule="evenodd" transform="translate(-8 -8)">
-		<path d="M0 0h144v144H0z"/>
+	<g transform="translate(-8 -8)">
 		<circle cx="72" cy="72" r="64" fill="#fff"/>
 		<rect width="8" height="96" x="24" y="32" fill="#a2a9b1" rx="1"/>
 		<rect width="8" height="96" x="112" y="32" fill="#a2a9b1" rx="1"/>
