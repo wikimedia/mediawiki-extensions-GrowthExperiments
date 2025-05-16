@@ -344,6 +344,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Кхийерг",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Кийчча йу",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "ХӀара хьажорг нийса ца хиларан бахьана схьахаржа",
+	"growthexperiments-addlink-single-recommendation-title": "ТӀетоха кховдийна хьажорг",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Хьажоргаш тӀетоьхча, нахана сиха Ӏамо гӀо хир ду.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Цхьана йаззам тӀера дешнаш кхечу {{plural:{{SITENAME}}}} чуьра йаззамашца {{plural:{{SITENAME}}}} чохь уьйр латто деза йа ца деза къасто йиш йу {{GENDER:$1|хьан}}",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Предложенин масала",
@@ -521,5 +522,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Ахьа}} дина $3 {{PLURAL:$3|кховдийна нисдар}}. Керла говзаллаш Ӏамош хила.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Кховдийна нисдар де",
 	"echo-category-title-ge-newcomer": "«Кхиар» функци",
-	"echo-pref-tooltip-ge-newcomer": "Керлачу декъашхошна гӀо дан леринчу белхех а, кхин йолу функцишах а хаам бе суна."
+	"echo-pref-tooltip-ge-newcomer": "Керлачу декъашхошна гӀо дан леринчу белхех а, кхин йолу функцишах а хаам бе суна.",
+	"growthexperiments-homepage-community-updates-header": "Йукъараллин керланаш",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Цул совнаха хаа"
 }
