@@ -8,10 +8,9 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentityValue;
 use SearchEngineFactory;
 use StatusValue;
@@ -28,11 +27,15 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 
 	/**
 	 * @dataProvider provideCreate
-	 * @param TaskType[]|StatusValue $taskTypes
-	 * @param Topic[] $topics
-	 * @param StatusValue|null $expectedError
 	 */
-	public function testCreate( $taskTypes, array $topics, ?StatusValue $expectedError ) {
+	public function testCreate( $taskTypes, array $topics, ?string $expectedError ) {
+		if ( $taskTypes === 'error' && $expectedError === 'error' ) {
+			$error = $this->createNoOpMock( Status::class, [ 'getWikiText' ] );
+			$error->method( 'getWikiText' )->willReturn( 'foo' );
+			$taskTypes = $error;
+			$expectedError = $error;
+		}
+
 		$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory(
 			$this->createMock( TaskTypeHandlerRegistry::class ),
 			$this->getNewcomerTasksConfigurationLoader( $taskTypes ),

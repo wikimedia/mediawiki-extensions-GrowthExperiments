@@ -7,16 +7,13 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use MediaWiki\Status\Status;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
 
 abstract class SearchTaskSuggesterFactoryTestBase extends MediaWikiUnitTestCase {
 
-	public function provideCreate() {
-		$error = $this->createNoOpMock( Status::class, [ 'getWikiText' ] );
-		$error->method( 'getWikiText' )->willReturn( 'foo' );
+	public static function provideCreate() {
 		return [
 			'success' => [
 				'taskTypes' => [
@@ -26,9 +23,9 @@ abstract class SearchTaskSuggesterFactoryTestBase extends MediaWikiUnitTestCase 
 				'expectedError' => null,
 			],
 			'tasktype error' => [
-				'taskTypes' => $error,
+				'taskTypes' => 'error',
 				'topics' => [ new Topic( 't' ) ],
-				'expectedError' => $error,
+				'expectedError' => 'error',
 			],
 		];
 	}

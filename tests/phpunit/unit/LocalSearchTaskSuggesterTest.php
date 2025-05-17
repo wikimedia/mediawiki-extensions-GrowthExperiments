@@ -44,6 +44,12 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	public function testSearch(
 		$searchTerm, $topic, $limit, $offset, $searchResults, $expectedResult
 	) {
+		if ( is_callable( $searchResults ) ) {
+			$searchResults = $searchResults( $this );
+		}
+		if ( is_callable( $expectedResult ) ) {
+			$expectedResult = $expectedResult( $this );
+		}
 		$searchEngineFactory = $this->getMockSearchEngineFactory( $searchResults, $searchTerm,
 			$limit, $offset );
 		$suggester = new LocalSearchTaskSuggester(
@@ -77,8 +83,12 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideSearch() {
-		$searchResult = $this->createMock( ISearchResultSet::class );
+	public static function provideSearch() {
+		$searchResult = static function ( $testCase ) {
+			static $mock = null;
+			$mock ??= $testCase->createMock( ISearchResultSet::class );
+			return $mock;
+		};
 		$error = Status::newFatal( 'foo' );
 		return [
 			'success' => [
@@ -102,7 +112,9 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'topic' => 'bar',
 				'limit' => 10,
 				'offset' => 0,
-				'search results' => Status::newGood( $searchResult ),
+				'search results' => static function ( $testCase ) use ( $searchResult ) {
+					return Status::newGood( $searchResult( $testCase ) );
+				},
 				'expected result' => $searchResult,
 			],
 			'error' => [
