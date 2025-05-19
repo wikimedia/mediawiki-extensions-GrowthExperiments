@@ -9,8 +9,5 @@
 	"apihelp-query+growthtasks-param-limit": "Najveći broj predloga zadataka",
 	"apihelp-query+growthtasks-param-debug": "Dodaje podatke o otklanjanju greške u ispis.",
 	"apihelp-query+growthtasks-example-1": "Pridobija preporuke članaka za lektorisanje.",
-	"apihelp-query+growthtasks-example-2": "Pridobija preporuke uz dodatne informacije o stranicama.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Pregledajte predložene unutrašnje veze i unapredite Vikipedijinu mrežu informacija.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Da",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Ne"
+	"apihelp-query+growthtasks-example-2": "Pridobija preporuke uz dodatne informacije o stranicama."
 }

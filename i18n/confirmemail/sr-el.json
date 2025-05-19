@@ -4,13 +4,12 @@
 			"BadDog"
 		]
 	},
-	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|Šta je ovo?]])",
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|šta je ovo?]])",
 	"growthexperiments-confirmemail-emailhelp": "Imejl je potreban za oporavak naloga ako kojim slučajem zaboravite lozinku.",
 	"growthexperiments-confirmemail-emailrecommended": "Imejl-adresa (preporučuje se)",
 	"growthexperiments-confirmemail-emailwarning": "Kada otvorite nalog, potvrdite imejl-adresu klikom na vezu iz najnovijeg imejla.",
 	"growthexperiments-confirmemail-confirm-subject": "Dobro došli na projekat {{SITENAME}}: potvrdite imejl-adresu",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Zdravo}}, $2,\n\nHvala Vam na dodavanju imejla nalogu „$2” na projektu {{SITENAME}}, registrovanom s IP adrese $1.\n\nKliknite na donje dugme kako biste potvrdili da želite povezati imejl-adresu s nalogom:\n\n$3\n\nNapomena: Kod za potvrdu <strong>ističe u $4</strong>.\n\nHvala,\n\n{{SITENAME}}\n\n----\n\nDa biste otkazali povrdu imejl-adrese (jer niste otvorili nalog ili iz bilo kojeg drugog razloga), kliknite na sledeću vezu:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Potvrdi imejl-adresu",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Zdravo}}, $2,\n\nHvala Vam na dodavanju imejla nalogu „$2” na projektu {{SITENAME}}, registrovanom s IP adrese $1.\n\nKliknite na donju vezu kako biste potvrdili da želite povezati imejl-adresu s nalogom:\n\n$3\n\nNapomena: Kod za potvrdu ističe u $4.\n\nHvala,\n\n{{SITENAME}}\n\n----\n\nDa biste otkazali povrdu imejl-adrese (jer niste otvorili nalog ili iz bilo kojeg drugog razloga), kliknite na sledeću vezu:\n\n$5",
-	"growthexperiments-signupcampaign-bullet3": "Počnite sa malim, lakim izmenama"
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Zdravo}}, $2,\n\nHvala Vam na dodavanju imejla nalogu „$2” na projektu {{SITENAME}}, registrovanom s IP adrese $1.\n\nKliknite na donju vezu kako biste potvrdili da želite povezati imejl-adresu s nalogom:\n\n$3\n\nNapomena: Kod za potvrdu ističe u $4.\n\nHvala,\n\n{{SITENAME}}\n\n----\n\nDa biste otkazali povrdu imejl-adrese (jer niste otvorili nalog ili iz bilo kojeg drugog razloga), kliknite na sledeću vezu:\n\n$5"
 }
