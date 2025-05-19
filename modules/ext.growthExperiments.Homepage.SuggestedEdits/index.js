@@ -67,23 +67,30 @@
 
 		const clientSideLoadDuration = mw.now() - initTime, // Time since module init
 			serverDuration = mw.now() - mw.config.get( 'GEHomepageStartTime' );
+		const logInvalidTimingStats = ( err, logLevel = 'error' ) => {
+			const geHomepageStartTime = mw.config.get( 'GEHomepageStartTime' );
+			// eslint-disable-next-line camelcase
+			err.error_context = {
+				// cast to String since mediawiki/client/error schema only accepts strings
+				// as error_context values
+				serverDuration: String( serverDuration ),
+				serverDurationType: typeof serverDuration,
+				GEHomepageStartTime: String( geHomepageStartTime ),
+				GEHomepageStartTimeType: typeof geHomepageStartTime
+			};
+			err.message = err.message + ' [Additional data]';
+			mw.log[ logLevel ]( err.message );
+			mw.errorLogger.logError(
+				err,
+				'error.growthexperiments'
+			);
+
+		};
+
 		// TODO: Remove the log of additional data for T382003
 		mw.trackSubscribe( 'error.caught', ( _topic, err ) => {
 			if ( /mediawiki_GrowthExperiments_suggested_edits/.test( err.message ) ) {
-				const geHomepageStartTime = mw.config.get( 'GEHomepageStartTime' );
-				// eslint-disable-next-line camelcase
-				err.error_context = {
-					serverDuration: serverDuration,
-					serverDurationType: typeof serverDuration,
-					GEHomepageStartTime: geHomepageStartTime,
-					GEHomepageStartTimeType: typeof geHomepageStartTime
-				};
-				err.message = err.message + ' [Additional data]';
-				mw.errorLogger.logError(
-					err,
-					'error.growthexperiments'
-				);
-
+				logInvalidTimingStats( err );
 			}
 		} );
 		// Track the TTI on client-side.
@@ -102,6 +109,12 @@
 			}
 		);
 
+		if ( serverDuration < 0 ) {
+			// This can happen if the client time is not set correctly, tracking it does not
+			// make sense and it produces stats lib errors.
+			logInvalidTimingStats( new Error( 'initSuggestedTasks: server duration is negative' ), 'warn' );
+			return $.Deferred().resolve();
+		}
 		// Track the server side render start time (first line in SpecialHomepage#execute()) to
 		// TTI on client-side.
 		mw.track(
