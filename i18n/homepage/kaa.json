@@ -2,11 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Ajiniyaz Nurniyazov",
+			"Eduardoaddad",
 			"Nurlan"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Sálem}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "",
 	"prefs-homepage": "Jańadan qosılǵan redaktorlar ushın funciyalar",
+	"growthexperiments-homepage-email-header-confirmed": "",
+	"growthexperiments-homepage-email-header-startemail": "",
+	"growthexperiments-homepage-email-button-noemail": "",
 	"growthexperiments-homepage-email-changelink": "ózgertiw",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|Siziń}} jaqın aradaǵı háreketlerińiz (aqırǵı $2 {{PLURAL:$2|kún|kúnler}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Aqırǵı dúzetiw:",
