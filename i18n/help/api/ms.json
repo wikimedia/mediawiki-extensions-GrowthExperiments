@@ -8,10 +8,10 @@
 	"apihelp-helppanelquestionposter-param-body": "Teks soalan yang disediakan oleh pengguna.",
 	"apihelp-helppanelquestionposter-param-source": "Kaedah soalan disiarkan.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panel \"Tanya meja bantuan\"",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panel \"Tanya mentor anda\" pada halaman utama pengguna baharu",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panel \"Tanya mentor anda\" pada laman pemula pengguna baharu",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Skrin \"Tanya mentor anda\" pada panel bantuan",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panel \"Tanya meja bantuan\" (nama lama)",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel \"Tanya mentor anda\" pada halaman utama pengguna baharu (nama lama)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel \"Tanya mentor anda\" pada laman pemula pengguna baharu (nama lama)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Tajuk yang berkaitan, jika dipilih, akan disertakan bersama soalan.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Anda mesti log masuk untuk bertanya soalan."
 }
