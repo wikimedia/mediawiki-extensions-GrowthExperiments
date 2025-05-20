@@ -18,7 +18,8 @@
 			"Trizek (WMF)",
 			"Urhixidur",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"JLTRY"
 		]
 	},
 	"growthexperiments-desc": "Cette extension contient des expériences faites par l’équipe Croissance (''Growth'').",
@@ -237,7 +238,7 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-excludedsections-label": "Liste des sections exclues de la tâche ''Ajouter un lien''",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maxtasksperday-label": "Le nombre maximum de tâches suggérées pour « Ajouter un lien » qu‘un novice peut réaliser chaque jour",
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-label": "Poids des articles sans suffisamment de liens",
-	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Affecte la manière d'attribuer une priorité aux articles sousjacents. Ce champ nécessite un pourcentage sous forme décimale compris entre 0 et 1. Plus {{GENDER:|vous}} augmentez ce nombre et plus il est probable que les nouveaux arrivants recevront des suggestions d'articles sousjacents.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Affecte la manière d'attribuer une priorité aux articles avec moins de liens. Ce champ nécessite un pourcentage sous forme décimale compris entre 0 et 1. Plus {{GENDER:|vous}} augmentez ce nombre et plus il est probable que les nouveaux arrivants recevront des suggestions d'articles ayant moins de liens.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Nombre minimum de liens nécessaires",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Seuil de confidence minimal pour la suggestion de liens. Ce champ nécessite un pourcentage sous forme décimale compris entre 0 et 1. Plus {{GENDER:|vous}} augmentez ce nombre, plus les suggestions présentées à l'utilisateur final auront des chances d'être acceptées, mais alors vous aurez moins de choix. Si vous diminuez cette valeur, vous aurez beaucoup plus de suggestions mais certaines pourront avoir une qualité médiocre."
 }

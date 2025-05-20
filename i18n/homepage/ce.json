@@ -568,5 +568,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Ахьа}} дина $3 {{PLURAL:$3|кховдийна нисдар}}. Керла говзаллаш Ӏамош хила.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Кховдийна нисдар де",
 	"echo-category-title-ge-newcomer": "«Кхиар» функци",
-	"echo-pref-tooltip-ge-newcomer": "Керлачу декъашхошна гӀо дан леринчу белхех а, кхин йолу функцишах а хаам бе суна."
+	"echo-pref-tooltip-ge-newcomer": "Керлачу декъашхошна гӀо дан леринчу белхех а, кхин йолу функцишах а хаам бе суна.",
+	"growthexperiments-homepage-community-updates-header": "Йукъараллин керланаш",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Цул совнаха хаа"
 }
