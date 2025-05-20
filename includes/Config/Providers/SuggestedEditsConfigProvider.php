@@ -27,25 +27,21 @@ class SuggestedEditsConfigProvider extends DataProvider {
 	];
 	private const DEFAULT_TASK_TYPE = 'template-based';
 
-	/**
-	 * @inheritDoc
-	 */
-	protected function addAutocomputedProperties( stdClass $config ): stdClass {
-		foreach ( $config as $taskId => $taskData ) {
-			if ( !$taskData instanceof stdClass ) {
-				continue;
-			}
-			$config->$taskId->group = self::MAP_TASKS_PER_GROUP[$taskId] ?? self::DEFAULT_GROUP;
-			$config->$taskId->type = self::MAP_TASK_TYPES[$taskId] ?? self::DEFAULT_TASK_TYPE;
-		}
-		return $config;
-	}
-
 	public function loadForNewcomerTasks(): StatusValue {
 		$result = $this->loadValidConfiguration();
 		if ( $result->isOK() ) {
 			$data = $result->getValue();
 			unset( $data->GEInfoboxTemplates );
+
+			// Priorly 'group' and 'type' were added using IConfigurationProvider::addAutocomputedProperties
+			// but that results in these being written in config pages when running migrateConfig.php
+			foreach ( $data as $taskId => $taskData ) {
+				if ( !$taskData instanceof stdClass ) {
+					continue;
+				}
+				$data->$taskId->group = self::MAP_TASKS_PER_GROUP[$taskId] ?? self::DEFAULT_GROUP;
+				$data->$taskId->type = self::MAP_TASK_TYPES[$taskId] ?? self::DEFAULT_TASK_TYPE;
+			}
 
 			foreach ( $data as $key => $value ) {
 				if ( str_contains( $key, '_' ) ) {
