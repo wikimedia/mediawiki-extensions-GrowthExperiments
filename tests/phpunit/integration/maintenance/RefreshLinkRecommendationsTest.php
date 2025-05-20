@@ -90,6 +90,9 @@ class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {
 		);
 		$mainStash->set( $lastPageIdKey, 3, 10, BagOStuff::WRITE_CACHE_ONLY );
 
+		// Reset the service, because editing pages above may have populated the task types in the configuration
+		// loader.
+		$this->getServiceContainer()->resetServiceForTesting( 'GrowthExperimentsNewcomerTasksConfigurationLoader' );
 		$this->maintenance->execute();
 
 		$this->assertFalse(

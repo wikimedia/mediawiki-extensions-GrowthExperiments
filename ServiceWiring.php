@@ -1085,8 +1085,6 @@ return [
 	): GrowthExperimentsUserImpactUpdater {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new GrowthExperimentsUserImpactUpdater(
-			$services->getUserIdentityUtils(),
-			$services->getUserOptionsLookup(),
 			$services->getUserEditTracker(),
 			$services->getUserFactory(),
 			$services->getJobQueueGroup(),
