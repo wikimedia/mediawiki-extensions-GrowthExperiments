@@ -152,8 +152,6 @@ class RefreshUserImpactData extends Maintenance {
 	private function getUsers(): Generator {
 		$queryBuilder = $this->getQueryBuilder();
 		$queryBuilder->select( 'actor_user' );
-		// do not update impact data for temporary users (T379672)
-		$queryBuilder->named();
 		$queryBuilder->limit( $this->getBatchSize() );
 		$queryBuilder->orderByUserId( SelectQueryBuilder::SORT_ASC );
 		$queryBuilder->caller( __METHOD__ );
