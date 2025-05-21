@@ -33,6 +33,7 @@ use StatusValue;
 use Wikimedia\Rdbms\DBAccessObjectUtils;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDBAccessObject;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Stats\StatsFactory;
 
 class ComputedUserImpactLookup implements UserImpactLookup {
@@ -342,21 +343,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editedArticles[$titleDbKey]['newestEdit'] ??= $row->rev_timestamp;
 		}
 
-		$queryBuilder = $db->newSelectQueryBuilder();
-		$queryBuilder->from( 'page' )
-			->join(
-				'revision',
-				null,
-				'page.page_id = rev_page'
-			)
-			->where( [
-				'page.page_namespace' => NS_MAIN,
-				'rev_actor' => $user->getActorId(),
-				'rev_parent_id' => 0,
-			] )
-			->caller( __METHOD__ )
-			->limit( $this->config->get( 'GEUserImpactMaxEdits' ) );
-		$createdArticleCount = $queryBuilder->fetchRowCount();
+		$createdArticleCount = $this->getCreatedArticleCount( $db, $user );
 
 		return new EditData(
 			$editCountByNamespace,
@@ -368,6 +355,57 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editedArticles,
 			$createdArticleCount
 		);
+	}
+
+	/**
+	 * Return the number of NS_MAIN pages created by a user.
+	 *
+	 * @param IReadableDatabase $db
+	 * @param User $user
+	 * @return int The count of pages created by the user. Note that the maximum value
+	 *  for this is the value of GEUserImpactMaxEdits
+	 */
+	private function getCreatedArticleCount( IReadableDatabase $db, User $user ): int {
+		$queryBuilder = $db->newSelectQueryBuilder();
+		$queryBuilder->select( 'log_page' )
+			->where(
+				[
+					'log_type' => 'create',
+					'log_actor' => $user->getActorId(),
+					// FIXME: This should have a clause for log_namespace => NS_MAIN,
+					// but that would require creating a new index to include the namespace
+				]
+			)
+			->from( 'logging' )
+			// Optimizer doesn't pick the right index when a user has lots of log actions (T303089)
+			->useIndex( 'log_actor_type_time' )
+			->caller( __METHOD__ )
+			// FIXME: Since we can't efficiently query on log_namespace, collect a larger sample of
+			// log entries for the create action, in the hopes that we'll able to include within that
+			// a roughly accurate count of NS_MAIN page creations
+			->limit( max( 10_000, $this->config->get( 'GEUserImpactMaxEdits' ) ) )
+			// Start with newer log entries first, as these are more relevant to the features
+			// that consume this data
+			->orderBy( 'log_timestamp', $queryBuilder::SORT_DESC );
+		$result = $queryBuilder->fetchResultSet();
+		$pageIds = [];
+		foreach ( $result as $row ) {
+			$pageIds[] = (int)$row->log_page;
+		}
+		if ( !count( $pageIds ) ) {
+			return 0;
+		}
+		$queryBuilder = $db->newSelectQueryBuilder();
+		$queryBuilder->from( 'page' )
+			->where( [
+				'page_namespace' => NS_MAIN,
+				'page_is_redirect' => false,
+				'page_id' => $pageIds,
+			] )
+			// No need for a LIMIT on this query, since we'll have at most $wgGEUserImpactMaxEdits
+			// page IDs from above.
+			->caller( __METHOD__ );
+		return $queryBuilder->fetchRowCount();
 	}
 
 	/**
