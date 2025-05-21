@@ -147,7 +147,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			$startNanoSeconds = hrtime( true );
 			$this->refreshViaOresTopics( $force );
 		}
-		$durationSeconds = ( hrtime( true ) - $startNanoSeconds ) / 1e9;
+		$durationSeconds = ceil( ( hrtime( true ) - $startNanoSeconds ) / 1e9 );
 		$sessionDurationCounter->incrementBy( $durationSeconds );
 
 		$this->sendMetricsToStatslib();
