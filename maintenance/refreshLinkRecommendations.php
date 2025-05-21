@@ -139,11 +139,11 @@ class RefreshLinkRecommendations extends Maintenance {
 		$sessionDurationCounter = $this->statsFactory->getCounter( 'refreshLinks_session_seconds_total' )
 			->setLabel( 'wiki', WikiMap::getCurrentWikiId() );
 		if ( $iterateThroughAllPages ) {
-			$sessionDurationCounter->setLabel( 'type', 'by-iterating-pages' );
+			$sessionDurationCounter->setLabel( 'type', 'by_iterating_pages' );
 			$startNanoSeconds = hrtime( true );
 			$this->refreshByIteratingThroughAllPages( $force );
 		} else {
-			$sessionDurationCounter->setLabel( 'type', 'by-ores-topic' );
+			$sessionDurationCounter->setLabel( 'type', 'by_ores_topic' );
 			$startNanoSeconds = hrtime( true );
 			$this->refreshViaOresTopics( $force );
 		}
