@@ -92,5 +92,6 @@
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-disabled-control-label": "Задатак је онемогућен.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Додај везу (Структуирани задатак)",
 	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "Задатак је онемогућен.",
-	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Одредишна страница за информисање о задатку „Додај везу”"
+	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Одредишна страница за информисање о задатку „Додај везу”",
+	"growthexperiments-addlink-done-button": "Готово"
 }

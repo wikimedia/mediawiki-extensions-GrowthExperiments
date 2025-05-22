@@ -149,5 +149,6 @@
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-learnmore-label": "Pagina di destinazione per saperne di più sulle tipologie di attività sulle immagini consigliate",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Aggiungi un collegamento (attività strutturata)",
 	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "L'attività è disabilitata.",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumlinkstoshowpertask-label": "Numero massimo di collegamenti da mostrare per compito"
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumlinkstoshowpertask-label": "Numero massimo di collegamenti da mostrare per compito",
+	"growthexperiments-addlink-done-button": "Fatto"
 }
