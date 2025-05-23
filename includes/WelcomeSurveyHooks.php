@@ -236,7 +236,6 @@ class WelcomeSurveyHooks implements
 
 	private function shouldShowWelcomeSurvey( IContextSource $context ): bool {
 		return !$context->getUser()->isTemp()
-			&& HomepageHooks::getGrowthFeaturesOptInOptOutOverride() !== HomepageHooks::GROWTH_FORCE_OPTOUT
 			&& !VariantHooks::shouldCampaignSkipWelcomeSurvey(
 				VariantHooks::getCampaign( $context ), $this->campaignConfig
 			);

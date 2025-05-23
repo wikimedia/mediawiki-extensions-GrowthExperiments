@@ -2556,7 +2556,7 @@
 			"value": 300
 		},
 		"GEHelpPanelNewAccountEnableWithHomepage": {
-			"description": "By default, the help panel is enabled for new accounts in lockstep with the homepage, controlled by GEHomepageNewAccountEnablePercentage. To disable this behavior and use GEHelpPanelNewAccountEnablePercentage instead, set this to false.",
+			"description": "By default, the help panel is enabled for new accounts. To disable this behavior and use GEHelpPanelNewAccountEnablePercentage instead, set this to false.",
 			"value": true
 		},
 		"GEHelpPanelNewAccountEnablePercentage": {
@@ -2588,16 +2588,12 @@
 			"description": "Number of days a reminder on Special:Homepage should be shown for if the user has not filled out the welcome survey yet. Set to 0 to disable the reminder.",
 			"value": 30
 		},
-		"GEHomepageNewAccountEnablePercentage": {
-			"description": "Percentage of new accounts to enable homepage for. Must be a whole number.",
-			"value": 100
-		},
 		"GEHomepageDefaultVariant": {
 			"description": "Experiment variant to use for users who weren't assigned a variant at account creation time, or the variant they got is not valid anymore. Valid values: 'control'.",
 			"value": "control"
 		},
 		"GEMentorshipNewAccountEnablePercentage": {
-			"description": "Percentage of new homepage-enabled users who will receive the mentorship module. Note that user must fall into _both_ GEHomepageNewAccountEnablePercentage and this percentage to be considered for mentorship.",
+			"description": "Percentage of new homepage-enabled users who will receive the mentorship module.",
 			"value": 100
 		},
 		"GEMentorshipReassignMenteesBatchSize": {
