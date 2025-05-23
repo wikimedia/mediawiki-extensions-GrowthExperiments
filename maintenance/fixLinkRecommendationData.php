@@ -125,8 +125,9 @@ class FixLinkRecommendationData extends Maintenance {
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$linkRecommendationTaskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
 		if ( !$linkRecommendationTaskType instanceof LinkRecommendationTaskType ) {
-			$this->fatalError( sprintf( "'%s' is not a link recommendation task type",
-				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) );
+			$wiki = WikiMap::getCurrentWikiId();
+			$type = get_debug_type( $linkRecommendationTaskType );
+			$this->fatalError( "$wiki: '$type' is not a link recommendation task type" );
 		}
 	}
 
