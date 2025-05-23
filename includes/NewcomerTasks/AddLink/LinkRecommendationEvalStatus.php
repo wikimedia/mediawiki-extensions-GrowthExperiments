@@ -13,6 +13,8 @@ class LinkRecommendationEvalStatus extends StatusValue {
 	public const NOT_GOOD_CAUSE_GOOD_LINKS_COUNT_TOO_SMALL = 'good_links_count_too_small';
 	public const NOT_GOOD_CAUSE_MINIMUM_TIME_DID_NOT_PASS = 'minimum_time_since_last_edit_did_not_pass';
 	public const NOT_GOOD_CAUSE_DISAMBIGUATION_PAGE = 'disambiguation_page';
+	public const NOT_GOOD_CAUSE_EXCLUDED_CATEGORY = 'excluded_category';
+	public const NOT_GOOD_CAUSE_EXCLUDED_TEMPLATE = 'excluded_template';
 	public const NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION = 'last_edit_link_recommendation';
 	public const NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION_REVERT = 'last_edit_link_recommendation_revert';
 	public const NOT_GOOD_CAUSE_OTHER = 'other';

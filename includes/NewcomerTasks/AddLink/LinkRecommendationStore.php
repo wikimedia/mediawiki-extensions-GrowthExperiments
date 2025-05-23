@@ -543,4 +543,32 @@ class LinkRecommendationStore {
 		return array_merge( $existingLinkRecommendations, $unavailableLinkRecommendations );
 	}
 
+	/**
+	 * @param int $pageId
+	 * @param LinkTarget[] $excludedTemplates
+	 * @return int
+	 */
+	public function getNumberOfExcludedTemplatesOnPage( int $pageId, array $excludedTemplates ): int {
+		if ( $excludedTemplates === [] ) {
+			return 0;
+		}
+		$dbr = $this->getDB( DB_REPLICA );
+		return $dbr->newSelectQueryBuilder()
+			->select( 'lt_id' )
+			->from( 'templatelinks' )
+			->join( 'linktarget', null, [ 'tl_target_id = lt_id' ] )
+			->where( [
+				'tl_from' => $pageId,
+				'lt_namespace' => 10,
+				'lt_title IN (' . $dbr->makeList(
+					array_map(
+						static fn ( LinkTarget $linkTarget ): string => $linkTarget->getDBkey(),
+						$excludedTemplates,
+					)
+				) . ')',
+			] )
+			->caller( __METHOD__ )
+			->fetchRowCount();
+	}
+
 }
