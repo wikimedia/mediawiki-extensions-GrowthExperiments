@@ -8,13 +8,14 @@
  */
 module.exports = exports = {
 	install: ( app, { mode, logger } ) => {
+		const $log = ( module, action, extraData ) => {
+			logger.log( module, mode, action, extraData );
+		};
 		// Make the logger available to application components thorugh inject
-		app.provide( 'logger', logger );
+		app.provide( 'logger', { log: $log } );
 
 		// Add configured $log() method to the application globalProperties
 		// so it can be accessed from compponent instances
-		app.config.globalProperties.$log = function ( module, action, extraData ) {
-			logger.log( module, mode, action, extraData );
-		};
+		app.config.globalProperties.$log = $log;
 	}
 };
