@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Maintenance;
 
 use CirrusSearch\CirrusSearchServices;
@@ -8,7 +10,6 @@ use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -36,7 +37,6 @@ require_once "$IP/maintenance/Maintenance.php";
  */
 class FixLinkRecommendationData extends Maintenance {
 
-	private ConfigurationLoader $configurationLoader;
 	private LinkRecommendationStore $linkRecommendationStore;
 	private WeightedTagsUpdater $weightedTagsUpdater;
 	private LinkBatchFactory $linkBatchFactory;
@@ -76,7 +76,7 @@ class FixLinkRecommendationData extends Maintenance {
 	}
 
 	/** @inheritDoc */
-	public function execute() {
+	public function execute(): void {
 		$this->init();
 		if ( !$this->hasOption( 'search-index' ) && !$this->hasOption( 'db-table' ) ) {
 			$this->fatalError( 'At least one of --search-index and --db-table must be specified.' );
@@ -91,7 +91,7 @@ class FixLinkRecommendationData extends Maintenance {
 		}
 	}
 
-	public function init() {
+	public function init(): void {
 		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		if ( $this->hasOption( 'db-table' )
@@ -105,15 +105,15 @@ class FixLinkRecommendationData extends Maintenance {
 				. 'environment is not production, $wgGEDeveloperSetup should be set to true. If you REALLY '
 				. 'know what you are doing, use --force.)' );
 		}
-		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 
 		if (
-			$this->configurationLoader instanceof CommunityConfigurationLoader &&
+			$configurationLoader instanceof CommunityConfigurationLoader &&
 			$services->getMainConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
 		) {
 			// Pretend link-recommendation is enabled (T371316)
 			// Task suggester is not be adapted to query disabled task types.
-			$this->configurationLoader->enableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
+			$configurationLoader->enableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
 		}
 
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
@@ -122,7 +122,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$this->pageStore = $services->getPageStore();
 		$this->titleFormatter = $services->getTitleFormatter();
 
-		$taskTypes = $this->configurationLoader->getTaskTypes();
+		$taskTypes = $configurationLoader->getTaskTypes();
 		$linkRecommendationTaskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
 		if ( !$linkRecommendationTaskType instanceof LinkRecommendationTaskType ) {
 			$wiki = WikiMap::getCurrentWikiId();
@@ -131,7 +131,7 @@ class FixLinkRecommendationData extends Maintenance {
 		}
 	}
 
-	private function fixSearchIndex() {
+	private function fixSearchIndex(): void {
 		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
 		$batchSize = $this->getBatchSize();
 		$randomize = $this->getOption( 'random', false );
@@ -187,7 +187,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$this->maybeReportFixedCount( $fixedCount, 'search-index' );
 	}
 
-	private function fixDatabaseTable() {
+	private function fixDatabaseTable(): void {
 		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
 		$from = null;
 		$fixedCount = 0;
