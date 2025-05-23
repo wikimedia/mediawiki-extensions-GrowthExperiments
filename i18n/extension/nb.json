@@ -116,7 +116,10 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Søk etter et bilde på Wikimedia Commons ved å skrive inn filnavnet dets og velge det fra lista. Vises best med bilder med kvadratisk sideforhold.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Innsalgstekst",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Målside",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-help-text": "Dette kan være en side på den lokale wikien, eller en interwikitittel som «meta:Event:Wikipedians unite!»",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Etikett",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Legg til en hvit bakgrunn bak bildet i mørk modus",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Hvis bildet har gjennomsiktig bakgrunn kan det være vanskelig å se det i mørk modus. Hvis teksten eller ikonet er mørke vil en hvit bakgrunn gjøre at de fortsatt er synlige i mørk modus.",
 	"communityconfiguration-helppanel-title": "Hjelpepanel",
 	"communityconfiguration-helppanel-description": "Tilpass hjelpepanelinnstillingene til å passe med fellesskapets krav og definer ressurser som kan veilede nye bidragsytere.",
 	"communityconfiguration-helppanel-info-text": "Hjelpepanelet kan være tilgjengelig i alle navnerom, i lese- eller redigeringsmodus, som konfigurert nedenfor. Det inkluderer muligheten til å lete etter hjelp, trykke på hjelpelenker, og stille spørsmål direkte til fadderen eller til brukerstøtte. Lenker kan konfigureres til hvor som helst på wiien, men anbefalinger inkluderes nedenfor.",
@@ -222,5 +225,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-label": "Vekting av underlenkede artikler",
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Påvirker hvordan underlenkede artikler prioriteres. Dette feltet krever et prosenttall i desimalform, så tallet må være mellom 0 og 1. Jo mer {{GENDER:|du}} øker dette tallet, jo mer sannsynlig er det at nybegynnere vil motta forslag om underlenkede artikler.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Minimal påkrevd lenkeskår",
-	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Minimal konfidensgrense for lenkeforslag. Dette feltet krever et prosenttall i desimalform, så tallet bør være mellom 0 og 1. Hvis {{GENDER:|du}} øker tallet vil forslagene som vises til sluttbrukerne ha større sannsynlighet for å være gode forslag, men færre forslag vil være tilgjengelig. Hvis du minker tallet vil flere forslag være tilgjengelige, men det er mindre sannsynlig at forslagene er gode."
+	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Minimal konfidensgrense for lenkeforslag. Dette feltet krever et prosenttall i desimalform, så tallet bør være mellom 0 og 1. Hvis {{GENDER:|du}} øker tallet vil forslagene som vises til sluttbrukerne ha større sannsynlighet for å være gode forslag, men færre forslag vil være tilgjengelig. Hvis du minker tallet vil flere forslag være tilgjengelige, men det er mindre sannsynlig at forslagene er gode.",
+	"growthexperiments-addlink-done-button": "Ferdig"
 }

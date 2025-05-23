@@ -13,5 +13,6 @@
 	"communityconfiguration-growthsuggestededits-update-disabled-control-label": "कार्य अक्षम है।",
 	"communityconfiguration-growthsuggestededits-expand-disabled-control-label": "कार्य अक्षम है।",
 	"communityconfiguration-growthsuggestededits-image_recommendation-disabled-control-label": "कार्य अक्षम है।",
-	"communityconfiguration-growthsuggestededits-section_image_recommendation-disabled-control-label": "कार्य अक्षम है।"
+	"communityconfiguration-growthsuggestededits-section_image_recommendation-disabled-control-label": "कार्य अक्षम है।",
+	"growthexperiments-addlink-done-button": "पूर्ण हुआ"
 }
