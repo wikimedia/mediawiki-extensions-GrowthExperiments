@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Title\Title;
 use StatusValue;
@@ -44,6 +45,16 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertSame( 0, $userImpact->getNewcomerTaskEditCount() );
 		$this->assertNull( $userImpact->getLastEditTimestamp() );
 		$this->assertSame( 0, $userImpact->getReceivedThanksCount() );
+	}
+
+	public function testGetUserImpactForTemporaryAccount() {
+		$temporaryAccount = $this->getServiceContainer()->getTempUserCreator()
+			->create( '~2025-1', new FauxRequest() )
+			->getUser();
+		/** @var ComputedUserImpactLookup $userImpactLookup */
+		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
+		$userImpact = $userImpactLookup->getUserImpact( $temporaryAccount );
+		$this->assertTrue( $temporaryAccount->equals( $userImpact->getUser() ) );
 	}
 
 	public function testGetUserImpact() {

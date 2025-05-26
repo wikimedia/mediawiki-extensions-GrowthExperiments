@@ -125,7 +125,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/** @inheritDoc */
 	public function getUserImpact( UserIdentity $user, int $flags = IDBAccessObject::READ_NORMAL ): ?UserImpact {
 		$user = $this->userFactory->newFromUserIdentity( $user );
-		if ( !$user->isNamed() || $user->isHidden() ) {
+		if ( !$user->isRegistered() || $user->isHidden() ) {
 			return null;
 		}
 
@@ -160,7 +160,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			return null;
 		}
 		$user = $this->userFactory->newFromUserIdentity( $user );
-		if ( !$user->isNamed() || $user->isHidden() ) {
+		if ( !$user->isRegistered() || $user->isHidden() ) {
 			return null;
 		}
 
