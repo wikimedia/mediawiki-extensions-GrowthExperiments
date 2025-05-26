@@ -224,5 +224,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Affects how underlinked articles are prioritized. This field requires a percentage in its decimal form, so the number should be between 0 and 1. The more {{GENDER:|you}} increase this number, the more likely newcomers will receive underlinked article suggestions.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Minimum required link score",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Minimum confidence threshold for link suggestions. This field requires a percentage in its decimal form, so the number should be between 0 and 1. If {{GENDER:|you}} increase the number, the suggestions presented to the end user will have a higher likelihood of being good suggestions, however fewer suggestions will be available. If you decrease the number, there will be more suggestions available but some will have a lower likelihood of being good quality suggestions.",
-	"growthexperiments-addlink-done-button": "Done"
+	"growthexperiments-addlink-done-button": "Done",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "The maximum number of edits before \"Add a link\" suggested tasks are no longer available to newcomers"
 }
