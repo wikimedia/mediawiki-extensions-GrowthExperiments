@@ -112,7 +112,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "キャンセル",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "紹介メッセージ",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|あなたの}}の紹介メッセージを「$1」に変更しました。",
-	"growthexperiments-mentor-writer-error-already-added": "指導役 $1 はすでに指導役一覧に追加されています",
+	"growthexperiments-mentor-writer-error-already-added": "指導役 $1 は既に指導役一覧に追加されています",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "指導役 $1 は指導役一覧にいません",
 	"growthexperiments-mentor-writer-error-anonymous-user": "指導役 $1 は登録利用者ではありません",
 	"growthexperiments-mentor-writer-error-message-too-long": "紹介メッセージが長すぎます。最大長は$1です。",

@@ -4,7 +4,8 @@
 			"Yupik",
 			"Kimberli Mäkäräinen (WMNO)",
 			"Lea-Christine Sara",
-			"WMNO sámeprošeakta"
+			"WMNO sámeprošeakta",
+			"Pppery"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Fáddariid gozihanpanela",
@@ -64,7 +65,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Gaskkalduhte",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Boddu",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Jus {{GENDER:|don}} it sáhte leat fáttar dihto áigodagas (guhkit go vahkku), de sáhtát iežat merket jávkkusin. Dán áigodagas mannet du fáttarmánáid gažaldagat eará fáddariidda.",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Don jávkat: ",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "Don jávkat:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "beaivvit",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Dovdameahttun meattáhus iđii. Geahččal fas maŋŋel.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Du dilli rievdaduvvui «Aktiivvalažžan».",
