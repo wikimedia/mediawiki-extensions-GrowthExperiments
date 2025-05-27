@@ -1,8 +1,8 @@
 <?php
 
-namespace GrowthExperiments\Config\Schemas;
+namespace GrowthExperiments\Config\Schemas\Migrations;
 
-use GrowthExperiments\Config\Schemas\Converters\SuggestedEditsSchemaConverter_2_0_0;
+use GrowthExperiments\Config\Schemas\GrowthDefinitions;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
@@ -10,12 +10,11 @@ use MediaWiki\Extension\CommunityConfiguration\Controls\PageTitlesControl;
 use MediaWiki\Extension\CommunityConfiguration\Schema\JsonSchema;
 use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefinitions;
 
+// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
-class SuggestedEditsSchema extends JsonSchema {
-	public const VERSION = '2.0.0';
-	public const SCHEMA_PREVIOUS_VERSION = '1.0.0';
-	public const SCHEMA_CONVERTER = SuggestedEditsSchemaConverter_2_0_0::class;
-
+class SuggestedEditsSchema_1_0_0 extends JsonSchema {
+	public const VERSION = '1.0.0';
+	public const SCHEMA_NEXT_VERSION = '2.0.0';
 	public const MAX_INFOBOX_TEMPLATES = 800;
 	public const GEInfoboxTemplates = [
 		self::TYPE => self::TYPE_ARRAY,
@@ -154,12 +153,6 @@ class SuggestedEditsSchema extends JsonSchema {
 				],
 				self::MINIMUM => 0,
 				self::MAXIMUM => 1,
-			],
-			'maximumEditsTaskIsAvailable' => [
-				self::TYPE => self::TYPE_INTEGER,
-				self::DEFAULT => 100,
-				self::MINIMUM => 10,
-				self::MAXIMUM => 500,
 			],
 		],
 	];
