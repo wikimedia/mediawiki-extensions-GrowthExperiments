@@ -17,7 +17,8 @@
 			"Zapipedia (WMF)",
 			"ZebaX2010",
 			"IZapico (WMF)",
-			"PoLuX124"
+			"PoLuX124",
+			"JaimeDes"
 		]
 	},
 	"growthexperiments-desc": "Esta extensión contiene experimentos llevados a cabo por el \"Growth team\" de la Fundación Wikimedia.",
@@ -231,7 +232,7 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "La tarea está desactivada.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-excludedtemplates-label": "Artículos que contengan plantillas definidas aquí no se mostrarán a como tareas para este tipo de tarea",
 	"communityconfiguration-growthsuggestededits-link_recommendation-excludedcategories-label": "Artículos que contengan categorías definidas aquí, no se mostrarán como tarea para este tipo de tarea",
-	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Página de destino para aprender más sobre cómo agregar agregar enlace.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Página de destino para aprender más sobre cómo agregar agregar enlaces del tipo tarea.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumlinkstoshowpertask-label": "Número máximo de enlaces a mostrar por tarea",
 	"communityconfiguration-growthsuggestededits-link_recommendation-excludedsections-label": "Lista de secciones excluidas de la tarea Añadir un enlace",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maxtasksperday-label": "El número máximo de tareas sugeridas \"Añadir un enlace\" que una persona recién llegada puede completar diariamente.",

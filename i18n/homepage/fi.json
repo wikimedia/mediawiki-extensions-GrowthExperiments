@@ -425,7 +425,7 @@
 	"growthexperiments-addlink-summary-title": "Yhteenveto",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Ehdotus",
 	"growthexperiments-addlink-summary-column-header-linked": "Linkitetty?",
-	"growthexperiments-addlink-summary-copyrightwarning": "Julkaisemalla muutokset {{GENDER:|hyväksyt}} [https://foundation.wikimedia.org/wiki/Terms_of_Use-käyttöehdot] ja {{GENDER:|suostut}} muokkaustesi julkaisemiseen [https://creativecommons.org/ licences/by-sa/4.0/ CC BY-SA 4.0] ja [https://www.gnu.org/licenses/fdl-1.3.html GFDL 1.3] -lisensseillä.",
+	"growthexperiments-addlink-summary-copyrightwarning": "Julkaisemalla muutokset hyväksyt [https://foundation.wikimedia.org/wiki/Terms_of_Use käyttöehdot] ja suostut muokkaustesi julkaisemiseen [https://creativecommons.org/licenses/by-sa/4.0/ CC BY-SA 4.0] ja [https://www.gnu.org/licenses/fdl-1.3.html GFDL 1.3] -lisensseillä.",
 	"growthexperiments-addlink-summary-summary": "Linkkiehdotustoiminto: $1 {{PLURAL:$1|linkki|linkkiä}} lisätty.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Olet}} ohittanut kaikki ehdotukset tässä artikkelissa.",
 	"growthexperiments-addlink-skip-body": "Oletko varma, {{GENDER:|ettet}} halua hyväksyä tai hylätä yhtään ehdotusta?",

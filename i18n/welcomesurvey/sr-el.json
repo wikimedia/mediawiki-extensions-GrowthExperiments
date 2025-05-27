@@ -41,6 +41,9 @@
 	"welcomesurvey-question-languages-label": "Projekat {{SITENAME}} je dostupan na više od 300 jezika. Znate li još neke jezike?",
 	"welcomesurvey-question-languages-placeholder": "Dodajte najviše {{PLURAL:$1|jedan jezik|$1 jezika}}…",
 	"welcomesurvey-question-languages-maximum": "Dodali ste najveći mogući broj jezika.",
+	"welcomesurvey-reminder-link": "Anketa",
+	"welcomesurvey-reminder-dismiss": "Odbaci",
 	"welcomesurvey-mideditsignup-title": "Dobro došli, $1!",
+	"welcomesurvey-mideditsignup-button-homepage": "Početna",
 	"welcomesurvey-mideditsignup-button-close": "Zatvori"
 }
