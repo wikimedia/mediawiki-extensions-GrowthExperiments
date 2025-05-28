@@ -237,5 +237,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Beeinflusst die Priorisierung von Artikeln mit unzureichenden Links. Dieses Feld erfordert einen Prozentsatz in Dezimalform, die Zahl sollte also zwischen 0 und 1 liegen. Je mehr {{GENDER:|du}} diese Zahl erhöhst, desto wahrscheinlicher ist es, dass neue Benutzer Vorschläge für Artikel mit unzureichenden Links erhalten.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Mindestens erforderlicher Link-Score",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Mindestsicherheitsschwelle, um eine Link-Empfehlung vorzuschlagen. Dieses Feld erfordert einen Prozentsatz in Dezimalform, die Zahl sollte also zwischen 0 und 1 liegen. Wenn {{GENDER:|du}} die Zahl erhöhst, ist die Wahrscheinlichkeit höher, dass die dem Endbenutzer präsentierten Vorschläge gute Vorschläge sind, es sind jedoch weniger Vorschläge verfügbar. Wenn du die Zahl verringerst, sind zwar mehr Vorschläge verfügbar, bei einigen ist die Wahrscheinlichkeit jedoch geringer, dass es sich um qualitativ hochwertige Vorschläge handelt.",
-	"growthexperiments-addlink-done-button": "Fertig"
+	"growthexperiments-addlink-done-button": "Fertig",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Die maximale Anzahl von Bearbeitungen, bevor die vorgeschlagenen Aufgaben vom Typ „Link hinzufügen“ für Neulinge nicht mehr verfügbar sind"
 }
