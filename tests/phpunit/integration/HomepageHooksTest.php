@@ -130,20 +130,10 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	public static function provideTestNewUserProperties() {
 		return [
 			[ true, true, IMentorManager::MENTORSHIP_ENABLED, [
-				'GEHomepageNewAccountEnablePercentage' => 100,
 				'GEMentorshipNewAccountEnablePercentage' => 100,
 			] ],
 			[ true, true, IMentorManager::MENTORSHIP_DISABLED, [
-				'GEHomepageNewAccountEnablePercentage' => 100,
 				'GEMentorshipNewAccountEnablePercentage' => 0,
-			] ],
-			[ false, false, IMentorManager::MENTORSHIP_ENABLED, [
-				'GEHomepageNewAccountEnablePercentage' => 0,
-				'GEMentorshipNewAccountEnablePercentage' => 0,
-			] ],
-			[ false, false, IMentorManager::MENTORSHIP_ENABLED, [
-				'GEHomepageNewAccountEnablePercentage' => 0,
-				'GEMentorshipNewAccountEnablePercentage' => 100,
 			] ],
 		];
 	}

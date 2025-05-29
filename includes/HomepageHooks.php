@@ -133,14 +133,6 @@ class HomepageHooks implements
 	public const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
 	private const VE_PREF_DISABLE_BETA = 'visualeditor-betatempdisable';
 	private const VE_PREF_EDITOR = 'visualeditor-editor';
-
-	public const GROWTH_FORCE_OPTIN = 1;
-	public const GROWTH_FORCE_OPTOUT = 2;
-	public const GROWTH_FORCE_NONE = 3;
-
-	/** @var string Query string used on Special:CreateAccount to force enable/disable Growth features */
-	public const REGISTRATION_GROWTHEXPERIMENTS_ENABLED = 'geEnabled';
-
 	private Config $config;
 	private UserOptionsManager $userOptionsManager;
 	private UserOptionsLookup $userOptionsLookup;
@@ -756,34 +748,11 @@ class HomepageHooks implements
 				'default' => $geForceVariant,
 			];
 		}
-
-		$formDescriptor[self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED] = [
-			'type' => 'hidden',
-			'name' => self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED,
-			'default' => $request->getInt( self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED, -1 )
-		];
 	}
 
 	/**
-	 * Check if a user opted-in or opted-out from Growth features
-	 *
-	 * @return int One of GROWTH_FORCE_* constants
-	 */
-	public static function getGrowthFeaturesOptInOptOutOverride(): int {
-		$enableGrowthFeatures = RequestContext::getMain()
-			->getRequest()
-			->getInt( self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED, -1 );
-		if ( $enableGrowthFeatures === 1 ) {
-			return self::GROWTH_FORCE_OPTIN;
-		} elseif ( $enableGrowthFeatures === 0 ) {
-			return self::GROWTH_FORCE_OPTOUT;
-		} else {
-			return self::GROWTH_FORCE_NONE;
-		}
-	}
-
-	/**
-	 * Enable the homepage for a percentage of new local accounts.
+	 * Enable Growth features for all new local accounts.
+	 * Growth features are now enabled for 100% of new users.
 	 *
 	 * @param User $user
 	 * @param bool $autocreated
@@ -796,145 +765,116 @@ class HomepageHooks implements
 
 		$geForceVariant = RequestContext::getMain()->getRequest()
 			->getVal( 'geForceVariant' );
-		$growthOptInOptOutOverride = self::getGrowthFeaturesOptInOptOutOverride();
+		$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_ENABLE, 1 );
+		$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_PT_LINK, 1 );
+		// Default option is that the user has seen the tours/notices (so we don't prompt
+		// existing users to view them). We set the option to false on new user accounts
+		// so they see them once (and then the option gets reset for them).
+		$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HELP_PANEL, 0 );
+		$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP, 0 );
+		$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
+		$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
+		$this->userOptionsManager->setOption( $user, self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 0 );
 
-		if ( $growthOptInOptOutOverride === self::GROWTH_FORCE_OPTOUT ) {
-			// Growth features cannot be enabled, short-circuit
-			return;
+		if (
+			$this->config->get( 'GEHelpPanelNewAccountEnableWithHomepage' )
+		) {
+			$this->userOptionsManager->setOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 		}
 
-		// Enable the homepage for a percentage of non-autocreated users.
-		$enablePercentage = $this->config->get( 'GEHomepageNewAccountEnablePercentage' );
+		// Mentorship
+		$mentorshipEnablePercentage = $this->config->get( 'GEMentorshipNewAccountEnablePercentage' );
+		if ( rand( 0, 99 ) >= $mentorshipEnablePercentage ) {
+			// the default value is enabled, to avoid removing mentorship from someone who used
+			// to have it. Only setOption if the result is "do not enable".
+			$this->userOptionsManager->setOption(
+				$user,
+				MentorManager::MENTORSHIP_ENABLED_PREF,
+				IMentorManager::MENTORSHIP_DISABLED
+			);
+		}
 		$wiki = WikiMap::getCurrentWikiId();
-		if (
-			$growthOptInOptOutOverride === self::GROWTH_FORCE_OPTIN ||
-			$geForceVariant !== null ||
-			rand( 0, 99 ) < $enablePercentage
-		) {
-			$this->statsFactory
-				->withComponent( 'GrowthExperiments' )
-				->getCounter( 'users_opted_into_growth_features_total' )
-				->setLabel( 'wiki', $wiki )
-				->copyToStatsdAt( $wiki . '.GrowthExperiments.UsersOptedIntoGrowthFeatures' )
-				->increment();
-			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_ENABLE, 1 );
-			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_PT_LINK, 1 );
-			// Default option is that the user has seen the tours/notices (so we don't prompt
-			// existing users to view them). We set the option to false on new user accounts
-			// so they see them once (and then the option gets reset for them).
-			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HELP_PANEL, 0 );
-			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP, 0 );
-			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
-			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
-			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 0 );
-
-			if (
-				$this->config->get( 'GEHelpPanelNewAccountEnableWithHomepage' )
+		// Variant assignment for forced variants and variant metric logging. Wrapped in a deferred update because
+		// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
+		// not guaranteed. This is necessary so the getOption call to the USER_PREFERENCE has a chance to retrieve
+		// a valid central user id. See also hook in ExperimentsHooks.php determining which a variant to assign
+		DeferredUpdates::addCallableUpdate( function () use ( $user, $geForceVariant, $wiki ) {
+			// Get the variant assigned by ExperimentUserDefaultsManager
+			$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
+			// Maybe override variant with query parameter
+			if ( $geForceVariant !== null
+				&& $this->experimentUserManager->isValidVariant( $geForceVariant )
+				&& $geForceVariant !== $variant
 			) {
-				$this->userOptionsManager->setOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
+				$variant = $geForceVariant;
+				$this->experimentUserManager->setVariant( $user, $variant );
+				$this->userOptionsManager->saveOptions( $user );
 			}
 
-			// Mentorship
-			$mentorshipEnablePercentage = $this->config->get( 'GEMentorshipNewAccountEnablePercentage' );
-			if ( rand( 0, 99 ) >= $mentorshipEnablePercentage ) {
-				// the default value is enabled, to avoid removing mentorship from someone who used
-				// to have it. Only setOption if the result is "do not enable".
-				$this->userOptionsManager->setOption(
-					$user,
-					MentorManager::MENTORSHIP_ENABLED_PREF,
-					IMentorManager::MENTORSHIP_DISABLED
-				);
-			}
+			$this->growthInteractionLogger->log( $user, 'experiment_enrollment', [
+				'action_source' => 'LocalUserCreatedHook',
+				'variant' => $variant
+			] );
 
-			// Variant assignment for forced variants and variant metric logging. Wrapped in a deferred update because
-			// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
-			// not guaranteed. This is necessary so the getOption call to the USER_PREFERENCE has a chance to retrieve
-			// a valid central user id. See also hook in ExperimentsHooks.php determining which a variant to assign
-			DeferredUpdates::addCallableUpdate( function () use ( $user, $geForceVariant, $wiki ) {
-				// Get the variant assigned by ExperimentUserDefaultsManager
-				$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
-				// Maybe override variant with query parameter
-				if ( $geForceVariant !== null
-					&& $this->experimentUserManager->isValidVariant( $geForceVariant )
-					&& $geForceVariant !== $variant
-				) {
-					$variant = $geForceVariant;
-					$this->experimentUserManager->setVariant( $user, $variant );
-					$this->userOptionsManager->saveOptions( $user );
-				}
-
-				$this->growthInteractionLogger->log( $user, 'experiment_enrollment', [
-					'action_source' => 'LocalUserCreatedHook',
-					'variant' => $variant
-				] );
-
-				$this->statsFactory
-					->withComponent( 'GrowthExperiments' )
-					->getCounter( 'user_variant_total' )
-					->setLabel( 'wiki', $wiki )
-					->setLabel( 'variant', $variant )
-					->copyToStatsdAt( $wiki . '.GrowthExperiments.UserVariant.' . $variant )
-					->increment();
-			} );
-
-			// Place an empty user impact object in the database table cache, to avoid
-			// making an extra HTTP request on first visit to Special:Homepage.
-			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-				$userImpact = $this->userImpactLookup->getExpensiveUserImpact(
-					$user,
-					IDBAccessObject::READ_LATEST
-				);
-				if ( $userImpact ) {
-					$this->userImpactStore->setUserImpact( $userImpact );
-				}
-			} );
-
-			if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
-				// Populate the cache of tasks with default task/topic selections
-				// so that when the user lands on Special:Homepage, the request to retrieve tasks
-				// will pull from the cached TaskSet instead of doing time consuming search queries.
-				// With nuances in how mobile/desktop users are onboarded, this may not be always
-				// necessary but does no harm to run for all newly created users.
-				DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-					$taskSuggester = $this->taskSuggesterFactory->create();
-					$taskSuggester->suggest(
-						$user,
-						new TaskSetFilters(
-							$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-							$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
-							$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
-						)
-					);
-				} );
-
-				$jobQueue = $this->jobQueueGroup->get( NotificationKeepGoingJob::JOB_NAME );
-				if ( LevelingUpManager::isEnabledForAnyone( $this->config ) &&
-					$jobQueue->delayedJobsEnabled() ) {
-					$this->jobQueueGroup->lazyPush(
-						new JobSpecification( NotificationKeepGoingJob::JOB_NAME, [
-							'userId' => $user->getId(),
-							// Process the job X seconds after account creation (default: 48 hours)
-							'jobReleaseTimestamp' => (int)wfTimestamp() +
-								$this->config->get( 'GELevelingUpKeepGoingNotificationSendAfterSeconds' )
-						] )
-					);
-					$this->jobQueueGroup->lazyPush(
-						new JobSpecification( NotificationGetStartedJob::JOB_NAME, [
-							'userId' => $user->getId(),
-							// Process the job X seconds after account creation (configured in extension.json)
-							'jobReleaseTimestamp' => (int)wfTimestamp() +
-								$this->config->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' )
-						] )
-					);
-				}
-			}
-		} else {
 			$this->statsFactory
 				->withComponent( 'GrowthExperiments' )
-				->getCounter( 'users_not_opted_into_growth_features_total' )
+				->getCounter( 'user_variant_total' )
 				->setLabel( 'wiki', $wiki )
-				->copyToStatsdAt( $wiki . '.GrowthExperiments.UsersNotOptedIntoGrowthFeatures' )
+				->setLabel( 'variant', $variant )
+				->copyToStatsdAt( $wiki . '.GrowthExperiments.UserVariant.' . $variant )
 				->increment();
+		} );
+
+		// Place an empty user impact object in the database table cache, to avoid
+		// making an extra HTTP request on first visit to Special:Homepage.
+		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+			$userImpact = $this->userImpactLookup->getExpensiveUserImpact(
+				$user,
+				IDBAccessObject::READ_LATEST
+			);
+			if ( $userImpact ) {
+				$this->userImpactStore->setUserImpact( $userImpact );
+			}
+		} );
+
+		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
+			// Populate the cache of tasks with default task/topic selections
+			// so that when the user lands on Special:Homepage, the request to retrieve tasks
+			// will pull from the cached TaskSet instead of doing time consuming search queries.
+			// With nuances in how mobile/desktop users are onboarded, this may not be always
+			// necessary but does no harm to run for all newly created users.
+			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+				$taskSuggester = $this->taskSuggesterFactory->create();
+				$taskSuggester->suggest(
+					$user,
+					new TaskSetFilters(
+						$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+						$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
+						$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
+					)
+				);
+			} );
+
+			$jobQueue = $this->jobQueueGroup->get( NotificationKeepGoingJob::JOB_NAME );
+			if ( LevelingUpManager::isEnabledForAnyone( $this->config ) &&
+				$jobQueue->delayedJobsEnabled() ) {
+				$this->jobQueueGroup->lazyPush(
+					new JobSpecification( NotificationKeepGoingJob::JOB_NAME, [
+						'userId' => $user->getId(),
+						// Process the job X seconds after account creation (default: 48 hours)
+						'jobReleaseTimestamp' => (int)wfTimestamp() +
+							$this->config->get( 'GELevelingUpKeepGoingNotificationSendAfterSeconds' )
+					] )
+				);
+				$this->jobQueueGroup->lazyPush(
+					new JobSpecification( NotificationGetStartedJob::JOB_NAME, [
+						'userId' => $user->getId(),
+						// Process the job X seconds after account creation (configured in extension.json)
+						'jobReleaseTimestamp' => (int)wfTimestamp() +
+							$this->config->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' )
+					] )
+				);
+			}
 		}
 	}
 
