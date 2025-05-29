@@ -95,7 +95,7 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "المشاهدات على المقالات المعدّلة",
 	"growthexperiments-homepage-impact-scores-edit-count": "إجمالي التعديلات",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "التعديلات المسترجعة",
-	"growthexperiments-homepage-impact-scores-thanks-count": "الشّكر المُتَلقّى",
+	"growthexperiments-homepage-impact-scores-thanks-count": "شكرا جزيلا",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "مزيد من المعلومات حول كيفية الشكر",
 	"growthexperiments-homepage-impact-scores-thanks-info-text": "تم إنشاء {{SITENAME}} بواسطة مجتمع من المحررين مثلك {{GENDER:$1|أنت}}. {{GENDER:$1|قد يتم شكرك}} من قِبل مساهمين آخرين لتعديل {{GENDER:$1|قمت بإنشائه}} و{{GENDER:$1|يمكنك}} أيضًا شكر الآخرين على تعديلاتهم. سيتضمن المقياس فقط الشكر الذي {{GENDER:|تلقيته}} على أحدث $2 تعديلات.",
 	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "تم إنشاء {{SITENAME}} بواسطة مجتمع من المحررين. قد يتم شكر أي مساهم من قبل شخص آخر على التعديل. يتم عرض عدد الشكر المستلم هنا. سيتضمن المقياس فقط الشكر الذي {{GENDER:|تلقيته}} على أحدث $1 تعديلات.",
