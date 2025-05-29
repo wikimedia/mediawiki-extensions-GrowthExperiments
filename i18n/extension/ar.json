@@ -231,5 +231,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "يؤثر على كيفية تحديد أولويات المقالات قليلة الروابط. يتطلب هذا الحقل نسبة مئوية في شكلها العشري، لذا يجب أن يكون الرقم بين 0 و1. كلما {{GENDER:|زدت}} هذا الرقم، زاد احتمال تلقي الوافدين الجدد اقتراحات المقالات ذات الروابط القليلة.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "الحد الأدنى للنقاط المطلوبة للربط",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "الحد الأدنى من الثقة لاقتراح رابط. يتطلب هذا الحقل نسبة مئوية في شكلها العشري، لذا يجب أن يكون الرقم بين 0 و1. إذا  {{GENDER:|زدت}} العدد، سيكون للاقتراحات المقدمة للمستخدم النهائي احتمالية أكبر لأن تكون اقتراحات جيدة، ولكن سيكون هناك عدد أقل من الاقتراحات المتاحة. إذا قمت بتقليل العدد، فسيكون هناك المزيد من الاقتراحات المتاحة ولكن سيكون لدى بعضها احتمالية أقل لأن تكون اقتراحات جيدة الجودة.",
-	"growthexperiments-addlink-done-button": "تم"
+	"growthexperiments-addlink-done-button": "تم",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "لم يعد الحد الأقصى لعدد التعديلات قبل المهام المقترحة \"إضافة رابط\" متاحًا للمبتدئين"
 }
