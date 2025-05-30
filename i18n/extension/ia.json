@@ -227,5 +227,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Affecta le prioritate de articulos con insufficiente ligamines. Iste campo require un percentage in su forma decimal. Le numero debe dunque esser inter 0 e 1. Quanto plus tu augmenta iste numero, tanto plus probabile essera que le novicios recipera suggestiones de articulos con insufficiente ligamines.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Score de ligamine minime requirite",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Nivello minime de confidentia pro suggestiones de ligamines. Iste campo require un percentage in su forma decimal. Le numero debe dunque esser inter 0 e 1. Si tu augmenta le numero, le suggestiones presentate al usator habera un major probabilitate de esser bon suggestiones, ma minus suggestiones essera disponibile. Si tu diminue le numero, il habera plus suggestiones disponibile ma con un minor probabilitate de esser suggestiones de bon qualitate.",
-	"growthexperiments-addlink-done-button": "Facite"
+	"growthexperiments-addlink-done-button": "Facite",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Le numero maxime de modificationes ante le actiones suggerite “Adder un ligamine” non es plus disponibile pro le novicios"
 }
