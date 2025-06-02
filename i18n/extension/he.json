@@ -227,5 +227,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "זה משפיע על סדר העדיפויות של ערכים עם מעט מדי קישורים. השדה הזה דורש אחוז בצורתו העשרונית, כך שהמספר צריך להיות בין 0 ל־1. ככל {{GENDER:|שתגדיל|שתגדילי}} את המספר הזה, כך יגדל הסיכוי שמצטרפים חדשים יקבלו הצעות לערך עם מעט מדי קישורים.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "דירוג קישור מינימלי נדרש",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "סף ביטחון מינימלי להצעות קישור. השדה הזה מחייב אחוז בצורתו העשרונית, כך שהמספר צריך להיות בין 0 ל־1. אם {{GENDER:|תגדיל|תגדילי}} את המספר, תהיה סבירות גבוהה יותר שהצעות שמוצגות למשתמש הקצה יהיו טובות, אבל יהיו זמינות פחות הצעות. אם {{GENDER:|תקטין|תקטיני}} את המספר, יהיו זמינות הצעות נוספות, אך לחלקן תהיה סבירות נמוכה יותר להיות הצעות באיכות טובה.",
-	"growthexperiments-addlink-done-button": "בוצע"
+	"growthexperiments-addlink-done-button": "בוצע",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "מספר העריכות המרבי עד שמשימות מוצעות מסוג \"הוסףת קישור\" אינן זמין עוד למשתמשים חדשים."
 }
