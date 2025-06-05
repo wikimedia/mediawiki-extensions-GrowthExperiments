@@ -93,6 +93,12 @@ class FixLinkRecommendationData extends Maintenance {
 
 	public function init(): void {
 		$services = $this->getServiceContainer();
+		$wiki = WikiMap::getCurrentWikiId();
+		if ( !$services->getMainConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
+			$this->output( "Skipping $wiki: GENewcomerTasksLinkRecommendationsEnabled is false.\n" );
+			return;
+		}
+
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		if ( $this->hasOption( 'db-table' )
 			&& !$this->hasOption( 'dry-run' )
@@ -108,8 +114,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 
 		if (
-			$configurationLoader instanceof CommunityConfigurationLoader &&
-			$services->getMainConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
+			$configurationLoader instanceof CommunityConfigurationLoader
 		) {
 			// Pretend link-recommendation is enabled (T371316)
 			// Task suggester is not be adapted to query disabled task types.
@@ -125,7 +130,6 @@ class FixLinkRecommendationData extends Maintenance {
 		$taskTypes = $configurationLoader->getTaskTypes();
 		$linkRecommendationTaskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
 		if ( !$linkRecommendationTaskType instanceof LinkRecommendationTaskType ) {
-			$wiki = WikiMap::getCurrentWikiId();
 			$type = get_debug_type( $linkRecommendationTaskType );
 			$this->fatalError( "$wiki: '$type' is not a link recommendation task type" );
 		}
