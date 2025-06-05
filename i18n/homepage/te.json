@@ -5,7 +5,8 @@
 			"Bvprasadenwiki",
 			"Chaduvari",
 			"V Bhavya",
-			"Veeven"
+			"Veeven",
+			"Rajadvamshi"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{bidi:$1}} గారూ, {{GENDER:$1|స్వాగతం}}!",
@@ -589,7 +590,7 @@
 	"growthexperiments-homepage-mentorship-about-optout-par1": "ఇప్పుడు {{GENDER:|మీకు}} కేటాయించిన గురువు {{GENDER:|మీకు}} వద్దనుకుంటే, కింది బొత్తామును నొక్కండి. ఎప్పుడైనా {{GENDER:|మీరు}} {{GENDER:|మీ}} మనసు మార్చుకుంటే కొత్త గురువు {{GENDER:|మీకు}} లభిస్తారు.",
 	"growthexperiments-homepage-mentorship-about-done": "అయిపోయింది",
 	"growthexperiments-homepage-special-contribute-title": "దిద్దుబాటు సూచనలు",
-	"growthexperiments-homepage-special-contribute-description": "వ్యాసాల్లో చిన్నవి, తేలికైన మార్పులు చెయ్యండి (ఉదాహరణకు ఒక లింకును చేర్చడం, భాషా దోషాలను సవరించడం వంటివి)",
+	"growthexperiments-homepage-special-contribute-description": "కథనాలను మెరుగుపరచడానికి చిన్నవి, తేలికైన మార్పులు చెయ్యండి (ఉదా. జోడి చేర్చడం, భాషా దోషాలను సవరించడం)",
 	"growthexperiments-homepage-special-contribute-cta": "దిద్దుబాటు సూచనలను చూడండి",
 	"growthexperiments-levelingup-getstarted-notification-header": "{{GENDER:$2|మీ}} దిద్దుబాటు నైపుణ్యాలను పెంచుకునేందుకు, సూచించిన దిద్దుబాట్లు చేసే ప్రయత్నం చెయ్యండి",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "సూచించిన దిద్దుబాట్లను ప్రయత్నించండి",
