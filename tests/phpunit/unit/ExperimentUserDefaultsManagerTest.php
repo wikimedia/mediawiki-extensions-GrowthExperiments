@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\ExperimentUserDefaultsManager;
 use MediaWiki\User\CentralId\CentralIdLookup;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -24,7 +25,7 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 	 * @param array $bucketConfig Array of bucket condition descriptors in the form
 	 * [ BUCKET_NAME, [ CUCOND_BUCKET_BY_USER_ID, EXPERIMENT_NAME, BUCKET_PERCENTAGE ] ]
 	 */
-	public function testShouldAssignGlobalBucket( array $users, array $bucketConfig, array $expected ) {
+	public function testShouldAssignGlobalBucket( array $users, array $bucketConfig, array $expected ): void {
 		$centralIdLookup = $this->createMock( CentralIdLookup::class );
 		$userIdentityUtils = $this->createMock( UserIdentityUtils::class );
 		$manager = $this->getExperimentUserManager( $centralIdLookup, $userIdentityUtils );
@@ -33,10 +34,14 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 		foreach ( $bucketConfig as $bucket ) {
 			$results[$bucket[0]] = 0;
 		}
+		$userNameIdMap = array_reduce( $users, static function ( $carry, UserIdentity $user ) {
+			$carry[$user->getName()] = $user->getId();
+			return $carry;
+		}, [] );
 		$centralIdLookup->expects( $this->atLeastOnce() )
-			->method( 'centralIdFromLocalUser' )
-			->willReturnCallback( static function ( UserIdentityValue $user ) {
-				return $user->getId();
+			->method( 'centralIdFromName' )
+			->willReturnCallback( static function ( $userName ) use ( $userNameIdMap ) {
+				return $userNameIdMap[$userName];
 			} );
 
 		$userIdentityUtils
@@ -239,7 +244,7 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 	 */
 	private static function getUserSample( int $seed = 0, int $size = 10 ): array {
 		return array_map( static function ( int $userId ) use ( $seed ) {
-			return new UserIdentityValue( $seed + $userId, 'test user', false );
+			return new UserIdentityValue( $seed + $userId, "test user $userId", false );
 		}, range( 1, $size ) );
 	}
 

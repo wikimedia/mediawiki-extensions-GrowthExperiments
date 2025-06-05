@@ -53,9 +53,9 @@ class ExperimentUserDefaultsManager {
 			return false;
 		}
 		$centralIdLookupCallback = $this->centralIdLookupCallback;
-		/** @var CentralIdLookup */
+		/** @var $centralIdLookup CentralIdLookup */
 		$centralIdLookup = $centralIdLookupCallback();
-		$userCentralId = $centralIdLookup->centralIdFromLocalUser( $userIdentity );
+		$userCentralId = $centralIdLookup->centralIdFromName( $userIdentity->getName() );
 		if ( $userCentralId === 0 ) {
 			// CentralIdLookup is documented to return a zero on failure
 			// TODO: Increase severity back to error, once it stops happening so frequently (T380271)
