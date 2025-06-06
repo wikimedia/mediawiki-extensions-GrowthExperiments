@@ -238,6 +238,12 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Help text for Suggested Edits in Community configuration.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Field label for Suggested Edits in Community configuration",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Help text for Suggested Edits in Community configuration.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Field label for Suggested Edits form in Community configuration, informs that \"Add a link\" task will not be restricted",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "Field label for Suggested Edits form in Community configuration, informs about the number of total edits \"Add a link\" task will be restricted",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Field label for Suggested Edits form in Community configuration, informs about the number of total edits \"Add a link\" task will be restricted",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "Field label for Suggested Edits form in Community configuration, informs about the number of total edits \"Add a link\" task will be restricted",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "Field label for Suggested Edits form in Community configuration, informs about the number of total edits \"Add a link\" task will be restricted",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "Field label for Suggested Edits form in Community configuration, informs about the number of total edits \"Add a link\" task will be restricted",
 	"growthexperiments-addlink-done-button": "Label for the completion button in the AddLink dialog when the user has rejected at least one link suggestion and accepted none. This replaces the default 'Publish changes' label in this specific scenario.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Label for a configuration option that sets the maximum number of edits a user can make before the 'Add a link' suggested task becomes unavailable to them."
 }

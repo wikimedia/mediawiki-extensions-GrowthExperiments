@@ -2,120 +2,120 @@
 // phpcs:ignoreFile
 // This file was automatically generated. Please update it via extensions/CommunityConfiguration/UpdateEmergencyDefaults.php maintenance script
 return (object) array(
-   'GEInfoboxTemplates' =>
+   'GEInfoboxTemplates' => 
   array (
   ),
-   'copyedit' =>
+   'copyedit' => 
   (object) array(
      'disabled' => false,
-     'templates' =>
+     'templates' => 
     array (
     ),
-     'excludedTemplates' =>
+     'excludedTemplates' => 
     array (
     ),
-     'excludedCategories' =>
+     'excludedCategories' => 
     array (
     ),
      'learnmore' => '',
   ),
-   'expand' =>
+   'expand' => 
   (object) array(
      'disabled' => false,
-     'templates' =>
+     'templates' => 
     array (
     ),
-     'excludedTemplates' =>
+     'excludedTemplates' => 
     array (
     ),
-     'excludedCategories' =>
+     'excludedCategories' => 
     array (
     ),
      'learnmore' => '',
   ),
-   'links' =>
+   'links' => 
   (object) array(
      'disabled' => false,
-     'templates' =>
+     'templates' => 
     array (
     ),
-     'excludedTemplates' =>
+     'excludedTemplates' => 
     array (
     ),
-     'excludedCategories' =>
+     'excludedCategories' => 
     array (
     ),
      'learnmore' => '',
   ),
-   'references' =>
+   'references' => 
   (object) array(
      'disabled' => false,
-     'templates' =>
+     'templates' => 
     array (
     ),
-     'excludedTemplates' =>
+     'excludedTemplates' => 
     array (
     ),
-     'excludedCategories' =>
+     'excludedCategories' => 
     array (
     ),
      'learnmore' => '',
   ),
-   'update' =>
+   'update' => 
   (object) array(
      'disabled' => false,
-     'templates' =>
+     'templates' => 
     array (
     ),
-     'excludedTemplates' =>
+     'excludedTemplates' => 
     array (
     ),
-     'excludedCategories' =>
+     'excludedCategories' => 
     array (
     ),
      'learnmore' => '',
   ),
-   'image_recommendation' =>
+   'image_recommendation' => 
   (object) array(
      'disabled' => false,
-     'excludedTemplates' =>
+     'excludedTemplates' => 
     array (
     ),
-     'excludedCategories' =>
-    array (
-    ),
-     'learnmore' => '',
-     'maxTasksPerDay' => 25,
-  ),
-   'section_image_recommendation' =>
-  (object) array(
-     'disabled' => false,
-     'excludedTemplates' =>
-    array (
-    ),
-     'excludedCategories' =>
+     'excludedCategories' => 
     array (
     ),
      'learnmore' => '',
      'maxTasksPerDay' => 25,
   ),
-   'link_recommendation' =>
+   'section_image_recommendation' => 
   (object) array(
      'disabled' => false,
-     'excludedTemplates' =>
+     'excludedTemplates' => 
     array (
     ),
-     'excludedCategories' =>
+     'excludedCategories' => 
+    array (
+    ),
+     'learnmore' => '',
+     'maxTasksPerDay' => 25,
+  ),
+   'link_recommendation' => 
+  (object) array(
+     'disabled' => false,
+     'excludedTemplates' => 
+    array (
+    ),
+     'excludedCategories' => 
     array (
     ),
      'learnmore' => '',
      'maximumLinksToShowPerTask' => 3,
-     'excludedSections' =>
+     'excludedSections' => 
     array (
     ),
      'maxTasksPerDay' => 25,
      'underlinkedWeight' => 0.5,
      'minimumLinkScore' => 0.6,
-     'maximumEditsTaskIsAvailable' => 100,
+     'maximumEditsTaskIsAvailable' => 'no',
   ),
 );

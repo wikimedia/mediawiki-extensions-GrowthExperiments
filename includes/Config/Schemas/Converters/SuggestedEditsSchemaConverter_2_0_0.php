@@ -8,7 +8,7 @@ use stdClass;
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
 class SuggestedEditsSchemaConverter_2_0_0 implements ISchemaConverter {
 	public function upgradeFromOlder( stdClass $data ): stdClass {
-		$data->link_recommendation->maximumEditsTaskIsAvailable = 100;
+		$data->link_recommendation->maximumEditsTaskIsAvailable = 'no';
 		return $data;
 	}
 
