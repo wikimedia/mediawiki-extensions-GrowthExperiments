@@ -88,6 +88,25 @@ class BeforePageDisplayHookHandler implements BeforePageDisplayHook {
 			return;
 		}
 
+		$linkRecommendationTaskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID];
+		$pageCategories = [];
+		foreach ( $out->getWikiPage()->getCategories() as $categoryTitle ) {
+			$pageCategories[] = $categoryTitle->getDBkey();
+		}
+		$excludedCategories = $linkRecommendationTaskType->getExcludedCategories();
+		if ( array_intersect( $pageCategories, $excludedCategories ) ) {
+			return;
+		}
+
+		$excludedTemplates = $linkRecommendationTaskType->getExcludedTemplates();
+		$numberOfExcludedTemplatesOnPage = $this->linkRecommendationStore->getNumberOfExcludedTemplatesOnPage(
+			$page->getArticleID(),
+			$excludedTemplates
+		);
+		if ( $numberOfExcludedTemplatesOnPage !== 0 ) {
+			return;
+		}
+
 		$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
 		$this->growthInteractionLogger->log( $user, 'experiment_enrollment', [
 			'action_source' => 'BeforePageDisplayHook',

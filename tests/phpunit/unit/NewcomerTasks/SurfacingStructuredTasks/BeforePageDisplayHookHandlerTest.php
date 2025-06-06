@@ -15,6 +15,7 @@ use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Skin\Skin;
 use MediaWiki\Title\Title;
@@ -64,7 +65,7 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			$config,
 			$configurationLoader,
 			$this->getUserOptionsLookupMock(),
-			$this->getStubLinkRecommendationStore( $this->createMock( LinkRecommendation::class ) ),
+			$this->getStubLinkRecommendationStore(),
 			$this->createMock( GrowthExperimentsInteractionLogger::class )
 		);
 		$hookHandler->onBeforePageDisplay( $mockOutputPage, $skin );
@@ -75,69 +76,104 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			[ 'GESurfacingStructuredTasksEnabled' => false ],
 			null,
 			[],
-			null
+			null,
+			[],
 		];
 		yield 'temp or anon user' => [
 			[],
 			null,
 			[ 'isNamed' => false ],
-			null
+			null,
+			[],
 		];
 		yield 'protected page' => [
 			[],
 			null,
 			[ 'canEdit' => false ],
-			null
+			null,
+			[],
 		];
 		yield 'page not in main namespace' => [
 			[],
 			null,
 			[ 'getNamespace' => NS_HELP ],
-			null
+			null,
+			[],
 		];
 		yield 'editing the page' => [
 			[],
 			null,
 			[ 'action' => 'edit' ],
-			null
+			null,
+			[],
 		];
 		yield 'viewing a specific revision of the page' => [
 			[],
 			null,
 			[ 'oldid' => '12345' ],
-			null
+			null,
+			[],
 		];
 		yield 'viewing a diff of the page' => [
 			[],
 			null,
 			[ 'diff' => 'next' ],
-			null
+			null,
+			[],
 		];
 		yield 'editing the page with VisualEditor' => [
 			[],
 			null,
 			[ 'veaction' => 'edit' ],
-			null
+			null,
+			[],
 		];
 		yield 'user has reached the max of edits' => [
 			[],
 			null,
 			[ 'getEditCount' => BeforePageDisplayHookHandler::MAX_USER_EDITS ],
-			null
+			null,
+			[],
 		];
 		yield 'LinkRecommendations task being disabled in CommunityConfiguration' => [
 			[],
 			// no task types ⬇️
 			[],
 			[],
-			null
+			null,
+			[],
 		];
 		yield 'No recommendations for page' => [
 			[],
 			null,
 			[],
 			null,
-			false
+			[ 'getByPageId' => null ],
+		];
+
+		$taskTypes = [
+			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => new LinkRecommendationTaskType(
+				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
+				TaskType::DIFFICULTY_EASY,
+				[],
+				[],
+				[],
+				[ 'ExcludedCategory' ],
+			)
+		];
+		yield 'Page has excluded category' => [
+			[],
+			$taskTypes,
+			[ 'pageCategories' => [ 'ExcludedCategory' ] ],
+			null,
+			[],
+		];
+		yield 'Page has excluded template' => [
+			[],
+			null,
+			[],
+			null,
+			[ 'getNumberOfExcludedTemplatesOnPage' => 1 ],
 		];
 	}
 
@@ -149,7 +185,7 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		$configLoaderOverrides,
 		$outputPageOverrides,
 		$skinOverride,
-		$pageHasRecommendations = true
+		array $linkRecommendationStoreOverrides,
 	): void {
 		$config = $this->getConfig( $configOverrides );
 		$configurationLoader = $this->getConfigurationLoader( $configLoaderOverrides );
@@ -168,7 +204,7 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 			$configurationLoader,
 			$this->getUserOptionsLookupMock(),
 			$this->getStubLinkRecommendationStore(
-				$pageHasRecommendations ? $this->createMock( LinkRecommendation::class ) : null
+				$linkRecommendationStoreOverrides
 			),
 			$this->createMock( GrowthExperimentsInteractionLogger::class )
 		);
@@ -193,12 +229,22 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		] );
 	}
 
-	private function getStubLinkRecommendationStore( $returnValue ) {
+	private function getStubLinkRecommendationStore( array $overrides = [] ): LinkRecommendationStore {
 		$linkRecommendationStore = $this->createMock( LinkRecommendationStore::class );
 
 		$linkRecommendationStore
 			->method( 'getByPageId' )
-			->willReturn( $returnValue );
+			->willReturn(
+				array_key_exists( 'getByPageId', $overrides ) ?
+					$overrides['getByPageId'] :
+					$this->createMock( LinkRecommendation::class )
+		);
+		$linkRecommendationStore
+			->method( 'getNumberOfExcludedTemplatesOnPage' )
+			->willReturn(
+				$overrides['getNumberOfExcludedTemplatesOnPage'] ?? 0
+		);
+
 		return $linkRecommendationStore;
 	}
 
@@ -214,10 +260,24 @@ class BeforePageDisplayHookHandlerTest extends MediaWikiUnitTestCase {
 		$stubUser->method( 'probablyCan' )->willReturn( $overrides['canEdit'] ?? true );
 		$mockOutputPage->method( 'getUser' )->willReturn( $stubUser );
 
-		$stubWikipage = $this->createStub( Title::class );
-		$stubWikipage->method( 'getNamespace' )->willReturn( $overrides['getNamespace'] ?? NS_MAIN );
-		$stubWikipage->method( 'getArticleID' )->willReturn( 123 );
-		$mockOutputPage->method( 'getTitle' )->willReturn( $stubWikipage );
+		$stubTitle = $this->createStub( Title::class );
+		$stubTitle->method( 'getNamespace' )->willReturn( $overrides['getNamespace'] ?? NS_MAIN );
+		$stubTitle->method( 'getArticleID' )->willReturn( 123 );
+		$mockOutputPage->method( 'getTitle' )->willReturn( $stubTitle );
+
+		$stubWikipage = $this->createStub( WikiPage::class );
+		if ( isset( $overrides['pageCategories'] ) ) {
+			$getCategoriesReturnValue = [];
+			foreach ( $overrides['pageCategories'] as $categoryTitle ) {
+				$stubCategory = $this->createStub( Title::class );
+				$stubCategory->method( 'getDBkey' )->willReturn( $categoryTitle );
+				$getCategoriesReturnValue[] = $stubCategory;
+			}
+			$stubWikipage->method( 'getCategories' )->willReturn( $getCategoriesReturnValue );
+		} else {
+			$stubWikipage->method( 'getCategories' )->willReturn( [] );
+		}
+		$mockOutputPage->method( 'getWikiPage' )->willReturn( $stubWikipage );
 
 		$stubRequest = $this->createStub( WebRequest::class );
 		$stubRequest->method( 'getVal' )->willReturnMap( [
