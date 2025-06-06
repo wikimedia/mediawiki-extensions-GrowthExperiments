@@ -14,8 +14,10 @@ use MediaWiki\ChangeTags\ChangeTags;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Language\RawMessage;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageProps;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
@@ -44,6 +46,7 @@ class LinkRecommendationUpdater {
 	private PageProps $pageProps;
 	private ConfigurationLoader $configurationLoader;
 	private ChangeTagsStore $changeTagsStore;
+	private WikiPageFactory $wikiPageFactory;
 	private WeightedTagsUpdater $weightedTagsUpdater;
 	private LinkRecommendationStore $linkRecommendationStore;
 	private LinkRecommendationProvider $linkRecommendationProvider;
@@ -56,6 +59,7 @@ class LinkRecommendationUpdater {
 	 * @param NameTableStore $changeDefNameTableStore
 	 * @param PageProps $pageProps
 	 * @param ChangeTagsStore $changeTagsStore
+	 * @param WikiPageFactory $wikiPageFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param WeightedTagsUpdater $weightedTagsUpdater
 	 * @param LinkRecommendationProvider $linkRecommendationProvider Note that this needs to be
@@ -69,6 +73,7 @@ class LinkRecommendationUpdater {
 		NameTableStore $changeDefNameTableStore,
 		PageProps $pageProps,
 		ChangeTagsStore $changeTagsStore,
+		WikiPageFactory $wikiPageFactory,
 		ConfigurationLoader $configurationLoader,
 		WeightedTagsUpdater $weightedTagsUpdater,
 		LinkRecommendationProvider $linkRecommendationProvider,
@@ -80,6 +85,7 @@ class LinkRecommendationUpdater {
 		$this->changeDefNameTableStore = $changeDefNameTableStore;
 		$this->pageProps = $pageProps;
 		$this->changeTagsStore = $changeTagsStore;
+		$this->wikiPageFactory = $wikiPageFactory;
 
 		$this->configurationLoader = $configurationLoader;
 		$this->weightedTagsUpdater = $weightedTagsUpdater;
@@ -249,7 +255,42 @@ class LinkRecommendationUpdater {
 			);
 		}
 
-		// 5. exclude pages where the last edit is a link recommendation edit or its revert.
+		// 5. exclude pages that have one of the configured excluded categories
+		$wikipage = $this->wikiPageFactory->newFromID(
+			$pageIdentity->getId()
+		);
+		if ( !$wikipage ) {
+			return $this->failure( 'wiki page not found' );
+		}
+		$pageCategories = [];
+		foreach ( $wikipage->getCategories() as $categoryTitle ) {
+			$pageCategories[] = $categoryTitle->getDBkey();
+		}
+		$excludedCategories = array_map(
+			static fn ( LinkTarget $category ): string => $category->getDBkey(),
+			$this->getLinkRecommendationTaskType()->getExcludedCategories()
+		);
+		if ( array_intersect( $pageCategories, $excludedCategories ) ) {
+			return $this->failure(
+				'has excluded category',
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_EXCLUDED_CATEGORY
+			);
+		}
+
+		// 6. exclude pages that have one of the configured excluded templates
+		$excludedTemplates = $this->getLinkRecommendationTaskType()->getExcludedTemplates();
+		$numberOfExcludedTemplatesOnPage = $this->linkRecommendationStore->getNumberOfExcludedTemplatesOnPage(
+			$pageIdentity->getId(),
+			$excludedTemplates,
+		);
+		if ( $numberOfExcludedTemplatesOnPage !== 0 ) {
+			return $this->failure(
+				'has excluded template',
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_EXCLUDED_TEMPLATE
+			);
+		}
+
+		// 7. exclude pages where the last edit is a link recommendation edit or its revert.
 		$dbr = $this->connectionProvider->getReplicaDatabase();
 		$tags = $this->changeTagsStore->getTagsWithData( $dbr, null, $revision->getId() );
 		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {

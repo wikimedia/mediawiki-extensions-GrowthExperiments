@@ -382,6 +382,7 @@ return [
 			$services->getNameTableStoreFactory()->getChangeTagDef(),
 			$services->getPageProps(),
 			$services->getChangeTagsStore(),
+			$services->getWikiPageFactory(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$cirrusSearchServices->getWeightedTagsUpdater(),
 			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' ),
