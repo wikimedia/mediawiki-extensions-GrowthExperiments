@@ -32,6 +32,8 @@ class LinkRecommendationTaskType extends TaskType {
 	public const FIELD_UNDERLINKED_WEIGHT = 'underlinkedWeight';
 	/** @see :getUnderlinkedMinLength */
 	public const FIELD_UNDERLINKED_MIN_LENGTH = 'underlinkedMinLength';
+	/** @see :getMaximumEditsTaskIsAvailable */
+	public const FIELD_MAX_EDITS_TASK_AVAILABLE = 'maximumEditsTaskIsAvailable';
 
 	/** Exclude a (task page, target page) pair from future tasks after this many rejections. */
 	public const REJECTION_EXCLUSION_LIMIT = 2;
@@ -49,35 +51,26 @@ class LinkRecommendationTaskType extends TaskType {
 		self::FIELD_EXCLUDED_SECTIONS => [],
 		self::FIELD_UNDERLINKED_WEIGHT => 0.5,
 		self::FIELD_UNDERLINKED_MIN_LENGTH => 300,
+		self::FIELD_MAX_EDITS_TASK_AVAILABLE => null
 	];
 
 	/** @inheritDoc */
 	protected const IS_MACHINE_SUGGESTION = true;
 
-	/** @var int */
-	protected $minimumTasksPerTopic;
-	/** @var int */
-	protected $minimumLinksPerTask;
-	/** @var float */
-	protected $minimumLinkScore;
-	/** @var int */
-	protected $maximumLinksPerTask;
-	/** @var int */
-	protected $maximumLinksToShowPerTask;
-	/** @var int */
-	protected $minimumTimeSinceLastEdit;
-	/** @var int */
-	protected $minimumWordCount;
-	/** @var int */
-	protected $maximumWordCount;
-	/** @var int */
-	protected $maxTasksPerDay;
+	protected int $minimumTasksPerTopic;
+	protected int $minimumLinksPerTask;
+	protected float $minimumLinkScore;
+	protected int $maximumLinksPerTask;
+	protected int $maximumLinksToShowPerTask;
+	protected int $minimumTimeSinceLastEdit;
+	protected int $minimumWordCount;
+	protected int $maximumWordCount;
+	protected int $maxTasksPerDay;
 	/** @var string[] */
 	protected $excludedSections;
-	/** @var float */
-	protected $underlinkedWeight;
-	/** @var int */
-	protected $underlinkedMinLength;
+	protected float $underlinkedWeight;
+	protected int $underlinkedMinLength;
+	protected ?int $maximumEditsTaskIsAvailable;
 
 	/**
 	 * @inheritDoc
@@ -105,6 +98,7 @@ class LinkRecommendationTaskType extends TaskType {
 		$this->excludedSections = $settings[self::FIELD_EXCLUDED_SECTIONS];
 		$this->underlinkedWeight = $settings[self::FIELD_UNDERLINKED_WEIGHT];
 		$this->underlinkedMinLength = $settings[self::FIELD_UNDERLINKED_MIN_LENGTH];
+		$this->maximumEditsTaskIsAvailable = $settings[self::FIELD_MAX_EDITS_TASK_AVAILABLE];
 	}
 
 	/**
@@ -147,7 +141,7 @@ class LinkRecommendationTaskType extends TaskType {
 	 * @return int
 	 */
 	public function getMaximumLinksToShowPerTask(): int {
-		return (int)$this->maximumLinksToShowPerTask;
+		return $this->maximumLinksToShowPerTask;
 	}
 
 	/**
@@ -207,6 +201,15 @@ class LinkRecommendationTaskType extends TaskType {
 		return $this->underlinkedMinLength;
 	}
 
+	/**
+	 * The maximum number of edits after which the "Add a link" task will be disabled for a user.
+	 *
+	 * @return ?int
+	 */
+	public function getMaximumEditsTaskIsAvailable(): ?int {
+		return $this->maximumEditsTaskIsAvailable;
+	}
+
 	/** @inheritDoc */
 	public function shouldOpenInEditMode(): bool {
 		return true;
@@ -225,7 +228,8 @@ class LinkRecommendationTaskType extends TaskType {
 	/** @inheritDoc */
 	public function getViewData( MessageLocalizer $messageLocalizer ): array {
 		return parent::getViewData( $messageLocalizer ) + [
-			self::FIELD_MAX_LINKS_TO_SHOW_PER_TASK => $this->getMaximumLinksToShowPerTask()
+			self::FIELD_MAX_LINKS_TO_SHOW_PER_TASK => $this->getMaximumLinksToShowPerTask(),
+			self::FIELD_MAX_EDITS_TASK_AVAILABLE => $this->getMaximumEditsTaskIsAvailable(),
 		];
 	}
 
@@ -244,6 +248,7 @@ class LinkRecommendationTaskType extends TaskType {
 					'maxTasksPerDay' => $this->maxTasksPerDay,
 					'underlinkedWeight' => $this->underlinkedWeight,
 					'underlinkedMinLength' => $this->underlinkedMinLength,
+					'maximumEditsTaskIsAvailable' => $this->maximumEditsTaskIsAvailable,
 				],
 			];
 	}
