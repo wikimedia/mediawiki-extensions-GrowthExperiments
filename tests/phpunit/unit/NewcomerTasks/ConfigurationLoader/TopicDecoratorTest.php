@@ -31,7 +31,7 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 			[]
 		);
 		$this->assertArrayEquals( $configurationLoader->loadTaskTypes(), $taskTypes );
-		$this->assertArrayEquals( $configurationLoader->loadTopics(), $topics );
+		$this->assertArrayEquals( $configurationLoader->getTopics(), $topics );
 	}
 
 	public function testUseGrowthTopicsWithAdditionalTaskTypes() {
@@ -67,7 +67,7 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 			[]
 		);
 		$this->assertArrayEquals( $configurationLoader->loadTaskTypes(), $taskTypes );
-		foreach ( $configurationLoader->loadTopics() as $topic ) {
+		foreach ( $configurationLoader->getTopics() as $topic ) {
 			$this->assertTrue( $topic instanceof RawOresTopic );
 		}
 	}

@@ -73,7 +73,7 @@ class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
 		$configurationLoader->method( 'loadTaskTypes' )->willReturn( [] );
 		$topicRegistry = $this->createMock( ITopicRegistry::class );
-		$topicRegistry->method( 'loadTopics' )->willReturn( [] );
+		$topicRegistry->method( 'getTopics' )->willReturn( [] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 		$taskSuggesterFactory = $growthServices->getTaskSuggesterFactory();
 		$this->assertInstanceOf( RemoteSearchTaskSuggesterFactory::class, $taskSuggesterFactory );

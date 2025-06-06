@@ -22,11 +22,11 @@ use UppercaseCollation;
 class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 
 	/**
-	 * @dataProvider provideTestLoadTopics
+	 * @dataProvider provideTestGetTopics
 	 */
-	public function testLoadTopics( array $topics, array $expected ) {
+	public function testGetTopics( array $topics, array $expected ) {
 		$registry = $this->getWikimediaTopicRegistry( $topics );
-		$actual = $registry->loadTopics();
+		$actual = $registry->getTopics();
 		$this->assertSameSize( $expected, $actual );
 
 		foreach ( $actual as $topic ) {
@@ -34,7 +34,7 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public static function provideTestLoadTopics(): iterable {
+	public function provideTestGetTopics(): iterable {
 		yield 'All WM topics recognized' => [
 			ArticleTopicFiltersRegistry::getTopicList(),
 			WikimediaTopicRegistry::GROWTH_ORES_TOPICS
@@ -49,7 +49,7 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 		];
 	}
 
-	public function testGetTopics() {
+	public function testGetCampaignTopics() {
 		$registry = $this->getWikimediaTopicRegistry( ArticleTopicFiltersRegistry::getTopicList() );
 		$registry->setCampaignConfigCallback( function () {
 			return new CampaignConfig(

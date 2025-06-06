@@ -67,7 +67,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}
-		$topics = $this->topicRegistry->loadTopics();
+		$topics = $this->topicRegistry->getTopics();
 		$suggester = new RemoteSearchTaskSuggester(
 			$this->taskTypeHandlerRegistry,
 			$this->searchStrategy,
