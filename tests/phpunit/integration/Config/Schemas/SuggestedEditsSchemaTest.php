@@ -195,6 +195,7 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 					'maxTasksPerDay' => 25,
 					'underlinkedWeight' => 0.5,
 					'underlinkedMinLength' => 300,
+					'maximumEditsTaskIsAvailable' => null,
 				],
 			],
 		], array_map( static fn ( $taskType ) => $taskType->jsonSerialize(), $taskTypes ) );
@@ -375,6 +376,7 @@ JSON;
 					'maxTasksPerDay' => 25,
 					'underlinkedWeight' => 0.5,
 					'underlinkedMinLength' => 300,
+					'maximumEditsTaskIsAvailable' => null,
 				],
 			],
 		], array_values( array_map( static fn ( $taskType ) => $taskType->jsonSerialize(), $taskTypes ) ) );

@@ -70,12 +70,22 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 		return $this->submissionHandler;
 	}
 
+	private function parseMaximumEditsTaskIsAvailable( string $configValue ): ?int {
+		if ( !$configValue || $configValue === 'no' ) {
+			return null;
+		}
+		return (int)$configValue;
+	}
+
 	/** @inheritDoc */
 	public function createTaskType( string $taskTypeId, array $config ): TaskType {
 		$extraData = [ 'learnMoreLink' => $config['learnmore'] ?? null ];
 		// FIXME add settings validation
 		$settings = array_intersect_key( $config, LinkRecommendationTaskType::DEFAULT_SETTINGS );
 		$settings['minimumTasksPerTopic'] = $this->config->get( 'GELinkRecommendationMinimumTasksPerTopic' );
+		$settings['maximumEditsTaskIsAvailable'] = $this->parseMaximumEditsTaskIsAvailable(
+			$config['maximumEditsTaskIsAvailable']
+		);
 
 		$taskType = new LinkRecommendationTaskType(
 			$taskTypeId,
