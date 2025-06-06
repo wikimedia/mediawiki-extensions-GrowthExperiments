@@ -18,6 +18,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
@@ -139,6 +140,7 @@ class SuggestedEdits extends BaseModule {
 
 	private StatsFactory $statsFactory;
 	private ITopicRegistry $topicRegistry;
+	private TaskTypeManager $taskTypeManager;
 
 	/**
 	 * @param IContextSource $context
@@ -172,7 +174,8 @@ class SuggestedEdits extends BaseModule {
 		LinkRecommendationFilter $linkRecommendationFilter,
 		ImageRecommendationFilter $imageRecommendationFilter,
 		StatsFactory $statsFactory,
-		ITopicRegistry $topicRegistry
+		ITopicRegistry $topicRegistry,
+		TaskTypeManager $taskTypeManager
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
 		$this->pageViewService = $pageViewService;
@@ -187,6 +190,7 @@ class SuggestedEdits extends BaseModule {
 		$this->campaignConfig = $campaignConfig;
 		$this->statsFactory = $statsFactory;
 		$this->topicRegistry = $topicRegistry;
+		$this->taskTypeManager = $taskTypeManager;
 	}
 
 	/** @inheritDoc */
@@ -430,7 +434,7 @@ class SuggestedEdits extends BaseModule {
 			$suggesterOptions = [ 'resetCache' => true ];
 			// TODO also reset cache in ImageRecommendationFilter
 		}
-		$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
+		$taskTypes = $this->taskTypeManager->getTaskTypesForUser( $user );
 		$topics = $this->newcomerTasksUserOptionsLookup->getTopics( $user );
 		$topicsMatchMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
 		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics, $topicsMatchMode );
@@ -664,7 +668,7 @@ class SuggestedEdits extends BaseModule {
 
 		$levels = [];
 		$taskTypeData = $this->configurationLoader->getTaskTypes();
-		foreach ( $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ) as $taskTypeId ) {
+		foreach ( $this->taskTypeManager->getTaskTypesForUser( $user ) as $taskTypeId ) {
 			/** @var TaskType $taskType */
 			$taskType = $taskTypeData[$taskTypeId] ?? null;
 			if ( $taskType ) {
@@ -856,9 +860,8 @@ class SuggestedEdits extends BaseModule {
 	protected function getActionData() {
 		$user = $this->getContext()->getUser();
 		$taskSet = $this->getTaskSet();
-		$taskTypes = $topics = null;
+		$topics = null;
 		if ( $taskSet instanceof TaskSet ) {
-			$taskTypes = $taskSet->getFilters()->getTaskTypeFilters();
 			$topics = $taskSet->getFilters()->getTopicFilters();
 			$topicsMatchMode = $taskSet->getFilters()->getTopicFiltersMode();
 		}
@@ -867,7 +870,8 @@ class SuggestedEdits extends BaseModule {
 
 		// these will be updated on the client side as needed
 		$data = [
-			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+			'taskTypes' => $this->taskTypeManager->getTaskTypesForUser( $user ),
+			'unavailableTaskTypes' => $this->taskTypeManager->getUnavailableTaskTypes( $user ),
 			'taskCount' => ( $taskSet instanceof TaskSet ) ? $taskSet->getTotalCount() : 0,
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {

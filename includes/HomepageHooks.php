@@ -38,6 +38,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\Specials\SpecialClaimMentee;
@@ -160,6 +161,7 @@ class HomepageHooks implements
 	private $canAccessPrimary;
 	private StatsFactory $statsFactory;
 	private GrowthExperimentsInteractionLogger $growthInteractionLogger;
+	private TaskTypeManager $taskTypeManager;
 
 	/**
 	 * @param Config $config Uses PHP globals
@@ -182,6 +184,8 @@ class HomepageHooks implements
 	 * @param NewcomerTasksInfo $suggestionsInfo
 	 * @param UserImpactLookup $userImpactLookup
 	 * @param UserImpactStore $userImpactStore
+	 * @param GrowthExperimentsInteractionLogger $growthInteractionLogger
+	 * @param TaskTypeManager $taskTypeManager
 	 */
 	public function __construct(
 		Config $config,
@@ -204,7 +208,8 @@ class HomepageHooks implements
 		NewcomerTasksInfo $suggestionsInfo,
 		UserImpactLookup $userImpactLookup,
 		UserImpactStore $userImpactStore,
-		GrowthExperimentsInteractionLogger $growthInteractionLogger
+		GrowthExperimentsInteractionLogger $growthInteractionLogger,
+		TaskTypeManager $taskTypeManager
 	) {
 		$this->config = $config;
 		$this->userOptionsManager = $userOptionsManager;
@@ -227,6 +232,7 @@ class HomepageHooks implements
 		$this->userImpactLookup = $userImpactLookup;
 		$this->userImpactStore = $userImpactStore;
 		$this->growthInteractionLogger = $growthInteractionLogger;
+		$this->taskTypeManager = $taskTypeManager;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -372,6 +378,12 @@ class HomepageHooks implements
 					$context,
 					$this->userOptionsLookup
 				),
+				'wgGESuggestedEditsTaskTypes' => [
+					'taskTypes' => $this->taskTypeManager->getTaskTypesForUser( $context->getUser() ),
+					'unavailableTaskTypes' => $this->taskTypeManager->getUnavailableTaskTypes(
+						$context->getUser()
+					),
+				],
 				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' ),
 				// Always output, it's used throughout the suggested editing session.
 				'wgGELevelingUpEnabledForUser' => $isLevelingUpEnabledForUser,
@@ -419,6 +431,7 @@ class HomepageHooks implements
 					json_encode( [] )
 				);
 				$levelingUpTryNewTaskOptOuts = json_decode( $levelingUpTryNewTaskOptOuts ) ?? [];
+				$userTaskTypes = $this->taskTypeManager->getTaskTypesForUser( $context->getUser() );
 				$out->addJsConfigVars( [
 					'wgGESuggestedEditTaskType' => $taskType->getId(),
 					'wgGELevelingUpTryNewTaskOptOuts' => $levelingUpTryNewTaskOptOuts,
@@ -438,7 +451,7 @@ class HomepageHooks implements
 					$taskSet = $this->taskSuggesterFactory->create()->suggest(
 						$context->getUser(),
 						new TaskSetFilters(
-							$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $context->getUser() ),
+							$userTaskTypes,
 							$this->newcomerTasksUserOptionsLookup->getTopics( $context->getUser() ),
 							$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $context->getUser() )
 						),
@@ -848,7 +861,7 @@ class HomepageHooks implements
 				$taskSuggester->suggest(
 					$user,
 					new TaskSetFilters(
-						$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+						$this->taskTypeManager->getTaskTypesForUser( $user ),
 						$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
 						$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
 					)

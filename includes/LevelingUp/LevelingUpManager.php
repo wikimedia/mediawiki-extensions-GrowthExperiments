@@ -138,23 +138,14 @@ class LevelingUpManager {
 	 * rely on the order in which they are returned by getTaskTypes(), because that is affected by the
 	 * structure of the JSON on MediaWiki:NewcomerTasks.json
 	 *
+	 * @param string[] $taskTypesToGroup
 	 * @return array<string,string[]>
 	 */
-	public function getTaskTypesGroupedByDifficulty(): array {
+	public function getTaskTypesGroupedByDifficulty( array $taskTypesToGroup ): array {
 		$taskTypes = $this->configurationLoader->getTaskTypes();
-		// HACK: "links" and "link-recommendation" are not loaded together. If link recommendation is enabled,
-		// remove "links" if it exists, and vice versa.
-		if ( $this->options->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
-			if ( isset( $taskTypes['links'] ) ) {
-				unset( $taskTypes['links'] );
-			}
-		} else {
-			if ( isset( $taskTypes['link-recommendation'] ) ) {
-				unset( $taskTypes['link-recommendation'] );
-			}
-		}
 		$taskTypesGroupedByDifficulty = [];
-		foreach ( $taskTypes as $taskType ) {
+		foreach ( $taskTypesToGroup as $taskTypeId ) {
+			$taskType = $taskTypes[$taskTypeId];
 			$taskTypesGroupedByDifficulty[$taskType->getDifficulty()][] = $taskType->getId();
 		}
 		$difficultyNumeric = array_flip( TaskType::DIFFICULTY_NUMERIC );
@@ -168,12 +159,13 @@ class LevelingUpManager {
 	 * Get the list of enabled task types, in order from least difficult to most difficult ("easy" tasks
 	 * first, then "medium", then "difficult")
 	 *
+	 * @param string[] $taskTypesToOrder
 	 * @return string[]
 	 */
-	public function getTaskTypesOrderedByDifficultyLevel(): array {
+	public function getTaskTypesOrderedByDifficultyLevel( array $taskTypesToOrder ): array {
 		// Flatten the task types grouped by difficulty. They'll be ordered by easiest to most difficult.
 		$taskTypes = [];
-		foreach ( $this->getTaskTypesGroupedByDifficulty() as $taskTypeIds ) {
+		foreach ( $this->getTaskTypesGroupedByDifficulty( $taskTypesToOrder ) as $taskTypeIds ) {
 			$taskTypes = array_merge( $taskTypes, array_values( $taskTypeIds ) );
 		}
 		return $taskTypes;
@@ -203,10 +195,15 @@ class LevelingUpManager {
 	 *    is no page reload, call this function with "copyedit" as the active task type ID. One could do this via an
 	 *    API call from ext.growthExperiments.suggestedEditSession in a post-edit hook on the client-side.
 	 * @param bool $readLatest If user impact lookup should read from the primary database.
+	 * @param string[]|null $availableTaskTypes
 	 * @return string|null
 	 */
 	public function suggestNewTaskTypeForUser(
-		UserIdentity $userIdentity, string $activeTaskTypeId, bool $readLatest = false
+		UserIdentity $userIdentity,
+		string $activeTaskTypeId,
+		bool $readLatest = false,
+		?array $availableTaskTypes = null,
+		bool $skipThresholdMultiple = false
 	): ?string {
 		$flags = $readLatest ? IDBAccessObject::READ_LATEST : IDBAccessObject::READ_NORMAL;
 		$userImpact = $this->userImpactLookup->getUserImpact( $userIdentity, $flags );
@@ -234,12 +231,12 @@ class LevelingUpManager {
 			return null;
 		}
 		$levelingUpThreshold = $this->options->get( 'GELevelingUpManagerTaskTypeCountThresholdMultiple' );
-		if ( ( $editCountByTaskType[$activeTaskTypeId] + 1 ) % $levelingUpThreshold !== 0 ) {
+		if ( !$skipThresholdMultiple && ( $editCountByTaskType[$activeTaskTypeId] + 1 ) % $levelingUpThreshold !== 0 ) {
 			// Only trigger this on every 5th edit of the task type.
 			return null;
 		}
 
-		$taskTypes = $this->getTaskTypesOrderedByDifficultyLevel();
+		$taskTypes = $this->getTaskTypesOrderedByDifficultyLevel( $availableTaskTypes );
 		// Remove the active task type from the candidates.
 		$taskTypes = array_filter( $taskTypes, static fn ( $item ) => $item !== $activeTaskTypeId );
 		// Find any task type that has fewer than GELevelingUpManagerTaskTypeCountThresholdMultiple completed

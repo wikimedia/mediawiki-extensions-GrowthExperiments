@@ -55,6 +55,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
@@ -356,6 +357,10 @@ class GrowthExperimentsServices {
 
 	public function getLevelingUpManager(): LevelingUpManager {
 		return $this->coreServices->get( 'GrowthExperimentsLevelingUpManager' );
+	}
+
+	public function getTaskTypeManager(): TaskTypeManager {
+		return $this->coreServices->get( 'GrowthExperimentsTaskTypeManager' );
 	}
 
 }

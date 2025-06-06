@@ -17,6 +17,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilde
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\Config\HashConfig;
@@ -189,7 +190,8 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( NewcomerTasksInfo::class ),
 			$this->createNoOpMock( UserImpactLookup::class ),
 			$this->createNoOpMock( UserImpactStore::class ),
-			$this->createNoOpMock( GrowthExperimentsInteractionLogger::class )
+			$this->createNoOpMock( GrowthExperimentsInteractionLogger::class ),
+			$this->createNoOpMock( TaskTypeManager::class )
 		);
 	}
 }

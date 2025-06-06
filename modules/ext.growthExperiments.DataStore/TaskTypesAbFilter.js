@@ -88,8 +88,18 @@
 			if ( !( taskTypeId in conversionMap ) ) {
 				taskTypes[ taskTypeId ] = defaultTaskTypes[ taskTypeId ];
 			}
+			if ( taskTypes[ taskTypeId ] && isTaskTypeUnavailable( taskTypeId ) ) {
+				taskTypes[ taskTypeId ].disabled = true;
+			}
 		} );
+
 		return taskTypes;
+	}
+
+	function isTaskTypeUnavailable( taskTypeId ) {
+		const suggestedEditsTaskTypesData = getSuggestedEditsData();
+		return suggestedEditsTaskTypesData &&
+			suggestedEditsTaskTypesData.unavailableTaskTypes.includes( taskTypeId );
 	}
 
 	/**
@@ -127,10 +137,31 @@
 	 */
 	function convertTaskTypes( taskTypeIds ) {
 		const map = getConversionMap();
-		return taskTypeIds.map( ( taskTypeId ) => ( taskTypeId in map ) ? map[ taskTypeId ] : taskTypeId ).filter(
+		const enabledAndAvailableTaskTypeIds = taskTypeIds.map( ( taskTypeId ) => ( taskTypeId in map ) ? map[ taskTypeId ] : taskTypeId ).filter(
 			// filter duplicates and false
-			( element, index, self ) => element !== false && index === self.indexOf( element )
+			( element, index, self ) => element !== false &&
+					index === self.indexOf( element ) &&
+					!isTaskTypeUnavailable( element )
 		);
+
+		if ( !enabledAndAvailableTaskTypeIds.length ) {
+			const suggestedEditsTaskTypesData = getSuggestedEditsData();
+			if ( suggestedEditsTaskTypesData && suggestedEditsTaskTypesData.taskTypes.length ) {
+				// If the suggested edits module informs tasktypes with no enabled and available
+				// types for the user, assume the first one is a suggestion and add it to the types filter
+				const nextSuggestedTaskTypeId = suggestedEditsTaskTypesData.taskTypes[ 0 ];
+				enabledAndAvailableTaskTypeIds.push( nextSuggestedTaskTypeId );
+			}
+		}
+
+		return enabledAndAvailableTaskTypeIds;
+	}
+
+	function getSuggestedEditsData() {
+		// Retrieved from when in Special:Homepage and from wgGESuggestedEditsTaskTypes during
+		// suggested edits sessions.
+		return mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ) ||
+			mw.config.get( 'wgGESuggestedEditsTaskTypes' );
 	}
 
 	/**

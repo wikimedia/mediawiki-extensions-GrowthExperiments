@@ -216,7 +216,8 @@
 			"services": [
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsLevelingUpManager",
-				"GrowthExperimentsUserImpactLookup"
+				"GrowthExperimentsUserImpactLookup",
+				"GrowthExperimentsTaskTypeManager"
 			]
 		}
 	},
@@ -373,7 +374,8 @@
 				"GrowthExperimentsSuggestionsInfo",
 				"GrowthExperimentsUserImpactLookup_Computed",
 				"GrowthExperimentsUserImpactStore",
-				"GrowthExperimentsInteractionLogger"
+				"GrowthExperimentsInteractionLogger",
+				"GrowthExperimentsTaskTypeManager"
 			]
 		},
 		"impact": {

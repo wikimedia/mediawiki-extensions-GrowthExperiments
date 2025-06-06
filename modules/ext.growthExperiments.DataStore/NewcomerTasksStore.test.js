@@ -71,6 +71,28 @@ const fetchTaskStub = ( results, ms = 0 ) => {
 
 // eslint-disable-next-line no-promise-executor-return
 const delay = ( ms ) => new Promise( ( resolve ) => setTimeout( resolve, ms ) );
+// HACK, TaskTypesAbFilter is wrapped in an IFFE which makes impossible to mock
+// mw.config.get calls from beforeEach hook because the script has already been imported and run
+global.mw.config.get = jest.fn();
+global.mw.config.get.mockImplementation( ( key ) => {
+	switch ( key ) {
+		case 'wgGEHomepageModuleActionData-suggested-edits':
+			return {
+				taskTypes: [
+					'copyedit',
+					'references',
+					'update'
+				],
+				unavailableTaskTypes: [
+					'link-recommendation'
+				],
+				taskCount: 54,
+				topics: []
+			};
+		default:
+			return undefined;
+	}
+} );
 const FiltersStore = require( './FiltersStore.js' );
 const NewcomerTasksStore = require( './NewcomerTasksStore.js' );
 
