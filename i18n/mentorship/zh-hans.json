@@ -17,7 +17,8 @@
 			"Lantianjialiang",
 			"SunAfterRain",
 			"沈澄心",
-			"Chimes"
+			"Chimes",
+			"Kcx36"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "导师面板",
@@ -117,6 +118,9 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "保存",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "取消",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "介绍信息",
+	"growthexperiments-mentor-list-missing-key": "参数<code>$1</code>缺失",
+	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code>应为<code>$2</code>，但实际为<code>$3</code>",
+	"growthexperiments-mentor-list-unexpected-key-mentor": "导师定义包含意外参数<code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "导师$1已被添加到导师列表中",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "导师$1不在导师列表上",
 	"growthexperiments-manage-mentors-title": "管理导师",
@@ -135,5 +139,6 @@
 	"growthexperiments-mentorship-enrollasmentor-pretext": "感谢{{GENDER:|您}}自愿成为{{SITENAME}}上的{{GENDER:|导师}}。{{GENDER:|您}}可以通过填写这份表单来登记为导师。",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "介绍消息",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "介绍消息会对{{GENDER:|您}}的导师身份进行介绍。请控制内容在240个字符内，且不要使用wikitext。",
-	"growthexperiments-mentorship-enrollasmentor-enroll": "登记"
+	"growthexperiments-mentorship-enrollasmentor-enroll": "登记",
+	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|您}}已成功注册为导师，现在可前往[[Special:MentorDashboard|导师面板]]。"
 }

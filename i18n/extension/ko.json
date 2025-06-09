@@ -13,6 +13,7 @@
 	"growthexperiments-config-validator-error": "$1에 대한 유효성 검사 실패: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> 변수는 <code>$2</code> 자료형을 예상했으나 <code>$3</code> 자료형이 왔습니다",
 	"growthexperiments-config-validator-contentmodel-mismatch": "콘텐츠 모델 불일치: GrowthExperiments 구성 파일에는 JSON 콘텐츠 모델이 있어야 하지만 $1 항목이 확인되었습니다",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "유효하지 않은 작업 유형 핸들러 ID: <code>$1</code> 값은 유효한 값이 아닙니다",
 	"growthexperiments-config-validator-array-toobig": "$1에 너무 많은 항목이 있습니다 (최대 $2개 허용)",
 	"growthexperiments-edit-config-disabled": "공동체 구성이 현재 비활성화되어 있습니다.",
 	"growthexperiments-edit-config-title": "성장 구성 편집",

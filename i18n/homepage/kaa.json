@@ -2,12 +2,22 @@
 	"@metadata": {
 		"authors": [
 			"Ajiniyaz Nurniyazov",
-			"Nurlan"
+			"Nurlan",
+			"Janabaevazizbek"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Sálem}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "Bas bet",
 	"prefs-homepage": "Jańadan qosılǵan redaktorlar ushın funciyalar",
 	"growthexperiments-homepage-email-changelink": "ózgertiw",
+	"growthexperiments-homepage-suggested-edits-header": "Usınıs etilgen redaktorlawlar",
+	"growthexperiments-homepage-impact-header": "Tásirińiz",
+	"growthexperiments-homepage-help-header": "Redaktorlaw boyınsha járdem alıń",
+	"growthexperiments-homepage-help-mobilebody": "Másláhát stolına múrájat etiń yamasa járdemshi betlerdi oqıń.",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong>/<strong>$1</strong> usınıs",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Barlıq usınıslarǵa qaraw",
+	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Maqalalar ortasında silteme qosıń",
+	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Mashina usınısları",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Siltemeler qosıw adamlarǵa tezirek úyreniwge járdem beredi.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Mısal gáp"
 }
