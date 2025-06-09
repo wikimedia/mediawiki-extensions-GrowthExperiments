@@ -10,6 +10,7 @@
 			"Kaganer",
 			"Kareyac",
 			"Kylaix",
+			"Mitte27",
 			"NBS",
 			"Nastua Buldakova",
 			"Okras",
@@ -114,5 +115,11 @@
 	"communityconfiguration-growthsuggestededits-description": "Настройте функцию «Предлагаемые правки» на домашней странице новичков.",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Шаблоны-карточки",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Эти шаблоны необходимы для функции предложения изображений для новичков. Статьи, содержащие эти шаблоны, не будут указаны как задачи по предложению изображений.",
-	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Добавить ссылку (структурированная задача)"
+	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Добавить ссылку (структурированная задача)",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Нет",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "Да, после 10 правок",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Да, после 50 правок",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "Да, после 100 правок",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "Да, после 250 правок",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "Да, после 500 правок"
 }

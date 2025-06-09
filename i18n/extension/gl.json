@@ -227,6 +227,12 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Afecta ao xeito en que se priorizan os artigos con poucas ligazóns. Este campo necesita unha porcentaxe na súa forma decimal, polo que o número debe estar entre 0 e 1. Canto máis {{GENDER:|aumentes}} este número, máis probable é que as persoas principiantes reciban suxestións de artigos con poucas ligazóns.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Puntuación mínima necesaria de ligazóns",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Limiar mínimo de confianza para as suxestións de ligazóns. Este campo necesita unha porcentaxe na súa forma decimal, polo que o número debe estar entre 0 e 1. Se {{GENDER:|aumentas}} o número, as suxestións presentadas ao usuario final terán unha maior probabilidade de ser boas suxestións, pero haberá menos suxestións dispoñibles. Se reduces o número, haberá máis suxestións dispoñibles, pero algunhas terán unha menor probabilidade de ser suxestións de boa calidade.",
-	"growthexperiments-addlink-done-button": "Feito",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "O número máximo de edicións antes de que as tarefas suxeridas de \"Engadir unha ligazón\" xa non estean dispoñibles para as persoas principiantes"
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Deixar de suxerir as tarefas de \"Engadir unha ligazón\" en base ás edicións totais das persoas principiantes",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Non",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "Si, despois dun total de 10 edicións",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Si, despois dun total de 50 edicións",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "Si, despois dun total de 100 edicións",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "Si, despois dun total de 250 edicións",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "Si, despois dun total de 500 edicións",
+	"growthexperiments-addlink-done-button": "Feito"
 }

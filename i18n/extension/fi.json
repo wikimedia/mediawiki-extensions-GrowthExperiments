@@ -194,6 +194,12 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Vaikuttaa siihen, kuinka alilinkitettyjä artikkeleita priorisoidaan. Tämä kenttä vaatii prosenttilukua desimaalimuodossa, eli luvun luvun tulee olla 0 ja 1 väliltä. Mitä enemmän kasvatat tätä lukua, sitä todennäköisemmin tulokkaat saavat ehdotuksia alilinkitetyistä artikkeleista.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Linkkipisteiden vähimmäiskynnys",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Linkkiehdotusten luottamusarvon vähimmäiskynnys. Tämä kenttä vaatii prosenttilukua desimaalimuodossa, eli luvun luvun tulee olla 0 ja 1 väliltä. Jos kasvatat lukua, käyttäjille näytettävien ehdotusten laatu on todennäköisesti parempi, mutta saatavilla olevien ehdotusten määrä on pienempi. Jos lasket lukua, ehdotuksia on saatavilla enemmän, mutta jotkut niistä ovat todennäköisemmin vähemmän laadukkaita ehdotuksia.",
-	"growthexperiments-addlink-done-button": "Valmis",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Muokkausten enimmäismäärä, kunnes ”Lisää linkki” -tehtävät eivät ole enää tulokkaiden käytettävissä."
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Lopeta ”Lisää linkki” -tehtävien ehdottaminen, kun tulokas saavuttaa tietyn muokkausmäärän",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Ei",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "Kyllä, 10 muokkauksen jälkeen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Kyllä, 50 muokkauksen jälkeen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "Kyllä, 100 muokkauksen jälkeen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "Kyllä, 250 muokkauksen jälkeen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "Kyllä, 500 muokkauksen jälkeen",
+	"growthexperiments-addlink-done-button": "Valmis"
 }

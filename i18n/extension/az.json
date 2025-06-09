@@ -226,6 +226,14 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-excludedsections-label": "Keçid əlavə et tapşırığından xaric edilmiş bölmələrin siyahısı",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maxtasksperday-label": "Yeni istifadəçinin gündəlik yerinə yetirə biləcəyi \"Keçid əlavə et\" tapşırıqlarının maksimum sayı.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-label": "Az keçidi olan məqalələrin çəkisi",
+	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Altından xətt çəkilmiş məqalələrin prioritetləşdirilməsinə təsir edir. Bu sahə onluq formasında faiz tələb edir, ona görə də rəqəm 0 ilə 1 arasında olmalıdır. Bu rəqəmi nə qədər artırsanız, yeni gələnlərin məqalə təklifləri alma ehtimalı bir o qədər yüksəkdir.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Minimum tələb olunan keçid balı",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Yeni gələnlərin ümumi redaktələ sayı əsasında \"Keçid əlavə et\" tapşırıqlarını təklif etməyi dayandır",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Xeyr",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "Bəli, 10 redaktədən sonra",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Bəli, 50 redaktədən sonra",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "Bəli, 100 redaktədən sonra",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "Bəli, 250 redaktədən sonra",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "Bəli, 500 redaktədən sonra",
 	"growthexperiments-addlink-done-button": "Oldu"
 }
