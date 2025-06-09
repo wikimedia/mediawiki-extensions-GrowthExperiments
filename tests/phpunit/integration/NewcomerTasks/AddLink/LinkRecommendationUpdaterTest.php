@@ -30,7 +30,7 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 			'Test edit summary'
 		);
 		$this->assertStatusGood( $pageUpdateStatus );
-		$this->runJobs();
+		$this->runDeferredUpdates();
 		ConvertibleTimestamp::setFakeTime( null );
 
 		$fakeConfigLoader = new StaticConfigurationLoader( [
