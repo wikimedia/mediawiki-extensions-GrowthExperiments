@@ -11,6 +11,7 @@ use GrowthExperiments\UserImpact\UserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Tests\Api\ApiTestCase;
+use MediaWiki\User\UserEditTracker;
 
 /**
  * @covers \GrowthExperiments\Api\ApiQueryNextSuggestedTaskType
@@ -63,6 +64,10 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 				'copyedit' => 4,
 				'link-recommendation' => 0,
 			] );
+		$userEditTracker = $this->createMock( UserEditTracker::class );
+		$userEditTracker->expects( $this->exactly( 3 ) )
+			->method( 'getUserEditCount' )
+			->willReturn( 5 );
 		$userImpactLookup = $this->createMock( UserImpactLookup::class );
 		$userImpactLookup->expects( $this->exactly( 2 ) )
 			->method( 'getUserImpact' )
@@ -81,6 +86,8 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 		$this->setService( 'GrowthExperimentsUserImpactLookup_Computed', $userImpactLookup );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $taskSuggesterFactory );
+		$this->setService( 'UserEditTracker', $userEditTracker );
+
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'query',
 			'meta' => 'growthnextsuggestedtasktype',

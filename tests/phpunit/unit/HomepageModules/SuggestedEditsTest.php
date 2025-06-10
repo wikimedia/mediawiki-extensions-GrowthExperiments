@@ -16,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Config\GlobalVarConfig;
@@ -160,7 +161,8 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$linkRecommendationFilter,
 			$imageRecommendationFilter,
 			StatsFactory::newNull(),
-			$this->createMock( ITopicRegistry::class )
+			$this->createMock( ITopicRegistry::class ),
+			$this->createMock( TaskTypeManager::class )
 		) extends SuggestedEdits {
 
 			public function resetTaskCache(

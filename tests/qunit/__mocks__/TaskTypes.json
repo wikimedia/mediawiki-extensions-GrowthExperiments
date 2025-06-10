@@ -67,7 +67,8 @@
 			"filterIcon": "robot",
 			"descriptionMessageKey": "growthexperiments-homepage-suggestededits-tasktype-machine-description"
 		},
-		"maximumLinksToShowPerTask": 2
+		"maximumLinksToShowPerTask": 2,
+		"maximumEditsTaskIsAvailable": "50"
 	},
 	"image-recommendation": {
 		"id": "image-recommendation",

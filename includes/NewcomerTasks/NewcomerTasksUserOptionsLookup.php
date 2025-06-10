@@ -209,7 +209,7 @@ class NewcomerTasksUserOptionsLookup {
 	 * @param UserIdentity $user
 	 * @return string[] Converted task types IDs. Array keys are not preserved.
 	 */
-	private function convertTaskTypes( array $taskTypes, UserIdentity $user ): array {
+	public function convertTaskTypes( array $taskTypes, UserIdentity $user ): array {
 		$map = $this->getConversionMap( $user );
 		$taskTypes = array_map( static function ( string $taskType ) use ( $map ) {
 			return $map[$taskType] ?? $taskType;

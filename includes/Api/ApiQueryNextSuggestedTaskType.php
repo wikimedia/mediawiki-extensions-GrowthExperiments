@@ -4,6 +4,7 @@ namespace GrowthExperiments\Api;
 
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
@@ -18,18 +19,21 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 	private LevelingUpManager $levelingUpManager;
 	private ConfigurationLoader $configurationLoader;
 	private UserImpactLookup $userImpactLookup;
+	private TaskTypeManager $taskTypeManager;
 
 	public function __construct(
 		ApiQuery $queryModule,
 		string $moduleName,
 		ConfigurationLoader $configurationLoader,
 		LevelingUpManager $levelingUpManager,
-		UserImpactLookup $userImpactLookup
+		UserImpactLookup $userImpactLookup,
+		TaskTypeManager $taskTypeManager
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gnstt' );
 		$this->levelingUpManager = $levelingUpManager;
 		$this->configurationLoader = $configurationLoader;
 		$this->userImpactLookup = $userImpactLookup;
+		$this->taskTypeManager = $taskTypeManager;
 	}
 
 	/**
@@ -46,7 +50,8 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 			$this->levelingUpManager->suggestNewTaskTypeForUser(
 				$this->getUser(),
 				$params['activetasktype'],
-				true
+				true,
+				$this->taskTypeManager->getAvailableTaskTypesOnNextEdit( $this->getUser() )
 			)
 		);
 		$userImpact = $this->userImpactLookup->getUserImpact( $this->getUser() );

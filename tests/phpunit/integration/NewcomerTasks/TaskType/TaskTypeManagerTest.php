@@ -1,0 +1,101 @@
+<?php
+
+namespace GrowthExperiments\Tests\Integration;
+
+use GrowthExperiments\GrowthExperimentsServices;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
+use MediaWiki\User\User;
+use MediaWikiIntegrationTestCase;
+
+/**
+ * @covers \GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager
+ * @group Database
+ */
+class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
+
+	public function testFiltersTaskWhenLimitNotEnabledByFeatureFlagDefault() {
+		$user = $this->createUserWithEdits( 1000 );
+		$this->setMaxEditsTaskIsAvailableInConfig( '10' );
+		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
+		$result = $sut->getTaskTypesForUser( $user );
+		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $result );
+	}
+
+	public function testFiltersTaskWhenLimitNotEnabledByFeatureFlag() {
+		$user = $this->createUserWithEdits( 1000 );
+		$this->setMaxEditsTaskIsAvailableInConfig( '10' );
+		$this->overrideConfigValues( [
+			'GENewcomerTasksStarterDifficultyEnabled' => false,
+		] );
+		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
+		$result = $sut->getTaskTypesForUser( $user );
+		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $result );
+	}
+
+	public function testFiltersTaskWhenLimitNotEnabledByConfigDefault() {
+		$user = $this->createUserWithEdits( 1000 );
+		$this->overrideConfigValues( [
+			'GENewcomerTasksStarterDifficultyEnabled' => true,
+		] );
+		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
+		$result = $sut->getTaskTypesForUser( $user );
+		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $result );
+	}
+
+	public function testFiltersTaskWhenLimitNotReached() {
+		$user = $this->createUserWithEdits( 0 );
+		$this->overrideConfigValues( [
+			'GENewcomerTasksStarterDifficultyEnabled' => true,
+		] );
+		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
+		$this->setMaxEditsTaskIsAvailableInConfig( '100' );
+		$result = $sut->getTaskTypesForUser( $user );
+		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $result );
+	}
+
+	public function testFiltersTaskWhenLimitReached() {
+		$user = $this->createUserWithEdits( 11 );
+		$this->overrideConfigValues( [
+			'GENewcomerTasksStarterDifficultyEnabled' => true,
+		] );
+		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
+		$this->setMaxEditsTaskIsAvailableInConfig( '10' );
+		$result = $sut->getTaskTypesForUser( $user );
+		$this->assertSame( [ 'copyedit' ], $result );
+	}
+
+	private function createUserWithEdits( ?int $editCount = 10 ): User {
+		$user = $this->getMutableTestUser( [
+			'interface-admin'
+		] )->getUser();
+		$this->setUserEditCount( $user, $editCount );
+		$ctx = RequestContext::getMain();
+		$ctx->setUser( $user );
+		return $user;
+	}
+
+	private function setUserEditCount( User $user, int $editCount ): void {
+		$this->getDb()->newUpdateQueryBuilder()
+			->update( 'user' )
+			->set( [ 'user_editcount' => $editCount ] )
+			->where( [ 'user_id' => $user->getId() ] )
+			->caller( __METHOD__ )
+			->execute();
+	}
+
+	private function setMaxEditsTaskIsAvailableInConfig( string $selectedEnumValue = 'no' ): void {
+		$communityConfigServices = CommunityConfigurationServices::wrap( $this->getServiceContainer() );
+		$suggestedEditsProvider = $communityConfigServices
+			->getConfigurationProviderFactory()->newProvider( 'GrowthSuggestedEdits' );
+		$status = $suggestedEditsProvider->loadValidConfiguration();
+		$config = null;
+		if ( $status->isOK() ) {
+			$config = $status->getValue();
+			$config->{'link_recommendation'}->{'maximumEditsTaskIsAvailable'} = $selectedEnumValue;
+		}
+		$suggestedEditsProvider->storeValidConfiguration(
+			$config, $this->getTestUser( [ 'interface-admin' ] )->getUser()
+		);
+	}
+}

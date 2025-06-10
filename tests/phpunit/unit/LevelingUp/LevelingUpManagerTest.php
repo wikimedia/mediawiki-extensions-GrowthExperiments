@@ -41,7 +41,13 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 				'medium' => [ 'update' ],
 				'hard' => [ 'cx', 'newarticle' ]
 			],
-			$this->getLevelingUpManager()->getTaskTypesGroupedByDifficulty()
+			$this->getLevelingUpManager()->getTaskTypesGroupedByDifficulty( [
+				'link-recommendation',
+				'copyedit',
+				'update',
+				'cx',
+				'newarticle'
+			] )
 		);
 	}
 
@@ -68,7 +74,13 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 				null,
 				null,
 				$serviceOptions
-			)->getTaskTypesGroupedByDifficulty()
+			)->getTaskTypesGroupedByDifficulty( [
+				'copyedit',
+				'links',
+				'update',
+				'cx',
+				'newarticle'
+			] )
 		);
 	}
 
@@ -99,7 +111,12 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$taskSuggesterFactory
 		)->suggestNewTaskTypeForUser(
 			new UserIdentityValue( 1, 'Test' ),
-			'copyedit'
+			'copyedit',
+			false,
+			[
+				'copyedit',
+				'link-recommendation'
+			]
 		) );
 	}
 
@@ -171,7 +188,12 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$taskSuggesterFactory
 		)->suggestNewTaskTypeForUser(
 			new UserIdentityValue( 1, 'Test' ),
-			'copyedit'
+			'copyedit',
+			false,
+			[
+				'copyedit',
+				'link-recommendation'
+			]
 		) );
 	}
 
@@ -226,7 +248,15 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$taskSuggesterFactory
 		)->suggestNewTaskTypeForUser(
 			new UserIdentityValue( 1, 'Test' ),
-			'copyedit'
+			'copyedit',
+			false,
+			[
+				'copyedit',
+				'link-recommendation',
+				'update',
+				'cx',
+				'newarticle',
+			]
 		) );
 	}
 

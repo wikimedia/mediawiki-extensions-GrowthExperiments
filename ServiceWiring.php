@@ -84,6 +84,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
@@ -962,6 +963,19 @@ return [
 		return new TaskTypeHandlerRegistry(
 			$services->getObjectFactory(),
 			$extensionConfig->get( 'GENewcomerTasksTaskTypeHandlers' )
+		);
+	},
+
+	'GrowthExperimentsTaskTypeManager' => static function (
+		MediaWikiServices $services
+	): TaskTypeManager {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new TaskTypeManager(
+			$services->getMainConfig(),
+			$growthServices->getNewcomerTasksUserOptionsLookup(),
+			$services->getUserEditTracker(),
+			$growthServices->getNewcomerTasksConfigurationLoader(),
+			$growthServices->getLevelingUpManager()
 		);
 	},
 
