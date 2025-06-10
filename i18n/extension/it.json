@@ -150,5 +150,11 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Aggiungi un collegamento (attività strutturata)",
 	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "L'attività è disabilitata.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumlinkstoshowpertask-label": "Numero massimo di collegamenti da mostrare per compito",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "No",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "Sì, dopo 10 modifiche totali",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Sì, dopo 50 modifiche totali",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "Sì, dopo 100 modifiche totali",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "Sì, dopo 250 modifiche totali",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "Sì, dopo 500 modifiche totali",
 	"growthexperiments-addlink-done-button": "Fatto"
 }
