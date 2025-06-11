@@ -90,6 +90,7 @@
 			}
 			if ( taskTypes[ taskTypeId ] && isTaskTypeUnavailable( taskTypeId ) ) {
 				taskTypes[ taskTypeId ].disabled = true;
+				taskTypes[ taskTypeId ].unavailable = true;
 			}
 		} );
 
