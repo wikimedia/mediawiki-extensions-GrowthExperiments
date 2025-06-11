@@ -2,14 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Ajiniyaz Nurniyazov",
-			"Nurlan"
+			"Nurlan",
+			"Janabaevazizbek"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Sálem}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "Bas bet",
 	"prefs-homepage": "Jańadan qosılǵan redaktorlar ushın funciyalar",
 	"growthexperiments-homepage-email-changelink": "ózgertiw",
+	"growthexperiments-homepage-suggested-edits-header": "Usınıs etilgen redaktorlawlar",
+	"growthexperiments-homepage-impact-header": "Tásirińiz",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|Siziń}} jaqın aradaǵı háreketlerińiz (aqırǵı $2 {{PLURAL:$2|kún|kúnler}})",
-	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Aqırǵı dúzetiw:",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Aqırǵı ózgeris:",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Eń uzın seriya",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|kún|kún}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Dúzetiw|Dúzetiwler}}",
@@ -19,7 +23,13 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Eń uzın sızıq haqqında kóbirek maǵlıwmatlar",
 	"growthexperiments-homepage-impact-subheader-text": "Eń kóp kórilgen ({{GENDER:|siziń}} redaktorlawıńızdan berli)",
 	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks Taza úyrenshiklerge tapsırma]",
+	"growthexperiments-homepage-help-header": "Redaktorlaw boyınsha járdem alıń",
+	"growthexperiments-homepage-help-mobilebody": "Másláhát stolına múrájat etiń yamasa járdemshi betlerdi oqıń.",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong>/<strong>$1</strong> usınıs",
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Filtrdi jańalaw",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Barlıq usınıslarǵa qaraw",
+	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Maqalalar ortasında silteme qosıń",
+	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Mashina usınısları",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Siltemeler qosıw adamlarǵa tezirek úyreniwge járdem beredi.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Mısal gáp",
 	"growthexperiments-homepage-special-contribute-title": "Usınıs etilgen ózgertiwler",
