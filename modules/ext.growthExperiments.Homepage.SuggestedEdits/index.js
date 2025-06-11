@@ -95,11 +95,6 @@
 		} );
 		// Track the TTI on client-side.
 		mw.track(
-			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.' +
-			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
-			clientSideLoadDuration
-		);
-		mw.track(
 			'stats.mediawiki_GrowthExperiments_suggested_edits_tti_seconds',
 			clientSideLoadDuration,
 			{
@@ -117,11 +112,6 @@
 		}
 		// Track the server side render start time (first line in SpecialHomepage#execute()) to
 		// TTI on client-side.
-		mw.track(
-			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.serverSideStartInclusive.' +
-				( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
-			serverDuration
-		);
 		mw.track(
 			'stats.mediawiki_GrowthExperiments_suggested_edits_server_tti_seconds',
 			serverDuration,

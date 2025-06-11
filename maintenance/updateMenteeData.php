@@ -8,7 +8,6 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Stats\StatsFactory;
 
@@ -133,35 +132,19 @@ class UpdateMenteeData extends Maintenance {
 		}
 
 		if ( $this->hasOption( 'statsd' ) && $this->hasOption( 'dbshard' ) ) {
+			$dbShard = $this->getOption( 'dbshard' );
 			$this->statsFactory->withComponent( 'GrowthExperiments' )
 				->getTiming( 'update_mentee_data_seconds' )
-				->setLabel( 'shard', $this->getOption( 'dbshard' ) )
+				->setLabel( 'shard', $dbShard )
 				->setLabel( 'type', 'total' )
 				->observeSeconds( $totalTimeInSeconds );
-
-			// Stay backward compatible with the legacy Graphite-based dashboard
-			// feeding on this data.
-			// TODO: remove after switching to Prometheus-based dashboards
-			$statsdDataFactory = MediaWikiServices::getInstance()->getStatsdDataFactory();
-			$statsdDataFactory->timing(
-				'timing.growthExperiments.updateMenteeData.' . $this->getOption( 'dbshard' ) . '.total',
-				$totalTimeInSeconds
-			);
 
 			foreach ( $profilingInfo as $section => $seconds ) {
 				$this->statsFactory->withComponent( 'GrowthExperiments' )
 					->getTiming( 'update_mentee_data_section_seconds' )
-					->setLabel( 'shard', $this->getOption( 'dbshard' ) )
+					->setLabel( 'shard', $dbShard )
 					->setLabel( 'section', $section )
 					->observeSeconds( $seconds );
-
-				// Stay backward compatible with the legacy Graphite-based dashboard
-				// feeding on this data.
-				// TODO: remove after switching to Prometheus-based dashboards
-				$statsdDataFactory->timing(
-					'timing.growthExperiments.updateMenteeData.' . $this->getOption( 'dbshard' ) . '.' . $section,
-					$seconds
-				);
 			}
 		}
 

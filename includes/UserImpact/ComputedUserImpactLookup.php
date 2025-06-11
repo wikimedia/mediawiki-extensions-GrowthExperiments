@@ -11,7 +11,6 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Extension\Thanks\ThanksQueryHelper;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\NameTableAccessException;
@@ -206,15 +205,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
 			->getTiming( 'computed_user_impact_lookup_expensive_seconds' )
 			->observeSeconds( $userImpactLookupDurationInSeconds );
-
-		// Stay backward compatible with the legacy Graphite-based dashboard
-		// feeding on this data.
-		// TODO: remove after switching to Prometheus-based dashboards
-		$services = MediaWikiServices::getInstance();
-		$services->getStatsdDataFactory()->timing(
-			'timing.growthExperiments.ComputedUserImpactLookup.getExpensiveUserImpact',
-			$userImpactLookupDurationInSeconds
-		);
 
 		return $expensiveUserImpact;
 	}
@@ -600,7 +590,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$this->statsFactory->withComponent( 'GrowthExperiments' )
 				->getCounter( 'computed_user_impact_lookup_errors_total' )
 				->setLabel( 'type', 'pvi_cached_error_title' )
-				->copyToStatsdAt( 'GrowthExperiments.ComputedUserImpactLookup.PviCachedErrorTitle' )
 				->incrementBy( $status->failCount );
 		}
 	}

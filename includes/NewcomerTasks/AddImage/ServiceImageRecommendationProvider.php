@@ -11,7 +11,6 @@ use MediaWiki\FileRepo\File\File;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -85,14 +84,6 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			->setLabel( 'task_type', $taskType->getId() )
 			->observeSeconds( $getRequestTimeInSeconds );
 
-		// Stay backward compatible with the legacy Graphite-based dashboard
-		// feeding on this data.
-		// TODO: remove after switching to Prometheus-based dashboards
-		MediaWikiServices::getInstance()->getStatsdDataFactory()->timing(
-			'timing.growthExperiments.imageRecommendationProvider.get',
-			$getRequestTimeInSeconds
-		);
-
 		if ( !$status->isOK() && $request->getStatus() < 400 ) {
 			return $status;
 		}
@@ -135,15 +126,6 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			->setLabel( 'action', 'process_api_response_data' )
 			->setLabel( 'task_type', $taskType->getId() )
 			->observeSeconds( $processingTimeInSeconds );
-
-		// Stay backward compatible with the legacy Graphite-based dashboard
-		// feeding on this data.
-		// TODO: remove after switching to Prometheus-based dashboards
-		$services = MediaWikiServices::getInstance();
-		$services->getStatsdDataFactory()->timing(
-			'timing.growthExperiments.imageRecommendationProvider.processApiResponseData',
-			$processingTimeInSeconds
-		);
 
 		return $responseData;
 	}

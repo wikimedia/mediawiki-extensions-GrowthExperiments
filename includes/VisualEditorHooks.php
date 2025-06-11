@@ -146,9 +146,7 @@ class VisualEditorHooks implements
 					->getCounter( 'newcomer_task_save_total' )
 					->setLabel( 'wiki', $wiki )
 					->setLabel( 'task_type_id', $taskType->getId() )
-					->copyToStatsdAt(
-					$wiki . '.GrowthExperiments.NewcomerTask.' . $taskType->getId() . '.Save'
-				)->increment();
+					->increment();
 			}
 		} else {
 			// FIXME expose error formatter to hook so this can be handled better

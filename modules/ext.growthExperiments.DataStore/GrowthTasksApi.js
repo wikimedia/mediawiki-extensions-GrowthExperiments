@@ -497,9 +497,6 @@
 		const duration = mw.now() - startTime;
 		const platform = this.isMobile ? 'mobile' : 'desktop';
 		const originalContext = contextOverride || this.logContext || 'unknown_context';
-		mw.track(
-			'timing.growthExperiments.specialHomepage.growthTasksApi.' + name + '.' +
-			originalContext + '.' + platform, duration );
 
 		mw.track(
 			'stats.mediawiki_GrowthExperiments_special_homepage_seconds',

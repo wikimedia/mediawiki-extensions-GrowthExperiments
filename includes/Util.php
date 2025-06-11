@@ -181,7 +181,6 @@ class Util {
 					->setLabel( 'type', $type )
 					->setLabel( 'message', $message )
 					->setLabel( 'wiki', $wiki )
-					->copyToStatsdAt( "$wiki.GrowthExperiments.$type.$message" )
 					->increment();
 				break;
 			}

@@ -327,13 +327,6 @@ class SuggestedEdits extends BaseModule {
 			->setLabel( 'wiki', $wiki )
 			->setLabel( 'platform', $platform )
 			->setLabel( 'status', $status )
-			->copyToStatsdAt( implode( '.', [
-				$wiki,
-				'growthExperiments.suggestedEdits',
-				$platform,
-				'queue',
-				$status,
-			] ) )
 			->increment();
 	}
 

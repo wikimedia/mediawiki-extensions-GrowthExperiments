@@ -913,7 +913,6 @@ return [
 				$services->getSearchEngineFactory(),
 				$services->getLinkBatchFactory(),
 				$services->getStatsFactory(),
-				$services->getStatsdDataFactory(),
 				$growthServices->getTopicRegistry()
 			);
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(

@@ -165,7 +165,6 @@ class ListTaskCounts extends Maintenance {
 			$counter
 				->setLabel( 'wiki', $wiki )
 				->setLabel( 'tasktype', $taskTypeId )
-				->copyToStatsdAt( "$wiki.growthexperiments.tasktypecount.$taskTypeId" )
 				->incrementBy( $taskTypeCount );
 		}
 	}

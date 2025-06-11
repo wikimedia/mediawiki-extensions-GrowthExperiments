@@ -460,7 +460,6 @@ class SpecialHomepage extends SpecialPage {
 				->setLabel( 'taskType', $taskTypeId ?? '' )
 				->setLabel( 'wiki', $wiki )
 				->setLabel( 'action', $statsAction )
-				->copyToStatsdAt( "$wiki.GrowthExperiments.NewcomerTask." . $taskTypeId . '.' . $statsAction )
 				->increment();
 
 		$this->getOutput()->redirect(

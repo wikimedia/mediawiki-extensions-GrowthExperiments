@@ -308,7 +308,6 @@ class FixLinkRecommendationData extends Maintenance {
 			->setLabel( 'type', $type )
 			->setLabel( 'wiki', $wiki )
 			->setLabel( 'fix_word', $fixWord )
-			->copyToStatsdAt( "$wiki.growthexperiments.$fixWord.link-recommendation.$type" )
 			->incrementBy( $count );
 	}
 
