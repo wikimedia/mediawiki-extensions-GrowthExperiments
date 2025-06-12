@@ -175,7 +175,7 @@ class LinkRecommendationUpdater {
 		// and the search index getting out of sync by wrapping the insert into a
 		// transaction (in general start/endAtomic doesn't guarantee that but this method
 		// will usually be called from maintenance scripts).
-		$db = $this->linkRecommendationStore->getDB( DB_PRIMARY );
+		$db = $this->linkRecommendationStore->getGrowthDB( DB_PRIMARY );
 		$db->startAtomic( __METHOD__, IDatabase::ATOMIC_CANCELABLE );
 		$this->linkRecommendationStore->insertExistingLinkRecommendation( $recommendation );
 

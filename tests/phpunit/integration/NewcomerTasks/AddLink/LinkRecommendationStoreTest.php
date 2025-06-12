@@ -23,6 +23,7 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 
 	public function testGrowthexperimentsLinkRecommendationsCrud(): void {
 		$store = new LinkRecommendationStore(
+			$this->getServiceContainer()->getConnectionProvider(),
 			$this->getServiceContainer()->getDBLoadBalancer(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getLinkBatchFactory(),
