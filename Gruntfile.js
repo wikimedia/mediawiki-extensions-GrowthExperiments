@@ -20,9 +20,10 @@ module.exports = function ( grunt ) {
 			]
 		},
 		stylelint: {
-			all: [
-				'modules/**/*.{less,vue}'
-			]
+			options: {
+				cache: true
+			},
+			all: [ 'modules/**/*.{less,vue}' ]
 		},
 		banana: {
 			docs: {
