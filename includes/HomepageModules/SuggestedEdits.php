@@ -21,6 +21,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
+use InvalidArgumentException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -36,7 +37,6 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonGroupWidget;
 use OOUI\ButtonWidget;
-use OOUI\Exception;
 use OOUI\HtmlSnippet;
 use OOUI\IconWidget;
 use OOUI\Tag;
@@ -898,7 +898,7 @@ class SuggestedEdits extends BaseModule {
 	 * This code roughly corresponds to SuggestedEditPagerWidget.prototype.setMessage
 	 *
 	 * @return string
-	 * @throws Exception
+	 * @throws InvalidArgumentException
 	 */
 	private function getPager() {
 		$taskSet = $this->getTaskSet();
