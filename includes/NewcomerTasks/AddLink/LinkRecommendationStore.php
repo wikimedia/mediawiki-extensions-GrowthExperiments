@@ -16,6 +16,7 @@ use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 use stdClass;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -30,20 +31,23 @@ class LinkRecommendationStore {
 	public const RECOMMENDATION_NOT_AVAILABLE = 'recomendation_not_available';
 	public const RECOMMENDATION_UNKNOWN = 'recomendation_unknown';
 
-	private ILoadBalancer $loadBalancer;
+	private IConnectionProvider $connectionProvider;
+	private ILoadBalancer $growthLoadBalancer;
 	private TitleFactory $titleFactory;
 	private LinkBatchFactory $linkBatchFactory;
 	private PageStore $pageStore;
 	private LoggerInterface $logger;
 
 	public function __construct(
-		ILoadBalancer $loadBalancer,
+		IConnectionProvider $connectionProvider,
+		ILoadBalancer $growthLoadBalancer,
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
 		PageStore $pageStore,
 		LoggerInterface $logger
 	) {
-		$this->loadBalancer = $loadBalancer;
+		$this->connectionProvider = $connectionProvider;
+		$this->growthLoadBalancer = $growthLoadBalancer;
 		$this->titleFactory = $titleFactory;
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->pageStore = $pageStore;
@@ -60,9 +64,9 @@ class LinkRecommendationStore {
 	 */
 	private function getByCondition( array $condition, int $flags = 0 ): ?LinkRecommendation {
 		if ( ( $flags & IDBAccessObject::READ_LATEST ) === IDBAccessObject::READ_LATEST ) {
-			$db = $this->getDB( DB_PRIMARY );
+			$db = $this->getGrowthDB( DB_PRIMARY );
 		} else {
-			$db = $this->getDB( DB_REPLICA );
+			$db = $this->getGrowthDB( DB_REPLICA );
 		}
 		$row = $db->newSelectQueryBuilder()
 			->select( [ 'gelr_page', 'gelr_revision', 'gelr_data' ] )
@@ -132,7 +136,7 @@ class LinkRecommendationStore {
 					'with getByRevId().', [
 					'title' => $title->getPrefixedDBkey(),
 					'revId' => $revId,
-					'trace' => \debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS )
+					'trace' => \debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS ),
 				] );
 			}
 			return $linkRecommendation;
@@ -147,9 +151,9 @@ class LinkRecommendationStore {
 	 */
 	public function getRecommendationStateByRevision( int $revId, int $flags = 0 ): string {
 		if ( ( $flags & IDBAccessObject::READ_LATEST ) === IDBAccessObject::READ_LATEST ) {
-			$db = $this->getDB( DB_PRIMARY );
+			$db = $this->getGrowthDB( DB_PRIMARY );
 		} else {
-			$db = $this->getDB( DB_REPLICA );
+			$db = $this->getGrowthDB( DB_REPLICA );
 		}
 		$recommendationData = $db->newSelectQueryBuilder()
 			->select( [ 'gelr_data' ] )
@@ -177,7 +181,7 @@ class LinkRecommendationStore {
 	 * @return LinkRecommendation[]
 	 */
 	public function getAllExistingRecommendations( int $limit, int &$fromPageId ): array {
-		$dbr = $this->getDB( DB_REPLICA );
+		$dbr = $this->getGrowthDB( DB_REPLICA );
 		$res = $dbr->newSelectQueryBuilder()
 			->select( [ 'gelr_revision', 'gelr_page', 'gelr_data' ] )
 			->from( 'growthexperiments_link_recommendations' )
@@ -202,7 +206,7 @@ class LinkRecommendationStore {
 	 * @return (LinkRecommendation|NullLinkRecommendation)[]
 	 */
 	public function getAllRecommendationEntries( int $limit, int &$fromPageId ): array {
-		$dbr = $this->getDB( DB_REPLICA );
+		$dbr = $this->getGrowthDB( DB_REPLICA );
 		$res = $dbr->newSelectQueryBuilder()
 			->select( [ 'gelr_revision', 'gelr_page', 'gelr_data' ] )
 			->from( 'growthexperiments_link_recommendations' )
@@ -231,7 +235,7 @@ class LinkRecommendationStore {
 			->fetchPageRecords();
 
 		$conds = [];
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		$dbr = $this->growthLoadBalancer->getConnection( DB_REPLICA );
 		/** @var PageRecord $pageRecord */
 		foreach ( $pageRecords as $pageRecord ) {
 			$pageId = $pageRecord->getId();
@@ -258,7 +262,7 @@ class LinkRecommendationStore {
 	 * @return int[]
 	 */
 	public function listPageIds( int $limit, ?int $from = null ): array {
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		$dbr = $this->growthLoadBalancer->getConnection( DB_REPLICA );
 		return array_map( 'intval', $dbr->newSelectQueryBuilder()
 			->select( 'gelr_page' )
 			->from( 'growthexperiments_link_recommendations' )
@@ -282,7 +286,7 @@ class LinkRecommendationStore {
 			'gelr_page' => $pageId,
 			'gelr_data' => json_encode( $linkRecommendation->toArray() ),
 		];
-		$this->loadBalancer->getConnection( DB_PRIMARY )->newReplaceQueryBuilder()
+		$this->growthLoadBalancer->getConnection( DB_PRIMARY )->newReplaceQueryBuilder()
 			->replaceInto( 'growthexperiments_link_recommendations' )
 			->uniqueIndexFields( 'gelr_revision' )
 			->row( $row )
@@ -296,7 +300,7 @@ class LinkRecommendationStore {
 			'gelr_page' => $pageId,
 			'gelr_data' => null,
 		];
-		$this->loadBalancer->getConnection( DB_PRIMARY )->newReplaceQueryBuilder()
+		$this->growthLoadBalancer->getConnection( DB_PRIMARY )->newReplaceQueryBuilder()
 			->replaceInto( 'growthexperiments_link_recommendations' )
 			->uniqueIndexFields( 'gelr_revision' )
 			->row( $row )
@@ -310,7 +314,7 @@ class LinkRecommendationStore {
 	 * @return int The number of deleted rows.
 	 */
 	public function deleteByPageIds( array $pageIds ): int {
-		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$dbw = $this->growthLoadBalancer->getConnection( DB_PRIMARY );
 		$dbw->newDeleteQueryBuilder()
 			->deleteFrom( 'growthexperiments_link_recommendations' )
 			->where( [ 'gelr_page' => $pageIds ] )
@@ -343,7 +347,7 @@ class LinkRecommendationStore {
 	 * @return int[]
 	 */
 	public function getExcludedLinkIds( int $pageId, int $limit ): array {
-		$pageIdsToExclude = $this->loadBalancer->getConnection( DB_REPLICA )
+		$pageIdsToExclude = $this->growthLoadBalancer->getConnection( DB_REPLICA )
 			->newSelectQueryBuilder()
 			->select( 'gels_target' )
 			->from( 'growthexperiments_link_submissions' )
@@ -424,7 +428,7 @@ class LinkRecommendationStore {
 			}
 		}
 		if ( $rows ) {
-			$this->loadBalancer->getConnection( DB_PRIMARY )->newInsertQueryBuilder()
+			$this->growthLoadBalancer->getConnection( DB_PRIMARY )->newInsertQueryBuilder()
 				->insertInto( 'growthexperiments_link_submissions' )
 				->rows( $rows )
 				->caller( __METHOD__ )
@@ -440,9 +444,9 @@ class LinkRecommendationStore {
 	 */
 	public function hasSubmission( LinkRecommendation $linkRecommendation, int $flags ): bool {
 		if ( ( $flags & IDBAccessObject::READ_LATEST ) === IDBAccessObject::READ_LATEST ) {
-			$db = $this->getDB( DB_PRIMARY );
+			$db = $this->getGrowthDB( DB_PRIMARY );
 		} else {
-			$db = $this->getDB( DB_REPLICA );
+			$db = $this->getGrowthDB( DB_REPLICA );
 		}
 		return (bool)$db->newSelectQueryBuilder()
 			->select( '*' )
@@ -457,8 +461,8 @@ class LinkRecommendationStore {
 	 * @param int $index DB_PRIMARY or DB_REPLICA
 	 * @return IDatabase
 	 */
-	public function getDB( int $index ): IDatabase {
-		return $this->loadBalancer->getConnection( $index );
+	public function getGrowthDB( int $index ): IDatabase {
+		return $this->growthLoadBalancer->getConnection( $index );
 	}
 
 	/**
@@ -552,7 +556,7 @@ class LinkRecommendationStore {
 		if ( $excludedTemplates === [] ) {
 			return 0;
 		}
-		$dbr = $this->getDB( DB_REPLICA );
+		$dbr = $this->connectionProvider->getReplicaDatabase();
 		return $dbr->newSelectQueryBuilder()
 			->select( 'lt_id' )
 			->from( 'templatelinks' )

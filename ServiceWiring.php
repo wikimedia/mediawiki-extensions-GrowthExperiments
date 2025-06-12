@@ -455,6 +455,7 @@ return [
 	): LinkRecommendationStore {
 		$loadBalancer = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
 		return new LinkRecommendationStore(
+			$services->getConnectionProvider(),
 			$loadBalancer,
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory(),

@@ -110,7 +110,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->initServices();
 		$this->initConfig();
 		$lockName = 'GrowthExperiments-RefreshLinkRecommendations-' . WikiMap::getCurrentWikiId();
-		if ( !$this->linkRecommendationStore->getDB( DB_PRIMARY )->lock( $lockName, __METHOD__, 0 ) ) {
+		if ( !$this->linkRecommendationStore->getGrowthDB( DB_PRIMARY )->lock( $lockName, __METHOD__, 0 ) ) {
 			$this->output( "Previous invocation of the script is still running\n" );
 			return;
 		}
