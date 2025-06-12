@@ -158,7 +158,7 @@ class SuggestedEditsSchema extends JsonSchema {
 			'maximumEditsTaskIsAvailable' => [
 				self::TYPE => self::TYPE_STRING,
 				self::DEFAULT => 'no',
-				self::ENUM => [ 'no', '10', '50', '100', '250', '500' ],
+				self::ENUM => [ 'no', '5', '20', '50', '75', '150' ],
 			],
 		],
 	];
