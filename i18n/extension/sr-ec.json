@@ -70,7 +70,7 @@
 	"communityconfiguration-helppanel-gehelppanelviewmoretitle-label": "Одредишна страница за „Још страница помоћи”",
 	"communityconfiguration-mentorship-title": "Менторство",
 	"communityconfiguration-mentorship-gementorshipautomaticeligibility-label": "Критеријуми за менторе",
-	"communityconfiguration-mentorship-gementorshipautomaticeligibility-control-label": "Уредници који испуњавају критеријуме за менторе могу се пријавити за исте",
+	"communityconfiguration-mentorship-gementorshipautomaticeligibility-control-label": "Уредници који испуњавају критеријуме могу се пријавити за исте",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Минималан број дана од регистрације да би корисник био ментор",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Минимални број измена који корисник мора имати да би био ментор",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Минималан број измена које новајлија треба да има да би био похваљен",
@@ -93,5 +93,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Додај везу (Структуирани задатак)",
 	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "Задатак је онемогућен.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-learnmore-label": "Одредишна страница за информисање о задатку „Додај везу”",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Не",
 	"growthexperiments-addlink-done-button": "Готово"
 }

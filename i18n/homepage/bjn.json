@@ -18,6 +18,10 @@
 	"tag-newcomer_task_add_link-description": "Babakan gawian \"manambahakan tautan\" nang dianjurakan ulih modul anjuran pambabakan gasan laman palataran pandatang hanyar",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Palajari salangkapnya",
 	"growthexperiments-log-header": "Ini log tindakan nang diulah dalam éksténsi GrowthExperiments.",
+	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|manilai}} saran gambar gasan $3: ditarima",
+	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|manilai}} saran gambar gasan $3: ditampik",
+	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|manilai}} saran gambar gasan $3 (subjudul $4): ditarima",
+	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|manilai}} saran gambar gasan $3 (subjudul $4): ditampik",
 	"newcomertasksinfo": "Tugas Pamakai Hanyar",
 	"newcomertasksinfo-config-form-info": "Konfigurasi tugas pamakai hanyar kawa dijanak wan diubah di [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"growthexperiments-structuredtask-user-error": "Kami kada kawa manaikakan babakan {{GENDER:|Pian}} maraga {{GENDER:|Pian}} sudah kada babuat log. Silakan babuat log wan cuba pulang."
