@@ -642,6 +642,17 @@
 				"GrowthExperimentsPraiseworthyConditionsLookup",
 				"GrowthExperimentsPraiseworthyMenteeSuggester"
 			]
+		},
+		{
+			"events": [ "PageRevisionUpdated" ],
+			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\NewcomerMilestoneIngress",
+			"services": [
+				"UserEditTracker",
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
+				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
+				"GrowthExperimentsUserImpactLookup_Computed",
+				"MainConfig"
+			]
 		}
 	],
 	"ResourceFileModulePaths": {
