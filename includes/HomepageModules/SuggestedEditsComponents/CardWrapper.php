@@ -48,11 +48,7 @@ class CardWrapper {
 		$this->isDesktop = $isDesktop;
 	}
 
-	/**
-	 * @return string
-	 * @throws \OOUI\Exception
-	 */
-	public function render() {
+	public function render(): string {
 		$card = CardWidgetFactory::newFromTaskSet(
 			$this->messageLocalizer,
 			$this->topicMatching,

@@ -43,7 +43,6 @@ class NavigationWidgetFactory {
 	 *
 	 * @param string $direction Should be one of "Previous" or "Next" (case sensitive)
 	 * @return Tag
-	 * @throws \OOUI\Exception
 	 */
 	public function getPreviousNextButtonHtml( string $direction ): Tag {
 		// The following classes are used here:
