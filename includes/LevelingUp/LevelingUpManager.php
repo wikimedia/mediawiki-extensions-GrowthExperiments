@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\LevelingUp;
 
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -15,6 +16,8 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserEditTracker;
@@ -42,6 +45,8 @@ class LevelingUpManager {
 		'GELevelingUpManagerTaskTypeCountThresholdMultiple',
 		'GELevelingUpManagerInvitationThresholds',
 		'GENewcomerTasksLinkRecommendationsEnabled',
+		'GELevelingUpKeepGoingNotificationSendAfterSeconds',
+		'GELevelingUpGetStartedNotificationSendAfterSeconds',
 	];
 
 	private ServiceOptions $options;
@@ -50,27 +55,16 @@ class LevelingUpManager {
 	private UserOptionsLookup $userOptionsLookup;
 	private UserFactory $userFactory;
 	private UserEditTracker $userEditTracker;
+	private JobQueueGroup $jobQueueGroup;
 	private ConfigurationLoader $configurationLoader;
 	private UserImpactLookup $userImpactLookup;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private ExperimentUserManager $experimentUserManager;
 	private LoggerInterface $logger;
 	private Config $growthConfig;
 	private const KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM = 1;
 
-	/**
-	 * @param ServiceOptions $options
-	 * @param IConnectionProvider $connectionProvider
-	 * @param NameTableStore $changeTagDefStore
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param UserFactory $userFactory
-	 * @param UserEditTracker $userEditTracker
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param UserImpactLookup $userImpactLookup
-	 * @param TaskSuggesterFactory $taskSuggesterFactory
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param LoggerInterface $logger
-	 */
 	public function __construct(
 		ServiceOptions $options,
 		IConnectionProvider $connectionProvider,
@@ -78,10 +72,12 @@ class LevelingUpManager {
 		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory,
 		UserEditTracker $userEditTracker,
+		JobQueueGroup $jobQueueGroup,
 		ConfigurationLoader $configurationLoader,
 		UserImpactLookup $userImpactLookup,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		ExperimentUserManager $experimentUserManager,
 		LoggerInterface $logger,
 		Config $growthConfig
 	) {
@@ -92,10 +88,12 @@ class LevelingUpManager {
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userFactory = $userFactory;
 		$this->userEditTracker = $userEditTracker;
+		$this->jobQueueGroup = $jobQueueGroup;
 		$this->configurationLoader = $configurationLoader;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->experimentUserManager = $experimentUserManager;
 		$this->logger = $logger;
 		$this->growthConfig = $growthConfig;
 	}
@@ -372,6 +370,102 @@ class LevelingUpManager {
 
 		return $this->getSuggestedEditsCount( $userIdentity ) === 0 &&
 			$this->userEditTracker->getUserEditCount( $userIdentity ) < $maxEdits;
+	}
+
+	/**
+	 * @param string $jobName Job name; use NotificationKeepGoingJob::JOB_NAME or
+	 * NotificationGetStartedJob::JOB_NAME respectively
+	 * @param UserIdentity $recepientUser
+	 * @param ?int $delay After how many seconds should the notification be sent? Null to disable
+	 * the notification altogether.
+	 * @return bool Was the notification scheduled?
+	 */
+	private function scheduleNotificationJob(
+		string $jobName,
+		UserIdentity $recepientUser,
+		?int $delay
+	) {
+		if ( $delay === null ) {
+			$this->logger->debug(
+				__METHOD__ . ' avoided sending {jobName} notification, feature is disabled',
+				[ 'exception' => new \RuntimeException, 'jobName' => $jobName ],
+			);
+			return false;
+		}
+
+		$jobQueue = $this->jobQueueGroup->get( $jobName );
+		if ( !$jobQueue->delayedJobsEnabled() ) {
+			$this->logger->error(
+				'Failed to schedule {jobName} with a delay, delayed jobs are not supported',
+				[ 'exception' => new \RuntimeException, 'jobName' => $jobName ],
+			);
+			return false;
+		}
+
+		$this->jobQueueGroup->lazyPush(
+			new JobSpecification( $jobName, [
+				'userId' => $recepientUser->getId(),
+				// Process the job X seconds after account creation
+				'jobReleaseTimestamp' => (int)wfTimestamp() + $delay,
+			] )
+		);
+		return true;
+	}
+
+	/**
+	 * @param array<string, ?int>|int|null $delaySpecification Array of variant => delay (null
+	 * for functionality disabled); default key is used in case no variant matches
+	 * @param UserIdentity $user
+	 * @return int|null The delay for the user
+	 */
+	private function getNotificationDelayForUser( $delaySpecification, UserIdentity $user ): ?int {
+		if ( !is_array( $delaySpecification ) ) {
+			// same delay for everyone
+			return $delaySpecification;
+		}
+
+		$variantKey = $this->experimentUserManager->getVariant( $user );
+		return array_key_exists( $variantKey, $delaySpecification )
+			? $delaySpecification[$variantKey]
+			: $delaySpecification['default'];
+	}
+
+	/**
+	 * Schedule the keep going notification
+	 *
+	 * The caller is expected to check LevellingUpManager::isEnabledForUser, as appropriate.
+	 *
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function scheduleKeepGoingNotification( UserIdentity $user ): bool {
+		return $this->scheduleNotificationJob(
+			NotificationKeepGoingJob::JOB_NAME,
+			$user,
+			$this->getNotificationDelayForUser(
+				$this->options->get( 'GELevelingUpKeepGoingNotificationSendAfterSeconds' ),
+				$user
+			)
+		);
+	}
+
+	/**
+	 * Schedule the getting started notification
+	 *
+	 * The caller is expected to check LevellingUpManager::isEnabledForUser, as appropriate.
+	 *
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function scheduleGettingStartedNotification( UserIdentity $user ): bool {
+		return $this->scheduleNotificationJob(
+			NotificationGetStartedJob::JOB_NAME,
+			$user,
+			$this->getNotificationDelayForUser(
+				$this->options->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' ),
+				$user
+			)
+		);
 	}
 
 }

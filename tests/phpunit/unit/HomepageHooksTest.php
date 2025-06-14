@@ -6,11 +6,10 @@ use CirrusSearch\Search\SearchContext;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilder;
@@ -184,14 +183,13 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( TaskTypeHandlerRegistry::class ),
 			$this->createNoOpMock( TaskSuggesterFactory::class ),
 			$this->createNoOpMock( NewcomerTasksUserOptionsLookup::class ),
-			$this->createNoOpMock( LinkRecommendationStore::class ),
 			$specialPageFactoryMock ?? $this->createNoOpMock( SpecialPageFactory::class ),
 			$this->createNoOpMock( NewcomerTasksChangeTagsManager::class ),
-			$this->createNoOpMock( NewcomerTasksInfo::class ),
 			$this->createNoOpMock( UserImpactLookup::class ),
 			$this->createNoOpMock( UserImpactStore::class ),
 			$this->createNoOpMock( GrowthExperimentsInteractionLogger::class ),
-			$this->createNoOpMock( TaskTypeManager::class )
+			$this->createNoOpMock( TaskTypeManager::class ),
+			$this->createNoOpMock( LevelingUpManager::class )
 		);
 	}
 }

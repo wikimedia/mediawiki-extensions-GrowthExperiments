@@ -370,14 +370,13 @@
 				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
-				"GrowthExperimentsLinkRecommendationStore",
 				"SpecialPageFactory",
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
-				"GrowthExperimentsSuggestionsInfo",
 				"GrowthExperimentsUserImpactLookup_Computed",
 				"GrowthExperimentsUserImpactStore",
 				"GrowthExperimentsInteractionLogger",
-				"GrowthExperimentsTaskTypeManager"
+				"GrowthExperimentsTaskTypeManager",
+				"GrowthExperimentsLevelingUpManager"
 			]
 		},
 		"impact": {
