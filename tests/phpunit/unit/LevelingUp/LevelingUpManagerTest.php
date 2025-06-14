@@ -297,14 +297,15 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		?TaskSuggesterFactory $taskSuggesterFactory = null,
 		?NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup = null,
 		?ServiceOptions $serviceOptions = null,
-		?Config $config = null
+		?Config $growthConfig = null
 	): LevelingUpManager {
 		$defaultConfigValues = $this->getDefaultConfigValues();
-		$config ??= new HashConfig( $defaultConfigValues );
 		$serviceOptions ??= new ServiceOptions(
 			LevelingUpManager::CONSTRUCTOR_OPTIONS,
 			new HashConfig( $defaultConfigValues )
 		);
+
+		$growthConfig ??= new HashConfig( $defaultConfigValues );
 		return new LevelingUpManager(
 			$serviceOptions,
 			$this->createNoOpAbstractMock( IConnectionProvider::class ),
@@ -317,7 +318,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$taskSuggesterFactory ?? $this->getTaskSuggesterFactory(),
 			$newcomerTasksUserOptionsLookup ?? $this->getNewcomerTasksUserOptionsLookup(),
 			new NullLogger(),
-			$config
+			$growthConfig
 		);
 	}
 
