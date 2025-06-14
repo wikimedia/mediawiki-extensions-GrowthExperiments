@@ -377,7 +377,8 @@
 				"GrowthExperimentsUserImpactLookup_Computed",
 				"GrowthExperimentsUserImpactStore",
 				"GrowthExperimentsInteractionLogger",
-				"GrowthExperimentsTaskTypeManager"
+				"GrowthExperimentsTaskTypeManager",
+				"GrowthExperimentsLevelingUpManager"
 			]
 		},
 		"impact": {

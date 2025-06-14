@@ -15,8 +15,6 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
-use GrowthExperiments\LevelingUp\NotificationGetStartedJob;
-use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -63,7 +61,6 @@ use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\SpecialContributionsBeforeMainOutputHook;
 use MediaWiki\Html\Html;
 use MediaWiki\JobQueue\JobQueueGroup;
-use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\SkinOptions;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
@@ -156,6 +153,7 @@ class HomepageHooks implements
 	private ?UserIdentity $userIdentity;
 	private UserImpactLookup $userImpactLookup;
 	private UserImpactStore $userImpactStore;
+	private LevelingUpManager $levelingUpManager;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
@@ -209,7 +207,8 @@ class HomepageHooks implements
 		UserImpactLookup $userImpactLookup,
 		UserImpactStore $userImpactStore,
 		GrowthExperimentsInteractionLogger $growthInteractionLogger,
-		TaskTypeManager $taskTypeManager
+		TaskTypeManager $taskTypeManager,
+		LevelingUpManager $levelingUpManager
 	) {
 		$this->config = $config;
 		$this->userOptionsManager = $userOptionsManager;
@@ -233,6 +232,7 @@ class HomepageHooks implements
 		$this->userImpactStore = $userImpactStore;
 		$this->growthInteractionLogger = $growthInteractionLogger;
 		$this->taskTypeManager = $taskTypeManager;
+		$this->levelingUpManager = $levelingUpManager;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -868,25 +868,9 @@ class HomepageHooks implements
 				);
 			} );
 
-			$jobQueue = $this->jobQueueGroup->get( NotificationKeepGoingJob::JOB_NAME );
-			if ( LevelingUpManager::isEnabledForAnyone( $this->config ) &&
-				$jobQueue->delayedJobsEnabled() ) {
-				$this->jobQueueGroup->lazyPush(
-					new JobSpecification( NotificationKeepGoingJob::JOB_NAME, [
-						'userId' => $user->getId(),
-						// Process the job X seconds after account creation (default: 48 hours)
-						'jobReleaseTimestamp' => (int)wfTimestamp() +
-							$this->config->get( 'GELevelingUpKeepGoingNotificationSendAfterSeconds' )
-					] )
-				);
-				$this->jobQueueGroup->lazyPush(
-					new JobSpecification( NotificationGetStartedJob::JOB_NAME, [
-						'userId' => $user->getId(),
-						// Process the job X seconds after account creation (configured in extension.json)
-						'jobReleaseTimestamp' => (int)wfTimestamp() +
-							$this->config->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' )
-					] )
-				);
+			if ( LevelingUpManager::isEnabledForAnyone( $this->config ) ) {
+				$this->levelingUpManager->scheduleKeepGoingNotification( $user );
+				$this->levelingUpManager->scheduleGettingStartedNotification( $user );
 			}
 		}
 	}

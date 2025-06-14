@@ -6,6 +6,7 @@ use CirrusSearch\Search\SearchContext;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -191,7 +192,8 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( UserImpactLookup::class ),
 			$this->createNoOpMock( UserImpactStore::class ),
 			$this->createNoOpMock( GrowthExperimentsInteractionLogger::class ),
-			$this->createNoOpMock( TaskTypeManager::class )
+			$this->createNoOpMock( TaskTypeManager::class ),
+			$this->createNoOpMock( LevelingUpManager::class )
 		);
 	}
 }
