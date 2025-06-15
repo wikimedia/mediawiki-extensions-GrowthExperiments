@@ -30,9 +30,9 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 
 	/**
 	 * Map of user ID => impact data as JSON string, or null to generate in the job
-	 * @var (string|null)[]
+	 * @var array<int, ?string>|null
 	 */
-	private array $impactDataBatch;
+	private ?array $impactDataBatch;
 
 	/**
 	 * Cached objects generated before this UNIX timestamp are considered stale and recomputed.
@@ -61,9 +61,16 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 		$this->userFactory = $services->getUserFactory();
 		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 
-		$this->impactDataBatch = $params['impactDataBatch']
-			// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
-			?? [ $params['userId'] => $params['impactData'] ?? null ];
+		if ( array_key_exists( 'impactDataBatch', $params ) ) {
+			$this->impactDataBatch = $params['impactDataBatch'];
+		} elseif ( array_key_exists( 'userId', $params ) ) {
+			$this->impactDataBatch = [ $params['userId'] => $params['impactData'] ?? null ];
+		} else {
+			// This shouldn't happen, but ExtensionJsonTest requires __construct to not require
+			// any params; handled in run().
+			$this->impactDataBatch = null;
+		}
+
 		$this->staleBefore = $params['staleBefore'] ?? MWTimestamp::time() - ExpirationAwareness::TTL_DAY;
 		// Prevent accidental use of TS_MW or some other non-TS_UNIX format but don't require int type
 		// as e.g. wfTimestamp( TS_UNIX ) returns a string.
@@ -73,6 +80,10 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 
 	/** @inheritDoc */
 	public function run() {
+		if ( $this->impactDataBatch === null ) {
+			throw new \LogicException( __CLASS__ . ' misses required parameters (impactDataBatch expected)' );
+		}
+
 		$preloadedUserImpacts = [];
 		if ( $this->userImpactStore instanceof DatabaseUserImpactStore ) {
 			$preloadedUserImpacts = $this->userImpactStore->batchGetUserImpact(
