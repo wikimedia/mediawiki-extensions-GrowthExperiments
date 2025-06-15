@@ -10,6 +10,7 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
@@ -143,11 +144,9 @@ class UserImpactHandler extends SimpleHandler {
 			// on GET. So if a client is using a GET request, use the job queue, but otherwise (e.g. on
 			// Special:Homepage) we'll use a POST request and save using a deferred update.
 			if ( $this->getRequest()->getMethod() === 'GET' ) {
-				$this->jobQueueGroup->lazyPush(
-					new RefreshUserImpactJob( [
-						'impactDataBatch' => [ $user->getId() => json_encode( $userImpact ) ],
-					] )
-				);
+				$this->jobQueueGroup->lazyPush( new JobSpecification( RefreshUserImpactJob::JOB_NAME, [
+					'impactDataBatch' => [ $user->getId() => json_encode( $userImpact ) ],
+				] ) );
 			} else {
 				DeferredUpdates::addCallableUpdate( function () use ( $userImpact ) {
 					$this->userImpactStore->setUserImpact( $userImpact );

@@ -11,6 +11,7 @@ use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\UserFactory;
@@ -98,12 +99,13 @@ class RefreshUserImpactData extends Maintenance {
 						$usersText = implode( ', ', array_keys( $users ) );
 						$this->output( " ... enqueueing refreshUserImpactJob for users $usersText\n" );
 					}
-					$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
-						new RefreshUserImpactJob( [
+					$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush( new JobSpecification(
+						RefreshUserImpactJob::JOB_NAME,
+						[
 							'impactDataBatch' => $users,
 							'staleBefore' => $this->ignoreAfter,
-						] )
-					);
+						]
+					) );
 					$users = [];
 				}
 			} else {

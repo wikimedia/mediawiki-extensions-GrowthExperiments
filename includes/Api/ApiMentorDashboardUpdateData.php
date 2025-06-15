@@ -7,6 +7,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 
 class ApiMentorDashboardUpdateData extends ApiBase {
 
@@ -37,8 +38,8 @@ class ApiMentorDashboardUpdateData extends ApiBase {
 			$this->dieWithError( [ 'actionthrottledtext' ] );
 		}
 
-		$this->jobQueueGroup->lazyPush( new MenteeOverviewUpdateDataForMentorJob( [
-			'mentorId' => $this->getUser()->getId()
+		$this->jobQueueGroup->lazyPush( new JobSpecification( MenteeOverviewUpdateDataForMentorJob::JOB_NAME, [
+			'mentorId' => $this->getUser()->getId(),
 		] ) );
 
 		$this->getResult()->addValue( null, $this->getModuleName(), [

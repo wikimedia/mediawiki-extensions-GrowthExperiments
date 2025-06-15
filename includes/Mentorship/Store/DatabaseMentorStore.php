@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Mentorship\Store;
 
 use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -205,7 +206,7 @@ class DatabaseMentorStore extends MentorStore {
 				$mentorRole
 			);
 		} else {
-			$this->jobQueueGroup->lazyPush( new SetUserMentorDatabaseJob( [
+			$this->jobQueueGroup->lazyPush( new JobSpecification( SetUserMentorDatabaseJob::JOB_NAME, [
 				'menteeId' => $mentee->getId(),
 				'mentorId' => $mentor ? $mentor->getId() : null,
 				'roleId' => $mentorRole,

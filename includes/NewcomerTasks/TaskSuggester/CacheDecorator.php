@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use LogicException;
 use MediaWiki\JobQueue\Exceptions\JobQueueError;
 use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Json\JsonCodec;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareInterface;
@@ -155,7 +156,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 						// expires.
 						try {
 							$this->jobQueueGroup->lazyPush(
-								new NewcomerTasksCacheRefreshJob( [
+								new JobSpecification( NewcomerTasksCacheRefreshJob::JOB_NAME, [
 									'userId' => $user->getId(),
 									'jobReleaseTimestamp' => (int)wfTimestamp() +
 										// Process the job the day before the cache expires.

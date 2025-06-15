@@ -2,11 +2,8 @@
 
 namespace GrowthExperiments\UserImpact;
 
-use GrowthExperiments\GrowthExperimentsServices;
-use MediaWiki\JobQueue\GenericParameterJob;
 use MediaWiki\JobQueue\Job;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\Utils\MWTimestamp;
@@ -19,8 +16,9 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
  * Job for computing and caching expensive user impact data. Can also be used to refresh the cache
  * with an already computed value.
  */
-class RefreshUserImpactJob extends Job implements GenericParameterJob {
+class RefreshUserImpactJob extends Job {
 
+	public const JOB_NAME = 'refreshUserImpactJob';
 	private UserImpactStore $userImpactStore;
 	private UserImpactLookup $userImpactLookup;
 	private UserFactory $userFactory;
@@ -49,16 +47,23 @@ class RefreshUserImpactJob extends Job implements GenericParameterJob {
 	 * - userId: user to refresh data for (deprecated, required if impactDataBatch not present)
 	 * - impactData: impact data for userId (deprecated)
 	 */
-	public function __construct( $params = null ) {
-		parent::__construct( 'refreshUserImpactJob', $params );
+	public function __construct(
+		array $params,
+		UserIdentityLookup $userIdentityLookup,
+		UserFactory $userFactory,
+		UserImpactStore $userImpactStore,
+		UserImpactLookup $userImpactLookup,
+		UserImpactFormatter $userImpactFormatter
+	) {
+		parent::__construct( self::JOB_NAME, $params );
 
-		$services = MediaWikiServices::getInstance();
-		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$this->userImpactStore = $growthServices->getUserImpactStore();
-		$this->userImpactLookup = $growthServices->getUserImpactLookup();
-		$this->userImpactFormatter = $growthServices->getUserImpactFormatter();
-		$this->userIdentityLookup = $services->getUserIdentityLookup();
-		$this->userFactory = $services->getUserFactory();
+		$this->userIdentityLookup = $userIdentityLookup;
+		$this->userFactory = $userFactory;
+		$this->userImpactStore = $userImpactStore;
+		$this->userImpactLookup = $userImpactLookup;
+		$this->userImpactFormatter = $userImpactFormatter;
+
+		// TODO: this is not a service yet, but should be
 		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 
 		if ( array_key_exists( 'impactDataBatch', $params ) ) {

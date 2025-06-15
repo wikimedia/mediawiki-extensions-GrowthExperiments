@@ -60,10 +60,18 @@ class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 		];
 
 		MWTimestamp::setFakeTime( $now );
-		$job = new RefreshUserImpactJob( [
-			'impactDataBatch' => $userImpactData,
-			'staleBefore' => wfTimestamp( TS_UNIX, '2022-10-09 01:00:00' ),
-		] );
+
+		$job = new RefreshUserImpactJob(
+			[
+				'impactDataBatch' => $userImpactData,
+				'staleBefore' => wfTimestamp( TS_UNIX, '2022-10-09 01:00:00' ),
+			],
+			$this->getServiceContainer()->getUserIdentityLookup(),
+			$this->getServiceContainer()->getUserFactory(),
+			$growthServices->getUserImpactStore(),
+			$growthServices->getUserImpactLookup(),
+			$growthServices->getUserImpactFormatter()
+		);
 		$job->run();
 
 		$actualUserImpacts = $userImpactStore->batchGetUserImpact( $userIds );

@@ -2,10 +2,7 @@
 
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
-use GrowthExperiments\GrowthExperimentsServices;
-use MediaWiki\JobQueue\GenericParameterJob;
 use MediaWiki\JobQueue\Job;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityLookup;
 
 /**
@@ -17,26 +14,22 @@ use MediaWiki\User\UserIdentityLookup;
  * The following job parameters are required:
  * 	- mentorId: user ID of the mentor
  */
-class MenteeOverviewUpdateDataForMentorJob extends Job implements GenericParameterJob {
+class MenteeOverviewUpdateDataForMentorJob extends Job {
 
-	/** @var MenteeOverviewDataUpdater */
-	private $menteeOverviewDataUpdater;
+	public const JOB_NAME = 'menteeOverviewUpdateDataForMentor';
+	private UserIdentityLookup $userIdentityLookup;
+	private MenteeOverviewDataUpdater $menteeOverviewDataUpdater;
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/**
-	 * @inheritDoc
-	 */
-	public function __construct( $params = null ) {
-		parent::__construct( 'menteeOverviewUpdateDataForMentor', $params );
+	public function __construct(
+		array $params,
+		UserIdentityLookup $userIdentityLookup,
+		MenteeOverviewDataUpdater $menteeOverviewDataUpdater
+	) {
+		parent::__construct( self::JOB_NAME, $params );
 		$this->removeDuplicates = true;
 
-		// Init services
-		$services = MediaWikiServices::getInstance();
-		$this->menteeOverviewDataUpdater = GrowthExperimentsServices::wrap( $services )
-			->getMenteeOverviewDataUpdater();
-		$this->userIdentityLookup = $services->getUserIdentityLookup();
+		$this->userIdentityLookup = $userIdentityLookup;
+		$this->menteeOverviewDataUpdater = $menteeOverviewDataUpdater;
 	}
 
 	/** @inheritDoc */

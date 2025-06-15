@@ -19,6 +19,7 @@ use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryGeneratorBase;
 use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Title\Title;
 use StatusValue;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -173,7 +174,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			// Special:Homepage. If we don't do this, then repeat queries to this API endpoint with the same user
 			// ID and without `pageids` set will result in returning the same cached task set.
 			$this->jobQueueGroup->lazyPush(
-				new NewcomerTasksCacheRefreshJob( [
+				new JobSpecification( NewcomerTasksCacheRefreshJob::JOB_NAME, [
 					'userId' => $user->getId()
 				] )
 			);

@@ -58,11 +58,52 @@
 		"GrowthExperiments": "GlobalVarConfig::newInstance"
 	},
 	"JobClasses": {
-		"newcomerTasksCacheRefreshJob": "GrowthExperiments\\NewcomerTasks\\TaskSuggester\\NewcomerTasksCacheRefreshJob",
-		"setUserMentorDatabaseJob": "GrowthExperiments\\Mentorship\\Store\\SetUserMentorDatabaseJob",
-		"reassignMenteesJob": "GrowthExperiments\\Mentorship\\ReassignMenteesJob",
-		"menteeOverviewUpdateDataForMentor": "GrowthExperiments\\MentorDashboard\\MenteeOverview\\MenteeOverviewUpdateDataForMentorJob",
-		"refreshUserImpactJob": "GrowthExperiments\\UserImpact\\RefreshUserImpactJob",
+		"newcomerTasksCacheRefreshJob": {
+			"needsPage": false,
+			"class": "GrowthExperiments\\NewcomerTasks\\TaskSuggester\\NewcomerTasksCacheRefreshJob",
+			"services": [
+				"UserIdentityLookup",
+				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
+				"GrowthExperimentsTaskSuggesterFactory"
+			]
+		},
+		"setUserMentorDatabaseJob": {
+			"needsPage": false,
+			"class": "GrowthExperiments\\Mentorship\\Store\\SetUserMentorDatabaseJob",
+			"services": [
+				"UserIdentityLookup",
+				"GrowthExperimentsMentorStoreDatabase"
+			]
+		},
+		"reassignMenteesJob": {
+			"needsPage": false,
+			"class": "GrowthExperiments\\Mentorship\\ReassignMenteesJob",
+			"services": [
+				"MainConfig",
+				"UserIdentityLookup",
+				"GrowthExperimentsMentorStore",
+				"GrowthExperimentsReassignMenteesFactory"
+			]
+		},
+		"menteeOverviewUpdateDataForMentor": {
+			"needsPage": false,
+			"class": "GrowthExperiments\\MentorDashboard\\MenteeOverview\\MenteeOverviewUpdateDataForMentorJob",
+			"services": [
+				"UserIdentityLookup",
+				"GrowthExperimentsMenteeOverviewDataUpdater"
+			]
+		},
+		"refreshUserImpactJob": {
+			"needsPage": false,
+			"class": "GrowthExperiments\\UserImpact\\RefreshUserImpactJob",
+			"services": [
+				"UserIdentityLookup",
+				"UserFactory",
+				"GrowthExperimentsUserImpactStore",
+				"GrowthExperimentsUserImpactLookup",
+				"GrowthExperimentsUserImpactFormatter"
+			]
+		},
 		"notificationKeepGoingJob": {
 			"class": "GrowthExperiments\\LevelingUp\\NotificationKeepGoingJob",
 			"services": [

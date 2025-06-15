@@ -2,36 +2,53 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
-use MediaWiki\JobQueue\GenericParameterJob;
+use LogicException;
 use MediaWiki\JobQueue\Job;
-use MediaWiki\MediaWikiServices;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentityLookup;
 
 /**
  * Refresh the newcomer tasks cache for a user.
  */
-class NewcomerTasksCacheRefreshJob extends Job implements GenericParameterJob {
+class NewcomerTasksCacheRefreshJob extends Job {
+
+	public const JOB_NAME = 'newcomerTasksCacheRefreshJob';
+
+	private UserIdentityLookup $userIdentityLookup;
+	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private TaskSuggesterFactory $taskSuggesterFactory;
 
 	/** @inheritDoc */
-	public function __construct( array $params ) {
-		parent::__construct( 'newcomerTasksCacheRefreshJob', $params );
+	public function __construct(
+		array $params,
+		UserIdentityLookup $userIdentityLookup,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		TaskSuggesterFactory $taskSuggesterFactory
+	) {
+		parent::__construct( self::JOB_NAME, $params );
 		$this->removeDuplicates = true;
+
+		$this->userIdentityLookup = $userIdentityLookup;
+		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->taskSuggesterFactory = $taskSuggesterFactory;
 	}
 
 	/** @inheritDoc */
 	public function run() {
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		$newcomerTaskOptions = $growthServices->getNewcomerTasksUserOptionsLookup();
-		$taskSuggester = $growthServices->getTaskSuggesterFactory()->create();
-		$user = User::newFromId( $this->params['userId'] );
+		$taskSuggester = $this->taskSuggesterFactory->create();
+		$userIdentity = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['userId'] );
+		if ( $userIdentity === null ) {
+			throw new LogicException(
+				__CLASS__ . ' executed for invalid userId (' . $this->params['userId'] . ')'
+			);
+		}
 		$taskSuggester->suggest(
-			$user,
+			$userIdentity,
 			new TaskSetFilters(
-				$newcomerTaskOptions->getTaskTypeFilter( $user ),
-				$newcomerTaskOptions->getTopics( $user ),
-				$newcomerTaskOptions->getTopicsMatchMode( $user )
+				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $userIdentity ),
+				$this->newcomerTasksUserOptionsLookup->getTopics( $userIdentity ),
+				$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $userIdentity )
 			),
 			SearchTaskSuggester::DEFAULT_LIMIT,
 			null,
