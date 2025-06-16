@@ -2,7 +2,10 @@
 
 namespace GrowthExperiments\LevelingUp;
 
+use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\VariantHooks;
 use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
+use MediaWiki\MediaWikiServices;
 
 /**
  * Echo notification for "Get Started" (T322435)
@@ -16,6 +19,13 @@ class EchoGetStartedPresentationModel extends EchoEventPresentationModel {
 
 	/** @inheritDoc */
 	public function getHeaderMessage() {
+		// Echo presentation models do not support DI
+		$experimentManager = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+			->getExperimentUserManager();
+
+		if ( $experimentManager->isUserInVariant( $this->getUser(), VariantHooks::VARIANT_GET_STARTED_NOTIFICATION ) ) {
+			return $this->getMessageWithAgent( 'growthexperiments-levelingup-getstarted-notification-header-new' );
+		}
 		return $this->getMessageWithAgent( 'growthexperiments-levelingup-getstarted-notification-header' );
 	}
 
