@@ -50,7 +50,7 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 			$taskType,
 			$title,
 			__METHOD__,
-			$this->statsFactory
+			$this->statsFactory,
 		);
 	}
 
@@ -69,28 +69,18 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 		TaskType $taskType,
 		LinkTarget $title,
 		string $fname,
-		StatsFactory $statsFactory
+		StatsFactory $statsFactory,
 	) {
-		return $cache->getWithSetCallback(
+		$wasCacheHit = true;
+		$dataToBeReturned = $cache->getWithSetCallback(
 			self::makeKey( $cache, $taskType->getId(), $title->getDBkey() ),
 			// The recommendation won't change, but other metadata might and caching
 			// for longer might be problematic if e.g. the image got vandalized.
 			$cache::TTL_MINUTE * 5,
 			static function ( $oldValue, &$ttl ) use (
-				$title, $taskType, $imageRecommendationProvider, $cache, $fname, $statsFactory
+				$title, $taskType, $imageRecommendationProvider, $cache, &$wasCacheHit
 			) {
-				// This is a cache miss. That is expected when TaskSetListener->run calls the method, because we're
-				// warming the cache. We want to instrument cache misses when we get here from the ::get method,
-				// because that's called in BeforePageDisplay where we expect to have a cached result.
-				if ( $fname === __CLASS__ . '::get' ) {
-					$statsFactory->withComponent( 'GrowthExperiments' )
-						->getCounter( 'cache_backed_image_recommendation_provider_total' )
-						->setLabel( 'action', 'miss' )
-						->copyToStatsdAt(
-							"GrowthExperiments.CacheBackedImageRecommendationProvider.miss"
-						)
-						->increment();
-				}
+				$wasCacheHit = false;
 
 				$response = $imageRecommendationProvider->get( $title, $taskType );
 				if ( $response instanceof StatusValue ) {
@@ -99,6 +89,17 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 				return $response;
 			}
 		);
+
+		// When TaskSetListener->run calls the method, we're warming the cache and do not want to track hit/miss rates.
+		// We want to instrument cache misses when we get here from the ::get method,
+		// because that's called in BeforePageDisplay where we expect to have a cached result.
+		if ( $fname === __CLASS__ . '::get' ) {
+			$statsFactory->withComponent( 'GrowthExperiments' )
+				->getCounter( 'cache_backed_image_recommendation_provider_total' )
+				->setLabel( 'action', $wasCacheHit ? 'hit' : 'miss' )
+				->increment();
+		}
+		return $dataToBeReturned;
 	}
 
 	/**
