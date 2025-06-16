@@ -55,6 +55,8 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
 		$userImpact = $userImpactLookup->getUserImpact( $temporaryAccount );
 		$this->assertTrue( $temporaryAccount->equals( $userImpact->getUser() ) );
+		$expensiveUserImpact = $userImpactLookup->getExpensiveUserImpact( $temporaryAccount );
+		$this->assertTrue( $temporaryAccount->equals( $expensiveUserImpact->getUser() ) );
 	}
 
 	public function testGetUserImpact() {
@@ -175,6 +177,19 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$testUser = $this->getMutableTestUser();
 		$user = $testUser->getUser();
 		$userIdentity = $testUser->getUserIdentity();
+		ConvertibleTimestamp::setFakeTime( '20221001120000' );
+		$status->merge( $this->editPage( 'Test 1', 'test edit', '', NS_MAIN, $user ) );
+		ConvertibleTimestamp::setFakeTime( '20221002120001' );
+		$status->merge( $this->editPage( 'Test 2', 'test edit', '', NS_MAIN, $user ) );
+		ConvertibleTimestamp::setFakeTime( '20221003120002' );
+		$status->merge( $this->editPage( 'Test 3', 'test edit', '', NS_MAIN, $user ) );
+		ConvertibleTimestamp::setFakeTime( '20221004120003' );
+		$status->merge( $this->editPage( 'Test 4', 'test edit', '', NS_MAIN, $user ) );
+		ConvertibleTimestamp::setFakeTime( '20221005120004' );
+		$status->merge( $this->editPage( 'Test 5', 'test edit', '', NS_MAIN, $user ) );
+		ConvertibleTimestamp::setFakeTime( '20221006120005' );
+		$status->merge( $this->editPage( 'Test 6', 'test edit', '', NS_MAIN, $user ) );
+		$this->assertStatusGood( $status );
 
 		$pageViewService = $this->createNoOpMock( PageViewService::class, [ 'getPageData' ] );
 		$pageViewService->method( 'getPageData' )->willReturnCallback( function ( array $titles, int $days ) {
@@ -197,20 +212,6 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 			return $status;
 		} );
 		$this->setService( 'PageViewService', $pageViewService );
-
-		ConvertibleTimestamp::setFakeTime( '20221001120000' );
-		$status->merge( $this->editPage( 'Test 1', 'test edit', '', NS_MAIN, $user ) );
-		ConvertibleTimestamp::setFakeTime( '20221002120001' );
-		$status->merge( $this->editPage( 'Test 2', 'test edit', '', NS_MAIN, $user ) );
-		ConvertibleTimestamp::setFakeTime( '20221003120002' );
-		$status->merge( $this->editPage( 'Test 3', 'test edit', '', NS_MAIN, $user ) );
-		ConvertibleTimestamp::setFakeTime( '20221004120003' );
-		$status->merge( $this->editPage( 'Test 4', 'test edit', '', NS_MAIN, $user ) );
-		ConvertibleTimestamp::setFakeTime( '20221005120004' );
-		$status->merge( $this->editPage( 'Test 5', 'test edit', '', NS_MAIN, $user ) );
-		ConvertibleTimestamp::setFakeTime( '20221006120005' );
-		$status->merge( $this->editPage( 'Test 6', 'test edit', '', NS_MAIN, $user ) );
-		$this->assertStatusGood( $status );
 
 		/** @var ComputedUserImpactLookup $userImpactLookup */
 		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );

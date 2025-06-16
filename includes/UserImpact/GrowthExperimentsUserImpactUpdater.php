@@ -5,21 +5,16 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\UserImpact;
 
 use DateTime;
-use GrowthExperiments\HomepageHooks;
 use MediaWiki\JobQueue\JobQueueGroup;
-use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class GrowthExperimentsUserImpactUpdater {
-	private UserIdentityUtils $userIdentityUtils;
-	private UserOptionsLookup $userOptionsLookup;
 	private UserEditTracker $userEditTracker;
 	private UserFactory $userFactory;
 	private JobQueueGroup $jobQueueGroup;
@@ -28,8 +23,6 @@ class GrowthExperimentsUserImpactUpdater {
 	private UserImpactFormatter $userImpactFormatter;
 
 	public function __construct(
-		UserIdentityUtils $userIdentityUtils,
-		UserOptionsLookup $userOptionsLookup,
 		UserEditTracker $userEditTracker,
 		UserFactory $userFactory,
 		JobQueueGroup $jobQueueGroup,
@@ -37,8 +30,6 @@ class GrowthExperimentsUserImpactUpdater {
 		UserImpactStore $userImpactStore,
 		UserImpactFormatter $userImpactFormatter
 	) {
-		$this->userIdentityUtils = $userIdentityUtils;
-		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userEditTracker = $userEditTracker;
 		$this->userFactory = $userFactory;
 		$this->jobQueueGroup = $jobQueueGroup;
@@ -49,16 +40,13 @@ class GrowthExperimentsUserImpactUpdater {
 
 	/**
 	 * Account is considered to be in the Impact module data cohort if:
-	 * - is registered, AND
-	 * - has homepage preference enabled, AND
+	 * - is registered (named or temp), AND
 	 * - has edited, AND
 	 * - created in the last year OR edited within the last 7 days
 	 */
 	public function userIsInCohort( UserIdentity $userIdentity ): bool {
-		if ( !$this->userIdentityUtils->isNamed( $userIdentity ) ) {
-			return false;
-		}
-		if ( !$this->userOptionsLookup->getBoolOption( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE ) ) {
+		// UserImpact isn't for legacy IP actors.
+		if ( !$userIdentity->isRegistered() ) {
 			return false;
 		}
 		$lastEditTimestamp = $this->userEditTracker->getLatestEditTimestamp(
