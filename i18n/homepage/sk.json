@@ -83,6 +83,7 @@
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Najväčší počet dní za sebou, počas ktorých ste {{GENDER:|zverejnil|zverejnila|zverejnili}} aspoň jednu úpravu. Tato metrika zahŕňa len vašich posledných $2 úprav.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Toto je najvyšší počet dní za sebou, počas ktorých bola vykonaná aspoň jedna úprava. Táto metrika zahŕňa len série úprav v rámci posledných $1 úprav tohto redaktora.",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Viac informácií o výpočte najdlhšej série úprav.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "{{GENDER:|Vaša}} súčasná najdlhšia séria je {{PLURAL:$2|jeden deň|$2 dni|$2 dní}}, ktoré ste {{GENDER:|dosiahol|dosiahla|dosiahli}} v období $3.",
 	"growthexperiments-homepage-impact-subheader-text": "Ľudia navštevujú články, ktoré ste {{GENDER:|upravovali}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Zobrazenia od {{GENDER:$1|vašej}} prvej úpravy (posledných 60 dní):",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Zatiaľ ste {{GENDER:$1|neupravovali ani nevytvorili}} žiadny článok.",
@@ -167,7 +168,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Nenájdené žiadne návrhy",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Vyberte iné úrovne náročnosti, aby ste našli nejaké návrhy.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Vyberte iné oblasti záujmov alebo úrovne náročnosti, aby ste našli nejaké návrhy.",
-	"growthexperiments-homepage-suggestededits-footer": "Ostatní používatelia navrhli vylepšenia týchto článkov. Pomôžte zlepšiť '''Wikipédiu''' pre ich '''$1 čitateľov''' každý deň.",
+	"growthexperiments-homepage-suggestededits-footer": "Ostatní používatelia navrhli vylepšenia týchto článkov. Pomôžte zlepšiť '''Wikipédiu''' pre jej '''$1 čitateľov''' každý deň.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Ostatní používatelia navrhli vylepšenia týchto článkov. Pomôžte zlepšiť '''Wikipédiu'''.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Dobrovoľníci, ako ste vy, dnes prispeli do {{GRAMMAR:genitív|{{SITENAME}}}}. Pridajte sa!",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Oprava pravopisu, gramatiky a štýlu",
@@ -268,5 +269,6 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Deaktivovať mentorský modul",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Ak si už neželáte mať prideleného mentora, kliknite na tlačidlo nižšie. Ak si to kedykoľvek v budúcnosti rozmyslíte, radi vám mentora znovu pridelíme.",
 	"growthexperiments-homepage-impact-contributions-link": "Zobraziť všetky úpravy",
-	"echo-category-title-ge-newcomer": "funkcie tímu Growth"
+	"echo-category-title-ge-newcomer": "funkcie tímu Growth",
+	"echo-pref-tooltip-ge-newcomer": "Upozornite ma na úlohy pre nováčikov a ďalšie funkcie na pomoc novým používateľom."
 }
