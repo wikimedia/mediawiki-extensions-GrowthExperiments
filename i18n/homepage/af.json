@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Joris Darlington Quarshie",
-			"Rooiratel"
+			"Rooiratel",
+			"Pkeciy"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -102,7 +103,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Brei kort artikels uit",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Voeg skakels tussen artikels by",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Voeg skakels tussen artikels by",
-	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Leer meer",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Meer inligting",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 minute",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 minute",
 	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 - 20 minute",

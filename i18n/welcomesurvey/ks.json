@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"welcomesurvey": "{{GENDER:$1|خٲر مَقدَم}}، $1!",
+	"welcomesurvey-save-confirmation-title": "شُکرِیا! {{GENDER:|تُہُنٛد}} جَواب آے مَحفوٗظ کَرنہٕ.",
+	"welcomesurvey-save-btn": "مُکَمَل",
+	"welcomesurvey-dropdown-option-select-label": "مہربٲنی کٔرِتھ کٔرِو مُنتَخٕب...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "وِکیٖپیٖڈیا مَضموٗنَس مَنٛز غلطی ٹھیٖکھ کَرٕنؠ",
+	"welcomesurvey-question-reason-option-new-page-label": "نٔو وِکیٖپیٖڈیا مَضموٗن تَخلیٖق کَرنہٕ خٲطرٕ",
+	"welcomesurvey-question-reason-option-read-label": "وِکیٖپیٖڈیا پَرُن",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "باقی",
+	"welcomesurvey-question-edited-label": "تُہؠ {{GENDER:|چھا}} زانٛہہ وِکیٖپیٖڈیا اؠڈِٹ کۆرمُت؟",
+	"welcomesurvey-question-edited-option-yes-many-label": "آ، واریاہ لَٹہِ",
+	"welcomesurvey-question-edited-option-yes-few-label": "آ، اَکہِ یا دۄیہِ لَٹہِ",
+	"welcomesurvey-question-edited-option-no-dunno-label": "نَہ، مےٚ چھُ نہٕ وِکیٖپیٖڈیا اؠڈِٹ کَرنُک عٔلِم",
+	"welcomesurvey-question-edited-option-no-other-label": "نَہ، باقی وَجَہ",
+	"welcomesurvey-question-edited-option-dont-remember-label": "مےٚ چھُنہٕ یاد"
+}

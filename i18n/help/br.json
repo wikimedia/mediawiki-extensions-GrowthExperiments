@@ -6,10 +6,17 @@
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Gweredekaat takad sikour an aozer",
+	"growthexperiments-help-panel-cta-button-text": "Skoazell evit degas kemmoù",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Pajennoù skoazell gwellañ a zispleg penaos kemmañ",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Gwelet muioc’h a bennadoù skoazell",
+	"growthexperiments-help-panel-question-placeholder": "Lavarit demat ha grit {{GENDER:$1|ho}} koulenn.",
+	"growthexperiments-help-panel-home-title": "Skoazell evit degas kemmoù",
 	"growthexperiments-help-panel-postedit-success-message-published": "Embannet {{GENDER:|ho peus}} ur c’hemm. Trugarez ha kendalc’hit da aozañ!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "Enrollet {{GENDER:|hoc'h eus}} ur c'hemm. Trugarez ha kendalc'hit !",
 	"growthexperiments-help-panel-postedit-success-message-notsaved": "Trugarez da adlenn kinnigoù. Kendalc’hit!",
-	"growthexperiments-help-panel-suggestededits-title": "Kemmoù kinniget",
+	"growthexperiments-help-panel-suggestededits-title": "Kemmoù erbedet",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Kuzulioù evit loc'hañ prim",
-	"growthexperiments-help-panel-button-preheader-suggested-edits": "Kemmoù kinniget",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "Kuzulioù evit loc'hañ prim"
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Kemmoù erbedet",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Kuzulioù evit loc'hañ prim",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "A-zivout kemmoù erbedet"
 }
