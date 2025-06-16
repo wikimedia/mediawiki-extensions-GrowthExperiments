@@ -3,10 +3,10 @@
 namespace GrowthExperiments\LevelingUp;
 
 use MediaWiki\Extension\Notifications\Model\Event;
-use MediaWiki\JobQueue\Job;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentityLookup;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Job class for sending a "get started" notification to new users.
@@ -14,10 +14,11 @@ use MediaWiki\User\UserIdentityLookup;
  * Business rules for when to send the notification are contained in
  * HomepageHooks::LocalUserCreated and LevelingUpManager.
  */
-class NotificationGetStartedJob extends Job {
-	private LevelingUpManager $levelingUpManager;
+class NotificationGetStartedJob extends AbstractDelayedNotificationJob {
+
 	private UserIdentityLookup $userIdentityLookup;
 	private SpecialPageFactory $specialPageFactory;
+	private LevelingUpManager $levelingUpManager;
 
 	public const JOB_NAME = 'notificationGetStartedJob';
 
@@ -29,11 +30,16 @@ class NotificationGetStartedJob extends Job {
 	public function __construct(
 		Title $title,
 		$params,
+		StatsFactory $statsFactory,
 		UserIdentityLookup $userIdentityLookup,
 		SpecialPageFactory $specialPageFactory,
 		LevelingUpManager $levelingUpManager
 	) {
-		parent::__construct( self::JOB_NAME, $params );
+		parent::__construct(
+			self::JOB_NAME, $params,
+			$statsFactory
+		);
+
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->levelingUpManager = $levelingUpManager;
@@ -49,6 +55,7 @@ class NotificationGetStartedJob extends Job {
 				'title' => $this->specialPageFactory->getTitleForAlias( 'Homepage' ),
 				'agent' => $userIdentity
 			] );
+			$this->measureNotificationDelay();
 		}
 		return true;
 	}
