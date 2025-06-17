@@ -44,6 +44,6 @@ abstract class AbstractDelayedNotificationJob extends Job {
 			->getGauge( 'notification_delay' )
 			->setLabel( 'wiki', WikiMap::getCurrentWikiId() )
 			->setLabel( 'notification_type', $this->getType() )
-			->observe( $difference );
+			->set( $difference );
 	}
 }
