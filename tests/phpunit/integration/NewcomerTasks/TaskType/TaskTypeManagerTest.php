@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\ErrorException;
 use GrowthExperiments\GrowthExperimentsServices;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
@@ -16,7 +17,7 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 
 	public function testFiltersTaskWhenLimitNotEnabledByFeatureFlagDefault() {
 		$user = $this->createUserWithEdits( 1000 );
-		$this->setMaxEditsTaskIsAvailableInConfig( '10' );
+		$this->setMaxEditsTaskIsAvailableInConfig( '20' );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
 		$result = $sut->getTaskTypesForUser( $user );
 		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $result );
@@ -24,7 +25,7 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 
 	public function testFiltersTaskWhenLimitNotEnabledByFeatureFlag() {
 		$user = $this->createUserWithEdits( 1000 );
-		$this->setMaxEditsTaskIsAvailableInConfig( '10' );
+		$this->setMaxEditsTaskIsAvailableInConfig( '20' );
 		$this->overrideConfigValues( [
 			'GENewcomerTasksStarterDifficultyEnabled' => false,
 		] );
@@ -49,18 +50,18 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 			'GENewcomerTasksStarterDifficultyEnabled' => true,
 		] );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
-		$this->setMaxEditsTaskIsAvailableInConfig( '100' );
+		$this->setMaxEditsTaskIsAvailableInConfig( '150' );
 		$result = $sut->getTaskTypesForUser( $user );
 		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $result );
 	}
 
 	public function testFiltersTaskWhenLimitReached() {
-		$user = $this->createUserWithEdits( 11 );
+		$user = $this->createUserWithEdits( 21 );
 		$this->overrideConfigValues( [
 			'GENewcomerTasksStarterDifficultyEnabled' => true,
 		] );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
-		$this->setMaxEditsTaskIsAvailableInConfig( '10' );
+		$this->setMaxEditsTaskIsAvailableInConfig( '20' );
 		$result = $sut->getTaskTypesForUser( $user );
 		$this->assertSame( [ 'copyedit' ], $result );
 	}
@@ -84,6 +85,9 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 			->execute();
 	}
 
+	/**
+	 * @throws ErrorException
+	 */
 	private function setMaxEditsTaskIsAvailableInConfig( string $selectedEnumValue = 'no' ): void {
 		$communityConfigServices = CommunityConfigurationServices::wrap( $this->getServiceContainer() );
 		$suggestedEditsProvider = $communityConfigServices
@@ -94,8 +98,11 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 			$config = $status->getValue();
 			$config->{'link_recommendation'}->{'maximumEditsTaskIsAvailable'} = $selectedEnumValue;
 		}
-		$suggestedEditsProvider->storeValidConfiguration(
+		$status = $suggestedEditsProvider->storeValidConfiguration(
 			$config, $this->getTestUser( [ 'interface-admin' ] )->getUser()
 		);
+		if ( !$status->isOK() ) {
+			throw new ErrorException( $status );
+		}
 	}
 }
