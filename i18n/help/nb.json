@@ -3,7 +3,8 @@
 		"authors": [
 			"Gabriel Kielland",
 			"Jon Harald Søby",
-			"Orf3us"
+			"Orf3us",
+			"EdoAug"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Slå på hjelpepanelet for bidragsytere",
@@ -134,7 +135,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Eksempelsetning",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "Bilder hjelper folk å lære, men mange artikler har ingen bilder.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-value": "{{GENDER:|Du}} vil avgjøre om et foreslått bilde burde bli lagt til i en Wikipedia-artikkel.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-value": "Forslag er maskingenererte, og {{GENDER:|du}} vil avgjøre hvorvidt de skal godkjennes eller avvises.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-value": "Forslag er maskingenererte, og {{GENDER:|du}} avgjør hvorvidt de skal godkjennes eller avvises.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-text-value": "Bildene kommer fra Wikimedia Commons, en samling med fritt lisensierte bilder som brukes av Wikipedia.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step1": "Se på det foreslåtte bildet",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-step1": "Bruk filnavnet, beskrivelsen og årsaken til at det ble foreslått til å hjelpe {{GENDER:|deg}} å bestemme om det skal plassert i artikkelen.",
@@ -146,7 +147,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "Etter at {{GENDER:|du}} godtar et bilde vil du skrive en kort bildetekst, og så kan du publisere endringen din.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-header-value": "Bilder hjelper leserne å lære, men mange artikler mangler bilder.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-main-multiple-1-value": "{{GENDER:|Du}} vil avgjøre hvorvidt et foreslått bilde skal legges til i en spesifikk seksjon i en Wikipedia-artikkel.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-main-multiple-2-value": "Forslag er maskingenererte, og {{GENDER:|du}} vil avgjøre hvorvidt de skal godkjennes eller avvises.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-main-multiple-2-value": "Forslag er maskingenererte, og {{GENDER:|du}} avgjør hvorvidt de skal godkjennes eller avvises.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-text-value": "Bildene kommer fra Wikimedia Commons, en samling med fritt lisensierte bilder som brukes av Wikipedia.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-header-step1": "Se på det foreslåtte bildet",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-main-multiple-1-step1": "Bruk filnavnet, beskrivelsen og årsaken til at det ble foreslått til å hjelpe {{GENDER:|deg}} å avgjøre hvorvidt det skal legges til i artikkelen.",

@@ -4,5 +4,6 @@
 			"Luky001"
 		]
 	},
-	"echo-category-title-ge-mentorship": "mentorstvo"
+	"echo-category-title-ge-mentorship": "mentorstvo",
+	"echo-pref-tooltip-ge-mentorship": "Oznámenia týkajúce sa funkcií mentorstva vytvorených tímom Growth. Po zaškrtnutí tejto možnosti vás budeme informovať, že ste ako nováčik boli priradení k mentorovi alebo že niektorý z vašich nováčikov bol priradený k inému mentorovi."
 }

@@ -5,8 +5,12 @@
 			"Huñvreüs"
 		]
 	},
+	"growthexperiments-edit-config-newcomertasks": "Kemmoù erbedet",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Kemennadenn tañva d’ar c’hemmoù erbedet",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-top-label": "Krec'h ar bajenn",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-bottom-label": "Traoñ ar bajenn",
+	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-label": "Kemennadenn tañva d’ar c’hemmoù erbedet",
+	"communityconfiguration-growthsuggestededits-title": "Kemmoù erbedet",
 	"communityconfiguration-growthsuggestededits-update-label": "Hizivaat ar pennadoù",
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "Ouzhpennañ ul liamm (Oberenn frammet)"
 }

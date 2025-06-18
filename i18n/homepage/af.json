@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Joris Darlington Quarshie",
-			"Rooiratel"
+			"Rooiratel",
+			"Pkeciy"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -121,7 +122,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Voeg skakels tussen artikels by",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Voeg skakels tussen artikels by",
 	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "Voeg 'n beeld by 'n artikel sonder illustrasies",
-	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Leer meer",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Meer inligting",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 minute",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 minute",
 	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 - 20 minute",
@@ -255,5 +256,5 @@
 	"growthexperiments-addsectionimage-caption-info-dialog-guidelines-language": "Skryf in die taal van hierdie artikel: $1.",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Ek wil glad nie 'n mentor hê nie",
 	"growthexperiments-homepage-impact-contributions-link": "Sien alle wysigings",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Leer meer"
+	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Meer inligting"
 }
