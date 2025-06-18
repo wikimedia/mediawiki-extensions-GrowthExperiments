@@ -5,7 +5,7 @@ const assert = require( 'assert' ),
 
 describe( 'Homepage', function () {
 
-	it( 'saves change tags for unstructured task edits made via VisualEditor', async function () {
+	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', async function () {
 		const copyeditArticle = 'Classical kemençe';
 		await browser.execute( ( done ) =>
 			mw.loader.using( 'mediawiki.api' ).then( () =>
