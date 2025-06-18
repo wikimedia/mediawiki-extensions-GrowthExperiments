@@ -6,3 +6,4 @@
 /.eslintcache
 /tests/selenium/log
 /.api-testing.config.json
+/.stylelintcache
