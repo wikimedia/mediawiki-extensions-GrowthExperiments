@@ -321,10 +321,6 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
  * @return {TreeWalker}
  */
 AddLinkArticleTarget.prototype.getTreeWalker = function ( doc ) {
-	function startsWith( str, prefix ) {
-		return str && str.slice( 0, prefix.length ) === prefix;
-	}
-
 	return doc.createTreeWalker(
 		doc.body,
 		// eslint-disable-next-line no-bitwise
@@ -338,11 +334,11 @@ AddLinkArticleTarget.prototype.getTreeWalker = function ( doc ) {
 			// https://www.mediawiki.org/wiki/Specs/HTML/2.2.0
 			if (
 				// transcluded content, media, most other things
-				startsWith( node.getAttribute( 'typeof' ), 'mw:' ) ||
+				( node.getAttribute( 'typeof' ) || '' ).startsWith( 'mw:' ) ||
 				// links and link-like things
-				startsWith( node.getAttribute( 'rel' ), 'mw:' ) ||
+				( node.getAttribute( 'rel' ) || '' ).startsWith( 'mw:' ) ||
 				// metadata (though it has no content so doesn't really matter)
-				startsWith( node.getAttribute( 'property' ), 'mw:' ) ||
+				( node.getAttribute( 'property' ) || '' ).startsWith( 'mw:' ) ||
 				// part of a transcluded DOM forest such as a template with multiple
 				// top-level nodes; typeof is only present on the first node
 				node.getAttribute( 'about' ) ||
