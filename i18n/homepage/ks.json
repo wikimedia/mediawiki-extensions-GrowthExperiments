@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "ٲخری اؠڈِٹ",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "زِیٖنٛٹھ سِٹریٖک",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|دۄہ|دۄہَن}}",
+	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|ایڑِٹ|تبدی}}",
+	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1{{PLURAL:$1|ایڑِٹ|تبدیٖلیٖیٕہ}} $2 وَس پؠٹھ",
+	"growthexperiments-homepage-impact-scores-edit-count": "اَلہٕ پَلہٕ اؠڈِٹٕز:",
+	"growthexperiments-homepage-impact-scores-thanks-count": "حٲصل گوۄ شُکریہ"
+}
