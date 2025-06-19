@@ -22,7 +22,7 @@ export MW_MAINTENANCE_ARGS='docker mediawiki mwscript --'
 ### Headless like in CI
 Use this command to run the tests in a terminal:
 ```bash
-npm run cypress:run
+npm run cy:run
 ```
 
 ### With a GUI
