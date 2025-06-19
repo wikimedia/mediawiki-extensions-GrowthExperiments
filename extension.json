@@ -15,7 +15,7 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:GrowthExperiments",
 	"requires": {
-		"MediaWiki": ">= 1.44.0",
+		"MediaWiki": ">= 1.45",
 		"extensions": {
 			"CommunityConfiguration": "*",
 			"VisualEditor": "*"
@@ -623,12 +623,18 @@
 	},
 	"DomainEventIngresses": [
 		{
-			"events": [ "PageRevisionUpdated" ],
+			"events": [
+				"PageRevisionUpdated"
+			],
 			"class": "GrowthExperiments\\Mentorship\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
-			"services": [ "GrowthExperimentsMentorStore" ]
+			"services": [
+				"GrowthExperimentsMentorStore"
+			]
 		},
 		{
-			"events": [ "PageRevisionUpdated" ],
+			"events": [
+				"PageRevisionUpdated"
+			],
 			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
 			"services": [
 				"ChangeTagsStore",
@@ -638,14 +644,18 @@
 			]
 		},
 		{
-			"events": [ "PageRevisionUpdated" ],
+			"events": [
+				"PageRevisionUpdated"
+			],
 			"class": "GrowthExperiments\\UserImpact\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
 			"services": [
 				"GrowthExperimentsUserImpactUpdater"
 			]
 		},
 		{
-			"events": [ "PageRevisionUpdated" ],
+			"events": [
+				"PageRevisionUpdated"
+			],
 			"class": "GrowthExperiments\\MentorDashboard\\PersonalizedPraise\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
 			"services": [
 				"GrowthExperimentsConfig",
@@ -789,7 +799,9 @@
 							"MediaWiki:GrowthMentors.json"
 						],
 						"options": {
-							"extraTags": [ "mentor list change" ]
+							"extraTags": [
+								"mentor list change"
+							]
 						}
 					},
 					"validator": {
@@ -2043,7 +2055,9 @@
 						"ltr": "../images/mentor-ltr.svg",
 						"rtl": "../images/mentor-rtl.svg"
 					},
-					"variants": [ "progressive" ]
+					"variants": [
+						"progressive"
+					]
 				},
 				"robot-task-type-easy": "../images/suggestededits/robot-easy.svg",
 				"robot-task-type-medium": "../images/suggestededits/robot-medium.svg"
