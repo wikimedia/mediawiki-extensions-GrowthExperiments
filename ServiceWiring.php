@@ -351,6 +351,7 @@ return [
 			$services->getUserOptionsLookup(),
 			$services->getUserFactory(),
 			$services->getUserEditTracker(),
+			$services->getJobQueueGroup(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getUserImpactLookup(),
 			$growthServices->getTaskSuggesterFactory(),
