@@ -17,11 +17,9 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -143,8 +141,6 @@ class HomepageHooks implements
 	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
-	private LinkRecommendationStore $linkRecommendationStore;
-	private NewcomerTasksInfo $suggestionsInfo;
 	private JobQueueGroup $jobQueueGroup;
 	private SpecialPageFactory $specialPageFactory;
 	private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager;
@@ -161,30 +157,6 @@ class HomepageHooks implements
 	private GrowthExperimentsInteractionLogger $growthInteractionLogger;
 	private TaskTypeManager $taskTypeManager;
 
-	/**
-	 * @param Config $config Uses PHP globals
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param UserIdentityUtils $userIdentityUtils
-	 * @param NamespaceInfo $namespaceInfo
-	 * @param TitleFactory $titleFactory
-	 * @param StatsFactory $statsFactory
-	 * @param JobQueueGroup $jobQueueGroup
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param CampaignConfig $campaignConfig
-	 * @param ExperimentUserManager $experimentUserManager
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param TaskSuggesterFactory $taskSuggesterFactory
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param LinkRecommendationStore $linkRecommendationStore
-	 * @param SpecialPageFactory $specialPageFactory
-	 * @param NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
-	 * @param NewcomerTasksInfo $suggestionsInfo
-	 * @param UserImpactLookup $userImpactLookup
-	 * @param UserImpactStore $userImpactStore
-	 * @param GrowthExperimentsInteractionLogger $growthInteractionLogger
-	 * @param TaskTypeManager $taskTypeManager
-	 */
 	public function __construct(
 		Config $config,
 		UserOptionsManager $userOptionsManager,
@@ -200,10 +172,8 @@ class HomepageHooks implements
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		LinkRecommendationStore $linkRecommendationStore,
 		SpecialPageFactory $specialPageFactory,
 		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
-		NewcomerTasksInfo $suggestionsInfo,
 		UserImpactLookup $userImpactLookup,
 		UserImpactStore $userImpactStore,
 		GrowthExperimentsInteractionLogger $growthInteractionLogger,
@@ -224,10 +194,8 @@ class HomepageHooks implements
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
-		$this->suggestionsInfo = $suggestionsInfo;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->userImpactStore = $userImpactStore;
 		$this->growthInteractionLogger = $growthInteractionLogger;
