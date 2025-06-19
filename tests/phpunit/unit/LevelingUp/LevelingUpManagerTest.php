@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\LevelingUp\NotificationGetStartedJob;
 use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
@@ -76,6 +77,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 				'hard' => [ 'cx', 'newarticle' ],
 			],
 			$this->getLevelingUpManager(
+				null,
 				null,
 				null,
 				null,
@@ -314,6 +316,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		?UserImpactLookup $userImpactLookup = null,
 		?TaskSuggesterFactory $taskSuggesterFactory = null,
 		?NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup = null,
+		?ExperimentUserManager $experimentUserManager = null,
 		?ServiceOptions $serviceOptions = null,
 		?Config $growthConfig = null
 	): LevelingUpManager {
@@ -336,6 +339,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$userImpactLookup ?? $this->getUserImpactLookup(),
 			$taskSuggesterFactory ?? $this->getTaskSuggesterFactory(),
 			$newcomerTasksUserOptionsLookup ?? $this->getNewcomerTasksUserOptionsLookup(),
+			$experimentUserManager ?? $this->createNoOpMock( ExperimentUserManager::class ),
 			new NullLogger(),
 			$growthConfig
 		);
@@ -413,6 +417,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			null,
 			null,
 			null,
+			null,
 			$growthConfig
 		);
 
@@ -447,14 +452,14 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 	public static function provideNotificationJobs() {
 		return [
 			'keep-going' => [
+				NotificationKeepGoingJob::JOB_NAME,
 				'scheduleKeepGoingNotification',
 				'GELevelingUpKeepGoingNotificationSendAfterSeconds',
-				NotificationKeepGoingJob::JOB_NAME,
 			],
 			'getting-started' => [
+				NotificationGetStartedJob::JOB_NAME,
 				'scheduleGettingStartedNotification',
 				'GELevelingUpGetStartedNotificationSendAfterSeconds',
-				NotificationGetStartedJob::JOB_NAME,
 			],
 		];
 	}
@@ -462,9 +467,9 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideNotificationJobs
 	 */
-	public function testScheduleNotificationNullDelay( string $methodName, string $configOption ) {
+	public function testScheduleNotificationNullDelay( string $jobName, string $methodName, string $configOption ) {
 		$levelingUpManager = $this->getLevelingUpManager(
-			null, null, null, null, null, null,
+			null, null, null, null, null, null, null,
 			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
 				[
 					$configOption => null,
@@ -476,12 +481,44 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $levelingUpManager->$methodName( $recipient ) );
 	}
 
+	public static function provideScheduleNotificationNullDelayVariants() {
+		foreach ( self::provideNotificationJobs() as $dataset => $data ) {
+			yield "$dataset, default" => [ ...$data, [ 'default' => null, 'bla-variant' => 10 ] ];
+			yield "$dataset, extra-variant" => [ ...$data, [ 'default' => 10, 'extra-variant' => null ] ];
+		}
+	}
+
+	/**
+	 * @dataProvider provideScheduleNotificationNullDelayVariants
+	 */
+	public function testScheduleNotificationNullDelayVariants(
+		string $jobName, string $methodName,
+		string $configOption, array $configData
+	) {
+		$recipient = new UserIdentityValue( 1, 'Admin' );
+		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class, [ 'getVariant' ] );
+		$experimentUserManager->expects( $this->once() )
+			->method( 'getVariant' )
+			->with( $recipient )
+			->willReturn( 'extra-variant' );
+
+		$levelingUpManager = $this->getLevelingUpManager(
+			null, null, null, null, null, null, $experimentUserManager,
+			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
+				[
+					$configOption => $configData,
+				] + $this->getDefaultConfigValues()
+			) ),
+		);
+		$this->assertFalse( $levelingUpManager->$methodName( $recipient ) );
+	}
+
 	/**
 	 * @dataProvider provideNotificationJobs
 	 */
 	public function testScheduleNotificationNoDelayedJobs(
-		string $methodName,
-		string $configOption, string $jobName
+		string $jobName, string $methodName,
+		string $configOption
 	) {
 		$recipientUser = new UserIdentityValue( 1, 'Admin' );
 		$jobQueue = $this->getMockBuilder( JobQueue::class )
@@ -497,7 +534,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			->with( $jobName )
 			->willReturn( $jobQueue );
 		$levelingUpManager = $this->getLevelingUpManager(
-			null, $jobQueueGroup, null, null, null, null,
+			null, $jobQueueGroup, null, null, null, null, null,
 			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
 				[
 					$configOption => 100,
@@ -508,17 +545,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $levelingUpManager->$methodName( $recipientUser ) );
 	}
 
-	/**
-	 * @dataProvider provideNotificationJobs
-	 */
-	public function testScheduleNotificationOK(
-		string $methodName,
-		string $configOption, string $jobName
-	) {
-		ConvertibleTimestamp::setFakeTime( 100 );
-
-		$recipientUser = new UserIdentityValue( 1, 'Admin' );
-
+	private function getJobQueueGroup( int $expectedTimestamp, string $jobName ) {
 		$jobQueue = $this->getMockBuilder( JobQueue::class )
 			->disableOriginalConstructor()
 			->onlyMethods( [ 'supportsDelayedJobs' ] )
@@ -533,17 +560,71 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			->willReturn( $jobQueue );
 		$jobQueueGroup->expects( $this->once() )
 			->method( 'lazyPush' )
-			->with( self::callback( static function ( JobSpecification $jobSpecification ) use ( $jobName ) {
-				$jobParams = $jobSpecification->getParams();
-				return $jobSpecification->getType() === $jobName
-					&& $jobParams['userId'] === 1
-					&& $jobParams['jobReleaseTimestamp'] === 200;
-			} ) );
+			->with( self::callback(
+				static function ( JobSpecification $jobSpecification ) use ( $jobName, $expectedTimestamp ) {
+					$jobParams = $jobSpecification->getParams();
+					return $jobSpecification->getType() === $jobName
+						&& $jobParams['userId'] === 1
+						&& $jobParams['jobReleaseTimestamp'] === $expectedTimestamp;
+				}
+			) );
+		return $jobQueueGroup;
+	}
+
+	/**
+	 * @dataProvider provideNotificationJobs
+	 */
+	public function testScheduleNotificationOK(
+		string $jobName, string $methodName,
+		string $configOption
+	) {
+		ConvertibleTimestamp::setFakeTime( 100 );
+
+		$recipientUser = new UserIdentityValue( 1, 'Admin' );
+
+		$jobQueueGroup = $this->getJobQueueGroup( 200, $jobName );
 		$levelingUpManager = $this->getLevelingUpManager(
-			null, $jobQueueGroup, null, null, null, null,
+			null, $jobQueueGroup, null, null, null, null, null,
 			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
 				[
 					$configOption => 100,
+				] + $this->getDefaultConfigValues()
+			) ),
+		);
+
+		$this->assertTrue( $levelingUpManager->$methodName( $recipientUser ) );
+	}
+
+	public static function provideScheduleNotificationsOKVariants() {
+		foreach ( self::provideNotificationJobs() as $dataset => $data ) {
+			yield "$dataset, default" => [ ...$data, [ 'default' => 200, 'bla-variant' => 10 ] ];
+			yield "$dataset, extra-variant" => [ ...$data, [ 'default' => 10, 'extra-variant' => 200 ] ];
+		}
+	}
+
+	/**
+	 * @dataProvider provideScheduleNotificationsOKVariants
+	 */
+	public function testScheduleNotificationsOKVariants(
+		string $jobName, string $methodName,
+		string $configOption, array $configData
+
+	) {
+		ConvertibleTimestamp::setFakeTime( 100 );
+
+		$recipientUser = new UserIdentityValue( 1, 'Admin' );
+		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class, [ 'getVariant' ] );
+		$experimentUserManager->expects( $this->once() )
+			->method( 'getVariant' )
+			->with( $recipientUser )
+			->willReturn( 'extra-variant' );
+
+		$jobQueueGroup = $this->getJobQueueGroup( 300, $jobName );
+		$levelingUpManager = $this->getLevelingUpManager(
+			null, $jobQueueGroup, null, null, null, null, $experimentUserManager,
+			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
+				[
+					$configOption => $configData,
 				] + $this->getDefaultConfigValues()
 			) ),
 		);

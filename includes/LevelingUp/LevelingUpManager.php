@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\LevelingUp;
 
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -59,6 +60,7 @@ class LevelingUpManager {
 	private UserImpactLookup $userImpactLookup;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private ExperimentUserManager $experimentUserManager;
 	private LoggerInterface $logger;
 	private Config $growthConfig;
 	private const KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM = 1;
@@ -75,6 +77,7 @@ class LevelingUpManager {
 		UserImpactLookup $userImpactLookup,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		ExperimentUserManager $experimentUserManager,
 		LoggerInterface $logger,
 		Config $growthConfig
 	) {
@@ -90,6 +93,7 @@ class LevelingUpManager {
 		$this->userImpactLookup = $userImpactLookup;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->experimentUserManager = $experimentUserManager;
 		$this->logger = $logger;
 		$this->growthConfig = $growthConfig;
 	}
@@ -409,6 +413,24 @@ class LevelingUpManager {
 	}
 
 	/**
+	 * @param array<string, ?int>|int|null $delaySpecification Array of variant => delay (null
+	 * for functionality disabled); default key is used in case no variant matches
+	 * @param UserIdentity $user
+	 * @return int|null The delay for the user
+	 */
+	private function getNotificationDelayForUser( $delaySpecification, UserIdentity $user ): ?int {
+		if ( !is_array( $delaySpecification ) ) {
+			// same delay for everyone
+			return $delaySpecification;
+		}
+
+		$variantKey = $this->experimentUserManager->getVariant( $user );
+		return array_key_exists( $variantKey, $delaySpecification )
+			? $delaySpecification[$variantKey]
+			: $delaySpecification['default'];
+	}
+
+	/**
 	 * Schedule the keep going notification
 	 *
 	 * The caller is expected to check LevellingUpManager::isEnabledForUser, as appropriate.
@@ -420,7 +442,10 @@ class LevelingUpManager {
 		return $this->scheduleNotificationJob(
 			NotificationKeepGoingJob::JOB_NAME,
 			$user,
-			$this->options->get( 'GELevelingUpKeepGoingNotificationSendAfterSeconds' )
+			$this->getNotificationDelayForUser(
+				$this->options->get( 'GELevelingUpKeepGoingNotificationSendAfterSeconds' ),
+				$user
+			)
 		);
 	}
 
@@ -436,7 +461,10 @@ class LevelingUpManager {
 		return $this->scheduleNotificationJob(
 			NotificationGetStartedJob::JOB_NAME,
 			$user,
-			$this->options->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' )
+			$this->getNotificationDelayForUser(
+				$this->options->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' ),
+				$user
+			)
 		);
 	}
 
