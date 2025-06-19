@@ -129,7 +129,6 @@ RecommendedLinkToolbarDialog.prototype.onAnnotationClicked = function (
  * Initialize elements after this.surface and this.linkRecommendationFragments are set
  */
 RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
-	this.updateSurfacePadding();
 	this.setupControls( this.linkRecommendationFragments.length );
 	this.showFirstRecommendation().then( () => {
 		this.updateActionButtonsMode();
@@ -449,10 +448,15 @@ RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
 		return deferred.reject().promise();
 	}
 	this.beforeShowFirstRecommendation();
-	this.scrollToAnnotationView( annotationView ).then( () => {
-		this.showRecommendationAtIndex( 0 );
-		this.afterShowFirstRecommendation().then( deferred.resolve );
-	} );
+	// HACK: The start selection is scrolled into view with a debounce of 500ms
+	// when the article first opened (ve.ui.Surface#scrollSelectionIntoViewDebounced).
+	// To avoid conflicting with this call, wait.
+	setTimeout( () => {
+		this.scrollToAnnotationView( annotationView ).then( () => {
+			this.showRecommendationAtIndex( 0 );
+			this.afterShowFirstRecommendation().then( deferred.resolve );
+		} );
+	}, 600 );
 	return deferred.promise();
 };
 
@@ -502,10 +506,20 @@ RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el )
 		resolveTimeout = setTimeout( () => {
 			deferred.resolve();
 		}, this.scrollTimeout );
+
+	const padding = ve.copy( this.surface.getPadding() );
+	padding.bottom += this.scrollOffset;
+	if ( !OO.ui.isMobile() ) {
+		// As this isn't within the DesktopContext which automatically scrolls
+		// into view, we need to add manual scroll padding to account for the
+		// dialog height.
+		padding.bottom += Math.max( this.$element.height(), this.minHeight );
+	}
+
 	OO.ui.Element.static.scrollIntoView( $el, {
 		animate: true,
 		duration: 'slow',
-		padding: this.surface.padding,
+		padding: padding,
 		direction: 'y'
 	} ).then( () => {
 		clearTimeout( resolveTimeout );
@@ -830,30 +844,7 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 		this.$navButtonGroup.css( 'margin-top', 0 );
 	}
 
-	this.updateDimensions();
-};
-
-/**
- * Update the bottom padding value on the surface so that
- * scroll-into-view calculations can be adjusted so that both
- * the annotation and the link inspector are in the viewport
- */
-RecommendedLinkToolbarDialog.prototype.updateSurfacePadding = function () {
-	const bottomPadding = Math.max( this.$element.height(), this.minHeight ) + this.scrollOffset,
-		topOffset = this.topOffset || 0;
-	if ( !this.originalTopPadding ) {
-		this.originalTopPadding = this.surface.padding.top;
-	}
-	const topPadding = this.originalTopPadding + topOffset;
-	this.surface.setPadding( { top: topPadding, bottom: bottomPadding } );
-};
-
-/**
- * Update the window size and surface padding in case the window height changes
- */
-RecommendedLinkToolbarDialog.prototype.updateDimensions = function () {
 	this.updateSize();
-	this.updateSurfacePadding();
 };
 
 /**

@@ -20,7 +20,7 @@ function StructuredTaskToolbarDialog() {
 	this.surface = null;
 	/**
 	 * @property {number} scrollOffset Amount of space between the window and the annotation
-	 *   when scrolled
+	 *   when scrolling
 	 */
 	this.scrollOffset = 100;
 	/**
