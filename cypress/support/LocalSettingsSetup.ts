@@ -5,7 +5,7 @@ import * as path from 'path';
 
 const phpVersion = process.env.PHP_VERSION;
 const phpFpmService = 'php' + phpVersion + '-fpm';
-const ip = path.resolve( __dirname + '/../../../../' );
+const ip = process.env.MW_INSTALL_PATH || path.resolve( __dirname + '/../../../../' );
 const localSettingsPath = ( process.env.LOCAL_SETTINGS_PATH || path.resolve( ip + '/LocalSettings.php' ) ).toString();
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const localSettingsContents = fs.readFileSync( localSettingsPath, 'utf-8' );
