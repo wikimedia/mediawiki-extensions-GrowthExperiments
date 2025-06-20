@@ -12,5 +12,9 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "ქო",
 	"growthexperiments-edit-config-mentorship-enabled-false": "ვარი",
 	"growthexperiments-edit-config-newcomertasks": "მერზიებული რედაქტირაფეფი",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "ინფოდაფაშ თანგეფი"
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "ინფოდაფაშ თანგეფი",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "ქო, გვალო 5 რედაქტირაფაშ უკული",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "ქო, გვალო 20 რედაქტირაფაშ უკული",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "ქო, გვალო 75 რედაქტირაფაშ უკული",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "ქო, გვალო 150 რედაქტირაფაშ უკული"
 }

@@ -239,10 +239,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Mindestsicherheitsschwelle, um eine Link-Empfehlung vorzuschlagen. Dieses Feld erfordert einen Prozentsatz in Dezimalform, die Zahl sollte also zwischen 0 und 1 liegen. Wenn {{GENDER:|du}} die Zahl erhöhst, ist die Wahrscheinlichkeit höher, dass die dem Endbenutzer präsentierten Vorschläge gute Vorschläge sind, es sind jedoch weniger Vorschläge verfügbar. Wenn du die Zahl verringerst, sind zwar mehr Vorschläge verfügbar, bei einigen ist die Wahrscheinlichkeit jedoch geringer, dass es sich um qualitativ hochwertige Vorschläge handelt.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Keine Vorschläge mehr für „Link hinzufügen“-Aufgaben basierend auf der Gesamtzahl der Bearbeitungen von Neulingen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Nein",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "Ja, nach insgesamt 10 Bearbeitungen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "Ja, nach insgesamt 5 Bearbeitungen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "Ja, nach insgesamt 20 Bearbeitungen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Ja, nach insgesamt 50 Bearbeitungen",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "Ja, nach insgesamt 100 Bearbeitungen",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "Ja, nach insgesamt 250 Bearbeitungen",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "Ja, nach insgesamt 500 Bearbeitungen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ja, nach insgesamt 75 Bearbeitungen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ja, nach insgesamt 150 Bearbeitungen",
 	"growthexperiments-addlink-done-button": "Fertig"
 }

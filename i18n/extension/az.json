@@ -230,10 +230,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Minimum tələb olunan keçid balı",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Yeni gələnlərin ümumi redaktələ sayı əsasında \"Keçid əlavə et\" tapşırıqlarını təklif etməyi dayandır",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Xeyr",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "Bəli, 10 redaktədən sonra",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "Bəli, 5 redaktədən sonra",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "Bəli, 20 redaktədən sonra",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Bəli, 50 redaktədən sonra",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "Bəli, 100 redaktədən sonra",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "Bəli, 250 redaktədən sonra",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "Bəli, 500 redaktədən sonra",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Bəli, 75 redaktədən sonra",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Bəli, 150 redaktədən sonra",
 	"growthexperiments-addlink-done-button": "Oldu"
 }
