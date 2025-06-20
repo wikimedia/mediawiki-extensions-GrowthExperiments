@@ -71,7 +71,17 @@
 	.oo-ui-widget&-checkbox-section-image-recommendation,
 	.oo-ui-widget&-checkbox-link-recommendation {
 		.oo-ui-labelElement-label {
-			display: block;
+			display: inline-block;
+		}
+
+		.mw-ge-homepage-taskTypeSelectionWidget-unavailable-info-button {
+			margin-left: 0.5em;
+			position: absolute;
+			top: 0;
+			// Override inherited the disabled color
+			.oo-ui-popupWidget-popup {
+				color: @color-base;
+			}
 		}
 
 		.mw-ge-homepage-taskTypeSelectionWidget-additional-msg {
@@ -87,7 +97,7 @@
 				min-width: unset;
 				width: 16px;
 				height: 16px;
-				margin: 0 4px 0 0;
+				margin: -6px 4px 0 0;
 				// "Equals `#555` on `background-color: `#fff`, closest to `#54595d`."
 				opacity: @opacity-icon-subtle;
 			}
@@ -96,11 +106,6 @@
 			&-image-recommendation,
 			&-section-image-recommendation {
 				padding-left: unset;
-
-				span {
-					display: flex;
-					align-items: flex-start;
-				}
 			}
 
 			&-desktop {

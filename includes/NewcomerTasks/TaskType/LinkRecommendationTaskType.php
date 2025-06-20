@@ -225,11 +225,31 @@ class LinkRecommendationTaskType extends TaskType {
 		return [ 'dailyLimit' ];
 	}
 
+	/**
+	 * Text to display when the task is unavailable for a user (has reached the maximum of
+	 * edits community configured)
+	 * @param MessageLocalizer $messageLocalizer
+	 * @return ?string
+	 */
+	private function getUnavailableText( MessageLocalizer $messageLocalizer ): ?string {
+		if ( $this->getMaximumEditsTaskIsAvailable() ) {
+			return $messageLocalizer->msg(
+				'growthexperiments-homepage-suggestededits-addlink-unavailable-text',
+				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable Validated by if above
+				$this->getMaximumEditsTaskIsAvailable()
+			)->parse();
+		}
+		return null;
+	}
+
 	/** @inheritDoc */
 	public function getViewData( MessageLocalizer $messageLocalizer ): array {
 		return parent::getViewData( $messageLocalizer ) + [
 			self::FIELD_MAX_LINKS_TO_SHOW_PER_TASK => $this->getMaximumLinksToShowPerTask(),
 			self::FIELD_MAX_EDITS_TASK_AVAILABLE => $this->getMaximumEditsTaskIsAvailable(),
+			'extraMessages' => [
+				'unavailable' => $this->getUnavailableText( $messageLocalizer )
+			]
 		];
 	}
 

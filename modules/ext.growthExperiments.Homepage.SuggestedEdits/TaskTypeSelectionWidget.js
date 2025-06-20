@@ -166,7 +166,7 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
 TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, selected ) {
 	const device = OO.ui.isMobile() ? 'mobile' : 'desktop',
 		$label = $( '<span>' ).text( taskTypeData.messages.label );
-	if ( 'filterIcon' in taskTypeData.iconData ) {
+	if ( !taskTypeData.unavailable && 'filterIcon' in taskTypeData.iconData ) {
 		// Messages that can be used here:
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
 		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
@@ -191,6 +191,27 @@ TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, select
 		);
 		$additionalMessage.append( $additionalMessageContent );
 		$label.append( $additionalMessage );
+	}
+	if (
+		taskTypeData.unavailable &&
+		'extraMessages' in taskTypeData
+	) {
+		const popupButtonWidget = new OO.ui.PopupButtonWidget( {
+			icon: 'info',
+			framed: false,
+			label: taskTypeData.messages.label,
+			invisibleLabel: true,
+			popup: {
+				head: true,
+				icon: 'infoFilled',
+				label: $( '<b>' ).text( taskTypeData.messages.label ),
+				$content: $( '<span>' ).text( taskTypeData.extraMessages.unavailable ),
+				padded: true
+			},
+			classes: [ 'mw-ge-homepage-taskTypeSelectionWidget-unavailable-info-button' ]
+		} );
+
+		$label.append( popupButtonWidget.$element );
 	}
 	return new OO.ui.CheckboxMultioptionWidget( {
 		data: taskTypeData.id,

@@ -292,6 +292,7 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Match all selected topics",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Match at least one selected topic",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Campaign event",
+	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1 {{PLURAL:$1|edit|edits}}, congrats! Available suggested edits have changed.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Invalid suggested edits configuration: bad structure",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Invalid suggested edits configuration for task type \"$1\": \"$2\" must be an integer",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Invalid suggested edits configuration for task type \"$1\": \"$2\" must be larger than $3",
