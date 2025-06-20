@@ -5,10 +5,6 @@
 		]
 	},
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "نه",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "هو، وروسته له ۱۰ ټولټال سمونونو",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "هو، وروسته له ۵۰ ټولټال سمونونو",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "هو، وروسته له ۱۰۰ ټولټال سمونونو",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "هو، وروسته له ۲۵۰ ټولټال سمونونو",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "هو، وروسته له ۵۰۰ ټولټال سمونونو",
 	"growthexperiments-addlink-done-button": "وشو"
 }

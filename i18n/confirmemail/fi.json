@@ -16,10 +16,10 @@
 	"growthexperiments-confirmemail-confirm-body-html": "Hei $2,\n\nKiitos sähköpostin lisäämisestä {{SITENAME}}-tunnukseesi; rekistöity IP-osoitteesta $1.\n\nKlikkaa alla olevaa painiketta varmentaaksesi tämän sähköpostiosoitteeksi, jonka haluat yhdistää tunnukseesi ”$2”:\n\n$3\n\nHuom. tämä vahvistuskoodi <strong>vanhenee $4</strong>.\n\nTerveisin,\n\n{{SITENAME}}\n\n----\n\nPeruuttaaksesi sähköpostiosoitteen vahvistuksen (koska et rekisteröinyt tunnusta tai jostain muusta syystä) klikkaa tätä peruutuslinkkiä:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Varmenna sähköpostiosoite",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "Hei $2,\n\nKiitos sähköpostin lisäämisestä {{SITENAME}}-tunnukseesi; rekistöity IP-osoitteesta $1.\n\nKlikkaa alla olevaa painiketta varmentaaksesi tämän sähköpostiosoitteeksi, jonka haluat yhdistää tunnukseesi ”$2”:\n\n$3\n\nHuom. tämä vahvistuskoodi vanhenee $4.\n\nTerveisin,\n\n{{SITENAME}}\n\n----\n\nPeruuttaaksesi sähköpostiosoitteen vahvistuksen (koska et rekisteröinyt tunnusta tai jostain muusta syystä) klikkaa tätä peruutuslinkkiä:\n\n$5",
-	"growthexperiments-signupcampaign-title": "Kiitos lahjoituksesta! Liity Wikipediaa parantavien muokkaajien yhteisöön nyt",
-	"growthexperiments-signupcampaign-body": "Wikipedian muokkaaminen voi olla yhtä helppoa kuin linkin lisääminen tai sanan vaihtaminen. Saat ehdotuksia artikkeleista {{GENDER:|sinua}} kiinnostavista aiheista tunnuksen luomisen jälkeen!",
-	"growthexperiments-signupcampaign-bullet1": "Ehdotetut artikkelit {{GENDER:|kiinnostuksenaiheistasi}}",
+	"growthexperiments-signupcampaign-title": "Kiitos lahjoituksesta! Liity Wikipediaa parantavien muokkaajien yhteisöön jo tänään",
+	"growthexperiments-signupcampaign-body": "Wikipedian muokkaaminen voi olla yhtä helppoa kuin linkin lisääminen tai yhden sanan vaihtaminen. Saat ehdotuksia artikkeleista {{GENDER:|sinua}} kiinnostavista aiheista tunnuksen luomisen jälkeen!",
+	"growthexperiments-signupcampaign-bullet1": "Ehdotetut artikkelit {{GENDER:|kiinnostuksen kohteistasi}}",
 	"growthexperiments-signupcampaign-bullet2": "Pyydä apua kokeneelta muokkaajalta",
 	"growthexperiments-signupcampaign-bullet3": "Aloita pienistä ja helpoista muokkauksista",
-	"growthexperiments-campaigns-footer": "Luomalla {{SUKUPUOLI:|tunnuksesi}} tällä sivulle, se liitetään tähän kampanjaan kokemus- ja analyysitarkoituksia varten."
+	"growthexperiments-campaigns-footer": "Luomalla {{GENDER:|tunnuksesi}} tällä sivulla se liitetään tähän kampanjaan kokemus- ja analyysitarkoituksia varten."
 }

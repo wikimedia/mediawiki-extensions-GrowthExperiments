@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alien333",
+			"Derugon",
 			"DreZhsh",
 			"Escargot bleu",
 			"Gomoko",
@@ -246,10 +247,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Seuil de confidence minimal pour la suggestion de liens. Ce champ nécessite un pourcentage sous forme décimale compris entre 0 et 1. Plus {{GENDER:|vous}} augmentez ce nombre, plus les suggestions présentées à l'utilisateur final auront des chances d'être acceptées, mais alors vous aurez moins de choix. Si vous diminuez cette valeur, vous aurez beaucoup plus de suggestions mais certaines pourront avoir une qualité médiocre.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Arrêtez de suggérer des tâches « Ajouter un lien » en fonction du nombre total de modifications des nouveaux arrivants",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Non",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-10-label": "Oui, après 10 modifications au total",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "Oui, après 5 modifications au total",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "Oui, après 20 modifications au total",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Oui, après 50 modifications au total",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-100-label": "Oui, après 100 modifications au total",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-250-label": "Oui, après 250 modifications au total",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-500-label": "Oui, après 500 modifications au total",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Oui, après 75 modifications au total",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Oui, après 150 modifications au total",
 	"growthexperiments-addlink-done-button": "Terminé"
 }

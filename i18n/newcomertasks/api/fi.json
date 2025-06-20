@@ -4,6 +4,8 @@
 			"Samoasambia"
 		]
 	},
+	"apierror-growthexperiments-addlink-handler-notfound": "Linkkiehdotustietuetta ei löytynyt",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Odottamattomia linkkiehdotusten kohteita: $1",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Tulisiko ”$1” linkittää?",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Tarkasta ehdotettu linkki ja auta parantamaan Wikipediaa.",
 	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Kyllä",
