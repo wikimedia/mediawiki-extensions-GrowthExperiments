@@ -859,9 +859,6 @@ class HomepageHooks implements
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			array_push( $tags, ...$this->taskTypeHandlerRegistry->getChangeTags() );
 		}
-		if ( $this->config->get( 'GESurfacingStructuredTasksEnabled' ) ) {
-			$tags[] = NewcomerTasksChangeTagsManager::SURFACED_CHANGE_TAG;
-		}
 	}
 
 	/**
@@ -880,9 +877,6 @@ class HomepageHooks implements
 		$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			array_push( $tags, ...$this->taskTypeHandlerRegistry->getChangeTags() );
-		}
-		if ( $this->config->get( 'GESurfacingStructuredTasksEnabled' ) ) {
-			$tags[] = NewcomerTasksChangeTagsManager::SURFACED_CHANGE_TAG;
 		}
 	}
 

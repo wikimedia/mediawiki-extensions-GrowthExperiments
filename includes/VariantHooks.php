@@ -43,7 +43,6 @@ class VariantHooks implements
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
 	public const VARIANT_NO_LINK_RECOMMENDATION = 'no-link-recommendation';
-	public const VARIANT_SURFACING_STRUCTURED_TASK = 'surfacing-structured-task';
 	public const VARIANT_GET_STARTED_NOTIFICATION = 'get-started-notification';
 
 	/**
@@ -67,9 +66,10 @@ class VariantHooks implements
 		//     See task T350077 for more details.
 		// 'community-updates-module' Doesn't exist anymore. Was used for A/B testing the Community Updates .
 		//     module. See task T385338 for more details.
+		// 'surfacing-structured-task' Doesn't exist anymore. Was used for A/B testing the
+		// Surfacing Structured Tasks experiment (see T362584 for details).
 		self::VARIANT_CONTROL,
 		self::VARIANT_NO_LINK_RECOMMENDATION,
-		self::VARIANT_SURFACING_STRUCTURED_TASK,
 		self::VARIANT_GET_STARTED_NOTIFICATION,
 	];
 

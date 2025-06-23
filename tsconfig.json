@@ -1,6 +1,5 @@
 {
 	"include": [
-		"modules/ext.growthExperiments.StructuredTask.Surfacing/**/*",
 		"modules/index.d.ts"
 	],
 	"compilerOptions": {

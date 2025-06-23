@@ -43,9 +43,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "REST API error message.",
 	"growthexperiments-addimage-feedback-accepted-caption": "REST API error message.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "REST API error message.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "REST API error message.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Title of a popover which proposes linking a word or phrase in an article to another article.\n\nParameters:\n* $1: Title of the page to consider linking to.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Body of a popover which proposes linking a word or phrase in an article to another article.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Label for a button in a popover that redirects to VisualEditor to review suggested links in an article.\n\nFor the question see: {{msg-mw|growthexperiments-surfacing-structured-tasks-highlight-popup-title}}.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Label for a button that closes a popover proposing linking a word or phrase in an article to another article.\n\nFor the question see: {{msg-mw|growthexperiments-surfacing-structured-tasks-highlight-popup-title}}."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "REST API error message."
 }

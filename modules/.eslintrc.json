@@ -44,24 +44,6 @@
 			"env": {
 				"jest": true
 			}
-		},
-		{
-			"files": [ "ext.growthExperiments.StructuredTask.Surfacing/**/*.js" ],
-			"extends": [
-				"wikimedia/language/es2018"
-			],
-			"rules": {
-				"jsdoc/valid-types": "off",
-				"jsdoc/no-undefined-types": "off",
-				"es-x/no-async-functions": "off",
-				"es-x/no-object-values": "off",
-				"es-x/no-trailing-function-commas": "off",
-				"no-cond-assign": "off",
-				"comma-dangle": [
-					"error",
-					"always-multiline"
-				]
-			}
 		}
 	]
 }
