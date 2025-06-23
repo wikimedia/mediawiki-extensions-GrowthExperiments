@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"Guycn2",
 			"חיים"
 		]
 	},
@@ -229,6 +230,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "סף ביטחון מינימלי להצעות קישור. השדה הזה מחייב אחוז בצורתו העשרונית, כך שהמספר צריך להיות בין 0 ל־1. אם {{GENDER:|תגדיל|תגדילי}} את המספר, תהיה סבירות גבוהה יותר שהצעות שמוצגות למשתמש הקצה יהיו טובות, אבל יהיו זמינות פחות הצעות. אם {{GENDER:|תקטין|תקטיני}} את המספר, יהיו זמינות הצעות נוספות, אך לחלקן תהיה סבירות נמוכה יותר להיות הצעות באיכות טובה.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "הפסק להציע משימות \"הוספת קישור\" על סמך סך כל העריכות של משתמשים חדשים",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "לא",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "כן, אחרי 5 עריכות בסך הכול",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "כן, אחרי 20 עריכות בסך הכול",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "כן, אחרי 50 עריכות בסך הכול",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "כן, אחרי 75 עריכות בסך הכול",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "כן, אחרי 150 עריכות בסך הכול",
 	"growthexperiments-addlink-done-button": "בוצע"
 }

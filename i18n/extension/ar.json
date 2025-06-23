@@ -233,6 +233,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "الحد الأدنى من الثقة لاقتراح رابط. يتطلب هذا الحقل نسبة مئوية في شكلها العشري، لذا يجب أن يكون الرقم بين 0 و1. إذا  {{GENDER:|زدت}} العدد، سيكون للاقتراحات المقدمة للمستخدم النهائي احتمالية أكبر لأن تكون اقتراحات جيدة، ولكن سيكون هناك عدد أقل من الاقتراحات المتاحة. إذا قمت بتقليل العدد، فسيكون هناك المزيد من الاقتراحات المتاحة ولكن سيكون لدى بعضها احتمالية أقل لأن تكون اقتراحات جيدة الجودة.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "التوقف عن اقتراح مهام \"إضافة رابط\" استنادًا إلى إجمالي تعديلات الوافدين الجدد",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "لا",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "نعم، بعد 5 تعديلات إجماليًا",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "نعم، بعد 20 تعديلًا إجماليًا",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "نعم، بعد 50 تعديلًا إجماليًا",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "نعم، بعد 75 تعديلًا إجماليًا",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "نعم، بعد 150 تعديلًا إجماليًا",
 	"growthexperiments-addlink-done-button": "تم"
 }

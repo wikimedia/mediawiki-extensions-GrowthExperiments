@@ -82,6 +82,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "E Link derbäisetzen (strukturéiert Aufgab)",
 	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "D'Aufgab ass desaktivéiert.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Nee",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "Jo, no insgesamt 5 Ännerungen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "Jo, no insgesamt 20 Ännerungen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Jo, no insgesamt 50 Ännerungen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Jo, no insgesamt 75 Ännerungen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Jo, no insgesamt 150 Ännerungen",
 	"growthexperiments-addlink-done-button": "Fäerdeg"
 }

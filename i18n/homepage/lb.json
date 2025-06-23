@@ -224,6 +224,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "E Bild an een net illustréierten Artikel derbäisetzen",
 	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "E Bild bei een Artikelabschnitt derbäisetzen",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Maschinnevirschléi",
+	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1 {{PLURAL:$1|Ännerung|Ännerungen}}, Gléckwonsch! Déi disponibel Ännerungsvirschléi hu geännert.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi: Falsch Struktur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi fir den Aufgabentyp „$1“: „$2“ muss eng ganz Zuel sinn",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Ongülteg Konfiguratioun vun den Ännerungsvirschléi fir den Aufgabentyp „$1“: „$2“ muss méi grouss wéi $3 sinn",

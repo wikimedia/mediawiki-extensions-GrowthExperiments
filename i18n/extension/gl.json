@@ -229,6 +229,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Limiar mínimo de confianza para as suxestións de ligazóns. Este campo necesita unha porcentaxe na súa forma decimal, polo que o número debe estar entre 0 e 1. Se {{GENDER:|aumentas}} o número, as suxestións presentadas ao usuario final terán unha maior probabilidade de ser boas suxestións, pero haberá menos suxestións dispoñibles. Se reduces o número, haberá máis suxestións dispoñibles, pero algunhas terán unha menor probabilidade de ser suxestións de boa calidade.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Deixar de suxerir as tarefas de \"Engadir unha ligazón\" en base ás edicións totais das persoas principiantes",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Non",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "Si, despois dun total de 5 edicións",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "Si, despois dun total de 20 edicións",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Si, despois dun total de 50 edicións",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Si, despois dun total de 75 edicións",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Si, despois dun total de 150 edicións",
 	"growthexperiments-addlink-done-button": "Feito"
 }
