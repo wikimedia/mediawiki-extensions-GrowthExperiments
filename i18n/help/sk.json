@@ -11,8 +11,8 @@
 	"growthexperiments-help-panel-question-button-text": "Pokračovať",
 	"growthexperiments-help-panel-submit-question-button-text": "Zverejniť",
 	"growthexperiments-help-panel-return-home-button-text": "Hotovo",
-	"growthexperiments-help-panel-editing-help-links-widget-header": "Najdôležitejšie stránky s nápovedou",
-	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobraziť viac stránok s nápovedou",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Najdôležitejšie stránky pomocníka",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobraziť viac stránok s pomocou",
 	"growthexperiments-help-panel-question-widget-header": "Vložte svoju otázku na stránku Potrebujem pomoc",
 	"growthexperiments-help-panel-question-placeholder": "Pozdravte a {{GENDER:$1|položte}} svoju otázku.",
 	"growthexperiments-help-panel-back-home": "Späť",
@@ -47,9 +47,12 @@
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Vypnúť tento nástroj v nastaveniach",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Neplatný názov.",
 	"growthexperiments-help-panel-community-help-desk-text": "Potrebujem pomoc",
-	"growthexperiments-help-panel-search-label": "Hľadať v nápovede",
+	"growthexperiments-help-panel-search-label": "Hľadať v pomocníkovi",
 	"growthexperiments-help-panel-search-no-results": "Neboli nájdené žiadne výsledky.",
 	"tag-help_panel_question": "Panel Potrebujem pomoc",
 	"tag-help_panel_question-description": "Otázka vložená prostredníctvom panelu Potrebujem pomoc",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Požiadajte svojho {{GENDER:$1|mentora|mentorku}} o pomoc"
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Požiadajte svojho {{GENDER:$1|mentora|mentorku}} o pomoc",
+	"growthexperiments-help-panel-button-header-general-help": "Pomocník k editácii",
+	"growthexperiments-help-panel-button-subheader-general-help": "Prezrieť pomocníka",
+	"growthexperiments-help-panel-general-help-title": "Všeobecná pomoc s editovaním"
 }

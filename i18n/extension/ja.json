@@ -22,7 +22,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: [[User:$1|$1]] さんによる直近の更新は $2([$4 diff])です。",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: 匿名利用者による直近の更新は $1([$3 diff])です。",
 	"growthexperiments-edit-config-pretext": "このページでは、[[:mw:Special:MyLanguage/Growth|Growth]]チームの機能の設定を編集できます。利用者に代わって $1 を編集します。変更内容は、そのページの変更履歴で確認できます。",
-	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|皆さん}}には、価値のあるイベント告知を含めて、新規参加者のホームページにバナーを表示することができます。もし{{GENDER:|ご希望}}でしたら、{{GENDER:|皆さん自身}}で[[$1]]に追加するのは手動になります。そちらに追加したコンテンツは全て、[[Special:Homepage|個人のホームページ]]に黄色い背景色のバナーとして表示されます。",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|あなた}}は、新規参加者にとって重要なイベントの告知を含めるために、新規参加者のホームページにバナーを表示することもできます。これを行いたい場合は、{{GENDER:|あなた}}自身で手動で [[$1]] に追加する必要があります。そこに追加されたコンテンツはすべて、[[Special:Homepage]] の上部に黄色いバナーとして表示されます。",
 	"growthexperiments-edit-config-pretext-unprivileged": "このフォームを使用すると、権限保有者は[[:mw:Special:MyLanguage/Growth|Growth]]チーム機能の設定を編集できます。",
 	"growthexperiments-edit-config-feedback-headline": "このフォームについてアイデアや質問がありますか？",
 	"growthexperiments-edit-config-feedback-cta": "フィードバックを送る",
