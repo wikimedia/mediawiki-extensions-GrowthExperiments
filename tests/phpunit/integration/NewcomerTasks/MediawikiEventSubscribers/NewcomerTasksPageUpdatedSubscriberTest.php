@@ -163,7 +163,6 @@ class NewcomerTasksPageUpdatedSubscriberTest extends MediaWikiIntegrationTestCas
 				}
 				return $newcomerRevertedTaskCounterMock;
 			} );
-		$newcomerRevertedTaskCounterMock->method( 'copyToStatsdAt' )->willReturnSelf();
 		$newcomerRevertedTaskCounterMock->expects( $this->once() )->method( 'increment' );
 
 		$pageUpdater = $wikiPage->newPageUpdater( $user );

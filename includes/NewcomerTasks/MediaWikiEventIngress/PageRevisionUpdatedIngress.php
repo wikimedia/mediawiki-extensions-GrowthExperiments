@@ -108,7 +108,6 @@ class PageRevisionUpdatedIngress extends DomainEventIngress {
 				->getCounter( 'newcomertask_reverted_total' )
 				->setLabel( 'taskType', $taskType )
 				->setLabel( 'wiki', $wiki )
-				->copyToStatsdAt( sprintf( "$wiki.GrowthExperiments.NewcomerTask.Reverted.%s", $taskType ) )
 				->increment();
 		}
 	}

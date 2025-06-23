@@ -147,7 +147,6 @@ class NewcomerTasksChangeTagsManager {
 			->setLabel( 'taskType', $taskTypeId )
 			->setLabel( 'wiki', $wiki )
 			->setLabel( 'action', $statsAction )
-			->copyToStatsdAt( "$wiki.GrowthExperiments.NewcomerTask." . $taskTypeId . '.' . $statsAction )
 			->increment();
 
 		return StatusValue::newGood( $result );

@@ -64,7 +64,6 @@ class UpdateMetrics extends Maintenance {
 			$this->statsFactory->withComponent( 'GrowthExperiments' )
 				->getGauge( $statsLibKey )
 				->setLabel( 'wiki', $wiki )
-				->copyToStatsdAt( "$wiki." . $metric->getStatsdKey() )
 				->set( $metricValue );
 
 			if ( $this->hasOption( 'verbose' ) ) {

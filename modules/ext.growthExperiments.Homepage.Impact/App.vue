@@ -78,7 +78,6 @@ module.exports = exports = {
 	methods: {
 		impactMounted: function () {
 			const duration = mw.now() - startTime;
-			mw.track( 'timing.growthExperiments.newImpact.' + inject( 'RENDER_MODE' ) + '.mounted', duration );
 			mw.track(
 				'stats.mediawiki_GrowthExperiments_homepage_impact_mounted_seconds',
 				duration,

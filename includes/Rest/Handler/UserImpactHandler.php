@@ -10,7 +10,6 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\JobQueue\JobQueueGroup;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
@@ -79,13 +78,6 @@ class UserImpactHandler extends SimpleHandler {
 			->getTiming( 'user_impact_handler_run_seconds' )
 			->observeSeconds( $runTimeInSeconds );
 
-		// Stay backward compatible with the legacy Graphite-based dashboard
-		// feeding on this data.
-		// TODO: remove after switching to Prometheus-based dashboards
-		MediaWikiServices::getInstance()->getStatsdDataFactory()->timing(
-			'timing.growthExperiments.UserImpactHandler.run', $runTimeInSeconds
-		);
-
 		return $formattedJsonData;
 	}
 
@@ -104,7 +96,6 @@ class UserImpactHandler extends SimpleHandler {
 			$this->statsFactory->withComponent( 'GrowthExperiments' )
 				->getCounter( 'user_impact_handler_cache_total' )
 				->setLabel( 'status', 'hit' )
-				->copyToStatsdAt( 'GrowthExperiments.UserImpactHandler.Cache.Hit' )
 				->increment();
 		}
 
@@ -114,7 +105,6 @@ class UserImpactHandler extends SimpleHandler {
 			$this->statsFactory->withComponent( 'GrowthExperiments' )
 				->getCounter( 'user_impact_handler_cache_total' )
 				->setLabel( 'status', 'hit_stale' )
-				->copyToStatsdAt( 'GrowthExperiments.UserImpactHandler.Cache.HitStalePageViewData' )
 				->increment();
 		} else {
 			$userImpact = $cachedUserImpact;
@@ -124,7 +114,6 @@ class UserImpactHandler extends SimpleHandler {
 			$this->statsFactory->withComponent( 'GrowthExperiments' )
 				->getCounter( 'user_impact_handler_cache_total' )
 				->setLabel( 'status', 'miss' )
-				->copyToStatsdAt( 'GrowthExperiments.UserImpactHandler.Cache.Miss' )
 				->increment();
 			// Rate limit check.
 			$performingUser = $this->userFactory->newFromUserIdentity( $this->getAuthority()->getUser() );
@@ -133,8 +122,6 @@ class UserImpactHandler extends SimpleHandler {
 					$this->statsFactory->withComponent( 'GrowthExperiments' )
 						->getCounter( 'user_impact_handler_ping_limiter_total' )
 						->setLabel( 'status', 'stale_data' )
-						->copyToStatsdAt(
-							'GrowthExperiments.UserImpactHandler.PingLimiterTripped.StaleImpactData' )
 						->increment();
 					// Performing user is over the rate limit for requesting data for other users, but we have stale
 					// data so just return that, rather than nothing.
@@ -143,8 +130,6 @@ class UserImpactHandler extends SimpleHandler {
 					$this->statsFactory->withComponent( 'GrowthExperiments' )
 						->getCounter( 'user_impact_handler_ping_limiter_total' )
 						->setLabel( 'status', 'no_data' )
-						->copyToStatsdAt(
-							'GrowthExperiments.UserImpactHandler.PingLimiterTripped.NoData' )
 						->increment();
 					throw new HttpException( 'Too many requests to refresh user impact data', 429 );
 				}

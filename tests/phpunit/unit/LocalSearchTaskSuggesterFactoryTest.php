@@ -14,7 +14,6 @@ use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentityValue;
 use SearchEngineFactory;
 use StatusValue;
-use Wikimedia\Stats\NullStatsdDataFactory;
 use Wikimedia\Stats\StatsFactory;
 
 /**
@@ -44,7 +43,6 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 			$this->createNoOpMock( SearchEngineFactory::class ),
 			$this->createNoOpMock( LinkBatchFactory::class ),
 			StatsFactory::newNull(),
-			new NullStatsdDataFactory(),
 			$this->getTopicRegistry( $topics )
 		);
 		$taskSuggester = $taskSuggesterFactory->create();

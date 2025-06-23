@@ -623,11 +623,6 @@
 		}
 		const duration = window.performance.now() - this.startTime;
 		mw.track(
-			'timing.growthExperiments.suggestedEdits.taskEditorReady.' + this.taskType +
-			( OO.ui.isMobile() ? '.mobile' : '.desktop' ),
-			duration
-		);
-		mw.track(
 			'stats.mediawiki_GrowthExperiments_task_editor_ready_seconds',
 			duration,
 			{
@@ -653,11 +648,6 @@
 			return;
 		}
 		const guidanceDisplayDuration = window.performance.now() - this.startTime;
-		mw.track(
-			'timing.growthExperiments.suggestedEdits.guidanceShown.' + this.taskType +
-			( OO.ui.isMobile() ? '.mobile' : '.desktop' ),
-			guidanceDisplayDuration
-		);
 		mw.track(
 			'stats.mediawiki_GrowthExperiments_suggested_edits_session_seconds',
 			guidanceDisplayDuration,

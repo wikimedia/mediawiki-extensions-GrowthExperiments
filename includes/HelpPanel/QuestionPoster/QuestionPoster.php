@@ -241,7 +241,6 @@ abstract class QuestionPoster {
 			->getCounter( 'question_poster_edits_total' )
 			->setLabel( 'tag', $tagId )
 			->setLabel( 'wiki', $wiki )
-			->copyToStatsdAt( $wiki . '.GrowthExperiments.QuestionPoster.' . $tagId )
 			->increment();
 
 		return Status::newGood();

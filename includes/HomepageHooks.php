@@ -802,7 +802,6 @@ class HomepageHooks implements
 				->getCounter( 'user_variant_total' )
 				->setLabel( 'wiki', $wiki )
 				->setLabel( 'variant', $variant )
-				->copyToStatsdAt( $wiki . '.GrowthExperiments.UserVariant.' . $variant )
 				->increment();
 		} );
 
