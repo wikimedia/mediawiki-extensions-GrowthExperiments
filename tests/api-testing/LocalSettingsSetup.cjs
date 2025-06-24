@@ -39,8 +39,8 @@ async function overrideLocalSettings() {
 	console.log( 'Setting up modified ' + localSettingsPath );
 	fs.writeFileSync( localSettingsPath,
 		localSettingsContents + `
-if ( file_exists( "$IP/extensions/GrowthExperiments/tests/api-testing/GrowthExperiments.LocalSettings.php" ) ) {
-	require_once "$IP/extensions/GrowthExperiments/tests/api-testing/GrowthExperiments.LocalSettings.php";
+if ( file_exists( "$wgExtensionDirectory/GrowthExperiments/tests/api-testing/GrowthExperiments.LocalSettings.php" ) ) {
+	require_once "$wgExtensionDirectory/GrowthExperiments/tests/api-testing/GrowthExperiments.LocalSettings.php";
 }
 ` );
 }

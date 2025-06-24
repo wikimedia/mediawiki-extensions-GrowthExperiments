@@ -30,7 +30,7 @@ When running with a GUI, you need to include the config-overrides at the end of 
 For example by appending the following, though you may need to adjust the path for your local setup:
 
 ```php
-require "$IP/extensions/GrowthExperiments/cypress/support/setupFixtures/GrowthExperiments.LocalSettings.php";
+require "$wgExtensionDirectory/GrowthExperiments/cypress/support/setupFixtures/GrowthExperiments.LocalSettings.php";
 ```
 
 Next, prepare your local system by executing the `maintenance/PrepareBrowserTests.php` maintenance script.

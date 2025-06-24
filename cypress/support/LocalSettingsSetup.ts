@@ -43,8 +43,8 @@ function overrideLocalSettings(): true {
 	fs.writeFileSync( localSettingsPath,
 		localSettingsContents + `
 // Cypress test code (is supposed to be removed after the test suite, safe to delete)
-if ( file_exists( "$IP/extensions/GrowthExperiments/cypress/support/setupFixtures/GrowthExperiments.LocalSettings.php" ) ) {
-	require_once "$IP/extensions/GrowthExperiments/cypress/support/setupFixtures/GrowthExperiments.LocalSettings.php";
+if ( file_exists( "$wgExtensionDirectory/GrowthExperiments/cypress/support/setupFixtures/GrowthExperiments.LocalSettings.php" ) ) {
+	require_once "$wgExtensionDirectory/GrowthExperiments/cypress/support/setupFixtures/GrowthExperiments.LocalSettings.php";
 }
 ` );
 	return true;
