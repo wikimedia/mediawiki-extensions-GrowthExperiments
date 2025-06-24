@@ -3,5 +3,7 @@
 		"authors": [
 			"Samoasambia"
 		]
-	}
+	},
+	"apierror-growthexperiments-addlink-handler-notfound": "Linkkiehdotustietuetta ei löytynyt",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Odottamattomia linkkiehdotusten kohteita: $1"
 }
