@@ -16,7 +16,6 @@ use MediaWiki\Title\TitleValue;
 
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
-$wgGESurfacingStructuredTasksEnabled = true;
 
 $wgMaxArticleSize = 100;
 $wgParsoidSettings['wt2htmlLimits']['wikitextSize'] = 100 * 1024;

@@ -187,16 +187,6 @@
 			"services": [
 				"GrowthExperimentsMentorProvider"
 			]
-		},
-		"linkrecommendations": {
-			"class": "GrowthExperiments\\Api\\ApiQueryLinkRecommendations",
-			"services": [
-				"GrowthExperimentsLinkRecommendationStore",
-				"GrowthExperimentsLinkRecommendationUpdater",
-				"TitleFactory",
-				"StatsFactory",
-				"GrowthExperimentsConfig"
-			]
 		}
 	},
 	"APIMetaModules": {
@@ -341,16 +331,6 @@
 				"UserOptionsManager",
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorStatusManager"
-			]
-		},
-		"surfacingStructuredTasksOnBeforePageDisplay": {
-			"class": "GrowthExperiments\\NewcomerTasks\\SurfacingStructuredTasks\\BeforePageDisplayHookHandler",
-			"services": [
-				"MainConfig",
-				"GrowthExperimentsNewcomerTasksConfigurationLoader",
-				"UserOptionsLookup",
-				"GrowthExperimentsLinkRecommendationStore",
-				"GrowthExperimentsInteractionLogger"
 			]
 		},
 		"homepage": {
@@ -508,8 +488,7 @@
 			"mentordashboarddiscovery",
 			"tour",
 			"welcomeSurvey",
-			"mentor",
-			"surfacingStructuredTasksOnBeforePageDisplay"
+			"mentor"
 		],
 		"BlockIpComplete": [
 			"mentor"
@@ -1670,38 +1649,6 @@
 				"ext.growthExperiments.DataStore"
 			]
 		},
-		"ext.growthExperiments.StructuredTask.Surfacing": {
-			"class": "MediaWiki\\ResourceLoader\\CodexModule",
-			"packageFiles": [
-				"ext.growthExperiments.StructuredTask.Surfacing/index.js",
-				"utils/Utils.js",
-				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
-				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
-				"ext.growthExperiments.StructuredTask.Surfacing/ArticleTextManipulator.js",
-				"ext.growthExperiments.StructuredTask.Surfacing/SurfacedTaskPopup.js",
-				"ext.growthExperiments.StructuredTask.Surfacing/PageSummaryRepository.js"
-			],
-			"styles": [
-				"ext.growthExperiments.StructuredTask.Surfacing/styles.less"
-			],
-			"codexStyleOnly": "true",
-			"codexComponents": [
-				"CdxButton",
-				"CdxThumbnail"
-			],
-			"dependencies": [
-				"oojs",
-				"oojs-ui-core",
-				"oojs-ui.styles.icons-editing-core",
-				"ext.growthExperiments.SuggestedEditSession"
-			],
-			"messages": [
-				"growthexperiments-surfacing-structured-tasks-highlight-popup-content",
-				"growthexperiments-surfacing-structured-tasks-highlight-popup-title",
-				"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label",
-				"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label"
-			]
-		},
 		"ext.growthExperiments.Help": {
 			"styles": [
 				"ext.growthExperiments.Help/HelpPanelProcessDialog.less",
@@ -2823,14 +2770,6 @@
 		"GECommunityUpdatesEnabled": {
 			"description": "Are Community Updates enabled?",
 			"value": true
-		},
-		"GESurfacingStructuredTasksEnabled": {
-			"description": "Feature flag to enable surfacing structured tasks within or alongside VisualEditor.",
-			"value": false
-		},
-		"GESurfacingStructuredTasksReadModeUpdateEnabled": {
-			"description": "Feature flag to enable requesting link-recommendations in read mode.",
-			"value": false
 		},
 		"GELinkRecommendationMinimumTasksPerTopic": {
 			"value": 500,
