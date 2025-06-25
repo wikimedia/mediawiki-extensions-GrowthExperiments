@@ -4,11 +4,14 @@
 			"Huñvreüs"
 		]
 	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|petra eo an dra-se ?]])",
 	"growthexperiments-confirmemail-emailhelp": "Ret eo reiñ ur chomlec’h postel evit adderaouekaat ho ker-tremen ma kollit anezhañ.",
 	"growthexperiments-confirmemail-emailrecommended": "Chomlec’h postel (erbedet)",
 	"growthexperiments-confirmemail-emailwarning": "Klaskit ur postel kaset ganeoc’h evit kadarnaat ho chomlec’h mar plij.",
 	"growthexperiments-confirmemail-confirm-subject": "Donemat e {{SITENAME}}: Kadarnait ho chomlec’h postel mar plij",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Demat}} $2,\n\nTrugarez da ouzhpennañ ur chomlec’h postel d’ho kont {{SITENAME}}, enrollet eus chomlec’h IP $1.\n\nKlikit mar plij war ar bouton a-is evit kadarnaat hemañ evel ar chomlec’h a fell deoc’h liammañ ouzh ho kont \"$2\":\n\n$3\n\nNotenn: <strong>$4 zo termen</strong> ar c’hod kadarnaat-mañ.\n\nTrugarez,\n\n{{SITENAME}}\n\n----\n\nEvit chom hep kadarnaat ar chomlec’h postel (peogwir n’ho peus ket krouet ar gont pe evit kement abeg all), klikit war al liamm nullañ:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Kadarnaat ar chomlec'h postel",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Demat}} $2,\n\nTrugarez da ouzhpennañ ur chomlec’h postel d’ho kont {{SITENAME}}, enrollet eus chomlec’h IP $1.\n\nKlikit mar plij war ar bouton a-is evit kadarnaat hemañ evel ar chomlec’h a fell deoc’h liammañ ouzh ho kont \"$2\":\n\n$3\n\nNotenn: <strong>$4 zo termen</strong> ar c’hod kadarnaat-mañ.\n\nTrugarez,\n\n{{SITENAME}}\n\n----\n\nEvit chom hep kadarnaat ar chomlec’h postel (peogwir n’ho peus ket krouet ar gont pe evit kement abeg all), klikit war al liamm nullañ:\n\n$5"
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Demat}} $2,\n\nTrugarez da ouzhpennañ ur chomlec’h postel d’ho kont {{SITENAME}}, enrollet eus chomlec’h IP $1.\n\nKlikit mar plij war ar bouton a-is evit kadarnaat hemañ evel ar chomlec’h a fell deoc’h liammañ ouzh ho kont \"$2\":\n\n$3\n\nNotenn: <strong>$4 zo termen</strong> ar c’hod kadarnaat-mañ.\n\nTrugarez,\n\n{{SITENAME}}\n\n----\n\nEvit chom hep kadarnaat ar chomlec’h postel (peogwir n’ho peus ket krouet ar gont pe evit kement abeg all), klikit war al liamm nullañ:\n\n$5",
+	"growthexperiments-signupcampaign-title": "Trugarez da vezañ roet arc'hant ! Deuit bremañ e-barzh ar gumuniezh embannerien o wellaat Wikipedia hiziv an deiz",
+	"growthexperiments-signupcampaign-body": "Kemmañ Wikipedia a c'hell bezañ ken aes ha lakaat ul liamm pe kemmañ ur ger. Gallout a rit kaout erbedadennoù a-zivout pennadoù diwar-benn an danvezioù dedennusañ {{GENDER:|deoc'h}} goude bezañ krouet ho kont !"
 }

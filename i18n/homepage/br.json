@@ -98,5 +98,6 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Graet",
 	"growthexperiments-homepage-special-contribute-title": "Kemmoù erbedet",
 	"growthexperiments-levelingup-getstarted-notification-header": "Klaskit degas ur c’hemm erbedet ha {{GENDER:$2|krogit}} da zeskiñ degas kemmoù",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Tañvit d’ar c’hemmoù erbedet"
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Tañvit d’ar c’hemmoù erbedet",
+	"echo-category-title-ge-newcomer": "Arc'hweladurioù Kreskiñ"
 }

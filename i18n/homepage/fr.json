@@ -320,7 +320,7 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Correspondre à au moins un sujet sélectionné",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Événement de la campagne",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuration des modifications suggérées non valide : mauvaise structure",
-	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuration des éditions suggérées non valide pour le type de tâche « $1 » : « $2 » doit être un nombre entier.",
+	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuration des modifications suggérées non valide pour le type de tâche « $1 » : « $2 » doit être un nombre entier.",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Configuration des modifications suggérées non valide pour le type de tâche « $1 » : « $2 » doit être plus grand que $3.",
 	"growthexperiments-homepage-suggestededits-config-fieldarray": "Configuration des modifications suggérées non valide pour le type de tâche « $1 » : « $2 » doit être un tableau",
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Configuration des modifications suggérées non valide pour le type de tâche « $1 », champ « $2 » : $3 éléments maximum autorisés.",
