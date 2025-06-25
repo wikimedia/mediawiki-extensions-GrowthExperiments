@@ -13,9 +13,5 @@
 	"apihelp-query+growthtasks-param-debug": "ఔట్‌పుట్‌కు డీబగ్ డేటాను చేర్చు.",
 	"apihelp-query+growthtasks-example-1": "ప్రస్తుత వాడుకరి కోసం, కాపీఎడిటింగు రకపు పని సూచనలను పొందండి.",
 	"apihelp-query+growthtasks-example-2": "ప్రస్తుత వాడుకరి కోసం, పని సూచనలను, పేజీకి సంబంధించిన అదనపు సమాచారంతో పొందండి.",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "ఊహించని లింకు సూచన లక్ష్యాలు: $1",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "'$1' కు లింకు ఇవ్వాలా?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "సూచించిన లింకును పరిశీలించి, వికీపీడియా సమాచారపు సాలెగూడును మెరుగుపరచండి.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "సరే",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "వద్దు"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "ఊహించని లింకు సూచన లక్ష్యాలు: $1"
 }

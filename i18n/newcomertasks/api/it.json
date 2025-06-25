@@ -21,7 +21,5 @@
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Il parametro 'accepted' deve essere un booleano nel plugin Add image, è $1",
 	"apierror-growthexperiments-addimage-handler-section-number-missing": "Parametro 'sectionNumber' mancante nei dati del plugin Add Image",
 	"apierror-growthexperiments-addlink-handler-notfound": "Registro sui collegamenti consigliati non trovato",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Pagine inaspettate a cui puntano i collegamenti raccomandati: $1",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Sì",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "No"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Pagine inaspettate a cui puntano i collegamenti raccomandati: $1"
 }

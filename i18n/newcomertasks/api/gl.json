@@ -44,9 +44,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "O parámetro <var>editRevId</var> non se pode utilizar cando se establece o parámetro <var>accepted</var> co valor <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "O parámetro <var>caption</var> é obrigatorio cando se establece o parámetro <var>accepted</var> co valor <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Non se atopou a revisión especificada en <var>editRevId</var>.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "A revisión especificada en <var>editRevId</var> pertence a unha páxina diferente.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Deberíase ligar \"$1\"?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Revisa unha ligazón suxerida e mellora a información da Wikipedia.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Si",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Non"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "A revisión especificada en <var>editRevId</var> pertence a unha páxina diferente."
 }

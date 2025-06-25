@@ -614,6 +614,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "Ver ediciones sugeridas",
 	"growthexperiments-homepage-impact-contributions-link": "Ver todas las contribuciones",
 	"growthexperiments-levelingup-getstarted-notification-header": "Prueba una edición sugerida y empieza a desarrollar {{GENDER:$2|tus}} habilidades de edición",
+	"growthexperiments-levelingup-getstarted-notification-header-new": "¿Curiosidad por editar {{SITENAME}}? {{GENDER:$2|Tu}} conocimiento se suma a una comunidad que llega a millones de personas.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Prueba las ediciones sugeridas",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Más información",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Has}} hecho $3 {{PLURAL:$3|edición sugerida|ediciones sugeridas}}. Continúa para seguir aprendiendo nuevas habilidades.",

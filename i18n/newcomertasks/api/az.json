@@ -19,9 +19,5 @@
 	"apierror-growthexperiments-addlink-handler-notfound": "Keçid tövsiyə qeydi tapılmadı",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Gözlənilməyən keçid tövsiyə hədəfləri: $1",
 	"growthexperiments-underlinked-rescore-profile": "Hələ kifayət qədər keçidləri olmayan məqalələrə üstünlük vermək üçün GrowthExperiments keçid tövsiyələrində istifadə edilən daxili qiymətləndirmə profili.",
-	"growthexperiments-addimage-feedback-accepted-editrevid": "<var>editRevId</var> parametri <var>accepted</var> parametri <kbd>true</kbd> olaraq təyin edildikdə tələb olunur.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "'$1' sözünə keçid verilməlidir?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Təklif olunan bəzi keçidləri nəzərdən keçirin və Vikipediyanın məlumat şəbəkəsini təkmilləşdirin.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Bəli",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Xeyr"
+	"growthexperiments-addimage-feedback-accepted-editrevid": "<var>editRevId</var> parametri <var>accepted</var> parametri <kbd>true</kbd> olaraq təyin edildikdə tələb olunur."
 }

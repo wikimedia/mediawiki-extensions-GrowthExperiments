@@ -20,7 +20,5 @@
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "「reasons」パラメータに採用する値は「画像を追加」関連の一連のプラグイン・データ、すなわち$1です",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "「reasons」パラメータに対する項目「$1」は次のは無効ですので、次のいずれかを選んでください：$2",
 	"apierror-growthexperiments-addlink-handler-notfound": "おすすめリンクの記録がありません",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "予想外のおすすめリンク先： $1",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "はい",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "いいえ"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "予想外のおすすめリンク先： $1"
 }

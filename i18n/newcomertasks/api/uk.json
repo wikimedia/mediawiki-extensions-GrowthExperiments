@@ -29,9 +29,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Параметр <var>editRevId</var> не можна використати, якщо параметр <var>accepted</var> має значення <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Параметр <var>caption</var> є обов'язковим, якщо параметр <var>accepted</var> має значення <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Версію, вказану в <var>editRevId</var>, не знайдено.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Версія, вказана в <var>editRevId</var>, належить іншій сторінці.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Чи потрібне посилання на «$1»?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Перегляньте запропоноване посилання та покращте пов'язаність Вікіпедії.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Так",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Ні"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Версія, вказана в <var>editRevId</var>, належить іншій сторінці."
 }

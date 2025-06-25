@@ -44,9 +44,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Parameteren <var>editRevId</var> kan ikke brukes når parameteren <var>accepted</var> er satt til <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Parameteren <var>caption</var> er påkrevd når parameteren <var>accepted</var> er satt til <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Sideversjonen som er angitt i <var>editRevId</var> ble ikke funnet.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Sideversjonen som angis i <var>editRevId</var> tilhører en annen side.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Burde «$1» lenkes?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Gå gjennom en foreslått lenke og forbedre Wikipedias informasjonsnett.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Ja",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Nei"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Sideversjonen som angis i <var>editRevId</var> tilhører en annen side."
 }

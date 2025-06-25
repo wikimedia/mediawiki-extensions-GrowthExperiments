@@ -9,8 +9,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "De Parameter <var>editRevId</var> kann net benotzt ginn, wann de Parameter <var>accepted</var> op <kbd>false</kbd> gesat ass.",
 	"growthexperiments-addimage-feedback-accepted-caption": "De Parameter <var>caption</var> ass obligatoresch, wann de Parameter <var>accepted</var> op <kbd>true</kbd> gesat ass.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "D'Versioun, déi an <var>editRevId</var> spezifizéiert gouf, gouf net fonnt.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "D'Versioun, déi an <var>editRevId</var> spezifizéiert gouf, gehéiert zu enger anerer Säit.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Soll „$1“ verlinkt ginn?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Jo",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Neen"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "D'Versioun, déi an <var>editRevId</var> spezifizéiert gouf, gehéiert zu enger anerer Säit."
 }

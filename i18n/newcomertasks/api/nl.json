@@ -45,9 +45,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "De parameter <var>editRevId</var> kan niet worden gebruikt als de parameter <var>accepted</var> is ingesteld op <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "De parameter <var>caption</var> is vereist wanneer de parameter <var>accepted</var> is ingesteld op <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "De in <var>editRevId</var> opgegeven versie is niet gevonden.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "De in <var>editRevId</var> opgegeven versie behoort tot een andere pagina.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Moet ‘$1’ een koppeling worden?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Beoordeel een voorgestelde koppeling en verbeter het informatieweb van Wikipedia.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Ja",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Nee"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "De in <var>editRevId</var> opgegeven versie behoort tot een andere pagina."
 }

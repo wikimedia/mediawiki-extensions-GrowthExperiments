@@ -25,9 +25,5 @@
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Параметр «reasons» должен быть массивом в данных плагина «Добавить изображение», а есть $1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Недействительный элемент '$1' для параметра 'reasons', должен быть одним из: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Историю рекомендаций ссылок с найдено",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Неожиданные цели рекомендаций ссылок: $1",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Добавить ссылку к'$1'?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Проверьте предложенные ссылки и улучшите информационную сеть Википедии.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Да",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Нет"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Неожиданные цели рекомендаций ссылок: $1"
 }

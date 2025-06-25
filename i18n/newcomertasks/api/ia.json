@@ -43,9 +43,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Le parametro <var>editRevId</var> non pote esser usate quando le parametro <var>accepted</var> es mittite a <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Le parametro <var>caption</var> es obligatori quando le parametro <var>accepted</var> es mittite a <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Le version specificate in <var>editRevId</var> non ha essite trovate.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Le version specificate in <var>editRevId</var> pertine a un altere pagina.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Debe ‘$1’ esser ligate?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Revide un ligamine suggerite e meliora le tela de information de Wikipedia.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Si",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "No"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Le version specificate in <var>editRevId</var> pertine a un altere pagina."
 }

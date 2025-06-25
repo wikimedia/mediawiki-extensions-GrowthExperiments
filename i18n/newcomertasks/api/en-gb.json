@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Reedy"
-		]
-	},
-	"growthexperiments-underlinked-rescore-profile": "Internal rescore profile used in GrowthExperiments link recommendations for prioritising articles which do not yet have enough links."
-}

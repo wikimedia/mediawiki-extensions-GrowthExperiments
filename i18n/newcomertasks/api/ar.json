@@ -45,9 +45,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "لا يمكن استخدام المعلمة <var>editRevId</var> عند ضبط المعلمة <var>accepted</var> على <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "معلمة <var>caption</var> مطلوبة عند تعيين المعلمة <var>accepted</var> على <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "لم يتم العثور على المراجعة المحددة في <var>editRevId</var>.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "المراجعة المحددة في <var>editRevId</var> تنتمي إلى صفحة مختلفة.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": " هل يجب وصل '$1'؟",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "راجع رابط مقترح وحسّن شبكة المعلومات في ويكيبيديا.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "نعم",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "لا"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "المراجعة المحددة في <var>editRevId</var> تنتمي إلى صفحة مختلفة."
 }

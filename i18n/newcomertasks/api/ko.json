@@ -7,7 +7,5 @@
 	"apihelp-query+growthtasks-summary": "새 사용자에게 적절한 작업 권고사항을 가져옵니다.",
 	"apihelp-query+growthtasks-param-debug": "디버그 데이터를 출력에 추가합니다.",
 	"apierror-growthexperiments-addlink-handler-notfound": "링크 추천 레코드가 없습니다",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "예상치 못한 링크 추천 대상: $1",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "예",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "아니요"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "예상치 못한 링크 추천 대상: $1"
 }

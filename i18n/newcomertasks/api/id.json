@@ -46,9 +46,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Parameter <var>editRevId</var> tidak dapat digunakan ketika parameter <var>accepted</var> diubah ke <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Parameter <var>caption</var> dibutuhkan ketika parameter <var>accepted</var> diubah ke <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Revisi yang ditetapkan dalam <var>editRevId</var> tidak ditemukan.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Revisi yang ditetapkan dalam <var>editRevId</var> merupakan milik halaman lain.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "Apakah halaman '$1' perlu ditautkan?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Tinjau pranala yang disarankan agar meningkatkan penjaringan informasi di Wikipedia.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Ya",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Tidak"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Revisi yang ditetapkan dalam <var>editRevId</var> merupakan milik halaman lain."
 }

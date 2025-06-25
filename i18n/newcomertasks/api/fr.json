@@ -49,9 +49,5 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Le paramètre <var>editRevId</var> ne peut pas être utilisé quand le paramètre <var>accepted</var> (accepté) est positionné à <kbd>false</kbd> (faux).",
 	"growthexperiments-addimage-feedback-accepted-caption": "Le paramètre <var>caption</var> (légende) est obligatoire quand le paramètre <var>accepted</var> (accepté) est positionné à <kbd>true</kbd> (vrai).",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "La révision spécifiée dans <var>editRevId</var> est introuvable.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "La révision spécifiée dans <var>editRevId</var> appartient à une page différente.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-title": "« $1 » devrait-il être lié à un article ?",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-content": "Vérifier un lien suggéré et améliorer le réseau d’informations de Wikipédia.",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-yes-button-label": "Oui",
-	"growthexperiments-surfacing-structured-tasks-highlight-popup-no-button-label": "Non"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "La révision spécifiée dans <var>editRevId</var> appartient à une page différente."
 }

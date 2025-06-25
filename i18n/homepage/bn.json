@@ -299,6 +299,7 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "নির্বাচিত সকল বিষয়",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "অন্তত একটি নির্বাচিত বিষয়",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "ক্যাম্পেইন কার্যক্রম",
+	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1টি {{PLURAL:$1|সম্পাদনা}}, অভিনন্দন! উপলব্ধ প্রস্তাবিত সম্পাদনাগুলি পরিবর্তিত হয়েছে।",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "পরামর্শকৃত সম্পাদনায় গাঠনিক ত্রুটি: কাঠামোজনিত সমস্যা",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "কাজের ধরন \"$1\"-এর পরামর্শকৃত সম্পাদনার কনফিগারেশন ত্রুটিপূর্ণ : \"$2\" একটি সংখ্যা হবে",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "কাজের ধরন \"$1\"-এর পরামর্শকৃত সম্পাদনার কনফিগারেশন ত্রুটিপূর্ণ : \"$2\"কে $3-এর চেয়ে বড় হতে হবে",
