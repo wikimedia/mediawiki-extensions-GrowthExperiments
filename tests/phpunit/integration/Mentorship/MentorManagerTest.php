@@ -7,6 +7,8 @@ use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -339,5 +341,107 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			'Test'
 		);
 		$this->assertNull( $mentorManager->getMentorForUserSafe( $mentee, MentorStore::ROLE_BACKUP ) );
+	}
+
+	public function testAutoAssignedPrimaryUserIsNotAway(): void {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorManager = $geServices->getMentorManager();
+
+		$mentee = $this->getMutableTestUser()->getUser();
+		$mentorUser = $this->getNewMentorUser();
+		$mentorStatusManager = $geServices->getMentorStatusManager();
+		$mentorStatusManager->markMentorAsAway( $mentorUser, 1 );
+
+		$this->assertNull( $mentorManager->getRandomAutoAssignedMentor( $mentee ) );
+	}
+
+	public function testGetEffectiveMentorForUserSafe_ActivePrimaryAssigned(): void {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorManager = $geServices->getMentorManager();
+
+		$mentorUser = $this->getNewMentorUser();
+		$mentee = $this->getMutableTestUser()->getUser();
+
+		$actualMentor = $mentorManager->getEffectiveMentorForUserSafe(
+			$mentee
+		);
+
+		$this->assertTrue( $actualMentor->getUserIdentity()->equals( $mentorUser ) );
+	}
+
+	public function testGetEffectiveMentorForUserSafe_AwayPrimaryNotAssigned(): void {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorManager = $geServices->getMentorManager();
+		$mentorStatusManager = $geServices->getMentorStatusManager();
+
+		$mentorUser = $this->getNewMentorUser();
+		$mentorStatusManager->markMentorAsAway( $mentorUser, 1 );
+
+		$mentee = $this->getMutableTestUser()->getUser();
+		$actualMentor = $mentorManager->getEffectiveMentorForUserSafe(
+			$mentee
+		);
+
+		$this->assertNull( $actualMentor );
+	}
+
+	public function testGetEffectiveMentorForUserSafe_ActiveBackupAssigned(): void {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorManager = $geServices->getMentorManager();
+		$mentorStatusManager = $geServices->getMentorStatusManager();
+
+		$mentee = $this->getMutableTestUser()->getUser();
+		$mentorUser = $this->getNewMentorUserForMentee( $mentee );
+		$mentorStatusManager->markMentorAsAway( $mentorUser, 1 );
+
+		$potentialBackupMentorUser = $this->getNewMentorUser();
+
+		$actualMentor = $mentorManager->getEffectiveMentorForUserSafe(
+			$mentee
+		);
+
+		$this->assertTrue( $actualMentor->getUserIdentity()->equals( $potentialBackupMentorUser ) );
+	}
+
+	public function testGetEffectiveMentorForUserSafe_AwayBackupNotAssigned(): void {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorManager = $geServices->getMentorManager();
+		$mentorStatusManager = $geServices->getMentorStatusManager();
+
+		$mentee = $this->getMutableTestUser()->getUser();
+		$mentorUser = $this->getNewMentorUserForMentee( $mentee );
+		$mentorStatusManager->markMentorAsAway( $mentorUser, 1 );
+
+		$potentialBackupMentorUser = $this->getNewMentorUser();
+		$mentorStatusManager->markMentorAsAway( $potentialBackupMentorUser, 1 );
+
+		$actualMentor = $mentorManager->getEffectiveMentorForUserSafe(
+			$mentee
+		);
+
+		$this->assertNull( $actualMentor );
+	}
+
+	private function getNewMentorUserForMentee( UserIdentity $mentee ): User {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorStore = $geServices->getMentorStore();
+		$mentorUser = $this->getNewMentorUser();
+		$mentorStore->setMentorForUser( $mentee, $mentorUser, MentorStore::ROLE_PRIMARY );
+
+		return $mentorUser;
+	}
+
+	private function getNewMentorUser(): User {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorWriter = $geServices->getMentorWriter();
+		$mentorProvider = $geServices->getMentorProvider();
+		$newGroup = 'new group' . mt_rand();
+		$mentorUser = $this->getTestUser( [ $newGroup ] )->getUser();
+		$mentorWriter->addMentor(
+			$mentorProvider->newMentorFromUserIdentity( $mentorUser ), $mentorUser,
+			'Test Primary'
+		);
+
+		return $mentorUser;
 	}
 }

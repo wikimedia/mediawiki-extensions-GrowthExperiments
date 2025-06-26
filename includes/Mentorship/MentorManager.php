@@ -143,12 +143,6 @@ class MentorManager implements IMentorManager {
 				$excludedUsers[] = $primaryMentor;
 			}
 		}
-		if ( $role === MentorStore::ROLE_BACKUP ) {
-			$excludedUsers = array_merge(
-				$excludedUsers,
-				$this->mentorStatusManager->getAwayMentors()
-			);
-		}
 
 		return $this->getRandomAutoAssignedMentor( $mentee, $excludedUsers );
 	}
@@ -203,6 +197,10 @@ class MentorManager implements IMentorManager {
 	public function getRandomAutoAssignedMentor(
 		UserIdentity $mentee, array $excluded = []
 	): ?UserIdentity {
+		$excluded = array_merge(
+			$excluded,
+			$this->mentorStatusManager->getAwayMentors()
+		);
 		$autoAssignedMentors = $this->mentorProvider->getWeightedAutoAssignedMentors();
 		if ( count( $autoAssignedMentors ) === 0 ) {
 			$this->logger->debug(
