@@ -59,8 +59,12 @@
 	"growthexperiments-edit-config-mentorship-enabled": "Os recursos de mentoria estão ativados?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Sim",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Não",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "Os usuários devem ser automaticamente elegíveis para mentoria?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "Sim, permita que os usuários que atendam a todos os critérios de elegibilidade abaixo se inscrevam como mentores.",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "Não, não permita que nenhum usuário se inscreva como mentor.",
 	"growthexperiments-edit-config-mentorship-minimum-age": "Número mínimo de dias que um usuário deve estar registrado para se inscrever como mentor",
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "Número mínimo de edições que um usuário deve ter feito (em qualquer namespace) para se inscrever como mentor",
+	"growthexperiments-edit-config-personalized-praise": "Elogios personalizados",
 	"growthexperiments-edit-config-newcomertasks": "Edições sugeridas",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Alguns tipos de edições sugeridos são surgiram através de modelos de manutenção. Artigos contendo esses predefinições são adicionados ao feed. Para ver quantos artigos estão disponíveis para cada tipo de tarefa, veja [[Special:NewcomerTasksInfo|essa página]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Desativado",
@@ -84,5 +88,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Predefinições de caixas informativas",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas predefinições são necessárias para a funcionalidade das tarefas de [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugestão de imagens]] para recém-chegados. Os artigos que contenham estas predefinições não serão listados como tarefas de sugestão de imagens.",
 	"growthexperiments-info-tooltip-close-label": "Fechar",
-	"specialpages-group-growth-tools": "Ferramentas de crescimento"
+	"specialpages-group-growth-tools": "Ferramentas de crescimento",
+	"communityconfiguration-mentorship-title": "Mentoria",
+	"communityconfiguration-mentorship-description": "Personalize as configurações e os requisitos de elegibilidade da mentoria, ajustando os mínimos de edição e os prazos para mentores e mentorados dignos de elogios."
 }
