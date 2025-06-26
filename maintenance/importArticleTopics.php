@@ -27,11 +27,11 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 /**
- * Maintenance script for importing ORES topics from production to a test instance.
+ * Maintenance script for importing article topics from production to a test instance.
  */
-class ImportOresTopics extends Maintenance {
+class ImportArticleTopics extends Maintenance {
 
-	/** Fetch ORES topics from a production wiki. */
+	/** Fetch article topics from a production wiki. */
 	public const TOPIC_SOURCE_PROD = 'prod';
 	/** Use random topics. */
 	public const TOPIC_SOURCE_RANDOM = 'random';
@@ -42,7 +42,7 @@ class ImportOresTopics extends Maintenance {
 
 	private bool $isBeta;
 
-	/** @var string Source of ORES topic information; one of TOPIC_SOURCE_* */
+	/** @var string Source of article topic information; one of TOPIC_SOURCE_* */
 	private string $topicSource;
 
 	/** @var bool Use verbose output. */
@@ -54,21 +54,21 @@ class ImportOresTopics extends Maintenance {
 	/** @var string|null Wiki ID of the production wiki. */
 	private ?string $wikiId;
 
-	/** @var bool|null Does the wiki have an 'articletopic' ORES model? */
-	private ?bool $wikiHasOresModel = null;
+	/** @var bool|null Does the wiki have an 'articletopic' model? */
+	private ?bool $wikiHasArticleTopicModel = null;
 
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'GrowthExperiments' );
 		$this->requireExtension( 'CirrusSearch' );
 
-		$this->addDescription( 'Import ORES topics from a production wiki' );
+		$this->addDescription( 'Import article topics from a production wiki' );
 		$this->addOption( 'count', 'Number of articles to fetch a topic for.', false, true );
 		$this->addOption( 'topicSource', "Topic source: 'prod' for fetching from a production wiki '
 			. '(assumes a wiki with titles imported from production), 'random': random topics", false, true );
 		$this->addOption( 'apiUrl', "MediaWiki API URL of the wiki the articles are from. '
 			. 'Only with --topicSource=prod. Can be auto-guessed in the beta cluster.", false, true );
-		$this->addOption( 'wikiId', "Wiki ID to use when fetching scores from the ORES API. '
+		$this->addOption( 'wikiId', "Wiki ID to use when fetching scores from the article topic API. '
 			. 'Only with --topicSource=prod. Can be auto-guessed in the beta cluster.", false, true );
 		$this->addOption( 'pageList', 'Name of a file containing the list of pages to import topics for, '
 			. 'one title per line. When omitted, pages with no topics are selected randomly.', false, true );
@@ -199,7 +199,7 @@ class ImportOresTopics extends Maintenance {
 			$apiUrl = $this->apiUrl;
 			$titleMap = [];
 
-			if ( !$this->hasOresModel( $this->wikiId ) ) {
+			if ( !$this->hasArticleTopicModel( $this->wikiId ) ) {
 				$wikiId = 'enwiki';
 				$apiUrl = 'https://en.wikipedia.org/w/api.php';
 				$titleMap = $this->getSiteLinks( $titleStrings, $this->apiUrl, $missingTitles );
@@ -223,7 +223,7 @@ class ImportOresTopics extends Maintenance {
 			if ( !$titleToRevId ) {
 				return [];
 			}
-			if ( !$this->hasOresModel( $this->wikiId ) ) {
+			if ( !$this->hasArticleTopicModel( $this->wikiId ) ) {
 				$reverseTitleMap = array_flip( $titleMap );
 				$titleToRevId = array_flip( array_map( static function ( string $title ) use ( $reverseTitleMap ) {
 					return $reverseTitleMap[$title];
@@ -245,14 +245,14 @@ class ImportOresTopics extends Maintenance {
 	}
 
 	/**
-	 * For a set of titles, set random ORES data.
+	 * For a set of titles, set random article topic data.
 	 * @param Title[] $titles
 	 * @return int[][] title => topic => score
 	 */
 	private function getTopicsByRandom( array $titles ): array {
 		$topicScores = [];
 		foreach ( $titles as $title ) {
-			$randomTopics = $oresTopics = array_rand( array_flip( ArticleTopicFeature::TERMS_TO_LABELS ), 3 );
+			$randomTopics = $articleTopics = array_rand( array_flip( ArticleTopicFeature::TERMS_TO_LABELS ), 3 );
 			$topicScores[$title->getPrefixedText()] = array_combine( $randomTopics, array_map( static function ( $_ ) {
 				return mt_rand() / mt_getrandmax();
 			}, $randomTopics ) );
@@ -276,24 +276,24 @@ class ImportOresTopics extends Maintenance {
 	}
 
 	/**
-	 * Does the wiki have an 'articletopic' ORES model?
+	 * Does the wiki have an 'articletopic' model?
 	 * @param string $wikiId
 	 * @return bool
 	 */
-	private function hasOresModel( string $wikiId ): bool {
-		if ( $this->wikiHasOresModel === null ) {
+	private function hasArticleTopicModel( string $wikiId ): bool {
+		if ( $this->wikiHasArticleTopicModel === null ) {
 			$oresApiUrl = 'https://ores.wikimedia.org/v3/scores/';
 			$modelData = $this->getJsonData( $oresApiUrl, [ 'model_info' => '' ] );
-			$this->wikiHasOresModel = isset( $modelData[$wikiId]['models']['articletopic'] );
+			$this->wikiHasArticleTopicModel = isset( $modelData[$wikiId]['models']['articletopic'] );
 		}
-		return $this->wikiHasOresModel;
+		return $this->wikiHasArticleTopicModel;
 	}
 
 	/**
-	 * For a set of titles, fetch the ORES topic data for the articles with the same titles
+	 * For a set of titles, fetch the article topic data for the articles with the same titles
 	 * from a Wikimedia production wiki.
 	 * @param int[] $revIds revision IDs (keys will be preserved and used in the return value).
-	 * @param string $wikiId Wiki ID to use for the ORES queries.
+	 * @param string $wikiId Wiki ID to use for the article topic queries.
 	 * @return int[][] key => topic => score.
 	 */
 	private function getTopicsFromOres( array $revIds, string $wikiId ): array {
@@ -417,5 +417,5 @@ class ImportOresTopics extends Maintenance {
 
 }
 
-$maintClass = ImportOresTopics::class;
+$maintClass = ImportArticleTopics::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
