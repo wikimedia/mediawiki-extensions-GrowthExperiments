@@ -616,5 +616,6 @@
 	"echo-category-title-ge-newcomer": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-ge-newcomer}}",
 	"echo-pref-tooltip-ge-newcomer": "{{doc-echo-pref-tooltip|title=Echo-category-title-ge-newcomer}}",
 	"growthexperiments-homepage-community-updates-header": "Header title text for the community updates module",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Text for the call to action button of the community updates module when there is no value set in the configuration"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Text for the call to action button of the community updates module when there is no value set in the configuration",
+	"growthexperiments-addalink-milestone-notification-header": "Header text shown when a newcomer reaches the configured edit threshold for add-a-link tasks. This notification congratulates users and informs them that add-a-link tasks are no longer available. Parameters:\n* $1 - The edit threshold number (e.g., 50)\n* $2 - User object for gender\n* $3 - Number of recent views the user's edited articles received."
 }

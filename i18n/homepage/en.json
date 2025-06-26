@@ -592,5 +592,6 @@
 	"echo-category-title-ge-newcomer": "Growth features",
 	"echo-pref-tooltip-ge-newcomer": "Notify me about tasks for newcomers and other features designed to help new users.",
 	"growthexperiments-homepage-community-updates-header": "Community Updates",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Learn more"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Learn more",
+	"growthexperiments-addalink-milestone-notification-header": "$1 edits, congrats! Articles {{GENDER:$2|you’ve}} edited received $3 views recently. Available suggested edits have changed."
 }

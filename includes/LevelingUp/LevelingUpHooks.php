@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\LevelingUp;
 
+use GrowthExperiments\NewcomerTasks\AddALinkMilestonePresentationModel;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\VisualEditorHooks;
 use MediaWiki\Config\Config;
@@ -150,6 +151,21 @@ class LevelingUpHooks implements
 
 		$icons['growthexperiments-get-started'] = [
 			'path' => 'GrowthExperiments/images/notifications-get-started.svg'
+		];
+
+		$notifications['newcomer-milestone-reached'] = [
+			'category'            => 'ge-newcomer',
+			'group'               => 'positive',
+			'section'             => 'message',
+			'canNotifyAgent'      => true,
+			'presentation-model'  => AddALinkMilestonePresentationModel::class,
+			AttributeManager::ATTR_LOCATORS => [
+				[ UserLocator::class . '::locateEventAgent' ]
+			],
+		];
+
+		$icons['growthexperiments-addalink-milestone'] = [
+			'path' => 'GrowthExperiments/images/addalink-milestone.svg'
 		];
 	}
 
