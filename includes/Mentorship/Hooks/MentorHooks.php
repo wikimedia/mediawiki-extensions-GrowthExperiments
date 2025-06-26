@@ -23,6 +23,7 @@ use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
+use MediaWiki\RenameUser\Hook\RenameUserCompleteHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -40,7 +41,8 @@ class MentorHooks implements
 	FormatAutocommentsHook,
 	UserGetRightsHook,
 	BeforePageDisplayHook,
-	BlockIpCompleteHook
+	BlockIpCompleteHook,
+	RenameUserCompleteHook
 {
 
 	private Config $wikiConfig;
@@ -347,6 +349,27 @@ class MentorHooks implements
 				'user' => $target,
 			] );
 			$this->mentorStore->dropMenteeRelationship( $target );
+		}
+	}
+
+	/**
+	 * Handle user renames to invalidate mentor caches
+	 *
+	 * @param int $uid User ID that was renamed
+	 * @param string $oldName Previous username
+	 * @param string $newName New username
+	 */
+	public function onRenameUserComplete( $uid, $oldName, $newName ): void {
+		$user = $this->userIdentityLookup->getUserIdentityByUserId( $uid );
+		if ( $user === null ) {
+			return;
+		}
+		$mentors = $this->mentorProvider->getMentors();
+		foreach ( $mentors as $mentor ) {
+			if ( $mentor->getName() === $oldName ) {
+				$this->mentorProvider->invalidateMentorsCache();
+				break;
+			}
 		}
 	}
 }
