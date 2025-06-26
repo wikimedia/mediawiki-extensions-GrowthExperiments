@@ -75,12 +75,27 @@
 		}
 
 		.mw-ge-homepage-taskTypeSelectionWidget-unavailable-info-button {
-			margin-left: 0.5em;
+			height: 24px;
+			width: 24px;
+			margin-left: 4px;
 			position: absolute;
-			top: 0;
+			top: 2px; // Approximately center the icon vertically
 			// Override inherited the disabled color
 			.oo-ui-popupWidget-popup {
 				color: @color-base;
+			}
+			// Override OOUIs fixed size for button/icons
+			> .oo-ui-buttonElement-button {
+				min-height: 24px;
+				min-width: 24px;
+				position: unset;
+				width: 24px;
+				height: 24px;
+				padding: 0;
+
+				.oo-ui-iconElement-icon.oo-ui-icon-info {
+					left: 0.17857143em;
+				}
 			}
 		}
 
