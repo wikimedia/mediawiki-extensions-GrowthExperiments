@@ -14,6 +14,7 @@
 			"Lakejason0",
 			"LittlePaw365",
 			"NACHOgao3",
+			"Peterxy12",
 			"Shizhao",
 			"Stang",
 			"SunAfterRain",
@@ -244,5 +245,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "此设置影响内链不足的条目的优先级。此字段应输入小数形式的百分比，即0和1之间的数。数字越高，新手越有可能收到修改内链不足的条目的建议。",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "最低链接分数",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "链接建议的最低置信度阈值。此字段应输入小数形式的百分比，即0和1之间的数。数字越高，最终用户收到的建议更有可能是良好的建议，然而建议数量会降低。数字越低，收到的建议会增加，但是属于良好建议的概率会降低。",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "“添加链接”建议任务对新用户停止开放前的最大编辑次数"
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "停止根据新用户的总编辑量建议“添加链接”任务"
 }

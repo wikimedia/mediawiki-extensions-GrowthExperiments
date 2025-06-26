@@ -504,6 +504,9 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "退出導師計畫",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "如果{{GENDER:|您}}不希望現在就有一名特定的導師分配給{{GENDER:|您}}，請選擇下面的按鈕退出。若{{GENDER:|您}}改變了主意，{{GENDER:|您}}可隨時重新獲得一名新的導師。",
 	"growthexperiments-homepage-mentorship-about-done": "完成",
+	"growthexperiments-homepage-special-contribute-title": "編輯建議",
+	"growthexperiments-homepage-special-contribute-description": "提交一些微小且簡易的變更（例如新增連結或編修）來改善現有的條目。",
+	"growthexperiments-homepage-special-contribute-cta": "檢視編輯建議",
 	"growthexperiments-homepage-impact-contributions-link": "檢視所有編輯",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|您已經}}進行了$3個{{PLURAL:$3|建議編輯}}，繼續學習更多新技能。",
 	"growthexperiments-homepage-community-updates-header": "社群新訊"
