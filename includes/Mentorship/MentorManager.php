@@ -11,7 +11,6 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
@@ -25,17 +24,14 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 	private MentorStore $mentorStore;
 	private MentorStatusManager $mentorStatusManager;
 	private MentorProvider $mentorProvider;
-	private UserIdentityLookup $userIdentityLookup;
 	private UserOptionsLookup $userOptionsLookup;
 	private UserFactory $userFactory;
 	private UserOptionsManager $userOptionsManager;
-	private bool $wasPosted;
 
 	public function __construct(
 		MentorStore $mentorStore,
 		MentorStatusManager $mentorStatusManager,
 		MentorProvider $mentorProvider,
-		UserIdentityLookup $userIdentityLookup,
 		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup,
 		UserOptionsManager $userOptionsManager
@@ -43,7 +39,6 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 		$this->mentorStore = $mentorStore;
 		$this->mentorStatusManager = $mentorStatusManager;
 		$this->mentorProvider = $mentorProvider;
-		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userOptionsManager = $userOptionsManager;
