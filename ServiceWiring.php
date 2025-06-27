@@ -110,6 +110,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\WikiMap\WikiMap;
+use Psr\Log\LoggerInterface;
 
 /** @phpcs-require-sorted-array */
 return [
@@ -506,6 +507,10 @@ return [
 		);
 	},
 
+	'GrowthExperimentsLogger' => static function (): LoggerInterface {
+		return LoggerFactory::getInstance( 'GrowthExperiments' );
+	},
+
 	'GrowthExperimentsMenteeOverviewDataProvider' => static function (
 		MediaWikiServices $services
 	): MenteeOverviewDataProvider {
@@ -564,16 +569,15 @@ return [
 	): IMentorManager {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		$manager = new MentorManager(
+		return new MentorManager(
 			$geServices->getMentorStore(),
 			$geServices->getMentorStatusManager(),
 			$geServices->getMentorProvider(),
 			$services->getUserFactory(),
 			$services->getUserOptionsLookup(),
-			$services->getUserOptionsManager()
+			$services->getUserOptionsManager(),
+			$geServices->getLogger(),
 		);
-		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
-		return $manager;
 	},
 
 	'GrowthExperimentsMentorProvider' => static function (
