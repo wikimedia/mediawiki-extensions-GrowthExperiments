@@ -11,13 +11,10 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\DBReadOnlyError;
 
-class MentorManager implements IMentorManager, LoggerAwareInterface {
-	use LoggerAwareTrait;
+class MentorManager implements IMentorManager {
 
 	public const MENTORSHIP_ENABLED_PREF = 'growthexperiments-homepage-mentorship-enabled';
 
@@ -27,6 +24,7 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 	private UserOptionsLookup $userOptionsLookup;
 	private UserFactory $userFactory;
 	private UserOptionsManager $userOptionsManager;
+	private LoggerInterface $logger;
 
 	public function __construct(
 		MentorStore $mentorStore,
@@ -34,7 +32,8 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 		MentorProvider $mentorProvider,
 		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup,
-		UserOptionsManager $userOptionsManager
+		UserOptionsManager $userOptionsManager,
+		LoggerInterface $logger,
 	) {
 		$this->mentorStore = $mentorStore;
 		$this->mentorStatusManager = $mentorStatusManager;
@@ -42,8 +41,7 @@ class MentorManager implements IMentorManager, LoggerAwareInterface {
 		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userOptionsManager = $userOptionsManager;
-
-		$this->setLogger( new NullLogger() );
+		$this->logger = $logger;
 	}
 
 	/**

@@ -64,6 +64,7 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
+use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
@@ -160,6 +161,10 @@ class GrowthExperimentsServices {
 
 	public function getUncachedMenteeOverviewDataProvider(): UncachedMenteeOverviewDataProvider {
 		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProviderUncached' );
+	}
+
+	public function getLogger(): LoggerInterface {
+		return $this->coreServices->get( 'GrowthExperimentsLogger' );
 	}
 
 	public function getMenteeOverviewDataUpdater(): MenteeOverviewDataUpdater {
