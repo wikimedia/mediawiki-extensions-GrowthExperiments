@@ -568,7 +568,6 @@ return [
 			$geServices->getMentorStore(),
 			$geServices->getMentorStatusManager(),
 			$geServices->getMentorProvider(),
-			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
 			$services->getUserOptionsLookup(),
 			$services->getUserOptionsManager()
