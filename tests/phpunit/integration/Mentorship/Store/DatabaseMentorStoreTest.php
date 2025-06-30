@@ -18,7 +18,8 @@ use Wikimedia\TestingAccessWrapper;
 class DatabaseMentorStoreTest extends MentorStoreTestCase {
 
 	protected function getStore( bool $wasPosted ): MentorStore {
-		$store = new DatabaseMentorStore(
+		return new DatabaseMentorStore(
+			new NullLogger(),
 			$this->wanCache,
 			$this->getServiceContainer()->getUserFactory(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
@@ -26,8 +27,6 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 			$this->getServiceContainer()->getDBLoadBalancer(),
 			$wasPosted
 		);
-		$store->setLogger( new NullLogger() );
-		return $store;
 	}
 
 	protected function getJobType(): string {

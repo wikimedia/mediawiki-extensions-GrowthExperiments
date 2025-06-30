@@ -150,7 +150,7 @@ return [
 			$services->getUserIdentityUtils(),
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
-			LoggerFactory::getInstance( 'GrowthExperiments' )
+			$growthServices->getLogger()
 		);
 	},
 
@@ -170,7 +170,7 @@ return [
 	): ChangeMentorFactory {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new ChangeMentorFactory(
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$geServices->getLogger(),
 			$geServices->getMentorManager(),
 			$geServices->getMentorStore(),
 			$services->getUserFactory(),
@@ -201,7 +201,7 @@ return [
 		MediaWikiServices $services
 	): ExperimentUserDefaultsManager {
 		return new ExperimentUserDefaultsManager(
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			GrowthExperimentsServices::wrap( $services )->getLogger(),
 			static function () use ( $services ) {
 				return $services->getCentralIdLookup();
 			},
@@ -213,7 +213,7 @@ return [
 		MediaWikiServices $services
 	): ExperimentUserManager {
 		return new ExperimentUserManager(
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			GrowthExperimentsServices::wrap( $services )->getLogger(),
 			new ServiceOptions(
 				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
@@ -358,7 +358,7 @@ return [
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
 			$growthServices->getExperimentUserManager(),
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$growthServices->getLogger(),
 			$growthServices->getGrowthWikiConfig(),
 		);
 	},
@@ -456,14 +456,14 @@ return [
 	'GrowthExperimentsLinkRecommendationStore' => static function (
 		MediaWikiServices $services
 	): LinkRecommendationStore {
-		$loadBalancer = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
+		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new LinkRecommendationStore(
 			$services->getConnectionProvider(),
-			$loadBalancer,
+			$geServices->getLoadBalancer(),
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory(),
 			$services->getPageStore(),
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$geServices->getLogger()
 		);
 	},
 
@@ -482,7 +482,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$cirrusSearchServices = CirrusSearchServices::wrap( $services );
 		return new LinkRecommendationUpdater(
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$growthServices->getLogger(),
 			$services->getDBLoadBalancerFactory(),
 			$services->getRevisionStore(),
 			$services->getNameTableStoreFactory()->getChangeTagDef(),
@@ -532,16 +532,15 @@ return [
 		MediaWikiServices $services
 	): UncachedMenteeOverviewDataProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
-		$provider = new UncachedMenteeOverviewDataProvider(
+		return new UncachedMenteeOverviewDataProvider(
 			$geServices->getMentorStore(),
 			$services->getChangeTagDefStore(),
 			$services->getActorMigration(),
 			$services->getUserIdentityLookup(),
 			$services->getTempUserConfig(),
-			$services->getDBLoadBalancerFactory()
+			$services->getDBLoadBalancerFactory(),
+			$geServices->getLogger()
 		);
-		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
-		return $provider;
 	},
 
 	'GrowthExperimentsMenteeOverviewDataUpdater' => static function (
@@ -590,7 +589,8 @@ return [
 	'GrowthExperimentsMentorProviderStructured' => static function (
 		MediaWikiServices $services
 	): CommunityStructuredMentorProvider {
-		$provider = new CommunityStructuredMentorProvider(
+		return new CommunityStructuredMentorProvider(
+			GrowthExperimentsServices::wrap( $services )->getLogger(),
 			$services->getUserIdentityLookup(),
 			new DerivativeContext( RequestContext::getMain() ),
 			CommunityConfigurationServices::wrap( $services )
@@ -598,8 +598,6 @@ return [
 			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 			$services->getMainWANObjectCache()
 		);
-		$provider->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
-		return $provider;
 	},
 
 	'GrowthExperimentsMentorRemover' => static function (
@@ -633,7 +631,8 @@ return [
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		$lb = $geServices->getLoadBalancer();
 
-		$store = new DatabaseMentorStore(
+		return new DatabaseMentorStore(
+			$geServices->getLogger(),
 			$services->getMainWANObjectCache(),
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
@@ -643,8 +642,6 @@ return [
 				MW_ENTRY_POINT === 'cli' ||
 				RequestContext::getMain()->getRequest()->wasPosted()
 		);
-		$store->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
-		return $store;
 	},
 
 	'GrowthExperimentsMentorWriter' => static function (
@@ -653,6 +650,7 @@ return [
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		$writer = new CommunityStructuredMentorWriter(
+			$geServices->getLogger(),
 			$geServices->getMentorProvider(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
@@ -660,7 +658,6 @@ return [
 			CommunityConfigurationServices::wrap( $services )
 				->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' )
 		);
-		$writer->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $writer;
 	},
 
@@ -706,7 +703,7 @@ return [
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$suggestedEditsProvider,
 			$services->getTitleFactory(),
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$growthServices->getLogger(),
 		);
 
 		if ( !$config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
@@ -798,6 +795,7 @@ return [
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		$suggester = new PraiseworthyMenteeSuggester(
+			$geServices->getLogger(),
 			$services->getMainObjectStash(),
 			$services->getUserOptionsManager(),
 			$geServices->getPraiseworthyConditionsLookup(),
@@ -806,7 +804,6 @@ return [
 			$geServices->getMentorStore(),
 			$geServices->getUserImpactStore()
 		);
-		$suggester->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $suggester;
 	},
 
@@ -958,7 +955,7 @@ return [
 				)
 			);
 		}
-		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		$taskSuggesterFactory->setLogger( $growthServices->getLogger() );
 		return $taskSuggesterFactory;
 	},
 
@@ -1070,7 +1067,7 @@ return [
 			$services->getStatsFactory(),
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$growthServices->getLogger(),
 			$services->hasService( 'PageImages.PageImages' ) ?
 			$services->getService( 'PageImages.PageImages' ) : null,
 			$pageViewInfoLoaded ? $services->get( 'PageViewService' ) : null,

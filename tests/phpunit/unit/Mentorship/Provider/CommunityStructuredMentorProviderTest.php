@@ -107,14 +107,13 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetMentorData() {
 		$provider = new CommunityStructuredMentorProvider(
+			new NullLogger(),
 			$this->createMock( UserIdentityLookup::class ),
 			$this->createMock( MessageLocalizer::class ),
 			$this->getMockConfigurationProvider(),
 			$this->getMockStatusFormatter(),
 			$this->createMock( WANObjectCache::class )
 		);
-
-		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
 
 		$data = TestingAccessWrapper::newFromObject( $provider )->getMentorData();
 		$this->assertArrayEquals( self::TEST_MENTOR_DATA['Mentors'], $data );
@@ -137,14 +136,13 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			);
 
 		$provider = new CommunityStructuredMentorProvider(
+			$logger,
 			$this->createMock( UserIdentityLookup::class ),
 			$this->createMock( MessageLocalizer::class ),
 			$ccProvider,
 			$this->getMockStatusFormatter(),
 			$this->createMock( WANObjectCache::class )
 		);
-
-		$provider->setLogger( $logger );
 
 		$data = TestingAccessWrapper::newFromObject( $provider )->getMentorData();
 		$this->assertSame( [], $data );
@@ -157,13 +155,13 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetMentorDataForUser( int $userId, ?array $expectedData ) {
 		$provider = new CommunityStructuredMentorProvider(
+			new NullLogger(),
 			$this->createMock( UserIdentityLookup::class ),
 			$this->createMock( MessageLocalizer::class ),
 			$this->getMockConfigurationProvider(),
 			$this->getMockStatusFormatter(),
 			$this->createMock( WANObjectCache::class )
 		);
-		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
 
 		$result = TestingAccessWrapper::newFromObject( $provider )->getMentorDataForUser(
 			new UserIdentityValue( $userId, 'Mentor' )
@@ -224,14 +222,13 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	 */
 	public function testNewMentorFromUserIdentity( int $userId, string $expectedMessage ) {
 		$provider = new CommunityStructuredMentorProvider(
+			new NullLogger(),
 			$this->createMock( UserIdentityLookup::class ),
 			$this->getMockMessageLocalizer(),
 			$this->getMockConfigurationProvider(),
 			$this->getMockStatusFormatter(),
 			$this->createMock( WANObjectCache::class )
 		);
-
-		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
 
 		$mentor = $provider->newMentorFromUserIdentity(
 			new UserIdentityValue( $userId, 'Mentor' )
@@ -284,6 +281,7 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		] );
 
 		$provider = new CommunityStructuredMentorProvider(
+			new NullLogger(),
 			$userIdentityLookup,
 			$this->getMockMessageLocalizer(),
 			$this->getMockConfigurationProvider(),
@@ -291,7 +289,6 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$wanCache
 		);
 
-		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
 		$provider->$methodToCall();
 	}
 
@@ -317,14 +314,13 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			} );
 
 		$provider = new CommunityStructuredMentorProvider(
+			new NullLogger(),
 			$userIdentityLookup,
 			$this->getMockMessageLocalizer(),
 			$this->getMockConfigurationProvider(),
 			$this->getMockStatusFormatter(),
 			$this->createMock( WANObjectCache::class )
 		);
-
-		$provider->setLogger( $this->createMock( LoggerInterface::class ) );
 
 		$result = $provider->getWeightedAutoAssignedMentors();
 

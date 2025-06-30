@@ -4,14 +4,16 @@ namespace GrowthExperiments\Mentorship\Provider;
 
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Status\StatusFormatter;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use RuntimeException;
 
 trait CommunityGetMentorDataTrait {
-	use LoggerAwareTrait;
 
 	private IConfigurationProvider $provider;
 	private StatusFormatter $statusFormatter;
+
+	// NOTE: This needs to be protected, because MentorProvider declares this as protected
+	protected LoggerInterface $logger;
 
 	protected function getMentorData(): array {
 		$result = $this->provider->loadValidConfiguration();

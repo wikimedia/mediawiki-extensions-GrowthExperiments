@@ -5,14 +5,14 @@ namespace GrowthExperiments\Mentorship\Provider;
 use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 
 abstract class MentorProvider {
-	use LoggerAwareTrait;
 
-	public function __construct() {
-		$this->setLogger( new NullLogger() );
+	protected LoggerInterface $logger;
+
+	public function __construct( LoggerInterface $logger ) {
+		$this->logger = $logger;
 	}
 
 	/** @var int Maximum mentor intro length. */

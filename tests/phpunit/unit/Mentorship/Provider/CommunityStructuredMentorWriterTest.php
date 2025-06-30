@@ -20,7 +20,7 @@ use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
-use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use StatusValue;
 
 /**
@@ -173,14 +173,13 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		}
 
 		$writer = new CommunityStructuredMentorWriter(
+			new NullLogger(),
 			$this->createMock( MentorProvider::class ),
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock( $isBlocked, $isNamed ),
 			$this->getMockStatusFormatter(),
 			$ccProvider
 		);
-
-		$writer->setLogger( $this->createMock( LoggerInterface::class ) );
 
 		$result = $writer->addMentor(
 			$mentor,
@@ -261,14 +260,13 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		}
 
 		$writer = new CommunityStructuredMentorWriter(
+			new NullLogger(),
 			$this->createMock( MentorProvider::class ),
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock(),
 			$this->getMockStatusFormatter(),
 			$ccProvider
 		);
-
-		$writer->setLogger( $this->createMock( LoggerInterface::class ) );
 
 		$result = $writer->removeMentor(
 			$mentor,
@@ -326,14 +324,13 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			->willReturn( StatusValue::newGood() );
 
 		$writer = new CommunityStructuredMentorWriter(
+			new NullLogger(),
 			$this->createMock( MentorProvider::class ),
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock(),
 			$this->getMockStatusFormatter(),
 			$ccProvider
 		);
-
-		$writer->setLogger( $this->createMock( LoggerInterface::class ) );
 
 		$result = $writer->changeMentor(
 			$mentor,
@@ -369,14 +366,13 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			->willReturn( StatusValue::newGood() );
 
 		$writer = new CommunityStructuredMentorWriter(
+			new NullLogger(),
 			$mentorProvider,
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock(),
 			$this->getMockStatusFormatter(),
 			$ccProvider
 		);
-
-		$writer->setLogger( $this->createMock( LoggerInterface::class ) );
 
 		$result = $writer->touchList(
 			new UserIdentityValue( 999, 'Performer' ),
@@ -405,14 +401,13 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			->willReturn( $store );
 
 		$writer = new CommunityStructuredMentorWriter(
+			new NullLogger(),
 			$this->createMock( MentorProvider::class ),
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock( $isBlocked ),
 			$this->getMockStatusFormatter(),
 			$ccProvider
 		);
-
-		$writer->setLogger( $this->createMock( LoggerInterface::class ) );
 
 		$result = $writer->isBlocked(
 			new UserIdentityValue( 999, 'Performer' ) );

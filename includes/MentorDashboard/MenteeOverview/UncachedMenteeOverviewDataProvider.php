@@ -17,8 +17,7 @@ use MediaWiki\User\ActorMigration;
 use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -32,7 +31,6 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * scripts or jobs.
  */
 class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
-	use LoggerAwareTrait;
 
 	/** @var int Number of seconds in a day */
 	private const SECONDS_DAY = 86400;
@@ -48,6 +46,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private TempUserConfig $tempUserConfig;
 
 	private IConnectionProvider $mainConnProvider;
+
+	private LoggerInterface $logger;
 
 	/** @var array Cache used by getLastEditTimestampForUsers */
 	private array $lastTimestampCache = [];
@@ -74,16 +74,16 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		ActorMigration $actorMigration,
 		UserIdentityLookup $userIdentityLookup,
 		TempUserConfig $tempUserConfig,
-		IConnectionProvider $mainConnProvider
+		IConnectionProvider $mainConnProvider,
+		LoggerInterface $logger
 	) {
-		$this->setLogger( new NullLogger() );
-
 		$this->mentorStore = $mentorStore;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->actorMigration = $actorMigration;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->tempUserConfig = $tempUserConfig;
 		$this->mainConnProvider = $mainConnProvider;
+		$this->logger = $logger;
 	}
 
 	public function setBatchSize( int $batchSize ): void {

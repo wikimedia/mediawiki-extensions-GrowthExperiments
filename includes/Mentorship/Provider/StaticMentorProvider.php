@@ -6,6 +6,8 @@ use GrowthExperiments\Mentorship\Mentor;
 use InvalidArgumentException;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 /**
  * Static implementation of MentorProvider, created for use in tests
@@ -21,12 +23,14 @@ class StaticMentorProvider extends MentorProvider {
 	/**
 	 * @param Mentor[] $autoMentors
 	 * @param Mentor[] $manualMentors
+	 * @param LoggerInterface|null $logger
 	 */
 	public function __construct(
 		array $autoMentors,
-		array $manualMentors = []
+		array $manualMentors = [],
+		?LoggerInterface $logger = null
 	) {
-		parent::__construct();
+		parent::__construct( $logger ?? new NullLogger() );
 
 		$this->autoMentors = $autoMentors;
 		$this->manualMentors = $manualMentors;
