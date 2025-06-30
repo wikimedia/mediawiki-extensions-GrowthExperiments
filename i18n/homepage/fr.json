@@ -618,5 +618,6 @@
 	"echo-category-title-ge-newcomer": "Fonctionnalités de Croissance",
 	"echo-pref-tooltip-ge-newcomer": "Me notifier au sujet des tâches pour novices et des autres fonctionnalités conçues pour assister les nouveaux utilisateurs.",
 	"growthexperiments-homepage-community-updates-header": "Actualités de la communauté",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "En savoir plus"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "En savoir plus",
+	"growthexperiments-addalink-milestone-notification-header": "$1 modifications, félicitations ! Les articles {{GENDER:$2| que vous avez}} modifiés ont récemment été consultés $3 fois. Les suggestions de modifications disponibles ont changé."
 }

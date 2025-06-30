@@ -39,7 +39,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "O parámetro \"sectionNumber\" debe ser un enteiro nos datos do complemento para engadir imaxes, pero é $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Non se atopou o rexistro de recomendación da ligazón",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Obxectivos de recomendación de ligazóns inesperados: $1",
-	"growthexperiments-underlinked-rescore-profile": "Perfil de recuperación interno utilizado nas recomendacións de ligazóns de GrowthExperiments para priorizar artigos que aínda non teñen suficientes ligazóns.",
+	"growthexperiments-underlinked-rescore-profile": "Perfil de recuperación interno utilizado nas recomendacións de ligazóns de GrowthExperiments para priorizar artigos que aínda non teñen suficientes ligazóns. Isto non funciona cando as recomendacións de ligazóns están desactivadas.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "O parámetro <var>editRevId</var> é obrigatorio cando se establece o parámetro <var>accepted</var> co valor <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "O parámetro <var>editRevId</var> non se pode utilizar cando se establece o parámetro <var>accepted</var> co valor <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "O parámetro <var>caption</var> é obrigatorio cando se establece o parámetro <var>accepted</var> co valor <kbd>true</kbd>.",

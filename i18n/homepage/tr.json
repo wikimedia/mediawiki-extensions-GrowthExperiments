@@ -604,5 +604,6 @@
 	"echo-category-title-ge-newcomer": "Growth özellikleri",
 	"echo-pref-tooltip-ge-newcomer": "Yeni gelenler için görevler ve yeni kullanıcılara yardımcı olmak için tasarlanmış diğer özellikler hakkında beni uyar.",
 	"growthexperiments-homepage-community-updates-header": "Topluluk Güncellemeleri",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Daha fazla bilgi"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Daha fazla bilgi",
+	"growthexperiments-addalink-milestone-notification-header": "$1 düzenleme, tebrikler! {{GENDER:$2|Düzenlediğiniz}} maddeler yakın zamanda $3 görüntüleme aldı. Mevcut önerilen düzenlemeler değişti."
 }

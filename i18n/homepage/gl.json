@@ -577,5 +577,6 @@
 	"echo-category-title-ge-newcomer": "Funcionalidades de crecemento",
 	"echo-pref-tooltip-ge-newcomer": "Notificádeme sobre as tarefas para as persoas principiantes e outras funcións deseñadas para axudar ás persoas principiantes.",
 	"growthexperiments-homepage-community-updates-header": "Actualizacións da comunidade",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Máis información"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Máis información",
+	"growthexperiments-addalink-milestone-notification-header": "Parabéns polas $1 edicións! Os artigos que {{GENDER:$2|editaches}} recibiron $3 visitas. Cambiaron as edicións suxeridas dispoñibles."
 }

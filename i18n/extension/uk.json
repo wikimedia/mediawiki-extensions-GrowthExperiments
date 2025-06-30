@@ -232,6 +232,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Мінімальний поріг впевненості для пропозицій посилань. У цьому полі потрібно вказати відсоток у десятковій формі, тому число має бути від 0 до 1. Якщо {{GENDER:|ви}} збільшите це число, пропозиції, надані кінцевому користувачеві, матимуть вищу ймовірність того, що вони будуть хорошими, однак доступних пропозицій буде менше. Якщо ви зменшите кількість, доступних пропозицій буде більше, але деякі з них з нижчою ймовірністю будуть якісними.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Перестати пропонувати «Додати посилання» залежно від загальної кількості редагувань новачка",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Ні",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "Так, після 5 редагувань загалом",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "Так, після 20 редагувань загалом",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Так, після 50 редагувань загалом",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Так, після 75 редагувань загалом",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Так, після 150 редагувань загалом",
 	"growthexperiments-addlink-done-button": "Готово"
 }

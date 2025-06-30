@@ -600,5 +600,6 @@
 	"echo-category-title-ge-newcomer": "ميزات النمو",
 	"echo-pref-tooltip-ge-newcomer": "إعلامي بالمهام الخاصة بالوافدين الجدد والميزات الأخرى المصممة لمساعدة المستخدمين الجدد.",
 	"growthexperiments-homepage-community-updates-header": "تحديثات المجتمع",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "معرفة المزيد"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "معرفة المزيد",
+	"growthexperiments-addalink-milestone-notification-header": "عدد التعديلات $1، تهانينا! المقالات التي {{GENDER:$2|قمتَ|قمتِ}} بتعديلها تلقّت $3 مشاهدة مؤخرًا. التعديلات المقترحة المتاحة قد تغيّرت."
 }

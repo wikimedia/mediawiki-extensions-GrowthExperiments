@@ -575,5 +575,6 @@
 	"echo-category-title-ge-newcomer": "Functiones de crescimento",
 	"echo-pref-tooltip-ge-newcomer": "Notificar me sur le cargas pro novicios e altere functionalitate concipite pro adjutar nove usatores.",
 	"growthexperiments-homepage-community-updates-header": "Actualitates del communitate",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Leger plus"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Leger plus",
+	"growthexperiments-addalink-milestone-notification-header": "$1 modificationes, felicitationes! Le articulos que {{GENDER:$2|tu ha}} modificate ha recipite $3 visitas recentemente. Le modificationes suggerite disponibile ha cambiate."
 }

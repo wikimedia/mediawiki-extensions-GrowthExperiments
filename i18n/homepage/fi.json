@@ -565,5 +565,6 @@
 	"echo-category-title-ge-newcomer": "Kasvuominaisuudet",
 	"echo-pref-tooltip-ge-newcomer": "Ilmoita uusien tulokkaiden tehtävistä ja muista uusien käyttäjien avuksi tarkoitetuista ominaisuuksista",
 	"growthexperiments-homepage-community-updates-header": "Yhteisön ilmoitukset",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lisätietoja"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lisätietoja",
+	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|muokkaus|muokkausta}}, onnittelut! Muokkaamiasi artikkeleita on katsottu $3 kertaa viime aikoina. Saatavilla olevat ehdotetut muokkaukset ovat muuttuneet."
 }

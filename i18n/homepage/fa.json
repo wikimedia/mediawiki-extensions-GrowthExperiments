@@ -292,6 +292,7 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "منطبق با تمام زمینه‌های منتخب",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "منطبق با دست کم یک زمینهٔ منتخب",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "رویداد پویش",
+	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1 {{PLURAL:$1|ویرایش}}، تبریک می‌گوییم! ویرایش‌های پیشنهادی موجود تغییر کرده‌اند.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "پیکربندی نامعتبر برای ویرایش‌های پیشنهادی: ساختار بد",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "پیکربندی نامعتبر ویرایش‌های پیشنهادی برای نوع وظیفهٔ «$1»: «$2» باید یک عدد باشد.",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "پیکربندی نامعتبر ویرایش‌های پیشنهادی برای نوع وظیفهٔ «$1»: «$2» باید بزرگ‌تر از $3 باشد",
@@ -557,5 +558,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "برای توسعه دادن مهارت‌های ویرایشی {{GENDER:$2|خود}} به انجام ویرایش‌های پیشنهادی ادامه دهید",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "انجام یک ویرایش پیشنهادی",
 	"echo-category-title-ge-newcomer": "ویژگی‌های رشد",
-	"echo-pref-tooltip-ge-newcomer": "مرا از وظایف تازه‌واردان و سایر ویژگی‌های طراحی‌شده برای کمک به کاربران جدید آگاه کن."
+	"echo-pref-tooltip-ge-newcomer": "مرا از وظایف تازه‌واردان و سایر ویژگی‌های طراحی‌شده برای کمک به کاربران جدید آگاه کن.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 ویرایش، تبریک می‌گوییم! مقاله‌هایی که {{GENDER:$2|شما}} ویرایش کرده‌اید اخیراً $3 بازدید داشته‌اند. ویرایش‌های پیشنهادی در دسترس تغییر کرده‌اند."
 }
