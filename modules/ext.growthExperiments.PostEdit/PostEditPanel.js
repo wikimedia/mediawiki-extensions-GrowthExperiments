@@ -66,7 +66,7 @@ function PostEditPanel( config ) {
 		if ( isLoading ) {
 			return;
 		}
-		this.getMainArea();
+		this.updateNavigation();
 	} );
 	this.tasksStore.on( CONSTANTS.EVENTS.TASK_QUEUE_CHANGED, () => {
 		const currentTask = this.tasksStore.getCurrentTask();
