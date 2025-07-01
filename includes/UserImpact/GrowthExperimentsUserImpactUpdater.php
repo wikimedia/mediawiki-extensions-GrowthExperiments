@@ -6,6 +6,7 @@ namespace GrowthExperiments\UserImpact;
 
 use DateTime;
 use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -103,7 +104,7 @@ class GrowthExperimentsUserImpactUpdater {
 			$this->userImpactStore->setUserImpact( $impact );
 			// Also enqueue a job, so that we can get accurate page view data for users who aren't in
 			// the filters defined for the refreshUserImpact.php cron job.
-			$this->jobQueueGroup->push( new RefreshUserImpactJob( [
+			$this->jobQueueGroup->push( new JobSpecification( RefreshUserImpactJob::JOB_NAME, [
 				'impactDataBatch' => [ $userIdentity->getId() => json_encode( $impact ) ],
 				// We want to regenerate the page view data, so set staleBefore that's
 				// guaranteed to result in cache invalidation

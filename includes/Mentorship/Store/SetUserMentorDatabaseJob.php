@@ -2,11 +2,9 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
-use GrowthExperiments\GrowthExperimentsServices;
-use MediaWiki\JobQueue\GenericParameterJob;
+use LogicException;
 use MediaWiki\JobQueue\Job;
-use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentityLookup;
 
 /**
  * Job to change mentor in GET context from DatabaseMentorStore
@@ -16,23 +14,22 @@ use MediaWiki\User\UserFactory;
  * 	- mentorId: user ID of the mentor
  * 	- roleId: ROLE_* constant from MentorStore
  */
-class SetUserMentorDatabaseJob extends Job implements GenericParameterJob {
+class SetUserMentorDatabaseJob extends Job {
 
-	private UserFactory $userFactory;
+	public const JOB_NAME = 'setUserMentorDatabaseJob';
+	private UserIdentityLookup $userIdentityLookup;
 	private DatabaseMentorStore $databaseMentorStore;
 
-	/**
-	 * @inheritDoc
-	 */
-	public function __construct( $params = null ) {
-		parent::__construct( 'setUserMentorDatabaseJob', $params );
+	public function __construct(
+		array $params,
+		UserIdentityLookup $userIdentityLookup,
+		DatabaseMentorStore $databaseMentorStore
+	) {
+		parent::__construct( self::JOB_NAME, $params );
 		$this->removeDuplicates = true;
 
-		// Init services
-		$services = MediaWikiServices::getInstance();
-		$this->userFactory = $services->getUserFactory();
-		$this->databaseMentorStore = GrowthExperimentsServices::wrap( $services )
-			->getDatabaseMentorStore();
+		$this->userIdentityLookup = $userIdentityLookup;
+		$this->databaseMentorStore = $databaseMentorStore;
 	}
 
 	/**
@@ -60,9 +57,15 @@ class SetUserMentorDatabaseJob extends Job implements GenericParameterJob {
 	 * @inheritDoc
 	 */
 	public function run() {
+		$menteeUser = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['menteeId'] );
+		if ( $menteeUser === null ) {
+			throw new LogicException(
+				__CLASS__ . ' executed for invalid menteeId (' . $this->params['menteeId'] . ')'
+			);
+		}
 		$this->databaseMentorStore->setMentorForUser(
-			$this->userFactory->newFromId( $this->params['menteeId'] ),
-			$this->params['mentorId'] ? $this->userFactory->newFromId(
+			$menteeUser,
+			$this->params['mentorId'] ? $this->userIdentityLookup->getUserIdentityByUserId(
 				$this->params['mentorId']
 			) : null,
 			$this->params['roleId']
