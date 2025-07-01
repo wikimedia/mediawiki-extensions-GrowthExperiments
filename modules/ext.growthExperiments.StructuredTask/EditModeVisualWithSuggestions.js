@@ -43,7 +43,7 @@ EditModeVisualWithSuggestions.prototype.switch = function () {
  */
 EditModeVisualWithSuggestions.prototype.onUpdateState = function () {
 	EditModeVisualWithSuggestions.super.prototype.onUpdateState.apply( this, arguments );
-	this.setActive( !new URL( window.location.href ).searchParams.has( 'hideMachineSuggestions' ) );
+	this.setActive( !!new URL( window.location.href ).searchParams.has( 'hideMachineSuggestions' ) );
 };
 
 module.exports = EditModeVisualWithSuggestions;
