@@ -13,6 +13,9 @@ class GrowthExperimentsExtensionJsonTest extends ExtensionJsonTestBase {
 	/** @inheritDoc */
 	protected static string $extensionJsonPath = __DIR__ . '/../../../extension.json';
 
+	/** @inheritDoc */
+	protected static bool $testJobClasses = true;
+
 	public static function provideApiQueryModuleListsAndNames(): iterable {
 		foreach ( parent::provideApiQueryModuleListsAndNames() as [ $moduleList, $moduleName ] ) {
 			// TODO: Figure out how to construct linkrecommendations w/o CirrusSearch
