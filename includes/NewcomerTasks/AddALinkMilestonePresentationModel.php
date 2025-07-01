@@ -45,7 +45,8 @@ class AddALinkMilestonePresentationModel extends EchoEventPresentationModel {
 			'url' => $this->getSpecialHomepageUrl( 'get-started-primary-link-' . $this->getDistributionType() ),
 			'label' => $this->msg(
 				'growthexperiments-levelingup-getstarted-notification-call-to-action-label'
-			)->text()
+			)->text(),
+			'icon' => 'edit',
 		] ];
 	}
 
