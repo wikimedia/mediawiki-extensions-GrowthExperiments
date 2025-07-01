@@ -77,6 +77,9 @@ class FixLinkRecommendationData extends Maintenance {
 
 	/** @inheritDoc */
 	public function execute(): void {
+		if ( !$this->shouldExecute() ) {
+			return;
+		}
 		$this->init();
 		if ( !$this->hasOption( 'search-index' ) && !$this->hasOption( 'db-table' ) ) {
 			$this->fatalError( 'At least one of --search-index and --db-table must be specified.' );
@@ -91,13 +94,18 @@ class FixLinkRecommendationData extends Maintenance {
 		}
 	}
 
-	public function init(): void {
+	private function shouldExecute(): bool {
 		$services = $this->getServiceContainer();
 		$wiki = WikiMap::getCurrentWikiId();
 		if ( !$services->getMainConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$this->output( "Skipping $wiki: GENewcomerTasksLinkRecommendationsEnabled is false.\n" );
-			return;
+			return false;
 		}
+		return true;
+	}
+
+	public function init(): void {
+		$services = $this->getServiceContainer();
 
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		if ( $this->hasOption( 'db-table' )
@@ -130,6 +138,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$taskTypes = $configurationLoader->getTaskTypes();
 		$linkRecommendationTaskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
 		if ( !$linkRecommendationTaskType instanceof LinkRecommendationTaskType ) {
+			$wiki = WikiMap::getCurrentWikiId();
 			$type = get_debug_type( $linkRecommendationTaskType );
 			$this->fatalError( "$wiki: '$type' is not a link recommendation task type" );
 		}
