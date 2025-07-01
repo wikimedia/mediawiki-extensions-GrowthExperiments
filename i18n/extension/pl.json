@@ -120,7 +120,7 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "Krótka i przyjazna wiadomość informacyjna, która ma wzbudzić zainteresowanie.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesminedits-label": "Minimalna liczba edycji, którą użytkownik musi mieć wykonaną, aby pokazywać mu ten banner",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Grafika",
-	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Wybierz odpowiedni obraz, który odnosi się do wydarzenia lub inicjatywy, którą chcesz promować, np. logo.",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Wyszukaj obraz na Wikimedia Commons, wpisując jego nazwę i wybierając go z listy. Aby uzyskać najlepszy wygląd, wybierz obraz o kwadratowym współczynniku proporcji.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "Działanie",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Strona docelowa",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Etykieta",
