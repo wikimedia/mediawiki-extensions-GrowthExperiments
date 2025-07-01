@@ -68,24 +68,6 @@ module.exports = ( function () {
 	}
 
 	/**
-	 * Return an array of tools for machine suggestions mode on mobile
-	 *
-	 * @param {Object[]} currentTools Existing VE tools
-	 * @return {Object[]}
-	 */
-	function getMobileTools( currentTools ) {
-		const activeTools = currentTools.filter( ( tool ) => [ 'save', 'back' ].includes( tool.name ) );
-		activeTools.push(
-			{
-				name: 'machineSuggestionsPlaceholder',
-				include: [ 'machineSuggestionsPlaceholder' ]
-			},
-			getEditModeToolGroup()
-		);
-		return activeTools;
-	}
-
-	/**
 	 * Return an array of action groups for machine suggestions mode
 	 *
 	 * @param {Object[]} currentGroups Existing VE action groups
@@ -185,7 +167,6 @@ module.exports = ( function () {
 	return {
 		canAddToolbarTitle: canAddToolbarTitle,
 		getTitleElement: getTitleElement,
-		getMobileTools: getMobileTools,
 		getToolbarGroups: getToolbarGroups,
 		getEditModeToolNames: function () {
 			return editModeToolNames;
