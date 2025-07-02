@@ -294,6 +294,7 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "להתאים את כל הנושאים הנבחרים",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "להתאים לפחות נושא אחד נבחר",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "אירוע",
+	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "{{PLURAL:$1|עריכה אחת|$1 עריכות}}, מזל טוב! העריכות המוצעות הזמינות השתנו.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "הגדרות בלתי־תקינות של עריכות מוצעות: מבנה גרוע.",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "הגדרות עריכות מוצעות בלתי־תקינות לסוג המשימה \"$1\": הערך \"$2\" חייב להיות מספר שלם",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "הגדרות עריכות מוצעות בלתי־תקינות לסוג המשימה \"$1\": הערך \"$2\" חייב להיות גדול מ־$3",
@@ -583,6 +584,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "לראות את העריכות המוצעות",
 	"growthexperiments-homepage-impact-contributions-link": "הצגת כל העריכות",
 	"growthexperiments-levelingup-getstarted-notification-header": "{{GENDER:$2|נסה|נסי}} עריכה מוצעת {{GENDER:$2|והתחל|והתחילי}} לבנות את מיומנויות העריכה שלך",
+	"growthexperiments-levelingup-getstarted-notification-header-new": "{{GENDER:$2|סקרן|סקרנית}} לגבי עריכה באתר {{SITENAME}}? הידע שלך מצטרף לקהילה שמגיעה למיליונים.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "לנסות עריכות מוצעות",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "מידע נוסף",
 	"growthexperiments-levelingup-keepgoing-notification-header": "עשית {{PLURAL:$3|עריכה מוצעת אחת|$3 עריכות מוצעות}}. {{GENDER:$2|תמשיך|תמשיכי}} ללמוד עוד מיומנויות חדשות.",
@@ -590,5 +592,6 @@
 	"echo-category-title-ge-newcomer": "אפשרויות צמיחה",
 	"echo-pref-tooltip-ge-newcomer": "להודיע לי על משימות לעורכים חדשים ותכונות אחרות שנועדו לעזור למשתמשים חדשים.",
 	"growthexperiments-homepage-community-updates-header": "עדכוני קהילה",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "מידע נוסף"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "מידע נוסף",
+	"growthexperiments-addalink-milestone-notification-header": "{{PLURAL:$1|עריכה אחת|$1 עריכות}}, מזל טוב! ערכים {{GENDER:$2|שערכת}} קיבלו לאחרונה $3 צפיות. העריכות המוצעות הזמינות השתנו."
 }
