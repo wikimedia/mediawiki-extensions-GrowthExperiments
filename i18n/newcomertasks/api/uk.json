@@ -24,7 +24,7 @@
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "Недійсний елемент «$1» для параметра «reasons», мусить бути один із: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Історію рекомендацій посилань не знайдено",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Неочікувані цілі рекомендацій посилань: $1",
-	"growthexperiments-underlinked-rescore-profile": "Профіль внутрішньої оцінки, який використовується в рекомендаціях посилань експериментів Зростання для пріоритизування статей, які ще не мають достатньо посилань.",
+	"growthexperiments-underlinked-rescore-profile": "Профіль внутрішньої оцінки, який використовується в рекомендаціях посилань експериментів Зростання для пріоритизування статей, які ще не мають достатньо посилань. Ця опція вимкнена, якщо вимкнені рекомендації посилань.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "Параметр <var>editRevId</var> потрібний, якщо параметр <var>accepted</var> має значення <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Параметр <var>editRevId</var> не можна використати, якщо параметр <var>accepted</var> має значення <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Параметр <var>caption</var> є обов'язковим, якщо параметр <var>accepted</var> має значення <kbd>true</kbd>.",
