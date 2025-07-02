@@ -333,7 +333,7 @@ abstract class QuestionPoster {
 	 */
 	protected function makeWikitextContent() {
 		$wikitextContent = new WikitextContent(
-			$this->addSignature( $this->getBody() )
+			$this->prependContent( $this->addSignature( $this->getBody() ) )
 		);
 		$header = $this->getSectionHeader();
 		$parent = $this->getPageUpdater()->grabParentRevision();
@@ -588,6 +588,13 @@ abstract class QuestionPoster {
 			$this->getContext(),
 			$this->getQuestionStoragePref()
 		)->add( $question );
+	}
+
+	/**
+	 * Prepend wikitext to the question message body
+	 */
+	protected function prependContent( string $body ): string {
+		return $body;
 	}
 
 }

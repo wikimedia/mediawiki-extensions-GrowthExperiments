@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\UserNotLoggedIn;
@@ -36,11 +37,13 @@ class QuestionPosterFactory {
 
 	private bool $confirmEditInstalled;
 	private bool $flowInstalled;
+	private MentorStatusManager $mentorStatusManager;
 
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
 	 * @param IMentorManager $mentorManager
+	 * @param MentorStatusManager $mentorStatusManager
 	 * @param PermissionManager $permissionManager
 	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
 	 *   (as opposed to the bottom). Only affects wikitext pages.
@@ -52,6 +55,7 @@ class QuestionPosterFactory {
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
 		IMentorManager $mentorManager,
+		MentorStatusManager $mentorStatusManager,
 		PermissionManager $permissionManager,
 		bool $helpDeskPostOnTop,
 		StatsFactory $statsFactory,
@@ -61,6 +65,7 @@ class QuestionPosterFactory {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
 		$this->mentorManager = $mentorManager;
+		$this->mentorStatusManager = $mentorStatusManager;
 		$this->permissionManager = $permissionManager;
 		$this->helpDeskPostOnTop = $helpDeskPostOnTop;
 		$this->statsFactory = $statsFactory;
@@ -110,6 +115,7 @@ class QuestionPosterFactory {
 				$this->wikiPageFactory,
 				$this->titleFactory,
 				$this->mentorManager,
+				$this->mentorStatusManager,
 				$this->permissionManager,
 				$this->statsFactory,
 				$this->confirmEditInstalled,
@@ -123,6 +129,7 @@ class QuestionPosterFactory {
 				$this->wikiPageFactory,
 				$this->titleFactory,
 				$this->mentorManager,
+				$this->mentorStatusManager,
 				$this->permissionManager,
 				$this->statsFactory,
 				$this->confirmEditInstalled,

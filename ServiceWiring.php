@@ -825,6 +825,7 @@ return [
 			$services->getWikiPageFactory(),
 			$services->getTitleFactory(),
 			$growthServices->getMentorManager(),
+			$growthServices->getMentorStatusManager(),
 			$services->getPermissionManager(),
 			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' ),
 			$services->getStatsFactory(),

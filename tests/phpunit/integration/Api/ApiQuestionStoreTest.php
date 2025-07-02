@@ -58,7 +58,8 @@ class ApiQuestionStoreTest extends ApiTestCase {
 		$user = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getTestSysop()->getUser();
 		$services = $this->getServiceContainer();
-		GrowthExperimentsServices::wrap( $services )->getMentorStore()
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		$geServices->getMentorStore()
 			->setMentorForUser(
 				$user,
 				$mentor,
@@ -75,6 +76,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 			new StaticMentorManager( [
 				$user->getName() => new Mentor( $mentor, '', '', IMentorWeights::WEIGHT_NORMAL ),
 			] ),
+			$geServices->getMentorStatusManager(),
 			$services->getPermissionManager(),
 			$services->getStatsFactory(),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
