@@ -573,12 +573,13 @@
 	"growthexperiments-homepage-impact-contributions-link": "Bütün redaktələrə bax",
 	"growthexperiments-levelingup-getstarted-notification-header": "Təklif olunan redaktəni sınayın və redaktə {{GENDER:$2|bacarıqlarınızı}} yaratmağa başlayın",
 	"growthexperiments-levelingup-getstarted-notification-header-new": "{{SITENAME}} saytını redaktə etmək istəyirsiniz? {{GENDER:$2|Sizin}} əlavə etdiyiniz məlumat milyonlara çatan icmaya qoşulur.",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Tövsiyə olunan redaktələri sınayın",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Digər redaktələri sınayın",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Daha ətraflı",
 	"growthexperiments-levelingup-keepgoing-notification-header": "$3 {{PLURAL:$3|tövsiyə olunan redaktə}} {{GENDER:$2|etmisiniz}}. Daha çox yeni bacarıqlar əldə etmək üçün davam edin.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Tövsiyə olunan redaktə edin",
 	"echo-category-title-ge-newcomer": "İnkişaf xüsusiyyətləri",
 	"echo-pref-tooltip-ge-newcomer": "Yeni gələnlər üçün tapşırıqlar və yeni istifadəçilərə kömək etmək üçün nəzərdə tutulmuş digər funksiyalar haqqında mənə bildirin.",
 	"growthexperiments-homepage-community-updates-header": "İcma Yeniləmələri",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Daha ətraflı"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Daha ətraflı",
+	"growthexperiments-addalink-milestone-notification-header": "$1 redaktə, təbriklər! Redaktə etdiyiniz məqalələrə bu yaxınlarda $3 oxunuş gəlib. Mövcud təklif edilən redaktələr dəyişdirilib."
 }
