@@ -5,7 +5,8 @@
 			"Msuantak",
 			"NayiMuu",
 			"Ninjastrikers",
-			"Phosai"
+			"Phosai",
+			"Sithu015"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|မင်္ဂလာပါ}}၊ {{bidi:$1}}။",
@@ -312,7 +313,7 @@
 	"growthexperiments-homepage-special-contribute-title": "အကြံပြုထားသော ပြင်ဆင်မှုများ",
 	"growthexperiments-homepage-special-contribute-cta": "အကြံပြုထားသော ပြင်ဆင်မှုများကို ကြည့်ရန်",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|သင်၏}} တည်းဖြတ်မှုများ ($1) အားလုံးကို ကြည့်ရန်",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "အကြံပြုထားသော တည်းဖြတ်မှုများကို စမ်းကြည့်ပါ",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "အခြားပြင်ဆင်မှု့ ကို စမ်းကြည့်ပါ",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "ပိုမို လေ့လာရန်",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|သင်၏}} တည်းဖြတ်မှုစွမ်းရည် တိုးတက်စေရန် {{PLURAL:$3|အကြံပြုထားသော တည်းဖြတ်မှု|အကြံပြုထားသော တည်းဖြတ်မှုများ}} ကို ဆက်လက်ပြုလုပ်ပါ",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "အကြံပြုထားသော တည်းဖြတ်မှုတစ်ခု ပြုလုပ်ပါ",
