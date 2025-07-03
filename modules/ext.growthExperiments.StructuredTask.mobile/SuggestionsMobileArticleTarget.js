@@ -18,17 +18,9 @@ function SuggestionsMobileArticleTarget() {
 OO.inheritClass( SuggestionsMobileArticleTarget, ve.init.mw.MobileArticleTarget );
 OO.mixinClass( SuggestionsMobileArticleTarget, SuggestionsArticleTarget );
 
-/**
- * Add suggestionsEditMode to toolbarGroups
- * For MobileArticleTarget, the current editMode tool is added in setupToolBar and
- * the editMode tool is not exposed via this.toolbarGroups so it can't be accessed and customized
- * from SuggestionsMobileArticleTarget. Instead, a new tool group is added and the original
- * edit mode tools are un-registered (in index.js).
- */
-SuggestionsMobileArticleTarget.static.toolbarGroups =
-	SuggestionsMobileArticleTarget.static.toolbarGroups.push(
-		MachineSuggestionsMode.getEditModeToolGroup()
-	);
+SuggestionsMobileArticleTarget.static.toolbarGroups = MachineSuggestionsMode.updateEditModeTool(
+	SuggestionsMobileArticleTarget.static.toolbarGroups
+);
 
 /**
  * @inheritdoc
