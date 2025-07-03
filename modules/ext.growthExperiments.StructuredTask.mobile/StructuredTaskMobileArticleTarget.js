@@ -21,25 +21,13 @@ OO.inheritClass( StructuredTaskMobileArticleTarget, ve.init.mw.MobileArticleTarg
 OO.mixinClass( StructuredTaskMobileArticleTarget, StructuredTaskArticleTarget );
 
 StructuredTaskMobileArticleTarget.static.toolbarGroups = [
-	// TODO: Copy this definition from upstream after Id9d587b3d73:
-	// ve.init.mw.MobileArticleTarget.static.toolbarGroups.find( ( group ) => group.name === 'back' ),
-	{
-		name: 'back',
-		include: [ 'back' ],
-		excludeFromTargetWidget: true,
-	},
+	ve.init.mw.MobileArticleTarget.static.toolbarGroups.find( ( group ) => group.name === 'back' ),
 	{
 		name: 'machineSuggestionsPlaceholder',
 		include: [ 'machineSuggestionsPlaceholder' ],
 	},
 	MachineSuggestionsMode.getEditModeToolGroup(),
-	{
-		name: 'save',
-		include: [ 'showSave' ],
-		excludeFromTargetWidget: true,
-	},
-	// TODO: Copy this definition from upstream after Id9d587b3d73:
-	// ve.init.mw.MobileArticleTarget.static.toolbarGroups.find( ( group ) => group.name === 'save' )
+	ve.init.mw.MobileArticleTarget.static.toolbarGroups.find( ( group ) => group.name === 'save' ),
 ];
 
 /**
