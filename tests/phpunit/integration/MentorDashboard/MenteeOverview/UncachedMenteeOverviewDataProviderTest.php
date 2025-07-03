@@ -11,6 +11,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
+use Psr\Log\NullLogger;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -102,7 +103,8 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 			$this->getServiceContainer()->getActorMigration(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
 			$this->getServiceContainer()->getTempUserConfig(),
-			$this->getServiceContainer()->getDBLoadBalancerFactory()
+			$this->getServiceContainer()->getConnectionProvider(),
+			new NullLogger()
 		);
 	}
 

@@ -10,7 +10,7 @@ use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Rdbms\IDBAccessObject;
 
@@ -24,7 +24,6 @@ use Wikimedia\Rdbms\IDBAccessObject;
  */
 class CommunityStructuredMentorWriter implements IMentorWriter {
 	use CommunityGetMentorDataTrait;
-	use LoggerAwareTrait;
 
 	/**
 	 * Change tag to tag structured mentor list edits with
@@ -35,17 +34,20 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 	public const CHANGE_TAG = 'mentor list change';
 	public const CONFIG_KEY = 'Mentors';
 
+	protected LoggerInterface $logger;
 	protected MentorProvider $mentorProvider;
 	protected UserIdentityLookup $userIdentityLookup;
 	protected UserFactory $userFactory;
 
 	public function __construct(
+		LoggerInterface $logger,
 		MentorProvider $mentorProvider,
 		UserIdentityLookup $userIdentityLookup,
 		UserFactory $userFactory,
 		StatusFormatter $statusFormatter,
 		IConfigurationProvider $provider
 	) {
+		$this->logger = $logger;
 		$this->mentorProvider = $mentorProvider;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userFactory = $userFactory;

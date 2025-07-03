@@ -12,6 +12,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MessageLocalizer;
+use Psr\Log\LoggerInterface;
 use WANObjectCache;
 
 class CommunityStructuredMentorProvider extends MentorProvider {
@@ -24,13 +25,14 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 	private const CACHE_TTL = 86400;
 
 	public function __construct(
+		LoggerInterface $logger,
 		UserIdentityLookup $userIdentityLookup,
 		MessageLocalizer $messageLocalizer,
 		IConfigurationProvider $provider,
 		StatusFormatter $statusFormatter,
 		WANObjectCache $cache
 	) {
-		parent::__construct();
+		parent::__construct( $logger );
 
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->messageLocalizer = $messageLocalizer;

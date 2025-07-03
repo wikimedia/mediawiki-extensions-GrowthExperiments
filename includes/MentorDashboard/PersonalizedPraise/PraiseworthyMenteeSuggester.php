@@ -9,17 +9,16 @@ use GrowthExperiments\UserImpact\UserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\ScopedCallback;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class PraiseworthyMenteeSuggester {
-	use LoggerAwareTrait;
-
 	private const EXPIRATION_TTL = ExpirationAwareness::TTL_DAY;
 
+	private LoggerInterface $logger;
 	private BagOStuff $globalCache;
 	private UserOptionsManager $userOptionsManager;
 	private PraiseworthyConditionsLookup $praiseworthyConditionsLookup;
@@ -28,16 +27,8 @@ class PraiseworthyMenteeSuggester {
 	private MentorStore $mentorStore;
 	private UserImpactLookup $userImpactLookup;
 
-	/**
-	 * @param BagOStuff $globalCache
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param PraiseworthyConditionsLookup $praiseworthyConditionsLookup
-	 * @param PersonalizedPraiseNotificationsDispatcher $notificationsDispatcher
-	 * @param PersonalizedPraiseLogger $personalizedPraiseLogger
-	 * @param MentorStore $mentorStore
-	 * @param UserImpactLookup $userImpactLookup
-	 */
 	public function __construct(
+		LoggerInterface $logger,
 		BagOStuff $globalCache,
 		UserOptionsManager $userOptionsManager,
 		PraiseworthyConditionsLookup $praiseworthyConditionsLookup,
@@ -46,6 +37,7 @@ class PraiseworthyMenteeSuggester {
 		MentorStore $mentorStore,
 		UserImpactLookup $userImpactLookup
 	) {
+		$this->logger = $logger;
 		$this->globalCache = $globalCache;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->praiseworthyConditionsLookup = $praiseworthyConditionsLookup;

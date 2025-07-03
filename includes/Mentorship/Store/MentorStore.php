@@ -4,15 +4,12 @@ namespace GrowthExperiments\Mentorship\Store;
 
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\DBAccessObjectUtils;
 use Wikimedia\Rdbms\IDBAccessObject;
 
-abstract class MentorStore implements LoggerAwareInterface {
-	use LoggerAwareTrait;
+abstract class MentorStore {
 
 	public const ROLE_PRIMARY = 'primary';
 	public const ROLE_BACKUP = 'backup';
@@ -29,13 +26,12 @@ abstract class MentorStore implements LoggerAwareInterface {
 	protected bool $wasPosted;
 
 	public function __construct(
+		LoggerInterface $logger,
 		WANObjectCache $wanCache,
 		bool $wasPosted
 	) {
 		$this->wanCache = $wanCache;
 		$this->wasPosted = $wasPosted;
-
-		$this->setLogger( new NullLogger() );
 	}
 
 	/**
