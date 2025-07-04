@@ -145,6 +145,16 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 		items: buttonWidgets
 	} ) );
 
+	if (
+		mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Homepage' &&
+		window.location.hash === '#/homepage/suggested-edits/openTaskTypeDialog' &&
+		mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' )
+	) {
+		setTimeout( () => {
+			this.difficultyFilterButtonWidget.emit( 'click' );
+		}, 0 );
+	}
+
 	this.filtersStore.on( CONSTANTS.EVENTS.FILTER_SELECTION_CHANGED, () => {
 		this.taskTypeFiltersDialog.taskTypeSelector.setSelected( this.filtersStore.getSelectedTaskTypes() );
 		if ( this.topicFiltersDialog ) {

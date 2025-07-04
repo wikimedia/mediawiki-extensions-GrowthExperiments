@@ -60,6 +60,6 @@ class AddALinkMilestonePresentationModel extends EchoEventPresentationModel {
 		$title = SpecialPage::getTitleFor( 'Homepage' );
 		$url = $title->getFullURL( [ 'source' => $source ] );
 
-		return $url . '#/homepage/suggested-edits';
+		return $url . '#/homepage/suggested-edits/openTaskTypeDialog';
 	}
 }
