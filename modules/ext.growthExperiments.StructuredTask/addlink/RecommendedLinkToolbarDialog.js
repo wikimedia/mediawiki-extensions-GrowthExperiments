@@ -448,12 +448,28 @@ RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
 		this.toggle( false );
 		return deferred.reject().promise();
 	}
+	this.beforeShowFirstRecommendation();
 	this.scrollToAnnotationView( annotationView ).then( () => {
 		this.showRecommendationAtIndex( 0 );
-		this.$element.removeClass( 'animate-below' );
-		deferred.resolve();
+		this.afterShowFirstRecommendation().then( deferred.resolve );
 	} );
 	return deferred.promise();
+};
+
+/**
+ * Run before the first animation has been scrolled to
+ */
+RecommendedLinkToolbarDialog.prototype.beforeShowFirstRecommendation = function () {
+};
+
+/**
+ * Run after the first animation has been scrolled to
+ *
+ * @return {jQuery.Promise} Promise which resolves when any after-animation is complete
+ */
+RecommendedLinkToolbarDialog.prototype.afterShowFirstRecommendation = function () {
+	this.$element.removeClass( 'animate-below' );
+	return $.Deferred().resolve().promise();
 };
 
 /**

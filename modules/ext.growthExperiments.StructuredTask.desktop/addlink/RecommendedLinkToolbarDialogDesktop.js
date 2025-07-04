@@ -152,19 +152,15 @@ RecommendedLinkToolbarDialogDesktop.prototype.fadeIn = function () {
 /**
  * @inheritdoc
  */
-RecommendedLinkToolbarDialogDesktop.prototype.showFirstRecommendation = function () {
-	const deferred = $.Deferred(),
-		annotationView = this.getAnnotationViewAtIndex( 0 );
-	if ( !annotationView ) {
-		this.toggle( false );
-		return deferred.reject().promise();
-	}
+RecommendedLinkToolbarDialog.prototype.beforeShowFirstRecommendation = function () {
 	this.fadeOut();
-	this.scrollToAnnotationView( annotationView ).always( () => {
-		this.showRecommendationAtIndex( 0 );
-		this.fadeIn().then( deferred.resolve );
-	} );
-	return deferred.promise();
+};
+
+/**
+ * @inheritdoc
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.afterShowFirstRecommendation = function () {
+	return this.fadeIn();
 };
 
 /**
