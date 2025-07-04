@@ -143,7 +143,7 @@ StructuredTaskArticleTarget.prototype.initAutosave = function () {
  * @return {jQuery.Promise} Promise that resolves when the user has confirmed or cancelled
  */
 StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMode ) {
-	const promise = $.Deferred(),
+	const deferred = $.Deferred(),
 		confirmationDialogPromise = this.surface.dialogs.openWindow( 'editModeConfirmation' );
 
 	confirmationDialogPromise.opening.then( () => {
@@ -164,10 +164,10 @@ StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMod
 			{ active_interface: 'editmode_confirmation_dialog' }
 			/* eslint-enable camelcase */
 		);
-		return promise.resolve( isConfirm );
+		return deferred.resolve( isConfirm );
 	} );
 
-	return promise;
+	return deferred.promise();
 };
 
 /**
@@ -273,7 +273,7 @@ StructuredTaskArticleTarget.prototype.saveErrorNewUser = function ( username ) {
  * @return {jQuery.Promise} Promise that resolves when the user has confirmed or cancelled
  */
 StructuredTaskArticleTarget.prototype.confirmLeavingSuggestionsMode = function () {
-	const promise = $.Deferred();
+	const deferred = $.Deferred();
 	const abandonEditDialogPromise = this.getSurface().dialogs.openWindow( 'abandonedit' ),
 		// eslint-disable-next-line camelcase
 		metadataOverride = { active_interface: 'abandonedit_dialog' };
@@ -285,12 +285,12 @@ StructuredTaskArticleTarget.prototype.confirmLeavingSuggestionsMode = function (
 	abandonEditDialogPromise.closed.then( ( data ) => {
 		if ( data && data.action === 'discard' ) {
 			this.logger.log( 'discard', '', metadataOverride );
-			return promise.resolve();
+			return deferred.promise().resolve();
 		}
 		this.logger.log( 'keep', '', metadataOverride );
-		return promise.reject();
+		return deferred.reject();
 	} );
-	return promise;
+	return deferred.promise();
 };
 
 /**

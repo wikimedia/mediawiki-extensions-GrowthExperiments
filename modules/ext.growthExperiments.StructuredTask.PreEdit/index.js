@@ -183,17 +183,17 @@ module.exports = ( function () {
 	 *   "should be logged" flag if there isn't.
 	 */
 	function checkTaskData() {
-		const promise = $.Deferred();
+		const deferred = $.Deferred();
 		if ( !suggestedEditSession.taskData ) {
-			promise.reject( 'Missing task data', true );
+			deferred.reject( 'Missing task data', true );
 		} else if ( suggestedEditSession.taskData.error ) {
 			// The error field was set in the BeforePageDisplay handler, which also
 			// logged the error; don't log it again.
-			promise.reject( suggestedEditSession.taskData.error, false );
+			deferred.reject( suggestedEditSession.taskData.error, false );
 		} else {
-			promise.resolve();
+			deferred.resolve();
 		}
-		return promise;
+		return deferred.promise();
 	}
 
 	if ( isAddLink ) {

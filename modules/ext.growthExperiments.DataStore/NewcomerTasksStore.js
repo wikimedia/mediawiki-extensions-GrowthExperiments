@@ -301,7 +301,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		this.apiPromise.abort();
 	}
 
-	const promise = $.Deferred(),
+	const deferred = $.Deferred(),
 		apiConfig = { context: context };
 
 	if ( config && config.excludePageId ) {
@@ -367,16 +367,16 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		}
 
 		this.synchronizeExtraData();
-		promise.resolve();
+		deferred.resolve();
 	} ).catch( ( error ) => {
 		// Don't update the loading state if the promise is aborted (the next promise is still in progress)
 		if ( error !== 'abort' ) {
 			this.setTaskQueueLoading( false );
 		}
 		this.setTaskQueueLoadingError( new Error( error ) );
-		promise.reject( error );
+		deferred.reject( error );
 	} );
-	return promise;
+	return deferred.promise();
 };
 
 /**
@@ -428,7 +428,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 	const existingPageIds = this.taskQueue.map( ( task ) => task.pageId ) || [],
 		config = { context: context },
 		currentPageId = mw.config.get( 'wgArticleId' ),
-		promise = $.Deferred();
+		deferred = $.Deferred();
 
 	if ( currentPageId ) {
 		existingPageIds.push( currentPageId );
@@ -456,12 +456,12 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 		}
 		this.addToTaskQueue( newTasks );
 		this.preloadExtraDataForUpcomingTask();
-		promise.resolve();
+		deferred.resolve();
 	} ).always( () => {
 		this.setTaskQueueLoading( false );
 	} );
 
-	return promise;
+	return deferred.promise();
 };
 
 /**
@@ -480,7 +480,7 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 			context: context || 'suggestedEditsModule.getExtraDataAndUpdateQueue'
 		},
 		taskAtIndex = this.taskQueue[ taskIndex ],
-		promise = $.Deferred();
+		deferred = $.Deferred();
 
 	if ( !taskAtIndex ) {
 		return $.Deferred().resolve().promise();
@@ -506,14 +506,14 @@ NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, 
 	}
 
 	$.when( pcsPromise, aqsPromise ).then( () => {
-		promise.resolve();
+		deferred.resolve();
 	} ).always( () => {
 		if ( taskIndex === this.currentTaskIndex ) {
 			this.onCurrentTaskExtraDataChanged();
 		}
 	} );
 
-	return promise;
+	return deferred.promise();
 };
 
 /**

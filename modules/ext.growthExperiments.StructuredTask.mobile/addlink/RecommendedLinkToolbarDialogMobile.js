@@ -211,18 +211,18 @@ RecommendedLinkToolbarDialogMobile.prototype.animateNewContent = function ( $con
 	// Animate in new content
 	const $fakeCurrent = $container.find( '.fake-current' ),
 		$realCurrent = $container.find( '.current' ),
-		promise = $.Deferred();
+		deferred = $.Deferred();
 
 	$container.addClass( 'animating' );
 	$realCurrent.on( 'transitionend', function removeFakeCurrent() {
 		$fakeCurrent.remove();
 		$container.removeClass( [ 'animating', 'ready-to-animate' ] );
 		$realCurrent.off( 'transitionend', removeFakeCurrent );
-		promise.resolve();
+		deferred.resolve();
 	} );
 	$fakeCurrent.addClass( this.isGoingBack ? 'animate-from-end' : 'animate-from-start' );
 	$realCurrent.removeClass( [ 'animate-from-end', 'animate-from-start' ] );
-	return promise;
+	return deferred.promise();
 };
 
 /**

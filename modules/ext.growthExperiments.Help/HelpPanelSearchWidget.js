@@ -66,7 +66,7 @@
 				} );
 			} else {
 				this.api = new mw.Api();
-				this.apiPromise = $.Deferred().resolve();
+				this.apiPromise = $.Deferred().resolve().promise();
 			}
 		}
 		return this.apiPromise;

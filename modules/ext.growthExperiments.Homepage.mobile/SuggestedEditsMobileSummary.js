@@ -73,7 +73,7 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 		tasksStore = this.tasksStore,
 		newcomerTaskLogger = this.newcomerTaskLogger,
 		homepageModuleLogger = this.homepageModuleLogger,
-		promise = $.Deferred();
+		deferred = $.Deferred();
 
 	if ( taskPreviewData && taskPreviewData.title ) {
 		tasksStore.setPreloadedFirstTask( taskPreviewData );
@@ -96,12 +96,12 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 			);
 		} ).always( () => {
 			this.showPreviewForCurrentTask();
-			promise.resolve();
+			deferred.resolve();
 		} );
 
 	} else if ( tasksStore.getTaskCount() === 0 ) {
 		this.replaceContent( new MobileNoTasksWidget() );
-		promise.resolve();
+		deferred.resolve();
 
 	} else if ( taskPreviewData && taskPreviewData.error ) {
 		// Error loading the task, on the server side
@@ -111,10 +111,10 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 			'se-task-pseudo-impression',
 			{ type: 'error', errorMessage: taskPreviewData.error }
 		);
-		promise.reject();
+		deferred.reject();
 	}
 
-	return promise;
+	return deferred.promise();
 };
 
 /**

@@ -50,7 +50,7 @@ PostEditDrawer.prototype.onClose = function ( closeData ) {
  * @return {jQuery.Promise} Promise that resolves when the notification has been shown
  */
 PostEditDrawer.prototype.showToastMessage = function ( delay ) {
-	const promise = $.Deferred(),
+	const deferred = $.Deferred(),
 		$toastMessageArea = $( '<div>' ).addClass( 'mw-ge-postEditDrawer-toastMessageArea' ),
 		$toastMessageOverlay = $( '<div>' ).addClass(
 			'mw-ge-postEditDrawer-toastMessageOverlay'
@@ -61,9 +61,9 @@ PostEditDrawer.prototype.showToastMessage = function ( delay ) {
 		$toastMessageOverlay.detach();
 	} );
 	setTimeout( () => {
-		promise.resolve();
+		deferred.resolve();
 	}, delay );
-	return promise;
+	return deferred.promise();
 };
 
 /**

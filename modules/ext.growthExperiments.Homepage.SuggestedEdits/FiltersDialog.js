@@ -101,9 +101,13 @@ FiltersDialog.prototype.getActionProcess = function ( action ) {
 		.next( function () {
 			if ( action === 'close' ) {
 				// Show the loading state of the ProcessDialog while tasks are fetched
-				const promise = $.Deferred();
+				const deferred = $.Deferred();
 				this.savePreferences();
-				this.emit( 'done', promise );
+				// FIXME: Passing a Deferred object to event emitter and relying
+				// on a listener to resolve it seems *very* flaky.
+				this.emit( 'done', deferred );
+
+				const promise = deferred.promise();
 				promise.always( () => {
 					this.close( { action: 'done' } );
 				} );

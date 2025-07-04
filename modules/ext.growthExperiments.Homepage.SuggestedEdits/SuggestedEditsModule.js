@@ -152,7 +152,7 @@ SuggestedEditsModule.prototype.restoreState = function () {
 /**
  * User has clicked "Done" in the dialog after selecting filters.
  *
- * @param {jQuery.Deferred} [filtersDialogProcess] Promise from the filters ProcessDialog to
+ * @param {jQuery.Deferred} [filtersDialogDeferred] Deferred from the filters ProcessDialog to
  * resolve when the tasks are fetched or reject if the request failed. This is used to show the
  * loading state in the filters dialog.
  *
@@ -160,16 +160,16 @@ SuggestedEditsModule.prototype.restoreState = function () {
  * show the task count when the filter dialog is open. When that's the case, we should use the task
  * queue from the store to avoid making two API calls for the same filters.
  */
-SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogProcess ) {
+SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogDeferred ) {
 	this.isFirstRender = true;
 	this.onFilterClose();
 	const apiPromise = this.tasksStore.fetchTasks( 'suggestedEditsModule.filterSelection' );
 
-	if ( filtersDialogProcess ) {
+	if ( filtersDialogDeferred ) {
 		apiPromise.then( () => {
-			filtersDialogProcess.resolve();
+			filtersDialogDeferred.resolve();
 		}, () => {
-			filtersDialogProcess.reject();
+			filtersDialogDeferred.reject();
 		} );
 	}
 };
@@ -393,7 +393,7 @@ SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapp
 	const isGoingBack = this.isGoingBack,
 		$fakeCard = $cardElement.clone(),
 		$overlayContent = this.config.$container.find( '.overlay-content' ),
-		promise = $.Deferred();
+		deferred = $.Deferred();
 
 	// Prevent scrolling while animation is in progress
 	$overlayContent.addClass( 'is-swiping' );
@@ -409,7 +409,7 @@ SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapp
 	const onTransitionEnd = function () {
 		$fakeCard.remove();
 		$cardElement.off( 'transitionend transitioncancel', onTransitionEnd );
-		promise.resolve();
+		deferred.resolve();
 	};
 
 	// A delay is added to make sure the fake card is shown and the real card is off screen.
@@ -421,7 +421,7 @@ SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapp
 		$overlayContent.removeClass( 'is-swiping' );
 	}, 100 );
 
-	return promise;
+	return deferred.promise();
 };
 
 /**
@@ -435,7 +435,7 @@ SuggestedEditsModule.prototype.updateCardElement = function ( shouldAnimateEditC
 		$cardElement = $( cardSelector ),
 		$cardWrapper = $cardElement.closest( '.suggested-edits-card-wrapper' ),
 		isShowingEditCardWidget = this.currentCard instanceof EditCardWidget,
-		promise = $.Deferred(),
+		deferred = $.Deferred(),
 		canAnimate = shouldAnimateEditCard &&
 			isShowingEditCardWidget &&
 			!this.isFirstRender &&
@@ -443,12 +443,12 @@ SuggestedEditsModule.prototype.updateCardElement = function ( shouldAnimateEditC
 
 	if ( canAnimate ) {
 		this.animateCard( $cardElement, $cardWrapper ).then( () => {
-			promise.resolve();
+			deferred.resolve();
 		} );
 	} else {
 		this.isFirstRender = false;
 		$cardElement.empty().append( this.currentCard.$element );
-		promise.resolve();
+		deferred.resolve();
 	}
 
 	this.isShowingPseudoCard = !isShowingEditCardWidget;
@@ -460,7 +460,7 @@ SuggestedEditsModule.prototype.updateCardElement = function ( shouldAnimateEditC
 		this.setupEditTypeTracking();
 
 	}
-	return promise;
+	return deferred.promise();
 };
 
 /**

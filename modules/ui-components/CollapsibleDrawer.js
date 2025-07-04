@@ -193,17 +193,17 @@ CollapsibleDrawer.prototype.openWithIntroContent = function () {
  * @return {jQuery.Promise} Promise that resolves when the intro content has been hidden
  */
 CollapsibleDrawer.prototype.hideIntroContent = function () {
-	const promise = $.Deferred();
+	const deferred = $.Deferred();
 	if ( !this.$introContent || this.isIntroContentHidden ) {
-		return promise.resolve();
+		return deferred.resolve().promise();
 	}
 	this.$introContent.addClass( 'mw-ge-collapsibleDrawer-introContent--hidden' );
 	setTimeout( () => {
 		this.isIntroContentHidden = true;
 		this.$introContent.detach();
-		promise.resolve();
+		deferred.resolve();
 	}, this.contentAnimationDelay );
-	return promise;
+	return deferred.promise();
 };
 
 /**
@@ -212,16 +212,16 @@ CollapsibleDrawer.prototype.hideIntroContent = function () {
  * @return {jQuery.Promise} Promise that resolves when the intro content has been shown
  */
 CollapsibleDrawer.prototype.showIntroContent = function () {
-	const promise = $.Deferred();
+	const deferred = $.Deferred();
 	// Show only the intro content (including its margin)
 	this.$element.css( 'bottom', this.$introContent.outerHeight( true ) );
 	this.$introContent.removeClass( 'mw-ge-collapsibleDrawer-introContent--hidden' );
 	this.isIntroContentHidden = false;
 	setTimeout( () => {
 		this.$element.css( 'bottom', 0 );
-		promise.resolve();
+		deferred.resolve();
 	}, 600 );
-	return promise;
+	return deferred.promise();
 };
 
 module.exports = CollapsibleDrawer;
