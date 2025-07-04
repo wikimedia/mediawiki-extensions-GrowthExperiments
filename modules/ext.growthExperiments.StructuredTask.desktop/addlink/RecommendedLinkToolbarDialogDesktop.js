@@ -131,10 +131,10 @@ RecommendedLinkToolbarDialogDesktop.prototype.teardown = function () {
  * @return {jQuery.Promise} Promise which resolves when the transition is complete
  */
 RecommendedLinkToolbarDialogDesktop.prototype.fadeOut = function () {
-	const promise = $.Deferred();
-	this.$element.on( 'transitionend', promise.resolve );
+	const deferred = $.Deferred();
+	this.$element.on( 'transitionend', deferred.resolve );
 	this.$element.addClass( 'fade-out' );
-	return promise;
+	return deferred.promise();
 };
 
 /**
@@ -143,28 +143,28 @@ RecommendedLinkToolbarDialogDesktop.prototype.fadeOut = function () {
  * @return {jQuery.Promise} Promise which resolves when the transition is complete
  */
 RecommendedLinkToolbarDialogDesktop.prototype.fadeIn = function () {
-	const promise = $.Deferred();
-	this.$element.on( 'transitionend', promise.resolve );
+	const deferred = $.Deferred();
+	this.$element.on( 'transitionend', deferred.resolve );
 	this.$element.removeClass( 'fade-out' );
-	return promise;
+	return deferred.promise();
 };
 
 /**
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogDesktop.prototype.showFirstRecommendation = function () {
-	const promise = $.Deferred(),
+	const deferred = $.Deferred(),
 		annotationView = this.getAnnotationViewAtIndex( 0 );
 	if ( !annotationView ) {
 		this.toggle( false );
-		return promise.reject();
+		return deferred.reject().promise();
 	}
 	this.fadeOut();
 	this.scrollToAnnotationView( annotationView ).always( () => {
 		this.showRecommendationAtIndex( 0 );
-		this.fadeIn().then( promise.resolve );
+		this.fadeIn().then( deferred.resolve );
 	} );
-	return promise;
+	return deferred.promise();
 };
 
 /**

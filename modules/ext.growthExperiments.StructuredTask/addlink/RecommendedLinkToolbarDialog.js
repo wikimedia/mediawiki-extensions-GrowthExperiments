@@ -296,7 +296,7 @@ RecommendedLinkToolbarDialog.prototype.reopenRejectionDialog = function () {
  * (the yes/no button has been toggled).
  */
 RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
-	let acceptancePromise = $.Deferred().resolve();
+	let acceptancePromise = $.Deferred().resolve().promise();
 	const fragment = this.getCurrentFragment(),
 		annotation = this.getCurrentDataModel(),
 		surfaceModel = this.surface.getModel(),
@@ -442,18 +442,18 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function (
  * @return {jQuery.Promise} Promise which resolves when the link inspector is shown
  */
 RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
-	const promise = $.Deferred(),
+	const deferred = $.Deferred(),
 		annotationView = this.getAnnotationViewAtIndex( 0 );
 	if ( !annotationView ) {
 		this.toggle( false );
-		return promise.reject();
+		return deferred.reject().promise();
 	}
 	this.scrollToAnnotationView( annotationView ).then( () => {
 		this.showRecommendationAtIndex( 0 );
 		this.$element.removeClass( 'animate-below' );
-		promise.resolve();
+		deferred.resolve();
 	} );
-	return promise;
+	return deferred.promise();
 };
 
 /**
@@ -482,9 +482,9 @@ RecommendedLinkToolbarDialog.prototype.getAnnotationViewAtIndex = function ( ind
  * when scrollTimeout is reached
  */
 RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el ) {
-	const promise = $.Deferred(),
+	const deferred = $.Deferred(),
 		resolveTimeout = setTimeout( () => {
-			promise.resolve();
+			deferred.resolve();
 		}, this.scrollTimeout );
 	OO.ui.Element.static.scrollIntoView( $el, {
 		animate: true,
@@ -493,9 +493,9 @@ RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el )
 		direction: 'y'
 	} ).then( () => {
 		clearTimeout( resolveTimeout );
-		promise.resolve();
+		deferred.resolve();
 	} );
-	return promise;
+	return deferred.promise();
 };
 
 /**
@@ -961,31 +961,29 @@ RecommendedLinkToolbarDialog.prototype.getSuggestionLogActionData = function () 
  * @return {jQuery.Promise} Promise that resolves when the extract has been fetched
  */
 RecommendedLinkToolbarDialog.prototype.fetchArticleExtract = function () {
-	const promise = $.Deferred(),
+	const deferred = $.Deferred(),
 		apiUrlBase = SUGGESTED_EDITS_CONFIG.GERestbaseUrl,
 		title = this.currentDataModel.getAttribute( 'lookupTitle' );
 
 	if ( this.extracts[ title ] ) {
-		promise.resolve( this.extracts[ title ] );
-		return promise;
+		return deferred.resolve( this.extracts[ title ] ).promise();
 	}
 
 	if ( !apiUrlBase ) {
-		promise.reject();
-		return promise;
+		return deferred.reject().promise();
 	}
 
 	$.get( apiUrlBase + '/page/summary/' + formatTitle( title ) ).then( ( data ) => {
 		if ( data && data.extract ) {
 			this.extracts[ title ] = data.extract;
-			promise.resolve( data.extract );
+			deferred.resolve( data.extract );
 		} else {
-			promise.reject();
+			deferred.reject();
 		}
 	} ).catch( () => {
-		promise.reject();
+		deferred.reject();
 	} );
-	return promise;
+	return deferred.promise();
 };
 
 module.exports = RecommendedLinkToolbarDialog;
