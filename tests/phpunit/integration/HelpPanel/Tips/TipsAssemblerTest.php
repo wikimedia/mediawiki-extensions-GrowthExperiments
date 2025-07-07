@@ -12,6 +12,7 @@ use MediaWikiIntegrationTestCase;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HelpPanel\Tips\TipsAssembler
+ * @group Database
  */
 class TipsAssemblerTest extends MediaWikiIntegrationTestCase {
 
