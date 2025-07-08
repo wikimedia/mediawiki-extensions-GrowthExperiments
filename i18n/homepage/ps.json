@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|سلام}}، {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "کور‌مخ",
+	"tooltip-pt-homepage": "{{GENDER:|ستاسو}} کور‌مخ",
+	"prefs-homepage": "نوي‌راغلي سمونگر ځانگړنې",
+	"growthexperiments-homepage-enable": "نوي‌راغلي کارن کورمخ ښکاره‌کول",
+	"growthexperiments-homepage-pt-link": "په ځاني توکو کې د کارن‌نوم تړنې څخه نوي‌راغلي کارنانو کور‌مخ ته تلواليز",
+	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|خپل}} برېښليک ورگډول",
+	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|خپل}} برېښليک تاييدول",
+	"growthexperiments-homepage-email-header-confirmed": "برېښليک ورگډ‌شو",
+	"growthexperiments-homepage-email-header-startemail": "برېښليک: $1",
+	"growthexperiments-homepage-email-text-noemail": "گڼون بيارغونې ته وړانديز‌شوی",
+	"growthexperiments-homepage-email-text-unconfirmed": "{{GENDER:$1|خپل}} برېښليک د تاييدي وېبتړنې لپاره وگورئ يا نوې وبېتړنۍ ولېږئ.",
+	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|ستاسو}} برېښليک تاييد‌شو. تاسو په غوره‌توبونو کې د خپل برېښليک اوڼنې بدلولی شئ.",
+	"growthexperiments-homepage-email-button-noemail": "برېښليک ورگډول",
+	"growthexperiments-homepage-email-button-unconfirmed": "نوې وېبتړنۍ ترلاسه‌کول",
+	"growthexperiments-homepage-email-button-confirmed": "غوره‌توبونه",
+	"growthexperiments-homepage-email-changelink": "بدلول",
+	"growthexperiments-homepage-email-confirmlink": "تاييدول",
+	"growthexperiments-homepage-startediting-header": "سمون پيلول",
+	"growthexperiments-homepage-startediting-subheader-edit-typo": "اوس د دې وړانديزونو له لارې کوچنيي بدلونونو پيل کړئ.",
+	"growthexperiments-homepage-startediting-subheader-add-image": "مخکې له انځور ورگډولو، د يو څه اسانه سمونونو سره يې د زده کولو هڅه وکړئ!",
+	"growthexperiments-homepage-startediting-subheader-new-page": "مخکې له يوې نوې ليکنې جوړولو، د يو څه اسانه سمونونو سره يې د زده کولو هڅه وکړئ!",
+	"growthexperiments-homepage-startediting-subheader-other": "د ويکيپېډيا په ليکنو کې د کوچنيو سمونونو سره د نړۍ په پوهه کې د زياتوالي راوستلو سره مرسته وکړئ.",
+	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "وړاندیز‌شوي سمونونه وگورئ",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "وړانديز‌شوي سمونونو سره يې پيل کړئ"
+}
