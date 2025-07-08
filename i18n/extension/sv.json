@@ -82,6 +82,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artiklar som innehåller kategorier som definieras här visas inte för användare som uppgifter för den här uppgiftstypen.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infoboxmallar",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Dessa mallar behövs för nybörjarfunktionen för [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|bildförslag]]. Artiklar som innehåller dessa mallar kommer inte att listas som bildförslagsuppgifter.",
+	"growthexperiments-info-tooltip-close-label": "Stäng",
 	"communityconfiguration-communityupdates-description": "Dela viktiga nyheter från gemenskapen, kampanjer, evenemang eller WikiProjekt på nybörjarhemsidan.",
 	"communityconfiguration-communityupdates-info-text": "Denna [[mw:Special:MyLanguage/Growth/Community_Updates|gemenskapsuppdateringarmodul]] visas på hemsidan och bör användas för att dela viktiga gemenskapsnyheter, kampanjer, evenemang eller WikiProjekt. Prioritet bör ges till uppdateringar som stöder [https://meta.wikimedia.org/wiki/Special:MyLanguage/Movement_Strategy/Recommendations/Identify_Topics_for_Impact#Changes_and_Actions rörelsens strategiska rekommendation om \"Topics for Impact\"].",
 	"communityconfiguration-communityupdates-title": "Gemenskapsuppdateringar",
