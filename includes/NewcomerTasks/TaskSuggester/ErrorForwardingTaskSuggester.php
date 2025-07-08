@@ -20,15 +20,10 @@ class ErrorForwardingTaskSuggester implements TaskSuggester {
 	/** @var StatusValue */
 	private $status;
 
-	/** @var StatusValue */
-	private $filterStatus;
-
 	/**
 	 * @param StatusValue $status The error to return for suggest().
-	 * @param StatusValue|null $filterStatus The error to return for filter() (null means the
-	 *   method is a no-op).
 	 */
-	public function __construct( StatusValue $status, ?StatusValue $filterStatus = null ) {
+	public function __construct( StatusValue $status ) {
 		$this->status = $status;
 	}
 
@@ -45,7 +40,7 @@ class ErrorForwardingTaskSuggester implements TaskSuggester {
 
 	/** @inheritDoc */
 	public function filter( UserIdentity $user, TaskSet $taskSet ) {
-		return $this->filterStatus ?: $taskSet;
+		return $taskSet;
 	}
 
 }
