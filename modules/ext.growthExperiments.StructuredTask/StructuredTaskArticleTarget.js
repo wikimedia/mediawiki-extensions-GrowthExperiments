@@ -285,7 +285,7 @@ StructuredTaskArticleTarget.prototype.confirmLeavingSuggestionsMode = function (
 	abandonEditDialogPromise.closed.then( ( data ) => {
 		if ( data && data.action === 'discard' ) {
 			this.logger.log( 'discard', '', metadataOverride );
-			return deferred.promise().resolve();
+			return deferred.resolve().promise();
 		}
 		this.logger.log( 'keep', '', metadataOverride );
 		return deferred.reject();
