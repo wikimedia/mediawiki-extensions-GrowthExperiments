@@ -201,6 +201,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Sieh dir {{GENDER:$2|deine}} Frage auf der Diskussionsseite {{GENDER:$1|deines Lotsen|deiner Lotsin}} an.",
 	"growthexperiments-homepage-mentorship-question-subject": "Frage von [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Frage von [[User:$1|$1]] zu [[$2]]",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Der Lotse von [[User:$1|$1]], [[User:$2|$2]], ist abwesend.",
 	"growthexperiments-specialimpact-title": "Einfluss",
 	"growthexperiments-specialimpact-showing-for-other-user": "Einflussdaten für $1 anzeigen",
 	"growthexperiments-specialimpact-invalid-username": "Fehlender oder ungültiger Benutzername.",
