@@ -190,6 +190,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|شاهد|شاهدي}} سؤالك على صفحة نقاش {{GENDER:$1|مرشدك|مرشدتك}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "سؤال من [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "سؤال من [[User:$1|$1]] على [[$2]]",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$2|$2]]، المرشد/ة الخاص/ـة بـ [[User:$1|$1]] متغيب/ـة في الوقت الحالي.",
 	"growthexperiments-specialimpact-title": "التأثير",
 	"growthexperiments-specialimpact-showing-for-other-user": "عرض بيانات وقع تأثير لـ $1",
 	"growthexperiments-specialimpact-invalid-username": "اسم المستخدم مفقود أو غير صالح.",

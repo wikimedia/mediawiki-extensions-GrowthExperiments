@@ -176,6 +176,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|Sualınıza}} {{GENDER:$1|mentorunuzun}} müzakirə səhifəsində baxın.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] istifadəçisinin sualı",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] istifadəçisinin [[$2]] ilə bağlı sualı",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]] istifadəçisinin mentoru olan [[User:$2|$2]] aktiv deyil.",
 	"growthexperiments-specialimpact-title": "Təsir",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 üçün təsir məlumatı göstərilir",
 	"growthexperiments-specialimpact-invalid-username": "İstifadəçi adı mövcud deyil və ya etibarsızdır.",
@@ -581,5 +582,5 @@
 	"echo-pref-tooltip-ge-newcomer": "Yeni gələnlər üçün tapşırıqlar və yeni istifadəçilərə kömək etmək üçün nəzərdə tutulmuş digər funksiyalar haqqında mənə bildirin.",
 	"growthexperiments-homepage-community-updates-header": "İcma Yeniləmələri",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Daha ətraflı",
-	"growthexperiments-addalink-milestone-notification-header": "$1 redaktə, təbriklər! Redaktə etdiyiniz məqalələrə bu yaxınlarda $3 oxunuş gəlib. Mövcud təklif edilən redaktələr dəyişdirilib."
+	"growthexperiments-addalink-milestone-notification-header": "$1 redaktə, təbriklər! Redaktə {{GENDER:$2|etdiyiniz}} məqalələrə bu yaxınlarda $3 oxunuş gəlib. Mövcud təklif edilən redaktələr dəyişdirilib."
 }
