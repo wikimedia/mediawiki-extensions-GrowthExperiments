@@ -102,8 +102,6 @@
 			$( 'li#ca-ve-edit' ).first().find( 'a' ).find( '.mw-pulsating-dot' ).remove();
 			mw.libs.ve.activateVe( 'visual' );
 		} else if ( this.currentEditor === 'visualeditor' ) {
-			// FIXME: This does not preserve content modifications made in VE,
-			// unlike manually toggling in the UI or clicking "Edit Source"
 			ve.init.target.switchToWikitextEditor();
 		}
 	};
