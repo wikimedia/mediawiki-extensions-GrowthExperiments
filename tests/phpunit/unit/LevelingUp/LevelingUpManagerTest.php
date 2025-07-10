@@ -277,27 +277,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		) );
 	}
 
-	public static function provideIsEnabledForAnyone() {
-		return [
-			'no Suggested edits' => [ false, [
-				'GEHomepageSuggestedEditsEnabled' => false,
-			] ],
-			'all OK' => [ true, [
-				'GEHomepageSuggestedEditsEnabled' => true,
-			] ],
-		];
-	}
-
-	/**
-	 * @dataProvider provideIsEnabledForAnyone
-	 */
-	public function testIsEnabledForAnyone( bool $expected, array $config ) {
-		$this->assertEquals(
-			$expected,
-			LevelingUpManager::isEnabledForAnyone( new HashConfig( $config ) )
-		);
-	}
-
 	private function getDefaultConfigValues(): array {
 		return [
 			'GELevelingUpManagerTaskTypeCountThresholdMultiple' => 5,

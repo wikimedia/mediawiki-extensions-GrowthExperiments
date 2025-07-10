@@ -197,7 +197,7 @@ class SpecialHomepage extends SpecialPage {
 			) && ( !$par && !$isMobile &&
 				!SuggestedEdits::isActivated( $this->getUser(), $this->userOptionsManager )
 			),
-			'suggested-edits' => SuggestedEdits::isEnabled( $this->getConfig() ),
+			'suggested-edits' => SuggestedEdits::isEnabledForAnyone( $this->getConfig() ),
 			'community-updates' => $this->getConfig()->get( 'GECommunityUpdatesEnabled' ),
 			'impact' => true,
 			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
@@ -393,7 +393,7 @@ class SpecialHomepage extends SpecialPage {
 	private function handleNewcomerTask( ?string $par = null ): bool {
 		if ( !$par ||
 			!str_starts_with( $par, 'newcomertask/' ) ||
-			!SuggestedEdits::isEnabled( $this->getConfig() )
+			!SuggestedEdits::isEnabledForAnyone( $this->getConfig() )
 		) {
 			return false;
 		}

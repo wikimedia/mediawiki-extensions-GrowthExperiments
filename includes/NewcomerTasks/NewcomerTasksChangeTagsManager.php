@@ -178,7 +178,7 @@ class NewcomerTasksChangeTagsManager {
 			$this->config = $ctx->getConfig();
 			$this->user = $ctx->getUser();
 		}
-		if ( !SuggestedEdits::isEnabled( $this->config ) ||
+		if ( !SuggestedEdits::isEnabledForAnyone( $this->config ) ||
 			!SuggestedEdits::isActivated( $this->user, $this->userOptionsLookup )
 		) {
 			return StatusValue::newFatal( 'Suggested edits are not enabled or activated for your user.' );

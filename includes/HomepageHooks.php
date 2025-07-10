@@ -293,7 +293,7 @@ class HomepageHooks implements
 	 * @return string|null
 	 */
 	public static function getClickId( IContextSource $context ) {
-		if ( SuggestedEdits::isEnabled( $context->getConfig() ) ) {
+		if ( SuggestedEdits::isEnabledForAnyone( $context->getConfig() ) ) {
 			return $context->getRequest()->getVal( 'geclickid' ) ?: null;
 		}
 		return null;
@@ -319,7 +319,7 @@ class HomepageHooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$context = $out->getContext();
-		$isSuggestedEditsEnabled = SuggestedEdits::isEnabled( $context->getConfig() );
+		$isSuggestedEditsEnabled = SuggestedEdits::isEnabledForAnyone( $context->getConfig() );
 		if (
 			Util::isMobile( $skin ) &&
 			// Optimisation: isHomepageEnabled() is non-trivial, check it last
@@ -443,7 +443,7 @@ class HomepageHooks implements
 		// Config vars used to modify the suggested edits topics based on campaign
 		// (see ext.growthExperiments.Homepage.SuggestedEdits/Topics.js)
 		if ( ( !$skin->getTitle() || $skin->getTitle()->isSpecial( 'Homepage' ) ) &&
-			SuggestedEdits::isEnabled( $context->getConfig() ) ) {
+			SuggestedEdits::isEnabledForAnyone( $context->getConfig() ) ) {
 			$out->addJsConfigVars( [
 				'wgGETopicsToExclude' => $this->campaignConfig->getTopicsToExcludeForUser(
 					$context->getUser()
@@ -666,7 +666,7 @@ class HomepageHooks implements
 			'type' => 'api'
 		];
 
-		if ( LevelingUpManager::isEnabledForAnyone( $this->config ) ) {
+		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			$preferences[LevelingUpManager::TASK_TYPE_PROMPT_OPT_OUTS_PREF] = [
 				'type' => 'api'
 			];
@@ -835,10 +835,8 @@ class HomepageHooks implements
 				);
 			} );
 
-			if ( LevelingUpManager::isEnabledForAnyone( $this->config ) ) {
-				$this->levelingUpManager->scheduleKeepGoingNotification( $user );
-				$this->levelingUpManager->scheduleGettingStartedNotification( $user );
-			}
+			$this->levelingUpManager->scheduleKeepGoingNotification( $user );
+			$this->levelingUpManager->scheduleGettingStartedNotification( $user );
 		}
 	}
 

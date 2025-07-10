@@ -160,7 +160,7 @@ class VisualEditorHooks implements
 	public function onAPIGetAllowedParams( $module, &$params, $flags ) {
 		if ( $module instanceof ApiVisualEditorEdit
 			&& ( $flags & ApiBase::GET_VALUES_FOR_HELP )
-			&& SuggestedEdits::isEnabled( $module->getContext()->getConfig() )
+			&& SuggestedEdits::isEnabledForAnyone( $module->getContext()->getConfig() )
 		) {
 			$taskTypes = $this->configurationLoader->getTaskTypes();
 			foreach ( $taskTypes as $taskTypeId => $taskType ) {

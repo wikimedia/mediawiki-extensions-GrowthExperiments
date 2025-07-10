@@ -3,7 +3,7 @@
 namespace GrowthExperiments\Config;
 
 use GrowthExperiments\Config\Schemas\CommunityUpdatesSchema;
-use GrowthExperiments\LevelingUp\LevelingUpManager;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Hooks\CommunityConfigurationProvider_initListHook;
 use MediaWiki\Extension\CommunityConfiguration\Hooks\CommunityConfigurationSchemaBeforeEditorHook;
@@ -57,7 +57,7 @@ class CommunityConfigurationHooks implements
 				}
 				break;
 			case 'GrowthHomepage':
-				if ( !LevelingUpManager::isEnabledForAnyone( $this->config ) ) {
+				if ( !SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 					unset(
 						$rootSchema['properties']['GELevelingUpGetStartedMaxTotalEdits'],
 						$rootSchema['properties']['GELevelingUpKeepGoingNotificationThresholdsMaximum'],

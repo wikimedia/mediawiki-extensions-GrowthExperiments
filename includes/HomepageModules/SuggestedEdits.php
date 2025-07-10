@@ -237,15 +237,6 @@ class SuggestedEdits extends BaseModule {
 		return $config->get( 'GEHomepageSuggestedEditsEnabled' );
 	}
 
-	/**
-	 * Check whether the suggested edits feature is enabled according to the configuration.
-	 * @param Config $config
-	 * @return bool
-	 */
-	public static function isEnabled( Config $config ): bool {
-		return self::isEnabledForAnyone( $config );
-	}
-
 	/** @inheritDoc */
 	public function getCssClasses() {
 		return array_merge( parent::getCssClasses(),
@@ -267,7 +258,7 @@ class SuggestedEdits extends BaseModule {
 		IContextSource $context,
 		UserOptionsLookup $userOptionsLookup
 	) {
-		return self::isEnabled( $context->getConfig() ) &&
+		return self::isEnabledForAnyone( $context->getConfig() ) &&
 			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' ) &&
 			ExtensionRegistry::getInstance()->isLoaded( 'WikimediaMessages' );
 	}
@@ -462,7 +453,7 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function canRender() {
-		return self::isEnabled( $this->getContext()->getConfig() )
+		return self::isEnabledForAnyone( $this->getContext()->getConfig() )
 			&& !$this->configurationLoader->loadTaskTypes() instanceof StatusValue;
 	}
 

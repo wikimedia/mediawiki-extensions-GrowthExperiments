@@ -99,16 +99,6 @@ class LevelingUpManager {
 	}
 
 	/**
-	 * Are Levelling up features enabled for anyone?
-	 *
-	 * @param Config $config
-	 * @return bool
-	 */
-	public static function isEnabledForAnyone( Config $config ): bool {
-		return SuggestedEdits::isEnabledForAnyone( $config );
-	}
-
-	/**
 	 * Whether leveling up features are available. This does not include any checks based on
 	 * the user's contribution history, just site configuration.
 	 * @param UserIdentity $user
@@ -124,8 +114,7 @@ class LevelingUpManager {
 		// 2) the user's homepage is enabled, which maybe SuggestedEdits::isEnabled should
 		//    check, but it doesn't (this also excludes autocreated potentially-experienced
 		//    users who probably shouldn't get invites)
-		return self::isEnabledForAnyone( $config )
-			&& SuggestedEdits::isEnabled( $config )
+		return SuggestedEdits::isEnabledForAnyone( $config )
 			&& HomepageHooks::isHomepageEnabled( $user );
 	}
 
