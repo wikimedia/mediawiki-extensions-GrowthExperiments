@@ -126,7 +126,6 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
 		$mentorStatus = $this->mentorStatusManager->getMentorStatus( $this->mentorUser );
-		$awayTimestamp = $this->mentorStatusManager->getMentorBackTimestamp( $this->mentorUser );
 
 		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
 		$mentor->setWeight( (int)$data['weight'] );
