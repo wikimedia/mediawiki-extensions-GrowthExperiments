@@ -35,7 +35,12 @@ class CommunityStructuredMentorListValidator implements IValidator {
 
 	/** @inheritDoc */
 	public function validateStrictly( $config, ?string $version = null ): ValidationStatus {
-		return $this->validate( $config );
+		$validationStatus = $this->validate( $config );
+		if ( !$validationStatus->isGood() ) {
+			// fail on warning when validating strictly
+			$validationStatus->setOK( false );
+		}
+		return $validationStatus;
 	}
 
 	/** @inheritDoc */
