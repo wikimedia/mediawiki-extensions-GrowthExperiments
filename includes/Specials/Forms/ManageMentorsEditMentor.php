@@ -125,24 +125,20 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 		}
 
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
-		$mentorStatus = $this->mentorStatusManager->getMentorStatus( $this->mentorUser );
 
 		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
 		$mentor->setWeight( (int)$data['weight'] );
 
 		$status = Status::newGood();
-		if ( ( $mentorStatus === MentorStatusManager::STATUS_AWAY ) !== $data['isAway'] ) {
-			// isAway changed, implement the change
-			if ( $data['isAway'] ) {
-				$status->merge( $this->mentorStatusManager->markMentorAsAwayTimestamp(
-					$this->mentorUser,
-					$data['awayTimestamp']
-				) );
-			} else {
-				$status->merge( $this->mentorStatusManager->markMentorAsActive(
-					$this->mentorUser
-				) );
-			}
+		if ( $data['isAway'] ) {
+			$status->merge( $this->mentorStatusManager->markMentorAsAwayTimestamp(
+				$this->mentorUser,
+				$data['awayTimestamp']
+			) );
+		} else {
+			$status->merge( $this->mentorStatusManager->markMentorAsActive(
+				$this->mentorUser
+			) );
 		}
 
 		$status->merge( $this->mentorWriter->changeMentor(
