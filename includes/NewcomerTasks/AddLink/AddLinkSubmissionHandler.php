@@ -181,7 +181,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 				StatusValue::newGood( [ 'warnings' => $warnings, 'logId' => $status->getValue() ] ),
 				true
 			);
-		} catch ( DBReadOnlyError $e ) {
+		} catch ( DBReadOnlyError ) {
 			$status = StatusValue::newFatal( 'readonly' );
 		}
 		return $status;

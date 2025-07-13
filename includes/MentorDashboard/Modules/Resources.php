@@ -88,7 +88,7 @@ class Resources extends BaseModule {
 	private function formatLink( string $targetText, string $text ): ?string {
 		try {
 			$target = $this->titleParser->parseTitle( $targetText );
-		} catch ( MalformedTitleException $e ) {
+		} catch ( MalformedTitleException ) {
 			return null;
 		}
 

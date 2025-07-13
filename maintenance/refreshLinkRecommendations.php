@@ -359,7 +359,7 @@ class RefreshLinkRecommendations extends Maintenance {
 				$error = Status::wrap( $status )->getWikiText( false, false, 'en' );
 				$this->verboseLog( "$error\n" );
 			}
-		} catch ( DBReadOnlyError $e ) {
+		} catch ( DBReadOnlyError ) {
 			// This is a long-running script, read-only state can change in the middle.
 			// It's run frequently so just do the easy thing and abort.
 			$this->fatalError( 'DB is readonly, aborting' );

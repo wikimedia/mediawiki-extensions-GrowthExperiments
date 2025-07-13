@@ -96,7 +96,7 @@ abstract class TaskTypeHandler {
 		}
 		try {
 			$this->titleParser->parseTitle( $template, NS_TEMPLATE );
-		} catch ( MalformedTitleException $e ) {
+		} catch ( MalformedTitleException ) {
 			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidtemplatetitle',
 				$template, $taskTypeId );
 		}
@@ -121,7 +121,7 @@ abstract class TaskTypeHandler {
 		}
 		try {
 			$this->titleParser->parseTitle( $category, NS_CATEGORY );
-		} catch ( MalformedTitleException $e ) {
+		} catch ( MalformedTitleException ) {
 			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidcategorytitle',
 				$category, $taskTypeId );
 		}

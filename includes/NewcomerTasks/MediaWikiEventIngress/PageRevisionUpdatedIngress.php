@@ -62,7 +62,7 @@ class PageRevisionUpdatedIngress extends DomainEventIngress {
 				true,
 				true
 			);
-		} catch ( DBReadOnlyError $e ) {
+		} catch ( DBReadOnlyError ) {
 			// Leaving a dangling DB row behind doesn't cause any problems so just ignore this.
 		}
 	}

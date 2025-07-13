@@ -226,7 +226,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 				$title->toPageIdentity(),
 				$force
 			) );
-		} catch ( DBReadOnlyError $e ) {
+		} catch ( DBReadOnlyError ) {
 			$this->fatalError( 'DB is readonly, aborting' );
 		} catch ( WikiConfigException $e ) {
 			$this->fatalError( $e->getMessage() );

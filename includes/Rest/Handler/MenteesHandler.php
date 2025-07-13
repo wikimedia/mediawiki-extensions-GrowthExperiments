@@ -102,7 +102,7 @@ class MenteesHandler extends SimpleHandler {
 					throw new HttpException( 'Invalid order', 400 );
 				}
 				$dataFilter->sort( $params['sortby'], $order );
-			} catch ( ParameterAssertionException $e ) {
+			} catch ( ParameterAssertionException ) {
 				throw new HttpException( 'Invalid sortby', 400 );
 			}
 		}

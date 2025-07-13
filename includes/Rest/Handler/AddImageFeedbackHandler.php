@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
-use Exception;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\Util;
 use MediaWiki\Api\ApiMessage;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
+use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\LocalizedHttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Rest\TokenAwareHandlerTrait;
@@ -187,7 +187,7 @@ class AddImageFeedbackHandler extends SimpleHandler {
 		$this->validateToken();
 	}
 
-	private function makeException( string $messageKey, array $params = [], int $errorCode = 400 ): Exception {
+	private function makeException( string $messageKey, array $params = [], int $errorCode = 400 ): HttpException {
 		return new LocalizedHttpException( new MessageValue( $messageKey, $params ), $errorCode );
 	}
 

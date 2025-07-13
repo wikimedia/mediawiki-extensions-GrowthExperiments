@@ -113,7 +113,7 @@ class RefreshUserImpactJob extends Job {
 					) {
 						continue;
 					}
-				} catch ( ParameterAssertionException $parameterAssertionException ) {
+				} catch ( ParameterAssertionException ) {
 					// Invalid cache format used, recalculate from scratch.
 				}
 			} elseif ( $preloadedUserImpact && $this->isFresh( $preloadedUserImpact ) ) {

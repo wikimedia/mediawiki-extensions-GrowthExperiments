@@ -409,7 +409,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		foreach ( $tags as $tag ) {
 			try {
 				$tagIds[] = $this->changeTagDefStore->getId( $tag );
-			} catch ( NameTableAccessException $e ) {
+			} catch ( NameTableAccessException ) {
 				// Skip non-existing tags gracefully
 			}
 		}

@@ -163,7 +163,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 										( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
 								] )
 							);
-						} catch ( JobQueueError $jobQueueError ) {
+						} catch ( JobQueueError ) {
 							// Ignore jobqueue errors.
 						}
 					}

@@ -2,7 +2,8 @@
 
 $cfg = require __DIR__ . '/../vendor/mediawiki/mediawiki-phan-config/src/config.php';
 
-$cfg['minimum_target_php_version'] = '7.4';
+// TODO Fix these issues, suppressed to allow upgrading
+$cfg['suppress_issue_types'][] = 'PhanUnusedPrivateMethodParameter';
 
 $cfg['directory_list'] = array_merge(
 	$cfg['directory_list'],

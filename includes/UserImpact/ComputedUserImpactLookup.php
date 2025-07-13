@@ -255,7 +255,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				$tagId = $this->changeTagDefStore->getId( $changeTagName );
 				$changeTagIds[$tagId] = $taskTypeId;
 				$changeTagIdToName[$tagId] = $changeTagName;
-			} catch ( NameTableAccessException $nameTableAccessException ) {
+			} catch ( NameTableAccessException ) {
 				// Some tags won't exist in test scenarios, and possibly in some small wikis where
 				// no suggested edits have been done yet. We can safely ignore the exception,
 				// it will mean that 'newcomerTaskEditCount' is 0 in the result.

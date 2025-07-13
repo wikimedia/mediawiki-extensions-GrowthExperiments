@@ -166,7 +166,7 @@ class MentorManager implements IMentorManager {
 				$mentorUser = $this->mentorProvider->newMentorFromUserIdentity( $mentorUser, $user );
 			}
 			return $mentorUser;
-		} catch ( DBReadOnlyError $e ) {
+		} catch ( DBReadOnlyError ) {
 			// Just pretend the user doesn't have a mentor. It will be set later, and often
 			// this call is made in the context of something not specifically mentorship-
 			// related, such as the homepage, so it's better than erroring out.

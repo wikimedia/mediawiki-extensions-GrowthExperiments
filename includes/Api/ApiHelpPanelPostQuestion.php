@@ -98,7 +98,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 				$body,
 				$relevantTitle ?? ''
 			);
-		} catch ( UserNotLoggedIn $e ) {
+		} catch ( UserNotLoggedIn ) {
 			throw ApiUsageException::newWithMessage( $this,
 				'apierror-mustbeloggedin-helppanelquestionposter', 'notloggedin' );
 		}

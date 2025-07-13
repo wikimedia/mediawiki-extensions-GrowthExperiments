@@ -172,7 +172,7 @@ class ReassignMentees {
 
 			try {
 				$newMentor = $this->mentorManager->getRandomAutoAssignedMentor( $mentee );
-			} catch ( WikiConfigException $e ) {
+			} catch ( WikiConfigException ) {
 				$this->logger->warning(
 					'ReassignMentees failed to reassign mentees for {mentor}; mentor list is invalid',
 					[

@@ -198,7 +198,7 @@ class VisualEditorHooks implements
 				$data = json_decode( $data, true ) ?? [];
 				try {
 					$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
-				} catch ( OutOfBoundsException $e ) {
+				} catch ( OutOfBoundsException ) {
 					// Probably some sort of hand-crafted fake API request. Ignore it.
 					continue;
 				}

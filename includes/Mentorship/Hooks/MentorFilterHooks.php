@@ -46,7 +46,7 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 			if ( !$this->mentorProvider->isMentor( $special->getUser() ) ) {
 				return;
 			}
-		} catch ( WikiConfigException $wikiConfigException ) {
+		} catch ( WikiConfigException ) {
 			return;
 		}
 

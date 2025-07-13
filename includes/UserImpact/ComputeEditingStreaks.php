@@ -41,7 +41,7 @@ class ComputeEditingStreaks {
 		foreach ( $editCountByDay as $dateStringIndex => $editCountForDate ) {
 			try {
 				$currentRowDateTime = new DateTime( $dateStringIndex );
-			} catch ( \Exception $exception ) {
+			} catch ( \Exception ) {
 				// silently discard row if date is invalid.
 				continue;
 			}
