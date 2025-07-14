@@ -14,7 +14,8 @@
 			"Tgr",
 			"Worrida",
 			"Bencemac",
-			"Eukarióta"
+			"Eukarióta",
+			"Urbalazs"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Üdvözlünk, {{bidi:$1}}!",
@@ -47,7 +48,7 @@
 	"growthexperiments-homepage-startediting-button": "Nézz meg néhány ajánlott szerkesztést!",
 	"growthexperiments-homepage-startediting-dialog-header": "A javasolt szerkesztésekről",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 / $2",
-	"growthexperiments-homepage-startediting-dialog-intro-back": "Mégsem",
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Mégse",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Folytatás",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "A kezdéshez javasolt szerkesztések",
 	"growthexperiments-homepage-startediting-dialog-intro-header": "A Wikipédiát az olyan emberek készítik közösen, mint te.",

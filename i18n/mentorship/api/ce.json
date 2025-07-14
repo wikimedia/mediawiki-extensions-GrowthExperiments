@@ -7,5 +7,6 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Керла статус",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Хьехамча воцуш ву аьлла билгалдоккхуш, ахьа билгалдаккха деза «воцуш ву» статусан хан (деношкахь)",
 	"apihelp-query+growthmentorstatus-summary": "Дехар, карарчу хенахь декъашхочун хьехамча статус муха йу",
-	"apihelp-growthmanagementorlist-param-geaction": "Ардамаш"
+	"apihelp-growthmanagementorlist-param-geaction": "Ардамаш",
+	"apihelp-growthmanagementorlist-param-weight": "Шоралла"
 }
