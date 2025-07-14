@@ -7,11 +7,13 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSugge
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\UserIdentityLookup;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 class GetPraiseworthyMentees extends Maintenance {
 
@@ -64,5 +66,7 @@ class GetPraiseworthyMentees extends Maintenance {
 		}
 	}
 }
+// @codeCoverageIgnoreStart
 $maintClass = GetPraiseworthyMentees::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

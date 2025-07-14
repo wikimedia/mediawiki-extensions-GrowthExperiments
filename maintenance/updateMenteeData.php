@@ -11,11 +11,13 @@ use MediaWiki\Maintenance\Maintenance;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Stats\StatsFactory;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 class UpdateMenteeData extends Maintenance {
 
@@ -152,5 +154,7 @@ class UpdateMenteeData extends Maintenance {
 	}
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = UpdateMenteeData::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

@@ -10,11 +10,13 @@ use MediaWiki\Maintenance\Maintenance;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 class DeleteExpiredUserImpactData extends Maintenance {
 
@@ -76,5 +78,7 @@ class DeleteExpiredUserImpactData extends Maintenance {
 
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = DeleteExpiredUserImpactData::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

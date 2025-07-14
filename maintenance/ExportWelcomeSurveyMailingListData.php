@@ -10,11 +10,13 @@ use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * One-off script to export data from the welcome survey for users who opt-in to mailing list.
@@ -190,5 +192,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 	}
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = ExportWelcomeSurveyMailingListData::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

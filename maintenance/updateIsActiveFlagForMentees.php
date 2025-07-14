@@ -11,11 +11,13 @@ use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\ILoadBalancer;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 class UpdateIsActiveFlagForMentees extends Maintenance {
 
@@ -109,5 +111,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 	}
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = UpdateIsActiveFlagForMentees::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

@@ -19,11 +19,13 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserSelectQueryBuilder;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 class RefreshUserImpactData extends Maintenance {
 
@@ -243,5 +245,7 @@ class RefreshUserImpactData extends Maintenance {
 
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = RefreshUserImpactData::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

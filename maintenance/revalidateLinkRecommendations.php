@@ -21,6 +21,7 @@ use MediaWiki\Title\TitleFactory;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\DBReadOnlyError;
 
+// @codeCoverageIgnoreStart
 $path = dirname( dirname( dirname( __DIR__ ) ) );
 
 if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
@@ -28,6 +29,7 @@ if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 }
 
 require_once $path . '/maintenance/Maintenance.php';
+// @codeCoverageIgnoreEnd
 
 /**
  * Iterate through the growthexperiments_link_recommendations table and regenerate the ones which
@@ -303,5 +305,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = RevalidateLinkRecommendations::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

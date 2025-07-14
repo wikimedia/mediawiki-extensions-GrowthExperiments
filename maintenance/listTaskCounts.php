@@ -11,11 +11,13 @@ use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Maintenance\MaintenanceFatalError;
 use MediaWiki\WikiMap\WikiMap;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * List the number of tasks available for each topic
@@ -208,5 +210,7 @@ class ListTaskCounts extends Maintenance {
 
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = ListTaskCounts::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

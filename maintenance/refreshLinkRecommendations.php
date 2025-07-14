@@ -35,11 +35,13 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Stats\StatsFactory;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * Update the growthexperiments_link_recommendations table to ensure there are enough
@@ -461,5 +463,7 @@ class RefreshLinkRecommendations extends Maintenance {
 
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = RefreshLinkRecommendations::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

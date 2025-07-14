@@ -22,11 +22,13 @@ use MediaWiki\Title\TitleFormatter;
 use MediaWiki\WikiMap\WikiMap;
 use StatusValue;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * Aligns link recommendation data in the growthexperiments_link_recommendations table and the
@@ -322,5 +324,7 @@ class FixLinkRecommendationData extends Maintenance {
 
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = FixLinkRecommendationData::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

@@ -20,11 +20,13 @@ use RuntimeException;
 use StatusValue;
 use Wikimedia\Assert\PreconditionException;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * Maintenance script for importing article topics from production to a test instance.
@@ -417,5 +419,7 @@ class ImportArticleTopics extends Maintenance {
 
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = ImportArticleTopics::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

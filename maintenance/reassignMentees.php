@@ -12,11 +12,13 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Wikimedia\Rdbms\IReadableDatabase;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 class ReassignMentees extends Maintenance {
 
@@ -148,5 +150,7 @@ class ReassignMentees extends Maintenance {
 	}
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = ReassignMentees::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

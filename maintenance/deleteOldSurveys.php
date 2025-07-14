@@ -8,11 +8,13 @@ use MediaWiki\User\User;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Rdbms\IDBAccessObject;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * Delete welcome surveys older than a cutoff date.
@@ -118,5 +120,7 @@ class DeleteOldSurveys extends Maintenance {
 
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = DeleteOldSurveys::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd

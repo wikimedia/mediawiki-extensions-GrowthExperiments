@@ -9,11 +9,13 @@ use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * Purge expired rows related to mentor status from user_properties
@@ -106,5 +108,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 	}
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = PurgeExpiredMentorStatus::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd
