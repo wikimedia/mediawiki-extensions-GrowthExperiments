@@ -586,7 +586,7 @@
 	"growthexperiments-homepage-impact-contributions-link": "View all edits",
 	"growthexperiments-levelingup-getstarted-notification-header": "Try a suggested edit and start building {{GENDER:$2|your}} editing skills",
 	"growthexperiments-levelingup-getstarted-notification-header-new": "Curious about editing {{SITENAME}}? {{GENDER:$2|Your}} knowledge joins a community reaching millions.",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Try other edits",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Try suggested edits",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Learn more",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|You’ve}} made $3 {{PLURAL:$3|suggested edit|suggested edits}}. Keep going to learn more new skills.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Make a suggested edit",
@@ -594,5 +594,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Notify me about tasks for newcomers and other features designed to help new users.",
 	"growthexperiments-homepage-community-updates-header": "Community Updates",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Learn more",
-	"growthexperiments-addalink-milestone-notification-header": "$1 edits, congrats! Articles {{GENDER:$2|you’ve}} edited received $3 views recently. Available suggested edits have changed."
+	"growthexperiments-addalink-milestone-notification-header": "$1 edits, congrats! Articles {{GENDER:$2|you’ve}} edited received $3 views recently. Available suggested edits have changed.",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Try other edits"
 }
