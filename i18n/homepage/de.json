@@ -599,7 +599,7 @@
 	"growthexperiments-homepage-impact-contributions-link": "Alle Bearbeitungen ansehen",
 	"growthexperiments-levelingup-getstarted-notification-header": "Versuche einen Bearbeitungsvorschlag und baue {{GENDER:$2|deine}} Bearbeitungsfähigkeiten aus",
 	"growthexperiments-levelingup-getstarted-notification-header-new": "Neugierig auf die Bearbeitung von {{SITENAME}}? {{GENDER:$2|Dein}} Wissen kommt einer Community zugute, die Millionen erreicht.",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Probiere andere Änderungen aus",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Probiere vorgeschlagene Änderungen aus",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Mehr erfahren",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du hast}} $3 {{PLURAL:$3|Änderungsvorschlag|Änderungsvorschläge}} durchgeführt. Mache weiter, um dir weitere neue Fähigkeiten anzueignen.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Einen Bearbeitungsvorschlag machen",
@@ -607,5 +607,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Benachrichtigen Sie mich über Aufgaben für Neueinsteiger und andere Funktionen, die neuen Benutzern helfen sollen.",
 	"growthexperiments-homepage-community-updates-header": "Community-Updates",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Weitere Informationen",
-	"growthexperiments-addalink-milestone-notification-header": "$1 Bearbeitungen, Glückwunsch! Artikel, die {{GENDER:$2|du}} bearbeitet hast, wurden kürzlich $3 Mal aufgerufen. Verfügbare Bearbeitungsvorschläge haben sich geändert."
+	"growthexperiments-addalink-milestone-notification-header": "$1 Bearbeitungen, Glückwunsch! Artikel, die {{GENDER:$2|du}} bearbeitet hast, wurden kürzlich $3 Mal aufgerufen. Verfügbare Bearbeitungsvorschläge haben sich geändert.",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Probiere andere Änderungen aus"
 }

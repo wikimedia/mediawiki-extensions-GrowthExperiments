@@ -569,7 +569,7 @@
 	"growthexperiments-homepage-impact-contributions-link": "Vider tote le modificationes",
 	"growthexperiments-levelingup-getstarted-notification-header": "Essaya un modification suggerite e comencia a disveloppar {{GENDER:$2|tu}} competentias de modification",
 	"growthexperiments-levelingup-getstarted-notification-header-new": "Curiose de modificar {{SITENAME}}? {{GENDER:$2|Tu}} cognoscentia beneficia un communitate que attinger milliones.",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Essayar altere modificationes",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Essayar modificationes suggerite",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Leger plus",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Tu}} ha facite $3 modification{{PLURAL:$3||es}} suggerite. Continua assi pro apprender plus nove competentias.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Facer un modification suggerite",
@@ -577,5 +577,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Notificar me sur le cargas pro novicios e altere functionalitate concipite pro adjutar nove usatores.",
 	"growthexperiments-homepage-community-updates-header": "Actualitates del communitate",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Leger plus",
-	"growthexperiments-addalink-milestone-notification-header": "$1 modificationes, felicitationes! Le articulos que {{GENDER:$2|tu ha}} modificate ha recipite $3 visitas recentemente. Le modificationes suggerite disponibile ha cambiate."
+	"growthexperiments-addalink-milestone-notification-header": "$1 modificationes, felicitationes! Le articulos que {{GENDER:$2|tu ha}} modificate ha recipite $3 visitas recentemente. Le modificationes suggerite disponibile ha cambiate.",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Essayar altere modificationes"
 }
