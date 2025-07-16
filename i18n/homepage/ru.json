@@ -544,7 +544,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "Посмотреть предлагаемые правки",
 	"growthexperiments-homepage-impact-contributions-link": "Посмотреть все правки",
 	"growthexperiments-levelingup-getstarted-notification-header": "Попробуйте предложенное изменение и начните развивать  {{GENDER:$2|свои}} навыки редактирования",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Попробуйте предлагаемые правки",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Попробуйте другие правки",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Узнать больше",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2| Вы}} сделали $3 {{PLURAL:$3|предложенную правку|предложенные правки|предложенных правок}}. Продолжайте осваивать новые навыки.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Внесите предложенную правку",

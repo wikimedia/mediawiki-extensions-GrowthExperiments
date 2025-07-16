@@ -556,7 +556,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "Katso ehdotettuja muokkauksia",
 	"growthexperiments-homepage-impact-contributions-link": "Näytä kaikki muokkaukset",
 	"growthexperiments-levelingup-getstarted-notification-header": "Kokeile ehdotettua muokkausta ja ala kehittämään {{GENDER:$2|muokkaustaitojasi}}",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Kokeile ehdotettuja muokkauksia",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Kokeile muita muokkauksia",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Lisätietoja",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Olet tehnyt}} $3 {{PLURAL:$3|ehdotetun muokkauksen|ehdotettua muokkausta}}. Jatka oppiaksesi uusia taitoja.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Tee ehdotettu muokkaus",

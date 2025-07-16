@@ -2,18 +2,22 @@
 	"@metadata": {
 		"authors": [
 			"GuoPC",
-			"Xiplus"
+			"Xiplus",
+			"Corn Pig"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "获取适合编辑新手的任务建议。",
 	"apihelp-query+growthtasks-extended-description": "建议一组内容有尚未解决的问题，并且能让新手轻松处理的条目集。",
 	"apihelp-query+growthtasks-param-tasktypes": "用来限制结果的任务类型。若留空代表接收所有建议。",
 	"apihelp-query+growthtasks-param-topics": "在任务建议里优先的条目主题。",
+	"apihelp-query+growthtasks-param-topicsmode": "主题的匹配模式。",
 	"apihelp-query+growthtasks-param-limit": "回传任务建议的最大数量。",
 	"apihelp-query+growthtasks-param-excludepageids": "要从查询排除的页面ID。",
 	"apihelp-query+growthtasks-param-debug": "添加调试资料到输出里。",
 	"apihelp-query+growthtasks-example-1": "获取目前用户的校稿类型任务的任务推荐。",
 	"apihelp-query+growthtasks-example-2": "获取目前用户的任务推荐，以及有关页面的扩展信息。",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "获取建议用户接下来尝试的任务类型。",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "用户当前正在处理的任务类型。",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "在加入图片外挂资料中缺少'accepted'参数",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "在加入图片外挂资料中的'accepted'参数应该是布尔值，实际为$1",
 	"apierror-growthexperiments-addimage-handler-reason-missing": "添加图像插件数据中缺少'reasons'参数",
