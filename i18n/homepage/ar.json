@@ -594,7 +594,7 @@
 	"growthexperiments-homepage-impact-contributions-link": "عرض جميع التعديلات",
 	"growthexperiments-levelingup-getstarted-notification-header": "{{GENDER:$2|جرّب|جرّبي}} تعديلًا مقترحًا و{{GENDER:$2|ابدأ|ابدئي}} في اكتساب مهارات تحريرية",
 	"growthexperiments-levelingup-getstarted-notification-header-new": "هل {{GENDER:$2|ترغب|ترغبين}} في تعديل {{SITENAME}}؟ معرفتك تصب في مجتمع يُعدّ بالملايين.",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "{{GENDER:|جرّب|جرّبي}} تعديلات أخرى",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "{{GENDER:|جرّب|جرّبي}} تعديلات مُقترحة",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "تعلم المزيد",
 	"growthexperiments-levelingup-keepgoing-notification-header": "لقد أتممت {{PLURAL:$3|لا تعديل مقترح|تعديلًا مقترحًا واحدًا|تعديلين مقترحين|$3 تعديلات مقترحة|$3 تعديلًا مقترحًا|$3 تعديلٍ مقترحٍ}}. {{GENDER:$2|استمر|استمري}} في تعلّم المزيد من المهارات الجديدة.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "{{GENDER:|قم|قومي}} بإجراء تعديل مقترح",
@@ -602,5 +602,6 @@
 	"echo-pref-tooltip-ge-newcomer": "إعلامي بالمهام الخاصة بالوافدين الجدد والميزات الأخرى المصممة لمساعدة المستخدمين الجدد.",
 	"growthexperiments-homepage-community-updates-header": "تحديثات المجتمع",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "معرفة المزيد",
-	"growthexperiments-addalink-milestone-notification-header": "عدد التعديلات $1، تهانينا! المقالات التي {{GENDER:$2|قمتَ|قمتِ}} بتعديلها تلقّت $3 مشاهدة مؤخرًا. التعديلات المقترحة المتاحة قد تغيّرت."
+	"growthexperiments-addalink-milestone-notification-header": "عدد التعديلات $1، تهانينا! المقالات التي {{GENDER:$2|قمتَ|قمتِ}} بتعديلها تلقّت $3 مشاهدة مؤخرًا. التعديلات المقترحة المتاحة قد تغيّرت.",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "{{GENDER:|جرّب|جرّبي}} تعديلات أخرى"
 }
