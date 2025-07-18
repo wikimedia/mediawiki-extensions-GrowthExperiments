@@ -235,5 +235,13 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-label": "Gewicht van artikelen met niet genoeg koppelingen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Heeft invloed op de prioriteit van ondergelinkte artikelen. Dit veld vereist een percentage in decimale vorm, dus het getal moet tussen 0 en 1 liggen. Hoe meer {{GENDER:|je}} dit getal verhoogt, hoe groter de kans dat nieuwkomers ondergelinkte artikelsuggesties zullen ontvangen.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Minimaal vereiste koppelingenscore",
-	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Minimale betrouwbaarheidsdrempel voor linksuggesties. Dit veld vereist een percentage in decimale vorm, dus het getal moet tussen 0 en 1 liggen. Als {{GENDER:|je}} het getal verhoogt, is de kans groter dat de suggesties die aan de eindgebruiker worden gepresenteerd ook goede suggesties zijn. Er zullen dan echter wel minder suggesties beschikbaar zijn. Als je het aantal verlaagt, zijn er meer suggesties beschikbaar, maar is de kans kleiner dat het suggesties van goede kwaliteit zijn."
+	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Minimale betrouwbaarheidsdrempel voor linksuggesties. Dit veld vereist een percentage in decimale vorm, dus het getal moet tussen 0 en 1 liggen. Als {{GENDER:|je}} het getal verhoogt, is de kans groter dat de suggesties die aan de eindgebruiker worden gepresenteerd ook goede suggesties zijn. Er zullen dan echter wel minder suggesties beschikbaar zijn. Als je het aantal verlaagt, zijn er meer suggesties beschikbaar, maar is de kans kleiner dat het suggesties van goede kwaliteit zijn.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Stop met het suggereren van \"Een koppeling toevoegen\"-taken op basis van het totaal aantal bewerkingen van nieuwkomers",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Nee",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "Ja, na 5 bewerkingen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "Ja, na 20 bewerkingen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Ja, na 50 bewerkingen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ja, na 75 bewerkingen",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ja, na 150 bewerkingen",
+	"growthexperiments-addlink-done-button": "Klaar"
 }
