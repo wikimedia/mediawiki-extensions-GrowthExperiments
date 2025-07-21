@@ -173,7 +173,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktivní}} před $2 {{PLURAL:$2|dnem|dny}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Tento zkušený wikipedista|Tato zkušená wikipedistka}} ví, že jste {{GENDER:$2|nový|nová|noví}}, a může vám pomoci s editováním.",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|Položte}} {{GENDER:$1|svému mentorovi|své mentorce}} otázku",
-	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|Prohlédněte}} si další konverzace s {{GENDER:$1|vaším mentorem|vaší mentorkou}}",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|Prohlédněte}} si další konverzace se {{GENDER:$1|svým mentorem|svou mentorkou}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Zeptejte}} se {{GENDER:$1|svého mentora|své mentorky}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Kdykoliv položíte otázku, bude <strong>zveřejněna</strong> pod {{GENDER:$2|vaším uživatelským jménem}}, „$2“, na $3, kde ji {{GENDER:$1|mentor|mentorka}} může najít a odpovědět na ni.",
 	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|Váš mentor|Vaše mentorka}}, „[[User:$1|$1]]“, v současné době není na Wikipedii až do $3.",

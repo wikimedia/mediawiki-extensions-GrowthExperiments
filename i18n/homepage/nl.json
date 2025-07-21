@@ -296,6 +296,7 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Moet overeenkomen met alle geselecteerde onderwerpen",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Moet overeenkomen met tenminste één geselecteerd onderwerp",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Campagne-evenement",
+	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1 bewerking{{PLURAL:$1||en}}, gefeliciteerd! De beschikbare voorgestelde bewerkingen zijn gewijzigd.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ongeldige configuratie voor voorgestelde bewerkingen: slechte structuur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "De instellingen voor gesuggereerde bewerkingen zijn niet geldig voor het taaktype “$1”: “$2” moet een geheel getal zijn",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "De instellingen voor gesuggereerde bewerkingen zijn niet geldig voor het taaktype “$1”: “$2” moet groter dan $3 zijn",
@@ -585,6 +586,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "Voorgestelde bewerkingen bekijken",
 	"growthexperiments-homepage-impact-contributions-link": "Alle bewerkingen bekijken",
 	"growthexperiments-levelingup-getstarted-notification-header": "Probeer een voorgestelde bewerking en begin met het opbouwen van {{GENDER:$2|uw}} bewerkingsvaardigheden",
+	"growthexperiments-levelingup-getstarted-notification-header-new": "Benieuwd naar het bewerken van {{SITENAME}}? {{GENDER:$2|Uw}} kennis wordt deel van een gemeenschap die miljoenen mensen bereikt.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Voorgestelde bewerkingen proberen",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Meer lezen",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|U hebt}} $3 voorgestelde bewerking{{PLURAL:$3||en}} gedaan. Ga zo door om meer nieuwe vaardigheden te leren.",
@@ -593,5 +595,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Mij op de hoogte houden van taken voor nieuwkomers en andere functies die zijn ontworpen om nieuwe gebruikers te helpen.",
 	"growthexperiments-homepage-community-updates-header": "Gemeenschapsnieuwtjes",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Meer lezen",
+	"growthexperiments-addalink-milestone-notification-header": "$1 bewerkingen, gefeliciteerd! De artikelen die {{GENDER:$2|u}} bewerkt hebt zijn onlangs $3 keer bekeken. De beschikbare voorgestelde bewerkingen zijn gewijzigd.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Probeer andere bewerkingen"
 }
