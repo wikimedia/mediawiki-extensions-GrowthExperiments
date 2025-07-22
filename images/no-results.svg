@@ -34,9 +34,9 @@
 	</defs>
 	<g fill="none" fill-rule="evenodd" transform="translate(-2 -8)">
 		<path d="M0 0h144v144H0z"/>
-		<circle cx="66" cy="72" r="64" fill="#EAECF0"/>
-		<path stroke="#C8CCD1" stroke-dasharray="2,8" stroke-linecap="square" stroke-width="2" d="M90 128c28.719 0 52-23.281 52-52s-23.281-52-52-52-52 23.281-52 52 23.281 52 52 52z"/>
-		<rect width="70" height="14" x="45" y="43" fill="#F8F9FA" stroke="#C8CCD1" stroke-width="2" rx="7"/>
+		<circle cx="66" cy="72" r="64" fill="#eaecf0"/>
+		<path stroke="#c8ccd1" stroke-dasharray="2,8" stroke-linecap="square" stroke-width="2" d="M90 128c28.719 0 52-23.281 52-52s-23.281-52-52-52-52 23.281-52 52 23.281 52 52 52z"/>
+		<rect width="70" height="14" x="45" y="43" fill="#f8f9fa" stroke="#c8ccd1" stroke-width="2" rx="7"/>
 		<g filter="url(#a)" transform="translate(100 45)">
 			<path d="M0 0h10v10H0z"/>
 			<g transform="translate(1 1)">
@@ -44,13 +44,13 @@
 					<use xlink:href="#b"/>
 				</mask>
 				<use xlink:href="#b" fill="#000"/>
-				<g fill="#A2A9B1" mask="url(#c)">
+				<g fill="#a2a9b1" mask="url(#c)">
 					<path d="M-2-2h12v12H-2z"/>
 				</g>
 			</g>
 		</g>
-		<path fill="#A2A9B1" d="M51 47h38v6H51z"/>
-		<rect width="44" height="14" x="75" y="23" fill="#F8F9FA" stroke="#C8CCD1" stroke-width="2" rx="7"/>
+		<path fill="#a2a9b1" d="M51 47h38v6H51z"/>
+		<rect width="44" height="14" x="75" y="23" fill="#f8f9fa" stroke="#c8ccd1" stroke-width="2" rx="7"/>
 		<g filter="url(#d)" transform="translate(104 25)">
 			<path d="M0 0h10v10H0z"/>
 			<g transform="translate(1 1)">
@@ -58,13 +58,13 @@
 					<use xlink:href="#e"/>
 				</mask>
 				<use xlink:href="#e" fill="#000"/>
-				<g fill="#A2A9B1" mask="url(#f)">
+				<g fill="#a2a9b1" mask="url(#f)">
 					<path d="M-2-2h12v12H-2z"/>
 				</g>
 			</g>
 		</g>
-		<path fill="#A2A9B1" d="M81 27h18v6H81z"/>
-		<rect width="50" height="14" x="19" y="23" fill="#F8F9FA" stroke="#C8CCD1" stroke-width="2" rx="7"/>
+		<path fill="#a2a9b1" d="M81 27h18v6H81z"/>
+		<rect width="50" height="14" x="19" y="23" fill="#f8f9fa" stroke="#c8ccd1" stroke-width="2" rx="7"/>
 		<g filter="url(#g)" transform="translate(54 25)">
 			<path d="M0 0h10v10H0z"/>
 			<g transform="translate(1 1)">
@@ -72,18 +72,18 @@
 					<use xlink:href="#h"/>
 				</mask>
 				<use xlink:href="#h" fill="#000"/>
-				<g fill="#A2A9B1" mask="url(#i)">
+				<g fill="#a2a9b1" mask="url(#i)">
 					<path d="M-2-2h12v12H-2z"/>
 				</g>
 			</g>
 		</g>
-		<path fill="#A2A9B1" d="M25 27h26v6H25z"/>
+		<path fill="#a2a9b1" d="M25 27h26v6H25z"/>
 		<g transform="translate(19 68)">
 			<mask id="k" fill="#fff">
 				<use xlink:href="#j"/>
 			</mask>
 			<use xlink:href="#j" fill="#000"/>
-			<g fill="#A2A9B1" mask="url(#k)">
+			<g fill="#a2a9b1" mask="url(#k)">
 				<path d="M-10-10h84v84h-84z"/>
 			</g>
 		</g>

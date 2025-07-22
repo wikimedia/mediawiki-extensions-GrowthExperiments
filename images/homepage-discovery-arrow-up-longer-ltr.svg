@@ -5,9 +5,9 @@
 			<g id="Group-2">
 				<g id="banner-mobile" transform="translate(0 52)">
 					<g id="arrow-longer" transform="matrix(1 0 0 -1 15 59)">
-						<path id="Rectangle-Copy-7" fill="#36C" d="M2 31h12a2 2 0 1 1 0 4H2a2 2 0 1 1 0-4" transform="rotate(45 8 33)"/>
-						<path id="Rectangle-Copy-8" fill="#36C" d="M12 31h12a2 2 0 1 1 0 4H12a2 2 0 1 1 0-4" transform="scale(-1 1)rotate(45 0 -10.456)"/>
-						<path id="Line" stroke="#36C" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M13 38Q11 0 49 0h53"/>
+						<path id="Rectangle-Copy-7" fill="#36c" d="M2 31h12a2 2 0 1 1 0 4H2a2 2 0 1 1 0-4" transform="rotate(45 8 33)"/>
+						<path id="Rectangle-Copy-8" fill="#36c" d="M12 31h12a2 2 0 1 1 0 4H12a2 2 0 1 1 0-4" transform="scale(-1 1)rotate(45 0 -10.456)"/>
+						<path id="Line" stroke="#36c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M13 38Q11 0 49 0h53"/>
 					</g>
 				</g>
 			</g>

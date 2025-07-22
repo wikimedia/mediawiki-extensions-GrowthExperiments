@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="54">
 	<g fill="none" fill-rule="evenodd">
-		<path fill="#36C" fill-rule="nonzero" d="m59.828 13.657-8.485-8.485a2 2 0 1 1 2.829-2.829l8.485 8.485a2 2 0 1 1-2.829 2.829"/>
-		<path fill="#36C" fill-rule="nonzero" d="m44.172 13.657 8.485-8.485a2 2 0 1 0-2.829-2.829l-8.485 8.485a2 2 0 1 0 2.829 2.829"/>
-		<path stroke="#36C" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M52 3c1.267 17.74-4.806 25.96-13.07 30.505C24.366 41.512 3 36 3 36"/>
+		<path fill="#36c" fill-rule="nonzero" d="m59.828 13.657-8.485-8.485a2 2 0 1 1 2.829-2.829l8.485 8.485a2 2 0 1 1-2.829 2.829"/>
+		<path fill="#36c" fill-rule="nonzero" d="m44.172 13.657 8.485-8.485a2 2 0 1 0-2.829-2.829l-8.485 8.485a2 2 0 1 0 2.829 2.829"/>
+		<path stroke="#36c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M52 3c1.267 17.74-4.806 25.96-13.07 30.505C24.366 41.512 3 36 3 36"/>
 	</g>
 </svg>

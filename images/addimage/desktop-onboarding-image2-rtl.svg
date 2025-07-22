@@ -1,42 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="360" height="216" fill="none" viewBox="0 0 360 216">
 	<g clip-path="url(#clip0_4168_72171)">
 		<g filter="url(#filter0_d_4168_72171)">
-			<rect width="228" height="192" x="20" y="32" fill="#EAECF0" rx="4"/>
-			<rect width="230" height="194" x="19" y="31" stroke="#A2A9B1" stroke-linecap="square" stroke-width="2" rx="5"/>
+			<rect width="228" height="192" x="20" y="32" fill="#eaecf0" rx="4"/>
+			<rect width="230" height="194" x="19" y="31" stroke="#a2a9b1" stroke-linecap="square" stroke-width="2" rx="5"/>
 		</g>
-		<path fill="#A2A9B1" stroke="#A2A9B1" stroke-linecap="square" d="M20 36a4 4 0 0 1 4-4h220a4 4 0 0 1 4 4v2H20z"/>
-		<path fill="#EAECF0" d="M20 38h228v176H20z"/>
-		<path fill="#A2A9B1" d="M61 124h175v6H61zm-31 32h206v6H30zm0 12h126v6H30zm129 0h77v6h-77zm-90 12h167v6H69zm79-38h88v8h-88zM30 112h71v6H30zm77 0h129v6H107zm-77-12h206v6H30zm0-12h206v6H30zm56-12H30v6h56zm150 0H90v6h146zm-55-22h55v14h-55z"/>
+		<path fill="#a2a9b1" stroke="#a2a9b1" stroke-linecap="square" d="M20 36a4 4 0 0 1 4-4h220a4 4 0 0 1 4 4v2H20z"/>
+		<path fill="#eaecf0" d="M20 38h228v176H20z"/>
+		<path fill="#a2a9b1" d="M61 124h175v6H61zm-31 32h206v6H30zm0 12h126v6H30zm129 0h77v6h-77zm-90 12h167v6H69zm79-38h88v8h-88zM30 112h71v6H30zm77 0h129v6H107zm-77-12h206v6H30zm0-12h206v6H30zm56-12H30v6h56zm150 0H90v6h146zm-55-22h55v14h-55z"/>
 		<g filter="url(#filter1_d_4168_72171)">
 			<path fill="#fff" d="M80 127h108v90H80z"/>
 			<path fill="#fff" d="M188 193H80v24h108z"/>
-			<rect width="16" height="12" fill="#EAECF0" stroke="#A2A9B1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 182 199)"/>
-			<path fill="#54595D" fill-rule="evenodd" d="M172.8 206.668 171.132 205l-.564.564 2.232 2.236 4.8-4.8-.564-.568z" clip-rule="evenodd"/>
-			<rect width="16" height="12" fill="#EAECF0" stroke="#A2A9B1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 102 199)"/>
-			<path fill="#54595D" fill-rule="evenodd" d="m95.5 201.4.6.6-3 3 3 3-.6.6-3.6-3.6z" clip-rule="evenodd"/>
-			<rect width="16" height="12" fill="#EAECF0" stroke="#A2A9B1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 160 199)"/>
-			<path fill="#54595D" fill-rule="evenodd" d="m151.435 204.999-2.546-2.545.566-.566 2.546 2.546 2.544-2.545.566.565-2.545 2.545 2.546 2.546-.566.565-2.545-2.545-2.547 2.546-.565-.565z" clip-rule="evenodd"/>
+			<rect width="16" height="12" fill="#eaecf0" stroke="#a2a9b1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 182 199)"/>
+			<path fill="#54595d" fill-rule="evenodd" d="M172.8 206.668 171.132 205l-.564.564 2.232 2.236 4.8-4.8-.564-.568z" clip-rule="evenodd"/>
+			<rect width="16" height="12" fill="#eaecf0" stroke="#a2a9b1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 102 199)"/>
+			<path fill="#54595d" fill-rule="evenodd" d="m95.5 201.4.6.6-3 3 3 3-.6.6-3.6-3.6z" clip-rule="evenodd"/>
+			<rect width="16" height="12" fill="#eaecf0" stroke="#a2a9b1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 160 199)"/>
+			<path fill="#54595d" fill-rule="evenodd" d="m151.435 204.999-2.546-2.545.566-.566 2.546 2.546 2.544-2.545.566.565-2.545 2.545 2.546 2.546-.566.565-2.545-2.545-2.547 2.546-.565-.565z" clip-rule="evenodd"/>
 			<path fill="#fff" d="M80 127h108v70H80z"/>
-			<path fill="#A2A9B1" d="M86 167h45v4H86zm0-20h96v4H86zm0 27h45v4H86zm9-19h36v8H95z"/>
-			<rect width="6" height="6" fill="#A2A9B1" rx="3" transform="matrix(-1 0 0 1 111 182)"/>
-			<path fill="#A2A9B1" d="M102 183H86v4h16z"/>
-			<path fill="#EAF3FF" d="M80 127h108v14H80z"/>
-			<path fill="#EAECF0" d="M134 155h48v32h-48z"/>
-			<path fill="#A2A9B1" fill-rule="evenodd" d="M164.4 165.6h-12.8a1.6 1.6 0 0 0-1.6 1.6v9.6a1.6 1.6 0 0 0 1.6 1.6h12.8a1.6 1.6 0 0 0 1.6-1.6v-9.6a1.6 1.6 0 0 0-1.6-1.6M151.464 176l3.272-4.2 2.336 2.808 3.264-4.208 4.2 5.6z" clip-rule="evenodd"/>
-			<path fill="#54595D" fill-rule="evenodd" d="M174.75 131.5h-3.252a1 1 0 0 0-.998.998V136h3.5v1h-2.502a.997.997 0 0 0-.998 1v1h9v-1c0-.553-.447-1-.998-1H176v-1h3.5v-3.502a1 1 0 0 0-.998-.998h-3.252v-1.043a.75.75 0 1 0-.5 0zm2 3a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5m-3.5 0a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5" clip-rule="evenodd"/>
-			<path stroke="#A2A9B1" stroke-linecap="square" d="M79.5 126.5h109v91h-109z"/>
+			<path fill="#a2a9b1" d="M86 167h45v4H86zm0-20h96v4H86zm0 27h45v4H86zm9-19h36v8H95z"/>
+			<rect width="6" height="6" fill="#a2a9b1" rx="3" transform="matrix(-1 0 0 1 111 182)"/>
+			<path fill="#a2a9b1" d="M102 183H86v4h16z"/>
+			<path fill="#eaf3ff" d="M80 127h108v14H80z"/>
+			<path fill="#eaecf0" d="M134 155h48v32h-48z"/>
+			<path fill="#a2a9b1" fill-rule="evenodd" d="M164.4 165.6h-12.8a1.6 1.6 0 0 0-1.6 1.6v9.6a1.6 1.6 0 0 0 1.6 1.6h12.8a1.6 1.6 0 0 0 1.6-1.6v-9.6a1.6 1.6 0 0 0-1.6-1.6M151.464 176l3.272-4.2 2.336 2.808 3.264-4.208 4.2 5.6z" clip-rule="evenodd"/>
+			<path fill="#54595d" fill-rule="evenodd" d="M174.75 131.5h-3.252a1 1 0 0 0-.998.998V136h3.5v1h-2.502a.997.997 0 0 0-.998 1v1h9v-1c0-.553-.447-1-.998-1H176v-1h3.5v-3.502a1 1 0 0 0-.998-.998h-3.252v-1.043a.75.75 0 1 0-.5 0zm2 3a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5m-3.5 0a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5" clip-rule="evenodd"/>
+			<path stroke="#a2a9b1" stroke-linecap="square" d="M79.5 126.5h109v91h-109z"/>
 		</g>
-		<path fill="#FC3" stroke="#FC3" stroke-linecap="square" d="M80 127.341h-.5v65h109v-65z" opacity=".5"/>
-		<path fill="#FC3" fill-opacity=".5" stroke="#FC3" stroke-width="2" d="m176.5 202 163.524-.976a4 4 0 0 0 3.976-4V86a4 4 0 0 0-4-4H176l-97 45v65z"/>
+		<path fill="#fc3" stroke="#fc3" stroke-linecap="square" d="M80 127.341h-.5v65h109v-65z" opacity=".5"/>
+		<path fill="#fc3" fill-opacity=".5" stroke="#fc3" stroke-width="2" d="m176.5 202 163.524-.976a4 4 0 0 0 3.976-4V86a4 4 0 0 0-4-4H176l-97 45v65z"/>
 		<rect width="166" height="115" x="180" y="84" fill="#fff" rx="4"/>
-		<path fill="#A2A9B1" d="M191.5 149H259v6h-67.5zm-.5-33h144v6H191zm.5 43.5H259v6h-67.5zM205 131h54v12h-54z"/>
-		<rect width="9" height="9" fill="#A2A9B1" rx="4.5" transform="matrix(-1 0 0 1 228.5 174.5)"/>
-		<path fill="#A2A9B1" d="M215 176h-24v6h24z"/>
-		<path fill="#EAF3FF" d="M182 86h162v21H182z"/>
-		<path fill="#EAECF0" d="M263 131h72v54h-72z"/>
-		<path fill="#A2A9B1" fill-rule="evenodd" d="M311 146h-24a3 3 0 0 0-3 3v18a3 3 0 0 0 3 3h24a3 3 0 0 0 3-3v-18a3 3 0 0 0-3-3m-24.255 19.5 6.135-7.875 4.38 5.265 6.12-7.89 7.875 10.5z" clip-rule="evenodd"/>
-		<path fill="#54595D" fill-rule="evenodd" d="M328.125 92.75h-4.879c-.826 0-1.496.671-1.496 1.497V99.5H327v1.5h-3.754c-.826 0-1.496.666-1.496 1.5v1.5h13.5v-1.5c0-.828-.67-1.5-1.496-1.5H330v-1.5h5.25v-5.252c0-.827-.67-1.498-1.496-1.498h-4.879v-1.563a1.125 1.125 0 1 0-.75 0zm3 4.5a1.125 1.125 0 1 1 0-2.251 1.125 1.125 0 0 1 0 2.25zm-5.25 0a1.125 1.125 0 1 1 0-2.251 1.125 1.125 0 0 1 0 2.25z" clip-rule="evenodd"/>
-		<rect width="166" height="115" x="180" y="84" stroke="#FC3" stroke-linecap="square" stroke-width="4" rx="4"/>
+		<path fill="#a2a9b1" d="M191.5 149H259v6h-67.5zm-.5-33h144v6H191zm.5 43.5H259v6h-67.5zM205 131h54v12h-54z"/>
+		<rect width="9" height="9" fill="#a2a9b1" rx="4.5" transform="matrix(-1 0 0 1 228.5 174.5)"/>
+		<path fill="#a2a9b1" d="M215 176h-24v6h24z"/>
+		<path fill="#eaf3ff" d="M182 86h162v21H182z"/>
+		<path fill="#eaecf0" d="M263 131h72v54h-72z"/>
+		<path fill="#a2a9b1" fill-rule="evenodd" d="M311 146h-24a3 3 0 0 0-3 3v18a3 3 0 0 0 3 3h24a3 3 0 0 0 3-3v-18a3 3 0 0 0-3-3m-24.255 19.5 6.135-7.875 4.38 5.265 6.12-7.89 7.875 10.5z" clip-rule="evenodd"/>
+		<path fill="#54595d" fill-rule="evenodd" d="M328.125 92.75h-4.879c-.826 0-1.496.671-1.496 1.497V99.5H327v1.5h-3.754c-.826 0-1.496.666-1.496 1.5v1.5h13.5v-1.5c0-.828-.67-1.5-1.496-1.5H330v-1.5h5.25v-5.252c0-.827-.67-1.498-1.496-1.498h-4.879v-1.563a1.125 1.125 0 1 0-.75 0zm3 4.5a1.125 1.125 0 1 1 0-2.251 1.125 1.125 0 0 1 0 2.25zm-5.25 0a1.125 1.125 0 1 1 0-2.251 1.125 1.125 0 0 1 0 2.25z" clip-rule="evenodd"/>
+		<rect width="166" height="115" x="180" y="84" stroke="#fc3" stroke-linecap="square" stroke-width="4" rx="4"/>
 	</g>
 	<defs>
 		<filter id="filter0_d_4168_72171" width="240" height="204" x="14" y="30" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">

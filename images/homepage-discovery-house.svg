@@ -3,19 +3,19 @@
 	<g id="Discovery-aid" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
 		<g id="house-illu-copy-5" transform="translate(-12 -15)">
 			<g id="house-illu" transform="translate(15 18)">
-				<path id="Path-4" fill="#54595D" stroke="#54595D" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M63 13.854V7h8l-.003 13"/>
-				<path id="Path-7-Copy" fill="#FEF6E7" d="M13 82V26.554L45 2l32 24.554V82z"/>
-				<path id="Path-2" stroke="#72777D" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 27v56h66l-.369-55.97"/>
-				<path id="Path-3" stroke="#54595D" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" d="M0 35 45.191 0 90 35"/>
+				<path id="Path-4" fill="#54595d" stroke="#54595d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M63 13.854V7h8l-.003 13"/>
+				<path id="Path-7-Copy" fill="#fef6e7" d="M13 82V26.554L45 2l32 24.554V82z"/>
+				<path id="Path-2" stroke="#72777d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 27v56h66l-.369-55.97"/>
+				<path id="Path-3" stroke="#54595d" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" d="M0 35 45.191 0 90 35"/>
 				<g id="door" transform="translate(35 52)">
-					<path id="Rectangle" fill="#6C0000" d="M2 0h16a2 2 0 0 1 2 2v28H0V2a2 2 0 0 1 2-2"/>
+					<path id="Rectangle" fill="#6c0000" d="M2 0h16a2 2 0 0 1 2 2v28H0V2a2 2 0 0 1 2-2"/>
 					<path id="Path-6" stroke="sienna" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.003 3.665V26.92"/>
-					<circle id="door-handle" cx="14.932" cy="15.231" r="1.5" fill="#FC3"/>
+					<circle id="door-handle" cx="14.932" cy="15.231" r="1.5" fill="#fc3"/>
 				</g>
 				<g id="window" transform="translate(36.16 21.372)">
-					<ellipse id="Oval" cx="8.839" cy="9.099" fill="#69F" rx="8.839" ry="8.821"/>
-					<ellipse id="Oval" cx="8.897" cy="8.793" stroke="#72777D" stroke-width="2" rx="8.804" ry="8.793"/>
-					<path id="Path-5" stroke="#31D9FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.874 8.297c0 2.642 1.918 5.614 5.826 5.614"/>
+					<ellipse id="Oval" cx="8.839" cy="9.099" fill="#69f" rx="8.839" ry="8.821"/>
+					<ellipse id="Oval" cx="8.897" cy="8.793" stroke="#72777d" stroke-width="2" rx="8.804" ry="8.793"/>
+					<path id="Path-5" stroke="#31d9ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.874 8.297c0 2.642 1.918 5.614 5.826 5.614"/>
 				</g>
 			</g>
 		</g>

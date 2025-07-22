@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="103" height="42">
 	<g fill="none" fill-rule="evenodd">
-		<path fill="#36C" fill-rule="nonzero" d="m98.268 14.697-6-10.392a2 2 0 1 1 3.464-2l6 10.392a2 2 0 1 1-3.464 2"/>
-		<path fill="#36C" fill-rule="nonzero" d="m84.14 10.732 10.393-6a2 2 0 1 0-2-3.464l-10.392 6a2 2 0 1 0 2 3.464z"/>
-		<path stroke="#36C" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M93.69 4.355c-6.5 25-24 27-38 27h-48"/>
+		<path fill="#36c" fill-rule="nonzero" d="m98.268 14.697-6-10.392a2 2 0 1 1 3.464-2l6 10.392a2 2 0 1 1-3.464 2"/>
+		<path fill="#36c" fill-rule="nonzero" d="m84.14 10.732 10.393-6a2 2 0 1 0-2-3.464l-10.392 6a2 2 0 1 0 2 3.464z"/>
+		<path stroke="#36c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M93.69 4.355c-6.5 25-24 27-38 27h-48"/>
 	</g>
 </svg>

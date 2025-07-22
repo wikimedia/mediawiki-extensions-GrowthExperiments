@@ -5,7 +5,7 @@
 	</defs>
 	<g id="Symbols" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
 		<g id="Icon-AskQuestion-RTL">
-			<use xlink:href="#path-1" id="Icon-AskQuestion" fill="#FFF"/>
+			<use xlink:href="#path-1" id="Icon-AskQuestion" fill="#fff"/>
 		</g>
 	</g>
 </svg>

@@ -5,14 +5,14 @@
 	</defs>
 	<g fill="none" fill-rule="evenodd" transform="translate(-8 -8)">
 		<path d="M0 0h144v144H0z"/>
-		<circle cx="72" cy="72" r="64" fill="#FFF"/>
-		<rect width="8" height="96" x="24" y="32" fill="#A2A9B1" rx="1"/>
-		<rect width="8" height="96" x="112" y="32" fill="#A2A9B1" rx="1"/>
-		<use xlink:href="#a" fill="#FFF"/>
-		<use xlink:href="#a" fill="#FC3" fill-opacity=".5"/>
-		<path fill="#54595D" d="m114 41 12 18h-20L94 41zm-38 0 12 18H68L56 41zm-38 0 12 18H30L18 41z"/>
-		<use xlink:href="#b" fill="#FFF"/>
-		<use xlink:href="#b" fill="#FC3" fill-opacity=".5"/>
-		<path fill="#54595D" d="m114 81 12 18h-20L94 81zm-38 0 12 18H68L56 81zm-38 0 12 18H30L18 81z"/>
+		<circle cx="72" cy="72" r="64" fill="#fff"/>
+		<rect width="8" height="96" x="24" y="32" fill="#a2a9b1" rx="1"/>
+		<rect width="8" height="96" x="112" y="32" fill="#a2a9b1" rx="1"/>
+		<use xlink:href="#a" fill="#fff"/>
+		<use xlink:href="#a" fill="#fc3" fill-opacity=".5"/>
+		<path fill="#54595d" d="m114 41 12 18h-20L94 41zm-38 0 12 18H68L56 41zm-38 0 12 18H30L18 41z"/>
+		<use xlink:href="#b" fill="#fff"/>
+		<use xlink:href="#b" fill="#fc3" fill-opacity=".5"/>
+		<path fill="#54595d" d="m114 81 12 18h-20L94 81zm-38 0 12 18H68L56 81zm-38 0 12 18H30L18 81z"/>
 	</g>
 </svg>
