@@ -79,8 +79,6 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	public function execute( $par = '' ) {
 		$startTime = microtime( true );
-		// Use in client-side performance instrumentation; export as milliseconds as that is what mw.now() uses.
-		$this->getOutput()->addJsConfigVars( 'GEHomepageStartTime', round( $startTime * 1000 ) );
 		$this->requireNamedUser();
 		parent::execute( $par );
 		$this->handleDisabledPreference();

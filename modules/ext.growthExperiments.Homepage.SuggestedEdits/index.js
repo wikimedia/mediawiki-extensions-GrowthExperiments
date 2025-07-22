@@ -65,34 +65,17 @@
 
 		suggestedEditsModule.updateControls();
 
-		const clientSideLoadDuration = mw.now() - initTime, // Time since module init
-			serverDuration = mw.now() - mw.config.get( 'GEHomepageStartTime' );
-		const logInvalidTimingStats = ( err, logLevel = 'error' ) => {
-			const geHomepageStartTime = mw.config.get( 'GEHomepageStartTime' );
-			// eslint-disable-next-line camelcase
-			err.error_context = {
-				// cast to String since mediawiki/client/error schema only accepts strings
-				// as error_context values
-				serverDuration: String( serverDuration ),
-				serverDurationType: typeof serverDuration,
-				GEHomepageStartTime: String( geHomepageStartTime ),
-				GEHomepageStartTimeType: typeof geHomepageStartTime
-			};
-			err.message = err.message + ' [Additional data]';
-			mw.log[ logLevel ]( err.message );
-			mw.errorLogger.logError(
-				err,
-				'error.growthexperiments'
-			);
+		const clientSideLoadDuration = mw.now() - initTime; // Time since module init
+		let serverClientDuration;
+		const navigationEntries = performance.getEntriesByType( 'navigation' );
+		// Get the time the request was started
+		if ( performance.timeOrigin && navigationEntries.length > 0 ) {
+			const requestStartTime = performance.timeOrigin + navigationEntries[ 0 ].requestStart;
+			serverClientDuration = mw.now() - requestStartTime;
+		} else {
+			serverClientDuration = null;
+		}
 
-		};
-
-		// TODO: Remove the log of additional data for T382003
-		mw.trackSubscribe( 'error.caught', ( _topic, err ) => {
-			if ( /mediawiki_GrowthExperiments_suggested_edits/.test( err.message ) ) {
-				logInvalidTimingStats( err );
-			}
-		} );
 		// Track the TTI on client-side.
 		mw.track(
 			'stats.mediawiki_GrowthExperiments_suggested_edits_tti_seconds',
@@ -104,23 +87,18 @@
 			}
 		);
 
-		if ( serverDuration < 0 ) {
-			// This can happen if the client time is not set correctly, tracking it does not
-			// make sense and it produces stats lib errors.
-			logInvalidTimingStats( new Error( 'initSuggestedTasks: server duration is negative' ), 'warn' );
-			return $.Deferred().resolve();
+		// Track time from request start to client-side TTI using Performance API
+		if ( serverClientDuration !== null ) {
+			mw.track(
+				'stats.mediawiki_GrowthExperiments_suggested_edits_server_tti_seconds',
+				serverClientDuration,
+				{
+					platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
+					// eslint-disable-next-line camelcase
+					includes_server_response_time: true
+				}
+			);
 		}
-		// Track the server side render start time (first line in SpecialHomepage#execute()) to
-		// TTI on client-side.
-		mw.track(
-			'stats.mediawiki_GrowthExperiments_suggested_edits_server_tti_seconds',
-			serverDuration,
-			{
-				platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
-				// eslint-disable-next-line camelcase
-				includes_server_response_time: true
-			}
-		);
 
 		return $.Deferred().resolve();
 	}
