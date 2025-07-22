@@ -50,6 +50,7 @@
 	"specialpages-group-growth-tools": "Менторство",
 	"growthexperiments-edit-config-keep-going-notification-title": "Подстрек",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Наслов",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-description": "Кратак наслов који најбоље представља кампању, пројекат, догађај или иницијативу заједнице која се истиче.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesminedits-label": "Минимални број измена који корисник мора имати да би се приказао банер",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Слика",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "Одредишна страница",

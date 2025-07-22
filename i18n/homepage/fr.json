@@ -654,7 +654,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "Voir les modifications suggérées",
 	"growthexperiments-homepage-impact-contributions-link": "Voir toutes les modifications",
 	"growthexperiments-levelingup-getstarted-notification-header": "Essayez une modification suggérée et commencez à développer {{GENDER:$2|vos}} compétences en matière de modification",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Essayer des modifications suggérées",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Essayez des modifications suggérés",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "En savoir plus",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Vous}} avez effectué $3 {{PLURAL:$3|modification suggérée|modifications suggérées}}. Continuez à apprendre de nouvelles compétences.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Effectuer une modification suggérée",

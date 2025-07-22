@@ -635,7 +635,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة",
 	"growthexperiments-homepage-impact-contributions-link": "عرض جميع التعديلات",
 	"growthexperiments-levelingup-getstarted-notification-header": "{{GENDER:$2|جرّب|جرّبي}} تعديلًا مقترحًا و{{GENDER:$2|ابدأ|ابدئي}} في اكتساب مهارات تحريرية",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "{{GENDER:|جرّب|جرّبي}} التعديلات المقترحة",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "{{GENDER:|جرّب|جرّبي}} تعديلات مُقترحة",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "تعلم المزيد",
 	"growthexperiments-levelingup-keepgoing-notification-header": "لقد أتممت {{PLURAL:$3|لا تعديل مقترح|تعديلًا مقترحًا واحدًا|تعديلين مقترحين|$3 تعديلات مقترحة|$3 تعديلًا مقترحًا|$3 تعديلٍ مقترحٍ}}. {{GENDER:$2|استمر|استمري}} في تعلّم المزيد من المهارات الجديدة.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "{{GENDER:|قم|قومي}} بإجراء تعديل مقترح",
