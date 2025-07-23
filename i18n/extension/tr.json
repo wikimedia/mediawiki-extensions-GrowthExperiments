@@ -11,7 +11,8 @@
 			"MuratTheTurkish",
 			"Rapsar",
 			"SaldırganSincap",
-			"ToprakM"
+			"ToprakM",
+			"Leo"
 		]
 	},
 	"growthexperiments-desc": "Bu eklenti, Growth ekibinin yaptığı deneyleri içeriyor.",
@@ -83,5 +84,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Resim önerisi görev türü hakkında daha fazla bilgi edinmek için hedef sayfa.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Burada tanımlanan şablonları içeren maddeler, kullanıcılara bu görev türü için görev olarak gösterilmeyecektir.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Burada tanımlanan kategorileri içeren maddeler, kullanıcılara bu görev türü için görev olarak gösterilmeyecektir.",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Bilgi kutusu şablonları"
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Bilgi kutusu şablonları",
+	"specialpages-group-growth-tools": "Büyüme araçları"
 }

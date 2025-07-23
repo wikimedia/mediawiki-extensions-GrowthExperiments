@@ -596,7 +596,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "Vorgeschlagene Bearbeitungen ansehen",
 	"growthexperiments-homepage-impact-contributions-link": "Alle Bearbeitungen ansehen",
 	"growthexperiments-levelingup-getstarted-notification-header": "Versuche einen Bearbeitungsvorschlag und baue {{GENDER:$2|deine}} Bearbeitungsfähigkeiten aus",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Probiere andere Änderungen aus",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Probiere vorgeschlagene Änderungen aus",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Mehr erfahren",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du hast}} $3 {{PLURAL:$3|Änderungsvorschlag|Änderungsvorschläge}} durchgeführt. Mache weiter, um dir weitere neue Fähigkeiten anzueignen.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Einen Bearbeitungsvorschlag machen",

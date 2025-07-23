@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sma1997"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Obtén recomanacions de tasques adequades per a nouvinguts.",
+	"apihelp-query+growthtasks-extended-description": "Suggereix un conjunt d'articles que tenen alguns problemes pendents prou fàcils d'abordar per a un editor novell.",
+	"apihelp-query+growthtasks-param-tasktypes": "Tipus de tasques a les quals limitar els resultats. Deixeu-ho en blanc per rebre tots els suggeriments.",
+	"apihelp-query+growthtasks-param-topics": "Temes d'article preferits per als suggeriments de tasques.",
+	"apihelp-query+growthtasks-param-limit": "Número màxim de suggeriments de tasca a retornar.",
+	"apihelp-query+growthtasks-param-excludepageids": "IDs de pàgina a excloure de la consulta."
+}
