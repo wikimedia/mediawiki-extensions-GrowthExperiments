@@ -110,6 +110,6 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-mentorship-question-disclaimer-mentor-away' )
 			->plaintextParams( $menteeUsername, $mentorUsername )
-			->inContentLanguage()->text();
+			->inContentLanguage()->plain();
 	}
 }

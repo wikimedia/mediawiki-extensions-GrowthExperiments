@@ -51,7 +51,8 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$this->assertInstanceOf( WikitextContent::class, $actualResult );
 		if ( $expectedResult === null ) {
 			$this->assertStringNotContainsString(
-				'[[User:Mentee|Mentee]]\'s mentor [[User:Mentor|Mentor]] is away',
+				// phpcs:ignore Generic.Files.LineLength.TooLong
+				'[[User:Mentee|Mentee]]\'s mentor <span class="plainlinks">[{{fullurl:User:Mentor}} Mentor]</span> is away',
 				$actualResult->getText()
 			);
 		} else {
@@ -98,7 +99,8 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		return [
 			'Mentor is away' => [
 				true,
-				'[[User:Mentee|Mentee]]\'s mentor [[User:Mentor|Mentor]] is away'
+				// phpcs:ignore Generic.Files.LineLength.TooLong
+				'[[User:Mentee|Mentee]]\'s mentor <span class="plainlinks">[{{fullurl:User:Mentor}} Mentor]</span> is away'
 			],
 			'Mentor is not away' => [
 				false,
