@@ -29,7 +29,8 @@
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
 			// If standardized menu area is available - use that.
-			helpButtonLocationDock = mw.util.addPortletLink( 'p-dock-bottom', '#', '' ),
+			dockPortletId = 'p-dock-bottom',
+			helpButtonLocationDock = mw.util.addPortletLink( dockPortletId, '#', '' ),
 			helpButtonLocation = helpButtonLocationDock ?
 				$( helpButtonLocationDock ).html( '' ) : $overlay,
 			logger = new HelpPanelLogger( {
@@ -55,6 +56,9 @@
 				taskTypeId: taskTypeId,
 				suggestedEditSession: suggestedEditSession
 			} );
+		// FIXME the z-index stack for the p-dock menu should be revised in Minerva, meanwhile
+		// add a custom growth class to reduce in conflicting interfaces, T399864.
+		$( `#${ dockPortletId }` ).addClass( 'mw-ge-underlaid-dock-menu' );
 		let $buttonWrapper = $buttonToInfuse.parent(),
 			isCtaHidden = true,
 			lifecycle;

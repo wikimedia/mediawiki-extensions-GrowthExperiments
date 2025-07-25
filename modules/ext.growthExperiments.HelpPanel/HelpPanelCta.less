@@ -1,5 +1,21 @@
 @import 'mediawiki.skin.variables.less';
 
+// FIXME Overrides for the help panel button not overlapping with other
+// interfaces, see T399864
+.mw-portlet-dock-bottom.mw-ge-underlaid-dock-menu {
+	// Add specificity to override .client-js .mw-portlet-dock-bottom z-index:9999
+	.client-js & {
+		// Prevents overlap with the own help panel overlay, VEs edit summary dialog. Lower index
+		// makes it not show behind VEs editing surface.
+		z-index: @z-index-stacking-2;
+	}
+
+	.secondary-navigation-enabled > & {
+		// Prevents overlap with Echo notifications mobile overlay
+		z-index: @z-index-base;
+	}
+}
+
 .mw-ge-help-panel-cta {
 	// Don't show the help panel in printable versions of a page.
 	@media print {
@@ -16,12 +32,6 @@
 	.client-js &:not( .mw-ge-help-panel-ready ) {
 		display: none;
 	}
-}
-
-body > .mw-ge-help-panel-widget-overlay .mw-ge-help-panel-cta {
-	position: fixed;
-	bottom: 2em;
-	right: 1em;
 }
 
 .suggested-edits-mobile-peek-footer {
@@ -60,13 +70,16 @@ body > .mw-ge-help-panel-widget-overlay .mw-ge-help-panel-cta {
 	}
 }
 
+// For compatibility with skins not providing p-dock-bottom portlet
 body > .mw-ge-help-panel-widget-overlay {
 	position: fixed;
 	right: 1em;
 	bottom: 1em;
 	z-index: @z-index-fixed;
 
-	.secondary-navigation-enabled & {
-		z-index: @z-index-base;
+	.mw-ge-help-panel-cta {
+		position: fixed;
+		bottom: 2em;
+		right: 1em;
 	}
 }
