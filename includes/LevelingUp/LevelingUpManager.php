@@ -110,10 +110,10 @@ class LevelingUpManager {
 		Config $config
 	): bool {
 		// Leveling up should only be shown if
-		// 1) suggested edits are available on this wiki, as we'll direct the user there
-		// 2) the user's homepage is enabled, which maybe SuggestedEdits::isEnabled should
-		//    check, but it doesn't (this also excludes autocreated potentially-experienced
-		//    users who probably shouldn't get invites)
+		// 1) leveling-up (suggested-edits) features are enabled on this wiki
+		//    (via SuggestedEdits::isEnabledForAnyone)
+		// 2) the user's homepage is enabled
+		//    (via HomepageHooks::isHomepageEnabled)
 		return SuggestedEdits::isEnabledForAnyone( $config )
 			&& HomepageHooks::isHomepageEnabled( $user );
 	}
