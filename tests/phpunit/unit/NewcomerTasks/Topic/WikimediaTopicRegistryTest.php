@@ -1,6 +1,6 @@
 <?php
 
-namespace phpunit\unit\NewcomerTasks\Topic;
+namespace GrowthExperiments\Tests\Unit\NewcomerTasks\Topic;
 
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;

@@ -1,6 +1,6 @@
 <?php
 
-namespace phpunit\integration\Config\Schemas;
+namespace GrowthExperiments\Tests\Integration\Config\Schemas;
 
 use MediaWiki\Extension\CommunityConfiguration\Tests\SchemaProviderTestCase;
 
