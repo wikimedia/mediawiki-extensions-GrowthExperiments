@@ -8,7 +8,7 @@ use DateTime;
 use DateTimeInterface;
 use Exception;
 
-/*
+/**
  * Utility class for processing "Editing streaks", which are consecutive days when a user made edits.
  *
  * The minimum unit for an editing streak is a single day. So if a user has made a single edit, the editing streak
