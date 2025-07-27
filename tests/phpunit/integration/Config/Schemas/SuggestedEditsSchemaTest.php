@@ -9,9 +9,7 @@ use StatusValue;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader
- *
- * Conceptually, it especially covers @see \GrowthExperiments\Config\Schemas\SuggestedEditsSchema,
- * but that class does not contain any executable code.
+ * @covers \GrowthExperiments\Config\Schemas\SuggestedEditsSchema
  *
  * @group Database
  */
