@@ -166,7 +166,7 @@ class ApiSetMentorTest extends ApiTestCase {
 
 	private function ruleUserEquals( UserIdentity $user ) {
 		return new class( $user ) extends Constraint {
-			private $user;
+			private UserIdentity $user;
 
 			public function __construct( UserIdentity $user ) {
 				$this->user = $user;
