@@ -39,7 +39,7 @@ class ExpensiveUserImpact extends UserImpact {
 	 * @param int[] $dailyTotalViews Day => number of total pageviews the articles edited by the user
 	 *   (on any day) got on that day. Indexed with ISO 8601 dates, e.g. '2022-08-25'.
 	 *   Might exclude edits made many days or many edits ago.
-	 * @param array $dailyArticleViews @see ::getDailyArticleViews
+	 * @param array $dailyArticleViews See {@link getDailyArticleViews}
 	 * @param EditingStreak $longestEditingStreak
 	 * @param int $totalArticlesCreatedCount
 	 * @param int|null $totalUserEditCount Copy of user.user_editcount

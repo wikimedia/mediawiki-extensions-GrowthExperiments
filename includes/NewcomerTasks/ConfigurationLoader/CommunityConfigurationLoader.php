@@ -17,8 +17,7 @@ use StatusValue;
  * Load configuration from the suggested edits provider of
  * CommunityConfiguration.
  *
- * For syntax on the task types see:
- * GrowthExperiments\Config\Schemas\SuggestedEditsSchema.php
+ * For syntax on the task types see {@link SuggestedEditsSchema}.
  * https://cs.wikipedia.org/wiki/MediaWiki:GrowthExperimentsSuggestedEdits.json
  *
  */

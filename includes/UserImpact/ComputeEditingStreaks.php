@@ -21,7 +21,7 @@ class ComputeEditingStreaks {
 	 * EditingStreak objects. An "editing streak" consists of a date range (minimum unit is one day) with a start and
 	 * end date, and a total edit count number for that streak.
 	 *
-	 * @param array $editCountByDay @see UserImpact::getEditCountByDay()
+	 * @param array $editCountByDay See {@link UserImpact::getEditCountByDay}
 	 * @return EditingStreak[]
 	 * @throws Exception
 	 */
