@@ -518,9 +518,7 @@ abstract class QuestionPoster {
 
 		if ( count( $errors ) ) {
 			$key = array_shift( $errors[0] );
-			$message = $this->getContext()->msg( $key )
-				->params( $errors[0] )
-				->parse();
+			$message = $this->getContext()->msg( $key, ...$errors[0] )->parse();
 			return Status::newFatal( $message );
 		}
 		return Status::newGood();

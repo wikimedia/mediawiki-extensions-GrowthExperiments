@@ -215,7 +215,7 @@ class SiteNoticeGenerator {
 			Html::element( 'span', [ 'class' => 'mw-ge-homepage-discovery-house' ] ) .
 			Html::rawElement( 'span', [ 'class' => 'mw-ge-homepage-discovery-text-content' ],
 				Html::element( 'h2', [ 'class' => 'mw-ge-homepage-discovery-nojs-message' ],
-					$output->msg( $msgHeaderKey )->params( $username )->text() ) .
+					$output->msg( $msgHeaderKey, $username )->text() ) .
 				$this->getDiscoveryTextWithAvatarIcon(
 					$output,
 					$skin->getUser(),
@@ -283,7 +283,7 @@ class SiteNoticeGenerator {
 			return '';
 		}
 		return Html::element( 'h2', [],
-			$output->msg( $msgHeaderKey )->params( $user->getName() )->text()
+			$output->msg( $msgHeaderKey, $user->getName() )->text()
 		);
 	}
 

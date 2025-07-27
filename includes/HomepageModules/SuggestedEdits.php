@@ -676,9 +676,7 @@ class SuggestedEdits extends BaseModule {
 			$label = $this->getContext()->msg(
 				'growthexperiments-homepage-suggestededits-difficulty-filter-label-' . $level
 			);
-			$message = $this->getContext()->msg( $messageKey )
-				->params( $label )
-				->text();
+			$message = $this->getContext()->msg( $messageKey, $label )->text();
 			$difficultyFilterButtonWidget->setLabel( $message );
 			// Icons: difficulty-easy, difficulty-medium, difficulty-hard
 			$difficultyFilterButtonWidget->setIcon( 'difficulty-' . $level );

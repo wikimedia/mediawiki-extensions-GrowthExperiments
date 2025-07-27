@@ -121,10 +121,7 @@ class Impact extends BaseModule {
 		if ( $this->shouldShowForOtherUser() ) {
 			$headerText = 'growthexperiments-specialimpact-showing-for-other-user';
 		}
-		return $this->getContext()
-			->msg( $headerText )
-			->params( $this->userIdentity->getName() )
-			->text();
+		return $this->getContext()->msg( $headerText, $this->userIdentity->getName() )->text();
 	}
 
 	/** @inheritDoc */
