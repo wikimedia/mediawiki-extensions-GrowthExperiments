@@ -201,18 +201,19 @@ abstract class DashboardModule implements IDashboardModule {
 	}
 
 	/**
-	 * @param string ...$sections
+	 * @param string ...$sections HTML content
 	 * @return string
 	 */
-	protected function buildModuleWrapper( ...$sections ) {
+	protected function buildModuleWrapper( string ...$sections ): string {
 		return Html::rawElement(
 			'div',
 			[
-				'class' => array_merge( [
+				'class' => [
 					static::BASE_CSS_CLASS,
 					static::BASE_CSS_CLASS . '-' . $this->name,
-					static::BASE_CSS_CLASS . '-' . $this->getMode()
-				], $this->getCssClasses() ),
+					static::BASE_CSS_CLASS . '-' . $this->getMode(),
+					...$this->getCssClasses(),
+				],
 				'data-module-name' => $this->name,
 				'data-mode' => $this->getMode()
 			],
@@ -228,9 +229,9 @@ abstract class DashboardModule implements IDashboardModule {
 	 * @param string $name Name of the section, used to generate a class
 	 * @param string $content HTML content of the section
 	 * @param string $tag HTML tag to use for the section
-	 * @return string
+	 * @return string HTML
 	 */
-	protected function buildSection( $name, $content, $tag = 'div' ) {
+	protected function buildSection( string $name, string $content, string $tag = 'div' ): string {
 		return $content ? Html::rawElement(
 			$tag,
 			[

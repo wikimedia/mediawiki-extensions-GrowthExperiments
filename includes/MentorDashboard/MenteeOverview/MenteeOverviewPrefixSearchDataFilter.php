@@ -57,12 +57,11 @@ class MenteeOverviewPrefixSearchDataFilter {
 	public function getUsernames(): array {
 		$usernames = array_column( $this->data, 'username' );
 
-		$prefixLen = strlen( $this->prefix );
 		// filtering only makes sense with prefixes longer than 0 characters
-		if ( $prefixLen !== 0 ) {
-			$usernames = array_filter( $usernames, function ( $username ) use ( $prefixLen ) {
-				return substr( $username, 0, $prefixLen ) === $this->prefix;
-			} );
+		if ( $this->prefix !== '' ) {
+			$usernames = array_filter( $usernames,
+				fn ( $name ) => str_starts_with( $name, $this->prefix )
+			);
 		}
 
 		// Sort the data

@@ -166,16 +166,17 @@ abstract class BaseModule extends DashboardModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function buildModuleWrapper( ...$sections ) {
+	protected function buildModuleWrapper( string ...$sections ): string {
 		$moduleContent = Html::rawElement(
 			'div',
 			[
-				'class' => array_merge( [
+				'class' => [
 					self::BASE_CSS_CLASS,
 					self::BASE_CSS_CLASS . '-' . $this->name,
 					self::BASE_CSS_CLASS . '-' . $this->getMode(),
-					self::BASE_CSS_CLASS . '-user-variant-' . $this->getUserVariant()
-				], $this->getCssClasses() ),
+					self::BASE_CSS_CLASS . '-user-variant-' . $this->getUserVariant(),
+					...$this->getCssClasses(),
+				],
 				'data-module-name' => $this->name,
 				'data-mode' => $this->getMode(),
 			],

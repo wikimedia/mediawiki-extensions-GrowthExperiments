@@ -118,7 +118,7 @@ class Mentorship extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function buildSection( $name, $content, $tag = 'div' ) {
+	protected function buildSection( string $name, string $content, string $tag = 'div' ): string {
 		if ( $name === 'header' && $this->getMode() === self::RENDER_DESKTOP ) {
 			return Html::rawElement(
 				'div',
@@ -392,10 +392,9 @@ class Mentorship extends BaseModule {
 	 */
 	private function getMentor() {
 		if ( !$this->mentor ) {
-			$mentor = $this->mentorManager->getMentorForUserSafe( $this->getContext()->getUser() );
-			if ( $mentor ) {
-				$this->mentor = $mentor->getUserIdentity();
-			} else {
+			$this->mentor = $this->mentorManager->getMentorForUserSafe( $this->getContext()->getUser() )
+				?->getUserIdentity();
+			if ( !$this->mentor ) {
 				return false;
 			}
 		}

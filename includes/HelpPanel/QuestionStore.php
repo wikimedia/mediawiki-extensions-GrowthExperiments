@@ -169,7 +169,7 @@ class QuestionStore {
 		/** @var TextContent|null $content */
 		$content = $latestPageRevision->getContent( SlotRecord::MAIN );
 		return $content instanceof TextContent
-			&& strpos( $content->getText(), $questionRecord->getSectionHeader() ) !== false;
+			&& str_contains( $content->getText(), $questionRecord->getSectionHeader() );
 	}
 
 	/**

@@ -156,7 +156,7 @@ class ImportArticleTopics extends Maintenance {
 			if ( $pages === false ) {
 				$this->fatalError( "Could not read $pageList" );
 			}
-			$pages = preg_split( '/\n/', $pages, -1, PREG_SPLIT_NO_EMPTY );
+			$pages = preg_split( '/\n/', $pages, flags: PREG_SPLIT_NO_EMPTY );
 			foreach ( array_chunk( $pages, $batchSize ) as $pageBatch ) {
 				$titleBatch = array_filter( array_map( [ $this->titleFactory, 'newFromText' ], $pageBatch ) );
 				$this->linkBatchFactory->newLinkBatch( $titleBatch )->execute();

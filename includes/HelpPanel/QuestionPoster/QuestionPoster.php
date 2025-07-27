@@ -360,15 +360,9 @@ abstract class QuestionPoster {
 
 	/**
 	 * Add signature unless already set.
-	 *
-	 * @param string $body
-	 * @return string
 	 */
-	private function addSignature( $body ) {
-		if ( strpos( $body, '~~~~' ) === false ) {
-			$body .= " --~~~~";
-		}
-		return $body;
+	private function addSignature( string $body ): string {
+		return str_contains( $body, '~~~~' ) ? $body : $body . ' --~~~~';
 	}
 
 	public function validateRelevantTitle(): StatusValue {

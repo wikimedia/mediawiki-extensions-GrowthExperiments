@@ -32,8 +32,7 @@ class TipNodeRenderer {
 	 * @param TipNode[] $nodes
 	 * @param string $skinName
 	 * @param string $dir
-	 * @return array
-	 *   An array of rendered HTML.
+	 * @return string[] An array of rendered HTML.
 	 */
 	public function render( array $nodes, string $skinName, string $dir ): array {
 		OutputPage::setupOOUI( $skinName, $dir );
@@ -60,17 +59,18 @@ class TipNodeRenderer {
 
 	/**
 	 * @param string $tipTypeId
-	 * @param array $textVariants
-	 * @return array|string[]
+	 * @param string[] $textVariants
+	 * @return string[]
 	 */
 	private function getBaseCssClasses( string $tipTypeId, array $textVariants = [] ): array {
-		$variants = array_map( static function ( $variant ) {
-			return 'growthexperiments-quickstart-tips-tip--' . $variant;
-		}, $textVariants );
-		return array_merge( [
+		return [
 			'growthexperiments-quickstart-tips-tip',
-			'growthexperiments-quickstart-tips-tip-' . $tipTypeId
-		], $variants );
+			'growthexperiments-quickstart-tips-tip-' . $tipTypeId,
+			...array_map(
+				static fn ( $variant ) => 'growthexperiments-quickstart-tips-tip--' . $variant,
+				$textVariants
+			)
+		];
 	}
 
 	private function mainAndTextRender( TipNode $node, string $skinName ): string {

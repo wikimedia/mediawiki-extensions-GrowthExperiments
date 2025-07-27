@@ -95,7 +95,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 				// because we need to examine the contents of the cache (if any) before
 				// deciding whether to return those contents or if they need to be regenerated.
 
-				if ( $oldValue !== false ) {
+				if ( is_string( $oldValue ) ) {
 					$oldValue = $this->deserialize( $oldValue );
 				}
 

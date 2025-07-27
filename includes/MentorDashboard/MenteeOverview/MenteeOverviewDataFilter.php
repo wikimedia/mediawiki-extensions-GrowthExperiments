@@ -276,12 +276,11 @@ class MenteeOverviewDataFilter {
 	 */
 	private function filterInternal(): array {
 		// Filter the data
-		$prefixLen = strlen( $this->prefix );
-		$filteredData = array_filter( $this->data, function ( $menteeData ) use ( $prefixLen ) {
-			if ( $this->prefix !== '' ) {
-				if ( substr( $menteeData['username'], 0, $prefixLen ) !== $this->prefix ) {
-					return false;
-				}
+		$filteredData = array_filter( $this->data, function ( $menteeData ) {
+			if ( $this->prefix !== '' &&
+				!str_starts_with( $menteeData['username'], $this->prefix )
+			) {
+				return false;
 			}
 
 			if ( $this->onlyIds !== null && !in_array( $menteeData['user_id'], $this->onlyIds ) ) {
