@@ -90,9 +90,7 @@
 			newUrl = url;
 		}
 
-		if ( history.replaceState ) {
-			history.replaceState( history.state, document.title, newUrl.toString() );
-		}
+		history.replaceState( history.state, document.title, newUrl.toString() );
 	}
 
 	/**

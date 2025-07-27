@@ -268,8 +268,8 @@ SuggestedEditsModule.prototype.updateExtraDataForCurrentCard = function () {
  * Update TaskExplanationWidget for the current task
  */
 SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
-	const explanationSelector = '.suggested-edits-task-explanation',
-		$explanationElement = $( explanationSelector ),
+	// eslint-disable-next-line no-jquery/no-global-selector
+	const $explanationElement = $( '.suggested-edits-task-explanation' ),
 		currentTask = this.tasksStore.getCurrentTask();
 	if ( currentTask ) {
 		$explanationElement.empty().append(
@@ -278,10 +278,8 @@ SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
 				mode: this.mode
 			}, this.logger, ALL_TASK_TYPES ).$element
 		);
-		$explanationElement.toggle( true );
-	} else {
-		$explanationElement.toggle( false );
 	}
+	$explanationElement.toggle( !!currentTask );
 };
 
 /**
