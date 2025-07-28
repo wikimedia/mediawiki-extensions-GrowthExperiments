@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use LogicException;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Message\Message;
-use MediaWiki\Title\TitleFactory;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 
@@ -26,19 +25,11 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	use ConfigurationLoaderTrait;
 
 	private ?SuggestedEditsConfigProvider $suggestedEditsConfigProvider;
-	private TitleFactory $titleFactory;
 	private LoggerInterface $logger;
 
 	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
-
-	private ConfigurationValidator $configurationValidator;
-
 	/** @var string[] */
 	private array $enabledTaskTypeIds = [];
-
-	/** @var ?callable */
-	private $campaignConfigCallback;
-
 	/** @var TaskType[]|null */
 	private ?array $disabledTaskTypes = null;
 	/** @var TaskType[]|StatusValue|null Cached task type set (or an error). */
@@ -47,23 +38,17 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	private array $disabledTaskTypeIds = [];
 
 	/**
-	 * @param ConfigurationValidator $configurationValidator
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ?SuggestedEditsConfigProvider $suggestedEditsConfigProvider
-	 * @param TitleFactory $titleFactory
 	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
-		ConfigurationValidator $configurationValidator,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		?SuggestedEditsConfigProvider $suggestedEditsConfigProvider,
-		TitleFactory $titleFactory,
 		LoggerInterface $logger
 	) {
-		$this->configurationValidator = $configurationValidator;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->suggestedEditsConfigProvider = $suggestedEditsConfigProvider;
-		$this->titleFactory = $titleFactory;
 		$this->logger = $logger;
 	}
 

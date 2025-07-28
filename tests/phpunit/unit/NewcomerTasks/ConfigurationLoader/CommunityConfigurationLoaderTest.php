@@ -4,11 +4,9 @@ namespace GrowthExperiments\Tests\Unit\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\Config\Providers\SuggestedEditsConfigProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use LogicException;
-use MediaWiki\Title\TitleFactory;
 use MediaWikiUnitTestCase;
 use Psr\Log\LoggerInterface;
 use StatusValue;
@@ -31,12 +29,9 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			: $this->createStub( SuggestedEditsConfigProvider::class );
 
 		return new CommunityConfigurationLoader(
-			$overrides['configurationValidator'] ?? $this->createStub(
-				ConfigurationValidator::class ),
 			$overrides['taskTypeHandlerRegistry'] ?? $this->createStub(
 				TaskTypeHandlerRegistry::class ),
 			$suggestedEditsConfigProvider,
-			$overrides['titleFactory'] ?? $this->createStub( TitleFactory::class ),
 			$overrides['logger'] ?? $this->createStub( LoggerInterface::class ) );
 	}
 

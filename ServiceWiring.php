@@ -699,10 +699,8 @@ return [
 			$providerFactory->newProvider( 'GrowthSuggestedEdits' ) : null;
 
 		$configurationLoader = new CommunityConfigurationLoader(
-			$growthServices->getNewcomerTasksConfigurationValidator(),
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$suggestedEditsProvider,
-			$services->getTitleFactory(),
 			$growthServices->getLogger(),
 		);
 
