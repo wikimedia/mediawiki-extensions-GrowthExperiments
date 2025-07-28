@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\Config\Providers\SuggestedEditsConfigProvider;
@@ -33,7 +35,7 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	/** @var TaskType[]|null */
 	private ?array $disabledTaskTypes = null;
 	/** @var TaskType[]|StatusValue|null Cached task type set (or an error). */
-	private $taskTypes;
+	private StatusValue|array|null $taskTypes;
 
 	private array $disabledTaskTypeIds = [];
 
@@ -50,13 +52,14 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->suggestedEditsConfigProvider = $suggestedEditsConfigProvider;
 		$this->logger = $logger;
+		$this->taskTypes = null;
 	}
 
 	/**
 	 * Like task types configuration from provider
 	 * @return array|StatusValue
 	 */
-	public function loadTaskTypesConfig() {
+	public function loadTaskTypesConfig(): array|StatusValue {
 		if ( $this->suggestedEditsConfigProvider === null ) {
 			$this->logger->debug( __METHOD__ . ': Suggested Edits config provider is null', [
 				'exception' => new \RuntimeException,
@@ -107,13 +110,13 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 
 	/**
 	 * Like loadTaskTypes() but without caching.
-	 * @param mixed $config A JSON value.
+	 * @param array $config A JSON value.
 	 * @return TaskType[]|StatusValue
 	 */
-	private function parseTaskTypesFromConfig( $config ) {
+	private function parseTaskTypesFromConfig( array $config ): array|StatusValue {
 		$status = StatusValue::newGood();
 		$taskTypes = [];
-		if ( !is_array( $config ) || array_filter( $config, 'is_array' ) !== $config ) {
+		if ( array_filter( $config, 'is_array' ) !== $config ) {
 			return StatusValue::newFatal(
 				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
 		}
@@ -182,7 +185,7 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	/**
 	 * @inheritDoc
 	 */
-	public function loadInfoboxTemplates() {
+	public function loadInfoboxTemplates(): array|StatusValue {
 		if ( $this->suggestedEditsConfigProvider === null ) {
 			$this->logger->debug( __METHOD__ . ': Suggested Edits config provider is null', [
 				'exception' => new \RuntimeException
@@ -200,7 +203,7 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	 * @param TaskType $taskType
 	 * @return bool
 	 */
-	private function isDisabled( TaskType $taskType ) {
+	private function isDisabled( TaskType $taskType ): bool {
 		return in_array( $taskType->getId(), $this->disabledTaskTypeIds, true );
 	}
 }

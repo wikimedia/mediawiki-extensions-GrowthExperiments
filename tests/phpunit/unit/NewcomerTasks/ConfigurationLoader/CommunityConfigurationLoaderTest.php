@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Tests\Unit\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\Config\Providers\SuggestedEditsConfigProvider;
@@ -20,9 +22,8 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * Helper method to create a new CommunityConfigurationLoader instance
 	 *
 	 * @param array $overrides dependencies to override
-	 * @return CommunityConfigurationLoader
 	 */
-	private function newLoader( array $overrides = [] ) {
+	private function newLoader( array $overrides = [] ): CommunityConfigurationLoader {
 		// Specifically pass null so that null value is preserved
 		$suggestedEditsConfigProvider = array_key_exists( 'suggestedEditsConfigProvider', $overrides )
 			? $overrides['suggestedEditsConfigProvider']
@@ -35,7 +36,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$overrides['logger'] ?? $this->createStub( LoggerInterface::class ) );
 	}
 
-	public function testLoadTaskTypesConfigNullProvider() {
+	public function testLoadTaskTypesConfigNullProvider(): void {
 		$logger = $this->createMock( LoggerInterface::class );
 		$logger->expects( $this->once() )
 			->method( 'debug' )
@@ -55,7 +56,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [], $result );
 	}
 
-	public function testLoadTaskTypesConfigSuccess() {
+	public function testLoadTaskTypesConfigSuccess(): void {
 		$sampleConfig = [
 			'copyedit' => [
 				'icon' => 'articleCheck',
@@ -81,7 +82,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $sampleConfig, $result );
 	}
 
-	public function testLoadTaskTypesConfigError() {
+	public function testLoadTaskTypesConfigError(): void {
 		$errorStatus = StatusValue::newFatal( 'some-error' );
 
 		$configProvider = $this->createMock( SuggestedEditsConfigProvider::class );
@@ -99,7 +100,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $errorStatus, $result );
 	}
 
-	public function testLoadInfoboxTemplatesNullProvider() {
+	public function testLoadInfoboxTemplatesNullProvider(): void {
 		$logger = $this->createMock( LoggerInterface::class );
 		$logger->expects( $this->once() )
 			->method( 'debug' )
@@ -117,7 +118,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [], $result );
 	}
 
-	public function testLoadInfoboxTemplatesSuccess() {
+	public function testLoadInfoboxTemplatesSuccess(): void {
 		$infoboxTemplates = [ 'Infobox1', 'Infobox2' ];
 		$configValue = (object)[ 'GEInfoboxTemplates' => $infoboxTemplates ];
 
@@ -137,7 +138,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $infoboxTemplates, $result );
 	}
 
-	public function testLoadInfoboxTemplatesError() {
+	public function testLoadInfoboxTemplatesError(): void {
 		$errorStatus = StatusValue::newFatal( 'some-error' );
 
 		$configProvider = $this->createMock( SuggestedEditsConfigProvider::class );
@@ -154,7 +155,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $errorStatus, $result );
 	}
 
-	public function testDisableAndEnableTaskTypeState() {
+	public function testDisableAndEnableTaskTypeState(): void {
 		$loader = $this->newLoader();
 		$wrappedLoader = TestingAccessWrapper::newFromObject( $loader );
 
@@ -185,7 +186,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			'enabledTaskTypeIds should contain second enabled task ID' );
 	}
 
-	public function testDisableTaskTypeAfterLoadingThrowsException() {
+	public function testDisableTaskTypeAfterLoadingThrowsException(): void {
 		$loader = $this->newLoader();
 		$wrappedLoader = TestingAccessWrapper::newFromObject( $loader );
 
@@ -198,7 +199,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$loader->disableTaskType( 'copyedit' );
 	}
 
-	public function testEnableTaskTypeAfterLoadingThrowsException() {
+	public function testEnableTaskTypeAfterLoadingThrowsException(): void {
 		$loader = $this->newLoader();
 		$wrappedLoader = TestingAccessWrapper::newFromObject( $loader );
 		$wrappedLoader->taskTypes = [ $this->createMock( TaskType::class ) ];
