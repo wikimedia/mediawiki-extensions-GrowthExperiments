@@ -176,7 +176,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|Sualınıza}} {{GENDER:$1|mentorunuzun}} müzakirə səhifəsində baxın.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] istifadəçisinin sualı",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] istifadəçisinin [[$2]] ilə bağlı sualı",
-	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]] istifadəçisinin mentoru olan [[User:$2|$2]] aktiv deyil.",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]] istifadəçisinin mentoru olan <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> aktiv deyil.",
 	"growthexperiments-specialimpact-title": "Təsir",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 üçün təsir məlumatı göstərilir",
 	"growthexperiments-specialimpact-invalid-username": "İstifadəçi adı mövcud deyil və ya etibarsızdır.",

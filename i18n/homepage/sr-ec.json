@@ -151,6 +151,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Прикажи {{GENDER:$2|моје}} питање на страници за разговор {{GENDER:$1|ментора|менторке}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Питање корисника [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Питање корисника [[User:$1|$1]] са странице [[$2]]",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Ментор [[User:$1|$1]] <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> је одсутан.",
 	"growthexperiments-specialimpact-title": "Утицај",
 	"growthexperiments-specialimpact-showing-for-other-user": "Приказују се подаци о утицају ($1)",
 	"growthexperiments-specialimpact-invalid-username": "Корисничко име недостаје или није важеће.",

@@ -171,7 +171,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Vider {{GENDER:$2|tu}} question sur le pagina de discussion de tu {{GENDER:$1|mentor}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Question de [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Question de [[User:$1|$1]] sur [[$2]]",
-	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$2|$2]], le mentor de [[User:$1|$1]], es absente.",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Le mentor de [[User:$1|$1]], <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>, es absente.",
 	"growthexperiments-specialimpact-title": "Impacto",
 	"growthexperiments-specialimpact-showing-for-other-user": "Monstrar datos de impacto pro $1",
 	"growthexperiments-specialimpact-invalid-username": "Nomine de usator mancante o invalide.",

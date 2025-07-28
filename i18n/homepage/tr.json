@@ -194,7 +194,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|Sorunuzu}} {{GENDER:$1|danışmanınızın}} mesaj sayfasında görüntüleyin.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] adlı kullanıcıdan soru",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] adlı kullanıcıdan [[$2]] hakkında soru",
-	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]] için danışman [[User:$2|$2]] uzakta.",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]] için danışman <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> uzakta.",
 	"growthexperiments-specialimpact-title": "Etki",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 için etki verileri gösteriliyor",
 	"growthexperiments-specialimpact-invalid-username": "Eksik veya geçersiz kullanıcı adı.",

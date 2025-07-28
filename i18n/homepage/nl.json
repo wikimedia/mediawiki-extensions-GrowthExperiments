@@ -188,7 +188,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Bekijk {{GENDER:$2|uw}} vraag op de overlegpagina van uw {{GENDER:$1|mentor}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Vraag van [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Vraag van [[User:$1|$1]] over [[$2]]",
-	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "De mentor van [[User:$1|$1]], [[User:$2|$2]], is afwezig.",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "De mentor van [[User:$1|$1]], <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>, is afwezig.",
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Impactgegevens weergeven voor $1",
 	"growthexperiments-specialimpact-invalid-username": "Ontbrekende of ongeldige gebruikersnaam.",

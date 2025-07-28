@@ -1,21 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
+			"GilPe",
 			"Robby",
 			"Volvox"
 		]
 	},
-	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|Wat ass dat?]])",
-	"growthexperiments-confirmemail-emailhelp": "Eng E-Mail-Adress ass néideg fir kënnen Äre Kont ze restauréieren, falls Dir Äert Passwuert verléiere sollt.",
+	"growthexperiments-confirmemail-captcha-help": "([[Spezial:Captcha/Hëllef|Wat ass dat?]])",
+	"growthexperiments-confirmemail-emailhelp": "Eng E-Mail-Adress ass néideg fir Äre Kont kënnen ze restauréieren, wann Dir Äert Passwuert verluer hutt.",
 	"growthexperiments-confirmemail-emailrecommended": "E-Mail-Adress (recommandéiert)",
-	"growthexperiments-confirmemail-emailwarning": "Kuckt wgl., ob Dir eng E-Mail vun eis kritt hutt fir Är Adress ze verifizéieren.",
+	"growthexperiments-confirmemail-emailwarning": "Kuckt wgl., ob Dir en E-Mail vun eis kritt hutt fir Är Adress ze verifizéieren.",
 	"growthexperiments-confirmemail-confirm-subject": "Wëllkomm op {{SITENAME}}: Confirméiert wgl. Är E-Mail-Adress",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Salut}} $2,\n\nmerci, datt Dir eng E-Mail-Adress bei Äre Kont op {{SITENAME}} derbäigesat hutt, ugefrot ënnert der IP-Adress $1.\n\nKlickt wgl. op de Knäppchen hei drënner fir ze confirméieren, datt dëst d'E-Mail-Adress ass, déi Dir mat Ärem Kont „$2“ verbanne wëllt:\n\n$3\n\nHiweis: Dëse Confirmatiouns-Code <strong>leeft of um $4</strong>.\n\nMerci,\n\n{{SITENAME}}\n\n----\n\nFir d'Confirmatioun vun der E-Mail-Adress ofzebriechen (well Dir de Kont net registréiert hutt oder aus anere Grënn), klickt op dësen Ofbroch-Link:\n\n$5",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Salut}} $2,\n\nmerci, datt Dir eng E-Mail-Adress bei Äre Kont op {{SITENAME}} derbäigesat hutt, ugefrot ënnert der IP-Adress $1.\n\nKlickt wgl. op de Knäppchen hei drënner fir ze confirméieren, datt dëst d'E-Mail-Adress ass, déi Dir mat Ärem Kont „$2“ verbanne wëllt:\n\n$3\n\nHiweis: Dëse Confirmatiouns-Code <strong>leeft of um: $4</strong>.\n\nMerci,\n\n{{SITENAME}}\n\n----\n\nFir d'Confirmatioun vun der E-Mail-Adress ofzebriechen (well Dir de Kont net registréiert hutt oder aus anere Grënn), klickt op dësen Ofbroch-Link:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "E-Mail-Adress confirméieren",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Salut}} $2,\n\nmerci, datt Dir eng E-Mail-Adress bei Äre Kont op {{SITENAME}} derbäigesat hutt, ugefrot ënnert der IP-Adress $1.\n\nKlickt wgl. op de Link hei drënner fir ze confirméieren, datt dëst d'E-Mail-Adress ass, déi Dir mat Ärem Kont „$2“ verbanne wëllt:\n\n$3\n\nHiweis: Dëse Confirmatiouns-Code leeft of um $4.\n\nMerci,\n\n{{SITENAME}}\n\n----\n\nFir d'Confirmatioun vun der E-Mail-Adress ofzebriechen (well Dir de Kont net registréiert hutt oder aus anere Grënn), klickt op dësen Ofbroch-Link:\n\n$5",
+	"growthexperiments-signupcampaign-title": "Merci fir Ären Don! Gitt elo en Deel vun der Communautéit vun Auteure fir d'Wikipedia elo nach besser ze maachen",
+	"growthexperiments-signupcampaign-body": "Op der Wikipedia Ännerunge maache kann esou einfach sinn, wéi e Link derbäisetzen oder e Wuert änneren. Nodeems Dir Iech e Kont ugeluecht hutt, kënnt Dir Virschléi fir Artikelen an {{GENDER:|Ären}} Interessensgebidder kréien.",
 	"growthexperiments-signupcampaign-bullet1": "Virgeschloen Artikelen aus {{GENDER:Ären}} Interessensgebidder",
-	"growthexperiments-signupcampaign-bullet2": "Frot Hëllef bei engem erfuerenen Editeur",
+	"growthexperiments-signupcampaign-bullet2": "Frot ëm Hëllef bei engem erfuerenen Editeur",
 	"growthexperiments-signupcampaign-bullet3": "Fänkt mat klengen, einfachen Ännerungen un",
 	"growthexperiments-thankyoupage-bullet1": "Einfach Aufgaben, déi Ären Interessen entspriechen",
-	"growthexperiments-thankyoubanner-bullet1": "Einfach Aufgaben, déi Ären Interessen entspriechen"
+	"growthexperiments-thankyoubanner-bullet1": "Einfach Aufgaben, déi Ären Interessen entspriechen",
+	"growthexperiments-campaigns-footer": "Wann Dir {{GENDER:|Äre}} Kont op dëser Säit uleet, gëtt e fir Erfaarungs- an Analyszwecker mat dëser Campagne associéiert."
 }
