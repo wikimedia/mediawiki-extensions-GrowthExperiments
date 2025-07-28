@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Balyozxane",
-			"Bikarhêner"
+			"Bikarhêner",
+			"Guherto"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Bi xêr hatî}}, $1!",
@@ -40,7 +41,7 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Na, Min nizanibû karibûm Wîkîpediyayê biguhêrim",
 	"welcomesurvey-question-edited-option-no-other-label": "Na, ji ber sedemên din",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Nayê bîra min",
-	"welcomesurvey-question-email-label": "Navnîşana e-nameyê (ne pêwîst e)",
+	"welcomesurvey-question-email-label": "Navnîşana e-nameyê (ne mecbûrî)",
 	"welcomesurvey-question-email-placeholder": "Navnîşana {{GENDER:|xwe}} ya e-nameyê binivîse...",
 	"welcomesurvey-question-email-help": "Xuya ye dema te hesabekî nû çêkir, {{GENDER:|te}} e-nameya xwe nenivîsî. Em <strong>pêşniyaz dikin</strong> ku binivîsî, ji ber ku heke şîfreya xwe ji bîr bikî, e-name hewce ye ku hesabê xwe bifilitînî.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} nêzîkî bi 300 zimanan heye. Zimanên din hene yên ku {{GENDER:|tu}} dixwînî û dinivîsî?",
