@@ -13,7 +13,7 @@ use StatusValue;
 class ConfigurationLoaderTraitTest extends MediaWikiUnitTestCase {
 
 	/**
-	 * @param mixed $taskTypesResult The value to return from loadTaskTypes()
+	 * @param TaskType[]|StatusValue $taskTypesResult The value to return from loadTaskTypes()
 	 * @return mixed Instance of anonymous class using ConfigurationLoaderTrait
 	 * @phan-return object
 	 */
@@ -22,6 +22,7 @@ class ConfigurationLoaderTraitTest extends MediaWikiUnitTestCase {
 		return new class( $taskTypesResult ) {
 			use ConfigurationLoaderTrait;
 
+			/** @var TaskType[]|StatusValue */
 			private $taskTypesResult;
 
 			public function __construct( $taskTypesResult ) {
