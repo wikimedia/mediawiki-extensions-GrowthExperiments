@@ -209,7 +209,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Afficher {{GENDER:$2|votre}} question sur la page de discussion de {{GENDER:$2|votre}} {{GENDER:$1|tuteur|tutrice}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Question de [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Question de [[User:$1|$1]] sur [[$2]]",
-	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "<span class=\"plainlinks\">[[User:$2|$2]]</span> le mentor de [[User:$1|$1]], est absent.",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Le mentor de [[User:$1|$1]] <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> est absent.",
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Affichage des données d’impact pour $1",
 	"growthexperiments-specialimpact-invalid-username": "Nom d’utilisateur manquant ou incorrect.",
