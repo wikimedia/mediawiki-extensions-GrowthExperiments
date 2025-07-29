@@ -43,7 +43,6 @@ class VariantHooks implements
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
 	public const VARIANT_NO_LINK_RECOMMENDATION = 'no-link-recommendation';
-	public const VARIANT_GET_STARTED_NOTIFICATION = 'get-started-notification';
 
 	/**
 	 * This defines the allowed values for the variant preference. The default value is defined
@@ -68,9 +67,10 @@ class VariantHooks implements
 		//     module. See task T385338 for more details.
 		// 'surfacing-structured-task' Doesn't exist anymore. Was used for A/B testing the
 		// Surfacing Structured Tasks experiment (see T362584 for details).
+		// 'get-started-notification' Doesn't exist anymore. Was used for A/B testing different notification delays
+		// in testwiki but never promoted to any other wiki, (T392256)
 		self::VARIANT_CONTROL,
 		self::VARIANT_NO_LINK_RECOMMENDATION,
-		self::VARIANT_GET_STARTED_NOTIFICATION,
 	];
 
 	/** User option name for storing variants. */
@@ -83,11 +83,6 @@ class VariantHooks implements
 	private SpecialPageFactory $specialPageFactory;
 	private Config $config;
 
-	/**
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param CampaignConfig $campaignConfig
-	 * @param SpecialPageFactory $specialPageFactory
-	 */
 	public function __construct(
 		UserOptionsManager $userOptionsManager,
 		CampaignConfig $campaignConfig,
