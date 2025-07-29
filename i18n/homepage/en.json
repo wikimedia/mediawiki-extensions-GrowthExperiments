@@ -181,6 +181,7 @@
 	"growthexperiments-homepage-mentorship-question-subject": "Question from [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Question from [[User:$1|$1]] on [[$2]]",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]]'s mentor <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> is away.",
+	"growthexperiments-homepage-mentorship-system-message": "Note: $1",
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Showing impact data for $1",
 	"growthexperiments-specialimpact-invalid-username": "Missing or invalid username.",

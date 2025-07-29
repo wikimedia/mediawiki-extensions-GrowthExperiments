@@ -106,10 +106,18 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 		return ":''" . $disclaimer . "''\n" . $body;
 	}
 
-	private function getAwayDisclaimerText( string $mentorUsername, string $menteeUsername ): string {
+	private function wrapSystemMessage( string $message ): string {
 		return $this->getContext()
+			->msg( 'growthexperiments-homepage-mentorship-system-message' )
+			->plaintextParams( $message )
+			->inContentLanguage()->plain();
+	}
+
+	private function getAwayDisclaimerText( string $mentorUsername, string $menteeUsername ): string {
+		$disclaimer = $this->getContext()
 			->msg( 'growthexperiments-homepage-mentorship-question-disclaimer-mentor-away' )
 			->plaintextParams( $menteeUsername, $mentorUsername )
 			->inContentLanguage()->plain();
+		return $this->wrapSystemMessage( $disclaimer );
 	}
 }
