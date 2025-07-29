@@ -363,6 +363,9 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				[
 					'log_type' => 'create',
 					'log_actor' => $user->getActorId(),
+					// TODO: Eventually we might want to accept an Authority to count deleted
+					// logs if the user has the right to view them.
+					'log_deleted' => 0,
 					// FIXME: This should have a clause for log_namespace => NS_MAIN,
 					// but that would require creating a new index to include the namespace
 				]

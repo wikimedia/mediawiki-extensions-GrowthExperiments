@@ -90,6 +90,14 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 			TemplateBasedTaskTypeHandler::NEWCOMER_TASK_COPYEDIT_TAG, null, $newcomerTaskRevision
 		);
 
+		// Mark the page creation entry for "Baz" as deleted, so that it is not counted
+		$this->getDb()->newUpdateQueryBuilder()
+			->update( 'logging' )
+			->set( [ 'log_deleted' => 15 ] )
+			->where( [ 'log_type' => 'create', 'log_title' => 'Baz' ] )
+			->caller( __METHOD__ )
+			->execute();
+
 		ConvertibleTimestamp::setFakeTime( '20221002130000' );
 		$thanker = $this->getTestUser()->getUser();
 		$this->doApiRequestWithToken( [
@@ -110,6 +118,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertSame( (int)wfTimestamp( TS_UNIX, '20221002120000' ), $userImpact->getLastEditTimestamp() );
 		$this->assertSame( 1, $userImpact->getReceivedThanksCount() );
 		$this->assertSame( 0, $userImpact->getGivenThanksCount() );
+		$this->assertSame( 2, $userImpact->getTotalArticlesCreatedCount() );
 		$thankerUserImpact = $userImpactLookup->getUserImpact( $thanker );
 		$this->assertSame( 1, $thankerUserImpact->getGivenThanksCount() );
 	}
