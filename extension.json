@@ -862,6 +862,13 @@
 		}
 	},
 	"ResourceModules": {
+		"ext.growthExperiments.NotificationsTracking": {
+			"localBasePath": "modules/ext.growthExperiments.NotificationsTracking",
+			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.NotificationsTracking",
+			"packageFiles": [
+				"index.js"
+			]
+		},
 		"ext.growthExperiments.mobileMenu.icons": {
 			"class": "MediaWiki\\ResourceLoader\\OOUIIconPackModule",
 			"selectorWithoutVariant": ".minerva-icon.minerva-icon--{name}",
@@ -2866,6 +2873,10 @@
 		"GEImproveToneSuggestedEditEnabled": {
 			"value": false,
 			"description": "Enable the Improve Tone feature so newcomers can spot non-neutral wording and receive in-context guidance to help users rewrite a sentence in a more encyclopedic tone."
+		},
+		"GENotificationsTrackingEnabled": {
+			"value": false,
+			"description": "Enable GrowthExperiments notification tracking"
 		}
 	},
 	"SpecialPages": {

@@ -86,6 +86,15 @@ class LevelingUpHooks implements
 	 * @inheritDoc
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
+		$user = $out->getUser();
+		$trackingEnabled = $this->config->get( 'GENotificationsTrackingEnabled' );
+		if (
+			$user->isRegistered()
+			&& LevelingUpManager::isEnabledForUser( $user, $this->config )
+			&& $trackingEnabled
+		) {
+			$out->addModules( 'ext.growthExperiments.NotificationsTracking' );
+		}
 		// VE sets a query parameter, but there is no elegant way to detect post-edit reloads
 		// in the wikitext editor. Check the JS variable that it uses to configure the notice.
 		$isPostEditReload = $out->getRequest()->getCheck( 'venotify' )
@@ -97,8 +106,8 @@ class LevelingUpHooks implements
 			// an article, and the user just passed the threshold for the invite.
 			!$isPostEditReload
 			|| ( !$out->getTitle() || !$out->getTitle()->inNamespace( NS_MAIN ) )
-			|| !LevelingUpManager::isEnabledForUser( $out->getUser(), $this->config )
-			|| !$this->levelingUpManager->shouldInviteUserAfterNormalEdit( $out->getUser() )
+			|| !LevelingUpManager::isEnabledForUser( $user, $this->config )
+			|| !$this->levelingUpManager->shouldInviteUserAfterNormalEdit( $user )
 		) {
 			return;
 		}
