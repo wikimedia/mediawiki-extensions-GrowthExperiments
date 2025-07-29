@@ -3,16 +3,17 @@
 		"authors": [
 			"Robby",
 			"Soued031",
-			"Volvox"
+			"Volvox",
+			"GilPe"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Wëllkomm}} $1!",
 	"welcomesurvey-save-confirmation-title": "Merci! {{GENDER:|Är}} Äntwerte goufe gespäichert.",
-	"welcomesurvey-save-confirmation-text": "{{GENDER:|Är}} Äntwerten hëllefen eis dobäi fir Iech nëtzlech Weeër un d'Hand ze ginn, wéi Dir op der Wikipedia lassleeë kënnt.",
-	"welcomesurvey-subtitle": "Hëlleft eis {{GENDER:|Är}} Erfarungen op Wikipedia ze verbessern, andeems Dir e puer optional Froe beäntwert.",
+	"welcomesurvey-save-confirmation-text": "{{GENDER:|Är}} Äntwerten hëllefen eis dobäi, Iech nëtzlech Hiweiser ze ginn, wéi Dir op der Wikipedia lassleeë kënnt.",
+	"welcomesurvey-subtitle": "Hëlleft eis {{GENDER:|Är}} Erfarungen op der Wikipedia ze verbesseren, andeems Dir e puer optional Froe beäntwert.",
 	"welcomesurvey-save-btn": "Fäerdeg",
 	"welcomesurvey-skip-btn": "Dës Ëmfro {{GENDER:$1|iwwersprangen}}",
-	"welcomesurvey-close-btn": "Zoumaachen an zréck op $1",
+	"welcomesurvey-close-btn": "Zoumaachen an zeréck op $1",
 	"welcomesurvey-privacy-policy-link-text": "Fir méi iwwer Donnéeë vun neien Editeure gewuer ze ginn",
 	"welcomesurvey-privacy-footer-text": "D'Wikimedia Foundation benotzt {{GENDER:$1|Är}} Äntwerte fir Iech ze hëllefen op {{SITENAME}} Ännerungen ze maachen. [$2 Weider Informatiounen an eiser Dateschutzerkläerung].",
 	"welcomesurvey-sidebar-editing-title": "Ufänke mat Änneren",
