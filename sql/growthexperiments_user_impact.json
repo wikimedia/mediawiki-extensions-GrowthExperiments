@@ -17,7 +17,7 @@
 			{
 				"name": "geui_data",
 				"comment": "Impact data as an arbitrary JSON object.",
-				"type": "binary",
+				"type": "blob",
 				"options": { "length": 16777215, "notnull": true }
 			}
 		],

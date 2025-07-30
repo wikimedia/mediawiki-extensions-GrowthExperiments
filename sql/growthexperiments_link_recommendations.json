@@ -18,7 +18,7 @@
 			{
 				"name": "gelr_data",
 				"comment": "Link recommendation data as an arbitrary JSON object.",
-				"type": "binary",
+				"type": "blob",
 				"options": { "length": 16777215, "notnull": false }
 			}
 		],

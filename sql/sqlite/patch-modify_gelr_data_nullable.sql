@@ -8,24 +8,27 @@ SELECT
   gelr_page,
   gelr_data
 FROM /*_*/growthexperiments_link_recommendations;
+
 DROP TABLE /*_*/growthexperiments_link_recommendations;
 
 
 CREATE TABLE /*_*/growthexperiments_link_recommendations (
-    gelr_revision INTEGER UNSIGNED NOT NULL,
-    gelr_page INTEGER UNSIGNED NOT NULL,
-    gelr_data BLOB DEFAULT NULL,
-    PRIMARY KEY(gelr_revision)
-  );
+  gelr_revision INTEGER UNSIGNED NOT NULL,
+  gelr_page INTEGER UNSIGNED NOT NULL,
+  gelr_data BLOB DEFAULT NULL,
+  PRIMARY KEY(gelr_revision)
+);
+
 INSERT INTO /*_*/growthexperiments_link_recommendations (
-    gelr_revision, gelr_page, gelr_data
-  )
+  gelr_revision, gelr_page, gelr_data
+)
 SELECT
   gelr_revision,
   gelr_page,
   gelr_data
 FROM
   /*_*/__temp__growthexperiments_link_recommendations;
+
 DROP TABLE /*_*/__temp__growthexperiments_link_recommendations;
 
 CREATE INDEX gelr_page ON /*_*/growthexperiments_link_recommendations (gelr_page);

@@ -16,7 +16,7 @@
 			{
 				"name": "gemm_mentor_role",
 				"type": "binary",
-				"options": { "notnull": true }
+				"options": { "notnull": true, "length": 255 }
 			},
 			{
 				"name": "gemm_mentee_is_active",

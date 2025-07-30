@@ -3,6 +3,7 @@
 -- Do not modify this file directly.
 -- See https://www.mediawiki.org/wiki/Manual:Schema_changes
 DROP INDEX gemm_mentor;
+
 ALTER TABLE growthexperiments_mentor_mentee
   ADD gemm_mentee_is_active BOOLEAN DEFAULT true NOT NULL;
 
