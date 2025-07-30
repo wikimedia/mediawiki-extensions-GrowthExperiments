@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toniher"
+			"Toniher",
+			"Yupik"
 		]
 	},
-	"growthexperiments-rcfilters-mentorship-title": "Mentorització"
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nom d'usuari",
+	"growthexperiments-rcfilters-mentorship-title": "Mentorització",
+	"growthexperiments-manage-mentors-username": "Nom d'usuari"
 }

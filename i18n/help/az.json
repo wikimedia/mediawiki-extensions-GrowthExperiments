@@ -5,7 +5,8 @@
 			"Nemoralis",
 			"Serkanland",
 			"Verman1",
-			"Vesely35"
+			"Vesely35",
+			"Wertuose"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Redaktor köməkçisi panelini aç",
@@ -16,7 +17,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Redaktə etməklə bağlı ən yaxşı yardım səhifələri",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Daha çox kömək məqalələrinə bax",
 	"growthexperiments-help-panel-question-widget-header": "Sualını İcma Kömək Masasına göndər",
-	"growthexperiments-help-panel-question-placeholder": "Hərkəsi salamla və sualını {{GENDER:$1|ver}}",
+	"growthexperiments-help-panel-question-placeholder": "Hamını salamla və {{GENDER:$1|sualını}} ver",
 	"growthexperiments-help-panel-back-home": "Geriyə",
 	"growthexperiments-help-panel-close": "Oldu",
 	"growthexperiments-help-panel-home-title": "Redaktə üçün kömək al",
