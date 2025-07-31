@@ -584,7 +584,6 @@
 	"growthexperiments-homepage-special-contribute-cta": "לראות את העריכות המוצעות",
 	"growthexperiments-homepage-impact-contributions-link": "הצגת כל העריכות",
 	"growthexperiments-levelingup-getstarted-notification-header": "{{GENDER:$2|נסה|נסי}} עריכה מוצעת {{GENDER:$2|והתחל|והתחילי}} לבנות את מיומנויות העריכה שלך",
-	"growthexperiments-levelingup-getstarted-notification-header-new": "{{GENDER:$2|סקרן|סקרנית}} לגבי עריכה באתר {{SITENAME}}? הידע שלך מצטרף לקהילה שמגיעה למיליונים.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "לנסות עריכות מוצעות",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "מידע נוסף",
 	"growthexperiments-levelingup-keepgoing-notification-header": "עשית {{PLURAL:$3|עריכה מוצעת אחת|$3 עריכות מוצעות}}. {{GENDER:$2|תמשיך|תמשיכי}} ללמוד עוד מיומנויות חדשות.",

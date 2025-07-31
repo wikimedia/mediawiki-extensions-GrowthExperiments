@@ -597,7 +597,6 @@
 	"growthexperiments-homepage-special-contribute-cta": "Önerilen değişiklikleri gör",
 	"growthexperiments-homepage-impact-contributions-link": "Tüm değişiklikleri görüntüle",
 	"growthexperiments-levelingup-getstarted-notification-header": "Önerilen bir düzenleme deneyin ve düzenleme {{GENDER:$2|becerilerinizi}} geliştirmeye başlayın",
-	"growthexperiments-levelingup-getstarted-notification-header-new": "{{SITENAME}} düzenleme konusunda meraklı mısınız? {{GENDER:$2|Bilginiz}} milyonlara ulaşan bir topluluğa katılıyor.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Önerilen düzenlemeleri deneyin",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Daha fazla bilgi edinin",
 	"growthexperiments-levelingup-keepgoing-notification-header": "$3 {{PLURAL:$3|önerilen düzenleme}} {{GENDER:$2|yaptınız}}. Daha fazla yeni beceri öğrenmeye devam edin.",

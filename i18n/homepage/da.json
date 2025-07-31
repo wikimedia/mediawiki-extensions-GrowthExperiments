@@ -574,7 +574,6 @@
 	"growthexperiments-homepage-special-contribute-cta": "Se foreslåede redigeringer",
 	"growthexperiments-homepage-impact-contributions-link": "Vis alle redigeringer",
 	"growthexperiments-levelingup-getstarted-notification-header": "Prøv en foreslået redigering og begynd at opbygge {{GENDER:$2| dine}} redigeringsfærdigheder",
-	"growthexperiments-levelingup-getstarted-notification-header-new": "Nysgerrig efter at redigere {{SITENAME}}? {{GENDER:$2|Din}} viden slutter sig til et fællesskab, der når ud til millioner.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Prøv foreslåede redigeringer",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Lær mere",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du}} har gjort $3 foreslåede {{PLURAL:$3|redigering|redigeringer}}. Fortsæt for at udvikle dine færdigheder.",
