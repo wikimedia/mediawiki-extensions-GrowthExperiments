@@ -476,18 +476,44 @@ $specialPageAliases['vi'] = [
 	'QuitMentorship' => [ 'Ngừng_làm_cố_vấn' ],
 ];
 
+/** Chinese */
+$specialPageAliases['zh'] = [
+	'WelcomeSurvey' => [ 'WelcomeSurvey' ],
+	'Homepage' => [ 'Homepage' ],
+	'Impact' => [ 'Impact' ],
+	'ClaimMentee' => [ 'ClaimMentee' ],
+	'NewcomerTasksInfo' => [ 'NewcomerTasksInfo' ],
+	'EditGrowthConfig' => [ 'EditGrowthConfig' ],
+	'MentorDashboard' => [ 'MentorDashboard' ],
+	'QuitMentorship' => [ 'QuitMentorship' ],
+	'ManageMentors' => [ 'ManageMentors' ],
+	'EnrollAsMentor' => [ 'EnrollAsMentor' ],
+];
+
 /** Simplified Chinese */
 $specialPageAliases['zh-hans'] = [
 	'WelcomeSurvey' => [ '欢迎调查' ],
-	'Homepage' => [ '首页' ],
-	'Impact' => [ '影响' ],
+	'Homepage' => [ '新手主页', '首页' ],
+	'Impact' => [ '影响力', '影响' ],
 	'ClaimMentee' => [ '认领学员' ],
+	'NewcomerTasksInfo' => [ '新手任务信息' ],
+	'EditGrowthConfig' => [ '编辑Growth配置' ],
+	'MentorDashboard' => [ '导师面板' ],
+	'QuitMentorship' => [ '退出导师计划' ],
+	'ManageMentors' => [ '管理导师' ],
+	'EnrollAsMentor' => [ '登记为导师' ],
 ];
 
 /** Traditional Chinese */
 $specialPageAliases['zh-hant'] = [
 	'WelcomeSurvey' => [ '歡迎調查' ],
-	'Homepage' => [ '首頁' ],
+	'Homepage' => [ '新手主頁', '首頁' ],
 	'Impact' => [ '影響' ],
 	'ClaimMentee' => [ '認領學員' ],
+	'NewcomerTasksInfo' => [ '新手任務資訊' ],
+	'EditGrowthConfig' => [ '編輯Growth設定' ],
+	'MentorDashboard' => [ '導師面板' ],
+	'QuitMentorship' => [ '退出導師計畫' ],
+	'ManageMentors' => [ '管理導師' ],
+	'EnrollAsMentor' => [ '登記為導師' ],
  ];
