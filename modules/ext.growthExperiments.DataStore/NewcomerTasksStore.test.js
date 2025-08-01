@@ -102,7 +102,7 @@ describe( 'DataStore NewcomerTasksStore', () => {
 		const store = new NewcomerTasksStore( { filters } );
 		expect( store ).toBeDefined();
 	} );
-	// eslint-disable-next-line es-x/no-async-functions
+
 	it( 'unsets the loading state when requests fail', async () => {
 		const filters = new FiltersStore();
 		const store = new NewcomerTasksStore( { filters } );
@@ -119,7 +119,7 @@ describe( 'DataStore NewcomerTasksStore', () => {
 		await expect( () => store.fetchTasks( 'test2' ) ).rejects.toEqual( 'Fail' );
 		expect( store.isTaskQueueLoading() ).toBe( false );
 	} );
-	// eslint-disable-next-line es-x/no-async-functions
+
 	it( 'discards last-1 request', async () => {
 		const filters = new FiltersStore();
 		const store = new NewcomerTasksStore( { filters } );

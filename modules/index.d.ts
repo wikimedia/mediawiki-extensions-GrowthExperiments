@@ -1,1 +1,1 @@
-import "@wikimedia/types-wikimedia";
+import '@wikimedia/types-wikimedia';

@@ -12,20 +12,6 @@
 				"wikimedia/language/es6",
 				"wikimedia/mediawiki"
 			]
-		},
-		{
-			"files": [
-				"**/*.ts"
-			],
-			"extends": [
-				"@wmde/wikimedia-typescript"
-			],
-			"rules": {
-				"comma-dangle": [
-					"error",
-					"always-multiline"
-				]
-			}
 		}
 	]
 }
