@@ -60,9 +60,7 @@ class PraiseworthyMenteeSuggester {
 		);
 
 		if ( $this->userImpactLookup instanceof DatabaseUserImpactStore ) {
-			$userIds = array_map( static function ( UserIdentity $mentee ) {
-				return $mentee->getId();
-			}, $mentees );
+			$userIds = array_map( static fn ( UserIdentity $user ) => $user->getId(), $mentees );
 			return $this->userImpactLookup->batchGetUserImpact( $userIds );
 		} else {
 			// There is no batching in other implementations than DatabaseUserImpactStore; fetch

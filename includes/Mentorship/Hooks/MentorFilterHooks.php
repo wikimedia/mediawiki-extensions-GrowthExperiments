@@ -130,9 +130,7 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 		}
 
 		$starredMentees = $this->starredMenteesStore->getStarredMentees( $user );
-		$starredMenteeIds = array_map( static function ( UserIdentity $user ) {
-			return $user->getId();
-		}, $starredMentees );
+		$starredMenteeIds = array_map( static fn ( UserIdentity $user ) => $user->getId(), $starredMentees );
 
 		$this->menteeCache->set( $key, $starredMenteeIds );
 		return $starredMenteeIds;
@@ -155,9 +153,7 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 			false,
 			false
 		);
-		$menteeIds = array_map( static function ( UserIdentity $user ) {
-			return $user->getId();
-		}, $mentees );
+		$menteeIds = array_map( static fn ( UserIdentity $user ) => $user->getId(), $mentees );
 		$starredMenteeIds = $this->getStarredMenteeIds( $user );
 		$unstarredMenteeIds = array_diff( $menteeIds, $starredMenteeIds );
 

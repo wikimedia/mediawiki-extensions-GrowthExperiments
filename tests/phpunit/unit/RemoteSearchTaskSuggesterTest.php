@@ -92,9 +92,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	public static function provideSuggest() {
 		$makeTask = static function ( TaskType $taskType, string $titleText, array $topics = [] ) {
 			$task = new Task( $taskType, new TitleValue( NS_MAIN, $titleText ) );
-			$task->setTopics( array_map( static function ( string $topicId ) {
-				return new Topic( $topicId );
-			}, array_keys( $topics ) ) );
+			$task->setTopics( array_map( static fn ( string $id ) => new Topic( $id ), array_keys( $topics ) ) );
 			return $task;
 		};
 

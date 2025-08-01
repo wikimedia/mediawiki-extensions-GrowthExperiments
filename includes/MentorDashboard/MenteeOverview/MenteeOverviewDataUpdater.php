@@ -111,12 +111,7 @@ class MenteeOverviewDataUpdater {
 
 		// Delete all mentees of $mentor we did not update
 		$menteeIdsToDelete = array_diff(
-			array_map(
-				static function ( $mentee ) {
-					return $mentee->getId();
-				},
-				$mentees
-			),
+			array_map( static fn ( UserIdentity $user ) => $user->getId(), $mentees ),
 			$updatedMenteeIds
 		);
 		if ( $menteeIdsToDelete !== [] ) {

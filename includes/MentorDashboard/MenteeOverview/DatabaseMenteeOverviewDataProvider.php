@@ -84,9 +84,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 					return [];
 				}
 
-				$menteeIds = array_map( static function ( $mentee ) {
-					return $mentee->getId();
-				}, $mentees );
+				$menteeIds = array_map( static fn ( UserIdentity $user ) => $user->getId(), $mentees );
 
 				$res = $this->growthLB->getConnection( DB_REPLICA )->newSelectQueryBuilder()
 					->select( [ 'mentee_id', 'mentee_data' ] )

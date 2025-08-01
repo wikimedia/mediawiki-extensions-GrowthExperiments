@@ -121,9 +121,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return int[]
 	 */
 	private function getIds( array $users ): array {
-		return array_map( static function ( $user ) {
-			return $user->getId();
-		}, $users );
+		return array_map( static fn ( UserIdentity $user ) => $user->getId(), $users );
 	}
 
 	/**
@@ -161,9 +159,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 		$userIdentities = CentralAuthServices::getGlobalUserSelectQueryBuilderFactory()
 			->newGlobalUserSelectQueryBuilder()
-			->whereUserNames( array_map( static function ( UserIdentity $user ) {
-				return $user->getName();
-			}, $mentees ) )
+			->whereUserNames( array_map( static fn ( UserIdentity $user ) => $user->getName(), $mentees ) )
 			->whereLocked( true )
 			->caller( __METHOD__ )
 			->fetchLocalUserIdentities();
