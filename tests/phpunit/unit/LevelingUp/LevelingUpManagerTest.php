@@ -68,6 +68,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 				'GELevelingUpGetStartedMaxTotalEdits' => 10,
 				'GELevelingUpKeepGoingNotificationSendAfterSeconds' => 172800,
 				'GELevelingUpGetStartedNotificationSendAfterSeconds' => 172800,
+				'GELevelingUpNewNotificationsEnabled' => false,
 			] )
 		);
 		$this->assertEquals(
@@ -285,6 +286,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GELevelingUpKeepGoingNotificationSendAfterSeconds' => 172800,
 			'GELevelingUpGetStartedNotificationSendAfterSeconds' => 172800,
+			'GELevelingUpNewNotificationsEnabled' => true,
 		];
 	}
 
@@ -297,7 +299,8 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		?NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup = null,
 		?ExperimentUserManager $experimentUserManager = null,
 		?ServiceOptions $serviceOptions = null,
-		?Config $growthConfig = null
+		?Config $growthConfig = null,
+		?UserEditTracker $userEditTracker = null
 	): LevelingUpManager {
 		$defaultConfigValues = $this->getDefaultConfigValues();
 		$serviceOptions ??= new ServiceOptions(
@@ -312,7 +315,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$this->createNoOpAbstractMock( NameTableStore::class ),
 			$userOptionsLookup ?? $this->getUserOptionsLookup(),
 			$this->createNoOpAbstractMock( UserFactory::class ),
-			$this->createNoOpAbstractMock( UserEditTracker::class ),
+			$userEditTracker ?? $this->createNoOpAbstractMock( UserEditTracker::class ),
 			$jobQueueGroup ?? $this->createNoOpMock( JobQueueGroup::class ),
 			$configurationLoader ?? $this->getConfigurationLoader(),
 			$userImpactLookup ?? $this->getUserImpactLookup(),
@@ -425,6 +428,51 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			'Above maximum threshold' => [ 6, 5, false ],
 			'At maximum threshold when max=3' => [ 3, 3, true ],
 			'Above maximum threshold when max=3' => [ 4, 3, false ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideShouldSendGetStartedNotification
+	 */
+	public function testShouldSendGetStartedNotification( int $editCount, bool $expected ) {
+		$userIdentity = new UserIdentityValue( 1, 'TestUser' );
+		$userEditTracker = $this->createMock( UserEditTracker::class );
+		$userEditTracker->method( 'getUserEditCount' )
+			->willReturn( $editCount );
+
+		$levelingUpManager = $this->getLevelingUpManager(
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			$userEditTracker
+		);
+
+		$this->assertSame(
+			$expected,
+			$levelingUpManager->shouldSendGetStartedNotification( $userIdentity ),
+			"Expected shouldSendGetStarted to return " .
+			( $expected ? 'true' : 'false' ) .
+			" when edit count is 0"
+		);
+	}
+
+	/**
+	 * Data provider for testShouldSendGetStartedNotification
+	 *
+	 * Structure: [ editCount, expectedResult ]
+	 *
+	 * @return array
+	 */
+	public static function provideShouldSendGetStartedNotification() {
+		return [
+			'No edits' => [ 0, true ],
+			'Edits' => [ 1, false ],
 		];
 	}
 

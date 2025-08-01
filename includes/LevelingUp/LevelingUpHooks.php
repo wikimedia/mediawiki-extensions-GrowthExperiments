@@ -143,11 +143,14 @@ class LevelingUpHooks implements
 			'group' => 'positive',
 			'section' => 'message',
 			'canNotifyAgent' => true,
-			'presentation-model' => EchoGetStartedPresentationModel::class,
+			'presentation-model' => EchoGetStartedBasePresentationModel::class,
 			AttributeManager::ATTR_LOCATORS => [
 				[ UserLocator::class . '::locateEventAgent' ]
 			]
 		];
+		$notifications['get-started-no-edits'] = array_merge( $notifications['get-started'], [
+			'presentation-model' => EchoGetStartedPresentationModel::class,
+		] );
 
 		$icons['growthexperiments-get-started'] = [
 			'path' => 'GrowthExperiments/images/notifications-get-started.svg'

@@ -116,6 +116,7 @@
 		"notificationGetStartedJob": {
 			"class": "GrowthExperiments\\LevelingUp\\NotificationGetStartedJob",
 			"services": [
+				"MainConfig",
 				"StatsFactory",
 				"UserIdentityLookup",
 				"SpecialPageFactory",
@@ -2562,6 +2563,10 @@
 		"GELevelingUpManagerTaskTypeCountThresholdMultiple": {
 			"description": "The task type count threshold to use when determining whether to prompt a user to try a new task type. If the user has completed more than this number of a particular task type, it will not be suggested as a next task type to try. If a user completes edits for a task type in a multiple of of this number (e.g. 3, 6, or 12 with the default value), then the user is prompted to try a new task type.",
 			"value": 3
+		},
+		"GELevelingUpNewNotificationsEnabled": {
+			"description": "Feature flag to enable the second version of leveling up notifications text and audience.",
+			"value": false
 		},
 		"GERefreshUserImpactDataMaintenanceScriptEnabled": {
 			"description": "Feature flag to determine if the refreshUserImpactData.php maintenance script may run.",

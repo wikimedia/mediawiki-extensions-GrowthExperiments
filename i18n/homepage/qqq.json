@@ -611,6 +611,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "Text to show in call-to-action button in card displayed on Special:Contribute.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-impact-contributions-link": "Text for link to [Special:Contributions] in impact module.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-levelingup-getstarted-notification-header": "Text shown in header of a notification sent to new editors to encourage them to try suggested edits. Parameters:\n\n* $2 - the user's gender.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-levelingup-getstarted-noedits-notification-header": "Text shown in header of a notification sent to new registered accounts who have not yet edited to encourage them to edit. Parameters:\n\n* $2 - the user's gender.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Text shown in main call to action button from a notification sent to new editors to encourage them to try suggested edits.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-levelingup-keepgoing-notification-header": "Text shown in header of a notification sent to new editors. Parameters:\n\n* $2 - the user's gender.\n* $3 - the user's edit count.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Text shown in label of primary link in a notification sent to new editors.\n\n{{doc-growthexperiments-homepage}}",

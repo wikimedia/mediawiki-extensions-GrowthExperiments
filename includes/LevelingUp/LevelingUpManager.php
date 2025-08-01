@@ -47,6 +47,7 @@ class LevelingUpManager {
 		'GENewcomerTasksLinkRecommendationsEnabled',
 		'GELevelingUpKeepGoingNotificationSendAfterSeconds',
 		'GELevelingUpGetStartedNotificationSendAfterSeconds',
+		'GELevelingUpNewNotificationsEnabled',
 	];
 
 	private ServiceOptions $options;
@@ -355,8 +356,10 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public function shouldSendGetStartedNotification( UserIdentity $userIdentity ): bool {
+		if ( $this->options->get( 'GELevelingUpNewNotificationsEnabled' ) ) {
+			return $this->userEditTracker->getUserEditCount( $userIdentity ) === 0;
+		}
 		$maxEdits = (int)$this->growthConfig->get( 'GELevelingUpGetStartedMaxTotalEdits' );
-
 		return $this->getSuggestedEditsCount( $userIdentity ) === 0 &&
 			$this->userEditTracker->getUserEditCount( $userIdentity ) < $maxEdits;
 	}
