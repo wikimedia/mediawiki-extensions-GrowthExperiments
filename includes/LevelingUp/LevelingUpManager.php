@@ -365,6 +365,20 @@ class LevelingUpManager {
 	}
 
 	/**
+	 * Whether to send the get started re-engage to a user.
+	 *
+	 * @param UserIdentity $userIdentity
+	 * @return bool
+	 */
+	public function shouldSendReEngageNotification( UserIdentity $userIdentity ): bool {
+		$maxEdits = (int)$this->growthConfig->get( 'GELevelingUpGetStartedMaxTotalEdits' );
+
+		return $this->getSuggestedEditsCount( $userIdentity ) === 0 &&
+			$this->userEditTracker->getUserEditCount( $userIdentity ) > 0 &&
+			$this->userEditTracker->getUserEditCount( $userIdentity ) <= $maxEdits;
+	}
+
+	/**
 	 * @param string $jobName Job name; use NotificationKeepGoingJob::JOB_NAME or
 	 * NotificationGetStartedJob::JOB_NAME respectively
 	 * @param UserIdentity $recepientUser
@@ -452,6 +466,27 @@ class LevelingUpManager {
 	public function scheduleGettingStartedNotification( UserIdentity $user ): bool {
 		return $this->scheduleNotificationJob(
 			NotificationGetStartedJob::JOB_NAME,
+			$user,
+			$this->getNotificationDelayForUser(
+				$this->options->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' ),
+				$user
+			)
+		);
+	}
+
+	/**
+	 * Schedule the re-engage notification
+	 *
+	 * The caller is expected to check LevellingUpManager::isEnabledForUser, as appropriate.
+	 *
+	 * Uses same delay as the get started notification
+	 *
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function scheduleReEngageNotification( UserIdentity $user ): bool {
+		return $this->scheduleNotificationJob(
+			NotificationReEngageJob::JOB_NAME,
 			$user,
 			$this->getNotificationDelayForUser(
 				$this->options->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' ),

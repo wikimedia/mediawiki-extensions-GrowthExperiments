@@ -588,6 +588,8 @@
 	"growthexperiments-levelingup-getstarted-notification-header": "Try a suggested edit and start building {{GENDER:$2|your}} editing skills",
 	"growthexperiments-levelingup-getstarted-noedits-notification-header": "Curious about editing {{SITENAME}}? {{GENDER:$2|Your}} knowledge joins a community reaching millions.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Try suggested edits",
+	"growthexperiments-levelingup-reengage-notification-header": "Thanks for editing! Try suggested edits to develop new skills, and learn about best practices.",
+	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Try suggested edits",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|You’ve}} made $3 {{PLURAL:$3|suggested edit|suggested edits}}. Keep going to learn more new skills.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Make a suggested edit",
 	"echo-category-title-ge-newcomer": "Growth features",

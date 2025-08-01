@@ -837,6 +837,9 @@ class HomepageHooks implements
 
 			$this->levelingUpManager->scheduleKeepGoingNotification( $user );
 			$this->levelingUpManager->scheduleGettingStartedNotification( $user );
+			if ( $this->config->get( 'GELevelingUpNewNotificationsEnabled' ) ) {
+				$this->levelingUpManager->scheduleReEngageNotification( $user );
+			}
 		}
 	}
 

@@ -122,6 +122,15 @@
 				"SpecialPageFactory",
 				"GrowthExperimentsLevelingUpManager"
 			]
+		},
+		"notificationReEngageJob": {
+			"class": "GrowthExperiments\\LevelingUp\\NotificationReEngageJob",
+			"services": [
+				"StatsFactory",
+				"UserIdentityLookup",
+				"SpecialPageFactory",
+				"GrowthExperimentsLevelingUpManager"
+			]
 		}
 	},
 	"APIModules": {

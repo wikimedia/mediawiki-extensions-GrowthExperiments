@@ -476,6 +476,77 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		];
 	}
 
+	/**
+	 * @dataProvider provideShouldSendReEngageNotification
+	 */
+	public function testShouldSendReEngageNotification(
+		int $suggestedEditCount,
+		int $editCount,
+		int $maxThreshold,
+		bool $expected
+	) {
+		$minThreshold = TestingAccessWrapper::constant(
+			LevelingUpManager::class,
+			'KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM'
+		);
+
+		$userIdentity = new UserIdentityValue( 1, 'TestUser' );
+
+		$userImpact = $this->createMock( UserImpact::class );
+		$userImpact->method( 'getNewcomerTaskEditCount' )
+			->willReturn( $suggestedEditCount );
+		$userEditTracker = $this->createMock( UserEditTracker::class );
+		$userEditTracker->method( 'getUserEditCount' )
+			->willReturn( $editCount );
+
+		$userImpactLookup = $this->createMock( UserImpactLookup::class );
+		$userImpactLookup->method( 'getUserImpact' )
+			->with( $userIdentity )
+			->willReturn( $userImpact );
+
+		$growthConfig = new HashConfig( [
+			'GELevelingUpGetStartedMaxTotalEdits' => $maxThreshold,
+		] );
+
+		$levelingUpManager = $this->getLevelingUpManager(
+			null,
+			null,
+			null,
+			$userImpactLookup,
+			null,
+			null,
+			null,
+			null,
+			$growthConfig,
+			$userEditTracker
+		);
+
+		$this->assertSame(
+			$expected,
+			$levelingUpManager->shouldSendReEngageNotification( $userIdentity ),
+			"Expected shouldSendReEngageNotification to return " .
+			( $expected ? 'true' : 'false' ) .
+			" when edit count is $editCount and thresholds are min=$minThreshold, max=$maxThreshold"
+		);
+	}
+
+	/**
+	 * Data provider for testShouldSendKeepGoingNotification
+	 *
+	 * Structure: [ suggestedEditCount, editCount, maxThreshold, expectedResult ]
+	 *
+	 * @return array
+	 */
+	public static function provideShouldSendReEngageNotification() {
+		return [
+			'No edits' => [ 0, 0, 5, false ],
+			'Has suggested edits' => [ 1, 1, 5, false ],
+			'Has edits and no suggested edits below max' => [ 0, 1, 5, true ],
+			'At maximum threshold' => [ 0, 5, 5, true ],
+			'Above maximum threshold' => [ 0, 6, 5, false ],
+		];
+	}
+
 	public static function provideNotificationJobs() {
 		return [
 			'keep-going' => [
