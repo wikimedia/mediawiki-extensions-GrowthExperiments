@@ -526,7 +526,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "すべての編集を閲覧",
 	"growthexperiments-levelingup-getstarted-notification-header": "提案された編集を試して、{{GENDER:$2|あなた}}の編集スキルを向上させてください",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "おすすめの編集を試す",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "詳細",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|あなたはこれまでに}}{{PLURAL:$3|おすすめ編集}}を$3件、手がけました。続きに取り組んで、新しい技能を身につけてください。",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "おすすめの編集をする",
 	"echo-category-title-ge-newcomer": "Growth 機能",

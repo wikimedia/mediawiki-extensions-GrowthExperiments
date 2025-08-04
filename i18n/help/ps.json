@@ -54,6 +54,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-publish": "[[$1|د غوره‌توبونو اړوند نور زده کړئ]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|د ليکنو غځولو اړوند نور زده کړئ]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "د تړونو ورگډول به خلکو ته د گړندۍ زده کړې اسانتيا رامنځته کړي.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "سپوږمۍ يوازینۍ <mark class=\"positive\">طبيعي سپوږمۍ</mark> ده چې د <mark class=\"positive\">ځمکې</mark> د  <mark class=\"positive\">مدار</mark> شاوخوا راگرځي.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "وړانديزونه شايد د هغه ويکي په اړه وي چې ورته اړتيا نه لرئ، يا شايد له ناسمې ليکنې سره تړل شوې وي. پرېکړه پر {{GENDER:$1|تاسو}} ده چې ايا دوی سم دي يا ناسم.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|ماشيني وړانديزونو اړوند نور زده کړئ]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "لارښودکرښې",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "جملې بېلگه",

@@ -470,7 +470,6 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "म सल्लाहकार बन्न चाहन्न",
 	"growthexperiments-homepage-mentorship-about-done": "भयो",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|तपाईंले}} <strong>$1</strong> {{PLURAL:$1|सम्पादन}} गर्नुभएको छ (सबै हेर्नुहोस्)",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "थप जान्नुहोस्",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "सुझाव गरिएको सम्पादन गर्नुहोस्",
 	"echo-category-title-ge-newcomer": "वृद्धि सुविधाहरू"
 }

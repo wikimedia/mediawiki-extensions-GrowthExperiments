@@ -571,7 +571,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "Vis alle redigeringer",
 	"growthexperiments-levelingup-getstarted-notification-header": "Prøv en foreslått redigering og begynn å utvikle redigeringsferdighetene {{GENDER:$2|dine}}",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Prøv foreslåtte redigeringer",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Lær mer",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du}} har gjort $3 {{PLURAL:$3|foreslått redigering|foreslåtte redigeringer}}. Fortsett for å utvikle ferdighetene dine.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Gjør en foreslått redigering",
 	"echo-category-title-ge-newcomer": "Growth-funksjoner",

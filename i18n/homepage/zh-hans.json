@@ -577,7 +577,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "查看所有编辑",
 	"growthexperiments-levelingup-getstarted-notification-header": "试试建议的编辑，开始构建{{GENDER:$2|您的}}编辑技能",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "尝试编辑建议",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "了解更多",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|您已经}}完成了$3个{{PLURAL:$3|建议编辑}}，请继续学习更多新技能。",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "完成编辑建议",
 	"echo-category-title-ge-newcomer": "Growth功能",

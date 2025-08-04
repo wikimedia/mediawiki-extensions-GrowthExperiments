@@ -462,7 +462,6 @@
 	"growthexperiments-homepage-special-contribute-cta": "Прикажи предложене измене",
 	"growthexperiments-homepage-impact-contributions-link": "Прикажи све измене",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Пробајте предложене измене",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Сазнајте више",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Начинили}} сте $3 {{PLURAL:$3|предложену измену|предложенених измена}}. Само тако наставите и савладаћете нове вештине.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Начините предложену измену",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Сазнајте више"

@@ -259,7 +259,6 @@
 	"growthexperiments-homepage-special-contribute-description": "موجودہ مضامین کو مزید بہتر بنانے کے لیے چھوٹی اور سہل ترمیم (مثلاً ربط کا اضافہ یا املا وغیرہ کی درستی) کریں۔",
 	"growthexperiments-homepage-special-contribute-cta": "مجوزہ ترامیم دیکھیں",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|اپنی}} تمام ترامیم کی فہرست دیکھیں (ترامیم کی کل تعداد $1)",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "مزید تفصیلات",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2| آپ}} نے $3 {{PLURAL:$3| مجوزہ ترمیم کی ہے|مجوزہ ترامیم کی ہیں}}۔ نئی چیزیں سیکھنے کا عمل جاری رکھیں۔",
 	"echo-category-title-ge-newcomer": "ارشاد کی خصوصیات"
 }

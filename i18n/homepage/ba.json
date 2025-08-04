@@ -427,7 +427,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "Бөтә {{GENDER:$2|төҙәтеүҙәрегеҙҙе}} ($1) ҡарарға",
 	"growthexperiments-levelingup-getstarted-notification-header": "Тәҡдим ителгән төҙәтеүҙе эшләп ҡарағыҙ һәм төҙәтеү һәләттәрегеҙҙе үҫтерә {{GENDER:$2|башлағыҙ}}",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Тәҡдим ителгән төҙәтеүҙе эшләп ҡарағыҙ",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Күберәк белергә",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Һеҙ}} $3 тәҡдим ителгән төҙәтеү {{PLURAL:$3|эшләнегеҙ}}. Оҫталығығыҙҙы арттырыуҙы дауам итегеҙ.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Тәҡдим ителгән төҙәтеү эшләү",
 	"echo-category-title-ge-newcomer": "«Үҫеш» функциялары",

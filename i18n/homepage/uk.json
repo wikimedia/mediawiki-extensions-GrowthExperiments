@@ -582,7 +582,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "Перегляньте усі свої редагування",
 	"growthexperiments-levelingup-getstarted-notification-header": "Спробуйте пропоноване редагування і почніть розвивати {{GENDER:$2|свої}} навички редагування",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Спробувати пропоновані редагування",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Дізнатися більше",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Ви}} зробили $3 {{PLURAL:$3|пропоноване редагування|пропоновані редагування|пропонованих редагувань}}. Продовжуйте, і здобуватимете нові навички.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Зробіть пропоноване редагування",
 	"echo-category-title-ge-newcomer": "Функції зростання",

@@ -571,7 +571,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "Ver todas as edicións",
 	"growthexperiments-levelingup-getstarted-notification-header": "Proba unha edición suxerida e comeza a desenvolver as {{GENDER:$2|túas}} habilidades de edición",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Probar as modificacións suxeridas",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Máis información",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Fixeches}} $3 {{PLURAL:$3|edición suxerida|edicións suxeridas}}. Continúa desenvolvendo máis habilidades.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Facer unha edición suxerida",
 	"echo-category-title-ge-newcomer": "Funcionalidades de crecemento",

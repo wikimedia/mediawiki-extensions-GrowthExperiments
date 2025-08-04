@@ -591,7 +591,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "Lihat semua suntingan",
 	"growthexperiments-levelingup-getstarted-notification-header": "Cobalah saran penyuntingan dan mulai bangun keterampilan menyunting {{GENDER:$2|Anda}}",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Cobalah saran penyuntingan",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Pelajari lebih lanjut",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Anda}} telah membuat $3{{PLURAL:$3|saran penyuntingan}}. Teruskan untuk mengasah keterampilan Anda.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Buat saran penyuntingan",
 	"echo-category-title-ge-newcomer": "Fitur Growth",

@@ -199,6 +199,5 @@
 	"growthexperiments-addimage-rejectiondialog-action-cancel": "Չեղարկել",
 	"growthexperiments-addimage-skip-dialog-cancel": "Չեղարկել",
 	"growthexperiments-addimage-caption-info-dialog-confirm": "Հասկանալի է",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Դուք}} կատարել եք <strong>$1</strong> {{PLURAL:$1|խմբագրում|խմբագրումներ}} (տեսնել բոլորը)",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Իմանալ ավելին"
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Դուք}} կատարել եք <strong>$1</strong> {{PLURAL:$1|խմբագրում|խմբագրումներ}} (տեսնել բոլորը)"
 }

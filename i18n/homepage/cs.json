@@ -583,7 +583,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "Zobrazit všechny vaše editace",
 	"growthexperiments-levelingup-getstarted-notification-header": "Vyzkoušejte Editační tipy a začněte tak tvořit {{GENDER:$2|své}} editační dovednosti",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Vyzkoušet editační tipy",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Další informace",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Dokončil|Dokončila|Dokončili}} jste $3 {{PLURAL:$3|editační tip|editačních tipy|editačních tipů}}. Pokračujte v editování, abyste {{GENDER:$2|zlepšil|zlepšila|zlepšili}} své editační dovednosti.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Vyzkoušejte editační tipy",
 	"echo-category-title-ge-newcomer": "Funkce týmu Growth",

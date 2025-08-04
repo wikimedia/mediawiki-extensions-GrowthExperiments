@@ -498,7 +498,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "Žiūrėti visus {{GENDER:$2|jūsų}} pakeitimus ($1)",
 	"growthexperiments-levelingup-getstarted-notification-header": "Išbandykite siūlomą keitimą ir pradėkite lavinti {{GENDER:$2|savo}} redagavimo įgūdžius",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Išbandyti siūlomus pakeitimus",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Sužinokite daugiau",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Jūs}} atlikote $3 {{PLURAL:$3|pasiūlytą keitimą|pasiūlytus keitimus}}. Tęskite ir toliau, kad išmoktumėte naujų įgūdžių.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Atlikite siūlomą keitimą",
 	"echo-category-title-ge-newcomer": "Augimo paslaugos",

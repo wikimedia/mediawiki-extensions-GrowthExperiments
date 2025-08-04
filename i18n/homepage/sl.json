@@ -576,7 +576,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "Ogled vseh urejanj",
 	"growthexperiments-levelingup-getstarted-notification-header": "Preizkusite predlagano urejanje in začnite pridobivati{{GENDER:$2|}} spretnosti urejanja",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Preizkusite predlagana urejanja",
-	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Več o tem",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Opravili ste}} $3 {{PLURAL:$3|predlagano urejanje|predlagani urejanji|predlagana urejanja|predlaganih urejanj}}. Nadaljuje s pridobivanjem spretnosti.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Opravite predlagano urejanje",
 	"echo-category-title-ge-newcomer": "Možnosti rasti",
