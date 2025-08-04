@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\LevelingUp;
 
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
@@ -21,6 +22,7 @@ class NotificationKeepGoingJob extends AbstractDelayedNotificationJob {
 	private LevelingUpManager $levelingUpManager;
 
 	public const JOB_NAME = 'notificationKeepGoingJob';
+	private Config $wikiConfig;
 
 	/**
 	 * @inheritDoc
@@ -30,6 +32,7 @@ class NotificationKeepGoingJob extends AbstractDelayedNotificationJob {
 	public function __construct(
 		Title $title,
 		$params,
+		Config $wikiConfig,
 		StatsFactory $statsFactory,
 		UserIdentityLookup $userIdentityLookup,
 		SpecialPageFactory $specialPageFactory,
@@ -40,6 +43,7 @@ class NotificationKeepGoingJob extends AbstractDelayedNotificationJob {
 			$statsFactory
 		);
 
+		$this->wikiConfig = $wikiConfig;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->levelingUpManager = $levelingUpManager;
@@ -49,9 +53,11 @@ class NotificationKeepGoingJob extends AbstractDelayedNotificationJob {
 	/** @inheritDoc */
 	public function run() {
 		$userIdentity = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['userId'] );
+		$eventType = $this->wikiConfig->get( 'GELevelingUpNewNotificationsEnabled' ) ?
+			'keep-going-exploring' : 'keep-going';
 		if ( $userIdentity && $this->levelingUpManager->shouldSendKeepGoingNotification( $userIdentity ) ) {
 			Event::create( [
-				'type' => 'keep-going',
+				'type' => $eventType,
 				'title' => $this->specialPageFactory->getTitleForAlias( 'Homepage' ),
 				'extra' => [
 					'suggestededitcount' => $this->levelingUpManager->getSuggestedEditsCount( $userIdentity )

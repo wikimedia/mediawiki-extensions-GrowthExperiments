@@ -107,6 +107,7 @@
 		"notificationKeepGoingJob": {
 			"class": "GrowthExperiments\\LevelingUp\\NotificationKeepGoingJob",
 			"services": [
+				"MainConfig",
 				"StatsFactory",
 				"UserIdentityLookup",
 				"SpecialPageFactory",

@@ -123,48 +123,39 @@ class LevelingUpHooks implements
 		$notificationCategories['ge-newcomer'] = [
 			'tooltip' => 'echo-pref-tooltip-ge-newcomer',
 		];
-		$notifications['keep-going'] = [
+		$growthNotificationDefaults = [
 			'category' => 'ge-newcomer',
 			'group' => 'positive',
 			'section' => 'message',
 			'canNotifyAgent' => true,
-			'presentation-model' => EchoKeepGoingPresentationModel::class,
 			AttributeManager::ATTR_LOCATORS => [
 				[ UserLocator::class . '::locateEventAgent' ]
 			]
 		];
+		// Keep keep-going to not modify copy of already sent notifications
+		$notifications['keep-going'] = array_merge( $growthNotificationDefaults, [
+			'presentation-model' => EchoKeepGoingBasePresentationModel::class,
+		] );
+		$notifications['keep-going-exploring'] = array_merge( $growthNotificationDefaults, [
+			'presentation-model' => EchoKeepGoingPresentationModel::class,
+		] );
+		// Keep get-started to not modify copy of already sent notifications
+		$notifications['get-started'] = array_merge( $growthNotificationDefaults, [
+			'presentation-model' => EchoGetStartedBasePresentationModel::class,
+		] );
+		$notifications['get-started-no-edits'] = array_merge( $notifications['get-started'], [
+			'presentation-model' => EchoGetStartedPresentationModel::class,
+		] );
+		$notifications['newcomer-milestone-reached'] = array_merge( $growthNotificationDefaults, [
+			'presentation-model'  => AddALinkMilestonePresentationModel::class,
+		] );
 
 		$icons['growthexperiments-keep-going'] = [
 			'path' => 'GrowthExperiments/images/notifications-keep-going.svg'
 		];
 
-		$notifications['get-started'] = [
-			'category' => 'ge-newcomer',
-			'group' => 'positive',
-			'section' => 'message',
-			'canNotifyAgent' => true,
-			'presentation-model' => EchoGetStartedBasePresentationModel::class,
-			AttributeManager::ATTR_LOCATORS => [
-				[ UserLocator::class . '::locateEventAgent' ]
-			]
-		];
-		$notifications['get-started-no-edits'] = array_merge( $notifications['get-started'], [
-			'presentation-model' => EchoGetStartedPresentationModel::class,
-		] );
-
 		$icons['growthexperiments-get-started'] = [
 			'path' => 'GrowthExperiments/images/notifications-get-started.svg'
-		];
-
-		$notifications['newcomer-milestone-reached'] = [
-			'category'            => 'ge-newcomer',
-			'group'               => 'positive',
-			'section'             => 'message',
-			'canNotifyAgent'      => true,
-			'presentation-model'  => AddALinkMilestonePresentationModel::class,
-			AttributeManager::ATTR_LOCATORS => [
-				[ UserLocator::class . '::locateEventAgent' ]
-			],
 		];
 
 		$icons['growthexperiments-addalink-milestone'] = [

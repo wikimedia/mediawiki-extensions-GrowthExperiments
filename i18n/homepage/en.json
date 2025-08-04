@@ -592,6 +592,7 @@
 	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Try suggested edits",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|You’ve}} made $3 {{PLURAL:$3|suggested edit|suggested edits}}. Keep going to learn more new skills.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Make a suggested edit",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Great progress on {{GENDER:$2|your}} {{PLURAL:$3|edit|edits}}! Keep exploring more suggestions to grow {{GENDER:$2|your}} skills.",
 	"echo-category-title-ge-newcomer": "Growth features",
 	"echo-pref-tooltip-ge-newcomer": "Notify me about tasks for newcomers and other features designed to help new users.",
 	"growthexperiments-homepage-community-updates-header": "Community Updates",
