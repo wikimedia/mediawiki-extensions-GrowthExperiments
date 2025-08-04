@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Keng Froe fonnt.",
+	"apihelp-growthsetmentor-param-mentor": "Benotzernumm vum Mentor",
 	"apihelp-growthsetmentor-param-reason": "Grond fir d'Ännerung"
 }

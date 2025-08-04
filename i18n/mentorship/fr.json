@@ -10,7 +10,8 @@
 			"SleaY",
 			"Thibaut120094",
 			"Goombiis",
-			"Mahabarata"
+			"Mahabarata",
+			"JLTRY"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Tableau de bord du mentor",
@@ -60,9 +61,9 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Modifier vos filtres pour trouver des apprentis.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressources",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "La liste des tuteurs",
-	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gérer les tuteurs",
+	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Gérer les mentors",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Afficher la liste des tuteurs",
-	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Comment vous présenter en tant que tut{{GENDER:|eur|rice}}",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Comment vous présenter en tant que mentor{{GENDER:||e}}",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Comment réclamer un apprenti",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Outils de croissance",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Paramètres",

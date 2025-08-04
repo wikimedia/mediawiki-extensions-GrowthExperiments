@@ -3,5 +3,6 @@
 		"authors": [
 			"Volvox"
 		]
-	}
+	},
+	"apihelp-query+growthtasks-param-excludepageids": "Säiten-IDen, déi vun der Requête ausgeschloss solle ginn."
 }

@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Olve Utne"
+			"Olve Utne",
+			"Yupik"
 		]
 	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Adnejnamma",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Buđđusimlåhko",
-	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Hiebadime"
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Hiebadime",
+	"growthexperiments-manage-mentors-username": "Adnejnamma"
 }

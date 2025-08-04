@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
-	"apihelp-growthsetmentorstatus-param-gesstatus": "Neie Status"
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Neie Status",
+	"apihelp-growthmanagementorlist-param-geaction": "Aktioun",
+	"apihelp-growthmanagementorlist-param-weight": "Gewiicht",
+	"apihelp-growthmanagementorlist-param-summary": "Grond fir d'Ännerung"
 }
