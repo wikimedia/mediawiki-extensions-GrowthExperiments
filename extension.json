@@ -500,6 +500,7 @@
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
 			"services": [
+				"MainConfig",
 				"TitleFactory",
 				"SpecialPageFactory",
 				"GrowthExperimentsWelcomeSurveyFactory",
@@ -2594,6 +2595,10 @@
 				"image-recommendation": "machineSuggestions",
 				"section-image-recommendation": "machineSuggestions"
 			}
+		},
+		"WelcomeSurveyEnabled": {
+			"description": "Global ON/OFF switch for the Welcome survey feature.",
+			"value": true
 		},
 		"WelcomeSurveyAllowFreetextResponses": {
 			"description": "If set to true, freetext responses with the welcome survey are allowed.",

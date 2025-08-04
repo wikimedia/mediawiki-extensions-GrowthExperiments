@@ -7,6 +7,7 @@ use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
@@ -33,17 +34,20 @@ class WelcomeSurveyHooks implements
 	BeforePageDisplayHook
 {
 
+	private Config $config;
 	private TitleFactory $titleFactory;
 	private SpecialPageFactory $specialPageFactory;
 	private WelcomeSurveyFactory $welcomeSurveyFactory;
 	private CampaignConfig $campaignConfig;
 
 	public function __construct(
+		Config $config,
 		TitleFactory $titleFactory,
 		SpecialPageFactory $specialPageFactory,
 		WelcomeSurveyFactory $welcomeSurveyFactory,
 		CampaignConfig $campaignConfig
 	) {
+		$this->config = $config;
 		$this->titleFactory = $titleFactory;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->welcomeSurveyFactory = $welcomeSurveyFactory;
@@ -56,15 +60,17 @@ class WelcomeSurveyHooks implements
 	 * @param array &$list
 	 */
 	public function onSpecialPage_initList( &$list ) {
-		$list[ 'WelcomeSurvey' ] = function () {
-			return new SpecialWelcomeSurvey(
-				$this->specialPageFactory,
-				$this->welcomeSurveyFactory,
-				new WelcomeSurveyLogger(
-					LoggerFactory::getInstance( 'GrowthExperiments' )
-				)
-			);
-		};
+		if ( $this->isWelcomeSurveyEnabled() ) {
+			$list[ 'WelcomeSurvey' ] = function () {
+				return new SpecialWelcomeSurvey(
+					$this->specialPageFactory,
+					$this->welcomeSurveyFactory,
+					new WelcomeSurveyLogger(
+						LoggerFactory::getInstance( 'GrowthExperiments' )
+					)
+				);
+			};
+		}
 	}
 
 	/**
@@ -74,9 +80,15 @@ class WelcomeSurveyHooks implements
 	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
-		$preferences[WelcomeSurvey::SURVEY_PROP] = [
-			'type' => 'api',
-		];
+		if ( $this->isWelcomeSurveyEnabled() ) {
+			$preferences[WelcomeSurvey::SURVEY_PROP] = [
+				'type' => 'api',
+			];
+		}
+	}
+
+	private function isWelcomeSurveyEnabled(): bool {
+		return $this->config->get( 'WelcomeSurveyEnabled' );
 	}
 
 	/**
@@ -235,7 +247,8 @@ class WelcomeSurveyHooks implements
 	}
 
 	private function shouldShowWelcomeSurvey( IContextSource $context ): bool {
-		return !$context->getUser()->isTemp()
+		return $this->isWelcomeSurveyEnabled()
+			&& !$context->getUser()->isTemp()
 			&& !VariantHooks::shouldCampaignSkipWelcomeSurvey(
 				VariantHooks::getCampaign( $context ), $this->campaignConfig
 			);

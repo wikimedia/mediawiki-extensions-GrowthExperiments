@@ -52,7 +52,8 @@ class WelcomeSurveyReminder extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function canRender() {
-		return $this->welcomeSurveyFactory->newWelcomeSurvey( $this->getContext() )->isUnfinished();
+		return $this->getContext()->getConfig()->get( 'WelcomeSurveyEnabled' )
+			&& $this->welcomeSurveyFactory->newWelcomeSurvey( $this->getContext() )->isUnfinished();
 	}
 
 	/** @inheritDoc */
