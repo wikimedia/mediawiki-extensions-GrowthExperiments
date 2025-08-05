@@ -27,7 +27,8 @@
 			"Teretalexev",
 			"Urfiner",
 			"Vlad5250",
-			"Smigles"
+			"Smigles",
+			"Okras"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Включить панель помощи редактору",
@@ -116,7 +117,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "Статьи со временем устаревают и происходят новые события. {{GENDER:|Вы}} можете обновить текст и добавить корректные детали так, чтобы {{SITENAME}} всегда содержала лучшую информацию.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-example-value": "Зонд <mark class=\"negative\">совершит</mark> посадку на Марс <mark class=\"negative\">в 2018</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-calm": "Чтобы изменить ситуацию, {{GENDER:|вам}} только нужно обновить устаревшие данные в статье. {{GENDER:|Вам}} не нужно работать над всей статьёй в целом.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-rules1": "Следуйте этим рекомендациям когда обновляете статьи:\n* Взгляните на предложения, которые описывают прошедшие события так, будто они произойдут в будущем.\n* Взгляните на цифры, которые могли устареть, такие как население страны. \n* Взгляните на ситуации, которые изменились из-за текущих событий, такие как мэр города.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-rules1": "Следуйте этим рекомендациям когда обновляете статьи:\n* Взгляните на предложения, которые описывают прошедшие события так, будто они произойдут в будущем.\n* Взгляните на цифры, которые могли устареть, такие как население страны.\n* Взгляните на ситуации, которые изменились из-за текущих событий, такие как мэр города.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step1": "Когда {{GENDER:|вы}} увидите информацию, которую необходимо обновить, кликните \"$1\" и приступайте.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-update-main-step1": "Когда {{GENDER:|вы}} увидите информацию, которую необходимо обновить, нажмите карандаш редактирования, чтобы начать.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step2": "Обновите статью убирая и добавляя. Если {{GENDER:|вы}} изменяете или добавляете новую информацию, {{GENDER:|вам}} следует [[$1|добавить ссылку]] на источник этой информации.",
