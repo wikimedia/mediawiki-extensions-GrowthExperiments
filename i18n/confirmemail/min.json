@@ -1,20 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
+			"Adhmi",
 			"Rang Djambak"
 		]
 	},
-	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|apo iko?]])",
-	"growthexperiments-confirmemail-emailhelp": "Email diparaluan untuak mamuliahan akun Sanak jikok kailangan kato sandi.",
-	"growthexperiments-confirmemail-emailrecommended": "Alamaik email (disaranan)",
-	"growthexperiments-confirmemail-emailwarning": "Toloang caliak email dari kami untuak mangonfirmasi alamaik email Sanak.",
-	"growthexperiments-confirmemail-confirm-subject": "Salamaik datang di {{SITENAME}}: Toloang konfirmasi alamaik email Sanak",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Halo}} $2,\n\nTarimo kasih alah manambahan alamaik email ka akun {{SITENAME}}, nan didaftaran dari alamaik IP $1.\n\nToloang klik tombol di bawah untuak mangonfirmasi bahwa iko adolah alamaik email nan nio Sanak tauikan ka akun \"$2\":\n\n$3\n\nCatatan: kode konfirmasi ko <strong>balaku hinggo $4</strong>.\n\nTarimo kasih,\n\n{{SITENAME}}\n\n----\n\nUntuak mambataan konfirmasi alamaik email (karano Sanak indak nio mandaftaran akun tu atau ado alasan lain), klik pado link pambatalan ko:\n\n$5",
-	"growthexperiments-confirmemail-confirm-button": "Konfirmasi alamaik email",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Halo}} $2,\n\nTarimo kasih alah manambahan alamaik email ka akun {{SITENAME}}, nan didaftaran dari alamaik IP $1.\n\nToloang klik tombol di bawah untuak mangonfirmasi bahwa iko adolah alamaik email nan nio Sanak tauikan ka akun \"$2\":\n\n$3\n\nCatatan: kode konfirmasi ko <strong>balaku hinggo $4</strong>.\n\nTarimo kasih,\n\n{{SITENAME}}\n\n----\n\nUntuak mambataan konfirmasi alamaik email (karano Sanak indak nio mandaftaran akun tu atau ado alasan lain), klik pado link pambatalan ko:\n\n$5",
-	"growthexperiments-signupcampaign-title": "Tarimo kasih alah manyumbang! Kini bagabuanglah jo komunitas panyuntiang nan mambuek Wikipedia labiah elok hari ko",
-	"growthexperiments-signupcampaign-body": "Manyuntiang Wikipedia dapek sasederhana manambahan link atau mangganti kato. Dapekan saran untuak artikel jo topik nan {{GENDER:|Sanak}} minati sasudah Sanak mambuek akun.",
-	"growthexperiments-signupcampaign-bullet1": "Saranan artikel nan {{GENDER:|Sanak}} minati",
-	"growthexperiments-signupcampaign-bullet2": "Mintak toloang dari panyuntiang bapangalaman",
-	"growthexperiments-signupcampaign-bullet3": "Mulailah jo suntiangan ketek nan murah"
+	"growthexperiments-confirmemail-captcha-help": "([[Khusus:Captcha/bantuan|apo iko?]])",
+	"growthexperiments-confirmemail-emailhelp": "Email diparalukan untuak mambaliakan akun sanak jikok kahilangan sandi.",
+	"growthexperiments-confirmemail-emailrecommended": "Alamat surel (disarankan)",
+	"growthexperiments-confirmemail-emailwarning": "Tolong caliak email dari kami untuak mamverifikasi alamaik email Sanak.",
+	"growthexperiments-confirmemail-confirm-subject": "Salamaik datang di {{SITENAME}}: Tolong konfirmasi alamaik email Sanak",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Halo}} $2,\n\nTarimo kasih alah manambahan alamaik email ka akun {{SITENAME}}, nan didaftaran dari alamaik IP $1.\n\nTolong klik tombol di bawah untuak mangonfirmasi bahwa iko adolah alamaik email nan nio Sanak tauikan ka akun \"$2\":\n\n$3\n\nCatatan: kode konfirmasi ko <strong>balaku hinggo $4</strong>.\n\nTarimo kasih,\n\n{{SITENAME}}\n\n----\n\nUntuak mambatalan konfirmasi alamaik email (karano Sanak indak nio mandaftaran akun tu atau ado alasan nan lain), klik pado link pambatalan ko:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Konfirmasi alamaik surel Sanak",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Halo}} $2,\n\nTarimo kasih alah manambahan alamaik email ka akun {{SITENAME}}, nan didaftaran dari alamaik IP $1.\n\nTolong klik tombol di bawah untuak mangonfirmasi bahwa iko adolah alamaik email nan nio Sanak tauikan ka akun \"$2\":\n\n$3\n\nCatatan: kode konfirmasi ko <strong>balaku hinggo $4</strong>.\n\nTarimo kasih,\n\n{{SITENAME}}\n\n----\n\nUntuak mambatalan konfirmasi alamaik email (karano Sanak indak nio mandaftaran akun tu atau ado alasan nan lain), klik pado link pambatalan ko:\n\n$5",
+	"growthexperiments-signupcampaign-title": "Tarimo kasih alah manyumbang! Kini bagabuanglah jo komunitas panyuntiang nan mambuek Wikipedia labiah baiak maso kini",
+	"growthexperiments-signupcampaign-body": "Manyuntiang Wikipedia dapek sasederhana manambahan tautan atau maubah kato. Dapekkan saran untuak artikel jo topik nan {{GENDER:|Sanak}} minati sasudah Sanak mambuek akun.",
+	"growthexperiments-signupcampaign-bullet1": "Artikel nan disarankan dalam minat {{GENDER:|Sanak}}",
+	"growthexperiments-signupcampaign-bullet2": "Mintak toloang ka panyuntiang nan bapangalaman",
+	"growthexperiments-signupcampaign-bullet3": "Mulailah jo suntiangan ketek nan mudah"
 }

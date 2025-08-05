@@ -179,6 +179,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Katso {{GENDER:$2|kysymyksesi}} {{GENDER:$1|mentorisi}} keskustelusivulla.",
 	"growthexperiments-homepage-mentorship-question-subject": "Kysymys käyttäjältä [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Kysymys käyttäjältä [[User:$1|$1]] sivulta [[$2]]",
+	"growthexperiments-homepage-mentorship-system-message": "Huom.: $1",
 	"growthexperiments-specialimpact-title": "Vaikutus",
 	"growthexperiments-specialimpact-showing-for-other-user": "Käyttäjän $1 vaikutus",
 	"growthexperiments-specialimpact-invalid-username": "Puuttuva tai virheellinen käyttäjänimi.",
