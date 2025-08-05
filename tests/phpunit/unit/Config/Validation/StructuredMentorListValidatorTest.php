@@ -10,7 +10,8 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Config\Validation\StructuredMentorListValidator
+ * @covers \GrowthExperiments\Config\Validation\StructuredMentorListValidator
+ * @covers \GrowthExperiments\Config\Validation\StatusAwayValidator
  */
 class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 
@@ -28,7 +29,6 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 	 * @param mixed $value
 	 * @param string|null $expectException
 	 * @dataProvider validateVariableDataProvider
-	 * @covers ::validateVariable
 	 */
 	public function testValidateVariable(
 		string $variable,
@@ -64,7 +64,6 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param array $data
 	 * @param string|null $expectedError
-	 * @covers ::validate
 	 * @dataProvider validateDataProvider
 	 */
 	public function testValidate( array $data, ?string $expectedError ) {
@@ -126,8 +125,6 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param array $mentorData
 	 * @param string|null $expectedError
-	 * @covers ::validateMentor
-	 * @covers ::validateMentorMessage
 	 * @dataProvider validateMentorDataProvider
 	 */
 	public function testValidateMentor( array $mentorData, ?string $expectedError ) {
@@ -214,6 +211,42 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 					'automaticallyAssigned' => true,
 				],
 				'expectedError' => 'growthexperiments-mentor-writer-error-message-too-long',
+			],
+			'awayTimestampOk' => [
+				'mentorData' => [
+					'message' => 'foobar',
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+					'awayTimestamp' => '20210718110719'
+				],
+				'expectedError' => null,
+			],
+			'awayTimestampNotAnString' => [
+				'mentorData' => [
+					'message' => 'foobar',
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+					'awayTimestamp' => 123
+				],
+				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch',
+			],
+			'awayTimestampNotANumberString' => [
+				'mentorData' => [
+					'message' => 'foobar',
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+					'awayTimestamp' => 'foo'
+				],
+				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp',
+			],
+			'awayTimestampTooHigh' => [
+				'mentorData' => [
+					'message' => 'foobar',
+					'weight' => 2,
+					'automaticallyAssigned' => true,
+					'awayTimestamp' => '24210718110719'
+				],
+				'expectedError' => 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh',
 			],
 		];
 	}

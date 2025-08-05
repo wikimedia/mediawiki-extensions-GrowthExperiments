@@ -19,23 +19,27 @@ class Mentor implements IMentorWeights {
 	private string $defaultIntroText;
 	/** @var int One of Mentor::WEIGHT_* */
 	private int $weight;
+	private ?string $statusAwayTimestamp;
 
 	/**
 	 * @param UserIdentity $mentorUser
 	 * @param string|null $introText if null, $defaultIntroText will be used instead
 	 * @param string $defaultIntroText
 	 * @param int $weight
+	 * @param string|null $statusAwayTimestamp
 	 */
 	public function __construct(
 		UserIdentity $mentorUser,
 		?string $introText,
 		string $defaultIntroText,
-		int $weight
+		int $weight,
+		?string $statusAwayTimestamp = null
 	) {
 		$this->mentorUser = $mentorUser;
 		$this->introText = $introText;
 		$this->defaultIntroText = $defaultIntroText;
 		$this->weight = $weight;
+		$this->statusAwayTimestamp = $statusAwayTimestamp;
 	}
 
 	public function getUserIdentity(): UserIdentity {
@@ -64,6 +68,10 @@ class Mentor implements IMentorWeights {
 		return $this->weight;
 	}
 
+	public function getStatusAwayTimestamp(): ?string {
+		return $this->statusAwayTimestamp;
+	}
+
 	/**
 	 * @param string|null $introText Null to use the default message
 	 */
@@ -73,5 +81,9 @@ class Mentor implements IMentorWeights {
 
 	public function setWeight( int $weight ): void {
 		$this->weight = $weight;
+	}
+
+	public function setAwayTimestamp( ?string $statusAwayTimestamp ): void {
+		$this->statusAwayTimestamp = $statusAwayTimestamp;
 	}
 }

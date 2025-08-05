@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Api;
 
+use GrowthExperiments\Config\Validation\StatusAwayValidator;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
@@ -10,6 +11,8 @@ use LogicException;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
+use MediaWiki\User\UserIdentity;
+use StatusValue;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Rdbms\IDBAccessObject;
 
@@ -75,6 +78,20 @@ class ApiManageMentorList extends ApiBase {
 				'away-timestamp'
 			);
 		}
+		$canMakeUpdate = $this->canMakeUpdate( $mentorUser, $params );
+		if ( !$canMakeUpdate->isOK() ) {
+			$this->dieStatus( $canMakeUpdate );
+		}
+		$awayTimestamp = $params['isaway'] && $params['awaytimestamp'] ? $params['awaytimestamp'] : null;
+		if ( $awayTimestamp ) {
+			$validationStatus = StatusAwayValidator::validateTimestamp( $awayTimestamp, $mentorUser->getId() );
+			if ( !$validationStatus->isOK() ) {
+				$this->dieStatus( $validationStatus );
+			}
+			$mentor->setAwayTimestamp( $awayTimestamp );
+		} else {
+			$mentor->setAwayTimestamp( null );
+		}
 
 		switch ( $params['geaction'] ) {
 			case 'add':
@@ -108,6 +125,8 @@ class ApiManageMentorList extends ApiBase {
 		}
 
 		if ( $params['geaction'] !== 'remove' ) {
+			// TODO remove after running migration script and after we start reading from config in
+			// MentorStatusManager::getAwayMentors and getAwayReason (T347152)
 			if ( $params['isaway'] ) {
 				$result = $this->mentorStatusManager->markMentorAsAwayTimestamp(
 					$mentorUser,
@@ -186,5 +205,13 @@ class ApiManageMentorList extends ApiBase {
 				UserDef::PARAM_RETURN_OBJECT => true,
 			],
 		];
+	}
+
+	private function canMakeUpdate( UserIdentity $mentorUser, array $params ): StatusValue {
+		$needsStatusCheck = ( $params['geaction'] === 'add' || $params['geaction'] === 'change' ) && $params['isaway'];
+		if ( !$needsStatusCheck ) {
+			return StatusValue::newGood();
+		}
+		return $this->mentorStatusManager->canChangeStatus( $mentorUser, IDBAccessObject::READ_LATEST );
 	}
 }

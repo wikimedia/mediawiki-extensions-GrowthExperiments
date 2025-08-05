@@ -23,12 +23,14 @@ class StructuredMentorListValidator {
 		'message' => '?string',
 		'weight' => 'int',
 		'automaticallyAssigned' => 'bool',
+		'awayTimestamp' => '?string',
 	];
 
 	/** List of optional keys in mentor serialization. */
 	private const OPTIONAL_MENTOR_KEYS = [
 		'username',
 		'automaticallyAssigned',
+		'awayTimestamp',
 	];
 
 	/**
@@ -83,6 +85,7 @@ class StructuredMentorListValidator {
 			}
 		}
 
+		$status = StatusValue::newGood();
 		// Ensure all keys present in the mentor object are supported and of correct data type
 		foreach ( $mentor as $key => $value ) {
 			if ( !array_key_exists( $key, self::MENTOR_KEY_DATATYPES ) ) {
@@ -109,10 +112,13 @@ class StructuredMentorListValidator {
 					$value
 				);
 			}
+			if ( $key === 'awayTimestamp' ) {
+				$timestampStatus = StatusAwayValidator::validateTimestamp( $value, $userId );
+				$status->merge( $timestampStatus );
+			}
 		}
 
 		// Code below assumes mentor declarations are syntactically correct.
-		$status = StatusValue::newGood();
 		$status->merge( self::validateMentorMessage( $mentor, $userId ) );
 		return $status;
 	}

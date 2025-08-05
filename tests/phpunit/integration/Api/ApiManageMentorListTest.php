@@ -184,8 +184,13 @@ class ApiManageMentorListTest extends ApiTestCase {
 
 	/**
 	 * @covers ::execute
+	 * @dataProvider provideTestMentorStatus
 	 */
-	public function testMentorStatus() {
+	public function testMentorStatus(
+		string $expectedStatus,
+		?string $expectedTimestamp,
+		array $params,
+	) {
 		ConvertibleTimestamp::setFakeTime( strtotime( '2011-04-01T00:00Z' ) );
 
 		$mentorStatusManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
@@ -195,23 +200,34 @@ class ApiManageMentorListTest extends ApiTestCase {
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'growthmanagementorlist',
-				'geaction' => 'add',
 				'message' => 'intro',
 				'weight' => IMentorWeights::WEIGHT_NORMAL,
 				'username' => $mentorUser->getName(),
-				'isaway' => true,
-				'awaytimestamp' => '2011-04-25T18:47:38.000Z',
+				...$params
 			],
 			null,
 			$this->getTestSysop()->getUser()
 		);
 		$this->assertSame(
-			MentorStatusManager::STATUS_AWAY,
+			$expectedStatus,
 			$mentorStatusManager->getMentorStatus( $mentorUser )
 		);
 		$this->assertSame(
-			'20110425184738',
+			$expectedTimestamp,
 			$mentorStatusManager->getMentorBackTimestamp( $mentorUser )
 		);
+	}
+
+	private function provideTestMentorStatus() {
+		return [
+			[ MentorStatusManager::STATUS_AWAY, '20110425184738', [
+				'geaction' => 'add',
+				'isaway' => true,
+				'awaytimestamp' => '2011-04-25T18:47:38.000Z',
+			] ],
+			[ MentorStatusManager::STATUS_ACTIVE, null, [
+				'geaction' => 'add',
+			] ]
+		];
 	}
 }

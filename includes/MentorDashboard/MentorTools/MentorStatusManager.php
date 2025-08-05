@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\MentorDashboard\MentorTools;
 
+use GrowthExperiments\Config\Validation\StatusAwayValidator;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -15,10 +16,6 @@ use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class MentorStatusManager {
-
-	/** @var int Also hardcoded in AwaySettingsDialog.js */
-	private const MAX_BACK_IN_DAYS = 365;
-
 	/** @var string Mentor status */
 	public const STATUS_ACTIVE = 'active';
 	/** @var string Mentor status */
@@ -36,9 +33,6 @@ class MentorStatusManager {
 
 	/** @var string Preference key to store mentor's away timestamp */
 	public const MENTOR_AWAY_TIMESTAMP_PREF = 'growthexperiments-mentor-away-timestamp';
-
-	/** @var int Number of seconds in a day */
-	private const SECONDS_DAY = 86400;
 
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
@@ -267,7 +261,7 @@ class MentorStatusManager {
 			$mentor,
 			ConvertibleTimestamp::convert(
 				TS_MW,
-				(int)wfTimestamp( TS_UNIX ) + self::SECONDS_DAY * $backInDays
+				(int)wfTimestamp( TS_UNIX ) + StatusAwayValidator::$secondsDay * $backInDays
 			)
 		);
 	}
@@ -288,16 +282,9 @@ class MentorStatusManager {
 			return $canChangeStatus;
 		}
 
-		if (
-			(
-				(int)ConvertibleTimestamp::convert( TS_UNIX, $timestamp ) -
-				(int)ConvertibleTimestamp::now( TS_UNIX )
-			) > self::MAX_BACK_IN_DAYS * self::SECONDS_DAY
-		) {
-			return StatusValue::newFatal(
-				'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh',
-				self::MAX_BACK_IN_DAYS
-			);
+		$timestampStatus = StatusAwayValidator::validateTimestamp( $timestamp, $mentor->getId() );
+		if ( !$timestampStatus->isOK() ) {
+			return $timestampStatus;
 		}
 
 		$this->userOptionsManager->setOption(

@@ -177,6 +177,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Success notification displayed after personalized praise settings are changed.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-list-missing-key": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
 	"growthexperiments-mentor-list-datatype-mismatch": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) changing a mentor away timestamp value is invalid.",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
 	"growthexperiments-mentor-list-invalid-weight": "Error message displayed when a manual save of MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) is invalid.",
 	"growthexperiments-mentor-writer-error-already-added": "Error message displayed when a change to MediaWiki:GrowthMentors.json (configurable by <code>GEStructuredMentorList</code>) tries to add a mentor who is already added",

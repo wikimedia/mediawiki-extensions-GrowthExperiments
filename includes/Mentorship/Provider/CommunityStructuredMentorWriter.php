@@ -92,7 +92,7 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 		return [
 			'message' => $mentor->hasCustomIntroText() ? $mentor->getIntroText() : null,
 			'weight' => $mentor->getWeight(),
-		];
+		] + ( $mentor->getStatusAwayTimestamp() ? [ 'awayTimestamp' => $mentor->getStatusAwayTimestamp() ] : [] );
 	}
 
 	/**

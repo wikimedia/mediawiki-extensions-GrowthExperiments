@@ -65,7 +65,8 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 			$mentorUser,
 			$mentorData['message'] ?? null,
 			$this->getDefaultMentorIntroText( $mentorUser, $menteeUser ),
-			$weight
+			$weight,
+			$mentorData['awayTimestamp'] ?? null
 		);
 	}
 

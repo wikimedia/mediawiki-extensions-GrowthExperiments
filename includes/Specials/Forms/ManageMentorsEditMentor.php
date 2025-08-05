@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Specials\Forms;
 
+use GrowthExperiments\Config\Validation\StatusAwayValidator;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
@@ -10,6 +11,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 
@@ -53,6 +55,8 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 	 */
 	protected function getFormFields(): array {
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
+		// TODO switch to read from config after running migration script for T347152
+		// $awayTimestamp = $mentor->getStatusAwayTimestamp();
 		$awayTimestamp = $this->mentorStatusManager->getMentorBackTimestamp( $this->mentorUser );
 		$canChangeStatusBool = $this->mentorStatusManager->canChangeStatus(
 			$this->mentorUser
@@ -124,12 +128,28 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 			return false;
 		}
 
-		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
+		$canUpdateStatus = $this->canMakeUpdate( $this->mentorUser, $data );
+		if ( !$canUpdateStatus->isOK() ) {
+			return $canUpdateStatus;
+		}
 
+		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
 		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
 		$mentor->setWeight( (int)$data['weight'] );
+		$awayTimestamp = $data['isAway'] ? $data['awayTimestamp'] : null;
+		if ( $awayTimestamp ) {
+			$validationStatus = StatusAwayValidator::validateTimestamp( $awayTimestamp, $this->mentorUser->getId() );
+			if ( !$validationStatus->isOK() ) {
+				return Status::wrap( $validationStatus );
+			}
+			$mentor->setAwayTimestamp( $awayTimestamp );
+		} else {
+			$mentor->setAwayTimestamp( null );
+		}
 
 		$status = Status::newGood();
+		// TODO remove after running migration script and after we start reading from config in
+		// MentorStatusManager::getAwayMentors and getAwayReason (T347152)
 		if ( $data['isAway'] ) {
 			$status->merge( $this->mentorStatusManager->markMentorAsAwayTimestamp(
 				$this->mentorUser,
@@ -160,6 +180,16 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 		);
 		$out->addWikiMsg(
 			'growthexperiments-manage-mentors-return-back'
+		);
+	}
+
+	private function canMakeUpdate( UserIdentity $mentorUser, array $data ): Status {
+		$needsStatusCheck = $data['isAway'] && $data['awayTimestamp'];
+		if ( !$needsStatusCheck ) {
+			return Status::newGood();
+		}
+		return Status::wrap(
+			$this->mentorStatusManager->canChangeStatus( $mentorUser, IDBAccessObject::READ_LATEST )
 		);
 	}
 }
