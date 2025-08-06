@@ -4,6 +4,7 @@
 			"Edwingudfriend",
 			"Jon Harald Søby",
 			"Muddyb",
+			"Samuel Kiongo",
 			"Wangombe"
 		]
 	},
@@ -12,6 +13,7 @@
 	"prefs-homepage": "Vipengele vya mhariri mpya",
 	"growthexperiments-homepage-startediting-dialog-header": "Kuhusu mabadiliko yaliyopendekezwa",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Inatumika}} {{PLURAL:$2|siku}} $2 zilizopita",
+	"growthexperiments-homepage-mentorship-system-message": "Kumbuka: $1",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> kati ya <strong>$2</strong> {{PLURAL:$2|pendekezo|mapendekezo}}",
 	"growthexperiments-homepage-suggestededits-more-info": "Habari zaidi kuhusu mabadiliko yaliyopendekezwa",
 	"growthexperiments-homepage-mentorship-about-done": "Imefanyika"

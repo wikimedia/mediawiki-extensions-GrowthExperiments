@@ -175,6 +175,7 @@
 	"growthexperiments-homepage-mentorship-question-subject": "Domanda da [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Domanda da [[User:$1|$1]] su [[$2]]",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "<span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>, il tutor di [[User:$1|$1]], è assente.",
+	"growthexperiments-homepage-mentorship-system-message": "Nota: $1",
 	"growthexperiments-specialimpact-title": "Impatto",
 	"growthexperiments-specialimpact-showing-for-other-user": "Visualizzazione dei dati d'impatto per $1",
 	"growthexperiments-specialimpact-invalid-username": "Nome utente mancante o non valido.",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Cabal",
-			"Kuldeepburjbhalaike"
+			"Kuldeepburjbhalaike",
+			"Satdeep gill"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "ਸੰਪਾਦਕ ਮਦਦ ਪੈਨਲ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ",
@@ -47,6 +48,8 @@
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "ਤੇਜ਼ ਸ਼ੁਰੂਆਤੀ ਸੁਝਾਅ",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>ਤਿਆਰ ਹੋ?</strong> ਸ਼ੁਰੂ ਕਰਨ ਲਈ \"{{int:vector-view-edit}}\" 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>ਤਿਆਰ ਹੋ?</strong> ਜਿਸ ਭਾਗ ਨੂੰ ਤੁਸੀਂ ਸੰਪਾਦਿਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ ਉਸ ਨੂੰ ਖੋਲ੍ਹੋ ਅਤੇ ਪੈਨਸਿਲ ਆਈਕਾਨ ਨੂੰ ਦਬਾਓ।",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|ਲਿੰਕ ਜੋੜਨ ਬਾਰੇ ਹੋਰ ਜਾਣੋ]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-text-publish": "[[$1|ਅੱਪਡੇਟ ਕਰਨ ਬਾਰੇ ਹੋਰ ਜਾਣੋ]]",
 	"growthexperiments-help-panel-questioncomplete-title": "ਇੱਕ ਸਵਾਲ ਪੁੱਛੋ",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "ਸਹਾਇਤਾ ਕੇਂਦਰ 'ਤੇ ਆਪਣਾ ਸਵਾਲ ਵੇਖੋ",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "ਬਦਲੋ",

@@ -13,7 +13,7 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Preskoči}} to anketo",
 	"welcomesurvey-close-btn": "Zapri in se vrni na $1",
 	"welcomesurvey-privacy-policy-link-text": "Podrobneje o podatkih o novih urejevalcih",
-	"welcomesurvey-privacy-footer-text": "Fundacija Wikimedia bo uporabila {{GENDER:$1| vaše}} odgovore, da vam bo pomagala začeti urejati {{SITENAME}}. [$2 Več o tem v naši izjavi o zasebnosti].",
+	"welcomesurvey-privacy-footer-text": "Fundacija Wikimedia bo uporabila {{GENDER:$1| vaše}} odgovore, da vam bo pomagala začeti urejati {{GRAMMAR:accusative|{{SITENAME}}}}. [$2 Več o tem v naši izjavi o zasebnosti].",
 	"welcomesurvey-sidebar-editing-title": "Začetek urejanja",
 	"welcomesurvey-sidebar-editing-text": "Skoraj vsako stran lahko ureja vsakdo in vsak dan se opravi več sto urejanj – dodajanje vsebine, popravljanje napak in izboljševanje berljivosti. Če {{GENDER:$1|bi želeli}} prispevati, so vam na voljo naslednje strani pomoči.",
 	"welcomesurvey-sidebar-editing-link1-text": "Vadnica",
