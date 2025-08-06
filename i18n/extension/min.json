@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Harditaher"
+		]
+	},
+	"growthexperiments-desc": "Ekstensi iko barisi pacuboan nan dibuek dek Tim Patumbuahan",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> diarokan manjadi <code>$2</code>, tapi adolah <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Model isi indak cocok: bakeh wujuik GrowthExperiments musti barupo model isi JSON, $1 tapantau",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID panangan jinih tugas nan indak sah: <code>$1</code> indak nilai nan sah",
+	"growthexperiments-config-validator-array-toobig": "$1 talalu banyak butia (paliang banyak buliah $2)",
+	"growthexperiments-edit-config-disabled": "Wujuik komunitas kini sadang indak digunoan.",
+	"growthexperiments-edit-config-title": "Suntiang wujuik patumbuahan",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Tarakhia dipabarui dek [[Pangguno:$1|$1]] $2 ([$4 babeda]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Tarakhia dipabarui dek pangguno nan indak jaleh $1 ([$3 beda])."
+}
