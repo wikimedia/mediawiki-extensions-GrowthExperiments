@@ -108,10 +108,13 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "راتلونکی مخ",
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation": "ستاينه لېږل",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee": "دا {{GENDER:$1|لارزدکړی}} پرېښودل",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other": "نور / نه غواړم ويې وايم",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-submit": "سپارل",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "ناگارل",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cog-icon-label": "د اوڼنو خبربکس پرانېستل",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "اوڼنې",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe": "د وخت چوکاټ دننه سمول",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts": "د پرڅټ‌گرځونو شمېر کې لارزدکړی يې ترسره کولی شي",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours": "وروستي ۴۸ گړۍ",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week": "تېره اوونۍ",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks": "تېرې ۲ اوونۍ",
@@ -166,5 +169,8 @@
 	"growthexperiments-manage-mentors-summary-remove-admin-no-reason": "$1 به لارښودۍ لرې‌کول",
 	"growthexperiments-manage-mentors-summary-remove-admin-with-reason": "$1 به لارښودۍ لرې‌کول: $2",
 	"growthexperiments-manage-mentors-summary-remove-self-no-reason": "له لارښودۍ گوښه‌کېدل",
-	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "له لارښودۍ گوښه‌کېدل: $2"
+	"growthexperiments-manage-mentors-summary-remove-self-with-reason": "له لارښودۍ گوښه‌کېدل: $2",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "پېژندون پيغام",
+	"growthexperiments-mentorship-enrollasmentor-summary": "ځان د لارښود په توگه ورگډول",
+	"tag-mentor_list_change": "لارښود ليکلړ بدلول"
 }

@@ -180,6 +180,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Deine persönlichen Lobeinstellungen wurden gespeichert.",
 	"growthexperiments-mentor-list-missing-key": "Der Schlüssel <code>$1</code> fehlt",
 	"growthexperiments-mentor-list-datatype-mismatch": "Als <code>$1</code> wurde <code>$2</code> erwartet, es ist jedoch <code>$3</code>",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "<code>$1</code> muss ein gültiger konvertierbarer Zeitstempel sein, Benutzer-ID: <code>$2</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Die Lotsen-Definition enthält einen unerwarteten Schlüssel <code>$1</code>.",
 	"growthexperiments-mentor-list-invalid-weight": "Für <code>$1</code> wird erwartet, dass es einer der folgenden Werte ist: <code>$2</code>, es ist aber <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Lotse $1 wurde bereits zur Lotsenliste hinzugefügt",
