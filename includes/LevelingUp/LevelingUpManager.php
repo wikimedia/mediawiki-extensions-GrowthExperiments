@@ -3,6 +3,7 @@
 namespace GrowthExperiments\LevelingUp;
 
 use GrowthExperiments\AbstractExperimentManager;
+use GrowthExperiments\ExperimentXLabManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -61,10 +62,12 @@ class LevelingUpManager {
 	private UserImpactLookup $userImpactLookup;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
-	private AbstractExperimentManager $experimentUserManager;
+	private AbstractExperimentManager $experimentManager;
 	private LoggerInterface $logger;
 	private Config $growthConfig;
 	private const KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM = 1;
+	private const GET_STARTED_EXPERIMENT_TREATMENT_GROUP_NAME = ExperimentXLabManager::GET_STARTED_EXPERIMENT .
+	'_' . ExperimentXLabManager::VARIANT_TREATMENT;
 
 	public function __construct(
 		ServiceOptions $options,
@@ -78,7 +81,7 @@ class LevelingUpManager {
 		UserImpactLookup $userImpactLookup,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		AbstractExperimentManager $experimentUserManager,
+		AbstractExperimentManager $experimentManager,
 		LoggerInterface $logger,
 		Config $growthConfig
 	) {
@@ -94,7 +97,7 @@ class LevelingUpManager {
 		$this->userImpactLookup = $userImpactLookup;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->experimentUserManager = $experimentUserManager;
+		$this->experimentManager = $experimentManager;
 		$this->logger = $logger;
 		$this->growthConfig = $growthConfig;
 	}
@@ -384,12 +387,14 @@ class LevelingUpManager {
 	 * @param UserIdentity $recepientUser
 	 * @param ?int $delay After how many seconds should the notification be sent? Null to disable
 	 * the notification altogether.
+	 * @param array<string,mixed> $jobParams Array of additional params to pass to the job
 	 * @return bool Was the notification scheduled?
 	 */
-	private function scheduleNotificationJob(
+	public function scheduleNotificationJob(
 		string $jobName,
 		UserIdentity $recepientUser,
-		?int $delay
+		?int $delay,
+		array $jobParams = []
 	) {
 		if ( $delay === null ) {
 			$this->logger->debug(
@@ -413,6 +418,7 @@ class LevelingUpManager {
 				'userId' => $recepientUser->getId(),
 				// Process the job X seconds after account creation
 				'jobReleaseTimestamp' => (int)wfTimestamp() + $delay,
+				...$jobParams
 			] )
 		);
 		return true;
@@ -430,7 +436,7 @@ class LevelingUpManager {
 			return $delaySpecification;
 		}
 
-		$variantKey = $this->experimentUserManager->getVariant( $user );
+		$variantKey = $this->experimentManager->getVariant( $user );
 		return array_key_exists( $variantKey, $delaySpecification )
 			? $delaySpecification[$variantKey]
 			: $delaySpecification['default'];
@@ -445,13 +451,20 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public function scheduleKeepGoingNotification( UserIdentity $user ): bool {
+		$isInTreatmentGroup = $this->experimentManager
+			->isUserInVariant( $user, self::GET_STARTED_EXPERIMENT_TREATMENT_GROUP_NAME );
+		$eventType = $this->options->get( 'GELevelingUpNewNotificationsEnabled' ) && $isInTreatmentGroup ?
+			'keep-going-exploring' : 'keep-going';
 		return $this->scheduleNotificationJob(
 			NotificationKeepGoingJob::JOB_NAME,
 			$user,
 			$this->getNotificationDelayForUser(
 				$this->options->get( 'GELevelingUpKeepGoingNotificationSendAfterSeconds' ),
 				$user
-			)
+			),
+			[
+				'eventType' => $eventType,
+			]
 		);
 	}
 
@@ -464,35 +477,53 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public function scheduleGettingStartedNotification( UserIdentity $user ): bool {
+		$isInTreatmentGroup = $this->experimentManager
+			->isUserInVariant( $user, self::GET_STARTED_EXPERIMENT_TREATMENT_GROUP_NAME );
+		$eventType = $this->options->get( 'GELevelingUpNewNotificationsEnabled' ) && $isInTreatmentGroup ?
+			'get-started-no-edits' : 'get-started';
 		return $this->scheduleNotificationJob(
 			NotificationGetStartedJob::JOB_NAME,
 			$user,
 			$this->getNotificationDelayForUser(
 				$this->options->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' ),
 				$user
-			)
+			),
+			[
+				'eventType' => $eventType,
+			]
 		);
 	}
 
 	/**
-	 * Schedule the re-engage notification
+	 * Schedule the re-engage notification.
 	 *
 	 * The caller is expected to check LevellingUpManager::isEnabledForUser, as appropriate.
 	 *
-	 * Uses same delay as the get started notification
+	 * Uses same delay as the get started notification.
+	 *
+	 * Only scheduled for users in treatment group for the experiment
+	 * 'growthexperiments-get-started-notification', see T401308
 	 *
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
 	public function scheduleReEngageNotification( UserIdentity $user ): bool {
-		return $this->scheduleNotificationJob(
-			NotificationReEngageJob::JOB_NAME,
+		// TODO remove treatment group check after T401308 experiment
+		$isInTreatmentGroup = $this->experimentManager->isUserInVariant(
 			$user,
-			$this->getNotificationDelayForUser(
-				$this->options->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' ),
-				$user
-			)
+			self::GET_STARTED_EXPERIMENT_TREATMENT_GROUP_NAME
 		);
+		if ( $this->options->get( 'GELevelingUpNewNotificationsEnabled' ) && $isInTreatmentGroup ) {
+			return $this->scheduleNotificationJob(
+				NotificationReEngageJob::JOB_NAME,
+				$user,
+				$this->getNotificationDelayForUser(
+					$this->options->get( 'GELevelingUpGetStartedNotificationSendAfterSeconds' ),
+					$user
+				),
+			);
+		}
+		return false;
 	}
 
 }

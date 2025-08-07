@@ -53,11 +53,9 @@ class NotificationKeepGoingJob extends AbstractDelayedNotificationJob {
 	/** @inheritDoc */
 	public function run() {
 		$userIdentity = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['userId'] );
-		$eventType = $this->wikiConfig->get( 'GELevelingUpNewNotificationsEnabled' ) ?
-			'keep-going-exploring' : 'keep-going';
 		if ( $userIdentity && $this->levelingUpManager->shouldSendKeepGoingNotification( $userIdentity ) ) {
 			Event::create( [
-				'type' => $eventType,
+				'type' => $this->params['eventType'],
 				'title' => $this->specialPageFactory->getTitleForAlias( 'Homepage' ),
 				'extra' => [
 					'suggestededitcount' => $this->levelingUpManager->getSuggestedEditsCount( $userIdentity )

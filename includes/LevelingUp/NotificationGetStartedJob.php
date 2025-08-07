@@ -53,11 +53,9 @@ class NotificationGetStartedJob extends AbstractDelayedNotificationJob {
 	/** @inheritDoc */
 	public function run() {
 		$userIdentity = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['userId'] );
-		$eventType = $this->wikiConfig->get( 'GELevelingUpNewNotificationsEnabled' ) ?
-			'get-started-no-edits' : 'get-started';
 		if ( $userIdentity && $this->levelingUpManager->shouldSendGetStartedNotification( $userIdentity ) ) {
 			Event::create( [
-				'type' => $eventType,
+				'type' => $this->params['eventType'],
 				'title' => $this->specialPageFactory->getTitleForAlias( 'Homepage' ),
 				'agent' => $userIdentity
 			] );

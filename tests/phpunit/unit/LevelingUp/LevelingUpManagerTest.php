@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\LevelingUp\NotificationGetStartedJob;
 use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
@@ -297,10 +297,10 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		?UserImpactLookup $userImpactLookup = null,
 		?TaskSuggesterFactory $taskSuggesterFactory = null,
 		?NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup = null,
-		?ExperimentUserManager $experimentUserManager = null,
+		?AbstractExperimentManager $experimentManager = null,
 		?ServiceOptions $serviceOptions = null,
 		?Config $growthConfig = null,
-		?UserEditTracker $userEditTracker = null
+		?UserEditTracker $userEditTracker = null,
 	): LevelingUpManager {
 		$defaultConfigValues = $this->getDefaultConfigValues();
 		$serviceOptions ??= new ServiceOptions(
@@ -309,6 +309,9 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		);
 
 		$growthConfig ??= new HashConfig( $defaultConfigValues );
+		// Use provided experimentManager, or fall back to getExperimentManager()
+		// which returns null when MetricsPlatform is unavailable
+		$experimentManager ??= $this->getExperimentManager();
 		return new LevelingUpManager(
 			$serviceOptions,
 			$this->createNoOpAbstractMock( IConnectionProvider::class ),
@@ -321,7 +324,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$userImpactLookup ?? $this->getUserImpactLookup(),
 			$taskSuggesterFactory ?? $this->getTaskSuggesterFactory(),
 			$newcomerTasksUserOptionsLookup ?? $this->getNewcomerTasksUserOptionsLookup(),
-			$experimentUserManager ?? $this->createNoOpMock( ExperimentUserManager::class ),
+			$experimentManager,
 			new NullLogger(),
 			$growthConfig
 		);
@@ -594,7 +597,14 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		string $configOption, array $configData
 	) {
 		$recipient = new UserIdentityValue( 1, 'Admin' );
-		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class, [ 'getVariant' ] );
+		$experimentUserManager = $this->createNoOpMock( AbstractExperimentManager::class, [
+			'getVariant',
+			'isUserInVariant',
+		] );
+		$experimentUserManager->expects( $this->once() )
+			->method( 'isUserInVariant' )
+			->with( $recipient, 'growthexperiments-get-started-notification_treatment' )
+			->willReturn( true );
 		$experimentUserManager->expects( $this->once() )
 			->method( 'getVariant' )
 			->with( $recipient )
@@ -711,7 +721,14 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		ConvertibleTimestamp::setFakeTime( 100 );
 
 		$recipientUser = new UserIdentityValue( 1, 'Admin' );
-		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class, [ 'getVariant' ] );
+		$experimentUserManager = $this->createNoOpMock( AbstractExperimentManager::class, [
+			'getVariant',
+			'isUserInVariant',
+		] );
+		$experimentUserManager->expects( $this->once() )
+			->method( 'isUserInVariant' )
+			->with( $recipientUser, 'growthexperiments-get-started-notification_treatment' )
+			->willReturn( true );
 		$experimentUserManager->expects( $this->once() )
 			->method( 'getVariant' )
 			->with( $recipientUser )
@@ -728,6 +745,15 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		);
 
 		$this->assertTrue( $levelingUpManager->$methodName( $recipientUser ) );
+	}
+
+	private function getExperimentManager() {
+		$experimentManager = $this->createMock( AbstractExperimentManager::class );
+		$experimentManager->expects( $this->atMost( 1 ) )
+			->method( 'getVariant' )
+			->willReturn( 'growthexperiments-get-started-notification_control' );
+
+		return $experimentManager;
 	}
 
 }
