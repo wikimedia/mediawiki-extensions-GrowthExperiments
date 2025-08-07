@@ -2861,6 +2861,10 @@
 		"GENewcomerTasksStarterDifficultyEnabled": {
 			"value": false,
 			"description": "Enables the 'Add a Link' limiting feature for new editors."
+		},
+		"GEImproveToneSuggestedEditEnabled": {
+			"value": false,
+			"description": "Enable the Improve Tone feature so newcomers can spot non-neutral wording and receive in-context guidance to help users rewrite a sentence in a more encyclopedic tone."
 		}
 	},
 	"SpecialPages": {
