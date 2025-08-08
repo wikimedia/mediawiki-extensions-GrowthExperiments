@@ -181,6 +181,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "تم حفظ إعدادات المديح المُشَخّص الخاصة بك.",
 	"growthexperiments-mentor-list-missing-key": "مفتاح <code>$1</code> مفقود",
 	"growthexperiments-mentor-list-datatype-mismatch": "من المتوقّع لـ<code>$1</code> أن يكون <code>$2</code>، لكنّه <code>$3</code>",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "من المتوقع أن يكون <code>$1</code> علامة زمنية قابلة للتحويل صالحة، معرف المستخدم: <code>$2</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "تعريف المرشد يحتوي على مفتاح غير متوقع <code>$1</code>",
 	"growthexperiments-mentor-list-invalid-weight": "يُتوقع أن يكون <code>$1</code> واحدًا من: <code>$2</code>، ولكنه <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "تمت إضافة المرشد $1 سابقًا إلى قائمة المرشدين",

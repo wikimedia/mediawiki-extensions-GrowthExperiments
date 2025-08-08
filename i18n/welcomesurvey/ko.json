@@ -6,12 +6,13 @@
 			"Garam",
 			"MemphisA5",
 			"Revi",
+			"YeBoy371",
 			"Ykhwong",
 			"렌즈"
 		]
 	},
 	"welcomesurvey": "$1님, {{GENDER:$1|환영합니다}}!",
-	"welcomesurvey-save-confirmation-title": "감사합니다! 응답이 저장되었습니다.",
+	"welcomesurvey-save-confirmation-title": "감사합니다! {{GENDER:|당신}}의 응답이 저장되었습니다.",
 	"welcomesurvey-save-confirmation-text": "당신의 응답은 당신의 위키백과 적응을 돕기 위한 방법을 제공하는 데에 사용됩니다.",
 	"welcomesurvey-subtitle": "몇 가지 선택적인 질문에 응답하시면 저희가 더 나은 위키백과 경험을 도와드릴 수 있습니다.",
 	"welcomesurvey-save-btn": "완료",

@@ -180,6 +180,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Kişiselleştirilmiş övgü ayarlarınız kaydedildi.",
 	"growthexperiments-mentor-list-missing-key": "<code>$1</code> anahtarı eksik.",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code>, <code>$2</code> olması bekleniyordu, ancak <code>$3</code> oldu",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "<code>$1</code> geçerli bir dönüştürülebilir zaman damgası olması bekleniyor, kullanıcı kimliği: <code>$2</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Danışman tanımı, beklenmeyen bir <code>$1</code> anahtarı içeriyor",
 	"growthexperiments-mentor-list-invalid-weight": "<code>$1</code> için şunlardan birisi olması bekleniyordu: <code>$2</code>, ancak <code>$3</code> oldu",
 	"growthexperiments-mentor-writer-error-already-added": "$1 zaten danışman listesine eklendi",
