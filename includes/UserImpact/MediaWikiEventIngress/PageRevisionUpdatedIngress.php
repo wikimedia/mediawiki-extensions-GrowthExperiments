@@ -7,8 +7,9 @@ namespace GrowthExperiments\UserImpact\MediaWikiEventIngress;
 use GrowthExperiments\UserImpact\GrowthExperimentsUserImpactUpdater;
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
+use MediaWiki\Page\Event\PageRevisionUpdatedListener;
 
-class PageRevisionUpdatedIngress extends DomainEventIngress {
+class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
 
 	private GrowthExperimentsUserImpactUpdater $userImpactUpdater;
 

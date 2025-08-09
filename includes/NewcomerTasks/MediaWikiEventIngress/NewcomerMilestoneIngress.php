@@ -15,6 +15,7 @@ use MediaWiki\Config\Config;
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
+use MediaWiki\Page\Event\PageRevisionUpdatedListener;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
 
@@ -28,7 +29,7 @@ use MediaWiki\User\UserIdentity;
  * - User still has add-a-link task type selected.
  *
  */
-class NewcomerMilestoneIngress extends DomainEventIngress {
+class NewcomerMilestoneIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
 	private UserEditTracker $userEditTracker;
 	private NewcomerTasksUserOptionsLookup $userOptionsLookup;
 	private UserImpactLookup $userImpactLookup;

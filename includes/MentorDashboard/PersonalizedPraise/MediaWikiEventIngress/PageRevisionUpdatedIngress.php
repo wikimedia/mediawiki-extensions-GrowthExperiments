@@ -9,26 +9,20 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Config\Config;
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
+use MediaWiki\Page\Event\PageRevisionUpdatedListener;
 
 /**
  * Event subscriber for PersonalizedPraise functionality.
  * Handles PageUpdated events to check for praiseworthy edits.
  *
  */
-class PageRevisionUpdatedIngress extends DomainEventIngress {
+class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
 	private Config $config;
 	private IMentorManager $mentorManager;
 	private UserImpactLookup $userImpactLookup;
 	private PraiseworthyConditionsLookup $praiseworthyConditionsLookup;
 	private PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester;
 
-	/**
-	 * @param Config $config Config
-	 * @param IMentorManager $mentorManager Service to get mentor information
-	 * @param UserImpactLookup $userImpactLookup Service to evaluate user contributions
-	 * @param PraiseworthyConditionsLookup $praiseworthyConditionsLookup Service to check praiseworthy conditions
-	 * @param PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester Service to mark mentees as praiseworthy
-	 */
 	public function __construct(
 		Config $config,
 		IMentorManager $mentorManager,

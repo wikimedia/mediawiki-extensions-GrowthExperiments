@@ -7,9 +7,10 @@ namespace GrowthExperiments\Mentorship\MediaWikiEventIngress;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
+use MediaWiki\Page\Event\PageRevisionUpdatedListener;
 use MediaWiki\User\UserIdentity;
 
-class PageRevisionUpdatedIngress extends DomainEventIngress {
+class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
 
 	private MentorStore $mentorStore;
 

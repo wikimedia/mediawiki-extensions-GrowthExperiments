@@ -14,6 +14,7 @@ use GrowthExperiments\Util;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
+use MediaWiki\Page\Event\PageRevisionUpdatedListener;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\WikiMap\WikiMap;
@@ -21,7 +22,7 @@ use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Stats\StatsFactory;
 
-class PageRevisionUpdatedIngress extends DomainEventIngress {
+class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
 
 	private ChangeTagsStore $changeTagsStore;
 	private IConnectionProvider $connectionProvider;
