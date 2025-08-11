@@ -601,7 +601,7 @@
 	"growthexperiments-levelingup-getstarted-notification-header": "Versuche einen Bearbeitungsvorschlag und baue {{GENDER:$2|deine}} Bearbeitungsfähigkeiten aus",
 	"growthexperiments-levelingup-getstarted-noedits-notification-header": "Neugierig auf die Bearbeitung von {{SITENAME}}? {{GENDER:$2|Dein}} Wissen kommt einer Community zugute, die Millionen erreicht.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Probiere vorgeschlagene Änderungen aus",
-	"growthexperiments-levelingup-reengage-notification-header": "Danke für die Bearbeitung! Versuche, vorgeschlagene Bearbeitungen, um neue Fähigkeiten zu entwickeln und um die besten Praktiken zu erlernen.",
+	"growthexperiments-levelingup-reengage-notification-header": "Danke für die Bearbeitung! Versuche vorgeschlagene Bearbeitungen, um neue Fähigkeiten zu entwickeln und um die besten Praktiken zu erlernen.",
 	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Versuche die vorgeschlagenen Bearbeitungen",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du hast}} $3 {{PLURAL:$3|Änderungsvorschlag|Änderungsvorschläge}} durchgeführt. Mache weiter, um dir weitere neue Fähigkeiten anzueignen.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Einen Bearbeitungsvorschlag machen",

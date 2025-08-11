@@ -146,6 +146,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "Takonin {{GENDER:$1|méntor}} {{GENDER:$2|ragané}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Patakon uli [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Patakon uli [[User:$1|$1]] di [[$2]]",
+	"growthexperiments-homepage-mentorship-system-message": "Catetan: $1",
 	"growthexperiments-specialimpact-title": "Puara",
 	"growthexperiments-specialimpact-showing-for-other-user": "Sinahang pingaruh data saking $1",
 	"growthexperiments-specialimpact-invalid-username": "Adan anganggé ané kuang utawi ten patut.",

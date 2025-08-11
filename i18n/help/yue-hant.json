@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ktchankt",
 			"Winston Sung"
 		]
 	},
@@ -15,10 +16,16 @@
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|你}}成功發佈咗次修改。多謝你，請你繼續加油！",
 	"growthexperiments-help-panel-postedit-header": "下一步",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "下項提議：",
+	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "唔使，多謝",
+	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "唔好再顯示",
+	"growthexperiments-help-panel-postedit-nonsuggested-header": "試下建議編輯",
+	"growthexperiments-help-panel-postedit-nonsuggested-try-button-text": "試下建議編輯",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "唔使，多謝",
 	"growthexperiments-help-panel-questionreview-title": "問幫助櫃枱",
 	"growthexperiments-help-panel-questionreview-title-mentor": "諮詢你嘅導師",
 	"growthexperiments-help-panel-questionreview-header": "當你提交你嘅問題嗰陣，你所寫嘅嘢會以你嘅用戶名「$2」喺$1度<strong>公開發佈畀所有人睇到</strong>。其他義工編輯者會喺一日內左右嘗試解答你嘅問題。",
 	"growthexperiments-help-panel-questionreview-label": "你嘅問題",
+	"growthexperiments-help-panel-question-subject-template": "幫助版面問題",
 	"growthexperiments-help-panel-suggestededits-title": "編輯提議",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "快速入門貼士",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>準備好未？</strong> 請撳「{{int:vector-view-edit}}」開始。",
@@ -52,6 +59,8 @@
 	"growthexperiments-help-panel-settings-cog-preferences-link": "停用幫助版面",
 	"growthexperiments-help-panel-questionposter-invalid-title": "冇效嘅標題。",
 	"growthexperiments-help-panel-search-label": "搵幫助",
+	"tag-help_panel_question": "幫助版面問題",
+	"tag-help_panel_question-description": "用咗幫助版面發問功能嘅編輯",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "編輯提議",
 	"growthexperiments-help-panel-button-header-ask-help": "問幫助櫃枱",
 	"growthexperiments-help-panel-button-header-general-help": "一般編輯求助",

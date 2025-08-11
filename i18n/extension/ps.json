@@ -5,7 +5,7 @@
 		]
 	},
 	"growthexperiments-desc": "دا شاتاړی د ودې ډلې له خوا ترسره شوې ازمېښتونه لري.",
-	"growthexperiments-config-validator-datatype-mismatch": "تمه کېده چې <code>$1</code> به وي؛ خو <code>$3</code> دی",
+	"growthexperiments-config-validator-datatype-mismatch": "تمه کېده چې <code>$1</code> به <code>$2</code> وي؛ خو <code>$3</code> دی",
 	"growthexperiments-edit-config-feedback-cta": "غبرگون ورکول",
 	"growthexperiments-edit-config-edit-summary": "سمون لنډيز",
 	"growthexperiments-edit-config-help-panel": "لارښود منځدړې اوڼنې",

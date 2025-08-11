@@ -170,6 +170,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Tu parametros personalisate de laude ha essite salveguardate.",
 	"growthexperiments-mentor-list-missing-key": "Le clave <code>$1</code> manca",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> es expectate de esser <code>$2</code> ma es <code>$3</code>",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "<code>$1</code> debe esser un data e hora convertibile valide, ID de usator: <code>$2</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Le definition del mentor contine un clave non expectate <code>$1</code>",
 	"growthexperiments-mentor-list-invalid-weight": "<code>$1</code> debe esser un del sequentes: <code>$2</code>, ma es <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Le mentor $1 ha ja essite addite al lista de mentores",
