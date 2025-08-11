@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cabal"
+			"Cabal",
+			"Satdeep gill"
 		]
 	},
+	"apihelp-helppanelquestionposter-param-body": "ਵਰਤੋਂਕਾਰ ਦੇ ਪ੍ਰਸ਼ਨ ਦੀ ਲਿਖਤ।",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"ਸਹਾਇਤਾ ਕੇਂਦਰ ਨੂੰ ਪੁੱਛੋ\" ਸੂਚੀ",
-	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"ਸਹਾਇਤਾ ਕੇਂਦਰ ਨੂੰ ਪੁੱਛੋ\" ਸੂਚੀ (ਪੁਰਾਣਾ ਨਾਮ)"
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"ਸਹਾਇਤਾ ਕੇਂਦਰ ਨੂੰ ਪੁੱਛੋ\" ਸੂਚੀ (ਪੁਰਾਣਾ ਨਾਮ)",
+	"apierror-mustbeloggedin-helppanelquestionposter": "ਸਵਾਲ ਪੁੱਛਣ ਲਈ ਲਾਗਇਨ ਹੋਣਾ ਲਾਜ਼ਮੀ ਹੈ।"
 }

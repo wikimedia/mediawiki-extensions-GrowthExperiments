@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Mansil alfalb"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Painel de controlo do mentor",
@@ -106,7 +107,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Os mentorados são atribuídos à sorte aos mentores à medida que as suas contas são criadas. Pode gerir quantos lhe são atribuídos, mas alguns mentorados podem fazer perguntas com mais frequência que outros",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "É recomendado que comece na definição \"Média\" para aferir a sua capacidade de dar apoio, antes de aumentá-la ou reduzi-la.",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Alterar a sua mensagem de apresentação",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Gravar",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Guardar",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Cancelar",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Mensagem de apresentação",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "A sua mensagem de apresentação foi alterada para \"$1\".",

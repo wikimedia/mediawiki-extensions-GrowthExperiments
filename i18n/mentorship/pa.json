@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Cabal",
-			"Kuldeepburjbhalaike"
+			"Kuldeepburjbhalaike",
+			"Satdeep gill"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "ਵਰਤੋਂਕਾਰ ਨਾਂ",
@@ -27,5 +28,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "ਰੋਕੋ",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ਦਿਨ",
 	"growthexperiments-quit-mentorship-reason": "ਕਾਰਨ",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "ਰੱਦ ਕਰੋ"
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "ਰੱਦ ਕਰੋ",
+	"growthexperiments-manage-mentors-username": "ਵਰਤੋਂਕਾਰ ਨਾਂ",
+	"growthexperiments-manage-mentors-last-active": "ਆਖ਼ਰੀ ਬਾਰ ਸਰਗਰਮ",
+	"growthexperiments-manage-mentors-remove-mentor": "ਹਟਾਓ"
 }

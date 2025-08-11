@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"H78c67c",
-			"Winston Sung"
+			"Winston Sung",
+			"Ktchankt"
 		]
 	},
+	"growthexperiments-mentor-dashboard-title": "導師儀錶板",
+	"growthexperiments-mentor-dashboard-pt-link": "導師儀錶板",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|你嘅}}學員",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "呢個表要 JavaScript。請開着 JavaScript 嚟用呢個模組。",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth 工具",
@@ -14,6 +17,10 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "取消",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "暫停",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "日",
+	"growthexperiments-rcfilters-mentorship-title": "導師計劃",
+	"growthexperiments-quit-mentorship-title": "退出導師計劃",
+	"echo-category-title-ge-mentorship": "導師計劃",
+	"echo-pref-tooltip-ge-mentorship": "Growth團隊搞嘅導師計劃功能嘅通知。呢個通知話你你已經被認領做學員，或者你其中一位學員畀其他人認領咗。",
 	"growthexperiments-notification-body-mentee-claimed": "原因：$1",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "儲存",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "取消",

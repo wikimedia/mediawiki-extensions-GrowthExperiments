@@ -93,5 +93,7 @@
 	"growthexperiments-manage-mentors-last-active": "وروستی کارنده",
 	"growthexperiments-manage-mentors-intro-msg": "نووراغلو لپاره پيغام",
 	"growthexperiments-manage-mentors-remove-mentor": "لرې‌کول",
-	"growthexperiments-manage-mentors-return-back": "تاسو کولی شئ د لارښودانو لړليک ته [[Special:ManageMentors|بېرته‌راوگرځئ]]"
+	"growthexperiments-manage-mentors-return-back": "تاسو کولی شئ د لارښودانو لړليک ته [[Special:ManageMentors|بېرته‌راوگرځئ]]",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "پېژندون پيغام",
+	"growthexperiments-mentorship-enrollasmentor-summary": "ځان د لارښود په توگه ورگډول"
 }

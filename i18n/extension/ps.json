@@ -3,5 +3,21 @@
 		"authors": [
 			"شاه زمان پټان"
 		]
-	}
+	},
+	"growthexperiments-desc": "دا شاتاړی د ودې ډلې له خوا ترسره شوې ازمېښتونه لري.",
+	"growthexperiments-config-validator-datatype-mismatch": "تمه کېده چې <code>$1</code> به وي؛ خو <code>$3</code> دی",
+	"growthexperiments-edit-config-feedback-cta": "غبرگون ورکول",
+	"growthexperiments-edit-config-edit-summary": "سمون لنډيز",
+	"growthexperiments-edit-config-help-panel": "لارښود منځدړې اوڼنې",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "د پاڼې سر",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "د پاڼې لاندې",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "لارښود خبرو اترو مخونه",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "لارښود مېز",
+	"growthexperiments-edit-config-help-panel-links": "لارښود منځدړې تړوني",
+	"growthexperiments-edit-config-homepage": "نوي‌راغلي کورمخ",
+	"growthexperiments-edit-config-mentorship": "لارښودي",
+	"growthexperiments-edit-config-mentorship-enabled": "ايا لارښودۍ ځانگړنې چارن‌شوې دي؟",
+	"growthexperiments-edit-config-mentorship-enabled-true": "هو",
+	"growthexperiments-edit-config-mentorship-enabled-false": "نه",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "د \"تړونی ورگډول\" وړانديز شوو دندو ډېر شمېر چې يو نوی‌راغلی يې هره ورځ بشپړولی شي."
 }
