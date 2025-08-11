@@ -5,6 +5,10 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use StatusValue;
 
+/**
+ * @template T
+ * @inherits StatusValue<T>
+ */
 class LinkRecommendationEvalStatus extends StatusValue {
 
 	public const NOT_GOOD_CAUSE_ALL_RECOMMENDATIONS_PRUNED = 'all_recommendations_pruned';
