@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Cabal",
-			"Kuldeepburjbhalaike"
+			"Kuldeepburjbhalaike",
+			"Satdeep gill"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "ਸੰਪਾਦਕ ਮਦਦ ਪੈਨਲ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ",
@@ -47,16 +48,30 @@
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "ਤੇਜ਼ ਸ਼ੁਰੂਆਤੀ ਸੁਝਾਅ",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>ਤਿਆਰ ਹੋ?</strong> ਸ਼ੁਰੂ ਕਰਨ ਲਈ \"{{int:vector-view-edit}}\" 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>ਤਿਆਰ ਹੋ?</strong> ਜਿਸ ਭਾਗ ਨੂੰ ਤੁਸੀਂ ਸੰਪਾਦਿਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ ਉਸ ਨੂੰ ਖੋਲ੍ਹੋ ਅਤੇ ਪੈਨਸਿਲ ਆਈਕਾਨ ਨੂੰ ਦਬਾਓ।",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|ਲਿੰਕ ਜੋੜਨ ਬਾਰੇ ਹੋਰ ਜਾਣੋ]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-text-publish": "[[$1|ਅੱਪਡੇਟ ਕਰਨ ਬਾਰੇ ਹੋਰ ਜਾਣੋ]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step2": "ਲੇਖ ਦੇਖੋ",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-header-step1": "ਸੁਝਾਈ ਗਈ ਤਸਵੀਰ ਦੇਖੋ",
 	"growthexperiments-help-panel-questioncomplete-title": "ਇੱਕ ਸਵਾਲ ਪੁੱਛੋ",
+	"growthexperiments-help-panel-questioncomplete-header": "ਤੁਹਾਡਾ ਸਵਾਲ ਪ੍ਰਕਾਸ਼ਿਤ ਹੋ ਗਿਆ ਹੈ!",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "ਸਹਾਇਤਾ ਕੇਂਦਰ 'ਤੇ ਆਪਣਾ ਸਵਾਲ ਵੇਖੋ",
+	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "ਤੁਹਾਡੇ ਸਵਾਲ ਸੰਬੰਧੀ ਸੂਚਨਾਵਾਂ:",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "ਬਦਲੋ",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "ਆਪਣੀ ਈਮੇਲ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "ਈਮੇਲ ਜੋੜੋ",
-	"growthexperiments-help-panel-questionposter-invalid-title": "ਗਲਤ ਸਿਰਲੇਖ।",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "ਮਦਦ ਪੈਨਲ ਬਾਰੇ",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "ਮਦਦ ਪੈਨਲ ਨੂੰ ਬੰਦ ਕਰੋ",
+	"growthexperiments-help-panel-questionposter-invalid-title": "ਗ਼ਲਤ ਸਿਰਲੇਖ।",
 	"growthexperiments-help-panel-community-help-desk-text": "ਭਾਈਚਾਰਾ ਸਹਾਇਤਾ ਕੇਂਦਰ",
 	"growthexperiments-help-panel-search-label": "ਮਦਦ ਲਈ ਖੋਜ ਕਰੋ",
 	"growthexperiments-help-panel-search-no-results": "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲਿਆ।",
+	"tag-help_panel_question": "ਮਦਦ ਪੈਨਲ ਸਵਾਲ",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "ਸੁਝਾਏ ਗਏ ਸੋਧ",
 	"growthexperiments-help-panel-button-header-ask-help": "ਸਹਾਇਤਾ ਕੇਂਦਰ ਨੂੰ ਪੁੱਛੋ",
+	"growthexperiments-help-panel-button-header-general-help": "ਆਮ ਸੰਪਾਦਨ ਮਦਦ",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "ਤੇਜ਼ ਸ਼ੁਰੂਆਤੀ ਸੁਝਾਅ",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "ਸੁਝਾਈਆਂ ਸੋਧਾਂ ਬਾਰੇ"
+	"growthexperiments-help-panel-general-help-title": "ਆਮ ਸੰਪਾਦਨ ਮਦਦ",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "ਸੁਝਾਈਆਂ ਸੋਧਾਂ ਬਾਰੇ",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "ਵਿਜ਼ੂਅਲ ਐਡੀਟਰ ਉੱਤੇ ਜਾਓ",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "ਸਰੋਤ ਐਡੀਟਰ ਉੱਤੇ ਜਾਓ"
 }

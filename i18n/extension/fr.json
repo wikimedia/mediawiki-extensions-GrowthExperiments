@@ -19,7 +19,8 @@
 			"Urhixidur",
 			"Verdy p",
 			"Wladek92",
-			"JLTRY"
+			"JLTRY",
+			"Derugon"
 		]
 	},
 	"growthexperiments-desc": "Cette extension contient des expériences faites par l’équipe Croissance (''Growth'').",
@@ -117,7 +118,7 @@
 	"specialpages-group-growth-tools": "Outils de croissance",
 	"growthexperiments-edit-config-level-up-notifications": "Notifications: Fontionnalités Croissance",
 	"growthexperiments-edit-config-level-up-notifications-description": "Ces notifications sont envoyées aux nouveaux arrivants 48 heures après la création du compte et on a montré qu'elles augmentaient la probabilité que les nouveaux compes fassent des modifications dans la semaine qui suivait.",
-	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Essayez la notification des modifications suggérées",
+	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Notification « Essayez les modifications suggérées »",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Nombre maximum de modifications qu'un nouvel arrivant peut effectuer pour pouvoir recevoir cette notification. Si défini sur 0, aucun nouveaux arrivants ne recevra cette notification. Plus le nombre est élevé, plus les nouveaux arrivants recevront cette notification. Cette notification n'est envoyée qu'aux nouveaux arrivants qui n'ont pas effectué les modifications suggérées.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Notification d'encouragement",
 	"growthexperiments-edit-config-keep-going-notification-description": "Nombre maximum de modifications suggérées qu'un nouvel arrivant peut effectuer pour pouvoir recevoir cette notification. Si défini à 0, aucun nouvel arrivant ne recevra cette notification. Plus le nombre est élevé, plus les nouveaux arrivants recevront cette notification. Cette notification n'est envoyée qu'aux nouveaux arrivants qui n'ont pas encore effectué les modifications suggérées.",
@@ -178,7 +179,7 @@
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-label": "Liens de la page d'accueil des nouveaux arrivants",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "Page de destination d'un lien pour créer un nouvel article",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "Page de destination d'un lien pour ajouter des images dans l'éditeur visuel.",
-	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-label": "Essayez la notification des modifications suggérées",
+	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-label": "Notification invitant à essayer les modifications suggérées",
 	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-help-text": "Nombre maximum de modifications qu'un nouvel arrivant peut avoir effectué pour pouvoir recevoir cette notification. S'il vaut 0, aucun nouvel arrivant ne recevra cette notification. Plus ce nombre est élevé, plus les nouveaux arrivants recevront cette notification. Cette notification n'est envoyée qu'aux nouveaux arrivants qui n'ont pas terminé les modifications suggérées.",
 	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-label": "Notification d'encouragement",
 	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-help-text": "Nombre maximum de modifications suggérées qu'un nouvel arrivant peut effectuer pour pouvoir recevoir cette notification. S'il vaut 0, aucun nouvel arrivant ne recevra cette notification. Plus le nombre est élevé, plus les nouveaux arrivants recevront cette notification. Cette notification n'est envoyée qu'aux nouveaux arrivants qui n'ont pas encore terminé les modifications suggérées.",
