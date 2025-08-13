@@ -61,7 +61,7 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	 */
 	public function loadTaskTypesConfig(): array|StatusValue {
 		if ( $this->suggestedEditsConfigProvider === null ) {
-			$this->logger->debug( __METHOD__ . ': Suggested Edits config provider is null', [
+			$this->logger->warning( __METHOD__ . ': Suggested Edits config provider is null', [
 				'exception' => new \RuntimeException,
 			] );
 			return [];
@@ -187,7 +187,7 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	 */
 	public function loadInfoboxTemplates(): array|StatusValue {
 		if ( $this->suggestedEditsConfigProvider === null ) {
-			$this->logger->debug( __METHOD__ . ': Suggested Edits config provider is null', [
+			$this->logger->warning( __METHOD__ . ': Suggested Edits config provider is null', [
 				'exception' => new \RuntimeException,
 			] );
 			return [];

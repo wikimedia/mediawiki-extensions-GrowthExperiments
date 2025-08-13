@@ -5,6 +5,7 @@ namespace GrowthExperiments\UserImpact;
 use DateTime;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\Util;
 use LogicException;
 use MediaWiki\ChangeTags\ChangeTags;
 use MediaWiki\Config\ServiceOptions;
@@ -43,6 +44,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		'GEUserImpactMaximumProcessTimeSeconds',
 		'GEUserImpactMaxEdits',
 		'GEUserImpactMaxThanks',
+		'GEHomepageSuggestedEditsEnabled',
 	];
 
 	/**
@@ -285,7 +287,14 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$editCountByNamespace = [];
 		$editCountByDay = [];
 		$revertedEditCount = 0;
-		$editCountByTaskType = array_fill_keys( array_keys( $this->configurationLoader->getTaskTypes() ), 0 );
+		$taskTypes = [];
+		// Only try to load task types if SE enabled
+		if ( Util::isNewcomerTasksAvailable() ) {
+			$taskTypes = $this->configurationLoader->getTaskTypes();
+		} else {
+			$this->logger->debug( 'Newcomer tasks are not available, no "editCountByTaskType" will be computed.' );
+		}
+		$editCountByTaskType = array_fill_keys( array_keys( $taskTypes ), 0 );
 		$newcomerTaskEditCount = 0;
 		$lastEditTimestamp = null;
 		$editedArticles = [];

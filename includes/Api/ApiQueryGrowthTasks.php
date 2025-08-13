@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use GrowthExperiments\Util;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
@@ -188,7 +189,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
 	/** @inheritDoc */
 	protected function getAllowedParams() {
-		$taskTypes = $this->configurationLoader->getTaskTypes();
+		$taskTypes = $this->getTaskTypes();
 		$topics = $this->getTopics();
 		// Ensure valid values, tasks/topics might be empty during tests.
 		$taskLimit = max( count( $taskTypes ), 1 );
@@ -265,6 +266,17 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	/** @inheritDoc */
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:GrowthExperiments#API';
+	}
+
+	/**
+	 * @return TaskType[]
+	 */
+	private function getTaskTypes(): array {
+		// Prevent calls to suggested edits config when feature is disabled, (T369312)
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			return [];
+		}
+		return $this->configurationLoader->getTaskTypes();
 	}
 
 }

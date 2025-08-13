@@ -5,6 +5,7 @@ namespace GrowthExperiments\Rest\Handler;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\Util;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
@@ -21,25 +22,13 @@ class TipsHandler extends SimpleHandler {
 
 	private const MAX_CACHE_AGE_SECONDS = 3600;
 
-	private TipsAssembler $tipsAssembler;
-	private ConfigurationLoader $configurationLoader;
-
 	public function __construct(
-		TipsAssembler $tipsAssembler, ConfigurationLoader $configurationLoader
+		private readonly TipsAssembler $tipsAssembler,
+		private readonly ConfigurationLoader $configurationLoader,
 	) {
-		$this->tipsAssembler = $tipsAssembler;
-		$this->configurationLoader = $configurationLoader;
 	}
 
-	/**
-	 * @param string $skin
-	 * @param string $editor
-	 * @param string $tasktypeid
-	 * @param string $uselang
-	 * @return Response
-	 */
-	public function run( string $skin, string $editor, string $tasktypeid, string $uselang
-	) {
+	public function run( string $skin, string $editor, string $tasktypeid, string $uselang ): Response {
 		$context = new DerivativeContext( RequestContext::getMain() );
 		if ( $uselang ) {
 			$context->setLanguage( $uselang );
@@ -60,6 +49,14 @@ class TipsHandler extends SimpleHandler {
 		);
 		$response->setHeader( 'Cache-Control', 'public, max-age=' . self::MAX_CACHE_AGE_SECONDS );
 		return $response;
+	}
+
+	private function getTaskTypes(): array {
+		// Prevent calls to suggested edits config when feature is disabled, (T369312)
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			return [];
+		}
+		return $this->configurationLoader->getTaskTypes();
 	}
 
 	/** @inheritDoc */
@@ -83,9 +80,7 @@ class TipsHandler extends SimpleHandler {
 			'tasktypeid' => [
 				self::PARAM_SOURCE => 'path',
 				ParamValidator::PARAM_REQUIRED => true,
-				ParamValidator::PARAM_TYPE => array_keys(
-					$this->configurationLoader->getTaskTypes()
-				),
+				ParamValidator::PARAM_TYPE => array_keys( $this->getTaskTypes() ),
 			],
 			'uselang' => [
 				self::PARAM_SOURCE => 'path',

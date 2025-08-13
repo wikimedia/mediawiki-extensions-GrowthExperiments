@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
+use GrowthExperiments\Util;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
@@ -59,6 +60,10 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
+		// Provide more useful response when SE are disabled
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			$this->dieWithError( [ 'apierror-moduledisabled', 'Suggested edits' ] );
+		}
 		// This API is used by external clients for their own structured task workflows so
 		// include disabled task types.
 		$allTaskTypes = $this->configurationLoader->getTaskTypes()

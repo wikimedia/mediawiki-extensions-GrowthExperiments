@@ -39,7 +39,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	public function testLoadTaskTypesConfigNullProvider(): void {
 		$logger = $this->createMock( LoggerInterface::class );
 		$logger->expects( $this->once() )
-			->method( 'debug' )
+			->method( 'warning' )
 			->with(
 				$this->stringContains( 'Suggested Edits config provider is null' ),
 				$this->anything()
@@ -103,7 +103,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	public function testLoadInfoboxTemplatesNullProvider(): void {
 		$logger = $this->createMock( LoggerInterface::class );
 		$logger->expects( $this->once() )
-			->method( 'debug' )
+			->method( 'warning' )
 			->with(
 				$this->stringContains( 'Suggested Edits config provider is null' ),
 				$this->anything()

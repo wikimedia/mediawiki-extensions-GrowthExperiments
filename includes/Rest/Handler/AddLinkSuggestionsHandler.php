@@ -33,7 +33,10 @@ class AddLinkSuggestionsHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run( LinkTarget $title ) {
-		if ( !Util::areLinkRecommendationsEnabled( RequestContext::getMain() ) ) {
+		if (
+			!Util::areLinkRecommendationsEnabled( RequestContext::getMain() ) ||
+			!Util::isNewcomerTasksAvailable()
+		) {
 			throw new HttpException( 'Disabled', 404 );
 		}
 		try {

@@ -3,7 +3,10 @@
 namespace GrowthExperiments\Rest\Handler;
 
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
+use GrowthExperiments\Util;
+use MediaWiki\Rest\LocalizedHttpException;
 use MediaWiki\Rest\SimpleHandler;
+use Wikimedia\Message\MessageValue;
 use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
@@ -16,7 +19,7 @@ class SuggestionsInfoHandler extends SimpleHandler {
 
 	public function __construct(
 		NewcomerTasksInfo $suggestionsInfo,
-		WANObjectCache $cache
+		WANObjectCache $cache,
 	) {
 		$this->suggestionsInfo = $suggestionsInfo;
 		$this->cache = $cache;
@@ -24,6 +27,12 @@ class SuggestionsInfoHandler extends SimpleHandler {
 
 	/** @inheritDoc */
 	public function run() {
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			throw new LocalizedHttpException(
+				new MessageValue( 'apierror-moduledisabled', [ 'Suggested edits' ] ),
+				404
+			);
+		}
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey( 'GrowthExperiments', 'SuggestionsInfoHandler' ),
 			$this->cache::TTL_HOUR,

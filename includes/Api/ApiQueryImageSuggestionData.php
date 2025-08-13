@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
+use GrowthExperiments\Util;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
@@ -64,6 +65,11 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		if ( $user->pingLimiter( 'growthexperiments-apiqueryimagesuggestiondata' ) ) {
 			$this->dieWithError( 'apierror-ratelimited' );
 		}
+
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			$this->dieWithError( [ 'apierror-moduledisabled', 'Suggested edits' ] );
+		}
+
 		$params = $this->extractRequestParams();
 		// This API is used by external clients for their own structured task workflows so
 		// include disabled task types.

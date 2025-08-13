@@ -356,7 +356,7 @@ class Util {
 	 * @return bool
 	 */
 	public static function areLinkRecommendationsEnabled( IContextSource $contextSource ): bool {
-		return (bool)$contextSource->getConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' );
+		return $contextSource->getConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' );
 	}
 
 	/**

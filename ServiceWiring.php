@@ -67,6 +67,7 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
@@ -736,6 +737,16 @@ return [
 	): ConfigurationLoader {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$config = $growthServices->getGrowthConfig();
+		if ( !$config->get( 'GEHomepageSuggestedEditsEnabled' ) ) {
+			return new ErrorForwardingConfigurationLoader(
+				StatusValue::newFatal(
+					'rawmessage',
+					'Task types are unavailable because Suggested edits is not enabled, ' .
+					'see GEHomepageSuggestedEditsEnabled.'
+				),
+				$growthServices->getLogger()
+			);
+		}
 
 		$providerFactory = CommunityConfigurationServices::wrap( $services )
 			->getConfigurationProviderFactory();

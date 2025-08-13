@@ -302,7 +302,8 @@
 			"class": "GrowthExperiments\\Rest\\Handler\\SuggestionsInfoHandler",
 			"services": [
 				"GrowthExperimentsSuggestionsInfo",
-				"MainWANObjectCache"
+				"MainWANObjectCache",
+				"MainConfig"
 			]
 		},
 		{

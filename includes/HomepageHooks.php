@@ -1062,6 +1062,15 @@ class HomepageHooks implements
 	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
 	public static function getTaskTypesJson( RL\Context $context ) {
+		// Do not attempt to load task types when SE is disabled, should not be necessary if
+		// client does not request them but currently they are a dependency of many GE resource loader
+		// modules defined in extension.json.
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			return [
+				'_error' => 'Task types are unavailable because Suggested edits is not enabled, ' .
+					'see GEHomepageSuggestedEditsEnabled.',
+			];
+		}
 		// Based on user variant settings, some task types might need to be hidden for the user,
 		// but we can't access user identity here, so we return all tasks. User-specific filtering
 		// will be done on the client side in TaskTypeAbFilter.
