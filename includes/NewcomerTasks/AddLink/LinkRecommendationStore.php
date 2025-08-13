@@ -7,6 +7,7 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 use DomainException;
 use GrowthExperiments\Util;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Deferred\LinksUpdate\TemplateLinksTable;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
@@ -556,7 +557,7 @@ class LinkRecommendationStore {
 		if ( $excludedTemplates === [] ) {
 			return 0;
 		}
-		$dbr = $this->connectionProvider->getReplicaDatabase();
+		$dbr = $this->connectionProvider->getReplicaDatabase( TemplateLinksTable::VIRTUAL_DOMAIN );
 		return $dbr->newSelectQueryBuilder()
 			->select( 'lt_id' )
 			->from( 'templatelinks' )
