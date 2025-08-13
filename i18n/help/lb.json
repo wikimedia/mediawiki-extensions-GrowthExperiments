@@ -130,6 +130,8 @@
 	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|Ännerung|Ännerungen}} · $2",
 	"growthexperiments-help-panel-general-help-title": "Allgemeng Ännerungshëllef",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Iwwer Ännerungsvirschléi",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Dir}} benotzt de Quelltext-Editeur. Dës Ännerungshiweiser sinn am nëtzlechste fir de visuellen Editeur.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Op de visuellen Editeur wiesselen",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Dir}} benotzt de visuellen Editeur. Dës Ännerungshiweiser sinn am nëtzlechste fir de Quelltext-Editor.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Op de Quelltext-Editeur wiesselen"
 }

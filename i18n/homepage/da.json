@@ -178,6 +178,8 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Vis {{GENDER:$2|dit}} spørgsmål på din {{GENDER:$1|mentors}} diskussionsside.",
 	"growthexperiments-homepage-mentorship-question-subject": "Spørgsmål fra [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Spørgsmål fra [[User:$1|$1]] på [[$2]]",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]]'s mentor <span class=\"plainlinks\">[{{fullurl:User:$2}} $2 ]</span> er væk.",
+	"growthexperiments-homepage-mentorship-system-message": "Bemærk: $1",
 	"growthexperiments-specialimpact-title": "Påvirkning",
 	"growthexperiments-specialimpact-showing-for-other-user": "Viser påvirkningsdata for $1",
 	"growthexperiments-specialimpact-invalid-username": "Manglende eller ugyldigt brugernavn.",
@@ -574,11 +576,17 @@
 	"growthexperiments-homepage-special-contribute-cta": "Se foreslåede redigeringer",
 	"growthexperiments-homepage-impact-contributions-link": "Vis alle redigeringer",
 	"growthexperiments-levelingup-getstarted-notification-header": "Prøv en foreslået redigering og begynd at opbygge {{GENDER:$2| dine}} redigeringsfærdigheder",
+	"growthexperiments-levelingup-getstarted-noedits-notification-header": "Nysgerrig efter at redigere {{SITENAME}}? {{GENDER:$2|Din}} viden slutter sig til et fællesskab, der når ud til millioner.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Prøv foreslåede redigeringer",
+	"growthexperiments-levelingup-reengage-notification-header": "Tak for redigeringen! Prøv de foreslåede redigeringer for at udvikle nye færdigheder og lære om bedste praksis.",
+	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Prøv foreslåede redigeringer",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du}} har gjort $3 foreslåede {{PLURAL:$3|redigering|redigeringer}}. Fortsæt for at udvikle dine færdigheder.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Foretag en foreslået redigering",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Store fremskridt med {{GENDER:$2|din}} {{PLURAL:$3|redigering|redigeringer}}! Fortsæt med at udforske flere forslag for at forbedre {{GENDER:$2|dine}} færdigheder.",
 	"echo-category-title-ge-newcomer": "Nybegynderfunktioner",
 	"echo-pref-tooltip-ge-newcomer": "Giv mig besked om opgaver for nybegyndere og andre funktioner designet til at hjælpe nye brugere.",
 	"growthexperiments-homepage-community-updates-header": "Opdateringer fra fællesskabet",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lær mere"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lær mere",
+	"growthexperiments-addalink-milestone-notification-header": "$1 redigeringer, tillykke! Artikler {{GENDER:$2| du har}} redigeret har for nylig fået $3 visninger. Tilgængelige foreslåede redigeringer er ændret.",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Prøv andre redigeringer"
 }

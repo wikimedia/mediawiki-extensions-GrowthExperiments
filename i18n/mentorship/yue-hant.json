@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"H78c67c",
+			"JeffreyKim",
 			"Ktchankt",
 			"Winston Sung"
 		]
@@ -36,6 +37,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly": "每月",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "儲存",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "取消",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "<code>$1</code>預計係一個有效嘅可轉換時間戳記，用戶ID：<code>$2</code>",
 	"growthexperiments-manage-mentors-title": "管理導師",
 	"growthexperiments-manage-mentors-pretext-purpose": "呢版顯示導師一覽。",
 	"growthexperiments-manage-mentors-pretext-privileged": "{{GENDER:|你}}可以拎走違反社羣準則或政策嘅導師，或修改佢哋嘅導師相關選項。",

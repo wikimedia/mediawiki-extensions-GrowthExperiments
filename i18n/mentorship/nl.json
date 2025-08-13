@@ -177,6 +177,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Uw instellingen voor gepersonaliseerde complimenten zijn opgeslagen.",
 	"growthexperiments-mentor-list-missing-key": "Sleutel <code>$1</code> ontbreekt",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> zou <code>$2</code> moeten zijn, maar is <code>$3</code>",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "<code>$1</code> moet een juiste en omzetbare tijdsaanduiding zijn, gebruikers-ID: <code>$2</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Mentordefinitie bevat een onverwachte sleutel <code>$1</code>",
 	"growthexperiments-mentor-list-invalid-weight": "<code>$1</code> moet één van de volgende zijn: <code>$2</code>, maar is <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 is al toegevoegd aan de mentorlijst",

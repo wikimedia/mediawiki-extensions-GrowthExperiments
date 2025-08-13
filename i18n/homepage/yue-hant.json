@@ -3,6 +3,7 @@
 		"authors": [
 			"H78c67c",
 			"Hello903hello",
+			"JeffreyKim",
 			"Ktchankt",
 			"Winston Sung",
 			"Yueman"
@@ -60,6 +61,7 @@
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1{{PLURAL:$1|次修改}}",
 	"growthexperiments-homepage-mentorship-question-subject": "來自[[User:$1|$1]]嘅問題",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "嚟自[[User:$1|$1]]對於[[$2]]嘅問題",
+	"growthexperiments-homepage-mentorship-system-message": "註：$1",
 	"growthexperiments-specialimpact-title": "影響",
 	"growthexperiments-specialimpact-showing-for-other-user": "顯示緊$1嘅影響數據",
 	"growthexperiments-homepage-contributions-zero-button": "去{{GENDER:$1|你嘅}}頭版",
@@ -130,6 +132,10 @@
 	"growthexperiments-homepage-mentorship-optout-cancel": "取消",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "搞掂",
 	"growthexperiments-homepage-mentorship-about-done": "搞掂",
+	"growthexperiments-levelingup-getstarted-noedits-notification-header": "對編輯{{SITENAME}}覺得好奇？{{GENDER:$2|你}}知識加入一個達到幾百萬人嘅社群。",
+	"growthexperiments-levelingup-reengage-notification-header": "多謝晒你嘅編輯！試吓建議嘅編輯，嚟發展新技能，同埋學習最佳做法。",
+	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "試吓建議編輯",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "喺{{GENDER:$2|你嘅}}{{PLURAL:$3|編輯}}上面有好大嘅進步！繼續探索更多建議，嚟提升{{GENDER:$2|你嘅}}技能。",
 	"echo-category-title-ge-newcomer": "Growth功能",
 	"echo-pref-tooltip-ge-newcomer": "有新手任務同其他幫新手嘅功能，話我知。",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "知多啲"
