@@ -5,6 +5,7 @@
 		]
 	},
 	"apihelp-query+growthtasks-param-excludepageids": "Säiten-IDen, déi vun der Requête ausgeschloss solle ginn.",
+	"apihelp-query+growthtasks-example-1": "Aufgaberecommandatioune fir Aufgabe vum Typ Lektoréiere fir den aktuelle Benotzer kréien.",
 	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Den Aufgabentyp, un deem de Benotzer momentan schafft.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "De Parameter <var>editRevId</var> ass obligatoresch, wann de Parameter <var>accepted</var> op <kbd>true</kbd> gesat ass.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "De Parameter <var>editRevId</var> kann net benotzt ginn, wann de Parameter <var>accepted</var> op <kbd>false</kbd> gesat ass.",
