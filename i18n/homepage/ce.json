@@ -172,6 +172,8 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Хьажа {{GENDER:$2|хьан}} хаттаре {{GENDER:$1|Ӏуьналчин}} дийцарийн агӀонан тӀехь.",
 	"growthexperiments-homepage-mentorship-question-subject": "Хаттар [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] хаттар [[$2]] тӀехь",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Хьехамхо [[User:$1|$1]] <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> вац(йац).",
+	"growthexperiments-homepage-mentorship-system-message": "Билгалдаккхар: $1",
 	"growthexperiments-specialimpact-title": "Ӏаткъам",
 	"growthexperiments-specialimpact-showing-for-other-user": "Ӏаткъам баран хаамаш гойтар $1.",
 	"growthexperiments-specialimpact-invalid-username": "Йоцуш йолу йа нийса йоцу декъашхочун цӀе.",
@@ -283,6 +285,7 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Массо а хаьржина теманаш нисйан",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Хаьржина цхьаъ тема мукъане нисйан",
 	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Кампанин хилам",
+	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1 {{PLURAL:$1|хийца}}, декъал хийла хьо! ТӀекхочуш болу кховдийна хийцамаш хийцабелла.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Кховдийнчу нисдарийн нийса йоцу конфигураци: ледара структура",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "\"$1\" тайпанан гӀуллакхан кховдийна хийцамашна нийса йоцуш конфигураци йина: \"$2\" массив хила йеза",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "\"$1\" тайпанна кховдийна хийцамашна нийса йоцу конфигураци йина: \"$2\" $3 сов хила йеза.",
@@ -573,11 +576,15 @@
 	"growthexperiments-homepage-special-contribute-cta": "Кховдийна нисдаршка хьажа",
 	"growthexperiments-homepage-impact-contributions-link": "Дерриге нисдарш хьажа",
 	"growthexperiments-levelingup-getstarted-notification-header": "Кховдийна хийцам бан хьажа, {{GENDER:$2|хьайн}} редакцин говзалла кхиор доладе",
+	"growthexperiments-levelingup-getstarted-noedits-notification-header": "{{SITENAME}} хийца Ӏама лаьий хьуна? {{GENDER:$2|Хьан}} хаарш дӀакхета миллионаш адамаш долчу йукъараллех.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Кховдийна нисдарш дан хьажа",
+	"growthexperiments-levelingup-reengage-notification-header": "Баркалла хийцам барна! ХӀара хьехамаш хьажа, керла говзаллаш кхио а, уггаре а дика гӀуллакхаш Ӏамо а.",
+	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Кховдийна нисдарш дан хьажа",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Ахьа}} дина $3 {{PLURAL:$3|кховдийна нисдар}}. Керла говзаллаш Ӏамош хила.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Кховдийна нисдар де",
 	"echo-category-title-ge-newcomer": "«Кхиар» функци",
 	"echo-pref-tooltip-ge-newcomer": "Керлачу декъашхошна гӀо дан леринчу белхех а, кхин йолу функцишах а хаам бе суна.",
 	"growthexperiments-homepage-community-updates-header": "Йукъараллин керланаш",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Цул совнаха хаа"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Цул совнаха хаа",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Кхин хийцамаш бан хьажа"
 }
