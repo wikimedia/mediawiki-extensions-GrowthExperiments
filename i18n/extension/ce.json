@@ -227,6 +227,8 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Минимум оьшуш долу хьажорган мах хадор",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Минимум тешаман порог хьажоргийн предложенешна. ХӀокху меттигна оьшу процент шен дешдакъойн кепехь, цундела терахь хила деза 0-1 йукъахь, нагахь санна {{GENDER:|хьан}} терахь алсамдаьккхича, чаккхенан лелочуьнга дӀакхачийна предложенеш дика предложенеш хиларан йиш алсам хир йу, мелхо а кӀезиг предложенеш хир йу. Нагахь санна ахь терахь лахдахь, цигахь алсам предложенеш хир йу амма цхьайерш дика дикалла йолу предложенеш хиларан йиш лахара хир йу.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "ХӀан-хӀа",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "ХӀаъ, 5 берриг хийцам бинчул тӀаьхьа",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "ХӀаъ, 20 берриг хийцам бинчул тӀаьхьа",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "ХӀаъ, 50 хийцам бинчул тӀаьхьа",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "ХӀаъ, 75 хийцам биначул тӀаьхьа",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "ХӀаъ, 150 хийцам бинчул тӀаьхьа",

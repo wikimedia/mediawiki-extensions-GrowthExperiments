@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bobbyshabangu"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|yini lokhu?]])",
+	"growthexperiments-confirmemail-emailhelp": "I-imeyili iyadingeka ukuze kubuyiselwe i-akhawunti yakho uma ulahlekelwa iphasiwedi yakho.",
+	"growthexperiments-confirmemail-emailrecommended": "Ikheli le-imeyili (liyanconywa)",
+	"growthexperiments-confirmemail-emailwarning": "Sicela ubheke i-imeyili evela kithi ukuze uqinisekise ikheli lakho.",
+	"growthexperiments-confirmemail-confirm-subject": "Siyakwamukela ku-{{SITENAME}}: Sicela uqinisekise ikheli lakho le-imeyili",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2| Sawubona}} $2 ,\n\nSiyabonga ngokungeza i-imeyili ku-akhawunti yakho ye-{{SITENAME}}, ebhaliswe ngekheli lasesizindeni se-inthanethi $1 .\n\nSicela uchofoze inkinobho engezansi ukuze uqinisekise leli njengekheli le-imeyili ongathanda ukulixhumanisa ne-akhawunti yakho \" $2 \":\n\n $3 \n\nQaphela: le khodi yokuqinisekisa <strong>iphelelwa yisikhathi ku- $4</strong> .\n\nSiyabonga,\n\n{{SITENAME}}\n\n----\n\nUkuze ukhansele ukuqinisekiswa kwekheli le-imeyili (ngoba awubhalisanga i-akhawunti noma nganoma yisiphi esinye isizathu), chofoza lesi sixhumanisi sokukhansela:\n\n $5",
+	"growthexperiments-confirmemail-confirm-button": "Qinisekisa ikheli likagesi",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2| Sawubona}} $2 ,\n\nSiyabonga ngokungeza i-imeyili ku-akhawunti yakho ye-{{SITENAME}}, ebhaliswe ngekheli le-IP $1 .\n\nSicela uchofoze isixhumanisi esingezansi ukuze uqinisekise leli njengekheli le-imeyili ongathanda ukulixhumanisa ne-akhawunti yakho \" $2 \":\n\n $3 \n\nQaphela: le khodi yokuqinisekisa iphelelwa yisikhathi ku- $4 .\n\nSiyabonga,\n\n{{SITENAME}}\n\n----\n\nUkuze ukhansele ukuqinisekiswa kwekheli le-imeyili (ngoba awubhalisanga i-akhawunti noma nganoma yisiphi esinye isizathu), chofoza lesi sixhumanisi sokukhansela:\n\n $5",
+	"growthexperiments-signupcampaign-title": "Siyabonga ngokunikela! Manje joyina umphakathi wabahleli abenza iWikipedia ibe ngcono namuhla",
+	"growthexperiments-signupcampaign-body": "Ukuhlela iWikipedia kungaba lula njengokwengeza isixhumanisi noma ukushintsha igama. Thola iziphakamiso zeziqephu zendatshana ku-{{GENDER:|yakho}} izihloko ozithakaselayo ngemva kokudala i-akhawunti yakho!",
+	"growthexperiments-signupcampaign-bullet1": "Izindatshana eziphakanyisiwe kwezintshisakalo ze-{{GENDER:|yakho}}",
+	"growthexperiments-signupcampaign-bullet2": "Cela usizo kumhleli onolwazi",
+	"growthexperiments-signupcampaign-bullet3": "Qala ngokuhlela okuncane, okulula",
+	"growthexperiments-campaigns-footer": "Ngokudala i-akhawunti ye-{{GENDER:|yakho}} kuleli khasi, izohlotshaniswa nalo mkhankaso ukuze uthole ulwazi kanye nezinjongo zokuhlaziya."
+}

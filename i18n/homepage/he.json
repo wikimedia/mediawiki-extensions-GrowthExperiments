@@ -184,6 +184,8 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "הצגת השאלה {{GENDER:$2|שלך}} בדף השיחה של {{GENDER:$1|החונך|החונכת}} שלך.",
 	"growthexperiments-homepage-mentorship-question-subject": "שאלה של [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "שאלה של [[User:$1|$1]] בדף [[$2]]",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "<span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>, {{GENDER:$2|החונך|החונכת}} של [[User:$1|$1]], לא בסביבה.",
+	"growthexperiments-homepage-mentorship-system-message": "הערה: $1",
 	"growthexperiments-specialimpact-title": "השפעה",
 	"growthexperiments-specialimpact-showing-for-other-user": "הצגת נתוני השפעה על $1",
 	"growthexperiments-specialimpact-invalid-username": "שם משתמש חסר או בלתי־תקין.",
@@ -584,12 +586,17 @@
 	"growthexperiments-homepage-special-contribute-cta": "לראות את העריכות המוצעות",
 	"growthexperiments-homepage-impact-contributions-link": "הצגת כל העריכות",
 	"growthexperiments-levelingup-getstarted-notification-header": "{{GENDER:$2|נסה|נסי}} עריכה מוצעת {{GENDER:$2|והתחל|והתחילי}} לבנות את מיומנויות העריכה שלך",
+	"growthexperiments-levelingup-getstarted-noedits-notification-header": "{{GENDER:$2|סקרן|סקרנית}} לגבי עריכה באתר {{SITENAME}}? הידע שלך מצטרף לקהילה שמגיעה למיליונים.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "לנסות עריכות מוצעות",
+	"growthexperiments-levelingup-reengage-notification-header": "תודה על העריכה! מומלץ לנסות עריכות מוצעות כדי לפתח מיומנויות חדשות וללמוד על שיטות עבודה מומלצות.",
+	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "לנסות עריכות מוצעות",
 	"growthexperiments-levelingup-keepgoing-notification-header": "עשית {{PLURAL:$3|עריכה מוצעת אחת|$3 עריכות מוצעות}}. {{GENDER:$2|תמשיך|תמשיכי}} ללמוד עוד מיומנויות חדשות.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "לעשות עריכה מוצעת",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "התקדמות נהדרת {{PLURAL:$3|בעריכה|בעריכות}} {{GENDER:$2|שלך}}! מומלץ לעיין בהצעות נוספות כדי לשפר את הכישורים שלך.",
 	"echo-category-title-ge-newcomer": "אפשרויות צמיחה",
 	"echo-pref-tooltip-ge-newcomer": "להודיע לי על משימות לעורכים חדשים ותכונות אחרות שנועדו לעזור למשתמשים חדשים.",
 	"growthexperiments-homepage-community-updates-header": "עדכוני קהילה",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "מידע נוסף",
-	"growthexperiments-addalink-milestone-notification-header": "{{PLURAL:$1|עריכה אחת|$1 עריכות}}, מזל טוב! ערכים {{GENDER:$2|שערכת}} קיבלו לאחרונה $3 צפיות. העריכות המוצעות הזמינות השתנו."
+	"growthexperiments-addalink-milestone-notification-header": "{{PLURAL:$1|עריכה אחת|$1 עריכות}}, מזל טוב! ערכים {{GENDER:$2|שערכת}} קיבלו לאחרונה $3 צפיות. העריכות המוצעות הזמינות השתנו.",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "לנסות עריכות אחרות"
 }
