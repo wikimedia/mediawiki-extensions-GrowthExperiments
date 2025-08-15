@@ -55,7 +55,7 @@
 		"ServiceWiring.php"
 	],
 	"ConfigRegistry": {
-		"GrowthExperiments": "GlobalVarConfig::newInstance"
+		"GrowthExperiments": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"JobClasses": {
 		"newcomerTasksCacheRefreshJob": {
