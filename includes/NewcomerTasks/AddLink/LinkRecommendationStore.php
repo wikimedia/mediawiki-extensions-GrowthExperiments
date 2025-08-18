@@ -28,9 +28,9 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
  */
 class LinkRecommendationStore {
 
-	public const RECOMMENDATION_AVAILABLE = 'recomendation_available';
-	public const RECOMMENDATION_NOT_AVAILABLE = 'recomendation_not_available';
-	public const RECOMMENDATION_UNKNOWN = 'recomendation_unknown';
+	public const RECOMMENDATION_AVAILABLE = 'recommendation_available';
+	public const RECOMMENDATION_NOT_AVAILABLE = 'recommendation_not_available';
+	public const RECOMMENDATION_UNKNOWN = 'recommendation_unknown';
 
 	private IConnectionProvider $connectionProvider;
 	private ILoadBalancer $growthLoadBalancer;
