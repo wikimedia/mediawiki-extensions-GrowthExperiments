@@ -17,7 +17,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Zadnjič posodobil_a [[User:$1|$1]] $2 ([$4 razl]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Zadnjič posodobil neznan uporabnik $1 ([$3 razl]).",
 	"growthexperiments-edit-config-pretext": "Ta stran vam omogoča urejanje konfiguracije možnosti ekipe [[:mw:Special:MyLanguage/Growth|Growth]]. V vašem imenu bo uredila $1. Spremembe si lahko ogledate v zgodovini strani za to stran.",
-	"growthexperiments-edit-config-pretext-banner": "{{|}}Prikažete lahko tudi pasico na strani novinca, ki vključuje obvestila o dogodkih, pomembnih za novince. Če {{GENDER:|}}želite to storiti, {{GENDER:|}}jo morate ročno dodati v [[$1]]. Vsa vsebina, ki bo dodana tam, bo prikazana kot rumena pasica na vrhu [[Special:Homepage]].",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Prikažete}} lahko tudi pasico na strani novinca, ki vključuje obvestila o dogodkih, pomembnih za novince. Če {{GENDER:|želite}} to storiti, jo {{GENDER:|morate}} ročno dodati v [[$1]]. Vsa vsebina, ki bo dodana tam, bo prikazana v rumeni pasici na vrhu [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Ta obrazec omogoča uporabnikom z dovoljenjem konfiguriranje orodja ekipe [[:mw:Special:MyLanguage/Growth|Growth]].",
 	"growthexperiments-edit-config-feedback-headline": "Imate predloge ali vprašanja o tem obrazcu?",
 	"growthexperiments-edit-config-feedback-cta": "Pošlji odziv",

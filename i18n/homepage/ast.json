@@ -4,6 +4,10 @@
 			"YoaR"
 		]
 	},
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Fácil",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difícil",
+	"growthexperiments-homepage-suggested-edits-header": "Ediciones suxeríes",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Dir al artículu",
 	"tag-newcomer_task-description": "Edición suxerida pol módulu d'ediciones suxeríes de la páxina d'entamu pa principiantes",
 	"growthexperiments-addlink-summary-summary": "Función de suxerencies d'enllaces: $1 {{PLURAL:$1|enllaz añadíu|enllaces añadíos}}."
 }

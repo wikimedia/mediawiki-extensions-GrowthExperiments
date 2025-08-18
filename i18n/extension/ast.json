@@ -5,5 +5,8 @@
 			"YoaR"
 		]
 	},
-	"growthexperiments-desc": "Esta estensión contién esperimentos fechos pol \"Growth team\"."
+	"growthexperiments-desc": "Esta estensión contién esperimentos fechos pol \"Growth team\".",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Principiu de la páxina",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Sí",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Non"
 }

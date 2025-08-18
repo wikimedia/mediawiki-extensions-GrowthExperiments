@@ -77,6 +77,7 @@
 	"echo-pref-tooltip-ge-mentorship": "د لارښودۍ د ځانگړنې اړوند خبرتياوې چې د ودې ډلې له خوا پرمخ‌وړل کېږي. دا تاسو ته خبرتيا درکوي چې تاسو د لارزدکړي په توگه منل شوي ياست يا دا چې ستاسو يو لارزدکړی د بل چا له خوا منل شوی دی.",
 	"growthexperiments-notification-header-mentee-claimed": "ستاسو {{GENDER:$3|لارزکړی}} $3 د $1 له خوا {{GENDER:$2|ومنل‌شو}}",
 	"growthexperiments-notification-body-mentee-claimed": "لامل: $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"لارزدکړي غوښتنه\" څه ته وايي؟",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "زما اړوند کارزکړو شمېر",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "د منځگوړي شاوخوا نيمايي",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "منځگوړی (تلواله)",
@@ -93,7 +94,11 @@
 	"growthexperiments-manage-mentors-last-active": "وروستی کارنده",
 	"growthexperiments-manage-mentors-intro-msg": "نووراغلو لپاره پيغام",
 	"growthexperiments-manage-mentors-remove-mentor": "لرې‌کول",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "د لارښود لرې‌کولو لامل",
+	"growthexperiments-manage-mentors-remove-mentor-success": "[[User:$1|$1]] کارن نور يو {{GENDER:$1|لارښود}} نه دی.",
 	"growthexperiments-manage-mentors-return-back": "تاسو کولی شئ د لارښودانو لړليک ته [[Special:ManageMentors|بېرته‌راوگرځئ]]",
+	"growthexperiments-mentorship-enrollasmentor-title": "د {{GENDER:|لارښود}} په توگه نومليکل",
 	"growthexperiments-mentorship-enrollasmentor-form-message": "پېژندون پيغام",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "نومليکل",
 	"growthexperiments-mentorship-enrollasmentor-summary": "ځان د لارښود په توگه ورگډول"
 }

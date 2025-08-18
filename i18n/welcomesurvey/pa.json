@@ -40,6 +40,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "ਨਹੀਂ, ਹੋਰ ਕਾਰਨਾਂ ਕਰਕੇ",
 	"welcomesurvey-question-edited-option-dont-remember-label": "ਮੈਨੂੰ ਯਾਦ ਨਹੀਂ",
 	"welcomesurvey-question-mailinglist-label": "ਮੈਂ ਸੰਪਾਦਨ ਸ਼ੁਰੂ ਕਰਨ ਬਾਰੇ ਈਮੇਲ ਰਾਹੀਂ ਸੁਝਾਅ ਪ੍ਰਾਪਤ ਕਰਨਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।",
+	"welcomesurvey-question-mailinglist-help": "ਕਿਰਪਾ ਕਰਕੇ ਧਿਆਨ ਦਿਓ ਕਿ ਇਹ ਮੇਲਿੰਗ ਸੂਚੀ MailChimp ਦੁਆਰਾ ਸੰਚਾਲਿਤ ਹੈ, ਜਿਸਦਾ ਮਤਲਬ ਹੈ ਕਿ MailChimp ਦੁਆਰਾ {{GENDER:|ਤੁਹਾਡੀ}} ਜਾਣਕਾਰੀ ਦੀ ਵਰਤੋਂ ਉਹਨਾਂ ਦੀ [https://www.intuit.com/privacy/statement/ ਗੋਪਨੀਯਤਾ ਨੀਤੀ] ਅਤੇ [https://mailchimp.com/legal/terms/ ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ] ਦੁਆਰਾ ਨਿਯੰਤਰਿਤ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।",
 	"welcomesurvey-question-email-label": "ਈਮੇਲ ਪਤਾ (ਚੋਣਵਾਂ)",
 	"welcomesurvey-question-email-placeholder": "{{GENDER:|ਤੁਹਾਡਾ}} ਈਮੇਲ ਪਤਾ ਦਰਜ ਕਰੋ...",
 	"welcomesurvey-question-email-help": "ਅਸੀਂ ਦੇਖਿਆ ਕਿ {{GENDER:|ਤੁਸੀਂ}} ਇਹ ਖਾਤਾ ਬਣਾਉਣ ਵੇਲੇ ਕੋਈ ਈਮੇਲ ਦਾਖਲ ਨਹੀਂ ਕੀਤੀ। ਇਸਦੀ <strong>ਬਹੁਤ ਸਿਫ਼ਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ</strong> ਹੈ, ਕਿਉਂਕਿ ਜੇਕਰ ਤੁਸੀਂ ਕਦੇ ਆਪਣਾ ਪਾਸਵਰਡ ਗੁਆ ਦਿੰਦੇ ਹੋ ਤਾਂ ਖਾਤਾ ਰਿਕਵਰੀ ਲਈ ਇੱਕ ਈਮੇਲ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। ਨੋਟ: ਜਦੋਂ ਦੂਜੇ ਵਰਤੋਂਕਾਰ ਤੁਹਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰਨਗੇ ਤਾਂ ਤੁਹਾਡਾ ਈਮੇਲ ਪਤਾ ਉਹਨਾਂ ਅੱਗੇ ਪ੍ਰਗਟ ਨਹੀਂ ਹੋਵੇਗਾ।",
