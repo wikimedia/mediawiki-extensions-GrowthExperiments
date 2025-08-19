@@ -4,6 +4,12 @@
 			"YoaR"
 		]
 	},
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Fácil",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difícil",
+	"growthexperiments-homepage-suggested-edits-header": "Ediciones suxeríes",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Última edición",
+	"growthexperiments-homepage-impact-scores-edit-count": "Total d'ediciones",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Dir al artículu",
 	"tag-newcomer_task": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks Xeres pa principiantes]",
 	"tag-newcomer_task-description": "Edición suxerida pol módulu d'ediciones suxeríes de la páxina d'entamu pa principiantes",
 	"tag-newcomer_task_copyedit": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#copyedit Xeres pa principiantes: correición d'errores]",

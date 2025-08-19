@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"H78c67c",
-			"Winston Sung"
+			"Winston Sung",
+			"Yueman"
 		]
 	},
 	"growthexperiments-desc": "呢個擴充功能包含 Growth 團隊所做嘅實驗。",
@@ -21,5 +22,6 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "唔係",
 	"growthexperiments-edit-config-newcomertasks": "修改建議",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "明細模",
-	"specialpages-group-growth-tools": "Growth 工具"
+	"specialpages-group-growth-tools": "Growth 工具",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "圖"
 }

@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"YoaR"
+		]
+	},
+	"welcomesurvey-save-confirmation-title": "¡Gracies! Guardáronse les tos respuestes.",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutorial",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Pa correxir un error tipográficu nun artículu de Wikipedia",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Para añadir o modificar información nun artículu de Wikipedia",
+	"welcomesurvey-question-reason-option-add-image-label": "Para añadir una semeya o una imaxe a un artículu de Wikipedia",
+	"welcomesurvey-question-reason-option-new-page-label": "Para crear un nuevu artículu en Wikipedia",
+	"welcomesurvey-question-reason-option-program-participant-label": "Toi participando nun programa, clase o eventu",
+	"welcomesurvey-question-reason-option-read-label": "Pa lleer Wikipedia",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Otra razón",
+	"welcomesurvey-question-reason-option-other-label": "Otra razón (por favor descríbila)",
+	"welcomesurvey-question-edited-label": "¿Editasti dalguna vegada en Wikipedia?",
+	"welcomesurvey-question-edited-option-yes-many-label": "Sí, en delles ocasiones",
+	"welcomesurvey-question-edited-option-yes-few-label": "Sí, una o dos vegaes",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Non, nun sabía que pudiera editar Wikipedia",
+	"welcomesurvey-question-edited-option-no-other-label": "Non, por otros motivos",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Nun lo recuerdo",
+	"welcomesurvey-reminder-link": "Facer la encuesta",
+	"welcomesurvey-mideditsignup-button-close": "Zarrar"
+}
