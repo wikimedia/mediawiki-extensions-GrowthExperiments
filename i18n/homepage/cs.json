@@ -12,6 +12,7 @@
 			"Martin Urbanec",
 			"Martin Urbanec (WMF)",
 			"Matěj Suchánek",
+			"Mormegil",
 			"MrJaroslavik",
 			"Patriccck",
 			"Patrik L.",
@@ -585,7 +586,7 @@
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Vyzkoušet editační tipy",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Dokončil|Dokončila|Dokončili}} jste $3 {{PLURAL:$3|editační tip|editačních tipy|editačních tipů}}. Pokračujte v editování, abyste {{GENDER:$2|zlepšil|zlepšila|zlepšili}} své editační dovednosti.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Vyzkoušejte editační tipy",
-	"echo-category-title-ge-newcomer": "Funkce týmu Growth",
+	"echo-category-title-ge-newcomer": "funkce týmu Growth",
 	"echo-pref-tooltip-ge-newcomer": "Upozorněte mě na nové Editační tipy a další funkce navržené, aby pomohly novým uživatelům.",
 	"growthexperiments-homepage-community-updates-header": "Komunitní aktuality",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Zjistit více"

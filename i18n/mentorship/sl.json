@@ -14,7 +14,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Ta preglednica zahteva JavaScript. Če želite uporabljati ta modul, omogočite JavaScript.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Kdo je v {{GENDER:|vaši}} preglednici?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Več informacij o tem, kdo je v {{GENDER:|vaši}} preglednici",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Ta preglednica prikazuje {{GENDER:|vaše}} mentorirance, katerih račun je bil ustvarjen v zadnjih dveh tednih ali ki so urejali v zadnjih šestih mesecih in imajo [https://mediawiki.org/wiki/Special:MyLanguage/Growth /Feature_summary#NH omogočeno domačo stran začetnika]. Podatki se posodabljajo vsake tri ure.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Ta preglednica prikazuje {{GENDER:|vaše}} mentorirance, katerih račun je bil ustvarjen v zadnjih dveh tednih ali ki so urejali v zadnjih šestih mesecih in imajo [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH omogočeno domačo stran novinca]. Podatki se posodabljajo vsake tri ure.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Dodajanje mentorirancev med zaznamke",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Uporabniško ime",
