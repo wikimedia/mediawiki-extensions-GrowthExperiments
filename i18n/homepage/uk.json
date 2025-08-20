@@ -11,7 +11,8 @@
 			"Piramidion",
 			"Vlad5250",
 			"Ата",
-			"Пан Хаунд"
+			"Пан Хаунд",
+			"Mykola7"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Привіт}}, {{bidi:$1}}!",
@@ -571,7 +572,7 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Готово",
 	"growthexperiments-homepage-mentorship-about-header": "Про наставників",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Хто {{GENDER:$1|ваш наставник|ваша наставниця}}?",
-	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:$1|Ваш наставник|Ваша наставниця}} — це інша людина з великим досвідом редагування у {{GRAMMAR:locative|{{SITENAME}}}}, яка зголосилась підтримувати нових редакторів, як ви, на початках редагування й відповідати на запитання про користування сайтом, які у {{GENDER:|вас}} можуть виникнути.",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:$1|Ваш наставник|Ваша наставниця}} — це інша людина з великим досвідом редагування {{GRAMMAR:locative|{{SITENAME}}}}, яка зголосилась підтримувати нових редакторів, як ви, на початках редагування й відповідати на запитання про користування сайтом, які у {{GENDER:|вас}} можуть виникнути.",
 	"growthexperiments-homepage-mentorship-about-mentor-par2": "Коли {{GENDER:|ви}} надсилаєте повідомлення {{GENDER:$1|своєму наставнику|своїй наставниці}}, {{GENDER:$1|він|вона}} побачить його на своїй сторінці обговорення користувача, і ви маєте отримати сповіщення, коли {{GENDER:$1|він|вона}} відповість.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Відмовитися від наставництва",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Оберіть кнопку нижче, якщо {{GENDER:|ви}} віддаєте перевагу наразі не мати конкретного наставника, закріпленого за вами. Ви можете отримати нового наставника, коли за хочете, якщо передумаєте.",

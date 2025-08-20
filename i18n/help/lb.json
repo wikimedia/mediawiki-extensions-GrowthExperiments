@@ -80,7 +80,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "De Saturn ass warscheinlech am bekanntste fir säi System vu Planéiteréng, deen en optesch eenzegaarteg mécht.<sup>[3]</sup>",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-publish": "[[$1|Gitt méi iwwer Referenze gewuer]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Linken derbäisetzen hëlleft de Leit fir méi séier ze léieren.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Et ass kee speziellt Wëssen iwwert den Artikel néideg fir dës Aufgabe ze maachen.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Et brauch ee kee speziellt Wëssen iwwert den Artikel fir dës Aufgab maachen ze kënnen.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Méi iwwer Maschinnevirschléi gewuer ginn]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Richtlinnen",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Beispillsaz",
@@ -130,6 +130,8 @@
 	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|Ännerung|Ännerungen}} · $2",
 	"growthexperiments-help-panel-general-help-title": "Allgemeng Ännerungshëllef",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Iwwer Ännerungsvirschléi",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Dir}} benotzt de Quelltext-Editeur. Dës Ännerungshiweiser sinn am nëtzlechste fir de visuellen Editeur.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Op de visuellen Editeur wiesselen",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Dir}} benotzt de visuellen Editeur. Dës Ännerungshiweiser sinn am nëtzlechste fir de Quelltext-Editor.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Op de Quelltext-Editeur wiesselen"
 }

@@ -3,7 +3,9 @@
 		"authors": [
 			"H78c67c",
 			"Winston Sung",
-			"Ktchankt"
+			"Ktchankt",
+			"JeffreyKim",
+			"Yueman"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "導師儀錶板",
@@ -32,7 +34,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "取消",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "設定",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily": "每日",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly": "每星期",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly": "每個禮拜",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly": "每月",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "儲存",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "取消",
