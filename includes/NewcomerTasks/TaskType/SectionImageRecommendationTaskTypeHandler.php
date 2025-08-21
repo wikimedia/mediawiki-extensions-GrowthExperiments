@@ -7,6 +7,7 @@ use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Message\Message;
 use MessageLocalizer;
+use Wikimedia\Message\ListType;
 use Wikimedia\Message\MessageSpecifier;
 
 class SectionImageRecommendationTaskTypeHandler extends ImageRecommendationBaseTaskTypeHandler {
@@ -59,7 +60,7 @@ class SectionImageRecommendationTaskTypeHandler extends ImageRecommendationBaseT
 		);
 		return $localizer->msg(
 			'apihelp-growthexperiments-structured-task-submit-data-format-section-image-recommendation',
-			Message::listParam( $wrappedReasons, 'comma' ),
+			Message::listParam( $wrappedReasons, ListType::COMMA ),
 			Message::numParam( $taskType->getMinimumCaptionCharacterLength() )
 		);
 	}

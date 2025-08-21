@@ -25,6 +25,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use StatusValue;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Message\ListType;
 use Wikimedia\ObjectCache\WANObjectCache;
 
 /**
@@ -224,13 +225,13 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 				return StatusValue::newGood()->error(
 					'apierror-growthexperiments-addimage-handler-reason-invaliditem',
 					'[' . gettype( $reason ) . ']',
-					Message::listParam( self::REJECTION_REASONS, 'comma' )
+					Message::listParam( self::REJECTION_REASONS, ListType::COMMA )
 				);
 			} elseif ( !in_array( $reason, self::REJECTION_REASONS, true ) ) {
 				return StatusValue::newGood()->error(
 					'apierror-growthexperiments-addimage-handler-reason-invaliditem',
 					$reason,
-					Message::listParam( self::REJECTION_REASONS, 'comma' )
+					Message::listParam( self::REJECTION_REASONS, ListType::COMMA )
 				);
 			}
 		}

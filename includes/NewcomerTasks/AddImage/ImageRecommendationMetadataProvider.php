@@ -8,6 +8,7 @@ use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Message\Message;
 use MediaWiki\Site\SiteLookup;
 use StatusValue;
+use Wikimedia\Message\ListType;
 
 class ImageRecommendationMetadataProvider {
 
@@ -204,7 +205,7 @@ class ImageRecommendationMetadataProvider {
 				'growthexperiments-addimage-reason-wikipedia-languages-others'
 			)->numParams( $otherLanguagesCount )->text();
 		}
-		return Message::listParam( $shownLanguages, 'text' );
+		return Message::listParam( $shownLanguages, ListType::AND );
 	}
 
 	/**

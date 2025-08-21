@@ -23,6 +23,7 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use SearchResult;
 use StatusValue;
+use Wikimedia\Message\ListType;
 
 /**
  * Shared functionality for local and remote search.
@@ -180,7 +181,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		if ( !$taskTypes ) {
 			return StatusValue::newFatal(
 				wfMessage( 'growthexperiments-newcomertasks-invalid-tasktype',
-					Message::listParam( $invalidTaskTypes, 'comma' )
+					Message::listParam( $invalidTaskTypes, ListType::COMMA )
 				)
 			);
 		}

@@ -22,6 +22,7 @@ use MediaWiki\User\UserIdentityUtils;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 use UnexpectedValueException;
+use Wikimedia\Message\ListType;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IDBAccessObject;
 
@@ -142,7 +143,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		$unexpectedTargets = array_diff( $allTargets, $links );
 		if ( $unexpectedTargets ) {
 			return StatusValue::newFatal( 'growthexperiments-addlink-handler-wrongtargets',
-				Message::listParam( $unexpectedTargets, 'comma' ) );
+				Message::listParam( $unexpectedTargets, ListType::COMMA ) );
 		}
 
 		$warnings = [];
