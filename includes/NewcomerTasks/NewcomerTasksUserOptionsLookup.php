@@ -168,7 +168,7 @@ class NewcomerTasksUserOptionsLookup {
 	private function getDefaultTaskTypes( UserIdentity $user ): array {
 		// This doesn't do anything useful right now, but we want to preserve the ability
 		// to determine the default task types dynamically for A/B testing.
-		return SuggestedEdits::DEFAULT_TASK_TYPES;
+		return SuggestedEdits::getDefaultTaskTypes( $this->config );
 	}
 
 	/**

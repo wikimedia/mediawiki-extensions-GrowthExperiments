@@ -760,7 +760,10 @@
 		"CommunityConfiguration": {
 			"ProviderClasses": {
 				"GrowthSuggestedEdits": {
-					"class": "GrowthExperiments\\Config\\Providers\\SuggestedEditsConfigProvider"
+					"class": "GrowthExperiments\\Config\\Providers\\SuggestedEditsConfigProvider",
+					"services": [
+						"MainConfig"
+					]
 				}
 			},
 			"Validators": {
@@ -1431,6 +1434,8 @@
 				"ext.growthExperiments.StructuredTask/addsectionimage/dmRecommendedImagePlaceholderNode.js",
 				"ext.growthExperiments.StructuredTask/addsectionimage/RecommendedSectionImageToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/addsectionimage/RecommendedSectionImageRejectionDialog.js",
+				"ext.growthExperiments.StructuredTask/improvetone/ImproveToneInitializer.js",
+				"utils/SimpleLevenshtein.js",
 				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",
 				"ui-components/AdaptiveSelectWidget.js"
@@ -1829,6 +1834,7 @@
 				"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation",
 				"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation",
 				"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation",
+				"growthexperiments-homepage-suggestededits-tasktype-name-improve-tone",
 				"growthexperiments-help-panel-button-preheader-suggested-edits",
 				"growthexperiments-help-panel-button-header-ask-help",
 				"growthexperiments-help-panel-button-header-ask-help-mentor",
@@ -1973,7 +1979,8 @@
 				"growthexperiments-homepage-suggestededits-tasktype-name-update",
 				"growthexperiments-homepage-suggestededits-tasktype-name-expand",
 				"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation",
-				"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation"
+				"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation",
+				"growthexperiments-homepage-suggestededits-tasktype-name-improve-tone"
 			]
 		},
 		"ext.growthExperiments.Account": {
@@ -2620,7 +2627,8 @@
 				"template-based": "visualeditor",
 				"link-recommendation": "machineSuggestions",
 				"image-recommendation": "machineSuggestions",
-				"section-image-recommendation": "machineSuggestions"
+				"section-image-recommendation": "machineSuggestions",
+				"improve-tone": "visualeditor"
 			}
 		},
 		"WelcomeSurveyEnabled": {
@@ -2721,6 +2729,14 @@
 						"TitleParser",
 						"GrowthExperimentsImageRecommendationProvider",
 						"GrowthExperimentsAddImageSubmissionHandler"
+					]
+				},
+				"improve-tone": {
+					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\ImproveToneTaskTypeHandler",
+					"services": [
+						"GrowthExperimentsNewcomerTasksConfigurationValidator",
+						"TitleParser",
+						"GrowthExperimentsImproveToneRecommendationProvider"
 					]
 				},
 				"null": {

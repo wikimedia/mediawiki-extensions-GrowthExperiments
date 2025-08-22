@@ -29,6 +29,7 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 		parent::setUp();
 
 		$this->overrideConfigValue( 'GEHomepageSuggestedEditsEnabled', true );
+		$this->overrideConfigValue( 'GEImproveToneSuggestedEditEnabled', true );
 	}
 
 	public function testDefaultTaskTypesDataWithEmptyConfig(): void {
@@ -198,6 +199,22 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 					'underlinkedMinLength' => 300,
 					'maximumEditsTaskIsAvailable' => null,
 				],
+			],
+			[
+				'id' => 'improve-tone',
+				'difficulty' => 'easy',
+				'extraData' => [
+					'learnMoreLink' => '',
+				],
+				'handlerId' => 'improve-tone',
+				'iconData' => [
+					'icon' => 'robot-task-type-easy',
+					'filterIcon' => 'robot',
+					'descriptionMessageKey' => 'growthexperiments-homepage-suggestededits-tasktype-machine-description',
+				],
+				'excludedTemplates' => [],
+				'excludedCategories' => [],
+				'_type_' => 'GrowthExperiments\NewcomerTasks\TaskType\ImproveToneTaskType',
 			],
 		], self::removeComplexMarkers( $jsonCodec->toJsonArray(
 			$taskTypes, Hint::build( TaskType::class, Hint::LIST )
@@ -382,6 +399,22 @@ JSON;
 					'underlinkedMinLength' => 300,
 					'maximumEditsTaskIsAvailable' => null,
 				],
+			],
+			[
+				'id' => 'improve-tone',
+				'difficulty' => 'easy',
+				'extraData' => [
+					'learnMoreLink' => '',
+				],
+				'handlerId' => 'improve-tone',
+				'iconData' => [
+					'icon' => 'robot-task-type-easy',
+					'filterIcon' => 'robot',
+					'descriptionMessageKey' => 'growthexperiments-homepage-suggestededits-tasktype-machine-description',
+				],
+				'excludedTemplates' => [],
+				'excludedCategories' => [],
+				'_type_' => 'GrowthExperiments\NewcomerTasks\TaskType\ImproveToneTaskType',
 			],
 		], self::removeComplexMarkers( $jsonCodec->toJsonArray(
 			array_values( $taskTypes ), Hint::build( TaskType::class, Hint::LIST )

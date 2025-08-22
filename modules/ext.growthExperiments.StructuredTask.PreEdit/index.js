@@ -12,6 +12,7 @@ module.exports = ( function () {
 		isAddLink = taskType === 'link-recommendation' && taskType in TASK_TYPES,
 		isAddImage = taskType === 'image-recommendation' && taskType in TASK_TYPES,
 		isAddSectionImage = taskType === 'section-image-recommendation' && taskType in TASK_TYPES,
+		isImproveTone = taskType === 'improve-tone' && taskType in TASK_TYPES,
 		windows = {};
 	let dialogName,
 		logger,
@@ -171,7 +172,7 @@ module.exports = ( function () {
 		if ( suggestedEditSession.taskState !== 'started' ) {
 			return false;
 		}
-		return isAddImage || isAddSectionImage ||
+		return isImproveTone || isAddImage || isAddSectionImage ||
 			( isAddLink && mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) );
 	}
 
@@ -245,6 +246,10 @@ module.exports = ( function () {
 				includeImage: true,
 			} ),
 		} );
+	} else if ( isImproveTone ) {
+		// No onboarding for improve tone yet T401234
+		shouldShowOnboarding = false;
+		setupOnboarding();
 	}
 
 	return {

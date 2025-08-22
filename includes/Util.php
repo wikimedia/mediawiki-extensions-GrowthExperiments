@@ -403,4 +403,14 @@ class Util {
 			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
 				->getGrowthConfig()->get( 'GEUseMetricsPlatformExtension' );
 	}
+
+	public static function isImproveToneTasksTypeEnabled(): bool {
+		$wikiSettings = MediaWikiServices::getInstance()->getMainConfig();
+		$extensionRegistry = MediaWikiServices::getInstance()->getExtensionRegistry();
+		return self::isNewcomerTasksAvailable() &&
+			// CirrusSearch is not available in patchdemo
+			// $extensionRegistry->isLoaded( 'CirrusSearch' ) &&
+			$extensionRegistry->isLoaded( 'VisualEditor' ) &&
+			$wikiSettings->get( 'GEImproveToneSuggestedEditEnabled' );
+	}
 }

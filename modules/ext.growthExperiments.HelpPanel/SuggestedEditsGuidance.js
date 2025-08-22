@@ -60,7 +60,8 @@
 	if ( guidancePrefValue[ skin ][ taskTypeId ] ||
 		taskTypeId === 'link-recommendation' ||
 		taskTypeId === 'image-recommendation' ||
-		taskTypeId === 'section-image-recommendation'
+		taskTypeId === 'section-image-recommendation' ||
+		taskTypeId === 'improve-tone'
 	) {
 		// The user has already seen the blue dot for this task type and skin and clicked
 		// "edit", or the dot doesn't make sense for this task type. Don't do anything else.

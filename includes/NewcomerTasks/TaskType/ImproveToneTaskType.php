@@ -1,19 +1,23 @@
 <?php
+
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 class ImproveToneTaskType extends TaskType {
 
-	/** @inheritDoc */
 	protected const IS_MACHINE_SUGGESTION = true;
 
-	/** @inheritDoc */
-	public function __construct(
-		$id,
-		$difficulty,
-		array $extraData = [],
-		array $excludedTemplates = [],
-		array $excludedCategories = []
-	) {
-		parent::__construct( $id, $difficulty, $extraData, $excludedTemplates, $excludedCategories );
+	public function shouldOpenInEditMode(): bool {
+		return true;
 	}
+
+	public function getDefaultEditSection(): string {
+		return 'all';
+	}
+
+	public function shouldShowHelpPanelQuickTips(): bool {
+		return false;
+	}
+
 }

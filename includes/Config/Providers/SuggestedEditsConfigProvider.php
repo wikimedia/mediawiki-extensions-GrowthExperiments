@@ -2,7 +2,11 @@
 
 namespace GrowthExperiments\Config\Providers;
 
+use GrowthExperiments\Util;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Provider\DataProvider;
+use MediaWiki\Extension\CommunityConfiguration\Store\IConfigurationStore;
+use MediaWiki\Extension\CommunityConfiguration\Validation\IValidator;
 use StatusValue;
 use stdClass;
 
@@ -17,6 +21,7 @@ class SuggestedEditsConfigProvider extends DataProvider {
 		'section_image_recommendation' => 'medium',
 		'image_recommendation' => 'medium',
 		'link_recommendation' => 'easy',
+		'improve_tone' => 'easy',
 	];
 	private const DEFAULT_GROUP = 'unknown';
 
@@ -24,14 +29,30 @@ class SuggestedEditsConfigProvider extends DataProvider {
 		'image_recommendation' => 'image-recommendation',
 		'section_image_recommendation' => 'section-image-recommendation',
 		'link_recommendation' => 'link-recommendation',
+		'improve_tone' => 'improve-tone',
 	];
 	private const DEFAULT_TASK_TYPE = 'template-based';
+
+	public function __construct(
+		string $providerId,
+		array $options,
+		IConfigurationStore $store,
+		IValidator $validator,
+		private readonly Config $config,
+	) {
+		parent::__construct( $providerId, $options, $store, $validator );
+	}
 
 	public function loadForNewcomerTasks(): StatusValue {
 		$result = $this->loadValidConfiguration();
 		if ( $result->isOK() ) {
 			$data = $result->getValue();
 			unset( $data->GEInfoboxTemplates );
+
+			if ( Util::isImproveToneTasksTypeEnabled() ) {
+				// TODO: move to community config for full production deployment T396162
+				$data->improve_tone = (object)[];
+			}
 
 			// Priorly 'group' and 'type' were added using IConfigurationProvider::addAutocomputedProperties
 			// but that results in these being written in config pages when running migrateConfig.php

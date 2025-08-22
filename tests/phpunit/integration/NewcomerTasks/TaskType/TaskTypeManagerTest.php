@@ -14,6 +14,10 @@ use MediaWikiIntegrationTestCase;
  * @group Database
  */
 class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
+	protected function setUp(): void {
+		parent::setUp();
+		$this->overrideConfigValue( 'GEImproveToneSuggestedEditEnabled', false );
+	}
 
 	public function testFiltersTaskWhenLimitNotEnabledByFeatureFlagDefault() {
 		$user = $this->createUserWithEdits( 1000 );
@@ -64,6 +68,18 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 		$this->setMaxEditsTaskIsAvailableInConfig( '20' );
 		$result = $sut->getTaskTypesForUser( $user );
 		$this->assertSame( [ 'copyedit' ], $result );
+	}
+
+	public function testFiltersTaskWhenLimitReachedImproveToneEnabled() {
+		$user = $this->createUserWithEdits( 21 );
+		$this->overrideConfigValues( [
+			'GENewcomerTasksStarterDifficultyEnabled' => true,
+			'GEImproveToneSuggestedEditEnabled' => true,
+		] );
+		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
+		$this->setMaxEditsTaskIsAvailableInConfig( '20' );
+		$result = $sut->getTaskTypesForUser( $user );
+		$this->assertSame( [ 'copyedit', 'improve-tone' ], $result );
 	}
 
 	private function createUserWithEdits( ?int $editCount = 10 ): User {

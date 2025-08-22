@@ -1,4 +1,4 @@
-let addLinkModules, addImageModules, addSectionImageModules;
+let addLinkModules, addImageModules, addSectionImageModules, improveToneModules;
 
 function addLink() {
 	if ( !addLinkModules ) {
@@ -46,6 +46,15 @@ function addSectionImage() {
 	return addSectionImageModules;
 }
 
+function improveTone() {
+	if ( !improveToneModules ) {
+		improveToneModules = {
+			ImproveToneInitializer: require( './improvetone/ImproveToneInitializer.js' ),
+		};
+	}
+	return improveToneModules;
+}
+
 module.exports = {
 	EditModeMachineSuggestions: require( './EditModeMachineSuggestions.js' ),
 	EditModeVisualWithSuggestions: require( './EditModeVisualWithSuggestions.js' ),
@@ -59,4 +68,5 @@ module.exports = {
 	addLink: addLink,
 	addImage: addImage,
 	addSectionImage: addSectionImage,
+	improveTone,
 };
