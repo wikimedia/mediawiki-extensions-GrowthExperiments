@@ -146,6 +146,7 @@
 			"class": "GrowthExperiments\\Api\\ApiSetMentor",
 			"services": [
 				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsChangeMentorFactory",
 				"UserIdentityUtils"
 			]

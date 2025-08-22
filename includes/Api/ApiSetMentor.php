@@ -5,6 +5,7 @@ namespace GrowthExperiments\Api;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
@@ -16,6 +17,7 @@ use Wikimedia\Rdbms\IDBAccessObject;
 
 class ApiSetMentor extends ApiBase {
 	private IMentorManager $mentorManager;
+	private MentorProvider $mentorProvider;
 	private ChangeMentorFactory $changeMentorFactory;
 	private UserIdentityUtils $userIdentityUtils;
 
@@ -23,14 +25,36 @@ class ApiSetMentor extends ApiBase {
 		ApiMain $mainModule,
 		string $moduleName,
 		IMentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		ChangeMentorFactory $changeMentorFactory,
 		UserIdentityUtils $userIdentityUtils
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
 		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->changeMentorFactory = $changeMentorFactory;
 		$this->userIdentityUtils = $userIdentityUtils;
+	}
+
+	/**
+	 * Check whether a permissionless change of assigned mentor is allowed
+	 *
+	 * We only allow mentor changes when one of the following conditions is met:
+	 * 	1. The target mentor is registered, and the performer is either the mentee or the mentor
+	 * 	2. The performer has the `setmentor` permission (normally available to sysops)
+	 *
+	 * This method checks the first condition.
+	 */
+	private function allowPermissionlessChange(
+		UserIdentity $mentor,
+		UserIdentity $mentee
+	): bool {
+		return $this->mentorProvider->isMentor( $mentor ) &&
+			(
+				$this->getUser()->equals( $mentee ) ||
+				$this->getUser()->equals( $mentor )
+			);
 	}
 
 	/**
@@ -48,9 +72,7 @@ class ApiSetMentor extends ApiBase {
 		/** @var UserIdentity $mentor */
 		$mentor = $params['mentor'];
 
-		if ( !in_array( $this->getUser()->getId(), [ $mentee->getId(), $mentor->getId() ] ) ) {
-			// If you're neither the mentee nor the (new) mentor,
-			// you must have setmentor rights.
+		if ( !$this->allowPermissionlessChange( $mentor, $mentee ) ) {
 			$this->checkUserRightsAny( 'setmentor' );
 		}
 
