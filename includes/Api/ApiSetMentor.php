@@ -5,6 +5,7 @@ namespace GrowthExperiments\Api;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
@@ -18,6 +19,9 @@ class ApiSetMentor extends ApiBase {
 	/** @var MentorManager */
 	private $mentorManager;
 
+	/** @var MentorProvider */
+	private $mentorProvider;
+
 	/** @var ChangeMentorFactory */
 	private $changeMentorFactory;
 
@@ -28,6 +32,7 @@ class ApiSetMentor extends ApiBase {
 	 * @param ApiMain $mainModule
 	 * @param string $moduleName
 	 * @param MentorManager $mentorManager
+	 * @param MentorProvider $mentorProvider
 	 * @param ChangeMentorFactory $changeMentorFactory
 	 * @param UserIdentityUtils $userIdentityUtils
 	 */
@@ -35,14 +40,36 @@ class ApiSetMentor extends ApiBase {
 		ApiMain $mainModule,
 		$moduleName,
 		MentorManager $mentorManager,
+		MentorProvider $mentorProvider,
 		ChangeMentorFactory $changeMentorFactory,
 		UserIdentityUtils $userIdentityUtils
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
 		$this->mentorManager = $mentorManager;
+		$this->mentorProvider = $mentorProvider;
 		$this->changeMentorFactory = $changeMentorFactory;
 		$this->userIdentityUtils = $userIdentityUtils;
+	}
+
+	/**
+	 * Check whether a permissionless change of assigned mentor is allowed
+	 *
+	 * We only allow mentor changes when one of the following conditions is met:
+	 * 	1. The target mentor is registered, and the performer is either the mentee or the mentor
+	 * 	2. The performer has the `setmentor` permission (normally available to sysops)
+	 *
+	 * This method checks the first condition.
+	 */
+	private function allowPermissionlessChange(
+		UserIdentity $mentor,
+		UserIdentity $mentee
+	): bool {
+		return $this->mentorProvider->isMentor( $mentor ) &&
+			(
+				$this->getUser()->equals( $mentee ) ||
+				$this->getUser()->equals( $mentor )
+			);
 	}
 
 	/**
@@ -60,9 +87,7 @@ class ApiSetMentor extends ApiBase {
 		/** @var UserIdentity $mentor */
 		$mentor = $params['mentor'];
 
-		if ( !in_array( $this->getUser()->getId(), [ $mentee->getId(), $mentor->getId() ] ) ) {
-			// If you're neither the mentee nor the (new) mentor,
-			// you must have setmentor rights.
+		if ( !$this->allowPermissionlessChange( $mentor, $mentee ) ) {
 			$this->checkUserRightsAny( 'setmentor' );
 		}
 
