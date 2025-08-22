@@ -78,7 +78,7 @@
 					$( '<div>' )
 						.addClass( 'se-card-extract' )
 						.addClass( !this.data.extraDataLoaded ? 'skeleton' : '' )
-						.html( this.data.extract || '' )
+						.text( this.data.extract || '' )
 				),
 			pageViewsMessage;
 		if ( !this.data.extraDataLoaded ) {
