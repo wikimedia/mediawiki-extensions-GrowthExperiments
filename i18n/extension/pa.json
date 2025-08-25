@@ -1,10 +1,39 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cabal"
+			"Cabal",
+			"Kuldeepburjbhalaike"
 		]
 	},
+	"growthexperiments-desc": "ਇਸ ਐਕਸਟੈਂਸ਼ਨ ਵਿੱਚ ਗ੍ਰੋਥ ਟੀਮ ਦੁਆਰਾ ਕੀਤੇ ਗਏ ਪ੍ਰਯੋਗ ਸ਼ਾਮਲ ਹਨ।",
+	"growthexperiments-config-validator-array-toobig": "$1 ਵਿੱਚ ਬਹੁਤ ਸਾਰੀਆਂ ਆਈਟਮਾਂ ਹਨ (ਵੱਧ ਤੋਂ ਵੱਧ $2 ਦੀ ਇਜਾਜ਼ਤ ਹੈ)",
+	"growthexperiments-edit-config-disabled": "ਕਮਿਊਨਿਟੀ ਕੌਂਫਿਗਰੇਸ਼ਨ ਇਸ ਵੇਲੇ ਅਯੋਗ ਹੈ।",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: ਆਖਰੀ ਵਾਰ [[User:$1|$1]] $2 ([$4 ਫ਼ਰਕ]) ਦੁਆਰਾ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ।",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: ਆਖਰੀ ਵਾਰ ਅਣਜਾਣ ਵਰਤੋਂਕਾਰ $1 ([$3 ਫ਼ਰਕ]) ਦੁਆਰਾ ਅਪਡੇਟ ਕੀਤਾ ਗਿਆ।",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|ਤੁਸੀਂ}} ਨਵੇਂ ਆਉਣ ਵਾਲਿਆਂ ਲਈ ਮਹੱਤਵਪੂਰਨ ਘਟਨਾਵਾਂ ਬਾਰੇ ਐਲਾਨ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਨਵੇਂ ਆਉਣ ਵਾਲਿਆਂ ਦੇ ਹੋਮਪੇਜ 'ਤੇ ਇੱਕ ਬੈਨਰ ਵੀ ਪ੍ਰਦਰਸ਼ਿਤ ਕਰ ਸਕਦੇ ਹੋ। ਜੇਕਰ {{GENDER:|ਤੁਸੀਂ}} ਅਜਿਹਾ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ, ਤਾਂ {{GENDER:|ਤੁਹਾਨੂੰ}} ਇਸਨੂੰ [[$1]] ਵਿੱਚ ਹੱਥੀਂ ਜੋੜਨ ਦੀ ਲੋੜ ਹੈ। ਉੱਥੇ ਜੋੜੀ ਗਈ ਕੋਈ ਵੀ ਸਮੱਗਰੀ [[Special:Homepage]] ਦੇ ਸਿਖਰ 'ਤੇ ਇੱਕ ਪੀਲੇ ਬੈਨਰ ਵਿੱਚ ਪ੍ਰਦਰਸ਼ਿਤ ਕੀਤੀ ਜਾਵੇਗੀ।",
+	"growthexperiments-edit-config-feedback-headline": "ਕੀ ਤੁਹਾਡੇ ਕੋਲ ਇਸ ਫਾਰਮ ਬਾਰੇ ਕੋਈ ਵਿਚਾਰ ਜਾਂ ਸਵਾਲ ਹਨ?",
+	"growthexperiments-edit-config-feedback-cta": "ਸੁਝਾਅ ਦਿਓ",
+	"growthexperiments-edit-config-error-invalid-title": "ਸੰਰਚਨਾ ਸਫ਼ਾ ਠੀਕ ਤਰ੍ਹਾਂ ਸੰਰਚਿਤ ਨਹੀਂ ਕੀਤਾ ਗਿਆ",
+	"growthexperiments-edit-config-edit-summary": "ਸੋਧ ਸਾਰ",
+	"growthexperiments-edit-config-config-changed": "ਸੰਰਚਨਾ ਬਦਲ ਦਿੱਤੀ ਗਈ ਸੀ। ਬਦਲਾਵਾਂ ਦੇ ਲਾਗੂ ਹੋਣ ਲਈ ਤੁਹਾਨੂੰ ਕੁਝ ਮਿੰਟ ਉਡੀਕ ਕਰਨੀ ਪੈ ਸਕਦੀ ਹੈ।",
+	"growthexperiments-edit-config-return-to-form": "ਤੁਸੀਂ [[Special:EditGrowthConfig|ਵਾਪਸ]] ਸੰਪਾਦਨ ਫਾਰਮ ਤੇ ਜਾ ਸਕਦੇ ਹੋ।",
+	"growthexperiments-edit-config-help-panel": "ਮਦਦ ਪੈਨਲ ਸੈਟਿੰਗਾਂ",
+	"growthexperiments-edit-config-help-panel-reading-namespaces": "ਨਾਮਸਥਾਨ ਜਿੱਥੇ ਮਦਦ ਪੈਨਲ ਪੜ੍ਹਨ ਮੋਡ ਵਿੱਚ ਉਪਲਬਧ ਹੈ",
+	"growthexperiments-edit-config-help-panel-disabled-namespaces": "ਪਡ਼੍ਹਨ ਅਤੇ ਸੰਪਾਦਨ ਦੋਵਾਂ ਢੰਗਾਂ ਵਿੱਚ ਸਹਾਇਤਾ ਪੈਨਲ ਨਾਲ ਨਾਮ-ਸਥਾਨ ਅਯੋਗ ਕੀਤੇ ਗਏ ਹਨ",
 	"growthexperiments-edit-config-help-panel-helpdesk-title": "ਸਹਾਇਤਾ ਕੇਂਦਰ ਵਰਕੇ ਜਿੱਥੇ ਮਦਦ ਸੂਚੀ ਤੋਂ ਸਵਾਲ ਲਿਖੇ ਜਾਣੇ ਚਾਹੀਦੇ ਹਨ।",
 	"growthexperiments-edit-config-help-panel-post-on-top": "ਸਹਾਇਤਾ ਕੇਂਦਰ ਵਰਕੇ 'ਤੇ ਨਵੇਂ ਸਵਾਲ ਕਿੱਥੇ ਲਿਖੇ ਜਾਣੇ ਚਾਹੀਦੇ ਹਨ?",
-	"growthexperiments-edit-config-help-panel-ask-mentor-false": "ਸਹਾਇਤਾ ਕੇਂਦਰ"
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "ਸਫ਼ੇ ਦਾ ਸਿਖਰ",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "ਸਫ਼ੇ ਦਾ ਅਖ਼ੀਰ",
+	"growthexperiments-edit-config-help-panel-view-more": "\"ਹੋਰ ਮਦਦ ਲੇਖ ਵੇਖੋ\" ਲਈ ਮੰਜ਼ਿਲ ਸਫ਼ਾ",
+	"growthexperiments-edit-config-help-panel-searched-namespaces": "ਸਹਾਇਤਾ ਪੈਨਲ ਦੀ ਮੁਫ਼ਤ ਟੈਕਸਟ ਖੋਜ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਨਾਮ-ਸਥਾਨ",
+	"growthexperiments-edit-config-help-panel-ask-mentor": "ਮਦਦ ਪੈਨਲ ਦੇ ਸਵਾਲ ਕਿੱਥੇ ਪੁੱਛੇ ਜਾਣੇ ਚਾਹੀਦੇ ਹਨ?",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "ਮੈਂਟਰ ਗੱਲਬਾਤ ਪੰਨੇ",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "ਸਹਾਇਤਾ ਕੇਂਦਰ",
+	"growthexperiments-edit-config-help-panel-links": "ਮਦਦ ਪੈਨਲ ਲਿੰਕ",
+	"growthexperiments-edit-config-mentorship-enabled-true": "ਹਾਂ",
+	"growthexperiments-edit-config-mentorship-enabled-false": "ਨਹੀਂ",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility": "ਕੀ ਵਰਤੋਂਕਾਰਾਂ ਨੂੰ ਮੈਂਟਰਸ਼ਿਪ ਲਈ ਆਪਣੇ ਆਪ ਯੋਗ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ?",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-true": "ਹਾਂ, ਹੇਠਾਂ ਦਿੱਤੇ ਸਾਰੇ ਯੋਗਤਾ ਮਾਪਦੰਡਾਂ ਨੂੰ ਪੂਰਾ ਕਰਨ ਵਾਲੇ ਵਰਤੋਂਕਾਰਂ ਨੂੰ ਮੈਂਟਰ ਵਜੋਂ ਨਾਮ ਦਰਜ ਕਰਵਾਉਣ ਦੀ ਆਗਿਆ ਦਿਓ।",
+	"growthexperiments-edit-config-mentorship-automatic-eligibility-false": "ਨਹੀਂ, ਕਿਸੇ ਵੀ ਵਰਤੋਂਕਾਰ ਨੂੰ ਮੈਂਟਰ ਵਜੋਂ ਨਾਮਾਂਕਣ ਦੀ ਆਗਿਆ ਨਾ ਦਿਓ।",
+	"growthexperiments-edit-config-newcomertasks": "ਸੁਝਾਈਆਂ ਸੋਧਾਂ"
 }
