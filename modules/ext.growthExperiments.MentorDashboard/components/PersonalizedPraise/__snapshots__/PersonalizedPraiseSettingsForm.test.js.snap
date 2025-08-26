@@ -63,6 +63,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
             </svg>
           </span>
         </div>
+        <!--teleport start-->
         <div
           class="cdx-menu"
           style="display: none;"
@@ -205,6 +206,8 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
             <!--v-if-->
           </ul>
         </div>
+        <!--teleport end-->
+        <!--v-if-->
       </div>
     </div>
     <label>

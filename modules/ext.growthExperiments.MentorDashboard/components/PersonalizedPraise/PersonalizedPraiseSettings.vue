@@ -14,6 +14,7 @@
 			class="ext-growthExperiments-PersonalizedPraise-Settings__dialog"
 			:title="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-title' ).text()"
 			:close-button-label="$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-cancel' ).text()"
+			:use-close-button="true"
 		>
 			<personalized-praise-settings-form
 				v-bind="settingsData"
