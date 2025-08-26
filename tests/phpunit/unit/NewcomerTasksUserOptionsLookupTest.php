@@ -13,7 +13,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeH
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
-use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
@@ -47,12 +46,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 		] );
-		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
-			[ 'isUserInVariant' ] );
-		$experimentUserManager->expects( $this->atLeastOnce() )
-			->method( 'isUserInVariant' )
-			->with( $this->anything(), 'no-link-recommendation' )
-			->willReturn( false );
+		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
 		$lookup = new NewcomerTasksUserOptionsLookup( $experimentUserManager, $userOptionsLookup,
 			$config, $this->getConfigurationLoader( [ 'copyedit', 'links' ] ) );
@@ -76,68 +70,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
 		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
-	}
-
-	/**
-	 * @covers ::getTaskTypeFilter
-	 * @covers ::areLinkRecommendationsEnabled
-	 * @covers ::filterTaskTypes
-	 */
-	public function testLinkRecommendationAbTest() {
-		$user1 = new UserIdentityValue( 1, 'User1' );
-		$user2 = new UserIdentityValue( 2, 'User2' );
-		$user3 = new UserIdentityValue( 3, 'User3' );
-		$user4 = new UserIdentityValue( 4, 'User4' );
-		$userOptionsLookup = new StaticUserOptionsLookup( [
-			'User1' => [
-				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit", "links" ]'
-			],
-			'User2' => [
-				SuggestedEdits::TASKTYPES_PREF => '[ "links", "link-recommendation" ]',
-			],
-			'User3' => [],
-			'User4' => [
-				SuggestedEdits::TASKTYPES_PREF => '[ "links", "link-recommendation" ]',
-			],
-		] );
-		$config = new HashConfig( [
-			'GENewcomerTasksLinkRecommendationsEnabled' => true,
-			'GELinkRecommendationsFrontendEnabled' => false,
-			'GENewcomerTasksImageRecommendationsEnabled' => false,
-			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
-		] );
-		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
-			[ 'isUserInVariant' ] );
-		$experimentUserManager->expects( $this->atLeastOnce() )
-			->method( 'isUserInVariant' )
-			->with( $this->anything(), 'no-link-recommendation' )
-			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
-				return [
-					'User1' => false,
-					'User2' => false,
-					'User3' => true,
-					'User4' => true,
-				][$user->getName()];
-			} );
-
-		$lookup = new NewcomerTasksUserOptionsLookup(
-			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
-		);
-		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ 'links' ], $lookup->getTaskTypeFilter( $user2 ) );
-		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user3 ) );
-		$this->assertSame( [ 'links' ], $lookup->getTaskTypeFilter( $user4 ) );
-
-		$config->set( 'GELinkRecommendationsFrontendEnabled', true );
-		$config->set( 'GENewcomerTasksImageRecommendationsEnabled', true );
-
-		$lookup = new NewcomerTasksUserOptionsLookup(
-			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
-		);
-		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ 'link-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
-		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user3 ) );
-		$this->assertSame( [ 'links' ], $lookup->getTaskTypeFilter( $user4 ) );
 	}
 
 	/**
@@ -166,19 +98,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 		] );
-		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
-			[ 'isUserInVariant' ] );
-		$experimentUserManager->expects( $this->atLeastOnce() )
-			->method( 'isUserInVariant' )
-			->with( $this->anything(), 'no-link-recommendation' )
-			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
-				return [
-						   'User1' => false,
-						   'User2' => false,
-						   'User3' => true,
-						   'User4' => true,
-					   ][$user->getName()];
-			} );
+		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
@@ -220,8 +140,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 		] );
-		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
-			[ 'isUserInVariant' ] );
+		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
@@ -243,7 +162,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetDefaultTaskTypes() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
-		$experimentUserManager = $this->createMock( ExperimentUserManager::class );
+		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [],
 		] );
@@ -287,9 +206,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 		] );
-		$experimentUserManager = $this->createConfiguredMock( ExperimentUserManager::class, [
-			'isUserInVariant' => false,
-		] );
+		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader( [ 'copyedit' ] )

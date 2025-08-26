@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
-use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\Config;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
@@ -115,12 +114,6 @@ class NewcomerTasksUserOptionsLookup {
 	 * @return bool
 	 */
 	public function areLinkRecommendationsEnabled( UserIdentity $user ): bool {
-		if ( $this->experimentUserManager->isUserInVariant( $user,
-			VariantHooks::VARIANT_NO_LINK_RECOMMENDATION ) ) {
-			// Disabled by a variant (T377787)
-			return false;
-		}
-
 		return $this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
 			   && $this->config->get( 'GELinkRecommendationsFrontendEnabled' )
 			   && array_key_exists( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,

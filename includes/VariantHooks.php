@@ -42,7 +42,6 @@ class VariantHooks implements
 {
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
-	public const VARIANT_NO_LINK_RECOMMENDATION = 'no-link-recommendation';
 
 	/**
 	 * This defines the allowed values for the variant preference. The default value is defined
@@ -69,8 +68,10 @@ class VariantHooks implements
 		// Surfacing Structured Tasks experiment (see T362584 for details).
 		// 'get-started-notification' Doesn't exist anymore. Was used for A/B testing different notification delays
 		// in testwiki but never promoted to any other wiki, (T392256)
+		// 'no-link-recommendation' Doesn't exist anymore. Was used for A/B testing the
+		// Add a link feature by placing users in a group without link-recommendation tasks.
+		// Now that link recommendations are enabled for all users, it is obsolete.(T395524)
 		self::VARIANT_CONTROL,
-		self::VARIANT_NO_LINK_RECOMMENDATION,
 	];
 
 	/** User option name for storing variants. */
