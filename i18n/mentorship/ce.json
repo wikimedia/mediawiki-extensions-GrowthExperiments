@@ -171,6 +171,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Хьан персонализаци йина хастаман нисдаран гӀирс Ӏалашбина.",
 	"growthexperiments-mentor-list-missing-key": "<code>$1</code> догӀа дац",
 	"growthexperiments-mentor-list-datatype-mismatch": "Хьоьжу, <code>$1</code> хӀокхуьнга <code>$2</code>, иза ду <code>$3</code>",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "<code>$1</code> нийса хийца йиш йолу хенан билгало хила тарло, декъашхочун идентификатор: <code>$2</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Хьехамча къасторан дагахь доцу <code>$1</code> догӀа ду",
 	"growthexperiments-mentor-list-invalid-weight": "<code>$1</code> цхьаъ хила тарло: <code>$2</code>, амма <code>$3</code> йу",
 	"growthexperiments-mentor-writer-error-already-added": "$1 хьехамча хӀинцале а тӀетоьхна хьехамчийн могӀаман",

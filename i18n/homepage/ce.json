@@ -582,9 +582,11 @@
 	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Кховдийна нисдарш дан хьажа",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Ахьа}} дина $3 {{PLURAL:$3|кховдийна нисдар}}. Керла говзаллаш Ӏамош хила.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Кховдийна нисдар де",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Боккха кхиам бу {{GENDER:$2|хьан}} {{PLURAL:$3|хийцамаш}} тӀехь! Кхин а толлуш кхин а предложенеш {{GENDER:$2|хьайн}} говзалла кхиоран Ӏалашонца.",
 	"echo-category-title-ge-newcomer": "«Кхиар» функци",
 	"echo-pref-tooltip-ge-newcomer": "Керлачу декъашхошна гӀо дан леринчу белхех а, кхин йолу функцишах а хаам бе суна.",
 	"growthexperiments-homepage-community-updates-header": "Йукъараллин керланаш",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Цул совнаха хаа",
+	"growthexperiments-addalink-milestone-notification-header": "$1 хийцам бу, декъала хила хьо! {{GENDER:$2|Ахь}} хийцина йаззамашка $3 хьажархо хьаьжна тӀаьхьарчу хенахь. Долахь болу кховдийна хийцамаш хийцабелла.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Кхин хийцамаш бан хьажа"
 }
