@@ -3,11 +3,16 @@
 		"authors": [
 			"Abijeet Patro",
 			"Nilesh shukla",
-			"पदाति"
+			"पदाति",
+			"Saurmandal"
 		]
 	},
 	"growthexperiments-homepage-discovery-thanks-text": "{{GENDER:$1|अपने}} मुख पृष्ठ पर जाने और आरंभ करने के लिए पृष्ठ के शीर्ष पर $2 पर क्लिक करें।",
 	"growthexperiments-homepage-suggestededits-pager-loading": "लोड हो रहा है…",
+	"right-setmentor": "सदस्य का उपदेशक सेट करना",
+	"action-setmentor": "सदस्य का उपदेशक सेट करने",
+	"right-managementors": "उपदेशक प्रबंधित करना",
+	"action-managementors": "उपदेशकों की सूची प्रबंधित करने",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "आगे बढ़ें",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "समझ गया",
 	"growthexperiments-addlink-context-button-next": "अगला",

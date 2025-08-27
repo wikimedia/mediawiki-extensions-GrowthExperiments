@@ -20,6 +20,9 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Non, nun sabía que pudiera editar Wikipedia",
 	"welcomesurvey-question-edited-option-no-other-label": "Non, por otros motivos",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Nun lo recuerdo",
+	"welcomesurvey-question-email-label": "Direición de corréu electrónicu (opcional)",
+	"welcomesurvey-question-email-placeholder": "Escribi la to dirección de corréu electrónicu...",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} ta disponible en casi 300 idiomes. ¿Llees o escribes n'otros idiomes?",
 	"welcomesurvey-reminder-link": "Facer la encuesta",
 	"welcomesurvey-mideditsignup-button-close": "Zarrar"
 }
