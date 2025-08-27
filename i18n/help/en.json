@@ -41,7 +41,7 @@
 	"growthexperiments-help-panel-postedit-trynewtask-subheader-tasktype": "Thanks for {{GENDER:|your}} contribution. Try a new edit type: <strong>$1</strong>",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "Don't show again",
 	"growthexperiments-help-panel-postedit-nonsuggested-header": "Try a suggested edit",
-	"growthexperiments-help-panel-postedit-nonsuggested-body": "Suggested edits help new editors learn about {{SITENAME}} best practices, and develop core editing skills.",
+	"growthexperiments-help-panel-postedit-nonsuggested-body": "Suggested edits help new editors learn about {{SITENAME}} best practices and develop core editing skills.",
 	"growthexperiments-help-panel-postedit-nonsuggested-try-button-text": "Try suggested edits",
 	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "No thanks",
 	"growthexperiments-help-panel-questionreview-title": "Ask the help desk",
