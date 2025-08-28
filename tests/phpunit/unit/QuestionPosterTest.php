@@ -125,13 +125,17 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 			'setSectionHeader',
 			'getTargetContentModel',
 		] );
-		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
+		$contentMock = $this->createNoOpMock( WikitextContent::class );
+		$questionPoster->method( 'makeWikitextContent' )->willReturn( $contentMock );
 		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$questionPoster->method( 'checkUserPermissions' )->willReturn(
 			StatusValue::newFatal( '' )
 		);
-		$questionPoster->method( 'checkContent' )->willReturn(
+		$questionPoster->expects( $this->once() )
+			->method( 'checkContent' )
+			->with( $contentMock )
+			->willReturn(
 			StatusValue::newGood( '' )
 		);
 		/** @var StatusValue $status */

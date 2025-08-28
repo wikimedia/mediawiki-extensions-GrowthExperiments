@@ -305,7 +305,7 @@ abstract class QuestionPoster {
 	 * @param Content $content
 	 * @return StatusValue
 	 */
-	protected function checkPermissions( $content ): StatusValue {
+	protected function checkPermissions( Content $content ): StatusValue {
 		$userPermissionStatus = $this->checkUserPermissions();
 		if ( !$userPermissionStatus->isGood() ) {
 			return $userPermissionStatus;
