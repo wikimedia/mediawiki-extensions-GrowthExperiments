@@ -23,6 +23,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\WikiMap\WikiMap;
 use RuntimeException;
+use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 
 /**
@@ -185,7 +186,7 @@ abstract class QuestionPoster {
 	}
 
 	/**
-	 * @return Status
+	 * @return StatusValue
 	 */
 	private function submitWikitext() {
 		$content = $this->makeWikitextContent();
@@ -302,9 +303,9 @@ abstract class QuestionPoster {
 
 	/**
 	 * @param Content $content
-	 * @return Status
+	 * @return StatusValue
 	 */
-	protected function checkPermissions( $content ) {
+	protected function checkPermissions( $content ): StatusValue {
 		$userPermissionStatus = $this->checkUserPermissions();
 		if ( !$userPermissionStatus->isGood() ) {
 			return $userPermissionStatus;
@@ -316,7 +317,7 @@ abstract class QuestionPoster {
 		if ( !$editFilterMergedContentHookStatus->isGood() ) {
 			return $editFilterMergedContentHookStatus;
 		}
-		return Status::newGood();
+		return StatusValue::newGood();
 	}
 
 	/**
@@ -506,22 +507,15 @@ abstract class QuestionPoster {
 	abstract protected function getQuestionStoragePref();
 
 	/**
-	 * @return Status
+	 * @return StatusValue
 	 * @throws \Exception
 	 */
-	protected function checkUserPermissions() {
-		$errors = $this->permissionManager->getPermissionErrors(
+	protected function checkUserPermissions(): StatusValue {
+		return $this->permissionManager->getPermissionStatus(
 			'edit',
 			$this->getContext()->getUser(),
 			$this->targetTitle
 		);
-
-		if ( count( $errors ) ) {
-			$key = array_shift( $errors[0] );
-			$message = $this->getContext()->msg( $key, ...$errors[0] )->parse();
-			return Status::newFatal( $message );
-		}
-		return Status::newGood();
 	}
 
 	/**
