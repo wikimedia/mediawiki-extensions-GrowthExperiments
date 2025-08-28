@@ -13,6 +13,7 @@ use MediaWiki\Json\FormatJson;
 use MediaWiki\Message\Message;
 use Psr\Log\LoggerInterface;
 use StatusValue;
+use Wikimedia\Message\ListType;
 
 /**
  * Load configuration from the suggested edits provider of
@@ -126,7 +127,7 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 			if ( !$this->taskTypeHandlerRegistry->has( $handlerId ) ) {
 				$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidhandlerid',
 					$taskTypeId, $handlerId, Message::listParam(
-						$this->taskTypeHandlerRegistry->getKnownIds(), 'comma' ) );
+						$this->taskTypeHandlerRegistry->getKnownIds(), ListType::COMMA ) );
 				continue;
 			}
 			$taskTypeHandler = $this->taskTypeHandlerRegistry->get( $handlerId );
