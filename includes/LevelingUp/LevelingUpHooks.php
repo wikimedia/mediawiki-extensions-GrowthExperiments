@@ -155,6 +155,9 @@ class LevelingUpHooks implements
 		$notifications['get-started-no-edits'] = array_merge( $notifications['get-started'], [
 			'presentation-model' => EchoGetStartedPresentationModel::class,
 		] );
+		$notifications['re-engage'] = array_merge( $growthNotificationDefaults, [
+			'presentation-model' => EchoReEngagePresentationModel::class,
+		] );
 		$notifications['newcomer-milestone-reached'] = array_merge( $growthNotificationDefaults, [
 			'presentation-model'  => AddALinkMilestonePresentationModel::class,
 		] );
