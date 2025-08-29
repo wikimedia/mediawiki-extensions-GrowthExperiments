@@ -145,10 +145,7 @@ abstract class QuestionPoster {
 		$this->existingQuestionsByUser = $questionStore->loadQuestions();
 	}
 
-	/**
-	 * @return Status
-	 */
-	public function submit() {
+	public function submit(): StatusValue {
 		$this->loadExistingQuestions();
 
 		// Do not let captcha to stop us
@@ -181,14 +178,11 @@ abstract class QuestionPoster {
 	/**
 	 * @return string Content model of the target page. One of the CONTENT_MODEL_* constants.
 	 */
-	protected function getTargetContentModel() {
+	protected function getTargetContentModel(): string {
 		return $this->targetTitle->getContentModel();
 	}
 
-	/**
-	 * @return StatusValue
-	 */
-	private function submitWikitext() {
+	private function submitWikitext(): StatusValue {
 		$content = $this->makeWikitextContent();
 
 		$contentStatus = $this->checkContent( $content );
@@ -244,13 +238,10 @@ abstract class QuestionPoster {
 			->setLabel( 'wiki', $wiki )
 			->increment();
 
-		return Status::newGood();
+		return StatusValue::newGood();
 	}
 
-	/**
-	 * @return Status
-	 */
-	private function submitStructuredDiscussions() {
+	private function submitStructuredDiscussions(): StatusValue {
 		$workflowLoaderFactory = Container::get( 'factory.loader.workflow' );
 		// TODO: Add statsd instrumentation after T297709 is done.
 		$loader = $workflowLoaderFactory->createWorkflowLoader( $this->targetTitle );
@@ -266,7 +257,7 @@ abstract class QuestionPoster {
 			]
 		);
 
-		$status = Status::newGood();
+		$status = StatusValue::newGood();
 		foreach ( $loader->getBlocks() as $block ) {
 			if ( $block->hasErrors() ) {
 				$errors = $block->getErrors();
@@ -285,7 +276,7 @@ abstract class QuestionPoster {
 		$this->setResultUrl( $topicTitle->getLinkURL() );
 		$this->revisionId = $commitMetadata['topiclist']['topic-id']->getAlphadecimal();
 
-		return Status::newGood();
+		return StatusValue::newGood();
 	}
 
 	private function getNumberedSectionHeaderIfDuplicatesExist( string $sectionHeader ): string {
@@ -380,14 +371,11 @@ abstract class QuestionPoster {
 		return $body;
 	}
 
-	/**
-	 * @return Status
-	 */
-	public function validateRelevantTitle() {
+	public function validateRelevantTitle(): StatusValue {
 		$title = $this->getRelevantTitle();
 		return $title && $title->isValid() ?
-			Status::newGood() :
-			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' );
+			StatusValue::newGood() :
+			StatusValue::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' );
 	}
 
 	/**
@@ -518,12 +506,7 @@ abstract class QuestionPoster {
 		);
 	}
 
-	/**
-	 * @param Content $content
-	 * @param string $summary
-	 * @return Status
-	 */
-	protected function runEditFilterMergedContentHook( Content $content, $summary ) {
+	protected function runEditFilterMergedContentHook( Content $content, string $summary ): Status {
 		$derivativeContext = new DerivativeContext( $this->getContext() );
 		$services = MediaWikiServices::getInstance();
 		$derivativeContext->setConfig( $services->getMainConfig() );
@@ -552,14 +535,11 @@ abstract class QuestionPoster {
 
 	/**
 	 * Validate that $content is an instance of Content
-	 *
-	 * @param Content|null $content
-	 * @return Status
 	 */
-	protected function checkContent( $content ) {
+	protected function checkContent( ?Content $content ): StatusValue {
 		return $content instanceof Content ?
-			Status::newGood() :
-			Status::newFatal(
+			StatusValue::newGood() :
+			StatusValue::newFatal(
 				'apierror-missingcontent-revid',
 				$this->getPageUpdater()->grabParentRevision()->getId()
 			);

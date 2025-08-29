@@ -9,7 +9,6 @@ use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
-use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
@@ -128,10 +127,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			'blah',
 			'sample'
 		);
-		$this->assertEquals(
-			Status::newGood(),
-			$questionPoster->validateRelevantTitle()
-		);
+		$this->assertStatusOK( $questionPoster->validateRelevantTitle() );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
@@ -143,8 +139,8 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			'blah',
 			'>123'
 		);
-		$this->assertEquals(
-			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' ),
+		$this->assertStatusError(
+			'growthexperiments-help-panel-questionposter-invalid-title',
 			$questionPoster->validateRelevantTitle()
 		);
 	}

@@ -8,6 +8,7 @@ use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Status\Status;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
@@ -159,6 +160,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 			'setSectionHeader',
 			'runEditFilterMergedContentHook',
 			'getTargetContentModel',
+			'getSectionHeaderTemplate',
 		] );
 		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
@@ -171,10 +173,11 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$contentMock = $this->createMock( WikitextContent::class );
 		$questionPoster->method( 'makeWikitextContent' )
 			->willReturn( $contentMock );
+		$questionPoster->method( 'getSectionHeaderTemplate' )->willReturn( '' );
 		$questionPoster->expects( $this->once() )
 			->method( 'runEditFilterMergedContentHook' )
 			->willReturn(
-				StatusValue::newFatal( '' )
+				Status::newFatal( '' )
 			);
 		/** @var StatusValue $status */
 		$status = $questionPoster->submit();
