@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\Config\Schemas\SuggestedEditsSchema;
@@ -31,17 +33,10 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 		self::NEWCOMER_TASK_LINKS_TAG,
 	];
 
-	/** @var TitleParser */
-	private $titleParser;
+	private readonly TitleParser $titleParser;
 
-	/** @var TemplateBasedTaskSubmissionHandler */
-	private $submissionHandler;
+	private readonly TemplateBasedTaskSubmissionHandler $submissionHandler;
 
-	/**
-	 * @param ConfigurationValidator $configurationValidator
-	 * @param TemplateBasedTaskSubmissionHandler $submissionHandler
-	 * @param TitleParser $titleParser
-	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TemplateBasedTaskSubmissionHandler $submissionHandler,
@@ -110,44 +105,27 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 		if ( !$taskType ) {
 			return self::NEWCOMER_TASK_TEMPLATE_BASED_ALL_CHANGE_TAGS;
 		}
-		switch ( $taskType ) {
-			case 'copyedit':
-				$taskTypeSpecificTag = self::NEWCOMER_TASK_COPYEDIT_TAG;
-				break;
-			case 'references':
-				$taskTypeSpecificTag = self::NEWCOMER_TASK_REFERENCES_TAG;
-				break;
-			case 'update':
-				$taskTypeSpecificTag = self::NEWCOMER_TASK_UPDATE_TAG;
-				break;
-			case 'expand':
-				$taskTypeSpecificTag = self::NEWCOMER_TASK_EXPAND_TAG;
-				break;
-			case 'links':
-				$taskTypeSpecificTag = self::NEWCOMER_TASK_LINKS_TAG;
-				break;
-			default:
-				throw new InvalidArgumentException( "$taskType is not valid." );
-		}
+		$taskTypeSpecificTag = match ( $taskType ) {
+			'copyedit' => self::NEWCOMER_TASK_COPYEDIT_TAG,
+			'references' => self::NEWCOMER_TASK_REFERENCES_TAG,
+			'update' => self::NEWCOMER_TASK_UPDATE_TAG,
+			'expand' => self::NEWCOMER_TASK_EXPAND_TAG,
+			'links' => self::NEWCOMER_TASK_LINKS_TAG,
+			default => throw new InvalidArgumentException( "$taskType is not valid." ),
+		};
 		return [ self::NEWCOMER_TASK_TAG, $taskTypeSpecificTag ];
 	}
 
 	/** @inheritDoc */
 	public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string {
-		switch ( $changeTagName ) {
-			case self::NEWCOMER_TASK_COPYEDIT_TAG:
-				return 'copyedit';
-			case self::NEWCOMER_TASK_REFERENCES_TAG:
-				return 'references';
-			case self::NEWCOMER_TASK_UPDATE_TAG:
-				return 'update';
-			case self::NEWCOMER_TASK_EXPAND_TAG:
-				return 'expand';
-			case self::NEWCOMER_TASK_LINKS_TAG:
-				return 'links';
-			default:
-				throw new InvalidArgumentException( "$changeTagName is not valid" );
-		}
+		return match ( $changeTagName ) {
+			self::NEWCOMER_TASK_COPYEDIT_TAG => 'copyedit',
+			self::NEWCOMER_TASK_REFERENCES_TAG => 'references',
+			self::NEWCOMER_TASK_UPDATE_TAG => 'update',
+			self::NEWCOMER_TASK_EXPAND_TAG => 'expand',
+			self::NEWCOMER_TASK_LINKS_TAG => 'links',
+			default => throw new InvalidArgumentException( "$changeTagName is not valid" ),
+		};
 	}
 
 }

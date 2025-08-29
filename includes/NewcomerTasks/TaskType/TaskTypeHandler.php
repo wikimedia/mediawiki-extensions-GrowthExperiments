@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
@@ -27,10 +29,9 @@ abstract class TaskTypeHandler {
 	 */
 	public const NEWCOMER_TASK_TAG = 'newcomer task';
 
-	/** @var ConfigurationValidator */
-	protected $configurationValidator;
-	/** @var TitleParser */
-	private $titleParser;
+	protected readonly ConfigurationValidator $configurationValidator;
+
+	private readonly TitleParser $titleParser;
 
 	public function __construct( ConfigurationValidator $configurationValidator, TitleParser $titleParser ) {
 		$this->configurationValidator = $configurationValidator;
@@ -80,13 +81,8 @@ abstract class TaskTypeHandler {
 
 	/**
 	 * Attempt to parse a template title, return a failed status value on MalformedTitleException.
-	 *
-	 * @param mixed $template
-	 * @param string $taskTypeId
-	 * @param StatusValue $status
-	 * @return StatusValue
 	 */
-	protected function validateTemplate( $template, string $taskTypeId, StatusValue $status ): StatusValue {
+	protected function validateTemplate( mixed $template, string $taskTypeId, StatusValue $status ): StatusValue {
 		if ( !is_string( $template ) ) {
 			if ( !is_scalar( $template ) ) {
 				$template = '[' . gettype( $template ) . ']';
@@ -105,13 +101,8 @@ abstract class TaskTypeHandler {
 
 	/**
 	 * Attempt to parse a category title, return a failed status value on MalformedTitleException.
-	 *
-	 * @param mixed $category
-	 * @param string $taskTypeId
-	 * @param StatusValue $status
-	 * @return StatusValue
 	 */
-	protected function validateCategory( $category, string $taskTypeId, StatusValue $status ): StatusValue {
+	protected function validateCategory( mixed $category, string $taskTypeId, StatusValue $status ): StatusValue {
 		if ( !is_string( $category ) ) {
 			if ( !is_scalar( $category ) ) {
 				$category = '[' . gettype( $category ) . ']';
@@ -158,9 +149,6 @@ abstract class TaskTypeHandler {
 	 * Get a CirrusSearch search term corresponding to this task.
 	 *
 	 * Task types extending this one must call this parent method to get exclusion search strings.
-	 *
-	 * @param TaskType $taskType
-	 * @return string
 	 */
 	public function getSearchTerm( TaskType $taskType ): string {
 		$searchTerm = '';
@@ -177,11 +165,6 @@ abstract class TaskTypeHandler {
 		return $searchTerm;
 	}
 
-	/**
-	 * @param SearchQuery $query
-	 * @param SearchResult $match
-	 * @return Task
-	 */
 	public function createTaskFromSearchResult( SearchQuery $query, SearchResult $match ): Task {
 		$taskType = $query->getTaskType();
 		$topics = $query->getTopics();
@@ -202,9 +185,6 @@ abstract class TaskTypeHandler {
 
 	/**
 	 * Get the task type ID based on the change tag associated with it.
-	 *
-	 * @param string $changeTagName
-	 * @return string|null
 	 */
 	abstract public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string;
 

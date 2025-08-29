@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
@@ -17,15 +19,9 @@ abstract class ImageRecommendationBaseTaskTypeHandler extends StructuredTaskType
 	public const CHANGE_TAG = self::CHANGE_TAG;
 	public const WEIGHTED_TAG_PREFIX = self::WEIGHTED_TAG_PREFIX;
 
-	protected ImageRecommendationProvider $recommendationProvider;
-	protected AddImageSubmissionHandler $submissionHandler;
+	protected readonly ImageRecommendationProvider $recommendationProvider;
+	protected readonly AddImageSubmissionHandler $submissionHandler;
 
-	/**
-	 * @param ConfigurationValidator $configurationValidator
-	 * @param TitleParser $titleParser
-	 * @param ImageRecommendationProvider $recommendationProvider
-	 * @param AddImageSubmissionHandler $submissionHandler
-	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,

@@ -1,12 +1,12 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
-use GrowthExperiments\NewcomerTasks\RecommendationProvider;
-use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Config\Config;
@@ -25,17 +25,10 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** The tag prefix used for CirrusSearch\Wikimedia\WeightedTags. */
 	public const WEIGHTED_TAG_PREFIX = 'recommendation.link';
 
-	private LinkRecommendationProvider $recommendationProvider;
-	private AddLinkSubmissionHandler $submissionHandler;
-	private Config $config;
+	private readonly LinkRecommendationProvider $recommendationProvider;
+	private readonly AddLinkSubmissionHandler $submissionHandler;
+	private readonly Config $config;
 
-	/**
-	 * @param ConfigurationValidator $configurationValidator
-	 * @param TitleParser $titleParser
-	 * @param LinkRecommendationProvider $recommendationProvider
-	 * @param AddLinkSubmissionHandler $submissionHandler
-	 * @param Config $config
-	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,
@@ -56,17 +49,15 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 
 	/**
 	 * @inheritDoc
-	 * @return LinkRecommendationProvider
 	 */
-	public function getRecommendationProvider(): RecommendationProvider {
+	public function getRecommendationProvider(): LinkRecommendationProvider {
 		return $this->recommendationProvider;
 	}
 
 	/**
 	 * @inheritDoc
-	 * @return AddLinkSubmissionHandler
 	 */
-	public function getSubmissionHandler(): SubmissionHandler {
+	public function getSubmissionHandler(): AddLinkSubmissionHandler {
 		return $this->submissionHandler;
 	}
 
