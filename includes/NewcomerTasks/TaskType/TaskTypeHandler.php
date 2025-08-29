@@ -198,9 +198,7 @@ abstract class TaskTypeHandler {
 	 * @param string|null $taskType
 	 * @return string[]
 	 */
-	public function getChangeTags( ?string $taskType = null ): array {
-		return [ self::NEWCOMER_TASK_TAG ];
-	}
+	abstract public function getChangeTags( ?string $taskType = null ): array;
 
 	/**
 	 * Get the task type ID based on the change tag associated with it.
@@ -208,9 +206,7 @@ abstract class TaskTypeHandler {
 	 * @param string $changeTagName
 	 * @return string|null
 	 */
-	public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string {
-		return null;
-	}
+	abstract public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string;
 
 	/**
 	 * @param array $config

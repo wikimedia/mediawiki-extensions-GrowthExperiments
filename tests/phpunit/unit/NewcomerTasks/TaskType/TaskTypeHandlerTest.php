@@ -51,6 +51,14 @@ class TaskTypeHandlerTest extends MediaWikiUnitTestCase {
 			public function getSubmissionHandler(): SubmissionHandler {
 				return new NullSubmissionHandler();
 			}
+
+			public function getChangeTags( ?string $taskType = null ): array {
+				return [];
+			}
+
+			public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string {
+				return null;
+			}
 		};
 	}
 

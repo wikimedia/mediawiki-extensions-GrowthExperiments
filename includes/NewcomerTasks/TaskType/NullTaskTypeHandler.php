@@ -75,4 +75,8 @@ class NullTaskTypeHandler extends TaskTypeHandler {
 	public function getSubmissionHandler(): SubmissionHandler {
 		return new NullSubmissionHandler();
 	}
+
+	public function getTaskTypeIdByChangeTagName( string $changeTagName ): ?string {
+		return null;
+	}
 }

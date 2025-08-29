@@ -129,7 +129,7 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 			default:
 				throw new InvalidArgumentException( "$taskType is not valid." );
 		}
-		return array_merge( parent::getChangeTags(), [ $taskTypeSpecificTag ] );
+		return [ self::NEWCOMER_TASK_TAG, $taskTypeSpecificTag ];
 	}
 
 	/** @inheritDoc */
