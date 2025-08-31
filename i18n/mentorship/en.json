@@ -65,7 +65,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentor status",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Active",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Away",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Since you are away until the $1, your mentees will be temporarily reassigned to a different mentor.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Since you are away until $1, your mentees will be temporarily reassigned to a different mentor.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "{{GENDER:|You}} are currently blocked. {{GENDER:|Your}} status is temporarily set to \"away\" and {{GENDER:|your}} mentees are temporarily reassigned to a different mentor. If {{GENDER:|you}} are unblocked (or the block expires), then {{GENDER:|your}} status will be set to \"Active\" and {{GENDER:|your}} mentees will be reassigned to {{GENDER:|you}}.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "{{GENDER:|You}} are currently blocked. You cannot change {{GENDER:|your}} mentor status while blocked.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-lock": "$1 {{GENDER:$1|is}} currently locked. {{GENDER:$1|Their}} mentor status cannot be modified while locked.",
