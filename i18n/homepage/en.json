@@ -597,6 +597,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Notify me about tasks for newcomers and other features designed to help new users.",
 	"growthexperiments-homepage-community-updates-header": "Community Updates",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Learn more",
-	"growthexperiments-addalink-milestone-notification-header": "$1 edits, congrats! Articles {{GENDER:$2|you’ve}} edited received $3 views recently. Available suggested edits have changed.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|edit|edits}}, congrats! Articles {{GENDER:$2|you’ve}} edited received $3 {{PLURAL:$3|view|views}} recently. Available suggested edits have changed.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Try other edits"
 }
