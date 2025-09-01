@@ -11,14 +11,13 @@
 				name: 'primary',
 				friendlyName: 'Getting Started primary link',
 				selector: 'a.mw-echo-ui-notificationItemWidget[href*="source=get-started-primary-link"]'
+			},
+			{
+				name: 'secondary',
+				friendlyName: 'Getting Started secondary link',
+				selector: 'a.mw-echo-ui-menuItemWidget[href*="source=get-started-secondary-link"]',
+				trackSingleClick: true
 			}
-			// FIXME the secondary link should also be instrumented, however that causes a second and incorrect
-			//  interaction submission of the primary link. Avoid instrumenting it until solved, see T400048#11079207.
-			// {
-			//  name: 'secondary',
-			//  friendlyName: 'Getting Started secondary link',
-			//  selector: 'a.mw-echo-ui-menuItemWidget[href*="source=get-started-secondary-link"]'
-			// }
 		]
 	};
 	const EchoNotificationsTracker = {
@@ -55,7 +54,12 @@
 				const links = document.querySelectorAll( el.selector );
 				const growthInstrument = mw.eventLog.newInstrument( 'growth-experiments-getting-started-ctr' );
 				if ( links.length > 0 ) {
-					ctrInstrument.start( el.selector, el.friendlyName, growthInstrument );
+					ctrInstrument.start(
+						el.selector,
+						el.friendlyName,
+						growthInstrument,
+						{ preventInteractionBubbling: el.preventInteractionBubbling }
+					);
 				}
 			}
 		}
