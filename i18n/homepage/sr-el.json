@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aca",
 			"Agusbou2015",
 			"Kizule",
 			"Milicevic01",
@@ -453,7 +454,7 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Ne želim mentora",
 	"growthexperiments-homepage-mentorship-about-done": "Gotovo",
 	"growthexperiments-homepage-special-contribute-title": "Predložene izmene",
-	"growthexperiments-homepage-special-contribute-cta": "Prikaži predložene izmene",
+	"growthexperiments-homepage-special-contribute-cta": "Prikaži predložene izmjene",
 	"growthexperiments-homepage-impact-contributions-link": "Prikaži sve izmene",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Probajte predložene izmene",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Načinili}} ste $3 {{PLURAL:$3|predloženu izmenu|predloženenih izmena}}. Samo tako nastavite i savladaćete nove veštine.",

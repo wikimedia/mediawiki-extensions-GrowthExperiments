@@ -5,7 +5,27 @@
 			"Volvox"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "Rifft formatéiert Froen of, déi iwwer Startsäite-Moduler publizéiert goufen",
+	"apihelp-homepagequestionstore-param-questionformat": "D'Format, an deem d'Fro zeréckgi gi soll, z.&nbsp;B. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "D'Späicherplaz fir d'Froen.",
+	"apihelp-homepagequestionstore-param-userid": "D'Benotzer-ID, fir déi d'Froen ofgeruff solle ginn.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Keng Froe fonnt.",
+	"apihelp-growthsetmentor-summary": "Mentor vun engem Benotzer definéieren. D'Ännerung gëtt ëffentlech protokolléiert.",
+	"apihelp-growthsetmentor-param-mentee": "Benotzernumm vum Mentoréierten",
 	"apihelp-growthsetmentor-param-mentor": "Benotzernumm vum Mentor",
-	"apihelp-growthsetmentor-param-reason": "Grond fir d'Ännerung"
+	"apihelp-growthsetmentor-param-reason": "Grond fir d'Ännerung",
+	"apihelp-query+growthimagesuggestiondata-summary": "Zougehéiereg [https://www.mediawiki.org/wiki/wikitech:Add_Image Bildvirschlagsdonnéeën] ofruffen, falls disponibel",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "Aufgabentyp-ID (fir unzeginn, ob Donnéeë fir Bildvirschléi fir den ieweschten Niveau oder fir den Abschnittsniveau ofgeruff solle ginn)",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "D'Aufgabentyp-ID „$1“ gouf an der Konfiguratioun vun der Wiki net fonnt.",
+	"apihelp-growthinvalidateimagerecommendation-summary": "E Bildvirschlag ongülteg maachen.",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "D'Opruffe vun dëser API wäert:\n\n* déi [https://www.mediawiki.org/wiki/wikitech:Add_Image \"hasrecommendation:image\" gewiichte Markéierung] fir den Artikel zerécksetzen, sou datt den Artikel net méi a Sichresultater fir Bildvirschléi optaucht.\n\n* den Artikel an e kuerzliewege Cache setzen, dee vum ImageRecommendationFilter vun der [https://www.mediawiki.org/wiki/Extension:GrowthExperiments GrowthExperiments]-Erweiderung consultéiert gëtt fir ze decidéieren, ob den Artikel vun der Queue vun Ännerungsvirschléi fir de Benotzer ausgeschloss soll ginn, wann iwwer [[Special:Homepage]] oder iwwer [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]] d'API op en zougegraff gëtt.\n\n* en Evenement generéieren an un EventGate un den [https://schema.wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback Image-Suggestion-Feedback-Stream] schécken. Doduerch kënne Verbesserungen un der Pipeline fir Bildvirschléi gemaach ginn, well de Code vun der Pipeline beim generéiere vu Virschléi Benotzer-Feedback berücksichtege kann.\n\nFir méi gewuer ze ginn: [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Structured_tasks/Add_an_image mediawiki.org]",
+	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "Aufgabentyp (ieweschten Niveau oder Abschnittsniveau)",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Titel vum Artikel, fir deen d'Bildvirschlagsaufgab ass",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "De Fichiersnumm ouni Prefix fir de Bildvirschlag, z.&nbsp;B. <kbd>Foo.jpg</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "Den Titel vum Abschnitt, fir deen de Bildvirschlag ass, z.&nbsp;B. <kbd>Geschicht</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Den 1-baséierten Index vum Abschnitt, fir deen de Bildvirschlag ass, z.&nbsp;B. <kbd>3</kbd>",
+	"apihelp-query+linkrecommendations-summary": "Linkvirschléi fir eng bestëmmte Säit ofruffen",
+	"apihelp-query+linkrecommendations-example-1": "Linkvirschléi fir d'Säit mat der ID 123 ofruffen",
+	"apihelp-query+linkrecommendations-example-2": "Bis zu 5 Linkvirschléi fir d'Säit mat der ID 456 ofruffen",
+	"apihelp-query+linkrecommendations-param-pageid": "D'Säiten-ID, fir déi Linkvirschléi ofgeruff solle ginn."
 }

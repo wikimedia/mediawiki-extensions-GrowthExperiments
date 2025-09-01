@@ -1,10 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
+			"GilPe",
 			"Volvox"
 		]
 	},
+	"apihelp-helppanelquestionposter-summary": "Geréiert Froen, déi fir den aktuelle Benotzer iwwer den Hëllefspanel gestallt goufen.",
 	"apihelp-helppanelquestionposter-param-body": "Den Text vun der Fro, dee vum Benotzer ugi gouf.",
 	"apihelp-helppanelquestionposter-param-source": "D'Method, mat där d'Fro gestallt gouf.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "De Panel „Beim Helpdesk nofroen“",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "De Panel „Äre Mentor froen“ op der Startsäit fir Neier",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "De Schierm „Äre Mentor froen“ op dem Hëllefspanel",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "De Panel „Beim Helpdesk nofroen“ (alen Numm)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "De Panel „Äre Mentor froen“ op der Startsäit fir Neier (alen Numm)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "De relevante Titel, wann ausgewielt, deen an der Fro soll dra sinn.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Dir musst ageloggt si fir eng Fro ze stellen."
 }
