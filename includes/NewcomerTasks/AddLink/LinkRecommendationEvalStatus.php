@@ -6,8 +6,7 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 use StatusValue;
 
 /**
- * @template T
- * @inherits StatusValue<T>
+ * @inherits StatusValue<LinkRecommendation>
  */
 class LinkRecommendationEvalStatus extends StatusValue {
 
@@ -31,6 +30,7 @@ class LinkRecommendationEvalStatus extends StatusValue {
 			throw new \LogicException( 'Cannot get LinkRecommendation from a status without a value' );
 		}
 		if ( $this->getValue() instanceof StatusValue ) {
+			/* @phan-suppress-next-line PhanTypeSuspiciousStringExpression */
 			throw new \LogicException( 'Unexpected status as value:' . "\n" . $this->getValue() );
 		}
 		if ( !( $this->getValue() instanceof LinkRecommendation ) ) {
