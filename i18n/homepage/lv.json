@@ -116,6 +116,7 @@
 	"growthexperiments-homepage-recent-questions-archived": "arhivēts",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Šis jautājums ir arhivēts, visticamāk, tāpēc, ka tas tika uzdots ļoti sen.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1}}{{GENDER:$2|Tavs mentors|Tava mentore}}",
+	"growthexperiments-homepage-mentorship-preintro": "Mēs {{GENDER:|tev}} esam piešķīruši pieredzējušu {{GENDER:$1|redaktoru|redaktori}}, kas varēs atbildēt uz taviem jautājumiem par rakstu labošanu.",
 	"growthexperiments-homepage-mentorship-learn-more": "Uzzināt vairāk par mentoriem.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Aktīvs|Aktīva}} šodien",

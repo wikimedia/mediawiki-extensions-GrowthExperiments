@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|دا څه دي؟]])",
+	"growthexperiments-confirmemail-emailhelp": "که تاسو خپل پټنوم له لاسه ورکړئ؛ نو ستاسو د گڼون بياترلاسنې لپاره برېښليک اړين دی.",
+	"growthexperiments-confirmemail-emailrecommended": "برېښليک پته (سپارښتل‌شوی)",
+	"growthexperiments-confirmemail-emailwarning": "مهرباني وکړئ د خپلې پاتې تاييد لپاره زموږ برېښليک وگورئ.",
+	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}} ته ښه راغلاست: مهرباني وکړئ خپله برېښلیک پته تایید کړئ",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|سلام}} $2،\n\nستاسو د {{SITENAME}} گڼون ته د برېښليک ورگډولو څخه مننه، چې $1 وېبپتې سره يې نوم‌ليکنه شوې.\n\nمهرباني وکړئ لاندې تڼۍ کېکاږئ؛ ترڅو تاييد شي چې تاسو دا برېښليک پته د خپل \"$2\" گڼون سره تړل غواړئ:\n\n$3\n\nيادونه: دا تاييد کوډ په <strong>$4 کې پای ته رسېږي</strong>.\n\nمننه\n\n{{SITENAME}}\n\n----\n\nد برېښليک پتې تاييد ناگارلو لپاره (ځکه چې تاسو د يو لامل له کبله گڼون نوم‌ليکنه نه ده کړې)، په دې ناگارلوونکي تړوني کليک وکړئ:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "برېښليک پته تاييدول",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2| سلام}} $2،\n\nستاسو د {{SITENAME}} گڼون ته د برېښليک ورگډولو څخه مننه، چې $1 وېبپتې سره يې نوم‌ليکنه شوې.\n\nمهرباني وکړئ لاندې تړونی کېکاږئ؛ ترڅو تاييد شي چې تاسو دا برېښليک پته د خپل \"$2\" گڼون سره تړل غواړئ:\n\n\n $3 \n\nیادونه: دا تایید کوډ په $4 کې پای ته رسیږي .\n\nمننه،\n\n{{SITENAME}}\n\n----\n\nد برېښليک پتې تاييد ناگارلو لپاره (ځکه چې تاسو د يو لامل له کبله گڼون نوم‌ليکنه نه ده کړې)، په دې ناگارلوونکي تړوني کليک وکړئ:\n\n$5",
+	"growthexperiments-signupcampaign-title": "له بسپنې مو مننه! همدا نن د ويکيپېډيا ښه‌کولو د سمونگرانو ټولنې سره يو ځای شئ",
+	"growthexperiments-signupcampaign-body": "د ويکيپېډيا سمول د يو تړوني گډولو او يو ويوکي بدلولو په څېر اسانه دي. د گڼون له جوړېدو وروسته د {{GENDER:|خپلو}} خواپورو سکالوگانو وړانديزونه ترلاسه کړئ!",
+	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|ستاسو}} د خواپورو سکالوگانو وړانديزونه",
+	"growthexperiments-signupcampaign-bullet2": "له ماهر سمونگر نه د مرستې غوښتنه کول",
+	"growthexperiments-signupcampaign-bullet3": "له کوچنيو، اسانه سمونونو سره پيلول",
+	"growthexperiments-campaigns-footer": "په دې مخ کې د {{GENDER:|خپل}} گڼون جوړولو سره به دا له دې ټاکنيزې‌سيالۍ سره د تجربوي او ارزوونکي موخو لپاره  ونښلول شي."
+}

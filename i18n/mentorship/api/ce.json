@@ -4,9 +4,27 @@
 			"Умар"
 		]
 	},
+	"apihelp-growthstarmentee-summary": "ХӀокху декъашхочо билгалйаьккхина ма-хиллара, билгалйаккха йа дӀайаккха Ӏамархочун тӀера (къайлаха латтайо, дӀайазйина йац)",
+	"apihelp-growthstarmentee-param-gesaction": "Оьшу ардам (<kbd>билгалйан</kbd> йа <kbd>билгало дӀайаккхар</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Ӏамархочун тӀера билгало дӀайаккха",
+	"apihelp-query+growthstarredmentees-summary": "Системин тӀехь авторизаци йиначу, карарчу хьехамхочо билгалбаьккхина болу Ӏамархойн могӀам схьаэца",
+	"apihelp-growthsetmentorstatus-summary": "Карарчу декъашхочун хьехамхочун статус хӀоттайе жигара/болх беш вац(йац)",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Керла статус",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Хьехамча воцуш ву аьлла билгалдоккхуш, ахьа билгалдаккха деза «воцуш ву» статусан хан (деношкахь)",
 	"apihelp-query+growthmentorstatus-summary": "Дехар, карарчу хенахь декъашхочун хьехамча статус муха йу",
+	"apihelp-growthmentordashboardupdatedata-summary": "Хьехамхочун панелехь «Ӏамархойн гайтам» модулан планехь йоцуш карладаккхаран график хӀоттайе. Белхийн бахьанашца, хӀора шина сахьтехь цхьаъ бен карладаккхар дӀахӀотто йиш йац.",
+	"apihelp-growthsetmenteestatus-summary": "Ӏамархочун статус хӀоттае (Ӏамархошна бакъо ло хьехамаллин модуль дӀахӀотто/дӀайаккха йа йерриг а дакъалацар дӀадаккха, цуо дӀайоккху Ӏамархочун/хьехамхочун йукъаметтиг)",
+	"apihelp-growthsetmenteestatus-param-state": "Ӏамархочун керла статус (дӀахьедар: хӀара «optout» хӀоттийча, Ӏамархо/хьехамхо йукъаметтиг гуттаренна а дӀайоккхур йу)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Хьехамаллин модуль дӀахӀоттийна",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Хьехамаллин модуль йерриг а дӀайаьккхина йу. Иза дукхахьолахь программо хӀоттадо, лелайо А/В тестйарехь.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Ӏамархочо хьехамалла тӀе ца лаьцна; Ӏамархо/хьехамхо йукъаметтиг дӀайаьккхина хир йу, хьехамхойн модуль хийцина хир йу йухайерзо йиш йолуш",
+	"apihelp-query+growthmenteestatus-summary": "Карарчу декъашхочун Ӏамархочун статус йехар; хьажа action=growthsetmenteestatus документацига, къаьстина статусех лаьцна информаци хаа.",
+	"apihelp-query+growthmentormentee-summary": "ХӀокху хьехамхочун тӀебихкина массо а Ӏамархой схьаэца",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Хьехамхочо хаттарш дан деза Ӏамархошка",
+	"apihelp-growthmanagementorlist-summary": "Структурйина хьехамхойн могӀамехь информацина урхалла дар (дукхахьолахь [[MediaWiki:GrowthMentors.json]] чохь латтабо). ХӀара модуль лело йиш йу хӀинцалерчу а, хинболчу а хьехамхойн (шаьш тӀетоха йа шайн деталаш хийца) а, администраторийн а (массо а декъашхошна).",
 	"apihelp-growthmanagementorlist-param-geaction": "Ардамаш",
-	"apihelp-growthmanagementorlist-param-weight": "Шоралла"
+	"apihelp-growthmanagementorlist-param-message": "Йуьхьанцара хаам (лелабе баьсса могӀа стандартан хьехамхочун хаамна)",
+	"apihelp-growthmanagementorlist-param-weight": "Шоралла",
+	"apihelp-growthmanagementorlist-param-summary": "Хийцам барна бахьана",
+	"apihelp-growthmanagementorlist-param-username": "Хийцамо Ӏаткъам биначу хьехамхочун декъашхочун цӀе. Нагахь санна дӀа ца лахь, карарчу хенахь системин тӀехь авторизаци йина декъашхочун цӀе лелор йу. Привилегин декъашхошна бен лело йиш йац."
 }
