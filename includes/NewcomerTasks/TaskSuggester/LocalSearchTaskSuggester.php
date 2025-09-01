@@ -116,14 +116,9 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 				'Full text searches are unsupported or disabled',
 				'grothexperiments-no-fulltext-search'
 			) );
-		} elseif ( $matches instanceof StatusValue ) {
-			if ( $matches->isGood() ) {
-				$matches = $matches->getValue();
-				/** @var ISearchResultSet $matches */
-			} else {
-				// T302473 make sure the result is serializable
-				$matches->setResult( false, null );
-			}
+		} elseif ( $matches instanceof StatusValue && $matches->isGood() ) {
+			$matches = $matches->getValue();
+			/** @var ISearchResultSet $matches */
 		}
 
 		if ( $debug ) {
