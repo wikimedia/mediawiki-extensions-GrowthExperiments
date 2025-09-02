@@ -561,13 +561,15 @@
 	"growthexperiments-levelingup-getstarted-notification-header": "Kokeile ehdotettua muokkausta ja ala kehittämään {{GENDER:$2|muokkaustaitojasi}}",
 	"growthexperiments-levelingup-getstarted-noedits-notification-header": "{{GENDER:$2|Kiinnostunut}} {{GRAMMAR:genitive|{{SITENAME}}}} muokkaamisesta? Liity mukaan miljoonien ihmisten yhteisöön.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Kokeile ehdotettuja muokkauksia",
+	"growthexperiments-levelingup-reengage-notification-header": "Kiitos muokkaamisesta! Kokeile ehdotettuja muokkauksia kehittääksesi taitojasi ja oppiaksesi parhaista muokkaustavoista.",
 	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Kokeile ehdotettuja muokkauksia",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Olet tehnyt}} $3 {{PLURAL:$3|ehdotetun muokkauksen|ehdotettua muokkausta}}. Jatka oppiaksesi uusia taitoja.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Tee ehdotettu muokkaus",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Hyvää edistystä {{PLURAL:$3|muokkauksissasi}}! Katso lisää ehdotettuja muokkauksia kehittääksesi {{GENDER:$2|muokkaustaitojasi}}.",
 	"echo-category-title-ge-newcomer": "Kasvuominaisuudet",
 	"echo-pref-tooltip-ge-newcomer": "Ilmoita uusien tulokkaiden tehtävistä ja muista uusien käyttäjien avuksi tarkoitetuista ominaisuuksista",
 	"growthexperiments-homepage-community-updates-header": "Yhteisön ilmoitukset",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lisätietoja",
-	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|muokkaus|muokkausta}}, onnittelut! {{GENDER:$2|Muokkaamiasi}} artikkeleita on katsottu $3 kertaa viime aikoina. Saatavilla olevat ehdotetut muokkaukset ovat muuttuneet.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|muokkaus|muokkausta}}, onnittelut! {{GENDER:$2|Muokkaamiasi}} artikkeleita on katsottu $3 {{PLURAL:$3|kerran|kertaa}} viime aikoina. Saatavilla olevat ehdotetut muokkaukset ovat muuttuneet.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Kokeile muita muokkauksia"
 }

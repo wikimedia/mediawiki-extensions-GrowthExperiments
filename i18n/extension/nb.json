@@ -226,5 +226,12 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "Påvirker hvordan underlenkede artikler prioriteres. Dette feltet krever et prosenttall i desimalform, så tallet må være mellom 0 og 1. Jo mer {{GENDER:|du}} øker dette tallet, jo mer sannsynlig er det at nybegynnere vil motta forslag om underlenkede artikler.",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Minimal påkrevd lenkeskår",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "Minimal konfidensgrense for lenkeforslag. Dette feltet krever et prosenttall i desimalform, så tallet bør være mellom 0 og 1. Hvis {{GENDER:|du}} øker tallet vil forslagene som vises til sluttbrukerne ha større sannsynlighet for å være gode forslag, men færre forslag vil være tilgjengelig. Hvis du minker tallet vil flere forslag være tilgjengelige, men det er mindre sannsynlig at forslagene er gode.",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Slutt å foreslå «Legg til en lenke»-oppgaver basert på antall redigeringer nybegynnere har",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Nei",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "Ja, etter totalt 5 redigeringer",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "Ja, etter totalt 20 redigeringer",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Ja, etter totalt 50 redigeringer",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ja, etter totalt 75 redigeringer",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ja, etter totalt 150 redigeringer",
 	"growthexperiments-addlink-done-button": "Ferdig"
 }

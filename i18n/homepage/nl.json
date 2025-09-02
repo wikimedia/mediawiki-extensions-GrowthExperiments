@@ -598,6 +598,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Mij op de hoogte houden van taken voor nieuwkomers en andere functies die zijn ontworpen om nieuwe gebruikers te helpen.",
 	"growthexperiments-homepage-community-updates-header": "Gemeenschapsnieuwtjes",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Meer lezen",
-	"growthexperiments-addalink-milestone-notification-header": "$1 bewerkingen, gefeliciteerd! De artikelen die {{GENDER:$2|u}} bewerkt hebt zijn onlangs $3 keer bekeken. De beschikbare voorgestelde bewerkingen zijn gewijzigd.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 bewerking{{PLURAL:$1||en}}, gefeliciteerd! De artikelen die {{GENDER:$2|u}} bewerkt hebt zijn onlangs $3 keer bekeken. De beschikbare voorgestelde bewerkingen zijn gewijzigd.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Probeer andere bewerkingen"
 }

@@ -585,6 +585,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Yeni gələnlər üçün tapşırıqlar və yeni istifadəçilərə kömək etmək üçün nəzərdə tutulmuş digər funksiyalar haqqında mənə bildirin.",
 	"growthexperiments-homepage-community-updates-header": "İcma Yeniləmələri",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Daha ətraflı",
-	"growthexperiments-addalink-milestone-notification-header": "$1 redaktə, təbriklər! Redaktə {{GENDER:$2|etdiyiniz}} məqalələrə bu yaxınlarda $3 oxunuş gəlib. Mövcud təklif edilən redaktələr dəyişdirilib.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|redaktə}}, təbriklər! Redaktə {{GENDER:$2|etdiyiniz}} məqalələrə bu yaxınlarda $3 {{PLURAL:$1|oxunuş}} gəlib. Mövcud təklif edilən redaktələr dəyişdirilib.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Digər redaktələri sına"
 }
