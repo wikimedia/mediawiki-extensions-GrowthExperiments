@@ -4,7 +4,8 @@
 			"Agusbou2015",
 			"Kizule",
 			"Milicevic01",
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"Aca"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Početna stranica}}",
@@ -490,7 +491,7 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Ne želim mentora",
 	"growthexperiments-homepage-mentorship-about-done": "Gotovo",
 	"growthexperiments-homepage-special-contribute-title": "Predložene izmene",
-	"growthexperiments-homepage-special-contribute-cta": "Prikaži predložene izmene",
+	"growthexperiments-homepage-special-contribute-cta": "Prikaži predložene izmjene",
 	"growthexperiments-homepage-impact-contributions-link": "Prikaži sve izmene",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Probajte predložene izmene",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "Saznajte više",
