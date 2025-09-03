@@ -6,13 +6,12 @@ use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Html\Html;
-use MediaWiki\Linker\Linker;
+use MediaWiki\Linker\UserLinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
-use MediaWiki\User\UserIdentity;
 
 class SpecialClaimMentee extends FormSpecialPage {
 
@@ -22,15 +21,18 @@ class SpecialClaimMentee extends FormSpecialPage {
 	private ?User $newMentor;
 	private MentorProvider $mentorProvider;
 	private ChangeMentorFactory $changeMentorFactory;
+	private UserLinkRenderer $userLinkRenderer;
 
 	public function __construct(
 		MentorProvider $mentorProvider,
-		ChangeMentorFactory $changeMentorFactory
+		ChangeMentorFactory $changeMentorFactory,
+		UserLinkRenderer $userLinkRenderer,
 	) {
 		parent::__construct( 'ClaimMentee' );
 
 		$this->mentorProvider = $mentorProvider;
 		$this->changeMentorFactory = $changeMentorFactory;
+		$this->userLinkRenderer = $userLinkRenderer;
 	}
 
 	/** @inheritDoc */
@@ -189,16 +191,16 @@ class SpecialClaimMentee extends FormSpecialPage {
 	}
 
 	public function onSuccess() {
-		$mentees = array_map( static function ( UserIdentity $user ) {
-			return Linker::userLink( $user->getId(), $user->getName() );
-		}, $this->mentees );
-
-		$language = $this->getLanguage();
+		$menteeLinks = [];
+		$context = $this->getContext();
+		foreach ( $this->mentees as $user ) {
+			$menteeLinks[] = $this->userLinkRenderer->userLink( $user, $context );
+		}
 
 		$this->getOutput()->addWikiMsg(
 			'growthexperiments-homepage-claimmentee-success',
-			Message::rawParam( $language->listToText( $mentees ) ),
-			$language->formatNum( count( $mentees ) ),
+			Message::listParam( $menteeLinks ),
+			Message::numParam( count( $menteeLinks ) ),
 			$this->getUser()->getName(),
 			$this->newMentor->getName(),
 			Message::rawParam( $this->getLinkRenderer()->makeLink(

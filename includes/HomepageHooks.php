@@ -245,6 +245,7 @@ class HomepageHooks implements
 				'services' => [
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsChangeMentorFactory',
+					'UserLinkRenderer',
 				]
 			];
 
