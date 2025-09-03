@@ -3,12 +3,14 @@
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddImage\SubpageImageRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use MediaWiki\MediaWikiServices;
@@ -16,6 +18,14 @@ use MediaWiki\Title\TitleValue;
 
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
+
+// FIXME: Used on patch-demo
+$wgGEReviseToneSuggestedEditEnabled = true;
+/** EDIT CHECK START */
+$wgVisualEditorEditCheckLoadExperimental = true;
+$wgVisualEditorEditCheckTagging = true;
+$wgVisualEditorEditCheck = true;
+/** EDIT CHECK END */
 
 $wgMaxArticleSize = 100;
 $wgParsoidSettings['wt2htmlLimits']['wikitextSize'] = 100 * 1024;
@@ -36,6 +46,11 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 		'link-recommendation', GrowthExperiments\NewcomerTasks\TaskType\TaskType::DIFFICULTY_EASY, []
 	);
 
+	$reviseToneTaskType = new ReviseToneTaskType(
+		'revise-tone',
+		GrowthExperiments\NewcomerTasks\TaskType\TaskType::DIFFICULTY_EASY,
+	);
+
 	# Mock the task suggester to specify what article(s) will be suggested.
 	$services->redefineService(
 		'GrowthExperimentsTaskSuggesterFactory',
@@ -43,6 +58,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 			$copyEditTaskType,
 			$imageRecommendationTaskType,
 			$linkRecommendationTaskType,
+			$reviseToneTaskType,
 			$services
 		): TaskSuggesterFactory {
 			$staticSuggesterFactory = new StaticTaskSuggesterFactory( [
@@ -55,6 +71,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				),
 				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Classical kemençe' ) ),
 				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Cretan lyra' ) ),
+				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, "Kristallsee" ) ),
 				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
 			], $services->getTitleFactory() );
 
@@ -86,6 +103,8 @@ $wgGEImageRecommendationApiHandler = 'mvp';
 $wgHooks['MediaWikiServices'][] = SubpageImageRecommendationProvider::class . '::onMediaWikiServices';
 $wgHooks['ContentHandlerDefaultModelFor'][] =
 	SubpageImageRecommendationProvider::class . '::onContentHandlerDefaultModelFor';
+$wgHooks['ContentHandlerDefaultModelFor'][] =
+	SubpageReviseToneRecommendationProvider::class . '::onContentHandlerDefaultModelFor';
 // Use Commons as a foreign file repository.
 $wgUseInstantCommons = true;
 
