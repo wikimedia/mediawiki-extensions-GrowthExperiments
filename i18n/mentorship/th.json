@@ -171,6 +171,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "บันทึก",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "ยกเลิก",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "มีการบันทึกคำชมเชยส่วนบุคคลของคุณแล้ว",
+	"growthexperiments-mentor-list-missing-key": "คีย์ <code>$1</code> หายไป",
 	"growthexperiments-mentor-writer-error-blocked": "{{GENDER:|คุณ}}ถูกบล็อกจากการแก้ไขรายชื่อผู้ฝึก",
 	"growthexperiments-manage-mentors-title": "จัดการผู้ฝึก",
 	"growthexperiments-manage-mentors-pretext-purpose": "หน้านี้แสดงรายชื่อผู้ฝึก",
@@ -204,5 +205,7 @@
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|คุณ}}กำลังจะถอน [[User:$1|$1]] ออกจาก{{GENDER:$1|ผู้ฝึก}}",
 	"growthexperiments-manage-mentors-remove-mentor-reason": "เหตุผลที่ถอนตัวผู้ฝึกออก",
 	"growthexperiments-manage-mentors-remove-mentor-success": "ผู้ใช้ [[User:$1|$1]] ไม่ได้เป็น{{GENDER:$1|ผู้ฝึก}}อีกต่อไป",
-	"growhtexperiments-manage-mentors-add-mentor": "ลงทะเบียนผู้ฝึก"
+	"growhtexperiments-manage-mentors-add-mentor": "ลงทะเบียนผู้ฝึก",
+	"growthexperiments-manage-mentors-add-mentor-reason": "เหตุผลที่เพิ่มผู้ฝึก",
+	"growthexperiments-manage-mentors-add-mentor-success": "เพิ่ม {{GENDER:$1|ผู้ใช้}} $1 เป็นผู้ฝึก"
 }

@@ -172,6 +172,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Innstillingene dine for personlig skryt ble lagret.",
 	"growthexperiments-mentor-list-missing-key": "Nøkkelen <code>$1</code> mangler",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> forventes å være <code>$2</code>, men er <code>$3</code>",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "<code>$1</code> forventes å være et gyldig konverterbart tidsstempel, bruker-ID: <code>$2</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Fadderdefinisjonen inneholder en uventet nøkkel <code>$1</code>",
 	"growthexperiments-mentor-list-invalid-weight": "<code>$1</code> forventes å være én av: <code>$2</code>, men er <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Fadderen $1 sto allerede på fadderlista.",

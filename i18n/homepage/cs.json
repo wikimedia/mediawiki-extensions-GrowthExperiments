@@ -185,6 +185,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Podívejte se na {{GENDER:$2|svoji}} otázku na diskusi {{GENDER:$1|vašeho mentora|vaší mentorky}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Otázka od wikipedisty [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Otázka od uživatele [[User:$1|$1]]: [[$2]]",
+	"growthexperiments-homepage-mentorship-system-message": "Poznámka: $1",
 	"growthexperiments-specialimpact-title": "Dosah vašich příspěvků",
 	"growthexperiments-specialimpact-showing-for-other-user": "Zobrazuji data o dosahu příspěvků uživatele $1",
 	"growthexperiments-specialimpact-invalid-username": "Chybějící nebo neplatné uživatelské jméno.",
@@ -584,10 +585,12 @@
 	"growthexperiments-homepage-impact-contributions-link": "Zobrazit všechny vaše editace",
 	"growthexperiments-levelingup-getstarted-notification-header": "Vyzkoušejte Editační tipy a začněte tak tvořit {{GENDER:$2|své}} editační dovednosti",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Vyzkoušet editační tipy",
+	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Vyzkoušet editační tipy",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Dokončil|Dokončila|Dokončili}} jste $3 {{PLURAL:$3|editační tip|editačních tipy|editačních tipů}}. Pokračujte v editování, abyste {{GENDER:$2|zlepšil|zlepšila|zlepšili}} své editační dovednosti.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Vyzkoušejte editační tipy",
 	"echo-category-title-ge-newcomer": "funkce týmu Growth",
 	"echo-pref-tooltip-ge-newcomer": "Upozorněte mě na nové Editační tipy a další funkce navržené, aby pomohly novým uživatelům.",
 	"growthexperiments-homepage-community-updates-header": "Komunitní aktuality",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Zjistit více"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Zjistit více",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Zkuste jiné editace"
 }
