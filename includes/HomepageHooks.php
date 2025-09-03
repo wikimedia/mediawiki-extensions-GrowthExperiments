@@ -942,6 +942,13 @@ class HomepageHooks implements
 		}
 	}
 
+	/**
+	 * Generate HTML for zero contributions message
+	 *
+	 * @param SpecialPage $sp The special page instance
+	 * @param string $wrapperClasses Additional CSS classes for the wrapper
+	 * @return string HTML content
+	 */
 	private static function getZeroContributionsHtml( SpecialPage $sp, string $wrapperClasses = '' ): string {
 		$linkUrl = SpecialPage::getTitleFor( 'Homepage' )
 			->getFullURL( [ 'source' => 'specialcontributions' ] );
@@ -970,7 +977,7 @@ class HomepageHooks implements
 		if (
 			$user->equals( $sp->getUser() ) &&
 			$user->getEditCount() === 0 &&
-			self::isHomepageEnabled( $user )
+			$this->shouldShowSuggestedEdits( $user )
 		) {
 			$out = $sp->getOutput();
 			$out->enableOOUI();
@@ -1355,7 +1362,7 @@ class HomepageHooks implements
 	/** @inheritDoc */
 	public function onContributeCards( array &$cards ): void {
 		$userIdentity = $this->userIdentity ?? RequestContext::getMain()->getUser();
-		if ( !$this->isHomepageEnabledForUser( $userIdentity ) ) {
+		if ( !$this->shouldShowSuggestedEdits( $userIdentity ) ) {
 			return;
 		}
 		$messageLocalizer = $this->messageLocalizer ?? RequestContext::getMain();
@@ -1411,4 +1418,20 @@ class HomepageHooks implements
 	public function setUserIdentity( UserIdentity $userIdentity ): void {
 		$this->userIdentity = $userIdentity;
 	}
+
+	/**
+	 * Determine if the Suggested Edits contribute card and links should be shown.
+	 *
+	 * The card and links should only be displayed when:
+	 * 1. Homepage is enabled for the user
+	 * 2. Suggested Edits module is enabled on the wiki
+	 *
+	 * @param UserIdentity $user The user to check
+	 * @return bool True if the SE contribute card should be shown, false otherwise
+	 */
+	private function shouldShowSuggestedEdits( UserIdentity $user ): bool {
+		return $this->isHomepageEnabledForUser( $user )
+			&& SuggestedEdits::isEnabledForAnyone( $this->config );
+	}
+
 }

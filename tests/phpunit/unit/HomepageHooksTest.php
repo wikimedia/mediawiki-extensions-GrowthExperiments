@@ -108,27 +108,35 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 		$homepageTitleMock->method( 'getLinkURL' )->willReturn( '/foo/bar/' );
 		$titleFactoryMock->method( 'newFromLinkTarget' )
 			->willReturn( $homepageTitleMock );
-		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
-		$userIdentity = new UserIdentityValue( 1, 'Foo' );
-		$userOptionsLookupMock->method( 'getBoolOption' )
-			->with( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE )
-			->willReturn( true );
-		$homepageHooks = $this->getHomepageHooksMock(
-			new HashConfig( [] ),
-			$titleFactoryMock,
-			$specialPageFactoryMock,
-			$userOptionsLookupMock
-		);
 
-		$homepageHooks->setUserIdentity( $userIdentity );
+		$userIdentity = new UserIdentityValue( 1, 'Foo' );
 
 		$messageLocalizerMock = $this->createMock( MessageLocalizer::class );
 		$messageMock = $this->createMock( Message::class );
 		$messageMock->method( 'text' )->willReturn( 'Foo' );
 		$messageLocalizerMock->method( 'msg' )->willReturn( $messageMock );
 		$outputPageMock = $this->createMock( OutputPage::class );
+
+		// Scenario 1: Homepage enabled AND SuggestedEdits enabled - card should be shown
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
+		$userOptionsLookupMock->method( 'getBoolOption' )
+			->with( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE )
+			->willReturn( true );
+
+		$configWithSEEnabled = new HashConfig( [
+			'GEHomepageSuggestedEditsEnabled' => true
+		] );
+
+		$homepageHooks = $this->getHomepageHooksMock(
+			$configWithSEEnabled,
+			$titleFactoryMock,
+			$specialPageFactoryMock,
+			$userOptionsLookupMock
+		);
+		$homepageHooks->setUserIdentity( $userIdentity );
 		$homepageHooks->setMessageLocalizer( $messageLocalizerMock );
 		$homepageHooks->setOutputPage( $outputPageMock );
+
 		$cards = [];
 		$homepageHooks->onContributeCards( $cards );
 		$this->assertArrayEquals( [ [
@@ -140,15 +148,36 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 				'actionText' => 'Foo',
 				'actionType' => 'link'
 			] ]
-		], $cards );
+		], $cards, false, true, 'Card should be shown when Homepage and SE are enabled' );
 
-		// Scenario if user has pref disabled
-		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
-		$userOptionsLookupMock->method( 'getBoolOption' )
+		// Scenario 2: Homepage preference disabled - no card
+		$userOptionsLookupMockDisabled = $this->createMock( UserOptionsLookup::class );
+		$userOptionsLookupMockDisabled->method( 'getBoolOption' )
 			->with( $userIdentity, HomepageHooks::HOMEPAGE_PREF_ENABLE )
 			->willReturn( false );
+
 		$homepageHooks = $this->getHomepageHooksMock(
-			new HashConfig( [] ),
+			$configWithSEEnabled,
+			$titleFactoryMock,
+			$specialPageFactoryMock,
+			$userOptionsLookupMockDisabled
+		);
+		$homepageHooks->setUserIdentity( $userIdentity );
+		$homepageHooks->setMessageLocalizer( $messageLocalizerMock );
+		$homepageHooks->setOutputPage( $outputPageMock );
+
+		$cards = [];
+		$homepageHooks->onContributeCards( $cards );
+		$this->assertArrayEquals( [], $cards, false, true,
+			'No card should be shown when Homepage preference is disabled' );
+
+		// Scenario 3: Homepage enabled but SuggestedEdits disabled - no card
+		$configWithSEDisabled = new HashConfig( [
+			'GEHomepageSuggestedEditsEnabled' => false
+		] );
+
+		$homepageHooks = $this->getHomepageHooksMock(
+			$configWithSEDisabled,
 			$titleFactoryMock,
 			$specialPageFactoryMock,
 			$userOptionsLookupMock
@@ -156,9 +185,11 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 		$homepageHooks->setUserIdentity( $userIdentity );
 		$homepageHooks->setMessageLocalizer( $messageLocalizerMock );
 		$homepageHooks->setOutputPage( $outputPageMock );
+
 		$cards = [];
 		$homepageHooks->onContributeCards( $cards );
-		$this->assertArrayEquals( [], $cards );
+		$this->assertArrayEquals( [], $cards, false, true,
+			'No card should be shown when SuggestedEdits is disabled even if Homepage is enabled' );
 	}
 
 	private function getHomepageHooksMock(
