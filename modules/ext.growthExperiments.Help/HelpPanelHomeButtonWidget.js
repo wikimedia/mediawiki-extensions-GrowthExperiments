@@ -115,7 +115,7 @@ HelpPanelHomeButtonWidget.prototype.getSubheader = function () {
 		// The following messages are used here:
 		// * growthexperiments-help-panel-button-subheader-general-help
 		// * growthexperiments-help-panel-button-subheader-ask-help
-		// * growthexperiments-help-panel-button-header-suggested-edits
+		// * growthexperiments-help-panel-button-subheader-suggested-edits
 		text = mw.msg( 'growthexperiments-help-panel-button-subheader-' + this.config.id );
 	}
 	return $( '<div>' ).addClass( 'mw-ge-help-panel-home-button-text-subheader' ).text( text );
