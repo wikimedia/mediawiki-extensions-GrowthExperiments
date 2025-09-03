@@ -14,5 +14,7 @@
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Posljednja izmjena",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dan|dana}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Izmjena|Izmjene}}",
-	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|izmjena|izmjene|izmjena}} dana $2"
+	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|izmjena|izmjene|izmjena}} dana $2",
+	"growthexperiments-homepage-special-contribute-title": "Predložene izmjene",
+	"growthexperiments-homepage-special-contribute-description": "Načinite male i jednostavne izmjene (poput dodavanja veza i lekture) da biste poboljšali postojeće članke."
 }

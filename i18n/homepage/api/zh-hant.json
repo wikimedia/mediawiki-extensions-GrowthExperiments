@@ -24,5 +24,9 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "條目標題圖片推薦任務用於",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "用於圖片推薦的無前綴檔案名稱，例如：<kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "圖片推薦所在章節的標題，例如：<kbd>歷史</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "圖片推薦所在章節從 1 開始的索引，例如：<kbd>3</kbd>"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "圖片推薦所在章節從 1 開始的索引，例如：<kbd>3</kbd>",
+	"apihelp-query+linkrecommendations-summary": "檢索特定頁面的連結建議",
+	"apihelp-query+linkrecommendations-example-1": "取得頁面 ID 為 123 的連結推薦",
+	"apihelp-query+linkrecommendations-example-2": "取得頁面 ID 為 456 的最多 5 個連結推薦",
+	"apihelp-query+linkrecommendations-param-pageid": "若要檢索連結推薦的頁面 ID。"
 }

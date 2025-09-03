@@ -188,7 +188,7 @@
 	"growthexperiments-specialimpact-invalid-username": "Tên thành viên bị thiếu hoặc không hợp lệ.",
 	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Khi đưa trang đặc biệt \"Hoạt động\" vào, tên người dùng phải được cung cấp làm tham số đầu tiên.",
 	"growthexperiments-homepage-claimmentee-no-user": "Người được cố vấn không tồn tại",
-	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|bạn}} đã làm cố vấn cho {{GENDER:$1|$1}} rồi",
+	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Bạn}} đã làm cố vấn cho {{GENDER:$1|$1}} rồi",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} đã rời khỏi vai trò cố vấn",
 	"growthexperiments-homepage-enable-preference": "Để bật trang chủ của người mới, hãy truy cập cài đặt “Tính năng dành cho người mới tham gia” trong [[Special:Preferences#mw-prefsection-personal-homepage|Tùy chọn]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Bạn}} vẫn chưa có đóng góp nào.",

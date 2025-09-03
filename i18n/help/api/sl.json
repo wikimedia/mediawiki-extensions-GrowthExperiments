@@ -8,10 +8,10 @@
 	"apihelp-helppanelquestionposter-param-body": "Besedilo vprašanja, ki ga je postavil uporabnik.",
 	"apihelp-helppanelquestionposter-param-source": "Način, na katerega je bilo vprašanje postavljeno.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panel »Vprašajte forum za pomoč«",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panel »Vprašajte mentorja« na glavni strani za začetnike",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panel »Vprašajte mentorja« na glavni strani za novince",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Zaslon »Vprašajte mentorja« na panelu pomoči",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panel »Vprašajte forum za pomoč« (staro ime)",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel »Vprašajte mentorja« na glavni strani za začetnike (staro ime)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel »Vprašajte mentorja« na glavni strani za novince (staro ime)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Ustrezni naslov, če je izbran, za vključitev z vprašanjem.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Za postavitev vprašanja morate biti prijavljeni."
 }

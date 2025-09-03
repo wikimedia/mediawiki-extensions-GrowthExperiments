@@ -39,7 +39,7 @@
 	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "Parameteren «sectionNumber» må være et heltall i dataene til seksjonsbildemodulen, men er $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Lenkeforslagshistorikk ikke funnet",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Uventede lenkeforslagsmål: $1",
-	"growthexperiments-underlinked-rescore-profile": "Intern rescore-profil som brukes i GrowthExperiments' lenkeforslag for å prioritere artikler som ikke har nok internlenker ennå.",
+	"growthexperiments-underlinked-rescore-profile": "Intern rescore-profil som brukes i GrowthExperiments' lenkeforslag for å prioritere artikler som ikke har nok internlenker ennå. Denne har ingen funksjon når lenkeforslag er deaktivert.",
 	"growthexperiments-addimage-feedback-accepted-editrevid": "Parameteren <var>editRevId</var> er påkrevd når parameteren <var>accepted</var> er satt til <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Parameteren <var>editRevId</var> kan ikke brukes når parameteren <var>accepted</var> er satt til <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Parameteren <var>caption</var> er påkrevd når parameteren <var>accepted</var> er satt til <kbd>true</kbd>.",

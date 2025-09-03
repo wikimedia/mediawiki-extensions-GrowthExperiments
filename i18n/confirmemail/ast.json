@@ -1,12 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"YoaR"
+			"YoaR",
+			"Vsuarezp"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|¿qué ye esto?]])",
 	"growthexperiments-confirmemail-emailhelp": "El corréu electrónicu ye necesariu pa recuperar la to cuenta si pierdes la contraseña.",
 	"growthexperiments-confirmemail-emailrecommended": "Dirección de corréu electrónicu (encamentáu)",
+	"growthexperiments-confirmemail-emailwarning": "Por favor, busca un corréu electrónicu nuesu para verificar la to dirección.",
+	"growthexperiments-confirmemail-confirm-subject": "Dámoste la bienvenida a {{SITENAME}}. Confirma la to dirección de corréu electrónicu",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hola}} $2,\n\nGracies por añader un corréu electrónicu a la to cuenta de {{SITENAME}}, rexistrada dende la direición IP $1.\n\nPor favor, calca nel botón d'abaxo pa confirmar esta direición de corréu electrónicu que te gustaría vincular a la to cuenta \"$2\":\n\n$3\n\nNota : esti códigu de confirmación <strong>caduca'l</strong> $<strong>4</strong>.\n\nGracies,\n\n{{SITENAME}}\n\n----\n\nP'atayar la confirmación de la direición de corréu electrónicu (porque nun rexistrasti la cuenta o por cualesquier otru motivu ), calca nesti enllaz de cancelación:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Confirmar la dirección de corréu electrónicu",
-	"growthexperiments-signupcampaign-bullet3": "Empieza con ediciones pequeñes y sencielles"
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hola}} $2,\n\nGracies por añader un corréu electrónicu a la to cuenta de {{SITENAME}}, rexistrada dende la direición IP $1.\n\nPor favor, calca nel botón d'abaxo pa confirmar esta direición de corréu electrónicu que te gustaría vincular a la to cuenta \"$2\":\n\n$3\n\nNota : esti códigu de confirmación <strong>caduca'l</strong> $<strong>4</strong>.\n\nGracies,\n\n{{SITENAME}}\n\n----\n\nP'atayar la confirmación de la direición de corréu electrónicu (porque nun rexistrasti la cuenta o por cualquier otru motivu ), calca nesti enllaz de cancelación:\n\n$5",
+	"growthexperiments-signupcampaign-title": "¡Gracies pol donadíu! Agora únite a la comunidá d'editores faciendo Wikipedia meyor anguaño",
+	"growthexperiments-signupcampaign-body": "Wikipedia ta construyida por persones como tu que trabayen xuntes. Editar un artículu puede ser tan simple como amestar un enllaz o camudar una palabra.",
+	"growthexperiments-signupcampaign-bullet1": "Artículos suxeríos según {{GENDER:|los tos}} intereses",
+	"growthexperiments-signupcampaign-bullet2": "Pidi ayuda d'un usuariu esperimentáu",
+	"growthexperiments-signupcampaign-bullet3": "Empieza con ediciones pequeñes y sencielles",
+	"growthexperiments-campaigns-footer": "Creando {{GENDER:|la to}} cuenta nesta páxina, va axuntase a esta campaña con fines rellacionaos cola esperiencia y l'análisis."
 }
