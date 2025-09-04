@@ -598,6 +598,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Thông báo cho tôi về các nhiệm vụ dành cho người mới và các tính năng khác được thiết kế để giúp người dùng mới.",
 	"growthexperiments-homepage-community-updates-header": "Cập nhật Cộng đồng",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Tìm hiểu thêm",
-	"growthexperiments-addalink-milestone-notification-header": "Bạn đã có $1 sửa đổi, xin chúc mừng! Các bài viết {{GENDER:$2|}}mà bạn  đã sửa đổi gần đây đã nhận được $3 lượt xem. Các sửa đổi gợi ý hiện có sẵn đã thay đổi.",
+	"growthexperiments-addalink-milestone-notification-header": "Bạn đã có $1 {{PLURAL:$1|}}sửa đổi, xin chúc mừng! Các bài viết {{GENDER:$2|}}mà bạn đã sửa đổi gần đây đã nhận được $3 {{PLURAL:$3|}}lượt xem. Các sửa đổi gợi ý hiện có sẵn đã thay đổi.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Thử sửa đổi khác"
 }

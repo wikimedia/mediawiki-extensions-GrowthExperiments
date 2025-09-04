@@ -157,6 +157,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Apskati {{GENDER:$2|savu}} jautājumu {{GENDER:$1|sava mentora|savas mentores}} diskusiju lapā.",
 	"growthexperiments-homepage-mentorship-question-subject": "Jautājums no [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Jautājums no [[User:$1|$1]] par [[$2]]",
+	"growthexperiments-homepage-mentorship-system-message": "Piezīme: $1",
 	"growthexperiments-specialimpact-title": "Ietekme",
 	"growthexperiments-specialimpact-showing-for-other-user": "Rāda $1 devuma datus",
 	"growthexperiments-specialimpact-invalid-username": "Trūkstošs vai nederīgs dalībnieka vārds.",
