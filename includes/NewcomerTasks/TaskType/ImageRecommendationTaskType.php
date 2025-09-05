@@ -2,8 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use MediaWiki\Json\JsonDeserializer;
-
 class ImageRecommendationTaskType extends ImageRecommendationBaseTaskType {
 
 	/** @inheritDoc */
@@ -17,8 +15,8 @@ class ImageRecommendationTaskType extends ImageRecommendationBaseTaskType {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
-		$taskType = new ImageRecommendationTaskType(
+	public static function newFromJsonArray( array $json ): self {
+		$taskType = new static(
 			$json['id'],
 			$json['difficulty'],
 			$json['settings'],

@@ -108,7 +108,7 @@ abstract class ImageRecommendationBaseTaskType extends TaskType {
 	}
 
 	/** @inheritDoc */
-	protected function toJsonArray(): array {
+	public function toJsonArray(): array {
 		return parent::toJsonArray() + [
 				'settings' => [
 					'maxTasksPerDay' => $this->maxTasksPerDay,

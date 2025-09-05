@@ -5,19 +5,19 @@ namespace GrowthExperiments\NewcomerTasks\Task;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
-use MediaWiki\Json\JsonDeserializable;
-use MediaWiki\Json\JsonDeserializableTrait;
-use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleValue;
+use Wikimedia\JsonCodec\Hint;
+use Wikimedia\JsonCodec\JsonCodecable;
+use Wikimedia\JsonCodec\JsonCodecableTrait;
 
 /**
  * A single task recommendation.
  * A Task specifies a page and the type of the task to perform on it.
  */
-class Task implements JsonDeserializable {
+class Task implements JsonCodecable {
 
-	use JsonDeserializableTrait;
+	use JsonCodecableTrait;
 
 	/** @var TaskType */
 	private $taskType;
@@ -75,34 +75,30 @@ class Task implements JsonDeserializable {
 	}
 
 	/** @inheritDoc */
-	protected function toJsonArray(): array {
-		# T312589 explicitly calling jsonSerialize() will be unnecessary
-		# in the future.
+	public function toJsonArray(): array {
 		return [
-			'taskType' => $this->getTaskType()->jsonSerialize(),
+			'taskType' => $this->getTaskType(),
 			'title' => [ $this->getTitle()->getNamespace(), $this->getTitle()->getDBkey() ],
-			'topics' => array_map( static function ( Topic $topic ) {
-				return $topic->jsonSerialize();
-			}, $this->getTopics() ),
-			'token' => $this->getToken()
+			'topics' => $this->getTopics(),
+			'token' => $this->getToken(),
 		];
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
-		# T312589: In the future JsonCodec will take care of deserializing
-		# the values in the $json array itself.
-		$taskType = $json['taskType'] instanceof TaskType ?
-			$json['taskType'] :
-			$deserializer->deserialize( $json['taskType'], TaskType::class );
-		$title = new TitleValue( $json['title'][0], $json['title'][1] );
-		$topics = array_map( static function ( $topic ) use ( $deserializer ) {
-			return $topic instanceof Topic ? $topic :
-				$deserializer->deserialize( $topic, Topic::class );
-		}, $json['topics'] );
+	public static function jsonClassHintFor( string $keyName ) {
+		return match ( $keyName ) {
+			'taskType' => Hint::build( TaskType::class, Hint::ONLY_FOR_DECODE ),
+			'topics' => Hint::build( Topic::class, Hint::ONLY_FOR_DECODE, Hint::LIST ),
+			default => null,
+		};
+	}
 
-		$task = new static( $taskType, $title, $json['token'] ?? null );
-		$task->setTopics( $topics );
+	/** @inheritDoc */
+	public static function newFromJsonArray( array $json ): self {
+		$title = new TitleValue( $json['title'][0], $json['title'][1] );
+
+		$task = new static( $json['taskType'], $title, $json['token'] ?? null );
+		$task->setTopics( $json['topics'] );
 		return $task;
 	}
 

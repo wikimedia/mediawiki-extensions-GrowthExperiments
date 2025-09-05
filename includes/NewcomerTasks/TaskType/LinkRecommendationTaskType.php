@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use MediaWiki\Json\JsonDeserializer;
 use MessageLocalizer;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
@@ -254,7 +253,7 @@ class LinkRecommendationTaskType extends TaskType {
 	}
 
 	/** @inheritDoc */
-	protected function toJsonArray(): array {
+	public function toJsonArray(): array {
 		return parent::toJsonArray() + [
 				'settings' => [
 					'minimumTasksPerTopic' => $this->minimumTasksPerTopic,
@@ -274,8 +273,8 @@ class LinkRecommendationTaskType extends TaskType {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
-		$taskType = new LinkRecommendationTaskType(
+	public static function newFromJsonArray( array $json ): self {
+		$taskType = new static(
 			$json['id'],
 			$json['difficulty'],
 			$json['settings'],

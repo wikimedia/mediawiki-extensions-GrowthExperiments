@@ -4,7 +4,6 @@ namespace GrowthExperiments\NewcomerTasks\Topic;
 
 use LogicException;
 use MediaWiki\Extension\WikimediaMessages\ArticleTopicFiltersRegistry;
-use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Message\Message;
 use MessageLocalizer;
 
@@ -56,17 +55,15 @@ class OresBasedTopic extends Topic {
 	}
 
 	/** @inheritDoc */
-	protected function toJsonArray(): array {
-		return [
-			'id' => $this->getId(),
-			'groupId' => $this->getGroupId(),
+	public function toJsonArray(): array {
+		return parent::toJsonArray() + [
 			'oresTopics' => $this->getOresTopics(),
 		];
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
-		return new OresBasedTopic( $json['id'], $json['groupId'], $json['oresTopics'] );
+	public static function newFromJsonArray( array $json ): self {
+		return new static( $json['id'], $json['groupId'], $json['oresTopics'] );
 	}
 
 }

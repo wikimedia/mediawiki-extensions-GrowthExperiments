@@ -3,9 +3,8 @@
 namespace GrowthExperiments\NewcomerTasks\Task;
 
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
-use MediaWiki\Json\JsonDeserializable;
-use MediaWiki\Json\JsonDeserializableTrait;
-use MediaWiki\Json\JsonDeserializer;
+use Wikimedia\JsonCodec\JsonCodecable;
+use Wikimedia\JsonCodec\JsonCodecableTrait;
 
 /**
  * Class which contains the set of filters (task, topics) used to generate a TaskSet.
@@ -13,9 +12,9 @@ use MediaWiki\Json\JsonDeserializer;
  * JsonSerializable is implemented to provide the ability to compare TaskSetFilters across
  * TaskSets by JSON encoding the objects.
  */
-class TaskSetFilters implements JsonDeserializable {
+class TaskSetFilters implements JsonCodecable {
 
-	use JsonDeserializableTrait;
+	use JsonCodecableTrait;
 
 	/**
 	 * @var string[] List of task type IDs to limit the suggestions to.
@@ -74,7 +73,7 @@ class TaskSetFilters implements JsonDeserializable {
 	}
 
 	/** @inheritDoc */
-	protected function toJsonArray(): array {
+	public function toJsonArray(): array {
 		return [
 			'task' => $this->taskTypeFilters,
 			'topic' => $this->topicFilters,
@@ -83,8 +82,8 @@ class TaskSetFilters implements JsonDeserializable {
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
-		return new self(
+	public static function newFromJsonArray( array $json ): self {
+		return new static(
 			$json['task'],
 			$json['topic'],
 			$json['topicMode'] ?? SearchStrategy::TOPIC_MATCH_MODE_OR

@@ -3,20 +3,19 @@
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
-use MediaWiki\Json\JsonDeserializable;
-use MediaWiki\Json\JsonDeserializableTrait;
-use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\TitleValue;
 use MessageLocalizer;
+use Wikimedia\JsonCodec\JsonCodecable;
+use Wikimedia\JsonCodec\JsonCodecableTrait;
 
 /**
  * Describes a type of suggested edit.
  */
-class TaskType implements JsonDeserializable {
+class TaskType implements JsonCodecable {
 
-	use JsonDeserializableTrait;
+	use JsonCodecableTrait;
 
 	public const DIFFICULTY_EASY = 'easy';
 	public const DIFFICULTY_MEDIUM = 'medium';
@@ -221,30 +220,30 @@ class TaskType implements JsonDeserializable {
 	}
 
 	/** @inheritDoc */
-	protected function toJsonArray(): array {
+	public function toJsonArray(): array {
 		return [
 			'id' => $this->getId(),
 			'difficulty' => $this->getDifficulty(),
 			'extraData' => [ 'learnMoreLink' => $this->getLearnMoreLink() ],
 			'handlerId' => $this->getHandlerId(),
 			'iconData' => $this->getIconData(),
-			'excludedTemplates' => array_map( static function ( LinkTarget $excludedTemplate ) {
-				return [ $excludedTemplate->getNamespace(), $excludedTemplate->getDBkey() ];
-			}, $this->getExcludedTemplates() ),
-			'excludedCategories' => array_map( static function ( LinkTarget $excludedCategory ) {
-				return [ $excludedCategory->getNamespace(), $excludedCategory->getDBkey() ];
-			}, $this->getExcludedCategories() )
+			'excludedTemplates' => self::linkTargetToJsonArray(
+				$this->getExcludedTemplates()
+			),
+			'excludedCategories' => self::linkTargetToJsonArray(
+				$this->getExcludedCategories()
+			),
 		];
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
-		$excludedTemplates = array_map( static function ( array $excludedTemplate ) {
-			return new TitleValue( $excludedTemplate[0], $excludedTemplate[1] );
-		}, $json['excludedTemplates'] ?? [] );
-		$excludedCategories = array_map( static function ( array $excludedCategory ) {
-			return new TitleValue( $excludedCategory[0], $excludedCategory[1] );
-		}, $json['excludedCategories'] ?? [] );
+	public static function newFromJsonArray( array $json ): self {
+		$excludedTemplates = self::newTitleValuesFromJsonArray(
+			$json['excludedTemplates'] ?? []
+		);
+		$excludedCategories = self::newTitleValuesFromJsonArray(
+			$json['excludedCategories'] ?? []
+		);
 		$taskType = new static(
 			$json['id'], $json['difficulty'], $json['extraData'], $excludedTemplates, $excludedCategories
 		);
@@ -253,13 +252,37 @@ class TaskType implements JsonDeserializable {
 	}
 
 	/**
+	 * Helper function: return an array of TitleValues from a JSON-serialized
+	 * array.
+	 * @param list<array{0:string,1:string}> $json
+	 * @return list<TitleValue>
+	 */
+	protected static function newTitleValuesFromJsonArray( array $json ): array {
+		return array_map( static function ( array $titlePart ) {
+			return new TitleValue( $titlePart[0], $titlePart[1] );
+		}, $json );
+	}
+
+	/**
+	 * Helper function: map an array of LinkTargets to a JSON-serializable
+	 * array.
+	 * @param list<LinkTarget> $targets
+	 * @return list<array{0:string,1:string}>
+	 */
+	protected static function linkTargetToJsonArray( array $targets ): array {
+		return array_map( static function ( LinkTarget $target ) {
+			return [ $target->getNamespace(), $target->getDBkey() ];
+		}, $targets );
+	}
+
+	/**
 	 * @param array $config
 	 * @return TitleValue[]
 	 */
 	public static function getExcludedTemplatesTitleValues( array $config ): array {
-		return array_map( static function ( array $excludedTemplate ) {
-			return new TitleValue( $excludedTemplate[0], $excludedTemplate[1] );
-		}, $config['excludedTemplates'] ?? [] );
+		return self::newTitleValuesFromJsonArray(
+			$config['excludedTemplates'] ?? []
+		);
 	}
 
 	/**
@@ -267,9 +290,9 @@ class TaskType implements JsonDeserializable {
 	 * @return TitleValue[]
 	 */
 	public static function getExcludedCategoriesTitleValues( array $config ): array {
-		return array_map( static function ( array $excludedCategory ) {
-			return new TitleValue( $excludedCategory[0], $excludedCategory[1] );
-		}, $config['excludedCategories'] ?? [] );
+		return self::newTitleValuesFromJsonArray(
+			$config['excludedCategories'] ?? []
+		);
 	}
 
 	public function shouldShowHelpPanelQuickTips(): bool {

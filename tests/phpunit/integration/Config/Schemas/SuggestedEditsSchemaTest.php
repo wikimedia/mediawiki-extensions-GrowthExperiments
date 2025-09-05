@@ -4,8 +4,10 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use MediaWiki\Extension\CommunityConfiguration\Tests\SchemaProviderTestCase;
+use MediaWiki\MediaWikiServices;
 use MockMessageLocalizer;
 use StatusValue;
+use Wikimedia\JsonCodec\Hint;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader
@@ -56,6 +58,7 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 			);
 		}
 
+		$jsonCodec = MediaWikiServices::getInstance()->getJsonCodec();
 		$this->assertEquals( [
 			[
 				'id' => 'copyedit',
@@ -196,7 +199,9 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 					'maximumEditsTaskIsAvailable' => null,
 				],
 			],
-		], array_map( static fn ( $taskType ) => $taskType->jsonSerialize(), $taskTypes ) );
+		], self::removeComplexMarkers( $jsonCodec->toJsonArray(
+			$taskTypes, Hint::build( TaskType::class, Hint::LIST )
+		) ) );
 	}
 
 	public function testDefaultTaskTypesDataWithPartialConfig(): void {
@@ -250,6 +255,7 @@ JSON;
 			);
 		}
 
+		$jsonCodec = MediaWikiServices::getInstance()->getJsonCodec();
 		$this->assertEquals( [
 			[
 				'id' => 'copyedit',
@@ -377,6 +383,22 @@ JSON;
 					'maximumEditsTaskIsAvailable' => null,
 				],
 			],
-		], array_values( array_map( static fn ( $taskType ) => $taskType->jsonSerialize(), $taskTypes ) ) );
+		], self::removeComplexMarkers( $jsonCodec->toJsonArray(
+			array_values( $taskTypes ), Hint::build( TaskType::class, Hint::LIST )
+		) ) );
+	}
+
+	private static function removeComplexMarkers( array $json ) {
+		// Workaround T367584 so the test doesn't break when JsonCodec
+		// stops adding _complex_ fields in for backward compatibility.
+		if ( isset( $json['_complex_'] ) ) {
+			unset( $json['_complex_'] );
+			foreach ( $json as $key => &$value ) {
+				if ( is_array( $value ) ) {
+					$value = self::removeComplexMarkers( $value );
+				}
+			}
+		}
+		return $json;
 	}
 }

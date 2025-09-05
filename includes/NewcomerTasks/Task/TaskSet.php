@@ -7,23 +7,23 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use LogicException;
-use MediaWiki\Json\JsonDeserializable;
-use MediaWiki\Json\JsonDeserializableTrait;
-use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Title\Title;
 use OutOfBoundsException;
 use Traversable;
 use Wikimedia\Assert\Assert;
+use Wikimedia\JsonCodec\Hint;
+use Wikimedia\JsonCodec\JsonCodecable;
+use Wikimedia\JsonCodec\JsonCodecableTrait;
 
 /**
  * A list of task suggestions, which constitute a slice of the total result set of suggestions.
  * Used as a convenience class for queries with limit/offset to pass along some metadata
  * about the full result set (such as offset or total result count).
  */
-class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonDeserializable {
+class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonCodecable {
 
-	use JsonDeserializableTrait;
+	use JsonCodecableTrait;
 
 	/** @var Task[] */
 	private $tasks;
@@ -176,7 +176,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonDeserial
 	 * @return bool
 	 */
 	public function filtersEqual( TaskSetFilters $filters ): bool {
-		return json_encode( $this->filters ) === json_encode( $filters );
+		return $this->filters->toJsonArray() === $filters->toJsonArray();
 	}
 
 	/**
@@ -209,40 +209,34 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonDeserial
 	}
 
 	/** @inheritDoc */
-	protected function toJsonArray(): array {
-		# T312589 explicitly calling jsonSerialize() will be unnecessary
-		# in the future.
+	public function toJsonArray(): array {
 		return [
-			'tasks' => array_map( static function ( Task $task ) {
-				return $task->jsonSerialize();
-			}, $this->tasks ),
-			'invalidTasks' => array_map( static function ( Task $task ) {
-				return $task->jsonSerialize();
-			}, $this->invalidTasks ),
+			'tasks' => $this->tasks,
+			'invalidTasks' => $this->invalidTasks,
 			'totalCount' => $this->totalCount,
 			'offset' => $this->offset,
-			'filters' => $this->filters->jsonSerialize(),
+			'filters' => $this->filters,
 			'qualityGateConfig' => $this->qualityGateConfig,
 			// debug data is not worth serializing
 		];
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
-		# T312589: In the future JsonCodec will take care of deserializing
-		# the values in the $json array itself.
-		$tasks = array_map( static function ( $task ) use ( $deserializer ) {
-			return $task instanceof Task ? $task :
-				$deserializer->deserialize( $task, Task::class );
-		}, $json['tasks'] );
-		$invalidTasks = array_map( static function ( $task ) use ( $deserializer ) {
-			return $task instanceof Task ? $task :
-				$deserializer->deserialize( $task, Task::class );
-		}, $json['invalidTasks'] );
-		$filters = $json['filters'] instanceof TaskSetFilters ?
-				 $json['filters'] :
-				 $deserializer->deserialize( $json['filters'], TaskSetFilters::class );
-		$taskSet = new self( $tasks, $json['totalCount'], $json['offset'], $filters, $invalidTasks );
+	public static function jsonClassHintFor( string $keyName ) {
+		return match ( $keyName ) {
+			'tasks' => Hint::build( Task::class, Hint::ONLY_FOR_DECODE, Hint::LIST ),
+			'invalidTasks' => Hint::build( Task::class, Hint::ONLY_FOR_DECODE, Hint::LIST ),
+			'filters' => TaskSetFilters::class,
+			default => null,
+		};
+	}
+
+	/** @inheritDoc */
+	public static function newFromJsonArray( array $json ): self {
+		$taskSet = new static(
+			$json['tasks'], $json['totalCount'], $json['offset'],
+			$json['filters'], $json['invalidTasks']
+		);
 		$taskSet->setQualityGateConfig( $json['qualityGateConfig'] );
 		return $taskSet;
 	}

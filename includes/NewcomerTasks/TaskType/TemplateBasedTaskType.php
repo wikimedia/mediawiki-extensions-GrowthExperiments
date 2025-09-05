@@ -2,9 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use MediaWiki\Json\JsonDeserializer;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\Title\TitleValue;
 
 class TemplateBasedTaskType extends TaskType {
 
@@ -43,24 +41,22 @@ class TemplateBasedTaskType extends TaskType {
 
 	/** @inheritDoc */
 	public function toJsonArray(): array {
-		return array_merge( parent::toJsonArray(), [
-			'templates' => array_map( static function ( LinkTarget $template ) {
-				return [ $template->getNamespace(), $template->getDBkey() ];
-			}, $this->getTemplates() )
-		] );
+		return parent::toJsonArray() + [
+			'templates' => self::linkTargetToJsonArray(
+				$this->getTemplates()
+			),
+		];
 	}
 
 	/** @inheritDoc */
-	public static function newFromJsonArray( JsonDeserializer $deserializer, array $json ) {
-		$templates = array_map( static function ( array $template ) {
-			return new TitleValue( $template[0], $template[1] );
-		}, $json['templates'] );
-
-		$taskType = new TemplateBasedTaskType(
+	public static function newFromJsonArray( array $json ): self {
+		$taskType = new static(
 			$json['id'],
 			$json['difficulty'],
 			$json['extraData'],
-			$templates,
+			self::newTitleValuesFromJsonArray(
+				$json['templates']
+			),
 			self::getExcludedTemplatesTitleValues( $json ),
 			self::getExcludedCategoriesTitleValues( $json )
 		);
