@@ -10,6 +10,7 @@
 			"Dyolf77 (WMF)",
 			"Eihel",
 			"Eneelk",
+			"Escargot bleu",
 			"Fitoschido",
 			"Florian COLLIN",
 			"Framawiki",
@@ -625,6 +626,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Me notifier au sujet des tâches pour novices et des autres fonctionnalités conçues pour assister les nouveaux utilisateurs.",
 	"growthexperiments-homepage-community-updates-header": "Actualités de la communauté",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "En savoir plus",
-	"growthexperiments-addalink-milestone-notification-header": "$1 modifications, félicitations ! Les articles {{GENDER:$2| que vous avez}} modifiés ont récemment été consultés $3 fois. Les suggestions de modifications disponibles ont changé.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 modification{{PLURAL:$1||s}}, félicitations ! {{PLURAL:$1|L'article|Les articles}} {{GENDER:$2|que vous avez}} {{PLURAL:$1|modifié a|modifiés ont}} récemment été consulté{{PLURAL:$1||s}} $3 {{PLURAL:$3|}}fois. Les suggestions de modifications disponibles ont changé.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Essayer d’autres modifications"
 }

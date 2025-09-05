@@ -587,6 +587,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Керлачу декъашхошна гӀо дан леринчу белхех а, кхин йолу функцишах а хаам бе суна.",
 	"growthexperiments-homepage-community-updates-header": "Йукъараллин керланаш",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Цул совнаха хаа",
-	"growthexperiments-addalink-milestone-notification-header": "$1 хийцам бу, декъала хила хьо! {{GENDER:$2|Ахь}} хийцина йаззамашка $3 хьажархо хьаьжна тӀаьхьарчу хенахь. Долахь болу кховдийна хийцамаш хийцабелла.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|хийцам}} бу, декъала хила хьо! {{GENDER:$2|Ахь}} хийцина йаззамашка $3 {{PLURAL:$3|хьажархо}} хьаьжна тӀаьхьарчу хенахь. Долахь болу кховдийна хийцамаш хийцабелла.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Кхин хийцамаш бан хьажа"
 }
