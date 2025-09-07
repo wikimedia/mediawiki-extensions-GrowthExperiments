@@ -7,7 +7,6 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\UserLinkRenderer;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\Status\Status;
@@ -161,7 +160,6 @@ class SpecialClaimMentee extends FormSpecialPage {
 		$this->newMentor = $this->getUser();
 
 		$status = Status::newGood();
-		$logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 		foreach ( $this->mentees as $mentee ) {
 			$changementor = $this->changeMentorFactory->newChangeMentor(
 				$mentee,

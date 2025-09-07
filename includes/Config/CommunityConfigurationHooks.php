@@ -67,15 +67,6 @@ class CommunityConfigurationHooks implements
 		}
 	}
 
-	private function isCalledFromBrokenTest(): bool {
-		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
-			return false;
-		}
-
-		$trace = ( new \RuntimeException() )->getTraceAsString();
-		return str_contains( $trace, 'ApiStructureTest' );
-	}
-
 	public function onCommunityConfigurationProvider_initList( array &$providers ) {
 		if ( $this->config->get( 'GECommunityUpdatesEnabled' ) ) {
 			$providers['CommunityUpdates'] = [

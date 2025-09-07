@@ -21,7 +21,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use GrowthExperiments\Util;
 use InvalidArgumentException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
@@ -847,8 +846,6 @@ class SuggestedEdits extends BaseModule {
 			$topics = $taskSet->getFilters()->getTopicFilters();
 			$topicsMatchMode = $taskSet->getFilters()->getTopicFiltersMode();
 		}
-
-		$isMobile = Util::isMobile( $this->getContext()->getOutput()->getSkin() );
 
 		// these will be updated on the client side as needed
 		$data = [

@@ -68,7 +68,6 @@ class MentorDashboardModuleRegistry {
 				MediaWikiServices $services,
 				IContextSource $context
 			): IDashboardModule {
-				$geServices = GrowthExperimentsServices::wrap( $services );
 				return new Resources(
 					$context,
 					$services->getTitleParser(),
