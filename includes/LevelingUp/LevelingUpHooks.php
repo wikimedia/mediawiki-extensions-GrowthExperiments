@@ -94,6 +94,10 @@ class LevelingUpHooks implements
 			&& $trackingEnabled
 		) {
 			$out->addModules( 'ext.growthExperiments.NotificationsTracking' );
+			$out->addJsConfigVars( [
+				'wgGENotificationsTrackingEnabled' => true,
+				'wgGELevelingUpNewNotificationsEnabled' => $this->config->get( 'GELevelingUpNewNotificationsEnabled' ),
+			] );
 		}
 		// VE sets a query parameter, but there is no elegant way to detect post-edit reloads
 		// in the wikitext editor. Check the JS variable that it uses to configure the notice.

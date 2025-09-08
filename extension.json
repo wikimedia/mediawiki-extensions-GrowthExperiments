@@ -869,7 +869,8 @@
 			"localBasePath": "modules/ext.growthExperiments.NotificationsTracking",
 			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.NotificationsTracking",
 			"packageFiles": [
-				"index.js"
+				"index.js",
+				"EchoNotificationsTracker.js"
 			]
 		},
 		"ext.growthExperiments.mobileMenu.icons": {
