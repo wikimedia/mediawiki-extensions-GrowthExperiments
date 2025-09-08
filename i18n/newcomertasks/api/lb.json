@@ -4,5 +4,16 @@
 			"Volvox"
 		]
 	},
-	"apihelp-query+growthtasks-param-excludepageids": "Säiten-IDen, déi vun der Requête ausgeschloss solle ginn."
+	"apihelp-query+growthtasks-summary": "Aufgabevirschléi kréien, déi sech fir Neier eegnen.",
+	"apihelp-query+growthtasks-extended-description": "Schléit eng Rei vun Artikele fir, déi e puer opstoend Problemer hunn, déi einfach genuch si fir vun engem neien Editeur traitéiert ze ginn.",
+	"apihelp-query+growthtasks-param-tasktypes": "Aufgabentyppen, op déi d'Resultater limitéiert solle ginn. Eidel loosse fir all d'Virschléi ze kréien.",
+	"apihelp-query+growthtasks-param-topics": "Artikeltheeme fir bei den Aufgabevirschléi ze preferéieren.",
+	"apihelp-query+growthtasks-param-limit": "Maximal Zuel vun Aufgabevirschléi fir zeréckzeginn.",
+	"apihelp-query+growthtasks-param-excludepageids": "Säiten-IDen, déi vun der Requête ausgeschloss solle ginn.",
+	"apihelp-query+growthtasks-param-debug": "Debugging-Donnéeë bei den Output derbäisetzen.",
+	"apihelp-query+growthtasks-example-2": "Aufgabevirschléi fir den aktuelle Benotzer kréien, mat erweiderten Informatiounen iwwer d'Säiten.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "De Parameter „accepted“ feelt an den Donnéeë vum „Add Image“-Plugin",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "De Parameter „accepted“ an den Donnéeë vum „Add Image“-Plugin muss e boolesche Wäert sinn, mee en ass vum Typ $1",
+	"apierror-growthexperiments-addlink-handler-notfound": "Linkvirschléi-Record net fonnt",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Onerwaarte Linkvirschléiziler: $1"
 }

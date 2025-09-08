@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Abijeet Patro"
+			"Abijeet Patro",
+			"Saurmandal"
 		]
 	},
+	"growthexperiments-edit-config-feedback-cta": "प्रतिक्रिया दें",
 	"growthexperiments-edit-config-mentorship-enabled-true": "हाँ",
 	"growthexperiments-edit-config-mentorship-enabled-false": "नहीं"
 }

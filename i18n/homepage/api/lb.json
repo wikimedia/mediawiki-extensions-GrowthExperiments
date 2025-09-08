@@ -5,7 +5,14 @@
 			"Volvox"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "Rifft formatéiert Froen of, déi iwwer Startsäite-Moduler publizéiert goufen",
+	"apihelp-homepagequestionstore-param-questionformat": "D'Format, an deem d'Fro zeréckgi gi soll, z.&nbsp;B. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "D'Späicherplaz fir d'Froen.",
+	"apihelp-homepagequestionstore-param-userid": "D'Benotzer-ID, fir déi d'Froen ofgeruff solle ginn.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Keng Froe fonnt.",
+	"apihelp-growthsetmentor-summary": "Mentor vun engem Benotzer definéieren. D'Ännerung gëtt ëffentlech protokolléiert.",
+	"apihelp-growthsetmentor-param-mentee": "Benotzernumm vum Mentoréierten",
 	"apihelp-growthsetmentor-param-mentor": "Benotzernumm vum Mentor",
-	"apihelp-growthsetmentor-param-reason": "Grond fir d'Ännerung"
+	"apihelp-growthsetmentor-param-reason": "Grond fir d'Ännerung",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Titel vum Artikel, fir deen d'Bildvirschlagsaufgab ass"
 }

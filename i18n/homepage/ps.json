@@ -143,7 +143,7 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|تاسو}} هروخت کولی شئ چې څنگ غوره‌نۍ پرانېځئ او $2 وټوکئ؛ ترڅو بېرته دلته راوگرځئ.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "له دې ځايه يې پيل کړئ!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "څنگ غوره‌نۍ پرانېځئ او $2 وټوکئ؛ ترڅو د {{GENDER:$1|خپل}} کورمخ ليدنه وکړئ.",
-	"growthexperiments-homepage-suggestededits-pager": "له <strong>$2</strong> څخه <strong>$1</strong> {{PLURAL:$2|وړانديز|وړانديزونه}}",
+	"growthexperiments-homepage-suggestededits-pager": "له <strong>$2</strong> {{PLURAL:$2|وړانديز|وړانديزونو}} څخه <strong>$1</strong>",
 	"growthexperiments-homepage-suggestededits-pager-end": "پای",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 ليدنې (تېرې ۶۰ ورځې)",
 	"growthexperiments-homepage-suggestededits-previous-card": "مخکنی وړانديز‌شوی سمون",

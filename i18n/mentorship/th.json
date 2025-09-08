@@ -101,6 +101,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "ยกเลิก",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "ข้อความแนะนำ",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "ข้อความแนะนำของ{{GENDER:|คุณ}}เปลี่ยนเป็น \"$1\"",
+	"growthexperiments-mentor-list-missing-key": "คีย์ <code>$1</code> หายไป",
 	"growthexperiments-manage-mentors-title": "จัดการผู้ฝึก",
 	"growthexperiments-manage-mentors-username": "ชื่อผู้ใช้",
 	"growthexperiments-manage-mentors-last-active": "การใช้งานล่าสุด",

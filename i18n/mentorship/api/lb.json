@@ -5,8 +5,27 @@
 			"Volvox"
 		]
 	},
+	"apihelp-growthstarmentee-summary": "D'Markéierung mat engem Stär vun engem Mentoréierten duerch den aktuelle Benotzer setzen oder ophiewen (privat gespäichert an net protokolléiert)",
+	"apihelp-growthstarmentee-param-gesaction": "Aktioun fir z'ënnerhuelen (Markéierung mat engem Stär <kbd>setzen</kbd> oder <kbd>ophiewen</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Mentoréierten, bei deem d'Markéierung mat engem Stär gesat oder opgehuewe soll ginn",
+	"apihelp-query+growthstarredmentees-summary": "Rifft d'Lëscht vun de Mentoréierten of, déi vum aktuell ageloggte Mentor mat engem Stär markéiert goufen",
+	"apihelp-growthsetmentorstatus-summary": "Setzt de Mentorestatus vum aktuelle Benotzer op aktiv/absent.",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Neie Status",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Wann de Mentor op absent gesat gëtt, muss d'Dauer vum Absence-Status (an Deeg) ugi ginn.",
+	"apihelp-query+growthmentorstatus-summary": "De Mentorestatus vum aktuelle Benotzer offroen",
+	"apihelp-growthmentordashboardupdatedata-summary": "Eng ausserplangméisseg Aktualiséierung vun der Iwwersiicht vun de Mentoréierten am Mentoren-Dashboard plangen. Aus Performancegrënn kënnt Dir just eng Aktualiséierung pro zwou Stonne plangen.",
+	"apihelp-growthsetmenteestatus-summary": "Mentoréierte-Status festleeën (erlaabt et Mentoréierten d'Mentoremodul ze (des-)aktivéieren oder sech ganz ofzemellen, wouduerch d'Mentoréierten/Mentor-Relatioun geläscht gëtt)",
+	"apihelp-growthsetmenteestatus-param-state": "Neie Status vum Mentoréierten (Warnung: Wann dëst op „optout“ gesat gëtt, gëtt d'Mentoréierten/Mentor-Relatioun endgülteg geläscht)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "D'Mentoremodul ass aktivéiert",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "D'Mentoremodul ass vollstänneg desaktivéiert. Dat gëtt normalerweis vun der Software festgeluecht a gëtt fir A/B-Tester benotzt.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Mentoréierten huet sech aus dem Mentoreprogramm ofgemellt; d'Mentoréierten/Mentor-Relatioun gëtt geläscht, d'Mentoremodul gëtt duerch d'Méiglechkeet sech erëm unzemellen ersat",
+	"apihelp-query+growthmenteestatus-summary": "De Mentoréiertestatus vum aktuelle Benotzer offroen; kuckt d'Dokumentatioun vun action=growthsetmenteestatus fir detailléiert Informatiounen iwwer eenzel Statussen.",
+	"apihelp-query+growthmentormentee-summary": "All Mentoréierter ofruffen, déi engem bestëmmte Mentor zougewise goufen",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor, deem seng Mentoréierter ofgefrot solle ginn",
+	"apihelp-growthmanagementorlist-summary": "Geréiert Informatiounen an der strukturéierter Mentorelëscht (gemengerhand ënner [[MediaWiki:GrowthMentors.json]] gespäichert). Dëst Modul ka souwuel vun aktuelle wéi och vun zukünftege Mentore benotzt ginn (fir sech selwer derbäizesetzen oder seng Eenzelheeten z'änneren) a vun Administrateuren (fir all Benotzer).",
 	"apihelp-growthmanagementorlist-param-geaction": "Aktioun",
-	"apihelp-growthmanagementorlist-param-weight": "Gewiicht",
-	"apihelp-growthmanagementorlist-param-summary": "Grond fir d'Ännerung"
+	"apihelp-growthmanagementorlist-param-message": "Virstellungsmessage (benotzt eng eidel Zeechekette fir de Standardmentoremessage)",
+	"apihelp-growthmanagementorlist-param-weight": "Gewiichtung",
+	"apihelp-growthmanagementorlist-param-summary": "Grond fir d'Ännerung",
+	"apihelp-growthmanagementorlist-param-username": "Benotzernumm vum Mentor, dee vun der Ännerung betraff ass. Falls net uginn, gëtt den aktuell ageloggte Benotzer geholl. Kann nëmme vu privilegéierte Benotzer benotzt ginn."
 }

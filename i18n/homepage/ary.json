@@ -51,7 +51,9 @@
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "ختار{{GENDER:||ي}} مواضيع لي كاتعجبك و بغيتي تكتب{{GENDER:||ي}} فيها",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "صافي!",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "زيد تعرّف على لإقتراحات د لماكينة",
+	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "نقّز كولشي",
 	"growthexperiments-addlink-summary-summary": "لميزة د قتيراح الليانات: $1 {{PLURAL:$1|ليان تزاد|ليانات تزادو}}.",
+	"growthexperiments-addlink-skip-accept": "نقّز كولشي",
 	"growthexperiments-structuredtask-editmode-selection-visual": "التبدال ب الشوفان",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "صافي!",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "صافي!"
