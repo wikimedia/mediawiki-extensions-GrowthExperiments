@@ -272,6 +272,10 @@ class TaskType implements JsonDeserializable {
 		}, $config['excludedCategories'] ?? [] );
 	}
 
+	public function shouldShowHelpPanelQuickTips(): bool {
+		return true;
+	}
+
 	/**
 	 * Whether the corresponding article for the task type should be opened in edit mode
 	 */

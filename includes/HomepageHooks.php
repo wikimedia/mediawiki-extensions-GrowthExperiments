@@ -390,6 +390,9 @@ class HomepageHooks implements
 					if ( $taskTypeHandler instanceof StructuredTaskTypeHandler ) {
 						$recommendationProvider = $taskTypeHandler->getRecommendationProvider();
 					}
+					$out->addJsConfigVars( [
+						'wgGEShouldShowHelpPanelTaskQuickTips' => $taskType->shouldShowHelpPanelQuickTips(),
+					] );
 				}
 			}
 

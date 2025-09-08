@@ -58,6 +58,7 @@ QUnit.test( 'updateEditMode for link-recommendation', function ( assert ) {
 } );
 
 QUnit.test( 'updateEditMode for copyedit, isEditing', function ( assert ) {
+	mw.config.set( 'wgGEShouldShowHelpPanelTaskQuickTips', true );
 	const helpPanelProcessDialog = new HelpPanelProcessDialog( {
 		suggestedEditSession: copyEditRecommendationSuggestedEditSession,
 		logger: {

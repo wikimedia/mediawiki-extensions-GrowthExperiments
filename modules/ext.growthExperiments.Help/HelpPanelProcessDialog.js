@@ -285,7 +285,7 @@
 		if ( this.askHelpEnabled || mw.config.get( 'wgGEHelpPanelAskMentor' ) ) {
 			buttonIds.unshift( 'ask-help' );
 		}
-		if ( this.taskTypeId ) {
+		if ( this.taskTypeId && mw.config.get( 'wgGEShouldShowHelpPanelTaskQuickTips' ) ) {
 			buttonIds.unshift( 'suggested-edits' );
 		}
 		buttonIds.forEach( ( id ) => {
@@ -355,19 +355,40 @@
 			leaveSearch: [ 'executeAction', 'leavesearch' ]
 		} );
 
-		this.suggestededitsPanel = new SuggestedEditsPanel( {
-			// Unlike the other panels, we have no padding on this one
-			// because of the design that has the navigation and header
-			// content of the panel with a solid constant background color.
-			taskTypeData: TASK_TYPES[ this.taskTypeId ],
-			editorInterface: this.logger.getEditor(),
-			currentTip: this.suggestedEditSession.helpPanelCurrentTip,
-			parentWindow: this,
-			preferredEditor: configData.GEHelpPanelSuggestedEditsPreferredEditor[
-				this.suggestedEditSession.taskType
-			]
-		} );
-		const guidanceTipsPromise = this.suggestededitsPanel.build();
+		if ( mw.config.get( 'wgGEShouldShowHelpPanelTaskQuickTips' ) ) {
+			this.suggestededitsPanel = new SuggestedEditsPanel( {
+				// Unlike the other panels, we have no padding on this one
+				// because of the design that has the navigation and header
+				// content of the panel with a solid constant background color.
+				taskTypeData: TASK_TYPES[ this.taskTypeId ],
+				editorInterface: this.logger.getEditor(),
+				currentTip: this.suggestedEditSession.helpPanelCurrentTip,
+				parentWindow: this,
+				preferredEditor: configData.GEHelpPanelSuggestedEditsPreferredEditor[
+					this.suggestedEditSession.taskType
+				]
+			} );
+			const guidanceTipsPromise = this.suggestededitsPanel.build();
+
+			guidanceTipsPromise.then( ( helpPanelHasTips ) => {
+				if ( !helpPanelHasTips ) {
+					return;
+				}
+				// IndexLayout does not provide any way to differentiate between human and programmatic
+				// tab selection so we must go deeper.
+				this.suggestededitsPanel.tipsPanel.tabIndexLayout.getTabs().on( 'choose', ( item ) => {
+					const tabName = item.data;
+					this.updateSuggestedEditSession( {
+						helpPanelCurrentTip: tabName,
+						helpPanelSuggestedEditsInteractionHappened: true
+					} );
+					this.logger.log( 'guidance-tab-click', {
+						taskType: this.taskTypeId,
+						tabName: tabName
+					} );
+				} );
+			} );
+		}
 
 		this.askhelpPanel = new AskHelpPanel( {
 			askSource: this.askSource,
@@ -452,37 +473,21 @@
 		] );
 		this.questioncompletePanel.$element.append( this.questionCompleteContent.$element );
 
-		this.panels.addItems( [
-			this.suggestededitsPanel,
+		const panelItems = [
 			this.askhelpPanel,
 			this.generalhelpPanel,
 			this.questioncompletePanel
-		] );
+		];
+		if ( this.suggestededitsPanel ) {
+			panelItems.push( this.suggestededitsPanel );
+		}
+		this.panels.addItems( panelItems );
 
 		// The home panel is at the top level, outside of the StackLayout containing the other
 		// panels, which is positioned next to it outside the dialog. When navigating, both slide
 		// left or right
 		this.$body.append( this.homePanel.$element, this.panels.$element );
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
-
-		guidanceTipsPromise.then( ( helpPanelHasTips ) => {
-			if ( !helpPanelHasTips ) {
-				return;
-			}
-			// IndexLayout does not provide any way to differentiate between human and programmatic
-			// tab selection so we must go deeper.
-			this.suggestededitsPanel.tipsPanel.tabIndexLayout.getTabs().on( 'choose', ( item ) => {
-				const tabName = item.data;
-				this.updateSuggestedEditSession( {
-					helpPanelCurrentTip: tabName,
-					helpPanelSuggestedEditsInteractionHappened: true
-				} );
-				this.logger.log( 'guidance-tab-click', {
-					taskType: this.taskTypeId,
-					tabName: tabName
-				} );
-			} );
-		} );
 
 		// Disable pending effect in the header; it breaks the background transition when navigating
 		// back from the suggested-edits panel to the home panel. In getActionProcess(), we set the
@@ -499,6 +504,10 @@
 		 */
 		function getPanelFromSession( suggestedEditSession, isEditing ) {
 			if ( !suggestedEditSession.active ) {
+				return 'home';
+			}
+
+			if ( !mw.config.get( 'wgGEShouldShowHelpPanelTaskQuickTips' ) ) {
 				return 'home';
 			}
 
@@ -617,6 +626,10 @@
 	 * has interacted with guidance.
 	 */
 	HelpPanelProcessDialog.prototype.updateEditMode = function () {
+		if ( !this.suggestededitsPanel ) {
+			this.updateMode();
+			return;
+		}
 		this.suggestededitsPanel.toggleFooter( this.logger.isEditing() );
 		this.updateMode();
 		this.suggestededitsPanel.toggleSwitchEditorPanel(
@@ -798,7 +811,7 @@
 	 */
 	HelpPanelProcessDialog.prototype.setGuidanceAutoAdvance = function ( enable ) {
 		const self = this;
-		if ( enable && !this.guidanceAutoAdvanceTimer ) {
+		if ( this.suggestededitsPanel && enable && !this.guidanceAutoAdvanceTimer ) {
 			this.guidanceAutoAdvanceTimer = window.setInterval( () => {
 				// Skip if the panel is not active or not loaded yet.
 				if ( self.currentPanel !== 'suggested-edits' || !self.suggestededitsPanel.tipsPanel ) {
