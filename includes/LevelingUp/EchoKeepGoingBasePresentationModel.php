@@ -44,7 +44,7 @@ class EchoKeepGoingBasePresentationModel extends EchoEventPresentationModel {
 		];
 	}
 
-	private function getSpecialHomepageUrl( string $source ): string {
+	protected function getSpecialHomepageUrl( string $source ): string {
 		$title = $this->event->getTitle();
 		$title->setFragment( '#/homepage/suggested-edits' );
 		return $title->getCanonicalURL( [ 'source' => $source ] );

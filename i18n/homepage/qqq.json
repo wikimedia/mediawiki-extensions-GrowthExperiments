@@ -618,6 +618,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "Text shown in header of a notification sent to new editors. Parameters:\n\n* $2 - the user's gender.\n* $3 - the user's edit count.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Text shown in label of primary link in a notification sent to new editors.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Text shown in header of a notification sent to new editors. Parameters:\n\n* $2 - the user's gender.\n* $3 - the user's edit count.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Text shown in main call to action button from a notification sent to new editors to encourage them to try other types of edits.\n\n{{doc-growthexperiments-homepage}}",
 	"echo-category-title-ge-newcomer": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-ge-newcomer}}",
 	"echo-pref-tooltip-ge-newcomer": "{{doc-echo-pref-tooltip|title=Echo-category-title-ge-newcomer}}",
 	"growthexperiments-homepage-community-updates-header": "Header title text for the community updates module",

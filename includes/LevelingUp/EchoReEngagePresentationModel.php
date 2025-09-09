@@ -27,7 +27,7 @@ class EchoReEngagePresentationModel extends EchoEventPresentationModel {
 			return [];
 		}
 		return [ [
-			'url' => $this->getSpecialHomepageUrl( 'get-started-secondary-link' ),
+			'url' => $this->getSpecialHomepageUrl( 're-engage-secondary-link' ),
 			'label' => $this->msg( 'growthexperiments-levelingup-reengage-notification-call-to-action-label' )->text(),
 			'icon' => 'edit'
 		] ];
@@ -36,7 +36,7 @@ class EchoReEngagePresentationModel extends EchoEventPresentationModel {
 	/** @inheritDoc */
 	public function getPrimaryLink() {
 		return [
-			'url' => $this->getSpecialHomepageUrl( 'get-started-primary-link-' . $this->getDistributionType() ),
+			'url' => $this->getSpecialHomepageUrl( 're-engage-primary-link-' . $this->getDistributionType() ),
 			'label' => $this->msg(
 				'growthexperiments-levelingup-reengage-notification-call-to-action-label'
 			)->text(),
