@@ -17,7 +17,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\ImproveToneTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
@@ -197,8 +197,8 @@ class SuggestedEdits extends BaseModule {
 
 	public static function getDefaultTaskTypes( Config $mainConfig ): array {
 		$defaultTasks = self::DEFAULT_TASK_TYPES;
-		if ( $mainConfig->get( 'GEImproveToneSuggestedEditEnabled' ) ) {
-			$defaultTasks[] = ImproveToneTaskTypeHandler::TASK_TYPE_ID;
+		if ( $mainConfig->get( 'GEReviseToneSuggestedEditEnabled' ) ) {
+			$defaultTasks[] = ReviseToneTaskTypeHandler::TASK_TYPE_ID;
 		}
 		return $defaultTasks;
 	}

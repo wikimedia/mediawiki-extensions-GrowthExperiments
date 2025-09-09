@@ -21,7 +21,7 @@ class SuggestedEditsConfigProvider extends DataProvider {
 		'section_image_recommendation' => 'medium',
 		'image_recommendation' => 'medium',
 		'link_recommendation' => 'easy',
-		'improve_tone' => 'easy',
+		'revise_tone' => 'easy',
 	];
 	private const DEFAULT_GROUP = 'unknown';
 
@@ -29,7 +29,7 @@ class SuggestedEditsConfigProvider extends DataProvider {
 		'image_recommendation' => 'image-recommendation',
 		'section_image_recommendation' => 'section-image-recommendation',
 		'link_recommendation' => 'link-recommendation',
-		'improve_tone' => 'improve-tone',
+		'revise_tone' => 'revise-tone',
 	];
 	private const DEFAULT_TASK_TYPE = 'template-based';
 
@@ -49,9 +49,9 @@ class SuggestedEditsConfigProvider extends DataProvider {
 			$data = $result->getValue();
 			unset( $data->GEInfoboxTemplates );
 
-			if ( Util::isImproveToneTasksTypeEnabled() ) {
+			if ( Util::isReviseToneTasksTypeEnabled() ) {
 				// TODO: move to community config for full production deployment T396162
-				$data->improve_tone = (object)[];
+				$data->revise_tone = (object)[];
 			}
 
 			// Priorly 'group' and 'type' were added using IConfigurationProvider::addAutocomputedProperties

@@ -49,9 +49,9 @@ module.exports = ( function () {
 				} );
 			addSectionImageTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
 			addSectionImageTargetInitializer.initialize();
-		} else if ( taskTypeId === 'improve-tone' ) {
-			const improveToneInitializer = new ( StructuredTask.improveTone().ImproveToneInitializer )();
-			improveToneInitializer.initialize();
+		} else if ( taskTypeId === 'revise-tone' ) {
+			const reviseToneInitializer = new ( StructuredTask.reviseTone().ReviseToneInitializer )();
+			reviseToneInitializer.initialize();
 		}
 	}
 

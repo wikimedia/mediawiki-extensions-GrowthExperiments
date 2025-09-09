@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use GrowthExperiments\NewcomerTasks\TaskType\ImproveToneTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Title\Title;
 use StatusValue;
@@ -11,28 +11,28 @@ use StatusValue;
  * Recommendation provider for tone check suggestions stored as
  * JSON subpages in the MediaWiki namespace.
  */
-class SubpageImproveToneRecommendationProvider extends SubpageRecommendationProvider {
+class SubpageReviseToneRecommendationProvider extends SubpageRecommendationProvider {
 
 	/** @inheritDoc */
 	protected static $subpageName = 'tone';
 
 	/** @inheritDoc */
-	protected static $serviceName = 'GrowthExperimentsImproveToneRecommendationProvider';
+	protected static $serviceName = 'GrowthExperimentsReviseToneRecommendationProvider';
 
 	/** @inheritDoc */
-	protected static $recommendationTaskTypeClass = ImproveToneTaskType::class;
+	protected static $recommendationTaskTypeClass = ReviseToneTaskType::class;
 
 	/**
 	 * @inheritDoc
-	 * @return ImproveToneRecommendation|StatusValue
+	 * @return ReviseToneRecommendation|StatusValue
 	 */
 	public function createRecommendation(
 		Title $title,
 		TaskType $taskType,
 		array $data,
 		array $suggestionFilters = []
-	): ImproveToneRecommendation|StatusValue {
-		return new ImproveToneRecommendation( $title, $data );
+	): ReviseToneRecommendation|StatusValue {
+		return new ReviseToneRecommendation( $title, $data );
 	}
 
 }

@@ -9,7 +9,7 @@ use StatusValue;
 /**
  * Null provider for testing - returns no recommendations
  */
-class NullImproveToneRecommendationProvider implements RecommendationProvider {
+class NullReviseToneRecommendationProvider implements RecommendationProvider {
 	/**
 	 * @param LinkTarget $title Page to check
 	 * @param TaskType $taskType Task type

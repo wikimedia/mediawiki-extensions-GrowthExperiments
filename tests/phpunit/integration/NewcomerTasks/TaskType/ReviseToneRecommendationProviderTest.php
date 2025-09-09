@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use GrowthExperiments\NewcomerTasks\SubpageImproveToneRecommendationProvider;
-use GrowthExperiments\NewcomerTasks\TaskType\ImproveToneTaskType;
+use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
@@ -14,7 +14,7 @@ use StatusValue;
  * @covers \GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager
  * @group Database
  */
-class ImproveToneRecommendationProviderTest extends MediaWikiIntegrationTestCase {
+class ReviseToneRecommendationProviderTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetReturnsDataFromToneJsonSubpage() {
 		$pageTitle = 'TestArticle';
@@ -47,10 +47,10 @@ class ImproveToneRecommendationProviderTest extends MediaWikiIntegrationTestCase
 		$subpage = Title::newFromText( "{$pageTitle}/tone.json" );
 		$this->editPage( $subpage, new JsonContent( json_encode( $toneJson, JSON_PRETTY_PRINT ) ) );
 
-		/** @var SubpageImproveToneRecommendationProvider $provider */
-		$provider = MediaWikiServices::getInstance()->get( 'GrowthExperimentsImproveToneRecommendationProvider' );
+		/** @var SubpageReviseToneRecommendationProvider $provider */
+		$provider = MediaWikiServices::getInstance()->get( 'GrowthExperimentsReviseToneRecommendationProvider' );
 
-		$taskType = new ImproveToneTaskType( 'tone-check', 'easy' );
+		$taskType = new ReviseToneTaskType( 'tone-check', 'easy' );
 
 		$recs = $provider->get( Title::newFromText( $pageTitle ), $taskType );
 		if ( $recs instanceof StatusValue ) {

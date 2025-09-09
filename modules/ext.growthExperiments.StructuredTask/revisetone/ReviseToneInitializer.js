@@ -1,7 +1,7 @@
 const suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 const simpleLevenshtein = require( '../../utils/SimpleLevenshtein.js' );
 
-class ImproveToneInitializer {
+class ReviseToneInitializer {
 
 	// TODO: use private class fields once Grade A support is raised to at least Safari 15, see T395347
 	// #taskData;
@@ -79,4 +79,4 @@ class ImproveToneInitializer {
 	}
 }
 
-module.exports = ImproveToneInitializer;
+module.exports = ReviseToneInitializer;

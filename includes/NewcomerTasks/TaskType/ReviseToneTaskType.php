@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-class ImproveToneTaskType extends TaskType {
+class ReviseToneTaskType extends TaskType {
 
 	protected const IS_MACHINE_SUGGESTION = true;
 

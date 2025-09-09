@@ -6,8 +6,8 @@ namespace GrowthExperiments\NewcomerTasks\MediaWikiEventIngress;
 
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\TaskType\ImproveToneTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
@@ -85,7 +85,7 @@ class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevis
 				LinkRecommendationTaskTypeHandler::CHANGE_TAG,
 				ImageRecommendationTaskTypeHandler::CHANGE_TAG,
 				SectionImageRecommendationTaskTypeHandler::CHANGE_TAG,
-				ImproveToneTaskTypeHandler::CHANGE_TAG,
+				ReviseToneTaskTypeHandler::CHANGE_TAG,
 			]
 		);
 		foreach ( $tags as $tag ) {
@@ -104,8 +104,8 @@ class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevis
 				$taskType = ImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
 			} elseif ( $tag === SectionImageRecommendationTaskTypeHandler::CHANGE_TAG ) {
 				$taskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
-			} elseif ( $tag === ImproveToneTaskTypeHandler::CHANGE_TAG ) {
-				$taskType = ImproveToneTaskTypeHandler::TASK_TYPE_ID;
+			} elseif ( $tag === ReviseToneTaskTypeHandler::CHANGE_TAG ) {
+				$taskType = ReviseToneTaskTypeHandler::TASK_TYPE_ID;
 			}
 			$wiki = WikiMap::getCurrentWikiId();
 			$this->statsFactory

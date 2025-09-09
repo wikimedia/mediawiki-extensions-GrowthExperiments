@@ -12,7 +12,7 @@ use MediaWikiIntegrationTestCase;
  * @covers \GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry
  * @covers \GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler
  * @covers \GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler
- * @covers \GrowthExperiments\NewcomerTasks\TaskType\ImproveToneTaskTypeHandler
+ * @covers \GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler
  * @covers \GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler
  */
 class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
@@ -121,7 +121,7 @@ class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
 			'newcomer task update',
 			'newcomer task expand',
 			'newcomer task links',
-			'newcomer task improve tone',
+			'newcomer task revise tone',
 		], $changeTags );
 	}
 

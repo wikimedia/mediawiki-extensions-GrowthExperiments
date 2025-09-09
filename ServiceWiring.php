@@ -72,9 +72,9 @@ use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use GrowthExperiments\NewcomerTasks\NullImproveToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\NullReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
-use GrowthExperiments\NewcomerTasks\SubpageImproveToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
@@ -351,15 +351,6 @@ return [
 		return new ImageRecommendationSubmissionLogFactory(
 			$services->getDBLoadBalancerFactory(),
 			$services->getUserOptionsLookup()
-		);
-	},
-
-	'GrowthExperimentsImproveToneRecommendationProvider' => static function (
-		MediaWikiServices $services
-	): SubpageImproveToneRecommendationProvider {
-		return new SubpageImproveToneRecommendationProvider(
-			$services->getWikiPageFactory(),
-			new NullImproveToneRecommendationProvider()
 		);
 	},
 
@@ -897,6 +888,15 @@ return [
 			$growthServices->getChangeMentorFactory(),
 			$services->getJobQueueGroupFactory(),
 			$services->getFormatterFactory()
+		);
+	},
+
+	'GrowthExperimentsReviseToneRecommendationProvider' => static function (
+		MediaWikiServices $services
+	): SubpageReviseToneRecommendationProvider {
+		return new SubpageReviseToneRecommendationProvider(
+			$services->getWikiPageFactory(),
+			new NullReviseToneRecommendationProvider()
 		);
 	},
 

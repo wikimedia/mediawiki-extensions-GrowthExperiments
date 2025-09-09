@@ -7,25 +7,25 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
-use GrowthExperiments\NewcomerTasks\SubpageImproveToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use LogicException;
 use MediaWiki\Title\TitleParser;
 use MessageLocalizer;
 use Wikimedia\Message\MessageSpecifier;
 
-class ImproveToneTaskTypeHandler extends StructuredTaskTypeHandler {
+class ReviseToneTaskTypeHandler extends StructuredTaskTypeHandler {
 
-	private const ID = 'improve-tone';
+	private const ID = 'revise-tone';
 
-	public const TASK_TYPE_ID = 'improve-tone';
+	public const TASK_TYPE_ID = 'revise-tone';
 
-	public const CHANGE_TAG = 'newcomer task improve tone';
+	public const CHANGE_TAG = 'newcomer task revise tone';
 
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,
-		private readonly SubpageImproveToneRecommendationProvider $recommendationProvider,
+		private readonly SubpageReviseToneRecommendationProvider $recommendationProvider,
 	) {
 		parent::__construct( $configurationValidator, $titleParser );
 	}
@@ -54,7 +54,7 @@ class ImproveToneTaskTypeHandler extends StructuredTaskTypeHandler {
 	}
 
 	public function createTaskType( string $taskTypeId, array $config ): TaskType {
-		$taskType = new ImproveToneTaskType( $taskTypeId, $config['group'] );
+		$taskType = new ReviseToneTaskType( $taskTypeId, $config['group'] );
 		$taskType->setHandlerId( $this->getId() );
 		return $taskType;
 	}
@@ -65,7 +65,7 @@ class ImproveToneTaskTypeHandler extends StructuredTaskTypeHandler {
 
 	public function getSubmitDataFormatMessage( TaskType $taskType, MessageLocalizer $localizer ): MessageSpecifier {
 		return $localizer->msg(
-			'apihelp-growthexperiments-structured-task-submit-data-format-improve-tone',
+			'apihelp-growthexperiments-structured-task-submit-data-format-revise-tone',
 		);
 	}
 

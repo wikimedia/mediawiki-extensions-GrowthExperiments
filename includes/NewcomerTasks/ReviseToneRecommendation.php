@@ -3,7 +3,7 @@ namespace GrowthExperiments\NewcomerTasks;
 
 use MediaWiki\Linker\LinkTarget;
 
-class ImproveToneRecommendation implements Recommendation {
+class ReviseToneRecommendation implements Recommendation {
 	private LinkTarget $title;
 	private array $toneData;
 

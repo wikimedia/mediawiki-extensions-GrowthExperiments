@@ -55,7 +55,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
-use GrowthExperiments\NewcomerTasks\SubpageImproveToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
@@ -379,8 +379,8 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsTaskTypeManager' );
 	}
 
-	public function getImproveToneRecommendationProvider(): SubpageImproveToneRecommendationProvider {
-		return $this->coreServices->get( 'GrowthExperimentsImproveToneRecommendationProvider' );
+	public function getReviseToneRecommendationProvider(): SubpageReviseToneRecommendationProvider {
+		return $this->coreServices->get( 'GrowthExperimentsReviseToneRecommendationProvider' );
 	}
 
 }

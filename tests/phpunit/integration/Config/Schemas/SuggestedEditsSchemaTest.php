@@ -29,7 +29,7 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 		parent::setUp();
 
 		$this->overrideConfigValue( 'GEHomepageSuggestedEditsEnabled', true );
-		$this->overrideConfigValue( 'GEImproveToneSuggestedEditEnabled', true );
+		$this->overrideConfigValue( 'GEReviseToneSuggestedEditEnabled', true );
 	}
 
 	public function testDefaultTaskTypesDataWithEmptyConfig(): void {
@@ -201,12 +201,12 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 				],
 			],
 			[
-				'id' => 'improve-tone',
+				'id' => 'revise-tone',
 				'difficulty' => 'easy',
 				'extraData' => [
 					'learnMoreLink' => '',
 				],
-				'handlerId' => 'improve-tone',
+				'handlerId' => 'revise-tone',
 				'iconData' => [
 					'icon' => 'robot-task-type-easy',
 					'filterIcon' => 'robot',
@@ -214,7 +214,7 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 				],
 				'excludedTemplates' => [],
 				'excludedCategories' => [],
-				'_type_' => 'GrowthExperiments\NewcomerTasks\TaskType\ImproveToneTaskType',
+				'_type_' => 'GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType',
 			],
 		], self::removeComplexMarkers( $jsonCodec->toJsonArray(
 			$taskTypes, Hint::build( TaskType::class, Hint::LIST )
@@ -401,12 +401,12 @@ JSON;
 				],
 			],
 			[
-				'id' => 'improve-tone',
+				'id' => 'revise-tone',
 				'difficulty' => 'easy',
 				'extraData' => [
 					'learnMoreLink' => '',
 				],
-				'handlerId' => 'improve-tone',
+				'handlerId' => 'revise-tone',
 				'iconData' => [
 					'icon' => 'robot-task-type-easy',
 					'filterIcon' => 'robot',
@@ -414,7 +414,7 @@ JSON;
 				],
 				'excludedTemplates' => [],
 				'excludedCategories' => [],
-				'_type_' => 'GrowthExperiments\NewcomerTasks\TaskType\ImproveToneTaskType',
+				'_type_' => 'GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType',
 			],
 		], self::removeComplexMarkers( $jsonCodec->toJsonArray(
 			array_values( $taskTypes ), Hint::build( TaskType::class, Hint::LIST )

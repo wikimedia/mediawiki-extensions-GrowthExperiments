@@ -1,4 +1,4 @@
-let addLinkModules, addImageModules, addSectionImageModules, improveToneModules;
+let addLinkModules, addImageModules, addSectionImageModules, reviseToneModules;
 
 function addLink() {
 	if ( !addLinkModules ) {
@@ -46,13 +46,13 @@ function addSectionImage() {
 	return addSectionImageModules;
 }
 
-function improveTone() {
-	if ( !improveToneModules ) {
-		improveToneModules = {
-			ImproveToneInitializer: require( './improvetone/ImproveToneInitializer.js' ),
+function reviseTone() {
+	if ( !reviseToneModules ) {
+		reviseToneModules = {
+			ReviseToneInitializer: require( './revisetone/ReviseToneInitializer.js' ),
 		};
 	}
-	return improveToneModules;
+	return reviseToneModules;
 }
 
 module.exports = {
@@ -68,5 +68,5 @@ module.exports = {
 	addLink: addLink,
 	addImage: addImage,
 	addSectionImage: addSectionImage,
-	improveTone,
+	reviseTone,
 };

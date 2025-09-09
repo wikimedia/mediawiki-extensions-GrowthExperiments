@@ -1434,7 +1434,7 @@
 				"ext.growthExperiments.StructuredTask/addsectionimage/dmRecommendedImagePlaceholderNode.js",
 				"ext.growthExperiments.StructuredTask/addsectionimage/RecommendedSectionImageToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/addsectionimage/RecommendedSectionImageRejectionDialog.js",
-				"ext.growthExperiments.StructuredTask/improvetone/ImproveToneInitializer.js",
+				"ext.growthExperiments.StructuredTask/revisetone/ReviseToneInitializer.js",
 				"utils/SimpleLevenshtein.js",
 				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",
@@ -1834,7 +1834,7 @@
 				"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation",
 				"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation",
 				"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation",
-				"growthexperiments-homepage-suggestededits-tasktype-name-improve-tone",
+				"growthexperiments-homepage-suggestededits-tasktype-name-revise-tone",
 				"growthexperiments-help-panel-button-preheader-suggested-edits",
 				"growthexperiments-help-panel-button-header-ask-help",
 				"growthexperiments-help-panel-button-header-ask-help-mentor",
@@ -1980,7 +1980,7 @@
 				"growthexperiments-homepage-suggestededits-tasktype-name-expand",
 				"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation",
 				"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation",
-				"growthexperiments-homepage-suggestededits-tasktype-name-improve-tone"
+				"growthexperiments-homepage-suggestededits-tasktype-name-revise-tone"
 			]
 		},
 		"ext.growthExperiments.Account": {
@@ -2628,7 +2628,7 @@
 				"link-recommendation": "machineSuggestions",
 				"image-recommendation": "machineSuggestions",
 				"section-image-recommendation": "machineSuggestions",
-				"improve-tone": "visualeditor"
+				"revise-tone": "visualeditor"
 			}
 		},
 		"WelcomeSurveyEnabled": {
@@ -2731,12 +2731,12 @@
 						"GrowthExperimentsAddImageSubmissionHandler"
 					]
 				},
-				"improve-tone": {
-					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\ImproveToneTaskTypeHandler",
+				"revise-tone": {
+					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\ReviseToneTaskTypeHandler",
 					"services": [
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
 						"TitleParser",
-						"GrowthExperimentsImproveToneRecommendationProvider"
+						"GrowthExperimentsReviseToneRecommendationProvider"
 					]
 				},
 				"null": {
@@ -2890,9 +2890,9 @@
 			"value": false,
 			"description": "Enables the 'Add a Link' limiting feature for new editors."
 		},
-		"GEImproveToneSuggestedEditEnabled": {
+		"GEReviseToneSuggestedEditEnabled": {
 			"value": false,
-			"description": "Enable the Improve Tone feature so newcomers can spot non-neutral wording and receive in-context guidance to help users rewrite a sentence in a more encyclopedic tone."
+			"description": "Enable the Revise Tone feature so newcomers can spot non-neutral wording and receive in-context guidance to help users rewrite a sentence in a more encyclopedic tone."
 		},
 		"GEUseMetricsPlatformExtension": {
 			"description": "MetricsPlatform/xLab as enrollment authority for experiments",

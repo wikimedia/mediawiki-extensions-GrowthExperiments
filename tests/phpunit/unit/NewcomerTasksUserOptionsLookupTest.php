@@ -45,7 +45,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
-			'GEImproveToneSuggestedEditEnabled' => false,
+			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -66,7 +66,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GELinkRecommendationsFrontendEnabled' => true,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
-			'GEImproveToneSuggestedEditEnabled' => false,
+			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
@@ -99,7 +99,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
-			'GEImproveToneSuggestedEditEnabled' => false,
+			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -142,7 +142,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
-			'GEImproveToneSuggestedEditEnabled' => false,
+			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -175,7 +175,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
-			'GEImproveToneSuggestedEditEnabled' => false,
+			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$sectionImageTaskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
@@ -210,7 +210,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GELinkRecommendationsFrontendEnabled' => false,
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
-			'GEImproveToneSuggestedEditEnabled' => false,
+			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
