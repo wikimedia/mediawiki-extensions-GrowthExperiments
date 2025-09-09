@@ -83,6 +83,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-today": "Bugun {{GENDER:$1|faol}}",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "Kecha {{GENDER:$1|faol}}",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|kun}} avval {{GENDER:$1|faol}}",
+	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]dan savol",
 	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|Bosh sahifangizga}} xush kelibsiz!",
 	"growthexperiments-homepage-discovery-thanks-header": "{{GENDER:$1|Hisob}} yaratganingiz uchun tashakkur!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "{{GENDER:$1|Bosh sahifangizga}} xush kelibsiz!",
