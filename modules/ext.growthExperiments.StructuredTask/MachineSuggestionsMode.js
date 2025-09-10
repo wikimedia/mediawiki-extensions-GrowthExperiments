@@ -68,27 +68,6 @@ module.exports = ( function () {
 	}
 
 	/**
-	 * Return an array of action groups for machine suggestions mode
-	 *
-	 * @param {Object[]} currentGroups Existing VE action groups
-	 * @return {Object[]}
-	 */
-	function getToolbarGroups( currentGroups ) {
-		const activeGroups = currentGroups.filter( ( tool ) => tool.align !== 'after' ||
-				[ 'editMode', 'back' ].includes( tool.name ) );
-		const saveGroup = {
-			name: 'save',
-			type: 'bar',
-			include: [ 'machineSuggestionsSave' ],
-		};
-		if ( !OO.ui.isMobile() ) {
-			saveGroup.align = 'after';
-		}
-		activeGroups.push( saveGroup );
-		return updateEditModeTool( activeGroups );
-	}
-
-	/**
 	 * Add click event listener on editMode toolbar group
 	 *
 	 * @param {jQuery} $toolbar Toolbar element
@@ -167,7 +146,6 @@ module.exports = ( function () {
 	return {
 		canAddToolbarTitle: canAddToolbarTitle,
 		getTitleElement: getTitleElement,
-		getToolbarGroups: getToolbarGroups,
 		getEditModeToolNames: function () {
 			return editModeToolNames;
 		},
