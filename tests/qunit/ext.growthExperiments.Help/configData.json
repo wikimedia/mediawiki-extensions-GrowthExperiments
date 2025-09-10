@@ -15,5 +15,7 @@
 		4,
 		12
 	],
-	"GEHelpPanelSuggestedEditsPreferredEditor": "visualeditor"
+	"GEHelpPanelSuggestedEditsPreferredEditor": {
+		"template-based": "visualeditor"
+	}
 }
