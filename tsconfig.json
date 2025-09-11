@@ -1,15 +1,19 @@
 {
 	"include": [
-		"modules/index.d.ts"
+		"modules/index.d.ts",
+		"modules/ext.growthExperiments.StructuredTask.PreEdit/dev/**/*.ts"
 	],
 	"compilerOptions": {
+		"moduleResolution": "node",
 		"lib": [ "ES2015", "DOM" ],
+		"module": "ESNext",
 		"strict": true,
 		"allowJs": true,
 		"checkJs": true,
 		"noEmit": true,
 		"skipLibCheck": true,
 		"resolveJsonModule": true,
+		"esModuleInterop": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noImplicitReturns": true

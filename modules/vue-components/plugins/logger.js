@@ -1,3 +1,4 @@
+// @ts-nocheck - TODO: make this covered by typescript
 /**
  * Plugin to facilitate the usage of existing loggers
  * in Vue components.
