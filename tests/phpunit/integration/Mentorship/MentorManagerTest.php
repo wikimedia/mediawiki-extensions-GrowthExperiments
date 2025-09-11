@@ -6,6 +6,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\Tests\Helpers\CreateMenteeHelpers;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
@@ -16,6 +17,7 @@ use MediaWikiIntegrationTestCase;
  * @group Database
  */
 class MentorManagerTest extends MediaWikiIntegrationTestCase {
+	use CreateMenteeHelpers;
 
 	/**
 	 * @inheritDoc
@@ -169,31 +171,19 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGetMentorshipStateForUser() {
-		$optionManager = $this->getServiceContainer()->getUserOptionsManager();
+		$mentor = $this->getTestSysop()->getUser();
 
-		$enabledUser = $this->getMutableTestUser()->getUser();
-		$optionManager->setOption(
-			$enabledUser,
-			MentorManager::MENTORSHIP_ENABLED_PREF,
-			1
-		);
-		$optionManager->saveOptions( $enabledUser );
+		$enabledUser = $this->createMentee( $mentor, [
+			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 1 ]
+		] );
 
-		$disabledUser = $this->getMutableTestUser()->getUser();
-		$optionManager->setOption(
-			$disabledUser,
-			MentorManager::MENTORSHIP_ENABLED_PREF,
-			0
-		);
-		$optionManager->saveOptions( $disabledUser );
+		$disabledUser = $this->createMentee( $mentor, [
+			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 0 ]
+		] );
 
-		$optedOutUser = $this->getMutableTestUser()->getUser();
-		$optionManager->setOption(
-			$optedOutUser,
-			MentorManager::MENTORSHIP_ENABLED_PREF,
-			2
-		);
-		$optionManager->saveOptions( $optedOutUser );
+		$optedOutUser = $this->createMentee( $mentor, [
+			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 2 ]
+		] );
 
 		$mentorManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorManager();
@@ -212,15 +202,10 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGetMentorshipStateForUserBroken() {
-		$optionManager = $this->getServiceContainer()->getUserOptionsManager();
-		$brokenUser = $this->getMutableTestUser()->getUser();
-
-		$optionManager->setOption(
-			$brokenUser,
-			MentorManager::MENTORSHIP_ENABLED_PREF,
-			123
-		);
-		$optionManager->saveOptions( $brokenUser );
+		$mentor = $this->getTestSysop()->getUser();
+		$brokenUser = $this->createMentee( $mentor, [
+			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 123 ]
+		] );
 
 		$this->assertEquals(
 			IMentorManager::MENTORSHIP_DISABLED,
