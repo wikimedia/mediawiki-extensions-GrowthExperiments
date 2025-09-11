@@ -31,6 +31,7 @@
 		"GrowthExperiments\\Tests\\Unit\\SearchTaskSuggesterFactoryTestBase": "tests/phpunit/unit/SearchTaskSuggesterFactoryTestBase.php",
 		"GrowthExperiments\\Tests\\Integration\\MentorStoreTestCase": "tests/phpunit/integration/Mentorship/Store/MentorStoreTestCase.php",
 		"GrowthExperiments\\Tests\\Unit\\ChangeMentorForTests": "tests/phpunit/unit/Mentorship/ChangeMentorForTests.php",
+		"GrowthExperiments\\Tests\\Helpers\\CreateMenteeHelpers": "tests/phpunit/helpers/CreateMenteeHelpers.php",
 		"MediaWiki\\Extension\\CommunityConfiguration\\Tests\\SchemaProviderTestCase": "../CommunityConfiguration/tests/phpunit/integration/SchemaProviderTestCase.php"
 	},
 	"MessagesDirs": {

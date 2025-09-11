@@ -8,7 +8,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\Tests\Helpers\CreateMenteeHelpers;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use Psr\Log\NullLogger;
@@ -20,6 +20,8 @@ use Wikimedia\TestingAccessWrapper;
  * @covers \GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider
  */
 class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCase {
+	use CreateMenteeHelpers;
+
 	protected function setUp(): void {
 		parent::setUp();
 
@@ -105,106 +107,6 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 			$this->getServiceContainer()->getTempUserConfig(),
 			$this->getServiceContainer()->getConnectionProvider(),
 			new NullLogger()
-		);
-	}
-
-	private function getMentorStore(): MentorStore {
-		return GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getMentorStore();
-	}
-
-	private function createMentee( User $mentor, array $overrides = [], ?string $namePartial = null ): User {
-		$mentee = $this->getMutableTestUser(
-			$overrides[ 'user_groups' ] ?? [],
-			isset( $namePartial ) ? ucfirst( $namePartial ) : null,
-		)->getUser();
-
-		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
-		$userOptionsManager->setOption( $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE, '1' );
-		if ( isset( $overrides['user_options'] ) ) {
-			foreach ( $overrides['user_options'] as $key => $value ) {
-				$userOptionsManager->setOption( $mentee, $key, $value );
-			}
-		}
-		$userOptionsManager->saveOptions( $mentee );
-
-		if ( array_key_exists( 'registration', $overrides ) ) {
-			$this->setMenteeRegistration(
-				$mentee,
-				$overrides['registration']
-			);
-
-			// user_registration was likely read already, recreate the user
-			$mentee = $this->getServiceContainer()->getUserFactory()->newFromId( $mentee->getId() );
-		}
-
-		if ( isset( $overrides['edit_count'] ) ) {
-			$this->setMenteeEditCount( $mentee, $overrides['edit_count'] );
-		}
-
-		if ( isset( $overrides['blocked_infinity'] ) ) {
-			$sysop = $this->getTestSysop()->getUser();
-			$blockUserFactory = $this->getServiceContainer()->getBlockUserFactory();
-			$blockUserFactory->newBlockUser( $mentee, $sysop, 'infinity' )->placeBlock();
-		}
-
-		$this->getMentorStore()->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
-		return $mentee;
-	}
-
-	private function setMenteeEditCount( User $mentee, int $editCount ): void {
-		$this->getDb()->newUpdateQueryBuilder()
-			->update( 'user' )
-			->set( [ 'user_editcount' => $editCount - 1 ] )
-			->where( [ 'user_id' => $mentee->getId() ] )
-			->caller( __METHOD__ )
-			->execute();
-
-		// TODO: is there a faster way to do this?
-		$this->editPage(
-			'TestPage',
-			'Test content: ' . microtime( true ),
-			'Make edit to ensure there is a last edit timestamp',
-			0,
-			$mentee
-		);
-	}
-
-	private function createMenteeWithEditCount( User $mentor, int $editcount ): User {
-		return $this->createMentee(
-			$mentor,
-			[ 'edit_count' => $editcount ],
-			'editcount ' . $editcount
-		);
-	}
-
-	private function createMenteeWithBlocks( User $mentor, int $blocks ): User {
-		$mentee = $this->createMentee( $mentor, [], 'blocks ' . $blocks );
-		$blockUserFactory = $this->getServiceContainer()->getBlockUserFactory();
-		$unblockUserFactory = $this->getServiceContainer()->getUnblockUserFactory();
-		$sysop = $this->getTestSysop()->getUser();
-		for ( $i = 0; $i < $blocks; $i++ ) {
-			$blockUserFactory->newBlockUser( $mentee, $sysop, '1 second' )->placeBlock();
-			$unblockUserFactory->newUnblockUser( $mentee, $sysop, '' )->unblock();
-		}
-		return $mentee;
-	}
-
-	private function setMenteeRegistration( User $mentee, ?string $registration ): void {
-		$this->getDb()->newUpdateQueryBuilder()
-			->update( 'user' )
-			->set( [ 'user_registration' => $registration ] )
-			->where( [ 'user_id' => $mentee->getId() ] )
-			->caller( __METHOD__ )
-			->execute();
-	}
-
-	private function createMenteeWithRegistration( User $mentor, ?string $registration ): User {
-		return $this->createMentee(
-			$mentor,
-			[
-				'registration' => $registration,
-			],
-			'registration ' . $registration
 		);
 	}
 
