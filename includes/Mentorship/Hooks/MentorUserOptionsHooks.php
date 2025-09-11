@@ -36,7 +36,7 @@ class MentorUserOptionsHooks implements
 	 */
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		$defaultOptions += [
-			MentorManager::MENTORSHIP_ENABLED_PREF => 1,
+			MentorManager::MENTORSHIP_ENABLED_PREF => MentorManager::MENTORSHIP_ENABLED,
 		];
 	}
 
