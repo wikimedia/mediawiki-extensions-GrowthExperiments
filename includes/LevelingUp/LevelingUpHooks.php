@@ -87,17 +87,13 @@ class LevelingUpHooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$user = $out->getUser();
-		$trackingEnabled = $this->config->get( 'GENotificationsTrackingEnabled' );
+		$featureAndExperimentEnabled = $this->config->get( 'GELevelingUpNewNotificationsEnabled' );
 		if (
 			$user->isRegistered()
 			&& LevelingUpManager::isEnabledForUser( $user, $this->config )
-			&& $trackingEnabled
+			&& $featureAndExperimentEnabled
 		) {
 			$out->addModules( 'ext.growthExperiments.NotificationsTracking' );
-			$out->addJsConfigVars( [
-				'wgGENotificationsTrackingEnabled' => true,
-				'wgGELevelingUpNewNotificationsEnabled' => $this->config->get( 'GELevelingUpNewNotificationsEnabled' ),
-			] );
 		}
 		// VE sets a query parameter, but there is no elegant way to detect post-edit reloads
 		// in the wikitext editor. Check the JS variable that it uses to configure the notice.
