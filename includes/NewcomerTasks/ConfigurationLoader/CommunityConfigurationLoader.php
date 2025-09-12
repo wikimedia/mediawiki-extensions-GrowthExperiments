@@ -21,7 +21,6 @@ use Wikimedia\Message\ListType;
  *
  * For syntax on the task types see {@link SuggestedEditsSchema}.
  * https://cs.wikipedia.org/wiki/MediaWiki:GrowthExperimentsSuggestedEdits.json
- *
  */
 class CommunityConfigurationLoader implements ConfigurationLoader {
 

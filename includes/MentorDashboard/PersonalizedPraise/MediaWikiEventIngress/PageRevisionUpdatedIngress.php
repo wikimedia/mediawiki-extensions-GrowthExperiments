@@ -14,7 +14,6 @@ use MediaWiki\Page\Event\PageRevisionUpdatedListener;
 /**
  * Event subscriber for PersonalizedPraise functionality.
  * Handles PageUpdated events to check for praiseworthy edits.
- *
  */
 class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
 	private Config $config;

@@ -29,7 +29,7 @@ class TaskSetFilters implements JsonDeserializable {
 	private $topicFilters;
 	/**
 	 * @var string|null Matching mode for topics. One of: 'AND', 'OR'.
-	 * @See SearchStrategy::TOPIC_MATCH_MODES
+	 * @see SearchStrategy::TOPIC_MATCH_MODES
 	 */
 	private $topicFiltersMode;
 

@@ -27,7 +27,6 @@ use MediaWiki\User\UserIdentity;
  * - User has exactly X edits.
  * - User completed at least 1 add-a-link task.
  * - User still has add-a-link task type selected.
- *
  */
 class NewcomerMilestoneIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
 	private UserEditTracker $userEditTracker;
@@ -37,7 +36,6 @@ class NewcomerMilestoneIngress extends DomainEventIngress implements PageRevisio
 	private ConfigurationLoader $configurationLoader;
 
 	/**
-	 *
 	 * @param UserEditTracker $userEditTracker For edit count retrieval
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param NewcomerTasksUserOptionsLookup $userOptionsLookup For task selection checking

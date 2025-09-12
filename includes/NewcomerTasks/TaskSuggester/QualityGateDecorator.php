@@ -19,7 +19,6 @@ use MediaWiki\User\UserIdentity;
 
 /**
  * A TaskSuggester decorator that injects data for task type "quality gates" into a TaskSet.
- *
  */
 class QualityGateDecorator implements TaskSuggester {
 
