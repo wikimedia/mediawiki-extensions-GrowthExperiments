@@ -12,6 +12,8 @@ use MediaWiki\User\UserIdentity;
  */
 interface IMentorManager {
 
+	// NOTE: When adding a state, please ensure its value does not conflict with
+	// MentorManager::MENTORSHIP_ENABLED_EXPLICITLY.
 	public const MENTORSHIP_DISABLED = 0;
 	public const MENTORSHIP_ENABLED = 1;
 	public const MENTORSHIP_OPTED_OUT = 2;
@@ -63,6 +65,18 @@ interface IMentorManager {
 	 * @return int One of MentorManager::MENTORSHIP_*
 	 */
 	public function getMentorshipStateForUser( UserIdentity $user ): int;
+
+	/**
+	 * Did the user explicitly opt into mentorship at some point?
+	 *
+	 * This method allows to determine whether the user explicitly (and willingly)
+	 * enabled mentorship at some point (eg. by opting out and in again), or whether
+	 * mentorship was enabled by the system.
+	 *
+	 * @param UserIdentity $user
+	 * @return bool True if the user explicitly opted into mentorship
+	 */
+	public function didUserExplicitlyOptIntoMentorship( UserIdentity $user ): bool;
 
 	/**
 	 * Set state of mentorship for an user

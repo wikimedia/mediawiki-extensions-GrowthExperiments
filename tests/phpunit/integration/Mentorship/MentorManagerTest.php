@@ -174,15 +174,15 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		$mentor = $this->getTestSysop()->getUser();
 
 		$enabledUser = $this->createMentee( $mentor, [
-			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 1 ]
+			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 1 ],
 		] );
 
 		$disabledUser = $this->createMentee( $mentor, [
-			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 0 ]
+			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 0 ],
 		] );
 
 		$optedOutUser = $this->createMentee( $mentor, [
-			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 2 ]
+			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 2 ],
 		] );
 
 		$mentorManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
@@ -191,20 +191,25 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			IMentorManager::MENTORSHIP_ENABLED,
 			$mentorManager->getMentorshipStateForUser( $enabledUser )
 		);
+		$this->assertFalse( $mentorManager->didUserExplicitlyOptIntoMentorship( $enabledUser ) );
+
 		$this->assertEquals(
 			IMentorManager::MENTORSHIP_DISABLED,
 			$mentorManager->getMentorshipStateForUser( $disabledUser )
 		);
+		$this->assertFalse( $mentorManager->didUserExplicitlyOptIntoMentorship( $disabledUser ) );
+
 		$this->assertEquals(
 			IMentorManager::MENTORSHIP_OPTED_OUT,
 			$mentorManager->getMentorshipStateForUser( $optedOutUser )
 		);
+		$this->assertFalse( $mentorManager->didUserExplicitlyOptIntoMentorship( $optedOutUser ) );
 	}
 
 	public function testGetMentorshipStateForUserBroken() {
 		$mentor = $this->getTestSysop()->getUser();
 		$brokenUser = $this->createMentee( $mentor, [
-			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 123 ]
+			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 123 ],
 		] );
 
 		$this->assertEquals(
@@ -213,6 +218,21 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 				->getMentorManager()
 				->getMentorshipStateForUser( $brokenUser )
 		);
+	}
+
+	public function testMentorshipStateExplicitlyOpted() {
+		$mentor = $this->getTestSysop()->getUser();
+		$explicitlyOptedInUser = $this->createMentee( $mentor, [
+			'user_options' => [ MentorManager::MENTORSHIP_ENABLED_PREF => 50 ],
+		] );
+
+		$mentorManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorManager();
+		$this->assertEquals(
+			MentorManager::MENTORSHIP_ENABLED,
+			$mentorManager->getMentorshipStateForUser( $explicitlyOptedInUser )
+		);
+		$this->assertTrue( $mentorManager->didUserExplicitlyOptIntoMentorship( $explicitlyOptedInUser ) );
 	}
 
 	/**

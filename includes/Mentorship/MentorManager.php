@@ -18,6 +18,16 @@ class MentorManager implements IMentorManager {
 
 	public const MENTORSHIP_ENABLED_PREF = 'growthexperiments-homepage-mentorship-enabled';
 
+	/**
+	 * @var int Value used in user options to explicitly enable mentorship (after previously
+	 * being in a different mentorship state). This is important to tell apart users who never
+	 * changed their mentorship state and users who returned to enabled explicitly.
+	 *
+	 * NOTE: The value should be set in a way that does not conflict with
+	 * IMentorManager::MENTORSHIP_ states. Hopefully, 50 is high enough.
+	 */
+	private const MENTORSHIP_ENABLED_EXPLICITLY = 50;
+
 	private MentorStore $mentorStore;
 	private MentorStatusManager $mentorStatusManager;
 	private MentorProvider $mentorProvider;
@@ -235,12 +245,12 @@ class MentorManager implements IMentorManager {
 		return $autoAssignedMentors[ rand( 0, count( $autoAssignedMentors ) - 1 ) ];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
-	public function getMentorshipStateForUser( UserIdentity $user ): int {
+	private function getMentorshipStateForUserInternal( UserIdentity $user ): int {
 		$state = $this->userOptionsLookup->getIntOption( $user, self::MENTORSHIP_ENABLED_PREF );
-		if ( !in_array( $state, self::MENTORSHIP_STATES ) ) {
+		if (
+			$state !== self::MENTORSHIP_ENABLED_EXPLICITLY &&
+			!in_array( $state, self::MENTORSHIP_STATES )
+		) {
 			// default to MENTORSHIP_DISABLED and log an error
 			$this->logger->error(
 				'User {user} has invalid value of {property} user property',
@@ -252,8 +262,26 @@ class MentorManager implements IMentorManager {
 			);
 			return self::MENTORSHIP_DISABLED;
 		}
-
 		return $state;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getMentorshipStateForUser( UserIdentity $user ): int {
+		$state = $this->getMentorshipStateForUserInternal( $user );
+		if ( $state === self::MENTORSHIP_ENABLED_EXPLICITLY ) {
+			return self::MENTORSHIP_ENABLED;
+		}
+		return $state;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function didUserExplicitlyOptIntoMentorship( UserIdentity $user ): bool {
+		$state = $this->getMentorshipStateForUserInternal( $user );
+		return $state === self::MENTORSHIP_ENABLED_EXPLICITLY;
 	}
 
 	/**
@@ -269,7 +297,7 @@ class MentorManager implements IMentorManager {
 		$this->userOptionsManager->setOption(
 			$user,
 			self::MENTORSHIP_ENABLED_PREF,
-			$state
+			$state === self::MENTORSHIP_ENABLED ? self::MENTORSHIP_ENABLED_EXPLICITLY : $state
 		);
 		$this->userOptionsManager->saveOptions( $user );
 
