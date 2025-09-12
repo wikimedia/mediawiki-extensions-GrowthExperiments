@@ -10,4 +10,10 @@ return (object) array(
    'GEPersonalizedPraiseDefaultNotificationsFrequency' => 168,
    'GEPersonalizedPraiseMaxEdits' => 500,
    'GEPersonalizedPraiseMinEdits' => 8,
+   'GEMentorshipStartOptedOutThresholds' => 
+  (object) array(
+     'enabled' => false,
+     'minEditcount' => 500,
+     'minTenureInDays' => 30,
+  ),
 );

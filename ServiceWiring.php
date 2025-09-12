@@ -26,6 +26,8 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsL
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\IMentorManager;
+use GrowthExperiments\Mentorship\MenteeGraduation;
+use GrowthExperiments\Mentorship\MenteeGraduationProcessor;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorProvider;
@@ -521,6 +523,31 @@ return [
 
 	'GrowthExperimentsLogger' => static function (): LoggerInterface {
 		return LoggerFactory::getInstance( 'GrowthExperiments' );
+	},
+
+	'GrowthExperimentsMenteeGraduation' => static function (
+		MediaWikiServices $services
+	): MenteeGraduation {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		return new MenteeGraduation(
+			$geServices->getGrowthWikiConfig(),
+			$services->getUserEditTracker(),
+			$services->getUserRegistrationLookup(),
+			$geServices->getMentorManager()
+		);
+	},
+
+	'GrowthExperimentsMenteeGraduationProcessor' => static function (
+		MediaWikiServices $services
+	): MenteeGraduationProcessor {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+
+		return new MenteeGraduationProcessor(
+			$geServices->getLogger(),
+			$geServices->getMentorStore(),
+			$geServices->getMenteeGraduation()
+		);
 	},
 
 	'GrowthExperimentsMenteeOverviewDataProvider' => static function (

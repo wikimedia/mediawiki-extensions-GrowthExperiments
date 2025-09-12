@@ -664,7 +664,8 @@
 			],
 			"class": "GrowthExperiments\\Mentorship\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
 			"services": [
-				"GrowthExperimentsMentorStore"
+				"GrowthExperimentsMentorStore",
+				"GrowthExperimentsMenteeGraduation"
 			]
 		},
 		{

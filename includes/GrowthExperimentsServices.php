@@ -22,6 +22,8 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsL
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\IMentorManager;
+use GrowthExperiments\Mentorship\MenteeGraduation;
+use GrowthExperiments\Mentorship\MenteeGraduationProcessor;
 use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorProvider;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
@@ -150,6 +152,14 @@ class GrowthExperimentsServices {
 
 	public function getTopicRegistry(): ITopicRegistry {
 		return $this->coreServices->get( 'GrowthExperimentsTopicRegistry' );
+	}
+
+	public function getMenteeGraduation(): MenteeGraduation {
+		return $this->coreServices->get( 'GrowthExperimentsMenteeGraduation' );
+	}
+
+	public function getMenteeGraduationProcessor(): MenteeGraduationProcessor {
+		return $this->coreServices->get( 'GrowthExperimentsMenteeGraduationProcessor' );
 	}
 
 	public function getMenteeOverviewDataProvider(): MenteeOverviewDataProvider {
