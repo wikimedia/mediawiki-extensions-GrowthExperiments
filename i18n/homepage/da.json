@@ -587,6 +587,6 @@
 	"echo-pref-tooltip-ge-newcomer": "Giv mig besked om opgaver for nybegyndere og andre funktioner designet til at hjælpe nye brugere.",
 	"growthexperiments-homepage-community-updates-header": "Opdateringer fra fællesskabet",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lær mere",
-	"growthexperiments-addalink-milestone-notification-header": "$1 redigeringer, tillykke! Artikler {{GENDER:$2| du har}} redigeret har for nylig fået $3 visninger. Tilgængelige foreslåede redigeringer er ændret.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|redigering|redigeringer}}, tillykke! Artikler, som {{GENDER:$2|du}} har redigeret, har for nylig modtaget $3 {{PLURAL:$3|visning|visninger}}. Tilgængelige foreslåede redigeringer er ændret.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Prøv andre redigeringer"
 }

@@ -46,7 +46,7 @@
 	"growthexperiments-homepage-email-header-startemail": "E-Mail-Adresse: $1",
 	"growthexperiments-homepage-email-text-noemail": "Empfohlen zur Wiederherstellung des Benutzerkontos",
 	"growthexperiments-homepage-email-text-unconfirmed": "Überprüfe {{GENDER:$1|dein}} E-Mail-Postfach auf einen Bestätigungslink oder lass dir einen neuen Link zusenden.",
-	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|Deine}} E-Mail-Adresse wurde bestätigt. Du kannst deine E-Mail-Optionen unter Einstellungen ändern.",
+	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|{{#FORMAL:Deine|Ihre}}}} E-Mail-Adresse wurde bestätigt. {{#FORMAL:Du kannst deine|Sie können Ihre}} E-Mail-Optionen unter Einstellungen ändern.",
 	"growthexperiments-homepage-email-button-noemail": "E-Mail-Adresse hinzufügen",
 	"growthexperiments-homepage-email-button-unconfirmed": "Einen neuen Link erhalten",
 	"growthexperiments-homepage-email-button-confirmed": "Einstellungen",
