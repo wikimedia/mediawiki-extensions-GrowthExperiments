@@ -5,10 +5,10 @@ namespace GrowthExperiments\Config\Validation;
 use StatusValue;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
-/*
+/**
  * Interim solution to re-use validation logic in MentorStatusManager and StructuredMentorListValidator,
  * should be part of the validator once manager is re-purposed
- * */
+ */
 class StatusAwayValidator {
 
 	// Using static variables for compatible alternative to constants
