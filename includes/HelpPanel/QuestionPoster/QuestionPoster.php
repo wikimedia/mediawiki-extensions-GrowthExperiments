@@ -118,8 +118,8 @@ abstract class QuestionPoster {
 	/**
 	 * Return wikitext link target suitable for usage in [[internal linking]]
 	 *
-	 * This returns [[$title->getPrefixedText()]] for most pages, and
-	 * [[:$title->getPrefixedText()]] for files and categories.
+	 * This returns the prefixed text for all pages. The message template
+	 * handles adding the colon for files and categories in the wikitext link format.
 	 */
 	public function getWikitextLinkTarget(): string {
 		$title = $this->getRelevantTitle();
@@ -127,11 +127,7 @@ abstract class QuestionPoster {
 			return '';
 		}
 
-		if ( in_array( $title->getNamespace(), [ NS_FILE, NS_CATEGORY ], true ) ) {
-			return ':' . $title->getPrefixedText();
-		} else {
-			return $title->getPrefixedText();
-		}
+		return $title->getPrefixedText();
 	}
 
 	/**
