@@ -1,0 +1,97 @@
+@import './variables.less';
+
+.ext-growthExperiments-onboarding-dialog-size() {
+	width: @onboardingDialogMaxWidth;
+	min-width: @onboardingDialogMinWidth;
+}
+
+.ext-growthExperiments-onboarding-dialog-color() {
+	color: @color-base;
+}
+
+.ext-growthExperiments-onboarding-dialog-image() {
+	background-color: @onboardingBackgroundColor;
+	height: @onboardingImageHeight;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.ext-growthExperiments-onboarding-dialog-textcontent() {
+	padding-left: @spacing-150;
+	padding-right: @spacing-150;
+}
+
+.ext-growthExperiments-onboarding-dialog-title() {
+	padding-top: @spacing-125;
+	font-size: @font-size-medium;
+	font-weight: @font-weight-bold;
+}
+
+.ext-growthExperiments-onboarding-dialog-text() {
+	padding-top: @spacing-50;
+	font-size: @font-size-small;
+	line-height: @line-height-xx-small;
+}
+
+// Loading animations
+@keyframes loading-stripes {
+	0% {
+		background-position: calc( -1 * @size-150 ) 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+.ext-growthExperiments-loading-stripes-anim {
+	background-color: @filterLoadingColor;
+	background-image: linear-gradient( 135deg, #fff 25%, transparent 25%, transparent 50%, #fff 50%, #fff 75%, transparent 75%, transparent );
+	background-size: @size-150 @size-150;
+	animation: loading-stripes 650ms linear infinite;
+}
+
+// Button mixins
+.ext-growthExperiments-button-base() {
+	display: inline-block;
+	padding: 8px 16px;
+	border: 1px solid @border-color-base;
+	border-radius: 2px;
+	background: @background-color-base;
+	color: @color-base;
+	cursor: pointer;
+	font-size: @font-size-small;
+	font-weight: 500;
+	line-height: 1.6;
+	transition: all 0.1s ease;
+	text-decoration: none;
+}
+
+.ext-growthExperiments-button-progressive() {
+	border-color: @color-progressive;
+	color: @color-progressive;
+
+	&:hover {
+		border-color: @color-progressive--hover;
+		color: @color-progressive--hover;
+	}
+}
+
+.ext-growthExperiments-button-primary() {
+	background: @color-progressive;
+	color: @background-color-base;
+
+	&:hover {
+		background: @color-progressive--hover;
+		border-color: @color-progressive--hover;
+	}
+}
+
+.ext-growthExperiments-button-quiet() {
+	border-color: transparent;
+	background: transparent;
+
+	&:hover {
+		background: @background-color-interactive;
+	}
+}

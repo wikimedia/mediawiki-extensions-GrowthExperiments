@@ -30,6 +30,7 @@ module.exports = {
 	collectCoverageFrom: [
 		'modules/ext.growthExperiments.MentorDashboard/**/*.(js|vue)',
 		'modules/ext.growthExperiments.Homepage.Impact/**/*.(js|vue)',
+		'modules/ext.growthExperiments.StructuredTask.PreEdit/**/*.(js|vue)',
 		'modules/utils/**/*.js',
 		'modules/vue-components/**/*.(js|vue)',
 	],
@@ -50,6 +51,7 @@ module.exports = {
 		'./modules/ext.growthExperiments.DataStore',
 		'./modules/ext.growthExperiments.MentorDashboard',
 		'./modules/ext.growthExperiments.Homepage.Impact',
+		'./modules/ext.growthExperiments.StructuredTask.PreEdit',
 		'./modules/utils',
 		'./modules/vue-components',
 	],

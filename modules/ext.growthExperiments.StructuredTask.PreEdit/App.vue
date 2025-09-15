@@ -1,6 +1,6 @@
 <template>
 	<div class="ext-growthExperiments-StructuredTaskOnboarding">
-	<!--OnboardingDialog Goes here-->
+		<!--OnboardingDialog Goes here-->
 	</div>
 </template>
 
@@ -16,6 +16,8 @@ module.exports = defineComponent( {
 </script>
 
 <style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .ext-growthExperiments-StructuredTaskOnboarding {
 	display: block;
 }
