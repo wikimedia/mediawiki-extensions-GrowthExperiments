@@ -38,7 +38,12 @@ QUnit.test( 'getDefaultPanelForSuggestedEditSession for copyedit', ( assert ) =>
 } );
 
 QUnit.test( 'updateEditMode for link-recommendation', function ( assert ) {
+	mw.config.set( 'wgGEShouldShowHelpPanelTaskQuickTips', true );
 	const helpPanelProcessDialog = new HelpPanelProcessDialog( {
+		taskTypeId: 'link-recommendation',
+		taskTypeData: {
+			id: 'link-recommendation'
+		},
 		suggestedEditSession: linkRecommendationSuggestedEditSession,
 		logger: {
 			isEditing: function () {
@@ -55,11 +60,16 @@ QUnit.test( 'updateEditMode for link-recommendation', function ( assert ) {
 	this.sandbox.spy( helpPanelProcessDialog, 'swapPanel' );
 	helpPanelProcessDialog.updateEditMode();
 	assert.true( helpPanelProcessDialog.swapPanel.notCalled );
+	assert.strictEqual( helpPanelProcessDialog.suggestededitsPanel.preferredEditor, 'machineSuggestions' );
 } );
 
 QUnit.test( 'updateEditMode for copyedit, isEditing', function ( assert ) {
 	mw.config.set( 'wgGEShouldShowHelpPanelTaskQuickTips', true );
 	const helpPanelProcessDialog = new HelpPanelProcessDialog( {
+		taskTypeId: 'copyedit',
+		taskTypeData: {
+			id: 'copyedit'
+		},
 		suggestedEditSession: copyEditRecommendationSuggestedEditSession,
 		logger: {
 			isEditing: function () {
@@ -76,4 +86,5 @@ QUnit.test( 'updateEditMode for copyedit, isEditing', function ( assert ) {
 	this.sandbox.stub( helpPanelProcessDialog, 'swapPanel' );
 	helpPanelProcessDialog.updateEditMode();
 	assert.true( helpPanelProcessDialog.swapPanel.calledWith( 'home' ) );
+	assert.strictEqual( helpPanelProcessDialog.suggestededitsPanel.preferredEditor, 'visualeditor' );
 } );
