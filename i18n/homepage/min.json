@@ -207,5 +207,20 @@
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Caliak kasadonyo saran",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Mameloki ejaan, tata bahaso, jo nada",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Tambah rujuakan untuak mamastian artikel Wikipedia",
-	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Pabarui artikel nan alah ado"
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Pabarui artikel nan alah ado",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand": "Buek artikel labiah panjang jo mancari dan manambahkan informasi labiah lanjuik",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Buek kato nan dari satu artikel batauik ka artikel lainnyo",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-link-recommendation": "Buek kato-kato dari satu artikel batauik ka artikel lainnyo.",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-image-recommendation": "Tantuan apokah gambar dari Wikimedia Commons musiti ditambahkan ka artikel.",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-section-image-recommendation": "Tantuan apokah gambar dari Wikimedia Commons musiti ditambahkan ka bagian artikel tatantu.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "Panyuntiangan salinan adolah saketek mampaelokan caro manulih satu artikel, dan marupoan caro nan baharago jo mudah untuak mambiasoan diri manyuntiang Wikipedia. Suntiangan salinan mambuek artikel manjadi labiah rancak jo dapek dipicayo.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-references": "Gunoan buku, situs web, jo sumber barito untuak mambuktian baso Wikipedia batua, dan tambahkannyo ka artikel supayo pambaco dapek maraso yakin baso apo nan inyo baco adolah batua.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-update": "Artikel-artikel manjadi katinggalan jaman sairiang wakatu jo tajadinyo kajadian-kajadian baru. Cari jo tambahkan informasi nan tapek supayo Wikipedia salalu manganduang kabanaran tabaru.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "Banyak artikel Wikipedia nan hanyo sakalimaik atau duo kalimaik sajo. Cari informasi labiah lanjuik dan tambahkan untuak mambuek artikel labiah langkok.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Manambah tauikan adolah caro nan paliang mudah untuak manyuntiang. Tauikan mambantu pambaco bapindah-pindah antaro artikel untuak baraja labiah capek.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Manambah tauikan adolah caro nan paliang mudah untuak manyuntiang. Tauikan mamungkinkan pambaco untuak mangklik sasuatu nan inyo ingin palajari labiah lanjuik.<br /> Tauikan disarankan dek masin, dan {{GENDER:$1|Sanak}} ka mamutuihan apokah ka manambahkannyo ka artikel.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "Saran nan dihasiakan dek masin. Gambar-gambar barasa dari Wikimedia Commons, koleksi gambar Wikipedia nan balisensi bebas.<br /> {{GENDER:$1| Sanak}} nan ka mamutuihan apokah ka manambahkannyo ka artikel. {{GENDER:$1|Sanak}} nan ka manulih pulo takarirnyo.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-section-image-recommendation": "Saran nan dihasiakan dek masin. Gambar-gambar tu barasa dari Wikimedia Commons, koleksi gambar Wikipedia nan balisensi bebas.<br /> {{GENDER:$1| Sanak}} nan ka mamutuihan apokah ka manambahkannyo ka artikel. {{GENDER:$1|Sanak}} nan ka manulih pulo takarirnyo.",
+	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Salin-suntiang (mameloki ejaan, tata bahaso, jo nada bahaso)",
+	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Cari rujukan (sumber untuak artikel nan alah ado)"
 }

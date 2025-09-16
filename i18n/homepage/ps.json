@@ -328,6 +328,7 @@
 	"growthexperiments-addlink-rejectiondialog-action-done": "وشو",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "لامل وليکئ چې دا ولې يو ښه تړونی نه ډی",
 	"growthexperiments-addlink-onboarding-content-intro-title": "د تړونو ورگډول به له خلکو سره په ژر پوهېدو کې مرسته وکړي.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|تاسو}} به پرېکړه کوئ چې ايا د {{SITENAME}} د يوې ليکنې ويوکي دې د {{SITENAME}} نورو ليکنو سره تړونی ولري.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "نمونه‌يي جمله",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "سپوږمۍ يوازېنۍ <mark class=\"positive\">طبيعي سپوږمۍ</mark> ده چې د <mark class=\"positive\">ځمکې</mark> د  <mark class=\"positive\">مدار</mark> شاوخوا راگرځي.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "د دې کار ترسره کولو لپاره د ليکنې په اړه ځانگړې پوهې ته اړتيا نشته.",

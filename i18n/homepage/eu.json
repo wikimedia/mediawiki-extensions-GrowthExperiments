@@ -51,7 +51,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Zaila",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Editatzen ikasten ari {{GENDER:$1|zarenerako}} gomendatuta.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Aldaketa erraz batzuk {{GENDER:$1|egin}} eta gero.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Wikipediako praktika onen inguruan {{GENDER:$1|ikasi}} eta gero.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Wikipediako jardunbide egokiei buruz {{GENDER:$1|ikasi}} eta gero.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Testua zuzendu eta beste artikulu batzuetara loturak sartu.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Gaurkotu gabe dauden artikuluak hobetu eta iturri fidagarriak gehitu",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Artikulu berriak sortu eta artikulu laburrak hedatu.",
