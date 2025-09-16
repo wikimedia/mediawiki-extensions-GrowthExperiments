@@ -594,6 +594,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|}}Bạn đã thực hiện $3 {{PLURAL:$3|}}sửa đổi gợi ý. Hãy tiếp tục để học thêm nhiều kỹ năng mới.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Thực hiện một sửa đổi gợi ý",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Bạn đã có những tiến bộ vượt bậc! {{GENDER:$2|}}{{PLURAL:$3|}}Hãy tiếp tục khám phá thêm các đề xuất để phát triển kỹ năng {{GENDER:$2|}}sửa đổi của bạn.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Thử sửa đổi khác",
 	"echo-category-title-ge-newcomer": "Các tính năng dành cho người mới",
 	"echo-pref-tooltip-ge-newcomer": "Thông báo cho tôi về các nhiệm vụ dành cho người mới và các tính năng khác được thiết kế để giúp người dùng mới.",
 	"growthexperiments-homepage-community-updates-header": "Cập nhật Cộng đồng",

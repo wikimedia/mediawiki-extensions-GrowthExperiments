@@ -7,6 +7,7 @@
 			"Leduyquang753",
 			"Minh Nguyen",
 			"NguoiDungKhongDinhDanh",
+			"Nvdtn19",
 			"Phjtieudoc",
 			"Tuanminh01",
 			"Tuyenduong97",
@@ -50,5 +51,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} khả dụng trong hơn 300 ngôn ngữ. Bạn có đọc và viết được ngôn ngữ nào khác không?",
 	"welcomesurvey-question-languages-placeholder": "Thêm tối đa {{PLURAL:$1|một ngôn ngữ|$1 ngôn ngữ}}…",
 	"welcomesurvey-question-languages-maximum": "Bạn đã thêm số lượng ngôn ngữ tối đa.",
+	"welcomesurvey-mideditsignup-title": "Chào mừng $1!",
 	"welcomesurvey-mideditsignup-button-close": "Đóng"
 }

@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"ThisCarthing"
-		]
-	},
-	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|Ihre}} E-Mail-Adresse wurde bestätigt. Sie können Ihre E-Mail-Optionen unter Einstellungen ändern."
-}

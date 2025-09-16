@@ -606,10 +606,11 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du hast}} $3 {{PLURAL:$3|Änderungsvorschlag|Änderungsvorschläge}} durchgeführt. Mache weiter, um dir weitere neue Fähigkeiten anzueignen.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Einen Bearbeitungsvorschlag machen",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Große Fortschritte bei {{PLURAL:$3|deiner Bearbeitung|deinen Bearbeitungen}}! Erforsche weitere Vorschläge, um {{GENDER:$2|deine}} Fähigkeiten zu erweitern.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Probiere andere Änderungen aus",
 	"echo-category-title-ge-newcomer": "Engagement-Funktionen",
 	"echo-pref-tooltip-ge-newcomer": "Benachrichtigen Sie mich über Aufgaben für Neueinsteiger und andere Funktionen, die neuen Benutzern helfen sollen.",
 	"growthexperiments-homepage-community-updates-header": "Community-Updates",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Weitere Informationen",
-	"growthexperiments-addalink-milestone-notification-header": "$1 Bearbeitungen, Glückwunsch! Artikel, die {{GENDER:$2|du}} bearbeitet hast, wurden kürzlich $3 Mal aufgerufen. Verfügbare Bearbeitungsvorschläge haben sich geändert.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}}, Glückwunsch! Artikel, die {{GENDER:$2|du}} bearbeitet hast, wurden kürzlich {{PLURAL:$3|einmal|$3 Mal}} aufgerufen. Verfügbare Bearbeitungsvorschläge haben sich geändert.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Probiere andere Änderungen aus"
 }
