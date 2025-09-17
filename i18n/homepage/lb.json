@@ -587,6 +587,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Dir}} hutt $3 {{PLURAL:$3|Ännerungsvirschlag|Ännerungsvirschléi}} ëmgesat. Fuert virun, fir Är Fäegkeete weider auszebauen.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "En Ännerungsvirschlag ëmsetzen",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Grouss Fortschrëtter bei {{PLURAL:$3|{{GENDER:$2|Ärer}} Ännerung|{{GENDER:$2|Ären}} Ännerungen}}! Entdeckt nach weider Virschléi fir {{GENDER:$2|Är}} Fäegkeeten ze developpéieren.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Probéiert aner Ännerungen",
 	"echo-category-title-ge-newcomer": "Growth-Funktiounen",
 	"echo-pref-tooltip-ge-newcomer": "Mech informéieren iwwer Aufgabe fir Neier an aner Funktiounen, déi geduecht si fir neie Benotzer ze hëllefen.",
 	"growthexperiments-homepage-community-updates-header": "Community-Updates",

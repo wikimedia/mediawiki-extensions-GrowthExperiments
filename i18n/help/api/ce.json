@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "ХӀинцалерчу декъашхочуьнгахула луш долчу хаттаршца болх бар.",
+	"apihelp-helppanelquestionposter-param-body": "Декъашхочо йазйина хаттаран текст.",
+	"apihelp-helppanelquestionposter-param-source": "Хаттар дӀахӀотторан метод.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "ГӀоьналлин панель «ГӀо деха»",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "«Хьайн хьехамхочунга хатта» гӀоьналлин панель керлачу декъашхочун цӀера агӀонан тӀехь",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "«Хьайн хьехамхочунга хатта» гӀоьналлин панел тӀера скриншот",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "ГӀоьналлин панель «ГӀоьналла хатта» (шира цӀе)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "«Хьайн хьехамхочунга хатта» гӀоьналлин панель керлачу декъашхочун цӀера агӀонан тӀехь (шира цӀе)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Хаттарна йукъайаккха йезаш йолу релевантан цӀе, нагахь санна иза хаьржина йелахь.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Хаттар дала авторизаци йан йеза."
+}

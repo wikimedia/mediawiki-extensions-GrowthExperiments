@@ -622,6 +622,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Vous}} avez effectué $3 {{PLURAL:$3|modification suggérée|modifications suggérées}}. Continuez à apprendre de nouvelles compétences.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Effectuer une modification suggérée",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Excellents progrès sur {{PLURAL:$3|votre modification|vos modifications}}! Continuez à explorer d'autres suggestions pour {{GENDER:$2| vos compétences}}.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Essayer d'autres modifications",
 	"echo-category-title-ge-newcomer": "Fonctionnalités de Croissance",
 	"echo-pref-tooltip-ge-newcomer": "Me notifier au sujet des tâches pour novices et des autres fonctionnalités conçues pour assister les nouveaux utilisateurs.",
 	"growthexperiments-homepage-community-updates-header": "Actualités de la communauté",

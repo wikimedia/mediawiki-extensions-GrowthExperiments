@@ -581,6 +581,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "$3 {{PLURAL:$3|tövsiyə olunan redaktə}} {{GENDER:$2|etmisiniz}}. Daha çox yeni bacarıqlar əldə etmək üçün davam edin.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Tövsiyə olunan redaktə edin",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "{{PLURAL:$3|Redaktənizdə|Redaktələrinizdə}} böyük irəliləyiş var! {{GENDER:$2|Bacarıqlarınızı}} inkişaf etdirmək üçün daha çox tövsiyəyə baxın.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Digər redaktələri sına",
 	"echo-category-title-ge-newcomer": "İnkişaf xüsusiyyətləri",
 	"echo-pref-tooltip-ge-newcomer": "Yeni gələnlər üçün tapşırıqlar və yeni istifadəçilərə kömək etmək üçün nəzərdə tutulmuş digər funksiyalar haqqında mənə bildirin.",
 	"growthexperiments-homepage-community-updates-header": "İcma Yeniləmələri",

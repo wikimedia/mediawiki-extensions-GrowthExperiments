@@ -578,6 +578,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Fixeches}} $3 {{PLURAL:$3|edición suxerida|edicións suxeridas}}. Continúa desenvolvendo máis habilidades.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Facer unha edición suxerida",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Acadaches un bo progreso {{PLURAL:$3|coa túa edición|coas túas edicións}}! Continúa explorando máis suxestións para mellorar as {{GENDER:$2|túas}} habilidades.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Probar outras modificacións",
 	"echo-category-title-ge-newcomer": "Funcionalidades de crecemento",
 	"echo-pref-tooltip-ge-newcomer": "Notificádeme sobre as tarefas para as persoas principiantes e outras funcións deseñadas para axudar ás persoas principiantes.",
 	"growthexperiments-homepage-community-updates-header": "Actualizacións da comunidade",

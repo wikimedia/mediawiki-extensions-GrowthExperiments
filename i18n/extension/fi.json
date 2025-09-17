@@ -125,6 +125,8 @@
 	"communityconfiguration-mentorship-gementorshipenabled-control-label": "Mentorointiominaisuudet on kytketty päälle",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Vähimmäismäärä päiviä, jonka ikäinen käyttäjätunnuksen on oltava ennen kuin hän voi ilmoittautua mentoriksi",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Vähimmäismuokkausmäärä, joka käyttäjän on täytynyt tehdä (missä tahansa nimiavaruudessa) ennen kuin hän voi ilmoittautua mentoriksi",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "Muokkausmäärä",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "Tunnuksen ikä (päivissä)",
 	"communityconfiguration-growthhomepage-title": "Tulokkaiden perehdytys",
 	"communityconfiguration-growthhomepage-description": "Mukauta uusien tunnusten perehdytystä ohjeilla ja kannustusviesteillä.",
 	"communityconfiguration-growthhomepage-info-text": "Tulokkaan aloitussivu ([[Special:Homepage]]) tarjoaa ohjeita uusille tunnuksille. Jos rekisteröitymisen yhteydessä tunnuksen haltija ilmoittaa haluavansa luoda uusia artikkeleita tai lisätä kuvia Wikipediaan, suosittelemme hänelle ensin pienempiä muokkauksia alkuun pääsemiseksi ja tarjoamme lisäohjeita.",

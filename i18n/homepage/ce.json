@@ -308,7 +308,7 @@
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|Хьайна}} хийца хьашто йолу темаш харжа",
 	"growthexperiments-homepage-claimmentee-title": "Ӏамархо тӀелаца",
 	"growthexperiments-homepage-claimmentee-pretext": "ХӀокху агӀоно таро ло декъашхочун хьехамча {{GENDER:$1|хьо}} хӀотто. Рекомендаци йу хьайна бевзаш болчу декъашхошна хӀара таро лелор, йа {{GENDER:$1|ахьа}} хӀинцале а болх бан боличарна.",
-	"growthexperiments-homepage-claimmentee-mentee": "Варасан аккаунт",
+	"growthexperiments-homepage-claimmentee-mentee": "Ӏамархочун аккаунт",
 	"growthexperiments-homepage-claimmentee-reason": "Ахьа хӀара варас харжаран бахьна",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Ахьа хийцина}} хьехамча {{PLURAL:$2|декъашхо}} $1 {{GENDER:$4|$4|$5}}. ЙухагӀо [[Special:MentorDashboard|хьехамчан панель]] тӀе.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1}}-н хьехамча хӀинцале а хийцина. Бакъалла а лаьий {{GENDER:$2|хьуна}} йуха хийца?",

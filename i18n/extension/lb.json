@@ -159,6 +159,8 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Maximal Zuel vun Ännerungen, déi e Benotzer hu ka fir als luewenswäert consideréiert ze ginn",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Standardméisseg minimal Zuel vun Ännerungen, déi e Mentoréierten hu muss fir luewenswäert ze sinn",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentore kënnen dës Optioun fir hiren eegene Benotzer am Mentoren-Dashboard änneren.",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "Zuel vun den Ännerungen",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "Alter vum Kont (an Deeg)",
 	"communityconfiguration-growthhomepage-title": "Aschaffe vun neie Benotzer",
 	"communityconfiguration-growthhomepage-description": "Personaliséiert d'Aféierung fir nei Titulaire vun engem Kont mat Hëllef no der Aschreiwung a Level-up-Notifikatiounen.",
 	"communityconfiguration-growthhomepage-info-text": "D'Homepage fir nei Benotzer ([[Special:Homepage]]) bitt Hëllef fir nei Benotzer. Wann en neie Benotzer no der Registréierung ugeet, datt hien en Artikel erstellen oder en neit Bild op Wikipedia derbäisetze wëll, recommandéiere mir iech, fir datt den Ufank méi einfach ass, als éischt eng kleng Ännerung ze maachen. Duerno kann e Link fir zousätzlech Hëllef ugi ginn.",

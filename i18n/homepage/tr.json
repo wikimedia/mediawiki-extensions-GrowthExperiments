@@ -605,6 +605,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "$3 {{PLURAL:$3|önerilen düzenleme}} {{GENDER:$2|yaptınız}}. Daha fazla yeni beceri öğrenmeye devam edin.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Önerilen bir düzenleme yapın",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "{{PLURAL:$3|Düzenlemeniz|Düzenlemeleriniz}} konusunda harika ilerleme kaydettiniz! {{GENDER:$2|Becerilerinizi}} geliştirmek için daha fazla öneri keşfetmeye devam edin.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Diğer düzenlemeleri deneyin",
 	"echo-category-title-ge-newcomer": "Growth özellikleri",
 	"echo-pref-tooltip-ge-newcomer": "Yeni gelenler için görevler ve yeni kullanıcılara yardımcı olmak için tasarlanmış diğer özellikler hakkında beni uyar.",
 	"growthexperiments-homepage-community-updates-header": "Topluluk Güncellemeleri",

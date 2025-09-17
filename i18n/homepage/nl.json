@@ -594,6 +594,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|U hebt}} $3 voorgestelde bewerking{{PLURAL:$3||en}} gedaan. Ga zo door om meer nieuwe vaardigheden te leren.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Een voorgestelde bewerking maken",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Zo gaat het prima met {{GENDER:$2|uw}} bewerking{{PLURAL:$3||en}}! Blijf de suggesties verkennen om uw vaardigheden uit te breiden.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Andere bewerkingen proberen",
 	"echo-category-title-ge-newcomer": "Groeikenmerken",
 	"echo-pref-tooltip-ge-newcomer": "Mij op de hoogte houden van taken voor nieuwkomers en andere functies die zijn ontworpen om nieuwe gebruikers te helpen.",
 	"growthexperiments-homepage-community-updates-header": "Gemeenschapsnieuwtjes",

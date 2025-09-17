@@ -566,6 +566,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Olet tehnyt}} $3 {{PLURAL:$3|ehdotetun muokkauksen|ehdotettua muokkausta}}. Jatka oppiaksesi uusia taitoja.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Tee ehdotettu muokkaus",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Hyvää edistystä {{PLURAL:$3|muokkauksissasi}}! Katso lisää ehdotettuja muokkauksia kehittääksesi {{GENDER:$2|muokkaustaitojasi}}.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Kokeile muita muokkauksia",
 	"echo-category-title-ge-newcomer": "Kasvuominaisuudet",
 	"echo-pref-tooltip-ge-newcomer": "Ilmoita uusien tulokkaiden tehtävistä ja muista uusien käyttäjien avuksi tarkoitetuista ominaisuuksista",
 	"growthexperiments-homepage-community-updates-header": "Yhteisön ilmoitukset",
