@@ -221,11 +221,14 @@ return [
 		if ( Util::useMetricsPlatform() ) {
 			return new ExperimentXLabManager(
 				new ServiceOptions(
-					ExperimentUserManager::CONSTRUCTOR_OPTIONS,
+					ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
 					$services->getMainConfig()
 				),
 				GrowthExperimentsServices::wrap( $services )->getLogger(),
+				$services->getService( 'MetricsPlatform.ConfigsFetcher' ),
+				$services->getService( 'MetricsPlatform.XLab.EnrollmentAuthority' ),
 				$services->getService( 'MetricsPlatform.XLab.ExperimentManager' ),
+				$services->getMainConfig(),
 			);
 		}
 		return new ExperimentUserManager(

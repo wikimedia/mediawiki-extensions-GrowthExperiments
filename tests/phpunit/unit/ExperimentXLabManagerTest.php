@@ -2,9 +2,11 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\ExperimentXLabManager;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\MetricsPlatform\InstrumentConfigsFetcher;
+use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentAuthority;
 use MediaWiki\Extension\MetricsPlatform\XLab\Experiment;
 use MediaWiki\Extension\MetricsPlatform\XLab\ExperimentManager;
 use MediaWiki\User\UserIdentityValue;
@@ -25,13 +27,16 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				AbstractExperimentManager::CONSTRUCTOR_OPTIONS,
+				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
+					'MetricsPlatformEnableExperiments' => false,
+					'MetricsPlatformEnableExperimentConfigsFetching' => []
 				]
 			),
 			new NullLogger(),
-			$this->getExperimentManager()
+			...$this->getXLabDependencies(),
+			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			// No valid experiments, fallback to configured default, same as for ExperimentUserManager
@@ -49,18 +54,21 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				AbstractExperimentManager::CONSTRUCTOR_OPTIONS,
+				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
+					'MetricsPlatformEnableExperiments' => false,
+					'MetricsPlatformEnableExperimentConfigsFetching' => []
 				]
 			),
 			new NullLogger(),
-			$this->getExperimentManager(
+			...$this->getXLabDependencies(
 				[
 					'experiment-1' => null,
 					'experiment-2' => null,
 				]
-			)
+			),
+			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			public const VALID_EXPERIMENTS = [
@@ -79,19 +87,22 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				AbstractExperimentManager::CONSTRUCTOR_OPTIONS,
+				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
+					'MetricsPlatformEnableExperiments' => false,
+					'MetricsPlatformEnableExperimentConfigsFetching' => []
 				]
 			),
 			new NullLogger(),
-			$this->getExperimentManager(
+			...$this->getXLabDependencies(
 				[
 					'experiment-3' => null,
 					'experiment-2' => 'some-group',
 					'experiment-1' => null,
 				]
-			)
+			),
+			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			public const VALID_EXPERIMENTS = [
@@ -114,19 +125,22 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				AbstractExperimentManager::CONSTRUCTOR_OPTIONS,
+				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
+					'MetricsPlatformEnableExperiments' => false,
+					'MetricsPlatformEnableExperimentConfigsFetching' => []
 				]
 			),
 			new NullLogger(),
-			$this->getExperimentManager(
+			...$this->getXLabDependencies(
 				[
 					'experiment-3' => 'another-group',
 					'experiment-2' => 'some-group',
 					'experiment-1' => null,
 				]
-			)
+			),
+			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			public const VALID_EXPERIMENTS = [
@@ -148,16 +162,19 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				AbstractExperimentManager::CONSTRUCTOR_OPTIONS,
+				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
+					'MetricsPlatformEnableExperiments' => false,
+					'MetricsPlatformEnableExperimentConfigsFetching' => []
 				]
 			),
 			new NullLogger(),
-			$this->getExperimentManager( [
+			...$this->getXLabDependencies( [
 				'experiment-1' => null,
 				'experiment-2' => null,
-			] )
+			] ),
+			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			public const VALID_EXPERIMENTS = [
@@ -176,11 +193,13 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	private function getExperimentManager( ?array $assignments = [] ): ExperimentManager {
+	private function getXLabDependencies( ?array $assignments = [] ): array {
 		if ( !class_exists( 'MediaWiki\Extension\MetricsPlatform\XLab\ExperimentManager' ) ) {
 			$this->markTestSkipped( 'MetricsPlatform\XLab\ExperimentManager is not available.' );
 		}
 		$experimentManager = $this->createMock( ExperimentManager::class );
+		$configsFetcher = $this->createMock( InstrumentConfigsFetcher::class );
+		$enrollmentAuthority = $this->createMock( EnrollmentAuthority::class );
 		$metricsClientMock = $this->createMock( MetricsClient::class );
 		$experimentManager->method( 'getExperiment' )
 			->willReturnOnConsecutiveCalls(
@@ -197,6 +216,10 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 					);
 				}, array_keys( $assignments ) ),
 			);
-		return $experimentManager;
+		return [
+			$configsFetcher,
+			$enrollmentAuthority,
+			$experimentManager,
+		];
 	}
 }

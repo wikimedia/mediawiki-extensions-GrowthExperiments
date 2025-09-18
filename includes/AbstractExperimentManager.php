@@ -15,7 +15,7 @@ abstract class AbstractExperimentManager {
 	public function __construct(
 		ServiceOptions $options,
 	) {
-		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
+		$options->assertRequiredOptions( static::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
 	}
 

@@ -747,8 +747,8 @@ class HomepageHooks implements
 			return;
 		}
 
-		$geForceVariant = RequestContext::getMain()->getRequest()
-			->getVal( 'geForceVariant' );
+		$context = RequestContext::getMain();
+		$geForceVariant = $context->getRequest()->getVal( 'geForceVariant' );
 		$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_ENABLE, 1 );
 		$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_PT_LINK, 1 );
 		// Default option is that the user has seen the tours/notices (so we don't prompt
@@ -778,6 +778,11 @@ class HomepageHooks implements
 			);
 		}
 		$wiki = WikiMap::getCurrentWikiId();
+		// If metrics platform is in use, force a re-enrollment to give a chance
+		// to assign to an active logged in experiment
+		if ( $this->experimentUserManager instanceof ExperimentXLabManager ) {
+			$this->experimentUserManager->enrollUser( $context, $user );
+		}
 		// Variant assignment for forced variants and variant metric logging. Wrapped in a deferred update because
 		// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
 		// not guaranteed. This is necessary so the getOption call to the USER_PREFERENCE has a chance to retrieve
