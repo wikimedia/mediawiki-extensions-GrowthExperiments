@@ -2,13 +2,25 @@
 
 namespace GrowthExperiments;
 
+use MediaWiki\Config\Config;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\MetricsPlatform\InstrumentConfigsFetcher;
+use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentAuthority;
+use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentRequest;
+use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentResultBuilder;
+use MediaWiki\Extension\MetricsPlatform\XLab\EnrollmentCssClassSerializer;
 use MediaWiki\Extension\MetricsPlatform\XLab\ExperimentManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 
 class ExperimentXLabManager extends AbstractExperimentManager {
 
+	public const CONSTRUCTOR_OPTIONS = [
+		'GEHomepageDefaultVariant',
+		'MetricsPlatformEnableExperiments',
+		'MetricsPlatformEnableExperimentConfigsFetching',
+	];
 	// TODO: valid experiments and variants should/could be read from config
 	public const GET_STARTED_EXPERIMENT = 'growthexperiments-get-started-notification';
 	public const VARIANT_CONTROL = 'control';
@@ -16,22 +28,45 @@ class ExperimentXLabManager extends AbstractExperimentManager {
 	public const VALID_EXPERIMENTS = [
 		self::GET_STARTED_EXPERIMENT,
 	];
-	private ExperimentManager $experimentManager;
 
 	/** Map of (experiment name => assigned group) */
 	private array $assignments = [];
 	private ?string $currentExperimentName = null;
 	private bool $computedAssignments = false;
-	private LoggerInterface $logger;
 
 	public function __construct(
 		ServiceOptions $options,
-		LoggerInterface $logger,
-		ExperimentManager $experimentManager
+		private readonly LoggerInterface $logger,
+		private readonly InstrumentConfigsFetcher $configsFetcher,
+		private readonly EnrollmentAuthority $enrollmentAuthority,
+		private readonly ExperimentManager $experimentManager,
+		private readonly Config $config,
 	) {
 		parent::__construct( $options );
-		$this->logger = $logger;
-		$this->experimentManager = $experimentManager;
+	}
+
+	public function enrollUser( RequestContext $ctx, UserIdentity $user ) {
+		if ( $this->options->get( 'MetricsPlatformEnableExperimentConfigsFetching' ) ) {
+			$this->configsFetcher->updateExperimentConfigs();
+		}
+
+		$activeLoggedInExperiments = $this->config->has( 'MetricsPlatformExperiments' ) ?
+			$this->config->get( 'MetricsPlatformExperiments' ) :
+			$this->configsFetcher->getExperimentConfigs();
+
+		$enrollmentRequest = new EnrollmentRequest( $activeLoggedInExperiments, $user, $ctx->getRequest() );
+		$result = new EnrollmentResultBuilder();
+		$this->enrollmentAuthority->enrollUser( $enrollmentRequest, $result );
+
+		// Override xLab's enrollment result
+		$this->experimentManager->initialize( $result->build() );
+
+		$output = $ctx->getOutput();
+		// Override the JS xLab SDK config vars
+		$output->addJsConfigVars( 'wgMetricsPlatformUserExperiments', $result->build() );
+		// T393101: Add CSS classes representing experiment enrollment and assignment automatically so that experiment
+		// implementers don't have to do this themselves.
+		$output->addBodyClasses( EnrollmentCssClassSerializer::serialize( $result->build() ) );
 	}
 
 	private function initialize(): void {
