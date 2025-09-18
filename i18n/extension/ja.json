@@ -110,6 +110,8 @@
 	"communityconfiguration-helppanel-gehelppanellinks-text-label": "ラベル",
 	"communityconfiguration-helppanel-gehelppanellinks-add-element-button-label": "別のリンクを追加",
 	"communityconfiguration-helppanel-gehelppanelviewmoretitle-label": "「ヘルプ記事をもっと表示する」のリンク先ページ",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "編集回数",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "アカウントの経過日数",
 	"communityconfiguration-growthhomepage-info-text": "新規参加者ホームページ ([[Special:Homepage]]) は新規アカウント保持者向けのガイダンスを提供します。登録してすぐに、新規アカウント保持者がウィキペディアに記事を作成したり新しい画像を追加することに興味を示した場合、まずより小さな編集から始めることを推奨し、さらなるガイダンスへのリンクを提供します。",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-label": "新規参入者ホームページリンク",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "新しい記事の作成に関するリンク先ヘルプページ",
@@ -152,5 +154,13 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-label": "リンクを追加（構造化タスク）",
 	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "タスクを無効化。",
 	"communityconfiguration-growthsuggestededits-link_recommendation-excludedtemplates-label": "ここで定義されたテンプレートを含む記事をこのタスク種別のタスクとして利用者に表示しない。",
-	"communityconfiguration-growthsuggestededits-link_recommendation-excludedcategories-label": "ここで定義されたカテゴリを含む記事をこのタスク種別のタスクとして利用者に表示しない。"
+	"communityconfiguration-growthsuggestededits-link_recommendation-excludedcategories-label": "ここで定義されたカテゴリを含む記事をこのタスク種別のタスクとして利用者に表示しない。",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "新規利用者の総編集回数に基づいて「リンクの追加」タスクの提案を停止する",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "いいえ",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "はい、合計5回編集後",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "はい、合計20回編集後",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "はい、合計50回編集後",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "はい、合計75回編集後",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "はい、合計150回編集後",
+	"growthexperiments-addlink-done-button": "完了"
 }
