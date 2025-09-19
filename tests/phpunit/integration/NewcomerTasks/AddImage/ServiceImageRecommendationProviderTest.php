@@ -24,7 +24,6 @@ use MockTitleTrait;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
-use Wikimedia\Stats\Metrics\TimingMetric;
 use Wikimedia\Stats\StatsFactory;
 use Wikimedia\Stats\StatsUtils;
 
@@ -86,7 +85,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$provider = new ServiceImageRecommendationProvider(
 			$titleFactory,
-			$this->getStatsFactory(),
+			StatsFactory::newNull(),
 			$apiHandler,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -229,7 +228,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$provider = new ServiceImageRecommendationProvider(
 			$titleFactory,
-			$this->getStatsFactory(),
+			StatsFactory::newNull(),
 			$apiHandler,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -274,7 +273,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$provider = new ServiceImageRecommendationProvider(
 			$this->getTitleFactory(),
-			$this->getStatsFactory(),
+			StatsFactory::newNull(),
 			$apiHandler,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -324,7 +323,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$provider = new ServiceImageRecommendationProvider(
 			$this->getTitleFactory(),
-			$this->getStatsFactory(),
+			StatsFactory::newNull(),
 			$apiHandler,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -715,18 +714,5 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			false
 		);
 		return $apiHandler->getSuggestionDataFromApiResponse( $data, $taskType );
-	}
-
-	private function getStatsFactory() {
-		$stats = $this->createMock( StatsFactory::class );
-		$this->setService( 'StatsFactory', $stats );
-		$stats->method( 'withComponent' )->willReturnSelf();
-
-		$timing = $this->createMock( TimingMetric::class );
-		$timing->method( 'setLabel' )->willReturnSelf();
-		$timing->method( 'observeSeconds' )->willReturnSelf();
-		$stats->method( 'getTiming' )->willReturn( $timing );
-
-		return $stats;
 	}
 }
