@@ -4,5 +4,13 @@
 			"Умар"
 		]
 	},
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Хаттарш ца карийна."
+	"apihelp-homepagequestionstore-summary": "ЦӀерачу агӀонан модулехула чудехкина форматехь долу хаттарш схьаэца.",
+	"apihelp-homepagequestionstore-param-questionformat": "Хаттарш чудаларан формат, масала, HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Хаттарийн ларма",
+	"apihelp-homepagequestionstore-param-userid": "Хаттарш схьаэца леррина декъашхочун идентификатор.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Хаттарш ца карийна.",
+	"apihelp-growthsetmentor-summary": "Цхьана декъашхочунна хьехамхо хӀотто. Хийцамаш дӀайазбийр бу нахана хьалха.",
+	"apihelp-growthsetmentor-param-mentee": "Ӏамархочун аккаунт",
+	"apihelp-growthsetmentor-param-mentor": "Хьехамхочун цӀе",
+	"apihelp-growthsetmentor-param-reason": "Хийцам барна бахьана"
 }

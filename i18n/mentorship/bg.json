@@ -22,10 +22,18 @@
 	"growthexperiments-quit-mentorship-reason": "Причина",
 	"echo-category-title-ge-mentorship": "Менторство",
 	"echo-pref-tooltip-ge-mentorship": "Известия, свързани с функциите за наставничество, поддържани от екипа за растеж. Това известие ви уведомява, че сте били потърсени като наставляван или че някой от вашите наставлявани е потърсен от някой друг.",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "Промяна на {{GENDER:|Вашето}} приветствено съобщение",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "Съхраняване",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Отказ",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Приветствено съобщение",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Вашето}} приветствено съобщение беше променено на „$1“.",
 	"growthexperiments-manage-mentors-title": "Управление на менторите",
 	"growthexperiments-manage-mentors-username": "Потребителско име",
 	"growthexperiments-manage-mentors-last-active": "Последна активност",
-	"growthexperiments-manage-mentors-remove-mentor": "Премахване"
+	"growthexperiments-manage-mentors-remove-mentor": "Премахване",
+	"growthexperiments-mentorship-enrollasmentor-title": "Записване като {{GENDER:|ментор}}",
+	"growthexperiments-mentorship-enrollasmentor-pretext": "Благодарим {{GENDER:|Ви}}, че доброволно искате да бъдете {{GENDER:|ментор}} в {{SITENAME}}. {{GENDER:|Можете}} да се запишете като ментор, като попълните следния формуляр.",
+	"growthexperiments-mentorship-enrollasmentor-form-message": "Приветствено съобщение",
+	"growthexperiments-mentorship-enrollasmentor-form-message-help": "Приветственото съобщение {{GENDER:|Ви}} представя в качеството Ви на ментор. Моля, не превишавайте ограничението от 240 знака. Уикитекст не е позволен.",
+	"growthexperiments-mentorship-enrollasmentor-enroll": "Записване"
 }
