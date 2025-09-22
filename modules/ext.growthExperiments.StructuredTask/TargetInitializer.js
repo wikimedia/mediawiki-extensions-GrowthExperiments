@@ -221,12 +221,9 @@ TargetInitializer.prototype.disableTools = function ( toolsToDisable ) {
  * See T281434
  */
 TargetInitializer.prototype.disableCommands = function () {
-	const safeCommands = this.safeCommands;
-	Object.keys( ve.ui.commandRegistry.registry ).forEach( ( commandItem ) => {
-		if ( !safeCommands.includes( commandItem ) ) {
-			ve.ui.commandRegistry.unregister( commandItem );
-		}
-	} );
+	ve.ui.commandRegistry.unregister( ve.ui.commandRegistry.getNames().filter(
+		( name ) => !this.safeCommands.includes( name ),
+	) );
 };
 
 /**
