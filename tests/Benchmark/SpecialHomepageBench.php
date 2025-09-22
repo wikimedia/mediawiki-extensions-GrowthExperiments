@@ -60,5 +60,4 @@ class SpecialHomepageBench extends GrowthExperimentsBench {
 		$this->homepage->execute();
 	}
 
-	// phpcs:enable MediaWiki.Commenting.FunctionAnnotations.UnrecognizedAnnotation
 }

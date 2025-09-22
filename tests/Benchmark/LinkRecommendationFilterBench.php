@@ -25,5 +25,4 @@ class LinkRecommendationFilterBench extends GrowthExperimentsBench {
 		$this->linkRecommendationFilter->filter( $this->tasks );
 	}
 
-	// phpcs:enable MediaWiki.Commenting.FunctionAnnotations.UnrecognizedAnnotation
 }
