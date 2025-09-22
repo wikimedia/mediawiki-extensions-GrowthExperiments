@@ -11,29 +11,29 @@
 			<path fill="#fff" d="M172 127h108v90H172z"/>
 			<path fill="#fff" d="M280 193H172v24h108z"/>
 			<rect width="16" height="12" fill="#eaecf0" stroke="#a2a9b1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 274 199)"/>
-			<path fill="#54595d" fill-rule="evenodd" d="M264.8 206.668 263.132 205l-.564.564 2.232 2.236 4.8-4.8-.564-.568z" clip-rule="evenodd"/>
+			<path fill="#54595d" fill-rule="evenodd" d="M264.8 206.668 263.132 205l-.564.564 2.232 2.236 4.8-4.8-.564-.568z"/>
 			<rect width="16" height="12" fill="#eaecf0" stroke="#a2a9b1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 194 199)"/>
-			<path fill="#54595d" fill-rule="evenodd" d="m187.5 201.4.6.6-3 3 3 3-.6.6-3.6-3.6z" clip-rule="evenodd"/>
+			<path fill="#54595d" fill-rule="evenodd" d="m187.5 201.4.6.6-3 3 3 3-.6.6-3.6-3.6z"/>
 			<rect width="16" height="12" fill="#eaecf0" stroke="#a2a9b1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 252 199)"/>
-			<path fill="#54595d" fill-rule="evenodd" d="m243.435 204.999-2.545-2.545.565-.566 2.546 2.546 2.545-2.545.565.565-2.545 2.545 2.546 2.546-.566.565-2.545-2.545-2.547 2.546-.565-.565z" clip-rule="evenodd"/>
+			<path fill="#54595d" fill-rule="evenodd" d="m243.435 204.999-2.545-2.545.565-.566 2.546 2.546 2.545-2.545.565.565-2.545 2.545 2.546 2.546-.566.565-2.545-2.545-2.547 2.546-.565-.565z"/>
 			<path fill="#fff" d="M172 127h108v70H172z"/>
 			<path fill="#a2a9b1" d="M178 167h45v4h-45zm0-20h96v4h-96zm0 27h45v4h-45zm9-19h36v8h-36z"/>
 			<rect width="6" height="6" fill="#a2a9b1" rx="3" transform="matrix(-1 0 0 1 203 182)"/>
 			<path fill="#a2a9b1" d="M194 183h-16v4h16z"/>
 			<path fill="#eaf3ff" d="M172 127h108v14H172z"/>
 			<path fill="#eaecf0" d="M226 155h48v32h-48z"/>
-			<path fill="#a2a9b1" fill-rule="evenodd" d="M256.4 165.6h-12.8a1.6 1.6 0 0 0-1.6 1.6v9.6a1.6 1.6 0 0 0 1.6 1.6h12.8a1.6 1.6 0 0 0 1.6-1.6v-9.6a1.6 1.6 0 0 0-1.6-1.6M243.464 176l3.272-4.2 2.336 2.808 3.264-4.208 4.2 5.6z" clip-rule="evenodd"/>
-			<path fill="#54595d" fill-rule="evenodd" d="M266.75 131.5h-3.252a1 1 0 0 0-.998.998V136h3.5v1h-2.502a.997.997 0 0 0-.998 1v1h9v-1c0-.553-.447-1-.998-1H268v-1h3.5v-3.502a1 1 0 0 0-.998-.998h-3.252v-1.043a.75.75 0 1 0-.5 0zm2 3a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5m-3.5 0a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5" clip-rule="evenodd"/>
+			<path fill="#a2a9b1" fill-rule="evenodd" d="M256.4 165.6h-12.8a1.6 1.6 0 0 0-1.6 1.6v9.6a1.6 1.6 0 0 0 1.6 1.6h12.8a1.6 1.6 0 0 0 1.6-1.6v-9.6a1.6 1.6 0 0 0-1.6-1.6M243.464 176l3.272-4.2 2.336 2.808 3.264-4.208 4.2 5.6z"/>
+			<path fill="#54595d" fill-rule="evenodd" d="M266.75 131.5h-3.252a1 1 0 0 0-.998.998V136h3.5v1h-2.502a.997.997 0 0 0-.998 1v1h9v-1c0-.553-.447-1-.998-1H268v-1h3.5v-3.502a1 1 0 0 0-.998-.998h-3.252v-1.043a.75.75 0 1 0-.5 0zm2 3a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5m-3.5 0a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5"/>
 			<path stroke="#a2a9b1" stroke-linecap="square" d="M171.5 126.5h109v91h-109z"/>
 		</g>
 		<path fill="#fc3" fill-opacity=".5" stroke="#fc3" stroke-width="2" d="M169.618 215.333 16.402 148.547A4 4 0 0 1 14 144.88V112a4 4 0 0 1 4-4h162l100 85.5v22H170.417c-.275 0-.547-.057-.799-.167z"/>
 		<rect width="166" height="40" x="2" y="-2" fill="#fff" rx="4" transform="matrix(-1 0 0 1 182 109.5)"/>
 		<rect width="24" height="18" fill="#eaecf0" stroke="#a2a9b1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 169 118.5)"/>
-		<path fill="#54595d" fill-rule="evenodd" d="m155.2 130.002-2.502-2.502-.846.846 3.348 3.354 7.2-7.2-.846-.852z" clip-rule="evenodd"/>
+		<path fill="#54595d" fill-rule="evenodd" d="m155.2 130.002-2.502-2.502-.846.846 3.348 3.354 7.2-7.2-.846-.852z"/>
 		<rect width="24" height="18" fill="#eaecf0" stroke="#a2a9b1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 49 118.5)"/>
-		<path fill="#54595d" fill-rule="evenodd" d="m39.25 122.1.9.9-4.5 4.5 4.5 4.5-.9.9-5.4-5.4z" clip-rule="evenodd"/>
+		<path fill="#54595d" fill-rule="evenodd" d="m39.25 122.1.9.9-4.5 4.5 4.5 4.5-.9.9-5.4-5.4z"/>
 		<rect width="24" height="18" fill="#eaecf0" stroke="#a2a9b1" stroke-linecap="square" rx="2" transform="matrix(-1 0 0 1 136 118.5)"/>
-		<path fill="#54595d" fill-rule="evenodd" d="m123.153 127.499-3.819-3.819.849-.848 3.818 3.818 3.817-3.817.849.849-3.817 3.817 3.818 3.818-.848.849-3.819-3.819-3.819 3.82-.849-.849z" clip-rule="evenodd"/>
+		<path fill="#54595d" fill-rule="evenodd" d="m123.153 127.499-3.819-3.819.849-.848 3.818 3.818 3.817-3.817.849.849-3.817 3.817 3.818 3.818-.848.849-3.819-3.819-3.819 3.82-.849-.849z"/>
 		<rect width="166" height="40" x="2" y="-2" stroke="#fc3" stroke-linecap="square" stroke-width="4" rx="4" transform="matrix(-1 0 0 1 182 109.5)"/>
 		<path fill="#fc3" stroke="#fc3" stroke-linecap="square" d="M280 194h.5v22h-109v-22z" opacity=".5"/>
 	</g>
