@@ -48,12 +48,12 @@
 		}
 		return {
 			src: imageSrc,
-			maxWidth: maxWidth
+			maxWidth: maxWidth,
 		};
 	}
 
 	module.exports = {
-		getImageRenderData: getImageRenderData
+		getImageRenderData: getImageRenderData,
 	};
 
 }() );

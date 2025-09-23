@@ -34,14 +34,14 @@ StructuredTaskSaveDialog.prototype.initialize = function () {
  */
 StructuredTaskSaveDialog.prototype.getSetupProcess = function ( data ) {
 	return this.constructor.super.prototype.getSetupProcess.call( this,
-		this.getDialogData( data )
+		this.getDialogData( data ),
 	).first( function () {
 		// Hide the preview and diff views if the user did not accept anything, and so submitting
 		// will cause no change to the article.
 		if ( !ve.init.target.hasEdits() ) {
 			data.canPreview = data.canReview = false;
 			data.saveButtonLabel = mw.message(
-				'growthexperiments-structuredtask-summary-submit'
+				'growthexperiments-structuredtask-summary-submit',
 			).text();
 		}
 		this.setVisualDiffPreference();
@@ -51,7 +51,7 @@ StructuredTaskSaveDialog.prototype.getSetupProcess = function ( data ) {
 /** @inheritDoc */
 StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
 	return this.constructor.super.prototype.getTeardownProcess.call(
-		this, data
+		this, data,
 	).next( function () {
 		const suggestedEditSession = SuggestedEditSession.getInstance();
 
@@ -60,7 +60,7 @@ StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
 		SuggestionInteractionLogger.log( 'close', this.getLogMetadata(), {
 			/* eslint-disable camelcase */
 			homepage_pageview_token: this.homepagePageviewToken,
-			active_interface: 'editsummary_dialog'
+			active_interface: 'editsummary_dialog',
 			/* eslint-enable camelcase */
 		} );
 
@@ -81,7 +81,7 @@ StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
 /** @inheritDoc */
 StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
 	return this.constructor.super.prototype.getActionProcess.call(
-		this, action
+		this, action,
 	).next( () => {
 		// The following actions are used here:
 		// * editsummary_save
@@ -92,7 +92,7 @@ StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
 			SuggestionInteractionLogger.log( 'editsummary_' + action, this.getLogMetadata(), {
 				/* eslint-disable camelcase */
 				homepage_pageview_token: this.homepagePageviewToken,
-				active_interface: 'editsummary_dialog'
+				active_interface: 'editsummary_dialog',
 				/* eslint-enable camelcase */
 			} );
 		}
@@ -122,13 +122,13 @@ StructuredTaskSaveDialog.prototype.setupUserErrorContent = function ( username )
 	const errorMessage = new OO.ui.MessageWidget( {
 			type: 'error',
 			label: mw.message( 'growthexperiments-structuredtask-user-error' )
-				.params( [ username ] ).escaped()
+				.params( [ username ] ).escaped(),
 		} ),
 		loginButton = new OO.ui.ButtonWidget( {
 			label: mw.message(
-				'growthexperiments-structuredtask-user-error-login-cta'
+				'growthexperiments-structuredtask-user-error-login-cta',
 			).escaped(),
-			flags: [ 'primary', 'progressive' ]
+			flags: [ 'primary', 'progressive' ],
 		} );
 	loginButton.connect( this, { click: 'onLoginButtonClicked' } );
 	this.$element.find( '.oo-ui-processDialog-errors-title' ).after( errorMessage.$element );
@@ -159,7 +159,7 @@ StructuredTaskSaveDialog.prototype.onLoginButtonClicked = function () {
 	$( window ).off( 'beforeunload' );
 	window.onbeforeunload = null;
 	location.href = new mw.Title( 'Special:UserLogin' ).getUrl( {
-		returnto: 'Special:Homepage'
+		returnto: 'Special:Homepage',
 	} );
 };
 
@@ -179,7 +179,7 @@ StructuredTaskSaveDialog.prototype.getDialogData = function ( data ) {
 
 	checkboxFields = checkboxFields.filter( ( fieldLayout ) => allowList.includes( fieldLayout.getField() ) );
 	return Object.assign( {}, data, {
-		checkboxFields: checkboxFields
+		checkboxFields: checkboxFields,
 	} );
 };
 

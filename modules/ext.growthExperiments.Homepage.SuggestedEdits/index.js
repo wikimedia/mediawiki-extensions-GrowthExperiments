@@ -38,12 +38,12 @@
 				$element: $wrapper,
 				$nav: $container.find( '.suggested-edits-footer-navigation' ),
 				mode: mode,
-				qualityGateConfig: taskPreviewData.qualityGateConfig || {}
+				qualityGateConfig: taskPreviewData.qualityGateConfig || {},
 			},
 			new Logger(
-				mw.config.get( 'wgGEHomepagePageviewToken' )
+				mw.config.get( 'wgGEHomepagePageviewToken' ),
 			),
-			rootStore
+			rootStore,
 		);
 
 		if ( taskQueue.length && !taskPreviewData.error ) {
@@ -53,8 +53,8 @@
 				new NoResultsWidget( {
 					topicMatching: filtersStore.topicsEnabled,
 					topicMatchModeIsAND: filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND,
-					setMatchModeOr: suggestedEditsModule.setMatchModeAndSave.bind( suggestedEditsModule, TOPIC_MATCH_MODES.OR )
-				} )
+					setMatchModeOr: suggestedEditsModule.setMatchModeAndSave.bind( suggestedEditsModule, TOPIC_MATCH_MODES.OR ),
+				} ),
 			);
 		} else if ( taskPreviewData.error ) {
 			suggestedEditsModule.showCard( new ErrorCardWidget() );
@@ -83,8 +83,8 @@
 			{
 				platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
 				// eslint-disable-next-line camelcase
-				includes_server_response_time: false
-			}
+				includes_server_response_time: false,
+			},
 		);
 
 		// Track time from request start to client-side TTI using Performance API
@@ -95,8 +95,8 @@
 				{
 					platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
 					// eslint-disable-next-line camelcase
-					includes_server_response_time: true
-				}
+					includes_server_response_time: true,
+				},
 			);
 		}
 

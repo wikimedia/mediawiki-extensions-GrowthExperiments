@@ -46,13 +46,13 @@
 						'growthexperiments-help-panel-suggested-edits-switch-editor-to-' + this.preferredEditor,
 						new OO.ui.IconWidget( {
 							icon: 'alert',
-							classes: [ 'oo-ui-image-warning' ]
-						} ).$element ).parse() )
+							classes: [ 'oo-ui-image-warning' ],
+						} ).$element ).parse() ),
 				),
 			$switchLink = $( '<a>' ).attr( {
 				classes: [ 'suggested-edits-panel-switch-editor-panel-link' ],
 				'data-link-id': 'switch-editor',
-				href: '#'
+				href: '#',
 			} );
 		$switchLink.on( 'click', this.onClick.bind( this ) );
 
@@ -64,9 +64,9 @@
 					// * growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text
 					mw.message(
 						'growthexperiments-help-panel-suggested-edits-switch-editor-to-' +
-						this.preferredEditor + '-link-text'
-					).text()
-				) )
+						this.preferredEditor + '-link-text',
+					).text(),
+				) ),
 			);
 		}
 		this.$element.append( $content );
@@ -115,7 +115,7 @@
 	 */
 	SwitchEditorPanel.prototype.isCurrentEditorPreferred = function () {
 		const editorModes = {
-			visualeditor: [ 'machineSuggestions' ]
+			visualeditor: [ 'machineSuggestions' ],
 		};
 		if ( this.currentEditor === this.preferredEditor ) {
 			return true;

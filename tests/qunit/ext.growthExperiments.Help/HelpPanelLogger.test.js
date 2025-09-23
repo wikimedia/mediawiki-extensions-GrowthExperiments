@@ -8,8 +8,8 @@ QUnit.module( 'utils/HelpPanelLogger.js', QUnit.newMwEnvironment( {
 		wgUserEditCount: 42,
 		wgNamespaceNumber: 0,
 		wgIsProbablyEditable: true,
-		wgUserId: 1
-	}
+		wgUserId: 1,
+	},
 } ) );
 
 QUnit.test( 'log', function ( assert ) {
@@ -20,7 +20,7 @@ QUnit.test( 'log', function ( assert ) {
 	const helpPanelLogger = new HelpPanelLogger( {
 		context: 'reading',
 		previousEditorInterface: 'visualeditor',
-		sessionId: 'foo'
+		sessionId: 'foo',
 	} );
 
 	// eslint-disable-next-line camelcase
@@ -45,7 +45,7 @@ QUnit.test( 'log', function ( assert ) {
 		page_ns: 0,
 		user_can_edit: true,
 		user_editcount: 42,
-		page_protection: ''
+		page_protection: '',
 		/* eslint-enable camelcase */
 	} );
 } );

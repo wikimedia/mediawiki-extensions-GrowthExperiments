@@ -72,7 +72,7 @@ AddSectionImageArticleTarget.prototype.isValidTask = function () {
 		}
 		const imageTitle = mw.Title.newFromText(
 			// Parsoid filename attributes start with "./".
-			imageNodes[ i ].getAttribute( 'resource' ).slice( 2 )
+			imageNodes[ i ].getAttribute( 'resource' ).slice( 2 ),
 		);
 		if ( imageTitle.getMain() === imageData.image ) {
 			mw.log.error( 'Image ' + imageData.image + ' is already used in another section' );
@@ -94,9 +94,9 @@ AddSectionImageArticleTarget.prototype.insertImagePlaceholder = function ( image
 			type: 'mwGeRecommendedImagePlaceholder',
 			attributes: {
 				width: dimensions.width,
-				height: dimensions.height
-			}
-		}
+				height: dimensions.height,
+			},
+		},
 	], imageData );
 };
 
@@ -115,7 +115,7 @@ AddSectionImageArticleTarget.prototype.replacePlaceholderWithImage = function ( 
 			node.getOuterRange(),
 			self.getImageLinearModel( imageData ),
 			// doesn't matter but marginally faster
-			true
+			true,
 		);
 		surfaceModel.change( self.approvalTransaction );
 	} );
@@ -157,12 +157,12 @@ AddSectionImageArticleTarget.prototype.getInsertRange = function ( imageData ) {
 	if ( nextHeading ) {
 		return new ve.Range(
 			heading.getOuterRange( false ).end,
-			nextHeading.getOuterRange( false ).start
+			nextHeading.getOuterRange( false ).start,
 		);
 	} else if ( heading ) {
 		return new ve.Range(
 			heading.getOuterRange( false ).end,
-			surfaceModel.getDocument().getDocumentRange().end
+			surfaceModel.getDocument().getDocumentRange().end,
 		);
 	} else {
 		if ( h2Count < imageData.sectionNumber ) {
@@ -215,7 +215,7 @@ AddSectionImageArticleTarget.prototype.isSameSection = function ( node, sectionN
 	} else {
 		mw.log.error(
 			'Section title mismatch for section ' + imageData.sectionNumber + ': ' +
-			'expected "' + imageData.sectionTitle + '", got "' + actualTitleText + '"'
+			'expected "' + imageData.sectionTitle + '", got "' + actualTitleText + '"',
 		);
 		return false;
 	}
@@ -233,7 +233,7 @@ AddSectionImageArticleTarget.prototype.scrollToTargetSection = function () {
 		alignToTop: true,
 		duration: 'slow',
 		padding: this.surface.padding,
-		direction: 'y'
+		direction: 'y',
 	} ).then( () => {
 		this.suppressSurfaceSelectEvents( false );
 	} );

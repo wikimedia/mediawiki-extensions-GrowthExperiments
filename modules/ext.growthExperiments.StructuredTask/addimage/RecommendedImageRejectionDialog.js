@@ -26,13 +26,13 @@ RecommendedImageRejectionDialog.static.actions = [
 	{
 		flags: 'safe',
 		label: mw.message( 'growthexperiments-addimage-rejectiondialog-action-cancel' ).text(),
-		action: 'cancel'
+		action: 'cancel',
 	},
 	{
 		flags: [ 'primary', 'progressive' ],
 		label: mw.message( 'growthexperiments-addimage-rejectiondialog-action-done' ).text(),
-		action: 'done'
-	}
+		action: 'done',
+	},
 ];
 /**
  * List of valid reasons for rejecting an image. Keep in sync with
@@ -41,7 +41,7 @@ RecommendedImageRejectionDialog.static.actions = [
  * @type {string[]}
  */
 RecommendedImageRejectionDialog.static.rejectionReasons = [
-	'notrelevant', 'noinfo', 'offensive', 'lowquality', 'unfamiliar', 'foreignlanguage', 'other'
+	'notrelevant', 'noinfo', 'offensive', 'lowquality', 'unfamiliar', 'foreignlanguage', 'other',
 ];
 
 /** @inheritDoc **/
@@ -58,11 +58,11 @@ RecommendedImageRejectionDialog.prototype.initialize = function () {
 		// * growthexperiments-addimage-rejectiondialog-reason-unfamiliar
 		// * growthexperiments-addimage-rejectiondialog-reason-foreignlanguage
 		// * growthexperiments-addimage-rejectiondialog-reason-other
-		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-' + reason ).text()
+		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-' + reason ).text(),
 	} ) );
 	this.reasonSelect = new AdaptiveSelectWidget( {
 		options: selectOptions,
-		isMultiSelect: true
+		isMultiSelect: true,
 	} );
 	this.text.$element.append( this.reasonSelect.getElement() );
 };
@@ -86,7 +86,7 @@ RecommendedImageRejectionDialog.prototype.getActionProcess = function ( action )
 		const selectedItems = ( action === 'cancel' ) ? [] : this.reasonSelect.findSelection();
 		this.close( {
 			action: action,
-			reasons: selectedItems
+			reasons: selectedItems,
 		} );
 	}, this );
 };

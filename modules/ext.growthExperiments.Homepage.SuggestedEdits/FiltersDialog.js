@@ -33,11 +33,11 @@ FiltersDialog.prototype.initialize = function () {
 	this.$foot.addClass( 'mw-ge-filtersDialog-footer' );
 	this.content = new OO.ui.PanelLayout( {
 		padded: true,
-		expanded: false
+		expanded: false,
 	} );
 	this.footerPanelLayout = new OO.ui.PanelLayout( {
 		padded: true,
-		expanded: false
+		expanded: false,
 	} );
 	this.articleCounter = new ArticleCountWidget();
 	this.footerPanelLayout.$element.append( this.articleCounter.$element );

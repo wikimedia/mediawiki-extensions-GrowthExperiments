@@ -2,7 +2,7 @@
 	const StartEditingDialog = require( './StartEditingDialog.js' ),
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		logger = new Logger(
-			mw.config.get( 'wgGEHomepagePageviewToken' )
+			mw.config.get( 'wgGEHomepagePageviewToken' ),
 		),
 		rootStore = require( 'ext.growthExperiments.DataStore' );
 	let isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ),
@@ -30,11 +30,11 @@
 			trigger: trigger,
 			useTopicSelector: !shouldSuggestedEditsAppearActivated,
 			useTaskTypeSelector: !shouldSuggestedEditsAppearActivated,
-			activateWhenDone: !isSuggestedEditsActivated
+			activateWhenDone: !isSuggestedEditsActivated,
 		}, logger, rootStore );
 		if ( !modalWindowManager ) {
 			modalWindowManager = new OO.ui.WindowManager( {
-				modal: true
+				modal: true,
 			} );
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$( 'body' ).append( modalWindowManager.$element );
@@ -57,7 +57,7 @@
 	function setupCtaButton( $container ) {
 		$container.find(
 			'#mw-ge-homepage-startediting-cta, ' +
-			'#mw-ge-homepage-suggestededits-info'
+			'#mw-ge-homepage-suggestededits-info',
 		).each( ( _, button ) => {
 			const trigger = 'info-icon',
 				$button = $( button ),
@@ -88,7 +88,7 @@
 						window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 					} else if ( mode === 'mobile-details' ) {
 						window.location.href = mw.util.getUrl(
-							new mw.Title( 'Special:Homepage/suggested-edits' ).toString()
+							new mw.Title( 'Special:Homepage/suggested-edits' ).toString(),
 						);
 					}
 					return;
@@ -110,7 +110,7 @@
 		// Only do this for the start-startediting module on desktop
 		const $startEditingModule = $container.find(
 			'.growthexperiments-homepage-module-start-startediting' +
-			'.growthexperiments-homepage-module-desktop'
+			'.growthexperiments-homepage-module-desktop',
 		);
 		if ( $startEditingModule.length === 0 ) {
 			return;
@@ -126,7 +126,7 @@
 			useTopicSelector: true,
 			useTaskTypeSelector: true,
 			activateWhenDone: true,
-			useTopicMatchMode: useTopicMatchMode
+			useTopicMatchMode: useTopicMatchMode,
 		}, logger, rootStore );
 
 		dialog.on( 'activation', () => {
@@ -179,7 +179,7 @@
 	} );
 
 	module.exports = {
-		initialize: initialize
+		initialize: initialize,
 	};
 
 }() );

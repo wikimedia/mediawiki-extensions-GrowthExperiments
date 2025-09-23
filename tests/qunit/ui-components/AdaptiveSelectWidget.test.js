@@ -7,10 +7,10 @@ QUnit.module( 'ui-components/AdaptiveSelectWidget.js', QUnit.newMwEnvironment() 
 QUnit.test( 'constructor based on isMultiSelect option ', ( assert ) => {
 	const options = [ {
 		data: 'option1',
-		label: 'Option 1'
+		label: 'Option 1',
 	}, {
 		data: 'option2',
-		label: 'Option 2'
+		label: 'Option 2',
 	} ];
 	const adaptiveSelectWidget = new AdaptiveSelectWidget( { options } );
 	const adaptiveSelectWidgetMultiSelect = new AdaptiveSelectWidget( { options, isMultiSelect: true } );
@@ -21,13 +21,13 @@ QUnit.test( 'constructor based on isMultiSelect option ', ( assert ) => {
 QUnit.test( 'should return the selected options for multi-select widget', ( assert ) => {
 	const options = [ {
 		data: 'option1',
-		label: 'Option 1'
+		label: 'Option 1',
 	}, {
 		data: 'option2',
-		label: 'Option 2'
+		label: 'Option 2',
 	}, {
 		data: 'option3',
-		label: 'Option 3'
+		label: 'Option 3',
 	} ];
 	const multiSelectWidget = new AdaptiveSelectWidget( { options, isMultiSelect: true } );
 	assert.deepEqual( multiSelectWidget.findSelection(), [] );
@@ -39,10 +39,10 @@ QUnit.test( 'should return the selected options for multi-select widget', ( asse
 QUnit.test( 'should return the selected option for single-select widget', ( assert ) => {
 	const options = [ {
 		data: 'option1',
-		label: 'Option 1'
+		label: 'Option 1',
 	}, {
 		data: 'option2',
-		label: 'Option 2'
+		label: 'Option 2',
 	} ];
 	const selectWidget = new AdaptiveSelectWidget( { options } );
 	assert.deepEqual( selectWidget.findSelection(), [] );

@@ -5,7 +5,7 @@
 	const mentorTour = new gt.TourBuilder( {
 		name: 'homepage_mentor',
 		isSinglePage: true,
-		shouldLog: true
+		shouldLog: true,
 	} );
 	mentorTour.firstStep( tourUtils.adjustPersonalToolbarTourStep( {
 		name: 'incomingmessage',
@@ -19,7 +19,7 @@
 		autoFocus: true,
 		buttons: [ {
 			action: 'end',
-			namemsg: 'growthexperiments-tour-response-button-okay'
-		} ]
+			namemsg: 'growthexperiments-tour-response-button-okay',
+		} ],
 	} ) );
 }( mw.guidedTour ) );

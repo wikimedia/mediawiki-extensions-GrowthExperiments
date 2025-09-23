@@ -28,32 +28,32 @@ function MatchModeSelectWidget( config ) {
 		$overlay: config.$overlay,
 		popup: {
 			label: mw.message(
-				'growthexperiments-homepage-suggestededits-topics-match-mode-description'
+				'growthexperiments-homepage-suggestededits-topics-match-mode-description',
 			).text(),
 			$content: $( '<p>' )
 				.addClass( 'mw-ge-MatchModeSelectWidget__info-text' )
 				.text( mw.message(
-					'growthexperiments-homepage-suggestededits-topics-match-mode-description'
+					'growthexperiments-homepage-suggestededits-topics-match-mode-description',
 				).text() ),
-			padded: true
-		}
+			padded: true,
+		},
 	} );
 
 	this.modeSelect = new OO.ui.DropdownWidget( {
 		classes: [ 'mw-ge-MatchModeSelectWidget__dropdown' ],
 		menu: {
-			items: this.configOptionsToItems( config.options )
-		}
+			items: this.configOptionsToItems( config.options ),
+		},
 	} );
 	this.modeSelect.getMenu().selectItemByData( config.initialValue );
 	this.modeSelect.getMenu().connect( this, {
 		choose: function ( selected ) {
 			this.emit( 'toggleMatchMode', selected.getData() );
-		}
+		},
 	} );
 	this.$element.append(
 		this.modeSelect.$element,
-		this.infoButton.$element
+		this.infoButton.$element,
 	);
 }
 

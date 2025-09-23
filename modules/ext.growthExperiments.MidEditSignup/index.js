@@ -26,8 +26,8 @@
 				message: mw.message( 'welcomesurvey-mideditsignup-body' ).text(),
 				actions: [
 					{ action: 'homepage', label: OO.ui.deferMsg( 'welcomesurvey-mideditsignup-button-homepage' ) },
-					{ action: 'close', label: OO.ui.deferMsg( 'welcomesurvey-mideditsignup-button-close' ) }
-				]
+					{ action: 'close', label: OO.ui.deferMsg( 'welcomesurvey-mideditsignup-button-close' ) },
+				],
 			} );
 			lifecycle.opened.then( () => {
 				helpPanelLogger.log( 'postsignup-impression' );

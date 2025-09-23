@@ -11,12 +11,12 @@ module.exports = function ( grunt ) {
 		banana: {
 			docs: {
 				files: {
-					src: messageDirs
-				}
+					src: messageDirs,
+				},
 			},
 			translations: {
 				files: {
-					src: messageDirsWithoutApi
+					src: messageDirsWithoutApi,
 				},
 				options: {
 					requireCompleteTranslationLanguages: [
@@ -30,11 +30,11 @@ module.exports = function ( grunt ) {
 						'ko',
 						'sr',
 						'uk',
-						'vi'
-					]
-				}
-			}
-		}
+						'vi',
+					],
+				},
+			},
+		},
 	} );
 
 	grunt.registerTask( 'test', [ 'banana:docs' ] );

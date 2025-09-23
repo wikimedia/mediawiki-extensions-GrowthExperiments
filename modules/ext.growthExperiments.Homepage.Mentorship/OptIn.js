@@ -1,7 +1,7 @@
 ( function () {
 	const HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
-			mw.config.get( 'wgGEHomepagePageviewToken' )
+			mw.config.get( 'wgGEHomepagePageviewToken' ),
 		);
 
 	/**
@@ -27,20 +27,20 @@
 						{
 							action: 'reject',
 							label: mw.msg( 'growthexperiments-homepage-mentorship-confirm-dialog-cancel' ),
-							flags: 'safe'
+							flags: 'safe',
 						},
 						{
 							action: 'accept',
 							label: mw.msg( 'growthexperiments-homepage-mentorship-confirm-dialog-continue' ),
-							flags: [ 'primary', 'progressive' ]
-						}
-					]
-				}
+							flags: [ 'primary', 'progressive' ],
+						},
+					],
+				},
 			).then( ( confirmed ) => {
 				if ( confirmed ) {
 					return new mw.Api().postWithToken( 'csrf', {
 						action: 'growthsetmenteestatus',
-						state: 'enabled'
+						state: 'enabled',
 					} ).then( () => {
 						homepageModuleLogger.log( 'mentorship', mode, 'mentorship-optin' );
 						history.replaceState( null, '', mw.util.getUrl( 'Special:Homepage' ) );

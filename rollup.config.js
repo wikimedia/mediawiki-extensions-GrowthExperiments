@@ -12,11 +12,11 @@ module.exports = {
 		file: 'modules/lib/d3/d3.min.js',
 		format: 'umd',
 		compact: false,
-		name: 'd3'
+		name: 'd3',
 	},
 	plugins: [
 		resolve(),
-		terser()
+		terser(),
 	],
 	// upstream d3 rollup.config.js has this as well.
 	onwarn( message, warn ) {
@@ -24,5 +24,5 @@ module.exports = {
 			return;
 		}
 		warn( message );
-	}
+	},
 };

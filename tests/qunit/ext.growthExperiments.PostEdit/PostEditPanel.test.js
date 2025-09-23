@@ -12,7 +12,7 @@ QUnit.test( 'should generate a task URL with task token and log an impression wh
 		title: 'Some title',
 		token: '1234',
 		tasktype: 'copyedit',
-		pageId: 73
+		pageId: 73,
 	};
 
 	const newcomerTaskLogger = new NewcomerTaskLogger();
@@ -22,14 +22,14 @@ QUnit.test( 'should generate a task URL with task token and log an impression wh
 		taskTypes: {
 			copyedit: {
 				messages: {
-					name: 'some-text-key'
-				}
-			}
+					name: 'some-text-key',
+				},
+			},
 		},
 		helpPanelLogger: {
-			helpPanelSessionId: 'session-id-1234'
+			helpPanelSessionId: 'session-id-1234',
 		},
-		newcomerTaskLogger: newcomerTaskLogger
+		newcomerTaskLogger: newcomerTaskLogger,
 	} );
 
 	const card = panel.getCard( task );
@@ -38,7 +38,7 @@ QUnit.test( 'should generate a task URL with task token and log an impression wh
 		geclickid: 'session-id-1234',
 		getasktype: 'copyedit',
 		genewcomertasktoken: '1234',
-		gesuggestededit: 1
+		gesuggestededit: 1,
 	};
 	const expectedHref = new mw.Title( 'Special:Homepage/newcomertask/' + task.pageId )
 		.getUrl( expectedParams );
@@ -54,7 +54,7 @@ QUnit.test( 'should log an impression when calling logImpression', ( assert ) =>
 		title: 'Some title',
 		token: '1234',
 		tasktype: 'copyedit',
-		pageId: 73
+		pageId: 73,
 
 	};
 	const helpPanelLogger = new HelpPanelLogger();
@@ -66,17 +66,17 @@ QUnit.test( 'should log an impression when calling logImpression', ( assert ) =>
 		taskTypes: {
 			copyedit: {
 				messages: {
-					name: 'some-text-key'
-				}
-			}
+					name: 'some-text-key',
+				},
+			},
 		},
-		helpPanelLogger: helpPanelLogger
+		helpPanelLogger: helpPanelLogger,
 	} );
 
 	const extraData = {
 		savedTaskType: 'copyedit',
 		userTaskTypes: 'extraData.userTaskTypes',
-		newcomerTaskToken: '4321'
+		newcomerTaskToken: '4321',
 	};
 	panel.logImpression( extraData );
 
@@ -86,8 +86,8 @@ QUnit.test( 'should log an impression when calling logImpression', ( assert ) =>
 			type: 'full',
 			savedTaskType: 'copyedit',
 			userTaskTypes: 'extraData.userTaskTypes',
-			newcomerTaskToken: '4321'
-		}
+			newcomerTaskToken: '4321',
+		},
 	];
 
 	assert.strictEqual( helpPanelLogger.log.calledOnce, true );
@@ -102,7 +102,7 @@ QUnit.test( 'should log postedit-task-navigation when calling onPrevButtonClicke
 	const panel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		helpPanelLogger,
-		newcomerTaskLogger
+		newcomerTaskLogger,
 	} );
 	const getExpectedArgs = function ( dir ) {
 		return [
@@ -110,8 +110,8 @@ QUnit.test( 'should log postedit-task-navigation when calling onPrevButtonClicke
 			{
 				dir,
 				/* eslint-disable-next-line camelcase */
-				navigation_type: 'click'
-			}
+				navigation_type: 'click',
+			},
 		];
 	};
 	panel.onPrevButtonClicked();
@@ -124,7 +124,7 @@ QUnit.test( 'should return success toast message when edits have been published 
 	const panel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
-		taskType: 'copyedit'
+		taskType: 'copyedit',
 	} );
 	this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgEditSubmitButtonLabelPublish' ).returns( false );
 	const spy = this.sandbox.spy( mw, 'message' );
@@ -137,7 +137,7 @@ QUnit.test( 'should return success toast message when edits have been published 
 	const panel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
-		taskType: 'copyedit'
+		taskType: 'copyedit',
 	} );
 	this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgEditSubmitButtonLabelPublish' ).returns( true );
 	const spy = this.sandbox.spy( mw, 'message' );
@@ -151,7 +151,7 @@ QUnit.test( 'should return success toast message when edits have been published 
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'image-recommendation',
-		imageRecommendationDailyTasksExceeded: true
+		imageRecommendationDailyTasksExceeded: true,
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	const postEditToastMessage = panel.getPostEditToastMessage();
@@ -164,7 +164,7 @@ QUnit.test( 'should return success toast message when edits have been published 
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'link-recommendation',
-		linkRecommendationDailyTasksExceeded: true
+		linkRecommendationDailyTasksExceeded: true,
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	const postEditToastMessage = panel.getPostEditToastMessage();
@@ -176,7 +176,7 @@ QUnit.test( 'should return notice toast message when edits have not been publish
 	const panel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'submitted',
-		taskType: 'link-recommendation'
+		taskType: 'link-recommendation',
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	const postEditToastMessage = panel.getPostEditToastMessage();
@@ -189,7 +189,7 @@ QUnit.test( 'should return notice toast message when edits have not been publish
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'submitted',
 		taskType: 'link-recommendation',
-		linkRecommendationDailyTasksExceeded: true
+		linkRecommendationDailyTasksExceeded: true,
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	const postEditToastMessage = panel.getPostEditToastMessage();
@@ -202,7 +202,7 @@ QUnit.test( 'should return alternate header text when image recommendation daily
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'image-recommendation',
-		imageRecommendationDailyTasksExceeded: true
+		imageRecommendationDailyTasksExceeded: true,
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	panel.getHeaderText();
@@ -214,7 +214,7 @@ QUnit.test( 'should return alternate header text when link recommendation daily 
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
 		taskType: 'link-recommendation',
-		linkRecommendationDailyTasksExceeded: true
+		linkRecommendationDailyTasksExceeded: true,
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	panel.getHeaderText();
@@ -225,19 +225,19 @@ QUnit.test( 'should return generic header text for image recommendation if the d
 	const acceptedSuggestionPanel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'saved',
-		taskType: 'image-recommendation'
+		taskType: 'image-recommendation',
 	} );
 	const reviewedSuggestionPanel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'submitted',
-		taskType: 'image-recommendation'
+		taskType: 'image-recommendation',
 	} );
 	assert.strictEqual(
 		acceptedSuggestionPanel.getHeaderText(),
-		'(growthexperiments-help-panel-postedit-subheader)'
+		'(growthexperiments-help-panel-postedit-subheader)',
 	);
 	assert.strictEqual(
 		reviewedSuggestionPanel.getHeaderText(),
-		'(growthexperiments-help-panel-postedit-subheader-notsaved)'
+		'(growthexperiments-help-panel-postedit-subheader-notsaved)',
 	);
 } );

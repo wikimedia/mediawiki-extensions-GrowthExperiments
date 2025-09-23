@@ -13,7 +13,7 @@
 						let $warningBox = $emailInput.next( '.ext-growthExperiments-message--warning' );
 						if ( $warningBox.length === 0 ) {
 							const warning = mw.util.messageBox(
-								mw.msg( 'growthexperiments-confirmemail-emailwarning' ), 'warning'
+								mw.msg( 'growthexperiments-confirmemail-emailwarning' ), 'warning',
 							);
 							warning.classList.add( 'ext-growthExperiments-message--warning' );
 							$warningBox = $( warning ).hide();
@@ -32,6 +32,6 @@
 						}
 					} );
 			} );
-		}
+		},
 	};
 }() );

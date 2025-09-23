@@ -30,11 +30,11 @@ AddImageDesktopSaveDialog.prototype.getImagePreview = function ( summaryData ) {
 		imageRenderData = AddImageUtils.getImageRenderData(
 			summaryData.metadata,
 			window,
-			IMAGE_PREVIEW_WIDTH
+			IMAGE_PREVIEW_WIDTH,
 		);
 	$imagePreview.css( {
 		backgroundImage: 'url("' + imageRenderData.src + '")',
-		width: IMAGE_PREVIEW_WIDTH + 'px'
+		width: IMAGE_PREVIEW_WIDTH + 'px',
 	} );
 	return $imagePreview;
 };

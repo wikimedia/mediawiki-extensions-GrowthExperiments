@@ -36,13 +36,13 @@ TopicFiltersDialog.static.actions = [
 		label: mw.msg( 'growthexperiments-homepage-suggestededits-topic-filters-close' ),
 		action: 'close',
 		framed: true,
-		flags: [ 'primary', 'progressive' ]
+		flags: [ 'primary', 'progressive' ],
 	},
 	{
 		icon: 'close',
 		action: 'cancel',
-		flags: [ 'safe' ]
-	}
+		flags: [ 'safe' ],
+	},
 ];
 
 /** @inheritDoc **/
@@ -53,7 +53,7 @@ TopicFiltersDialog.prototype.initialize = function () {
 		type: 'error',
 		inline: true,
 		classes: [ 'suggested-edits-filters-error' ],
-		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
+		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text(),
 	} ).toggle( false );
 	this.buildTopicFilters();
 	this.$body.append( this.content.$element );
@@ -67,9 +67,9 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	this.topicSelector = new TopicSelectionWidget( {
 		isMatchModeEnabled: this.filtersStore.shouldUseTopicMatchMode,
 		filters: this.filtersStore.preferences.topicFilters || new TopicFilters( {
-			topicsMatchMode: TOPIC_MATCH_MODES.OR
+			topicsMatchMode: TOPIC_MATCH_MODES.OR,
 		} ),
-		$overlay: this.$overlay
+		$overlay: this.$overlay,
 	}, this.filtersStore.getGroupedTopics() );
 	this.topicSelector.connect( this, {
 		// selectAll and removeAll forward a single topic group ID argument
@@ -80,7 +80,7 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 		toggleMatchMode: function ( mode ) {
 			this.onTopicFilterChange();
 			this.emit( 'toggleMatchMode', mode );
-		}
+		},
 	} );
 	const $topicSelectorWrapper = $( '<div>' )
 		.addClass( 'suggested-edits-topic-filters-topic-selector' )
@@ -88,9 +88,9 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 			$( '<h4>' )
 				.addClass( 'mw-ge-topic-filters-dialog-intro-topic-selector-header' )
 				.text( mw.message(
-					'growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header'
+					'growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header',
 				).text() ),
-			this.topicSelector.$element
+			this.topicSelector.$element,
 		);
 	this.content.$element.append( $topicSelectorWrapper );
 };
@@ -104,13 +104,13 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 	// filtersStore.preferences.topicFilters could be null ((e.g. user just initiated the module, see T238611#5800350)
 	const presets = this.filtersStore.preferences.topicFilters || new TopicFilters( {
-		topicsMatchMode: TOPIC_MATCH_MODES.OR
+		topicsMatchMode: TOPIC_MATCH_MODES.OR,
 	} );
 	// Prevent 'search' events from being fired by performSearchUpdateActions()
 	this.updating = true;
 	this.topicSelector.suggestions.forEach( ( suggestion ) => {
 		suggestion.toggleSuggestion(
-			presets.getTopics().includes( suggestion.suggestionData.id )
+			presets.getTopics().includes( suggestion.suggestionData.id ),
 		);
 	} );
 

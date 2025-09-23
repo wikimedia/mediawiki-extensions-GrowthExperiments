@@ -15,7 +15,7 @@ function RecommendedLinkToolbarDialogMobile() {
 	this.logger = new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: true,
-		active_interface: 'recommendedlinktoolbar_dialog'
+		active_interface: 'recommendedlinktoolbar_dialog',
 		/* eslint-enable camelcase */
 	} );
 	this.onDocumentNodeClick = this.hideDialog.bind( this );
@@ -32,13 +32,13 @@ RecommendedLinkToolbarDialogMobile.static.position = 'below';
 RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 	RecommendedLinkToolbarDialogMobile.super.prototype.initialize.call( this );
 	this.$labelPreview = $( '<div>' ).addClass(
-		'mw-ge-recommendedLinkToolbarDialog-labelPreview'
+		'mw-ge-recommendedLinkToolbarDialog-labelPreview',
 	);
 	this.setupLabelPreview();
 	this.$foot.append( this.$buttons );
 	this.setupSwipeNavigation();
 	this.setupHelpButton(
-		mw.message( 'growthexperiments-addlink-context-button-help' ).text()
+		mw.message( 'growthexperiments-addlink-context-button-help' ).text(),
 	);
 };
 
@@ -55,12 +55,12 @@ RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
 		this.surface.scrollSelectionIntoView();
 	} );
 	this.setUpToolbarDialogButton(
-		mw.message( 'growthexperiments-addlink-context-button-show-suggestion' ).text()
+		mw.message( 'growthexperiments-addlink-context-button-show-suggestion' ).text(),
 	);
 	RecommendedLinkToolbarDialogMobile.super.prototype.afterSetupProcess.call( this );
 	if ( this.linkRecommendationFragments.length > 1 ) {
 		this.$acceptanceButtonsContainer = this.setUpAnimationContainer(
-			this.$acceptanceButtonGroup, this.$buttons
+			this.$acceptanceButtonGroup, this.$buttons,
 		);
 	}
 };
@@ -77,14 +77,14 @@ RecommendedLinkToolbarDialogMobile.prototype.showRecommendationAtIndex = functio
 
 	if ( this.isFirstRender ) {
 		RecommendedLinkToolbarDialogMobile.super.prototype.showRecommendationAtIndex.call(
-			this, index, manualFocus
+			this, index, manualFocus,
 		);
 		this.isFirstRender = false;
 		return;
 	}
 	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( index ) ).always( () => {
 		RecommendedLinkToolbarDialogMobile.super.prototype.showRecommendationAtIndex.call(
-			this, index, manualFocus
+			this, index, manualFocus,
 		);
 	} );
 };
@@ -128,11 +128,11 @@ RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendati
  */
 RecommendedLinkToolbarDialogMobile.prototype.setupLabelPreview = function () {
 	this.$labelPreviewText = $( '<div>' ).addClass(
-		'mw-ge-recommendedLinkToolbarDialog-labelPreview-text'
+		'mw-ge-recommendedLinkToolbarDialog-labelPreview-text',
 	);
 	this.$labelPreviewTextContainer = this.setUpAnimationContainer( this.$labelPreviewText );
 	this.$labelPreview.append( [
-		this.$labelPreviewTextContainer
+		this.$labelPreviewTextContainer,
 	] );
 };
 
@@ -141,7 +141,7 @@ RecommendedLinkToolbarDialogMobile.prototype.setupLabelPreview = function () {
  */
 RecommendedLinkToolbarDialogMobile.prototype.setupLinkPreview = function () {
 	const $linkPreview = RecommendedLinkToolbarDialogMobile.super.prototype.setupLinkPreview.apply(
-		this, arguments
+		this, arguments,
 	);
 	this.$linkPreviewContainer = this.setUpAnimationContainer( $linkPreview );
 	return this.$linkPreviewContainer;
@@ -164,7 +164,7 @@ RecommendedLinkToolbarDialogMobile.prototype.teardown = function () {
  * @return {jQuery}
  */
 RecommendedLinkToolbarDialogMobile.prototype.setUpAnimationContainer = function (
-	$el, $existingContainer
+	$el, $existingContainer,
 ) {
 	$el.addClass( [ 'current', 'animation-content' ] );
 	if ( $existingContainer ) {
@@ -186,7 +186,7 @@ RecommendedLinkToolbarDialogMobile.prototype.setUpAnimationContainer = function 
  * is already absolutely positioned
  */
 RecommendedLinkToolbarDialogMobile.prototype.prepareAnimatedContent = function (
-	$container, isContentAbsolutelyPositioned
+	$container, isContentAbsolutelyPositioned,
 ) {
 	const $realCurrent = $container.find( '.current' ),
 		$fakeCurrent = $realCurrent.clone().addClass( 'fake-current' ).removeClass( 'current' );
@@ -231,7 +231,7 @@ RecommendedLinkToolbarDialogMobile.prototype.animateNewContent = function ( $con
 RecommendedLinkToolbarDialogMobile.prototype.setupSwipeNavigation = function () {
 	const swipePane = new SwipePane( this.$body, {
 		isRtl: document.documentElement.dir === 'rtl',
-		isHorizontal: true
+		isHorizontal: true,
 	} );
 	swipePane.setToStartHandler( () => {
 		this.onNextButtonClicked( true );

@@ -4,7 +4,7 @@ const mobile = require( 'mobile.startup' );
 	const HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
-			mw.config.get( 'wgGEHomepagePageviewToken' )
+			mw.config.get( 'wgGEHomepagePageviewToken' ),
 		),
 		isMobile = OO.ui.isMobile(),
 		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ),
@@ -108,7 +108,7 @@ const mobile = require( 'mobile.startup' );
 					moduleName: moduleName,
 					html: moduleData.$overlay,
 					rlModules: moduleData.rlModules,
-					heading: moduleData.heading
+					heading: moduleData.heading,
 				} );
 				overlays[ moduleName ] = overlay;
 
@@ -156,7 +156,7 @@ const mobile = require( 'mobile.startup' );
 			 * @param {jQuery} $content The content of the homepage summary module.
 			 */
 			mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded.' + $( this ).data( 'module-name' ) ).fire(
-				$( this )
+				$( this ),
 			);
 		} );
 
@@ -207,7 +207,7 @@ const mobile = require( 'mobile.startup' );
 						// * growthexperiments-homepage-welcome-notice-body-variant-d
 						$( '<p>' ).html( mw.message(
 							'growthexperiments-homepage-welcome-notice-body-variant-' +
-							variantKey
+							variantKey,
 						).params( [ mw.user ] )
 							.parse() ),
 						$( '<footer>' )
@@ -215,18 +215,18 @@ const mobile = require( 'mobile.startup' );
 							.append(
 								$( '<a>' ).attr( {
 									href: '#',
-									class: 'growthexperiments-homepage-welcome-notice-button'
+									class: 'growthexperiments-homepage-welcome-notice-button',
 								} ).text(
 									// The following messages are used here:
 									// * growthexperiments-homepage-welcome-notice-button-text-variant-c
 									// * growthexperiments-homepage-welcome-notice-button-text-variant-d
 									mw.msg(
 										'growthexperiments-homepage-welcome-notice-button-text-variant-' +
-										variantKey
-									)
-								)
-							)
-					)
+										variantKey,
+									),
+								),
+							),
+					),
 			],
 			onBeforeHide: function () {
 				markAsSeen();
@@ -235,14 +235,14 @@ const mobile = require( 'mobile.startup' );
 					homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close',
 						{ type: 'outside-click' } );
 				}
-			}
+			},
 		} );
 		document.body.appendChild( welcomeDrawer.$el[ 0 ] );
 		welcomeDrawer.$el.find( '.homepage-welcome-notice' ).on( 'click', () => {
 			buttonClicked = true;
 			markAsSeen();
 			homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close', {
-				type: 'button'
+				type: 'button',
 			} );
 			// Launch the start editing dialog for mobile users who haven't activated
 			// the module yet.
@@ -251,7 +251,7 @@ const mobile = require( 'mobile.startup' );
 				mw.track( 'growthexperiments.startediting', {
 					// The welcome drawer doesn't belong to any module
 					moduleName: 'generic',
-					trigger: 'welcome'
+					trigger: 'welcome',
 				} );
 			}
 			welcomeDrawer.hide();
@@ -271,7 +271,7 @@ const mobile = require( 'mobile.startup' );
 				const suggestedEditsMobileSummary = new SuggestedEditsMobileSummary( {
 					$element: $( module ),
 					newcomerTaskLogger: newcomerTaskLogger,
-					homepageModuleLogger: homepageModuleLogger
+					homepageModuleLogger: homepageModuleLogger,
 				}, rootStore );
 
 				suggestedEditsMobileSummary.initialize();

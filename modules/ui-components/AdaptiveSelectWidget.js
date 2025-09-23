@@ -33,7 +33,7 @@ AdaptiveSelectWidget.prototype.constructItem = function ( itemData ) {
 	const optionWidget = new OptionWidgetClass( {
 		data: itemData.data,
 		label: itemData.label,
-		classes: itemData.classes || []
+		classes: itemData.classes || [],
 	} );
 	return optionWidget;
 };
@@ -50,7 +50,7 @@ AdaptiveSelectWidget.prototype.constructWidget = function () {
 		OO.ui.RadioSelectWidget;
 
 	return new SelectWidgetClass( {
-		items: this.options.map( ( itemData ) => this.constructItem( itemData ) )
+		items: this.options.map( ( itemData ) => this.constructItem( itemData ) ),
 	} );
 };
 

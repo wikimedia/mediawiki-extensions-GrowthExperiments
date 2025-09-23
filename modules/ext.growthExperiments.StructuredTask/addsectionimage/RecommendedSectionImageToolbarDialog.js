@@ -18,7 +18,7 @@ OO.inheritClass( RecommendedSectionImageToolbarDialog, RecommendedImageToolbarDi
 RecommendedSectionImageToolbarDialog.prototype.initialize = function () {
 	RecommendedSectionImageToolbarDialog.super.prototype.initialize.call( this );
 	this.$head.find( '.mw-ge-recommendedImageToolbarDialog-title' ).text(
-		mw.message( 'growthexperiments-addsectionimage-inspector-title' ).text()
+		mw.message( 'growthexperiments-addsectionimage-inspector-title' ).text(),
 	);
 	// We'll update the CTA during afterSetupProcess() as we need the recommendation data
 };
@@ -42,8 +42,8 @@ RecommendedImageToolbarDialog.prototype.scrollToToolbarDialogTarget = function (
 RecommendedSectionImageToolbarDialog.prototype.updateCta = function () {
 	this.$body.find( '.mw-ge-recommendedImageToolbarDialog-addImageCta' ).text(
 		mw.message( 'growthexperiments-addsectionimage-inspector-cta' ).params( [
-			this.images[ this.currentIndex ].visibleSectionTitle
-		] ).text()
+			this.images[ this.currentIndex ].visibleSectionTitle,
+		] ).text(),
 	);
 };
 

@@ -11,7 +11,7 @@ OO.inheritClass( AddSectionImageCaptionInfoDialog, AddImageCaptionInfoDialog );
 AddSectionImageCaptionInfoDialog.static.name = 'addSectionImageCaptionInfo';
 
 AddSectionImageCaptionInfoDialog.static.title = mw.message(
-	'growthexperiments-addsectionimage-caption-info-dialog-title'
+	'growthexperiments-addsectionimage-caption-info-dialog-title',
 ).text();
 
 AddSectionImageCaptionInfoDialog.static.message = function () {
@@ -22,26 +22,26 @@ AddSectionImageCaptionInfoDialog.static.message = function () {
 		$guidelines = $( '<ul>' ).addClass( 'mw-ge-addImageCaptionInfoDialog-list' ),
 		guidelineItems = [
 			mw.message(
-				'growthexperiments-addsectionimage-caption-info-dialog-guidelines-review'
+				'growthexperiments-addsectionimage-caption-info-dialog-guidelines-review',
 			).parse(),
 			mw.message(
-				'growthexperiments-addsectionimage-caption-info-dialog-guidelines-describe'
+				'growthexperiments-addsectionimage-caption-info-dialog-guidelines-describe',
 			).params( [
 				articleTitle,
-				articleTarget.getSelectedSuggestion().visibleSectionTitle
+				articleTarget.getSelectedSuggestion().visibleSectionTitle,
 			] ).parse(),
 			mw.message(
-				'growthexperiments-addsectionimage-caption-info-dialog-guidelines-neutral'
-			).parse()
+				'growthexperiments-addsectionimage-caption-info-dialog-guidelines-neutral',
+			).parse(),
 		];
 	let languageGuideline;
 	if ( contentLanguageName ) {
 		languageGuideline = mw.message(
-			'growthexperiments-addsectionimage-caption-info-dialog-guidelines-language'
+			'growthexperiments-addsectionimage-caption-info-dialog-guidelines-language',
 		).params( [ contentLanguageName ] ).parse();
 	} else {
 		languageGuideline = mw.message(
-			'growthexperiments-addsectionimage-caption-info-dialog-guidelines-language-generic'
+			'growthexperiments-addsectionimage-caption-info-dialog-guidelines-language-generic',
 		).parse();
 	}
 	guidelineItems.push( languageGuideline );
@@ -50,9 +50,9 @@ AddSectionImageCaptionInfoDialog.static.message = function () {
 	} );
 	return $( '<div>' ).append( [
 		mw.message( 'growthexperiments-addsectionimage-caption-info-dialog-message' ).params(
-			[ articleTitle ]
+			[ articleTitle ],
 		).parse(),
-		$guidelines
+		$guidelines,
 	] );
 };
 

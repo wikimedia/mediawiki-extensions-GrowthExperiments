@@ -117,7 +117,7 @@ const {
 	cdxIconUserTalk,
 	cdxIconClock,
 	cdxIconChart,
-	cdxIconInfoFilled
+	cdxIconInfoFilled,
 } = require( './icons.json' );
 const { NO_DATA_CHARACTER } = require( '../ext.growthExperiments.Homepage.Impact/constants.js' );
 
@@ -126,7 +126,7 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CScoreCard,
-		CText
+		CText,
 	},
 	props: {
 		/**
@@ -134,21 +134,21 @@ module.exports = exports = {
 		 */
 		userName: {
 			type: String,
-			default: null
+			default: null,
 		},
 		/**
 		 * Should the score cards refer to the user in third person? Default is first person.
 		 */
 		renderThirdPerson: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		/**
 		 * Does the browser support Intl?
 		 */
 		hasIntl: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		/**
 		 * List of score cards that should be included
@@ -166,16 +166,16 @@ module.exports = exports = {
 				'edit-count',
 				'thanks-count',
 				'last-edit',
-				'best-streak'
-			]
+				'best-streak',
+			],
 		},
 		/**
 		 * JavaScript representation of the UserImpact PHP object
 		 */
 		data: {
 			type: Object,
-			default: null
-		}
+			default: null,
+		},
 	},
 	emits: [ 'interaction' ],
 	setup() {
@@ -189,7 +189,7 @@ module.exports = exports = {
 			cdxIconChart,
 			cdxIconInfoFilled,
 			maxEdits,
-			maxThanks
+			maxThanks,
 		};
 	},
 	computed: {
@@ -297,7 +297,7 @@ module.exports = exports = {
 					message = 'growthexperiments-homepage-impact-scores-best-streak-info-data-text';
 					args = [
 						this.$filters.convertNumber( this.data.longestEditingStreak.datePeriod.days ),
-						...args
+						...args,
 					];
 				}
 
@@ -320,15 +320,15 @@ module.exports = exports = {
 		},
 		revertsUrl() {
 			return mw.util.getUrl( `Special:Contributions/${ this.userName }`, {
-				tagfilter: 'mw-reverted'
+				tagfilter: 'mw-reverted',
 			} );
 		},
 		thanksUrl() {
 			return mw.util.getUrl( 'Special:Log', {
 				type: 'thanks',
-				page: this.userName
+				page: this.userName,
 			} );
-		}
-	}
+		},
+	},
 };
 </script>

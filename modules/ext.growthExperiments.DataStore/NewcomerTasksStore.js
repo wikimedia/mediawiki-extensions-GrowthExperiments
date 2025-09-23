@@ -50,7 +50,7 @@ function NewcomerTasksStore( root ) {
 		defaultTaskTypes: CONSTANTS.DEFAULT_TASK_TYPES,
 		suggestedEditsConfig: suggestedEditsConfig,
 		aqsConfig: aqsConfig,
-		isMobile: OO.ui.isMobile()
+		isMobile: OO.ui.isMobile(),
 	} );
 	/** @property {jQuery.Promise|null} apiPromise Promise for fetching tasks */
 	this.apiPromise = null;
@@ -441,7 +441,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 	this.apiFetchMoreTasksPromise = this.api.fetchTasks(
 		this.filters.getTaskTypesQuery(),
 		this.filters.getTopicsQuery(),
-		config
+		config,
 	);
 
 	this.apiFetchMoreTasksPromise.then( ( data ) => {
@@ -477,7 +477,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
  */
 NewcomerTasksStore.prototype.fetchExtraDataForTaskIndex = function ( taskIndex, context ) {
 	const apiConfig = {
-			context: context || 'suggestedEditsModule.getExtraDataAndUpdateQueue'
+			context: context || 'suggestedEditsModule.getExtraDataAndUpdateQueue',
 		},
 		taskAtIndex = this.taskQueue[ taskIndex ],
 		deferred = $.Deferred();
@@ -561,7 +561,7 @@ NewcomerTasksStore.prototype.backupState = function () {
 	this.backup = {
 		taskQueue: this.getTaskQueue(),
 		currentTaskIndex: this.getQueuePosition(),
-		taskCount: this.getTaskCount()
+		taskCount: this.getTaskCount(),
 	};
 	this.filters.backupState();
 };

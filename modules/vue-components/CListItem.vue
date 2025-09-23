@@ -16,9 +16,9 @@ module.exports = exports = {
 	props: {
 		backgroundColor: {
 			type: String,
-			default: 'base'
-		}
-	}
+			default: 'base',
+		},
+	},
 };
 </script>
 

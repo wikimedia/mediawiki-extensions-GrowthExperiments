@@ -12,7 +12,7 @@
 					$( '<div>' ).addClass( 'se-card-image' ),
 					$( '<p>' ).addClass( 'se-card-text' )
 						.text( mw.message(
-							'growthexperiments-homepage-suggestededits-error-description'
+							'growthexperiments-homepage-suggestededits-error-description',
 						).text() ) ) );
 	}
 

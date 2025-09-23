@@ -26,8 +26,8 @@ RecommendedLinkRejectionDialog.static.actions = [
 	{
 		action: 'done',
 		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-action-done' ),
-		flags: [ 'progressive' ]
-	}
+		flags: [ 'progressive' ],
+	},
 ];
 
 /** @inheritDoc **/
@@ -37,25 +37,25 @@ RecommendedLinkRejectionDialog.prototype.initialize = function () {
 	this.message.$element.addClass( 'oo-ui-inline-help' );
 	const selectOptions = [ {
 		data: 'everyday',
-		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-everyday' )
+		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-everyday' ),
 	}, {
 		data: 'wrong-target',
 		label: $( '<span>' ).append(
 			$( '<span>' )
 				.addClass( 'mw-ge-recommendedLinkRejectionDialog-reason-wrong-target-label' )
-				.text( mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-wrong-target' ) )
+				.text( mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-wrong-target' ) ),
 		),
-		classes: [ 'mw-ge-recommendedLinkRejectionDialog-reason-wrong-target' ]
+		classes: [ 'mw-ge-recommendedLinkRejectionDialog-reason-wrong-target' ],
 	}, {
 		data: 'more-fewer-words',
-		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-more-fewer-words' )
+		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-more-fewer-words' ),
 	}, {
 		data: 'other',
-		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-other' )
+		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-other' ),
 	} ];
 	this.reasonSelect = new AdaptiveSelectWidget( {
 		options: selectOptions,
-		isMultiSelect: true
+		isMultiSelect: true,
 	} );
 	this.text.$element.append( this.reasonSelect.getElement() );
 };
@@ -79,7 +79,7 @@ RecommendedLinkRejectionDialog.prototype.getActionProcess = function ( action ) 
 		const selectedItems = this.reasonSelect.findSelection();
 		this.close( {
 			action: action,
-			reason: selectedItems
+			reason: selectedItems,
 		} );
 	}, this );
 };

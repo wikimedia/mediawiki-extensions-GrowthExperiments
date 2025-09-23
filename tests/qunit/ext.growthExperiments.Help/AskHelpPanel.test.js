@@ -13,7 +13,7 @@ const expectedPanelProperties = {
 	submitFailureMessage: 'string',
 	askhelpTextInput: 'object',
 	questionIncludeTitleCheckbox: 'object',
-	questionIncludeFieldLayout: 'object'
+	questionIncludeFieldLayout: 'object',
 };
 
 const expectedMentorMessageKeys = [
@@ -23,7 +23,7 @@ const expectedMentorMessageKeys = [
 	'growthexperiments-homepage-mentorship-questionreview-header',
 	'growthexperiments-homepage-mentorship-confirmation-text',
 	'growthexperiments-homepage-mentorship-view-question-text',
-	'growthexperiments-help-panel-question-post-error'
+	'growthexperiments-help-panel-question-post-error',
 ];
 
 QUnit.module( 'ext.growthExperiments.Help/AskHelpPanel.js', QUnit.newMwEnvironment( {
@@ -32,9 +32,9 @@ QUnit.module( 'ext.growthExperiments.Help/AskHelpPanel.js', QUnit.newMwEnvironme
 		this.sandbox.stub( mw.Title, 'newFromText' ).returns( {
 			getUrl() {
 				return 'fake url';
-			}
+			},
 		} );
-	}
+	},
 } ) );
 
 QUnit.test( 'AskHelpPanel from mentor-homepage', function ( assert ) {
@@ -42,7 +42,7 @@ QUnit.test( 'AskHelpPanel from mentor-homepage', function ( assert ) {
 	const panel = new AskHelpPanel( {
 		askSource: 'mentor-homepage',
 		relevantTitle: null,
-		logger: { log: function () {} }
+		logger: { log: function () {} },
 	} );
 	Object.keys( expectedPanelProperties ).forEach( ( propertyName ) => {
 		assert.strictEqual( typeof panel[ propertyName ], expectedPanelProperties[ propertyName ] );
@@ -58,13 +58,13 @@ QUnit.test( 'AskHelpPanel from mentor-helppanel', function ( assert ) {
 		effectiveName: 'Mentor Name',
 		effectiveGender: 'Mentor Gender',
 		name: 'Mentor Name',
-		gender: 'Mentor Gender'
+		gender: 'Mentor Gender',
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	const panel = new AskHelpPanel( {
 		askSource: 'mentor-helppanel',
 		relevantTitle: null,
-		logger: { log: function () {} }
+		logger: { log: function () {} },
 	} );
 	Object.keys( expectedPanelProperties ).forEach( ( propertyName ) => {
 		assert.strictEqual( typeof panel[ propertyName ], expectedPanelProperties[ propertyName ] );
@@ -81,17 +81,17 @@ QUnit.test( 'AskHelpPanel from mentor-helppanel with away mentor', function ( as
 		effectiveGender: 'Effective Mentor Gender',
 		name: 'Mentor Name',
 		gender: 'Mentor Gender',
-		backAt: '14 December 2022'
+		backAt: '14 December 2022',
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	// eslint-disable-next-line no-new
 	new AskHelpPanel( {
 		askSource: 'mentor-helppanel',
 		relevantTitle: null,
-		logger: { log: function () {} }
+		logger: { log: function () {} },
 	} );
 	assert.strictEqual( spy.calledWith(
-		'growthexperiments-homepage-mentorship-questionreview-header-away'
+		'growthexperiments-homepage-mentorship-questionreview-header-away',
 	), true );
 } );
 
@@ -101,17 +101,17 @@ QUnit.test( 'AskHelpPanel from mentor-helppanel with indefinitely away mentor', 
 		effectiveGender: 'Effective Mentor Gender',
 		name: 'Mentor Name',
 		gender: 'Mentor Gender',
-		backAt: null
+		backAt: null,
 	} );
 	const spy = this.sandbox.spy( mw, 'message' );
 	// eslint-disable-next-line no-new
 	new AskHelpPanel( {
 		askSource: 'mentor-helppanel',
 		relevantTitle: null,
-		logger: { log: function () {} }
+		logger: { log: function () {} },
 	} );
 	assert.strictEqual( spy.calledWith(
-		'growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp'
+		'growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp',
 	), true );
 } );
 
@@ -120,7 +120,7 @@ QUnit.test( 'AskHelpPanel from helpdesk', function ( assert ) {
 	const panel = new AskHelpPanel( {
 		askSource: 'helpdesk',
 		relevantTitle: null,
-		logger: { log: function () {} }
+		logger: { log: function () {} },
 	} );
 	Object.keys( expectedPanelProperties ).forEach( ( propertyName ) => {
 		assert.strictEqual( typeof panel[ propertyName ], expectedPanelProperties[ propertyName ] );
@@ -131,7 +131,7 @@ QUnit.test( 'AskHelpPanel from helpdesk', function ( assert ) {
 		'growthexperiments-help-panel-questionreview-header',
 		'growthexperiments-help-panel-questioncomplete-confirmation-text',
 		'growthexperiments-help-panel-questioncomplete-view-link-text',
-		'growthexperiments-help-panel-question-post-error'
+		'growthexperiments-help-panel-question-post-error',
 	];
 	expectedMessageKeys.forEach( ( messageKey ) => {
 		assert.strictEqual( spy.calledWith( messageKey ), true );

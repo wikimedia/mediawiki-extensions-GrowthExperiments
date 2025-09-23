@@ -38,7 +38,7 @@ module.exports = ( function () {
 		const panelMap = {
 			1: 'intro',
 			2: 'about',
-			3: 'linking'
+			3: 'linking',
 		};
 
 		// The following messages are used here:
@@ -59,7 +59,7 @@ module.exports = ( function () {
 			paragraph1: mw.message( 'growthexperiments-addlink-onboarding-content-intro-body-paragraph1', userName ).text(),
 			paragraph2: mw.message( 'growthexperiments-addlink-onboarding-content-intro-body-paragraph2' ).text(),
 			exampleLabel: mw.message( 'growthexperiments-addlink-onboarding-content-intro-body-example-label' ).text(),
-			exampleHtml: mw.message( 'growthexperiments-addlink-onboarding-content-intro-body-example-text' ).parse()
+			exampleHtml: mw.message( 'growthexperiments-addlink-onboarding-content-intro-body-example-text' ).parse(),
 		};
 	}
 
@@ -74,7 +74,7 @@ module.exports = ( function () {
 				$( '<p>' ).text( messages.paragraph1 ),
 				$( '<div>' ).attr( 'class', 'addlink-onboarding-content-example-label' ).text( messages.exampleLabel ),
 				$( '<div>' ).attr( 'class', 'addlink-onboarding-content-example' ).html( messages.exampleHtml ),
-				$( '<p>' ).text( messages.paragraph2 )
+				$( '<p>' ).text( messages.paragraph2 ),
 			] );
 		return content.createPanel( messages.title, $content, getHeroClass( 1 ), getImageAltText( 1 ) );
 	}
@@ -91,7 +91,7 @@ module.exports = ( function () {
 			learnMoreLinkText: mw.message( 'growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text' ).text(),
 			learnMoreLinkUrl: taskTypeData.learnMoreLink ?
 				mw.util.getUrl( taskTypeData.learnMoreLink ) :
-				null
+				null,
 		};
 	}
 
@@ -108,7 +108,7 @@ module.exports = ( function () {
 			$content.append( $( '<a>' ).text( messages.learnMoreLinkText ).attr( {
 				href: messages.learnMoreLinkUrl,
 				class: 'addlink-onboarding-content-link structuredtask-onboarding-content-link',
-				target: '_blank'
+				target: '_blank',
 			} ) );
 		}
 		return content.createPanel( messages.title, $content, getHeroClass( 2 ), getImageAltText( 2 ) );
@@ -124,8 +124,8 @@ module.exports = ( function () {
 			title: mw.message( 'growthexperiments-addlink-onboarding-content-linking-guidelines-title' ).text(),
 			body: mw.message(
 				'growthexperiments-addlink-onboarding-content-linking-guidelines-body',
-				userName
-			).parse()
+				userName,
+			).parse(),
 		};
 	}
 
@@ -156,8 +156,8 @@ module.exports = ( function () {
 			return [
 				createIntroPanel(),
 				createAboutSuggestedLinksPanel(),
-				createLinkingGuidelinesPanel()
+				createLinkingGuidelinesPanel(),
 			];
-		}
+		},
 	};
 }() );

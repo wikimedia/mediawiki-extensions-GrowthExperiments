@@ -5,7 +5,7 @@ const SuggestedEditsMobileSummary = require( '../../../modules/ext.growthExperim
 const rootStore = require( '../__mocks__/store.js' );
 const store = {
 	newcomerTasks: new NewcomerTasksStore( rootStore ),
-	CONSTANTS: require( '../../../modules/ext.growthExperiments.DataStore/constants.js' )
+	CONSTANTS: require( '../../../modules/ext.growthExperiments.DataStore/constants.js' ),
 };
 
 QUnit.module( 'ext.growthExperiments.Homepage.mobile/SuggestedEditsMobileSummary.js', QUnit.newMwEnvironment( {
@@ -13,17 +13,17 @@ QUnit.module( 'ext.growthExperiments.Homepage.mobile/SuggestedEditsMobileSummary
 		homepagemodules: {
 			'suggested-edits': {
 				'task-preview': {
-					title: 'Article title'
-				}
-			}
+					title: 'Article title',
+				},
+			},
 		},
 		'wgGEHomepageModuleActionData-suggested-edits': {
-			taskCount: 1
-		}
+			taskCount: 1,
+		},
 	},
 	beforeEach() {
 		this.sandbox.stub( mw.language, 'convertNumber', ( num ) => String( num ) );
-	}
+	},
 } ) );
 
 QUnit.test( 'should show MobileNoTasksWidget if there is no task preview ', function ( assert ) {
@@ -31,15 +31,15 @@ QUnit.test( 'should show MobileNoTasksWidget if there is no task preview ', func
 	const getConfigStub = this.sandbox.stub( mw.config, 'get' );
 	getConfigStub.withArgs( 'homepagemodules' ).returns( {
 		'suggested-edits': {
-		}
+		},
 	} );
 	getConfigStub.withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
-		taskCount: 0
+		taskCount: 0,
 	} );
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
-		homepageModuleLogger: { log() {} }
+		homepageModuleLogger: { log() {} },
 	}, store );
 	module.initialize().then( () => {
 		assert.true( [ ...module.$content[ 0 ].classList ].includes( 'growthexperiments-suggestededits-mobilesummary-notasks-widget' ) );
@@ -53,7 +53,7 @@ QUnit.test( 'should hide page views in SmallTaskCard if task preview is availabl
 		title: 'Article title',
 		difficulty: 'easy',
 		tasktype: 'copyedit',
-		pageviews: 200
+		pageviews: 200,
 	};
 	this.sandbox.stub( store.newcomerTasks.api, 'getExtraDataFromPcs', ( taskData ) => {
 		Object.assign( taskData, task );
@@ -62,7 +62,7 @@ QUnit.test( 'should hide page views in SmallTaskCard if task preview is availabl
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
-		homepageModuleLogger: { log() {} }
+		homepageModuleLogger: { log() {} },
 	}, store );
 	module.initialize().then( () => {
 		const $content = module.$content;
@@ -76,7 +76,7 @@ QUnit.test( 'should show MobileNoTasksWidget for updateUiBasedOnState if there i
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
-		homepageModuleLogger: { log() {} }
+		homepageModuleLogger: { log() {} },
 	}, store );
 	store.newcomerTasks.currentTaskIndex = -1;
 	module.updateUiBasedOnState();
@@ -87,13 +87,13 @@ QUnit.test( 'should show the preview for the current task for updateUiBasedOnSta
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
-		homepageModuleLogger: { log() {} }
+		homepageModuleLogger: { log() {} },
 	}, store );
 	const task = {
 		title: 'Article title',
 		difficulty: 'easy',
 		tasktype: 'copyedit',
-		pageviews: 200
+		pageviews: 200,
 	};
 	store.newcomerTasks.taskQueue = [ task ];
 	store.newcomerTasks.currentTaskIndex = 0;

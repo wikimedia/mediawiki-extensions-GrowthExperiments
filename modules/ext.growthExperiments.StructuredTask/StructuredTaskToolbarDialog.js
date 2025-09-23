@@ -12,7 +12,7 @@ function StructuredTaskToolbarDialog() {
 		'mw-ge-structuredTaskToolbarDialog',
 		OO.ui.isMobile() ?
 			'mw-ge-structuredTaskToolbarDialog-mobile' :
-			'mw-ge-structuredTaskToolbarDialog-desktop'
+			'mw-ge-structuredTaskToolbarDialog-desktop',
 	] );
 	/**
 	 * @property {ve.ui.Surface} surface VisualEditor UI surface
@@ -62,7 +62,7 @@ StructuredTaskToolbarDialog.prototype.getRobotIcon = function () {
 		icon: 'robot',
 		label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-machine-description' ),
 		invisibleLabel: true,
-		classes: [ 'mw-ge-structuredTaskToolbarDialog-head-robot-icon' ]
+		classes: [ 'mw-ge-structuredTaskToolbarDialog-head-robot-icon' ],
 	} ).$element;
 };
 
@@ -120,14 +120,14 @@ StructuredTaskToolbarDialog.prototype.setUpToolbarDialogButton = function ( labe
 		framed: false,
 		icon: 'expand',
 		label: label,
-		invisibleLabel: true
+		invisibleLabel: true,
 	} );
 	$header.on( 'click', this.toggleDisplayState.bind( this ) );
 	$header.addClass( 'mw-ge-structuredTaskToolbarDialog-headerButton' )
 		.append( this.chevronIcon.$element );
 	if ( !OO.ui.isMobile() ) {
 		$( document.body ).find( '#footer-places' ).addClass(
-			'footer-places--with-mw-ge-structuredTaskToolbarDialog'
+			'footer-places--with-mw-ge-structuredTaskToolbarDialog',
 		);
 	}
 };
@@ -150,7 +150,7 @@ StructuredTaskToolbarDialog.prototype.toggleDisplayState = function () {
  */
 StructuredTaskToolbarDialog.prototype.setupHelpButton = function ( label ) {
 	this.helpButton = new HelpPanelButton( {
-		label: label
+		label: label,
 	} );
 	this.helpButton.on( 'click', () => {
 		mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).fire( this.helpButton );
@@ -172,7 +172,7 @@ StructuredTaskToolbarDialog.prototype.regainFocus = function () {
 StructuredTaskToolbarDialog.prototype.addArticleTitle = function () {
 	const SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
 	this.surface.getView().$documentNode.prepend( $( '<h1>' ).text(
-		SuggestedEditSession.getInstance().getCurrentTitle().getNameText()
+		SuggestedEditSession.getInstance().getCurrentTitle().getNameText(),
 	) );
 };
 

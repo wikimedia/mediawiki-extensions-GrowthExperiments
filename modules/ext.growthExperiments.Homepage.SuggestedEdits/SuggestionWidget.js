@@ -16,11 +16,11 @@ function SuggestionWidget( config ) {
 	SuggestionWidget.super.call( this, Object.assign( {}, config ) );
 
 	this.suggestionLabel = new OO.ui.LabelWidget( {
-		label: this.suggestionData.text
+		label: this.suggestionData.text,
 	} );
 
 	this.checkIcon = new OO.ui.IconWidget( {
-		icon: 'check'
+		icon: 'check',
 	} );
 
 	this.$suggestion = $( '<div>' )
@@ -32,7 +32,7 @@ function SuggestionWidget( config ) {
 		.append( this.$suggestion )
 		.on( {
 			click: this.onClick.bind( this ),
-			keydown: this.onKeydown.bind( this )
+			keydown: this.onKeydown.bind( this ),
 		} )
 		// Ensure element is focusable
 		.attr( 'tabindex', 0 );

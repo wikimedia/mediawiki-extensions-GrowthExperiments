@@ -21,7 +21,7 @@ function CERecommendedImagePlaceholderNode() {
 			// - the image
 			// - caption: 4px/6.5px (desktop/mobile) top margin + 2x2 px border + 7+27px padding
 			//   + content height (which we are guessing here as 60px).
-			height: this.model.getAttribute( 'height' ) + ( OO.ui.isMobile() ? 130 : 156 )
+			height: this.model.getAttribute( 'height' ) + ( OO.ui.isMobile() ? 130 : 156 ),
 		} )
 		.addClass( 'ge-section-image-placeholder' )
 		// mimic MediaWiki's default image alignment behavior, like ve.ce.MWBlockImageNode.getCssClass

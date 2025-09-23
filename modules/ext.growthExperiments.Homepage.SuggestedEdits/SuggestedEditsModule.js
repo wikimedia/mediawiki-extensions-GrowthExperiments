@@ -43,13 +43,13 @@ function SuggestedEditsModule( config, logger, rootStore ) {
 	this.filters = new FiltersButtonGroupWidget( {
 		topicMatching: this.filtersStore.topicsEnabled,
 		useTopicMatchMode: this.filtersStore.shouldUseTopicMatchMode,
-		mode: this.mode
+		mode: this.mode,
 	}, logger, rootStore )
 		.connect( this, {
 			search: 'fetchTasksAndUpdateView',
 			done: 'filterSelection',
 			cancel: 'restoreState',
-			open: 'onFilterOpen'
+			open: 'onFilterOpen',
 		} );
 	this.newcomerTaskLogger = new NewcomerTaskLogger();
 
@@ -81,7 +81,7 @@ function SuggestedEditsModule( config, logger, rootStore ) {
 	const cardWrapperSelector = '.suggested-edits-card-wrapper',
 		$cardWrapperElement = $( cardWrapperSelector );
 	this.setupQualityGateClickHandling(
-		$cardWrapperElement
+		$cardWrapperElement,
 	);
 	const $previous = $navContainer.find( '.suggested-edits-previous' );
 	const $next = $navContainer.find( '.suggested-edits-next' );
@@ -258,8 +258,8 @@ SuggestedEditsModule.prototype.updateExtraDataForCurrentCard = function () {
 	this.currentCard = new EditCardWidget(
 		Object.assign(
 			{ extraDataLoaded: true, qualityGateConfig: this.tasksStore.getQualityGateConfig() },
-			this.tasksStore.getCurrentTask()
-		)
+			this.tasksStore.getCurrentTask(),
+		),
 	);
 	this.updateCardElement();
 };
@@ -275,8 +275,8 @@ SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
 		$explanationElement.empty().append(
 			new TaskExplanationWidget( {
 				taskType: currentTask.tasktype,
-				mode: this.mode
-			}, this.logger, ALL_TASK_TYPES ).$element
+				mode: this.mode,
+			}, this.logger, ALL_TASK_TYPES ).$element,
 		);
 	}
 	$explanationElement.toggle( !!currentTask );
@@ -347,7 +347,7 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 		this.currentCard = new NoResultsWidget( {
 			topicMatching: this.filtersStore.topicsEnabled,
 			topicMatchModeIsAND: this.filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND,
-			setMatchModeOr: this.setMatchModeAndSave.bind( this, TOPIC_MATCH_MODES.OR )
+			setMatchModeOr: this.setMatchModeAndSave.bind( this, TOPIC_MATCH_MODES.OR ),
 		} );
 	} else if ( !this.tasksStore.getCurrentTask() ) {
 		this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
@@ -355,7 +355,7 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 		this.currentCard = new EndOfQueueWidget( { topicMatching: this.filtersStore.topicsEnabled } );
 	} else {
 		this.currentCard = new EditCardWidget(
-			Object.assign( { qualityGateConfig: this.tasksStore.getQualityGateConfig() }, this.tasksStore.getCurrentTask() )
+			Object.assign( { qualityGateConfig: this.tasksStore.getQualityGateConfig() }, this.tasksStore.getCurrentTask() ),
 		);
 	}
 	if ( this.currentCard instanceof EditCardWidget ) {
@@ -364,7 +364,7 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 			'suggested-edits',
 			this.mode,
 			'se-task-impression',
-			{ newcomerTaskToken: this.tasksStore.getNewcomerTaskToken() }
+			{ newcomerTaskToken: this.tasksStore.getNewcomerTaskToken() },
 		);
 	}
 	this.updateCardElement( OO.ui.isMobile() ).then( this.updateControls.bind( this ) );
@@ -376,7 +376,7 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 	this.setEditWidgetDisabled( false );
 
 	return this.tasksStore.fetchExtraDataForCurrentTask().then(
-		this.updateExtraDataForCurrentCard.bind( this )
+		this.updateExtraDataForCurrentCard.bind( this ),
 	);
 };
 
@@ -398,7 +398,7 @@ SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapp
 
 	// A copy of the current card will be animated out.
 	$fakeCard.addClass( [
-		'suggested-edits-card-fake'
+		'suggested-edits-card-fake',
 	] ).removeClass( 'suggested-edits-card' );
 	$cardWrapper.append( $fakeCard );
 	// The current card is positioned off screen so it can be animated in.
@@ -469,12 +469,12 @@ SuggestedEditsModule.prototype.setupSwipeNavigation = function () {
 		updateBodyClass = function ( isSwipeNavigationEnabled ) {
 			$( document.body ).toggleClass(
 				'growthexperiments--suggestededits-swipe-navigation-enabled',
-				isSwipeNavigationEnabled
+				isSwipeNavigationEnabled,
 			);
 		};
 	this.swipeCard = new SwipePane( this.config.$element, {
 		isRtl: document.documentElement.dir === 'rtl',
-		isHorizontal: true
+		isHorizontal: true,
 	} );
 	this.swipeCard.setToStartHandler( () => {
 		this.onNextCard( true );
@@ -569,25 +569,25 @@ SuggestedEditsModule.prototype.setupQualityGateClickHandling = function ( $eleme
 				loggers: {
 					'image-recommendation': new ImageSuggestionInteractionLogger( {
 						is_mobile: OO.ui.isMobile(),
-						active_interface: 'qualitygate_dialog'
+						active_interface: 'qualitygate_dialog',
 					} ),
 					'section-image-recommendation': new ImageSuggestionInteractionLogger( {
 						is_mobile: OO.ui.isMobile(),
-						active_interface: 'qualitygate_dialog'
+						active_interface: 'qualitygate_dialog',
 					} ),
 					'link-recommendation': new LinkSuggestionInteractionLogger( {
 						is_mobile: OO.ui.isMobile(),
-						active_interface: 'qualitygate_dialog'
-					} )
+						active_interface: 'qualitygate_dialog',
+					} ),
 				},
 				loggerMetadataOverrides: {
 					newcomer_task_token: this.currentCard.data.token,
 					homepage_pageview_token: mw.config.get(
-						'wgGEHomepagePageviewToken'
+						'wgGEHomepagePageviewToken',
 					),
 					page_id: this.currentCard.getPageId(),
-					page_title: this.currentCard.getDbKey()
-				}
+					page_title: this.currentCard.getDbKey(),
+				},
 				/* eslint-enable camelcase */
 			} );
 			return qualityGate.checkAll( this.currentCard.data.tasktype );
@@ -605,7 +605,7 @@ SuggestedEditsModule.prototype.setupEditWidget = function ( $container ) {
 		icon: 'edit',
 		label: mw.message( 'growthexperiments-homepage-suggestededits-edit-card' ).text(),
 		flags: [ 'primary', 'progressive' ],
-		classes: [ 'suggested-edits-footer-navigation-edit-button' ]
+		classes: [ 'suggested-edits-footer-navigation-edit-button' ],
 	} );
 	const $editButton = $container.find( '.suggested-edits-footer-navigation-edit-button' );
 	$editButton.empty().append( this.editWidget.$element );

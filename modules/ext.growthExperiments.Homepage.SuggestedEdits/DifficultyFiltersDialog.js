@@ -32,13 +32,13 @@ DifficultyFiltersDialog.static.actions = [
 		label: mw.msg( 'growthexperiments-homepage-suggestededits-difficulty-filters-close' ),
 		action: 'close',
 		framed: true,
-		flags: [ 'primary', 'progressive' ]
+		flags: [ 'primary', 'progressive' ],
 	},
 	{
 		icon: 'close',
 		action: 'cancel',
-		flags: [ 'safe' ]
-	}
+		flags: [ 'safe' ],
+	},
 ];
 
 /** @inheritDoc **/
@@ -47,7 +47,7 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 
 	this.taskTypeSelector = new TaskTypeSelectionWidget( {
 		selectedTaskTypes: this.filtersStore.preferences.taskTypes,
-		introLinks: SUGGESTED_EDITS_CONFIG.GEHomepageSuggestedEditsIntroLinks
+		introLinks: SUGGESTED_EDITS_CONFIG.GEHomepageSuggestedEditsIntroLinks,
 	}, ALL_TASK_TYPES ).connect( this, { select: 'onTaskTypeSelect' } );
 	this.content.$element.append( this.taskTypeSelector.$element );
 	this.$body.append( this.content.$element );

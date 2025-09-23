@@ -28,7 +28,7 @@ EditModeMachineSuggestions.prototype.switch = function () {
 		'editmode_select',
 		/* eslint-disable camelcase */
 		{ selected_mode: editMode.toLowerCase() },
-		{ active_interface: 'machinesuggestions_mode' }
+		{ active_interface: 'machinesuggestions_mode' },
 		/* eslint-enable camelcase */
 	);
 	if ( this.toolbar.getTarget().getSurface().getMode() === editMode ) {

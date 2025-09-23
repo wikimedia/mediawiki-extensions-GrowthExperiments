@@ -58,7 +58,7 @@ module.exports = ( function () {
 	function setupOnboarding( config ) {
 		// In case onboarding is invoked from a different module (add link on desktop)
 		mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).add(
-			showOnboardingIfEligible
+			showOnboardingIfEligible,
 		);
 		if ( !shouldShowOnboarding ) {
 			return;
@@ -78,9 +78,9 @@ module.exports = ( function () {
 			windows[ dialogName ] = new StructuredTaskOnboardingDialog(
 				{
 					hasSlideTransition: true,
-					logger: logger
+					logger: logger,
 				},
-				config
+				config,
 			);
 			windowManager.addWindows( windows );
 		}
@@ -110,16 +110,16 @@ module.exports = ( function () {
 			1,
 			{
 				// eslint-disable-next-line camelcase
-				task_type: Utils.normalizeLabelForStats( taskType )
-			}
+				task_type: Utils.normalizeLabelForStats( taskType ),
+			},
 		);
 
 		OO.ui.alert( mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-message' ).text(), {
 			actions: [ {
 				action: 'accept',
 				label: mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-button' ).text(),
-				flags: 'primary'
-			} ]
+				flags: 'primary',
+			} ],
 		} ).then( () => {
 			// Allow redirecting user even if the document
 			// has unsaved changes, which we don't care about in this context.
@@ -199,42 +199,42 @@ module.exports = ( function () {
 	if ( isAddLink ) {
 		dialogName = 'addLinkOnboardingDialog';
 		LinkSuggestionInteractionLogger = require(
-			'../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js'
+			'../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js',
 		);
 		logger = new LinkSuggestionInteractionLogger( {
 			// eslint-disable-next-line camelcase
-			is_mobile: OO.ui.isMobile()
+			is_mobile: OO.ui.isMobile(),
 		} );
 		shouldShowOnboarding = !mw.user.options.get( addLinkOnboardingPrefName );
 		setupOnboarding( {
 			prefName: addLinkOnboardingPrefName,
 			panels: require( './addlink/AddLinkOnboardingContent.js' ).getPanels( {
-				includeImage: true
-			} )
+				includeImage: true,
+			} ),
 		} );
 	} else if ( isAddImage ) {
 		ImageSuggestionInteractionLogger = require(
-			'../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js'
+			'../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js',
 		);
 		logger = new ImageSuggestionInteractionLogger( {
 			// eslint-disable-next-line camelcase
-			is_mobile: OO.ui.isMobile()
+			is_mobile: OO.ui.isMobile(),
 		} );
 		dialogName = 'addImageOnboardingDialog';
 		shouldShowOnboarding = !mw.user.options.get( addImageOnboardingPrefName );
 		setupOnboarding( {
 			prefName: addImageOnboardingPrefName,
 			panels: require( './addimage/AddImageOnboardingContent.js' ).getPanels( {
-				includeImage: true
-			} )
+				includeImage: true,
+			} ),
 		} );
 	} else if ( isAddSectionImage ) {
 		ImageSuggestionInteractionLogger = require(
-			'../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js'
+			'../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js',
 		);
 		logger = new ImageSuggestionInteractionLogger( {
 			// eslint-disable-next-line camelcase
-			is_mobile: OO.ui.isMobile()
+			is_mobile: OO.ui.isMobile(),
 		} );
 		dialogName = 'addSectionImageOnboardingDialog';
 
@@ -242,8 +242,8 @@ module.exports = ( function () {
 		setupOnboarding( {
 			prefName: addSectionImageOnboardingPrefName,
 			panels: require( './addsectionimage/AddSectionImageOnboardingContent.js' ).getPanels( {
-				includeImage: true
-			} )
+				includeImage: true,
+			} ),
 		} );
 	}
 
@@ -253,7 +253,7 @@ module.exports = ( function () {
 		updateEditLinkSection: updateEditLinkSection,
 		loadEditModule: loadEditModule,
 		shouldInitializeStructuredTask: shouldInitializeStructuredTask,
-		checkTaskData: checkTaskData
+		checkTaskData: checkTaskData,
 	};
 
 }() );

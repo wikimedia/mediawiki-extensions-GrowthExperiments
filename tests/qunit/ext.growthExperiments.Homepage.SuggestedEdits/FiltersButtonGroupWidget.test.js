@@ -12,7 +12,7 @@ QUnit.test( 'should log only topicfilter impressions', function ( assert ) {
 	const widget = new FiltersWidget( {
 		topicMatching: true,
 		useTopicMatchMode: false,
-		mode: 'some-mode'
+		mode: 'some-mode',
 	}, logger, rootStore );
 
 	widget.topicFilterButtonWidget.emit( 'click' );
@@ -23,8 +23,8 @@ QUnit.test( 'should log only topicfilter impressions', function ( assert ) {
 		'some-mode',
 		'se-topicfilter-open',
 		{
-			topics: []
-		}
+			topics: [],
+		},
 	] );
 
 } );
@@ -36,7 +36,7 @@ QUnit.test( 'should log topicmatchmode impression', function ( assert ) {
 	const widget = new FiltersWidget( {
 		topicMatching: true,
 		useTopicMatchMode: true,
-		mode: 'some-mode'
+		mode: 'some-mode',
 	}, logger, rootStore );
 
 	widget.topicFilterButtonWidget.emit( 'click' );
@@ -46,13 +46,13 @@ QUnit.test( 'should log topicmatchmode impression', function ( assert ) {
 		'some-mode',
 		'se-topicfilter-open',
 		{
-			topics: []
-		}
+			topics: [],
+		},
 	] );
 	assert.deepEqual( logger.log.getCall( 1 ).args, [
 		'suggested-edits',
 		'some-mode',
-		'se-topicmatchmode-impression'
+		'se-topicmatchmode-impression',
 	] );
 	widget.topicFiltersDialog.topicSelector.emit( 'toggleMatchMode', 'AND' );
 	assert.deepEqual( logger.log.getCall( 2 ).args, [
@@ -60,7 +60,7 @@ QUnit.test( 'should log topicmatchmode impression', function ( assert ) {
 		'some-mode',
 		'se-topicmatchmode-and',
 		{
-			topicsMatchMode: 'AND'
-		}
+			topicsMatchMode: 'AND',
+		},
 	] );
 } );

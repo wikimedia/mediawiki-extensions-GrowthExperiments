@@ -8,12 +8,12 @@ QUnit.module( 'ext.growthExperiments.Homepage.Logger/index.js', QUnit.newMwEnvir
 		wgUserEditCount: 123,
 		'wgGEHomepageModuleActionData-foo': { foo: 'bar' },
 		'wgGEHomepageModuleState-foo': 'done',
-		wgGEUserVariants: [ 'X', 'Y' ]
+		wgGEUserVariants: [ 'X', 'Y' ],
 	},
 	beforeEach: function () {
 		this.sandbox.stub( mw.user.options, 'get' );
 		mw.user.options.get.withArgs( 'growthexperiments-homepage-variant' ).returns( 'X' );
-	}
+	},
 } ) );
 
 QUnit.test( 'log', function ( assert ) {
@@ -34,7 +34,7 @@ QUnit.test( 'log', function ( assert ) {
 		module: 'foo',
 		is_mobile: OO.ui.isMobile(),
 		mode: 'desktop',
-		homepage_pageview_token: 'blah'
+		homepage_pageview_token: 'blah',
 		/* eslint-enable camelcase */
 	} );
 } );
@@ -57,7 +57,7 @@ QUnit.test( 'do not include state in event if empty', function ( assert ) {
 		module: 'mentor',
 		is_mobile: OO.ui.isMobile(),
 		mode: 'desktop',
-		homepage_pageview_token: 'blah'
+		homepage_pageview_token: 'blah',
 		/* eslint-enable camelcase */
 	} );
 } );

@@ -18,20 +18,20 @@
 	MentorshipOptoutDialog.static.title = mw.msg( 'growthexperiments-homepage-mentorship-optout-header' );
 	MentorshipOptoutDialog.static.message = mw.message(
 		'growthexperiments-homepage-mentorship-optout-text',
-		mw.config.get( 'GEHomepageMentorshipMentorGender' )
+		mw.config.get( 'GEHomepageMentorshipMentorGender' ),
 	).text();
 
 	MentorshipOptoutDialog.static.actions = [
 		{
 			flags: 'safe',
 			label: mw.msg( 'growthexperiments-homepage-mentorship-optout-cancel' ),
-			action: 'cancel'
+			action: 'cancel',
 		},
 		{
 			flags: [ 'primary', 'destructive' ],
 			label: mw.msg( 'growthexperiments-homepage-mentorship-optout-optout' ),
-			action: 'done'
-		}
+			action: 'done',
+		},
 	];
 
 	/** @inheritDoc **/

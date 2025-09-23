@@ -15,7 +15,7 @@ QUnit.test( 'annotateSuggestions', function ( assert ) {
 
 	data.forEach( ( fixture ) => {
 		const articleTarget = new AddLinkArticleTarget(
-			new LinkSuggestionInteractionLogger()
+			new LinkSuggestionInteractionLogger(),
 		);
 		articleTarget.maximumLinksToShow = MAX_LINKS_TO_SHOW;
 		const doc = document.implementation.createHTMLDocument();
@@ -30,7 +30,7 @@ QUnit.test( 'annotateSuggestions', function ( assert ) {
 		articleTarget.annotateSuggestions( doc, fixture.suggestions );
 		assert.strictEqual(
 			doc.body.innerHTML.replaceAll( '&lt;', '<' ).replaceAll( '&gt;', '>' ),
-			fixture.annotatedBody
+			fixture.annotatedBody,
 		);
 
 		assert.strictEqual( LinkSuggestionInteractionLogger.prototype.log.calledOnce, true );
@@ -39,7 +39,7 @@ QUnit.test( 'annotateSuggestions', function ( assert ) {
 			/* eslint-disable camelcase */
 			number_phrases_expected: 4,
 			number_phrases_found: 3,
-			number_phrases_shown: 2
+			number_phrases_shown: 2,
 			/* eslint-enable camelcase */
 		} );
 	} );

@@ -24,7 +24,7 @@
 		this.isMobile = mw.config.get( 'homepagemobile' ) || false;
 		this.homepagePageviewToken = homepagePageviewToken;
 		this.exclusions = {
-			start: [ 'impression' ]
+			start: [ 'impression' ],
 		};
 	}
 
@@ -47,7 +47,7 @@
 		const data = Object.assign(
 			{},
 			mw.config.get( 'wgGEHomepageModuleActionData-' + module ),
-			extraData || {}
+			extraData || {},
 		);
 
 		const event = {
@@ -60,7 +60,7 @@
 			module: module,
 			is_mobile: this.isMobile,
 			mode: mode,
-			homepage_pageview_token: this.homepagePageviewToken
+			homepage_pageview_token: this.homepagePageviewToken,
 			/* eslint-enable camelcase */
 		};
 		const state = mw.config.get( 'wgGEHomepageModuleState-' + module );

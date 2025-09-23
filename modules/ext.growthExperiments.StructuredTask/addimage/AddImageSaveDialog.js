@@ -21,7 +21,7 @@ function AddImageSaveDialog() {
 	this.logger = new ImageSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: OO.ui.isMobile(),
-		active_interface: 'editsummary_dialog'
+		active_interface: 'editsummary_dialog',
 		/* eslint-enable camelcase */
 	} );
 	/** @property {mw.libs.ge.ImageRecommendationSummary} summaryData */
@@ -41,12 +41,12 @@ AddImageSaveDialog.prototype.initialize = function () {
 	this.$summaryContent = $( '<div>' )
 		.addClass( 'mw-ge-addImageSaveDialog-content' ).append( [
 			this.getSummaryHeader(),
-			this.$summaryBody
+			this.$summaryBody,
 		] );
 	this.$copyrightFooter = $( '<p>' ).addClass(
-		'mw-ge-addImageSaveDialog-copyrightWarning'
+		'mw-ge-addImageSaveDialog-copyrightWarning',
 	).append(
-		mw.message( 'growthexperiments-addimage-summary-copyrightwarning' ).parse()
+		mw.message( 'growthexperiments-addimage-summary-copyrightwarning' ).parse(),
 	);
 	this.$copyrightFooter.find( 'a' ).attr( 'target', '_blank' );
 	this.$watchlistFooter = $( '<div>' );
@@ -54,7 +54,7 @@ AddImageSaveDialog.prototype.initialize = function () {
 	this.savePanel.$element.append(
 		this.$summaryContent,
 		this.$watchlistFooter,
-		this.$copyrightFooter
+		this.$copyrightFooter,
 	);
 };
 
@@ -65,7 +65,7 @@ AddImageSaveDialog.prototype.initialize = function () {
  */
 AddImageSaveDialog.prototype.getSummaryHeader = function () {
 	return $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-summaryLabel' ).text(
-		mw.message( 'growthexperiments-addimage-summary-label' ).text()
+		mw.message( 'growthexperiments-addimage-summary-label' ).text(),
 	);
 };
 
@@ -75,7 +75,7 @@ AddImageSaveDialog.prototype.getSummaryHeader = function () {
 AddImageSaveDialog.prototype.updateSummaryBody = function () {
 	this.$summaryBody.empty().append( [
 		this.getImageSummary( this.summaryData.filename ),
-		this.getAcceptedContent( this.summaryData )
+		this.getAcceptedContent( this.summaryData ),
 	] );
 };
 
@@ -90,11 +90,11 @@ AddImageSaveDialog.prototype.getImageSummary = function ( fileName ) {
 		new OO.ui.IconWidget( { icon: 'image' } ).$element,
 		$( '<span>' )
 			.addClass( 'mw-ge-addImageSaveDialog-imageInfo-filename' )
-			.text( fileName )
+			.text( fileName ),
 	] );
 	return $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imageSummary' ).append( [
 		$imageInfo,
-		new OO.ui.IconWidget( { icon: 'check' } ).$element
+		new OO.ui.IconWidget( { icon: 'check' } ).$element,
 	] );
 };
 
@@ -114,7 +114,7 @@ AddImageSaveDialog.prototype.getImagePreview = function ( summaryData ) {
 	$imagePreview.css( {
 		backgroundImage: 'url("' + imageRenderData.src + '")',
 		// Maintain the aspect ratio of the image preview container
-		paddingTop: ( 1 / IMAGE_PREVIEW_ASPECT_RATIO * 100 ) + '%'
+		paddingTop: ( 1 / IMAGE_PREVIEW_ASPECT_RATIO * 100 ) + '%',
 	} );
 	return $imagePreview;
 };
@@ -129,7 +129,7 @@ AddImageSaveDialog.prototype.getAcceptedContent = function ( summaryData ) {
 	const $caption = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-caption' );
 	$caption.text( summaryData.caption );
 	return $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-bodyContent' ).append( [
-		this.getImagePreview( summaryData ), $caption
+		this.getImagePreview( summaryData ), $caption,
 	] );
 };
 
@@ -149,7 +149,7 @@ AddImageSaveDialog.prototype.getLogMetadata = function () {
 	return {
 		/* eslint-disable camelcase */
 		acceptance_state: 'accepted',
-		caption_length: this.summaryData.caption.length
+		caption_length: this.summaryData.caption.length,
 		/* eslint-enable camelcase */
 	};
 };

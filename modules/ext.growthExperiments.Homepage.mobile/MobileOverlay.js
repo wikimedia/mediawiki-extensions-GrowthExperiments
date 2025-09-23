@@ -32,7 +32,7 @@
 					framed: false,
 					title: mw.msg( 'growthexperiments-homepage-suggestededits-more-info' ),
 					label: mw.msg( 'growthexperiments-homepage-suggestededits-more-info' ),
-					invisibleLabel: true
+					invisibleLabel: true,
 				} );
 				// We need to embed the module name and mode so that we can access it
 				// on the mobile overlay info button, see setupCtaButton in
@@ -44,7 +44,7 @@
 				infoButton.$element.data( 'ooui-infused', infoButton );
 				return View.make(
 					{ class: 'homepage-module-overlay-info' },
-					[ infoButton.$element ]
+					[ infoButton.$element ],
 				);
 			} );
 			headerActions = [ promisedView( headerPromise ) ];
@@ -54,7 +54,7 @@
 				const ellipsisMenu = initEllipsisMenu( $( '.growthexperiments-homepage-container' ) );
 				return View.make(
 					{ class: 'homepage-module-overlay-ellipsis-menu' },
-					[ ellipsisMenu.$element ]
+					[ ellipsisMenu.$element ],
 				);
 
 			} );
@@ -78,27 +78,27 @@
 				'cdx-button--weight-quiet',
 				'cdx-button--size--large',
 				'cdx-button--icon-only',
-				'back'
+				'back',
 			] )
 			.append(
 				$( '<span>' )
 					.attr( 'aria-hidden', 'true' )
 					.addClass( [
 						'growthexperiments-icon-previous',
-						'cdx-button__icon'
+						'cdx-button__icon',
 					] ),
 				$( '<span>' )
 					.text(
-						mw.msg( 'mobile-frontend-overlay-close' )
-					)
+						mw.msg( 'mobile-frontend-overlay-close' ),
+					),
 			);
 		options.headers = [
 			header(
 				mw.html.escape( options.heading ),
 				headerActions,
 				View.make( {}, [ $button ] ),
-				'initial-header homepage-module-overlay-header'
-			)
+				'initial-header homepage-module-overlay-header',
+			),
 		];
 		options.headerPromise = headerPromise;
 		return options;
@@ -118,7 +118,7 @@
 	const postRender = function ( options ) {
 		const $el = $( '<div>' ).addClass( [
 			'growthexperiments-homepage-container',
-			'homepage-module-overlay'
+			'homepage-module-overlay',
 		] );
 		// Load the RL modules if they were not loaded before the user tapped on the
 		// module. Then add the HTML to the DOM, then fire a hook so that the JS in the RL
@@ -134,7 +134,7 @@
 	 */
 	const onOverlayShown = function () {
 		$( document.body ).removeClass(
-			'growthexperiments-homepage-mobile-summary--opening-overlay'
+			'growthexperiments-homepage-mobile-summary--opening-overlay',
 		);
 	};
 
@@ -158,13 +158,13 @@
 				// the overlay and can be manipulated.
 				mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).fire(
 					opts.moduleName,
-					overlay.$el
+					overlay.$el,
 				);
 				onOverlayShown();
 			} );
 			overlay = Overlay.make( opts, view );
 			return overlay;
-		}
+		},
 	};
 
 	module.exports = MobileOverlay;

@@ -21,19 +21,19 @@
 				// * growthexperiments-homepage-suggestededits-select-other-difficulty
 				// * growthexperiments-homepage-suggestededits-select-other-topics-difficulty
 				// * growthexperiments-homepage-suggestededits-select-other-topic-mode
-				.text( mw.message( noResultsDescriptionText, mw.user.getName() ).text() )
+				.text( mw.message( noResultsDescriptionText, mw.user.getName() ).text() ),
 		];
 		if ( topicMatchAnd ) {
 			const cta = new OO.ui.ButtonWidget( {
 				classes: [
-					'se-card-link'
+					'se-card-link',
 				],
 				framed: false,
 				flags: [
-					'progressive'
+					'progressive',
 				],
 				icon: 'funnel',
-				label: mw.message( 'growthexperiments-homepage-suggestededits-select-other-topic-mode-cta' ).text()
+				label: mw.message( 'growthexperiments-homepage-suggestededits-select-other-topic-mode-cta' ).text(),
 			} ).on( 'click', config.setMatchModeOr );
 			content.push( cta.$element );
 		}

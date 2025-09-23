@@ -2,7 +2,7 @@ const TOPIC_MATCH_MODE_OR = 'OR';
 const TOPIC_MATCH_MODE_AND = 'AND';
 const TOPIC_MATCH_MODES = {
 	OR: TOPIC_MATCH_MODE_OR,
-	AND: TOPIC_MATCH_MODE_AND
+	AND: TOPIC_MATCH_MODE_AND,
 };
 const TaskTypesAbFilter = require( './TaskTypesAbFilter.js' );
 
@@ -23,6 +23,6 @@ module.exports = {
 		TASK_QUEUE_LOADING: 'taskQueueLoading',
 		TASK_QUEUE_FAILED_LOADING: 'taskQueueFailedLoading',
 		FETCHED_MORE_TASKS: 'fetchedMoreTasks',
-		CURRENT_TASK_EXTRA_DATA_CHANGED: 'taskExtraDataChanged'
-	}
+		CURRENT_TASK_EXTRA_DATA_CHANGED: 'taskExtraDataChanged',
+	},
 };

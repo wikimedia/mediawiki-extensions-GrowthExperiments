@@ -16,7 +16,7 @@ function RecommendedLinkToolbarDialogDesktop() {
 	this.logger = new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: false,
-		active_interface: 'recommendedlinktoolbar_dialog'
+		active_interface: 'recommendedlinktoolbar_dialog',
 		/* eslint-enable camelcase */
 	} );
 	/** @property {mw.libs.ge.MinimizedToolbarDialogButton|null} toolbarDialogButton */
@@ -56,7 +56,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.afterSetupProcess = function () {
 	}.bind( this );
 	ceSurface.$documentNode.on( 'keydown', this.documentNodeKeydownHandler );
 	$( window ).on( 'resize',
-		OO.ui.debounce( this.updatePosition.bind( this ), 250 )
+		OO.ui.debounce( this.updatePosition.bind( this ), 250 ),
 	);
 };
 
@@ -84,7 +84,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 		annotationWidth = $annotationView.outerWidth(),
 		elementWidth = Math.max( this.$element.width(), 400 ),
 		newPosition = {
-			top: annotationOffset.top - surfaceOffset.top + 30
+			top: annotationOffset.top - surfaceOffset.top + 30,
 		},
 		positionName = this.isRtl ? 'right' : 'left';
 	let isStartAnchored = true;
@@ -167,11 +167,11 @@ RecommendedLinkToolbarDialogDesktop.prototype.afterShowFirstRecommendation = fun
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogDesktop.prototype.showRecommendationAtIndex = function (
-	index, manualFocus
+	index, manualFocus,
 ) {
 	const updateContent = function () {
 		RecommendedLinkToolbarDialogDesktop.super.prototype.showRecommendationAtIndex.call(
-			this, index, manualFocus
+			this, index, manualFocus,
 		);
 	}.bind( this );
 
@@ -199,13 +199,13 @@ RecommendedLinkToolbarDialogDesktop.prototype.setupMinification = function () {
 	this.closeButton = new OO.ui.ButtonWidget( {
 		classes: [ 'mw-ge-recommendedLinkToolbarDialog-desktop-closeButton' ],
 		framed: false,
-		icon: 'close'
+		icon: 'close',
 	} );
 	this.closeButton.connect( this, { click: 'onCloseButtonClicked' } );
 	this.$head.append( this.closeButton.$element );
 
 	this.toolbarDialogButton = new MinimizedToolbarDialogButton( {
-		label: mw.message( 'growthexperiments-addlink-context-button-show-suggestion' ).text()
+		label: mw.message( 'growthexperiments-addlink-context-button-show-suggestion' ).text(),
 	} );
 	this.toolbarDialogButton.on( 'click', this.onToolbarDialogButtonClicked.bind( this ) );
 	const minimizedButtonLocationDock = mw.util.addPortletLink( 'p-dock-bottom', '#', '' );
@@ -226,14 +226,14 @@ RecommendedLinkToolbarDialogDesktop.prototype.setupMinification = function () {
  */
 RecommendedLinkToolbarDialogDesktop.prototype.toggleDialogVisibility = function (
 	isVisible,
-	disableTransition
+	disableTransition,
 ) {
 	const $dialog = this.$element;
 	let transformVal = 'none';
 
 	$dialog.toggleClass(
 		'mw-ge-recommendedLinkToolbarDialog-desktop--no-transition',
-		!!disableTransition
+		!!disableTransition,
 	);
 	if ( !isVisible ) {
 		// Minimize the dialog into the robot button
@@ -273,13 +273,13 @@ RecommendedLinkToolbarDialog.prototype.onToolbarDialogButtonClicked = function (
 		'reopen_dialog_click',
 		{},
 		// eslint-disable-next-line camelcase
-		{ active_interface: 'machinesuggestions_mode' }
+		{ active_interface: 'machinesuggestions_mode' },
 	);
 	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( this.currentIndex ) ).then(
 		() => {
 			this.toggleDialogVisibility( true );
 			this.logger.log( 'impression', this.getSuggestionLogActionData() );
-		}
+		},
 	);
 };
 

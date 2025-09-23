@@ -24,7 +24,7 @@
 			this.useHelpPanelLayout = ( config.layoutType !== 'dialog' );
 			this.suggestedEditSession = config.suggestedEditSession;
 			this.suggestedEditSession.connect( this, {
-				save: 'onSuggestedEditSessionSave'
+				save: 'onSuggestedEditSessionSave',
 			} );
 			this.logger = config.logger;
 			this.askHelpEnabled = config.askHelpEnabled;
@@ -34,7 +34,7 @@
 				// AskHelpPanel.getPanelTitleMessages since they vary based on panel context.
 				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
 				'general-help': mw.message( 'growthexperiments-help-panel-general-help-title' ).text(),
-				'suggested-edits': mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text()
+				'suggested-edits': mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text(),
 			};
 			this.isQuestionPoster = config.isQuestionPoster;
 			this.askSource = config.askSource;
@@ -54,21 +54,21 @@
 			modes: [ 'ask-help', 'ask-help-locked' ],
 			classes: [ 'mw-ge-help-panel-post' ],
 			flags: [ 'progressive', 'primary' ],
-			action: 'questioncomplete'
+			action: 'questioncomplete',
 		},
 		{
 			label: mw.message( 'growthexperiments-help-panel-return-home-button-text' ).text(),
 			modes: [ 'questioncomplete' ],
 			flags: [ 'progressive', 'primary' ],
 			classes: [ 'mw-ge-help-panel-done' ],
-			action: 'home'
+			action: 'home',
 		},
 		{
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
 			modes: [ 'questioncomplete-locked' ],
 			flags: [ 'progressive', 'primary' ],
 			classes: [ 'mw-ge-help-panel-done' ],
-			action: 'close'
+			action: 'close',
 		},
 		// Show a close icon in the primary position (so it doesn't interfere with the back
 		// icon), except in ask-help / questioncomplete which already have a primary action.
@@ -77,21 +77,21 @@
 			action: 'close',
 			framed: false,
 			modes: [ 'home', 'general-help', 'general-help-locked', 'suggested-edits',
-				'suggested-edits-locked', 'search' ]
+				'suggested-edits-locked', 'search' ],
 		},
 		{
 			icon: 'close',
 			flags: 'safe',
 			action: 'close',
-			modes: [ 'ask-help-locked' ]
+			modes: [ 'ask-help-locked' ],
 		},
 		// Use a back icon for all non-home panels if they are not locked.
 		{
 			icon: 'arrowPrevious',
 			flags: 'safe',
 			action: 'home',
-			modes: [ 'ask-help', 'general-help', 'questioncomplete', 'search', 'suggested-edits' ]
-		}
+			modes: [ 'ask-help', 'general-help', 'questioncomplete', 'search', 'suggested-edits' ],
+		},
 	];
 
 	/**
@@ -114,7 +114,7 @@
 			'suggested-edits',
 			'general-help',
 			'ask-help',
-			'questioncomplete'
+			'questioncomplete',
 		].includes( panelToSwitchTo ) ) {
 			throw new Error( 'Unknown panel: ' + panelToSwitchTo );
 		}
@@ -146,7 +146,7 @@
 
 		if ( this.suggestedEditSession.active ) {
 			this.updateSuggestedEditSession( {
-				helpPanelCurrentPanel: panelToSwitchTo
+				helpPanelCurrentPanel: panelToSwitchTo,
 			} );
 		}
 
@@ -165,24 +165,24 @@
 					.attr( {
 						href: mw.util.getUrl( 'Special:ChangeEmail' ),
 						target: '_blank',
-						'data-link-id': 'special-change-email'
+						'data-link-id': 'special-change-email',
 					} )
 					.text( mw.message(
-						'growthexperiments-help-panel-questioncomplete-notifications-email-change'
+						'growthexperiments-help-panel-questioncomplete-notifications-email-change',
 					).text() );
 				emailMessage = mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email' )
 					.params( [ this.userEmail, $link ] )
 					.parse();
 			} else {
 				emailMessage = mw.message(
-					'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed'
+					'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed',
 				).params( [ this.userEmail, mw.user ] ).escaped();
 				button = new OO.ui.ButtonWidget( {
 					label: mw.message(
-						'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm'
+						'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm',
 					).text(),
 					href: mw.util.getUrl( 'Special:ConfirmEmail' ),
-					target: '_blank'
+					target: '_blank',
 				} );
 				button.$button.attr( 'data-link-id', 'special-confirm-email' );
 			}
@@ -192,10 +192,10 @@
 				.escaped();
 			button = new OO.ui.ButtonWidget( {
 				label: mw.message(
-					'growthexperiments-help-panel-questioncomplete-notifications-email-missing-add'
+					'growthexperiments-help-panel-questioncomplete-notifications-email-missing-add',
 				).text(),
 				href: mw.util.getUrl( 'Special:ChangeEmail' ),
-				target: '_blank'
+				target: '_blank',
 			} );
 			button.$button.attr( 'data-link-id', 'special-change-email' );
 		}
@@ -203,10 +203,10 @@
 		$messageList.append(
 			$( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'bell' } ).$element ),
 			$( '<dd>' ).text(
-				mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-wiki' ).text()
+				mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-wiki' ).text(),
 			),
 			$( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'message' } ).$element ),
-			$( '<dd>' ).html( emailMessage )
+			$( '<dd>' ).html( emailMessage ),
 		);
 		if ( button ) {
 			$messageList.append( $( '<dd>' ).append( button.$element ) );
@@ -218,10 +218,10 @@
 					$( '<h2>' )
 						.addClass( 'mw-ge-help-panel-questioncomplete-notifications-section' )
 						.text( mw.message(
-							'growthexperiments-help-panel-questioncomplete-notifications-section-header'
+							'growthexperiments-help-panel-questioncomplete-notifications-section-header',
 						).text() ),
-					$messageList
-				)
+					$messageList,
+				),
 		) );
 	};
 
@@ -238,11 +238,11 @@
 			new OO.ui.ButtonWidget( {
 				href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Focus_on_help_desk/Help_panel',
 				label: mw.message(
-					'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text'
+					'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text',
 				).text(),
 				icon: 'infoFilled',
-				data: 'more-about-this-feature'
-			} )
+				data: 'more-about-this-feature',
+			} ),
 		);
 		if ( this.taskTypeId ) {
 			links.push(
@@ -250,8 +250,8 @@
 					href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Suggested_edits',
 					label: mw.message( 'growthexperiments-help-panel-suggested-edits-faq-link-text' ).text(),
 					icon: 'lightbulb',
-					data: 'suggested-edits-faq'
-				} )
+					data: 'suggested-edits-faq',
+				} ),
 			);
 		}
 
@@ -263,11 +263,11 @@
 				new OO.ui.ButtonWidget( {
 					href: new mw.Title( 'Special:Preferences#mw-prefsection-personal-homepage' ).getUrl(),
 					label: mw.message(
-						'growthexperiments-help-panel-settings-cog-preferences-link'
+						'growthexperiments-help-panel-settings-cog-preferences-link',
 					).text(),
 					icon: 'settings',
-					data: 'special-preferences'
-				} )
+					data: 'special-preferences',
+				} ),
 			);
 		}
 
@@ -309,15 +309,15 @@
 						mw.message( 'growthexperiments-help-panel-button-subsubheader-ask-help-mentor' )
 							.params( [
 								mw.language.convertNumber( mentorData.editCount ),
-								mentorData.lastActive
+								mentorData.lastActive,
 							] ).text() :
 						null,
-					subsubheader: ( buttonId === 'ask-help-mentor' ) ? mentorData.name : null
+					subsubheader: ( buttonId === 'ask-help-mentor' ) ? mentorData.name : null,
 				} ).$element
 					.on( 'click', () => {
 						this.logger.log( id );
 						this.swapPanel( id );
-					} )
+					} ),
 			);
 		} );
 	};
@@ -331,17 +331,17 @@
 				'mw-ge-help-panel-processdialog',
 				OO.ui.isMobile() ?
 					'mw-ge-help-panel-processdialog-mobile' :
-					'mw-ge-help-panel-processdialog-desktop'
+					'mw-ge-help-panel-processdialog-desktop',
 			] );
 
 		this.panels = new OO.ui.StackLayout( {
-			classes: [ 'mw-ge-help-panel-processdialog-subpanels' ]
+			classes: [ 'mw-ge-help-panel-processdialog-subpanels' ],
 		} );
 		this.homePanel = new OO.ui.PanelLayout( {
 			padded: true,
 			expanded: false,
 			scrollable: true,
-			classes: [ 'mw-ge-help-panel-processdialog-homepanel' ]
+			classes: [ 'mw-ge-help-panel-processdialog-homepanel' ],
 		} );
 
 		this.userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
@@ -349,10 +349,10 @@
 
 		this.searchWidget = new HelpPanelSearchWidget( this.logger, {
 			searchNamespaces: configData.GEHelpPanelSearchNamespaces,
-			foreignApi: configData.GEHelpPanelSearchForeignAPI
+			foreignApi: configData.GEHelpPanelSearchForeignAPI,
 		} ).connect( this, {
 			enterSearch: [ 'executeAction', 'entersearch' ],
-			leaveSearch: [ 'executeAction', 'leavesearch' ]
+			leaveSearch: [ 'executeAction', 'leavesearch' ],
 		} );
 
 		if ( mw.config.get( 'wgGEShouldShowHelpPanelTaskQuickTips' ) ) {
@@ -366,7 +366,7 @@
 				parentWindow: this,
 				preferredEditor: configData.GEHelpPanelSuggestedEditsPreferredEditor[
 					this.suggestedEditSession.taskType
-				]
+				],
 			} );
 			const guidanceTipsPromise = this.suggestededitsPanel.build();
 
@@ -380,11 +380,11 @@
 					const tabName = item.data;
 					this.updateSuggestedEditSession( {
 						helpPanelCurrentTip: tabName,
-						helpPanelSuggestedEditsInteractionHappened: true
+						helpPanelSuggestedEditsInteractionHappened: true,
 					} );
 					this.logger.log( 'guidance-tab-click', {
 						taskType: this.taskTypeId,
-						tabName: tabName
+						tabName: tabName,
 					} );
 				} );
 			} );
@@ -393,22 +393,22 @@
 		this.askhelpPanel = new AskHelpPanel( {
 			askSource: this.askSource,
 			logger: this.logger,
-			relevantTitle: mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) )
+			relevantTitle: mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) ),
 		} );
 		this.askhelpPanel.on( 'askHelpTextInputChange', this.onAskHelpTextInputChange.bind( this ) );
 		this.panelTitleMessages = Object.assign(
 			this.panelTitleMessages,
-			this.askhelpPanel.getPanelTitleMessages()
+			this.askhelpPanel.getPanelTitleMessages(),
 		);
 
 		this.generalhelpPanel = new OO.ui.PanelLayout( {
 			padded: true,
-			expanded: false
+			expanded: false,
 		} );
 
 		this.questioncompletePanel = new OO.ui.PanelLayout( {
 			padded: true,
-			expanded: true
+			expanded: true,
 		} );
 
 		// Build the content of General Help panel.
@@ -416,8 +416,8 @@
 			this.searchWidget, {
 				align: 'top',
 				label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-search-label' ).text() ),
-				classes: [ 'mw-ge-help-panel-popup-search' ]
-			}
+				classes: [ 'mw-ge-help-panel-popup-search' ],
+			},
 		);
 
 		// Add editing links after search.
@@ -432,7 +432,7 @@
 			this.generalhelpSearchFieldContent.$element,
 			this.$generalhelpPanelEditingLinksHeader,
 			this.$generalhelpPanelEditingLinks,
-			this.$generalhelpPanelEditingLinksViewMore
+			this.$generalhelpPanelEditingLinksViewMore,
 		);
 
 		// Build the content of Home panel.
@@ -447,20 +447,20 @@
 				items: [
 					new OO.ui.IconWidget( { icon: 'check', flags: [ 'progressive' ] } ),
 					new OO.ui.LabelWidget( {
-						label: mw.message( 'growthexperiments-help-panel-questioncomplete-header' ).text()
-					} )
+						label: mw.message( 'growthexperiments-help-panel-questioncomplete-header' ).text(),
+					} ),
 				],
-				classes: [ 'mw-ge-help-panel-question-complete' ]
-			} ).$element
+				classes: [ 'mw-ge-help-panel-question-complete' ],
+			} ).$element,
 		} );
 
 		this.questionCompleteConfirmationLabel = new OO.ui.LabelWidget( {
-			label: $( '<p>' ).text( this.askhelpPanel.getQuestionCompleteConfirmationLabel() )
+			label: $( '<p>' ).text( this.askhelpPanel.getQuestionCompleteConfirmationLabel() ),
 		} );
 		this.questionCompleteFirstEditText = new OO.ui.LabelWidget( {
 			label: $( '<p>' )
 				.addClass( 'mw-ge-help-panel-questioncomplete-first-edit' )
-				.text( mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text() )
+				.text( mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text() ),
 		} );
 		this.questionCompleteViewQuestionText = new OO.ui.LabelWidget();
 		this.questionCompleteNotificationsText = new OO.ui.LabelWidget();
@@ -468,7 +468,7 @@
 			this.questionCompleteConfirmationLabel,
 			this.questionCompleteViewQuestionText,
 			this.questionCompleteNotificationsText,
-			this.questionCompleteFirstEditText
+			this.questionCompleteFirstEditText,
 
 		] );
 		this.questioncompletePanel.$element.append( this.questionCompleteContent.$element );
@@ -476,7 +476,7 @@
 		const panelItems = [
 			this.askhelpPanel,
 			this.generalhelpPanel,
-			this.questioncompletePanel
+			this.questioncompletePanel,
 		];
 		if ( this.suggestededitsPanel ) {
 			panelItems.push( this.suggestededitsPanel );
@@ -575,7 +575,7 @@
 			.next( function () {
 				if ( this.suggestedEditSession.active ) {
 					this.updateSuggestedEditSession( {
-						helpPanelShouldOpen: false
+						helpPanelShouldOpen: false,
 					} );
 				}
 			}, this )
@@ -593,7 +593,7 @@
 		this.setMode(
 			this.suggestedEditSession.helpPanelShouldBeLocked ?
 				this.currentPanel + '-locked' :
-				this.currentPanel
+				this.currentPanel,
 		);
 	};
 
@@ -634,7 +634,7 @@
 		this.updateMode();
 		this.suggestededitsPanel.toggleSwitchEditorPanel(
 			this.logger.isEditing(),
-			this.logger.getEditor()
+			this.logger.getEditor(),
 		);
 
 		// If the user is editing, they are on the guidance screen, and they
@@ -646,7 +646,7 @@
 			// an interaction happened so that the user doesn't get swapped
 			// over without asking again.
 			this.updateSuggestedEditSession( {
-				helpPanelSuggestedEditsInteractionHappened: true
+				helpPanelSuggestedEditsInteractionHappened: true,
 			} );
 			this.swapPanel( 'home' );
 		}
@@ -681,7 +681,7 @@
 					if ( this.askhelpPanel.shouldShowHomepageMentorTour() ) {
 						this.launchIntroTour(
 							'homepage_mentor',
-							'growthexperiments-tour-homepage-mentorship'
+							'growthexperiments-tour-homepage-mentorship',
 						);
 					}
 					this.close();
@@ -691,7 +691,7 @@
 					// screen.
 					if ( this.currentPanel === 'suggested-edits' ) {
 						this.updateSuggestedEditSession( {
-							helpPanelSuggestedEditsInteractionHappened: true
+							helpPanelSuggestedEditsInteractionHappened: true,
 						} );
 					}
 					if ( this.currentMode === 'search' ) {
@@ -738,7 +738,7 @@
 				mw.user.options.set( tourPreferenceKey, '1' );
 				new mw.Api().saveOption(
 					tourPreferenceKey,
-					'1'
+					'1',
 				);
 			} );
 		}
@@ -798,7 +798,7 @@
 			dim = Object.assign( {}, dim, {
 				width: '360px',
 				height: '528px',
-				maxHeight: 'calc( 100vh - 180px )'
+				maxHeight: 'calc( 100vh - 180px )',
 			} );
 		}
 		return dim;
@@ -877,7 +877,7 @@
 				question_length: this.askhelpPanel.getQuestion().length,
 				include_title: this.askhelpPanel.isTitleIncludedInQuestion(),
 				had_email: !!this.userEmail,
-				had_email_confirmed: !!this.userEmailConfirmed
+				had_email_confirmed: !!this.userEmailConfirmed,
 				/* eslint-enable camelcase */
 			};
 
@@ -896,8 +896,8 @@
 					submitAttemptData,
 					/* eslint-disable camelcase */
 					{
-						revision_id: data.helppanelquestionposter.revision
-					}
+						revision_id: data.helppanelquestionposter.revision,
+					},
 					/* eslint-enable camelcase */
 				) );
 
@@ -910,10 +910,10 @@
 							$( '<a>' ).attr( {
 								href: data.helppanelquestionposter.viewquestionurl,
 								target: '_blank',
-								'data-link-id': 'view-question'
-							} ).text( this.askhelpPanel.getViewQuestionText() )
-						)
-					)
+								'data-link-id': 'view-question',
+							} ).text( this.askhelpPanel.getViewQuestionText() ),
+						),
+					),
 				);
 				this.setNotificationLabelText();
 				this.swapPanel( 'questioncomplete' );
@@ -921,7 +921,7 @@
 				if ( shouldShowHelpPanelTour ) {
 					this.launchIntroTour(
 						'helppanel',
-						'growthexperiments-tour-help-panel'
+						'growthexperiments-tour-help-panel',
 					);
 				}
 
@@ -938,8 +938,8 @@
 					new OO.ui.Error( $( '<p>' ).append(
 						errorCode === 'hookaborted' ?
 							this.askhelpPanel.getSubmitFailureMessage() :
-							errorData.error.info
-					) )
+							errorData.error.info,
+					) ),
 				).promise();
 			} )
 			.always( () => {

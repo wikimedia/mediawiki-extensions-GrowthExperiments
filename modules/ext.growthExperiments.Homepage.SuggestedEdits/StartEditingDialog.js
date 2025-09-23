@@ -59,7 +59,7 @@ StartEditingDialog.static.actions = [
 			undefined,
 		flags: [ 'safe' ],
 		framed: true,
-		modes: [ 'intro' ]
+		modes: [ 'intro' ],
 	},
 	{
 		action: 'back',
@@ -72,14 +72,14 @@ StartEditingDialog.static.actions = [
 			undefined,
 		flags: [ 'safe' ],
 		framed: true,
-		modes: [ 'difficulty' ]
+		modes: [ 'difficulty' ],
 	},
 	{
 		action: 'difficulty',
 		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-intro-forward' ),
 		flags: [ 'progressive', 'primary' ],
 		framed: true,
-		modes: [ 'intro' ]
+		modes: [ 'intro' ],
 	},
 	// Only used when activateWhenDone is true
 	{
@@ -89,7 +89,7 @@ StartEditingDialog.static.actions = [
 			mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-forward' ),
 		flags: [ 'progressive', 'primary' ],
 		framed: true,
-		modes: [ 'difficulty' ]
+		modes: [ 'difficulty' ],
 	},
 	// Only used when activateWhenDone is false
 	{
@@ -97,8 +97,8 @@ StartEditingDialog.static.actions = [
 		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate' ),
 		flags: [ 'progressive', 'primary' ],
 		framed: true,
-		modes: [ 'difficulty' ]
-	}
+		modes: [ 'difficulty' ],
+	},
 ];
 
 StartEditingDialog.prototype.initialize = function () {
@@ -112,8 +112,8 @@ StartEditingDialog.prototype.initialize = function () {
 		expanded: false,
 		classes: [ OO.ui.isMobile() ?
 			'suggested-edits-article-count-panel-layout-mobile' :
-			'suggested-edits-article-count-panel-layout-desktop'
-		]
+			'suggested-edits-article-count-panel-layout-desktop',
+		],
 	} ).toggle( this.showingTopicSelector() );
 	this.articleCounterPanelLayout.$element.append( this.articleCounter.$element );
 
@@ -135,7 +135,7 @@ StartEditingDialog.prototype.initialize = function () {
 
 	this.swipeCard = new SwipePane( this.$element, {
 		isRtl: document.documentElement.dir === 'rtl',
-		isHorizontal: true
+		isHorizontal: true,
 	} );
 
 	this.swipeCard.setToStartHandler( this.swapPanel.bind( this, 'difficulty' ) );
@@ -184,7 +184,7 @@ StartEditingDialog.prototype.attachActions = function () {
 		this.$desktopFooter.append( this.articleCounterPanelLayout.$element );
 		this.$desktopActions.append(
 			this.$safeActions.children(),
-			this.$primaryActions.children()
+			this.$primaryActions.children(),
 		);
 		this.$desktopFooter.append( this.$desktopActions );
 		// HACK: OOUI has really aggressive styling for buttons inside ActionWidgets inside
@@ -218,8 +218,8 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 				action.action !== ( dialog.activateWhenDone ? 'done' : 'activate' ) &&
 				// Remove 'close' in non-modal mode
 				( dialog.getManager().modal || action.action !== 'close' )
-			)
-		)
+			),
+		),
 	}, data );
 	return StartEditingDialog.super.prototype.getSetupProcess
 		.call( this, data )
@@ -297,7 +297,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				// or closing the dialog.
 				this.setPendingElement( this.$activateButton );
 				const settings = {
-					'growthexperiments-homepage-suggestededits-activated': 1
+					'growthexperiments-homepage-suggestededits-activated': 1,
 				};
 				const logData = { trigger: this.trigger };
 				if ( this.topicSelector ) {
@@ -369,57 +369,57 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 					withoutTopics: 'intro-add-image.svg',
 					withTopics: {
 						ltr: 'intro-topic-add-image-ltr.svg',
-						rtl: 'intro-topic-add-image-rtl.svg'
-					}
+						rtl: 'intro-topic-add-image-rtl.svg',
+					},
 				},
 				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-add-image' )
 					.params( [ mw.util.getUrl( introLinks.image ) ] )
-					.parse()
+					.parse(),
 			},
 			'edit-typo': {
 				image: {
 					withoutTopics: {
 						ltr: 'intro-typo-ltr.svg',
-						rtl: 'intro-typo-rtl.svg'
+						rtl: 'intro-typo-rtl.svg',
 					},
 					withTopics: {
 						ltr: 'intro-topic-typo-ltr.svg',
-						rtl: 'intro-topic-typo-rtl.svg'
-					}
+						rtl: 'intro-topic-typo-rtl.svg',
+					},
 				},
 				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-edit-typo' )
-					.parse()
+					.parse(),
 			},
 			'new-page': {
 				image: {
 					withoutTopics: {
 						ltr: 'intro-new-page-ltr.svg',
-						rtl: 'intro-new-page-rtl.svg'
+						rtl: 'intro-new-page-rtl.svg',
 					},
 					withTopics: {
 						ltr: 'intro-topic-new-page-ltr.svg',
-						rtl: 'intro-topic-new-page-rtl.svg'
-					}
+						rtl: 'intro-topic-new-page-rtl.svg',
+					},
 				},
 				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-new-page' )
 					.params( [ mw.util.getUrl( introLinks.create ) ] )
-					.parse()
+					.parse(),
 			},
 			'edit-info-add-change': {
 				image: {
 					withoutTopics: {
 						ltr: 'intro-add-info-ltr.svg',
-						rtl: 'intro-add-info-rtl.svg'
+						rtl: 'intro-add-info-rtl.svg',
 					},
 					withTopics: {
 						ltr: 'intro-topic-add-info-ltr.svg',
-						rtl: 'intro-topic-add-info-rtl.svg'
-					}
+						rtl: 'intro-topic-add-info-rtl.svg',
+					},
 				},
 				labelHtml: mw.message(
-					'growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change'
-				).parse()
-			}
+					'growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change',
+				).parse(),
+			},
 		},
 		introPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
 
@@ -434,7 +434,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 	// topicsAvailable() needs it
 	this.topicSelector = this.enableTopics ? new TopicSelectionWidget( {
 		isMatchModeEnabled: this.useTopicMatchMode,
-		$overlay: true
+		$overlay: true,
 	}, this.filtersStore.getGroupedTopics() ) : false;
 
 	const generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.png';
@@ -455,8 +455,8 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 					$( '<p>' )
 						.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-header' ).text() ),
 					$( '<p>' )
-						.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() )
-				]
+						.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() ),
+				],
 			);
 
 		const $topicIntro = $( '<div>' )
@@ -469,13 +469,13 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 							.addClass( 'mw-ge-startediting-dialog-intro-topic-image' )
 							.attr( {
 								src: imagePath + '/' + ( imageUrl || generalImageUrl ),
-								role: 'presentation'
+								role: 'presentation',
 							} ),
 						$( '<p>' )
 							.addClass( 'mw-ge-startediting-dialog-intro-topic-title' )
-							.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-title' ).text() )
+							.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-title' ).text() ),
 					),
-				$topicMessage
+				$topicMessage,
 			);
 
 		if ( this.useTopicSelector ) {
@@ -483,13 +483,13 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				selectAll: function ( groupId ) {
 					this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-select-all', {
 						isCta: true,
-						topicGroup: groupId
+						topicGroup: groupId,
 					} );
 				},
 				removeAll: function ( groupId ) {
 					this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-remove-all', {
 						isCta: true,
-						topicGroup: groupId
+						topicGroup: groupId,
 					} );
 				},
 				// The "select all" buttons fire many toggleSelection events at once, so
@@ -505,10 +505,10 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 						// 'se-topicmatchmode-and'
 						'se-topicmatchmode-' + matchMode.toLowerCase(),
 						{
-							topicsMatchMode: matchMode
-						}
+							topicsMatchMode: matchMode,
+						},
 					);
-				}
+				},
 			} );
 			const $topicSelectorWrapper = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )
@@ -516,14 +516,14 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 					$( '<p>' )
 						.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-header' )
 						.text( mw.message(
-							'growthexperiments-homepage-startediting-dialog-intro-topic-selector-header'
+							'growthexperiments-homepage-startediting-dialog-intro-topic-selector-header',
 						).text() ),
-					this.topicSelector.$element
+					this.topicSelector.$element,
 				);
 
 			introPanel.$element.append(
 				$topicIntro,
-				$topicSelectorWrapper
+				$topicSelectorWrapper,
 			);
 		} else {
 			const descriptionImage = OO.ui.isMobile() ? 'intro-topic-description-landscape.svg' :
@@ -540,18 +540,18 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 							$( '<p>' )
 								.addClass( 'mw-ge-startediting-dialog-intro-topic-description-header' )
 								.text( mw.message(
-									'growthexperiments-homepage-startediting-dialog-intro-topic-description-header'
+									'growthexperiments-homepage-startediting-dialog-intro-topic-description-header',
 								).text() ),
 							$( '<p>' )
 								.addClass( 'mw-ge-startediting-dialog-intro-topic-description-subheader' )
 								.text( mw.message(
-									'growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader'
-								).text() )
-						)
+									'growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader',
+								).text() ),
+						),
 				);
 			introPanel.$element.append(
 				$topicIntro,
-				$topicDescription
+				$topicDescription,
 			);
 		}
 	} else {
@@ -578,7 +578,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-header' ).text() ),
 				$( '<p>' )
 					.addClass( 'mw-ge-startediting-dialog-intro-general-subheader' )
-					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() )
+					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() ),
 			);
 
 		let $responseIntro;
@@ -591,7 +591,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 						.attr( { src: imagePath + '/' + imageUrl } ),
 					$( '<p>' )
 						.addClass( 'mw-ge-startediting-dialog-intro-response-label' )
-						.html( responseData.labelHtml )
+						.html( responseData.labelHtml ),
 				);
 			introPanel.$element.addClass( 'mw-ge-startediting-dialog-intro-withresponse' );
 		} else {
@@ -600,7 +600,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 
 		introPanel.$element.append(
 			$generalIntro,
-			$responseIntro
+			$responseIntro,
 		);
 	}
 
@@ -621,15 +621,15 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 					.append( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-header' ).parse() ),
 				$( '<p>' )
 					.addClass( 'mw-ge-startediting-dialog-difficulty-subheader' )
-					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-subheader' ).text() )
-			)
+					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-subheader' ).text() ),
+			),
 	);
 
 	if ( this.useTaskTypeSelector ) {
 		this.taskTypeSelector = new TaskTypeSelectionWidget( {
 			selectedTaskTypes: this.filtersStore.preferences.taskTypes,
 			introLinks: SUGGESTED_EDITS_CONFIG.GEHomepageSuggestedEditsIntroLinks,
-			classes: [ 'mw-ge-startediting-dialog-difficulty-taskTypeSelector' ]
+			classes: [ 'mw-ge-startediting-dialog-difficulty-taskTypeSelector' ],
 		}, ALL_TASK_TYPES )
 			.connect( this, {
 				select: function ( topics ) {
@@ -637,14 +637,14 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 						button.setDisabled( topics.length === 0 );
 					} );
 					this.updateMatchCount();
-				}
+				},
 			} );
 		difficultyPanel.$element.append( this.taskTypeSelector.$element );
 	} else {
 		difficultyPanel.$element.append(
 			$( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-difficulty-legend' )
-				.append( this.buildDifficultyLegend() )
+				.append( this.buildDifficultyLegend() ),
 		);
 	}
 	return difficultyPanel;
@@ -674,7 +674,7 @@ StartEditingDialog.prototype.buildDifficultyLegend = function () {
 						// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label
 						// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label
 						// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label
-						$( '<span>' ).text( mw.msg( labelMsg ) )
+						$( '<span>' ).text( mw.msg( labelMsg ) ),
 					),
 				$( '<div>' )
 					.addClass( [ classPrefix + 'legend-cell', classPrefix + 'legend-description' ] )
@@ -692,8 +692,8 @@ StartEditingDialog.prototype.buildDifficultyLegend = function () {
 							// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-body
 							// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-body
 							// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-body
-							.text( mw.msg( bodyMsg ) )
-					)
+							.text( mw.msg( bodyMsg ) ),
+					),
 			);
 	} );
 };
@@ -703,15 +703,15 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
 	for ( let i = 0; i < totalPages; i++ ) {
 		$indicator.append( $( '<span>' )
 			.addClass( 'mw-ge-startediting-dialog-progress-indicator' )
-			.addClass( i < currentPage ? 'mw-ge-startediting-dialog-progress-indicator-completed' : '' )
+			.addClass( i < currentPage ? 'mw-ge-startediting-dialog-progress-indicator-completed' : '' ),
 		);
 	}
 	$indicator.append( $( '<span>' )
 		.addClass( 'mw-ge-startediting-dialog-progress-label' )
 		.text( mw.message( 'growthexperiments-homepage-startediting-dialog-progress' ).params( [
 			mw.language.convertNumber( currentPage ),
-			mw.language.convertNumber( totalPages )
-		] ).text() )
+			mw.language.convertNumber( totalPages ),
+		] ).text() ),
 	);
 
 	return $indicator;

@@ -83,36 +83,36 @@ module.exports = ( function () {
 					[
 						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph1', userName ).text(),
 						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph2' ).text(),
-						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph3' ).text()
+						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph3' ).text(),
 					],
 					[
-						2
-					]
+						2,
+					],
 				),
 				createPanel(
 					2,
 					mw.message( 'growthexperiments-addsectionimage-onboarding-content-step2-title' ).text(),
 					[
 						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step2-body-paragraph1' ).text(),
-						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step2-body-paragraph2', userName ).text()
-					]
+						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step2-body-paragraph2', userName ).text(),
+					],
 				),
 				createPanel(
 					3,
 					mw.message( 'growthexperiments-addsectionimage-onboarding-content-step3-title' ).text(),
 					[
-						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step3-body-paragraph1' ).text()
-					]
+						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step3-body-paragraph1' ).text(),
+					],
 				),
 				createPanel(
 					4,
 					mw.message( 'growthexperiments-addsectionimage-onboarding-content-step4-title' ).text(),
 					[
 						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step4-body-paragraph1', userName ).text(),
-						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step4-body-paragraph2', userName ).text()
-					]
-				)
+						mw.message( 'growthexperiments-addsectionimage-onboarding-content-step4-body-paragraph2', userName ).text(),
+					],
+				),
 			];
-		}
+		},
 	};
 }() );

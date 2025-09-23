@@ -17,5 +17,5 @@ module.exports = exports = {
 		// Add configured $log() method to the application globalProperties
 		// so it can be accessed from compponent instances
 		app.config.globalProperties.$log = $log;
-	}
+	},
 };

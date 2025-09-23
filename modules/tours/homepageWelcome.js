@@ -2,7 +2,7 @@
 	const HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		tourUtils = require( './tourUtils.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
-			mw.config.get( 'wgGEHomepagePageviewToken' )
+			mw.config.get( 'wgGEHomepagePageviewToken' ),
 		),
 		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' );
 
@@ -12,7 +12,7 @@
 	function markTourAsSeen() {
 		new mw.Api().saveOption(
 			'growthexperiments-tour-homepage-welcome',
-			'1'
+			'1',
 		);
 	}
 
@@ -25,7 +25,7 @@
 		const type = {
 			xButton: 'close-icon',
 			escapeKey: 'should-not-happen',
-			clickOutside: 'outside-click'
+			clickOutside: 'outside-click',
 		}[ closeMethod ];
 
 		markTourAsSeen();
@@ -50,7 +50,7 @@
 	const welcomeTour = new gt.TourBuilder( {
 		name: 'homepage_welcome',
 		isSinglePage: true,
-		shouldLog: true
+		shouldLog: true,
 	} );
 	if ( isSuggestedEditsActivated ) {
 		step = welcomeTour.firstStep( tourUtils.adjustPersonalToolbarTourStep( {
@@ -68,13 +68,13 @@
 				// There is way to influence the button icon without terrible hacks,
 				// so use the 'next' button which has the right icon but breaks the onclick
 				// callback, and define a fake next step and use its onShow callback instead.
-				action: 'next'
+				action: 'next',
 			} ],
 			onShow: function () {
 				markTourAsSeen();
 				setupCloseButtonLogging( this );
 			},
-			onClose: logTourCloseAndMarkAsComplete
+			onClose: logTourCloseAndMarkAsComplete,
 		} ) );
 		welcomeTour.step( {
 			name: 'fake',
@@ -84,11 +84,11 @@
 				mw.track( 'growthexperiments.startediting', {
 					// The welcome dialog doesn't belong to any module
 					moduleName: 'generic',
-					trigger: 'welcome'
+					trigger: 'welcome',
 				} );
 				// cancel displaying the guider
 				return true;
-			}
+			},
 		} );
 		step.next( 'fake' );
 	} else {
@@ -105,13 +105,13 @@
 			autoFocus: true,
 			buttons: [ {
 				action: 'end',
-				namemsg: 'growthexperiments-tour-response-button-okay'
+				namemsg: 'growthexperiments-tour-response-button-okay',
 			} ],
 			onShow: function () {
 				markTourAsSeen();
 				setupCloseButtonLogging( this );
 			},
-			onClose: logTourCloseAndMarkAsComplete
+			onClose: logTourCloseAndMarkAsComplete,
 		} ) );
 	}
 	mw.guidedTour.launchTour( 'homepage_welcome' );

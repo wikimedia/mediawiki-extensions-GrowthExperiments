@@ -20,16 +20,16 @@ function PostEditDrawer( panel, helpPanelLogger ) {
 		headerText: this.panel.getHeaderText(),
 		$introContent: this.shouldShowToastMessageWithDrawer ? this.toastMessage.$element : null,
 		content: [ this.panel.getMainArea() ].concat( this.panel.getFooterButtons() ),
-		padded: false
+		padded: false,
 	} );
 	this.$element.addClass( [
 		'mw-ge-postEditDrawer',
 		OO.ui.isMobile() ? 'mw-ge-postEditDrawer-mobile' : 'mw-ge-postEditDrawer-desktop',
-		panel instanceof TryNewTaskPanel ? 'mw-ge-postEditDrawer-tryNewTask' : 'mw-ge-postEditDrawer-postEdit'
+		panel instanceof TryNewTaskPanel ? 'mw-ge-postEditDrawer-tryNewTask' : 'mw-ge-postEditDrawer-postEdit',
 	] );
 	// Allow close events emitted in the panel to close the drawer.
 	this.panel.connect( this, {
-		close: 'onClose'
+		close: 'onClose',
 	} );
 }
 
@@ -53,7 +53,7 @@ PostEditDrawer.prototype.showToastMessage = function ( delay ) {
 	const deferred = $.Deferred(),
 		$toastMessageArea = $( '<div>' ).addClass( 'mw-ge-postEditDrawer-toastMessageArea' ),
 		$toastMessageOverlay = $( '<div>' ).addClass(
-			'mw-ge-postEditDrawer-toastMessageOverlay'
+			'mw-ge-postEditDrawer-toastMessageOverlay',
 		).append( $toastMessageArea );
 	$( document.body ).append( $toastMessageOverlay );
 	$toastMessageArea.append( this.toastMessage.$element );

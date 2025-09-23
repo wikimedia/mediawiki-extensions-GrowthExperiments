@@ -4,7 +4,7 @@
 	const discoveryTour = new gt.TourBuilder( {
 		name: 'homepage_discovery',
 		isSinglePage: true,
-		shouldLog: true
+		shouldLog: true,
 	} );
 	discoveryTour.firstStep( tourUtils.adjustPersonalToolbarTourStep( {
 		name: 'discovery',
@@ -18,12 +18,12 @@
 		autoFocus: true,
 		buttons: [ {
 			action: 'end',
-			namemsg: 'growthexperiments-tour-response-button-okay'
-		} ]
+			namemsg: 'growthexperiments-tour-response-button-okay',
+		} ],
 	} ) );
 	mw.guidedTour.launchTour( 'homepage_discovery' );
 	new mw.Api().saveOption(
 		'growthexperiments-tour-homepage-discovery',
-		'1'
+		'1',
 	);
 }( mw.guidedTour ) );

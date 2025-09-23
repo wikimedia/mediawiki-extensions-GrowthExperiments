@@ -10,7 +10,7 @@ QUnit.module( 'ext.growthExperiments.StructuredTask/StructuredTaskLogger.js', QU
 	},
 	afterEach: function () {
 		mw.eventLog = mwEventLog;
-	}
+	},
 } ) );
 
 QUnit.test( 'should log events', function ( assert ) {
@@ -20,7 +20,7 @@ QUnit.test( 'should log events', function ( assert ) {
 	const logger = new StructuredTaskLogger( 'analytics/schema', 'some.stream', {} );
 	logger.log( 'action_name', 'data', {
 		/* eslint-disable camelcase */
-		page_title: 'overriden_page'
+		page_title: 'overriden_page',
 		/* eslint-enable camelcase */
 	} );
 	assert.strictEqual( mw.eventLog.submit.calledOnce, true );
@@ -33,7 +33,7 @@ QUnit.test( 'should log events', function ( assert ) {
 		homepage_pageview_token: null,
 		newcomer_task_token: null,
 		page_id: 0,
-		page_title: 'overriden_page'
+		page_title: 'overriden_page',
 		/* eslint-enable camelcase */
 	} );
 } );

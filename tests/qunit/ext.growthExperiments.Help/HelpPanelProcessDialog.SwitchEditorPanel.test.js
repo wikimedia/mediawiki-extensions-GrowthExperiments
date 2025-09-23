@@ -8,7 +8,7 @@ QUnit.test( 'constructor', ( assert ) => {
 	SwitchEditorPanel = require( pathToSwitchEditorPanel );
 
 	const switchEditorPanel = new SwitchEditorPanel( {
-		preferredEditor: 'visualeditor'
+		preferredEditor: 'visualeditor',
 	} );
 	assert.strictEqual( switchEditorPanel.preferredEditor, 'visualeditor' );
 } );

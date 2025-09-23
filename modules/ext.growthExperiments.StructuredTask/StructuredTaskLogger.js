@@ -27,7 +27,7 @@ function StructuredTaskLogger( schema, streamName, config ) {
 	this.config = Object.assign( {
 		/* eslint-disable camelcase */
 		homepage_pageview_token: null,
-		newcomer_task_token: null
+		newcomer_task_token: null,
 		/* eslint-enable camelcase */
 	}, config );
 }
@@ -44,7 +44,7 @@ StructuredTaskLogger.prototype.log = function ( action, data, metadataOverride )
 	const event = Object.assign( {
 		action: action,
 		/* eslint-disable camelcase */
-		action_data: Utils.serializeActionData( data )
+		action_data: Utils.serializeActionData( data ),
 		/* eslint-enable camelcase */
 	}, this.getMetadata(), metadataOverride );
 	event.$schema = this.schema;
@@ -67,7 +67,7 @@ StructuredTaskLogger.prototype.getMetadata = function () {
 		page_id: mw.config.get( 'wgArticleId' ),
 		page_title: new mw.Title( mw.config.get( 'wgPageName' ) ).getPrefixedText(),
 		homepage_pageview_token: suggestedEditSession.clickId ||
-			this.config.homepage_pageview_token
+			this.config.homepage_pageview_token,
 		/* eslint-enable camelcase */
 	} );
 };

@@ -7,12 +7,12 @@ const SuggestionWidget = require( './SuggestionWidget.js' ),
 	TOPIC_MATCH_MODE_OPTIONS = [
 		{
 			data: TOPIC_MATCH_MODES.OR,
-			label: mw.message( 'growthexperiments-homepage-suggestededits-topics-match-mode-any' ).text()
+			label: mw.message( 'growthexperiments-homepage-suggestededits-topics-match-mode-any' ).text(),
 		},
 		{
 			data: TOPIC_MATCH_MODES.AND,
-			label: mw.message( 'growthexperiments-homepage-suggestededits-topics-match-mode-all' ).text()
-		}
+			label: mw.message( 'growthexperiments-homepage-suggestededits-topics-match-mode-all' ).text(),
+		},
 	];
 
 /**
@@ -35,7 +35,7 @@ const SuggestionWidget = require( './SuggestionWidget.js' ),
 function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 	config = Object.assign( {
 		initialLimit: 12,
-		filters: new TopicFilters()
+		filters: new TopicFilters(),
 	}, config );
 
 	// Parent constructor
@@ -51,10 +51,10 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 			classes: [ 'mw-ge-TopicSelectionWidget__match-mode' ],
 			options: TOPIC_MATCH_MODE_OPTIONS,
 			initialValue: config.filters.getTopicsMatchMode() || TOPIC_MATCH_MODES.OR,
-			$overlay: config.$overlay
+			$overlay: config.$overlay,
 		} );
 		this.matchModeSelector.connect( this, {
-			toggleMatchMode: [ 'emit', 'toggleMatchMode' ]
+			toggleMatchMode: [ 'emit', 'toggleMatchMode' ],
 		} );
 		this.$element.append( this.matchModeSelector.$element );
 	}
@@ -66,7 +66,7 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 		const suggestionWidgets = group.topics.map( ( topic ) => new SuggestionWidget( { suggestionData: {
 			id: topic.id,
 			text: topic.name,
-			confirmed: config.filters.getTopics().includes( topic.id )
+			confirmed: config.filters.getTopics().includes( topic.id ),
 		} } ) );
 		let displayedSuggestionWidgets = suggestionWidgets;
 		let hiddenSuggestionWidgets = [];
@@ -92,13 +92,13 @@ function TopicSelectionWidget( config, GROUPED_TOPICS ) {
 			items: displayedSuggestionWidgets,
 			hiddenItems: hiddenSuggestionWidgets,
 			header: group.id === null ? undefined : group.name,
-			selectAll: group.id !== null
+			selectAll: group.id !== null,
 		} );
 		groupWidget.connect( this, {
 			toggleSuggestion: [ 'emit', 'toggleSelection' ],
 			selectAll: [ 'emit', 'selectAll', group.id ],
 			removeAll: [ 'emit', 'removeAll', group.id ],
-			expand: [ 'emit', 'expand' ]
+			expand: [ 'emit', 'expand' ],
 		} );
 
 		this.suggestions = this.suggestions.concat( suggestionWidgets );
@@ -147,7 +147,7 @@ TopicSelectionWidget.prototype.getSuggestions = function () {
 TopicSelectionWidget.prototype.getFilters = function () {
 	return new TopicFilters( {
 		topics: this.getSelectedTopics(),
-		topicsMatchMode: this.matchModeSelector ? this.matchModeSelector.getSelectedMode() : null
+		topicsMatchMode: this.matchModeSelector ? this.matchModeSelector.getSelectedMode() : null,
 	} );
 };
 

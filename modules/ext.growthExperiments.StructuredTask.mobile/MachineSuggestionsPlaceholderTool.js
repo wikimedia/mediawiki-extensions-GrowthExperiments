@@ -23,7 +23,7 @@ MachineSuggestionsPlaceholderTool.static.title = '';
  */
 MachineSuggestionsPlaceholderTool.prototype.updateTitleText = function (
 	titleText,
-	isLoading
+	isLoading,
 ) {
 	if ( !this.$titleText ) {
 		this.$titleText = this.$element.find( '.mw-ge-machine-suggestions-mode-title-text' );
@@ -31,7 +31,7 @@ MachineSuggestionsPlaceholderTool.prototype.updateTitleText = function (
 	}
 	this.$titleText.text( titleText ).toggleClass(
 		'mw-ge-machine-suggestions-mode-title-text--is-loading',
-		!!isLoading
+		!!isLoading,
 	);
 };
 
@@ -41,7 +41,7 @@ MachineSuggestionsPlaceholderTool.prototype.updateTitleText = function (
 MachineSuggestionsPlaceholderTool.prototype.restoreOriginalTitleText = function () {
 	if ( this.$titleText && this.originalTitleText ) {
 		this.$titleText.text( this.originalTitleText ).removeClass(
-			'mw-ge-machine-suggestions-mode-title-text--is-loading'
+			'mw-ge-machine-suggestions-mode-title-text--is-loading',
 		);
 	}
 };

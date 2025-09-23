@@ -9,5 +9,5 @@
  */
 module.exports = {
 	newcomerTasks: require( './store.js' ).newcomerTasks,
-	CONSTANTS: require( './constants.js' )
+	CONSTANTS: require( './constants.js' ),
 };

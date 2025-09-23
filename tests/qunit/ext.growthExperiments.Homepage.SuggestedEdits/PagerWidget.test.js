@@ -7,7 +7,7 @@ let suggestedEditPagerWidget;
 QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js', {
 	beforeEach() {
 		suggestedEditPagerWidget = new SuggestedEditPagerWidget();
-	}
+	},
 } );
 
 QUnit.test( 'constructor', ( assert ) => {
@@ -26,7 +26,7 @@ QUnit.test( 'setMessage with currentPosition === totalCount', function ( assert 
 	assert.true( spy.calledWithExactly(
 		'growthexperiments-homepage-suggestededits-pager',
 		'2',
-		'2'
+		'2',
 	) );
 } );
 
@@ -37,6 +37,6 @@ QUnit.test( 'setMessage with currentPosition > totalCount', function ( assert ) 
 	assert.true( spy.getCall( 1 ).calledWithExactly(
 		'growthexperiments-homepage-suggestededits-pager',
 		'(growthexperiments-homepage-suggestededits-pager-end)',
-		'2'
+		'2',
 	) );
 } );

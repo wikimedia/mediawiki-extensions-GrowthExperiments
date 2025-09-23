@@ -24,7 +24,7 @@
 			const finalUrl = new URL( url, window.location.origin );
 			finalUrl.searchParams.set(
 				'new-onboarding',
-				currentUrl.searchParams.get( 'new-onboarding' )
+				currentUrl.searchParams.get( 'new-onboarding' ),
 			);
 			url = finalUrl.toString();
 		}
@@ -36,9 +36,9 @@
 						.addClass( 'se-card-content' )
 						.append(
 							this.getImageContent(),
-							this.getTextContent()
-						)
-				)
+							this.getTextContent(),
+						),
+				),
 		);
 
 		if ( !url ) {
@@ -86,7 +86,7 @@
 					$( '<div>' )
 						.addClass( 'se-card-extract' )
 						.addClass( !this.data.extraDataLoaded ? 'skeleton' : '' )
-						.text( this.data.extract || '' )
+						.text( this.data.extract || '' ),
 				);
 		if ( !this.data.extraDataLoaded ) {
 			$pageViews.addClass( 'skeleton' );
@@ -97,7 +97,7 @@
 		}
 		const pageViewsMessage = this.data.pageviews ? mw.message(
 			'growthexperiments-homepage-suggestededits-pageviews',
-			mw.language.convertNumber( this.data.pageviews )
+			mw.language.convertNumber( this.data.pageviews ),
 		).escaped() : '';
 		$textContent.append(
 			$pageViews.append(

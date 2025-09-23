@@ -151,7 +151,7 @@ StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMod
 			'impression',
 			'',
 			// eslint-disable-next-line camelcase
-			{ active_interface: 'editmode_confirmation_dialog' }
+			{ active_interface: 'editmode_confirmation_dialog' },
 		);
 	} );
 
@@ -161,7 +161,7 @@ StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMod
 			isConfirm ? 'editmode_confirm_switch' : 'editmode_cancel_switch',
 			/* eslint-disable camelcase */
 			isConfirm ? { selected_mode: editMode } : {},
-			{ active_interface: 'editmode_confirmation_dialog' }
+			{ active_interface: 'editmode_confirmation_dialog' },
 			/* eslint-enable camelcase */
 		);
 		return deferred.resolve( isConfirm );
@@ -306,7 +306,7 @@ StructuredTaskArticleTarget.prototype.teardownWithoutPrompt = null;
 StructuredTaskArticleTarget.prototype.tryTeardown = function ( noPrompt, trackMechanism ) {
 	if ( this.edited || this.hasReviewedSuggestions() ) {
 		return this.constructor.super.super.prototype.tryTeardown.call(
-			this, noPrompt, trackMechanism
+			this, noPrompt, trackMechanism,
 		);
 	}
 	// Show a confirmation when the user hasn't made any edits (T300582)

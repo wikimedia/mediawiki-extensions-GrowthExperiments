@@ -14,35 +14,35 @@ function QualityGate( config ) {
 		'image-recommendation': {
 			dailyLimit: function () {
 				return this.checkDailyLimitForTaskType( 'image-recommendation' );
-			}.bind( this )
+			}.bind( this ),
 		},
 		'section-image-recommendation': {
 			dailyLimit: function () {
 				return this.checkDailyLimitForTaskType( 'section-image-recommendation' );
-			}.bind( this )
+			}.bind( this ),
 		},
 		'link-recommendation': {
 			dailyLimit: function () {
 				return this.checkDailyLimitForTaskType( 'link-recommendation' );
-			}.bind( this )
-		}
+			}.bind( this ),
+		},
 	};
 	this.errorHandlers = {
 		'image-recommendation': {
 			dailyLimit: function () {
 				return this.showImageRecommendationDailyLimitAlertDialog();
-			}.bind( this )
+			}.bind( this ),
 		},
 		'section-image-recommendation': {
 			dailyLimit: function () {
 				return this.showSectionImageRecommendationDailyLimitAlertDialog();
-			}.bind( this )
+			}.bind( this ),
 		},
 		'link-recommendation': {
 			dailyLimit: function () {
 				return this.showLinkRecommendationDailyLimitAlertDialog();
-			}.bind( this )
-		}
+			}.bind( this ),
+		},
 	};
 	this.loggers = config.loggers;
 	// Used for alert dialogs.
@@ -106,8 +106,8 @@ QualityGate.prototype.showImageRecommendationDailyLimitAlertDialog = function ()
 		{
 			action: 'accept',
 			label: mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded-dialog-button' ).text(),
-			flags: 'primary'
-		}
+			flags: 'primary',
+		},
 	);
 };
 
@@ -122,8 +122,8 @@ QualityGate.prototype.showSectionImageRecommendationDailyLimitAlertDialog = func
 		{
 			action: 'accept',
 			label: mw.message( 'growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button' ).text(),
-			flags: 'primary'
-		}
+			flags: 'primary',
+		},
 	);
 };
 
@@ -149,7 +149,7 @@ QualityGate.prototype.showAlertDialog = function ( qualityGateId, message, actio
 	this.windowManager.addWindows( [ messageDialog ] );
 	return this.windowManager.openWindow( messageDialog, {
 		message: message,
-		actions: [ action ]
+		actions: [ action ],
 	} );
 };
 
@@ -164,8 +164,8 @@ QualityGate.prototype.showLinkRecommendationDailyLimitAlertDialog = function () 
 		{
 			action: 'accept',
 			label: mw.message( 'growthexperiments-addlink-daily-task-limit-exceeded-dialog-button' ).text(),
-			flags: 'primary'
-		}
+			flags: 'primary',
+		},
 	);
 };
 

@@ -13,13 +13,13 @@
 			context: 'postedit',
 			previousEditorInterface: suggestedEditSession.editorInterface,
 			sessionId: suggestedEditSession.clickId,
-			isSuggestedTask: suggestedEditSession.active
+			isSuggestedTask: suggestedEditSession.active,
 		} ),
 		tryNewTaskHelpPanelLogger = new HelpPanelLogger( {
 			context: 'postedit-trynewtask',
 			previousEditorInterface: suggestedEditSession.editorInterface,
 			sessionId: suggestedEditSession.clickId,
-			isSuggestedTask: suggestedEditSession.active
+			isSuggestedTask: suggestedEditSession.active,
 		} ),
 		rootStore = require( 'ext.growthExperiments.DataStore' ),
 		CONSTANTS = rootStore.CONSTANTS,
@@ -82,7 +82,7 @@
 		} );
 		return {
 			openPromise: drawer.opened,
-			closePromise: drawer.closed
+			closePromise: drawer.closed,
 		};
 	}
 
@@ -121,7 +121,7 @@
 			helpPanelLogger: postEditPanelHelpPanelLogger,
 			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded,
 			sectionImageRecommendationDailyTasksExceeded: sectionImageRecommendationDailyTasksExceeded,
-			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded
+			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded,
 		} );
 
 		const displayPanelPromises = displayPanel( postEditPanel, postEditPanelHelpPanelLogger, showToast );
@@ -129,7 +129,7 @@
 		return {
 			panel: postEditPanel,
 			openPromise: displayPanelPromises.openPromise,
-			closePromise: displayPanelPromises.closePromise
+			closePromise: displayPanelPromises.closePromise,
 		};
 	}
 
@@ -154,7 +154,7 @@
 		setupPanel: function ( nextSuggestedTaskType, showToast ) {
 			const fetchTasksConfig = {
 					excludePageId: mw.config.get( 'wgArticleId' ),
-					excludeExceededQuotaTaskTypes: true
+					excludeExceededQuotaTaskTypes: true,
 				},
 				logPanelImpression = function ( panel, errorMessage ) {
 					return panel.logImpression.bind( panel, {
@@ -162,7 +162,7 @@
 						errorMessage: errorMessage,
 						userTaskTypes: filtersStore.getSelectedTaskTypes(),
 						userTopics: filtersStore.getSelectedTopics(),
-						newcomerTaskToken: suggestedEditSession.newcomerTaskToken
+						newcomerTaskToken: suggestedEditSession.newcomerTaskToken,
 					} );
 				};
 
@@ -208,7 +208,7 @@
 					nextSuggestedTaskType: suggestedEditSession.nextSuggestedTaskType,
 					activeTaskType: suggestedEditSession.taskType,
 					helpPanelLogger: tryNewTaskHelpPanelLogger,
-					tryNewTaskOptOuts: tryNewTaskOptOuts
+					tryNewTaskOptOuts: tryNewTaskOptOuts,
 				} );
 				const displayPanelPromises = displayPanel( tryNewTaskPanel, tryNewTaskHelpPanelLogger, true );
 				displayPanelPromises.openPromise.then( () => {
@@ -217,20 +217,20 @@
 						// is triggered at GELevelingUpManagerTaskTypeCountThresholdMultiple - 1,
 						// so when this code runs, the suggestedEditSession's edit count reflects
 						// the edit count just before the edit was saved.
-						'edit-count-for-task-type': suggestedEditSession.editCountByTaskType[ suggestedEditSession.taskType ] + 1
+						'edit-count-for-task-type': suggestedEditSession.editCountByTaskType[ suggestedEditSession.taskType ] + 1,
 					} );
 				} );
 				return displayPanelPromises.closePromise.then( ( closeData ) => ( {
 					accepted: typeof closeData === 'string',
 					closeData: closeData,
-					shown: true
+					shown: true,
 				} ) );
 			}
 
 			return $.Deferred().resolve( {
 				accepted: false,
-				shown: false
+				shown: false,
 			} );
-		}
+		},
 	};
 }() );

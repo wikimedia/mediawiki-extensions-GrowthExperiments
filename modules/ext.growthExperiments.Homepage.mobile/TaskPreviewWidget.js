@@ -19,26 +19,26 @@ const SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits
 function TaskPreviewWidget( config ) {
 	const defaultConfig = {
 		taskCount: 1,
-		taskPosition: 1
+		taskPosition: 1,
 	};
 	config = Object.assign( defaultConfig, config, {
-		classes: [ 'growthexperiments-task-preview-widget' ]
+		classes: [ 'growthexperiments-task-preview-widget' ],
 	} );
 	TaskPreviewWidget.super.call( this, config );
 
 	this.taskPagination = new OO.ui.Element( {
-		classes: [ 'suggested-edits-preview-pager' ]
+		classes: [ 'suggested-edits-preview-pager' ],
 	} );
 
 	this.taskPagination.$element.html( this.getPaginationHtml(
 		config.taskPosition,
-		config.taskCount
+		config.taskCount,
 	) );
 
 	this.taskCard = new SmallTaskCard( {
 		task: config.task,
 		taskTypes: config.taskTypes,
-		taskUrl: null
+		taskUrl: null,
 	} );
 
 	this.ctaButton = new OO.ui.Element( {
@@ -49,16 +49,16 @@ function TaskPreviewWidget( config ) {
 				$button: $( '<span>' ),
 				flags: [ 'primary', 'progressive' ],
 				label: mw.message(
-					'growthexperiments-homepage-suggestededits-mobilesummary-footer-button'
-				).text()
-			} )
-		]
+					'growthexperiments-homepage-suggestededits-mobilesummary-footer-button',
+				).text(),
+			} ),
+		],
 	} );
 
 	this.$element.empty().append(
 		this.taskPagination.$element,
 		this.taskCard.$element,
-		this.ctaButton.$element
+		this.ctaButton.$element,
 	);
 }
 
@@ -68,7 +68,7 @@ TaskPreviewWidget.prototype.getPaginationHtml = function ( pageNumber, pageCount
 	return mw.message( 'growthexperiments-homepage-suggestededits-pager' )
 		.params( [
 			mw.language.convertNumber( pageNumber ),
-			mw.language.convertNumber( pageCount )
+			mw.language.convertNumber( pageCount ),
 		] ).parse();
 };
 

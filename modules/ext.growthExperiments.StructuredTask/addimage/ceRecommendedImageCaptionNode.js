@@ -36,7 +36,7 @@ function CERecommendedImageCaptionNode() {
 	this.setupHelpButton();
 	this.$element.addClass( [
 		'mw-ge-recommendedImageCaption',
-		'mw-ge-recommendedImageCaption--with-placeholder'
+		'mw-ge-recommendedImageCaption--with-placeholder',
 	] ).append( this.helpButton.$element );
 	this.$element.on( 'blur', this.onBlur.bind( this ) );
 	this.model.on( 'update', this.onCaptionChanged.bind( this ) );
@@ -100,12 +100,12 @@ CERecommendedImageCaptionNode.prototype.isValid = function () {
 CERecommendedImageCaptionNode.prototype.getPlaceholderHtml = function () {
 	if ( this.taskType === 'image-recommendation' ) {
 		return mw.message( 'growthexperiments-addimage-caption-placeholder' ).params( [
-			suggestedEditSession.getCurrentTitle().getNameText()
+			suggestedEditSession.getCurrentTitle().getNameText(),
 		] ).parse();
 	} else {
 		return mw.message( 'growthexperiments-addsectionimage-caption-placeholder' ).params( [
 			suggestedEditSession.getCurrentTitle().getNameText(),
-			this.getModel().getAttribute( 'visibleSectionTitle' )
+			this.getModel().getAttribute( 'visibleSectionTitle' ),
 		] ).parse();
 	}
 };
@@ -147,7 +147,7 @@ CERecommendedImageCaptionNode.prototype.setupHelpButton = function () {
 		framed: false,
 		classes: [ 'mw-ge-recommendedImageCaption-help-button' ],
 		invisibleLabel: true,
-		label: mw.message( 'growthexperiments-addimage-caption-help-button' ).text()
+		label: mw.message( 'growthexperiments-addimage-caption-help-button' ).text(),
 	} );
 	this.helpButton.on( 'click', () => {
 		articleTarget.logSuggestionInteraction( 'view_help', 'caption_entry' );
@@ -199,7 +199,7 @@ CERecommendedImageCaptionNode.prototype.showWarningIfNeeded = function () {
 			type: 'error',
 			inline: true,
 			label: $warningLabel,
-			classes: [ 'mw-ge-recommendedImageCaption-warning' ]
+			classes: [ 'mw-ge-recommendedImageCaption-warning' ],
 		} );
 		this.$element.after( this.warningWidget.$element );
 	}
@@ -208,8 +208,8 @@ CERecommendedImageCaptionNode.prototype.showWarningIfNeeded = function () {
 		'caption_entry',
 		{
 			// eslint-disable-next-line camelcase
-			validation_rules: this.warnings.map( ( warningData ) => warningData.id )
-		}
+			validation_rules: this.warnings.map( ( warningData ) => warningData.id ),
+		},
 	);
 };
 
@@ -259,8 +259,8 @@ CERecommendedImageCaptionNode.prototype.getLengthWarning = function () {
 	return {
 		id: 'too short',
 		text: mw.message( 'growthexperiments-addimage-caption-warning-tooshort' ).params(
-			[ mw.language.convertNumber( this.MIN_CAPTION_LENGTH ) ]
-		).text()
+			[ mw.language.convertNumber( this.MIN_CAPTION_LENGTH ) ],
+		).text(),
 	};
 };
 

@@ -67,7 +67,7 @@
 			onSelect: function ( lang ) {
 				widget.addLanguageByCode( lang );
 				this.$languageFilter.languagefilter( 'clear' );
-			}
+			},
 		} );
 	};
 

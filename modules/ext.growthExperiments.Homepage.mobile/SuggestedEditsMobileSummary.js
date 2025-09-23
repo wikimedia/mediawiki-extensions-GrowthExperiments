@@ -59,7 +59,7 @@ SuggestedEditsMobileSummary.prototype.showPreviewForCurrentTask = function () {
 		task: currentTask,
 		taskPosition: this.tasksStore.getQueuePosition() + 1,
 		taskCount: this.tasksStore.getTaskCount(),
-		taskTypes: this.rootStore.CONSTANTS.ALL_TASK_TYPES
+		taskTypes: this.rootStore.CONSTANTS.ALL_TASK_TYPES,
 	} ) );
 };
 
@@ -84,7 +84,7 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 				'suggested-edits',
 				'mobile-summary',
 				'se-task-impression',
-				{ newcomerTaskToken: task.token }
+				{ newcomerTaskToken: task.token },
 			);
 		} ).catch( ( jqXHR, textStatus, errorThrown ) => {
 			// Error loading extra data for the task
@@ -92,7 +92,7 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 				'suggested-edits',
 				'mobile-summary',
 				'se-task-pseudo-impression',
-				{ type: 'error', errorMessage: textStatus + ' ' + errorThrown }
+				{ type: 'error', errorMessage: textStatus + ' ' + errorThrown },
 			);
 		} ).always( () => {
 			this.showPreviewForCurrentTask();
@@ -109,7 +109,7 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 			'suggested-edits',
 			'mobile-summary',
 			'se-task-pseudo-impression',
-			{ type: 'error', errorMessage: taskPreviewData.error }
+			{ type: 'error', errorMessage: taskPreviewData.error },
 		);
 		deferred.reject();
 	}

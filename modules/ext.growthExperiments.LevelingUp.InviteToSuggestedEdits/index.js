@@ -14,8 +14,8 @@ function displayDrawer() {
 
 	const drawer = new InviteToSuggestedEditsDrawer(
 		new HelpPanelLogger( {
-			context: 'postedit-nonsuggested'
-		} )
+			context: 'postedit-nonsuggested',
+		} ),
 	);
 	const closeDrawer = function () {
 		if ( !suppressClose ) {
@@ -40,7 +40,7 @@ function displayDrawer() {
 	} );
 
 	return {
-		openPromise: drawer.opened
+		openPromise: drawer.opened,
 	};
 }
 

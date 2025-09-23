@@ -20,11 +20,11 @@
 					// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
 					.text( mw.message(
 						'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' +
-						difficulty
+						difficulty,
 					).text() ),
 				$( '<div>' )
 					.addClass( 'suggested-edits-difficulty-level' )
-					.text( timeestimate )
+					.text( timeestimate ),
 			) );
 	}
 
@@ -59,15 +59,15 @@
 						getDifficultyAndTime(
 							difficulty,
 							messages.timeestimate,
-							IconUtils.getIconElementForTaskType( iconData )
-						)
-					)
+							IconUtils.getIconElementForTaskType( iconData ),
+						),
+					),
 			).append( $( '<div>' ).addClass( 'suggested-edits-icon' ) );
 	}
 
 	module.exports = {
 		getSuggestedEditsPeek: getSuggestedEditsPeek,
-		getDifficultyAndTime: getDifficultyAndTime
+		getDifficultyAndTime: getDifficultyAndTime,
 	};
 
 }() );

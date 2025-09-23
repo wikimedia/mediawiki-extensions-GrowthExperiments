@@ -1,6 +1,6 @@
 jest.mock( './icons.json', () => ( {
 	cdxIconClose: 'Some truthy icon',
-	cdxIconInfo: ''
+	cdxIconInfo: '',
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const ScoreCard = require( './CScoreCard.vue' );
@@ -12,16 +12,16 @@ describe( 'ScoreCard', () => {
 				icon: 'some icon',
 				iconLabel: 'some icon label',
 				label: 'some label',
-				infoIconLabel: 'the label for the info icon'
+				infoIconLabel: 'the label for the info icon',
 			},
 			global: {
 				provide: {
-					RENDER_MODE: 'desktop'
-				}
+					RENDER_MODE: 'desktop',
+				},
 			},
 			slots: {
-				default: '123'
-			}
+				default: '123',
+			},
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );
@@ -31,17 +31,17 @@ describe( 'ScoreCard', () => {
 				icon: 'some icon',
 				iconLabel: 'some icon label',
 				label: 'some label',
-				infoIconLabel: 'the label for the info icon'
+				infoIconLabel: 'the label for the info icon',
 			},
 			global: {
 				provide: {
-					RENDER_MODE: 'desktop'
-				}
+					RENDER_MODE: 'desktop',
+				},
 			},
 			slots: {
 				default: '123',
-				'info-content': '<p>Some info text</p>'
-			}
+				'info-content': '<p>Some info text</p>',
+			},
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 		// Assert the popover passed content manually instead of in the snapshot

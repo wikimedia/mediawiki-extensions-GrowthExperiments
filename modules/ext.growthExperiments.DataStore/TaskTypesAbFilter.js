@@ -140,7 +140,7 @@
 			// filter duplicates and false
 			( element, index, self ) => element !== false &&
 					index === self.indexOf( element ) &&
-					!isTaskTypeUnavailable( element )
+					!isTaskTypeUnavailable( element ),
 		);
 
 		if ( !enabledAndAvailableTaskTypeIds.length ) {
@@ -175,6 +175,6 @@
 	module.exports = {
 		getTaskTypes: getTaskTypes,
 		convertTaskTypes: convertTaskTypes,
-		getDefaultTaskTypes: getDefaultTaskTypes
+		getDefaultTaskTypes: getDefaultTaskTypes,
 	};
 }() );

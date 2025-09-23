@@ -18,7 +18,7 @@ OO.inheritClass( SuggestionsDesktopArticleTarget, ve.init.mw.DesktopArticleTarge
 OO.mixinClass( SuggestionsDesktopArticleTarget, SuggestionsArticleTarget );
 
 SuggestionsDesktopArticleTarget.static.toolbarGroups = MachineSuggestionsMode.updateEditModeTool(
-	SuggestionsDesktopArticleTarget.static.toolbarGroups
+	SuggestionsDesktopArticleTarget.static.toolbarGroups,
 );
 
 module.exports = SuggestionsDesktopArticleTarget;

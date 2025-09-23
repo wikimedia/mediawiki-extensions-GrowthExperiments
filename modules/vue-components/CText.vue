@@ -17,19 +17,19 @@ module.exports = exports = {
 	props: {
 		as: {
 			type: String,
-			default: 'div'
+			default: 'div',
 		},
 		size: {
 			type: [ String, Array ],
-			default: null
+			default: null,
 		},
 		color: {
 			type: String,
-			default: null
+			default: null,
 		},
 		weight: {
 			type: String,
-			default: null
+			default: null,
 		},
 		/**
 		 * An array of mode names. The index of each mode
@@ -43,9 +43,9 @@ module.exports = exports = {
 			default: () => ( [
 				'desktop',
 				'overlay',
-				'overlay-summary'
-			] )
-		}
+				'overlay-summary',
+			] ),
+		},
 	},
 	setup( props ) {
 		const extraClasses = [];
@@ -72,9 +72,9 @@ module.exports = exports = {
 		}
 
 		return {
-			extraClasses
+			extraClasses,
 		};
-	}
+	},
 };
 </script>
 

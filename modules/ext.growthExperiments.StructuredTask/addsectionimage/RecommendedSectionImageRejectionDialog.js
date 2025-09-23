@@ -25,7 +25,7 @@ RecommendedSectionImageRejectionDialog.static.rejectionReasons = [
 	'lowquality',
 	'unfamiliar',
 	'foreignlanguage',
-	'other'
+	'other',
 ];
 
 module.exports = RecommendedSectionImageRejectionDialog;

@@ -33,10 +33,10 @@
 					suggestedEditsPeek.getDifficultyAndTime(
 						this.taskTypeData.difficulty,
 						this.taskTypeData.messages.timeestimate,
-						this.getIcon()
+						this.getIcon(),
 					),
-					this.getDescriptionRow()
-				)
+					this.getDescriptionRow(),
+				),
 		);
 
 	}
@@ -49,14 +49,14 @@
 			// Use a span so that wrapped second line text appears in the same
 			// line with the info icon.
 			this.getName( '<span>' ),
-			this.getInfo().$element
+			this.getInfo().$element,
 		);
 		return $infoRow;
 	};
 
 	TaskExplanationWidget.prototype.getIcon = function () {
 		return IconUtils.getIconElementForTaskType( this.taskTypeData.iconData, {
-			classes: [ 'suggested-edits-task-explanation-icon' ]
+			classes: [ 'suggested-edits-task-explanation-icon' ],
 		} );
 	};
 
@@ -74,9 +74,9 @@
 				invisibleLabel: true,
 				popup: {
 					$content: $name.add( this.getDescription() ),
-					padded: true
+					padded: true,
 				},
-				classes: [ 'suggested-edits-task-explanation-info-button' ]
+				classes: [ 'suggested-edits-task-explanation-info-button' ],
 			} );
 		popupButtonWidget.$button.on( 'mouseenter', () => {
 			if ( 'ontouchstart' in document.documentElement ) {
@@ -97,7 +97,7 @@
 							this.getName( '<h4>' ),
 							$( '<div>' )
 								.addClass( 'suggested-edits-taskexplanation-additional-info' )
-								.html( this.getDescription() )
+								.html( this.getDescription() ),
 						],
 						className: 'suggested-edits-taskexplanation-drawer',
 						onBeforeHide: function ( innerDrawer ) {
@@ -105,14 +105,14 @@
 							setTimeout( () => {
 								innerDrawer.$el.remove();
 							}, 250 );
-						}
+						},
 					} );
 					document.body.appendChild( drawer.$el[ 0 ] );
 					drawer.show();
 				}
 				this.logger.log( 'suggested-edits', this.mode, 'se-explanation-' +
 					( show ? 'open' : 'close' ), { taskType: this.taskType } );
-			}.bind( this )
+			}.bind( this ),
 		} );
 		return popupButtonWidget;
 	};
@@ -135,10 +135,10 @@
 					.append(
 						this.getIcon(),
 						this.getDifficultyIndicator(),
-						this.getTimeEstimate()
+						this.getTimeEstimate(),
 					),
 				$( '<p>' ).html( this.taskTypeData.messages.description ),
-				this.getLearnMoreLink()
+				this.getLearnMoreLink(),
 			);
 	};
 
@@ -153,7 +153,7 @@
 				.on( 'click', () => {
 					this.logger.log( 'suggested-edits', this.mode, 'se-explanation-link-click',
 						{ taskType: this.taskType } );
-				} )
+				} ),
 			);
 	};
 
@@ -169,7 +169,7 @@
 				// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
 				// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
 				// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
-				'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + this.taskTypeData.difficulty
+				'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + this.taskTypeData.difficulty,
 			).text() );
 	};
 

@@ -11,7 +11,7 @@ QUnit.test( 'constructor with intro content', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
 		$introContent: $( '<div>' ).text( 'Intro' ),
-		headerText: 'Header'
+		headerText: 'Header',
 	} );
 	assert.true( collapsibleDrawer.isIntroContentHidden );
 	assert.true( collapsibleDrawer.isContentHidden );
@@ -26,7 +26,7 @@ QUnit.test( 'constructor with intro content', ( assert ) => {
 QUnit.test( 'constructor without intro content', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
-		headerText: 'Header'
+		headerText: 'Header',
 	} );
 	assert.true( collapsibleDrawer.isIntroContentHidden );
 	assert.true( collapsibleDrawer.isContentHidden );
@@ -41,7 +41,7 @@ QUnit.test( 'constructor without intro content', ( assert ) => {
 QUnit.test( 'should resolve opening promise when the drawer is opening', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
-		headerText: 'Header'
+		headerText: 'Header',
 	} );
 	collapsibleDrawer.open();
 	assert.strictEqual( collapsibleDrawer.opening.state(), 'resolved' );
@@ -51,7 +51,7 @@ QUnit.test( 'should resolve opening promise when the drawer is opening', ( asser
 QUnit.test( 'should resolve closing promise when the drawer is closing', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
-		headerText: 'Header'
+		headerText: 'Header',
 	} );
 	collapsibleDrawer.expand();
 	collapsibleDrawer.close();
@@ -62,7 +62,7 @@ QUnit.test( 'should resolve closing promise when the drawer is closing', ( asser
 QUnit.test( 'should resolve closing and closed promises when close is called when the drawer is collapsed', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
-		headerText: 'Header'
+		headerText: 'Header',
 	} );
 	collapsibleDrawer.close();
 	assert.strictEqual( collapsibleDrawer.closing.state(), 'resolved' );
@@ -72,7 +72,7 @@ QUnit.test( 'should resolve closing and closed promises when close is called whe
 QUnit.test( 'should set isContentHidden to true when it\'s collapsed', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
-		headerText: 'Header'
+		headerText: 'Header',
 	} );
 	collapsibleDrawer.collapse();
 	assert.true( collapsibleDrawer.isContentHidden );
@@ -82,7 +82,7 @@ QUnit.test( 'should set isContentHidden to true when it\'s collapsed', ( assert 
 QUnit.test( 'should set isContentHidden to false when it\'s expanded', ( assert ) => {
 	const collapsibleDrawer = new CollapsibleDrawer( {
 		content: [ 'foo' ],
-		headerText: 'Header'
+		headerText: 'Header',
 	} );
 	collapsibleDrawer.expand();
 	assert.false( collapsibleDrawer.isContentHidden );

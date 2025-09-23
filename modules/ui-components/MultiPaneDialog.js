@@ -12,7 +12,7 @@
 function MultiPaneDialog( config ) {
 	const processDialogClasses = [
 		'growthexperiments-multi-pane-dialog',
-		OO.ui.isMobile() ? 'growthexperiments-multi-pane-dialog-mobile' : 'growthexperiments-multi-pane-dialog-desktop'
+		OO.ui.isMobile() ? 'growthexperiments-multi-pane-dialog-mobile' : 'growthexperiments-multi-pane-dialog-desktop',
 	];
 	config = config || {};
 	config.classes = processDialogClasses.concat( config.classes || [] );
@@ -40,19 +40,19 @@ MultiPaneDialog.prototype.initialize = function () {
 	this.progressIndicator = new OO.ui.Element( {
 		content: [
 			this.getProgressDots(),
-			$( '<span>' ).attr( 'class', 'growthexperiments-multi-pane-dialog-progress-text' )
+			$( '<span>' ).attr( 'class', 'growthexperiments-multi-pane-dialog-progress-text' ),
 		],
-		classes: [ 'growthexperiments-multi-pane-dialog-progress-indicator' ]
+		classes: [ 'growthexperiments-multi-pane-dialog-progress-indicator' ],
 	} );
 
 	this.fixedContent = new OO.ui.Element( {
 		$content: this.progressIndicator.$element,
-		classes: [ 'growthexperiments-multi-pane-dialog-fixed-content' ]
+		classes: [ 'growthexperiments-multi-pane-dialog-fixed-content' ],
 	} );
 
 	this.stack = new OO.ui.StackLayout( {
 		items: this.panels,
-		classes: [ 'growthexperiments-multi-pane-dialog-stack-layout' ]
+		classes: [ 'growthexperiments-multi-pane-dialog-stack-layout' ],
 	} );
 
 	this.$body.append( this.fixedContent.$element, this.stack.$element );
@@ -103,7 +103,7 @@ MultiPaneDialog.prototype.updateProgressIndicator = function () {
 		// * other keys can be added when MultiPaneDialog is used in more places
 		const progressText = mw.msg( this.progressMessageKey,
 			mw.language.convertNumber( currentIndex + 1 ),
-			mw.language.convertNumber( this.panels.length )
+			mw.language.convertNumber( this.panels.length ),
 		);
 		$progressIndicator.find( '.growthexperiments-multi-pane-dialog-progress-text' ).text( progressText );
 	}

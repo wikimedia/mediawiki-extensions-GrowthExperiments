@@ -19,7 +19,7 @@
 				tagLimit: languageMax,
 				allowedValues: Object.keys( langCodeMap ),
 				allowArbitrary: false,
-				allowEditTags: false
+				allowEditTags: false,
 			} );
 
 			if ( shouldUseLanguageInfoOverlay ) {
@@ -45,6 +45,6 @@
 
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$( '.welcomesurvey-languages' ).addClass( 'welcomesurvey-languages-loaded' );
-		}
+		},
 	};
 }() );

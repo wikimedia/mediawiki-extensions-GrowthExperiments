@@ -26,18 +26,18 @@ StructuredTaskMobileArticleTarget.static.toolbarGroups = [
 	{
 		name: 'back',
 		include: [ 'back' ],
-		excludeFromTargetWidget: true
+		excludeFromTargetWidget: true,
 	},
 	{
 		name: 'machineSuggestionsPlaceholder',
-		include: [ 'machineSuggestionsPlaceholder' ]
+		include: [ 'machineSuggestionsPlaceholder' ],
 	},
 	MachineSuggestionsMode.getEditModeToolGroup(),
 	{
 		name: 'save',
 		include: [ 'showSave' ],
-		excludeFromTargetWidget: true
-	}
+		excludeFromTargetWidget: true,
+	},
 	// TODO: Copy this definition from upstream after Id9d587b3d73:
 	// ve.init.mw.MobileArticleTarget.static.toolbarGroups.find( ( group ) => group.name === 'save' )
 ];
@@ -60,7 +60,7 @@ StructuredTaskMobileArticleTarget.prototype.setupToolbar = function () {
 			placeholderTool.$element = $newElement;
 		}
 		this.toolbar.$group.find( '.ve-ui-toolbar-group-machineSuggestionsPlaceholder' ).html(
-			$newElement
+			$newElement,
 		);
 	}
 	MachineSuggestionsMode.trackEditModeClick( this.toolbar.$group );
@@ -98,7 +98,7 @@ StructuredTaskMobileArticleTarget.prototype.maybeUpdateMobileEditorPreference = 
 StructuredTaskMobileArticleTarget.prototype.teardownWithoutPrompt = function ( trackMechanism ) {
 	// Close the editor overlay
 	return this.constructor.super.super.prototype.tryTeardown.call(
-		this, true, trackMechanism
+		this, true, trackMechanism,
 	);
 };
 

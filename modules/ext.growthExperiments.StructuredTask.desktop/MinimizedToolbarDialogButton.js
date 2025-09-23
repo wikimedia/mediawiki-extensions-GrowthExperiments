@@ -15,7 +15,7 @@ function MinimizedToolbarDialogButton( config ) {
 	}
 	this.$element.addClass( [
 		'mw-ge-minimizedToolbarDialogButton',
-		'mw-ge-minimizedToolbarDialogButton--hidden'
+		'mw-ge-minimizedToolbarDialogButton--hidden',
 	] );
 	this.on( 'dialogVisibilityChanged', this.onDialogVisibilityChanged.bind( this ) );
 }

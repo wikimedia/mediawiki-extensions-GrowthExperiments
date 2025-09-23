@@ -8,7 +8,7 @@
 		/** Task state after the user submits a structured task without making an edit. */
 		SUBMITTED: 'submitted',
 		/** Task state after the user leaves the workflow without saving or submitting anything. */
-		CANCELLED: 'cancelled'
+		CANCELLED: 'cancelled',
 	};
 	const allStates = [ states.STARTED, states.SAVED, states.SUBMITTED, states.CANCELLED ];
 
@@ -193,7 +193,7 @@
 			onboardingNeedsToBeShown: this.onboardingNeedsToBeShown,
 			newcomerTaskToken: this.newcomerTaskToken,
 			shouldOpenArticleInEditMode: this.shouldOpenArticleInEditMode,
-			qualityGateConfig: this.qualityGateConfig
+			qualityGateConfig: this.qualityGateConfig,
 		};
 		if ( !this.active ) {
 			throw new Error( 'Trying to save an inactive suggested edit session' );
@@ -400,7 +400,7 @@
 		const apiParams = {
 			action: 'query',
 			meta: 'growthnextsuggestedtasktype',
-			gnsttactivetasktype: this.taskType
+			gnsttactivetasktype: this.taskType,
 		};
 		return new mw.Api().post( apiParams ).then( ( result ) => {
 			this.nextSuggestedTaskType = result.query.growthnextsuggestedtasktype;
@@ -471,7 +471,7 @@
 
 				const postEditDialogLifecycle = require( 'ext.growthExperiments.PostEdit' ).setupPanel(
 					tryNewTaskResult.closeData,
-					!tryNewTaskResult.shown
+					!tryNewTaskResult.shown,
 				);
 				postEditDialogLifecycle.openPromise.then( () => {
 					self.postEditDialogNeedsToBeShown = false;
@@ -507,7 +507,7 @@
 	 * is complete.
 	 */
 	SuggestedEditSession.prototype.tagNonVisualEditorEditWithGrowthChangeTags = function (
-		taskType
+		taskType,
 	) {
 		const revIdPromise = this.newRevId ? $.Deferred().resolve().promise() : new mw.Api().get( {
 			action: 'query',
@@ -515,7 +515,7 @@
 			pageids: mw.config.get( 'wgRelevantArticleId' ),
 			rvprop: 'ids|tags',
 			rvlimit: 1,
-			rvuser: mw.config.get( 'wgUserName' )
+			rvuser: mw.config.get( 'wgUserName' ),
 		} );
 		return revIdPromise.then( ( data ) => {
 			// We didn't have the new revision ID already, so get it from the API response.
@@ -607,7 +607,7 @@
 				resetSession: true,
 				newRevId: data.newRevId,
 				// VE updates the page dynamically so the post-edit dialog can be shown immediately
-				nextRequest: self.editorInterface !== 'visualeditor'
+				nextRequest: self.editorInterface !== 'visualeditor',
 			} );
 		} );
 	};
@@ -630,8 +630,8 @@
 				task_type: Utils.normalizeLabelForStats( this.taskType ),
 				platform: ( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
 				operation: 'editor_shown',
-				wiki: mw.config.get( 'wgDBname' )
-			}
+				wiki: mw.config.get( 'wgDBname' ),
+			},
 		);
 	};
 
@@ -656,8 +656,8 @@
 				task_type: Utils.normalizeLabelForStats( this.taskType ),
 				platform: ( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
 				operation: 'guidance_shown',
-				wiki: mw.config.get( 'wgDBname' )
-			}
+				wiki: mw.config.get( 'wgDBname' ),
+			},
 		);
 	};
 
@@ -712,7 +712,7 @@
 		return [
 			'link-recommendation',
 			'image-recommendation',
-			'section-image-recommendation'
+			'section-image-recommendation',
 		].includes( taskType );
 	};
 

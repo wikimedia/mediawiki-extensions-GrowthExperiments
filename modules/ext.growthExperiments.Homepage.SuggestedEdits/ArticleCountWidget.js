@@ -16,7 +16,7 @@ function ArticleCountWidget( config ) {
 
 	this.animatedIcon = new OO.ui.IconWidget( {
 		icon: 'live-broadcast-anim',
-		classes: [ 'live-broadcast-anim' ]
+		classes: [ 'live-broadcast-anim' ],
 	} );
 	this.icon = new OO.ui.IconWidget( { icon: 'live-broadcast' } );
 	this.label = new OO.ui.LabelWidget();
@@ -45,7 +45,7 @@ ArticleCountWidget.prototype.toggleIcon = function ( searching ) {
 ArticleCountWidget.prototype.setSearching = function () {
 	this.toggleIcon( true );
 	this.setLabel(
-		mw.message( 'ellipsis' ).parse()
+		mw.message( 'ellipsis' ).parse(),
 	);
 };
 
@@ -60,7 +60,7 @@ ArticleCountWidget.prototype.setCount = function ( count ) {
 	}
 	this.toggleIcon( false );
 	this.setLabel(
-		mw.language.convertNumber( count )
+		mw.language.convertNumber( count ),
 	);
 };
 

@@ -59,10 +59,10 @@ CERecommendedImageNode.prototype.setupHeader = function () {
 		deleteButton = new OO.ui.ButtonWidget( {
 			icon: 'trash',
 			framed: false,
-			classes: [ 'mw-ge-recommendedImage-deleteButton' ]
+			classes: [ 'mw-ge-recommendedImage-deleteButton' ],
 		} ),
 		$header = $( '<div>' ).addClass( 'mw-ge-recommendedImage-header' ).text(
-			mw.message( 'growthexperiments-addimage-caption-title' ).text()
+			mw.message( 'growthexperiments-addimage-caption-title' ).text(),
 		).append( deleteButton.$element );
 	deleteButton.on( 'click', () => {
 		router.back();
@@ -93,7 +93,7 @@ CERecommendedImageNode.prototype.showImageLoadingState = function () {
 	this.$element.css( { width: imageWidth } );
 	$img.css( {
 		width: imageWidth,
-		minHeight: this.model.getAttribute( 'height' )
+		minHeight: this.model.getAttribute( 'height' ),
 	} );
 	$img.on( 'load', onImageLoad );
 	// In case load event isn't fired or if somehow the image failed to load
@@ -118,7 +118,7 @@ CERecommendedImageNode.prototype.showImage = function () {
 			// This helps keep the key elements (the caption edit area and the details button)
 			// visible and not overlapped by the keyboard.
 			this.articleTarget.surface.$scrollContainer.animate( {
-				scrollTop: this.$detailsButton.offset().top - this.scrollOffset
+				scrollTop: this.$detailsButton.offset().top - this.scrollOffset,
 			} );
 		} else {
 			// If the user scrolled away while examining the article, scroll the caption field
@@ -135,10 +135,10 @@ CERecommendedImageNode.prototype.showImage = function () {
 					// CERecommendedImagePlaceholderNode() for details), 24px for the
 					// image node's bottom padding/border/margin.
 					// FIXME unlike in the placeholder, we could just get the actual height here
-					bottom: 126
+					bottom: 126,
 				},
 				duration: 400,
-				scrollContainer: this.articleTarget.surface.$scrollContainer[ 0 ]
+				scrollContainer: this.articleTarget.surface.$scrollContainer[ 0 ],
 			} );
 		}
 	}, 300 );
@@ -156,9 +156,9 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 			new OO.ui.IconWidget( {
 				framed: false,
 				classes: [ 'mw-ge-recommendedImage-detailsIcon' ],
-				icon: 'infoFilled'
+				icon: 'infoFilled',
 			} ).$element,
-			mw.message( 'growthexperiments-addimage-inspector-details-button' ).escaped()
+			mw.message( 'growthexperiments-addimage-inspector-details-button' ).escaped(),
 		] );
 	// Clicking anywhere in the image brings up the details dialog.
 	$container.on( 'click', () => {
@@ -168,7 +168,7 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 		surface.dialogs.openWindow( 'addImageDetails', {
 			recommendation: recommendation,
 			logSource: 'caption_entry',
-			imageIndex: recommendationIndex
+			imageIndex: recommendationIndex,
 		} );
 	} );
 	$container.append( this.$detailsButton );

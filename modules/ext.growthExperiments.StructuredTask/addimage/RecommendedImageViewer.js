@@ -27,7 +27,7 @@ RecommendedImageViewer.prototype.initialize = function () {
 		framed: false,
 		label: mw.message( 'growthexperiments-addimage-viewer-close-button' ).text(),
 		invisibleLabel: true,
-		classes: [ 'mw-ge-recommendedImageViewer-image-close-button' ]
+		classes: [ 'mw-ge-recommendedImageViewer-image-close-button' ],
 	} );
 	this.closeButton.on( 'click', () => {
 		router.back();

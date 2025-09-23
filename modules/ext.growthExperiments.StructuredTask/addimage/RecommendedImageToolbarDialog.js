@@ -33,7 +33,7 @@ function RecommendedImageToolbarDialog() {
 		'animate-below',
 		OO.ui.isMobile() ?
 			'mw-ge-recommendedImageToolbarDialog-mobile' :
-			'mw-ge-recommendedImageToolbarDialog-desktop'
+			'mw-ge-recommendedImageToolbarDialog-desktop',
 	] );
 
 	/**
@@ -50,7 +50,7 @@ function RecommendedImageToolbarDialog() {
 	 * @property {jQuery} $imagePreview Container for image thumbnail and description
 	 */
 	this.$imagePreview = $( '<div>' ).addClass(
-		'mw-ge-recommendedImageToolbarDialog-imagePreview'
+		'mw-ge-recommendedImageToolbarDialog-imagePreview',
 	);
 	/**
 	 * @property {OO.ui.ButtonWidget} yesButton
@@ -58,7 +58,7 @@ function RecommendedImageToolbarDialog() {
 	this.yesButton = new OO.ui.ButtonWidget( {
 		icon: 'check',
 		label: mw.message( 'growthexperiments-addimage-inspector-yes-button' ).text(),
-		classes: [ 'mw-ge-recommendedImageToolbarDialog-buttons-yes' ]
+		classes: [ 'mw-ge-recommendedImageToolbarDialog-buttons-yes' ],
 	} );
 	this.yesButton.connect( this, { click: [ 'onYesButtonClicked' ] } );
 
@@ -68,7 +68,7 @@ function RecommendedImageToolbarDialog() {
 	this.noButton = new OO.ui.ButtonWidget( {
 		icon: 'close',
 		label: mw.message( 'growthexperiments-addimage-inspector-no-button' ).text(),
-		classes: [ 'mw-ge-recommendedImageToolbarDialog-buttons-no' ]
+		classes: [ 'mw-ge-recommendedImageToolbarDialog-buttons-no' ],
 	} );
 	this.noButton.connect( this, { click: [ 'onNoButtonClicked' ] } );
 
@@ -78,7 +78,7 @@ function RecommendedImageToolbarDialog() {
 	this.skipButton = new OO.ui.ButtonWidget( {
 		framed: false,
 		label: mw.message( 'growthexperiments-addimage-inspector-skip-button' ).text(),
-		classes: [ 'mw-ge-recommendedImageToolbarDialog-buttons-skip' ]
+		classes: [ 'mw-ge-recommendedImageToolbarDialog-buttons-skip' ],
 	} );
 	this.skipButton.connect( this, { click: [ 'onSkipButtonClicked' ] } );
 
@@ -90,7 +90,7 @@ function RecommendedImageToolbarDialog() {
 		label: mw.message( 'growthexperiments-addimage-inspector-details-button' ).text(),
 		classes: [ 'mw-ge-recommendedImageToolbarDialog-details-button' ],
 		icon: 'infoFilled',
-		flags: [ 'progressive' ]
+		flags: [ 'progressive' ],
 	} );
 	this.detailsButton.connect( this, { click: [ 'onDetailsButtonClicked' ] } );
 
@@ -108,7 +108,7 @@ function RecommendedImageToolbarDialog() {
 	this.logger = new ImageSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: OO.ui.isMobile(),
-		active_interface: 'recommendedimagetoolbar_dialog'
+		active_interface: 'recommendedimagetoolbar_dialog',
 		/* eslint-enable camelcase */
 	} );
 }
@@ -124,7 +124,7 @@ RecommendedImageToolbarDialog.prototype.initialize = function () {
 	RecommendedImageToolbarDialog.super.prototype.initialize.call( this );
 	const $title = $( '<span>' ).addClass( 'mw-ge-recommendedImageToolbarDialog-title' )
 			.text(
-				mw.message( 'growthexperiments-addimage-inspector-title' ).text()
+				mw.message( 'growthexperiments-addimage-inspector-title' ).text(),
 			),
 		$cta = $( '<p>' ).addClass( 'mw-ge-recommendedImageToolbarDialog-addImageCta' )
 			.text( mw.message( 'growthexperiments-addimage-inspector-cta' ).text() );
@@ -156,16 +156,16 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 
 	this.images = articleTarget.images;
 	this.setUpToolbarDialogButton(
-		mw.message( 'growthexperiments-addimage-inspector-show-button' ).text()
+		mw.message( 'growthexperiments-addimage-inspector-show-button' ).text(),
 	);
 	if ( OO.ui.isMobile() ) {
 		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 		this.setupHelpButton(
-			mw.message( 'growthexperiments-addimage-inspector-help-button' ).text()
+			mw.message( 'growthexperiments-addimage-inspector-help-button' ).text(),
 		);
 		this.addArticleTitle();
 		$( window ).on( 'resize',
-			OO.ui.debounce( this.onResize.bind( this ), 250 )
+			OO.ui.debounce( this.onResize.bind( this ), 250 ),
 		);
 	} else {
 		this.moveDialogToSurfaceView();
@@ -183,7 +183,7 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 	}
 
 	mw.hook( 'growthExperiments.imageSuggestions.onImageCaptionReady' ).add(
-		this.onImageCaptionReady
+		this.onImageCaptionReady,
 	);
 };
 
@@ -225,7 +225,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 		getLogActionData = function () {
 			return Object.assign( this.getSuggestionLogActionData(), {
 				// eslint-disable-next-line camelcase
-				rejection_reasons: ve.init.target.recommendationRejectionReasons || []
+				rejection_reasons: ve.init.target.recommendationRejectionReasons || [],
 			} );
 		}.bind( this );
 
@@ -263,14 +263,14 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 				{
 					action: 'confirm',
 					label: mw.message(
-						'growthexperiments-addimage-skip-dialog-confirm'
-					).text()
+						'growthexperiments-addimage-skip-dialog-confirm',
+					).text(),
 				},
 				{
 					action: 'cancel',
-					label: mw.message( 'growthexperiments-addimage-skip-dialog-cancel' ).text()
-				}
-			]
+					label: mw.message( 'growthexperiments-addimage-skip-dialog-cancel' ).text(),
+				},
+			],
 		} );
 
 	openSkipDialogPromise.opening.then( () => {
@@ -301,7 +301,7 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 
 	const openImageViewerDialogPromise = surface.dialogs.openWindow(
 		'recommendedImageViewer',
-		imageData.metadata
+		imageData.metadata,
 	);
 	openImageViewerDialogPromise.opening.then( () => {
 		this.logger.log( 'impression', actionData, logMetadata );
@@ -325,7 +325,7 @@ RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function () {
 	surface.dialogs.openWindow( 'addImageDetails', {
 		recommendation: imageData,
 		logSource: 'toolbar_dialog',
-		imageIndex: this.currentIndex
+		imageIndex: this.currentIndex,
 	} );
 };
 
@@ -334,7 +334,7 @@ RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function () {
  */
 RecommendedImageToolbarDialog.prototype.setupButtons = function () {
 	const $acceptanceButtons = $( '<div>' ).addClass(
-		'mw-ge-recommendedImageToolbarDialog-buttons-acceptance-group'
+		'mw-ge-recommendedImageToolbarDialog-buttons-acceptance-group',
 	);
 	$acceptanceButtons.append( [ this.yesButton.$element, this.noButton.$element ] );
 	this.$buttons.append( [ $acceptanceButtons, this.skipButton.$element ] );
@@ -347,7 +347,7 @@ RecommendedImageToolbarDialog.prototype.setupButtons = function () {
  */
 RecommendedImageToolbarDialog.prototype.getBodyContent = function () {
 	const $bodyContent = $( '<div>' ).addClass(
-		'mw-ge-recommendedImageToolbarDialog-bodyContent'
+		'mw-ge-recommendedImageToolbarDialog-bodyContent',
 	);
 	this.setupImagePreview();
 	$bodyContent.append( [ this.$reason, this.$imagePreview ] );
@@ -359,14 +359,14 @@ RecommendedImageToolbarDialog.prototype.getBodyContent = function () {
  */
 RecommendedImageToolbarDialog.prototype.setupImagePreview = function () {
 	this.$imageThumbnail = $( '<div>' ).addClass(
-		'mw-ge-recommendedImageToolbarDialog-image-thumbnail'
+		'mw-ge-recommendedImageToolbarDialog-image-thumbnail',
 	).attr( 'role', 'button' );
 	this.$imageInfo = $( '<div>' ).addClass(
-		'mw-ge-recommendedImageToolbarDialog-image-info'
+		'mw-ge-recommendedImageToolbarDialog-image-info',
 	);
 	this.$imageThumbnail.append( new OO.ui.IconWidget( {
 		icon: 'fullScreen',
-		classes: [ 'mw-ge-recommendedImageToolbarDialog-fullScreen-icon' ]
+		classes: [ 'mw-ge-recommendedImageToolbarDialog-fullScreen-icon' ],
 	} ).$element );
 	this.$imageThumbnail.on( 'click', this.onFullscreenButtonClicked.bind( this ) );
 	this.$imagePreview.append( this.$imageThumbnail, this.$imageInfo );
@@ -413,13 +413,13 @@ RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descr
 
 	if ( !hasDescription ) {
 		descriptionText = mw.message(
-			'growthexperiments-addimage-inspector-description-placeholder'
+			'growthexperiments-addimage-inspector-description-placeholder',
 		).text();
 	}
 	return $( '<p>' )
 		.addClass( [
 			'mw-ge-recommendedImageToolbarDialog-description',
-			hasDescription ? '' : 'mw-ge-recommendedImageToolbarDialog-description--placeholder'
+			hasDescription ? '' : 'mw-ge-recommendedImageToolbarDialog-description--placeholder',
 		] )
 		.text( descriptionText );
 };
@@ -441,9 +441,9 @@ RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 	this.$imageInfo.append( [
 		$( '<div>' ).attr( 'dir', 'auto' ).append( [
 			this.getFilenameElement( imageData.displayFilename ),
-			this.getDescriptionElement( metadata.description )
+			this.getDescriptionElement( metadata.description ),
 		] ),
-		this.detailsButton.$element
+		this.detailsButton.$element,
 	] );
 };
 
@@ -484,7 +484,7 @@ RecommendedImageToolbarDialog.prototype.imageCaptionReadyHandler = function () {
 	// false on the document node.
 	articleTarget.toggleInternalRouting( true );
 	articleTarget.updatePlaceholderTitle(
-		mw.message( 'growthexperiments-addimage-caption-title' ).text()
+		mw.message( 'growthexperiments-addimage-caption-title' ).text(),
 	);
 	articleTarget.toggleEditModeTool( true );
 	articleTarget.toggleSaveTool( true );
@@ -504,7 +504,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 
 	articleTarget.updatePlaceholderTitle(
 		mw.message( 'growthexperiments-addimage-loading-title' ).text(),
-		true
+		true,
 	);
 	// Loading states haven't been implemented on desktop. This might need to be updated once
 	// we have desktop specs.
@@ -546,7 +546,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
  * @param {Function} popstateHandler Handler to call when the user navigates back from the route
  */
 RecommendedImageToolbarDialog.prototype.showInternalRoute = function (
-	routeName, popstateHandler
+	routeName, popstateHandler,
 ) {
 	// On mobile, hashchange event with #/editor hash loads the editor. When opening the dialog,
 	// add another history entry with the same hash so that going back (via browser) doesn't load
@@ -554,7 +554,7 @@ RecommendedImageToolbarDialog.prototype.showInternalRoute = function (
 	const hash = OO.ui.isMobile() ? '#/editor/all' : '#' + routeName;
 	router.navigateTo( routeName, {
 		path: location.pathname + location.search + hash,
-		useReplaceState: false
+		useReplaceState: false,
 	} );
 
 	const onPopstate = function onPopstate() {

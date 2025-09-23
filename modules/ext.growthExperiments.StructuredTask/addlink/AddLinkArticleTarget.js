@@ -77,7 +77,7 @@ AddLinkArticleTarget.prototype.afterStructuredTaskSurfaceReady = function () {
 	} else {
 		// On desktop, the recommendation is selected after onboarding has been completed
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
-			this.selectFirstRecommendation.bind( this )
+			this.selectFirstRecommendation.bind( this ),
 		);
 		mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 	}
@@ -145,8 +145,8 @@ AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
 			recommendationWikitextOffset: recommendationWikitextOffset,
 			fragment: surfaceModel.getLinearFragment( new ve.Range(
 				recommendationRanges[ recommendationWikitextOffset ][ 0 ],
-				recommendationRanges[ recommendationWikitextOffset ][ 1 ]
-			) )
+				recommendationRanges[ recommendationWikitextOffset ][ 1 ],
+			) ),
 		} ) );
 };
 
@@ -216,7 +216,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		if ( !phraseMap[ suggestions[ i ].link_text ] ) {
 			phraseMap[ suggestions[ i ].link_text ] = {
 				occurrencesSeen: 0,
-				suggestions: {}
+				suggestions: {},
 			};
 		}
 		phrase = phraseMap[ suggestions[ i ].link_text ];
@@ -253,7 +253,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 				annotations.push( {
 					postText: postText,
 					linkText: linkText,
-					suggestion: suggestion
+					suggestion: suggestion,
 				} );
 				// In the next iteration of the loop, search postText for any additional phrase
 				// matches, and reset regex.lastIndex accordingly
@@ -294,7 +294,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 				phraseMap[ phraseItem ].occurrencesSeen + ') in document.' );
 		} );
 		mw.errorLogger.logError( new Error(
-			'Unable to find ' + phraseMapKeys.length + ' link recommendation phrase item(s) in document.'
+			'Unable to find ' + phraseMapKeys.length + ' link recommendation phrase item(s) in document.',
 		), 'error.growthexperiments' );
 	}
 
@@ -302,9 +302,9 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		/* eslint-disable camelcase */
 		number_phrases_found: suggestions.length - phraseMapKeys.length,
 		number_phrases_expected: suggestions.length,
-		number_phrases_shown: numberOfLinksShown
+		number_phrases_shown: numberOfLinksShown,
 	}, {
-		active_interface: 'machinesuggestions_mode'
+		active_interface: 'machinesuggestions_mode',
 		/* eslint-enable camelcase */
 	} );
 };
@@ -354,7 +354,7 @@ AddLinkArticleTarget.prototype.getTreeWalker = function ( doc ) {
 			// An element we did not exclude above, probably <p> or <section>. SKIP means do
 			// not return it (we only want to return text nodes), but descend into it.
 			return NodeFilter.FILTER_SKIP;
-		} }
+		} },
 	);
 };
 
@@ -423,7 +423,7 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 		acceptedTargets: acceptedTargets,
 		rejectedTargets: rejectedTargets,
 		skippedTargets: skippedTargets,
-		surfaced: surfaced
+		surfaced: surfaced,
 	} );
 	options.plugins = 'ge-task-link-recommendation';
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
@@ -453,13 +453,13 @@ AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
 	}
 	this.logger.log( 'impression', {}, {
 		// eslint-disable-next-line camelcase
-		active_interface: 'outdatedsuggestions_dialog'
+		active_interface: 'outdatedsuggestions_dialog',
 	} );
 	this.getSurface().getDialogs().currentWindow.close();
 	window.onbeforeunload = null;
 	$( window ).off( 'beforeunload' );
 	OO.ui.alert( mw.message( 'growthexperiments-addlink-suggestions-outdated' ).text(), {
-		actions: [ { action: 'accept', label: mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
+		actions: [ { action: 'accept', label: mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ],
 	} ).then( () => {
 		window.location.href = mw.Title.newFromText( 'Special:Homepage' ).getUrl();
 	} );
@@ -498,7 +498,7 @@ AddLinkArticleTarget.prototype.getAnnotationStates = function () {
 		const state = {
 			title: annotation.getDisplayTitle(),
 			text: annotation.getOriginalDomElements( annotation.getStore() )
-				.map( ( element ) => element.textContent ).join( '' )
+				.map( ( element ) => element.textContent ).join( '' ),
 		};
 		if ( annotation.isAccepted() ) {
 			state.accepted = true;

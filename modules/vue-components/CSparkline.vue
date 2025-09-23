@@ -21,32 +21,32 @@ module.exports = exports = {
 	props: {
 		title: {
 			type: String,
-			required: true
+			required: true,
 		},
 		id: {
 			type: String,
-			required: true
+			required: true,
 		},
 		data: {
 			type: Object,
-			required: true
+			required: true,
 		},
 		dimensions: {
 			type: Object,
-			required: true
+			required: true,
 		},
 		xAccessor: {
 			type: Function,
-			required: true
+			required: true,
 		},
 		yAccessor: {
 			type: Function,
-			required: true
+			required: true,
 		},
 		withCircle: {
 			type: Boolean,
-			default: false
-		}
+			default: false,
+		},
 	},
 	setup( props ) {
 		const plot = () => {
@@ -88,7 +88,7 @@ module.exports = exports = {
 			if ( props.withCircle ) {
 				const lastPoint = {
 					x: props.xAccessor( props.data[ props.data.length - 1 ] ),
-					y: props.yAccessor( props.data[ props.data.length - 1 ] )
+					y: props.yAccessor( props.data[ props.data.length - 1 ] ),
 				};
 
 				circle
@@ -111,7 +111,7 @@ module.exports = exports = {
 		} );
 
 		return {};
-	}
+	},
 
 };
 </script>

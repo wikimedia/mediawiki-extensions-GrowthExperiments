@@ -11,7 +11,7 @@ QUnit.test( 'should log postedit-toast-message-impression when the toast message
 	const postEditPanel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskType: 'copyedit',
-		taskState: 'saved'
+		taskState: 'saved',
 	} );
 	const helpPanelLogger = new HelpPanelLogger();
 	sinon.spy( helpPanelLogger, 'log' );
@@ -24,7 +24,7 @@ QUnit.test( 'should log postedit-expand when the drawer is expanded', ( assert )
 	const postEditPanel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskType: 'copyedit',
-		taskState: 'saved'
+		taskState: 'saved',
 	} );
 	const helpPanelLogger = new HelpPanelLogger();
 	sinon.spy( helpPanelLogger, 'log' );
@@ -37,7 +37,7 @@ QUnit.test( 'should log postedit-collapse when the drawer is expanded', ( assert
 	const postEditPanel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskType: 'copyedit',
-		taskState: 'saved'
+		taskState: 'saved',
 	} );
 	const helpPanelLogger = new HelpPanelLogger();
 	sinon.spy( helpPanelLogger, 'log' );

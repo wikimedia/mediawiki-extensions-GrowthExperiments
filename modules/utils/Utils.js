@@ -26,7 +26,7 @@
 		return $.when( saveOptions( prefData ), mw.loader.using( 'mediawiki.util' ) ).then(
 			// Do a cache reset as a variant switch will mess up caching.
 			// FIXME T278123 remove when done.
-			() => $.get( mw.util.getUrl( 'Special:Homepage', { resetTaskCache: 1 } ) )
+			() => $.get( mw.util.getUrl( 'Special:Homepage', { resetTaskCache: 1 } ) ),
 		).then( () => {
 			window.location.reload();
 		} );
@@ -104,7 +104,7 @@
 			'wikitext',
 			'wikitext-2017',
 			'visualeditor',
-			'other'
+			'other',
 		].includes( editor );
 	}
 
@@ -176,7 +176,7 @@
 		}
 		// @ts-expect-error mw.Title.newFromText is not yet available in the upstream type definitions
 		return mw.Title.newFromText(
-			'Special:Homepage' + titleHash
+			'Special:Homepage' + titleHash,
 		).getUrl( queryParams );
 	}
 
@@ -230,7 +230,7 @@
 			}
 		} else {
 			return updateTaskPreference( {
-				'growthexperiments-homepage-variant': variant
+				'growthexperiments-homepage-variant': variant,
 			} );
 
 		}
@@ -265,7 +265,7 @@
 		formatTitle: formatTitle,
 		getSuggestedEditsFeedUrl: getSuggestedEditsFeedUrl,
 		getIntlLocale: getIntlLocale,
-		hasIntl: hasIntl
+		hasIntl: hasIntl,
 	};
 
 }() );

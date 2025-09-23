@@ -40,14 +40,14 @@ AddImageDesktopArticleTarget.prototype.onSaveDone = function () {
 AddImageDesktopArticleTarget.prototype.prepareSaveWithoutShowingDialog = function () {
 	const promise = ve.createDeferred(),
 		$desktopLoadingOverlay = $( '<div>' ).addClass(
-			'mw-ge-addImageDesktopArticleTarget-loadingOverlay'
+			'mw-ge-addImageDesktopArticleTarget-loadingOverlay',
 		),
 		$element = this.$element,
 		$container = this.$container;
 	this.saveWithoutDialog = true;
 	$desktopLoadingOverlay.append( new OO.ui.ProgressBarWidget( {
 		progress: false,
-		classes: [ 'mw-ge-addImageDesktopArticleTarget-progressBar' ]
+		classes: [ 'mw-ge-addImageDesktopArticleTarget-progressBar' ],
 	} ).$element );
 	$element.addClass( 'mw-ge-addImageDesktopArticleTarget--overlay-shown' );
 	$container.append( $desktopLoadingOverlay );

@@ -13,18 +13,18 @@
 		const indexLayout = new OO.ui.IndexLayout( {
 				framed: false,
 				expanded: false,
-				classes: [ 'suggested-edits-panel-quick-start-tips-pager' ]
+				classes: [ 'suggested-edits-panel-quick-start-tips-pager' ],
 			} ),
 			stackLayout = new OO.ui.StackLayout( {
 				classes: [ 'suggested-edits-panel-quick-start-tips-content' ],
 				continuous: true,
 				scrollable: true,
-				expanded: false
+				expanded: false,
 			} ),
 			tipPanels = [],
 			contentPanel = new OO.ui.PanelLayout( {
 				padded: false,
-				expanded: false
+				expanded: false,
 			} ),
 			// Assume VE if in reading mode, since clicking Edit won't trigger
 			// a page reload, and we currently don't vary messages by reading
@@ -38,7 +38,7 @@
 				mw.config.get( 'skin' ),
 				editorInterface,
 				taskTypeID,
-				mw.config.get( 'wgUserLanguage' )
+				mw.config.get( 'wgUserLanguage' ),
 			].join( '/' );
 		let tipPanel,
 			tipLabelNumber = 1;
@@ -48,7 +48,7 @@
 				tipPanel = new QuickStartTipsTabPanelLayout( 'tipset-' + String( tipLabelNumber ), {
 					taskType: taskTypeID,
 					label: String( mw.language.convertNumber( tipLabelNumber ) ),
-					data: quickStartTipsData[ key ]
+					data: quickStartTipsData[ key ],
 				} );
 				tipPanels.push( tipPanel );
 				tipLabelNumber++;
@@ -63,9 +63,9 @@
 					padded: false,
 					expanded: false,
 					$content: $( '<h4>' ).addClass( 'suggested-edits-panel-quick-start-tips' )
-						.text( mw.message( 'growthexperiments-help-panel-suggestededits-quick-start-tips' ).text() )
+						.text( mw.message( 'growthexperiments-help-panel-suggestededits-quick-start-tips' ).text() ),
 				} ),
-				contentPanel
+				contentPanel,
 			] );
 			// Used by the auto-advance logic in HelpPanelProcessDialog
 			stackLayout.tabIndexLayout = indexLayout;
@@ -78,6 +78,6 @@
 	}
 
 	module.exports = {
-		getTips: getTips
+		getTips: getTips,
 	};
 }() );

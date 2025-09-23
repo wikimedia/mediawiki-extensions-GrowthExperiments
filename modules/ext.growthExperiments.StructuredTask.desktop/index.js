@@ -16,10 +16,10 @@ module.exports = ( function () {
 					tools: [ MachineSuggestionsSaveTool ],
 					windows: [
 						require( './addlink/AddLinkDesktopSaveDialog.js' ),
-						require( './addlink/RecommendedLinkToolbarDialogDesktop.js' )
+						require( './addlink/RecommendedLinkToolbarDialogDesktop.js' ),
 					],
 					taskArticleTarget: require( './addlink/AddLinkDesktopArticleTarget.js' ),
-					suggestionsArticleTarget: SuggestionsDesktopArticleTarget
+					suggestionsArticleTarget: SuggestionsDesktopArticleTarget,
 				} );
 			addLinkTargetInitializer.initialize();
 		} else if ( taskTypeId === 'image-recommendation' ) {
@@ -28,10 +28,10 @@ module.exports = ( function () {
 					tools: [ MachineSuggestionsSaveTool ],
 					windows: [
 						require( './addimage/AddImageDesktopSaveDialog.js' ),
-						StructuredTask.addImage().RecommendedImageToolbarDialog
+						StructuredTask.addImage().RecommendedImageToolbarDialog,
 					],
 					taskArticleTarget: require( './addimage/AddImageDesktopArticleTarget.js' ),
-					suggestionsArticleTarget: SuggestionsDesktopArticleTarget
+					suggestionsArticleTarget: SuggestionsDesktopArticleTarget,
 				} );
 			addImageTargetInitializer.initialize();
 		} else if ( taskTypeId === 'section-image-recommendation' ) {
@@ -40,17 +40,17 @@ module.exports = ( function () {
 					tools: [ MachineSuggestionsSaveTool ],
 					windows: [
 						require( './addimage/AddImageDesktopSaveDialog.js' ),
-						StructuredTask.addSectionImage().RecommendedSectionImageToolbarDialog
+						StructuredTask.addSectionImage().RecommendedSectionImageToolbarDialog,
 					],
 					taskArticleTarget: require( './addsectionimage/AddSectionImageDesktopArticleTarget.js' ),
-					suggestionsArticleTarget: SuggestionsDesktopArticleTarget
+					suggestionsArticleTarget: SuggestionsDesktopArticleTarget,
 				} );
 			addSectionImageTargetInitializer.initialize();
 		}
 	}
 
 	return {
-		initializeTarget: initializeTarget
+		initializeTarget: initializeTarget,
 	};
 
 }() );

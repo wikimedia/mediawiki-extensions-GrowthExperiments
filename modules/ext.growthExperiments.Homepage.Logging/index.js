@@ -7,7 +7,7 @@
 	const Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		useInstrument = require( '../ext.growthExperiments.Homepage.Logger/useInstrument.js' ),
 		logger = new Logger(
-			mw.config.get( 'wgGEHomepagePageviewToken' )
+			mw.config.get( 'wgGEHomepagePageviewToken' ),
 		),
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$modules = $( '.growthexperiments-homepage-container .growthexperiments-homepage-module' ),

@@ -15,7 +15,7 @@ function AddImageDetailsDialog( config ) {
 		'mw-ge-addImageDetailsDialog',
 		OO.ui.isMobile() ?
 			'mw-ge-addImageDetailsDialog-mobile' :
-			'mw-ge-addImageDetailsDialog-desktop'
+			'mw-ge-addImageDetailsDialog-desktop',
 	] );
 }
 
@@ -28,8 +28,8 @@ AddImageDetailsDialog.static.title =
 AddImageDetailsDialog.static.actions = [
 	{
 		action: 'close',
-		label: mw.message( 'growthexperiments-addimage-detailsdialog-close' ).text()
-	}
+		label: mw.message( 'growthexperiments-addimage-detailsdialog-close' ).text(),
+	},
 ];
 
 /** @inheritDoc **/
@@ -79,8 +79,8 @@ AddImageDetailsDialog.prototype.updateDialog = function ( recommendation ) {
 				this.makeField( 'date', recommendation ),
 				this.makeField( 'author', recommendation ),
 				this.makeSpacer(),
-				this.makeField( 'categories', recommendation )
-			] )
+				this.makeField( 'categories', recommendation ),
+			] ),
 		),
 		$( '<a>' )
 			.addClass( 'mw-ge-filelink' )
@@ -88,11 +88,11 @@ AddImageDetailsDialog.prototype.updateDialog = function ( recommendation ) {
 			.attr( 'target', '_new' )
 			.text( mw.message( 'growthexperiments-addimage-detailsdialog-link' ).text() )
 			.append(
-				new OO.ui.IconWidget( { icon: 'linkExternal', flags: 'progressive' } ).$element
+				new OO.ui.IconWidget( { icon: 'linkExternal', flags: 'progressive' } ).$element,
 			)
 			.on( 'click', () => {
 				this.logEvent( 'link_click' );
-			} )
+			} ),
 	);
 };
 
@@ -143,7 +143,7 @@ AddImageDetailsDialog.prototype.makeField = function ( field, recommendation ) {
 
 	return $( '<li>' ).append(
 		$( '<span>' ).addClass( 'mw-ge-addImageDetailsDialog-label' ).text( fieldLabel ),
-		$( '<span>' ).attr( 'dir', 'auto' ).text( fieldValue )
+		$( '<span>' ).attr( 'dir', 'auto' ).text( fieldValue ),
 	);
 };
 

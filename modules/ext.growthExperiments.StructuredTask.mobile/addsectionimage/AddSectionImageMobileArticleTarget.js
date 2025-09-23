@@ -38,7 +38,7 @@ AddSectionImageMobileArticleTarget.prototype.prepareSaveWithoutShowingDialog = f
 	this.updatePlaceholderTitle(
 		// FIXME modify?
 		mw.message( 'growthexperiments-addimage-submitting-title' ).text(),
-		true
+		true,
 	);
 	this.toggleEditModeTool( false );
 	return promise;

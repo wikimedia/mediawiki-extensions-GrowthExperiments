@@ -36,7 +36,7 @@ TryNewTaskPanel.prototype.getPostEditToastMessage = function () {
 		icon: 'check',
 		type: 'success',
 		label: $( '<span>' ).append( mw.message( 'growthexperiments-help-panel-postedit-trynewtask-toast-message' ).parse() ),
-		autoHideDuration: 5000
+		autoHideDuration: 5000,
 	} );
 };
 
@@ -49,18 +49,18 @@ TryNewTaskPanel.prototype.getFooterButtons = function () {
 	const tryNewTaskButtonWidget = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-help-panel-postedit-trynewtask-try-button-text' ).text(),
 		flags: [ 'primary', 'progressive' ],
-		classes: [ 'mw-ge-help-panel-postedit-footer', 'mw-ge-help-panel-postedit-footer-trynewtask' ]
+		classes: [ 'mw-ge-help-panel-postedit-footer', 'mw-ge-help-panel-postedit-footer-trynewtask' ],
 	} );
 	tryNewTaskButtonWidget.connect( this, { click: 'openPostEditDialogWithNewTask' } );
 	const noThanksButtonWidget = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text' ).text(),
 		framed: false,
-		classes: [ 'mw-ge-help-panel-postedit-footer', 'mw-ge-help-panel-postedit-footer-nothanks' ]
+		classes: [ 'mw-ge-help-panel-postedit-footer', 'mw-ge-help-panel-postedit-footer-nothanks' ],
 	} );
 	noThanksButtonWidget.connect( this, { click: 'openPostEditDialog' } );
 	return [ new OO.ui.HorizontalLayout( {
 		items: [ noThanksButtonWidget, tryNewTaskButtonWidget ],
-		classes: [ 'mw-ge-help-panel-postedit-trynewtask-footer' ]
+		classes: [ 'mw-ge-help-panel-postedit-trynewtask-footer' ],
 	} ).$element ];
 };
 
@@ -105,7 +105,7 @@ TryNewTaskPanel.prototype.logClose = function () {
 TryNewTaskPanel.prototype.logImpression = function ( actionData ) {
 	let data = {
 		'next-suggested-task-type': this.nextSuggestedTaskType,
-		savedTaskType: this.activeTaskType
+		savedTaskType: this.activeTaskType,
 	};
 	data = Object.assign( data, actionData || {} );
 	this.helpPanelLogger.log( 'trynewtask-impression', data );
@@ -131,7 +131,7 @@ TryNewTaskPanel.prototype.getMainArea = function () {
 	const $mainArea = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-main' );
 	this.optOutButton = new OO.ui.CheckboxInputWidget( {
 		selected: false,
-		value: 'optOutForTaskType'
+		value: 'optOutForTaskType',
 	} );
 	this.optOutButton.on( 'change', ( isSelected ) => {
 		if ( isSelected ) {
@@ -141,16 +141,16 @@ TryNewTaskPanel.prototype.getMainArea = function () {
 		}
 		new mw.Api().saveOption(
 			'growthexperiments-levelingup-tasktype-prompt-optouts',
-			JSON.stringify( this.tryNewTaskOptOuts )
+			JSON.stringify( this.tryNewTaskOptOuts ),
 		);
 	} );
 
 	const dismissField = new OO.ui.FieldLayout( this.optOutButton, {
 		label: mw.message(
-			'growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox'
+			'growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox',
 		).text(),
 		align: 'inline',
-		classes: [ 'mw-ge-tryNewTaskPanel-dismiss-field' ]
+		classes: [ 'mw-ge-tryNewTaskPanel-dismiss-field' ],
 	} );
 
 	// The following messages are used here:
@@ -163,11 +163,11 @@ TryNewTaskPanel.prototype.getMainArea = function () {
 	// * growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation
 	// * growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation
 	const taskTypeName = mw.message(
-		'growthexperiments-homepage-suggestededits-tasktype-name-' + this.nextSuggestedTaskType
+		'growthexperiments-homepage-suggestededits-tasktype-name-' + this.nextSuggestedTaskType,
 	).parse();
 	const taskTypeSpecificText = mw.message(
 		'growthexperiments-help-panel-postedit-trynewtask-subheader-tasktype',
-		taskTypeName
+		taskTypeName,
 	).parse();
 	const $subHeader = $( '<div>' )
 		.addClass( 'mw-ge-help-panel-postedit-subheader2' )

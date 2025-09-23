@@ -30,7 +30,7 @@ const TargetInitializer = require( '../TargetInitializer.js' ),
 function AddSectionImageTargetInitializer( platformConfig ) {
 	const config = Object.assign( {}, platformConfig ),
 		toolbarDialogCommand = new ve.ui.Command(
-			'recommendedImage', 'window', 'toggle', { args: [ 'recommendedImage' ] }
+			'recommendedImage', 'window', 'toggle', { args: [ 'recommendedImage' ] },
 		);
 	// selectAll command keeps the focus on the field when selecting all
 	// This is used in the caption step.
@@ -41,14 +41,14 @@ function AddSectionImageTargetInitializer( platformConfig ) {
 		RecommendedSectionImageRejectionDialog,
 		RecommendedImageViewer,
 		AddImageDetailsDialog,
-		AddSectionImageCaptionInfoDialog
+		AddSectionImageCaptionInfoDialog,
 	] );
 	config.commands = [ toolbarDialogCommand ];
 	config.nodes = [ CERecommendedImageNode, CERecommendedImageCaptionNode, CERecommendedImagePlaceholderNode ];
 	SuggestionInteractionLogger.initialize( new ImageSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: OO.ui.isMobile(),
-		active_interface: 'machinesuggestions_mode'
+		active_interface: 'machinesuggestions_mode',
 		/* eslint-enable camelcase */
 	} ) );
 	// Desktop doesn't have a back button in the toolbar.

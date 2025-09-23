@@ -5,7 +5,7 @@ jest.mock( './icons.json', () => ( {
 	cdxIconChart: '',
 	cdxIconClose: '',
 	cdxIconInfo: '',
-	cdxIconInfoFilled: ''
+	cdxIconInfoFilled: '',
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const ScoreCards = require( './CScoreCards.vue' );
@@ -16,21 +16,21 @@ const renderComponent = ( { props = {}, provide = {} } = {} ) => mount( ScoreCar
 	props: Object.assign( {
 		userName: 'Alice',
 		renderThirdPerson: false,
-		hasIntl: true
+		hasIntl: true,
 	}, props ),
 	global: {
 		provide: Object.assign( {
 			RENDER_MODE: 'desktop',
 			IMPACT_MAX_EDITS: 1000,
 			IMPACT_MAX_THANKS: 1000,
-			$log: jest.fn()
+			$log: jest.fn(),
 		}, provide ),
 		mocks: {
 			$filters: {
-				convertNumber: jest.fn( ( x ) => `${ x }` )
-			}
-		}
-	}
+				convertNumber: jest.fn( ( x ) => `${ x }` ),
+			},
+		},
+	},
 } );
 
 describe( 'ScoreCards', () => {
@@ -54,8 +54,8 @@ describe( 'ScoreCards', () => {
 			.mockReturnValueOnce( 'http://thanks.url' );
 		const wrapper = renderComponent( {
 			props: {
-				data: null
-			}
+				data: null,
+			},
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );
@@ -66,17 +66,17 @@ describe( 'ScoreCards', () => {
 			.mockReturnValueOnce( 'http://thanks.url' );
 		const wrapper = renderComponent( {
 			props: {
-				data: useUserImpact( 60, jsonData ).value
-			}
+				data: useUserImpact( 60, jsonData ).value,
+			},
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );
 	it( 'displays the formatted limit in the over-limit message', () => {
 		const props = {
 			data: {
-				receivedThanksCount: 5000
+				receivedThanksCount: 5000,
 			},
-			hasIntl: true
+			hasIntl: true,
 		};
 
 		const wrapper = mount( ScoreCards, {
@@ -85,7 +85,7 @@ describe( 'ScoreCards', () => {
 				provide: {
 					RENDER_MODE: 'desktop',
 					IMPACT_MAX_EDITS: 1000,
-					IMPACT_MAX_THANKS: 2000
+					IMPACT_MAX_THANKS: 2000,
 				},
 				mocks: {
 					$i18n: ( key, ...args ) => ( {
@@ -94,13 +94,13 @@ describe( 'ScoreCards', () => {
 								return `${ args[ 0 ] }+`;
 							}
 							return key;
-						}
+						},
 					} ),
 					$filters: {
-						convertNumber: jest.fn( ( x ) => `${ x }` )
-					}
-				}
-			}
+						convertNumber: jest.fn( ( x ) => `${ x }` ),
+					},
+				},
+			},
 		} );
 
 		expect( wrapper.vm.receivedThanksCount ).toBe( '2000+' );

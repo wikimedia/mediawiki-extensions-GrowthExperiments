@@ -29,13 +29,13 @@ function AddLinkTargetInitializer( platformConfig ) {
 	config.windows = ( platformConfig.windows || [] ).concat( [ RecommendedLinkRejectionDialog ] );
 	config.commands = [
 		new ve.ui.Command(
-			'recommendedLink', 'window', 'toggle', { args: [ 'recommendedLink' ] }
-		)
+			'recommendedLink', 'window', 'toggle', { args: [ 'recommendedLink' ] },
+		),
 	];
 	SuggestionInteractionLogger.initialize( new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: OO.ui.isMobile(),
-		active_interface: 'machinesuggestions_mode'
+		active_interface: 'machinesuggestions_mode',
 		/* eslint-enable camelcase */
 	} ) );
 	AddLinkTargetInitializer.super.call( this, config );

@@ -135,13 +135,13 @@ AddImageArticleTarget.prototype.afterStructuredTaskSurfaceReady = function () {
 			// On desktop, onboarding is shown after the editor loads and the inspector is shown
 			// upon closing onboarding.
 			mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
-				this.setupTask.bind( this )
+				this.setupTask.bind( this ),
 			);
 			mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 		}
 		this.logger.log( 'impression', {}, {
 			// eslint-disable-next-line camelcase
-			active_interface: 'machinesuggestions_mode'
+			active_interface: 'machinesuggestions_mode',
 		} );
 		this.getSurface().getView().$element.on( 'paste', this.onPaste.bind( this ) );
 	} else {
@@ -198,7 +198,7 @@ AddImageArticleTarget.prototype.isValidTask = function () {
  */
 AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = function (
 	linearModel,
-	imageData
+	imageData,
 ) {
 	const surface = this.getSurface(),
 		surfaceModel = surface.getModel(),
@@ -217,7 +217,7 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
 			this.insertOffset,
 			0,
 			// This will update insertOffset.
-			( offset ) => this.isEndOfMetadata( data, offset )
+			( offset ) => this.isEndOfMetadata( data, offset ),
 		);
 		if ( this.insertOffset > insertRange.end ) {
 			relativeOffset = -1;
@@ -239,11 +239,11 @@ AddImageArticleTarget.prototype.insertLinearModelAtRecommendationLocation = func
 	const transaction = ve.dm.TransactionBuilder.static.newFromInsertion(
 		surfaceModel.getDocument(),
 		this.insertOffset,
-		linearModel
+		linearModel,
 	);
 	surfaceModel.change(
 		transaction,
-		new ve.dm.LinearSelection( new ve.Range( this.insertOffset ) )
+		new ve.dm.LinearSelection( new ve.Range( this.insertOffset ) ),
 	);
 	surfaceModel.setReadOnly( true );
 
@@ -259,7 +259,7 @@ AddImageArticleTarget.prototype.getImageDimensions = function ( imageData ) {
 
 	const originalDimensions = {
 		width: imageData.metadata.originalWidth,
-		height: imageData.metadata.originalHeight
+		height: imageData.metadata.originalHeight,
 	};
 
 	// On mobile, the image is rendered full width (with max width set to account for tablets).
@@ -272,12 +272,12 @@ AddImageArticleTarget.prototype.getImageDimensions = function ( imageData ) {
 			// same as the surface on phones and it will be capped by MAX_IMAGE_DISPLAY_WIDTH on
 			// tablet.
 			this.$element.width(),
-			MAX_IMAGE_DISPLAY_WIDTH
+			MAX_IMAGE_DISPLAY_WIDTH,
 		) : this.getDefaultThumbSize();
 
 	return {
 		width: targetWidth,
-		height: Math.round( targetWidth * ( originalDimensions.height / originalDimensions.width ) )
+		height: Math.round( targetWidth * ( originalDimensions.height / originalDimensions.width ) ),
 	};
 };
 
@@ -321,24 +321,24 @@ AddImageArticleTarget.prototype.getImageLinearModel = function ( imageData ) {
 				mw: {},
 				// Pass image recommendation metadata to CERecommendedImageNode
 				recommendation: imageData,
-				recommendationIndex: this.selectedImageIndex
+				recommendationIndex: this.selectedImageIndex,
 			},
 			internal: {
-				whitespace: [ '\n', undefined, undefined, '\n' ]
-			}
+				whitespace: [ '\n', undefined, undefined, '\n' ],
+			},
 		},
 		{
 			type: 'mwGeRecommendedImageCaption',
 			attributes: {
 				taskType: this.TASK_TYPE_ID,
-				visibleSectionTitle: imageData.visibleSectionTitle || null
-			}
+				visibleSectionTitle: imageData.visibleSectionTitle || null,
+			},
 		},
 		{ type: 'paragraph', internal: { generated: 'wrapper' } },
 		// Caption will be spliced in here. In the linear model each character is a separate item.
 		{ type: '/paragraph' },
 		{ type: '/mwGeRecommendedImageCaption' },
-		{ type: '/mwGeRecommendedImage' }
+		{ type: '/mwGeRecommendedImage' },
 	];
 };
 
@@ -349,7 +349,7 @@ AddImageArticleTarget.prototype.getImageLinearModel = function ( imageData ) {
  */
 AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 	this.approvalTransaction = this.insertLinearModelAtRecommendationLocation(
-		this.getImageLinearModel( imageData )
+		this.getImageLinearModel( imageData ),
 	);
 	this.hasStartedCaption = true;
 };
@@ -363,7 +363,7 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
  */
 AddImageArticleTarget.prototype.getInsertRange = function (
 	// eslint-disable-next-line no-unused-vars
-	imageData
+	imageData,
 ) {
 	return this.getSurface().getModel().getDocument().getDocumentRange();
 };
@@ -436,7 +436,7 @@ AddImageArticleTarget.prototype.isEndOfMetadata = function ( data, offset ) {
 		// hidden, so probably should go before the image
 		'comment', 'mwLanguageVariantHidden',
 		// automatically generated to wrap content, which could be templates
-		'paragraph'
+		'paragraph',
 	].includes( right.type ) ) {
 		return false;
 	}
@@ -488,7 +488,7 @@ AddImageArticleTarget.prototype.insertCaption = function ( captionText ) {
 		insertOffset = selection;
 	} else {
 		insertOffset = surfaceModel.getDocument().getRelativeRange(
-			new ve.Range( captionNodeRange.start ), 1, 'character', false
+			new ve.Range( captionNodeRange.start ), 1, 'character', false,
 		);
 	}
 	// Insert the caption without auto-selection and move the cursor to the end of the insertion
@@ -552,7 +552,7 @@ AddImageArticleTarget.prototype.getVEPluginData = function () {
 		// The section parameters will always be null for image-recommendation tasks, but
 		// non-null for section-image-recommendation tasks. They are required parameters for both.
 		sectionNumber: this.getSelectedSuggestion().sectionNumber,
-		sectionTitle: this.getSelectedSuggestion().sectionTitle
+		sectionTitle: this.getSelectedSuggestion().sectionTitle,
 	};
 };
 
@@ -575,7 +575,7 @@ AddImageArticleTarget.prototype.getSummaryData = function () {
 			filename: imageData.displayFilename,
 			accepted: this.recommendationAccepted,
 			metadata: imageData.metadata,
-			caption: ''
+			caption: '',
 		};
 	if ( this.recommendationAccepted ) {
 		summaryData.caption = this.getCaptionText();
@@ -655,7 +655,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 			/* eslint-disable camelcase */
 			const actionData = Object.assign(
 				this.getSuggestionLogActionData(),
-				{ dialog_context: context }
+				{ dialog_context: context },
 			);
 			if ( closeData ) {
 				actionData.dont_show_again = closeData.dialogDismissed;
@@ -685,7 +685,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 		this.hasShownCaptionOnboarding = true;
 		openDialogPromise = this.surface.dialogs.openWindow(
 			dialogName,
-			{ shouldShowDismissField: true }
+			{ shouldShowDismissField: true },
 		);
 		openDialogPromise.opening.then( () => {
 			logCaptionInfoDialog( 'impression', 'onboarding' );
@@ -716,7 +716,7 @@ AddImageArticleTarget.prototype.getSuggestionLogActionData = function ( index ) 
 		series_number: imageIndex + 1,
 		total_suggestions: this.images.length,
 		rejection_reasons: this.recommendationRejectionReasons,
-		acceptance_state: isUndecided ? 'undecided' : acceptanceState
+		acceptance_state: isUndecided ? 'undecided' : acceptanceState,
 		/* eslint-enable camelcase */
 	};
 };
@@ -734,7 +734,7 @@ AddImageArticleTarget.prototype.logSuggestionInteraction = function (
 		action,
 		Object.assign( actionData || {}, this.getSuggestionLogActionData() ),
 		// eslint-disable-next-line camelcase
-		{ active_interface: activeInterface }
+		{ active_interface: activeInterface },
 	);
 };
 
@@ -747,7 +747,7 @@ AddImageArticleTarget.prototype.logSuggestionInteraction = function (
  * @param {string[]} reasons List of rejection reason IDs (when accepted is false)
  */
 AddImageArticleTarget.prototype.updateSuggestionState = function (
-	index, accepted, reasons
+	index, accepted, reasons,
 ) {
 	this.selectedImageIndex = index;
 	this.recommendationAccepted = accepted;
@@ -826,7 +826,7 @@ AddImageArticleTarget.prototype.invalidateRecommendation = function () {
 		filename: imageData.image,
 		tasktype: this.TASK_TYPE_ID,
 		sectiontitle: imageData.sectionTitle,
-		sectionnumber: imageData.sectionNumber
+		sectionnumber: imageData.sectionNumber,
 	} );
 };
 

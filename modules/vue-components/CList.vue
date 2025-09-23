@@ -9,7 +9,7 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	props: {
 		unstyled: { type: Boolean },
-		striped: { type: Boolean, default: false }
+		striped: { type: Boolean, default: false },
 	},
 	render() {
 		// When using v-for Vue 3 wraps all generated elements into
@@ -26,10 +26,10 @@ module.exports = exports = {
 		return h( 'ul', {
 			class: [
 				'ext-growthExperiments-CList',
-				this.unstyled ? 'ext-growthExperiments-CList--unstyled ext-growthExperiments-increaseSpecificity' : ''
-			]
+				this.unstyled ? 'ext-growthExperiments-CList--unstyled ext-growthExperiments-increaseSpecificity' : '',
+			],
 		}, clones );
-	}
+	},
 };
 </script>
 

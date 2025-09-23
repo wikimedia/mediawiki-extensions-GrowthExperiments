@@ -24,7 +24,7 @@ function PostEditToastMessage( config ) {
 		'mw-ge-postEditToastMessage--hidden',
 		OO.ui.isMobile() ?
 			'mw-ge-postEditToastMessage-mobile' :
-			'mw-ge-postEditToastMessage-desktop'
+			'mw-ge-postEditToastMessage-desktop',
 	] );
 	setTimeout( () => {
 		this.toggleHiddenState( false );

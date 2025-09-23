@@ -9,7 +9,7 @@ const MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
 		'showSave',
 		'showMobileSave',
 		'editMode',
-		'back'
+		'back',
 	],
 	allowedCommands = [ 'showSave', 'showChanges', 'back', 'cancel' ];
 
@@ -41,14 +41,14 @@ function TargetInitializer( config ) {
 	this.taskArticleTarget = config.taskArticleTarget;
 	this.suggestionsArticleTarget = config.suggestionsArticleTarget;
 	this.safeTools = allowedTools.concat(
-		MachineSuggestionsMode.getEditModeToolNames(), safeTools
+		MachineSuggestionsMode.getEditModeToolNames(), safeTools,
 	);
 	this.safeCommands = allowedCommands.concat( safeCommands );
 	this.dataModels = config.dataModels || [];
 	this.annotationViews = config.annotationViews || [];
 	this.windows = [
 		EditModeConfirmationDialog,
-		StructuredTaskMessageDialog
+		StructuredTaskMessageDialog,
 	].concat( customWindows );
 	this.commands = config.commands || [];
 	this.tools = config.tools || [];

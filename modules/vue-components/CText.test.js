@@ -7,38 +7,38 @@ const renderComponent = ( { props, slots = { default: 'Some text' }, RENDER_MODE
 	slots,
 	global: {
 		provide: {
-			RENDER_MODE
+			RENDER_MODE,
 		},
 		mocks: {
 			$filters: {
-				convertNumber: jest.fn( ( x ) => `localised-${ x }` )
-			}
-		}
-	}
+				convertNumber: jest.fn( ( x ) => `localised-${ x }` ),
+			},
+		},
+	},
 } );
 
 const TEST_INPUTS = [
 	{
-		props: {}
+		props: {},
 	},
 	{
 		props: {
 			color: 'subtle',
 			size: 'l',
-			weight: 'bold'
-		}
+			weight: 'bold',
+		},
 	},
 	{
 		props: {
-			size: [ 'xl', null, null ]
-		}
+			size: [ 'xl', null, null ],
+		},
 	},
 	{
 		props: {},
 		slots: {
-			default: '<a href="#">Some link</a>'
-		}
-	}
+			default: '<a href="#">Some link</a>',
+		},
+	},
 ];
 
 describe( 'CText', () => {

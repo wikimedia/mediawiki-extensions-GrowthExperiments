@@ -13,7 +13,7 @@ function EditModeConfirmationDialog( config ) {
 		'mw-ge-edit-mode-confirmation-dialog',
 		OO.ui.isMobile() ?
 			'mw-ge-edit-mode-confirmation-dialog-mobile' :
-			'mw-ge-edit-mode-confirmation-dialog-desktop'
+			'mw-ge-edit-mode-confirmation-dialog-desktop',
 	] );
 }
 
@@ -23,26 +23,26 @@ EditModeConfirmationDialog.static.name = 'editModeConfirmation';
 EditModeConfirmationDialog.static.size = 'small';
 
 EditModeConfirmationDialog.static.title = mw.message(
-	'growthexperiments-structuredtask-editmode-confirmation-dialog-title'
+	'growthexperiments-structuredtask-editmode-confirmation-dialog-title',
 ).text();
 
 EditModeConfirmationDialog.static.message = mw.message(
-	'growthexperiments-structuredtask-editmode-confirmation-dialog-message', mw.user.getName()
+	'growthexperiments-structuredtask-editmode-confirmation-dialog-message', mw.user.getName(),
 ).text();
 
 EditModeConfirmationDialog.static.actions = [
 	{
 		action: 'confirm',
 		label: mw.message(
-			'growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm'
-		).text()
+			'growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm',
+		).text(),
 	},
 	{
 		action: 'cancel',
 		label: mw.message(
-			'growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel'
-		).text()
-	}
+			'growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel',
+		).text(),
+	},
 ];
 
 /**

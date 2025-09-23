@@ -12,24 +12,24 @@ function StructuredTaskOnboardingContent( baseClass ) {
  * @return {OO.ui.PanelLayout}
  */
 StructuredTaskOnboardingContent.prototype.createPanel = function (
-	title, $content, heroImageClassName, heroImageAltText
+	title, $content, heroImageClassName, heroImageAltText,
 ) {
 	const $heroElement = heroImageClassName ?
 		// eslint-disable-next-line mediawiki/class-doc
 		$( '<div>' ).addClass( [
 			heroImageClassName,
-			'structuredtask-onboarding-content-image'
+			'structuredtask-onboarding-content-image',
 		] )
 			.attr( {
 				role: 'img',
-				'aria-label': heroImageAltText
+				'aria-label': heroImageAltText,
 			} ) : '';
 	// eslint-disable-next-line mediawiki/class-doc
 	return new OO.ui.PanelLayout( {
 		content: [
 			$heroElement,
 			$( '<div>' ).addClass( 'structuredtask-onboarding-content-title' ).text( title ),
-			$content.addClass( 'structuredtask-onboarding-content-body' )
+			$content.addClass( 'structuredtask-onboarding-content-body' ),
 		],
 		padded: true,
 		classes: [
@@ -37,9 +37,9 @@ StructuredTaskOnboardingContent.prototype.createPanel = function (
 			'structuredtask-onboarding-content',
 			OO.ui.isMobile() ?
 				'structuredtask-onboarding-content-mobile' :
-				'structuredtask-onboarding-content-desktop'
+				'structuredtask-onboarding-content-desktop',
 		],
-		data: {}
+		data: {},
 	} );
 };
 

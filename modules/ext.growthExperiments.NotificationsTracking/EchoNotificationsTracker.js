@@ -3,41 +3,41 @@ const NOTIFICATIONS_ELEMENTS_TO_INSTRUMENT = {
 		{
 			name: 'primary',
 			friendlyName: 'Getting Started primary link',
-			selector: 'a.mw-echo-ui-notificationItemWidget[href*="source=get-started-primary-link"]'
+			selector: 'a.mw-echo-ui-notificationItemWidget[href*="source=get-started-primary-link"]',
 		},
 		{
 			name: 'secondary',
 			friendlyName: 'Getting Started secondary link',
 			selector: 'a.mw-echo-ui-menuItemWidget[href*="source=get-started-secondary-link"]',
-			trackSingleClick: true
-		}
+			trackSingleClick: true,
+		},
 	],
 	'keep-going': [
 		{
 			name: 'primary',
 			friendlyName: 'Keep going primary link',
-			selector: 'a.mw-echo-ui-notificationItemWidget[href*="source=keep-going-primary-link"]'
+			selector: 'a.mw-echo-ui-notificationItemWidget[href*="source=keep-going-primary-link"]',
 		},
 		{
 			name: 'secondary',
 			friendlyName: 'Keep going secondary link',
 			selector: 'a.mw-echo-ui-menuItemWidget[href*="source=keep-going-secondary-link"]',
-			trackSingleClick: true
-		}
+			trackSingleClick: true,
+		},
 	],
 	're-engage': [
 		{
 			name: 'primary',
 			friendlyName: 'Re-engage primary link',
-			selector: 'a.mw-echo-ui-notificationItemWidget[href*="source=re-engage-primary-link"]'
+			selector: 'a.mw-echo-ui-notificationItemWidget[href*="source=re-engage-primary-link"]',
 		},
 		{
 			name: 'secondary',
 			friendlyName: 'Re-engage secondary link',
 			selector: 'a.mw-echo-ui-menuItemWidget[href*="source=re-engage-secondary-link"]',
-			trackSingleClick: true
-		}
-	]
+			trackSingleClick: true,
+		},
+	],
 };
 const EchoNotificationsTracker = {
 	/**
@@ -56,7 +56,7 @@ const EchoNotificationsTracker = {
 					notification,
 					NOTIFICATIONS_ELEMENTS_TO_INSTRUMENT[ notification ],
 					ctrInstrument,
-					growthInstrument
+					growthInstrument,
 				);
 			}
 		} );
@@ -79,11 +79,11 @@ const EchoNotificationsTracker = {
 					el.selector,
 					el.friendlyName,
 					growthInstrument,
-					{ trackSingleClick: el.trackSingleClick }
+					{ trackSingleClick: el.trackSingleClick },
 				);
 			}
 		}
-	}
+	},
 };
 
 module.exports = EchoNotificationsTracker;

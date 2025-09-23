@@ -14,16 +14,16 @@
 
 		this.optoutDialog = new MentorshipOptoutDialog( {} );
 		this.optoutDialog.connect( this, {
-			confirmation: [ 'onOptoutConfirmed' ]
+			confirmation: [ 'onOptoutConfirmed' ],
 		} );
 
 		this.reasonDialog = new MentorshipOptoutReasonDialog( {
-			mode: mode
+			mode: mode,
 		} );
 
 		this.windowManager.addWindows( [
 			this.optoutDialog,
-			this.reasonDialog
+			this.reasonDialog,
 		] );
 	}
 
@@ -40,7 +40,7 @@
 			reasonDialog.closed.then( () => {
 				new mw.Api().postWithToken( 'csrf', {
 					action: 'growthsetmenteestatus',
-					state: 'optout'
+					state: 'optout',
 				} ).then( () => {
 					history.replaceState( null, '', mw.util.getUrl( 'Special:Homepage' ) );
 					window.location.reload();

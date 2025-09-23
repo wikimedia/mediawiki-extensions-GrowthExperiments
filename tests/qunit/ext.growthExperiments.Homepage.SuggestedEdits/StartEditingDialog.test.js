@@ -5,8 +5,8 @@ const rootStore = require( '../__mocks__/store.js' );
 
 QUnit.module( 'ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.js', QUnit.newMwEnvironment( {
 	config: {
-		GEHomepageSuggestedEditsEnableTopics: true
-	}
+		GEHomepageSuggestedEditsEnableTopics: true,
+	},
 } ) );
 
 QUnit.test( 'should log topicmatchmode impressions', function ( assert ) {
@@ -18,7 +18,7 @@ QUnit.test( 'should log topicmatchmode impressions', function ( assert ) {
 		useTopicSelector: true,
 		useTopicMatchMode: true,
 		mode: 'some-mode',
-		module: 'some-module'
+		module: 'some-module',
 	}, logger, rootStore );
 	this.sandbox.spy( dialog, 'updateMatchCount' );
 
@@ -28,7 +28,7 @@ QUnit.test( 'should log topicmatchmode impressions', function ( assert ) {
 	assert.deepEqual( logger.log.getCall( 0 ).args, [
 		'some-module',
 		'some-mode',
-		'se-topicmatchmode-impression'
+		'se-topicmatchmode-impression',
 	] );
 
 	dialog.topicSelector.emit( 'toggleMatchMode', 'MODE' );
@@ -39,7 +39,7 @@ QUnit.test( 'should log topicmatchmode impressions', function ( assert ) {
 		'some-mode',
 		'se-topicmatchmode-mode',
 		{
-			topicsMatchMode: 'MODE'
-		}
+			topicsMatchMode: 'MODE',
+		},
 	] );
 } );

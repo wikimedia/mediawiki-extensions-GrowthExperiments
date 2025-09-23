@@ -6,11 +6,11 @@
 			buttonSelector: '#mw-ge-homepage-mentorship-cta',
 			context: 'homepage_mentorship',
 			dialog: {
-				name: 'mentorship'
-			}
+				name: 'mentorship',
+			},
 		},
 		optInConfig = {
-			buttonSelector: '#mw-ge-homepage-mentorship-optin'
+			buttonSelector: '#mw-ge-homepage-mentorship-optin',
 		},
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$homepageContainer = $( '.growthexperiments-homepage-container' );

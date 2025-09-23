@@ -4,7 +4,7 @@
 	const dashboardTour = new gt.TourBuilder( {
 		name: 'helppanel',
 		isSinglePage: true,
-		shouldLog: true
+		shouldLog: true,
 	} );
 	dashboardTour.firstStep( tourUtils.adjustPersonalToolbarTourStep( {
 		name: 'incomingmessage',
@@ -18,7 +18,7 @@
 		autoFocus: true,
 		buttons: [ {
 			action: 'end',
-			namemsg: 'growthexperiments-tour-response-button-okay'
-		} ]
+			namemsg: 'growthexperiments-tour-response-button-okay',
+		} ],
 	} ) );
 }( mw.guidedTour ) );

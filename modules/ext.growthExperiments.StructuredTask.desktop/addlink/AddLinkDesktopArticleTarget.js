@@ -14,7 +14,7 @@ const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 function AddLinkDesktopArticleTarget() {
 	const logger = new LinkSuggestionInteractionLogger( {
 		// eslint-disable-next-line camelcase
-		is_mobile: false
+		is_mobile: false,
 	} );
 	AddLinkDesktopArticleTarget.super.apply( this, arguments );
 	AddLinkArticleTarget.call( this, logger );

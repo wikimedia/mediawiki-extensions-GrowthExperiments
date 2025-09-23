@@ -18,7 +18,7 @@
 		const label = 'descriptionMessageKey' in iconData ? mw.message( iconData.descriptionMessageKey ).text() : '';
 		const iconWidget = new OO.ui.IconWidget( Object.assign( config, {
 			icon: iconData.icon,
-			classes: [ 'suggested-edits-task-explanation-icon' ]
+			classes: [ 'suggested-edits-task-explanation-icon' ],
 		} ) );
 		if ( label ) {
 			iconWidget.setLabel( label );
@@ -28,6 +28,6 @@
 	}
 
 	module.exports = {
-		getIconElementForTaskType: getIconElementForTaskType
+		getIconElementForTaskType: getIconElementForTaskType,
 	};
 }() );

@@ -3,7 +3,7 @@
 
 	function MentorshipDetailsModal( config ) {
 		MentorshipDetailsModal.super.call( this, Object.assign( {}, config, {
-			size: 'medium'
+			size: 'medium',
 		} ) );
 	}
 	OO.inheritClass( MentorshipDetailsModal, OO.ui.ProcessDialog );
@@ -14,8 +14,8 @@
 		{
 			action: 'done',
 			label: mw.msg( 'growthexperiments-homepage-mentorship-about-done' ),
-			flags: [ 'primary', 'progressive' ]
-		}
+			flags: [ 'primary', 'progressive' ],
+		},
 	];
 
 	MentorshipDetailsModal.prototype.onOptoutButtonClicked = function () {
@@ -31,10 +31,10 @@
 		MentorshipDetailsModal.super.prototype.initialize.call( this );
 
 		const optoutBtn = new OO.ui.ButtonWidget( {
-			label: mw.msg( 'growthexperiments-homepage-mentorship-ellipsis-menu-optout' )
+			label: mw.msg( 'growthexperiments-homepage-mentorship-ellipsis-menu-optout' ),
 		} );
 		optoutBtn.connect( this, {
-			click: [ 'onOptoutButtonClicked' ]
+			click: [ 'onOptoutButtonClicked' ],
 		} );
 
 		const mentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
@@ -44,18 +44,18 @@
 				.addClass( 'growthexperiments-homepage-mentorship-about-mentorship' )
 				.append(
 					$( '<h4>' ).text(
-						mw.message( 'growthexperiments-homepage-mentorship-about-subheader-mentor', mentorGender ).text()
+						mw.message( 'growthexperiments-homepage-mentorship-about-subheader-mentor', mentorGender ).text(),
 					),
 					$( '<p>' ).text(
-						mw.message( 'growthexperiments-homepage-mentorship-about-mentor-par1', mentorGender ).text()
+						mw.message( 'growthexperiments-homepage-mentorship-about-mentor-par1', mentorGender ).text(),
 					),
 					$( '<p>' ).text(
-						mw.message( 'growthexperiments-homepage-mentorship-about-mentor-par2', mentorGender ).text()
+						mw.message( 'growthexperiments-homepage-mentorship-about-mentor-par2', mentorGender ).text(),
 					),
 					$( '<h4>' ).text( mw.msg( 'growthexperiments-homepage-mentorship-about-subheader-optout' ) ),
 					$( '<p>' ).text( mw.msg( 'growthexperiments-homepage-mentorship-about-optout-par1' ) ),
-					optoutBtn.$element
-				)
+					optoutBtn.$element,
+				),
 		);
 		this.$body.append( this.content.$element );
 	};

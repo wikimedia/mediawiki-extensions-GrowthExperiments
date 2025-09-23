@@ -15,16 +15,16 @@ function InviteToSuggestedEditsDrawer( helpPanelLogger ) {
 	InviteToSuggestedEditsDrawer.super.call( this, {
 		headerText: this.panel.getHeaderText(),
 		content: this.panel.getMainArea().concat( this.panel.getFooterButtons() ),
-		padded: false
+		padded: false,
 	} );
 	this.$element.addClass( [
 		'mw-ge-inviteToSuggestedEditsDrawer',
 		OO.ui.isMobile() ?
 			'mw-ge-inviteToSuggestedEditsDrawer-mobile' :
-			'mw-ge-inviteToSuggestedEditsDrawer-desktop'
+			'mw-ge-inviteToSuggestedEditsDrawer-desktop',
 	] );
 	this.panel.connect( this, {
-		close: 'onClose'
+		close: 'onClose',
 	} );
 }
 OO.inheritClass( InviteToSuggestedEditsDrawer, CollapsibleDrawer );

@@ -12,7 +12,7 @@ function CERecommendedLinkAnnotation() {
 
 	this.$element.addClass( [
 		'mw-ge-recommendedLinkAnnotation',
-		OO.ui.isMobile() ? 'mw-ge-recommendedLinkAnnotation-mobile' : 'mw-ge-recommendedLinkAnnotation-desktop'
+		OO.ui.isMobile() ? 'mw-ge-recommendedLinkAnnotation-mobile' : 'mw-ge-recommendedLinkAnnotation-desktop',
 	] );
 	// Prevent flashing from inactive to active states when updating annotation without auto-advance
 	if ( !OO.ui.isMobile() ) {

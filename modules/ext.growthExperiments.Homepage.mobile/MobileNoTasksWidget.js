@@ -13,7 +13,7 @@ function MobileNoTasksWidget() {
 	const baseClass = 'growthexperiments-suggestededits-mobilesummary-notasks-widget';
 
 	MobileNoTasksWidget.super.call( this, {
-		classes: [ baseClass ]
+		classes: [ baseClass ],
 	} );
 
 	const titleText = mw.message( 'growthexperiments-homepage-suggestededits-mobilesummary-notasks-title' ).text();
@@ -24,31 +24,31 @@ function MobileNoTasksWidget() {
 		classes: [ `${ baseClass }__main` ],
 		content: [
 			new OO.ui.Element( {
-				classes: [ `${ baseClass }__icon` ]
+				classes: [ `${ baseClass }__icon` ],
 			} ),
 			new OO.ui.Element( {
 				content: [
 					new OO.ui.Element( {
 						classes: [ `${ baseClass }__title` ],
-						text: titleText
+						text: titleText,
 					} ),
 					new OO.ui.Element( {
 						classes: [ `${ baseClass }__subtitle` ],
-						text: subtitleText
-					} )
-				]
-			} )
-		]
+						text: subtitleText,
+					} ),
+				],
+			} ),
+		],
 	} );
 
 	this.$footer = new OO.ui.Element( {
 		classes: [ `${ baseClass }__footer` ],
-		text: footerText
+		text: footerText,
 	} );
 
 	this.$element.empty().append(
 		this.$widgetWrapper.$element,
-		this.$footer.$element
+		this.$footer.$element,
 	);
 }
 

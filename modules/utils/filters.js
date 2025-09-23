@@ -15,5 +15,5 @@ function convertNumber( n ) {
 }
 
 exports = module.exports = {
-	convertNumber: convertNumber
+	convertNumber: convertNumber,
 };

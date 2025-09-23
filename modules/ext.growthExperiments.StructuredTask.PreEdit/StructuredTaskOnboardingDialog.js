@@ -44,8 +44,8 @@ StructuredTaskOnboardingDialog.static.actions = [
 		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-label-skip-all' ).text(),
 		framed: false,
 		flags: [ 'primary' ],
-		classes: [ 'structuredtask-onboarding-dialog-skip-button' ]
-	}
+		classes: [ 'structuredtask-onboarding-dialog-skip-button' ],
+	},
 ];
 
 StructuredTaskOnboardingDialog.prototype.initialize = function () {
@@ -53,7 +53,7 @@ StructuredTaskOnboardingDialog.prototype.initialize = function () {
 
 	this.swipeCard = new SwipePane( this.$element, {
 		isRtl: document.documentElement.dir === 'rtl',
-		isHorizontal: true
+		isHorizontal: true,
 	} );
 
 	this.swipeCard.setToStartHandler( () => {
@@ -70,7 +70,7 @@ StructuredTaskOnboardingDialog.prototype.initialize = function () {
 StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 	this.checkBoxInput = new OO.ui.CheckboxInputWidget( {
 		selected: false,
-		value: 'dismissOnboarding'
+		value: 'dismissOnboarding',
 	} );
 
 	if ( this.prefName ) {
@@ -82,14 +82,14 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 	this.$dismissField = new OO.ui.FieldLayout( this.checkBoxInput, {
 		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox' ).text(),
 		align: 'inline',
-		classes: [ 'structuredtask-onboarding-dialog-footer-widget' ]
+		classes: [ 'structuredtask-onboarding-dialog-footer-widget' ],
 	} ).$element;
 
 	this.$prevButton = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-label-previous' ).text(),
 		icon: 'previous',
 		invisibleLabel: true,
-		classes: [ 'structuredtask-onboarding-dialog-footer-widget' ]
+		classes: [ 'structuredtask-onboarding-dialog-footer-widget' ],
 	} ).$element;
 	this.$prevButton.on( 'click', () => {
 		this.logNavigation( 'back' );
@@ -101,7 +101,7 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 		icon: 'next',
 		invisibleLabel: true,
 		flags: [ 'progressive', 'primary' ],
-		classes: [ 'structuredtask-onboarding-dialog-footer-widget', 'align-end' ]
+		classes: [ 'structuredtask-onboarding-dialog-footer-widget', 'align-end' ],
 	} ).$element;
 	this.$nextButton.on( 'click', () => {
 		this.logNavigation( 'next' );
@@ -111,7 +111,7 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 	this.$getStartedButton = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-get-started-button' ).text(),
 		flags: [ 'progressive', 'primary' ],
-		classes: [ 'structuredtask-onboarding-dialog-footer-widget', 'align-end' ]
+		classes: [ 'structuredtask-onboarding-dialog-footer-widget', 'align-end' ],
 	} ).$element;
 	this.$getStartedButton.on( 'click', () => {
 		this.closeDialog( 'get_started' );
@@ -121,7 +121,7 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 		padded: true,
 		expanded: false,
 		content: [ this.$dismissField, this.$prevButton, this.$nextButton, this.$getStartedButton ],
-		classes: [ 'structuredtask-onboarding-dialog-footer' ]
+		classes: [ 'structuredtask-onboarding-dialog-footer' ],
 	} ).$element;
 };
 
@@ -161,7 +161,7 @@ StructuredTaskOnboardingDialog.prototype.updateViewState = function () {
 	$skipButton.show();
 
 	const $learnMoreLink = this.panels[ this.currentPanelIndex ].$element.find(
-		'.structuredtask-onboarding-content-link'
+		'.structuredtask-onboarding-content-link',
 	);
 	if ( $learnMoreLink ) {
 		$learnMoreLink.on( 'click', () => {
@@ -206,7 +206,7 @@ StructuredTaskOnboardingDialog.prototype.closeDialog = function ( action ) {
 StructuredTaskOnboardingDialog.prototype.getLogActionData = function () {
 	return {
 		// eslint-disable-next-line camelcase
-		dont_show_again: this.checkBoxInput.selected
+		dont_show_again: this.checkBoxInput.selected,
 	};
 };
 
@@ -218,7 +218,7 @@ StructuredTaskOnboardingDialog.prototype.getLogActionData = function () {
 StructuredTaskOnboardingDialog.prototype.getLogMetadata = function () {
 	return {
 		// eslint-disable-next-line camelcase
-		active_interface: 'onboarding_step_' + ( this.currentPanelIndex + 1 ) + '_dialog'
+		active_interface: 'onboarding_step_' + ( this.currentPanelIndex + 1 ) + '_dialog',
 	};
 };
 

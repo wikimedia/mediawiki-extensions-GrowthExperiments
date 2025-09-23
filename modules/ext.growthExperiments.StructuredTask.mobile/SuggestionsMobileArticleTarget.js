@@ -19,7 +19,7 @@ OO.inheritClass( SuggestionsMobileArticleTarget, ve.init.mw.MobileArticleTarget 
 OO.mixinClass( SuggestionsMobileArticleTarget, SuggestionsArticleTarget );
 
 SuggestionsMobileArticleTarget.static.toolbarGroups = MachineSuggestionsMode.updateEditModeTool(
-	SuggestionsMobileArticleTarget.static.toolbarGroups
+	SuggestionsMobileArticleTarget.static.toolbarGroups,
 );
 
 /**

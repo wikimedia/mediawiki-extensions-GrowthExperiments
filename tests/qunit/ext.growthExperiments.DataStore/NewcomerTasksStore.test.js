@@ -22,7 +22,7 @@ const getTaskData = ( title, tasktype, pageId, qualityGateConfig ) => ( {
 	qualityGateConfig: qualityGateConfig || {},
 	url: null,
 	token: 'token-' + title,
-	pageId: pageId || Math.floor( Math.random() * 100 )
+	pageId: pageId || Math.floor( Math.random() * 100 ),
 } );
 
 /**
@@ -39,7 +39,7 @@ const randomTaskSet = ( n, qualityConfig = {} ) => {
 		'links',
 		'references',
 		'link-recommendation',
-		'image-recommendation'
+		'image-recommendation',
 	];
 	return Array( n ).fill( 0 ).map( ( _, i ) => {
 		const taskType = taskTypes[ Math.floor( Math.random() * 100 ) % taskTypes.length ];
@@ -57,12 +57,12 @@ QUnit.module( 'ext.growthExperiments.DataStore/NewcomerTasksStore.js', QUnit.new
 	beforeEach() {
 		const getOptionsStub = this.sandbox.stub( mw.user.options, 'get' );
 		getOptionsStub.withArgs( 'growthexperiments-homepage-se-filters' ).returns(
-			JSON.stringify( [ 'copyedit' ] )
+			JSON.stringify( [ 'copyedit' ] ),
 		);
 		getOptionsStub.withArgs( 'growthexperiments-homepage-se-ores-topic-filters' ).returns(
-			JSON.stringify( [ 'architecture' ] )
+			JSON.stringify( [ 'architecture' ] ),
 		);
-	}
+	},
 } ) );
 
 QUnit.test( 'should set initial states based on configuration values and user preferences', function ( assert ) {
@@ -84,7 +84,7 @@ QUnit.test( 'should return states about the task queue', function ( assert ) {
 	const taskQueue = ( [
 		getTaskData( '1', 'copyedit' ),
 		getTaskData( '2', 'references' ),
-		getTaskData( '3', 'copyedit' )
+		getTaskData( '3', 'copyedit' ),
 	] );
 	tasksStore.setTaskQueue( taskQueue );
 
@@ -122,7 +122,7 @@ QUnit.test( 'should emit taskQueueChanged event with showPreviousTask', function
 	const spy = this.sandbox.spy( tasksStore, 'emit' );
 	tasksStore.setTaskQueue( [
 		getTaskData( '1', 'copyedit' ),
-		getTaskData( '2', 'references' )
+		getTaskData( '2', 'references' ),
 	] );
 	tasksStore.currentTaskIndex = 1;
 	tasksStore.showPreviousTask();
@@ -135,7 +135,7 @@ QUnit.test( 'should emit taskQueueChanged event with showNextTask', function ( a
 	const spy = this.sandbox.spy( tasksStore, 'emit' );
 	tasksStore.setTaskQueue( [
 		getTaskData( '1', 'copyedit' ),
-		getTaskData( '2', 'references' )
+		getTaskData( '2', 'references' ),
 	] );
 	tasksStore.showNextTask();
 	assert.true( spy.calledWith( EVENT_TASK_QUEUE_CHANGED ) );
@@ -148,7 +148,7 @@ QUnit.test( 'should fetch more tasks when the end of the task queue is reached',
 	fetchMoreTasksStub.returns( $.Deferred().resolve() );
 	tasksStore.setTaskQueue( [
 		getTaskData( '1', 'copyedit' ),
-		getTaskData( '2', 'references' )
+		getTaskData( '2', 'references' ),
 	] );
 	tasksStore.showNextTask();
 	assert.true( onFetchedMoreTasksSpy.firstCall.calledWithExactly( true ) );
@@ -160,7 +160,7 @@ QUnit.test( 'should emit an event when the task queue is replaced', function ( a
 	const spy = this.sandbox.spy( tasksStore, 'emit' );
 	tasksStore.setTaskQueue( [
 		getTaskData( '1', 'copyedit' ),
-		getTaskData( '2', 'references' )
+		getTaskData( '2', 'references' ),
 	] );
 	assert.strictEqual( spy.firstCall.args[ 0 ], EVENT_TASK_QUEUE_CHANGED );
 } );
@@ -173,7 +173,7 @@ QUnit.test( 'should preload extra data for the next task in the queue when showi
 	tasksStore.setTaskQueue( [
 		getTaskData( '1', 'copyedit' ),
 		getTaskData( '2', 'references' ),
-		getTaskData( '3', 'references' )
+		getTaskData( '3', 'references' ),
 	] );
 	tasksStore.showNextTask();
 	assert.strictEqual( stub.callCount, 1 );
@@ -207,7 +207,7 @@ QUnit.test( 'should set the preloaded task in the task queue', ( assert ) => {
 
 QUnit.test( 'should set the task queue and update the taskCount when preloaded tasks are lesser than the api page size', function ( assert ) {
 	this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
-		taskCount: 6
+		taskCount: 6,
 	} );
 	const tasksStore = new NewcomerTasksStore( store );
 	const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
@@ -227,7 +227,7 @@ QUnit.test( 'should set the task queue and update the taskCount when preloaded t
 } );
 QUnit.test( 'should set the task queue and not update the taskCount when preloaded tasks are more than the api page size', function ( assert ) {
 	this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
-		taskCount: 31
+		taskCount: 31,
 	} );
 	const tasksStore = new NewcomerTasksStore( store );
 	const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
@@ -257,7 +257,7 @@ QUnit.test( 'should store the current states in backup with backupState', functi
 	assert.deepEqual( tasksStore.backup, {
 		taskQueue,
 		currentTaskIndex: 1,
-		taskCount: 2
+		taskCount: 2,
 	} );
 } );
 
@@ -267,7 +267,7 @@ QUnit.test( 'should restore backed up states with restoreState', function ( asse
 	const taskQueue = [
 		getTaskData( '1', 'copyedit' ),
 		getTaskData( '2', 'copyedit' ),
-		getTaskData( '3', 'copyedit' )
+		getTaskData( '3', 'copyedit' ),
 	];
 	tasksStore.setTaskQueue( taskQueue );
 	tasksStore.showNextTask();
@@ -285,7 +285,7 @@ QUnit.module( 'Actions', () => {
 		QUnit.test( 'should fetch tasks and update state using API response values', function ( assert ) {
 			const done = assert.async();
 			this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
-				taskCount: 52
+				taskCount: 52,
 			} );
 			const tasksStore = new NewcomerTasksStore( store );
 			const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
@@ -295,7 +295,7 @@ QUnit.module( 'Actions', () => {
 			this.sandbox.stub( tasksStore.api, 'fetchTasks' ).returns( $.Deferred().resolve( {
 				hasNext: true,
 				tasks: randomTaskSet( 20, qualityConfig ),
-				count: 51
+				count: 51,
 			} ) );
 			this.sandbox.spy( tasksStore, 'emit' );
 			tasksStore.fetchTasks( 'test' ).then( () => {
@@ -307,7 +307,7 @@ QUnit.module( 'Actions', () => {
 		QUnit.test( 'should fetch tasks and update the taskCount to the number of fetched tasks when the API returns less results than requested', function ( assert ) {
 			const done = assert.async();
 			this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
-				taskCount: 52
+				taskCount: 52,
 			} );
 			const tasksStore = new NewcomerTasksStore( store );
 			const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
@@ -317,7 +317,7 @@ QUnit.module( 'Actions', () => {
 			this.sandbox.stub( tasksStore.api, 'fetchTasks' ).returns( $.Deferred().resolve( {
 				hasNext: false,
 				tasks: randomTaskSet( 2, qualityConfig ),
-				count: 3
+				count: 3,
 			} ) );
 
 			tasksStore.on( EVENT_TASK_QUEUE_CHANGED, () => {
@@ -337,13 +337,13 @@ QUnit.module( 'Actions', () => {
 			const tasks = [
 				getTaskData( 'exclude', 'copyedit', excludePageId ),
 				getTaskData( '1', 'copyedit' ),
-				getTaskData( '2', 'copyedit' )
+				getTaskData( '2', 'copyedit' ),
 			];
 			fetchTasksStub.returns( $.Deferred().resolve( { tasks: tasks.slice( 1 ), count: 2 } ) );
 			tasksStore.fetchTasks( 'test', { excludePageId } ).then( () => {
 				assert.deepEqual( fetchTasksStub.firstCall.args[ 2 ], {
 					context: 'test',
-					excludePageIds: [ excludePageId ]
+					excludePageIds: [ excludePageId ],
 				} );
 				assert.deepEqual( tasksStore.getTaskQueue(), tasks.slice( 1 ) );
 				assert.strictEqual( tasksStore.getTaskCount(), 2 );
@@ -358,14 +358,14 @@ QUnit.module( 'Actions', () => {
 				const fetchTasksStub = this.sandbox.stub( tasksStore.api, 'fetchTasks' );
 				const qualityGateConfig = {
 					'link-recommendation': { dailyLimit: false },
-					'image-recommendation': { dailyLimit: true }
+					'image-recommendation': { dailyLimit: true },
 				};
 				const tasks = [
 					getTaskData( '1', 'copyedit', null, qualityGateConfig ),
 					getTaskData( '2', 'copyedit', null, qualityGateConfig ),
 					getTaskData( '3', 'link-recommendation', null, qualityGateConfig ),
 					getTaskData( '4', 'link-recommendation', null, qualityGateConfig ),
-					getTaskData( '5', 'image-recommendation', null, qualityGateConfig )
+					getTaskData( '5', 'image-recommendation', null, qualityGateConfig ),
 				];
 				fetchTasksStub.returns( $.Deferred().resolve( { tasks } ) );
 				tasksStore.fetchTasks( 'test', { excludeExceededQuotaTaskTypes: true } ).then( () => {
@@ -380,7 +380,7 @@ QUnit.module( 'Actions', () => {
 		QUnit.test( 'should fetch tasks and update the taskCount to the number of fetched tasks when the API response informs there are no more results', function ( assert ) {
 			const done = assert.async();
 			this.sandbox.stub( mw.config, 'get' ).withArgs( 'wgGEHomepageModuleActionData-suggested-edits' ).returns( {
-				taskCount: 32
+				taskCount: 32,
 			} );
 			const tasksStore = new NewcomerTasksStore( store );
 			const qualityConfig = { qualityGateConfig: { dailyLimit: 10 } };
@@ -391,11 +391,11 @@ QUnit.module( 'Actions', () => {
 			this.sandbox.stub( tasksStore.api, 'fetchTasks' ).onCall( 0 ).returns( $.Deferred().resolve( {
 				hasNext: true,
 				tasks: randomTaskSet( 20, qualityConfig ),
-				count: 32
+				count: 32,
 			} ) ).onCall( 1 ).returns( $.Deferred().resolve( {
 				hasNext: false,
 				tasks: randomTaskSet( 9, qualityConfig ),
-				count: 12
+				count: 12,
 			} ) );
 
 			this.sandbox.spy( tasksStore, 'emit' );

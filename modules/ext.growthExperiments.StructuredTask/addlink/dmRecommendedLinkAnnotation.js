@@ -68,7 +68,7 @@ DMRecommendedLinkAnnotation.prototype.getComparableObject = function () {
 	return {
 		type: this.getType(),
 		normalizedTitle: this.getAttribute( 'normalizedTitle' ),
-		accepted: this.isAccepted()
+		accepted: this.isAccepted(),
 	};
 };
 

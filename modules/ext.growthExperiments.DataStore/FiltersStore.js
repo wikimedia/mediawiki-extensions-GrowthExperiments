@@ -24,7 +24,7 @@ function FiltersStore() {
 		defaultTaskTypes: TaskTypesAbFilter.getDefaultTaskTypes(),
 		suggestedEditsConfig: suggestedEditsConfig,
 		aqsConfig: aqsConfig,
-		isMobile: OO.ui.isMobile()
+		isMobile: OO.ui.isMobile(),
 	} );
 	/** @property {Object} filtersPreference Task type and topic preferences */
 	this.preferences = this.api.getPreferences();
@@ -85,7 +85,7 @@ FiltersStore.prototype.getGroupedTopics = function () {
 FiltersStore.prototype.getTopicsQuery = function () {
 	if ( this.topicsEnabled ) {
 		const topicFiltersConfig = {
-			topics: this.getSelectedTopics()
+			topics: this.getSelectedTopics(),
 		};
 		if ( this.shouldUseTopicMatchMode ) {
 			topicFiltersConfig.topicsMatchMode = this.topicsMatchMode || TOPIC_MATCH_MODES.OR;
@@ -179,7 +179,7 @@ FiltersStore.prototype.savePreferences = function () {
 		topicPrefValue = prefValueHasBeenSetBefore ? JSON.stringify( [] ) : null;
 	}
 	updatedPreferences[ 'growthexperiments-homepage-se-filters' ] = JSON.stringify(
-		this.getSelectedTaskTypes()
+		this.getSelectedTaskTypes(),
 	);
 	if ( topicFilters ) {
 		updatedPreferences[ 'growthexperiments-homepage-se-topic-filters-mode' ] = topicFilters.getTopicsMatchMode();
@@ -199,7 +199,7 @@ FiltersStore.prototype.backupState = function () {
 	this.backup = {
 		topics: this.topics,
 		taskTypes: this.taskTypes,
-		topicsMatchMode: this.topicsMatchMode
+		topicsMatchMode: this.topicsMatchMode,
 	};
 };
 
@@ -241,7 +241,7 @@ FiltersStore.prototype.formatTopicGroups = function ( topicData ) {
 			grouped[ topic.groupId ] = {
 				id: topic.groupId,
 				name: topic.groupName,
-				topics: []
+				topics: [],
 			};
 		}
 		grouped[ topic.groupId ].topics.push( topic );

@@ -45,7 +45,7 @@
 			page_id: task.pageId,
 			page_title: task.title,
 			has_image: !!task.thumbnailSource,
-			ordinal_position: position || 0
+			ordinal_position: position || 0,
 		};
 		if ( task.pageviews || task.pageviews === 0 ) {
 			// This field can be null in the task object but is required by the eventgate schema

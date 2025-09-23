@@ -14,7 +14,7 @@
 						.text( mw.message(
 							config.topicMatching ?
 								'growthexperiments-homepage-suggestededits-select-other-topics-difficulty' :
-								'growthexperiments-homepage-suggestededits-select-other-difficulty'
+								'growthexperiments-homepage-suggestededits-select-other-difficulty',
 						).text() ) ) );
 	}
 

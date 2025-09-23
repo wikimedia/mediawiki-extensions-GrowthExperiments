@@ -22,7 +22,7 @@
 			// only one of these two is visible at a time, with a transition between them
 			// See HelpPanelButton.less
 			icon: 'help',
-			indicator: 'up'
+			indicator: 'up',
 		};
 		config = Object.assign( {}, defaults, config );
 		HelpPanelButton.super.call( this, config );

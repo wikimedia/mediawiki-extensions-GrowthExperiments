@@ -31,7 +31,7 @@ InviteToSuggestedEditsPanel.prototype.getMainArea = function () {
 	return [
 		$( '<div>' ).addClass( 'mw-ge-inviteToSuggestedEditsDrawer-body' )
 			.text( mw.message( 'growthexperiments-help-panel-postedit-nonsuggested-body' ).text() ),
-		$( '<div>' ).addClass( 'mw-ge-inviteToSuggestedEditsDrawer-image' )
+		$( '<div>' ).addClass( 'mw-ge-inviteToSuggestedEditsDrawer-image' ),
 	];
 };
 
@@ -41,18 +41,18 @@ InviteToSuggestedEditsPanel.prototype.getMainArea = function () {
 InviteToSuggestedEditsPanel.prototype.getFooterButtons = function () {
 	const trySuggestedEditsButtonWidget = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-help-panel-postedit-nonsuggested-try-button-text' ).text(),
-		flags: [ 'primary', 'progressive' ]
+		flags: [ 'primary', 'progressive' ],
 	} );
 	const noThanksButtonWidget = new OO.ui.ButtonWidget( {
 		label: mw.message( 'growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text' ).text(),
 		framed: false,
-		flags: [ 'progressive' ]
+		flags: [ 'progressive' ],
 	} );
 	trySuggestedEditsButtonWidget.connect( this, { click: 'trySuggestedEditsButtonClicked' } );
 	noThanksButtonWidget.connect( this, { click: 'noThanksButtonClicked' } );
 	return [ new OO.ui.HorizontalLayout( {
 		items: [ noThanksButtonWidget, trySuggestedEditsButtonWidget ],
-		classes: [ 'mw-ge-inviteToSuggestedEditsDrawer-footer' ]
+		classes: [ 'mw-ge-inviteToSuggestedEditsDrawer-footer' ],
 	} ).$element ];
 };
 

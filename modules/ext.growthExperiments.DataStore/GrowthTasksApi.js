@@ -139,7 +139,7 @@
 		const defaultConfig = {
 			getDescription: false,
 			size: this.pageSize,
-			thumbnailWidth: this.thumbnailWidth
+			thumbnailWidth: this.thumbnailWidth,
 		};
 
 		// Filter out undefined values
@@ -157,9 +157,9 @@
 			// No point in doing the query if no task types are allowed.
 			return $.Deferred().resolve( {
 				count: 0,
-				tasks: []
+				tasks: [],
 			} ).promise( {
-				abort: function () {}
+				abort: function () {},
 			} );
 		}
 
@@ -173,7 +173,7 @@
 			ggtlimit: config.size + this.lookAheadSize,
 			ggttasktypes: taskTypes,
 			formatversion: 2,
-			uselang: mw.config.get( 'wgUserLanguage' )
+			uselang: mw.config.get( 'wgUserLanguage' ),
 		};
 		if ( topicFilters && topicFilters.hasFilters() ) {
 			apiParams.ggttopics = topicFilters.getTopics();
@@ -220,7 +220,7 @@
 					token: item.token,
 					description: item.description,
 					qualityGateIds: item.qualityGateIds || [],
-					qualityGateConfig: item.qualityGateConfig || {}
+					qualityGateConfig: item.qualityGateConfig || {},
 				};
 				self.fixThumbnailWidth( task, config.thumbnailWidth );
 				self.setUrlOverride( task );
@@ -244,12 +244,12 @@
 			return {
 				hasNext: tasks.length > config.size,
 				count: data.growthtasks.totalCount,
-				tasks: tasks.slice( 0, config.size )
+				tasks: tasks.slice( 0, config.size ),
 			};
 		} );
 
 		return finalPromise.catch( this.handleError.bind( this ) ).promise( {
-			abort: actionApiPromise.abort.bind( actionApiPromise )
+			abort: actionApiPromise.abort.bind( actionApiPromise ),
 		} );
 	};
 
@@ -280,7 +280,7 @@
 			apiUrlBase = this.suggestedEditsConfig.GERestbaseUrl;
 
 		config = Object.assign( {
-			thumbnailWidth: this.thumbnailWidth
+			thumbnailWidth: this.thumbnailWidth,
 		}, config || {} );
 
 		if ( task.extract !== undefined ) {
@@ -396,7 +396,7 @@
 			}
 			return new TopicFilters( {
 				topics: topicsPreference,
-				topicsMatchMode: topicsMatchModePreference
+				topicsMatchMode: topicsMatchModePreference,
 			} );
 		}
 
@@ -414,7 +414,7 @@
 		taskTypes = taskTypes.filter( ( taskType ) => taskType in this.taskTypes );
 		return {
 			taskTypes: taskTypes,
-			topicFilters: topicFilters
+			topicFilters: topicFilters,
 		};
 	};
 
@@ -506,8 +506,8 @@
 				operation: name,
 				context: normalizeLabelForStats( originalContext ),
 				platform: platform,
-				wiki: mw.config.get( 'wgDBname' )
-			}
+				wiki: mw.config.get( 'wgDBname' ),
+			},
 		);
 	};
 

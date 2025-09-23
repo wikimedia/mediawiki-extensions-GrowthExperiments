@@ -12,6 +12,17 @@
 				"wikimedia/language/es6",
 				"wikimedia/mediawiki"
 			]
+		},
+		{
+			"files": [
+				"**/*.js"
+			],
+			"rules": {
+				"comma-dangle": [
+					"error",
+					"always-multiline"
+				]
+			}
 		}
 	]
 }

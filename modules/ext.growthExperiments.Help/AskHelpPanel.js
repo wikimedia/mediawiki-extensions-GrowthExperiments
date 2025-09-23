@@ -14,7 +14,7 @@
 function AskHelpPanel( config ) {
 	AskHelpPanel.super.call( this, {
 		padded: true,
-		expanded: true
+		expanded: true,
 	} );
 	this.askSource = config.askSource ||
 		( mw.config.get( 'wgGEHelpPanelAskMentor' ) ? 'mentor-helppanel' : 'helpdesk' );
@@ -43,39 +43,39 @@ AskHelpPanel.prototype.buildContent = function () {
 		value: mw.storage.get( this.storageKey ),
 		spellcheck: true,
 		required: true,
-		autofocus: !OO.ui.isMobile()
+		autofocus: !OO.ui.isMobile(),
 	} ).connect( this, { change: 'onTextInputChange' } );
 
 	this.questionIncludeTitleCheckbox = new OO.ui.CheckboxInputWidget( {
 		value: 1,
-		selected: this.questionPosterAllowIncludingTitle
+		selected: this.questionPosterAllowIncludingTitle,
 	} );
 
 	// Checkbox for whether to include page with question
 	this.questionIncludeFieldLayout = new OO.ui.FieldLayout(
 		this.questionIncludeTitleCheckbox, {
 			label: mw.message(
-				'growthexperiments-help-panel-questionreview-include-article-title'
+				'growthexperiments-help-panel-questionreview-include-article-title',
 			).text(),
 			align: 'inline',
 			// The page title is shown via FieldLayout's help text.
 			helpInline: true,
-			help: this.relevantTitle ? this.relevantTitle.getPrefixedText() : ''
-		}
+			help: this.relevantTitle ? this.relevantTitle.getPrefixedText() : '',
+		},
 	);
 
 	content.addItems( [
 		new OO.ui.LabelWidget( {
-			label: this.$askhelpHeader
+			label: this.$askhelpHeader,
 		} ),
 		new OO.ui.FieldLayout(
 			this.askhelpTextInput, {
 				label: $( '<strong>' ).text(
-					mw.message( 'growthexperiments-help-panel-questionreview-label' ).text()
+					mw.message( 'growthexperiments-help-panel-questionreview-label' ).text(),
 				),
-				align: 'top'
+				align: 'top',
 			} ),
-		this.questionIncludeFieldLayout
+		this.questionIncludeFieldLayout,
 	] );
 
 	this.$element
@@ -83,7 +83,7 @@ AskHelpPanel.prototype.buildContent = function () {
 			'mw-ge-askHelpPanel',
 			OO.ui.isMobile() ?
 				'mw-ge-askHelpPanel-mobile' :
-				'mw-ge-askHelpPanel-desktop'
+				'mw-ge-askHelpPanel-desktop',
 		] )
 		.append( [ content.$element, this.getCopyrightWarning() ] );
 };
@@ -100,7 +100,7 @@ AskHelpPanel.prototype.initializeHelpDeskProperties = function () {
 		mw.message( 'growthexperiments-help-panel-questionreview-title' ).text();
 	this.$askhelpHeader = $( '<p>' ).append(
 		mw.message( 'growthexperiments-help-panel-questionreview-header',
-			$( linksConfig.helpDeskLink ), mw.user.getName() ).parse()
+			$( linksConfig.helpDeskLink ), mw.user.getName() ).parse(),
 	);
 	this.questionCompleteConfirmationText =
 		mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text();
@@ -136,7 +136,7 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 
 	this.panelTitleMessages[ 'ask-help' ] =
 		mw.message(
-			'growthexperiments-homepage-mentorship-dialog-title', mentorName, userName
+			'growthexperiments-homepage-mentorship-dialog-title', mentorName, userName,
 		).text();
 	this.panelTitleMessages.questioncomplete =
 		mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text();
@@ -148,7 +148,7 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 		.attr( {
 			href: mw.Title.newFromText( mentorName, 3 ).getUrl(),
 			target: '_blank',
-			'data-link-id': 'mentor-talk'
+			'data-link-id': 'mentor-talk',
 		} )
 		.text( mentorTalkLinkText );
 	this.$askhelpHeader = $( '<div>' );
@@ -160,10 +160,10 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 					$( '<strong>' ).append(
 						mw.message(
 							'growthexperiments-homepage-mentorship-questionreview-header-away',
-							primaryMentorName, primaryMentorGender, backAt
-						).parse()
-					)
-				)
+							primaryMentorName, primaryMentorGender, backAt,
+						).parse(),
+					),
+				),
 			);
 		} else {
 			this.$askhelpHeader.append(
@@ -171,30 +171,30 @@ AskHelpPanel.prototype.initializeMentorProperties = function () {
 					$( '<strong>' ).append(
 						mw.message(
 							'growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp',
-							primaryMentorName, primaryMentorGender
-						).parse()
-					)
-				)
+							primaryMentorName, primaryMentorGender,
+						).parse(),
+					),
+				),
 			);
 		}
 		this.$askhelpHeader.append(
 			$( '<p>' ).append(
 				mw.message(
 					'growthexperiments-homepage-mentorship-questionreview-header-away-another-mentor',
-					mentorName, mentorGender
-				).parse()
-			)
+					mentorName, mentorGender,
+				).parse(),
+			),
 		);
 	}
 	this.$askhelpHeader.append( $( '<p>' ).append(
 		mw.message( 'growthexperiments-homepage-mentorship-questionreview-header',
-			mentorName, userName, $mentorTalkLink ).parse()
+			mentorName, userName, $mentorTalkLink ).parse(),
 	) );
 	this.questionCompleteConfirmationText = mw.message(
-		'growthexperiments-homepage-mentorship-confirmation-text', mentorName, userName
+		'growthexperiments-homepage-mentorship-confirmation-text', mentorName, userName,
 	).text();
 	this.viewQuestionText = mw.message(
-		'growthexperiments-homepage-mentorship-view-question-text', mentorName, userName
+		'growthexperiments-homepage-mentorship-view-question-text', mentorName, userName,
 	).text();
 	this.submitFailureMessage = mw.message( 'growthexperiments-help-panel-question-post-error',
 		$mentorTalkLink ).parse();
@@ -290,7 +290,7 @@ AskHelpPanel.prototype.getPostData = function () {
 		relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ?
 			this.relevantTitle.getPrefixedText() :
 			'',
-		body: this.askhelpTextInput.getValue()
+		body: this.askhelpTextInput.getValue(),
 	};
 };
 

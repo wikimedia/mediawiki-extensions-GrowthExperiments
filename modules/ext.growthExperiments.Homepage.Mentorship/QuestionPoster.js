@@ -58,8 +58,8 @@
 		const loggerInstance = new Help.HelpPanelLogger(
 			{
 				context: config.context,
-				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' )
-			}
+				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' ),
+			},
 		);
 		const windowManagerInstance = new OO.ui.WindowManager( { modal: true } );
 		suggestedEditSession.helpPanelShouldBeLocked = true;
@@ -71,7 +71,7 @@
 			suggestedEditSession: suggestedEditSession,
 			showCogMenu: false,
 			askSource: 'mentor-homepage',
-			isQuestionPoster: true
+			isQuestionPoster: true,
 		}, config.dialog ) );
 		const ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
 
@@ -81,13 +81,13 @@
 			questionRoute,
 			windowManagerInstance,
 			dialogInstance,
-			loggerInstance
+			loggerInstance,
 		);
 		closeWindowOnHashChange(
 			routerInstance,
 			questionRoute,
 			windowManagerInstance,
-			dialogInstance
+			dialogInstance,
 		);
 		ctaButton.on( 'click', () => {
 			routerInstance.navigate( '#' + questionRoute );

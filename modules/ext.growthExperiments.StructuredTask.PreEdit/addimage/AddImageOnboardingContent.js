@@ -35,17 +35,17 @@ module.exports = ( function () {
 	function getIntroContent() {
 		const paragraphs = [
 			makeParagraph( mw.message(
-				'growthexperiments-addimage-onboarding-content-intro-body-paragraph1'
+				'growthexperiments-addimage-onboarding-content-intro-body-paragraph1',
 			).text() ),
 			makeParagraph( mw.message(
-				'growthexperiments-addimage-onboarding-content-intro-body-paragraph2'
+				'growthexperiments-addimage-onboarding-content-intro-body-paragraph2',
 			).text() ),
 			makeParagraph( mw.message(
-				'growthexperiments-addimage-onboarding-content-intro-body-paragraph3'
+				'growthexperiments-addimage-onboarding-content-intro-body-paragraph3',
 			).text(), [
 				'addimage-onboarding-content-paragraph--italic',
-				'addimage-onboarding-content-paragraph--subtext'
-			] )
+				'addimage-onboarding-content-paragraph--subtext',
+			] ),
 		];
 		return $( '<div>' ).append( paragraphs );
 	}
@@ -59,12 +59,12 @@ module.exports = ( function () {
 		return $( '<div>' ).append( [
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1' )
-				.text()
+				.text(),
 			),
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2' )
-				.text()
-			)
+				.text(),
+			),
 		] );
 	}
 
@@ -76,8 +76,8 @@ module.exports = ( function () {
 	function getArticleContent() {
 		return $( '<div>' ).append(
 			makeParagraph( mw.message(
-				'growthexperiments-addimage-onboarding-content-article-body'
-			).text() )
+				'growthexperiments-addimage-onboarding-content-article-body',
+			).text() ),
 		);
 	}
 
@@ -90,12 +90,12 @@ module.exports = ( function () {
 		return $( '<div>' ).append( [
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-decision-body-paragraph1' )
-				.text()
+				.text(),
 			),
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-decision-body-paragraph2' )
-				.text()
-			)
+				.text(),
+			),
 		] );
 	}
 
@@ -107,36 +107,36 @@ module.exports = ( function () {
 		panelData = {
 			intro: {
 				title: mw.message(
-					'growthexperiments-addimage-onboarding-content-intro-title'
+					'growthexperiments-addimage-onboarding-content-intro-title',
 				).text(),
 				$content: getIntroContent(),
 				heroImageClassName: 'addimage-onboarding-content-image1' + heroImageModifier,
-				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-intro-image-alt-text' ).text()
+				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-intro-image-alt-text' ).text(),
 			},
 			imageDetails: {
 				title: mw.message(
-					'growthexperiments-addimage-onboarding-content-imagedetails-title'
+					'growthexperiments-addimage-onboarding-content-imagedetails-title',
 				).text(),
 				$content: getImageDetailsContent(),
 				heroImageClassName: 'addimage-onboarding-content-image2' + heroImageModifier,
-				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-imagedetails-image-alt-text' ).text()
+				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-imagedetails-image-alt-text' ).text(),
 			},
 			article: {
 				title: mw.message(
-					'growthexperiments-addimage-onboarding-content-article-title'
+					'growthexperiments-addimage-onboarding-content-article-title',
 				).text(),
 				$content: getArticleContent(),
 				heroImageClassName: 'addimage-onboarding-content-image3' + heroImageModifier,
-				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-article-image-alt-text' ).text()
+				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-article-image-alt-text' ).text(),
 			},
 			decision: {
 				title: mw.message(
-					'growthexperiments-addimage-onboarding-content-decision-title'
+					'growthexperiments-addimage-onboarding-content-decision-title',
 				).text(),
 				$content: getDecisionContent(),
 				heroImageClassName: 'addimage-onboarding-content-image4' + heroImageModifier,
-				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-decision-image-alt-text' ).text()
-			}
+				heroImageAltText: mw.message( 'growthexperiments-addimage-onboarding-content-decision-image-alt-text' ).text(),
+			},
 		};
 	}
 
@@ -167,8 +167,8 @@ module.exports = ( function () {
 				createPanelFromData( panelData.intro ),
 				createPanelFromData( panelData.imageDetails ),
 				createPanelFromData( panelData.article ),
-				createPanelFromData( panelData.decision )
+				createPanelFromData( panelData.decision ),
 			];
-		}
+		},
 	};
 }() );

@@ -26,8 +26,8 @@
 				{
 					// eslint-disable-next-line camelcase
 					navigation_type: navigationEntries[ 0 ].type,
-					wiki: mw.config.get( 'wgDBname' )
-				}
+					wiki: mw.config.get( 'wgDBname' ),
+				},
 			);
 
 			const sizeBytes = navigationEntries[ 0 ].transferSize;
@@ -40,7 +40,7 @@
 				mw.track(
 					'stats.mediawiki_GrowthExperiments_homepage_transfersize_bytes_total',
 					1,
-					{ bucket }
+					{ bucket },
 				);
 			}
 		}
@@ -49,8 +49,8 @@
 				'stats.mediawiki_GrowthExperiments_paint_start_seconds',
 				performanceEntries[ 0 ].startTime,
 				{
-					platform: OO.ui.isMobile() ? 'mobile' : 'desktop'
-				}
+					platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
+				},
 			);
 		}
 	}

@@ -44,7 +44,7 @@
 			action: 'homepagequestionstore',
 			storage: storage,
 			uselang: mw.config.get( 'wgUserLanguage' ),
-			formatversion: 2
+			formatversion: 2,
 		} )
 			.then( ( data ) => {
 				if ( !data.homepagequestionstore ) {
@@ -70,7 +70,7 @@
 				updateQuestionsCountInModuleActionData(
 					moduleName,
 					unarchivedCount,
-					archivedCount
+					archivedCount,
 				);
 				updateHomepageModuleHtml( moduleName, questionsSelector, questionStoreHtml );
 			} );

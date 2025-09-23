@@ -27,7 +27,7 @@ function AddImageCaptionInfoDialog() {
 		'mw-ge-addImageCaptionInfoDialog',
 		OO.ui.isMobile() ?
 			'mw-ge-addImageCaptionInfoDialog-mobile' :
-			'mw-ge-addImageCaptionInfoDialog-desktop'
+			'mw-ge-addImageCaptionInfoDialog-desktop',
 	] );
 }
 
@@ -36,7 +36,7 @@ OO.inheritClass( AddImageCaptionInfoDialog, StructuredTaskMessageDialog );
 AddImageCaptionInfoDialog.static.name = 'addImageCaptionInfo';
 
 AddImageCaptionInfoDialog.static.title = mw.message(
-	'growthexperiments-addimage-caption-info-dialog-title'
+	'growthexperiments-addimage-caption-info-dialog-title',
 ).text();
 
 AddImageCaptionInfoDialog.static.size = OO.ui.isMobile() ? 'small' : 'medium';
@@ -49,24 +49,24 @@ AddImageCaptionInfoDialog.static.message = function () {
 		$guidelines = $( '<ul>' ).addClass( 'mw-ge-addImageCaptionInfoDialog-list' ),
 		guidelineItems = [
 			mw.message(
-				'growthexperiments-addimage-caption-info-dialog-guidelines-review'
+				'growthexperiments-addimage-caption-info-dialog-guidelines-review',
 			).parse(),
 			mw.message(
-				'growthexperiments-addimage-caption-info-dialog-guidelines-describe'
+				'growthexperiments-addimage-caption-info-dialog-guidelines-describe',
 			).params( [ articleTitle ] ).parse(),
 			mw.message(
-				'growthexperiments-addimage-caption-info-dialog-guidelines-neutral'
-			).parse()
+				'growthexperiments-addimage-caption-info-dialog-guidelines-neutral',
+			).parse(),
 		];
 
 	let languageGuideline;
 	if ( contentLanguageName ) {
 		languageGuideline = mw.message(
-			'growthexperiments-addimage-caption-info-dialog-guidelines-language'
+			'growthexperiments-addimage-caption-info-dialog-guidelines-language',
 		).params( [ contentLanguageName ] ).parse();
 	} else {
 		languageGuideline = mw.message(
-			'growthexperiments-addimage-caption-info-dialog-guidelines-language-generic'
+			'growthexperiments-addimage-caption-info-dialog-guidelines-language-generic',
 		).parse();
 	}
 	guidelineItems.push( languageGuideline );
@@ -75,9 +75,9 @@ AddImageCaptionInfoDialog.static.message = function () {
 	} );
 	return $( '<div>' ).append( [
 		mw.message( 'growthexperiments-addimage-caption-info-dialog-message' ).params(
-			[ articleTitle ]
+			[ articleTitle ],
 		).parse(),
-		$guidelines
+		$guidelines,
 	] );
 };
 
@@ -85,9 +85,9 @@ AddImageCaptionInfoDialog.static.actions = [
 	{
 		action: 'accept',
 		label: mw.message(
-			'growthexperiments-addimage-caption-info-dialog-confirm'
-		).text()
-	}
+			'growthexperiments-addimage-caption-info-dialog-confirm',
+		).text(),
+	},
 ];
 
 /**
@@ -107,7 +107,7 @@ AddImageCaptionInfoDialog.prototype.setupDismissField = function ( data ) {
 
 	this.checkBoxInput = new OO.ui.CheckboxInputWidget( {
 		selected: false,
-		value: 'dismissCaptionOnboarding'
+		value: 'dismissCaptionOnboarding',
 	} );
 	this.checkBoxInput.on( 'change', ( isSelected ) => {
 		new mw.Api().saveOption( self.CAPTION_ONBOARDING_PREF, isSelected ? '1' : '0' );
@@ -116,10 +116,10 @@ AddImageCaptionInfoDialog.prototype.setupDismissField = function ( data ) {
 	// need to be shown at all during the flow, it's not set up
 	this.dismissField = new OO.ui.FieldLayout( this.checkBoxInput, {
 		label: mw.message(
-			'growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox'
+			'growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox',
 		).text(),
 		align: 'inline',
-		classes: [ 'mw-ge-addImageCaptionInfoDialog-dismiss-field' ]
+		classes: [ 'mw-ge-addImageCaptionInfoDialog-dismiss-field' ],
 	} );
 	this.text.$element.append( this.dismissField.$element );
 	this.dismissField.toggle( shouldShowDismissField );

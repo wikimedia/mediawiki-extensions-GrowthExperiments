@@ -18,7 +18,7 @@ function AddLinkSaveDialog() {
 	this.logger = new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: OO.ui.isMobile(),
-		active_interface: 'editsummary_dialog'
+		active_interface: 'editsummary_dialog',
 		/* eslint-enable camelcase */
 	} );
 }
@@ -35,7 +35,7 @@ OO.mixinClass( AddLinkSaveDialog, StructuredTaskSaveDialog );
  */
 AddLinkSaveDialog.prototype.getSuggestionStateHeader = function () {
 	return $( '<th>' ).text(
-		mw.message( 'growthexperiments-addlink-summary-column-header-linked' ).text()
+		mw.message( 'growthexperiments-addlink-summary-column-header-linked' ).text(),
 	);
 };
 
@@ -48,8 +48,8 @@ AddLinkSaveDialog.prototype.getSummaryTableHeader = function () {
 	const $suggestionCol = $( '<th>' ).append(
 		new OO.ui.IconWidget( { icon: 'robot-black' } ).$element,
 		$( '<span>' ).addClass( 'aligner' ).text(
-			mw.message( 'growthexperiments-addlink-summary-column-header-suggestion' ).text()
-		)
+			mw.message( 'growthexperiments-addlink-summary-column-header-suggestion' ).text(),
+		),
 	);
 	return [ $suggestionCol, this.getSuggestionStateHeader() ];
 };
@@ -65,16 +65,16 @@ AddLinkSaveDialog.prototype.initialize = function () {
 	this.$summaryTable = $( '<table>' ).addClass( 'ge-addlink-mwSaveDialog-summaryTable' );
 	this.$summaryTable.append(
 		$( '<caption>' ).text(
-			mw.message( 'growthexperiments-addlink-summary-title' ).text()
+			mw.message( 'growthexperiments-addlink-summary-title' ).text(),
 		),
 		$( '<thead>' ).append(
-			$( '<tr>' ).append( this.getSummaryTableHeader() )
+			$( '<tr>' ).append( this.getSummaryTableHeader() ),
 		),
-		this.$summaryTableBody
+		this.$summaryTableBody,
 	);
 
 	this.$copyrightFooter = $( '<p>' ).addClass( 'ge-structuredTask-copyrightwarning' ).append(
-		mw.message( 'growthexperiments-addlink-summary-copyrightwarning' ).parse()
+		mw.message( 'growthexperiments-addlink-summary-copyrightwarning' ).parse(),
 	);
 	this.$copyrightFooter.find( 'a' ).attr( 'target', '_blank' );
 	this.$watchlistFooter = $( '<div>' );
@@ -82,7 +82,7 @@ AddLinkSaveDialog.prototype.initialize = function () {
 	this.savePanel.$element.append(
 		this.$summaryTable,
 		this.$watchlistFooter,
-		this.$copyrightFooter
+		this.$copyrightFooter,
 	);
 };
 
@@ -106,11 +106,11 @@ AddLinkSaveDialog.prototype.updateSummary = function ( annotationStates ) {
 				mw.html.escape( state.text ),
 				mw.message( 'colon-separator' ).parse(),
 				new OO.ui.IconWidget( { icon: 'link' } ).$element,
-				mw.html.escape( state.title )
+				mw.html.escape( state.title ),
 			).addClass( 'ge-addlink-mwSaveDialog-table-data' ),
 			$( '<td>' ).append(
-				$icon
-			).addClass( 'ge-addlink-mwSaveDialog-table-data' )
+				$icon,
+			).addClass( 'ge-addlink-mwSaveDialog-table-data' ),
 		);
 	} );
 	this.$summaryTableBody.empty().append.apply( this.$summaryTableBody, $rows );
@@ -141,7 +141,7 @@ AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
 		// Edit summary will be localized in the content language via FormatAutocomments hook
 		this.editSummaryInput.setValue(
 			'/* growthexperiments-addlink-summary-summary:' +
-			acceptedCount + '|' + rejectedCount + '|' + skippedCount + ' */'
+			acceptedCount + '|' + rejectedCount + '|' + skippedCount + ' */',
 		);
 		this.$watchlistFooter.empty();
 		if ( acceptedCount ) {
@@ -151,7 +151,7 @@ AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
 			/* eslint-disable camelcase */
 			accepted_count: acceptedCount,
 			rejected_count: rejectedCount,
-			skipped_count: skippedCount
+			skipped_count: skippedCount,
 			/* eslint-enable camelcase */
 		} );
 	}, this );

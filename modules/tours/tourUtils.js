@@ -68,11 +68,11 @@
 				// placed some hardcoded number of pixels away from the edge. For a small target
 				// like the notification icon, it's not even pointing to the right icon. Use an
 				// offset to center it on the icon.
-				left: isVectorCompactPersonalToolbar ? getLeftOffset( targetSelector ) : null
+				left: isVectorCompactPersonalToolbar ? getLeftOffset( targetSelector ) : null,
 			};
 
 			return tourStep;
-		}
+		},
 	};
 
 }() );

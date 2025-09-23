@@ -31,7 +31,7 @@ SuggestedEditPagerWidget.prototype.setMessage = function ( currentPosition, tota
 	const totalCountText = mw.language.convertNumber( totalCount );
 
 	this.$element.html( mw.message(
-		'growthexperiments-homepage-suggestededits-pager', currentPositionText, totalCountText
+		'growthexperiments-homepage-suggestededits-pager', currentPositionText, totalCountText,
 	).parse() );
 };
 

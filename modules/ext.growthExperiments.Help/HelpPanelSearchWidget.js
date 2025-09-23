@@ -23,13 +23,13 @@
 			autocomplete: false,
 			// We are not using the query rewrite feature ("Did you mean...?").
 			// Enabling spellcheck may help get better results by having fewer typos
-			spellcheck: true
+			spellcheck: true,
 		} );
 
 		this.searchResultsPanel = new OO.ui.Widget();
 
 		this.$noResultsMessage = $( '<p>' ).text(
-			mw.message( 'growthexperiments-help-panel-search-no-results' ).text()
+			mw.message( 'growthexperiments-help-panel-search-no-results' ).text(),
 		);
 
 		this.searchInput.$input.on( 'focus', ( event ) => {
@@ -104,16 +104,16 @@
 				srnamespace: this.searchNamespaces,
 				srwhat: 'text',
 				srprop: 'snippet',
-				srsearch: query
+				srsearch: query,
 			} ).then( ( response ) => {
 				this.logger.log( 'search', {
 					queryLength: query.length,
-					resultCount: response.query.search.length
+					resultCount: response.query.search.length,
 				} );
 				this.searchResultsPanel.$element.empty();
 				if ( response.query.search.length ) {
 					this.searchResultsPanel.$element.append(
-						response.query.search.map( this.buildSearchResult )
+						response.query.search.map( this.buildSearchResult ),
 					);
 				} else {
 					this.searchResultsPanel.$element.append( this.$noResultsMessage );
@@ -131,7 +131,7 @@
 				.attr( {
 					href: title.getUrl(),
 					target: '_blank',
-					'data-link-id': 'search-result-' + ( index + 1 )
+					'data-link-id': 'search-result-' + ( index + 1 ),
 				} ),
 			$snippet = $( '<div>' ).append( result.snippet + mw.message( 'ellipsis' ).escaped() );
 

@@ -4,7 +4,7 @@
 	const AdaptiveSelectWidget = require( '../ui-components/AdaptiveSelectWidget.js' ),
 		HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
-			mw.config.get( 'wgGEHomepagePageviewToken' )
+			mw.config.get( 'wgGEHomepagePageviewToken' ),
 		);
 
 	/**
@@ -29,8 +29,8 @@
 		{
 			flags: 'safe',
 			label: mw.msg( 'growthexperiments-homepage-mentorship-optout-confirmation-done' ),
-			action: 'done'
-		}
+			action: 'done',
+		},
 	];
 
 	/**
@@ -39,7 +39,7 @@
 	 * @type {string[]}
 	 */
 	MentorshipOptoutReasonDialog.static.optoutReasons = [
-		'different-mentor', 'no-mentor', 'other'
+		'different-mentor', 'no-mentor', 'other',
 	];
 
 	/** @inheritDoc **/
@@ -52,11 +52,11 @@
 			// * growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor
 			// * growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor
 			// * growthexperiments-homepage-mentorship-optout-confirmation-reason-other
-			label: mw.msg( 'growthexperiments-homepage-mentorship-optout-confirmation-reason-' + reason )
+			label: mw.msg( 'growthexperiments-homepage-mentorship-optout-confirmation-reason-' + reason ),
 		} ) );
 		this.reasonSelect = new AdaptiveSelectWidget( {
 			options: selectOptions,
-			isMultiSelect: false
+			isMultiSelect: false,
 		} );
 		this.text.$element.append( this.reasonSelect.getElement() );
 	};
@@ -65,7 +65,7 @@
 	MentorshipOptoutReasonDialog.prototype.getActionProcess = function ( action ) {
 		if ( action === 'done' ) {
 			homepageModuleLogger.log( 'mentorship', this.mode, 'mentorship-optout', {
-				reasons: this.reasonSelect.findSelection()
+				reasons: this.reasonSelect.findSelection(),
 			} );
 		}
 

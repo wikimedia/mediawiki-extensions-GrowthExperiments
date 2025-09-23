@@ -59,10 +59,10 @@
 			{
 				action: action,
 				/* eslint-disable-next-line camelcase */
-				action_data: Utils.serializeActionData( data )
+				action_data: Utils.serializeActionData( data ),
 			},
 			this.getMetaData(),
-			metadataOverride
+			metadataOverride,
 		);
 
 		mw.track( 'event.HelpPanel', eventData );
@@ -89,7 +89,7 @@
 			user_can_edit: mw.config.get( 'wgIsProbablyEditable' ),
 			page_protection: this.getPageRestrictions(),
 			session_token: mw.user.sessionId(),
-			help_panel_session_id: this.helpPanelSessionId
+			help_panel_session_id: this.helpPanelSessionId,
 		};
 		/* eslint-enable camelcase */
 	};
@@ -220,7 +220,7 @@
 				const restrictions = mw.config.get(
 					'wgRestriction' +
 					action[ 0 ].toUpperCase() +
-					action.slice( 1 ).toLowerCase()
+					action.slice( 1 ).toLowerCase(),
 				);
 				if ( restrictions && restrictions.length ) {
 					return action + '=' + restrictions.join( ',' );

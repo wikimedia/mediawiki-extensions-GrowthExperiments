@@ -23,5 +23,5 @@ module.exports = exports = {
 	},
 	unmounted: ( el ) => {
 		document.removeEventListener( 'click', el.clickOutsideEvent, true );
-	}
+	},
 };

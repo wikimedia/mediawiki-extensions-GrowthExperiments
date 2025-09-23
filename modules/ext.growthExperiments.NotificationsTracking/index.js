@@ -12,7 +12,7 @@
 			const { ClickThroughRateInstrument } = require( 'ext.wikimediaEvents.xLab' );
 			EchoNotificationsTracker.start(
 				ClickThroughRateInstrument,
-				mw.xLab.getExperiment( 'growthexperiments-get-started-notification' )
+				mw.xLab.getExperiment( 'growthexperiments-get-started-notification' ),
 			);
 		} );
 	} );

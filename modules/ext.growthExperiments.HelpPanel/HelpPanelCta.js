@@ -41,7 +41,7 @@
 				// edit session's ID, if we are in one.
 				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' ) ||
 					suggestedEditSession.active && suggestedEditSession.clickId,
-				isSuggestedTask: suggestedEditSession.active
+				isSuggestedTask: suggestedEditSession.active,
 			} ),
 			size = OO.ui.isMobile() ? 'full' : 'small',
 			/**
@@ -54,7 +54,7 @@
 				questionPosterAllowIncludingTitle: true,
 				askHelpEnabled: askHelpEnabled,
 				taskTypeId: taskTypeId,
-				suggestedEditSession: suggestedEditSession
+				suggestedEditSession: suggestedEditSession,
 			} );
 		// FIXME the z-index stack for the p-dock menu should be revised in Minerva, meanwhile
 		// add a custom growth class to reduce in conflicting interfaces, T399864.
@@ -177,7 +177,7 @@
 		} else {
 			helpCtaButton = new HelpPanelButton( {
 				label: mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
-				href: mw.util.getUrl( configData.GEHelpPanelHelpDeskTitle )
+				href: mw.util.getUrl( configData.GEHelpPanelHelpDeskTitle ),
 			} );
 			$buttonWrapper = $( '<div>' )
 				.addClass( 'mw-ge-help-panel-cta' )
@@ -209,12 +209,12 @@
 
 			$buttonWrapper.addClass( 'mw-ge-help-panel-opened' );
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog, {
-				panel: panel
+				panel: panel,
 			} );
 			lifecycle.opening.then( () => {
 				logger.log( 'open' );
 				helpPanelProcessDialog.updateSuggestedEditSession( {
-					helpPanelShouldOpen: true
+					helpPanelShouldOpen: true,
 				} );
 				helpPanelProcessDialog.updateEditMode();
 				helpCtaButton.setOpen( true );
@@ -268,19 +268,19 @@
 					suggestedEditsPeek.getSuggestedEditsPeek(
 						'suggested-edits-mobile-peek-content',
 						taskTypeData.messages,
-						taskTypeData.difficulty
+						taskTypeData.difficulty,
 					),
 					$( '<div>' ).addClass( 'suggested-edits-mobile-peek-footer' )
 						.append(
 							$( '<a>' ).attr( {
 								href: '#',
-								class: 'suggested-edits-mobile-peek-more-about-this-edit'
+								class: 'suggested-edits-mobile-peek-more-about-this-edit',
 							} ).text(
 								mw.msg(
-									'growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit'
-								)
-							)
-						)
+									'growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit',
+								),
+							),
+						),
 				],
 				onBeforeHide: function ( drawer ) {
 					if ( !tapped ) {
@@ -293,7 +293,7 @@
 						helpCtaButton.toggle( true );
 						drawer.$el.remove();
 					}, 250 );
-				}
+				},
 			} );
 			mobilePeek.$el.find( '.suggested-edits-mobile-peek' ).on( 'click', () => {
 				tapped = true;
@@ -303,7 +303,7 @@
 				// When the mobile peek is shown, the help panel is considered "opened", so the
 				// auto-advance behavior is treated as if the help panel started out opened.
 				helpPanelProcessDialog.setGuidanceAutoAdvance(
-					helpPanelProcessDialog.shouldAutoAdvanceUponInit()
+					helpPanelProcessDialog.shouldAutoAdvanceUponInit(),
 				);
 			} );
 			document.body.appendChild( mobilePeek.$el[ 0 ] );
@@ -345,7 +345,7 @@
 				openHelpPanel(
 					guidanceAvailable ?
 						( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ) :
-						'home'
+						'home',
 				);
 			}
 		} );
@@ -370,7 +370,7 @@
 								helpPanelButton.setOpen( false );
 							}
 						} );
-					}
+					},
 				);
 			}
 
@@ -379,13 +379,13 @@
 					helpPanelProcessDialog.logger.setEditor( editor );
 					attachHelpButton( editor );
 
-				}
+				},
 			);
 			mw.hook( 'mobileFrontend.editorClosed' ).add(
 				( editor ) => {
 					helpPanelProcessDialog.logger.setEditor( editor );
 					detachHelpButton();
-				}
+				},
 			);
 
 			setupHelpButtonToggle();

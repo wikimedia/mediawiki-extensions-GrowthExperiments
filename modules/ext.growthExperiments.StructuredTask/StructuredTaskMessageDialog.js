@@ -16,7 +16,7 @@ function StructuredTaskMessageDialog( config ) {
 		'mw-ge-structuredTaskMessageDialog',
 		OO.ui.isMobile() ?
 			'mw-ge-structuredTaskMessageDialog-mobile' :
-			'mw-ge-structuredTaskMessageDialog-desktop'
+			'mw-ge-structuredTaskMessageDialog-desktop',
 	);
 	StructuredTaskMessageDialog.super.call( this, config );
 }

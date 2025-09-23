@@ -45,6 +45,18 @@
 			"env": {
 				"jest": true
 			}
+		},
+		{
+			"files": [
+				"**/*.js",
+				"**/*.vue"
+			],
+			"rules": {
+				"comma-dangle": [
+					"error",
+					"always-multiline"
+				]
+			}
 		}
 	]
 }

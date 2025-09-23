@@ -25,8 +25,8 @@ module.exports = ( function () {
 		return $( '<div>' ).addClass( 'mw-ge-machine-suggestions-mode-title' ).append( [
 			config.includeIcon ? new OO.ui.IconWidget( { icon: 'robot' } ).$element : '',
 			$( '<span>' ).addClass( 'mw-ge-machine-suggestions-mode-title-text' ).text(
-				mw.message( 'growthexperiments-structuredtask-ve-machine-suggestions-mode-title' ).text()
-			)
+				mw.message( 'growthexperiments-structuredtask-ve-machine-suggestions-mode-title' ).text(),
+			),
 		] );
 	}
 
@@ -44,7 +44,7 @@ module.exports = ( function () {
 			title: mw.message( 'growthexperiments-structuredtask-editmode-selection-label' ).text(),
 			label: mw.message( 'growthexperiments-structuredtask-editmode-selection-label' ).text(),
 			invisibleLabel: true,
-			include: editModeToolNames
+			include: editModeToolNames,
 		};
 		if ( !OO.ui.isMobile() ) {
 			editModeToolGroup.align = 'after';
@@ -79,7 +79,7 @@ module.exports = ( function () {
 		const saveGroup = {
 			name: 'save',
 			type: 'bar',
-			include: [ 'machineSuggestionsSave' ]
+			include: [ 'machineSuggestionsSave' ],
 		};
 		if ( !OO.ui.isMobile() ) {
 			saveGroup.align = 'after';
@@ -101,7 +101,7 @@ module.exports = ( function () {
 					'editmode_click',
 					'',
 					// eslint-disable-next-line camelcase
-					{ active_interface: 'machinesuggestions_mode' }
+					{ active_interface: 'machinesuggestions_mode' },
 				);
 			} );
 		}
@@ -178,7 +178,7 @@ module.exports = ( function () {
 		enableVirtualKeyboard: enableVirtualKeyboard,
 		addSaveHook: addSaveHook,
 		disableSurfacePaste: disableSurfacePaste,
-		enableSurfacePaste: enableSurfacePaste
+		enableSurfacePaste: enableSurfacePaste,
 	};
 
 }() );

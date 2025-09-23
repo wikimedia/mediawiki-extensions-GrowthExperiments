@@ -89,7 +89,7 @@
 				$pageviews
 					.text( mw.message(
 						'growthexperiments-homepage-suggestededits-pageviews',
-						mw.language.convertNumber( this.task.pageviews ) ).text()
+						mw.language.convertNumber( this.task.pageviews ) ).text(),
 					)
 					.prepend( new OO.ui.IconWidget( { icon: 'chart' } ).$element );
 			} else if ( this.task.pageviews === undefined ) {
@@ -111,7 +111,7 @@
 			$taskType.prepend( IconUtils.getIconElementForTaskType( this.taskType.iconData ) );
 			$taskType.append( $( '<span>' )
 				.addClass( 'mw-ge-small-task-card-tasktype-taskname' )
-				.text( this.taskType.messages.name )
+				.text( this.taskType.messages.name ),
 			);
 		}
 

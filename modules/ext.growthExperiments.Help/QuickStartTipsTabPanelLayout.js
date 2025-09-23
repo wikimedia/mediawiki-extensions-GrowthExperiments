@@ -11,17 +11,17 @@
 	 */
 	function QuickStartTipsTabPanelLayout( name, config ) {
 		QuickStartTipsTabPanelLayout.super.call( this, name,
-			Object.assign( { scrollable: false, expanded: false }, config )
+			Object.assign( { scrollable: false, expanded: false }, config ),
 		);
 		this.stackLayout = new OO.ui.StackLayout( {
 			continuous: true,
 			expanded: false,
-			scrollable: false
+			scrollable: false,
 		} );
 		for ( const key in config.data ) {
 			const panel = new OO.ui.PanelLayout( {
 				padded: false,
-				expanded: false
+				expanded: false,
 			} );
 			panel.$element.append( config.data[ key ] );
 			// Generate data-link-id dynamically for guidance content, which is defined in

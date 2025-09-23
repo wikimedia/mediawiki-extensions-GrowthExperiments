@@ -44,8 +44,8 @@ DMRecommendedImagePlaceholderNode.static.toDataElement = function ( domElements 
 		type: this.name,
 		attributes: {
 			width: domElements[ 0 ].getAttribute( 'data-width' ),
-			height: domElements[ 0 ].getAttribute( 'data-height' )
-		}
+			height: domElements[ 0 ].getAttribute( 'data-height' ),
+		},
 	};
 };
 

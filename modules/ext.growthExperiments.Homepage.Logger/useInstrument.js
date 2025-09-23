@@ -31,8 +31,8 @@ const useInstrument = ( streamName, schemaId ) => {
 			experiment: {
 				coordinator: 'custom',
 				assigned: Utils.getUserVariant(),
-				enrolled: 'growth-experiments'
-			}
+				enrolled: 'growth-experiments',
+			},
 		};
 		if ( actionSubtype ) {
 			// eslint-disable-next-line camelcase

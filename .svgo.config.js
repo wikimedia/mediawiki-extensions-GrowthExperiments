@@ -33,12 +33,12 @@ module.exports = {
 					collapseGroups: false, // https://github.com/svg/svgo/issues/1057
 					removeEmptyContainers: false, // https://github.com/svg/svgo/issues/1194 https://github.com/svg/svgo/issues/1618
 					convertTransform: false, // https://github.com/svg/svgo/issues/988 https://github.com/svg/svgo/issues/1021
-					inlineStyles: false // https://github.com/svg/svgo/issues/1486
-				}
-			}
+					inlineStyles: false, // https://github.com/svg/svgo/issues/1486
+				},
+			},
 		},
 		'removeRasterImages',
-		'sortAttrs'
+		'sortAttrs',
 	],
 	// Set whitespace according to Wikimedia Coding Conventions.
 	// @see https://github.com/svg/svgo/blob/main/lib/stringifier.js#L39 for available options.
@@ -47,7 +47,7 @@ module.exports = {
 		finalNewline: true,
 		// Configure the indent to tabs (default 4 spaces) used by '--pretty' here.
 		indent: '\t',
-		pretty: true
+		pretty: true,
 	},
-	multipass: true
+	multipass: true,
 };

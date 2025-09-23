@@ -34,7 +34,7 @@ AddImageMobileArticleTarget.prototype.prepareSaveWithoutShowingDialog = function
 	} );
 	this.updatePlaceholderTitle(
 		mw.message( 'growthexperiments-addimage-submitting-title' ).text(),
-		true
+		true,
 	);
 	this.toggleEditModeTool( false );
 	return promise;

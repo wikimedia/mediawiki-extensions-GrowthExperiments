@@ -46,6 +46,6 @@
 	module.exports = {
 		getLastState: getLastState,
 		setLastState: setLastState,
-		clearLastState: clearLastState
+		clearLastState: clearLastState,
 	};
 }() );

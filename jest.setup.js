@@ -24,20 +24,20 @@ function $i18nMock( key, ...args ) {
 	 */
 	return {
 		text: () => serializeArgs(),
-		parse: () => serializeArgs()
+		parse: () => serializeArgs(),
 	};
 }
 // Mock Vue plugins in test suites
 config.global.provide = {
-	i18n: $i18nMock
+	i18n: $i18nMock,
 };
 config.global.mocks = {
-	$i18n: $i18nMock
+	$i18n: $i18nMock,
 };
 config.global.directives = {
 	'i18n-html': ( el, binding ) => {
 		el.innerHTML = `${ binding.arg } (${ binding.value })`;
-	}
+	},
 };
 
 function RestMock() {}
@@ -52,35 +52,35 @@ TitleMock.prototype.getUrl = jest.fn();
 const mw = {
 	log: {
 		error: jest.fn(),
-		warn: jest.fn()
+		warn: jest.fn(),
 	},
 	config: {
 		get: jest.fn(),
-		set: jest.fn()
+		set: jest.fn(),
 	},
 	message: jest.fn( ( key ) => ( {
 		text: jest.fn( () => key ),
-		parse: jest.fn()
+		parse: jest.fn(),
 	} ) ),
 	user: {
 		getId: jest.fn(),
 		getName: jest.fn(),
 		isAnon: jest.fn().mockReturnValue( true ),
 		options: {
-			get: jest.fn()
-		}
+			get: jest.fn(),
+		},
 	},
 	language: {
 		convertNumber: jest.fn( ( x ) => x ),
 		getFallbackLanguageChain: function () {
 			return [ 'en' ];
-		}
+		},
 	},
 	Title: TitleMock,
 	util: {
-		getUrl: jest.fn()
+		getUrl: jest.fn(),
 	},
-	Rest: RestMock
+	Rest: RestMock,
 	// other mw properties as needed...
 };
 
@@ -92,7 +92,7 @@ function OOMock() {}
 OOMock.mixinClass = jest.fn();
 OOMock.EventEmitter = EventEmitterMock;
 OOMock.ui = {
-	isMobile: jest.fn()
+	isMobile: jest.fn(),
 };
 
 // Assign things to "global" here if you want them to be globally available during tests

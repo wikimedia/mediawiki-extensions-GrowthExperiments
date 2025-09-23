@@ -3,27 +3,27 @@
 jest.mock(
 	'./AQSConfig.json',
 	() => ( require( '../../tests/qunit/__mocks__/AQSConfig.json' ) ),
-	{ virtual: true }
+	{ virtual: true },
 );
 jest.mock(
 	'./config.json',
 	() => ( () => ( require( '../../tests/qunit/__mocks__/config.json' ) ) ),
-	{ virtual: true }
+	{ virtual: true },
 );
 jest.mock(
 	'./TaskTypes.json',
 	() => ( require( '../../tests/qunit/__mocks__/TaskTypes.json' ) ),
-	{ virtual: true }
+	{ virtual: true },
 );
 jest.mock(
 	'./DefaultTaskTypes.json',
 	() => ( require( '../../tests/qunit/__mocks__/DefaultTaskTypes.json' ) ),
-	{ virtual: true }
+	{ virtual: true },
 );
 jest.mock(
 	'./Topics.json',
 	() => ( require( '../../tests/qunit/__mocks__/Topics.json' ) ),
-	{ virtual: true }
+	{ virtual: true },
 );
 
 /**
@@ -44,7 +44,7 @@ const getTaskData = ( title, tasktype, pageId, qualityGateConfig ) => ( {
 	qualityGateConfig: qualityGateConfig || {},
 	url: null,
 	token: 'token-' + title,
-	pageId: pageId || Math.floor( Math.random() * 100 )
+	pageId: pageId || Math.floor( Math.random() * 100 ),
 } );
 
 /**
@@ -81,13 +81,13 @@ global.mw.config.get.mockImplementation( ( key ) => {
 				taskTypes: [
 					'copyedit',
 					'references',
-					'update'
+					'update',
 				],
 				unavailableTaskTypes: [
-					'link-recommendation'
+					'link-recommendation',
 				],
 				taskCount: 54,
-				topics: []
+				topics: [],
 			};
 		default:
 			return undefined;
@@ -110,8 +110,8 @@ describe( 'DataStore NewcomerTasksStore', () => {
 		store.api.fetchTasks = jest.fn()
 			.mockReturnValueOnce( fetchTaskStub( {
 				tasks: [
-					getTaskData( '1', 'copyedit' )
-				]
+					getTaskData( '1', 'copyedit' ),
+				],
 			}, 0 ) )
 			.mockRejectedValueOnce( 'Fail' );
 
@@ -127,22 +127,22 @@ describe( 'DataStore NewcomerTasksStore', () => {
 		store.api.fetchTasks = jest.fn()
 			.mockReturnValueOnce( fetchTaskStub( {
 				tasks: [
-					getTaskData( '1', 'copyedit' )
-				]
+					getTaskData( '1', 'copyedit' ),
+				],
 			}, 0 ) )
 			.mockReturnValueOnce( fetchTaskStub( {
 				tasks: [
 					getTaskData( '2', 'expand' ),
-					getTaskData( '3', 'links' )
-				]
+					getTaskData( '3', 'links' ),
+				],
 			}, 40 ) )
 			.mockReturnValueOnce( fetchTaskStub( {
 				tasks: [
 					getTaskData( '4', 'expand' ),
 					getTaskData( '5', 'links' ),
 					getTaskData( '6', 'expand' ),
-					getTaskData( '7', 'links' )
-				]
+					getTaskData( '7', 'links' ),
+				],
 			}, 0 ) );
 
 		store.fetchTasks( 'test1' );

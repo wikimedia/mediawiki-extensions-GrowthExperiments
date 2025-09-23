@@ -72,7 +72,7 @@ module.exports = exports = {
 		CdxIcon,
 		CdxToggleButton,
 		CdxPopover,
-		CText
+		CText,
 	},
 	props: {
 		/*
@@ -80,14 +80,14 @@ module.exports = exports = {
 		 */
 		icon: {
 			type: [ String, Object ],
-			default: null
+			default: null,
 		},
 		/*
 		 * The label for the main scorecard icon
 		 */
 		iconLabel: {
 			type: String,
-			required: true
+			required: true,
 		},
 		/*
 		 * The icon placed as inline prefix of the information
@@ -95,26 +95,26 @@ module.exports = exports = {
 		 */
 		infoHeaderIcon: {
 			type: [ String, Object ],
-			default: null
+			default: null,
 		},
 		/*
 		 * The label for the information icon
 		 */
 		infoIconLabel: {
 			type: String,
-			default: ''
+			default: '',
 		},
 		/*
 		 * The label displayed below the main scorecard icon
 		 */
 		label: {
 			type: String,
-			required: true
-		}
+			required: true,
+		},
 	},
 	emits: [
 		'close',
-		'open'
+		'open',
 	],
 	setup() {
 		const hasInfoContent = Boolean( useSlots()[ 'info-content' ] );
@@ -126,8 +126,8 @@ module.exports = exports = {
 			infoToggleButton,
 			cdxIconInfo,
 			showPopover,
-			windowName
+			windowName,
 		};
-	}
+	},
 };
 </script>

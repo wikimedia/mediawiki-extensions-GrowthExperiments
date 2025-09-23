@@ -23,7 +23,7 @@
 		SuggestedEditsPanel.super.call( this, Object.assign( {
 			expanded: false,
 			scrollable: false,
-			continuous: true
+			continuous: true,
 		}, config ) );
 		this.config = config;
 		if ( !config.taskTypeData ) {
@@ -58,28 +58,28 @@
 			padded: false,
 			expanded: false,
 			classes: [ 'suggested-edits-panel-footer' ],
-			$content: this.getFooter()
+			$content: this.getFooter(),
 		} );
 		this.switchEditorPanel = new SwitchEditorPanel( {
 			editor: this.editorInterface,
 			preferredEditor: this.preferredEditor,
-			padded: true
+			padded: true,
 		} );
 		this.headerAndTipsPanel = new OO.ui.StackLayout( {
 			padded: false,
 			expanded: false,
 			continuous: true,
 			scrollable: true,
-			classes: [ 'suggested-edits-panel-headerAndTips' ]
+			classes: [ 'suggested-edits-panel-headerAndTips' ],
 		} );
 		this.headerAndTipsPanel.$element.on( 'scroll', this.setScrolledClasses.bind( this ) );
 		this.headerPanel = new OO.ui.PanelLayout( {
 			padded: false,
 			expanded: false,
-			$content: this.getHeader()
+			$content: this.getHeader(),
 		} );
 		return quickStartTips.getTips(
-			this.taskTypeData.id, this.editorInterface, this.currentTip
+			this.taskTypeData.id, this.editorInterface, this.currentTip,
 		).then( ( tipsPanel ) => {
 			this.headerAndTipsPanel.addItems( [ this.headerPanel, this.switchEditorPanel,
 				tipsPanel ] );
@@ -126,7 +126,7 @@
 			'suggested-edits-panel-header',
 			this.taskTypeData.messages,
 			this.taskTypeData.difficulty,
-			this.taskTypeData.iconData
+			this.taskTypeData.iconData,
 		);
 	};
 
