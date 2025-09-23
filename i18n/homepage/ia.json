@@ -576,6 +576,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Tu}} ha facite $3 modification{{PLURAL:$3||es}} suggerite. Continua assi pro apprender plus nove competentias.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Facer un modification suggerite",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Optime progresso in tu modification{{PLURAL:$3||es}}! Continua a explorar suggestiones pro expander tu habilitates.{{GENDER:$2|}}",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Essayar altere modificationes",
 	"echo-category-title-ge-newcomer": "Functiones de crescimento",
 	"echo-pref-tooltip-ge-newcomer": "Notificar me sur le cargas pro novicios e altere functionalitate concipite pro adjutar nove usatores.",
 	"growthexperiments-homepage-community-updates-header": "Actualitates del communitate",
