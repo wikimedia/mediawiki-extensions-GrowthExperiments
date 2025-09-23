@@ -68,7 +68,7 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 
 	private function createUserWithEdits( ?int $editCount = 10 ): User {
 		$user = $this->getMutableTestUser( [
-			'interface-admin'
+			'interface-admin',
 		] )->getUser();
 		$this->setUserEditCount( $user, $editCount );
 		$ctx = RequestContext::getMain();

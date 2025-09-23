@@ -31,7 +31,7 @@ class NewcomerTasksLogTest extends MediaWikiIntegrationTestCase {
 		return [
 			[ 0 ],
 			[ 5 ],
-			[ 10 ]
+			[ 10 ],
 		];
 	}
 

@@ -121,7 +121,7 @@ class MenteesHandler extends SimpleHandler {
 						$nowUnix - (int)MWTimestamp::getInstance(
 							$menteeData['last_active']
 						)->getTimestamp( TS_UNIX )
-					)
+					),
 				];
 			}
 
@@ -131,7 +131,7 @@ class MenteesHandler extends SimpleHandler {
 					'human' => $context->getLanguage()->sprintfDate(
 						'Y-m-d',
 						$menteeData['registration']
-					)
+					),
 				];
 			}
 
@@ -165,7 +165,7 @@ class MenteesHandler extends SimpleHandler {
 			'totalRows' => $dataFilter->getTotalRows(),
 			'assignedMentees' => count( $allData ),
 			'limit' => $limit,
-			'offset' => $offset
+			'offset' => $offset,
 		];
 	}
 

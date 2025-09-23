@@ -34,7 +34,7 @@ class PersonalizedPraiseNotificationsDispatcherTest extends MediaWikiUnitTestCas
 
 	private function getConfig(): Config {
 		return new HashConfig( [
-			'GEPersonalizedPraiseNotificationsEnabled' => true
+			'GEPersonalizedPraiseNotificationsEnabled' => true,
 		] );
 	}
 

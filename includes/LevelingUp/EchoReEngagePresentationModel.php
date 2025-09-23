@@ -29,7 +29,7 @@ class EchoReEngagePresentationModel extends EchoEventPresentationModel {
 		return [ [
 			'url' => $this->getSpecialHomepageUrl( 're-engage-secondary-link' ),
 			'label' => $this->msg( 'growthexperiments-levelingup-reengage-notification-call-to-action-label' )->text(),
-			'icon' => 'edit'
+			'icon' => 'edit',
 		] ];
 	}
 
@@ -40,7 +40,7 @@ class EchoReEngagePresentationModel extends EchoEventPresentationModel {
 			'label' => $this->msg(
 				'growthexperiments-levelingup-reengage-notification-call-to-action-label'
 			)->text(),
-			'icon' => 'edit'
+			'icon' => 'edit',
 		];
 	}
 

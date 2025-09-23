@@ -134,7 +134,7 @@ class ExperimentUserDefaultsManager {
 		LoggerFactory::getInstance( 'GrowthExperiments' )
 			->debug( 'Suspicious evaluation of unnamed user in ExperimentsHooks closure', [
 				'exception' => new \RuntimeException,
-				'userName' => $user->getName()
+				'userName' => $user->getName(),
 			] );
 	}
 

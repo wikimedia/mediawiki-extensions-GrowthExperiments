@@ -152,7 +152,7 @@ class ApiManageMentorList extends ApiBase {
 
 				// NOTE: Legacy attribute, weight provides the same info.
 				'automaticallyAssigned' => $mentor->getWeight() !== IMentorWeights::WEIGHT_NONE,
-			]
+			],
 		] );
 	}
 
@@ -181,13 +181,13 @@ class ApiManageMentorList extends ApiBase {
 					'add',
 					'change',
 					'remove',
-				]
+				],
 			],
 			'message' => [
-				ParamValidator::PARAM_TYPE => 'string'
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 			'weight' => [
-				ParamValidator::PARAM_TYPE => array_map( 'strval', IMentorWeights::WEIGHTS )
+				ParamValidator::PARAM_TYPE => array_map( 'strval', IMentorWeights::WEIGHTS ),
 			],
 			'isaway' => [
 				ParamValidator::PARAM_TYPE => 'boolean',

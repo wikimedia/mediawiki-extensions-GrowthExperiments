@@ -75,7 +75,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 			'revision' => $questionPoster->getRevisionId(),
 			'isfirstedit' => (int)$questionPoster->isFirstEdit(),
 			'viewquestionurl' => $questionPoster->getResultUrl(),
-			'source' => $params[self::API_PARAM_SOURCE]
+			'source' => $params[self::API_PARAM_SOURCE],
 		];
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );

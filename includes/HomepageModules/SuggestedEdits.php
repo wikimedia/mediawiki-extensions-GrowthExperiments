@@ -304,7 +304,7 @@ class SuggestedEdits extends BaseModule {
 				__METHOD__ . ' called with unexpected status: {status}',
 				[
 					'status' => $status,
-					'exception' => new \RuntimeException
+					'exception' => new \RuntimeException,
 				]
 			);
 
@@ -492,7 +492,7 @@ class SuggestedEdits extends BaseModule {
 			( new Tag( 'div' ) )->addClasses( [ 'suggested-edits-task-explanation' ] )
 				->appendContent( ( new TaskExplanationWidget( [
 					'taskSet' => $this->getTaskSet(),
-					'localizer' => $this->getContext()
+					'localizer' => $this->getContext(),
 				] ) ) )
 		);
 	}
@@ -511,7 +511,7 @@ class SuggestedEdits extends BaseModule {
 			->appendContent( [
 				$this->getNavigationWidgetFactory()->getPreviousNextButtonHtml( 'Previous' ),
 				$this->getNavigationWidgetFactory()->getEditButton(),
-				$this->getNavigationWidgetFactory()->getPreviousNextButtonHtml( 'Next' )
+				$this->getNavigationWidgetFactory()->getPreviousNextButtonHtml( 'Next' ),
 			] );
 	}
 
@@ -560,10 +560,10 @@ class SuggestedEdits extends BaseModule {
 					Html::element( 'div', [ 'class' => $baseClass . '__subtitle' ], $subtitle )
 				)
 			) . Html::element( 'div', [
-				'class' => $baseClass . '__footer'
+				'class' => $baseClass . '__footer',
 			], $footerText );
 			return Html::rawElement( 'div', [
-				'class' => [ $baseClass ]
+				'class' => [ $baseClass ],
 			], $noTaskPreviewContent );
 		}
 	}
@@ -630,7 +630,7 @@ class SuggestedEdits extends BaseModule {
 				'flags' => $flags,
 				'classes' => [ 'topic-matching', 'topic-filter-button' ],
 				'indicator' => $this->getMode() === self::RENDER_DESKTOP ? null : 'down',
-				'icon' => $topicFilterMode === SearchStrategy::TOPIC_MATCH_MODE_OR ? 'funnel' : 'funnel-add'
+				'icon' => $topicFilterMode === SearchStrategy::TOPIC_MATCH_MODE_OR ? 'funnel' : 'funnel-add',
 			] );
 			if ( $addPulsatingDot ) {
 				$topicFilterButtonWidget->appendContent(
@@ -646,7 +646,7 @@ class SuggestedEdits extends BaseModule {
 			'label' => $this->getContext()->msg(
 				'growthexperiments-homepage-suggestededits-difficulty-filters-title'
 			)->text(),
-			'indicator' => $this->getMode() === self::RENDER_DESKTOP ? null : 'down'
+			'indicator' => $this->getMode() === self::RENDER_DESKTOP ? null : 'down',
 		] );
 
 		$levels = [];
@@ -756,7 +756,7 @@ class SuggestedEdits extends BaseModule {
 		return Html::rawElement( 'div',
 			// only called for mobile views
 			[ 'class' => 'mw-ge-small-task-card mw-ge-small-task-card-mobile '
-				. "mw-ge-small-task-card mw-ge-tasktype-$taskTypeId"
+				. "mw-ge-small-task-card mw-ge-tasktype-$taskTypeId",
 			],
 		$image . $cardTextContainer );
 	}
@@ -782,7 +782,7 @@ class SuggestedEdits extends BaseModule {
 			parent::getModuleStyles(),
 			[
 				'mediawiki.pulsatingdot',
-				'oojs-ui.styles.icons-editing-core'
+				'oojs-ui.styles.icons-editing-core',
 			]
 		);
 	}
@@ -872,7 +872,7 @@ class SuggestedEdits extends BaseModule {
 			'GEHomepageSuggestedEditsEnableTopics' => self::isTopicMatchingEnabled(
 				$this->getContext(),
 				$this->userOptionsLookup
-			)
+			),
 		];
 	}
 

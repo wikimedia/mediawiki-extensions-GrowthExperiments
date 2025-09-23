@@ -72,7 +72,7 @@ class CampaignConfig {
 				if ( array_key_exists( $topicId, $topicConfig ) ) {
 					$topics[] = [
 						'id' => $topicId,
-						'searchExpression' => $topicConfig[ $topicId ]
+						'searchExpression' => $topicConfig[ $topicId ],
 					];
 				}
 				return $topics;

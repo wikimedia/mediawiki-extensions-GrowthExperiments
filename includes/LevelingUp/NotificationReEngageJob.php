@@ -53,7 +53,7 @@ class NotificationReEngageJob extends AbstractDelayedNotificationJob {
 			Event::create( [
 				'type' => 're-engage',
 				'title' => $this->specialPageFactory->getTitleForAlias( 'Homepage' ),
-				'agent' => $userIdentity
+				'agent' => $userIdentity,
 			] );
 			$this->measureNotificationDelay();
 		}

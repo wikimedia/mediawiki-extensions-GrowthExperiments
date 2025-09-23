@@ -226,7 +226,7 @@ class HomepageHooks implements
 					'GrowthExperimentsCommunityConfig',
 					'UserOptionsManager',
 					'TitleFactory',
-				]
+				],
 			];
 			if ( $pageViewInfoEnabled ) {
 				$list['Impact'] = [
@@ -236,7 +236,7 @@ class HomepageHooks implements
 						'UserNameUtils',
 						'UserNamePrefixSearch',
 						'GrowthExperimentsHomepageModuleRegistry',
-					]
+					],
 				];
 			}
 			$list[ 'ClaimMentee' ] = [
@@ -245,14 +245,14 @@ class HomepageHooks implements
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsChangeMentorFactory',
 					'UserLinkRenderer',
-				]
+				],
 			];
 
 			$list[ 'NewcomerTasksInfo' ] = [
 				'class' => SpecialNewcomerTasksInfo::class,
 				'services' => [
-					'GrowthExperimentsSuggestionsInfo'
-				]
+					'GrowthExperimentsSuggestionsInfo',
+				],
 			];
 		}
 	}
@@ -451,7 +451,7 @@ class HomepageHooks implements
 				'wgGETopicsToExclude' => $this->campaignConfig->getTopicsToExcludeForUser(
 					$context->getUser()
 				),
-				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' )
+				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' ),
 			] );
 		}
 	}
@@ -614,7 +614,7 @@ class HomepageHooks implements
 		$preferences[ HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE ] = [
 			'type' => 'toggle',
 			'section' => 'personal/homepage',
-			'label-message' => HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE
+			'label-message' => HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE,
 		];
 
 		$preferences[ self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ] = [
@@ -634,44 +634,44 @@ class HomepageHooks implements
 		];
 
 		$preferences[ SuggestedEdits::TOPICS_ORES_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 
 		$preferences[ SuggestedEdits::TOPICS_MATCH_MODE_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 
 		$preferences[ SuggestedEdits::TASKTYPES_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 
 		$preferences[ SuggestedEdits::GUIDANCE_BLUE_DOT_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 
 		$preferences[ SuggestedEdits::ADD_LINK_ONBOARDING_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 
 		$preferences[ SuggestedEdits::ADD_IMAGE_ONBOARDING_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 
 		$preferences[ SuggestedEdits::ADD_IMAGE_CAPTION_ONBOARDING_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 
 		$preferences[ SuggestedEdits::ADD_SECTION_IMAGE_CAPTION_ONBOARDING_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 
 		$preferences[ SuggestedEdits::ADD_SECTION_IMAGE_ONBOARDING_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			$preferences[LevelingUpManager::TASK_TYPE_PROMPT_OPT_OUTS_PREF] = [
-				'type' => 'api'
+				'type' => 'api',
 			];
 		}
 	}
@@ -695,7 +695,7 @@ class HomepageHooks implements
 				'minerva' => [
 					LinkRecommendationTaskTypeHandler::ID => true,
 					ImageRecommendationTaskTypeHandler::ID => true,
-				]
+				],
 			] ),
 			SuggestedEdits::TOPICS_MATCH_MODE_PREF => SearchStrategy::TOPIC_MATCH_MODE_OR,
 			self::HOMEPAGE_PREF_ENABLE => false,
@@ -804,7 +804,7 @@ class HomepageHooks implements
 
 			$this->growthInteractionLogger->log( $user, 'experiment_enrollment', [
 				'action_source' => 'LocalUserCreatedHook',
-				'variant' => $variant
+				'variant' => $variant,
 			] );
 
 			$this->statsFactory
@@ -969,7 +969,7 @@ class HomepageHooks implements
 				'label' => $sp->msg( 'growthexperiments-homepage-contributions-zero-button' )
 					->params( $sp->getUser()->getName() )->text(),
 				'href' => $linkUrl,
-				'flags' => [ 'primary', 'progressive' ]
+				'flags' => [ 'primary', 'progressive' ],
 			] )
 		);
 	}
@@ -1001,7 +1001,7 @@ class HomepageHooks implements
 				->redirect( SpecialPage::getTitleFor( 'Homepage' )
 					->getFullUrlForRedirect( [
 						'source' => self::CONFIRMEMAIL_QUERY_PARAM,
-						'namespace' => NS_SPECIAL
+						'namespace' => NS_SPECIAL,
 					] )
 			);
 		}
@@ -1384,7 +1384,7 @@ class HomepageHooks implements
 					'namespace' => NS_SPECIAL,
 					// on mobile, avoids the flash of Special:Homepage before routing to the
 					// Suggested Edits overlay. On desktop, has no effect.
-					'overlay' => 1
+					'overlay' => 1,
 				] ) ),
 				$messageLocalizer->msg( 'growthexperiments-homepage-special-contribute-cta' )->text(),
 			)

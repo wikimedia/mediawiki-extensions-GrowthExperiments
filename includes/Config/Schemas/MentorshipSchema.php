@@ -65,6 +65,6 @@ class MentorshipSchema extends JsonSchema {
 				self::MINIMUM => 0,
 				self::DEFAULT => 30,
 			],
-		]
+		],
 	];
 }

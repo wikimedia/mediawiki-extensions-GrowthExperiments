@@ -90,7 +90,7 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 
 		// first run of SpecialClaimMentee successfully changes the mentor
 		/** @var string $html */
-		[ $html, ] = $this->submitChangeMentor( [
+		[ $html ] = $this->submitChangeMentor( [
 			'wpmentees' => $mentee->getName(),
 		], $mentorOne );
 		$this->assertStringContainsString( 'growthexperiments-homepage-claimmentee-success', $html );
@@ -101,7 +101,7 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 
 		// second run of SpecialClaimMentee requires confirmation
 		/** @var string $html */
-		[ $html, ] = $this->submitChangeMentor( [
+		[ $html ] = $this->submitChangeMentor( [
 			'wpmentees' => $mentee->getName(),
 		], $mentorTwo );
 		$this->assertStringContainsString( 'growthexperiments-homepage-claimmentee-alreadychanged', $html );
@@ -112,7 +112,7 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 
 		// when confirmed, mentor successfully changed
 		/** @var string $html */
-		[ $html, ] = $this->submitChangeMentor( [
+		[ $html ] = $this->submitChangeMentor( [
 			'wpmentees' => $mentee->getName(),
 			'wpstage' => 3,
 			'wpconfirm' => true,

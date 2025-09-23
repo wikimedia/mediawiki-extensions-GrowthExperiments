@@ -85,12 +85,12 @@ class TipsHandler extends SimpleHandler {
 				ParamValidator::PARAM_REQUIRED => true,
 				ParamValidator::PARAM_TYPE => array_keys(
 					$this->configurationLoader->getTaskTypes()
-				)
+				),
 			],
 			'uselang' => [
 				self::PARAM_SOURCE => 'path',
 				ParamValidator::PARAM_REQUIRED => true,
-			]
+			],
 		];
 	}
 }

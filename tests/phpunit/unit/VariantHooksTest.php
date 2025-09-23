@@ -38,7 +38,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals(
 			[
 				'growthexperiments-homepage-variant' => [ 'type' => 'api' ],
-				'growthexperiments-campaign' => [ 'type' => 'api' ]
+				'growthexperiments-campaign' => [ 'type' => 'api' ],
 			],
 			$prefs
 		);
@@ -69,7 +69,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 		);
 		$this->assertArrayEquals( [
 			VariantHooks::VARIANTS,
-			'control'
+			'control',
 		], $vars );
 	}
 

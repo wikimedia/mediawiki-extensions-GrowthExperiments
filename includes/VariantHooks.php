@@ -326,7 +326,7 @@ class VariantHooks implements
 		$campaignName = $this->campaignConfig->getCampaignIndexFromCampaignTerm( $campaignValue );
 		if ( $campaignName ) {
 			$signupPageTemplate = $this->campaignConfig->getSignupPageTemplate( $campaignName );
-			if ( in_array( $signupPageTemplate, [ 'hero', ], true ) ) {
+			if ( in_array( $signupPageTemplate, [ 'hero' ], true ) ) {
 				return true;
 			} elseif ( $signupPageTemplate !== null ) {
 				Util::logText( 'Unknown signup page template',

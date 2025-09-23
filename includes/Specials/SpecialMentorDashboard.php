@@ -100,13 +100,13 @@ class SpecialMentorDashboard extends SpecialPage {
 	private function getModuleGroups(): array {
 		return [
 			'main' => [
-				'mentee-overview'
+				'mentee-overview',
 			],
 			'sidebar' => [
 				'personalized-praise',
 				'mentor-tools',
-				'resources'
-			]
+				'resources',
+			],
 		];
 	}
 
@@ -149,7 +149,7 @@ class SpecialMentorDashboard extends SpecialPage {
 
 		$out = $this->getContext()->getOutput();
 		$out->addJsConfigVars( [
-			'wgGEMentorDashboardPageviewToken' => $this->pageviewToken
+			'wgGEMentorDashboardPageviewToken' => $this->pageviewToken,
 		] );
 
 		$out->enableOOUI();
@@ -159,7 +159,7 @@ class SpecialMentorDashboard extends SpecialPage {
 		$out->addModuleStyles( 'ext.growthExperiments.MentorDashboard.styles' );
 
 		$out->addHTML( Html::openElement( 'div', [
-			'class' => 'growthexperiments-mentor-dashboard-container'
+			'class' => 'growthexperiments-mentor-dashboard-container',
 		] ) );
 
 		$modules = $this->getModules( false );
@@ -168,7 +168,7 @@ class SpecialMentorDashboard extends SpecialPage {
 			$out->addHTML( Html::openElement(
 				'div',
 				[
-					'class' => "growthexperiments-mentor-dashboard-group-$group"
+					'class' => "growthexperiments-mentor-dashboard-group-$group",
 				]
 			) );
 
@@ -230,8 +230,8 @@ class SpecialMentorDashboard extends SpecialPage {
 			$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush( new UserOptionsUpdateJob( [
 				'userId' => $user->getId(),
 				'options' => [
-					MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 1
-				]
+					MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 1,
+				],
 			] ) );
 		} );
 	}

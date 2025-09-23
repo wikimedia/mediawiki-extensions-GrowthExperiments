@@ -100,7 +100,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 			->deleteFrom( 'user_properties' )
 			->where( [
 				'up_property' => MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF,
-				'up_user' => $toDelete
+				'up_user' => $toDelete,
 			] )
 			->caller( __METHOD__ )
 			->execute();

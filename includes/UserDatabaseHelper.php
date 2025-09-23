@@ -66,7 +66,7 @@ class UserDatabaseHelper {
 			->from( 'revision' )
 			->join( 'page', null, 'page_id = rev_page' )
 			->where( [
-				'rev_actor' => $user->getActorId()
+				'rev_actor' => $user->getActorId(),
 			] )
 			// Look at the user's oldest edits - arbitrary choice, other than we want the method to be
 			// deterministic. Can be done efficiently via the rev_actor_timestamp index.

@@ -130,7 +130,7 @@ class AddImageFeedbackHandler extends SimpleHandler {
 				ParamValidator::PARAM_REQUIRED => true,
 				TitleDef::PARAM_RETURN_OBJECT => true,
 				TitleDef::PARAM_MUST_EXIST => true,
-			]
+			],
 		];
 	}
 
@@ -175,7 +175,7 @@ class AddImageFeedbackHandler extends SimpleHandler {
 				self::PARAM_SOURCE => 'body',
 				ParamValidator::PARAM_TYPE => 'integer',
 				ParamValidator::PARAM_REQUIRED => false,
-			]
+			],
 		] + $this->getTokenParamDefinition();
 	}
 

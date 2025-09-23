@@ -157,7 +157,7 @@ class TaskTypeManager {
 		}
 		return [
 			$taskTypesToFilter,
-			$filtered
+			$filtered,
 		];
 	}
 

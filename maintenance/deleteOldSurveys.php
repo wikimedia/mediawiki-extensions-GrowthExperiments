@@ -63,7 +63,7 @@ class DeleteOldSurveys extends Maintenance {
 				->join( 'user', null, [ 'user_id = up_user' ] )
 				->where( [
 					'up_property' => WelcomeSurvey::SURVEY_PROP,
-					$dbr->expr( 'user_id', '>', $fromUserId )
+					$dbr->expr( 'user_id', '>', $fromUserId ),
 				] )
 				->orderBy( 'user_id ASC' )
 				->limit( $this->mBatchSize )

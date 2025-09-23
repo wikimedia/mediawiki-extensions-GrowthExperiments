@@ -161,7 +161,7 @@ class CommunityUpdates extends BaseModule {
 			'prop' => 'imageinfo',
 			'titles' => $fileTitle,
 			'iiprop' => 'url|size',
-			'iiurlwidth' => $thumbnailWidth
+			'iiurlwidth' => $thumbnailWidth,
 		];
 
 		$url = wfAppendQuery( $apiUrl, $params );
@@ -219,7 +219,7 @@ class CommunityUpdates extends BaseModule {
 			$link = $this->linkRenderer->makeLink( $pageTitle, $buttonText, [
 				'class' => 'ext-growthExperiments-CommunityUpdates__CallToAction__link',
 				'data-link-id' => 'community-updates-cta',
-				'data-link-data' => $pageTitle->getDBkey()
+				'data-link-data' => $pageTitle->getDBkey(),
 			] );
 		}
 
@@ -251,7 +251,7 @@ class CommunityUpdates extends BaseModule {
 		$updateTitle = strtolower( implode( "_", explode( " ", $cleanTitle ) ) );
 
 		return array_merge( parent::getActionData(), [
-			'context' => $updateTitle
+			'context' => $updateTitle,
 		] );
 	}
 

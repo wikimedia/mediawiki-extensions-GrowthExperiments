@@ -188,7 +188,7 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 	public function loadInfoboxTemplates(): array|StatusValue {
 		if ( $this->suggestedEditsConfigProvider === null ) {
 			$this->logger->debug( __METHOD__ . ': Suggested Edits config provider is null', [
-				'exception' => new \RuntimeException
+				'exception' => new \RuntimeException,
 			] );
 			return [];
 		}

@@ -42,7 +42,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		'GEUserImpactMaxArticlesToProcessForPageviews',
 		'GEUserImpactMaximumProcessTimeSeconds',
 		'GEUserImpactMaxEdits',
-		'GEUserImpactMaxThanks'
+		'GEUserImpactMaxThanks',
 	];
 
 	/**
@@ -226,7 +226,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 		$taskChangeTagNames = $this->taskTypeHandlerRegistry->getUniqueChangeTags();
 		$additionalChangeTagNames = [
-			ChangeTags::TAG_REVERTED
+			ChangeTags::TAG_REVERTED,
 		];
 
 		$changeTagNames = array_merge( $taskChangeTagNames, $additionalChangeTagNames );
@@ -472,7 +472,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				// the first 8 characters for comparison with Ymd format date strings.
 				'rev_timestamp' => substr( $data['oldestEdit'], 0, 8 ),
 				'newestEdit' => $data['newestEdit'],
-				'oldestEdit' => $data['oldestEdit']
+				'oldestEdit' => $data['oldestEdit'],
 			];
 		}
 		if ( defined( 'MEDIAWIKI_JOB_RUNNER' ) || MW_ENTRY_POINT === 'cli' ) {
@@ -632,7 +632,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				'width' => $ratio > 1 ?
 					// Avoid decimals in the width because it makes the thumb url construction fail
 					floor( self::THUMBNAIL_SIZE / $imageFile->getHeight() * $imageFile->getWidth() ) :
-					self::THUMBNAIL_SIZE
+					self::THUMBNAIL_SIZE,
 			];
 
 			$thumb = $imageFile->transform( $options );

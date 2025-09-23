@@ -51,12 +51,12 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 			[
 				'variable' => 'foo',
 				'value' => 'bar',
-				'expectException' => "Invalid variable foo configured in the mentor list"
+				'expectException' => "Invalid variable foo configured in the mentor list",
 			],
 			[
 				'variable' => 'Mentors',
 				'value' => 'bar',
-				'expectException' => null
+				'expectException' => null,
 			],
 		];
 	}
@@ -91,7 +91,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 							'message' => null,
 							'weight' => 2,
 							'automaticallyAssigned' => true,
-						]
+						],
 					],
 					'ManuallyAssignedMentors' => [],
 				],
@@ -99,25 +99,25 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 			],
 			'mentorListNotAnArray' => [
 				'data' => [
-					'Mentors' => 'bar'
+					'Mentors' => 'bar',
 				],
-				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch'
+				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch',
 			],
 			'mentorListIncorrectArray' => [
 				'data' => [
 					'Mentors' => [
 						'foo' => 'bar',
-					]
+					],
 				],
-				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch'
+				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch',
 			],
 			'mentorListIncorrectArray2' => [
 				'data' => [
 					'Mentors' => [
 						123 => 'bar',
-					]
+					],
 				],
-				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch'
+				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch',
 			],
 		];
 	}
@@ -131,8 +131,8 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 		$validator = $this->getValidator();
 		$status = $validator->validate( [
 			'Mentors' => [
-				123 => $mentorData
-			]
+				123 => $mentorData,
+			],
 		] );
 		if ( $expectedError === null ) {
 			$this->assertStatusGood( $status );
@@ -154,13 +154,13 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 			],
 			'missingMessage' => [
 				'mentorData' => [
-					'weight' => 2
+					'weight' => 2,
 				],
 				'expectedError' => 'growthexperiments-mentor-list-missing-key',
 			],
 			'missingWeight' => [
 				'mentorData' => [
-					'message' => 2
+					'message' => 2,
 				],
 				'expectedError' => 'growthexperiments-mentor-list-missing-key',
 			],
@@ -217,7 +217,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 					'message' => 'foobar',
 					'weight' => 2,
 					'automaticallyAssigned' => true,
-					'awayTimestamp' => '20210718110719'
+					'awayTimestamp' => '20210718110719',
 				],
 				'expectedError' => null,
 			],
@@ -226,7 +226,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 					'message' => 'foobar',
 					'weight' => 2,
 					'automaticallyAssigned' => true,
-					'awayTimestamp' => 123
+					'awayTimestamp' => 123,
 				],
 				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch',
 			],
@@ -235,7 +235,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 					'message' => 'foobar',
 					'weight' => 2,
 					'automaticallyAssigned' => true,
-					'awayTimestamp' => 'foo'
+					'awayTimestamp' => 'foo',
 				],
 				'expectedError' => 'growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp',
 			],
@@ -244,7 +244,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 					'message' => 'foobar',
 					'weight' => 2,
 					'automaticallyAssigned' => true,
-					'awayTimestamp' => '24210718110719'
+					'awayTimestamp' => '24210718110719',
 				],
 				'expectedError' => 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh',
 			],

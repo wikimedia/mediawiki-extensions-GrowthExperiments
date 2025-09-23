@@ -44,7 +44,7 @@ class ApiQueryImageSuggestionDataTest extends ApiQueryTestBase {
 		$this->expectExceptionMessage( 'You must be logged in.' );
 		$this->check( [
 			[ 'prop' => 'growthimagesuggestiondata', 'titles' => 'ImageSuggestionDataTest' ],
-			[]
+			[],
 		], [], false, $user );
 	}
 
@@ -64,7 +64,7 @@ class ApiQueryImageSuggestionDataTest extends ApiQueryTestBase {
 		);
 		$this->check( [
 			[ 'prop' => 'growthimagesuggestiondata', 'titles' => 'ImageSuggestionDataTest' ],
-			[]
+			[],
 		] );
 	}
 
@@ -87,7 +87,7 @@ class ApiQueryImageSuggestionDataTest extends ApiQueryTestBase {
 		);
 		$this->check( [
 			[ 'prop' => 'growthimagesuggestiondata', 'titles' => 'ImageSuggestionDataTest' ],
-			[]
+			[],
 		] );
 	}
 
@@ -118,7 +118,7 @@ class ApiQueryImageSuggestionDataTest extends ApiQueryTestBase {
 							) ],
 							new \StatusValue()
 						);
-					}
+					},
 			]
 		);
 
@@ -142,11 +142,11 @@ class ApiQueryImageSuggestionDataTest extends ApiQueryTestBase {
 								'sectionTitle' => null,
 							] ],
 							'titleNamespace' => 0,
-							'titleText' => 'ImageSuggestionDataTest'
-						] ]
-					]
-				]
-			]
+							'titleText' => 'ImageSuggestionDataTest',
+						] ],
+					],
+				],
+			],
 		] );
 	}
 

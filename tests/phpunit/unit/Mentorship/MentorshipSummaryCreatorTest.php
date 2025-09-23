@@ -69,28 +69,28 @@ class MentorshipSummaryCreatorTest extends MediaWikiUnitTestCase {
 				$action,
 				$adminUserIdentity,
 				$mentorUserIdentity,
-				''
+				'',
 			];
 			yield [
 				"/* growthexperiments-manage-mentors-summary-$action-admin-with-reason:Mentor|foo */",
 				$action,
 				$adminUserIdentity,
 				$mentorUserIdentity,
-				'foo'
+				'foo',
 			];
 			yield [
 				"/* growthexperiments-manage-mentors-summary-$action-self-no-reason:Mentor| */",
 				$action,
 				$mentorUserIdentity,
 				$mentorUserIdentity,
-				''
+				'',
 			];
 			yield [
 				"/* growthexperiments-manage-mentors-summary-$action-self-with-reason:Mentor|bar */",
 				$action,
 				$mentorUserIdentity,
 				$mentorUserIdentity,
-				'bar'
+				'bar',
 			];
 		}
 	}

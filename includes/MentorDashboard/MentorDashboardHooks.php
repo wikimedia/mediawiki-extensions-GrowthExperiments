@@ -50,7 +50,7 @@ class MentorDashboardHooks implements
 				'filters' => [
 					'minedits' => 1,
 					'maxedits' => 500,
-				]
+				],
 			] ),
 		];
 	}
@@ -78,8 +78,8 @@ class MentorDashboardHooks implements
 			'reverted' => [ ChangeTags::TAG_REVERTED ],
 			'questions' => [
 				Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG,
-				Mentorship::MENTORSHIP_MODULE_QUESTION_TAG
-			]
+				Mentorship::MENTORSHIP_MODULE_QUESTION_TAG,
+			],
 		];
 	}
 }

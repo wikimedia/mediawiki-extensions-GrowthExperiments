@@ -50,7 +50,7 @@ class LinkRecommendationTaskType extends TaskType {
 		self::FIELD_EXCLUDED_SECTIONS => [],
 		self::FIELD_UNDERLINKED_WEIGHT => 0.5,
 		self::FIELD_UNDERLINKED_MIN_LENGTH => 300,
-		self::FIELD_MAX_EDITS_TASK_AVAILABLE => null
+		self::FIELD_MAX_EDITS_TASK_AVAILABLE => null,
 	];
 
 	/** @inheritDoc */
@@ -247,8 +247,8 @@ class LinkRecommendationTaskType extends TaskType {
 			self::FIELD_MAX_LINKS_TO_SHOW_PER_TASK => $this->getMaximumLinksToShowPerTask(),
 			self::FIELD_MAX_EDITS_TASK_AVAILABLE => $this->getMaximumEditsTaskIsAvailable(),
 			'extraMessages' => [
-				'unavailable' => $this->getUnavailableText( $messageLocalizer )
-			]
+				'unavailable' => $this->getUnavailableText( $messageLocalizer ),
+			],
 		];
 	}
 

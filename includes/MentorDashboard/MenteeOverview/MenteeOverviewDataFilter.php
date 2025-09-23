@@ -29,7 +29,7 @@ class MenteeOverviewDataFilter {
 
 	private const TIMESTAMP_SORTS = [
 		self::SORT_BY_TENURE,
-		self::SORT_BY_ACTIVITY
+		self::SORT_BY_ACTIVITY,
 	];
 
 	private const ALL_SORTS = [
@@ -39,7 +39,7 @@ class MenteeOverviewDataFilter {
 		self::SORT_BY_QUESTIONS,
 		self::SORT_BY_EDITCOUNT,
 		self::SORT_BY_TENURE,
-		self::SORT_BY_ACTIVITY
+		self::SORT_BY_ACTIVITY,
 	];
 
 	/** @var array */

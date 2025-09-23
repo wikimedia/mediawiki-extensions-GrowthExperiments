@@ -43,7 +43,7 @@ class MenteesPrefixSearchHandler extends SimpleHandler {
 			'usernames' => $dataFilter
 				->prefix( $prefix )
 				->limit( $limit )
-				->getUsernames()
+				->getUsernames(),
 		];
 	}
 

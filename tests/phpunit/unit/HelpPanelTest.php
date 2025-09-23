@@ -78,7 +78,7 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				[],
 				// assertion
 				true,
-				'Normal scenario - edit on a main namespace, suggested edit flag, user has pref enabled'
+				'Normal scenario - edit on a main namespace, suggested edit flag, user has pref enabled',
 			],
 			[
 				new TitleValue( NS_PROJECT, 'Foo' ),
@@ -88,7 +88,7 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				1,
 				[ NS_PROJECT ],
 				false,
-				'Namespace of title is in excluded namespaces, help panel should not show'
+				'Namespace of title is in excluded namespaces, help panel should not show',
 			],
 			[
 				new TitleValue( NS_MAIN, 'Foo' ),
@@ -98,7 +98,7 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				1,
 				[],
 				false,
-				'Action of "blah" should result in help panel not showing'
+				'Action of "blah" should result in help panel not showing',
 			],
 			[
 				new TitleValue( NS_MAIN, 'Foo' ),
@@ -108,7 +108,7 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				0,
 				[],
 				true,
-				'User has help panel disabled, but gesuggestededit is set, so the help panel should show'
+				'User has help panel disabled, but gesuggestededit is set, so the help panel should show',
 			],
 			[
 				new TitleValue( NS_MAIN, 'Foo' ),
@@ -118,7 +118,7 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				0,
 				[],
 				false,
-				'gesuggestededit is true, but user is anonymous so the help pane should not show'
+				'gesuggestededit is true, but user is anonymous so the help pane should not show',
 			],
 			[
 				// title
@@ -135,7 +135,7 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				[ NS_MAIN ],
 				// assertion
 				true,
-				'Suggested edits mode and NS_MAIN excluded'
+				'Suggested edits mode and NS_MAIN excluded',
 			],
 		];
 	}

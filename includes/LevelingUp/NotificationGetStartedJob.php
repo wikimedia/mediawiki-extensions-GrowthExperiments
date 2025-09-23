@@ -57,7 +57,7 @@ class NotificationGetStartedJob extends AbstractDelayedNotificationJob {
 			Event::create( [
 				'type' => $this->params['eventType'],
 				'title' => $this->specialPageFactory->getTitleForAlias( 'Homepage' ),
-				'agent' => $userIdentity
+				'agent' => $userIdentity,
 			] );
 			$this->measureNotificationDelay();
 		}

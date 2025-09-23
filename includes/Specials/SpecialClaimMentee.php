@@ -124,7 +124,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 				'label-message' => 'growthexperiments-homepage-claimmentee-reason',
 				'type'          => 'text',
 			],
-			'stage' => [ 'type' => 'hidden', 'default' => 2 ]
+			'stage' => [ 'type' => 'hidden', 'default' => 2 ],
 		];
 		$stage = $req->getInt( 'wpstage', 1 );
 		$this->setMentees( $req->getVal( 'wpmentees', '' ) );

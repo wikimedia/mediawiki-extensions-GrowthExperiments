@@ -61,7 +61,7 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 				->from( 'page_restrictions' )
 				->where( [
 					'pr_page' => array_keys( $validTasks ),
-					'pr_type' => 'edit'
+					'pr_type' => 'edit',
 				] )
 				->caller( __METHOD__ )
 				->fetchResultSet();

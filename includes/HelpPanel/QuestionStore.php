@@ -184,7 +184,7 @@ class QuestionStore {
 					[
 						'userId' => $this->user->getId(),
 						'storage' => $storage,
-						'length' => strlen( $formattedQuestions )
+						'length' => strlen( $formattedQuestions ),
 					] );
 			return;
 		}
@@ -204,7 +204,7 @@ class QuestionStore {
 	private function saveToUserSettingsWithJob( string $storage, string $formattedQuestions ) {
 		$job = new UserOptionsUpdateJob( [
 			'userId' => $this->user->getId(),
-			'options' => [ $storage => $formattedQuestions ]
+			'options' => [ $storage => $formattedQuestions ],
 		] );
 		$this->jobQueueGroup->lazyPush( $job );
 	}

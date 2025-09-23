@@ -69,7 +69,7 @@ class TipNodeRenderer {
 			...array_map(
 				static fn ( $variant ) => 'growthexperiments-quickstart-tips-tip--' . $variant,
 				$textVariants
-			)
+			),
 		];
 	}
 
@@ -82,7 +82,7 @@ class TipNodeRenderer {
 		}, $node->getData() ) );
 
 		return Html::rawElement( 'div', [
-			'class' => $this->getBaseCssClasses( $node->getType(), $tipTextVariants )
+			'class' => $this->getBaseCssClasses( $node->getType(), $tipTextVariants ),
 		], $this->messageLocalizer->msg(
 			$this->getMessageKeyWithVariantFallback( $node ), $this->getMessageParameters( $node, $skinName )
 		)->parse() );
@@ -157,11 +157,11 @@ class TipNodeRenderer {
 				$this->messageLocalizer->msg( $exampleLabelKey )->text() )
 			: '';
 		return $exampleLabel . Html::rawElement( 'div', [
-			'class' => $this->getBaseCssClasses( $node->getType() )
+			'class' => $this->getBaseCssClasses( $node->getType() ),
 		],
 			Html::rawElement( 'p', [
 			'class' => [
-				'growthexperiments-quickstart-tips-tip-' . $node->getType() . '-text'
+				'growthexperiments-quickstart-tips-tip-' . $node->getType() . '-text',
 			] ], $this->messageLocalizer->msg(
 				$this->getMessageKeyWithVariantFallback( $node )
 			)->parse() ) );
@@ -181,7 +181,7 @@ class TipNodeRenderer {
 				case TipTree::TIP_DATA_TYPE_OOUI_ICON:
 					$iconConfig = [
 						'icon' => $nodeConfig['data']['icon'],
-						'framed' => $nodeConfig['data']['framed'] ?? true
+						'framed' => $nodeConfig['data']['framed'] ?? true,
 					];
 					if ( isset( $nodeConfig['data']['labelKey'] ) ) {
 						$iconConfig['label'] = $this->messageLocalizer->msg(

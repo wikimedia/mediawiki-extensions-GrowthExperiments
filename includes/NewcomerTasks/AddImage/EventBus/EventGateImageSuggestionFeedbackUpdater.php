@@ -59,7 +59,7 @@ class EventGateImageSuggestionFeedbackUpdater {
 			'is_accepted' => $accepted === true,
 			'is_rejected' => $accepted === false,
 			'dt' => MWTimestamp::now( TS_ISO_8601 ),
-			'origin_wiki' => 'commonswiki'
+			'origin_wiki' => 'commonswiki',
 		];
 		if ( $rejectionReasons ) {
 			$attrs['rejection_reasons'] = $rejectionReasons;

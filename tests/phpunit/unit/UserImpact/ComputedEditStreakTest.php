@@ -46,7 +46,7 @@ class ComputedEditStreakTest extends MediaWikiUnitTestCase {
 			'no-edit-data' => [
 				[],
 				[ new EditingStreak() ],
-				new EditingStreak()
+				new EditingStreak(),
 			],
 			'one-edit' => [
 				[ '2022-10-19' => 1 ],
@@ -57,12 +57,12 @@ class ComputedEditStreakTest extends MediaWikiUnitTestCase {
 				new EditingStreak(
 					ComputeEditingStreaks::makeDatePeriod( '2022-10-19', '2022-10-19' ),
 					1
-				)
+				),
 			],
 			'two-edits' => [
 				[
 					'2022-10-19' => 1,
-					'2022-10-18' => 1
+					'2022-10-18' => 1,
 				],
 				[ new EditingStreak(
 					ComputeEditingStreaks::makeDatePeriod( '2022-10-19', '2022-10-18' ),
@@ -71,7 +71,7 @@ class ComputedEditStreakTest extends MediaWikiUnitTestCase {
 				new EditingStreak(
 					ComputeEditingStreaks::makeDatePeriod( '2022-10-19', '2022-10-18' ),
 					2
-				)
+				),
 			],
 			'one-edit-non-adjacent-days' => [
 				[
@@ -86,7 +86,7 @@ class ComputedEditStreakTest extends MediaWikiUnitTestCase {
 					new EditingStreak(
 						ComputeEditingStreaks::makeDatePeriod( '2022-10-16', '2022-10-16' ),
 						1
-					)
+					),
 				],
 				new EditingStreak(
 					ComputeEditingStreaks::makeDatePeriod( '2022-10-19', '2022-10-19' ),
@@ -114,22 +114,22 @@ class ComputedEditStreakTest extends MediaWikiUnitTestCase {
 					new EditingStreak(
 						ComputeEditingStreaks::makeDatePeriod( '2022-10-14', '2022-10-12' ),
 						12
-					)
+					),
 				],
 				new EditingStreak(
 					ComputeEditingStreaks::makeDatePeriod( '2022-10-14', '2022-10-12' ),
 					12
-				)
+				),
 			],
 			'invalid date' => [
 				[ 'foo' => 1 ],
 				[ new EditingStreak() ],
-				new EditingStreak()
+				new EditingStreak(),
 			],
 			'invalid count' => [
 				[ '2022-10-01' => 'foo' ],
 				[ new EditingStreak() ],
-				new EditingStreak()
+				new EditingStreak(),
 			],
 			'previous month' => [
 				[
@@ -139,10 +139,10 @@ class ComputedEditStreakTest extends MediaWikiUnitTestCase {
 				],
 				[
 					new EditingStreak( ComputeEditingStreaks::makeDatePeriod( '2022-10-03', '2022-10-03' ), 1 ),
-					new EditingStreak( ComputeEditingStreaks::makeDatePeriod( '2022-10-01', '2022-09-30' ), 9 )
+					new EditingStreak( ComputeEditingStreaks::makeDatePeriod( '2022-10-01', '2022-09-30' ), 9 ),
 				],
-				new EditingStreak( ComputeEditingStreaks::makeDatePeriod( '2022-10-01', '2022-09-30' ), 9 )
-			]
+				new EditingStreak( ComputeEditingStreaks::makeDatePeriod( '2022-10-01', '2022-09-30' ), 9 ),
+			],
 		];
 	}
 

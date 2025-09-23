@@ -31,7 +31,7 @@ class EchoGetStartedBasePresentationModel extends EchoEventPresentationModel {
 			'label' => $this->msg(
 				'growthexperiments-levelingup-getstarted-notification-call-to-action-label'
 			)->text(),
-			'icon' => 'edit'
+			'icon' => 'edit',
 		] ];
 	}
 
@@ -42,7 +42,7 @@ class EchoGetStartedBasePresentationModel extends EchoEventPresentationModel {
 			'label' => $this->msg(
 				'growthexperiments-levelingup-getstarted-notification-call-to-action-label'
 			)->text(),
-			'icon' => 'edit'
+			'icon' => 'edit',
 		];
 	}
 

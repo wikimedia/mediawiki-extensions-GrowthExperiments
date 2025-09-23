@@ -67,7 +67,7 @@ class StartEditing extends BaseModule {
 				SuggestedEdits::isTopicMatchingEnabled(
 					$this->getContext(),
 					$this->userOptionsLookup
-				)
+				),
 		];
 	}
 

@@ -60,7 +60,7 @@ class TourHooks implements
 		$moduleTemplate = [
 			'localBasePath' => dirname( __DIR__ ) . '/modules',
 			'remoteExtPath' => 'GrowthExperiments/modules',
-			'dependencies' => 'ext.guidedTour'
+			'dependencies' => 'ext.guidedTour',
 		];
 		$modules = [
 			'ext.guidedTour.tour.helppanel' => $moduleTemplate + [
@@ -71,7 +71,7 @@ class TourHooks implements
 				'messages' => [
 					'growthexperiments-tour-helpdesk-response-tip-title',
 					'growthexperiments-tour-response-tip-text',
-					'growthexperiments-tour-response-button-okay'
+					'growthexperiments-tour-response-button-okay',
 				],
 			],
 			'ext.guidedTour.tour.homepage_mentor' => $moduleTemplate + [
@@ -82,7 +82,7 @@ class TourHooks implements
 				'messages' => [
 					'growthexperiments-tour-mentor-response-tip-personal-title',
 					'growthexperiments-tour-mentor-response-tip-personal-text',
-					'growthexperiments-tour-response-button-okay'
+					'growthexperiments-tour-response-button-okay',
 				],
 			],
 			'ext.guidedTour.tour.homepage_welcome' => $moduleTemplate + [
@@ -90,7 +90,7 @@ class TourHooks implements
 					'tours/homepageWelcome.js',
 					'tours/tourUtils.js',
 					"ext.growthExperiments.Homepage.Logger/index.js",
-					"utils/Utils.js"
+					"utils/Utils.js",
 				],
 				'messages' => [
 					'growthexperiments-tour-welcome-title',
@@ -108,8 +108,8 @@ class TourHooks implements
 				'messages' => [
 					'growthexperiments-tour-discovery-title',
 					'growthexperiments-tour-discovery-description',
-					'growthexperiments-tour-response-button-okay'
-				]
+					'growthexperiments-tour-response-button-okay',
+				],
 			],
 		];
 		$resourceLoader->register( $modules );
@@ -162,7 +162,7 @@ class TourHooks implements
 			return;
 		}
 		$defaultOptions += [
-			self::TOUR_COMPLETED_HELP_PANEL => true
+			self::TOUR_COMPLETED_HELP_PANEL => true,
 		];
 		if ( HomepageHooks::isHomepageEnabled() ) {
 			$defaultOptions += [

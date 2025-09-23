@@ -82,7 +82,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 		);
 		$rehydrated = ExpensiveUserImpact::newFromJsonArray( $data );
 		TestingAccessWrapper::newFromObject( $userImpact )->dailyTotalViews = [
-			'2022-08-24' => 100, '2022-08-25' => 150
+			'2022-08-24' => 100, '2022-08-25' => 150,
 		];
 		$this->assertEquals( $userImpact, $rehydrated );
 	}

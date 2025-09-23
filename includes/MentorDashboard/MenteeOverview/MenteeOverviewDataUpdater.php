@@ -83,7 +83,7 @@ class MenteeOverviewDataUpdater {
 					->insertInto( 'growthexperiments_mentee_data' )
 					->row( [
 						'mentee_id' => $menteeId,
-						'mentee_data' => $encodedData
+						'mentee_data' => $encodedData,
 					] )
 					->caller( __METHOD__ )
 					->execute();
@@ -118,7 +118,7 @@ class MenteeOverviewDataUpdater {
 			$dbw->newDeleteQueryBuilder()
 				->deleteFrom( 'growthexperiments_mentee_data' )
 				->where( [
-					'mentee_id' => $menteeIdsToDelete
+					'mentee_id' => $menteeIdsToDelete,
 				] )
 				->caller( __METHOD__ )
 				->execute();

@@ -79,7 +79,7 @@ class HelpPanelHooks implements
 	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
-		$preferences[HelpdeskQuestionPoster::QUESTION_PREF] = [ 'type' => 'api', ];
+		$preferences[HelpdeskQuestionPoster::QUESTION_PREF] = [ 'type' => 'api' ];
 	}
 
 	/**
@@ -89,7 +89,7 @@ class HelpPanelHooks implements
 	 */
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		$defaultOptions += [
-			self::HELP_PANEL_PREFERENCES_TOGGLE => false
+			self::HELP_PANEL_PREFERENCES_TOGGLE => false,
 		];
 	}
 
@@ -148,7 +148,7 @@ class HelpPanelHooks implements
 		$out->addJsConfigVars( [
 			'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle( $this->wikiConfig ) !== null,
 			'wgGELinkRecommendationsFrontendEnabled' =>
-				$out->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' )
+				$out->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' ),
 		] );
 
 		// If the help panel would be shown but for the value of the 'action' parameter,
@@ -200,7 +200,7 @@ class HelpPanelHooks implements
 			'GEHelpPanelSuggestedEditsPreferredEditor' => self::getPreferredEditor( $context, $config ),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null,
 			'GEAskHelpCopyrightWarning' => $copyrightWarningMessage->exists() ?
-				$copyrightWarningMessage->parse() : ''
+				$copyrightWarningMessage->parse() : '',
 		];
 	}
 
@@ -254,7 +254,7 @@ class HelpPanelHooks implements
 			),
 			'backAt' => $language->date(
 				$this->mentorStatusManager->getMentorBackTimestamp( $mentor->getUserIdentity() ) ?? ''
-			)
+			),
 		];
 	}
 

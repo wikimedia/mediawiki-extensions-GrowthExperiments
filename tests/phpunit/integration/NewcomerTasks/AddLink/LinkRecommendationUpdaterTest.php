@@ -40,7 +40,7 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 				[],
 				[],
 				[ new TitleValue( 10, 'ExcludedTemplate' ) ],
-			)
+			),
 		] );
 
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $fakeConfigLoader );
@@ -77,7 +77,7 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 				[],
 				[],
 				[ new TitleValue( 14, 'ExcludedCategory' ) ],
-			)
+			),
 		] );
 
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $fakeConfigLoader );

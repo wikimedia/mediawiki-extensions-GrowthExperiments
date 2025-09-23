@@ -145,7 +145,7 @@ class SpecialManageMentors extends SpecialPage {
 					// FIXME use better custom message
 					$this->msg( 'blockedtitle' )->text(),
 					// XXX: is this the maximum on the frontend?
-					PHP_INT_MAX
+					PHP_INT_MAX,
 				];
 			case MentorStatusManager::AWAY_BECAUSE_TIMESTAMP:
 				$ts = $this->mentorStatusManager->getMentorBackTimestamp( $mentor->getUserIdentity() );
@@ -154,7 +154,7 @@ class SpecialManageMentors extends SpecialPage {
 						$this->msg( 'growthexperiments-manage-mentors-status-away-until' )
 							->params( $this->getLanguage()->userDate( $ts, $this->getUser() ) )
 							->text(),
-						(int)ConvertibleTimestamp::convert( TS_UNIX, $ts )
+						(int)ConvertibleTimestamp::convert( TS_UNIX, $ts ),
 					];
 				}
 				// if the reason is a timestamp, but we've got no timestamp, just pretend they are active
@@ -163,7 +163,7 @@ class SpecialManageMentors extends SpecialPage {
 				return [
 					$this->msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active' )
 						->text(),
-					-1
+					-1,
 				];
 			default:
 				throw new LogicException( "Reason for absence \"$reason\" is not supported" );
@@ -211,7 +211,7 @@ class SpecialManageMentors extends SpecialPage {
 					'ManageMentors',
 					'remove-mentor/' . $mentor->getUserIdentity()->getId()
 				)->getLocalURL(),
-				'flags' => [ 'primary', 'destructive' ]
+				'flags' => [ 'primary', 'destructive' ],
 			] ) );
 		}
 
@@ -305,7 +305,7 @@ class SpecialManageMentors extends SpecialPage {
 		return Html::rawElement(
 			'table',
 			[
-				'class' => 'wikitable sortable'
+				'class' => 'wikitable sortable',
 			],
 			implode( "\n", [
 				Html::rawElement(
@@ -321,7 +321,7 @@ class SpecialManageMentors extends SpecialPage {
 					'tbody',
 					[],
 					$this->getMentorsTableBody( $mentors )
-				)
+				),
 			] )
 		);
 	}
@@ -377,7 +377,7 @@ class SpecialManageMentors extends SpecialPage {
 
 		return [
 			$action,
-			$this->userIdentityLookup->getUserIdentityByUserId( $mentorUserId )
+			$this->userIdentityLookup->getUserIdentityByUserId( $mentorUserId ),
 		];
 	}
 
@@ -458,7 +458,7 @@ class SpecialManageMentors extends SpecialPage {
 					'p',
 					[],
 					$this->msg( 'growthexperiments-manage-mentors-pretext-to-enroll' )->parse()
-				)
+				),
 			] )
 		);
 	}

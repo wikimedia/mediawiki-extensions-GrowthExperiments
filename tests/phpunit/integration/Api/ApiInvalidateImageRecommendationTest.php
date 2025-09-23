@@ -34,11 +34,11 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation',
 			'title' => $pageName,
-			'filename' => 'Foo.jpg'
+			'filename' => 'Foo.jpg',
 		] );
 		$this->assertArrayEquals( [ 'growthinvalidateimagerecommendation' => [
-				'status' => 'ok'
-			]
+				'status' => 'ok',
+			],
 		], $result[ 0 ] );
 	}
 
@@ -64,8 +64,8 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 			'filename' => 'Foo.jpg',
 		] );
 		$this->assertArrayEquals( [ 'growthinvalidateimagerecommendation' => [
-				'status' => 'ok'
-			]
+				'status' => 'ok',
+			],
 		], $result[ 0 ] );
 	}
 
@@ -73,7 +73,7 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'The "title" parameter must be set.' );
 		$this->doApiRequestWithToken( [
-			'action' => 'growthinvalidateimagerecommendation'
+			'action' => 'growthinvalidateimagerecommendation',
 		] );
 	}
 
@@ -82,7 +82,7 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 		$this->expectExceptionMessage( 'The "filename" parameter must be set.' );
 		$this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation',
-			'title' => 'Blah'
+			'title' => 'Blah',
 		] );
 	}
 

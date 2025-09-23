@@ -63,7 +63,7 @@ class ApiSetMenteeStatus extends ApiBase {
 		$currentState = $this->mentorManager->getMentorshipStateForUser( $user );
 		if ( $currentState === $newState ) {
 			$this->dieWithError( [
-				'apierror-growthexperiments-setmenteestatus-no-change'
+				'apierror-growthexperiments-setmenteestatus-no-change',
 			] );
 		}
 
@@ -108,14 +108,14 @@ class ApiSetMenteeStatus extends ApiBase {
 				ParamValidator::PARAM_TYPE => [
 					'enabled',
 					'disabled',
-					'optout'
+					'optout',
 				],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [
 					'enabled' => 'apihelp-growthsetmenteestatus-param-state-enabled',
 					'disabled' => 'apihelp-growthsetmenteestatus-param-state-disabled',
 					'optout' => 'apihelp-growthsetmenteestatus-param-state-optout',
-				]
-			]
+				],
+			],
 		];
 	}
 }

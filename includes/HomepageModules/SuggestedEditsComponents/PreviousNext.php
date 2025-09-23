@@ -16,7 +16,7 @@ class PreviousNext extends ButtonWidget {
 				'disabled' => true,
 				'invisibleLabel' => true,
 				'label' => $config['message'],
-				'classes' => $config['hidden'] ? [ 'oo-ui-element-hidden' ] : []
+				'classes' => $config['hidden'] ? [ 'oo-ui-element-hidden' ] : [],
 			]
 		) );
 	}

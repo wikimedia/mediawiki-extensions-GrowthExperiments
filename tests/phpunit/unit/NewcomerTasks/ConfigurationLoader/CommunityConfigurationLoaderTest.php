@@ -47,7 +47,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 		$loader = $this->newLoader( [
 			'suggestedEditsConfigProvider' => null,
-			'logger' => $logger
+			'logger' => $logger,
 		] );
 
 		$wrappedLoader = TestingAccessWrapper::newFromObject( $loader );
@@ -61,8 +61,8 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			'copyedit' => [
 				'icon' => 'articleCheck',
 				'group' => 'easy',
-				'templates' => [ 'Template1', 'Template2' ]
-			]
+				'templates' => [ 'Template1', 'Template2' ],
+			],
 		];
 
 		$status = StatusValue::newGood( $sampleConfig );
@@ -73,7 +73,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			->willReturn( $status );
 
 		$loader = $this->newLoader( [
-			'suggestedEditsConfigProvider' => $configProvider
+			'suggestedEditsConfigProvider' => $configProvider,
 		] );
 
 		$wrappedLoader = TestingAccessWrapper::newFromObject( $loader );
@@ -91,7 +91,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			->willReturn( $errorStatus );
 
 		$loader = $this->newLoader( [
-			'suggestedEditsConfigProvider' => $configProvider
+			'suggestedEditsConfigProvider' => $configProvider,
 		] );
 
 		$wrappedLoader = TestingAccessWrapper::newFromObject( $loader );
@@ -111,7 +111,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 		$loader = $this->newLoader( [
 			'suggestedEditsConfigProvider' => null,
-			'logger' => $logger
+			'logger' => $logger,
 		] );
 
 		$result = $loader->loadInfoboxTemplates();
@@ -130,7 +130,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			->willReturn( $status );
 
 		$loader = $this->newLoader( [
-			'suggestedEditsConfigProvider' => $configProvider
+			'suggestedEditsConfigProvider' => $configProvider,
 		] );
 
 		$result = $loader->loadInfoboxTemplates();
@@ -147,7 +147,7 @@ class CommunityConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			->willReturn( $errorStatus );
 
 		$loader = $this->newLoader( [
-			'suggestedEditsConfigProvider' => $configProvider
+			'suggestedEditsConfigProvider' => $configProvider,
 		] );
 
 		$result = $loader->loadInfoboxTemplates();

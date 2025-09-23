@@ -15,15 +15,15 @@ abstract class ImageRecommendationBaseTaskType extends TaskType {
 
 	public const VALID_MEDIA_TYPES = [
 		MEDIATYPE_BITMAP,
-		MEDIATYPE_DRAWING
+		MEDIATYPE_DRAWING,
 	];
 
 	public const DEFAULT_SETTINGS = [
 		self::FIELD_MAX_TASKS_PER_DAY => 25,
 		self::FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH => 5,
 		self::FIELD_MINIMUM_IMAGE_SIZE => [
-			'width' => 100
-		]
+			'width' => 100,
+		],
 	];
 
 	/** @inheritDoc */
@@ -65,7 +65,7 @@ abstract class ImageRecommendationBaseTaskType extends TaskType {
 	public function getSuggestionFilters(): array {
 		return [
 			'minimumSize' => $this->minimumImageSize,
-			'validMediaTypes' => self::VALID_MEDIA_TYPES
+			'validMediaTypes' => self::VALID_MEDIA_TYPES,
 		];
 	}
 

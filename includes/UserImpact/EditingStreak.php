@@ -33,9 +33,9 @@ class EditingStreak implements JsonSerializable {
 			'datePeriod' => [
 				'start' => $this->datePeriod->getStartDate()->format( 'Y-m-d' ),
 				'end' => $this->datePeriod->getEndDate()->format( 'Y-m-d' ),
-				'days' => $this->getStreakNumberOfDays()
+				'days' => $this->getStreakNumberOfDays(),
 			],
-			'totalEditCountForPeriod' => $this->totalEditCountForPeriod
+			'totalEditCountForPeriod' => $this->totalEditCountForPeriod,
 		] : [];
 	}
 

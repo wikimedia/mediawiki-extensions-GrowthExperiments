@@ -72,7 +72,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 		$out->addHTML( $taskTypeTable );
 
 		$topicsTableHeaders = [
-			( new Tag( 'th' ) )->appendContent( $out->msg( 'newcomertasksinfo-table-header-topic-type' )->text() )
+			( new Tag( 'th' ) )->appendContent( $out->msg( 'newcomertasksinfo-table-header-topic-type' )->text() ),
 		];
 		foreach ( array_keys( $info['tasks'] ) as $taskTypeId ) {
 			$topicsTableHeaders[] = ( new Tag( 'th' ) )->appendContent( $taskTypeId );
@@ -84,7 +84,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 		$topicsTableRows = [];
 		foreach ( $info['topics'] as $topicId => $topicData ) {
 			$topicsTableRowData = [
-				( new Tag( 'td' ) )->appendContent( ( new Tag( 'code' ) )->appendContent( $topicId ) )
+				( new Tag( 'td' ) )->appendContent( ( new Tag( 'code' ) )->appendContent( $topicId ) ),
 			];
 			foreach ( array_keys( $info['tasks'] ) as $taskTypeId ) {
 				$topicsTableRowData[] = ( new Tag( 'td' ) )->appendContent(

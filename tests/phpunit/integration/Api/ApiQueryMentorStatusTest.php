@@ -41,7 +41,7 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'query',
-				'meta' => 'growthmentorstatus'
+				'meta' => 'growthmentorstatus',
 			],
 			null,
 			new User()
@@ -56,7 +56,7 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'query',
-				'meta' => 'growthmentorstatus'
+				'meta' => 'growthmentorstatus',
 			],
 			null,
 			$this->getTestUser()->getUser()

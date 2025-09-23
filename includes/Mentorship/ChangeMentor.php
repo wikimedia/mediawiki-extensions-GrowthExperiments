@@ -70,7 +70,7 @@ class ChangeMentor {
 			->where( [
 				'log_type' => 'growthexperiments',
 				'log_namespace' => NS_USER,
-				'log_title' => Title::makeTitle( NS_USER, $this->mentee->getName() )->getDbKey()
+				'log_title' => Title::makeTitle( NS_USER, $this->mentee->getName() )->getDbKey(),
 			] )
 			->caller( __METHOD__ )
 			->fetchRow();
@@ -131,7 +131,7 @@ class ChangeMentor {
 			'Validating mentor change for {mentee} from {oldMentor} to {newMentor}', [
 				'mentee' => $this->mentee,
 				'oldMentor' => $this->mentor,
-				'newMentor' => $this->newMentor
+				'newMentor' => $this->newMentor,
 			] );
 		$status = Status::newGood();
 
@@ -141,7 +141,7 @@ class ChangeMentor {
 				. ' did not succeed, because the mentee doesn\'t exist', [
 					'mentee' => $this->mentee,
 					'oldMentor' => $this->mentor,
-					'newMentor' => $this->newMentor
+					'newMentor' => $this->newMentor,
 				] );
 			$status->fatal( 'growthexperiments-homepage-claimmentee-no-user' );
 			return $status;
@@ -152,7 +152,7 @@ class ChangeMentor {
 				. ' did not succeed, because the old and new mentor are equal', [
 					'mentee' => $this->mentee,
 					'oldMentor' => $this->mentor,
-					'newMentor' => $this->newMentor
+					'newMentor' => $this->newMentor,
 				] );
 			$status->fatal(
 				'growthexperiments-homepage-claimmentee-already-mentor',
@@ -175,7 +175,7 @@ class ChangeMentor {
 			DeferredUpdates::addCallableUpdate( function () use ( $reason ) {
 				$this->logger->debug( 'Notify {mentee} about mentor change done by {performer}', [
 					'mentee' => $this->mentee,
-					'performer' => $this->performer
+					'performer' => $this->performer,
 				] );
 				$extraData = [
 					'mentee' => $this->mentee->getId(),
@@ -200,9 +200,9 @@ class ChangeMentor {
 						'title' => $this->getMenteeUser()->getUserPage(),
 						'extra' => [
 							'mentor' => $this->mentor->getId(),
-							'reason' => $reason
+							'reason' => $reason,
 						],
-						'agent' => $this->performer
+						'agent' => $this->performer,
 					] );
 				}
 			} );

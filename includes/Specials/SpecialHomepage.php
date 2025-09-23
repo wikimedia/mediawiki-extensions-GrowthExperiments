@@ -101,7 +101,7 @@ class SpecialHomepage extends SpecialPage {
 
 		$out->addHTML( Html::openElement( 'div', [
 			'class' => 'growthexperiments-homepage-container ' .
-				'growthexperiments-homepage-container-user-variant-' . $userVariant
+				'growthexperiments-homepage-container-user-variant-' . $userVariant,
 		] ) );
 		$modules = $this->getModules( $this->isMobile, $par );
 
@@ -203,7 +203,7 @@ class SpecialHomepage extends SpecialPage {
 				$mentorshipState === IMentorManager::MENTORSHIP_ENABLED,
 			'mentorship-optin' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
 				$mentorshipState === IMentorManager::MENTORSHIP_OPTED_OUT,
-			'help' => true
+			'help' => true,
 		] );
 		$modules = [];
 		foreach ( $moduleConfig as $moduleId => $_ ) {
@@ -224,15 +224,15 @@ class SpecialHomepage extends SpecialPage {
 				'primary' => [ 'banner', 'welcomesurveyreminder', 'startemail' ],
 				'secondary' => $isSuggestedEditsEnabled ?
 					[ 'start-startediting', 'suggested-edits' ] :
-					[ 'impact' ]
+					[ 'impact' ],
 			],
 			'sidebar' => [
 				'primary' => array_merge(
 					[ 'community-updates' ],
 					$isSuggestedEditsEnabled ? [ 'impact' ] : []
 				),
-				'secondary' => [ 'mentorship', 'mentorship-optin', 'help' ]
-			]
+				'secondary' => [ 'mentorship', 'mentorship-optin', 'help' ],
+			],
 		];
 	}
 
@@ -260,7 +260,7 @@ class SpecialHomepage extends SpecialPage {
 				$out->addHTML( Html::openElement( 'div', [
 					'class' => "growthexperiments-homepage-group-$group-subgroup-$subGroup " .
 						"growthexperiments-homepage-group-$group-subgroup-$subGroup-user-variant-" .
-						$this->experimentUserManager->getVariant( $this->getUser() )
+						$this->experimentUserManager->getVariant( $this->getUser() ),
 				] ) );
 				foreach ( $moduleNames as $moduleName ) {
 					/** @var IDashboardModule $module */
@@ -310,7 +310,7 @@ class SpecialHomepage extends SpecialPage {
 		$isOpeningOverlay = $this->getContext()->getRequest()->getFuzzyBool( 'overlay' );
 		$out->addBodyClasses( [
 			'growthexperiments-homepage-mobile-summary',
-			$isOpeningOverlay ? 'growthexperiments-homepage-mobile-summary--opening-overlay' : ''
+			$isOpeningOverlay ? 'growthexperiments-homepage-mobile-summary--opening-overlay' : '',
 		] );
 		foreach ( $modules as $moduleName => $module ) {
 			$startTime = microtime( true );

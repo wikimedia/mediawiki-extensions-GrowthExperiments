@@ -37,12 +37,12 @@ class ApiQueryMentorMentee extends ApiQueryBase {
 			'mentees' => array_map( static function ( UserIdentity $mentee ) {
 				return [
 					'name' => $mentee->getName(),
-					'id' => $mentee->getId()
+					'id' => $mentee->getId(),
 				];
 			}, $this->mentorStore->getMenteesByMentor(
 				$mentor,
 				MentorStore::ROLE_PRIMARY
-			) )
+			) ),
 		] );
 	}
 
@@ -56,7 +56,7 @@ class ApiQueryMentorMentee extends ApiQueryBase {
 				ParamValidator::PARAM_REQUIRED => true,
 				UserDef::PARAM_ALLOWED_USER_TYPES => [ 'name', 'id' ],
 				UserDef::PARAM_RETURN_OBJECT => true,
-			]
+			],
 		];
 	}
 }

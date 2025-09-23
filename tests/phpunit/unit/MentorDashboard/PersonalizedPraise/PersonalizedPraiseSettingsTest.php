@@ -80,32 +80,32 @@ class PersonalizedPraiseSettingsTest extends MediaWikiUnitTestCase {
 			'none set' => [
 				new PraiseworthyConditions( 500, 8, 12, 7 ),
 				'{}',
-				500, 8, 12, 7
+				500, 8, 12, 7,
 			],
 			'maxEdits set' => [
 				new PraiseworthyConditions( 200, 8, 12, 7 ),
-				FormatJson::encode( [ PraiseworthyConditions::SETTING_MAX_EDITS => 200, ] ),
-				500, 8, 12, 7
+				FormatJson::encode( [ PraiseworthyConditions::SETTING_MAX_EDITS => 200 ] ),
+				500, 8, 12, 7,
 			],
 			'minEdits set' => [
 				new PraiseworthyConditions( 500, 200, 12, 7 ),
-				FormatJson::encode( [ PraiseworthyConditions::SETTING_MIN_EDITS => 200, ] ),
-				500, 8, 12, 7
+				FormatJson::encode( [ PraiseworthyConditions::SETTING_MIN_EDITS => 200 ] ),
+				500, 8, 12, 7,
 			],
 			'maxReverts set' => [
 				new PraiseworthyConditions( 500, 8, 200, 7 ),
-				FormatJson::encode( [ PraiseworthyConditions::SETTING_MAX_REVERTS => 200, ] ),
-				500, 8, 12, 7
+				FormatJson::encode( [ PraiseworthyConditions::SETTING_MAX_REVERTS => 200 ] ),
+				500, 8, 12, 7,
 			],
 			'maxReverts null' => [
 				new PraiseworthyConditions( 500, 8, null, 7 ),
 				'{}',
-				500, 8, null, 7
+				500, 8, null, 7,
 			],
 			'something else set' => [
 				new PraiseworthyConditions( 500, 8, 12, 7 ),
-				FormatJson::encode( [ 'foo' => 200, ] ),
-				500, 8, 12, 7
+				FormatJson::encode( [ 'foo' => 200 ] ),
+				500, 8, 12, 7,
 			],
 		];
 	}

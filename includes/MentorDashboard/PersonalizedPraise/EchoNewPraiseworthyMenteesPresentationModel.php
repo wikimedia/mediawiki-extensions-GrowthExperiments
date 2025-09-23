@@ -22,9 +22,9 @@ class EchoNewPraiseworthyMenteesPresentationModel extends EchoEventPresentationM
 		$title = SpecialPage::getTitleFor( 'MentorDashboard' );
 		return [
 			'url' => $title->getCanonicalURL( [
-				'source' => 'personalized-praise-notification-' . $this->getDistributionType()
+				'source' => 'personalized-praise-notification-' . $this->getDistributionType(),
 			] ),
-			'label' => $title->getText()
+			'label' => $title->getText(),
 		];
 	}
 
@@ -35,11 +35,11 @@ class EchoNewPraiseworthyMenteesPresentationModel extends EchoEventPresentationM
 		return [
 			[
 				'url' => $title->getCanonicalURL( [
-					'source' => 'personalized-praise-notification-' . $this->getDistributionType()
+					'source' => 'personalized-praise-notification-' . $this->getDistributionType(),
 				] ),
 				'label' => $this->msg( 'growthexperiments-notification-secondary-link-new-praiseworthy-mentees' )
-					->text()
-			]
+					->text(),
+			],
 		];
 	}
 }

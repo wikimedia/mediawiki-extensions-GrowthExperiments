@@ -50,68 +50,68 @@ class TipsAssemblerTest extends MediaWikiIntegrationTestCase {
 					'tasktype' => new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 					'editor' => 'visualeditor',
 					'skin' => 'vector',
-					'dir' => 'ltr'
+					'dir' => 'ltr',
 				],
 				[
-					'tipCount' => 6
-				]
+					'tipCount' => 6,
+				],
 			],
 			[
 				[
 					'tasktype' => new TaskType( 'foo', TaskType::DIFFICULTY_HARD ),
 					'editor' => 'visualeditor',
 					'skin' => 'vector',
-					'dir' => 'ltr'
+					'dir' => 'ltr',
 				],
 				[
 					'tipCount' => 0,
-					'expectedException' => \LogicException::class
-				]
+					'expectedException' => \LogicException::class,
+				],
 			],
 			[
 				[
 					'tasktype' => new TaskType( 'links', TaskType::DIFFICULTY_MEDIUM ),
 					'editor' => 'foo',
 					'skin' => 'vector',
-					'dir' => 'ltr'
+					'dir' => 'ltr',
 				],
 				[
-					'tipCount' => 6
-				]
+					'tipCount' => 6,
+				],
 			],
 			[
 				[
 					'tasktype' => new TaskType( 'references', TaskType::DIFFICULTY_HARD ),
 					'editor' => 'foo',
 					'skin' => 'bar',
-					'dir' => 'ltr'
+					'dir' => 'ltr',
 				],
 				[
-					'tipCount' => 7
-				]
+					'tipCount' => 7,
+				],
 			],
 			[
 				[
 					'tasktype' => new TaskType( 'expand', TaskType::DIFFICULTY_HARD ),
 					'editor' => 'foo',
 					'skin' => 'bar',
-					'dir' => 'zxvzxc'
+					'dir' => 'zxvzxc',
 				],
 				[
-					'tipCount' => 6
-				]
+					'tipCount' => 6,
+				],
 			],
 			[
 				[
 					'tasktype' => new TaskType( 'update', TaskType::DIFFICULTY_EASY ),
 					'editor' => 1,
 					'skin' => 2,
-					'dir' => 3
+					'dir' => 3,
 				],
 				[
-					'tipCount' => 6
-				]
-			]
+					'tipCount' => 6,
+				],
+			],
 		];
 	}
 

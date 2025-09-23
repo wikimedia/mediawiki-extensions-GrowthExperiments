@@ -35,7 +35,7 @@ class UserImpactPageUpdatedSubscriber extends MediaWikiIntegrationTestCase {
 
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
 		$configurationLoader->method( 'getTaskTypes' )->willReturn( [
-			'copyedit' => new TemplateBasedTaskType( 'copyedit', 'easy', [], [] )
+			'copyedit' => new TemplateBasedTaskType( 'copyedit', 'easy', [], [] ),
 		] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
@@ -100,7 +100,7 @@ class UserImpactPageUpdatedSubscriber extends MediaWikiIntegrationTestCase {
 			[
 				'expand' => 10,
 				'links' => 10,
-				'references' => 20
+				'references' => 20,
 			],
 			0,
 			3,
@@ -119,8 +119,8 @@ class UserImpactPageUpdatedSubscriber extends MediaWikiIntegrationTestCase {
 						'2022-10-01' => 100,
 						'2022-10-02' => 200,
 						'2022-10-03' => 300,
-					]
-				]
+					],
+				],
 			],
 			new EditingStreak(
 				new DatePeriod(

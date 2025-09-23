@@ -128,49 +128,49 @@ class PruningLinkRecommendationProviderTest extends MediaWikiIntegrationTestCase
 				[ "Project:X$i", "Project:Y$i" ],
 				[],
 				true,
-				$linkRecommendationFull
+				$linkRecommendationFull,
 			],
 			'exclusion list' => [
 				$linkRecommendationFull,
 				[ "Project:X$i", "Project:Y$i" ],
 				[ "Project:Y$i" ],
 				true,
-				$linkRecommendationHalfPruned
+				$linkRecommendationHalfPruned,
 			],
 			'exclusion list #2' => [
 				$linkRecommendationFull,
 				[ "Project:X$i", "Project:Y$i" ],
 				[ "Project:X$i" ],
 				true,
-				$linkRecommendationOtherHalfPruned
+				$linkRecommendationOtherHalfPruned,
 			],
 			'redlink, enabled' => [
 				$linkRecommendationFull,
 				[ "Project:X$i" ],
 				[],
 				true,
-				$linkRecommendationHalfPruned
+				$linkRecommendationHalfPruned,
 			],
 			'redlink, disabled' => [
 				$linkRecommendationFull,
 				[ "Project:X$i" ],
 				[],
 				false,
-				$linkRecommendationFull
+				$linkRecommendationFull,
 			],
 			'all pruned' => [
 				$linkRecommendationFull,
 				[ "Project:X$i" ],
 				[ "Project:X$i" ],
 				true,
-				$warning
+				$warning,
 			],
 			'error' => [
 				$error,
 				[ "Project:X$i", "Project:Y$i" ],
 				[],
 				true,
-				$error
+				$error,
 			],
 		];
 	}

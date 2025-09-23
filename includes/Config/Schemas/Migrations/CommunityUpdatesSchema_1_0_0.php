@@ -19,12 +19,12 @@ class CommunityUpdatesSchema_1_0_0 extends JsonSchema {
 	public const GEHomepageCommunityUpdatesContentTitle = [
 		self::TYPE => self::TYPE_STRING,
 		self::DEFAULT => '',
-		self::MAX_LENGTH => 50
+		self::MAX_LENGTH => 50,
 	];
 
 	public const GEHomepageCommunityUpdatesContentBody = [
 		self::TYPE => self::TYPE_STRING,
 		self::DEFAULT => '',
-		self::MAX_LENGTH => 150
+		self::MAX_LENGTH => 150,
 	];
 }

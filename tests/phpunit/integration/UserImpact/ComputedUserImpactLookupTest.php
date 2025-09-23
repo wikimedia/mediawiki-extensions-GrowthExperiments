@@ -64,7 +64,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
 		$configurationLoader->method( 'getTaskTypes' )->willReturn( [
-			'copyedit' => new TemplateBasedTaskType( 'copyedit', 'easy', [], [] )
+			'copyedit' => new TemplateBasedTaskType( 'copyedit', 'easy', [], [] ),
 		] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
@@ -112,7 +112,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$userImpact = $userImpactLookup->getUserImpact( $userIdentity );
 
 		$this->assertTrue( $userIdentity->equals( $userImpact->getUser() ) );
-		$this->assertSame( [ NS_MAIN => 5, NS_TALK => 1, ], $userImpact->getEditCountByNamespace() );
+		$this->assertSame( [ NS_MAIN => 5, NS_TALK => 1 ], $userImpact->getEditCountByNamespace() );
 		$this->assertSame( [ '2022-10-01' => 5, '2022-10-02' => 1 ], $userImpact->getEditCountByDay() );
 		$this->assertSame( 1, $userImpact->getNewcomerTaskEditCount() );
 		$this->assertSame( (int)wfTimestamp( TS_UNIX, '20221002120000' ), $userImpact->getLastEditTimestamp() );

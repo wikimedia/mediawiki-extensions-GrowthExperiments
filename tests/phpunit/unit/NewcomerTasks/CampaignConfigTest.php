@@ -38,12 +38,12 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 		$campaignConfig = new CampaignConfig( [
 			'growth-glam-2022' => [
 				'topics' => $topicIds,
-				'pattern' => '/^growth-glam-mexico-2022$/'
-			]
+				'pattern' => '/^growth-glam-mexico-2022$/',
+			],
 		], [
 			'argentina' => 'growtharticletopic:argentina',
 			'mexico' => 'growtharticletopic:mexico',
-			'chile' => 'growtharticletopic:chile'
+			'chile' => 'growtharticletopic:chile',
 		] );
 		$this->assertEquals(
 			'growth-glam-2022',
@@ -52,7 +52,7 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( $campaignConfig->getCampaignTopics(), [
 			[ 'id' => 'argentina', 'searchExpression' => 'growtharticletopic:argentina' ],
 			[ 'id' => 'mexico', 'searchExpression' => 'growtharticletopic:mexico' ],
-			[ 'id' => 'chile', 'searchExpression' => 'growtharticletopic:chile' ]
+			[ 'id' => 'chile', 'searchExpression' => 'growtharticletopic:chile' ],
 		] );
 		$this->assertArrayEquals(
 			$campaignConfig->getTopicsForCampaign( 'growth-glam-2022' ),
@@ -72,17 +72,17 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 		$campaignConfig = new CampaignConfig( [
 			'growth-glam-2022' => [
 				'topics' => [ 'argentina', 'mexico', 'chile' ],
-				'pattern' => '/^growth-glam-2022$/'
+				'pattern' => '/^growth-glam-2022$/',
 			],
 			'growth-argentina-2022' => [
 				'topics' => [ 'argentina', 'argentina-expanded' ],
-				'pattern' => '/^growth-argentina-2022$/'
-			]
+				'pattern' => '/^growth-argentina-2022$/',
+			],
 		], [
 			'argentina' => 'growtharticletopic:argentina',
 			'mexico' => 'growtharticletopic:mexico',
 			'chile' => 'growtharticletopic:chile',
-			'argentina-expanded' => 'morelikethis:argentina'
+			'argentina-expanded' => 'morelikethis:argentina',
 		] );
 		$this->assertArrayEquals(
 			$campaignConfig->getCampaignTopics(),
@@ -90,7 +90,7 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 				[ 'id' => 'argentina', 'searchExpression' => 'growtharticletopic:argentina' ],
 				[ 'id' => 'mexico', 'searchExpression' => 'growtharticletopic:mexico' ],
 				[ 'id' => 'chile', 'searchExpression' => 'growtharticletopic:chile' ],
-				[ 'id' => 'argentina-expanded', 'searchExpression' => 'morelikethis:argentina' ]
+				[ 'id' => 'argentina-expanded', 'searchExpression' => 'morelikethis:argentina' ],
 			]
 		);
 		$this->assertArrayEquals(
@@ -118,8 +118,8 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 	public function testShouldSkipWelcomeSurvey() {
 		$campaignConfig = new CampaignConfig( [
 			'growth-glam-2022' => [
-				'pattern' => '/^growth-glam-mexico-2022$/'
-			]
+				'pattern' => '/^growth-glam-mexico-2022$/',
+			],
 		] );
 		$this->assertFalse(
 			$campaignConfig->shouldSkipWelcomeSurvey( 'growth-glam-mexico-2022' )
@@ -127,8 +127,8 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 		$campaignConfig = new CampaignConfig( [
 			'growth-glam-2022' => [
 				'pattern' => '/^growth-glam-mexico-2022$/',
-				'skipWelcomeSurvey' => true
-			]
+				'skipWelcomeSurvey' => true,
+			],
 		] );
 		$this->assertTrue(
 			$campaignConfig->shouldSkipWelcomeSurvey( 'growth-glam-mexico-2022' )
@@ -144,8 +144,8 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 		$campaignConfig = new CampaignConfig( [
 			'growth-glam-2022' => [
 				'pattern' => '/^growth-glam-mexico-2022$/',
-				'messageKey' => 'growthglamcampaignkey'
-			]
+				'messageKey' => 'growthglamcampaignkey',
+			],
 		] );
 		$this->assertEquals(
 			'growthglamcampaignkey',
@@ -158,15 +158,15 @@ class CampaignConfigTest extends MediaWikiUnitTestCase {
 		$campaignConfig = new CampaignConfig( [
 			'some-campaign' => [
 				'topics' => [ 'topic-1' ],
-				'pattern' => '/^growth-glam-2022$/'
+				'pattern' => '/^growth-glam-2022$/',
 			],
 			'another-campaign' => [
 				'topics' => [ 'topic-2' ],
-				'pattern' => '/^growth-thankyou-2022$/'
-			]
+				'pattern' => '/^growth-thankyou-2022$/',
+			],
 		], [
 			'topic-1' => 'growtharticletopic:topic-1',
-			'topic-2' => 'growtharticletopic:topic-2'
+			'topic-2' => 'growtharticletopic:topic-2',
 		], $mockUserOptionsLookup );
 
 		$user = new UserIdentityValue( 1, 'User1' );

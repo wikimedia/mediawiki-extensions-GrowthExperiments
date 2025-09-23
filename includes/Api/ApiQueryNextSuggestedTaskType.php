@@ -92,7 +92,7 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 			'activetasktype' => [
 				ParamValidator::PARAM_TYPE => array_keys( $taskTypes ),
 				ParamValidator::PARAM_REQUIRED => true,
-			]
+			],
 		];
 	}
 }

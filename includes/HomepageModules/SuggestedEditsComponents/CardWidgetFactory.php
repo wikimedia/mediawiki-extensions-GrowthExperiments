@@ -22,13 +22,13 @@ class CardWidgetFactory {
 			if ( $taskSet->count() ) {
 				return new EditCardWidget( [
 					'task' => $taskSet[0],
-					'dir' => $dir
+					'dir' => $dir,
 				] );
 			} else {
 				return new NoResultsCardWidget( [
 					'localizer' => $messageLocalizer,
 					'topicMatching' => $topicMatching,
-					'topicMatchModeIsAND' => $topicMatchModeIsAND
+					'topicMatchModeIsAND' => $topicMatchModeIsAND,
 				] );
 			}
 		}

@@ -114,7 +114,7 @@ class QualityGateDecorator implements TaskSuggester {
 							$user,
 							$linkRecommendationTaskType
 						),
-						'dailyCount' => $this->getLinkRecommendationTasksDoneByUserForCurrentDay( $user )
+						'dailyCount' => $this->getLinkRecommendationTasksDoneByUserForCurrentDay( $user ),
 					] );
 			}
 		}

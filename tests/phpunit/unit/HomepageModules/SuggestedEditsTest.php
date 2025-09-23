@@ -76,7 +76,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 	private function getSuggestedEdits(): SuggestedEdits {
 		$config = new HashConfig( [
 			'GEHomepageSuggestedEditsEnabled' => true,
-			'GEHomepageSuggestedEditsEnableTopics' => false
+			'GEHomepageSuggestedEditsEnableTopics' => false,
 		] );
 		$languageMock = $this->createMock( Language::class );
 		$languageMock->method( 'getCode' )

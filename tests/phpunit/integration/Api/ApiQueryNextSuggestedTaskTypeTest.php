@@ -20,7 +20,7 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 
 	public function testNotLoggedIn() {
 		$configurationLoader = new StaticConfigurationLoader( [
-			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY )
+			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 		] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 		$this->expectException( ApiUsageException::class );
@@ -35,13 +35,15 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 
 	public function testInvalidTaskTypeParameter() {
 		$configurationLoader = new StaticConfigurationLoader( [
-			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY )
+			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 		] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'Unrecognized value for parameter "gnsttactivetasktype": link-recommendation.' );
 		$this->doApiRequestWithToken( [
-			'action' => 'query', 'meta' => 'growthnextsuggestedtasktype', 'gnsttactivetasktype' => 'link-recommendation'
+			'action' => 'query',
+			'meta' => 'growthnextsuggestedtasktype',
+			'gnsttactivetasktype' => 'link-recommendation',
 		], null, $this->getServiceContainer()->getUserFactory()->newAnonymous() );
 	}
 
@@ -91,7 +93,7 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 		$result = $this->doApiRequestWithToken( [
 			'action' => 'query',
 			'meta' => 'growthnextsuggestedtasktype',
-			'gnsttactivetasktype' => 'copyedit'
+			'gnsttactivetasktype' => 'copyedit',
 		] );
 		$this->assertSame( 'link-recommendation', $result[0]['query']['growthnextsuggestedtasktype'] );
 	}

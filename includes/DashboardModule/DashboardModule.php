@@ -27,7 +27,7 @@ abstract class DashboardModule implements IDashboardModule {
 	protected static $supportedModes = [
 		self::RENDER_DESKTOP,
 		self::RENDER_MOBILE_SUMMARY,
-		self::RENDER_MOBILE_DETAILS
+		self::RENDER_MOBILE_DETAILS,
 	];
 
 	private IContextSource $ctx;
@@ -215,7 +215,7 @@ abstract class DashboardModule implements IDashboardModule {
 					...$this->getCssClasses(),
 				],
 				'data-module-name' => $this->name,
-				'data-mode' => $this->getMode()
+				'data-mode' => $this->getMode(),
 			],
 			implode( "\n", $sections )
 		);
@@ -238,8 +238,8 @@ abstract class DashboardModule implements IDashboardModule {
 				'class' => [
 					static::BASE_CSS_CLASS . '-section',
 					static::BASE_CSS_CLASS . '-section-' . $name,
-					static::BASE_CSS_CLASS . '-' . $name
-				]
+					static::BASE_CSS_CLASS . '-' . $name,
+				],
 			],
 			$content
 		) : '';
@@ -433,7 +433,7 @@ abstract class DashboardModule implements IDashboardModule {
 	protected function getHeaderIcon( $name, $invert ) {
 		$defaultIconClasses = [
 			self::BASE_CSS_CLASS . '-header-icon',
-			'icon-' . $name
+			'icon-' . $name,
 		];
 		$invertClasses = $invert ?
 			[ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ] :
@@ -445,7 +445,7 @@ abstract class DashboardModule implements IDashboardModule {
 			// 'classes' => [ 'oo-ui-image-invert' ] doesn't work either, because
 			// Theme::getElementClasses() will unset it again. So instead, trick that code into
 			// thinking this is a checkbox icon, which will cause it to invert the icon
-			'classes' => array_merge( $defaultIconClasses, $invertClasses )
+			'classes' => array_merge( $defaultIconClasses, $invertClasses ),
 		] );
 	}
 

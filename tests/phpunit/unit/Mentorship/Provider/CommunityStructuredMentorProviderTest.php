@@ -32,32 +32,32 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			123 => [
 				'message' => null,
 				'weight' => 2,
-				'username' => 'TestMentor1'
+				'username' => 'TestMentor1',
 			],
 			456 => [
 				'message' => 'Custom intro',
 				'weight' => 4,
-				'username' => 'TestMentor2'
+				'username' => 'TestMentor2',
 			],
 			33 => [
 				'message' => 'I only test mentorship',
 				'weight' => 0,
-				'username' => 'TestMentor3'
+				'username' => 'TestMentor3',
 			],
 			789 => [
 				'message' => 'I am opted out despite having weight',
 				'weight' => 3,
 				'username' => 'TestMentor4',
-				'automaticallyAssigned' => false
-			]
-		]
+				'automaticallyAssigned' => false,
+			],
+		],
 	];
 
 	private const USERNAME_MAP = [
 		123 => 'TestMentor1',
 		456 => 'TestMentor2',
 		33 => 'TestMentor3',
-		789 => 'TestMentor4'
+		789 => 'TestMentor4',
 	];
 
 	private function getMockConfigurationProvider() {
@@ -193,24 +193,24 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 				[
 					'message' => null,
 					'weight' => 2,
-					'username' => 'TestMentor1'
-				]
+					'username' => 'TestMentor1',
+				],
 			],
 			[
 				456,
 				[
 					'message' => 'Custom intro',
 					'weight' => 4,
-					'username' => 'TestMentor2'
-				]
+					'username' => 'TestMentor2',
+				],
 			],
 			[
 				33,
 				[
 					'message' => 'I only test mentorship',
 					'weight' => 0,
-					'username' => 'TestMentor3'
-				]
+					'username' => 'TestMentor3',
+				],
 			],
 		];
 	}
@@ -277,7 +277,7 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		$wanCache = new WANObjectCache( [
 			'cache' => $cache,
 			'logger' => new NullLogger(),
-			'asyncHandler' => null
+			'asyncHandler' => null,
 		] );
 
 		$provider = new CommunityStructuredMentorProvider(
@@ -328,7 +328,7 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 
 		$expected = [
 			'TestMentor1', 'TestMentor1',
-			'TestMentor2', 'TestMentor2', 'TestMentor2', 'TestMentor2'
+			'TestMentor2', 'TestMentor2', 'TestMentor2', 'TestMentor2',
 		];
 
 		$this->assertEquals( $expected, $names );

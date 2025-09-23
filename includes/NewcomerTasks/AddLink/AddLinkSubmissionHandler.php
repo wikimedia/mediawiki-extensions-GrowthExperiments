@@ -112,7 +112,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 				'title' => $title->getPrefixedDBkey(),
 				'baseRevId' => $baseRevId,
 				'editRevId' => $editRevId,
-				'data' => json_encode( $data )
+				'data' => json_encode( $data ),
 			] );
 			// Try to find the find the link recommendation based on the link target.
 			$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget(
@@ -129,7 +129,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 				'title' => $title->getPrefixedDBkey(),
 				'baseRevId' => $baseRevId,
 				'editRevId' => $editRevId,
-				'data' => json_encode( $data )
+				'data' => json_encode( $data ),
 			] );
 			return StatusValue::newFatal( 'growthexperiments-addlink-handler-notfound' );
 		}

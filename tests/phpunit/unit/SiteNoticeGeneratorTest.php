@@ -40,7 +40,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->method( 'isSpecial' )
 			->willReturnMap( [
 				[ 'WelcomeSurvey', false ],
-				[ 'Homepage', true ]
+				[ 'Homepage', true ],
 			] );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
@@ -77,7 +77,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->method( 'isSpecial' )
 			->willReturnMap( [
 				[ 'WelcomeSurvey', false ],
-				[ 'Homepage', true ]
+				[ 'Homepage', true ],
 			] );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
@@ -160,7 +160,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->method( 'isSpecial' )
 			->willReturnMap( [
 				[ 'WelcomeSurvey', false ],
-				[ 'Homepage', true ]
+				[ 'Homepage', true ],
 			] );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
@@ -242,7 +242,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$languageMock = $this->createMock( Language::class );
 		$languageMock->method( 'getSpecialPageAliases' )
 			->willReturn( [
-				'WelcomeSurvey' => [ 'WelcomeSurvey' ]
+				'WelcomeSurvey' => [ 'WelcomeSurvey' ],
 			] );
 		$skinMock->method( 'getLanguage' )
 			->willReturn( $languageMock );
@@ -291,7 +291,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$languageMock = $this->createMock( Language::class );
 		$languageMock->method( 'getSpecialPageAliases' )
 			->willReturn( [
-				'WelcomeSurvey' => [ 'WelcomeSurvey' ]
+				'WelcomeSurvey' => [ 'WelcomeSurvey' ],
 			] );
 		$skinMock->method( 'getLanguage' )
 			->willReturn( $languageMock );

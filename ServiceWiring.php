@@ -981,7 +981,7 @@ return [
 								$services->getMainWANObjectCache(),
 								$services->getStatsFactory()
 							),
-							$services->getJsonCodec()
+							$services->getJsonCodec(),
 						],
 					],
 					[
@@ -991,8 +991,8 @@ return [
 							$growthServices->getImageRecommendationSubmissionLogFactory(),
 							$growthServices->getSectionImageRecommendationSubmissionLogFactory(),
 							$growthServices->getLinkRecommendationSubmissionLogFactory(),
-							$growthServices->getGrowthExperimentsCampaignConfig()
-						]
+							$growthServices->getGrowthExperimentsCampaignConfig(),
+						],
 					],
 				]
 			);

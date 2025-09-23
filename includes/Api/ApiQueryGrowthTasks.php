@@ -129,7 +129,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				'order' => $i,
 				'qualityGateIds' => $task->getTaskType()->getQualityGateIds(),
 				'qualityGateConfig' => $tasks->getQualityGateConfig(),
-				'token' => $task->getToken()
+				'token' => $task->getToken(),
 			];
 
 			if ( $resultPageSet ) {
@@ -175,7 +175,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			// ID and without `pageids` set will result in returning the same cached task set.
 			$this->jobQueueGroup->lazyPush(
 				new JobSpecification( NewcomerTasksCacheRefreshJob::JOB_NAME, [
-					'userId' => $user->getId()
+					'userId' => $user->getId(),
 				] )
 			);
 		}
@@ -238,7 +238,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_ISMULTI_LIMIT1 => 1000,
 				ParamValidator::PARAM_ISMULTI_LIMIT2 => 1000,
-			]
+			],
 		];
 	}
 

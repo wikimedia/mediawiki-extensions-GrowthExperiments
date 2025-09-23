@@ -306,7 +306,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				$this->msg( 'welcomesurvey-close-btn', $title->getPrefixedText() )->text(),
 				[
 					'href' => $title->getLinkURL( $query ),
-					'class' => 'mw-ui-button mw-ui-progressive'
+					'class' => 'mw-ui-button mw-ui-progressive',
 				]
 			)
 		);
@@ -329,7 +329,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		return $this->getConfirmationButtonsWrapper(
 			Html::linkButton( $this->msg( 'welcomesurvey-close-btn', $title )->text(), [
 				'href' => $title->getLinkURL( wfArrayToCgi( $queryArray ) ),
-				'class' => 'mw-ui-button mw-ui-safe'
+				'class' => 'mw-ui-button mw-ui-safe',
 			] ) .
 			$this->getHomepageButton()
 		);
@@ -344,7 +344,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				'href' => $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getLinkURL(
 					[ 'source' => 'specialwelcomesurvey' ]
 				),
-				'class' => 'mw-ui-button mw-ui-progressive mw-ge-welcomesurvey-homepage-button'
+				'class' => 'mw-ui-button mw-ui-progressive mw-ge-welcomesurvey-homepage-button',
 			]
 		);
 	}

@@ -44,7 +44,7 @@ class ApiQueryMenteeStatus extends ApiQueryBase {
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), [
-			'menteestatus' => $statusHumanReadable
+			'menteestatus' => $statusHumanReadable,
 		] );
 	}
 }

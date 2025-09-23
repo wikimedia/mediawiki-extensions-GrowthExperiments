@@ -226,8 +226,8 @@ class WelcomeSurvey {
 					$this->context->getUser()->getName() ],
 				'size' => 255,
 				'hide-if' => [ '!==', 'reason', 'other' ],
-				'group' => 'reason'
-			]
+				'group' => 'reason',
+			],
 		] : [];
 		// When free text is disabled, add an "Other" option to the reason question
 		$reasonOtherOption = $this->allowFreetext ? [] : [
@@ -248,7 +248,7 @@ class WelcomeSurvey {
 				"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
 				"name" => "reason",
 				"group" => "reason",
-			] + $reasonOtherSettings
+			] + $reasonOtherSettings,
 		] + $reasonOtherQuestion + [
 			"edited" => [
 				"type" => "select",
@@ -279,10 +279,10 @@ class WelcomeSurvey {
 				"dependencies" => [
 					"modules" => [
 						"ext.growthExperiments.Account",
-						"ext.uls.mediawiki"
-					]
+						"ext.uls.mediawiki",
+					],
 				],
-				"disabled" => false
+				"disabled" => false,
 			],
 			"user-research" => [
 				"type" => "check",
@@ -297,7 +297,7 @@ class WelcomeSurvey {
 					$this->context->getUser()->getName(),
 					$this->context->getConfig()->get( 'WelcomeSurveyPrivacyStatementUrl' )
 				)->parse() ),
-				"cssclass" => "welcomesurvey-privacy-info"
+				"cssclass" => "welcomesurvey-privacy-info",
 			],
 			"mentor-info" => [
 				"type" => "info",
@@ -319,7 +319,7 @@ class WelcomeSurvey {
 				"placeholder-message" => "welcomesurvey-question-email-placeholder",
 				"help-message" => "welcomesurvey-question-email-help",
 				"group" => "email",
-			]
+			],
 		];
 		if ( !$this->ulsInstalled ) {
 			$questions['languages']['disabled'] = true;
@@ -461,7 +461,7 @@ class WelcomeSurvey {
 			'returnto' => $returnTo,
 			'returntoquery' => $returnToQuery,
 			'group' => $group,
-			'_welcomesurveytoken' => $welcomeSurveyToken
+			'_welcomesurveytoken' => $welcomeSurveyToken,
 		];
 	}
 

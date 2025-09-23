@@ -81,8 +81,8 @@ class ImageRecommendationMetadataProviderTest extends \MediaWikiIntegrationTestC
 	private function getImageDescription( array $description = [] ): array {
 		return [
 			'ImageDescription' => [
-				'value' => $description
-			]
+				'value' => $description,
+			],
 		];
 	}
 
@@ -118,7 +118,7 @@ class ImageRecommendationMetadataProviderTest extends \MediaWikiIntegrationTestC
 		return array_replace( [
 			'filename' => $filename,
 			'projects' => [ 'enwiki', 'cswiki' ],
-			'source' => 'wikipedia'
+			'source' => 'wikipedia',
 		], $overrides );
 	}
 

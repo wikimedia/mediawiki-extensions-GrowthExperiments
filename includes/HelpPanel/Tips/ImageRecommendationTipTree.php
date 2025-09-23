@@ -16,21 +16,21 @@ class ImageRecommendationTipTree extends TipTree {
 					[
 						'type' => self::TIP_DATA_TYPE_TEXT_VARIANT,
 						'data' => 'italic',
-					]
-				]
+					],
+				],
 			],
 			'step1' => [
 				'header' => [],
-				'main-multiple' => []
+				'main-multiple' => [],
 			],
 			'step2' => [
 				'header' => [],
-				'main' => []
+				'main' => [],
 			],
 			'step3' => [
 				'header' => [],
-				'main-multiple' => []
-			]
+				'main-multiple' => [],
+			],
 		];
 	}
 

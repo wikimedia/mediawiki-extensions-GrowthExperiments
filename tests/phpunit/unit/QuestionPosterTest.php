@@ -210,7 +210,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$questionPoster = TestingAccessWrapper::newFromObject( $questionPosterMock );
 		$questionRecords = [
 			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo' ] ),
-			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo (2)' ] )
+			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo (2)' ] ),
 		];
 		$questionPoster->existingQuestionsByUser = $questionRecords;
 		$this->assertSame(
@@ -229,7 +229,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$questionPoster = TestingAccessWrapper::newFromObject( $questionPosterMock );
 		$questionRecords = [
 			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo' ] ),
-			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo (3)' ] )
+			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo (3)' ] ),
 		];
 		$questionPoster->existingQuestionsByUser = $questionRecords;
 		$this->assertSame(

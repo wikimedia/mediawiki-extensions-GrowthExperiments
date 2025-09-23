@@ -62,7 +62,7 @@ class WelcomeSurveySkipHandler extends Handler {
 	 */
 	public function getSupportedRequestTypes(): array {
 		return [
-			'application/x-www-form-urlencoded'
+			'application/x-www-form-urlencoded',
 		];
 	}
 

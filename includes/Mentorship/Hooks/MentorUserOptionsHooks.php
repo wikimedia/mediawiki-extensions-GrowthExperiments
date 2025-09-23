@@ -24,7 +24,7 @@ class MentorUserOptionsHooks implements
 	/** @inheritDoc */
 	public function onGetPreferences( $user, &$preferences ) {
 		$preferences[ MentorManager::MENTORSHIP_ENABLED_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 		$preferences[ MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF ] = [
 			'type' => 'api',

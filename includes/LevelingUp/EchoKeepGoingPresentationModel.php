@@ -25,7 +25,7 @@ class EchoKeepGoingPresentationModel extends EchoKeepGoingBasePresentationModel 
 			'label' => $this->getMessageWithAgent(
 				'growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label'
 			)->text(),
-			'icon' => 'edit'
+			'icon' => 'edit',
 		] ];
 	}
 }

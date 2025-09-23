@@ -118,7 +118,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 			'image_suggestions',
 			'suggestions',
 			$this->wikiId,
-			$articleId
+			$articleId,
 		] );
 	}
 
@@ -206,7 +206,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 			'image_suggestions',
 			'title_cache',
 			$this->wikiId,
-			$titleText
+			$titleText,
 		] );
 		$status = $request->execute();
 		if ( !$status->isOK() ) {

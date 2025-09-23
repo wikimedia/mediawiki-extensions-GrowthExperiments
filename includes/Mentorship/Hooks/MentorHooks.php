@@ -94,7 +94,7 @@ class MentorHooks implements
 			AttributeManager::ATTR_LOCATORS => [
 				[
 					[ UserLocator::class, 'locateFromEventExtra' ],
-					[ 'mentee' ]
+					[ 'mentee' ],
 				],
 			],
 		];
@@ -106,9 +106,9 @@ class MentorHooks implements
 			AttributeManager::ATTR_LOCATORS => [
 				[
 					[ UserLocator::class, 'locateFromEventExtra' ],
-					[ 'mentor' ]
-				]
-			]
+					[ 'mentor' ],
+				],
+			],
 		];
 		$notifications['new-praiseworthy-mentees'] = [
 			'category' => 'ge-mentorship',
@@ -117,19 +117,19 @@ class MentorHooks implements
 			'canNotifyAgent' => true,
 			'presentation-model' => EchoNewPraiseworthyMenteesPresentationModel::class,
 			AttributeManager::ATTR_LOCATORS => [
-				UserLocator::class . '::locateEventAgent'
-			]
+				UserLocator::class . '::locateEventAgent',
+			],
 		];
 
 		$icons['growthexperiments-mentor'] = [
 			'path' => [
 				'ltr' => 'GrowthExperiments/images/mentor-ltr.svg',
-				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg'
-			]
+				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg',
+			],
 		];
 		// T332732: In he, the mentor icon should be displayed in LTR
 		$icons['growthexperiments-mentor-ltr'] = [
-			'path' => 'GrowthExperiments/images/mentor-ltr.svg'
+			'path' => 'GrowthExperiments/images/mentor-ltr.svg',
 		];
 	}
 

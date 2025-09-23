@@ -44,7 +44,7 @@ class ManageMentorsRemoveMentor extends ManageMentorsAbstractForm {
 			'reason' => [
 				'type' => 'text',
 				'label-message' => 'growthexperiments-manage-mentors-remove-mentor-reason',
-			]
+			],
 		];
 	}
 

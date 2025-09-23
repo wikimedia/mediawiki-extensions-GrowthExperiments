@@ -50,7 +50,7 @@ class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
 			[
 				'foo',
 				null,
-			]
+			],
 		];
 	}
 
@@ -102,7 +102,7 @@ class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
 				'newcomer task image suggestion',
 				'"foo" is not a valid change tag name for ' .
 				ImageRecommendationTaskTypeHandler::class,
-			]
+			],
 		];
 	}
 

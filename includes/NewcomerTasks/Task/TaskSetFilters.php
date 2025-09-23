@@ -77,7 +77,7 @@ class TaskSetFilters implements JsonCodecable {
 		return [
 			'task' => $this->taskTypeFilters,
 			'topic' => $this->topicFilters,
-			'topicMode' => $this->topicFiltersMode
+			'topicMode' => $this->topicFiltersMode,
 		];
 	}
 

@@ -13,19 +13,19 @@ class LinkRecommendationTipTree extends TipTree {
 				'example' => [ [
 					'type' => self::TIP_DATA_TYPE_PLAIN_MESSAGE,
 					'data' => [ 'labelKey' =>
-						'growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label'
-					]
+						'growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label',
+					],
 				] ],
-				'text' => []
+				'text' => [],
 			],
 			'calm' => [
 				'header' => [],
-				'main' => []
+				'main' => [],
 			],
 			'rules1' => [
 				'header' => [],
-				'main' => []
-			]
+				'main' => [],
+			],
 		];
 		return $this->maybeAddLearnMoreLinkTipNode( $steps, 'calm' );
 	}

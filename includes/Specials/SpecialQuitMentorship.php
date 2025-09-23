@@ -73,8 +73,8 @@ class SpecialQuitMentorship extends FormSpecialPage {
 		return [
 			'reason' => [
 				'type' => 'text',
-				'label-message' => 'growthexperiments-quit-mentorship-reason'
-			]
+				'label-message' => 'growthexperiments-quit-mentorship-reason',
+			],
 		];
 	}
 

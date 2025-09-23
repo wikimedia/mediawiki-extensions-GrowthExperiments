@@ -17,13 +17,13 @@ class PersonalizedPraiseHooks implements
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
 		$preferences[ PraiseworthyConditionsLookup::WAS_PRAISED_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 		$preferences[ PraiseworthyConditionsLookup::SKIPPED_UNTIL_PREF ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 		$preferences[ PersonalizedPraiseSettings::PREF_NAME ] = [
-			'type' => 'api'
+			'type' => 'api',
 		];
 	}
 

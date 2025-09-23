@@ -94,7 +94,7 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 				$params['sectionnumber'],
 			);
 			$this->getResult()->addValue( null, $this->getModuleName(), [
-				'status' => 'ok'
+				'status' => 'ok',
 			] );
 		} else {
 			$this->dieWithError( [ 'apierror-invalidtitle', $titleValue->getDBkey() ] );
@@ -146,7 +146,7 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 			'sectionnumber' => [
 				ParamValidator::PARAM_REQUIRED => false,
 				ParamValidator::PARAM_TYPE => 'integer',
-			]
+			],
 		];
 	}
 

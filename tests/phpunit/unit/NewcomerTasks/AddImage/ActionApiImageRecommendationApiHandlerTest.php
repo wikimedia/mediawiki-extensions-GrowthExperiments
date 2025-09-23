@@ -47,7 +47,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 							'code' => 'mustbeloggedin-generic',
 							'text' => 'You must be logged in.',
 							'module' => 'query+growthimagesuggestiondata',
-						]
+						],
 					],
 				],
 				'expectedResult' => StatusValue::newFatal(
@@ -100,7 +100,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'sectionTitle' => null,
 											],
 										],
-										'datasetId' => '1234abcd'
+										'datasetId' => '1234abcd',
 									],
 								],
 							],
@@ -134,7 +134,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'sectionTitle' => null,
 											],
 										],
-										'datasetId' => '1234abcd'
+										'datasetId' => '1234abcd',
 									],
 								],
 							],
@@ -177,7 +177,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'sectionTitle' => null,
 											],
 										],
-										'datasetId' => '1234abcd'
+										'datasetId' => '1234abcd',
 									],
 								],
 							],
@@ -221,7 +221,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'sectionTitle' => 'Foo',
 											],
 										],
-										'datasetId' => '1234abcd'
+										'datasetId' => '1234abcd',
 									],
 								],
 							],
@@ -254,7 +254,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'metadata' => [ '...' ],
 											],
 										],
-										'datasetId' => '1234abcd'
+										'datasetId' => '1234abcd',
 									],
 								],
 							],
@@ -288,7 +288,7 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 												'sectionTitle' => null,
 											],
 										],
-										'datasetId' => '1234abcd'
+										'datasetId' => '1234abcd',
 									],
 								],
 							],

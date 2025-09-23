@@ -116,7 +116,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			->select( [ 'mentee_id', 'mentee_data' ] )
 			->from( 'growthexperiments_mentee_data' )
 			->conds( [
-				'mentee_id' => $mentee->getId()
+				'mentee_id' => $mentee->getId(),
 			] )
 			->caller( __METHOD__ )
 			->fetchRow();

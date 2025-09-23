@@ -155,8 +155,8 @@ class NewcomerMilestoneIngress extends DomainEventIngress implements PageRevisio
 			'agent' => $user,
 			'extra' => [
 				'threshold' => $threshold,
-				'views-count' => array_sum( $userImpact->getDailyTotalViews() )
-			]
+				'views-count' => array_sum( $userImpact->getDailyTotalViews() ),
+			],
 		] );
 	}
 }

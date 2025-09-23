@@ -142,7 +142,7 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 					'maxTasksPerDay' => 25,
 					'minimumCaptionCharacterLength' => 5,
 					'minimumImageSize' => [
-						'width' => 100
+						'width' => 100,
 					],
 				],
 			],
@@ -165,7 +165,7 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 					'maxTasksPerDay' => 25,
 					'minimumCaptionCharacterLength' => 5,
 					'minimumImageSize' => [
-						'width' => 100
+						'width' => 100,
 					],
 				],
 			],
@@ -326,7 +326,7 @@ JSON;
 					'maxTasksPerDay' => 25,
 					'minimumCaptionCharacterLength' => 5,
 					'minimumImageSize' => [
-						'width' => 100
+						'width' => 100,
 					],
 				],
 			],
@@ -349,7 +349,7 @@ JSON;
 					'maxTasksPerDay' => 25,
 					'minimumCaptionCharacterLength' => 5,
 					'minimumImageSize' => [
-						'width' => 100
+						'width' => 100,
 					],
 				],
 			],

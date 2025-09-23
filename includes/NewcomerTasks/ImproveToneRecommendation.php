@@ -23,7 +23,7 @@ class ImproveToneRecommendation implements Recommendation {
 	public function toArray(): array {
 		return [
 			'title' => $this->title->getText(),
-			'toneData' => $this->toneData
+			'toneData' => $this->toneData,
 		];
 	}
 }

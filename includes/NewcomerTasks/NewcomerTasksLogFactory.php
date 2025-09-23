@@ -39,7 +39,7 @@ class NewcomerTasksLogFactory {
 				'log_type' => 'growthexperiments',
 				'log_action' => $logAction,
 				'actor_name' => $user->getName(),
-				$dbr->buildComparison( '>', [ 'log_timestamp' => $utcTimestamp ] )
+				$dbr->buildComparison( '>', [ 'log_timestamp' => $utcTimestamp ] ),
 			] )
 			->join( 'actor', null, 'log_actor=actor_id' );
 	}

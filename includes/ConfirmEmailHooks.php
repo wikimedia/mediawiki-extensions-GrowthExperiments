@@ -26,7 +26,7 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 	) {
 		if ( !in_array( $action, [
 			AuthManager::ACTION_CREATE,
-			AuthManager::ACTION_CREATE_CONTINUE
+			AuthManager::ACTION_CREATE_CONTINUE,
 		] ) ) {
 			return;
 		}
@@ -86,14 +86,14 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 			$user->getName(),
 			$info['confirmURL'],
 			$lang->userTimeAndDate( $info['expiration'], $user ),
-			$info['invalidateURL']
+			$info['invalidateURL'],
 		];
 		$htmlParams = $textParams;
 		$htmlParams[2] = Message::rawParam( Html::element( 'a',
 			[
 				'href' => $info['confirmURL'],
 				'style' => 'background: #36C; color: white; padding: 0.45em 0.6em; font-weight: bold; ' .
-					'text-align: center; text-decoration: none;'
+					'text-align: center; text-decoration: none;',
 			],
 			wfMessage( 'growthexperiments-confirmemail-confirm-button' )->text()
 		) );
@@ -109,7 +109,7 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 			'text' => wfMessage( 'growthexperiments-confirmemail-confirm-body-plaintext' )
 				->params( $textParams )->text(),
 			'html' => $logoImage . wfMessage( 'growthexperiments-confirmemail-confirm-body-html' )
-				->params( $htmlParams )->parse()
+				->params( $htmlParams )->parse(),
 		];
 	}
 }

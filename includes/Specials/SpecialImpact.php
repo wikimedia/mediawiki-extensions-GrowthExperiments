@@ -112,7 +112,7 @@ class SpecialImpact extends SpecialPage {
 			$configVarName .= ':included';
 		}
 		$configVars = [
-			'wgGEDisableLogging' => true
+			'wgGEDisableLogging' => true,
 		];
 		$configVars[$configVarName] = [
 			// Load the impact data from the client when the page is included and the user has edits, so we don't need

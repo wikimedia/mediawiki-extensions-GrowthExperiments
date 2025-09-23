@@ -58,7 +58,7 @@ class NavigationWidgetFactory {
 				'message' => $this->messageLocalizer->msg(
 					'growthexperiments-homepage-suggestededits-' . strtolower( $direction ) . '-card'
 				)->text(),
-				'hidden' => !$this->task || $this->error
+				'hidden' => !$this->task || $this->error,
 			] ) )->toString() ) );
 	}
 
@@ -72,7 +72,7 @@ class NavigationWidgetFactory {
 				'growthexperiments-homepage-suggestededits-edit-card'
 			)->text(),
 			'flags' => [ 'primary', 'progressive' ],
-			'classes' => [ 'suggested-edits-footer-navigation-edit-button' ]
+			'classes' => [ 'suggested-edits-footer-navigation-edit-button' ],
 		] );
 	}
 }

@@ -58,9 +58,9 @@ class NotificationKeepGoingJob extends AbstractDelayedNotificationJob {
 				'type' => $this->params['eventType'],
 				'title' => $this->specialPageFactory->getTitleForAlias( 'Homepage' ),
 				'extra' => [
-					'suggestededitcount' => $this->levelingUpManager->getSuggestedEditsCount( $userIdentity )
+					'suggestededitcount' => $this->levelingUpManager->getSuggestedEditsCount( $userIdentity ),
 				],
-				'agent' => $userIdentity
+				'agent' => $userIdentity,
 			] );
 			$this->measureNotificationDelay();
 		}

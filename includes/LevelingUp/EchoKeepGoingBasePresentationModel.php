@@ -32,7 +32,7 @@ class EchoKeepGoingBasePresentationModel extends EchoEventPresentationModel {
 			'label' => $this->getMessageWithAgent(
 				'growthexperiments-levelingup-keepgoing-notification-call-to-action-label'
 			)->text(),
-			'icon' => 'edit'
+			'icon' => 'edit',
 		] ];
 	}
 
@@ -40,7 +40,7 @@ class EchoKeepGoingBasePresentationModel extends EchoEventPresentationModel {
 	public function getPrimaryLink() {
 		return [
 			'url' => $this->getSpecialHomepageUrl( 'keep-going-primary-link-' . $this->getDistributionType() ),
-			'label' => $this->msg( 'growthexperiments-levelingup-keepgoing-notification-call-to-action-label' )->text()
+			'label' => $this->msg( 'growthexperiments-levelingup-keepgoing-notification-call-to-action-label' )->text(),
 		];
 	}
 

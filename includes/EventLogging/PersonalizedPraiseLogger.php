@@ -94,7 +94,7 @@ class PersonalizedPraiseLogger {
 				[
 					'notification_policy' => $this->personalizedPraiseSettings->getNotificationsFrequency(
 						$mentor
-					)
+					),
 				]
 			);
 		}
@@ -126,7 +126,7 @@ class PersonalizedPraiseLogger {
 				$mentor,
 				$mentee,
 				[
-					'skip_reason' => $skipReason
+					'skip_reason' => $skipReason,
 				]
 			);
 		}

@@ -124,7 +124,7 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 			->willReturn( true );
 
 		$configWithSEEnabled = new HashConfig( [
-			'GEHomepageSuggestedEditsEnabled' => true
+			'GEHomepageSuggestedEditsEnabled' => true,
 		] );
 
 		$homepageHooks = $this->getHomepageHooksMock(
@@ -146,8 +146,8 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 			'action' => [
 				'action' => '/foo/bar/',
 				'actionText' => 'Foo',
-				'actionType' => 'link'
-			] ]
+				'actionType' => 'link',
+			] ],
 		], $cards, false, true, 'Card should be shown when Homepage and SE are enabled' );
 
 		// Scenario 2: Homepage preference disabled - no card
@@ -173,7 +173,7 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 
 		// Scenario 3: Homepage enabled but SuggestedEdits disabled - no card
 		$configWithSEDisabled = new HashConfig( [
-			'GEHomepageSuggestedEditsEnabled' => false
+			'GEHomepageSuggestedEditsEnabled' => false,
 		] );
 
 		$homepageHooks = $this->getHomepageHooksMock(

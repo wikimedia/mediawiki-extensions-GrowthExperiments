@@ -23,7 +23,7 @@ class TaskType implements JsonCodecable {
 	public const DIFFICULTY_NUMERIC = [
 		1 => self::DIFFICULTY_EASY,
 		2 => self::DIFFICULTY_MEDIUM,
-		3 => self::DIFFICULTY_HARD
+		3 => self::DIFFICULTY_HARD,
 	];
 
 	public const DIFFICULTY_CLASSES = [
@@ -197,7 +197,7 @@ class TaskType implements JsonCodecable {
 				'timeestimate' => $this->getTimeEstimate( $messageLocalizer )->text(),
 			],
 			'learnMoreLink' => $this->getLearnMoreLink(),
-			'iconData' => $this->getIconData()
+			'iconData' => $this->getIconData(),
 		];
 		return $viewData;
 	}
@@ -213,7 +213,7 @@ class TaskType implements JsonCodecable {
 				// * robot-task-type-medium
 				'icon' => 'robot-task-type-' . $this->getDifficulty(),
 				'filterIcon' => 'robot',
-				'descriptionMessageKey' => 'growthexperiments-homepage-suggestededits-tasktype-machine-description'
+				'descriptionMessageKey' => 'growthexperiments-homepage-suggestededits-tasktype-machine-description',
 			];
 		}
 		return [];

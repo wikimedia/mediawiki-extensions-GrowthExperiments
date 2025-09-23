@@ -229,7 +229,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$rows = $this->getReadConnection()->newSelectQueryBuilder()
 			->select( [
 				'actor_user',
-				'last_edit' => 'MAX(rev_timestamp)'
+				'last_edit' => 'MAX(rev_timestamp)',
 			] )
 			->from( 'revision' )
 			->join( 'actor', null, 'rev_actor = actor_id' )
@@ -333,7 +333,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 					__METHOD__ . ': Registration and last_edit timestamps not found for user ID {userId}',
 					[
 						'userId' => $userId,
-						'exception' => new \RuntimeException
+						'exception' => new \RuntimeException,
 					]
 				);
 			}
@@ -387,7 +387,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$res = $this->getTaggedEditsForUsers(
 			[
 				Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG,
-				Mentorship::MENTORSHIP_MODULE_QUESTION_TAG
+				Mentorship::MENTORSHIP_MODULE_QUESTION_TAG,
 			],
 			$userIds
 		);
@@ -418,14 +418,14 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$taggedEditsSubquery = $dbr->newSelectQueryBuilder()
 			->select( [
 				'rev_user' => $queryInfo['fields']['rev_user'],
-				'ct_rev_id'
+				'ct_rev_id',
 			] )
 			->from( 'change_tag' )
 			->join( 'revision', null, 'rev_id=ct_rev_id' )
 			->tables( $queryInfo['tables'] )
 			->where( [
 				'actor_user' => $userIds,
-				'ct_tag_id' => $tagIds
+				'ct_tag_id' => $tagIds,
 			] )
 			->joinConds( $queryInfo['joins'] )
 			->caller( __METHOD__ );
@@ -503,7 +503,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				'log_type' => 'block',
 				'log_action' => 'block',
 				'log_namespace' => NS_USER,
-				'log_title' => $userNamesAsStrings
+				'log_title' => $userNamesAsStrings,
 			] )
 			->groupBy( 'log_title' )
 			->caller( __METHOD__ )
@@ -609,7 +609,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			->select( 'bt_user' )
 			->from( 'block' )
 			->join( 'block_target', null, [
-				'bt_id=bl_target'
+				'bt_id=bl_target',
 			] )
 			->where( [
 				'bt_user' => $menteeIds,
@@ -628,7 +628,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$queryBuilder = $dbr->newSelectQueryBuilder()
 			->select( [
 				'user_id',
-				'has_edits' => 'user_editcount > 0'
+				'has_edits' => 'user_editcount > 0',
 			] )
 			->from( 'user' )
 			->where( [

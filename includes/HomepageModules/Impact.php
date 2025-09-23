@@ -129,7 +129,7 @@ class Impact extends BaseModule {
 		return Html::rawElement( 'div',
 				[
 					'id' => 'impact-vue-root',
-					'class' => 'ext-growthExperiments-impact-app-root'
+					'class' => 'ext-growthExperiments-impact-app-root',
 				],
 				$this->getBaseMarkup()
 			) .
@@ -146,8 +146,8 @@ class Impact extends BaseModule {
 					'id' => 'impact-vue-root--mobile',
 					'class' => [
 						'ext-growthExperiments-impact-app-root',
-						'ext-growthExperiments-impact-app-root--mobile'
-					]
+						'ext-growthExperiments-impact-app-root--mobile',
+					],
 				],
 				$this->getRecentActivityMarkup()
 			) .
@@ -166,7 +166,7 @@ class Impact extends BaseModule {
 	 */
 	private function getScoreCardMarkup( int $index ): string {
 		return Html::rawElement( 'div', [
-			'class' => 'ext-growthExperiments-ScoreCard'
+			'class' => 'ext-growthExperiments-ScoreCard',
 		] );
 	}
 
@@ -179,7 +179,7 @@ class Impact extends BaseModule {
 	private function getScoreCardsMarkup(): string {
 		return Html::rawElement( 'div',
 			[
-				'class' => 'ext-growthExperiments-ScoreCards'
+				'class' => 'ext-growthExperiments-ScoreCards',
 			],
 			implode( '', array_map( [ $this, 'getScoreCardMarkup' ], [ 1, 2, 3, 4 ] ) )
 		);
@@ -197,20 +197,20 @@ class Impact extends BaseModule {
 			Html::rawElement( 'div', [
 				'class' => [
 					'ext-growthExperiments-Skeleton',
-					'ext-growthExperiments-Skeleton--darken'
-				]
+					'ext-growthExperiments-Skeleton--darken',
+				],
 			] ) .
 			Html::rawElement( 'div', [
 				'class' => [
 					'ext-growthExperiments-Skeleton',
-					'ext-growthExperiments-Skeleton--double'
-				]
+					'ext-growthExperiments-Skeleton--double',
+				],
 			] ) .
 			Html::rawElement( 'div', [
 				'class' => [
 					'ext-growthExperiments-Skeleton',
-					'ext-growthExperiments-Skeleton--triple'
-				]
+					'ext-growthExperiments-Skeleton--triple',
+				],
 			] )
 		);
 	}
@@ -229,8 +229,8 @@ class Impact extends BaseModule {
 				'class' => [
 					'ext-growthExperiments-ArticleListHeading',
 					'ext-growthExperiments-Skeleton',
-					'ext-growthExperiments-Skeleton--darken'
-				]
+					'ext-growthExperiments-Skeleton--darken',
+				],
 			] ) .
 			implode( "\n", array_map(
 					static function ( $index ) {
@@ -238,23 +238,23 @@ class Impact extends BaseModule {
 						$delay = 400 + ( $index * 200 );
 						return Html::rawElement( 'div', [
 							'class' => [
-								'ext-growthExperiments-ArticleLoading'
-							]
+								'ext-growthExperiments-ArticleLoading',
+							],
 						],
 							Html::rawElement( 'div', [
 								'class' => [
 									'ext-growthExperiments-ArticleLoading__image',
 									'ext-growthExperiments-Skeleton',
-									'ext-growthExperiments-Skeleton--delay-' . $delay
-								]
+									'ext-growthExperiments-Skeleton--delay-' . $delay,
+								],
 							] ) .
 							Html::rawElement( 'div', [
 								'class' => [
 									'ext-growthExperiments-ArticleLoading__text',
 									'ext-growthExperiments-Skeleton',
 									'ext-growthExperiments-Skeleton--darken',
-									'ext-growthExperiments-Skeleton--delay-' . $delay
-								]
+									'ext-growthExperiments-Skeleton--delay-' . $delay,
+								],
 							] )
 						);
 					}, array_keys( array_fill( 0, $numberOfArticles, 1 ) ) )
@@ -272,7 +272,7 @@ class Impact extends BaseModule {
 	private function getBaseMarkup(): string {
 		return Html::rawElement( 'div',
 			[
-				'class' => 'ext-growthExperiments-App--UserImpact'
+				'class' => 'ext-growthExperiments-App--UserImpact',
 			],
 			Html::rawElement( 'div',
 				[
@@ -281,11 +281,11 @@ class Impact extends BaseModule {
 					// * ext-growthExperiments-Layout--mobile-details
 					// * ext-growthExperiments-Layout--mobile-overlay
 					// * ext-growthExperiments-Layout--mobile-summary
-					'class' => 'ext-growthExperiments-Layout--' . $this->getMode()
+					'class' => 'ext-growthExperiments-Layout--' . $this->getMode(),
 				],
 				Html::rawElement( 'div',
 					[
-						'class' => 'ext-growthExperiments-Impact'
+						'class' => 'ext-growthExperiments-Impact',
 					],
 					Html::rawElement( 'div',
 						[],
@@ -363,7 +363,7 @@ class Impact extends BaseModule {
 	public function getActionData(): array {
 		$userImpact = $this->getUserImpact();
 		$data = [
-			'no_cached_user_impact' => !$userImpact
+			'no_cached_user_impact' => !$userImpact,
 		];
 		if ( $userImpact ) {
 			$formattedUserImpact = $this->getFormattedUserImpact();

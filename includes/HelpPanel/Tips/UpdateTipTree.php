@@ -17,14 +17,14 @@ class UpdateTipTree extends TipTree {
 						'type' => self::TIP_DATA_TYPE_TITLE,
 						'data' => [
 							'title' => $this->extraData['references']['learnMoreLink'] ?? null,
-							'messageKeyVariant' => '-no-link'
-						]
-					]
+							'messageKeyVariant' => '-no-link',
+						],
+					],
 				],
 			],
 			'publish' => [
 				'main' => [ $this->getPublishMessageTipConfigData() ],
-			]
+			],
 		];
 		return $this->maybeAddLearnMoreLinkTipNode( $steps );
 	}

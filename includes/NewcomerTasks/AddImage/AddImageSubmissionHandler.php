@@ -46,7 +46,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		'lowquality',
 		'unfamiliar',
 		'foreignlanguage',
-		'other'
+		'other',
 	];
 	/**
 	 * Rejection reasons which means the user is undecided (as opposed thinking the image is bad).
@@ -340,7 +340,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 			$this->weightedTagsUpdater->resetWeightedTags(
 				$page, [
 					SectionImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX,
-					ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
+					ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX,
 				]
 			);
 		}

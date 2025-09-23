@@ -35,6 +35,6 @@ class HomepageSchema_1_0_0 extends JsonSchema {
 	public const GELevelingUpKeepGoingNotificationThresholds = [
 		self::TYPE => self::TYPE_INTEGER,
 		self::MINIMUM => 0,
-		self::DEFAULT => 4
+		self::DEFAULT => 4,
 	];
 }

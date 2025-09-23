@@ -35,7 +35,7 @@ class GrowthExperimentsInteractionLogger {
 		}
 		[
 			'variant' => $variant,
-			'action_source' => $actionSource
+			'action_source' => $actionSource,
 		] = $additionalData;
 		$wiki = WikiMap::getCurrentWikiId();
 		// FIXME override http.request_headers.user-agent to reduce data collection risk tier. This should
@@ -44,35 +44,35 @@ class GrowthExperimentsInteractionLogger {
 		$eventData = [
 			'http' => [
 				'request_headers' => [
-					'user-agent' => ''
-				]
+					'user-agent' => '',
+				],
 			],
 			'mediawiki' => [
-				'database' => $wiki
+				'database' => $wiki,
 			],
 			'$schema' => self::SCHEMA_VERSIONED,
 			'action' => $action,
 			// "agent" is a required property in product_metrics/web/base/1.3.0 schema
 			'agent' => [
-				'client_platform' => 'mediawiki_php'
+				'client_platform' => 'mediawiki_php',
 			],
 			'action_source' => $actionSource,
 			'performer' => [
 				'id' => $user->getId(),
-				'edit_count' => $user->getEditCount()
+				'edit_count' => $user->getEditCount(),
 			],
 			// TODO: remove once Surfacing Structured tasks experiment is over, T377098
 			'experiments' => [
 				'enrolled' => [ self::GROWTH_EXPERIMENTS_EXPERIMENT_ID ],
 				'assigned' => [
-					self::GROWTH_EXPERIMENTS_EXPERIMENT_ID => $variant
+					self::GROWTH_EXPERIMENTS_EXPERIMENT_ID => $variant,
 				],
 			],
 			'experiment' => [
 				'coordinator' => 'custom',
 				'enrolled' => self::GROWTH_EXPERIMENTS_EXPERIMENT_ID,
 				'assigned' => $variant,
-			]
+			],
 		];
 
 		EventLogging::submit( self::STREAM, $eventData );

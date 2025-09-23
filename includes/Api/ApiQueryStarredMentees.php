@@ -32,11 +32,11 @@ class ApiQueryStarredMentees extends ApiQueryBase {
 		foreach ( $starredMentees as $user ) {
 			$res[] = [
 				'id' => $user->getId(),
-				'username' => $user->getName()
+				'username' => $user->getName(),
 			];
 		}
 		$this->getResult()->addValue( null, $this->getModuleName(), [
-			'mentees' => $res
+			'mentees' => $res,
 		] );
 	}
 }

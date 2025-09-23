@@ -112,7 +112,7 @@ class ConfigurationValidator {
 			$taskType->getName( $this->messageLocalizer ),
 			$taskType->getDescription( $this->messageLocalizer ),
 			$taskType->getShortDescription( $this->messageLocalizer ),
-			$taskType->getTimeEstimate( $this->messageLocalizer )
+			$taskType->getTimeEstimate( $this->messageLocalizer ),
 		], $taskType->getId() );
 	}
 }

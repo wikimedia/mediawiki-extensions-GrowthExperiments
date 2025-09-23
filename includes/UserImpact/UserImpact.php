@@ -284,7 +284,7 @@ class UserImpact implements JsonSerializable {
 			[ 'datePeriod' => [
 				'start' => $this->longestEditingStreak->getDatePeriod()->getStartDate()->format( 'Y-m-d' ),
 				'end' => $this->longestEditingStreak->getDatePeriod()->getEndDate()->format( 'Y-m-d' ),
-				'days' => $this->longestEditingStreak->getStreakNumberOfDays()
+				'days' => $this->longestEditingStreak->getStreakNumberOfDays(),
 			], 'totalEditCountForPeriod' => $this->longestEditingStreak->getTotalEditCountForPeriod() ] :
 			'';
 		return [

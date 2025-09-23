@@ -74,7 +74,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			$this->error( "Converting registration timestamps:" );
 			foreach ( [
 				[ 'From (exclusive)', $from, $fromId ],
-				[ 'To (inclusive)', $to, $toId ]
+				[ 'To (inclusive)', $to, $toId ],
 			] as [ $dir, $ts, $id ] ) {
 				$text = 'any';
 				if ( $id ) {
@@ -155,7 +155,7 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 						wfTimestamp( TS_MW, $row->user_registration ),
 						$welcomeSurveyResponse['_group'],
 						$row->user_id,
-						$row->user_email_authenticated ? 1 : 0
+						$row->user_email_authenticated ? 1 : 0,
 					];
 				} else {
 					continue;

@@ -75,7 +75,7 @@ class TaskExplanationWidget extends Widget {
 			return new IconWidget(
 				[
 					'icon' => $iconData['icon'],
-					'classes' => [ 'suggested-edits-task-explanation-icon' ]
+					'classes' => [ 'suggested-edits-task-explanation-icon' ],
 				]
 			);
 		}
@@ -102,7 +102,7 @@ class TaskExplanationWidget extends Widget {
 							// * suggested-edits-difficulty-indicator-easy
 							// * suggested-edits-difficulty-indicator-medium
 							// * suggested-edits-difficulty-indicator-hard
-							'suggested-edits-difficulty-indicator suggested-edits-difficulty-indicator-' . $difficulty
+							'suggested-edits-difficulty-indicator suggested-edits-difficulty-indicator-' . $difficulty,
 						] )->appendContent(
 							$this->localizer->msg(
 								'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' .
@@ -110,7 +110,7 @@ class TaskExplanationWidget extends Widget {
 							)->text()
 						),
 						( new Tag( 'div' ) )->addClasses( [
-							'suggested-edits-difficulty-level'
+							'suggested-edits-difficulty-level',
 						] )->appendContent( $this->taskType->getTimeEstimate( $this->localizer )->text() )
 					)
 			);

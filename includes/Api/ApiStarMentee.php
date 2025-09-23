@@ -85,7 +85,7 @@ class ApiStarMentee extends ApiBase {
 				ParamValidator::PARAM_REQUIRED => true,
 				ParamValidator::PARAM_TYPE => [
 					'star',
-					'unstar'
+					'unstar',
 				],
 			],
 			'gesmentee' => [

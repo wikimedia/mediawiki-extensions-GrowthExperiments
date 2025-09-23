@@ -14,7 +14,7 @@ class HelpPanelIntegrationTest extends MediaWikiIntegrationTestCase {
 	public function testGetHelpDeskTitle() {
 		$sitename = $this->getServiceContainer()->getMainConfig()->get( 'Sitename' );
 		$config = new HashConfig( [
-			'GEHelpPanelHelpDeskTitle' => 'HelpDesk/{{SITENAME}}'
+			'GEHelpPanelHelpDeskTitle' => 'HelpDesk/{{SITENAME}}',
 		] );
 
 		$title = HelpPanel::getHelpDeskTitle( $config );

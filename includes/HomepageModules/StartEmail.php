@@ -14,7 +14,7 @@ class StartEmail extends BaseModule {
 	/** @inheritDoc */
 	protected static $supportedModes = [
 		self::RENDER_DESKTOP,
-		self::RENDER_MOBILE_SUMMARY
+		self::RENDER_MOBILE_SUMMARY,
 		// RENDER_MOBILE_DETAILS is not supported
 	];
 
@@ -98,7 +98,7 @@ class StartEmail extends BaseModule {
 	protected function getEmailIcon() {
 		return new IconWidget( [
 			'icon' => 'message',
-			'flags' => $this->emailState === self::MODULE_STATE_NOEMAIL ? [ 'progressive' ] : []
+			'flags' => $this->emailState === self::MODULE_STATE_NOEMAIL ? [ 'progressive' ] : [],
 		] );
 	}
 
@@ -137,14 +137,14 @@ class StartEmail extends BaseModule {
 	 */
 	protected function getEmailAction() {
 		$linkAttrs = [
-			'data-link-id' => 'email-' . $this->emailState
+			'data-link-id' => 'email-' . $this->emailState,
 		];
 		$wrapInParentheses = false;
 		$label = '';
 		if ( $this->emailState === self::MODULE_STATE_NOEMAIL ) {
 			$label = $this->getContext()->msg( 'growthexperiments-homepage-email-button-noemail' )->text();
 			$linkAttrs['href'] = SpecialPage::getTitleFor( 'ChangeEmail' )->getLinkURL( [
-				'returnto' => $this->getContext()->getTitle()->getPrefixedText()
+				'returnto' => $this->getContext()->getTitle()->getPrefixedText(),
 			] );
 			$linkAttrs['class'] = 'growthexperiments-homepage-startemail-noemail-link';
 		} elseif ( $this->emailState === self::MODULE_STATE_UNCONFIRMED ) {

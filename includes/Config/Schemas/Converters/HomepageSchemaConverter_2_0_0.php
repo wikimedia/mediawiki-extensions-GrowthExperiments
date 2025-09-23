@@ -18,7 +18,7 @@ class HomepageSchemaConverter_2_0_0 implements ISchemaConverter {
 	public function downgradeToPrevious( stdClass $data ): stdClass {
 		$data->GELevelingUpKeepGoingNotificationThresholds = [
 			1,
-			$data->GELevelingUpKeepGoingNotificationThresholdsMaximum
+			$data->GELevelingUpKeepGoingNotificationThresholdsMaximum,
 		];
 		unset( $data->GELevelingUpKeepGoingNotificationThresholdsMaximum );
 		return $data;

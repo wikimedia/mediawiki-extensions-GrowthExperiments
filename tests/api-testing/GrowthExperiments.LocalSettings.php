@@ -30,7 +30,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				[ 0 => 2 ],
 				[
 					'2022-08-24' => 1,
-					'2022-08-25' => 1
+					'2022-08-25' => 1,
 				],
 				[ 'copyedit' => 1, 'link-recommendation' => 1 ],
 				1,
@@ -38,7 +38,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				wfTimestamp( TS_UNIX, '20220825000000' ),
 				[
 					'2022-08-24' => 1000,
-					'2022-08-25' => 2000
+					'2022-08-25' => 2000,
 				],
 				[
 					'Foo' => [
@@ -47,8 +47,8 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 						'viewsCount' => 1000,
 						'views' => [
 							'2022-08-24' => 500,
-							'2022-08-25' => 500
-						]
+							'2022-08-25' => 500,
+						],
 					],
 					'Bar' => [
 						'firstEditDate' => '2022-08-24',
@@ -56,14 +56,14 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 						'viewsCount' => 2000,
 						'views' => [
 							'2022-08-24' => 1000,
-							'2022-08-25' => 1000
-						]
-					]
+							'2022-08-25' => 1000,
+						],
+					],
 				],
 				new EditingStreak(),
 				0,
 				2
-			)
+			),
 		] );
 		$services->redefineService( 'GrowthExperimentsUserImpactLookup',
 			static function () use ( $staticUserImpactLookup ): UserImpactLookup {

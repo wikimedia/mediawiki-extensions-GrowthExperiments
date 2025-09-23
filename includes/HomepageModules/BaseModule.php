@@ -190,7 +190,7 @@ abstract class BaseModule extends DashboardModule {
 		) {
 			return Html::rawElement( 'a', [
 				'href' => $this->getPageURL() . '/' . $this->getName(),
-				'data-overlay-route' => $this->getModuleRoute()
+				'data-overlay-route' => $this->getModuleRoute(),
 			], $moduleContent );
 		}
 
@@ -203,7 +203,7 @@ abstract class BaseModule extends DashboardModule {
 		$out = $this->getContext()->getOutput();
 		$out->addModuleStyles( [
 			'ext.growthExperiments.Homepage.styles',
-			'ext.growthExperiments.icons'
+			'ext.growthExperiments.icons',
 		] );
 		$out->addJsConfigVars( [
 			'wgGEHomepageModuleState-' . $this->getName() => $this->getState(),

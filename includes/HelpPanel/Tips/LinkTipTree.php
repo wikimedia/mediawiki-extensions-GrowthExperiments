@@ -9,7 +9,7 @@ class LinkTipTree extends TipTree {
 		$steps = [
 			'value' => [ 'main' => [], 'example' => [] ],
 			'calm' => [ 'main' => [] ],
-			'rules1' => [ 'main' => [], 'example' => [], 'text' => [], ],
+			'rules1' => [ 'main' => [], 'example' => [], 'text' => [] ],
 			'step1' => [
 				'main' => [ $this->getEditMessageTipConfigData() ],
 				'example' => [],
@@ -22,12 +22,12 @@ class LinkTipTree extends TipTree {
 					],
 					[
 						'type' => self::TIP_DATA_TYPE_OOUI_ICON,
-						'data' => [ 'icon' => 'link' ]
-					]
-				]
+						'data' => [ 'icon' => 'link' ],
+					],
+				],
 			],
 			'publish' => [
-				'main' => [ $this->getPublishMessageTipConfigData() ]
+				'main' => [ $this->getPublishMessageTipConfigData() ],
 			],
 		];
 		return $this->maybeAddLearnMoreLinkTipNode( $steps );

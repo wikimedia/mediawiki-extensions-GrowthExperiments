@@ -88,7 +88,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 			$mentees[3]->getId() => [
 				'editcount' => 1,
 				'blocks' => 0,
-				'registration' => '20200105000000'
+				'registration' => '20200105000000',
 			],
 		];
 
@@ -116,7 +116,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 		$mentees = [
 			$this->createMenteeWithEditCount( $mentor, 10 ),
 			$this->createMenteeWithEditCount( $mentor, 12 ),
-			$this->createMenteeWithEditCount( $mentor, 23 )
+			$this->createMenteeWithEditCount( $mentor, 23 ),
 		];
 
 		$dataProvider = TestingAccessWrapper::newFromObject( $this->getDataProvider() );
@@ -137,7 +137,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 		$mentees = [
 			$this->createMentee( $mentor ),
 			$this->createMentee( $mentor ),
-			$this->createMentee( $mentor )
+			$this->createMentee( $mentor ),
 		];
 
 		$dataProvider = TestingAccessWrapper::newFromObject( $this->getDataProvider() );
@@ -175,7 +175,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 		$mentees = [
 			$this->createMenteeWithRegistration( $mentor, null ),
 			$this->createMenteeWithRegistration( $mentor, "20200105000000" ),
-			$this->createMenteeWithRegistration( $mentor, "20190509000012" )
+			$this->createMenteeWithRegistration( $mentor, "20190509000012" ),
 		];
 
 		$dataProvider = TestingAccessWrapper::newFromObject( $this->getDataProvider() );

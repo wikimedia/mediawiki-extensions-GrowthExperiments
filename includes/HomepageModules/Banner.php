@@ -22,7 +22,7 @@ class Banner extends BaseModule {
 	/** @inheritDoc */
 	protected static $supportedModes = [
 		self::RENDER_DESKTOP,
-		self::RENDER_MOBILE_SUMMARY
+		self::RENDER_MOBILE_SUMMARY,
 		// RENDER_MOBILE_DETAILS is not supported
 	];
 

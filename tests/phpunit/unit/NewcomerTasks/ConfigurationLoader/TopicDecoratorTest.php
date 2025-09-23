@@ -19,10 +19,10 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 
 	public function testUseGrowthTopics() {
 		$taskTypes = [
-			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY )
+			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 		];
 		$topics = [
-			new Topic( 'topic1' )
+			new Topic( 'topic1' ),
 		];
 		$configurationLoader = new TopicDecorator(
 			$this->getConfigurationLoaderMock( $taskTypes ),
@@ -36,13 +36,13 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 
 	public function testUseGrowthTopicsWithAdditionalTaskTypes() {
 		$taskTypes = [
-			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY )
+			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 		];
 		$topics = [
-			new Topic( 'topic1' )
+			new Topic( 'topic1' ),
 		];
 		$additionalTaskTypes = [
-			new TaskType( '_null', TaskType::DIFFICULTY_HARD )
+			new TaskType( '_null', TaskType::DIFFICULTY_HARD ),
 		];
 		$configurationLoader = new TopicDecorator(
 			$this->getConfigurationLoaderMock( $taskTypes ),
@@ -58,7 +58,7 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 
 	public function testUseOresTopics() {
 		$taskTypes = [
-			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY )
+			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 		];
 		$configurationLoader = new TopicDecorator(
 			$this->getConfigurationLoaderMock( $taskTypes ),
@@ -74,10 +74,10 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 
 	public function testUseOresTopicsWithAdditionalTaskTypes() {
 		$taskTypes = [
-			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY )
+			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 		];
 		$additionalTaskTypes = [
-			new TaskType( '_null', TaskType::DIFFICULTY_HARD )
+			new TaskType( '_null', TaskType::DIFFICULTY_HARD ),
 		];
 		$configurationLoader = new TopicDecorator(
 			$this->getConfigurationLoaderMock( $taskTypes ),

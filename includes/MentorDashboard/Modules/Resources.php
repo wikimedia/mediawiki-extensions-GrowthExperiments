@@ -70,7 +70,7 @@ class Resources extends BaseModule {
 			$this->formatLink(
 				'mw:Special:MyLanguage/Growth',
 				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-tools' )->text()
-			)
+			),
 		];
 
 		return Html::rawElement(

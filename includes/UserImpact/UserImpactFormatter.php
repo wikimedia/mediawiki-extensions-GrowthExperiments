@@ -106,7 +106,7 @@ class UserImpactFormatter {
 			'recentEditsWithoutPageviews' => $recentEditsWithoutPageviews,
 			'topViewedArticles' => $topViewedArticles,
 			'topViewedArticlesCount' => $topViewedArticlesCount,
-			'totalPageviewsCount' => $totalPageviewsCount
+			'totalPageviewsCount' => $totalPageviewsCount,
 		];
 	}
 

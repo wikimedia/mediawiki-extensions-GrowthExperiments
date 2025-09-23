@@ -31,7 +31,7 @@ class StaticImageRecommendationMetadataProvider extends ImageRecommendationMetad
 			'originalHeight' => 300,
 			'mustRender' => true,
 			'isVectorized' => false,
-			'mediaType' => 'BITMAP'
+			'mediaType' => 'BITMAP',
 		];
 	}
 

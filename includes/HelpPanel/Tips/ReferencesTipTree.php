@@ -7,7 +7,7 @@ class ReferencesTipTree extends TipTree {
 	/** @inheritDoc */
 	public function getTree(): array {
 		$steps = [
-			'value' => [ 'main' => [], 'example' => [], 'text' => [], ],
+			'value' => [ 'main' => [], 'example' => [], 'text' => [] ],
 			'calm' => [ 'main' => [] ],
 			'rules1' => [ 'main' => [] ],
 			'step1' => [ 'main' => [ $this->getEditMessageTipConfigData() ] ],
@@ -15,38 +15,38 @@ class ReferencesTipTree extends TipTree {
 				'main' => [
 					[
 						'type' => self::TIP_DATA_TYPE_OOUI_ICON,
-						'data' => [ 'icon' => 'browser' ]
+						'data' => [ 'icon' => 'browser' ],
 					],
 					[
 						'type' => self::TIP_DATA_TYPE_OOUI_ICON,
-						'data' => [ 'icon' => 'book' ]
+						'data' => [ 'icon' => 'book' ],
 					],
 					[
 						'type' => self::TIP_DATA_TYPE_OOUI_ICON,
-						'data' => [ 'icon' => 'journal' ]
+						'data' => [ 'icon' => 'journal' ],
 					],
 					[
 						'type' => self::TIP_DATA_TYPE_OOUI_ICON,
-						'data' => [ 'icon' => 'reference' ]
-					]
-				]
+						'data' => [ 'icon' => 'reference' ],
+					],
+				],
 			],
 			'step3' => [
 				'main' => [
 					[
 						'type' => self::TIP_DATA_TYPE_PLAIN_MESSAGE,
-						'data' => 'cite-ve-toolbar-group-label'
+						'data' => 'cite-ve-toolbar-group-label',
 					],
 					[
 						'type' => self::TIP_DATA_TYPE_OOUI_ICON,
 						'data' => [
 							'icon' => 'quotes',
-							'labelKey' => 'cite-ve-toolbar-group-label'
-						]
-					]
-				]
+							'labelKey' => 'cite-ve-toolbar-group-label',
+						],
+					],
+				],
 			],
-			'publish' => [ 'main' => [ $this->getPublishMessageTipConfigData() ] ]
+			'publish' => [ 'main' => [ $this->getPublishMessageTipConfigData() ] ],
 		];
 		return $this->maybeAddLearnMoreLinkTipNode( $steps );
 	}

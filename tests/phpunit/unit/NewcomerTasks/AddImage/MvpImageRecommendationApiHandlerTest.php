@@ -44,9 +44,9 @@ class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 					'details' => [
 						'from' => 'wikipedia',
 						'found_on' => 'enwiki,dewiki',
-						'dataset_id' => '1.23'
-					]
-				]
+						'dataset_id' => '1.23',
+					],
+				],
 			],
 			[
 				'filename' => 'Image2.png',
@@ -54,10 +54,10 @@ class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 					'details' => [
 						'from' => 'wikipedia',
 						'found_on' => 'enwiki',
-						'dataset_id' => '1.23'
-					]
-				]
-			]
+						'dataset_id' => '1.23',
+					],
+				],
+			],
 		];
 		return [
 			'empty pages' => [ [ 'pages' => [] ], [] ],
@@ -68,8 +68,8 @@ class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 					'Image1.png', 'wikipedia', 'enwiki,dewiki', '1.23'
 					), new ImageRecommendationData(
 						'Image2.png', 'wikipedia', 'enwiki', '1.23'
-					)
-				]
+					),
+				],
 			],
 			'sort by confidence rating' => [
 				[ 'pages' => [ [
@@ -77,19 +77,19 @@ class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 						[
 							'filename' => 'high_confidence.png',
 							'confidence_rating' => 'medium',
-							'source' => []
+							'source' => [],
 						],
 						[
 							'filename' => 'low_confidence.png',
 							'confidence_rating' => 'low',
-							'source' => []
+							'source' => [],
 						],
 						[
 							'filename' => 'medium_confidence.png',
 							'confidence_rating' => 'high',
-							'source' => []
+							'source' => [],
 						],
-					]
+					],
 				] ] ], [
 					new ImageRecommendationData(
 						'high_confidence.png', null, null, null
@@ -99,28 +99,28 @@ class MvpImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 					),
 					new ImageRecommendationData(
 						'low_confidence.png', null, null, null
-					)
-				]
+					),
+				],
 			],
 			'empty details' => [
 				[ 'pages' => [ [
 					'suggestions' => [
 						[
 							'filename' => 'Image1.png',
-							'source' => []
+							'source' => [],
 						],
 						[
-							'source' => []
-						]
-					]
+							'source' => [],
+						],
+					],
 				] ] ], [
 					new ImageRecommendationData(
 					'Image1.png', null, null, null
 					),
 					new ImageRecommendationData(
 						null, null, null, null
-					)
-				]
+					),
+				],
 			],
 		];
 	}

@@ -418,7 +418,7 @@ class LevelingUpManager {
 				'userId' => $recepientUser->getId(),
 				// Process the job X seconds after account creation
 				'jobReleaseTimestamp' => (int)wfTimestamp() + $delay,
-				...$jobParams
+				...$jobParams,
 			] )
 		);
 		return true;

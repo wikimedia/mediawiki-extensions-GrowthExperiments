@@ -49,7 +49,7 @@ class EchoMentorChangePresentationModel extends EchoEventPresentationModel {
 			'url' => $this->event->getAgent()->getUserPage()->getLocalURL(),
 			'label' => $this->msg( 'growthexperiments-notification-learn-more' )
 					->params( $this->getUser()->getName() )
-					->params( $this->event->getAgent()->getName() )
+					->params( $this->event->getAgent()->getName() ),
 		];
 	}
 
@@ -62,8 +62,8 @@ class EchoMentorChangePresentationModel extends EchoEventPresentationModel {
 		return [
 			[
 				'url' => $this->event->getAgent()->getTalkPage()->getLocalURL(),
-				'label' => $sayHi
-			]
+				'label' => $sayHi,
+			],
 		];
 	}
 

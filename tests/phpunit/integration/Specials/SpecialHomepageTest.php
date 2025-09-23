@@ -108,40 +108,40 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			'missing click id' => [
 				[
 					'genewcomertasktoken' => 2,
-					'getasktype' => 'links'
+					'getasktype' => 'links',
 				],
 				[
-					'geclickid'
-				]
+					'geclickid',
+				],
 			],
 			'null click id' => [
 				[
 					'geclickid' => null,
 					'genewcomertasktoken' => 2,
-					'getasktype' => 'copyedit'
+					'getasktype' => 'copyedit',
 				],
 				[
-					'geclickid'
-				]
+					'geclickid',
+				],
 			],
 			'missing token' => [
 				[
 					'geclickid' => 1,
-					'getasktype' => 'copyedit'
+					'getasktype' => 'copyedit',
 				],
 				[
-					'genewcomertasktoken'
-				]
+					'genewcomertasktoken',
+				],
 			],
 			'null token' => [
 				[
 					'genewcomertasktoken' => null,
 					'geclickid' => 1,
-					'getasktype' => 'copyedit'
+					'getasktype' => 'copyedit',
 				],
 				[
-					'genewcomertasktoken'
-				]
+					'genewcomertasktoken',
+				],
 			],
 			'missing task type' => [
 				[
@@ -149,18 +149,18 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 					'geclickid' => 1,
 				],
 				[
-					'getasktype'
-				]
+					'getasktype',
+				],
 			],
 			'null task type' => [
 				[
 					'genewcomertasktoken' => 2,
 					'geclickid' => 1,
-					'getasktype' => null
+					'getasktype' => null,
 				],
 				[
-					'getasktype'
-				]
+					'getasktype',
+				],
 			],
 		];
 	}

@@ -84,9 +84,9 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 				'datePeriod' => [
 					'start' => '2022-08-24',
 					'end' => '2022-08-25',
-					'days' => 2
+					'days' => 2,
 				],
-				'totalEditCountForPeriod' => 30
+				'totalEditCountForPeriod' => 30,
 			],
 			'totalArticlesCreatedCount' => 0,
 			'totalUserEditCount' => 125,

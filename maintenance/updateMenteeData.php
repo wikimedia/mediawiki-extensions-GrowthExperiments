@@ -115,7 +115,7 @@ class UpdateMenteeData extends Maintenance {
 				$dbw->newDeleteQueryBuilder()
 					->deleteFrom( 'growthexperiments_mentee_data' )
 					->where( [
-						'mentee_id' => $menteeIdsToDelete
+						'mentee_id' => $menteeIdsToDelete,
 					] )
 					->caller( __METHOD__ )
 					->execute();

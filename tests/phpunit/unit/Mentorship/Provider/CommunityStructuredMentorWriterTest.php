@@ -65,7 +65,7 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		$provider = $this->createMock( IConfigurationProvider::class );
 		$provider->method( 'loadValidConfiguration' )
 			->willReturn( Status::newGood( [
-				'Mentors' => $mentorData ?: self::MENTOR_LIST_CONTENT
+				'Mentors' => $mentorData ?: self::MENTOR_LIST_CONTENT,
 			] ) );
 
 		return $provider;
@@ -208,25 +208,25 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 				[ 'id' => 456, 'intro' => 'Custom intro', 'weight' => IMentorWeights::WEIGHT_HIGH ],
 				false,
 				true,
-				'success'
+				'success',
 			],
 			'Temporary user' => [
 				[ 'id' => 0 ],
 				false,
 				false,
-				'anonymous-user'
+				'anonymous-user',
 			],
 			'Already exists' => [
 				[ 'id' => 123 ],
 				false,
 				true,
-				'already-added'
+				'already-added',
 			],
 			'Blocked performer' => [
 				[ 'id' => 456 ],
 				true,
 				true,
-				'blocked'
+				'blocked',
 			],
 		];
 	}
@@ -291,12 +291,12 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			'Existing mentor' => [
 				123,
 				true,
-				null
+				null,
 			],
 			'Non-existent mentor' => [
 				456,
 				false,
-				'growthexperiments-mentor-writer-error-not-in-the-list'
+				'growthexperiments-mentor-writer-error-not-in-the-list',
 			],
 		];
 	}

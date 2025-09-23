@@ -88,7 +88,7 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 		$user = $this->getTestUser()->getUser();
 
 		/** @var string $html */
-		[ $html, ] = $this->executeSpecialPage( '', null, null, $user );
+		[ $html ] = $this->executeSpecialPage( '', null, null, $user );
 		$this->assertNotEmpty( $html );
 	}
 }

@@ -44,7 +44,7 @@ class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler 
 	private const CONFIDENCE_RATING_TO_NUMBER = [
 		'high' => 3,
 		'medium' => 2,
-		'low' => 1
+		'low' => 1,
 	];
 
 	/**

@@ -90,7 +90,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 				ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 				ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 				$context,
-				'foo'
+				'foo',
 			] )
 			->getMockForAbstractClass();
 	}
@@ -100,12 +100,12 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			'Mentor is away' => [
 				true,
 				// phpcs:ignore Generic.Files.LineLength.TooLong
-				'[[User:Mentee|Mentee]]\'s mentor <span class="plainlinks">[{{fullurl:User:Mentor}} Mentor]</span> is away'
+				'[[User:Mentee|Mentee]]\'s mentor <span class="plainlinks">[{{fullurl:User:Mentor}} Mentor]</span> is away',
 			],
 			'Mentor is not away' => [
 				false,
-				null
-			]
+				null,
+			],
 		];
 	}
 

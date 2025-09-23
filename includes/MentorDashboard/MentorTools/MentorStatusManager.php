@@ -24,7 +24,7 @@ class MentorStatusManager {
 	/** @var string[] List of MentorStatusManager::STATUS_* constants */
 	public const STATUSES = [
 		self::STATUS_ACTIVE,
-		self::STATUS_AWAY
+		self::STATUS_AWAY,
 	];
 
 	public const AWAY_BECAUSE_TIMESTAMP = 'timestamp';
@@ -230,7 +230,7 @@ class MentorStatusManager {
 			->where( [
 				'up_property' => self::MENTOR_AWAY_TIMESTAMP_PREF,
 				$db->expr( 'up_value', '!=', null ),
-				$db->expr( 'up_value', '>', $db->timestamp() )
+				$db->expr( 'up_value', '>', $db->timestamp() ),
 			] )
 			->recency( $flags )
 			->caller( __METHOD__ )

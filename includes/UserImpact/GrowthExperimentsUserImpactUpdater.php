@@ -108,7 +108,7 @@ class GrowthExperimentsUserImpactUpdater {
 				'impactDataBatch' => [ $userIdentity->getId() => json_encode( $impact ) ],
 				// We want to regenerate the page view data, so set staleBefore that's
 				// guaranteed to result in cache invalidation
-				'staleBefore' => MWTimestamp::time() + ExpirationAwareness::TTL_SECOND
+				'staleBefore' => MWTimestamp::time() + ExpirationAwareness::TTL_SECOND,
 			] ) );
 		}
 	}

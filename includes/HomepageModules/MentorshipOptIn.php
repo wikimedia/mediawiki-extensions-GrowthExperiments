@@ -71,7 +71,7 @@ class MentorshipOptIn extends BaseModule {
 	protected function getBody() {
 		return implode( "\n", [
 			$this->getIntroductionElement(),
-			$this->getOptInButton()
+			$this->getOptInButton(),
 		] );
 	}
 

@@ -16,7 +16,7 @@ abstract class MentorStore {
 
 	public const ROLES = [
 		self::ROLE_PRIMARY,
-		self::ROLE_BACKUP
+		self::ROLE_BACKUP,
 	];
 
 	protected WANObjectCache $wanCache;

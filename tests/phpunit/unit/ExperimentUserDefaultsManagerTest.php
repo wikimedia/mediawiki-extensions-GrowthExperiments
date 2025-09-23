@@ -172,20 +172,20 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 				self::getUserSample( 12, 1000 ),
 				[
 					[ 'bucketA', [
-						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_USER_ID, 'bucketing-experiment', 50
+						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_USER_ID, 'bucketing-experiment', 50,
 					] ],
 					[ 'bucketB', [
-						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_USER_ID, 'bucketing-experiment', 75
+						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_USER_ID, 'bucketing-experiment', 75,
 					] ],
 					[ 'bucketC', [
-						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_USER_ID, 'bucketing-experiment', 100
+						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_USER_ID, 'bucketing-experiment', 100,
 					] ],
 				],
 				[
 					'bucketA' => 50,
 					'bucketB' => 25,
 					'bucketC' => 25,
-				]
+				],
 			],
 		];
 	}
@@ -196,20 +196,20 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 				self::getUserSample( 12, 1000 ),
 				[
 					[ 'bucketA', [
-						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 50
+						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 50,
 					] ],
 					[ 'bucketB', [
-						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 75
+						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 75,
 					] ],
 					[ 'bucketC', [
-						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 100
+						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 100,
 					] ],
 				],
 				[
 					'bucketA' => 50,
 					'bucketB' => 25,
 					'bucketC' => 25,
-				]
+				],
 			],
 		];
 	}
@@ -220,20 +220,20 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 				self::getUserSample( 123, 1000 ),
 				[
 					[ 'bucketA', [
-						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 50
+						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 50,
 					] ],
 					[ 'bucketB', [
-						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 75
+						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 75,
 					] ],
 					[ 'bucketC', [
-						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 100
+						ExperimentUserDefaultsManager::CUCOND_BUCKET_BY_LOCAL_USER_ID, 'bucketing-experiment', 100,
 					] ],
 				],
 				[
 					'bucketA' => 25,
 					'bucketB' => 12.5,
 					'bucketC' => 12.5,
-				]
+				],
 			],
 		];
 	}

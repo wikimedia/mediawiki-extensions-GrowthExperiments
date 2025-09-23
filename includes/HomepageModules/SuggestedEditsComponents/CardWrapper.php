@@ -64,12 +64,12 @@ class CardWrapper {
 			$contents = [
 				$this->navigationWidgetFactory->getPreviousNextButtonHtml( 'Previous' ),
 				$suggestedEditsClass,
-				$this->navigationWidgetFactory->getPreviousNextButtonHtml( 'Next' )
+				$this->navigationWidgetFactory->getPreviousNextButtonHtml( 'Next' ),
 			];
 		}
 		return ( new Tag( 'div' ) )->addClasses( [
 			'suggested-edits-card-wrapper',
-			$card instanceof EditCardWidget ? '' : 'pseudo-card'
+			$card instanceof EditCardWidget ? '' : 'pseudo-card',
 		] )->appendContent(
 			$contents
 		);

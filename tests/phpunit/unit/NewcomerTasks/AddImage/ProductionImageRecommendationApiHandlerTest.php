@@ -51,7 +51,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 				'confidence' => 90,
 				'found_on' => [ 'enwiki', 'dewiki' ],
 				'kind' => [
-					'istype-lead-image'
+					'istype-lead-image',
 				],
 				'origin_wiki' => 'commonswiki',
 				'page_rev' => 17463093,
@@ -66,7 +66,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 				'confidence' => 80,
 				'found_on' => [ 'enwiki' ],
 				'kind' => [
-					'istype-commons-category'
+					'istype-commons-category',
 				],
 				'origin_wiki' => 'commonswiki',
 				'page_rev' => 17463093,
@@ -81,7 +81,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 				'confidence' => 50,
 				'found_on' => [],
 				'kind' => [
-					'istype-commons-category'
+					'istype-commons-category',
 				],
 				'origin_wiki' => 'commonswiki',
 				'page_rev' => 17463093,
@@ -96,7 +96,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 				'confidence' => 40,
 				'found_on' => null,
 				'kind' => [
-					'istype-commons-category'
+					'istype-commons-category',
 				],
 				'origin_wiki' => 'commonswiki',
 				'page_rev' => 17463093,
@@ -132,7 +132,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'confidence' => 80,
 						'found_on' => [ 'eswiki' ],
 						'kind' => [
-							'istype-lead-image'
+							'istype-lead-image',
 						],
 						'origin_wiki' => 'commonswiki',
 						'page_rev' => 17463093,
@@ -147,7 +147,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'confidence' => 90,
 						'found_on' => [ 'eswiki' ],
 						'kind' => [
-							'istype-lead-image'
+							'istype-lead-image',
 						],
 						'origin_wiki' => 'commonswiki',
 						'page_rev' => 17463093,
@@ -173,7 +173,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'confidence' => 80,
 						'found_on' => [ 'eswiki' ],
 						'kind' => [
-							'istype-lead-image'
+							'istype-lead-image',
 						],
 						'origin_wiki' => 'commonswiki',
 						'page_rev' => 17463093,
@@ -188,7 +188,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'confidence' => 80,
 						'found_on' => [ 'eswiki' ],
 						'kind' => [
-							'istype-lead-image'
+							'istype-lead-image',
 						],
 						'origin_wiki' => 'commonswiki',
 						'page_rev' => 17463093,
@@ -211,7 +211,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'confidence' => 90,
 						'found_on' => [ 'eswiki' ],
 						'kind' => [
-							'istype-lead-image'
+							'istype-lead-image',
 						],
 						'origin_wiki' => 'commonswiki',
 						'page_rev' => 17463093,
@@ -226,7 +226,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'confidence' => 80,
 						'found_on' => [ 'eswiki' ],
 						'kind' => [
-							'istype-lead-image'
+							'istype-lead-image',
 						],
 						'origin_wiki' => 'commonswiki',
 						'page_rev' => 17463093,
@@ -241,7 +241,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 						'confidence' => 90,
 						'found_on' => [ 'eswiki' ],
 						'kind' => [
-							'istype-lead-image'
+							'istype-lead-image',
 						],
 						'origin_wiki' => 'commonswiki',
 						'page_rev' => 17463093,
@@ -292,7 +292,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					new ImageRecommendationData(
 						null, 'wikidata', '', '1'
 					),
-				]
+				],
 			],
 			'multiple kinds' => [
 				[ 'rows' => [ [
@@ -305,7 +305,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					'kind' => [
 						'istype-wikidata-image',
 						'istype-lead-image',
-						'istype-commons-category'
+						'istype-commons-category',
 					],
 					'origin_wiki' => 'commonswiki',
 					'page_rev' => 17463093,
@@ -371,7 +371,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					'confidence' => 90,
 					'found_on' => [ 'enwiki', 'dewiki' ],
 					'kind' => [
-						'istype-lead-image'
+						'istype-lead-image',
 					],
 					'origin_wiki' => 'commonswiki',
 					'page_rev' => 17463093,
@@ -441,7 +441,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 					'found_on' => [ 'enwiki', 'cswiki' ],
 					'kind' => [
 						'istype-section-topics',
-						'istype-section-alignment'
+						'istype-section-alignment',
 					],
 					'origin_wiki' => 'wikidatawiki',
 					'page_rev' => 17463093,

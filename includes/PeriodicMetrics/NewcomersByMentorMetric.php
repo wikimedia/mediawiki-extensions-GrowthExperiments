@@ -43,7 +43,7 @@ class NewcomersByMentorMetric implements IMetric {
 				'log_action' => 'create',
 				$this->dbr->expr( 'log_timestamp', '>', $this->dbr->timestamp(
 					(int)wfTimestamp() - ExpirationAwareness::TTL_MONTH
-				) )
+				) ),
 			] )
 			->caller( __METHOD__ )
 			->fetchField();

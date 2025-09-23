@@ -31,12 +31,12 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
 					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => []
+					'MetricsPlatformEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
 			...$this->getXLabDependencies(),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
+			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			// No valid experiments, fallback to configured default, same as for ExperimentUserManager
@@ -58,7 +58,7 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
 					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => []
+					'MetricsPlatformEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
@@ -68,7 +68,7 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 					'experiment-2' => null,
 				]
 			),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
+			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			public const VALID_EXPERIMENTS = [
@@ -91,7 +91,7 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
 					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => []
+					'MetricsPlatformEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
@@ -102,7 +102,7 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 					'experiment-1' => null,
 				]
 			),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
+			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			public const VALID_EXPERIMENTS = [
@@ -129,7 +129,7 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
 					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => []
+					'MetricsPlatformEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
@@ -140,7 +140,7 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 					'experiment-1' => null,
 				]
 			),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
+			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			public const VALID_EXPERIMENTS = [
@@ -166,7 +166,7 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
 					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => []
+					'MetricsPlatformEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
@@ -174,7 +174,7 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 				'experiment-1' => null,
 				'experiment-2' => null,
 			] ),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [], ] )
+			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
 		];
 		$sut = new class( ...$options ) extends ExperimentXLabManager {
 			public const VALID_EXPERIMENTS = [

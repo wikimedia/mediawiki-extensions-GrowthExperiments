@@ -20,7 +20,7 @@ class SearchStrategy {
 	public const TOPIC_MATCH_MODE_AND = 'AND';
 	public const TOPIC_MATCH_MODES = [
 		self::TOPIC_MATCH_MODE_OR,
-		self::TOPIC_MATCH_MODE_AND
+		self::TOPIC_MATCH_MODE_AND,
 	];
 
 	/** @var TaskTypeHandlerRegistry */

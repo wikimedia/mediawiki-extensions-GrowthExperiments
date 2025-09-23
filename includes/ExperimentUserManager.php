@@ -42,7 +42,7 @@ class ExperimentUserManager extends AbstractExperimentManager {
 			$this->logger->debug( __METHOD__ . ' suspicious evaluation of unamed user', [
 				'exception' => new \RuntimeException,
 				'userName' => $user->getName(),
-				'trace' => \debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS )
+				'trace' => \debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS ),
 			] );
 		}
 		$variant = $this->userOptionsLookup->getOption(

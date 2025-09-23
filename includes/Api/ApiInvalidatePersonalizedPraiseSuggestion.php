@@ -108,7 +108,7 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 			'reason' => [
 				ParamValidator::PARAM_TYPE => [
 					'skipped',
-					'praised'
+					'praised',
 				],
 			],
 			'skipreason' => [
@@ -117,7 +117,7 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 					'already-praised',
 					'not-praiseworthy',
 					'not-now',
-					'other'
+					'other',
 				],
 			],
 		];

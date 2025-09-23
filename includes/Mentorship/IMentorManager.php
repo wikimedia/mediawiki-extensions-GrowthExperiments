@@ -21,7 +21,7 @@ interface IMentorManager {
 	public const MENTORSHIP_STATES = [
 		self::MENTORSHIP_DISABLED,
 		self::MENTORSHIP_ENABLED,
-		self::MENTORSHIP_OPTED_OUT
+		self::MENTORSHIP_OPTED_OUT,
 	];
 
 	/**

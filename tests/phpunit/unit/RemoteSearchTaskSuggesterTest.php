@@ -298,8 +298,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					// scores are faked for now, so they are just ( 100 / position in response )
-					$makeTask( $copyedit, 'Foo', [ 'art' => 100, ] ),
-					$makeTask( $copyedit, 'Bar', [ 'science' => 100, ] ),
+					$makeTask( $copyedit, 'Foo', [ 'art' => 100 ] ),
+					$makeTask( $copyedit, 'Bar', [ 'science' => 100 ] ),
 					$makeTask( $link, 'Baz', [ 'art' => 100 ] ),
 					$makeTask( $link, 'Boom', [ 'art' => 50 ] ),
 				], 150, 0, new TaskSetFilters() ),

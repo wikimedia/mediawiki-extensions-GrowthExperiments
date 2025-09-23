@@ -49,7 +49,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 			], null, $this->getMutableTestUser()->getUser() );
 			$this->assertArrayEquals( [
 				'html' => '<div class="recent-questions-' . $storage . '"></div>',
-				'questions' => []
+				'questions' => [],
 			], $response[0]['homepagequestionstore'] );
 		}
 	}
@@ -89,7 +89,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 		$response = $this->doApiRequest(
 			[
 				'action' => 'homepagequestionstore',
-				'storage' => Mentorship::QUESTION_PREF
+				'storage' => Mentorship::QUESTION_PREF,
 			],
 			null,
 			null,

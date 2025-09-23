@@ -126,10 +126,10 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	public static function provideTaskTypes(): iterable {
 		return [
 			'image suggestions' => [
-				new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_MEDIUM )
+				new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_MEDIUM ),
 			],
 			'section-level image suggestions' => [
-				new SectionImageRecommendationTaskType( 'section-image-recommendation', TaskType::DIFFICULTY_MEDIUM )
+				new SectionImageRecommendationTaskType( 'section-image-recommendation', TaskType::DIFFICULTY_MEDIUM ),
 			],
 		];
 	}
@@ -350,7 +350,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			PageIdentityValue::localIdentity( 0, NS_MAIN, 'Foo' ),
 			'Foo',
 			[
-				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' )
+				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' ),
 			],
 			$mockMetadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -374,7 +374,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			PageIdentityValue::localIdentity( 0, NS_MAIN, 'Foo' ),
 			'Foo',
 			[
-				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' )
+				new ImageRecommendationData( 'Bad.png', 'wikidata', '', 'x' ),
 			],
 			$mockMetadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
@@ -501,7 +501,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			'descriptionUrl' => 'description url',
 			'originalWidth' => $width,
 			'originalHeight' => 768,
-			'mediaType' => $mediaType
+			'mediaType' => $mediaType,
 		];
 	}
 
@@ -527,7 +527,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			[
 				'filename' => 'InvalidMediaType.png',
 				'source' => [ 'details' => $validSource ],
-			]
+			],
 		];
 
 		return [
@@ -570,7 +570,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		];
 		$secondValidSuggestion = [
 			'filename' => 'bar.png',
-			'source' => [ 'details' => $validSource ]
+			'source' => [ 'details' => $validSource ],
 		];
 
 		return [
@@ -649,7 +649,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			[
 				'filename' => 'NoWidthInformed.png',
 				'source' => [ 'details' => $validSource ],
-			]
+			],
 		];
 
 		return [

@@ -22,19 +22,19 @@ class CommunityUpdatesSchema_2_0_0 extends JsonSchema {
 	public const GEHomepageCommunityUpdatesContentTitle = [
 		self::TYPE => self::TYPE_STRING,
 		self::DEFAULT => '',
-		self::MAX_LENGTH => 50
+		self::MAX_LENGTH => 50,
 	];
 
 	public const GEHomepageCommunityUpdatesContentBody = [
 		self::TYPE => self::TYPE_STRING,
 		self::DEFAULT => '',
-		self::MAX_LENGTH => 150
+		self::MAX_LENGTH => 150,
 	];
 
 	public const GEHomepageCommunityUpdatesMinEdits = [
 		self::TYPE => self::TYPE_INTEGER,
 		self::DEFAULT => 0,
 		self::MINIMUM => 0,
-		self::MAXIMUM => PHP_INT_MAX
+		self::MAXIMUM => PHP_INT_MAX,
 	];
 }

@@ -70,7 +70,7 @@ class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 		}
 
 		/** @var string $html */
-		[ $html, ] = $this->executeSpecialPage( '', null, null, $mentorUser );
+		[ $html ] = $this->executeSpecialPage( '', null, null, $mentorUser );
 		$this->assertStringContainsString(
 			'growthexperiments-quit-mentorship-reassign-mentees-confirm',
 			$html
@@ -105,7 +105,7 @@ class SpecialQuitMentorshipTest extends SpecialPageTestBase {
 		$this->assertTrue( $mentorProvider->isMentor( $otherMentor ) );
 
 		$request = new FauxRequest( [
-			'wpreason' => 'foo bar'
+			'wpreason' => 'foo bar',
 		], true );
 		$request->response()->header( 'Status: 200 OK', true, 200 );
 

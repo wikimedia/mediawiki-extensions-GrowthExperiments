@@ -78,7 +78,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	}
 
 	public function testNotAuthorizedRead() {
-		[ $html, ] = $this->executeSpecialPage();
+		[ $html ] = $this->executeSpecialPage();
 		$this->assertStringContainsString(
 			$this->mentorUser->getName(),
 			$html
@@ -99,7 +99,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 
 	public function testAuthorizedRead() {
 		$performer = $this->getTestSysop()->getUser();
-		[ $html, ] = $this->executeSpecialPage( '', null, null, $performer );
+		[ $html ] = $this->executeSpecialPage( '', null, null, $performer );
 		$this->assertStringContainsStringIgnoringCase(
 			$this->mentorUser->getName(),
 			$html
@@ -175,7 +175,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$this->mentorUser,
 			MentorStore::ROLE_PRIMARY
 		) );
-		[ $html, ] = $this->executeSpecialPage(
+		[ $html ] = $this->executeSpecialPage(
 			'remove-mentor/' . $this->mentorUser->getId(),
 			new FauxRequest( [ 'wpreason' => 'foo' ], true ),
 			null,
@@ -215,7 +215,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			'this is intro',
 			$mentorProvider->newMentorFromUserIdentity( $this->mentorUser )->getIntroText()
 		);
-		[ $html, ] = $this->executeSpecialPage(
+		[ $html ] = $this->executeSpecialPage(
 			'edit-mentor/' . $this->mentorUser->getId(),
 			new FauxRequest( [
 				'wpmessage' => 'new intro',
@@ -277,7 +277,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		$ordinaryUser = $this->getMutableTestUser()->getUserIdentity();
 
 		$this->assertFalse( $mentorProvider->isMentor( $ordinaryUser ) );
-		[ $html, ] = $this->executeSpecialPage(
+		[ $html ] = $this->executeSpecialPage(
 			'add-mentor',
 			new FauxRequest( [
 				'wpusername' => $ordinaryUser->getName(),
@@ -344,7 +344,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 	 * @return void
 	 */
 	public function testSubpageNoException( string $subpage ) {
-		[ $html, ] = $this->executeSpecialPage(
+		[ $html ] = $this->executeSpecialPage(
 			$subpage,
 			 new FauxRequest(),
 			null,

@@ -48,7 +48,7 @@ class PersonalizedPraise extends BaseModule {
 			'div',
 			[
 				'id' => 'vue-root-personalizedpraise',
-				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-content'
+				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-content',
 			],
 			Html::element(
 				'p',

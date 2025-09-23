@@ -45,49 +45,49 @@ class ImageRecommendationDataValidatorTest extends MediaWikiIntegrationTestCase 
 					'filename' => true,
 					'source' => 'wikipedia',
 					'projects' => 'enwiki, dewiki',
-					'datasetId' => '1.23'
-				], 'Invalid filename format for test: [type] boolean'
+					'datasetId' => '1.23',
+				], 'Invalid filename format for test: [type] boolean',
 			],
 			'invalid filename: array' => [
 				[
 					'filename' => [],
 					'source' => 'wikipedia',
 					'projects' => 'enwiki, dewiki',
-					'datasetId' => '1.23'
-				], 'Invalid filename format for test: [type] array'
+					'datasetId' => '1.23',
+				], 'Invalid filename format for test: [type] array',
 			],
 			'invalid source' => [
 				[
 					'filename' => 'image.png',
 					'source' => 'wiki',
 					'projects' => 'enwiki, dewiki',
-					'datasetId' => '1.23'
-				], 'Invalid source type for test: wiki'
+					'datasetId' => '1.23',
+				], 'Invalid source type for test: wiki',
 			],
 			'invalid projects' => [
 				[
 					'filename' => 'image.png',
 					'source' => 'wikipedia',
 					'projects' => null,
-					'datasetId' => '1.23'
-				], 'Invalid projects format for test'
+					'datasetId' => '1.23',
+				], 'Invalid projects format for test',
 			],
 			'invalid datasetId' => [
 				[
 					'filename' => 'image.png',
 					'source' => 'wikipedia',
 					'projects' => 'enwiki',
-					'datasetId' => 1
-				], 'Invalid datasetId format for test'
+					'datasetId' => 1,
+				], 'Invalid datasetId format for test',
 			],
 			'multiple validation errors' => [
 				[
 					'filename' => [],
 					'source' => 'wiki',
 					'projects' => null,
-					'datasetId' => 1
-				], 'Invalid filename format for test: [type] array'
-			]
+					'datasetId' => 1,
+				], 'Invalid filename format for test: [type] array',
+			],
 		];
 	}
 }

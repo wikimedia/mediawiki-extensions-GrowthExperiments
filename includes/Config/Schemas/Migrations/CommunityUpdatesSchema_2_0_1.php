@@ -23,19 +23,19 @@ class CommunityUpdatesSchema_2_0_1 extends JsonSchema {
 	public const GEHomepageCommunityUpdatesContentTitle = [
 		self::TYPE => self::TYPE_STRING,
 		self::DEFAULT => '',
-		self::MAX_LENGTH => 50
+		self::MAX_LENGTH => 50,
 	];
 
 	public const GEHomepageCommunityUpdatesThumbnailFile = [
 		self::REF => [
-			'class' => MediaWikiDefinitions::class, 'field' => 'CommonsFile'
-		]
+			'class' => MediaWikiDefinitions::class, 'field' => 'CommonsFile',
+		],
 	];
 
 	public const GEHomepageCommunityUpdatesContentBody = [
 		self::TYPE => self::TYPE_STRING,
 		self::DEFAULT => '',
-		self::MAX_LENGTH => 150
+		self::MAX_LENGTH => 150,
 	];
 
 	public const GEHomepageCommunityUpdatesCallToAction = [
@@ -44,22 +44,22 @@ class CommunityUpdatesSchema_2_0_1 extends JsonSchema {
 			'pageTitle' => [
 				self::REF => [
 					'class' => MediaWikiDefinitions::class,
-					'field' => 'PageTitle'
+					'field' => 'PageTitle',
 				],
-				self::DEFAULT => ''
+				self::DEFAULT => '',
 			],
 			'buttonText' => [
 				self::TYPE => self::TYPE_STRING,
 				self::MAX_LENGTH => 30,
-				self::DEFAULT => ''
-			]
-		]
+				self::DEFAULT => '',
+			],
+		],
 	];
 
 	public const GEHomepageCommunityUpdatesMinEdits = [
 		self::TYPE => self::TYPE_INTEGER,
 		self::DEFAULT => 0,
 		self::MINIMUM => 0,
-		self::MAXIMUM => PHP_INT_MAX
+		self::MAXIMUM => PHP_INT_MAX,
 	];
 }

@@ -33,7 +33,7 @@ class ApiQueryMentorStatus extends ApiQueryBase {
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), [
-			'mentorstatus' => $this->mentorStatusManager->getMentorStatus( $this->getUser() )
+			'mentorstatus' => $this->mentorStatusManager->getMentorStatus( $this->getUser() ),
 		] );
 	}
 }

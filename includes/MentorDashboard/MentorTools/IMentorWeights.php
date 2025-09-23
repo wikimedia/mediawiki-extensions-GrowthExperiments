@@ -16,7 +16,7 @@ interface IMentorWeights {
 		self::WEIGHT_NONE,
 		self::WEIGHT_LOW,
 		self::WEIGHT_NORMAL,
-		self::WEIGHT_HIGH
+		self::WEIGHT_HIGH,
 	];
 
 }

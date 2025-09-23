@@ -45,7 +45,7 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 				'model' => 'dd650648b87d69547b1721560f0e16027e5f81ccb5dd2dcfdcf121d460abb53c',
 				'pageids' => '9e1b004e7fa84b0187a486c682a1cbf152ca52d2e769d9c3a140eefe9b540d44',
 				'redirects' => '57c5ce51d0ce4048743674a7ebb53e7a527d325765fd0632fa1455be46f7eb3c',
-				'w2vfiltered' => '096a5f2ca30708ce41408897c99efb854204ac8322fbada8a8147d8156b031e8'
+				'w2vfiltered' => '096a5f2ca30708ce41408897c99efb854204ac8322fbada8a8147d8156b031e8',
 			],
 			'format_version' => 1,
 		];

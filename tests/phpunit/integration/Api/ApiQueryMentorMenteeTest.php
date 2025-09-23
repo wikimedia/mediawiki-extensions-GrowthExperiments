@@ -23,7 +23,7 @@ class ApiQueryMentorMenteeTest extends ApiTestCase {
 		$mentees = [
 			$this->getMutableTestUser()->getUserIdentity(),
 			$this->getMutableTestUser()->getUserIdentity(),
-			$this->getMutableTestUser()->getUserIdentity()
+			$this->getMutableTestUser()->getUserIdentity(),
 		];
 		$store = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getMentorStore();
 		foreach ( $mentees as $mentee ) {

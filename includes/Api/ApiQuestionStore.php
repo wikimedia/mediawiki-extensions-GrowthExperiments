@@ -30,7 +30,7 @@ class ApiQuestionStore extends ApiBase {
 			'html' => $questionFormatter->format(),
 			'questions' => array_map( static function ( JsonSerializable $question ) {
 				return $question->jsonSerialize();
-			}, $questions ) ?: []
+			}, $questions ) ?: [],
 		];
 
 		$this->getResult()->addValue(
@@ -47,7 +47,7 @@ class ApiQuestionStore extends ApiBase {
 		return [
 			'storage' => [
 				ParamValidator::PARAM_REQUIRED => true,
-				ParamValidator::PARAM_TYPE => [ Mentorship::QUESTION_PREF, HelpdeskQuestionPoster::QUESTION_PREF ]
+				ParamValidator::PARAM_TYPE => [ Mentorship::QUESTION_PREF, HelpdeskQuestionPoster::QUESTION_PREF ],
 			],
 		];
 	}

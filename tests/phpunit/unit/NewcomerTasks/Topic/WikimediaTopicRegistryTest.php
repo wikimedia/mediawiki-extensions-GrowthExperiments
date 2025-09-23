@@ -37,15 +37,15 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 	public function provideTestGetTopics(): iterable {
 		yield 'All WM topics recognized' => [
 			ArticleTopicFiltersRegistry::getTopicList(),
-			WikimediaTopicRegistry::GROWTH_ORES_TOPICS
+			WikimediaTopicRegistry::GROWTH_ORES_TOPICS,
 		];
 		yield 'Some WM topics recognized' => [
 			[ 'africa', 'women', 'unkown', 'oceania', 'foo', 'bar' ],
-			[ 'africa', 'women', 'oceania' ]
+			[ 'africa', 'women', 'oceania' ],
 		];
 		yield 'No topics recognized' => [
 			[],
-			[]
+			[],
 		];
 	}
 
@@ -55,18 +55,18 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 			return new CampaignConfig(
 				[
 					'latin-campaign' => [
-						'topics' => [ 'argentina' ]
-					]
+						'topics' => [ 'argentina' ],
+					],
 				],
 				[
-					'argentina' => 'growtharticletopic:argentina'
+					'argentina' => 'growtharticletopic:argentina',
 				],
 				$this->createNoOpMock( UserOptionsLookup::class )
 			);
 		} );
 		$actual = $registry->getTopics();
 		$expected = array_merge( WikimediaTopicRegistry::GROWTH_ORES_TOPICS, [
-			new CampaignTopic( 'argentina', 'growtharticletopic:argentina' )
+			new CampaignTopic( 'argentina', 'growtharticletopic:argentina' ),
 		] );
 		$this->assertSameSize( $expected, $actual );
 
@@ -88,7 +88,7 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 		$registry = $this->getMockBuilder( WikimediaTopicRegistry::class )
 			->setConstructorArgs( [
 				$this->createNoOpMock( MessageLocalizer::class, [ 'msg' ] ),
-				$collationFactoryMock
+				$collationFactoryMock,
 			] )
 			->onlyMethods( [ 'getAllTopics', 'sortTopics' ] )
 			->getMock();

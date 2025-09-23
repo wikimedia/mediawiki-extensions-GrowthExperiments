@@ -43,11 +43,11 @@ class MenteeOverview extends BaseModule {
 		return Html::rawElement(
 			'div',
 			[
-				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-container'
+				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-container',
 			],
 			implode( "\n", [
 				$this->getClientSideBody(),
-				$this->getRecentEditsByMenteesBody()
+				$this->getRecentEditsByMenteesBody(),
 			] )
 		);
 	}
@@ -63,7 +63,7 @@ class MenteeOverview extends BaseModule {
 			'div',
 			[
 				'id' => 'vue-root',
-				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-content'
+				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-content',
 			],
 			Html::element(
 				'p',
@@ -77,7 +77,7 @@ class MenteeOverview extends BaseModule {
 		return Html::rawElement(
 			'div',
 			[
-				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-recent-by-mentees'
+				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-recent-by-mentees',
 			],
 			implode( "\n", [
 				Html::element(
@@ -94,7 +94,7 @@ class MenteeOverview extends BaseModule {
 							'mentorship' => 'all',
 						] ) )
 						->parse()
-				)
+				),
 			] )
 		);
 	}

@@ -138,8 +138,8 @@ class LevelingUpHooks implements
 			'section' => 'message',
 			'canNotifyAgent' => true,
 			AttributeManager::ATTR_LOCATORS => [
-				[ UserLocator::class . '::locateEventAgent' ]
-			]
+				[ UserLocator::class . '::locateEventAgent' ],
+			],
 		];
 		// Keep keep-going to not modify copy of already sent notifications
 		$notifications['keep-going'] = array_merge( $growthNotificationDefaults, [
@@ -163,15 +163,15 @@ class LevelingUpHooks implements
 		] );
 
 		$icons['growthexperiments-keep-going'] = [
-			'path' => 'GrowthExperiments/images/notifications-keep-going.svg'
+			'path' => 'GrowthExperiments/images/notifications-keep-going.svg',
 		];
 
 		$icons['growthexperiments-get-started'] = [
-			'path' => 'GrowthExperiments/images/notifications-get-started.svg'
+			'path' => 'GrowthExperiments/images/notifications-get-started.svg',
 		];
 
 		$icons['growthexperiments-addalink-milestone'] = [
-			'path' => 'GrowthExperiments/images/addalink-milestone.svg'
+			'path' => 'GrowthExperiments/images/addalink-milestone.svg',
 		];
 	}
 

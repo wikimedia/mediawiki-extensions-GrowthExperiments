@@ -144,7 +144,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			'sort' => $query->getSort(),
 			'limit' => $limit,
 			'success' => $matches instanceof ISearchResultSet,
-			'elapsedTime' => $elapsedInSeconds
+			'elapsedTime' => $elapsedInSeconds,
 		] );
 		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
 			->setLabel( 'task_suggester', 'local' )

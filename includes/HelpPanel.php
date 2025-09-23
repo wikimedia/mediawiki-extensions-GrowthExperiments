@@ -90,7 +90,7 @@ class HelpPanel {
 		return [
 			'helpPanelLinks' => $helpPanelLinks,
 			'helpDeskLink' => $helpDeskLink,
-			'viewMoreLink' => $viewMoreLink
+			'viewMoreLink' => $viewMoreLink,
 		];
 	}
 

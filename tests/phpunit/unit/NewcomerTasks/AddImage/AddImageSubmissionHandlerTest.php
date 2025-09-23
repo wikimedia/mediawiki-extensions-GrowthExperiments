@@ -43,21 +43,21 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-accepted-missing', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
-			'accepted' => null
+			'accepted' => null,
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-accepted-wrongtype', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => false,
-			'reasons' => [ 1 ]
+			'reasons' => [ 1 ],
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-reason-invaliditem', $status );
 
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => false,
-			'reasons' => [ 'invalid-reason' ]
+			'reasons' => [ 'invalid-reason' ],
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertStatusMessage( 'apierror-growthexperiments-addimage-handler-reason-invaliditem', $status );
@@ -65,7 +65,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 		$status = $handler->validate( $imageTaskType, $page, $user, 1, [
 			'accepted' => true,
 			'reasons' => [],
-			'caption' => 'fail'
+			'caption' => 'fail',
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertStatusMessage( 'growthexperiments-addimage-caption-warning-tooshort', $status );
@@ -181,7 +181,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'caption' => 'succeed',
 			'filename' => '',
 			'sectionTitle' => 'Some section title',
-			'sectionNumber' => 'wrongtype'
+			'sectionNumber' => 'wrongtype',
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertStatusMessage(
@@ -195,7 +195,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 			'caption' => 'succeed',
 			'filename' => '',
 			'sectionTitle' => 'Some section title',
-			'sectionNumber' => 3
+			'sectionNumber' => 3,
 		] );
 		$this->assertInstanceOf( StatusValue::class, $status );
 		$this->assertArrayEquals( [ true, [], '', 'Some section title', 3 ], $status->getValue() );

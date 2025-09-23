@@ -63,7 +63,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 			MainConfigNames::RevokePermissions => [ '*' => [ 'enrollasmentor' => true ] ],
 		] );
 		$this->overrideProviderConfig( [
-			'GEMentorshipAutomaticEligibility' => false
+			'GEMentorshipAutomaticEligibility' => false,
 		], 'Mentorship' );
 		$user = $this->getMutableTestUser()->getUser();
 
@@ -149,7 +149,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 
 	public static function provideAddPermissions() {
 		return [
-			'only enrollasmentor' => [ [ 'enrollasmentor' => true, 'managementors' => false, ] ],
+			'only enrollasmentor' => [ [ 'enrollasmentor' => true, 'managementors' => false ] ],
 			'only managementors' => [ [ 'enrollasmentor' => false, 'managementors' => true ] ],
 			'both rights' => [ [ 'enrollasmentor' => true, 'managementors' => true ] ],
 		];
@@ -203,7 +203,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 				'message' => 'intro',
 				'weight' => IMentorWeights::WEIGHT_NORMAL,
 				'username' => $mentorUser->getName(),
-				...$params
+				...$params,
 			],
 			null,
 			$this->getTestSysop()->getUser()
@@ -227,7 +227,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 			] ],
 			[ MentorStatusManager::STATUS_ACTIVE, null, [
 				'geaction' => 'add',
-			] ]
+			] ],
 		];
 	}
 }

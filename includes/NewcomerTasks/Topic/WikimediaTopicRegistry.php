@@ -12,7 +12,7 @@ class WikimediaTopicRegistry implements ITopicRegistry {
 		"culture",
 		"history-and-society",
 		"science-technology-and-math",
-		"geography"
+		"geography",
 	];
 	public const GROWTH_ORES_TOPICS = [
 		"africa" => [

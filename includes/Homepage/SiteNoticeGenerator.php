@@ -123,7 +123,7 @@ class SiteNoticeGenerator {
 			// The following classes are generated here:
 			// * mw-ge-homepage-confirmemail-nojs-mobile
 			// * mw-ge-homepage-confirmemail-nojs-desktop
-			Util::isMobile( $skin ) ? $baseCssClassName . '-mobile' : $baseCssClassName . '-desktop'
+			Util::isMobile( $skin ) ? $baseCssClassName . '-mobile' : $baseCssClassName . '-desktop',
 		];
 		$siteNotice = Html::rawElement( 'div', [ 'class' => $cssClasses ],
 			new IconWidget( [ 'icon' => 'check', 'flags' => 'success' ] ) . ' ' .
@@ -201,7 +201,7 @@ class SiteNoticeGenerator {
 		$output->enableOOUI();
 		$output->addModuleStyles( [
 			'oojs-ui.styles.icons-user',
-			'ext.growthExperiments.HomepageDiscovery.styles'
+			'ext.growthExperiments.HomepageDiscovery.styles',
 		] );
 
 		$username = $skin->getUser()->getName();
@@ -240,7 +240,7 @@ class SiteNoticeGenerator {
 		$output->enableOOUI();
 		$output->addModuleStyles( [
 			'oojs-ui.styles.icons-user',
-			'ext.growthExperiments.HomepageDiscovery.styles'
+			'ext.growthExperiments.HomepageDiscovery.styles',
 		] );
 		$output->addModules( 'ext.growthExperiments.HomepageDiscovery' );
 

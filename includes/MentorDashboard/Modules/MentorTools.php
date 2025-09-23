@@ -56,7 +56,7 @@ class MentorTools extends BaseModule {
 				'data' => IMentorWeights::WEIGHT_NONE,
 				'label' => $this->msg(
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none'
-				)->text()
+				)->text(),
 			],
 			[
 				'data' => IMentorWeights::WEIGHT_LOW,
@@ -112,15 +112,15 @@ class MentorTools extends BaseModule {
 									'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away'
 								)->text(),
 							],
-						]
+						],
 					] ),
 					Html::element(
 						'p',
 						[
-							'id' => self::BASE_MODULE_CSS_CLASS . '-status-away-message'
+							'id' => self::BASE_MODULE_CSS_CLASS . '-status-away-message',
 						],
 						$this->maybeGetAwayMessage()
-					)
+					),
 				] )
 			),
 			Html::rawElement(
@@ -138,8 +138,8 @@ class MentorTools extends BaseModule {
 						'id' => 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown',
 						'infusable' => true,
 						'value' => $this->getMentorWeight(),
-						'options' => $weightOptions
-					] )
+						'options' => $weightOptions,
+					] ),
 				] )
 			),
 			Html::rawElement(
@@ -149,7 +149,7 @@ class MentorTools extends BaseModule {
 					Html::rawElement(
 						'div',
 						[
-							'class' => self::BASE_MODULE_CSS_CLASS . '-mentor-message-headline-container'
+							'class' => self::BASE_MODULE_CSS_CLASS . '-mentor-message-headline-container',
 						],
 						implode( "\n", [
 							Html::element(
@@ -163,18 +163,18 @@ class MentorTools extends BaseModule {
 								'framed' => false,
 								'id' => 'growthexperiments-mentor-dashboard-mentor-tools-signup-button',
 								'infusable' => true,
-								'href' => $this->mentorProvider->getSignupTitle()->getLocalURL()
+								'href' => $this->mentorProvider->getSignupTitle()->getLocalURL(),
 							] ),
 						] )
 					),
 					Html::element(
 						'div',
 						[
-							'id' => self::BASE_MODULE_CSS_CLASS . '-message-content'
+							'id' => self::BASE_MODULE_CSS_CLASS . '-message-content',
 						],
 						$this->mentorProvider->newMentorFromUserIdentity( $this->getUser() )
 							->getIntroText()
-					)
+					),
 				] )
 			),
 			Html::rawElement(
@@ -184,28 +184,28 @@ class MentorTools extends BaseModule {
 					Html::rawElement(
 						'div',
 						[
-							'class' => self::BASE_MODULE_CSS_CLASS . '-claim-mentee'
+							'class' => self::BASE_MODULE_CSS_CLASS . '-claim-mentee',
 						],
 						implode( "\n", [
 							new ButtonWidget( [
 								'label' => $this->msg(
 									'growthexperiments-mentor-dashboard-mentor-tools-claim-mentee'
 								),
-								'href' => SpecialPage::getTitleFor( 'ClaimMentee' )->getLocalURL()
+								'href' => SpecialPage::getTitleFor( 'ClaimMentee' )->getLocalURL(),
 							] ),
 							Html::element(
 								'p',
 								[
-									'class' => self::BASE_MODULE_CSS_CLASS . '-claim-mentee-footer'
+									'class' => self::BASE_MODULE_CSS_CLASS . '-claim-mentee-footer',
 								],
 								$this->msg(
 									'growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer'
 								)->text()
-							)
+							),
 						] )
-					)
+					),
 				] )
-			)
+			),
 		] );
 	}
 
@@ -251,7 +251,7 @@ class MentorTools extends BaseModule {
 
 		return [
 			'GEMentorDashboardMentorIntroMessage' => $mentor->getIntroText(),
-			'GEMentorDashboardMentorIntroMessageMaxLength' => MentorProvider::INTRO_TEXT_LENGTH
+			'GEMentorDashboardMentorIntroMessageMaxLength' => MentorProvider::INTRO_TEXT_LENGTH,
 		];
 	}
 }
