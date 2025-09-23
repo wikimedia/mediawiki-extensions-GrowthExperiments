@@ -4,5 +4,17 @@
 			"Умар"
 		]
 	},
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Хаттарш ца карийна."
+	"apihelp-homepagequestionstore-summary": "ЦӀерачу агӀонан модулехула чудехкина форматехь долу хаттарш схьаэца.",
+	"apihelp-homepagequestionstore-param-questionformat": "Хаттарш чудаларан формат, масала, HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Хаттарийн ларма",
+	"apihelp-homepagequestionstore-param-userid": "Хаттарш схьаэца леррина декъашхочун идентификатор.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Хаттарш ца карийна.",
+	"apihelp-growthsetmentor-summary": "Цхьана декъашхочунна хьехамхо хӀотто. Хийцамаш дӀайазбийр бу нахана хьалха.",
+	"apihelp-growthsetmentor-param-mentee": "Ӏамархочун аккаунт",
+	"apihelp-growthsetmentor-param-mentor": "Хьехамхочун цӀе",
+	"apihelp-growthsetmentor-param-reason": "Хийцам барна бахьана",
+	"apihelp-query+growthimagesuggestiondata-summary": "Схьаэца доьзна [https://www.mediawiki.org/wiki/wikitech:Add_Image суьртийн хаамаш], нагахь санна уьш белахь",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "ТӀедилларийн тайпанан идентификатор (лакхарчу тӀегӀан йа дакъойн тӀегӀан суьртийн рекомендацешна хаамаш схьаэца беза билгалбаккха)",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "ТӀедилларийн тайпанан ID «$1» ца карийна викин конфигурацехь.",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "ХӀокху API-на кхойкхуш:\n\n* Кхосса [https://www.mediawiki.org/wiki/wikitech:Add_Image \"hasrecommendation:image\" теган йозалла] йаззама, цундела иза кхин гучудер дац суьртийн предложенин лехаман жамӀашкахь.\n\n* Статья тӀетоха йоццачу хенан кэш чу, цу тӀе кхачало ImageRecommendationFilter фильтро [https://www.mediawiki.org/wiki/Extension:GrowthExperiments GrowthExperiments] шордаран, декъашхочун кховдинчу хийцаман рогӀера йаззам дӀайаккха еза йа ца йеза сацам бан, нагахь санна [[Special:Homepage]] чухула йа API чухула кхаьчча [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]].\n\n* Сгенерируйте и отправьте событие в EventGate в [https://schema.wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback image-suggestion-feedback stream]. Это позволяет улучшить конвейер предложений изображений, поскольку код в конвейере может учитывать отзывы пользователей при формировании рекомендаций.\n\nКхин тӀе информаци: [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Structured_tasks/Add_an_image mediawiki.org]"
 }

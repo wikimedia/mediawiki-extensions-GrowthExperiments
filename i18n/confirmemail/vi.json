@@ -5,7 +5,8 @@
 			"Minh Nguyen",
 			"NguoiDungKhongDinhDanh",
 			"Phjtieudoc",
-			"Tuanminh01"
+			"Tuanminh01",
+			"Nvdtn19"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|đây là gì?]])",
@@ -24,5 +25,8 @@
 	"growthexperiments-signupcampaign-bullet1": "Các bài viết gợi ý theo chủ đề bạn quan tâm",
 	"growthexperiments-signupcampaign-bullet2": "Yêu cầu trợ giúp từ một biên tập viên có kinh nghiệm",
 	"growthexperiments-signupcampaign-bullet3": "Bắt đầu với những sửa đổi nhỏ, dễ dàng",
+	"growthexperiments-recurringcampaign-title": "Cảm ơn bạn đã ủng hộ trung thành. Chính những đóng góp của độc giả như {{GENDER:|bạn}} đã giúp Wikipedia phát triển mạnh mẽ.",
+	"growthexperiments-recurringcampaign-body": "Tạo tài khoản ngay để đăng nhập và tránh nhìn thấy các biểu ngữ gây quỹ. Sau khi {{GENDER:|bạn}} có tài khoản, {{GENDER:|bạn}} cũng có thể học cách sửa đổi Wikipedia với những thay đổi nhỏ nhưng có ý nghĩa lớn cho toàn thế giới. Chúng tôi sẽ luôn đồng hành cùng {{GENDER:|bạn}} khi {{GENDER:|bạn}} bắt đầu!",
+	"growthexperiments-josacampaign-title": "Chào mừng đến với Lễ kỷ niệm sinh nhật Wikipedia!\n\nSau khi tạo tài khoản, bạn có thể bắt đầu đóng góp cho bách khoa toàn thư.",
 	"growthexperiments-campaigns-footer": "Bằng cách tạo tài khoản {{GENDER:|của bạn}} trên trang này, tài khoản này sẽ được liên kết với chiến dịch này cho mục đích trải nghiệm và phân tích."
 }
