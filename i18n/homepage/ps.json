@@ -367,6 +367,8 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "وړانديزونه",
 	"growthexperiments-addlink-summary-column-header-linked": "تړل‌شوی؟",
 	"growthexperiments-addlink-summary-summary": "د تړوني وړانديزونو ځانگړنه: $1 {{PLURAL:$1|تړونی ورگډشوی|تړوني ورگډشوي}}.",
+	"growthexperiments-addlink-skip-title": "{{GENDER:|تاسو}} د دې ليکنې وړانديزونه له پامه‌‌غورځولي دي.",
+	"growthexperiments-addlink-skip-body": "ايا {{GENDER:|تاسو}} ډاډه ياست چې نه غواړئ کوم وړانديز ومنئ يا رد کړئ؟",
 	"growthexperiments-addlink-skip-accept": "ټول له پامه غورځول",
 	"growthexperiments-addlink-skip-reject": "بياځلي بياکتنه",
 	"grant-managementorship": "لارښودي مهارول",
