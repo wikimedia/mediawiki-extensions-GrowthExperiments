@@ -9,7 +9,8 @@
 			"Phjtieudoc",
 			"Trizek (WMF)",
 			"Tuanminh01",
-			"Vinhtantran"
+			"Vinhtantran",
+			"Nvdtn19"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Bật cửa sổ trợ giúp sửa đổi",
@@ -38,6 +39,8 @@
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Gợi ý tiếp theo:",
 	"growthexperiments-help-panel-postedit-footer": "Xem tất cả sửa đổi gợi ý",
 	"growthexperiments-help-panel-postedit-suggestededits-info": "Những thành viên khác của {{SITENAME}} đã tìm thấy các bài viết cần được sửa đổi. Hãy tiếp tục sửa đổi {{GENDER:|của bạn}} bằng cách duyệt các sửa đổi được đề xuất này.",
+	"growthexperiments-help-panel-postedit-nonsuggested-try-button-text": "Thử sửa đổi gợi ý",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "Không, cảm ơn",
 	"growthexperiments-help-panel-questionreview-title": "Hỏi tại bàn giúp đỡ",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Hỏi cố vấn của bạn",
 	"growthexperiments-help-panel-questionreview-header": "Khi bạn gửi câu hỏi, nó sẽ được <strong>đăng tải công khai</strong> dưới tên người dùng của bạn, “$2”, vào $1. Tại đó, một biên tập viên khác sẽ tình nguyện trả lời bạn sớm.",
