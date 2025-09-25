@@ -30,6 +30,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "وروستۍ ورځې",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "وروستۍ میاشتې",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title": "په {{PLURAL:$1|تېرې|تېرو}} $2 {{PLURAL:$1|ورځ|ورځو}} کارنده کارزدکړي چاڼول",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "په {{PLURAL:$2|تېره|تېرو}} {{PLURAL:$1|مياشت|مياشتو}} کې کارنده لارزدکړي چاڼول",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "يوازې ستوري‌شوي لارزدکړي ښودل",
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label": "د لارزدکړو چاڼگرو فورمه غځول",
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label": "د لارزدکړو چاڼگرو فورمه پرځول",
@@ -139,6 +140,7 @@
 	"growthexperiments-mentor-list-unexpected-key-mentor": "لارښود پېژندون يو ناڅاپي کونجي <code>$1</code> لري",
 	"growthexperiments-manage-mentors-title": "لارښودانو مهارول",
 	"growthexperiments-manage-mentors-pretext-purpose": "دا مخ د لارښودانو لړليک ښيي.",
+	"growthexperiments-manage-mentors-pretext-privileged": "هغه لارښودان لرې کړئ چې د ټولنې له معيارونو يا تگلارو سرغړونه کوي {{GENDER:|تاسو}} کولی شئ دوی له لارښودۍ لرې کړئ يا د دوی د لارښودۍ اړوند خوښنې سمې کړئ.",
 	"growthexperiments-manage-mentors-auto-assigned": "لارښودان چې په خپلکاري ډول نوي گڼونونو ته گومارل کېږي",
 	"growthexperiments-manage-mentors-auto-assigned-text": "کله چې يو نوی‌راغلی د خپل {{SITENAME}} گڼون نوم‌ليکنه کوي، د لاندې کارنانو څخه يو يې په خپلکاري ډول د لارښود په توگه گومارل کېږي.",
 	"growthexperiments-manage-mentors-manually-assigned": "هغه لارښودان چې خپل لارزدکړي په لاسي ډول خوښوي",
@@ -181,5 +183,6 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message": "پېژندون پيغام",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "نومليکل",
 	"growthexperiments-mentorship-enrollasmentor-summary": "ځان د لارښود په توگه ورگډول",
-	"tag-mentor_list_change": "لارښود ليکلړ بدلول"
+	"tag-mentor_list_change": "لارښود ليکلړ بدلول",
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "وسمهال لارښودي گوله شوې ده. پازوالان کولی شي لارښودي د [[$1]] له لارې بله کړي."
 }

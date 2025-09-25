@@ -8,5 +8,12 @@
 	"apihelp-query+growthtasks-extended-description": "Керлачу редакторна дӀадерзо дикка атта долу цхьацца дӀа ца йерзийна проблемаш йолу йаззамаш хьалха беха.",
 	"apihelp-query+growthtasks-param-tasktypes": "ЖамӀаш билгалчу тӀедилларийн тайпанашца доза тохар. Йерриге а предложенеш схьаэца йаьсса йита.",
 	"apihelp-query+growthtasks-param-topics": "ТӀедилларийн предложенешкахь гӀоле хета йаззаман теманаш.",
-	"apihelp-query+growthtasks-param-topicsmode": "Теманашна йустаран раж."
+	"apihelp-query+growthtasks-param-topicsmode": "Теманашна йустаран раж.",
+	"apihelp-query+growthtasks-param-limit": "Йухадерзо дезаш долу тӀедилларийн максимум дукхалла.",
+	"apihelp-query+growthtasks-param-excludepageids": "АгӀонийн идентификатораш дехаршна йукъара дӀайаха йеза.",
+	"apihelp-query+growthtasks-param-debug": "Арахецначу дешнашна тӀетоха нисйаран хаамаш.",
+	"apihelp-query+growthtasks-example-1": "Карарчу декъашхочун лерина корректурин тӀедилларш дан рекомендаци схьаэца.",
+	"apihelp-query+growthtasks-example-2": "Карарчу декъашхочун тӀедилларийн рекомендацеш схьаэца агӀонан шуьйра информацица.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Схьаэца рекомендаци йина гӀуллакхан тайпа декъашхо кхидӀа хьажа мегар долу.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Карарчу хенахь декъашхочо тӀехь болх беш долу гӀуллакхан тайпа."
 }
