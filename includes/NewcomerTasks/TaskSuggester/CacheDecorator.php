@@ -24,7 +24,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 
 	use LoggerAwareTrait;
 
-	private const CACHE_VERSION = 4;
+	private const CACHE_VERSION = 5;
 
 	/** @var TaskSuggester */
 	private $taskSuggester;
