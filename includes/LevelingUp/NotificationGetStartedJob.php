@@ -55,7 +55,8 @@ class NotificationGetStartedJob extends AbstractDelayedNotificationJob {
 		$userIdentity = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['userId'] );
 		if ( $userIdentity && $this->levelingUpManager->shouldSendGetStartedNotification( $userIdentity ) ) {
 			Event::create( [
-				'type' => $this->params['eventType'],
+				// Prior versions of the job did not have the param 'eventType', add some fallback (T405514)
+				'type' => $this->params['eventType'] ?? 'get-started',
 				'title' => $this->specialPageFactory->getTitleForAlias( 'Homepage' ),
 				'agent' => $userIdentity,
 			] );
