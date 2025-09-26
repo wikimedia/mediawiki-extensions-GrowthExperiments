@@ -583,6 +583,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du}} har gjort $3 foreslåede {{PLURAL:$3|redigering|redigeringer}}. Fortsæt for at udvikle dine færdigheder.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Foretag en foreslået redigering",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Store fremskridt med {{GENDER:$2|din}} {{PLURAL:$3|redigering|redigeringer}}! Fortsæt med at udforske flere forslag for at forbedre {{GENDER:$2|dine}} færdigheder.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Prøv andre redigeringer",
 	"echo-category-title-ge-newcomer": "Nybegynderfunktioner",
 	"echo-pref-tooltip-ge-newcomer": "Giv mig besked om opgaver for nybegyndere og andre funktioner designet til at hjælpe nye brugere.",
 	"growthexperiments-homepage-community-updates-header": "Opdateringer fra fællesskabet",
