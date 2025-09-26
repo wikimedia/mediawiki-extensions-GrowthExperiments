@@ -1,4 +1,5 @@
 const suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+const GrowthSuggestionToneCheck = require( './GrowthSuggestionToneCheck.js' );
 const simpleLevenshtein = require( '../../utils/SimpleLevenshtein.js' );
 
 class ReviseToneInitializer {
@@ -11,6 +12,8 @@ class ReviseToneInitializer {
 	}
 
 	initialize() {
+		mw.editcheck.editCheckFactory.unregister( mw.editcheck.ToneCheck );
+		mw.editcheck.editCheckFactory.register( GrowthSuggestionToneCheck, GrowthSuggestionToneCheck.static.name );
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
 			() => {
 				if ( OO.ui.isMobile() ) {
@@ -27,55 +30,41 @@ class ReviseToneInitializer {
 			return;
 		}
 
-		// FIXME: figure out when to know that VE is ready so that we can show trigger this
 		mw.hook( 've.activationComplete' ).add( () => {
 			mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 		} );
 	}
 
 	showToneEditCheck() {
-		const paragraphsWithTextFromVE = this.getParagraphsWithTextFromVE();
-		const bestMatch = simpleLevenshtein.findBestMatch(
-			this.taskData.toneData.text,
-			paragraphsWithTextFromVE.map( ( p ) => p.text ),
-		);
+		const branchNodesWithTextFromVE = this.getContentBranchNodesWithTextFromVE();
 		// TODO: add tracking for similarity score and second-highest similarity score
 
-		// TODO: trigger Tone EditCheck once T400335 is done
-		if ( OO.ui.isMobile() ) {
-			mw.notify(
-				`Show Tone EditCheck for the paragraph at position ${ bestMatch.bestMatchIndex + 1 }.`,
-				{
-					title: 'Revise Tone Suggested Edit',
-					autoHide: false,
-				},
-			);
-		} else {
-			// eslint-disable-next-line no-alert
-			alert( `Show Tone EditCheck for the paragraph at position ${ bestMatch.bestMatchIndex + 1 }.` );
-		}
+		const bestMatch = simpleLevenshtein.findBestMatch(
+			this.taskData.toneData.text,
+			branchNodesWithTextFromVE.map( ( p ) => p.text ),
+		);
+
+		GrowthSuggestionToneCheck.static.setOverride(
+			branchNodesWithTextFromVE[ bestMatch.bestMatchIndex ].node,
+			ve.init.target.surface.model.documentModel,
+		);
+		ve.init.target.surface.getModel().emit( 'undoStackChange' );
 	}
 
 	// TODO: make this private once Grade A support is raised to at least Safari 15, see T395347
-	getParagraphsWithTextFromVE() {
-		const paragraphs = [];
+	getContentBranchNodesWithTextFromVE() {
+		const nodes = [];
 		const surfaceModel = ve.init.target.surface.getModel();
-		const store = surfaceModel.getDocument().getStore();
-		const paragraphNodes = surfaceModel.getDocument().getNodesByType( 'paragraph' );
-		for ( const paragraphNode of paragraphNodes ) {
-			const hash = paragraphNode.element.originalDomElementsHash;
-			if ( store.hashStore[ hash ] === undefined ) {
-				continue;
-			}
-			const paragraphText = store.hashStore[ hash ][ 0 ].textContent.trim();
-			if ( paragraphText ) {
-				paragraphs.push( {
-					node: paragraphNode,
-					text: paragraphText,
-				} );
-			}
+		const doc = surfaceModel.getDocument();
+		const contentBranchNodes = doc.getNodesByType( ve.dm.ContentBranchNode, true );
+		for ( const contentBranchNode of contentBranchNodes ) {
+			const text = contentBranchNode.type === 'paragraph' ? doc.data.getText( true, contentBranchNode.getRange() ) : '';
+			nodes.push( {
+				node: contentBranchNode,
+				text: text,
+			} );
 		}
-		return paragraphs;
+		return nodes;
 	}
 }
 
