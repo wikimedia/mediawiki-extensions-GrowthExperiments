@@ -4,10 +4,12 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\Maintenance;
 
+use DirectoryIterator;
 use ImportTextFiles;
 use MediaWiki\Maintenance\Maintenance;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use RuntimeException;
 
 // @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -20,7 +22,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class PrepareBrowserTests extends Maintenance {
 	public function execute(): void {
 		$this->importPages();
-		$this->importImageSuggestions();
+		$this->importSubpages();
 		$this->importLinkSuggestions();
 	}
 
@@ -51,23 +53,45 @@ class PrepareBrowserTests extends Maintenance {
 		$importScript->execute();
 	}
 
-	private function importImageSuggestions(): void {
-		$articleTitle = 'Ma\'amoul';
+	private function importSubpages(): void {
+		$subpagesDirectory = __DIR__ . '/../cypress/support/setupFixtures/subpages/';
+		$articleIterator = new DirectoryIterator( $subpagesDirectory );
+		$subpagePaths = [];
+		foreach ( $articleIterator as $directoryName ) {
+			if ( $directoryName->isDot() ) {
+				continue;
+			}
+			if ( !$directoryName->isDir() ) {
+				throw new RuntimeException( 'Expected only directories in ' . $subpagesDirectory );
+			}
+			$articleTitle = $directoryName->getFilename();
 
-		$imageSuggestionsDirectory = __DIR__ . '/../cypress/support/setupFixtures/imageSuggestions/';
-		$pagePath = $imageSuggestionsDirectory . $articleTitle . '/addimage.json.json';
-		$importScript = $this->createChild( ImportTextFiles::class );
-		$importScript->loadParamsAndArgs(
-			null,
-			[
-				'overwrite' => true,
-				'rc' => true,
-				'bot' => true,
-				'prefix' => $articleTitle . '/',
-			],
-			[ $pagePath ],
-		);
-		$importScript->execute();
+			$subpageIterator = new DirectoryIterator( $subpagesDirectory . $articleTitle . '/' );
+			foreach ( $subpageIterator as $subpageFilename ) {
+				if ( $subpageFilename->isDot() ) {
+					continue;
+				}
+				if ( $subpageFilename->isDir() ) {
+					throw new RuntimeException( 'Expected only text files in ' . $directoryName );
+				}
+				$subpagePaths[] = $subpageFilename->getPathname();
+			}
+
+			$importScript = $this->createChild( ImportTextFiles::class );
+			$importScript->loadParamsAndArgs(
+				null,
+				[
+					'overwrite' => true,
+					'rc' => true,
+					'bot' => true,
+					'prefix' => $articleTitle . '/',
+				],
+				$subpagePaths,
+			);
+			$importScript->execute();
+
+			$subpagePaths = [];
+		}
 	}
 
 	private function importLinkSuggestions(): void {
