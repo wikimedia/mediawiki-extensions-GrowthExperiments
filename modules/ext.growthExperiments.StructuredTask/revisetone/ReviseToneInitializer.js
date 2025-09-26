@@ -1,4 +1,5 @@
-const suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+const SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
+const suggestedEditSession = SuggestedEditSession.getInstance();
 const GrowthSuggestionToneCheck = require( './GrowthSuggestionToneCheck.js' );
 const simpleLevenshtein = require( '../../utils/SimpleLevenshtein.js' );
 
@@ -6,9 +7,11 @@ class ReviseToneInitializer {
 
 	// TODO: use private class fields once Grade A support is raised to at least Safari 15, see T395347
 	// #taskData;
+	// #isInitialToneCheck;
 
 	constructor() {
 		this.taskData = suggestedEditSession.taskData;
+		this.isInitialToneCheck = true;
 	}
 
 	initialize() {
@@ -16,6 +19,11 @@ class ReviseToneInitializer {
 		mw.editcheck.editCheckFactory.register( GrowthSuggestionToneCheck, GrowthSuggestionToneCheck.static.name );
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
 			() => {
+				ve.trackSubscribe(
+					'activity.editCheck-' + GrowthSuggestionToneCheck.static.name,
+					( ...params ) => this.handleEditCheckDialogEvents( ...params ),
+				);
+
 				if ( OO.ui.isMobile() ) {
 					mw.hook( 've.activationComplete' ).add( () => {
 						this.showToneEditCheck();
@@ -33,6 +41,29 @@ class ReviseToneInitializer {
 		mw.hook( 've.activationComplete' ).add( () => {
 			mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 		} );
+	}
+
+	handleEditCheckDialogEvents( name, { action } ) {
+		if ( this.isInitialToneCheck && action === 'action-edit' ) {
+			// The user clicked "Revise" on the initial tone suggestion
+			this.isInitialToneCheck = false;
+			return;
+		}
+		const dismissActions = [
+			'edit-check-feedback-reason-appropriate',
+			'edit-check-feedback-reason-uncertain',
+			'edit-check-feedback-reason-other',
+		];
+		if ( this.isInitialToneCheck && dismissActions.includes( action ) ) {
+			// The user submitted the decline-survey on the initial tone suggestion
+			ve.init.target.tryTeardown().then( this.showCancelledPostEditDialog );
+		}
+	}
+
+	showCancelledPostEditDialog() {
+		suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.CANCELLED );
+		suggestedEditSession.postEditDialogNeedsToBeShown = true;
+		suggestedEditSession.maybeShowPostEditDialog();
 	}
 
 	showToneEditCheck() {
