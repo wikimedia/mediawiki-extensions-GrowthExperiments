@@ -192,7 +192,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 		$menteeLinks = [];
 		$context = $this->getContext();
 		foreach ( $this->mentees as $user ) {
-			$menteeLinks[] = $this->userLinkRenderer->userLink( $user, $context );
+			$menteeLinks[] = Message::rawParam( $this->userLinkRenderer->userLink( $user, $context ) );
 		}
 
 		$this->getOutput()->addWikiMsg(
