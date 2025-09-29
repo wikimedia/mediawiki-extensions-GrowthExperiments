@@ -5,6 +5,7 @@ namespace GrowthExperiments\Config\Providers;
 use GrowthExperiments\Util;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Provider\DataProvider;
+use MediaWiki\Extension\CommunityConfiguration\Provider\ProviderServicesContainer;
 use MediaWiki\Extension\CommunityConfiguration\Store\IConfigurationStore;
 use MediaWiki\Extension\CommunityConfiguration\Validation\IValidator;
 use StatusValue;
@@ -34,13 +35,14 @@ class SuggestedEditsConfigProvider extends DataProvider {
 	private const DEFAULT_TASK_TYPE = 'template-based';
 
 	public function __construct(
+		ProviderServicesContainer $providerServicesContainer,
 		string $providerId,
 		array $options,
 		IConfigurationStore $store,
 		IValidator $validator,
 		private readonly Config $config,
 	) {
-		parent::__construct( $providerId, $options, $store, $validator );
+		parent::__construct( $providerServicesContainer, $providerId, $options, $store, $validator );
 	}
 
 	public function loadForNewcomerTasks(): StatusValue {
