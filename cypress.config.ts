@@ -3,7 +3,8 @@ import { defineConfig } from 'cypress';
 import { mwApiCommands } from './cypress/support/MwApiPlugin';
 // eslint-disable-next-line n/no-missing-import
 import LocalSettingsSetup from './cypress/support/LocalSettingsSetup';
-import * as installCypressLogsPrinter from 'cypress-terminal-report/src/installLogsPrinter';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const installCypressLogsPrinter = require( 'cypress-terminal-report/src/installLogsPrinter' );
 import * as childProcess from 'child_process';
 
 const envLogDir = process.env.LOG_DIR ? process.env.LOG_DIR + '/GrowthExperiments' : null;

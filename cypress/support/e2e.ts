@@ -1,8 +1,6 @@
 import './commands.ts';
-
-import * as installCypressLogsCollector from 'cypress-terminal-report/src/installLogsCollector';
-
-installCypressLogsCollector();
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+require( 'cypress-terminal-report/src/installLogsCollector' )();
 
 function subscribeWhenAvailable(
 	win: Cypress.AUTWindow & { mw: MediaWiki },
