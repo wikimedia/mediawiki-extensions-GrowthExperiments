@@ -2,15 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"Kareyac",
+			"Marphy 123",
 			"Շահէն"
 		]
 	},
 	"growthexperiments-homepage-email-changelink": "փոխել",
 	"growthexperiments-homepage-email-confirmlink": "հաստատել",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Եղած է",
+	"tag-newcomer_task_revise_tone": "Newcomer task: Revise Tone",
 	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3-5 վայրկեան",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Եղած է",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Յղումներ",
+	"growthexperiments-homepage-suggestededits-tasktype-name-revise-tone": "Revise Tone",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-revise-tone": "Make articles more factual by removing promotional words",
+	"growthexperiments-homepage-suggestededits-tasktype-time-revise-tone": "5 - 10 minutes",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Շարունակել",
 	"growthexperiments-addlink-context-button-accept": "Այո",
 	"growthexperiments-addlink-context-button-reject": "Ոչ",

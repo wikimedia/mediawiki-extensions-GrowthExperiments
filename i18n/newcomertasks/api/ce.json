@@ -25,5 +25,8 @@
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt><var>ge-task-link-recommendation</var> плагинна</dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt><var>ge-task-image-recommendation</var> плагинна</dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt><var>ge-task-section-image-recommendation</var> плагинна</dt><dd>\n$1\n</dd></dl>",
-	"apierror-growthexperiments-addimage-handler-accepted-missing": "«ТӀеэцна» параметр йац «Сурт тӀетоха» плагинан хаамашна йукъахь"
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "«ТӀеэцна» параметр йац «Сурт тӀетоха» плагинан хаамашна йукъахь",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "«ТӀеэцна» параметр логикин хила йеза «Сурт тӀетоха» плагинан хаамашкахь, иза $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "'reasons' параметр йац «Сурт тӀетоха» плагинан хаамашкахь.",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "«reasons» параметр массив хила йеза «Сурт тӀетоха» плагинан хаамашкахь, иза $1 йу"
 }

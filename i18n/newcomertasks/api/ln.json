@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marphy 123"
+		]
+	},
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-revise-tone": "Salelá ntango ozali kobomba bobongisi oyo ebongisami ya GrowthExperiments \"[[mw:Growth/Revise_Tone|Revise_Tone]]\".",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-revise-tone": "<dl><dt>Mpo na plug-in ya <var>ge-task-revise-tone</var></dt><dd>\n$1\n</dd></dl>",
+	"apihelp-growthexperiments-structured-task-submit-data-format-revise-tone": "Esengeli te kozala na ba données mpo na plugin oyo."
+}

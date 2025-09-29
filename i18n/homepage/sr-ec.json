@@ -251,6 +251,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Додавање унутрашњих веза",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Додај слику у неилустрован чланак",
 	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Додај слику у одељак чланка",
+	"growthexperiments-homepage-suggestededits-tasktype-time-revise-tone": "5 - 10 минута",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Машински предлог",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Предложена конфигурација измена није важећа: лоша структура.",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Неважећа конфигурација предложених изменаː ID „$1” није важећи — сме да садржи само латинична слова (a-z), бројеве (0-9) и знак минус (-)",
