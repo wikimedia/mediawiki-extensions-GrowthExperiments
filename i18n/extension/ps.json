@@ -19,5 +19,7 @@
 	"growthexperiments-edit-config-mentorship-enabled": "ايا لارښودۍ ځانگړنې چارن‌شوې دي؟",
 	"growthexperiments-edit-config-mentorship-enabled-true": "هو",
 	"growthexperiments-edit-config-mentorship-enabled-false": "نه",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "غځول: کينډۍ چې پراخولو ته اړې ليکنې مومي.",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "د سرچينو ورگډولو په اړه د نورو مالوماتو زده کولو موخې‌وړ مخ.",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-maximum-tasks-per-day": "د \"تړونی ورگډول\" وړانديز شوو دندو ډېر شمېر چې يو نوی‌راغلی يې هره ورځ بشپړولی شي."
 }

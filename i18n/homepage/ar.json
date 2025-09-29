@@ -20,7 +20,8 @@
 			"Lolekek",
 			"5glup",
 			"XIDME",
-			"Cigaryno"
+			"Cigaryno",
+			"Mohammed Qays"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
@@ -317,7 +318,7 @@
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "لإنشاء مقالة جديدة، {{GENDER:$1|ستحتاج|ستحتاجين}} إلى استخدام العديد من المهارات التي يمكنك تعلمها من خلال إكمال بعض المهام الأسهل، لمعرفة المزيد حول كيفية إنشاء مقالة جديدة، [$2 {{GENDER:$1|اضغط|اضغطي}} هنا].",
 	"growthexperiments-homepage-suggestededits-error-title": "لا تتوفر تعديلات مقترحة في الوقت الحالي.",
 	"growthexperiments-homepage-suggestededits-error-description": "من فضلك {{GENDER:|أعد|أعيدي}} المحاولة في وقت لاحق.",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "{{GENDER:|حدّد|حدّدي}} على الأقل مستوى واحدا من التعديلات",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "{{GENDER:|حدّد|حدّدي}} على الأقل نوعًا واحدًا من التعديلات",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "{{GENDER:|حدّد|حدّدي}} المواضيع",
 	"growthexperiments-homepage-suggestededits-topics-more": "{{GENDER:|أظهر|أظهري}} المزيد",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|لا مواضيع|موضوع واحد|موضوعان اثنان|$1 مواضيع|$1 موضوعًا}}",

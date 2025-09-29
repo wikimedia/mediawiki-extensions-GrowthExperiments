@@ -12,5 +12,6 @@
 	"apihelp-growthsetmentor-summary": "Цхьана декъашхочунна хьехамхо хӀотто. Хийцамаш дӀайазбийр бу нахана хьалха.",
 	"apihelp-growthsetmentor-param-mentee": "Ӏамархочун аккаунт",
 	"apihelp-growthsetmentor-param-mentor": "Хьехамхочун цӀе",
-	"apihelp-growthsetmentor-param-reason": "Хийцам барна бахьана"
+	"apihelp-growthsetmentor-param-reason": "Хийцам барна бахьана",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Сурт кховдийна болчу йаззаман цӀе"
 }

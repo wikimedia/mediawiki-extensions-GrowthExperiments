@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Керла тӀебаьхкинчарна догӀуш долу тӀедилларийн рекомендацеш схьаэца.",
+	"apihelp-query+growthtasks-extended-description": "Керлачу редакторна дӀадерзо дикка атта долу цхьацца дӀа ца йерзийна проблемаш йолу йаззамаш хьалха беха.",
+	"apihelp-query+growthtasks-param-tasktypes": "ЖамӀаш билгалчу тӀедилларийн тайпанашца доза тохар. Йерриге а предложенеш схьаэца йаьсса йита.",
+	"apihelp-query+growthtasks-param-topics": "ТӀедилларийн предложенешкахь гӀоле хета йаззаман теманаш.",
+	"apihelp-query+growthtasks-param-limit": "Йухадерзо дезаш долу тӀедилларийн максимум дукхалла.",
+	"apihelp-query+growthtasks-param-excludepageids": "АгӀонийн идентификатораш дехаршна йукъара дӀайаха йеза.",
+	"apihelp-query+growthtasks-param-debug": "Арахецначу дешнашна тӀетоха нисйаран хаамаш.",
+	"apihelp-query+growthtasks-example-2": "Карарчу декъашхочун тӀедилларийн рекомендацеш схьаэца агӀонан шуьйра информацица.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "«ТӀеэцна» параметр йац «Сурт тӀетоха» плагинан хаамашна йукъахь"
+}
