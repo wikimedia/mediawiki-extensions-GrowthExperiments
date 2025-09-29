@@ -20,7 +20,7 @@
 		"rollup": "rollup -c"
 	},
 	"devDependencies": {
-		"@babel/preset-env": "7.16.11",
+		"@babel/preset-env": "^7.28.3",
 		"@rollup/plugin-node-resolve": "15.0.1",
 		"@rollup/plugin-terser": "0.1.0",
 		"@types/jquery": "^3.5.32",
@@ -31,7 +31,6 @@
 		"@wikimedia/codex": "2.3.2",
 		"@wikimedia/types-wikimedia": "^0.4.4",
 		"api-testing": "1.7.1",
-		"babel-core": "6.26.3",
 		"cypress": "^14.5.4",
 		"cypress-terminal-report": "^7.2.1",
 		"d3-array": "3.2.0",
