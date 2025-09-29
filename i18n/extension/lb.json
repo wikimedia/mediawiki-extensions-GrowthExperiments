@@ -159,6 +159,8 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Maximal Zuel vun Ännerungen, déi e Benotzer hu ka fir als luewenswäert consideréiert ze ginn",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Standardméisseg minimal Zuel vun Ännerungen, déi e Mentoréierten hu muss fir luewenswäert ze sinn",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentore kënnen dës Optioun fir hiren eegene Benotzer am Mentoren-Dashboard änneren.",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-control-label": "Erfuere Benotzer vum Mentoreprogramm ausschléissen",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-help-text": "Wann dës Optioun aktivéiert ass, gi Mentoréierter automatesch aus dem Mentoreprogramm erausgeholl, soubal se béid Seuilen erreecht hunn. Se kënnen ëmmer nach e Mentor iwwer hir Startsäit kréien.",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "Zuel vun den Ännerungen",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "Alter vum Kont (an Deeg)",
 	"communityconfiguration-growthhomepage-title": "Aschaffe vun neie Benotzer",
