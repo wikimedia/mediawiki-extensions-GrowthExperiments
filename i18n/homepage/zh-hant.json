@@ -25,7 +25,8 @@
 			"捍粵者",
 			"羊羊32521",
 			"魔琴",
-			"Cookai1205"
+			"Cookai1205",
+			"LowensteinYang"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -90,7 +91,11 @@
 	"growthexperiments-homepage-impact-no-js-fallback": "請啟用 JavaScript 來檢視此組件。",
 	"growthexperiments-homepage-impact-recent-activity-title": "{{GENDER:|您的}}近期活動（過去$2{{PLURAL:$2|天}}）",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "最近活動（過去$1{{PLURAL:$1|天}}）",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "最後編輯",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "最長的連續紀錄",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|天}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|次編輯}}",
+	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "在$2{{PLURAL:$1|编辑}}了$1次",
 	"growthexperiments-homepage-impact-scores-edit-count": "總編輯數",
 	"growthexperiments-homepage-impact-scores-thanks-count": "收到的感謝",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "有關感謝內容如何運作的更多資訊",
@@ -143,6 +148,7 @@
 	"tag-newcomer_task_add_link-description": "透過新手頁面建議編輯模組所建議作出的「新增連結」任務編輯",
 	"tag-newcomer_task_image_suggestion": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-image 建議：加入圖片]",
 	"tag-newcomer_task_image_suggestion-description": "透過新手頁面建議編輯模組所建議作出的「加入圖片」任務編輯",
+	"tag-newcomer_task_section_image_suggestion-description": "「為章節加入圖片」任務編輯——由新手首頁的建議編輯模組所提議",
 	"growthexperiments-homepage-help-dialog-title": "詢問諮詢臺",
 	"growthexperiments-homepage-help-header": "取得編輯協助",
 	"growthexperiments-homepage-help-subheader": "有關編輯的熱門求助頁面",

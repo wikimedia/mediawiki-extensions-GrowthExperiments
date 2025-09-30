@@ -230,7 +230,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Aukeratu gutxienez aldaketa mota bat",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Aukeratu interesatzen zaizkizun gaiak",
 	"growthexperiments-homepage-suggestededits-topics-more": "gehiago erakutsi",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|gai 1|$1 gai}}",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|gai|gai}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Denak hautatu",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Denak ezabatu",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Aukeratu editatzeko interesatzen {{GENDER:$1|zaizkizun}} gaiak",
