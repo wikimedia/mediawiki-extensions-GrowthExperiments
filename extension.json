@@ -2886,10 +2886,6 @@
 			"value": 1000,
 			"description": "Maximum number of thanks to process for Impact Module statistics"
 		},
-		"GENewcomerTasksStarterDifficultyEnabled": {
-			"value": false,
-			"description": "Enables the 'Add a Link' limiting feature for new editors."
-		},
 		"GEReviseToneSuggestedEditEnabled": {
 			"value": false,
 			"description": "Enable the Revise Tone feature so newcomers can spot non-neutral wording and receive in-context guidance to help users rewrite a sentence in a more encyclopedic tone."

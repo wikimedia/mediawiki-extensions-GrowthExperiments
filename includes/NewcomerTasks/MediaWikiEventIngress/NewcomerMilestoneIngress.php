@@ -66,7 +66,6 @@ class NewcomerMilestoneIngress extends DomainEventIngress implements PageRevisio
 		if (
 			!$user->isRegistered() ||
 			!$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ||
-			!$this->config->get( 'GENewcomerTasksStarterDifficultyEnabled' ) ||
 			$event->isRevert()
 		) {
 			return;

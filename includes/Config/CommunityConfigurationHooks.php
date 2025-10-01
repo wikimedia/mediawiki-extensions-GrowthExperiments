@@ -45,9 +45,6 @@ class CommunityConfigurationHooks implements
 				}
 				if ( !$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 					unset( $rootSchema['properties']['link_recommendation'] );
-				} elseif ( !$this->config->get( 'GENewcomerTasksStarterDifficultyEnabled' ) ) {
-					unset( $rootSchema['properties']['link_recommendation']['properties']['maximumEditsTaskIsAvailable']
-					);
 				}
 				if ( !$this->config->get( 'GENewcomerTasksImageRecommendationsEnabled' ) ) {
 					unset( $rootSchema['properties']['image_recommendation'] );

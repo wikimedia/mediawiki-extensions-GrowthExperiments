@@ -138,8 +138,7 @@ class TaskTypeManager {
 		}
 		if (
 			!$editCount ||
-			!in_array( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID, $taskTypesToFilter ) ||
-			!$this->config->get( 'GENewcomerTasksStarterDifficultyEnabled' )
+			!in_array( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID, $taskTypesToFilter )
 		) {
 			return [ $taskTypesToFilter, $filtered ];
 		}

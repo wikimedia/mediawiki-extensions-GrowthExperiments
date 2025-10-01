@@ -50,9 +50,9 @@ class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {
 			],
 		);
 
-		$this->maintenance->execute();
-
 		$services = $this->getServiceContainer();
+		$services->resetServiceForTesting( 'GrowthExperimentsNewcomerTasksConfigurationLoader' );
+		$this->maintenance->execute();
 
 		$mainStash = $services->getMainObjectStash();
 		$lastPageIdKey = $mainStash->makeKey(

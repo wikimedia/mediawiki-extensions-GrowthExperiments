@@ -19,30 +19,8 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 		$this->overrideConfigValue( 'GEReviseToneSuggestedEditEnabled', false );
 	}
 
-	public function testFiltersTaskWhenLimitNotEnabledByFeatureFlagDefault() {
-		$user = $this->createUserWithEdits( 1000 );
-		$this->setMaxEditsTaskIsAvailableInConfig( '20' );
-		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
-		$result = $sut->getTaskTypesForUser( $user );
-		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $result );
-	}
-
-	public function testFiltersTaskWhenLimitNotEnabledByFeatureFlag() {
-		$user = $this->createUserWithEdits( 1000 );
-		$this->setMaxEditsTaskIsAvailableInConfig( '20' );
-		$this->overrideConfigValues( [
-			'GENewcomerTasksStarterDifficultyEnabled' => false,
-		] );
-		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
-		$result = $sut->getTaskTypesForUser( $user );
-		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $result );
-	}
-
 	public function testFiltersTaskWhenLimitNotEnabledByConfigDefault() {
 		$user = $this->createUserWithEdits( 1000 );
-		$this->overrideConfigValues( [
-			'GENewcomerTasksStarterDifficultyEnabled' => true,
-		] );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
 		$result = $sut->getTaskTypesForUser( $user );
 		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $result );
@@ -50,9 +28,6 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 
 	public function testFiltersTaskWhenLimitNotReached() {
 		$user = $this->createUserWithEdits( 0 );
-		$this->overrideConfigValues( [
-			'GENewcomerTasksStarterDifficultyEnabled' => true,
-		] );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
 		$this->setMaxEditsTaskIsAvailableInConfig( '150' );
 		$result = $sut->getTaskTypesForUser( $user );
@@ -61,9 +36,6 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 
 	public function testFiltersTaskWhenLimitReached() {
 		$user = $this->createUserWithEdits( 21 );
-		$this->overrideConfigValues( [
-			'GENewcomerTasksStarterDifficultyEnabled' => true,
-		] );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
 		$this->setMaxEditsTaskIsAvailableInConfig( '20' );
 		$result = $sut->getTaskTypesForUser( $user );
@@ -73,7 +45,6 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 	public function testFiltersTaskWhenLimitReachedReviseToneEnabled() {
 		$user = $this->createUserWithEdits( 21 );
 		$this->overrideConfigValues( [
-			'GENewcomerTasksStarterDifficultyEnabled' => true,
 			'GEReviseToneSuggestedEditEnabled' => true,
 		] );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
