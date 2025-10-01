@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Керла тӀебаьхкинчарна догӀуш долу тӀедилларийн рекомендацеш схьаэца.",
+	"apihelp-query+growthtasks-extended-description": "Керлачу редакторна дӀадерзо дикка атта долу цхьацца дӀа ца йерзийна проблемаш йолу йаззамаш хьалха беха.",
+	"apihelp-query+growthtasks-param-tasktypes": "ЖамӀаш билгалчу тӀедилларийн тайпанашца доза тохар. Йерриге а предложенеш схьаэца йаьсса йита.",
+	"apihelp-query+growthtasks-param-topics": "ТӀедилларийн предложенешкахь гӀоле хета йаззаман теманаш.",
+	"apihelp-query+growthtasks-param-topicsmode": "Теманашна йустаран раж.",
+	"apihelp-query+growthtasks-param-limit": "Йухадерзо дезаш долу тӀедилларийн максимум дукхалла.",
+	"apihelp-query+growthtasks-param-excludepageids": "АгӀонийн идентификатораш дехаршна йукъара дӀайаха йеза.",
+	"apihelp-query+growthtasks-param-debug": "Арахецначу дешнашна тӀетоха нисйаран хаамаш.",
+	"apihelp-query+growthtasks-example-1": "Карарчу декъашхочун лерина корректурин тӀедилларш дан рекомендаци схьаэца.",
+	"apihelp-query+growthtasks-example-2": "Карарчу декъашхочун тӀедилларийн рекомендацеш схьаэца агӀонан шуьйра информацица.",
+	"apihelp-query+growthnextsuggestedtasktype-summary": "Схьаэца рекомендаци йина гӀуллакхан тайпа декъашхо кхидӀа хьажа мегар долу.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Карарчу хенахь декъашхочо тӀехь болх беш долу гӀуллакхан тайпа.",
+	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "JSON могӀа объектийн хӀокху догӀанашца:\n* <var>acceptedTargets</var>: (лаамехь) АгӀонан цӀерийн массив, цуьнан рекомендаци йина хьажорг декъашхочо тӀеэцна.\n* <var>rejectedTargets</var>: (лаамехь) АгӀонан цӀерийн массив, цуьнан рекомендаци йина хьажорг декъашхочо йухатоьхна.\n* <var>skippedTargets</var>: (лаамехь) АгӀонан цӀерийн массив, цуьнан рекомендаци йина хьажорг декъашхочо дӀайаьккхина (тергал ца йина).",
+	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "JSON могӀа объектийн хӀокху догӀанашца:\n* <var>accepted</var>: Булан маьӀна, гойтуш лелош декъашхочо тӀеэцна йа ца дина рекомендаци йина сурт.\n* <var>reasons</var>: Массив могӀанийн, логикин маьӀна билгалдоккхуш, гойтуш декъашхочо гойтуш долу сурт йухатохаран бахьана. Нийса маьӀна: $1\n* <var>caption</var>: Декъашхочо дӀайаздина суьртан тидам. (Хила деза лаххара а $2 {{PLURAL:$2|хьаьрк}}).",
+	"apihelp-growthexperiments-structured-task-submit-data-format-section-image-recommendation": "JSON могӀа объектийн хӀокху догӀанашца:\n* <var>accepted</var>: Булан маьӀна, гойту декъашхочо тӀеэцна йа ца эцна рекомендаци йина сурт.\n* <var>reasons</var>: Массив могӀанийн, логикин маьӀна билгалдоккхуш, гойтуш декъашхочо гойтуш долу сурт йухатохаран бахьана. Нийса маьӀна: $1\n* <var>caption</var>: Декъашхочо дӀаяздина суьртан тидам. (Хила деза лаххара а $2 {{PLURAL:$2|хьаьрк}}).\n* <var>sectionTitle</var>: Предложени лерина хиллачу декъан цӀе.\n* <var>sectionNumber</var>: Предложени лерина хиллачу йаззаман декъан рогӀаллин лоьмар.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "«[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link Хьажорг тӀетоха]» леладе GrowthExperiments структурйина хийцам Ӏалашбеш.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "«[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image Сурт тӀетоха]» леладе GrowthExperiments структурйина хийцам Ӏалашбеш.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-section-image-recommendation": "«[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image# Сурт тӀетоха декъана]» леладе GrowthExperiments структурйина хийцам Ӏалашбеш.",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt><var>ge-task-link-recommendation</var> плагинна</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt><var>ge-task-image-recommendation</var> плагинна</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt><var>ge-task-section-image-recommendation</var> плагинна</dt><dd>\n$1\n</dd></dl>",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "«ТӀеэцна» параметр йац «Сурт тӀетоха» плагинан хаамашна йукъахь",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "«ТӀеэцна» параметр логикин хила йеза «Сурт тӀетоха» плагинан хаамашкахь, иза $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "'reasons' параметр йац «Сурт тӀетоха» плагинан хаамашкахь.",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "«reasons» параметр массив хила йеза «Сурт тӀетоха» плагинан хаамашкахь, иза $1 йу"
+}
