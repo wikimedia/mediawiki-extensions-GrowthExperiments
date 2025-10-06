@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ravi Mundkur"
+			"Ravi Mundkur",
+			"ChiK"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|ಸ್ವಾಗತ}},$1!",
+	"welcomesurvey": "{{GENDER:$1|ಸ್ವಾಗತ}}, $1!",
 	"welcomesurvey-save-confirmation-title": "ಧನ್ಯವಾದೊಲು! ಇರೆನ ಜವಾಬು(ಪ್ರತಿಕ್ರಿಯೆ)ಲೆನ್ ಒರಿಪಾದುಂಡು.",
 	"welcomesurvey-subtitle": "ಕೆಲವು ಐಚ್ಚಿಕ ಪ್ರಶ್ನೆಲೆಗ್ ಉತ್ತರ ಕೊರ್ಪಿನ ಮೂಲಕ ಇರೆನಂಚಿನ ಪೊಸ ಬಳಕೆದಾರೆರೆಗ್ ವಿಕಿಪೀಡಿಯಾನ್ ಸುಧಾರಿಸಾವರೆ ಸಹಾಯ ಮಲ್ಪುಲೆ.",
 	"welcomesurvey-save-btn": "ಮುಗಿಪು",

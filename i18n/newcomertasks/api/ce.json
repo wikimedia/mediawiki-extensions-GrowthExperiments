@@ -12,5 +12,6 @@
 	"apihelp-query+growthtasks-param-excludepageids": "АгӀонийн идентификатораш дехаршна йукъара дӀайаха йеза.",
 	"apihelp-query+growthtasks-param-debug": "Арахецначу дешнашна тӀетоха нисйаран хаамаш.",
 	"apihelp-query+growthtasks-example-2": "Карарчу декъашхочун тӀедилларийн рекомендацеш схьаэца агӀонан шуьйра информацица.",
-	"apierror-growthexperiments-addimage-handler-accepted-missing": "«ТӀеэцна» параметр йац «Сурт тӀетоха» плагинан хаамашна йукъахь"
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "«ТӀеэцна» параметр йац «Сурт тӀетоха» плагинан хаамашна йукъахь",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "«ТӀеэцна» параметр логикин хила йеза «Сурт тӀетоха» плагинан хаамашкахь, иза $1"
 }

@@ -40,7 +40,8 @@
 			"JLTRY",
 			"Bananax47",
 			"Escargot bleu",
-			"Pyschobbens"
+			"Pyschobbens",
+			"Marphy 123"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Bonjour {{bidi:$1}} !",
@@ -360,7 +361,7 @@
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|a relu}} $4 {{PLURAL:$4|suggestion|suggestions}} de lien pour $3 : $5 {{PLURAL:$5|acceptée|acceptées}}, $6 {{PLURAL:$6|rejetée|rejetées}} et $7 {{PLURAL:$7|omise|omises}}",
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|a relu}} une suggestion d’image pour $3 : acceptée",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|a relu}} une suggestion d’image pour $3 : rejetée",
-	"log-action-filter-growthexperiments": "Type d’événement GrowthExpetiments :",
+	"log-action-filter-growthexperiments": "Type d’événement GrowthExperiments :",
 	"log-action-filter-growthexperiments-claimmentee": "Modifications de tutoré",
 	"log-action-filter-growthexperiments-setmentor": "Modifications de tuteur",
 	"log-action-filter-growthexperiments-addlink": "Suggestions de lien",
