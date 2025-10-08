@@ -313,7 +313,6 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		$specialPage = $this->newSpecialPage();
 		$reflectionMethod = new ReflectionMethod(
 			SpecialManageMentors::class, 'displayMentorshipWarningMessage' );
-		$reflectionMethod->setAccessible( true );
 		$result = $reflectionMethod->invoke( $specialPage );
 
 		$expectedConfigPage = SpecialPage::getTitleFor( 'CommunityConfiguration', 'Mentorship' )
