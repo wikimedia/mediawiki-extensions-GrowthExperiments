@@ -247,5 +247,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Có, sau tổng cộng 50 lần sửa đổi",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Có, sau tổng cộng 75 lần sửa đổi",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Có, sau tổng cộng 150 lần sửa đổi",
-	"growthexperiments-addlink-done-button": "Xong"
+	"growthexperiments-addlink-done-button": "Xong",
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Nhiệm vụ bảo trì, dọn dẹp dấu thời gian đã hết hạn"
 }

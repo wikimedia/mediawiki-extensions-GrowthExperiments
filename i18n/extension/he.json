@@ -239,5 +239,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "כן, אחרי 50 עריכות בסך הכול",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "כן, אחרי 75 עריכות בסך הכול",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "כן, אחרי 150 עריכות בסך הכול",
-	"growthexperiments-addlink-done-button": "בוצע"
+	"growthexperiments-addlink-done-button": "בוצע",
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "משימת תחזוקה, ניקוי חותמי־זמן של היעדרויות שפגו"
 }
