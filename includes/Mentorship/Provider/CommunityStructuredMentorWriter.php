@@ -13,6 +13,7 @@ use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Rdbms\IDBAccessObject;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * This class writes to the structured mentor list and allows to add/remove
@@ -89,10 +90,17 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 	 * @return array
 	 */
 	public static function serializeMentor( Mentor $mentor ): array {
+		$awayTimestamp = [];
+		if ( $mentor->getStatusAwayTimestamp() ) {
+			$awayTimestamp[ 'awayTimestamp' ] = ConvertibleTimestamp::convert(
+				TS_ISO_8601,
+				$mentor->getStatusAwayTimestamp()
+			);
+		}
 		return [
 			'message' => $mentor->hasCustomIntroText() ? $mentor->getIntroText() : null,
 			'weight' => $mentor->getWeight(),
-		] + ( $mentor->getStatusAwayTimestamp() ? [ 'awayTimestamp' => $mentor->getStatusAwayTimestamp() ] : [] );
+		] + $awayTimestamp;
 	}
 
 	/**
