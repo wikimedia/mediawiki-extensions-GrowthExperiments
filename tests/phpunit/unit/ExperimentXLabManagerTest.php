@@ -13,6 +13,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 use Wikimedia\MetricsPlatform\MetricsClient;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @coversDefaultClass \GrowthExperiments\ExperimentXLabManager
@@ -194,8 +195,6 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	private function getXLabDependencies( ?array $assignments = [] ): array {
-		// FIXME update Experiment constructor call after I7bb480c03d9718f95323bd67e093e3dcaaa3bf07 and enable test
-		$this->markTestSkipped( 'Blocking MetricsPlatform urgent change T401706' );
 		if ( !class_exists( 'MediaWiki\Extension\MetricsPlatform\XLab\ExperimentManager' ) ) {
 			$this->markTestSkipped( 'MetricsPlatform\XLab\ExperimentManager is not available.' );
 		}
@@ -203,11 +202,15 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$configsFetcher = $this->createMock( InstrumentConfigsFetcher::class );
 		$enrollmentAuthority = $this->createMock( EnrollmentAuthority::class );
 		$metricsClientMock = $this->createMock( MetricsClient::class );
+		$statsFactoryMock = $this->createNoOpMock( StatsFactory::class );
 		$experimentManager->method( 'getExperiment' )
 			->willReturnOnConsecutiveCalls(
-				...array_map( static function ( $experimentName ) use ( $metricsClientMock, $assignments ) {
+				...array_map( static function ( $experimentName ) use (
+					$metricsClientMock, $assignments, $statsFactoryMock
+				) {
 					return new Experiment(
 						$metricsClientMock,
+						$statsFactoryMock,
 						[
 							'enrolled' => $experimentName,
 							'assigned' => $assignments[ $experimentName ] ?? null,
