@@ -110,19 +110,22 @@ class DeleteOldSurveys extends Maintenance {
 				}
 			}
 
-			$users = $this->userIdentityLookup->newSelectQueryBuilder()
-				->whereUserIds( $ids )
-				->fetchUserIdentities();
-			foreach ( $users as $user ) {
-				if ( !$dryRun ) {
-					$this->beginTransaction( $dbw, __METHOD__ );
-					// Setting an option to null will assign it the default value, which in turn
-					// will delete it (meaning we won't have to reprocess this row on the next run).
-					$this->userOptionsManager->setOption( $user, WelcomeSurvey::SURVEY_PROP, null );
-					$this->userOptionsManager->saveOptions( $user );
-					$this->commitTransaction( $dbw, __METHOD__ );
+			// UserIdentityLookup fails if $ids is empty, run it only when needed
+			if ( $ids !== [] ) {
+				$users = $this->userIdentityLookup->newSelectQueryBuilder()
+					->whereUserIds( $ids )
+					->fetchUserIdentities();
+				foreach ( $users as $user ) {
+					if ( !$dryRun ) {
+						$this->beginTransaction( $dbw, __METHOD__ );
+						// Setting an option to null will assign it the default value, which in turn
+						// will delete it (meaning we won't have to reprocess this row on the next run).
+						$this->userOptionsManager->setOption( $user, WelcomeSurvey::SURVEY_PROP, null );
+						$this->userOptionsManager->saveOptions( $user );
+						$this->commitTransaction( $dbw, __METHOD__ );
+					}
+					$deletedCount++;
 				}
-				$deletedCount++;
 			}
 			$this->output( "Processed users up to ID $fromUserId\n" );
 		} while ( !$break && $res->numRows() === $this->mBatchSize );
