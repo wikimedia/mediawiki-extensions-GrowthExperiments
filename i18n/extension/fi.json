@@ -18,6 +18,7 @@
 	"growthexperiments-edit-config-feedback-headline": "Onko sinulla ideoita tai kysymyksiä tästä lomakkeesta?",
 	"growthexperiments-edit-config-feedback-cta": "Lähetä palautetta",
 	"growthexperiments-edit-config-edit-summary": "Muokkausyhteenveto",
+	"growthexperiments-edit-config-return-to-form": "Voit [Special:EditGrowthConfig|palata takaisin]] muokkauslomakkeeseen.",
 	"growthexperiments-edit-config-help-panel": "Ohjepaneelin asetukset",
 	"growthexperiments-edit-config-help-panel-description": "Ohjepaneeli on käytettävissä missä tahansa nimiavaruudessa, sekä luku- että muokkaustilassa, alla olevien asetusten mukaisesti. Paneelista on mahdollisuus hakea ohjeita, klikata ohjelinkkejä ja kysyä kysymyksiä joko mentoreilta tai neuvontapalstalta.",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Nimiavaruudet, joissa ohjepaneeli on näkyvissä lukutilassa oltaessa",

@@ -238,5 +238,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Si, despois dun total de 50 edicións",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Si, despois dun total de 75 edicións",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Si, despois dun total de 150 edicións",
-	"growthexperiments-addlink-done-button": "Feito"
+	"growthexperiments-addlink-done-button": "Feito",
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Tarefa de mantemento: limpeza das marcas de tempo daquelas ausencia caducadas"
 }
