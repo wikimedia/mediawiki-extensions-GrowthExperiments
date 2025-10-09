@@ -14,6 +14,7 @@ GrowthSuggestionToneCheck.static.setOverride = function ( node, documentModel ) 
 	this.overrides.set( node, documentModel.data.getText( true, node.getRange() ) );
 };
 
+GrowthSuggestionToneCheck.static.takesFocus = true;
 GrowthSuggestionToneCheck.static.checkAsync = function ( text ) {
 	if ( Array.from( this.overrides.values() ).includes( text ) ) {
 		return ve.createDeferred().resolve( { prediction: true, probability: 1 } ).promise();

@@ -1,0 +1,17 @@
+{
+	"wiki": "enwiki",
+	"article_id": "1234",
+	"revision_id": "567890",
+	"text": "Eldfjall represents the most awe-inspiring and magnificent volcanic wonder that Iceland has to offer!",
+	"prediction": {
+		"status_code": 200,
+		"model_name": "edit-check",
+		"model_version": "v1",
+		"check_type": "tone",
+		"language": "en",
+		"page_title": "Eldfjall",
+		"prediction": true,
+		"probability": 0.86,
+		"details": {}
+	}
+}

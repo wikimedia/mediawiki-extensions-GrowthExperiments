@@ -72,6 +72,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Classical kemençe' ) ),
 				new Task( $copyEditTaskType, new TitleValue( NS_MAIN, 'Cretan lyra' ) ),
 				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, "Kristallsee" ) ),
+				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, "Eldfjall" ) ),
 				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
 			], $services->getTitleFactory() );
 
