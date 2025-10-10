@@ -7,23 +7,34 @@ const guidedTour = new GuidedTour();
 const keepGoingModule = new KeepGoingModule();
 
 describe( 'Revise Tone', () => {
+
+	let usernameAlice: string;
+	let passwordAlice: string;
+	before( () => {
+		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
+			username: string;
+			password: string;
+		} ) => {
+			usernameAlice = username;
+			passwordAlice = password;
+			cy.loginViaApi( username, password );
+		} );
+		cy.setUserOptions( {
+			'growthexperiments-tour-homepage-welcome': '1',
+			'growthexperiments-addimage-onboarding': '1',
+			'growthexperiments-addimage-caption-onboarding': '1',
+			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'revise-tone', 'image-recommendation' ] ),
+		} );
+		guidedTour.close( 'homepage_discovery' );
+	} );
+
+	beforeEach( () => {
+		cy.loginViaApi( usernameAlice, passwordAlice );
+	} );
+
 	describe( 'On desktop', () => {
 
 		it( 'Closes the Editor when declining Edits and suggests a new task', () => {
-			cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
-				username: string;
-				password: string;
-			} ) => {
-				cy.loginViaApi( username, password );
-			} );
-			cy.setUserOptions( {
-				'growthexperiments-tour-homepage-welcome': '1',
-				'growthexperiments-addimage-onboarding': '1',
-				'growthexperiments-addimage-caption-onboarding': '1',
-				'growthexperiments-homepage-se-filters': JSON.stringify( [ 'revise-tone', 'image-recommendation' ] ),
-			} );
-			guidedTour.close( 'homepage_discovery' );
-
 			cy.visit( 'index.php?title=Special:Homepage' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
@@ -38,20 +49,6 @@ describe( 'Revise Tone', () => {
 		} );
 
 		it( 'Shows the Revise Tone Edit Check and tags edits', () => {
-			cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
-				username: string;
-				password: string;
-			} ) => {
-				cy.loginViaApi( username, password );
-			} );
-			cy.setUserOptions( {
-				'growthexperiments-tour-homepage-welcome': '1',
-				'growthexperiments-addimage-onboarding': '1',
-				'growthexperiments-addimage-caption-onboarding': '1',
-				'growthexperiments-homepage-se-filters': JSON.stringify( [ 'revise-tone', 'image-recommendation' ] ),
-			} );
-			guidedTour.close( 'homepage_discovery' );
-
 			cy.visit( 'index.php?title=Special:Homepage' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
@@ -75,20 +72,6 @@ describe( 'Revise Tone', () => {
 	describe( 'On mobile', () => {
 
 		it( 'Closes the Editor when declining Edits and suggests a new task', () => {
-			cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
-				username: string;
-				password: string;
-			} ) => {
-				cy.loginViaApi( username, password );
-			} );
-			cy.setUserOptions( {
-				'growthexperiments-tour-homepage-welcome': '1',
-				'growthexperiments-addimage-onboarding': '1',
-				'growthexperiments-addimage-caption-onboarding': '1',
-				'growthexperiments-homepage-se-filters': JSON.stringify( [ 'revise-tone', 'image-recommendation' ] ),
-			} );
-			guidedTour.close( 'homepage_discovery' );
-
 			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
@@ -114,20 +97,6 @@ describe( 'Revise Tone', () => {
 		} );
 
 		it( 'Shows the Revise Tone Edit Check and tags edits', () => {
-			cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
-				username: string;
-				password: string;
-			} ) => {
-				cy.loginViaApi( username, password );
-			} );
-			cy.setUserOptions( {
-				'growthexperiments-tour-homepage-welcome': '1',
-				'growthexperiments-addimage-onboarding': '1',
-				'growthexperiments-addimage-caption-onboarding': '1',
-				'growthexperiments-homepage-se-filters': JSON.stringify( [ 'revise-tone', 'image-recommendation' ] ),
-			} );
-			guidedTour.close( 'homepage_discovery' );
-
 			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
