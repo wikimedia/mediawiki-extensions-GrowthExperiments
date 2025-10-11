@@ -363,7 +363,7 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsUserDatabaseHelper' );
 	}
 
-	public function getEventGateImageSuggestionFeedbackUpdater(): EventGateImageSuggestionFeedbackUpdater {
+	public function getEventGateImageSuggestionFeedbackUpdater(): ?EventGateImageSuggestionFeedbackUpdater {
 		return $this->coreServices->get( 'GrowthExperimentsEventGateImageSuggestionFeedbackUpdater' );
 	}
 

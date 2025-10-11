@@ -139,8 +139,7 @@ return [
 			$geServices->getNewcomerTasksUserOptionsLookup(),
 			$services->getMainWANObjectCache(),
 			$services->getUserIdentityUtils(),
-			ExtensionRegistry::getInstance()->isLoaded( 'EventBus' ) ?
-				$geServices->getEventGateImageSuggestionFeedbackUpdater() : null,
+			$geServices->getEventGateImageSuggestionFeedbackUpdater(),
 		);
 	},
 
@@ -197,7 +196,11 @@ return [
 
 	'GrowthExperimentsEventGateImageSuggestionFeedbackUpdater' => static function (
 		MediaWikiServices $services
-	): EventGateImageSuggestionFeedbackUpdater {
+	): ?EventGateImageSuggestionFeedbackUpdater {
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'EventBus' ) ) {
+			return null;
+		}
+
 		return new EventGateImageSuggestionFeedbackUpdater(
 			$services->get( 'EventBus.EventBusFactory' ),
 			$services->getWikiPageFactory()
