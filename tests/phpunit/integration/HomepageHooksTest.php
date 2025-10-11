@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use CirrusSearch\Search\SearchContext;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel;
@@ -9,8 +10,11 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilder;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\Tests\Helpers\HomepageHooksHelpers;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookRunner;
 use MediaWiki\RecentChanges\RecentChange;
@@ -26,6 +30,7 @@ use Wikimedia\TestingAccessWrapper;
  * @group Database
  */
 class HomepageHooksTest extends MediaWikiIntegrationTestCase {
+	use HomepageHooksHelpers;
 
 	public function testGetTaskTypesJson() {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
@@ -192,4 +197,52 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 				->getMentorshipStateForUser( $user )
 		);
 	}
+
+	public function testOnCirrusSearchScoreBuilder() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
+		$taskTypeMock = $this->createMock( LinkRecommendationTaskType::class );
+		$taskTypeMock->method( 'getUnderlinkedWeight' )->willReturn( 1.0 );
+		$taskTypeMock->method( 'getUnderlinkedMinLength' )->willReturn( 2 );
+		$taskTypes = [
+			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => $taskTypeMock,
+		];
+
+		$configurationLoaderMock = $this->createMock( ConfigurationLoader::class );
+		$configurationLoaderMock->method( 'getTaskTypes' )->willReturn( $taskTypes );
+		$homepageHooks = $this->getHomepageHooksMock(
+			null, null, null, null,
+			$configurationLoaderMock
+		);
+
+		$searchContextMock = $this->createNoOpMock( SearchContext::class );
+		$function = [ 'type' => UnderlinkedFunctionScoreBuilder::TYPE ];
+
+		$builder = null;
+		$retval = $homepageHooks->onCirrusSearchScoreBuilder( $function, $searchContextMock, $builder );
+
+		$this->assertFalse( $retval );
+		$this->assertInstanceOf( UnderlinkedFunctionScoreBuilder::class, $builder );
+	}
+
+	public function testOnCirrusSearchScoreBuilderDisabled() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
+		$configurationLoaderMock = $this->createMock( ConfigurationLoader::class );
+		$configurationLoaderMock->method( 'getTaskTypes' )->willReturn( [] );
+		$homepageHooks = $this->getHomepageHooksMock(
+			null, null, null, null,
+			$configurationLoaderMock
+		);
+
+		$searchContextMock = $this->createNoOpMock( SearchContext::class );
+		$function = [ 'type' => UnderlinkedFunctionScoreBuilder::TYPE ];
+
+		$builder = null;
+		$retval = $homepageHooks->onCirrusSearchScoreBuilder( $function, $searchContextMock, $builder );
+
+		$this->assertFalse( $retval );
+		$this->assertNotNull( $builder );
+	}
+
 }

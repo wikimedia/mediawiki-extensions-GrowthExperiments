@@ -23,6 +23,8 @@ class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {
 	}
 
 	public function testIteratingThroughAllPages_storesHandoverAfterLimitReached(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
 		$this->overrideConfigValue( 'GELinkRecommendationsRefreshByIteratingThroughAllTitles', true );
 		ConvertibleTimestamp::setFakeTime( '20210101000000' );
 
@@ -65,6 +67,8 @@ class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {
 	}
 
 	public function testIteratingThroughAllPages_pickupAtStoredPageId(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
 		$this->overrideConfigValue( 'GELinkRecommendationsRefreshByIteratingThroughAllTitles', true );
 		$this->getExistingTestPage();
 		$this->getExistingTestPage( Title::newFromText( 'Template:NotInMainNamespace1' ) );
@@ -102,6 +106,8 @@ class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {
 	}
 
 	public function testCanSetLastPageIdInStashManually(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
 		$this->maintenance->loadParamsAndArgs(
 			null,
 			[

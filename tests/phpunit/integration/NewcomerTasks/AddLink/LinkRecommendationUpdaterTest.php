@@ -22,6 +22,8 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 
 	public function testProcessCandidateExcludedTemplate(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
 		ConvertibleTimestamp::setFakeTime( strtotime( '3 days ago' ) );
 		$page = $this->getNonexistingTestPage();
 		$pageUpdateStatus = $this->editPage(
@@ -59,6 +61,8 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testProcessCandidateExcludedCategory(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
 		ConvertibleTimestamp::setFakeTime( strtotime( '3 days ago' ) );
 		$page = $this->getNonexistingTestPage();
 		$pageUpdateStatus = $this->editPage(
@@ -96,6 +100,8 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testProcessCandidateRecentlyEdited(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
 		$page = $this->getExistingTestPage();
 		/** @var LinkRecommendationUpdater $updater */
 		$updater = $this->getServiceContainer()->getService( 'GrowthExperimentsLinkRecommendationUpdater' );

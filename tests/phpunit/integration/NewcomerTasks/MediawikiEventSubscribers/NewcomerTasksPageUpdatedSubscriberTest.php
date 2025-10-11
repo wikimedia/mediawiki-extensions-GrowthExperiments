@@ -102,6 +102,8 @@ class NewcomerTasksPageUpdatedSubscriberTest extends MediaWikiIntegrationTestCas
 	}
 
 	public function testDoNotClearLinkRecommendationForNewPage(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
 		$wikiPage = $this->getNonexistingTestPage();
 		$this->overrideConfigValues( [
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,

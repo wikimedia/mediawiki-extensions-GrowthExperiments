@@ -6,7 +6,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
-use GrowthExperiments\NewcomerTasks\Topic\RawOresTopic;
 use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWikiUnitTestCase;
@@ -54,22 +53,6 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 			$configurationLoader->loadTaskTypes(),
 			array_merge( $taskTypes, $additionalTaskTypes )
 		);
-	}
-
-	public function testUseOresTopics() {
-		$taskTypes = [
-			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
-		];
-		$configurationLoader = new TopicDecorator(
-			$this->getConfigurationLoaderMock( $taskTypes ),
-			$this->getTopicRegistryMock( [ new Topic( 'topic1' ) ] ),
-			true,
-			[]
-		);
-		$this->assertArrayEquals( $configurationLoader->loadTaskTypes(), $taskTypes );
-		foreach ( $configurationLoader->getTopics() as $topic ) {
-			$this->assertTrue( $topic instanceof RawOresTopic );
-		}
 	}
 
 	public function testUseOresTopicsWithAdditionalTaskTypes() {

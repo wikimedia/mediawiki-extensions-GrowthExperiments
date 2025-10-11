@@ -2,98 +2,30 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use CirrusSearch\Search\SearchContext;
-use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
-use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
-use GrowthExperiments\LevelingUp\LevelingUpManager;
-use GrowthExperiments\NewcomerTasks\CampaignConfig;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilder;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
-use GrowthExperiments\UserImpact\UserImpactLookup;
-use GrowthExperiments\UserImpact\UserImpactStore;
+use GrowthExperiments\Tests\Helpers\HomepageHooksHelpers;
 use MediaWiki\Config\HashConfig;
-use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Message\Message;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
-use MediaWiki\User\Options\UserOptionsManager;
-use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
-use Wikimedia\Stats\StatsFactory;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HomepageHooks
  */
 class HomepageHooksTest extends MediaWikiUnitTestCase {
+	use HomepageHooksHelpers;
 
 	/**
 	 * @covers ::__construct
 	 */
 	public function testConstruct() {
 		$this->assertInstanceOf( HomepageHooks::class, $this->getHomepageHooksMock() );
-	}
-
-	/**
-	 * @covers ::onCirrusSearchScoreBuilder
-	 */
-	public function testOnCirrusSearchScoreBuilder() {
-		$taskTypeMock = $this->createMock( LinkRecommendationTaskType::class );
-		$taskTypeMock->method( 'getUnderlinkedWeight' )->willReturn( 1.0 );
-		$taskTypeMock->method( 'getUnderlinkedMinLength' )->willReturn( 2 );
-		$taskTypes = [
-			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => $taskTypeMock,
-		];
-
-		$configurationLoaderMock = $this->createMock( ConfigurationLoader::class );
-		$configurationLoaderMock->method( 'getTaskTypes' )->willReturn( $taskTypes );
-		$homepageHooks = $this->getHomepageHooksMock(
-			null, null, null, null,
-			$configurationLoaderMock
-		);
-
-		$searchContextMock = $this->createNoOpMock( SearchContext::class );
-		$function = [ 'type' => UnderlinkedFunctionScoreBuilder::TYPE ];
-
-		$builder = null;
-		$retval = $homepageHooks->onCirrusSearchScoreBuilder( $function, $searchContextMock, $builder );
-
-		$this->assertFalse( $retval );
-		$this->assertInstanceOf( UnderlinkedFunctionScoreBuilder::class, $builder );
-	}
-
-	/**
-	 * @covers ::onCirrusSearchScoreBuilder
-	 */
-	public function testOnCirrusSearchScoreBuilderDisabled() {
-		$configurationLoaderMock = $this->createMock( ConfigurationLoader::class );
-		$configurationLoaderMock->method( 'getTaskTypes' )->willReturn( [] );
-		$homepageHooks = $this->getHomepageHooksMock(
-			null, null, null, null,
-			$configurationLoaderMock
-		);
-
-		$searchContextMock = $this->createNoOpMock( SearchContext::class );
-		$function = [ 'type' => UnderlinkedFunctionScoreBuilder::TYPE ];
-
-		$builder = null;
-		$retval = $homepageHooks->onCirrusSearchScoreBuilder( $function, $searchContextMock, $builder );
-
-		$this->assertFalse( $retval );
-		$this->assertNotNull( $builder );
 	}
 
 	/**
@@ -190,37 +122,5 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 		$homepageHooks->onContributeCards( $cards );
 		$this->assertArrayEquals( [], $cards, false, true,
 			'No card should be shown when SuggestedEdits is disabled even if Homepage is enabled' );
-	}
-
-	private function getHomepageHooksMock(
-		?HashConfig $config = null,
-		?TitleFactory $titleFactoryMock = null,
-		?SpecialPageFactory $specialPageFactoryMock = null,
-		?UserOptionsLookup $userOptionsLookup = null,
-		?ConfigurationLoader $configurationLoaderMock = null
-	): HomepageHooks {
-		return new HomepageHooks(
-			$config ?? new HashConfig( [] ),
-			$this->createNoOpMock( UserOptionsManager::class ),
-			$userOptionsLookup ?? $this->createNoOpMock( UserOptionsLookup::class ),
-			$this->createNoOpMock( UserIdentityUtils::class ),
-			$this->createNoOpMock( NamespaceInfo::class ),
-			$titleFactoryMock ?? $this->createNoOpMock( TitleFactory::class ),
-			$this->createNoOpMock( StatsFactory::class ),
-			$this->createNoOpMock( JobQueueGroup::class ),
-			$configurationLoaderMock ?? $this->createNoOpMock( ConfigurationLoader::class ),
-			$this->createNoOpMock( CampaignConfig::class ),
-			$this->createNoOpMock( ExperimentUserManager::class ),
-			$this->createNoOpMock( TaskTypeHandlerRegistry::class ),
-			$this->createNoOpMock( TaskSuggesterFactory::class ),
-			$this->createNoOpMock( NewcomerTasksUserOptionsLookup::class ),
-			$specialPageFactoryMock ?? $this->createNoOpMock( SpecialPageFactory::class ),
-			$this->createNoOpMock( NewcomerTasksChangeTagsManager::class ),
-			$this->createNoOpMock( UserImpactLookup::class ),
-			$this->createNoOpMock( UserImpactStore::class ),
-			$this->createNoOpMock( GrowthExperimentsInteractionLogger::class ),
-			$this->createNoOpMock( TaskTypeManager::class ),
-			$this->createNoOpMock( LevelingUpManager::class )
-		);
 	}
 }

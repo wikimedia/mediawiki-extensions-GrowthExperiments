@@ -23,6 +23,10 @@ use Wikimedia\ObjectCache\WANObjectCache;
 class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 
 	public function testValidateAccepted() {
+		if ( !interface_exists( WeightedTagsUpdater::class ) ) {
+			$this->markTestSkipped( 'CirrusSearch extension is not installed.' );
+		}
+
 		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
 		$userIdentityUtilsMock = $this->createMock( UserIdentityUtils::class );
 		$userIdentityUtilsMock->method( 'isNamed' )->willReturn( true );
@@ -113,6 +117,10 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testValidateAcceptedSectionImage() {
+		if ( !interface_exists( WeightedTagsUpdater::class ) ) {
+			$this->markTestSkipped( 'CirrusSearch extension is not installed.' );
+		}
+
 		$weightedTagsUpdaterMock = $this->createMock( WeightedTagsUpdater::class );
 		$sectionImageTaskType = new SectionImageRecommendationTaskType(
 			'section-image-recommendation',
