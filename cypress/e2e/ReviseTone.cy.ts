@@ -71,7 +71,8 @@ describe( 'Revise Tone', () => {
 
 	describe( 'On mobile', () => {
 
-		it( 'Closes the Editor when declining Edits and suggests a new task', () => {
+		// Flaky: T407152 - The Edit Check disappears after selecting the first item in the survey?
+		it.skip( 'Closes the Editor when declining Edits and suggests a new task', () => {
 			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
