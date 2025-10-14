@@ -241,5 +241,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Так, після 50 редагувань загалом",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Так, після 75 редагувань загалом",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Так, після 150 редагувань загалом",
-	"growthexperiments-addlink-done-button": "Готово"
+	"growthexperiments-addlink-done-button": "Готово",
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Завдання техобслуговування, очищення застарілих часових міток"
 }
