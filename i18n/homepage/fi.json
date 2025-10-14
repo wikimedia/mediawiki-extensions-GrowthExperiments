@@ -11,7 +11,8 @@
 			"Rönttönen",
 			"Samoasambia",
 			"Veikk0.ma",
-			"Yupik"
+			"Yupik",
+			"Minilammas"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
