@@ -237,5 +237,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Ja, etter totalt 50 redigeringer",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ja, etter totalt 75 redigeringer",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ja, etter totalt 150 redigeringer",
-	"growthexperiments-addlink-done-button": "Ferdig"
+	"growthexperiments-addlink-done-button": "Ferdig",
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Vedlikeholdsoppgave, fjerner utløpte tidsstempler for bortestatus"
 }
