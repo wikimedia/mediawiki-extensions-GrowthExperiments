@@ -152,6 +152,7 @@
 	"growthexperiments-manage-mentors-auto-assigned": "Аутоматски додељени ментори новим налозима",
 	"growthexperiments-manage-mentors-auto-assigned-text": "Нови налози се аутоматски додељују овим менторима.",
 	"growthexperiments-manage-mentors-manually-assigned": "Ментори који сами бирају новајлије",
+	"growthexperiments-manage-mentors-manually-assigned-text": "Нови налози не додељују се аутоматски овим менторима. Ментори у овом списку сами бирају новајлије што је идеално за вође радионица који желе да менторишу учеснике истих.",
 	"growthexperiments-manage-mentors-none": "ништа",
 	"growthexperiments-manage-mentors-username": "Корисничко име",
 	"growthexperiments-manage-mentors-last-active": "Последња активност",
