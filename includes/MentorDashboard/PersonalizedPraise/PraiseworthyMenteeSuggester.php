@@ -137,7 +137,7 @@ class PraiseworthyMenteeSuggester {
 		$praiseworthyMentees = $this->getPraiseworthyMenteesForMentorUncached( $mentor );
 		$this->globalCache->set(
 			$key,
-			$praiseworthyMentees,
+			$this->serializeForCache( $praiseworthyMentees ),
 			self::EXPIRATION_TTL
 		);
 
@@ -160,7 +160,7 @@ class PraiseworthyMenteeSuggester {
 			return [];
 		}
 
-		return $this->globalCache->get( $key ) ?: [];
+		return $this->deserializeFromCache( $this->globalCache->get( $key ) ) ?: [];
 	}
 
 	/**
@@ -197,12 +197,12 @@ class PraiseworthyMenteeSuggester {
 			return;
 		}
 
-		$data = $this->globalCache->get( $key );
+		$data = $this->deserializeFromCache( $this->globalCache->get( $key ) );
 		if ( !$data ) {
 			$data = [];
 		}
 		$data[$menteeImpact->getUser()->getId()] = $menteeImpact;
-		$this->globalCache->set( $key, $data, self::EXPIRATION_TTL );
+		$this->globalCache->set( $key, $this->serializeForCache( $data ), self::EXPIRATION_TTL );
 
 		$this->notificationsDispatcher->onMenteeSuggested( $mentorUser, $menteeImpact->getUser() );
 	}
@@ -219,11 +219,12 @@ class PraiseworthyMenteeSuggester {
 		if ( $this->isMenteeMarkedAsPraiseworthy( $mentee, $mentor ) ) {
 			$this->globalCache->merge(
 				$this->makeCacheKeyForMentor( $mentor ),
-				static function ( $cache, $key, $value ) use ( $mentee ) {
+				function ( $cache, $key, $value ) use ( $mentee ) {
+					$value = $this->deserializeFromCache( $value );
 					if ( array_key_exists( $mentee->getId(), $value ) ) {
 						unset( $value[$mentee->getId()] );
 					}
-					return $value;
+					return $this->serializeForCache( $value );
 				}
 			);
 		}
@@ -260,5 +261,23 @@ class PraiseworthyMenteeSuggester {
 		$this->userOptionsManager->saveOptions( $mentee );
 
 		$this->removeMenteeFromSuggestions( $mentee );
+	}
+
+	private function serializeForCache( array $menteeImpacts ): string {
+		return json_encode( $menteeImpacts, flags: JSON_THROW_ON_ERROR );
+	}
+
+	private function deserializeFromCache( mixed $cachedData ): mixed {
+		if ( !is_string( $cachedData ) ) {
+			return $cachedData;
+		}
+
+		$impactData = json_decode( $cachedData, associative: true, flags: JSON_THROW_ON_ERROR );
+		$menteeImpacts = [];
+		foreach ( $impactData as $menteeImpactData ) {
+			$menteeImpacts[] = UserImpact::newFromJsonArray( $menteeImpactData );
+		}
+
+		return $menteeImpacts;
 	}
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
@@ -19,15 +21,13 @@ use StatusValue;
 /**
  * @group Database
  * @group medium
- * @coversDefaultClass \GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester
+ * @covers \GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester
  */
 class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTestCase {
 	use MockHttpTrait;
 	use CommunityConfigurationTestHelpers;
 
 	/**
-	 * @param UserIdentity $mentor
-	 * @param int $numOfMentees
 	 * @return User[]
 	 */
 	private function getNMentees( UserIdentity $mentor, int $numOfMentees ): array {
@@ -63,7 +63,7 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 		}
 	}
 
-	private function mockPageviews() {
+	private function mockPageviews(): void {
 		$mwHttpRequest = $this->createMock( MWHttpRequest::class );
 		$mwHttpRequest->method( 'execute' )
 			->willReturn( new StatusValue() );
@@ -72,10 +72,7 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 		$this->installMockHttp( $mwHttpRequest );
 	}
 
-	/**
-	 * @covers ::getPraiseworthyMenteesForMentorUncached
-	 */
-	public function testGetPraiseworthyMenteesForMentor() {
+	public function testGetPraiseworthyMenteesForMentor(): void {
 		$minEdits = 2;
 		$this->mockPageviews();
 		$this->overrideConfigValues( [
