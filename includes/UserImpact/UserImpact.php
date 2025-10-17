@@ -8,6 +8,8 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Assert\ParameterAssertionException;
+use Wikimedia\JsonCodec\JsonCodecable;
+use Wikimedia\JsonCodec\JsonCodecableTrait;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -17,7 +19,8 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * from arbitrarily long ago, so the data might use cutoffs that wouldn't affect a recently
  * registered user with a limited number of edits.
  */
-class UserImpact implements JsonSerializable {
+class UserImpact implements JsonSerializable, JsonCodecable {
+	use JsonCodecableTrait;
 
 	/** Cache version, to be increased when breaking backwards compatibility. */
 	public const VERSION = 12;
@@ -276,6 +279,11 @@ class UserImpact implements JsonSerializable {
 				),
 				$json['longestEditingStreak']['totalEditCountForPeriod']
 			);
+	}
+
+	/** @inheritDoc */
+	public function toJsonArray(): array {
+		return $this->jsonSerialize();
 	}
 
 	/** @inheritDoc */

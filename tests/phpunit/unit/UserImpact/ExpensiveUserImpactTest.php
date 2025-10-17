@@ -1,9 +1,12 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
+use MediaWiki\Json\JsonCodec;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Wikimedia\TestingAccessWrapper;
@@ -14,7 +17,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 
-	public function testGetters() {
+	public function testGetters(): void {
 		$dailyTotalViews = [ '2022-08-24' => 100, '2022-08-25' => 150 ];
 		$dailyArticleViews = [
 			'Foo' => [
@@ -39,7 +42,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			wfTimestamp( TS_UNIX, '20200101000000' ),
+			(int)wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
 			 new EditingStreak(),
@@ -51,7 +54,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $dailyArticleViews, $userImpact->getDailyArticleViews() );
 	}
 
-	public function testSerialization() {
+	public function testSerialization(): void {
 		ConvertibleTimestamp::setFakeTime( time() );
 
 		$dailyTotalViews = [ '2022-08-24' => 100, '2022-08-25' => 150, '2022-08-26' => 0 ];
@@ -68,7 +71,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			wfTimestamp( TS_UNIX, '20200101000000' ),
+			(int)wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),
@@ -85,6 +88,12 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			'2022-08-24' => 100, '2022-08-25' => 150,
 		];
 		$this->assertEquals( $userImpact, $rehydrated );
+
+		$codec = new JsonCodec( null );
+		$impactSerializedAsJsonCodex = $codec->toJsonString( [ $userImpact ] );
+		$recreatedUserImpactArray = $codec->newFromJsonString( $impactSerializedAsJsonCodex );
+		$this->assertEquals( [ $userImpact ], $recreatedUserImpactArray );
+		$this->assertInstanceOf( ExpensiveUserImpact::class, $recreatedUserImpactArray[0] );
 	}
 
 	/**
@@ -92,7 +101,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 	 * @param bool $expectedStale
 	 * @param array $dailyTotalViews
 	 */
-	public function testIsPageViewDataStale( bool $expectedStale, array $dailyTotalViews ) {
+	public function testIsPageViewDataStale( bool $expectedStale, array $dailyTotalViews ): void {
 		ConvertibleTimestamp::setFakeTime( '2022-08-24T00:00:00Z' );
 		$dailyArticleViews = [
 			'Foo' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],
@@ -107,7 +116,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			wfTimestamp( TS_UNIX, '20200101000000' ),
+			(int)wfTimestamp( TS_UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),
@@ -118,7 +127,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expectedStale, $userImpact->isPageViewDataStale() );
 	}
 
-	public static function provideIsPageViewDataStale() {
+	public static function provideIsPageViewDataStale(): iterable {
 		return [
 			'fresh' => [ false, [ '2022-08-24' => 100, '2022-08-25' => 150 ] ],
 			'stale' => [ false, [ '2022-07-24' => 100, '2022-08-25' => 150 ] ],
