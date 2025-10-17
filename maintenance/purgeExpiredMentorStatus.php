@@ -136,13 +136,25 @@ class PurgeExpiredMentorStatus extends Maintenance {
 	}
 
 	private function purgeConfig(): void {
+		$configStatus = $this->mentorListProvider->loadValidConfiguration();
+		if ( !$configStatus->isOK() ) {
+			$err = $this->statusFormatter->getWikiText( $configStatus, [ 'lang' => 'en' ] );
+			if ( $configStatus->hasMessage( 'growthexperiments-mentor-list-missing-key' ) ) {
+				$this->output( "Initial config is invalid, skipping because: " );
+				$this->output( $err );
+				$this->output( ".\n" );
+				return;
+			}
+			$this->fatalError( $err );
+		}
 		$deletedCount = 0;
-		foreach ( $this->filterConfigAndBatch() as $batch ) {
+		$config = $configStatus->getValue();
+		foreach ( $this->filterConfigAndBatch( $config ) as $batch ) {
 			$deletedCount += count( $batch );
 			if ( $this->getOption( 'dry-run' ) ) {
 				continue;
 			}
-			$this->deleteTimestampsFromConfig( $batch );
+			$this->deleteTimestampsFromConfig( $config, $batch );
 		}
 
 		if ( $this->getOption( 'dry-run' ) ) {
@@ -152,9 +164,9 @@ class PurgeExpiredMentorStatus extends Maintenance {
 		}
 	}
 
-	private function filterConfigAndBatch(): Generator {
+	private function filterConfigAndBatch( StdClass $config ): Generator {
 		$batch = [];
-		foreach ( $this->getMentorEntries() as $mentorUserIdentity ) {
+		foreach ( $this->getMentorEntries( $config ) as $mentorUserIdentity ) {
 			$userId = $mentorUserIdentity->getUser()->getId();
 			// $mentorUserIdentity->getUser()->getId() and $mentor->getId() are returning 0, is the user mutated?
 			$mentor = $this->mentorProvider->newMentorFromUserIdentity( $mentorUserIdentity->getUser() );
@@ -181,8 +193,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 	/**
 	 * @throws MaintenanceFatalError
 	 */
-	private function getMentorEntries(): array {
-		$config = $this->getMentorListConfig();
+	private function getMentorEntries( StdClass $config ): array {
 		return array_map( function ( int $userId ) {
 			return $this->userFactory->newFromId( $userId );
 		}, array_keys( (array)$config->{CommunityStructuredMentorWriter::CONFIG_KEY } ) );
@@ -191,8 +202,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 	/**
 	 * @throws MaintenanceFatalError
 	 */
-	private function deleteTimestampsFromConfig( array $batch ): void {
-		$config = $this->getMentorListConfig();
+	private function deleteTimestampsFromConfig( StdClass $config, array $batch ): void {
 		foreach ( $batch as $mentorId ) {
 			unset( $config->{CommunityStructuredMentorWriter::CONFIG_KEY}->{$mentorId}->awayTimestamp );
 		}
