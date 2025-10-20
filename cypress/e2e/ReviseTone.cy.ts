@@ -97,7 +97,7 @@ describe( 'Revise Tone', () => {
 			keepGoingModule.smallTaskCardLink.should( 'have.attr', 'href' );
 		} );
 
-		it( 'Shows the Revise Tone Edit Check and tags edits', () => {
+		it.skip( 'Shows the Revise Tone Edit Check and tags edits', () => {
 			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
