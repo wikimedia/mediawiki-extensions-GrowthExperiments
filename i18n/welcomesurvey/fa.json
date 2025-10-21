@@ -9,7 +9,8 @@
 			"Ladsgroup",
 			"Mardetanha",
 			"Physicsch",
-			"Reza1615"
+			"Reza1615",
+			"LordProfo"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|خوش آمدید}}، $1!",
@@ -21,7 +22,7 @@
 	"welcomesurvey-close-btn": "برای برگشتن به $1 صفحه را ببندید",
 	"welcomesurvey-privacy-policy-link-text": "در مورد داده‌ها از کاربران تازه‌وارد بیشتر بخوانید",
 	"welcomesurvey-sidebar-editing-title": "آغاز ویرایش",
-	"welcomesurvey-sidebar-editing-text": "تقریباً هر صفحه‌ای می‌تواند توسط هر کسی ویرایش شود، و صدها تغییر در هر ساعت برای اضافه کردن محتوا، اصلاح اشتباهات، و بهبود خوانایی صورت می‌گیرد. درصوتی که به مشارکت در این زمینه \n علاقه‌مندید صفحه‌های زیر می‌توانند به شما {{GENDER:$1|کمک کنند}}.",
+	"welcomesurvey-sidebar-editing-text": "تقریباً هر صفحه‌ای می‌تواند توسط هر کسی ویرایش شود، و صدها تغییر در هر ساعت برای افزودن محتوا، اصلاح اشتباهات، و بهبود خوانایی صورت می‌گیرد. اگر به مشارکت در این زمینه \n علاقه‌مندید صفحه‌های زیر می‌توانند به شما {{GENDER:$1|کمک کنند}}.",
 	"welcomesurvey-sidebar-editing-link1-text": "خودآموز",
 	"welcomesurvey-sidebar-editing-link1-title": "ویکی‌پدیا:خودآموز",
 	"welcomesurvey-sidebar-editing-link2-text": "میز کمک",

@@ -19,7 +19,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "کارن‌نوم",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "پرڅټ گرځول‌شوو سمونونو شمېر",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "بنديزونو شمېر",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "له {{لارښود|:GENDER}} پوښتل‌شوې پوښتنې",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "له {{GENDER:|لارښود|لارښودې}} پوښتل‌شوې پوښتنې",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "سمون شمېر",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "نوم‌ليکنې نېټه",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "چاڼگرونه",
