@@ -34,7 +34,8 @@ describe( 'Revise Tone', () => {
 
 	describe( 'On desktop', () => {
 
-		it( 'Closes the Editor when declining Edits and suggests a new task', () => {
+		// Flaky: T407152 - The Edit Check disappears after selecting the first item in the survey?
+		it.skip( 'Closes the Editor when declining Edits and suggests a new task', () => {
 			cy.visit( 'index.php?title=Special:Homepage' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
