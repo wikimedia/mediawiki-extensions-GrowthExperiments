@@ -118,7 +118,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	private function maybeRedirectToEnrollAsMentor(): void {
 		if ( !$this->mentorProvider->isMentor( $this->getUser() ) ) {
 			$this->getOutput()->redirect(
-				SpecialPage::getTitleFor( 'EnrollAsMentor' )->getLocalURL()
+				SpecialPage::getTitleFor( 'EnrollAsMentor' )->getFullURL()
 			);
 		}
 	}

@@ -8,8 +8,8 @@ use MediaWiki\SpecialPage\SpecialPage;
 use SpecialPageTestBase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Specials\SpecialMentorDashboard
  * @group Database
+ * @covers \GrowthExperiments\Specials\SpecialMentorDashboard
  */
 class SpecialMentorDashboardTest extends SpecialPageTestBase {
 
@@ -32,9 +32,6 @@ class SpecialMentorDashboardTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testIsMentor() {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$mentorProvider = $geServices->getMentorProvider();
@@ -53,9 +50,6 @@ class SpecialMentorDashboardTest extends SpecialPageTestBase {
 		$this->assertNotEmpty( $html );
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testNonMentor() {
 		$user = $this->getTestUser()->getUser();
 
