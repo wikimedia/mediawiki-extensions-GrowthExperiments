@@ -20,7 +20,8 @@
 			"Stefano",
 			"Toa",
 			"ValeJappo",
-			"Vivbod"
+			"Vivbod",
+			"Titore"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
@@ -294,7 +295,7 @@
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Hai cambiato}} il tutor {{PLURAL:$2|dell'utente|degli utenti}} $1 a {{GENDER:$4|$5}}. Torna al [[Special:MentorDashboard|cruscotto dei tutor]].",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Il tutor {{GENDER:$1|di $1}} è già stato cambiato. Sei sicur{{GENDER:$2|a|o|o/a}} di volerlo cambiare di nuovo?",
 	"growthexperiments-claimmentee-confirm": "Sì, sono davvero sicuro di procedere",
-	"growthexperiments-log-name": "Registro GrowthExperiments",
+	"growthexperiments-log-name": "GrowthExperiments",
 	"growthexperiments-log-header": "Questa è un'azione di registro effettuata nell'estensione GrowthExperiments",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|ha iniziato a seguire}} {{GENDER:$6|$3}} come tutor (precedentemente seguit{{GENDER:$4|o|a|o/a}} da $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 ha iniziato a {{GENDER:$2|seguire}} {{GENDER:$6|$3}} come tutor (nessun tutor precedente)",
