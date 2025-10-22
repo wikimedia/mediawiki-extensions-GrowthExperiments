@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
@@ -172,13 +173,19 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 				->method( 'alwaysStoreValidConfiguration' );
 		}
 
+		$mentorStatusManagerMock = $this->createMock( MentorStatusManager::class );
+		$mentorStatusManagerMock->expects( $expectedResult === 'success' ? $this->once() : $this->never() )
+			->method( 'invalidateAwayReasonCache' )
+			->with( $this->isInstanceOf( UserIdentity::class ) );
+
 		$writer = new CommunityStructuredMentorWriter(
 			new NullLogger(),
 			$this->createMock( MentorProvider::class ),
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock( $isBlocked, $isNamed ),
 			$this->getMockStatusFormatter(),
-			$ccProvider
+			$ccProvider,
+			$mentorStatusManagerMock,
 		);
 
 		$result = $writer->addMentor(
@@ -242,6 +249,7 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 	public function testRemoveMentor( int $mentorId, bool $expectSave, ?string $expectedError ) {
 		$mentor = self::getMentor( $mentorId, null, IMentorWeights::WEIGHT_NORMAL );
 		$ccProvider = $this->getMockConfigurationProvider();
+		$mentorStatusManagerMock = $this->createMock( MentorStatusManager::class );
 
 		if ( $expectSave ) {
 			$ccProvider->expects( $this->once() )
@@ -254,6 +262,9 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 					$this->stringContains( 'Remove mentor' )
 				)
 				->willReturn( StatusValue::newGood() );
+			$mentorStatusManagerMock->expects( $this->once() )
+				->method( 'invalidateAwayReasonCache' )
+				->with( $this->isInstanceOf( UserIdentity::class ) );
 		} else {
 			$ccProvider->expects( $this->never() )
 				->method( 'alwaysStoreValidConfiguration' );
@@ -265,7 +276,8 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock(),
 			$this->getMockStatusFormatter(),
-			$ccProvider
+			$ccProvider,
+			$mentorStatusManagerMock,
 		);
 
 		$result = $writer->removeMentor(
@@ -308,6 +320,10 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		$mentor = self::getMentor( 123, 'Updated intro', IMentorWeights::WEIGHT_LOW );
 
 		$ccProvider = $this->getMockConfigurationProvider();
+		$mentorStatusManagerMock = $this->createMock( MentorStatusManager::class );
+		$mentorStatusManagerMock->expects( $this->once() )
+			->method( 'invalidateAwayReasonCache' )
+			->with( $this->isInstanceOf( UserIdentity::class ) );
 
 		// Check data is saved with updated properties
 		$ccProvider->expects( $this->once() )
@@ -329,7 +345,8 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock(),
 			$this->getMockStatusFormatter(),
-			$ccProvider
+			$ccProvider,
+			$mentorStatusManagerMock,
 		);
 
 		$result = $writer->changeMentor(
@@ -371,7 +388,8 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock(),
 			$this->getMockStatusFormatter(),
-			$ccProvider
+			$ccProvider,
+			$this->createMock( MentorStatusManager::class ),
 		);
 
 		$result = $writer->touchList(
@@ -406,7 +424,8 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			$this->getUserIdentityLookupMock(),
 			$this->getUserFactoryMock( $isBlocked ),
 			$this->getMockStatusFormatter(),
-			$ccProvider
+			$ccProvider,
+			$this->createMock( MentorStatusManager::class ),
 		);
 
 		$result = $writer->isBlocked(

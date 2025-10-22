@@ -97,7 +97,7 @@ class MentorStatusManager {
 		);
 	}
 
-	private function invalidateAwayReasonCache( UserIdentity $mentor ): void {
+	public function invalidateAwayReasonCache( UserIdentity $mentor ): void {
 		$this->inprocessCache->delete( $this->makeAwayReasonCacheKey( $mentor ) );
 	}
 

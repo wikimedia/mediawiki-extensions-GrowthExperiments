@@ -667,7 +667,7 @@ return [
 			$services->getUserOptionsManager(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
-			$services->getDBLoadBalancerFactory()
+			$services->getDBLoadBalancerFactory(),
 		);
 	},
 
@@ -704,7 +704,8 @@ return [
 			$services->getUserFactory(),
 			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 			CommunityConfigurationServices::wrap( $services )
-				->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' )
+				->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' ),
+			$geServices->getMentorStatusManager(),
 		);
 		return $writer;
 	},

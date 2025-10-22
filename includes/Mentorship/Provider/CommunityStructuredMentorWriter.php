@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship\Provider;
 
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorshipSummaryCreator;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
@@ -46,7 +47,8 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 		UserIdentityLookup $userIdentityLookup,
 		UserFactory $userFactory,
 		StatusFormatter $statusFormatter,
-		IConfigurationProvider $provider
+		IConfigurationProvider $provider,
+		private readonly MentorStatusManager $mentorStatusManager,
 	) {
 		$this->logger = $logger;
 		$this->mentorProvider = $mentorProvider;
@@ -104,19 +106,14 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 	}
 
 	/**
-	 * Save mentor data
-	 *
-	 * @param array $mentorData
-	 * @param string $summary
-	 * @param UserIdentity $performer
-	 * @param bool $bypassWarnings
-	 * @return StatusValue
+	 * Save mentor data and invalidate mentor's cache and mentor status manager cache
 	 */
 	protected function saveMentorData(
 		array $mentorData,
 		string $summary,
 		UserIdentity $performer,
-		bool $bypassWarnings
+		bool $bypassWarnings,
+		?UserIdentity $mentorUserIdentity = null
 	): StatusValue {
 		// check if $performer is not blocked from the mentor list page
 		if ( $this->isBlocked( $performer, IDBAccessObject::READ_LATEST ) ) {
@@ -144,6 +141,11 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 
 		if ( $result->isOK() ) {
 			$this->mentorProvider->invalidateMentorsCache();
+			if ( $mentorUserIdentity ) {
+				// MentorStatusManager has an in-process cache, if there's a mentor informed by callers, assume the
+				// status may have changed and the cache needs invalidation
+				$this->mentorStatusManager->invalidateAwayReasonCache( $mentorUserIdentity );
+			}
 		}
 
 		return $result;
@@ -186,7 +188,8 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 				$summary
 			),
 			$performer,
-			$bypassWarnings
+			$bypassWarnings,
+			$mentorUserIdentity
 		);
 	}
 
@@ -219,7 +222,8 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 				$summary
 			),
 			$performer,
-			$bypassWarnings
+			$bypassWarnings,
+			$mentorUserIdentity,
 		);
 	}
 
@@ -252,7 +256,8 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 				$summary
 			),
 			$performer,
-			$bypassWarnings
+			$bypassWarnings,
+			$mentorUserIdentity,
 		);
 	}
 
@@ -274,7 +279,7 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 			$mentorData,
 			$summary,
 			$performer,
-			true
+			true,
 		);
 	}
 }
