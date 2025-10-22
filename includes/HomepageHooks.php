@@ -657,6 +657,10 @@ class HomepageHooks implements
 			'type' => 'api',
 		];
 
+		$preferences[ SuggestedEdits::REVISE_TONE_ONBOARDING_PREF ] = [
+			'type' => 'api',
+		];
+
 		$preferences[ SuggestedEdits::ADD_IMAGE_CAPTION_ONBOARDING_PREF ] = [
 			'type' => 'api',
 		];

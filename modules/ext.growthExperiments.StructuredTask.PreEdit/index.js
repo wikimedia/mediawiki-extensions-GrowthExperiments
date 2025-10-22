@@ -5,6 +5,7 @@ module.exports = ( function () {
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
 		addSectionImageOnboardingPrefName = 'growthexperiments-addsectionimage-onboarding',
+		reviseToneOnboardingPrefName = 'growthexperiments-revisetone-onboarding',
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 		TASK_TYPES = CONSTANTS.ALL_TASK_TYPES,
@@ -20,7 +21,26 @@ module.exports = ( function () {
 		StructuredTaskOnboardingDialog,
 		LinkSuggestionInteractionLogger,
 		ImageSuggestionInteractionLogger,
+		useNewOnboarding = false,
 		windowManager;
+
+	/**
+	 * Setup common configs and helpers for all StructuredTask.PreEdit apps.
+	 *
+	 * @param {string} mountPoint A xpath selector for an existing DOM node in the document
+	 * @return {Object} A Vue app instance
+	 */
+	function createApp( mountPoint ) {
+		const wrapper = require( './App.vue' );
+		// eslint-disable-next-line no-undef
+		const app = Vue.createMwApp( wrapper, { prefName: reviseToneOnboardingPrefName } );
+		app.provide( 'mw.language', mw.language );
+		app.provide( 'mw.Api', mw.Api );
+		app.provide( 'mw.user', mw.user );
+		app.provide( 'mw.hook', mw.hook );
+		app.mount( mountPoint );
+		return app;
+	}
 
 	/**
 	 * Show onboarding dialog and update onboardingNeedsToBeShown in suggestedEditSession
@@ -30,7 +50,11 @@ module.exports = ( function () {
 	function showDialogForSession() {
 		suggestedEditSession.onboardingNeedsToBeShown = false;
 		suggestedEditSession.save();
-		windowManager.openWindow( dialogName );
+		if ( useNewOnboarding ) {
+			createApp( '.growth-experiments-structuredtask-preedit-vue-app' );
+		} else {
+			windowManager.openWindow( dialogName );
+		}
 	}
 
 	/**
@@ -64,12 +88,14 @@ module.exports = ( function () {
 		if ( !shouldShowOnboarding ) {
 			return;
 		}
-		const url = new URL( window.location.href );
-		if ( url.searchParams.get( 'new-onboarding' ) === '1' ) {
+		if ( useNewOnboarding ) {
 			/**
 			 * TODO use the Vue version of the dialog
 			 * https://phabricator.wikimedia.org/T331986
 			 */
+			const vueAppWrapper = document.createElement( 'div' );
+			vueAppWrapper.classList.add( 'growth-experiments-structuredtask-preedit-vue-app' );
+			document.body.append( vueAppWrapper );
 		} else {
 			// Only append window manager & construct dialog if onboarding should be shown
 			StructuredTaskOnboardingDialog = require( './StructuredTaskOnboardingDialog.js' );
@@ -247,8 +273,8 @@ module.exports = ( function () {
 			} ),
 		} );
 	} else if ( isReviseTone ) {
-		// No onboarding for revise tone yet T401234
-		shouldShowOnboarding = false;
+		useNewOnboarding = true;
+		shouldShowOnboarding = !mw.user.options.get( reviseToneOnboardingPrefName );
 		setupOnboarding();
 	}
 

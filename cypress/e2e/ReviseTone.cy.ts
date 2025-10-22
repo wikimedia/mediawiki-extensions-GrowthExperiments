@@ -50,11 +50,22 @@ describe.skip( 'Revise Tone', () => {
 			keepGoingModule.smallTaskCardLink.should( 'have.attr', 'href' );
 		} );
 
-		it( 'Shows the Revise Tone Edit Check and tags edits', () => {
+		// Flaky: T407152 - The save button is not clickable after editing the suggested pragraph?
+		it.skip( 'Shows the Revise Tone Edit Check and tags edits', () => {
 			cy.visit( 'index.php?title=Special:Homepage' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
 			homepage.suggestedEditsCardLink.click();
+
+			Cypress.on( 'uncaught:exception', ( err, _runnable ) => {
+				// returning false here prevents Cypress from
+				// failing the test
+				expect( err.message ).to.include( 'ResizeObserver' );
+				return false;
+			} );
+
+			cy.get( '.ext-growthExperiments-ReviseToneOnboarding', { timeout: 60000 } ).should( 'be.visible' );
+			cy.get( '.ext-growthExperiments-OnboardingDialog__header__top__button' ).click();
 
 			cy.get( '.ve-ui-editCheckActionWidget' ).contains( 'a', 'Revise' ).click();
 

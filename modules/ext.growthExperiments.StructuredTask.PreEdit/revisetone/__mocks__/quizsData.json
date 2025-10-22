@@ -44,5 +44,28 @@
 				}
 			}
 		]
+	},
+	{
+		"example": "The movie received negative reviews from critics, who criticized the CGI effects...",
+		"options": [
+			{
+				"label": "negative"
+			},
+			{
+				"label": "criticized"
+			},
+			{
+				"label": "effects"
+			},
+			{
+				"label": "None (looks good as it is)",
+				"correct": true,
+				"description": "The text weighs different perspectives without misleading balance.",
+				"link": {
+					"label": "Learn more",
+					"href": "#"
+				}
+			}
+		]
 	}
 ]

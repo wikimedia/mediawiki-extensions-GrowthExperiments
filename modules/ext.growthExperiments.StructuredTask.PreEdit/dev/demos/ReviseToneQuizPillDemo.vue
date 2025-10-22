@@ -22,7 +22,7 @@ const { defineComponent, ref } = require( 'vue' );
 const { CdxButton } = require( '@wikimedia/codex' );
 const QuizGame = require( '../../revisetone/QuizGame.vue' );
 // TODO the JSON file should have text keys rather than hardcoded text
-const DATA = require( './quizsData.json' );
+const DATA = require( '../../revisetone/__mocks__/quizsData.json' );
 
 // @vue/component
 module.exports = defineComponent( {

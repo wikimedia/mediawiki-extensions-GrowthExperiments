@@ -94,6 +94,11 @@ class SuggestedEdits extends BaseModule {
 	public const ADD_IMAGE_ONBOARDING_PREF = 'growthexperiments-addimage-onboarding';
 
 	/**
+	 * Used to keep track of the whether the user has opted out of seeing Revise Tone onboarding
+	 */
+	public const REVISE_TONE_ONBOARDING_PREF = 'growthexperiments-revisetone-onboarding';
+
+	/**
 	 * Used to keep track of the whether the user has opted out of seeing onboarding for
 	 * the caption step of Add Image
 	 */

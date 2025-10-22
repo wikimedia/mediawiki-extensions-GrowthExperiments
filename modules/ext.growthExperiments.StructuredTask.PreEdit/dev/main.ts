@@ -5,10 +5,30 @@ import '@wikimedia/codex-design-tokens/theme-wikimedia-ui.css';
 import DEMOS from './demos/index';
 import i18nPlugin from './i18nPlugin';
 import loggerPlugin from '../../vue-components/plugins/logger';
-// TODO find ways to reuse this between app and tests
+// TODO find ways to reuse this between app and tests and GE modules
 const mwLanguageMock = {
 	convertNumber: ( x: number ) => String( x ),
 	getFallbackLanguageChain: () => ( [ 'en' ] ),
+};
+const mwUserMock = {
+	getName: () => 'Mock user',
+};
+const mwApiMock = function MwApiMock(): object {
+	return {
+		saveOption( optionName: string, value: never ): Promise<void> {
+			// eslint-disable-next-line no-console
+			console.debug( `MwApiMock.saveOption( ${ optionName }, ${ value } )` );
+			return Promise.resolve();
+		},
+	};
+};
+const mwHookMock = function mwHook( hookName: string ): object {
+	return {
+		fire(): void {
+			// eslint-disable-next-line no-console
+			console.debug( `mwHook.fire( ${ hookName } )` );
+		},
+	};
 };
 const appSelect = document.querySelector( '.app-selector' );
 let currentApp:( App|null ) = null;
@@ -17,6 +37,7 @@ const bootstrap = (): void => {
 	const createDemoApp = ( app: Component ): App<Element> => {
 		const devApp = createApp( app, {
 			taskType: 'revise-tone',
+			prefName: 'checkbox-mock-option-name',
 		} );
 
 		devApp.use( loggerPlugin, {
@@ -26,6 +47,9 @@ const bootstrap = (): void => {
 		devApp.use( i18nPlugin );
 
 		devApp.provide( 'mw.language', mwLanguageMock );
+		devApp.provide( 'mw.user', mwUserMock );
+		devApp.provide( 'mw.Api', mwApiMock );
+		devApp.provide( 'mw.hook', mwHookMock );
 
 		devApp.mount( '#app' );
 

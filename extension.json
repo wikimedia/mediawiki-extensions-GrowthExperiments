@@ -1650,19 +1650,40 @@
 				"ext.growthExperiments.StructuredTask.PreEdit/index.js",
 				"ext.growthExperiments.StructuredTask.PreEdit/StructuredTaskOnboardingDialog.js",
 				"ext.growthExperiments.StructuredTask.PreEdit/StructuredTaskOnboardingContent.js",
+				"ext.growthExperiments.StructuredTask.PreEdit/common/MultiPane.vue",
+				"ext.growthExperiments.StructuredTask.PreEdit/common/OnboardingDialog.vue",
+				"ext.growthExperiments.StructuredTask.PreEdit/common/OnboardingStepper.vue",
 				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingContent.js",
 				"ext.growthExperiments.StructuredTask.PreEdit/addimage/AddImageOnboardingContent.js",
 				"ext.growthExperiments.StructuredTask.PreEdit/addsectionimage/AddSectionImageOnboardingContent.js",
+				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/NumberIcon.vue",
+				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/QuizPill.vue",
+				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/QuizGame.vue",
+				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/__mocks__/quizsData.json",
+				"ext.growthExperiments.StructuredTask.PreEdit/App.vue",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"ui-components/MultiPaneDialog.js",
 				"ui-components/SwipePane.js",
-				"utils/Utils.js"
+				"utils/Utils.js",
+				{
+					"name": "ext.growthExperiments.StructuredTask.PreEdit/common/codex-icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconSuccess",
+						"cdxIconClear",
+						"cdxIconNext",
+						"cdxIconPrevious",
+						"cdxIconClose"
+					]
+				}
 			],
 			"styles": [
 				"ext.growthExperiments.StructuredTask.PreEdit/StructuredTaskOnboardingDialog.less",
 				"ext.growthExperiments.StructuredTask.PreEdit/StructuredTaskOnboardingContent.less",
+				"ext.growthExperiments.StructuredTask.PreEdit/common/mixins.less",
+				"ext.growthExperiments.StructuredTask.PreEdit/common/variables.less",
 				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingContent.less",
 				"ext.growthExperiments.StructuredTask.PreEdit/addimage/AddImageOnboardingContent.less",
 				"ext.growthExperiments.StructuredTask.PreEdit/addsectionimage/AddSectionImageOnboardingContent.less",
@@ -1723,7 +1744,12 @@
 				"growthexperiments-addsectionimage-onboarding-content-step4-title",
 				"growthexperiments-addsectionimage-onboarding-content-step4-alt-text",
 				"growthexperiments-addsectionimage-onboarding-content-step4-body-paragraph1",
-				"growthexperiments-addsectionimage-onboarding-content-step4-body-paragraph2"
+				"growthexperiments-addsectionimage-onboarding-content-step4-body-paragraph2",
+				"growthexperiments-revisetone-onboarding-dialog-skip-label",
+				"growthexperiments-revisetone-onboarding-dialog-title-label",
+				"growthexperiments-revisetone-quiz-game-example-title-label",
+				"growthexperiments-revisetone-quiz-game-prompt-label",
+				"growthexperiments-revisetone-quiz-game-example-title-label"
 			],
 			"dependencies": [
 				"mediawiki.jqueryMsg",
@@ -1733,7 +1759,9 @@
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
 				"ext.growthExperiments.SuggestedEditSession",
-				"ext.growthExperiments.DataStore"
+				"ext.growthExperiments.DataStore",
+				"vue",
+				"@wikimedia/codex"
 			]
 		},
 		"ext.growthExperiments.Help": {
