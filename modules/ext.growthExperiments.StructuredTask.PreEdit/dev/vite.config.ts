@@ -19,6 +19,7 @@ module.exports = defineConfig( {
 			'mediawiki.skin.codex-design-tokens': '@wikimedia/codex-design-tokens',
 			'mediawiki.skin.codex': '@wikimedia/codex',
 			'./codex-icons.json': '@wikimedia/codex-icons',
+			'../common/codex-icons.json': '@wikimedia/codex-icons',
 		},
 	},
 	css: {

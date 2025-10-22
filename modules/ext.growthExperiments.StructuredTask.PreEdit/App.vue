@@ -1,5 +1,5 @@
 <template>
-	<div class="ext-growthExperiments-StructuredTaskOnboarding">
+	<div class="ext-growthExperiments-ReviseToneOnboarding">
 		<!--OnboardingDialog Goes here-->
 	</div>
 </template>
@@ -18,7 +18,7 @@ module.exports = defineComponent( {
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
 
-.ext-growthExperiments-StructuredTaskOnboarding {
-	display: block;
+.ext-growthExperiments-ReviseToneOnboarding {
+  display: block;
 }
 </style>

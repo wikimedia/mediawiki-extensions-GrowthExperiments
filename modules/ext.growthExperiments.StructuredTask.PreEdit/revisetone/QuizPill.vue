@@ -1,4 +1,4 @@
-`<template>
+<template>
 	<div
 		class="ext-growthExperiments-ReviseTone-QuizPill"
 		@keyup.enter="onPillClick"
@@ -42,7 +42,7 @@
 <script>
 const { defineComponent, computed, inject } = require( 'vue' );
 const { CdxIcon } = require( '@wikimedia/codex' );
-const { cdxIconSuccess, cdxIconClear } = require( '@wikimedia/codex-icons' );
+const { cdxIconSuccess, cdxIconClear } = require( '../common/codex-icons.json' );
 const NumberIcon = require( './NumberIcon.vue' );
 const PILL_TO_CHIP_STATUS_MAP = {
 	interactable: 'notice',
@@ -140,7 +140,8 @@ module.exports = exports = defineComponent( {
 
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
-// TODO this should be flexible
+
+@pill-block-min-width: 320px;
 @pill-block-width: 340px;
 
 .ext-growthExperiments-ReviseTone-QuizPill {
@@ -153,6 +154,7 @@ module.exports = exports = defineComponent( {
     padding-top: @size-75;
     padding-bottom: @size-75;
     gap: @size-50;
+    min-width: @pill-block-min-width;
     width: @pill-block-width;
     border-radius: @border-radius-pill;
     border: @border-width-base solid @border-color-interactive;

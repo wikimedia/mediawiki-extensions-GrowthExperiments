@@ -1,4 +1,8 @@
 'use strict';
+jest.mock( '../common/codex-icons.json', () => ( {
+	cdxIconSuccess: 'Success icon',
+	cdxIconClear: 'Clear icon',
+} ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const QuizPill = require( './QuizPill.vue' );
 const mwLanguageMock = {

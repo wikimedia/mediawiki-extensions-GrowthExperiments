@@ -14,7 +14,7 @@ const fakeMessage = ( key: string, ...params: ( string|number )[] ): FakeMessage
 		message = message.replace( `$${ index }`, param );
 	}
 	return {
-		text: () => message,
+		text: () => message || ( 'i18n-not-found:' + key ),
 	};
 };
 
@@ -24,7 +24,7 @@ const i18nPlugin = {
 			key: string,
 			...params: ( string|number )[]
 		): FakeMessage => fakeMessage( key, ...params );
-		app.provide( 'i18n', { i18n: $i18n } );
+		app.provide( 'i18n', $i18n );
 
 		app.config.globalProperties.$i18n = $i18n;
 	},
