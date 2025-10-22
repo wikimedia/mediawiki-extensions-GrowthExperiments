@@ -35,6 +35,9 @@ module.exports = exports = defineComponent( {
   justify-content: space-around;
   width: 20px;
   height: 20px;
+  // Prevent shrinks produced by flex shrinking and line clamp ellipsis addition
+  min-width: 20px;
+  min-height: 20px;
   border-radius: 50%;
   border: 1px solid @border-color-interactive;
   background-color: @background-color-transparent;

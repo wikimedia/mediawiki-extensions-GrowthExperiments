@@ -20,7 +20,9 @@
 				v-if="Number.isInteger( iconNumber ) && !icon"
 				:number="iconNumber"
 			></number-icon>
-			{{ label }}
+			<div class="ext-growthExperiments-ReviseTone-QuizPill-Pill__content">
+				{{ label }}
+			</div>
 		</div>
 		<div
 			v-if="computedStatus === 'correct' && description"
@@ -184,6 +186,14 @@ module.exports = exports = defineComponent( {
       .cdx-icon {
         color: @color-error;
       }
+    }
+
+    &__content {
+      overflow: hidden;
+      display: -webkit-box;
+      line-clamp: 1;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
   }
 
