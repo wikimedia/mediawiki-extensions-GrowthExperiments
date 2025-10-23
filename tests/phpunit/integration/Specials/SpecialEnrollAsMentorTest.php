@@ -12,8 +12,8 @@ use MediaWiki\SpecialPage\SpecialPage;
 use SpecialPageTestBase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Specials\SpecialEnrollAsMentor
  * @group Database
+ * @covers \GrowthExperiments\Specials\SpecialEnrollAsMentor
  */
 class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 	use CommunityConfigurationTestHelpers;
@@ -36,9 +36,6 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::userCanExecute
-	 */
 	public function testNotAuthorized() {
 		$this->expectException( PermissionsError::class );
 		$this->expectExceptionMessage( 'You are not allowed to execute the action you have requested' );
@@ -55,7 +52,6 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 
 	/**
 	 * Verify execute() redirects to Special:MentorDashboard if requestor is a mentor
-	 * @covers ::execute
 	 */
 	public function testIsMentor() {
 		$this->setGroupPermissions( '*', 'enrollasmentor', true );
@@ -80,9 +76,6 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testIsNonMentor() {
 		$this->setGroupPermissions( '*', 'enrollasmentor', true );
 		$user = $this->getTestUser()->getUser();
