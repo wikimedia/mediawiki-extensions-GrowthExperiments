@@ -99,8 +99,9 @@ class PraiseworthyMenteeSuggester {
 
 	private function makeCacheKeyForMentor( UserIdentity $mentor ): string {
 		return $this->globalCache->makeKey(
-			'GrowthExperiments', 'PraiseworthyMenteeSuggester',
-			UserImpact::VERSION, 'getPraiseworthyMentees', $mentor->getId()
+			'growthexperiments-mentor-praiseworthymentees',
+			UserImpact::VERSION,
+			$mentor->getId()
 		);
 	}
 
@@ -267,9 +268,9 @@ class PraiseworthyMenteeSuggester {
 		return json_encode( $menteeImpacts, flags: JSON_THROW_ON_ERROR );
 	}
 
-	private function deserializeFromCache( mixed $cachedData ): mixed {
-		if ( !is_string( $cachedData ) ) {
-			return $cachedData;
+	private function deserializeFromCache( string|false $cachedData ): mixed {
+		if ( $cachedData === false ) {
+			return false;
 		}
 
 		$impactData = json_decode( $cachedData, associative: true, flags: JSON_THROW_ON_ERROR );
