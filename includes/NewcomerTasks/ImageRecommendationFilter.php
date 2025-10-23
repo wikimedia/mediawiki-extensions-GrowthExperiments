@@ -58,8 +58,7 @@ class ImageRecommendationFilter extends AbstractTaskSetFilter implements TaskSet
 	 */
 	public static function makeKey( WANObjectCache $cache, string $taskTypeId, string $dbKey ): string {
 		return $cache->makeKey(
-			'GrowthExperiments',
-			'InvalidatedImageRecommendations',
+			'growthexperiments-invalidated-image-recommendations',
 			$taskTypeId,
 			$dbKey
 		);

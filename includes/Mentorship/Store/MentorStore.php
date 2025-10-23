@@ -35,33 +35,32 @@ abstract class MentorStore {
 	}
 
 	/**
-	 * Helper to generate cache key for a mentee
-	 * @param UserIdentity $user Mentee's username
+	 * Cache key for loadMentorUser()
+	 *
+	 * @param UserIdentity $mentee Mentee's username
 	 * @param string $mentorRole
 	 * @return string Cache key
 	 */
 	protected function makeLoadMentorCacheKey(
-		UserIdentity $user,
+		UserIdentity $mentee,
 		string $mentorRole
 	): string {
 		return $this->wanCache->makeKey(
-			'GrowthExperiments',
-			'MentorStore', __CLASS__,
-			'Mentee', $user->getId(),
-			'Mentor', $mentorRole
+			'growthexperiments-mentee-mentor',
+			$mentee->getId(),
+			$mentorRole
 		);
 	}
 
 	/**
-	 * Invalidates mentor cache for loadMentorUser
-	 * @param UserIdentity $user Who will have their cache invalidated
+	 * Invalidates cache for loadMentorUser()
+	 *
+	 * @param UserIdentity $mentee Who will have their cache invalidated
 	 * @param string $mentorRole
 	 */
-	protected function invalidateMentorCache( UserIdentity $user, string $mentorRole ): void {
-		$key = $this->makeLoadMentorCacheKey( $user, $mentorRole );
-		$this->wanCache->delete(
-			$key
-		);
+	protected function invalidateMentorCache( UserIdentity $mentee, string $mentorRole ): void {
+		$key = $this->makeLoadMentorCacheKey( $mentee, $mentorRole );
+		$this->wanCache->delete( $key );
 		unset( $this->inProcessCache[$key] );
 	}
 
@@ -231,25 +230,23 @@ abstract class MentorStore {
 	}
 
 	/**
-	 * Make cache key for isMenteeActive()
+	 * Cache key for isMenteeActive()
 	 *
-	 * @param UserIdentity $user
+	 * @param UserIdentity $mentee
 	 * @return string
 	 */
-	private function makeIsMenteeActiveCacheKey( UserIdentity $user ): string {
+	private function makeIsMenteeActiveCacheKey( UserIdentity $mentee ): string {
 		return $this->wanCache->makeKey(
-			'GrowthExperiments',
-			'MentorStore', __CLASS__,
-			'Mentee', $user->getId(),
-			'IsActive'
+			'growthexperiments-mentee-active',
+			$mentee->getId()
 		);
 	}
 
 	/**
 	 * Invalidates cache for isMenteeActive()
 	 */
-	protected function invalidateIsMenteeActive( UserIdentity $user ): void {
-		$this->wanCache->delete( $this->makeIsMenteeActiveCacheKey( $user ) );
+	protected function invalidateIsMenteeActive( UserIdentity $mentee ): void {
+		$this->wanCache->delete( $this->makeIsMenteeActiveCacheKey( $mentee ) );
 	}
 
 	/**

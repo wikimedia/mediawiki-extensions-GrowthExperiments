@@ -41,8 +41,8 @@ class PersonalizedPraiseNotificationsDispatcher {
 
 	private function makeLastNotifiedKey( UserIdentity $mentor ): string {
 		return $this->cache->makeKey(
-			'GrowthExperiments', self::class,
-			'last-notified', $mentor->getId()
+			'growthexperiments-mentor-last-notified',
+			$mentor->getId()
 		);
 	}
 
@@ -77,8 +77,8 @@ class PersonalizedPraiseNotificationsDispatcher {
 
 	private function makePendingMenteesKey( UserIdentity $mentor ): string {
 		return $this->cache->makeKey(
-			'GrowthExperiments', self::class,
-			'pending-mentees', $mentor->getId()
+			'growthexperiments-mentor-pending-mentees',
+			$mentor->getId()
 		);
 	}
 

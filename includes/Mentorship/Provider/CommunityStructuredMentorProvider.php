@@ -122,10 +122,7 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 	 * @return string
 	 */
 	private function getMentorsCacheKey(): string {
-		return $this->cache->makeKey(
-			'growthexperiments',
-			'mentors-list'
-		);
+		return $this->cache->makeKey( 'growthexperiments-mentors-list' );
 	}
 
 	/**

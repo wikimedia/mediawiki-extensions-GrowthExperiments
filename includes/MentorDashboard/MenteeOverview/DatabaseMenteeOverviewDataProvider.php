@@ -41,10 +41,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 	private function makeCacheKey( UserIdentity $mentor ): string {
 		return $this->wanCache->makeKey(
-			'GrowthExperiments',
-			'MenteeOverviewDataProvider',
-			__CLASS__,
-			'Mentor',
+			'growthexperiments-mentor-mentees',
 			$mentor->getId()
 		);
 	}

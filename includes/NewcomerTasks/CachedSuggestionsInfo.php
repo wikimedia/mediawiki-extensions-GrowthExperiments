@@ -33,7 +33,7 @@ class CachedSuggestionsInfo implements NewcomerTasksInfo {
 		$resetCache = $options[ 'resetCache' ] ?? false;
 		$cacheOption = $resetCache ? [ 'minAsOf' => INF ] : [];
 		return $this->cache->getWithSetCallback(
-			$this->cache->makeKey( 'GrowthExperiments', 'SuggestionsInfo' ),
+			$this->cache->makeKey( 'growthexperiments-SuggestionsInfo' ),
 			$this->cache::TTL_HOUR,
 			function ( $oldValue, &$ttl, &$setOpts ) {
 				$data = $this->suggestionsInfo->getInfo();

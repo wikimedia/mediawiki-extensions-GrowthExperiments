@@ -109,6 +109,6 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 	 * @return string
 	 */
 	public static function makeKey( WANObjectCache $cache, string $taskTypeId, string $dbKey ): string {
-		return $cache->makeKey( 'GrowthExperiments', 'Recommendations', $taskTypeId, $dbKey );
+		return $cache->makeKey( 'growthexperiments-image-recommendations', $taskTypeId, $dbKey );
 	}
 }

@@ -160,6 +160,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->output( 'Setting lastPageId in stash: ' . $lastPageId . "\n" );
 		$services = $this->getServiceContainer();
 		$mainStash = $services->getMainObjectStash();
+		// TODO: Migrate to a proper keygroup. May need consideration for existing data.
 		$lastPageIdKey = $mainStash->makeKey(
 			'GrowthExperiments',
 			'RefreshLinkRecommendations',

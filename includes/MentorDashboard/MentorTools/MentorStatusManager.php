@@ -92,7 +92,7 @@ class MentorStatusManager {
 
 	private function makeAwayReasonCacheKey( UserIdentity $mentor ): string {
 		return $this->inprocessCache->makeKey(
-			'GrowthExperiments', __CLASS__, 'awayReason',
+			'growthexperiments-mentor-away-reason',
 			$mentor->getId()
 		);
 	}
