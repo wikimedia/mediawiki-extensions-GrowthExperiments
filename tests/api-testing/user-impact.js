@@ -65,9 +65,9 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 		const { body: sourceBody } = await client.get( encodeURIComponent( '#1' ) );
 		const expectedResponse = getExpectedResponse();
 		// These vary based on the current date, and probably not worth asserting anything about.
-		delete sourceBody.topViewedArticles.Foo.pageviewsUrl;
-		delete sourceBody.topViewedArticles.Bar.pageviewsUrl;
-		delete sourceBody.generatedAt;
+		delete sourceBody?.topViewedArticles?.Foo?.pageviewsUrl;
+		delete sourceBody?.topViewedArticles?.Bar?.pageviewsUrl;
+		delete sourceBody?.generatedAt;
 		assert.deepEqual( sourceBody, expectedResponse );
 	} );
 
@@ -75,9 +75,9 @@ describe( 'POST and GET requests to /growthexperiments/v0/user-impact/{user}', (
 		const { body: sourceBody } = await client.post( encodeURIComponent( '#1' ) );
 		const expectedResponse = getExpectedResponse();
 		// These vary based on the current date, and probably not worth asserting anything about.
-		delete sourceBody.topViewedArticles.Foo.pageviewsUrl;
-		delete sourceBody.topViewedArticles.Bar.pageviewsUrl;
-		delete sourceBody.generatedAt;
+		delete sourceBody?.topViewedArticles?.Foo?.pageviewsUrl;
+		delete sourceBody?.topViewedArticles?.Bar?.pageviewsUrl;
+		delete sourceBody?.generatedAt;
 		assert.deepEqual( sourceBody, expectedResponse );
 	} );
 
