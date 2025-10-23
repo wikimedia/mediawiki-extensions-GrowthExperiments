@@ -19,7 +19,13 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class UserImpact implements JsonSerializable {
 
-	/** Cache version, to be increased when breaking backwards compatibility. */
+	/**
+	 * Cache version, to be increased when breaking backwards compatibility.
+	 *
+	 * NOTE: This is not merely a cache version. Bumping it does more than purge the cache.
+	 * It also changes the REST API output (UserImpactHandler) and invalidate any queued
+	 * RefreshUserImpactJob jobs.
+	 */
 	public const VERSION = 12;
 
 	private UserIdentity $user;
