@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use LogicException;
+use MediaWiki\Config\Config;
 use MediaWiki\Title\TitleParser;
 use MessageLocalizer;
 use Wikimedia\Message\MessageSpecifier;
@@ -26,6 +27,7 @@ class ReviseToneTaskTypeHandler extends StructuredTaskTypeHandler {
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,
 		private readonly SubpageReviseToneRecommendationProvider $recommendationProvider,
+		private readonly Config $mainConfig,
 	) {
 		parent::__construct( $configurationValidator, $titleParser );
 	}
@@ -47,14 +49,24 @@ class ReviseToneTaskTypeHandler extends StructuredTaskTypeHandler {
 
 	public function getSearchTerm( TaskType $taskType ): string {
 		$searchTerm = parent::getSearchTerm( $taskType );
-		// TODO: this should maybe be configurable for the beta, and replaced with hasrecommendation:tone
-		//       once we have real recommendations
-		$searchTerm .= 'hastemplate:peacock_inline ';
+
+		if ( $this->mainConfig->get( 'GEReviseToneOverrideSearchTerm' ) ) {
+			return $searchTerm . $this->mainConfig->get( 'GEReviseToneOverrideSearchTerm' ) . ' ';
+		}
+		$searchTerm .= 'lasteditdate:<now-24h ';
+		$searchTerm .= 'creationdate:<today-90d ';
+		$threshold = $this->mainConfig->get( 'GEReviseToneParagraphScoreThreshold' );
+		$searchTerm .= 'hasrecommendation:tone>' . $threshold . ' ';
 		return $searchTerm;
 	}
 
 	public function createTaskType( string $taskTypeId, array $config ): TaskType {
-		$taskType = new ReviseToneTaskType( $taskTypeId, $config['group'] );
+		$taskType = new ReviseToneTaskType(
+			$taskTypeId,
+			$config['group'],
+			excludedTemplates: $this->parseExcludedTemplates( $config ),
+			excludedCategories: $this->parseExcludedCategories( $config ),
+		);
 		$taskType->setHandlerId( $this->getId() );
 		return $taskType;
 	}

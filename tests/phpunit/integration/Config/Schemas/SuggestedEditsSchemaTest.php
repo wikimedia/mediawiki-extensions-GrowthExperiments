@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Extension\CommunityConfiguration\Tests\SchemaProviderTestCase;
 use MediaWiki\MediaWikiServices;
 use MockMessageLocalizer;
@@ -12,6 +13,7 @@ use Wikimedia\JsonCodec\Hint;
 /**
  * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader
  * @covers \GrowthExperiments\Config\Schemas\SuggestedEditsSchema
+ * @covers \GrowthExperiments\Config\Providers\SuggestedEditsConfigProvider
  *
  * @group Database
  */
@@ -34,6 +36,9 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 
 	public function testDefaultTaskTypesDataWithEmptyConfig(): void {
 		$this->overrideConfigValues( [
+			'GEReviseToneSuggestedEditEnabled' => true,
+			'GEReviseToneExcludedTemplates' => [],
+			'GEReviseToneExcludedCategories' => [],
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GENewcomerTasksImageRecommendationsEnabled' => true,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => true,
@@ -223,6 +228,9 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 
 	public function testDefaultTaskTypesDataWithPartialConfig(): void {
 		$this->overrideConfigValues( [
+			'GEReviseToneSuggestedEditEnabled' => true,
+			'GEReviseToneExcludedTemplates' => [ 'Foo' ],
+			'GEReviseToneExcludedCategories' => [ 'Bar' ],
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GENewcomerTasksImageRecommendationsEnabled' => true,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => true,
@@ -412,8 +420,8 @@ JSON;
 					'filterIcon' => 'robot',
 					'descriptionMessageKey' => 'growthexperiments-homepage-suggestededits-tasktype-machine-description',
 				],
-				'excludedTemplates' => [],
-				'excludedCategories' => [],
+				'excludedTemplates' => [ [ 10, 'Foo' ] ],
+				'excludedCategories' => [ [ 14, 'Bar' ] ],
 				'_type_' => 'GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType',
 			],
 		], self::removeComplexMarkers( $jsonCodec->toJsonArray(

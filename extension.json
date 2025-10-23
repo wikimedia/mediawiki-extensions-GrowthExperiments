@@ -2739,7 +2739,8 @@
 					"services": [
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
 						"TitleParser",
-						"GrowthExperimentsReviseToneRecommendationProvider"
+						"GrowthExperimentsReviseToneRecommendationProvider",
+						"MainConfig"
 					]
 				},
 				"null": {
@@ -2892,6 +2893,22 @@
 		"GEReviseToneSuggestedEditEnabled": {
 			"value": false,
 			"description": "Enable the Revise Tone feature so newcomers can spot non-neutral wording and receive in-context guidance to help users rewrite a sentence in a more encyclopedic tone."
+		},
+		"GEReviseToneExcludedTemplates": {
+			"value": [],
+			"description": "List of templates used for excluding articles for the ReviseTone task"
+		},
+		"GEReviseToneExcludedCategories": {
+			"value": [],
+			"description": "List of categories used for excluding articles for the ReviseTone task"
+		},
+		"GEReviseToneParagraphScoreThreshold": {
+			"value": 0.8,
+			"description": "Threshold score above which a Tone issue is considered for the ReviseTone task"
+		},
+		"GEReviseToneOverrideSearchTerm": {
+			"value": "",
+			"description": "Overrides generating the search terms for the ReviseTone task. Should only be set to something other than an empty string in beta or dev. Recommended value on beta: 'hastemplate:peacock_inline'. See ReviseToneTaskTypeHandler::getSearchTerm"
 		},
 		"GEUseMetricsPlatformExtension": {
 			"description": "MetricsPlatform/xLab as enrollment authority for experiments",

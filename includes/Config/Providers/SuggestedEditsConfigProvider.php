@@ -54,6 +54,8 @@ class SuggestedEditsConfigProvider extends DataProvider {
 			if ( Util::isReviseToneTasksTypeEnabled() ) {
 				// TODO: move to community config for full production deployment T396162
 				$data->revise_tone = (object)[];
+				$data->revise_tone->excludedTemplates = $this->config->get( 'GEReviseToneExcludedTemplates' );
+				$data->revise_tone->excludedCategories = $this->config->get( 'GEReviseToneExcludedCategories' );
 			}
 
 			// Priorly 'group' and 'type' were added using IConfigurationProvider::addAutocomputedProperties
