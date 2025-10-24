@@ -206,6 +206,7 @@ abstract class QuestionPoster {
 					->create()
 					->stripSectionName( $this->getSectionHeader() )
 				)
+				->inContentLanguage()
 				->text()
 			)
 		);
