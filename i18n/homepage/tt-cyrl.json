@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Ерней",
-			"Blackisnewyellow"
+			"Blackisnewyellow",
+			"Ильгиз"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Хуш киләсез}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-startediting-header": "Үзгәртүне башлау",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Кире алу",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Дәвам итү",

@@ -77,6 +77,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Преузимање новајлије",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Помоћу ове функције можете преузети новајлију коју желите. То је нарочито корисно за инструкторе на уређивачким радионицама, курсевима и маратонима јер им омогућава да буду ментори новајлијама и ван пројекта и на њему.",
 	"growthexperiments-rcfilters-mentorship-title": "Менторство",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Друге новајлије додељене {{GENDER:|Вама}}",
 	"growthexperiments-quit-mentorship-title": "Отказивање менторства",
 	"growthexperiments-quit-mentorship-error-not-a-mentor": "Ви нисте {{GENDER:|ментор|менторка}}.",
 	"growthexperiments-quit-mentorship-reason": "Разлог",

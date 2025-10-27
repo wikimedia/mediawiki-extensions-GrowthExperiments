@@ -11,7 +11,8 @@
 			"Mohammad ebz",
 			"Reza1615",
 			"Vahedi",
-			"Ebrahim"
+			"Ebrahim",
+			"LordProfo"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "فعال‌کردن تابلوی راهنمای ویرایشگر",
@@ -78,7 +79,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "بر روی دکمهٔ «$1» $2 بزنید و مقالهٔ {{SITENAME}} که باید پیوند شود را از فهرست انتخاب کنید.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-publish": "یا پیوندهای بیشتری بیفزایید یا بر «$1» کلیک کنید تا ویرایش {{GENDER:|خود}} را منتشر کنید!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "یا منابع بیشتری بیفزایید یا بر دکمهٔ آبی کلیک کنید تا ویرایش {{GENDER:|خود}} را منتشر کنید!",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|بیشتر در مورد اضافه کردن پیوندها بخوانید]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|دربارهٔ افزودن پیوندها بیشتر بدانید]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-value": "هرچیزی در {{SITENAME}} باید از منابع معتبر مانند کتاب‌ها یا روزنامه‌ها بیاید. وقتی خوانندگان منابع را در یک مقاله ببینند، می‌توانند درآنچه یاد می‌گیرند مطمئن باشند.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "زحل احتمالا بیشتر از هرچیز به خاطر داشتن حلقه‌های دورش که آن را به طور بصری خاص می‌کند شناخته شده است.<sup>[3]</sup>",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-value": "این جمله یک یادکرد در انتها دارد که به منبع آن اشاره می‌کند.",
