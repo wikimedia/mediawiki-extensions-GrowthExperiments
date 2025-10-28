@@ -53,6 +53,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Ниједна новајлија није пронађена",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Промените филтере {{GENDER:|да}} бисте нашли новајлије.",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Скорашње измене {{GENDER:|Ваших}} новајлија",
+	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "{{GENDER:|Можете}} видети измене свих Ваших новајлија преко [$1 „филтираних” скорашњих измена].",
 	"growthexperiments-mentor-dashboard-mentee-overview-error-title": "Дошло је до грешке при учитавању списка новајлија.",
 	"growthexperiments-mentor-dashboard-mentee-overview-error-notification": "Дошло је до непознате грешке. Покушајте поново касније.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Повезане странице",
@@ -81,6 +82,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "Преузимање новајлије",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "Помоћу ове функције можете преузети новајлију коју желите. То је нарочито корисно за инструкторе на уређивачким радионицама, курсевима и маратонима јер им омогућава да буду ментори новајлијама и ван пројекта и на њему.",
 	"growthexperiments-rcfilters-mentorship-title": "Менторство",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Друге новајлије додељене {{GENDER:|Вама}}",
 	"growthexperiments-quit-mentorship-title": "Отказивање менторства",
 	"growthexperiments-quit-mentorship-error-not-a-mentor": "Ви нисте {{GENDER:|ментор|менторка}}.",
 	"growthexperiments-quit-mentorship-reason": "Разлог",
@@ -125,6 +127,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown": "Дошло је до непознате грешке. Покушајте поново касније.",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "Подешавања",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Новајлије вредни похвале",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts": "Максималан број враћања којих новајлија сме да има",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours": "Претходних 48 сати",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week": "Прошла недеља",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks": "Претходне 2 недеље",
@@ -199,5 +202,6 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Упиши ме",
 	"growthexperiments-mentorship-enrollasmentor-success": "Сада сте {{GENDER:|ментор|менторка}}. Наставите на [[Special:MentorDashboard|менторску таблу]] сада.",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Додао себе као ментора",
-	"tag-mentor list change": "Промењен списак ментора"
+	"tag-mentor list change": "Промењен списак ментора",
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Менторство је тренутно искључено. Администратори могу да укључе менторство преко [[$1]]."
 }

@@ -248,7 +248,7 @@
 	"growthexperiments-addlink-summary-title": "Opsomming",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Voorstel",
 	"growthexperiments-addlink-summary-column-header-linked": "Geskakel?",
-	"growthexperiments-addlink-summary-summary": "Skakel voorstelling funksie: $1 {{PLURAL:$1|skakel|skakels}} bygevoeg.",
+	"growthexperiments-addlink-summary-summary": "Skakelvoorstellingfunksie: $1 {{PLURAL:$1|skakel|skakels}} bygevoeg.",
 	"growthexperiments-addlink-skip-accept": "Slaan alles oor",
 	"growthexperiments-addlink-skip-reject": "Hersien weer",
 	"grant-managementorship": "Bestuur mentorskap",

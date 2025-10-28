@@ -20,7 +20,8 @@
 			"Verdy p",
 			"Wladek92",
 			"JLTRY",
-			"Derugon"
+			"Derugon",
+			"SaldırganSincap"
 		]
 	},
 	"growthexperiments-desc": "Cette extension contient des expériences faites par l’équipe Croissance (''Growth'').",
@@ -185,7 +186,7 @@
 	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholds-help-text": "Nombre maximum de modifications suggérées qu'un nouvel arrivant peut effectuer pour pouvoir recevoir cette notification. S'il vaut 0, aucun nouvel arrivant ne recevra cette notification. Plus le nombre est élevé, plus les nouveaux arrivants recevront cette notification. Cette notification n'est envoyée qu'aux nouveaux arrivants qui n'ont pas encore terminé les modifications suggérées.",
 	"communityconfiguration-growthsuggestededits-title": "Modifications suggérées",
 	"communityconfiguration-growthsuggestededits-description": "Personnaliser la fonctionnalité des Modifications suggérées de la page d'accueil des nouveaux venus.",
-	"communityconfiguration-growthsuggestededits-info-text": "Les Modifications suggérées aident les nouveaux à faire leurs premières modifications. Qu’ils utilisent le web ou le web mobile, ils ont accès aux Modifications suggérées via la page d’accueil des nouveaux. Ces Modifications suggérées reçoivent la balise ''Tâches pour novices''.<br>\n<em>Attention, les changements dans ce formulaire n’impacteront pas les Modifications suggérées des applications Wikipedia pour iOS et Android. Contactez l'équipe de ces applications sur [https://www.mediawiki.org/wiki/Talk:Wikimedia_Apps Talk:Wikimedia Apps] pour discuter des fonctionnalités des applications pour mobile.\n\nCertains types de tâches pour les novices sont proposés depuis des modèles de maintenance. Les articles contenant ces modèles sont ajoutés dans le flux des Modifications suggérées de la page d'accueil. Pour voir combien d'articles sont disponibles pour chaque type de tâche, voir [[Special:NewcomerTasksInfo]].",
+	"communityconfiguration-growthsuggestededits-info-text": "Les Modifications suggérées aident les nouveaux à faire leurs premières modifications. Qu’ils utilisent le web ou le web mobile, ils ont accès aux Modifications suggérées via la page d’accueil des nouveaux. Ces Modifications suggérées reçoivent la balise ''Tâches pour novices''.<br>\n<em>Attention, les changements dans ce formulaire n’impacteront pas les Modifications suggérées des applications Wikipedia pour iOS et Android. Contactez l'équipe de ces applications sur [https://www.mediawiki.org/wiki/Talk:Wikimedia_Apps Talk:Wikimedia Apps] pour discuter des fonctionnalités des applications pour mobile.</em>\n\nCertains types de tâches pour les novices sont proposés depuis des modèles de maintenance. Les articles contenant ces modèles sont ajoutés dans le flux des Modifications suggérées de la page d'accueil. Pour voir combien d'articles sont disponibles pour chaque type de tâche, voir [[Special:NewcomerTasksInfo]].",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Modèles de boîtes d'information",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Ces modèles sont nécessaires pour la fonctionnalité de la [[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add an image|tâche de suggestion  d'images]] du nouvel arrivant. Les articles contenant ces modèles ne seront pas répertoriés comme des tâches de suggestion d'images.",
 	"communityconfiguration-growthsuggestededits-copyedit-label": "Corriger",
