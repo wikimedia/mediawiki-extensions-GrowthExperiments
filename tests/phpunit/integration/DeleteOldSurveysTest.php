@@ -8,7 +8,6 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\IDBAccessObject;
-use Wikimedia\TestingAccessWrapper;
 
 require_once __DIR__ . '/../../../maintenance/deleteOldSurveys.php';
 
@@ -78,7 +77,8 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 	 * @param string $date Registration date in an MWTimestamp-compatible format
 	 */
 	private function setRegistrationDate( User $user, string $date ) {
-		TestingAccessWrapper::newFromObject( $user )->mRegistration = wfTimestamp( TS_MW, $date );
+		$this->getServiceContainer()->getUserRegistrationLookup()
+			->setCachedRegistration( $user, wfTimestamp( TS_MW, $date ) );
 		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'user' )
 			->set( [ 'user_registration' => $this->getDb()->timestamp( $date ) ] )

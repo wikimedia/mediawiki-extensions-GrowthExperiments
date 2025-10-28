@@ -130,6 +130,9 @@ trait CreateMenteeHelpers {
 			->where( [ 'user_id' => $mentee->getId() ] )
 			->caller( __METHOD__ )
 			->execute();
+		// Update the cache, which was populated when the user was created
+		$this->getServiceContainer()->getUserRegistrationLookup()
+			->setCachedRegistration( $mentee, $registration );
 	}
 
 	protected function createMenteeWithRegistration( User $mentor, ?string $registration ): User {
