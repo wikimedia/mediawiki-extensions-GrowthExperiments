@@ -1291,6 +1291,10 @@ class HomepageHooks implements
 	 */
 	public static function onCirrusSearchAddQueryFeatures( SearchConfig $config, array &$extraFeatures ) {
 		$mwServices = MediaWikiServices::getInstance();
+		// Avoid accessing Suggested Edits configuration when the feature is disabled (T369312)
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			return;
+		}
 		$growthServices = GrowthExperimentsServices::wrap( $mwServices );
 		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$taskTypes = $configurationLoader->getTaskTypes();
