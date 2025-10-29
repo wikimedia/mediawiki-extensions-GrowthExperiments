@@ -63,7 +63,10 @@ class ReviseToneInitializer {
 	showCancelledPostEditDialog() {
 		suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.CANCELLED );
 		suggestedEditSession.postEditDialogNeedsToBeShown = true;
-		suggestedEditSession.maybeShowPostEditDialog();
+		suggestedEditSession.save();
+		window.setTimeout( () => {
+			window.location.reload();
+		}, 100 );
 	}
 
 	showToneEditCheck() {
