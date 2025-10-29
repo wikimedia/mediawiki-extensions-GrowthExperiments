@@ -9,7 +9,6 @@
 			"Xiplus"
 		]
 	},
-	"growthexperiments-confirmemail-captcha-help": "Help link in the CAPTCHA label. Shown next to {{msg-mw|fancycaptcha-captcha}}. Replaces part of {{msg-mw|fancycaptcha-accountcreate}}.",
 	"growthexperiments-confirmemail-emailhelp": "Help text for the email field on the account creation form.",
 	"growthexperiments-confirmemail-emailrecommended": "Label for the email field on the account creation form when it is optional but recommended. Replaces {{msg-mw|createacct-emailoptional}}.",
 	"growthexperiments-confirmemail-emailwarning": "Message displayed below the email field on the account creation form. This message animates in when the user clicks into the email field.",

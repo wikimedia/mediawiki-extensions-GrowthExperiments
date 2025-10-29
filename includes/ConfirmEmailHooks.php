@@ -4,7 +4,6 @@ namespace GrowthExperiments;
 
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\ConfirmEdit\FancyCaptcha\HTMLFancyCaptchaField;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
@@ -43,30 +42,6 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 		if ( isset( $formDescriptor['email'] ) && !$config->get( 'EmailConfirmToEdit' ) ) {
 			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';
 			$formDescriptor['email']['help-message'] = 'growthexperiments-confirmemail-emailhelp';
-			// helpInline doesn't work because this form hasn't been converted to OOUI yet (T85853)
-			$formDescriptor['email']['helpInline'] = true;
-		}
-
-		if ( ( $formDescriptor['captchaWord']['class'] ?? null ) === HTMLFancyCaptchaField::class ) {
-			// Remove long-winded CAPTCHA explanation message
-			unset( $formDescriptor['captchaWord']['label-message'] );
-
-			// HACK: add "what's this" link by duplicating the entire label, then hiding
-			// the original label with CSS. Unfortunately HTMLFancyCaptchaField doesn't let us change
-			// the built-in label message or append to it, instead it prepends it in a <p>.
-			$formDescriptor['captchaWord']['label-raw'] = Html::rawElement(
-				'label',
-				[ 'for' => 'mw-input-captchaWord' ],
-				$context->msg( 'captcha-label' )->escaped() . ' ' .
-					$context->msg( 'fancycaptcha-captcha' )->escaped() . ' ' .
-					$context->msg( 'growthexperiments-confirmemail-captcha-help' )->parse()
-			);
-			$formDescriptor['captchaWord']['cssclass'] =
-				( $formDescriptor['capthaWord']['cssclass'] ?? '' ) . ' mw-ge-confirmemail-captcha';
-
-			$context->getOutput()->addModuleStyles(
-				'ext.growthExperiments.Account.styles'
-			);
 		}
 	}
 
