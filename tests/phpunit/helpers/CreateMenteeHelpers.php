@@ -66,9 +66,6 @@ trait CreateMenteeHelpers {
 				$mentee,
 				$overrides['registration']
 			);
-
-			// user_registration was likely read already, recreate the user
-			$mentee = $this->getServiceContainer()->getUserFactory()->newFromId( $mentee->getId() );
 		}
 
 		if ( isset( $overrides['edit_count'] ) ) {
