@@ -376,6 +376,13 @@ class SuggestedEdits extends BaseModule {
 					}
 					$formattedTasks[] = $taskData;
 				}
+
+				// Remove after end of ReviseTone A/B test: T407528
+				$formattedTasks = $this->sortOneOfTaskTypeFirst(
+					$formattedTasks,
+					ReviseToneTaskTypeHandler::TASK_TYPE_ID,
+				);
+
 				$data['task-queue'] = $formattedTasks;
 				$data['task-preview'] = current( $formattedTasks );
 				$this->trackQueueStatus( $mode, 'ok' );
@@ -395,6 +402,26 @@ class SuggestedEdits extends BaseModule {
 		}
 
 		return $data;
+	}
+
+	private function sortOneOfTaskTypeFirst( array $formattedTasks, string $taskTypeId ): array {
+		$i = -1;
+
+		foreach ( $formattedTasks as $index => $formattedTask ) {
+			if ( $formattedTask['tasktype'] === $taskTypeId ) {
+				$i = $index;
+				break;
+			}
+		}
+
+		if ( $i === -1 ) {
+			return $formattedTasks;
+		}
+
+		$reviseToneTask = array_splice( $formattedTasks, $i, 1 )[0];
+		array_unshift( $formattedTasks, $reviseToneTask );
+
+		return $formattedTasks;
 	}
 
 	/**
