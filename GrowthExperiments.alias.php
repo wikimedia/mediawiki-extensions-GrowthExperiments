@@ -361,8 +361,15 @@ $specialPageAliases['sh'] = [
 /** Slovak (slovenčina) */
 $specialPageAliases['sk'] = [
 	'WelcomeSurvey' => [ 'UvítacíPrieskum' ],
-	'Homepage' => [ 'Domovská_stránka' ],
-	'Impact' => [ 'Dopad' ],
+	'Homepage' => [ 'DomovskáStránka', 'Domovská_stránka' ],
+	'Impact' => [ 'DosahPríspevkov', 'Dopad' ],
+	'ClaimMentee' => [ 'PrevziaťNováčika' ],
+	'NewcomerTasksInfo' => [ 'InformácieONavrhovanýchÚpravách' ],
+	'EditGrowthConfig' => [ 'UpraviťKonfiguráciuFunkciíGrowth' ],
+	'MentorDashboard' => [ 'NástenkaMentora' ],
+	'QuitMentorship' => [ 'UkončiťMentorstvo' ],
+	'ManageMentors' => [ 'SpravovaťMentorov', 'SprávaMentorov' ],
+	'EnrollAsMentor' => [ 'ZapísaťSaAkoMentor' ],
 ];
 
 /** Slovenian (slovenščina) */
