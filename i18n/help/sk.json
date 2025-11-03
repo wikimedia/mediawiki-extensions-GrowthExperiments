@@ -21,6 +21,7 @@
 	"growthexperiments-help-panel-postedit-success-message-published": "Práve ste úspešne {{GENDER:|publikoval|publikovala|publikovali}} svoju úpravu. Ďakujeme a len tak ďalej!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Práve ste {{GENDER:|uložil|uložila|uložili}} úpravu. Ďakujeme vám!",
 	"growthexperiments-help-panel-postedit-success-message-notsaved": "Ďakujeme za kontrolu návrhov. Pokračujte ďalej!",
+	"growthexperiments-help-panel-postedit-suggestededits-title": "Navrhované úpravy",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "Znovu už nezobrazovať",
 	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "Nie, vďaka",
 	"growthexperiments-help-panel-questionreview-title": "Spýtať sa komunity",
