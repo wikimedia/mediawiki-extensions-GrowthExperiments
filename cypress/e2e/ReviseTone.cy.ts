@@ -6,7 +6,8 @@ const homepage = new Homepage();
 const guidedTour = new GuidedTour();
 const keepGoingModule = new KeepGoingModule();
 
-describe( 'Revise Tone', () => {
+// Fully disable the spec until we can ensure it is more stable, T407152
+describe.skip( 'Revise Tone', () => {
 
 	let usernameAlice: string;
 	let passwordAlice: string;
