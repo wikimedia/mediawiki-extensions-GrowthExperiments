@@ -324,6 +324,7 @@
 	"log-action-filter-growthexperiments-setmentor": "Mentorien muutokset",
 	"log-action-filter-growthexperiments-addlink": "Linkkiehdotukset",
 	"log-action-filter-growthexperiments-addimage": "Kuvaehdotukset",
+	"growthexperiments-homepage-claimmentee-invalid-username": "Annettu mentoroitavan käyttäjänimi on virheellinen",
 	"growthexperiments-notification-body-mentor-change": "Syy: $1",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Sinun}} täytyy olla mentorilistalla [[$2]] voidaksesi käyttää toimintosivua Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Mentorilista on virheellinen.",
