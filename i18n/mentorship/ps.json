@@ -83,7 +83,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee": "لارزدکړي غوښتنه",
 	"growthexperiments-mentor-dashboard-mentor-tools-claim-mentee-footer": "تاسو کولی شئ د لارزدکړي لارښود بدل کړئ او ځان يې پرځای لارښود کړئ. دا ډېری وختونه د پېښو د سمولو لپاره کارول کېږي؛ ترڅو لارښودان وکولای شي د نوي‌راغلي لارزدکړي هم په ويکي کې او هم له ويکي بهر لارښود واوسي.",
 	"growthexperiments-rcfilters-mentorship-title": "لارښودي",
-	"growthexperiments-rcfilters-mentorship-starred-label": "{{{{GENDER:|ستاسو}}}} ستوري‌شوي لارزدکړي",
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|ستاسو}} ستوري‌شوي لارزدکړي",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "هغه لارزدکړي {{GENDER:|تاسو}} ته ټاکل شوي دي چې {{GENDER:|تاسو}} يې په {{GENDER:|خپله}} لارښود ليددړه کې ستوري نښه کړي دي",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|ستاسو}} بې ستوري لارزدکړي",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "نور زدکړي چې {{GENDER:|تاسو}} پورې اړوند دي",
