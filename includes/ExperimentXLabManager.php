@@ -23,10 +23,15 @@ class ExperimentXLabManager extends AbstractExperimentManager {
 	];
 	// TODO: valid experiments and variants should/could be read from config
 	public const GET_STARTED_EXPERIMENT = 'growthexperiments-get-started-notification';
+	public const REVISE_TONE_EXPERIMENT = 'growthexperiments-revise-tone';
 	public const VARIANT_CONTROL = 'control';
 	public const VARIANT_TREATMENT = 'treatment';
+
+	public const REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME = self::REVISE_TONE_EXPERIMENT .
+	'_' . self::VARIANT_TREATMENT;
 	public const VALID_EXPERIMENTS = [
 		self::GET_STARTED_EXPERIMENT,
+		self::REVISE_TONE_EXPERIMENT,
 	];
 
 	/** Map of (experiment name => assigned group) */

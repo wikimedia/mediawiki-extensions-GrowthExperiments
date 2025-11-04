@@ -3,11 +3,13 @@
 namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\AbstractExperimentManager;
+use GrowthExperiments\ExperimentXLabManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use MediaWiki\Config\Config;
 use MediaWiki\User\Options\UserOptionsLookup;
@@ -17,39 +19,12 @@ use MediaWiki\User\UserIdentity;
  * Retrieves user settings related to newcomer tasks.
  */
 class NewcomerTasksUserOptionsLookup {
-
-	/**
-	 * This property isn't used, but we want to preserve the ability to run A/B tests where
-	 * user options depend on the user's experiment group.
-	 * @var AbstractExperimentManager
-	 */
-	private $experimentUserManager;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
-	/** @var Config */
-	private $config;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
-	/**
-	 * @param AbstractExperimentManager $experimentUserManager
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param Config $config
-	 * @param ConfigurationLoader $configurationLoader
-	 */
 	public function __construct(
-		AbstractExperimentManager $experimentUserManager,
-		UserOptionsLookup $userOptionsLookup,
-		Config $config,
-		ConfigurationLoader $configurationLoader
+		private readonly AbstractExperimentManager $experimentUserManager,
+		private readonly UserOptionsLookup $userOptionsLookup,
+		private readonly Config $config,
+		private readonly ConfigurationLoader $configurationLoader
 	) {
-		$this->experimentUserManager = $experimentUserManager;
-		$this->userOptionsLookup = $userOptionsLookup;
-		$this->config = $config;
-		$this->configurationLoader = $configurationLoader;
 	}
 
 	/**
@@ -146,6 +121,26 @@ class NewcomerTasksUserOptionsLookup {
 	}
 
 	/**
+	 * Check if section-level image recommendations are enabled. When true, the
+	 * section-image-recommendation task type should be made available to the user.
+	 * @note This has to be equivalent to areSectionImageRecommendationsEnabled in TaskTypesAbFilter.js
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function areReviseToneRecommendationsEnabled( UserIdentity $user ): bool {
+		$areReviseToneRecommendationsEnabled = $this->config->get( 'GEReviseToneSuggestedEditEnabled' )
+			&& array_key_exists( ReviseToneTaskTypeHandler::TASK_TYPE_ID,
+				$this->configurationLoader->getTaskTypes() );
+		$shouldCheckGroupAssigned = $this->config->get( 'GEUseMetricsPlatformExtension' );
+		// Only check group assigned if experiment manager is xLab's
+		// TODO: remove after experiment is concluded, T407802
+		return $shouldCheckGroupAssigned ?
+			$areReviseToneRecommendationsEnabled && $this->experimentUserManager->isUserInVariant(
+				$user, ExperimentXLabManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME
+			) : $areReviseToneRecommendationsEnabled;
+	}
+
+	/**
 	 * Remove task types which the user is not supposed to see, given the link recommendation
 	 * configuration and community configuration.
 	 * @param string[] $taskTypes Task types IDs.
@@ -191,6 +186,9 @@ class NewcomerTasksUserOptionsLookup {
 		}
 		if ( !$this->areSectionImageRecommendationsEnabled( $user ) ) {
 			$map += [ SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID => false ];
+		}
+		if ( !$this->areReviseToneRecommendationsEnabled( $user ) ) {
+			$map += [ ReviseToneTaskTypeHandler::TASK_TYPE_ID => false ];
 		}
 		return $map;
 	}

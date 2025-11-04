@@ -3,12 +3,14 @@
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\ExperimentXLabManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Config\HashConfig;
@@ -46,6 +48,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
+			'GEUseMetricsPlatformExtension' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -67,6 +70,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
+			'GEUseMetricsPlatformExtension' => false,
 		] );
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
@@ -100,6 +104,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
+			'GEUseMetricsPlatformExtension' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -143,6 +148,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
+			'GEUseMetricsPlatformExtension' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -162,6 +168,69 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @covers ::getTaskTypeFilter
+	 * @covers ::areReviseToneRecommendationsEnabled
+	 * @covers ::filterTaskTypes
+	 */
+	public function testReviseToneRecommendationAbTest() {
+		$user1 = new UserIdentityValue( 1, 'User1' );
+		$user2 = new UserIdentityValue( 2, 'User2' );
+		$reviseToneTaskType = ReviseToneTaskTypeHandler::TASK_TYPE_ID;
+		$userOptionsLookup = new StaticUserOptionsLookup( [
+			'User1' => [],
+			'User2' => [
+				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit", "' . $reviseToneTaskType . '" ]',
+			],
+		] );
+		$config = new HashConfig( [
+			'GENewcomerTasksLinkRecommendationsEnabled' => false,
+			'GELinkRecommendationsFrontendEnabled' => false,
+			'GENewcomerTasksImageRecommendationsEnabled' => false,
+			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
+			'GEReviseToneSuggestedEditEnabled' => false,
+			'GEUseMetricsPlatformExtension' => true,
+		] );
+		$experimentUserManager = $this->createMock( ExperimentUserManager::class );
+		$matcher = $this->exactly( 2 );
+		$returnCallback = static function (
+			UserIdentityValue $actualUser,
+			UserIdentityValue $expected,
+			string $actualExperiment,
+			bool $returnValue,
+			$ctx,
+		) {
+			$ctx->assertEquals( $expected, $actualUser );
+			$ctx->assertEquals( ExperimentXLabManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME, $actualExperiment );
+			return $returnValue;
+		};
+		$self = $this;
+		$experimentUserManager->expects( $matcher )
+			->method( 'isUserInVariant' )
+			->willReturnCallback( static function ( UserIdentityValue $user, string $variantName ) use (
+				$matcher, $returnCallback, $user1, $user2, $self
+			) {
+				return match ( $matcher->getInvocationCount() ) {
+					1 =>  $returnCallback( $user, $user1, $variantName, false, $self ),
+					2 =>  $returnCallback( $user, $user2, $variantName, true, $self ),
+				};
+			} );
+
+		$lookup = new NewcomerTasksUserOptionsLookup(
+			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
+		);
+		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
+		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
+
+		$config->set( 'GEReviseToneSuggestedEditEnabled', true );
+
+		$lookup = new NewcomerTasksUserOptionsLookup(
+			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
+		);
+		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
+		$this->assertSame( [ 'copyedit', 'revise-tone' ], $lookup->getTaskTypeFilter( $user2 ) );
+	}
+
+	/**
 	 * @covers ::getDefaultTaskTypes
 	 */
 	public function testGetDefaultTaskTypes() {
@@ -176,6 +245,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
+			'GEUseMetricsPlatformExtension' => false,
 		] );
 		$sectionImageTaskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
@@ -211,6 +281,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
+			'GEUseMetricsPlatformExtension' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -231,6 +302,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
 			ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
 			SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+			ReviseToneTaskTypeHandler::TASK_TYPE_ID,
 		];
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
 		$configurationLoader->method( 'getTaskTypes' )->willReturn(

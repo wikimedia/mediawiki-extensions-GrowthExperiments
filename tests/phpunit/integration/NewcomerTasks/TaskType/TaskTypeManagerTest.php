@@ -2,11 +2,14 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\GrowthExperimentsServices;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -46,6 +49,38 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 		$user = $this->createUserWithEdits( 21 );
 		$this->overrideConfigValues( [
 			'GEReviseToneSuggestedEditEnabled' => true,
+			'MetricsPlatformExperiments' => [
+				'name' => 'growthexperiments-revise-tone',
+				'groups' => [
+					'control',
+					'treatment',
+				],
+				// Force the user to be in sampled & in treatment group
+				'sample' => [
+					'rate' => 1,
+				],
+			],
+		] );
+		$this->overrideMwServices( null, [
+			'GrowthExperimentsExperimentUserManager' => static function () {
+				return new class(
+					new ServiceOptions(
+						[ 'GEHomepageDefaultVariant' ],
+						[ 'GEHomepageDefaultVariant' => 'growth-control' ],
+					),
+				) extends AbstractExperimentManager {
+					public function getVariant( UserIdentity $user ): string {
+						return 'growthexperiments-revise-tone_treatment';
+					}
+
+					public function isValidVariant( string $variant ): bool {
+						return true;
+					}
+
+					public function setVariant( UserIdentity $user, string $variant ): void {
+					}
+				};
+			},
 		] );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
 		$this->setMaxEditsTaskIsAvailableInConfig( '20' );

@@ -10,7 +10,8 @@
 	const OLD_LINK_TASK_TYPE = 'links',
 		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
 		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
-		SECTION_IMAGE_RECOMMENDATION_TASK_TYPE = 'section-image-recommendation';
+		SECTION_IMAGE_RECOMMENDATION_TASK_TYPE = 'section-image-recommendation',
+		REVISE_TONE_TASK_TYPE = 'revise-tone';
 
 	/**
 	 * Returns the given task type if it's available, or false if it is not.
@@ -68,6 +69,30 @@
 	}
 
 	/**
+	 * Check whether revise tone recommendations are enabled for the current user.
+	 *
+	 * This is the equivalent of NewcomerTasksUserOptionsLookup::areReviseToneRecommendationsEnabled().
+	 *
+	 * @return {boolean}
+	 */
+	function areReviseToneRecommendationsEnabled() {
+		const config = require( './config.json' ),
+			taskTypes = require( './TaskTypes.json' ),
+			shouldCheckGroupAssigned = mw.config.get( 'wgGEUseMetricsPlatformExtension' ),
+			isReviseToneEnabled = config.GEReviseToneSuggestedEditEnabled &&
+				REVISE_TONE_TASK_TYPE in taskTypes;
+		let assignedGroup = null;
+		// Only check group assigned if experiment manager is xLab's
+		// TODO: remove after experiment is concluded, T407802
+		if ( mw && mw.xLab ) {
+			assignedGroup = mw.xLab.getExperiment( 'growthexperiments-revise-tone' ).getAssignedGroup();
+		}
+		return shouldCheckGroupAssigned ?
+			( assignedGroup === 'treatment' && isReviseToneEnabled ) :
+			isReviseToneEnabled;
+	}
+
+	/**
 	 * Get all task types, removing the ones the current user should not see.
 	 *
 	 * @return {Object} The same task type data, without the task types the user shouldn't see.
@@ -121,6 +146,9 @@
 		}
 		if ( !areSectionImageRecommendationsEnabled() ) {
 			map[ SECTION_IMAGE_RECOMMENDATION_TASK_TYPE ] = false;
+		}
+		if ( !areReviseToneRecommendationsEnabled() ) {
+			map[ REVISE_TONE_TASK_TYPE ] = false;
 		}
 		return map;
 	}

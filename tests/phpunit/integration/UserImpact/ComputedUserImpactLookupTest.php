@@ -21,6 +21,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class ComputedUserImpactLookupTest extends ApiTestCase {
 
 	public function testGetUserImpact_empty() {
+		$this->overrideConfigValue( 'GEReviseToneSuggestedEditEnabled', true );
 		// This is a lazy way of ensuring that the tag exists. Revision 1 is the main page,
 		// created by the installer.
 		$this->getServiceContainer()->getChangeTagsStore()->addTags(
@@ -38,7 +39,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 			array_fill_keys( [
 				'expand', 'links', 'references', 'update', 'copyedit',
 				'image-recommendation', 'section-image-recommendation',
-				'link-recommendation',
+				'link-recommendation', 'revise-tone',
 			], 0 ),
 			$userImpact->getEditCountByTaskType()
 		);

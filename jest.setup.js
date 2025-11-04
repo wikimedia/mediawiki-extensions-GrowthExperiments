@@ -48,6 +48,14 @@ TitleMock.prototype.getMainText = jest.fn();
 TitleMock.prototype.getNameText = jest.fn();
 TitleMock.prototype.getUrl = jest.fn();
 
+const xLabMock = {
+	getExperiment() {
+		return {
+			getAssignedGroup: jest.fn(),
+		};
+	},
+};
+
 // Mock MW object
 const mw = {
 	log: {
@@ -81,6 +89,7 @@ const mw = {
 		getUrl: jest.fn(),
 	},
 	Rest: RestMock,
+	xLab: xLabMock,
 	// other mw properties as needed...
 };
 

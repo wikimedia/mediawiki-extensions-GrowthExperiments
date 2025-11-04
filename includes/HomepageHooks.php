@@ -1167,6 +1167,7 @@ class HomepageHooks implements
 			'GEImageRecommendationsEnabled' => $config->get( 'GENewcomerTasksImageRecommendationsEnabled' ),
 			'GENewcomerTasksSectionImageRecommendationsEnabled' =>
 				$config->get( 'GENewcomerTasksSectionImageRecommendationsEnabled' ),
+			'GEReviseToneSuggestedEditEnabled' => $config->get( 'GEReviseToneSuggestedEditEnabled' ),
 		];
 	}
 
