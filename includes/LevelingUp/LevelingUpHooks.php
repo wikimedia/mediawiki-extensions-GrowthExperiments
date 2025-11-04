@@ -4,6 +4,7 @@ namespace GrowthExperiments\LevelingUp;
 
 use GrowthExperiments\NewcomerTasks\AddALinkMilestonePresentationModel;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\Util;
 use GrowthExperiments\VisualEditorHooks;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\Notifications\AttributeManager;
@@ -56,6 +57,9 @@ class LevelingUpHooks implements
 		array $saveResult,
 		array &$apiResponse
 	): void {
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			return;
+		}
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$pluginFields = array_map(
 			static fn ( $taskTypeId ) => VisualEditorHooks::PLUGIN_PREFIX . $taskTypeId,
