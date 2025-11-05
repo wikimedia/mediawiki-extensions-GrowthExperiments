@@ -17,6 +17,7 @@ use StatusValue;
 class ReviseToneRecommendationProviderTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetReturnsDataFromToneJsonSubpage() {
+		$this->overrideConfigValue( 'GEReviseToneRecommendationProvider', 'subpage' );
 		$pageTitle = 'TestArticle';
 		$toneJson = [
 			'wiki' => 'enwiki',

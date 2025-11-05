@@ -7,7 +7,6 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
-use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use LogicException;
 use MediaWiki\Config\Config;
@@ -26,7 +25,7 @@ class ReviseToneTaskTypeHandler extends StructuredTaskTypeHandler {
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,
-		private readonly SubpageReviseToneRecommendationProvider $recommendationProvider,
+		private readonly RecommendationProvider $recommendationProvider,
 		private readonly Config $mainConfig,
 	) {
 		parent::__construct( $configurationValidator, $titleParser );

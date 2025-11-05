@@ -2969,6 +2969,14 @@
 			"value": "",
 			"description": "Overrides generating the search terms for the ReviseTone task. Should only be set to something other than an empty string in beta or dev. Recommended value on beta: 'hastemplate:peacock_inline'. See ReviseToneTaskTypeHandler::getSearchTerm"
 		},
+		"GEReviseToneServiceUrl": {
+			"description": "Root URL of the internal Revise Tone service (no trailing slash).",
+			"value": false
+		},
+		"GEReviseToneRecommendationProvider": {
+			"description": "Corresponding Recommendation Provider to use for the Revise Tone recommendations; can be 'production' (ApiReviseToneRecommendationProvider), or 'subpage' (SubpageReviseToneRecommendationProvider).",
+			"value": "production"
+		},
 		"GEUseMetricsPlatformExtension": {
 			"description": "MetricsPlatform/xLab as enrollment authority for experiments",
 			"value": false

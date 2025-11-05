@@ -21,6 +21,8 @@ $wgGELinkRecommendationsFrontendEnabled = true;
 
 // FIXME: Used on patch-demo
 $wgGEReviseToneSuggestedEditEnabled = true;
+$wgGEReviseToneRecommendationProvider = 'subpage';
+
 /** EDIT CHECK START */
 $wgVisualEditorEditCheckLoadExperimental = true;
 $wgVisualEditorEditCheckTagging = true;

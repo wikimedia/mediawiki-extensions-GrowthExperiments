@@ -75,6 +75,8 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\NullReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
+use GrowthExperiments\NewcomerTasks\RecommendationProvider;
+use GrowthExperiments\NewcomerTasks\ReviseTone\ApiReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
@@ -908,11 +910,33 @@ return [
 
 	'GrowthExperimentsReviseToneRecommendationProvider' => static function (
 		MediaWikiServices $services
-	): SubpageReviseToneRecommendationProvider {
-		return new SubpageReviseToneRecommendationProvider(
-			$services->getWikiPageFactory(),
-			new NullReviseToneRecommendationProvider()
+	): RecommendationProvider {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$growthConfig = $growthServices->getGrowthConfig();
+		$providerType = $growthConfig->get( 'GEReviseToneRecommendationProvider' );
+		if ( $providerType === 'subpage' ) {
+			return new SubpageReviseToneRecommendationProvider(
+				$services->getWikiPageFactory(),
+				new NullReviseToneRecommendationProvider()
+			);
+		}
+		if ( $providerType === 'production' ) {
+			return new ApiReviseToneRecommendationProvider(
+				$growthConfig->get( 'GEReviseToneServiceUrl' ),
+				WikiMap::getCurrentWikiId(),
+				$services->getTitleFactory(),
+				$services->getHttpRequestFactory(),
+				$growthServices->getLogger(),
+				$services->getStatsFactory(),
+			);
+		}
+		$growthServices->getLogger()->error(
+			'Invalid value for GEReviseToneRecommendationProvider config: {configured_value}',
+			[
+				'configured_value' => $providerType,
+			],
 		);
+		return new NullReviseToneRecommendationProvider();
 	},
 
 	'GrowthExperimentsSectionImageRecommendationSubmissionLogFactory' => static function (
