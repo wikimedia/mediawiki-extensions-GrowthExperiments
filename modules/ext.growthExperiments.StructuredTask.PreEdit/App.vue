@@ -21,26 +21,15 @@
 				</div>
 			</template>
 
-			<!-- Outer container only, no quiz content -->
-			<template #step1>
+			<template
+				v-for="( quiz, index ) in quizData"
+				#[`step${index+1}`]
+				:key="`step${index + 1}`"
+			>
 				<quiz-game
-					v-model:result="quizResults[0]"
-					:data="quizData[0]"
-					@update:result="( newVal ) => quizResults[0] = newVal"
-				></quiz-game>
-			</template>
-			<template #step2>
-				<quiz-game
-					v-model:result="quizResults[1]"
-					:data="quizData[1]"
-					@update:result="( newVal ) => quizResults[1] = newVal"
-				></quiz-game>
-			</template>
-			<template #step3>
-				<quiz-game
-					v-model:result="quizResults[2]"
-					:data="quizData[2]"
-					@update:result="( newVal ) => quizResults[2] = newVal"
+					v-model:result="quizResults[index]"
+					:data="quiz"
+					@update:result="( newVal ) => quizResults[index] = newVal"
 				></quiz-game>
 			</template>
 		</onboarding-dialog>
@@ -73,7 +62,7 @@ module.exports = defineComponent( {
 		const open = ref( true );
 		const isChecked = ref( false );
 		const quizResults = reactive( [] );
-		const totalSteps = 3;
+		const totalSteps = quizData.length;
 		const currentStep = ref( 1 );
 		const stepperLabelText = computed(
 			() => i18n( 'growthexperiments-structuredtask-onboarding-dialog-progress', currentStep.value, totalSteps ).text(),
