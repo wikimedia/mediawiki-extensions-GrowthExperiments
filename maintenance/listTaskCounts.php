@@ -6,6 +6,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
+use GrowthExperiments\Util;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Maintenance\MaintenanceFatalError;
@@ -46,6 +47,10 @@ class ListTaskCounts extends Maintenance {
 	 * @throws MaintenanceFatalError
 	 */
 	public function execute() {
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			$this->output( "Newcomer tasks not available\n" );
+			return;
+		}
 		if ( $this->getConfig()->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
 			$this->output( "Local tasks disabled\n" );
 			return;
