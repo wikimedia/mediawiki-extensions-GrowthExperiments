@@ -1,0 +1,102 @@
+[
+	{
+		"instruction": "growthexperiments-revisetone-onboarding-step1-title",
+		"example": "growthexperiments-revisetone-onboarding-step1-example-sentence",
+		"options": [
+			{
+				"label": "growthexperiments-revisetone-onboarding-step1-answer1"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step1-answer2",
+				"correct": true,
+				"description": "growthexperiments-revisetone-onboarding-step1-explainer"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step1-answer3"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-answer-none"
+			}
+		]
+	},
+	{
+		"instruction": "growthexperiments-revisetone-onboarding-step2-title",
+		"example": "growthexperiments-revisetone-onboarding-step2-example-sentence",
+		"options": [
+			{
+				"label": "growthexperiments-revisetone-onboarding-step2-answer1"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step2-answer2"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step2-answer3"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-answer-none",
+				"correct": true,
+				"description": "growthexperiments-revisetone-onboarding-step2-explainer"
+			}
+		]
+	},
+	{
+		"instruction": "growthexperiments-revisetone-onboarding-step3-title",
+		"example": "growthexperiments-revisetone-onboarding-step3-example-sentence",
+		"options": [
+			{
+				"label": "growthexperiments-revisetone-onboarding-step3-answer1"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step3-answer2",
+				"correct": true,
+				"description": "growthexperiments-revisetone-onboarding-step3-explainer"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step3-answer3"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-answer-none"
+			}
+		]
+	},
+	{
+		"instruction": "growthexperiments-revisetone-onboarding-step4-title",
+		"example": "growthexperiments-revisetone-onboarding-step4-example-sentence",
+		"options": [
+			{
+				"label": "growthexperiments-revisetone-onboarding-step4-answer1",
+				"correct": true,
+				"description": "growthexperiments-revisetone-onboarding-step4-explainer"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step4-answer2"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step4-answer3"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-answer-none"
+			}
+		]
+	},
+	{
+		"instruction": "growthexperiments-revisetone-onboarding-step5-title",
+		"example": "growthexperiments-revisetone-onboarding-step5-example-sentence",
+		"options": [
+			{
+				"label": "growthexperiments-revisetone-onboarding-step5-answer1"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step5-answer2"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-step5-answer3",
+				"correct": true,
+				"description": "growthexperiments-revisetone-onboarding-step5-explainer"
+			},
+			{
+				"label": "growthexperiments-revisetone-onboarding-answer-none"
+			}
+		]
+	}
+]

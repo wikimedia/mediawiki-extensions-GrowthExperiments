@@ -14,9 +14,12 @@
 	>
 		<template #title>
 			<div
-				v-i18n-html:growthexperiments-revisetone-onboarding-dialog-title-label="[ userName ]"
 				class="ext-growthExperiments-ReviseToneOnboarding__title"
 			>
+				<span>{{ $i18n( 'growthexperiments-revisetone-onboarding-introduction' ).text() }}</span>
+				<b>
+					{{ renderedInstructions }}
+				</b>
 			</div>
 		</template>
 
@@ -37,8 +40,7 @@
 <script>
 const OnboardingDialog = require( '../common/OnboardingDialog.vue' );
 const QuizGame = require( './QuizGame.vue' );
-// FIXME data should come from static variable, config?
-const quizData = require( './__mocks__/quizsData.json' );
+const quizData = require( './quizData.json' );
 const { computed, defineComponent, inject, ref, reactive } = require( 'vue' );
 
 // @vue/component
@@ -54,7 +56,6 @@ module.exports = defineComponent( {
 	setup( props ) {
 		const i18n = inject( 'i18n' );
 		const Api = inject( 'mw.Api' );
-		const mwUser = inject( 'mw.user' );
 		const mwHook = inject( 'mw.hook' );
 		const open = ref( true );
 		const isChecked = ref( false );
@@ -67,6 +68,9 @@ module.exports = defineComponent( {
 		const onStepChange = ( newVal ) => {
 			currentStep.value = newVal;
 		};
+		const renderedInstructions = computed(
+			() => i18n( quizData[ currentStep.value - 1 ].instruction ).text(),
+		);
 		const saveDismissed = () => new Api().saveOption( props.prefName, isChecked.value ? '1' : '0' );
 		const reset = () => {
 			// Reset each game result in the rare case the dialog is re-opened
@@ -79,13 +83,13 @@ module.exports = defineComponent( {
 		return {
 			isChecked,
 			onStepChange,
+			renderedInstructions,
 			open,
 			quizData,
 			quizResults,
 			reset,
 			stepperLabelText,
 			totalSteps,
-			userName: mwUser.getName(),
 		};
 	},
 } );

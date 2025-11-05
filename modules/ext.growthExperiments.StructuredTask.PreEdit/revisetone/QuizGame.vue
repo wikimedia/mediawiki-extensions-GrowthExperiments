@@ -1,14 +1,18 @@
 <template>
 	<div class="ext-growthExperiments-QuizGame">
 		<div class="ext-growthExperiments-QuizGame__introduction">
-			<i>{{ $i18n( 'growthexperiments-revisetone-quiz-game-example-title-label' ).text() }}</i>
+			<i class="ext-growthExperiments-QuizGame__introduction__label">
+				{{ $i18n( 'growthexperiments-revisetone-onboarding-example-label' ).text() }}
+			</i>
 			<div class="ext-growthExperiments-QuizGame__introduction__example">
-				{{ data.example }}
+				<i>
+					{{ renderedExampleSentence }}
+				</i>
 			</div>
 		</div>
 		<div class="ext-growthExperiments-QuizGame__pills">
 			<span class="ext-growthExperiments-QuizGame__pills__question">
-				{{ $i18n( 'growthexperiments-revisetone-quiz-game-prompt-label' ).text() }}
+				{{ $i18n( 'growthexperiments-revisetone-onboarding-main-prompt' ).text() }}
 			</span>
 			<quiz-pill
 				v-for="( option, index ) in quizOptions"
@@ -23,7 +27,7 @@
 </template>
 
 <script>
-const { defineComponent, toRef } = require( 'vue' );
+const { defineComponent, toRef, inject } = require( 'vue' );
 const { useModelWrapper } = require( '@wikimedia/codex' );
 const QuizPill = require( './QuizPill.vue' );
 // @vue/component
@@ -51,7 +55,11 @@ module.exports = exports = defineComponent( {
 			wrappedResult.value = optionLabel;
 		};
 
+		const i18n = inject( 'i18n' );
+		const renderedExampleSentence = i18n( props.data.example ).text();
+
 		return {
+			renderedExampleSentence,
 			quizOptions: props.data.options,
 			onPillClick,
 			wrappedResult,
@@ -77,7 +85,7 @@ module.exports = exports = defineComponent( {
       line-height: @line-height-medium;
     }
 
-    i {
+    &__label {
       color: @color-subtle;
     }
   }

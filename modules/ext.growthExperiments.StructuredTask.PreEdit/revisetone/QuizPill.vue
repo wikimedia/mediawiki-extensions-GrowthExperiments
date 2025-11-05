@@ -21,20 +21,14 @@
 				:number="iconNumber"
 			></number-icon>
 			<div class="ext-growthExperiments-ReviseTone-QuizPill-Pill__content">
-				{{ label }}
+				{{ renderedLabel }}
 			</div>
 		</div>
 		<div
 			v-if="computedStatus === 'correct' && description"
+			v-i18n-html="description"
 			class="ext-growthExperiments-ReviseTone-QuizPill-Description"
 		>
-			{{ description }}
-			<a
-				v-if="link.href"
-				:href="link.href"
-				class="cdx-learn-more-link">
-				{{ link.label }}
-			</a>
 		</div>
 	</div>
 </template>
@@ -85,10 +79,6 @@ module.exports = exports = defineComponent( {
 			type: String,
 			default: '',
 		},
-		link: {
-			type: [ Object, null ],
-			default: null,
-		},
 	},
 	emits: [ 'click' ],
 	setup( props, ctx ) {
@@ -127,12 +117,15 @@ module.exports = exports = defineComponent( {
 			[ pillStatusCls.value ]: true,
 			'ext-growthExperiments-ReviseTone-QuizPill-Pill--not-interactable': !!props.reveal,
 		} ) );
+		const i18n = inject( 'i18n' );
+		const renderedLabel = i18n( props.label ).text();
 		return {
 			classObject,
 			computedStatus,
 			icon,
 			lang,
 			onPillClick,
+			renderedLabel,
 		};
 	},
 } );
