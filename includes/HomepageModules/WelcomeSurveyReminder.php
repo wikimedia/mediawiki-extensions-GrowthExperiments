@@ -126,7 +126,7 @@ class WelcomeSurveyReminder extends BaseModule {
 			'name' => 'token',
 			'value' => $this->getContext()->getCsrfTokenSet()->getToken( 'welcomesurvey' ),
 		] );
-		$disableForm = HTML::rawElement( 'form', [
+		$disableForm = Html::rawElement( 'form', [
 			'action' => $noJsSkipUrl,
 			'method' => 'POST',
 		], $disableButton . $disableToken );
