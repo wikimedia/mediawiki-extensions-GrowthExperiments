@@ -10,7 +10,6 @@
 	"scripts": {
 		"fix": [
 			"minus-x fix .",
-			"@phpcbf",
 			"phpcbf"
 		],
 		"test": [
