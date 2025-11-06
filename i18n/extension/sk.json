@@ -25,5 +25,6 @@
 	"growthexperiments-edit-config-help-panel-description": "Das Hilfefeld kann in jedem Namensraum im Lese- oder Bearbeitungsmodus verfügbar sein, wie unten konfiguriert. Es bietet die Möglichkeit, nach Hilfe zu suchen, auf Hilfe-Links zu klicken und Fragen entweder an Lotsinnen/Lotsen oder an den Helpdesk zu stellen.",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Namensräume, in denen das Hilfefeld im Lesemodus verfügbar ist",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Namensräume, bei denen das Hilfefeld sowohl im Lese- als auch im Bearbeitungsmodus deaktiviert ist",
+	"specialpages-group-growth-tools": "Funkcie pre podporu nováčikov (Growth)",
 	"communityconfiguration-growthsuggestededits-links-label": "Pridanie odkazov medzi článkami"
 }
