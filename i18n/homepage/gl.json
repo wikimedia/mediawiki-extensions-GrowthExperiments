@@ -392,7 +392,7 @@
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Engade ligazóns a conceptos sobre os que un lector poida querer aprender máis.</li><li>Asegúrate de que a ligazón vai ao artigo correcto.</li><li>Non engadas ligazóns en palabras comúns, anos ou datas.</li><li>Se non estás {{GENDER:$1|seguro|segura}}, non engadas a ligazón.</li>",
 	"growthexperiments-addlink-onboarding-content-linking-image-alt-text": "Ilustración da oración dun artigo que amosa suxestións de ligazóns para dúas palabras diferentes. Xunto á suxestión hai unha icona de verificación azul e a icona dunha cruz vermella para as opcións de aceptar ou rexeitar a suxestión.",
 	"growthexperiments-revisetone-onboarding-dialog-title-label": "BORRADOR: <span>Antes de {{GENDER:$1|comezares}}, pon a proba as túas habilidades.</span> <strong>Identifica as palabras demasiado positivas.</strong>",
-	"growthexperiments-revisetone-onboarding-dialog-skip-label": "BORRADOR: Xa o sei",
+	"growthexperiments-revisetone-onboarding-dialog-skip-label": "BORRADOR: Xa o {{GENDER:|sei}}",
 	"growthexperiments-revisetone-quiz-game-example-title-label": "BORRADOR: Exemplo",
 	"growthexperiments-revisetone-quiz-game-prompt-label": "BORRADOR: Cal das palabras precisa revisión?",
 	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "Saltar todo",
