@@ -68,6 +68,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Статус менторства",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Активан",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Одсутан",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Пошто сте одсутни до $1 Ваше новајлије ће привремено бити додељени другим менторима.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Одсутни сте?",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Откажи",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Паузирај",
