@@ -171,12 +171,12 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 				}
 			} else {
 				// FIXME we should probably ignore unknown types of suggestions once the API is more stable
-				$source = [
+				$source = match ( $taskType->getId() ) {
 					ImageRecommendationTaskTypeHandler::TASK_TYPE_ID
 						=> ImageRecommendationImage::SOURCE_WIKIDATA,
 					SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID
 						=> ImageRecommendationImage::SOURCE_WIKIDATA_SECTION_TOPICS,
-				][ $taskType->getId()];
+				};
 			}
 
 			$imageData[] = new ImageRecommendationData(

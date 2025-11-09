@@ -47,10 +47,10 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 		$userOptionsLookupMock->method( 'getOption' )
 			->with( $this->anything(), VariantHooks::USER_PREFERENCE )
 			->willReturnCallback( static function ( UserIdentity $user, string $optionName ) {
-				return [
+				return match ( $user->getId() ) {
 					1 => VariantHooks::VARIANT_CONTROL,
 					2 => VariantHooks::VARIANT_CONTROL,
-				][$user->getId()];
+				};
 			} );
 		$experimentUserManager = $this->getExperimentUserManager(
 			new ServiceOptions(
