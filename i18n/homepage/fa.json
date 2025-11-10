@@ -396,8 +396,6 @@
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "رهنمودها",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>مفهوم‌هایی را که ممکن است خواننده بخواهد دربارۀ آنها بیشتر بیاموزد پیوند دهید.</li><li>مطمئن شوید که پیوند به مقالهٔ درست هدایت می‌شود.</li><li>واژگان بدیهی، سال‌ها یا تاریخ‌ها را پیوند ندهید.</li><li>اگر {{GENDER:$1|مطمئن نیستید}}، از آن صرف نظر کنید.</li>",
 	"growthexperiments-revisetone-onboarding-dialog-skip-label": "پیش‌نویس: من این را از پیش می‌دانم",
-	"growthexperiments-revisetone-quiz-game-example-title-label": "پیش‌نویس: نمونه",
-	"growthexperiments-revisetone-quiz-game-prompt-label": "پیش‌نویس: کدام واژه نیاز به بازبینی دارد؟",
 	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "رد کردن همه",
 	"growthexperiments-structuredtask-onboarding-dialog-title": "معرفی",
 	"growthexperiments-structuredtask-onboarding-dialog-progress": "$1 از $2",

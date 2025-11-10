@@ -76,7 +76,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|rievdadus|rievdadusa}} $2",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Čájeheamit artihkkaliin maid {{GENDER:|don}} leat rievdadan",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Čájeheamit rievdaduvvon artihkkaliin",
-	"growthexperiments-homepage-impact-scores-edit-count": "{{PLURAL|1=1 rievdadus|rievdadusa}} (oktiibuot)",
+	"growthexperiments-homepage-impact-scores-edit-count": "rievdadusa (oktiibuot)",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Máhcahuvvon rievdadusat",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Giittosat ollen",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Eambbo dieđuid das movt giitiin doaibmá",

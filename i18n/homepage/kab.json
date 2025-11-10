@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"ButterflyOfFire",
 			"K Messaoudi"
 		]
 	},
-	"growthexperiments-homepage-suggestededits-footer": "Iseqdacen-nniḍen gren tamawt dakken imagraden-a sran amahil. Mudd-d tallelt iwakken ad igerrez \"'{{SITENAME}}'\" i \"'$1 n yimeɣriyen'\"-is yal ass."
+	"growthexperiments-homepage-suggestededits-footer": "Iseqdacen-nniḍen gren tamawt dakken imagraden-a sran amahil. Mudd-d tallelt iwakken ad igerrez \"'{{SITENAME}}'\" i \"'$1 n yimeɣriyen'\"-is yal ass.",
+	"growthexperiments-revisetone-onboarding-example-label": "Amedya",
+	"growthexperiments-revisetone-onboarding-step3-answer3": "amaynut"
 }

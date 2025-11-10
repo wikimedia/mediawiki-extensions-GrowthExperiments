@@ -127,7 +127,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-info-par1": "خپل لارزدکړي ته د هغوی د خبرو اترو مخ کې يو هڅوونکی پيغام ولېږه.",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-par2": "د نوي‌راغلي کارنانو سمون چارې ډېری کله هغه وخت زياتېږي چې کله دوی له ماهره کارنانو يا لارښود نه مننه يا نور مثبت پيغامونه ترلاسه کړي.",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-par3": "{{GENDER:|تاسو}} کولی شئ خپل تلواله پيغام په اوڼنو کې ځانواله کړئ.",
-	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "<strong>معيار</strong>: په {{PLURAL|تېره|تېرو}} $2 {{PLURAL:$2|ورځ|ورځو}} کې $1 {{PLURAL:$1|سمون|سمونونه}}. دا شمارنې په اوڼنو کې سمې کړئ.",
+	"growthexperiments-mentor-dashboard-personalized-praise-metrics": "<strong>معيار</strong>: په {{PLURAL:$1|تېره|تېرو}} $2 {{PLURAL:$2|ورځ|ورځو}} کې $1 {{PLURAL:$1|سمون|سمونونه}}. دا شمارنې په اوڼنو کې سمې کړئ.",
 	"growthexperiments-mentor-dashboard-personalized-praise-empty-state-footer": "ستاينې وړ لارزدکړي به دلته وښودل شي.",
 	"growthexperiments-mentor-dashboard-personalized-praise-talk-topics": "$1 خبرو اترو سکالو",
 	"growthexperiments-mentor-dashboard-personalized-praise-page-counter": "$1 د $2 ستاينې وړ {{PLURAL:$2|لارزدکړی دی|لارزدکړي دي}}",

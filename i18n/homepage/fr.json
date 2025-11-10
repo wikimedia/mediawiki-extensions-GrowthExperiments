@@ -437,7 +437,6 @@
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Lignes directrices",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Liez des concepts aux sujets desquels un lecteur pourrait vouloir en savoir plus.</li><li>Assurez-vous que le lien mène vers le bon article.</li><li>Ne liez pas les mots courants, les années ou les dates.</li><li>Si vous n’êtes pas {{GENDER:$1|sûr|sûre}}, ignorez la suggestion et passez à la suivante.</li>",
 	"growthexperiments-addlink-onboarding-content-linking-image-alt-text": "Illustration d’une phrase d’article montrant des suggestions de liens pour deux mots différents. À côté de la suggestion, il y a une icône de coche bleue et une icône de croix rouge pour les options permettant d’accepter ou de rejeter la suggestion.",
-	"growthexperiments-revisetone-quiz-game-prompt-label": "BROUILLON : Quel mot nécessite une révision ?",
 	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "Passer tout",
 	"growthexperiments-structuredtask-onboarding-dialog-title": "Introduction",
 	"growthexperiments-structuredtask-onboarding-dialog-progress": "$1 sur $2",
