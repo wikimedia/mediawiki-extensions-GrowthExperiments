@@ -58,11 +58,7 @@ class ReviseToneRecommendationProviderTest extends MediaWikiIntegrationTestCase 
 		}
 
 		$recArray = $recs->toArray();
-		$this->assertSame( $toneJson['wiki'], $recArray['toneData']['wiki'] );
-		$this->assertSame( $toneJson['article_id'], $recArray['toneData']['article_id'] );
-		$this->assertSame( $toneJson['revision_id'], $recArray['toneData']['revision_id'] );
-		$this->assertSame( $toneJson['text'], $recArray['toneData']['text'] );
-		$this->assertEquals( $toneJson['prediction'], $recArray['toneData']['prediction'] );
+		$this->assertSame( $toneJson['text'], $recArray['paragraphText'] );
 	}
 
 }

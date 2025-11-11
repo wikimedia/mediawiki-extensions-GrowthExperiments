@@ -32,7 +32,7 @@ class SubpageReviseToneRecommendationProvider extends SubpageRecommendationProvi
 		array $data,
 		array $suggestionFilters = []
 	): ReviseToneRecommendation|StatusValue {
-		return new ReviseToneRecommendation( $title, $data );
+		return new ReviseToneRecommendation( $title, $data['text'] );
 	}
 
 }

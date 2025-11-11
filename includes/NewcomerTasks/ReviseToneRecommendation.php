@@ -4,16 +4,11 @@ namespace GrowthExperiments\NewcomerTasks;
 use MediaWiki\Linker\LinkTarget;
 
 class ReviseToneRecommendation implements Recommendation {
-	private LinkTarget $title;
-	private array $toneData;
 
-	public function __construct( LinkTarget $title, array $toneData ) {
-		$this->title = $title;
-		$this->toneData = $toneData;
-	}
-
-	public function getToneData(): array {
-		return $this->toneData;
+	public function __construct(
+		private readonly LinkTarget $title,
+		private readonly string $paragraphText
+	) {
 	}
 
 	public function getTitle(): LinkTarget {
@@ -23,7 +18,7 @@ class ReviseToneRecommendation implements Recommendation {
 	public function toArray(): array {
 		return [
 			'title' => $this->title->getText(),
-			'toneData' => $this->toneData,
+			'paragraphText' => $this->paragraphText,
 		];
 	}
 }

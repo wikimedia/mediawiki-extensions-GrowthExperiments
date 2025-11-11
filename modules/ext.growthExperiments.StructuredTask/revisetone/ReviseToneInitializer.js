@@ -74,7 +74,7 @@ class ReviseToneInitializer {
 		// TODO: add tracking for similarity score and second-highest similarity score
 
 		const bestMatch = simpleLevenshtein.findBestMatch(
-			this.taskData.toneData.text,
+			this.taskData.paragraphText,
 			branchNodesWithTextFromVE.map( ( p ) => p.text ),
 		);
 
