@@ -5,5 +5,7 @@
 		]
 	},
 	"apierror-growthexperiments-addlink-handler-notfound": "Linkkiehdotustietuetta ei löytynyt",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "Odottamattomia linkkiehdotusten kohteita: $1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Odottamattomia linkkiehdotusten kohteita: $1",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "<var>editRevId</var>-parametrissa annettua versiota ei löytynyt.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "<var>editRevId</var>-parametrissa annettua versio kuuluu toiselle sivulle."
 }
