@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\ReviseTone\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\MediaWikiServices;
@@ -11,10 +11,10 @@ use MediaWikiIntegrationTestCase;
 use StatusValue;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager
+ * @covers \GrowthExperiments\NewcomerTasks\ReviseTone\SubpageReviseToneRecommendationProvider
  * @group Database
  */
-class ReviseToneRecommendationProviderTest extends MediaWikiIntegrationTestCase {
+class SubpageReviseToneRecommendationProviderTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetReturnsDataFromToneJsonSubpage() {
 		$this->overrideConfigValue( 'GEReviseToneRecommendationProvider', 'subpage' );

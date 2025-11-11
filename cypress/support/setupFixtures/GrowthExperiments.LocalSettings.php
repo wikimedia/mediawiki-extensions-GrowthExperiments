@@ -3,15 +3,15 @@
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddImage\SubpageImageRecommendationProvider;
-use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\ReviseTone\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\TitleValue;

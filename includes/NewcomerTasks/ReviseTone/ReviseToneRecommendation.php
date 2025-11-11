@@ -1,6 +1,7 @@
 <?php
-namespace GrowthExperiments\NewcomerTasks;
+namespace GrowthExperiments\NewcomerTasks\ReviseTone;
 
+use GrowthExperiments\NewcomerTasks\Recommendation;
 use MediaWiki\Linker\LinkTarget;
 
 class ReviseToneRecommendation implements Recommendation {

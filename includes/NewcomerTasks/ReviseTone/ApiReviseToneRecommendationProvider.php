@@ -6,7 +6,6 @@ namespace GrowthExperiments\NewcomerTasks\ReviseTone;
 
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
-use GrowthExperiments\NewcomerTasks\ReviseToneRecommendation;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Http\HttpRequestFactory;

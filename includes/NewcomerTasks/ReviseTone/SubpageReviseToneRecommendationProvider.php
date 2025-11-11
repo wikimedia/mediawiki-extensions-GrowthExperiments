@@ -1,7 +1,8 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks;
+namespace GrowthExperiments\NewcomerTasks\ReviseTone;
 
+use GrowthExperiments\NewcomerTasks\SubpageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Title\Title;

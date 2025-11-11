@@ -1,7 +1,8 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks;
+namespace GrowthExperiments\NewcomerTasks\ReviseTone;
 
+use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Linker\LinkTarget;
 use StatusValue;

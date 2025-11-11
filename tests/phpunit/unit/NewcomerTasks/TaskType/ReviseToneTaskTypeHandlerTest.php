@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
-use GrowthExperiments\NewcomerTasks\SubpageReviseToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\ReviseTone\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
