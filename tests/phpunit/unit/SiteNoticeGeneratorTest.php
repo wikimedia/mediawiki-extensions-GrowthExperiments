@@ -322,8 +322,9 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 */
 	private function getSkinMock( $class = Skin::class ) {
 		$outputMock = $this->createMock( OutputPage::class );
-		$outputMock->method( 'msg' )
-			->willReturnCallback( fn ( $key ) => $this->getMockMessage( $key ) );
+		$outputMock->method( 'msg' )->willReturnCallback(
+			fn ( $k, ...$p ) => $this->getMockMessage( $k, $p )
+		);
 
 		$userMock = $this->createNoOpMock( User::class, [ 'getId', 'getName' ] );
 		// This will make user settings update job fail, but we don't care about that.
