@@ -282,7 +282,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Şəkilsiz məqaləyə şəkil əlavə et",
 	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Məqalə bölməsinə şəkil əlavə edin",
 	"growthexperiments-homepage-suggestededits-tasktype-name-revise-tone": "Tonun yoxlanılması",
-	"growthexperiments-homepage-suggestededits-tasktype-description-revise-tone": "Təbliğat kimi səslənən və şəxsi fikrə əsaslanan dili oxucuların dəqiq məlumat üçün etibar edə biləcəyi sadə faktlarla əvəz etməklə Vikipediyanın etibarlı qalmasına kömək edin.<br>Ton təkmilləşdirmələri maşın tərəfindən təklif olunur və siz onları məqaləyə tətbiq edib-etməmək barədə qərar verəcəksiniz.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-revise-tone": "Təbliğat və şəxsi fikirdən ibarət məzmunu balanslaşdırılmış məzmunla əvəz etməklə oxuculara etibarlı məlumat əldə etməyə kömək edin. Ton təkmilləşdirmələri [https://www.mediawiki.org/wiki/Edit_check/Tone_Check#Model maşın tərəfindən təklif olunur] və hər biri üçün müvafiq qərarlar verirsiniz.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-revise-tone": "Təbliğata bənzər sözləri silməklə məqalələri daha faktiki edin",
 	"growthexperiments-homepage-suggestededits-tasktype-time-revise-tone": "5 - 10 dəqiqə",
 	"growthexperiments-homepage-suggestededits-tasktype-label-revise-tone": "Tonu yoxla",

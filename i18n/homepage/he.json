@@ -294,7 +294,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "הוספת תמונה לערך לא מאויר",
 	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "הוספת תמונה לפרק של ערך",
 	"growthexperiments-homepage-suggestededits-tasktype-name-revise-tone": "שכתוב נימה",
-	"growthexperiments-homepage-suggestededits-tasktype-description-revise-tone": "{{GENDER:|עזור|עזרי}} לוויקיפדיה להישאר אמינה על־ידי החלפת מילים שאופייניות לקידום ולסכנון דעתני בעובדות פשוטות שהקוראים יכולים לסמוך עליהן לקבלת מידע מדויק.<br>שיפורי הנימה מוצעים על־ידי מכונה, {{GENDER:|ואתה תחליט|ואת תחליטי}} אם להחיל אותם על הערך.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-revise-tone": "{{GENDER:|עזור|עזרי}} לקוראים לגשת למידע אמין על־ידי החלפת מילים שאופייניות לקידום ולסכנון דעתני בתוכן מאוזן. שיפורי נימה [https://www.mediawiki.org/wiki/Edit_check/Tone_Check#Model מוצעים על־ידי מכונה], והאחריותך שלך היא להחליט האם לתקן או לדחות כל אחד מהם.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-revise-tone": "העלאת רמת העובדתיות של הערכים באמצעות הסרת מילים שאופייניות לקידום",
 	"growthexperiments-homepage-suggestededits-tasktype-time-revise-tone": "5–10 דקות",
 	"growthexperiments-homepage-suggestededits-tasktype-label-revise-tone": "שכתוב נימה",
