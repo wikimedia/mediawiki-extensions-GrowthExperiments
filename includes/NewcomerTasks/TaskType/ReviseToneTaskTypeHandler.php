@@ -22,6 +22,9 @@ class ReviseToneTaskTypeHandler extends StructuredTaskTypeHandler {
 
 	public const CHANGE_TAG = 'newcomer task revise tone';
 
+	/** The tag prefix used for CirrusSearch WeightedTags. */
+	public const WEIGHTED_TAG_PREFIX = 'recommendation.tone';
+
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,

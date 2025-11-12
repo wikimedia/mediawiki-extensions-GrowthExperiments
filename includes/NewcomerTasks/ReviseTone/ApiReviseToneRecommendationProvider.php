@@ -25,6 +25,7 @@ class ApiReviseToneRecommendationProvider implements RecommendationProvider {
 		private readonly string $wikiId,
 		private readonly TitleFactory $titleFactory,
 		private readonly HttpRequestFactory $httpRequestFactory,
+		private readonly ReviseToneWeightedTagManager $weightedTagsManager,
 		private readonly LoggerInterface $logger,
 		StatsFactory $statsFactory,
 	) {
@@ -87,7 +88,7 @@ class ApiReviseToneRecommendationProvider implements RecommendationProvider {
 			$requestCounter
 				->setLabel( 'status', 'no_suggestions' )
 				->increment();
-			// TODO: trigger clearing weighted tag for page here (T407538)
+			$this->weightedTagsManager->deletePageReviseToneWeightedTag( $articleTitle->toPageIdentity() );
 			return StatusValue::newFatal( 'rawmessage', 'No tone suggestions found from API' );
 		}
 		$requestCounter

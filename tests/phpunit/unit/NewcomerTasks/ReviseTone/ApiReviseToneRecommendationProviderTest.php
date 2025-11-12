@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\ReviseTone\ApiReviseToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\ReviseTone\ReviseToneWeightedTagManager;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use MediaWiki\Http\HttpRequestFactory;
@@ -78,11 +79,13 @@ class ApiReviseToneRecommendationProviderTest extends MediaWikiUnitTestCase {
 			'execute' => StatusValue::newGood(),
 			'getContent' => json_encode( $apiResponse ),
 		] ) );
+		$reviseToneWeightedTagManagerMock = $this->createMock( ReviseToneWeightedTagManager::class );
 		$sut = new ApiReviseToneRecommendationProvider(
 			'https://example.com',
 			'testwiki',
 			$titleFactoryMock,
 			$httpRequestFactoryMock,
+			$reviseToneWeightedTagManagerMock,
 			new NullLogger(),
 			StatsFactory::newUnitTestingHelper()->getStatsFactory(),
 		);

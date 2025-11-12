@@ -78,6 +78,7 @@ use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ReviseTone\ApiReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ReviseTone\NullReviseToneRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\ReviseTone\ReviseToneWeightedTagManager;
 use GrowthExperiments\NewcomerTasks\ReviseTone\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
@@ -941,6 +942,7 @@ return [
 				WikiMap::getCurrentWikiId(),
 				$services->getTitleFactory(),
 				$services->getHttpRequestFactory(),
+				$growthServices->getReviseToneWeightedTagManager(),
 				$growthServices->getLogger(),
 				$services->getStatsFactory(),
 			);
@@ -952,6 +954,22 @@ return [
 			],
 		);
 		return new NullReviseToneRecommendationProvider();
+	},
+
+	'GrowthExperimentsReviseToneWeightedTagManager' => static function (
+		MediaWikiServices $services
+	): ReviseToneWeightedTagManager {
+		if ( $services->getExtensionRegistry()->isLoaded( 'CirrusSearch' ) ) {
+			$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+			$weightedTagsUpdater = $cirrusSearchServices->getWeightedTagsUpdater();
+		} else {
+			$weightedTagsUpdater = null;
+		}
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new ReviseToneWeightedTagManager(
+			$weightedTagsUpdater,
+			$growthServices->getLogger(),
+		);
 	},
 
 	'GrowthExperimentsSectionImageRecommendationSubmissionLogFactory' => static function (

@@ -57,6 +57,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
+use GrowthExperiments\NewcomerTasks\ReviseTone\ReviseToneWeightedTagManager;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
@@ -386,6 +387,10 @@ class GrowthExperimentsServices {
 
 	public function getReviseToneExperimentInteractionLogger(): ReviseToneExperimentInteractionLogger {
 		return $this->coreServices->get( 'GrowthExperimentsReviseToneExperimentInteractionLogger' );
+	}
+
+	public function getReviseToneWeightedTagManager(): ReviseToneWeightedTagManager {
+		return $this->coreServices->get( 'GrowthExperimentsReviseToneWeightedTagManager' );
 	}
 
 }
