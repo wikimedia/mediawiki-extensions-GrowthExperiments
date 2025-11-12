@@ -1,40 +1,38 @@
 <template>
 	<section class="ext-growthExperiments-MenteeOverview">
-		<div class="ext-growthExperiments-MenteeOverview__info-button-wrapper">
-			<cdx-toggle-button
-				ref="infoToggleButton"
-				v-model="showPopover"
-				:aria-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' ).text()"
-				:quiet="true"
-				class="ext-growthExperiments-MenteeOverview__info-button"
-			>
-				<cdx-icon
-					:icon="cdxIconInfo"
-				></cdx-icon>
-			</cdx-toggle-button>
-			<!--
-				CdxPopover uses the floating-ui library in a way that causes infinite recursion when
-				mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
-				is provided, because vue-test-utils is unable to stringify the HTML element held within
-				the ref. Work around the situation by using shallow rendering in tests and use a well-known
-				window name to avoid passing the anchor in this case.
-			-->
-			<cdx-popover
-				v-model:open="showPopover"
-				:anchor="windowName !== 'MenteeOverviewJestTests' ? infoToggleButton : null"
-				placement="bottom-start"
-				:render-in-place="true"
-				:title="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ).text()"
-				:use-close-button="true"
+		<cdx-toggle-button
+			ref="infoToggleButton"
+			v-model="showPopover"
+			:aria-label="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-icon-label' ).text()"
+			:quiet="true"
+			class="ext-growthExperiments-MenteeOverview__info-button"
+		>
+			<cdx-icon
 				:icon="cdxIconInfo"
-			>
-				<div class="ext-growthExperiments-MenteeOverview__info-content">
-					<p v-i18n-html="'growthexperiments-mentor-dashboard-mentee-overview-info-text'">
-					</p>
-					<legend-box v-if="legendItems.length" :items="legendItems"></legend-box>
-				</div>
-			</cdx-popover>
-		</div>
+			></cdx-icon>
+		</cdx-toggle-button>
+		<!--
+			CdxPopover uses the floating-ui library in a way that causes infinite recursion when
+			mounted in JSDOM. Shallow rendering the component in turn fails if an anchor reference
+			is provided, because vue-test-utils is unable to stringify the HTML element held within
+			the ref. Work around the situation by using shallow rendering in tests and use a well-known
+			window name to avoid passing the anchor in this case.
+		-->
+		<cdx-popover
+			v-model:open="showPopover"
+			:anchor="windowName !== 'MenteeOverviewJestTests' ? infoToggleButton : null"
+			placement="bottom-start"
+			:render-in-place="true"
+			:title="$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ).text()"
+			:use-close-button="true"
+			:icon="cdxIconInfo"
+		>
+			<div class="ext-growthExperiments-MenteeOverview__info-content">
+				<p v-i18n-html="'growthexperiments-mentor-dashboard-mentee-overview-info-text'">
+				</p>
+				<legend-box v-if="legendItems.length" :items="legendItems"></legend-box>
+			</div>
+		</cdx-popover>
 		<div class="ext-growthExperiments-MenteeOverview__actions">
 			<mentee-filters
 				:data="filters"
@@ -330,22 +328,12 @@ module.exports = exports = {
 	container-type: inline-size;
 
 	&__info-button {
-		.codex-icon-only-button( @color-subtle, 24px);
-		// HACK Since the module heading is rendered in the server,
-		// aproximately align the "i" icon with the heading text
-		// in the vertical axis and to the right hand padding.
+		.codex-icon-only-button(@color-subtle, 24px);
+		margin-top: @spacing-50;
+		margin-right: @spacing-50;
 		position: absolute;
-		top: @spacing-50 * -9;
-		right: @spacing-50 * -1;
-
-		/* stylelint-disable-next-line selector-class-pattern */
-		.skin-minerva & {
-			top: @spacing-50 * -15;
-		}
-
-		&-wrapper {
-			position: relative;
-		}
+		top: 0;
+		right: 0;
 	}
 
 	&__info-content {
@@ -355,11 +343,15 @@ module.exports = exports = {
 	&__actions {
 		display: flex;
 		justify-content: space-between;
-		padding: 8px 0;
+		align-items: center;
+		align-self: stretch;
+		gap: @spacing-75;
+		padding: @spacing-50 0 @spacing-75 0;
 
 		&__search {
 			display: flex;
 			justify-content: flex-end;
+			max-width: @size-1600;
 		}
 	}
 
@@ -371,4 +363,28 @@ module.exports = exports = {
 		padding: 93px 40px 151px;
 	}
 }
+
+/* stylelint-disable-next-line selector-class-pattern */
+.skin-minerva {
+	.ext-growthExperiments-MenteeOverview {
+		// Override Minerva's default top margin for `.content table` elements
+		table {
+			margin-top: 0;
+		}
+
+		&__actions {
+			.ext-growthExperiments-MenteeFilters {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			&__search {
+				align-items: center;
+				flex: 1 0 0;
+			}
+		}
+	}
+}
+
 </style>

@@ -401,7 +401,7 @@ abstract class DashboardModule implements IDashboardModule {
 	protected function getSubheaderTextElement() {
 		$text = $this->getSubheaderText();
 		return $text ? Html::element(
-			'div',
+			'span',
 			[ 'class' => static::BASE_CSS_CLASS . '-subheader-text' ],
 			$text
 		) : '';

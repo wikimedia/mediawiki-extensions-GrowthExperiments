@@ -1,4 +1,6 @@
 @import 'mediawiki.mixins';
+@import 'mediawiki.skin.variables.less';
+@import 'mediawiki.skin.defaults.less';
 
 /* stylelint-disable selector-class-pattern */
 .client-js .growthexperiments-mentor-dashboard-no-js-fallback {
@@ -8,13 +10,51 @@
 .growthexperiments-mentor-dashboard-container {
 	.flex-display();
 	.flex-wrap();
-}
 
-.growthexperiments-mentor-dashboard-group-main {
-	.flex( 1, 0, 480px );
+	@media ( max-width: @size-5600 ) {
+		max-width: 100%;
+	}
+
+	.growthexperiments-mentor-dashboard-module {
+		border-radius: @border-radius-base;
+	}
+
+	.growthexperiments-mentor-dashboard-group-main {
+		.flex( 1, 0, 480px );
+
+		.growthexperiments-mentor-dashboard-module {
+			position: relative;
+			padding-top: @spacing-75;
+
+			.growthexperiments-mentor-dashboard-module-header {
+				padding-bottom: @spacing-25;
+			}
+
+			.growthexperiments-mentor-dashboard-module-subheader {
+				padding-bottom: @spacing-12;
+				margin-top: 0;
+
+				.growthexperiments-mentor-dashboard-module-subheader-text {
+					color: @color-subtle;
+				}
+			}
+		}
+	}
 }
 
 .growthexperiments-mentor-dashboard-group-sidebar {
 	.flex( 1, 1, 300px );
+}
+
+.skin-minerva {
+	.growthexperiments-mentor-dashboard-container {
+		.growthexperiments-mentor-dashboard-group-main {
+			.growthexperiments-mentor-dashboard-module {
+				.growthexperiments-mentor-dashboard-module-subheader {
+					padding-bottom: @spacing-100;
+				}
+			}
+		}
+	}
 }
 /* stylelint-enable */
