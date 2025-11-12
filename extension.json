@@ -198,6 +198,13 @@
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 				"TitleFactory"
 			]
+		},
+		"growthinvalidaterevisetonerecommendation": {
+			"class": "GrowthExperiments\\Api\\ApiInvalidateReviseToneRecommendation",
+			"services": [
+				"GrowthExperimentsReviseToneWeightedTagManager",
+				"TitleFactory"
+			]
 		}
 	},
 	"APIPropModules": {

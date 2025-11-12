@@ -44,5 +44,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "The <var>editRevId</var> parameter cannot be used when the <var>accepted</var> parameter is set to <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "The <var>caption</var> parameter is required when the <var>accepted</var> parameter is set to <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "The revision specified in <var>editRevId</var> was not found.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "The revision specified in <var>editRevId</var> belongs to a different page."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "The revision specified in <var>editRevId</var> belongs to a different page.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "Drop a 'Revise Tone' recommendation for a given page.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "Title of the page for which to drop the recommendation, without namespace."
 }

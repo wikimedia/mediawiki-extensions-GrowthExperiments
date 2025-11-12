@@ -47,5 +47,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "REST API error message.",
 	"growthexperiments-addimage-feedback-accepted-caption": "REST API error message.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "REST API error message.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "REST API error message."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "REST API error message.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "{{doc-apihelp-summary|growthinvalidaterevisetonerecommendation}}",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "{{doc-apihelp-param|growthinvalidaterevisetonerecommendation|title}}"
 }

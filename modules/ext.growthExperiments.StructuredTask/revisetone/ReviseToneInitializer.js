@@ -58,6 +58,23 @@ class ReviseToneInitializer {
 		];
 		if ( this.isInitialToneCheck && dismissActions.includes( action ) ) {
 			// The user submitted the decline-survey on the initial tone suggestion
+			if ( action === 'edit-check-feedback-reason-appropriate' ) {
+				( new mw.Api() ).postWithToken(
+					'csrf',
+					{
+						action: 'growthinvalidaterevisetonerecommendation',
+						title: mw.config.get( 'wgPageName' ),
+					},
+				);
+			}
+
+			mw.track(
+				'stats.mediawiki_GrowthExperiments_revise_tone_initial_check_decline_total',
+				1,
+				{
+					reason: action.replace( 'edit-check-feedback-reason-', '' ),
+				},
+			);
 			ve.init.target.tryTeardown().then( this.showCancelledPostEditDialog );
 			experiment.send( 'click', {
 				/* eslint-disable camelcase */
