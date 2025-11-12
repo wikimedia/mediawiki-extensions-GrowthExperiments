@@ -104,7 +104,7 @@
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|O καθοδηγούμενος σας|Η καθοδηγουμένη σας}}, $3, είχε αξιωθεί από {{GENDER:$2|τον|την}} $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Αιτία: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Τι είναι η \"διεκδίκηση καθοδηγούμνου\";",
-	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Εσείς}} έχετε καθοδηγούμνεους που είναι άξιοι για έπαινο! Στείλτε ενθάρυνση στους καθοδηγούμενους μέσω του δικού σας ταμπλού μέντορα.",
+	"growthexperiments-notification-header-new-praiseworthy-mentees": "{{GENDER:|Έχετε}} καθοδηγούμενους που είναι άξιοι για έπαινο! Ενθαρρύνετε τους καθοδηγούμενους μέσω του δικού σας ταμπλό Καθοδηγητή.",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "Προβολή πίνακα καθοδηγητή",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Αριθμός από καθοδηγούμενους καθορισμένοι σε εμένα",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "Κανένα (τα διεκδικώ χειροκίνητα)",
