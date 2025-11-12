@@ -9,7 +9,7 @@
 	"welcomesurvey-save-confirmation-text": "Vaše odpovede budú použité na zlepšenie Wikipédie pre všetkých nováčikov.",
 	"welcomesurvey-subtitle": "Pomôžte nám zlepšiť váš zážitok z úpravy Wikipédie zodpovedaním niekoľkých voliteľných otázok.",
 	"welcomesurvey-save-btn": "Dokončiť",
-	"welcomesurvey-skip-btn": "{{GENDER:$1|Preskočiť}} tento formulár",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Preskočiť}} tento prieskum",
 	"welcomesurvey-close-btn": "Zavrieť a ísť späť na stránku $1",
 	"welcomesurvey-sidebar-privacy-title": "Chránime vaše súkromie",
 	"welcomesurvey-sidebar-privacy-text": "Aby ste sa dozvedeli viac o tom, ako sú odpovede používané, {{GENDER:$2|môžete sa pozrieť}} na $1 formuláru.",
@@ -39,7 +39,12 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Nie, nevedel(a) som, že môžem Wikipédiu upravovať",
 	"welcomesurvey-question-edited-option-no-other-label": "Nie, z iných dôvodov",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Nepamätám si",
+	"welcomesurvey-question-mailinglist-label": "Chcem dostávať e-maily s tipmi, ako začať s úpravami.",
+	"welcomesurvey-question-mailinglist-help": "Tento mailing list využíva platformu Mailchimp. Použitie {{GENDER:|vašich}} osobných údajov Mailchimpom sa riadi [https://www.intuit.com/privacy/statement/ ich pravidlami pre ochranu osobných údajov] a [https://mailchimp.com/legal/terms/ ich podmienkami použitia].",
 	"welcomesurvey-question-email-label": "E-mailová adresa (nepovinná)",
 	"welcomesurvey-question-email-placeholder": "Zadajte svoju e-mailovú adresu...",
-	"welcomesurvey-question-email-help": "Všimli sme si, že ste pri vytváraní používateľského účtu nezadali svoju e-mailovú adresu. Zadať e-mailovú adresu je <strong>silne odporúčané</strong>, keďže e-mailová adresa je nevyhnutná pre obnovenie prístupu k účtu, pokiaľ zabudnete svoje heslo. POZNÁMKA: Vaša e-mailová adresa nie je ukázaná ostatným, pokiaľ sa vás pokúsia kontaktovať."
+	"welcomesurvey-question-email-help": "Všimli sme si, že ste pri vytváraní používateľského účtu nezadali svoju e-mailovú adresu. Zadať e-mailovú adresu je <strong>silne odporúčané</strong>, keďže e-mailová adresa je nevyhnutná pre obnovenie prístupu k účtu, pokiaľ zabudnete svoje heslo. POZNÁMKA: Vaša e-mailová adresa nie je ukázaná ostatným, pokiaľ sa vás pokúsia kontaktovať.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} je dostupná v takmer 300 jazykoch. {{GENDER:|Ovládate}} aj niektoré ďalšie jazyky?",
+	"welcomesurvey-question-languages-placeholder": "Pridajte až {{PLURAL:$1|jeden jazyk|$1 jazyky|$1 jazykov}}...",
+	"welcomesurvey-question-languages-maximum": "Už ste {{GENDER:|pridali}} najvyššie možné množstvo jazykov."
 }

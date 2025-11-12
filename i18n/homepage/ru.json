@@ -36,7 +36,8 @@
 			"UniCollab",
 			"Novichev",
 			"Etonkovidova",
-			"Mitte27"
+			"Mitte27",
+			"EneshTranslates"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здравствуйте}}, {{bidi:$1}}!",

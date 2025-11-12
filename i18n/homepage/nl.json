@@ -18,7 +18,8 @@
 			"Rots61",
 			"HanV",
 			"DiGro",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"ItsNyoty"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -509,7 +510,7 @@
 	"growthexperiments-homepage-mentorship-optout-text": "Je kunt altijd weer een mentor krijgen als je je bedenkt. Maar het is mogelijk dat je dan niet dezelfde {{GENDER:$1|mentor}} krijgt als hiervoor.",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Annuleren",
 	"growthexperiments-homepage-mentorship-optout-optout": "Afmelden",
-	"growthexperiments-homepage-mentorship-optout-confirmation-header": "U wordt wordt niet langer begeleid.",
+	"growthexperiments-homepage-mentorship-optout-confirmation-header": "U wordt niet langer begeleid.",
 	"growthexperiments-homepage-mentorship-optout-confirmation-pretext": "Laat ons even weten waarom u zich afmeldt (optioneel):",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-different-mentor": "Ik wil een andere mentor",
 	"growthexperiments-homepage-mentorship-optout-confirmation-reason-no-mentor": "Ik wil helemaal geen mentor",

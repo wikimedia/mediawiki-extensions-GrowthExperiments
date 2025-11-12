@@ -10,5 +10,6 @@
 	"tooltip-pt-homepage": "{{GENDER:|Vaša}} početna stranica",
 	"prefs-homepage": "Uređivačke alatke za novajlije",
 	"growthexperiments-homepage-enable": "Prikazuj početnu stranicu za novajlije",
-	"growthexperiments-homepage-pt-link": "Otvaraj početnu stranicu za novajlije kada kliknem na korisničko ime u ličnim alatkama"
+	"growthexperiments-homepage-pt-link": "Otvaraj početnu stranicu za novajlije kada kliknem na korisničko ime u ličnim alatkama",
+	"growthexperiments-log-name": "Dnevnik dodatka GrowthExperiments"
 }

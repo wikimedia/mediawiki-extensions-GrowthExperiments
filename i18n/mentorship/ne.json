@@ -96,7 +96,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|तपाईँको}} लोडलाई \"$1\"मा परिवर्तन गरियो।",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown": "एउटा त्रुटि भएको छ। कृपया फेरि प्रयास गर्नुहोला।",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-title": "{{GENDER:|आफ्नो}} परिचय सन्देश परिवर्तन गर्नुहोस्",
-	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "संग्रह गर्नुहोस्",
+	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save": "सङ्ग्रह गर्नुहोस्",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "रद्द गर्नुहोस्",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "परिचय सन्देश",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|तपाईँको}} परिचय सन्देश \" $1 \"मा परिवर्तन गरियो।",
