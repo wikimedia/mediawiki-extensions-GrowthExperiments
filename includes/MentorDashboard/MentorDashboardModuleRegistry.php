@@ -61,7 +61,8 @@ class MentorDashboardModuleRegistry {
 				IContextSource $context
 			): IDashboardModule {
 				return new MenteeOverview(
-					$context
+					$context,
+					$services->getUserOptionsLookup()
 				);
 			},
 			'resources' => static function (

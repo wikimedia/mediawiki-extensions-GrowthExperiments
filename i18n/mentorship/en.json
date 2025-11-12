@@ -20,6 +20,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "{{GENDER:|Mentor}} questions asked",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Edit count",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Registration date",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Last updated $1 ago",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filters",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Update",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Edit count",

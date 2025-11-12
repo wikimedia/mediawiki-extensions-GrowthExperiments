@@ -28,6 +28,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Part of table legend in info icon popup\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Part of table legend in info icon popup\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Part of table legend in info icon popup\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Communicates to the mentor when the mentee data was last refreshed. Displays minutes if the update was less than an hour ago, and hours if the update was more than an hour ago.\n\nParameters:\n* $1 - time since the last mentee data update occurred\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Label for a button that will show interface for filtering mentees\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Label for a submit button in the filtering interface\n\n{{doc-growthexperiments-mentor-dashboard}}\n\n{{identical|Update}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Headline in mentee filtering interface\n\n{{doc-growthexperiments-mentor-dashboard}}",
