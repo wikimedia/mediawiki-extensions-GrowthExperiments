@@ -93,7 +93,6 @@ class SpecialHomepage extends SpecialPage {
 		$userVariant = $this->experimentUserManager->getVariant( $this->getUser() );
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
-			'wgGEUseMetricsPlatformExtension' => Util::useMetricsPlatform(),
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();

@@ -454,6 +454,9 @@ class HomepageHooks implements
 				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' ),
 			] );
 		}
+		$out->addJsConfigVars( [
+			'wgGEUseMetricsPlatformExtension' => Util::useMetricsPlatform(),
+		] );
 	}
 
 	/**
