@@ -78,7 +78,9 @@ class ExportWelcomeSurveyMailingListData extends Maintenance {
 			] as [ $dir, $ts, $id ] ) {
 				$text = 'any';
 				if ( $id ) {
-					$registered = $services->getUserFactory()->newFromId( $id )->getRegistration();
+					$userIdentity = $services->getUserIdentityLookup()->getUserIdentityByUserId( $id );
+					/* @phan-suppress-next-line PhanTypeMismatchArgumentNullable - $userIdentity is not null for sure */
+					$registered = $services->getUserRegistrationLookup()->getRegistration( $userIdentity );
 					$text = "UID $id (registered: $registered)";
 				}
 				$this->error( "\t$dir: $ts -> $text" );

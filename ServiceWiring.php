@@ -1212,7 +1212,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new GrowthExperimentsUserImpactUpdater(
 			$services->getUserEditTracker(),
-			$services->getUserFactory(),
+			$services->getUserRegistrationLookup(),
 			$services->getJobQueueGroup(),
 			$growthServices->getUncachedUserImpactLookup(),
 			$growthServices->getUserImpactStore(),

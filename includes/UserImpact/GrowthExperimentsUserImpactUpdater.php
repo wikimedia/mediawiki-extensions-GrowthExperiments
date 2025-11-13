@@ -7,8 +7,8 @@ namespace GrowthExperiments\UserImpact;
 use DateTime;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserEditTracker;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -17,7 +17,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class GrowthExperimentsUserImpactUpdater {
 	private UserEditTracker $userEditTracker;
-	private UserFactory $userFactory;
+	private UserRegistrationLookup $userRegistrationLookup;
 	private JobQueueGroup $jobQueueGroup;
 	private UserImpactLookup $userImpactLookup;
 	private UserImpactStore $userImpactStore;
@@ -25,14 +25,14 @@ class GrowthExperimentsUserImpactUpdater {
 
 	public function __construct(
 		UserEditTracker $userEditTracker,
-		UserFactory $userFactory,
+		UserRegistrationLookup $userRegistrationLookup,
 		JobQueueGroup $jobQueueGroup,
 		UserImpactLookup $userImpactLookup,
 		UserImpactStore $userImpactStore,
 		UserImpactFormatter $userImpactFormatter
 	) {
 		$this->userEditTracker = $userEditTracker;
-		$this->userFactory = $userFactory;
+		$this->userRegistrationLookup = $userRegistrationLookup;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->userImpactStore = $userImpactStore;
@@ -59,8 +59,8 @@ class GrowthExperimentsUserImpactUpdater {
 		}
 
 		$registrationCutoff = new DateTime( 'now - 1year' );
-		$user = $this->userFactory->newFromUserIdentity( $userIdentity );
-		$registrationTimestamp = wfTimestamp( TS_UNIX, $user->getRegistration() );
+		$registrationTimestamp = wfTimestamp( TS_UNIX,
+			$this->userRegistrationLookup->getRegistration( $userIdentity ) );
 
 		$lastEditTimestamp = MWTimestamp::getInstance( $lastEditTimestamp );
 		$lastEditAge = $lastEditTimestamp->diff( new ConvertibleTimestamp( new DateTime( 'now - 1week' ) ) );

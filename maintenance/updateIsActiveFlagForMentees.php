@@ -5,8 +5,8 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserEditTracker;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -23,7 +23,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 
 	private UserIdentityLookup $userIdentityLookup;
 	private UserEditTracker $userEditTracker;
-	private UserFactory $userFactory;
+	private UserRegistrationLookup $userRegistrationLookup;
 	private ILoadBalancer $growthLoadBalancer;
 	private MentorStore $mentorStore;
 
@@ -46,7 +46,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
-		$this->userFactory = $services->getUserFactory();
+		$this->userRegistrationLookup = $services->getUserRegistrationLookup();
 		$this->userEditTracker = $services->getUserEditTracker();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
 		$this->mentorStore = $geServices->getMentorStore();
@@ -86,8 +86,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 
 			$lastActivityTimestamp = $this->userEditTracker->getLatestEditTimestamp( $menteeUser );
 			if ( $lastActivityTimestamp === false ) {
-				$lastActivityTimestamp = $this->userFactory->newFromUserIdentity( $menteeUser )
-					->getRegistration();
+				$lastActivityTimestamp = $this->userRegistrationLookup->getRegistration( $menteeUser );
 			}
 
 			$timeDelta = (int)wfTimestamp() - (int)wfTimestamp(
