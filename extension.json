@@ -715,6 +715,15 @@
 				"GrowthExperimentsUserImpactLookup_Computed",
 				"MainConfig"
 			]
+		},
+		{
+			"events": [
+				"PageLatestRevisionChanged"
+			],
+			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\ReviseToneExperimentEditIngress",
+			"optional_services": [
+				"MetricsPlatform.XLab.ExperimentManager"
+			]
 		}
 	],
 	"ResourceFileModulePaths": {
