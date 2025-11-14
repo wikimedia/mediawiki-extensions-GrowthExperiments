@@ -312,8 +312,7 @@ module.exports = exports = defineComponent( {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 8px 16px;
-			gap: 70px;
+			padding: @size-100 @size-75 @size-0 @size-150;
 			background: @background-color-neutral;
 			height: 48px;
 		}
@@ -324,7 +323,7 @@ module.exports = exports = defineComponent( {
 
 		&__title {
 			background: @background-color-neutral;
-			padding: 16px;
+			padding: @size-100 @size-150 @size-75;
 			color: @color-base;
 			font-family: 'Inter', sans-serif;
 			font-style: normal;
@@ -348,7 +347,6 @@ module.exports = exports = defineComponent( {
 			justify-content: flex-end;
 			font-size: @font-size-small;
 			flex-grow: 1;
-			margin-bottom: @spacing-75;
 
 			&--prev,
 			&--next {

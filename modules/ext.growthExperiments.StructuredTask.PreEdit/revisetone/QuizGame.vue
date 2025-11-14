@@ -77,7 +77,7 @@ module.exports = exports = defineComponent( {
 
   &__introduction {
     background-color: @background-color-neutral-subtle;
-    padding: @spacing-100 @spacing-200;
+    padding: @size-75 @size-275;
 
     i,
  .example {
@@ -93,8 +93,8 @@ module.exports = exports = defineComponent( {
   &__pills {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: @spacing-100;
+    align-items: flex-start;
+    padding: @size-75 @size-150;
     gap: @spacing-75;
   }
 }

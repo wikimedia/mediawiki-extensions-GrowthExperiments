@@ -134,11 +134,9 @@ module.exports = exports = defineComponent( {
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
 
-@pill-block-min-width: 320px;
-@pill-block-width: 340px;
-
 .ext-growthExperiments-ReviseTone-QuizPill {
-  margin: 0 auto;
+  margin: 0;
+  width: @size-full;
 
   &-Pill {
     display: flex;
@@ -147,8 +145,8 @@ module.exports = exports = defineComponent( {
     padding-top: @size-75;
     padding-bottom: @size-75;
     gap: @size-50;
-    min-width: @pill-block-min-width;
-    width: @pill-block-width;
+    width: auto;
+    min-width: auto;
     border-radius: @border-radius-pill;
     border: @border-width-base solid @border-color-interactive;
     background-color: @background-color-base;
@@ -167,20 +165,20 @@ module.exports = exports = defineComponent( {
       }
     }
 
-    &--success {
-      background-color: @background-color-success-subtle;
+    .cdx-icon {
+      color: inherit;
+    }
 
-      .cdx-icon {
-        color: @color-success;
-      }
+    &--success {
+      color: @color-success;
+      border-color: @border-color-success;
+      background-color: @background-color-success-subtle;
     }
 
     &--error {
+      color: @color-error;
+      border-color: @border-color-error;
       background-color: @background-color-error-subtle;
-
-      .cdx-icon {
-        color: @color-error;
-      }
     }
 
     &__content {
@@ -193,13 +191,12 @@ module.exports = exports = defineComponent( {
   }
 
   &-Description {
+    width: auto;
     margin-top: @size-25;
-    margin-bottom: @size-75;
-    padding-left: @size-75;
-    width: @pill-block-width;
     color: @color-success;
     font-size: @size-75;
     font-weight: @font-weight-bold;
+    line-height: @line-height-x-small;
 
     .cdx-learn-more-link {
       .cdx-mixin-link();
