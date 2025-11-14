@@ -10,6 +10,7 @@ use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentAuthority;
 use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentRequest;
 use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentResultBuilder;
 use MediaWiki\Extension\MetricsPlatform\XLab\EnrollmentCssClassSerializer;
+use MediaWiki\Extension\MetricsPlatform\XLab\Experiment;
 use MediaWiki\Extension\MetricsPlatform\XLab\ExperimentManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
@@ -48,6 +49,11 @@ class ExperimentXLabManager extends AbstractExperimentManager {
 		private readonly Config $config,
 	) {
 		parent::__construct( $options );
+	}
+
+	public function getCurrentExperiment(): Experiment {
+		$this->initialize();
+		return $this->experimentManager->getExperiment( $this->currentExperimentName );
 	}
 
 	public function enrollUser( RequestContext $ctx, UserIdentity $user ) {

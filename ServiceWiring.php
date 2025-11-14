@@ -5,6 +5,7 @@ use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
+use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
 use GrowthExperiments\ExperimentUserDefaultsManager;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\ExperimentXLabManager;
@@ -905,6 +906,20 @@ return [
 			$growthServices->getChangeMentorFactory(),
 			$services->getJobQueueGroupFactory(),
 			$services->getFormatterFactory()
+		);
+	},
+
+	'GrowthExperimentsReviseToneExperimentInteractionLogger' => static function (
+		MediaWikiServices $services
+	): ReviseToneExperimentInteractionLogger {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$eventLoggingMetricsClientFactory = null;
+		if ( $services->has( 'EventLogging.MetricsClientFactory' ) ) {
+			$eventLoggingMetricsClientFactory = $services->get( 'EventLogging.MetricsClientFactory' );
+		}
+		return new ReviseToneExperimentInteractionLogger(
+			$growthServices->getExperimentUserManager(),
+			$eventLoggingMetricsClientFactory
 		);
 	},
 
