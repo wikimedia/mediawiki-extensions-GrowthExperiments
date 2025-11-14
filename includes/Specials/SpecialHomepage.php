@@ -4,12 +4,14 @@ namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\DashboardModule\IDashboardModule;
+use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\IMentorManager;
+use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
@@ -52,7 +54,8 @@ class SpecialHomepage extends SpecialPage {
 		IMentorManager $mentorManager,
 		Config $wikiConfig,
 		UserOptionsManager $userOptionsManager,
-		TitleFactory $titleFactory
+		TitleFactory $titleFactory,
+		private readonly ReviseToneExperimentInteractionLogger $experimentInteractionLogger,
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->moduleRegistry = $moduleRegistry;
@@ -152,6 +155,10 @@ class SpecialHomepage extends SpecialPage {
 				$logger->log();
 			} );
 		}
+		$this->experimentInteractionLogger->log( 'page-visited', [
+			'instrument_name' => 'Newcomer\'s homepage visited',
+			'action_source' => 'NewcomerHomepage',
+		] );
 	}
 
 	/**
@@ -460,10 +467,16 @@ class SpecialHomepage extends SpecialPage {
 				->setLabel( 'action', $statsAction )
 				->increment();
 
+		if ( $taskTypeId === ReviseToneTaskTypeHandler::TASK_TYPE_ID ) {
+			$this->experimentInteractionLogger->log( 'click', [
+				'instrument_name' => 'Revise tone homepage card click',
+				'action_source' => 'Suggested-Edits-1',
+				'action_subtype' => 'revise-tone-card',
+			] );
+		}
 		$this->getOutput()->redirect(
 			$title->getFullUrlForRedirect( $redirectParams )
 		);
 		return true;
 	}
-
 }

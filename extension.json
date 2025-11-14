@@ -1438,6 +1438,7 @@
 				"ext.growthExperiments.StructuredTask/addsectionimage/RecommendedSectionImageRejectionDialog.js",
 				"ext.growthExperiments.StructuredTask/revisetone/ReviseToneInitializer.js",
 				"ext.growthExperiments.StructuredTask/revisetone/GrowthSuggestionToneCheck.js",
+				"ext.growthExperiments.StructuredTask/revisetone/useExperiment.js",
 				"utils/SimpleLevenshtein.js",
 				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",

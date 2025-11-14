@@ -1,7 +1,9 @@
 const SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
 const suggestedEditSession = SuggestedEditSession.getInstance();
 const GrowthSuggestionToneCheck = require( './GrowthSuggestionToneCheck.js' );
+const useExperiment = require( './useExperiment.js' );
 const simpleLevenshtein = require( '../../utils/SimpleLevenshtein.js' );
+const experiment = useExperiment();
 
 class ReviseToneInitializer {
 
@@ -57,6 +59,13 @@ class ReviseToneInitializer {
 		if ( this.isInitialToneCheck && dismissActions.includes( action ) ) {
 			// The user submitted the decline-survey on the initial tone suggestion
 			ve.init.target.tryTeardown().then( this.showCancelledPostEditDialog );
+			experiment.send( 'click', {
+				/* eslint-disable camelcase */
+				action_subtype: 'decline',
+				action_source: 'EditCheck-1',
+				instrument_name: 'Click on decline revise tone',
+				/* eslint-enable camelcase */
+			} );
 		}
 	}
 
@@ -83,6 +92,12 @@ class ReviseToneInitializer {
 			ve.init.target.surface.model.documentModel,
 		);
 		ve.init.target.surface.getModel().emit( 'undoStackChange' );
+		experiment.send( 'page-visited', {
+			/* eslint-disable camelcase */
+			action_source: 'EditCheck-1',
+			instrument_name: 'Article with revise tone recommendation page visited',
+			/* eslint-enable camelcase */
+		} );
 	}
 
 	// TODO: make this private once Grade A support is raised to at least Safari 15, see T395347

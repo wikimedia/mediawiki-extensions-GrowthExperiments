@@ -37,7 +37,8 @@ class SpecialHomepageBench extends GrowthExperimentsBench {
 			$growthExperimentsServices->getMentorManager(),
 			$communityConfigServices->getMediaWikiConfigRouter(),
 			$userOptionManager,
-			$services->getTitleFactory()
+			$services->getTitleFactory(),
+			$growthExperimentsServices->getReviseToneExperimentInteractionLogger(),
 		);
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$testUser = $services->getUserFactory()->newFromId( 1 );

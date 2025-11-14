@@ -42,7 +42,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$growthExperimentsServices->getMentorManager(),
 			$communityConfigServices->getMediaWikiConfigRouter(),
 			$this->getServiceContainer()->getUserOptionsManager(),
-			$this->getServiceContainer()->getTitleFactory()
+			$this->getServiceContainer()->getTitleFactory(),
+			$growthExperimentsServices->getReviseToneExperimentInteractionLogger(),
 		);
 	}
 
