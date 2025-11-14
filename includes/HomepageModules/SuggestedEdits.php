@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\AbstractExperimentManager;
+use GrowthExperiments\ExperimentXLabManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
@@ -34,6 +35,7 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonGroupWidget;
@@ -135,7 +137,7 @@ class SuggestedEdits extends BaseModule {
 
 	private ButtonGroupWidget $buttonGroupWidget;
 
-	private UserOptionsLookup $userOptionsLookup;
+	private UserOptionsManager $userOptionsManager;
 
 	private ?NavigationWidgetFactory $navigationWidgetFactory = null;
 
@@ -160,7 +162,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param TaskSuggester $taskSuggester
 	 * @param TitleFactory $titleFactory
 	 * @param ProtectionFilter $protectionFilter
-	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param UserOptionsManager $userOptionsManager
 	 * @param LinkRecommendationFilter $linkRecommendationFilter
 	 * @param ImageRecommendationFilter $imageRecommendationFilter
 	 * @param StatsFactory $statsFactory
@@ -177,7 +179,7 @@ class SuggestedEdits extends BaseModule {
 		TaskSuggester $taskSuggester,
 		TitleFactory $titleFactory,
 		ProtectionFilter $protectionFilter,
-		UserOptionsLookup $userOptionsLookup,
+		UserOptionsManager $userOptionsManager,
 		LinkRecommendationFilter $linkRecommendationFilter,
 		ImageRecommendationFilter $imageRecommendationFilter,
 		StatsFactory $statsFactory,
@@ -191,7 +193,7 @@ class SuggestedEdits extends BaseModule {
 		$this->taskSuggester = $taskSuggester;
 		$this->titleFactory = $titleFactory;
 		$this->protectionFilter = $protectionFilter;
-		$this->userOptionsLookup = $userOptionsLookup;
+		$this->userOptionsManager = $userOptionsManager;
 		$this->linkRecommendationFilter = $linkRecommendationFilter;
 		$this->imageRecommendationFilter = $imageRecommendationFilter;
 		$this->campaignConfig = $campaignConfig;
@@ -255,7 +257,7 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	public function getCssClasses() {
 		return array_merge( parent::getCssClasses(),
-			$this->userOptionsLookup->getOption( $this->getContext()->getUser(), self::ACTIVATED_PREF ) ?
+			$this->userOptionsManager->getOption( $this->getContext()->getUser(), self::ACTIVATED_PREF ) ?
 				[ 'activated' ] :
 				[ 'unactivated' ]
 		);
@@ -392,7 +394,7 @@ class SuggestedEdits extends BaseModule {
 		// When the module is not activated yet, but can be, include module HTML in the
 		// data, for dynamic loading on activation.
 		if ( $this->canRender() &&
-			!self::isActivated( $this->getContext()->getUser(), $this->userOptionsLookup ) &&
+			!self::isActivated( $this->getContext()->getUser(), $this->userOptionsManager ) &&
 			$this->getMode() !== self::RENDER_MOBILE_DETAILS
 		) {
 			$data += [
@@ -441,7 +443,7 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	public function getState() {
-		return self::isActivated( $this->getContext()->getUser(), $this->userOptionsLookup ) ?
+		return self::isActivated( $this->getContext()->getUser(), $this->userOptionsManager ) ?
 			self::MODULE_STATE_ACTIVATED :
 			self::MODULE_STATE_UNACTIVATED;
 	}
@@ -461,6 +463,32 @@ class SuggestedEdits extends BaseModule {
 			// TODO also reset cache in ImageRecommendationFilter
 		}
 		$taskTypes = $this->taskTypeManager->getTaskTypesForUser( $user );
+
+		if (
+			$this->experimentUserManager->isUserInVariant(
+				$user,
+				ExperimentXLabManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME,
+			) &&
+			!$this->userOptionsManager->getOption( $user, 'growthexperiments-revise-tone-treatment-initiated' )
+		) {
+			// TODO: Remove after end of ReviseTone A/B test: T409466
+			$this->userOptionsManager->setOption(
+				$user,
+				'growthexperiments-revise-tone-treatment-initiated',
+				true,
+			);
+			$taskTypes = array_unique( [
+				...$taskTypes,
+				ReviseToneTaskTypeHandler::TASK_TYPE_ID,
+			] );
+			$this->userOptionsManager->setOption(
+				$user,
+				self::TASKTYPES_PREF,
+				json_encode( $taskTypes ),
+			);
+			$this->userOptionsManager->saveOptions( $user );
+		}
+
 		$topics = $this->newcomerTasksUserOptionsLookup->getTopics( $user );
 		$topicsMatchMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
 		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics, $topicsMatchMode );
@@ -525,7 +553,7 @@ class SuggestedEdits extends BaseModule {
 				->appendContent( $this->getPager() ) .
 			( new CardWrapper(
 				$this->getContext(),
-				self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ),
+				self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsManager ),
 				$topicMatchMode === SearchStrategy::TOPIC_MATCH_MODE_AND,
 				$this->getContext()->getLanguage()->getDir(),
 				$this->getTaskSet(),
@@ -620,7 +648,7 @@ class SuggestedEdits extends BaseModule {
 	private function getFiltersButtonGroupWidget(): ButtonGroupWidget {
 		$buttons = [];
 		$user = $this->getContext()->getUser();
-		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
+		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsManager ) ) {
 			// topicPreferences will be an empty array if the user had saved topics
 			// in the past, or null if they have never saved topics
 			$topicPreferences = $this->newcomerTasksUserOptionsLookup
@@ -684,7 +712,7 @@ class SuggestedEdits extends BaseModule {
 		}
 		$difficultyFilterButtonWidget = new ButtonWidget( [
 			'icon' => 'difficulty-outline',
-			'classes' => self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ?
+			'classes' => self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsManager ) ?
 				[ 'topic-matching' ] : [ '' ],
 			'label' => $this->getContext()->msg(
 				'growthexperiments-homepage-suggestededits-difficulty-filters-title'
@@ -896,9 +924,9 @@ class SuggestedEdits extends BaseModule {
 			'unavailableTaskTypes' => $this->taskTypeManager->getUnavailableTaskTypes( $user ),
 			'taskCount' => ( $taskSet instanceof TaskSet ) ? $taskSet->getTotalCount() : 0,
 		];
-		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
+		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsManager ) ) {
 			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopics( $user );
-			if ( $this->isTopicMatchModeEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
+			if ( $this->isTopicMatchModeEnabled( $this->getContext(), $this->userOptionsManager ) ) {
 				$data['topicsMatchMode'] = $topicsMatchMode ??
 					$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
 			}
@@ -914,7 +942,7 @@ class SuggestedEdits extends BaseModule {
 		return [
 			'GEHomepageSuggestedEditsEnableTopics' => self::isTopicMatchingEnabled(
 				$this->getContext(),
-				$this->userOptionsLookup
+				$this->userOptionsManager
 			),
 		];
 	}

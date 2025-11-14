@@ -128,7 +128,7 @@ class HomepageModuleRegistry {
 					$growthServices->getTaskSuggesterFactory()->create(),
 					$services->getTitleFactory(),
 					$growthServices->getProtectionFilter(),
-					$services->getUserOptionsLookup(),
+					$services->getUserOptionsManager(),
 					$growthServices->getLinkRecommendationFilter(),
 					$growthServices->getImageRecommendationFilter(),
 					$services->getStatsFactory(),

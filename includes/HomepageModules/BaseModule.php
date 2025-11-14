@@ -26,7 +26,7 @@ abstract class BaseModule extends DashboardModule {
 	/**
 	 * @var AbstractExperimentManager
 	 */
-	private $experimentUserManager;
+	protected $experimentUserManager;
 
 	/** @var Config */
 	private $wikiConfig;
