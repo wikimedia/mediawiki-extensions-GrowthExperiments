@@ -19,7 +19,8 @@
 			"HanV",
 			"DiGro",
 			"Sjoerddebruin",
-			"ItsNyoty"
+			"ItsNyoty",
+			"Siebrand"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",

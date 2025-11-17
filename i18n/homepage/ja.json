@@ -19,7 +19,8 @@
 			"Kokage si",
 			"バレロン",
 			"もなー(偽物)",
-			"Apple TD"
+			"Apple TD",
+			"Kei Wakui"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}さん！",
@@ -200,7 +201,7 @@
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$10億",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1兆",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "昨日の{{PLURAL:$1|編集}}",
-	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "皆さんのようなボランティアの皆さんが{{SITENAME}}の改善に貢献しています。参加しましょう！",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "あなたのようなボランティアの皆さんが今日の{{SITENAME}}の改善に貢献しています。参加しましょう！",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "すべてのお勧めを見る",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "誤字や文法、文体の修正",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "ウィキペディアの記事に検証のための情報源を追加",
