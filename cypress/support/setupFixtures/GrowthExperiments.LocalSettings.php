@@ -24,8 +24,6 @@ $wgGEReviseToneSuggestedEditEnabled = true;
 $wgGEReviseToneRecommendationProvider = 'subpage';
 
 /** EDIT CHECK START */
-$wgVisualEditorEditCheckLoadExperimental = true;
-$wgVisualEditorEditCheckTagging = true;
 $wgVisualEditorEditCheck = true;
 /** EDIT CHECK END */
 
