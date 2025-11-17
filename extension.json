@@ -1671,6 +1671,8 @@
 				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/QuizGame.vue",
 				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/ReviseToneOnboarding.vue",
 				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/quizData.json",
+				"ext.growthExperiments.StructuredTask/revisetone/useExperiment.js",
+				"ext.growthExperiments.StructuredTask/revisetone/ReviseToneInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask.PreEdit/App.vue",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
