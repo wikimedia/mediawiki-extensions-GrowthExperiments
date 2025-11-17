@@ -13,6 +13,7 @@ use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
+use GrowthExperiments\NewcomerTasks\ReviseToneTaskSetFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -379,12 +380,6 @@ class SuggestedEdits extends BaseModule {
 					$formattedTasks[] = $taskData;
 				}
 
-				// Remove after end of ReviseTone A/B test: T407528
-				$formattedTasks = $this->sortOneOfTaskTypeFirst(
-					$formattedTasks,
-					ReviseToneTaskTypeHandler::TASK_TYPE_ID,
-				);
-
 				$data['task-queue'] = $formattedTasks;
 				$data['task-preview'] = current( $formattedTasks );
 				$this->trackQueueStatus( $mode, 'ok' );
@@ -404,26 +399,6 @@ class SuggestedEdits extends BaseModule {
 		}
 
 		return $data;
-	}
-
-	private function sortOneOfTaskTypeFirst( array $formattedTasks, string $taskTypeId ): array {
-		$i = -1;
-
-		foreach ( $formattedTasks as $index => $formattedTask ) {
-			if ( $formattedTask['tasktype'] === $taskTypeId ) {
-				$i = $index;
-				break;
-			}
-		}
-
-		if ( $i === -1 ) {
-			return $formattedTasks;
-		}
-
-		$reviseToneTask = array_splice( $formattedTasks, $i, 1 )[0];
-		array_unshift( $formattedTasks, $reviseToneTask );
-
-		return $formattedTasks;
 	}
 
 	/**
@@ -500,6 +475,9 @@ class SuggestedEdits extends BaseModule {
 			$tasks = $this->linkRecommendationFilter->filter( $tasks );
 			$tasks = $this->imageRecommendationFilter->filter( $tasks );
 			$tasks = $this->protectionFilter->filter( $tasks );
+			// TODO: Remove after end of ReviseTone A/B test: T407528, T409466
+			$reviseToneFilter = new ReviseToneTaskSetFilter();
+			$tasks = $reviseToneFilter->filter( $tasks );
 		}
 		$this->tasks = $tasks;
 		$this->resetTaskCache( $user, $taskSetFilters, $suggesterOptions );
