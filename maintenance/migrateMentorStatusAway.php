@@ -14,6 +14,7 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserOptionsLookup;
 use MessageLocalizer;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -82,7 +83,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 				$config[CommunityStructuredMentorWriter::CONFIG_KEY][$mentor->getId()] = array_merge(
 					$config[CommunityStructuredMentorWriter::CONFIG_KEY][$mentor->getId()],
 					[
-						'awayTimestamp' => $awayTimestamp,
+						'awayTimestamp' => ConvertibleTimestamp::convert( TS_ISO_8601, $awayTimestamp ),
 					]
 				);
 			} elseif ( array_key_exists(
