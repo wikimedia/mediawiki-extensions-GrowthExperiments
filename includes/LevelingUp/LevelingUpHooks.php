@@ -91,11 +91,10 @@ class LevelingUpHooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$user = $out->getUser();
-		$featureAndExperimentEnabled = $this->config->get( 'GELevelingUpNewNotificationsEnabled' );
 		if (
 			$user->isRegistered()
 			&& LevelingUpManager::isEnabledForUser( $user, $this->config )
-			&& $featureAndExperimentEnabled
+			&& $this->config->get( 'GELevelingUpNotificationsTrackingEnabled' )
 		) {
 			$out->addModules( 'ext.growthExperiments.NotificationsTracking' );
 		}

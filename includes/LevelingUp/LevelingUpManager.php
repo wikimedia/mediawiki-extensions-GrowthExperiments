@@ -3,7 +3,6 @@
 namespace GrowthExperiments\LevelingUp;
 
 use GrowthExperiments\AbstractExperimentManager;
-use GrowthExperiments\ExperimentXLabManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -48,7 +47,6 @@ class LevelingUpManager {
 		'GENewcomerTasksLinkRecommendationsEnabled',
 		'GELevelingUpKeepGoingNotificationSendAfterSeconds',
 		'GELevelingUpGetStartedNotificationSendAfterSeconds',
-		'GELevelingUpNewNotificationsEnabled',
 	];
 
 	private ServiceOptions $options;
@@ -66,8 +64,6 @@ class LevelingUpManager {
 	private LoggerInterface $logger;
 	private Config $growthConfig;
 	private const KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM = 1;
-	private const GET_STARTED_EXPERIMENT_TREATMENT_GROUP_NAME = ExperimentXLabManager::GET_STARTED_EXPERIMENT .
-	'_' . ExperimentXLabManager::VARIANT_TREATMENT;
 
 	public function __construct(
 		ServiceOptions $options,
@@ -359,12 +355,7 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public function shouldSendGetStartedNotification( UserIdentity $userIdentity ): bool {
-		if ( $this->options->get( 'GELevelingUpNewNotificationsEnabled' ) ) {
-			return $this->userEditTracker->getUserEditCount( $userIdentity ) === 0;
-		}
-		$maxEdits = (int)$this->growthConfig->get( 'GELevelingUpGetStartedMaxTotalEdits' );
-		return $this->getSuggestedEditsCount( $userIdentity ) === 0 &&
-			$this->userEditTracker->getUserEditCount( $userIdentity ) < $maxEdits;
+		return $this->userEditTracker->getUserEditCount( $userIdentity ) === 0;
 	}
 
 	/**
@@ -451,10 +442,6 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public function scheduleKeepGoingNotification( UserIdentity $user ): bool {
-		$isInTreatmentGroup = $this->experimentManager
-			->isUserInVariant( $user, self::GET_STARTED_EXPERIMENT_TREATMENT_GROUP_NAME );
-		$eventType = $this->options->get( 'GELevelingUpNewNotificationsEnabled' ) && $isInTreatmentGroup ?
-			'keep-going-exploring' : 'keep-going';
 		return $this->scheduleNotificationJob(
 			NotificationKeepGoingJob::JOB_NAME,
 			$user,
@@ -463,7 +450,7 @@ class LevelingUpManager {
 				$user
 			),
 			[
-				'eventType' => $eventType,
+				'eventType' => 'keep-going',
 			]
 		);
 	}
@@ -477,10 +464,6 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public function scheduleGettingStartedNotification( UserIdentity $user ): bool {
-		$isInTreatmentGroup = $this->experimentManager
-			->isUserInVariant( $user, self::GET_STARTED_EXPERIMENT_TREATMENT_GROUP_NAME );
-		$eventType = $this->options->get( 'GELevelingUpNewNotificationsEnabled' ) && $isInTreatmentGroup ?
-			'get-started-no-edits' : 'get-started';
 		return $this->scheduleNotificationJob(
 			NotificationGetStartedJob::JOB_NAME,
 			$user,
@@ -489,7 +472,7 @@ class LevelingUpManager {
 				$user
 			),
 			[
-				'eventType' => $eventType,
+				'eventType' => 'get-started-no-edits',
 			]
 		);
 	}
@@ -501,19 +484,10 @@ class LevelingUpManager {
 	 *
 	 * Uses same delay as the get started notification.
 	 *
-	 * Only scheduled for users in treatment group for the experiment
-	 * 'growthexperiments-get-started-notification', see T401308
-	 *
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
 	public function scheduleReEngageNotification( UserIdentity $user ): bool {
-		// TODO remove treatment group check after T401308 experiment
-		$isInTreatmentGroup = $this->experimentManager->isUserInVariant(
-			$user,
-			self::GET_STARTED_EXPERIMENT_TREATMENT_GROUP_NAME
-		);
-		if ( $this->options->get( 'GELevelingUpNewNotificationsEnabled' ) && $isInTreatmentGroup ) {
 			return $this->scheduleNotificationJob(
 				NotificationReEngageJob::JOB_NAME,
 				$user,
@@ -522,8 +496,6 @@ class LevelingUpManager {
 					$user
 				),
 			);
-		}
-		return false;
 	}
 
 }

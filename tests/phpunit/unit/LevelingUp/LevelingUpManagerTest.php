@@ -68,7 +68,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 				'GELevelingUpGetStartedMaxTotalEdits' => 10,
 				'GELevelingUpKeepGoingNotificationSendAfterSeconds' => 172800,
 				'GELevelingUpGetStartedNotificationSendAfterSeconds' => 172800,
-				'GELevelingUpNewNotificationsEnabled' => false,
 			] )
 		);
 		$this->assertEquals(
@@ -286,7 +285,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GELevelingUpKeepGoingNotificationSendAfterSeconds' => 172800,
 			'GELevelingUpGetStartedNotificationSendAfterSeconds' => 172800,
-			'GELevelingUpNewNotificationsEnabled' => true,
 		];
 	}
 
@@ -461,7 +459,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$levelingUpManager->shouldSendGetStartedNotification( $userIdentity ),
 			"Expected shouldSendGetStarted to return " .
 			( $expected ? 'true' : 'false' ) .
-			" when edit count is 0"
+			" when edit count is $editCount"
 		);
 	}
 
@@ -599,14 +597,9 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		$recipient = new UserIdentityValue( 1, 'Admin' );
 		$experimentUserManager = $this->createNoOpMock( AbstractExperimentManager::class, [
 			'getVariant',
-			'isUserInVariant',
 		] );
 		$experimentUserManager->expects( $this->once() )
-			->method( 'isUserInVariant' )
-			->with( $recipient, 'growthexperiments-get-started-notification_treatment' )
-			->willReturn( true );
-		$experimentUserManager->expects( $this->once() )
-			->method( 'getVariant' )
+		->method( 'getVariant' )
 			->with( $recipient )
 			->willReturn( 'extra-variant' );
 
@@ -716,21 +709,14 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 	public function testScheduleNotificationsOKVariants(
 		string $jobName, string $methodName,
 		string $configOption, array $configData
-
 	) {
 		ConvertibleTimestamp::setFakeTime( 100 );
-
 		$recipientUser = new UserIdentityValue( 1, 'Admin' );
 		$experimentUserManager = $this->createNoOpMock( AbstractExperimentManager::class, [
 			'getVariant',
-			'isUserInVariant',
 		] );
 		$experimentUserManager->expects( $this->once() )
-			->method( 'isUserInVariant' )
-			->with( $recipientUser, 'growthexperiments-get-started-notification_treatment' )
-			->willReturn( true );
-		$experimentUserManager->expects( $this->once() )
-			->method( 'getVariant' )
+		->method( 'getVariant' )
 			->with( $recipientUser )
 			->willReturn( 'extra-variant' );
 
@@ -743,7 +729,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 				] + $this->getDefaultConfigValues()
 			) ),
 		);
-
 		$this->assertTrue( $levelingUpManager->$methodName( $recipientUser ) );
 	}
 
@@ -752,7 +737,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		$experimentManager->expects( $this->atMost( 1 ) )
 			->method( 'getVariant' )
 			->willReturn( 'growthexperiments-get-started-notification_control' );
-
 		return $experimentManager;
 	}
 
