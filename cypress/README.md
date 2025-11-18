@@ -38,7 +38,7 @@ This will import some pages and recommendations into the system.
 
 Then open Cypress's GUI with this command:
 ```bash
-npm run cypress:open
+npm run cy:open
 ```
 Some tests complete suggestions and edit pages, so it might be necessary to run the above script again before running
 those test again.

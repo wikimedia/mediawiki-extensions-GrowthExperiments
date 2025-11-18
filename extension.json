@@ -3082,11 +3082,9 @@
 	},
 	"ActionFilteredLogs": {
 		"growthexperiments": {
-			"claimmentee": [
+			"mentorassignmentchanges": [
 				"claimmentee",
-				"claimmentee-no-previous-mentor"
-			],
-			"setmentor": [
+				"claimmentee-no-previous-mentor",
 				"setmentor",
 				"setmentor-no-previous-mentor"
 			],
