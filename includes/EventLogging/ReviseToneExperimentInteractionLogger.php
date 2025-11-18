@@ -29,6 +29,9 @@ class ReviseToneExperimentInteractionLogger {
 			return;
 		}
 		$experiment = $this->experimentUserManager->getCurrentExperiment();
+		if ( !$experiment ) {
+			return;
+		}
 		$experimentConfig = $experiment->getExperimentConfig();
 		$eventData = [
 				'experiment' => $experimentConfig,

@@ -51,8 +51,11 @@ class ExperimentXLabManager extends AbstractExperimentManager {
 		parent::__construct( $options );
 	}
 
-	public function getCurrentExperiment(): Experiment {
+	public function getCurrentExperiment(): ?Experiment {
 		$this->initialize();
+		if ( $this->currentExperimentName === null ) {
+			return null;
+		}
 		return $this->experimentManager->getExperiment( $this->currentExperimentName );
 	}
 
