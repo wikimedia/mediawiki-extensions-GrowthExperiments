@@ -226,7 +226,7 @@ module.exports = exports = defineComponent( {
 		}
 
 		function onClose() {
-			const closeResultObj = { closeSource: closeSource.value || 'unkown' };
+			const closeResultObj = { closeSource: closeSource.value || 'unknown' };
 			if ( slots.step1 ) {
 				closeResultObj.currentStep = currentStep.value;
 				closeResultObj.greaterStep = greaterStepShown.value;

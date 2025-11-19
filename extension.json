@@ -1687,6 +1687,7 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
+				"ext.growthExperiments.StructuredTask/revisetone/useExperiment.js",
 				"ui-components/MultiPaneDialog.js",
 				"ui-components/SwipePane.js",
 				"utils/Utils.js",

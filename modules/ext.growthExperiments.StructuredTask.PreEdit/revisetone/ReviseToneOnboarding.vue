@@ -42,6 +42,19 @@ const OnboardingDialog = require( '../common/OnboardingDialog.vue' );
 const QuizGame = require( './QuizGame.vue' );
 const quizData = require( './quizData.json' );
 const { computed, defineComponent, inject, ref, reactive } = require( 'vue' );
+const normalizeResults = ( results ) => {
+	const getOptionsMap = ( options ) => options.reduce( ( acc, curr ) => {
+		acc[ curr.label ] = curr.correct || false;
+		return acc;
+	}, {} );
+	return results.reduce( ( acc, curr, index ) => {
+		const optionsMap = getOptionsMap( quizData[ index ].options );
+		acc.push( optionsMap[ curr ] );
+		return acc;
+	}, [] )
+	// REVIEW format is 'correct,unanswered,incorrect,correct,unanswered', we could do counters instead
+		.map( ( v ) => v ? 'correct' : typeof v === 'boolean' ? 'incorrect' : 'unanswered' ).toString();
+};
 
 // @vue/component
 module.exports = defineComponent( {
@@ -57,9 +70,11 @@ module.exports = defineComponent( {
 		const i18n = inject( 'i18n' );
 		const Api = inject( 'mw.Api' );
 		const mwHook = inject( 'mw.hook' );
+		const experiment = inject( 'experiment' );
 		const open = ref( true );
 		const isChecked = ref( false );
-		const quizResults = reactive( [] );
+		// null stands for an unanswered quiz at the array's index
+		const quizResults = reactive( Array( quizData.length ).fill( null ) );
 		const totalSteps = quizData.length;
 		const currentStep = ref( 1 );
 		const stepperLabelText = computed(
@@ -72,9 +87,25 @@ module.exports = defineComponent( {
 			() => i18n( quizData[ currentStep.value - 1 ].instruction ).text(),
 		);
 		const saveDismissed = () => new Api().saveOption( props.prefName, isChecked.value ? '1' : '0' );
-		const reset = () => {
+		const reset = ( closeEventData ) => {
+			if ( experiment ) {
+				experiment.send( 'click', {
+					/* eslint-disable camelcase */
+					instrument_name: 'Revise tone onboarding dialog end click',
+					action_subtype: ( {
+						primary: 'get-started',
+						quiet: 'skip',
+						unknown: 'dismiss',
+					} )[ closeEventData.closeSource ],
+					action_source: `Quiz-step-${ currentStep.value }`,
+					action_context: normalizeResults( quizResults ),
+					/* eslint-enable camelcase */
+				} );
+			}
 			// Reset each game result in the rare case the dialog is re-opened
-			quizResults.splice( 0 );
+			quizResults.forEach( ( _, index, arr ) => {
+				arr[ index ] = null;
+			} );
 			// Store the checkbox value
 			saveDismissed();
 			// Fire the structured task

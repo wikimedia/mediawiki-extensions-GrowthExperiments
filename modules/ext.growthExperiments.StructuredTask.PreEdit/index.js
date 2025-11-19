@@ -2,6 +2,7 @@ module.exports = ( function () {
 	'use strict';
 
 	const Utils = require( '../utils/Utils.js' ),
+		useExperiment = require( '../ext.growthExperiments.StructuredTask/revisetone/useExperiment.js' ),
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
 		addSectionImageOnboardingPrefName = 'growthexperiments-addsectionimage-onboarding',
@@ -38,6 +39,7 @@ module.exports = ( function () {
 		app.provide( 'mw.Api', mw.Api );
 		app.provide( 'mw.user', mw.user );
 		app.provide( 'mw.hook', mw.hook );
+		app.provide( 'experiment', useExperiment() );
 		app.mount( mountPoint );
 		return app;
 	}
