@@ -44,8 +44,10 @@ class ReviseToneExperimentEditIngress extends DomainEventIngress implements Page
 			...$experiment->getExperimentConfig(),
 		] );
 		$experiment->send( 'edit_saved', [
-			// TODO add additional props, maybe nothing is needed but to check that all contextual attributes are
-			// properly added by the Metrics client
+			'page' => [
+				'revision_id' => $revId,
+				'namespace_id' => $event->getLatestRevisionAfter()->getPage()->getNamespace(),
+			],
 		] );
 		$this->logger->debug( 'ReviseToneExperimentEditIngress, processing {rev_id}: end', [
 			'rev_id' => $revId,
