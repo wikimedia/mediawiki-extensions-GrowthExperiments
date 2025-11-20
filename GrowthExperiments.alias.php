@@ -462,7 +462,6 @@ $specialPageAliases['uk'] = [
 /** Urdu (اردو) */
 $specialPageAliases['ur'] = [
 	'WelcomeSurvey' => [ 'خیرمقدمی_جائزہ', 'خیرمقدم_سروے' ],
-	'Homepage' => [ 'صفحۂ_اول', 'ہوم_پیج' ],
 	'Impact' => [ 'اثرات', 'اثر', 'ثر' ],
 	'ClaimMentee' => [ 'طلب_مسترشد', 'ایک_نووارد_کا_دعوی' ],
 	'NewcomerTasksInfo' => [ 'نووارد_کے_امور_مفوضہ_کی_معلومات' ],
