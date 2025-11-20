@@ -20,6 +20,12 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "மேற்கோள்கள்",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "விரிவாக்குக",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "இணைப்புகள்",
+	"growthexperiments-revisetone-onboarding-dialog-skip-label": "எனக்கு இது ஏற்கனவே {{GENDER:|தெரியும்}}",
+	"growthexperiments-revisetone-onboarding-step1-answer1": "பிறந்தது",
+	"growthexperiments-revisetone-onboarding-step2-answer1": "எதிர்மறை",
+	"growthexperiments-revisetone-onboarding-step2-answer3": "விளைவுகள்",
+	"growthexperiments-revisetone-onboarding-step5-answer1": "கற்பனை",
+	"growthexperiments-revisetone-onboarding-step5-answer2": "இறுதி",
 	"growthexperiments-addimage-rejectiondialog-action-done": "முடிந்த",
 	"growthexperiments-addimage-viewer-close-button": "மூடு"
 }
