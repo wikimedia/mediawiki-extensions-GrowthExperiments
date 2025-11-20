@@ -721,6 +721,9 @@
 				"PageLatestRevisionChanged"
 			],
 			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\ReviseToneExperimentEditIngress",
+			"services": [
+				"GrowthExperimentsLogger"
+			],
 			"optional_services": [
 				"MetricsPlatform.XLab.ExperimentManager"
 			]
