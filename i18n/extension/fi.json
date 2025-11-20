@@ -126,6 +126,7 @@
 	"communityconfiguration-mentorship-gementorshipenabled-control-label": "Mentorointiominaisuudet on kytketty päälle",
 	"communityconfiguration-mentorship-gementorshipminimumage-label": "Vähimmäismäärä päiviä, jonka ikäinen käyttäjätunnuksen on oltava ennen kuin hän voi ilmoittautua mentoriksi",
 	"communityconfiguration-mentorship-gementorshipminimumeditcount-label": "Vähimmäismuokkausmäärä, joka käyttäjän on täytynyt tehdä (missä tahansa nimiavaruudessa) ennen kuin hän voi ilmoittautua mentoriksi",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-control-label": "Rajaa kokeneet käyttäjät pois mentoroinnista",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "Muokkausmäärä",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "Tunnuksen ikä (päivissä)",
 	"communityconfiguration-growthhomepage-title": "Tulokkaiden perehdytys",
@@ -204,5 +205,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Kyllä, 50 muokkauksen jälkeen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Kyllä, 75 muokkauksen jälkeen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Kyllä, 150 muokkauksen jälkeen",
-	"growthexperiments-addlink-done-button": "Valmis"
+	"growthexperiments-addlink-done-button": "Valmis",
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Ylläpitotehtävä, siivottu vanhentuneet poissaoloaikaleimat"
 }

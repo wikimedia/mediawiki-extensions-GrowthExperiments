@@ -3,7 +3,8 @@
 		"authors": [
 			"Nieszczarda2",
 			"Red Winged Duck",
-			"Renessaince"
+			"Renessaince",
+			"Ucukor"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
@@ -13,5 +14,6 @@
 	"growthexperiments-homepage-suggestededits-error-description": "Калі ласка, паспрабуйце пазьней.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Мэнтар {{GENDER:$1|$1}} ужо зьмяняўся. Вы {{GENDER:$2|ўпеўненыя}}, што хочаце зьмяніць яго зноўку?",
 	"growthexperiments-addimage-viewer-close-button": "Закрыць",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Прапановы зьгенэраваны аўтаматычна й колькі зь іх будуць памылковымі. {{GENDER:|Вы}} самастойна выносіце вырак: прыняць або адхіліць іх.",
 	"echo-category-title-ge-newcomer": "Функцыі росту"
 }

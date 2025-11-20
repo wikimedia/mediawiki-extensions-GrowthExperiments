@@ -9,7 +9,8 @@
 			"Plaga med",
 			"Tomato Cream",
 			"Tīgelika",
-			"ZlyiLev"
+			"ZlyiLev",
+			"Ucukor"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
@@ -421,7 +422,7 @@
 	"growthexperiments-addimage-viewer-close-button": "Закрыць",
 	"growthexperiments-addimage-onboarding-content-intro-title": "Выявы дапамагаюць людзям вучыцца, але ў многіх артыкулах іх няма.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "{{GENDER:|Вы}} будзеце вырашаць, ці варта змяшчаць прапанаваную выяву ў артыкуле Вікіпедыі.",
-	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Прапановы створаны машынамі і вы будзеце выкарыстоўваць {{GENDER:|сваё}} меркаванне, каб вырашыць, прыняць або адхіліць іх.",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Прапановы створаны машынамі і вы будзеце выкарыстоўваць {{GENDER:|сваё}} меркаванне, каб развязаць, прыняць або адхіліць іх.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "Выявы паходзяць з Вікісховішча, калекцыі свабодна ліцэнзаваных выяваў, якія выкарыстоўваюцца Вікіпедыяй.",
 	"growthexperiments-addimage-onboarding-content-imagedetails-title": "Паглядзіце на прапанаваную выяву",
 	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1": "{{GENDER:|Выкарыстоўвайце}} назву файла, апісанне і прычыну, па якой яна была прапанаваная, каб вырашыць, ці варта размяшчаць яе ў артыкуле.",

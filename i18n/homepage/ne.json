@@ -5,7 +5,8 @@
 			"पर्वत सुबेदी",
 			"बडा काजी",
 			"सरोज कुमार ढकाल",
-			"हिमाल सुबेदी"
+			"हिमाल सुबेदी",
+			"Nirajan pant"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|नमस्कार}}, {{bidi: $1}}ज्यू!",
@@ -390,7 +391,7 @@
 	"growthexperiments-addimage-detailsdialog-date": "मिति:",
 	"growthexperiments-addimage-detailsdialog-author": "लेखक:",
 	"growthexperiments-addimage-detailsdialog-categories": "श्रेणीहरू:",
-	"growthexperiments-addimage-detailsdialog-link": "कमन्समा तस्वीर फाइल",
+	"growthexperiments-addimage-detailsdialog-link": "विकिमिडिया कमन्समा छवि हेर्नुहोस्",
 	"growthexperiments-addimage-detailsdialog-close": "बन्द गर्नुहोस्",
 	"growthexperiments-addimage-rejectiondialog-header": "किन नगर्ने?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|तपाईंको}} जवाफहरूले भविष्यका सुझावहरूलाई सुधार गर्नेछन्।",
