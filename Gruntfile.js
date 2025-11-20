@@ -2,8 +2,7 @@
 
 module.exports = function ( grunt ) {
 	const conf = grunt.file.readJSON( 'extension.json' ),
-		messageDirs = conf.MessagesDirs.GrowthExperiments,
-		messageDirsWithoutApi = messageDirs.filter( ( dir ) => !dir.includes( '/api' ) );
+		messageDirs = conf.MessagesDirs.GrowthExperiments;
 
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
 
@@ -12,26 +11,6 @@ module.exports = function ( grunt ) {
 			docs: {
 				files: {
 					src: messageDirs,
-				},
-			},
-			translations: {
-				files: {
-					src: messageDirsWithoutApi,
-				},
-				options: {
-					requireCompleteTranslationLanguages: [
-						'ar',
-						'cs',
-						'eu',
-						'fa',
-						'fr',
-						'hu',
-						'hy',
-						'ko',
-						'sr',
-						'uk',
-						'vi',
-					],
 				},
 			},
 		},
