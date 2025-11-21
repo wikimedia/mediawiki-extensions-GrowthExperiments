@@ -32,40 +32,25 @@ use Wikimedia\Stats\StatsFactory;
 
 class SpecialHomepage extends SpecialPage {
 
-	private HomepageModuleRegistry $moduleRegistry;
-	private AbstractExperimentManager $experimentUserManager;
-	private IMentorManager $mentorManager;
-	private Config $wikiConfig;
-	private UserOptionsManager $userOptionsManager;
-
 	/**
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.
 	 * Used by various EventLogging schemas to correlate events.
 	 */
 	private string $pageviewToken;
-	private TitleFactory $titleFactory;
 	private bool $isMobile;
-	private StatsFactory $statsFactory;
 
 	public function __construct(
-		HomepageModuleRegistry $moduleRegistry,
-		StatsFactory $statsFactory,
-		AbstractExperimentManager $experimentUserManager,
-		IMentorManager $mentorManager,
-		Config $wikiConfig,
-		UserOptionsManager $userOptionsManager,
-		TitleFactory $titleFactory,
+		private readonly HomepageModuleRegistry $moduleRegistry,
+		private readonly StatsFactory $statsFactory,
+		private readonly AbstractExperimentManager $experimentUserManager,
+		private readonly IMentorManager $mentorManager,
+		private readonly Config $wikiConfig,
+		private readonly UserOptionsManager $userOptionsManager,
+		private readonly TitleFactory $titleFactory,
 		private readonly ReviseToneExperimentInteractionLogger $experimentInteractionLogger,
 	) {
 		parent::__construct( 'Homepage', '', false );
-		$this->moduleRegistry = $moduleRegistry;
-		$this->statsFactory = $statsFactory;
 		$this->pageviewToken = $this->generatePageviewToken();
-		$this->experimentUserManager = $experimentUserManager;
-		$this->mentorManager = $mentorManager;
-		$this->wikiConfig = $wikiConfig;
-		$this->userOptionsManager = $userOptionsManager;
-		$this->titleFactory = $titleFactory;
 	}
 
 	/** @inheritDoc */
@@ -151,14 +136,19 @@ class SpecialHomepage extends SpecialPage {
 				$this->isMobile,
 				$modules
 			);
-			DeferredUpdates::addCallableUpdate( static function () use ( $logger ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $logger ) {
 				$logger->log();
+				// Log page visits with the SE module enabled for the refined experiment exposure metric, remove after
+				// T407802 is concluded
+				if ( SuggestedEdits::isActivated( $this->getContext()->getUser(), $this->userOptionsManager ) ) {
+					$this->experimentInteractionLogger->log( 'page-visited', [
+						'instrument_name' => 'Newcomer\'s homepage visited with SE module enabled',
+						'action_source' => 'Homepage-suggestions-enabled',
+					] );
+				}
 			} );
+
 		}
-		$this->experimentInteractionLogger->log( 'page-visited', [
-			'instrument_name' => 'Newcomer\'s homepage visited',
-			'action_source' => 'NewcomerHomepage',
-		] );
 	}
 
 	/**

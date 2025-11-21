@@ -80,6 +80,13 @@ module.exports = defineComponent( {
 		const stepperLabelText = computed(
 			() => i18n( 'growthexperiments-structuredtask-onboarding-dialog-progress', currentStep.value, totalSteps ).text(),
 		);
+		if ( experiment ) {
+			experiment.send( 'impression', {
+				/* eslint-disable camelcase */
+				instrument_name: 'Revise tone onboarding dialog impression',
+				action_source: `Quiz-step-${ currentStep.value }`,
+			} );
+		}
 		const onStepChange = ( newVal ) => {
 			currentStep.value = newVal;
 		};
