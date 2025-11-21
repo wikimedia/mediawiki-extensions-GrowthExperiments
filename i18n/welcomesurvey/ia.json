@@ -44,8 +44,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} es disponibile in quasi 300 linguas. Sape tu leger e scriber in altere linguas?",
 	"welcomesurvey-question-languages-placeholder": "Adder {{PLURAL:$1|un lingua|usque a $1 linguas}}…",
 	"welcomesurvey-question-languages-maximum": "Tu ha addite le numero maxime de linguas.",
-	"welcomesurvey-question-user-research-label": "Io vole esser contactate per e-mail sur le participation al recerca de usatores",
-	"welcomesurvey-question-user-research-help": "Si tu consenti, nos pote contactar te in le futuro pro studios de recerca pro meliorar nostre servicios.",
 	"welcomesurvey-reminder": "Adjuta nos a meliorar tu experientia de Wikipedia respondente a alcun questiones facultative in nostre sondage de benvenita. $1",
 	"welcomesurvey-reminder-link": "Responder al sondage",
 	"welcomesurvey-reminder-dismiss": "Clauder",

@@ -51,8 +51,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} on saatavana lähes 300 kielellä. Onko muita kieliä, joita luet ja kirjoitat?",
 	"welcomesurvey-question-languages-placeholder": "Lisää enintään {{PLURAL:$1|yksi kieli|$1 kieltä}}...",
 	"welcomesurvey-question-languages-maximum": "Olet lisännyt maksimimäärän kieliä.",
-	"welcomesurvey-question-user-research-label": "Haluan, että minuun otetaan yhteyttä käyttäjätutkimukseen osallistumiseksi sähköpostitse",
-	"welcomesurvey-question-user-research-help": "Jos päätät suostua, saatamme ottaa sinuun yhteyttä tulevaisuudessa palveluidemme parantamisen tutkimista varten.",
 	"welcomesurvey-reminder": "Auta meitä parantamaan {{GENDER:|Wikipedia-kokemustasi}} vastaamalla muutamaan aloituskyselyn vapaaehtoiseen kysymykseen. $1",
 	"welcomesurvey-reminder-link": "Vastaa kyselyyn",
 	"welcomesurvey-reminder-dismiss": "Hylkää",

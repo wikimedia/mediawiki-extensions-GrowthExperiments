@@ -44,8 +44,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} لڳ ڀڳ 300 ٻولين ۾ دستياب آھي. ڇا {{GENDER:|توھان}} ٻين ٻولين ۾ پڙھڻ ۽ سنوارڻ چاھيو ٿا؟",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|ھڪ ٻولي|$1 ٻولين}} تائين داخل ڪريو...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|توھان}} وڌيڪ ٻوليون داخل نٿا ڪري سگهو.",
-	"welcomesurvey-question-user-research-label": "آئون چاھيان ٿو تہ واپرائيندڙن جي باري ۾ تحقيقن بابت مونسان ايميل پتي تي رابطو ڪيو وڃي.",
-	"welcomesurvey-question-user-research-help": "جيڪڏھن {{GENDER:|توھان}} راضپو ڏيکاريو تہ اسان مستقل ۾ {{GENDER:|توھان}} سان تحقيق بابت رابطو ڪري سگهون ٿا، تہ جيئن اسان پنھنجي خدمتن ۾ بھتري آڻي سگهون.",
 	"welcomesurvey-reminder": "وڪيپيڊيا ۾ {{GENDER:|توھان جي}} سفر کي وڌيڪ آسان بنائڻ لاءِ، ڀليڪار واري سروري ۾ پڇيل ڪجھ وڌيڪ اختياري سوالن جا جواب ڏيو. $1",
 	"welcomesurvey-reminder-link": "سروي ۾ حصو وٺو",
 	"welcomesurvey-reminder-dismiss": "برخواست ڪريو",

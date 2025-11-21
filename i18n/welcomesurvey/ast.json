@@ -45,8 +45,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} ta disponible en casi 300 idiomes. ¿Llees o escribes n'otros idiomes?",
 	"welcomesurvey-question-languages-placeholder": "Amiesta hasta {{PLURAL:$1|una llingua|$1 idiomes}}...",
 	"welcomesurvey-question-languages-maximum": "Añadisti'l númberu máximu de llingües.",
-	"welcomesurvey-question-user-research-label": "Quiero que me contauten per corréu electrónicu pa participar na investigación d'usuariu/a",
-	"welcomesurvey-question-user-research-help": "Si {{GENDER:|tu}} aceutes, podemos ponenos en contautu con {{GENDER:|tu}} nel futuru pa estudios d'investigación col envís d'ameyorar los nuestros servicios.",
 	"welcomesurvey-reminder": "Ayudar a ameyorar {{GENDER:|la to}} Wikipedia respondiendo a delles entrugues opcionales na nuestra Encuesta de Bienvenida. $1",
 	"welcomesurvey-reminder-link": "Facer la encuesta",
 	"welcomesurvey-reminder-dismiss": "Escartar",

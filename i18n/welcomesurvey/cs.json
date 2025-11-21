@@ -49,8 +49,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} je dostupná ve skoro 300 jazycích. {{GENDER:|Ovládáte}} i některé další jazyky?",
 	"welcomesurvey-question-languages-placeholder": "Přidejte až {{PLURAL:$1|jeden jazyk|$1 jazyky|$1 jazyků}}...",
 	"welcomesurvey-question-languages-maximum": "Již jste {{GENDER:|přidal|přidala|přidali}} nejvyšší možné množství jazyků.",
-	"welcomesurvey-question-user-research-label": "Chci být kontaktován e-mailem ohledně účasti v uživatelském výzkumu.",
-	"welcomesurvey-question-user-research-help": "Pokud {{GENDER:|budete souhlasit}}, můžeme vás v budoucnu kontaktovat ohledně vaší účasti ve výzkumných studiích za účelem zlepšení našich služeb.",
 	"welcomesurvey-reminder": "Pomozte nám vylepšit {{GENDER:|váš}} zážitek z editování Wikipedie zodpovězením několika otázek v Uvítacím dotazníku. $1",
 	"welcomesurvey-reminder-link": "Vyplnit dotazník",
 	"welcomesurvey-reminder-dismiss": "Zavřít",

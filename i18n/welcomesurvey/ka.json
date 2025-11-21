@@ -44,8 +44,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} ხელმისაწვდომია თითქმის 300 ენაზე. არის სხვა ენებიც, რომელზეც {{GENDER:|თქვენ}} კითხულობთ და წერთ?",
 	"welcomesurvey-question-languages-placeholder": "დაამატეთ {{PLURAL:$1|$1}}-მდე ენა...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|თქვენ}} დაამატეთ ენების მაქსიმალური რაოდენობა.",
-	"welcomesurvey-question-user-research-label": "მსურს დამიკავშირდნენ ელექტრონული ფოსტით მომხმარებელთა კვლევაში მონაწილეობის თაობაზე",
-	"welcomesurvey-question-user-research-help": "თუკი {{GENDER:|თქვენ}} თანხმობას განაცხადებთ, ჩვენ შეიძლება დაგვიკავშირდეთ მომავალში, ჩვენი სერვისების გასაუმჯობესებლად კვლევის თაობაზე.",
 	"welcomesurvey-reminder": "დაგვეხმარეთ ვიკიპედიაში {{GENDER:|თქვენი}} გამოცდილების გაუმჯობესებაში ჩვენ მისასალმებელ გამოკითხვაში რამდენიმე არასავალდებულო კითხვაზე პასუხის გაცემით. $1",
 	"welcomesurvey-reminder-link": "გამოკითხვის დაწყება",
 	"welcomesurvey-reminder-dismiss": "უარყოფა",

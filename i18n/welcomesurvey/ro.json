@@ -46,8 +46,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} este disponibilă în aproape 300 de limbi. Există alte limbi în care scrieți și citiți?",
 	"welcomesurvey-question-languages-placeholder": "Adăugați până la {{PLURAL:$1|o limbă|$1 limbi}}...",
 	"welcomesurvey-question-languages-maximum": "Ați adăugat numărul maxim de limbi.",
-	"welcomesurvey-question-user-research-label": "Doresc să fiu {{GENDER:|contactat|contactată}} prin e-mail cu privire la participarea la cercetarea asupra utilizatorilor",
-	"welcomesurvey-question-user-research-help": "Dacă {{GENDER:|vă}} înscrieți, s-ar putea să {{GENDER:|vă}} contactăm în viitor pentru studii de cercetare care să ne îmbunătățească serviciile.",
 	"welcomesurvey-reminder": "Ajutați-ne să {{GENDER:|vă}} îmbunătățim experiența pe Wikipedia răspunzând la câteva întrebări opționale în sondajul nostru de bun-venit. $1",
 	"welcomesurvey-reminder-link": "Ia sondajul",
 	"welcomesurvey-reminder-dismiss": "Respinge",

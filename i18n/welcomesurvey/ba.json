@@ -44,8 +44,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} яҡынса 300 телдә бар. Ҡайһы телдәрҙә уҡый һәм яҙа алаһығыҙ?",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|Бер тел|$1 телгә тиклем}} өҫтәгеҙ...",
 	"welcomesurvey-question-languages-maximum": "Телдәрҙең максимум һанын өҫтәнегеҙ.",
-	"welcomesurvey-question-user-research-label": "Ҡулланыусыларҙың фекерен белешеүҙә ҡатнашыу тураһында электрон почта аша хәбәр итеүҙәрен теләйем",
-	"welcomesurvey-question-user-research-help": "Әгәр һайлаһағыҙ, хеҙмәттәребеҙҙе яҡшыртыу өсөн киләсәктә һеҙҙең менән тикшеренеүҙәр үткәреү тураһында бәйләнешкә сығыуыбыҙ мөмкин буласаҡ.",
 	"welcomesurvey-reminder": "Бер нисә мотлаҡ булмаған һорауға башланғыс һорауламабыҙҙа яуап биреп Википедия тәжрибәгеҙҙе яҡшыртырға ярҙам итегеҙ. $1",
 	"welcomesurvey-reminder-link": "Һорауламаны башларға",
 	"welcomesurvey-reminder-dismiss": "Ябырға",

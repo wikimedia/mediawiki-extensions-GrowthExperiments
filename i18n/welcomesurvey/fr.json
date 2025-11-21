@@ -52,8 +52,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} est disponible dans près de 300 langues. Y a-t-il d’autres langues que {{GENDER:|vous}} lisez ou écrivez ?",
 	"welcomesurvey-question-languages-placeholder": "Ajouter jusqu’à {{PLURAL:$1|une langue|$1 langues}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Vous}} avez ajouté le nombre maximum de langues.",
-	"welcomesurvey-question-user-research-label": "Je veux être contacté par courriel sur la participation à la recherche utilisateur",
-	"welcomesurvey-question-user-research-help": "Si {{GENDER:|vous}} cochez, nous pourrons {{GENDER:|vous}} contacter dans le futur pour les études de recherche afin d’améliorer nos services.",
 	"welcomesurvey-reminder": "Aidez-nous à améliorer {{GENDER:|votre}} expérience de Wikipédia en répondant à quelques questions facultatives dans notre enquête de bienvenue. $1",
 	"welcomesurvey-reminder-link": "Participer à l’enquête",
 	"welcomesurvey-reminder-dismiss": "Fermer",

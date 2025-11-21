@@ -47,8 +47,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} təxminən 300-ə yaxın dildə mövcuddur. Yazıb-oxuya bildiyiniz başqa bir dil var?",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|Bir dilə|$1 dilə}} qədər əlavə edin...",
 	"welcomesurvey-question-languages-maximum": "Maksimum sayda dil əlavə etdiniz.",
-	"welcomesurvey-question-user-research-label": "İstifadəçi araşdırmasında iştirak etmək barədə e-poçt vasitəsilə əlaqə saxlanılmasını istəyirəm",
-	"welcomesurvey-question-user-research-help": "Bunu seçsəniz, xidmətlərimizi təkmilləşdirmək üçün gələcəkdə araşdırma işləri üçün {{GENDER:|sizinlə}} əlaqə saxlaya bilərik.",
 	"welcomesurvey-reminder": "Yeni istifadəçi sorğumuzda bir neçə suala cavab verərək Vikipediya təcrübənizi təkmilləşdirməyə kömək edin. $1",
 	"welcomesurvey-reminder-link": "Sorğuya qatıl",
 	"welcomesurvey-reminder-dismiss": "Bağla",

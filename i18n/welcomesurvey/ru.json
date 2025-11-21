@@ -56,8 +56,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} доступна на более чем 300-х языках. Подскажите, на каких языках ещё {{GENDER:|вы}} можете писать и читать?",
 	"welcomesurvey-question-languages-placeholder": "Добавить до $1 {{PLURAL:$1|языка|языков}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Вы}} добавили максимальное количество языков.",
-	"welcomesurvey-question-user-research-label": "Я хочу, чтобы со мной связались по электронной почте по поводу участия в исследовании пользователей",
-	"welcomesurvey-question-user-research-help": "Если {{GENDER:|вы}} согласитесь, мы можем связаться с {{GENDER:|вами}} в будущем в рамках исследований по улучшению наших услуг.",
 	"welcomesurvey-reminder": "Помогите нам сделать Википедию лучше для {{GENDER:|вас}}, ответив на несколько необязательных вопросов в нашем приветственном опросе. $1",
 	"welcomesurvey-reminder-link": "Пройти опрос",
 	"welcomesurvey-reminder-dismiss": "Закрыть",

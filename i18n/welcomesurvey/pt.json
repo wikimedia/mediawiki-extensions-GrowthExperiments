@@ -48,8 +48,6 @@
 	"welcomesurvey-question-languages-label": "A wiki {{SITENAME}} está disponível em quase 300 línguas. Lê ou escreve outras línguas?",
 	"welcomesurvey-question-languages-placeholder": "Acrescentar até {{PLURAL:$1|uma língua|$1 línguas}}...",
 	"welcomesurvey-question-languages-maximum": "Adicionou o número máximo de línguas.",
-	"welcomesurvey-question-user-research-label": "Quero ser contactado por correio eletrónico para participar em questionários aos utilizadores",
-	"welcomesurvey-question-user-research-help": "Se optar por ser {{GENDER:|incluído, poderemos contactá-lo|incluída, poderemos contactá-la}} futuramente para estudos com vista a melhorar os nossos serviços.",
 	"welcomesurvey-reminder": "Ajude-nos a melhorar a sua utilização da Wikipédia respondendo a algumas perguntas facultativas da nossa Sondagem de Boas-Vindas. $1",
 	"welcomesurvey-reminder-link": "Começar a sondagem",
 	"welcomesurvey-reminder-dismiss": "Ignorar",

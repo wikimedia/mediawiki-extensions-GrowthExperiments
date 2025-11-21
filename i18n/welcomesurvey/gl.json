@@ -45,8 +45,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} está dispoñible en preto de 300 idiomas. {{GENDER:|Sabes}} ler e escribir noutras linguas?",
 	"welcomesurvey-question-languages-placeholder": "Engade ata {{PLURAL:$1|unha lingua|$1 linguas}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Engadiches}} o número máximo de linguas.",
-	"welcomesurvey-question-user-research-label": "Quero que vos poñades en contacto comigo por correo electrónico para participar en enquisas sobre os usuarios",
-	"welcomesurvey-question-user-research-help": "Se {{GENDER:|queres}}, podémonos pór en contacto {{GENDER:|contigo}} no futuro para mellorarmos os nosos servizos mediante enquisas de investigación.",
 	"welcomesurvey-reminder": "Axúdanos a mellorar a {{GENDER:|túa}} experiencia na Wikipedia respondendo unhas poucas preguntas opcionais na nosa enquisa de benvida. $1",
 	"welcomesurvey-reminder-link": "Parcicipar na enquisa",
 	"welcomesurvey-reminder-dismiss": "Descartar",

@@ -45,8 +45,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} దాదాపు 300 భాషల్లో ఉంది. {{GENDER:|మీకు}} వేరే భాషలేమైనా చదవడం రాయడం వచ్చా?",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|ఒక భాష|$1 భాషల}} వరకు చేర్చండి...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|మీరు}} గరిష్ఠ సంఖ్యలో భాషలను చేర్చారు.",
-	"welcomesurvey-question-user-research-label": "వాడుకరుల పరిశోధనలో పాల్గొనే విషయమై నన్ను ఈమెయిలు ద్వారా సంప్రదించవచ్చు",
-	"welcomesurvey-question-user-research-help": "{{GENDER:|మీరు}} ఒప్పుకుంటే, భవిష్యత్తులో మా సేవలను మెరుగుపరచడంలో భాగంగా మేం {{GENDER:|మిమ్మల్ని}} సంప్రదించవచ్చు.",
 	"welcomesurvey-reminder": "మా స్వాగత సర్వేలో కొన్ని ఐచ్ఛిక ప్రశ్నలకు సమాధానమిచ్చి {{GENDER:|మీకు}} మెరుగైన వికీపీడియా అనుభవాన్ని అందించడంలో మాకు సాయపడండి. $1",
 	"welcomesurvey-reminder-link": "సర్వేలో పాల్గొనండి",
 	"welcomesurvey-reminder-dismiss": "తీసివేయి",

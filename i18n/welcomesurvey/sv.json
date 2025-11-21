@@ -50,8 +50,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} finns på nästan 300 språk. Finns det andra språk {{GENDER:|du}} läser och skriver?",
 	"welcomesurvey-question-languages-placeholder": "Lägg till upp till {{PLURAL:$1|ett språk|$1 språk}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Du}} har lagt till så många språk man får.",
-	"welcomesurvey-question-user-research-label": "Jag vill kontaktas via e-post om att delta i användarundersökningar",
-	"welcomesurvey-question-user-research-help": "Om {{GENDER:|du}} väljer att delta kan vi kontakta dig i framtiden för forskningsstudier för att förbättra våra tjänster.",
 	"welcomesurvey-reminder": "Hjälp oss förbättra {{GENDER:|din}} Wikipediaupplevelse genom att svara på några valfria frågor i vår välkomstundersökning. $1",
 	"welcomesurvey-reminder-link": "Starta undersökningen",
 	"welcomesurvey-reminder-dismiss": "Avfärda",

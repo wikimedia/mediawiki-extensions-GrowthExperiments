@@ -50,8 +50,6 @@
 	"welcomesurvey-question-languages-label": "Η σελίδα {{SITENAME}} είναι διαθέσιμη σε σχεδόν 300 γλώσσες. Υπάρχουν άλλες γλώσσες στις οποίες διαβάζετε και γράφετε;",
 	"welcomesurvey-question-languages-placeholder": "Προσθέστε περισσότερες από {{PLURAL:$1|μια γλώσσα|$1 γλώσσες}}...",
 	"welcomesurvey-question-languages-maximum": "Έχετε προσθέσει το μέγιστο επιτρεπόμενο όριο γλωσσών.",
-	"welcomesurvey-question-user-research-label": "Θέλω να επικοινωνήσουν μαζί μου μέσω email σχετικά με τη συμμετοχή στην έρευνα χρηστών",
-	"welcomesurvey-question-user-research-help": "Εάν {{GENDER:|}} συμμετάσχετε, ενδέχεται να επικοινωνήσουμε με {{GENDER:|εσάς}} στο μέλλον για ερευνητικές μελέτες για τη βελτίωση των υπηρεσιών μας.",
 	"welcomesurvey-reminder": "Βοηθήστε μας να βελτιώσουμε την εμπειρία {{GENDER:|σας}} στη Βικιπαίδεια απαντώντας λίγες προαιρετικές ερωτήσεις. $1",
 	"welcomesurvey-reminder-link": "Ξεκινήστε το ερωτηματολόγιο",
 	"welcomesurvey-reminder-dismiss": "Απόρριψη",

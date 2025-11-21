@@ -53,8 +53,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}}有將近 300 種語言可用。請問{{GENDER:|您}}有其他閱讀和書寫時使用的語言嗎？",
 	"welcomesurvey-question-languages-placeholder": "新增至多 {{PLURAL:$1|1 個語言|$1 個語言}}…",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|您}}已達到語言新增數量的上限。",
-	"welcomesurvey-question-user-research-label": "我想要透過電子郵件來接收關於參與使用者調查的資訊",
-	"welcomesurvey-question-user-research-help": "如果{{GENDER:|您}}選擇加入，我們事後可能會連絡{{GENDER:|您}}來進行調查，以改善我們的服務。",
 	"welcomesurvey-reminder": "藉由在我們的 Welcome Survey 上回答一些可選問題，來協助我們改善{{GENDER:|您}}在維基百科上的使用體驗。$1",
 	"welcomesurvey-reminder-link": "參加調查",
 	"welcomesurvey-reminder-dismiss": "關閉",

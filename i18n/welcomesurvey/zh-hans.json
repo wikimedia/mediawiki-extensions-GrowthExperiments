@@ -62,8 +62,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}}提供近300种语言版本。{{GENDER:|您}}还用其他语言阅读和写作吗？",
 	"welcomesurvey-question-languages-placeholder": "合计共{{PLURAL:$1|一种语言|$1种语言}}……",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|您}}已添加的语言已达上限。",
-	"welcomesurvey-question-user-research-label": "我希望通过电子邮件接收有关参与用户调研的信息",
-	"welcomesurvey-question-user-research-help": "如果{{GENDER:|您}}选择加入，我们将来可能会联系{{GENDER:|您}}参与调研，以改进我们的服务。",
 	"welcomesurvey-reminder": "请在新用户欢迎调查中回答一些可选的问题，来帮助我们提升{{GENDER:|您}}在维基百科的体验。$1",
 	"welcomesurvey-reminder-link": "参加调查",
 	"welcomesurvey-reminder-dismiss": "关闭",

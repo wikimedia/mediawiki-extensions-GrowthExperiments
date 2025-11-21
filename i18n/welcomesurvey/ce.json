@@ -44,8 +44,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} тӀекхочуш йу 300 сов меттанашкахь. Дийца, кхин муьлхачу меттанашкахь {{GENDER:|хьуна}} хаа йаздан а, деша а?",
 	"welcomesurvey-question-languages-placeholder": "ТӀетоха $1 {{PLURAL:$1|мотт}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Ахьа}} тӀетоьхна максимум меттанаш.",
-	"welcomesurvey-question-user-research-label": "Суна лаьа, декъашхой талламехь дакъалацарх лаьцна электронан поштехула зӀе хилийта",
-	"welcomesurvey-question-user-research-help": "Нагахь санна {{GENDER:|хьо}} реза хилахь, тхо зӀене довла мега {{GENDER:|хьоьца}} тӀейогӀучу хенахь, талламийн декъехь, тхан сервисаш тойархьама.",
 	"welcomesurvey-reminder": "ГӀо де тхуна Википеди {{GENDER:|шуна}} дика йан, тӀедиллина доцучу массийта хаттаршна жоьпаш делла. $1",
 	"welcomesurvey-reminder-link": "ДӀадоладе хаттарш",
 	"welcomesurvey-reminder-dismiss": "ДӀачӀагӀа",

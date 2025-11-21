@@ -51,8 +51,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} is beschikbaar in bijna 300 talen. Zijn er andere talen waarin u kunt lezen en schrijven?",
 	"welcomesurvey-question-languages-placeholder": "Voeg {{PLURAL:$1|een taal|maximaal $1 talen}} toe...",
 	"welcomesurvey-question-languages-maximum": "U hebt het maximum aantal talen toegevoegd.",
-	"welcomesurvey-question-user-research-label": "Ik wil per e-mail benaderd worden over deelname aan gebruikersonderzoek",
-	"welcomesurvey-question-user-research-help": "Als u hiervoor kiest, kunnen we in de toekomst contact met u opnemen voor onderzoek om onze diensten te verbeteren.",
 	"welcomesurvey-reminder": "Help ons uw Wikipedia-ervaring te verbeteren door een paar vrijblijvende vragen te beantwoorden in onze welkomstenquête. $1",
 	"welcomesurvey-reminder-link": "De enquête invullen",
 	"welcomesurvey-reminder-dismiss": "Sluiten",

@@ -24,6 +24,9 @@
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Beim Speichern einer strukturierten Bearbeitung des GrowthExperiments „[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link Link hinzufügen]“ verwenden.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "Beim Speichern einer strukturierten Bearbeitung des GrowthExperiments „[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image Bild hinzufügen]“ verwenden.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-section-image-recommendation": "Diese Option verwenden, wenn eine strukturierte Bearbeitung von GrowthExperiments „[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image#\"Add_an_image\"_to_a_Section Ein Bild zu einem Abschnitt hinzufügen]“ gespeichert wird.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-revise-tone": "Verwende diese Option beim Speichern einer strukturierten Bearbeitung von GrowthExperiments mit dem Parameter „[[mw:Growth/Revise_Tone|Revise Tone]]“.",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-revise-tone": "<dl><dt>Für das Plugin <var>ge-task-revise-tone</var></dt><dd>\n$1\n</dd></dl>",
+	"apihelp-growthexperiments-structured-task-submit-data-format-revise-tone": "Für dieses Plugin sollten keine Daten angegeben werden.",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Für das <var>ge-task-link-recommendation</var>-Plugin</dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Für das <var>ge-task-image-recommendation</var>-Plugin</dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt>Für das <var>ge-task-section-image-recommendation</var>-Plugin</dt><dd>\n$1\n</dd></dl>",
@@ -45,5 +48,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Der Parameter <var>editRevId</var> kann nicht verwendet werden, wenn der Parameter <var>accepted</var> auf <kbd>false</kbd> gesetzt ist.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Der Parameter <var>caption</var> ist erforderlich, wenn der Parameter <var>accepted</var> auf <kbd>true</kbd> gesetzt ist.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Die in <var>editRevId</var> angegebene Version wurde nicht gefunden.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Die in <var>editRevId</var> angegebene Version gehört zu einer anderen Seite."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Die in <var>editRevId</var> angegebene Version gehört zu einer anderen Seite.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "Gib eine Empfehlung zur Überarbeitung des Tonfalls für eine bestimmte Seite ab.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "Titel der Seite, für die die Empfehlung entfernt werden soll, ohne Namensraum."
 }

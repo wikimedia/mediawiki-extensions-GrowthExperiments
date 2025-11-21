@@ -49,8 +49,6 @@
 	"welcomesurvey-question-languages-label": "تتوفّر {{SITENAME}} في ما يقارب 300 لغة. هل {{GENDER:|تستطيع|تستطيعين}} القراءة والكتابة بلغات أخرى؟",
 	"welcomesurvey-question-languages-placeholder": "أضف ما يصل إلى {{PLURAL:$1|لا لغات|لغة واحدة أخرى|لغتين أخرتين|$1 لغات أخرى|$1 لغة أخرى}}...",
 	"welcomesurvey-question-languages-maximum": "أضفتم العدد الأقصى من اللغات.",
-	"welcomesurvey-question-user-research-label": "أريد أن يتم الاتصال بي عبر البريد الإلكتروني بشأن المشاركة في بحوث المستخدم",
-	"welcomesurvey-question-user-research-help": "إذا اشتركت، فقد نتصل {{GENDER:|بكَ|بكِ}} في المستقبل لإجراء دراسات بحثية لتحسين خدماتنا.",
 	"welcomesurvey-reminder": "{{GENDER:|ساعدنا|ساعدينا}} في تحسين تجربتك لويكيبيديا من خلال الإجابة على بعض الأسئلة الاختيارية. $1",
 	"welcomesurvey-reminder-link": "بدء الاستبيان",
 	"welcomesurvey-reminder-dismiss": "رفض",

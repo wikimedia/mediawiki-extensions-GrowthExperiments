@@ -45,8 +45,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} tersedia dalam hampir 300 bahasa. Adakah terdapat bahasa lain yang {{GENDER:|anda}} boleh baca dan tulis?",
 	"welcomesurvey-question-languages-placeholder": "Tambah {{PLURAL:$1|satu bahasa|sehingga $1 bahasa}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Anda}} telah menambah bilangan maksimum bahasa.",
-	"welcomesurvey-question-user-research-label": "Saya ingin dihubungi melalui e-mel tentang mengambil bahagian dalam penyelidikan pengguna",
-	"welcomesurvey-question-user-research-help": "Jika {{GENDER:|anda}} ikut serta, kami boleh menghubungi {{GENDER:|anda}} pada masa hadapan untuk kajian penyelidikan bagi menambah baik perkhidmatan kami.",
 	"welcomesurvey-reminder": "Bantu kami meningkatkan pengalaman Wikipedia {{GENDER:|anda}} dengan menjawab beberapa soalan pilihan dalam Tinjauan Selamat Datang kami. $1",
 	"welcomesurvey-reminder-link": "Mulakan tinjauan",
 	"welcomesurvey-reminder-dismiss": "Abaikan",

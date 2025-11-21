@@ -54,8 +54,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} khả dụng trong hơn 300 ngôn ngữ. Bạn có đọc và viết được ngôn ngữ nào khác không?",
 	"welcomesurvey-question-languages-placeholder": "Thêm tối đa {{PLURAL:$1|một ngôn ngữ|$1 ngôn ngữ}}…",
 	"welcomesurvey-question-languages-maximum": "Bạn đã thêm số lượng ngôn ngữ tối đa.",
-	"welcomesurvey-question-user-research-label": "Tôi muốn được thông báo qua email về việc tham gia nghiên cứu người dùng",
-	"welcomesurvey-question-user-research-help": "Nếu bạn đồng ý tham gia, chúng tôi có thể liên hệ với bạn trong tương lai để thực hiện các nghiên cứu nhằm cải thiện dịch vụ của chúng tôi.",
 	"welcomesurvey-reminder": "Hãy giúp chúng tôi cải thiện trải nghiệm Wikipedia của bạn bằng cách trả lời một số câu hỏi tùy chọn trong Khảo sát chào mừng của chúng tôi. $1",
 	"welcomesurvey-reminder-link": "Tham gia khảo sát",
 	"welcomesurvey-reminder-dismiss": "Bỏ qua",

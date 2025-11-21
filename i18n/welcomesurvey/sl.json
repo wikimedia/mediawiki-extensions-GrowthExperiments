@@ -45,8 +45,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} je na voljo v skoraj 300 jezikih. Ali {{GENDER:|berete in pišete}} tudi v drugih jezikih?",
 	"welcomesurvey-question-languages-placeholder": "Dodajte do {{PLURAL:$1|en jezik|$1 jezika|$1 jezike|$1 jezikov}} ...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Dodali}} ste največje mogoče število jezikov.",
-	"welcomesurvey-question-user-research-label": "Želim, da me po e-pošti kontaktirate glede sodelovanja v raziskavi uporabnikov",
-	"welcomesurvey-question-user-research-help": "Če se {{GENDER:|boste}} odločili, bomo morda v prihodnosti stopili v stik z {{GENDER:|vami}} za raziskave za izboljšanje naših storitev.",
 	"welcomesurvey-reminder": "{{GENDER:|Odgovorite na nekaj vprašanj v naši anketi dobrodošlice in nam pomagajte izboljšati vašo}} izkušnjo z Wikipedijo. $1",
 	"welcomesurvey-reminder-link": "Izpolnite anketo",
 	"welcomesurvey-reminder-dismiss": "Opusti",

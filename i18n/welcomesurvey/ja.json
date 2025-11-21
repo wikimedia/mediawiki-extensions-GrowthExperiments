@@ -50,7 +50,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}}は世界のおよそ 300 言語で掲載しています。{{GENDER:|}}読み書きができる他の言語はありますか？",
 	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|言語|$1 言語}}を追加……",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|}}追加した言語数が上限に達しました。",
-	"welcomesurvey-question-user-research-label": "利用者調査への参加についてメールで連絡を受けたい",
 	"welcomesurvey-reminder": "{{GENDER:|皆さん}}のウィキペディア体験をもっとよくするお手伝いをさせてください。回答はオプションですが、「ようこそアンケート」をご用意しましたのでぜひ答えを書いていただけないでしょうか。$1",
 	"welcomesurvey-reminder-link": "アンケートに答える",
 	"welcomesurvey-reminder-dismiss": "閉じる",

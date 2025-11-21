@@ -55,8 +55,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} está disponible en casi 300 idiomas. ¿Lees o escribes en otros idiomas?",
 	"welcomesurvey-question-languages-placeholder": "Añade hasta {{PLURAL:$1|un idioma|$1 idiomas}}...",
 	"welcomesurvey-question-languages-maximum": "Has añadido el numero máximo de idiomas.",
-	"welcomesurvey-question-user-research-label": "Quiero que me contacten por correo electrónico para participar en la investigación de usuario/a",
-	"welcomesurvey-question-user-research-help": "Si aplicas, te contactaremos en el futuro para estudios de investigación que nos ayuden a mejorar nuestros servicios.",
 	"welcomesurvey-reminder": "Ayúdanos a mejorar {{GENDER:|tu}} Wikipedia respondiendo a algunas preguntas opcionales en nuestra Encuesta de Bienvenida. $1",
 	"welcomesurvey-reminder-link": "Completar encuesta",
 	"welcomesurvey-reminder-dismiss": "Abandonar",

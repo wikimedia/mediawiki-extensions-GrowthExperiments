@@ -47,8 +47,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} gëtt et op bal 300 Sproochen. Gëtt et nach aner Sproochen, déi {{GENDER:|Dir}} liesen a schreiwe kënnt?",
 	"welcomesurvey-question-languages-placeholder": "Setzt bis zu {{PLURAL:$1|eng Sprooch|$1 Sproochen}} derbäi...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Dir}} hutt déi maximal méiglech Zuel vu Sproochen derbäigesat.",
-	"welcomesurvey-question-user-research-label": "Ech wëll via E-Mail kontaktéiert gi fir bei Benotzerëmfroe matzemaachen",
-	"welcomesurvey-question-user-research-help": "Wann {{GENDER:|Dir}} Iech averstane gitt, kontaktéiere mir {{GENDER:|Iech}} eventuell an Zukunft fir Forschungsstudie fir eis Servicer ze verbesseren.",
 	"welcomesurvey-reminder": "Hëlleft eis {{GENDER:|Är}} Erfarungen op Wikipedia ze verbessern, andeems Dir e puer optional Froen an eiser Wëllkommensëmfro beäntwert. $1",
 	"welcomesurvey-reminder-link": "Bei der Ëmfro matmaachen",
 	"welcomesurvey-reminder-dismiss": "Verstoppen",

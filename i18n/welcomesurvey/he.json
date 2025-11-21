@@ -46,8 +46,6 @@
 	"welcomesurvey-question-languages-label": "אתר {{SITENAME}} זמין בכמעט 300 שפות. האם יש שפות אחרות שבהן {{GENDER:|אתה יודע|את יודעת}} לקרוא ולכתוב?",
 	"welcomesurvey-question-languages-placeholder": "נא להוסיף עד {{PLURAL:$1|שפה אחת|$1 שפות}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|הוספת}} את המספר המרבי של שפות.",
-	"welcomesurvey-question-user-research-label": "אני רוצה שייצרו איתי קשר באמצעות דואר אלקטרוני לגבי השתתפות במחקר משתמשים",
-	"welcomesurvey-question-user-research-help": "אם {{GENDER:|תצטרף|תצטרפי}}, אנו יכולים ליצור קשר איתך בעתיד לצורך מחקרים לשיפור השירותים שלנו.",
 	"welcomesurvey-reminder": "{{GENDER:|עזור|עזרי|אנו מבקשים ממך לעזור}} לנו לשפר את חוויית הוויקיפדיה שלך על־ידי תשובה על כמה שאלות רשות בסקר קבלת הפנים. $1",
 	"welcomesurvey-reminder-link": "מילוי הסקר",
 	"welcomesurvey-reminder-dismiss": "סגירה",

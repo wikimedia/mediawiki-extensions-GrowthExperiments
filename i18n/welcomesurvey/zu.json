@@ -44,8 +44,6 @@
 	"welcomesurvey-question-languages-label": "I-{{SITENAME}} itholakala cishe ngezilimi ezingu-300. Ingabe zikhona ezinye izilimi {{GENDER:|you}} ozifunda futhi ubhale ngazo?",
 	"welcomesurvey-question-languages-placeholder": "Engeza kufika ku {{PLURAL:$1| ulimi olulodwa| $1 izilimi}}...",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Wena}} ungeze inombolo enkulu yezilimi.",
-	"welcomesurvey-question-user-research-label": "Ngifuna ukuthintwa nge-imeyili mayelana nokubamba iqhaza ocwaningweni lwabasebenzisi",
-	"welcomesurvey-question-user-research-help": "Uma u-{{GENDER:|you}} ukhetha ukungena, singase sixhumane no-{{GENDER:|you}} ngokuzayo ukuze senze ucwaningo lokuthuthukisa amasevisi ethu.",
 	"welcomesurvey-reminder": "Sisize sithuthukise ukuzizwisa kwe-{{GENDER:|yakho}} ku-Wikipedia ngokuphendula imibuzo embalwa ongakhetha kukho kuNhlolovo yethu Yokwamukela. $1",
 	"welcomesurvey-reminder-link": "Thatha ucwaningo",
 	"welcomesurvey-reminder-dismiss": "Cashisa",

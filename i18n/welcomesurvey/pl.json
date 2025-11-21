@@ -54,8 +54,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} jest dostępna w prawie 300 językach. Czy są inne języki, w których piszesz i czytasz?",
 	"welcomesurvey-question-languages-placeholder": "Dodaj maksymalnie {{PLURAL:$1|jeden język|$1 języki|$1 języków}}…",
 	"welcomesurvey-question-languages-maximum": "{{GENDER:|Dodałeś|Dodałaś}} maksymalną liczbę języków.",
-	"welcomesurvey-question-user-research-label": "Chcę, aby kontaktowano się ze mną e-mailem w sprawie udziału w badaniach użytkowników",
-	"welcomesurvey-question-user-research-help": "Jeśli {{GENDER:|się zgodzisz}}, możemy w przyszłości skontaktować się z {{GENDER:|Tobą}} w celu przeprowadzenia badań mających na celu ulepszenie naszych narzędzi.",
 	"welcomesurvey-reminder": "Pomóż nam sprawić, by {{GENDER:|twoje}} przyszłe doświadczenia z {{GRAMMAR:N.lp|{{SITENAME}}}} były lepsze poprzez udzielenie odpowiedzi na kilka opcjonalnych pytań w naszej Ankiecie Powitalnej. $1",
 	"welcomesurvey-reminder-link": "Weź udział w ankiecie",
 	"welcomesurvey-reminder-dismiss": "Odrzuć",

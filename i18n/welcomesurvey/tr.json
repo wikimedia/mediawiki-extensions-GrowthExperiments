@@ -48,8 +48,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}}, yaklaşık 300 dilde mevcuttur. {{GENDER:|Okuyup}} yazdığınız başka diller var mı?",
 	"welcomesurvey-question-languages-placeholder": "En fazla {{PLURAL:$1|bir dil|$1 dil}} ekleyin...",
 	"welcomesurvey-question-languages-maximum": "En üst sayıda dil {{GENDER:|eklediniz}}.",
-	"welcomesurvey-question-user-research-label": "Kullanıcı araştırmasına katılma konusunda e-posta yoluyla iletişime geçilmesini istiyorum",
-	"welcomesurvey-question-user-research-help": "Eğer {{GENDER:|katılırsanız}}, hizmetlerimizi iyileştirmeye yönelik araştırma çalışmaları için gelecekte sizinle iletişime geçebiliriz.",
 	"welcomesurvey-reminder": "Hoş Geldiniz Anketimizdeki birkaç isteğe bağlı soruyu yanıtlayarak Vikipedi {{GENDER:|deneyiminizi}} geliştirmemize yardımcı olun. $1",
 	"welcomesurvey-reminder-link": "Ankete katıl",
 	"welcomesurvey-reminder-dismiss": "Kapat",

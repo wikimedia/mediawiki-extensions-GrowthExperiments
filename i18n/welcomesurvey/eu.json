@@ -44,8 +44,6 @@
 	"welcomesurvey-question-languages-label": "{{SITENAME}} 300 hizkuntzatan erabilgarri dago. Gai al zara beste hizkuntza batzueatn irakurri edo idazteko?",
 	"welcomesurvey-question-languages-placeholder": "Gehitu {{PLURAL:$1|hizkuntza bat|$1 hizkuntza}} arte...",
 	"welcomesurvey-question-languages-maximum": "Baimenduta dagoen hizkuntza kopuru maximoa gehitu duzu.",
-	"welcomesurvey-question-user-research-label": "E-posta bidez nirekin kontaktatzea nahi dut erabiltzaileen inguruan ikerketak egiteko",
-	"welcomesurvey-question-user-research-help": "Baimena ematen baduzu, etorkizunean gerta liteke zurekin kontaktuan jartzea gure zerbitzuak hobetzeko ikerketak egiten ditugunean.",
 	"welcomesurvey-reminder": "Baimendu zure Wikipediako esperientzia hobetzen galdera batzuei erantzuten Ongi Etorri Inkestan. $1",
 	"welcomesurvey-reminder-link": "Inkesta bete",
 	"welcomesurvey-reminder-dismiss": "Baztertu",
