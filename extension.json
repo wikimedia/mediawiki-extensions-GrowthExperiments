@@ -729,10 +729,7 @@
 			],
 			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\ReviseToneExperimentEditIngress",
 			"services": [
-				"GrowthExperimentsLogger"
-			],
-			"optional_services": [
-				"MetricsPlatform.XLab.ExperimentManager"
+				"GrowthExperimentsReviseToneExperimentInteractionLogger"
 			]
 		}
 	],
@@ -1230,6 +1227,7 @@
 				"SuggestionGroupWidget.js",
 				"../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
+				"../ext.growthExperiments.StructuredTask/revisetone/useExperiment.js",
 				"../ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"../ext.growthExperiments.Homepage.Logger/index.js",
 				"../utils/Utils.js",

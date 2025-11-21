@@ -40,7 +40,7 @@ class ReviseToneExperimentInteractionLogger {
 	}
 
 	/**
-	 * Emit an interaction event for hCaptcha risk scores to the Metrics Platform instrument.
+	 * Emit an interaction event for the Revise tone experiment to the Metrics Platform instrument.
 	 * @param IContextSource $context
 	 * @param string $action
 	 * @param array $interactionData Interaction data for the event

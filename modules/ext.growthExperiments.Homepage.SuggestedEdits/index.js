@@ -4,10 +4,12 @@
 		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		SuggestedEditsModule = require( './SuggestedEditsModule.js' ),
 		StartEditing = require( './StartEditing.js' ),
+		useExperiment = require( '../ext.growthExperiments.StructuredTask/revisetone/useExperiment.js' ),
 		rootStore = require( 'ext.growthExperiments.DataStore' ),
 		TOPIC_MATCH_MODES = rootStore.CONSTANTS.TOPIC_MATCH_MODES,
 		tasksStore = rootStore.newcomerTasks,
-		filtersStore = rootStore.newcomerTasks.filters;
+		filtersStore = rootStore.newcomerTasks.filters,
+		experiment = useExperiment();
 	let suggestedEditsModule;
 
 	/**
@@ -47,6 +49,14 @@
 		);
 
 		if ( taskQueue.length && !taskPreviewData.error ) {
+			if ( experiment && taskQueue[ 0 ].tasktype === 'revise-tone' ) {
+				experiment.send( 'page-visited', {
+					/* eslint-disable camelcase */
+					action_source: 'Revise-tone-shown',
+					instrument_name: 'Special Homepage visited with impression of a revise tone card',
+					/* eslint-enable camelcase */
+				} );
+			}
 			tasksStore.setPreloadedTaskQueue( taskQueue );
 		} else if ( taskPreviewData.noresults ) {
 			suggestedEditsModule.showCard(
