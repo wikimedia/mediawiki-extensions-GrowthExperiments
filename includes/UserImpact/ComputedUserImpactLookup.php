@@ -495,6 +495,18 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		foreach ( $pageViewData as $title => $days ) {
 			// Normalize titles as PageViewInfo does not define which title format it uses :(
 			$title = str_replace( ' ', '_', $title );
+			if ( !isset( $allTitleObjects[$title] ) ) {
+				// There still seems to be a title normalization issue, see T400574 and T401005
+				$this->logger->warning(
+					'Title {title} not found in allTitleObjects',
+					[
+						'title' => $title,
+						'allTitleObjectsKeys' => implode( ',', array_keys( $allTitleObjects ) ),
+						'exception' => new \RuntimeException,
+					],
+				);
+				continue;
+			}
 			$mwTitle = $this->titleFactory->newFromTextThrow( $title );
 			$imageUrl = $this->getImage( $mwTitle );
 			if ( $imageUrl ) {
