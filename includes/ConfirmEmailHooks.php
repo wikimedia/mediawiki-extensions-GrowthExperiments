@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Html\Html;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
@@ -52,9 +53,13 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 	 * @param array $info
 	 */
 	public function onUserSendConfirmationMail( $user, &$mail, $info ) {
-		$lang = RequestContext::getMain()->getLanguage();
 		$config = MediaWikiServices::getInstance()->getMainConfig();
+		if ( $config->get( MainConfigNames::UserEmailConfirmationUseHTML ) ) {
+			// Core's HTML version is in use, give it precedence
+			return;
+		}
 
+		$lang = RequestContext::getMain()->getLanguage();
 		// TODO different messages for different $info['type'] values?
 		$textParams = [
 			$info['ip'],
