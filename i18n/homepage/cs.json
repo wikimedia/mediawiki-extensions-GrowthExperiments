@@ -342,8 +342,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|zkontroloval|zkontrolovala|zkontroloval(a)}} návrh obrázku pro $3 (sekce $4): schváleno",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|zkontroloval|zkontrolovala|zkontroloval(a)}} návrh obrázku pro $3 (sekce $4): odmítnuto",
 	"log-action-filter-growthexperiments": "Druh události rozšíření GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Změny mentorovaných",
-	"log-action-filter-growthexperiments-setmentor": "Změny mentora",
 	"log-action-filter-growthexperiments-addlink": "Návrhy odkazů",
 	"log-action-filter-growthexperiments-addimage": "Návrhy obrázků",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Uživatelské jméno nováčka je neplatné",

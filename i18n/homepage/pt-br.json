@@ -320,8 +320,6 @@
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|revisado}} uma sugestão de imagem para $3: revisado",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|revisou}} uma sugestão de imagem para $3: revisado",
 	"log-action-filter-growthexperiments": "Tipo de evento GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Mudanças de mentor",
-	"log-action-filter-growthexperiments-setmentor": "Mudanças de mentores",
 	"log-action-filter-growthexperiments-addlink": "Sugestões de links",
 	"log-action-filter-growthexperiments-addimage": "Sugestões de imagem",
 	"growthexperiments-homepage-claimmentee-invalid-username": "O nome de usuário do aprendiz não é válido",

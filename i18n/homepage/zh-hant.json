@@ -312,8 +312,6 @@
 	"logentry-growthexperiments-addimage-accepted": "$1{{GENDER:$2|審核了}}$3的圖片建議：接受",
 	"logentry-growthexperiments-addimage-rejected": "$1{{GENDER:$2|審核了}}$3的圖片建議：拒絕",
 	"log-action-filter-growthexperiments": "GrowthExperiments事件的類型：",
-	"log-action-filter-growthexperiments-claimmentee": "學員變更",
-	"log-action-filter-growthexperiments-setmentor": "導師變更",
 	"log-action-filter-growthexperiments-addlink": "連結建議",
 	"log-action-filter-growthexperiments-addimage": "圖片建議",
 	"growthexperiments-homepage-claimmentee-invalid-username": "提供的學員使用者名稱無效",

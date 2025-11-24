@@ -33,6 +33,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "الأسئلة المطروحة على {{GENDER:|المرشد|المرشدة}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "عدد التعديلات",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "تاريخ التسجيل",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "آخر تحديث منذ $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "مرشحات",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "تحديث",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "عدد التعديلات",

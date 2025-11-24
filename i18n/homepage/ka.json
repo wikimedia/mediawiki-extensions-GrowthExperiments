@@ -301,8 +301,6 @@
 	"logentry-growthexperiments-addimage-accepted": "{{GENDER:$2|მომხმარებელმა}} $1 შეამოწმა სურათის შეთავაზება სტატიისათვის „$3“: მიღებულია",
 	"logentry-growthexperiments-addimage-rejected": "{{GENDER:$2|მომხმარებელმა}} $1 შეამოწმა სურათის შეთავაზება სტატიისათვის „$3“: უარყოფილია",
 	"log-action-filter-growthexperiments": "GrowthExperiments-ის მოვლენის ტიპი:",
-	"log-action-filter-growthexperiments-claimmentee": "მოწაფის ცვლილებები",
-	"log-action-filter-growthexperiments-setmentor": "მენტორის ცვლილებები",
 	"log-action-filter-growthexperiments-addlink": "ბმულის შეთავაზებები",
 	"log-action-filter-growthexperiments-addimage": "სურათის შეთავაზებები",
 	"growthexperiments-homepage-claimmentee-invalid-username": "მოწაფის მომხმარებლის სახელი არასწორია",

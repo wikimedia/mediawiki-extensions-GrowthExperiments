@@ -341,8 +341,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|проверил|проверила}} предложение изображения для $3 (раздел $4): принято",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|проверил|проверила}} предложение изображения для $3 (раздел $4): отклонено",
 	"log-action-filter-growthexperiments": "Тип события GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Изменение подопечных",
-	"log-action-filter-growthexperiments-setmentor": "Изменение наставника",
 	"log-action-filter-growthexperiments-addlink": "Предложения ссылок",
 	"log-action-filter-growthexperiments-addimage": "Предложения изображений",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Предоставлено некорректное имя учётной записи подопечного",

@@ -22,6 +22,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Questiones ponite al mentores",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Numero de modificationes",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data de registration",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Ultime actualisation: $1 retro",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtros",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Actualisar",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Numero de modificationes",

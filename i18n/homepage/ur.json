@@ -154,8 +154,6 @@
 	"growthexperiments-homepage-claimmentee-reason": "مسترشد کو طلب کرنے کی وجہ",
 	"growthexperiments-claimmentee-confirm": "ہاں، میں واقعی یہ کرنا چاہتا ہوں",
 	"growthexperiments-log-name": "نوشتہ تجربات ارشاد",
-	"log-action-filter-growthexperiments-claimmentee": "مسترشدین کی تبدیلیاں",
-	"log-action-filter-growthexperiments-setmentor": "مرشد کی تبدیلیاں",
 	"log-action-filter-growthexperiments-addlink": "روابط کی تجاویز",
 	"log-action-filter-growthexperiments-addimage": "تصویر کی تجاویز",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|آپ}} کے نئے مرشد {{GENDER:$2|ہیں}}",

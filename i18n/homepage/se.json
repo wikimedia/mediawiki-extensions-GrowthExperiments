@@ -308,8 +308,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|manai čađa}} $3 ($4 ossodaga) govvaevttohusa: Dohkkehuvvon",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|manai čađa}} $3 ($4 ossodaga) govvaevttohusa: Hilgojuvvon",
 	"log-action-filter-growthexperiments": "Makkár GrowthExperiments-dáhpáhus:",
-	"log-action-filter-growthexperiments-claimmentee": "Fáttarmánnárievdadusat",
-	"log-action-filter-growthexperiments-setmentor": "Fáttarrievdadusat",
 	"log-action-filter-growthexperiments-addlink": "Liŋkaevttohusat",
 	"log-action-filter-growthexperiments-addimage": "Govvaevttohusat",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Dan fáttarmáná geavaheaddjinamma ii gusto",

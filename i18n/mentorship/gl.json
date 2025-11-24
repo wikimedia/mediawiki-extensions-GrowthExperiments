@@ -24,6 +24,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Preguntas feitas {{GENDER:|ao mentor|á mentora}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Contador de edicións",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data de rexistro",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Última actualización hai $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtros",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Actualizar",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Contador de edicións",

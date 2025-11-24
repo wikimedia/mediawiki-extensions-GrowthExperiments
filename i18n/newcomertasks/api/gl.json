@@ -47,5 +47,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "O parámetro <var>editRevId</var> non se pode utilizar cando se establece o parámetro <var>accepted</var> co valor <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "O parámetro <var>caption</var> é obrigatorio cando se establece o parámetro <var>accepted</var> co valor <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Non se atopou a revisión especificada en <var>editRevId</var>.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "A revisión especificada en <var>editRevId</var> pertence a unha páxina diferente."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "A revisión especificada en <var>editRevId</var> pertence a unha páxina diferente.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "Deixar unha recomendación de \"Revisar o ton\" para unha páxina determinada.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "Título da páxina para a que se vai deixar a recomendación, sen o espazo de nomes."
 }

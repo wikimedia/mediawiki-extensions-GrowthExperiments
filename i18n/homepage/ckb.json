@@ -232,8 +232,6 @@
 	"growthexperiments-homepage-claimmentee-reason": "ھۆکاری وەرگرتنی ئەم قوتابییە",
 	"growthexperiments-claimmentee-confirm": "بەڵێ، بەڕاستی دەمەوێت بیگۆڕم",
 	"growthexperiments-log-name": "لۆگی GrowthExperiments",
-	"log-action-filter-growthexperiments-claimmentee": "گۆڕانکارییەکانی فێرخواز",
-	"log-action-filter-growthexperiments-setmentor": "گۆڕانکارییەکانی مامۆستا",
 	"log-action-filter-growthexperiments-addlink": "بەستەردانی پێشنیارەکان",
 	"log-action-filter-growthexperiments-addimage": "وێنە پێشنیارکراوەکان",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|مامۆستای}} نوێی {{GENDER:$3|تۆیە}}",

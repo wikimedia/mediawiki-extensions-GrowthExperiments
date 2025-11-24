@@ -279,8 +279,6 @@
 	"logentry-growthexperiments-addimage-rejected": "$1 je {{GENDER:$2|pregledao|pregledala}} predlog slike za $3: odbijeno",
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 je {{GENDER:$2|pregledao|pregledala}} predlog slike za $3 (odeljak $4): prihvaćeno",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 je {{GENDER:$2|pregledao|pregledala}} predlog slike za $3 (odeljak $4): odbijeno",
-	"log-action-filter-growthexperiments-claimmentee": "promena mentora",
-	"log-action-filter-growthexperiments-setmentor": "dodela novajlija",
 	"log-action-filter-growthexperiments-addlink": "predlog veza",
 	"log-action-filter-growthexperiments-addimage": "predlog slika",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Pruženo korisnično ime novajlije nije važeće",

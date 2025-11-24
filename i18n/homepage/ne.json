@@ -280,8 +280,6 @@
 	"logentry-growthexperiments-addimage-accepted": "$1 ले $3को लागि तस्विर सुझावको {{GENDER:$2|समीक्षा}} गर्नुभयो: स्वीकृत",
 	"logentry-growthexperiments-addimage-rejected": "$1 ले $3को लागि तस्विर सुझावको {{GENDER:$2|समीक्षा}} गर्नुभयो: अस्वीकार",
 	"log-action-filter-growthexperiments": "वृद्धि प्रयोगहरू कार्यक्रमको प्रकार:",
-	"log-action-filter-growthexperiments-claimmentee": "विद्यार्थी परिवर्तनहरू",
-	"log-action-filter-growthexperiments-setmentor": "सल्लाहकार परिवर्तनहरू",
 	"log-action-filter-growthexperiments-addlink": "कडी सुझावहरू",
 	"log-action-filter-growthexperiments-addimage": "चित्र सुझावहरू",
 	"growthexperiments-homepage-claimmentee-invalid-username": "प्रदान गरिएको विद्यार्थीको प्रयोगकर्ता नाम अमान्य छ",

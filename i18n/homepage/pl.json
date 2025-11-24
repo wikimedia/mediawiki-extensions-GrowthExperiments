@@ -337,8 +337,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 sprawdził{{GENDER:$2||a|(-a)}} propozycję ilustracji dla artykułu $3 (sekcji $4): zaakceptował{{GENDER:$2||a|(-a)}}",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 sprawdził{{GENDER:$2||a|(-a)}} propozycję ilustracji dla artykułu $3 (sekcji $4): odrzucił{{GENDER:$2||a|(-a)}}",
 	"log-action-filter-growthexperiments": "Rodzaj zdarzenia GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Zmiana podopiecznych",
-	"log-action-filter-growthexperiments-setmentor": "Zmiana wikiprzewodnika",
 	"log-action-filter-growthexperiments-addlink": "Sugestie linków",
 	"log-action-filter-growthexperiments-addimage": "Sugestie obrazków",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Podana nazwa nowicjusza(-ki) jest nieprawidłowa",

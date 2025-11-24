@@ -330,8 +330,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|gikk}} gjennom et bildeforslag for $3 (seksjon $4): godtatt",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|gikk}} gjennom et bildeforslag for $3 (seksjon $4): avvist",
 	"log-action-filter-growthexperiments": "Type GrowthExperiments-hendelse:",
-	"log-action-filter-growthexperiments-claimmentee": "Fadderbarnendringer",
-	"log-action-filter-growthexperiments-setmentor": "Fadderendringer",
 	"log-action-filter-growthexperiments-addlink": "Lenkeforslag",
 	"log-action-filter-growthexperiments-addimage": "Bildeforslag",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Det gitte fadderbarnets brukernavn er ugyldig",

@@ -230,8 +230,6 @@
 	"growthexperiments-log-name": "Rekeman GrowthExperiments",
 	"growthexperiments-log-header": "Ni ièlah rekeman piil nyang dikeja di ata-été GrowthExperiments.",
 	"log-action-filter-growthexperiments": "Jenis kejadian GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Perobahan murid",
-	"log-action-filter-growthexperiments-setmentor": "Perobahan mursid",
 	"log-action-filter-growthexperiments-addlink": "Saran sènggètan",
 	"log-action-filter-growthexperiments-addimage": "Saran gambar",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Nama pemaké murid nyang dikasii kaga' aci",

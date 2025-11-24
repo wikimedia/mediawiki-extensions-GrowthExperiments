@@ -325,8 +325,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$3 (విభాగం $4) కోసం ఇచ్చిన ఒక బొమ్మ సూచనను $1 {{GENDER:$2|పరిశీలించారు}} : అంగీకరించారు",
 	"logentry-growthexperiments-addsectionimage-rejected": "$3 (విభాగం $4) కోసం ఇచ్చిన ఒక బొమ్మ సూచనను $1 {{GENDER:$2|పరిశీలించారు}}: తిరస్కరించారు",
 	"log-action-filter-growthexperiments": "GrowthExperiments ఘటన రకం:",
-	"log-action-filter-growthexperiments-claimmentee": "శిష్యుల మార్పులు",
-	"log-action-filter-growthexperiments-setmentor": "గురువుల మార్పులు",
 	"log-action-filter-growthexperiments-addlink": "లింకు సూచనలు",
 	"log-action-filter-growthexperiments-addimage": "బొమ్మ సూచనలు",
 	"growthexperiments-homepage-claimmentee-invalid-username": "ఇచ్చిన శిష్యుడి వాడుకరిపేరు సరైనది కాదు",

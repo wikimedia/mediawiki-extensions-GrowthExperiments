@@ -363,8 +363,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "{{GENDER:$2|Revisión}} de $1 de la imagen sugerida para $3 (sección $4): aceptada",
 	"logentry-growthexperiments-addsectionimage-rejected": "{{GENDER:$2|Revisión}} de $1 de la imagen sugerida para $3 (sección $4): rechazada",
 	"log-action-filter-growthexperiments": "Tipo de evento de GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Cambios de aprendices",
-	"log-action-filter-growthexperiments-setmentor": "Cambios de mentor",
 	"log-action-filter-growthexperiments-addlink": "Sugerencias de enlaces",
 	"log-action-filter-growthexperiments-addimage": "Sugerencias de imágenes",
 	"growthexperiments-homepage-claimmentee-invalid-username": "El nombre de usuario del aprendiz proporcionado es inválido",

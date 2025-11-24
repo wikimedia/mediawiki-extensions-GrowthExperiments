@@ -325,8 +325,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|теллина}} кховдийна сурт $3 ($4 дакъа): тӀеэцна",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|теллина}} кховдийна сурт $3 ($4 дакъа): йухатоьхна",
 	"log-action-filter-growthexperiments": "GrowthExperiments хиламийн тайпа:",
-	"log-action-filter-growthexperiments-claimmentee": "Верасаш хийцар",
-	"log-action-filter-growthexperiments-setmentor": "Ӏуьналчаш хийцар",
 	"log-action-filter-growthexperiments-addlink": "Хьажоргаш кховдор",
 	"log-action-filter-growthexperiments-addimage": "Суьрташ кховдор",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Верасан аккаунтан цӀе нийса йац",

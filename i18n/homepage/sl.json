@@ -327,8 +327,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 je {{GENDER:$2|pregledal|pregledala|pregledal_a}} predlog za sliko za stran $3 (razdelek $4): sprejeto",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 je {{GENDER:$2|pregledal|pregledala|pregledal_a}} predlog za sliko za stran $3 (razdelek $4): zavrnjeno",
 	"log-action-filter-growthexperiments": "Vrsta dogodka GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Spremembe mentoriranca",
-	"log-action-filter-growthexperiments-setmentor": "Spremembe mentorja",
 	"log-action-filter-growthexperiments-addlink": "Predlogi za povezave",
 	"log-action-filter-growthexperiments-addimage": "Predlogi za slike",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Navedeno uporabniško ime mentoriranca je neveljavno",

@@ -231,8 +231,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|vaatas üle}} pildisoovituse lehekülje $3 alaosas \"$4\": heaks kiidetud",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|vaatas üle}} pildisoovituse lehekülje $3 alaosas \"$4\": tagasi lükatud",
 	"log-action-filter-growthexperiments": "GrowthExperimentsi sündmuse tüüp:",
-	"log-action-filter-growthexperiments-claimmentee": "Juhendatava muutmine",
-	"log-action-filter-growthexperiments-setmentor": "Mentori muutmine",
 	"log-action-filter-growthexperiments-addlink": "Lingisoovitus",
 	"log-action-filter-growthexperiments-addimage": "Pildisoovitus",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|on}} {{GENDER:$3|sinu}} uus mentor.",

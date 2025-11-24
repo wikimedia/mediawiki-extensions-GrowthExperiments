@@ -331,8 +331,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|переглянув|переглянула}} пропозицію зображення для $3 (розділ $4): прийнято",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|переглянув|переглянула}} пропозицію зображення для $3 (розділ $4): відхилено",
 	"log-action-filter-growthexperiments": "Тип події експериментів зростання:",
-	"log-action-filter-growthexperiments-claimmentee": "Зміни підопічного",
-	"log-action-filter-growthexperiments-setmentor": "Зміни наставника",
 	"log-action-filter-growthexperiments-addlink": "Пропозиції посилань",
 	"log-action-filter-growthexperiments-addimage": "Пропозиції щодо зображень",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Вказане ім'я користувача підопічного недійсне",

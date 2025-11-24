@@ -329,8 +329,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|αναθεωρήθηκε}} μια πρόταση εικόνας για $3 (την ενότητα $4): έγινε αποδεκτή",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|επιθεωρήθηκε}} μια πρόταση εικόνας για $3 (την ενότητα $4): απορρίφθηκε",
 	"log-action-filter-growthexperiments": "Τύπος συμβάντος GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Αλλαγές καθοδηγούμενων",
-	"log-action-filter-growthexperiments-setmentor": "Αλλαγές καθοδηγητών",
 	"log-action-filter-growthexperiments-addlink": "Προτάσεις συνδέσμων",
 	"log-action-filter-growthexperiments-addimage": "Προτάσεις εικόνων",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Το όνομα χρήστη καθοδηγούμενου που καταχωρήθηκε δεν υπάρχει",

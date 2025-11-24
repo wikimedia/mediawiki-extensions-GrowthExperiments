@@ -310,8 +310,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 ha {{GENDER:$2|revisionato}} il suggerimento di un'immagine per $3 (sezione $4): accettato",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 ha {{GENDER:$2|revisionato}} il suggerimento di un'immagine per $3 (sezione $4): rifiutato",
 	"log-action-filter-growthexperiments": "Tipo di evento GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Modifiche all'allievo",
-	"log-action-filter-growthexperiments-setmentor": "Modifiche al tutor",
 	"log-action-filter-growthexperiments-addlink": "Collegamenti suggeriti",
 	"log-action-filter-growthexperiments-addimage": "Immagini suggerite",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Il nome dell'allievo fornito non è valido",

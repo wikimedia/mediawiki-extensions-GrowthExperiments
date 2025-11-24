@@ -292,8 +292,6 @@
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|peržiūrėjo}} $3 paveikslėlio siūlymą: priimta",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|peržiūrėjo}} $3 paveikslėlio siūlymą: atmesta",
 	"log-action-filter-growthexperiments": "GrowthExperiments įvykio tipas:",
-	"log-action-filter-growthexperiments-claimmentee": "Mentee pokyčiai",
-	"log-action-filter-growthexperiments-setmentor": "Mentorių pokyčiai",
 	"log-action-filter-growthexperiments-addlink": "Nuorodų siūlymai",
 	"log-action-filter-growthexperiments-addimage": "Paveikslėlių siūlymai",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Pateiktas mentee naudotojo vardas negalimas",

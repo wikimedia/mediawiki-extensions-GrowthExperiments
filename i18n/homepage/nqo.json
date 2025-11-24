@@ -249,8 +249,6 @@
 	"growthexperiments-claimmentee-confirm": "ߞߏߛߓߍ߫߸ ߒ ߧߴߊ߬ ߝߍ߬ ߞߵߊ߬ ߘߊߓߊ߲߫",
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|}}ߟߎ߫ ߓߘߊ߫ ߖߌ߬ߦߊ߬ߓߍ ߘߐ߬ߛߎ߬ߟߌ ߘߏ߫ ߘߐߛߊ߬ߦߌ߫ $3 ߢߍ߫: ߊ߬ ߟߊߘߊ߬ߤߊ߫.",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|ߟߎ߫}} ߓߘߊ߫ ߖߌ߬ߦߊ߬ߓߍ ߘߐ߬ߛߎ߬ߟߌ ߘߏ߫ ߡߊߛߊ߬ߦߌ߫ $3 ߢߍ߫: ߊ߬ ߟߊߕߊ߲߬ߞߌ߫",
-	"log-action-filter-growthexperiments-claimmentee": "ߡߞߊ߬ߙߊ߲߬ߘߋ߲ ߡߊߝߊ߬ߟߋ߲",
-	"log-action-filter-growthexperiments-setmentor": "ߡߞߊ߬ߙߊ߲߬ߓߊ߮ ߡߊߝߊ߬ߟߋ߲߫",
 	"log-action-filter-growthexperiments-addlink": "ߛߘߌ߬ߜߋ߲ ߞߎ߲߬ߦߌ߬ߘߊ߬ߟߌ",
 	"log-action-filter-growthexperiments-addimage": "ߖߌ߬ߦߊ߬ߓߍ ߘߐ߬ߛߎ߬ߟߌ ߟߎ߫",
 	"growthexperiments-homepage-claimmentee-invalid-username": "ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ߫ ߡߊߛߐߣߍ߲ ߟߊ߬ߓߊ߰ߙߊ߬ߕߐ߮ ߓߍ߲߬ߣߍ߲߫ ߕߍ߫",

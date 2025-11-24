@@ -292,8 +292,6 @@
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|áttekintve}} egy képjavaslat $3: elfogadva",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|áttekintve}} egy képjavaslat $3: elutasítva",
 	"log-action-filter-growthexperiments": "A GrowthExperiments esemény típusa:",
-	"log-action-filter-growthexperiments-claimmentee": "Mentoráltváltozások",
-	"log-action-filter-growthexperiments-setmentor": "Mentorváltozások",
 	"log-action-filter-growthexperiments-addlink": "Hivatkozásjavaslatok",
 	"log-action-filter-growthexperiments-addimage": "Képjavaslatok",
 	"growthexperiments-homepage-claimmentee-invalid-username": "A megadott mentorált szerkesztői neve nem érvényes.",

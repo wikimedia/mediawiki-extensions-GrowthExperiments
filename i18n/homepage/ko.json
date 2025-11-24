@@ -312,8 +312,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1님이 $3 문서($4 문단)의 이미지 제안을 {{GENDER:$2|검토했습니다}}: 수락했습니다",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1님이 $3(문단 $4)의 이미지 제안을 {{GENDER:$2|검토함}}: 거부됨",
 	"log-action-filter-growthexperiments": "GrowthExperiments 이벤트 유형:",
-	"log-action-filter-growthexperiments-claimmentee": "멘티 변경",
-	"log-action-filter-growthexperiments-setmentor": "멘토 변경",
 	"log-action-filter-growthexperiments-addlink": "링크 제안",
 	"log-action-filter-growthexperiments-addimage": "이미지 제안",
 	"growthexperiments-homepage-claimmentee-invalid-username": "제공된 멘티의 사용자 이름이 유효하지 않습니다",

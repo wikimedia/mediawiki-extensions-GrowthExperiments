@@ -326,8 +326,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|gennemgik}} et billedforslag til $3 (afsnit $4): godkendt",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|gennemgik}} et billedforslag til $3 (afsnit $4): afvist",
 	"log-action-filter-growthexperiments": "Type af GrowthExperiments-begivenhed:",
-	"log-action-filter-growthexperiments-claimmentee": "Mentee-ændringer",
-	"log-action-filter-growthexperiments-setmentor": "Mentor-ændringer",
 	"log-action-filter-growthexperiments-addlink": "Henvisningsforslag",
 	"log-action-filter-growthexperiments-addimage": "Billedforslag",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Den angivne mentees brugernavn er ugyldigt",

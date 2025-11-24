@@ -328,8 +328,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 reviu uma sugestão de imagem para $3 (secção $4): aceite{{GENDER:$2|}}",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 reviu uma sugestão de imagem para $3 (secção $4): rejeitada{{GENDER:$2|}}",
 	"log-action-filter-growthexperiments": "Tipo de evento GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Mudanças de mentorado",
-	"log-action-filter-growthexperiments-setmentor": "Mudanças de mentor",
 	"log-action-filter-growthexperiments-addlink": "Sugestões de hiperligações",
 	"log-action-filter-growthexperiments-addimage": "Sugestões de imagens",
 	"growthexperiments-homepage-claimmentee-invalid-username": "O nome de utilizador do mentorado é inválido",

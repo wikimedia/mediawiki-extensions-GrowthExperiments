@@ -32,6 +32,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Anzahl Fragen an {{GENDER:|den Lotsen|die Lotsin}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Bearbeitungszähler",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Registrierungsdatum",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Zuletzt aktualisiert vor $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filter",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Aktualisieren",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Bearbeitungszähler",

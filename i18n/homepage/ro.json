@@ -324,8 +324,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 a {{GENDER:$2|revizuit}} o sugestie de imagine pentru $3 (secțiunea $4): acceptat",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 a {{GENDER:$2|revizuit}} o sugestie de imagine pentru $3 (secțiunea $4): respins",
 	"log-action-filter-growthexperiments": "Tip de eveniment GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Schimbări de ucenic",
-	"log-action-filter-growthexperiments-setmentor": "Schimbări de mentor",
 	"log-action-filter-growthexperiments-addlink": "Sugestii de legare",
 	"log-action-filter-growthexperiments-addimage": "Sugestii de imagine",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Numele de utilizator oferit pentru ucenic este invalid",

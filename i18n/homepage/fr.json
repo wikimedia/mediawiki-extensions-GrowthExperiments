@@ -373,8 +373,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|a relu}} une suggestion d’image pour $3 (section $4) : acceptée",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|a relu}} une suggestion d’image pour $3 (section $4) : rejetée",
 	"log-action-filter-growthexperiments": "Type d’événement GrowthExperiments :",
-	"log-action-filter-growthexperiments-claimmentee": "Modifications de tutoré",
-	"log-action-filter-growthexperiments-setmentor": "Modifications de tuteur",
 	"log-action-filter-growthexperiments-addlink": "Suggestions de lien",
 	"log-action-filter-growthexperiments-addimage": "Suggestions d’image",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Le nom d’utilisateur du tutoré fourni est incorrect",

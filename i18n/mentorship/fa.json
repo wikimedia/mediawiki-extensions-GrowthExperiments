@@ -25,6 +25,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "پرسش‌های پرسیده‌شده از {{GENDER:|مربی}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "شمار ویرایش‌ها",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "تاریخ ثبت نام",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "آخرین بار $1 پیش به‌روزرسانی شده است",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "پالایه‌ها",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "به‌روزرسانی",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "شمار ویرایش‌ها",

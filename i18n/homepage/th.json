@@ -234,7 +234,6 @@
 	"growthexperiments-homepage-claimmentee-mentee": "ชื่อผู้ใช้ของผู้รับเมนเทอร์",
 	"growthexperiments-homepage-claimmentee-reason": "เหตุผลในการรับผู้ใช้นี้",
 	"growthexperiments-claimmentee-confirm": "ใช่ ฉันมีความประสงค์ที่จะเปลี่ยนเมนเทอร์",
-	"log-action-filter-growthexperiments-setmentor": "การเปลี่ยนแปลงเมนเทอร์",
 	"growthexperiments-notification-body-mentor-change": "เหตุผล: $1",
 	"right-setmentor": "ตั้งเมนเทอร์สำหรับผู้ใช้นี้",
 	"action-setmentor": "ตั้งเมนเทอร์สำหรับผู้ใช้นี้",

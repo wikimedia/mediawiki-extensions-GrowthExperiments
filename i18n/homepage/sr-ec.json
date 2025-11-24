@@ -285,8 +285,6 @@
 	"logentry-growthexperiments-addimage-rejected": "$1 је {{GENDER:$2|прегледао|прегледала}} предлог слике за $3: одбијено",
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 је {{GENDER:$2|прегледао|прегледала}} предлог слике за $3 (одељак $4): прихваћено",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 је {{GENDER:$2|прегледао|прегледала}} предлог слике за $3 (одељак $4): одбијено",
-	"log-action-filter-growthexperiments-claimmentee": "промена ментора",
-	"log-action-filter-growthexperiments-setmentor": "додела новајлија",
 	"log-action-filter-growthexperiments-addlink": "предлог веза",
 	"log-action-filter-growthexperiments-addimage": "предлог слика",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Пружено кориснично име новајлије није важеће",

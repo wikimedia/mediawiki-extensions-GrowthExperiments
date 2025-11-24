@@ -48,5 +48,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "لا يمكن استخدام المعلمة <var>editRevId</var> عند ضبط المعلمة <var>accepted</var> على <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "معلمة <var>caption</var> مطلوبة عند تعيين المعلمة <var>accepted</var> على <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "لم يتم العثور على المراجعة المحددة في <var>editRevId</var>.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "المراجعة المحددة في <var>editRevId</var> تنتمي إلى صفحة مختلفة."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "المراجعة المحددة في <var>editRevId</var> تنتمي إلى صفحة مختلفة.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "ترك اقتراح 'مراجعة الأسلوب' لصفحة معينة.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "عنوان الصفحة التي سيتم ترك الاقتراح فيها، دون النطاق."
 }

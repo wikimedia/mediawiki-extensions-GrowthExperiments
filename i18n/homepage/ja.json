@@ -334,8 +334,6 @@
 	"logentry-growthexperiments-addimage-accepted": "$1 が $3 に対する画像を{{GENDER:$2|評価}}しました: 採用",
 	"logentry-growthexperiments-addimage-rejected": "$1 が $3 に対する画像を{{GENDER:$2|評価}}しました: 採用せず",
 	"log-action-filter-growthexperiments": "グロースエクスペリメントのイベントの種類：",
-	"log-action-filter-growthexperiments-claimmentee": "指導対象者の変更",
-	"log-action-filter-growthexperiments-setmentor": "指導役の変更",
 	"log-action-filter-growthexperiments-addlink": "リンクの提案",
 	"log-action-filter-growthexperiments-addimage": "画像の提案",
 	"growthexperiments-homepage-claimmentee-invalid-username": "入力された指導対象者の利用者名が無効です",

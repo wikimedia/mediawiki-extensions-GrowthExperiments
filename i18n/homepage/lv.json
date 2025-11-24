@@ -285,8 +285,6 @@
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|pārskatīja}} attēla ieteikumu rakstam $3: pieņemts",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|pārskatīja}} attēla ieteikumu rakstam $3: noraidīts",
 	"log-action-filter-growthexperiments": "GrowthExperiments notikuma veids:",
-	"log-action-filter-growthexperiments-claimmentee": "Audzēkņu izmaiņas",
-	"log-action-filter-growthexperiments-setmentor": "Mentora izmaiņas",
 	"log-action-filter-growthexperiments-addlink": "Saišu ieteikumi",
 	"log-action-filter-growthexperiments-addimage": "Attēlu ieteikumi",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Norādītais audzēkņa lietotājvārds ir nederīgs",

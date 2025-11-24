@@ -330,8 +330,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "{{GENDER:$2|De(n) $1|D'$1}} huet e Bildvirschlag fir $3 (Abschnitt $4) iwwerpréift: ugeholl",
 	"logentry-growthexperiments-addsectionimage-rejected": "{{GENDER:$2|De(n) $1|D'$1}} huet e Bildvirschlag fir $3 (Abschnitt $4) iwwerpréift: ofgeleent",
 	"log-action-filter-growthexperiments": "Typ vum GrowthExperiments-Evenement:",
-	"log-action-filter-growthexperiments-claimmentee": "Ännerunge vu Mentoréierten",
-	"log-action-filter-growthexperiments-setmentor": "Mentorenännerungen",
 	"log-action-filter-growthexperiments-addlink": "Linkvirschléi",
 	"log-action-filter-growthexperiments-addimage": "Bildvirschléi",
 	"growthexperiments-homepage-claimmentee-invalid-username": "De Benotzernumm vum Mentoréierten, deen ugi gouf, ass ongülteg",

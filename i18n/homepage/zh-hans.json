@@ -361,8 +361,6 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1{{GENDER:$2|审核了}}$3（章节$4）的图片建议：接受",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1{{GENDER:$2|审核了}}$3（章节$4）的图片建议：拒绝",
 	"log-action-filter-growthexperiments": "GrowthExperiments事件的类型：",
-	"log-action-filter-growthexperiments-claimmentee": "学员更改",
-	"log-action-filter-growthexperiments-setmentor": "导师更改",
 	"log-action-filter-growthexperiments-addlink": "链接建议",
 	"log-action-filter-growthexperiments-addimage": "图片建议",
 	"growthexperiments-homepage-claimmentee-invalid-username": "提供的学员用户名无效",

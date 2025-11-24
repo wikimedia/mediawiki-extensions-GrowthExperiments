@@ -294,8 +294,6 @@
 	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|разгледзеў|разгледзела}} прапанову выявы для старонкі $3: прынята",
 	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|разгледзеў|разгледзела}} прапанову выявы для старонкі $3: адхілена",
 	"log-action-filter-growthexperiments": "Тып падзеі GrowthExperiments:",
-	"log-action-filter-growthexperiments-claimmentee": "Змена падапечных",
-	"log-action-filter-growthexperiments-setmentor": "Змены настаўнікаў",
 	"log-action-filter-growthexperiments-addlink": "Прапановы спасылак",
 	"log-action-filter-growthexperiments-addimage": "Прапановы выяваў",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Указанае імя ўдзельніка падапечнага няслушнае",
