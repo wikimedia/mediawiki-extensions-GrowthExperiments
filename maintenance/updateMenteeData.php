@@ -8,6 +8,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\User\UserIdentityLookup;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Stats\StatsFactory;
 
@@ -25,6 +26,7 @@ class UpdateMenteeData extends Maintenance {
 	private MentorProvider $mentorProvider;
 	private ILoadBalancer $growthLoadBalancer;
 	private StatsFactory $statsFactory;
+	private UserIdentityLookup $userIdentityLookup;
 	private array $detailedProfilingInfo = [];
 
 	public function __construct() {
@@ -53,6 +55,7 @@ class UpdateMenteeData extends Maintenance {
 		$this->mentorProvider = $geServices->getMentorProvider();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
 		$this->statsFactory = $services->getStatsFactory();
+		$this->userIdentityLookup = $services->getUserIdentityLookup();
 	}
 
 	private function addProfilingInfoForMentor( array $mentorProfilingInfo ): void {
@@ -82,7 +85,12 @@ class UpdateMenteeData extends Maintenance {
 		$startTime = time();
 
 		if ( $this->hasOption( 'mentor' ) ) {
-			$mentors = [ $this->getOption( 'mentor' ) ];
+			$username = $this->getOption( 'mentor' );
+			$user = $this->userIdentityLookup->getUserIdentityByName( $username );
+			if ( !$user ) {
+				$this->fatalError( "No such user $username found" );
+			}
+			$mentors = [ $user ];
 		} else {
 			$mentors = $this->mentorProvider->getMentors();
 		}
