@@ -46,5 +46,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Le parametro <var>editRevId</var> non pote esser usate quando le parametro <var>accepted</var> es mittite a <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Le parametro <var>caption</var> es obligatori quando le parametro <var>accepted</var> es mittite a <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Le version specificate in <var>editRevId</var> non ha essite trovate.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Le version specificate in <var>editRevId</var> pertine a un altere pagina."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Le version specificate in <var>editRevId</var> pertine a un altere pagina.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "Eliminar un recommendation ‘Revisar tono’ pro un pagina date.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "Titulo del pagina pro le qual eliminar le recommendation, sin spatio de nomines."
 }

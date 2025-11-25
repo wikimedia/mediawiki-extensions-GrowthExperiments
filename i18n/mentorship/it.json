@@ -31,6 +31,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Domande poste al{{GENDER:||la}} tutor",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Conteggio delle modifiche",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data di registrazione",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Ultimo aggiornamento $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtri",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Aggiorna",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Numero di modifiche",
