@@ -17,6 +17,10 @@ class ReviseToneInitializer {
 	}
 
 	initialize() {
+		if ( ReviseToneInitializer.hasBeenInitialized ) {
+			return;
+		}
+		ReviseToneInitializer.hasBeenInitialized = true;
 		mw.editcheck.editCheckFactory.unregister( mw.editcheck.ToneCheck );
 		mw.editcheck.editCheckFactory.register( GrowthSuggestionToneCheck, GrowthSuggestionToneCheck.static.name );
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
