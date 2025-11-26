@@ -1248,7 +1248,7 @@ class HomepageHooks implements
 			$messageParamsStr = $messageParts[ 1 ] ?? '';
 			$comment = wfMessage( $messageKey )
 				->numParams( ...explode( '|', $messageParamsStr ) )
-				->parse();
+				->escaped();
 		}
 	}
 
