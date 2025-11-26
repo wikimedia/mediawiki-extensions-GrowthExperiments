@@ -282,7 +282,7 @@ class MentorHooks implements
 			'growthexperiments-mentorship-enrollasmentor-summary',
 		];
 		if ( in_array( $auto, $noParamMessageKeys ) ) {
-			$comment = wfMessage( $auto )->text();
+			$comment = wfMessage( $auto )->escaped();
 		}
 
 		$mentorChangeMessageKeys = [
@@ -306,7 +306,7 @@ class MentorHooks implements
 			$comment = wfMessage( $messageKey )
 				->params( ...explode( '|', $messageParts[1] ) )
 				->inContentLanguage()
-				->parse();
+				->escaped();
 		}
 	}
 
