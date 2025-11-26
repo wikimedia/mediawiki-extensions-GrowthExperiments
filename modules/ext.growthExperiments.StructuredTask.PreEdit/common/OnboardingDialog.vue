@@ -5,6 +5,7 @@
 		class="ext-growthExperiments-OnboardingDialog"
 		title="Introduction"
 		:hide-title="true"
+		:render-in-place="true"
 		@update:open="( newVal ) => onDialogOpenUpdate( newVal )"
 	>
 		<!-- Dialog Header -->
