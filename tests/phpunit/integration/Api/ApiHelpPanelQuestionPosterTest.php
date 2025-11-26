@@ -3,6 +3,8 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
+use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\Mentorship\IMentorManager;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\MainConfigNames;
@@ -40,10 +42,11 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		$this->editPage( 'HelpDeskTest', 'Content' );
 	}
 
-	protected function getParams( $body, $relevanttitle = '' ) {
+	protected function getParams( $body, $source, $relevanttitle = '' ) {
 		$params = [
 			'action' => 'helppanelquestionposter',
 			ApiHelpPanelPostQuestion::API_PARAM_BODY => $body,
+			'source' => $source,
 		];
 		if ( $relevanttitle ) {
 			$params += [ ApiHelpPanelPostQuestion::API_PARAM_RELEVANT_TITLE => $relevanttitle ];
@@ -56,7 +59,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	 */
 	public function testExecute() {
 		$ret = $this->doApiRequestWithToken(
-			$this->getParams( 'lorem ipsum' ),
+			$this->getParams( 'lorem ipsum', 'helpdesk' ),
 			null,
 			$this->mUser,
 			'csrf'
@@ -66,10 +69,98 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		$this->assertGreaterThan( 0, $ret[0]['helppanelquestionposter'] );
 	}
 
+	public function testExecuteWhenUserNotLoggedInThrowsAnException() {
+		try {
+			$this->doApiRequestWithToken(
+				$this->getParams( 'lorem ipsum', 'helpdesk' ),
+				null,
+				new User(),
+				'csrf'
+			);
+		} catch ( ApiUsageException $e ) {
+			$this->assertSame(
+				'You must be logged in to ask a question.',
+				$e->getMessage() );
+		}
+	}
+
+	public function testExecuteWhenThereAreNoMentorsThrowsAnApiUsageException() {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorProvider = $geServices->getMentorProvider();
+
+		$this->assertCount( 0, $mentorProvider->getMentors() );
+
+		try {
+			$this->doApiRequestWithToken(
+			$this->getParams( 'lorem ipsum', 'mentor-helppanel' ),
+			null,
+			$this->mUser,
+			'csrf' );
+		} catch ( ApiUsageException $e ) {
+			$this->assertSame(
+				'You cannot ask a question to your mentor if you do not have a mentor.',
+				$e->getMessage() );
+		}
+	}
+
+	public function testExecuteWhenThereAreMentorsButUserOptedOutOfMentorshipThrowsAnException() {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentor = $this->getTestUser()->getUser();
+		$mentorProvider = $geServices->getMentorProvider();
+		$mentorWriter = $geServices->getMentorWriter();
+		$mentorManager = $geServices->getMentorManager();
+		$mentorWriter->addMentor(
+			$mentorProvider->newMentorFromUserIdentity( $mentor ),
+			$mentor,
+			'adding a mentor who has no mentees assigned'
+		);
+		$mentorManager->setMentorshipStateForUser( $this->mUser,
+			IMentorManager::MENTORSHIP_OPTED_OUT );
+
+		$this->assertCount( 1, $mentorProvider->getMentors() );
+
+		try {
+			$this->doApiRequestWithToken(
+				$this->getParams( 'lorem ipsum', 'mentor-helppanel' ),
+				null,
+				$this->mUser,
+				'csrf' );
+		} catch ( ApiUsageException $e ) {
+			$this->assertSame(
+				'You cannot ask a question to your mentor if you do not have a mentor.',
+				$e->getMessage() );
+		}
+	}
+
+	public function testExecuteForMentorHelpPanelWhenUserHasNoMentorAssignsAMentor() {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorUser = $this->getTestUser()->getUser();
+		$mentorProvider = $geServices->getMentorProvider();
+		$mentorWriter = $geServices->getMentorWriter();
+		$mentorManager = $geServices->getMentorManager();
+		$mentor = $mentorProvider->newMentorFromUserIdentity( $mentorUser );
+		$mentorWriter->addMentor(
+			$mentor,
+			$mentorUser,
+			'adding a mentor who has no mentees assigned'
+		);
+		$this->assertNull( $mentorManager->getMentorForUserIfExists( $this->mUser ) );
+
+		$this->doApiRequestWithToken(
+			$this->getParams( 'lorem ipsum', 'mentor-helppanel' ),
+			null,
+			$this->mUser,
+			'csrf' );
+		$this->assertNotNull( $mentorManager->getMentorForUserIfExists( $this->mUser ) );
+		$this->assertEquals( $mentorUser->mId, $mentorManager->getMentorForUserIfExists(
+			$this->mUser )->getUserIdentity()->getId()
+		);
+	}
+
 	public function testValidRelevantTitle() {
 		$this->editPage( 'Real', 'Content' );
 		$ret = $this->doApiRequestWithToken(
-			$this->getParams( 'a', 'Real' ),
+			$this->getParams( 'a', 'helpdesk', 'Real' ),
 			null,
 			$this->mUser,
 			'csrf'
@@ -91,7 +182,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		$this->expectExceptionMessage( 'Your username or IP address has been blocked' );
 
 		$this->doApiRequestWithToken(
-			$this->getParams( 'user is blocked' ),
+			$this->getParams( 'user is blocked', 'helpdesk' ),
 			null,
 			$this->mUser,
 			'csrf'
@@ -112,7 +203,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		$this->expectException( ApiUsageException::class );
 
 		$this->doApiRequestWithToken(
-			$this->getParams( 'abuse filter denies edit' ),
+			$this->getParams( 'abuse filter denies edit', 'helpdesk' ),
 			null,
 			$this->mUser,
 			'csrf'
@@ -126,7 +217,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		$this->editPage( 'HelpDeskTest', '#REDIRECT [[HelpDeskTest2]]' );
 		Title::clearCaches();
 		$ret = $this->doApiRequestWithToken(
-			$this->getParams( 'lorem ipsum' ),
+			$this->getParams( 'lorem ipsum', 'helpdesk' ),
 			null,
 			$this->mUser,
 			'csrf'

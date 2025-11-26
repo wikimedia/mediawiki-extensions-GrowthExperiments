@@ -8,6 +8,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\UserNotMentoredException;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
@@ -36,9 +37,14 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::__construct
 	 */
-	public function testCanConstructMentorQuestionPosterWithoutThrowingAnExceptionWhenThereIsNoMentor() {
-		$this->getQuestionPosterModule( null );
-		$this->assertTrue( true );
+	public function testConstructMentorQuestionPosterWhenThereIsNoMentorThrowsAnException() {
+		try {
+			$this->getQuestionPosterModule( null );
+		} catch ( UserNotMentoredException $e ) {
+			$this->assertSame(
+				'User has no mentor, which means they cannot ask their mentor a question',
+				$e->getMessage() );
+		}
 	}
 
 	/**

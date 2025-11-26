@@ -4,6 +4,7 @@ namespace GrowthExperiments\Api;
 
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
+use GrowthExperiments\Mentorship\UserNotMentoredException;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
@@ -98,9 +99,18 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 				$body,
 				$relevantTitle ?? ''
 			);
+		} catch ( UserNotMentoredException ) {
+			throw ApiUsageException::newWithMessage(
+				$this,
+				'apierror-mustbementored-mentorshipmodulequestionposter',
+				'notmentored'
+			);
 		} catch ( UserNotLoggedIn ) {
-			throw ApiUsageException::newWithMessage( $this,
-				'apierror-mustbeloggedin-helppanelquestionposter', 'notloggedin' );
+			throw ApiUsageException::newWithMessage(
+				$this,
+				'apierror-mustbeloggedin-helppanelquestionposter',
+				'notloggedin'
+			);
 		}
 	}
 

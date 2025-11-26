@@ -2,6 +2,8 @@
 	"@metadata": {
 		"authors": []
 	},
+	"growthexperiments-exception-not-mentored": "User is not mentored",
+	"growthexperiments-exception-no-mentored-text": "User has no mentor, which means they cannot ask their mentor a question",
 	"growthexperiments-mentor-dashboard-title": "Mentor dashboard",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentor dashboard",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "To enable mentor dashboard, {{GENDER:|you}} first need to [[$1|enroll as a mentor]].",

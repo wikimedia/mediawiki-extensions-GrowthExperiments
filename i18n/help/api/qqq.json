@@ -14,5 +14,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|helppanel}}\n\nSee also {{msg-mw|Growthexperiments-homepage-help-dialog-title}}",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|homepage-mentorship}}\n\nSee also {{msg-mw|Growthexperiments-help-panel-questionreview-title-mentor}}",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "{{doc-apihelp-param|helppanelquestionposter|relevanttitle}}",
-	"apierror-mustbeloggedin-helppanelquestionposter": "{{doc-apierror|mustbeloggedin-helppanelquestionposter}}\nError message shown when trying to ask a question while not logged in.\n\n{{doc-growthexperiments-help-panel}}"
+	"apierror-mustbeloggedin-helppanelquestionposter": "{{doc-apierror|mustbeloggedin-helppanelquestionposter}}\nError message shown when trying to ask a question while not logged in.\n\n{{doc-growthexperiments-help-panel}}",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "{{doc-apierror|mustbementored-mentorshipmodulequestionposter|source|mentorship-module}}\nError message shown when trying to ask a question to a mentor when the user is not mentored.\n\n{{doc-growthexperiments-mentorship-module}}"
 }

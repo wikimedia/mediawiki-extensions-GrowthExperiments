@@ -11,5 +11,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "The \"Ask the help desk\" panel (old name)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "The \"Ask your mentor\" panel on the newcomer homepage (old name)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "The relevant title, if selected, to include with the question.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "You must be logged in to ask a question."
+	"apierror-mustbeloggedin-helppanelquestionposter": "You must be logged in to ask a question.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "You cannot ask a question to your mentor if you do not have a mentor."
 }

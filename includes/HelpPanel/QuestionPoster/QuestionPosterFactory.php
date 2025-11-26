@@ -4,6 +4,7 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\IMentorManager;
+use GrowthExperiments\Mentorship\UserNotMentoredException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Page\WikiPageFactory;
@@ -81,6 +82,7 @@ class QuestionPosterFactory {
 	 * @param string $relevantTitle Title of the page the question is about, if any.
 	 * @return QuestionPoster
 	 * @throws UserNotLoggedIn
+	 * @throws UserNotMentoredException
 	 */
 	public function getQuestionPoster(
 		string $source,

@@ -5,6 +5,7 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\IMentorManager;
+use GrowthExperiments\Mentorship\UserNotMentoredException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
@@ -47,6 +48,22 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 			$body,
 			$relevantTitleRaw
 		);
+		$this->verifyCanPostQuestions();
+	}
+
+	/**
+	 * Throw an exception if the question poster cannot post questions.
+	 * @return void
+	 * @throws UserNotMentoredException
+	 */
+	protected function verifyCanPostQuestions(): void {
+		if ( !$this->userHasAMentor( $this->getContext() ) ) {
+			throw new UserNotMentoredException();
+		}
+	}
+
+	protected function userHasAMentor( IContextSource $context ): bool {
+		return (bool)$this->mentorManager->getEffectiveMentorForUserSafe( $context->getUser() );
 	}
 
 	/**
