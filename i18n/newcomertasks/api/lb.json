@@ -22,6 +22,9 @@
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Beim Späichere vun enger strukturéierter GrowthExperiments-Ännerung „[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link E Link derbäisetzen]“ benotzen.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "Beim Späichere vun enger strukturéierter GrowthExperiments-Ännerung „[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link E Bild derbäisetzen]“ benotzen.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-section-image-recommendation": "Beim Späichere vun enger strukturéierter GrowthExperiments-Ännerung „[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link E Bild bei en Abschnitt derbäisetzen]“ benotzen.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-revise-tone": "Beim Späichere vun enger strukturéierter GrowthExperiments-Ännerung „[[mw:Growth/Revise_Tone|Toun iwwerschaffen]]“ benotzen.",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-revise-tone": "<dl><dt>Fir de <var>ge-task-revise-tone</var>-Plugin</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-growthexperiments-structured-task-submit-data-format-revise-tone": "Fir dëse Plugin solle keng Donnéeën ugi ginn.",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Fir de <var>ge-task-link-recommendation</var>-Plugin</dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Fir de <var>ge-task-image-recommendation</var>-Plugin</dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt>Fir de <var>ge-task-section-image-recommendation</var>-Plugin</dt><dd>\n$1\n</dd></dl>",
@@ -43,5 +46,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "De Parameter <var>editRevId</var> kann net benotzt ginn, wann de Parameter <var>accepted</var> op <kbd>false</kbd> gesat ass.",
 	"growthexperiments-addimage-feedback-accepted-caption": "De Parameter <var>caption</var> ass obligatoresch, wann de Parameter <var>accepted</var> op <kbd>true</kbd> gesat ass.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "D'Versioun, déi an <var>editRevId</var> spezifizéiert gouf, gouf net fonnt.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "D'Versioun, déi an <var>editRevId</var> spezifizéiert gouf, gehéiert zu enger anerer Säit."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "D'Versioun, déi an <var>editRevId</var> spezifizéiert gouf, gehéiert zu enger anerer Säit.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "Eng Recommandatioun vum Typ „Tounfall iwwerschaffen“ fir eng bestëmmte Säit ofginn.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "Titel vun der Säit, fir déi d'Recommandatioun ofgi soll ginn, ouni Nummraum."
 }

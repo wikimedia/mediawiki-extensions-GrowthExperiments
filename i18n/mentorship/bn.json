@@ -28,6 +28,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "{{GENDER:|মেন্টরকে}} জিজ্ঞাসা করা প্রশ্নাবলী",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "সম্পাদনার সংখ্যা",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "নিবন্ধনের তারিখ",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "$1 আগে সর্বশেষ হালনাগাদ",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "ছাঁকনি",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "হালনাগাদ",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "সম্পাদনার সংখ্যা",

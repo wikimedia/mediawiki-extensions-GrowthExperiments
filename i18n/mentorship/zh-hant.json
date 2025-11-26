@@ -33,6 +33,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "詢問{{GENDER:|導師}}的問題",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "編輯次數",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "註冊日期",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "最後更新於 $1 前",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "篩選",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "更新",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "編輯次數",

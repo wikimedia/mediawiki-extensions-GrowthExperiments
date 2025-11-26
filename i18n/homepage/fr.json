@@ -324,7 +324,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Ajouter une image à un article non illustré",
 	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Ajouter une image à une section d’article",
 	"growthexperiments-homepage-suggestededits-tasktype-name-revise-tone": "Réviser le ton",
-	"growthexperiments-homepage-suggestededits-tasktype-description-revise-tone": "Aidez Wikipédia à rester digne de confiance en remplaçant les mots promotionnels et le langage subjectif par des descriptions simples des faits donnant aux lecteurs des informations précises.<br>Les améliorations de tonalité sont suggérées automatiquement et vous devez décider si vous souhaitez les appliquer à l'article.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-revise-tone": "Aidez les lecteurs à accéder à des informations fiables en remplaçant les formulations promotionnelles et subjectives par un contenu équilibré. Les améliorations stylistiques sont [https://www.mediawiki.org/wiki/Edit_check/Tone_Check#Model suggérées par un outil automatique], et c'est vous qui décidez de les adopter ou de les refuser pour chacune d'entre elles.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-revise-tone": "Rendre les articles plus factuels en supprimant les mots promotionnels",
 	"growthexperiments-homepage-suggestededits-tasktype-time-revise-tone": "5 – 10 minutes",
 	"growthexperiments-homepage-suggestededits-tasktype-label-revise-tone": "Réviser le ton",

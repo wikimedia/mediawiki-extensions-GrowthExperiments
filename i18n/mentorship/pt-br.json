@@ -4,6 +4,7 @@
 			"Eduardoaddad",
 			"IZapico (WMF)",
 			"Re demz",
+			"Sixaxis",
 			"Stanglavine",
 			"YuriNikolai",
 			"Zapipedia (WMF)"
@@ -26,6 +27,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Perguntas feitas {{GENDER:|ao mentor|à mentora}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Contagem de edições",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data de registro",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Última atualização $1 atrás",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtros",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Atualizar",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Contagem de edições",
