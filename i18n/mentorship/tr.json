@@ -56,7 +56,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "Önceki sonuç sayfası",
 	"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label": "Danışanın yıldızını kaldır",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Yakın zamanda aktif danışan bulunamadı",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Danışman kontrol paneli yalnızca son zamanlarda aktif olan danışanları gösterir. Bilgi simgesi aracılığıyla daha fazla bilgi görüntülenebilir. Yakın zamanda danışmanlığa koydolduysanız henüz danışanınız olamayabilir.{{GENDER:|}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Danışman kontrol paneli yalnızca son zamanlarda aktif olan danışanları gösterir. Bilgi simgesi aracılığıyla daha fazla bilgi görüntülenebilir. Yakın zamanda danışmanlığa kaydolduysanız henüz danışanınız olamayabilir.{{GENDER:|}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Danışman bulunamadı",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Danışanları bulmak için filtreleri {{GENDER:|değiştirin}}.",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Danışanlarınız tarafından yapılan son değişiklikler{{GENDER:|}}",

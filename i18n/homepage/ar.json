@@ -257,7 +257,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "إضافة الروابط هي من أسهل طرق التحرير. تخوّل الروابط لدى القرّاء، الضغط على أشياء، يريدون معرفة المزيد حولها.<br />ستقترح الآلة بعض الروابط، ثمّ {{GENDER:$1|قرّر|قرّري}} إضافتها أو عدم إضافتها إلى المقالة.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "يتم إنشاء الاقتراحات بواسطة الآلة. الصور مأخوذة من وبكيميديا كومنز، مستودع ويكيبيديا للصور الحرّة.<br />ستقترح الآلة صورًا، {{GENDER:$1|ستقرّر|ستقرّرين}} ما إذا ستتمّ إضافتها إلى المقالة. {{GENDER:$1|ستكتب|ستكتبين}} أيضًا وصفًا لها.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-section-image-recommendation": "يتم إنشاء الاقتراحات بواسطة الآلة. الصور مأخوذة من وبكيميديا كومنز، مستودع ويكيبيديا للصور الحرّة.<br />ستقترح الآلة صورًا، {{GENDER:$1|ستقرّر|ستقرّرين}} ما إذا ستتمّ إضافتها إلى المقالة. {{GENDER:$1|ستكتب|ستكتبين}} أيضًا وصفًا لها.",
-	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "تحرير النسخ ({{GENDER:|أصلح|أصلحي}} الإملاء والنحو والنمط)",
+	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "تحرير النسخ (إصلاح الإملاء والنحو والصيغة)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "{{GENDER:|ابحث|ابحثي}} عن مراجع (مصادر للمقالات الموجودة)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "{{GENDER:|قم|قومي}} بتحديث المقالات ({{GENDER:|اجعل|اجعلي}} المقالات الحالية محيّنة)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "{{GENDER:|وسع|وسعي}} مقالات قصيرة",

@@ -19,7 +19,8 @@
 			"Yamagata Yusuke",
 			"Yusuke1109",
 			"もなー(偽物)",
-			"バレロン"
+			"バレロン",
+			"Kei Wakui"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}さん！",
@@ -233,7 +234,7 @@
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$10億",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1兆",
 	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title": "現在利用可能な構造化タスクはありません。",
-	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "皆さんのようなボランティアの皆さんが{{SITENAME}}の改善に貢献しています。参加しましょう！",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "あなたのようなボランティアの皆さんが今日の{{SITENAME}}の改善に貢献しています。参加しましょう！",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "すべてのお勧めを見る",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "誤字や文法、文体の修正",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "ウィキペディアの記事に検証のための情報源を追加",
