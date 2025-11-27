@@ -233,7 +233,7 @@ return [
 					$services->getMainConfig()
 				),
 				GrowthExperimentsServices::wrap( $services )->getLogger(),
-				$services->getService( 'MetricsPlatform.ConfigsFetcher' ),
+				$services->getService( 'MetricsPlatform.XLab.ConfigsFetcher' ),
 				$services->getService( 'MetricsPlatform.XLab.EnrollmentAuthority' ),
 				$services->getService( 'MetricsPlatform.XLab.ExperimentManager' ),
 				$services->getMainConfig(),
