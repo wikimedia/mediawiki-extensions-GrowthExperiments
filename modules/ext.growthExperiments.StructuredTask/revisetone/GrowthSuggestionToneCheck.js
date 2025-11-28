@@ -30,8 +30,4 @@ GrowthSuggestionToneCheck.prototype.canBeShown = function () {
 	return true;
 };
 
-GrowthSuggestionToneCheck.prototype.onDocumentChange = function ( ...args ) {
-	return this.handleListener( 'onDocumentChange', ...args );
-};
-
 module.exports = GrowthSuggestionToneCheck;
