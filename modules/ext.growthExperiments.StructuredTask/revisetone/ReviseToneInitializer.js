@@ -113,12 +113,31 @@ class ReviseToneInitializer {
 			ve.init.target.surface.model.documentModel,
 		);
 		ve.init.target.surface.getModel().emit( 'undoStackChange' );
+		this.scrollReviseToneIntoView();
 		experiment.send( 'page-visited', {
 			/* eslint-disable camelcase */
 			action_source: 'EditCheck-1',
 			instrument_name: 'Article with revise tone recommendation page visited',
 			/* eslint-enable camelcase */
 		} );
+	}
+
+	scrollReviseToneIntoView() {
+		let hasBeenScrolledIntoView = false;
+		ve.trackSubscribe(
+			'activity.editCheck-' + GrowthSuggestionToneCheck.static.name,
+			() => {
+				if ( hasBeenScrolledIntoView ) {
+					return;
+				}
+				window.setTimeout( () => {
+					document.querySelector(
+						OO.ui.isMobile() ? '.ve-ui-editCheck-gutter-action' : '.ve-ui-editCheckActionWidget',
+					).scrollIntoView( { behavior: 'smooth', block: 'center' } );
+				}, 500 );
+				hasBeenScrolledIntoView = true;
+			},
+		);
 	}
 
 	// TODO: make this private once Grade A support is raised to at least Safari 15, see T395347
