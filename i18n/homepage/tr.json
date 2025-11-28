@@ -355,6 +355,7 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1, $3 ($4 bölümü) için bir görsel önerisini {{GENDER:$2|inceledi}}: onaylandı",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1, $3 ($4 bölümü) için bir görsel önerisini {{GENDER:$2|inceledi}}: geri çevrildi",
 	"log-action-filter-growthexperiments": "GrowthExperiments olay türü:",
+	"log-action-filter-growthexperiments-mentorassignmentchanges": "Danışman atama değişiklikleri",
 	"log-action-filter-growthexperiments-addlink": "Bağlantı önerileri",
 	"log-action-filter-growthexperiments-addimage": "Resim önerileri",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Belirtilen danışmanlık edinen kullanıcının kullanıcı adı geçersiz",
