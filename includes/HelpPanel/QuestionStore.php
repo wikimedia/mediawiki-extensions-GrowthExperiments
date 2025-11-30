@@ -196,9 +196,8 @@ class QuestionStore {
 	}
 
 	private function saveToUserSettings( string $storage, string $formattedQuestions ) {
-		$updateUser = $this->user->getInstanceForUpdate();
-		$this->userOptionsManager->setOption( $updateUser, $storage, $formattedQuestions );
-		$updateUser->saveSettings();
+		$this->userOptionsManager->setOption( $this->user, $storage, $formattedQuestions );
+		$this->userOptionsManager->saveOptions( $this->user );
 	}
 
 	private function saveToUserSettingsWithJob( string $storage, string $formattedQuestions ) {
