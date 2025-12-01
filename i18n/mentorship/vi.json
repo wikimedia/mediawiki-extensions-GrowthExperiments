@@ -34,6 +34,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Số câu hỏi đã hỏi {{GENDER:|cố vấn}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Số lần sửa đổi",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Ngày mở tài khoản",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Cập nhật lần cuối cách đây $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Bộ lọc",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Cập nhật",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Số lần sửa đổi",

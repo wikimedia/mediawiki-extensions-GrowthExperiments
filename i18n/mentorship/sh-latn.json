@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aca",
 			"Winston Sung"
 		]
 	},
@@ -33,6 +34,7 @@
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Novajlije koje ste označili zvjezdicom na mentorskoj tabli",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "Vaše neoznačene novajlije",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Ostale novajlije dodijeljene Vama",
+	"echo-pref-tooltip-ge-mentorship": "Obavijesti povezane s mentorskim funkcijama koje održava Tim za rast. Obavještavaju vas kad vas preuzme neki mentor ili kada neki drugi mentor preuzme neku od vaših novajlija.",
 	"growthexperiments-manage-mentors-edit": "Uredi",
 	"growthexperiments-manage-mentors-edit-reason": "Razlog"
 }

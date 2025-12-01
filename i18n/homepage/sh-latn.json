@@ -17,5 +17,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|izmjena|izmjene|izmjena}} dana $2",
 	"growthexperiments-log-name": "Dnevnik dodatka GrowthExperiments",
 	"growthexperiments-homepage-special-contribute-title": "Predložene izmjene",
-	"growthexperiments-homepage-special-contribute-description": "Načinite male i jednostavne izmjene (poput dodavanja veza i lekture) da biste poboljšali postojeće članke."
+	"growthexperiments-homepage-special-contribute-description": "Načinite male i jednostavne izmjene (poput dodavanja veza i lekture) da biste poboljšali postojeće članke.",
+	"echo-category-title-ge-newcomer": "Funkcije Tima za rast",
+	"echo-pref-tooltip-ge-newcomer": "Obavještava vas o zadacima za novajlije i drugim funkcijama za pomoć novim korisnicima."
 }

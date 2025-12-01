@@ -25,6 +25,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "שאלות שהחניך שאל את {{GENDER:|החונך|החונכת}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "מספר העריכות",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "תאריך ההרשמה",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "עדכון אחרון לפני $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "מסננים",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "עדכון",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "מספר העריכות",

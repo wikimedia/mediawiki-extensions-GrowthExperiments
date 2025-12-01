@@ -48,5 +48,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "לא ניתן להשתמש בפרמטר <var>editRevId</var> כאשר הפרמטר <var>accepted</var> מוגדר כ־<kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "הפרמטר <var>caption</var> נדרש כאשר הפרמטר <var>accepted</var> מוגדר כ־<kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "הגרסה שצוינה ב־<var>editRevId</var> לא נמצאה.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "הגרסה המצוינת ב־<var>editRevId</var> שייכת לדף אחר."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "הגרסה המצוינת ב־<var>editRevId</var> שייכת לדף אחר.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "ביטול הצעת \"שכתוב נימה\" עבור דף נתון.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "כותרת הדף שצריך לבטל את הצעה עליו, ללא מרחב שם."
 }

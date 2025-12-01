@@ -343,6 +343,7 @@
 	"logentry-growthexperiments-addsectionimage-accepted": "$1 {{GENDER:$2|סקר|סקרה}} הצעת תמונה עבור $3 (פרק $4): ההצעה התקבלה",
 	"logentry-growthexperiments-addsectionimage-rejected": "$1 {{GENDER:$2|סקר|סקרה}} הצעת תמונה עבור $3 (פרק $4): ההצעה נדחתה",
 	"log-action-filter-growthexperiments": "סוג אירוע ניסויי צמיחה",
+	"log-action-filter-growthexperiments-mentorassignmentchanges": "שינויים בהקצאת חונך",
 	"log-action-filter-growthexperiments-addlink": "הצעות קישור",
 	"log-action-filter-growthexperiments-addimage": "הצעות תמונה",
 	"growthexperiments-homepage-claimmentee-invalid-username": "שם החניך שסופק אינו תקין",
