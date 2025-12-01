@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"LoveIceLang"
+			"LoveIceLang",
+			"Sveinn í Felli"
 		]
 	},
+	"growthexperiments-mentor-dashboard-title": "Stjórnborð leiðbeinenda",
+	"growthexperiments-mentor-dashboard-pt-link": "Stjórnborð leiðbeinenda",
+	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Stjórnun leiðbeinenda",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Vaxtartæki",
+	"growthexperiments-rcfilters-mentorship-title": "Úthlutun leiðbeinanda",
+	"echo-category-title-ge-mentorship": "Úthlutun leiðbeinanda",
+	"growthexperiments-manage-mentors-title": "Stjórnun leiðbeinenda",
 	"growthexperiments-manage-mentors-username": "Notandanafn"
 }

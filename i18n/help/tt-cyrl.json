@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Ерней",
-			"Blackisnewyellow"
+			"Blackisnewyellow",
+			"Ильгиз"
 		]
 	},
 	"growthexperiments-help-panel-postedit-suggestededits-info": "{{SITENAME}} сайтының башка кулланучылары яхшыртыла ала торган мәкаләләр таптылар. Тәкъдим ителгән үзгәртүләрне карагыз һәм хезмәтегезне дәвам итегез.",
-	"growthexperiments-help-panel-suggestededits-title": "Тәкъдим ителгән үзгәртүләр",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "үзгәртү",
+	"growthexperiments-help-panel-suggestededits-title": "Тәкъдим ителгән төзәтмәләр",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "үзгәрт",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Электрон почтагызны раслау",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Электрон почтаны өстәү",
-	"growthexperiments-help-panel-button-preheader-suggested-edits": "Тәкъдим ителгән үзгәртүләр"
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Тәкъдим ителгән төзәтмәләр"
 }

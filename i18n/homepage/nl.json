@@ -519,8 +519,8 @@
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Klaar",
 	"growthexperiments-homepage-mentorship-about-header": "Over mentoren",
 	"growthexperiments-homepage-mentorship-about-subheader-mentor": "Wie is {{GENDER:|jouw}} {{GENDER:$1|mentor}}?",
-	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Jouw}} {{GENDER:$1|mentor}} is een gebruiker met veel ervaring met het bewerken van {{SITENAME}}. {{GENDER:$1|Hij|Zij}} heeft ervoor gekozen om nieuwe gebruikers te helpen met het bewerken. Ze beantwoorden vragen die {{GENDER:|je}} hebt over deze site.",
-	"growthexperiments-homepage-mentorship-about-mentor-par2": "Als {{GENDER:|je}} een vraag stelt aan je mentor, ziet {{GENDER:$1|hij|zij}} het op {{GENDER:$1|zijn|haar}} overlegpagina en {{GENDER:|jij}} krijgt een notificatie zodra {{GENDER:$1|hij|zij}} heeft gereageerd.",
+	"growthexperiments-homepage-mentorship-about-mentor-par1": "{{GENDER:|Jouw}} {{GENDER:$1|mentor}} is een gebruiker met veel ervaring met het bewerken van {{SITENAME}}. {{GENDER:$1|Hij|Zij|Die}} heeft ervoor gekozen om nieuwe gebruikers te helpen met het bewerken. Mentoren beantwoorden vragen die {{GENDER:|je}} hebt over deze site.",
+	"growthexperiments-homepage-mentorship-about-mentor-par2": "Als {{GENDER:|je}} een vraag stelt aan je mentor, ziet {{GENDER:$1|hij|zij|die}} het op {{GENDER:$1|zijn|haar|diens}} overlegpagina en {{GENDER:|jij}} krijgt een notificatie zodra {{GENDER:$1|hij|zij|die}} heeft gereageerd.",
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Afmelden voor mentorschap",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Druk op de knop hieronder om te stoppen met een mentor. {{GENDER:|Je}} kunt een nieuwe mentor krijgen als {{GENDER:|je}} je later bedenkt.",
 	"growthexperiments-homepage-mentorship-about-done": "Klaar"

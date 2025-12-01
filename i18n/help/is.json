@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Snævar",
-			"Stefán Örvar Sigmundsson"
+			"Stefán Örvar Sigmundsson",
+			"Sveinn í Felli"
 		]
 	},
+	"growthexperiments-help-panel-tog-help-panel": "Virkja hjálparspjald ritilsins",
 	"growthexperiments-help-panel-cta-button-text": "Fá aðstoð við breytingar",
 	"growthexperiments-help-panel-question-button-text": "Halda áfram",
 	"growthexperiments-help-panel-submit-question-button-text": "Gefa út",

@@ -131,7 +131,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Tamén recibirás un correo electrónico no enderezo $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "cambiar",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Se tamén che {{GENDER:$2|gustaría}} recibir unha notificación por correo electrónico, confirma o teu enderezo: $1",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Confirma o teu enderezo electrónico",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Confirma o teu correo electrónico",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Se tamén che {{GENDER:$1|gustaría}} recibir unha notificación por correo electrónico, engade un enderezo.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Engadir enderezo electrónico",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Sobre o panel de axuda",

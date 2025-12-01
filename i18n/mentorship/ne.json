@@ -21,7 +21,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "विद्यार्थीहरूलाई चिह्न लगाउनुहोस्",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "प्रयोगकर्ता नाम",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "उल्टाइएका सम्पादनहरूको संख्या",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "ब्लकहरूको संख्या",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "ब्लकहरूको सङ्ख्या",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "तपाईंको {{GENDER:|सल्लाहकारले}} सोधेका प्रश्नहरू",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "सम्पादन गणना",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "दर्ता मिति",
