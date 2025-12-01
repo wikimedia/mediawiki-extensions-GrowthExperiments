@@ -6,8 +6,7 @@ const homepage = new Homepage();
 const guidedTour = new GuidedTour();
 const keepGoingModule = new KeepGoingModule();
 
-// Fully disable the spec until we can ensure it is more stable, T407152
-describe.skip( 'Revise Tone', () => {
+describe( 'Revise Tone', () => {
 
 	let usernameAlice: string;
 	let passwordAlice: string;
@@ -34,6 +33,19 @@ describe.skip( 'Revise Tone', () => {
 	} );
 
 	describe( 'On desktop', () => {
+
+		it( 'Shows the Revise Tone Edit Check', () => {
+			cy.visit( 'index.php?title=Special:Homepage' );
+			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
+			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
+			homepage.suggestedEditsCardLink.click();
+
+			cy.get( '.ext-growthExperiments-ReviseToneOnboarding' ).should( 'be.visible' );
+			cy.get( '.close-all-button button' ).should( 'be.visible' ).click();
+
+			cy.get( '.ve-ui-editCheckActionWidget' ).should( 'be.visible' );
+			cy.get( '.ve-ui-editCheckActionWidget' ).should( 'have.length', 1 );
+		} );
 
 		// Flaky: T407152 - The Edit Check disappears after selecting the first item in the survey?
 		it.skip( 'Closes the Editor when declining Edits and suggests a new task', () => {
@@ -84,6 +96,19 @@ describe.skip( 'Revise Tone', () => {
 
 	describe( 'On mobile', () => {
 
+		it( 'Shows the Revise Tone Edit Check', () => {
+			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
+			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
+			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
+			homepage.suggestedEditsCardLink.click();
+
+			cy.get( '.ext-growthExperiments-ReviseToneOnboarding' ).should( 'be.visible' );
+			cy.get( '.close-all-button button' ).should( 'be.visible' ).click();
+
+			cy.get( '.ve-ui-editCheckActionWidget' ).should( 'be.visible' );
+			cy.get( '.ve-ui-editCheckActionWidget' ).should( 'have.length', 1 );
+		} );
+
 		// Flaky: T407152 - The Edit Check disappears after selecting the first item in the survey?
 		it.skip( 'Closes the Editor when declining Edits and suggests a new task', () => {
 			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
@@ -110,6 +135,7 @@ describe.skip( 'Revise Tone', () => {
 			keepGoingModule.smallTaskCardLink.should( 'have.attr', 'href' );
 		} );
 
+		// Flaky: T407152
 		it.skip( 'Shows the Revise Tone Edit Check and tags edits', () => {
 			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );

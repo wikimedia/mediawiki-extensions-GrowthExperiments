@@ -19,6 +19,9 @@ use MediaWiki\Title\TitleValue;
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
 
+// MetricsPlatform extension is not available as a Gated Extension in CI
+$wgGEUseMetricsPlatformExtension = false;
+
 // FIXME: Used on patch-demo
 $wgGEReviseToneSuggestedEditEnabled = true;
 $wgGEReviseToneRecommendationProvider = 'subpage';
