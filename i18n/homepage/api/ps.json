@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "د کورمخ ماډيولونو له لارې د خپرو شوو بڼل‌شوو پوښتنو ترلاسه کول",
+	"apihelp-homepagequestionstore-param-storage": "د پوښتنو زېرمه‌کولو ځای.",
+	"apihelp-homepagequestionstore-param-userid": "د پوښتنو ترلاسه کولو لپاره د کارن پېژند.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "هېڅ پوښتنې ونه موندل شوې.",
+	"apihelp-growthsetmentor-param-mentee": "لارزدکړي کارن‌نوم",
+	"apihelp-growthsetmentor-param-mentor": "لارښود کارن‌نوم",
+	"apihelp-growthsetmentor-param-reason": "د بدلون لامل",
+	"apihelp-growthinvalidateimagerecommendation-summary": "د انځور سپارښتنې بې‌باوره کول."
+}

@@ -65,6 +65,10 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Búa til nýjar greinar og lengja styttri greinar.",
 	"growthexperiments-homepage-suggested-edits-header": "Tillögur að breytingum",
 	"growthexperiments-homepage-impact-header": "Áhrifin {{GENDER:$1|þín}}",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Síðast breytt",
+	"growthexperiments-homepage-impact-scores-edit-count": "Heildarfjöldi breytinga",
+	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Afturkallaðar breytingar",
+	"growthexperiments-homepage-impact-scores-thanks-count": "Mótteknar þakkir",
 	"growthexperiments-homepage-impact-subheader-text": "Fólk er að skoða greinarnar sem {{GENDER:|þú}} breyttir!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Skoðanir frá breytingu {{GENDER:$1|þinni}} (síðustu 60 dagar):",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Þú}} hefur ekki enn búið til eða breytt neinum greinum.",
@@ -87,6 +91,8 @@
 	"growthexperiments-homepage-impact-unactivated-description": "Þegar {{GENDER:|þú}} byrjar að breyta, sérðu hversu margir eru að skoða greinarnar sem {{GENDER:|þú}} hefur breytt.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Tilkynningar frá Pottinum",
 	"growthexperiments-tour-response-tip-text": "Þegar spurningunni {{GENDER:$1|þinni}} hefur verið svarað munt {{GENDER:$1|þú}} fá nýja tilkynningu hingað.",
+	"growthexperiments-specialimpact-title": "Áhrif",
 	"growthexperiments-addlink-summary-summary": "Uppástungur að tenglum: bætti við $1 {{PLURAL:$1|tengili|tenglum}}.",
+	"newcomertasksinfo-table-header-task-count": "Fjöldi",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Þú}} hefur gert <strong>$1</strong> {{PLURAL:$1|breytingu|breytingar}} (sjá allar)"
 }
