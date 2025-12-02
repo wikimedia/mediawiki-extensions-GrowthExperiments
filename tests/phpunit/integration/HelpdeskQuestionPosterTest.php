@@ -151,7 +151,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		}
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setRequest( new FauxRequest( [], true ) );
-		$context->setUser( $this->mutableTestUser->getInstanceForUpdate() );
+		$context->setUser( $this->mutableTestUser );
 		return $context;
 	}
 

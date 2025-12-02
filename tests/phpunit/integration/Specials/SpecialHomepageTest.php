@@ -96,11 +96,11 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$this->overrideConfigValues( [
 			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTitle',
 		] );
-		$user = $this->getMutableTestUser()->getUser()->getInstanceForUpdate();
+		$user = $this->getMutableTestUser()->getUser();
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_ENABLE, 1 );
 		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_PT_LINK, 1 );
-		$user->saveSettings();
+		$userOptionsManager->saveOptions( $user );
 		return $user;
 	}
 

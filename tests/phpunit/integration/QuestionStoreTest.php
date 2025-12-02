@@ -40,7 +40,7 @@ class QuestionStoreTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testQuestionAdd() {
 		$context = new DerivativeContext( RequestContext::getMain() );
-		$user = $this->getMutableTestUser()->getUser()->getInstanceForUpdate();
+		$user = $this->getMutableTestUser()->getUser();
 		$context->setRequest( new FauxRequest( [], true ) );
 		$context->setUser( $user );
 		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
@@ -57,7 +57,7 @@ class QuestionStoreTest extends MediaWikiIntegrationTestCase {
 			CONTENT_MODEL_WIKITEXT
 		);
 		$questionStore->add( $question );
-		$context->setUser( $user->getInstanceForUpdate() );
+		$context->setUser( $user );
 		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
 			$context,
 			HelpdeskQuestionPoster::QUESTION_PREF

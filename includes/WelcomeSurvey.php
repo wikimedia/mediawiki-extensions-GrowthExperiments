@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
+use LogicException;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\HtmlHelper;
@@ -12,6 +13,7 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\Utils\MWTimestamp;
 use stdClass;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\RemexHtml\HTMLData;
 use Wikimedia\RemexHtml\Serializer\SerializerNode;
 
@@ -331,7 +333,8 @@ class WelcomeSurvey {
 	 * @param string $renderDate Timestamp in MW format of when the form was shown
 	 */
 	public function handleResponses( $data, $save, $group, $renderDate ) {
-		$user = $this->context->getUser()->getInstanceForUpdate();
+		$user = $this->context->getUser()->getInstanceFromPrimary( IDBAccessObject::READ_EXCLUSIVE )
+			?? throw new LogicException( 'User not found in the database' );
 		$submitDate = MWTimestamp::now();
 
 		if ( $save ) {

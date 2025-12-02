@@ -93,7 +93,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 			],
 			null,
 			null,
-			$user->getInstanceForUpdate()
+			$user
 		);
 		$this->assertNotEquals( '', $response[0]['homepagequestionstore']['html'] );
 		$question = $response[0]['homepagequestionstore']['questions'][0];
