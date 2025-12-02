@@ -460,6 +460,7 @@
 	"growthexperiments-addlink-skip-reject": "Review again",
 	"grant-managementorship": "Manage mentorship",
 	"newcomertasksinfo": "Newcomer Tasks",
+	"newcomertasksinfo-not-available": "Newcomer tasks are not enabled on this wiki.",
 	"newcomertasksinfo-no-data": "No data is available.",
 	"newcomertasksinfo-config-form-info": "Configuration of newcomer tasks can be viewed and changed at [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-task-count": "$1",

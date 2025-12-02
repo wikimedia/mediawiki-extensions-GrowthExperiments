@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
+use GrowthExperiments\Util;
 use MediaWiki\SpecialPage\SpecialPage;
 use OOUI\Tag;
 
@@ -24,8 +25,12 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 		$this->addHelpLink( 'mw:Growth/Personalized_first_day/Newcomer_tasks' );
-		$info = $this->cachedSuggestionsInfo->getInfo();
 		$out = $this->getOutput();
+		if ( !Util::isNewcomerTasksAvailable() ) {
+			$out->addWikiMsg( 'newcomertasksinfo-not-available' );
+			return;
+		}
+		$info = $this->cachedSuggestionsInfo->getInfo();
 		$out->addWikiMsg( 'newcomertasksinfo-config-form-info' );
 		if ( !isset( $info['tasks'] ) || !isset( $info[ 'topics' ] ) ) {
 			$out->addHTML(

@@ -485,6 +485,7 @@
 	"growthexperiments-addlink-skip-reject": "\"Stay\" option of the dialog shown when the user has skipped all suggestions.\n\n{{doc-growthexperiments-addlink}}",
 	"grant-managementorship": "Name for grant \"managementorship\".\n{{Related|Grant}}",
 	"newcomertasksinfo": "Header for the special page that shows statistics about task suggestions available on this wiki.\n\n{{doc-growthexperiments-homepage}}",
+	"newcomertasksinfo-not-available": "Message for Special:NewcomerTasksInfo shown when the feature is not enabled on this wiki.\n\n{{doc-growthexperiments-homepage}}",
 	"newcomertasksinfo-no-data": "Message for Special:NewcomerTasksInfo shown when no statistics are available.\n\n{{doc-growthexperiments-homepage}}",
 	"newcomertasksinfo-config-form-info": "Message for Special:NewcomerTasksInfo to inform users about community configuration.\n\n{{doc-growthexperiments-homepage}}",
 	"newcomertasksinfo-task-count": "{{notranslate}}\nThe total count for a task type shown on Special:SuggestionsInfo. Parameters: \n*$1 The total count for the task type.\n\n{{doc-growthexperiments-homepage}}",
