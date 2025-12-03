@@ -37,9 +37,9 @@ abstract class QuestionPoster {
 	private bool $postOnTop = false;
 	private IContextSource $context;
 	private bool $isFirstEdit;
-	private Title $targetTitle;
+	private ?Title $targetTitle = null;
 	private string $resultUrl;
-	protected PageUpdater $pageUpdater;
+	private ?PageUpdater $pageUpdater = null;
 
 	/**
 	 * @var mixed
@@ -81,9 +81,6 @@ abstract class QuestionPoster {
 			throw new UserNotLoggedIn();
 		}
 		$this->isFirstEdit = ( $this->getContext()->getUser()->getEditCount() === 0 );
-		$this->targetTitle = $this->getTargetTitle();
-		$page = $wikiPageFactory->newFromTitle( $this->targetTitle );
-		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->body = trim( $body );
 		$this->statsFactory = $statsFactory;
 		$this->confirmEditInstalled = $confirmEditInstalled;
@@ -175,7 +172,7 @@ abstract class QuestionPoster {
 	 * @return string Content model of the target page. One of the CONTENT_MODEL_* constants.
 	 */
 	protected function getTargetContentModel(): string {
-		return $this->targetTitle->getContentModel();
+		return $this->getTargetTitle()->getContentModel();
 	}
 
 	private function submitWikitext(): StatusValue {
@@ -193,7 +190,8 @@ abstract class QuestionPoster {
 		$tag = $this->getTag();
 		$this->getPageUpdater()->addTag( $tag );
 		$this->getPageUpdater()->setContent( SlotRecord::MAIN, $content );
-		if ( $this->getContext()->getAuthority()->authorizeWrite( 'autopatrol', $this->targetTitle ) ) {
+		if ( $this->getContext()->getAuthority()->authorizeWrite( 'autopatrol',
+			$this->getTargetTitle() ) ) {
 			$this->getPageUpdater()->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
 		}
 		$newRev = $this->getPageUpdater()->saveRevision(
@@ -222,8 +220,8 @@ abstract class QuestionPoster {
 		// NOTE: Don't call setFragment() on the original Title, that may corrupt the internal
 		//       cache of Title objects.
 		$target = Title::makeTitle(
-			$this->targetTitle->getNamespace(),
-			$this->targetTitle->getDBkey(),
+			$this->getTargetTitle()->getNamespace(),
+			$this->getTargetTitle()->getDBkey(),
 			$fragment
 		);
 		$this->setResultUrl( $target->getLinkURL() );
@@ -241,7 +239,7 @@ abstract class QuestionPoster {
 	private function submitStructuredDiscussions(): StatusValue {
 		$workflowLoaderFactory = Container::get( 'factory.loader.workflow' );
 		// TODO: Add statsd instrumentation after T297709 is done.
-		$loader = $workflowLoaderFactory->createWorkflowLoader( $this->targetTitle );
+		$loader = $workflowLoaderFactory->createWorkflowLoader( $this->getTargetTitle() );
 		$blocksToCommit = $loader->handleSubmit(
 			$this->getContext(),
 			'new-topic',
@@ -352,6 +350,10 @@ abstract class QuestionPoster {
 	 * @return PageUpdater
 	 */
 	protected function getPageUpdater() {
+		if ( $this->pageUpdater === null ) {
+			$page = $this->wikiPageFactory->newFromTitle( $this->getTargetTitle() );
+			$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
+		}
 		return $this->pageUpdater;
 	}
 
@@ -458,12 +460,16 @@ abstract class QuestionPoster {
 	 * @return Title The page where the question should be posted.
 	 */
 	protected function getTargetTitle(): Title {
-		$title = $this->getDirectTargetTitle();
-		if ( $title->isRedirect() ) {
-			$page = $this->wikiPageFactory->newFromTitle( $title );
-			return $page->getRedirectTarget();
+		if ( $this->targetTitle === null ) {
+			$title = $this->getDirectTargetTitle();
+			if ( $title->isRedirect() ) {
+				$page = $this->wikiPageFactory->newFromTitle( $title );
+				$this->targetTitle = $page->getRedirectTarget();
+				return $this->targetTitle;
+			}
+			$this->targetTitle = $title;
 		}
-		return $title;
+		return $this->targetTitle;
 	}
 
 	/**
@@ -493,7 +499,7 @@ abstract class QuestionPoster {
 		return $this->permissionManager->getPermissionStatus(
 			'edit',
 			$this->getContext()->getUser(),
-			$this->targetTitle
+			$this->getTargetTitle()
 		);
 	}
 
@@ -501,7 +507,7 @@ abstract class QuestionPoster {
 		$derivativeContext = new DerivativeContext( $this->getContext() );
 		$services = MediaWikiServices::getInstance();
 		$derivativeContext->setConfig( $services->getMainConfig() );
-		$derivativeContext->setTitle( $this->targetTitle );
+		$derivativeContext->setTitle( $this->getTargetTitle() );
 		$status = new Status();
 		$hookRunner = new HookRunner( $services->getHookContainer() );
 		if ( !$hookRunner->onEditFilterMergedContent(

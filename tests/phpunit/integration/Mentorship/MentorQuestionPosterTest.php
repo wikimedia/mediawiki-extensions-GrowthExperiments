@@ -30,7 +30,15 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$mentorUser = $this->getTestSysop()->getUser();
 		$module = $this->getQuestionPosterModule( $mentorUser );
 		$spy = TestingAccessWrapper::newFromObject( $module );
-		$this->assertTrue( $mentorUser->getTalkPage()->equals( $spy->targetTitle ) );
+		$this->assertTrue( $mentorUser->getTalkPage()->equals( $spy->getTargetTitle() ) );
+	}
+
+	/**
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::__construct
+	 */
+	public function testCanConstructMentorQuestionPosterWithoutThrowingAnExceptionWhenThereIsNoMentor() {
+		$this->getQuestionPosterModule( null );
+		$this->assertTrue( true );
 	}
 
 	/**
@@ -63,21 +71,24 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @return MentorQuestionPoster|mixed|MockObject
 	 */
-	private function getQuestionPosterModule( User $mentorUser ) {
+	private function getQuestionPosterModule( ?User $mentorUser ) {
 		$wikiPageFactory = $this->getServiceContainer()->getWikiPageFactory();
 		$titleFactory = $this->getServiceContainer()->getTitleFactory();
 		$permissionManager = $this->getServiceContainer()->getPermissionManager();
 		$mentorManager = $this->createMock( IMentorManager::class );
 		$mentorStatusManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorStatusManager();
-		$mentor = new Mentor( $mentorUser, '*', '', IMentorWeights::WEIGHT_NORMAL );
-		$mentorManager->method( 'getMentorForUserSafe' )->willReturn( $mentor );
-		$mentorManager->method( 'getEffectiveMentorForUserSafe' )->willReturn( $mentor );
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$testUser = $this->getTestUser()->getUser();
-		// The user in context should always be the mentee
+		// If there is a mentor and a mentee, the user in context should always be the mentee
 		$testUser->setName( 'Mentee' );
 		$context->setUser( $testUser );
+
+		if ( $mentorUser ) {
+			$mentor = new Mentor( $mentorUser, '*', '', IMentorWeights::WEIGHT_NORMAL );
+			$mentorManager->method( 'getMentorForUserSafe' )->willReturn( $mentor );
+			$mentorManager->method( 'getEffectiveMentorForUserSafe' )->willReturn( $mentor );
+		}
 
 		return $this->getMockBuilder( MentorQuestionPoster::class )
 			->setConstructorArgs( [

@@ -5,15 +5,19 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use MediaWiki\Content\WikitextContent;
+use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\PageUpdater;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use StatusValue;
 use Wikimedia\ScopedCallback;
+use Wikimedia\Stats\StatsFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -43,6 +47,35 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$accessWrapper->context = $requestContext;
 
 		return $questionPoster;
+	}
+
+	/**
+	 * @covers ::getRelevantTitle
+	 */
+	public function testGetRelevantTitleReturnsNullWhenNoRawTitle() {
+		$wikiPageFactory = $this->createMock( WikiPageFactory::class );
+		$titleFactory = $this->createMock( TitleFactory::class );
+		$permissionManager = $this->createMock( PermissionManager::class );
+		$statsFactory = StatsFactory::newNull();
+		$user = $this->createMock( User::class );
+		$ctx = new DerivativeContext( RequestContext::getMain() );
+		$ctx->setUser( $user );
+		$user->method( 'isNamed' )
+			->willReturn( true );
+
+		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
+			->setConstructorArgs( [ $wikiPageFactory,
+				$titleFactory,
+				$permissionManager,
+				$statsFactory,
+				true,
+				true,
+				$ctx,
+				'test-body',
+				] )
+			->getMockForAbstractClass();
+
+		self::assertNull( $questionPoster->getRelevantTitle() );
 	}
 
 	/**
