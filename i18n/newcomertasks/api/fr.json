@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"DreZhsh",
+			"Escargot bleu",
 			"Gomoko",
 			"JLTRY",
 			"Mahabarata",
@@ -29,6 +30,8 @@
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "À utiliser lors de l’enregistrement d’une modification structurée « [https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link Ajouter un lien] » dans GrowthExperiments.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "À utiliser lors de l’enregistrement d’une modification structurée « [https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image Ajouter une image] » dans GrowthExperiments.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-section-image-recommendation": "À utiliser lors de l’enregistrement d’une modification structurée « [https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image#\"Add_an_image\"_to_a_Section Ajouter une image à une section] » dans GrowthExperiments.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-revise-tone": "Utiliser lors de l'enregistrement d'une modification structurée GrowthExperiments \"[[mw:Growth/Revise_Tone|révision du ton]]\".",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-revise-tone": "<dl><dt>Pour le plugin <var>ge-task-revise-tone</var></dt><dd>\n$1\n</dd></dl>",
 	"apihelp-growthexperiments-structured-task-submit-data-format-revise-tone": "Aucune donnée ne doit être incluse pour ce plugin.",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Pour le greffon <var>ge-task-link-recommendation</var></dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Pour le greffon <var>ge-task-image-recommendation</var></dt><dd>\n$1\n</dd></dl>",
@@ -51,5 +54,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Le paramètre <var>editRevId</var> ne peut pas être utilisé quand le paramètre <var>accepted</var> (accepté) est positionné à <kbd>false</kbd> (faux).",
 	"growthexperiments-addimage-feedback-accepted-caption": "Le paramètre <var>caption</var> (légende) est obligatoire quand le paramètre <var>accepted</var> (accepté) est positionné à <kbd>true</kbd> (vrai).",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "La révision spécifiée dans <var>editRevId</var> est introuvable.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "La révision spécifiée dans <var>editRevId</var> appartient à une page différente."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "La révision spécifiée dans <var>editRevId</var> appartient à une page différente.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "Abandonner une recommandation de « Révision du ton » pour une page donnée.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "Titre de la page pour laquelle la recommandation doit être abandonnée, sans espace de noms."
 }

@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"DreZhsh",
+			"Escargot bleu",
 			"Gomoko",
 			"Goombiis",
 			"JLTRY",
@@ -32,6 +33,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Questions posées {{GENDER:|au|à la}} mentor{{GENDER:||e}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Nombre de modifications",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Date d’inscription",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Dernière mise à jour il y a $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtres",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Mettre à jour",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Compteur de modifications",
