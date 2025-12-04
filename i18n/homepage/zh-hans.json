@@ -217,6 +217,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "在{{GENDER:$1|导师的}}讨论页查看{{GENDER:$2|您的}}问题",
 	"growthexperiments-homepage-mentorship-question-subject": "来自[[User:$1|$1]]的问题",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "来自[[User:$1|$1]]关于[[$2]]的问题",
+	"growthexperiments-homepage-mentorship-system-message": "注：$1",
 	"growthexperiments-specialimpact-title": "影响力",
 	"growthexperiments-specialimpact-showing-for-other-user": "显示 $1 的影响力数据",
 	"growthexperiments-specialimpact-invalid-username": "用户名缺失或无效。",
