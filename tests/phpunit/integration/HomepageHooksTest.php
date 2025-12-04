@@ -113,7 +113,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertArrayEquals( [ 'foo' ], $recentChange->getAttribute( 'tags' ) );
 
 		// Auth user tests with users who have activated Suggested Edits.
-		$user = $this->getMutableTestUser()->getUser();
+		$user = $this->getMutableTestUser()->getUserIdentity();
 		$services->getUserOptionsManager()->setOption( $user, SuggestedEdits::ACTIVATED_PREF, 1 );
 		$services->getUserOptionsManager()->saveOptions( $user );
 
