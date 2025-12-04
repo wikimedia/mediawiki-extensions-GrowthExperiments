@@ -475,6 +475,7 @@
 	"growthexperiments-addlink-skip-reject": "Nochmal überprüfen",
 	"grant-managementorship": "Lotse/Lotsin bearbeiten",
 	"newcomertasksinfo": "Einstiegs-Aufgabe",
+	"newcomertasksinfo-not-available": "Aufgaben für neue Benutzer sind in diesem Wiki nicht aktiviert.",
 	"newcomertasksinfo-no-data": "Es sind keine Daten verfügbar.",
 	"newcomertasksinfo-config-form-info": "Die Konfiguration der Neulings-Startseite kann unter [[Special:CommunityConfiguration/GrowthSuggestedEdits]] eingesehen und geändert werden.",
 	"newcomertasksinfo-table-header-task-type": "Aufgabentyp",
