@@ -10,6 +10,7 @@ use MediaWiki\Extension\CommunityConfiguration\Store\WikiPageStore;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Maintenance\LoggedUpdateMaintenance;
+use MediaWiki\Maintenance\LoggedUpdateOutcome;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
@@ -42,7 +43,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 	}
 
 	/** @inheritDoc */
-	protected function doDBUpdates(): bool {
+	protected function doDBUpdates(): LoggedUpdateOutcome {
 		$this->initServices();
 
 		$user = User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] );
@@ -54,7 +55,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 		$store = $provider->getStore();
 		if ( $store instanceof WikiPageStore && !$store->getConfigurationTitle()->exists() ) {
 			$this->output( "No configuration page found, skipping..." );
-			return true;
+			return LoggedUpdateOutcome::COMPLETE;
 		}
 		// $this->titleFactory->newFromTextThrow( $this->configLocation );
 		$loadStatus = $provider->loadValidConfigurationUncached();
@@ -70,12 +71,12 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 
 		if ( !array_key_exists( CommunityStructuredMentorWriter::CONFIG_KEY, $config ) ) {
 			$this->output( "Expected \"Mentors\" key to be present in config, exiting.\n" );
-			return false;
+			return LoggedUpdateOutcome::FAILED;
 		}
 
 		if ( !$config[ CommunityStructuredMentorWriter::CONFIG_KEY ] ) {
 			$this->output( "No mentors found in config, skipping migration.\n" );
-			return true;
+			return LoggedUpdateOutcome::COMPLETE;
 		}
 
 		foreach ( $config[ CommunityStructuredMentorWriter::CONFIG_KEY ] as $mentorId => $mentorData ) {
@@ -102,7 +103,12 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 		$deletions = $this->arrayDiffAssocRecursive( $originalConfig, $config );
 		if ( !$additions && !$deletions ) {
 			$this->output( "Nothing new to save, skipping\n" );
-			return false;
+
+			if ( $this->hasOption( 'dry-run' ) ) {
+				return LoggedUpdateOutcome::SIMULATED;
+			} else {
+				return LoggedUpdateOutcome::COMPLETE;
+			}
 		}
 		if ( $this->hasOption( 'dry-run' ) ) {
 			$this->output( "There are changes:\n" );
@@ -116,7 +122,8 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 			$this->output( "Validation status:\n" );
 			$this->output( $validationStatus->__toString() );
 			$this->output( "\n" );
-			return false;
+
+			return LoggedUpdateOutcome::SIMULATED;
 		}
 
 		$summaryAsWikitext = $this->messageLocalizer->msg(
@@ -129,11 +136,11 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 		);
 		if ( !$saveStatus->isOK() ) {
 			$this->error( $saveStatus );
-			return false;
+			return LoggedUpdateOutcome::FAILED;
 		}
 
 		$this->output( "Saved!\n" );
-		return true;
+		return LoggedUpdateOutcome::COMPLETE;
 	}
 
 	private function initServices(): void {
