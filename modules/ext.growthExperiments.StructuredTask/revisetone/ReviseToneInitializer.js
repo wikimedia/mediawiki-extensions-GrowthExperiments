@@ -14,7 +14,6 @@ class ReviseToneInitializer {
 	constructor() {
 		this.taskData = suggestedEditSession.taskData;
 		this.isInitialToneCheck = true;
-		this.surfaceReadyHasFired = false;
 	}
 
 	initialize() {
@@ -24,11 +23,6 @@ class ReviseToneInitializer {
 		ReviseToneInitializer.hasBeenInitialized = true;
 		mw.editcheck.editCheckFactory.unregister( mw.editcheck.ToneCheck );
 		mw.editcheck.editCheckFactory.register( GrowthSuggestionToneCheck, GrowthSuggestionToneCheck.static.name );
-		mw.hook( 've.newTarget' ).add( ( target ) => {
-			target.once( 'surfaceReady', () => {
-				this.surfaceReadyHasFired = true;
-			} );
-		} );
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
 			() => {
 				ve.trackSubscribe(
@@ -128,11 +122,8 @@ class ReviseToneInitializer {
 			ve.init.target.surface.model.documentModel,
 		);
 
-		if ( this.surfaceReadyHasFired ) {
-			// This triggers the refresh() method in VE's controller.js, which should make our edit check show up
-			// However, if surfaceReady has not yet fired, we do not want to trigger it before the surface is actually ready
-			ve.init.target.emit( 'surfaceReady' );
-		}
+		// See T412549 for finding a better way that bind less tightly to VE internals
+		ve.init.target.editcheckController.refresh();
 		this.scrollReviseToneIntoView();
 		experiment.send( 'page-visited', {
 			/* eslint-disable camelcase */

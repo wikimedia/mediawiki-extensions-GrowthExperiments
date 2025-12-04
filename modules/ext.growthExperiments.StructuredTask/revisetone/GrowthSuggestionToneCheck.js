@@ -22,8 +22,12 @@ GrowthSuggestionToneCheck.static.checkAsync = function ( text ) {
 	return GrowthSuggestionToneCheck.super.static.checkAsync.call( this, text );
 };
 
-GrowthSuggestionToneCheck.prototype.getModifiedContentBranchNodes = function () {
-	return this.constructor.static.overrides.keys();
+GrowthSuggestionToneCheck.prototype.getModifiedContentBranchNodes = function ( documentModel ) {
+	const actuallyModifiedBranchNodes = GrowthSuggestionToneCheck.super.prototype.getModifiedContentBranchNodes.call(
+		this,
+		documentModel,
+	);
+	return [ ...actuallyModifiedBranchNodes, ...this.constructor.static.overrides.keys() ];
 };
 
 GrowthSuggestionToneCheck.prototype.canBeShown = function () {
