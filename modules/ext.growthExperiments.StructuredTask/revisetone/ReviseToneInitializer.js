@@ -83,6 +83,7 @@ class ReviseToneInitializer {
 				1,
 				{
 					reason: action.replace( 'edit-check-feedback-reason-', '' ),
+					wiki: mw.config.get( 'wgDBname' ),
 				},
 			);
 			ve.init.target.tryTeardown().then( this.showCancelledPostEditDialog );
@@ -109,9 +110,17 @@ class ReviseToneInitializer {
 		const branchNodesWithTextFromVE = this.getContentBranchNodesWithTextFromVE();
 		// TODO: add tracking for similarity score and second-highest similarity score
 
+		const start = performance.now();
 		const bestMatch = simpleLevenshtein.findBestMatch(
 			this.taskData.paragraphText,
 			branchNodesWithTextFromVE.map( ( p ) => p.text ),
+		);
+		mw.track(
+			'stats.mediawiki_GrowthExperiments_revise_tone_match_paragraph_seconds',
+			performance.now() - start,
+			{
+				wiki: mw.config.get( 'wgDBname' ),
+			},
 		);
 
 		GrowthSuggestionToneCheck.static.setOverride(
