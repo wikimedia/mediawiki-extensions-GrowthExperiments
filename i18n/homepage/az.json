@@ -448,6 +448,7 @@
 	"growthexperiments-addlink-skip-reject": "Yenidən yoxla",
 	"grant-managementorship": "Mentorluğu idarə et",
 	"newcomertasksinfo": "Yeni gələn tapşırıqları",
+	"newcomertasksinfo-not-available": "Yeni istifadəçi tapşırıqları bu vikidə aktiv deyil.",
 	"newcomertasksinfo-no-data": "Məlumat yoxdur.",
 	"newcomertasksinfo-config-form-info": "Yeni gələn tapşırıqlarının konfiqurasiyasına [[Special:CommunityConfiguration/GrowthSuggestedEdits]] səhifəsində baxıla və dəyişdirilə bilər",
 	"newcomertasksinfo-table-header-task-type": "Tapşırıq növü",

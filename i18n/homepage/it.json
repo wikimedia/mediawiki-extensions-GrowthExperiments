@@ -385,6 +385,7 @@
 	"growthexperiments-addlink-skip-reject": "Revisiona di nuovo",
 	"grant-managementorship": "Modifica tutor",
 	"newcomertasksinfo": "Attività per i nuovi utenti",
+	"newcomertasksinfo-not-available": "Le attività per i nuovi arrivati non sono abilitate su questo wiki.",
 	"newcomertasksinfo-no-data": "Nessun dato disponibile.",
 	"newcomertasksinfo-config-form-info": "La configurazione delle attività per i nuovi utenti può essere trovata e modificata in [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Tipo di attività",

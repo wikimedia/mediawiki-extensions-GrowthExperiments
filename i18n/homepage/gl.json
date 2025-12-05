@@ -445,6 +445,7 @@
 	"growthexperiments-addlink-skip-reject": "Revisar de novo",
 	"grant-managementorship": "Xestionar a mentoría",
 	"newcomertasksinfo": "Tarefas das persoas principiantes",
+	"newcomertasksinfo-not-available": "As tarefas das persoas principiantes non están activadas neste wiki.",
 	"newcomertasksinfo-no-data": "Non hai datos dispoñibles.",
 	"newcomertasksinfo-config-form-info": "A configuración das tarefas das persoas principiantes pódese ver e cambiar en [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Tipo de tarefa",

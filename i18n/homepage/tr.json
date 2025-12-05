@@ -473,6 +473,7 @@
 	"growthexperiments-addlink-skip-reject": "Tekrar gözden geçir",
 	"grant-managementorship": "Danışmanlığı yönet",
 	"newcomertasksinfo": "Yeni başlayan Görevleri",
+	"newcomertasksinfo-not-available": "Yeni başlayan görevleri bu vikide etkin değil.",
 	"newcomertasksinfo-no-data": "Veri yok.",
 	"newcomertasksinfo-config-form-info": "Yeni başlayan görevlerin yapılandırması [[Special:CommunityConfiguration/GrowthSuggestedEdits]] sayfasında görüntülenebilir ve değiştirilebilir.",
 	"newcomertasksinfo-table-header-task-type": "Görev türü",
