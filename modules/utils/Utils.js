@@ -1,5 +1,3 @@
-/* eslint-disable jsdoc/no-undefined-types */
-
 ( function () {
 
 	// internal methods

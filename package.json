@@ -45,7 +45,7 @@
 		"d3-time": "3.0.0",
 		"d3-time-format": "4.1.0",
 		"eslint": "^8.57.1",
-		"eslint-config-wikimedia": "^0.31.0",
+		"eslint-config-wikimedia": "0.32.3",
 		"eslint-plugin-chai-friendly": "^1.0.1",
 		"eslint-plugin-cypress": "^3.6.0",
 		"grunt-banana-checker": "0.13.0",
