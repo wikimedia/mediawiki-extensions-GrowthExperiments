@@ -491,6 +491,7 @@
 	"growthexperiments-addlink-skip-reject": "Revoir à nouveau",
 	"grant-managementorship": "Gérer le tutorat",
 	"newcomertasksinfo": "Tâches pour novices",
+	"newcomertasksinfo-not-available": "Les tâches du nouvel arrivant ne sont pas activées sur ce wiki.",
 	"newcomertasksinfo-no-data": "Aucune donnée disponible.",
 	"newcomertasksinfo-config-form-info": "La configuration des tâches pour novices peut être vue et modifiée sur [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Type de tâche",

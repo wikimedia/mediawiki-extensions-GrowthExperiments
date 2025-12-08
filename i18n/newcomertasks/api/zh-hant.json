@@ -26,6 +26,9 @@
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "儲存 GrowthExperiments「[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link 新增連結]」結構化編輯時使用。",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "儲存 GrowthExperiments「[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image 新增圖片]」結構化編輯時使用。",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-section-image-recommendation": "儲存 GrowthExperiments「[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image#\"Add_an_image\"_to_a_Section 新增圖片至章節]」結構化編輯時使用。",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-revise-tone": "在儲存 GrowthExperiments「[[mw:Growth/Revise_Tone|修改語氣]]」結構化編輯時使用。",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-revise-tone": "<dl><dt>對於 <var>ge-task-revise-tone</var> 外掛</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-growthexperiments-structured-task-submit-data-format-revise-tone": "此外掛應不包含任何資料。",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>對於 <var>ge-task-link-recommendation</var> 外掛</dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>對於 <var>ge-task-image-recommendation</var> 外掛</dt><dd>\n$1\n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt>對於 <var>ge-task-section-image-recommendation</var> 外掛</dt><dd>\n$1\n</dd></dl>",
@@ -47,5 +50,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "當 <var>accepted</var> 參數設定成 <kbd>false</kbd> 時，不能使用 <var>editRevId</var> 參數。",
 	"growthexperiments-addimage-feedback-accepted-caption": "當 <var>accepted</var> 參數設定成 <kbd>true</kbd> 時，需要 <var>caption</var> 參數。",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "找不到在 <var>editRevId</var> 指定的修訂。",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "在 <var>editRevId</var> 指定的修訂屬於別的頁面。"
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "在 <var>editRevId</var> 指定的修訂屬於別的頁面。",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "對特定頁面提出「修改語氣」的建議。",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "提出刪除建議的頁面標題（不含命名空間）。"
 }

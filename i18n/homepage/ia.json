@@ -443,6 +443,7 @@
 	"growthexperiments-addlink-skip-reject": "Revider de novo",
 	"grant-managementorship": "Gerer mentorato",
 	"newcomertasksinfo": "Cargas de novicio",
+	"newcomertasksinfo-not-available": "Le cargas pro novicios non es activate sur iste wiki.",
 	"newcomertasksinfo-no-data": "Il non ha datos disponibile.",
 	"newcomertasksinfo-config-form-info": "Le configuration del cargas de novicio pote esser revidite e cambiate a [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Typo de carga",
