@@ -18,7 +18,7 @@
 	"growthexperiments-homepage-email-header-startemail": "E-name: $1",
 	"growthexperiments-homepage-email-text-noemail": "Ji bo filitandina hesabî pêwîst e",
 	"growthexperiments-homepage-email-text-unconfirmed": "E-nameya {{GENDER:$1|xwe}} kontrol bike, ka lînka tesdîqkirinê hatiye, yan jî lînkeke nû bişîne.",
-	"growthexperiments-homepage-email-text-confirmed": "E-nameya {{GENDER:$1|te}} hatiye tesdîqkirin. Mîhengên e-nameyê li ser Tercîhan dikarî biguherînî.",
+	"growthexperiments-homepage-email-text-confirmed": "E-nameya {{GENDER:$1|te}} hatiye tesdîqkirin. Tu karî eyarên e-nameyê li Tercîhan biguherînî.",
 	"growthexperiments-homepage-email-button-noemail": "E-name lê zêde bike",
 	"growthexperiments-homepage-email-button-unconfirmed": "Lînkeke nû bişîne",
 	"growthexperiments-homepage-email-button-confirmed": "Tercîhên min",

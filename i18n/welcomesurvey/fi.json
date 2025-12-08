@@ -47,7 +47,7 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "En muista",
 	"welcomesurvey-question-mailinglist-label": "Haluan saada vinkkejä sähköpostitse muokkaamisen aloittamisesta.",
 	"welcomesurvey-question-mailinglist-help": "Huomaa, että tämä postituslista on MailChimpin ylläpitämä. Henkilötietojesi käyttöä säätelee MailChimpin [https://www.intuit.com/privacy/statement/ tietosuojakäytäntö] ja [https://mailchimp.com/legal/terms/ käyttöehdot].",
-	"welcomesurvey-question-email-label": "Sähköpostiosoite (vapaaehtoinen)",
+	"welcomesurvey-question-email-label": "Sähköpostiosoite (valinnainen)",
 	"welcomesurvey-question-email-placeholder": "Kirjoita {{GENDER:|sähköpostiosoitteesi}}...",
 	"welcomesurvey-question-email-help": "Huomasimme, ettet lisännyt sähköpostiosoitetta luodessasi käyttäjätunnusta. Osoitteen lisääminen on <strong>erittäin suositeltavaa</strong>, koska sitä tarvitaan, jos unohdat salasanasi. HUOM: sähköpostiosoitettasi ei paljasteta, kun muut käyttäjät ottavat sinuun yhteyttä.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} on saatavana lähes 300 kielellä. Onko muita kieliä, joita luet ja kirjoitat?",

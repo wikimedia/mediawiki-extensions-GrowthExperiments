@@ -131,7 +131,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Dir kritt och eng E-Mail op $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "änneren",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Wann {{GENDER:$2|Dir}} och per E-Mail notifiéiert wëllt ginn, confirméiert elo Är E-Mail-Adress: $1",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "confirméiert Är E-Mail-Adress",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Confirméiert Är E-Mail-Adress",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Wann {{GENDER:$1|Dir}} och per E-Mail notifiéiert wëllt ginn, gitt elo eng E-Mail-Adress un.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "E-Mail-Adress derbäisetzen",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Iwwer den Hëllefspanel",
