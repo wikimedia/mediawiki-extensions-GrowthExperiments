@@ -83,7 +83,8 @@
 		let newUrl;
 		if ( url.searchParams.size === 1 && url.searchParams.has( 'title' ) ) {
 			// After removing the param only title remains. Rewrite to a prettier URL.
-			newUrl = mw.util.getUrl( /** @type {string} */ ( url.searchParams.get( 'title' ) ) );
+			const hash = url.hash;
+			newUrl = mw.util.getUrl( /** @type {string} */ ( url.searchParams.get( 'title' ) + hash ) );
 		} else {
 			newUrl = url;
 		}
