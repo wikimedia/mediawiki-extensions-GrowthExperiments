@@ -291,7 +291,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 
 	private function handleNullRecommendation( NullLinkRecommendation $nullLinkRecommendation, bool $isDryRun ): void {
 		$this->verboseLog(
-			'  scheduling deleting null recommendation for page ID ' . $nullLinkRecommendation->getPageId() . '... '
+			'  deleting null recommendation for page ID ' . $nullLinkRecommendation->getPageId() . '... '
 		);
 
 		if ( $isDryRun ) {
