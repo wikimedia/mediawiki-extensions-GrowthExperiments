@@ -75,10 +75,9 @@ class SpecialMentorDashboard extends SpecialPage {
 	}
 
 	/**
-	 * @param bool $isMobile
 	 * @return IDashboardModule[]
 	 */
-	private function getModules( bool $isMobile = false ): array {
+	private function getModules(): array {
 		$enabledModules = $this->getConfig()->get( 'GEMentorDashboardEnabledModules' );
 		$modules = [];
 		foreach ( $enabledModules as $moduleId => $enabled ) {
@@ -162,7 +161,7 @@ class SpecialMentorDashboard extends SpecialPage {
 			'class' => 'growthexperiments-mentor-dashboard-container',
 		] ) );
 
-		$modules = $this->getModules( false );
+		$modules = $this->getModules();
 
 		foreach ( $this->getModuleGroups() as $group => $moduleNames ) {
 			$out->addHTML( Html::openElement(

@@ -131,6 +131,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param int|null $offset
 	 * @param array $options Same as in suggest().
 	 * @return TaskSet|StatusValue
+	 * @suppress PhanUnusedPrivateMethodParameter $offset
 	 */
 	private function doSuggest(
 		?array $pageIds,

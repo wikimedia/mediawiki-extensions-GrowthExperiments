@@ -73,7 +73,7 @@ class ListTaskCounts extends Maintenance {
 		$topics = $this->getTopics();
 		[ $taskCounts, $taskTypeCounts, $topicCounts ] = $this->getStats( $taskTypes, $topics );
 		if ( $this->hasOption( 'statsd' ) ) {
-			$this->reportTaskCounts( $taskCounts, $taskTypeCounts );
+			$this->reportTaskTypeCounts( $taskTypeCounts );
 		}
 		$this->printResults( $taskTypes, $topics, $taskCounts, $taskTypeCounts, $topicCounts );
 	}
@@ -160,10 +160,9 @@ class ListTaskCounts extends Maintenance {
 	}
 
 	/**
-	 * @param int[][] $taskCounts task type ID => topic ID => count
 	 * @param int[] $taskTypeCounts task type ID => total count
 	 */
-	private function reportTaskCounts( array $taskCounts, array $taskTypeCounts ): void {
+	private function reportTaskTypeCounts( array $taskTypeCounts ): void {
 		$wiki = WikiMap::getCurrentWikiId();
 		$counter = $this->getServiceContainer()->getStatsFactory()
 			->withComponent( 'GrowthExperiments' )

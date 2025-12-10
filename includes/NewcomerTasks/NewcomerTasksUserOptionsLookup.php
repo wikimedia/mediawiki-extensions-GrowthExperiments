@@ -159,6 +159,7 @@ class NewcomerTasksUserOptionsLookup {
 	 * Get default task types when the user has no stored preference.
 	 * @param UserIdentity $user
 	 * @return string[]
+	 * @suppress PhanUnusedPrivateMethodParameter $user
 	 */
 	private function getDefaultTaskTypes( UserIdentity $user ): array {
 		// This doesn't do anything useful right now, but we want to preserve the ability

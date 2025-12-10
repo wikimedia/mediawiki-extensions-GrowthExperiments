@@ -83,6 +83,7 @@ class CampaignBenefitsBlock {
 	 * @param string $template
 	 * @param array $parameters
 	 * @return string
+	 * @suppress PhanUnusedPrivateMethodParameter $template
 	 */
 	private function getCampaignTemplateHtml( $template, $parameters ) {
 		$this->context->getOutput()->enableOOUI();

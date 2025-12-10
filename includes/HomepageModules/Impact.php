@@ -160,11 +160,10 @@ class Impact extends BaseModule {
 	/**
 	 * ScoreCard server markup. A wrapper using only top-level styles from ScoreCard.less.
 	 *
-	 * @param int $index Card index, not relevant at the moment.
 	 * @return string HTML content of a scorecard
 	 * @see modules/vue-components/CScoreCard.{less,vue}
 	 */
-	private function getScoreCardMarkup( int $index ): string {
+	private function getScoreCardMarkup(): string {
 		return Html::rawElement( 'div', [
 			'class' => 'ext-growthExperiments-ScoreCard',
 		] );
@@ -181,7 +180,12 @@ class Impact extends BaseModule {
 			[
 				'class' => 'ext-growthExperiments-ScoreCards',
 			],
-			implode( '', array_map( [ $this, 'getScoreCardMarkup' ], [ 1, 2, 3, 4 ] ) )
+			implode( '', [
+				$this->getScoreCardMarkup(),
+				$this->getScoreCardMarkup(),
+				$this->getScoreCardMarkup(),
+				$this->getScoreCardMarkup(),
+			] )
 		);
 	}
 
