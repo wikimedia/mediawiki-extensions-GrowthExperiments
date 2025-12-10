@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Balyozxane",
-			"Bikarhêner"
+			"Bikarhêner",
+			"Guherto"
 		]
 	},
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Rojanekirina dawî ji aliyê [[User:$1|$1]] ve $2 ([$4 ferq]).",
@@ -11,11 +12,11 @@
 	"growthexperiments-edit-config-pretext-unprivileged": "Bikarhênerên taybet dikarin taybetmendiyên koma [[:mw:Special:MyLanguage/Growth|Mezinbûnê]] li ser vê formê biguhêrin.",
 	"growthexperiments-edit-config-feedback-headline": "Raman û pirsên te yên li ser vê forma heye?",
 	"growthexperiments-edit-config-feedback-cta": "Pirs û fikrên xwe bibêje",
-	"growthexperiments-edit-config-error-invalid-title": "Rûpela mîhengê xelet hatiye sazkirin",
+	"growthexperiments-edit-config-error-invalid-title": "Rûpela eyarkirinê xelet hatiye sazkirin",
 	"growthexperiments-edit-config-edit-summary": "Kurteya guhartinê",
-	"growthexperiments-edit-config-config-changed": "Mîheng hatin guhartin. Çend deqe hewce ne heta ku hemû guhartin werin sepandin.",
+	"growthexperiments-edit-config-config-changed": "Eyar hatin guhartin. Çend deqe hewce ne heta ku hemû guhartin werin sepandin.",
 	"growthexperiments-edit-config-return-to-form": "Dikarî [[Special:EditGrowthConfig|vegerî]] forma guhartinê.",
-	"growthexperiments-edit-config-help-panel": "Mîhengên panela alîkariyê",
+	"growthexperiments-edit-config-help-panel": "Eyarên panela alîkariyê",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Valahiyên navî yên ku tê de panela alîkariyê di moda xwendinê de berdest e",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Valahiyên navî yên ku tê de panela alîkariyê hem di moda xwendinê de hem jî moda guhartinê de hatiye girtin",
 	"growthexperiments-edit-config-help-panel-helpdesk-title": "Rûpela maseya alîkariyê ya ku mirov dikare bi rêya panela alîkariyê li wir pirsên xwe bike.",
