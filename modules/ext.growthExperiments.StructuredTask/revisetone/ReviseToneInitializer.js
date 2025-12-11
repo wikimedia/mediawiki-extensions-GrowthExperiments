@@ -151,7 +151,6 @@ class ReviseToneInitializer {
 
 	showToneEditCheck() {
 		const branchNodesWithTextFromVE = this.getContentBranchNodesWithTextFromVE();
-		// TODO: add tracking for similarity score and second-highest similarity score
 
 		const start = performance.now();
 		const bestMatch = simpleLevenshtein.findBestMatch(
@@ -166,6 +165,7 @@ class ReviseToneInitializer {
 				platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
 			},
 		);
+		this.trackParagraphMatchQualityMetrics( bestMatch );
 
 		GrowthSuggestionToneCheck.static.setOverride(
 			branchNodesWithTextFromVE[ bestMatch.bestMatchIndex ].node,
@@ -186,6 +186,44 @@ class ReviseToneInitializer {
 			instrument_name: 'Article with revise tone recommendation page visited',
 			/* eslint-enable camelcase */
 		} );
+	}
+
+	/**
+	 * @param {{ bestMatchIndex: number, bestMatch: string, ratings: { target: string, distance: number }[] }} bestMatch
+	 */
+	trackParagraphMatchQualityMetrics( bestMatch ) {
+		const bestMatchDistance = bestMatch.ratings[ bestMatch.bestMatchIndex ].distance;
+
+		const normalizedDistance = bestMatchDistance / bestMatch.bestMatch.length;
+		mw.track(
+			'stats.mediawiki_GrowthExperiments_revise_tone_match_paragraph_normalized_distance_distribution',
+			normalizedDistance,
+			{
+				wiki: mw.config.get( 'wgDBname' ),
+				buckets: [ 0, 0.05, 0.1, 0.2, 0.3, 0.5, 0.8, 1.1, 1.5, 2 ],
+			},
+		);
+
+		const secondBestMatch = bestMatch.ratings.reduce( ( prev, rating, index ) => {
+			if ( index !== bestMatch.bestMatchIndex ) {
+				if ( prev === null || rating.distance < prev.distance ) {
+					return rating;
+				}
+			}
+			return prev;
+		}, null );
+		if ( !secondBestMatch ) {
+			return;
+		}
+		const ambiguityScore = secondBestMatch.distance === 0 ? 1 : bestMatchDistance / secondBestMatch.distance;
+		mw.track(
+			'stats.mediawiki_GrowthExperiments_revise_tone_match_paragraph_ambiguity_score_distribution',
+			ambiguityScore,
+			{
+				wiki: mw.config.get( 'wgDBname' ),
+				buckets: [ 0, 0.3, 0.5, 0.7, 0.85, 0.95, 1 ],
+			},
+		);
 	}
 
 	// TODO: make this private once Grade A support is raised to at least Safari 15, see T395347
