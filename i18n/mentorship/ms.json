@@ -22,6 +22,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Soalan yang diajukan kepada {{GENDER:|mentor}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Kiraan suntingan",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Tarikh pendaftaran",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Kali terakhir kemas kini pada $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Penapis",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Kemas kini",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Kiraan suntingan",

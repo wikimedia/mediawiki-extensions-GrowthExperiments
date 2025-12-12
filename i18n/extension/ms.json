@@ -158,6 +158,10 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "Bilangan maksimum suntingan yang boleh dimiliki oleh pengguna yang dianggap patut diberi pujian",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "Bilangan minimum suntingan lalai mesti ada pada seorang menti yang patut dipuji",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "Mentor boleh menukar pilihan ini untuk pengguna mereka sendiri pada papan pemuka Mentor.",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-control-label": "Mengeluarkan pengguna berpengalaman daripada bimbingan",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-help-text": "Apabila diaktifkan, menti akan secara automatik dikeluarkan daripada sesi bimbingan selepas mencapai kedua-dua nilai ambang tersebut. Mereka masih boleh mendapatkan mentor dari laman pemula mereka.",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "Bilangan suntingan",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "Usia akaun (dalam hari)",
 	"communityconfiguration-growthhomepage-title": "Penyertaan pengguna baharu",
 	"communityconfiguration-growthhomepage-description": "Peribadikan penyertaan untuk pemegang akaun baharu melalui bantuan pasca-pendaftaran serta pemberitahuan tingkat aras peribadi.",
 	"communityconfiguration-growthhomepage-info-text": "Laman pemula Pengguna Baharu ([[Special:Homepage]]) menyediakan panduan untuk pemegang akaun baharu. Semasa pendaftaran, jika pemegang akaun baharu menyatakan mereka ingin mencipta rencana atau menambah imej baharu pada Wikipedia, kami mengesyorkan mereka buat suntingan yang lebih kecil terlebih dahulu pada peringkat permulaan, dan seterusnya menyediakan pautan untuk panduan selanjutnya.",
@@ -234,5 +238,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Ya, selepas jumlah 50 suntingan",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ya, selepas jumlah 75 suntingan",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ya, selepas jumlah 150 suntingan",
-	"growthexperiments-addlink-done-button": "Siap"
+	"growthexperiments-addlink-done-button": "Siap",
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Tugas penyelenggaraan, pembersihan tamat tempoh cap masa"
 }

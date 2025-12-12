@@ -22,6 +22,9 @@
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "Gunakan apabila menyimpan suntingan berstruktur \"[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link Tambah pautan]\" GrowthExperiments.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "Gunakan semasa menyimpan suntingan berstruktur \"[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image Tambah imej]\" GrowthExperiments.",
 	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-section-image-recommendation": "Gunakan apabila menyimpan suntingan berstruktur \"[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image# Tambah imej pada bahagian]\" GrowthExperiments.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-revise-tone": "Gunakan semasa menyimpan suntingan berstruktur GrowthExperiments \"[[mw:Growth/Revise_Tone|Ubah Nada]]\".",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-revise-tone": "<dl><dt>Untuk pemalam <var>ge-task-revise-tone</var></dt><dd> \n$1 \n</dd></dl>",
+	"apihelp-growthexperiments-structured-task-submit-data-format-revise-tone": "Tiada data perlu dimasukkan untuk pemalam ini.",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>Untuk pemalam <var>ge-task-link-recommendation</var></dt><dd> \n $1 \n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>Untuk pemalam <var>ge-task-image-recommendation</var></dt><dd> \n $1 \n</dd></dl>",
 	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt>Untuk pemalam <var>ge-task-section-image-recommendation</var></dt><dd> \n $1 \n</dd></dl>",
@@ -43,5 +46,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Parameter <var>editRevId</var> tidak boleh digunakan apabila parameter <var>accepted</var> ditetapkan kepada <kbd>false</kbd> .",
 	"growthexperiments-addimage-feedback-accepted-caption": "Parameter <var>caption</var> diperlukan apabila parameter <var>accepted</var> ditetapkan kepada <kbd>true</kbd> .",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Semakan yang dinyatakan pada <var>editRevId</var> tidak ditemui.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Semakan yang dinyatakan pada <var>editRevId</var> adalah milik halaman lain."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Semakan yang dinyatakan pada <var>editRevId</var> adalah milik halaman lain.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "Letakkan cadangan 'Ubah Nada' untuk laman tertentu.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "Judul laman untuk meletakkan cadangan, tanpa ruang nama."
 }

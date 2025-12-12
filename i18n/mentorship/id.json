@@ -6,13 +6,14 @@
 			"DARMAS BUDI SANTOSO",
 			"Daud I.F. Argana",
 			"David Wadie Fisher-Freberg",
+			"Penyuwangi",
 			"PutriAmalia1991",
 			"Veracious"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Dasbor guru",
 	"growthexperiments-mentor-dashboard-pt-link": "Dasbor pembimbing",
-	"growthexperiments-mentor-dashboard-must-be-mentor": "Untuk mengaktifkan dasbor guru, {{GENDER:|Anda}} harus [[$1|mendaftar sebagai guru]] terlebih dahulu.",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Untuk menyalakan dasbor guru, {{GENDER:|Anda}} harus [[$1|mendaftar sebagai guru]] terlebih dahulu.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Sebelum dasbor guru dapat digunakan, daftar mentor perlu dikonfigurasi terlebih dahulu. Seorang pengurus dapat menggunakan [[Special:EditGrowthConfig]] untuk melakukan hal tersebut.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Murid {{GENDER:|Anda}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Lihat murid-murid {{GENDER:|Anda}} di bawah. Gunakan penyaring untuk mengubah murid mana yang ingin ditampilkan.",
