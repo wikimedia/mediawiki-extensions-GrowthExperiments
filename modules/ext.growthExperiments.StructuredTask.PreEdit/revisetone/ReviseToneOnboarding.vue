@@ -9,6 +9,7 @@
 		:close-button-text="$i18n( 'growthexperiments-revisetone-onboarding-dialog-skip-label' ).text()"
 		:start-button-text="$i18n( 'growthexperiments-structuredtask-onboarding-dialog-get-started-button' ).text()"
 		:checkbox-label="$i18n( 'growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox' ).text()"
+		:disable-touch-navigation="true"
 		@update:current-step="onStepChange"
 		@close="reset"
 	>

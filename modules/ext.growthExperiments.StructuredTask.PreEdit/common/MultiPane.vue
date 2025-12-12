@@ -32,6 +32,10 @@ module.exports = exports = defineComponent( {
 			type: Number,
 			default: 1,
 		},
+		disableTouchNavigation: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	emits: [ 'update:currentStep' ],
 	setup( props, { emit, expose } ) {
@@ -92,6 +96,9 @@ module.exports = exports = defineComponent( {
 		} );
 
 		function onTouchStart( e ) {
+			if ( props.disableTouchNavigation ) {
+				return;
+			}
 			const touchEvent = e.touches[ 0 ];
 			initialX.value = touchEvent.clientX;
 			initialY.value = touchEvent.clientY;
@@ -118,6 +125,9 @@ module.exports = exports = defineComponent( {
 		};
 
 		function onTouchMove( e ) {
+			if ( props.disableTouchNavigation ) {
+				return;
+			}
 			if ( !initialX.value || !initialY.value ) {
 				return;
 			}

@@ -52,6 +52,7 @@
 				ref="multiPaneRef"
 				v-model:current-step="currentStep"
 				:total-steps="totalSteps"
+				:disable-touch-navigation
 				@update:current-step="( newVal ) => currentStep = newVal"
 			>
 				<slot :name="currentSlotName"></slot>
@@ -196,6 +197,10 @@ module.exports = exports = defineComponent( {
 		checkboxLabel: {
 			type: String,
 			default: null,
+		},
+		disableTouchNavigation: {
+			type: Boolean,
+			default: false,
 		},
 	},
 	emits: [ 'update:open', 'update:is-checked', 'update:currentStep', 'close' ],
