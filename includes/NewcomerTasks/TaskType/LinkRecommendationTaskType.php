@@ -236,7 +236,7 @@ class LinkRecommendationTaskType extends TaskType {
 				'growthexperiments-homepage-suggestededits-addlink-unavailable-text',
 				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable Validated by if above
 				$this->getMaximumEditsTaskIsAvailable()
-			)->parse();
+			)->text();
 		}
 		return null;
 	}

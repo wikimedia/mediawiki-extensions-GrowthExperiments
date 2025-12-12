@@ -2,12 +2,14 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\ErrorException;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookRunner;
@@ -39,6 +41,34 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			RequestContext::getMain()->getRequest() );
 		$configData = HomepageHooks::getTaskTypesJson( $context );
 		$this->assertSame( [ 'tt1', 'tt2' ], array_keys( $configData ) );
+	}
+
+	/**
+	 * @throws ErrorException
+	 */
+	public function testGetTaskTypesJsonParsesNonbreakingSpaceCorrectly() {
+		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
+			->onlyMethods( [ 'loadTaskTypes' ] )
+			->getMockForAbstractClass();
+		$configurationLoader->method( 'loadTaskTypes' )
+		->willReturn( [
+			new LinkRecommendationTaskType( 'tt1', TaskType::DIFFICULTY_EASY,
+				[ 'maximumEditsTaskIsAvailable' => '5' ] ),
+			new LinkRecommendationTaskType( 'tt2', TaskType::DIFFICULTY_EASY,
+				[ 'maximumEditsTaskIsAvailable' => '5' ] ),
+		] );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader',
+			$configurationLoader );
+
+		$request = new FauxRequest();
+		$request->setVal( 'lang', 'fr' );
+		$rlContext = new RL\Context(
+			$this->getServiceContainer()->getResourceLoader(),
+			$request,
+		);
+
+		$configData = HomepageHooks::getTaskTypesJson( $rlContext );
+		$this->assertStringNotContainsString( '&#160', $configData["tt1"]["extraMessages"]["unavailable"] );
 	}
 
 	public function testGetTaskTypesJson_error() {
