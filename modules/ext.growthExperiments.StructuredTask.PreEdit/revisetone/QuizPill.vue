@@ -194,7 +194,7 @@ module.exports = exports = defineComponent( {
     width: auto;
     margin-top: @size-25;
     color: @color-success;
-    font-size: @size-75;
+    font-size: @font-size-small;
     font-weight: @font-weight-bold;
     line-height: @line-height-x-small;
 

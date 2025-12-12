@@ -308,7 +308,7 @@ module.exports = exports = defineComponent( {
 		}
 
 		.cdx-dialog__footer {
-			padding-top: 0;
+			padding: @spacing-100 @spacing-150;
 		}
 	}
 	// stylelint-enable selector-class-pattern
@@ -320,7 +320,6 @@ module.exports = exports = defineComponent( {
 			align-items: center;
 			padding: @size-100 @size-75 @size-0 @size-150;
 			background: @background-color-neutral;
-			height: 48px;
 		}
 
 		&__stepper {
@@ -334,8 +333,8 @@ module.exports = exports = defineComponent( {
 			font-family: 'Inter', sans-serif;
 			font-style: normal;
 			font-weight: normal;
-			font-size: 20px;
-			line-height: 30px;
+			font-size: 1.25em;
+			line-height: 1.625em;
 			display: flex;
 			align-items: center;
 		}
@@ -358,6 +357,10 @@ module.exports = exports = defineComponent( {
 			&--next {
 				padding-inline-start: @spacing-50;
 			}
+		}
+
+		.cdx-checkbox {
+			margin: 0;
 		}
 	}
 }

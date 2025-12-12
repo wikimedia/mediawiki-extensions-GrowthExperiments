@@ -77,7 +77,7 @@ module.exports = exports = defineComponent( {
 
   &__introduction {
     background-color: @background-color-neutral-subtle;
-    padding: @size-75 @size-275;
+    padding: @size-75 @size-150 @size-75 @size-275;
 
     i,
  .example {
