@@ -105,7 +105,7 @@ class GrowthExperimentsUserImpactUpdater {
 			// Also enqueue a job, so that we can get accurate page view data for users who aren't in
 			// the filters defined for the refreshUserImpact.php cron job.
 			$this->jobQueueGroup->push( new JobSpecification( RefreshUserImpactJob::JOB_NAME, [
-				'impactDataBatch' => [ $userIdentity->getId() => json_encode( $impact ) ],
+				'impactDataBatch' => [ $userIdentity->getId() => null ],
 				// We want to regenerate the page view data, so set staleBefore that's
 				// guaranteed to result in cache invalidation
 				'staleBefore' => MWTimestamp::time() + ExpirationAwareness::TTL_SECOND,

@@ -145,7 +145,7 @@ class UserImpactHandler extends SimpleHandler {
 			// Special:Homepage) we'll use a POST request and save using a deferred update.
 			if ( $this->getRequest()->getMethod() === 'GET' ) {
 				$this->jobQueueGroup->lazyPush( new JobSpecification( RefreshUserImpactJob::JOB_NAME, [
-					'impactDataBatch' => [ $user->getId() => json_encode( $userImpact ) ],
+					'impactDataBatch' => [ $user->getId() => null ],
 				] ) );
 			} else {
 				DeferredUpdates::addCallableUpdate( function () use ( $userImpact ) {
