@@ -18,7 +18,8 @@
 			"Agam Riyandana",
 			"David Wadie Fisher-Freberg",
 			"Stevannus rua",
-			"BAPerdana-WMF"
+			"BAPerdana-WMF",
+			"Penyuwangi"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Halo}}, {{bidi:$1}}!",
@@ -213,7 +214,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Menambahkan pranala merupakan cara termudah untuk menyunting. Pranala membantu pembaca untuk berpindah ke berbagai artikel untuk dipelajari lebih lanjut.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Menambahkan pranala adalah penyuntingan yang paling mudah. Pranala memungkinkan pembaca untuk menekan sesuatu yang hendak mereka pelajari lebih lanjut.<br />Pranala disarankan oleh mesin, dan {{GENDER:$1|Anda}} akan menentukan apakah mereka sebaiknya dimasukkan ke artikel atau tidak.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "Saran dihasilkan oleh mesin. Gambarnya berasal dari Wikimedia Commons, koleksi gambar berlisensi bebas untuk Wikipedia.<br />{{GENDER:$1|Anda}} yang akan memutuskan apakah akan menambahkannya ke artikel. Anda juga akan menulis keterangan gambar tersebut.",
-	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Salin-edit (perbaiki ejaan, tata bahasa, dan nada bahasa)",
+	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Salin-sunting (perbaiki ejaan, tata bahasa, dan nada bahasa)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Cari referensi (sumber untuk artikel yang telah ada)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "Perbarui artikel (buat artikel yang telah ada menjadi mutakhir)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Kembangkan artikel pendek",
@@ -241,7 +242,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Selesai",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Selesai",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|artikel|artikel}} ditemukan",
-	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Salin-edit",
+	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Salin-sunting",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Cari referensi",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Perbarui artikel",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Kembangkan artikel pendek",
@@ -382,7 +383,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Konsep sehari-hari yang tidak memerlukan penjelasan (seperti \"langit\")",
 	"growthexperiments-addlink-rejectiondialog-reason-more-fewer-words": "Teks harus menyertakan lebih banyak atau lebih sedikit kata (mis. \"pohon palem\" alih-alih \"palem\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Menautkan ke artikel yang keliru (misalnya, menghubungkan \"bulan\" ke \"planet\")",
-	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Ketuk pensil edit $1 di sebelah pranala itu untuk mengganti tujuan pranala",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Ketuk pensil suntingan $1 di sebelah pranala itu untuk mengganti tujuan pranala",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Lain",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Selesai",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Pilih alasan untuk pranala yang tidak bagus",

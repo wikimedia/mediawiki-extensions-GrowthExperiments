@@ -10,7 +10,8 @@
 			"DARMAS BUDI SANTOSO",
 			"Agam Riyandana",
 			"Rebeccayoga",
-			"Veracious"
+			"Veracious",
+			"Penyuwangi"
 		]
 	},
 	"growthexperiments-desc": "Ekstensi ini berisi uji coba yang dilakukan oleh tim Pertumbuhan.",
@@ -19,7 +20,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> harusnya merupakan <code>$2</code>, bukan <code>$3</code>",
 	"growthexperiments-config-validator-array-toobig": "$1 punya terlalu banyak butir (paling banyak $2 yang dibolehkan)",
 	"growthexperiments-edit-config-disabled": "Konfigurasi komunitas saat ini dimatikan.",
-	"growthexperiments-edit-config-title": "Konfigurasi Pertumbuhan Edit",
+	"growthexperiments-edit-config-title": "Konfigurasi Pertumbuhan Suntingan",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Terakhir kali diperbarui oleh [[User:$1|$1]] pada $2 ([$4 beda]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Terakhir kali diperbarui oleh pengguna tidak dikenal pada $1 ([$3 beda]).",
 	"growthexperiments-edit-config-pretext": "Halaman ini memungkinkan Anda mengubah konfiguarsi fitur tim [[:mw:Special:MyLanguage/Growth|Pertumbuhan]]. Halaman ini akan mengubah $1 sesuai keinginan Anda. Anda bisa melihat pengubahan Anda di riwayat halaman tersebut.",
@@ -58,7 +59,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-description": "Beberapa jenis saranan suntingan ditampilkan melalui templat pemeliharaan. Artikel yang berisi templat-templat tersebut ditambahkan ke dalam umpan. Untuk melihat berapa banyak artikel yang tersedia untuk setiap jenis pekerjaan, lihat [[Special:NewcomerTasksInfo|halaman ini]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Dinonaktifkan",
 	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Dinonaktifkan di konfigurasi situs",
-	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Salin pengeditan: templat untuk menemukan artikel yang memerlukan pengeditan salinan, seperti peningkatan ejaan, tata bahasa, dan tanda baca.",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Penyuntingan salin: templat untuk menemukan artikel yang memerlukan penyuntingan salin, seperti perbaikan ejaan, tata bahasa, dan tanda baca.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Templat kotak info",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Templat-templat ini dibutuhkan untuk fitur tugas [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|saranan gambar]] untuk pendatang baru. Artikel yang memiliki templat ini tidak akan dicantumkan sebagai tugas saranan gambar."
 }

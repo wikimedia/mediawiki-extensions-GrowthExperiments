@@ -5,7 +5,8 @@
 			"Akmaie Ajam",
 			"Daud I.F. Argana",
 			"Rachmat04",
-			"Veracious"
+			"Veracious",
+			"Penyuwangi"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Selamat datang}}, $1!",
@@ -17,7 +18,7 @@
 	"welcomesurvey-close-btn": "Tutup dan kembali ke $1",
 	"welcomesurvey-sidebar-privacy-title": "Kami menghargai privasi {{GENDER:|Anda}}",
 	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation akan menggunakan jawaban-jawaban {{GENDER:$2|Anda}} untuk membantu Anda dalam memulai menyunting {{SITENAME}}. $1",
-	"welcomesurvey-privacy-policy-link-text": "Pelajari lebih lanjut mengenai data tentang editor baru",
+	"welcomesurvey-privacy-policy-link-text": "Pelajari lebih lanjut mengenai data tentang penyunting baru",
 	"welcomesurvey-sidebar-editing-title": "Mulai dengan menyunting",
 	"welcomesurvey-sidebar-editing-text": "Hampir semua halaman dapat disunting oleh semua orang, dan ratusan perubahan dibuat setiap jam untuk menambahkan konten, memperbaiki kesalahan, dan meningkatkan kemudahan membaca. Halaman-halaman berikut dapat membantu jika {{GENDER:$1|Anda tertarik}} berkontribusi.",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutorial",
