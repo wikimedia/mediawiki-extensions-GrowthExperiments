@@ -5,8 +5,8 @@ const useExperiment = require( './useExperiment.js' );
  */
 module.exports = class ReviseToneInteractionLogger {
 	log( action, data, metadataOverride ) {
-		if ( mw.xLab ) {
-			this.logToXLab( action, data, metadataOverride );
+		if ( mw.testKitchen ) {
+			this.logToTestKitchen( action, data, metadataOverride );
 		} else {
 			this.logToConsole( action, data, metadataOverride );
 		}
@@ -16,7 +16,7 @@ module.exports = class ReviseToneInteractionLogger {
 	/**
 	 * @internal
 	 */
-	logToXLab( action, data, metadataOverride ) {
+	logToTestKitchen( action, data, metadataOverride ) {
 		const experiment = useExperiment();
 		const interactionData = {};
 		if ( metadataOverride.active_interface ) {

@@ -43,8 +43,8 @@ const EchoNotificationsTracker = {
 	/**
 	 * Start the CTR instrument for Growth notifications defined in NOTIFICATIONS_ELEMENTS_TO_INSTRUMENT.
 	 *
-	 * @param {Object} ctrInstrument xLab ClickThroughRateInstrument instrument
-	 * @param {Object} growthInstrument xLab instrument
+	 * @param {Object} ctrInstrument testKitchen ClickThroughRateInstrument instrument
+	 * @param {Object} growthInstrument testKitchen instrument
 	 */
 	start( ctrInstrument, growthInstrument ) {
 		// Echo fires onInitialize after opening the popup overlay AND successfully fetching the latest
@@ -68,8 +68,8 @@ const EchoNotificationsTracker = {
 	 * eg: For source=get-started-primary-link, pass get-started
 	 * @param {Array<Object>} [elements] Array of objects which are target instrument descriptors, see
 	 * NOTIFICATIONS_ELEMENTS_TO_INSTRUMENT.
-	 * @param {Object} ctrInstrument xLab ClickThroughRateInstrument instrument
-	 * @param {Object} growthInstrument xLab instrument
+	 * @param {Object} ctrInstrument testKitchen ClickThroughRateInstrument instrument
+	 * @param {Object} growthInstrument testKitchen instrument
 	 */
 	startNotificationInternal( notificationName, elements, ctrInstrument, growthInstrument ) {
 		for ( const el of elements ) {

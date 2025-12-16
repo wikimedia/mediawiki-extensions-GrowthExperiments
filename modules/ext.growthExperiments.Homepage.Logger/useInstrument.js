@@ -7,7 +7,7 @@ const Utils = require( '../utils/Utils.js' );
  */
 
 /**
- * Log analytic events using Metrics Platform API.
+ * Log analytic events using Test Kitchen API.
  *
  * @param {string} streamName The name of the stream to submit events to
  * as configured in wgEventStreams.

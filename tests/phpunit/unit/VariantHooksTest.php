@@ -86,7 +86,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 	private function getVariantHooksMock(): VariantHooks {
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )
-			->with( 'MetricsPlatform', '*' )
+			->with( 'TestKitchen', '*' )
 			->willReturn( false );
 		return new VariantHooks(
 			$this->createNoOpMock( UserOptionsManager::class ),

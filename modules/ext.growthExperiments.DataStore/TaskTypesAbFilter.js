@@ -78,14 +78,14 @@
 	function areReviseToneRecommendationsEnabled() {
 		const config = require( './config.json' ),
 			taskTypes = require( './TaskTypes.json' ),
-			shouldCheckGroupAssigned = mw.config.get( 'wgGEUseMetricsPlatformExtension' ),
+			shouldCheckGroupAssigned = mw.config.get( 'wgGEUseTestKitchenExtension' ),
 			isReviseToneEnabled = config.GEReviseToneSuggestedEditEnabled &&
 				REVISE_TONE_TASK_TYPE in taskTypes;
 		let assignedGroup = null;
-		// Only check group assigned if experiment manager is xLab's
+		// Only check group assigned if experiment manager is Test Kitchen's
 		// TODO: remove after experiment is concluded, T407802
-		if ( mw && mw.xLab ) {
-			assignedGroup = mw.xLab.getExperiment( 'growthexperiments-revise-tone' ).getAssignedGroup();
+		if ( mw && mw.testKitchen ) {
+			assignedGroup = mw.testKitchen.getExperiment( 'growthexperiments-revise-tone' ).getAssignedGroup();
 		}
 		return shouldCheckGroupAssigned ?
 			( assignedGroup === 'treatment' && isReviseToneEnabled ) :

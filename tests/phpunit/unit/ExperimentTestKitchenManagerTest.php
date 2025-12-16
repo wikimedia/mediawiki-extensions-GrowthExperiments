@@ -2,23 +2,24 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\ExperimentXLabManager;
+use GrowthExperiments\ExperimentTestKitchenManager;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\MetricsPlatform\InstrumentConfigsFetcher;
-use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentAuthority;
-use MediaWiki\Extension\MetricsPlatform\XLab\Experiment;
-use MediaWiki\Extension\MetricsPlatform\XLab\ExperimentManager;
+use MediaWiki\Extension\EventLogging\EventSubmitter\EventSubmitter;
+use MediaWiki\Extension\TestKitchen\Coordination\EnrollmentAuthority;
+use MediaWiki\Extension\TestKitchen\InstrumentConfigsFetcher;
+use MediaWiki\Extension\TestKitchen\Sdk\EventFactory;
+use MediaWiki\Extension\TestKitchen\Sdk\Experiment;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
-use Wikimedia\MetricsPlatform\MetricsClient;
 use Wikimedia\Stats\StatsFactory;
 
 /**
- * @coversDefaultClass \GrowthExperiments\ExperimentXLabManager
+ * @coversDefaultClass \GrowthExperiments\ExperimentTestKitchenManager
  */
-class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
+class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::getVariant
@@ -28,18 +29,18 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
+				ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
-					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => [],
+					'TestKitchenEnableExperiments' => false,
+					'TestKitchenEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
-			...$this->getXLabDependencies(),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
+			...$this->getTestKitchenDependencies(),
+			new HashConfig( [ 'TestKitchenExperiments' => [] ] ),
 		];
-		$sut = new class( ...$options ) extends ExperimentXLabManager {
+		$sut = new class( ...$options ) extends ExperimentTestKitchenManager {
 			// No valid experiments, fallback to configured default, same as for ExperimentUserManager
 			public const VALID_EXPERIMENTS = [];
 		};
@@ -55,23 +56,23 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
+				ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
-					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => [],
+					'TestKitchenEnableExperiments' => false,
+					'TestKitchenEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
-			...$this->getXLabDependencies(
+			...$this->getTestKitchenDependencies(
 				[
 					'experiment-1' => null,
 					'experiment-2' => null,
 				]
 			),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
+			new HashConfig( [ 'TestKitchenExperiments' => [] ] ),
 		];
-		$sut = new class( ...$options ) extends ExperimentXLabManager {
+		$sut = new class( ...$options ) extends ExperimentTestKitchenManager {
 			public const VALID_EXPERIMENTS = [
 				'experiment-2',
 				'experiment-1',
@@ -88,24 +89,24 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
+				ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
-					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => [],
+					'TestKitchenEnableExperiments' => false,
+					'TestKitchenEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
-			...$this->getXLabDependencies(
+			...$this->getTestKitchenDependencies(
 				[
 					'experiment-3' => null,
 					'experiment-2' => 'some-group',
 					'experiment-1' => null,
 				]
 			),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
+			new HashConfig( [ 'TestKitchenExperiments' => [] ] ),
 		];
-		$sut = new class( ...$options ) extends ExperimentXLabManager {
+		$sut = new class( ...$options ) extends ExperimentTestKitchenManager {
 			public const VALID_EXPERIMENTS = [
 				'experiment-3',
 				'experiment-2',
@@ -126,24 +127,24 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
+				ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
-					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => [],
+					'TestKitchenEnableExperiments' => false,
+					'TestKitchenEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
-			...$this->getXLabDependencies(
+			...$this->getTestKitchenDependencies(
 				[
 					'experiment-3' => 'another-group',
 					'experiment-2' => 'some-group',
 					'experiment-1' => null,
 				]
 			),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
+			new HashConfig( [ 'TestKitchenExperiments' => [] ] ),
 		];
-		$sut = new class( ...$options ) extends ExperimentXLabManager {
+		$sut = new class( ...$options ) extends ExperimentTestKitchenManager {
 			public const VALID_EXPERIMENTS = [
 				'experiment-3',
 				'experiment-2',
@@ -163,21 +164,21 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		$options = [
 			new ServiceOptions(
 
-				ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
+				ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
 				[
 					'GEHomepageDefaultVariant' => 'Foo',
-					'MetricsPlatformEnableExperiments' => false,
-					'MetricsPlatformEnableExperimentConfigsFetching' => [],
+					'TestKitchenEnableExperiments' => false,
+					'TestKitchenEnableExperimentConfigsFetching' => [],
 				]
 			),
 			new NullLogger(),
-			...$this->getXLabDependencies( [
+			...$this->getTestKitchenDependencies( [
 				'experiment-1' => null,
 				'experiment-2' => null,
 			] ),
-			new HashConfig( [ 'MetricsPlatformExperiments' => [] ] ),
+			new HashConfig( [ 'TestKitchenExperiments' => [] ] ),
 		];
-		$sut = new class( ...$options ) extends ExperimentXLabManager {
+		$sut = new class( ...$options ) extends ExperimentTestKitchenManager {
 			public const VALID_EXPERIMENTS = [
 				'experiment-2',
 				'experiment-1',
@@ -185,31 +186,33 @@ class ExperimentXLabManagerTest extends MediaWikiUnitTestCase {
 		};
 		$this->assertArrayContains(
 			[
-				'experiment-2_' . ExperimentXLabManager::VARIANT_CONTROL,
-				'experiment-2_' . ExperimentXLabManager::VARIANT_TREATMENT,
-				'experiment-1_' . ExperimentXLabManager::VARIANT_CONTROL,
-				'experiment-1_' . ExperimentXLabManager::VARIANT_TREATMENT,
+				'experiment-2_' . ExperimentTestKitchenManager::VARIANT_CONTROL,
+				'experiment-2_' . ExperimentTestKitchenManager::VARIANT_TREATMENT,
+				'experiment-1_' . ExperimentTestKitchenManager::VARIANT_CONTROL,
+				'experiment-1_' . ExperimentTestKitchenManager::VARIANT_TREATMENT,
 			],
 			$sut->getValidVariants()
 		);
 	}
 
-	private function getXLabDependencies( ?array $assignments = [] ): array {
-		if ( !class_exists( 'MediaWiki\Extension\MetricsPlatform\XLab\ExperimentManager' ) ) {
-			$this->markTestSkipped( 'MetricsPlatform\XLab\ExperimentManager is not available.' );
+	private function getTestKitchenDependencies( ?array $assignments = [] ): array {
+		if ( !class_exists( 'MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager' ) ) {
+			$this->markTestSkipped( 'TestKitchen\Sdk\ExperimentManager is not available.' );
 		}
 		$experimentManager = $this->createMock( ExperimentManager::class );
 		$configsFetcher = $this->createMock( InstrumentConfigsFetcher::class );
 		$enrollmentAuthority = $this->createMock( EnrollmentAuthority::class );
-		$metricsClientMock = $this->createMock( MetricsClient::class );
+		$eventSubmitterMock = $this->createMock( EventSubmitter::class );
+		$eventFactoryMock = $this->createMock( EventFactory::class );
 		$statsFactoryMock = $this->createNoOpMock( StatsFactory::class );
 		$experimentManager->method( 'getExperiment' )
 			->willReturnOnConsecutiveCalls(
 				...array_map( static function ( $experimentName ) use (
-					$metricsClientMock, $assignments, $statsFactoryMock
+				$eventFactoryMock, $eventSubmitterMock, $assignments, $statsFactoryMock
 				) {
 					return new Experiment(
-						$metricsClientMock,
+						$eventSubmitterMock,
+						$eventFactoryMock,
 						$statsFactoryMock,
 						[
 							'enrolled' => $experimentName,

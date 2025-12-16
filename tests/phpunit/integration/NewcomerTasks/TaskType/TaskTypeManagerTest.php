@@ -49,7 +49,7 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 		$user = $this->createUserWithEdits( 21 );
 		$this->overrideConfigValues( [
 			'GEReviseToneSuggestedEditEnabled' => true,
-			'MetricsPlatformExperiments' => [
+			'TestKitchenExperiments' => [
 				'name' => 'growthexperiments-revise-tone',
 				'groups' => [
 					'control',

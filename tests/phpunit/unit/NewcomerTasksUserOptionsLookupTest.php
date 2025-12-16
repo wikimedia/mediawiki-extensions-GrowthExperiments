@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\ExperimentXLabManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -48,7 +48,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
-			'GEUseMetricsPlatformExtension' => false,
+			'GEUseTestKitchenExtension' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -70,7 +70,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
-			'GEUseMetricsPlatformExtension' => false,
+			'GEUseTestKitchenExtension' => false,
 		] );
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
@@ -104,7 +104,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
-			'GEUseMetricsPlatformExtension' => false,
+			'GEUseTestKitchenExtension' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -148,7 +148,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
-			'GEUseMetricsPlatformExtension' => false,
+			'GEUseTestKitchenExtension' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 
@@ -188,7 +188,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
-			'GEUseMetricsPlatformExtension' => true,
+			'GEUseTestKitchenExtension' => true,
 		] );
 		$experimentUserManager = $this->createMock( ExperimentUserManager::class );
 		$matcher = $this->exactly( 2 );
@@ -200,7 +200,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			$ctx,
 		) {
 			$ctx->assertEquals( $expected, $actualUser );
-			$ctx->assertEquals( ExperimentXLabManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME, $actualExperiment );
+			$ctx->assertEquals(
+				ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME, $actualExperiment
+			);
 			return $returnValue;
 		};
 		$self = $this;
@@ -245,7 +247,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
-			'GEUseMetricsPlatformExtension' => false,
+			'GEUseTestKitchenExtension' => false,
 		] );
 		$sectionImageTaskType = SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID;
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
@@ -281,7 +283,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksImageRecommendationsEnabled' => false,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
-			'GEUseMetricsPlatformExtension' => false,
+			'GEUseTestKitchenExtension' => false,
 		] );
 		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
 

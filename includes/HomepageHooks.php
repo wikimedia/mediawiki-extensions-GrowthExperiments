@@ -456,7 +456,7 @@ class HomepageHooks implements
 			] );
 		}
 		$out->addJsConfigVars( [
-			'wgGEUseMetricsPlatformExtension' => Util::useMetricsPlatform(),
+			'wgGEUseTestKitchenExtension' => Util::useTestKitchen(),
 		] );
 	}
 
@@ -784,7 +784,7 @@ class HomepageHooks implements
 		$wiki = WikiMap::getCurrentWikiId();
 		// If metrics platform is in use, force a re-enrollment to give a chance
 		// to assign to an active logged in experiment
-		if ( $this->experimentUserManager instanceof ExperimentXLabManager ) {
+		if ( $this->experimentUserManager instanceof ExperimentTestKitchenManager ) {
 			$this->experimentUserManager->enrollUser( $context, $user );
 		}
 		// Variant assignment for forced variants and variant metric logging. Wrapped in a deferred update because
@@ -794,7 +794,7 @@ class HomepageHooks implements
 		DeferredUpdates::addCallableUpdate( function () use ( $user, $geForceVariant, $wiki ) {
 			// Get the variant assigned by ExperimentUserDefaultsManager
 			$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
-			if ( Util::useMetricsPlatform() ) {
+			if ( Util::useTestKitchen() ) {
 				$variant = $this->experimentUserManager->getVariant( $user );
 				// Maybe override variant with query parameter
 			} elseif ( $geForceVariant !== null

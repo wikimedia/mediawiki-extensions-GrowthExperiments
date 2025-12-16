@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\ExperimentXLabManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
@@ -100,7 +100,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$experimentUserManagerMock =
 			$this->createMock( ExperimentUserManager::class );
 		$experimentUserManagerMock->method( 'getVariant' )
-			->willReturn( ExperimentXLabManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
+			->willReturn( ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
 		$experimentUserManagerMock->method( 'isUserInVariant' )->willReturn( true );
 		$suggestedEdits = $this->getSuggestedEdits( [
 			'user' => $user,
@@ -129,7 +129,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$experimentUserManagerMock =
 			$this->createMock( ExperimentUserManager::class );
 		$experimentUserManagerMock->method( 'getVariant' )
-			->willReturn( ExperimentXLabManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
+			->willReturn( ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
 		$experimentUserManagerMock->method( 'isUserInVariant' )->willReturn( true );
 		$suggestedEdits = $this->getSuggestedEdits( [
 			'user' => $user,

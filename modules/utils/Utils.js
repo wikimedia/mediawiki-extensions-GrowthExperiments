@@ -115,8 +115,8 @@
 	function getUserVariant() {
 		const growthVariants = mw.config.get( 'wgGEUserVariants' );
 		let variant = null;
-		if ( mw.config.get( 'wgGEUseMetricsPlatformExtension' ) ) {
-			const assignments = mw.xLab.getAssignments();
+		if ( mw.config.get( 'wgGEUseTestKitchenExtension' ) ) {
+			const assignments = mw.testKitchen.getAssignments();
 			const growthFormattedAssignments = Object.keys( assignments )
 				.map( ( k ) => `${ k }_${ assignments[ k ] }` );
 			// Should only be one
@@ -216,10 +216,10 @@
 	 * @return {JQuery.Promise<unknown>}
 	 */
 	function setUserVariant( variant ) {
-		if ( mw.config.get( 'wgGEUseMetricsPlatformExtension' ) ) {
+		if ( mw.config.get( 'wgGEUseTestKitchenExtension' ) ) {
 			const growthVariants = mw.config.get( 'wgGEUserVariants' );
 			if ( growthVariants.includes( variant ) ) {
-				mw.xLab.overrideExperimentGroup( ...variant.split( '_' ) );
+				mw.testKitchen.overrideExperimentGroup( ...variant.split( '_' ) );
 				return $.Deferred().resolve( true ).promise();
 			} else {
 				const warnMsg =

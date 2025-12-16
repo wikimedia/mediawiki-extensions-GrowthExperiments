@@ -119,7 +119,7 @@ class ExperimentUserDefaultsManager {
 	 * Get hash of a user ID as a float between 0.0 (inclusive) and 1.0 (non-inclusive)
 	 * concatenated with an experiment name.
 	 *
-	 * Originally taken from MediaWiki\Extension\MetricsPlatform\UserSplitter\UserSplitterInstrumentation.
+	 * Originally taken from MediaWiki\Extension\TestKitchen\Coordination\UserSplitterInstrumentation.
 	 *
 	 * @param int $userId The user's id to hash
 	 * @param string $experimentName The name of the experiment the bucketing applies

@@ -392,16 +392,16 @@ class Util {
 	}
 
 	/**
-	 * Should MetricsPlatform extension be used?
+	 * Should TestKitchen extension be used?
 	 *
 	 * @return bool
 	 */
-	public static function useMetricsPlatform(): bool {
+	public static function useTestKitchen(): bool {
 		$services = MediaWikiServices::getInstance();
 		$extensionRegistry = $services->getExtensionRegistry();
-		return $extensionRegistry->isLoaded( 'MetricsPlatform' ) &&
+		return $extensionRegistry->isLoaded( 'TestKitchen' ) &&
 			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-				->getGrowthConfig()->get( 'GEUseMetricsPlatformExtension' );
+				->getGrowthConfig()->get( 'GEUseTestKitchenExtension' );
 	}
 
 	public static function isReviseToneTasksTypeEnabled(): bool {

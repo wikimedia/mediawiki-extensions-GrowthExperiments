@@ -8,11 +8,11 @@
 	const EchoNotificationsTracker = require( './EchoNotificationsTracker.js' );
 
 	$( () => {
-		mw.loader.using( [ 'ext.wikimediaEvents.xLab' ] ).then( ( require ) => {
-			const { ClickThroughRateInstrument } = require( 'ext.wikimediaEvents.xLab' );
+		mw.loader.using( [ 'ext.wikimediaEvents.testKitchen' ] ).then( ( require ) => {
+			const { ClickThroughRateInstrument } = require( 'ext.wikimediaEvents.testKitchen' );
 			EchoNotificationsTracker.start(
 				ClickThroughRateInstrument,
-				mw.xLab.getExperiment( 'growthexperiments-get-started-notification' ),
+				mw.testKitchen.getExperiment( 'growthexperiments-get-started-notification' ),
 			);
 		} );
 	} );

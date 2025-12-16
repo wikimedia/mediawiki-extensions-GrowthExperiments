@@ -3,7 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\AbstractExperimentManager;
-use GrowthExperiments\ExperimentXLabManager;
+use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -131,12 +131,12 @@ class NewcomerTasksUserOptionsLookup {
 		$areReviseToneRecommendationsEnabled = $this->config->get( 'GEReviseToneSuggestedEditEnabled' )
 			&& array_key_exists( ReviseToneTaskTypeHandler::TASK_TYPE_ID,
 				$this->configurationLoader->getTaskTypes() );
-		$shouldCheckGroupAssigned = $this->config->get( 'GEUseMetricsPlatformExtension' );
-		// Only check group assigned if experiment manager is xLab's
+		$shouldCheckGroupAssigned = $this->config->get( 'GEUseTestKitchenExtension' );
+		// Only check group assigned if experiment manager is Test Kitchen's
 		// TODO: remove after experiment is concluded, T407802
 		return $shouldCheckGroupAssigned ?
 			$areReviseToneRecommendationsEnabled && $this->experimentUserManager->isUserInVariant(
-				$user, ExperimentXLabManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME
+				$user, ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME
 			) : $areReviseToneRecommendationsEnabled;
 	}
 

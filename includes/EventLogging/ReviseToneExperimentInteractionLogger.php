@@ -3,7 +3,7 @@
 namespace GrowthExperiments\EventLogging;
 
 use GrowthExperiments\AbstractExperimentManager;
-use GrowthExperiments\ExperimentXLabManager;
+use GrowthExperiments\ExperimentTestKitchenManager;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\EventLogging\MetricsPlatform\MetricsClientFactory;
@@ -25,7 +25,7 @@ class ReviseToneExperimentInteractionLogger {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) ) {
 			return;
 		}
-		if ( !$this->experimentUserManager instanceof ExperimentXLabManager ) {
+		if ( !$this->experimentUserManager instanceof ExperimentTestKitchenManager ) {
 			return;
 		}
 		$experiment = $this->experimentUserManager->getCurrentExperiment();
@@ -43,7 +43,7 @@ class ReviseToneExperimentInteractionLogger {
 	}
 
 	/**
-	 * Emit an interaction event for the Revise tone experiment to the Metrics Platform instrument.
+	 * Emit an interaction event for the Revise tone experiment to the Test Kitchen instrument.
 	 * @param IContextSource $context
 	 * @param string $action
 	 * @param array $interactionData Interaction data for the event

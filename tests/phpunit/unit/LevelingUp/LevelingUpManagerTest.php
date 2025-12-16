@@ -308,7 +308,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 
 		$growthConfig ??= new HashConfig( $defaultConfigValues );
 		// Use provided experimentManager, or fall back to getExperimentManager()
-		// which returns null when MetricsPlatform is unavailable
+		// which returns null when TestKitchen is unavailable
 		$experimentManager ??= $this->getExperimentManager();
 		return new LevelingUpManager(
 			$serviceOptions,

@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\AbstractExperimentManager;
-use GrowthExperiments\ExperimentXLabManager;
+use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
@@ -442,7 +442,7 @@ class SuggestedEdits extends BaseModule {
 		if (
 			$this->experimentUserManager->isUserInVariant(
 				$user,
-				ExperimentXLabManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME,
+				ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME,
 			) &&
 			!$this->userOptionsManager->getOption( $user, 'growthexperiments-revise-tone-treatment-initiated' )
 		) {

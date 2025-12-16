@@ -5,21 +5,21 @@ namespace GrowthExperiments;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\MetricsPlatform\InstrumentConfigsFetcher;
-use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentAuthority;
-use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentRequest;
-use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentResultBuilder;
-use MediaWiki\Extension\MetricsPlatform\XLab\Experiment;
-use MediaWiki\Extension\MetricsPlatform\XLab\ExperimentManager;
+use MediaWiki\Extension\TestKitchen\Coordination\EnrollmentAuthority;
+use MediaWiki\Extension\TestKitchen\Coordination\EnrollmentRequest;
+use MediaWiki\Extension\TestKitchen\Coordination\EnrollmentResultBuilder;
+use MediaWiki\Extension\TestKitchen\InstrumentConfigsFetcher;
+use MediaWiki\Extension\TestKitchen\Sdk\Experiment;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 
-class ExperimentXLabManager extends AbstractExperimentManager {
+class ExperimentTestKitchenManager extends AbstractExperimentManager {
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'GEHomepageDefaultVariant',
-		'MetricsPlatformEnableExperiments',
-		'MetricsPlatformEnableExperimentConfigsFetching',
+		'TestKitchenEnableExperiments',
+		'TestKitchenEnableExperimentConfigsFetching',
 	];
 	// TODO: valid experiments and variants should/could be read from config
 	public const REVISE_TONE_EXPERIMENT = 'growthexperiments-revise-tone';
@@ -57,12 +57,12 @@ class ExperimentXLabManager extends AbstractExperimentManager {
 	}
 
 	public function enrollUser( RequestContext $ctx, UserIdentity $user ) {
-		if ( $this->options->get( 'MetricsPlatformEnableExperimentConfigsFetching' ) ) {
+		if ( $this->options->get( 'TestKitchenEnableExperimentConfigsFetching' ) ) {
 			$this->configsFetcher->updateExperimentConfigs();
 		}
 
-		$activeLoggedInExperiments = $this->config->has( 'MetricsPlatformExperiments' ) ?
-			$this->config->get( 'MetricsPlatformExperiments' ) :
+		$activeLoggedInExperiments = $this->config->has( 'TestKitchenExperiments' ) ?
+			$this->config->get( 'TestKitchenExperiments' ) :
 			$this->configsFetcher->getExperimentConfigs();
 
 		$enrollmentRequest = new EnrollmentRequest( $activeLoggedInExperiments, $user, $ctx->getRequest() );
@@ -134,7 +134,7 @@ class ExperimentXLabManager extends AbstractExperimentManager {
 
 	/** TODO deprecate and/or migrate geForcedVariant feature once T404622 is resolved */
 	public function isValidVariant( string $variant ): bool {
-		// Only used for geForcedVariant feature, xLab does not support this.
+		// Only used for geForcedVariant feature, Test Kitchen does not support this.
 		return false;
 	}
 

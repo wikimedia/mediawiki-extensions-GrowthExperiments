@@ -6,9 +6,9 @@ use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
+use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\ExperimentUserDefaultsManager;
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\ExperimentXLabManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
@@ -226,16 +226,16 @@ return [
 	'GrowthExperimentsExperimentUserManager' => static function (
 		MediaWikiServices $services
 	): AbstractExperimentManager {
-		if ( Util::useMetricsPlatform() ) {
-			return new ExperimentXLabManager(
+		if ( Util::useTestKitchen() ) {
+			return new ExperimentTestKitchenManager(
 				new ServiceOptions(
-					ExperimentXLabManager::CONSTRUCTOR_OPTIONS,
+					ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
 					$services->getMainConfig()
 				),
 				GrowthExperimentsServices::wrap( $services )->getLogger(),
-				$services->getService( 'MetricsPlatform.XLab.ConfigsFetcher' ),
-				$services->getService( 'MetricsPlatform.XLab.EnrollmentAuthority' ),
-				$services->getService( 'MetricsPlatform.XLab.ExperimentManager' ),
+				$services->getService( 'TestKitchen.ConfigsFetcher' ),
+				$services->getService( 'TestKitchen.EnrollmentAuthority' ),
+				$services->getService( 'TestKitchen.ExperimentManager' ),
 				$services->getMainConfig(),
 			);
 		}

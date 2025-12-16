@@ -134,9 +134,9 @@ class VariantHooks implements
 		] );
 	}
 
-	private function useMetricsPlatform(): bool {
-		return $this->extensionRegistry->isLoaded( 'MetricsPlatform' ) &&
-			$this->config->get( 'GEUseMetricsPlatformExtension' );
+	private function useTestKitchen(): bool {
+		return $this->extensionRegistry->isLoaded( 'TestKitchen' ) &&
+			$this->config->get( 'GEUseTestKitchenExtension' );
 	}
 
 	// Note: we intentionally do not make $wgGEHomepageDefaultVariant the default value in the
@@ -148,7 +148,7 @@ class VariantHooks implements
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$vars['wgGEUserVariants'] = self::VARIANTS;
 		$vars['wgGEDefaultUserVariant'] = $config->get( 'GEHomepageDefaultVariant' );
-		if ( $this->useMetricsPlatform() && $this->experimentManager instanceof ExperimentXLabManager ) {
+		if ( $this->useTestKitchen() && $this->experimentManager instanceof ExperimentTestKitchenManager ) {
 			$vars['wgGEUserVariants'] = $this->experimentManager->getValidVariants();
 		}
 	}
