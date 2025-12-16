@@ -23,6 +23,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Vprašanja, postavljena {{GENDER:|mentorju|mentorici|mentorju_ici}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Število urejanj",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Datum registracije",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Zadnja posodobitev pred $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtri",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Posodobi",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Število urejanj",
