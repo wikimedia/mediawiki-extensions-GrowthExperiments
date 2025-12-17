@@ -114,6 +114,7 @@ class ReviseToneInitializer {
 			performance.now() - start,
 			{
 				wiki: mw.config.get( 'wgDBname' ),
+				platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
 			},
 		);
 
