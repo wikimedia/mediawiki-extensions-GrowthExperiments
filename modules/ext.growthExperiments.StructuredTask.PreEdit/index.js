@@ -39,6 +39,7 @@ module.exports = ( function () {
 		app.provide( 'mw.Api', mw.Api );
 		app.provide( 'mw.user', mw.user );
 		app.provide( 'mw.hook', mw.hook );
+		app.provide( 'mw.track', mw.track );
 		app.provide( 'experiment', useExperiment() );
 		app.mount( mountPoint );
 		return app;

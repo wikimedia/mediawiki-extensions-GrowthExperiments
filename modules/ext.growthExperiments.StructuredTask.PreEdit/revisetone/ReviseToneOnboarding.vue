@@ -32,7 +32,7 @@
 			<quiz-game
 				v-model:result="quizResults[index]"
 				:data="quiz"
-				@update:result="( newVal ) => quizResults[index] = newVal"
+				@update:result="logQuizResponse"
 			></quiz-game>
 		</template>
 	</onboarding-dialog>
@@ -71,6 +71,7 @@ module.exports = defineComponent( {
 		const i18n = inject( 'i18n' );
 		const Api = inject( 'mw.Api' );
 		const mwHook = inject( 'mw.hook' );
+		const mwTrack = inject( 'mw.track' );
 		const experiment = inject( 'experiment' );
 		const open = ref( true );
 		const isChecked = ref( false );
@@ -119,6 +120,20 @@ module.exports = defineComponent( {
 			// Fire the structured task
 			mwHook( 'growthExperiments.structuredTask.onboardingCompleted' ).fire();
 		};
+
+		const logQuizResponse = ( responseMessageKey ) => {
+			const selectedResponseData = quizData[ currentStep.value - 1 ].options.find(
+				( option ) => option.label === responseMessageKey,
+			);
+			if ( selectedResponseData === undefined ) {
+				return;
+			}
+			const isCorrect = !!selectedResponseData.correct;
+			mwTrack( 'stats.mediawiki_GrowthExperiments_revise_tone_onboarding_quiz_response_total', 1, {
+				outcome: isCorrect ? 'correct' : 'incorrect',
+				step: currentStep.value,
+			} );
+		};
 		return {
 			isChecked,
 			onStepChange,
@@ -129,6 +144,7 @@ module.exports = defineComponent( {
 			reset,
 			stepperLabelText,
 			totalSteps,
+			logQuizResponse,
 		};
 	},
 } );

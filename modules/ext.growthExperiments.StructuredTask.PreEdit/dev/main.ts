@@ -30,6 +30,10 @@ const mwHookMock = function mwHook( hookName: string ): object {
 		},
 	};
 };
+const mwTrackMock = function mwTrack( topic: string, value: number, extraData: object ): void {
+	// eslint-disable-next-line no-console
+	console.debug( `mwTrack( ${ topic }, ${ value }, ${ JSON.stringify( extraData ) } )` );
+};
 const appSelect = document.querySelector( '.app-selector' );
 let currentApp:( App|null ) = null;
 
@@ -50,6 +54,7 @@ const bootstrap = (): void => {
 		devApp.provide( 'mw.user', mwUserMock );
 		devApp.provide( 'mw.Api', mwApiMock );
 		devApp.provide( 'mw.hook', mwHookMock );
+		devApp.provide( 'mw.track', mwTrackMock );
 
 		devApp.mount( '#app' );
 
