@@ -126,7 +126,6 @@ class ExperimentXLabManager extends AbstractExperimentManager {
 	}
 
 	public function getValidVariants(): array {
-		$this->initialize();
 		$variants = [];
 		foreach ( static::VALID_EXPERIMENTS as $experimentName ) {
 			$variants = array_merge( $variants, [
