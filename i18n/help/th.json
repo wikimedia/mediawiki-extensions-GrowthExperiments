@@ -11,7 +11,8 @@
 			"Prame Tan",
 			"RidJasper",
 			"SaldırganSincap",
-			"Siam2019"
+			"Siam2019",
+			"Thailand2763"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "เปิดใช้งานแผงช่วยเหลือผู้เขียน",
@@ -34,6 +35,7 @@
 	"growthexperiments-help-panel-postedit-footer": "ดูการแก้ไขที่แนะนำทั้งหมด",
 	"growthexperiments-help-panel-postedit-suggestededits-title": "การแก้ไขที่แนะนำ",
 	"growthexperiments-help-panel-postedit-trynewtask-toast-message": "ขอแสดงความยินดีที่เผยแพร่การแก้ไขที่แนะนำอีกรายการหนึ่ง",
+	"growthexperiments-help-panel-postedit-trynewtask-try-button-text": "ลองทำภารกิจใหม่",
 	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "ไม่ขอบคุณ",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "ไม่ต้องแสดงอีก",
 	"growthexperiments-help-panel-postedit-nonsuggested-header": "ลองการแก้ไขที่แนะนำ",
