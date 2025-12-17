@@ -89,7 +89,9 @@ class ApiReviseToneRecommendationProvider implements RecommendationProvider {
 				->setLabel( 'status', 'no_suggestions' )
 				->increment();
 			$this->weightedTagsManager->deletePageReviseToneWeightedTag( $articleTitle->toPageIdentity() );
-			return StatusValue::newFatal( 'rawmessage', 'No tone suggestions found from API' );
+			$status = StatusValue::newGood();
+			$status->warning( 'rawmessage', 'No tone suggestions found from API' );
+			return $status;
 		}
 		$requestCounter
 			->setLabel( 'status', 'OK' )
