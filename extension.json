@@ -3000,7 +3000,7 @@
 		},
 		"GEUseMetricsPlatformExtension": {
 			"description": "MetricsPlatform/xLab as enrollment authority for experiments",
-			"value": false
+			"value": true
 		}
 	},
 	"SpecialPages": {
