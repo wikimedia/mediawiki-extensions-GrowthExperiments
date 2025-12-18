@@ -55,7 +55,7 @@
 	"growthexperiments-homepage-suggested-edits-header": "Тәкъдим ителгән төзәтмәләр",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ясаган төзәтмәләрегезнең}} тәэсире",
 	"growthexperiments-homepage-impact-no-js-fallback": "Бу компонентны карау өчен JavaScript кабызыгыз.",
-	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Соңгы үзгәреш",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Соңгы тапкыр үзгәртте",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Иң дәвамлы серия",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|көн}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|төзәтмә}}",

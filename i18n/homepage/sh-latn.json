@@ -10,7 +10,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Vaša}} početna stranica",
 	"prefs-homepage": "Uređivačke alatke za novajlije",
 	"growthexperiments-homepage-enable": "Prikazuj početnu stranicu za novajlije",
-	"growthexperiments-homepage-pt-link": "Otvaraj početnu stranicu za novajlije kada kliknem na korisničko ime u ličnim alatkama",
+	"growthexperiments-homepage-pt-link": "Otvaraj početnu stranicu za novajlije pri kliku na korisničko ime u ličnim alatkama",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Posljednja izmjena",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dan|dana}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Izmjena|Izmjene}}",

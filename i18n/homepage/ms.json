@@ -146,6 +146,7 @@
 	"tag-newcomer_task_section_image_suggestion-description": "Suntingan tugasan \"Tambah imej pada bahagian\" yang dicadangkan oleh modul suntingan cadangan pada laman pemula pengguna baharu",
 	"tag-newcomer_task_read_view_suggestion": "Dicadangkan: dalam paparan baca",
 	"tag-newcomer_task_read_view_suggestion-description": "Suntingan dicadangkan kepada pengguna baharu semasa membaca rencana",
+	"tag-newcomer_task_revise_tone": "Suntingan cadangan: ubah nada",
 	"growthexperiments-homepage-help-dialog-title": "Tanya meja bantuan",
 	"growthexperiments-homepage-help-header": "Dapatkan bantuan untuk menyunting",
 	"growthexperiments-homepage-help-subheader": "Laman bantuan teratas tentang penyuntingan",
@@ -277,6 +278,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Tambah pautan di antara rencana",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Tambahkan imej pada rencana yang tidak bergambar",
 	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "Tambahkan imej pada bahagian rencana",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-revise-tone": "Menjadikan rencana lebih berdasarkan fakta dengan membuang perkataan yang berunsur promosi",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Cadangan dari mesin",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Pilih pilihan tersebut untuk \"Padankan semua topik yang dipilih\" supaya mendapat hasil yang lebih khusus",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Padankan semua topik yang dipilih",
@@ -579,10 +581,11 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Anda telah}} membuat $3 {{PLURAL:$3|suntingan yang dicadangkan}}. Teruskan belajar lebih banyak kemahiran baharu.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Buat suntingan yang dicadangkan",
 	"growthexperiments-levelingup-keepgoing-exploring-notification-header": "Kemajuan {{PLURAL:$3|suntingan}} {{GENDER:$2|anda}} sungguh hebat! Teruskan meneroka lebih banyak cadangan untuk mengembangkan {{GENDER:$2|kemahiran}} anda.",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "Cubalah suntingan lain",
 	"echo-category-title-ge-newcomer": "Ciri-ciri pembelajaran",
 	"echo-pref-tooltip-ge-newcomer": "Beritahu saya tentang tugasan untuk pengguna baharu dan ciri lain yang direka untuk membantu pengguna baharu.",
 	"growthexperiments-homepage-community-updates-header": "Kemas kini komuniti",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Ketahui lebih lanjut",
-	"growthexperiments-addalink-milestone-notification-header": "$1 suntingan, tahniah! Rencana yang {{GENDER:$2|anda telah}} sunting menerima $3 tontonan baru-baru ini. Ketersediaan suntingan yang dicadangkan telah berubah.",
+	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|suntingan}} sudah dilakukan, maka tahniah! Rencana yang disunting oleh {{GENDER:$2|anda}} menerima $3 {{PLURAL:$3|bacaan}} baru-baru ini. Ketersediaan suntingan yang dicadangkan telah berubah.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Cubalah suntingan lain"
 }
