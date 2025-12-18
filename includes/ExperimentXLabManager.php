@@ -9,7 +9,6 @@ use MediaWiki\Extension\MetricsPlatform\InstrumentConfigsFetcher;
 use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentAuthority;
 use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentRequest;
 use MediaWiki\Extension\MetricsPlatform\XLab\Enrollment\EnrollmentResultBuilder;
-use MediaWiki\Extension\MetricsPlatform\XLab\EnrollmentCssClassSerializer;
 use MediaWiki\Extension\MetricsPlatform\XLab\Experiment;
 use MediaWiki\Extension\MetricsPlatform\XLab\ExperimentManager;
 use MediaWiki\User\UserIdentity;
@@ -70,15 +69,12 @@ class ExperimentXLabManager extends AbstractExperimentManager {
 		$result = new EnrollmentResultBuilder();
 		$this->enrollmentAuthority->enrollUser( $enrollmentRequest, $result );
 
-		// Override xLab's enrollment result
-		$this->experimentManager->initialize( $result->build() );
-
-		$output = $ctx->getOutput();
-		// Override the JS xLab SDK config vars
-		$output->addJsConfigVars( 'wgMetricsPlatformUserExperiments', $result->build() );
-		// T393101: Add CSS classes representing experiment enrollment and assignment automatically so that experiment
-		// implementers don't have to do this themselves.
-		$output->addBodyClasses( EnrollmentCssClassSerializer::serialize( $result->build() ) );
+		$enrollmentResult = $result->build();
+		foreach ( $enrollmentResult['enrolled'] as $experimentName ) {
+			if ( in_array( $experimentName, static::VALID_EXPERIMENTS ) ) {
+				$this->assignments[ $experimentName ] = $enrollmentResult['assigned'][ $experimentName ];
+			}
+		}
 	}
 
 	private function initialize(): void {
