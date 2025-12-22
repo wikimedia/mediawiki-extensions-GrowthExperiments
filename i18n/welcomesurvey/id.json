@@ -10,7 +10,7 @@
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Selamat datang}}, $1!",
-	"welcomesurvey-save-confirmation-title": "Terima kasih! Respons {{GENDER:|Anda}} telah disimpan.",
+	"welcomesurvey-save-confirmation-title": "Terima kasih! Tanggapan {{GENDER:|Anda}} telah disimpan.",
 	"welcomesurvey-save-confirmation-text": "Jawaban {{GENDER:|Anda}} akan membantu kami menyarankan cara yang tepat bagi Anda dalam memulai Wikipedia.",
 	"welcomesurvey-subtitle": "Bantu kami menyempurnakan pengalaman Wikipedia {{GENDER:|Anda}} dengan menjawab beberapa pertanyaan tambahan.",
 	"welcomesurvey-save-btn": "Selesai",
