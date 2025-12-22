@@ -14,6 +14,8 @@
 			"Wooze"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "Kullanıcıya rehberlik edilmiyor",
+	"growthexperiments-exception-no-mentored-text": "Kullanıcının bir danışmanı yok, bu da danışmana soru soramayacağı anlamına geliyor",
 	"growthexperiments-mentor-dashboard-title": "Danışman kontrol paneli",
 	"growthexperiments-mentor-dashboard-pt-link": "Danışman paneli",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Danışman panosunu etkinleştirmek için önce [[$1|bir danışman olarak kaydolmanız]] gerekiyor.",

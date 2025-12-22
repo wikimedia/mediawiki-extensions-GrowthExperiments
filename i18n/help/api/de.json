@@ -17,5 +17,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Das Feld „Frage auf der Hilfeseite“ (alter Name)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Das Feld „Frage deinen Lotsen“ auf der Neulings-Startseite (alter Name)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Der relevante Titel, falls ausgewählt, der in der Frage enthalten sein soll.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Du musst angemeldet sein, um eine Frage zu stellen."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Du musst angemeldet sein, um eine Frage zu stellen.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Du kannst deinem Lotsen keine Frage stellen, wenn du keinen Lotsen hast."
 }

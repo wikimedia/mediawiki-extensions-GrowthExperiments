@@ -14,6 +14,8 @@
 			"Zabe"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "Der Nutzer wird nicht betreut",
+	"growthexperiments-exception-no-mentored-text": "Der Nutzer hat keinen Lotsen, was bedeutet, dass er seinem Lotsen keine Frage stellen kann.",
 	"growthexperiments-mentor-dashboard-title": "Lotsen-Dashboard",
 	"growthexperiments-mentor-dashboard-pt-link": "Lotsen-Dashboard",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Um die Lotsen-Verwaltungsseite zu aktivieren, musst du dich zunächst [[$1|als {{Gender:|Lotse|Lotsin}} eintragen]].",

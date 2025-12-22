@@ -3,6 +3,7 @@
 		"authors": [
 			"Beta16",
 			"Elitre (WMF)",
+			"GseSro",
 			"Sannita",
 			"ValeJappo"
 		]
@@ -16,5 +17,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Il pannello \"Chiedi allo sportello informazioni\" (vecchio nome)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Il pannello \"Chiedi al tuo tutor\" sulla pagina iniziale (vecchio nome)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Il titolo pertinente, se selezionato, da includere nella domanda.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Devi effettuare l'accesso per porre una domanda."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Devi effettuare l'accesso per porre una domanda.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Non puoi porre una domanda al tuo mentore se non hai un mentore."
 }

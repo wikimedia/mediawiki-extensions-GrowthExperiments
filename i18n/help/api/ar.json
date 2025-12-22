@@ -3,6 +3,7 @@
 		"authors": [
 			"Dyolf77",
 			"Dyolf77 (WMF)",
+			"Meno25",
 			"ديفيد"
 		]
 	},
@@ -15,5 +16,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "لوحة «اسأل ميدان المساعدة» (تسمية قديمة)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "لوحة «اسأل مرشدك» من لوحة المستخدم للوافدين الجدد (تسمية قديمة)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "العنوان ذو الصلة، إذا تم تحديده؛ للتضمين مع السؤال.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "يجب تسجيل الدخول لطرح سؤال."
+	"apierror-mustbeloggedin-helppanelquestionposter": "يجب تسجيل الدخول لطرح سؤال.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "لا يمكنك طرح سؤال على مرشدك إذا لم يكن لديك مرشد."
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bananax47",
 			"DreZhsh",
 			"Escargot bleu",
 			"Gomoko",
@@ -15,6 +16,8 @@
 			"Wladek92"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "L'utilisateur n'est pas encadré.",
+	"growthexperiments-exception-no-mentored-text": "L'utilisateur n'a pas de mentor, ce qui signifie qu'il ne peut pas poser de question à son mentor.",
 	"growthexperiments-mentor-dashboard-title": "Tableau de bord du mentor",
 	"growthexperiments-mentor-dashboard-pt-link": "Tableau de bord du mentor",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Pour activer le tableau de bord du tutorat, vous devez d’abord [[$1|vous inscrire comme tut{{GENDER:|eur|trice}} candidat{{GENDER:||e}}]].",

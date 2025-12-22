@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ayack",
+			"Bananax47",
 			"Gomoko",
 			"Pols12",
 			"Thibaut120094",
@@ -18,5 +19,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Le panneau « Demander au bureau d'aide » (ancien nom)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Le panneau « Demander à votre tuteur » sur la page d’accueil du nouvel arrivant (ancien nom)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Le titre concerné, si sélectionné, à inclure avec la question.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Vous devez être connecté pour poser une question."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Vous devez être connecté pour poser une question.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Vous ne pouvez pas poser de question à votre mentor si vous n'avez pas de mentor."
 }

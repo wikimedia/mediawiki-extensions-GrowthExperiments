@@ -4,6 +4,8 @@
 			"شاه زمان پټان"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "کارن ته لارښوونه نه کېږي",
+	"growthexperiments-exception-no-mentored-text": "کارن هېڅ لارښود نه لري، په دې مانا چې دوی نشي کولی له خپل لارښود څخه پوښتنه وکړي",
 	"growthexperiments-mentor-dashboard-title": "لارښود ليددړه",
 	"growthexperiments-mentor-dashboard-pt-link": "لارښود ليددړه",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "د لارښود ليکدړې چارنولو لپاره، {{GENDER:|تاسو}} باید لومړی د [[$1|لارښود په توگه نوم‌ليکنه وکړئ]].",
@@ -22,6 +24,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "له {{GENDER:|لارښود|لارښودې}} پوښتل‌شوې پوښتنې",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "سمون شمېر",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "نوم‌ليکنې نېټه",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "وروستۍ هم‌مهالېدنه $1 دمخه",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "چاڼگرونه",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "اوسمهالول",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "سمون شمېر",

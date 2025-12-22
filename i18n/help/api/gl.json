@@ -13,5 +13,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "O panel \"Pregunta na Taberna\" (nome antigo)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "O panel \"Pregúntalle ao teu mentor\" na páxina de inicio do usuario novato (nome antigo)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se está seleccionado, a incluír coa pregunta.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Cómpre iniciar sesión para formular unha pregunta."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Cómpre iniciar sesión para formular unha pregunta.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Non podes facerlle unha pregunta ao teu mentor se non tes un mentor."
 }

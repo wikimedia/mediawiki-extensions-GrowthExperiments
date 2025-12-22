@@ -6,6 +6,8 @@
 			"Toliño"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "O usuario non ten mentor",
+	"growthexperiments-exception-no-mentored-text": "O usuario non ten mentor, o que significa que non pode facerlle unha pregunta ao seu mentor.",
 	"growthexperiments-mentor-dashboard-title": "Taboleiro de mentoría",
 	"growthexperiments-mentor-dashboard-pt-link": "Taboleiro de mentoría",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Para activar o taboleiro de mentoría, primeiro tes que [[$1|inscribirte como {{GENDER:|mentor|mentora}}]].",
