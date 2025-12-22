@@ -11,6 +11,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\DBReadOnlyError;
 
@@ -28,30 +29,16 @@ class MentorManager implements IMentorManager {
 	 */
 	private const MENTORSHIP_ENABLED_EXPLICITLY = 50;
 
-	private MentorStore $mentorStore;
-	private MentorStatusManager $mentorStatusManager;
-	private MentorProvider $mentorProvider;
-	private UserOptionsLookup $userOptionsLookup;
-	private UserFactory $userFactory;
-	private UserOptionsManager $userOptionsManager;
-	private LoggerInterface $logger;
-
 	public function __construct(
-		MentorStore $mentorStore,
-		MentorStatusManager $mentorStatusManager,
-		MentorProvider $mentorProvider,
-		UserFactory $userFactory,
-		UserOptionsLookup $userOptionsLookup,
-		UserOptionsManager $userOptionsManager,
-		LoggerInterface $logger,
+		private MentorStore $mentorStore,
+		private MentorStatusManager $mentorStatusManager,
+		private MentorProvider $mentorProvider,
+		private UserFactory $userFactory,
+		private UserIdentityUtils $userIdentityUtils,
+		private UserOptionsLookup $userOptionsLookup,
+		private UserOptionsManager $userOptionsManager,
+		private LoggerInterface $logger,
 	) {
-		$this->mentorStore = $mentorStore;
-		$this->mentorStatusManager = $mentorStatusManager;
-		$this->mentorProvider = $mentorProvider;
-		$this->userFactory = $userFactory;
-		$this->userOptionsLookup = $userOptionsLookup;
-		$this->userOptionsManager = $userOptionsManager;
-		$this->logger = $logger;
 	}
 
 	/**
@@ -246,6 +233,19 @@ class MentorManager implements IMentorManager {
 	}
 
 	private function getMentorshipStateForUserInternal( UserIdentity $user ): int {
+		if ( !$this->userIdentityUtils->isNamed( $user ) ) {
+			// only named users can have mentorship
+			$this->logger->warning(
+				__METHOD__ . ' was asked to return mentorship state for a non-named user {user}',
+				[
+					'user' => $user->getName(),
+					'impact' => 'Pretending the status is MENTORSHIP_DISABLED',
+					'exception' => new \RuntimeException,
+				]
+			);
+			return self::MENTORSHIP_DISABLED;
+		}
+
 		$state = $this->userOptionsLookup->getIntOption( $user, self::MENTORSHIP_ENABLED_PREF );
 		if (
 			$state !== self::MENTORSHIP_ENABLED_EXPLICITLY &&

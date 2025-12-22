@@ -8,6 +8,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Tests\Helpers\CreateMenteeHelpers;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
@@ -233,6 +234,19 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 			$mentorManager->getMentorshipStateForUser( $explicitlyOptedInUser )
 		);
 		$this->assertTrue( $mentorManager->didUserExplicitlyOptIntoMentorship( $explicitlyOptedInUser ) );
+	}
+
+	public function testGetMentorshipStatusForTemporaryAccount() {
+		$mentorManager = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorManager();
+		$tempAccount = $this->getServiceContainer()->getTempUserCreator()->create(
+			null, new FauxRequest()
+		)->getUser();
+
+		$this->assertEquals(
+			IMentorManager::MENTORSHIP_DISABLED,
+			$mentorManager->getMentorshipStateForUser( $tempAccount )
+		);
 	}
 
 	/**

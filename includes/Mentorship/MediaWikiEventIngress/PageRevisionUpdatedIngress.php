@@ -32,6 +32,7 @@ class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevis
 
 	private function handleMenteeGraduation( UserIdentity $user ): void {
 		if (
+			$this->mentorStore->isMentee( $user ) &&
 			$this->menteeGraduation->getIsEnabled() &&
 			$this->menteeGraduation->shouldUserBeGraduated( $user )
 		) {
