@@ -454,6 +454,7 @@
 	"growthexperiments-addlink-skip-reject": "Nach eng Kéier iwwerpréiwen",
 	"grant-managementorship": "Mentoreprogramm geréieren",
 	"newcomertasksinfo": "Aufgabe fir Neier",
+	"newcomertasksinfo-not-available": "Aufgabe fir Neier sinn op dëser Wiki net aktivéiert.",
 	"newcomertasksinfo-no-data": "Et si keng Donnéeën disponibel.",
 	"newcomertasksinfo-config-form-info": "D'Konfiguratioun vun den Aufgabe fir Neier kann ënner [[Special:CommunityConfiguration/GrowthSuggestedEdits]] gekuckt a geännert ginn.",
 	"newcomertasksinfo-table-header-task-type": "Aufgabentyp",

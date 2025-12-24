@@ -6,6 +6,8 @@
 			"Volvox"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "De Benotzer huet kee Mentor",
+	"growthexperiments-exception-no-mentored-text": "De Benotzer huet kee Mentor, wat heescht, datt e sengem Mentor keng Fro stelle kann",
 	"growthexperiments-mentor-dashboard-title": "Mentoren-Dashboard",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentoren-Dashboard",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Fir de Mentoren-Dashboard z'aktivéiere muss Dir Iech fir d'éischt [[$1|als Mentor aschreiwen]].",

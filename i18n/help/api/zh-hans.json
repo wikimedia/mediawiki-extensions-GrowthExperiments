@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Peterxy12",
 			"VulpesVulpes825",
 			"Xiplus",
 			"Yining Chen",
@@ -18,5 +19,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "“询问咨询台”面板（旧名称）",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "在新手主页的“询问您的导师”面板（旧名称）",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "相关标题 (如果已选择) 将包含在问题中。",
-	"apierror-mustbeloggedin-helppanelquestionposter": "您必须登录才能发问。"
+	"apierror-mustbeloggedin-helppanelquestionposter": "您必须登录才能发问。",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "如果你没有导师，你就无法向导师提问。"
 }

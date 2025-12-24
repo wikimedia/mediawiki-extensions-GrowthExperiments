@@ -15,6 +15,8 @@
 			"魔琴"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "使用者未接受指導",
+	"growthexperiments-exception-no-mentored-text": "使用者沒有導師，這代表他們無法向導師提問",
 	"growthexperiments-mentor-dashboard-title": "導師面板",
 	"growthexperiments-mentor-dashboard-pt-link": "導師面板",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "若想啟用導師面板，{{GENDER:|您}}必須先[[$1|登記成為一名導師]]。",

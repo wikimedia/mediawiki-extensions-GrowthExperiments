@@ -15,5 +15,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "「詢問諮詢臺」面板（舊名稱）",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "在新手首頁的「詢問您的導師」面板（舊名稱）",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "關聯標題。若有選擇的話請包含問題。",
-	"apierror-mustbeloggedin-helppanelquestionposter": "您必須登入才能發問。"
+	"apierror-mustbeloggedin-helppanelquestionposter": "您必須登入才能發問。",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "如果您沒有導師，就無法向導師提問。"
 }
