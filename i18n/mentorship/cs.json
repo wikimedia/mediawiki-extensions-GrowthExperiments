@@ -9,6 +9,8 @@
 			"Spotter"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "Uživatel nemá mentora",
+	"growthexperiments-exception-no-mentored-text": "Uživatel nemá mentora, a tedy mu nemůže položit žádnou otázku",
 	"growthexperiments-mentor-dashboard-title": "Nástěnka mentora",
 	"growthexperiments-mentor-dashboard-pt-link": "Nástěnka mentora",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Pro aktivování nástěnky mentorů se nejprve {{GENDER:|musíte}} [[$1|zapsat jako mentor]].",
@@ -27,6 +29,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Počet položených otázek",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Počet editací",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Datum registrace",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Naposledy aktualizováno před $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtry",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Odeslat",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Počet editací",
@@ -175,7 +178,9 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Vaše nastavení byla uložena.",
 	"growthexperiments-mentor-list-missing-key": "Klíč <code>$1</code> chybí.",
 	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> by mělo být <code>$2</code>, ale je <code>$3</code>",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "<code>$1</code> má být platná časová známka, ID uživatele: <code>$2</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Definice mentora obsahuje neočekávaný klíč <code>$1</code>",
+	"growthexperiments-mentor-list-invalid-weight": "<code>$1</code> má být jedno z: <code>$2</code>, ale je <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 již do seznamu mentorů byl přidán",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 není v seznamu mentorů",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Mentor $1 není registrovaný uživatel",
