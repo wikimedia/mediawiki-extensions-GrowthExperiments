@@ -8,7 +8,8 @@
 			"Sabelöga",
 			"Technic2",
 			"WikiPhoenix",
-			"Adjoka"
+			"Adjoka",
+			"Stefan2255"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Aktivera redigerarens hjälppanel",
@@ -156,7 +157,7 @@
 	"tag-help_panel_question-description": "Redigering gjord från hemsidehjälpmodulens frågeställarfunktion.",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Förslag på redigeringar",
 	"growthexperiments-help-panel-button-header-ask-help": "Fråga i fikarummet",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Fråga din fadder om hjälp",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Be {{GENDER:|din}} {{GENDER:$1|fadder}} om hjälp",
 	"growthexperiments-help-panel-button-header-general-help": "Allmän redigeringshjälp",
 	"growthexperiments-help-panel-button-subheader-general-help": "Sök efter svar och läs populära artiklar",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Få svar från andra användare",
