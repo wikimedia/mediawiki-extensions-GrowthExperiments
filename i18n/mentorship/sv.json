@@ -10,6 +10,8 @@
 			"Trizek (WMF)"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "Användaren är inte mentorshandledd",
+	"growthexperiments-exception-no-mentored-text": "Användaren har ingen mentor, vilket innebär att de inte kan ställa en fråga till sin mentor",
 	"growthexperiments-mentor-dashboard-title": "Fadderpanel",
 	"growthexperiments-mentor-dashboard-pt-link": "Fadderpanel",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "För att slå på fadderpanelen måste {{GENDER:|du}} först [[$1|anmäla dig som fadder]].",

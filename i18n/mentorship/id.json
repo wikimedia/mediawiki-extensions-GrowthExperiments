@@ -183,5 +183,5 @@
 	"growthexperiments-mentorship-enrollasmentor-summary": "Menambahkan diri saya sebagai guru",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Hanya pengguna dengan setidaknya $1 {{PLURAL:$1|suntingan}} dan hadir selama $2 {{PLURAL:$2|hari}} yang dapat mendaftar sebagai guru.",
 	"tag-mentor_list_change": "Perubahan daftar guru",
-	"tag-mentor_list_change-description": "Tag yang diterapkan pada penyuntingan di daftar guru terstruktur melalui GrowthExperiments"
+	"tag-mentor_list_change-description": "Tanda yang diterapkan pada penyuntingan di daftar guru terstruktur melalui GrowthExperiments"
 }

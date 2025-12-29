@@ -580,6 +580,7 @@
 	"growthexperiments-homepage-impact-contributions-link": "Visa alla redigeringar",
 	"growthexperiments-levelingup-getstarted-notification-header": "Testa en föreslagen redigering och börja bygga upp {{GENDER:$2|din}} redigeringsförmåga",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Testa föreslagna redigeringar",
+	"growthexperiments-levelingup-reengage-notification-header": "Tack för att du redigerar! Testa föreslagna redigeringar för att utveckla nya färdigheter och lära dig mer om bästa arbetssätt.",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Du}} har gjort $3 {{PLURAL:$3|föreslagen redigering|föreslagna redigeringar}}. Fortsätt lära dig fler färdigheter.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Gör en föreslagen redigering",
 	"echo-category-title-ge-newcomer": "Growth-funktioner",

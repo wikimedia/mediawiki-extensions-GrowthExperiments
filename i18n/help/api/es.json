@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Avengium",
 			"Danniel07",
 			"Fitoschido",
 			"IZapico (WMF)",
@@ -18,5 +19,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "El panel \"Preguntar a la mesa de ayuda\" (nombre antiguo)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "El módulo \"Pregunta a tu mentor/a\" en la página de inicio de los recién llegados (nombre antiguo)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "El título correspondiente, si se selecciona, para incluirlo con la pregunta.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Se necesita acceder para formular una pregunta."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Se necesita acceder para formular una pregunta.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "No puedes hacerle una pregunta a tu mentor si no tienes un mentor."
 }

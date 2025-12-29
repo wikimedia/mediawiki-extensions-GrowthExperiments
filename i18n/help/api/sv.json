@@ -3,6 +3,7 @@
 		"authors": [
 			"Ainali",
 			"Sabelöga",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
@@ -15,5 +16,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Fråga fikarummet\"-panelen (gammalt namn)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "\"Fråga din fadder\"-panelen på nybörjarhemsidan (gammalt namn)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevanta titeln, om vald, som ska inkluderas med frågan.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Du måste vara inloggad för att ställa en fråga."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Du måste vara inloggad för att ställa en fråga.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Du kan inte ställa en fråga till din mentor om du inte har en mentor."
 }

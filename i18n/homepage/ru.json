@@ -212,7 +212,7 @@
 	"growthexperiments-tour-discovery-description": "Кликните на ваше имя {{GENDER:$1|участника|участницы}}, чтобы посетить свою домашнюю страницу.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Перейти на {{GENDER:$1|вашу}} домашнюю страницу",
 	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|Вы}} всегда можете нажать на имя пользователя, чтобы вернуться сюда. Продолжить изучение <b>предлагаемых правок</b> можно посмотреть на своей домашней странице.",
-	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|Вы}} всегда можете нажать на {{GENDER:$1|своё}} имя пользователя, чтобы вернуться сюда. На {{GENDER:$1|своей}} домашней странице {{GENDER:$1|вы}} можете найти предлагаемые правки, задать вопросы {{GENDER:$1|своему}} наставнику и увидеть {{GENDER:$1|своё}} влияние.",
+	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|Вы}} всегда можете нажать на {{GENDER:$1|своё}} имя пользователя, чтобы вернуться сюда. На {{GENDER:$1|своей}} домашней странице можно найти предлагаемые правки, задать вопросы наставнику и увидеть влияние ваших правок на просмотры.",
 	"growthexperiments-homepage-discovery-banner-header": "Добро пожаловать на {{GENDER:$1|вашу}} домашнюю страницу!",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Вы}} всегда можете нажать на $2 в верхней части страницы, чтобы вернуться сюда.",
 	"growthexperiments-homepage-discovery-thanks-header": "Спасибо за создание {{GENDER:$1|вашей}} учётной записи!",

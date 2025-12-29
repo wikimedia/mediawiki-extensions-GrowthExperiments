@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Avengium",
 			"Biancailin",
 			"Bruno44101",
 			"Danniel07",
@@ -18,6 +19,8 @@
 			"Zapipedia (WMF)"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "El usuario no está mentorizado",
+	"growthexperiments-exception-no-mentored-text": "El usuario no tiene mentor, lo que significa que no puede hacerle una pregunta a su mentor.",
 	"growthexperiments-mentor-dashboard-title": "Panel de control de mentoría",
 	"growthexperiments-mentor-dashboard-pt-link": "Panel de mentoría",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Para habilitar el panel de mentoría, necesitas [[$1|inscribirte como mentor o mentora]].",

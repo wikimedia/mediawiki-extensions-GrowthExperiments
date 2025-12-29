@@ -40,6 +40,8 @@
 	"growthexperiments-help-panel-postedit-footer": "Se alla förslag på redigeringar",
 	"growthexperiments-help-panel-postedit-suggestededits-title": "Föreslagna redigeringar",
 	"growthexperiments-help-panel-postedit-suggestededits-info": "Andra användare på {{SITENAME}} har hittat artiklar som behöver omsyn. Fortsätt redigera genom att bläddra igenom de här föreslagna redigeringarna.",
+	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "Nej tack",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "Nej tack",
 	"growthexperiments-help-panel-questionreview-title": "Ställ en fråga i fikarummet",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Fråga din fadder",
 	"growthexperiments-help-panel-questionreview-header": "När du skickar en fråga kommer den <strong>publiceras offentligt</strong> under ditt användarnamn, \"$2\", på $1 där andra frivilliga redigerare kommer försöka att besvara den inom nästa dag eller så.",
