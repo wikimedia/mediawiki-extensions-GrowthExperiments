@@ -8,7 +8,8 @@
 			"Mjälten",
 			"Sabelöga",
 			"Technic2",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Stefan2255"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Aktivera redigerarens hjälppanel",
@@ -39,6 +40,8 @@
 	"growthexperiments-help-panel-postedit-footer": "Se alla förslag på redigeringar",
 	"growthexperiments-help-panel-postedit-suggestededits-title": "Föreslagna redigeringar",
 	"growthexperiments-help-panel-postedit-suggestededits-info": "Andra användare på {{SITENAME}} har hittat artiklar som behöver omsyn. Fortsätt redigera genom att bläddra igenom de här föreslagna redigeringarna.",
+	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "Nej tack",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "Nej tack",
 	"growthexperiments-help-panel-questionreview-title": "Ställ en fråga i fikarummet",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Fråga din fadder",
 	"growthexperiments-help-panel-questionreview-header": "När du skickar en fråga kommer den <strong>publiceras offentligt</strong> under ditt användarnamn, \"$2\", på $1 där andra frivilliga redigerare kommer försöka att besvara den inom nästa dag eller så.",
@@ -134,7 +137,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-step2": "Läs igenom artikeln och fundera på om den föreslagna bilden kommer hjälpa läsarna att förstå innehållet. Är den lämplig att visa i artikeln?",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-step3": "Bedöm om bilden platsar",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-1-step3": "Förslaget kan vara orelaterat till artikeln, av låg kvalitet, eller vara opassande av andra skäl. Använd {{GENDER:|ditt}} omdöme för att avgöra om förslaget är korrekt eller felaktigt.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "För bilder som {{GENDER:|du}} accepterar ska {{GENDER:|du}} skriva en kort beskrivning. Efter detta publiceras {{GENDER:|din}} ändring.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-main-multiple-2-step3": "Efter att {{GENDER:|du}} har accepterat en bild, {{GENDER:|ska du}} skriva en kort bildtext och sedan kan {{GENDER:|du}} publicera {{GENDER:|din}} redigering.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-text-value": "Bilderna kommer från Wikimedia Commons, en samling fritt licensierade bilder som används av Wikipedia.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-section-image-recommendation-header-step3": "Bedöm om bilden platsar",
 	"growthexperiments-help-panel-questioncomplete-title": "Ställ en fråga",
 	"growthexperiments-help-panel-questioncomplete-header": "Din fråga har publicerats!",
@@ -159,7 +163,7 @@
 	"tag-help_panel_question-description": "Redigering gjord från hemsidehjälpmodulens frågeställarfunktion.",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Förslag på redigeringar",
 	"growthexperiments-help-panel-button-header-ask-help": "Fråga i fikarummet",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Fråga din fadder om hjälp",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Be {{GENDER:|din}} {{GENDER:$1|fadder}} om hjälp",
 	"growthexperiments-help-panel-button-header-general-help": "Allmän redigeringshjälp",
 	"growthexperiments-help-panel-button-subheader-general-help": "Sök efter svar och läs populära artiklar",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Få svar från andra användare",
