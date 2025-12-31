@@ -37,6 +37,7 @@
 			"Tanzun",
 			"UniCollab",
 			"Urfiner",
+			"Vonavy",
 			"Wileyfoxyx"
 		]
 	},
@@ -399,7 +400,7 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Узнайте больше об автоматических рекомендациях",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Руководства",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Ставьте ссылки на понятия, о которых захочет узнать читатель.</li><li>Убедитесь, что ссылка ведёт на правильную статью.</li><li>Не ставьте ссылки на тривиальные понятия, года или даты.</li><li>Если {{GENDER:$1|вы}} не уверены, пропустите.</li>",
-	"growthexperiments-revisetone-onboarding-dialog-skip-label": "DRAFT: I already {{GENDER:|know}} this",
+	"growthexperiments-revisetone-onboarding-dialog-skip-label": "Я уже {{GENDER:|ознакомлен|ознакомлена|ознакомлен}} с этим",
 	"growthexperiments-revisetone-onboarding-step1-answer3": "город",
 	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": " Пропустить все",
 	"growthexperiments-structuredtask-onboarding-dialog-title": "Введение",

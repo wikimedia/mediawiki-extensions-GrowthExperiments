@@ -4,6 +4,8 @@
 			"McDutchie"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "Usator non ha mentor",
+	"growthexperiments-exception-no-mentored-text": "Usator non ha mentor, dunque non pote poner un question a su mentor",
 	"growthexperiments-mentor-dashboard-title": "Tabuliero de instrumentos del mentor",
 	"growthexperiments-mentor-dashboard-pt-link": "Tabuliero de instrumentos del mentor",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Pro activar le tabuliero de instrumentos del mentor, tu debe primo [[$1|inscriber te como mentor]].",
