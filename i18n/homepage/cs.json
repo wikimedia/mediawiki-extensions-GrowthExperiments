@@ -385,6 +385,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Ostatní",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Hotovo",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Vyberte, proč tento návrh není vhodným odkazem",
+	"growthexperiments-addlink-single-recommendation-title": "Přidejte navržený odkaz",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Přidávání odkazů umožní lidem rychleji se učit.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Budete {{GENDER:$1|rozhodovat}} o tom, zda by jednotlivá slova v některém z článků ve {{GRAMMAR:6sg|{{SITENAME}}}} měla odkazovat na další články.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Příklad",
