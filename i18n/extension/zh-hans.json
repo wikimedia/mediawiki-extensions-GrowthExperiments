@@ -178,6 +178,7 @@
 	"communityconfiguration-mentorship-gepersonalizedpraisemaxedits-label": "学员值得表彰的最高编辑次数",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-label": "学员值得表彰的默认最低编辑次数",
 	"communityconfiguration-mentorship-gepersonalizedpraiseminedits-help-text": "导师可以在导师面板中为自己更改此选项。",
+	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "编辑数",
 	"communityconfiguration-growthhomepage-title": "新手引导",
 	"communityconfiguration-growthhomepage-description": "通过在注册后提供帮助及升级通知来自定义新账号持有者的引导体验。",
 	"communityconfiguration-growthhomepage-info-text": "新手主页（[[Special:Homepage]]）为新账号持有者提供指引。注册后，如果新账号持有者表示其希望创建条目或向维基百科添加新图片，我们会建议先尝试更小的编辑以起步，并且提供进一步指引的链接。",
@@ -246,5 +247,12 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-underlinkedweight-help-text": "此设置影响内链不足的条目的优先级。此字段应输入小数形式的百分比，即0和1之间的数。数字越高，新手越有可能收到修改内链不足的条目的建议。",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "最低链接分数",
 	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-help-text": "链接建议的最低置信度阈值。此字段应输入小数形式的百分比，即0和1之间的数。数字越高，最终用户收到的建议更有可能是良好的建议，然而建议数量会降低。数字越低，收到的建议会增加，但是属于良好建议的概率会降低。",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "“添加链接”建议任务对新用户停止开放前的最大编辑次数"
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "“添加链接”建议任务对新用户停止开放前的最大编辑次数",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "否",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "是，总共修改了5次。",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "是，总共修改了20次。",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "是，总共修改了50次。",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "是，总共修改了75次。",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "是，之后总共修改了150次",
+	"growthexperiments-addlink-done-button": "完成"
 }

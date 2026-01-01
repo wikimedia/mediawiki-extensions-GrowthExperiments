@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
-			"Sabelöga"
+			"Sabelöga",
+			"Stefan2255"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Hämta formaterade frågor ställda via hemsidemoduler",
@@ -14,6 +15,6 @@
 	"apihelp-growthsetmentor-param-mentee": "Nybörjarens användarnamn",
 	"apihelp-growthsetmentor-param-mentor": "Fadderns användarnamn",
 	"apihelp-growthsetmentor-param-reason": "Orsak till förändringen",
-	"apihelp-growthinvalidateimagerecommendation-summary": "Ogiltigt bildrekommendationsuppgift",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Ogiltigförklara en bildrekommendation.",
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Titel på artikeln som bildrekommendationen är tänkt för"
 }
