@@ -5,7 +5,7 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MenteeGraduation;
 use GrowthExperiments\Mentorship\MentorManager;
-use MediaWiki\Config\Config;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentityValue;
@@ -17,22 +17,15 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class MenteeGraduationTest extends MediaWikiUnitTestCase {
 
-	private const DEFAULT_CONFIG_DATA = [
-		'enabled' => true,
-		'minEditcount' => 500,
-		'minTenureInDays' => 30,
-	];
-
-	private function getMockConfig( ?array $configData = null ) {
-		$configMock = $this->createMock( Config::class );
-		$configMock->expects( $this->once() )
-			->method( 'get' )
-			->with( 'GEMentorshipStartOptedOutThresholds' )
-			->willReturn( (object)array_merge(
-				self::DEFAULT_CONFIG_DATA,
-				$configData ?? []
-			) );
-		return $configMock;
+	private function getConfig( array $configData = [] ) {
+		return new HashConfig( [
+			'GEMentorshipStartOptedOutThresholds' => (object)[
+				'enabled' => true,
+				'minEditcount' => 500,
+				'minTenureInDays' => 30,
+				...$configData,
+			],
+		] );
 	}
 
 	public function testGraduateUser() {
@@ -43,7 +36,7 @@ class MenteeGraduationTest extends MediaWikiUnitTestCase {
 			->method( 'setMentorshipStateForUser' )
 			->with( $user, IMentorManager::MENTORSHIP_OPTED_OUT );
 		$menteeGraduation = new MenteeGraduation(
-			$this->getMockConfig(),
+			$this->getConfig(),
 			$this->createNoOpMock( UserEditTracker::class ),
 			$this->createNoOpMock( UserRegistrationLookup::class ),
 			$mentorManager
@@ -94,7 +87,7 @@ class MenteeGraduationTest extends MediaWikiUnitTestCase {
 			->willReturn( $actualRegistrationTS );
 
 		$menteeGraduation = new MenteeGraduation(
-			$this->getMockConfig( $extraConfig ),
+			$this->getConfig( $extraConfig ),
 			$userEditTracker,
 			$userRegistrationLookup,
 			$this->createNoOpMock( IMentorManager::class )
@@ -175,7 +168,7 @@ class MenteeGraduationTest extends MediaWikiUnitTestCase {
 			->willReturn( $wasMentorshipStatusChanged );
 
 		$menteeGraduation = new MenteeGraduation(
-			$this->getMockConfig( $extraConfig ),
+			$this->getConfig( $extraConfig ),
 			$userEditTracker,
 			$userRegistrationLookup,
 			$mentorManager
