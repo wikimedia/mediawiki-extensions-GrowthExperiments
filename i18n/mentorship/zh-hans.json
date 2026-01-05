@@ -19,7 +19,8 @@
 			"沈澄心",
 			"Chimes",
 			"Kcx36",
-			"ExoHyper2026"
+			"ExoHyper2026",
+			"LBLaiSiNanHai"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "导师面板",
@@ -55,9 +56,11 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1之前活跃",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "未知",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "显示$1个",
+	"growthexperiments-mentor-dashboard-mentee-overview-star-mentee-icon-label": "星标学生",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "第$1页，共$2页",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-next-icon-label": "下一页结果",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-prev-icon-label": "上一页结果",
+	"growthexperiments-mentor-dashboard-mentee-overview-unstar-mentee-icon-label": "取消星标学生",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "找不到最近活跃的学员",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "导师面板仅展示最近活跃的学员。更多信息可通过信息图标显示。如果{{GENDER:|您}}是最近加入的导师计划，{{GENDER:|您}}可能还没有被分配到任何学员。",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "找不到学员",
@@ -124,6 +127,7 @@
 	"growthexperiments-mentor-list-unexpected-key-mentor": "导师定义包含意外参数<code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "导师$1已被添加到导师列表中",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "导师$1不在导师列表上",
+	"growthexperiments-mentor-writer-error-anonymous-user": "导师$1不是注册用户",
 	"growthexperiments-manage-mentors-title": "管理导师",
 	"growthexperiments-manage-mentors-error-no-such-user": "错误：不存在ID为$1的用户。这可能是一个内部错误。",
 	"growthexperiments-manage-mentors-auto-assigned": "自动分配的导师",
@@ -141,5 +145,6 @@
 	"growthexperiments-mentorship-enrollasmentor-form-message": "介绍消息",
 	"growthexperiments-mentorship-enrollasmentor-form-message-help": "介绍消息会对{{GENDER:|您}}的导师身份进行介绍。请控制内容在240个字符内，且不要使用wikitext。",
 	"growthexperiments-mentorship-enrollasmentor-enroll": "登记",
-	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|您}}已成功注册为导师，现在可前往[[Special:MentorDashboard|导师面板]]。"
+	"growthexperiments-mentorship-enrollasmentor-success": "{{GENDER:|您}}已成功注册为导师，现在可前往[[Special:MentorDashboard|导师面板]]。",
+	"growthexperiments-mentorship-enrollasmentor-summary": "将自己设为导师"
 }

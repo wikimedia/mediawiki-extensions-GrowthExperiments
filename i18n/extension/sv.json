@@ -7,7 +7,8 @@
 			"Sabelöga",
 			"WikiPhoenix",
 			"Adjoka",
-			"Gkyziridis"
+			"Gkyziridis",
+			"Stefan2255"
 		]
 	},
 	"growthexperiments-desc": "Detta tillägg innehåller experiment som utförs av Growth-teamet.",
@@ -56,7 +57,7 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) Målsida för länk till femte hjälppanelen (rekommenderas: artikelguide)",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Etikett för länk till femte hjälppanelen (rekommenderas: \"Hur man skapar en artikel\")",
 	"growthexperiments-edit-config-homepage": "Hemsida för nybörjare",
-	"growthexperiments-edit-config-homepage-intro-links-create": "Destinationssida för en länk om att skapa en ny artikel",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Målsida för en länk om att skapa en ny artikel",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Destinationssida för en länk om att skapa bilder i visual editor",
 	"growthexperiments-edit-config-mentorship": "Fadderskap",
 	"growthexperiments-edit-config-mentorship-description": "Wikier kan ha två separata mentorlistor: en för mentorer som slumpmässigt tilldelas alla nybörjare och en annan för mentorer som inte tilldelas slumpmässigt, men som kan välja mentorer. Denna andra listan används för mentorer som bara vill vara mentorer för personer från evenemang eller klasser.",
