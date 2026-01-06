@@ -506,10 +506,11 @@ class HomepageHooks implements
 		$isUserSpace = $title->equals( $userpage ) || $title->isSubpageOf( $userpage );
 		$isUserTalkSpace = $title->equals( $usertalk ) || $title->isSubpageOf( $usertalk );
 
+		$menuKey = 'associated-pages';
 		if ( $isHomepage || $isUserSpace || $isUserTalkSpace ) {
-			unset( $links['namespaces']['special'] );
-			unset( $links['namespaces']['user'] );
-			unset( $links['namespaces']['user_talk'] );
+			unset( $links[$menuKey]['special'] );
+			unset( $links[$menuKey]['user'] );
+			unset( $links[$menuKey]['user_talk'] );
 
 			// T250554: If user currently views a subpage, direct him to the subpage talk page
 			if ( !$isHomepage ) {
@@ -531,19 +532,19 @@ class HomepageHooks implements
 				'source' => $isUserSpace ? 'userpagetab' : 'usertalkpagetab',
 				'namespace' => $title->getNamespace(),
 			] );
-			$links['namespaces']['homepage'] = $skin->tabAction(
+			$links[$menuKey]['homepage'] = $skin->tabAction(
 				$homepageTitle, 'growthexperiments-homepage-tab', $isHomepage, $homepageUrlQuery
 			);
 
-			$links['namespaces']['user'] = $skin->tabAction(
+			$links[$menuKey]['user'] = $skin->tabAction(
 				$subjectpage, wfMessage( 'nstab-user', $user->getName() ), $isUserSpace, '', !$isMobile
 			);
 
-			$links['namespaces']['user_talk'] = $skin->tabAction(
+			$links[$menuKey]['user_talk'] = $skin->tabAction(
 				$talkpage, 'talk', $isUserTalkSpace, '', !$isMobile
 			);
 			// Enable talk overlay on talk page tab
-			$links['namespaces']['user_talk']['context'] = 'talk';
+			$links[$menuKey]['user_talk']['context'] = 'talk';
 			if ( $isMobile ) {
 				$skin->getOutput()->addModules( 'skins.minerva.talk' );
 			}
