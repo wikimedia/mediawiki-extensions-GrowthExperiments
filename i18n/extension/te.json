@@ -12,7 +12,7 @@
 	"growthexperiments-config-validator-contentmodel-mismatch": "కంటెంటు రకం సరిపోలడం లేదు: GrowthExperiments కాన్ఫిగ్ ఫైలు JSON కంటెంటు మోడలు అయి ఉండాలి, $1 అని కనబడింది",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "చెల్లని టాస్కు రకం హాండ్లర్ ఐడి: <code>$1</code> చెల్లదు",
 	"growthexperiments-config-validator-array-toobig": "$1 లో మరీ ఎక్కువ ఐటములున్నాయి (గరిష్ఠంగా $2 ఉండవచ్చు)",
-	"growthexperiments-edit-config-disabled": "సాముదాయిక కాన్ఫిగరేషను ప్రస్తుతం అచేతనం చేసి ఉంది.",
+	"growthexperiments-edit-config-disabled": "కమ్యూనిటీ కాన్ఫిగరేషను ప్రస్తుతం అచేతనం చేసి ఉంది.",
 	"growthexperiments-edit-config-title": "గ్రోత్ కాన్ఫిగరేషను సవరణ",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: చివరిగా తాజాకరించినది [[User:$1|$1]] $2 ([$4 తేడా]).",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: చివరిగా తాజాకరించిన వాడుకరి ఎవరో తెలియదు $1 ([$3 తేడా]).",

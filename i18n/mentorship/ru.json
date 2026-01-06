@@ -16,7 +16,8 @@
 			"Stjn",
 			"UniCollab",
 			"Yurina Tatiana",
-			"Pavel200071"
+			"Pavel200071",
+			"Vonavy"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
@@ -151,7 +152,7 @@
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Чтобы зарегистрироваться в качестве наставника, перейдите на страницу [[Special:EnrollAsMentor]].",
 	"growthexperiments-manage-mentors-error-no-such-user": "Ошибка: участника с указанным ID не существует. Вероятно, это внутренняя ошибка.",
 	"growthexperiments-manage-mentors-auto-assigned": "Наставники, автоматически назначаемые новым учётным записям",
-	"growthexperiments-manage-mentors-auto-assigned-text": "Новые учетные записи случайным образом назначаются этим наставникам в качестве подопечных.",
+	"growthexperiments-manage-mentors-auto-assigned-text": "Когда новый пользователь регистрирует учётную запись на {{SITENAME}}, один из следующих участников автоматически назначается его наставником.",
 	"growthexperiments-manage-mentors-manually-assigned": "Наставники, которые вручную выбирают своих подопечных",
 	"growthexperiments-manage-mentors-manually-assigned-text": "Новые учётные записи не назначаются этим наставникам автоматически. Наставники из этого списка будут курировать только те учётные записи, которые они лично выбрали, что делает эту функцию идеальной для организаторов семинаров, желающих продолжить наставничество над участниками.",
 	"growthexperiments-manage-mentors-none": "Нет",

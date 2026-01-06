@@ -17,7 +17,8 @@
 			"Ykhwong",
 			"렌즈",
 			"밝은소년",
-			"아라"
+			"아라",
+			"YeBoy371"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -71,7 +72,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "쉬움",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "중간",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "어려움",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "처음 편집을 배울 때 권장됨.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "편집이 처음이신 {{GENDER:$1|여러분}}에게 추천합니다.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "{{GENDER:$1|쉬운}} 편집 여러 개를 해 본 사람을 위한 편집.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "{{GENDER:$1|위키백과}} 편집에 익숙한 사람을 위한 편집.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "교열 (문서를 읽고 검토하기)과 다른 문서로 가는 링크 넣기.",
@@ -216,6 +217,8 @@
 	"growthexperiments-homepage-suggestededits-footer": "다른 사용자들이 이런 문서에 도움이 필요하다고 표시했습니다. 매일 '''$1명'''의 '''{{SITENAME}}''' 독자를 도와주세요.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "다른 사용자들이 이런 문서에 도움이 필요하다고 표시했습니다. '''{{SITENAME}}''' 독자를 도와주세요.",
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
+	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1K",
+	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "당신과 같은 사용자들이 오늘도 {{SITENAME}} 을(를) 발전시키고 있습니다. 같이 도와주세요!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "모든 제안 보기",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "오타, 문법, 어투를 교정합니다",
