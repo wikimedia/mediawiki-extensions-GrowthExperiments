@@ -11,7 +11,9 @@
 			"Thibaut120094",
 			"Trizek (WMF)",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Bananax47",
+			"Escargot bleu"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Tableau de bord du mentor",
@@ -175,7 +177,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly": "Hebdomadaire",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly": "Mensuel",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never": "Jamais",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext": "Vous serez notifié{{GENDER:|e}} quand un tutoré aura été proposé pour être félicité :",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext": "Vous serez notifié{{GENDER:||e}} quand un tutoré aura été proposé pour être félicité :",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Enregistrer",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Annuler",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Vos paramètres personnalisés de félicitation ont été enregistrés.",
