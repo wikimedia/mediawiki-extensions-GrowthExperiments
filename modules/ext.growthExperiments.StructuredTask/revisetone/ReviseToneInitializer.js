@@ -124,32 +124,19 @@ class ReviseToneInitializer {
 		);
 
 		// See T412549 for finding a better way that bind less tightly to VE internals
-		ve.init.target.editcheckController.refresh();
-		this.scrollReviseToneIntoView();
+		ve.init.target.editcheckController.refresh().then( ( actions ) => {
+			const action = actions.find( ( a ) => a.getName() === GrowthSuggestionToneCheck.static.name );
+			if ( action ) {
+				// focus the tone action and scroll it into view
+				ve.init.target.editcheckController.focusAction( action, true, true );
+			}
+		} );
 		experiment.send( 'page-visited', {
 			/* eslint-disable camelcase */
 			action_source: 'EditCheck-1',
 			instrument_name: 'Article with revise tone recommendation page visited',
 			/* eslint-enable camelcase */
 		} );
-	}
-
-	scrollReviseToneIntoView() {
-		let hasBeenScrolledIntoView = false;
-		ve.trackSubscribe(
-			'activity.editCheck-' + GrowthSuggestionToneCheck.static.name,
-			() => {
-				if ( hasBeenScrolledIntoView ) {
-					return;
-				}
-				window.setTimeout( () => {
-					document.querySelector(
-						OO.ui.isMobile() ? '.ve-ui-editCheck-gutter-action' : '.ve-ui-editCheckActionWidget',
-					).scrollIntoView( { behavior: 'smooth', block: 'center' } );
-				}, 500 );
-				hasBeenScrolledIntoView = true;
-			},
-		);
 	}
 
 	// TODO: make this private once Grade A support is raised to at least Safari 15, see T395347
