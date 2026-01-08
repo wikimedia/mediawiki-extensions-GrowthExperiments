@@ -50,8 +50,7 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 
 		// Simulate conditional defaults execution
 		foreach ( $users as $user ) {
-			foreach ( $bucketConfig as $bucket ) {
-				[ $variant, $args ] = $bucket;
+			foreach ( $bucketConfig as [ $variant, $args ] ) {
 				if ( $manager->shouldAssignGlobalBucket( $user, $args[1], array_slice( $args, 2 ) ) ) {
 					$results[ $variant ]++;
 					break;
@@ -97,8 +96,7 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 
 		// Simulate conditional defaults execution
 		foreach ( $users as $user ) {
-			foreach ( $bucketConfig as $bucket ) {
-				[ $variant, $args ] = $bucket;
+			foreach ( $bucketConfig as [ $variant, $args ] ) {
 				if ( $manager->shouldAssignLocalBucket( $user, $args[1], array_slice( $args, 2 ) ) ) {
 					$results[ $variant ]++;
 					break;
@@ -144,8 +142,7 @@ class ExperimentUserDefaultsManagerTest extends MediaWikiUnitTestCase {
 
 		// Simulate conditional defaults execution
 		foreach ( $users as $user ) {
-			foreach ( $bucketConfig as $bucket ) {
-				[ $variant, $args ] = $bucket;
+			foreach ( $bucketConfig as [ $variant, $args ] ) {
 				if ( $manager->shouldAssignLocalBucket( $user, $args[1], array_slice( $args, 2 ) ) ) {
 					$results[ $variant ]++;
 					break;
