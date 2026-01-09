@@ -30,6 +30,11 @@ describe( 'Revise Tone', () => {
 
 	beforeEach( () => {
 		cy.loginViaApi( usernameAlice, passwordAlice );
+		// Ensure each test run starts with Revise Tone onboarding not yet seen,
+		// so both desktop and mobile tests exercise the onboarding dialog.
+		cy.setUserOptions( {
+			'growthexperiments-revisetone-onboarding': '0',
+		} );
 	} );
 
 	describe( 'On desktop', () => {

@@ -1,14 +1,12 @@
 <template>
 	<onboarding-dialog
 		v-model:open="open"
-		v-model:is-checked="isChecked"
 		class="ext-growthExperiments-ReviseToneOnboarding"
 		:initial-step="1"
 		:total-steps="totalSteps"
 		:stepper-label="stepperLabelText"
 		:close-button-text="$i18n( 'growthexperiments-revisetone-onboarding-dialog-skip-label' ).text()"
 		:start-button-text="$i18n( 'growthexperiments-structuredtask-onboarding-dialog-get-started-button' ).text()"
-		:checkbox-label="$i18n( 'growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox' ).text()"
 		:disable-touch-navigation="true"
 		@update:current-step="onStepChange"
 		@close="reset"
@@ -74,7 +72,6 @@ module.exports = defineComponent( {
 		const mwTrack = inject( 'mw.track' );
 		const experiment = inject( 'experiment' );
 		const open = ref( true );
-		const isChecked = ref( false );
 		// null stands for an unanswered quiz at the array's index
 		const quizResults = reactive( Array( quizData.length ).fill( null ) );
 		const totalSteps = quizData.length;
@@ -95,7 +92,13 @@ module.exports = defineComponent( {
 		const renderedInstructions = computed(
 			() => i18n( quizData[ currentStep.value - 1 ].instruction ).text(),
 		);
-		const saveDismissed = () => new Api().saveOption( props.prefName, isChecked.value ? '1' : '0' );
+		const saveDismissed = () => {
+			if ( !props.prefName ) {
+				return;
+			}
+			// Mark onboarding as seen for this user so it is not shown again.
+			new Api().saveOption( props.prefName, '1' );
+		};
 		const reset = ( closeEventData ) => {
 			if ( experiment ) {
 				experiment.send( 'click', {
@@ -115,7 +118,6 @@ module.exports = defineComponent( {
 			quizResults.forEach( ( _, index, arr ) => {
 				arr[ index ] = null;
 			} );
-			// Store the checkbox value
 			saveDismissed();
 			// Fire the structured task
 			mwHook( 'growthExperiments.structuredTask.onboardingCompleted' ).fire();
@@ -135,7 +137,6 @@ module.exports = defineComponent( {
 			} );
 		};
 		return {
-			isChecked,
 			onStepChange,
 			renderedInstructions,
 			open,

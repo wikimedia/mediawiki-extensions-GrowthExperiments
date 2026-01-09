@@ -76,10 +76,10 @@ describe( 'Onboarding dialog', () => {
 		const wrapper = renderComponent(
 			{
 				open: true,
-				checkboxLabel: "Don't show again",
+				checkboxLabel: 'Any label',
 			},
 		);
-		expect( wrapper.text() ).toContain( "Don't show again" );
+		expect( wrapper.text() ).toContain( 'Any label' );
 	} );
 
 	it( 'should render content passed as step with paginator', () => {
