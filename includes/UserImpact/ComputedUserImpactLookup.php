@@ -648,13 +648,24 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 
 		$imageFile = $this->pageImages->getImage( $title );
 		if ( $imageFile ) {
-			$ratio = $imageFile->getWidth() / $imageFile->getHeight();
 			$options = [
-				'width' => $ratio > 1 ?
-					// Avoid decimals in the width because it makes the thumb url construction fail
-					floor( self::THUMBNAIL_SIZE / $imageFile->getHeight() * $imageFile->getWidth() ) :
-					self::THUMBNAIL_SIZE,
+				'width' => self::THUMBNAIL_SIZE,
 			];
+			$height = $imageFile->getHeight();
+			if ( $height ) {
+				$ratio = $imageFile->getWidth() / $height;
+				if ( $ratio > 1 ) {
+					// Avoid decimals in the width because it makes the thumb url construction fail
+					$options[ 'width' ] = floor(
+						self::THUMBNAIL_SIZE / $height * $imageFile->getWidth()
+					);
+				}
+			} else {
+				$this->logger->warning( 'PageImages returned 0-height image for page {title}, {fileName}', [
+					'title' => $title->getDBkey(),
+					'fileName' => $imageFile->getName(),
+				] );
+			}
 
 			$thumb = $imageFile->transform( $options );
 			if ( $thumb ) {
