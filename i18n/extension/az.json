@@ -241,5 +241,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Bəli, 75 redaktədən sonra",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Bəli, 150 redaktədən sonra",
 	"growthexperiments-addlink-done-button": "Oldu",
-	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Texniki redaktə, vaxtı keçmiş qeyri-aktivlik müddətinin təmizlənməsi"
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Vaxtı keçmiş qeyri-aktivlik müddətinin təmizlənməsi"
 }

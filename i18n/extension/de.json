@@ -250,5 +250,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ja, nach insgesamt 75 Bearbeitungen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ja, nach insgesamt 150 Bearbeitungen",
 	"growthexperiments-addlink-done-button": "Fertig",
-	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Wartungsaufgabe, Bereinigung abgelaufener Zeitstempel"
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Bereinigung abgelaufener Zeitstempel"
 }
