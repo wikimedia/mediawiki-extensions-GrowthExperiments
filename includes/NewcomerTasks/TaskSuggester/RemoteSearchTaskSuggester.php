@@ -10,8 +10,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Title\TitleFactory;
 
 /**

@@ -3,7 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Title\TitleFactory;
 use Wikimedia\Rdbms\IConnectionProvider;
 

@@ -11,7 +11,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use ISearchResultSet;
 use MediaWiki\Api\ApiRawMessage;
-use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\Status;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;

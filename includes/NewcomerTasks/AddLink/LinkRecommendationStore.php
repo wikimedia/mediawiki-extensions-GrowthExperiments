@@ -6,9 +6,9 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use DomainException;
 use GrowthExperiments\Util;
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Deferred\LinksUpdate\TemplateLinksTable;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
 use MediaWiki\Title\TitleFactory;

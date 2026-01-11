@@ -6,8 +6,8 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleFactory;
 use StatusValue;

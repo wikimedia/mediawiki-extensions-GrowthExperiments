@@ -7,8 +7,8 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Title\TitleFactory;
 use StatusValue;
 
