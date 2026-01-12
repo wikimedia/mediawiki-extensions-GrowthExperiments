@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BlackShadowG",
+			"Peterxy12",
 			"Xiplus"
 		]
 	},
@@ -14,5 +15,26 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "当导师设置成离开时，必须要有以日为单位的离开状态长度",
 	"apihelp-query+growthmentorstatus-summary": "查询目前用户的导师状态",
 	"apihelp-growthmentordashboardupdatedata-summary": "安排导师面板中学员总览的特别更新。由于性能原因您每两个小时只能安排一次更新。",
-	"apihelp-growthsetmenteestatus-param-state-enabled": "导师模块已启用"
+	"apihelp-growthsetmenteestatus-summary": "设置学员的状态（允许学员启用/停用导师计划模块或完全退出以删除学员和导师的关系）",
+	"apihelp-growthsetmenteestatus-param-state": "学员的新状态（警告：将此设为optout将会永久删除学员和导师的关系）",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "导师模块已启用",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "导师计划模块完全停用，这通常是由软件设置并用于A/B测试。",
+	"apihelp-growthsetmenteestatus-param-state-optout": "学员从导师计划退出；学员和导师的关系将会被删除，导师计划模块将被替换成可以重新加入",
+	"apihelp-query+growthmenteestatus-summary": "查询目前用户的学员状态，请查看action=growthsetmenteestatus的文件以了解个别状态的详细信息。",
+	"apihelp-query+growthmentormentee-summary": "获取分配给指定导师的全部学员。",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "要查询学员的导师",
+	"apihelp-growthmanagementorlist-summary": "管理在结构化导师清单中的信息（通常存放在[[MediaWiki:GrowthMentors.json]]中）。此模块可被目前与往后的导师（新增他们自己或是变更他们的详细信息）以及管理员（适用于所有用户）来使用。",
+	"apihelp-growthmanagementorlist-param-geaction": "操作",
+	"apihelp-growthmanagementorlist-param-message": "介绍信息（导师信息默认为空字符串）",
+	"apihelp-growthmanagementorlist-param-weight": "权重",
+	"apihelp-growthmanagementorlist-param-isaway": "导师目前不在吗？这必须设置（默认为false）。",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "导师要离开到什么时候？最长期限为从今天起的1年。若isaway为true，则将其忽略。",
+	"apihelp-growthmanagementorlist-param-summary": "更改的原因",
+	"apihelp-growthmanagementorlist-param-username": "被变更给影响到的导师用户名称。若未提供，会使用目前登录的用户。这仅给特权用户利用。",
+	"growthexperiments-api-managementors-error-no-away-timestamp": "若isaway为true，必须提供awaytimestamp。",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "让导师面板上个性化表扬模块的值得表扬学员建议无效",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "无效学员",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "让建议无效的原因",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "略过让建议无效的原因",
+	"apihelp-query+growthmentorlist-summary": "列出所有导师"
 }

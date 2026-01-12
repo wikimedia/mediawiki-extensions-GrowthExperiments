@@ -11,6 +11,8 @@
 			"Sjoerddebruin"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "Gebruiker staat niet onder begeleiding",
+	"growthexperiments-exception-no-mentored-text": "De gebruiker heeft geen mentor en kan dus geen vragen stellen aan de eigen mentor",
 	"growthexperiments-mentor-dashboard-title": "Mentordashboard",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentordashboard",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Om het mentordashboard in te schakelen, moet {{GENDER:|u}} eerst [[$1|inschrijven als mentor]].",
@@ -29,6 +31,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Gestelde mentorvragen",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Aantal bewerkingen",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Inschrijfdatum",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "$1 geleden voor het laatst bijgewerkt",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filters",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Bijwerken",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Aantal bewerkingen",

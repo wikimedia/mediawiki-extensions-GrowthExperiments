@@ -13,5 +13,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "«Spør nybegynnerforumet»-panelet (gammelt navn)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "«Spør fadderen din»-panelet på nybegynnerhjemmesiden (gammelt navn)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevante tittelen, om valgt, som skal inkluderes med spørsmålet.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Du må være logget inn for å stille spørsmål."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Du må være logget inn for å stille spørsmål.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Når du ikke har en fadder kan du ikke stille fadderen spørsmål."
 }

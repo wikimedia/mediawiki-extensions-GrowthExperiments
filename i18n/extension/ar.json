@@ -244,5 +244,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "نعم، بعد 75 تعديلًا إجماليًا",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "نعم، بعد 150 تعديلًا إجماليًا",
 	"growthexperiments-addlink-done-button": "تم",
-	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "مهمة الصيانة، انتهت صلاحية الطوابع الزمنية للتنظيف"
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "إزالة الطوابع الزمنية المنتهية المحذوفة"
 }

@@ -239,5 +239,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Si, post un total de 75 modificationes",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Si, post un total de 150 modificationes",
 	"growthexperiments-addlink-done-button": "Facite",
-	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Carga de mantenentia, elimination de marcas de tempore expirate"
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Elimination de marcas de tempore expirate"
 }

@@ -248,5 +248,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ja, na 75 bewerkingen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ja, na 150 bewerkingen",
 	"growthexperiments-addlink-done-button": "Klaar",
-	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Onderhoudstaak, opruiming verlopen tijdsaanduidingen"
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Opruiming verlopen tijdsaanduidingen"
 }
