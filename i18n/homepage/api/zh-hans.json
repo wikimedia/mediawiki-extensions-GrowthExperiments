@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"VulpesVulpes825",
-			"科劳"
+			"科劳",
+			"Peterxy12"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "获取通过主页模块发布，并且已格式化的问题",
@@ -13,5 +14,15 @@
 	"apihelp-growthsetmentor-summary": "设置用户的导师。该变更将被公开记录。",
 	"apihelp-growthsetmentor-param-mentee": "学员的用户名",
 	"apihelp-growthsetmentor-param-mentor": "导师的用户名",
-	"apihelp-growthsetmentor-param-reason": "变更原因"
+	"apihelp-growthsetmentor-param-reason": "变更原因",
+	"apihelp-query+growthimagesuggestiondata-summary": "获取相关的[https://www.mediawiki.org/wiki/wikitech:Add_Image 图片建议数据]，若可用的话",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "任务类型 ID（指定是否获取顶层或章节层级图片推荐的数据）",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "在wiki配置中找不到任务类型ID“$1”。",
+	"apihelp-growthinvalidateimagerecommendation-summary": "作废图片推荐。",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "调用此API将会：\n\n*重新设置条目的 [https://www.mediawiki.org/wiki/wikitech:Add_Image \"hasrecommendation:image\" 权重标签]，因此条目不会再回传到图片建议的搜索结果里。\n\n*将条目添加到短暂的缓存中，当是在[[Special:Homepage]]或是通过[[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]]API来访问时，[https://www.mediawiki.org/wiki/Extension:GrowthExperiments GrowthExperiments]扩充的ImageRecommendationFilter 会参考来决定是否应将条目从用户建议的编辑队列中排除。\n\n*产生事件并发送至EventGate到[https://schema .wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback 图片建议意见回馈串流]。这允许图片建议管道的改进，因为在管道中的代码当产生推荐时，能依据用户的意见回馈。\n\n进一步阅读：[https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Structured_tasks/Add_an_image mediawiki.org]",
+	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "任务类型（顶层或章节层级）",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "条目标题图片推荐任务用于",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "用于图片推荐的无前缀文件名称，例如：<kbd>Foo.jpg</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "图片推荐所在章节的标题，例如：<kbd>历史</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "图片推荐所在章节从1开始的索引，例如：<kbd>3</kbd>"
 }

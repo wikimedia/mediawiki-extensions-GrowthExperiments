@@ -3,7 +3,8 @@
 		"authors": [
 			"GuoPC",
 			"Xiplus",
-			"Corn Pig"
+			"Corn Pig",
+			"Peterxy12"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "获取适合编辑新手的任务建议。",
@@ -18,11 +19,21 @@
 	"apihelp-query+growthtasks-example-2": "获取目前用户的任务推荐，以及有关页面的扩展信息。",
 	"apihelp-query+growthnextsuggestedtasktype-summary": "获取建议用户接下来尝试的任务类型。",
 	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "用户当前正在处理的任务类型。",
+	"apihelp-growthexperiments-structured-task-submit-data-format-link-recommendation": "具有以下键的JSON字符串物件：\n* <var>acceptedTargets</var>：包含页面标题，用户接受的推荐链接的阵列（选用）。\n* <var>rejectedTargets</var>：包含页面标题，用户拒绝的推荐链接的阵列（选用）。\n* <var>skippedTargets</var>：包含页面标题，用户略过的推荐链接的阵列（选用）。",
+	"apihelp-growthexperiments-structured-task-submit-data-format-image-recommendation": "具有以下键的JSON字符串物件：\n* <var>accepted</var>：用户是否接受推荐图片的布林值。\n* <var>reasons</var>：表明为什么用户拒绝推荐图片的字符串阵列。有效值：$1。\n* <var>caption</var>：用户提供的图片说明。（必须至少$2个{{PLURAL:$2|字符}}）。",
+	"apihelp-growthexperiments-structured-task-submit-data-format-section-image-recommendation": "具有以下键的JSON字符串物件：\n* <var>accepted</var>：用户是否接受推荐图片的布林值。\n* <var>reasons</var>：表明为什么用户拒绝推荐图片的字符串阵列。有效值：$1。\n* <var>caption</var>：用户提供的图片说明。（必须至少 $2 个{{PLURAL:$2|字符}}）。\n* <var>sectionTitle</var>：建议所针对段落的标题。\n* <var>sectionNumber</var>：建议所针对条目段落的序号。",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "保存GrowthExperiments“[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link 新增链接]”结构化编辑时使用。",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "保存GrowthExperiments“[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image 新增图片]”结构化编辑时使用。",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-section-image-recommendation": "保存GrowthExperiments“[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image#\"Add_an_image\"_to_a_Section 新增图片至章节]”结构化编辑时使用。",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt>对于<var>ge-task-link-recommendation</var>外挂</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt>对于<var>ge-task-image-recommendation</var>外挂</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt>对于<var>ge-task-section-image-recommendation</var>外挂</dt><dd>\n$1\n</dd></dl>",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "在加入图片外挂资料中缺少'accepted'参数",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "在加入图片外挂资料中的'accepted'参数应该是布尔值，实际为$1",
 	"apierror-growthexperiments-addimage-handler-reason-missing": "添加图像插件数据中缺少'reasons'参数",
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "添加图像插件数据中的'reasons'参数应该是一个数组，实际为$1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reasons'参数的项目'$1'无效，应该是以下项目之一：$2",
+	"apierror-growthexperiments-addimage-handler-section-title-wrongtype": "在新增图片外挂数据中的“sectionTitle”参数应为null，实际为$1",
 	"apierror-growthexperiments-addlink-handler-notfound": "找不到链接建议纪录",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "未预期的链接建议目标：$1"
 }
