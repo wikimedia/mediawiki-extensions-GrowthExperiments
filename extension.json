@@ -701,9 +701,9 @@
 		},
 		{
 			"events": [
-				"PageRevisionUpdated"
+				"PageLatestRevisionChanged"
 			],
-			"class": "GrowthExperiments\\MentorDashboard\\PersonalizedPraise\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
+			"class": "GrowthExperiments\\MentorDashboard\\PersonalizedPraise\\MediaWikiEventIngress\\PageLatestRevisionChangedIngress",
 			"services": [
 				"GrowthExperimentsConfig",
 				"GrowthExperimentsMentorManager",

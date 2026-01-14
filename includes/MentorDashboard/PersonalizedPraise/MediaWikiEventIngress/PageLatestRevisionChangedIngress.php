@@ -10,14 +10,14 @@ use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Config\Config;
 use MediaWiki\DomainEvent\DomainEventIngress;
-use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
-use MediaWiki\Page\Event\PageRevisionUpdatedListener;
+use MediaWiki\Page\Event\PageLatestRevisionChangedEvent;
+use MediaWiki\Page\Event\PageLatestRevisionChangedListener;
 
 /**
  * Event subscriber for PersonalizedPraise functionality.
  * Handles PageUpdated events to check for praiseworthy edits.
  */
-class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
+class PageLatestRevisionChangedIngress extends DomainEventIngress implements PageLatestRevisionChangedListener {
 
 	public function __construct(
 		private readonly Config $config,
@@ -28,13 +28,7 @@ class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevis
 	) {
 	}
 
-	/**
-	 * Handler for PageUpdated events.
-	 * Executed after database commit.
-	 *
-	 * @param PageRevisionUpdatedEvent $event The page update event
-	 */
-	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
+	public function handlePageLatestRevisionChangedEvent( PageLatestRevisionChangedEvent $event ): void {
 		if ( !$this->config->get( 'GEPersonalizedPraiseBackendEnabled' ) ) {
 			return;
 		}
