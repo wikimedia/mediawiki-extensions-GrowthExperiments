@@ -4,9 +4,11 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use MockHttpTrait;
@@ -63,5 +65,30 @@ class PersonalizedPraiseEventSubscriberTest extends MediaWikiIntegrationTestCase
 			$menteeTestUser->getAuthority()
 		);
 		$this->assertCount( 1, $suggester->getPraiseworthyMenteesForMentor( $mentor ) );
+	}
+
+	/**
+	 * @covers ::handlePageLatestRevisionChangedEvent
+	 */
+	public function testTempUsersIgnored(): void {
+		$this->overrideProviderConfig( [
+			'GEPersonalizedPraiseBackendEnabled' => true,
+			'GEPersonalizedPraiseMinEdits' => 1,
+		], 'Mentorship' );
+
+		$this->overrideMwServices( null, [
+			'GrowthExperimentsMentorManager' => fn () => $this->createNoOpMock( IMentorManager::class ),
+		] );
+
+		$tempUserStatus = $this->getServiceContainer()->getTempUserCreator()->create( '~1234', new FauxRequest() );
+		$this->assertStatusGood( $tempUserStatus );
+
+		$this->editPage(
+			Title::newFromText( 'Sandbox' ),
+			'testing2',
+			'',
+			NS_MAIN,
+			$tempUserStatus->getUser(),
+		);
 	}
 }

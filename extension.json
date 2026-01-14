@@ -706,6 +706,7 @@
 			"class": "GrowthExperiments\\MentorDashboard\\PersonalizedPraise\\MediaWikiEventIngress\\PageLatestRevisionChangedIngress",
 			"services": [
 				"GrowthExperimentsConfig",
+				"UserIdentityUtils",
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsUserImpactLookup",
 				"GrowthExperimentsPraiseworthyConditionsLookup",

@@ -9,6 +9,9 @@ use MediaWiki\User\UserIdentity;
 
 /**
  * A service for handling mentors.
+ *
+ * Note that this interface expects to only deal with named accounts.
+ * Callers are responsible to not provide anonymous or temporary users.
  */
 interface IMentorManager {
 

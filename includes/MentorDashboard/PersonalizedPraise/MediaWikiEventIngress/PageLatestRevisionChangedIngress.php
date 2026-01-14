@@ -12,6 +12,7 @@ use MediaWiki\Config\Config;
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Page\Event\PageLatestRevisionChangedEvent;
 use MediaWiki\Page\Event\PageLatestRevisionChangedListener;
+use MediaWiki\User\UserIdentityUtils;
 
 /**
  * Event subscriber for PersonalizedPraise functionality.
@@ -21,6 +22,7 @@ class PageLatestRevisionChangedIngress extends DomainEventIngress implements Pag
 
 	public function __construct(
 		private readonly Config $config,
+		private readonly UserIdentityUtils $userIdentityUtils,
 		private readonly IMentorManager $mentorManager,
 		private readonly UserImpactLookup $userImpactLookup,
 		private readonly PraiseworthyConditionsLookup $praiseworthyConditionsLookup,
@@ -34,6 +36,10 @@ class PageLatestRevisionChangedIngress extends DomainEventIngress implements Pag
 		}
 
 		$user = $event->getPerformer();
+
+		if ( !$this->userIdentityUtils->isNamed( $user ) ) {
+			return;
+		}
 
 		$mentor = $this->mentorManager->getMentorForUserIfExists( $user );
 		if ( !$mentor ) {
