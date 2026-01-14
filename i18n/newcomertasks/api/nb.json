@@ -47,5 +47,7 @@
 	"growthexperiments-addimage-feedback-rejected-editrevid": "Parameteren <var>editRevId</var> kan ikke brukes når parameteren <var>accepted</var> er satt til <kbd>false</kbd>.",
 	"growthexperiments-addimage-feedback-accepted-caption": "Parameteren <var>caption</var> er påkrevd når parameteren <var>accepted</var> er satt til <kbd>true</kbd>.",
 	"growthexperiments-addimage-feedback-revid-nonexistent": "Sideversjonen som er angitt i <var>editRevId</var> ble ikke funnet.",
-	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Sideversjonen som angis i <var>editRevId</var> tilhører en annen side."
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "Sideversjonen som angis i <var>editRevId</var> tilhører en annen side.",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "Legg inn en «Revider tone»-anbefaling for en gitt side.",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "Tittelen på siden anbefalingen skal legges inn for, uten navnerom."
 }
