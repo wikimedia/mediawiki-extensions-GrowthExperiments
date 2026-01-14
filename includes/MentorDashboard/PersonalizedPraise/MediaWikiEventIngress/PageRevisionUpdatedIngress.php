@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\MentorDashboard\PersonalizedPraise\MediaWikiEventIngress;
 
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
@@ -16,24 +18,14 @@ use MediaWiki\Page\Event\PageRevisionUpdatedListener;
  * Handles PageUpdated events to check for praiseworthy edits.
  */
 class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
-	private Config $config;
-	private IMentorManager $mentorManager;
-	private UserImpactLookup $userImpactLookup;
-	private PraiseworthyConditionsLookup $praiseworthyConditionsLookup;
-	private PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester;
 
 	public function __construct(
-		Config $config,
-		IMentorManager $mentorManager,
-		UserImpactLookup $userImpactLookup,
-		PraiseworthyConditionsLookup $praiseworthyConditionsLookup,
-		PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester
+		private readonly Config $config,
+		private readonly IMentorManager $mentorManager,
+		private readonly UserImpactLookup $userImpactLookup,
+		private readonly PraiseworthyConditionsLookup $praiseworthyConditionsLookup,
+		private readonly PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester
 	) {
-		$this->config = $config;
-		$this->mentorManager = $mentorManager;
-		$this->userImpactLookup = $userImpactLookup;
-		$this->praiseworthyConditionsLookup = $praiseworthyConditionsLookup;
-		$this->praiseworthyMenteeSuggester = $praiseworthyMenteeSuggester;
 	}
 
 	/**
