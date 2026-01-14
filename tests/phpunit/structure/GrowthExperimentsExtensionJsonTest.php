@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extensions\GrowthExperiments\Tests\Structure;
+namespace MediaWiki\Extension\GrowthExperiments\Tests\Structure;
 
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Tests\ExtensionJsonTestBase;
