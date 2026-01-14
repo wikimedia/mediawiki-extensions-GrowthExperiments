@@ -153,6 +153,8 @@
 	"tag-newcomer_task_image_suggestion-description": "\"Lägga till bilder\"-uppgiftsredigering föreslogs av förslagsredigeringsmodulen på nybörjarhemsidan",
 	"tag-newcomer_task_section_image_suggestion": "Förslag: lägg till bilder i avsnitt",
 	"tag-newcomer_task_section_image_suggestion-description": "Uppgiftsredigeringen \"Lägg till bilder i avsnitt\" föreslogs av modulen föreslagna redigeringar på nybörjarhemsidan.",
+	"tag-newcomer_task_read_view_suggestion": "Föreslagen: i läsläge",
+	"tag-newcomer_task_read_view_suggestion-description": "En redigering som föreslogs till en nykomling under läsning av en artikel",
 	"growthexperiments-homepage-help-dialog-title": "Fråga hjälpcentralen",
 	"growthexperiments-homepage-help-header": "Få hjälp med att redigera",
 	"growthexperiments-homepage-help-subheader": "Populäraste hjälpsidorna om redigering",
