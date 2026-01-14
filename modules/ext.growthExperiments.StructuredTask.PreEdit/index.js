@@ -2,7 +2,6 @@ module.exports = ( function () {
 	'use strict';
 
 	const Utils = require( '../utils/Utils.js' ),
-		useExperiment = require( '../ext.growthExperiments.StructuredTask/revisetone/useExperiment.js' ),
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
 		addSectionImageOnboardingPrefName = 'growthexperiments-addsectionimage-onboarding',
@@ -28,21 +27,13 @@ module.exports = ( function () {
 	/**
 	 * Setup common configs and helpers for all StructuredTask.PreEdit apps.
 	 *
-	 * @param {string} mountPoint A xpath selector for an existing DOM node in the document
 	 * @return {Object} A Vue app instance
 	 */
-	function createApp( mountPoint ) {
-		const wrapper = require( './App.vue' );
-		// eslint-disable-next-line no-undef
-		const app = Vue.createMwApp( wrapper, { prefName: reviseToneOnboardingPrefName } );
-		app.provide( 'mw.language', mw.language );
-		app.provide( 'mw.Api', mw.Api );
-		app.provide( 'mw.user', mw.user );
-		app.provide( 'mw.hook', mw.hook );
-		app.provide( 'mw.track', mw.track );
-		app.provide( 'experiment', useExperiment() );
-		app.mount( mountPoint );
-		return app;
+	function createApp() {
+		const ReviseToneQuizLauncher = require( './revisetone/ReviseToneQuizLauncher.js' );
+		return ReviseToneQuizLauncher.launchReviseToneQuiz( {
+			setSeenPreference: true,
+		} );
 	}
 
 	/**
@@ -54,7 +45,7 @@ module.exports = ( function () {
 		suggestedEditSession.onboardingNeedsToBeShown = false;
 		suggestedEditSession.save();
 		if ( useNewOnboarding ) {
-			createApp( '.growth-experiments-structuredtask-preedit-vue-app' );
+			createApp();
 		} else {
 			windowManager.openWindow( dialogName );
 		}
@@ -92,13 +83,7 @@ module.exports = ( function () {
 			return;
 		}
 		if ( useNewOnboarding ) {
-			/**
-			 * TODO use the Vue version of the dialog
-			 * https://phabricator.wikimedia.org/T331986
-			 */
-			const vueAppWrapper = document.createElement( 'div' );
-			vueAppWrapper.classList.add( 'growth-experiments-structuredtask-preedit-vue-app' );
-			document.body.append( vueAppWrapper );
+			// Mount point will be created by launchReviseToneQuiz if needed
 		} else {
 			// Only append window manager & construct dialog if onboarding should be shown
 			StructuredTaskOnboardingDialog = require( './StructuredTaskOnboardingDialog.js' );
@@ -283,6 +268,15 @@ module.exports = ( function () {
 		);
 		logger = new ReviseToneInteractionLogger();
 		setupOnboarding();
+		// Set up hook for Help Panel to launch the quiz
+		mw.hook( 'growthExperiments.reviseTone.showOnboardingFromHelpPanel' ).add(
+			() => {
+				const ReviseToneQuizLauncher = require( './revisetone/ReviseToneQuizLauncher.js' );
+				ReviseToneQuizLauncher.launchReviseToneQuiz( {
+					setSeenPreference: false, // Don't set seen preference when launched from Help Panel
+				} );
+			},
+		);
 	}
 
 	return {

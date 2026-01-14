@@ -316,6 +316,14 @@
 				} ).$element
 					.on( 'click', () => {
 						this.logger.log( id );
+						// For revise-tone tasks: launch onboarding quiz directly instead of showing panel
+						if ( id === 'suggested-edits' && this.taskTypeId === 'revise-tone' ) {
+							mw.loader.using( 'ext.growthExperiments.StructuredTask.PreEdit' ).then(
+								() => {
+									mw.hook( 'growthExperiments.reviseTone.showOnboardingFromHelpPanel' ).fire();
+								} );
+							return;
+						}
 						this.swapPanel( id );
 					} ),
 			);

@@ -111,6 +111,8 @@ HelpPanelHomeButtonWidget.prototype.getSubheader = function () {
 
 	if ( this.config.customSubheader ) {
 		text = this.config.customSubheader;
+	} else if ( this.config.id === 'suggested-edits' && this.config.taskTypeId === 'revise-tone' ) {
+		text = mw.msg( 'growthexperiments-help-panel-revise-tone-refresh-skills' );
 	} else {
 		// The following messages are used here:
 		// * growthexperiments-help-panel-button-subheader-general-help

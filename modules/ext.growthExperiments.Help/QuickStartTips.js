@@ -4,12 +4,52 @@
 	const QuickStartTipsTabPanelLayout = require( './QuickStartTipsTabPanelLayout.js' );
 
 	/**
+	 * Build a minimal tips panel when quick-start tips are skipped (e.g., Revise Tone
+	 * uses onboarding instead of server-provided tips).
+	 *
+	 * The Help Panel expects a StackLayout with a tabIndexLayout; this helper
+	 * supplies a compatible structure with custom content to avoid runtime errors.
+	 *
+	 * @param {jQuery|null} content Element to render inside the panel.
+	 * @return {OO.ui.StackLayout}
+	 */
+	function createFallbackTipsPanel( content ) {
+		const stackLayout = new OO.ui.StackLayout( {
+				classes: [ 'suggested-edits-panel-quick-start-tips-content' ],
+				continuous: true,
+				scrollable: true,
+				expanded: false,
+			} ),
+			panel = new OO.ui.PanelLayout( {
+				padded: false,
+				expanded: false,
+				$content: content || $( '<div>' ),
+			} );
+		stackLayout.addItems( [ panel ] );
+		// Provide a minimal tabIndexLayout to avoid downstream errors
+		stackLayout.tabIndexLayout = {
+			on: function () {},
+			getTabs: function () {
+				return new OO.ui.TabSelectWidget( { framed: false } );
+			},
+		};
+		return stackLayout;
+	}
+
+	/**
 	 * @param {string} taskTypeID The task type ID
 	 * @param {string} editorInterface The editor interface
 	 * @param {string|null} currentTabPanel The current tab panel to select, if any.
 	 * @return {jQuery.Promise} Promise that resolves with an OO.ui.StackLayout
 	 */
 	function getTips( taskTypeID, editorInterface, currentTabPanel ) {
+		if ( taskTypeID === 'revise-tone' ) {
+			// Revise Tone has no quick-start tips. The panel is built but never shown
+			// because clicking the revise-tone tile launches the quiz directly (early return
+			// in HelpPanelProcessDialog.js). We just need to return a valid panel structure.
+			return $.Deferred().resolve( createFallbackTipsPanel( null ) ).promise();
+		}
+
 		const indexLayout = new OO.ui.IndexLayout( {
 				framed: false,
 				expanded: false,
@@ -74,6 +114,7 @@
 			mw.log.error( 'Unable to load quick start tips', statusText, error );
 			mw.errorLogger.logError( new Error( 'Unable to load quick start tips: ' +
 				statusText + ' / ' + error ), 'error.growthexperiments' );
+			return createFallbackTipsPanel( null );
 		} );
 	}
 

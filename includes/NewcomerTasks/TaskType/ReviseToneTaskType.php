@@ -17,7 +17,7 @@ class ReviseToneTaskType extends TaskType {
 	}
 
 	public function shouldShowHelpPanelQuickTips(): bool {
-		return false;
+		return true;
 	}
 
 }

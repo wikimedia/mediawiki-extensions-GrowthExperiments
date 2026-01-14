@@ -66,6 +66,7 @@
 	"growthexperiments-help-panel-question-post-error": "Error to show to user if posting question fails. $1 is a link to the community help desk.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-title": "Title shown at top of help panel when viewing the suggested edits panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Quick start tips header shown when viewing the suggested edits panel. Same as {{msg-mw|growthexperiments-help-panel-button-subheader-suggested-edits}}.\n\n{{doc-growthexperiments-help-panel}}\n\n{{Identical|Quick start tips}}",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "Label shown for the Revise Tone action in the help panel that lets users reopen the onboarding/quiz.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "Footer shown when viewing the suggested edits panel on desktop.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "Footer shown when viewing the suggested edits panel on mobile.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "The first of a set of six tips explaining how to copyedit an article, as part of the \"newcomer tasks\" workflow.  Screenshots and translation guide here: https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Newcomer_tasks/Guidance_translation_guide",
