@@ -60,8 +60,12 @@ class ReviseToneInitializer {
 			'edit-check-feedback-reason-uncertain',
 			'edit-check-feedback-reason-other',
 		];
-		if ( this.isInitialToneCheck && dismissActions.includes( action ) ) {
-			// The user submitted the decline-survey on the initial tone suggestion
+		if (
+			this.isInitialToneCheck &&
+			dismissActions.includes( action ) &&
+			!ve.init.target.surface.model.hasBeenModified()
+		) {
+			// The user submitted the decline-survey on the initial tone suggestion without any changes
 			if ( action === 'edit-check-feedback-reason-appropriate' ) {
 				( new mw.Api() ).postWithToken(
 					'csrf',
