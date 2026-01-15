@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "د اوسني کارن له خوا د ستوري په توگه د لارزدکړي نښه کول يا نه نښه کول (په ځاني توگه زېرمه شوی او نوم‌ليکلی نه دی)",
+	"apihelp-growthstarmentee-param-gesaction": "ترسراوي چاره (<kbd>ستوری</kbd> يا <kbd>بې ستوري</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "(بې) ستوري کېدونکی لارزدکړی",
+	"apihelp-query+growthstarredmentees-summary": "د اوسني نوم‌ليکلي لارښود له خوا د ستوري شوو لارزدکړو نوملړ ترلاسه کول",
+	"apihelp-growthsetmentorstatus-summary": "د اوسني لارښود دريځ کارنده/لرې ټاکل",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "نوی دريځ",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "کله چې لارښود د لرې په توگه وټاکئ؛ دا بايد د لرې دريځ اوږدوالی ولري ( په ورځو)",
+	"apihelp-query+growthmentorstatus-summary": "د اوسني لارښود دريځ تپوس کول",
+	"apihelp-growthmanagementorlist-param-geaction": "چاره",
+	"apihelp-growthmanagementorlist-param-message": "پېژندون پيغام (د تلواله لارښود پيغام لپاره تشه لړۍ وکاروئ)",
+	"apihelp-growthmanagementorlist-param-weight": "دروندوالی",
+	"apihelp-growthmanagementorlist-param-isaway": "ايا لارښود اوس لرې دی؟ بايد وټاکل شي (تلواليز ناسم ته)",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "لارښود تر څه وخته لرې وي؟ له نن څخه ډېر وخت تر يو کال پورې دی. له پامه غورځول کېږي پرته له دې چې isaway رښتيا وي.",
+	"apihelp-growthmanagementorlist-param-summary": "د بدلون لامل"
+}
