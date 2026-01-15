@@ -454,6 +454,7 @@ SuggestedEditsModule.prototype.updateCardElement = function ( shouldAnimateEditC
 		.toggleClass( 'pseudo-card', !isShowingEditCardWidget )
 		.toggleClass( 'pseudo-card-eoq', this.currentCard instanceof EndOfQueueWidget );
 	this.setupClickLogging();
+	this.carryOverMpoQueryParameter();
 	if ( isShowingEditCardWidget ) {
 		this.setupEditTypeTracking();
 
@@ -509,6 +510,25 @@ SuggestedEditsModule.prototype.logEditTaskClick = function ( action ) {
 	const task = this.tasksStore.getCurrentTask();
 	this.logCardData();
 	this.logger.log( 'suggested-edits', this.mode, action, { newcomerTaskToken: task.token } );
+};
+
+/**
+ * The `mpo` query parameter is used for overriding the group of Test Kitchen A/B experiments
+ *
+ * It needs to persist so that the override is still active when the user arrives at the article
+ *
+ * See also https://wikitech.wikimedia.org/wiki/Test_Kitchen/Overriding_experiment_enrollment
+ */
+SuggestedEditsModule.prototype.carryOverMpoQueryParameter = function () {
+	const $link = this.currentCard.$element.find( '.se-card-content' );
+	if ( $link.attr( 'href' ) ) {
+		const url = new URL( $link.attr( 'href' ), window.location.origin );
+		const existingHomepageSearchParams = new URLSearchParams( window.location.search );
+		if ( existingHomepageSearchParams.has( 'mpo' ) ) {
+			url.searchParams.set( 'mpo', existingHomepageSearchParams.get( 'mpo' ) );
+		}
+		$link.attr( 'href', url.toString() );
+	}
 };
 
 /**

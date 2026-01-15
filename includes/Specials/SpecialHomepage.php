@@ -444,6 +444,7 @@ class SpecialHomepage extends SpecialPage {
 				'new-onboarding' => $request->getVal( 'new-onboarding' ),
 				'gerecommendationid' => $request->getVal( 'gerecommendationid' ),
 				'surfaced' => $request->getVal( 'surfaced' ),
+				'mpo' => $request->getVal( 'mpo' ),
 			],
 			$suggestedEdits instanceof SuggestedEdits ? $suggestedEdits->getRedirectParams( $taskTypeId ) : []
 		);

@@ -281,6 +281,10 @@ PostEditPanel.prototype.getCard = function ( task ) {
 		genewcomertasktoken: task.token,
 		gesuggestededit: 1,
 	};
+	const currentPageSearchParams = new URLSearchParams( location.search );
+	if ( currentPageSearchParams.has( 'mpo' ) ) {
+		params.mpo = currentPageSearchParams.get( 'mpo' );
+	}
 	let url;
 	if ( task.url ) {
 		// Override for developer setups
