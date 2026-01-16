@@ -10,10 +10,12 @@ class ReviseToneInitializer {
 	// TODO: use private class fields once Grade A support is raised to at least Safari 15, see T395347
 	// #taskData;
 	// #isInitialToneCheck;
+	// #isInitialEditSession;
 
 	constructor() {
 		this.taskData = suggestedEditSession.taskData;
 		this.isInitialToneCheck = true;
+		this.isInitialEditSession = true;
 	}
 
 	initialize() {
@@ -36,6 +38,8 @@ class ReviseToneInitializer {
 
 	/**
 	 * On desktop this triggers the onboarding after the editor has finished loading
+	 *
+	 * Also, on desktop, the `mw.hook( 've.newTarget' )` hooks is fired only ever once, and the target is reused.
 	 */
 	initializeDesktop() {
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
@@ -48,10 +52,12 @@ class ReviseToneInitializer {
 			if ( target.surface ) {
 				mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 			} else {
-				target.on( 'surfaceReady', () => {
+				// Using `once` here to avoid firing on subsequent edit sessions
+				target.once( 'surfaceReady', () => {
 					mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 				} );
 			}
+			target.once( 'teardown', this.restoreDefaultToneCheck );
 		} );
 	}
 
@@ -59,21 +65,33 @@ class ReviseToneInitializer {
 	 * On mobile the onboarding is shown before the editor has finished loading
 	 * The onboarding is triggered in ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.js
 	 * So this only needs to initialize the listener for the editor surface being ready
+	 *
+	 * On mobile, the `mw.hook( 've.newTarget' )` hooks is fired in every new edit session
 	 */
 	initializeMobile() {
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
 			() => {
 				mw.hook( 've.newTarget' ).add( ( target ) => {
+					if ( !this.isInitialEditSession ) {
+						return;
+					}
+					this.isInitialEditSession = false;
 					if ( target.surface ) {
 						this.showToneEditCheck();
 					} else {
-						target.on( 'surfaceReady', () => {
+						target.once( 'surfaceReady', () => {
 							this.showToneEditCheck();
 						} );
 					}
+					target.once( 'teardown', this.restoreDefaultToneCheck );
 				} );
 			},
 		);
+	}
+
+	restoreDefaultToneCheck() {
+		mw.editcheck.editCheckFactory.unregister( GrowthSuggestionToneCheck );
+		mw.editcheck.editCheckFactory.register( mw.editcheck.ToneCheck, mw.editcheck.ToneCheck.static.name );
 	}
 
 	handleEditCheckDialogEvents( name, { action } ) {
