@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\ResponseFactory;
 use MediaWiki\Title\TitleValue;
@@ -24,6 +25,11 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler::run
 	 */
 	public function testRun() {
+		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$features = $geServices->getFeatureManager();
+		if ( !$features->isNewcomerTasksAvailable() ) {
+			$this->markTestSkipped( 'NewcomerTasks is not available.' );
+		}
 		$this->overrideConfigValues( [
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GEHomepageSuggestedEditsEnabled' => true,

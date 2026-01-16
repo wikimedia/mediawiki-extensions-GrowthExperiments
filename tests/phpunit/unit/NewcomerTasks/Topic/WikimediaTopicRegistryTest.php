@@ -35,10 +35,13 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 	}
 
 	public function provideTestGetTopics(): iterable {
-		yield 'All WM topics recognized' => [
-			ArticleTopicFiltersRegistry::getTopicList(),
-			WikimediaTopicRegistry::GROWTH_ORES_TOPICS,
-		];
+		if ( class_exists( ArticleTopicFiltersRegistry::class ) ) {
+			# Test case requires the WikimediaMessages extension
+			yield 'All WM topics recognized' => [
+				ArticleTopicFiltersRegistry::getTopicList(),
+				WikimediaTopicRegistry::GROWTH_ORES_TOPICS,
+			];
+		}
 		yield 'Some WM topics recognized' => [
 			[ 'africa', 'women', 'unkown', 'oceania', 'foo', 'bar' ],
 			[ 'africa', 'women', 'oceania' ],
@@ -50,6 +53,10 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testGetCampaignTopics() {
+		if ( !class_exists( ArticleTopicFiltersRegistry::class ) ) {
+			$this->markTestSkipped( 'Extension WikimediaMessages is required for this test' );
+		}
+
 		$registry = $this->getWikimediaTopicRegistry( ArticleTopicFiltersRegistry::getTopicList() );
 		$registry->setCampaignConfigCallback( function () {
 			return new CampaignConfig(
