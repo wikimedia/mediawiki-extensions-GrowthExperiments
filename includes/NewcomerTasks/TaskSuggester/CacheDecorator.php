@@ -75,59 +75,17 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 			return $this->taskSuggester->suggest( $user, $taskSetFilters, $limit, $offset, $options );
 		}
 
+		$isHit = true;
 		$json = $this->cache->getWithSetCallback(
 			$this->cache->makeKey(
 				'GrowthExperiments-NewcomerTasks-TaskSet',
 				$user->getId()
 			),
-			$this->cache::TTL_WEEK,
-			function ( $oldValue, &$ttl ) use (
-				$user, $taskSetFilters, $limit, $useCache, $resetCache, $revalidateCache, $excludePageIds
+			( $useCache || $resetCache ) ? $this->cache::TTL_WEEK : $this->cache::TTL_UNCACHEABLE,
+			function () use (
+				$user, $taskSetFilters, $useCache, $resetCache, $excludePageIds, &$isHit
 			) {
-				// This callback is always invoked each time getWithSetCallback is called,
-				// because we need to examine the contents of the cache (if any) before
-				// deciding whether to return those contents or if they need to be regenerated.
-
-				if ( is_string( $oldValue ) ) {
-					$oldValue = $this->deserialize( $oldValue );
-				}
-
-				if ( $useCache
-					 && !$resetCache
-					 && $oldValue instanceof TaskSet
-					 && $oldValue->filtersEqual( $taskSetFilters )
-					 && $oldValue->count()
-				) {
-					// There's a cached value we can use; we need to randomize and potentially
-					// revalidate it.
-					// &$ttl needs to be set to UNCACHEABLE so that WANObjectCache
-					// doesn't attempt a set() after returning the existing value.
-					$ttl = $this->cache::TTL_UNCACHEABLE;
-
-					if ( $revalidateCache ) {
-						// Filter out cached tasks which have already been done.
-						// Filter before limiting, so they can be replaced by other tasks.
-						$newValue = $this->taskSuggester->filter( $user, $oldValue );
-					} else {
-						$newValue = $oldValue;
-					}
-					$this->logger->debug( 'CacheDecorator hit', [
-						'user' => $user->getName(),
-						'taskTypes' => implode( '|', $taskSetFilters->getTaskTypeFilters() ),
-						'topics' => implode( '|', $taskSetFilters->getTopicFilters() ) ?: null,
-						'limit' => $limit,
-						'revalidateCache' => $revalidateCache,
-						'ttl' => $ttl,
-						'cachedTaskCount' => $oldValue->count(),
-						'validTaskCount' => ( $newValue instanceof TaskSet ) ? $newValue->count() : null,
-					] );
-					if ( $newValue instanceof TaskSet ) {
-						// Shuffle the contents again (they were shuffled when first placed into the
-						// cache) and return only the subset of tasks that the requester asked for.
-						$newValue->randomSort();
-					}
-					return $this->serialize( $newValue );
-				}
+				$isHit = false;
 
 				// We don't have a task set, or the taskset filters in the request don't match
 				// what is stored in the cache, or using the cached value was explicitly diallowed
@@ -170,26 +128,68 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 						}
 					}
 				}
-				if ( !$useCache && !$resetCache ) {
-					$ttl = $this->cache::TTL_UNCACHEABLE;
-				}
-				$this->logger->debug( 'CacheDecorator miss', [
-					'user' => $user->getName(),
-					'taskTypes' => implode( '|', $taskSetFilters->getTaskTypeFilters() ),
-					'topics' => implode( '|', $taskSetFilters->getTopicFilters() ) ?: null,
-					'limit' => $limit,
-					'useCache' => $useCache,
-					'taskCount' => ( $result instanceof TaskSet ) ? $result->count() : null,
-				] );
 				return $this->serialize( $result );
 			},
-			// minAsOf is used to reject values below the defined timestamp. By
-			// settings minAsOf = INF (PHP's constant for the infinite), we are
-			// telling WANObjectCache to always invoke the callback. See
-			// callback comment for more on why.
-			[ 'minAsOf' => INF, 'version' => self::CACHE_VERSION ]
+			[
+				'version' => self::CACHE_VERSION,
+				'touchedCallback' => function ( $oldValue ) use (
+					$useCache, $resetCache, $taskSetFilters
+				) {
+					// Examine the contents of the cache (if any) before
+					// deciding whether to return those contents or if they need to be regenerated.
+					$oldValue = $this->deserialize( $oldValue );
+					if ( $useCache
+						 && !$resetCache
+						 && $oldValue instanceof TaskSet
+						 && $oldValue->filtersEqual( $taskSetFilters )
+						 && $oldValue->count()
+					) {
+						return null;
+					} else {
+						// Force regeneration
+						return INF;
+					}
+				},
+			]
 		);
+
 		$result = $this->deserialize( $json );
+
+		$unfiltered = null;
+		if ( $result instanceof TaskSet ) {
+			$unfiltered = $result;
+			if ( $revalidateCache && $isHit ) {
+				// Filter out cached tasks which have already been done.
+				// Filter before limiting, so they can be replaced by other tasks.
+				$result = $this->taskSuggester->filter( $user, $result );
+			}
+		}
+		if ( $result instanceof TaskSet ) {
+			// Shuffle the contents again (they were shuffled when first placed into the
+			// cache) and return only the subset of tasks that the requester asked for.
+			$result->randomSort();
+		}
+
+		if ( $isHit ) {
+			$this->logger->debug( 'CacheDecorator hit', [
+				'user' => $user->getName(),
+				'taskTypes' => implode( '|', $taskSetFilters->getTaskTypeFilters() ),
+				'topics' => implode( '|', $taskSetFilters->getTopicFilters() ) ?: null,
+				'limit' => $limit,
+				'revalidateCache' => $revalidateCache,
+				'cachedTaskCount' => ( $unfiltered instanceof TaskSet ) ? $unfiltered->count() : null,
+				'validTaskCount' => ( $result instanceof TaskSet ) ? $result->count() : null,
+			] );
+		} else {
+			$this->logger->debug( 'CacheDecorator miss', [
+				'user' => $user->getName(),
+				'taskTypes' => implode( '|', $taskSetFilters->getTaskTypeFilters() ),
+				'topics' => implode( '|', $taskSetFilters->getTopicFilters() ) ?: null,
+				'limit' => $limit,
+				'useCache' => $useCache,
+				'taskCount' => ( $result instanceof TaskSet ) ? $result->count() : null,
+			] );
+		}
 
 		// Discard extra items when the method was called with $limit < DEFAULT_LIMIT,
 		// and run listeners.
