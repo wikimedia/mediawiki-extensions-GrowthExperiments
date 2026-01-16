@@ -23,30 +23,57 @@ class ReviseToneInitializer {
 		ReviseToneInitializer.hasBeenInitialized = true;
 		mw.editcheck.editCheckFactory.unregister( mw.editcheck.ToneCheck );
 		mw.editcheck.editCheckFactory.register( GrowthSuggestionToneCheck, GrowthSuggestionToneCheck.static.name );
+		ve.trackSubscribe(
+			'activity.editCheck-' + GrowthSuggestionToneCheck.static.name,
+			( ...params ) => this.handleEditCheckDialogEvents( ...params ),
+		);
+		if ( OO.ui.isMobile() ) {
+			this.initializeMobile();
+		} else {
+			this.initializeDesktop();
+		}
+	}
+
+	/**
+	 * On desktop this triggers the onboarding after the editor has finished loading
+	 */
+	initializeDesktop() {
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
 			() => {
-				ve.trackSubscribe(
-					'activity.editCheck-' + GrowthSuggestionToneCheck.static.name,
-					( ...params ) => this.handleEditCheckDialogEvents( ...params ),
-				);
-
-				if ( OO.ui.isMobile() ) {
-					mw.hook( 've.activationComplete' ).add( () => {
-						this.showToneEditCheck();
-					} );
-				} else {
-					this.showToneEditCheck();
-				}
+				this.showToneEditCheck();
 			},
 		);
 
-		if ( OO.ui.isMobile() ) {
-			return;
-		}
-
-		mw.hook( 've.activationComplete' ).add( () => {
-			mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
+		mw.hook( 've.newTarget' ).add( ( target ) => {
+			if ( target.surface ) {
+				mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
+			} else {
+				target.on( 'surfaceReady', () => {
+					mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
+				} );
+			}
 		} );
+	}
+
+	/**
+	 * On mobile the onboarding is shown before the editor has finished loading
+	 * The onboarding is triggered in ext.growthExperiments.HelpPanel/SuggestedEditsGuidance.js
+	 * So this only needs to initialize the listener for the editor surface being ready
+	 */
+	initializeMobile() {
+		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
+			() => {
+				mw.hook( 've.newTarget' ).add( ( target ) => {
+					if ( target.surface ) {
+						this.showToneEditCheck();
+					} else {
+						target.on( 'surfaceReady', () => {
+							this.showToneEditCheck();
+						} );
+					}
+				} );
+			},
+		);
 	}
 
 	handleEditCheckDialogEvents( name, { action } ) {
