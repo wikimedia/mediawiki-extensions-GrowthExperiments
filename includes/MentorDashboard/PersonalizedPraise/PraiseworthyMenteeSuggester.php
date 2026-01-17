@@ -51,7 +51,7 @@ class PraiseworthyMenteeSuggester {
 	 * Get array of user impacts for all active mentees assigned to $mentor
 	 *
 	 * @param UserIdentity $mentor
-	 * @return UserImpact[]
+	 * @return (UserImpact|null)[]
 	 */
 	private function getUserImpactsForActiveMentees( UserIdentity $mentor ): array {
 		$mentees = $this->mentorStore->getMenteesByMentor(
@@ -86,6 +86,7 @@ class PraiseworthyMenteeSuggester {
 	 */
 	public function getPraiseworthyMenteesForMentorUncached( UserIdentity $mentor ): array {
 		$impacts = $this->getUserImpactsForActiveMentees( $mentor );
+		// @phan-suppress-next-line PhanTypeMismatchReturn Null is removed via array_filter
 		return array_filter( $impacts, function ( ?UserImpact $impact ) use ( $mentor ) {
 			if ( $impact === null ) {
 				return false;
