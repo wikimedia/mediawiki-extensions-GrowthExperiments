@@ -13,5 +13,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Le pannello \"Demandar al servicio de adjuta\" (nomine ancian)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Le pannello \"Demandar a tu mentor\" sur le pagina initial de novicios (nomine ancian)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Le titulo relevante, si es seligite, pro includer con le question.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Tu debe aperir session pro poner un question."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Tu debe aperir session pro poner un question.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Tu non pote poner un question a tu mentor si tu non ha un mentor."
 }
