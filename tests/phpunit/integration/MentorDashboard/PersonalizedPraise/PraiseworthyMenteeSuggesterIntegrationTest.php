@@ -73,6 +73,7 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 	}
 
 	public function testGetPraiseworthyMenteesForMentor(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'PageViewInfo' );
 		$minEdits = 2;
 		$this->mockPageviews();
 		$this->overrideConfigValues( [

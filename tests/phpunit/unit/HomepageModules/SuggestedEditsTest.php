@@ -70,6 +70,9 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testAddsReviseToneIfNotInitiated(): void {
+		if ( !interface_exists( PageViewService::class ) ) {
+			$this->markTestSkipped( 'PageViewService not installed' );
+		}
 		$taskTypeManager = $this->createMock( TaskTypeManager::class );
 		$taskTypeManager->method( 'getTaskTypesForUser' )->willReturn( [ 'copyedit' ] );
 		$user = $this->createMock( User::class );
@@ -139,6 +142,9 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 	}
 
 	private function getSuggestedEdits( array $overrides = [] ): SuggestedEdits {
+		if ( !interface_exists( PageViewService::class ) ) {
+			$this->markTestSkipped( 'PageViewService not installed' );
+		}
 		$config = new HashConfig( [
 			'GEHomepageSuggestedEditsEnabled' => true,
 			'GEHomepageSuggestedEditsEnableTopics' => false,

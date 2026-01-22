@@ -49,6 +49,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 	}
 
 	public function testGetUserImpactForTemporaryAccount() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'PageViewInfo' );
 		$temporaryAccount = $this->getServiceContainer()->getTempUserCreator()
 			->create( '~2025-1', new FauxRequest() )
 			->getUser();
