@@ -322,7 +322,7 @@ StructuredTaskArticleTarget.prototype.tryTeardown = function ( noPrompt, trackMe
 StructuredTaskArticleTarget.prototype.saveComplete = function ( data ) {
 	this.emit( 'save', data );
 	this.hasSaved = true;
-	suggestedEditSession.onStructuredTaskSaved();
+	suggestedEditSession.onStructuredTaskSaved( this.madeNullEdit );
 
 	const url = new URL( window.location.href );
 	url.searchParams.delete( 'gesuggestededit' );

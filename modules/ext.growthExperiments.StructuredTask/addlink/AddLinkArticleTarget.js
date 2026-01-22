@@ -426,13 +426,9 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 		surfaced: surfaced,
 	} );
 	options.plugins = 'ge-task-link-recommendation';
-	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
-		.then( () => {
-			const hasAccepts = annotationStates.some( ( state ) => state.accepted );
-			if ( !hasAccepts ) {
-				this.madeNullEdit = true;
-			}
-		} );
+	const hasAccepts = annotationStates.some( ( state ) => state.accepted );
+	this.madeNullEdit = !hasAccepts;
+	return this.constructor.super.prototype.save.call( this, doc, options, isRetry );
 };
 
 /** @inheritDoc **/

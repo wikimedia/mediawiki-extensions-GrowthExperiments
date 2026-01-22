@@ -172,7 +172,7 @@ QUnit.test( 'should return success toast message when edits have been published 
 	assert.strictEqual( postEditToastMessage.type, 'success' );
 } );
 
-QUnit.test( 'should return notice toast message when edits have not been published', function ( assert ) {
+QUnit.test( 'should return success toast message when edits have not been published', function ( assert ) {
 	const panel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'submitted',
@@ -181,10 +181,10 @@ QUnit.test( 'should return notice toast message when edits have not been publish
 	const spy = this.sandbox.spy( mw, 'message' );
 	const postEditToastMessage = panel.getPostEditToastMessage();
 	assert.true( spy.calledWith( 'growthexperiments-help-panel-postedit-success-message-notsaved' ) );
-	assert.strictEqual( postEditToastMessage.type, 'notice' );
+	assert.strictEqual( postEditToastMessage.type, 'success' );
 } );
 
-QUnit.test( 'should return notice toast message when edits have not been published and link recommendation daily limit is reached', function ( assert ) {
+QUnit.test( 'should return success toast message when edits have not been published and link recommendation daily limit is reached', function ( assert ) {
 	const panel = new PostEditPanel( {
 		newcomerTasksStore: new NewcomerTasksStore( {} ),
 		taskState: 'submitted',
@@ -194,7 +194,7 @@ QUnit.test( 'should return notice toast message when edits have not been publish
 	const spy = this.sandbox.spy( mw, 'message' );
 	const postEditToastMessage = panel.getPostEditToastMessage();
 	assert.true( spy.calledWith( 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation' ) );
-	assert.strictEqual( postEditToastMessage.type, 'notice' );
+	assert.strictEqual( postEditToastMessage.type, 'success' );
 } );
 
 QUnit.test( 'should return alternate header text when image recommendation daily limit is reached', function ( assert ) {

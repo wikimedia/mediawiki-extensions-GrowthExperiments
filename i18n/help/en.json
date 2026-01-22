@@ -16,7 +16,7 @@
 	"growthexperiments-help-panel-home-title": "Get help with editing",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|You've}} published an edit. Thanks and keep going!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|You've}} saved an edit. Thanks and keep going!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Thanks for reviewing suggestions. Keep going!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|You've}} reviewed a suggestion. Thanks and keep going!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "All available add image articles for today are complete. Well done!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation": "All available section-image suggestion articles for today are complete. Well done!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "All available link suggestion articles for today are complete. Well done!",

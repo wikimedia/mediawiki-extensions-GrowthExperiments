@@ -662,16 +662,18 @@
 	};
 
 	/**
-	 * Clear session-specific data and set the task state to SAVED,
-	 * used when making non-null edits with structured tasks
+	 * Clear session-specific data and set the task state to SAVED or SUBMITTED,
+	 * used when saving structured tasks.
+	 *
+	 * @param {boolean} [wasNullEdit] Whether the save resulted in a null edit.
 	 */
-	SuggestedEditSession.prototype.onStructuredTaskSaved = function () {
+	SuggestedEditSession.prototype.onStructuredTaskSaved = function ( wasNullEdit ) {
 		// Since the page is reloaded, the postEdit hook won't be fired so the flag is used instead in
 		// SuggestedEditSession to show the post-edit dialog.
 		this.postEditDialogNeedsToBeShown = true;
 		// After saving, the clickId is used for the next task.
 		this.clickId = mw.user.generateRandomSessionId();
-		this.setTaskState( states.SAVED );
+		this.setTaskState( wasNullEdit ? states.SUBMITTED : states.SAVED );
 		this.save();
 	};
 

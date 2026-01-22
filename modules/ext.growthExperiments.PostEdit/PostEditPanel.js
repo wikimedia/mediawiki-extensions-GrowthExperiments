@@ -138,7 +138,10 @@ PostEditPanel.prototype.getPostEditToastMessage = function () {
 
 	return new PostEditToastMessage( {
 		icon: 'check',
-		type: hasSavedTask ? 'success' : 'notice',
+		type: (
+			hasSavedTask ||
+			this.taskState === SuggestedEditSession.static.STATES.SUBMITTED
+		) ? 'success' : 'notice',
 		label: $( '<span>' ).append( mw.message( messageKey ).parse() ),
 		autoHideDuration: 5000,
 	} );
