@@ -24,7 +24,6 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Language\Language;
-use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Request\WebRequest;
@@ -168,11 +167,8 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			->willReturn( $config );
 		$contextMock->method( 'getUser' )
 			->willReturn( $userMock );
-		$outputMock = $this->createMock( OutputPage::class );
-		$outputMock->method( 'getSkin' )
-			->willReturn( $this->createMock( SkinMinerva::class ) );
 		$contextMock->method( 'getOutput' )
-			->willReturn( $outputMock );
+			->willReturn( $this->createMock( OutputPage::class ) );
 		$contextMock->method( 'getLanguage' )
 			->willReturn( $languageMock );
 		$contextMock->method( 'getRequest' )
