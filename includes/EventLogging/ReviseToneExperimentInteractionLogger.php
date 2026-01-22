@@ -33,6 +33,9 @@ class ReviseToneExperimentInteractionLogger {
 			return;
 		}
 		$experimentConfig = $experiment->getExperimentConfig();
+		if ( $experimentConfig && $experimentConfig[ 'sampling_unit' ] === 'overridden' ) {
+			return;
+		}
 		$eventData = [
 				'experiment' => $experimentConfig,
 		] + $interactionData;
