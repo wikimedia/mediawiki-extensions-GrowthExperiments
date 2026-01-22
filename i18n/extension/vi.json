@@ -22,7 +22,7 @@
 	"growthexperiments-edit-config-disabled": "Cấu hình cộng đồng hiện đang tắt.",
 	"growthexperiments-edit-config-title": "Sửa đổi cấu hình Tăng trưởng",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Được cập nhật lần cuối bởi [[User:$1|$1]] $2 ([$4 khác]).",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Được cập nhật lần cuối bởi thành viên vô danh $1 ([$3 khác]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Được cập nhật lần cuối bởi thành viên chưa đăng nhập $1 ([$3 khác]).",
 	"growthexperiments-edit-config-pretext": "Trang này cho phép bạn sửa đổi cấu hình của các tính năng của nhóm [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth Tăng trưởng]. Khi thực hiện thay đổi tại trang này, các sửa đổi sẽ được lưu vào $1. Bạn có thể xem các thay đổi ở lịch sử trang của trang đó.",
 	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Bạn}} cũng có thể hiển thị banner trên trang chủ dành cho người mới, bao gồm thông báo về các sự kiện quan trọng dành cho người mới. Nếu {{GENDER:|bạn}} muốn làm như vậy, {{GENDER:|bạn}} cần thêm banner vào [[$1]] theo cách thủ công. Bất kỳ nội dung nào được thêm vào đó sẽ được hiển thị trong banner màu vàng ở đầu [[Special:Homepage|trang nhà]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Biểu mẫu này cho phép các người dùng có đặc quyền được sửa đổi cấu hình của các tính năng nhóm [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth Tăng trưởng].",
