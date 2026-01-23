@@ -501,7 +501,12 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationUpdater {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+		if ( $growthServices->getFeatureManager()->isLinkRecommendationsAvailable() ) {
+			$cirrusSearchServices = CirrusSearchServices::wrap( $services );
+			$weightedTagsUpdater = $cirrusSearchServices->getWeightedTagsUpdater();
+		} else {
+			$weightedTagsUpdater = null;
+		}
 		return new LinkRecommendationUpdater(
 			$growthServices->getLogger(),
 			$services->getDBLoadBalancerFactory(),
@@ -511,7 +516,7 @@ return [
 			$services->getChangeTagsStore(),
 			$services->getWikiPageFactory(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
-			$cirrusSearchServices->getWeightedTagsUpdater(),
+			$weightedTagsUpdater,
 			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' ),
 			$growthServices->getLinkRecommendationStore()
 		);

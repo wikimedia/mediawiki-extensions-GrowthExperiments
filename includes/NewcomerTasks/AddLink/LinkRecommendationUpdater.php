@@ -27,6 +27,7 @@ use MediaWiki\Title\TitleValue;
 use MediaWiki\Utils\MWTimestamp;
 use Psr\Log\LoggerInterface;
 use StatusValue;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
@@ -47,7 +48,7 @@ class LinkRecommendationUpdater {
 	private ConfigurationLoader $configurationLoader;
 	private ChangeTagsStore $changeTagsStore;
 	private WikiPageFactory $wikiPageFactory;
-	private WeightedTagsUpdater $weightedTagsUpdater;
+	private ?WeightedTagsUpdater $weightedTagsUpdater;
 	private LinkRecommendationStore $linkRecommendationStore;
 	private LinkRecommendationProvider $linkRecommendationProvider;
 	private ?LinkRecommendationTaskType $linkRecommendationTaskType = null;
@@ -61,7 +62,7 @@ class LinkRecommendationUpdater {
 	 * @param ChangeTagsStore $changeTagsStore
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param ConfigurationLoader $configurationLoader
-	 * @param WeightedTagsUpdater $weightedTagsUpdater
+	 * @param WeightedTagsUpdater|null $weightedTagsUpdater
 	 * @param LinkRecommendationProvider $linkRecommendationProvider Note that this needs to be
 	 *   the uncached provider, as caching is done by LinkRecommendationUpdater.
 	 * @param LinkRecommendationStore $linkRecommendationStore
@@ -75,7 +76,7 @@ class LinkRecommendationUpdater {
 		ChangeTagsStore $changeTagsStore,
 		WikiPageFactory $wikiPageFactory,
 		ConfigurationLoader $configurationLoader,
-		WeightedTagsUpdater $weightedTagsUpdater,
+		?WeightedTagsUpdater $weightedTagsUpdater,
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkRecommendationStore $linkRecommendationStore
 	) {
@@ -104,6 +105,11 @@ class LinkRecommendationUpdater {
 	 * @throws DBReadOnlyError
 	 */
 	public function processCandidate( ProperPageIdentity $pageIdentity, bool $force = false ): StatusValue {
+		Assert::invariant(
+			$this->weightedTagsUpdater !== null,
+			'CirrusSearch is required if Link Recommendations are enabled'
+		);
+
 		$lastRevision = $this->revisionStore->getRevisionByTitle( $pageIdentity );
 		$status = $this->evaluateTitle( $pageIdentity, $lastRevision, $force );
 		if ( !$status->isOK() ) {
