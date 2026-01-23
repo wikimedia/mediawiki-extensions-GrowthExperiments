@@ -491,15 +491,11 @@ class HomepageHooks implements
 	 */
 	public function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
 		$user = $skin->getUser();
-		$this->personalUrlsBuilder( $skin, $links, $user );
+		$isMobile = Util::isMobile( $skin );
 		if ( !self::isHomepageEnabled( $user ) ) {
 			return;
 		}
-
-		$isMobile = Util::isMobile( $skin );
-		if ( $isMobile && $this->userHasPersonalToolsPrefEnabled( $user ) ) {
-			$this->updateProfileMenuEntry( $links );
-		}
+		$this->personalUrlsBuilder( $skin, $links, $user );
 
 		$title = $skin->getTitle();
 		$homepageTitle = SpecialPage::getTitleFor( 'Homepage' );
@@ -566,27 +562,27 @@ class HomepageHooks implements
 	/**
 	 * Conditionally make the userpage link go to the homepage.
 	 *
-	 * @param SkinTemplate $skin
-	 * @param array &$links
-	 * @param User $user
 	 * @throws ConfigException
 	 */
-	public function personalUrlsBuilder( $skin, &$links, $user ): void {
-		if ( Util::isMobile( $skin ) || !self::isHomepageEnabled( $user ) ) {
+	private function personalUrlsBuilder( SkinTemplate $skin, array &$links, User $user ): void {
+		if ( !$this->userHasPersonalToolsPrefEnabled( $user ) ) {
 			return;
 		}
-
-		if ( $this->userHasPersonalToolsPrefEnabled( $user ) ) {
+		$links['user-page']['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl(
+			$skin->getTitle()->getNamespace()
+		);
+		// Legacy Vector makes use of user-menu to display the user link
+		if ( array_key_exists( 'userpage', $links['user-menu'] ) ) {
 			$links['user-menu']['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl(
-				$skin->getTitle()->getNamespace()
-			);
-			$links['user-page']['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl(
 				$skin->getTitle()->getNamespace()
 			);
 			// Make the link blue
 			unset( $links['user-menu']['userpage']['link-class'] );
 			// Remove the "this page doesn't exist" part of the tooltip
 			$links['user-menu']['userpage' ]['exists'] = true;
+		}
+		if ( Util::isMobile( $skin ) ) {
+			$this->updateProfileMenuEntry( $links );
 		}
 	}
 
@@ -914,7 +910,6 @@ class HomepageHooks implements
 			] + $links['user-menu'];
 			$links['user-page'] = [
 					'homepage' => $userItem,
-					// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset the user-page is always set
 			] + $links['user-page'];
 		}
 	}
