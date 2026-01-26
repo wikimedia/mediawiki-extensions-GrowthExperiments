@@ -33,6 +33,9 @@ describe( 'ReviseToneOnboarding', () => {
 					} ) ),
 					'mw.Api': ApiMock,
 					'mw.hook': jest.fn( () => ( { fire: jest.fn() } ) ),
+					'mw.language': jest.fn( () => ( {
+						getFallbackLanguageChain: jest.fn( () => [ 'en' ] ),
+					} ) ),
 					'mw.track': jest.fn(),
 					experiment: null,
 				},

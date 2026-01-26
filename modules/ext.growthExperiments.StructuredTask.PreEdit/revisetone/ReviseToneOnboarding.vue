@@ -70,6 +70,7 @@ module.exports = defineComponent( {
 		const Api = inject( 'mw.Api' );
 		const mwHook = inject( 'mw.hook' );
 		const mwTrack = inject( 'mw.track' );
+		const mwLanguage = inject( 'mw.language' );
 		const experiment = inject( 'experiment' );
 		const open = ref( true );
 		// null stands for an unanswered quiz at the array's index
@@ -134,6 +135,7 @@ module.exports = defineComponent( {
 			mwTrack( 'stats.mediawiki_GrowthExperiments_revise_tone_onboarding_quiz_response_total', 1, {
 				outcome: isCorrect ? 'correct' : 'incorrect',
 				step: currentStep.value,
+				language: mwLanguage.getFallbackLanguageChain().shift(),
 			} );
 		};
 		return {
