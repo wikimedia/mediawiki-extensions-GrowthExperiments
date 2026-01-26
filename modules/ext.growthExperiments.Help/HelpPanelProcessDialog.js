@@ -320,6 +320,14 @@
 						if ( id === 'suggested-edits' && this.taskTypeId === 'revise-tone' ) {
 							mw.loader.using( 'ext.growthExperiments.StructuredTask.PreEdit' ).then(
 								() => {
+									mw.track(
+										'stats.mediawiki_GrowthExperiments_revise_tone_help_panel_retake_quiz_click',
+										1,
+										{
+											wiki: mw.config.get( 'wgDBname' ),
+											platform: OO.ui.isMobile() ? 'mobile' : 'desktop',
+										},
+									);
 									mw.hook( 'growthExperiments.reviseTone.showOnboardingFromHelpPanel' ).fire();
 								} );
 							return;
