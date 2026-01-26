@@ -32,5 +32,10 @@
 	"growthexperiments-thankyoupage-bullet1": "أعمال بسيطة قد تناسب {{GENDER:|اهتماماتكَ|اهتماماتكِ}}",
 	"growthexperiments-thankyoupage-bullet2": "مساعدة وتوجيه في أثناء {{GENDER:|تعديلكَ|تعديلكِ}}",
 	"growthexperiments-thankyoupage-bullet3": "لمحة على عدد الأشخاص الذين يشاهدون {{GENDER:|أعمالكَ|أعمالكِ}}",
+	"growthexperiments-thankyoubanner-body": "أُنشئت ويكيبيديا من قبل أشخاص مثلكم يعملون سويّاً.\nتعديل مقالة هو أسهل ممّا {{GENDER:|تظنّ|تظنّين}}!\n\nمع حساب خاص بك، {{GENDER:|ستحصل|ستحصلين}} على:",
+	"growthexperiments-thankyoubanner-body-mobile": "أُنشئت ويكيبيديا من قبل أشخاص مثلكم يعملون سويّاً.\nتعديل مقالة هو أسهل ممّا {{GENDER:|تظنّ|تظنّين}}!",
+	"growthexperiments-thankyoubanner-bullet1": "أعمال بسيطة قد تناسب {{GENDER:|اهتماماتكَ|اهتماماتكِ}}",
+	"growthexperiments-thankyoubanner-bullet2": "مساعدة وتوجيه في أثناء {{GENDER:|تعديلكَ|تعديلكِ}}",
+	"growthexperiments-thankyoubanner-bullet3": "لمحة على عدد الأشخاص الذين يشاهدون {{GENDER:|أعمالكَ|أعمالكِ}}",
 	"growthexperiments-campaigns-footer": "بواسطة إنشاء {{GENDER:|حسابكَ|حسابكِ}} على هذه الصفحة، سيتمّ ربطه بهذه الحملة لأغراض التعلّم والتحليل."
 }

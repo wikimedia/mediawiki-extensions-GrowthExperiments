@@ -66,6 +66,7 @@
 	"growthexperiments-help-panel-question-post-error": "حدث خطأ عند محاولة نشر سؤالك، يمكنك إعادة المحاولة أو يمكنك زيارة $1 في متصفحك وإضافة سؤالك يدويًا.",
 	"growthexperiments-help-panel-suggestededits-title": "التعديلات المقترحة",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "نصائح سريعة للبدء",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "جدد مهاراتك",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>{{GENDER:|جاهز؟|جاهزة؟}}</strong> {{GENDER:|اِضغط|اِضغطي}} على \"{{int:vector-view-edit}}\" للبدء.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>{{GENDER:|جاهز؟|جاهزة؟}}</strong> {{GENDER:|اِفتح|اِفتحي}} القسم المراد تعديله ثم {{GENDER:|اُنقر|اُنقري}} فوق قلم التعديل.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "يتمثل تحرير النسخ في القيام بإصلاحات صغيرة على طريقة كتابة المقالات، مثل الرسم، أو النحو والصرف، أو توضيح النص. تحرير النسخ يساعد المقالات أن تكون أكثر احترافية وجديرة بالثقة.",

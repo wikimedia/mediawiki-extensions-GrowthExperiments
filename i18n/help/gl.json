@@ -59,6 +59,7 @@
 	"growthexperiments-help-panel-question-post-error": "Produciuse un erro ao tentar publicar a túa pregunta. Podes intentalo de novo ou podes visitar $1 no teu navegador e engadir a túa pregunta manualmente.",
 	"growthexperiments-help-panel-suggestededits-title": "Edicións suxeridas",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Consellos de inicio rápido",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "Refresca as túas habilidades",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>{{GENDER:|Preparado|Preparada}}?</strong> Fai clic en \"{{int:vector-view-edit}}\" para comezar.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>{{GENDER:|Preparado|Preparada}}?</strong> Abre a sección que queiras editar e fai clic na icona do lapis.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "A revisión de textos consiste en facer pequenas correccións na forma en que está escrito un artigo, como a ortografía, a gramática ou a claridade do texto. As revisións axudan a que os artigos sexan máis profesionais e fiables.",

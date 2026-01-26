@@ -62,6 +62,7 @@
 	"growthexperiments-help-panel-question-post-error": "Kysymyksesi lähettämisessä tapahtui virhe. Voit yrittää uudelleen tai mennä sivulle $1 selaimellasi ja lisätä kysymyksesi käsin.",
 	"growthexperiments-help-panel-suggestededits-title": "Ehdotetut muokkaukset",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Pikavinkkejä aloittamiseen",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "Virkistä taitojasi",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Valmiina?</strong> Klikkaa ”{{int:vector-view-edit}}” aloittaaksesi.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Valmiina?</strong> Avaa osio, jota haluat muokata, ja klikkaa kynäikonia.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Kielenhuollossa tehdään pieniä korjauksia artikkelin kirjoitusasuun, kuten oikeinkirjoitukseen, kielioppiin tai tekstin selkeyteen. Kielenhuolto auttaa tekemään artikkeleista asiantuntevamman ja luotettavamman kuuloisia.",

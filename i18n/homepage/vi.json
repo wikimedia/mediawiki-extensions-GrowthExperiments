@@ -461,6 +461,7 @@
 	"growthexperiments-addlink-skip-reject": "Xem lại",
 	"grant-managementorship": "Quản lý việc cố vấn",
 	"newcomertasksinfo": "Nhiệm vụ người mới",
+	"newcomertasksinfo-not-available": "Nhiệm vụ người mới chưa được kích hoạt trên wiki này.",
 	"newcomertasksinfo-no-data": "Không có dữ liệu.",
 	"newcomertasksinfo-config-form-info": "Có thể xem và thay đổi cấu hình của nhiệm vụ người mới đến tại [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Loại nhiệm vụ",

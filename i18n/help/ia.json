@@ -57,6 +57,7 @@
 	"growthexperiments-help-panel-question-post-error": "Un error ha occurrite durante le tentativa de publicar tu question. Tu pote tentar lo de novo o tu pote visitar $1 in tu navigator e adder tu question manualmente.",
 	"growthexperiments-help-panel-suggestededits-title": "Modificationes suggerite",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Consilios de initio rapide",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "Actualisar tu competentias",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Preste?</strong> Clicca sur \"{{int:vector-view-edit}}\" pro comenciar.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Preste?</strong> Aperi le section que tu vole modificar e tocca le icone de stilo.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Correction de texto refere a minor modificationes de un articulo pro meliorar le orthographia, grammatica o claritate del texto. Isto pote render articulos plus professional e digne de fide.",

@@ -57,6 +57,7 @@
 	"growthexperiments-help-panel-question-post-error": "Si è verificato un errore nel pubblicare la tua domanda. Puoi riprovare o visitare $1 dal tuo browser e aggiungere la richiesta manualmente.",
 	"growthexperiments-help-panel-suggestededits-title": "Modifiche suggerite",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Suggerimenti rapidi",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "Aggiorna le tue competenze",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Pronto?</strong> Clicca \"{{int:vector-view-edit}}\" per iniziare.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Pronto?</strong> Apri la sezione che vuoi modificare e premi l'icona con la matita.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Correggere le voci aiuta a renderle migliori e più affidabili: puoi correggere piccole sviste, errori di grammatica o rendere il testo più chiaro e scorrevole.",
