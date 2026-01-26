@@ -19,8 +19,12 @@ class ReviseToneExperimentEditIngress extends DomainEventIngress implements Page
 			return;
 		}
 
-		$this->experimentInteractionLogger->log( 'edit-saved', [
+		$this->experimentInteractionLogger->log( 'edit_saved', [
 			'instrument_name' => 'Edit saved',
+			'page' => [
+				'namespace_id' => $event->getPage()->getNamespace(),
+				'revision_id' => $event->getLatestRevisionAfter(),
+			],
 		] );
 	}
 }
