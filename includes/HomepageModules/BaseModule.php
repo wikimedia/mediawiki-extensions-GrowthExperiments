@@ -205,8 +205,4 @@ abstract class BaseModule extends DashboardModule {
 		return '#/homepage/' . $this->name;
 	}
 
-	private function getUserVariant(): string {
-		return $this->experimentUserManager->getVariant( $this->getContext()->getUser() );
-	}
-
 }
