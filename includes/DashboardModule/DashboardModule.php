@@ -208,6 +208,11 @@ abstract class DashboardModule implements IDashboardModule {
 		return Html::rawElement(
 			'div',
 			[
+				// NOTE: Not a class, but the purpose of the constant is to be an unique prefix,
+				// which allows us to generate a unique ID. The ID is intended to allow for
+				// anchor links (requested in T411626). For styling, please use one of the
+				// classes below.
+				'id' => static::BASE_CSS_CLASS . '-' . $this->name,
 				'class' => [
 					static::BASE_CSS_CLASS,
 					static::BASE_CSS_CLASS . '-' . $this->name,

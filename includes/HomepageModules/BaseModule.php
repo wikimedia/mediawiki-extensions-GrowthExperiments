@@ -167,21 +167,7 @@ abstract class BaseModule extends DashboardModule {
 	 * @inheritDoc
 	 */
 	protected function buildModuleWrapper( string ...$sections ): string {
-		$moduleContent = Html::rawElement(
-			'div',
-			[
-				'class' => [
-					self::BASE_CSS_CLASS,
-					self::BASE_CSS_CLASS . '-' . $this->name,
-					self::BASE_CSS_CLASS . '-' . $this->getMode(),
-					self::BASE_CSS_CLASS . '-user-variant-' . $this->getUserVariant(),
-					...$this->getCssClasses(),
-				],
-				'data-module-name' => $this->name,
-				'data-mode' => $this->getMode(),
-			],
-			implode( "\n", $sections )
-		);
+		$moduleContent = parent::buildModuleWrapper( ...$sections );
 
 		if (
 			$this->getMode() === self::RENDER_MOBILE_SUMMARY &&
