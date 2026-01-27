@@ -19,11 +19,14 @@ class ReviseToneExperimentEditIngress extends DomainEventIngress implements Page
 			return;
 		}
 
+		$revisionRecord = $event->getLatestRevisionAfter();
+		$revId = $revisionRecord->getId();
+
 		$this->experimentInteractionLogger->log( 'edit_saved', [
 			'instrument_name' => 'Edit saved',
 			'page' => [
 				'namespace_id' => $event->getPage()->getNamespace(),
-				'revision_id' => $event->getLatestRevisionAfter(),
+				'revision_id' => $revId,
 			],
 		] );
 	}
