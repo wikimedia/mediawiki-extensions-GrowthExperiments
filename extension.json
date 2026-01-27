@@ -197,7 +197,8 @@
 				"GrowthExperimentsAddImageSubmissionHandler",
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
-				"TitleFactory"
+				"TitleFactory",
+				"GrowthExperimentsFeatureManager"
 			]
 		},
 		"growthinvalidaterevisetonerecommendation": {
@@ -215,7 +216,8 @@
 				"GrowthExperimentsImageRecommendationProvider",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"MainConfig",
-				"TitleFactory"
+				"TitleFactory",
+				"GrowthExperimentsFeatureManager"
 			]
 		}
 	},
@@ -229,7 +231,8 @@
 				"GrowthExperimentsLinkRecommendationFilter",
 				"GrowthExperimentsImageRecommendationFilter",
 				"GrowthExperimentsProtectionFilter",
-				"GrowthExperimentsTopicRegistry"
+				"GrowthExperimentsTopicRegistry",
+				"GrowthExperimentsFeatureManager"
 			]
 		},
 		"growthstarredmentees": {
@@ -282,7 +285,8 @@
 			"class": "GrowthExperiments\\Rest\\Handler\\TipsHandler",
 			"services": [
 				"GrowthExperimentsTipsAssembler",
-				"GrowthExperimentsNewcomerTasksConfigurationLoader"
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
+				"GrowthExperimentsFeatureManager"
 			]
 		},
 		{
@@ -290,7 +294,8 @@
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSuggestionsHandler",
 			"services": [
-				"GrowthExperimentsLinkRecommendationHelper"
+				"GrowthExperimentsLinkRecommendationHelper",
+				"GrowthExperimentsFeatureManager"
 			]
 		},
 		{
@@ -311,7 +316,7 @@
 			"services": [
 				"GrowthExperimentsSuggestionsInfo",
 				"MainWANObjectCache",
-				"MainConfig"
+				"GrowthExperimentsFeatureManager"
 			]
 		},
 		{
@@ -419,7 +424,8 @@
 				"GrowthExperimentsUserImpactStore",
 				"GrowthExperimentsInteractionLogger",
 				"GrowthExperimentsTaskTypeManager",
-				"GrowthExperimentsLevelingUpManager"
+				"GrowthExperimentsLevelingUpManager",
+				"GrowthExperimentsFeatureManager"
 			]
 		},
 		"impact": {
@@ -434,7 +440,8 @@
 			"services": [
 				"MainConfig",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
-				"GrowthExperimentsLevelingUpManager"
+				"GrowthExperimentsLevelingUpManager",
+				"GrowthExperimentsFeatureManager"
 			]
 		},
 		"mediawikiservices": {
@@ -688,7 +695,8 @@
 				"ChangeTagsStore",
 				"ConnectionProvider",
 				"StatsFactory",
-				"GrowthExperimentsLinkRecommendationHelper"
+				"GrowthExperimentsLinkRecommendationHelper",
+				"GrowthExperimentsFeatureManager"
 			]
 		},
 		{
@@ -782,7 +790,8 @@
 				"GrowthSuggestedEdits": {
 					"class": "GrowthExperiments\\Config\\Providers\\SuggestedEditsConfigProvider",
 					"services": [
-						"MainConfig"
+						"MainConfig",
+						"GrowthExperimentsFeatureManager"
 					]
 				}
 			},

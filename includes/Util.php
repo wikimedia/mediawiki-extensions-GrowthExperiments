@@ -349,68 +349,9 @@ class Util {
 	}
 
 	/**
-	 * Check whether link recommendations are enabled.
-	 * @note While T278123 is in effect, link recommendations can be enabled per-user, and
-	 *   most callers should use NewcomerTasksUserOptionsLookup::areLinkRecommendationsEnabled().
-	 * @param IContextSource $contextSource
-	 * @return bool
-	 */
-	public static function areLinkRecommendationsEnabled( IContextSource $contextSource ): bool {
-		return $contextSource->getConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' );
-	}
-
-	/**
 	 * Generate a 32 character random token for analytics purposes
 	 */
 	public static function generateRandomToken(): string {
 		return \Wikimedia\base_convert( \MWCryptRand::generateHex( 40 ), 16, 32, 32 );
-	}
-
-	public static function isNewcomerTasksAvailable(): bool {
-		$wikiSettings = MediaWikiServices::getInstance()->getMainConfig();
-		$extensionRegistry = MediaWikiServices::getInstance()->getExtensionRegistry();
-		return $extensionRegistry->isLoaded( 'WikimediaMessages' ) &&
-			$wikiSettings->get( 'GEHomepageSuggestedEditsEnabled' );
-	}
-
-	public static function isLinkRecommendationsAvailable(): bool {
-		$services = MediaWikiServices::getInstance();
-		$wikiSettings = $services->getMainConfig();
-		$extensionRegistry = $services->getExtensionRegistry();
-		return self::isNewcomerTasksAvailable() &&
-			$extensionRegistry->isLoaded( 'CirrusSearch' ) &&
-			$extensionRegistry->isLoaded( 'VisualEditor' ) &&
-			$wikiSettings->get( 'GENewcomerTasksLinkRecommendationsEnabled' );
-	}
-
-	public static function areImageRecommendationDependenciesSatisfied(): bool {
-		$services = MediaWikiServices::getInstance();
-		$extensionRegistry = $services->getExtensionRegistry();
-		return self::isNewcomerTasksAvailable() &&
-			$extensionRegistry->isLoaded( 'CirrusSearch' ) &&
-			$extensionRegistry->isLoaded( 'VisualEditor' );
-	}
-
-	/**
-	 * Should TestKitchen extension be used?
-	 *
-	 * @return bool
-	 */
-	public static function useTestKitchen(): bool {
-		$services = MediaWikiServices::getInstance();
-		$extensionRegistry = $services->getExtensionRegistry();
-		return $extensionRegistry->isLoaded( 'TestKitchen' ) &&
-			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-				->getGrowthConfig()->get( 'GEUseTestKitchenExtension' );
-	}
-
-	public static function isReviseToneTasksTypeEnabled(): bool {
-		$wikiSettings = MediaWikiServices::getInstance()->getMainConfig();
-		$extensionRegistry = MediaWikiServices::getInstance()->getExtensionRegistry();
-		return self::isNewcomerTasksAvailable() &&
-			// CirrusSearch is not available in patchdemo
-			// $extensionRegistry->isLoaded( 'CirrusSearch' ) &&
-			$extensionRegistry->isLoaded( 'VisualEditor' ) &&
-			$wikiSettings->get( 'GEReviseToneSuggestedEditEnabled' );
 	}
 }

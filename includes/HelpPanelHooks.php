@@ -266,11 +266,11 @@ class HelpPanelHooks implements
 	 * @return array
 	 */
 	private static function getPreferredEditor( RL\Context $context, Config $config ): array {
+		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		// Do not attempt to load task types and compute preferred editor when SE is disabled
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( $geServices->getFeatureManager()->isNewcomerTasksAvailable() ) {
 			return [];
 		}
-		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 
 		// Hack - RL\Context is not exposed to services initialization
 		$validator = $geServices->getNewcomerTasksConfigurationValidator();

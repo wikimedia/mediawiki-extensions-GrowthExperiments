@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\ErrorException;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler;
@@ -58,7 +59,10 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 			$this->getTitleKey( $goodTitle ) => new LinkRecommendation( $goodTitle, 1, 1, $links, $meta ),
 			$this->getTitleKey( $badTitle ) => StatusValue::newFatal( new RawMessage( 'error' ) ),
 		] );
-		$handler = new AddLinkSuggestionsHandler( $linkRecommendationHelper );
+		$handler = new AddLinkSuggestionsHandler(
+			$linkRecommendationHelper,
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getFeatureManager()
+		);
 		$this->setResponseFactory( $handler );
 
 		$this->assertSame(
@@ -83,7 +87,10 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 			),
 			$this->getTitleKey( $badTitle ) => StatusValue::newFatal( new RawMessage( 'error' ) ),
 		] );
-		$handler = new AddLinkSuggestionsHandler( $linkRecommendationHelperNoMetadata );
+		$handler = new AddLinkSuggestionsHandler(
+			$linkRecommendationHelperNoMetadata,
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getFeatureManager()
+		);
 		$this->setResponseFactory( $handler );
 
 		$this->assertSame(

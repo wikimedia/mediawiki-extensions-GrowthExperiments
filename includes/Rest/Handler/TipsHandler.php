@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\Util;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
@@ -25,6 +25,7 @@ class TipsHandler extends SimpleHandler {
 	public function __construct(
 		private readonly TipsAssembler $tipsAssembler,
 		private readonly ConfigurationLoader $configurationLoader,
+		private readonly FeatureManager $featureManager,
 	) {
 	}
 
@@ -37,7 +38,7 @@ class TipsHandler extends SimpleHandler {
 		$this->tipsAssembler->setMessageLocalizer( $context );
 		GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
 			->getNewcomerTasksConfigurationValidator()->setMessageLocalizer( $context );
-		$taskTypes = $this->configurationLoader->getTaskTypes();
+		$taskTypes = $this->getTaskTypes();
 		$response = $this->getResponseFactory()->createJson(
 			$this->tipsAssembler->getTips(
 				$skin,
@@ -53,7 +54,7 @@ class TipsHandler extends SimpleHandler {
 
 	private function getTaskTypes(): array {
 		// Prevent calls to suggested edits config when feature is disabled, (T369312)
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( !$this->featureManager->isNewcomerTasksAvailable() ) {
 			return [];
 		}
 		return $this->configurationLoader->getTaskTypes();

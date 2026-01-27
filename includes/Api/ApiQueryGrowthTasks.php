@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Api;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
@@ -14,7 +15,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use GrowthExperiments\Util;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
@@ -39,6 +39,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	private ProtectionFilter $protectionFilter;
 	private JobQueueGroup $jobQueueGroup;
 	private ITopicRegistry $topicRegistry;
+	private FeatureManager $featureManager;
 
 	public function __construct(
 		ApiQuery $queryModule,
@@ -49,7 +50,8 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		LinkRecommendationFilter $linkRecommendationFilter,
 		ImageRecommendationFilter $imageRecommendationFilter,
 		ProtectionFilter $protectionFilter,
-		ITopicRegistry $topicRegistry
+		ITopicRegistry $topicRegistry,
+		FeatureManager $featureManager
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
@@ -59,6 +61,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$this->protectionFilter = $protectionFilter;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->topicRegistry = $topicRegistry;
+		$this->featureManager = $featureManager;
 	}
 
 	/** @inheritDoc */
@@ -273,7 +276,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	 */
 	private function getTaskTypes(): array {
 		// Prevent calls to suggested edits config when feature is disabled, (T369312)
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( !$this->featureManager->isNewcomerTasksAvailable() ) {
 			return [];
 		}
 		return $this->configurationLoader->getTaskTypes();

@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\MediaWikiEventIngress;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -11,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
-use GrowthExperiments\Util;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
@@ -29,22 +29,25 @@ class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevis
 	private IConnectionProvider $connectionProvider;
 	private StatsFactory $statsFactory;
 	private LinkRecommendationHelper $linkRecommendationHelper;
+	private FeatureManager $featureManager;
 
 	public function __construct(
 		ChangeTagsStore $changeTagsStore,
 		IConnectionProvider $connectionProvider,
 		StatsFactory $statsFactory,
-		LinkRecommendationHelper $linkRecommendationHelper
+		LinkRecommendationHelper $linkRecommendationHelper,
+		FeatureManager $featureManager
 	) {
 		$this->changeTagsStore = $changeTagsStore;
 		$this->connectionProvider = $connectionProvider;
 		$this->statsFactory = $statsFactory;
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
+		$this->featureManager = $featureManager;
 	}
 
 	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
 		if (
-			Util::isLinkRecommendationsAvailable() &&
+			$this->featureManager->isLinkRecommendationsAvailable() &&
 			$event->getPage()->getNamespace() === NS_MAIN &&
 			!$event->isCreation()
 		) {

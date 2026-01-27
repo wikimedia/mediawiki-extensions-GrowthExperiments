@@ -3,9 +3,9 @@
 namespace GrowthExperiments\UserImpact;
 
 use DateTime;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\Util;
 use LogicException;
 use MediaWiki\ChangeTags\ChangeTags;
 use MediaWiki\Config\ServiceOptions;
@@ -74,6 +74,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	private ?ThanksQueryHelper $thanksQueryHelper;
 	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
 	private ConfigurationLoader $configurationLoader;
+	private FeatureManager $featureManager;
 
 	/**
 	 * @param ServiceOptions $config
@@ -86,6 +87,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 * @param StatsFactory $statsFactory
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param FeatureManager $featureManager
 	 * @param LoggerInterface|null $loggerFactory
 	 * @param PageImages|null $pageImages
 	 * @param PageViewService|null $pageViewService
@@ -102,6 +104,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		StatsFactory $statsFactory,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
+		FeatureManager $featureManager,
 		?LoggerInterface $loggerFactory,
 		?PageImages $pageImages,
 		?PageViewService $pageViewService,
@@ -121,6 +124,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$this->thanksQueryHelper = $thanksQueryHelper;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->configurationLoader = $configurationLoader;
+		$this->featureManager = $featureManager;
 	}
 
 	/** @inheritDoc */
@@ -289,7 +293,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 		$revertedEditCount = 0;
 		$taskTypes = [];
 		// Only try to load task types if SE enabled
-		if ( Util::isNewcomerTasksAvailable() ) {
+		if ( $this->featureManager->isNewcomerTasksAvailable() ) {
 			$taskTypes = $this->configurationLoader->getTaskTypes();
 		} else {
 			$this->logger->debug( 'Newcomer tasks are not available, no "editCountByTaskType" will be computed.' );

@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\LevelingUp;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\AddALinkMilestonePresentationModel;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\Util;
 use GrowthExperiments\VisualEditorHooks;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\Notifications\AttributeManager;
@@ -28,6 +28,7 @@ class LevelingUpHooks implements
 	private Config $config;
 	private ConfigurationLoader $configurationLoader;
 	private LevelingUpManager $levelingUpManager;
+	private FeatureManager $featureManager;
 
 	/**
 	 * @param Config $config
@@ -37,11 +38,13 @@ class LevelingUpHooks implements
 	public function __construct(
 		Config $config,
 		ConfigurationLoader $configurationLoader,
-		LevelingUpManager $levelingUpManager
+		LevelingUpManager $levelingUpManager,
+		FeatureManager $featureManager
 	) {
 		$this->config = $config;
 		$this->configurationLoader = $configurationLoader;
 		$this->levelingUpManager = $levelingUpManager;
+		$this->featureManager = $featureManager;
 	}
 
 	/**
@@ -57,7 +60,7 @@ class LevelingUpHooks implements
 		array $saveResult,
 		array &$apiResponse
 	): void {
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( !$this->featureManager->isNewcomerTasksAvailable() ) {
 			return;
 		}
 		$taskTypes = $this->configurationLoader->getTaskTypes();

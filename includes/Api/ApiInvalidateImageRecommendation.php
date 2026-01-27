@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Api;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -9,7 +10,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
-use GrowthExperiments\Util;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
@@ -34,6 +34,7 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
 	private TitleFactory $titleFactory;
 	private ConfigurationLoader $configurationLoader;
+	private FeatureManager $featureManager;
 
 	public function __construct(
 		ApiMain $mainModule,
@@ -42,7 +43,8 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 		AddImageSubmissionHandler $imageSubmissionHandler,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		TitleFactory $titleFactory
+		TitleFactory $titleFactory,
+		FeatureManager $featureManager
 	) {
 		parent::__construct( $mainModule, $moduleName );
 		$this->configurationLoader = $configurationLoader;
@@ -50,6 +52,7 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->titleFactory = $titleFactory;
+		$this->featureManager = $featureManager;
 
 		$this->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 	}
@@ -61,7 +64,7 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		// Provide more useful response when SE are disabled
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( !$this->featureManager->isNewcomerTasksAvailable() ) {
 			$this->dieWithError( [ 'apierror-moduledisabled', 'Suggested edits' ] );
 		}
 		// This API is used by external clients for their own structured task workflows so

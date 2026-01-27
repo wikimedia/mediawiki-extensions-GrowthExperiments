@@ -6,7 +6,6 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
-use GrowthExperiments\Util;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Maintenance\MaintenanceFatalError;
@@ -47,7 +46,8 @@ class ListTaskCounts extends Maintenance {
 	 * @throws MaintenanceFatalError
 	 */
 	public function execute() {
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		if ( !$growthServices->getFeatureManager()->isNewcomerTasksAvailable() ) {
 			$this->output( "Newcomer tasks not available\n" );
 			return;
 		}
@@ -61,7 +61,6 @@ class ListTaskCounts extends Maintenance {
 			$this->fatalError( 'topictype must be one of: growth, ores' );
 		}
 
-		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$this->taskTypesAndTopics = new TopicDecorator(
 			$newcomerTaskConfigurationLoader,

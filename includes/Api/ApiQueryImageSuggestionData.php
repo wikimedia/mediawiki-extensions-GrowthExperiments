@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\Api;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendation;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
-use GrowthExperiments\Util;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
@@ -37,6 +37,7 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 	private ConfigurationLoader $configurationLoader;
 	private Config $config;
 	private TitleFactory $titleFactory;
+	private FeatureManager $featureManager;
 
 	public function __construct(
 		ApiQuery $mainModule,
@@ -44,13 +45,15 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		ImageRecommendationProvider $imageRecommendationProvider,
 		ConfigurationLoader $configurationLoader,
 		Config $config,
-		TitleFactory $titleFactory
+		TitleFactory $titleFactory,
+		FeatureManager $featureManager
 	) {
 		parent::__construct( $mainModule, $moduleName, 'gisd' );
 		$this->imageRecommendationProvider = $imageRecommendationProvider;
 		$this->configurationLoader = $configurationLoader;
 		$this->config = $config;
 		$this->titleFactory = $titleFactory;
+		$this->featureManager = $featureManager;
 
 		$this->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 	}
@@ -66,7 +69,7 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 			$this->dieWithError( 'apierror-ratelimited' );
 		}
 
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( !$this->featureManager->isNewcomerTasksAvailable() ) {
 			$this->dieWithError( [ 'apierror-moduledisabled', 'Suggested edits' ] );
 		}
 

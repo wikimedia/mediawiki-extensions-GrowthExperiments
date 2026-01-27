@@ -149,6 +149,7 @@ class HomepageHooks implements
 	private UserImpactLookup $userImpactLookup;
 	private UserImpactStore $userImpactStore;
 	private LevelingUpManager $levelingUpManager;
+	private FeatureManager $featureManager;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
@@ -177,7 +178,8 @@ class HomepageHooks implements
 		UserImpactStore $userImpactStore,
 		GrowthExperimentsInteractionLogger $growthInteractionLogger,
 		TaskTypeManager $taskTypeManager,
-		LevelingUpManager $levelingUpManager
+		LevelingUpManager $levelingUpManager,
+		FeatureManager $featureManager
 	) {
 		$this->config = $config;
 		$this->userOptionsManager = $userOptionsManager;
@@ -200,6 +202,7 @@ class HomepageHooks implements
 		$this->growthInteractionLogger = $growthInteractionLogger;
 		$this->taskTypeManager = $taskTypeManager;
 		$this->levelingUpManager = $levelingUpManager;
+		$this->featureManager = $featureManager;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -253,6 +256,7 @@ class HomepageHooks implements
 				'class' => SpecialNewcomerTasksInfo::class,
 				'services' => [
 					'GrowthExperimentsSuggestionsInfo',
+					'GrowthExperimentsFeatureManager',
 				],
 			];
 		}
@@ -456,7 +460,7 @@ class HomepageHooks implements
 			] );
 		}
 		$out->addJsConfigVars( [
-			'wgGEUseTestKitchenExtension' => Util::useTestKitchen(),
+			'wgGEUseTestKitchenExtension' => $this->featureManager->useTestKitchen(),
 		] );
 	}
 
@@ -795,7 +799,7 @@ class HomepageHooks implements
 		DeferredUpdates::addCallableUpdate( function () use ( $user, $geForceVariant, $wiki ) {
 			// Get the variant assigned by ExperimentUserDefaultsManager
 			$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
-			if ( Util::useTestKitchen() ) {
+			if ( $this->featureManager->useTestKitchen() ) {
 				$variant = $this->experimentUserManager->getVariant( $user );
 				// Maybe override variant with query parameter
 			} elseif ( $geForceVariant !== null
@@ -1069,7 +1073,10 @@ class HomepageHooks implements
 		// Do not attempt to load task types when SE is disabled, should not be necessary if
 		// client does not request them but currently they are a dependency of many GE resource loader
 		// modules defined in extension.json.
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( !GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+			->getFeatureManager()
+			->isNewcomerTasksAvailable()
+		) {
 			return [
 				'_error' => 'Task types are unavailable because Suggested edits is not enabled, ' .
 					'see GEHomepageSuggestedEditsEnabled.',
@@ -1292,8 +1299,9 @@ class HomepageHooks implements
 	 */
 	public static function onCirrusSearchAddQueryFeatures( SearchConfig $config, array &$extraFeatures ) {
 		$mwServices = MediaWikiServices::getInstance();
+		$growthServices = GrowthExperimentsServices::wrap( $mwServices );
 		// Avoid accessing Suggested Edits configuration when the feature is disabled (T369312)
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( $growthServices->getFeatureManager()->isNewcomerTasksAvailable() ) {
 			return;
 		}
 		$growthServices = GrowthExperimentsServices::wrap( $mwServices );

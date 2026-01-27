@@ -18,6 +18,7 @@ class SpecialNewcomerTasksInfoTest extends SpecialPageTestBase {
 
 		return new SpecialNewcomerTasksInfo(
 			$geServices->getSuggestionsInfo(),
+			$geServices->getFeatureManager(),
 		);
 	}
 

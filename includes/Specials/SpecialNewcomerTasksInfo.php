@@ -2,18 +2,23 @@
 
 namespace GrowthExperiments\Specials;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
-use GrowthExperiments\Util;
 use MediaWiki\SpecialPage\SpecialPage;
 use OOUI\Tag;
 
 class SpecialNewcomerTasksInfo extends SpecialPage {
 
 	private NewcomerTasksInfo $cachedSuggestionsInfo;
+	private FeatureManager $featureManager;
 
-	public function __construct( NewcomerTasksInfo $cachedSuggestionsInfo ) {
+	public function __construct(
+		NewcomerTasksInfo $cachedSuggestionsInfo,
+		FeatureManager $featureManager
+	) {
 		parent::__construct( 'NewcomerTasksInfo' );
 		$this->cachedSuggestionsInfo = $cachedSuggestionsInfo;
+		$this->featureManager = $featureManager;
 	}
 
 	/** @inheritDoc */
@@ -26,7 +31,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 		parent::execute( $subPage );
 		$this->addHelpLink( 'mw:Growth/Personalized_first_day/Newcomer_tasks' );
 		$out = $this->getOutput();
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( !$this->featureManager->isNewcomerTasksAvailable() ) {
 			$out->addWikiMsg( 'newcomertasksinfo-not-available' );
 			return;
 		}

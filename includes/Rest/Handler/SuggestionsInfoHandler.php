@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
-use GrowthExperiments\Util;
 use MediaWiki\Rest\LocalizedHttpException;
 use MediaWiki\Rest\SimpleHandler;
 use Wikimedia\Message\MessageValue;
@@ -16,18 +16,21 @@ class SuggestionsInfoHandler extends SimpleHandler {
 
 	private NewcomerTasksInfo $suggestionsInfo;
 	private WANObjectCache $cache;
+	private FeatureManager $featureManager;
 
 	public function __construct(
 		NewcomerTasksInfo $suggestionsInfo,
 		WANObjectCache $cache,
+		FeatureManager $featureManager,
 	) {
 		$this->suggestionsInfo = $suggestionsInfo;
 		$this->cache = $cache;
+		$this->featureManager = $featureManager;
 	}
 
 	/** @inheritDoc */
 	public function run() {
-		if ( !Util::isNewcomerTasksAvailable() ) {
+		if ( !$this->featureManager->isNewcomerTasksAvailable() ) {
 			throw new LocalizedHttpException(
 				new MessageValue( 'apierror-moduledisabled', [ 'Suggested edits' ] ),
 				404

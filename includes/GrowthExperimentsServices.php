@@ -104,6 +104,10 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsConfig' );
 	}
 
+	public function getFeatureManager(): FeatureManager {
+		return $this->coreServices->get( 'GrowthExperimentsFeatureManager' );
+	}
+
 	public function getGrowthWikiConfig(): Config {
 		return $this->coreServices->get( 'GrowthExperimentsCommunityConfig' );
 	}

@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Helpers;
 
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
@@ -55,7 +56,8 @@ trait HomepageHooksHelpers {
 			$this->createNoOpMock( UserImpactStore::class ),
 			$this->createNoOpMock( GrowthExperimentsInteractionLogger::class ),
 			$this->createNoOpMock( TaskTypeManager::class ),
-			$this->createNoOpMock( LevelingUpManager::class )
+			$this->createNoOpMock( LevelingUpManager::class ),
+			$this->createNoOpMock( FeatureManager::class )
 		);
 	}
 

@@ -9,6 +9,7 @@ use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
 use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\ExperimentUserDefaultsManager;
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
@@ -108,7 +109,6 @@ use GrowthExperiments\UserImpact\GrowthExperimentsUserImpactUpdater;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
-use GrowthExperiments\Util;
 use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Config\Config;
@@ -130,7 +130,7 @@ return [
 		MediaWikiServices $services
 	): AddImageSubmissionHandler {
 		$geServices = GrowthExperimentsServices::wrap( $services );
-		if ( Util::areImageRecommendationDependenciesSatisfied() ) {
+		if ( $geServices->getFeatureManager()->areImageRecommendationDependenciesSatisfied() ) {
 			$cirrusSearchServices = CirrusSearchServices::wrap( $services );
 			$weightedTagsUpdater = $cirrusSearchServices->getWeightedTagsUpdater();
 		} else {
@@ -226,7 +226,7 @@ return [
 	'GrowthExperimentsExperimentUserManager' => static function (
 		MediaWikiServices $services
 	): AbstractExperimentManager {
-		if ( Util::useTestKitchen() ) {
+		if ( GrowthExperimentsServices::wrap( $services )->getFeatureManager()->useTestKitchen() ) {
 			return new ExperimentTestKitchenManager(
 				new ServiceOptions(
 					ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
@@ -248,6 +248,15 @@ return [
 			$services->getUserOptionsManager(),
 			$services->getUserOptionsLookup(),
 			$services->getUserFactory()
+		);
+	},
+
+	'GrowthExperimentsFeatureManager' => static function (
+		MediaWikiServices $services
+	): FeatureManager {
+		return new FeatureManager(
+			$services->getExtensionRegistry(),
+			GrowthExperimentsServices::wrap( $services )->getGrowthConfig()
 		);
 	},
 
@@ -402,7 +411,7 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationHelper {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		if ( Util::isLinkRecommendationsAvailable() ) {
+		if ( $growthServices->getFeatureManager()->isLinkRecommendationsAvailable() ) {
 			$cirrusSearchServices = CirrusSearchServices::wrap( $services );
 			$weightedTagsUpdater = $cirrusSearchServices->getWeightedTagsUpdater();
 		} else {
@@ -1193,6 +1202,7 @@ return [
 			$services->getStatsFactory(),
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
+			$growthServices->getFeatureManager(),
 			$growthServices->getLogger(),
 			$services->hasService( 'PageImages.PageImages' ) ?
 			$services->getService( 'PageImages.PageImages' ) : null,

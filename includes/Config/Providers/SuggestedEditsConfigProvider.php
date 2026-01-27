@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Config\Providers;
 
-use GrowthExperiments\Util;
+use GrowthExperiments\FeatureManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Provider\DataProvider;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ProviderServicesContainer;
@@ -41,6 +41,7 @@ class SuggestedEditsConfigProvider extends DataProvider {
 		IConfigurationStore $store,
 		IValidator $validator,
 		private readonly Config $config,
+		private readonly FeatureManager $featureManager,
 	) {
 		parent::__construct( $providerServicesContainer, $providerId, $options, $store, $validator );
 	}
@@ -51,7 +52,7 @@ class SuggestedEditsConfigProvider extends DataProvider {
 			$data = $result->getValue();
 			unset( $data->GEInfoboxTemplates );
 
-			if ( Util::isReviseToneTasksTypeEnabled() ) {
+			if ( $this->featureManager->isReviseToneTasksTypeEnabled() ) {
 				// TODO: move to community config for full production deployment T396162
 				$data->revise_tone = (object)[];
 				$data->revise_tone->excludedTemplates = $this->config->get( 'GEReviseToneExcludedTemplates' );
