@@ -384,7 +384,7 @@
 	"growthexperiments-homepage-claimmentee-invalid-username": "שם החניך שסופק אינו תקין",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|הוא החונך החדש|היא החונכת החדשה}} {{GENDER:$3|שלך}}",
 	"growthexperiments-notification-body-mentor-change": "סיבה: $1",
-	"growthexperiments-notification-body-mentor-change-new": "{{GENDER:$1|החונך הקודם שלך, $1, הוא כבר לא החונך|החונכת הקודמת שלך, $1, החא כבר לא החונכת}} שלך.",
+	"growthexperiments-notification-body-mentor-change-new": "{{GENDER:$1|החונך הקודם שלך, $1, הוא כבר לא החונך|החונכת הקודמת שלך, $1, היא כבר לא החונכת}} שלך.",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$2|אמור|אמרי}} שלום {{GENDER:$2|לחונך החדש|לחונכת החדשה}} {{GENDER:$3|שלך}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|אתה צריך להיות רשום בתור חונך|את צריכה להיות רשומה בתור חונכת}} בדף [[$2]] כדי להשתמש בדף מיוחד:קליטת חניך (Special:ClaimMentee)",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "רשימת החונכים אינה מוגדרת נכון.",

@@ -40,6 +40,11 @@
 	"growthexperiments-edit-config-mentorship-minimum-editcount": "ਇੱਕ ਮੈਂਟਰ ਵਜੋਂ ਸਾਈਨ ਅੱਪ ਕਰਨ ਲਈ ਇੱਕ ਉਪਭੋਗਤਾ ਦੁਆਰਾ ਕੀਤੇ ਗਏ ਘੱਟੋ-ਘੱਟ ਸੰਪਾਦਨਾਂ ਦੀ ਗਿਣਤੀ (ਕਿਸੇ ਵੀ ਨਾਮਸਥਾਨ 'ਤੇ) ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ।",
 	"growthexperiments-edit-config-personalized-praise": "ਵਿਅਕਤੀਗਤ ਪ੍ਰਸ਼ੰਸਾ",
 	"growthexperiments-edit-config-newcomertasks": "ਸੁਝਾਈਆਂ ਸੋਧਾਂ",
+	"growthexperiments-info-tooltip-close-label": "ਬੰਦ ਕਰੋ",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "ਸਿਰਲੇਖ",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "ਤਸਵੀਰ",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-label": "ਕਾਰਵਾਈ ਲਈ ਸੱਦਾ",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-pagetitle-label": "ਟਿਕਾਣਾ ਵਰਕਾ",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "ਮੈਂਟਰ ਗੱਲਬਾਤ ਪੰਨੇ",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-help-desk-page-label": "ਸਹਾਇਤਾ ਕੇਂਦਰ",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-label": "ਸਹਾਇਤਾ ਕੇਂਦਰ ਵਰਕੇ 'ਤੇ ਨਵੇਂ ਸਵਾਲ ਕਿੱਥੇ ਲਿਖੇ ਜਾਣੇ ਚਾਹੀਦੇ ਹਨ?",
@@ -53,7 +58,10 @@
 	"communityconfiguration-helppanel-gehelppanellinks-add-element-button-label": "ਇੱਕ ਹੋਰ ਲਿੰਕ ਸ਼ਾਮਲ ਕਰੋ",
 	"communityconfiguration-helppanel-gehelppanelviewmoretitle-label": "\"ਹੋਰ ਮਦਦ ਲੇਖ ਵੇਖੋ\" ਲਈ ਮੰਜ਼ਿਲ ਸਫ਼ਾ",
 	"communityconfiguration-mentorship-title": "ਮੈਂਟਰਸ਼ਿਪ",
+	"communityconfiguration-growthhomepage-title": "ਨਵੇਂ ਆਉਣ ਵਾਲੇ ਦੀ ਭਰਤੀ",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-label": "ਨਵੇਂ ਆਏ ਲੋਕਾਂ ਲਈ ਮੁਢਲੇ-ਵਰਕੇ ਦੀ ਕੜੀਆਂ",
 	"communityconfiguration-growthsuggestededits-title": "ਸੁਝਾਈਆਂ ਸੋਧਾਂ",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "ਜਾਣਕਾਰੀਡੱਬਾ ਫਰਮੇ",
+	"communityconfiguration-growthsuggestededits-copyedit-label": "ਨਕਲ-ਸੋਧ",
 	"communityconfiguration-growthsuggestededits-update-label": "ਲੇਖ ਅੱਪਡੇਟ ਕਰੋ"
 }
