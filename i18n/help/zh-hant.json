@@ -72,6 +72,7 @@
 	"growthexperiments-help-panel-question-post-error": "錯誤：發布失敗。您可以重試，或在瀏覽器中訪問$1並手動發佈問題。",
 	"growthexperiments-help-panel-suggestededits-title": "編輯提議",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "快速入門提示",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "提升您的技能",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>明白了嗎？</strong>點擊「{{int:vector-view-edit}}」開始吧！",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>準備好了？</strong>展開您想編輯的章節，並輕觸鉛筆圖示。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "編修是對條目的編寫進行小幅修正，例如訂正錯字、修正語法及改善標點。編修有助於條目更加專業可信。",
