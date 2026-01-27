@@ -78,7 +78,6 @@ class SpecialHomepage extends UnlistedSpecialPage {
 
 		$out = $this->getContext()->getOutput();
 		$this->isMobile = Util::isMobile( $out->getSkin() );
-		$userVariant = $this->experimentUserManager->getVariant( $this->getUser() );
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
 		] );
@@ -87,8 +86,7 @@ class SpecialHomepage extends UnlistedSpecialPage {
 		$out->addModuleStyles( [ 'ext.growthExperiments.Homepage.styles' ] );
 
 		$out->addHTML( Html::openElement( 'div', [
-			'class' => 'growthexperiments-homepage-container ' .
-				'growthexperiments-homepage-container-user-variant-' . $userVariant,
+			'class' => 'growthexperiments-homepage-container',
 		] ) );
 		$modules = $this->getModules( $this->isMobile, $par );
 
@@ -116,10 +114,6 @@ class SpecialHomepage extends UnlistedSpecialPage {
 
 		$out->addHTML( Html::closeElement( 'div' ) );
 		$this->outputJsData( $mode, $modules );
-		$this->getOutput()->addBodyClasses(
-			'growthexperiments-homepage-user-variant-' .
-			$this->experimentUserManager->getVariant( $this->getUser() )
-		);
 		$platform = ( $this->isMobile ? 'mobile' : 'desktop' );
 		$overallSsrTimeInSeconds = microtime( true ) - $startTime;
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
@@ -248,15 +242,11 @@ class SpecialHomepage extends UnlistedSpecialPage {
 		$out->addBodyClasses( 'growthexperiments-homepage-desktop' );
 		foreach ( $this->getModuleGroups() as $group => $subGroups ) {
 			$out->addHTML( Html::openElement( 'div', [
-				'class' => "growthexperiments-homepage-group-$group " .
-					"growthexperiments-homepage-group-$group-user-variant-" .
-					$this->experimentUserManager->getVariant( $this->getUser() ),
+				'class' => "growthexperiments-homepage-group-$group",
 			] ) );
 			foreach ( $subGroups as $subGroup => $moduleNames ) {
 				$out->addHTML( Html::openElement( 'div', [
-					'class' => "growthexperiments-homepage-group-$group-subgroup-$subGroup " .
-						"growthexperiments-homepage-group-$group-subgroup-$subGroup-user-variant-" .
-						$this->experimentUserManager->getVariant( $this->getUser() ),
+					'class' => "growthexperiments-homepage-group-$group-subgroup-$subGroup",
 				] ) );
 				foreach ( $moduleNames as $moduleName ) {
 					/** @var IDashboardModule $module */
