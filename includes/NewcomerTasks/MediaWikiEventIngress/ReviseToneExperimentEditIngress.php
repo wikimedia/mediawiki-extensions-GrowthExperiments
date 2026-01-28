@@ -28,6 +28,6 @@ class ReviseToneExperimentEditIngress extends DomainEventIngress implements Page
 				'namespace_id' => $event->getPage()->getNamespace(),
 				'revision_id' => $revId,
 			],
-		] );
+		], $event->getPage()->getDBkey() );
 	}
 }

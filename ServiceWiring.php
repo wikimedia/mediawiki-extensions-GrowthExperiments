@@ -921,7 +921,8 @@ return [
 		}
 		return new ReviseToneExperimentInteractionLogger(
 			$growthServices->getExperimentUserManager(),
-			$eventLoggingMetricsClientFactory
+			$eventLoggingMetricsClientFactory,
+			$growthServices->getLogger(),
 		);
 	},
 

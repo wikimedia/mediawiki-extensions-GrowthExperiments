@@ -8,6 +8,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\EventLogging\MetricsPlatform\MetricsClientFactory;
 use MediaWiki\Registration\ExtensionRegistry;
+use Psr\Log\LoggerInterface;
 
 class ReviseToneExperimentInteractionLogger {
 	/** @var string Versioned schema URL for $schema field */
@@ -18,10 +19,11 @@ class ReviseToneExperimentInteractionLogger {
 	public function __construct(
 		private readonly AbstractExperimentManager $experimentUserManager,
 		private readonly ?MetricsClientFactory $metricsClientFactory,
+		private readonly LoggerInterface $logger,
 	) {
 	}
 
-	public function log( string $action, array $interactionData ): void {
+	public function log( string $action, array $interactionData, ?string $pageDBkeyForLogging = null ): void {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) ) {
 			return;
 		}
@@ -33,7 +35,16 @@ class ReviseToneExperimentInteractionLogger {
 			return;
 		}
 		$experimentConfig = $experiment->getExperimentConfig();
-		if ( $experimentConfig && $experimentConfig[ 'sampling_unit' ] === 'overridden' ) {
+		if ( !$experimentConfig ) {
+			$this->logger->warning( 'Empty Experiment Config for Revise Tone experiment', [
+				'exception' => new \RuntimeException,
+				'experiment_action' => $action,
+				'experiment_interaction_data' => json_encode( $interactionData ),
+				'page_dbkey' => $pageDBkeyForLogging,
+			] );
+			return;
+		}
+		if ( $experimentConfig[ 'sampling_unit' ] === 'overridden' ) {
 			return;
 		}
 		$eventData = [
