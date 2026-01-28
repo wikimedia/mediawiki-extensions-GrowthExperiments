@@ -69,6 +69,7 @@
 	"growthexperiments-help-panel-question-post-error": "Wystąpił błąd podczas próby opublikowania Twojego pytania. Możesz spróbować ponownie lub przejść w przeglądarce do $1 i tam dodać pytanie ręcznie.",
 	"growthexperiments-help-panel-suggestededits-title": "Sugerowane edycje",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Porady na szybki start",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "Odśwież swoje umiejętności",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Gotow{{GENDER:|y|a}}?</strong> Żeby zacząć, kliknij „{{int:vector-view-edit}}”.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Gotow{{GENDER:|y|a}}?</strong> Otwórz sekcję, którą chcesz edytować i kliknij na ikonę ołówka.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Korekta tekstu polega na wprowadzaniu małych poprawek w tekście, takich jak usuwanie literówek, błędów gramatycznych czy stylistycznych. Korekta sprawia, że tekst wygląda lepiej i bardziej wiarygodnie.",

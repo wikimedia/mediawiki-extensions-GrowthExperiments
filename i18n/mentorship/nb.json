@@ -6,6 +6,8 @@
 			"Mn00ch"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "Brukeren har ikke fadder",
+	"growthexperiments-exception-no-mentored-text": "Brukeren har ingen fadder, og kan derfor ikke stille fadderen sin spørsmål",
 	"growthexperiments-mentor-dashboard-title": "Kontrollpanel for faddere",
 	"growthexperiments-mentor-dashboard-pt-link": "Kontrollpanel for faddere",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "For å slå på kontrollpanelet for faddere må {{GENDER:|du}} først [[$1|melde deg opp som fadder]].",
@@ -24,6 +26,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "{{GENDER:|Fadderspørsmål}} stilt",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Antall redigeringer",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Registreringsdato",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Sist oppdatert for $1 siden",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtre",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Oppdater",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Antall redigeringer",

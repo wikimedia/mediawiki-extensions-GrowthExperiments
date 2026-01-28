@@ -82,6 +82,7 @@
 	"growthexperiments-help-panel-question-post-error": "错误：发布失败。您可以重试，或在浏览器中访问$1并手动发布问题。",
 	"growthexperiments-help-panel-suggestededits-title": "编辑建议",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "小贴士",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "提升您的技能",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>明白了吗？</strong>点击“{{int:vector-view-edit}}”开始吧！",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>明白了吗？</strong>请展开您想编辑的章节，并轻触铅笔图标。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "编修是对条目的编写进行小幅修正，例如订正错字、修正语法及改善标点。编修有助于条目更加专业可信。",

@@ -60,6 +60,7 @@
 	"growthexperiments-help-panel-question-post-error": "En feil oppsto når spørsmålet ditt skulle sendes. Du kan prøve igjen eller besøke $1 i nettleseren din og legge til spørsmålet manuelt.",
 	"growthexperiments-help-panel-suggestededits-title": "Foreslåtte redigeringer",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Raske starttips",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "Frisk opp ferdighetene dine",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Klar?</strong> Klikk «{{int:vector-view-edit}}» for å komme i gang.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Klar?</strong> Åpne seksjonen du ønsker å redigere og trykk på blyantikonet.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Korrekturlesing handler om å fikse småting i måten en artikkel er skrevet, slik som stavefeil, grammatiske feil eller artikkelens tydelighet. Korrekturlesing hjelper til å gjøre artiklene mer profesjonelle og troverdige.",

@@ -245,5 +245,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Tak, po 75 edycjach",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Tak, po 150 edycjach",
 	"growthexperiments-addlink-done-button": "Gotowe",
-	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Zadanie porządkowe - czyszczenie minionych okresów nieobecności"
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Czyszczenie minionych okresów nieobecności"
 }
