@@ -94,6 +94,7 @@
 		this.helpPanelSuggestedEditsInteractionHappened = false;
 		/** @member {boolean} Whether the article should be opened in edit mode after loading. */
 		this.shouldOpenArticleInEditMode = false;
+		this.hasCustomMobileContextItem = false;
 		/**
 		 * @member {boolean} Whether onboarding dialog needs to be shown for the session
 		 * This prevents onboading dialog from being shown multiple times during the same session.
@@ -193,6 +194,7 @@
 			onboardingNeedsToBeShown: this.onboardingNeedsToBeShown,
 			newcomerTaskToken: this.newcomerTaskToken,
 			shouldOpenArticleInEditMode: this.shouldOpenArticleInEditMode,
+			hasCustomMobileContextItem: this.hasCustomMobileContextItem,
 			qualityGateConfig: this.qualityGateConfig,
 		};
 		if ( !this.active ) {
@@ -248,6 +250,7 @@
 				this.onboardingNeedsToBeShown = data.onboardingNeedsToBeShown;
 				this.newcomerTaskToken = data.newcomerTaskToken;
 				this.shouldOpenArticleInEditMode = data.shouldOpenArticleInEditMode;
+				this.hasCustomMobileContextItem = data.hasCustomMobileContextItem;
 				this.qualityGateConfig = data.qualityGateConfig;
 			} else {
 				mw.storage.session.remove( 'ge-suggestededit-session' );
@@ -295,6 +298,11 @@
 
 		// Don't show help panel & mobile peek if the article is in edit mode
 		this.shouldOpenArticleInEditMode = url.searchParams.get( 'veaction' ) === 'edit';
+		this.hasCustomMobileContextItem = [
+			'link-recommendation',
+			'image-recommendation',
+			'section-image-recommendation',
+		].includes( this.taskType );
 		this.helpPanelShouldOpen = !this.shouldOpenArticleInEditMode;
 		this.mobilePeekShown = this.shouldOpenArticleInEditMode;
 

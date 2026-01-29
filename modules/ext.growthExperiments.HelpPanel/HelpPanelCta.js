@@ -353,7 +353,7 @@
 		// Attach or detach the help panel CTA in response to hooks from MobileFrontend,
 		// and set the logger's editor interface.
 		if ( OO.ui.isMobile() ) {
-			if ( suggestedEditSession.shouldOpenArticleInEditMode ) {
+			if ( suggestedEditSession.shouldOpenArticleInEditMode && suggestedEditSession.hasCustomMobileContextItem ) {
 				/* Hide CTA if the article is opened in edit mode automatically
 				 * since the CTA appears on top of the context item on mobile.
 				 * Help panel can be invoked from help button in the context item.
