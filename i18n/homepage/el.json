@@ -11,7 +11,8 @@
 			"MnLsVt",
 			"NikosLikomitros",
 			"Norhorn",
-			"Pablothecat"
+			"Pablothecat",
+			"Warudo"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Γεια σας}}, {{bidi:$1}}!",
@@ -140,7 +141,7 @@
 	"tag-newcomer_task_copyedit-description": "Επεξεργασία αποστολής «Επιμέλεια» που προτάθηκε από τη λειτουργία προτεινόμενων επεξεργασιών της αρχικής σελίδας νεοεισερχόμενων",
 	"tag-newcomer_task_references": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#addref Αποστολή νεοεισερχόμενου: παραπομπές]",
 	"tag-newcomer_task_references-description": "Επεξεργασία αποστολής «Παραπομπές» που προτάθηκε από τη λειτουργία προτεινόμενων επεξεργασιών της αρχικής σελίδας νεοεισερχόμενων",
-	"tag-newcomer_task_update": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#update\n Αποστολή νεοεισερχόμενου: ενημέρωση]",
+	"tag-newcomer_task_update": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#update Αποστολή νεοεισερχόμενου: ενημέρωση]",
 	"tag-newcomer_task_update-description": "Επεξεργασία αποστολής «Ενημέρωση» που προτάθηκε από τη λειτουργία προτεινόμενων επεξεργασιών της αρχικής σελίδας νεοεισερχόμενων",
 	"tag-newcomer_task_expand": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#expand Αποστολή νεοεισερχόμενου: επέκταση]",
 	"tag-newcomer_task_expand-description": "Επεξεργασία αποστολής «Επέκταση» που προτάθηκε από τη λειτουργία προτεινόμενων επεξεργασιών της αρχικής σελίδας νεοεισερχόμενων",
