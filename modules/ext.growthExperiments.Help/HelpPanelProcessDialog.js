@@ -329,6 +329,7 @@
 										},
 									);
 									mw.hook( 'growthExperiments.reviseTone.showOnboardingFromHelpPanel' ).fire();
+									this.close();
 								} );
 							return;
 						}
