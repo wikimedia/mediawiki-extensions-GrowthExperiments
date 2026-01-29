@@ -321,7 +321,7 @@
 							mw.loader.using( 'ext.growthExperiments.StructuredTask.PreEdit' ).then(
 								() => {
 									mw.track(
-										'stats.mediawiki_GrowthExperiments_revise_tone_help_panel_retake_quiz_click',
+										'stats.mediawiki_GrowthExperiments_revise_tone_help_panel_retake_quiz_click_total',
 										1,
 										{
 											wiki: mw.config.get( 'wgDBname' ),
