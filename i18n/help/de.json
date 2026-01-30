@@ -31,7 +31,7 @@
 	"growthexperiments-help-panel-home-title": "Hilfe bei der Bearbeitung erhalten",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Du}} hast eine Bearbeitung gespeichert. Danke und mache weiter so!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Du}} hast eine Bearbeitung gespeichert. Danke und mache weiter so!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Danke für die Überprüfung von Vorschlägen. Mach weiter!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|Du hast}} einen Vorschlag überprüft. \nVielen Dank und mach weiter so!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "Alle verfügbaren Artikel zum Hinzufügen von Bildern für heute sind vollständig. Gut gemacht!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation": "Alle verfügbaren Artikel mit Abschnittsbildvorschlägen für heute sind vollständig. Gut gemacht!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "Alle verfügbaren Artikel mit Linkvorschlägen für heute sind vollständig. Gut gemacht!",

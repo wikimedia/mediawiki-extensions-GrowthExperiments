@@ -7,6 +7,8 @@
 			"Woytecr"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "Użytkownik nie jest objęty opieką przewodnika",
+	"growthexperiments-exception-no-mentored-text": "Użytkownik nie ma przewodnika, co oznacza, że nie jest możliwe zadanie pytania do przewodnika",
 	"growthexperiments-mentor-dashboard-title": "Panel przewodników",
 	"growthexperiments-mentor-dashboard-pt-link": "Panel przewodników",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Aby aktywować panel przewodników, {{GENDER:|musisz}} najpierw [[$1|nim zostać]].",
@@ -25,6 +27,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Pytania zadane {{GENDER:|przewodnikowi|przewodniczce|przewodnikowi(-czce)}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Liczba edycji",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data rejestracji",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-updated": "Ostatnia aktualizacja $1 temu",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtry",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Aktualizuj",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Liczba edycji",
@@ -173,7 +176,9 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Twoje spersonalizowane ustawienia pochwał zostały zapisane.",
 	"growthexperiments-mentor-list-missing-key": "Brakuje klucza <code>$1</code>",
 	"growthexperiments-mentor-list-datatype-mismatch": "oczekiwany typ danych dla <code>$1</code> to <code>$2</code>, ale podano <code>$3</code>",
+	"growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp": "Oczekuje się, że <code>$1</code> będzie prawidłowym, możliwym do konwersji znacznikiem czasu, identyfikator użytkownika: <code>$2</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Definicja przewodnika zawiera nieoczekiwany klucz <code>$1</code>",
+	"growthexperiments-mentor-list-invalid-weight": "Oczekuje się, że wartością dla <code>$1</code> będzie: <code>$2</code>, ale podano <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Przewodnik $1 został już dodany do listy przewodników",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Przewodnika $1 nie ma na liście przewodników",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Przewodnik $1 nie jest zarejestrowanym użytkownikiem",
