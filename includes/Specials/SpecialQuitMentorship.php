@@ -18,10 +18,15 @@ class SpecialQuitMentorship extends FormSpecialPage {
 		MentorProvider $mentorProvider,
 		MentorRemover $mentorRemover
 	) {
-		parent::__construct( 'QuitMentorship', '', false );
+		parent::__construct( 'QuitMentorship' );
 
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorRemover = $mentorRemover;
+	}
+
+	/** @inheritDoc */
+	public function isListed(): bool {
+		return false;
 	}
 
 	/** @inheritDoc */

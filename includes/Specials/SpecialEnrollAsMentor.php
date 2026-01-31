@@ -30,11 +30,16 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter
 	) {
-		parent::__construct( 'EnrollAsMentor', 'enrollasmentor', false );
+		parent::__construct( 'EnrollAsMentor', 'enrollasmentor' );
 
 		$this->wikiConfig = $wikiConfig;
 		$this->mentorProvider = $mentorProvider;
 		$this->mentorWriter = $mentorWriter;
+	}
+
+	/** @inheritDoc */
+	public function isListed(): bool {
+		return false;
 	}
 
 	/** @inheritDoc */

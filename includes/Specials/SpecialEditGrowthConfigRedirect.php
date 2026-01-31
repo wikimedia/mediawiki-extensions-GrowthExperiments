@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\Specials;
 
-use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\SpecialPage\UnlistedSpecialPage;
 
 /**
  * An implementation for Special:EditGrowthConfig when CommunityConfiguration extension is enabled
  */
-class SpecialEditGrowthConfigRedirect extends SpecialPage {
+class SpecialEditGrowthConfigRedirect extends UnlistedSpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'EditGrowthConfig', '', false );
+		parent::__construct( 'EditGrowthConfig' );
 	}
 
 	/**

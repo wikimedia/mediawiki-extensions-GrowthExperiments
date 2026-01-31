@@ -23,14 +23,14 @@ use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\SpecialPage\UnlistedSpecialPage;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\WikiMap\WikiMap;
 use Throwable;
 use Wikimedia\Stats\StatsFactory;
 
-class SpecialHomepage extends SpecialPage {
+class SpecialHomepage extends UnlistedSpecialPage {
 
 	/**
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.
@@ -49,7 +49,7 @@ class SpecialHomepage extends SpecialPage {
 		private readonly TitleFactory $titleFactory,
 		private readonly ReviseToneExperimentInteractionLogger $experimentInteractionLogger,
 	) {
-		parent::__construct( 'Homepage', '', false );
+		parent::__construct( 'Homepage' );
 		$this->pageviewToken = $this->generatePageviewToken();
 	}
 

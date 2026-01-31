@@ -39,10 +39,15 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		WelcomeSurveyFactory $welcomeSurveyFactory,
 		WelcomeSurveyLogger $welcomeSurveyLogger
 	) {
-		parent::__construct( 'WelcomeSurvey', '', false );
+		parent::__construct( 'WelcomeSurvey' );
 		$this->specialPageFactory = $specialPageFactory;
 		$this->welcomeSurveyFactory = $welcomeSurveyFactory;
 		$this->welcomeSurveyLogger = $welcomeSurveyLogger;
+	}
+
+	/** @inheritDoc */
+	public function isListed(): bool {
+		return false;
 	}
 
 	/** @inheritDoc */
