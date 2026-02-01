@@ -317,7 +317,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param string $class
+	 * @param class-string<Skin> $class
 	 * @return MockObject|Skin
 	 */
 	private function getSkinMock( $class = Skin::class ) {

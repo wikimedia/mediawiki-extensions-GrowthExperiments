@@ -45,9 +45,7 @@ class ApiQueryMentorMenteeTest extends ApiTestCase {
 			array_column( $response[0]['growthmentormentee']['mentees'], 'name' )
 		);
 		$this->assertArrayEquals(
-			array_map( static function ( UserIdentity $user ) {
-				return $user->getId();
-			}, $mentees ),
+			array_map( static fn ( UserIdentity $user ) => $user->getId(), $mentees ),
 			array_column( $response[0]['growthmentormentee']['mentees'], 'id' )
 		);
 	}

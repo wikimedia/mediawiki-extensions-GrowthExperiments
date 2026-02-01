@@ -5,7 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\Maintenance\DeleteOldSurveys;
 use GrowthExperiments\WelcomeSurvey;
 use MediaWiki\User\Options\UserOptionsLookup;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\IDBAccessObject;
 
@@ -73,10 +73,10 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param string $date Registration date in an MWTimestamp-compatible format
 	 */
-	private function setRegistrationDate( User $user, string $date ) {
+	private function setRegistrationDate( UserIdentity $user, string $date ) {
 		$this->getServiceContainer()->getUserRegistrationLookup()
 			->setCachedRegistration( $user, wfTimestamp( TS_MW, $date ) );
 		$this->getDb()->newUpdateQueryBuilder()
@@ -104,20 +104,18 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @param User[] $users
+	 * @param UserIdentity[] $users
 	 * @param string $output Script output (must be run with -v)
 	 */
 	private function assertDeletedUsers( array $users, string $output ) {
-		$ids = array_map( static function ( User $u ) {
-			return $u->getId();
-		}, $users );
+		$ids = array_map( static fn ( UserIdentity $u ) => $u->getId(), $users );
 		preg_match_all( '/Deleting survey data for user:(\d+)/', $output, $matches );
 		// Order can be ignored; $ids is ints,  $matches[1] is strings
 		$this->assertEquals( $ids, $matches[1] );
 	}
 
 	/**
-	 * @param User[] $users
+	 * @param array<string,UserIdentity> $users
 	 * @param string $pref
 	 */
 	private function assertUsersHavePreference(
@@ -140,7 +138,7 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @param User[] $users
+	 * @param array<string,UserIdentity> $users
 	 * @param string $pref
 	 */
 	private function assertUsersNotHavePreference(

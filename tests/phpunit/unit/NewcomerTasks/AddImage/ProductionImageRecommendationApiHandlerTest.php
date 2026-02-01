@@ -23,11 +23,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 	public function testGetSuggestionDataFromApiResponse( array $apiResponse, array $expectedResult ) {
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$globalIdGenerator = $this->createMock( GlobalIdGenerator::class );
-		$globalIdGenerator->method( 'getTimestampFromUUIDv1' )->willReturnCallback(
-			static function ( $id ) {
-				return $id;
-			}
-		);
+		$globalIdGenerator->method( 'getTimestampFromUUIDv1' )->willReturnArgument( 0 );
 		$apiHandler = new ProductionImageRecommendationApiHandler(
 			$this->createMock( HttpRequestFactory::class ),
 			'https://example.com',
@@ -390,11 +386,7 @@ class ProductionImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase 
 	public function testGetSuggestionDataFromApiResponse_section( array $apiResponse, array $expectedResult ) {
 		$taskType = new ImageRecommendationTaskType( 'section-image-recommendation', TaskType::DIFFICULTY_EASY );
 		$globalIdGenerator = $this->createMock( GlobalIdGenerator::class );
-		$globalIdGenerator->method( 'getTimestampFromUUIDv1' )->willReturnCallback(
-			static function ( $id ) {
-				return $id;
-			}
-		);
+		$globalIdGenerator->method( 'getTimestampFromUUIDv1' )->willReturnArgument( 0 );
 		$apiHandler = new ProductionImageRecommendationApiHandler(
 			$this->createMock( HttpRequestFactory::class ),
 			'https://example.com',
