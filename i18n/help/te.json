@@ -20,7 +20,7 @@
 	"growthexperiments-help-panel-home-title": "దిద్దుబాటులో సాయం పొందండి",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|మీరు}} దిద్దుబాటును ప్రచురించారు. ధన్యవాదాలు. ఇక దిద్దుబాట్లు చేస్తూ ముందుకు సాగండి!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|మీరు}} దిద్దుబాటును భద్రపరచారు. ధన్యవాదాలు. ఇక దిద్దుబాట్లు చేస్తూ ముందుకు సాగండి!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "సూచనలను పరిశీలించినందుకు ధన్యవాదాలు. కానివ్వండి!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|మీరు}} ఒక సూచనను సమీక్షించారు. ధన్యవాదాలు, అలాగే కొనసాగండి!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "ఇవ్వాళ్టికి ఇక బొమ్మల వ్యాసాలు పూర్తయిపోయాయి. బాగా చేసారు!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation": "ఈరోజుకి అందుబాటులో ఉన్న విభాగ-బొమ్మల సూచనలున్న వ్యాసాలన్నీ పూర్తయ్యాయి. బాగా చేసారు!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "ఇవ్వాళ్టి లింకు సూచనల వ్యాసాలన్నీ అయిపోయాయి. భేష్, బాగా చేసారు!",

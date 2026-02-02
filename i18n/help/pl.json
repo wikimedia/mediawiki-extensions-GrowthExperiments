@@ -30,7 +30,7 @@
 	"growthexperiments-help-panel-home-title": "Pomoc w edytowaniu",
 	"growthexperiments-help-panel-postedit-success-message-published": "Opublikował{{GENDER:|e|a|e}}ś edycję. Dziękujemy, tak trzymaj!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Zapisał{{GENDER:|e|a|e}}ś edycję. Dzięki za pomoc i tak trzymaj!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Dziękujemy za ocenianie propozycji. Tak trzymaj!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|Przejrzałeś|Przejrzałaś}} propozycję. Dziękujemy i tak trzymaj!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "Wszystkie artykuły do zrobienia na dziś z ilustracją do dodania są już zrobione. Dobra robota!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation": "Wszystkie artykuły na dziś z sugerowanymi ilustracjami do dodania w sekcjach są już zrobione. Dobra robota!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "Wszystkie artykuły do zrobienia na dziś z sugerowanymi linkami do dodania są już zrobione. Dobra robota!",

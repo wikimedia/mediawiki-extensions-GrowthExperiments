@@ -3,7 +3,8 @@
 		"authors": [
 			"Dedalus",
 			"Encycloon",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Behandel vragen die zijn gesteld via het hulppaneel voor de huidige gebruiker.",
@@ -15,5 +16,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Het paneel “Vraag het aan de helpdesk” (oude naam)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Het paneel “Vraag het aan uw mentor” op de startpagina voor nieuwkomers (oude naam)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "De relevante titel, indien geselecteerd, die bij de vraag moet worden opgenomen.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "U moet aangemeld zijn om een vraag te stellen."
+	"apierror-mustbeloggedin-helppanelquestionposter": "U moet aangemeld zijn om een vraag te stellen.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "U kunt geen vraag stellen aan uw mentor als u geen mentor hebt."
 }

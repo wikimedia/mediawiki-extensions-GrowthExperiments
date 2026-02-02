@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BukhariSaeed",
 			"Muhammad Shuaib"
 		]
 	},
@@ -67,7 +68,8 @@
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "حالیہ تبدیلیوں سے مشاہدات کی تعداد (آخری 60 دنوں میں):",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "مجوزہ ترامیم دیکھیں",
 	"growthexperiments-tour-response-button-okay": "سمجھ گیا",
-	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link|مجوزہ: روابط شامل کریں]]",
+	"tag-newcomer_task": "نووارد کا ہدف",
+	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Help:Growth/Tools/Newcomer_Tasks#s-link|مجوزہ: روابط کو شامل کیا]]",
 	"growthexperiments-homepage-help-dialog-title": "معاونت میز سے رجوع کریں",
 	"growthexperiments-homepage-help-header": "ترمیم کاری کے لیے مدد طلب کریں",
 	"growthexperiments-homepage-help-subheader": "ترمیم کاری سے متعلق بہترین معاون صفحات",

@@ -26,7 +26,7 @@
 	"growthexperiments-help-panel-home-title": "Få hjälp med att redigera",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Du}} har publicerat en redigering. Tack och fortsätt gärna!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Du}} sparade en redigering. Tack och fortsätt gärna!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Tack för att du granskar förslag. Fortsätt!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|Du har}} granskat ett förslag. Tack och fortsätt!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "Alla tillgängliga artiklar med bildförslag är utförda. Bra jobbat!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation": "Alla tillgängliga artiklar med förslag på avsnittsbilder för idag är klara. Bra jobbat!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "Alla tillgängliga artiklar med länkförslag är utförda. Bra jobbat!",

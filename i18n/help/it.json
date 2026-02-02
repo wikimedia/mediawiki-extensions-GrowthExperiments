@@ -27,7 +27,7 @@
 	"growthexperiments-help-panel-home-title": "Ricevi aiuto nel contribuire",
 	"growthexperiments-help-panel-postedit-success-message-published": "Hai pubblicato una modifica. Grazie, continua così!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Hai salvato una modifica. Grazie, continua così!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Grazie per aver rivisto i suggerimenti. Continua così!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|Hai rivisto}} un suggerimento. Grazie, continua così!",
 	"growthexperiments-help-panel-postedit-header": "Prossimi passi",
 	"growthexperiments-help-panel-postedit-subheader-image-recommendation": "Altre modalità per contribuire",
 	"growthexperiments-help-panel-postedit-subheader-section-image-recommendation": "Più modi di modificare",

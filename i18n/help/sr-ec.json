@@ -24,7 +24,7 @@
 	"growthexperiments-help-panel-home-title": "Проналажење помоћи",
 	"growthexperiments-help-panel-postedit-success-message-published": "Објавили {{GENDER:|сте}} измену. Хвала вам и само тако наставите!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Објавили {{GENDER:|сте}} измену. Хвала вам и само тако наставите!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Хвала вам за прегледање предлога. Слободно наставите!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|Хвала}} вам за прегледање предлога. Само тако наставите!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "Сви доступни чланци за додавање слика за данас су завршени. Браво!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "Сви доступни предлози за додавање веза за данас су завршени. Браво!",
 	"growthexperiments-help-panel-postedit-header": "Следећи кораци",
