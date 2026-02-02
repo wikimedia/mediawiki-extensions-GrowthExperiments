@@ -1215,7 +1215,10 @@ return [
 		MediaWikiServices $services
 	): UserImpactLookup {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		return new DatabaseUserImpactStore( $growthServices->getLoadBalancer() );
+		return new DatabaseUserImpactStore(
+			$growthServices->getLoadBalancer(),
+			$growthServices->getLogger(),
+		);
 	},
 
 	'GrowthExperimentsUserImpactUpdater' => static function (
