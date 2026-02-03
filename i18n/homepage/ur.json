@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Muhammad Shuaib"
+			"Muhammad Shuaib",
+			"BukhariSaeed"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{bidi:$1}} کی خدمت میں {{GENDER:$1|آداب}} عرض ہے۔",
