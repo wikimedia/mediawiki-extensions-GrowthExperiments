@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"rest-module-growthexperiments.v0-title": "Title of the growthexperiments.v0 REST module",
+	"rest-module-growthexperiments.v0-desc": "Description of the growthexperiments.v0 REST module",
+	"rest-endpoint-desc-get-growthexperiments-quickstarttips": "{{Experimental}} REST API endpoint description, for the endpoint to get tips to encourage engagement",
+	"rest-endpoint-desc-get-growthexperiments-suggestions-addlink": "{{Experimental}} REST API endpoint description for the endpoint to get page link suggestions",
+	"rest-endpoint-desc-put-growthexperiments-suggestions-addimage-feedback": "{{Experimental}} REST API endpoint description for the endpoint to record feedback on image suggestions",
+	"rest-endpoint-desc-get-growthexperiments-suggestions-info": "{{Experimental}} REST API endpoint description for the endpoint to get info useful for monitoring suggestions",
+	"rest-endpoint-desc-get-growthexperiments-mentees": "{{Experimental}} REST API endpoint description for the endpoint to get info for mentees of a mentor",
+	"rest-endpoint-desc-get-growthexperiments-mentees-prefixsearch": "{{Experimental}} REST API endpoint description for the endpoint to get info for mentees of a mentor, filtered by mentee name prefix",
+	"rest-endpoint-desc-post-growthexperiments-newcomertask-complete": "{{Experimental}} REST API endpoint description for the endpoint to record editing suggestions as having been completed.",
+	"rest-endpoint-desc-post-growthexperiments-welcomesurvey-skip": "{{Experimental}} REST API endpoint description for the endpoint to prevent newcomer editing suggestions for the current user",
+	"rest-endpoint-desc-get-growthexperiments-user-impact": "{{Experimental}} REST API endpoint description for the endpoint to get data about the impact of a user on the wiki",
+	"rest-endpoint-desc-post-growthexperiments-user-impact": "{{Experimental}} REST API endpoint description for the endpoint to get data about the impact of a user on the wiki"
+}

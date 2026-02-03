@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"rest-module-growthexperiments.v0-title": "Growth experiments module",
+	"rest-module-growthexperiments.v0-desc": "Experimental editing suggestions and editor feedback regarding such suggestions",
+	"rest-endpoint-desc-get-growthexperiments-quickstarttips": "Returns tips, relevant to the given user, that help new users engage with editing content.",
+	"rest-endpoint-desc-get-growthexperiments-suggestions-addlink": "Provides link suggestions for page content.",
+	"rest-endpoint-desc-put-growthexperiments-suggestions-addimage-feedback": "Records feedback, by the current user, on image suggestions for page content.",
+	"rest-endpoint-desc-get-growthexperiments-suggestions-info": "Shows information useful for monitoring link and image suggestions, broken down by topic.",
+	"rest-endpoint-desc-get-growthexperiments-mentees": "Returns info about the mentees being mentored by a given user.",
+	"rest-endpoint-desc-get-growthexperiments-mentees-prefixsearch": "Returns info about the mentees being mentored by a given user, filtered by mentee name prefix.",
+	"rest-endpoint-desc-post-growthexperiments-newcomertask-complete": "Records completion of editing suggestions by the current user.",
+	"rest-endpoint-desc-post-growthexperiments-welcomesurvey-skip": "Prevents newcomer editing suggestions for the current user.",
+	"rest-endpoint-desc-get-growthexperiments-user-impact": "Returns data about the impact of a user on the wiki.",
+	"rest-endpoint-desc-post-growthexperiments-user-impact": "Returns data about the impact of a user on the wiki."
+}

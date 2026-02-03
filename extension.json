@@ -46,7 +46,8 @@
 			"i18n/confirmemail",
 			"i18n/newcomertasks/api",
 			"i18n/mentorship",
-			"i18n/mentorship/api"
+			"i18n/mentorship/api",
+			"i18n/Rest"
 		]
 	},
 	"ExtensionMessagesFiles": {
@@ -372,6 +373,9 @@
 				"UserFactory"
 			]
 		}
+	],
+	"RestModuleFiles": [
+		"includes/Rest/growthexperiments.v0.json"
 	],
 	"HookHandlers": {
 		"communityconfig": {

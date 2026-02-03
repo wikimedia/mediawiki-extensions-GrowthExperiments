@@ -1,0 +1,143 @@
+{
+	"mwapi": "1.1.0",
+	"moduleId": "growthexperiments/v0",
+	"info": {
+		"version": "0.1.0",
+		"title": "Growth experiments API",
+		"x-i18n-title": "rest-module-growthexperiments.v0-title",
+		"x-i18n-description": "rest-module-growthexperiments.v0-desc"
+	},
+	"paths": {
+		"/quickstarttips/{skin}/{editor}/{tasktypeid}/{uselang}": {
+			"get": {
+				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-quickstarttips",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\TipsHandler",
+					"services": [
+						"GrowthExperimentsTipsAssembler",
+						"GrowthExperimentsNewcomerTasksConfigurationLoader",
+						"GrowthExperimentsFeatureManager"
+					]
+				}
+			}
+		},
+		"/suggestions/addlink/{title}": {
+			"get": {
+				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-suggestions-addlink",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSuggestionsHandler",
+					"services": [
+						"GrowthExperimentsLinkRecommendationHelper",
+						"GrowthExperimentsFeatureManager"
+					]
+				}
+			}
+		},
+		"/suggestions/addimage/feedback/{title}": {
+			"put": {
+				"x-i18n-description": "rest-endpoint-desc-put-growthexperiments-suggestions-addimage-feedback",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\AddImageFeedbackHandler",
+					"services": [
+						"TitleFactory",
+						"RevisionLookup",
+						"GrowthExperimentsNewcomerTasksConfigurationLoader",
+						"GrowthExperimentsAddImageSubmissionHandler"
+					]
+				}
+			}
+		},
+		"/suggestions/info": {
+			"get": {
+				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-suggestions-info",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\SuggestionsInfoHandler",
+					"services": [
+						"GrowthExperimentsSuggestionsInfo",
+						"MainWANObjectCache",
+						"GrowthExperimentsFeatureManager"
+					]
+				}
+			}
+		},
+		"/mentees": {
+			"get": {
+				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-mentees",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\MenteesHandler",
+					"services": [
+						"GrowthExperimentsMenteeOverviewDataProvider",
+						"GrowthExperimentsStarredMenteesStore",
+						"UserFactory",
+						"TitleFactory",
+						"TitleParser",
+						"LinkBatchFactory"
+					]
+				}
+			}
+		},
+		"/mentees/prefixsearch/{prefix}": {
+			"get": {
+				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-mentees-prefixsearch",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\MenteesPrefixSearchHandler",
+					"services": [
+						"GrowthExperimentsMenteeOverviewDataProvider"
+					]
+				}
+			}
+		},
+		"/newcomertask/complete": {
+			"post": {
+				"x-i18n-description": "rest-endpoint-desc-post-growthexperiments-newcomertask-complete",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\NewcomerTaskCompleteHandler",
+					"services": [
+						"GrowthExperimentsNewcomerTasksChangeTagsManager"
+					]
+				}
+			}
+		},
+		"/welcomesurvey/skip": {
+			"post": {
+				"x-i18n-description": "rest-endpoint-desc-post-growthexperiments-welcomesurvey-skip",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\WelcomeSurveySkipHandler",
+					"services": [
+						"GrowthExperimentsWelcomeSurveyFactory"
+					]
+				}
+			}
+		},
+		"/user-impact/{user}": {
+			"get": {
+				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-user-impact",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
+					"services": [
+						"GrowthExperimentsUserImpactStore",
+						"GrowthExperimentsUserImpactLookup",
+						"GrowthExperimentsUserImpactFormatter",
+						"StatsFactory",
+						"JobQueueGroup",
+						"UserFactory"
+					]
+				}
+			},
+			"post": {
+				"x-i18n-description": "rest-endpoint-desc-post-growthexperiments-user-impact",
+				"handler": {
+					"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
+					"services": [
+						"GrowthExperimentsUserImpactStore",
+						"GrowthExperimentsUserImpactLookup",
+						"GrowthExperimentsUserImpactFormatter",
+						"StatsFactory",
+						"JobQueueGroup",
+						"UserFactory"
+					]
+				}
+			}
+		}
+	}
+}
