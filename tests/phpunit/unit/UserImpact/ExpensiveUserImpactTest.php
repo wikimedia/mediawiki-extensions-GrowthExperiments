@@ -59,8 +59,12 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 
 		$dailyTotalViews = [ '2022-08-24' => 100, '2022-08-25' => 150, '2022-08-26' => 0 ];
 		$dailyArticleViews = [
-			'Foo' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],
-			'Bar' => [ '2022-08-24' => 30, '2022-08-25' => 40 ],
+			'Foo' => [ 'views' => [ '2022-08-24' => 10, '2022-08-25' => 20, '2022-08-26' => 0 ] ],
+			'Bar' => [ 'views' => [ '2022-08-24' => 30, '2022-08-25' => 40, '2022-08-26' => 0 ] ],
+		];
+		$dailyArticleViewsSerialized = [
+			'Foo' => [ 'views' => [ '2022-08-24' => 10, '2022-08-25' => 20 ] ],
+			'Bar' => [ 'views' => [ '2022-08-24' => 30, '2022-08-25' => 40 ] ],
 		];
 		$userImpact = new ExpensiveUserImpact(
 			UserIdentityValue::newRegistered( 1, 'User1' ),
@@ -83,10 +87,15 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ '2022-08-24' => 100, '2022-08-25' => 150 ],
 			$data['dailyTotalViews']
 		);
+		$this->assertSame(
+			$dailyArticleViewsSerialized,
+			$data['dailyArticleViews']
+		);
 		$rehydrated = ExpensiveUserImpact::newFromJsonArray( $data );
 		TestingAccessWrapper::newFromObject( $userImpact )->dailyTotalViews = [
 			'2022-08-24' => 100, '2022-08-25' => 150,
 		];
+		TestingAccessWrapper::newFromObject( $userImpact )->dailyArticleViews = $dailyArticleViewsSerialized;
 		$this->assertEquals( $userImpact, $rehydrated );
 
 		$codec = new JsonCodec( null );
