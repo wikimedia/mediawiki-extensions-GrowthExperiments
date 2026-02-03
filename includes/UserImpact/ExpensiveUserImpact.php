@@ -147,11 +147,22 @@ class ExpensiveUserImpact extends UserImpact {
 		} );
 	}
 
+	private function filterViewCountsForArticles( array $data ): array {
+		$newData = [];
+		foreach ( $data as $article => $articleData ) {
+			$newArticleData = $articleData;
+			$newArticleData['views'] = $this->filterViewCounts( $articleData['views'] ?? [] );
+			$newData[$article] = $newArticleData;
+		}
+
+		return $newData;
+	}
+
 	/** @inheritDoc */
 	public function jsonSerialize(): array {
 		return parent::jsonSerialize() + [
 			'dailyTotalViews' => $this->filterViewCounts( $this->dailyTotalViews ),
-			'dailyArticleViews' => $this->filterViewCounts( $this->dailyArticleViews ),
+			'dailyArticleViews' => $this->filterViewCountsForArticles( $this->dailyArticleViews ),
 		];
 	}
 

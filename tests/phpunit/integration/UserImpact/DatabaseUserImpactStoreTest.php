@@ -77,7 +77,10 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			30,
 			wfTimestamp( TS_UNIX, '20200103000000' ),
 			[ '2020-01-01' => 1000, '2020-01-02' => 2000 ],
-			[ '2020-01-01' => [ 'Foo' => 500, 'Bar' => 500 ], '2020-01-02' => [ 'Foo' => 1000, 'Bar' => 1000 ] ],
+			[
+				'Foo' => [ 'views' => [ '2020-01-01' => 500, '2020-01-02' => 1000 ] ],
+				'Bar' => [ 'views' => [ '2020-01-01' => 500, '2020-01-02' => 1000 ] ],
+			],
 			new EditingStreak(),
 			0,
 			null
