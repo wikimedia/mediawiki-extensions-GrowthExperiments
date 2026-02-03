@@ -29,7 +29,7 @@
 	"growthexperiments-help-panel-home-title": "گرفتن کمک برای ویرایش",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|شما}} یک ویرایش انجام دادید. ممنون و به کارتان ادامه دهید!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|شما}} یک ویرایش انجام دادید. ممنون و به کارتان ادامه دهید!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "سپاس بابت بازبینی پیشنهادها. لطفاً ادامه دهید!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|شما}} یک پیشنهاد را بازبینی کردید. سپاس از شما، لطفاً ادامه دهید!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "تمام مقاله‌های امروز برای افزودن تصویر کامل شدند. عالی!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation": "تمام مقاله‌های پیشنهادی موجود برای افزودن تصویر به بخش برای امروز انجام شدند. عالی!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "تمام مقاله‌های امروز برای افزودن پیوند پیشنهادی کامل شدند. عالی!",

@@ -12,7 +12,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "Exception when a user has no mentor. Shown when user tries to ask a question to a nonexistent mentor.",
-	"growthexperiments-exception-no-mentored-text": "Explanation that displays when a user has no mentor.  Shown when user tries to ask a question to a nonexistent mentor.",
+	"growthexperiments-exception-no-mentored-text": "Explanation that displays when a user has no mentor.  Shown when user tries to ask a question to a nonexistent mentor. (Lacks gender support, see https://phabricator.wikimedia.org/T416226.)",
 	"growthexperiments-mentor-dashboard-title": "Title of a special page\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-pt-link": "Description for the link displayed in personal tools\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Error message shown when user tries to load mentor dashboard while not being a mentor\n\n{{doc-growthexperiments-mentor-dashboard}}",

@@ -62,6 +62,7 @@
 	"growthexperiments-help-panel-question-post-error": "אירעה שגיאה בעת ניסיון לשלוח את השאלה שלך. {{GENDER:|אתה יכול|את יכולה}} לנסות שוב או לבקר בדף $1 בדפדפן שלך ולהוסיף את שאלתך ידנית.",
 	"growthexperiments-help-panel-suggestededits-title": "עריכות מוצעות",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "עצות להתחלה מהירה",
+	"growthexperiments-help-panel-revise-tone-refresh-skills": "רענון הכישורים שלך",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>{{GENDER:|מוכן|מוכנה}}?</strong> {{GENDER:|לחץ|לחצי}} על \"{{int:vector-view-edit}}\" כדי להתחיל.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>{{GENDER:|מוכן|מוכנה}}?</strong> {{GENDER:|פתח|פתחי}} את הפרק {{GENDER:|שאתה|שאת}} רוצה לערוך {{GENDER:|ולחץ|ולחצי}} על סמל העיפרון.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "הגהה היא תיקון קטן בצורה שבה הערך כתוב, למשל כתיב, דקדוק, או בהירות של הטקסט. הגהות עוזרות לערכים להיות יותר מקצועיים ומעוררי אמון.",

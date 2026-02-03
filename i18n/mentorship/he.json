@@ -7,6 +7,8 @@
 			"חיים"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "למשתמש הז אין חונך",
+	"growthexperiments-exception-no-mentored-text": "לחשבון הזה לא מוקצה חונך, מה שאומר שאי־אפשר לשלוח ממנו שאלות לחונך",
 	"growthexperiments-mentor-dashboard-title": "לוח בקרה לחונכים",
 	"growthexperiments-mentor-dashboard-pt-link": "לוח בקרה לחונכים",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "כדי להפעיל את לוח הבקרה לחונכים, {{GENDER:|אתה צריך|את צריכה}} קודם [[$1|להירשם {{GENDER:|כחונך|כחונכת}}]].",

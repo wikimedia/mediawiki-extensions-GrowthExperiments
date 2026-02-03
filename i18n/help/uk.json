@@ -23,7 +23,7 @@
 	"growthexperiments-help-panel-home-title": "Отримати допомогу з редагуванням",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Ви}} опублікували редагування. Дякуємо, продовжуйте!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Ви}} зберегли редагування. Дякуємо, продовжуйте!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Дякуємо за перегляд пропозицій. Продовжуйте!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|Ви переглянули}} пропозицію. Дякуємо, продовжуйте!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "Усі доступні для додавання зображень статті на сьогодні завершені. Добра робота!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation": "Усі доступні статті для додавання зображення у розділи на сьогодні завершені. Добра робота!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "Усі доступні для додавання посилань статті на сьогодні завершені. Добра робота!",

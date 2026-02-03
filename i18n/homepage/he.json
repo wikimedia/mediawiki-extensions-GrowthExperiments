@@ -460,6 +460,7 @@
 	"growthexperiments-addlink-skip-reject": "לסקור שוב",
 	"grant-managementorship": "ניהול חונכות",
 	"newcomertasksinfo": "משימות למתחילים",
+	"newcomertasksinfo-not-available": "משימות למתחילים אינן מופעלות בוויקי הזה.",
 	"newcomertasksinfo-no-data": "אין נתונים זמינים.",
 	"newcomertasksinfo-config-form-info": "אפשר לצפות בהגדרות של משימות למתחילים ולשנות אותן בדף [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "סוג המשימה",
