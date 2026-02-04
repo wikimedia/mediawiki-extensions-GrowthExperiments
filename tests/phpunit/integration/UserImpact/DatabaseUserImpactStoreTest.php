@@ -7,7 +7,6 @@ use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWikiIntegrationTestCase;
-use Psr\Log\NullLogger;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -18,7 +17,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetSetUserImpact() {
 		ConvertibleTimestamp::setFakeTime( time() );
-		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer(), new NullLogger() );
+		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer() );
 		$user = $this->getTestUser()->getUserIdentity();
 		$user2 = $this->getMutableTestUser()->getUserIdentity();
 		$user3 = $this->getMutableTestUser()->getUserIdentity();
@@ -64,7 +63,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetSetExpensiveUserImpact() {
 		ConvertibleTimestamp::setFakeTime( time() );
-		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer(), new NullLogger() );
+		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer() );
 		$user = $this->getTestUser()->getUserIdentity();
 
 		$expensiveUserImpact = new ExpensiveUserImpact(
@@ -93,7 +92,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 
 	public function testUpdateUserImpact() {
 		ConvertibleTimestamp::setFakeTime( time() );
-		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer(), new NullLogger() );
+		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer() );
 		$user = $this->getTestUser()->getUserIdentity();
 
 		$userImpact = new UserImpact(
