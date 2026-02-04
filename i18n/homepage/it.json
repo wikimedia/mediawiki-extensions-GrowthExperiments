@@ -21,7 +21,8 @@
 			"Toa",
 			"ValeJappo",
 			"Vivbod",
-			"Titore"
+			"Titore",
+			"Una tantum"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
@@ -75,9 +76,9 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Facile",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Medio",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difficile",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Raccomandato per quando stai imparando per la prima volta a modificare.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Consigliato per quando stai imparando a modificare.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Dopo che hai completato alcune modifiche semplici.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Quando hai imparato le principali pratiche su Wikipedia.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Quando hai imparato le buone pratiche su Wikipedia.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Correggere e aggiungere collegamenti ad altre voci.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Aggiungere fonti e aggiornare voci obsolete",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Creare una nuova voce e ampliare voci brevi già esistenti.",
@@ -254,6 +255,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Medio",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difficile",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Seleziona tipi di modifiche",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-intro": "Le modifiche suggerite sono progettate per {{GENDER:|aiutarti}} ad imparare a modificare e per sviluppare le capacità necessarie per contribuire con modifiche più complesse.",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-create-title": "Vuoi creare una nuova voce?",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Seleziona argomenti",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fatto",

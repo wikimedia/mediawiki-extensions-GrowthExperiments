@@ -14,7 +14,8 @@
 			"Mansil alfalb",
 			"Mbs262",
 			"Trizek (WMF)",
-			"Vinickw"
+			"Vinickw",
+			"IZapico (WMF)"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Olá, {{bidi:$1}}!{{GENDER:$1|}}",
@@ -77,14 +78,14 @@
 	"growthexperiments-homepage-suggested-edits-header": "Edições sugeridas",
 	"growthexperiments-homepage-impact-header": "O seu impacto{{GENDER:$1|}}",
 	"growthexperiments-homepage-impact-no-js-fallback": "Ative o JavaScript para ver este componente, por favor.",
-	"growthexperiments-homepage-impact-recent-activity-title": "A sua atividade recente ({{PLURAL:$2|último dia|últimos $2 dias}}){{GENDER:|}}",
+	"growthexperiments-homepage-impact-recent-activity-title": "A sua atividade recente ({{PLURAL:$2|último dia|últimos $2 dias}})",
 	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Atividade recente ({{PLURAL:$1|último dia|últimos $1 dias}})",
 	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Última edição",
 	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Melhor sequência",
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dia|dias}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Edição|Edições}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|edição|edições}} a $2",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Visualizações de artigos que editou{{GENDER:|}}",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Visualizações de artigos que {{GENDER:|}} editou",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Visualizações dos artigos editados",
 	"growthexperiments-homepage-impact-scores-edit-count": "Total de edições",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Edições revertidas",
