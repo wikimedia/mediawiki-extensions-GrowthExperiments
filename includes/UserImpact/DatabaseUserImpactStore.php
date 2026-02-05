@@ -3,7 +3,6 @@
 namespace GrowthExperiments\UserImpact;
 
 use MediaWiki\User\UserIdentity;
-use Psr\Log\LoggerInterface;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -15,10 +14,12 @@ class DatabaseUserImpactStore implements UserImpactStore {
 	/** @internal only exposed for tests */
 	public const TABLE_NAME = 'growthexperiments_user_impact';
 
+	private ILoadBalancer $loadBalancer;
+
 	public function __construct(
-		private ILoadBalancer $loadBalancer,
-		private LoggerInterface $logger
+		ILoadBalancer $loadBalancer
 	) {
+		$this->loadBalancer = $loadBalancer;
 	}
 
 	/** @inheritDoc */
@@ -69,17 +70,6 @@ class DatabaseUserImpactStore implements UserImpactStore {
 		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 
-		if ( $userImpact instanceof ExpensiveUserImpact ) {
-			if ( $this->hasZerosInPageViews( $userImpact->getDailyArticleViews() ) ) {
-				$this->logger->warning(
-				__METHOD__ . ' should not store zero pageviews values',
-				[
-					'user' => $userImpact->getUser()->getId(),
-					'exception' => new \RuntimeException,
-				] );
-			}
-		}
-
 		$data = [
 			'geui_data' => gzdeflate( json_encode( $userImpact, JSON_UNESCAPED_UNICODE ) ),
 			'geui_timestamp' => $dbw->timestamp( $userImpact->getGeneratedAt() ),
@@ -110,20 +100,6 @@ class DatabaseUserImpactStore implements UserImpactStore {
 				->caller( __METHOD__ )
 				->execute();
 		}
-	}
-
-	private function hasZerosInPageViews( array $dailyArticleViews ): bool {
-		foreach ( $dailyArticleViews as $articleDayViews ) {
-			if ( !array_key_exists( 'views', $articleDayViews ) ) {
-				continue;
-			}
-			foreach ( $articleDayViews['views'] as $articleDayView ) {
-				if ( $articleDayView === 0 ) {
-					return true;
-				}
-			}
-		}
-		return false;
 	}
 
 }
