@@ -915,13 +915,8 @@ return [
 		MediaWikiServices $services
 	): ReviseToneExperimentInteractionLogger {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$eventLoggingMetricsClientFactory = null;
-		if ( $services->has( 'EventLogging.MetricsClientFactory' ) ) {
-			$eventLoggingMetricsClientFactory = $services->get( 'EventLogging.MetricsClientFactory' );
-		}
 		return new ReviseToneExperimentInteractionLogger(
 			$growthServices->getExperimentUserManager(),
-			$eventLoggingMetricsClientFactory,
 			$growthServices->getLogger(),
 		);
 	},
