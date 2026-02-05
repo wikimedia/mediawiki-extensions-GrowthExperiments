@@ -134,10 +134,9 @@ class SpecialHomepage extends UnlistedSpecialPage {
 				$logger->log();
 				// Log page visits with the SE module enabled for the refined experiment exposure metric, remove after
 				// T407802 is concluded
-				if ( SuggestedEdits::isActivated( $this->getContext()->getUser(), $this->userOptionsManager ) ) {
-					$this->experimentInteractionLogger->log( 'page-visited', [
+				if ( SuggestedEdits::isEnabledForAnyone( $this->wikiConfig ) ) {
+					$this->experimentInteractionLogger->log( 'experiment_exposure', [
 						'instrument_name' => 'Newcomer\'s homepage visited with SE module enabled',
-						'action_source' => 'Homepage-suggestions-enabled',
 					] );
 				}
 			} );
