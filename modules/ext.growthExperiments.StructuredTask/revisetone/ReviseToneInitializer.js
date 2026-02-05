@@ -177,7 +177,7 @@ class ReviseToneInitializer {
 			const action = actions.find( ( a ) => a.getName() === GrowthSuggestionToneCheck.static.name );
 			if ( action ) {
 				// focus the tone action and scroll it into view
-				ve.init.target.editcheckController.focusAction( action, true, true );
+				ve.init.target.editcheckController.ensureActionIsShown( action );
 			}
 		} );
 		experiment.send( 'page-visited', {
