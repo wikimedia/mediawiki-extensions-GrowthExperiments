@@ -24,6 +24,7 @@ describe( 'Add a Link', () => {
 		guidedTour.close( 'homepage_discovery' );
 
 		cy.visit( 'index.php?title=Special:Homepage' );
+		homepage.suggestedEditsCardTitle.scrollIntoView();
 		homepage.suggestedEditsCardTitle.should( 'be.visible' ).and( 'have.text', addlinkArticle );
 		homepage.suggestedEditsCardLink.should( 'be.visible' ).and( 'not.have.attr', 'href', '#' );
 		homepage.suggestedEditsCardLink.click();

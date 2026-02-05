@@ -102,8 +102,12 @@ describe( 'Revise Tone', () => {
 	describe( 'On mobile', () => {
 
 		it( 'Shows the Revise Tone Edit Check', () => {
+			cy.viewport( 360, 780 );
 			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
+			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
+			homepage.suggestedEditsNextButton.click();
+			homepage.suggestedEditsCardTitle.should( 'have.text', 'Eldfjall' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
 			homepage.suggestedEditsCardLink.click();
 
@@ -111,7 +115,15 @@ describe( 'Revise Tone', () => {
 			cy.get( '.close-all-button button' ).should( 'be.visible' ).click();
 
 			cy.get( '.ve-ui-editCheckActionWidget' ).should( 'be.visible' );
+
+			// assert that it did not blink out of existence again:
+			// eslint-disable-next-line cypress/no-unnecessary-waiting
+			cy.wait( 1000 );
+			cy.get( '.ve-ui-editCheckActionWidget' ).should( 'be.visible' );
 			cy.get( '.ve-ui-editCheckActionWidget' ).should( 'have.length', 1 );
+
+			// assert that it was scrolled into view:
+			cy.get( '.ve-ui-editCheck-gutter-action-warning .oo-ui-image-warning' ).should( 'be.visible' );
 		} );
 
 		// Flaky: T407152 - The Edit Check disappears after selecting the first item in the survey?

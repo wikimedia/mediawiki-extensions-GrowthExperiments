@@ -17,6 +17,7 @@ if ( process.env.MW_SERVER === undefined || process.env.MW_SCRIPT_PATH === undef
 process.env.REST_BASE_URL = process.env.MW_SERVER + process.env.MW_SCRIPT_PATH + '/';
 
 export default defineConfig( {
+	experimentalFastVisibility: true,
 	e2e: {
 		supportFile: 'cypress/support/e2e.ts',
 		baseUrl: process.env.MW_SERVER + process.env.MW_SCRIPT_PATH,
