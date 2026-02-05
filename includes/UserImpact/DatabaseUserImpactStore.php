@@ -3,7 +3,6 @@
 namespace GrowthExperiments\UserImpact;
 
 use MediaWiki\User\UserIdentity;
-use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -45,9 +44,8 @@ class DatabaseUserImpactStore implements UserImpactStore {
 			->where( [ 'geui_user_id' => $userIds ] )
 			->caller( __METHOD__ );
 		foreach ( $queryBuilder->fetchResultSet() as $row ) {
-			AtEase::suppressWarnings();
-			$userImpactArray = gzinflate( $row->geui_data );
-			AtEase::restoreWarnings();
+			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			$userImpactArray = @gzinflate( $row->geui_data );
 			if ( $userImpactArray === false ) {
 				$userImpactArray = $row->geui_data;
 			}
