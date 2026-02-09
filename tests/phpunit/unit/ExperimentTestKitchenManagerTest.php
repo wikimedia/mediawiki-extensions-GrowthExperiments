@@ -5,16 +5,13 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\ExperimentTestKitchenManager;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\EventLogging\EventSubmitter\EventSubmitter;
 use MediaWiki\Extension\TestKitchen\Coordination\EnrollmentAuthority;
 use MediaWiki\Extension\TestKitchen\InstrumentConfigsFetcher;
-use MediaWiki\Extension\TestKitchen\Sdk\EventFactory;
 use MediaWiki\Extension\TestKitchen\Sdk\Experiment;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
-use Wikimedia\Stats\StatsFactory;
 
 /**
  * @coversDefaultClass \GrowthExperiments\ExperimentTestKitchenManager
@@ -199,29 +196,17 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 		if ( !class_exists( 'MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager' ) ) {
 			$this->markTestSkipped( 'TestKitchen\Sdk\ExperimentManager is not available.' );
 		}
-		$experimentManager = $this->createMock( ExperimentManager::class );
 		$configsFetcher = $this->createMock( InstrumentConfigsFetcher::class );
 		$enrollmentAuthority = $this->createMock( EnrollmentAuthority::class );
-		$eventSubmitterMock = $this->createMock( EventSubmitter::class );
-		$eventFactoryMock = $this->createMock( EventFactory::class );
-		$statsFactoryMock = $this->createNoOpMock( StatsFactory::class );
+		$experimentManager = $this->createMock( ExperimentManager::class );
 		$experimentManager->method( 'getExperiment' )
 			->willReturnOnConsecutiveCalls(
-				...array_map( static function ( $experimentName ) use (
-				$eventFactoryMock, $eventSubmitterMock, $assignments, $statsFactoryMock
-				) {
-					return new Experiment(
-						$eventSubmitterMock,
-						$eventFactoryMock,
-						$statsFactoryMock,
-						[
-							'enrolled' => $experimentName,
-							'assigned' => $assignments[ $experimentName ] ?? null,
-							'subject_ids' => 'A subject id',
-							'sampling_unit' => 'A sampling unit',
-							'coordinator' => 'Growth unit test',
-						]
-					);
+				...array_map( function ( $experimentName ) use ( $assignments ) {
+					$experiment = $this->createMock( Experiment::class );
+					$experiment->method( 'getAssignedGroup' )
+						->willReturn( $assignments[ $experimentName ] ?? null );
+
+					return $experiment;
 				}, array_keys( $assignments ) ),
 			);
 		return [
