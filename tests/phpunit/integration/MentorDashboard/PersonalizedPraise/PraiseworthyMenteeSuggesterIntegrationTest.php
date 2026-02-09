@@ -7,6 +7,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Permissions\Authority;
@@ -88,6 +89,7 @@ class PraiseworthyMenteeSuggesterIntegrationTest extends MediaWikiIntegrationTes
 
 		$this->makeNEdits( $praiseworthyMentee, $minEdits );
 		$this->makeNEdits( $otherMentee, $minEdits - 1 );
+		$this->runJobs( runOptions: [ 'type' => RefreshUserImpactJob::JOB_NAME ] );
 
 		$suggester = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getPraiseworthyMenteeSuggester();

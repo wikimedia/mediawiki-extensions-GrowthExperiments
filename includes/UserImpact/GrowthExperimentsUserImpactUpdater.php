@@ -80,36 +80,17 @@ class GrowthExperimentsUserImpactUpdater {
 	 * @return void
 	 */
 	public function refreshUserImpactData( UserIdentity $userIdentity ): void {
-		// In a job queue context, we have more flexibility for ensuring that the user's page view data is
-		// reasonably complete, because we're not blocking a web request. In the web context, we will make
-		// a maximum of 5 requests to the AQS service to fetch page views for the user's "top articles".
-		// If the user has a cached impact, get the top viewed articles from that and place define them
-		// as the priority articles for fetching page view data. If somehow those articles are in fact not
-		// the top viewed articles, the refreshUserImpactJob will fix that when it runs.
-		$cachedImpact = $this->userImpactStore->getExpensiveUserImpact( $userIdentity );
-		$priorityArticles = [];
-		if ( $cachedImpact ) {
-			$sortedAndFilteredData = $this->userImpactFormatter->sortAndFilter( $cachedImpact->jsonSerialize() );
-			if ( count( $sortedAndFilteredData['topViewedArticles'] ) ) {
-				// We need an array of titles, where the keys contain the titles in DBKey format.
-				$priorityArticles = $sortedAndFilteredData['topViewedArticles'];
-			}
-		}
-		$impact = $this->userImpactLookup->getExpensiveUserImpact(
-			$userIdentity,
-			IDBAccessObject::READ_LATEST,
-			$priorityArticles
-		);
-		if ( $impact ) {
-			$this->userImpactStore->setUserImpact( $impact );
-			// Also enqueue a job, so that we can get accurate page view data for users who aren't in
-			// the filters defined for the refreshUserImpact.php cron job.
-			$this->jobQueueGroup->push( new JobSpecification( RefreshUserImpactJob::JOB_NAME, [
-				'impactDataBatch' => [ $userIdentity->getId() => null ],
-				// We want to regenerate the page view data, so set staleBefore that's
-				// guaranteed to result in cache invalidation
-				'staleBefore' => MWTimestamp::time() + ExpirationAwareness::TTL_SECOND,
-			] ) );
-		}
+		// Previously, there was code was pre-computing UserImpact and saving it. The purpose was
+		// to update the part of UserImpact that needs SQL queries only immediately, and to
+		// refresh the page views data (which needs a bunch of AQS queries, which take time) in a
+		// job. This caused a large volume of primary DB reads (T416171), so it was removed,
+		// accepting the delay.
+
+		$this->jobQueueGroup->push( new JobSpecification( RefreshUserImpactJob::JOB_NAME, [
+			'impactDataBatch' => [ $userIdentity->getId() => null ],
+			// We want to regenerate the page view data, so set staleBefore that's
+			// guaranteed to result in cache invalidation
+			'staleBefore' => MWTimestamp::time() + ExpirationAwareness::TTL_SECOND,
+		] ) );
 	}
 }
