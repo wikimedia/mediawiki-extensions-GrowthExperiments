@@ -154,7 +154,7 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 			parent::displayRestrictionError();
 		}
 
-		throw new PermissionsError( $this->mRestriction, [ [
+		throw new PermissionsError( $this->getRestriction(), [ [
 			'growthexperiments-mentorship-enrollasmentor-error-not-autoeligible',
 			$this->wikiConfig->get( 'GEMentorshipMinimumEditcount' ),
 			$this->wikiConfig->get( 'GEMentorshipMinimumAge' ),
