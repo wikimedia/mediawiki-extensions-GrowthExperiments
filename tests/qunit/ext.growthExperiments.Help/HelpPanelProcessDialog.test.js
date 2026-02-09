@@ -56,11 +56,16 @@ QUnit.test( 'updateEditMode for link-recommendation', function ( assert ) {
 	} );
 	const windowManager = new OO.ui.WindowManager( { modal: false } );
 	windowManager.addWindows( [ helpPanelProcessDialog ] );
+	const hadPreferredEditor = ( undefined !== helpPanelProcessDialog.suggestededitsPanel.preferredEditor );
 	this.sandbox.stub( helpPanelProcessDialog, 'updateMode' );
 	this.sandbox.spy( helpPanelProcessDialog, 'swapPanel' );
 	helpPanelProcessDialog.updateEditMode();
 	assert.true( helpPanelProcessDialog.swapPanel.notCalled );
-	assert.strictEqual( helpPanelProcessDialog.suggestededitsPanel.preferredEditor, 'machineSuggestions' );
+
+	// The preferred editor is not set when Suggested edits is not enabled
+	if ( hadPreferredEditor ) {
+		assert.strictEqual( helpPanelProcessDialog.suggestededitsPanel.preferredEditor, 'machineSuggestions' );
+	}
 } );
 
 QUnit.test( 'updateEditMode for copyedit, isEditing', function ( assert ) {
@@ -82,9 +87,13 @@ QUnit.test( 'updateEditMode for copyedit, isEditing', function ( assert ) {
 	} );
 	const windowManager = new OO.ui.WindowManager( { modal: false } );
 	windowManager.addWindows( [ helpPanelProcessDialog ] );
+	const hadPreferredEditor = ( undefined !== helpPanelProcessDialog.suggestededitsPanel.preferredEditor );
 	this.sandbox.stub( helpPanelProcessDialog, 'updateMode' );
 	this.sandbox.stub( helpPanelProcessDialog, 'swapPanel' );
 	helpPanelProcessDialog.updateEditMode();
 	assert.true( helpPanelProcessDialog.swapPanel.calledWith( 'home' ) );
-	assert.strictEqual( helpPanelProcessDialog.suggestededitsPanel.preferredEditor, 'visualeditor' );
+	// The preferred editor is not set when Suggested edits is not enabled
+	if ( hadPreferredEditor ) {
+		assert.strictEqual( helpPanelProcessDialog.suggestededitsPanel.preferredEditor, 'visualeditor' );
+	}
 } );
