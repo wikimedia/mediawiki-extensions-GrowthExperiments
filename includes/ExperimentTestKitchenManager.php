@@ -2,13 +2,7 @@
 
 namespace GrowthExperiments;
 
-use MediaWiki\Config\Config;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\TestKitchen\Coordination\EnrollmentAuthority;
-use MediaWiki\Extension\TestKitchen\Coordination\EnrollmentRequest;
-use MediaWiki\Extension\TestKitchen\Coordination\EnrollmentResultBuilder;
-use MediaWiki\Extension\TestKitchen\InstrumentConfigsFetcher;
 use MediaWiki\Extension\TestKitchen\Sdk\Experiment;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\User\UserIdentity;
@@ -18,8 +12,6 @@ class ExperimentTestKitchenManager extends AbstractExperimentManager {
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'GEHomepageDefaultVariant',
-		'TestKitchenEnableExperiments',
-		'TestKitchenEnableExperimentConfigsFetching',
 	];
 	// TODO: valid experiments and variants should/could be read from config
 	public const REVISE_TONE_EXPERIMENT = 'growthexperiments-revise-tone';
@@ -40,10 +32,7 @@ class ExperimentTestKitchenManager extends AbstractExperimentManager {
 	public function __construct(
 		ServiceOptions $options,
 		private readonly LoggerInterface $logger,
-		private readonly InstrumentConfigsFetcher $configsFetcher,
-		private readonly EnrollmentAuthority $enrollmentAuthority,
 		private readonly ExperimentManager $experimentManager,
-		private readonly Config $config,
 	) {
 		parent::__construct( $options );
 	}
@@ -54,27 +43,6 @@ class ExperimentTestKitchenManager extends AbstractExperimentManager {
 			return null;
 		}
 		return $this->experimentManager->getExperiment( $this->currentExperimentName );
-	}
-
-	public function enrollUser( RequestContext $ctx, UserIdentity $user ) {
-		if ( $this->options->get( 'TestKitchenEnableExperimentConfigsFetching' ) ) {
-			$this->configsFetcher->updateExperimentConfigs();
-		}
-
-		$activeLoggedInExperiments = $this->config->has( 'TestKitchenExperiments' ) ?
-			$this->config->get( 'TestKitchenExperiments' ) :
-			$this->configsFetcher->getExperimentConfigs();
-
-		$enrollmentRequest = new EnrollmentRequest( $activeLoggedInExperiments, $user, $ctx->getRequest() );
-		$result = new EnrollmentResultBuilder();
-		$this->enrollmentAuthority->enrollUser( $enrollmentRequest, $result );
-
-		$enrollmentResult = $result->build();
-		foreach ( $enrollmentResult['enrolled'] as $experimentName ) {
-			if ( in_array( $experimentName, static::VALID_EXPERIMENTS ) ) {
-				$this->assignments[ $experimentName ] = $enrollmentResult['assigned'][ $experimentName ];
-			}
-		}
 	}
 
 	private function initialize(): void {

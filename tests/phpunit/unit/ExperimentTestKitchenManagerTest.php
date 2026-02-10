@@ -5,8 +5,6 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\ExperimentTestKitchenManager;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\TestKitchen\Coordination\EnrollmentAuthority;
-use MediaWiki\Extension\TestKitchen\InstrumentConfigsFetcher;
 use MediaWiki\Extension\TestKitchen\Sdk\Experiment;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\User\UserIdentityValue;
@@ -34,7 +32,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 				]
 			),
 			new NullLogger(),
-			...$this->getTestKitchenDependencies(),
+			$this->getExperimentManager(),
 			new HashConfig( [ 'TestKitchenExperiments' => [] ] ),
 		];
 		$sut = new class( ...$options ) extends ExperimentTestKitchenManager {
@@ -61,7 +59,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 				]
 			),
 			new NullLogger(),
-			...$this->getTestKitchenDependencies(
+			$this->getExperimentManager(
 				[
 					'experiment-1' => null,
 					'experiment-2' => null,
@@ -94,7 +92,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 				]
 			),
 			new NullLogger(),
-			...$this->getTestKitchenDependencies(
+			$this->getExperimentManager(
 				[
 					'experiment-3' => null,
 					'experiment-2' => 'some-group',
@@ -132,7 +130,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 				]
 			),
 			new NullLogger(),
-			...$this->getTestKitchenDependencies(
+			$this->getExperimentManager(
 				[
 					'experiment-3' => 'another-group',
 					'experiment-2' => 'some-group',
@@ -169,7 +167,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 				]
 			),
 			new NullLogger(),
-			...$this->getTestKitchenDependencies( [
+			$this->getExperimentManager( [
 				'experiment-1' => null,
 				'experiment-2' => null,
 			] ),
@@ -192,12 +190,10 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	private function getTestKitchenDependencies( ?array $assignments = [] ): array {
+	private function getExperimentManager( ?array $assignments = [] ): ExperimentManager {
 		if ( !class_exists( 'MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager' ) ) {
 			$this->markTestSkipped( 'TestKitchen\Sdk\ExperimentManager is not available.' );
 		}
-		$configsFetcher = $this->createMock( InstrumentConfigsFetcher::class );
-		$enrollmentAuthority = $this->createMock( EnrollmentAuthority::class );
 		$experimentManager = $this->createMock( ExperimentManager::class );
 		$experimentManager->method( 'getExperiment' )
 			->willReturnOnConsecutiveCalls(
@@ -209,10 +205,6 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 					return $experiment;
 				}, array_keys( $assignments ) ),
 			);
-		return [
-			$configsFetcher,
-			$enrollmentAuthority,
-			$experimentManager,
-		];
+		return $experimentManager;
 	}
 }

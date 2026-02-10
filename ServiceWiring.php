@@ -220,10 +220,7 @@ return [
 					$services->getMainConfig()
 				),
 				GrowthExperimentsServices::wrap( $services )->getLogger(),
-				$services->getService( 'TestKitchen.ConfigsFetcher' ),
-				$services->getService( 'TestKitchen.EnrollmentAuthority' ),
 				$services->getService( 'TestKitchen.ExperimentManager' ),
-				$services->getMainConfig(),
 			);
 		}
 		return new ExperimentUserManager(

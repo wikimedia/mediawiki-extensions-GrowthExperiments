@@ -787,11 +787,6 @@ class HomepageHooks implements
 			);
 		}
 		$wiki = WikiMap::getCurrentWikiId();
-		// If metrics platform is in use, force a re-enrollment to give a chance
-		// to assign to an active logged in experiment
-		if ( $this->experimentUserManager instanceof ExperimentTestKitchenManager ) {
-			$this->experimentUserManager->enrollUser( $context, $user );
-		}
 		// Variant assignment for forced variants and variant metric logging. Wrapped in a deferred update because
 		// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
 		// not guaranteed. This is necessary so the getOption call to the USER_PREFERENCE has a chance to retrieve

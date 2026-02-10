@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\GrowthExperimentsServices;
-use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\TestKitchen\Sdk\Experiment;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWikiIntegrationTestCase;
 
@@ -21,6 +21,13 @@ class ExperimentTestKitchenManagerTest extends MediaWikiIntegrationTestCase {
 				$centralIdMock = $this->createMock( CentralIdLookup::class );
 				$centralIdMock->method( 'centralIdFromName' )->willReturn( 123 );
 				return $centralIdMock;
+			},
+			'TestKitchen.ExperimentManager' => function (): ExperimentManager {
+				$experimentManagerMock = $this->createMock( ExperimentManager::class );
+				$experiment = $this->createMock( Experiment::class );
+				$experiment->method( 'getAssignedGroup' )->willReturn( 'control' );
+				$experimentManagerMock->method( 'getExperiment' )->willReturn( $experiment );
+				return $experimentManagerMock;
 			},
 		] );
 		$this->overrideConfigValue( 'GEUseTestKitchenExtension', true );
@@ -50,9 +57,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiIntegrationTestCase {
 		] );
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$experimentUserManager = $growthServices->getExperimentUserManager();
-		$testUser = $this->getTestUser()->getUser();
 		$this->assertInstanceOf( ExperimentTestKitchenManager::class, $experimentUserManager );
-		$experimentUserManager->enrollUser( RequestContext::getMain(), $testUser );
 		$currentExperiment = $experimentUserManager->getCurrentExperiment();
 		$this->assertInstanceOf( Experiment::class, $currentExperiment );
 	}
