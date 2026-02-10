@@ -7,7 +7,6 @@ use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
 use GrowthExperiments\ExperimentTestKitchenManager;
-use GrowthExperiments\ExperimentUserDefaultsManager;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -208,18 +207,6 @@ return [
 		return new EventGateImageSuggestionFeedbackUpdater(
 			$services->get( 'EventBus.EventBusFactory' ),
 			$services->getWikiPageFactory()
-		);
-	},
-
-	'GrowthExperimentsExperimentUserDefaultsManager' => static function (
-		MediaWikiServices $services
-	): ExperimentUserDefaultsManager {
-		return new ExperimentUserDefaultsManager(
-			GrowthExperimentsServices::wrap( $services )->getLogger(),
-			static function () use ( $services ) {
-				return $services->getCentralIdLookup();
-			},
-			$services->getUserIdentityUtils()
 		);
 	},
 

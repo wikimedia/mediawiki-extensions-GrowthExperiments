@@ -795,9 +795,8 @@ class HomepageHooks implements
 		// Variant assignment for forced variants and variant metric logging. Wrapped in a deferred update because
 		// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
 		// not guaranteed. This is necessary so the getOption call to the USER_PREFERENCE has a chance to retrieve
-		// a valid central user id. See also hook in ExperimentsHooks.php determining which a variant to assign
+		// a valid central user id.
 		DeferredUpdates::addCallableUpdate( function () use ( $user, $geForceVariant, $wiki ) {
-			// Get the variant assigned by ExperimentUserDefaultsManager
 			$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
 			if ( $this->featureManager->useTestKitchen() ) {
 				$variant = $this->experimentUserManager->getVariant( $user );
