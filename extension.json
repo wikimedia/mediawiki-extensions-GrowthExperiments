@@ -514,7 +514,7 @@
 				"GrowthExperimentsCampaignConfig",
 				"SpecialPageFactory",
 				"MainConfig",
-				"ExtensionRegistry",
+				"GrowthExperimentsFeatureManager",
 				"GrowthExperimentsExperimentUserManager"
 			]
 		},

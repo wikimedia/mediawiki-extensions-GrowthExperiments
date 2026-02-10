@@ -79,28 +79,14 @@ class VariantHooks implements
 	/** @var string User option name for storing the campaign associated with account creation */
 	public const GROWTH_CAMPAIGN = 'growthexperiments-campaign';
 
-	private UserOptionsManager $userOptionsManager;
-	private CampaignConfig $campaignConfig;
-	private SpecialPageFactory $specialPageFactory;
-	private Config $config;
-
-	private ExtensionRegistry $extensionRegistry;
-	private AbstractExperimentManager $experimentManager;
-
 	public function __construct(
-		UserOptionsManager $userOptionsManager,
-		CampaignConfig $campaignConfig,
-		SpecialPageFactory $specialPageFactory,
-		Config $config,
-		ExtensionRegistry $extensionRegistry,
-		AbstractExperimentManager $experimentManager,
+		private readonly UserOptionsManager $userOptionsManager,
+		private readonly CampaignConfig $campaignConfig,
+		private readonly SpecialPageFactory $specialPageFactory,
+		private readonly Config $config,
+		private readonly FeatureManager $featureManager,
+		private readonly AbstractExperimentManager $experimentManager,
 	) {
-		$this->userOptionsManager = $userOptionsManager;
-		$this->campaignConfig = $campaignConfig;
-		$this->specialPageFactory = $specialPageFactory;
-		$this->config = $config;
-		$this->extensionRegistry = $extensionRegistry;
-		$this->experimentManager = $experimentManager;
 	}
 
 	/** @inheritDoc */
@@ -134,11 +120,6 @@ class VariantHooks implements
 		] );
 	}
 
-	private function useTestKitchen(): bool {
-		return $this->extensionRegistry->isLoaded( 'TestKitchen' ) &&
-			$this->config->get( 'GEUseTestKitchenExtension' );
-	}
-
 	// Note: we intentionally do not make $wgGEHomepageDefaultVariant the default value in the
 	// UserGetDefaultOptions sense. That would result in the variant not being recorded if it's
 	// the same as the default, and thus changing when the default is changed, and in an A/B test
@@ -148,7 +129,10 @@ class VariantHooks implements
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$vars['wgGEUserVariants'] = self::VARIANTS;
 		$vars['wgGEDefaultUserVariant'] = $config->get( 'GEHomepageDefaultVariant' );
-		if ( $this->useTestKitchen() && $this->experimentManager instanceof ExperimentTestKitchenManager ) {
+		if (
+			$this->featureManager->useTestKitchen() &&
+			$this->experimentManager instanceof ExperimentTestKitchenManager
+		) {
 			$vars['wgGEUserVariants'] = $this->experimentManager->getValidVariants();
 		}
 	}
