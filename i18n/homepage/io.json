@@ -53,5 +53,6 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Vu}} kompletigis omna imaji sugestita hodie. Adjustez {{GENDER:|vua}} niveli di habileso por vidar altra tipi di redakturi, o retrovenez morge por plusa sugesti pri imaji.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Me komprenas",
 	"growthexperiments-addimage-caption-warning-tooshort": "Deskripto-texti mustas havar $1 {{PLURAL:$1|signo|signi}} od esar plu granda.",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Me komprenis",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Anular"
 }

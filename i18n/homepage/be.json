@@ -192,6 +192,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Разгарніце меню збоку і націсніце $2, каб  наведаць {{GENDER:$1|вашу}} дамашнюю старонку.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> з <strong>$2</strong> {{PLURAL:$2|прапановы|прапаноў}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Канец",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Ладаванне...",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 {{PLURAL:$1|прагляд|прагляды|праглядаў}} (за апошнія 60 дзён)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Папярэдняя прапанаваная праўка",
 	"growthexperiments-homepage-suggestededits-next-card": "Наступная прапанаваная праўка",

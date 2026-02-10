@@ -7,7 +7,8 @@
 			"No Sleep till Krupki",
 			"Plaga med",
 			"Tomato Cream",
-			"Tīgelika"
+			"Tīgelika",
+			"Ucukor"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панэль настаўніка",
@@ -119,6 +120,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Адмена",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Уступнае паведамленне",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "Паведамленне, якое {{GENDER:|вы}} выкарыстоўваеце, каб прадставіцца зменена на «$1».",
+	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Скасаваць",
 	"growthexperiments-mentor-list-missing-key": "Ключ <code>$1</code> адсутнічае",
 	"growthexperiments-mentor-list-datatype-mismatch": "Чакаецца, што <code>$1</code> будзе <code>$2</code>, але зараз гэта <code>$3</code>",
 	"growthexperiments-mentor-list-unexpected-key-mentor": "Вызначэнне настаўніка змяшчае нечаканы ключ <code>$1</code>",

@@ -5,7 +5,8 @@
 			"Effeietsanders",
 			"Mainframe98",
 			"Mar(c)",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|wat is dit?]])",
@@ -15,9 +16,9 @@
 	"growthexperiments-confirmemail-confirm-subject": "Welkom op {{SITENAME}}: Bevestig alsjeblieft je e-mailadres",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hallo}} $2,\n\nBedankt voor het toevoegen van een e-mail aan uw {{SITENAME}}-account, geregistreerd vanaf IP-adres $1.\n\nKlik op de onderstaande knop om dit te bevestigen als het e-mailadres dat u aan uw account \"$2\" wilt koppelen:\n\n$3\n\nLet op: deze bevestigingscode <strong>vervalt op $4</strong>.\n\nBedankt,\n\n{{SITENAME}}\n\n----\n\nOm de bevestiging van het e-mailadres te annuleren (omdat je het account niet hebt geregistreerd of om een andere reden), klik je op deze annuleringslink:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "E-mailadres bevestigen",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hallo}} $2,\n\nBedankt voor het toevoegen van een e-mail aan uw {{SITENAME}}-account, geregistreerd vanaf IP-adres $1.\n\nKlik op de onderstaande link om dit te bevestigen als het e-mailadres dat u aan uw account \"$2\" wilt koppelen:\n\n$3\n\nLet op: deze bevestigingscode verloopt bij $4.\n\nBedankt,\n\n{{SITENAME}}\n\n----\n\nOm de bevestiging van het e-mailadres te annuleren (omdat je het account niet hebt geregistreerd of om een andere reden), klik je op deze annuleringslink:\n\n$5",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hallo}} $2,\n\nBedankt voor het toevoegen van een e-mail aan uw {{SITENAME}}-account, geregistreerd vanaf IP-adres $1.\n\nKlik op de onderstaande koppeling om dit te bevestigen als het e-mailadres dat u aan uw account \"$2\" wilt koppelen:\n\n$3\n\nLet op: deze bevestigingscode verloopt bij $4.\n\nBedankt,\n\n{{SITENAME}}\n\n----\n\nOm de bevestiging van het e-mailadres te annuleren (omdat je het account niet hebt geregistreerd of om een andere reden), klik je op deze annuleringskoppeling:\n\n$5",
 	"growthexperiments-signupcampaign-title": "Bedankt voor het doneren! Word nu lid van de gemeenschap van redacteuren die Wikipedia vandaag beter maken",
-	"growthexperiments-signupcampaign-body": "Het bewerken van Wikipedia kan zo simpel zijn als het toevoegen van een link of het wijzigen van een woord. Ontvang suggesties voor artikelen in {{GENDER:|uw}} interessante onderwerpen nadat u uw account heeft aangemaakt!",
+	"growthexperiments-signupcampaign-body": "Het bewerken van Wikipedia kan zo simpel zijn als het toevoegen van een koppeling of het wijzigen van een woord. Ontvang suggesties voor pagina's in {{GENDER:|uw}} interessante onderwerpen nadat u uw account heeft aangemaakt!",
 	"growthexperiments-marketingvideocampaign-title": "Wikipedia is gebouwd door mensen zoals jij",
 	"growthexperiments-marketingvideocampaign-body": "280.000 bewerkers werken elke maand vrijwillig mee - doe jij ook mee?\n\nWe weten dat het maken van je eerste bewerking vaak intimiderend kan zijn, maar het is eigenlijk vrij eenvoudig. Vraag het maar aan onze toegewijde vrijwilligers, die je erover vertellen in deze video:",
 	"growthexperiments-marketingvideocampaign-body-mobile": "Wikipedia wordt gebouwd door duizenden mensen zoals jij. Doe je mee?\n\nDit is een bericht van onze bewerkers aan jou:",
