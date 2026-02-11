@@ -10,7 +10,8 @@
 			"البراء صالح",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح",
-			"Mohammed Qays"
+			"Mohammed Qays",
+			"Bachounda"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "{{GENDER:|فعّل|فعّلي}} أداة لوحة مساعدة المحرر",
@@ -47,14 +48,14 @@
 	"growthexperiments-help-panel-postedit-suggestededits-info": "وجد مستخدمون آخرون لـ{{SITENAME}} مقالات تحتاج إلى  تدخّل. {{GENDER:|تابع|تابعي}} التعديل عبر تصفّح هذه التعديلات المقترحة.",
 	"growthexperiments-help-panel-postedit-trynewtask-toast-message": "تهانينا على نشر تعديل مقترح آخر!",
 	"growthexperiments-help-panel-postedit-trynewtask-try-button-text": "{{GENDER:|جرّب|جرّبي}} مهمة جديدة",
-	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "لا، شكرًا",
+	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "لا، شكرا",
 	"growthexperiments-help-panel-postedit-trynewtask-header": "{{GENDER:|ارفع|ارفعي}} مستوى مهارتك عبر تجرِبة صنف جديد من التحرير",
 	"growthexperiments-help-panel-postedit-trynewtask-subheader-tasktype": "شكرًا لمساهمتك. {{GENDER:|جرّب|جرّبي}} صنفًا جديدًا من التحرير: <strong>$1</strong>",
 	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "لا تظهر مرّة أخرى",
 	"growthexperiments-help-panel-postedit-nonsuggested-header": "{{GENDER:|جرّب|جرّبي}} تعديلًا مقترحًا",
 	"growthexperiments-help-panel-postedit-nonsuggested-body": "تساعد التعديلاتُ المقترحة المحررينَ الجدد في التعرف على أفضل أساليب {{SITENAME}} وفي تطوير مهارات التحرير الأساسية.",
 	"growthexperiments-help-panel-postedit-nonsuggested-try-button-text": "{{GENDER:|جرّب|جرّبي}} التعديلات المقترحة",
-	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "لا، شكرًا",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "لا، شكرا",
 	"growthexperiments-help-panel-questionreview-title": "{{GENDER:|اطرح|اطرحي}} سؤالك على ميدان المساعدة",
 	"growthexperiments-help-panel-questionreview-title-mentor": "{{GENDER:|اسأل|اسألي}} مرشدك",
 	"growthexperiments-help-panel-questionreview-header": "عند إرسالك لسؤال، <strong>سَيُنشَر علنًا</strong> باسم المستخدم الخاص بك، \"$2\"، إلى $1، حيث سيحاول محرر متطوع آخر تقديم إجابة في غضون يوم أو يومين.",

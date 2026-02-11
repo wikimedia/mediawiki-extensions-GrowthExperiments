@@ -10,6 +10,7 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Хатняя старонка",
 	"prefs-homepage": "Функцыі рэдагаваньня навічка",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Ладаваньне...",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Дзеля пошуку прапанаваных рэдагаваньняў абярыце іншыя зацікаўленасьці ці ўзроўні складанасьці.",
 	"growthexperiments-homepage-suggestededits-error-description": "Калі ласка, паспрабуйце пазьней.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Мэнтар {{GENDER:$1|$1}} ужо зьмяняўся. Вы {{GENDER:$2|ўпеўненыя}}, што хочаце зьмяніць яго зноўку?",
