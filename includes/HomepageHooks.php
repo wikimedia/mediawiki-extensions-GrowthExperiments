@@ -1300,7 +1300,7 @@ class HomepageHooks implements
 		$mwServices = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $mwServices );
 		// Avoid accessing Suggested Edits configuration when the feature is disabled (T369312)
-		if ( $growthServices->getFeatureManager()->isNewcomerTasksAvailable() ) {
+		if ( !$growthServices->getFeatureManager()->isNewcomerTasksAvailable() ) {
 			return;
 		}
 		$growthServices = GrowthExperimentsServices::wrap( $mwServices );
