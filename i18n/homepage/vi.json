@@ -185,7 +185,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Xem câu hỏi của {{GENDER:$2|bạn}} trên trang thảo luận của {{GENDER:$1|người cố vấn}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Câu hỏi từ [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Câu hỏi từ [[User:$1|$1]] tại [[$2]]",
-	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Người cố vấn của [[User:$1|$1]] là <span class=\"plainlinks\">[{{fullurl:User: $2 }} $2 ]</span> hiện tại đang vắng mặt.",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Người cố vấn của [[User:$1|$1]], <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>, hiện đang vắng mặt.",
 	"growthexperiments-homepage-mentorship-system-message": "Lưu ý: $1",
 	"growthexperiments-specialimpact-title": "Ảnh hưởng",
 	"growthexperiments-specialimpact-showing-for-other-user": "Hiện dữ liệu ảnh hưởng của $1",
