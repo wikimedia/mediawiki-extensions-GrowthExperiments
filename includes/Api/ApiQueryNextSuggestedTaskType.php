@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Api;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
@@ -20,6 +21,7 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 	private ConfigurationLoader $configurationLoader;
 	private UserImpactLookup $userImpactLookup;
 	private TaskTypeManager $taskTypeManager;
+	private FeatureManager $featureManager;
 
 	public function __construct(
 		ApiQuery $queryModule,
@@ -27,13 +29,15 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 		ConfigurationLoader $configurationLoader,
 		LevelingUpManager $levelingUpManager,
 		UserImpactLookup $userImpactLookup,
-		TaskTypeManager $taskTypeManager
+		TaskTypeManager $taskTypeManager,
+		FeatureManager $featureManager
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gnstt' );
 		$this->levelingUpManager = $levelingUpManager;
 		$this->configurationLoader = $configurationLoader;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->taskTypeManager = $taskTypeManager;
+		$this->featureManager = $featureManager;
 	}
 
 	/**
@@ -42,6 +46,9 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 	public function execute() {
 		if ( !$this->getUser()->isNamed() ) {
 			$this->dieWithError( 'apierror-mustbeloggedin-generic' );
+		}
+		if ( !$this->featureManager->isNewcomerTasksAvailable() ) {
+			$this->dieWithError( [ 'apierror-moduledisabled', 'Suggested edits' ] );
 		}
 		$params = $this->extractRequestParams();
 		$this->getResult()->addValue(
@@ -87,11 +94,14 @@ class ApiQueryNextSuggestedTaskType extends ApiQueryBase {
 	 * @inheritDoc
 	 */
 	public function getAllowedParams() {
-		$taskTypes = $this->configurationLoader->getTaskTypes();
+		$taskTypes = $this->featureManager->isNewcomerTasksAvailable()
+			? $this->configurationLoader->getTaskTypes()
+			: [];
+
 		return [
 			'activetasktype' => [
 				ParamValidator::PARAM_TYPE => array_keys( $taskTypes ),
-				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_REQUIRED => $this->featureManager->isNewcomerTasksAvailable(),
 			],
 		];
 	}

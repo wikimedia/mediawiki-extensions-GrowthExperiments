@@ -275,7 +275,8 @@
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsLevelingUpManager",
 				"GrowthExperimentsUserImpactLookup",
-				"GrowthExperimentsTaskTypeManager"
+				"GrowthExperimentsTaskTypeManager",
+				"GrowthExperimentsFeatureManager"
 			]
 		}
 	},
