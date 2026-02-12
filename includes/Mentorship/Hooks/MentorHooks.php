@@ -218,7 +218,7 @@ class MentorHooks implements
 	public function onAuthChangeFormFields( $requests, $fieldInfo, &$formDescriptor, $action ) {
 		$forceMentor = RequestContext::getMain()->getRequest()
 			->getVal( 'forceMentor', '' );
-		if ( $forceMentor !== null ) {
+		if ( $forceMentor !== '' ) {
 			$formDescriptor['forceMentor'] = [
 				'type' => 'hidden',
 				'name' => 'forceMentor',
