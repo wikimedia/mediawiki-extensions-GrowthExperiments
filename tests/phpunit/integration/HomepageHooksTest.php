@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use CirrusSearch\HashSearchConfig;
 use CirrusSearch\Search\SearchContext;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -244,6 +245,23 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertFalse( $retval );
 		$this->assertNotNull( $builder );
+	}
+
+	/**
+	 * When Suggested Edits is disabled, onCirrusSearchAddQueryFeatures
+	 * must NOT call ConfigurationLoader::getTaskTypes().
+	 */
+	public function testOnCirrusSearchAddQueryFeaturesFeatureDisabled() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+		$this->overrideConfigValue( 'GEHomepageSuggestedEditsEnabled', false );
+		$configurationLoaderMock = $this->createMock( ConfigurationLoader::class );
+		$configurationLoaderMock->expects( $this->never() )
+			->method( 'getTaskTypes' );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoaderMock );
+		$searchConfig = new HashSearchConfig( [] );
+		$extraFeatures = [];
+		HomepageHooks::onCirrusSearchAddQueryFeatures( $searchConfig, $extraFeatures );
+		$this->assertSame( [], $extraFeatures );
 	}
 
 }
