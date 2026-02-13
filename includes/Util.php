@@ -13,6 +13,7 @@ use MediaWiki\Json\FormatJson;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
@@ -341,11 +342,8 @@ class Util {
 	 * @return string
 	 */
 	public static function getRestbaseUrl( Config $config ) {
-		$url = $config->get( 'GERestbaseUrl' );
-		if ( $url === false ) {
-			$url = $config->get( 'Server' ) . '/api/rest_v1';
-		}
-		return $url;
+		return $config->get( 'GERestbaseUrl' ) ?:
+			$config->get( MainConfigNames::Server ) . '/api/rest_v1';
 	}
 
 	/**

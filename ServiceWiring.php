@@ -117,6 +117,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Extension\Thanks\ThanksServices;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\WikiMap\WikiMap;
@@ -1106,7 +1107,7 @@ return [
 		MediaWikiServices $services
 	): TipNodeRenderer {
 		return new TipNodeRenderer(
-			$services->getMainConfig()->get( 'ExtensionAssetsPath' )
+			$services->getMainConfig()->get( MainConfigNames::ExtensionAssetsPath )
 		);
 	},
 
@@ -1228,7 +1229,7 @@ return [
 		// configuration, or passing through all the services involved here to the ResourceLoader
 		// callback). The nice long-term solution is probably to extend RL callback specification
 		// syntax to allow using something like the 'services' parameter of ObjectFactory.
-		$project = $services->getMainConfig()->get( 'ServerName' );
+		$project = $services->getMainConfig()->get( MainConfigNames::ServerName );
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' ) ) {
 			$project = $services->getConfigFactory()->makeConfig( 'PageViewInfo' )
 				->get( 'PageViewInfoWikimediaDomain' )

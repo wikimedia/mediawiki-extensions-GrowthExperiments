@@ -40,7 +40,7 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 
 		// If email field exists on the form, change email label from "(optional)" to "
 		// (recommended)", but only if email is optional
-		if ( isset( $formDescriptor['email'] ) && !$config->get( 'EmailConfirmToEdit' ) ) {
+		if ( isset( $formDescriptor['email'] ) && !$config->get( MainConfigNames::EmailConfirmToEdit ) ) {
 			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';
 			$formDescriptor['email']['help-message'] = 'growthexperiments-confirmemail-emailhelp';
 		}
@@ -53,7 +53,8 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 	 * @param array $info
 	 */
 	public function onUserSendConfirmationMail( $user, &$mail, $info ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getMainConfig();
 		if ( $config->get( MainConfigNames::UserEmailConfirmationUseHTML ) ) {
 			// Core's HTML version is in use, give it precedence
 			return;
@@ -78,10 +79,9 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, UserSendConfirmatio
 			wfMessage( 'growthexperiments-confirmemail-confirm-button' )->text()
 		) );
 
-		$services = MediaWikiServices::getInstance();
-
+		$logo = $config->get( MainConfigNames::Logo );
 		$logoImage = Html::rawElement( 'p', [], Html::element(
-			'img', [ 'src' => $services->getUrlUtils()->expand( $config->get( 'Logo' ), PROTO_CANONICAL ) ]
+			'img', [ 'src' => $services->getUrlUtils()->expand( $logo, PROTO_CANONICAL ) ]
 		) );
 
 		$mail['subject'] = wfMessage( 'growthexperiments-confirmemail-confirm-subject' )->text();
