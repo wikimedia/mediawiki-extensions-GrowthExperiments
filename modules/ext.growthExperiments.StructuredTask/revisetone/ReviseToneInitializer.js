@@ -176,7 +176,12 @@ class ReviseToneInitializer {
 		ve.init.target.editcheckController.refresh().then( ( actions ) => {
 			const action = actions.find( ( a ) => a.getName() === GrowthSuggestionToneCheck.static.name );
 			if ( action ) {
-				// focus the tone action and scroll it into view
+				// This select is working around VisualEditor on mobile taking
+				// a little while to settle the location of the viewport, so
+				// whether we wind up scrolled to the correct point would
+				// depend on the exact timing of the initialization here.
+				action.select( ve.init.target.surface, false );
+				// Focus the tone action and scroll it into view.
 				ve.init.target.editcheckController.ensureActionIsShown( action );
 			}
 		} );
