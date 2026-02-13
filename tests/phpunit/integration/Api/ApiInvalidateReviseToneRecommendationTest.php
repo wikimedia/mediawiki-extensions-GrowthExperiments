@@ -5,7 +5,6 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Integration;
 
 use CirrusSearch\WeightedTagsUpdater;
-use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
@@ -42,8 +41,7 @@ class ApiInvalidateReviseToneRecommendationTest extends ApiTestCase {
 		$mockWeightedTagsUpdater = $this->createNoOpMock( WeightedTagsUpdater::class );
 		$this->setService( WeightedTagsUpdater::SERVICE, $mockWeightedTagsUpdater );
 
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'You must be logged in.' );
+		$this->expectApiErrorCode( 'mustbeloggedin-generic' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'growthinvalidaterevisetonerecommendation',

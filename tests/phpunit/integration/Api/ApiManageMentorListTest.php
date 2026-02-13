@@ -6,7 +6,6 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Mentor;
-use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiTestCase;
@@ -67,8 +66,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 		], 'Mentorship' );
 		$user = $this->getMutableTestUser()->getUser();
 
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'You don\'t have permission to enroll as a mentor.' );
+		$this->expectApiErrorCode( 'permissiondenied' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'growthmanagementorlist',
@@ -91,8 +89,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 		], 'Mentorship' );
 		$user = $this->getMutableTestUser()->getUser();
 
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'You don\'t have permission to manage the list of mentors.' );
+		$this->expectApiErrorCode( 'permissiondenied' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'growthmanagementorlist',
@@ -110,8 +107,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testNonsenseGeAction() {
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'Unrecognized value for parameter "geaction": foobar.' );
+		$this->expectApiErrorCode( 'badvalue' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'growthmanagementorlist',

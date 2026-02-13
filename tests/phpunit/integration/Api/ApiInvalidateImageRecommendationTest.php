@@ -8,7 +8,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Tests\Api\ApiTestCase;
 
@@ -43,7 +42,7 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 	}
 
 	public function testNonExistentPage() {
-		$this->expectException( ApiUsageException::class );
+		$this->expectApiErrorCode( 'invalidtitle' );
 		$this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation',
 			'title' => 'Title',
@@ -70,16 +69,14 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 	}
 
 	public function testMissingTitleParam() {
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'The "title" parameter must be set.' );
+		$this->expectApiErrorCode( 'missingparam' );
 		$this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation',
 		] );
 	}
 
 	public function testMissingFilenameParam() {
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'The "filename" parameter must be set.' );
+		$this->expectApiErrorCode( 'missingparam' );
 		$this->doApiRequestWithToken( [
 			'action' => 'growthinvalidateimagerecommendation',
 			'title' => 'Blah',

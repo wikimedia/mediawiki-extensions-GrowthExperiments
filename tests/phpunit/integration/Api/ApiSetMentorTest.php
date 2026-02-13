@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use MediaWiki\Api\ApiUsageException;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
@@ -27,8 +26,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 class ApiSetMentorTest extends ApiTestCase {
 
 	public function testRequiredParams() {
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'The "mentee" parameter must be set.' );
+		$this->expectApiErrorCode( 'missingparam' );
 
 		$this->doApiRequestWithToken(
 			[ 'action' => 'growthsetmentor' ],
@@ -44,8 +42,7 @@ class ApiSetMentorTest extends ApiTestCase {
 		// Ensure no mentor changes are made
 		$this->setService( 'GrowthExperimentsMentorStore', $this->createNoOpMock( MentorStore::class ) );
 
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( "You don't have permission to set user's mentor." );
+		$this->expectApiErrorCode( 'permissiondenied' );
 		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
@@ -65,8 +62,7 @@ class ApiSetMentorTest extends ApiTestCase {
 		// Ensure no mentor changes are made
 		$this->setService( 'GrowthExperimentsMentorStore', $this->createNoOpMock( MentorStore::class ) );
 
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( "You don't have permission to set user's mentor." );
+		$this->expectApiErrorCode( 'permissiondenied' );
 		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
@@ -135,8 +131,7 @@ class ApiSetMentorTest extends ApiTestCase {
 		// Ensure no mentor changes are made
 		$this->setService( 'GrowthExperimentsMentorStore', $this->createNoOpMock( MentorStore::class ) );
 
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( "You don't have permission to set user's mentor." );
+		$this->expectApiErrorCode( 'permissiondenied' );
 		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
@@ -185,8 +180,7 @@ class ApiSetMentorTest extends ApiTestCase {
 		// Ensure no mentor changes are made
 		$this->setService( 'GrowthExperimentsMentorStore', $this->createNoOpMock( MentorStore::class ) );
 
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( "You don't have permission to set user's mentor." );
+		$this->expectApiErrorCode( 'permissiondenied' );
 		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',

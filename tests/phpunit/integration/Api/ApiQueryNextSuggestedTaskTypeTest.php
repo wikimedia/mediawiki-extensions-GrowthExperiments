@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\UserImpact\UserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
-use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\UserEditTracker;
 
@@ -23,8 +22,7 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 		] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'You must be logged in.' );
+		$this->expectApiErrorCode( 'mustbeloggedin-generic' );
 		$this->doApiRequest(
 			[ 'action' => 'query', 'meta' => 'growthnextsuggestedtasktype', 'gnsttactivetasktype' => 'copyedit' ],
 			null,
@@ -38,8 +36,7 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
 		] );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'Unrecognized value for parameter "gnsttactivetasktype": link-recommendation.' );
+		$this->expectApiErrorCode( 'badvalue' );
 		$this->doApiRequestWithToken( [
 			'action' => 'query',
 			'meta' => 'growthnextsuggestedtasktype',
@@ -48,8 +45,7 @@ class ApiQueryNextSuggestedTaskTypeTest extends ApiTestCase {
 	}
 
 	public function testRequiredTaskTypeParameter() {
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'The "gnsttactivetasktype" parameter must be set.' );
+		$this->expectApiErrorCode( 'missingparam' );
 		$this->doApiRequestWithToken(
 			[ 'action' => 'query', 'meta' => 'growthnextsuggestedtasktype' ],
 			null,

@@ -178,8 +178,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 				'by' => $this->getTestSysop()->getUser(),
 			] );
 
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'Your username or IP address has been blocked' );
+		$this->expectApiErrorCode( 'blocked' );
 
 		$this->doApiRequestWithToken(
 			$this->getParams( 'user is blocked', 'helpdesk' ),
@@ -200,7 +199,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 			}
 		);
 
-		$this->expectException( ApiUsageException::class );
+		$this->expectApiErrorCode( 'unknownerror-nocode' );
 
 		$this->doApiRequestWithToken(
 			$this->getParams( 'abuse filter denies edit', 'helpdesk' ),

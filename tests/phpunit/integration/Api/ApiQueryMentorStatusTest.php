@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
-use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
@@ -37,7 +36,7 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testAnonymousUserCannotExecute() {
-		$this->expectException( ApiUsageException::class );
+		$this->expectApiErrorCode( 'permissiondenied-generic' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'query',
@@ -52,7 +51,7 @@ class ApiQueryMentorStatusTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testNotMentorCannotExecute() {
-		$this->expectException( ApiUsageException::class );
+		$this->expectApiErrorCode( 'permissiondenied-generic' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'query',
