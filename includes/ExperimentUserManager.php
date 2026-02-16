@@ -54,22 +54,4 @@ class ExperimentUserManager extends AbstractExperimentManager {
 		}
 		return $variant;
 	}
-
-	/**
-	 * Set (but does not save) the variant for a user.
-	 *
-	 * @param UserIdentity $user
-	 * @param string $variant
-	 */
-	public function setVariant( UserIdentity $user, string $variant ): void {
-		$this->userOptionsManager->setOption(
-			$user,
-			VariantHooks::USER_PREFERENCE,
-			$variant
-		);
-	}
-
-	public function isValidVariant( string $variant ): bool {
-		return in_array( $variant, VariantHooks::VARIANTS );
-	}
 }

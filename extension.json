@@ -540,7 +540,6 @@
 		"APIGetAllowedParams": "visualeditor",
 		"AuthChangeFormFields": [
 			"confirmEmail",
-			"homepage",
 			"variant",
 			"mentor"
 		],
