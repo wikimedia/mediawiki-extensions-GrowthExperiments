@@ -68,7 +68,6 @@ use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\Skin\Skin;
 use MediaWiki\Skin\SkinTemplate;
-use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
@@ -108,7 +107,6 @@ class HomepageHooks implements
 	GetPreferencesHook,
 	UserGetDefaultOptionsHook,
 	ResourceLoaderExcludeUserOptionsHook,
-	AuthChangeFormFieldsHook,
 	LocalUserCreatedHook,
 	ListDefinedTagsHook,
 	ChangeTagsListActiveHook,
@@ -727,23 +725,6 @@ class HomepageHooks implements
 	}
 
 	/**
-	 * Pass through the debug flag used by LocalUserCreated.
-	 * @inheritDoc
-	 */
-	public function onAuthChangeFormFields( $requests, $fieldInfo, &$formDescriptor, $action ) {
-		$request = RequestContext::getMain()->getRequest();
-
-		$geForceVariant = $request->getVal( 'geForceVariant' );
-		if ( $geForceVariant !== null ) {
-			$formDescriptor['geForceVariant'] = [
-				'type' => 'hidden',
-				'name' => 'geForceVariant',
-				'default' => $geForceVariant,
-			];
-		}
-	}
-
-	/**
 	 * Enable Growth features for all new local accounts.
 	 * Growth features are now enabled for 100% of new users.
 	 *
@@ -757,7 +738,6 @@ class HomepageHooks implements
 		}
 
 		$context = RequestContext::getMain();
-		$geForceVariant = $context->getRequest()->getVal( 'geForceVariant' );
 		$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_ENABLE, 1 );
 		$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_PT_LINK, 1 );
 		// Default option is that the user has seen the tours/notices (so we don't prompt
@@ -787,36 +767,31 @@ class HomepageHooks implements
 			);
 		}
 		$wiki = WikiMap::getCurrentWikiId();
-		// Variant assignment for forced variants and variant metric logging. Wrapped in a deferred update because
+		// Try to log newly registered account experiment exposure. Wrapped in a deferred update because
 		// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
-		// not guaranteed. This is necessary so the getOption call to the USER_PREFERENCE has a chance to retrieve
-		// a valid central user id.
-		DeferredUpdates::addCallableUpdate( function () use ( $user, $geForceVariant, $wiki ) {
-			$variant = $this->userOptionsLookup->getOption( $user, VariantHooks::USER_PREFERENCE );
-			if ( $this->featureManager->useTestKitchen() ) {
+		// not guaranteed. REVIEW: This is necessary so the getOption call to the USER_PREFERENCE has a chance to
+		// retrieve a valid central user id.
+		// Check if above comment is still true or we can get rid of the deferred update
+		if ( $this->featureManager->useTestKitchen() ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $user, $wiki ) {
 				$variant = $this->experimentUserManager->getVariant( $user );
-				// Maybe override variant with query parameter
-			} elseif ( $geForceVariant !== null
-				&& $this->experimentUserManager->isValidVariant( $geForceVariant )
-				&& $geForceVariant !== $variant
-			) {
-				$variant = $geForceVariant;
-				$this->experimentUserManager->setVariant( $user, $variant );
-				$this->userOptionsManager->saveOptions( $user );
-			}
+				if ( !$variant ) {
+					return;
+				}
+				$this->growthInteractionLogger->log( $user, 'experiment_enrollment', [
+					'action_source' => 'LocalUserCreatedHook',
+					'variant' => $variant,
+				] );
 
-			$this->growthInteractionLogger->log( $user, 'experiment_enrollment', [
-				'action_source' => 'LocalUserCreatedHook',
-				'variant' => $variant,
-			] );
+				$this->statsFactory
+					->withComponent( 'GrowthExperiments' )
+					->getCounter( 'user_variant_total' )
+					->setLabel( 'wiki', $wiki )
+					->setLabel( 'variant', $variant )
+					->increment();
+			} );
 
-			$this->statsFactory
-				->withComponent( 'GrowthExperiments' )
-				->getCounter( 'user_variant_total' )
-				->setLabel( 'wiki', $wiki )
-				->setLabel( 'variant', $variant )
-				->increment();
-		} );
+		}
 
 		// Place an empty user impact object in the database table cache, to avoid
 		// making an extra HTTP request on first visit to Special:Homepage.

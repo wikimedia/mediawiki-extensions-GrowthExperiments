@@ -72,13 +72,6 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 					public function getVariant( UserIdentity $user ): string {
 						return 'growthexperiments-revise-tone_treatment';
 					}
-
-					public function isValidVariant( string $variant ): bool {
-						return true;
-					}
-
-					public function setVariant( UserIdentity $user, string $variant ): void {
-					}
 				};
 			},
 		] );

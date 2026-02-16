@@ -99,15 +99,4 @@ class ExperimentTestKitchenManager extends AbstractExperimentManager {
 		}
 		return $variants;
 	}
-
-	/** TODO deprecate and/or migrate geForcedVariant feature once T404622 is resolved */
-	public function isValidVariant( string $variant ): bool {
-		// Only used for geForcedVariant feature, Test Kitchen does not support this.
-		return false;
-	}
-
-	/** TODO deprecate and/or migrate geForcedVariant feature once T404622 is resolved */
-	public function setVariant( UserIdentity $user, string $variant ): void {
-		// Only used for geForcedVariant feature, should not be called.
-	}
 }
