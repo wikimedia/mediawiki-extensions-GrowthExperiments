@@ -1,7 +1,6 @@
 <?php
 
 use CirrusSearch\CirrusSearchServices;
-use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
@@ -14,6 +13,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
@@ -213,7 +213,7 @@ return [
 
 	'GrowthExperimentsExperimentUserManager' => static function (
 		MediaWikiServices $services
-	): AbstractExperimentManager {
+	): IExperimentManager {
 		if ( GrowthExperimentsServices::wrap( $services )->getFeatureManager()->useTestKitchen() ) {
 			return new ExperimentTestKitchenManager(
 				new ServiceOptions(

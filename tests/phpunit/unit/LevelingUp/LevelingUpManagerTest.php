@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\LevelingUp\NotificationGetStartedJob;
 use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
@@ -77,7 +76,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 				'hard' => [ 'cx', 'newarticle' ],
 			],
 			$this->getLevelingUpManager(
-				null,
 				null,
 				null,
 				null,
@@ -295,7 +293,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		?UserImpactLookup $userImpactLookup = null,
 		?TaskSuggesterFactory $taskSuggesterFactory = null,
 		?NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup = null,
-		?AbstractExperimentManager $experimentManager = null,
 		?ServiceOptions $serviceOptions = null,
 		?Config $growthConfig = null,
 		?UserEditTracker $userEditTracker = null,
@@ -397,7 +394,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			null,
 			null,
 			null,
-			null,
 			$growthConfig
 		);
 
@@ -439,7 +435,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			->willReturn( $editCount );
 
 		$levelingUpManager = $this->getLevelingUpManager(
-			null,
 			null,
 			null,
 			null,
@@ -514,7 +509,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			null,
 			null,
 			null,
-			null,
 			$growthConfig,
 			$userEditTracker
 		);
@@ -565,7 +559,12 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testScheduleNotificationNullDelay( string $jobName, string $methodName, string $configOption ) {
 		$levelingUpManager = $this->getLevelingUpManager(
-			null, null, null, null, null, null, null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
 			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
 				[
 					$configOption => null,
@@ -598,7 +597,12 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			->with( $jobName )
 			->willReturn( $jobQueue );
 		$levelingUpManager = $this->getLevelingUpManager(
-			null, $jobQueueGroup, null, null, null, null, null,
+			null,
+			$jobQueueGroup,
+			null,
+			null,
+			null,
+			null,
 			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
 				[
 					$configOption => 100,
@@ -648,7 +652,12 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 
 		$jobQueueGroup = $this->getJobQueueGroup( 200, $jobName );
 		$levelingUpManager = $this->getLevelingUpManager(
-			null, $jobQueueGroup, null, null, null, null, null,
+			null,
+			$jobQueueGroup,
+			null,
+			null,
+			null,
+			null,
 			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
 				[
 					$configOption => 100,

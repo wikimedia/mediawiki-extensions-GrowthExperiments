@@ -85,7 +85,7 @@ class VariantHooks implements
 		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly Config $config,
 		private readonly FeatureManager $featureManager,
-		private readonly AbstractExperimentManager $experimentManager,
+		private readonly IExperimentManager $experimentManager,
 	) {
 	}
 

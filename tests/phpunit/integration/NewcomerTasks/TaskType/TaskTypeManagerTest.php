@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\IExperimentManager;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
@@ -68,7 +69,7 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 						[ 'GEHomepageDefaultVariant' ],
 						[ 'GEHomepageDefaultVariant' => 'growth-control' ],
 					),
-				) extends AbstractExperimentManager {
+				) extends AbstractExperimentManager implements IExperimentManager {
 					public function getVariant( UserIdentity $user ): string {
 						return 'growthexperiments-revise-tone_treatment';
 					}
