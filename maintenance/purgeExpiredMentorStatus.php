@@ -218,18 +218,6 @@ class PurgeExpiredMentorStatus extends Maintenance {
 			$this->fatalError( $this->statusFormatter->getWikiText( $storeStatus, [ 'lang' => 'en' ] ) );
 		}
 	}
-
-	/**
-	 * @return StdClass
-	 * @throws MaintenanceFatalError
-	 */
-	private function getMentorListConfig(): StdClass {
-		$configStatus = $this->mentorListProvider->loadValidConfiguration();
-		if ( !$configStatus->isOK() ) {
-			$this->fatalError( $this->statusFormatter->getWikiText( $configStatus, [ 'lang' => 'en' ] ) );
-		}
-		return $configStatus->getValue();
-	}
 }
 
 // @codeCoverageIgnoreStart
