@@ -26,12 +26,7 @@ trait CommunityGetMentorDataTrait {
 			return [];
 		}
 
-		// needed to receive an associative array
-		// REVIEW: Do we want to keep this? See T369608.
-		$data = json_decode(
-			json_encode( $result->getValue() ),
-			true
-		);
+		$data = $result->getValue();
 		if ( !is_array( $data ) ) {
 			$this->logger->error(
 				__METHOD__ . ' failed to convert mentor list to an associative array',

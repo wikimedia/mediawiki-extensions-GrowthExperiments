@@ -17,7 +17,6 @@ use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MessageLocalizer;
-use stdClass;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -164,7 +163,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 		}
 	}
 
-	private function filterConfigAndBatch( StdClass $config ): Generator {
+	private function filterConfigAndBatch( array $config ): Generator {
 		$batch = [];
 		foreach ( $this->getMentorEntries( $config ) as $mentorUserIdentity ) {
 			$userId = $mentorUserIdentity->getUser()->getId();
@@ -193,18 +192,18 @@ class PurgeExpiredMentorStatus extends Maintenance {
 	/**
 	 * @throws MaintenanceFatalError
 	 */
-	private function getMentorEntries( StdClass $config ): array {
+	private function getMentorEntries( array $config ): array {
 		return array_map( function ( int $userId ) {
 			return $this->userFactory->newFromId( $userId );
-		}, array_keys( (array)$config->{CommunityStructuredMentorWriter::CONFIG_KEY } ) );
+		}, array_keys( $config[CommunityStructuredMentorWriter::CONFIG_KEY] ) );
 	}
 
 	/**
 	 * @throws MaintenanceFatalError
 	 */
-	private function deleteTimestampsFromConfig( StdClass $config, array $batch ): void {
+	private function deleteTimestampsFromConfig( array $config, array $batch ): void {
 		foreach ( $batch as $mentorId ) {
-			unset( $config->{CommunityStructuredMentorWriter::CONFIG_KEY}->{$mentorId}->awayTimestamp );
+			unset( $config[CommunityStructuredMentorWriter::CONFIG_KEY][$mentorId]['awayTimestamp'] );
 		}
 		$summary = $this->messageLocalizer->msg(
 			'growthexperiments-maintenance-config-change-summary-purge-timestamps'
