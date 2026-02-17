@@ -6,7 +6,6 @@ use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
 use GrowthExperiments\ExperimentTestKitchenManager;
-use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
@@ -101,6 +100,7 @@ use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
+use GrowthExperiments\StaticExperimentManager;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
@@ -224,15 +224,11 @@ return [
 				$services->getService( 'TestKitchen.ExperimentManager' ),
 			);
 		}
-		return new ExperimentUserManager(
-			GrowthExperimentsServices::wrap( $services )->getLogger(),
+		return new StaticExperimentManager(
 			new ServiceOptions(
-				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
+				StaticExperimentManager::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
 			),
-			$services->getUserOptionsManager(),
-			$services->getUserOptionsLookup(),
-			$services->getUserFactory()
 		);
 	},
 

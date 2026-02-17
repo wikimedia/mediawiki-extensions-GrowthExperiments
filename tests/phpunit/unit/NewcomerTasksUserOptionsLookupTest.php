@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\ExperimentTestKitchenManager;
-use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -50,7 +50,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GEReviseToneSuggestedEditEnabled' => false,
 			'GEUseTestKitchenExtension' => false,
 		] );
-		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
+		$experimentUserManager = $this->createNoOpMock( IExperimentManager::class );
 
 		$lookup = new NewcomerTasksUserOptionsLookup( $experimentUserManager, $userOptionsLookup,
 			$config, $this->getConfigurationLoader( [ 'copyedit', 'links' ] ) );
@@ -106,7 +106,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GEReviseToneSuggestedEditEnabled' => false,
 			'GEUseTestKitchenExtension' => false,
 		] );
-		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
+		$experimentUserManager = $this->createNoOpMock( IExperimentManager::class );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
@@ -150,7 +150,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GEReviseToneSuggestedEditEnabled' => false,
 			'GEUseTestKitchenExtension' => false,
 		] );
-		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
+		$experimentUserManager = $this->createNoOpMock( IExperimentManager::class );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
@@ -190,7 +190,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GEReviseToneSuggestedEditEnabled' => false,
 			'GEUseTestKitchenExtension' => true,
 		] );
-		$experimentUserManager = $this->createMock( ExperimentUserManager::class );
+		$experimentUserManager = $this->createMock( IExperimentManager::class );
 		$matcher = $this->exactly( 2 );
 		$returnCallback = static function (
 			UserIdentityValue $actualUser,
@@ -237,7 +237,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetDefaultTaskTypes() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
-		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
+		$experimentUserManager = $this->createNoOpMock( IExperimentManager::class );
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [],
 		] );
@@ -285,7 +285,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GEReviseToneSuggestedEditEnabled' => false,
 			'GEUseTestKitchenExtension' => false,
 		] );
-		$experimentUserManager = $this->createNoOpMock( ExperimentUserManager::class );
+		$experimentUserManager = $this->createNoOpMock( IExperimentManager::class );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader( [ 'copyedit' ] )

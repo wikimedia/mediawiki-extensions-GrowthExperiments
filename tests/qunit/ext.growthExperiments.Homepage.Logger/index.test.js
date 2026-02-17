@@ -12,7 +12,6 @@ QUnit.module( 'ext.growthExperiments.Homepage.Logger/index.js', QUnit.newMwEnvir
 	},
 	beforeEach: function () {
 		this.sandbox.stub( mw.user.options, 'get' );
-		mw.user.options.get.withArgs( 'growthexperiments-homepage-variant' ).returns( 'X' );
 	},
 } ) );
 
@@ -30,7 +29,7 @@ QUnit.test( 'log', function ( assert ) {
 		state: 'done',
 		user_id: mw.user.getId(),
 		user_editcount: 123,
-		user_variant: 'X',
+		user_variant: 'control',
 		module: 'foo',
 		is_mobile: OO.ui.isMobile(),
 		mode: 'desktop',
@@ -53,7 +52,7 @@ QUnit.test( 'do not include state in event if empty', function ( assert ) {
 		action_data: '',
 		user_id: mw.user.getId(),
 		user_editcount: 123,
-		user_variant: 'X',
+		user_variant: 'control',
 		module: 'mentor',
 		is_mobile: OO.ui.isMobile(),
 		mode: 'desktop',

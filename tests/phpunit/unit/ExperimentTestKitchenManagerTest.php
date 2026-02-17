@@ -36,7 +36,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 			new HashConfig( [ 'TestKitchenExperiments' => [] ] ),
 		];
 		$sut = new class( ...$options ) extends ExperimentTestKitchenManager {
-			// No valid experiments, fallback to configured default, same as for ExperimentUserManager
+			// No valid experiments, fallback to configured default
 			public const VALID_EXPERIMENTS = [];
 		};
 

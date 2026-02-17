@@ -2,11 +2,13 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\FeatureManager;
-use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
+use GrowthExperiments\StaticExperimentManager;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\HashConfig;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\ResourceLoader as RL;
@@ -37,7 +39,6 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 		$variantHooks->onGetPreferences( $this->createNoOpMock( User::class ), $prefs );
 		$this->assertArrayEquals(
 			[
-				'growthexperiments-homepage-variant' => [ 'type' => 'api' ],
 				'growthexperiments-campaign' => [ 'type' => 'api' ],
 			],
 			$prefs
@@ -68,8 +69,8 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 			new HashConfig( [ 'GEHomepageDefaultVariant' => 'control' ] )
 		);
 		$this->assertArrayEquals( [
-			VariantHooks::VARIANTS,
-			'control',
+			'wgGEDefaultUserVariant' => 'control',
+			'wgGEUserVariants' => [ 'control' ],
 		], $vars );
 	}
 
@@ -84,17 +85,18 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 	}
 
 	private function getVariantHooksMock(): VariantHooks {
-		$extensionRegistry = $this->createMock( FeatureManager::class );
-		$extensionRegistry->method( 'useTestKitchen' )->willReturn( false );
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'useTestKitchen' )->willReturn( false );
 		return new VariantHooks(
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$this->createNoOpMock( CampaignConfig::class ),
 			$this->createNoOpMock( SpecialPageFactory::class ),
-			new HashConfig( [
-				'GEHomepageDefaultVariant' => 'control',
-			] ),
-			$extensionRegistry,
-			$this->createNoOpMock( IExperimentManager::class ),
+			new StaticExperimentManager( new ServiceOptions(
+				ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GEHomepageDefaultVariant' => 'control',
+				] ),
+			) ),
 		);
 	}
 

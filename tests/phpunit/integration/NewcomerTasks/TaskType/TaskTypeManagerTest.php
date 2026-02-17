@@ -2,15 +2,13 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\IExperimentManager;
+use GrowthExperiments\StaticExperimentManager;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\User\User;
-use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -64,16 +62,12 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 		] );
 		$this->overrideMwServices( null, [
 			'GrowthExperimentsExperimentUserManager' => static function () {
-				return new class(
+				return new StaticExperimentManager(
 					new ServiceOptions(
 						[ 'GEHomepageDefaultVariant' ],
-						[ 'GEHomepageDefaultVariant' => 'growth-control' ],
+						[ 'GEHomepageDefaultVariant' => 'growthexperiments-revise-tone_treatment' ],
 					),
-				) extends AbstractExperimentManager implements IExperimentManager {
-					public function getVariant( UserIdentity $user ): string {
-						return 'growthexperiments-revise-tone_treatment';
-					}
-				};
+				);
 			},
 		] );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();

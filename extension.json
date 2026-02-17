@@ -512,8 +512,6 @@
 				"UserOptionsManager",
 				"GrowthExperimentsCampaignConfig",
 				"SpecialPageFactory",
-				"MainConfig",
-				"GrowthExperimentsFeatureManager",
 				"GrowthExperimentsExperimentUserManager"
 			]
 		},
@@ -658,7 +656,6 @@
 			"mentoruseroptions",
 			"personalizedpraise",
 			"tour",
-			"variant",
 			"levelingup"
 		],
 		"UserGetRights": "mentor",
@@ -2747,7 +2744,7 @@
 			"value": 30
 		},
 		"GEHomepageDefaultVariant": {
-			"description": "Experiment variant to use for users who weren't assigned a variant at account creation time, or the variant they got is not valid anymore. Valid values: 'control'.",
+			"description": "Experiment variant to use for users on sites where TestKitchen is not available (non-WMF). Valid values: virtually anything, there's no validation, in practice this should be a string representing a valid variant name for the current experiment.",
 			"value": "control"
 		},
 		"GEMentorshipNewAccountEnablePercentage": {

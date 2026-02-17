@@ -27,4 +27,11 @@ interface IExperimentManager {
 	 * @return bool
 	 */
 	public function isUserInVariant( UserIdentity $user, $variant ): bool;
+
+	/**
+	 * Return valid variants for the current experiment. GE only supports one experiment
+	 * at a time.
+	 * @return string[]
+	 */
+	public function getValidVariants(): array;
 }

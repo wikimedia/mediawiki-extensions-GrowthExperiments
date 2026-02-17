@@ -81,7 +81,8 @@ class ExperimentTestKitchenManager extends AbstractExperimentManager implements 
 	 */
 	public function getVariant( ?UserIdentity $user ): string {
 		$this->initialize();
-		// No experiment in course, behave as ExperimentUserManager and return default variant
+		// TODO TestKitchen's group value when there user is unsampled or experiment isn't in course is null,
+		// maybe refactor getVariant signature to return ?string so we can use same values with both managers
 		if ( !$this->currentExperimentName ) {
 			return $this->options->get( 'GEHomepageDefaultVariant' );
 		}

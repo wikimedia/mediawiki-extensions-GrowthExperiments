@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\ExperimentTestKitchenManager;
-use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
@@ -98,7 +98,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		);
 
 		$experimentUserManagerMock =
-			$this->createMock( ExperimentUserManager::class );
+			$this->createMock( IExperimentManager::class );
 		$experimentUserManagerMock->method( 'getVariant' )
 			->willReturn( ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
 		$experimentUserManagerMock->method( 'isUserInVariant' )->willReturn( true );
@@ -127,7 +127,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$userOptionsManagerMock->expects( $this->never() )->method( 'setOption' );
 
 		$experimentUserManagerMock =
-			$this->createMock( ExperimentUserManager::class );
+			$this->createMock( IExperimentManager::class );
 		$experimentUserManagerMock->method( 'getVariant' )
 			->willReturn( ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
 		$experimentUserManagerMock->method( 'isUserInVariant' )->willReturn( true );
@@ -186,7 +186,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$experimentUserManagerMock = $overrides[ 'experimentUserManager' ];
 		} else {
 			$experimentUserManagerMock =
-				$this->createMock( ExperimentUserManager::class );
+				$this->createMock( IExperimentManager::class );
 			$experimentUserManagerMock->method( 'getVariant' )
 				->willReturn( 'X' );
 		}

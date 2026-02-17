@@ -1,35 +1,5 @@
 ( function () {
 
-	// internal methods
-
-	/**
-	 * Update the user preferences
-	 *
-	 * @private
-	 * @param {Object} prefData Updated preferences
-	 * @return {JQuery.Promise<unknown>}
-	 */
-	function saveOptions( prefData ) {
-		return mw.loader.using( 'mediawiki.api' ).then( () => new mw.Api().saveOptions( prefData ) );
-	}
-
-	/**
-	 * Update the user preferences, reset the task cache and reload the page.
-	 *
-	 * @private
-	 * @param {Object} prefData Updated preferences
-	 * @return {JQuery.Promise<unknown>}
-	 */
-	function updateTaskPreference( prefData ) {
-		return $.when( saveOptions( prefData ), mw.loader.using( 'mediawiki.util' ) ).then(
-			// Do a cache reset as a variant switch will mess up caching.
-			// FIXME T278123 remove when done.
-			() => $.get( mw.util.getUrl( 'Special:Homepage', { resetTaskCache: 1 } ) ),
-		).then( () => {
-			window.location.reload();
-		} );
-	}
-
 	// module exports used in other modules
 
 	/**
@@ -113,8 +83,9 @@
 	 * @return {string}
 	 */
 	function getUserVariant() {
+		// TODO remove once the consumers in modules/ext.growthExperiments.Homepage.Logger/{index,useInstrument}.js
+		// are migrated to use TestKitchen, T417876
 		const growthVariants = mw.config.get( 'wgGEUserVariants' );
-		let variant = null;
 		if ( mw.config.get( 'wgGEUseTestKitchenExtension' ) ) {
 			const assignments = mw.testKitchen.getAssignments();
 			const growthFormattedAssignments = Object.keys( assignments )
@@ -122,26 +93,10 @@
 			// Should only be one
 			const geExperimentVariants = growthFormattedAssignments
 				.filter( ( value ) => growthVariants.includes( value ) );
-			variant = geExperimentVariants.pop() || null;
-		} else {
-			variant = mw.user.options.get( 'growthexperiments-homepage-variant' );
+			return geExperimentVariants.pop() || null;
 		}
 
-		if ( variant === null || !growthVariants.includes( variant ) ) {
-			variant = mw.config.get( 'wgGEDefaultUserVariant' );
-		}
-		return variant;
-	}
-
-	/**
-	 * @param {string|string[]} variants
-	 * @return {boolean}
-	 */
-	function isUserInVariant( variants ) {
-		if ( typeof variants === 'string' ) {
-			variants = [ variants ];
-		}
-		return variants.includes( getUserVariant() );
+		return mw.config.get( 'wgGEDefaultUserVariant' );
 	}
 
 	/**
@@ -206,35 +161,6 @@
 		return new Intl.Locale( language, languageOptions );
 	}
 
-	// debug / QA helpers exposed via ge.utils
-
-	/**
-	 * Set the variant the user is assigned to, for A/B testing and gradual rollouts.
-	 *
-	 * @private For debug/QA purposes only.
-	 * @param {string|null} variant The new variant, or null to unset.
-	 * @return {JQuery.Promise<unknown>}
-	 */
-	function setUserVariant( variant ) {
-		if ( mw.config.get( 'wgGEUseTestKitchenExtension' ) ) {
-			const growthVariants = mw.config.get( 'wgGEUserVariants' );
-			if ( growthVariants.includes( variant ) ) {
-				mw.testKitchen.overrideExperimentGroup( ...variant.split( '_' ) );
-				return $.Deferred().resolve( true ).promise();
-			} else {
-				const warnMsg =
-					'Failed attempt to set unrecognized variant. See allowed values in wgGEUserVariants';
-				mw.log.warn( warnMsg );
-				return $.Deferred().reject( warnMsg ).promise();
-			}
-		} else {
-			return updateTaskPreference( {
-				'growthexperiments-homepage-variant': variant,
-			} );
-
-		}
-	}
-
 	/**
 	 * Normalize a label for statistics by replacing dots and hyphens with underscores.
 	 *
@@ -251,15 +177,14 @@
 	// Expose some methods for debugging.
 	// @ts-expect-error for debugging only, should not be used in production
 	window.ge = window.ge || {};
-	// @ts-expect-error for debugging only, should not be used in production
-	ge.utils = { getUserVariant: getUserVariant, setUserVariant: setUserVariant };
+
+	ge.utils = { getUserVariant };
 
 	module.exports = {
 		normalizeLabelForStats,
 		serializeActionData: serializeActionData,
 		removeQueryParam: removeQueryParam,
 		isValidEditor: isValidEditor,
-		isUserInVariant: isUserInVariant,
 		getUserVariant: getUserVariant,
 		formatTitle: formatTitle,
 		getSuggestedEditsFeedUrl: getSuggestedEditsFeedUrl,
