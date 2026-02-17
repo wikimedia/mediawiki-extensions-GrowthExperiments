@@ -21,7 +21,7 @@ class PurgeExpiredMentorStatusTest extends MaintenanceBaseTestCase {
 	public function testPurgeExpiredStatus(): void {
 		$ccServices = CommunityConfigurationServices::wrap( $this->getServiceContainer() );
 		$mentorListProvider = $ccServices->getConfigurationProviderFactory()->newProvider( 'GrowthMentorList' );
-		$mentorListProvider->storeValidConfiguration( [
+		$storeStatus = $mentorListProvider->storeValidConfiguration( [
 			'Mentors' => [
 				'1' => [
 					'message' => 'Untouched',
@@ -42,24 +42,26 @@ class PurgeExpiredMentorStatusTest extends MaintenanceBaseTestCase {
 				],
 			],
 		], $this->getTestUser( [ 'interface-admin' ] )->getUser() );
+		$this->assertStatusOK( $storeStatus );
+
 		// Set a time in between 12's mentor timestamp and 21's
 		ConvertibleTimestamp::setFakeTime( strtotime( '2025-04-01T00:00Z' ) );
 		$this->maintenance->execute();
 		$configStatus = $mentorListProvider->loadValidConfigurationUncached();
 		$this->assertTrue( $configStatus->isOK() );
-		$this->assertEquals( (object)[
-			'Mentors' => (object)[
-				'1' => (object)[
+		$this->assertEquals( [
+			'Mentors' => [
+				'1' => [
 					'message' => 'Untouched',
 					'weight' => 2,
 					'username' => 'Mentor 1',
 				],
-				'12' => (object)[
+				'12' => [
 					'message' => 'Expired',
 					'weight' => 2,
 					'username' => 'Mentor 123',
 				],
-				'21' => (object)[
+				'21' => [
 					'message' => 'Not expired',
 					'weight' => 2,
 					'username' => 'Mentor 321',

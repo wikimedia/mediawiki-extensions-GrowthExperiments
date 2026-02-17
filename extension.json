@@ -786,6 +786,9 @@
 						"MainConfig",
 						"GrowthExperimentsFeatureManager"
 					]
+				},
+				"GrowthMentorList": {
+					"class": "GrowthExperiments\\Config\\Providers\\MentorListConfigProvider"
 				}
 			},
 			"Validators": {
@@ -879,9 +882,12 @@
 						}
 					},
 					"validator": {
-						"type": "GrowthMentorship"
+						"type": "jsonschema",
+						"args": [
+							"GrowthExperiments\\Config\\Schemas\\MentorListSchema"
+						]
 					},
-					"type": "data",
+					"type": "GrowthMentorList",
 					"options": {
 						"excludeFromUI": true
 					}

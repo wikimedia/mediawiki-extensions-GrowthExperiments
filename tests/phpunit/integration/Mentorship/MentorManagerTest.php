@@ -20,17 +20,8 @@ use MediaWikiIntegrationTestCase;
 class MentorManagerTest extends MediaWikiIntegrationTestCase {
 	use CreateMenteeHelpers;
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function setUp(): void {
-		// for some reason, the content of MediaWiki:GrowthMentors.json survives between tests,
-		// causing failures. Reset the structured mentor list before every test.
-		$this->insertPage( 'MediaWiki:GrowthMentors.json', FormatJson::encode( [
-			'Mentors' => [],
-		] ) );
-
-		// Prevent caching of MediaWiki:GrowthMentors.json
+		parent::setUp();
 		$this->setMainCache( CACHE_NONE );
 	}
 
