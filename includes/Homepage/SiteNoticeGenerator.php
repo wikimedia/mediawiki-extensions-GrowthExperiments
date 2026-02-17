@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Homepage;
 
-use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
 use MediaWiki\Html\Html;
@@ -15,23 +14,18 @@ use OOUI\IconWidget;
 use UserOptionsUpdateJob;
 
 class SiteNoticeGenerator {
-
-	private AbstractExperimentManager $experimentUserManager;
 	private UserOptionsLookup $userOptionsLookup;
 	private JobQueueGroup $jobQueueGroup;
 	private ?bool $homepageDiscoveryNoticeSeen = null;
 
 	/**
-	 * @param AbstractExperimentManager $experimentUserManager
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param JobQueueGroup $jobQueueGroup
 	 */
 	public function __construct(
-		AbstractExperimentManager $experimentUserManager,
 		UserOptionsLookup $userOptionsLookup,
 		JobQueueGroup $jobQueueGroup
 	) {
-		$this->experimentUserManager = $experimentUserManager;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->jobQueueGroup = $jobQueueGroup;
 	}
@@ -250,9 +244,7 @@ class SiteNoticeGenerator {
 		$msgBodyKey = "growthexperiments-homepage-discovery-mobile-$location-banner-text";
 
 		$siteNotice = Html::rawElement( 'div', [ 'class' => 'mw-ge-homepage-discovery-banner-mobile' ],
-			Html::element( 'div', [ 'class' => 'mw-ge-homepage-discovery-arrow ' .
-				'mw-ge-homepage-discovery-arrow-user-variant-' .
-				$this->experimentUserManager->getVariant( $user ) ] ) .
+			Html::element( 'div', [ 'class' => 'mw-ge-homepage-discovery-arrow' ] ) .
 			Html::rawElement( 'div', [ 'class' => 'mw-ge-homepage-discovery-message' ],
 				$this->getHeader( $output, $user, $msgHeaderKey, $location ) .
 				$this->getDiscoveryTextWithAvatarIcon( $output, $user, $msgBodyKey )

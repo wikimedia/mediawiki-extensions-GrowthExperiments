@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
 use MediaWiki\JobQueue\JobQueueGroup;
@@ -45,7 +44,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
-			$this->getExperimentUserManagerMock(),
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock()
 		);
@@ -82,7 +80,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
-			$this->getExperimentUserManagerMock(),
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock()
 		);
@@ -120,7 +117,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
-			$this->getExperimentUserManagerMock(),
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock()
 		);
@@ -165,7 +161,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
-			$this->getExperimentUserManagerMock(),
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock()
 		);
@@ -178,7 +173,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
-			'<div class="mw-ge-homepage-discovery-arrow mw-ge-homepage-discovery-arrow-user-variant-C"></div>' .
+			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
 			'<p>growthexperiments-homepage-discovery-mobile-homepage-banner-text</p>' .
 			'</div><span %s></span></div>',
@@ -204,7 +199,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
-			$this->getExperimentUserManagerMock(),
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock()
 		);
@@ -217,7 +211,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
-			'<div class="mw-ge-homepage-discovery-arrow mw-ge-homepage-discovery-arrow-user-variant-C"></div>' .
+			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
 			'<h2>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header</h2>' .
 			'<p>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text</p>' .
@@ -251,7 +245,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
-			$this->getExperimentUserManagerMock(),
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock()
 		);
@@ -300,7 +293,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturn( false );
 		$siteNotice = '';
 		$siteNoticeGenerator = new SiteNoticeGenerator(
-			$this->getExperimentUserManagerMock(),
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock()
 		);
@@ -345,17 +337,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$skinMock->method( 'getTitle' )
 			->willReturn( $titleMock );
 		return $skinMock;
-	}
-
-	/**
-	 * @param string $variant
-	 * @return ExperimentUserManager|MockObject
-	 */
-	private function getExperimentUserManagerMock( $variant = 'C' ) {
-		$mock = $this->createMock( ExperimentUserManager::class );
-		$mock->method( 'getVariant' )
-			->willReturn( $variant );
-		return $mock;
 	}
 
 	/**

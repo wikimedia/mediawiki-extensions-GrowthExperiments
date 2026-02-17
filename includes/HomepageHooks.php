@@ -994,7 +994,6 @@ class HomepageHooks implements
 		global $wgMinervaEnableSiteNotice;
 		if ( self::isHomepageEnabled( $skin->getUser() ) ) {
 			$siteNoticeGenerator = new SiteNoticeGenerator(
-				$this->experimentUserManager,
 				$this->userOptionsLookup,
 				$this->jobQueueGroup
 			);
