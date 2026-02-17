@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\AbstractExperimentManager;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
@@ -37,11 +37,11 @@ class WelcomeSurveyReminder extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		AbstractExperimentManager $experimentUserManager,
+		IExperimentManager $experimentManager,
 		SpecialPageFactory $specialPageFactory,
 		WelcomeSurveyFactory $welcomeSurveyFactory
 	) {
-		parent::__construct( 'welcomesurveyreminder', $context, $wikiConfig, $experimentUserManager );
+		parent::__construct( 'welcomesurveyreminder', $context, $wikiConfig, $experimentManager );
 		$this->specialPageFactory = $specialPageFactory;
 		$this->welcomeSurveyFactory = $welcomeSurveyFactory;
 	}

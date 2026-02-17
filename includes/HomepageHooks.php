@@ -134,7 +134,8 @@ class HomepageHooks implements
 	private TitleFactory $titleFactory;
 	private ConfigurationLoader $configurationLoader;
 	private CampaignConfig $campaignConfig;
-	private AbstractExperimentManager $experimentUserManager;
+
+	private IExperimentManager $experimentManager;
 	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
 	private TaskSuggesterFactory $taskSuggesterFactory;
 	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
@@ -166,7 +167,7 @@ class HomepageHooks implements
 		JobQueueGroup $jobQueueGroup,
 		ConfigurationLoader $configurationLoader,
 		CampaignConfig $campaignConfig,
-		AbstractExperimentManager $experimentUserManager,
+		IExperimentManager $experimentManager,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
@@ -189,7 +190,7 @@ class HomepageHooks implements
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->configurationLoader = $configurationLoader;
 		$this->campaignConfig = $campaignConfig;
-		$this->experimentUserManager = $experimentUserManager;
+		$this->experimentManager = $experimentManager;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
@@ -774,7 +775,7 @@ class HomepageHooks implements
 		// Check if above comment is still true or we can get rid of the deferred update
 		if ( $this->featureManager->useTestKitchen() ) {
 			DeferredUpdates::addCallableUpdate( function () use ( $user, $wiki ) {
-				$variant = $this->experimentUserManager->getVariant( $user );
+				$variant = $this->experimentManager->getVariant( $user );
 				if ( !$variant ) {
 					return;
 				}

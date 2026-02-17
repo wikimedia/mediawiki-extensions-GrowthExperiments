@@ -8,7 +8,7 @@ use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 
-class ExperimentTestKitchenManager extends AbstractExperimentManager {
+class ExperimentTestKitchenManager extends AbstractExperimentManager implements IExperimentManager {
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'GEHomepageDefaultVariant',

@@ -116,7 +116,7 @@ class GrowthExperimentsServices {
 		return $this->coreServices->getDBLoadBalancerFactory()->getLoadBalancer( SchemaHooks::VIRTUAL_DOMAIN );
 	}
 
-	public function getExperimentUserManager(): AbstractExperimentManager {
+	public function getExperimentUserManager(): IExperimentManager {
 		return $this->coreServices->get( 'GrowthExperimentsExperimentUserManager' );
 	}
 

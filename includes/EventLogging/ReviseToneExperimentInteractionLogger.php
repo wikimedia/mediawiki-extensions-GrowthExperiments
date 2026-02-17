@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\EventLogging;
 
-use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\ExperimentTestKitchenManager;
+use GrowthExperiments\IExperimentManager;
 use MediaWiki\Registration\ExtensionRegistry;
 use Psr\Log\LoggerInterface;
 
@@ -12,7 +12,7 @@ class ReviseToneExperimentInteractionLogger {
 	private const EXPERIMENT_STREAM = 'mediawiki.product_metrics.contributors.experiments';
 
 	public function __construct(
-		private readonly AbstractExperimentManager $experimentUserManager,
+		private readonly IExperimentManager $experimentUserManager,
 		private readonly LoggerInterface $logger,
 	) {
 	}

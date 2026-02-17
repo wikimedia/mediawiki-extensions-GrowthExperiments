@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\HashConfig;
@@ -94,7 +94,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 				'GEHomepageDefaultVariant' => 'control',
 			] ),
 			$extensionRegistry,
-			$this->createNoOpMock( AbstractExperimentManager::class ),
+			$this->createNoOpMock( IExperimentManager::class ),
 		);
 	}
 

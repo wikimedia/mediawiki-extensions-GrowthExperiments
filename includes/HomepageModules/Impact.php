@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use Exception;
-use GrowthExperiments\AbstractExperimentManager;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
@@ -36,7 +36,7 @@ class Impact extends BaseModule {
 	/**
 	 * @param IContextSource $ctx
 	 * @param Config $wikiConfig
-	 * @param AbstractExperimentManager $experimentUserManager
+	 * @param IExperimentManager $experimentManager
 	 * @param UserIdentity $userIdentity
 	 * @param UserImpactStore $userImpactStore
 	 * @param UserImpactFormatter $userImpactFormatter
@@ -47,7 +47,7 @@ class Impact extends BaseModule {
 	public function __construct(
 		IContextSource $ctx,
 		Config $wikiConfig,
-		AbstractExperimentManager $experimentUserManager,
+		IExperimentManager $experimentManager,
 		UserIdentity $userIdentity,
 		UserImpactStore $userImpactStore,
 		UserImpactFormatter $userImpactFormatter,
@@ -55,7 +55,7 @@ class Impact extends BaseModule {
 		bool $isSuggestedEditsEnabled,
 		bool $isSuggestedEditsActivated
 	) {
-		parent::__construct( 'impact', $ctx, $wikiConfig, $experimentUserManager );
+		parent::__construct( 'impact', $ctx, $wikiConfig, $experimentManager );
 		$this->userIdentity = $userIdentity;
 		$this->userImpactStore = $userImpactStore;
 		$this->userImpactFormatter = $userImpactFormatter;

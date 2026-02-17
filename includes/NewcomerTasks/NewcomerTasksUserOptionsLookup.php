@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use GrowthExperiments\AbstractExperimentManager;
 use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
@@ -20,7 +20,7 @@ use MediaWiki\User\UserIdentity;
  */
 class NewcomerTasksUserOptionsLookup {
 	public function __construct(
-		private readonly AbstractExperimentManager $experimentUserManager,
+		private readonly IExperimentManager $experimentUserManager,
 		private readonly UserOptionsLookup $userOptionsLookup,
 		private readonly Config $config,
 		private readonly ConfigurationLoader $configurationLoader

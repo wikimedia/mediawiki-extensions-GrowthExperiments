@@ -12,7 +12,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Service for handling experiment / variant related functions for users.
  */
-class ExperimentUserManager extends AbstractExperimentManager {
+class ExperimentUserManager extends AbstractExperimentManager implements IExperimentManager {
 
 	private LoggerInterface $logger;
 	private UserOptionsLookup $userOptionsLookup;

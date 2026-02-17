@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\AbstractExperimentManager;
+use GrowthExperiments\IExperimentManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\User\Options\UserOptionsLookup;
@@ -18,10 +18,10 @@ class StartEditing extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		AbstractExperimentManager $experimentUserManager,
+		IExperimentManager $experimentManager,
 		UserOptionsLookup $userOptionsLookup
 	) {
-		parent::__construct( 'start-startediting', $context, $wikiConfig, $experimentUserManager );
+		parent::__construct( 'start-startediting', $context, $wikiConfig, $experimentManager );
 
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
