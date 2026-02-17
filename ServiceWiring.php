@@ -378,7 +378,6 @@ return [
 			$growthServices->getUserImpactLookup(),
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
-			$growthServices->getExperimentUserManager(),
 			$growthServices->getLogger(),
 			$growthServices->getGrowthWikiConfig(),
 		);

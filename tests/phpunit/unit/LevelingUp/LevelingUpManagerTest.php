@@ -307,9 +307,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		);
 
 		$growthConfig ??= new HashConfig( $defaultConfigValues );
-		// Use provided experimentManager, or fall back to getExperimentManager()
-		// which returns null when TestKitchen is unavailable
-		$experimentManager ??= $this->getExperimentManager();
+
 		return new LevelingUpManager(
 			$serviceOptions,
 			$this->createNoOpAbstractMock( IConnectionProvider::class ),
@@ -322,7 +320,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$userImpactLookup ?? $this->getUserImpactLookup(),
 			$taskSuggesterFactory ?? $this->getTaskSuggesterFactory(),
 			$newcomerTasksUserOptionsLookup ?? $this->getNewcomerTasksUserOptionsLookup(),
-			$experimentManager,
 			new NullLogger(),
 			$growthConfig
 		);
@@ -580,40 +577,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $levelingUpManager->$methodName( $recipient ) );
 	}
 
-	public static function provideScheduleNotificationNullDelayVariants() {
-		foreach ( self::provideNotificationJobs() as $dataset => $data ) {
-			yield "$dataset, default" => [ ...$data, [ 'default' => null, 'bla-variant' => 10 ] ];
-			yield "$dataset, extra-variant" => [ ...$data, [ 'default' => 10, 'extra-variant' => null ] ];
-		}
-	}
-
-	/**
-	 * @dataProvider provideScheduleNotificationNullDelayVariants
-	 */
-	public function testScheduleNotificationNullDelayVariants(
-		string $jobName, string $methodName,
-		string $configOption, array $configData
-	) {
-		$recipient = new UserIdentityValue( 1, 'Admin' );
-		$experimentUserManager = $this->createNoOpMock( AbstractExperimentManager::class, [
-			'getVariant',
-		] );
-		$experimentUserManager->expects( $this->once() )
-		->method( 'getVariant' )
-			->with( $recipient )
-			->willReturn( 'extra-variant' );
-
-		$levelingUpManager = $this->getLevelingUpManager(
-			null, null, null, null, null, null, $experimentUserManager,
-			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
-				[
-					$configOption => $configData,
-				] + $this->getDefaultConfigValues()
-			) ),
-		);
-		$this->assertFalse( $levelingUpManager->$methodName( $recipient ) );
-	}
-
 	/**
 	 * @dataProvider provideNotificationJobs
 	 */
@@ -694,50 +657,6 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		);
 
 		$this->assertTrue( $levelingUpManager->$methodName( $recipientUser ) );
-	}
-
-	public static function provideScheduleNotificationsOKVariants() {
-		foreach ( self::provideNotificationJobs() as $dataset => $data ) {
-			yield "$dataset, default" => [ ...$data, [ 'default' => 200, 'bla-variant' => 10 ] ];
-			yield "$dataset, extra-variant" => [ ...$data, [ 'default' => 10, 'extra-variant' => 200 ] ];
-		}
-	}
-
-	/**
-	 * @dataProvider provideScheduleNotificationsOKVariants
-	 */
-	public function testScheduleNotificationsOKVariants(
-		string $jobName, string $methodName,
-		string $configOption, array $configData
-	) {
-		ConvertibleTimestamp::setFakeTime( 100 );
-		$recipientUser = new UserIdentityValue( 1, 'Admin' );
-		$experimentUserManager = $this->createNoOpMock( AbstractExperimentManager::class, [
-			'getVariant',
-		] );
-		$experimentUserManager->expects( $this->once() )
-		->method( 'getVariant' )
-			->with( $recipientUser )
-			->willReturn( 'extra-variant' );
-
-		$jobQueueGroup = $this->getJobQueueGroup( 300, $jobName );
-		$levelingUpManager = $this->getLevelingUpManager(
-			null, $jobQueueGroup, null, null, null, null, $experimentUserManager,
-			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, new HashConfig(
-				[
-					$configOption => $configData,
-				] + $this->getDefaultConfigValues()
-			) ),
-		);
-		$this->assertTrue( $levelingUpManager->$methodName( $recipientUser ) );
-	}
-
-	private function getExperimentManager() {
-		$experimentManager = $this->createMock( AbstractExperimentManager::class );
-		$experimentManager->expects( $this->atMost( 1 ) )
-			->method( 'getVariant' )
-			->willReturn( 'growthexperiments-get-started-notification_control' );
-		return $experimentManager;
 	}
 
 }
