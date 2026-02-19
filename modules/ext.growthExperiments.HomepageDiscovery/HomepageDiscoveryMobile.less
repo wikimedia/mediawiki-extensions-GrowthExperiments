@@ -90,4 +90,28 @@
 			display: none;
 		}
 	}
+
+	&__with-personal-menu {
+		align-items: flex-start;
+		padding-left: unset;
+		padding-right: calc( ~'3px + 0.625em' );
+
+		.mw-ge-homepage-discovery-banner-close {
+			right: unset;
+			left: 14px;
+		}
+
+		.skin-minerva & .mw-ge-homepage-discovery-arrow {
+			margin-left: 25px;
+			margin-right: unset;
+			transform: scaleX( -1 );
+		}
+
+		.mw-ge-homepage-discovery-message {
+			@media all and ( min-width: @min-width-breakpoint-tablet ) {
+				padding: unset;
+				padding-left: 103px;
+			}
+		}
+	}
 }
