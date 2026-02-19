@@ -3,7 +3,6 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\HelpPanel;
-use GrowthExperiments\IExperimentManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
@@ -16,10 +15,9 @@ class Help extends BaseModule {
 	 */
 	public function __construct(
 		IContextSource $context,
-		Config $wikiConfig,
-		IExperimentManager $experimentManager,
+		Config $wikiConfig
 	) {
-		parent::__construct( 'help', $context, $wikiConfig, $experimentManager );
+		parent::__construct( 'help', $context, $wikiConfig );
 	}
 
 	/** @inheritDoc */

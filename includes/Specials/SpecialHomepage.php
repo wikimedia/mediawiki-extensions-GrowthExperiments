@@ -9,7 +9,6 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\TourHooks;
@@ -42,7 +41,6 @@ class SpecialHomepage extends UnlistedSpecialPage {
 	public function __construct(
 		private readonly HomepageModuleRegistry $moduleRegistry,
 		private readonly StatsFactory $statsFactory,
-		private readonly IExperimentManager $experimentManager,
 		private readonly IMentorManager $mentorManager,
 		private readonly Config $wikiConfig,
 		private readonly UserOptionsManager $userOptionsManager,

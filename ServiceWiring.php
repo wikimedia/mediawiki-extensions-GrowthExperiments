@@ -214,7 +214,12 @@ return [
 	'GrowthExperimentsExperimentUserManager' => static function (
 		MediaWikiServices $services
 	): IExperimentManager {
-		if ( GrowthExperimentsServices::wrap( $services )->getFeatureManager()->useTestKitchen() ) {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$manager = new FeatureManager(
+			$services->getExtensionRegistry(),
+			$growthServices->getGrowthConfig()
+		);
+		if ( $manager->useTestKitchen() ) {
 			return new ExperimentTestKitchenManager(
 				new ServiceOptions(
 					ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
@@ -235,10 +240,13 @@ return [
 	'GrowthExperimentsFeatureManager' => static function (
 		MediaWikiServices $services
 	): FeatureManager {
-		return new FeatureManager(
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$manager = new FeatureManager(
 			$services->getExtensionRegistry(),
-			GrowthExperimentsServices::wrap( $services )->getGrowthConfig()
+			$growthServices->getGrowthConfig(),
 		);
+		$manager->setExperimentManager( $growthServices->getExperimentUserManager() );
+		return $manager;
 	},
 
 	'GrowthExperimentsHomepageModuleRegistry' => static function (
@@ -786,7 +794,7 @@ return [
 	): NewcomerTasksUserOptionsLookup {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new NewcomerTasksUserOptionsLookup(
-			$growthServices->getExperimentUserManager(),
+			$growthServices->getFeatureManager(),
 			$services->getUserOptionsLookup(),
 			$services->getMainConfig(),
 			$growthServices->getNewcomerTasksConfigurationLoader()

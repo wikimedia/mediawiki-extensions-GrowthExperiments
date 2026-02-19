@@ -1,5 +1,6 @@
 <?php
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddImage\SubpageImageRecommendationProvider;
@@ -13,14 +14,13 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\StaticExperimentManager;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\TitleValue;
 
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
-
-// TestKitchen extension is not available as a Gated Extension in CI
-$wgGEUseTestKitchenExtension = false;
 
 // FIXME: Used on patch-demo
 $wgGEReviseToneSuggestedEditEnabled = true;
@@ -100,6 +100,23 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 			return $taskSuggesterFactory;
 		}
 	);
+	# Mock the task suggester to specify what article(s) will be suggested.
+	$services->redefineService(
+		'GrowthExperimentsFeatureManager',
+		static function () use (
+			$services
+		): FeatureManager {
+			$manager = new FeatureManager(
+				$services->getExtensionRegistry(),
+				$services->getMainConfig(),
+			);
+			$ctx = RequestContext::getMain();
+			$variant = $ctx->getRequest()->getVal( 'mpo', 'not-in-experiment:not-in-variant' );
+			$manager->setExperimentManager( new StaticExperimentManager( new ServiceOptions( [ 'GEHomepageDefaultVariant' ], [
+				'GEHomepageDefaultVariant' => str_replace(':','_', $variant )
+			] ) ) );
+			return $manager;
+		} );
 };
 
 $wgGEImageRecommendationApiHandler = 'mvp';

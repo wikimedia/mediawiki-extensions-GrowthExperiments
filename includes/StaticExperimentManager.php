@@ -18,11 +18,6 @@ class StaticExperimentManager implements IExperimentManager {
 		return $this->options->get( 'GEHomepageDefaultVariant' );
 	}
 
-	/** @inheritDoc */
-	public function isUserInVariant( UserIdentity $user, $variant ): bool {
-		return $this->getVariant( $user ) === $variant;
-	}
-
 	public function getValidVariants(): array {
 		return [
 			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal

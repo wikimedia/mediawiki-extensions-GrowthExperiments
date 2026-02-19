@@ -8,7 +8,7 @@ use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 
-class ExperimentTestKitchenManager extends AbstractExperimentManager implements IExperimentManager {
+class ExperimentTestKitchenManager implements IExperimentManager {
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'GEHomepageDefaultVariant',
@@ -30,11 +30,11 @@ class ExperimentTestKitchenManager extends AbstractExperimentManager implements 
 	private bool $computedAssignments = false;
 
 	public function __construct(
-		ServiceOptions $options,
+		private readonly ServiceOptions $options,
 		private readonly LoggerInterface $logger,
 		private readonly ExperimentManager $experimentManager,
 	) {
-		parent::__construct( $options );
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 	}
 
 	public function getCurrentExperiment(): ?Experiment {

@@ -33,7 +33,6 @@ class SpecialHomepageBench extends GrowthExperimentsBench {
 		$this->homepage = new SpecialHomepage(
 			$growthExperimentsServices->getHomepageModuleRegistry(),
 			$services->getStatsFactory(),
-			$growthExperimentsServices->getExperimentUserManager(),
 			$growthExperimentsServices->getMentorManager(),
 			$communityConfigServices->getMediaWikiConfigRouter(),
 			$userOptionManager,

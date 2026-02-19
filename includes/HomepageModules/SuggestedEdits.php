@@ -2,11 +2,10 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\ExperimentTestKitchenManager;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
-use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
@@ -156,7 +155,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
 	 * @param CampaignConfig $campaignConfig
-	 * @param IExperimentManager $experimentManager
+	 * @param FeatureManager $featureManager
 	 * @param PageViewService|null $pageViewService
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
@@ -173,7 +172,7 @@ class SuggestedEdits extends BaseModule {
 		IContextSource $context,
 		Config $wikiConfig,
 		CampaignConfig $campaignConfig,
-		IExperimentManager $experimentManager,
+		private readonly FeatureManager $featureManager,
 		?PageViewService $pageViewService,
 		ConfigurationLoader $configurationLoader,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
@@ -187,7 +186,7 @@ class SuggestedEdits extends BaseModule {
 		ITopicRegistry $topicRegistry,
 		TaskTypeManager $taskTypeManager
 	) {
-		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentManager );
+		parent::__construct( 'suggested-edits', $context, $wikiConfig );
 		$this->pageViewService = $pageViewService;
 		$this->configurationLoader = $configurationLoader;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
@@ -440,10 +439,7 @@ class SuggestedEdits extends BaseModule {
 		$taskTypes = $this->taskTypeManager->getTaskTypesForUser( $user );
 
 		if (
-			$this->experimentManager->isUserInVariant(
-				$user,
-				ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME,
-			) &&
+			$this->featureManager->shouldShowReviseToneTasksForUser( $user ) &&
 			!$this->userOptionsManager->getOption( $user, 'growthexperiments-revise-tone-treatment-initiated' )
 		) {
 			// TODO: Remove after end of ReviseTone A/B test: T409466

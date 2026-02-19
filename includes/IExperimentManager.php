@@ -20,15 +20,6 @@ interface IExperimentManager {
 	public function getVariant( UserIdentity $user ): string;
 
 	/**
-	 * Whether the user is assigned to a given variant in the current
-	 * experiment. GE only supports one experiment at a time.
-	 * @param UserIdentity $user
-	 * @param mixed $variant
-	 * @return bool
-	 */
-	public function isUserInVariant( UserIdentity $user, $variant ): bool;
-
-	/**
 	 * Return valid variants for the current experiment. GE only supports one experiment
 	 * at a time.
 	 * @return string[]

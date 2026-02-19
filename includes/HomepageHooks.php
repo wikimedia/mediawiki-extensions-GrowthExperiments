@@ -223,7 +223,6 @@ class HomepageHooks implements
 				'services' => [
 					'GrowthExperimentsHomepageModuleRegistry',
 					'StatsFactory',
-					'GrowthExperimentsExperimentUserManager',
 					'GrowthExperimentsMentorManager',
 					'GrowthExperimentsCommunityConfig',
 					'UserOptionsManager',
@@ -458,9 +457,6 @@ class HomepageHooks implements
 				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' ),
 			] );
 		}
-		$out->addJsConfigVars( [
-			'wgGEUseTestKitchenExtension' => $this->featureManager->useTestKitchen(),
-		] );
 	}
 
 	/**
@@ -770,9 +766,7 @@ class HomepageHooks implements
 		$wiki = WikiMap::getCurrentWikiId();
 		// Try to log newly registered account experiment exposure. Wrapped in a deferred update because
 		// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
-		// not guaranteed. REVIEW: This is necessary so the getOption call to the USER_PREFERENCE has a chance to
-		// retrieve a valid central user id.
-		// Check if above comment is still true or we can get rid of the deferred update
+		// not guaranteed.
 		if ( $this->featureManager->useTestKitchen() ) {
 			DeferredUpdates::addCallableUpdate( function () use ( $user, $wiki ) {
 				$variant = $this->experimentManager->getVariant( $user );

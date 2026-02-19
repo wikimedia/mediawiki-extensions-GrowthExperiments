@@ -85,8 +85,8 @@
 	function getUserVariant() {
 		// TODO remove once the consumers in modules/ext.growthExperiments.Homepage.Logger/{index,useInstrument}.js
 		// are migrated to use TestKitchen, T417876
-		const growthVariants = mw.config.get( 'wgGEUserVariants' );
-		if ( mw.config.get( 'wgGEUseTestKitchenExtension' ) ) {
+		if ( mw && mw.testKitchen ) {
+			const growthVariants = mw.config.get( 'wgGEUserVariants' );
 			const assignments = mw.testKitchen.getAssignments();
 			const growthFormattedAssignments = Object.keys( assignments )
 				.map( ( k ) => `${ k }_${ assignments[ k ] }` );

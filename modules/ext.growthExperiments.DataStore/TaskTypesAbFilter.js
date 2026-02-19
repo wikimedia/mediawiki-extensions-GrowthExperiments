@@ -78,18 +78,21 @@
 	function areReviseToneRecommendationsEnabled() {
 		const config = require( './config.json' ),
 			taskTypes = require( './TaskTypes.json' ),
-			shouldCheckGroupAssigned = mw.config.get( 'wgGEUseTestKitchenExtension' ),
 			isReviseToneEnabled = config.GEReviseToneSuggestedEditEnabled &&
 				REVISE_TONE_TASK_TYPE in taskTypes;
 		let assignedGroup = null;
-		// Only check group assigned if experiment manager is Test Kitchen's
 		// TODO: remove after experiment is concluded, T407802
 		if ( mw && mw.testKitchen ) {
 			assignedGroup = mw.testKitchen.getExperiment( 'growthexperiments-revise-tone' ).getAssignedGroup();
+			return assignedGroup === 'treatment' && isReviseToneEnabled;
 		}
-		return shouldCheckGroupAssigned ?
-			( assignedGroup === 'treatment' && isReviseToneEnabled ) :
-			isReviseToneEnabled;
+
+		// 'mpo' is just used for local development and Cypress test
+		const urlOverrideQuery = new URLSearchParams( window.location.href ).get( 'mpo' );
+		assignedGroup = urlOverrideQuery ? urlOverrideQuery.replace( ':', '_' ) :
+			mw.config.get( 'wgGEDefaultUserVariant' );
+
+		return assignedGroup === 'growthexperiments-revise-tone_treatment' && isReviseToneEnabled;
 	}
 
 	/**

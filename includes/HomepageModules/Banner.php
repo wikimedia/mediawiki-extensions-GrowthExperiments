@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\IExperimentManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
@@ -38,10 +37,9 @@ class Banner extends BaseModule {
 	/** @inheritDoc */
 	public function __construct(
 		IContextSource $context,
-		Config $wikiConfig,
-		IExperimentManager $experimentManager
+		Config $wikiConfig
 	) {
-		parent::__construct( 'banner', $context, $wikiConfig, $experimentManager );
+		parent::__construct( 'banner', $context, $wikiConfig );
 	}
 
 	/** @inheritDoc */

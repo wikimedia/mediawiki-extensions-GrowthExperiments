@@ -2,9 +2,8 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\ExperimentTestKitchenManager;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
@@ -97,15 +96,12 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			],
 		);
 
-		$experimentUserManagerMock =
-			$this->createMock( IExperimentManager::class );
-		$experimentUserManagerMock->method( 'getVariant' )
-			->willReturn( ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
-		$experimentUserManagerMock->method( 'isUserInVariant' )->willReturn( true );
+		$featureManagerMock = $this->createMock( FeatureManager::class );
+		$featureManagerMock->method( 'shouldShowReviseToneTasksForUser' )->willReturn( true );
 		$suggestedEdits = $this->getSuggestedEdits( [
 			'user' => $user,
 			'userOptionsManager' => $userOptionsManagerMock,
-			'experimentUserManager' => $experimentUserManagerMock,
+			'featureManager' => $featureManagerMock,
 			'taskTypeManager' => $taskTypeManager,
 		] );
 
@@ -126,15 +122,12 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		);
 		$userOptionsManagerMock->expects( $this->never() )->method( 'setOption' );
 
-		$experimentUserManagerMock =
-			$this->createMock( IExperimentManager::class );
-		$experimentUserManagerMock->method( 'getVariant' )
-			->willReturn( ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
-		$experimentUserManagerMock->method( 'isUserInVariant' )->willReturn( true );
+		$featureManagerMock = $this->createMock( FeatureManager::class );
+		$featureManagerMock->method( 'shouldShowReviseToneTasksForUser' )->willReturn( true );
 		$suggestedEdits = $this->getSuggestedEdits( [
 			'user' => $user,
 			'userOptionsManager' => $userOptionsManagerMock,
-			'experimentUserManager' => $experimentUserManagerMock,
+			'featureManager' => $featureManagerMock,
 			'taskTypeManager' => $taskTypeManager,
 		] );
 
@@ -182,13 +175,11 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$contextMock->method( 'msg' )
 			->willReturn( $this->getMockMessage() );
 
-		if ( isset( $overrides[ 'experimentUserManager' ] ) ) {
-			$experimentUserManagerMock = $overrides[ 'experimentUserManager' ];
+		if ( isset( $overrides[ 'featureManager' ] ) ) {
+			$featureManagerMock = $overrides[ 'featureManager' ];
 		} else {
-			$experimentUserManagerMock =
-				$this->createMock( IExperimentManager::class );
-			$experimentUserManagerMock->method( 'getVariant' )
-				->willReturn( 'X' );
+			$featureManagerMock = $this->createMock( FeatureManager::class );
+			$featureManagerMock->method( 'shouldShowReviseToneTasksForUser' )->willReturn( false );
 		}
 
 		$pageViewServiceMock = $this->createMock( PageViewService::class );
@@ -229,7 +220,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$contextMock,
 			GlobalVarConfig::newInstance(),
 			$campaignConfig,
-			$experimentUserManagerMock,
+			$featureManagerMock,
 			$pageViewServiceMock,
 			$staticConfigLoader,
 			$newcomerTasksUserOptionsLookupMock,

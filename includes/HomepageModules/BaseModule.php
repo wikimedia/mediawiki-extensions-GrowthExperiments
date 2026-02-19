@@ -3,7 +3,6 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\DashboardModule\DashboardModule;
-use GrowthExperiments\IExperimentManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
@@ -40,14 +39,12 @@ abstract class BaseModule extends DashboardModule {
 	 * @param string $name Name of the module
 	 * @param IContextSource $ctx
 	 * @param Config $wikiConfig
-	 * @param IExperimentManager $experimentManager
 	 * @param bool $shouldWrapModuleWithLink
 	 */
 	public function __construct(
 		string $name,
 		IContextSource $ctx,
 		Config $wikiConfig,
-		protected IExperimentManager $experimentManager,
 		bool $shouldWrapModuleWithLink = true
 	) {
 		parent::__construct( $name, $ctx );

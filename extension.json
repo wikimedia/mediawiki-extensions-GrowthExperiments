@@ -3010,10 +3010,6 @@
 		"GEReviseToneRecommendationProvider": {
 			"description": "Corresponding Recommendation Provider to use for the Revise Tone recommendations; can be 'production' (ApiReviseToneRecommendationProvider), or 'subpage' (SubpageReviseToneRecommendationProvider).",
 			"value": "production"
-		},
-		"GEUseTestKitchenExtension": {
-			"description": "Test Kitchen as enrollment authority for experiments",
-			"value": true
 		}
 	},
 	"SpecialPages": {

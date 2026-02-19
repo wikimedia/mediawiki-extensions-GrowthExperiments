@@ -28,7 +28,6 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 		$mentorshipModule = new Mentorship(
 			$context,
 			GlobalVarConfig::newInstance(),
-			$growthServices->getExperimentUserManager(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
 			$services->getGenderCache(),
@@ -58,7 +57,6 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 		$mentorshipModule = new Mentorship(
 			$context,
 			GlobalVarConfig::newInstance(),
-			$growthServices->getExperimentUserManager(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
 			$services->getGenderCache(),
@@ -99,7 +97,6 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 		$mentorshipModule = new Mentorship(
 			$context,
 			GlobalVarConfig::newInstance(),
-			$growthServices->getExperimentUserManager(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
 			$services->getGenderCache(),

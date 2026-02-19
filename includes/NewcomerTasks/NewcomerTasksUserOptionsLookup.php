@@ -2,9 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use GrowthExperiments\ExperimentTestKitchenManager;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
@@ -20,7 +19,7 @@ use MediaWiki\User\UserIdentity;
  */
 class NewcomerTasksUserOptionsLookup {
 	public function __construct(
-		private readonly IExperimentManager $experimentUserManager,
+		private readonly FeatureManager $featureManager,
 		private readonly UserOptionsLookup $userOptionsLookup,
 		private readonly Config $config,
 		private readonly ConfigurationLoader $configurationLoader
@@ -128,16 +127,10 @@ class NewcomerTasksUserOptionsLookup {
 	 * @return bool
 	 */
 	public function areReviseToneRecommendationsEnabled( UserIdentity $user ): bool {
-		$areReviseToneRecommendationsEnabled = $this->config->get( 'GEReviseToneSuggestedEditEnabled' )
-			&& array_key_exists( ReviseToneTaskTypeHandler::TASK_TYPE_ID,
+		$areReviseToneRecommendationsEnabled = array_key_exists( ReviseToneTaskTypeHandler::TASK_TYPE_ID,
 				$this->configurationLoader->getTaskTypes() );
-		$shouldCheckGroupAssigned = $this->config->get( 'GEUseTestKitchenExtension' );
-		// Only check group assigned if experiment manager is Test Kitchen's
 		// TODO: remove after experiment is concluded, T407802
-		return $shouldCheckGroupAssigned ?
-			$areReviseToneRecommendationsEnabled && $this->experimentUserManager->isUserInVariant(
-				$user, ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME
-			) : $areReviseToneRecommendationsEnabled;
+		return $areReviseToneRecommendationsEnabled && $this->featureManager->shouldShowReviseToneTasksForUser( $user );
 	}
 
 	/**

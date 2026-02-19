@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Util;
 use HtmlArmor;
 use MediaWiki\Config\Config;
@@ -33,7 +32,6 @@ class CommunityUpdates extends BaseModule {
 		LoggerInterface $logger,
 		IContextSource $context,
 		Config $wikiConfig,
-		IExperimentManager $experimentManager,
 		ConfigurationProviderFactory $providerFactory,
 		UserEditTracker $userEditTracker,
 		LinkRenderer $linkRenderer,
@@ -41,7 +39,7 @@ class CommunityUpdates extends BaseModule {
 		WANObjectCache $cache,
 		HttpRequestFactory $httpRequestFactory
 	) {
-		parent::__construct( 'community-updates', $context, $wikiConfig, $experimentManager );
+		parent::__construct( 'community-updates', $context, $wikiConfig );
 		$this->logger = $logger;
 		$this->providerFactory = $providerFactory;
 		$this->userEditTracker = $userEditTracker;

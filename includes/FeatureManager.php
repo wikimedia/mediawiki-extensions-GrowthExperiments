@@ -4,13 +4,19 @@ namespace GrowthExperiments;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\User\UserIdentity;
 
 class FeatureManager {
+	private IExperimentManager $experimentManager;
 
 	public function __construct(
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly Config $growthConfig
 	) {
+	}
+
+	public function setExperimentManager( IExperimentManager $experimentManager ): void {
+		$this->experimentManager = $experimentManager;
 	}
 
 	public function areLinkRecommendationsEnabled(): bool {
@@ -49,7 +55,11 @@ class FeatureManager {
 	 * @return bool
 	 */
 	public function useTestKitchen(): bool {
-		return $this->extensionRegistry->isLoaded( 'TestKitchen' )
-			&& $this->growthConfig->get( 'GEUseTestKitchenExtension' );
+		return $this->extensionRegistry->isLoaded( 'TestKitchen' );
+	}
+
+	public function shouldShowReviseToneTasksForUser( UserIdentity $user ): bool {
+		return $this->isReviseToneTasksTypeEnabled() && ( $this->experimentManager->getVariant( $user ) ===
+				ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
 	}
 }

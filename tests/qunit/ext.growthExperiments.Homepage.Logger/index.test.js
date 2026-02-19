@@ -1,6 +1,7 @@
 'use strict';
 
 const HomepageModuleLogger = require( '../../../modules/ext.growthExperiments.Homepage.Logger/index.js' );
+const { getUserVariant } = require( '../../../modules/utils/Utils.js' );
 
 QUnit.module( 'ext.growthExperiments.Homepage.Logger/index.js', QUnit.newMwEnvironment( {
 	config: {
@@ -8,6 +9,7 @@ QUnit.module( 'ext.growthExperiments.Homepage.Logger/index.js', QUnit.newMwEnvir
 		wgUserEditCount: 123,
 		'wgGEHomepageModuleActionData-foo': { foo: 'bar' },
 		'wgGEHomepageModuleState-foo': 'done',
+		wgGEDefaultUserVariant: 'control',
 		wgGEUserVariants: [ 'X', 'Y' ],
 	},
 	beforeEach: function () {
@@ -29,7 +31,7 @@ QUnit.test( 'log', function ( assert ) {
 		state: 'done',
 		user_id: mw.user.getId(),
 		user_editcount: 123,
-		user_variant: 'control',
+		user_variant: getUserVariant(),
 		module: 'foo',
 		is_mobile: OO.ui.isMobile(),
 		mode: 'desktop',
@@ -52,7 +54,7 @@ QUnit.test( 'do not include state in event if empty', function ( assert ) {
 		action_data: '',
 		user_id: mw.user.getId(),
 		user_editcount: 123,
-		user_variant: 'control',
+		user_variant: getUserVariant(),
 		module: 'mentor',
 		is_mobile: OO.ui.isMobile(),
 		mode: 'desktop',

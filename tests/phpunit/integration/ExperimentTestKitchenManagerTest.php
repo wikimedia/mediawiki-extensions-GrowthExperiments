@@ -30,7 +30,6 @@ class ExperimentTestKitchenManagerTest extends MediaWikiIntegrationTestCase {
 				return $experimentManagerMock;
 			},
 		] );
-		$this->overrideConfigValue( 'GEUseTestKitchenExtension', true );
 		// At least one of the experiments needs to be a valid experiment
 		// in ExperimentTestKitchenManager::VALID_EXPERIMENTS
 		$this->overrideConfigValue( 'TestKitchenExperiments', [

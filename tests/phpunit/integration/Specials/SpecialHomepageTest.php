@@ -38,7 +38,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		return new SpecialHomepage(
 			$growthExperimentsServices->getHomepageModuleRegistry(),
 			$this->getServiceContainer()->getStatsFactory(),
-			$growthExperimentsServices->getExperimentUserManager(),
 			$growthExperimentsServices->getMentorManager(),
 			$communityConfigServices->getMediaWikiConfigRouter(),
 			$this->getServiceContainer()->getUserOptionsManager(),

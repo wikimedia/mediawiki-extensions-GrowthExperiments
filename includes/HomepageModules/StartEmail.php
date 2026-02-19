@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\IExperimentManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
@@ -24,10 +23,9 @@ class StartEmail extends BaseModule {
 	/** @inheritDoc */
 	public function __construct(
 		IContextSource $context,
-		Config $wikiConfig,
-		IExperimentManager $experimentManager
+		Config $wikiConfig
 	) {
-		parent::__construct( 'startemail', $context, $wikiConfig, $experimentManager );
+		parent::__construct( 'startemail', $context, $wikiConfig );
 
 		$user = $this->getContext()->getUser();
 		if ( $user->getEmail() ) {
