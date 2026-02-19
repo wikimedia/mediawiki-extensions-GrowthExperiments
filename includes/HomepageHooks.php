@@ -994,7 +994,8 @@ class HomepageHooks implements
 		if ( self::isHomepageEnabled( $skin->getUser() ) ) {
 			$siteNoticeGenerator = new SiteNoticeGenerator(
 				$this->userOptionsLookup,
-				$this->jobQueueGroup
+				$this->jobQueueGroup,
+				$this->config,
 			);
 			return $siteNoticeGenerator->setNotice(
 				$skin->getRequest()->getVal( 'source' ),

@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Language\Language;
 use MediaWiki\Minerva\Skins\SkinMinerva;
@@ -20,7 +21,7 @@ use OOUI\Theme;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Homepage\SiteNoticeGenerator
+ * @covers \GrowthExperiments\Homepage\SiteNoticeGenerator
  */
 class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 
@@ -29,10 +30,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		Theme::setSingleton( new BlankTheme() );
 	}
 
-	/**
-	 * @covers ::setConfirmEmailSiteNotice
-	 * @covers ::setNotice
-	 */
 	public function testSetConfirmEmailNotice() {
 		$skinMock = $this->getSkinMock();
 		$skinMock->getTitle()->expects( $this->exactly( 2 ) )
@@ -45,7 +42,8 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
-			$this->getJobQueueGroupMock()
+			$this->getJobQueueGroupMock(),
+			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			HomepageHooks::CONFIRMEMAIL_QUERY_PARAM,
@@ -62,11 +60,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::setDiscoverySiteNotice
-	 * @covers ::setDesktopDiscoverySiteNotice
-	 * @covers ::setNotice
-	 */
 	public function testSetDiscoverySiteNoticeDesktopSpecialWelcomeSurveySource() {
 		$skinMock = $this->getSkinMock();
 		$skinMock->getUser()->method( 'getName' )
@@ -81,7 +74,8 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
-			$this->getJobQueueGroupMock()
+			$this->getJobQueueGroupMock(),
+			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'specialwelcomesurvey',
@@ -103,11 +97,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::setDiscoverySiteNotice
-	 * @covers ::setDesktopDiscoverySiteNotice
-	 * @covers ::setNotice
-	 */
 	public function testSetDiscoverySiteDesktopNoticeWelcomeSurveyOriginalContext() {
 		$skinMock = $this->getSkinMock();
 		$skinMock->getUser()->method( 'getName' )
@@ -118,7 +107,8 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
-			$this->getJobQueueGroupMock()
+			$this->getJobQueueGroupMock(),
+			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'welcomesurvey-originalcontext',
@@ -140,11 +130,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::setDiscoverySiteNotice
-	 * @covers ::setMobileDiscoverySiteNotice
-	 * @covers ::setNotice
-	 */
 	public function testSetDiscoverySiteNoticeMobileSpecialWelcomeSurveySource() {
 		if ( !class_exists( SkinMinerva::class ) ) {
 			$this->markTestSkipped( 'Minerva is not available.' );
@@ -162,7 +147,8 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
-			$this->getJobQueueGroupMock()
+			$this->getJobQueueGroupMock(),
+			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'specialwelcomesurvey',
@@ -181,12 +167,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::setDiscoverySiteNotice
-	 * @covers ::setMobileDiscoverySiteNotice
-	 * @covers ::setNotice
-	 * @covers ::getHeader
-	 */
 	public function testSetDiscoverySiteMobileNoticeWelcomeSurveyOriginalContext() {
 		if ( !class_exists( SkinMinerva::class ) ) {
 			$this->markTestSkipped( 'Minerva is not available.' );
@@ -200,7 +180,8 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
-			$this->getJobQueueGroupMock()
+			$this->getJobQueueGroupMock(),
+			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'welcomesurvey-originalcontext',
@@ -220,11 +201,47 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::isWelcomeSurveyInReferer
-	 * @covers ::setNotice
-	 * @covers ::maybeShowIfUserAbandonedWelcomeSurvey
-	 */
+	public function testSetDiscoverySiteMobileNoticeWelcomeSurveyOriginalContext_PersonalMenu() {
+		if ( !class_exists( SkinMinerva::class ) ) {
+			$this->markTestSkipped( 'Minerva is not available.' );
+		}
+		$skinMock = $this->getSkinMock( SkinMinerva::class );
+		$skinMock->getUser()->method( 'getName' )
+			->willReturn( 'Bar' );
+		$skinMock->getTitle()->method( 'isSpecial' )
+			->willReturn( false );
+		$siteNotice = '';
+		$minervaEnableNotice = false;
+		$siteNoticeGenerator = new SiteNoticeGenerator(
+			$this->getUserOptionsLookupMock(),
+			$this->getJobQueueGroupMock(),
+			new HashConfig( [
+				'MinervaPersonalMenu' => [
+					'loggedin' => true,
+				],
+			] ),
+		);
+		$siteNoticeGenerator->setNotice(
+			'welcomesurvey-originalcontext',
+			$siteNotice,
+			$skinMock,
+			$minervaEnableNotice
+		);
+		$this->assertTrue( $minervaEnableNotice );
+		$classString = implode( ' ', [
+			'mw-ge-homepage-discovery-banner-mobile',
+			'mw-ge-homepage-discovery-banner-mobile__with-personal-menu',
+		] );
+		$this->assertStringMatchesFormat(
+			'<div class="' . $classString . '">' .
+			'<div class="mw-ge-homepage-discovery-message">' .
+			'<h2>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header</h2>' .
+			'<p>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text</p>' .
+			'</div><span %s></span><div class="mw-ge-homepage-discovery-arrow"></div></div>',
+			$siteNotice
+		);
+	}
+
 	public function testMaybeShowIfUserAbandonedWelcomeSurvey() {
 		$skinMock = $this->getSkinMock();
 		$request = new FauxRequest();
@@ -246,7 +263,8 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$minervaEnableNotice = false;
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
-			$this->getJobQueueGroupMock()
+			$this->getJobQueueGroupMock(),
+			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'',
@@ -268,11 +286,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::isWelcomeSurveyInReferer
-	 * @covers ::setNotice
-	 * @covers ::maybeShowIfUserAbandonedWelcomeSurvey
-	 */
 	public function testMaybeShowIfUserAbandonedWelcomeSurveyRefererIsNotMatched() {
 		$skinMock = $this->getSkinMock();
 		$request = new FauxRequest();
@@ -294,7 +307,8 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNotice = '';
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
-			$this->getJobQueueGroupMock()
+			$this->getJobQueueGroupMock(),
+			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'',
