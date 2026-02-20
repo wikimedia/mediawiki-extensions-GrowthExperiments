@@ -104,11 +104,11 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 
 $wgGEImageRecommendationApiHandler = 'mvp';
 // Set up SubpageImageRecommendationProvider, which will take the suggestion from the article's /addimage.json subpage
-$wgHooks['MediaWikiServices'][] = SubpageImageRecommendationProvider::class . '::onMediaWikiServices';
+$wgHooks['MediaWikiServices'][] = [ SubpageImageRecommendationProvider::class, 'onMediaWikiServices' ];
 $wgHooks['ContentHandlerDefaultModelFor'][] =
-	SubpageImageRecommendationProvider::class . '::onContentHandlerDefaultModelFor';
+	[ SubpageImageRecommendationProvider::class, 'onContentHandlerDefaultModelFor' ];
 $wgHooks['ContentHandlerDefaultModelFor'][] =
-	SubpageReviseToneRecommendationProvider::class . '::onContentHandlerDefaultModelFor';
+	[ SubpageReviseToneRecommendationProvider::class, 'onContentHandlerDefaultModelFor' ];
 // Use Commons as a foreign file repository.
 $wgUseInstantCommons = true;
 

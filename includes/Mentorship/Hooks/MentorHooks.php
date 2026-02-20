@@ -93,7 +93,7 @@ class MentorHooks implements
 			'presentation-model' => EchoMentorChangePresentationModel::class,
 			AttributeManager::ATTR_LOCATORS => [
 				[
-					[ UserLocator::class, 'locateFromEventExtra' ],
+					UserLocator::locateFromEventExtra( ... ),
 					[ 'mentee' ],
 				],
 			],
@@ -105,7 +105,7 @@ class MentorHooks implements
 			'presentation-model' => EchoMenteeClaimPresentationModel::class,
 			AttributeManager::ATTR_LOCATORS => [
 				[
-					[ UserLocator::class, 'locateFromEventExtra' ],
+					UserLocator::locateFromEventExtra( ... ),
 					[ 'mentor' ],
 				],
 			],
@@ -116,9 +116,7 @@ class MentorHooks implements
 			'section' => 'message',
 			'canNotifyAgent' => true,
 			'presentation-model' => EchoNewPraiseworthyMenteesPresentationModel::class,
-			AttributeManager::ATTR_LOCATORS => [
-				UserLocator::class . '::locateEventAgent',
-			],
+			AttributeManager::ATTR_LOCATORS => [ UserLocator::locateEventAgent( ... ) ],
 		];
 
 		$icons['growthexperiments-mentor'] = [

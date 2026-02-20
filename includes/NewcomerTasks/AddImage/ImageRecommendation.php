@@ -29,7 +29,7 @@ class ImageRecommendation implements Recommendation, JsonSerializable {
 	public static function fromArray( array $recommendationData ): self {
 		return new self(
 			new TitleValue( $recommendationData['titleNamespace'], $recommendationData['titleText'] ),
-			array_map( [ ImageRecommendationImage::class, 'fromArray' ], $recommendationData['images'] ),
+			array_map( ImageRecommendationImage::fromArray( ... ), $recommendationData['images'] ),
 			$recommendationData['datasetId']
 		);
 	}

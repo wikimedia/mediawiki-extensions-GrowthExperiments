@@ -143,9 +143,7 @@ class LevelingUpHooks implements
 			'group' => 'positive',
 			'section' => 'message',
 			'canNotifyAgent' => true,
-			AttributeManager::ATTR_LOCATORS => [
-				[ UserLocator::class . '::locateEventAgent' ],
-			],
+			AttributeManager::ATTR_LOCATORS => [ UserLocator::locateEventAgent( ... ) ],
 		];
 		// Keep keep-going to not modify copy of already sent notifications
 		$notifications['keep-going'] = array_merge( $growthNotificationDefaults, [
