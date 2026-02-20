@@ -9,7 +9,7 @@ use MediaWikiUnitTestCase;
 /**
  * @coversDefaultClass \GrowthExperiments\UserImpact\ComputeEditingStreaks
  */
-class ComputedEditStreakTest extends MediaWikiUnitTestCase {
+class ComputeEditingStreaksTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::getEditingStreaks

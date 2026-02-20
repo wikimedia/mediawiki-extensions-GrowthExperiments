@@ -180,7 +180,7 @@ class CommunityUpdates extends BaseModule {
 
 		$response = $status->getValue();
 		if ( isset( $response['query']['pages'] ) ) {
-			$page = reset( $response['query']['pages'] );
+			$page = array_first( $response['query']['pages'] );
 			if ( isset( $page['imageinfo'][0]['thumburl'] ) ) {
 				return $page['imageinfo'][0]['thumburl'];
 			}

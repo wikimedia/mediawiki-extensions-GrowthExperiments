@@ -221,7 +221,7 @@ class FixLinkRecommendationData extends Maintenance {
 				$this->linkRecommendationStore->deleteByPageIds( $pageIdsToFix );
 				$this->commitTransaction( $this->linkRecommendationStore->getGrowthDB( DB_PRIMARY ), __METHOD__ );
 			}
-			$from = end( $pageIds );
+			$from = array_last( $pageIds );
 			$fixedCount += count( $pageIdsToFix );
 			$okCount += count( $pageIds ) - count( $pageIdsToFix );
 		}

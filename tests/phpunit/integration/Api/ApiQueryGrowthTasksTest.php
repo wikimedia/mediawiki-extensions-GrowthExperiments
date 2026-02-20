@@ -106,16 +106,16 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
 		[ $data ] = $this->doApiRequest( [ 'action' => 'query', 'generator' => 'growthtasks' ] );
-		$pages = reset( $data['query']['pages'] );
+		$page = array_first( $data['query']['pages'] );
 		$this->assertSame( 2, $data['growthtasks']['totalCount'] );
-		$this->assertSame( 0, $pages['ns'] );
-		$this->assertSame( 'Task-1', $pages['title'] );
-		$this->assertSame( 'copyedit', $pages['tasktype'] );
-		$this->assertSame( TaskType::DIFFICULTY_EASY, $pages['difficulty'] );
-		$this->assertSame( 0, $pages['order'] );
-		$this->assertSame( [], $pages['qualityGateIds'] );
-		$this->assertSame( [], $pages['qualityGateConfig'] );
-		$this->assertMatchesRegularExpression( "/^[a-z0-9]{32}+$/", $pages['token'] );
+		$this->assertSame( 0, $page['ns'] );
+		$this->assertSame( 'Task-1', $page['title'] );
+		$this->assertSame( 'copyedit', $page['tasktype'] );
+		$this->assertSame( TaskType::DIFFICULTY_EASY, $page['difficulty'] );
+		$this->assertSame( 0, $page['order'] );
+		$this->assertSame( [], $page['qualityGateIds'] );
+		$this->assertSame( [], $page['qualityGateConfig'] );
+		$this->assertMatchesRegularExpression( "/^[a-z0-9]{32}+$/", $page['token'] );
 	}
 
 	public function testError() {

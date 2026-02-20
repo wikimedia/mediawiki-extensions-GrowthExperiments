@@ -94,9 +94,9 @@ class TaskTypeHandlerRegistry {
 	 * @return string[]
 	 */
 	public function getUniqueChangeTags(): array {
-		return array_values( array_filter(
+		return array_values( array_diff(
 			$this->getChangeTags(),
-			static fn ( $changeTagName ) => $changeTagName !== TaskTypeHandler::NEWCOMER_TASK_TAG
+			[ TaskTypeHandler::NEWCOMER_TASK_TAG ]
 		) );
 	}
 

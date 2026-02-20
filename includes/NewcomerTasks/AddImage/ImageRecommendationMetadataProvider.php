@@ -100,7 +100,7 @@ class ImageRecommendationMetadataProvider {
 			}
 			// None of the languages are relevant to the user, we can't really rank them.
 			// Just pick the first one.
-			return $value ? reset( $value ) : null;
+			return array_first( $value );
 		}
 		return null;
 	}

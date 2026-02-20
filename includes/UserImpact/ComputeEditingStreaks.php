@@ -102,11 +102,16 @@ class ComputeEditingStreaks {
 	public static function getLongestEditingStreak(
 		array $editCountByDay
 	): EditingStreak {
-		$editingStreaks = self::getEditingStreaks( $editCountByDay );
-		usort( $editingStreaks, static function ( EditingStreak $a, EditingStreak $b ) {
-			return $a->getStreakNumberOfDays() < $b->getStreakNumberOfDays() ? 1 : -1;
-		} );
-		return reset( $editingStreaks );
+		$longestStreak = null;
+		$longestDuration = 0;
+		foreach ( self::getEditingStreaks( $editCountByDay ) as $streak ) {
+			$duration = $streak->getStreakNumberOfDays();
+			if ( !$longestStreak || $duration > $longestDuration ) {
+				$longestStreak = $streak;
+				$longestDuration = $duration;
+			}
+		}
+		return $longestStreak;
 	}
 
 	/**
