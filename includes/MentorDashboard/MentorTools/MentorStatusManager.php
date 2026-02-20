@@ -47,12 +47,6 @@ class MentorStatusManager {
 
 	private HashBagOStuff $inprocessCache;
 
-	/**
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param UserFactory $userFactory
-	 * @param IConnectionProvider $connectionProvider
-	 */
 	public function __construct(
 		UserOptionsManager $userOptionsManager,
 		UserIdentityLookup $userIdentityLookup,

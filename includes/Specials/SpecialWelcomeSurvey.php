@@ -29,11 +29,6 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	private WelcomeSurveyFactory $welcomeSurveyFactory;
 	private WelcomeSurveyLogger $welcomeSurveyLogger;
 
-	/**
-	 * @param SpecialPageFactory $specialPageFactory
-	 * @param WelcomeSurveyFactory $welcomeSurveyFactory
-	 * @param WelcomeSurveyLogger $welcomeSurveyLogger
-	 */
 	public function __construct(
 		SpecialPageFactory $specialPageFactory,
 		WelcomeSurveyFactory $welcomeSurveyFactory,

@@ -31,12 +31,6 @@ class SpecialMentorDashboard extends SpecialPage {
 	private UserOptionsLookup $userOptionsLookup;
 	private JobQueueGroupFactory $jobQueueGroupFactory;
 
-	/**
-	 * @param MentorDashboardModuleRegistry $mentorDashboardModuleRegistry
-	 * @param MentorProvider $mentorProvider
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param JobQueueGroupFactory $jobQueueGroupFactory
-	 */
 	public function __construct(
 		MentorDashboardModuleRegistry $mentorDashboardModuleRegistry,
 		MentorProvider $mentorProvider,

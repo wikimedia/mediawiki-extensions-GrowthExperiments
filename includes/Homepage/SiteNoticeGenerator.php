@@ -18,10 +18,6 @@ class SiteNoticeGenerator {
 	private JobQueueGroup $jobQueueGroup;
 	private ?bool $homepageDiscoveryNoticeSeen = null;
 
-	/**
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param JobQueueGroup $jobQueueGroup
-	 */
 	public function __construct(
 		UserOptionsLookup $userOptionsLookup,
 		JobQueueGroup $jobQueueGroup

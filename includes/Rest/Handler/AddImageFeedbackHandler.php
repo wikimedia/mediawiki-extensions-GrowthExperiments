@@ -30,12 +30,6 @@ class AddImageFeedbackHandler extends SimpleHandler {
 	private ConfigurationLoader $configurationLoader;
 	private AddImageSubmissionHandler $addImageSubmissionHandler;
 
-	/**
-	 * @param TitleFactory $titleFactory
-	 * @param RevisionLookup $revisionLookup
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param AddImageSubmissionHandler $addImageSubmissionHandler
-	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		RevisionLookup $revisionLookup,

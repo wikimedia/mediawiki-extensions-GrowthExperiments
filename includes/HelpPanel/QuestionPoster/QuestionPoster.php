@@ -287,10 +287,6 @@ abstract class QuestionPoster {
 		return $counter === 1 ? $sectionHeader : $sectionHeader . ' (' . $counter . ')';
 	}
 
-	/**
-	 * @param Content $content
-	 * @return StatusValue
-	 */
 	protected function checkPermissions( Content $content ): StatusValue {
 		$userPermissionStatus = $this->checkUserPermissions();
 		if ( !$userPermissionStatus->isGood() ) {

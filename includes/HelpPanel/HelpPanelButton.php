@@ -3,9 +3,7 @@
 namespace GrowthExperiments\HelpPanel;
 
 class HelpPanelButton extends \OOUI\ButtonWidget {
-	/**
-	 * @param array $config
-	 */
+
 	public function __construct( array $config = [] ) {
 		// HelpPanelButton default config values need to be in sync with
 		// defaults in modules/ui-components/HelpPanelButton.js

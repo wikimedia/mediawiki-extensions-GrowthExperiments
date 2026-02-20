@@ -968,9 +968,7 @@ class HomepageHooks implements
 		}
 	}
 
-	/**
-	 * @param User $user
-	 */
+	/** @inheritDoc */
 	public function onConfirmEmailComplete( $user ) {
 		// context user is used for cases when someone else than $user confirms the email,
 		// and that user doesn't have homepage enabled

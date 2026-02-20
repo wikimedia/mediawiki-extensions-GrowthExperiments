@@ -45,15 +45,6 @@ class HelpPanelHooks implements
 	private IMentorManager $mentorManager;
 	private MentorStatusManager $mentorStatusManager;
 
-	/**
-	 * @param Config $config
-	 * @param Config $wikiConfig
-	 * @param GenderCache $genderCache
-	 * @param UserEditTracker $userEditTracker
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param IMentorManager $mentorManager
-	 * @param MentorStatusManager $mentorStatusManager
-	 */
 	public function __construct(
 		Config $config,
 		Config $wikiConfig,
@@ -214,13 +205,6 @@ class HelpPanelHooks implements
 		$tags[] = HelpPanel::HELPDESK_QUESTION_TAG;
 	}
 
-	/**
-	 * @param Config $wikiConfig
-	 * @param User $user
-	 * @param MessageLocalizer $localizer
-	 * @param Language $language
-	 * @return array
-	 */
 	private function getMentorData(
 		Config $wikiConfig,
 		User $user,

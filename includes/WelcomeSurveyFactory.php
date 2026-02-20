@@ -17,11 +17,6 @@ class WelcomeSurveyFactory {
 	private UserOptionsManager $userOptionsManager;
 	private bool $ulsInstalled;
 
-	/**
-	 * @param LanguageNameUtils $languageNameUtils
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param bool $ulsInstalled
-	 */
 	public function __construct(
 		LanguageNameUtils $languageNameUtils,
 		UserOptionsManager $userOptionsManager,

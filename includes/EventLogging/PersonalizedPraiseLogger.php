@@ -62,11 +62,6 @@ class PersonalizedPraiseLogger {
 		EventLogging::submit( self::STREAM, $eventData );
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @param UserIdentity $mentee
-	 * @param bool $wasNotified
-	 */
 	public function logSuggested(
 		UserIdentity $mentor, UserIdentity $mentee, bool $wasNotified
 	): void {
@@ -110,11 +105,6 @@ class PersonalizedPraiseLogger {
 		}
 	}
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @param UserIdentity $mentee
-	 * @param string $skipReason
-	 */
 	public function logSkipped(
 		UserIdentity $mentor,
 		UserIdentity $mentee,

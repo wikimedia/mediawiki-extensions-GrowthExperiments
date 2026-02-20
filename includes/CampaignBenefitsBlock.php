@@ -23,11 +23,6 @@ class CampaignBenefitsBlock {
 	private HTMLForm $authForm;
 	private CampaignConfig $campaignConfig;
 
-	/**
-	 * @param IContextSource $context
-	 * @param HTMLForm $authForm
-	 * @param CampaignConfig $campaignConfig
-	 */
 	public function __construct(
 		IContextSource $context,
 		HTMLForm $authForm,

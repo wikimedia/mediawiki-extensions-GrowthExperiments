@@ -23,7 +23,6 @@ class CommunityStructuredMentorListValidator implements IValidator {
 
 	/**
 	 * @param mixed $config
-	 * @return ValidationStatus
 	 */
 	private function validate( $config ): ValidationStatus {
 		// HACK: Convert into arrays

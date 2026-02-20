@@ -29,12 +29,6 @@ class PraiseworthyConditionsLookup {
 	/** Number of days skipped mentees cannot be suggested for */
 	public const SKIP_MENTEES_FOR_DAYS = 10;
 
-	/**
-	 * @param PersonalizedPraiseSettings $settings
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param UserFactory $userFactory
-	 * @param IMentorManager $mentorManager
-	 */
 	public function __construct(
 		PersonalizedPraiseSettings $settings,
 		UserOptionsLookup $userOptionsLookup,

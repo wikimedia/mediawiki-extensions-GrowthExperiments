@@ -20,11 +20,6 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 
 	private IConnectionProvider $connectionProvider;
 
-	/**
-	 * @param TitleFactory $titleFactory
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param IConnectionProvider $connectionProvider
-	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,

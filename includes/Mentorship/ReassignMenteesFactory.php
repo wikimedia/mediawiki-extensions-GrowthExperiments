@@ -21,15 +21,6 @@ class ReassignMenteesFactory {
 	private JobQueueGroupFactory $jobQueueGroupFactory;
 	private FormatterFactory $formatterFactory;
 
-	/**
-	 * @param ILoadBalancer $dbLoadBalancer
-	 * @param IMentorManager $mentorManager
-	 * @param MentorProvider $mentorProvider
-	 * @param MentorStore $mentorStore
-	 * @param ChangeMentorFactory $changeMentorFactory
-	 * @param JobQueueGroupFactory $jobQueueGroupFactory
-	 * @param FormatterFactory $formatterFactory
-	 */
 	public function __construct(
 		ILoadBalancer $dbLoadBalancer,
 		IMentorManager $mentorManager,
@@ -48,12 +39,6 @@ class ReassignMenteesFactory {
 		$this->formatterFactory = $formatterFactory;
 	}
 
-	/**
-	 * @param UserIdentity $performer
-	 * @param UserIdentity $mentor
-	 * @param IContextSource $context
-	 * @return ReassignMentees
-	 */
 	public function newReassignMentees(
 		UserIdentity $performer,
 		UserIdentity $mentor,

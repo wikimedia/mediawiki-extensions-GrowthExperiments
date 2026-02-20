@@ -38,11 +38,6 @@ class HomepageModuleRegistry {
 		$this->services = $services;
 	}
 
-	/**
-	 * @param string $id
-	 * @param IContextSource $contextSource
-	 * @return IDashboardModule
-	 */
 	public function get( string $id, IContextSource $contextSource ): IDashboardModule {
 		if ( $this->modules[$id] ?? null ) {
 			return $this->modules[$id];

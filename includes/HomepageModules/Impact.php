@@ -33,17 +33,6 @@ class Impact extends BaseModule {
 	private bool $forceShowingForOther = false;
 	private ?array $hasMainspaceEditsCache = null;
 
-	/**
-	 * @param IContextSource $ctx
-	 * @param Config $wikiConfig
-	 * @param IExperimentManager $experimentManager
-	 * @param UserIdentity $userIdentity
-	 * @param UserImpactStore $userImpactStore
-	 * @param UserImpactFormatter $userImpactFormatter
-	 * @param UserDatabaseHelper $userDatabaseHelper
-	 * @param bool $isSuggestedEditsEnabled
-	 * @param bool $isSuggestedEditsActivated
-	 */
 	public function __construct(
 		IContextSource $ctx,
 		Config $wikiConfig,

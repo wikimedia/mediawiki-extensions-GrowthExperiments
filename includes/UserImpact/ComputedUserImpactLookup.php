@@ -76,23 +76,6 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	private ConfigurationLoader $configurationLoader;
 	private FeatureManager $featureManager;
 
-	/**
-	 * @param ServiceOptions $config
-	 * @param IConnectionProvider $connectionProvider
-	 * @param NameTableStore $changeTagDefStore
-	 * @param UserFactory $userFactory
-	 * @param UserEditTracker $userEditTracker
-	 * @param TitleFormatter $titleFormatter
-	 * @param TitleFactory $titleFactory
-	 * @param StatsFactory $statsFactory
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param FeatureManager $featureManager
-	 * @param LoggerInterface|null $loggerFactory
-	 * @param PageImages|null $pageImages
-	 * @param PageViewService|null $pageViewService
-	 * @param ThanksQueryHelper|null $thanksQueryHelper
-	 */
 	public function __construct(
 		ServiceOptions $config,
 		IConnectionProvider $connectionProvider,

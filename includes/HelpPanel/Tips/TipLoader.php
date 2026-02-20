@@ -188,14 +188,6 @@ class TipLoader {
 		return $msg->isDisabled() ? '' : $msg->getKey();
 	}
 
-	/**
-	 * @param string $skinName
-	 * @param string $editor
-	 * @param string $taskTypeId
-	 * @param string $tipTypeId
-	 * @param string $step
-	 * @return string
-	 */
 	private function buildMessageKey(
 		string $skinName, string $editor, string $taskTypeId, string $tipTypeId, string $step
 	): string {

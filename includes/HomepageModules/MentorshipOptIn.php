@@ -14,12 +14,6 @@ class MentorshipOptIn extends BaseModule {
 	/** @var IMentorManager */
 	private $mentorManager;
 
-	/**
-	 * @param IContextSource $context
-	 * @param Config $wikiConfig
-	 * @param IExperimentManager $experimentManager
-	 * @param IMentorManager $mentorManager
-	 */
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,

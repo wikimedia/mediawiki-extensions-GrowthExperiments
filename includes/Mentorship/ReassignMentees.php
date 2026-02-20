@@ -30,18 +30,6 @@ class ReassignMentees {
 	private UserIdentity $mentor;
 	private MessageLocalizer $messageLocalizer;
 
-	/**
-	 * @param IDatabase $dbw
-	 * @param IMentorManager $mentorManager
-	 * @param MentorProvider $mentorProvider
-	 * @param MentorStore $mentorStore
-	 * @param ChangeMentorFactory $changeMentorFactory
-	 * @param JobQueueGroupFactory $jobQueueGroupFactory
-	 * @param StatusFormatter $statusFormatter
-	 * @param UserIdentity $performer
-	 * @param UserIdentity $mentor
-	 * @param MessageLocalizer $messageLocalizer
-	 */
 	public function __construct(
 		IDatabase $dbw,
 		IMentorManager $mentorManager,

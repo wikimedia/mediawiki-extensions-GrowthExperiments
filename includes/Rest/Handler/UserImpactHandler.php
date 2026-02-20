@@ -34,14 +34,6 @@ class UserImpactHandler extends SimpleHandler {
 	private JobQueueGroup $jobQueueGroup;
 	private UserFactory $userFactory;
 
-	/**
-	 * @param UserImpactStore $userImpactStore
-	 * @param UserImpactLookup $userImpactLookup
-	 * @param UserImpactFormatter $userImpactFormatter
-	 * @param StatsFactory $statsFactory
-	 * @param JobQueueGroup $jobQueueGroup
-	 * @param UserFactory $userFactory
-	 */
 	public function __construct(
 		UserImpactStore $userImpactStore,
 		UserImpactLookup $userImpactLookup,

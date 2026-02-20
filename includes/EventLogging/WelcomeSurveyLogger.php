@@ -32,11 +32,6 @@ class WelcomeSurveyLogger {
 		$this->logger = $logger;
 	}
 
-	/**
-	 * @param WebRequest $webRequest
-	 * @param User $user
-	 * @param bool $isMobile
-	 */
 	public function initialize( WebRequest $webRequest, User $user, bool $isMobile ): void {
 		$this->webRequest = $webRequest;
 		$this->user = $user;

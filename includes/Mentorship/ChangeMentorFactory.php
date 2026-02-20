@@ -16,13 +16,6 @@ class ChangeMentorFactory {
 	private UserFactory $userFactory;
 	private IConnectionProvider $connectionProvider;
 
-	/**
-	 * @param LoggerInterface $logger
-	 * @param IMentorManager $mentorManager
-	 * @param MentorStore $mentorStore
-	 * @param UserFactory $userFactory
-	 * @param IConnectionProvider $connectionProvider
-	 */
 	public function __construct(
 		LoggerInterface $logger,
 		IMentorManager $mentorManager,
@@ -37,11 +30,6 @@ class ChangeMentorFactory {
 		$this->connectionProvider = $connectionProvider;
 	}
 
-	/**
-	 * @param UserIdentity $mentee
-	 * @param UserIdentity $performer
-	 * @return ChangeMentor
-	 */
 	public function newChangeMentor(
 		UserIdentity $mentee,
 		UserIdentity $performer

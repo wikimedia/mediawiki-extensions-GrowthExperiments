@@ -18,12 +18,6 @@ class SpecialImpact extends SpecialPage {
 	private UserNamePrefixSearch $userNamePrefixSearch;
 	private HomepageModuleRegistry $homepageModuleRegistry;
 
-	/**
-	 * @param UserFactory $userFactory
-	 * @param UserNameUtils $userNameUtils
-	 * @param UserNamePrefixSearch $userNamePrefixSearch
-	 * @param HomepageModuleRegistry $homepageModuleRegistry
-	 */
 	public function __construct(
 		UserFactory $userFactory,
 		UserNameUtils $userNameUtils,

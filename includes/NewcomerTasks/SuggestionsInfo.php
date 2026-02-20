@@ -28,11 +28,6 @@ class SuggestionsInfo implements NewcomerTasksInfo {
 	private $taskSuggesterFactory;
 	private ITopicRegistry $topicRegistry;
 
-	/**
-	 * @param TaskSuggesterFactory $taskSuggesterFactory
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param ConfigurationLoader $configurationLoader
-	 */
 	public function __construct(
 		TaskSuggesterFactory $taskSuggesterFactory,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,

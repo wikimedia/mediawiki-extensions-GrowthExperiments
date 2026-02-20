@@ -139,9 +139,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 		return $fields;
 	}
 
-	/**
-	 * @return string
-	 */
+	/** @inheritDoc */
 	protected function getDisplayFormat() {
 		return 'ooui';
 	}

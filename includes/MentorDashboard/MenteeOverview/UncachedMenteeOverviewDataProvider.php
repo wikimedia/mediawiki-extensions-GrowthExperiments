@@ -60,14 +60,6 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 */
 	private array $profilingInfo = [];
 
-	/**
-	 * @param MentorStore $mentorStore
-	 * @param NameTableStore $changeTagDefStore
-	 * @param ActorMigration $actorMigration
-	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param TempUserConfig $tempUserConfig
-	 * @param IConnectionProvider $mainConnProvider
-	 */
 	public function __construct(
 		MentorStore $mentorStore,
 		NameTableStore $changeTagDefStore,

@@ -26,10 +26,6 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @param bool $userIsBlocked
-	 * @return UserFactory
-	 */
 	private function getMockUserFactory( bool $userIsBlocked = false ): UserFactory {
 		$userIdentity = $this->getTestMentor();
 		$user = $this->createMock( User::class );

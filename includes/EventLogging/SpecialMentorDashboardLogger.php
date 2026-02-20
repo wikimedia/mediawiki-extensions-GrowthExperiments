@@ -20,12 +20,6 @@ class SpecialMentorDashboardLogger {
 	private WebRequest $request;
 	private bool $isMobile;
 
-	/**
-	 * @param string $pageviewToken
-	 * @param UserIdentity $user
-	 * @param WebRequest $request
-	 * @param bool $isMobile
-	 */
 	public function __construct(
 		string $pageviewToken,
 		UserIdentity $user,

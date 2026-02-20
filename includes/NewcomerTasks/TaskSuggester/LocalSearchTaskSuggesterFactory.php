@@ -24,16 +24,6 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	private StatsFactory $statsFactory;
 	private ITopicRegistry $topicRegistry;
 
-	/**
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param SearchStrategy $searchStrategy
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param SearchEngineFactory $searchEngineFactory
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param StatsFactory $statsFactory
-	 * @param ITopicRegistry $topicRegistry
-	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
