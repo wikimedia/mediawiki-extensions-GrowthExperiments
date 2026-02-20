@@ -7,12 +7,10 @@ use MediaWiki\MediaWikiServices;
 
 class QuestionStoreFactory {
 
-	/**
-	 * @param IContextSource $context
-	 * @param string $storage
-	 * @return QuestionStore
-	 */
-	public static function newFromContextAndStorage( IContextSource $context, $storage ) {
+	public static function newFromContextAndStorage(
+		IContextSource $context,
+		string $storage
+	): QuestionStore {
 		$services = MediaWikiServices::getInstance();
 		return new QuestionStore(
 			$context->getUser(),

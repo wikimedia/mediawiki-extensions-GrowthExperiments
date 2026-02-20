@@ -237,11 +237,7 @@ class QuestionStore {
 		return $questionRecord;
 	}
 
-	/**
-	 * @param QuestionRecord $question
-	 * @return QuestionRecord
-	 */
-	private function trimQuestion( QuestionRecord $question ) {
+	private function trimQuestion( QuestionRecord $question ): QuestionRecord {
 		$trimmedQuestionText = $this->language->truncateForVisual(
 			$question->getQuestionText(),
 			self::QUESTION_CHAR_LIMIT

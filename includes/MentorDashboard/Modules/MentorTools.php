@@ -38,10 +38,7 @@ class MentorTools extends BaseModule {
 		return $this->msg( 'growthexperiments-mentor-dashboard-mentor-tools-headline' )->text();
 	}
 
-	/**
-	 * @return int
-	 */
-	private function getMentorWeight() {
+	private function getMentorWeight(): int {
 		return $this->mentorProvider
 			->newMentorFromUserIdentity( $this->getUser() )
 			->getWeight();

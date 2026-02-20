@@ -93,7 +93,6 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$questionPoster->method( 'checkContent' )
 			->willReturn( StatusValue::newFatal( 'apierror-missingcontent-revid' ) );
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
-		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 
 		/** @var \StatusValue $status */
@@ -118,7 +117,6 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 			'getTargetContentModel',
 		] );
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
-		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$pageUpdaterMock = $this->createNoOpMock( PageUpdater::class, [ 'grabParentRevision' ] );
 		$revisionRecordMock = $this->createMock( RevisionRecord::class );
@@ -161,7 +159,6 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		] );
 		$contentMock = $this->createNoOpMock( WikitextContent::class );
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( $contentMock );
-		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$questionPoster->method( 'checkUserPermissions' )->willReturn(
 			StatusValue::newFatal( '' )
@@ -195,7 +192,6 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 			'getTargetContentModel',
 			'getSectionHeaderTemplate',
 		] );
-		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$questionPoster->method( 'checkUserPermissions' )->willReturn(
 			StatusValue::newGood( '' )

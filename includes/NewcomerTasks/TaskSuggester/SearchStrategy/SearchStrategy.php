@@ -154,11 +154,7 @@ class SearchStrategy {
 		return implode( ' ', $terms );
 	}
 
-	/**
-	 * @param array $pageIds
-	 * @return string
-	 */
-	private function getPageIdTerm( array $pageIds ) {
+	private function getPageIdTerm( array $pageIds ): string {
 		return 'pageid:' . implode( '|', $pageIds );
 	}
 

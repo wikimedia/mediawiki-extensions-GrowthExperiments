@@ -73,12 +73,7 @@ class Util {
 			( $newEmail ? Sanitizer::validateEmail( $newEmail ) : true );
 	}
 
-	/**
-	 * @param IContextSource $contextSource
-	 * @param int $elapsedTime
-	 * @return string
-	 */
-	public static function getRelativeTime( IContextSource $contextSource, $elapsedTime ) {
+	public static function getRelativeTime( IContextSource $contextSource, int $elapsedTime ): string {
 		return $contextSource->getLanguage()->formatDuration(
 			$elapsedTime,
 			self::getIntervals( $elapsedTime )

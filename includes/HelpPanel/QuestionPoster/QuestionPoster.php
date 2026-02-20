@@ -346,10 +346,7 @@ abstract class QuestionPoster {
 		);
 	}
 
-	/**
-	 * @return PageUpdater
-	 */
-	protected function getPageUpdater() {
+	protected function getPageUpdater(): PageUpdater {
 		if ( $this->pageUpdater === null ) {
 			$page = $this->wikiPageFactory->newFromTitle( $this->getTargetTitle() );
 			$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
@@ -371,10 +368,7 @@ abstract class QuestionPoster {
 			StatusValue::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' );
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getResultUrl() {
+	public function getResultUrl(): string {
 		return $this->resultUrl;
 	}
 
@@ -385,10 +379,7 @@ abstract class QuestionPoster {
 		return $this->revisionId;
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function isFirstEdit() {
+	public function isFirstEdit(): bool {
 		return $this->isFirstEdit;
 	}
 
@@ -404,10 +395,8 @@ abstract class QuestionPoster {
 
 	/**
 	 * Set the result URL to go directly to the newly created question.
-	 *
-	 * @param string $resultUrl
 	 */
-	private function setResultUrl( $resultUrl ) {
+	private function setResultUrl( string $resultUrl ): void {
 		$this->resultUrl = $resultUrl;
 	}
 
@@ -418,7 +407,7 @@ abstract class QuestionPoster {
 	 * only if duplicate headers exist, which can happen when questions
 	 * are posted within the same minute.
 	 */
-	protected function setSectionHeader() {
+	protected function setSectionHeader(): void {
 		$this->sectionHeader = $this->getSectionHeaderTemplate();
 		// If wikitext, override the section header to include the timestamp.
 		if ( $this->getTargetContentModel() === CONTENT_MODEL_WIKITEXT ) {
@@ -433,17 +422,11 @@ abstract class QuestionPoster {
 		);
 	}
 
-	/**
-	 * @return string
-	 */
-	private function getSectionHeader() {
+	private function getSectionHeader(): string {
 		return $this->sectionHeader;
 	}
 
-	/**
-	 * @return string
-	 */
-	private function getPostedOnTimestamp() {
+	private function getPostedOnTimestamp(): string {
 		return $this->postedOnTimestamp;
 	}
 
@@ -477,10 +460,7 @@ abstract class QuestionPoster {
 	 */
 	abstract protected function getDirectTargetTitle();
 
-	/**
-	 * @return IContextSource
-	 */
-	final protected function getContext() {
+	final protected function getContext(): IContextSource {
 		return $this->context;
 	}
 

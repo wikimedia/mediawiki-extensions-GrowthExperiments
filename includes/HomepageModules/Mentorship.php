@@ -132,10 +132,7 @@ class Mentorship extends BaseModule {
 		return parent::buildSection( $name, $content, $tag );
 	}
 
-	/**
-	 * @return string
-	 */
-	private function getEllipsisWidget() {
+	private function getEllipsisWidget(): string {
 		// NOTE: This will be replaced with ButtonMenuSelectWidget in EllipsisMenu.js on the
 		// client side.
 		return Html::rawElement(

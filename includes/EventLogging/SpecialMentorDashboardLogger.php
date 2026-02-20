@@ -38,10 +38,7 @@ class SpecialMentorDashboardLogger {
 		$this->isMobile = $isMobile;
 	}
 
-	/**
-	 * @return void
-	 */
-	public function log() {
+	public function log(): void {
 		$referer = $this->request->getHeader( 'REFERER' );
 		$event = [
 			'$schema' => self::SCHEMA_VERSIONED,

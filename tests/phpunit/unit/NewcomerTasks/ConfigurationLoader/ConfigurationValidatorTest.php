@@ -20,10 +20,7 @@ class ConfigurationValidatorTest extends MediaWikiUnitTestCase {
 			$validator->validateArrayMaxSize( 3, [ 'w', 'x', 'y', 'z' ], 'x', 'y' ) );
 	}
 
-	/**
-	 * @return ConfigurationValidator
-	 */
-	private function getValidator() {
+	private function getValidator(): ConfigurationValidator {
 		return new ConfigurationValidator(
 			$this->createNoOpMock( MessageLocalizer::class, [ 'msg' ] )
 		);

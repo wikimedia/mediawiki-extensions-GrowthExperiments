@@ -280,15 +280,8 @@ class SiteNoticeGenerator {
 		);
 	}
 
-	/**
-	 * @param OutputPage $output
-	 * @param UserIdentity $user
-	 * @param string $msgBodyKey
-	 * @param string $class
-	 * @return string
-	 */
 	private function getDiscoveryTextWithAvatarIcon(
-		OutputPage $output, UserIdentity $user, string $msgBodyKey, $class = ''
+		OutputPage $output, UserIdentity $user, string $msgBodyKey, string $class = ''
 	): string {
 		return Html::rawElement( 'p', [ 'class' => $class ],
 			$output->msg( $msgBodyKey )

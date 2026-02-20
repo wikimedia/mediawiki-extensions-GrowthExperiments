@@ -115,10 +115,7 @@ class TourHooks implements
 		$resourceLoader->register( $modules );
 	}
 
-	/**
-	 * @return bool
-	 */
-	public static function growthTourDependenciesLoaded() {
+	public static function growthTourDependenciesLoaded(): bool {
 		$extensionRegistry = ExtensionRegistry::getInstance();
 		return $extensionRegistry->isLoaded( 'GuidedTour' ) &&
 			   $extensionRegistry->isLoaded( 'Echo' ) &&

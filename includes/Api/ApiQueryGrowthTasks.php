@@ -74,10 +74,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$this->run( $resultPageSet );
 	}
 
-	/**
-	 * @param ApiPageSet|null $resultPageSet
-	 */
-	protected function run( ?ApiPageSet $resultPageSet = null ) {
+	protected function run( ?ApiPageSet $resultPageSet = null ): void {
 		$user = $this->getUser();
 		if ( !$user->isNamed() ) {
 			$this->dieWithError( 'apierror-mustbeloggedin-generic' );

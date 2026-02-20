@@ -78,10 +78,7 @@ class Impact extends BaseModule {
 		];
 	}
 
-	/**
-	 * @return string
-	 */
-	private function getUnactivatedModuleCssClass() {
+	private function getUnactivatedModuleCssClass(): string {
 		// The following classes are used here:
 		// * growthexperiments-homepage-module-impact-unactivated-desktop
 		// * growthexperiments-homepage-module-impact-unactivated-mobile-details

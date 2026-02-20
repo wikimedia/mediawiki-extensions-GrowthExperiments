@@ -34,14 +34,9 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	];
 	private QuestionPosterFactory $questionPosterFactory;
 
-	/**
-	 * @param ApiMain $mainModule
-	 * @param string $moduleName
-	 * @param QuestionPosterFactory $questionPosterFactory
-	 */
 	public function __construct(
 		ApiMain $mainModule,
-		$moduleName,
+		string $moduleName,
 		QuestionPosterFactory $questionPosterFactory
 	) {
 		parent::__construct( $mainModule, $moduleName );
