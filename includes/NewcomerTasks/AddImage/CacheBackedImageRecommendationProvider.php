@@ -26,11 +26,6 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 
 	private StatsFactory $statsFactory;
 
-	/**
-	 * @param WANObjectCache $cache
-	 * @param ImageRecommendationProvider $imageRecommendationProvider
-	 * @param StatsFactory $statsFactory
-	 */
 	public function __construct(
 		WANObjectCache $cache,
 		ImageRecommendationProvider $imageRecommendationProvider,
@@ -102,12 +97,6 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 		return $dataToBeReturned;
 	}
 
-	/**
-	 * @param WANObjectCache $cache
-	 * @param string $taskTypeId
-	 * @param string $dbKey
-	 * @return string
-	 */
 	public static function makeKey( WANObjectCache $cache, string $taskTypeId, string $dbKey ): string {
 		return $cache->makeKey( 'growthexperiments-image-recommendations', $taskTypeId, $dbKey );
 	}

@@ -10,10 +10,6 @@ use MediaWiki\Status\Status;
 
 abstract class ManageMentorsAbstractForm extends OOUIHTMLForm {
 
-	/**
-	 * @param IContextSource $context
-	 * @param string $messagePrefix
-	 */
 	public function __construct(
 		IContextSource $context,
 		string $messagePrefix = ''

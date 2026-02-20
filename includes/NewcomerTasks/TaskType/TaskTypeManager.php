@@ -83,10 +83,6 @@ class TaskTypeManager {
 		return $this->availableTaskTypesOnNextEdit;
 	}
 
-	/**
-	 * @param UserIdentity $userIdentity
-	 * @return void
-	 */
 	private function loadTaskTypes( UserIdentity $userIdentity ): void {
 		if ( $this->taskTypes !== null ) {
 			return;

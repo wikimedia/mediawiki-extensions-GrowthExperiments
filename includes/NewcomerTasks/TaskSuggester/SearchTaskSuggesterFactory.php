@@ -26,13 +26,6 @@ abstract class SearchTaskSuggesterFactory extends TaskSuggesterFactory {
 	/** @var LinkBatchFactory */
 	protected $linkBatchFactory;
 
-	/**
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param SearchStrategy $searchStrategy
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param LinkBatchFactory $linkBatchFactory
-	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,

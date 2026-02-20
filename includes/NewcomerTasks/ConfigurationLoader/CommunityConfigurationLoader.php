@@ -199,10 +199,6 @@ class CommunityConfigurationLoader implements ConfigurationLoader {
 		return $result;
 	}
 
-	/**
-	 * @param TaskType $taskType
-	 * @return bool
-	 */
 	private function isDisabled( TaskType $taskType ): bool {
 		return in_array( $taskType->getId(), $this->disabledTaskTypeIds, true );
 	}

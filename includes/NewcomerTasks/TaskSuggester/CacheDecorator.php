@@ -41,13 +41,6 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 	/** @var JsonCodec */
 	private $jsonCodec;
 
-	/**
-	 * @param TaskSuggester $taskSuggester
-	 * @param JobQueueGroup $jobQueueGroup
-	 * @param WANObjectCache $cache
-	 * @param TaskSetListener $taskSetListener
-	 * @param JsonCodec $jsonCodec
-	 */
 	public function __construct(
 		TaskSuggester $taskSuggester,
 		JobQueueGroup $jobQueueGroup,

@@ -18,13 +18,6 @@ class PersonalizedPraiseNotificationsDispatcher {
 	private PersonalizedPraiseSettings $personalizedPraiseSettings;
 	private PersonalizedPraiseLogger $eventLogger;
 
-	/**
-	 * @param Config $config
-	 * @param BagOStuff $cache
-	 * @param SpecialPageFactory $specialPageFactory
-	 * @param PersonalizedPraiseSettings $personalizedPraiseSettings
-	 * @param PersonalizedPraiseLogger $personalizedPraiseLogger
-	 */
 	public function __construct(
 		Config $config,
 		BagOStuff $cache,

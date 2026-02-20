@@ -93,9 +93,6 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 			'hastemplate:' . Util::escapeSearchTitleList( $taskType->getTemplates() );
 	}
 
-	/**
-	 * @return TemplateBasedTaskSubmissionHandler
-	 */
 	public function getSubmissionHandler(): SubmissionHandler {
 		return $this->submissionHandler;
 	}

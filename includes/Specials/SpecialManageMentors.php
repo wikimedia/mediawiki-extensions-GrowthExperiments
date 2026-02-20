@@ -35,15 +35,6 @@ class SpecialManageMentors extends SpecialPage {
 	private MentorRemover $mentorRemover;
 	private Config $wikiConfig;
 
-	/**
-	 * @param UserIdentityLookup $userIdentityLookup
-	 * @param UserEditTracker $userEditTracker
-	 * @param MentorProvider $mentorProvider
-	 * @param IMentorWriter $mentorWriter
-	 * @param MentorStatusManager $mentorStatusManager
-	 * @param MentorRemover $mentorRemover
-	 * @param Config $wikiConfig
-	 */
 	public function __construct(
 		UserIdentityLookup $userIdentityLookup,
 		UserEditTracker $userEditTracker,
@@ -170,11 +161,6 @@ class SpecialManageMentors extends SpecialPage {
 		}
 	}
 
-	/**
-	 * @param Mentor $mentor
-	 * @param int $i
-	 * @return string
-	 */
 	private function getMentorAsHtmlRow( Mentor $mentor, int $i ): string {
 		[ $weightText, $weightRank ] = $this->formatWeight( $mentor );
 		[ $statusText, $statusRank ] = $this->formatStatus( $mentor );

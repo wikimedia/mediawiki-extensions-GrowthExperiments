@@ -116,11 +116,6 @@ class TipNodeRenderer {
 		return $messageKey;
 	}
 
-	/**
-	 * @param TipNode $node
-	 * @param string $dir
-	 * @return string
-	 */
 	private function graphicRender( TipNode $node, string $dir ): string {
 		if ( !$node->getData()[0]['type'] || $node->getData()[0]['type'] !== 'image' ) {
 			return '';
@@ -138,12 +133,6 @@ class TipNodeRenderer {
 		] );
 	}
 
-	/**
-	 * @param string $filename
-	 * @param string $suffix
-	 * @param string $dir
-	 * @return string
-	 */
 	private function getImageSourcePath( string $filename, string $suffix, string $dir ): string {
 		return $this->extensionAssetsPath . '/GrowthExperiments/images/' .
 			$filename . '-' . $dir . '.' . $suffix;
@@ -167,11 +156,6 @@ class TipNodeRenderer {
 			)->parse() ) );
 	}
 
-	/**
-	 * @param TipNode $node
-	 * @param string $skinName
-	 * @return array
-	 */
 	private function getMessageParameters( TipNode $node, string $skinName ): array {
 		return array_filter( array_map( function ( $nodeConfig ) use ( $skinName ) {
 			switch ( $nodeConfig['type'] ) {

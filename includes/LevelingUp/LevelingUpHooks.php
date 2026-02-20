@@ -30,11 +30,6 @@ class LevelingUpHooks implements
 	private LevelingUpManager $levelingUpManager;
 	private FeatureManager $featureManager;
 
-	/**
-	 * @param Config $config
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param LevelingUpManager $levelingUpManager
-	 */
 	public function __construct(
 		Config $config,
 		ConfigurationLoader $configurationLoader,

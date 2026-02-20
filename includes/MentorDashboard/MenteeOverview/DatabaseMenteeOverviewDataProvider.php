@@ -24,11 +24,6 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private ILoadBalancer $growthLB;
 	protected WANObjectCache $wanCache;
 
-	/**
-	 * @param WANObjectCache $wanCache
-	 * @param MentorStore $mentorStore
-	 * @param ILoadBalancer $growthLB
-	 */
 	public function __construct(
 		WANObjectCache $wanCache,
 		MentorStore $mentorStore,

@@ -46,14 +46,6 @@ class QualityGateDecorator implements TaskSuggester {
 	/** @var CampaignConfig */
 	private $campaignConfig;
 
-	/**
-	 * @param TaskSuggester $taskSuggester
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
-	 * @param SectionImageRecommendationSubmissionLogFactory $sectionImageRecommendationSubmissionLogFactory
-	 * @param LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory
-	 * @param CampaignConfig $campaignConfig
-	 */
 	public function __construct(
 		TaskSuggester $taskSuggester,
 		ConfigurationLoader $configurationLoader,

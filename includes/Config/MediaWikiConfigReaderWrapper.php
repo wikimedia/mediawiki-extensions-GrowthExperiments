@@ -31,10 +31,7 @@ class MediaWikiConfigReaderWrapper implements Config {
 		$this->mediawikiConfigRouter = $mediaWikiConfigRouter;
 	}
 
-	/**
-	 * @param string $name
-	 * @return mixed
-	 */
+	/** @inheritDoc */
 	public function get( $name ) {
 		$value = $this->mediawikiConfigRouter->get( $name );
 		if ( $name === 'GEHelpPanelHelpDeskPostOnTop' ) {
@@ -46,10 +43,7 @@ class MediaWikiConfigReaderWrapper implements Config {
 		return $value;
 	}
 
-	/**
-	 * @param string $name
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function has( $name ): bool {
 		return $this->mediawikiConfigRouter->has( $name );
 	}

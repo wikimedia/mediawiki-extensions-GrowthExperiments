@@ -45,9 +45,6 @@ abstract class TaskTypeHandler {
 	 */
 	abstract public function getId(): string;
 
-	/**
-	 * @return SubmissionHandler
-	 */
 	abstract public function getSubmissionHandler(): SubmissionHandler;
 
 	/**

@@ -20,13 +20,6 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 	private MentorStatusManager $mentorStatusManager;
 	private UserIdentity $mentorUser;
 
-	/**
-	 * @param MentorProvider $mentorProvider
-	 * @param IMentorWriter $mentorWriter
-	 * @param MentorStatusManager $mentorStatusManager
-	 * @param UserIdentity $mentorUser
-	 * @param IContextSource $context
-	 */
 	public function __construct(
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter,

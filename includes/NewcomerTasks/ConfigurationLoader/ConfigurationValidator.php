@@ -15,9 +15,6 @@ class ConfigurationValidator {
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
-	/**
-	 * @param MessageLocalizer $messageLocalizer
-	 */
 	public function __construct(
 		MessageLocalizer $messageLocalizer
 	) {

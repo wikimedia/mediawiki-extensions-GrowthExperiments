@@ -29,11 +29,6 @@ class MentorDashboardModuleRegistry {
 		$this->services = $services;
 	}
 
-	/**
-	 * @param string $moduleId
-	 * @param IContextSource $context
-	 * @return IDashboardModule
-	 */
 	public function get( string $moduleId, IContextSource $context ): IDashboardModule {
 		if ( isset( $this->modules[$moduleId] ) ) {
 			return $this->modules[$moduleId];

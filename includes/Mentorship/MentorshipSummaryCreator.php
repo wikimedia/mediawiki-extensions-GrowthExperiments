@@ -39,12 +39,6 @@ class MentorshipSummaryCreator {
 		);
 	}
 
-	/**
-	 * @param UserIdentity $performer
-	 * @param UserIdentity $mentor
-	 * @param string $reason
-	 * @return string
-	 */
 	public static function createAddSummary(
 		UserIdentity $performer,
 		UserIdentity $mentor,
@@ -58,12 +52,6 @@ class MentorshipSummaryCreator {
 		);
 	}
 
-	/**
-	 * @param UserIdentity $performer
-	 * @param UserIdentity $mentor
-	 * @param string $reason
-	 * @return string
-	 */
 	public static function createChangeSummary(
 		UserIdentity $performer,
 		UserIdentity $mentor,
@@ -77,12 +65,6 @@ class MentorshipSummaryCreator {
 		);
 	}
 
-	/**
-	 * @param UserIdentity $performer
-	 * @param UserIdentity $mentor
-	 * @param string $reason
-	 * @return string
-	 */
 	public static function createRemoveSummary(
 		UserIdentity $performer,
 		UserIdentity $mentor,

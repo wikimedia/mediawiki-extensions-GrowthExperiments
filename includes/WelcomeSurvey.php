@@ -31,12 +31,6 @@ class WelcomeSurvey {
 	private UserOptionsManager $userOptionsManager;
 	private bool $ulsInstalled;
 
-	/**
-	 * @param IContextSource $context
-	 * @param LanguageNameUtils $languageNameUtils
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param bool $ulsInstalled
-	 */
 	public function __construct(
 		IContextSource $context,
 		LanguageNameUtils $languageNameUtils,

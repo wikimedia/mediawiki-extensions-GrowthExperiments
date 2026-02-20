@@ -24,11 +24,6 @@ class LinkSubmissionRecorder {
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	/**
-	 * @param TitleParser $titleParser
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param LinkRecommendationStore $linkRecommendationStore
-	 */
 	public function __construct(
 		TitleParser $titleParser,
 		LinkBatchFactory $linkBatchFactory,

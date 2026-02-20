@@ -9,12 +9,6 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
  */
 abstract class AbstractTaskSetFilter implements TaskSetFilter {
 
-	/**
-	 * @param TaskSet $taskSet
-	 * @param array $validTasks
-	 * @param array $invalidTasks
-	 * @return TaskSet
-	 */
 	public function copyValidAndInvalidTasksToNewTaskSet(
 		TaskSet $taskSet, array $validTasks, array $invalidTasks
 	): TaskSet {

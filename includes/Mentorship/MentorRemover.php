@@ -14,11 +14,6 @@ class MentorRemover {
 	private IMentorWriter $mentorWriter;
 	private ReassignMenteesFactory $reassignMenteesFactory;
 
-	/**
-	 * @param MentorProvider $mentorProvider
-	 * @param IMentorWriter $mentorWriter
-	 * @param ReassignMenteesFactory $reassignMenteesFactory
-	 */
 	public function __construct(
 		MentorProvider $mentorProvider,
 		IMentorWriter $mentorWriter,
@@ -29,13 +24,6 @@ class MentorRemover {
 		$this->reassignMenteesFactory = $reassignMenteesFactory;
 	}
 
-	/**
-	 * @param UserIdentity $performer
-	 * @param UserIdentity $mentor
-	 * @param string $reason
-	 * @param IContextSource $context
-	 * @return StatusValue
-	 */
 	public function removeMentor(
 		UserIdentity $performer,
 		UserIdentity $mentor,

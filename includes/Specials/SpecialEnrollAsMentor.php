@@ -20,11 +20,6 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 	private MentorProvider $mentorProvider;
 	private IMentorWriter $mentorWriter;
 
-	/**
-	 * @param Config $wikiConfig
-	 * @param MentorProvider $mentorProvider
-	 * @param IMentorWriter $mentorWriter
-	 */
 	public function __construct(
 		Config $wikiConfig,
 		MentorProvider $mentorProvider,

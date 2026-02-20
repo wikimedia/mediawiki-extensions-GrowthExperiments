@@ -165,11 +165,6 @@ class PraiseworthyMenteeSuggester {
 		return $this->deserializeFromCache( $this->globalCache->get( $key ) ) ?: [];
 	}
 
-	/**
-	 * @param UserIdentity $mentee
-	 * @param UserIdentity $mentor
-	 * @return bool
-	 */
 	public function isMenteeMarkedAsPraiseworthy( UserIdentity $mentee, UserIdentity $mentor ): bool {
 		$praiseworthyIds = array_keys( $this->getPraiseworthyMenteesForMentor( $mentor ) );
 		return in_array( $mentee->getId(), $praiseworthyIds );

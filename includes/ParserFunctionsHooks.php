@@ -9,9 +9,8 @@ use MediaWiki\Parser\Parser;
  * Class that consumes parser-functions related hooks.
  */
 class ParserFunctionsHooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
-	/**
-	 * @param Parser $parser
-	 */
+
+	/** @inheritDoc */
 	public function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 'mentor', static function ( Parser $parser, $username ) {
 			// Do not use dependency injection here. MentorManager's service wiring

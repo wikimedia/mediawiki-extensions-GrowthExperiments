@@ -12,11 +12,6 @@ class ManageMentorsRemoveMentor extends ManageMentorsAbstractForm {
 	private UserIdentity $mentorUser;
 	private MentorRemover $mentorRemover;
 
-	/**
-	 * @param MentorRemover $mentorRemover
-	 * @param UserIdentity $mentorUser
-	 * @param IContextSource $context
-	 */
 	public function __construct(
 		MentorRemover $mentorRemover,
 		UserIdentity $mentorUser,

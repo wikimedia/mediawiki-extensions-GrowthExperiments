@@ -40,14 +40,6 @@ class PersonalizedPraiseSettings {
 	private TitleFactory $titleFactory;
 	private RevisionLookup $revisionLookup;
 
-	/**
-	 * @param Config $wikiConfig
-	 * @param MessageLocalizer $messageLocalizer
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param UserFactory $userFactory
-	 * @param TitleFactory $titleFactory
-	 * @param RevisionLookup $revisionLookup
-	 */
 	public function __construct(
 		Config $wikiConfig,
 		MessageLocalizer $messageLocalizer,
