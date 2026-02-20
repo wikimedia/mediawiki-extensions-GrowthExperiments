@@ -132,37 +132,21 @@ class ExpensiveUserImpact extends UserImpact {
 		$this->dailyArticleViews = $json['dailyArticleViews'];
 	}
 
-	/**
-	 * Filter view counts to only include dates with non-zero counts
-	 *
-	 * @note This is a safeguard filtering. ComputedUserImpactLookup should not generate impact
-	 * objects with zeros in the first place.
-	 * @see https://phabricator.wikimedia.org/T351898
-	 * @param array $views
-	 * @return array
-	 */
-	private function filterViewCounts( array $views ): array {
-		return array_filter( $views, static function ( $el ) {
-			return $el > 0;
-		} );
-	}
-
-	private function filterViewCountsForArticles( array $data ): array {
-		$newData = [];
-		foreach ( $data as $article => $articleData ) {
-			$newArticleData = $articleData;
-			$newArticleData['views'] = $this->filterViewCounts( $articleData['views'] ?? [] );
-			$newData[$article] = $newArticleData;
-		}
-
-		return $newData;
-	}
-
 	/** @inheritDoc */
 	public function jsonSerialize(): array {
+		$filteredDailyArticleViews = [];
+		foreach ( $this->dailyArticleViews as $title => $data ) {
+			$filteredDailyArticleViews[$title] = [
+				...$data,
+				// T351898: Safeguard, ComputedUserImpactLookup shouldn't have returned zero counts
+				'views' => array_filter( $data['views'] ?? [] ),
+			];
+		}
+
 		return parent::jsonSerialize() + [
-			'dailyTotalViews' => $this->filterViewCounts( $this->dailyTotalViews ),
-			'dailyArticleViews' => $this->filterViewCountsForArticles( $this->dailyArticleViews ),
+			// T351898: Safeguard, ComputedUserImpactLookup shouldn't have returned zero counts
+			'dailyTotalViews' => array_filter( $this->dailyTotalViews ),
+			'dailyArticleViews' => $filteredDailyArticleViews,
 		];
 	}
 
