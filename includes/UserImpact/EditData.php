@@ -16,8 +16,8 @@ class EditData {
 	private int $createdArticlesCount;
 
 	/**
-	 * @param int[] $editCountByNamespace Number of edits made by the user per namespace ID.
-	 * @param int[] $editCountByDay Number of article-space edits made by the user
+	 * @param array<int,int> $editCountByNamespace Number of edits made by the user per namespace ID.
+	 * @param array<string,int> $editCountByDay Number of article-space edits made by the user
 	 *   by day. The format matches {@see UserImpact::getEditCountByDay()}.
 	 * @param array<string,int> $editCountByTaskType Number of newcomer task edits per task type
 	 *  {@see UserImpact::getEditCountByTaskType()}.
@@ -52,7 +52,7 @@ class EditData {
 
 	/**
 	 * Number of edits made by the user per namespace.
-	 * @return int[] Namespace ID => edit count.
+	 * @return array<int,int> Namespace ID => edit count.
 	 */
 	public function getEditCountByNamespace(): array {
 		return $this->editCountByNamespace;
@@ -61,7 +61,7 @@ class EditData {
 	/**
 	 * Number of article-space edits made by the user by day.
 	 * Days are interpreted according to the wiki's timezone default offset.
-	 * @return int[] Same as UserImpact::getEditCountByDay().
+	 * @return array<string,int> Same as UserImpact::getEditCountByDay().
 	 * @see $wgLocalTZoffset
 	 */
 	public function getEditCountByDay(): array {

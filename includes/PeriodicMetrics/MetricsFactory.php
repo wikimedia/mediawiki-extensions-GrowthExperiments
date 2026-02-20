@@ -9,6 +9,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 class MetricsFactory {
 
+	/** @var class-string<IMetric>[] */
 	public const METRICS = [
 		AutoAssignedMentorsMetric::class,
 		InactiveMentorsMetric::class,
@@ -30,7 +31,7 @@ class MetricsFactory {
 	}
 
 	/**
-	 * @param string $className
+	 * @param class-string<IMetric> $className
 	 * @return IMetric
 	 * @throws InvalidArgumentException if metric class name is not supported
 	 */

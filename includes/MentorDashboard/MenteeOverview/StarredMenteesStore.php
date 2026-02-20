@@ -30,6 +30,9 @@ class StarredMenteesStore {
 		return implode( self::SEPARATOR, $ids );
 	}
 
+	/**
+	 * @return int[]
+	 */
 	private function decodeMenteeIds( string $encodedIds ): array {
 		$res = explode( self::SEPARATOR, $encodedIds );
 		return array_map( 'intval', array_filter( $res, 'is_numeric' ) );

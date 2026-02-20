@@ -34,15 +34,16 @@ class UserImpact implements JsonSerializable, JsonCodecable {
 	private UserIdentity $user;
 	private int $receivedThanksCount;
 	private int $givenThanksCount;
-	/** @var int[] */
+	/** @var array<int,int> */
 	private array $editCountByNamespace;
-	/** @var int[] */
+	/** @var array<string,int> */
 	private array $editCountByDay;
 	private int $revertedEditCount;
 	private int $newcomerTaskEditCount;
 	private ?int $lastEditTimestamp = null;
 	private int $generatedAt;
 	private EditingStreak $longestEditingStreak;
+	/** @var array<string,int> */
 	private array $editCountByTaskType;
 
 	private int $totalArticlesCreatedCount;
@@ -55,11 +56,11 @@ class UserImpact implements JsonSerializable, JsonCodecable {
 	 *   thanks received a long time ago.
 	 * @param int $givenThanksCount Number of thanks the user has given. Might exclude thanks
 	 *    given a long time ago.
-	 * @param int[] $editCountByNamespace Namespace ID => number of edits the user made in some
-	 *   namespace. Might exclude edits made a long time ago or many edits ago.
-	 * @param int[] $editCountByDay Day => number of edits the user made on that day. Indexed with
-	 *   ISO 8601 dates, e.g. '2022-08-25'. Might exclude edits made many edits ago.
-	 * @param array $editCountByTaskType
+	 * @param array<int,int> $editCountByNamespace Namespace ID => number of edits the user made in
+	 *   some namespace. Might exclude edits made a long time ago or many edits ago.
+	 * @param array<string,int> $editCountByDay Day => number of edits the user made on that day.
+	 *   Indexed with ISO 8601 dates, e.g. '2022-08-25'. Might exclude edits made many edits ago.
+	 * @param array<string,int> $editCountByTaskType
 	 * @param int $revertedEditCount Number of edits by the user that got reverted (determined by
 	 * the mw-reverted tag).
 	 * @param int $newcomerTaskEditCount Number of edits the user made which have the
@@ -125,7 +126,7 @@ class UserImpact implements JsonSerializable, JsonCodecable {
 	/**
 	 * Map of namespace ID => number of edits the user made in that namespace.
 	 * Might exclude edits made a long time ago or many edits ago.
-	 * @return int[]
+	 * @return array<int,int>
 	 */
 	public function getEditCountByNamespace(): array {
 		return $this->editCountByNamespace;
@@ -145,7 +146,7 @@ class UserImpact implements JsonSerializable, JsonCodecable {
 	 * Map of day => number of article-space edits the user made on that day.
 	 * Indexed with ISO 8601 dates, e.g. '2022-08-25'; in ascending order by date.
 	 * Dates aren't contiguous. Might exclude edits made many edits ago.
-	 * @return int[]
+	 * @return array<string,int>
 	 */
 	public function getEditCountByDay(): array {
 		return $this->editCountByDay;
