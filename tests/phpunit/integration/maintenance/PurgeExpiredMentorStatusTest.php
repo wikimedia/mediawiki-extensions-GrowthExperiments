@@ -10,7 +10,7 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
- * @covers GrowthExperiments\Maintenance\PurgeExpiredMentorStatus
+ * @covers \GrowthExperiments\Maintenance\PurgeExpiredMentorStatus
  * @group Database
  */
 class PurgeExpiredMentorStatusTest extends MaintenanceBaseTestCase {

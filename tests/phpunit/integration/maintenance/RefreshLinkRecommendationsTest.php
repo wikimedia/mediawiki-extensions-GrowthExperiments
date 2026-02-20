@@ -12,7 +12,7 @@ use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
- * @covers GrowthExperiments\Maintenance\RefreshLinkRecommendations
+ * @covers \GrowthExperiments\Maintenance\RefreshLinkRecommendations
  * @group Database
  */
 class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {

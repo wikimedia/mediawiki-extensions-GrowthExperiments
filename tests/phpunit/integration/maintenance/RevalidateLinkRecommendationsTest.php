@@ -12,7 +12,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
 /**
- * @covers GrowthExperiments\Maintenance\RevalidateLinkRecommendations
+ * @covers \GrowthExperiments\Maintenance\RevalidateLinkRecommendations
  * @group Database
  */
 class RevalidateLinkRecommendationsTest extends MaintenanceBaseTestCase {
