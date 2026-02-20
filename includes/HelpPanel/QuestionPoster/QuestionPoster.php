@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use Flow\Container;
+use Flow\Model\UUID;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\Hooks\HookRunner;
@@ -41,10 +42,8 @@ abstract class QuestionPoster {
 	private string $resultUrl;
 	private ?PageUpdater $pageUpdater = null;
 
-	/**
-	 * @var mixed
-	 */
-	private $revisionId;
+	/** Either a revision id or the UUID of a Flow topic */
+	private int|string $revisionId;
 
 	private string $relevantTitleRaw;
 	private ?Title $relevantTitle = null;
@@ -269,7 +268,9 @@ abstract class QuestionPoster {
 
 		$topicTitle = Title::newFromText( $commitMetadata['topiclist']['topic-page'] );
 		$this->setResultUrl( $topicTitle->getLinkURL() );
-		$this->revisionId = $commitMetadata['topiclist']['topic-id']->getAlphadecimal();
+		/** @var UUID $topicId */
+		$topicId = $commitMetadata['topiclist']['topic-id'];
+		$this->revisionId = $topicId->getAlphadecimal();
 
 		return StatusValue::newGood();
 	}
@@ -372,10 +373,7 @@ abstract class QuestionPoster {
 		return $this->resultUrl;
 	}
 
-	/**
-	 * @return int
-	 */
-	public function getRevisionId() {
+	public function getRevisionId(): int|string {
 		return $this->revisionId;
 	}
 

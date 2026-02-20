@@ -10,7 +10,7 @@ class QuestionRecord implements JsonSerializable {
 
 	private string $questionText;
 	private string $sectionHeader;
-	/** @var string|int|null */
+	/** @var string|int|null Either a revision id or the UUID of a Flow topic */
 	private $revId;
 	private string $resultUrl;
 	private string $archiveUrl;
@@ -22,7 +22,7 @@ class QuestionRecord implements JsonSerializable {
 	/**
 	 * @param string $questionText
 	 * @param string $sectionHeader
-	 * @param string|int|null $revId
+	 * @param string|int|null $revId Either a revision id or the UUID of a Flow topic
 	 * @param int $timestamp
 	 * @param string $resultUrl
 	 * @param string $contentModel
