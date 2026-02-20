@@ -36,21 +36,19 @@ class MetricsFactory {
 	 * @throws InvalidArgumentException if metric class name is not supported
 	 */
 	public function newMetric( string $className ): IMetric {
-		switch ( $className ) {
-			case AutoAssignedMentorsMetric::class:
-				return new AutoAssignedMentorsMetric( $this->mentorProvider );
-			case InactiveMentorsMetric::class:
-				return new InactiveMentorsMetric(
-					$this->userEditTracker,
-					$this->mentorProvider
-				);
-			case NewcomersByMentorMetric::class:
-				return new NewcomersByMentorMetric(
-					$this,
-					$this->loadBalancer->getConnection( DB_REPLICA )
-				);
-			default:
-				throw new InvalidArgumentException( 'Unsupported metric class name' );
-		}
+		return match ( $className ) {
+			AutoAssignedMentorsMetric::class => new AutoAssignedMentorsMetric(
+				$this->mentorProvider
+			),
+			InactiveMentorsMetric::class => new InactiveMentorsMetric(
+				$this->userEditTracker,
+				$this->mentorProvider
+			),
+			NewcomersByMentorMetric::class => new NewcomersByMentorMetric(
+				$this,
+				$this->loadBalancer->getConnection( DB_REPLICA )
+			),
+			default => throw new InvalidArgumentException( 'Unsupported metric class name' )
+		};
 	}
 }

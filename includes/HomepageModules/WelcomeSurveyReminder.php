@@ -121,11 +121,10 @@ class WelcomeSurveyReminder extends BaseModule {
 		] );
 		$disableButton->setAttributes( [ 'data-ajax' => $ajaxSkipUrl ] );
 		$disableButton->setAttributes( [ 'data-link-id' => 'welcomesurvey-skip' ] );
-		$disableToken = Html::element( 'input', [
-			'type' => 'hidden',
-			'name' => 'token',
-			'value' => $this->getContext()->getCsrfTokenSet()->getToken( 'welcomesurvey' ),
-		] );
+		$disableToken = Html::hidden(
+			'token',
+			$this->getContext()->getCsrfTokenSet()->getToken( 'welcomesurvey' )
+		);
 		$disableForm = Html::rawElement( 'form', [
 			'action' => $noJsSkipUrl,
 			'method' => 'POST',
