@@ -26,6 +26,6 @@ class GrowthMentorsValidationTest extends MediaWikiIntegrationTestCase {
 			'{ "Mentors": { "1": {"username": "Mentor1", "weight": 0, "message": "' . $longMessage . '"} } }'
 		);
 		$this->assertStatusNotOk( $pageStatus );
-		$this->assertStatusMessage( 'communityconfiguration-schema-validation-error', $pageStatus );
+		$this->assertStatusMessage( 'growthexperiments-mentor-writer-error-message-too-long', $pageStatus );
 	}
 }

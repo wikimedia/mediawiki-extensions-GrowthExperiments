@@ -882,10 +882,7 @@
 						}
 					},
 					"validator": {
-						"type": "jsonschema",
-						"args": [
-							"GrowthExperiments\\Config\\Schemas\\MentorListSchema"
-						]
+						"type": "GrowthMentorship"
 					},
 					"type": "GrowthMentorList",
 					"options": {

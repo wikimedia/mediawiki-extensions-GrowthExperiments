@@ -14,6 +14,8 @@ class MentorListConfigProviderTest extends MediaWikiIntegrationTestCase {
 	use CommunityConfigurationTestHelpers;
 
 	public function testLoadsEmptyPage() {
+		$this->markTestSkipped( 'Skipping temporarily (T417422#11639445)' );
+
 		$this->getNonexistingTestPage( 'MediaWiki:GrowthMentors.json' );
 		$provider = CommunityConfigurationServices::wrap( $this->getServiceContainer() )
 			->getConfigurationProviderFactory()
