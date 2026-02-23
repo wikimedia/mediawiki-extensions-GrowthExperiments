@@ -2,7 +2,7 @@
 	"@metadata": {
 		"authors": []
 	},
-	"rest-module-growthexperiments.v0-title": "Growth experiments module",
+	"rest-module-growthexperiments.v0-title": "Growth experiments API",
 	"rest-module-growthexperiments.v0-desc": "Experimental editing suggestions and editor feedback regarding such suggestions",
 	"rest-endpoint-desc-get-growthexperiments-quickstarttips": "Returns tips, relevant to the given user, that help new users engage with editing content.",
 	"rest-endpoint-desc-get-growthexperiments-suggestions-addlink": "Provides link suggestions for page content.",
