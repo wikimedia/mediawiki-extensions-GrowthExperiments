@@ -1,7 +1,7 @@
 'use strict';
 
 const HomepageModuleLogger = require( '../../../modules/ext.growthExperiments.Homepage.Logger/index.js' );
-const { getUserVariant } = require( '../../../modules/utils/Utils.js' );
+const { getUserVariantForLegacySchema } = require( '../../../modules/utils/Utils.js' );
 
 QUnit.module( 'ext.growthExperiments.Homepage.Logger/index.js', QUnit.newMwEnvironment( {
 	config: {
@@ -20,7 +20,6 @@ QUnit.test( 'log', function ( assert ) {
 	this.sandbox.spy( mw, 'track' );
 	const homepageModuleLogger = new HomepageModuleLogger( 'blah' );
 	homepageModuleLogger.log( 'foo', 'desktop', 'impression', { foo: 'bar' } );
-
 	assert.strictEqual( mw.track.calledOnce, true );
 	assert.strictEqual( mw.track.firstCall.args[ 0 ], 'event.HomepageModule' );
 	assert.deepEqual( mw.track.firstCall.args[ 1 ], {
@@ -30,7 +29,7 @@ QUnit.test( 'log', function ( assert ) {
 		state: 'done',
 		user_id: mw.user.getId(),
 		user_editcount: 123,
-		user_variant: getUserVariant(),
+		user_variant: getUserVariantForLegacySchema(),
 		module: 'foo',
 		is_mobile: OO.ui.isMobile(),
 		mode: 'desktop',
@@ -44,7 +43,6 @@ QUnit.test( 'do not include state in event if empty', function ( assert ) {
 	const homepageModuleLogger = new HomepageModuleLogger( 'blah' );
 	mw.config.set( 'wgGEHomepageModuleState-mentor', '' );
 	homepageModuleLogger.log( 'mentor', 'desktop', 'impression' );
-
 	assert.strictEqual( mw.track.calledOnce, true );
 	assert.strictEqual( mw.track.firstCall.args[ 0 ], 'event.HomepageModule' );
 	assert.deepEqual( mw.track.firstCall.args[ 1 ], {
@@ -53,7 +51,7 @@ QUnit.test( 'do not include state in event if empty', function ( assert ) {
 		action_data: '',
 		user_id: mw.user.getId(),
 		user_editcount: 123,
-		user_variant: getUserVariant(),
+		user_variant: getUserVariantForLegacySchema(),
 		module: 'mentor',
 		is_mobile: OO.ui.isMobile(),
 		mode: 'desktop',

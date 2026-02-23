@@ -56,7 +56,7 @@
 			action_data: Utils.serializeActionData( data ),
 			user_id: this.userId,
 			user_editcount: this.userEditCount,
-			user_variant: Utils.getUserVariant(),
+			user_variant: Utils.getUserVariantForLegacySchema(),
 			module: module,
 			is_mobile: this.isMobile,
 			mode: mode,

@@ -4,34 +4,22 @@
 		return;
 	}
 
-	const Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
-		useInstrument = require( '../ext.growthExperiments.Homepage.Logger/useInstrument.js' ),
-		logger = new Logger(
-			mw.config.get( 'wgGEHomepagePageviewToken' ),
-		),
+	const useInstrument = require(
+			'../ext.growthExperiments.Homepage.Logger/useInstrument.js' ),
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$modules = $( '.growthexperiments-homepage-container .growthexperiments-homepage-module' ),
 		streamName = 'mediawiki.product_metrics.homepage_module_interaction',
-		schemaId = '/analytics/product_metrics/web/base/1.4.1',
+		schemaId = '/analytics/product_metrics/web/base/2.0.0',
 		analytics = useInstrument( streamName, schemaId ),
 		handleClick = function ( e ) {
 			const $link = $( this ),
 				$module = $link.closest( '.growthexperiments-homepage-module' ),
 				linkId = $link.data( 'link-id' ) ||
 					$link.closest( '[data-link-group-id]' ).data( 'link-group-id' ),
-				linkData = $link.data( 'link-data' ),
 				moduleName = $module.data( 'module-name' ),
-				mode = $module.data( 'mode' ),
-				extraData = { linkId: linkId };
-			if ( linkData !== undefined && linkData !== null ) {
-				extraData.linkData = linkData;
-			}
-			logger.log( moduleName, mode, 'link-click', extraData );
-			// Special casing for the SDS2.1.3 objective, T365889
-			if ( moduleName === 'community-updates' ) {
-				const actionData = mw.config.get( 'wgGEHomepageModuleActionData-community-updates' );
-				analytics.logEvent( 'click', linkId, moduleName, actionData ? actionData.context : null );
-			}
+				actionContext = analytics.getActionContextForSchema( moduleName );
+
+			analytics.logEvent( 'click', linkId, moduleName, actionContext );
 
 			// This is needed so this handler doesn't fire twice for links
 			// that are inside a module that is inside another module.
@@ -40,14 +28,9 @@
 		logImpression = function () {
 			const $module = $( this ),
 				moduleName = $module.data( 'module-name' ),
-				mode = $module.data( 'mode' );
-			logger.log( moduleName, mode, 'impression' );
-			// Special casing for the SDS2.1.3 objective, T365889
-			if ( moduleName === 'community-updates' ) {
-				// TODO Expand to all modules once Community updates experiment concludes, T365889
-				const actionData = mw.config.get( 'wgGEHomepageModuleActionData-community-updates' );
-				analytics.logEvent( 'impression', null, moduleName, actionData ? actionData.context : null );
-			}
+				actionContext = analytics.getActionContextForSchema( moduleName );
+
+			analytics.logEvent( 'impression', null, moduleName, actionContext );
 		},
 		url = new URL( window.location.href ),
 		// Matches routes like /homepage/moduleName or /homepage/moduleName/action
