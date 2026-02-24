@@ -5,37 +5,26 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\IMentorManager;
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\ReassignMentees;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\Status\Status;
-use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Mentorship\ReassignMentees
+ * @covers \GrowthExperiments\Mentorship\ReassignMentees
  */
 class ReassignMenteesTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @param UserIdentity $mentor
-	 * @param IMentorManager|null $mentorManagerMock
-	 * @param MentorProvider|null $mentorProviderMock
-	 * @param MentorStore|null $mentorStoreMock
-	 * @param ChangeMentorFactory|null $changeMentorFactoryMock
-	 * @param IContextSource|null $contextMock
-	 * @return ReassignMentees
-	 */
 	private function newReassignMentees(
 		UserIdentity $mentor,
 		?IMentorManager $mentorManagerMock = null,
-		?MentorProvider $mentorProviderMock = null,
 		?MentorStore $mentorStoreMock = null,
 		?ChangeMentorFactory $changeMentorFactoryMock = null,
 		?IContextSource $contextMock = null
@@ -47,22 +36,18 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			->willReturn( true );
 
 		return new ReassignMentees(
+			new NullLogger(),
 			$dbw,
 			$mentorManagerMock ?? $this->createNoOpMock( IMentorManager::class ),
-			$mentorProviderMock ?? $this->createNoOpMock( MentorProvider::class ),
 			$mentorStoreMock ?? $this->createNoOpMock( MentorStore::class ),
 			$changeMentorFactoryMock ?? $this->createNoOpMock( ChangeMentorFactory::class ),
 			$this->createNoOpMock( JobQueueGroupFactory::class ),
-			$this->createNoOpMock( StatusFormatter::class ),
 			$mentor,
 			$mentor,
 			$contextMock ?? $this->createNoOpMock( IContextSource::class )
 		);
 	}
 
-	/**
-	 * @covers ::doReassignMentees
-	 */
 	public function testDoReassignMentees() {
 		$mentor = new UserIdentityValue( 123, 'Mentor' );
 		$newMentor = new UserIdentityValue( 321, 'New Mentor' );
@@ -107,7 +92,6 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		$reassignMentees = $this->newReassignMentees(
 			$mentor,
 			$mentorManager,
-			null,
 			$mentorStore,
 			$changeMentorFactory,
 			$context

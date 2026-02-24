@@ -2,57 +2,30 @@
 
 namespace GrowthExperiments\Mentorship;
 
-use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\JobQueue\JobSpecification;
-use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\WikiMap\WikiMap;
 use MessageLocalizer;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IDatabase;
 
 class ReassignMentees {
-	use LoggerAwareTrait;
-
-	private IDatabase $dbw;
-	private IMentorManager $mentorManager;
-	private MentorProvider $mentorProvider;
-	private MentorStore $mentorStore;
-	private ChangeMentorFactory $changeMentorFactory;
-	private JobQueueGroupFactory $jobQueueGroupFactory;
-	private StatusFormatter $statusFormatter;
-	private UserIdentity $performer;
-	private UserIdentity $mentor;
-	private MessageLocalizer $messageLocalizer;
 
 	public function __construct(
-		IDatabase $dbw,
-		IMentorManager $mentorManager,
-		MentorProvider $mentorProvider,
-		MentorStore $mentorStore,
-		ChangeMentorFactory $changeMentorFactory,
-		JobQueueGroupFactory $jobQueueGroupFactory,
-		StatusFormatter $statusFormatter,
-		UserIdentity $performer,
-		UserIdentity $mentor,
-		MessageLocalizer $messageLocalizer
+		private LoggerInterface $logger,
+		private IDatabase $dbw,
+		private IMentorManager $mentorManager,
+		private MentorStore $mentorStore,
+		private ChangeMentorFactory $changeMentorFactory,
+		private JobQueueGroupFactory $jobQueueGroupFactory,
+		private UserIdentity $performer,
+		private UserIdentity $mentor,
+		private MessageLocalizer $messageLocalizer
 	) {
-		$this->dbw = $dbw;
-		$this->mentorManager = $mentorManager;
-		$this->mentorProvider = $mentorProvider;
-		$this->mentorStore = $mentorStore;
-		$this->changeMentorFactory = $changeMentorFactory;
-		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
-		$this->statusFormatter = $statusFormatter;
-		$this->performer = $performer;
-		$this->mentor = $mentor;
-		$this->messageLocalizer = $messageLocalizer;
-		$this->logger = new NullLogger();
 	}
 
 	/**
