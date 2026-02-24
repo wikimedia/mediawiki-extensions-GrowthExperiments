@@ -6,6 +6,7 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\JobQueue\JobSpecification;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\WikiMap\WikiMap;
 use MessageLocalizer;
@@ -22,6 +23,7 @@ class ReassignMentees {
 		private MentorStore $mentorStore,
 		private ChangeMentorFactory $changeMentorFactory,
 		private JobQueueGroupFactory $jobQueueGroupFactory,
+		private UserFactory $userFactory,
 		private UserIdentity $performer,
 		private UserIdentity $mentor,
 		private MessageLocalizer $messageLocalizer
@@ -117,7 +119,12 @@ class ReassignMentees {
 
 		// only process primary mentors (T309984). Backup mentors will be automatically ignored by
 		// MentorManager::getMentorForUser and replaced with a valid mentor if needed
-		$mentees = $this->mentorStore->getMenteesByMentor( $this->mentor, MentorStore::ROLE_PRIMARY );
+		$mentees = $this->mentorStore->getMenteesByMentor(
+			$this->mentor,
+			MentorStore::ROLE_PRIMARY,
+			// include hidden users (important to avoid T418222)
+			true
+		);
 		$this->logger->info( __METHOD__ . ' processing {mentees} mentees', [
 			'mentees' => count( $mentees ),
 		] );
@@ -126,6 +133,16 @@ class ReassignMentees {
 			$this->logger->debug( __METHOD__ . ' processing {mentor}', [
 				'mentor' => $mentee->getName(),
 			] );
+
+			$menteeUser = $this->userFactory->newFromUserIdentity( $mentee );
+			if ( $menteeUser->isHidden() ) {
+				$this->logger->debug( __METHOD__ . ' dropping relationship for {mentee}, user is hidden', [
+					'mentee' => $mentee->getName(),
+				] );
+				$this->mentorStore->dropMenteeRelationship( $mentee );
+				continue;
+			}
+
 			$changeMentor = $this->changeMentorFactory->newChangeMentor(
 				$mentee,
 				$this->performer

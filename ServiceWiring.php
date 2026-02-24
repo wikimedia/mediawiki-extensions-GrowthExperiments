@@ -899,7 +899,8 @@ return [
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStore(),
 			$growthServices->getChangeMentorFactory(),
-			$services->getJobQueueGroupFactory()
+			$services->getJobQueueGroupFactory(),
+			$services->getUserFactory()
 		);
 	},
 

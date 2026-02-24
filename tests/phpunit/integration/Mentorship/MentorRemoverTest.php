@@ -6,6 +6,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\ReassignMenteesJob;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 
@@ -127,5 +128,42 @@ class MentorRemoverTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $otherMentor->equals(
 			$mentorStore->loadMentorUser( $menteeTwo, MentorStore::ROLE_PRIMARY )
 		) );
+	}
+
+	public function testWithHiddenMentees() {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorRemover = $geServices->getMentorRemover();
+		$mentorProvider = $geServices->getMentorProvider();
+		$mentorStore = $geServices->getMentorStore();
+
+		$mentor = $this->getNewMentor();
+		$normalMentee = $this->getMenteeForMentor( $mentor );
+		$hiddenMentee = $this->getMenteeForMentor( $mentor );
+		$this->getServiceContainer()->getBlockUserFactory()->newBlockUser(
+			$hiddenMentee,
+			new UltimateAuthority( $mentor ),
+			'infinity',
+			'',
+			[ 'isHideUser' => true ]
+		)->placeBlock();
+
+		// needed to reverse MentorHooks::onBlockIpComplete()
+		$mentorStore->setMentorForUser( $hiddenMentee, $mentor, MentorStore::ROLE_PRIMARY );
+
+		$status = $mentorRemover->removeMentor( $mentor, $mentor, '', RequestContext::getMain() );
+		$this->assertStatusOK( $status );
+		$this->assertFalse( $mentorProvider->isMentor( $mentor ) );
+
+		$this->runJobs(
+			[ 'numJobs' => 1 ],
+			// maxJobs is here to avoid an indefinite loop in a test context
+			// runJobs asserts it finishes with "we have no more jobs to execute" (as opposed to
+			// eg. "job execution limit was hit"). to meet that assertion, maxJobs needs to be
+			// numJobs + 1.
+			[ 'type' => ReassignMenteesJob::JOB_NAME, 'maxJobs' => 2 ]
+		);
+		$this->assertFalse( $mentorStore->hasAnyMentees( $mentor, MentorStore::ROLE_PRIMARY ) );
+		$this->assertNull( $mentorStore->loadMentorUser( $normalMentee, MentorStore::ROLE_PRIMARY ) );
+		$this->assertNull( $mentorStore->loadMentorUser( $hiddenMentee, MentorStore::ROLE_PRIMARY ) );
 	}
 }
