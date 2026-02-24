@@ -46,12 +46,8 @@ class DatabaseMentorStore extends MentorStore {
 		string $mentorRole,
 		$flags
 	): ?UserIdentity {
-		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
-			$db = $this->loadBalancer->getConnection( DB_PRIMARY );
-		} else {
-			$db = $this->loadBalancer->getConnection( DB_REPLICA );
-		}
-		$id = $db->newSelectQueryBuilder()
+		$id = $this->getDBByFlags( $flags )
+			->newSelectQueryBuilder()
 			->select( 'gemm_mentor_id' )
 			->from( 'growthexperiments_mentor_mentee' )
 			->where( [
