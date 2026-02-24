@@ -76,7 +76,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|rievdadus|rievdadusa}} $2",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Čájeheamit artihkkaliin maid {{GENDER:|don}} leat rievdadan",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Čájeheamit rievdaduvvon artihkkaliin",
-	"growthexperiments-homepage-impact-scores-edit-count": "rievdadusa (oktiibuot)",
+	"growthexperiments-homepage-impact-scores-edit-count": "Rievdadusat oktiibuot",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Máhcahuvvon rievdadusat",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Giittosat ollen",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Eambbo dieđuid das movt giitiin doaibmá",
@@ -179,7 +179,7 @@
 	"growthexperiments-homepage-claimmentee-no-user": "Fáttarmánná ii gávdno",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Don}} leat juo fáttar {{GENDER:$1|$1}}:ii",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} lea válljen fáddara haga leat",
-	"growthexperiments-homepage-enable-preference": "Jus háliidat coahkkalit ala ođđa rievdadeddjiid ruovttusiiddu, de mana heivehussii «Doaimmat ođđa rievdadeddjiide», [[Special:Preferences#mw-prefsection-personal-homepage|heivehusain]].",
+	"growthexperiments-homepage-enable-preference": "Jus háliidat coahkkalit ala ođđa rievdadeddjiid ruovttusiiddu, de mana ásahussii «Doaimmat ođđa rievdadeddjiide», [[Special:Preferences#mw-prefsection-personal-homepage|ásahusain]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|It}} leat rievdadan artihkkaliid ollenge.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Fina {{GENDER:$1|iežat}} ruovttusiiddus álggahan dihte rievdademiin!",
 	"growthexperiments-homepage-contributions-zero-button": "Mana {{GENDER:$1|iežat}} ruovttusiidui",
@@ -542,5 +542,6 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Don}} leat dahkan $3 {{PLURAL:$3|evttohuvvon rievdadeami|evttohuvvon rievdademiid }}. Joatkke vai ovdánahtát iežat gálggaid.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Daga evttohuvvon rievdadeami",
 	"echo-category-title-ge-newcomer": "Growth-doaimmat",
-	"echo-pref-tooltip-ge-newcomer": "Almmut munnje easkaálgiidbargobihtáid birra ja eará doaimmaid birra mat leat ráhkaduvvon veahkehan dihte ođđa geavaheddjiid."
+	"echo-pref-tooltip-ge-newcomer": "Almmut munnje easkaálgiidbargobihtáid birra ja eará doaimmaid birra mat leat ráhkaduvvon veahkehan dihte ođđa geavaheddjiid.",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lassedieđut"
 }

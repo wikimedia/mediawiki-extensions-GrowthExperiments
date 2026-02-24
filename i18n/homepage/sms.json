@@ -61,14 +61,17 @@
 	"growthexperiments-addimage-detailsdialog-license": "Liseʹnss:",
 	"growthexperiments-addimage-detailsdialog-date": "Peiʹvvmieʹrr:",
 	"growthexperiments-addimage-detailsdialog-categories": "Kategoria:",
+	"growthexperiments-addimage-detailsdialog-close": "Piij ǩidd",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Vuõlttâd",
 	"growthexperiments-addimage-rejectiondialog-action-cancel": "Jõõsk",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Jeeʹres mäinn",
+	"growthexperiments-addimage-viewer-close-button": "Piij ǩidd",
 	"growthexperiments-addimage-skip-dialog-cancel": "Jõõsk",
 	"growthexperiments-addimage-caption-title": "Lââʹzzet kartt- leʹbe snimldõkteeʹkst",
 	"growthexperiments-structuredtask-user-error-login-cta": "Ǩeeʹrjtõõđ sizz",
 	"growthexperiments-addimage-summary-label": "Õʹhtteǩeässmõš",
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "Jõõsk",
 	"growthexperiments-homepage-mentorship-optout-cancel": "Jõõsk",
-	"growthexperiments-homepage-special-contribute-title": "Eʹtǩǩuum muttâz"
+	"growthexperiments-homepage-special-contribute-title": "Eʹtǩǩuum muttâz",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lââʹssteâđ"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Neriah"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "טיפול בשאלות שנשלחו דרך חלונית העזרה למשתמש הנוכחי.",
@@ -13,5 +14,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "חלונית \"לשאול בחממה\" (שם ישן)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "חלונית \"לשאול את החונך שלך\" בדף הבית למתחילים (שם ישן)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "הכותרת המתאימה, אם נבחרה, שתיכלל עם השאלה.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "צריך להיכנס לחשבון כדי לשאול שאלה."
+	"apierror-mustbeloggedin-helppanelquestionposter": "צריך להיכנס לחשבון כדי לשאול שאלה.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "אין באפשרותך לשאול את החונך שלך אם אין לך חונך."
 }

@@ -7,5 +7,6 @@
 	"welcomesurvey": "{{GENDER:$1|Puäʹđ tiõrvân}}, $1!",
 	"welcomesurvey-dropdown-option-select-label": "Vaʹlljed...",
 	"welcomesurvey-question-email-label": "E-pååʹštaddrõs (vaʹlljeemnallšem)",
-	"welcomesurvey-question-email-placeholder": "Ǩeeʹrjet {{GENDER:|jiijjad}} e-pååʹštaddrõõzz..."
+	"welcomesurvey-question-email-placeholder": "Ǩeeʹrjet {{GENDER:|jiijjad}} e-pååʹštaddrõõzz...",
+	"welcomesurvey-mideditsignup-button-close": "Piij ǩidd"
 }
