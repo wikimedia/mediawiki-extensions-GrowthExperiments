@@ -11,6 +11,8 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\Status\Status;
+use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -35,6 +37,13 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		$dbw->method( 'unlock' )
 			->willReturn( true );
 
+		$user = $this->createNoOpMock( User::class, [ 'isHidden' ] );
+		$user->method( 'isHidden' )
+			->willReturn( false );
+		$userFactory = $this->createMock( UserFactory::class );
+		$userFactory->method( 'newFromUserIdentity' )
+			->willReturn( $user );
+
 		return new ReassignMentees(
 			new NullLogger(),
 			$dbw,
@@ -42,6 +51,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			$mentorStoreMock ?? $this->createNoOpMock( MentorStore::class ),
 			$changeMentorFactoryMock ?? $this->createNoOpMock( ChangeMentorFactory::class ),
 			$this->createNoOpMock( JobQueueGroupFactory::class ),
+			$userFactory,
 			$mentor,
 			$mentor,
 			$contextMock ?? $this->createNoOpMock( IContextSource::class )

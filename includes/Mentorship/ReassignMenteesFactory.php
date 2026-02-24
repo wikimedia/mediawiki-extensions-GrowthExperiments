@@ -5,6 +5,7 @@ namespace GrowthExperiments\Mentorship;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -17,7 +18,8 @@ class ReassignMenteesFactory {
 		private IMentorManager $mentorManager,
 		private MentorStore $mentorStore,
 		private ChangeMentorFactory $changeMentorFactory,
-		private JobQueueGroupFactory $jobQueueGroupFactory
+		private JobQueueGroupFactory $jobQueueGroupFactory,
+		private UserFactory $userFactory
 	) {
 	}
 
@@ -33,6 +35,7 @@ class ReassignMenteesFactory {
 			$this->mentorStore,
 			$this->changeMentorFactory,
 			$this->jobQueueGroupFactory,
+			$this->userFactory,
 			$performer,
 			$mentor,
 			$context
