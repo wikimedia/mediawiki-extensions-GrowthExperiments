@@ -55,5 +55,6 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Me komprenas",
 	"growthexperiments-addimage-caption-warning-tooshort": "Deskripto-texti mustas havar $1 {{PLURAL:$1|signo|signi}} od esar plu granda.",
 	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Me komprenis",
-	"growthexperiments-homepage-mentorship-optout-cancel": "Anular"
+	"growthexperiments-homepage-mentorship-optout-cancel": "Anular",
+	"growthexperiments-homepage-mentorship-optout-confirmation-done": "Facita"
 }

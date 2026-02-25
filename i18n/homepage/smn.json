@@ -33,10 +33,12 @@
 	"growthexperiments-addimage-detailsdialog-license": "Liiseens:",
 	"growthexperiments-addimage-detailsdialog-categories": "Luokah:",
 	"growthexperiments-addimage-detailsdialog-link": "Keejâ kove Wikimedia Commonsist",
+	"growthexperiments-addimage-detailsdialog-close": "Toopâ",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Vuolgât",
 	"growthexperiments-addimage-rejectiondialog-action-cancel": "Jooskâ",
 	"growthexperiments-addimage-viewer-close-button": "Toopâ",
 	"growthexperiments-addimage-skip-dialog-cancel": "Jooskâ",
 	"growthexperiments-structuredtask-user-error-login-cta": "Čáládât siisâ",
-	"growthexperiments-homepage-mentorship-optout-cancel": "Jooskâ"
+	"growthexperiments-homepage-mentorship-optout-cancel": "Jooskâ",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lasetiäđuh"
 }
