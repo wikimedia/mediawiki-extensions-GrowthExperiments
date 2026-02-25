@@ -5,7 +5,6 @@ namespace GrowthExperiments\Mentorship;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\WikiConfigException;
 use InvalidArgumentException;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
@@ -119,7 +118,6 @@ class MentorManager implements IMentorManager {
 	 * @param UserIdentity $mentee
 	 * @param string $role One of MentorStore::ROLE_* roles
 	 * @return UserIdentity|null Mentor that can be assigned to the mentee
-	 * @throws WikiConfigException if mentor list configuration is invalid
 	 */
 	private function getRandomAutoAssignedMentorForUserAndRole(
 		UserIdentity $mentee,

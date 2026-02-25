@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\WikiConfigException;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\User\UserFactory;
@@ -154,18 +153,7 @@ class ReassignMentees {
 				$this->performer
 			);
 
-			try {
-				$newMentor = $this->mentorManager->getRandomAutoAssignedMentor( $mentee );
-			} catch ( WikiConfigException ) {
-				$this->logger->warning(
-					'ReassignMentees failed to reassign mentees for {mentor}; mentor list is invalid',
-					[
-						'mentor' => $this->mentor->getName(),
-					]
-				);
-				return false;
-			}
-
+			$newMentor = $this->mentorManager->getRandomAutoAssignedMentor( $mentee );
 			if ( !$newMentor ) {
 				$this->logger->warning(
 					'ReassignMentees failed to reassign mentees for {mentor}; no mentor is available for {mentee}',

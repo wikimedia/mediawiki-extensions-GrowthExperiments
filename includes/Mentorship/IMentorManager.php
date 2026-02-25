@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\WikiConfigException;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
 
@@ -96,7 +95,6 @@ interface IMentorManager {
 	 * @param UserIdentity $mentee
 	 * @param UserIdentity[] $excluded A list of users who should not be selected.
 	 * @return UserIdentity|null The selected mentor; null if none available.
-	 * @throws WikiConfigException If the mentor list is invalid.
 	 */
 	public function getRandomAutoAssignedMentor(
 		UserIdentity $mentee, array $excluded = []
