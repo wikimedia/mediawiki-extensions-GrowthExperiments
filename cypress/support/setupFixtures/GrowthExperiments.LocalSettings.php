@@ -160,3 +160,6 @@ $wgGELinkRecommendationServiceUrl = 'https://example.com/service/linkrecommendat
 $wgHooks['UserGetDefaultOptions'][] = static function ( &$defaultOptions ) {
 	$defaultOptions[SuggestedEdits::ACTIVATED_PREF] = true;
 };
+
+// as in Wikimedia production (related to T415659)
+$wgHiddenPrefs[] = 'realname';

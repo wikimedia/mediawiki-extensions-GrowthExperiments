@@ -9,6 +9,11 @@
 			"Xiplus"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Description for the username field on the create account form.",
+	"growthexperiments-createacct-username-learn-more": "link-text for a link to learn more about username policies of a wiki. Will be shown next to {{msg-mw|growthexperiments-createacct-username-description}}",
+	"growthexperiments-confirmemail-emaildescription": "Description for the email field on the create account form.",
+	"growthexperiments-confirmemail-email-optional": "Label for the email field on the create account form. This is basically the first part of {{msg-mw|growthexperiments-confirmemail-emailrecommended}}, but the '(recommended)' will be rendered differently and will be translated in {{msg-mw|growthexperiments-confirmemail-email-recommended-flag}}.",
+	"growthexperiments-confirmemail-email-recommended-flag": "Flag (suffix to the label) for the email field on the create account form to indicate that while it is not strictly required, it is still strongly recommended. Replaces the second part of {{msg-mw|growthexperiments-confirmemail-emailrecommended}}, but will be now rendered differently. The first part of that message is at {{mw-msg|growthexperiments-confirmemail-email-optional}}",
 	"growthexperiments-confirmemail-emailhelp": "Help text for the email field on the account creation form.",
 	"growthexperiments-confirmemail-emailrecommended": "Label for the email field on the account creation form when it is optional but recommended. Replaces {{msg-mw|createacct-emailoptional}}.",
 	"growthexperiments-confirmemail-emailwarning": "Message displayed below the email field on the account creation form. This message animates in when the user clicks into the email field.",

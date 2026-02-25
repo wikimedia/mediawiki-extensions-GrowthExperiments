@@ -4,6 +4,11 @@
 			"Roan Kattouw"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Your username is public and cannot be made private later.",
+	"growthexperiments-createacct-username-learn-more": "Learn more",
+	"growthexperiments-confirmemail-emaildescription": "Email is required to recover your account if you lose your password or log in from an unfamiliar location or new browser.",
+	"growthexperiments-confirmemail-email-optional": "Email address",
+	"growthexperiments-confirmemail-email-recommended-flag": "(recommended)",
 	"growthexperiments-confirmemail-emailhelp": "Email is required to recover your account if you lose your password.",
 	"growthexperiments-confirmemail-emailrecommended": "Email address (recommended)",
 	"growthexperiments-confirmemail-emailwarning": "Please look for an email from us to verify your address.",

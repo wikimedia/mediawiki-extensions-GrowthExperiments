@@ -95,6 +95,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 				] ),
 			) ),
 			$this->createNoOpMock( CampaignLoader::class ),
+			$featureManager,
 		);
 	}
 

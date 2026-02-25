@@ -58,7 +58,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiIntegrationTestCase {
 		$this->assertInstanceOf( ExperimentTestKitchenManager::class, $experimentUserManager );
 		$assignments = $experimentUserManager->getAssignments();
 		$this->assertSame( IExperimentManager::EXPERIMENTS, array_keys( $assignments ) );
-		$this->assertSame( [ 'control' ], array_values( $assignments ) );
+		$this->assertSame( [ 'control', 'control' ], array_values( $assignments ) );
 	}
 
 }

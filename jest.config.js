@@ -28,6 +28,7 @@ module.exports = {
 	// Indicates whether the coverage information should be collected while executing the test
 	collectCoverage: true,
 	collectCoverageFrom: [
+		'modules/ext.growthExperiments.Account/**/*.(js|vue)',
 		'modules/ext.growthExperiments.MentorDashboard/**/*.(js|vue)',
 		'modules/ext.growthExperiments.Homepage.Impact/**/*.(js|vue)',
 		'modules/ext.growthExperiments.StructuredTask.PreEdit/**/*.(js|vue)',
@@ -48,6 +49,7 @@ module.exports = {
 	},
 	// A list of paths to directories that Jest should use to search for files in.
 	roots: [
+		'./modules/ext.growthExperiments.Account',
 		'./modules/ext.growthExperiments.DataStore',
 		'./modules/ext.growthExperiments.MentorDashboard',
 		'./modules/ext.growthExperiments.Homepage.Impact',

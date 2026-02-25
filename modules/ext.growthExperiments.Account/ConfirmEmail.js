@@ -6,6 +6,11 @@
 		 * hide the warning if the user doesn't provide an email address
 		 */
 		maybeShowWarning: function () {
+
+			if ( mw.config.get( 'GECreateAccountExperimentV1' ) ) {
+				// T415659
+				return;
+			}
 			mw.hook( 'htmlform.enhance' ).add( ( $root ) => {
 				const $emailInput = $root.find( '#wpEmail' );
 				$emailInput

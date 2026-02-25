@@ -47,6 +47,7 @@ class VariantHooks implements
 		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly IExperimentManager $experimentManager,
 		private readonly CampaignLoader $campaignLoader,
+		private readonly FeatureManager $featureManager,
 	) {
 	}
 
@@ -203,13 +204,22 @@ class VariantHooks implements
 
 	/** @inheritDoc */
 	public function onSpecialCreateAccountBenefits( ?string &$html, array $info, array &$options ) {
-		if ( !$this->shouldShowNewLandingPageHtml( $info['context'] ) ) {
-			return true;
+		$skin = $info['context']->getSkin();
+
+		if ( $this->featureManager->shouldShowCreateAccountV1( $info['context']->getUser(), $skin ) ) {
+			$html = '';
+			return false;
 		}
-		$options['beforeForm'] = $info['context']->getSkin() instanceof SkinMinerva;
-		$benefitsBlock = new CampaignBenefitsBlock( $info['context'], $info['form'], $this->campaignConfig );
-		$html = $benefitsBlock->getHtml();
-		return false;
+
+		if ( $this->shouldShowNewLandingPageHtml( $info['context'] ) ) {
+			// campaign
+			$options['beforeForm'] = $skin instanceof SkinMinerva;
+			$benefitsBlock = new CampaignBenefitsBlock( $info['context'], $info['form'], $this->campaignConfig );
+			$html = $benefitsBlock->getHtml();
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -238,12 +248,20 @@ class VariantHooks implements
 	 * @inheritDoc
 	 */
 	public function onSpecialPageBeforeExecute( $special, $subPage ) {
-		if ( $special->getName() === 'CreateAccount'
-			&& $this->shouldShowNewLandingPageHtml( $special->getContext() )
-			&& $special->getSkin() instanceof SkinMinerva
-			&& $special->getRequest()->getVal( 'notice' ) === 'mobile-frontend-generic-login-new'
+		if ( $special->getName() !== 'CreateAccount'
+			|| !$special->getSkin() instanceof SkinMinerva
 		) {
-			$special->getRequest()->setVal( 'notice', null );
+			return;
+		}
+
+		$context = $special->getContext();
+		if (
+			$this->shouldShowNewLandingPageHtml( $context ) ||
+			$this->featureManager->shouldShowCreateAccountV1( $context->getUser(), $context->getSkin() )
+		) {
+			if ( $special->getRequest()->getVal( 'notice' ) === 'mobile-frontend-generic-login-new' ) {
+				$special->getRequest()->setVal( 'notice', null );
+			}
 		}
 	}
 }

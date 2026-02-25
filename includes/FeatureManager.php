@@ -4,6 +4,8 @@ namespace GrowthExperiments;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Skin\Skin;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 
 class FeatureManager {
@@ -63,5 +65,14 @@ class FeatureManager {
 			$this->experimentManager->getAssignedGroup( IExperimentManager::REVISE_TONE_EXPERIMENT ) ===
 				IExperimentManager::VARIANT_TREATMENT
 			);
+	}
+
+	public function shouldShowCreateAccountV1( ?User $user, Skin $skin ): bool {
+		$isAnon = $user === null || $user->isAnon();
+		$isMobile = Util::isMobile( $skin );
+
+		return $isAnon && $isMobile && $this->experimentManager->getAssignedGroup(
+			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1
+		) === IExperimentManager::VARIANT_TREATMENT;
 	}
 }

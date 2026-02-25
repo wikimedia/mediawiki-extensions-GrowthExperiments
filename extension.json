@@ -418,7 +418,8 @@
 				"GrowthExperimentsCampaignConfig",
 				"SpecialPageFactory",
 				"GrowthExperimentsExperimentUserManager",
-				"GrowthExperimentsCampaignLoader"
+				"GrowthExperimentsCampaignLoader",
+				"GrowthExperimentsFeatureManager"
 			]
 		},
 		"visualeditor": {
@@ -443,7 +444,11 @@
 			]
 		},
 		"confirmEmail": {
-			"class": "GrowthExperiments\\ConfirmEmailHooks"
+			"class": "GrowthExperiments\\ConfirmEmailHooks",
+			"services": [
+				"TitleFactory",
+				"GrowthExperimentsFeatureManager"
+			]
 		}
 	},
 	"Hooks": {
@@ -1991,7 +1996,8 @@
 				"ext.growthExperiments.Account/index.js",
 				"ext.growthExperiments.Account/ConfirmEmail.js",
 				"ext.growthExperiments.Account/ULSTagMultiselectWidget.js",
-				"ext.growthExperiments.Account/WelcomeSurvey.js"
+				"ext.growthExperiments.Account/WelcomeSurvey.js",
+				"ext.growthExperiments.Account/WE18ExperimentV1.js"
 			],
 			"messages": [
 				"growthexperiments-confirmemail-emailwarning",
@@ -2007,6 +2013,7 @@
 			"styles": [
 				"ext.growthExperiments.Account.styles/DonorSignupCampaign.less",
 				"ext.growthExperiments.Account.styles/SpecialContributions.less",
+				"ext.growthExperiments.Account.styles/WE18ExperimentV1.less",
 				"ext.growthExperiments.Account.styles/WelcomeSurvey.less"
 			]
 		},
