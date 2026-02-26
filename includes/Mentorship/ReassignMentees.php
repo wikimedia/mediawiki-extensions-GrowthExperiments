@@ -125,9 +125,14 @@ class ReassignMentees {
 			// include hidden users (important to avoid T418222)
 			true
 		);
-		$this->logger->info( __METHOD__ . ' processing {mentees} mentees', [
-			'mentees' => count( $mentees ),
-		] );
+		$this->logger->info(
+			__METHOD__ . ' processing {mentees} mentees for {mentor} with limit of {limit}',
+			[
+				'mentees' => count( $mentees ),
+				'mentor' => $this->mentor->getName(),
+				'limit' => $limit,
+			]
+		);
 		$numberOfProcessedMentees = 0;
 		foreach ( $mentees as $mentee ) {
 			$this->logger->debug( __METHOD__ . ' processing {mentor}', [
@@ -162,9 +167,10 @@ class ReassignMentees {
 
 			if ( !$newMentor ) {
 				$this->logger->warning(
-					'ReassignMentees failed to reassign mentees for {mentor}; no mentor is available',
+					'ReassignMentees failed to reassign mentees for {mentor}; no mentor is available for {mentee}',
 					[
 						'mentor' => $this->mentor->getName(),
+						'mentee' => $mentee->getName(),
 						'impact' => 'Mentor-mentee relationship dropped',
 					]
 				);
