@@ -106,8 +106,6 @@ class MentorRemoverTest extends MediaWikiIntegrationTestCase {
 		$mentorStore = $geServices->getMentorStore();
 
 		$mentor = $this->getNewMentor();
-		// FIXME: an alternate mentor should not be necessary, but it is for now
-		$otherMentor = $this->getNewMentor();
 
 		$mentee = $this->getMenteeForMentor( $mentor );
 		$menteeTwo = $this->getMenteeForMentor( $mentor );
@@ -122,12 +120,8 @@ class MentorRemoverTest extends MediaWikiIntegrationTestCase {
 			[ 'type' => ReassignMenteesJob::JOB_NAME ]
 		);
 		$this->assertFalse( $mentorStore->hasAnyMentees( $mentor, MentorStore::ROLE_PRIMARY ) );
-		$this->assertTrue( $otherMentor->equals(
-			$mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY )
-		) );
-		$this->assertTrue( $otherMentor->equals(
-			$mentorStore->loadMentorUser( $menteeTwo, MentorStore::ROLE_PRIMARY )
-		) );
+		$this->assertNull( $mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
+		$this->assertNull( $mentorStore->loadMentorUser( $menteeTwo, MentorStore::ROLE_PRIMARY ) );
 	}
 
 	public function testWithHiddenMentees() {

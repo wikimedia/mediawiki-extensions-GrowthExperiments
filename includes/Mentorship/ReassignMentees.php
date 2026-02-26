@@ -134,10 +134,19 @@ class ReassignMentees {
 		);
 		$numberOfProcessedMentees = 0;
 		foreach ( $mentees as $mentee ) {
+			if ( $limit && $numberOfProcessedMentees >= $limit ) {
+				$this->logger->info( 'ReassignMentees processed the maximum number of mentees', [
+					'limit' => $limit,
+					'mentor' => $this->mentor->getName(),
+				] );
+				break;
+			}
+
 			$this->logger->debug( __METHOD__ . ' processing {mentee} for {mentor}', [
 				'mentee' => $mentee->getName(),
 				'mentor' => $this->mentor->getName(),
 			] );
+			$numberOfProcessedMentees += 1;
 
 			$menteeUser = $this->userFactory->newFromUserIdentity( $mentee );
 			if ( $menteeUser->isHidden() ) {
@@ -177,15 +186,6 @@ class ReassignMentees {
 				)->text(),
 				true
 			);
-
-			$numberOfProcessedMentees += 1;
-			if ( $limit && $numberOfProcessedMentees >= $limit ) {
-				$this->logger->info( 'ReassignMentees processed the maximum number of mentees', [
-					'limit' => $limit,
-					'mentor' => $this->mentor->getName(),
-				] );
-				break;
-			}
 		}
 
 		if ( !$this->dbw->unlock( $lockName, __METHOD__ ) ) {
