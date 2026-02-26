@@ -135,13 +135,14 @@ class ReassignMentees {
 		);
 		$numberOfProcessedMentees = 0;
 		foreach ( $mentees as $mentee ) {
-			$this->logger->debug( __METHOD__ . ' processing {mentor}', [
-				'mentor' => $mentee->getName(),
+			$this->logger->debug( __METHOD__ . ' processing {mentee} for {mentor}', [
+				'mentee' => $mentee->getName(),
+				'mentor' => $this->mentor->getName(),
 			] );
 
 			$menteeUser = $this->userFactory->newFromUserIdentity( $mentee );
 			if ( $menteeUser->isHidden() ) {
-				$this->logger->debug( __METHOD__ . ' dropping relationship for {mentee}, user is hidden', [
+				$this->logger->info( __METHOD__ . ' dropping relationship for {mentee}, user is hidden', [
 					'mentee' => $mentee->getName(),
 				] );
 				$this->mentorStore->dropMenteeRelationship( $mentee );
