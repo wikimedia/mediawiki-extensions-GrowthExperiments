@@ -50,6 +50,10 @@ class ReassignMentees extends Maintenance {
 			false,
 			true
 		);
+		$this->addOption(
+			'as-job',
+			'Schedule the work as MediaWiki jobs rather than directly execute it'
+		);
 	}
 
 	private function init() {
@@ -135,15 +139,24 @@ class ReassignMentees extends Maintenance {
 				continue;
 			}
 
-			$this->reassignMenteesFactory->newReassignMentees(
+			$reassignMentees = $this->reassignMenteesFactory->newReassignMentees(
 				$performer,
 				$mentor,
 				RequestContext::getMain()
-			)->doReassignMentees(
-				null,
-				'growthexperiments-quit-mentorship-reassign-mentees-log-message',
-				$mentor->getName()
 			);
+
+			$reassignMenteesParams = [
+				'growthexperiments-quit-mentorship-reassign-mentees-log-message',
+				$mentor->getName(),
+			];
+			if ( $this->hasOption( 'as-job' ) ) {
+				$reassignMentees->reassignMentees( ...$reassignMenteesParams );
+			} else {
+				$reassignMentees->doReassignMentees(
+					null,
+					...$reassignMenteesParams
+				);
+			}
 		}
 
 		$this->output( 'Done!' . PHP_EOL );
