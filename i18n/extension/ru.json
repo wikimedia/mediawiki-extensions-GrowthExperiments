@@ -17,7 +17,9 @@
 			"Pacha Tchernof",
 			"Stjn",
 			"Vlad5250",
-			"Умар"
+			"Умар",
+			"Köpleres",
+			"Lvova"
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
@@ -104,13 +106,15 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-description": "Короткое название, которое лучше всего отражает кампанию, проект, событие или общественную инициативу, о которой идет речь.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "Короткое и дружелюбное информационное сообщение, вызывающее интерес.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "Изображение",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-description": "Найдите изображение на Викискладе, введя его название и выбрав из списка. Для лучшего отображения выберите изображение с квадратным соотношением сторон.",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Метка",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Если у вашего изображения прозрачный фон, его может быть сложно разглядеть в тёмной теме интерфейса. Если текст или иконка темны, добавьте к ним белый фон для лучшей видимости.",
 	"communityconfiguration-helppanel-title": "Панель помощи",
 	"communityconfiguration-helppanel-description": "Настройте параметры панели помощи в соответствии с требованиями вашего сообщества и определите в ней ресурсы для оказания помощи новым редакторам и руководства ими.",
 	"communityconfiguration-mentorship-title": "Наставничество",
 	"communityconfiguration-mentorship-description": "Настройте параметры наставничества и критерии отбора, а также измените минимальные значения и сроки редактирования для наставников и заслуживающих похвалы подопечных.",
 	"communityconfiguration-growthhomepage-title": "Адаптация новичков",
-	"communityconfiguration-growthhomepage-description": "Персонализируйте процесс регистрации для владельцев новых учетных записей с помощью функций помощи после регистрации и уведомлений о повышении уровня.",
+	"communityconfiguration-growthhomepage-description": "Персонализируйте процесс регистрации для владельцев новых учётных записей с помощью функций помощи после регистрации и уведомлений о повышении уровня.",
 	"communityconfiguration-growthsuggestededits-title": "Предложенные правки",
 	"communityconfiguration-growthsuggestededits-description": "Настройте функцию «Предлагаемые правки» на домашней странице новичков.",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Шаблоны-карточки",

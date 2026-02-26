@@ -10,13 +10,14 @@
 			"Martin Urbanec (WMF)",
 			"Wizardeck",
 			"Zapipedia (WMF)",
-			"ZebaX2010"
+			"ZebaX2010",
+			"HackerPunki"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|¿qué es esto?]])",
 	"growthexperiments-confirmemail-emailhelp": "Se requiere un correo electrónico para recuperar tu cuenta si pierdes tu contraseña.",
 	"growthexperiments-confirmemail-emailrecommended": "Dirección de correo electrónico (recomendado)",
-	"growthexperiments-confirmemail-emailwarning": "Por favor, busca un correo electrónico nuestro para verificar tu dirección.",
+	"growthexperiments-confirmemail-emailwarning": "Por favor, busca en tu correo electrónico uno de Wikipedia para verificar tu dirección.",
 	"growthexperiments-confirmemail-confirm-subject": "Te damos la bienvenida a {{SITENAME}}. Confirma tu dirección de correo electrónico",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hola}} $2,\n\nGracias por añadir un correo electrónico a tu cuenta de {{SITENAME}}, registrada desde la dirección IP $1.\n\nPor favor, haz clic en el botón de abajo para confirmar esta dirección de correo electrónico que te gustaría vincular a tu cuenta \"$2\":\n\n$3\n\nNota: este código de confirmación <strong>expira el $4</strong>.\n\nGracias,\n\n{{SITENAME}}\n\n----\n\nPara cancelar la confirmación de la dirección de correo electrónico (porque no registraste la cuenta o por cualquier otro motivo), haz clic en este enlace de cancelación:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Confirmar dirección de correo electrónico",
