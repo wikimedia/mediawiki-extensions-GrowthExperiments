@@ -195,7 +195,7 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		);
 
 		if ( $expectedResult === 'success' ) {
-			$this->assertTrue( $result->isOK() );
+			$this->assertStatusOK( $result );
 		} else {
 			$this->assertStatusError(
 				'growthexperiments-mentor-writer-error-' . $expectedResult,
@@ -287,7 +287,7 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 		);
 
 		if ( $expectedError === null ) {
-			$this->assertTrue( $result->isOK() );
+			$this->assertStatusOK( $result );
 		} else {
 			$this->assertStatusError( $expectedError, $result );
 		}
@@ -355,7 +355,7 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			'Change mentor'
 		);
 
-		$this->assertTrue( $result->isOK() );
+		$this->assertStatusOK( $result );
 	}
 
 	/**
@@ -397,7 +397,7 @@ class CommunityStructuredMentorWriterTest extends MediaWikiUnitTestCase {
 			'Refresh list'
 		);
 
-		$this->assertTrue( $result->isOK() );
+		$this->assertStatusOK( $result );
 	}
 
 	/**

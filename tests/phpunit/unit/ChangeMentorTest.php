@@ -261,7 +261,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 
 		$this->assertSame( $expectedNotify, $changeMentor->didNotify );
 		if ( $expectedError === null ) {
-			$this->assertTrue( $result->isOK() );
+			$this->assertStatusOK( $result );
 		} else {
 			$this->assertStatusError( $expectedError, $result );
 		}

@@ -357,7 +357,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 
 		$this->assertInstanceOf( StatusValue::class, $result );
-		$this->assertTrue( $result->isOK() );
+		$this->assertStatusOK( $result );
 		$this->assertSame(
 			'Invalid file Bad.png in article Foo. Filtered because AUDIO is not valid mime type (BITMAP, DRAWING)',
 			Status::wrap( $result )->getWikiText( false, false, 'en' )
@@ -381,7 +381,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 
 		$this->assertInstanceOf( StatusValue::class, $result );
-		$this->assertTrue( $result->isOK() );
+		$this->assertStatusOK( $result );
 		$this->assertSame(
 			'Invalid file Bad.png in article Foo. Filtered because not wide enough: 99 (minimum 100)',
 			Status::wrap( $result )->getWikiText( false, false, 'en' )

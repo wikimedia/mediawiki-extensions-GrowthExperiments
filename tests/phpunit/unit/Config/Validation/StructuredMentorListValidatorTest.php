@@ -70,7 +70,7 @@ class StructuredMentorListValidatorTest extends MediaWikiUnitTestCase {
 		$validator = $this->getValidator();
 		$status = $validator->validate( $data );
 		if ( $expectedError === null ) {
-			$this->assertTrue( $status->isOK() );
+			$this->assertStatusOK( $status );
 		} else {
 			$this->assertStatusError( $expectedError, $status );
 		}

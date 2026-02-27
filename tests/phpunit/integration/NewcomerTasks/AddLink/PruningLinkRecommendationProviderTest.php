@@ -47,7 +47,7 @@ class PruningLinkRecommendationProviderTest extends MediaWikiIntegrationTestCase
 		$pageIds = [];
 		foreach ( $existingPages as $page ) {
 			$result = $this->editPage( $page, 'x' );
-			$this->assertTrue( $result->isOK() );
+			$this->assertStatusOK( $result );
 			/** @var RevisionRecord $revision */
 			$revision = $result->getValue()['revision-record'];
 			$pageIds[$page] = $revision->getPageId();

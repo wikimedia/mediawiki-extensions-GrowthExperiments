@@ -48,8 +48,8 @@ class PurgeExpiredMentorStatusTest extends MaintenanceBaseTestCase {
 		ConvertibleTimestamp::setFakeTime( strtotime( '2025-04-01T00:00Z' ) );
 		$this->maintenance->execute();
 		$configStatus = $mentorListProvider->loadValidConfigurationUncached();
-		$this->assertTrue( $configStatus->isOK() );
-		$this->assertEquals( [
+		$this->assertStatusOK( $configStatus );
+		$this->assertStatusValue( [
 			'Mentors' => [
 				'1' => [
 					'message' => 'Untouched',
@@ -68,6 +68,6 @@ class PurgeExpiredMentorStatusTest extends MaintenanceBaseTestCase {
 					'awayTimestamp' => '2025-08-12T10:00:00Z',
 				],
 			],
-		], $configStatus->getValue() );
+		], $configStatus );
 	}
 }
