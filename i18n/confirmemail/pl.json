@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"EHughes",
 			"Matma Rex",
 			"Msz2001",
 			"Nux",
@@ -20,5 +21,11 @@
 	"growthexperiments-signupcampaign-bullet1": "Sugerowane artykuły w kręgu Twoich zainteresowań",
 	"growthexperiments-signupcampaign-bullet2": "Poproś doświadczonego redaktora o pomoc",
 	"growthexperiments-signupcampaign-bullet3": "Zacznij od małych, prostych edycji",
+	"growthexperiments-thankyoupage-title": "Dziękujemy za Twoje wsparcie. Załóż konto, aby zacząć edytować i udoskonalać Wikipedię.",
+	"growthexperiments-thankyoupage-body": "Wikipedię tworzą ludzie tacy jak Ty, pracujący wspólnie. Edytowanie artykułu jest łatwiejsze, niż myślisz!\n\nDzięki posiadanemu kontu zyskasz dostęp do:",
+	"growthexperiments-thankyoupage-body-mobile": "Wikipedię tworzą ludzie tacy jak Ty, pracujący wspólnie. Edytowanie artykułu jest łatwiejsze, niż myślisz!",
+	"growthexperiments-thankyoupage-bullet1": "Prostych zadań dopasowanych do Twoich zainteresowań",
+	"growthexperiments-thankyoupage-bullet2": "Pomocy i wskazówek podczas edytowania",
+	"growthexperiments-thankyoupage-bullet3": "Informacji o tym, ile osób wyświetla efekty Twojej pracy",
 	"growthexperiments-campaigns-footer": "Kiedy utworzysz swoje konto na tej stronie, zostanie ono powiązane w celach badawczych z tą kampanią."
 }
