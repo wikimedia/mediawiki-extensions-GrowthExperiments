@@ -3088,7 +3088,7 @@
 				"TitleParser"
 			]
 		},
-		"growthexperiments/addlink": "LogFormatter",
+		"growthexperiments/addlink": "MediaWiki\\Logging\\LogFormatter",
 		"growthexperiments/addimage": "GrowthExperiments\\NewcomerTasks\\AddImage\\AddImageLogFormatter",
 		"growthexperiments/addsectionimage": "GrowthExperiments\\NewcomerTasks\\AddSectionImage\\AddSectionImageLogFormatter"
 	},
