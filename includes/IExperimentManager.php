@@ -1,28 +1,31 @@
 <?php
 namespace GrowthExperiments;
 
-use MediaWiki\User\UserIdentity;
-
 /**
- * An implementation of IExperimentManager should be always capable of
- * returning a variant even if there are no experiments on-going. This is to satisfy
- * the expectation of existing callers while GrowthExperiments is fully migrated
- * to use TestKitchen for experiment management, T375198.
+ * An implementation of IExperimentManager should be capable of returning a variant
+ * for a given experiment if the user is sampled in the experiment.
  */
 interface IExperimentManager {
-	/**
-	 * Return the group assigned to a user if there's a current experiment
-	 * in course. If not, provides a fallback group name. GE only supports one experiment
-	 * at a time.
-	 * @param UserIdentity $user
-	 * @return string
-	 */
-	public function getVariant( UserIdentity $user ): string;
+
+	public const VARIANT_CONTROL = 'control';
+	public const VARIANT_TREATMENT = 'treatment';
+	public const REVISE_TONE_EXPERIMENT = 'growthexperiments-revise-tone';
+
+	// TODO: valid experiments and variants should/could be read from config
+	public const EXPERIMENTS = [
+		self::REVISE_TONE_EXPERIMENT,
+	];
 
 	/**
-	 * Return valid variants for the current experiment. GE only supports one experiment
-	 * at a time.
-	 * @return string[]
+	 * Return the group assigned to a user for a given experiment
+	 * @param string $experimentName
+	 * @return string|null
 	 */
-	public function getValidVariants(): array;
+	public function getAssignedGroup( string $experimentName ): ?string;
+
+	/**
+	 * Return group assignments for the known experiments,
+	 * @return array<string,string|null> Array of experiment => assignment
+	 */
+	public function getAssignments(): array;
 }

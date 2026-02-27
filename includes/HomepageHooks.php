@@ -768,22 +768,23 @@ class HomepageHooks implements
 		// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
 		// not guaranteed.
 		if ( $this->featureManager->useTestKitchen() ) {
-			DeferredUpdates::addCallableUpdate( function () use ( $user, $wiki ) {
-				$variant = $this->experimentManager->getVariant( $user );
-				if ( !$variant ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $wiki ) {
+				$assignments = $this->experimentManager->getAssignments();
+				if ( count( $assignments ) === 0 ) {
 					return;
 				}
-				$this->growthInteractionLogger->log( $user, 'experiment_enrollment', [
-					'action_source' => 'LocalUserCreatedHook',
-					'variant' => $variant,
-				] );
-
-				$this->statsFactory
-					->withComponent( 'GrowthExperiments' )
-					->getCounter( 'user_variant_total' )
-					->setLabel( 'wiki', $wiki )
-					->setLabel( 'variant', $variant )
-					->increment();
+				foreach ( $assignments as $experiment => $variant ) {
+					if ( !$variant ) {
+						continue;
+					}
+					$this->statsFactory
+						->withComponent( 'GrowthExperiments' )
+						->getCounter( 'user_variant_total' )
+						->setLabel( 'wiki', $wiki )
+						->setLabel( 'variant', $variant )
+						->setLabel( 'experiment', $experiment )
+						->increment();
+				}
 			} );
 
 		}

@@ -10,7 +10,6 @@ QUnit.module( 'ext.growthExperiments.Homepage.Logger/index.js', QUnit.newMwEnvir
 		'wgGEHomepageModuleActionData-foo': { foo: 'bar' },
 		'wgGEHomepageModuleState-foo': 'done',
 		wgGEDefaultUserVariant: 'control',
-		wgGEUserVariants: [ 'X', 'Y' ],
 	},
 	beforeEach: function () {
 		this.sandbox.stub( mw.user.options, 'get' );

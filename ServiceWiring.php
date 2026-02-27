@@ -215,19 +215,9 @@ return [
 		MediaWikiServices $services
 	): IExperimentManager {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$manager = new FeatureManager(
-			$services->getExtensionRegistry(),
-			$growthServices->getGrowthConfig()
-		);
+		$manager = new FeatureManager( $services->getExtensionRegistry(), $growthServices->getGrowthConfig() );
 		if ( $manager->useTestKitchen() ) {
-			return new ExperimentTestKitchenManager(
-				new ServiceOptions(
-					ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
-					$services->getMainConfig()
-				),
-				GrowthExperimentsServices::wrap( $services )->getLogger(),
-				$services->getService( 'TestKitchen.ExperimentManager' ),
-			);
+			return new ExperimentTestKitchenManager( $services->getService( 'TestKitchen.ExperimentManager' ) );
 		}
 		return new StaticExperimentManager(
 			new ServiceOptions(

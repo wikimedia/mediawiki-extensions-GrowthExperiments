@@ -7,7 +7,8 @@
  * - ../utils/Utils.js
  */
 ( function () {
-	const OLD_LINK_TASK_TYPE = 'links',
+	const Utils = require( '../utils/Utils.js' ),
+		OLD_LINK_TASK_TYPE = 'links',
 		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
 		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
 		SECTION_IMAGE_RECOMMENDATION_TASK_TYPE = 'section-image-recommendation',
@@ -80,19 +81,10 @@
 			taskTypes = require( './TaskTypes.json' ),
 			isReviseToneEnabled = config.GEReviseToneSuggestedEditEnabled &&
 				REVISE_TONE_TASK_TYPE in taskTypes;
-		let assignedGroup = null;
+
 		// TODO: remove after experiment is concluded, T407802
-		if ( mw && mw.testKitchen ) {
-			assignedGroup = mw.testKitchen.getExperiment( 'growthexperiments-revise-tone' ).getAssignedGroup();
-			return assignedGroup === 'treatment' && isReviseToneEnabled;
-		}
-
-		// 'mpo' is just used for local development and Cypress test
-		const urlOverrideQuery = new URLSearchParams( window.location.href ).get( 'mpo' );
-		assignedGroup = urlOverrideQuery ? urlOverrideQuery.replace( ':', '_' ) :
-			mw.config.get( 'wgGEDefaultUserVariant' );
-
-		return assignedGroup === 'growthexperiments-revise-tone_treatment' && isReviseToneEnabled;
+		const assignedGroup = Utils.getUserVariant( 'growthexperiments-revise-tone' );
+		return assignedGroup === 'treatment' && isReviseToneEnabled;
 	}
 
 	/**

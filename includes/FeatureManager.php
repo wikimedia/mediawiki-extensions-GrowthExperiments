@@ -59,7 +59,9 @@ class FeatureManager {
 	}
 
 	public function shouldShowReviseToneTasksForUser( UserIdentity $user ): bool {
-		return $this->isReviseToneTasksTypeEnabled() && ( $this->experimentManager->getVariant( $user ) ===
-				ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME );
+		return $this->isReviseToneTasksTypeEnabled() && (
+			$this->experimentManager->getAssignedGroup( IExperimentManager::REVISE_TONE_EXPERIMENT ) ===
+				IExperimentManager::VARIANT_TREATMENT
+			);
 	}
 }

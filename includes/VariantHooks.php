@@ -69,9 +69,9 @@ class VariantHooks implements
 
 	/** @inheritDoc */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		// @phan-suppress-next-line PhanTypeMismatchArgumentReal
-		$vars['wgGEDefaultUserVariant'] = $this->experimentManager->getVariant( null );
-		$vars['wgGEUserVariants'] = $this->experimentManager->getValidVariants();
+		if ( $this->experimentManager instanceof StaticExperimentManager ) {
+			$vars['wgGEDefaultUserVariant'] = $config->get( 'GEHomepageDefaultVariant' );
+		}
 	}
 
 	/**

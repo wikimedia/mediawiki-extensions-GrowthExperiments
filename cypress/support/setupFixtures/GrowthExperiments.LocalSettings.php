@@ -111,9 +111,16 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				$services->getMainConfig(),
 			);
 			$ctx = RequestContext::getMain();
-			$variant = $ctx->getRequest()->getVal( 'mpo', 'not-in-experiment:not-in-variant' );
+			$variantOverride = $ctx->getRequest()->getVal( 'mpo' );
+			if ( $variantOverride ) {
+				[ $experimentName, $variant] = explode(':', $variantOverride );
+			}
+			$variant = $variantOverride ? [
+				$experimentName => $variant,
+			] : null;
+
 			$manager->setExperimentManager( new StaticExperimentManager( new ServiceOptions( [ 'GEHomepageDefaultVariant' ], [
-				'GEHomepageDefaultVariant' => str_replace(':','_', $variant )
+				'GEHomepageDefaultVariant' => $variant
 			] ) ) );
 			return $manager;
 		} );

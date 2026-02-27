@@ -54,7 +54,9 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 				return new StaticExperimentManager(
 					new ServiceOptions(
 						[ 'GEHomepageDefaultVariant' ],
-						[ 'GEHomepageDefaultVariant' => 'growthexperiments-revise-tone_treatment' ],
+						[ 'GEHomepageDefaultVariant' => [
+							'growthexperiments-revise-tone' => 'treatment',
+						] ],
 					),
 				);
 			},

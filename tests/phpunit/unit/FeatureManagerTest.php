@@ -17,13 +17,17 @@ use MediaWikiUnitTestCase;
  */
 class FeatureManagerTest extends MediaWikiUnitTestCase {
 	public function testShouldShowReviseToneTasksForUser() {
-		$sut = $this->getFeatureManager( 'growthexperiments-revise-tone_treatment' );
+		$sut = $this->getFeatureManager( [
+			'growthexperiments-revise-tone' => 'treatment',
+		] );
 		$user = new UserIdentityValue( 0, __CLASS__ );
 		$this->assertTrue( $sut->shouldShowReviseToneTasksForUser( $user ) );
 	}
 
 	public function testShouldNotShowReviseToneTasksForUser() {
-		$sut = $this->getFeatureManager( 'growthexperiments-revise-tone_control' );
+		$sut = $this->getFeatureManager( [
+			'growthexperiments-revise-tone' => 'control',
+		] );
 		$user = new UserIdentityValue( 0, __CLASS__ );
 		$this->assertFalse( $sut->shouldShowReviseToneTasksForUser( $user ) );
 	}
@@ -31,10 +35,10 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * Provide a configured FeatureManager with all relevant config feature flags enabled
 	 *
-	 * @param string|null $defaultVariant
+	 * @param array|string|null $defaultVariant
 	 * @return FeatureManager
 	 */
-	private function getFeatureManager( ?string $defaultVariant ): FeatureManager {
+	private function getFeatureManager( $defaultVariant ): FeatureManager {
 		$extensionRegistryMock = $this->createMock( ExtensionRegistry::class );
 		$matcher = $this->exactly( 2 );
 		$returnCallback = static function (

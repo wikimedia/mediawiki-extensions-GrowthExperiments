@@ -24,7 +24,7 @@ class ReviseToneExperimentInteractionLogger {
 		if ( !$this->experimentUserManager instanceof ExperimentTestKitchenManager ) {
 			return;
 		}
-		$experiment = $this->experimentUserManager->getCurrentExperiment();
+		$experiment = $this->experimentUserManager->getExperiment( IExperimentManager::REVISE_TONE_EXPERIMENT );
 		if ( !$experiment ) {
 			return;
 		}

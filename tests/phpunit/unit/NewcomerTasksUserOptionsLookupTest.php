@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -196,9 +196,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
 
-		$featureManager = $this->getFeatureManager(
-			ExperimentTestKitchenManager::REVISE_TONE_EXPERIMENT_TREATMENT_GROUP_NAME
-		);
+		$featureManager = $this->getFeatureManager( [
+			IExperimentManager::REVISE_TONE_EXPERIMENT => IExperimentManager::VARIANT_TREATMENT,
+		] );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
@@ -290,10 +290,10 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	/**
 	 * Provide a configured FeatureManager with all relevant config feature flags enabled
 	 *
-	 * @param string|null $defaultVariant
+	 * @param array|string|null $defaultVariant
 	 * @return FeatureManager
 	 */
-	private function getFeatureManager( ?string $defaultVariant = 'control' ): FeatureManager {
+	private function getFeatureManager( $defaultVariant = null ): FeatureManager {
 		$extensionRegistryMock = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistryMock->method( 'isLoaded' )->willReturn( true );
 
@@ -303,7 +303,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		] );
 		$sut = new FeatureManager( $extensionRegistryMock, $config );
 		$sut->setExperimentManager( new StaticExperimentManager( new ServiceOptions( [ 'GEHomepageDefaultVariant' ], [
-			'GEHomepageDefaultVariant' => $defaultVariant,
+			'GEHomepageDefaultVariant' => $defaultVariant ?: 'control',
 		] ) ) );
 		return $sut;
 	}

@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\StaticExperimentManager;
@@ -70,7 +69,6 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 		);
 		$this->assertArrayEquals( [
 			'wgGEDefaultUserVariant' => 'control',
-			'wgGEUserVariants' => [ 'control' ],
 		], $vars );
 	}
 
@@ -92,7 +90,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( CampaignConfig::class ),
 			$this->createNoOpMock( SpecialPageFactory::class ),
 			new StaticExperimentManager( new ServiceOptions(
-				ExperimentTestKitchenManager::CONSTRUCTOR_OPTIONS,
+				StaticExperimentManager::CONSTRUCTOR_OPTIONS,
 				new HashConfig( [
 					'GEHomepageDefaultVariant' => 'control',
 				] ),

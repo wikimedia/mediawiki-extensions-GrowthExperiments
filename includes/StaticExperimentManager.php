@@ -3,7 +3,6 @@
 namespace GrowthExperiments;
 
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\User\UserIdentity;
 
 class StaticExperimentManager implements IExperimentManager {
 	public const CONSTRUCTOR_OPTIONS = [
@@ -13,15 +12,23 @@ class StaticExperimentManager implements IExperimentManager {
 	public function __construct( private readonly ServiceOptions $options ) {
 	}
 
-	/** @inheritDoc */
-	public function getVariant( ?UserIdentity $user ): string {
-		return $this->options->get( 'GEHomepageDefaultVariant' );
+	public function getAssignments(): array {
+		return array_reduce(
+			self::EXPERIMENTS,
+			fn ( $carry, $expName ) => $carry + [ $expName => $this->getAssignedGroup( $expName ) ],
+			[]
+		);
 	}
 
-	public function getValidVariants(): array {
-		return [
-			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal
-			$this->getVariant( null ),
-		];
+	public function getAssignedGroup( string $experimentName ): ?string {
+		$experimentsConfigSpec = $this->options->get( 'GEHomepageDefaultVariant' );
+		$group = null;
+		if ( is_array( $experimentsConfigSpec ) ) {
+			$group = $experimentsConfigSpec[ $experimentName ];
+		}
+		if ( is_string( $experimentsConfigSpec ) ) {
+			$group = $experimentsConfigSpec;
+		}
+		return $group;
 	}
 }

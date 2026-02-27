@@ -80,23 +80,40 @@
 	/**
 	 * Get the variant the user is assigned to, for A/B testing and gradual rollouts.
 	 *
-	 * @return {string}
+	 * @param {string|null} experimentName
+	 * @return {string|null}
 	 */
-	function getUserVariant() {
-		// TODO remove once the consumers in modules/ext.growthExperiments.Homepage.Logger/{index,useInstrument}.js
-		// are migrated to use TestKitchen, T417876
+	function getUserVariant( experimentName ) {
+		// Some deprecated loggers are not updated yet, return a value that's schema-valid although meaningless,
+		// should be clean up as part of T417876
+		if ( !experimentName ) {
+			return 'not-available';
+		}
+		let assignedGroup = null;
+
+		// Try TestKitchen variant retrieval
 		if ( mw && mw.testKitchen ) {
-			const growthVariants = mw.config.get( 'wgGEUserVariants' );
-			const assignments = mw.testKitchen.getAssignments();
-			const growthFormattedAssignments = Object.keys( assignments )
-				.map( ( k ) => `${ k }_${ assignments[ k ] }` );
-			// Should only be one
-			const geExperimentVariants = growthFormattedAssignments
-				.filter( ( value ) => growthVariants.includes( value ) );
-			return geExperimentVariants.pop() || null;
+			const exp = mw.testKitchen.getExperiment( experimentName );
+			return exp.getAssignedGroup();
+		}
+		// Try GrowthExperiments static variant retrieval
+		const defaultVariantConfig = mw.config.get( 'wgGEDefaultUserVariant' );
+		if ( defaultVariantConfig ) {
+			if ( typeof defaultVariantConfig === 'string' ) {
+				assignedGroup = defaultVariantConfig;
+			}
+			if ( Array.isArray( defaultVariantConfig ) ) {
+				assignedGroup = defaultVariantConfig[ experimentName ] || null;
+			}
+		}
+		// Mimic mpo behavior from TestKitchen, used for testing in environments without TK
+		const urlOverrideQuery = new URLSearchParams( window.location.search ).get( 'mpo' );
+		const [ overrideExperiment, overrideGroup ] = urlOverrideQuery ? urlOverrideQuery.split( ':' ) : [ null, null ];
+		if ( overrideExperiment === experimentName ) {
+			assignedGroup = overrideGroup;
 		}
 
-		return mw.config.get( 'wgGEDefaultUserVariant' );
+		return assignedGroup;
 	}
 
 	/**
@@ -177,8 +194,6 @@
 	// Expose some methods for debugging.
 	// @ts-expect-error for debugging only, should not be used in production
 	window.ge = window.ge || {};
-
-	ge.utils = { getUserVariant };
 
 	module.exports = {
 		normalizeLabelForStats,
