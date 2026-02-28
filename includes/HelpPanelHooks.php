@@ -130,7 +130,7 @@ class HelpPanelHooks implements
 			$out->addModuleStyles( 'ext.growthExperiments.icons' );
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
 
-			$out->addHTML( HelpPanel::getHelpPanelCtaButton( $this->wikiConfig ) );
+			$out->addHTML( HelpPanel::getHelpPanelCtaButton( $this->wikiConfig )->toString() );
 		}
 
 		// Note: wgGELinkRecommendationsFrontendEnabled reflects the configuration flag.

@@ -327,7 +327,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$queryArray = wfCgiToArray( $query );
 		$queryArray['source'] = 'welcomesurvey-originalcontext';
 		return $this->getConfirmationButtonsWrapper(
-			Html::linkButton( $this->msg( 'welcomesurvey-close-btn', $title )->text(), [
+			Html::linkButton( $this->msg( 'welcomesurvey-close-btn', $title->getPrefixedText() )->text(), [
 				'href' => $title->getLinkURL( wfArrayToCgi( $queryArray ) ),
 				'class' => 'mw-ui-button mw-ui-safe',
 			] ) .

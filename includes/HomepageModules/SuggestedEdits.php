@@ -557,7 +557,7 @@ class SuggestedEdits extends BaseModule {
 				$this->getNavigationWidgetFactory()->getPreviousNextButtonHtml( 'Previous' ),
 				$this->getNavigationWidgetFactory()->getEditButton(),
 				$this->getNavigationWidgetFactory()->getPreviousNextButtonHtml( 'Next' ),
-			] );
+			] )->toString();
 	}
 
 	/**
@@ -577,7 +577,11 @@ class SuggestedEdits extends BaseModule {
 				// Avoid nesting links, browsers will break markup
 				'button' => new Tag( 'span' ),
 			] );
-			$centeredButton = Html::rawElement( 'div', [ 'class' => 'suggested-edits-preview-footer' ], $button );
+			$centeredButton = Html::rawElement(
+				'div',
+				[ 'class' => 'suggested-edits-preview-footer' ],
+				$button->toString(),
+			);
 			$subheader = Html::rawElement(
 				'div',
 				[ 'class' => 'suggested-edits-preview-pager' ],
@@ -732,7 +736,7 @@ class SuggestedEdits extends BaseModule {
 				'growthexperiments-homepage-suggestededits-difficulty-filter-label' :
 				'growthexperiments-homepage-suggestededits-difficulty-filter-label-mobile';
 			$message = $this->getContext()->msg( $messageKey )
-				->params( implode( $this->getContext()->msg( 'comma-separator' ),
+				->params( implode( $this->getContext()->msg( 'comma-separator' )->parse(),
 					$taskTypeMessages ) )
 				->text();
 			$difficultyFilterButtonWidget->setLabel( $message );
@@ -776,6 +780,10 @@ class SuggestedEdits extends BaseModule {
 		$taskTypeIcon = array_key_exists( 'icon', $iconData )
 			? new IconWidget( [ 'icon' => $iconData['icon'] ] )
 			: '';
+		$taskName = Html::rawElement( 'span',
+			[ 'class' => 'mw-ge-small-task-card-tasktype-taskname' ],
+			$task->getTaskType()->getName( $this->getContext() )->parse()
+		);
 		$taskType = Html::rawElement( 'span',
 			[ 'class' => 'mw-ge-small-task-card-tasktype '
 				 // The following classes are used here:
@@ -784,10 +792,7 @@ class SuggestedEdits extends BaseModule {
 				 // * mw-ge-small-task-card-tasktype-difficulty-hard
 				. 'mw-ge-small-task-card-tasktype-difficulty-'
 				. $task->getTaskType()->getDifficulty() ],
-			$taskTypeIcon . $taskIcon . Html::element( 'span',
-				[ 'class' => 'mw-ge-small-task-card-tasktype-taskname' ],
-				$task->getTaskType()->getName( $this->getContext() )
-			) );
+			$taskTypeIcon . $taskIcon . $taskName );
 
 		$glue = Html::element( 'div',
 			[ 'class' => 'mw-ge-small-task-card-glue' ] );
@@ -934,9 +939,9 @@ class SuggestedEdits extends BaseModule {
 		if ( !$taskSet instanceof TaskSet || !$taskSet->count() ) {
 			return '';
 		}
-		return new HtmlSnippet( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
+		return ( new HtmlSnippet( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
 				->numParams( [ 1, $taskSet->getTotalCount() ] )
-			->parse() );
+			->parse() ) )->__toString();
 	}
 
 	/**

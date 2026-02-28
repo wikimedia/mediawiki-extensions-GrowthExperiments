@@ -49,16 +49,17 @@ class AddImageFeedbackHandler extends SimpleHandler {
 		$title = $this->titleFactory->newFromLinkTarget( $this->getValidatedParams()['title'] );
 		$data = $this->getValidatedBody() ?? [];
 		$editRevId = $data['editRevId'];
+		$accepted = $data['accepted'];
 
 		if ( !$authority->isNamed() ) {
 			throw $this->makeException( 'rest-permission-denied-anon', [], 401 );
 		}
-		if ( $data['accepted'] && !$editRevId ) {
+		if ( $accepted && !$editRevId ) {
 			throw $this->makeException( 'growthexperiments-addimage-feedback-accepted-editrevid' );
-		} elseif ( !$data['accepted'] && $editRevId ) {
+		} elseif ( !$accepted && $editRevId ) {
 			throw $this->makeException( 'growthexperiments-addimage-feedback-rejected-editrevid' );
 		}
-		if ( $data['accepted'] && ( $data['caption'] ?? null ) === null ) {
+		if ( $accepted && ( $data['caption'] ?? null ) === null ) {
 			throw $this->makeException( 'growthexperiments-addimage-feedback-accepted-caption' );
 		}
 

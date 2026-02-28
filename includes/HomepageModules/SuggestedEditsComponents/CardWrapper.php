@@ -72,6 +72,6 @@ class CardWrapper {
 			$card instanceof EditCardWidget ? '' : 'pseudo-card',
 		] )->appendContent(
 			$contents
-		);
+		)->toString();
 	}
 }

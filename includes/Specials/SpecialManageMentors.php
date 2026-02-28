@@ -183,22 +183,22 @@ class SpecialManageMentors extends SpecialPage {
 			Html::element( 'td', [], $mentor->getIntroText() ),
 		];
 		if ( $this->canManageMentors() ) {
-			$items[] = Html::rawElement( 'td', [], new ButtonWidget( [
+			$items[] = Html::rawElement( 'td', [], ( new ButtonWidget( [
 				'label' => $this->msg( 'growthexperiments-manage-mentors-edit' )->text(),
 				'href' => SpecialPage::getTitleFor(
 					'ManageMentors',
 					'edit-mentor/' . $mentor->getUserIdentity()->getId()
 				)->getLocalURL(),
 				'flags' => [ 'primary', 'progressive' ],
-			] ) );
-			$items[] = Html::rawElement( 'td', [], new ButtonWidget( [
+			] ) )->toString() );
+			$items[] = Html::rawElement( 'td', [], ( new ButtonWidget( [
 				'label' => $this->msg( 'growthexperiments-manage-mentors-remove-mentor' )->text(),
 				'href' => SpecialPage::getTitleFor(
 					'ManageMentors',
 					'remove-mentor/' . $mentor->getUserIdentity()->getId()
 				)->getLocalURL(),
 				'flags' => [ 'primary', 'destructive' ],
-			] ) );
+			] ) )->toString() );
 		}
 
 		return Html::rawElement(

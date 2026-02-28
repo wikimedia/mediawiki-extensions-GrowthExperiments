@@ -88,7 +88,7 @@ class MentorshipOptIn extends BaseModule {
 	}
 
 	private function getOptInButton(): string {
-		return new ButtonWidget( [
+		return ( new ButtonWidget( [
 			'id' => 'mw-ge-homepage-mentorship-optin',
 			'framed' => false,
 			'flags' => [ 'progressive' ],
@@ -96,6 +96,6 @@ class MentorshipOptIn extends BaseModule {
 			'label' => $this->msg( 'growthexperiments-homepage-mentorship-optin-button' )
 				->text(),
 			'infusable' => true,
-		] );
+		] ) )->toString();
 	}
 }

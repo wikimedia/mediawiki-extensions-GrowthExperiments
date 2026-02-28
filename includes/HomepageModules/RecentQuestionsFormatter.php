@@ -33,7 +33,7 @@ class RecentQuestionsFormatter {
 	public function formatHeader(): string {
 		return Html::element( 'h3', [], $this->contextSource
 			->msg( 'growthexperiments-homepage-recent-questions-header' )
-			->params( $this->contextSource->getUser() )
+			->params( $this->contextSource->getUser()->getName() )
 			->text()
 		);
 	}

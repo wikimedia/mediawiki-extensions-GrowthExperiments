@@ -3,7 +3,6 @@
 namespace GrowthExperiments\HelpPanel\Tips;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use MediaWiki\Context\IContextSource;
 use MessageLocalizer;
 
 /**
@@ -11,7 +10,7 @@ use MessageLocalizer;
  */
 class TipsAssembler {
 
-	private IContextSource $messageLocalizer;
+	private MessageLocalizer $messageLocalizer;
 	private TipNodeRenderer $tipNodeRenderer;
 
 	public function __construct( TipNodeRenderer $tipNodeRenderer ) {

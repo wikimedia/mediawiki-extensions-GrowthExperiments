@@ -109,7 +109,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 			$this->output( FormatJson::encode( $config, true ) . "\n" );
 			$validationStatus = $provider->getValidator()->validateStrictly( $config );
 			$this->output( "Validation status:\n" );
-			$this->output( $validationStatus );
+			$this->output( $validationStatus->__toString() );
 			$this->output( "\n" );
 			return false;
 		}

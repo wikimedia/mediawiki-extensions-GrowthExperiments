@@ -357,10 +357,10 @@ abstract class DashboardModule implements IDashboardModule {
 			[
 				'href' => SpecialPage::getTitleFor( 'Homepage' )->getLinkURL(),
 			],
-			new IconWidget( [
+			( new IconWidget( [
 				'icon' => 'arrowPrevious',
 				'classes' => [ static::BASE_CSS_CLASS . '-header-back-icon' ],
-			] )
+			] ) )->toString()
 		);
 	}
 

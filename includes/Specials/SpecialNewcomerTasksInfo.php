@@ -42,6 +42,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 				( new Tag( 'p' ) )
 					->addClasses( [ 'error' ] )
 					->appendContent( $out->msg( 'newcomertasksinfo-no-data' )->text() )
+					->toString(),
 			);
 			return;
 		}
@@ -79,7 +80,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 			) )
 			->appendContent( ( new Tag( 'tbody' ) )->appendContent( $taskTypeTableRows ) );
 
-		$out->addHTML( $taskTypeTable );
+		$out->addHTML( $taskTypeTable->toString() );
 
 		$topicsTableHeaders = [
 			( new Tag( 'th' ) )->appendContent( $out->msg( 'newcomertasksinfo-table-header-topic-type' )->text() ),
@@ -118,6 +119,6 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 			) )
 			->appendContent( ( new Tag( 'tbody' ) )->appendContent( $topicsTableRows ) );
 
-		$out->addHTML( $topicsTable );
+		$out->addHTML( $topicsTable->toString() );
 	}
 }

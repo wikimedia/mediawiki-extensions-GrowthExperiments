@@ -136,13 +136,13 @@ class Mentorship extends BaseModule {
 		return Html::rawElement(
 			'div',
 			[ 'class' => 'growthexperiments-homepage-mentorship-ellipsis' ],
-			new ButtonWidget( [
+			( new ButtonWidget( [
 				'id' => 'mw-ge-homepage-mentorship-ellipsis',
 				'icon' => 'ellipsis',
 				'framed' => false,
 				'invisibleLabel' => true,
 				'infusable' => true,
-			] )
+			] ) )->toString(),
 		);
 	}
 

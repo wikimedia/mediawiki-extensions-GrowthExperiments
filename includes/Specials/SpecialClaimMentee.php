@@ -171,8 +171,8 @@ class SpecialClaimMentee extends FormSpecialPage {
 			) {
 				return Status::newFatal(
 					'growthexperiments-homepage-claimmentee-alreadychanged',
-					$mentee,
-					$this->newMentor
+					$mentee->getName(),
+					$this->newMentor?->getName(),
 				);
 			}
 

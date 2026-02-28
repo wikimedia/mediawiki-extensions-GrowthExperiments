@@ -7,6 +7,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\FormSpecialPage;
+use MediaWiki\Status\Status;
 use MediaWiki\User\User;
 
 class SpecialQuitMentorship extends FormSpecialPage {
@@ -106,12 +107,12 @@ class SpecialQuitMentorship extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
-		return $this->mentorRemover->removeMentor(
+		return Status::wrap( $this->mentorRemover->removeMentor(
 			$this->getUser(),
 			$this->getUser(),
 			$data['reason'],
 			$this->getContext()
-		);
+		) );
 	}
 
 	/**

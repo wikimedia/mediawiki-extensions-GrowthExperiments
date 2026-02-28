@@ -233,6 +233,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 		} catch ( WikiConfigException $e ) {
 			$this->fatalError( $e->getMessage() );
 		}
+		// @phan-suppress-next-line PhanPluginUnreachableCode
 		throw new LogicException( 'Cannot reach here' );
 	}
 
