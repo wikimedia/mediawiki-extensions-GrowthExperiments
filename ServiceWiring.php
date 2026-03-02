@@ -184,7 +184,7 @@ return [
 			$geServices->getMentorManager(),
 			$geServices->getMentorStore(),
 			$services->getUserFactory(),
-			$services->getDBLoadBalancerFactory()
+			$services->getConnectionProvider()
 		);
 	},
 
@@ -345,7 +345,7 @@ return [
 		MediaWikiServices $services
 	): ImageRecommendationSubmissionLogFactory {
 		return new ImageRecommendationSubmissionLogFactory(
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 			$services->getUserOptionsLookup()
 		);
 	},
@@ -362,7 +362,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new LevelingUpManager(
 			new ServiceOptions( LevelingUpManager::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 			$services->getChangeTagDefStore(),
 			$services->getUserOptionsLookup(),
 			$services->getUserFactory(),
@@ -485,7 +485,7 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationSubmissionLogFactory {
 		return new LinkRecommendationSubmissionLogFactory(
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 			$services->getUserOptionsLookup()
 		);
 	},
@@ -502,7 +502,7 @@ return [
 		}
 		return new LinkRecommendationUpdater(
 			$growthServices->getLogger(),
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 			$services->getRevisionStore(),
 			$services->getNameTableStoreFactory()->getChangeTagDef(),
 			$services->getPageProps(),
@@ -582,7 +582,7 @@ return [
 			$services->getActorMigration(),
 			$services->getUserIdentityLookup(),
 			$services->getTempUserConfig(),
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 			$geServices->getLogger()
 		);
 	},
@@ -664,7 +664,7 @@ return [
 			$services->getUserOptionsManager(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 		);
 	},
 
@@ -674,7 +674,6 @@ return [
 
 	'GrowthExperimentsMentorStoreDatabase' => static function ( MediaWikiServices $services ): DatabaseMentorStore {
 		$geServices = GrowthExperimentsServices::wrap( $services );
-		$lb = $geServices->getLoadBalancer();
 
 		return new DatabaseMentorStore(
 			$geServices->getLogger(),
@@ -682,7 +681,7 @@ return [
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
 			$services->getJobQueueGroup(),
-			$lb,
+			$geServices->getLoadBalancer(),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
 				MW_ENTRY_POINT === 'cli' ||
 				RequestContext::getMain()->getRequest()->wasPosted()
@@ -711,7 +710,7 @@ return [
 		MediaWikiServices $services
 	): MetricsFactory {
 		return new MetricsFactory(
-			$services->getDBLoadBalancer(),
+			$services->getConnectionProvider(),
 			$services->getUserEditTracker(),
 			GrowthExperimentsServices::wrap( $services )->getMentorProvider(),
 		);
@@ -726,7 +725,7 @@ return [
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$services->getRevisionLookup(),
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 			$services->getUserIdentityUtils(),
 			$services->getChangeTagsStore(),
 			$services->getStatsFactory()
@@ -867,7 +866,7 @@ return [
 		return new ProtectionFilter(
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory(),
-			$services->getDBLoadBalancerFactory()
+			$services->getConnectionProvider()
 		);
 	},
 
@@ -965,7 +964,7 @@ return [
 		MediaWikiServices $services
 	): SectionImageRecommendationSubmissionLogFactory {
 		return new SectionImageRecommendationSubmissionLogFactory(
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 			$services->getUserOptionsLookup()
 		);
 	},
@@ -1141,7 +1140,7 @@ return [
 	): UserDatabaseHelper {
 		return new UserDatabaseHelper(
 			$services->getUserFactory(),
-			$services->getDBLoadBalancerFactory()
+			$services->getConnectionProvider()
 		);
 	},
 
@@ -1171,7 +1170,7 @@ return [
 
 		return new ComputedUserImpactLookup(
 			new ServiceOptions( ComputedUserImpactLookup::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 			$services->getChangeTagDefStore(),
 			$services->getUserFactory(),
 			$services->getUserEditTracker(),

@@ -5,7 +5,7 @@ namespace GrowthExperiments\PeriodicMetrics;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use InvalidArgumentException;
 use MediaWiki\User\UserEditTracker;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 class MetricsFactory {
 
@@ -16,18 +16,11 @@ class MetricsFactory {
 		NewcomersByMentorMetric::class,
 	];
 
-	private ILoadBalancer $loadBalancer;
-	private UserEditTracker $userEditTracker;
-	private MentorProvider $mentorProvider;
-
 	public function __construct(
-		ILoadBalancer $loadBalancer,
-		UserEditTracker $userEditTracker,
-		MentorProvider $mentorProvider
+		private readonly IConnectionProvider $dbProvider,
+		private readonly UserEditTracker $userEditTracker,
+		private readonly MentorProvider $mentorProvider,
 	) {
-		$this->loadBalancer = $loadBalancer;
-		$this->userEditTracker = $userEditTracker;
-		$this->mentorProvider = $mentorProvider;
 	}
 
 	/**
@@ -46,7 +39,7 @@ class MetricsFactory {
 			),
 			NewcomersByMentorMetric::class => new NewcomersByMentorMetric(
 				$this,
-				$this->loadBalancer->getConnection( DB_REPLICA )
+				$this->dbProvider->getReplicaDatabase()
 			),
 			default => throw new InvalidArgumentException( 'Unsupported metric class name' )
 		};
