@@ -21,11 +21,14 @@
 	@media print {
 		display: none;
 	}
-	animation: help-panel-slidein 800ms;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	transition-property: bottom, opacity;
+	transition-duration: @transition-duration-medium;
 
 	&.animate-out {
-		animation: help-panel-slideout 400ms;
-		bottom: -1em;
+		bottom: -4em;
 		opacity: 0;
 	}
 
@@ -37,36 +40,6 @@
 .suggested-edits-mobile-peek-footer {
 	a {
 		.cdx-mixin-link-underlined();
-	}
-}
-
-@keyframes help-panel-slidein {
-	0%,
-	20% {
-		bottom: -1em;
-		opacity: 0.5;
-	}
-
-	70% {
-		bottom: 1.75em;
-		opacity: 0.9;
-	}
-
-	100% {
-		bottom: 2em;
-		opacity: 1;
-	}
-}
-
-@keyframes help-panel-slideout {
-	0% {
-		bottom: 2em;
-		opacity: 1;
-	}
-
-	100% {
-		bottom: -1em;
-		opacity: 0;
 	}
 }
 
