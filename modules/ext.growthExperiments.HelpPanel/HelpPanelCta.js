@@ -151,13 +151,18 @@
 		 * Hide the CTA when VE's context item is opened and show it when the context item is closed
 		 */
 		function setupHelpButtonToggle() {
-			const onContextResize = function () {
-				const isContextItemVisible = window.ve.init.target.surface.context.isVisible();
-				$buttonWrapper.toggleClass( 'animate-out', isContextItemVisible );
-			};
-			const onContextResizeDebounced = OO.ui.debounce( onContextResize, 200 );
-			mw.hook( 've.activationComplete' ).add( () => {
-				window.ve.init.target.surface.context.on( 'resize', onContextResizeDebounced );
+			mw.hook( 've.newTarget' ).add( ( target ) => {
+				if ( target.constructor.static.name !== 'article' ) {
+					return;
+				}
+				target.on( 'surfaceReady', () => {
+					const surface = target.getSurface();
+					const onSurfacePadding = function () {
+						$buttonWrapper.css( 'bottom', surface.getPadding().bottom + 'px' );
+					};
+					const onSurfacePaddingDebounced = OO.ui.debounce( onSurfacePadding );
+					surface.on( 'padding', onSurfacePaddingDebounced );
+				} );
 			} );
 		}
 

@@ -24,13 +24,8 @@
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	transition-property: bottom, opacity;
+	transition-property: bottom;
 	transition-duration: @transition-duration-medium;
-
-	&.animate-out {
-		bottom: -4em;
-		opacity: 0;
-	}
 
 	.client-js &:not( .mw-ge-help-panel-ready ) {
 		display: none;
