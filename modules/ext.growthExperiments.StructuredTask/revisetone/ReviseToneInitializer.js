@@ -49,6 +49,7 @@ class ReviseToneInitializer {
 		);
 
 		mw.hook( 've.newTarget' ).add( ( target ) => {
+			ve.init.target.editcheckController.suppressSuggestionDisplay( true );
 			if ( target.surface ) {
 				mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 			} else {
@@ -72,6 +73,7 @@ class ReviseToneInitializer {
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
 			() => {
 				mw.hook( 've.newTarget' ).add( ( target ) => {
+					ve.init.target.editcheckController.suppressSuggestionDisplay( true );
 					if ( !this.isInitialEditSession ) {
 						return;
 					}
