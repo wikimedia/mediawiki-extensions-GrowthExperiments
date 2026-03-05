@@ -187,10 +187,23 @@ class WelcomeSurveyHooks implements
 	public function onCentralAuthPostLoginRedirect(
 		string &$returnTo, string &$returnToQuery, bool $stickHTTPS, string $type, string &$injectedHtml
 	) {
+		if ( $type !== 'signup' ) {
+			return;
+		}
+
+		// This uses query parameters to trigger onBeforePageDisplay to signal the client
+		// The theory is that CentralAuthPostLoginRedirect fires once for each account creation and
+		//   $type is 'signup' iff this was a local, non-autocreate sign-up.  This probably doesn't fire
+		//   for temp accounts, but just in case the client can check mw.config.get( 'wgUserIsTemp' )
+		// NOTE: this is here because the return false; below prevents other extensions from registering handlers
+		if ( $returnToQuery === '' ) {
+			$returnToQuery = 'accountJustCreated=1';
+		} else {
+			$returnToQuery .= '&accountJustCreated=1';
+		}
+
 		$context = RequestContext::getMain();
-		if ( $type !== 'signup'
-			|| !$this->shouldShowWelcomeSurvey( $context )
-		) {
+		if ( !$this->shouldShowWelcomeSurvey( $context ) ) {
 			return;
 		}
 
