@@ -23,7 +23,8 @@
 			"ValeJappo",
 			"Vivbod",
 			"Dream Indigo",
-			"Una tantum"
+			"Una tantum",
+			"Mannivu"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
@@ -93,7 +94,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|giorno|giorni}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|Modifica|Modifiche}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|modifica|modifiche}} in $2",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Visualizzazioni delle voci che {{GENDER:|tu hai}} modificato",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Visualizzazioni delle voci che {{GENDER:|hai}} modificato",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Visualizzazioni delle voci modificate",
 	"growthexperiments-homepage-impact-scores-edit-count": "Modifiche totali",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Contributi annullati",
@@ -106,6 +107,7 @@
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Maggiori informazioni sulla serie più lunga",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text": "La {{GENDER:|tua}} serie più lunga attuale è $2 {{PLURAL:$2|giorno|giorni}} che {{GENDER:|hai}} ottenuto tra $3.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-third-person": "La serie più lunga attuale è $1 {{PLURAL:$1|giorno|giorni}} che è stata raggiunta tra $2.",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "La tua striscia più lunga è di un giorno, fatta il $2.",
 	"growthexperiments-homepage-impact-subheader-text": "I più visti (dalla {{GENDER:|tua}} modifica)",
 	"growthexperiments-homepage-impact-subheader-text-third-person": "Più vista (da quando la modifica è stata fatta)",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visualizzazioni {{GENDER:$1|delle tue}} ultime modifiche (negli ultimi 60 giorni):",
