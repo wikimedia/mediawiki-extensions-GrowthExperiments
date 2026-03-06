@@ -12,7 +12,7 @@
 			 * @param {string} route
 			 * @param {OO.ui.WindowManager} windowManager
 			 * @param {QuestionPosterDialog} dialog
-			 * @param {Help.HelpPanelLogger} logger
+			 * @param {mw.libs.ge.HelpPanelLogger} logger
 			 */
 			registerDialogRoute = function ( router, route, windowManager, dialog, logger ) {
 				router.addRoute( route, () => {

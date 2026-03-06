@@ -35,6 +35,7 @@ function SuggestionGroupWidget( config ) {
 
 	this.selectAllButton = null;
 	if ( config.selectAll ) {
+		// eslint-disable-next-line mediawiki/no-unlabeled-buttonwidget
 		this.selectAllButton = new OO.ui.ButtonWidget( {
 			classes: [ 'mw-ge-suggestionGroupWidget-headerRow-select-all' ],
 			label: '', // set by updateSelectAllButtonLabel()

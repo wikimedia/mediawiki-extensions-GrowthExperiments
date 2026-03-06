@@ -16,6 +16,9 @@
 
 		this.menu = new OO.ui.ButtonMenuSelectWidget( {
 			icon: 'ellipsis',
+			// TODO: Use a more verbose accessibility label?
+			label: mw.msg( 'ellipsis' ),
+			invisibleLabel: true,
 			framed: false,
 			menu: {
 				horizontalPosition: 'end',

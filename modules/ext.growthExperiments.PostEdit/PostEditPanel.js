@@ -423,7 +423,7 @@ PostEditPanel.prototype.updateNextTask = function ( task ) {
 /**
  * Navigate to next card and log events when the next button is clicked
  *
- * @fires PostEditPanel#postedit-next-task
+ * @fires mw.libs.ge.PostEditPanel#postedit-next-task
  */
 PostEditPanel.prototype.onNextButtonClicked = function () {
 	this.tasksStore.showNextTask();

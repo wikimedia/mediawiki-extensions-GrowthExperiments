@@ -16,10 +16,7 @@
 		"ecmaVersion": 8
 	},
 	"rules": {
-		"max-len": "off",
-		"jsdoc/no-undefined-types": "off",
-		"mediawiki/no-unlabeled-buttonwidget": "off",
-		"jsdoc/valid-types": "off"
+		"max-len": "off"
 	},
 	"settings": {
 		"jsdoc": {

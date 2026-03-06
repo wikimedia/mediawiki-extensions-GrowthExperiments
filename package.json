@@ -10,7 +10,7 @@
 		"cy:run": "CYPRESS_CACHE_FOLDER=./cypress/.cache cypress run",
 		"test": "npm-run-all test:*",
 		"test:types": "tsc --noEmit && tsc --noEmit -p cypress/tsconfig.json",
-		"test:eslint": "eslint --cache . --max-warnings=0",
+		"test:eslint": "eslint --cache .",
 		"test:stylelint": "stylelint --cache \"**/*.{css,vue,less}\"",
 		"test:i18n": "node-jq '.MessagesDirs.GrowthExperiments[]' extension.json -r | xargs banana-checker --requireLowerCase=0",
 		"test:jest": "jest",

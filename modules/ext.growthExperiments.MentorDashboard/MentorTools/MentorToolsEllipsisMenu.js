@@ -14,6 +14,9 @@
 		this.menu = new OO.ui.ButtonMenuSelectWidget( {
 			id: 'growthexperiments-mentor-dashboard-module-mentor-tools-cog-menu',
 			icon: 'ellipsis',
+			// TODO: Use a more verbose accessibility label?
+			label: mw.msg( 'ellipsis' ),
+			invisibleLabel: true,
 			framed: false,
 			menu: {
 				horizontalPosition: 'end',

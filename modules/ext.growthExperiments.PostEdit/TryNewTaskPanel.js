@@ -19,7 +19,7 @@ function TryNewTaskPanel( config ) {
 	this.activeTaskType = config.activeTaskType;
 	this.helpPanelLogger = config.helpPanelLogger;
 	this.tryNewTaskOptOuts = config.tryNewTaskOptOuts;
-	/** @member {OO.ui.CheckboxInputWidget|null} **/
+	/** @member {OO.ui.CheckboxInputWidget|null} */
 	this.optOutButton = null;
 }
 

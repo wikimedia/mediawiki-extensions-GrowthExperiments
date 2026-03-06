@@ -27,6 +27,8 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 
 	if ( this.topicMatching ) {
 		const shouldShowFunnelAddIcon = config.useTopicMatchMode && this.filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND;
+		// Button label is set in #updateButtonLabelAndIcon
+		// eslint-disable-next-line mediawiki/no-unlabeled-buttonwidget
 		this.topicFilterButtonWidget = new OO.ui.ButtonWidget( {
 			icon: shouldShowFunnelAddIcon ? 'funnel-add' : 'funnel',
 			classes: [ 'topic-matching', 'topic-filter-button' ],
@@ -71,6 +73,8 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 		windows.push( this.topicFiltersDialog );
 	}
 
+	// Button label is set in #updateButtonLabelAndIcon
+	// eslint-disable-next-line mediawiki/no-unlabeled-buttonwidget
 	this.difficultyFilterButtonWidget = new OO.ui.ButtonWidget( {
 		icon: 'difficulty-outline',
 		classes: this.topicMatching ? [ 'topic-matching', 'difficulty-filter-button' ] : [ '' ],

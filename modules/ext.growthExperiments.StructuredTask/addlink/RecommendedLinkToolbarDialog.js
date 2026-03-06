@@ -405,7 +405,7 @@ RecommendedLinkToolbarDialog.prototype.selectAnnotationView = function () {
  * @param {number} index Zero-based index of the suggestion in the linkRecommendationFragments array
  * @param {boolean} [manualFocus] if the recommendation was manually focused via a click/tap as
  *  opposed to using the next/back buttons.
- * @throws Will throw an error if this.linkRecommendationFragments is empty
+ * @throws {Error} Will throw an error if this.linkRecommendationFragments is empty
  */
 RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function (
 	index, manualFocus,
@@ -480,7 +480,7 @@ RecommendedLinkToolbarDialog.prototype.afterShowFirstRecommendation = function (
  * Get annotation view for the specified index
  *
  * @param {number} index Zero-based index of the suggestion in the linkRecommendationFragments array
- * @throws Will throw an error if annotation view at the specified index can't be found
+ * @throws {Error} Will throw an error if annotation view at the specified index can't be found
  * @return {jQuery}
  */
 RecommendedLinkToolbarDialog.prototype.getAnnotationViewAtIndex = function ( index ) {
@@ -534,7 +534,7 @@ RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el )
  * @private
  * @return {ve.dm.SurfaceFragment}
  *
- * @throws Will throw an error if there is no link recommendation
+ * @throws {Error} Will throw an error if there is no link recommendation
  */
 RecommendedLinkToolbarDialog.prototype.getCurrentFragment = function () {
 	const currentRecommendation = this.linkRecommendationFragments[ this.currentIndex ];
@@ -591,7 +591,8 @@ RecommendedLinkToolbarDialog.prototype.setupAcceptanceButtons = function ( fragm
 	this.reopenRejectionDialogButton = new OO.ui.ButtonWidget( {
 		icon: 'ellipsis',
 		framed: false,
-		title: mw.msg( 'growthexperiments-addlink-rejectiondialog-reopen-button-title' ),
+		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reopen-button-title' ),
+		invisibleLabel: true,
 		classes: [ 'mw-ge-recommendedLinkToolbarDialog-buttons-no-reopen' ],
 	} );
 	this.$acceptanceButtonGroup = $( '<div>' ).addClass(
@@ -621,6 +622,8 @@ RecommendedLinkToolbarDialog.prototype.setupNavigationButtons = function () {
 	this.prevButton = new OO.ui.ButtonWidget( {
 		icon: 'previous',
 		framed: false,
+		label: mw.msg( 'growthexperiments-addlink-context-button-prev' ),
+		invisibleLabel: true,
 		classes: [ 'mw-ge-recommendedLinkToolbarDialog-buttons-prev' ],
 	} );
 	this.nextButton = new OO.ui.ButtonWidget( {
@@ -737,7 +740,7 @@ RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
 /**
  * Render content specific to the current recommendation
  *
- * @throws Will throw an error if there's no DataModel
+ * @throws {Error} Will throw an error if there's no DataModel
  */
 RecommendedLinkToolbarDialog.prototype.updateContentForCurrentRecommendation = function () {
 	if ( !this.currentDataModel ) {

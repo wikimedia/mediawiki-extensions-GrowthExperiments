@@ -5,7 +5,7 @@
 	/**
 	 * Serialize data for use with action_data event logging property.
 	 *
-	 * @param {Record<string,string|number>|string|boolean|number|Array<string|number>} data
+	 * @param {Object<string,string|number>|string|boolean|number|Array<string|number>} data
 	 * @return {string|*}
 	 */
 	function serializeActionData( data ) {

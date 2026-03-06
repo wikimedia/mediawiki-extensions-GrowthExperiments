@@ -235,7 +235,7 @@ AskHelpPanel.prototype.getPanelTitleMessages = function () {
 /**
  * Store the entered question and update HelpPanelProcessDialog state when the question changes
  *
- * @fires AskHelpPanel#askHelpTextInputChange
+ * @fires mw.libs.ge.AskHelpPanel#askHelpTextInputChange
  */
 AskHelpPanel.prototype.onTextInputChange = function () {
 	const reviewTextInputValue = this.askhelpTextInput.getValue();
@@ -261,7 +261,7 @@ AskHelpPanel.prototype.getQuestionCompleteConfirmationLabel = function () {
 /**
  * Update the panel and HelpPanelProcessDialog states when the panel is switched to
  *
- * @fires AskHelpPanel#askHelpTextInputChange
+ * @fires mw.libs.ge.AskHelpPanel#askHelpTextInputChange
  */
 AskHelpPanel.prototype.prepareToShowPanel = function () {
 	this.emit( 'askHelpTextInputChange', this.askhelpTextInput.getValue() );

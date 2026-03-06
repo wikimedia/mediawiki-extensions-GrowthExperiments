@@ -1,8 +1,5 @@
 {
 	"globals": {
 		"ve": "readonly"
-	},
-	"rules": {
-		"mediawiki/no-unlabeled-buttonwidget": "off"
 	}
 }
