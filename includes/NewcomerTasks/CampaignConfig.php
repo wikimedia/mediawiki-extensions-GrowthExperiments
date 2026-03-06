@@ -152,6 +152,19 @@ class CampaignConfig {
 	}
 
 	/**
+	 * Check if this is a Growth campaign by inspecting the campaign query parameter.
+	 */
+	public function isGrowthCampaign(
+		string $campaignParameter
+	): bool {
+		if ( !$campaignParameter ) {
+			return false;
+		}
+
+		return $this->getCampaignIndexFromCampaignTerm( $campaignParameter ) !== null;
+	}
+
+	/**
 	 * Check whether the user is in the specified campaign
 	 *
 	 * @param UserIdentity $user

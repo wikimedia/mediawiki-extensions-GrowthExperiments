@@ -76,23 +76,6 @@ class VariantHooks implements
 	}
 
 	/**
-	 * Check if this is a Growth campaign by inspecting the campaign query parameter.
-	 *
-	 * @param string $campaignParameter
-	 * @param CampaignConfig $campaignConfig
-	 * @return bool
-	 */
-	public static function isGrowthCampaign(
-		string $campaignParameter, CampaignConfig $campaignConfig
-	): bool {
-		if ( !$campaignParameter ) {
-			return false;
-		}
-
-		return $campaignConfig->getCampaignIndexFromCampaignTerm( $campaignParameter ) !== null;
-	}
-
-	/**
 	 * Pass through the campaign flag for use by LocalUserCreated.
 	 *
 	 * @inheritDoc
@@ -120,7 +103,7 @@ class VariantHooks implements
 		}
 
 		$campaign = $this->campaignLoader->getCampaign();
-		if ( self::isGrowthCampaign( $campaign, $this->campaignConfig ) ) {
+		if ( $this->campaignConfig->isGrowthCampaign( $campaign ) ) {
 			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $campaign );
 		}
 	}
@@ -140,7 +123,7 @@ class VariantHooks implements
 		}
 
 		$campaign = $this->campaignLoader->getCampaign();
-		if ( self::isGrowthCampaign( $campaign, $this->campaignConfig )
+		if ( $this->campaignConfig->isGrowthCampaign( $campaign )
 			&& $this->campaignConfig->shouldSkipWelcomeSurvey( $campaign )
 		) {
 			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
@@ -166,7 +149,7 @@ class VariantHooks implements
 		}
 
 		$campaign = $this->campaignLoader->getCampaign();
-		if ( self::isGrowthCampaign( $campaign, $this->campaignConfig )
+		if ( $this->campaignConfig->isGrowthCampaign( $campaign )
 			&& $this->campaignConfig->shouldSkipWelcomeSurvey( $campaign )
 		) {
 			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
@@ -180,7 +163,7 @@ class VariantHooks implements
 		$context = $skin->getContext();
 		if (
 			$key !== 'info' ||
-			!self::isGrowthCampaign( $this->campaignLoader->getCampaign(), $this->campaignConfig )
+			!$this->campaignConfig->isGrowthCampaign( $this->campaignLoader->getCampaign() )
 		) {
 			return;
 		}
