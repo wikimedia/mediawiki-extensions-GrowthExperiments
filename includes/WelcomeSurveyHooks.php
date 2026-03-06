@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments;
 
+use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
@@ -44,7 +45,8 @@ class WelcomeSurveyHooks implements
 		TitleFactory $titleFactory,
 		SpecialPageFactory $specialPageFactory,
 		WelcomeSurveyFactory $welcomeSurveyFactory,
-		CampaignConfig $campaignConfig
+		CampaignConfig $campaignConfig,
+		private readonly CampaignLoader $campaignLoader,
 	) {
 		$this->config = $config;
 		$this->titleFactory = $titleFactory;
@@ -262,7 +264,7 @@ class WelcomeSurveyHooks implements
 		return $this->isWelcomeSurveyEnabled()
 			&& !$context->getUser()->isTemp()
 			&& !VariantHooks::shouldCampaignSkipWelcomeSurvey(
-				VariantHooks::getCampaign( $context ), $this->campaignConfig
+				$this->campaignLoader->getCampaign(), $this->campaignConfig
 			);
 	}
 

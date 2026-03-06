@@ -2,14 +2,13 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\StaticExperimentManager;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Context\RequestContext;
-use MediaWiki\Request\WebRequest;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\SpecialPageFactory;
@@ -95,51 +94,8 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 					'GEHomepageDefaultVariant' => 'control',
 				] ),
 			) ),
+			$this->createNoOpMock( CampaignLoader::class ),
 		);
-	}
-
-	/**
-	 * @covers \GrowthExperiments\VariantHooks::getCampaign
-	 * @dataProvider provideCampaignScenarios
-	 */
-	public function testGetCampaign(
-		?string $urlParam, bool $isResourceLoader, bool $userSafeToLoad, string $expected ) {
-		$request = $this->createMock( WebRequest::class );
-		$request->method( 'getVal' )
-			->with( 'campaign', '' )
-			->willReturn( $urlParam ?? '' );
-
-		$user = $this->createMock( User::class );
-		$user->method( 'isSafeToLoad' )
-			->willReturn( $userSafeToLoad );
-
-		$context = new RequestContext();
-		$context->setRequest( $request );
-		$context->setUser( $user );
-
-		$result = VariantHooks::getCampaign( $context );
-		$this->assertSame( $expected, $result );
-	}
-
-	/**
-	 * Data provider for testGetCampaign
-	 * @return array[]
-	 */
-	public static function provideCampaignScenarios(): array {
-		return [
-			'URL parameter exists' => [
-				'winter2024',
-				false,
-				true,
-				'winter2024',
-			],
-			'Empty URL param' => [
-				'',
-				false,
-				false,
-				'',
-			],
-		];
 	}
 
 }

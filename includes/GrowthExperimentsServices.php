@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments;
 
+use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
@@ -335,6 +336,10 @@ class GrowthExperimentsServices {
 
 	public function getGrowthExperimentsCampaignConfig(): CampaignConfig {
 		return $this->coreServices->get( 'GrowthExperimentsCampaignConfig' );
+	}
+
+	public function getGrowthExperimentsCampaignLoader(): CampaignLoader {
+		return $this->coreServices->get( 'GrowthExperimentsCampaignLoader' );
 	}
 
 	public function getTemplateBasedTaskSubmissionHandler(): TemplateBasedTaskSubmissionHandler {

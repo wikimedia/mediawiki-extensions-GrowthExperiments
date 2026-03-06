@@ -417,7 +417,8 @@
 				"UserOptionsManager",
 				"GrowthExperimentsCampaignConfig",
 				"SpecialPageFactory",
-				"GrowthExperimentsExperimentUserManager"
+				"GrowthExperimentsExperimentUserManager",
+				"GrowthExperimentsCampaignLoader"
 			]
 		},
 		"visualeditor": {
@@ -437,7 +438,8 @@
 				"TitleFactory",
 				"SpecialPageFactory",
 				"GrowthExperimentsWelcomeSurveyFactory",
-				"GrowthExperimentsCampaignConfig"
+				"GrowthExperimentsCampaignConfig",
+				"GrowthExperimentsCampaignLoader"
 			]
 		},
 		"confirmEmail": {

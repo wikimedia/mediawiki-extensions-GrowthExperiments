@@ -2,15 +2,14 @@
 
 namespace GrowthExperiments;
 
+use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Context\RequestContext;
 use MediaWiki\Hook\PostLoginRedirectHook;
 use MediaWiki\Hook\SkinAddFooterLinksHook;
 use MediaWiki\Hook\SpecialCreateAccountBenefitsHook;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -47,6 +46,7 @@ class VariantHooks implements
 		private readonly CampaignConfig $campaignConfig,
 		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly IExperimentManager $experimentManager,
+		private readonly CampaignLoader $campaignLoader,
 	) {
 	}
 
@@ -106,43 +106,12 @@ class VariantHooks implements
 	}
 
 	/**
-	 * Get the campaign from the user's saved options, falling back to the request parameter if
-	 * the user's option isn't set. This is needed because the query parameter can get lost
-	 * during CentralAuth redirection.
-	 *
-	 * @param IContextSource $context
-	 * @return string
-	 */
-	public static function getCampaign( IContextSource $context ): string {
-		$campaignFromRequestQueryParameter = $context->getRequest()->getVal( 'campaign', '' );
-		if ( defined( 'MW_NO_SESSION' ) ) {
-			// If we're in a ResourceLoader context, don't attempt to get the campaign string
-			// from the user's preferences, as it's not allowed.
-			return $campaignFromRequestQueryParameter;
-		}
-
-		$user = $context->getUser();
-		if ( !$user->isSafeToLoad() ) {
-			return $campaignFromRequestQueryParameter;
-		}
-		// URL parameter takes precedence if present
-		if ( $campaignFromRequestQueryParameter !== '' ) {
-			return $campaignFromRequestQueryParameter;
-		}
-		// fallback to user preference if no URL parameter exists
-		return MediaWikiServices::getInstance()->getUserOptionsLookup()->getOption(
-			$user, self::GROWTH_CAMPAIGN,
-			$campaignFromRequestQueryParameter
-		);
-	}
-
-	/**
 	 * Pass through the campaign flag for use by LocalUserCreated.
 	 *
 	 * @inheritDoc
 	 */
 	public function onAuthChangeFormFields( $requests, $fieldInfo, &$formDescriptor, $action ) {
-		$campaign = self::getCampaign( RequestContext::getMain() );
+		$campaign = $this->campaignLoader->getCampaign();
 		// This is probably not strictly necessary; the Campaign extension sets this hidden field.
 		// But if it's not there for whatever reason, add it here so we are sure it's available
 		// in LocalUserCreated hook.
@@ -162,9 +131,10 @@ class VariantHooks implements
 		if ( $autocreated || $user->isTemp() ) {
 			return;
 		}
-		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig ) ) {
-			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $this->getCampaign( $context ) );
+
+		$campaign = $this->campaignLoader->getCampaign();
+		if ( self::isGrowthCampaign( $campaign, $this->campaignConfig ) ) {
+			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $campaign );
 		}
 	}
 
@@ -181,9 +151,10 @@ class VariantHooks implements
 			// Handled by onCentralAuthPostLoginRedirect
 			return;
 		}
-		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig )
-			&& self::shouldCampaignSkipWelcomeSurvey( self::getCampaign( $context ), $this->campaignConfig )
+
+		$campaign = $this->campaignLoader->getCampaign();
+		if ( self::isGrowthCampaign( $campaign, $this->campaignConfig )
+			&& self::shouldCampaignSkipWelcomeSurvey( $campaign, $this->campaignConfig )
 		) {
 			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
 			$type = 'successredirect';
@@ -206,9 +177,10 @@ class VariantHooks implements
 		if ( $type !== 'signup' ) {
 			return;
 		}
-		$context = RequestContext::getMain();
-		if ( self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig )
-			&& self::shouldCampaignSkipWelcomeSurvey( self::getCampaign( $context ), $this->campaignConfig )
+
+		$campaign = $this->campaignLoader->getCampaign();
+		if ( self::isGrowthCampaign( $campaign, $this->campaignConfig )
+			&& self::shouldCampaignSkipWelcomeSurvey( $campaign, $this->campaignConfig )
 		) {
 			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
 			$injectedHtml = '';
@@ -219,7 +191,10 @@ class VariantHooks implements
 	/** @inheritDoc */
 	public function onSkinAddFooterLinks( Skin $skin, string $key, array &$footerItems ) {
 		$context = $skin->getContext();
-		if ( $key !== 'info' || !self::isGrowthCampaign( self::getCampaign( $context ), $this->campaignConfig ) ) {
+		if (
+			$key !== 'info' ||
+			!self::isGrowthCampaign( $this->campaignLoader->getCampaign(), $this->campaignConfig )
+		) {
 			return;
 		}
 		$footerItems['signupcampaign-legal'] = CampaignBenefitsBlock::getLegalFooter( $context );

@@ -1,6 +1,7 @@
 <?php
 
 use CirrusSearch\CirrusSearchServices;
+use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
@@ -172,6 +173,15 @@ return [
 			$growthServices->getGrowthConfig()->get( 'GECampaigns' ) ?? [],
 			$growthServices->getGrowthConfig()->get( 'GECampaignTopics' ) ?? [],
 			$services->getUserOptionsLookup()
+		);
+	},
+
+	'GrowthExperimentsCampaignLoader' => static function (
+		MediaWikiServices $services,
+	): CampaignLoader {
+		return new CampaignLoader(
+			RequestContext::getMain(),
+			$services->getUserOptionsLookup(),
 		);
 	},
 
