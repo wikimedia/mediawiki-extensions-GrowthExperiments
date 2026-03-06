@@ -195,6 +195,9 @@ class CampaignConfig {
 	 * @return bool
 	 */
 	public function shouldSkipWelcomeSurvey( string $campaignTerm ): bool {
+		if ( !$campaignTerm ) {
+			return false;
+		}
 		$campaign = $this->getCampaignIndexFromCampaignTerm( $campaignTerm );
 		return (bool)$this->getConfigValue( $campaign, 'skipWelcomeSurvey' );
 	}

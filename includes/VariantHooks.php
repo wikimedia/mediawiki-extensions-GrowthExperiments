@@ -93,20 +93,6 @@ class VariantHooks implements
 	}
 
 	/**
-	 * Check whether the welcome survey should be skipped by asking the $campaignConfig
-	 * for the value given in the "campaign" query parameter
-	 *
-	 * @param string $campaign
-	 * @param CampaignConfig $campaignConfig
-	 * @return bool
-	 */
-	public static function shouldCampaignSkipWelcomeSurvey(
-		string $campaign, CampaignConfig $campaignConfig
-	): bool {
-		return $campaign && $campaignConfig->shouldSkipWelcomeSurvey( $campaign );
-	}
-
-	/**
 	 * Pass through the campaign flag for use by LocalUserCreated.
 	 *
 	 * @inheritDoc
@@ -155,7 +141,7 @@ class VariantHooks implements
 
 		$campaign = $this->campaignLoader->getCampaign();
 		if ( self::isGrowthCampaign( $campaign, $this->campaignConfig )
-			&& self::shouldCampaignSkipWelcomeSurvey( $campaign, $this->campaignConfig )
+			&& $this->campaignConfig->shouldSkipWelcomeSurvey( $campaign )
 		) {
 			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
 			$type = 'successredirect';
@@ -181,7 +167,7 @@ class VariantHooks implements
 
 		$campaign = $this->campaignLoader->getCampaign();
 		if ( self::isGrowthCampaign( $campaign, $this->campaignConfig )
-			&& self::shouldCampaignSkipWelcomeSurvey( $campaign, $this->campaignConfig )
+			&& $this->campaignConfig->shouldSkipWelcomeSurvey( $campaign )
 		) {
 			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
 			$injectedHtml = '';

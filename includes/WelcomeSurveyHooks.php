@@ -263,9 +263,7 @@ class WelcomeSurveyHooks implements
 	private function shouldShowWelcomeSurvey( IContextSource $context ): bool {
 		return $this->isWelcomeSurveyEnabled()
 			&& !$context->getUser()->isTemp()
-			&& !VariantHooks::shouldCampaignSkipWelcomeSurvey(
-				$this->campaignLoader->getCampaign(), $this->campaignConfig
-			);
+			&& !$this->campaignConfig->shouldSkipWelcomeSurvey( $this->campaignLoader->getCampaign() );
 	}
 
 }
