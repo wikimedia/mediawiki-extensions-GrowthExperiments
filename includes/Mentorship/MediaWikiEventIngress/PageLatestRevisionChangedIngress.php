@@ -7,11 +7,16 @@ namespace GrowthExperiments\Mentorship\MediaWikiEventIngress;
 use GrowthExperiments\Mentorship\MenteeGraduation;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\DomainEvent\DomainEventIngress;
-use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
-use MediaWiki\Page\Event\PageRevisionUpdatedListener;
+use MediaWiki\Page\Event\PageLatestRevisionChangedEvent;
+use MediaWiki\Page\Event\PageLatestRevisionChangedListener;
 use MediaWiki\User\UserIdentity;
 
-class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
+/**
+ * @noinspection PhpUnused
+ */
+class PageLatestRevisionChangedIngress extends DomainEventIngress implements
+	PageLatestRevisionChangedListener
+{
 
 	public function __construct(
 		private MentorStore $mentorStore,
@@ -19,7 +24,9 @@ class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevis
 	) {
 	}
 
-	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
+	public function handlePageLatestRevisionChangedEvent(
+		PageLatestRevisionChangedEvent $event
+	): void {
 		$this->setMenteeActive( $event->getAuthor() );
 		$this->handleMenteeGraduation( $event->getAuthor() );
 	}

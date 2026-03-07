@@ -14,8 +14,8 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\Config\Config;
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Extension\Notifications\Model\Event;
-use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
-use MediaWiki\Page\Event\PageRevisionUpdatedListener;
+use MediaWiki\Page\Event\PageLatestRevisionChangedEvent;
+use MediaWiki\Page\Event\PageLatestRevisionChangedListener;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
 
@@ -28,7 +28,9 @@ use MediaWiki\User\UserIdentity;
  * - User completed at least 1 add-a-link task.
  * - User still has add-a-link task type selected.
  */
-class NewcomerMilestoneIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
+class NewcomerMilestoneIngress extends DomainEventIngress implements
+	PageLatestRevisionChangedListener
+{
 	private UserEditTracker $userEditTracker;
 	private NewcomerTasksUserOptionsLookup $userOptionsLookup;
 	private UserImpactLookup $userImpactLookup;
@@ -56,7 +58,9 @@ class NewcomerMilestoneIngress extends DomainEventIngress implements PageRevisio
 		$this->config = $config;
 	}
 
-	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
+	public function handlePageLatestRevisionChangedEvent(
+		PageLatestRevisionChangedEvent $event
+	): void {
 		$extensionRegistry = ExtensionRegistry::getInstance();
 		if ( !$extensionRegistry->isLoaded( 'Echo' ) ) {
 			return;

@@ -18,7 +18,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @group Database
- * @covers \GrowthExperiments\UserImpact\MediaWikiEventIngress\PageRevisionUpdatedIngress
+ * @covers \GrowthExperiments\UserImpact\MediaWikiEventIngress\PageLatestRevisionChangedIngress
  */
 class UserImpactPageUpdatedSubscriber extends MediaWikiIntegrationTestCase {
 

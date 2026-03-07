@@ -11,7 +11,7 @@ use MediaWikiIntegrationTestCase;
 
 /**
  * @group Database
- * @covers \GrowthExperiments\Mentorship\MediaWikiEventIngress\PageRevisionUpdatedIngress
+ * @covers \GrowthExperiments\Mentorship\MediaWikiEventIngress\PageLatestRevisionChangedIngress
  */
 class PageUpdatedSubscriberTest extends MediaWikiIntegrationTestCase {
 

@@ -6,10 +6,12 @@ namespace GrowthExperiments\UserImpact\MediaWikiEventIngress;
 
 use GrowthExperiments\UserImpact\GrowthExperimentsUserImpactUpdater;
 use MediaWiki\DomainEvent\DomainEventIngress;
-use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
-use MediaWiki\Page\Event\PageRevisionUpdatedListener;
+use MediaWiki\Page\Event\PageLatestRevisionChangedEvent;
+use MediaWiki\Page\Event\PageLatestRevisionChangedListener;
 
-class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
+class PageLatestRevisionChangedIngress extends DomainEventIngress implements
+	PageLatestRevisionChangedListener
+{
 
 	private GrowthExperimentsUserImpactUpdater $userImpactUpdater;
 
@@ -19,7 +21,9 @@ class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevis
 		$this->userImpactUpdater = $userImpactUpdater;
 	}
 
-	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
+	public function handlePageLatestRevisionChangedEvent(
+		PageLatestRevisionChangedEvent $event
+	): void {
 		$userIdentity = $event->getAuthor();
 		$revisionRecord = $event->getLatestRevisionAfter();
 		// Refresh the user's impact after they've made an edit.

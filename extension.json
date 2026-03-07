@@ -583,9 +583,9 @@
 	"DomainEventIngresses": [
 		{
 			"events": [
-				"PageRevisionUpdated"
+				"PageLatestRevisionChanged"
 			],
-			"class": "GrowthExperiments\\Mentorship\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
+			"class": "GrowthExperiments\\Mentorship\\MediaWikiEventIngress\\PageLatestRevisionChangedIngress",
 			"services": [
 				"GrowthExperimentsMentorStore",
 				"GrowthExperimentsMenteeGraduation"
@@ -593,9 +593,9 @@
 		},
 		{
 			"events": [
-				"PageRevisionUpdated"
+				"PageLatestRevisionChanged"
 			],
-			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
+			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\PageLatestRevisionChangedIngress",
 			"services": [
 				"ChangeTagsStore",
 				"ConnectionProvider",
@@ -606,9 +606,9 @@
 		},
 		{
 			"events": [
-				"PageRevisionUpdated"
+				"PageLatestRevisionChanged"
 			],
-			"class": "GrowthExperiments\\UserImpact\\MediaWikiEventIngress\\PageRevisionUpdatedIngress",
+			"class": "GrowthExperiments\\UserImpact\\MediaWikiEventIngress\\PageLatestRevisionChangedIngress",
 			"services": [
 				"GrowthExperimentsUserImpactUpdater"
 			]
@@ -628,7 +628,7 @@
 			]
 		},
 		{
-			"events": [ "PageRevisionUpdated" ],
+			"events": [ "PageLatestRevisionChanged" ],
 			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\NewcomerMilestoneIngress",
 			"services": [
 				"UserEditTracker",

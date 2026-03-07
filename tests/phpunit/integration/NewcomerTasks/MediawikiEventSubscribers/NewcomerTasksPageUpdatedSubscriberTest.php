@@ -25,7 +25,7 @@ use Wikimedia\Stats\StatsFactory;
 
 /**
  * @group Database
- * @covers \GrowthExperiments\NewcomerTasks\MediaWikiEventIngress\PageRevisionUpdatedIngress
+ * @covers \GrowthExperiments\NewcomerTasks\MediaWikiEventIngress\PageLatestRevisionChangedIngress
  */
 class NewcomerTasksPageUpdatedSubscriberTest extends MediaWikiIntegrationTestCase {
 

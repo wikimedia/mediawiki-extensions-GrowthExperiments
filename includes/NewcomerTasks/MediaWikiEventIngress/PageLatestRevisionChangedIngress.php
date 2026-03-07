@@ -14,8 +14,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\DomainEvent\DomainEventIngress;
-use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
-use MediaWiki\Page\Event\PageRevisionUpdatedListener;
+use MediaWiki\Page\Event\PageLatestRevisionChangedEvent;
+use MediaWiki\Page\Event\PageLatestRevisionChangedListener;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\WikiMap\WikiMap;
@@ -23,7 +23,9 @@ use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Stats\StatsFactory;
 
-class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
+class PageLatestRevisionChangedIngress extends DomainEventIngress implements
+	PageLatestRevisionChangedListener
+{
 
 	private ChangeTagsStore $changeTagsStore;
 	private IConnectionProvider $connectionProvider;
@@ -45,7 +47,9 @@ class PageRevisionUpdatedIngress extends DomainEventIngress implements PageRevis
 		$this->featureManager = $featureManager;
 	}
 
-	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
+	public function handlePageLatestRevisionChangedEvent(
+		PageLatestRevisionChangedEvent $event
+	): void {
 		if (
 			$this->featureManager->isLinkRecommendationsAvailable() &&
 			$event->getPage()->getNamespace() === NS_MAIN &&
