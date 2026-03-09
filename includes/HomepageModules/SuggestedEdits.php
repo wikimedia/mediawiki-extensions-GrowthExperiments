@@ -931,17 +931,16 @@ class SuggestedEdits extends BaseModule {
 	 *
 	 * This code roughly corresponds to SuggestedEditPagerWidget.prototype.setMessage
 	 *
-	 * @return string
 	 * @throws InvalidArgumentException
 	 */
-	private function getPager() {
+	private function getPager(): HtmlSnippet|string {
 		$taskSet = $this->getTaskSet();
 		if ( !$taskSet instanceof TaskSet || !$taskSet->count() ) {
 			return '';
 		}
-		return ( new HtmlSnippet( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
+		return new HtmlSnippet( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
 				->numParams( [ 1, $taskSet->getTotalCount() ] )
-			->parse() ) )->__toString();
+			->parse() );
 	}
 
 	/**
