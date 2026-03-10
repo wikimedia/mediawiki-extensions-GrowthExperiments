@@ -44,8 +44,10 @@ class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 		$validTasks = [];
 
 		foreach ( $taskSet as $task ) {
-			$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
-			$validTasks[ $title->getArticleID() ] = $task;
+			$articleId = $this->titleFactory->newFromLinkTarget( $task->getTitle() )->getArticleID();
+			if ( $articleId ) {
+				$validTasks[ $articleId ] = $task;
+			}
 		}
 		// Do a single batch query instead of several individual queries with RestrictionStore.
 		// In the longer run, adding batch querying to RestrictionStore itself would be nice.
