@@ -101,6 +101,8 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescalltoaction-buttontext-label": "Etiqueta",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-control-label": "Adicione um fundo branco à imagem no modo escuro",
 	"communityconfiguration-helppanel-title": "Página de ajuda",
+	"communityconfiguration-helppanel-info-text": "O painel de ajuda pode estar disponível em qualquer espaço nominal, no modo de leitura ou edição, conforme configurado abaixo. Ele inclui a capacidade de pesquisar ajuda, clicar em links de ajuda e fazer perguntas a mentores ou ao suporte técnico. Os links podem ser configurados para serem quaisquer links no wiki, mas as recomendações estão incluídas abaixo.",
+	"communityconfiguration-helppanel-gehelppanelaskmentor-label": "Onde as perguntas devem ser direcionadas pelo painel de ajuda?",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Páginas de discussão do mentor",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-help-desk-page-label": "Central de ajuda",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-label": "Onde na página da central de ajuda deve ser publicado novas perguntas?",
