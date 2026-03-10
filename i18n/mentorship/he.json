@@ -4,7 +4,8 @@
 			"Amire80",
 			"Xnet1234",
 			"חיים",
-			"Guycn2"
+			"Guycn2",
+			"Neriah"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "לוח בקרה לחונכים",
@@ -109,7 +110,7 @@
 	"growthexperiments-notification-header-new-praiseworthy-mentees": "יש {{GENDER:|לך}} חניכים ראויים להערכה! אפשר לשלוח עידוד לחניכים דרך לוח הבקרה לחונכים שלך.",
 	"growthexperiments-notification-secondary-link-new-praiseworthy-mentees": "הצגת לוח הבקרה לחונכים",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "מספר החניכים שמשויכים אליי",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "אפס (אני {{GENDER:|קולט|קולטת}} אותם ידנית)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none": "אפס (אני אקלוט אותם ידנית)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "בערך חצי מהממוצע",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "ממוצע (ברירת המחדל)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "בערך כפול מהממוצע",
@@ -161,6 +162,7 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month": "החודש שעבר",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-headline": "ההודעה ההתחלתית שלך",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-subject": "נושא",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-placeholder": "...",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "בהודעה החיובית המוגדרת כברירת מחדל, $1 מוחלף אוטומטית בשם המשתמש של החניך ו־$2 מוחלף בשם המשתמש של החונך (אם קיים).",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "התראות",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately": "מייד",
