@@ -126,7 +126,7 @@ AddImageArticleTarget.prototype.afterStructuredTaskSurfaceReady = function () {
 	if ( this.isValidTask() ) {
 		// Set a reference to the toolbar up front so that it's available in subsequent calls
 		// (since VeUiTargetToolbar is constructed upon these method calls if it's not there)
-		this.targetToolbar = OO.ui.isMobile() ? this.getToolbar() : this.getActions();
+		this.targetToolbar = this.getToolbar();
 		// Save button will be shown during caption step
 		this.toggleSaveTool( false );
 		if ( OO.ui.isMobile() ) {
