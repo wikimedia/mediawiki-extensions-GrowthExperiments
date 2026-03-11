@@ -24,7 +24,7 @@ class StaticExperimentManager implements IExperimentManager {
 		$experimentsConfigSpec = $this->options->get( 'GEHomepageDefaultVariant' );
 		$group = null;
 		if ( is_array( $experimentsConfigSpec ) ) {
-			$group = $experimentsConfigSpec[ $experimentName ];
+			$group = $experimentsConfigSpec[ $experimentName ] ?? null;
 		}
 		if ( is_string( $experimentsConfigSpec ) ) {
 			$group = $experimentsConfigSpec;

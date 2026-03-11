@@ -3,6 +3,7 @@
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\AddImage\SubpageImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ReviseTone\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\Task\Task;
@@ -100,24 +101,37 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 			return $taskSuggesterFactory;
 		}
 	);
+
+
 	# Mock the task suggester to specify what article(s) will be suggested.
 	$services->redefineService(
 		'GrowthExperimentsFeatureManager',
 		static function () use (
 			$services
 		): FeatureManager {
+			$config = $services->getMainConfig();
 			$manager = new FeatureManager(
 				$services->getExtensionRegistry(),
-				$services->getMainConfig(),
+				$config,
 			);
+			$defaultVariantSpec = $config->get( 'GEHomepageDefaultVariant' );
 			$ctx = RequestContext::getMain();
 			$variantOverride = $ctx->getRequest()->getVal( 'mpo' );
 			if ( $variantOverride ) {
-				[ $experimentName, $variant] = explode(':', $variantOverride );
+				[ $experimentName, $variant ] = explode(':', $variantOverride );
 			}
-			$variant = $variantOverride ? [
+
+			if ( is_string( $defaultVariantSpec ) ) {
+				$defaultVariantSpec = array_reduce(
+					IExperimentManager::EXPERIMENTS,
+					fn ( $carry, $expName ) => $carry + [ $expName => $defaultVariantSpec ],
+					[]
+				);
+			}
+
+			$variant = $variantOverride ? array_merge( $defaultVariantSpec, [
 				$experimentName => $variant,
-			] : null;
+			] ) : $defaultVariantSpec;
 
 			$manager->setExperimentManager( new StaticExperimentManager( new ServiceOptions( [ 'GEHomepageDefaultVariant' ], [
 				'GEHomepageDefaultVariant' => $variant
