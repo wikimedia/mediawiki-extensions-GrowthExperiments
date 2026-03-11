@@ -564,7 +564,6 @@
 			"levelingup"
 		],
 		"UserGetRights": "mentor",
-		"UserSendConfirmationMail": "confirmEmail",
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
 		"VisualEditorApiVisualEditorEditPostSave": [
 			"levelingup",
