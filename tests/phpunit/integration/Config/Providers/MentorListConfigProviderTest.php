@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Integration;
 
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
+use MediaWiki\Json\FormatJson;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -12,6 +13,45 @@ use MediaWikiIntegrationTestCase;
  */
 class MentorListConfigProviderTest extends MediaWikiIntegrationTestCase {
 	use CommunityConfigurationTestHelpers;
+
+	public static function provideValidMentorList() {
+		return [
+			'empty object' => [ '{"Mentors": {}}' ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideValidMentorList
+	 */
+	public function testValidMentorList( string $validMentorList ) {
+		$status = $this->editPage(
+			'MediaWiki:GrowthMentors.json',
+			$validMentorList
+		);
+		$this->assertStatusOK( $status );
+	}
+
+	public static function provideInvalidMentors() {
+		return [
+			'too long message' => [
+				[ 'username' => 'Mentor1', 'weight' => 0, 'message' => str_repeat( 'a', 1001 ) ],
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider provideInvalidMentors
+	 */
+	public function testInvalidMentors( array $invalidMentor ) {
+		$status = $this->editPage(
+			'MediaWiki:GrowthMentors.json',
+			FormatJson::encode( [ 'Mentors' => [
+				1 => $invalidMentor,
+			] ] )
+		);
+
+		$this->assertStatusError( 'communityconfiguration-schema-validation-error', $status );
+	}
 
 	public function testLoadsEmptyPage() {
 		$this->getNonexistingTestPage( 'MediaWiki:GrowthMentors.json' );
