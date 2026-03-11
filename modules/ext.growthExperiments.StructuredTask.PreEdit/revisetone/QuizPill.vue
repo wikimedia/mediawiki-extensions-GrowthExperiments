@@ -26,6 +26,7 @@
 		</div>
 		<div
 			v-if="computedStatus === 'correct' && description"
+			ref="descriptionElement"
 			v-i18n-html="description"
 			class="ext-growthExperiments-ReviseTone-QuizPill-Description"
 		>
@@ -34,7 +35,7 @@
 </template>
 
 <script>
-const { defineComponent, computed, inject } = require( 'vue' );
+const { defineComponent, computed, inject, onMounted, onUpdated, ref } = require( 'vue' );
 const { CdxIcon } = require( '@wikimedia/codex' );
 const { cdxIconSuccess, cdxIconClear } = require( '../common/codex-icons.json' );
 const NumberIcon = require( './NumberIcon.vue' );
@@ -82,7 +83,19 @@ module.exports = exports = defineComponent( {
 	},
 	emits: [ 'click' ],
 	setup( props, ctx ) {
+		const descriptionElement = ref( null );
 		const { getFallbackLanguageChain } = inject( 'mw.language' );
+		const applyLinkAttrs = () => {
+			if ( !descriptionElement.value ) {
+				return;
+			}
+			Array.prototype.forEach.call( descriptionElement.value.querySelectorAll( 'a' ), ( link ) => {
+				link.target = '_blank';
+				link.rel = 'noopener noreferrer';
+			} );
+		};
+		onMounted( applyLinkAttrs );
+		onUpdated( applyLinkAttrs );
 		const computedStatus = computed( () => {
 			let status = 'non-interactable';
 			if ( !props.reveal ) {
@@ -122,6 +135,7 @@ module.exports = exports = defineComponent( {
 		return {
 			classObject,
 			computedStatus,
+			descriptionElement,
 			icon,
 			lang,
 			onPillClick,

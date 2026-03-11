@@ -93,4 +93,32 @@ describe( 'QuizPill', () => {
 		wrapper.find( '.ext-growthExperiments-ReviseTone-QuizPill' ).trigger( 'click' );
 		expect( wrapper.emitted() ).toMatchObject( {} );
 	} );
+	it( 'opens learn more links in a new tab', async () => {
+		global.mw = global.mw || {};
+		global.mw.message = jest.fn( ( key ) => ( {
+			parse: () => key,
+		} ) );
+		const wrapper = mount( QuizPill, {
+			props: {
+				label: 'Some label',
+				correct: true,
+				reveal: 'Some label',
+				description: '<a class="external text" href="https://example.org">Learn more</a>',
+			},
+			global: {
+				provide: {
+					'mw.language': mwLanguageMock,
+				},
+				directives: {
+					'i18n-html': ( el, binding ) => {
+						el.innerHTML = binding.value;
+					},
+				},
+			},
+		} );
+		await wrapper.vm.$nextTick();
+		const link = wrapper.find( '.ext-growthExperiments-ReviseTone-QuizPill-Description a' );
+		expect( link.attributes( 'target' ) ).toBe( '_blank' );
+		expect( link.attributes( 'rel' ) ).toBe( 'noopener noreferrer' );
+	} );
 } );
