@@ -54,7 +54,7 @@ exports.config = { ...config,
 
 	onPrepare: async function () {
 		await LocalSettingsSetup.overrideLocalSettings();
-		await LocalSettingsSetup.restartPhpFpmService();
+		await LocalSettingsSetup.resetPhpFpmOpCache();
 		// Import the test articles and their suggestions
 		const suggestedEditsContentFilepath = path.resolve( __dirname + '/fixtures/SuggestedEditsContent.xml' );
 		console.log( 'Importing ' + suggestedEditsContentFilepath );
@@ -98,6 +98,6 @@ exports.config = { ...config,
 	},
 	onComplete: async function () {
 		await LocalSettingsSetup.restoreLocalSettings();
-		await LocalSettingsSetup.restartPhpFpmService();
+		await LocalSettingsSetup.resetPhpFpmOpCache();
 	}
 };

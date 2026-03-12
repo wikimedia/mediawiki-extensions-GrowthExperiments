@@ -7,7 +7,7 @@ const LocalSettingsSetup = require( __dirname + '/../LocalSettingsSetup.cjs' );
 
 exports.mochaGlobalSetup = async function () {
 	await LocalSettingsSetup.overrideLocalSettings();
-	await LocalSettingsSetup.restartPhpFpmService();
+	await LocalSettingsSetup.resetPhpFpmOpCache();
 	// Import the test articles and their suggestions
 	childProcess.spawnSync(
 		'php',
@@ -23,5 +23,5 @@ exports.mochaGlobalSetup = async function () {
 
 exports.mochaGlobalTeardown = async function () {
 	await LocalSettingsSetup.restoreLocalSettings();
-	await LocalSettingsSetup.restartPhpFpmService();
+	await LocalSettingsSetup.resetPhpFpmOpCache();
 };
