@@ -28,14 +28,9 @@ class ReviseToneExperimentInteractionLogger {
 		if ( !$experiment ) {
 			return;
 		}
+
 		$experimentConfig = $experiment->getExperimentConfig();
 		if ( !$experimentConfig ) {
-			$this->logger->warning( 'Empty Experiment Config for Revise Tone experiment', [
-				'exception' => new \RuntimeException,
-				'experiment_action' => $action,
-				'experiment_interaction_data' => json_encode( $interactionData ),
-				'page_dbkey' => $pageDBkeyForLogging,
-			] );
 			return;
 		}
 		if ( $experimentConfig[ 'sampling_unit' ] === 'overridden' ) {

@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use MediaWiki\Extension\TestKitchen\Sdk\Experiment;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
+use MediaWiki\Extension\TestKitchen\Sdk\UnenrolledExperiment;
 
 class ExperimentTestKitchenManager implements IExperimentManager {
 
@@ -13,7 +14,12 @@ class ExperimentTestKitchenManager implements IExperimentManager {
 	}
 
 	public function getExperiment( string $experimentName ): ?Experiment {
-		return $this->experimentManager->getExperiment( $experimentName );
+		$exp = $this->experimentManager->getExperiment( $experimentName );
+		// Prevents attempting to log events for UnenrolledExperiment
+		if ( $exp instanceof UnenrolledExperiment ) {
+			return null;
+		}
+		return $exp;
 	}
 
 	public function getAssignments(): array {
