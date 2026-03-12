@@ -31,7 +31,7 @@ export default defineConfig( {
 			} );
 			on( 'before:run', async () => {
 				LocalSettingsSetup.overrideLocalSettings();
-				await LocalSettingsSetup.restartPhpFpmService();
+				await LocalSettingsSetup.resetPhpFpmOpCache();
 
 				const ip = process.env.MW_INSTALL_PATH || '../..';
 				const command = process.env.MW_MAINTENANCE_COMMAND || 'php';
@@ -54,7 +54,7 @@ export default defineConfig( {
 			} );
 			on( 'after:run', async () => {
 				LocalSettingsSetup.restoreLocalSettings();
-				await LocalSettingsSetup.restartPhpFpmService();
+				await LocalSettingsSetup.resetPhpFpmOpCache();
 			} );
 		},
 		defaultCommandTimeout: 20000,
