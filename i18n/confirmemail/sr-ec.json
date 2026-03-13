@@ -7,6 +7,11 @@
 			"Milicevic01"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Ваше корисничко име је јавно и не може се сакрити касније.",
+	"growthexperiments-createacct-username-learn-more": "Сазнајте више",
+	"growthexperiments-confirmemail-emaildescription": "Имејл је потребан за опоравак налога ако заборавите лозинку или се пријавите са друге локације или новог веб-прегледача.",
+	"growthexperiments-confirmemail-email-optional": "Имејл адреса",
+	"growthexperiments-confirmemail-email-recommended-flag": "(препоручује се)",
 	"growthexperiments-confirmemail-emailhelp": "Имејл је потребан за опоравак налога ако којим случајем заборавите лозинку.",
 	"growthexperiments-confirmemail-emailrecommended": "Имејл-адреса (препоручује се)",
 	"growthexperiments-confirmemail-emailwarning": "Када отворите налог, потврдите имејл-адресу кликом на везу из најновијег имејла.",
