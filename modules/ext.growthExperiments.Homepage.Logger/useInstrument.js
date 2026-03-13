@@ -1,62 +1,38 @@
 'use strict';
 
 /**
- * Get experiment data for web/base schema from TestKitchen.
- * Supports multi-experiment setup.
- *
- * Returns null when the user is not enrolled in any GrowthExperiments experiment
- * Omit experiment data for unenrolled users.
+ * Get experiment data for filling the experiment fragment of web/base schema used by TestKitchen.
+ * Returns null when the user is not enrolled in any experiment.
  *
  * @return {Object|null} { coordinator, assigned, enrolled, other_assigned? } or null
  */
 function getExperimentDataForSchema() {
-	const tkConfig = mw.config.get( 'wgTestKitchenUserExperiments' );
-	if ( !tkConfig || !tkConfig.active_experiments ) {
+	const assignments = mw.testKitchen.getAssignments();
+	const enrolledExperiments = Object.keys( assignments );
+	if ( !enrolledExperiments.length ) {
 		return null;
 	}
 
-	const growthExperiments = tkConfig.active_experiments.filter(
-		( exp ) => ( typeof exp === 'string' ? exp : exp.name ).startsWith( 'growthexperiments' ),
-	);
-	if ( growthExperiments.length === 0 ) {
-		return null;
-	}
+	const firstExp = mw.testKitchen.getExperiment( enrolledExperiments[ 0 ] );
+	// OverriddenExperiment experiments do not have a config, this may be irrelevant after T414572 if
+	// mw.testKitchen.getInstrument() has  notion of experiments in course
+	const { coordinator, assigned, enrolled } = firstExp.config || {
+		coordinator: 'forced',
+		assigned: firstExp.assigned,
+		enrolled: firstExp.name,
+	};
 
-	const first = growthExperiments[ 0 ];
-	const firstName = typeof first === 'string' ? first : first.name;
-	const firstExp = mw.testKitchen.getExperiment( firstName );
-	if ( !firstExp ) {
-		return null;
-	}
-
-	const assignedRaw = firstExp.getAssignedGroup();
-	if ( typeof assignedRaw !== 'string' ) {
-		return null;
-	}
-
-	const coordinator = typeof first === 'object' && first.config ? first.config.coordinator : 'custom';
-	const enrolled = typeof first === 'object' && first.config ? first.config.enrolled : firstName;
-	const assigned = assignedRaw;
-
-	// eslint-disable-next-line camelcase
-	const other_assigned = {};
-	for ( let i = 1; i < growthExperiments.length; i++ ) {
-		const exp = growthExperiments[ i ];
-		const expName = typeof exp === 'string' ? exp : exp.name;
-		const expInstance = mw.testKitchen.getExperiment( expName );
-		if ( expInstance ) {
-			const variant = expInstance.getAssignedGroup();
-			if ( typeof variant === 'string' ) {
-				// eslint-disable-next-line camelcase
-				other_assigned[ expName ] = variant;
-			}
-		}
-	}
-
+	// Drop first experiment
+	enrolledExperiments.shift();
+	const otherAssigned = enrolledExperiments.reduce( ( acc, expName ) => {
+		const experiment = mw.testKitchen.getExperiment( expName );
+		acc[ expName ] = experiment.getAssignedGroup();
+		return acc;
+	}, {} );
 	const result = { coordinator, assigned, enrolled };
-	if ( Object.keys( other_assigned ).length > 0 ) {
+	if ( Object.keys( otherAssigned ).length ) {
 		// eslint-disable-next-line camelcase
-		result.other_assigned = other_assigned;
+		result.other_assigned = otherAssigned;
 	}
 	return result;
 }
