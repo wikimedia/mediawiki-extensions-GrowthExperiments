@@ -69,6 +69,14 @@ interface IMentorManager {
 	public function getMentorshipStateForUser( UserIdentity $user ): int;
 
 	/**
+	 * Whether the user should not have a mentor (e.g. opted out or indefinitely blocked).
+	 *
+	 * @param UserIdentity $user
+	 * @return bool True if the user should not be assigned or keep a mentor
+	 */
+	public function isUserIneligibleForMentorship( UserIdentity $user ): bool;
+
+	/**
 	 * Did the user explicitly opt into mentorship at some point?
 	 *
 	 * This method allows to determine whether the user explicitly (and willingly)

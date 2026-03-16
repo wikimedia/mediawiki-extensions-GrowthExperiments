@@ -41,16 +41,9 @@ class MentorManager implements IMentorManager {
 	}
 
 	/**
-	 * Determine whether an user is ineligible for mentorship
-	 *
-	 * Users can only have mentors if they meet _all_ following criteria:
-	 * 	(1) is not opted out from mentorship
-	 *	(2) is not indefinitely blocked
-	 *
-	 * @param UserIdentity $user
-	 * @return bool True if the user should not have a mentor assigned
+	 * @inheritDoc
 	 */
-	private function isUserIneligibleForMentorship( UserIdentity $user ): bool {
+	public function isUserIneligibleForMentorship( UserIdentity $user ): bool {
 		$block = $this->userFactory->newFromUserIdentity( $user )->getBlock();
 		return $this->getMentorshipStateForUser( $user ) === self::MENTORSHIP_OPTED_OUT ||
 			( $block && $block->isIndefinite() );

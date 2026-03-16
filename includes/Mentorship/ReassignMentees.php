@@ -157,6 +157,16 @@ class ReassignMentees {
 				continue;
 			}
 
+			// T418992: Use same eligibility rules as MentorManager (T351234, onBlockIpComplete)
+			if ( $this->mentorManager->isUserIneligibleForMentorship( $mentee ) ) {
+				$this->logger->info(
+					__METHOD__ . ' dropping relationship for {mentee}, user ineligible for mentorship', [
+						'mentee' => $mentee->getName(),
+						] );
+				$this->mentorStore->dropMenteeRelationship( $mentee );
+				continue;
+			}
+
 			$changeMentor = $this->changeMentorFactory->newChangeMentor(
 				$mentee,
 				$this->performer

@@ -74,6 +74,11 @@ class StaticMentorManager implements IMentorManager {
 	}
 
 	/** @inheritDoc */
+	public function isUserIneligibleForMentorship( UserIdentity $user ): bool {
+		return false;
+	}
+
+	/** @inheritDoc */
 	public function didUserExplicitlyOptIntoMentorship( UserIdentity $user ): bool {
 		return false;
 	}

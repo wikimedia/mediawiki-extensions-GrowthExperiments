@@ -77,6 +77,9 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			->willReturn( $msg );
 		$mentorManager = $this->createMock( IMentorManager::class );
 		$mentorManager->expects( $this->exactly( count( $mentees ) ) )
+			->method( 'isUserIneligibleForMentorship' )
+			->willReturn( false );
+		$mentorManager->expects( $this->exactly( count( $mentees ) ) )
 			->method( 'getRandomAutoAssignedMentor' )
 			->willReturnMap( array_map(
 				static fn ( $el ) => [ $el, [], $newMentor ],
@@ -85,7 +88,7 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		$mentorStore = $this->createMock( MentorStore::class );
 		$mentorStore->expects( $this->once() )
 			->method( 'getMenteesByMentor' )
-			->with( $mentor, MentorStore::ROLE_PRIMARY )
+			->with( $mentor, MentorStore::ROLE_PRIMARY, true )
 			->willReturn( $mentees );
 		$changeMentor = $this->createMock( ChangeMentor::class );
 		$changeMentor->expects( $this->exactly( count( $mentees ) ) )
@@ -104,6 +107,81 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			$mentorManager,
 			$mentorStore,
 			$changeMentorFactory,
+			$context
+		);
+
+		$this->assertTrue( $reassignMentees->doReassignMentees( null, 'foo' ) );
+	}
+
+	/**
+	 * T418992: Blocked users should not receive a new mentor when their mentor quits
+	 */
+	public function testDoReassignMenteesDropsBlockedMentees() {
+		$mentor = new UserIdentityValue( 123, 'Mentor' );
+		$newMentor = new UserIdentityValue( 321, 'New Mentor' );
+		$blockedMentee = new UserIdentityValue( 1, 'Blocked Mentee' );
+		$normalMentee = new UserIdentityValue( 2, 'Normal Mentee' );
+		$mentees = [ $blockedMentee, $normalMentee ];
+
+		$menteeUser = $this->createNoOpMock( User::class, [ 'isHidden' ] );
+		$menteeUser->method( 'isHidden' )
+			->willReturn( false );
+		$userFactory = $this->createMock( UserFactory::class );
+		$userFactory->method( 'newFromUserIdentity' )
+			->willReturn( $menteeUser );
+
+		$dbw = $this->createMock( IDatabase::class );
+		$dbw->method( 'lock' )->willReturn( true );
+		$dbw->method( 'unlock' )->willReturn( true );
+
+		$msg = $this->createMock( Message::class );
+		$msg->method( 'text' )->willReturn( 'foo' );
+		$context = $this->createMock( IContextSource::class );
+		$context->expects( $this->once() )
+			->method( 'msg' )
+			->with( 'foo', $mentor->getName() )
+			->willReturn( $msg );
+
+		$mentorManager = $this->createMock( IMentorManager::class );
+		$mentorManager->method( 'isUserIneligibleForMentorship' )
+			->willReturnCallback( static function ( UserIdentity $identity ) use ( $blockedMentee ) {
+				return $identity->getName() === $blockedMentee->getName();
+			} );
+		$mentorManager->expects( $this->once() )
+			->method( 'getRandomAutoAssignedMentor' )
+			->with( $normalMentee )
+			->willReturn( $newMentor );
+
+		$mentorStore = $this->createMock( MentorStore::class );
+		$mentorStore->expects( $this->once() )
+			->method( 'getMenteesByMentor' )
+			->with( $mentor, MentorStore::ROLE_PRIMARY, true )
+			->willReturn( $mentees );
+		$mentorStore->expects( $this->once() )
+			->method( 'dropMenteeRelationship' )
+			->with( $blockedMentee );
+
+		$changeMentor = $this->createMock( ChangeMentor::class );
+		$changeMentor->expects( $this->once() )
+			->method( 'execute' )
+			->with( $newMentor, $this->anything() )
+			->willReturn( Status::newGood() );
+		$changeMentorFactory = $this->createMock( ChangeMentorFactory::class );
+		$changeMentorFactory->expects( $this->once() )
+			->method( 'newChangeMentor' )
+			->with( $normalMentee, $mentor )
+			->willReturn( $changeMentor );
+
+		$reassignMentees = new ReassignMentees(
+			new NullLogger(),
+			$dbw,
+			$mentorManager,
+			$mentorStore,
+			$changeMentorFactory,
+			$this->createNoOpMock( JobQueueGroupFactory::class ),
+			$userFactory,
+			$mentor,
+			$mentor,
 			$context
 		);
 
