@@ -71,7 +71,7 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook {
 					$learnMoreUrl = $learnMoreTitle->getCanonicalURL();
 					$linkHtml = Html::rawElement(
 						'a',
-						[ 'href' => $learnMoreUrl, 'target' => '_blank' ],
+						[ 'href' => $learnMoreUrl, 'target' => '_blank', 'class' => 'username-learn-more-link' ],
 						$learnMoreLinkText,
 					);
 					$description = $context->msg( 'growthexperiments-createacct-username-description' )->parse();
