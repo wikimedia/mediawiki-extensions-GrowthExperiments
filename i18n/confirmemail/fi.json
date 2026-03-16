@@ -8,6 +8,11 @@
 			"Samoasambia"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Käyttäjänimesi on julkinen eikä siitä voi myöhemmin tehdä tehdä yksityistä.",
+	"growthexperiments-createacct-username-learn-more": "Lisätietoja",
+	"growthexperiments-confirmemail-emaildescription": "Sähköpostiosoitetta tarvitaan käyttäjätunnuksesi palauttamiseksi, jos kadotat salasanasi tai kirjaudut sisään uudesta sijainnista tai uudella selaimella.",
+	"growthexperiments-confirmemail-email-optional": "Sähköpostiosoite",
+	"growthexperiments-confirmemail-email-recommended-flag": "(suositeltu)",
 	"growthexperiments-confirmemail-emailhelp": "Sähköpostiosoitetta tarvitaan käyttäjätunnuksesi palauttamiseksi, jos unohdat salasanasi.",
 	"growthexperiments-confirmemail-emailrecommended": "Sähköpostiosoite (suositeltava)",
 	"growthexperiments-confirmemail-emailwarning": "Ole hyvä ja etsi lähettämämme sähköposti varmentaaksesi osoitteesi.",

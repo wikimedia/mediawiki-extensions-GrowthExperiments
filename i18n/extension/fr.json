@@ -259,5 +259,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Oui, après 75 modifications au total",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Oui, après 150 modifications au total",
 	"growthexperiments-addlink-done-button": "Terminé",
-	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Le nettoyage a expiré"
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Nettoyage des horodatages passés"
 }

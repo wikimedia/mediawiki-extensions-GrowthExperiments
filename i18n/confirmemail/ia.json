@@ -4,6 +4,11 @@
 			"McDutchie"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Tu nomine de usator es public e non potera esser rendite private plus tarde.",
+	"growthexperiments-createacct-username-learn-more": "Leger plus",
+	"growthexperiments-confirmemail-emaildescription": "Le adresse de e-mail es necessari pro recuperar tu conto si tu perde le contrasigno o si tu aperi session desde un loco incognite o un nove navigator.",
+	"growthexperiments-confirmemail-email-optional": "Adresse de e-mail",
+	"growthexperiments-confirmemail-email-recommended-flag": "(recommendate)",
 	"growthexperiments-confirmemail-emailhelp": "E-mail es necessari pro recuperar tu conto si tu perde tu contrasigno.",
 	"growthexperiments-confirmemail-emailrecommended": "Adresse de e-mail (recommendate)",
 	"growthexperiments-confirmemail-emailwarning": "Per favor, cerca un e-mail de nos pro confirmar tu adresse.",

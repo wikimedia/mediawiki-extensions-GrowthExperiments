@@ -10,6 +10,11 @@
 			"ديفيد"
 		]
 	},
+	"growthexperiments-createacct-username-description": "اسم المستخدم الخاص بك عام ولا يمكن جعله خاصاً لاحقاً.",
+	"growthexperiments-createacct-username-learn-more": "معرفة المزيد",
+	"growthexperiments-confirmemail-emaildescription": "مطلوب البريد الإلكتروني لاسترداد حسابك إذا فقدت كلمة المرور أو قمت بالدخول من موقع غير مألوف أو متصفح جديد.",
+	"growthexperiments-confirmemail-email-optional": "عنوان البريد الإلكتروني",
+	"growthexperiments-confirmemail-email-recommended-flag": "(موصى به)",
 	"growthexperiments-confirmemail-emailhelp": "البريد الإلكتروني مطلوب لاستعادة حسابك إذا فقدت كلمة مرورك.",
 	"growthexperiments-confirmemail-emailrecommended": "عنوان البريد الإلكتروني (مستحسن)",
 	"growthexperiments-confirmemail-emailwarning": "من فضلك، {{GENDER:|ابحث|ابحثي}} في بريدك الإلكتروني عن رسالة صادرة منا للتحقق من عنوانك.",

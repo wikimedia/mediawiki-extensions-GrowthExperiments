@@ -8,6 +8,11 @@
 			"ValeJappo"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Il tuo nome utente è pubblico e non potrà essere reso privato in seguito.",
+	"growthexperiments-createacct-username-learn-more": "Ulteriori informazioni",
+	"growthexperiments-confirmemail-emaildescription": "È necessario fornire un indirizzo email per recuperare l'utenza in caso di smarrimento della password o di accesso da una posizione sconosciuta o tramite un browser diverso.",
+	"growthexperiments-confirmemail-email-optional": "Indirizzo email",
+	"growthexperiments-confirmemail-email-recommended-flag": "(raccomandato)",
 	"growthexperiments-confirmemail-emailhelp": "Un indirizzo email è richiesto per poter recuperare la tua utenza se perdi la password.",
 	"growthexperiments-confirmemail-emailrecommended": "Indirizzo di posta elettronica (raccomandato)",
 	"growthexperiments-confirmemail-emailwarning": "Per favore controlla se ti è arrivata un'email da parte nostra per verificare il tuo indirizzo di posta elettronica.",
