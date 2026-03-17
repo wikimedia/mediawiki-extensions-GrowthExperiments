@@ -184,7 +184,7 @@ class ReviseToneInitializer {
 				// depend on the exact timing of the initialization here.
 				action.select( ve.init.target.surface, false );
 				// Focus the tone action and scroll it into view.
-				ve.init.target.editcheckController.ensureActionIsShown( action );
+				ve.init.target.editcheckController.ensureActionIsShown( action, true );
 			}
 		} );
 		experiment.send( 'page-visited', {
