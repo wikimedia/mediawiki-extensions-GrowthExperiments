@@ -256,7 +256,7 @@ $specialPageAliases['lv'] = [
 $specialPageAliases['nl'] = [
 	'WelcomeSurvey' => [ 'WelkomEnquête' ],
 	'Homepage' => [ 'Thuispagina' ],
-	'Impact' => [ 'Gevolg' ],
+	'Impact' => [ 'Impact', 'Gevolg' ],
 	'ClaimMentee' => [ 'ClaimMentee' ],
 ];
 
