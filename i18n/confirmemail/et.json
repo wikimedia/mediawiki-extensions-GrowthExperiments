@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pikne"
+			"Pikne",
+			"Rivoz"
 		]
 	},
+	"growthexperiments-createacct-username-learn-more": "Lisateave",
+	"growthexperiments-confirmemail-email-optional": "E-posti aadress",
+	"growthexperiments-confirmemail-email-recommended-flag": "(soovitatav)",
 	"growthexperiments-confirmemail-emailhelp": "E-posti aadress on vajalik, et konto tagasi saada, kui kaotad parooli.",
 	"growthexperiments-confirmemail-emailrecommended": "E-posti aadress (soovituslik)",
 	"growthexperiments-confirmemail-emailwarning": "Saadame sulle e-kirja e-posti aadressi kinnitamiseks."
