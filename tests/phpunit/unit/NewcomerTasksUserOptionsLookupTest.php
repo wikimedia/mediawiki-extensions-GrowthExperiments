@@ -203,8 +203,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
-		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ 'copyedit', 'revise-tone' ], $lookup->getTaskTypeFilter( $user2 ) );
+		$this->assertSame( [ 'revise-tone', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
+		$this->assertSame( [ 'revise-tone' ], $lookup->getTaskTypeFilter( $user2 ) );
 	}
 
 	/**

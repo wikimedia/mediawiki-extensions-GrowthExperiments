@@ -175,14 +175,16 @@ class NewcomerTasksUserOptionsLookup {
 		} else {
 			$map += [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];
 		}
+		if ( $this->areReviseToneRecommendationsEnabled( $user ) ) {
+			$map += [ 'copyedit' => ReviseToneTaskTypeHandler::TASK_TYPE_ID ];
+		} else {
+			$map += [ ReviseToneTaskTypeHandler::TASK_TYPE_ID => 'copyedit' ];
+		}
 		if ( !$this->areImageRecommendationsEnabled() ) {
 			$map += [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => false ];
 		}
 		if ( !$this->areSectionImageRecommendationsEnabled( $user ) ) {
 			$map += [ SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID => false ];
-		}
-		if ( !$this->areReviseToneRecommendationsEnabled( $user ) ) {
-			$map += [ ReviseToneTaskTypeHandler::TASK_TYPE_ID => false ];
 		}
 		return $map;
 	}

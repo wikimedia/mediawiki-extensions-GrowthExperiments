@@ -9,6 +9,7 @@
 ( function () {
 	const Utils = require( '../utils/Utils.js' ),
 		OLD_LINK_TASK_TYPE = 'links',
+		OLD_COPYEDIT_TASK_TYPE = 'copyedit',
 		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
 		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
 		SECTION_IMAGE_RECOMMENDATION_TASK_TYPE = 'section-image-recommendation',
@@ -136,14 +137,16 @@
 		} else {
 			map[ LINK_RECOMMENDATION_TASK_TYPE ] = taskTypeOrFalse( OLD_LINK_TASK_TYPE );
 		}
+		if ( areReviseToneRecommendationsEnabled() ) {
+			map[ OLD_COPYEDIT_TASK_TYPE ] = REVISE_TONE_TASK_TYPE;
+		} else {
+			map[ REVISE_TONE_TASK_TYPE ] = taskTypeOrFalse( OLD_COPYEDIT_TASK_TYPE );
+		}
 		if ( !areImageRecommendationsEnabled() ) {
 			map[ IMAGE_RECOMMENDATION_TASK_TYPE ] = false;
 		}
 		if ( !areSectionImageRecommendationsEnabled() ) {
 			map[ SECTION_IMAGE_RECOMMENDATION_TASK_TYPE ] = false;
-		}
-		if ( !areReviseToneRecommendationsEnabled() ) {
-			map[ REVISE_TONE_TASK_TYPE ] = false;
 		}
 		return map;
 	}

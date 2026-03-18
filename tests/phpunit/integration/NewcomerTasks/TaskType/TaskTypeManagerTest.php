@@ -64,7 +64,7 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
 		$this->setMaxEditsTaskIsAvailableInConfig( '20' );
 		$result = $sut->getTaskTypesForUser( $user );
-		$this->assertSame( [ 'copyedit', 'revise-tone' ], $result );
+		$this->assertSame( [ 'revise-tone' ], $result );
 	}
 
 	private function createUserWithEdits( ?int $editCount = 10 ): User {
