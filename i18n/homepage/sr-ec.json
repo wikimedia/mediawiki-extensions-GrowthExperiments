@@ -147,6 +147,8 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|Види}} остале разговоре {{GENDER:$1|ментора|менторке}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Постављање}} питања {{GENDER:$1|ментору|менторки}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Када поставите питање, оно се <strong>јавно објављује</strong> под {{GENDER:$2|Вашим}} корисничким именом ($2) на $3 где ће га {{GENDER:$1|ментор|менторка}} пронаћи и одговорити на њега.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away": "{{GENDER:$2|{{GENDER:|Ваш}} тренутни ментор|Ваша тренутна менторка}}, „[[User:$1|$1]]”, је {{GENDER:$2|одсутан|одсутна}} до $3.",
+	"growthexperiments-homepage-mentorship-questionreview-header-away-no-timestamp": "{{GENDER:$2|{{GENDER:|Ваш}} тренутни ментор|Ваша тренутна менторка}}, „[[User:$1|$1]]”, је тренутно {{GENDER:$2|одсутан|одсутна}}",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|страници}} за разговор {{GENDER:$1|ментора|менторке}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Ваше}} питање се сада налази на страници за разговор {{GENDER:$1|ментора|менторке}}, где ће {{GENDER:$1|он|она}} одговорити на њега чим буде {{GENDER:$1|могао|могла}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Прикажи {{GENDER:$2|моје}} питање на страници за разговор {{GENDER:$1|ментора|менторке}}.",
