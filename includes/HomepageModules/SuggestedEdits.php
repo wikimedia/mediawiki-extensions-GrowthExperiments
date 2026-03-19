@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
-use GrowthExperiments\NewcomerTasks\ReviseToneTaskSetFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -471,9 +470,6 @@ class SuggestedEdits extends BaseModule {
 			$tasks = $this->linkRecommendationFilter->filter( $tasks );
 			$tasks = $this->imageRecommendationFilter->filter( $tasks );
 			$tasks = $this->protectionFilter->filter( $tasks );
-			// TODO: Remove after end of ReviseTone A/B test: T407528, T409466
-			$reviseToneFilter = new ReviseToneTaskSetFilter();
-			$tasks = $reviseToneFilter->filter( $tasks );
 		}
 		$this->tasks = $tasks;
 		$this->resetTaskCache( $user, $taskSetFilters, $suggesterOptions );
