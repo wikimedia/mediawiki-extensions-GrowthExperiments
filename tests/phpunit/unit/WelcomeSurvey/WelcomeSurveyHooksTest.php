@@ -83,7 +83,7 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 			[
 				'returnTo' => 'Special:WelcomeSurvey',
 				// phpcs:ignore Generic.Files.LineLength.TooLong
-				'returnToQuery' => 'returnto=Foo%3ABar&returntoquery=baz%3Dfizz%26accountJustCreated%3D1&group=control&_welcomesurveytoken=123',
+				'returnToQuery' => 'returnto=Foo%3ABar&returntoquery=baz%3Dfizz&group=control&_welcomesurveytoken=123&accountJustCreated=1',
 				'returnVal' => false,
 			],
 		];

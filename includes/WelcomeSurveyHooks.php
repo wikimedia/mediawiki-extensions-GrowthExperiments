@@ -185,6 +185,20 @@ class WelcomeSurveyHooks implements
 		$welcomeSurvey->saveGroup( $group );
 	}
 
+	/**
+	 * This uses query parameters to trigger onBeforePageDisplay to signal the client
+	 * The theory is that CentralAuthPostLoginRedirect fires once for each account creation and
+	 * $type is 'signup' iff this was a local, non-autocreate sign-up. This also fires for temp accounts.
+	 */
+	private function addAccountJustCreatedToQuery( string $query ): string {
+		if ( $query === '' ) {
+			$query = 'accountJustCreated=1';
+		} else {
+			$query .= '&accountJustCreated=1';
+		}
+		return $query;
+	}
+
 	/** @inheritDoc */
 	public function onCentralAuthPostLoginRedirect(
 		string &$returnTo, string &$returnToQuery, bool $stickHTTPS, string $type, string &$injectedHtml
@@ -193,31 +207,21 @@ class WelcomeSurveyHooks implements
 			return true;
 		}
 
-		// This uses query parameters to trigger onBeforePageDisplay to signal the client
-		// The theory is that CentralAuthPostLoginRedirect fires once for each account creation and
-		//  $type is 'signup' iff this was a local, non-autocreate sign-up.  This also fires for temp accounts.
-		// NOTE: this is here to ensure the param is added to the returntoquery for cases where the WS redirection is
-		// skipped, which are: !$this->shouldShowWelcomeSurvey(...) and $this->userWasEditing(...)
-		if ( $returnTo !== '' ) {
-			if ( $returnToQuery === '' ) {
-				$returnToQuery = 'accountJustCreated=1';
-			} else {
-				$returnToQuery .= '&accountJustCreated=1';
-			}
-		}
-
 		$context = RequestContext::getMain();
 		if ( !$this->shouldShowWelcomeSurvey( $context ) ) {
+			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
 			return true;
 		}
 
 		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $context );
 		$group = $welcomeSurvey->getGroup();
 		if ( $group === false ) {
+			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
 			return true;
 		}
 
 		if ( $this->userWasEditing( $returnTo, $returnToQuery ) ) {
+			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
 			return true;
 		}
 
@@ -225,15 +229,14 @@ class WelcomeSurveyHooks implements
 		$oldReturnToQuery = $returnToQuery;
 		$returnToQueryArray = $welcomeSurvey->getRedirectUrlQuery( $group, $oldReturnTo, $oldReturnToQuery );
 		if ( $returnToQueryArray === false ) {
+			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
 			return true;
 		}
 		// Ensure accountJustCreated query param is added directly to the URL instead of to the returntoquery param
 		// on WS redirections
-		if ( $returnTo === '' ) {
-			$returnToQueryArray += [
-				'accountJustCreated' => '1',
-			];
-		}
+		$returnToQueryArray += [
+			'accountJustCreated' => '1',
+		];
 
 		$returnTo = $this->specialPageFactory->getTitleForAlias( 'WelcomeSurvey' )->getPrefixedText();
 		$returnToQuery = wfArrayToCgi( $returnToQueryArray );
