@@ -9,6 +9,11 @@
 			"Siebrand"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Uw gebruikersnaam is openbaar en kan later niet privé worden gemaakt.",
+	"growthexperiments-createacct-username-learn-more": "Meer lezen",
+	"growthexperiments-confirmemail-emaildescription": "U hebt een e-mailadres nodig om uw account te herstellen als u uw wachtwoord kwijt bent of als u aanmeldt vanaf een onbekende locatie of met een nieuwe browser.",
+	"growthexperiments-confirmemail-email-optional": "E-mailadres",
+	"growthexperiments-confirmemail-email-recommended-flag": "(aanbevolen)",
 	"growthexperiments-confirmemail-emailhelp": "E-mail is vereist om uw account te herstellen als u uw wachtwoord kwijtraakt.",
 	"growthexperiments-confirmemail-emailrecommended": "E-mailadres (aanbevolen)",
 	"growthexperiments-confirmemail-emailwarning": "Kijk alsjeblieft naar een e-mail van ons om je adres te bevestigen",
