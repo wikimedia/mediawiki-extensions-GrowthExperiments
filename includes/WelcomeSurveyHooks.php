@@ -195,13 +195,15 @@ class WelcomeSurveyHooks implements
 
 		// This uses query parameters to trigger onBeforePageDisplay to signal the client
 		// The theory is that CentralAuthPostLoginRedirect fires once for each account creation and
-		//   $type is 'signup' iff this was a local, non-autocreate sign-up.  This probably doesn't fire
-		//   for temp accounts, but just in case the client can check mw.config.get( 'wgUserIsTemp' )
-		// NOTE: this is here because the return false; below prevents other extensions from registering handlers
-		if ( $returnToQuery === '' ) {
-			$returnToQuery = 'accountJustCreated=1';
-		} else {
-			$returnToQuery .= '&accountJustCreated=1';
+		//  $type is 'signup' iff this was a local, non-autocreate sign-up.  This also fires for temp accounts.
+		// NOTE: this is here to ensure the param is added to the returntoquery for cases where the WS redirection is
+		// skipped, which are: !$this->shouldShowWelcomeSurvey(...) and $this->userWasEditing(...)
+		if ( $returnTo !== '' ) {
+			if ( $returnToQuery === '' ) {
+				$returnToQuery = 'accountJustCreated=1';
+			} else {
+				$returnToQuery .= '&accountJustCreated=1';
+			}
 		}
 
 		$context = RequestContext::getMain();
@@ -224,6 +226,13 @@ class WelcomeSurveyHooks implements
 		$returnToQueryArray = $welcomeSurvey->getRedirectUrlQuery( $group, $oldReturnTo, $oldReturnToQuery );
 		if ( $returnToQueryArray === false ) {
 			return;
+		}
+		// Ensure accountJustCreated query param is added directly to the URL instead of to the returntoquery param
+		// on WS redirections
+		if ( $returnTo === '' ) {
+			$returnToQueryArray += [
+				'accountJustCreated' => '1',
+			];
 		}
 
 		$returnTo = $this->specialPageFactory->getTitleForAlias( 'WelcomeSurvey' )->getPrefixedText();
