@@ -188,9 +188,9 @@ class WelcomeSurveyHooks implements
 	/** @inheritDoc */
 	public function onCentralAuthPostLoginRedirect(
 		string &$returnTo, string &$returnToQuery, bool $stickHTTPS, string $type, string &$injectedHtml
-	) {
+	): bool {
 		if ( $type !== 'signup' ) {
-			return;
+			return true;
 		}
 
 		// This uses query parameters to trigger onBeforePageDisplay to signal the client
@@ -208,24 +208,24 @@ class WelcomeSurveyHooks implements
 
 		$context = RequestContext::getMain();
 		if ( !$this->shouldShowWelcomeSurvey( $context ) ) {
-			return;
+			return true;
 		}
 
 		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $context );
 		$group = $welcomeSurvey->getGroup();
 		if ( $group === false ) {
-			return;
+			return true;
 		}
 
 		if ( $this->userWasEditing( $returnTo, $returnToQuery ) ) {
-			return;
+			return true;
 		}
 
 		$oldReturnTo = $returnTo;
 		$oldReturnToQuery = $returnToQuery;
 		$returnToQueryArray = $welcomeSurvey->getRedirectUrlQuery( $group, $oldReturnTo, $oldReturnToQuery );
 		if ( $returnToQueryArray === false ) {
-			return;
+			return true;
 		}
 		// Ensure accountJustCreated query param is added directly to the URL instead of to the returntoquery param
 		// on WS redirections
