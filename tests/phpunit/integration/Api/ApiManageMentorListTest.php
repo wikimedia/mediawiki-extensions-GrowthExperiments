@@ -214,7 +214,7 @@ class ApiManageMentorListTest extends ApiTestCase {
 		);
 	}
 
-	private function provideTestMentorStatus() {
+	public static function provideTestMentorStatus() {
 		return [
 			[ MentorStatusManager::STATUS_AWAY, '20110425184738', [
 				'geaction' => 'add',

@@ -34,7 +34,7 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	public function provideTestGetTopics(): iterable {
+	public static function provideTestGetTopics(): iterable {
 		if ( class_exists( ArticleTopicFiltersRegistry::class ) ) {
 			# Test case requires the WikimediaMessages extension
 			yield 'All WM topics recognized' => [

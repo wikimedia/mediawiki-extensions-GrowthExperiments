@@ -112,7 +112,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			->getMockForAbstractClass();
 	}
 
-	public function provideTestAwayDisclaimer() {
+	public static function provideTestAwayDisclaimer() {
 		return [
 			'Mentor is away' => [
 				true,
