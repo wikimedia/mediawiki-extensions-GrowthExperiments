@@ -154,6 +154,9 @@ class VariantHooks implements
 		) {
 			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
 			$injectedHtml = '';
+			$returnToQueryArray = wfCgiToArray( $returnToQuery );
+			$returnToQueryArray['accountJustCreated'] = 1;
+			$returnToQuery = wfArrayToCgi( $returnToQueryArray );
 			return false;
 		}
 	}

@@ -185,18 +185,10 @@ class WelcomeSurveyHooks implements
 		$welcomeSurvey->saveGroup( $group );
 	}
 
-	/**
-	 * This uses query parameters to trigger onBeforePageDisplay to signal the client
-	 * The theory is that CentralAuthPostLoginRedirect fires once for each account creation and
-	 * $type is 'signup' iff this was a local, non-autocreate sign-up. This also fires for temp accounts.
-	 */
 	private function addAccountJustCreatedToQuery( string $query ): string {
-		if ( $query === '' ) {
-			$query = 'accountJustCreated=1';
-		} else {
-			$query .= '&accountJustCreated=1';
-		}
-		return $query;
+		$asArray = wfCgiToArray( $query );
+		$asArray['accountJustCreated'] = 1;
+		return wfArrayToCgi( $asArray );
 	}
 
 	/** @inheritDoc */
@@ -227,6 +219,11 @@ class WelcomeSurveyHooks implements
 
 		$oldReturnTo = $returnTo;
 		$oldReturnToQuery = $returnToQuery;
+		if ( str_contains( $oldReturnToQuery, 'accountJustCreated' ) ) {
+			$asArray = wfCgiToArray( $oldReturnToQuery );
+			unset( $asArray['accountJustCreated'] );
+			$oldReturnToQuery = wfArrayToCgi( $asArray );
+		}
 		$returnToQueryArray = $welcomeSurvey->getRedirectUrlQuery( $group, $oldReturnTo, $oldReturnToQuery );
 		if ( $returnToQueryArray === false ) {
 			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );

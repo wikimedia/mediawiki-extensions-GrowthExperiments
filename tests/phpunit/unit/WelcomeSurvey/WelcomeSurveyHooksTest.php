@@ -55,10 +55,46 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 			],
 		];
 
+		yield 'welcome survey disabled, with pre-existing accountJustCreated' => [
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
+				'type' => 'signup',
+			],
+			[
+				'config' => [
+					'WelcomeSurveyEnabled' => false,
+				],
+			],
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
+				'returnVal' => true,
+			],
+		];
+
 		yield 'temp user' => [
 			[
 				'returnTo' => 'Foo:Bar',
 				'returnToQuery' => 'baz=fizz',
+				'type' => 'signup',
+			],
+			[
+				'user' => [
+					'isTemp' => true,
+				],
+			],
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
+				'returnVal' => true,
+			],
+		];
+
+		yield 'temp user, with pre-existing accountJustCreated' => [
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
 				'type' => 'signup',
 			],
 			[
@@ -88,10 +124,40 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 			],
 		];
 
+		yield 'signup with pre-existing returnTo and pre-existing accountJustCreated' => [
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
+				'type' => 'signup',
+			],
+			[],
+			[
+				'returnTo' => 'Special:WelcomeSurvey',
+				// phpcs:ignore Generic.Files.LineLength.TooLong
+				'returnToQuery' => 'returnto=Foo%3ABar&returntoquery=baz%3Dfizz&group=control&_welcomesurveytoken=123&accountJustCreated=1',
+				'returnVal' => false,
+			],
+		];
+
 		yield 'signup with no returnTo' => [
 			[
 				'returnTo' => '',
 				'returnToQuery' => 'baz=fizz',
+				'type' => 'signup',
+			],
+			[],
+			[
+				'returnTo' => 'Special:WelcomeSurvey',
+				// phpcs:ignore Generic.Files.LineLength.TooLong
+				'returnToQuery' => 'returnto=&returntoquery=baz%3Dfizz&group=control&_welcomesurveytoken=123&accountJustCreated=1',
+				'returnVal' => false,
+			],
+		];
+
+		yield 'signup with no returnTo and pre-existing accountJustCreated' => [
+			[
+				'returnTo' => '',
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
 				'type' => 'signup',
 			],
 			[],
