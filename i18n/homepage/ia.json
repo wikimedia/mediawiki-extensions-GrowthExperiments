@@ -364,6 +364,7 @@
 	"growthexperiments-addlink-context-button-reject": "No",
 	"growthexperiments-addlink-context-button-help": "Obtener adjuta pro modificar",
 	"growthexperiments-addlink-context-button-next": "Sequente",
+	"growthexperiments-addlink-context-button-prev": "Precedente",
 	"growthexperiments-addlink-context-button-show-suggestion": "Monstrar suggestion de ligamine",
 	"growthexperiments-addlink-rejectiondialog-title": "Proque non es isto un bon ligamine?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Tu}} responsas meliora futur suggestiones.",

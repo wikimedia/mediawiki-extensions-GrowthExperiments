@@ -347,6 +347,7 @@
 	"growthexperiments-addlink-context-button-reject": "아니오",
 	"growthexperiments-addlink-context-button-help": "편집 도움 받기",
 	"growthexperiments-addlink-context-button-next": "다음",
+	"growthexperiments-addlink-context-button-prev": "이전",
 	"growthexperiments-addlink-context-button-show-suggestion": "링크 제안 표시",
 	"growthexperiments-addlink-rejectiondialog-title": "이것이 좋은 링크가 아닌 이유는 무엇입니까?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|여러분의}} 답변은 추가 제안 개선에 사용됩니다.",

@@ -369,6 +369,7 @@
 	"growthexperiments-addlink-context-button-reject": "Xeyr",
 	"growthexperiments-addlink-context-button-help": "Redaktə üçün kömək al",
 	"growthexperiments-addlink-context-button-next": "Sonrakı",
+	"growthexperiments-addlink-context-button-prev": "Əvvəlki",
 	"growthexperiments-addlink-context-button-show-suggestion": "Keçid tövsiyəsini göstər",
 	"growthexperiments-addlink-rejectiondialog-title": "Bu niyə uyğun bir keçid deyil?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Cavablarınız}} gələcəkdəki tövsiyələri inkişaf etdirir.",

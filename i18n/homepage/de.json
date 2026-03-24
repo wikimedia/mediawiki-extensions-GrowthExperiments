@@ -396,6 +396,7 @@
 	"growthexperiments-addlink-context-button-reject": "Nein",
 	"growthexperiments-addlink-context-button-help": "Hilfe bei der Bearbeitung erhalten",
 	"growthexperiments-addlink-context-button-next": "Nächster",
+	"growthexperiments-addlink-context-button-prev": "Vorherige",
 	"growthexperiments-addlink-context-button-show-suggestion": "Zeige Link-Vorschlag",
 	"growthexperiments-addlink-rejectiondialog-title": "Warum ist das kein guter Link?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Deine}} Antworten können zukünftige Vorschläge verbessern.",
