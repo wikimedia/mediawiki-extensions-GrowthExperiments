@@ -61,6 +61,7 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook {
 			$formDescriptor['username']['label-message'] = 'userlogin-yourname';
 			$formDescriptor['username']['description-message'] =
 				'growthexperiments-createacct-username-description';
+			$formDescriptor['username']['help-message'] = null;
 			if ( !$context->msg( 'createacct-helpusername-url' )->isDisabled() ) {
 				$learnMoreLinkText = $context->msg(
 					'growthexperiments-createacct-username-learn-more',
