@@ -350,6 +350,7 @@
 	"growthexperiments-addlink-context-button-reject": "No",
 	"growthexperiments-addlink-context-button-help": "Ricevi aiuto nel contribuire",
 	"growthexperiments-addlink-context-button-next": "Successivo",
+	"growthexperiments-addlink-context-button-prev": "Precedente",
 	"growthexperiments-addlink-context-button-show-suggestion": "Mostra i collegamenti suggeriti",
 	"growthexperiments-addlink-rejectiondialog-title": "Perché questo non è un buon collegamento?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Le tue}} risposte aiuteranno a migliorare i suggerimenti futuri.",

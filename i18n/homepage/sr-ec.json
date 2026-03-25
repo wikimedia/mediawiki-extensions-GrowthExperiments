@@ -321,6 +321,7 @@
 	"growthexperiments-addlink-context-button-reject": "Не",
 	"growthexperiments-addlink-context-button-help": "Потражите помоћ са уређивањем",
 	"growthexperiments-addlink-context-button-next": "Следеће",
+	"growthexperiments-addlink-context-button-prev": "Претходно",
 	"growthexperiments-addlink-context-button-show-suggestion": "Прикажи предлог везе",
 	"growthexperiments-addlink-rejectiondialog-title": "Зашто ово није добра веза?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Ваши}} одговори унапређују будуће предлоге.",

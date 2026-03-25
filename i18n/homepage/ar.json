@@ -390,6 +390,7 @@
 	"growthexperiments-addlink-context-button-reject": "لا",
 	"growthexperiments-addlink-context-button-help": "{{GENDER:|احصل|احصلي}} على المساعدة في التحرير",
 	"growthexperiments-addlink-context-button-next": "التالي",
+	"growthexperiments-addlink-context-button-prev": "السابق",
 	"growthexperiments-addlink-context-button-show-suggestion": "إظهار اقتراح الروايط",
 	"growthexperiments-addlink-rejectiondialog-title": "لماذا هذا الرابط غير جيّد؟",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|إجاباتك}} ستُحسّن الاقتراحات المستقبلية.",
