@@ -451,6 +451,12 @@ class SpecialHomepage extends UnlistedSpecialPage {
 				'action_source' => 'Suggested-Edits-1',
 				'action_subtype' => 'revise-tone-card',
 			] );
+		} elseif ( $taskTypeId === 'copyedit' ) {
+			$this->experimentInteractionLogger->log( 'click', [
+				'instrument_name' => 'Copyedit homepage card click',
+				'action_source' => 'Suggested-Edits-1',
+				'action_subtype' => 'copyedit-card',
+			] );
 		}
 		$this->getOutput()->redirect(
 			$title->getFullUrlForRedirect( $redirectParams )
