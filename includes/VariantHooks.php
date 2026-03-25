@@ -132,35 +132,6 @@ class VariantHooks implements
 		}
 	}
 
-	/**
-	 * CentralAuth-compatible version of onPostLoginRedirect().
-	 * @param string &$returnTo
-	 * @param string &$returnToQuery
-	 * @param bool $stickHTTPS
-	 * @param string $type
-	 * @param string &$injectedHtml
-	 * @return bool|void
-	 */
-	public function onCentralAuthPostLoginRedirect(
-		string &$returnTo, string &$returnToQuery, bool $stickHTTPS, string $type, string &$injectedHtml
-	) {
-		if ( $type !== 'signup' ) {
-			return;
-		}
-
-		$campaign = $this->campaignLoader->getCampaign();
-		if ( $this->campaignConfig->isGrowthCampaign( $campaign )
-			&& $this->campaignConfig->shouldSkipWelcomeSurvey( $campaign )
-		) {
-			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
-			$injectedHtml = '';
-			$returnToQueryArray = wfCgiToArray( $returnToQuery );
-			$returnToQueryArray['accountJustCreated'] = 1;
-			$returnToQuery = wfArrayToCgi( $returnToQueryArray );
-			return false;
-		}
-	}
-
 	/** @inheritDoc */
 	public function onSkinAddFooterLinks( Skin $skin, string $key, array &$footerItems ) {
 		$context = $skin->getContext();

@@ -475,7 +475,6 @@
 			"mentor"
 		],
 		"CentralAuthPostLoginRedirect": [
-			"variant",
 			"welcomeSurvey"
 		],
 		"ChangesListSpecialPageStructuredFilters": "mentorfilters",

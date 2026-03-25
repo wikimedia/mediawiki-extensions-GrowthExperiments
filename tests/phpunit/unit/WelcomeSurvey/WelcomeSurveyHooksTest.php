@@ -168,6 +168,46 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 				'returnVal' => false,
 			],
 		];
+
+		yield 'growth campaign' => [
+			[
+				'returnTo' => 'Main Page',
+				'returnToQuery' => 'baz=fizz',
+				'type' => 'signup',
+			],
+			[
+				'campaign' => [
+					'isGrowthCampaign' => true,
+					'shouldSkipWelcomeSurvey' => true,
+				],
+			],
+			[
+				'returnTo' => 'Special:Homepage',
+				// phpcs:ignore Generic.Files.LineLength.TooLong
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
+				'returnVal' => false,
+			],
+		];
+
+		yield 'growth campaign and pre-existing accountJustCreated' => [
+			[
+				'returnTo' => 'Main Page',
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
+				'type' => 'signup',
+			],
+			[
+				'campaign' => [
+					'isGrowthCampaign' => true,
+					'shouldSkipWelcomeSurvey' => true,
+				],
+			],
+			[
+				'returnTo' => 'Special:Homepage',
+				// phpcs:ignore Generic.Files.LineLength.TooLong
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
+				'returnVal' => false,
+			],
+		];
 	}
 
 	/**
@@ -232,9 +272,20 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 		$specialPageFactory = $this->createMock( SpecialPageFactory::class );
 		$welcomeSurveyTitle = $this->createMock( Title::class );
 		$welcomeSurveyTitle->method( 'getPrefixedText' )->willReturn( 'Special:WelcomeSurvey' );
-		$specialPageFactory->method( 'getTitleForAlias' )->willReturn( $welcomeSurveyTitle );
+		$homepageTitle = $this->createMock( Title::class );
+		$homepageTitle->method( 'getPrefixedText' )->willReturn( 'Special:Homepage' );
+		$specialPageFactory->method( 'getTitleForAlias' )->willReturnMap( [
+			[ 'Homepage', $homepageTitle ],
+			[ 'WelcomeSurvey', $welcomeSurveyTitle ],
+		] );
 
 		$campaignConfig = $this->createMock( CampaignConfig::class );
+		$campaignConfig->method( 'isGrowthCampaign' )->willReturn(
+			$overrides['campaign']['isGrowthCampaign'] ?? false
+		);
+		$campaignConfig->method( 'shouldSkipWelcomeSurvey' )->willReturn(
+			$overrides['campaign']['shouldSkipWelcomeSurvey'] ?? false
+		);
 		$campaignLoader = $this->createMock( CampaignLoader::class );
 		return new WelcomeSurveyHooks(
 			$config,

@@ -199,6 +199,15 @@ class WelcomeSurveyHooks implements
 			return true;
 		}
 
+		$campaign = $this->campaignLoader->getCampaign();
+		if ( $this->campaignConfig->isGrowthCampaign( $campaign )
+			&& $this->campaignConfig->shouldSkipWelcomeSurvey( $campaign )
+		) {
+			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
+			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
+			return false;
+		}
+
 		$context = RequestContext::getMain();
 		if ( !$this->shouldShowWelcomeSurvey( $context ) ) {
 			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
