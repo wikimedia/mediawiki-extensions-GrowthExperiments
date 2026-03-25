@@ -26,17 +26,15 @@ class QuestionPosterTest extends MediaWikiIntegrationTestCase {
 		bool $postOnTop,
 		string $body,
 		string $sectionHeader,
-		?array $parentRevisionSpec,
+		?array $parentRevision,
 		?string $expectedResult
 	) {
-		if ( $parentRevisionSpec !== null ) {
-			[ $text, $visibility ] = $parentRevisionSpec;
+		if ( $parentRevision !== null ) {
+			[ $text, $visibility ] = $parentRevision;
 			$title = $this->makeMockTitle( 'QuestionPosterTest' );
 			$parentRevision = new MutableRevisionRecord( $title );
 			$parentRevision->setContent( SlotRecord::MAIN, new WikitextContent( $text ) );
 			$parentRevision->setVisibility( $visibility );
-		} else {
-			$parentRevision = null;
 		}
 
 		$questionPoster = $this->getMockBuilder( QuestionPoster::class )

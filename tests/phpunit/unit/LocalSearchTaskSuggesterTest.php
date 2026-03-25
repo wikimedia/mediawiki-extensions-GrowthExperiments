@@ -90,46 +90,46 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$error = Status::newFatal( 'foo' );
 		return [
 			'success' => [
-				'search term' => 'hastemplate:foo morelikethis:bar',
+				'searchTerm' => 'hastemplate:foo morelikethis:bar',
 				'topic' => 'bar',
 				'limit' => 10,
 				'offset' => 0,
-				'search results' => $searchResult,
-				'expected result' => $searchResult,
+				'searchResults' => $searchResult,
+				'expectedResult' => $searchResult,
 			],
 			'success, no topics' => [
-				'search term' => 'hastemplate:foo',
+				'searchTerm' => 'hastemplate:foo',
 				'topic' => null,
 				'limit' => 10,
 				'offset' => 0,
-				'search results' => $searchResult,
-				'expected result' => $searchResult,
+				'searchResults' => $searchResult,
+				'expectedResult' => $searchResult,
 			],
 			'success, wrapped' => [
-				'search term' => 'hastemplate:foo morelikethis:bar',
+				'searchTerm' => 'hastemplate:foo morelikethis:bar',
 				'topic' => 'bar',
 				'limit' => 10,
 				'offset' => 0,
-				'search results' => static function ( $testCase ) use ( $searchResult ) {
+				'searchResults' => static function ( $testCase ) use ( $searchResult ) {
 					return Status::newGood( $searchResult( $testCase ) );
 				},
-				'expected result' => $searchResult,
+				'expectedResult' => $searchResult,
 			],
 			'error' => [
-				'search term' => 'hastemplate:foo morelikethis:bar',
+				'searchTerm' => 'hastemplate:foo morelikethis:bar',
 				'topic' => 'bar',
 				'limit' => 10,
 				'offset' => 0,
-				'search results' => $error,
-				'expected result' => $error,
+				'searchResults' => $error,
+				'expectedResult' => $error,
 			],
 			'disabled' => [
-				'search term' => 'hastemplate:foo morelikethis:bar',
+				'searchTerm' => 'hastemplate:foo morelikethis:bar',
 				'topic' => 'bar',
 				'limit' => 10,
 				'offset' => 0,
-				'search results' => null,
-				'expected result' => new ApiRawMessage( '', 'grothexperiments-no-fulltext-search' ),
+				'searchResults' => null,
+				'expectedResult' => new ApiRawMessage( '', 'grothexperiments-no-fulltext-search' ),
 			],
 		];
 	}

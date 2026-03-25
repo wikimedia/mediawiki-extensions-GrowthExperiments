@@ -46,8 +46,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideSuggest
-	 * @param array[] $taskTypeSpec All configured task types on the server. See getTaskTypes().
-	 * @param array[] $topicSpec All configured topics on the server. See getTopics().
+	 * @param array[] $taskTypes All configured task types on the server. See getTaskTypes().
+	 * @param array[] $topics All configured topics on the server. See getTopics().
 	 * @param array $requests [ [ 'params' => [...], 'response' => ... ], ... ] where params is
 	 *   a list of asserted query parameters (null means asserted to be not present), response is
 	 *   JSON data (in PHP form) or a StatusValue with errors
@@ -56,11 +56,11 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @param TaskSet|StatusValue $expectedTaskSet
 	 */
 	public function testSuggest(
-		$taskTypeSpec, $topicSpec, $requests, $taskSetFilters, $limit, $expectedTaskSet
+		$taskTypes, $topics, $requests, $taskSetFilters, $limit, $expectedTaskSet
 	) {
 		$user = new UserIdentityValue( 1, 'Foo' );
-		$taskTypes = self::getTaskTypes( $taskTypeSpec );
-		$topics = self::getTopics( $topicSpec );
+		$taskTypes = self::getTaskTypes( $taskTypes );
+		$topics = self::getTopics( $topics );
 
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
 		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
@@ -392,8 +392,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideFilter
-	 * @param array[] $taskTypeSpec All configured task types on the server. See getTaskTypes().
-	 * @param array[] $topicSpec All configured topics on the server. See getTopics().
+	 * @param array[] $taskTypes All configured task types on the server. See getTaskTypes().
+	 * @param array[] $topics All configured topics on the server. See getTopics().
 	 * @param TaskSet $taskSet
 	 * @param array $pageIds Page IDs returned by the LinkBatch
 	 * @param array $requests [ [ 'params' => [...], 'response' => ... ], ... ] where params is
@@ -402,16 +402,16 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @param TaskSet|StatusValue $expectedTaskSet
 	 */
 	public function testFilter(
-		array $taskTypeSpec,
-		array $topicSpec,
+		array $taskTypes,
+		array $topics,
 		TaskSet $taskSet,
 		array $pageIds,
 		array $requests,
 		$expectedTaskSet
 	) {
 		$user = new UserIdentityValue( 1, 'Foo' );
-		$taskTypes = self::getTaskTypes( $taskTypeSpec );
-		$topics = self::getTopics( $topicSpec );
+		$taskTypes = self::getTaskTypes( $taskTypes );
+		$topics = self::getTopics( $topics );
 
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
 		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
@@ -454,7 +454,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'taskSet' => new TaskSet( [
 					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
-				'pageids' => [ 1 ],
+				'pageIds' => [ 1 ],
 				'requests' => [ [
 					'params' => [
 						'srsearch' => 'hastemplate:"MaintTempl" pageid:1',
@@ -480,7 +480,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'taskSet' => new TaskSet( [
 					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
-				'pageids' => [ 1 ],
+				'pageIds' => [ 1 ],
 				'requests' => [ [
 					'params' => [
 						'srsearch' => 'hastemplate:"MaintTempl" pageid:1',
@@ -504,7 +504,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1',
 						[ 'topic1' => [ 'foo' ] ], [ 'topic1' => 0.8 ] ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [ 'topic1' ] ) ),
-				'pageids' => [ 1 ],
+				'pageIds' => [ 1 ],
 				'requests' => [ [
 					'params' => [
 						'srsearch' => 'hastemplate:"MaintTempl" pageid:1',
@@ -531,7 +531,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'taskSet' => new TaskSet( [
 					self::getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
-				'pageids' => [ 1 ],
+				'pageIds' => [ 1 ],
 				'requests' => [ [
 					'params' => [],
 					'response' => [
