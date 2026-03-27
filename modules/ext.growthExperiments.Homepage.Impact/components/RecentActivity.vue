@@ -13,7 +13,7 @@
 					size="xxl"
 					class="ext-growthExperiments-RecentActivity__streak__highlight__number"
 				>
-					{{ $filters.convertNumber( contribs.count ) }}
+					{{ contribsCount }}
 				</c-text>
 				<c-text
 					as="span"
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+const { inject } = require( 'vue' );
 const { getIntlLocale } = require( '../../utils/Utils.js' );
 const CText = require( '../../vue-components/CText.vue' );
 const StreakGraph = require( './StreakGraph.vue' );
@@ -64,6 +65,14 @@ module.exports = exports = {
 		}
 	},
 	computed: {
+		contribsCount() {
+			const maxEdits = inject( 'IMPACT_MAX_EDITS' );
+			if ( this.contribs.count >= maxEdits ) {
+				return this.$i18n( 'growthexperiments-homepage-impact-scores-over-limit',
+					this.$filters.convertNumber( maxEdits ) ).text();
+			}
+			return this.$filters.convertNumber( this.contribs.count );
+		},
 		minContribs() {
 			return Math.min( ...this.contribs.entries );
 		},
