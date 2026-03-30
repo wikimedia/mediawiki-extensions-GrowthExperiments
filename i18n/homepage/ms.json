@@ -367,6 +367,7 @@
 	"growthexperiments-addlink-context-button-reject": "Tidak",
 	"growthexperiments-addlink-context-button-help": "Dapatkan bantuan untuk menyunting",
 	"growthexperiments-addlink-context-button-next": "Berikutnya",
+	"growthexperiments-addlink-context-button-prev": "Sebelumnya",
 	"growthexperiments-addlink-context-button-show-suggestion": "Tunjukkan cadangan pautan",
 	"growthexperiments-addlink-rejectiondialog-title": "Mengapa ini bukan pautan yang baik?",
 	"growthexperiments-addlink-rejectiondialog-message": "Jawapan {{GENDER:$1|anda}} boleh menambah baik cadangan masa hadapan.",
