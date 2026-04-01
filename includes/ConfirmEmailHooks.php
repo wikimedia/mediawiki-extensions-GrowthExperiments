@@ -49,6 +49,7 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook {
 			$context->getUser(),
 			$context->getSkin(),
 		) ) {
+			$context->getOutput()->addBodyClasses( 'wiki-' . $config->get( 'DBname' ) );
 			$context->getOutput()->addJsConfigVars( 'GECreateAccountExperimentV1', true );
 			if ( isset( $formDescriptor['email'] ) ) {
 				$formDescriptor['email']['description-message'] = 'growthexperiments-confirmemail-emaildescription';

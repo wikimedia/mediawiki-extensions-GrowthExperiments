@@ -80,6 +80,20 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			],
 			false,
 		];
+
+		yield 'anon, mobile, in treatment group, not enwiki' => [
+			'anon',
+			SkinMinerva::class,
+			[
+				'defaultVariant' => [
+					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
+				],
+				'config' => [
+					'DBname' => 'dewiki',
+				],
+			],
+			false,
+		];
 	}
 
 	/**
@@ -124,10 +138,11 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 				return in_array( $extensionName, $registeredExtensions, true );
 			} );
 
-		$config = new HashConfig( [
+		$config = new HashConfig( array_merge( [
 			'GEReviseToneSuggestedEditEnabled' => true,
 			'GEHomepageSuggestedEditsEnabled' => true,
-		] );
+			'DBname' => 'enwiki',
+		], $overrides['config'] ?? [] ) );
 		$sut = new FeatureManager( $extensionRegistryMock, $config );
 		$sut->setExperimentManager( new StaticExperimentManager( new ServiceOptions( [ 'GEHomepageDefaultVariant' ], [
 			'GEHomepageDefaultVariant' => $overrides['defaultVariant'] ?? 'control',

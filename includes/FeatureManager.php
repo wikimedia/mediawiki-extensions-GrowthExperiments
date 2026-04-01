@@ -70,8 +70,9 @@ class FeatureManager {
 	public function shouldShowCreateAccountV1( ?User $user, Skin $skin ): bool {
 		$isAnon = $user === null || $user->isAnon();
 		$isMobile = Util::isMobile( $skin );
+		$isEnWiki = $this->growthConfig->get( 'DBname' ) === 'enwiki';
 
-		return $isAnon && $isMobile && $this->experimentManager->getAssignedGroup(
+		return $isAnon && $isMobile && $isEnWiki && $this->experimentManager->getAssignedGroup(
 			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1
 		) === IExperimentManager::VARIANT_TREATMENT;
 	}
