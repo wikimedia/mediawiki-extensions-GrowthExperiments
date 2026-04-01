@@ -29,16 +29,6 @@ class ReviseToneExperimentInteractionLogger {
 			return;
 		}
 
-		$experimentConfig = $experiment->getExperimentConfig();
-		if ( !$experimentConfig ) {
-			return;
-		}
-		if ( $experimentConfig[ 'sampling_unit' ] === 'overridden' ) {
-			return;
-		}
-
-		// TODO: Can be removed after T408186 is done and the stream has been configured in the experiment UI
-		$experiment->setStream( self::EXPERIMENT_STREAM );
 		$experiment->send(
 			$action,
 			$interactionData
