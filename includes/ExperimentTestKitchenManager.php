@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments;
 
-use MediaWiki\Extension\TestKitchen\Sdk\Experiment;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentInterface;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Extension\TestKitchen\Sdk\UnenrolledExperiment;
 
@@ -13,7 +13,7 @@ class ExperimentTestKitchenManager implements IExperimentManager {
 	) {
 	}
 
-	public function getExperiment( string $experimentName ): ?Experiment {
+	public function getExperiment( string $experimentName ): ?ExperimentInterface {
 		$exp = $this->experimentManager->getExperiment( $experimentName );
 		// Prevents attempting to log events for UnenrolledExperiment
 		if ( $exp instanceof UnenrolledExperiment ) {
