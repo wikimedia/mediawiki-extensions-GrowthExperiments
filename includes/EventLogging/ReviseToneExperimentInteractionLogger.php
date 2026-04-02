@@ -5,19 +5,15 @@ namespace GrowthExperiments\EventLogging;
 use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\IExperimentManager;
 use MediaWiki\Registration\ExtensionRegistry;
-use Psr\Log\LoggerInterface;
 
 class ReviseToneExperimentInteractionLogger {
 
-	private const EXPERIMENT_STREAM = 'mediawiki.product_metrics.contributors.experiments';
-
 	public function __construct(
 		private readonly IExperimentManager $experimentUserManager,
-		private readonly LoggerInterface $logger,
 	) {
 	}
 
-	public function log( string $action, array $interactionData, ?string $pageDBkeyForLogging = null ): void {
+	public function log( string $action, array $interactionData ): void {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) ) {
 			return;
 		}

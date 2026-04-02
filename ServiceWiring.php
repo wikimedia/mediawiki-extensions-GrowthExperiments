@@ -916,7 +916,6 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new ReviseToneExperimentInteractionLogger(
 			$growthServices->getExperimentUserManager(),
-			$growthServices->getLogger(),
 		);
 	},
 
