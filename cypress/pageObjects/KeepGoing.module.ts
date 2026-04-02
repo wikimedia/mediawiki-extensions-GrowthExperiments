@@ -5,7 +5,8 @@ class KeepGoing {
 	}
 
 	public get smallTaskCardLink(): ReturnType<typeof cy.get> {
-		return cy.get( '.mw-ge-postEditDrawer a.mw-ge-small-task-card' );
+		// Adding a longer timeout to help with CI lag that can cause test to fail
+		return cy.get( '.mw-ge-postEditDrawer a.mw-ge-small-task-card', { timeout: 60000 } );
 	}
 
 	public get smallTaskCardTitle(): ReturnType<typeof cy.get> {
