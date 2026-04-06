@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"KormiSK",
 			"Luky001",
 			"Patriccck",
 			"Patrik L."
@@ -33,6 +34,10 @@
 	"growthexperiments-help-panel-question-subject-template-with-title": "Otázka vložená pomocou panelu Potrebujem pomoc: [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Otázka zo sekcie „Získajte pomoc s editáciou“ domovskej stránky",
 	"growthexperiments-help-panel-question-post-error": "Počas vkladania vašej otázky nastala chyba. Môžete ju skúsiť vložiť znovu alebo ísť na stránku $1 a vložiť ju manuálne.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Pridávanie odkazov umožní ľuďom rýchlejšie se učiť.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Mesiac je jediným <mark class=\"positive\">prirodzeným satelitom</mark>, ktorý <mark class=\"positive\">obieha</mark> okolo <mark class=\"positive\">Zeme</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Na dokončenie tejto úlohy nie sú potrebné žiadne zvláštne znalosti.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "<li>Odkazujte na veci, ktoré by čitateľov mohli viac zaujímať.</li>\n<li>Uistite sa, že odkazujete na správny článok.</li>\n<li>Netvorte odkazy z bežných slov, rokov či dátumov.</li>\n<li>Ak si niečím nie ste {{GENDER:$1|istý|istá|istí}}, odkaz preskočte.</li>",
 	"growthexperiments-help-panel-questioncomplete-title": "Položiť otázku",
 	"growthexperiments-help-panel-questioncomplete-header": "Vaša otázka bola odoslaná!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Vaša otázka je teraz vložená na stránke Potrebujem pomoc, aby mohla byť zodpovedaná ďalším redaktorom.",

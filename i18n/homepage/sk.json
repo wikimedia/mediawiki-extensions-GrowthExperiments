@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"KormiSK",
 			"Luky001",
 			"Wizzard"
 		]
@@ -263,6 +264,13 @@
 	"growthexperiments-addlink-context-button-accept": "Áno",
 	"growthexperiments-addlink-context-button-next": "Ďalej",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Iné",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Pridávanie odkazov umožní ľuďom rýchlejšie se učiť.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Mesiac je jediným <mark class=\"positive\">prirodzeným satelitom</mark>, ktorý <mark class=\"positive\">obieha</mark> okolo <mark class=\"positive\">Zeme</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Na dokončenie tejto úlohy nie sú potrebné žiadne zvláštne znalosti.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Navrhované odkazy sú generované strojovo a nemusia byť správne.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "Systém môže navrhovať tvoriť odkazy zo slov, ktoré ich v skutočnosti nepotrebujú, alebo môže omylom odporučiť odkázať na nesprávny článok. Použite {{GENDER:$1|svoj}} úsudok na to, aby ste rozhodli, či je odkaz správny alebo nie.",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Pravidlá",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Odkazujte na veci, ktoré by čitateľov mohli viac zaujímať.</li>\n<li>Uistite sa, že odkazujete na správny článok.</li>\n<li>Netvorte odkazy z bežných slov, rokov či dátumov.</li>\n<li>Ak si niečím nie ste {{GENDER:$1|istý|istá|istí}}, odkaz preskočte.</li>",
 	"growthexperiments-structuredtask-onboarding-dialog-get-started-button": "Začíname",
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "Späť na navrhované úpravy",
 	"growthexperiments-addlink-summary-title": "Zhrnutie",
