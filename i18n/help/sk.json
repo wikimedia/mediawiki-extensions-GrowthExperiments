@@ -32,7 +32,7 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "Vložiť názov stránky, na ktorej som, spolu s mojou otázkou",
 	"growthexperiments-help-panel-question-subject-template": "Otázka vložená pomocou panelu Potrebujem pomoc",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Otázka vložená pomocou panelu Potrebujem pomoc: [[:$1|$1]]",
-	"growthexperiments-help-panel-question-subject-template-from-homepage": "Otázka zo sekcie „Získajte pomoc s editáciou“ domovskej stránky",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "Otázky modulu pomoci z domovskej stránky používateľ{{GENDER:|a|ky}}",
 	"growthexperiments-help-panel-question-post-error": "Počas vkladania vašej otázky nastala chyba. Môžete ju skúsiť vložiť znovu alebo ísť na stránku $1 a vložiť ju manuálne.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Pridávanie odkazov umožní ľuďom rýchlejšie se učiť.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Mesiac je jediným <mark class=\"positive\">prirodzeným satelitom</mark>, ktorý <mark class=\"positive\">obieha</mark> okolo <mark class=\"positive\">Zeme</mark>.",
