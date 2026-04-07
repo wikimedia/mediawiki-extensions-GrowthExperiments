@@ -5,18 +5,28 @@ declare( strict_types = 1 );
 namespace GrowthExperiments;
 
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\User;
+use Wikimedia\Stats\StatsFactory;
 
-class ConfirmEmailHooks implements AuthChangeFormFieldsHook {
+class ConfirmEmailHooks implements AuthChangeFormFieldsHook, LocalUserCreatedHook {
+
+	private const EXPERIMENT_GROUP_FORM_FIELD_NAME = 'we18-experiment-group';
 
 	public function __construct(
 		private readonly TitleFactory $titleFactory,
 		private readonly FeatureManager $featureManager,
+		private readonly Config $mainConfig,
+		private readonly IExperimentManager $experimentManager,
+		private readonly StatsFactory $statsFactory,
 	) {
 	}
 
@@ -45,6 +55,7 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook {
 		$context->getOutput()->addJsConfigVars( 'confirmemail', true );
 		$context->getOutput()->addModuleStyles( 'ext.growthExperiments.Account.styles' );
 
+		$this->recordExperimentGroup( $context->getUser(), $context->getSkin(), $formDescriptor );
 		if ( $this->featureManager->shouldShowCreateAccountV1(
 			$context->getUser(),
 			$context->getSkin(),
@@ -90,5 +101,66 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook {
 			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';
 			$formDescriptor['email']['help-message'] = 'growthexperiments-confirmemail-emailhelp';
 		}
+	}
+
+	private function recordExperimentGroup( ?User $user, Skin $skin, array &$formDescriptor ): void {
+		$isAnon = $user === null || $user->isAnon();
+		$isMobile = Util::isMobile( $skin );
+		$wikiName = $this->mainConfig->get( 'DBname' );
+		$isEnWiki = $wikiName === 'enwiki';
+
+		$isEligible = $isAnon && $isMobile && $isEnWiki;
+		if ( !$isEligible ) {
+			return;
+		}
+
+		$experimentGroup = $this->experimentManager->getAssignedGroup(
+			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1
+		);
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'experiment_account_creation_forms_opened_total' )
+			->setLabel( 'wiki', $wikiName )
+			->setLabel( 'experiment', IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 )
+			->setLabel( 'group', $experimentGroup ?? 'unsampled' )
+			->increment();
+
+		if ( $experimentGroup === IExperimentManager::VARIANT_TREATMENT ) {
+			$formDescriptor[self::EXPERIMENT_GROUP_FORM_FIELD_NAME] = [
+				'type' => 'hidden',
+				'name' => self::EXPERIMENT_GROUP_FORM_FIELD_NAME,
+				'default' => 'treatment',
+			];
+		} elseif ( $experimentGroup === IExperimentManager::VARIANT_CONTROL ) {
+			$formDescriptor[self::EXPERIMENT_GROUP_FORM_FIELD_NAME] = [
+				'type' => 'hidden',
+				'name' => self::EXPERIMENT_GROUP_FORM_FIELD_NAME,
+				'default' => 'control',
+			];
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onLocalUserCreated( $user, $autocreated ): void {
+		$experimentGroup = RequestContext::getMain()->getRequest()
+			->getVal( self::EXPERIMENT_GROUP_FORM_FIELD_NAME, '' );
+		if ( !$experimentGroup ) {
+			return;
+		}
+
+		if ( $autocreated || $user->isTemp() ) {
+			return;
+		}
+
+		$hasEmail = RequestContext::getMain()->getRequest()
+			->getVal( 'email', '' ) !== '';
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'experiment_account_creations_total' )
+			->setLabel( 'wiki', $this->mainConfig->get( 'DBname' ) )
+			->setLabel( 'experiment', IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 )
+			->setLabel( 'group', $experimentGroup )
+			->setLabel( 'hasEmail', $hasEmail ? 'Yes' : 'No' )
+			->increment();
 	}
 }
