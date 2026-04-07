@@ -447,7 +447,10 @@
 			"class": "GrowthExperiments\\ConfirmEmailHooks",
 			"services": [
 				"TitleFactory",
-				"GrowthExperimentsFeatureManager"
+				"GrowthExperimentsFeatureManager",
+				"MainConfig",
+				"GrowthExperimentsExperimentUserManager",
+				"StatsFactory"
 			]
 		}
 	},
