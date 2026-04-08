@@ -18,7 +18,8 @@
 			"Teslaton",
 			"Zoji",
 			"Mormegil",
-			"Polda18"
+			"Polda18",
+			"KormiSK"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",

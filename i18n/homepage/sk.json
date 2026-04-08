@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Luky001",
-			"Wizzard"
+			"Wizzard",
+			"KormiSK"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vitajte, {{GENDER:$1|používateľ|používateľka}} {{bidi:$1}}!",
@@ -108,14 +109,14 @@
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Upozornenia {{GENDER:$1|mentora|mentorky}}",
 	"growthexperiments-tour-mentor-response-tip-personal-text": "Akonáhle {{GENDER:$2|váš mentor|vaša mentorka}} odpovie, objaví sa {{GENDER:$1|vám}} tu nové upozornenie.",
 	"growthexperiments-tour-response-button-okay": "Rozumiem",
-	"tag-help_module_question": "otázka zo sekcie „Získajte pomoc s editáciou“ domovskej stránky",
+	"tag-help_module_question": "Otázka modulu pomoci",
 	"tag-help_module_question-description": "Úprava vykonaná cez príslušnú sekciu nástenky nováčika",
 	"tag-mentorship_module_question": "otázka z mentorovacej sekcie",
 	"tag-mentorship_module_question-description": "Úprava vykonaná pomocou funkcie kladenia otázok sekcie „Mentor“ domovskej stránky.",
 	"tag-newcomer_task": "Navrhované úpravy",
 	"tag-newcomer_task-description": "Úprava odporúčaná sekciou odporúčaných úprav domovskej stránky nováčika",
 	"growthexperiments-homepage-help-dialog-title": "Položiť otázku",
-	"growthexperiments-homepage-help-header": "Získajte pomoc s editáciou",
+	"growthexperiments-homepage-help-header": "Získajte pomoc s úpravami",
 	"growthexperiments-homepage-help-subheader": "Najlepšie stránky s nápovedou o upravovaní",
 	"growthexperiments-homepage-help-mobilebody": "Položte otázku komunite alebo si prečítajte nápovedu",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Vaše}} nedávne otázky",
@@ -263,6 +264,13 @@
 	"growthexperiments-addlink-context-button-accept": "Áno",
 	"growthexperiments-addlink-context-button-next": "Ďalej",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Iné",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Pridávanie odkazov umožní ľuďom rýchlejšie se učiť.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Mesiac je jediným <mark class=\"positive\">prirodzeným satelitom</mark>, ktorý <mark class=\"positive\">obieha</mark> okolo <mark class=\"positive\">Zeme</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Na dokončenie tejto úlohy nie sú potrebné žiadne zvláštne znalosti.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Navrhované odkazy sú generované strojovo a nemusia byť správne.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "Systém môže navrhovať tvoriť odkazy zo slov, ktoré ich v skutočnosti nepotrebujú, alebo môže omylom odporučiť odkázať na nesprávny článok. Použite {{GENDER:$1|svoj}} úsudok na to, aby ste rozhodli, či je odkaz správny alebo nie.",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Pravidlá",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Odkazujte na veci, ktoré by čitateľov mohli viac zaujímať.</li>\n<li>Uistite sa, že odkazujete na správny článok.</li>\n<li>Netvorte odkazy z bežných slov, rokov či dátumov.</li>\n<li>Ak si niečím nie ste {{GENDER:$1|istý|istá|istí}}, odkaz preskočte.</li>",
 	"growthexperiments-structuredtask-onboarding-dialog-get-started-button": "Začíname",
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "Späť na navrhované úpravy",
 	"growthexperiments-addlink-summary-title": "Zhrnutie",
