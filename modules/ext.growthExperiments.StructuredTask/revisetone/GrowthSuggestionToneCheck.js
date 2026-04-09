@@ -8,6 +8,10 @@ const GrowthSuggestionToneCheck = function () {
 OO.inheritClass( GrowthSuggestionToneCheck, mw.editcheck.ToneCheck );
 GrowthSuggestionToneCheck.static.name = 'growth-suggested-tone';
 
+GrowthSuggestionToneCheck.static.defaultConfig = ve.extendObject( {}, GrowthSuggestionToneCheck.super.static.defaultConfig, {
+	showAsCheck: true,
+} );
+
 GrowthSuggestionToneCheck.static.overrides = new Map();
 
 GrowthSuggestionToneCheck.static.setOverride = function ( node, documentModel ) {
