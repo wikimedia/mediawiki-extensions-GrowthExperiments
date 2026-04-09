@@ -18,7 +18,8 @@
 			"Patrik L.",
 			"Teslaton",
 			"Zoji",
-			"Polda18"
+			"Polda18",
+			"KormiSK"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",
@@ -188,7 +189,7 @@
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Otázka od uživatele [[User:$1|$1]]: [[$2]]",
 	"growthexperiments-homepage-mentorship-system-message": "Poznámka: $1",
 	"growthexperiments-specialimpact-title": "Dosah vašich příspěvků",
-	"growthexperiments-specialimpact-showing-for-other-user": "Zobrazuji data o dosahu příspěvků uživatele $1",
+	"growthexperiments-specialimpact-showing-for-other-user": "Zobrazuji data o dosahu příspěvků {{GENDER:$1|uživatele|uživatelky}} $1",
 	"growthexperiments-specialimpact-invalid-username": "Chybějící nebo neplatné uživatelské jméno.",
 	"growthexperiments-specialimpact-invalid-inclusion-without-username": "Při transkluzi speciální stránky „Dosah příspěvků“ musí být jako první parametr poskytnuto uživatelské jméno.",
 	"growthexperiments-homepage-claimmentee-no-user": "Zvolený nováček neexistuje",
