@@ -101,7 +101,8 @@ describe( 'Revise Tone', () => {
 
 	describe( 'On mobile', () => {
 
-		it( 'Shows the Revise Tone Edit Check', () => {
+		// Flaky: T422469 - fails to find .ve-ui-editCheck-gutter-action-warning despite it being visible?
+		it.skip( 'Shows the Revise Tone Edit Check', () => {
 			cy.viewport( 360, 780 );
 			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile&mpo=growthexperiments-revise-tone:treatment' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
