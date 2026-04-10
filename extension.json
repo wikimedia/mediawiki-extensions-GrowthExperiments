@@ -512,6 +512,7 @@
 			"mentor"
 		],
 		"LoadExtensionSchemaUpdates": "schema",
+		"CreateAccountShouldShowUsernamePolicyPopover": "confirmEmail",
 		"LocalUserCreated": [
 			"confirmEmail",
 			"helppanel",

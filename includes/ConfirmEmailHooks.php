@@ -14,11 +14,17 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
+use MediaWiki\SpecialPage\Hook\CreateAccountShouldShowUsernamePolicyPopoverHook;
+use MediaWiki\SpecialPage\LoginSignupSpecialPage;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use Wikimedia\Stats\StatsFactory;
 
-class ConfirmEmailHooks implements AuthChangeFormFieldsHook, LocalUserCreatedHook {
+class ConfirmEmailHooks implements
+	AuthChangeFormFieldsHook,
+	LocalUserCreatedHook,
+	CreateAccountShouldShowUsernamePolicyPopoverHook
+{
 
 	private const EXPERIMENT_GROUP_FORM_FIELD_NAME = 'we18-experiment-group';
 
@@ -29,6 +35,24 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, LocalUserCreatedHoo
 		private readonly IExperimentManager $experimentManager,
 		private readonly StatsFactory $statsFactory,
 	) {
+	}
+
+	/**
+	 * Opt in to the core Minerva username policy popover ("Choose carefully" opens a
+	 * popover) for the account-creation form experiment v2.
+	 *
+	 * @param LoginSignupSpecialPage $specialPage
+	 * @param bool &$show
+	 */
+	public function onCreateAccountShouldShowUsernamePolicyPopover(
+		LoginSignupSpecialPage $specialPage,
+		bool &$show
+	): void {
+		if ( $this->experimentManager->getAssignedGroup(
+			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2
+		) === IExperimentManager::VARIANT_TREATMENT ) {
+			$show = true;
+		}
 	}
 
 	/**

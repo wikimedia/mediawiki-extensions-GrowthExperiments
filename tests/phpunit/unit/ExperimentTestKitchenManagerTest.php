@@ -46,6 +46,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 				[
 					IExperimentManager::REVISE_TONE_EXPERIMENT => IExperimentManager::VARIANT_CONTROL,
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
+					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_CONTROL,
 					'experiment-not-recognized' => 'some-group',
 				]
 			)
@@ -54,6 +55,7 @@ class ExperimentTestKitchenManagerTest extends MediaWikiUnitTestCase {
 			[
 				IExperimentManager::REVISE_TONE_EXPERIMENT => IExperimentManager::VARIANT_CONTROL,
 				IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
+				IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_CONTROL,
 			],
 			$sut->getAssignments()
 		);

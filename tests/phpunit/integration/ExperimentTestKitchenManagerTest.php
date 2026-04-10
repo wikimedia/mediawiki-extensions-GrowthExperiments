@@ -52,13 +52,13 @@ class ExperimentTestKitchenManagerTest extends MediaWikiIntegrationTestCase {
 		] );
 	}
 
-	public function testGetAssginments() {
+	public function testGetAssignments() {
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$experimentUserManager = $growthServices->getExperimentUserManager();
 		$this->assertInstanceOf( ExperimentTestKitchenManager::class, $experimentUserManager );
 		$assignments = $experimentUserManager->getAssignments();
 		$this->assertSame( IExperimentManager::EXPERIMENTS, array_keys( $assignments ) );
-		$this->assertSame( [ 'control', 'control' ], array_values( $assignments ) );
+		$this->assertSame( [ 'control', 'control', 'control' ], array_values( $assignments ) );
 	}
 
 }
