@@ -9,9 +9,15 @@
 			"Tiger",
 			"VulpesVulpes825",
 			"Zhang8569",
+			"沈澄心",
 			"科劳"
 		]
 	},
+	"growthexperiments-createacct-username-description": "您的用户名是公开的，且无法在之后设置为私密。",
+	"growthexperiments-createacct-username-learn-more": "了解更多",
+	"growthexperiments-confirmemail-emaildescription": "如果您忘记密码或从陌生地点或新浏览器登录，则需要使用电子邮件地址来恢复您的帐户。",
+	"growthexperiments-confirmemail-email-optional": "电子邮件地址",
+	"growthexperiments-confirmemail-email-recommended-flag": "（推荐）",
 	"growthexperiments-confirmemail-emailhelp": "如果您忘记密码，您需要通过电子邮件来恢复您的账户。",
 	"growthexperiments-confirmemail-emailrecommended": "电子邮箱地址（推荐）",
 	"growthexperiments-confirmemail-emailwarning": "我们将向您发送一封验证邮件，稍后请查看您的邮箱。",

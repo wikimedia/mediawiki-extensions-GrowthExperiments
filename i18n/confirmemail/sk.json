@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"KormiSK",
 			"Luky001"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Vaše užívateľské meno je verejné a neskôr sa nebude dať schovať.",
 	"growthexperiments-confirmemail-emailhelp": "E-mail potrebujeme nato, aby sme vám mohli obnoviť prístup k účtu, pokiaľ prídete o heslo.",
 	"growthexperiments-confirmemail-emailrecommended": "E-mailová adresa (odporúčané)",
 	"growthexperiments-confirmemail-emailwarning": "Prosím, pozrite sa do svojho e-mailu a overte svoju e-mailovú adresu."
