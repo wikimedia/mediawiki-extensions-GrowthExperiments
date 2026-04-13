@@ -568,9 +568,13 @@ class HomepageHooks implements
 		if ( !$this->userHasPersonalToolsPrefEnabled( $user ) ) {
 			return;
 		}
-		$links['user-page']['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl(
-			$skin->getTitle()->getNamespace()
-		);
+		// Make sure the userpage icon exists befor setting href.
+		// if it has been unset we don't want to create a link with only an href.
+		if ( array_key_exists( 'userpage', $links['user-page'] ) ) {
+			$links['user-page']['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl(
+				$skin->getTitle()->getNamespace()
+			);
+		}
 		// Legacy Vector makes use of user-menu to display the user link
 		if ( array_key_exists( 'userpage', $links['user-menu'] ) ) {
 			$links['user-menu']['userpage']['href'] = $this->getPersonalToolsHomepageLinkUrl(
