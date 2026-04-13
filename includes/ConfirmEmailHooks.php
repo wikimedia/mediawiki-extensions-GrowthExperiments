@@ -55,6 +55,7 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, LocalUserCreatedHoo
 		$context->getOutput()->addJsConfigVars( 'confirmemail', true );
 		$context->getOutput()->addModuleStyles( 'ext.growthExperiments.Account.styles' );
 
+		$this->recordBaseline( $context->getUser(), $context->getSkin() );
 		$this->recordExperimentGroup( $context->getUser(), $context->getSkin(), $formDescriptor );
 		if ( $this->featureManager->shouldShowCreateAccountV1(
 			$context->getUser(),
@@ -101,6 +102,25 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, LocalUserCreatedHoo
 			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';
 			$formDescriptor['email']['help-message'] = 'growthexperiments-confirmemail-emailhelp';
 		}
+	}
+
+	private function recordBaseline( ?User $user, Skin $skin ): void {
+		if ( $user === null || $user->isAnon() ) {
+			$userType = 'anon';
+		} elseif ( $user->isTemp() ) {
+			$userType = 'temp';
+		} else {
+			$userType = 'named';
+		}
+		$wikiName = $this->mainConfig->get( 'DBname' );
+		$isMobile = Util::isMobile( $skin );
+
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'baseline_account_creation_forms_opened_total' )
+			->setLabel( 'wiki', $wikiName )
+			->setLabel( 'platform', $isMobile ? 'mobile' : 'desktop' )
+			->setLabel( 'usertype', $userType )
+			->increment();
 	}
 
 	private function recordExperimentGroup( ?User $user, Skin $skin, array &$formDescriptor ): void {
