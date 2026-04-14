@@ -23,7 +23,9 @@
 			"Verdy p",
 			"Zoranzoki21",
 			"Dreamy Jazz",
-			"Matma Rex"
+			"Matma Rex",
+			"Nike",
+			"ZhaoFJx"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage, which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
@@ -506,7 +508,7 @@
 	"growthexperiments-addimage-detailsdialog-image": "Field name on a dialog that appears with more details about an image suggested for an article.\n\n{{doc-growthexperiments-imagesuggestions}}\n\n{{identical|Filename}}",
 	"growthexperiments-addimage-detailsdialog-description": "Field name on a dialog that appears with more details about an image suggested for an article.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-detailsdialog-caption": "Field name on a dialog that appears with more details about an image suggested for an article.\n\n{{doc-growthexperiments-imagesuggestions}}\n\n{{identical|Caption}}",
-	"growthexperiments-addimage-detailsdialog-license": "Field name on a dialog that appears with more details about an image suggested for an article.\n\n{{doc-growthexperiments-imagesuggestions}}\n\n{{identical|Licence}}",
+	"growthexperiments-addimage-detailsdialog-license": "Field name on a dialog that appears with more details about an image suggested for an article.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-detailsdialog-date": "Field name on a dialog that appears with more details about an image suggested for an article.\n\n{{doc-growthexperiments-imagesuggestions}}\n\n{{identical|Date}}",
 	"growthexperiments-addimage-detailsdialog-author": "Field name on a dialog that appears with more details about an image suggested for an article.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-detailsdialog-categories": "Field name on a dialog that appears with more details about an image suggested for an article.\n\n{{doc-growthexperiments-imagesuggestions}}\n\n{{identical|Category}}",
