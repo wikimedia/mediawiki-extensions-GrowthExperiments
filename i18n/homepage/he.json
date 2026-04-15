@@ -381,6 +381,7 @@
 	"growthexperiments-addlink-context-button-reject": "לא",
 	"growthexperiments-addlink-context-button-help": "קבלת עזרה עם עריכה",
 	"growthexperiments-addlink-context-button-next": "הבא",
+	"growthexperiments-addlink-context-button-prev": "הקודמת",
 	"growthexperiments-addlink-context-button-show-suggestion": "הצגת הצעת קישור",
 	"growthexperiments-addlink-rejectiondialog-title": "למה זה לא קישור טוב?",
 	"growthexperiments-addlink-rejectiondialog-message": "התשובות {{GENDER:$1|שלך}} משפרות הצעות עתידיות.",
