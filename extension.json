@@ -513,6 +513,7 @@
 		],
 		"LoadExtensionSchemaUpdates": "schema",
 		"LocalUserCreated": [
+			"confirmEmail",
 			"helppanel",
 			"homepage",
 			"mentor",
