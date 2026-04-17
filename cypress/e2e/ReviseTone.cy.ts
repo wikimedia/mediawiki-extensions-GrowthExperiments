@@ -1,39 +1,16 @@
 import Homepage from '../pageObjects/SpecialHomepage.page';
-import GuidedTour from '../pageObjects/GuidedTour.module';
 import KeepGoingModule from '../pageObjects/KeepGoing.module';
 
 const homepage = new Homepage();
-const guidedTour = new GuidedTour();
 const keepGoingModule = new KeepGoingModule();
 
 describe( 'Revise Tone', () => {
 
-	let usernameAlice: string;
-	let passwordAlice: string;
-	before( () => {
-		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
-			username: string;
-			password: string;
-		} ) => {
-			usernameAlice = username;
-			passwordAlice = password;
-			cy.loginViaApi( username, password );
-		} );
-		cy.setUserOptions( {
-			'growthexperiments-tour-homepage-welcome': '1',
-			'growthexperiments-addimage-onboarding': '1',
-			'growthexperiments-addimage-caption-onboarding': '1',
-			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'revise-tone', 'image-recommendation' ] ),
-		} );
-		guidedTour.close( 'homepage_discovery' );
-	} );
-
 	beforeEach( () => {
-		cy.loginViaApi( usernameAlice, passwordAlice );
-		// Ensure each test run starts with Revise Tone onboarding not yet seen,
-		// so both desktop and mobile tests exercise the onboarding dialog.
+		cy.loginAsUser( 'GE-Alice' );
 		cy.setUserOptions( {
 			'growthexperiments-revisetone-onboarding': '0',
+			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'revise-tone', 'image-recommendation' ] ),
 		} );
 	} );
 

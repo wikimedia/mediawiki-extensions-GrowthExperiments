@@ -23,6 +23,20 @@ Cypress.Commands.add( 'loginAsAdmin', (): void => {
 	);
 } );
 
+Cypress.Commands.add( 'loginAsUser', ( usernamePrefix: string ): void => {
+	cy.session( usernamePrefix, () => {
+		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
+			username: string;
+			password: string;
+		} ) => {
+			cy.loginViaApi( username, password );
+		} );
+		cy.setUserOptions( {
+			'growthexperiments-tour-homepage-welcome': '1',
+		} );
+	}, { cacheAcrossSpecs: true } );
+} );
+
 Cypress.Commands.add( 'logout', (): void => {
 	cy.visit( 'index.php?title=Special:UserLogout' );
 	cy.get( '#mw-content-text button' ).click();
@@ -49,11 +63,34 @@ Cypress.Commands.add( 'saveCommunityConfigurationForm', ( editSummary: string ):
 } );
 
 Cypress.Commands.add( 'setUserOptions', ( options ): void => {
+	/**
+	 * There are several tests that reuse existing user sessions for performance reasons.
+	 * To reduce the likelihood of tests accidentally depending on each other via user options,
+	 * this method resets all options except those in the parameter back to defaults and
+	 * enforces that only options which have a defined default here can be overriden by the
+	 * parameter.
+	 */
+	const defaultUserOptions = {
+		'growthexperiments-tour-homepage-welcome': '1',
+		'growthexperiments-homepage-se-filters': null,
+		'growthexperiments-addimage-onboarding': null,
+		'growthexperiments-addimage-caption-onboarding': null,
+		'growthexperiments-revisetone-onboarding': null,
+	};
 	cy.visit( '/index.php' );
 	cy.window().its( 'mw.Api' ).should( 'exist' );
 	cy.window().then( async ( { mw }: Cypress.AUTWindow & { mw: MediaWiki } ): Promise<void> => {
+		const unknownOptions = Object.keys( options ).filter(
+			( key ) => !( key in defaultUserOptions ),
+		);
+		if ( unknownOptions.length > 0 ) {
+			throw new Error( 'Options ' + unknownOptions.join( ', ' ) + ' missing from defaultUserOptions in cypress/support/commands.ts' );
+		}
 		const api = new mw.Api();
-		await api.saveOptions( options );
+		await api.saveOptions( {
+			...defaultUserOptions,
+			...options,
+		} );
 	} );
 } );
 
@@ -89,6 +126,7 @@ Cypress.Commands.add( 'assertTagsOfCurrentPageRevision', ( expectedTags: string[
 declare global {
 	namespace Cypress {
 		interface Chainable {
+			loginAsUser( username: string ): Chainable<JQuery<HTMLElement>>;
 			loginViaApi( username: string, password: string ): Chainable<JQuery<HTMLElement>>;
 			loginAsAdmin(): Chainable<JQuery<HTMLElement>>;
 			logout(): Chainable<JQuery<HTMLElement>>;

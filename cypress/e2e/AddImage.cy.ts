@@ -1,25 +1,16 @@
 import Homepage from '../pageObjects/SpecialHomepage.page';
-import GuidedTour from '../pageObjects/GuidedTour.module';
 
 const homepage = new Homepage();
-const guidedTour = new GuidedTour();
 
 describe( 'Add Image Structured Task', () => {
 
 	it( 'desktop: user can view image info and image details', () => {
-		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
-			username: string;
-			password: string;
-		} ) => {
-			cy.loginViaApi( username, password );
-		} );
+		cy.loginAsUser( 'GE-Alice' );
 		cy.setUserOptions( {
-			'growthexperiments-tour-homepage-welcome': '1',
 			'growthexperiments-addimage-onboarding': '1',
 			'growthexperiments-addimage-caption-onboarding': '1',
 			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] ),
 		} );
-		guidedTour.close( 'homepage_discovery' );
 
 		cy.visit( 'index.php?title=Special:Homepage' );
 		homepage.suggestedEditsCardTitle.should( 'have.text', 'Ma\'amoul' );
@@ -53,16 +44,10 @@ describe( 'Add Image Structured Task', () => {
 	} );
 
 	it( 'mobile: user can close the image suggestion UI', () => {
-		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {
-			username: string;
-			password: string;
-		} ) => {
-			cy.loginViaApi( username, password );
-		} );
+		cy.loginAsUser( 'Alice' );
 		cy.setUserOptions( {
 			'growthexperiments-addimage-onboarding': '1',
 			'growthexperiments-addimage-caption-onboarding': '1',
-			'growthexperiments-tour-homepage-welcome': '1',
 			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'image-recommendation' ] ),
 		} );
 		cy.visit( 'index.php?title=Special:Homepage&mobileaction=toggle_view_mobile#/homepage/suggested-edits' );
