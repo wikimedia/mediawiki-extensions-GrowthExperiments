@@ -174,6 +174,15 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			// page IDs. This makes the API endpoint behave in the same way as SuggestedEdits.php on
 			// Special:Homepage. If we don't do this, then repeat queries to this API endpoint with the same user
 			// ID and without `pageids` set will result in returning the same cached task set.
+			if ( !$user->isNamed() ) {
+				\MediaWiki\Logger\LoggerFactory::getInstance( 'GrowthExperiments' )->error(
+					'Scheduling NewcomerTasksCacheRefreshJob for non-named user',
+					[
+						'userId' => $user->getId(),
+						'exception' => new \RuntimeException( 'T419172' ),
+					]
+				);
+			}
 			$this->jobQueueGroup->lazyPush(
 				new JobSpecification( NewcomerTasksCacheRefreshJob::JOB_NAME, [
 					'userId' => $user->getId(),

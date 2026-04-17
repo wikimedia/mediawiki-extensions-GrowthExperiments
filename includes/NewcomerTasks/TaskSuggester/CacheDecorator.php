@@ -148,6 +148,15 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 						// Schedule a job to refresh the taskset before the cache
 						// expires.
 						try {
+							if ( !$user->isRegistered() ) {
+								$this->logger->error(
+									'Scheduling NewcomerTasksCacheRefreshJob for non-registered user',
+									[
+										'userId' => $user->getId(),
+										'exception' => new \RuntimeException( 'T419172' ),
+									]
+								);
+							}
 							$this->jobQueueGroup->lazyPush(
 								new JobSpecification( NewcomerTasksCacheRefreshJob::JOB_NAME, [
 									'userId' => $user->getId(),
