@@ -8,6 +8,7 @@ use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\TestKitchen\Sdk\OverriddenExperiment;
 use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
@@ -132,6 +133,15 @@ class ConfirmEmailHooks implements AuthChangeFormFieldsHook, LocalUserCreatedHoo
 		$isEligible = $isAnon && $isMobile && $isEnWiki;
 		if ( !$isEligible ) {
 			return;
+		}
+
+		if ( $this->experimentManager instanceof ExperimentTestKitchenManager ) {
+			$experiment = $this->experimentManager->getExperiment(
+				IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1
+			);
+			if ( $experiment instanceof OverriddenExperiment ) {
+				return;
+			}
 		}
 
 		$experimentGroup = $this->experimentManager->getAssignedGroup(
