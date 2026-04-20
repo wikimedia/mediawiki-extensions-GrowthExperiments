@@ -10,8 +10,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Config\Config;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Title\TitleParser;
-use MessageLocalizer;
 use Wikimedia\Message\MessageSpecifier;
 
 class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {

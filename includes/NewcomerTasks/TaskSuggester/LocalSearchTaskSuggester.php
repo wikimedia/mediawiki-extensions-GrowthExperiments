@@ -10,13 +10,13 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use ISearchResultSet;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Page\LinkBatchFactory;
+use MediaWiki\Search\ISearchResultSet;
+use MediaWiki\Search\SearchEngine;
+use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserIdentity;
-use SearchEngine;
-use SearchEngineFactory;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 

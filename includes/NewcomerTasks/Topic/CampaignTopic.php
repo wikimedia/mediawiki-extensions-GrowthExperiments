@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Message\Message;
-use MessageLocalizer;
 
 /**
  * A topic used for a specific editing campaign. Uses a separate namespace for ID and message keys,

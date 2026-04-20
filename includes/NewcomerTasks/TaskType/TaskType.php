@@ -3,10 +3,10 @@
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\TitleValue;
-use MessageLocalizer;
 use Wikimedia\JsonCodec\JsonCodecable;
 use Wikimedia\JsonCodec\JsonCodecableTrait;
 

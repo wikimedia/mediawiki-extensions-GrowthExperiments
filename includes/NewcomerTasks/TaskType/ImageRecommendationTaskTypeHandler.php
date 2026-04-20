@@ -7,8 +7,8 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use InvalidArgumentException;
 use LogicException;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Message\Message;
-use MessageLocalizer;
 use Wikimedia\Message\ListType;
 use Wikimedia\Message\MessageSpecifier;
 

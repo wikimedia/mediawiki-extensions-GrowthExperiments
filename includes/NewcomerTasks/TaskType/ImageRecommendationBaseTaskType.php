@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use MessageLocalizer;
+use MediaWiki\Language\MessageLocalizer;
 
 abstract class ImageRecommendationBaseTaskType extends TaskType {
 

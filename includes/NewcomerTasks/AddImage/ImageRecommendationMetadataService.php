@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
-use FormatMetadata;
 use GrowthExperiments\Util;
-use MediaTransformError;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Language\RawMessage;
+use MediaWiki\Media\FormatMetadata;
+use MediaWiki\Media\MediaTransformError;
 use StatusValue;
 
 /**

@@ -3,8 +3,8 @@
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Message\Message;
-use MessageLocalizer;
 use StatusValue;
 
 /**

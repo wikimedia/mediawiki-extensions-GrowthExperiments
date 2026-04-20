@@ -4,7 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\Topic;
 
 use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Extension\WikimediaMessages\ArticleTopicFiltersRegistry;
-use MessageLocalizer;
+use MediaWiki\Language\MessageLocalizer;
 
 class WikimediaTopicRegistry implements ITopicRegistry {
 

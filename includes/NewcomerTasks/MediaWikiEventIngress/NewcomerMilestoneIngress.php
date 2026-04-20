@@ -4,7 +4,6 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\MediaWikiEventIngress;
 
-use ExtensionRegistry;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -16,6 +15,7 @@ use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Page\Event\PageLatestRevisionChangedEvent;
 use MediaWiki\Page\Event\PageLatestRevisionChangedListener;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
 

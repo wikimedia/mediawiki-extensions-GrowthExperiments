@@ -12,16 +12,16 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
-use ISearchResultSet;
 use MediaWiki\Message\Message;
 use MediaWiki\Page\LinkBatchFactory;
+use MediaWiki\Search\ISearchResultSet;
+use MediaWiki\Search\SearchResult;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
 use MultipleIterator;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use SearchResult;
 use StatusValue;
 use Wikimedia\Message\ListType;
 

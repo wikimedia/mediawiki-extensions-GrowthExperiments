@@ -9,7 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Page\LinkBatchFactory;
-use SearchEngineFactory;
+use MediaWiki\Search\SearchEngineFactory;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 

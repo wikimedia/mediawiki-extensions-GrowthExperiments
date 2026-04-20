@@ -4,7 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use InvalidArgumentException;
 use MediaWiki\Context\DerivativeContext;
-use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Language\LanguageNameUtils;
 use MediaWiki\Message\Message;
 use MediaWiki\Site\SiteLookup;
 use StatusValue;

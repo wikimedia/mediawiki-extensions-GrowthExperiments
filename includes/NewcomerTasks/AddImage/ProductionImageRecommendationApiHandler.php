@@ -9,8 +9,8 @@ use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\Title\Title;
-use MWHttpRequest;
 use StatusValue;
 use Wikimedia\UUID\GlobalIdGenerator;
 

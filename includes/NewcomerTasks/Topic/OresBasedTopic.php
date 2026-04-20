@@ -4,8 +4,8 @@ namespace GrowthExperiments\NewcomerTasks\Topic;
 
 use LogicException;
 use MediaWiki\Extension\WikimediaMessages\ArticleTopicFiltersRegistry;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Message\Message;
-use MessageLocalizer;
 
 class OresBasedTopic extends Topic {
 
