@@ -8,12 +8,12 @@ use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
 use MediaWiki\Extension\CommunityConfiguration\Store\WikiPageStore;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Maintenance\LoggedUpdateMaintenance;
 use MediaWiki\Status\Status;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
-use MediaWiki\User\UserOptionsLookup;
-use MessageLocalizer;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 $IP = getenv( 'MW_INSTALL_PATH' );

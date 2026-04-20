@@ -6,8 +6,8 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Minerva\Skins\SkinMinerva;
-use MessageLocalizer;
 use OOUI\IconWidget;
 use Wikimedia\Assert\Assert;
 

@@ -4,7 +4,7 @@ namespace GrowthExperiments\HelpPanel\Tips;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use LogicException;
-use MessageLocalizer;
+use MediaWiki\Language\MessageLocalizer;
 
 class TipLoader {
 

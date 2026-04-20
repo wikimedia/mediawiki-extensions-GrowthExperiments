@@ -15,8 +15,8 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\Options\UserOptionsUpdateJob;
 use MediaWiki\User\User;
-use UserOptionsUpdateJob;
 use Wikimedia\Rdbms\IDBAccessObject;
 
 class QuestionStore {

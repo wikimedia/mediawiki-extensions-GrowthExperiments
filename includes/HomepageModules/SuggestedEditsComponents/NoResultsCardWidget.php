@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules\SuggestedEditsComponents;
 
+use MediaWiki\Language\MessageLocalizer;
 use OOUI\Tag;
 use OOUI\Widget;
 
@@ -15,7 +16,7 @@ class NoResultsCardWidget extends Widget {
 	 */
 	public function __construct( array $config = [] ) {
 		parent::__construct( $config );
-		/** @var \MessageLocalizer $localizer */
+		/** @var MessageLocalizer $localizer */
 		$localizer = $config['localizer'];
 		$noResultsDescriptionText = 'growthexperiments-homepage-suggestededits-select-other-difficulty';
 		if ( $config['topicMatching'] ) {

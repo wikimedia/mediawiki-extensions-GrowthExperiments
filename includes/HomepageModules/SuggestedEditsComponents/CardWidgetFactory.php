@@ -3,12 +3,13 @@
 namespace GrowthExperiments\HomepageModules\SuggestedEditsComponents;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use MediaWiki\Language\MessageLocalizer;
 use OOUI\Widget;
 
 class CardWidgetFactory {
 
 	/**
-	 * @param \MessageLocalizer $messageLocalizer
+	 * @param MessageLocalizer $messageLocalizer
 	 * @param bool $topicMatching
 	 * @param bool $topicMatchModeIsAND
 	 * @param string $dir
@@ -16,7 +17,7 @@ class CardWidgetFactory {
 	 * @return Widget
 	 */
 	public static function newFromTaskSet(
-		\MessageLocalizer $messageLocalizer, bool $topicMatching, bool $topicMatchModeIsAND, string $dir, $taskSet
+		MessageLocalizer $messageLocalizer, bool $topicMatching, bool $topicMatchModeIsAND, string $dir, $taskSet
 	): Widget {
 		if ( $taskSet instanceof TaskSet ) {
 			if ( $taskSet->count() ) {

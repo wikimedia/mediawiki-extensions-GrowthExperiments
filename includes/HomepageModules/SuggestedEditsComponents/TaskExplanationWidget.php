@@ -4,6 +4,7 @@ namespace GrowthExperiments\HomepageModules\SuggestedEditsComponents;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Language\MessageLocalizer;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use OOUI\Tag;
@@ -16,7 +17,7 @@ use OOUI\Widget;
  */
 class TaskExplanationWidget extends Widget {
 
-	/** @var \MessageLocalizer */
+	/** @var MessageLocalizer */
 	private $localizer;
 
 	/** @var TaskType */

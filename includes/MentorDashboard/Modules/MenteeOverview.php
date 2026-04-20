@@ -7,7 +7,7 @@ use GrowthExperiments\Util;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
 
 class MenteeOverview extends BaseModule {
 

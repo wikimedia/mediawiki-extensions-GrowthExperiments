@@ -7,19 +7,19 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Hook\PostLoginRedirectHook;
-use MediaWiki\Hook\SkinAddFooterLinksHook;
-use MediaWiki\Hook\SpecialCreateAccountBenefitsHook;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
+use MediaWiki\Skin\Hook\SkinAddFooterLinksHook;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Specials\Hook\PostLoginRedirectHook;
+use MediaWiki\Specials\Hook\SpecialCreateAccountBenefitsHook;
 use MediaWiki\User\Options\UserOptionsManager;
 
 /**

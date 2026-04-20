@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules\SuggestedEditsComponents;
 
+use MediaWiki\Language\MessageLocalizer;
 use OOUI\Tag;
 use OOUI\Widget;
 
@@ -14,7 +15,7 @@ class ErrorCardWidget extends Widget {
 	 */
 	public function __construct( array $config = [] ) {
 		parent::__construct( $config );
-		/** @var \MessageLocalizer $localizer */
+		/** @var MessageLocalizer $localizer */
 		$localizer = $config['localizer'];
 		$this->appendContent(
 			( new Tag( 'div' ) )->addClasses( [ 'se-card-error' ] )

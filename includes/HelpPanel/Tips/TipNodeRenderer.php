@@ -4,8 +4,8 @@ namespace GrowthExperiments\HelpPanel\Tips;
 
 use LogicException;
 use MediaWiki\Html\Html;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Output\OutputPage;
-use MessageLocalizer;
 use OOUI\IconWidget;
 
 /**

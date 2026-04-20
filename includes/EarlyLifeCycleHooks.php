@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments;
 
-use MediaWiki\Cache\Hook\MessageCacheFetchOverridesHook;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Language\Hook\MessageCacheFetchOverridesHook;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 

@@ -8,7 +8,7 @@ use MediaWiki\Parser\Parser;
 /**
  * Class that consumes parser-functions related hooks.
  */
-class ParserFunctionsHooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
+class ParserFunctionsHooks implements \MediaWiki\Parser\Hook\ParserFirstCallInitHook {
 
 	/** @inheritDoc */
 	public function onParserFirstCallInit( $parser ) {

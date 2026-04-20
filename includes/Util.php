@@ -23,6 +23,7 @@ use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
+use MediaWiki\Utils\MWCryptRand;
 use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LogLevel;
@@ -345,6 +346,6 @@ class Util {
 	 * Generate a 32 character random token for analytics purposes
 	 */
 	public static function generateRandomToken(): string {
-		return \Wikimedia\base_convert( \MWCryptRand::generateHex( 40 ), 16, 32, 32 );
+		return \Wikimedia\base_convert( MWCryptRand::generateHex( 40 ), 16, 32, 32 );
 	}
 }

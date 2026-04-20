@@ -25,6 +25,7 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\UnlistedSpecialPage;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\Utils\MWCryptRand;
 use MediaWiki\WikiMap\WikiMap;
 use Throwable;
 use Wikimedia\Stats\StatsFactory;
@@ -230,7 +231,7 @@ class SpecialHomepage extends UnlistedSpecialPage {
 	 * @return string
 	 */
 	private function generatePageviewToken() {
-		return \Wikimedia\base_convert( \MWCryptRand::generateHex( 40 ), 16, 32, 32 );
+		return \Wikimedia\base_convert( MWCryptRand::generateHex( 40 ), 16, 32, 32 );
 	}
 
 	private function renderDesktop() {

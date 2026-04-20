@@ -5,15 +5,15 @@ namespace GrowthExperiments\Mentorship\Provider;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
-use MessageLocalizer;
 use Psr\Log\LoggerInterface;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 class CommunityStructuredMentorProvider extends MentorProvider {
 	use CommunityGetMentorDataTrait;

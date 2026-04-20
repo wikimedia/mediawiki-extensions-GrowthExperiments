@@ -10,9 +10,9 @@ use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Skin\Skin;
 use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsUpdateJob;
 use MediaWiki\User\UserIdentity;
 use OOUI\IconWidget;
-use UserOptionsUpdateJob;
 
 class SiteNoticeGenerator {
 	private ?bool $homepageDiscoveryNoticeSeen = null;

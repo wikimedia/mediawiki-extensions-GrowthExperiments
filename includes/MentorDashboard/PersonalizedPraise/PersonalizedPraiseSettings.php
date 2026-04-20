@@ -5,6 +5,7 @@ namespace GrowthExperiments\MentorDashboard\PersonalizedPraise;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
@@ -12,7 +13,6 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MessageLocalizer;
 
 /**
  * Accessor for mentor's Personalized praise settings

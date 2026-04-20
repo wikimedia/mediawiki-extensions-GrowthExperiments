@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HelpPanel\Tips;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use MessageLocalizer;
+use MediaWiki\Language\MessageLocalizer;
 
 /**
  * Assemble tips in HTML for display in suggested edits panel.

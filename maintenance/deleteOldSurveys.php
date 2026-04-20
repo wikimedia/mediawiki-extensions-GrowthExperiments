@@ -4,8 +4,8 @@ namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\WelcomeSurvey;
 use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentityLookup;
-use MediaWiki\User\UserOptionsManager;
 use MediaWiki\Utils\MWTimestamp;
 
 // @codeCoverageIgnoreStart

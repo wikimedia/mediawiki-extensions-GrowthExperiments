@@ -4,6 +4,7 @@ namespace GrowthExperiments\HomepageModules\SuggestedEditsComponents;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use MediaWiki\Language\MessageLocalizer;
 use OOUI\ButtonWidget;
 use OOUI\HtmlSnippet;
 use OOUI\Tag;
@@ -13,7 +14,7 @@ class NavigationWidgetFactory {
 	/** @var TaskSet|\StatusValue */
 	private $taskSet;
 
-	/** @var \MessageLocalizer */
+	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
 	/** @var Task */
@@ -26,11 +27,11 @@ class NavigationWidgetFactory {
 	 * NavigationWidgetFactory constructor.
 	 * Generate navigation elements for SuggestedEdits module
 	 *
-	 * @param \MessageLocalizer $messageLocalizer
+	 * @param MessageLocalizer $messageLocalizer
 	 * @param TaskSet|\StatusValue $taskSet
 	 */
 	public function __construct(
-		\MessageLocalizer $messageLocalizer, $taskSet
+		MessageLocalizer $messageLocalizer, $taskSet
 	) {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->taskSet = $taskSet;

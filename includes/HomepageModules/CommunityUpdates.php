@@ -3,7 +3,6 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\Util;
-use HtmlArmor;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ConfigurationProviderFactory;
@@ -15,6 +14,7 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserEditTracker;
 use Psr\Log\LoggerInterface;
 use stdClass;
+use Wikimedia\HtmlArmor\HtmlArmor;
 use Wikimedia\ObjectCache\WANObjectCache;
 
 class CommunityUpdates extends BaseModule {

@@ -16,8 +16,8 @@ use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Options\UserOptionsLookup;
-use MWCryptRand;
-use UserOptionsUpdateJob;
+use MediaWiki\User\Options\UserOptionsUpdateJob;
+use MediaWiki\Utils\MWCryptRand;
 
 class SpecialMentorDashboard extends SpecialPage {
 

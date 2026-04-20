@@ -4,7 +4,7 @@ namespace GrowthExperiments;
 
 use GrowthExperiments\UserImpact\GrowthExperimentsUserImpactUpdater;
 use MediaWiki\Deferred\DeferredUpdates;
-use MediaWiki\Hook\ManualLogEntryBeforePublishHook;
+use MediaWiki\Logging\Hook\ManualLogEntryBeforePublishHook;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 
