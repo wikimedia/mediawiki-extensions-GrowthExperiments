@@ -10,9 +10,9 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactor
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Page\LinkBatchFactory;
+use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentityValue;
-use SearchEngineFactory;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 

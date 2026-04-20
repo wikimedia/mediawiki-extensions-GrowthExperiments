@@ -9,9 +9,10 @@ use GrowthExperiments\Specials\SpecialHomepage;
 use InvalidArgumentException;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
+use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\User\User;
-use SpecialPageTestBase;
 
 /**
  * @group Database
@@ -28,7 +29,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$this->setService( 'GrowthExperimentsMentorManager', new StaticMentorManager( [] ) );
 
 		// Needed to avoid errors in DeferredUpdates from the SpecialHomepageLogger
-		$mwHttpRequest = $this->createMock( \MWHttpRequest::class );
+		$mwHttpRequest = $this->createMock( MWHttpRequest::class );
 		$mwHttpRequest->method( 'execute' )
 			->willReturn( new \StatusValue() );
 		$this->installMockHttp( $mwHttpRequest );

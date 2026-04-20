@@ -8,9 +8,9 @@ use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use GrowthExperiments\WelcomeSurvey;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\Utils\MWTimestamp;
 use Psr\Log\NullLogger;
-use SpecialPageTestBase;
 use Wikimedia\Rdbms\IDBAccessObject;
 
 /**

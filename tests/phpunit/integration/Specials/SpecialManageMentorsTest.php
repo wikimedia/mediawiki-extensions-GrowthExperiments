@@ -11,9 +11,9 @@ use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\User\UserIdentity;
 use ReflectionMethod;
-use SpecialPageTestBase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**

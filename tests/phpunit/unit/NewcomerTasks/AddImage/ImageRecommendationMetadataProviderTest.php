@@ -6,7 +6,7 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Language\Language;
-use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Language\LanguageNameUtils;
 use MediaWiki\Site\Site;
 use MediaWiki\Site\SiteStore;
 use MediaWikiUnitTestCase;

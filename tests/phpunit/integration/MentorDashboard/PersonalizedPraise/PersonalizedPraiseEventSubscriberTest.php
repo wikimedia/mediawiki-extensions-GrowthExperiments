@@ -7,12 +7,12 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
+use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use MockHttpTrait;
-use MWHttpRequest;
 use StatusValue;
 
 /**

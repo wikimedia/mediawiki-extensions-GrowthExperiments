@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Tests\Helpers\HomepageHooksHelpers;
 use MediaWiki\Config\HashConfig;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Message\Message;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
@@ -13,7 +14,6 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
-use MessageLocalizer;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HomepageHooks

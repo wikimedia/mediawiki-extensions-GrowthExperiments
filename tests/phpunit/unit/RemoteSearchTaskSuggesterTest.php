@@ -20,6 +20,7 @@ use GrowthExperiments\Tests\InvokedBetween;
 use GrowthExperiments\Util;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\Page\LinkBatch;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\Status;
@@ -29,7 +30,6 @@ use MediaWiki\Title\TitleParser;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
-use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
 

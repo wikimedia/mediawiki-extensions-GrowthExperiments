@@ -8,13 +8,13 @@ use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use MediaWiki\Collation\CollationFactory;
+use MediaWiki\Collation\UppercaseCollation;
 use MediaWiki\Extension\WikimediaMessages\ArticleTopicFiltersRegistry;
-use MediaWiki\Languages\LanguageFactory;
+use MediaWiki\Language\LanguageFactory;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWikiUnitTestCase;
-use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
-use UppercaseCollation;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry

@@ -7,8 +7,8 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\User\User;
-use SpecialPageTestBase;
 
 /**
  * @group Database

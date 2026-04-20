@@ -9,13 +9,13 @@ use GrowthExperiments\NewcomerTasks\ReviseTone\ReviseToneWeightedTagManager;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use MWHttpRequest;
 use Psr\Log\NullLogger;
 use StatusValue;
-use TitleValue;
 use Wikimedia\Stats\StatsFactory;
 
 /**

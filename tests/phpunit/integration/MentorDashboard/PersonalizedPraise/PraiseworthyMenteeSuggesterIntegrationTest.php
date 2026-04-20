@@ -9,6 +9,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\UserImpact\RefreshUserImpactJob;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
+use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Title\Title;
@@ -16,7 +17,6 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 use MockHttpTrait;
-use MWHttpRequest;
 use StatusValue;
 
 /**

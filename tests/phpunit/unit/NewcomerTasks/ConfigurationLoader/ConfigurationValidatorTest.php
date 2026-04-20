@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWikiUnitTestCase;
-use MessageLocalizer;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator

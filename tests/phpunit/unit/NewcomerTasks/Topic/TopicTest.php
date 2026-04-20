@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Json\JsonCodec;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWikiUnitTestCase;
-use MessageLocalizer;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\Topic\Topic

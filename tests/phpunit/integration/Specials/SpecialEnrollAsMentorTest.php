@@ -9,7 +9,7 @@ use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestH
 use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxResponse;
 use MediaWiki\SpecialPage\SpecialPage;
-use SpecialPageTestBase;
+use MediaWiki\Tests\Specials\SpecialPageTestBase;
 
 /**
  * @group Database
