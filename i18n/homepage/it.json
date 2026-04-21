@@ -24,7 +24,8 @@
 			"Toa",
 			"Una tantum",
 			"ValeJappo",
-			"Vivbod"
+			"Vivbod",
+			"ZandDev"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
@@ -228,6 +229,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Fa' in modo che una parola di una voce sia un collegamento a un'altra voce",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-link-recommendation": "Fa' in modo che una parola di una voce sia un collegamento a un'altra voce",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-image-recommendation": "Decidi se un'immagine da Wikimedia Commons dovrebbe essere aggiunta alla voce.",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-section-image-recommendation": "Decidi se un'immagine da Wikimedia Commons dovrebbe essere aggiunta ad una certa sezione della voce.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "Puoi correggere piccole sviste o la maniera in cui le voci sono scritte: questo è un valido modo per iniziare a contribuire a {{SITENAME}} con facilità. Correggere le voci, aiuta a renderle più professionali e veritiere.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-references": "Usa libri, siti e giornali come fonti per confermare che Wikipedia è accurata, e aggiungile alle voci in modo che i lettori in modo che possano essere sicuri della validità di ciò che leggono.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "Le voci diventano obsolete con il passare del tempo. Trova e aggiungi le informazioni corrette, in modo che Wikipedia possa contenere sempre la verità attuale.",
