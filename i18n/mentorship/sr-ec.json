@@ -176,7 +176,7 @@
 	"growthexperiments-manage-mentors-edit-success": "Менторске опције за {{GENDER:$1|ментора|менторку}} [[User:$1|$1]] промењене.",
 	"growthexperiments-manage-mentors-remove-mentor": "Уклони",
 	"growthexperiments-manage-mentors-remove-mentor-pretext": "{{GENDER:|Овим}} уклањате {{GENDER:$1|корисника|корисницу}} [[User:$1|$1]] као {{GENDER:$1|ментора|менторку}}.",
-	"growthexperiments-manage-mentors-remove-mentor-reason": "Разлог уклањања овог ментора",
+	"growthexperiments-manage-mentors-remove-mentor-reason": "Разлог уклањања овог ментора:",
 	"growthexperiments-manage-mentors-remove-mentor-success": "{{GENDER:$1|Корисник|Корисница}} [[User:$1|$1]] није више {{GENDER:$1|ментор|менторка}}.",
 	"growhtexperiments-manage-mentors-add-mentor": "Додај ментора",
 	"growthexperiments-manage-mentors-add-mentor-username": "Корисничко име ментора за додати",

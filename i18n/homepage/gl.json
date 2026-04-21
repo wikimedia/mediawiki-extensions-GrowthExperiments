@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"O Breixo",
-			"Toliño"
+			"Toliño",
+			"Vinickw"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ola}}, {{bidi:$1}}!",
