@@ -12,9 +12,7 @@ describe( 'Special:MentorDashboard', () => {
 		cy.saveCommunityConfigurationForm( 'Automated test: Make it easy to enroll as a mentor in CI' );
 		cy.logout();
 
-		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: { username: string; password: string } ) => {
-			cy.loginViaApi( username, password );
-		} );
+		cy.loginAsUser( 'GE-Alice' );
 		cy.visit( 'index.php?title=Special:MentorDashboard' );
 
 		cy.get( '.oo-ui-buttonInputWidget' ).should( 'be.visible' );

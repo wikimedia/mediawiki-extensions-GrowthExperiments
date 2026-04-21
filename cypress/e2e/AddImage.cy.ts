@@ -44,7 +44,7 @@ describe( 'Add Image Structured Task', () => {
 	} );
 
 	it( 'mobile: user can close the image suggestion UI', () => {
-		cy.loginAsUser( 'Alice' );
+		cy.loginAsUser( 'GE-Alice' );
 		cy.setUserOptions( {
 			'growthexperiments-addimage-onboarding': '1',
 			'growthexperiments-addimage-caption-onboarding': '1',
