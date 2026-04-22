@@ -18,7 +18,8 @@
 			"렌즈",
 			"밝은소년",
 			"아라",
-			"YeBoy371"
+			"YeBoy371",
+			"Tensama0415"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -460,6 +461,8 @@
 	"growthexperiments-addimage-loading-title": "이미지 미리 보기를 불러오는 중…",
 	"growthexperiments-addimage-submitting-title": "제출 중…",
 	"growthexperiments-addimage-caption-placeholder": "이 이미지가 어떻게 <strong>$1</strong> 주제와 관련이 있는지 설명하는 짧은 설명을 추가하십시오",
+	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "이 문서의 언어로 작성하기: $1.",
+	"growthexperiments-addimage-caption-info-dialog-guidelines-language-generic": "{{GENDER:|당신}}이 속한 위키백과의 언어로 작성하기.",
 	"growthexperiments-addimage-caption-info-dialog-confirm": "알겠습니다",
 	"growthexperiments-addimage-caption-help-button": "이미지 캡션 작성에 대한 도움말",
 	"growthexperiments-structuredtask-user-error": "더 이상 로그인하고 있지 않기 때문에 편집을 게시하지 못했습니다. 로그인한 다음 다시 시도해 주십시오.",
@@ -513,9 +516,11 @@
 	"growthexperiments-homepage-special-contribute-cta": "편집 제안 보기",
 	"growthexperiments-homepage-impact-contributions-link": "모든 편집 보기",
 	"growthexperiments-levelingup-getstarted-notification-header": "편집 제안을 사용해보고 {{GENDER:$2|내}} 편집 기술을 쌓아나가기",
-	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "다른 편집 시도해 보기",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "제안된 편집 시도해 보기",
 	"growthexperiments-levelingup-getstarted-notification-learnmore-label": "더 알아보기",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "편집 제안 수행하기",
 	"echo-category-title-ge-newcomer": "성장 기능",
-	"echo-pref-tooltip-ge-newcomer": "새로운 사용자를 돕기 위해 설계된 새 사용자 및 기타 기능의 작업에 관한 알림을 받습니다."
+	"echo-pref-tooltip-ge-newcomer": "새로운 사용자를 돕기 위해 설계된 새 사용자 및 기타 기능의 작업에 관한 알림을 받습니다.",
+	"growthexperiments-homepage-community-updates-header": "커뮤니티 업데이트",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "더 알아보기"
 }
