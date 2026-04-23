@@ -49,12 +49,14 @@ TitleMock.prototype.getNameText = jest.fn();
 TitleMock.prototype.getUrl = jest.fn();
 
 const testKitchenMock = {
-	getExperiment() {
-		return {
-			getAssignedGroup: jest.fn(),
-			setStream: jest.fn(),
-			send: jest.fn(),
-		};
+	compat: {
+		getExperiment() {
+			return {
+				getAssignedGroup: jest.fn(),
+				setStream: jest.fn(),
+				send: jest.fn(),
+			};
+		},
 	},
 };
 

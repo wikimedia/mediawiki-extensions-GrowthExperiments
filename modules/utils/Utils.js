@@ -88,7 +88,7 @@
 
 		// Try TestKitchen variant retrieval
 		if ( mw && mw.testKitchen ) {
-			const exp = mw.testKitchen.getExperiment( experimentName );
+			const exp = mw.testKitchen.compat.getExperiment( experimentName );
 			return exp.getAssignedGroup();
 		}
 		// Try GrowthExperiments static variant retrieval

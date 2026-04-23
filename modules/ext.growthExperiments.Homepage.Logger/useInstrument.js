@@ -13,7 +13,7 @@ function getExperimentDataForSchema() {
 		return null;
 	}
 
-	const firstExp = mw.testKitchen.getExperiment( enrolledExperiments[ 0 ] );
+	const firstExp = mw.testKitchen.compat.getExperiment( enrolledExperiments[ 0 ] );
 	// OverriddenExperiment experiments do not have a config, this may be irrelevant after T414572 if
 	// mw.testKitchen.getInstrument() has  notion of experiments in course
 	const { coordinator, assigned, enrolled } = firstExp.config || {
@@ -25,7 +25,7 @@ function getExperimentDataForSchema() {
 	// Drop first experiment
 	enrolledExperiments.shift();
 	const otherAssigned = enrolledExperiments.reduce( ( acc, expName ) => {
-		const experiment = mw.testKitchen.getExperiment( expName );
+		const experiment = mw.testKitchen.compat.getExperiment( expName );
 		acc[ expName ] = experiment.getAssignedGroup();
 		return acc;
 	}, {} );

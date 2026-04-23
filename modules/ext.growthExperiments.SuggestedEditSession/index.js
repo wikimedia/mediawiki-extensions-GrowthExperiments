@@ -751,7 +751,7 @@
 	mw.hook( 've.newTarget' ).add( () => {
 		// TODO: Remove this once the experiment T419181 is done
 		if ( ge.suggestedEditSession.taskType === 'copyedit' && mw.testKitchen &&
-			mw.testKitchen.getExperiment( 'growthexperiments-revise-tone' ).getAssignedGroup() === 'treatment' ) {
+			mw.testKitchen.compat.getExperiment( 'growthexperiments-revise-tone' ).getAssignedGroup() === 'treatment' ) {
 			ve.init.target.editcheckController.suppressSuggestionDisplay( true );
 		}
 	} );

@@ -6,7 +6,7 @@ const useExperiment = () => {
 		mw.log.warn( 'Failed to log experiment interaction because mw.testKitchen is not defined' );
 		return { send: () => {} };
 	}
-	const experiment = mw.testKitchen.getExperiment( EXPERIMENT_NAME );
+	const experiment = mw.testKitchen.compat.getExperiment( EXPERIMENT_NAME );
 	experiment.setStream( STREAM_NAME );
 	return experiment;
 };

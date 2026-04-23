@@ -12,7 +12,7 @@
 			const { ClickThroughRateInstrument } = require( 'ext.wikimediaEvents.testKitchen' );
 			EchoNotificationsTracker.start(
 				ClickThroughRateInstrument,
-				mw.testKitchen.getExperiment( 'growthexperiments-get-started-notification' ),
+				mw.testKitchen.compat.getExperiment( 'growthexperiments-get-started-notification' ),
 			);
 		} );
 	} );

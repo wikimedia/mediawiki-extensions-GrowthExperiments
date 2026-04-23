@@ -14,14 +14,16 @@ QUnit.module( 'ext.growthExperiments.Homepage.Logger/useInstrument.js', QUnit.ne
 			newInstrument: () => this.instrument,
 		};
 		mw.testKitchen = {
-			getExperiment: ( name ) => ( {
-				getAssignedGroup: () => ( name === 'growthexperiments-homepage-welcome' ? 'treatment' : null ),
-				config: {
-					coordinator: 'default',
-					assigned: 'treatment',
-					enrolled: 'growthexperiments-homepage-welcome',
-				},
-			} ),
+			compat: {
+				getExperiment: ( name ) => ( {
+					getAssignedGroup: () => ( name === 'growthexperiments-homepage-welcome' ? 'treatment' : null ),
+					config: {
+						coordinator: 'default',
+						assigned: 'treatment',
+						enrolled: 'growthexperiments-homepage-welcome',
+					},
+				} ),
+			},
 			getAssignments: () => ( {
 				'growthexperiments-homepage-welcome': 'treatment',
 			} ),

@@ -38,9 +38,11 @@ QUnit.test( 'getUserVariantForLegacySchema returns unsampled when wgGEDefaultUse
 QUnit.test( 'getUserVariantForLegacySchema returns experimentName:variant when TestKitchen enrolled', ( assert ) => {
 	const savedTestKitchen = mw.testKitchen;
 	mw.testKitchen = {
-		getExperiment: ( name ) => ( {
-			getAssignedGroup: () => ( name === 'growthexperiments-homepage-welcome' ? 'treatment' : null ),
-		} ),
+		compat: {
+			getExperiment: ( name ) => ( {
+				getAssignedGroup: () => ( name === 'growthexperiments-homepage-welcome' ? 'treatment' : null ),
+			} ),
+		},
 	};
 	mw.config.set( 'wgTestKitchenUserExperiments', {
 		// eslint-disable-next-line camelcase
@@ -59,9 +61,11 @@ QUnit.test( 'getUserVariantForLegacySchema returns experimentName:variant when T
 QUnit.test( 'getUserVariantForLegacySchema returns first experiment when non-Growth is first', ( assert ) => {
 	const savedTestKitchen = mw.testKitchen;
 	mw.testKitchen = {
-		getExperiment: ( name ) => ( {
-			getAssignedGroup: () => ( name === 'wikimedia-mobile-experiment' ? 'variantB' : null ),
-		} ),
+		compat: {
+			getExperiment: ( name ) => ( {
+				getAssignedGroup: () => ( name === 'wikimedia-mobile-experiment' ? 'variantB' : null ),
+			} ),
+		},
 	};
 	mw.config.set( 'wgTestKitchenUserExperiments', {
 		// eslint-disable-next-line camelcase
@@ -81,17 +85,19 @@ QUnit.test( 'getUserVariantForLegacySchema returns first experiment when non-Gro
 QUnit.test( 'getUserVariantForLegacySchema returns all experiments when multiple enrolled', ( assert ) => {
 	const savedTestKitchen = mw.testKitchen;
 	mw.testKitchen = {
-		getExperiment: ( name ) => ( {
-			getAssignedGroup: () => {
-				if ( name === 'growthexperiments-homepage-welcome' ) {
-					return 'treatment';
-				}
-				if ( name === 'growthexperiments-suggested-edits' ) {
-					return 'control';
-				}
-				return null;
-			},
-		} ),
+		compat: {
+			getExperiment: ( name ) => ( {
+				getAssignedGroup: () => {
+					if ( name === 'growthexperiments-homepage-welcome' ) {
+						return 'treatment';
+					}
+					if ( name === 'growthexperiments-suggested-edits' ) {
+						return 'control';
+					}
+					return null;
+				},
+			} ),
+		},
 	};
 	mw.config.set( 'wgTestKitchenUserExperiments', {
 		// eslint-disable-next-line camelcase
@@ -111,7 +117,9 @@ QUnit.test( 'getUserVariantForLegacySchema returns all experiments when multiple
 QUnit.test( 'getUserVariantForLegacySchema returns unsampled when all experiments have null variant', ( assert ) => {
 	const savedTestKitchen = mw.testKitchen;
 	mw.testKitchen = {
-		getExperiment: () => ( { getAssignedGroup: () => null } ),
+		compat: {
+			getExperiment: () => ( { getAssignedGroup: () => null } ),
+		},
 	};
 	mw.config.set( 'wgTestKitchenUserExperiments', {
 		// eslint-disable-next-line camelcase
@@ -131,17 +139,19 @@ QUnit.test( 'getUserVariantForLegacySchema returns unsampled when all experiment
 QUnit.test( 'getUserVariantForLegacySchema skips experiments with null variant', ( assert ) => {
 	const savedTestKitchen = mw.testKitchen;
 	mw.testKitchen = {
-		getExperiment: ( name ) => ( {
-			getAssignedGroup: () => {
-				if ( name === 'exp-a' ) {
-					return 'treatment';
-				}
-				if ( name === 'exp-c' ) {
-					return 'control';
-				}
-				return null;
-			},
-		} ),
+		compat: {
+			getExperiment: ( name ) => ( {
+				getAssignedGroup: () => {
+					if ( name === 'exp-a' ) {
+						return 'treatment';
+					}
+					if ( name === 'exp-c' ) {
+						return 'control';
+					}
+					return null;
+				},
+			} ),
+		},
 	};
 	mw.config.set( 'wgTestKitchenUserExperiments', {
 		// eslint-disable-next-line camelcase
@@ -164,7 +174,9 @@ QUnit.test( 'getUserVariantForLegacySchema truncates when over USER_VARIANT_MAX_
 	// Each "exp-xxx...n:variant" is ~174 chars; 3 experiments = 524 chars > 512
 	const longName = ( n ) => 'exp-' + 'x'.repeat( 160 ) + n;
 	mw.testKitchen = {
-		getExperiment: () => ( { getAssignedGroup: () => 'variant' } ),
+		compat: {
+			getExperiment: () => ( { getAssignedGroup: () => 'variant' } ),
+		},
 	};
 	mw.config.set( 'wgTestKitchenUserExperiments', {
 		// eslint-disable-next-line camelcase
