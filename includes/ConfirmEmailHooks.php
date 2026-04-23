@@ -123,6 +123,11 @@ class ConfirmEmailHooks implements
 		} elseif ( isset( $formDescriptor['email'] ) && !$config->get( MainConfigNames::EmailConfirmToEdit ) ) {
 			// If email field exists on the form, change email label from "(optional)" to "
 			// (recommended)", but only if email is optional
+			if ( $this->experimentManager->getAssignedGroup(
+					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2
+				) === IExperimentManager::VARIANT_TREATMENT ) {
+				return;
+			}
 
 			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';
 			$formDescriptor['email']['help-message'] = 'growthexperiments-confirmemail-emailhelp';
