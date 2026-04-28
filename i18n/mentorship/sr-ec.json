@@ -150,6 +150,7 @@
 	"growthexperiments-mentor-writer-error-blocked": "Онемогућено {{GENDER:|вам}} је уређивање списка ментора",
 	"growthexperiments-manage-mentors-title": "Управљање менторима",
 	"growthexperiments-manage-mentors-pretext-purpose": "Ова страница је списак ментора.",
+	"growthexperiments-manage-mentors-pretext-privileged": "{{GENDER:|Можете}} уклонити менторе који не поштују стандарде и правила заједнице или подесити њихове менторске опције.",
 	"growthexperiments-manage-mentors-pretext-regular": "Администратори могу да уклоне менторе који крше правила заједнице. Такође могу уређивати сопствене менторске опције као нпр. поруку за новајлије.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "Списак ментора се чува у [[$1|именском простору Медијавики]], укључујући историју.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "Да постанете ментор идите на [[Special:EnrollAsMentor]].",

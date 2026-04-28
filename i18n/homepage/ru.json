@@ -38,7 +38,8 @@
 			"Etonkovidova",
 			"Mitte27",
 			"EneshTranslates",
-			"Vonavy"
+			"Vonavy",
+			"Shabe"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здравствуйте}}, {{bidi:$1}}!",
@@ -51,7 +52,7 @@
 	"growthexperiments-homepage-email-header-unconfirmed": "Подтвердите {{GENDER:$1|ваш}} адрес электронной почты",
 	"growthexperiments-homepage-email-header-confirmed": "Добавлен адрес электронной почты",
 	"growthexperiments-homepage-email-header-startemail": "Электронная почта: $1",
-	"growthexperiments-homepage-email-text-noemail": "Рекомендуется для восстановления учетной записи",
+	"growthexperiments-homepage-email-text-noemail": "Рекомендуется для восстановления учётной записи",
 	"growthexperiments-homepage-email-text-unconfirmed": "На {{GENDER:$1|ваш}} адрес электронной почты отправлено письмо с подтверждением. Если письма нет, запросите его ещё раз.",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|Ваша}} почта подтверждена. Вы можете изменить свои параметры почты в настройках.",
 	"growthexperiments-homepage-email-button-noemail": "Добавить адрес электронной почты",
