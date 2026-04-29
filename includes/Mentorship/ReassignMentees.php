@@ -40,6 +40,12 @@ class ReassignMentees {
 		string $reassignMessageKey,
 	   ...$reassignMessageAdditionalParams
 	) {
+		$this->logger->info(
+			'ReassignMentees schedules ' . ReassignMenteesJob::JOB_NAME . ' for {mentor}',
+			[
+				'mentor' => $this->mentor->getName(),
+			]
+		);
 		$jobQueueGroup = $this->jobQueueGroupFactory->makeJobQueueGroup();
 		$jobQueue = $jobQueueGroup->get( ReassignMenteesJob::JOB_NAME );
 
@@ -55,7 +61,7 @@ class ReassignMentees {
 		if ( $jobQueue->delayedJobsEnabled() ) {
 			$jobParams['jobReleaseTimestamp'] = (int)wfTimestamp() + ExpirationAwareness::TTL_MINUTE;
 		} else {
-			$this->logger->debug(
+			$this->logger->info(
 				'ReassignMentees failed to delay reassignMenteesJob, delays are not supported'
 			);
 		}
@@ -152,6 +158,7 @@ class ReassignMentees {
 			if ( $menteeUser->isHidden() ) {
 				$this->logger->info( __METHOD__ . ' dropping relationship for {mentee}, user is hidden', [
 					'mentee' => $mentee->getName(),
+					'mentor' => $this->mentor->getName(),
 				] );
 				$this->mentorStore->dropMenteeRelationship( $mentee );
 				continue;
@@ -160,9 +167,12 @@ class ReassignMentees {
 			// T418992: Use same eligibility rules as MentorManager (T351234, onBlockIpComplete)
 			if ( $this->mentorManager->isUserIneligibleForMentorship( $mentee ) ) {
 				$this->logger->info(
-					__METHOD__ . ' dropping relationship for {mentee}, user ineligible for mentorship', [
+					__METHOD__ . ' dropping relationship for {mentee}, user ineligible for mentorship',
+					[
 						'mentee' => $mentee->getName(),
-						] );
+						'mentor' => $this->mentor->getName(),
+					]
+				);
 				$this->mentorStore->dropMenteeRelationship( $mentee );
 				continue;
 			}
