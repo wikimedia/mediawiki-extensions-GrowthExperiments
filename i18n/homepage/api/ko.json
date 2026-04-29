@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Revi",
+			"Tensama0415",
 			"Ykhwong"
 		]
 	},
@@ -14,5 +15,5 @@
 	"apihelp-growthsetmentor-param-mentee": "멘티의 사용자 이름",
 	"apihelp-growthsetmentor-param-mentor": "멘토의 사용자 이름",
 	"apihelp-growthsetmentor-param-reason": "변경 이유",
-	"apihelp-growthinvalidateimagerecommendation-summary": "이미지 권고 작업을 무효화합니다"
+	"apihelp-growthinvalidateimagerecommendation-summary": "이미지 권고를 무효화합니다."
 }

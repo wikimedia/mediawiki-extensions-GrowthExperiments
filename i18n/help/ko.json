@@ -28,7 +28,7 @@
 	"growthexperiments-help-panel-home-title": "편집 도움 받기",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|}}편집을 게시했습니다. 계속 해 봅시다!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|}}편집을 게시했습니다. 계속해 봅시다!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "제안을 검토해 주셔서 고맙습니다. 계속해 주십시오!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|제안을}} 검토하셨습니다. 감사합니다, 계속해 주십시오!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "오늘 사용 가능한 이미지 추가 제안 문서를 모두 마치셨습니다. 고생하셨습니다!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "오늘 사용 가능한 링크 제안 문서를 모두 마치셨습니다. 고생하셨습니다!",
 	"growthexperiments-help-panel-postedit-header": "다음 단계",
