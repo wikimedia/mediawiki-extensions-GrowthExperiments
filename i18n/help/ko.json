@@ -10,7 +10,8 @@
 			"Sadopaul",
 			"YeBoy371",
 			"Ykhwong",
-			"밝은소년"
+			"밝은소년",
+			"Tensama0415"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "편집 도움말 패널 활성화하기",
@@ -164,6 +165,6 @@
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "편집 제안 정보",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;현재 원본편집기를 사용하고 계십니다. 다음 편집 팁들은 시각편집기에서 가장 잘 작동합니다.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "시각편집기로 전환",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;시각 편집기를 사용하고 계십니다. 다음 편집 팁들은 원본 편집기에서 가장 잘 동작합니다.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;시각편집기를 사용하고 계십니다. 다음 편집 팁들은 원본 편집기에서 가장 잘 동작합니다.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "원본 편집기로 전환하기"
 }

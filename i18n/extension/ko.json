@@ -6,7 +6,8 @@
 			"Revi",
 			"Ykhwong",
 			"아라",
-			"YeBoy371"
+			"YeBoy371",
+			"Tensama0415"
 		]
 	},
 	"growthexperiments-desc": "이 확장 기능은 성장 팀의 실험적인 기능을 포함합니다.",
@@ -54,7 +55,7 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) 다섯 번째 도움말 패널 링크 레이블 (권장: \"문서를 만드는 방법\")",
 	"growthexperiments-edit-config-homepage": "신입 사용자 홈페이지",
 	"growthexperiments-edit-config-homepage-intro-links-create": "새 문서를 만들기에 관한 링크의 도착 문서",
-	"growthexperiments-edit-config-homepage-intro-links-image": "시각 편집기에서 이미지를 추가하는 방법에 관한 링크의 목적지 문서",
+	"growthexperiments-edit-config-homepage-intro-links-image": "시각편집기에서 이미지를 추가하는 방법에 관한 링크의 목적지 문서",
 	"growthexperiments-edit-config-mentorship": "멘토",
 	"growthexperiments-edit-config-mentorship-description-structured": "멘토는 2가지 역할을 가질 수 있습니다. 기본적으로 멘토는 신입 사용자에게 무작위로 할당됩니다. 이벤트나 수업을 통해 들어온 사람들의 멘토가 되고 싶은 멘토에게만 선택권이 있습니다: 이들은 이들에게 할당된 신입 사용자들을 받지 않으나 요구는 가능합니다.\n\n멘토의 이상적인 숫자는 다음과 같습니다: 500개의 새 계정의 각 그룹마다 한 명의 멘토, 그리고 최소 3명의 멘토입니다.\n\n[https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/FAQ#Mentorship 멘토십의 동작 방식에 관해 더 알아보세요]",
 	"growthexperiments-edit-config-mentorship-enabled": "멘토 기능을 활성화합니까?",
@@ -134,7 +135,7 @@
 	"communityconfiguration-growthhomepage-info-text": "신입 사용자 홈페이지([[Special:Homepage]])는 신규 계정 소유자를 위한 가이드를 제공합니다. 등록 시 신규 계정 소유자가 위키백과에 일반 문서를 만들거나 새 이미지를 추가하고 싶다고 표시하면, 시작을 위해 먼저 규모가 더 작은 편집을 하고 추가 가이드에 대한 링크를 제공하는 것이 좋습니다.",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-label": "신입 홈페이지 링크",
 	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-create-label": "새 문서 만들기에 관한 링크의 목적지 도움말",
-	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "시각 편집기에서 이미지를 추가하는 방법에 관한 링크의 목적지 문서",
+	"communityconfiguration-growthhomepage-gehomepagesuggestededitsintrolinks-image-label": "시각편집기에서 이미지를 추가하는 방법에 관한 링크의 목적지 문서",
 	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-label": "편집 제안 알림 사용해 보기",
 	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-help-text": "신입 사용자가 이 알림을 받을 수 있는 최대 편집 수입니다. 0으로 설정하면 신입 사용자는 이 알림을 받지 않습니다. 숫자가 높을수록 더 많은 신입 사용자가 이 알림을 받게 됩니다. 이 알림은 제안된 편집을 마치지 않은 신입 사용자에게만 전송됩니다.",
 	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-label": "계속 알림",

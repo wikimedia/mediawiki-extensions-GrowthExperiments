@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"O Breixo",
-			"Toliño"
+			"Toliño",
+			"Vinickw"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ola}}, {{bidi:$1}}!",
@@ -175,7 +176,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Ver a {{GENDER:$2|túa}} pregunta na páxina de conversa {{GENDER:$1|do teu mentor|da túa mentora}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Pregunta de [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pregunta de [[User:$1|$1]] en \"[[$2]]\"",
-	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "<span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>, o mentor de [[User:$1|$1]], está ausente.",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "<span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>, {{GENDER:$2|o mentor|a mentora|o(a) mentor(a)}} de [[User:$1|$1]], está ausente.",
 	"growthexperiments-homepage-mentorship-system-message": "Nota: $1",
 	"growthexperiments-specialimpact-title": "Impacto",
 	"growthexperiments-specialimpact-showing-for-other-user": "Mostrando datos do impacto de $1",

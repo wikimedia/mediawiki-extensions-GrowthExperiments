@@ -184,6 +184,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "Ver a sua pergunta na página de discussão {{GENDER:$1|do seu mentor|da sua mentora}}.{{GENDER:$2|}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Pergunta de [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pergunta de [[User:$1|$1]] em [[$2]]",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "{{GENDER:$2|O mentor|A mentora|O(A) mentor(a)}} de [[User:$1|$1]], <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>, está ausente.",
 	"growthexperiments-specialimpact-title": "Impacto",
 	"growthexperiments-specialimpact-showing-for-other-user": "A mostrar dados do impacto de $1",
 	"growthexperiments-specialimpact-invalid-username": "Nome de utilizador em falta ou inválido.",

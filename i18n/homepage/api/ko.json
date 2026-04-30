@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Revi",
-			"Ykhwong"
+			"Ykhwong",
+			"Tensama0415"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "홈페이지 모듈을 통해 게시된 서식이 있는 질문을 가져옵니다",
@@ -14,5 +15,5 @@
 	"apihelp-growthsetmentor-param-mentee": "멘티의 사용자 이름",
 	"apihelp-growthsetmentor-param-mentor": "멘토의 사용자 이름",
 	"apihelp-growthsetmentor-param-reason": "변경 이유",
-	"apihelp-growthinvalidateimagerecommendation-summary": "이미지 권고 작업을 무효화합니다"
+	"apihelp-growthinvalidateimagerecommendation-summary": "이미지 권고를 무효화합니다."
 }
