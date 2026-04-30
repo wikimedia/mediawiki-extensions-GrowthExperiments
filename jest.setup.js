@@ -53,7 +53,6 @@ const testKitchenMock = {
 		getExperiment() {
 			return {
 				getAssignedGroup: jest.fn(),
-				setStream: jest.fn(),
 				send: jest.fn(),
 			};
 		},
