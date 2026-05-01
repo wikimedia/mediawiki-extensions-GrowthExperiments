@@ -4,10 +4,15 @@
 			"Bluehill",
 			"Ellif",
 			"Revi",
-			"Ykhwong"
+			"Ykhwong",
+			"Tensama0415"
 		]
 	},
+	"growthexperiments-createacct-username-description": "사용자 이름은 공개되어 있으며 나중에 비공개로 변경할 수 없습니다.",
+	"growthexperiments-createacct-username-learn-more": "더 알아보기",
+	"growthexperiments-confirmemail-emaildescription": "비밀번호를 잊어버려서 계정을 복구해야 하는 겅우나, 익숙하지 않은 지역 또는 새로운 브라우저에서 로그인하는 경우 이메일 주소가 필요합니다.",
 	"growthexperiments-confirmemail-email-optional": "이메일 주소",
+	"growthexperiments-confirmemail-email-recommended-flag": "(권장됨)",
 	"growthexperiments-confirmemail-emailhelp": "비밀번호를 분실한 경우 계정 복구에 이메일이 필요합니다.",
 	"growthexperiments-confirmemail-emailrecommended": "이메일 주소 (권장)",
 	"growthexperiments-confirmemail-emailwarning": "이메일 주소를 인증하기 위해 발송한 이메일을 확인해 주십시오.",
