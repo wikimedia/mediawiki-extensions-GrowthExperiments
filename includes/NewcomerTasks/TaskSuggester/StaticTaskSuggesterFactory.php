@@ -3,7 +3,6 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use MediaWiki\Title\TitleFactory;
 use StatusValue;
 
 /**
@@ -18,28 +17,26 @@ use StatusValue;
  *             return new StaticTaskSuggesterFactory( [
  *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
  *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
- *             ], $services->getTitleFactory() );
+ *             ] );
  *         } );
  *     };
  */
 class StaticTaskSuggesterFactory extends TaskSuggesterFactory {
 
-	/** @var TaskSuggester */
-	private $taskSuggester;
+	private TaskSuggester $taskSuggester;
 
 	/**
 	 * @param TaskSuggester|StatusValue|array $taskSuggester A TaskSuggester, an array of
 	 *   suggestions to create a StaticTaskSuggester with, or an error to create an
 	 *   ErrorForwardingTaskSuggester with.
-	 * @param TitleFactory|null $titleFactory
 	 */
-	public function __construct( $taskSuggester, ?TitleFactory $titleFactory = null ) {
+	public function __construct( $taskSuggester ) {
 		if ( $taskSuggester instanceof TaskSuggester ) {
 			$this->taskSuggester = $taskSuggester;
 		} elseif ( $taskSuggester instanceof StatusValue ) {
 			$this->taskSuggester = $this->createError( $taskSuggester );
 		} else {
-			$this->taskSuggester = new StaticTaskSuggester( $taskSuggester, $titleFactory );
+			$this->taskSuggester = new StaticTaskSuggester( $taskSuggester );
 		}
 	}
 
