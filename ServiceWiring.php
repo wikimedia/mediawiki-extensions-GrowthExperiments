@@ -1214,14 +1214,10 @@ return [
 	'GrowthExperimentsUserImpactUpdater' => static function (
 		MediaWikiServices $services
 	): GrowthExperimentsUserImpactUpdater {
-		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new GrowthExperimentsUserImpactUpdater(
 			$services->getUserEditTracker(),
 			$services->getUserRegistrationLookup(),
 			$services->getJobQueueGroup(),
-			$growthServices->getUncachedUserImpactLookup(),
-			$growthServices->getUserImpactStore(),
-			$growthServices->getUserImpactFormatter()
 		);
 	},
 

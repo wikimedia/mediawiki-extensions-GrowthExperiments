@@ -17,27 +17,12 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 use Wikimedia\Timestamp\TimestampFormat;
 
 class GrowthExperimentsUserImpactUpdater {
-	private UserEditTracker $userEditTracker;
-	private UserRegistrationLookup $userRegistrationLookup;
-	private JobQueueGroup $jobQueueGroup;
-	private UserImpactLookup $userImpactLookup;
-	private UserImpactStore $userImpactStore;
-	private UserImpactFormatter $userImpactFormatter;
 
 	public function __construct(
-		UserEditTracker $userEditTracker,
-		UserRegistrationLookup $userRegistrationLookup,
-		JobQueueGroup $jobQueueGroup,
-		UserImpactLookup $userImpactLookup,
-		UserImpactStore $userImpactStore,
-		UserImpactFormatter $userImpactFormatter
+		private UserEditTracker $userEditTracker,
+		private UserRegistrationLookup $userRegistrationLookup,
+		private JobQueueGroup $jobQueueGroup,
 	) {
-		$this->userEditTracker = $userEditTracker;
-		$this->userRegistrationLookup = $userRegistrationLookup;
-		$this->jobQueueGroup = $jobQueueGroup;
-		$this->userImpactLookup = $userImpactLookup;
-		$this->userImpactStore = $userImpactStore;
-		$this->userImpactFormatter = $userImpactFormatter;
 	}
 
 	/**
