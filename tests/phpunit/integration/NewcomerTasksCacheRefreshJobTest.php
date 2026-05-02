@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use MediaWiki\JobQueue\Job;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\NewcomerTasksCacheRefreshJob;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -12,12 +12,15 @@ class NewcomerTasksCacheRefreshJobTest extends MediaWikiIntegrationTestCase {
 
 	public function testFactory() {
 		// sanity check
-		$job = Job::factory( 'newcomerTasksCacheRefreshJob', [
-			'userId' => 1,
-			'taskTypeFilters' => [ 'copyedit' ],
-			'topicFilters' => [ 'sociology' ],
-			'limit' => 10,
-		] );
+		$job = $this->getServiceContainer()->getJobFactory()->newJob(
+			NewcomerTasksCacheRefreshJob::JOB_NAME, [
+				'userId' => 1,
+				'taskTypeFilters' => [ 'copyedit' ],
+				'topicFilters' => [ 'sociology' ],
+				'limit' => 10,
+			]
+		);
+
 		$params = $job->getParams();
 		$this->assertArrayHasKey( 'taskTypeFilters', $params );
 		$this->assertSame( [ 'copyedit' ], $params['taskTypeFilters'] );
