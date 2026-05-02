@@ -1225,6 +1225,7 @@ return [
 		return new WelcomeSurveyFactory(
 			$services->getLanguageNameUtils(),
 			$services->getUserOptionsManager(),
+			$services->getUserRegistrationLookup(),
 			ExtensionRegistry::getInstance()->isLoaded( 'UniversalLanguageSelector' )
 		);
 	},

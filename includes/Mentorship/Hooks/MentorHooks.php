@@ -25,6 +25,7 @@ use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\RenameUser\Hook\RenameUserCompleteHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\Specials\Hook\BlockIpCompleteHook;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerInterface;
@@ -46,29 +47,17 @@ class MentorHooks implements
 	RenameUserCompleteHook
 {
 
-	private Config $wikiConfig;
-	private UserIdentityLookup $userIdentityLookup;
-	private GenderCache $genderCache;
-	private IMentorManager $mentorManager;
-	private MentorProvider $mentorProvider;
-	private MentorStore $mentorStore;
 	private LoggerInterface $logger;
 
 	public function __construct(
-		Config $wikiConfig,
-		UserIdentityLookup $userIdentityLookup,
-		GenderCache $genderCache,
-		IMentorManager $mentorManager,
-		MentorProvider $mentorProvider,
-		MentorStore $mentorStore
+		private Config $wikiConfig,
+		private UserIdentityLookup $userIdentityLookup,
+		private GenderCache $genderCache,
+		private IMentorManager $mentorManager,
+		private MentorProvider $mentorProvider,
+		private MentorStore $mentorStore,
+		private UserRegistrationLookup $userRegistrationLookup,
 	) {
-		$this->wikiConfig = $wikiConfig;
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->genderCache = $genderCache;
-		$this->mentorManager = $mentorManager;
-		$this->mentorProvider = $mentorProvider;
-		$this->mentorStore = $mentorStore;
-
 		// TODO: This is not a service (yet), but should be
 		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 	}
@@ -291,8 +280,8 @@ class MentorHooks implements
 		// ConvertibleTimestamp::time() used so we can fake the current time in tests
 		$userAge = ConvertibleTimestamp::time() - (int)wfTimestampOrNull(
 			TimestampFormat::UNIX,
-				$user->getRegistration()
-			);
+			$this->userRegistrationLookup->getRegistration( $user )
+		);
 		if (
 			$userAge >= $this->wikiConfig->get( 'GEMentorshipMinimumAge' ) * ExpirationAwareness::TTL_DAY &&
 			$user->getEditCount() >= $this->wikiConfig->get( 'GEMentorshipMinimumEditcount' )

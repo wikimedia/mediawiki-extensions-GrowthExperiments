@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Language\LanguageNameUtils;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 
 /**
  * Factory class for WelcomeSurvey
@@ -13,18 +14,12 @@ use MediaWiki\User\Options\UserOptionsManager;
  * passed to WelcomeSurvey.
  */
 class WelcomeSurveyFactory {
-	private LanguageNameUtils $languageNameUtils;
-	private UserOptionsManager $userOptionsManager;
-	private bool $ulsInstalled;
-
 	public function __construct(
-		LanguageNameUtils $languageNameUtils,
-		UserOptionsManager $userOptionsManager,
-		bool $ulsInstalled
+		private LanguageNameUtils $languageNameUtils,
+		private UserOptionsManager $userOptionsManager,
+		private UserRegistrationLookup $userRegistrationLookup,
+		private bool $ulsInstalled,
 	) {
-		$this->languageNameUtils = $languageNameUtils;
-		$this->userOptionsManager = $userOptionsManager;
-		$this->ulsInstalled = $ulsInstalled;
 	}
 
 	public function newWelcomeSurvey( IContextSource $context ): WelcomeSurvey {
@@ -32,7 +27,8 @@ class WelcomeSurveyFactory {
 			$context,
 			$this->languageNameUtils,
 			$this->userOptionsManager,
-			$this->ulsInstalled
+			$this->userRegistrationLookup,
+			$this->ulsInstalled,
 		);
 	}
 }

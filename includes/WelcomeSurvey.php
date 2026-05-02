@@ -10,6 +10,7 @@ use MediaWiki\Html\HtmlHelper;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Language\LanguageNameUtils;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\Utils\MWTimestamp;
 use stdClass;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -26,24 +27,17 @@ class WelcomeSurvey {
 
 	public const DEFAULT_SURVEY_GROUP = 'control';
 
-	private IContextSource $context;
 	private bool $allowFreetext;
-	private LanguageNameUtils $languageNameUtils;
-	private UserOptionsManager $userOptionsManager;
-	private bool $ulsInstalled;
 
 	public function __construct(
-		IContextSource $context,
-		LanguageNameUtils $languageNameUtils,
-		UserOptionsManager $userOptionsManager,
-		bool $ulsInstalled
+		private IContextSource $context,
+		private LanguageNameUtils $languageNameUtils,
+		private UserOptionsManager $userOptionsManager,
+		private UserRegistrationLookup $userRegistrationLookup,
+		private bool $ulsInstalled,
 	) {
-		$this->context = $context;
 		$this->allowFreetext =
 			(bool)$this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
-		$this->languageNameUtils = $languageNameUtils;
-		$this->userOptionsManager = $userOptionsManager;
-		$this->ulsInstalled = $ulsInstalled;
 	}
 
 	/**
@@ -111,7 +105,7 @@ class WelcomeSurvey {
 	 * @return bool
 	 */
 	public function isUnfinished(): bool {
-		$registrationDate = $this->context->getUser()->getRegistration() ?: null;
+		$registrationDate = $this->userRegistrationLookup->getRegistration( $this->context->getUser() );
 		if ( !$registrationDate ) {
 			// User is anon or has registered a long, long time ago when MediaWiki had no logging for it.
 			return false;

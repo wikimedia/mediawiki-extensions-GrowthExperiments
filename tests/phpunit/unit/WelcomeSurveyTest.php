@@ -8,12 +8,12 @@ use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Language\LanguageNameUtils;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
-use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @coversDefaultClass \GrowthExperiments\WelcomeSurvey
@@ -66,6 +66,7 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 			$contextMock,
 			$this->getLanguageNameUtilsMockObject(),
 			$this->createNoOpMock( UserOptionsManager::class ),
+			$this->createNoOpMock( UserRegistrationLookup::class ),
 			false
 		);
 	}
@@ -112,15 +113,24 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 				$userOptions[$user->getName()][$option] = $value;
 			}
 		);
+		$registrationDates = [];
+		$mockUserRegistrationLookup = $this->createNoOpMock( UserRegistrationLookup::class, [ 'getRegistration' ] );
+		$mockUserRegistrationLookup->method( 'getRegistration' )
+			->willReturnCallback(
+				static function ( UserIdentity $user ) use ( &$registrationDates ) {
+					return $registrationDates[$user->getName()] ?? null;
+				}
+			);
 		$welcomeSurvey = new WelcomeSurvey(
 			$context,
 			$this->getLanguageNameUtilsMockObject(),
 			$mockUserOptionsManager,
+			$mockUserRegistrationLookup,
 			false
 		);
 
 		// register
-		$context->setUser( $this->getMockUser( $registrationDate ) );
+		$context->setUser( $this->getMockUser( $registrationDate, $registrationDates ) );
 		ConvertibleTimestamp::setFakeTime( $registrationDate );
 		$welcomeSurvey->saveGroup( 'someSurvey' );
 		ConvertibleTimestamp::setFakeTime( $now );
@@ -131,7 +141,7 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $welcomeSurvey->isUnfinished() );
 
 		// register another user
-		$context->setUser( $this->getMockUser( $registrationDate ) );
+		$context->setUser( $this->getMockUser( $registrationDate, $registrationDates ) );
 		ConvertibleTimestamp::setFakeTime( $registrationDate );
 		$welcomeSurvey->saveGroup( 'someSurvey' );
 		ConvertibleTimestamp::setFakeTime( $now );
@@ -143,7 +153,7 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 
 		// expired
 		$longAgoRegistrationDate = '2021-10-01 08:00:00';
-		$context->setUser( $this->getMockUser( $longAgoRegistrationDate ) );
+		$context->setUser( $this->getMockUser( $longAgoRegistrationDate, $registrationDates ) );
 		ConvertibleTimestamp::setFakeTime( $registrationDate );
 		$welcomeSurvey->saveGroup( 'someSurvey' );
 		ConvertibleTimestamp::setFakeTime( $now );
@@ -151,25 +161,25 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 
 		// ancient user
 		$longAgoRegistrationDate = null;
-		$context->setUser( $this->getMockUser( $longAgoRegistrationDate ) );
+		$context->setUser( $this->getMockUser( $longAgoRegistrationDate, $registrationDates ) );
 		ConvertibleTimestamp::setFakeTime( $registrationDate );
 		$welcomeSurvey->saveGroup( 'someSurvey' );
 		ConvertibleTimestamp::setFakeTime( $now );
 		$this->assertFalse( $welcomeSurvey->isUnfinished() );
 
 		// no data
-		$context->setUser( $this->getMockUser( $registrationDate ) );
+		$context->setUser( $this->getMockUser( $registrationDate, $registrationDates ) );
 		$this->assertFalse( $welcomeSurvey->isUnfinished() );
 
 		// control group
-		$context->setUser( $this->getMockUser( $registrationDate ) );
+		$context->setUser( $this->getMockUser( $registrationDate, $registrationDates ) );
 		ConvertibleTimestamp::setFakeTime( $registrationDate );
 		$welcomeSurvey->saveGroup( 'controlSurvey' );
 		ConvertibleTimestamp::setFakeTime( $now );
 		$this->assertFalse( $welcomeSurvey->isUnfinished() );
 
 		// invalid group
-		$context->setUser( $this->getMockUser( $registrationDate ) );
+		$context->setUser( $this->getMockUser( $registrationDate, $registrationDates ) );
 		ConvertibleTimestamp::setFakeTime( $registrationDate );
 		$welcomeSurvey->saveGroup( 'noSuchSurvey' );
 		ConvertibleTimestamp::setFakeTime( $now );
@@ -180,16 +190,20 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 	 * @param string|null $registrationDate Registration date in any wfTimestamp format.
 	 * @return User
 	 */
-	private function getMockUser( ?string $registrationDate ): User {
+	private function getMockUser(
+		?string $registrationDate,
+		array &$registrationDates
+	): User {
 		static $counter = 1;
+		$userName = 'TestUser' . $counter++;
 		/** @var User|MockObject $mockUser */
 		$mockUser = $this->createNoOpMock( User::class,
-			[ 'getName', 'getRegistration', 'getInstanceFromPrimary' ] );
-		$mockUser->method( 'getName' )->willReturn( 'TestUser' . $counter++ );
-		$mockUser->method( 'getRegistration' )->willReturnCallback( static function () use ( $registrationDate ) {
-			return wfTimestampOrNull( TimestampFormat::MW, $registrationDate );
-		} );
+			[ 'getName', 'getInstanceFromPrimary' ] );
+		$mockUser->method( 'getName' )->willReturn( $userName );
 		$mockUser->method( 'getInstanceFromPrimary' )->willReturnSelf();
+
+		$registrationDates[$userName] = $registrationDate;
+
 		return $mockUser;
 	}
 

@@ -361,7 +361,8 @@
 				"GenderCache",
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorProvider",
-				"GrowthExperimentsMentorStore"
+				"GrowthExperimentsMentorStore",
+				"UserRegistrationLookup"
 			]
 		},
 		"mentordashboard": {

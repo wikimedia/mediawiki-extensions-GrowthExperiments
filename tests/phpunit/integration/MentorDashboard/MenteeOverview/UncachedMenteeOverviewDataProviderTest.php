@@ -186,7 +186,10 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 		);
 		foreach ( $mentees as $mentee ) {
 			$this->assertArrayHasKey( $mentee->getId(), $returnedData );
-			$this->assertEquals( $mentee->getRegistration(), $returnedData[$mentee->getId()] );
+			$this->assertEquals(
+				$this->getServiceContainer()->getUserRegistrationLookup()->getRegistration( $mentee ),
+				$returnedData[$mentee->getId()]
+			);
 		}
 	}
 }
