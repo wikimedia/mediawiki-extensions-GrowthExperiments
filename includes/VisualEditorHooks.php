@@ -10,11 +10,13 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\Hook\APIGetAllowedParamsHook;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\VisualEditor\ApiVisualEditorEdit;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPreSaveHook;
+use MediaWiki\Language\FormatterFactory;
 use MediaWiki\Page\ProperPageIdentity;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
@@ -41,19 +43,24 @@ class VisualEditorHooks implements
 
 	private StatsFactory $statsFactory;
 	private UserIdentityUtils $userIdentityUtils;
+	private StatusFormatter $statusFormatter;
 
 	public function __construct(
 		TitleFactory $titleFactory,
 		ConfigurationLoader $configurationLoader,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		StatsFactory $statsFactory,
-		UserIdentityUtils $userIdentityUtils
+		UserIdentityUtils $userIdentityUtils,
+		FormatterFactory $formatterFactory
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->statsFactory = $statsFactory;
 		$this->userIdentityUtils = $userIdentityUtils;
+
+		// Ideally RequestContext would be injected but the way hook handlers are defined makes that hard.
+		$this->statusFormatter = $formatterFactory->getStatusFormatter( RequestContext::getMain() );
 	}
 
 	/** @inheritDoc */
@@ -91,7 +98,7 @@ class VisualEditorHooks implements
 			$data
 		);
 		if ( !$status->isGood() ) {
-			$message = Status::wrap( $status )->getMessage();
+			$message = $this->statusFormatter->getMessage( $status );
 			$apiResponse['message'] = array_merge( [ $message->getKey() ], $message->getParams() );
 			Util::logStatus( $status );
 			return false;
@@ -150,7 +157,7 @@ class VisualEditorHooks implements
 			}
 		} else {
 			// FIXME expose error formatter to hook so this can be handled better
-			$errorMessage = Status::wrap( $status )->getWikiText();
+			$errorMessage = $this->statusFormatter->getWikiText( $status );
 			$apiResponse['errors'][] = $errorMessage;
 			Util::logStatus( $status );
 		}

@@ -4,7 +4,7 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationDataValidator;
-use MediaWiki\Status\Status;
+use MediaWiki\Context\RequestContext;
 use MediaWikiIntegrationTestCase;
 use StatusValue;
 
@@ -35,7 +35,13 @@ class ImageRecommendationDataValidatorTest extends MediaWikiIntegrationTestCase 
 		);
 		$status = ImageRecommendationDataValidator::validate( 'test', $imageRecommendationData );
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertSame( $expectedMessage, Status::wrap( $status )->getWikiText( false, false, 'en' ) );
+		$this->assertSame(
+			$expectedMessage,
+			$this->getServiceContainer()
+				->getFormatterFactory()
+				->getStatusFormatter( RequestContext::getMain() )
+				->getWikiText( $status, [ 'lang' => 'en' ] )
+		);
 	}
 
 	public static function dataProvider() {

@@ -16,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\TextContent;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\TitleValue;
@@ -25,10 +26,9 @@ use StatusValue;
 
 class GrowthExperimentsBench {
 
-	/** @var TaskSuggester */
-	private $taskSuggester;
-	/** @var LinkRecommendationFilter */
-	protected $linkRecommendationFilter;
+	private TaskSuggester $taskSuggester;
+	protected LinkRecommendationFilter $linkRecommendationFilter;
+
 	/** @var TaskSet|StatusValue */
 	protected $tasks;
 
@@ -64,7 +64,7 @@ class GrowthExperimentsBench {
 		}
 		$taskSuggesterFactory = new StaticTaskSuggesterFactory(
 			$tasks,
-			$services->getTitleFactory()
+			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
 		);
 		$this->taskSuggester = $taskSuggesterFactory->create();
 		$this->linkRecommendationFilter = $growthServices->getLinkRecommendationFilter();

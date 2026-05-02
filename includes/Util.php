@@ -19,7 +19,6 @@ use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Parser\Sanitizer;
 use MediaWiki\Skin\Skin;
-use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
@@ -183,7 +182,9 @@ class Util {
 			}
 		}
 
-		[ $errorText, $context ] = Status::wrap( $status )->getPsr3MessageAndContext();
+		$statusFormatter = MediaWikiServices::getInstance()->getFormatterFactory()
+			->getStatusFormatter( RequestContext::getMain() );
+		[ $errorText, $context ] = $statusFormatter->getPsr3MessageAndContext( $status );
 		if ( $status->isOK() ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorText, $context );
 		} else {
@@ -230,8 +231,9 @@ class Util {
 		[ $errorStatus, $warningStatus ] = $status->splitByErrorType();
 		if ( !$warningStatus->isGood() ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-				$warningStatus->getWikiText( false, false, 'en' ),
-				[ 'exception' => new RuntimeException ]
+				...MediaWikiServices::getInstance()->getFormatterFactory()
+					->getStatusFormatter( RequestContext::getMain() )
+					->getPsr3MessageAndContext( $warningStatus, [ 'exception' => new RuntimeException() ] )
 			);
 		}
 		return $errorStatus;
@@ -278,8 +280,9 @@ class Util {
 			// Log warnings here. The caller is expected to handle errors so do not double-log them.
 			if ( !$warningStatus->isGood() ) {
 				LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-					Status::wrap( $warningStatus )->getWikiText( false, false, 'en' ),
-					[ 'exception' => new RuntimeException ]
+					...MediaWikiServices::getInstance()->getFormatterFactory()
+						->getStatusFormatter( RequestContext::getMain() )
+						->getPsr3MessageAndContext( $warningStatus, [ 'exception' => new RuntimeException() ] )
 				);
 			}
 		}

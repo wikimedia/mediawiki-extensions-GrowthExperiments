@@ -7,37 +7,20 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentityValue;
 use StatusValue;
 
 class SuggestionsInfo implements NewcomerTasksInfo {
 	public const USER = 'SuggestionsInfo';
 
-	/**
-	 * @var ConfigurationLoader
-	 */
-	private $configurationLoader;
-	/**
-	 * @var TaskTypeHandlerRegistry
-	 */
-	private $taskTypeHandlerRegistry;
-	/**
-	 * @var TaskSuggesterFactory
-	 */
-	private $taskSuggesterFactory;
-	private ITopicRegistry $topicRegistry;
-
 	public function __construct(
-		TaskSuggesterFactory $taskSuggesterFactory,
-		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		ConfigurationLoader $configurationLoader,
-		ITopicRegistry $topicRegistry
+		private StatusFormatter $statusFormatter,
+		private TaskSuggesterFactory $taskSuggesterFactory,
+		private TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
+		private ConfigurationLoader $configurationLoader,
+		private ITopicRegistry $topicRegistry
 	) {
-		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
-		$this->configurationLoader = $configurationLoader;
-		$this->taskSuggesterFactory = $taskSuggesterFactory;
-		$this->topicRegistry = $topicRegistry;
 	}
 
 	/** @inheritDoc */
@@ -48,7 +31,7 @@ class SuggestionsInfo implements NewcomerTasksInfo {
 		$topics = $this->topicRegistry->getTopics();
 		$data = [];
 		if ( $taskTypes instanceof StatusValue ) {
-			$data['error']['taskTypes'] = Status::wrap( $taskTypes )->getWikiText();
+			$data['error']['taskTypes'] = $this->statusFormatter->getWikiText( $taskTypes );
 			return $data;
 		}
 		$totalCount = 0;

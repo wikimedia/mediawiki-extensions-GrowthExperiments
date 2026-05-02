@@ -14,8 +14,10 @@ use GrowthExperiments\NewcomerTasks\AddLink\NullLinkRecommendation;
 use GrowthExperiments\WikiConfigException;
 use LogicException;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use UnexpectedValueException;
@@ -45,6 +47,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 	private LinkRecommendationHelper $linkRecommendationHelper;
 	private LinkRecommendationUpdater $linkRecommendationUpdater;
 	private Config $growthConfig;
+	private StatusFormatter $statusFormatter;
 
 	/** @var string[] */
 	private array $allowedChecksums = [];
@@ -146,7 +149,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 					} else {
 						$status = $this->regenerateRecommendation( $linkRecommendation );
 						$this->verboseLog( $status->isOK() ? "success\n"
-							: $status->getWikiText( false, false, 'en' ) . "\n" );
+							: $this->statusFormatter->getWikiText( $status, [ 'lang' => 'en' ] ) . "\n" );
 						$replaced += $status->isOK() ? 1 : 0;
 						$discarded += $status->isOK() ? 0 : 1;
 					}
@@ -171,6 +174,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 	protected function initServices(): void {
 		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$this->statusFormatter = $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() );
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
 		$this->linkRecommendationHelper = $growthServices->getLinkRecommendationHelper();

@@ -78,7 +78,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, "Kristallsee" ) ),
 				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, "Eldfjall" ) ),
 				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
-			], $services->getTitleFactory() );
+			], $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ) );
 
 			$growthServices = GrowthExperimentsServices::wrap( $services );
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(

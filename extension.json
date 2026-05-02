@@ -322,6 +322,7 @@
 				"TitleFactory",
 				"StatsFactory",
 				"JobQueueGroup",
+				"FormatterFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsCampaignConfig",
 				"GrowthExperimentsExperimentUserManager",
@@ -429,7 +430,8 @@
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"StatsFactory",
-				"UserIdentityUtils"
+				"UserIdentityUtils",
+				"FormatterFactory"
 			]
 		},
 		"welcomeSurvey": {

@@ -18,6 +18,7 @@ use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\Language\FormatterFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\TitleFactory;
@@ -44,6 +45,7 @@ trait HomepageHooksHelpers {
 			$titleFactoryMock ?? $this->createNoOpMock( TitleFactory::class ),
 			$this->createNoOpMock( StatsFactory::class ),
 			$this->createNoOpMock( JobQueueGroup::class ),
+			$this->createNoOpMock( FormatterFactory::class, [ 'getStatusFormatter' ] ),
 			$configurationLoaderMock ?? $this->createNoOpMock( ConfigurationLoader::class ),
 			$this->createNoOpMock( CampaignConfig::class ),
 			$this->createNoOpMock( IExperimentManager::class ),

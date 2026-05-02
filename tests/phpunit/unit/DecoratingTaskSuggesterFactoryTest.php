@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
+use MediaWiki\Status\StatusFormatter;
 use MediaWikiUnitTestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -24,7 +25,11 @@ use Wikimedia\TestingAccessWrapper;
 class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	public function testCreate() {
 		$innerSuggester = new StaticTaskSuggester( [] );
-		$innerFactory = new StaticTaskSuggesterFactory( $innerSuggester );
+		$innerFactory = new StaticTaskSuggesterFactory(
+			$innerSuggester,
+			$this->createNoOpMock( StatusFormatter::class )
+		);
+
 		$objectFactory = new ObjectFactory( $this->getEmptyContainer() );
 		$factory = new DecoratingTaskSuggesterFactory( $innerFactory, $objectFactory, [] );
 		$this->assertSame( $innerSuggester, $factory->create() );

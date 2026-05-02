@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Page\LinkBatchFactory;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
 use StatusValue;
 
@@ -30,6 +31,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param HttpRequestFactory $requestFactory
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param StatusFormatter $statusFormatter
 	 * @param string $apiUrl Base URL of the remote API (ending with 'api.php').
 	 * @param ITopicRegistry $topicRegistry
 	 */
@@ -41,6 +43,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		HttpRequestFactory $requestFactory,
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
+		StatusFormatter $statusFormatter,
 		string $apiUrl,
 		ITopicRegistry $topicRegistry
 	) {
@@ -49,7 +52,8 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$configurationLoader,
 			$searchStrategy,
 			$newcomerTasksUserOptionsLookup,
-			$linkBatchFactory
+			$linkBatchFactory,
+			$statusFormatter
 		);
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
@@ -73,6 +77,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->searchStrategy,
 			$this->newcomerTasksUserOptionsLookup,
 			$this->linkBatchFactory,
+			$this->statusFormatter,
 			$this->requestFactory,
 			$this->titleFactory,
 			$this->apiUrl,

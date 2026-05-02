@@ -5,13 +5,12 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\FauxSearchResultSet;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
 
 /**
@@ -21,41 +20,23 @@ use MediaWiki\Title\TitleFactory;
  */
 class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 
-	/** @var HttpRequestFactory */
-	private $requestFactory;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
 	/** @var string Remote API URL including api.php */
-	private $apiUrl;
+	private string $apiUrl;
 
-	/**
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param SearchStrategy $searchStrategy
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param HttpRequestFactory $requestFactory
-	 * @param TitleFactory $titleFactory
-	 * @param string $apiUrl Remote API URL including api.php
-	 * @param TaskType[] $taskTypes
-	 * @param Topic[] $topics
-	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchStrategy $searchStrategy,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkBatchFactory $linkBatchFactory,
-		HttpRequestFactory $requestFactory,
-		TitleFactory $titleFactory,
-		$apiUrl,
+		StatusFormatter $statusFormatter,
+		private HttpRequestFactory $requestFactory,
+		private TitleFactory $titleFactory,
+		string $apiUrl,
 		array $taskTypes,
 		array $topics
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
-			$linkBatchFactory, $taskTypes, $topics );
-		$this->requestFactory = $requestFactory;
-		$this->titleFactory = $titleFactory;
+			$linkBatchFactory, $statusFormatter, $taskTypes, $topics );
 		$this->apiUrl = $apiUrl;
 	}
 

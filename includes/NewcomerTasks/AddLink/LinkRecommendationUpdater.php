@@ -22,6 +22,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\Utils\MWTimestamp;
@@ -41,17 +42,6 @@ use Wikimedia\Timestamp\TimestampFormat;
  */
 class LinkRecommendationUpdater {
 
-	private LoggerInterface $logger;
-	private IConnectionProvider $connectionProvider;
-	private RevisionStore $revisionStore;
-	private NameTableStore $changeDefNameTableStore;
-	private PageProps $pageProps;
-	private ConfigurationLoader $configurationLoader;
-	private ChangeTagsStore $changeTagsStore;
-	private WikiPageFactory $wikiPageFactory;
-	private ?WeightedTagsUpdater $weightedTagsUpdater;
-	private LinkRecommendationStore $linkRecommendationStore;
-	private LinkRecommendationProvider $linkRecommendationProvider;
 	private ?LinkRecommendationTaskType $linkRecommendationTaskType = null;
 
 	/**
@@ -62,6 +52,7 @@ class LinkRecommendationUpdater {
 	 * @param PageProps $pageProps
 	 * @param ChangeTagsStore $changeTagsStore
 	 * @param WikiPageFactory $wikiPageFactory
+	 * @param StatusFormatter $statusFormatter
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param WeightedTagsUpdater|null $weightedTagsUpdater
 	 * @param LinkRecommendationProvider $linkRecommendationProvider Note that this needs to be
@@ -69,30 +60,19 @@ class LinkRecommendationUpdater {
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 */
 	public function __construct(
-		LoggerInterface $logger,
-		IConnectionProvider $connectionProvider,
-		RevisionStore $revisionStore,
-		NameTableStore $changeDefNameTableStore,
-		PageProps $pageProps,
-		ChangeTagsStore $changeTagsStore,
-		WikiPageFactory $wikiPageFactory,
-		ConfigurationLoader $configurationLoader,
-		?WeightedTagsUpdater $weightedTagsUpdater,
-		LinkRecommendationProvider $linkRecommendationProvider,
-		LinkRecommendationStore $linkRecommendationStore
+		private LoggerInterface $logger,
+		private IConnectionProvider $connectionProvider,
+		private RevisionStore $revisionStore,
+		private NameTableStore $changeDefNameTableStore,
+		private PageProps $pageProps,
+		private ChangeTagsStore $changeTagsStore,
+		private WikiPageFactory $wikiPageFactory,
+		private StatusFormatter $statusFormatter,
+		private ConfigurationLoader $configurationLoader,
+		private ?WeightedTagsUpdater $weightedTagsUpdater,
+		private LinkRecommendationProvider $linkRecommendationProvider,
+		private LinkRecommendationStore $linkRecommendationStore
 	) {
-		$this->logger = $logger;
-		$this->connectionProvider = $connectionProvider;
-		$this->revisionStore = $revisionStore;
-		$this->changeDefNameTableStore = $changeDefNameTableStore;
-		$this->pageProps = $pageProps;
-		$this->changeTagsStore = $changeTagsStore;
-		$this->wikiPageFactory = $wikiPageFactory;
-
-		$this->configurationLoader = $configurationLoader;
-		$this->weightedTagsUpdater = $weightedTagsUpdater;
-		$this->linkRecommendationStore = $linkRecommendationStore;
-		$this->linkRecommendationProvider = $linkRecommendationProvider;
 	}
 
 	/**
@@ -418,7 +398,7 @@ class LinkRecommendationUpdater {
 			$taskTypes = $this->configurationLoader->loadTaskTypes();
 			if ( $taskTypes instanceof StatusValue ) {
 				throw new WikiConfigException( 'Could not load task types: ' .
-					Status::wrap( $taskTypes )->getWikiText( false, false, 'en' ) );
+					$this->statusFormatter->getWikiText( $taskTypes, [ 'lang' => 'en' ] ) );
 			}
 			$taskTypes = $this->configurationLoader->getTaskTypes() +
 				$this->configurationLoader->getDisabledTaskTypes();

@@ -7,15 +7,14 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\ISearchResultSet;
 use MediaWiki\Search\SearchEngine;
 use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
@@ -25,33 +24,21 @@ use Wikimedia\Stats\StatsFactory;
  */
 class LocalSearchTaskSuggester extends SearchTaskSuggester {
 
-	/** @var SearchEngineFactory */
-	private $searchEngineFactory;
-
 	private StatsFactory $statsFactory;
 
-	/**
-	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
-	 * @param SearchEngineFactory $searchEngineFactory
-	 * @param SearchStrategy $searchStrategy
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param TaskType[] $taskTypes
-	 * @param Topic[] $topics
-	 * @param StatsFactory $statsFactory
-	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		SearchEngineFactory $searchEngineFactory,
+		private SearchEngineFactory $searchEngineFactory,
 		SearchStrategy $searchStrategy,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkBatchFactory $linkBatchFactory,
+		StatusFormatter $statusFormatter,
 		array $taskTypes,
 		array $topics,
 		StatsFactory $statsFactory
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
-			$linkBatchFactory, $taskTypes, $topics );
+			$linkBatchFactory, $statusFormatter, $taskTypes, $topics );
 		$this->searchEngineFactory = $searchEngineFactory;
 		$this->statsFactory = $statsFactory->withComponent( 'GrowthExperiments' );
 	}

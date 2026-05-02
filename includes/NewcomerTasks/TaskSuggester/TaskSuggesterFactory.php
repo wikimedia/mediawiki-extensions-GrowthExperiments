@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use StatusValue;
@@ -13,6 +13,11 @@ use StatusValue;
 abstract class TaskSuggesterFactory implements LoggerAwareInterface {
 
 	use LoggerAwareTrait;
+
+	public function __construct(
+		protected StatusFormatter $statusFormatter
+	) {
+	}
 
 	/**
 	 * @param ConfigurationLoader|null $customConfigurationLoader Configuration loader to use instead of the default;
@@ -27,8 +32,9 @@ abstract class TaskSuggesterFactory implements LoggerAwareInterface {
 	 * @return ErrorForwardingTaskSuggester
 	 */
 	protected function createError( StatusValue $status ) {
-		$msg = Status::wrap( $status )->getWikiText( false, false, 'en' );
-		Util::logException( new WikiConfigException( $msg ) );
+		Util::logException( new WikiConfigException(
+			$this->statusFormatter->getWikiText( $status, [ 'lang' => 'en' ] )
+		) );
 		return new ErrorForwardingTaskSuggester( $status );
 	}
 

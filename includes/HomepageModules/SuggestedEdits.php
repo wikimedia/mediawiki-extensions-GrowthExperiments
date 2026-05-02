@@ -31,7 +31,7 @@ use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
@@ -116,18 +116,6 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public const ADD_SECTION_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addsectionimage-caption-onboarding';
 
-	private ?PageViewService $pageViewService;
-
-	private ConfigurationLoader $configurationLoader;
-
-	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
-
-	private TaskSuggester $taskSuggester;
-
-	private TitleFactory $titleFactory;
-
-	private ProtectionFilter $protectionFilter;
-
 	/** @var string[] cache key => HTML */
 	private array $htmlCache = [];
 
@@ -136,69 +124,28 @@ class SuggestedEdits extends BaseModule {
 
 	private ButtonGroupWidget $buttonGroupWidget;
 
-	private UserOptionsManager $userOptionsManager;
-
 	private ?NavigationWidgetFactory $navigationWidgetFactory = null;
 
-	private LinkRecommendationFilter $linkRecommendationFilter;
-
-	private ImageRecommendationFilter $imageRecommendationFilter;
-
-	private CampaignConfig $campaignConfig;
-
-	private StatsFactory $statsFactory;
-	private ITopicRegistry $topicRegistry;
-	private TaskTypeManager $taskTypeManager;
-
-	/**
-	 * @param IContextSource $context
-	 * @param Config $wikiConfig
-	 * @param CampaignConfig $campaignConfig
-	 * @param FeatureManager $featureManager
-	 * @param PageViewService|null $pageViewService
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param TaskSuggester $taskSuggester
-	 * @param TitleFactory $titleFactory
-	 * @param ProtectionFilter $protectionFilter
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param LinkRecommendationFilter $linkRecommendationFilter
-	 * @param ImageRecommendationFilter $imageRecommendationFilter
-	 * @param StatsFactory $statsFactory
-	 * @param ITopicRegistry $topicRegistry
-	 */
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		CampaignConfig $campaignConfig,
+		private CampaignConfig $campaignConfig,
 		private readonly FeatureManager $featureManager,
-		?PageViewService $pageViewService,
-		ConfigurationLoader $configurationLoader,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		TaskSuggester $taskSuggester,
-		TitleFactory $titleFactory,
-		ProtectionFilter $protectionFilter,
-		UserOptionsManager $userOptionsManager,
-		LinkRecommendationFilter $linkRecommendationFilter,
-		ImageRecommendationFilter $imageRecommendationFilter,
-		StatsFactory $statsFactory,
-		ITopicRegistry $topicRegistry,
-		TaskTypeManager $taskTypeManager
+		private ?PageViewService $pageViewService,
+		private ConfigurationLoader $configurationLoader,
+		private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		private TaskSuggester $taskSuggester,
+		private TitleFactory $titleFactory,
+		private ProtectionFilter $protectionFilter,
+		private UserOptionsManager $userOptionsManager,
+		private StatusFormatter $statusFormatter,
+		private LinkRecommendationFilter $linkRecommendationFilter,
+		private ImageRecommendationFilter $imageRecommendationFilter,
+		private StatsFactory $statsFactory,
+		private ITopicRegistry $topicRegistry,
+		private TaskTypeManager $taskTypeManager
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig );
-		$this->pageViewService = $pageViewService;
-		$this->configurationLoader = $configurationLoader;
-		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->taskSuggester = $taskSuggester;
-		$this->titleFactory = $titleFactory;
-		$this->protectionFilter = $protectionFilter;
-		$this->userOptionsManager = $userOptionsManager;
-		$this->linkRecommendationFilter = $linkRecommendationFilter;
-		$this->imageRecommendationFilter = $imageRecommendationFilter;
-		$this->campaignConfig = $campaignConfig;
-		$this->statsFactory = $statsFactory;
-		$this->topicRegistry = $topicRegistry;
-		$this->taskTypeManager = $taskTypeManager;
 	}
 
 	public static function getDefaultTaskTypes( Config $mainConfig ): array {
@@ -348,7 +295,7 @@ class SuggestedEdits extends BaseModule {
 			$this->trackQueueStatus( $mode, 'total' );
 			if ( $tasks instanceof StatusValue ) {
 				$data['task-preview'] = [
-					'error' => Status::wrap( $tasks )->getMessage( false, false, 'en' )->parse(),
+					'error' => $this->statusFormatter->getHTML( $tasks, [ 'lang' => 'en' ] ),
 				];
 				$this->trackQueueStatus( $mode, 'error' );
 			} elseif ( $tasks->count() === 0 ) {

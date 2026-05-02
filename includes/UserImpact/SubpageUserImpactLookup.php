@@ -6,6 +6,7 @@ use GrowthExperiments\Util;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\IDBAccessObject;
@@ -21,12 +22,15 @@ class SubpageUserImpactLookup implements UserImpactLookup {
 	private const SUBPAGE_NAME = 'userimpact.json';
 	private WikiPageFactory $wikiPageFactory;
 	private ?UserImpactLookup $fallbackLookup;
+	private StatusFormatter $statusFormatter;
 
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
+		StatusFormatter $statusFormatter,
 		?UserImpactLookup $fallbackLookup = null
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
+		$this->statusFormatter = $statusFormatter;
 		$this->fallbackLookup = $fallbackLookup;
 	}
 
@@ -48,7 +52,7 @@ class SubpageUserImpactLookup implements UserImpactLookup {
 		$dataStatus = FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC );
 		if ( !$dataStatus->isOK() ) {
 			Util::logText( 'Invalid JSON content: '
-				. $dataStatus->getWikiText( false, false, 'en' ) );
+				. $this->statusFormatter->getWikiText( $dataStatus, [ 'lang' => 'en' ] ) );
 			return null;
 		}
 		$data = $dataStatus->getValue();

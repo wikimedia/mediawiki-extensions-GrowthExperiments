@@ -162,8 +162,7 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 	}
 
 	private function hasErrorCode( StatusValue $status, string $errorCode ): bool {
-		foreach ( $status->getErrors() as $error ) {
-			$message = $error['message'];
+		foreach ( $status->getMessages() as $message ) {
 			if ( $message instanceof IApiMessage && $message->getApiCode() === $errorCode ) {
 				return true;
 			}

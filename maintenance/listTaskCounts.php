@@ -6,6 +6,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Maintenance\MaintenanceFatalError;
@@ -127,6 +128,7 @@ class ListTaskCounts extends Maintenance {
 		// Cache stats for Growth topics since they're also used in SpecialNewcomerTasksInfo
 		$shouldCacheStats = $this->topicType === 'growth';
 		$suggestionsInfoService = new SuggestionsInfo(
+			$mwServices->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 			$services->getTaskSuggesterFactory(),
 			$services->getTaskTypeHandlerRegistry(),
 			$this->taskTypesAndTopics,

@@ -53,6 +53,7 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Hook\FormatAutocommentsHook;
 use MediaWiki\Html\Html;
 use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\Language\FormatterFactory;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\SkinOptions;
@@ -75,7 +76,7 @@ use MediaWiki\Specials\Contribute\Card\ContributeCard;
 use MediaWiki\Specials\Contribute\Card\ContributeCardActionLink;
 use MediaWiki\Specials\Contribute\Hook\ContributeCardsHook;
 use MediaWiki\Specials\Hook\SpecialContributionsBeforeMainOutputHook;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -155,6 +156,7 @@ class HomepageHooks implements
 	private StatsFactory $statsFactory;
 	private GrowthExperimentsInteractionLogger $growthInteractionLogger;
 	private TaskTypeManager $taskTypeManager;
+	private StatusFormatter $statusFormatter;
 
 	public function __construct(
 		Config $config,
@@ -165,6 +167,7 @@ class HomepageHooks implements
 		TitleFactory $titleFactory,
 		StatsFactory $statsFactory,
 		JobQueueGroup $jobQueueGroup,
+		FormatterFactory $formatterFactory,
 		ConfigurationLoader $configurationLoader,
 		CampaignConfig $campaignConfig,
 		IExperimentManager $experimentManager,
@@ -202,6 +205,9 @@ class HomepageHooks implements
 		$this->taskTypeManager = $taskTypeManager;
 		$this->levelingUpManager = $levelingUpManager;
 		$this->featureManager = $featureManager;
+
+		// Ideally RequestContext would be injected but the way hook handlers are defined makes that hard.
+		$this->statusFormatter = $formatterFactory->getStatusFormatter( RequestContext::getMain() );
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -418,7 +424,7 @@ class HomepageHooks implements
 					} else {
 						Util::logStatus( $recommendation );
 						$serializedRecommendation = [
-							'error' => Status::wrap( $recommendation )->getWikiText( false, false, 'en' ),
+							'error' => $this->statusFormatter->getWikiText( $recommendation, [ 'lang' => 'en' ] ),
 						];
 					}
 

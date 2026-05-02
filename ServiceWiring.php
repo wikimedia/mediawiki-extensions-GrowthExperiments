@@ -518,6 +518,7 @@ return [
 			$services->getPageProps(),
 			$services->getChangeTagsStore(),
 			$services->getWikiPageFactory(),
+			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$weightedTagsUpdater,
 			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' ),
@@ -993,6 +994,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new CachedSuggestionsInfo(
 			new SuggestionsInfo(
+				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 				$growthServices->getTaskSuggesterFactory(),
 				$growthServices->getTaskTypeHandlerRegistry(),
 				$growthServices->getNewcomerTasksConfigurationLoader(),
@@ -1023,6 +1025,7 @@ return [
 				$services->getHttpRequestFactory(),
 				$services->getTitleFactory(),
 				$services->getLinkBatchFactory(),
+				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 				$growthConfig->get( 'GENewcomerTasksRemoteApiUrl' ),
 				$growthServices->getTopicRegistry()
 			);
@@ -1035,6 +1038,7 @@ return [
 				$services->getSearchEngineFactory(),
 				$services->getLinkBatchFactory(),
 				$services->getStatsFactory(),
+				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 				$growthServices->getTopicRegistry()
 			);
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
@@ -1073,7 +1077,8 @@ return [
 						'Either $wgGENewcomerTasksRemoteApiUrl needs to be set or CirrusSearch needs to be enabled.',
 						'tasksuggesterfactory-not-configured'
 					) )
-				)
+				),
+				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
 			);
 		}
 		$taskSuggesterFactory->setLogger( $growthServices->getLogger() );
@@ -1250,7 +1255,8 @@ return [
 		MediaWikiServices $services
 	): UserImpactLookup {
 		return new SubpageUserImpactLookup(
-			$services->getWikiPageFactory()
+			$services->getWikiPageFactory(),
+			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
 		);
 	},
 

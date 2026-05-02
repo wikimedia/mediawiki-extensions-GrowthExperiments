@@ -9,9 +9,10 @@ use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Util;
 use LogicException;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Page\LinkBatchFactory;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Utils\UrlUtils;
@@ -41,6 +42,7 @@ class ImportArticleTopics extends Maintenance {
 	private WeightedTagsUpdater $weightedTagsUpdater;
 	private TitleFactory $titleFactory;
 	private LinkBatchFactory $linkBatchFactory;
+	private StatusFormatter $statusFormatter;
 
 	private bool $isBeta;
 
@@ -103,6 +105,7 @@ class ImportArticleTopics extends Maintenance {
 
 	private function init() {
 		$services = $this->getServiceContainer();
+		$this->statusFormatter = $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() );
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		if ( !$growthServices->getGrowthConfig()->get( 'GEDeveloperSetup' ) ) {
 			$this->fatalError( 'This script cannot be safely run in production. (If the current '
@@ -387,7 +390,7 @@ class ImportArticleTopics extends Maintenance {
 			$result = Util::getJsonUrl( $requestFactory, $url );
 		}
 		if ( !$result->isOK() ) {
-			$this->fatalError( Status::wrap( $result )->getWikiText( false, false, 'en' ) );
+			$this->fatalError( $this->statusFormatter->getWikiText( $result, [ 'lang' => 'en' ] ) );
 		}
 		return $result->getValue();
 	}
@@ -411,7 +414,7 @@ class ImportArticleTopics extends Maintenance {
 			if ( $matches->isOK() ) {
 				$matches = $matches->getValue();
 			} else {
-				$this->fatalError( Status::wrap( $matches )->getWikiText( false, false, 'en' ) );
+				$this->fatalError( $this->statusFormatter->getWikiText( $matches, [ 'lang' => 'en' ] ) );
 			}
 		}
 		return $matches->extractTitles();

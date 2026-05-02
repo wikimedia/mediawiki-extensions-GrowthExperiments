@@ -26,6 +26,7 @@ use MediaWiki\Language\Language;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Request\WebRequest;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\Options\UserOptionsManager;
@@ -228,6 +229,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$titleFactoryMock,
 			$protectionFilter,
 			$userOptionsManagerMock,
+			$this->createNoOpMock( StatusFormatter::class ),
 			$linkRecommendationFilter,
 			$imageRecommendationFilter,
 			StatsFactory::newNull(),

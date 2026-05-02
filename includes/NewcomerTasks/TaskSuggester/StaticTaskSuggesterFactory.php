@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use MediaWiki\Status\StatusFormatter;
 use StatusValue;
 
 /**
@@ -17,7 +18,7 @@ use StatusValue;
  *             return new StaticTaskSuggesterFactory( [
  *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
  *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
- *             ] );
+ *             ], $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ) );
  *         } );
  *     };
  */
@@ -29,8 +30,11 @@ class StaticTaskSuggesterFactory extends TaskSuggesterFactory {
 	 * @param TaskSuggester|StatusValue|array $taskSuggester A TaskSuggester, an array of
 	 *   suggestions to create a StaticTaskSuggester with, or an error to create an
 	 *   ErrorForwardingTaskSuggester with.
+	 * @param StatusFormatter $statusFormatter
 	 */
-	public function __construct( $taskSuggester ) {
+	public function __construct( $taskSuggester, StatusFormatter $statusFormatter ) {
+		parent::__construct( $statusFormatter );
+
 		if ( $taskSuggester instanceof TaskSuggester ) {
 			$this->taskSuggester = $taskSuggester;
 		} elseif ( $taskSuggester instanceof StatusValue ) {

@@ -8,6 +8,7 @@ use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWiki\Content\JsonContent;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -94,7 +95,9 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 		] );
 
 		$wikiPageFactory = $this->getServiceContainer()->getWikiPageFactory();
-		$lookup = new SubpageUserImpactLookup( $wikiPageFactory );
+		$statusFormatter = $this->getServiceContainer()->getFormatterFactory()
+			->getStatusFormatter( RequestContext::getMain() );
+		$lookup = new SubpageUserImpactLookup( $wikiPageFactory, $statusFormatter );
 		$this->assertEquals(
 			$userImpact1,
 			$lookup->getUserImpact( UserIdentityValue::newRegistered( 1, 'User1' ) )
@@ -102,10 +105,15 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull( $lookup->getExpensiveUserImpact( UserIdentityValue::newRegistered( 1, 'User1' ) ) );
 		$this->assertNull( $lookup->getUserImpact( UserIdentityValue::newRegistered( 2, 'User2' ) ) );
 
-		$lookup = new SubpageUserImpactLookup( $wikiPageFactory, new StaticUserImpactLookup( [
-			1 => $fallbackUserImpact1,
-			2 => $userImpact2,
-		] ) );
+		$lookup = new SubpageUserImpactLookup(
+			$wikiPageFactory,
+			$statusFormatter,
+			new StaticUserImpactLookup( [
+				1 => $fallbackUserImpact1,
+				2 => $userImpact2,
+			]
+			)
+		);
 		 $this->assertEquals(
 			$userImpact1,
 			$lookup->getUserImpact( UserIdentityValue::newRegistered( 1, 'User1' ) )

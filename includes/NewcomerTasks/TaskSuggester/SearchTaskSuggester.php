@@ -16,7 +16,7 @@ use MediaWiki\Message\Message;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\ISearchResultSet;
 use MediaWiki\Search\SearchResult;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentity;
 use MultipleIterator;
 use Psr\Log\LoggerAwareInterface;
@@ -58,6 +58,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param SearchStrategy $searchStrategy
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param StatusFormatter $statusFormatter
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
 	 */
@@ -66,6 +67,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		SearchStrategy $searchStrategy,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkBatchFactory $linkBatchFactory,
+		private StatusFormatter $statusFormatter,
 		array $taskTypes,
 		array $topics
 	) {
@@ -200,7 +202,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 				// Only log when there's a logger; Status::getWikiText would break unit tests.
 				if ( !$this->logger instanceof NullLogger ) {
 					$this->logger->warning( 'Search error: {message}', [
-						'message' => Status::wrap( $matches )->getWikiText( false, false, 'en' ),
+						'message' => $this->statusFormatter->getWikiText( $matches, [ 'lang' => 'en' ] ),
 						'searchTerm' => $query->getQueryString(),
 						'queryId' => $query->getId(),
 						'limit' => $limit,

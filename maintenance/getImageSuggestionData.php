@@ -6,10 +6,10 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\Status\Status;
 use StatusValue;
 
 // @codeCoverageIgnoreStart
@@ -51,6 +51,7 @@ class GetImageSuggestionData extends Maintenance {
 	/** @inheritDoc */
 	public function execute() {
 		$services = $this->getServiceContainer();
+		$statusFormatter = $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() );
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$serviceImageRecommendationProvider = $growthServices->getImageRecommendationProviderUncached();
 		if ( !$serviceImageRecommendationProvider instanceof ServiceImageRecommendationProvider ) {
@@ -81,7 +82,7 @@ class GetImageSuggestionData extends Maintenance {
 		}
 		$result = $serviceImageRecommendationProvider->get( $title, $taskType );
 		if ( $result instanceof StatusValue ) {
-			$this->fatalError( Status::wrap( $result )->getWikiText( false, false, 'en' ) );
+			$this->fatalError( $statusFormatter->getWikiText( $result, [ 'lang' => 'en' ] ) );
 		} else {
 			$jsonData = FormatJson::encode( $result, true );
 			$this->output( $jsonData . PHP_EOL );

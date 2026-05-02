@@ -9,8 +9,8 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\PruningLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleValue;
 use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -84,7 +84,12 @@ class PruningLinkRecommendationProviderTest extends MediaWikiIntegrationTestCase
 		$actualDetailedStatus = $provider->getDetailed( $title, $taskType );
 		if ( $expectedValue instanceof LinkRecommendation ) {
 			if ( $actualValue instanceof StatusValue ) {
-				$this->fail( 'Provider returned error: ' . Status::wrap( $actualValue )->getWikiText() );
+				$this->fail( 'Provider returned error: ' .
+					$this->getServiceContainer()
+						->getFormatterFactory()
+						->getStatusFormatter( RequestContext::getMain() )
+						->getWikiText( $actualValue, [ 'lang' => 'en' ] )
+				);
 			}
 			$this->assertInstanceOf( LinkRecommendation::class, $actualValue );
 			$this->assertSame( $expectedValue->toArray(), $actualValue->toArray() );

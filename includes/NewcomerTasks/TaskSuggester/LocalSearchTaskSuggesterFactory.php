@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\SearchEngineFactory;
+use MediaWiki\Status\StatusFormatter;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 
@@ -18,32 +19,25 @@ use Wikimedia\Stats\StatsFactory;
  */
 class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 
-	/** @var SearchEngineFactory */
-	private $searchEngineFactory;
-
-	private StatsFactory $statsFactory;
-	private ITopicRegistry $topicRegistry;
-
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		SearchEngineFactory $searchEngineFactory,
+		private SearchEngineFactory $searchEngineFactory,
 		LinkBatchFactory $linkBatchFactory,
-		StatsFactory $statsFactory,
-		ITopicRegistry $topicRegistry
+		private StatsFactory $statsFactory,
+		StatusFormatter $statusFormatter,
+		private ITopicRegistry $topicRegistry
 	) {
 		parent::__construct(
 			$taskTypeHandlerRegistry,
 			$configurationLoader,
 			$searchStrategy,
 			$newcomerTasksUserOptionsLookup,
-			$linkBatchFactory
+			$linkBatchFactory,
+			$statusFormatter
 		);
-		$this->searchEngineFactory = $searchEngineFactory;
-		$this->statsFactory = $statsFactory;
-		$this->topicRegistry = $topicRegistry;
 	}
 
 	/**
@@ -67,6 +61,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->searchStrategy,
 			$this->newcomerTasksUserOptionsLookup,
 			$this->linkBatchFactory,
+			$this->statusFormatter,
 			$taskTypes,
 			$topics,
 			$this->statsFactory

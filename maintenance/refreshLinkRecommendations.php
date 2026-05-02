@@ -20,11 +20,12 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\NullTaskTypeHandler;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
@@ -50,6 +51,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class RefreshLinkRecommendations extends Maintenance {
 
 	private Config $growthConfig;
+	private StatusFormatter $statusFormatter;
 	private TitleFactory $titleFactory;
 	private LinkBatchFactory $linkBatchFactory;
 	private ConfigurationLoader $configurationLoader;
@@ -258,6 +260,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			'_nolinkrecommendations', '-hasrecommendation:link' );
 
 		$services = $this->getServiceContainer();
+		$this->statusFormatter = $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() );
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		if ( $newcomerTaskConfigurationLoader instanceof CommunityConfigurationLoader ) {
@@ -329,7 +332,7 @@ class RefreshLinkRecommendations extends Maintenance {
 				// FIXME exiting will make the cronjob unreliable. Not exiting might result
 				//  in an infinite error loop. Neither looks like a great option.
 				throw new RuntimeException( 'Search error: '
-					. Status::wrap( $candidates )->getWikiText( false, false, 'en' ) );
+					. $this->statusFormatter->getWikiText( $candidates, [ 'lang' => 'en' ] ) );
 			}
 
 			$linkTargets = $titles = [];
@@ -359,7 +362,7 @@ class RefreshLinkRecommendations extends Maintenance {
 				$this->verboseLog( "success, updating index\n" );
 				return true;
 			} else {
-				$error = Status::wrap( $status )->getWikiText( false, false, 'en' );
+				$error = $this->statusFormatter->getWikiText( $status, [ 'lang' => 'en' ] );
 				$this->verboseLog( "$error\n" );
 			}
 		} catch ( DBReadOnlyError ) {
@@ -422,7 +425,7 @@ class RefreshLinkRecommendations extends Maintenance {
 
 			// TaskSuggester::suggest() only returns StatusValue when there's an error.
 			if ( $suggestions instanceof StatusValue ) {
-				$this->error( Status::wrap( $suggestions )->getWikiText( false, false, 'en' ) );
+				$this->error( $this->statusFormatter->getWikiText( $suggestions, [ 'lang' => 'en' ] ) );
 				continue;
 			}
 

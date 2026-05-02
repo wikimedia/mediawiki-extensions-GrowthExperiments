@@ -24,6 +24,7 @@ use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\Page\LinkBatch;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleParser;
@@ -66,17 +67,19 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
 		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
 		$linkBatchFactory = $this->getMockLinkBatchFactory();
+		$statusFormatter = $this->createNoOpMock( StatusFormatter::class );
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
 
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
-			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $requestFactory, $titleFactory,
+			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $statusFormatter,
+			$requestFactory, $titleFactory,
 			'https://example.com', $taskTypes, $topics );
 
 		$taskSet = $suggester->suggest( $user, $taskSetFilters, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {
 			$this->assertInstanceOf( StatusValue::class, $taskSet );
-			$this->assertEquals( $expectedTaskSet->getErrors(), $taskSet->getErrors() );
+			$this->assertStatusMessagesExactly( $expectedTaskSet, $taskSet );
 		} else {
 			$this->assertInstanceOf( TaskSet::class, $taskSet );
 			$this->assertSame( $expectedTaskSet->getOffset(), $taskSet->getOffset() );
@@ -419,15 +422,17 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$linkBatchFactory = $this->getMockLinkBatchFactory( $pageIds );
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
+		$statusFormatter = $this->createNoOpMock( StatusFormatter::class );
 
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
-			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $requestFactory, $titleFactory,
+			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $statusFormatter,
+			$requestFactory, $titleFactory,
 			'https://example.com', $taskTypes, $topics );
 
 		$filteredTaskSet = $suggester->filter( $user, $taskSet );
 		if ( $expectedTaskSet instanceof StatusValue ) {
 			$this->assertInstanceOf( StatusValue::class, $filteredTaskSet );
-			$this->assertEquals( $expectedTaskSet->getErrors(), $filteredTaskSet->getErrors() );
+			$this->assertStatusMessagesExactly( $expectedTaskSet, $filteredTaskSet );
 		} else {
 			$this->assertInstanceOf( TaskSet::class, $filteredTaskSet );
 			$this->assertSame( $expectedTaskSet->getOffset(), $filteredTaskSet->getOffset() );

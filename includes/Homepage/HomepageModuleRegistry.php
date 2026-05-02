@@ -121,6 +121,7 @@ class HomepageModuleRegistry {
 					$services->getTitleFactory(),
 					$growthServices->getProtectionFilter(),
 					$services->getUserOptionsManager(),
+					$services->getFormatterFactory()->getStatusFormatter( $context ),
 					$growthServices->getLinkRecommendationFilter(),
 					$growthServices->getImageRecommendationFilter(),
 					$services->getStatsFactory(),

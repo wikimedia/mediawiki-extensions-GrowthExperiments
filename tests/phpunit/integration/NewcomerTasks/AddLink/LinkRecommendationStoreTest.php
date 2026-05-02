@@ -36,9 +36,8 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 		foreach ( [ 'T1', 'T2', 'T3', 'T4', 'T5', 'T6' ] as $titleText ) {
 			foreach ( [ 'r1', 'r2', 'r3' ] as $revisionText ) {
 				$status = $this->editPage( $titleText, $revisionText );
-				if ( !$status->isOK() ) {
-					$this->fail( $status->getWikiText() );
-				}
+				$this->assertStatusOK( $status );
+
 				/** @var RevisionRecord $revisionRecord */
 				$revisionRecord = $status->getValue()['revision-record'];
 				$pageIds[$titleText] = $revisionRecord->getPageId();

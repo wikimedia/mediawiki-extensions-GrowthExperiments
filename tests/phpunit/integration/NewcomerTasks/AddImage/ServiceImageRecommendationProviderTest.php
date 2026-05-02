@@ -12,12 +12,12 @@ use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Page\ProperPageIdentity;
-use MediaWiki\Status\Status;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWikiIntegrationTestCase;
@@ -360,7 +360,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertStatusOK( $result );
 		$this->assertSame(
 			'Invalid file Bad.png in article Foo. Filtered because AUDIO is not valid mime type (BITMAP, DRAWING)',
-			Status::wrap( $result )->getWikiText( false, false, 'en' )
+			$this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
+				->getWikiText( $result, [ 'lang' => 'en' ] )
 		);
 
 		$mockMetadataProvider = $this->createNoOpMock(
@@ -384,7 +385,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertStatusOK( $result );
 		$this->assertSame(
 			'Invalid file Bad.png in article Foo. Filtered because not wide enough: 99 (minimum 100)',
-			Status::wrap( $result )->getWikiText( false, false, 'en' )
+			$this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
+				->getWikiText( $result, [ 'lang' => 'en' ] )
 		);
 	}
 

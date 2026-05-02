@@ -3,7 +3,8 @@
 namespace GrowthExperiments;
 
 use Exception;
-use MediaWiki\Status\Status;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\MediaWikiServices;
 use StatusValue;
 
 /**
@@ -34,14 +35,18 @@ class ErrorException extends Exception {
 	 * Get the error status as a localized string (intended for displaying errors to the user).
 	 */
 	public function getErrorMessage(): string {
-		return Status::wrap( $this->status )->getWikiText();
+		$statusFormatter = MediaWikiServices::getInstance()->getFormatterFactory()
+			->getStatusFormatter( RequestContext::getMain() );
+		return $statusFormatter->getWikiText( $this->status );
 	}
 
 	/**
 	 * Get the error status as an English string (intended for logging).
 	 */
 	public function getErrorMessageInEnglish(): string {
-		return Status::wrap( $this->status )->getWikiText( false, false, 'en' );
+		$statusFormatter = MediaWikiServices::getInstance()->getFormatterFactory()
+			->getStatusFormatter( RequestContext::getMain() );
+		return $statusFormatter->getWikiText( $this->status, [ 'lang' => 'en' ] );
 	}
 
 }

@@ -15,6 +15,7 @@ use MediaWiki\Search\ISearchResultSet;
 use MediaWiki\Search\SearchEngine;
 use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
@@ -57,6 +58,7 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( SearchStrategy::class ),
 			$this->getNewcomerTasksUserOptionsLookup(),
 			$this->createNoOpMock( LinkBatchFactory::class ),
+			$this->createNoOpMock( StatusFormatter::class ),
 			[],
 			[],
 			$this->getStatsFactory()
@@ -70,11 +72,11 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$result = $wrappedSuggester->search( $query, $limit, $offset, false );
 		if ( $expectedResult instanceof ApiRawMessage ) {
 			$this->assertInstanceOf( StatusValue::class, $result );
-			/** @var StatusValue $result */
-			$this->assertNotEmpty( $result->getErrors() );
-			$message = $result->getErrors()[0]['message'];
+			$messages = $result->getMessages();
+			$this->assertNotEmpty( $messages );
+
+			$message = $messages[0];
 			$this->assertInstanceOf( ApiRawMessage::class, $message );
-			/** @var ApiRawMessage $message */
 			$this->assertSame( $expectedResult->getApiCode(), $message->getApiCode() );
 		} else {
 			$this->assertSame( $expectedResult, $result );

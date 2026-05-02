@@ -10,7 +10,7 @@ use MediaWiki\Extension\CommunityConfiguration\Store\WikiPageStore;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Maintenance\LoggedUpdateMaintenance;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
@@ -28,6 +28,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 	private UserOptionsLookup $userOptionsLookup;
 	private ConfigurationProviderFactory $providerFactory;
 	private MessageLocalizer $messageLocalizer;
+	private StatusFormatter $statusFormatter;
 	// Copy of MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF
 	private const MENTOR_AWAY_TIMESTAMP_PREF = 'growthexperiments-mentor-away-timestamp';
 	private UserFactory $userFactory;
@@ -59,7 +60,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 		$loadStatus = $provider->loadValidConfigurationUncached();
 		if ( !$loadStatus->isOK() ) {
 			$this->fatalError(
-				Status::wrap( $loadStatus )->getWikiText( false, false, 'en' )
+				$this->statusFormatter->getWikiText( $loadStatus, [ 'lang' => 'en' ] )
 			);
 		}
 
@@ -142,6 +143,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 		$this->userFactory = $services->getUserFactory();
 		$this->providerFactory = $ccServices->getConfigurationProviderFactory();
 		$this->messageLocalizer = RequestContext::getMain();
+		$this->statusFormatter = $services->getFormatterFactory()->getStatusFormatter( $this->messageLocalizer );
 	}
 
 	private function arrayDiffAssocRecursive( array $array1, array $array2 ): array {
