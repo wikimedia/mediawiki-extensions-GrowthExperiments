@@ -79,6 +79,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 			$geServices->getMentorStatusManager(),
 			$services->getPermissionManager(),
 			$services->getStatsFactory(),
+			$services->getUserFactory(),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$context,

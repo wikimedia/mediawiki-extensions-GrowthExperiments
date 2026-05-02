@@ -32,19 +32,23 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 			->getMockForAbstractClass();
 		$accessWrapper = TestingAccessWrapper::newFromObject( $questionPoster );
 
+		// Needed for providing the user to the permission manager
+		$requestContext = new RequestContext();
+		$user = $this->createNoOpMock( User::class );
+		$requestContext->setUser( $user );
+		$accessWrapper->context = $requestContext;
+
+		// Ensure the skipcaptcha logic works
 		$permissionManager = $this->createMock( PermissionManager::class );
-		$permissionManager->method( 'addTemporaryUserRights' )
+		$permissionManager->expects( $this->atLeastOnce() )
+			->method( 'addTemporaryUserRights' )
+			->with( $user, 'skipcaptcha' )
 			->willReturnCallback( static fn ( $user, $rights ) => new ScopedCallback(
 				// Do nothing
 				static fn () => null
 			) );
 		$accessWrapper->permissionManager = $permissionManager;
-
-		// Needed for providing the user to the permission manager
-		$requestContext = new RequestContext();
-		$user = $this->createMock( User::class );
-		$requestContext->setUser( $user );
-		$accessWrapper->context = $requestContext;
+		$accessWrapper->confirmEditInstalled = true;
 
 		return $questionPoster;
 	}

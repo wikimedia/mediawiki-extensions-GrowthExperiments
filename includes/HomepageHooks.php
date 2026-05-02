@@ -253,6 +253,8 @@ class HomepageHooks implements
 					'GrowthExperimentsMentorProvider',
 					'GrowthExperimentsChangeMentorFactory',
 					'UserLinkRenderer',
+					'UserIdentityLookup',
+					'UserIdentityUtils',
 				],
 			];
 

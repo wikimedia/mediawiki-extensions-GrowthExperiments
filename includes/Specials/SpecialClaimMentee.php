@@ -11,27 +11,25 @@ use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
+use MediaWiki\User\UserIdentityUtils;
 
 class SpecialClaimMentee extends FormSpecialPage {
 
-	/** @var User[] */
+	/** @var UserIdentity[] */
 	private array $mentees;
 
 	private ?User $newMentor;
-	private MentorProvider $mentorProvider;
-	private ChangeMentorFactory $changeMentorFactory;
-	private UserLinkRenderer $userLinkRenderer;
 
 	public function __construct(
-		MentorProvider $mentorProvider,
-		ChangeMentorFactory $changeMentorFactory,
-		UserLinkRenderer $userLinkRenderer,
+		private MentorProvider $mentorProvider,
+		private ChangeMentorFactory $changeMentorFactory,
+		private UserLinkRenderer $userLinkRenderer,
+		private UserIdentityLookup $userIdentityLookup,
+		private UserIdentityUtils $userIdentityUtils,
 	) {
 		parent::__construct( 'ClaimMentee' );
-
-		$this->mentorProvider = $mentorProvider;
-		$this->changeMentorFactory = $changeMentorFactory;
-		$this->userLinkRenderer = $userLinkRenderer;
 	}
 
 	/** @inheritDoc */
@@ -209,8 +207,8 @@ class SpecialClaimMentee extends FormSpecialPage {
 		$this->mentees = [];
 
 		foreach ( $names as $name ) {
-			$user = User::newFromName( $name );
-			if ( $user !== false ) {
+			$user = $this->userIdentityLookup->getUserIdentityByName( $name );
+			if ( $user !== null ) {
 				$this->mentees[] = $user;
 			}
 		}
@@ -218,7 +216,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 
 	private function validateMentees(): bool {
 		foreach ( $this->mentees as $mentee ) {
-			if ( !( $mentee instanceof User && $mentee->isNamed() ) ) {
+			if ( !$this->userIdentityUtils->isNamed( $mentee ) ) {
 				return false;
 			}
 		}

@@ -10,6 +10,7 @@ use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\UserFactory;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Stats\StatsFactory;
 
@@ -29,17 +30,6 @@ class QuestionPosterFactory {
 	/** The question is sent to the talk page of the asking user's mentor. */
 	public const TARGET_MENTOR_TALK = 'mentor talk page';
 
-	private WikiPageFactory $wikiPageFactory;
-	private TitleFactory $titleFactory;
-	private IMentorManager $mentorManager;
-	private PermissionManager $permissionManager;
-	private bool $helpDeskPostOnTop;
-	private StatsFactory $statsFactory;
-
-	private bool $confirmEditInstalled;
-	private bool $flowInstalled;
-	private MentorStatusManager $mentorStatusManager;
-
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
@@ -48,30 +38,23 @@ class QuestionPosterFactory {
 	 * @param PermissionManager $permissionManager
 	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
 	 *   (as opposed to the bottom). Only affects wikitext pages.
-	 * @param statsFactory $statsFactory
+	 * @param StatsFactory $statsFactory
+	 * @param UserFactory $userFactory
 	 * @param bool $confirmEditInstalled
 	 * @param bool $flowInstalled
 	 */
 	public function __construct(
-		WikiPageFactory $wikiPageFactory,
-		TitleFactory $titleFactory,
-		IMentorManager $mentorManager,
-		MentorStatusManager $mentorStatusManager,
-		PermissionManager $permissionManager,
-		bool $helpDeskPostOnTop,
-		StatsFactory $statsFactory,
-		bool $confirmEditInstalled,
-		bool $flowInstalled
+		private WikiPageFactory $wikiPageFactory,
+		private TitleFactory $titleFactory,
+		private IMentorManager $mentorManager,
+		private MentorStatusManager $mentorStatusManager,
+		private PermissionManager $permissionManager,
+		private bool $helpDeskPostOnTop,
+		private StatsFactory $statsFactory,
+		private UserFactory $userFactory,
+		private bool $confirmEditInstalled,
+		private bool $flowInstalled
 	) {
-		$this->wikiPageFactory = $wikiPageFactory;
-		$this->titleFactory = $titleFactory;
-		$this->mentorManager = $mentorManager;
-		$this->mentorStatusManager = $mentorStatusManager;
-		$this->permissionManager = $permissionManager;
-		$this->helpDeskPostOnTop = $helpDeskPostOnTop;
-		$this->statsFactory = $statsFactory;
-		$this->confirmEditInstalled = $confirmEditInstalled;
-		$this->flowInstalled = $flowInstalled;
 	}
 
 	/**
@@ -120,6 +103,7 @@ class QuestionPosterFactory {
 				$this->mentorStatusManager,
 				$this->permissionManager,
 				$this->statsFactory,
+				$this->userFactory,
 				$this->confirmEditInstalled,
 				$this->flowInstalled,
 				$context,
@@ -134,6 +118,7 @@ class QuestionPosterFactory {
 				$this->mentorStatusManager,
 				$this->permissionManager,
 				$this->statsFactory,
+				$this->userFactory,
 				$this->confirmEditInstalled,
 				$this->flowInstalled,
 				$context,

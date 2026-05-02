@@ -18,6 +18,7 @@ use MediaWiki\Html\Html;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\User\User;
 use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use OOUI\ButtonWidget;
@@ -38,25 +39,17 @@ class Mentorship extends BaseModule {
 
 	/** @var QuestionRecord[] */
 	private array $recentQuestions = [];
-	private IMentorManager $mentorManager;
-
-	private MentorStatusManager $mentorStatusManager;
-	private GenderCache $genderCache;
-	private UserEditTracker $userEditTracker;
 
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		IMentorManager $mentorManager,
-		MentorStatusManager $mentorStatusManager,
-		GenderCache $genderCache,
-		UserEditTracker $userEditTracker
+		private IMentorManager $mentorManager,
+		private MentorStatusManager $mentorStatusManager,
+		private GenderCache $genderCache,
+		private UserEditTracker $userEditTracker,
+		private UserFactory $userFactory
 	) {
 		parent::__construct( 'mentorship', $context, $wikiConfig );
-		$this->mentorManager = $mentorManager;
-		$this->mentorStatusManager = $mentorStatusManager;
-		$this->genderCache = $genderCache;
-		$this->userEditTracker = $userEditTracker;
 	}
 
 	/**
@@ -188,7 +181,8 @@ class Mentorship extends BaseModule {
 		return Html::element(
 			'a',
 			[
-				'href' => User::newFromIdentity( $this->getMentor() )->getTalkPage()->getLinkURL(),
+				'href' => $this->userFactory->newFromUserIdentity( $this->getMentor() )
+					->getTalkPage()->getLinkURL(),
 				'data-link-id' => 'mentor-usertalk',
 			],
 			$this->getContext()
@@ -284,7 +278,8 @@ class Mentorship extends BaseModule {
 			$content = Html::rawElement(
 				'a',
 				[
-					'href' => User::newFromIdentity( $this->getMentor() )->getUserPage()->getLinkURL(),
+					'href' => $this->userFactory->newFromUserIdentity( $this->getMentor() )
+						->getTalkPage()->getLinkURL(),
 					'data-link-id' => 'mentor-userpage',
 					'class' => 'growthexperiments-homepage-mentorship-userlink-link',
 				],
@@ -373,10 +368,11 @@ class Mentorship extends BaseModule {
 				->params( $this->getContext()->getUser()->getName() )
 				->text(),
 			// nojs action
-			'href' => User::newFromIdentity( $this->getMentor() )->getTalkPage()->getLinkURL( [
-				'action' => 'edit',
-				'section' => 'new',
-			] ),
+			'href' => $this->userFactory->newFromUserIdentity( $this->getMentor() )
+				->getTalkPage()->getLinkURL( [
+					'action' => 'edit',
+					'section' => 'new',
+				] ),
 			'infusable' => true,
 		] );
 	}

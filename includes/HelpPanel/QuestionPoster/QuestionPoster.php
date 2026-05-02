@@ -32,11 +32,7 @@ use Wikimedia\Stats\StatsFactory;
  */
 abstract class QuestionPoster {
 
-	private WikiPageFactory $wikiPageFactory;
-	private TitleFactory $titleFactory;
-	private PermissionManager $permissionManager;
 	private bool $postOnTop = false;
-	private IContextSource $context;
 	private bool $isFirstEdit;
 	private ?Title $targetTitle = null;
 	private string $resultUrl;
@@ -44,8 +40,6 @@ abstract class QuestionPoster {
 
 	/** Either a revision id or the UUID of a Flow topic */
 	private int|string $revisionId;
-
-	private string $relevantTitleRaw;
 	private ?Title $relevantTitle = null;
 
 	private string $postedOnTimestamp;
@@ -55,35 +49,23 @@ abstract class QuestionPoster {
 
 	private string $body;
 	private string $sectionHeader;
-	private StatsFactory $statsFactory;
-
-	private bool $confirmEditInstalled = false;
-	private bool $flowInstalled = false;
 
 	public function __construct(
-		WikiPageFactory $wikiPageFactory,
-		TitleFactory $titleFactory,
-		PermissionManager $permissionManager,
-		StatsFactory $statsFactory,
-		bool $confirmEditInstalled,
-		bool $flowInstalled,
-		IContextSource $context,
+		private WikiPageFactory $wikiPageFactory,
+		private TitleFactory $titleFactory,
+		private PermissionManager $permissionManager,
+		private StatsFactory $statsFactory,
+		private bool $confirmEditInstalled,
+		private bool $flowInstalled,
+		private IContextSource $context,
 		string $body,
-		string $relevantTitleRaw = ''
+		private string $relevantTitleRaw = ''
 	) {
-		$this->wikiPageFactory = $wikiPageFactory;
-		$this->titleFactory = $titleFactory;
-		$this->permissionManager = $permissionManager;
-		$this->context = $context;
-		$this->relevantTitleRaw = $relevantTitleRaw;
 		if ( !$this->getContext()->getUser()->isNamed() ) {
 			throw new UserNotLoggedIn();
 		}
 		$this->isFirstEdit = ( $this->getContext()->getUser()->getEditCount() === 0 );
 		$this->body = trim( $body );
-		$this->statsFactory = $statsFactory;
-		$this->confirmEditInstalled = $confirmEditInstalled;
-		$this->flowInstalled = $flowInstalled;
 	}
 
 	/**

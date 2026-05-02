@@ -34,6 +34,8 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 			$geServices->getMentorProvider(),
 			$geServices->getChangeMentorFactory(),
 			$this->getServiceContainer()->getUserLinkRenderer(),
+			$this->getServiceContainer()->getUserIdentityLookup(),
+			$this->getServiceContainer()->getUserIdentityUtils(),
 		);
 	}
 
