@@ -32,6 +32,7 @@ use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IDBAccessObject;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Handles creating or updating a link recommendation entry.
@@ -245,7 +246,7 @@ class LinkRecommendationUpdater {
 		}
 
 		// 3. exclude articles which have been edited very recently.
-		$revisionTime = (int)MWTimestamp::convert( TS_UNIX, $revision->getTimestamp() );
+		$revisionTime = (int)MWTimestamp::convert( TimestampFormat::UNIX, $revision->getTimestamp() );
 		if ( time() - $revisionTime < $this->getLinkRecommendationTaskType()->getMinimumTimeSinceLastEdit() ) {
 			return $this->failure(
 				'minimum time since last edit did not pass',

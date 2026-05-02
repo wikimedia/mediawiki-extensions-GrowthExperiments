@@ -14,6 +14,7 @@ use Wikimedia\Rdbms\DBAccessObjectUtils;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class MentorStatusManager {
 	/** @var string Mentor status */
@@ -199,7 +200,9 @@ class MentorStatusManager {
 	private function parseBackTimestamp( ?string $rawTs ): ?string {
 		if (
 			$rawTs === null ||
-			(int)ConvertibleTimestamp::convert( TS_UNIX, $rawTs ) < (int)wfTimestamp( TS_UNIX )
+			(int)ConvertibleTimestamp::convert(
+				TimestampFormat::UNIX, $rawTs
+			) < (int)wfTimestamp( TimestampFormat::UNIX )
 		) {
 			return null;
 		}
@@ -254,8 +257,8 @@ class MentorStatusManager {
 		return $this->markMentorAsAwayTimestamp(
 			$mentor,
 			ConvertibleTimestamp::convert(
-				TS_MW,
-				(int)wfTimestamp( TS_UNIX ) + StatusAwayValidator::$secondsDay * $backInDays
+				TimestampFormat::MW,
+				(int)wfTimestamp( TimestampFormat::UNIX ) + StatusAwayValidator::$secondsDay * $backInDays
 			)
 		);
 	}
@@ -285,7 +288,7 @@ class MentorStatusManager {
 			$mentor,
 			self::MENTOR_AWAY_TIMESTAMP_PREF,
 			ConvertibleTimestamp::convert(
-				TS_MW,
+				TimestampFormat::MW,
 				$timestamp
 			)
 		);

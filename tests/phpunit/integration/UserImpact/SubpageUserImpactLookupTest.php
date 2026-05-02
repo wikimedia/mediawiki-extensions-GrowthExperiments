@@ -11,6 +11,7 @@ use MediaWiki\Content\JsonContent;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @group Database
@@ -30,7 +31,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 20 ],
 			1,
 			80,
-			wfTimestamp( TS_UNIX, '20200101000000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			new EditingStreak(
 				ComputeEditingStreaks::makeDatePeriod( '2022-08-24', '2022-08-25' ),
 				30
@@ -47,7 +48,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			[ 'copyedit' => 11, 'link-recommendation' => 21 ],
 			2,
 			100,
-			wfTimestamp( TS_UNIX, '20200909000000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20200909000000' ),
 			new EditingStreak(),
 			0,
 			null
@@ -61,7 +62,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			[ 'copyedit' => 12, 'link-recommendation' => 22 ],
 			3,
 			110,
-			wfTimestamp( TS_UNIX, '20220101000000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20220101000000' ),
 			new EditingStreak(),
 			0,
 			null
@@ -78,7 +79,7 @@ class SubpageUserImpactLookupTest extends MediaWikiIntegrationTestCase {
 			'revertedEditCount' => 1,
 			'timeZone' => [ 'System|0', 0 ],
 			'newcomerTaskEditCount' => 80,
-			'lastEditTimestamp' => (int)wfTimestamp( TS_UNIX, '20200101000000' ),
+			'lastEditTimestamp' => (int)wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			'generatedAt' => ConvertibleTimestamp::time(),
 			'longestEditingStreak' => [
 				'datePeriod' => [

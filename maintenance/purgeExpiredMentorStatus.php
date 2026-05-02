@@ -20,6 +20,7 @@ use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 // @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -79,7 +80,8 @@ class PurgeExpiredMentorStatus extends Maintenance {
 		foreach ( $this->getRows() as $row ) {
 			if (
 				$row->up_value === null ||
-				ConvertibleTimestamp::convert( TS_UNIX, $row->up_value ) < wfTimestamp( TS_UNIX )
+				ConvertibleTimestamp::convert( TimestampFormat::UNIX, $row->up_value ) <
+					wfTimestamp( TimestampFormat::UNIX )
 			) {
 				$batch[] = $row->up_user;
 
@@ -173,7 +175,8 @@ class PurgeExpiredMentorStatus extends Maintenance {
 
 			if (
 				$awayTimestamp &&
-				ConvertibleTimestamp::convert( TS_UNIX, $awayTimestamp ) < wfTimestamp( TS_UNIX )
+				ConvertibleTimestamp::convert( TimestampFormat::UNIX, $awayTimestamp )
+					< wfTimestamp( TimestampFormat::UNIX )
 			) {
 				$batch[] = $userId;
 

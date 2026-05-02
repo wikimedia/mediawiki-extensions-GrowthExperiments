@@ -8,6 +8,7 @@ use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @group Database
@@ -31,7 +32,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 20 ],
 			1,
 			10,
-			wfTimestamp( TS_UNIX, '20200101000000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			new EditingStreak(),
 			0,
 			null
@@ -49,7 +50,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ 'copyedit' => 20, 'link-recommendation' => 30 ],
 			2,
 			20,
-			wfTimestamp( TS_UNIX, '20200102000000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20200102000000' ),
 			new EditingStreak(),
 			0,
 			null
@@ -75,7 +76,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ 'copyedit' => 30, 'link-recommendation' => 40 ],
 			1,
 			30,
-			wfTimestamp( TS_UNIX, '20200103000000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20200103000000' ),
 			[ '2020-01-01' => 1000, '2020-01-02' => 2000 ],
 			[
 				'Foo' => [ 'views' => [ '2020-01-01' => 500, '2020-01-02' => 1000 ] ],
@@ -104,7 +105,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 20 ],
 			1,
 			10,
-			wfTimestamp( TS_UNIX, '20200101000000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			new EditingStreak(),
 			0,
 			null
@@ -118,7 +119,7 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 			[ 'copyedit' => 15, 'link-recommendation' => 25 ],
 			2,
 			15,
-			wfTimestamp( TS_UNIX, '20200101120000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20200101120000' ),
 			new EditingStreak(),
 			0,
 			null

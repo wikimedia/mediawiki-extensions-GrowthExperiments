@@ -15,6 +15,7 @@ use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * This class writes to the structured mentor list and allows to add/remove
@@ -95,7 +96,7 @@ class CommunityStructuredMentorWriter implements IMentorWriter {
 		$awayTimestamp = [];
 		if ( $mentor->getStatusAwayTimestamp() ) {
 			$awayTimestamp[ 'awayTimestamp' ] = ConvertibleTimestamp::convert(
-				TS_ISO_8601,
+				TimestampFormat::ISO_8601,
 				$mentor->getStatusAwayTimestamp()
 			);
 		}

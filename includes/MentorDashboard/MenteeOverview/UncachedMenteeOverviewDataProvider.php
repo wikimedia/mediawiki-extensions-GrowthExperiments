@@ -23,6 +23,7 @@ use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Provides data about interesting mentees mentored by a particular mentor
@@ -276,9 +277,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$allLastEdits = $this->getLastEditTimestampForUsers( $allUserIds );
 		$userIds = [];
 		foreach ( $allLastEdits as $userId => $lastEdit ) {
-			$secondsSinceLastEdit = (int)wfTimestamp( TS_UNIX ) -
+			$secondsSinceLastEdit = (int)wfTimestamp( TimestampFormat::UNIX ) -
 				(int)ConvertibleTimestamp::convert(
-					TS_UNIX,
+					TimestampFormat::UNIX,
 					$lastEdit
 				);
 			if ( $secondsSinceLastEdit <= self::SECONDS_DAY * 6 * 30 ) {
@@ -630,7 +631,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				// only users who either made an edit or registered less than 2 weeks ago
 				$dbr->expr( 'user_editcount', '>', 0 )
 					->or( 'user_registration', '>', $dbr->timestamp(
-						(int)wfTimestamp( TS_UNIX ) - 2 * 7 * self::SECONDS_DAY
+						(int)wfTimestamp( TimestampFormat::UNIX ) - 2 * 7 * self::SECONDS_DAY
 					) ),
 			] )
 			->caller( __METHOD__ );

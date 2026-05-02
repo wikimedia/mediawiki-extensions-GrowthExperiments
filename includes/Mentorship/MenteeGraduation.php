@@ -8,6 +8,7 @@ use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class MenteeGraduation {
 
@@ -42,8 +43,8 @@ class MenteeGraduation {
 			return true;
 		}
 
-		$registeredAgo = (int)ConvertibleTimestamp::now( TS_UNIX )
-			- (int)ConvertibleTimestamp::convert( TS_UNIX, $registrationTimestamp );
+		$registeredAgo = (int)ConvertibleTimestamp::now( TimestampFormat::UNIX )
+			- (int)ConvertibleTimestamp::convert( TimestampFormat::UNIX, $registrationTimestamp );
 		return $registeredAgo > $this->minTenureInDays * ExpirationAwareness::TTL_DAY;
 	}
 

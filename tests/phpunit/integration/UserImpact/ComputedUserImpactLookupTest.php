@@ -13,6 +13,7 @@ use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Title\Title;
 use StatusValue;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @group Database
@@ -117,7 +118,10 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertSame( [ NS_MAIN => 5, NS_TALK => 1 ], $userImpact->getEditCountByNamespace() );
 		$this->assertSame( [ '2022-10-01' => 5, '2022-10-02' => 1 ], $userImpact->getEditCountByDay() );
 		$this->assertSame( 1, $userImpact->getNewcomerTaskEditCount() );
-		$this->assertSame( (int)wfTimestamp( TS_UNIX, '20221002120000' ), $userImpact->getLastEditTimestamp() );
+		$this->assertSame(
+			(int)wfTimestamp( TimestampFormat::UNIX, '20221002120000' ),
+			$userImpact->getLastEditTimestamp()
+		);
 		$this->assertSame( 1, $userImpact->getReceivedThanksCount() );
 		$this->assertSame( 0, $userImpact->getGivenThanksCount() );
 		$this->assertSame( 2, $userImpact->getTotalArticlesCreatedCount() );
@@ -238,7 +242,10 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 			'2022-10-06' => 1,
 		], $userImpact->getEditCountByDay() );
 		$this->assertSame( 0, $userImpact->getNewcomerTaskEditCount() );
-		$this->assertSame( (int)wfTimestamp( TS_UNIX, '20221006120005' ), $userImpact->getLastEditTimestamp() );
+		$this->assertSame(
+			(int)wfTimestamp( TimestampFormat::UNIX, '20221006120005' ),
+			$userImpact->getLastEditTimestamp()
+		);
 		$this->assertSame( 0, $userImpact->getReceivedThanksCount() );
 
 		$dailyTotalViews = $userImpact->getDailyTotalViews();

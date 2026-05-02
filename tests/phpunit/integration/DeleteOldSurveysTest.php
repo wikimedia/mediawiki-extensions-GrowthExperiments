@@ -8,6 +8,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\IDBAccessObject;
+use Wikimedia\Timestamp\TimestampFormat;
 
 require_once __DIR__ . '/../../../maintenance/deleteOldSurveys.php';
 
@@ -31,28 +32,28 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 
 		$u3 = $this->getMutableTestUser()->getUser();
 		$userOptionsManager->setOption( $u3, WelcomeSurvey::SURVEY_PROP, json_encode( [
-			'_submit_date' => wfTimestamp( TS_MW, '2000-01-01 00:00:00' ),
+			'_submit_date' => wfTimestamp( TimestampFormat::MW, '2000-01-01 00:00:00' ),
 		] ) );
 		$u3->saveSettings();
 		$this->setRegistrationDate( $u3, '2000-01-01 00:00:00' );
 
 		$u4 = $this->getMutableTestUser()->getUser();
 		$userOptionsManager->setOption( $u4, WelcomeSurvey::SURVEY_PROP, json_encode( [
-			'_submit_date' => wfTimestamp( TS_MW, '2100-01-01 00:00:00' ),
+			'_submit_date' => wfTimestamp( TimestampFormat::MW, '2100-01-01 00:00:00' ),
 		] ) );
 		$u4->saveSettings();
 		$this->setRegistrationDate( $u4, '2000-01-01 00:00:00' );
 
 		$u5 = $this->getMutableTestUser()->getUser();
 		$userOptionsManager->setOption( $u5, WelcomeSurvey::SURVEY_PROP, json_encode( [
-			'_submit_date' => wfTimestamp( TS_MW, '2000-01-01 00:00:00' ),
+			'_submit_date' => wfTimestamp( TimestampFormat::MW, '2000-01-01 00:00:00' ),
 		] ) );
 		$u5->saveSettings();
 		$this->setRegistrationDate( $u1, '2100-01-01 00:00:00' );
 
 		$u6 = $this->getMutableTestUser()->getUser();
 		$userOptionsManager->setOption( $u6, WelcomeSurvey::SURVEY_PROP, json_encode( [
-			'_submit_date' => wfTimestamp( TS_MW, '2000-01-01 00:00:00' ),
+			'_submit_date' => wfTimestamp( TimestampFormat::MW, '2000-01-01 00:00:00' ),
 		] ) );
 		$u6->saveSettings();
 		$this->setRegistrationDate( $u1, '2000-01-01 00:00:00' );
@@ -78,7 +79,7 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 	 */
 	private function setRegistrationDate( UserIdentity $user, string $date ) {
 		$this->getServiceContainer()->getUserRegistrationLookup()
-			->setCachedRegistration( $user, wfTimestamp( TS_MW, $date ) );
+			->setCachedRegistration( $user, wfTimestamp( TimestampFormat::MW, $date ) );
 		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'user' )
 			->set( [ 'user_registration' => $this->getDb()->timestamp( $date ) ] )

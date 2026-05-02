@@ -14,6 +14,7 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\ScopedCallback;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class PraiseworthyMenteeSuggester {
 	private const EXPIRATION_TTL = ExpirationAwareness::TTL_DAY;
@@ -253,7 +254,7 @@ class PraiseworthyMenteeSuggester {
 			PraiseworthyConditionsLookup::SKIPPED_UNTIL_PREF,
 			( new ConvertibleTimestamp() )
 				->add( 'P' . PraiseworthyConditionsLookup::SKIP_MENTEES_FOR_DAYS . 'D' )
-				->getTimestamp( TS_MW )
+				->getTimestamp( TimestampFormat::MW )
 		);
 		$this->userOptionsManager->saveOptions( $mentee );
 

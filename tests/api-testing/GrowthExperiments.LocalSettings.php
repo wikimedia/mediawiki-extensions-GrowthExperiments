@@ -5,6 +5,7 @@ use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityValue;
+use Wikimedia\Timestamp\TimestampFormat;
 
 // Raise limits from I2aead24cb7f47
 if ( defined( 'MW_QUIBBLE_CI' ) ) {
@@ -35,7 +36,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				[ 'copyedit' => 1, 'link-recommendation' => 1 ],
 				1,
 				2,
-				wfTimestamp( TS_UNIX, '20220825000000' ),
+				wfTimestamp( TimestampFormat::UNIX, '20220825000000' ),
 				[
 					'2022-08-24' => 1000,
 					'2022-08-25' => 2000,

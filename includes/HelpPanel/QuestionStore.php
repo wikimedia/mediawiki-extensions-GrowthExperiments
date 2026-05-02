@@ -18,6 +18,7 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\Options\UserOptionsUpdateJob;
 use MediaWiki\User\User;
 use Wikimedia\Rdbms\IDBAccessObject;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class QuestionStore {
 
@@ -104,7 +105,7 @@ class QuestionStore {
 				if ( !$checkedRecord->getTimestamp() ) {
 					// Some records did not have timestamps (T223338); backfill the
 					// timestamp if it's not set.
-					$checkedRecord->setTimestamp( (int)wfTimestamp( TS_UNIX ) );
+					$checkedRecord->setTimestamp( (int)wfTimestamp( TimestampFormat::UNIX ) );
 				}
 			} elseif ( ExtensionRegistry::getInstance()->isLoaded( 'Flow' ) &&
 				$questionRecord->getContentModel() === CONTENT_MODEL_FLOW_BOARD ) {

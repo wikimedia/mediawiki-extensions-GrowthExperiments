@@ -10,6 +10,7 @@ use MediaWiki\Language\Language;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\Utils\MWTimestamp;
 use MediaWikiUnitTestCase;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @covers \GrowthExperiments\UserImpact\UserImpactFormatter
@@ -67,7 +68,7 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			wfTimestamp( TS_UNIX, '20200101000000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),
@@ -141,7 +142,7 @@ class UserImpactFormatterTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			wfTimestamp( TS_UNIX, '20200101000000' ),
+			wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),

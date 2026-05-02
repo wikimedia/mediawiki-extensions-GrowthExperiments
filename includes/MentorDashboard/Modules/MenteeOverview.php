@@ -8,6 +8,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Options\UserOptionsLookup;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class MenteeOverview extends BaseModule {
 
@@ -31,7 +32,7 @@ class MenteeOverview extends BaseModule {
 	protected function getSubheaderText() {
 		$user = $this->getContext()->getUser();
 		$lastUpdate = $this->userOptions->getOption( $user, MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE );
-		$lastUpdateTimeStamp = wfTimestamp( TS_UNIX, $lastUpdate );
+		$lastUpdateTimeStamp = wfTimestamp( TimestampFormat::UNIX, $lastUpdate );
 
 		if ( $lastUpdateTimeStamp ) {
 			$elapsedTime = (int)wfTimestamp() - (int)$lastUpdateTimeStamp;

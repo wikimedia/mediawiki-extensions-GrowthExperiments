@@ -4,6 +4,7 @@ namespace GrowthExperiments\Config\Validation;
 
 use StatusValue;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Interim solution to re-use validation logic in MentorStatusManager and StructuredMentorListValidator,
@@ -25,7 +26,7 @@ class StatusAwayValidator {
 	 * @return StatusValue
 	 */
 	public static function validateTimestamp( string $timestamp, int $userId ): StatusValue {
-		$converted = ConvertibleTimestamp::convert( TS_UNIX, $timestamp );
+		$converted = ConvertibleTimestamp::convert( TimestampFormat::UNIX, $timestamp );
 		if ( !$converted ) {
 			return StatusValue::newFatal(
 				'growthexperiments-mentor-list-datatype-mismatch-not-convertible-timestamp',
@@ -34,7 +35,7 @@ class StatusAwayValidator {
 			);
 		}
 		if ( (
-				(int)$converted - (int)ConvertibleTimestamp::now( TS_UNIX )
+				(int)$converted - (int)ConvertibleTimestamp::now( TimestampFormat::UNIX )
 			) > self::$maxBackInDays * self::$secondsDay
 		) {
 			return StatusValue::newFatal(

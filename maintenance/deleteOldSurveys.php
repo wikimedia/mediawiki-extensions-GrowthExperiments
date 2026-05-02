@@ -7,6 +7,7 @@ use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\Utils\MWTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 // @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -57,7 +58,7 @@ class DeleteOldSurveys extends Maintenance {
 		// keeping MWTimestamp::setFakeTime working.
 		$ts = MWTimestamp::getInstance();
 		$ts->timestamp->modify( "-$cutoffDays day" );
-		$cutoffDate = $ts->getTimestamp( TS_MW );
+		$cutoffDate = $ts->getTimestamp( TimestampFormat::MW );
 		$this->output( "Deleting data before $cutoffDate (over $cutoffDays days old)" .
 			( $dryRun ? ' (dry run)' : '' ) . "\n" );
 
@@ -81,7 +82,7 @@ class DeleteOldSurveys extends Maintenance {
 			$deletedCount = $skippedCount = 0;
 			foreach ( $res as $row ) {
 				$fromUserId = $row->user_id;
-				$userRegistration = wfTimestampOrNull( TS_MW, $row->user_registration );
+				$userRegistration = wfTimestampOrNull( TimestampFormat::MW, $row->user_registration );
 				$welcomeSurveyData = json_decode( $row->up_value, true );
 				if ( $userRegistration > $cutoffDate ) {
 					// The submit date cannot be smaller than the registration date, and registration

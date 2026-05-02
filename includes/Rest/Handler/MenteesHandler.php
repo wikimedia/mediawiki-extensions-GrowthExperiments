@@ -17,6 +17,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Assert\ParameterAssertionException;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Returns information about user's mentees.
@@ -109,7 +110,7 @@ class MenteesHandler extends SimpleHandler {
 
 		$data = $dataFilter->filter();
 		$context = RequestContext::getMain();
-		$nowUnix = (int)MWTimestamp::now( TS_UNIX );
+		$nowUnix = (int)MWTimestamp::now( TimestampFormat::UNIX );
 		$batch = $this->linkBatchFactory->newLinkBatch();
 		$batch->setCaller( __METHOD__ );
 		array_walk( $data, function ( &$menteeData ) use ( $context, $nowUnix, $batch ) {
@@ -120,7 +121,7 @@ class MenteesHandler extends SimpleHandler {
 						$context,
 						$nowUnix - (int)MWTimestamp::getInstance(
 							$menteeData['last_active']
-						)->getTimestamp( TS_UNIX )
+						)->getTimestamp( TimestampFormat::UNIX )
 					),
 				];
 			}

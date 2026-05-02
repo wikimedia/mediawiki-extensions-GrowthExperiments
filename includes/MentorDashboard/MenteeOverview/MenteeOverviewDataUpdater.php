@@ -10,6 +10,7 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Updates growthexperiments_mentee_data
@@ -137,7 +138,7 @@ class MenteeOverviewDataUpdater {
 		$this->userOptionsManager->setOption(
 			$mentor,
 			self::LAST_UPDATE_PREFERENCE,
-			wfTimestamp( TS_MW )
+			wfTimestamp( TimestampFormat::MW )
 		);
 		$this->userOptionsManager->saveOptions( $mentor );
 

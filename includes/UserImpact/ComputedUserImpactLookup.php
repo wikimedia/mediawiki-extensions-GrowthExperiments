@@ -35,6 +35,7 @@ use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Stats\StatsFactory;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class ComputedUserImpactLookup implements UserImpactLookup {
 
@@ -130,7 +131,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editData->getEditCountByTaskType(),
 			$editData->getRevertedEditCount(),
 			$editData->getNewcomerTaskEditCount(),
-			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
+			wfTimestampOrNull( TimestampFormat::UNIX, $editData->getLastEditTimestamp() ),
 			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() ),
 			$editData->getCreatedArticlesCount(),
 			$this->userEditTracker->getUserEditCount( $user )
@@ -183,7 +184,7 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			$editData->getEditCountByTaskType(),
 			$editData->getRevertedEditCount(),
 			$editData->getNewcomerTaskEditCount(),
-			wfTimestampOrNull( TS_UNIX, $editData->getLastEditTimestamp() ),
+			wfTimestampOrNull( TimestampFormat::UNIX, $editData->getLastEditTimestamp() ),
 			$pageViewData['dailyTotalViews'],
 			$pageViewData['dailyArticleViews'],
 			ComputeEditingStreaks::getLongestEditingStreak( $editData->getEditCountByDay() ),

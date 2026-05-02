@@ -16,6 +16,7 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\RemexHtml\HTMLData;
 use Wikimedia\RemexHtml\Serializer\SerializerNode;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class WelcomeSurvey {
 
@@ -115,10 +116,10 @@ class WelcomeSurvey {
 			// User is anon or has registered a long, long time ago when MediaWiki had no logging for it.
 			return false;
 		}
-		$registrationTimestamp = (int)wfTimestamp( TS_UNIX, $registrationDate );
+		$registrationTimestamp = (int)wfTimestamp( TimestampFormat::UNIX, $registrationDate );
 		$expiryDays = $this->context->getConfig()->get( 'WelcomeSurveyReminderExpiry' );
 		$expirySeconds = $expiryDays * ExpirationAwareness::TTL_DAY;
-		if ( $registrationTimestamp + $expirySeconds < MWTimestamp::now( TS_UNIX ) ) {
+		if ( $registrationTimestamp + $expirySeconds < MWTimestamp::now( TimestampFormat::UNIX ) ) {
 			// The configured reminder expiry has passed.
 			return false;
 		}

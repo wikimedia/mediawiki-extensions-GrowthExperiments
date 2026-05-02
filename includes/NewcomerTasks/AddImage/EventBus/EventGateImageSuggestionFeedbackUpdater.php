@@ -8,6 +8,7 @@ use MediaWiki\Extension\EventBus\EventBusFactory;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Utils\MWTimestamp;
 use MediaWiki\WikiMap\WikiMap;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Create and send event to EventGate when image suggestions are accepted, rejected or invalidated.
@@ -58,7 +59,7 @@ class EventGateImageSuggestionFeedbackUpdater {
 			'user_id' => $userId,
 			'is_accepted' => $accepted === true,
 			'is_rejected' => $accepted === false,
-			'dt' => MWTimestamp::now( TS_ISO_8601 ),
+			'dt' => MWTimestamp::now( TimestampFormat::ISO_8601 ),
 			'origin_wiki' => 'commonswiki',
 		];
 		if ( $rejectionReasons ) {

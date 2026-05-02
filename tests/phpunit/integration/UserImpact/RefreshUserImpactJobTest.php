@@ -16,6 +16,7 @@ use MediaWiki\User\UserSelectQueryBuilder;
 use MediaWiki\Utils\MWTimestamp;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\IDBAccessObject;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @covers \GrowthExperiments\UserImpact\RefreshUserImpactJob
@@ -64,7 +65,7 @@ class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 		$job = new RefreshUserImpactJob(
 			[
 				'impactDataBatch' => $userImpactData,
-				'staleBefore' => wfTimestamp( TS_UNIX, '2022-10-09 01:00:00' ),
+				'staleBefore' => wfTimestamp( TimestampFormat::UNIX, '2022-10-09 01:00:00' ),
 			],
 			$this->getServiceContainer()->getUserIdentityLookup(),
 			$this->getServiceContainer()->getUserFactory(),
@@ -89,7 +90,7 @@ class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 		];
 		foreach ( $userIds as $i ) {
 			$this->assertSame( $i, $actualUserImpacts[$i]->getUser()->getId() );
-			$this->assertTimestampSame( wfTimestamp( TS_UNIX, $expectedTimestamps[$i] ),
+			$this->assertTimestampSame( wfTimestamp( TimestampFormat::UNIX, $expectedTimestamps[$i] ),
 				$actualUserImpacts[$i]->getGeneratedAt(), "mismatch for user $i" );
 		}
 	}
@@ -139,8 +140,8 @@ class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 
 	private function assertTimestampSame( int $expected, int $actual, ?string $message = null ) {
 		$this->assertSame(
-			wfTimestamp( TS_DB, $expected ),
-			wfTimestamp( TS_DB, $actual ),
+			wfTimestamp( TimestampFormat::DB, $expected ),
+			wfTimestamp( TimestampFormat::DB, $actual ),
 			$message
 		);
 	}

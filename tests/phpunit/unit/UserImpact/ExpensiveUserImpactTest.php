@@ -11,6 +11,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Wikimedia\TestingAccessWrapper;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @covers \GrowthExperiments\UserImpact\UserImpact
@@ -42,7 +43,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			(int)wfTimestamp( TS_UNIX, '20200101000000' ),
+			(int)wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
 			 new EditingStreak(),
@@ -75,7 +76,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			(int)wfTimestamp( TS_UNIX, '20200101000000' ),
+			(int)wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),
@@ -125,7 +126,7 @@ class ExpensiveUserImpactTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			(int)wfTimestamp( TS_UNIX, '20200101000000' ),
+			(int)wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			$dailyTotalViews,
 			$dailyArticleViews,
 			new EditingStreak(),

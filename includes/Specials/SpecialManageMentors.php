@@ -24,6 +24,7 @@ use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\Utils\MWTimestamp;
 use OOUI\ButtonWidget;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class SpecialManageMentors extends SpecialPage {
 
@@ -145,7 +146,7 @@ class SpecialManageMentors extends SpecialPage {
 						$this->msg( 'growthexperiments-manage-mentors-status-away-until' )
 							->params( $this->getLanguage()->userDate( $ts, $this->getUser() ) )
 							->text(),
-						(int)ConvertibleTimestamp::convert( TS_UNIX, $ts ),
+						(int)ConvertibleTimestamp::convert( TimestampFormat::UNIX, $ts ),
 					];
 				}
 				// if the reason is a timestamp, but we've got no timestamp, just pretend they are active
@@ -175,7 +176,7 @@ class SpecialManageMentors extends SpecialPage {
 			),
 			Html::element(
 				'td',
-				[ 'data-sort-value' => $ts->getTimestamp( TS_UNIX ) ],
+				[ 'data-sort-value' => $ts->getTimestamp( TimestampFormat::UNIX ) ],
 				$this->getContext()->getLanguage()->userTimeAndDate( $ts, $this->getUser() )
 			),
 			Html::element( 'td', [ 'data-sort-value' => $weightRank ], $weightText ),

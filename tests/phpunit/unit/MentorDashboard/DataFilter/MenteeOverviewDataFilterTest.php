@@ -6,6 +6,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataFilter;
 use MediaWikiUnitTestCase;
 use Wikimedia\TestingAccessWrapper;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @coversDefaultClass \GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataFilter
@@ -20,8 +21,8 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 
 	private static function getLastActive( int $secondsAgo ): string {
 		return ConvertibleTimestamp::convert(
-			TS_MW,
-			wfTimestamp( TS_UNIX ) - $secondsAgo
+			TimestampFormat::MW,
+			wfTimestamp( TimestampFormat::UNIX ) - $secondsAgo
 		);
 	}
 

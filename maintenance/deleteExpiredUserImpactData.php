@@ -9,6 +9,7 @@ use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use MediaWiki\Maintenance\Maintenance;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 // @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -65,7 +66,7 @@ class DeleteExpiredUserImpactData extends Maintenance {
 	/**
 	 * @param string $relativeDate A relative date string fragment that will be prefixed with a
 	 *   minus sign and passed to the DateTime constructor
-	 * @return string TS_MW formatted timestamp
+	 * @return string MW formatted timestamp
 	 */
 	private function getTimestampFromRelativeDate( string $relativeDate ): string {
 		try {
@@ -73,7 +74,7 @@ class DeleteExpiredUserImpactData extends Maintenance {
 		} catch ( Exception $e ) {
 			$this->fatalError( $e->getMessage() );
 		}
-		return $timestamp->getTimestamp( TS_MW );
+		return $timestamp->getTimestamp( TimestampFormat::MW );
 	}
 
 }

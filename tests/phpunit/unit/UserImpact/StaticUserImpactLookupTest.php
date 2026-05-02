@@ -8,6 +8,7 @@ use GrowthExperiments\UserImpact\StaticUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpact;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @covers \GrowthExperiments\UserImpact\StaticUserImpactLookup
@@ -25,7 +26,7 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 				[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 				1,
 				80,
-				wfTimestamp( TS_UNIX, '20200101000000' ),
+				wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 				new EditingStreak(),
 				0,
 				null
@@ -39,7 +40,7 @@ class StaticUserImpactLookupTest extends MediaWikiUnitTestCase {
 				[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 				1,
 				90,
-				wfTimestamp( TS_UNIX, '20200909000000' ),
+				wfTimestamp( TimestampFormat::UNIX, '20200909000000' ),
 				[ '2022-08-24' => 100, '2022-08-25' => 150 ],
 				[
 					'Foo' => [ '2022-08-24' => 10, '2022-08-25' => 20 ],

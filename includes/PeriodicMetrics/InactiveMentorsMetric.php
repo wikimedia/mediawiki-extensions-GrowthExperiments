@@ -6,6 +6,7 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class InactiveMentorsMetric implements IMetric {
 
@@ -30,8 +31,8 @@ class InactiveMentorsMetric implements IMetric {
 		$inactiveMentors = 0;
 		foreach ( $this->mentorProvider->getAutoAssignedMentors() as $mentor ) {
 			$lastEditTimestamp = $this->userEditTracker->getLatestEditTimestamp( $mentor );
-			$secondsSinceLastEdit = (int)MWTimestamp::now( TS_UNIX ) -
-				(int)MWTimestamp::getInstance( $lastEditTimestamp )->getTimestamp( TS_UNIX );
+			$secondsSinceLastEdit = (int)MWTimestamp::now( TimestampFormat::UNIX ) -
+				(int)MWTimestamp::getInstance( $lastEditTimestamp )->getTimestamp( TimestampFormat::UNIX );
 
 			if ( $secondsSinceLastEdit > self::INACTIVITY_THRESHOLD ) {
 				$inactiveMentors++;

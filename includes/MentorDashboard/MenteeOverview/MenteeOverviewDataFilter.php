@@ -6,6 +6,7 @@ use LogicException;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Helper class to filter data about mentees
@@ -296,9 +297,9 @@ class MenteeOverviewDataFilter {
 			}
 
 			if ( $this->activeDaysAgo !== null && $menteeData['last_active'] !== null ) {
-				$secondsSinceLastActivity = (int)wfTimestamp( TS_UNIX ) -
+				$secondsSinceLastActivity = (int)wfTimestamp( TimestampFormat::UNIX ) -
 					(int)ConvertibleTimestamp::convert(
-						TS_UNIX,
+						TimestampFormat::UNIX,
 						$menteeData['last_active']
 					);
 				if ( $secondsSinceLastActivity >= self::SECONDS_DAY * $this->activeDaysAgo ) {

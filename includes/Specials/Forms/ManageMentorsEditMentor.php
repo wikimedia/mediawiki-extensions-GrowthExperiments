@@ -12,6 +12,7 @@ use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Rdbms\IDBAccessObject;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 
@@ -102,7 +103,7 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 					[ '!==', 'isAway', '1' ],
 					[ '!==', 'isAwayChangeable', '1' ],
 				],
-				'min' => MWTimestamp::getInstance()->getTimestamp( TS_MW ),
+				'min' => MWTimestamp::getInstance()->getTimestamp( TimestampFormat::MW ),
 				'default' => MWTimestamp::getInstance( (string)$awayTimestamp )
 					->format( 'Y-m-d\TH:m:s\Z' ),
 			],

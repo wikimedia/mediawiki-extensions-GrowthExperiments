@@ -12,6 +12,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Service to look up the conditions for mentee being praiseworthy
@@ -48,8 +49,12 @@ class PraiseworthyConditionsLookup {
 	 * @return DatePeriod
 	 */
 	private function buildDatePeriod( int $days ): DatePeriod {
-		$daysAgoUnix = ( new ConvertibleTimestamp() )->sub( 'P' . $days . 'D' )->getTimestamp( TS_UNIX );
-		$tomorrowUnix = ( new ConvertibleTimestamp() )->add( 'P1D' )->getTimestamp( TS_UNIX );
+		$daysAgoUnix = ( new ConvertibleTimestamp() )
+			->sub( 'P' . $days . 'D' )
+			->getTimestamp( TimestampFormat::UNIX );
+		$tomorrowUnix = ( new ConvertibleTimestamp() )
+			->add( 'P1D' )
+			->getTimestamp( TimestampFormat::UNIX );
 		return new DatePeriod(
 			new DateTime( '@' . $daysAgoUnix ),
 			new DateInterval( 'P1D' ),
@@ -106,8 +111,8 @@ class PraiseworthyConditionsLookup {
 			return false;
 		}
 
-		$noPraiseUntilUnix = ( new ConvertibleTimestamp( $skippedUntilRaw ) )->getTimestamp( TS_UNIX );
-		$nowUnix = ( new ConvertibleTimestamp() )->getTimestamp( TS_UNIX );
+		$noPraiseUntilUnix = ( new ConvertibleTimestamp( $skippedUntilRaw ) )->getTimestamp( TimestampFormat::UNIX );
+		$nowUnix = ( new ConvertibleTimestamp() )->getTimestamp( TimestampFormat::UNIX );
 		return $nowUnix < $noPraiseUntilUnix;
 	}
 

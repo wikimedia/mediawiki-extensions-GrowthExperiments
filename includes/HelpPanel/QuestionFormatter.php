@@ -7,6 +7,7 @@ namespace GrowthExperiments\HelpPanel;
 use GrowthExperiments\Util;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class QuestionFormatter {
 
@@ -87,7 +88,7 @@ class QuestionFormatter {
 
 	private function getRelativeTime(): string {
 		$elapsedTime = (int)wfTimestamp() - (int)wfTimestamp(
-			TS_UNIX,
+			TimestampFormat::UNIX,
 			$this->questionRecord->getTimestamp()
 		);
 		return Util::getRelativeTime( $this->contextSource, $elapsedTime );

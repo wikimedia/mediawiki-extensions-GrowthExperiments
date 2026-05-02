@@ -11,6 +11,7 @@ use MediaWiki\Json\JsonCodec;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @covers \GrowthExperiments\UserImpact\UserImpact
@@ -27,7 +28,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			(int)wfTimestamp( TS_UNIX, '20200101000000' ),
+			(int)wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			new EditingStreak(),
 			0,
 			10
@@ -40,7 +41,10 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 1, $userImpact->getRevertedEditCount() );
 		$this->assertSame( 100, $userImpact->getEditCountIn( NS_MAIN ) );
 		$this->assertSame( 80, $userImpact->getNewcomerTaskEditCount() );
-		$this->assertSame( (int)wfTimestamp( TS_UNIX, '20200101000000' ), $userImpact->getLastEditTimestamp() );
+		$this->assertSame(
+			(int)wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
+			$userImpact->getLastEditTimestamp()
+		);
 		$this->assertSame( 10, $userImpact->getTotalEditsCount() );
 	}
 
@@ -56,7 +60,7 @@ class UserImpactTest extends MediaWikiUnitTestCase {
 			[ 'copyedit' => 10, 'link-recommendation' => 100 ],
 			1,
 			80,
-			(int)wfTimestamp( TS_UNIX, '20200101000000' ),
+			(int)wfTimestamp( TimestampFormat::UNIX, '20200101000000' ),
 			new EditingStreak(
 				ComputeEditingStreaks::makeDatePeriod(
 					'2019-01-01',

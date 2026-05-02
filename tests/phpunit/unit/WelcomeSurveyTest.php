@@ -13,6 +13,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @coversDefaultClass \GrowthExperiments\WelcomeSurvey
@@ -186,7 +187,7 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 			[ 'getName', 'getRegistration', 'getInstanceFromPrimary' ] );
 		$mockUser->method( 'getName' )->willReturn( 'TestUser' . $counter++ );
 		$mockUser->method( 'getRegistration' )->willReturnCallback( static function () use ( $registrationDate ) {
-			return wfTimestampOrNull( TS_MW, $registrationDate );
+			return wfTimestampOrNull( TimestampFormat::MW, $registrationDate );
 		} );
 		$mockUser->method( 'getInstanceFromPrimary' )->willReturnSelf();
 		return $mockUser;

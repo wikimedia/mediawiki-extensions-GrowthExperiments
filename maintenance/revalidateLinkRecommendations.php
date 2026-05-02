@@ -20,6 +20,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\DBReadOnlyError;
+use Wikimedia\Timestamp\TimestampFormat;
 
 // @codeCoverageIgnoreStart
 $path = dirname( dirname( dirname( __DIR__ ) ) );
@@ -279,7 +280,7 @@ class RevalidateLinkRecommendations extends Maintenance {
 	private function getOlderThanTimestamp(): int {
 		if ( !$this->olderThanTimestamp ) {
 			$rawTS = wfTimestamp(
-				TS_UNIX,
+				TimestampFormat::UNIX,
 				$this->getOption( 'olderThan' )
 			);
 			if ( !$rawTS ) {

@@ -10,6 +10,7 @@ use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Timestamp\TimestampFormat;
 
 // @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -90,7 +91,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 			}
 
 			$timeDelta = (int)wfTimestamp() - (int)wfTimestamp(
-				TS_UNIX,
+				TimestampFormat::UNIX,
 				$lastActivityTimestamp
 			);
 

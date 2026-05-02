@@ -32,6 +32,7 @@ use Psr\Log\LogLevel;
 use Throwable;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class MentorHooks implements
 	LocalUserCreatedHook,
@@ -288,7 +289,10 @@ class MentorHooks implements
 		}
 
 		// ConvertibleTimestamp::time() used so we can fake the current time in tests
-		$userAge = ConvertibleTimestamp::time() - (int)wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
+		$userAge = ConvertibleTimestamp::time() - (int)wfTimestampOrNull(
+			TimestampFormat::UNIX,
+				$user->getRegistration()
+			);
 		if (
 			$userAge >= $this->wikiConfig->get( 'GEMentorshipMinimumAge' ) * ExpirationAwareness::TTL_DAY &&
 			$user->getEditCount() >= $this->wikiConfig->get( 'GEMentorshipMinimumEditcount' )
