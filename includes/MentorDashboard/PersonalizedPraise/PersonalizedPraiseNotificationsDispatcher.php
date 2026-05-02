@@ -9,6 +9,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\ObjectCache\BagOStuff;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class PersonalizedPraiseNotificationsDispatcher {
 
@@ -129,7 +130,7 @@ class PersonalizedPraiseNotificationsDispatcher {
 		}
 
 		$this->eventLogger->logNotified( $mentor );
-		$this->setLastNotified( $mentor, MWTimestamp::getInstance()->getTimestamp( TS_MW ) );
+		$this->setLastNotified( $mentor, MWTimestamp::getInstance()->getTimestamp( TimestampFormat::MW ) );
 		$this->purgePendingMenteesForMentor( $mentor );
 	}
 
@@ -170,8 +171,8 @@ class PersonalizedPraiseNotificationsDispatcher {
 		}
 
 		$rawLastNotifiedTS = $this->getLastNotified( $mentor );
-		$notifiedSecondsAgo = (int)MWTimestamp::getInstance()->getTimestamp( TS_UNIX ) -
-			(int)MWTimestamp::getInstance( $rawLastNotifiedTS ?? false )->getTimestamp( TS_UNIX );
+		$notifiedSecondsAgo = (int)MWTimestamp::getInstance()->getTimestamp( TimestampFormat::UNIX ) -
+			(int)MWTimestamp::getInstance( $rawLastNotifiedTS ?? false )->getTimestamp( TimestampFormat::UNIX );
 
 		if (
 			$rawLastNotifiedTS === null ||

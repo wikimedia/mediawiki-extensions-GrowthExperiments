@@ -14,6 +14,7 @@ use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class GrowthExperimentsUserImpactUpdater {
 	private UserEditTracker $userEditTracker;
@@ -59,7 +60,7 @@ class GrowthExperimentsUserImpactUpdater {
 		}
 
 		$registrationCutoff = new DateTime( 'now - 1year' );
-		$registrationTimestamp = wfTimestamp( TS_UNIX,
+		$registrationTimestamp = wfTimestamp( TimestampFormat::UNIX,
 			$this->userRegistrationLookup->getRegistration( $userIdentity ) );
 
 		$lastEditTimestamp = MWTimestamp::getInstance( $lastEditTimestamp );

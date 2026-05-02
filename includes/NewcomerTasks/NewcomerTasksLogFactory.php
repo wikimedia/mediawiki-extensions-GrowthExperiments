@@ -9,6 +9,7 @@ use MediaWiki\User\UserTimeCorrection;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
+use Wikimedia\Timestamp\TimestampFormat;
 
 class NewcomerTasksLogFactory {
 
@@ -29,7 +30,7 @@ class NewcomerTasksLogFactory {
 			$this->userOptionsLookup->getOption( $user, 'timecorrection' )
 		);
 		$localMidnight = new DateTime( 'T00:00', $userTimeCorrection->getTimeZone() );
-		$utcTimestamp = MWTimestamp::convert( TS_MW, $localMidnight->getTimestamp() );
+		$utcTimestamp = MWTimestamp::convert( TimestampFormat::MW, $localMidnight->getTimestamp() );
 
 		$dbr = $this->connectionProvider->getReplicaDatabase();
 		return $dbr->newSelectQueryBuilder()
