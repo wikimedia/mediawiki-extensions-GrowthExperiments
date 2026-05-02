@@ -8,7 +8,6 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
-use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IDBAccessObject;
@@ -16,26 +15,15 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 class DatabaseMentorStore extends MentorStore {
 
-	private UserFactory $userFactory;
-	private UserIdentityLookup $userIdentityLookup;
-	private JobQueueGroup $jobQueueGroup;
-	private ILoadBalancer $loadBalancer;
-
 	public function __construct(
-		LoggerInterface $logger,
 		WANObjectCache $wanCache,
-		UserFactory $userFactory,
-		UserIdentityLookup $userIdentityLookup,
-		JobQueueGroup $jobQueueGroup,
-		ILoadBalancer $loadBalancer,
-		bool $wasPosted
+		private UserFactory $userFactory,
+		private UserIdentityLookup $userIdentityLookup,
+		private JobQueueGroup $jobQueueGroup,
+		private ILoadBalancer $loadBalancer,
+		bool $wasPosted,
 	) {
-		parent::__construct( $logger, $wanCache, $wasPosted );
-
-		$this->userFactory = $userFactory;
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->jobQueueGroup = $jobQueueGroup;
-		$this->loadBalancer = $loadBalancer;
+		parent::__construct( $wanCache, $wasPosted );
 	}
 
 	/**

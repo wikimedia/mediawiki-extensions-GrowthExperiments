@@ -110,7 +110,6 @@
 		"notificationKeepGoingJob": {
 			"class": "GrowthExperiments\\LevelingUp\\NotificationKeepGoingJob",
 			"services": [
-				"MainConfig",
 				"StatsFactory",
 				"UserIdentityLookup",
 				"SpecialPageFactory",
@@ -120,7 +119,6 @@
 		"notificationGetStartedJob": {
 			"class": "GrowthExperiments\\LevelingUp\\NotificationGetStartedJob",
 			"services": [
-				"MainConfig",
 				"StatsFactory",
 				"UserIdentityLookup",
 				"SpecialPageFactory",
@@ -196,8 +194,6 @@
 			"services": [
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsAddImageSubmissionHandler",
-				"GrowthExperimentsTaskSuggesterFactory",
-				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 				"TitleFactory",
 				"GrowthExperimentsFeatureManager"
 			]
@@ -333,7 +329,6 @@
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
 				"GrowthExperimentsUserImpactLookup_Computed",
 				"GrowthExperimentsUserImpactStore",
-				"GrowthExperimentsInteractionLogger",
 				"GrowthExperimentsTaskTypeManager",
 				"GrowthExperimentsLevelingUpManager",
 				"GrowthExperimentsFeatureManager"

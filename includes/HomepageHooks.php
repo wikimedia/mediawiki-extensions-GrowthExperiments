@@ -8,7 +8,6 @@ use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use Elastica\Query\MatchNone;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
-use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -127,85 +126,38 @@ class HomepageHooks implements
 	public const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
 	private const VE_PREF_DISABLE_BETA = 'visualeditor-betatempdisable';
 	private const VE_PREF_EDITOR = 'visualeditor-editor';
-	private Config $config;
-	private UserOptionsManager $userOptionsManager;
-	private UserOptionsLookup $userOptionsLookup;
-	private UserIdentityUtils $userIdentityUtils;
-	private NamespaceInfo $namespaceInfo;
-	private TitleFactory $titleFactory;
-	private ConfigurationLoader $configurationLoader;
-	private CampaignConfig $campaignConfig;
-
-	private IExperimentManager $experimentManager;
-	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
-	private TaskSuggesterFactory $taskSuggesterFactory;
-	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
-	private JobQueueGroup $jobQueueGroup;
-	private SpecialPageFactory $specialPageFactory;
-	private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager;
 	private ?MessageLocalizer $messageLocalizer;
 	private ?OutputPage $outputPage;
 	private ?UserIdentity $userIdentity;
-	private UserImpactLookup $userImpactLookup;
-	private UserImpactStore $userImpactStore;
-	private LevelingUpManager $levelingUpManager;
-	private FeatureManager $featureManager;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
-	private StatsFactory $statsFactory;
-	private GrowthExperimentsInteractionLogger $growthInteractionLogger;
-	private TaskTypeManager $taskTypeManager;
 	private StatusFormatter $statusFormatter;
 
 	public function __construct(
-		Config $config,
-		UserOptionsManager $userOptionsManager,
-		UserOptionsLookup $userOptionsLookup,
-		UserIdentityUtils $userIdentityUtils,
-		NamespaceInfo $namespaceInfo,
-		TitleFactory $titleFactory,
-		StatsFactory $statsFactory,
-		JobQueueGroup $jobQueueGroup,
+		private Config $config,
+		private UserOptionsManager $userOptionsManager,
+		private UserOptionsLookup $userOptionsLookup,
+		private UserIdentityUtils $userIdentityUtils,
+		private NamespaceInfo $namespaceInfo,
+		private TitleFactory $titleFactory,
+		private StatsFactory $statsFactory,
+		private JobQueueGroup $jobQueueGroup,
 		FormatterFactory $formatterFactory,
-		ConfigurationLoader $configurationLoader,
-		CampaignConfig $campaignConfig,
-		IExperimentManager $experimentManager,
-		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		TaskSuggesterFactory $taskSuggesterFactory,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		SpecialPageFactory $specialPageFactory,
-		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
-		UserImpactLookup $userImpactLookup,
-		UserImpactStore $userImpactStore,
-		GrowthExperimentsInteractionLogger $growthInteractionLogger,
-		TaskTypeManager $taskTypeManager,
-		LevelingUpManager $levelingUpManager,
-		FeatureManager $featureManager
+		private ConfigurationLoader $configurationLoader,
+		private CampaignConfig $campaignConfig,
+		private IExperimentManager $experimentManager,
+		private TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
+		private TaskSuggesterFactory $taskSuggesterFactory,
+		private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		private SpecialPageFactory $specialPageFactory,
+		private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
+		private UserImpactLookup $userImpactLookup,
+		private UserImpactStore $userImpactStore,
+		private TaskTypeManager $taskTypeManager,
+		private LevelingUpManager $levelingUpManager,
+		private FeatureManager $featureManager
 	) {
-		$this->config = $config;
-		$this->userOptionsManager = $userOptionsManager;
-		$this->userOptionsLookup = $userOptionsLookup;
-		$this->userIdentityUtils = $userIdentityUtils;
-		$this->namespaceInfo = $namespaceInfo;
-		$this->titleFactory = $titleFactory;
-		$this->statsFactory = $statsFactory;
-		$this->jobQueueGroup = $jobQueueGroup;
-		$this->configurationLoader = $configurationLoader;
-		$this->campaignConfig = $campaignConfig;
-		$this->experimentManager = $experimentManager;
-		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
-		$this->taskSuggesterFactory = $taskSuggesterFactory;
-		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->specialPageFactory = $specialPageFactory;
-		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
-		$this->userImpactLookup = $userImpactLookup;
-		$this->userImpactStore = $userImpactStore;
-		$this->growthInteractionLogger = $growthInteractionLogger;
-		$this->taskTypeManager = $taskTypeManager;
-		$this->levelingUpManager = $levelingUpManager;
-		$this->featureManager = $featureManager;
-
 		// Ideally RequestContext would be injected but the way hook handlers are defined makes that hard.
 		$this->statusFormatter = $formatterFactory->getStatusFormatter( RequestContext::getMain() );
 

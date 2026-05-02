@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\User\UserIdentity;
-use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\TestingAccessWrapper;
 
@@ -19,7 +18,6 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 
 	protected function getStore( bool $wasPosted ): MentorStore {
 		return new DatabaseMentorStore(
-			new NullLogger(),
 			$this->wanCache,
 			$this->getServiceContainer()->getUserFactory(),
 			$this->getServiceContainer()->getUserIdentityLookup(),

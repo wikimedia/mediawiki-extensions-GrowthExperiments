@@ -12,7 +12,6 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use PHPUnit\Framework\Constraint\Constraint;
-use Psr\Log\NullLogger;
 use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -195,7 +194,6 @@ class ApiSetMentorTest extends ApiTestCase {
 	private function getMockMentorStore( UserIdentity $mentee, UserIdentity $mentor ) {
 		$mock = $this->getMockBuilder( DatabaseMentorStore::class )
 			->setConstructorArgs( [
-				new NullLogger(),
 				new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 				$this->createMock( UserFactory::class ),
 				$this->createMock( UserIdentityLookup::class ),

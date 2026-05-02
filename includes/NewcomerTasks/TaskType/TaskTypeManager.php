@@ -5,42 +5,24 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use MediaWiki\Config\Config;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
 
 class TaskTypeManager {
 
-	private Config $config;
-	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
-	private UserEditTracker $userEditTracker;
-	private ConfigurationLoader $configurationLoader;
-	private LevelingUpManager $levelingUpManager;
-	private ?array $taskTypes;
-	private ?array $availableTaskTypes;
-	private ?array $availableTaskTypesOnNextEdit;
-	private ?array $userTaskTypeFilter;
-	private ?array $unavailableTaskTypes;
-	private ?string $suggestedNextTask;
+	private ?array $taskTypes = null;
+	private ?array $availableTaskTypes = null;
+	private ?array $availableTaskTypesOnNextEdit = null;
+	private ?array $userTaskTypeFilter = null;
+	private ?array $unavailableTaskTypes = null;
+	private ?string $suggestedNextTask = null;
 
 	public function __construct(
-		Config $config,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		UserEditTracker $userEditTracker,
-		ConfigurationLoader $configurationLoader,
-		LevelingUpManager $levelingUpManager
+		private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		private UserEditTracker $userEditTracker,
+		private ConfigurationLoader $configurationLoader,
+		private LevelingUpManager $levelingUpManager,
 	) {
-		$this->config = $config;
-		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->userEditTracker = $userEditTracker;
-		$this->configurationLoader = $configurationLoader;
-		$this->levelingUpManager = $levelingUpManager;
-		$this->taskTypes = null;
-		$this->userTaskTypeFilter = null;
-		$this->availableTaskTypes = null;
-		$this->availableTaskTypesOnNextEdit = null;
-		$this->unavailableTaskTypes = null;
-		$this->suggestedNextTask = null;
 	}
 
 	/**

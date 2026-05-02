@@ -5,8 +5,6 @@ namespace GrowthExperiments\Api;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
@@ -29,30 +27,15 @@ use Wikimedia\ParamValidator\ParamValidator;
 class ApiInvalidateImageRecommendation extends ApiBase {
 	use LoggerAwareTrait;
 
-	private AddImageSubmissionHandler $imageSubmissionHandler;
-	private TaskSuggesterFactory $taskSuggesterFactory;
-	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
-	private TitleFactory $titleFactory;
-	private ConfigurationLoader $configurationLoader;
-	private FeatureManager $featureManager;
-
 	public function __construct(
 		ApiMain $mainModule,
 		string $moduleName,
-		ConfigurationLoader $configurationLoader,
-		AddImageSubmissionHandler $imageSubmissionHandler,
-		TaskSuggesterFactory $taskSuggesterFactory,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		TitleFactory $titleFactory,
-		FeatureManager $featureManager
+		private ConfigurationLoader $configurationLoader,
+		private AddImageSubmissionHandler $imageSubmissionHandler,
+		private TitleFactory $titleFactory,
+		private FeatureManager $featureManager
 	) {
 		parent::__construct( $mainModule, $moduleName );
-		$this->configurationLoader = $configurationLoader;
-		$this->imageSubmissionHandler = $imageSubmissionHandler;
-		$this->taskSuggesterFactory = $taskSuggesterFactory;
-		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->titleFactory = $titleFactory;
-		$this->featureManager = $featureManager;
 
 		$this->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 	}

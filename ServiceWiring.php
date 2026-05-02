@@ -687,7 +687,6 @@ return [
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
 		return new DatabaseMentorStore(
-			$geServices->getLogger(),
 			$services->getMainWANObjectCache(),
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
@@ -1101,7 +1100,6 @@ return [
 	): TaskTypeManager {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new TaskTypeManager(
-			$services->getMainConfig(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
 			$services->getUserEditTracker(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),

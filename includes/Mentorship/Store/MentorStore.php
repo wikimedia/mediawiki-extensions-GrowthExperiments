@@ -4,7 +4,6 @@ namespace GrowthExperiments\Mentorship\Store;
 
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
-use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\DBAccessObjectUtils;
 use Wikimedia\Rdbms\IDBAccessObject;
@@ -19,19 +18,13 @@ abstract class MentorStore {
 		self::ROLE_BACKUP,
 	];
 
-	protected WANObjectCache $wanCache;
-
 	/** @var array Cache key => value; custom in-process cache */
 	protected array $inProcessCache = [];
-	protected bool $wasPosted;
 
 	public function __construct(
-		LoggerInterface $logger,
-		WANObjectCache $wanCache,
-		bool $wasPosted
+		protected WANObjectCache $wanCache,
+		protected bool $wasPosted,
 	) {
-		$this->wanCache = $wanCache;
-		$this->wasPosted = $wasPosted;
 	}
 
 	/**
