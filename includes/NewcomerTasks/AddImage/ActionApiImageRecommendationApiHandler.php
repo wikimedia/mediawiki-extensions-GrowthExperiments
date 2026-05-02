@@ -8,9 +8,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Language\RawMessage;
-use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\Title;
+use Psr\Log\LoggerInterface;
 use RuntimeException;
 use StatusValue;
 
@@ -24,23 +24,18 @@ use StatusValue;
  */
 class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHandler {
 
-	private HttpRequestFactory $httpRequestFactory;
 	/** @var string api.php URL */
 	private string $apiUrl;
 	/** @var string MediaWiki OAuth 2 access token for upstream wiki */
 	private string $accessToken;
 
-	/**
-	 * @param HttpRequestFactory $httpRequestFactory
-	 * @param string $apiUrl api.php URL
-	 * @param string $accessToken
-	 */
 	public function __construct(
-		HttpRequestFactory $httpRequestFactory,
+		private StatusFormatter $statusFormatter,
+		private HttpRequestFactory $httpRequestFactory,
+		private LoggerInterface $logger,
 		string $apiUrl,
 		string $accessToken
 	) {
-		$this->httpRequestFactory = $httpRequestFactory;
 		$this->apiUrl = $apiUrl;
 		$this->accessToken = $accessToken;
 	}
@@ -79,10 +74,10 @@ class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHa
 			foreach ( $apiResponse['warnings'] as $warning ) {
 				$warningStatus->warning( new RawMessage( $warning['module'] . ': ' . $warning['text'] ) );
 			}
-			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-				Status::wrap( $warningStatus )->getWikiText( false, false, 'en' ),
-				[ 'exception' => new RuntimeException ]
-			);
+			$this->logger->warning( ...$this->statusFormatter->getPsr3MessageAndContext(
+				$warningStatus,
+				[ 'exception' => new RuntimeException() ]
+			) );
 		}
 
 		if ( isset( $apiResponse['query']['pages'][0]['growthimagesuggestiondataerrors'] ) ) {

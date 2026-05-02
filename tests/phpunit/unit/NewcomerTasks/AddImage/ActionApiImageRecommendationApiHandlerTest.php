@@ -8,7 +8,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Status\StatusFormatter;
 use MediaWikiUnitTestCase;
+use Psr\Log\NullLogger;
 use StatusValue;
 
 /**
@@ -22,7 +24,9 @@ class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
 	public function testGetSuggestionDataFromApiResponse( array $apiResponse, $expectedResult ) {
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$apiHandler = new ActionApiImageRecommendationApiHandler(
+			$this->createNoOpMock( StatusFormatter::class ),
 			$this->createMock( HttpRequestFactory::class ),
+			new NullLogger(),
 			'https://example.com',
 			'abcd1234'
 		);

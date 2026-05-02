@@ -12,11 +12,12 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFormatter;
 use MediaWiki\WikiMap\WikiMap;
@@ -44,6 +45,7 @@ class FixLinkRecommendationData extends Maintenance {
 	private LinkBatchFactory $linkBatchFactory;
 	private PageStore $pageStore;
 	private TitleFormatter $titleFormatter;
+	private StatusFormatter $statusFormatter;
 	private ?int $randomSeed;
 
 	public function __construct() {
@@ -136,6 +138,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
 		$this->pageStore = $services->getPageStore();
 		$this->titleFormatter = $services->getTitleFormatter();
+		$this->statusFormatter = $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() );
 
 		$taskTypes = $configurationLoader->getTaskTypes();
 		$linkRecommendationTaskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
@@ -254,7 +257,7 @@ class FixLinkRecommendationData extends Maintenance {
 			if ( $matches->isOK() ) {
 				$matches = $matches->getValue();
 			} else {
-				$this->fatalError( Status::wrap( $matches )->getWikiText( false, false, 'en' ) );
+				$this->fatalError( $this->statusFormatter->getWikiText( $matches, [ 'lang' => 'en' ] ) );
 			}
 		}
 		return $matches->extractTitles();

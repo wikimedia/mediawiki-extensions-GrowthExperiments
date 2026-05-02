@@ -283,7 +283,9 @@ return [
 				$config->get( 'GEImageRecommendationServiceUseTitles' ) );
 		} elseif ( $apiHandlerType === 'actionapi' ) {
 			return new ActionApiImageRecommendationApiHandler(
+				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 				$services->getHttpRequestFactory(),
+				$growthServices->getLogger(),
 				$config->get( 'GEImageRecommendationServiceUrl' ),
 				$config->get( 'GEImageRecommendationServiceAccessToken' )
 			);
@@ -1184,6 +1186,7 @@ return [
 			$services->getTitleFormatter(),
 			$services->getTitleFactory(),
 			$services->getStatsFactory(),
+			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getFeatureManager(),

@@ -13,7 +13,7 @@ use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Extension\Thanks\ThanksQueryHelper;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Status\Status;
+use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\Title\MalformedTitleException;
@@ -61,54 +61,27 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	/** How many days of pageview data to get. PageViewInfo supports up to 60. */
 	public const PAGEVIEW_DAYS = 60;
 
-	private ServiceOptions $config;
-	private IConnectionProvider $connectionProvider;
-	private NameTableStore $changeTagDefStore;
-	private UserFactory $userFactory;
-	private UserEditTracker $userEditTracker;
-	private TitleFormatter $titleFormatter;
-	private TitleFactory $titleFactory;
-	private StatsFactory $statsFactory;
-	private ?LoggerInterface $logger;
-	private ?PageImages $pageImages;
-	private ?PageViewService $pageViewService;
-	private ?ThanksQueryHelper $thanksQueryHelper;
-	private TaskTypeHandlerRegistry $taskTypeHandlerRegistry;
-	private ConfigurationLoader $configurationLoader;
-	private FeatureManager $featureManager;
+	private LoggerInterface $logger;
 
 	public function __construct(
-		ServiceOptions $config,
-		IConnectionProvider $connectionProvider,
-		NameTableStore $changeTagDefStore,
-		UserFactory $userFactory,
-		UserEditTracker $userEditTracker,
-		TitleFormatter $titleFormatter,
-		TitleFactory $titleFactory,
-		StatsFactory $statsFactory,
-		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		ConfigurationLoader $configurationLoader,
-		FeatureManager $featureManager,
-		?LoggerInterface $loggerFactory,
-		?PageImages $pageImages,
-		?PageViewService $pageViewService,
-		?ThanksQueryHelper $thanksQueryHelper
+		private ServiceOptions $config,
+		private IConnectionProvider $connectionProvider,
+		private NameTableStore $changeTagDefStore,
+		private UserFactory $userFactory,
+		private UserEditTracker $userEditTracker,
+		private TitleFormatter $titleFormatter,
+		private TitleFactory $titleFactory,
+		private StatsFactory $statsFactory,
+		private StatusFormatter $statusFormatter,
+		private TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
+		private ConfigurationLoader $configurationLoader,
+		private FeatureManager $featureManager,
+		?LoggerInterface $logger,
+		private ?PageImages $pageImages,
+		private ?PageViewService $pageViewService,
+		private ?ThanksQueryHelper $thanksQueryHelper
 	) {
-		$this->config = $config;
-		$this->connectionProvider = $connectionProvider;
-		$this->changeTagDefStore = $changeTagDefStore;
-		$this->userFactory = $userFactory;
-		$this->userEditTracker = $userEditTracker;
-		$this->titleFormatter = $titleFormatter;
-		$this->titleFactory = $titleFactory;
-		$this->statsFactory = $statsFactory;
-		$this->logger = $loggerFactory ?? new NullLogger();
-		$this->pageImages = $pageImages;
-		$this->pageViewService = $pageViewService;
-		$this->thanksQueryHelper = $thanksQueryHelper;
-		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
-		$this->configurationLoader = $configurationLoader;
-		$this->featureManager = $featureManager;
+		$this->logger = $logger ?? new NullLogger();
 	}
 
 	/** @inheritDoc */
@@ -596,9 +569,10 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 	 */
 	private function logPageDataBadStatus( StatusValue $status ) {
 		if ( $status->hasMessagesExcept( 'pvi-cached-error-title' ) ) {
-			$this->logger->error(
-				Status::wrap( $status )->getWikiText( false, false, 'en' )
-			);
+			$this->logger->error( ...$this->statusFormatter->getPsr3MessageAndContext(
+				$status,
+				[ 'exception' => new \RuntimeException ]
+			) );
 		} else {
 			$this->statsFactory->withComponent( 'GrowthExperiments' )
 				->getCounter( 'computed_user_impact_lookup_errors_total' )
