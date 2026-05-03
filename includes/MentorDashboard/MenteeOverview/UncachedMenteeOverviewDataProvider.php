@@ -13,7 +13,6 @@ use MediaWiki\Extension\CentralAuth\CentralAuthServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
-use MediaWiki\User\ActorMigration;
 use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -37,19 +36,6 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private const SECONDS_DAY = 86400;
 	private int $batchSize = 100;
 
-	private MentorStore $mentorStore;
-
-	private NameTableStore $changeTagDefStore;
-
-	private ActorMigration $actorMigration;
-
-	private UserIdentityLookup $userIdentityLookup;
-	private TempUserConfig $tempUserConfig;
-
-	private IConnectionProvider $mainConnProvider;
-
-	private LoggerInterface $logger;
-
 	/** @var array Cache used by getLastEditTimestampForUsers */
 	private array $lastTimestampCache = [];
 
@@ -62,21 +48,13 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private array $profilingInfo = [];
 
 	public function __construct(
-		MentorStore $mentorStore,
-		NameTableStore $changeTagDefStore,
-		ActorMigration $actorMigration,
-		UserIdentityLookup $userIdentityLookup,
-		TempUserConfig $tempUserConfig,
-		IConnectionProvider $mainConnProvider,
-		LoggerInterface $logger
+		private MentorStore $mentorStore,
+		private NameTableStore $changeTagDefStore,
+		private UserIdentityLookup $userIdentityLookup,
+		private TempUserConfig $tempUserConfig,
+		private IConnectionProvider $mainConnProvider,
+		private LoggerInterface $logger
 	) {
-		$this->mentorStore = $mentorStore;
-		$this->changeTagDefStore = $changeTagDefStore;
-		$this->actorMigration = $actorMigration;
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->tempUserConfig = $tempUserConfig;
-		$this->mainConnProvider = $mainConnProvider;
-		$this->logger = $logger;
 	}
 
 	public function setBatchSize( int $batchSize ): void {
@@ -407,25 +385,23 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		}
 
 		$dbr = $this->getReadConnection();
-		$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
 		$taggedEditsSubquery = $dbr->newSelectQueryBuilder()
 			->select( [
-				'rev_user' => $queryInfo['fields']['rev_user'],
+				'actor_user',
 				'ct_rev_id',
 			] )
 			->from( 'change_tag' )
 			->join( 'revision', null, 'rev_id=ct_rev_id' )
-			->tables( $queryInfo['tables'] )
+			->join( 'actor', null, 'rev_actor=actor_id' )
 			->where( [
 				'actor_user' => $userIds,
 				'ct_tag_id' => $tagIds,
 			] )
-			->joinConds( $queryInfo['joins'] )
 			->caller( __METHOD__ );
 		$rows = $dbr->newSelectQueryBuilder()
 			->select( [ 'user_id', 'tagged' => 'COUNT(ct_rev_id)' ] )
 			->from( 'user' )
-			->leftJoin( $taggedEditsSubquery, 'tagged_edits', 'rev_user=user_id' )
+			->leftJoin( $taggedEditsSubquery, 'tagged_edits', 'actor_user=user_id' )
 			->where( [ 'user_id' => $userIds ] )
 			->caller( __METHOD__ )
 			->groupBy( 'user_id' )

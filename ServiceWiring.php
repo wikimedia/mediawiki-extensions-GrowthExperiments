@@ -605,7 +605,6 @@ return [
 		return new UncachedMenteeOverviewDataProvider(
 			$geServices->getMentorStore(),
 			$services->getChangeTagDefStore(),
-			$services->getActorMigration(),
 			$services->getUserIdentityLookup(),
 			$services->getTempUserConfig(),
 			$services->getConnectionProvider(),

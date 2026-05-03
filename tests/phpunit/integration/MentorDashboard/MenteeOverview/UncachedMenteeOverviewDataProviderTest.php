@@ -102,7 +102,6 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 		return new UncachedMenteeOverviewDataProvider(
 			$geServices->getMentorStore(),
 			$this->getServiceContainer()->getChangeTagDefStore(),
-			$this->getServiceContainer()->getActorMigration(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
 			$this->getServiceContainer()->getTempUserConfig(),
 			$this->getServiceContainer()->getConnectionProvider(),
