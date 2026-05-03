@@ -7,6 +7,7 @@ use GrowthExperiments\HelpPanel\QuestionRecord;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
@@ -61,6 +62,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$titleFactory = $this->createMock( TitleFactory::class );
 		$permissionManager = $this->createMock( PermissionManager::class );
 		$statsFactory = StatsFactory::newNull();
+		$redirectLookup = $this->createNoOpMock( RedirectLookup::class );
 		$user = $this->createMock( User::class );
 		$ctx = new DerivativeContext( RequestContext::getMain() );
 		$ctx->setUser( $user );
@@ -70,6 +72,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
 			->setConstructorArgs( [ $wikiPageFactory,
 				$titleFactory,
+				$redirectLookup,
 				$permissionManager,
 				$statsFactory,
 				true,

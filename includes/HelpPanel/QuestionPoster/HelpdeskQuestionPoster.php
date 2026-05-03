@@ -5,6 +5,7 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 use GrowthExperiments\HelpPanel;
 use LogicException;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
@@ -22,6 +23,7 @@ class HelpdeskQuestionPoster extends QuestionPoster {
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
+		RedirectLookup $redirectLookup,
 		PermissionManager $permissionManager,
 		StatsFactory $statsFactory,
 		HelpPanel $helpPanel,
@@ -34,6 +36,7 @@ class HelpdeskQuestionPoster extends QuestionPoster {
 		parent::__construct(
 			$wikiPageFactory,
 			$titleFactory,
+			$redirectLookup,
 			$permissionManager,
 			$statsFactory,
 			$confirmEditInstalled,

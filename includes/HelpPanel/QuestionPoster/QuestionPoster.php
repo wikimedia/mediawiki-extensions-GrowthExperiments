@@ -7,6 +7,7 @@ use Flow\Model\UUID;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\Hooks\HookRunner;
+use LogicException;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\Content;
 use MediaWiki\Content\WikitextContent;
@@ -14,6 +15,7 @@ use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\RecentChanges\RecentChange;
@@ -53,6 +55,7 @@ abstract class QuestionPoster {
 	public function __construct(
 		private WikiPageFactory $wikiPageFactory,
 		private TitleFactory $titleFactory,
+		private RedirectLookup $redirectLookup,
 		private PermissionManager $permissionManager,
 		private StatsFactory $statsFactory,
 		private bool $confirmEditInstalled,
@@ -417,13 +420,21 @@ abstract class QuestionPoster {
 
 	/**
 	 * @return Title The page where the question should be posted.
+	 * @throws LogicException when RedirectLookup::getRedirectTarget() returns null, but
+	 * $title->isRedirect() is true.
 	 */
 	protected function getTargetTitle(): Title {
 		if ( $this->targetTitle === null ) {
 			$title = $this->getDirectTargetTitle();
 			if ( $title->isRedirect() ) {
-				$page = $this->wikiPageFactory->newFromTitle( $title );
-				$this->targetTitle = $page->getRedirectTarget();
+				$target = $this->redirectLookup->getRedirectTarget( $title );
+				if ( !$target ) {
+					throw new LogicException(
+						'getRedirectTarget returns null when $title is not redirect,'
+						. ' but $title->isRedirect() is true.'
+					);
+				}
+				$this->targetTitle = $this->titleFactory->newFromLinkTarget( $target );
 				return $this->targetTitle;
 			}
 			$this->targetTitle = $title;

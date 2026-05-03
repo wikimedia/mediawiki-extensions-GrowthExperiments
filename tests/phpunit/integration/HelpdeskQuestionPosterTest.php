@@ -42,6 +42,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getRedirectLookup(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
 			$geServices->getHelpPanel(),
@@ -66,6 +67,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getRedirectLookup(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
 			$geServices->getHelpPanel(),
@@ -99,6 +101,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getRedirectLookup(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
 			$geServices->getHelpPanel(),
@@ -130,6 +133,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getRedirectLookup(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
 			$geServices->getHelpPanel(),
@@ -143,6 +147,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getRedirectLookup(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
 			$geServices->getHelpPanel(),

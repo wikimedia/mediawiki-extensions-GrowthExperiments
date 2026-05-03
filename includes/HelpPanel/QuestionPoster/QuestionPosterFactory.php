@@ -8,6 +8,7 @@ use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\UserNotMentoredException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\UserNotLoggedIn;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
@@ -34,6 +35,7 @@ class QuestionPosterFactory {
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
+	 * @param RedirectLookup $redirectLookup
 	 * @param IMentorManager $mentorManager
 	 * @param MentorStatusManager $mentorStatusManager
 	 * @param PermissionManager $permissionManager
@@ -48,6 +50,7 @@ class QuestionPosterFactory {
 	public function __construct(
 		private WikiPageFactory $wikiPageFactory,
 		private TitleFactory $titleFactory,
+		private RedirectLookup $redirectLookup,
 		private IMentorManager $mentorManager,
 		private MentorStatusManager $mentorStatusManager,
 		private PermissionManager $permissionManager,
@@ -88,6 +91,7 @@ class QuestionPosterFactory {
 			$questionPoster = new HelpdeskQuestionPoster(
 				$this->wikiPageFactory,
 				$this->titleFactory,
+				$this->redirectLookup,
 				$this->permissionManager,
 				$this->statsFactory,
 				$this->helpPanel,
@@ -103,6 +107,7 @@ class QuestionPosterFactory {
 			return new HelppanelMentorQuestionPoster(
 				$this->wikiPageFactory,
 				$this->titleFactory,
+				$this->redirectLookup,
 				$this->mentorManager,
 				$this->mentorStatusManager,
 				$this->permissionManager,
@@ -118,6 +123,7 @@ class QuestionPosterFactory {
 			return new HomepageMentorQuestionPoster(
 				$this->wikiPageFactory,
 				$this->titleFactory,
+				$this->redirectLookup,
 				$this->mentorManager,
 				$this->mentorStatusManager,
 				$this->permissionManager,

@@ -902,6 +902,7 @@ return [
 		return new QuestionPosterFactory(
 			$services->getWikiPageFactory(),
 			$services->getTitleFactory(),
+			$services->getRedirectLookup(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
 			$services->getPermissionManager(),

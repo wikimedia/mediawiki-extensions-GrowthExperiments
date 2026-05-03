@@ -7,6 +7,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\UserNotMentoredException;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\TitleFactory;
@@ -22,6 +23,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
+		RedirectLookup $redirectLookup,
 		protected IMentorManager $mentorManager,
 		protected MentorStatusManager $mentorStatusManager,
 		PermissionManager $permissionManager,
@@ -36,6 +38,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 		parent::__construct(
 			$wikiPageFactory,
 			$titleFactory,
+			$redirectLookup,
 			$permissionManager,
 			$statsFactory,
 			$confirmEditInstalled,

@@ -100,6 +100,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			->setConstructorArgs( [
 				$wikiPageFactory,
 				$titleFactory,
+				$this->getServiceContainer()->getRedirectLookup(),
 				$mentorManager,
 				$mentorStatusManager,
 				$permissionManager,
