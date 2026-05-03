@@ -18,45 +18,21 @@ use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 class ChangeMentor {
-	private UserIdentity $mentee;
 	private ?UserIdentity $mentor;
 	private ?UserIdentity $newMentor;
-	private UserIdentity $performer;
-	private LoggerInterface $logger;
-	private IMentorManager $mentorManager;
-	private MentorStore $mentorStore;
-	private UserFactory $userFactory;
-	private IConnectionProvider $connectionProvider;
 	private ?User $menteeUser = null;
 
-	/**
-	 * @param UserIdentity $mentee Mentee's user object
-	 * @param UserIdentity $performer Performer's user object
-	 * @param LoggerInterface $logger
-	 * @param Mentor|null $mentor Old mentor
-	 * @param IMentorManager $mentorManager
-	 * @param MentorStore $mentorStore
-	 * @param UserFactory $userFactory
-	 * @param IConnectionProvider $connectionProvider
-	 */
 	public function __construct(
-		UserIdentity $mentee,
-		UserIdentity $performer,
-		LoggerInterface $logger,
+		private UserIdentity $mentee,
+		private UserIdentity $performer,
+		private LoggerInterface $logger,
 		?Mentor $mentor,
-		IMentorManager $mentorManager,
-		MentorStore $mentorStore,
-		UserFactory $userFactory,
-		IConnectionProvider $connectionProvider
+		private IMentorManager $mentorManager,
+		private MentorStore $mentorStore,
+		private HelpPanel $helpPanel,
+		private UserFactory $userFactory,
+		private IConnectionProvider $connectionProvider
 	) {
-		$this->logger = $logger;
-
-		$this->performer = $performer;
-		$this->mentee = $mentee;
-		$this->mentorManager = $mentorManager;
-		$this->mentorStore = $mentorStore;
-		$this->userFactory = $userFactory;
-		$this->connectionProvider = $connectionProvider;
 		$this->mentor = $mentor ? $mentor->getUserIdentity() : null;
 	}
 
@@ -216,14 +192,13 @@ class ChangeMentor {
 	 * have relevant features enabled.
 	 *
 	 * @note This is a separate method to make unit testing possible
-	 * (HomepageHooks::isHomepageEnabled and HelpPanel::shouldShowHelpPanelToUser both use global
-	 * state)
+	 * (HomepageHooks::isHomepageEnabled uses global state)
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
 	protected function isMentorshipEnabledForUser( UserIdentity $user ): bool {
 		return HomepageHooks::isHomepageEnabled( $user )
-			|| HelpPanel::shouldShowHelpPanelToUser( $user );
+			|| $this->helpPanel->shouldShowHelpPanelToUser( $user );
 	}
 
 	/**

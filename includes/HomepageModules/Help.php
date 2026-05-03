@@ -10,14 +10,18 @@ use MediaWiki\Html\Html;
 class Help extends BaseModule {
 	public const HELP_MODULE_QUESTION_TAG = 'help module question';
 
+	private HelpPanel $helpPanel;
+
 	/**
 	 * @inheritDoc
 	 */
 	public function __construct(
 		IContextSource $context,
-		Config $wikiConfig
+		Config $wikiConfig,
+		HelpPanel $helpPanel
 	) {
 		parent::__construct( 'help', $context, $wikiConfig );
+		$this->helpPanel = $helpPanel;
 	}
 
 	/** @inheritDoc */
@@ -59,17 +63,14 @@ class Help extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getJsConfigVars() {
-		return HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
+		return $this->helpPanel->getUserEmailConfigVars( $this->getContext()->getUser() );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	protected function getBody() {
-		$helpPanelLinkData = HelpPanel::getHelpPanelLinks(
-			$this->getContext(),
-			$this->getGrowthWikiConfig()
-		);
+		$helpPanelLinkData = $this->helpPanel->getHelpPanelLinks( $this->getContext() );
 		return $helpPanelLinkData['helpPanelLinks'] . $helpPanelLinkData['viewMoreLink'];
 	}
 

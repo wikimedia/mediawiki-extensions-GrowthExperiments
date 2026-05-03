@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\HelpPanel;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\IMentorManager;
@@ -40,9 +41,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 					'',
 					IMentorWeights::WEIGHT_NORMAL
 				),
-				$this->createMock( IMentorManager::class ),
-				$this->createMock( MentorStore::class ),
-				$this->getMockUserFactory(),
+				$this->createNoOpMock( IMentorManager::class ),
+				$this->createNoOpMock( MentorStore::class ),
+				$this->createNoOpMock( HelpPanel::class ),
+				$this->createNoOpMock( UserFactory::class ),
 				$this->createMock( IConnectionProvider::class )
 			)
 		);
@@ -87,6 +89,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			),
 			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
+			$this->createNoOpMock( HelpPanel::class ),
 			$this->getMockUserFactory(),
 			$connProvider
 		);
@@ -109,6 +112,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			),
 			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
+			$this->createNoOpMock( HelpPanel::class ),
 			$this->getMockUserFactory(),
 			$this->createMock( IConnectionProvider::class )
 		);
@@ -135,6 +139,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			),
 			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
+			$this->createNoOpMock( HelpPanel::class ),
 			$this->getMockUserFactory(),
 			$this->createMock( IConnectionProvider::class )
 		);
@@ -161,6 +166,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			),
 			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
+			$this->createNoOpMock( HelpPanel::class ),
 			$this->getMockUserFactory(),
 			$this->createMock( IConnectionProvider::class )
 		);
@@ -188,6 +194,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			),
 			$this->createMock( IMentorManager::class ),
 			$this->createMock( MentorStore::class ),
+			$this->createNoOpMock( HelpPanel::class ),
 			$this->getMockUserFactory(),
 			$this->createMock( IConnectionProvider::class )
 		);
@@ -248,6 +255,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			),
 			$mentorManagerMock,
 			$mentorStoreMock,
+			$this->createNoOpMock( HelpPanel::class ),
 			$this->getMockUserFactory(),
 			$this->createMock( IConnectionProvider::class )
 		);

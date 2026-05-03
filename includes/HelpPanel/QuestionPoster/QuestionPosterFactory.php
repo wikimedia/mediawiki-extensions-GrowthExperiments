@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
+use GrowthExperiments\HelpPanel;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\UserNotMentoredException;
@@ -36,10 +37,11 @@ class QuestionPosterFactory {
 	 * @param IMentorManager $mentorManager
 	 * @param MentorStatusManager $mentorStatusManager
 	 * @param PermissionManager $permissionManager
-	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
-	 *   (as opposed to the bottom). Only affects wikitext pages.
 	 * @param StatsFactory $statsFactory
 	 * @param UserFactory $userFactory
+	 * @param HelpPanel $helpPanel
+	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
+	 *   (as opposed to the bottom). Only affects wikitext pages.
 	 * @param bool $confirmEditInstalled
 	 * @param bool $flowInstalled
 	 */
@@ -49,9 +51,10 @@ class QuestionPosterFactory {
 		private IMentorManager $mentorManager,
 		private MentorStatusManager $mentorStatusManager,
 		private PermissionManager $permissionManager,
-		private bool $helpDeskPostOnTop,
 		private StatsFactory $statsFactory,
 		private UserFactory $userFactory,
+		private HelpPanel $helpPanel,
+		private bool $helpDeskPostOnTop,
 		private bool $confirmEditInstalled,
 		private bool $flowInstalled
 	) {
@@ -87,6 +90,7 @@ class QuestionPosterFactory {
 				$this->titleFactory,
 				$this->permissionManager,
 				$this->statsFactory,
+				$this->helpPanel,
 				$this->confirmEditInstalled,
 				$this->flowInstalled,
 				$context,

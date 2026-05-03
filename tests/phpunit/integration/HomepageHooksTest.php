@@ -6,7 +6,6 @@ use CirrusSearch\HashSearchConfig;
 use CirrusSearch\Search\SearchContext;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\IMentorManager;
@@ -191,7 +190,11 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$runner->onLocalUserCreated( $user, false );
 
 		$this->assertSame( $expectedHomepage, HomepageHooks::isHomepageEnabled( $user ) );
-		$this->assertSame( $expectedHelpPanel, HelpPanel::shouldShowHelpPanelToUser( $user ) );
+		$this->assertSame(
+			$expectedHelpPanel,
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+				->getHelpPanel()->shouldShowHelpPanelToUser( $user )
+		);
 		$this->assertSame(
 			$expectedMentorshipStateForUser,
 			GrowthExperimentsServices::wrap( $this->getServiceContainer() )

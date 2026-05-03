@@ -2,10 +2,13 @@
 
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
-use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel;
-use MediaWiki\Config\ConfigException;
-use MediaWiki\MediaWikiServices;
+use LogicException;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Title\TitleFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * QuestionPoster variant for asking questions on the wiki's help desk.
@@ -13,6 +16,34 @@ use MediaWiki\MediaWikiServices;
 class HelpdeskQuestionPoster extends QuestionPoster {
 
 	public const QUESTION_PREF = 'growthexperiments-helppanel-questions';
+
+	private HelpPanel $helpPanel;
+
+	public function __construct(
+		WikiPageFactory $wikiPageFactory,
+		TitleFactory $titleFactory,
+		PermissionManager $permissionManager,
+		StatsFactory $statsFactory,
+		HelpPanel $helpPanel,
+		bool $confirmEditInstalled,
+		bool $flowInstalled,
+		IContextSource $context,
+		string $body,
+		string $relevantTitleRaw = ''
+	) {
+		parent::__construct(
+			$wikiPageFactory,
+			$titleFactory,
+			$permissionManager,
+			$statsFactory,
+			$confirmEditInstalled,
+			$flowInstalled,
+			$context,
+			$body,
+			$relevantTitleRaw
+		);
+		$this->helpPanel = $helpPanel;
+	}
 
 	/**
 	 * @inheritDoc
@@ -37,13 +68,16 @@ class HelpdeskQuestionPoster extends QuestionPoster {
 
 	/**
 	 * @inheritDoc
-	 * @throws ConfigException
+	 * @throws LogicException if called when Help desk title is not defined
 	 */
 	protected function getDirectTargetTitle() {
-		return HelpPanel::getHelpDeskTitle(
-			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-				->getGrowthWikiConfig()
+		$title = $this->helpPanel->getHelpDeskTitle();
+		if ( !$title ) {
+			throw new LogicException(
+				__METHOD__ . ' not expected to be called without a Help desk title'
 			);
+		}
+		return $title;
 	}
 
 	/**

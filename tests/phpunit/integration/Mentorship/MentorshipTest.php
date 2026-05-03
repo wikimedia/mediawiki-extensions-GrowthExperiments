@@ -30,6 +30,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 			GlobalVarConfig::newInstance(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
+			$growthServices->getHelpPanel(),
 			$services->getGenderCache(),
 			$services->getUserEditTracker(),
 			$services->getUserFactory()
@@ -60,6 +61,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 			GlobalVarConfig::newInstance(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
+			$growthServices->getHelpPanel(),
 			$services->getGenderCache(),
 			$services->getUserEditTracker(),
 			$services->getUserFactory()
@@ -101,6 +103,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 			GlobalVarConfig::newInstance(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
+			$growthServices->getHelpPanel(),
 			$services->getGenderCache(),
 			$services->getUserEditTracker(),
 			$services->getUserFactory()

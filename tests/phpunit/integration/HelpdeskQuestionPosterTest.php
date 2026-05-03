@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
@@ -37,11 +38,13 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 
 		$this->expectException( UserNotLoggedIn::class );
 
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
+			$geServices->getHelpPanel(),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$context,
@@ -58,11 +61,14 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTest',
 		], 'HelpPanel' );
 		$this->insertPage( 'HelpDeskTest', '' );
+
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
+			$geServices->getHelpPanel(),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$this->buildContext(),
@@ -88,11 +94,14 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$this->overrideProviderConfig( [
 			'GEHelpPanelHelpDeskTitle' => $title->getPrefixedDBkey(),
 		], 'HelpPanel' );
+
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
+			$geServices->getHelpPanel(),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$this->buildContext(),
@@ -116,11 +125,14 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			'GEHelpPanelHelpDeskTitle' => 'sample',
 		], 'HelpPanel' );
 		$this->insertPage( 'sample' );
+
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
+			$geServices->getHelpPanel(),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$this->buildContext(),
@@ -133,6 +145,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
 			$this->getServiceContainer()->getStatsFactory(),
+			$geServices->getHelpPanel(),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$this->buildContext(),

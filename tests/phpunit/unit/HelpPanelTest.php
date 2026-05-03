@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanelHooks;
 use MediaWiki\Config\HashConfig;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\TitleValue;
@@ -48,16 +49,20 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 		$userOptionsLookupMock->method( 'getOption' )
 			->with( $this->anything(), HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE )
 			->willReturn( $userHelpPanelPref );
-		$this->setService( 'UserOptionsLookup', $userOptionsLookupMock );
 		$out->method( 'getUser' )
 			->willReturn( $user );
 		$out->method( 'getRequest' )
 			->willReturn( $request );
 
-		$result = HelpPanel::shouldShowHelpPanel(
-			$out, true,
-			new HashConfig( [ 'GEHelpPanelExcludedNamespaces' => $excludedNamespaces ] )
+		$helpPanel = new HelpPanel(
+			new HashConfig( [
+				'GEHelpPanelExcludedNamespaces' => $excludedNamespaces,
+				'GEHelpPanelReadingModeNamespaces' => [],
+			] ),
+			$this->createMock( LinkRenderer::class ),
+			$userOptionsLookupMock
 		);
+		$result = $helpPanel->shouldShowHelpPanel( $out, true );
 		$this->assertEquals( $expected, $result, $message );
 	}
 

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use GrowthExperiments\HelpPanel;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -15,17 +16,20 @@ class ChangeMentorFactory {
 	private MentorStore $mentorStore;
 	private UserFactory $userFactory;
 	private IConnectionProvider $connectionProvider;
+	private HelpPanel $helpPanel;
 
 	public function __construct(
 		LoggerInterface $logger,
 		IMentorManager $mentorManager,
 		MentorStore $mentorStore,
+		HelpPanel $helpPanel,
 		UserFactory $userFactory,
 		IConnectionProvider $connectionProvider
 	) {
 		$this->logger = $logger;
 		$this->mentorManager = $mentorManager;
 		$this->mentorStore = $mentorStore;
+		$this->helpPanel = $helpPanel;
 		$this->userFactory = $userFactory;
 		$this->connectionProvider = $connectionProvider;
 	}
@@ -41,6 +45,7 @@ class ChangeMentorFactory {
 			$this->mentorManager->getMentorForUserIfExists( $mentee ),
 			$this->mentorManager,
 			$this->mentorStore,
+			$this->helpPanel,
 			$this->userFactory,
 			$this->connectionProvider
 		);

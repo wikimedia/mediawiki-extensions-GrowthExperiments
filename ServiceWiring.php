@@ -9,6 +9,7 @@ use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
 use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
@@ -193,6 +194,7 @@ return [
 			$geServices->getLogger(),
 			$geServices->getMentorManager(),
 			$geServices->getMentorStore(),
+			$geServices->getHelpPanel(),
 			$services->getUserFactory(),
 			$services->getConnectionProvider()
 		);
@@ -247,6 +249,17 @@ return [
 		);
 		$manager->setExperimentManager( $growthServices->getExperimentUserManager() );
 		return $manager;
+	},
+
+	'GrowthExperimentsHelpPanel' => static function (
+		MediaWikiServices $services
+	): HelpPanel {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new HelpPanel(
+			$growthServices->getGrowthWikiConfig(),
+			$services->getLinkRenderer(),
+			$services->getUserOptionsLookup()
+		);
 	},
 
 	'GrowthExperimentsHomepageModuleRegistry' => static function (
@@ -890,9 +903,10 @@ return [
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStatusManager(),
 			$services->getPermissionManager(),
-			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' ),
 			$services->getStatsFactory(),
 			$services->getUserFactory(),
+			$growthServices->getHelpPanel(),
+			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' )
 		);

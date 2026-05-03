@@ -13,11 +13,15 @@ class HelpPanelIntegrationTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetHelpDeskTitle() {
 		$sitename = $this->getServiceContainer()->getMainConfig()->get( 'Sitename' );
-		$config = new HashConfig( [
-			'GEHelpPanelHelpDeskTitle' => 'HelpDesk/{{SITENAME}}',
-		] );
+		$helpPanel = new HelpPanel(
+			new HashConfig( [
+				'GEHelpPanelHelpDeskTitle' => 'HelpDesk/{{SITENAME}}',
+			] ),
+			$this->getServiceContainer()->getLinkRenderer(),
+			$this->getServiceContainer()->getUserOptionsLookup()
+		);
 
-		$title = HelpPanel::getHelpDeskTitle( $config );
+		$title = $helpPanel->getHelpDeskTitle();
 		$title->resetArticleID( 0 );
 
 		$this->assertSame( "HelpDesk/$sitename", $title->getText() );

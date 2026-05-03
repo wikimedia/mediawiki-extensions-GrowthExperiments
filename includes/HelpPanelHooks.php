@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments;
 
-use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
@@ -33,7 +32,6 @@ class HelpPanelHooks implements
 	ListDefinedTagsHook,
 	ChangeTagsListActiveHook
 {
-	use GrowthConfigLoaderStaticTrait;
 
 	public const HELP_PANEL_PREFERENCES_TOGGLE = 'growthexperiments-help-panel-tog-help-panel';
 
@@ -44,6 +42,7 @@ class HelpPanelHooks implements
 	private UserOptionsManager $userOptionsManager;
 	private IMentorManager $mentorManager;
 	private MentorStatusManager $mentorStatusManager;
+	private HelpPanel $helpPanel;
 
 	public function __construct(
 		Config $config,
@@ -52,7 +51,8 @@ class HelpPanelHooks implements
 		UserEditTracker $userEditTracker,
 		UserOptionsManager $userOptionsManager,
 		IMentorManager $mentorManager,
-		MentorStatusManager $mentorStatusManager
+		MentorStatusManager $mentorStatusManager,
+		HelpPanel $helpPanel
 	) {
 		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
@@ -61,6 +61,7 @@ class HelpPanelHooks implements
 		$this->userOptionsManager = $userOptionsManager;
 		$this->mentorManager = $mentorManager;
 		$this->mentorStatusManager = $mentorStatusManager;
+		$this->helpPanel = $helpPanel;
 	}
 
 	/**
@@ -117,12 +118,12 @@ class HelpPanelHooks implements
 
 	/** @inheritDoc */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		$maybeShow = HelpPanel::shouldShowHelpPanel( $out, false );
+		$maybeShow = $this->helpPanel->shouldShowHelpPanel( $out, false );
 		if ( !$maybeShow ) {
 			return;
 		}
 
-		$definitelyShow = HelpPanel::shouldShowHelpPanel( $out );
+		$definitelyShow = $this->helpPanel->shouldShowHelpPanel( $out );
 
 		if ( $definitelyShow ) {
 			$out->enableOOUI();
@@ -130,14 +131,14 @@ class HelpPanelHooks implements
 			$out->addModuleStyles( 'ext.growthExperiments.icons' );
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
 
-			$out->addHTML( HelpPanel::getHelpPanelCtaButton( $this->wikiConfig )->toString() );
+			$out->addHTML( $this->helpPanel->getHelpPanelCtaButton()->toString() );
 		}
 
 		// Note: wgGELinkRecommendationsFrontendEnabled reflects the configuration flag.
 		// Checking whether Add Link has been disabled in community configuration is the
 		// frontend code's responsibility.
 		$out->addJsConfigVars( [
-			'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle( $this->wikiConfig ) !== null,
+			'wgGEAskQuestionEnabled' => $this->helpPanel->getHelpDeskTitle() !== null,
 			'wgGELinkRecommendationsFrontendEnabled' =>
 				$out->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' ),
 		] );
@@ -160,7 +161,7 @@ class HelpPanelHooks implements
 						$out->getUser()
 					) === IMentorManager::MENTORSHIP_ENABLED &&
 					$this->mentorManager->getEffectiveMentorForUserSafe( $out->getUser() ) !== null,
-			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
+			] + $this->helpPanel->getUserEmailConfigVars( $out->getUser() ) );
 
 		if ( !$definitelyShow ) {
 			// Add the init module to make sure that the main HelpPanel module is loaded
@@ -176,18 +177,17 @@ class HelpPanelHooks implements
 	 * @return array
 	 */
 	public static function getModuleData( RL\Context $context, Config $config ) {
-		$helpdeskTitle = HelpPanel::getHelpDeskTitle( self::getGrowthWikiConfig() );
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$helpPanel = $growthServices->getHelpPanel();
+		$wikiConfig = $growthServices->getGrowthWikiConfig();
+		$helpdeskTitle = $helpPanel->getHelpDeskTitle();
 		// The copyright warning can contain markup and has to be parsed via PHP messages API.
 		$copyrightWarningMessage = $context->msg( 'wikimedia-copyrightwarning' );
 		return [
-			'GEHelpPanelSearchNamespaces' => self::getGrowthWikiConfig()
-				->get( 'GEHelpPanelSearchNamespaces' ),
-			'GEHelpPanelReadingModeNamespaces' => self::getGrowthWikiConfig()
-				->get( 'GEHelpPanelReadingModeNamespaces' ),
+			'GEHelpPanelSearchNamespaces' => $wikiConfig->get( 'GEHelpPanelSearchNamespaces' ),
+			'GEHelpPanelReadingModeNamespaces' => $wikiConfig->get( 'GEHelpPanelReadingModeNamespaces' ),
 			'GEHelpPanelSearchForeignAPI' => $config->get( 'GEHelpPanelSearchForeignAPI' ),
-			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks(
-				$context, self::getGrowthWikiConfig()
-			),
+			'GEHelpPanelLinks' => $helpPanel->getHelpPanelLinks( $context ),
 			'GEHelpPanelSuggestedEditsPreferredEditor' => self::getPreferredEditor( $context, $config ),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null,
 			'GEAskHelpCopyrightWarning' => $copyrightWarningMessage->exists() ?

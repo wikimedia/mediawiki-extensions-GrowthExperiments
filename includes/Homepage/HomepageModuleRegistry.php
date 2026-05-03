@@ -158,6 +158,7 @@ class HomepageModuleRegistry {
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getMentorManager(),
 					$growthServices->getMentorStatusManager(),
+					$growthServices->getHelpPanel(),
 					$services->getGenderCache(),
 					$services->getUserEditTracker(),
 					$services->getUserFactory()
@@ -183,7 +184,8 @@ class HomepageModuleRegistry {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				return new Help(
 					$context,
-					$growthServices->getGrowthWikiConfig()
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getHelpPanel()
 				);
 			},
 

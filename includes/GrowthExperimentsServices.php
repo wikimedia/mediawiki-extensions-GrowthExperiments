@@ -125,6 +125,10 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsInteractionLogger' );
 	}
 
+	public function getHelpPanel(): HelpPanel {
+		return $this->coreServices->get( 'GrowthExperimentsHelpPanel' );
+	}
+
 	public function getHomepageModuleRegistry(): HomepageModuleRegistry {
 		return $this->coreServices->get( 'GrowthExperimentsHomepageModuleRegistry' );
 	}

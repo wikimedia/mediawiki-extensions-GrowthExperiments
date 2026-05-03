@@ -40,16 +40,20 @@ class Mentorship extends BaseModule {
 	/** @var QuestionRecord[] */
 	private array $recentQuestions = [];
 
+	private HelpPanel $helpPanel;
+
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
 		private IMentorManager $mentorManager,
 		private MentorStatusManager $mentorStatusManager,
+		HelpPanel $helpPanel,
 		private GenderCache $genderCache,
 		private UserEditTracker $userEditTracker,
 		private UserFactory $userFactory
 	) {
 		parent::__construct( 'mentorship', $context, $wikiConfig );
+		$this->helpPanel = $helpPanel;
 	}
 
 	/**
@@ -228,7 +232,7 @@ class Mentorship extends BaseModule {
 			'GEHomepageMentorshipBackAt' => $mentorBackTimestamp ? $this->getContext()->getLanguage()->date(
 				$mentorBackTimestamp
 			) : null,
-		] + HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
+		] + $this->helpPanel->getUserEmailConfigVars( $this->getContext()->getUser() );
 	}
 
 	/**

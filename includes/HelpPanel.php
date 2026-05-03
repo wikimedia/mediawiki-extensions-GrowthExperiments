@@ -2,34 +2,38 @@
 
 namespace GrowthExperiments;
 
-use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\HelpPanelButton;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Html\Html;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Language\RawMessage;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\Title;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use OOUI\Tag;
 
 class HelpPanel {
-	use GrowthConfigLoaderStaticTrait;
 
 	public const HELPDESK_QUESTION_TAG = 'help panel question';
+
+	public function __construct(
+		private Config $wikiConfig,
+		private LinkRenderer $linkRenderer,
+		private UserOptionsLookup $userOptionsLookup
+	) {
+	}
 
 	/**
 	 * @return Tag
 	 * @throws ConfigException
 	 */
-	public static function getHelpPanelCtaButton( Config $wikiConfig ) {
-		$helpdeskTitle = self::getHelpDeskTitle(
-			$wikiConfig
-		);
+	public function getHelpPanelCtaButton(): Tag {
+		$helpdeskTitle = $this->getHelpDeskTitle();
 		$btnWidgetArr = [
 			'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
 		];
@@ -43,17 +47,11 @@ class HelpPanel {
 
 	/**
 	 * @param MessageLocalizer $ml
-	 * @param Config $wikiConfig
 	 * @return array Links that should appear in the help panel. Exported to JS as wgGEHelpPanelLinks.
 	 */
-	public static function getHelpPanelLinks(
-		MessageLocalizer $ml,
-		Config $wikiConfig
-	) {
-		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
-
+	public function getHelpPanelLinks( MessageLocalizer $ml ): array {
 		$helpPanelLinks = Html::openElement( 'ul', [ 'class' => 'mw-ge-help-panel-links' ] );
-		foreach ( $wikiConfig->get( 'GEHelpPanelLinks' ) as $link ) {
+		foreach ( $this->wikiConfig->get( 'GEHelpPanelLinks' ) as $link ) {
 			$link = (array)$link;
 			if ( !isset( $link[ 'title' ] ) ) {
 				continue;
@@ -63,23 +61,23 @@ class HelpPanel {
 				$helpPanelLinks .= Html::rawElement(
 					'li',
 					[],
-					$linkRenderer->makePreloadedLink( $title, $link['text'], '',
+					$this->linkRenderer->makePreloadedLink( $title, $link['text'], '',
 						[ 'target' => '_blank', 'data-link-id' => $link['id'] ?? '' ] )
 				);
 			}
 		}
 		$helpPanelLinks .= Html::closeElement( 'ul' );
 
-		$helpDeskTitle = self::getHelpDeskTitle( $wikiConfig );
-		$helpDeskLink = $helpDeskTitle ? $linkRenderer->makePreloadedLink(
+		$helpDeskTitle = $this->getHelpDeskTitle();
+		$helpDeskLink = $helpDeskTitle ? $this->linkRenderer->makePreloadedLink(
 			$helpDeskTitle,
 			$ml->msg( 'growthexperiments-help-panel-community-help-desk-text' )->text(),
 			'',
 			[ 'target' => '_blank', 'data-link-id' => 'help-desk' ]
 		) : null;
 
-		$viewMoreTitle = Title::newFromText( $wikiConfig->get( 'GEHelpPanelViewMoreTitle' ) );
-		$viewMoreLink = $viewMoreTitle ? $linkRenderer->makePreloadedLink(
+		$viewMoreTitle = Title::newFromText( $this->wikiConfig->get( 'GEHelpPanelViewMoreTitle' ) );
+		$viewMoreLink = $viewMoreTitle ? $this->linkRenderer->makePreloadedLink(
 			$viewMoreTitle,
 			$ml->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )
 				->text(),
@@ -100,9 +98,8 @@ class HelpPanel {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public static function shouldShowHelpPanelToUser( UserIdentity $user ) {
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		return (bool)$userOptionsLookup->getOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
+	public function shouldShowHelpPanelToUser( UserIdentity $user ): bool {
+		return (bool)$this->userOptionsLookup->getOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
 	}
 
 	/**
@@ -111,11 +108,9 @@ class HelpPanel {
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function shouldShowHelpPanel(
-		OutputPage $out, bool $checkAction = true, ?Config $wikiConfig = null
+	public function shouldShowHelpPanel(
+		OutputPage $out, bool $checkAction = true
 	): bool {
-		$wikiConfig ??= self::getGrowthWikiConfig();
-
 		if ( !$out->getUser()->isNamed() ) {
 			return false;
 		}
@@ -123,21 +118,21 @@ class HelpPanel {
 		if ( $checkAction ) {
 			$action = $out->getRequest()->getVal( 'action', 'view' );
 			if ( !in_array( $action, [ 'edit', 'submit' ] ) &&
-				!self::shouldShowForReadingMode( $out, $action, $wikiConfig ) ) {
+				!$this->shouldShowForReadingMode( $out, $action ) ) {
 				return false;
 			}
 		}
 
-		if ( self::isSuggestedEditRequest( $out->getRequest() ) ) {
+		if ( $this->isSuggestedEditRequest( $out->getRequest() ) ) {
 			return true;
 		}
 
 		if ( in_array( $out->getTitle()->getNamespace(),
-			$wikiConfig->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
+			$this->wikiConfig->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
 			return false;
 		}
 
-		return self::shouldShowHelpPanelToUser( $out->getUser() );
+		return $this->shouldShowHelpPanelToUser( $out->getUser() );
 	}
 
 	/**
@@ -149,9 +144,8 @@ class HelpPanel {
 	 *
 	 * @throws ConfigException
 	 */
-	public static function shouldShowForReadingMode(
-		OutputPage $out, string $action,
-		Config $wikiConfig
+	public function shouldShowForReadingMode(
+		OutputPage $out, string $action
 	): bool {
 		if ( $action !== 'view' ) {
 			return false;
@@ -168,19 +162,20 @@ class HelpPanel {
 			HomepageHooks::getClickId( $out->getContext() ) ) {
 			return true;
 		}
-		return in_array( $title->getSubjectPage()->getNamespace(),
-				   $wikiConfig->get( 'GEHelpPanelReadingModeNamespaces' ) );
+		return in_array(
+			$title->getSubjectPage()->getNamespace(),
+			$this->wikiConfig->get( 'GEHelpPanelReadingModeNamespaces' )
+		);
 	}
 
 	/**
 	 * Get the help desk title and expand the templates and magic words it may contain
 	 *
-	 * @param Config $wikiConfig
 	 * @return null|Title
 	 * @throws ConfigException
 	 */
-	public static function getHelpDeskTitle( Config $wikiConfig ) {
-		$helpdeskTitle = $wikiConfig->get( 'GEHelpPanelHelpDeskTitle' );
+	public function getHelpDeskTitle(): ?Title {
+		$helpdeskTitle = $this->wikiConfig->get( 'GEHelpPanelHelpDeskTitle' );
 		if ( $helpdeskTitle === null ) {
 			return null;
 		}
@@ -198,7 +193,7 @@ class HelpPanel {
 	 * @param User $user
 	 * @return array
 	 */
-	public static function getUserEmailConfigVars( User $user ) {
+	public function getUserEmailConfigVars( User $user ): array {
 		return [
 			'wgGEHelpPanelUserEmail' => $user->getEmail(),
 			'wgGEHelpPanelUserEmailConfirmed' => $user->isEmailConfirmed(),
@@ -210,7 +205,7 @@ class HelpPanel {
 	 * @param WebRequest $request
 	 * @return bool
 	 */
-	private static function isSuggestedEditRequest( WebRequest $request ): bool {
+	private function isSuggestedEditRequest( WebRequest $request ): bool {
 		return $request->getBool( 'gesuggestededit' );
 	}
 }
