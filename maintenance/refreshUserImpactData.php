@@ -116,7 +116,9 @@ class RefreshUserImpactData extends Maintenance {
 					if ( $this->hasOption( 'verbose' ) ) {
 						$this->output( "  ...refreshing user impact for user {$user->getId()}\n" );
 					}
+					$this->beginTransactionRound( __METHOD__ );
 					$this->userImpactStore->setUserImpact( $userImpact );
+					$this->commitTransactionRound( __METHOD__ );
 				} elseif ( $this->hasOption( 'verbose' ) ) {
 					$this->output( "  ...could not generate user impact for user {$user->getId()}\n" );
 				}
@@ -190,7 +192,6 @@ class RefreshUserImpactData extends Maintenance {
 				}
 				yield $user;
 			}
-			$this->waitForReplication();
 			$usersProcessedInThisBatch = count( $userIds );
 			$this->totalUsers += $usersProcessedInThisBatch;
 			if ( $usersProcessedInThisBatch > 0 ) {
