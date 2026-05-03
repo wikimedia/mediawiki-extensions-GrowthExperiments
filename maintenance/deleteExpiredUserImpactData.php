@@ -50,14 +50,16 @@ class DeleteExpiredUserImpactData extends Maintenance {
 		$deletedCount = 0;
 		$idsToDelete = $queryBuilder->fetchFieldValues();
 		while ( $idsToDelete !== [] ) {
+			$this->beginTransactionRound( __METHOD__ );
 			$dbw->newDeleteQueryBuilder()
 				->deleteFrom( DatabaseUserImpactStore::TABLE_NAME )
 				->where( [ 'geui_user_id' => $idsToDelete ] )
 				->caller( __METHOD__ )
 				->execute();
 			$deletedCount += count( $idsToDelete );
-			$this->output( '.' );
-			$this->waitForReplication();
+			$this->commitTransactionRound( __METHOD__ );
+
+			// load next batch
 			$idsToDelete = $queryBuilder->fetchFieldValues();
 		}
 		$this->output( "\nDeleted $deletedCount rows\n" );

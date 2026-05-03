@@ -110,7 +110,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 		if ( $this->getOption( 'dry-run' ) ) {
 			return;
 		}
-		$this->beginTransaction( $this->dbw, __METHOD__ );
+		$this->beginTransactionRound( __METHOD__ );
 		$this->dbw->newDeleteQueryBuilder()
 			->deleteFrom( 'user_properties' )
 			->where( [
@@ -119,7 +119,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 			] )
 			->caller( __METHOD__ )
 			->execute();
-		$this->commitTransaction( $this->dbw, __METHOD__ );
+		$this->commitTransactionRound( __METHOD__ );
 	}
 
 	private function purgeUserOptions(): void {

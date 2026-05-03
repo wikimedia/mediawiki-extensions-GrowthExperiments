@@ -99,11 +99,15 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 				$lastActivityTimestamp === null ||
 				$timeDelta > (int)$this->getConfig()->get( 'RCMaxAge' )
 			) {
+				if ( $thisBatch === 0 ) {
+					$this->beginTransactionRound( __METHOD__ );
+				}
+
 				$this->mentorStore->markMenteeAsInactive( $menteeUser );
 				$thisBatch++;
 
 				if ( $thisBatch >= $this->getBatchSize() ) {
-					$this->waitForReplication();
+					$this->commitTransactionRound( __METHOD__ );
 					$thisBatch = 0;
 				}
 			}

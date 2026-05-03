@@ -220,9 +220,9 @@ class FixLinkRecommendationData extends Maintenance {
 				$this->verboseOutput( "    $fixing " . $title->getPrefixedText() . "\n", 2 );
 			}
 			if ( $pageIdsToFix && !$this->hasOption( 'dry-run' ) ) {
-				$this->beginTransaction( $this->linkRecommendationStore->getGrowthDB( DB_PRIMARY ), __METHOD__ );
+				$this->beginTransactionRound( __METHOD__ );
 				$this->linkRecommendationStore->deleteByPageIds( $pageIdsToFix );
-				$this->commitTransaction( $this->linkRecommendationStore->getGrowthDB( DB_PRIMARY ), __METHOD__ );
+				$this->commitTransactionRound( __METHOD__ );
 			}
 			$from = array_last( $pageIds );
 			$fixedCount += count( $pageIdsToFix );

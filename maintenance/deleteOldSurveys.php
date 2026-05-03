@@ -118,12 +118,12 @@ class DeleteOldSurveys extends Maintenance {
 					->fetchUserIdentities();
 				foreach ( $users as $user ) {
 					if ( !$dryRun ) {
-						$this->beginTransaction( $dbw, __METHOD__ );
+						$this->beginTransactionRound( __METHOD__ );
 						// Setting an option to null will assign it the default value, which in turn
 						// will delete it (meaning we won't have to reprocess this row on the next run).
 						$this->userOptionsManager->setOption( $user, WelcomeSurvey::SURVEY_PROP, null );
 						$this->userOptionsManager->saveOptions( $user );
-						$this->commitTransaction( $dbw, __METHOD__ );
+						$this->commitTransactionRound( __METHOD__ );
 					}
 					$deletedCount++;
 				}
