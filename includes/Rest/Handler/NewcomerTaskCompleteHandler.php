@@ -5,6 +5,7 @@ namespace GrowthExperiments\Rest\Handler;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
+use Wikimedia\Message\MessageSpecifier;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -14,10 +15,9 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class NewcomerTaskCompleteHandler extends SimpleHandler {
 
-	private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager;
-
-	public function __construct( NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager ) {
-		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
+	public function __construct(
+		private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
+	) {
 	}
 
 	/**
@@ -33,8 +33,12 @@ class NewcomerTaskCompleteHandler extends SimpleHandler {
 		if ( !$result->isGood() ) {
 			// HACK: We know we're not merging status values, so we can
 			// just use the first one.
-			$error = current( $result->getErrors() );
-			throw new HttpException( $error['message'], $this->getErrorCodeForMessage( $error['message'] ) );
+			/** @var MessageSpecifier $message */
+			$message = current( $result->getMessages() );
+			throw new HttpException(
+				// NewcomerTasksChangeTagsManager pass literal values as message keys
+				$message->getKey(), $this->getErrorCodeForMessage( $message->getKey() )
+			);
 		}
 		return [ $result->getValue() ];
 	}
