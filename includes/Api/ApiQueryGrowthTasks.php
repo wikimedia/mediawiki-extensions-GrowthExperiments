@@ -236,7 +236,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			'offset' => [
 				ParamValidator::PARAM_TYPE => 'integer',
 				IntegerDef::PARAM_MIN => 1,
-				ApiBase::PARAM_RANGE_ENFORCE => true,
+				IntegerDef::PARAM_IGNORE_RANGE => false,
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
 			],
 			'debug' => [
