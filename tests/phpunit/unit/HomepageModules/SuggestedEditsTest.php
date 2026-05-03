@@ -84,7 +84,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			};
 		}
 		);
-		$userOptionsManagerMock->expects( $this->exactly( 2 ) )->method( 'setOption' )->withConsecutive(
+		$expectedSets = [
 			[
 				$user,
 				'growthexperiments-revise-tone-treatment-initiated',
@@ -95,7 +95,19 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 				'growthexperiments-homepage-se-filters',
 				'["copyedit","revise-tone"]',
 			],
-		);
+		];
+		$userOptionsManagerMock->expects( $this->exactly( 2 ) )
+			->method( 'setOption' )
+			->willReturnCallback( function (
+				UserIdentity $user,
+				string $option,
+				mixed $value
+			) use ( &$expectedSets )  {
+				$this->assertSame(
+					array_shift( $expectedSets ),
+					[ $user, $option, $value ]
+				);
+			} );
 
 		$featureManagerMock = $this->createMock( FeatureManager::class );
 		$featureManagerMock->method( 'shouldShowReviseToneTasksForUser' )->willReturn( true );

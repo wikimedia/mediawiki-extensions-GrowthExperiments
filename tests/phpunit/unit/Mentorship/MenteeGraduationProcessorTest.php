@@ -50,19 +50,22 @@ class MenteeGraduationProcessorTest extends MediaWikiUnitTestCase {
 		);
 		$menteeGraduation->expects( $this->exactly( 4 ) )
 			->method( 'shouldUserBeGraduated' )
-			->withConsecutive( ...array_map(
-				static fn ( $x ) => [ $x ],
-				$mentees
-			) )
-			->willReturnCallback( static function ( UserIdentity $user ) {
+			->willReturnCallback( function ( UserIdentity $user ) use ( $mentees ) {
+				static $callIdx = 0;
+				$this->assertSame( $mentees[$callIdx++], $user );
+
 				return $user->getId() >= 3;
 			} );
+
+		$expectedGraduatedMentees = [ $mentees[2], $mentees[3] ];
 		$menteeGraduation->expects( $this->exactly( 2 ) )
 			->method( 'graduateUserFromMentorship' )
-			->withConsecutive(
-				[ $mentees[2] ],
-				[ $mentees[3] ]
-			);
+			->willReturnCallback( function ( UserIdentity $user ) use ( &$expectedGraduatedMentees ) {
+				$this->assertSame(
+					array_shift( $expectedGraduatedMentees ),
+					$user
+				);
+			} );
 
 		$processor = new MenteeGraduationProcessor(
 			new NullLogger(),
