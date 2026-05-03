@@ -18,6 +18,8 @@ class HelpPanelIntegrationTest extends MediaWikiIntegrationTestCase {
 				'GEHelpPanelHelpDeskTitle' => 'HelpDesk/{{SITENAME}}',
 			] ),
 			$this->getServiceContainer()->getLinkRenderer(),
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getNamespaceInfo(),
 			$this->getServiceContainer()->getUserOptionsLookup()
 		);
 

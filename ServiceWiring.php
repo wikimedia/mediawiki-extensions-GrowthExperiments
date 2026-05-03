@@ -258,6 +258,8 @@ return [
 		return new HelpPanel(
 			$growthServices->getGrowthWikiConfig(),
 			$services->getLinkRenderer(),
+			$services->getTitleFactory(),
+			$services->getNamespaceInfo(),
 			$services->getUserOptionsLookup()
 		);
 	},

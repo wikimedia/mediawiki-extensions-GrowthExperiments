@@ -8,6 +8,8 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\WebRequest;
+use MediaWiki\Title\NamespaceInfo;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
@@ -60,6 +62,8 @@ class HelpPanelTest extends MediaWikiUnitTestCase {
 				'GEHelpPanelReadingModeNamespaces' => [],
 			] ),
 			$this->createMock( LinkRenderer::class ),
+			$this->createMock( TitleFactory::class ),
+			$this->createMock( NamespaceInfo::class ),
 			$userOptionsLookupMock
 		);
 		$result = $helpPanel->shouldShowHelpPanel( $out, true );

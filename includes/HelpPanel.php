@@ -11,7 +11,9 @@ use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\WebRequest;
+use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
@@ -24,6 +26,8 @@ class HelpPanel {
 	public function __construct(
 		private Config $wikiConfig,
 		private LinkRenderer $linkRenderer,
+		private TitleFactory $titleFactory,
+		private NamespaceInfo $namespaceInfo,
 		private UserOptionsLookup $userOptionsLookup
 	) {
 	}
@@ -56,7 +60,7 @@ class HelpPanel {
 			if ( !isset( $link[ 'title' ] ) ) {
 				continue;
 			}
-			$title = Title::newFromText( $link['title'] );
+			$title = $this->titleFactory->newFromText( $link['title'] );
 			if ( $title ) {
 				$helpPanelLinks .= Html::rawElement(
 					'li',
@@ -76,7 +80,7 @@ class HelpPanel {
 			[ 'target' => '_blank', 'data-link-id' => 'help-desk' ]
 		) : null;
 
-		$viewMoreTitle = Title::newFromText( $this->wikiConfig->get( 'GEHelpPanelViewMoreTitle' ) );
+		$viewMoreTitle = $this->titleFactory->newFromText( $this->wikiConfig->get( 'GEHelpPanelViewMoreTitle' ) );
 		$viewMoreLink = $viewMoreTitle ? $this->linkRenderer->makePreloadedLink(
 			$viewMoreTitle,
 			$ml->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )
@@ -163,7 +167,7 @@ class HelpPanel {
 			return true;
 		}
 		return in_array(
-			$title->getSubjectPage()->getNamespace(),
+			$this->namespaceInfo->getSubjectPage( $title )->getNamespace(),
 			$this->wikiConfig->get( 'GEHelpPanelReadingModeNamespaces' )
 		);
 	}
@@ -182,7 +186,7 @@ class HelpPanel {
 
 		// RawMessage is used here to expand magic words like {{#time:o}} - see T213186, T224224
 		$msg = new RawMessage( $helpdeskTitle );
-		return Title::newFromText( $msg->inContentLanguage()->text() );
+		return $this->titleFactory->newFromText( $msg->inContentLanguage()->text() );
 	}
 
 	/**
