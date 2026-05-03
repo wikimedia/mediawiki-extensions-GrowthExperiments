@@ -6,7 +6,6 @@ use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Html\Html;
-use MediaWiki\Linker\UserLinkRenderer;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\Status\Status;
@@ -25,7 +24,6 @@ class SpecialClaimMentee extends FormSpecialPage {
 	public function __construct(
 		private MentorProvider $mentorProvider,
 		private ChangeMentorFactory $changeMentorFactory,
-		private UserLinkRenderer $userLinkRenderer,
 		private UserIdentityLookup $userIdentityLookup,
 		private UserIdentityUtils $userIdentityUtils,
 	) {
@@ -186,9 +184,10 @@ class SpecialClaimMentee extends FormSpecialPage {
 
 	public function onSuccess() {
 		$menteeLinks = [];
-		$context = $this->getContext();
 		foreach ( $this->mentees as $user ) {
-			$menteeLinks[] = Message::rawParam( $this->userLinkRenderer->userLink( $user, $context ) );
+			$menteeLinks[] = Message::rawParam( $this->getLinkRenderer()->makeUserLink(
+				$user, $this->getContext()
+			) );
 		}
 
 		$this->getOutput()->addWikiMsg(

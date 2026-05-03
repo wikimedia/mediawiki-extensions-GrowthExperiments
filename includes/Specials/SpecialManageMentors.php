@@ -28,32 +28,16 @@ use Wikimedia\Timestamp\TimestampFormat;
 
 class SpecialManageMentors extends SpecialPage {
 
-	private UserIdentityLookup $userIdentityLookup;
-	private UserEditTracker $userEditTracker;
-	private MentorProvider $mentorProvider;
-	private IMentorWriter $mentorWriter;
-	private MentorStatusManager $mentorStatusManager;
-	private MentorRemover $mentorRemover;
-	private Config $wikiConfig;
-
 	public function __construct(
-		UserIdentityLookup $userIdentityLookup,
-		UserEditTracker $userEditTracker,
-		MentorProvider $mentorProvider,
-		IMentorWriter $mentorWriter,
-		MentorStatusManager $mentorStatusManager,
-		MentorRemover $mentorRemover,
-		Config $wikiConfig
+		private UserIdentityLookup $userIdentityLookup,
+		private UserEditTracker $userEditTracker,
+		private MentorProvider $mentorProvider,
+		private IMentorWriter $mentorWriter,
+		private MentorStatusManager $mentorStatusManager,
+		private MentorRemover $mentorRemover,
+		private Config $wikiConfig
 	) {
 		parent::__construct( 'ManageMentors' );
-
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->userEditTracker = $userEditTracker;
-		$this->mentorProvider = $mentorProvider;
-		$this->mentorWriter = $mentorWriter;
-		$this->mentorStatusManager = $mentorStatusManager;
-		$this->mentorRemover = $mentorRemover;
-		$this->wikiConfig = $wikiConfig;
 	}
 
 	/** @inheritDoc */
@@ -92,10 +76,8 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	private function makeUserLink( UserIdentity $user ): string {
-		return Linker::userLink(
-			$user->getId(),
-			$user->getName()
-		) . Linker::userToolLinks( $user->getId(), $user->getName() );
+		return $this->getLinkRenderer()->makeUserLink( $user, $this->getContext() )
+			. Linker::userToolLinks( $user->getId(), $user->getName() );
 	}
 
 	/**
