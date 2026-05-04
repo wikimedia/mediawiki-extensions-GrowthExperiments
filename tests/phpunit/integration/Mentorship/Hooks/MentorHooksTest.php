@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Extension\CommunityConfiguration\Tests\CommunityConfigurationTestHelpers;
+use MediaWiki\HookContainer\HookRunner;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -112,5 +113,35 @@ class MentorHooksTest extends MediaWikiIntegrationTestCase {
 		} else {
 			$this->assertNull( $mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
 		}
+	}
+
+	public function testMentorAssignedOnSignup() {
+		$this->overrideProviderConfig( [
+			'GEMentorshipEnabled' => true,
+		], 'Mentorship' );
+
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$mentorProvider = $geServices->getMentorProvider();
+		$mentorWriter = $geServices->getMentorWriter();
+		$this->assertTrue(
+			$geServices->getGrowthWikiConfig()->get( 'GEMentorshipEnabled' )
+		);
+
+		$mentor = $this->getTestSysop()->getUserIdentity();
+		$this->assertStatusOK( $mentorWriter->addMentor(
+			$mentorProvider->newMentorFromUserIdentity( $mentor ),
+			$mentor,
+			''
+		) );
+
+		$mentee = $this->getMutableTestUser()->getUser();
+		( new HookRunner( $this->getServiceContainer()->getHookContainer() ) )
+			->onLocalUserCreated( $mentee, false );
+
+		$this->assertTrue(
+			$mentor->equals(
+				$geServices->getMentorStore()->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY )
+			)
+		);
 	}
 }
