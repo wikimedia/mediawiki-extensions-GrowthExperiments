@@ -1,12 +1,40 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tensama0415",
 			"Ykhwong"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "새 사용자에게 적절한 작업 권고사항을 가져옵니다.",
+	"apihelp-query+growthtasks-param-excludepageids": "쿼리에서 제외할 문서 ID입니다.",
 	"apihelp-query+growthtasks-param-debug": "디버그 데이터를 출력에 추가합니다.",
+	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "사용자가 현재 작업중인 작업 유형입니다.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-link-recommendation": "GrowthExperiments \"[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_a_link 링크를 추가]\" 구조화된 편집을 저장할 때 사용합니다.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-image-recommendation": "GrowthExperiments \"[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image 이미지를 추가]\" 구조화된 편집을 저장할 때 사용합니다.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-section-image-recommendation": "GrowthExperiments \"[https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Structured_tasks/Add_an_image#\"Add_an_image\"_to_a_Section 이미지를 문단에 추가]\" 구조화된 편집을 저장할 때 사용합니다.",
+	"apihelp-visualeditoredit-paramvalue-plugins-ge-task-revise-tone": "GrowthExperiments \"[[mw:Growth/Revise_Tone|어조 수정]]\" 구조화된 편집을 저장할 때 사용합니다.",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-revise-tone": "<dl><dt><var>ge-task-revise-tone</var> 플러그인의 경우</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-growthexperiments-structured-task-submit-data-format-revise-tone": "이 플러그인에 대해서는 아무 데이터도 포함되어서는 안 됩니다.",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-link-recommendation": "<dl><dt><var>ge-task-link-recommendation</var> 플러그인의 경우</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-image-recommendation": "<dl><dt><var>ge-task-image-recommendation</var> 플러그인의 경우</dt><dd>\n$1\n</dd></dl>",
+	"apihelp-visualeditoredit-append-data-plugin-ge-task-section-image-recommendation": "<dl><dt><var>ge-task-section-image-recommendation</var> 플러그인의 경우</dt><dd>\n$1\n</dd></dl>",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Add Image 플러그인 데이터에서 'accepted' 매개변수가 누락되었습니다",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Add Image 플러그인 데이터에서 'accepted' 매개변수는 불리언이어야 합니다, 현재 값은 $1 입니다",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "Add Image 플러그인 데이터에서 'reasons' 매개변수가 누락되었습니다",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Add Image 플러그인 데이터에서 'reasons' 매개변수는 배열이어야 합니다, 현재 값은 $1 입니다",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reasons'에 대해 '$1' 항목이 잘못되었습니다, 다음 중 하나여야 합니다: $2",
+	"apierror-growthexperiments-addimage-handler-section-title-missing": "Add Image 플러그인 데이터에서 'sectionTitle' 매개변수가 누락되었습니다",
+	"apierror-growthexperiments-addimage-handler-section-title-wrongtype": "Add Image 플러그인 데이터에서 'sectionTitle' 매개변수는 null이어야 합니다, 현재 값은 $1 입니다",
+	"apierror-growthexperiments-addimage-handler-section-number-missing": "Add Image 플러그인 데이터에서 'sectionNumber' 매개변수가 누락되었습니다",
+	"apierror-growthexperiments-addimage-handler-section-number-wrongtype": "Add Image 플러그인 데이터에서 'sectionNumber' 매개변수는 null이어야 합니다, 현재 값은 $1 입니다",
+	"apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype": "Add Section Image 플러그인 데이터에서 'sectionTitle' 매개변수는 문자열이어야 합니다, 현재 값은 $1 입니다",
+	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "Add Section Image 플러그인 데이터에서 'sectionNumber' 매개변수는 정수형이어야 합니다, 현재 값은 $1 입니다",
 	"apierror-growthexperiments-addlink-handler-notfound": "링크 추천 레코드가 없습니다",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "예상치 못한 링크 추천 대상: $1",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "<var>accepted</var> 매개변수가 <kbd>true</kbd>로 설정된 경우 <var>editRevId</var> 매개변수는 필수입니다.",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "<var>accepted</var> 매개변수가 <kbd>false</kbd>로 설정된 경우 <var>editRevId</var> 매개변수는 사용될 수 없습니다.",
+	"growthexperiments-addimage-feedback-accepted-caption": "<var>accepted</var> 매개변수가 <kbd>true</kbd>로 설정된 경우 <var>caption</var> 매개변수는 필수입니다.",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "<var>editRevId</var>에 지정된 판을 찾을 수 없습니다.",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "<var>editRevId</var>에 지정된 판이 다른 문서에 속해 있습니다.",
 	"apihelp-growthinvalidaterevisetonerecommendation-summary": "지정된 문서에 대해 '어조 조정' 권고를 남깁니다."
 }
