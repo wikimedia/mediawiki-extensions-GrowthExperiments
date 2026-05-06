@@ -155,7 +155,6 @@ module.exports = exports = defineComponent( {
 
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
-@import './variables.less';
 
 .ext-growthExperiments-MultiPane {
 	position: relative;
