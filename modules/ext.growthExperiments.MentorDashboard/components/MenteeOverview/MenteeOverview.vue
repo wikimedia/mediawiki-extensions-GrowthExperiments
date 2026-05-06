@@ -209,7 +209,7 @@ module.exports = exports = {
 					key,
 					icon,
 					sortBy,
-					// eslint-disable-next-line mediawiki/msg-doc
+
 					label: this.$i18n( label ).text(),
 					data: data || identity
 				};

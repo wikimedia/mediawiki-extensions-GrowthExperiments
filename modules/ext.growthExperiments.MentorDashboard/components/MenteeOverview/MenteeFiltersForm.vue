@@ -140,7 +140,7 @@ module.exports = exports = {
 				const localisedNumber = this.$filters.convertNumber( val );
 				return {
 					selected: this.formData.activeDaysAgo === val,
-					// eslint-disable-next-line mediawiki/msg-doc
+
 					altText: this.$i18n(
 						TIME_AGO_LABELS.DAYS.label,
 						val,
@@ -157,7 +157,7 @@ module.exports = exports = {
 				const localisedNumber = this.$filters.convertNumber( displayNumber );
 				return {
 					selected: this.formData.activeDaysAgo === val,
-					// eslint-disable-next-line mediawiki/msg-doc
+
 					altText: this.$i18n(
 						TIME_AGO_LABELS.MONTHS.label,
 						displayNumber,

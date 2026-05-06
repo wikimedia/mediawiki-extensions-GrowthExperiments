@@ -29,7 +29,7 @@ AdaptiveSelectWidget.prototype.constructItem = function ( itemData ) {
 	const OptionWidgetClass = this.isMultiSelect ?
 		OO.ui.CheckboxMultioptionWidget :
 		OO.ui.RadioOptionWidget;
-	// eslint-disable-next-line mediawiki/class-doc
+
 	const optionWidget = new OptionWidgetClass( {
 		data: itemData.data,
 		label: itemData.label,
