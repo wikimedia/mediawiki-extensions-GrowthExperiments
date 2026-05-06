@@ -125,7 +125,7 @@ const { ref, computed, toRef, watch, defineComponent } = require( 'vue' );
 const { CdxDialog, CdxButton, CdxIcon, CdxCheckbox, useModelWrapper } = require( '@wikimedia/codex' );
 const { cdxIconNext, cdxIconPrevious, cdxIconClose } = require( './codex-icons.json' );
 const OnboardingStepper = require( './OnboardingStepper.vue' );
-const MultiPane = require( './MultiPane.vue' );
+const MultiPane = require( '../../vue-components/MultiPane.vue' );
 
 /**
  * @name OnboardingDialog
