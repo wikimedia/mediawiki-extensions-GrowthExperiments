@@ -6,7 +6,6 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
 use MediaWikiIntegrationTestCase;
 use MockTitleTrait;
@@ -32,8 +31,7 @@ class QuestionPosterTest extends MediaWikiIntegrationTestCase {
 		if ( $parentRevision !== null ) {
 			[ $text, $visibility ] = $parentRevision;
 			$title = $this->makeMockTitle( 'QuestionPosterTest' );
-			$parentRevision = new MutableRevisionRecord( $title );
-			$parentRevision->setContent( SlotRecord::MAIN, new WikitextContent( $text ) );
+			$parentRevision = MutableRevisionRecord::newFromContent( $title, new WikitextContent( $text ) );
 			$parentRevision->setVisibility( $visibility );
 		}
 
