@@ -222,7 +222,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Open het zijmenu en tik op $2 om naar {{GENDER:$1|je}} startpagina te gaan.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> van <strong>$2</strong> {{PLURAL:$2|suggestie|suggesties}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Einde",
-	"growthexperiments-homepage-suggestededits-pager-loading": "Aan het laden…",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Bezig met laden...",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 bezoeken (afgelopen 60 dagen)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Vorige voorgestelde bewerking",
 	"growthexperiments-homepage-suggestededits-next-card": "Volgende voorgestelde bewerking",
