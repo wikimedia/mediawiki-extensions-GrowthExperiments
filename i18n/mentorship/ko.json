@@ -135,7 +135,7 @@
 	"growthexperiments-mentor-writer-error-message-too-long": "소개 메시지가 너무 깁니다 (영향을 받는 사용자 ID: $2). 최대 길이는 $1 입니다.",
 	"growthexperiments-manage-mentors-title": "멘토 관리",
 	"growthexperiments-manage-mentors-pretext-purpose": "이 문서는 멘토 목록을 보여줍니다.",
-	"growthexperiments-manage-mentors-pretext-privileged": "{{GENDER:|당신은}} 커뮤니티 표준 또는 정책을 위반하는 멘토를 제거하거나 멘토링 관련 옵션을 편집할 수 있습니다.",
+	"growthexperiments-manage-mentors-pretext-privileged": "{{GENDER:|당신은}} 공동체 표준 또는 정책을 위반하는 멘토를 제거하거나 멘토링 관련 옵션을 편집할 수 있습니다.",
 	"growthexperiments-manage-mentors-pretext-regular": "관리자는 공동체 표준이나 정책을 위반하는 멘토를 제거할 수 있습니다. 또한 소개 메시지 등 멘토십 관련 옵션을 편집할 수도 있습니다.",
 	"growthexperiments-manage-mentors-pretext-stored-at": "역사를 포함하여 [[$1|미디어위키 이름공간]]에 저장된 멘토 목록입니다.",
 	"growthexperiments-manage-mentors-pretext-to-enroll": "멘토로 등록하려면 [[Special:EnrollAsMentor]]로 이동하십시오.",

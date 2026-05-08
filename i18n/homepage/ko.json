@@ -225,7 +225,7 @@
 	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1K",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1M",
-	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "당신과 같은 사용자들이 오늘도 {{SITENAME}} 을(를) 발전시키고 있습니다. 같이 도와주세요!",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "당신과 같은 자원봉사자들이 오늘도 {{SITENAME}} 을(를) 발전시키고 있습니다. 같이 도와주세요!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "모든 제안 보기",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "오타, 문법, 어투를 교정합니다",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "위키백과 문서의 내용을 증명할 출처를 추가합니다",
@@ -542,7 +542,7 @@
 	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "다른 편집 시도해 보기",
 	"echo-category-title-ge-newcomer": "성장 기능",
 	"echo-pref-tooltip-ge-newcomer": "새로운 사용자를 돕기 위해 설계된 새 사용자 및 기타 기능의 작업에 관한 알림을 받습니다.",
-	"growthexperiments-homepage-community-updates-header": "커뮤니티 업데이트",
+	"growthexperiments-homepage-community-updates-header": "공동체 업데이트",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "더 알아보기",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "다른 편집 시도해 보기"
 }

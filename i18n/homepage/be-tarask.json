@@ -18,6 +18,7 @@
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode-cta": "Абнавіць фільтар",
 	"growthexperiments-homepage-suggestededits-error-description": "Калі ласка, паспрабуйце пазьней.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Мэнтар {{GENDER:$1|$1}} ужо зьмяняўся. Вы {{GENDER:$2|ўпеўненыя}}, што хочаце зьмяніць яго зноўку?",
+	"growthexperiments-revisetone-onboarding-step2-answer1": "нэґатыўны",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Скасаваць",
 	"growthexperiments-addimage-rejectiondialog-action-cancel": "Скасаваць",
 	"growthexperiments-addimage-viewer-close-button": "Закрыць",
