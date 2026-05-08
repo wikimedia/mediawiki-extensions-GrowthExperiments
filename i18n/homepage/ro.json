@@ -576,5 +576,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Ați}} efectuat $3 {{PLURAL:$3|editare sugerată|editări sugerate}}. Continuați pentru a deprinde mai multe abilități noi.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Efectuați o editare sugerată",
 	"echo-category-title-ge-newcomer": "Funcții Growth",
-	"echo-pref-tooltip-ge-newcomer": "Notifică-mă despre sarcini pentru nou-veniți și alte funcții concepute pentru a ajuta utilizatorii noi."
+	"echo-pref-tooltip-ge-newcomer": "Notifică-mă despre sarcini pentru nou-veniți și alte funcții concepute pentru a ajuta utilizatorii noi.",
+	"growthexperiments-homepage-community-updates-header": "Noutățile comunității",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Aflați mai mult"
 }
