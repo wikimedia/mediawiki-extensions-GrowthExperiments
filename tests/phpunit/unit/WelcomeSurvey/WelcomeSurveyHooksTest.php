@@ -171,7 +171,7 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 
 		yield 'growth campaign' => [
 			[
-				'returnTo' => 'Main Page',
+				'returnTo' => '',
 				'returnToQuery' => 'baz=fizz',
 				'type' => 'signup',
 			],
@@ -191,7 +191,7 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 
 		yield 'growth campaign and pre-existing accountJustCreated' => [
 			[
-				'returnTo' => 'Main Page',
+				'returnTo' => '',
 				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
 				'type' => 'signup',
 			],
@@ -206,6 +206,25 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 				// phpcs:ignore Generic.Files.LineLength.TooLong
 				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
 				'returnVal' => false,
+			],
+		];
+
+		yield 'growth campaign with returnTo' => [
+			[
+				'returnTo' => 'Main Page',
+				'returnToQuery' => 'baz=fizz',
+				'type' => 'signup',
+			],
+			[
+				'campaign' => [
+					'isGrowthCampaign' => true,
+					'shouldSkipWelcomeSurvey' => true,
+				],
+			],
+			[
+				'returnTo' => 'Main Page',
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
+				'returnVal' => true,
 			],
 		];
 	}
