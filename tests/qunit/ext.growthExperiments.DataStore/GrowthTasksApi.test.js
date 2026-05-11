@@ -44,7 +44,7 @@ QUnit.test( 'should fetch tasks', function ( assert ) {
 		ggtlimit: 25,
 		ggttasktypes: [ 'copyedit' ],
 		piprop: 'name|original|thumbnail',
-		pithumbsize: 332,
+		pithumbsize: 330,
 		prop: 'info|revisions|pageimages',
 		rvprop: 'ids',
 		uselang: 'qqx',
@@ -103,7 +103,7 @@ QUnit.test( 'should send topic match mode even if topics are empty and use confi
 			ggtlimit: 30,
 			ggttasktypes: [ 'copyedit' ],
 			piprop: 'name|original|thumbnail',
-			pithumbsize: 332,
+			pithumbsize: 330,
 			prop: 'info|revisions|pageimages',
 			rvprop: 'ids',
 			uselang: 'qqx',
@@ -205,7 +205,7 @@ QUnit.test( 'should handle undefined values in config correctly', function ( ass
 			apiCallArgs.ggtlimit, 15, 'size should be 10 (from config) + 5 (lookAheadSize)' );
 		assert.strictEqual( apiCallArgs.prop.indexOf( 'description' ), -1,
 			'description should not be in prop (getDescription should remain false)' );
-		assert.strictEqual( apiCallArgs.pithumbsize, 332,
+		assert.strictEqual( apiCallArgs.pithumbsize, 330,
 			'thumbnailWidth should retain default value when undefined is provided' );
 
 		done();

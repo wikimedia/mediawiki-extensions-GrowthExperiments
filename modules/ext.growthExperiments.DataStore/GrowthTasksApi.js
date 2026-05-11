@@ -98,7 +98,7 @@
 		this.aqsConfig = config.aqsConfig;
 		this.isMobile = config.isMobile;
 		this.logContext = config.logContext;
-		this.thumbnailWidth = this.isMobile ? 260 : 332;
+		this.thumbnailWidth = this.isMobile ? 250 : 330;
 		this.pageSize = this.suggestedEditsConfig.GESearchTaskSuggesterDefaultLimit;
 		this.lookAheadSize = Number.isInteger( this.suggestedEditsConfig.GEApiQueryGrowthTasksLookaheadSize ) ?
 			this.suggestedEditsConfig.GEApiQueryGrowthTasksLookaheadSize : DEFAULT_LOOKAHEAD_SIZE;
