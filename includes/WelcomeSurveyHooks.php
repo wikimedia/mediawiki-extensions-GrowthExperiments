@@ -202,6 +202,7 @@ class WelcomeSurveyHooks implements
 		$campaign = $this->campaignLoader->getCampaign();
 		if ( $this->campaignConfig->isGrowthCampaign( $campaign )
 			&& $this->campaignConfig->shouldSkipWelcomeSurvey( $campaign )
+			&& !$returnTo
 		) {
 			$returnTo = $this->specialPageFactory->getTitleForAlias( 'Homepage' )->getPrefixedText();
 			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
