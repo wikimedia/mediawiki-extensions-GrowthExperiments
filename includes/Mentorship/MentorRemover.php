@@ -4,7 +4,7 @@ namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
-use MediaWiki\Context\IContextSource;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
 
@@ -28,7 +28,7 @@ class MentorRemover {
 		UserIdentity $performer,
 		UserIdentity $mentor,
 		string $reason,
-		IContextSource $context
+		MessageLocalizer $messageLocalizer
 	): StatusValue {
 		$status = $this->mentorWriter->removeMentor(
 			$this->mentorProvider->newMentorFromUserIdentity( $mentor ),
@@ -39,7 +39,7 @@ class MentorRemover {
 			$this->reassignMenteesFactory->newReassignMentees(
 				$performer,
 				$mentor,
-				$context
+				$messageLocalizer
 			)->reassignMentees(
 				'growthexperiments-quit-mentorship-reassign-mentees-log-message-removed',
 				$performer->getName()

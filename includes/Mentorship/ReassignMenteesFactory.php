@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use MediaWiki\Context\IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
@@ -26,7 +26,7 @@ class ReassignMenteesFactory {
 	public function newReassignMentees(
 		UserIdentity $performer,
 		UserIdentity $mentor,
-		IContextSource $context
+		MessageLocalizer $messageLocalizer
 	): ReassignMentees {
 		$reassignMentees = new ReassignMentees(
 			$this->logger,
@@ -38,7 +38,7 @@ class ReassignMenteesFactory {
 			$this->userFactory,
 			$performer,
 			$mentor,
-			$context
+			$messageLocalizer
 		);
 		return $reassignMentees;
 	}
