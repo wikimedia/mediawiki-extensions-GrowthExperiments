@@ -12,7 +12,7 @@
 	"welcomesurvey-skip-btn": "Inkesta {{GENDER:$1|saltatu}}",
 	"welcomesurvey-close-btn": "Itxi eta $1(e)ra itzuli",
 	"welcomesurvey-privacy-policy-link-text": "Ikasi editore berrien datuei buruz gehiago",
-	"welcomesurvey-privacy-footer-text": "Wikimedia Fundazioak zure erantzunak erabiliko ditu {{SITENAME}} editatzen laguntzen hasteko. [$2 Lortu informazio gehiago gure pribatutasun politikari buruz].",
+	"welcomesurvey-privacy-footer-text": "Wikimedia Fundazioak {{GENDER:$1|zure}} erantzunak erabiliko ditu {{SITENAME}} editatzen laguntzen hasteko. [$2 Lortu informazio gehiago gure pribatutasun politikari buruz].",
 	"welcomesurvey-sidebar-editing-title": "Aldaketen hasten",
 	"welcomesurvey-sidebar-editing-text": "Ia orrialde guztiak edonork edita ditzake, orduro ehunka aldaketa egiten dira edukia gehitu, akatsak zuzendu eta irakurgarritasuna hobetzeko. Hurrengo orrialdeek lagun zaitzakete editatzen lagundu nahi {{GENDER:$1|bazenu}}:",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutoriala",
