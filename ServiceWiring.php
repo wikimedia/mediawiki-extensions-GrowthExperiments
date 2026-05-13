@@ -28,6 +28,9 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSetti
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
+use GrowthExperiments\Mentorship\Cleaner\Actions\ActionFactory;
+use GrowthExperiments\Mentorship\Cleaner\LastActionTimestampLookup;
+use GrowthExperiments\Mentorship\Cleaner\MentorListCleaner;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MenteeGraduation;
 use GrowthExperiments\Mentorship\MenteeGraduationProcessor;
@@ -127,6 +130,23 @@ use Psr\Log\LoggerInterface;
 
 /** @phpcs-require-sorted-array */
 return [
+
+	'GrowthExperimentsActionFactory' => static function (
+		MediaWikiServices $services
+	): ActionFactory {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new ActionFactory(
+			new ServiceOptions(
+				ActionFactory::CONSTRUCTOR_OPTIONS,
+				$geServices->getGrowthWikiConfig()
+			),
+			$geServices->getMentorProvider(),
+			$geServices->getMentorWriter(),
+			$geServices->getMentorStatusManager(),
+			$geServices->getMentorRemover(),
+			$geServices->getLastActionTimestampLookup()
+		);
+	},
 
 	'GrowthExperimentsAddImageSubmissionHandler' => static function (
 		MediaWikiServices $services
@@ -383,6 +403,17 @@ return [
 		return new GrowthExperimentsInteractionLogger();
 	},
 
+	'GrowthExperimentsLastActionTimestampLookup' => static function (
+		MediaWikiServices $services
+	): LastActionTimestampLookup {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new LastActionTimestampLookup(
+			$services->getUserRegistrationLookup(),
+			$services->getUserEditTracker(),
+			$geServices->getLogger(),
+		);
+	},
+
 	'GrowthExperimentsLevelingUpManager' => static function (
 		MediaWikiServices $services
 	): LevelingUpManager {
@@ -630,6 +661,17 @@ return [
 		MediaWikiServices $services
 	): MentorDashboardModuleRegistry {
 		return new MentorDashboardModuleRegistry( $services );
+	},
+
+	'GrowthExperimentsMentorListCleaner' => static function (
+		MediaWikiServices $services
+	): MentorListCleaner {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new MentorListCleaner(
+			$geServices->getActionFactory(),
+			$geServices->getMentorProvider(),
+			$geServices->getLogger(),
+		);
 	},
 
 	'GrowthExperimentsMentorManager' => static function (

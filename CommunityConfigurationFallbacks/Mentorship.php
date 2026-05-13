@@ -16,4 +16,8 @@ return (object) array(
      'minEditcount' => 500,
      'minTenureInDays' => 30,
   ),
+   'GEMentorshipShouldBeAutoawayed' => false,
+   'GEMentorshipAutoawayedAfterDays' => 10,
+   'GEMentorshipShouldBeAutoremoved' => false,
+   'GEMentorshipAutoremovedAfterDays' => 90,
 );

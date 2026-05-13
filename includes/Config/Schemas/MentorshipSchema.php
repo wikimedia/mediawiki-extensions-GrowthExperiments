@@ -67,4 +67,26 @@ class MentorshipSchema extends JsonSchema {
 			],
 		],
 	];
+
+	public const GEMentorshipShouldBeAutoawayed = [
+		self::TYPE => self::TYPE_BOOLEAN,
+		self::DEFAULT => false,
+	];
+
+	public const GEMentorshipAutoawayedAfterDays = [
+		self::TYPE => self::TYPE_INTEGER,
+		self::MINIMUM => 0,
+		self::DEFAULT => 10,
+	];
+
+	public const GEMentorshipShouldBeAutoremoved = [
+		self::TYPE => self::TYPE_BOOLEAN,
+		self::DEFAULT => false,
+	];
+
+	public const GEMentorshipAutoremovedAfterDays = [
+		self::TYPE => self::TYPE_INTEGER,
+		self::MINIMUM => 0,
+		self::DEFAULT => 90,
+	];
 }

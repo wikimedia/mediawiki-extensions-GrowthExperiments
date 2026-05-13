@@ -23,6 +23,9 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PersonalizedPraiseSetti
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyMenteeSuggester;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
+use GrowthExperiments\Mentorship\Cleaner\Actions\ActionFactory;
+use GrowthExperiments\Mentorship\Cleaner\LastActionTimestampLookup;
+use GrowthExperiments\Mentorship\Cleaner\MentorListCleaner;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MenteeGraduation;
 use GrowthExperiments\Mentorship\MenteeGraduationProcessor;
@@ -185,6 +188,10 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProviderUncached' );
 	}
 
+	public function getLastActionTimestampLookup(): LastActionTimestampLookup {
+		return $this->coreServices->get( 'GrowthExperimentsLastActionTimestampLookup' );
+	}
+
 	public function getLogger(): LoggerInterface {
 		return $this->coreServices->get( 'GrowthExperimentsLogger' );
 	}
@@ -195,6 +202,14 @@ class GrowthExperimentsServices {
 
 	public function getMentorDashboardModuleRegistry(): MentorDashboardModuleRegistry {
 		return $this->coreServices->get( 'GrowthExperimentsMentorDashboardModuleRegistry' );
+	}
+
+	public function getMentorListCleaner(): MentorListCleaner {
+		return $this->coreServices->get( 'GrowthExperimentsMentorListCleaner' );
+	}
+
+	public function getActionFactory(): ActionFactory {
+		return $this->coreServices->get( 'GrowthExperimentsActionFactory' );
 	}
 
 	public function getMentorManager(): IMentorManager {
