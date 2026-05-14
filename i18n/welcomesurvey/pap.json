@@ -1,14 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"ObaTango"
+			"ObaTango",
+			"Kallmemel"
 		]
 	},
 	"welcomesurvey-reminder": "Kontestá algun pregunta opshonal den nos Enkuesta di Bon biní i yuda nos drecha {{GENDER:|bo}} eksperensia di Wikipedia. $1",
 	"welcomesurvey-reminder-link": "Yena e enkuesta",
 	"welcomesurvey-reminder-dismiss": "Ignorá",
 	"welcomesurvey-mideditsignup-title": "Bon biní $1!",
-	"welcomesurvey-mideditsignup-body": "Danki pa editá. Awor {{GENDER:|abo}} por mira impakto di bo kontribushonnan i haña mas sugerensha di edishon na bo homepage.",
-	"welcomesurvey-mideditsignup-button-homepage": "Bai mi homepage",
+	"welcomesurvey-mideditsignup-body": "Danki pa editá. Awor {{GENDER:|bo}} por mira e impakto di bo kontribushon i haña mas sugerensha di edishon na bo página di inisio.",
+	"welcomesurvey-mideditsignup-button-homepage": "Bai na mi página di inisio",
 	"welcomesurvey-mideditsignup-button-close": "Sera"
 }
