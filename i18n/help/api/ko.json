@@ -2,12 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Revi",
-			"Ykhwong"
+			"Ykhwong",
+			"Tensama0415"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "현재 사용자의 도움말 패널을 통해 게시된 질문을 관리합니다.",
 	"apihelp-helppanelquestionposter-param-body": "사용자가 제공한 질문의 본문.",
 	"apihelp-helppanelquestionposter-param-source": "질문이 게시된 방식입니다.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"질문방에 도움 요청하기\" 패널",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "신입 사용자 홈페이지의 \"질문방에 도움 요청하기\" 패널",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "도움말 패널의 \"멘토에게 도움 요청하기\" 화면",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"질문방에 도움 요청하기\" 패널 (이전 이름)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "신입 사용자 홈페이지의 \"질문방에 도움 요청하기\" 패널 (이전 이름)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "선택된 경우, 질문과 같이 포함될 관련된 문서의 제목.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "질문하려면 로그인해야 합니다."
+	"apierror-mustbeloggedin-helppanelquestionposter": "질문하려면 로그인해야 합니다.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "멘토가 없으면 멘토에게 질문할 수 없습니다."
 }

@@ -22,7 +22,7 @@
 	"growthexperiments-help-panel-home-title": "Помощ за редактиране",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Вие}} публикувахте редакцията си. Благодарим Ви, продължавайте в същия дух!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Вие}} запазихте редакцията си. Благодарим Ви, продължавайте в същия дух!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Благодарим Ви за прегледа на предложенията. Продължавайте в същия дух!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:|Вие}} току-що прегледахте предложение. Благодарим и продължавайте в същия дух!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "Всички налични статии за добавяне на изображения за днес са завършени. Браво!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "Всички налични статии с предложения за връзки за днес са завършени. Браво!",
 	"growthexperiments-help-panel-postedit-header": "Следващи стъпки",

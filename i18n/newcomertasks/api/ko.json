@@ -6,6 +6,10 @@
 		]
 	},
 	"apihelp-query+growthtasks-summary": "새 사용자에게 적절한 작업 권고사항을 가져옵니다.",
+	"apihelp-query+growthtasks-extended-description": "새로운 편집자가 해결하기 쉬운 몇 가지 문제가 있는 문서를 제안합니다.",
+	"apihelp-query+growthtasks-param-tasktypes": "결과를 제한할 작업 유형입니다. 모든 제안을 받으려면 비워두세요.",
+	"apihelp-query+growthtasks-param-topics": "작업 제안에서 선호할주 문서 주제입니다.",
+	"apihelp-query+growthtasks-param-limit": "반환할 작업 제안의 최대 수입니다.",
 	"apihelp-query+growthtasks-param-excludepageids": "쿼리에서 제외할 문서 ID입니다.",
 	"apihelp-query+growthtasks-param-debug": "디버그 데이터를 출력에 추가합니다.",
 	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "사용자가 현재 작업중인 작업 유형입니다.",
