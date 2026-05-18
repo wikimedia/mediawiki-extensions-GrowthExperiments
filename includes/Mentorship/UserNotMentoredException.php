@@ -17,8 +17,11 @@ use MediaWiki\Exception\ErrorPageError;
  */
 class UserNotMentoredException extends ErrorPageError {
 
-	public function __construct() {
-		parent::__construct( 'growthexperiments-exception-not-mentored',
-			'growthexperiments-exception-no-mentored-text' );
+	public function __construct( string $username ) {
+		parent::__construct(
+			'growthexperiments-exception-not-mentored',
+			'growthexperiments-exception-no-mentored-text',
+			[ $username ]
+		);
 	}
 }

@@ -57,7 +57,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 */
 	protected function verifyCanPostQuestions(): void {
 		if ( !$this->userHasAMentor( $this->getContext() ) ) {
-			throw new UserNotMentoredException();
+			throw new UserNotMentoredException( $this->getContext()->getUser()->getName() );
 		}
 	}
 
