@@ -33,7 +33,7 @@
 	"apihelp-growthmanagementorlist-param-summary": "변경 이유",
 	"apihelp-growthmanagementorlist-param-username": "수정 사항의 영향을 받는 멘토의 사용자 이름입니다. 입력하지 않으면 현재 로그인한 사용자가 사용됩니다. 권한이 있는 사용자만 사용할 수 있습니다.",
 	"growthexperiments-api-managementors-error-no-away-timestamp": "isaway가 true인 경우, awaytimestamp가 제공되어야 합니다.",
-	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "멘토 대시보드 내 개인화된 칭찬 모듈에서 칭찬할만한 멘티 제안을 무효화합니다",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "멘토 대시보드 맞춤형 칭찬 모듈에서 칭찬받을 만한 멘티 제안을 무효화합니다",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "무효화할 멘티입니다",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "제안을 무효화할 이유입니다",
 	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "제안을 무효화할 이유를 생략합니다",

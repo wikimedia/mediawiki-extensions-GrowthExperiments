@@ -4,6 +4,11 @@
 			"شاه زمان پټان"
 		]
 	},
+	"growthexperiments-createacct-username-description": "ستاسو کارن‌نوم ټولواله دی او وروسته ځانواله کېدی نشي.",
+	"growthexperiments-createacct-username-learn-more": "نور زده کړئ",
+	"growthexperiments-confirmemail-emaildescription": "که تاسو خپل پټنوم له لاسه ورکړئ يا له يو ناپېژندلي ځای يا نوي ښوونگر څخه ستاسو گڼون ته ننوتنه وشي؛ نو ستاسو د گڼون بياترلاسنې لپاره برېښليک اړين دی.",
+	"growthexperiments-confirmemail-email-optional": "برېښليک پته",
+	"growthexperiments-confirmemail-email-recommended-flag": "(سپارښتل شوی)",
 	"growthexperiments-confirmemail-emailhelp": "که تاسو خپل پټنوم له لاسه ورکړئ؛ نو ستاسو د گڼون بياترلاسنې لپاره برېښليک اړين دی.",
 	"growthexperiments-confirmemail-emailrecommended": "برېښليک پته (سپارښتل‌شوی)",
 	"growthexperiments-confirmemail-emailwarning": "مهرباني وکړئ د خپلې پاتې تاييد لپاره زموږ برېښليک وگورئ.",
