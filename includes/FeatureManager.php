@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\Skin\Skin;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
@@ -67,13 +68,30 @@ class FeatureManager {
 			);
 	}
 
-	public function shouldShowCreateAccountV1( ?User $user, Skin $skin ): bool {
+	public function shouldShowCreateAccountV2( ?User $user, Skin $skin, WebRequest $request ): bool {
 		$isAnon = $user === null || $user->isAnon();
 		$isMobile = Util::isMobile( $skin );
 		$isEnWiki = $this->growthConfig->get( 'DBname' ) === 'enwiki';
+		$experimentGroupFromManager = $this->experimentManager->getAssignedGroup(
+			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2
+		);
+		$experimentGroupFromRequest = $this->getExperimentEnrollmentGroupFromRequest( $request );
 
-		return $isAnon && $isMobile && $isEnWiki && $this->experimentManager->getAssignedGroup(
-			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1
-		) === IExperimentManager::VARIANT_TREATMENT;
+		$isTreatmentGroup = ( $experimentGroupFromManager === IExperimentManager::VARIANT_TREATMENT ) ||
+			( $experimentGroupFromRequest === IExperimentManager::VARIANT_TREATMENT );
+
+		return $isAnon && $isMobile && $isEnWiki && $isTreatmentGroup;
+	}
+
+	private function getExperimentEnrollmentGroupFromRequest( WebRequest $request ): string {
+		$experimentUrlString = array_find(
+			$request->getArray( 'experiments' ) ?? [],
+			static fn ( $value ) => str_starts_with( $value, IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 ),
+		);
+		if ( !$experimentUrlString ) {
+			return 'unsampled';
+		}
+		[ , $experimentGroup ] = explode( ':', $experimentUrlString );
+		return $experimentGroup;
 	}
 }
