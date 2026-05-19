@@ -950,11 +950,7 @@
 			"packageFiles": [
 				"homepage.init.js",
 				"ext.growthExperiments.Homepage.ConfirmEmailNotice/index.js",
-				"ext.growthExperiments.Homepage.WelcomeSurveyReminder/index.js",
-				"ext.growthExperiments.Homepage.Logger/index.js",
-				"ext.growthExperiments.Homepage.Logger/useInstrument.js",
-				"ext.growthExperiments.Homepage.Logging/index.js",
-				"utils/Utils.js"
+				"ext.growthExperiments.Homepage.WelcomeSurveyReminder/index.js"
 			],
 			"messages": [
 				"confirmemail_loggedin",
@@ -2497,9 +2493,7 @@
 			"modules/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.test.js",
 			"modules/ext.growthExperiments.Homepage.Logger/index.js",
-			"modules/ext.growthExperiments.Homepage.Logger/useInstrument.js",
 			"tests/qunit/ext.growthExperiments.Homepage.Logger/index.test.js",
-			"tests/qunit/ext.growthExperiments.Homepage.Logger/useInstrument.test.js",
 			"modules/utils/HelpPanelLogger.js",
 			"tests/qunit/ext.growthExperiments.Help/HelpPanelLogger.test.js",
 			"modules/ext.growthExperiments.Help/HelpPanelProcessDialog.js",
