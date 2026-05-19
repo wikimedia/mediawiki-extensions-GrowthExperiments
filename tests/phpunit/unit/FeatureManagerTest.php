@@ -11,6 +11,7 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\Skin\Skin;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentityValue;
@@ -36,15 +37,16 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $sut->shouldShowReviseToneTasksForUser( $user ) );
 	}
 
-	public static function provideCreateAccountV1Scenarios(): iterable {
+	public static function provideCreateAccountV2Scenarios(): iterable {
 		yield 'anon, mobile, not treatment group' => [
 			'anon',
 			SkinMinerva::class,
 			[
 				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => null,
+					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => null,
 				],
 			],
+			null,
 			false,
 		];
 
@@ -53,9 +55,22 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			SkinMinerva::class,
 			[
 				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
+					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
 				],
 			],
+			null,
+			true,
+		];
+
+		yield 'anon, mobile, in treatment group via request' => [
+			'anon',
+			SkinMinerva::class,
+			[
+				'defaultVariant' => [
+					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => null,
+				],
+			],
+			[ IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 . ':' . IExperimentManager::VARIANT_TREATMENT ],
 			true,
 		];
 
@@ -64,9 +79,10 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			SkinMinerva::class,
 			[
 				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
+					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
 				],
 			],
+			null,
 			false,
 		];
 
@@ -75,9 +91,10 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			Skin::class,
 			[
 				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
+					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
 				],
 			],
+			null,
 			false,
 		];
 
@@ -86,23 +103,25 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			SkinMinerva::class,
 			[
 				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
+					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
 				],
 				'config' => [
 					'DBname' => 'dewiki',
 				],
 			],
+			null,
 			false,
 		];
 	}
 
 	/**
-	 * @dataProvider provideCreateAccountV1Scenarios
+	 * @dataProvider provideCreateAccountV2Scenarios
 	 */
-	public function testShouldShowCreateAccountV1(
+	public function testShouldShowCreateAccountV2(
 		string $userType,
 		string $skinClass,
 		array $overrides,
+		?array $requestOverride,
 		bool $expectedResult
 	): void {
 		if ( $userType === 'logged-in' ) {
@@ -115,9 +134,13 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		/** @var Skin $skin */
 		$skin = $this->createMock( $skinClass );
+		$request = $this->createMock( WebRequest::class );
+		$request->method( 'getArray' )
+			->with( 'experiments' )
+			->willReturn( $requestOverride ?? [] );
 
 		$sut = $this->getFeatureManager( $overrides );
-		$actualResult = $sut->shouldShowCreateAccountV1( $user, $skin );
+		$actualResult = $sut->shouldShowCreateAccountV2( $user, $skin, $request );
 		$this->assertSame( $expectedResult, $actualResult );
 	}
 

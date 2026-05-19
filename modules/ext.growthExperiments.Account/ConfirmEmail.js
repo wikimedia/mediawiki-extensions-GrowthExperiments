@@ -7,8 +7,8 @@
 		 */
 		maybeShowWarning: function () {
 
-			if ( mw.config.get( 'GECreateAccountExperimentV1' ) ) {
-				// T415659
+			if ( mw.config.get( 'GECreateAccountExperimentV2' ) ) {
+				// T422295
 				return;
 			}
 			mw.hook( 'htmlform.enhance' ).add( ( $root ) => {

@@ -10,7 +10,6 @@ use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\TestKitchen\Sdk\OverriddenExperiment;
-use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Skin\Skin;
@@ -50,9 +49,11 @@ class ConfirmEmailHooks implements
 		LoginSignupSpecialPage $specialPage,
 		bool &$show
 	): void {
-		if ( $this->experimentManager->getAssignedGroup(
-			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2
-		) === IExperimentManager::VARIANT_TREATMENT ) {
+		if ( $this->featureManager->shouldShowCreateAccountV2(
+			$specialPage->getUser(),
+			$specialPage->getSkin(),
+			$specialPage->getRequest(),
+		) ) {
 			$show = true;
 		}
 	}
@@ -84,53 +85,28 @@ class ConfirmEmailHooks implements
 
 		$this->recordBaseline( $context->getUser(), $context->getSkin() );
 		$this->recordExperimentGroup( $context->getUser(), $context->getSkin(), $formDescriptor );
-		if ( $this->featureManager->shouldShowCreateAccountV1(
+		$shouldShowV2 = $this->featureManager->shouldShowCreateAccountV2(
 			$context->getUser(),
 			$context->getSkin(),
-		) ) {
-			$context->getOutput()->addBodyClasses( 'wiki-' . $config->get( 'DBname' ) );
-			$context->getOutput()->addJsConfigVars( 'GECreateAccountExperimentV1', true );
-			if ( isset( $formDescriptor['email'] ) ) {
-				$formDescriptor['email']['description-message'] = 'growthexperiments-confirmemail-emaildescription';
-				$formDescriptor['email']['show-optional-flag'] = true;
-				$formDescriptor['email']['optional-message'] = 'growthexperiments-confirmemail-email-recommended-flag';
-				$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-email-optional';
-			}
+			$context->getRequest(),
+		);
+		if ( $shouldShowV2 ) {
+			// Send a hint for experiment styles to kick-in. Experiment styles:
+			// - GrowthExperiments/modules/ext.growthExperiments.Account.styles/WE18ExperimentV1.less
+			$context->getOutput()->addBodyClasses( [
+				'we-1-8-account-creation-form-v2-treatment',
+				'wiki-' . $config->get( 'DBname' ),
+			] );
+			$context->getOutput()->addJsConfigVars( 'GECreateAccountExperimentV2', $shouldShowV2 );
 			$formDescriptor['createaccount']['size'] = 'large';
-
-			$formDescriptor['username']['label-message'] = 'userlogin-yourname';
-			$formDescriptor['username']['description-message'] =
-				'growthexperiments-createacct-username-description';
-			$formDescriptor['username']['help-message'] = null;
-			if ( !$context->msg( 'createacct-helpusername-url' )->isDisabled() ) {
-				$learnMoreLinkText = $context->msg(
-					'growthexperiments-createacct-username-learn-more',
-				)->parse();
-				$learnMoreTitleText = $context->msg( 'createacct-helpusername-url' )->parse();
-				$learnMoreTitle = $this->titleFactory->newFromDBkey( $learnMoreTitleText );
-				if ( $learnMoreTitle->isKnown() ) {
-					$learnMoreUrl = $learnMoreTitle->getCanonicalURL();
-					$linkHtml = Html::rawElement(
-						'a',
-						[ 'href' => $learnMoreUrl, 'target' => '_blank', 'class' => 'username-learn-more-link' ],
-						$learnMoreLinkText,
-					);
-					$description = $context->msg( 'growthexperiments-createacct-username-description' )->parse();
-					$mergedHtml = implode( $context->msg( 'word-separator' )->escaped(), [ $description, $linkHtml ] );
-
-					unset( $formDescriptor['username']['description-message'] );
-					$formDescriptor['username']['description-raw'] = $mergedHtml;
-				}
+			if ( isset( $formDescriptor['password'] ) ) {
+				$formDescriptor['password']['end-icon-class'] = 'growthexperiments-password-reveal-icon';
 			}
+			if ( isset( $formDescriptor['retype'] ) ) {
+				$formDescriptor['retype']['end-icon-class'] = 'growthexperiments-password-reveal-icon';
+			}
+			// Default GrowthExperience, applies to unsampled and control
 		} elseif ( isset( $formDescriptor['email'] ) && !$config->get( MainConfigNames::EmailConfirmToEdit ) ) {
-			// If email field exists on the form, change email label from "(optional)" to "
-			// (recommended)", but only if email is optional
-			if ( $this->experimentManager->getAssignedGroup(
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2
-				) === IExperimentManager::VARIANT_TREATMENT ) {
-				return;
-			}
-
 			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';
 			$formDescriptor['email']['help-message'] = 'growthexperiments-confirmemail-emailhelp';
 		}

@@ -149,7 +149,11 @@ class VariantHooks implements
 	public function onSpecialCreateAccountBenefits( ?string &$html, array $info, array &$options ) {
 		$skin = $info['context']->getSkin();
 
-		if ( $this->featureManager->shouldShowCreateAccountV1( $info['context']->getUser(), $skin ) ) {
+		if ( $this->featureManager->shouldShowCreateAccountV2(
+			$info['context']->getUser(),
+			$skin,
+			$info['context']->getRequest()
+		) ) {
 			$html = '';
 			return false;
 		}
@@ -200,7 +204,9 @@ class VariantHooks implements
 		$context = $special->getContext();
 		if (
 			$this->shouldShowNewLandingPageHtml( $context ) ||
-			$this->featureManager->shouldShowCreateAccountV1( $context->getUser(), $context->getSkin() )
+			$this->featureManager->shouldShowCreateAccountV2(
+				$context->getUser(), $context->getSkin(), $context->getRequest()
+			)
 		) {
 			if ( $special->getRequest()->getVal( 'notice' ) === 'mobile-frontend-generic-login-new' ) {
 				$special->getRequest()->setVal( 'notice', null );
