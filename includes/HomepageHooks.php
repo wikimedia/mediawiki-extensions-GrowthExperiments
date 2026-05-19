@@ -281,6 +281,13 @@ class HomepageHooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$context = $out->getContext();
+
+		// T419172: The homepage and suggested edit features are exclusively
+		// for named users. Bail out early for anonymous and temporary users.
+		if ( !$this->userIdentityUtils->isNamed( $context->getUser() ) ) {
+			return;
+		}
+
 		$isSuggestedEditsEnabled = SuggestedEdits::isEnabledForAnyone( $context->getConfig() );
 		if (
 			Util::isMobile( $skin ) &&
