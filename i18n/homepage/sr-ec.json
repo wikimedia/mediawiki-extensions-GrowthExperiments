@@ -368,6 +368,7 @@
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Предлози",
 	"growthexperiments-structuredtask-editmode-selection-visual": "Визуелно уређивање",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Напусти предлоге?",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Променом режима {{GENDER:$1|можете}} правити остале типове измена. Завршите са прегледањем да би сте објавили свој напредак.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Пребаци без објављивања",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Откажи",
 	"growthexperiments-structuredtask-summary-submit": "Пошаљи",
