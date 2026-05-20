@@ -15,7 +15,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "L'utente non ha un mentore",
-	"growthexperiments-exception-no-mentored-text": "L'utente non ha un mentore, il che significa che non può porre una domanda al proprio mentore.",
+	"growthexperiments-exception-no-mentored-text": "L'utente non ha un mentore, il che significa che {{GENDER:$1|non può}} porre una domanda {{GENDER:$1|al proprio}} mentore.",
 	"growthexperiments-mentor-dashboard-title": "Pannello di tutoraggio",
 	"growthexperiments-mentor-dashboard-pt-link": "tutoraggio",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Per abilitare il pannello di tutoraggio, prima {{GENDER:|devi}} [[$1|essere un tutor]].",

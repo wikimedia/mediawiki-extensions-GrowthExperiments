@@ -5,7 +5,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "کارن ته لارښوونه نه کېږي",
-	"growthexperiments-exception-no-mentored-text": "کارن هېڅ لارښود نه لري، په دې مانا چې دوی نشي کولی له خپل لارښود څخه پوښتنه وکړي",
+	"growthexperiments-exception-no-mentored-text": "کارن هېڅ لارښود نه لري، په دې مانا چې {{GENDER:$1|هغه|هغوی}} نشي کولی له {{GENDER:$1|خپل}} لارښود څخه پوښتنه وکړي",
 	"growthexperiments-mentor-dashboard-title": "لارښود ليددړه",
 	"growthexperiments-mentor-dashboard-pt-link": "لارښود ليددړه",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "د لارښود ليکدړې چارنولو لپاره، {{GENDER:|تاسو}} باید لومړی د [[$1|لارښود په توگه نوم‌ليکنه وکړئ]].",

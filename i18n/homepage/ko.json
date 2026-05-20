@@ -336,7 +336,7 @@
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1 님의}} 멘토가 이미 변경되었습니다. {{GENDER:$2|정말로}} 다시 변경하시겠습니까?",
 	"growthexperiments-claimmentee-confirm": "네, 진행하겠습니다",
 	"growthexperiments-log-name": "성장 실험 기록",
-	"growthexperiments-log-header": "성장 실험 확장 기능과 관련된 기록의 모음입니다.",
+	"growthexperiments-log-header": "성장 실험 확장 기능과 관련된 작업 기록입니다.",
 	"logentry-growthexperiments-claimmentee": "$1 님이 {{GENDER:$6|$3}} 님을 자신의 멘티로 {{GENDER:$2|설정했습니다}} (이전 {{GENDER:$4|멘토}}는 $5 님)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 님이 {{GENDER:$6|$3}} 님을 자신의 멘티로 {{GENDER:$2|설정했습니다}} (이전 멘토 없음)",
 	"logentry-growthexperiments-setmentor": "$1 님이 {{GENDER:$5|$7}} 님을 {{GENDER:$6|$3}} 님의 멘토로 {{GENDER:$2|설정했습니다}} (이전 {{GENDER:$4|멘토}}는 $8 님)",

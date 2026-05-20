@@ -25,7 +25,7 @@
 	"apihelp-query+growthmentormentee-summary": "지정된 멘토에 할당된 모든 멘티를 가져옵니다",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "멘티를 검색할 멘토",
 	"apihelp-growthmanagementorlist-summary": "구조화된 멘토 목록(보통 [[MediaWiki:GrowthMentors.json]]에 저장됨)의 정보를 관리합니다. 이 모듈은 (자신을 추가하고 자신의 상세 정보를 변경하기 위해) 현재 및 미래의 멘토에 의해, 그리고 (모든 사용자를 위해) 관리자에 의해 추가될 수 있습니다.",
-	"apihelp-growthmanagementorlist-param-geaction": "동작",
+	"apihelp-growthmanagementorlist-param-geaction": "작업",
 	"apihelp-growthmanagementorlist-param-message": "소개 메시지 (기본 멘토 메시지의 경우 빈 문자열 사용)",
 	"apihelp-growthmanagementorlist-param-weight": "가중치",
 	"apihelp-growthmanagementorlist-param-isaway": "멘토가 현재 부재중인가요? 이 값은 설정되어야 합니다(기본값은 false).",

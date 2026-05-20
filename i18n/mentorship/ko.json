@@ -9,7 +9,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "사용자는 멘토링을 받고 있지 않습니다",
-	"growthexperiments-exception-no-mentored-text": "사용자는 멘토가 없으므로, 멘토에게 질문할 수 없습니다",
+	"growthexperiments-exception-no-mentored-text": "{{GENDER:$1|사용자}}는 멘토가 없으므로, 멘토에게 질문할 수 없습니다",
 	"growthexperiments-mentor-dashboard-title": "멘토 대시보드",
 	"growthexperiments-mentor-dashboard-pt-link": "멘토 대시보드",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "멘토 대시보드를 활성화하려면 {{GENDER:|당신은}} 먼저 [[$1|멘토로 등록]]되어야 합니다.",

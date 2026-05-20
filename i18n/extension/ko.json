@@ -95,7 +95,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-maximum-tasks-per-day": "신규 사용자가 하루에 완료할 수 있는 \"그림이 없는 문서에 이미지 추가\" 제안 작업의 최대 개수입니다.",
 	"growthexperiments-edit-config-newcomer-tasks-section-image-recommendation-learnmore": "문서 문단 이미지 추천 작업 유형에 대해 자세히 알아보기 위한 대상 문서입니다.",
 	"growthexperiments-edit-config-newcomer-tasks-section-image-recommendation-maximum-tasks-per-day": "신규 사용자가 하루에 완료할 수 있는 \"문서 문단에 이미지 추가\" 제안 작업의 최대 개수입니다.",
-	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "이 작업 유형은 기계 제안과 연결되며 템플릿을 사용하여 작업 풀을 생성하지 않습니다.",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "이 작업 유형은 기계 제안과 연결되며 틀을 사용하여 작업 풀을 생성하지 않습니다.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "여기에 정의된 틀이 포함된 문서는 이 작업 유형에 대한 작업으로 사용자에게 표시되지 않습니다.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "여기에 정의된 분류가 포함된 문서는 이 작업 유형에 대한 작업으로 사용자에게 표시되지 않습니다.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "정보상자 틀",
