@@ -12,7 +12,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "Gebruiker staat niet onder begeleiding",
-	"growthexperiments-exception-no-mentored-text": "De gebruiker heeft geen mentor en kan dus geen vragen stellen aan de eigen mentor",
+	"growthexperiments-exception-no-mentored-text": "De {{GENDER:$1|gebruiker|gebruikster}} heeft geen mentor en kan dus geen vragen stellen aan {{GENDER:$1|zijn|haar|de eigen}} mentor",
 	"growthexperiments-mentor-dashboard-title": "Mentordashboard",
 	"growthexperiments-mentor-dashboard-pt-link": "Mentordashboard",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Om het mentordashboard in te schakelen, moet {{GENDER:|u}} eerst [[$1|inschrijven als mentor]].",
@@ -22,7 +22,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "De tabel vereist JavaScript. Schakel JavaScript in om deze module te kunnen gebruiken.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Wie staat er in {{GENDER:|uw}} tabel?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Meer informatie over wie er in {{GENDER:|uw}} tabel staat",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Deze tabel toont alleen uw leerlingen van wie het account in de afgelopen twee weken is aangemaakt of die in de afgelopen zes maanden iets hebben bewerkt, en voor wie [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH de thuispagina voor nieuwkomers] is geactiveerd. De gegevens worden elke drie uur bijgewerkt.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Deze tabel geeft alleen uw leerlingen weer van wie het account in de afgelopen twee weken is aangemaakt of die in de afgelopen zes maanden iets hebben bewerkt, en voor wie [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH de thuispagina voor nieuwkomers] is geactiveerd. De gegevens worden elke drie uur bijgewerkt.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Bladwijzer maken voor leerlingen",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Gebruikersnaam",

@@ -114,7 +114,7 @@
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|bewerking|bewerkingen}} naar andere soorten pagina's (alles bekijken)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Ga naar artikel",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Gedetailleerde paginaweergaven bekijken",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-title": "Een lijndiagram dat het totale aantal dagelijkse weergaven toont voor artikelen die zijn bewerkt in de afgelopen $1 dag{{PLURAL:$1||en}}.",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-title": "Een lijndiagram dat het totale aantal dagelijkse weergaven weergeeft voor pagina's die zijn bewerkt in de afgelopen $1 {{PLURAL:$1|dag|dagen}}.",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Sinds je dit artikel vandaag voor het eerst hebt bewerkt, zijn paginaweergaven nog niet berekend. Kijk morgen terug!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Paginaweergaven zijn nog niet berekend. Kom morgen terug!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Begrepen",

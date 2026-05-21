@@ -4,6 +4,11 @@
 			"Jon Harald Søby"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Brukernavnet ditt er offentlig, og kan ikke gjøres privat senere.",
+	"growthexperiments-createacct-username-learn-more": "Lær mer",
+	"growthexperiments-confirmemail-emaildescription": "E-postadresse behøves for å få tilbake tilgang til kontoen hvis du glemmer passordet ditt eller logger inn fra et ukjent sted eller med en ny nettleser.",
+	"growthexperiments-confirmemail-email-optional": "E-postadresse",
+	"growthexperiments-confirmemail-email-recommended-flag": "(anbefalt)",
 	"growthexperiments-confirmemail-emailhelp": "E-post kreves for å gjenopprette kontoen din hvis du mister passordet.",
 	"growthexperiments-confirmemail-emailrecommended": "Epostadresse (anbefalt)",
 	"growthexperiments-confirmemail-emailwarning": "Se etter en e-post fra oss for å bekrefte adressa di.",
