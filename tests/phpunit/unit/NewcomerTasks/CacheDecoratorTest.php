@@ -15,7 +15,6 @@ use MediaWiki\Json\JsonCodec;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
-use PHPUnit\Framework\MockObject\Stub\ReturnArgument;
 use StatusValue;
 use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\ObjectCache\WANObjectCache;
@@ -50,10 +49,17 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 			$suggester = $this->createNoOpMock( TaskSuggester::class, $mockedMethods );
 			foreach ( $mockedMethods as $method ) {
 				if ( $call[$method] ) {
-					$suggester->expects( $this->once() )
-						->method( $method )
-						->with( ...$call[$method]['expect'] )
-						->willReturn( $call[$method]['return'] );
+					if ( isset( $call[$method]['return-argument'] ) ) {
+						$suggester->expects( $this->once() )
+							->method( $method )
+							->with( ...$call[$method]['expect'] )
+							->willReturnArgument( $call[$method]['return-argument'] );
+					} else {
+						$suggester->expects( $this->once() )
+							->method( $method )
+							->with( ...$call[$method]['expect'] )
+							->willReturn( $call[$method]['return'] );
+					}
 				} else {
 					$suggester->expects( $this->never() )
 						->method( $method );
@@ -140,7 +146,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 						'suggest' => null,
 						'filter' => [
 							'expect' => [ $user, $taskset ],
-							'return' => new ReturnArgument( 1 ),
+							'return-argument' => 1,
 						],
 						'user' => $user,
 						'taskSetFilters' => $taskSetFilters,
