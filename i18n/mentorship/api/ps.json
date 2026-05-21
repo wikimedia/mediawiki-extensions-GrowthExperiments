@@ -17,5 +17,6 @@
 	"apihelp-growthmanagementorlist-param-weight": "دروندوالی",
 	"apihelp-growthmanagementorlist-param-isaway": "ايا لارښود اوس لرې دی؟ بايد وټاکل شي (تلواليز ناسم ته)",
 	"apihelp-growthmanagementorlist-param-awaytimestamp": "لارښود تر څه وخته لرې وي؟ له نن څخه ډېر وخت تر يو کال پورې دی. له پامه غورځول کېږي پرته له دې چې isaway رښتيا وي.",
-	"apihelp-growthmanagementorlist-param-summary": "د بدلون لامل"
+	"apihelp-growthmanagementorlist-param-summary": "د بدلون لامل",
+	"apihelp-query+growthmentorlist-summary": "ټول لارښودانو لړليکول"
 }

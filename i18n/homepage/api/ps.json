@@ -4,10 +4,12 @@
 			"شاه زمان پټان"
 		]
 	},
-	"apihelp-homepagequestionstore-summary": "د کورمخ ماډيولونو له لارې د خپرو شوو بڼل‌شوو پوښتنو ترلاسه کول",
+	"apihelp-homepagequestionstore-summary": "د کورمخ چلنوالو له لارې د خپرو شوو بڼل‌شوو پوښتنو ترلاسه کول",
+	"apihelp-homepagequestionstore-param-questionformat": "د پوښتنو د بېرته‌گرځولو بڼه، د بېلگې په توگه اېچ‌ټي‌اېم‌اېل.",
 	"apihelp-homepagequestionstore-param-storage": "د پوښتنو زېرمه‌کولو ځای.",
 	"apihelp-homepagequestionstore-param-userid": "د پوښتنو ترلاسه کولو لپاره د کارن پېژند.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "هېڅ پوښتنې ونه موندل شوې.",
+	"apihelp-growthsetmentor-summary": "کارن لارښود ټاکي. بدلون به په ټولواله ډول ثبت شي.",
 	"apihelp-growthsetmentor-param-mentee": "لارزدکړي کارن‌نوم",
 	"apihelp-growthsetmentor-param-mentor": "لارښود کارن‌نوم",
 	"apihelp-growthsetmentor-param-reason": "د بدلون لامل",
