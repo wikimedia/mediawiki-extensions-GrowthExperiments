@@ -42,7 +42,8 @@
 			"Vega",
 			"Verdy p",
 			"WillyM",
-			"Wladek92"
+			"Wladek92",
+			"Jérémy-Günther-Heinz Jähnick"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Bonjour {{bidi:$1}} !",
@@ -412,6 +413,7 @@
 	"growthexperiments-addlink-context-button-reject": "Non",
 	"growthexperiments-addlink-context-button-help": "Obtenir de l’aide pour modifier",
 	"growthexperiments-addlink-context-button-next": "Suivant",
+	"growthexperiments-addlink-context-button-prev": "Précédent",
 	"growthexperiments-addlink-context-button-show-suggestion": "Afficher la suggestion de liens",
 	"growthexperiments-addlink-rejectiondialog-title": "Pourquoi n’est-ce pas un bon lien ?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Vos}} réponses améliorent les suggestions futures.",
