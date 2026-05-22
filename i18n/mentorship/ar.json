@@ -16,7 +16,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "لا يتلقى المستخدم أي توجيه.",
-	"growthexperiments-exception-no-mentored-text": "ليس لدى المستخدم مرشد، مما يعني أنه لا يستطيع طرح سؤال على مرشده.",
+	"growthexperiments-exception-no-mentored-text": "ليس لدى المستخدم مرشد، مما يعني أن {{GENDER:$1|هو|هي|هم}} لا يستطيع طرح سؤال على مرشده {{GENDER:$1|مرشده|مرشدتها|مرشدهم}}",
 	"growthexperiments-mentor-dashboard-title": "لوحة المرشدين",
 	"growthexperiments-mentor-dashboard-pt-link": "لوحة المرشدين",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "لتفعيل لوحة المرشدين، بتوجّب {{GENDER:|عليكَ|عليكِ}} أوّلا [[$1|التسجيل {{GENDER:|كمرشد|كمرشدة}}]].",

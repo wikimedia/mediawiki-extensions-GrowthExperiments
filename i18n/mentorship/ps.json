@@ -242,5 +242,7 @@
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "يوازې هغه کارنان چې $1 {{PLURAL:$1|سمون|سمونونه}} او $2 {{PLURAL:$2|ورځ|ورځې}} شتون لري، کولی شي د لارښود په توگه نوم‌ليکنه وکړي.",
 	"tag-mentor_list_change": "لارښود ليکلړ بدلول",
 	"tag-mentor_list_change-description": "نښلن د ودې‌ازمېښتونو له لارې د جوړښت‌شوي لارښود لړليک کې شوي سمونونو ته پلی کېږي",
-	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "وسمهال لارښودي گوله شوې ده. پازوالان کولی شي لارښودي د [[$1]] له لارې بله کړي."
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "وسمهال لارښودي گوله شوې ده. پازوالان کولی شي لارښودي د [[$1]] له لارې بله کړي.",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "$1 لارښود د لرې په توگه نښه کول، $2 ورځې وزگار نه دی",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "$1 لارښود لرې‌کول، $2 ورځې وزگار نه دی"
 }
