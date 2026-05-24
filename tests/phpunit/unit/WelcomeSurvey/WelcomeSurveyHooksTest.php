@@ -11,6 +11,7 @@ use GrowthExperiments\WelcomeSurveyFactory;
 use GrowthExperiments\WelcomeSurveyHooks;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -227,6 +228,22 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 				'returnVal' => true,
 			],
 		];
+
+		yield 'signup with display=popup' => [
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => 'baz=fizz',
+				'type' => 'signup',
+			],
+			[
+				'request' => new FauxRequest( [ 'display' => 'popup' ] ),
+			],
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => 'baz=fizz&accountJustCreated=1',
+				'returnVal' => true,
+			],
+		];
 	}
 
 	/**
@@ -269,6 +286,10 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 		$user = $this->createMock( User::class );
 		$user->method( 'isTemp' )->willReturn( $overrides['user']['isTemp'] ?? false );
 		RequestContext::getMain()->setUser( $user );
+
+		if ( $overrides['request'] ?? false ) {
+			RequestContext::getMain()->setRequest( $overrides['request'] );
+		}
 
 		$welcomeSurveyFactory = $this->createMock( WelcomeSurveyFactory::class );
 		$welcomeSurvey = $this->createMock( WelcomeSurvey::class );

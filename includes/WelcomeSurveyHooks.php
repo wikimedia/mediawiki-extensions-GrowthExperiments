@@ -18,6 +18,7 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Specials\Helpers\LoginHelper;
 use MediaWiki\Specials\Hook\PostLoginRedirectHook;
 use MediaWiki\Specials\SpecialCreateAccount;
 use MediaWiki\Specials\SpecialUserLogin;
@@ -280,9 +281,11 @@ class WelcomeSurveyHooks implements
 	}
 
 	private function shouldShowWelcomeSurvey( IContextSource $context ): bool {
+		$loginHelper = new LoginHelper( $context );
 		return $this->isWelcomeSurveyEnabled()
 			&& !$context->getUser()->isTemp()
-			&& !$this->campaignConfig->shouldSkipWelcomeSurvey( $this->campaignLoader->getCampaign() );
+			&& !$this->campaignConfig->shouldSkipWelcomeSurvey( $this->campaignLoader->getCampaign() )
+			&& !$loginHelper->isDisplayModePopup();
 	}
 
 }
