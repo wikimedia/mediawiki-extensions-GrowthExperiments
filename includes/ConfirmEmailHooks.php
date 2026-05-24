@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments;
 
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\Auth\Hook\AuthPreserveQueryParamsHook;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
@@ -22,6 +23,7 @@ use Wikimedia\Stats\StatsFactory;
 
 class ConfirmEmailHooks implements
 	AuthChangeFormFieldsHook,
+	AuthPreserveQueryParamsHook,
 	LocalUserCreatedHook,
 	CreateAccountShouldShowUsernamePolicyPopoverHook
 {
@@ -131,6 +133,17 @@ class ConfirmEmailHooks implements
 
 			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';
 			$formDescriptor['email']['help-message'] = 'growthexperiments-confirmemail-emailhelp';
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onAuthPreserveQueryParams( array &$params, array $options ): void {
+		$request = RequestContext::getMain()->getRequest();
+		$experiments = $request->getArray( 'experiments' );
+		if ( $experiments ) {
+			$params['experiments'] = $experiments;
 		}
 	}
 
