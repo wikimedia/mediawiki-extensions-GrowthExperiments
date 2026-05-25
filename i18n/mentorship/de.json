@@ -252,6 +252,6 @@
 	"tag-mentor_list_change": "Änderung der Lotsenliste",
 	"tag-mentor_list_change-description": "Tag angewendet auf Änderungen, die über GrowthExperiments an der strukturierten Lotsenliste vorgenommen wurden",
 	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Lotsenschaft ist derzeit deaktiviert. Administratoren können die Lotsenschaft über [[$1]] aktivieren.",
-	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "Kennzeichnung von Lotse $1 als abwesend, inaktiv für $2 Tage",
-	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "Entfernen von Lotse $1, inaktiv für $2 Tage"
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "Kennzeichnung von Lotse $1 als abwesend, inaktiv seit $2 Tagen",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "Entfernen von Lotse $1, inaktiv seit $2 Tagen"
 }

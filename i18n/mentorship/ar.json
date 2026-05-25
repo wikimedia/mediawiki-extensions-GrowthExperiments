@@ -252,5 +252,7 @@
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "لا يمكن التسجيل كمرشد إلا للمستخدمين الذين أنهوا على الأقل، {{PLURAL:$1|لا تعديل|تعديلا واحدا|تعديلين|$1 تعديلات|$1 تعديلا|$1 تعديل}} وعدد أيام التواجد: $2.",
 	"tag-mentor_list_change": "تغيير قائمة المرشِدين",
 	"tag-mentor_list_change-description": "وسم ينطبق على التعديلات التي تم إجراؤها على القائمة المهيكلة للمرشدين عبر GrowthExperiments",
-	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "الإرشاد متوقف حاليًا. يمكن لللإداريّين تشغيل الإرشاد عبر [[$1]]."
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "الإرشاد متوقف حاليًا. يمكن لللإداريّين تشغيل الإرشاد عبر [[$1]].",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "تعليم المرشد $1 بأنه غير نشط لمدة $2 يوم",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "إزالة المرشد $1، غير نشط لمدة $2 يوم"
 }

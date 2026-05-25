@@ -199,5 +199,7 @@
 	"growthexperiments-mentorship-enrollasmentor-enroll": "Iscriviti",
 	"growthexperiments-mentorship-enrollasmentor-summary": "Aggiungi me stesso come tutor",
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Solo utenti con almeno $1 {{PLURAL:$1|modifica|modifiche}} e $2 {{PLURAL:$2|giorno|giorni}} di presenza possono iscriversi come tutor.",
-	"tag-mentor_list_change": "Modifica dell'elenco dei tutor"
+	"tag-mentor_list_change": "Modifica dell'elenco dei tutor",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "Contrassegna il tutor $1 come assente e inattivo per $2 giorni",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "Rimuovo il tutor $1, inattivo per $2 giorni."
 }

@@ -248,5 +248,7 @@
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Alleen gebruikers met tenminste $1 bewerking{{PLURAL:$1||en}} en $2 dag{{PLURAL:$2||en}} van aanwezigheid kunnen zich inschrijven als mentor.",
 	"tag-mentor_list_change": "Wijziging van de mentorlijst",
 	"tag-mentor_list_change-description": "Label toegepast op bewerkingen die zijn aangebracht in de gestructureerde mentorlijst via GrowthExperiments",
-	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorschap is momenteel uitgeschakeld. Moderators kunnen Mentorschap inschakelen via [[$1]]."
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Mentorschap is momenteel uitgeschakeld. Moderators kunnen Mentorschap inschakelen via [[$1]].",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "Mentor $1 wordt als afwezig ingesteld; inactief gedurende $2 dagen",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "Mentor $1 wordt verwijderd; inactief gedurende $2 dagen"
 }

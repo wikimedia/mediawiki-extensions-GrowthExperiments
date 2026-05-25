@@ -243,5 +243,7 @@
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Só os usuarios con polo menos $1 {{PLURAL:$1|edición|edicións}} e $2 {{PLURAL:$2|día|días}} de presenza poden inscribirse como mentores.",
 	"tag-mentor_list_change": "Cambio da lista de mentores",
 	"tag-mentor_list_change-description": "Etiqueta aplicada ás edicións feitas na lista estruturada de mentores mediante GrowthExperiments",
-	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Nestes intres a mentoría está desactivada. A administración pode activar a mentoría a través de [[$1]]."
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Nestes intres a mentoría está desactivada. A administración pode activar a mentoría a través de [[$1]].",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "Marcando a $1 como ausente, xa que non tivo actividade durante $2 días",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "Eliminando a $1, xa que non tivo actividade durante $2 días"
 }

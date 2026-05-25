@@ -10,7 +10,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "Uživatel nemá mentora",
-	"growthexperiments-exception-no-mentored-text": "Uživatel nemá mentora, a tedy mu nemůže položit žádnou otázku",
+	"growthexperiments-exception-no-mentored-text": "{{GENDER:$1|Uživatel|Uživatelka}} nemá mentora, a tedy mu nemůže položit žádnou otázku",
 	"growthexperiments-mentor-dashboard-title": "Nástěnka mentora",
 	"growthexperiments-mentor-dashboard-pt-link": "Nástěnka mentora",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Pro aktivování nástěnky mentorů se nejprve {{GENDER:|musíte}} [[$1|zapsat jako mentor]].",
