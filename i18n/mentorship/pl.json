@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"G3raltJJ",
 			"Msz2001",
 			"Nux",
 			"PanWor",
@@ -8,7 +9,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "Użytkownik nie jest objęty opieką przewodnika",
-	"growthexperiments-exception-no-mentored-text": "Użytkownik nie ma przewodnika, co oznacza, że nie jest możliwe zadanie pytania do przewodnika",
+	"growthexperiments-exception-no-mentored-text": "Użytkownik nie ma przewodnika, co oznacza że {{GENDER:$1|on|ona|ono}} nie może zadać pytania {{GENDER:$1|jego|jej|ich}} przewodnikowi",
 	"growthexperiments-mentor-dashboard-title": "Panel przewodników",
 	"growthexperiments-mentor-dashboard-pt-link": "Panel przewodników",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Aby aktywować panel przewodników, {{GENDER:|musisz}} najpierw [[$1|nim zostać]].",
