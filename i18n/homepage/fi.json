@@ -426,7 +426,7 @@
 	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Kuu on ainoa <mark class=\"positive\">Maata</mark> kiertävä <mark class=\"positive\">luonnollinen satelliitti</mark>.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Tähän tehtävään ei tarvita erityistä tietämystä artikkelin aiheesta.",
 	"growthexperiments-addlink-onboarding-content-intro-image-alt-text": "Kuvitus Kuu-artikkelista, jossa ehdotetaan artikkeleita Maa sekä Satelliitti linkitettäviksi niihin liittyvissä tekstikohdissa.",
-	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Ehdotetut linkit ovat koneen laatimia, ja ne voivat olla virheellisiä.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Linkkiehdotukset ovat koneen laatimia, ja ne voivat olla virheellisiä.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "Ehdotukset voivat koskea sanoja, jotka eivät tarvitse linkkiä, tai ne voivat linkittää väärään artikkeliin. Käytä {{GENDER:$1|omaa}} harkintaasi päättääksesi, ovatko ehdotukset sopivia vai vääriä.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Lisätietoja ohjelmiston tekemistä ehdotuksista",
 	"growthexperiments-addlink-onboarding-content-about-image-alt-text": "Kuvitus Kuu-artikkelista, jonka vieressä on robotti (symboloi ohjelmiston tekemää ehdotusta), joka kysyy, tulisiko eräs kohta Kuu-artikkelista linkittää Juusto-artikkeliin.",

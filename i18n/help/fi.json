@@ -129,7 +129,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Sinä}} päätät, tulisiko {{SITENAME}}-artikkelin sanojen linkittää toisiin {{SITENAME}}-artikkeleihin.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Kuu on ainoa <mark class=\"positive\">Maata</mark> kiertävä <mark class=\"positive\">luonnollinen satelliitti</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Tähän tehtävään ei tarvita erityistä tietämystä artikkelin aiheesta.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Ehdotetut linkit ovat koneen laatimia, ja ne voivat olla virheellisiä.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Linkkiehdotukset ovat koneen laatimia, ja ne voivat olla virheellisiä.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "Ehdotukset voivat koskea sanoja, jotka eivät tarvitse linkkiä, tai ne voivat linkittää väärään artikkeliin. Käytä {{GENDER:$1|omaa}} harkintaasi päättääksesi, ovatko ehdotukset sopivia vai vääriä.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Lisätietoja ohjelmiston tekemistä ehdotuksista]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Ohjeita",
