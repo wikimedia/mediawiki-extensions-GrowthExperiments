@@ -526,5 +526,6 @@
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Prova modifiche suggerite",
 	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Prova modifiche suggerite",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Fai una modifica suggerita",
-	"growthexperiments-homepage-communityupdates-calltoaction-button": "Ulteriori informazioni"
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "Ulteriori informazioni",
+	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|modifica|modifiche}}, congratulazioni! Le pagine che {{GENDER:$2|hai}} modificato hanno ricevuto $3 {{PLURAL:$3|visualizzazione|visualizzazioni}} di recente. Le modifiche suggerite disponibili sono cambiate."
 }
