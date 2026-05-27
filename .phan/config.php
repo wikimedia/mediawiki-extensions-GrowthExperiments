@@ -46,4 +46,7 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 	]
 );
 
+// Ignore VisualEditor stubs
+$cfg['exclude_file_list'][] = '../../extensions/VisualEditor/.phan/stubs/MobileContext.php';
+
 return $cfg;
