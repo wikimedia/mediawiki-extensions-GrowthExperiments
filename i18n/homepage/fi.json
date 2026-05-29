@@ -12,7 +12,8 @@
 			"Rönttönen",
 			"Samoasambia",
 			"Veikk0.ma",
-			"Yupik"
+			"Yupik",
+			"Jack Phoenix"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
@@ -51,8 +52,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-header": "Wikipediaa tekevät {{GENDER:|sinun kaltaisesi}} ihmiset, yhdessä työskennellen.",
 	"growthexperiments-homepage-startediting-dialog-intro-subheader": "{{GENDER:|Muokkauksesi}} auttavat parantamaan Wikipediaa ja edistävät sen tavoitetta vapaan tiedon jakamiseksi maailmassa. Jatka tästä aloittaaksesi pienillä ehdotetuilla muokkauksilla.",
 	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>{{GENDER:|Käyttäjätunnustasi}} luodessa kerroit haluavasi lisätä kuvan.</strong> Se on tärkeä mutta vaativampi osa muokkaamista, ja siksi suosittelemme kokeilemaan ensin joitakin helpompia muokkauksia. Jos haluat mieluummin lisätä kuvan heti, voit [$1 lukea siihen ohjeita täältä].",
-	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>{{GENDER:|Käyttäjätunnustasi}} luodessa kerroit haluavasi korjata kirjoitus- tai muun virheen.</strong> Tältä sivulta löydät ehdotuksia pieniin muokauksiin, joilla pääset alkuun. Jos haluat mieluummin mennä heti korjaamaan tiettyä artikkelia, voit hakea artikkelin ja klikata ”{{int:vector-view-edit}}”.",
-	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>{{GENDER:|Käyttäjätunnustasi}} luodessa kerroit haluavasi lisätä tai muuttaa tietoa olemassa olevassa artikkelissa.</strong> Tältä sivulta löydät ehdotuksia pieniin muokkauksiin, joilla pääset alkuun. Jos haluat mieluummin mennä heti muokkaamaan tiettyä artikkelia, voit hakea artikkelin ja klikata ”{{int:vector-view-edit}}”.",
+	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>{{GENDER:|Käyttäjätunnustasi}} luodessa kerroit haluavasi korjata kirjoitus- tai muun virheen.</strong> Tältä sivulta löydät ehdotuksia pieniin muokauksiin, joilla pääset alkuun. Jos haluat mieluummin mennä heti korjaamaan tiettyä artikkelia, voit hakea artikkelin ja napsauttaa ”{{int:vector-view-edit}}”.",
+	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>{{GENDER:|Käyttäjätunnustasi}} luodessa kerroit haluavasi lisätä tai muuttaa tietoa olemassa olevassa artikkelissa.</strong> Tältä sivulta löydät ehdotuksia pieniin muokkauksiin, joilla pääset alkuun. Jos haluat mieluummin mennä heti muokkaamaan tiettyä artikkelia, voit hakea artikkelin ja napsautta ”{{int:vector-view-edit}}”.",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>{{GENDER:|Käyttäjätunnustasi}} luodessa kerroit haluavasi luoda uuden artikkelin.</strong> Se on tärkeä mutta vaativampi osa muokkaamista, ja siksi suosittelemme kokeilemaan ensin pienempiä muokkauksia olemassa oleviin artikkeleihin. Jos haluat mieluummin luoda heti uuden artikkelin, voit lukea [$1 ohjeita siihen täältä].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Valitse aiheita, joiden muokkaamisesta {{GENDER:|olet}} kiinnostunut",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Suodata aiheen mukaan",
@@ -201,7 +202,7 @@
 	"growthexperiments-tour-welcome-title": "Tervetuloa {{GENDER:$1|aloitussivullesi}}!",
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Voit}} palata tänne milloin tahansa napsauttamalla käyttäjänimeäsi.",
 	"growthexperiments-tour-discovery-title": "Aloita täältä!",
-	"growthexperiments-tour-discovery-description": "Klikkaa {{GENDER:$1|käyttäjänimeäsi}} siirtyäksesi {{GENDER:$1|omalle}} aloitussivullesi.",
+	"growthexperiments-tour-discovery-description": "Napsauta {{GENDER:$1|käyttäjänimeäsi}} siirtyäksesi {{GENDER:$1|omalle}} aloitussivullesi.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Siirry {{GENDER:$1|aloitussivullesi}}",
 	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|Voit}} palata tänne milloin tahansa napsauttamalla käyttäjänimeäsi. Jatka <b>ehdotettuja muokkauksia</b> {{GENDER:$1|aloitussivullasi}}.",
 	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|Voit}} palata tänne milloin tahansa napsauttamalla käyttäjänimeäsi. {{GENDER:$1|Aloitussivultasi löydät}} ehdotettuja muokkauksia, {{GENDER:$1|voit}} kysyä kysymyksiä {{GENDER:$1|mentoriltasi}} ja {{GENDER:$1|näet sinun vaikutuksesi}}.",
@@ -248,7 +249,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "Artikkelien tieto vanhenee ajan kuluessa ja uusien asioiden tapahtuessa. Etsi ja lisää paikkansapitävää tietoa, jotta Wikipedian sisältö pysyy ajantasaisena.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "Monet Wikipedian artikkelit ovat vain muutaman virkkeen mittaisia. Etsi lisää tietoa ja laajenna artikkelia, jotta se olisi täydellisempi.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Linkkien lisääminen on helpoin tapa muokata. Linkit auttavat lukijoita siirtymään artikkeleiden välillä saadakseen nopeasti lisää tietoa.",
-	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Linkkien lisääminen on helpoin tapa muokata. Linkkien avulla lukijat voivat klikata jotain, josta he haluavat tietää lisää.<br />Ohjelmisto ehdottaa linkkejä, ja {{GENDER:$1|sinä}} päätät, lisäätkö ne artikkeliin.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Linkkien lisääminen on helpoin tapa muokata. Linkkien avulla lukijat voivat napsauttaa jotain, josta he haluavat tietää lisää.<br />Ohjelmisto ehdottaa linkkejä, ja {{GENDER:$1|sinä}} päätät, lisäätkö ne artikkeliin.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "Ehdotukset ovat koneen laatimia. Kuvat ovat peräisin Wikimedia Commonsista, joka on kokoelma vapaasti lisensoituja kuvia Wikipediassa käytettäväksi.<br />{{GENDER:$1|Sinä}} päätät, tulisiko ne lisätä artikkeliin. Sinä kirjoitat niille myös kuvatekstit.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-section-image-recommendation": "Ehdotukset ovat koneen laatimia. Kuvat ovat peräisin Wikimedia Commonsista, joka on kokoelma vapaasti lisensoituja kuvia Wikipediassa käytettäväksi.<br />{{GENDER:$1|Sinä}} päätät, tulisiko ne lisätä artikkeliin. Sinä kirjoitat niille myös kuvatekstit.",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Kielenhuolto (korjaa kirjoitusasua, kielioppia ja tyyliä)",

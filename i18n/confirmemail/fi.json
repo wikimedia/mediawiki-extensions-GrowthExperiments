@@ -5,10 +5,11 @@
 			"MITO",
 			"Pyscowicz",
 			"Rönttönen",
-			"Samoasambia"
+			"Samoasambia",
+			"Jack Phoenix"
 		]
 	},
-	"growthexperiments-createacct-username-description": "Käyttäjänimesi on julkinen eikä siitä voi myöhemmin tehdä tehdä yksityistä.",
+	"growthexperiments-createacct-username-description": "Käyttäjänimesi on julkinen eikä siitä voi myöhemmin tehdä yksityistä.",
 	"growthexperiments-createacct-username-learn-more": "Lisätietoja",
 	"growthexperiments-confirmemail-emaildescription": "Sähköpostiosoitetta tarvitaan käyttäjätunnuksesi palauttamiseksi, jos kadotat salasanasi tai kirjaudut sisään uudesta sijainnista tai uudella selaimella.",
 	"growthexperiments-confirmemail-email-optional": "Sähköpostiosoite",
