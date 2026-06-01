@@ -457,6 +457,9 @@ $specialPageAliases['uk'] = [
 	'WelcomeSurvey' => [ 'Вітальне_опитування' ],
 	'Homepage' => [ 'Домашня_сторінка' ],
 	'Impact' => [ 'Вплив' ],
+	'NewcomerTasksInfo' => [ 'Завдання_новачку', 'Інформація_про_завдання_новачку' ],
+	'MentorDashboard' => [ 'Панель_наставника' ],
+	'EnrollAsMentor' => [ 'Записатися_у_наставники' ],
 ];
 
 /** Urdu (اردو) */
