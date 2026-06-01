@@ -9,9 +9,9 @@ use MediaWiki\Auth\Hook\AuthPreserveQueryParamsHook;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\TestKitchen\Sdk\OverriddenExperiment;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\Hook\CreateAccountShouldShowUsernamePolicyPopoverHook;
@@ -84,7 +84,12 @@ class ConfirmEmailHooks implements
 		$context->getOutput()->addModuleStyles( 'ext.growthExperiments.Account.styles' );
 
 		$this->recordBaseline( $context->getUser(), $context->getSkin() );
-		$this->recordExperimentGroup( $context->getUser(), $context->getSkin(), $formDescriptor );
+		$this->recordExperimentGroup(
+			$context->getUser(),
+			$context->getSkin(),
+			$context->getRequest(),
+			$formDescriptor,
+		);
 		$shouldShowV2 = $this->featureManager->shouldShowCreateAccountV2(
 			$context->getUser(),
 			$context->getSkin(),
@@ -102,6 +107,7 @@ class ConfirmEmailHooks implements
 			if ( isset( $formDescriptor['password'] ) ) {
 				$formDescriptor['password']['end-icon-class'] = 'growthexperiments-password-reveal-icon';
 			}
+
 			if ( isset( $formDescriptor['retype'] ) ) {
 				$formDescriptor['retype']['end-icon-class'] = 'growthexperiments-password-reveal-icon';
 			}
@@ -142,7 +148,12 @@ class ConfirmEmailHooks implements
 			->increment();
 	}
 
-	private function recordExperimentGroup( ?User $user, Skin $skin, array &$formDescriptor ): void {
+	private function recordExperimentGroup(
+		?User $user,
+		Skin $skin,
+		WebRequest $request,
+		array &$formDescriptor
+	): void {
 		$isAnon = $user === null || $user->isAnon();
 		$isMobile = Util::isMobile( $skin );
 		$wikiName = $this->mainConfig->get( 'DBname' );
@@ -153,38 +164,39 @@ class ConfirmEmailHooks implements
 			return;
 		}
 
-		if ( $this->experimentManager instanceof ExperimentTestKitchenManager ) {
-			$experiment = $this->experimentManager->getExperiment(
-				IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1
-			);
-			if ( $experiment instanceof OverriddenExperiment ) {
+		$experimentGroup = 'unknown';
+		$experimentUrlString = array_find(
+			$request->getArray( 'experiments' ) ?? [],
+			static fn ( $value ) => is_string( $value )
+				&& str_starts_with( $value, IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 ),
+		);
+		if ( $experimentUrlString ) {
+			if ( !str_contains( $experimentUrlString, ':' ) || str_ends_with( $experimentUrlString, ':overridden' ) ) {
 				return;
 			}
+			[ , $experimentGroup ] = explode( ':', $experimentUrlString );
+		}
+		if ( !in_array(
+			$experimentGroup,
+			[ 'unknown', 'unsampled', IExperimentManager::VARIANT_TREATMENT, IExperimentManager::VARIANT_CONTROL ],
+			true
+		) ) {
+			// User messed with URL: ignore.
+			return;
 		}
 
-		$experimentGroup = $this->experimentManager->getAssignedGroup(
-			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1
-		);
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
 			->getCounter( 'experiment_account_creation_forms_opened_total' )
 			->setLabel( 'wiki', $wikiName )
-			->setLabel( 'experiment', IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 )
-			->setLabel( 'group', $experimentGroup ?? 'unsampled' )
+			->setLabel( 'experiment', IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 )
+			->setLabel( 'group', $experimentGroup )
 			->increment();
 
-		if ( $experimentGroup === IExperimentManager::VARIANT_TREATMENT ) {
-			$formDescriptor[self::EXPERIMENT_GROUP_FORM_FIELD_NAME] = [
-				'type' => 'hidden',
-				'name' => self::EXPERIMENT_GROUP_FORM_FIELD_NAME,
-				'default' => 'treatment',
-			];
-		} elseif ( $experimentGroup === IExperimentManager::VARIANT_CONTROL ) {
-			$formDescriptor[self::EXPERIMENT_GROUP_FORM_FIELD_NAME] = [
-				'type' => 'hidden',
-				'name' => self::EXPERIMENT_GROUP_FORM_FIELD_NAME,
-				'default' => 'control',
-			];
-		}
+		$formDescriptor[self::EXPERIMENT_GROUP_FORM_FIELD_NAME] = [
+			'type' => 'hidden',
+			'name' => self::EXPERIMENT_GROUP_FORM_FIELD_NAME,
+			'default' => $experimentGroup,
+		];
 	}
 
 	/**
@@ -206,7 +218,7 @@ class ConfirmEmailHooks implements
 		$this->statsFactory->withComponent( 'GrowthExperiments' )
 			->getCounter( 'experiment_account_creations_total' )
 			->setLabel( 'wiki', $this->mainConfig->get( 'DBname' ) )
-			->setLabel( 'experiment', IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 )
+			->setLabel( 'experiment', IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 )
 			->setLabel( 'group', $experimentGroup )
 			->setLabel( 'hasEmail', $hasEmail ? 'Yes' : 'No' )
 			->increment();
