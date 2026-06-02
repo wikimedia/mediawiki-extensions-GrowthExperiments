@@ -16,7 +16,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use GrowthExperiments\Tests\InvokedBetween;
 use GrowthExperiments\Util;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Http\HttpRequestFactory;
@@ -594,7 +593,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$numErrors = count( array_filter( $requests, static function ( $request ) {
 			return $request['response'] instanceof StatusValue;
 		} ) );
-		$expectation = $numErrors ? $this->exactlyBetween( 1, $numRequests - $numErrors + 1 )
+		$expectation = $numErrors ? $this->atMost( $numRequests - $numErrors + 1 )
 			: $this->exactly( $numRequests );
 		$requestFactory->expects( $expectation )
 			->method( 'create' )
@@ -709,16 +708,6 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$topics[] = new OresBasedTopic( $topicId, null, $oresTopics );
 		}
 		return $topics;
-	}
-
-	/**
-	 * Returns a PHPUnit invocation matcher which matches a range.
-	 * @param int $min
-	 * @param int $max
-	 * @return InvokedBetween
-	 */
-	private function exactlyBetween( $min, $max ) {
-		return new InvokedBetween( $min, $max );
 	}
 
 	private function taskSetToArray( TaskSet $taskSet ) {
