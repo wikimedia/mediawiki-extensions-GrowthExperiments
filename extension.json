@@ -2674,6 +2674,10 @@
 			"description": "Batch size for reassignMenteesJob",
 			"value": 5000
 		},
+		"GEMentorshipCleanupEnabled": {
+			"description": "Feature flag controlling whether the mentor list cleanup (cleanMentorList.php) is enabled.",
+			"value": true
+		},
 		"GEPersonalizedPraiseBackendEnabled": {
 			"description": "Feature flag controlling whether personalized praise's backend is enabled",
 			"value": true

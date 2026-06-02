@@ -38,6 +38,11 @@ class CleanMentorList extends Maintenance {
 	}
 
 	public function execute() {
+		if ( !$this->getConfig()->get( 'GEMentorshipCleanupEnabled' ) ) {
+			$this->output( 'Mentor list cleanup is not enabled on this wiki!' . PHP_EOL );
+			return;
+		}
+
 		$this->initServices();
 
 		$status = $this->mentorListCleaner->processMentors( RequestContext::getMain() );
