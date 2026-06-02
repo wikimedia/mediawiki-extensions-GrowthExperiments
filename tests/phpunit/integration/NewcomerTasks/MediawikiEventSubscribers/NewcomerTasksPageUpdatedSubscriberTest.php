@@ -142,27 +142,22 @@ class NewcomerTasksPageUpdatedSubscriberTest extends MediaWikiIntegrationTestCas
 		$user = $this->getTestUser()->getUser();
 		$wikiPage = $this->getExistingTestPage();
 
-		$invokedCount = $this->exactly( 2 );
-		$wiki = WikiMap::getCurrentWikiId();
+		$expectedLabelParameters = [
+			[ 'taskType', $expectedTaskTypeLabel ],
+			[ 'wiki', WikiMap::getCurrentWikiId() ],
+		];
 		$newcomerRevertedTaskCounterMock = $this->prepareCounterMock();
 		$newcomerRevertedTaskCounterMock
-			->expects( $invokedCount )
+			->expects( $this->exactly( 2 ) )
 			->method( 'setLabel' )
 			->willReturnCallback( function ( ...$parameters ) use (
-				$invokedCount,
-				$newcomerRevertedTaskCounterMock,
-				$wiki,
-				$expectedTaskTypeLabel
+				&$expectedLabelParameters,
+				$newcomerRevertedTaskCounterMock
 			) {
-				if ( $invokedCount->getInvocationCount() === 1 ) {
-					$this->assertEquals( 'taskType', $parameters[0] );
-					$this->assertEquals( $expectedTaskTypeLabel, $parameters[1] );
-				}
+				$expectedParameters = array_shift( $expectedLabelParameters );
+				$this->assertEquals( $expectedParameters[0], $parameters[0] );
+				$this->assertEquals( $expectedParameters[1], $parameters[1] );
 
-				if ( $invokedCount->getInvocationCount() === 2 ) {
-					$this->assertEquals( 'wiki', $parameters[0] );
-					$this->assertEquals( $wiki, $parameters[1] );
-				}
 				return $newcomerRevertedTaskCounterMock;
 			} );
 		$newcomerRevertedTaskCounterMock->expects( $this->once() )->method( 'increment' );
