@@ -164,7 +164,7 @@
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-help-text": "Aktivləşdirildikdə, mentorlar hər iki həddə çatdıqdan sonra avtomatik olaraq mentorluqdan çıxarılır. Onlar hələ də Ana Səhifələrindən mentor əldə edə bilərlər.",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "Redaktə sayı",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "Hesabın yaşı (günlərlə)",
-	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-control-label": "Qeyri-aktiv mentorlar \"Uzaqda\" olaraq işarələnməlidir?",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-control-label": "Qeyri-aktiv mentorları \"Uzaqda\" olaraq işarə",
 	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-help-text": "Əgər seçilərsə, müəyyən edilmiş gün sayı ərzində heç bir redaktə etməyən mentorlar qeyri-aktiv kimi işarələnəcək. Qeyri-aktivlik müddəti 1 ay olacaq və ya mentorun silinməli olduğu vaxta qədər davam edəcək (aşağıya baxın).",
 	"communityconfiguration-mentorship-gementorshipautoawayedafterdays-label": "Redaktorun qeyri-aktiv olduğu halda avtomatik olaraq Mentorluqdan Uzaqda kimi işarələnəcəyi günlərin sayı",
 	"communityconfiguration-mentorship-gementorshipshouldbeautoremoved-control-label": "Qeyri-aktiv mentorlar mentorluqdan çıxarılmalıdır?",
