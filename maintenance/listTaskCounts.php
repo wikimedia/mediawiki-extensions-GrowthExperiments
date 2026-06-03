@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\Maintenance\MaintenanceFatalError;
 use MediaWiki\WikiMap\WikiMap;
 
 // @codeCoverageIgnoreStart
@@ -43,9 +42,7 @@ class ListTaskCounts extends Maintenance {
 		$this->addOption( 'output', "'ascii-table' (default), 'json' or 'none'", false, true );
 	}
 
-	/** @inheritDoc
-	 * @throws MaintenanceFatalError
-	 */
+	/** @inheritDoc */
 	public function execute() {
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		if ( !$growthServices->getFeatureManager()->isNewcomerTasksAvailable() ) {
@@ -82,7 +79,6 @@ class ListTaskCounts extends Maintenance {
 	 * Get task types to list task counts for
 	 *
 	 * @return string[] task type ID list
-	 * @throws MaintenanceFatalError
 	 */
 	private function getTaskTypes(): array {
 		$allTaskTypes = array_keys( $this->taskTypesAndTopics->getTaskTypes() );
@@ -98,7 +94,6 @@ class ListTaskCounts extends Maintenance {
 	 * Get topics to list task counts for
 	 *
 	 * @return string[] topic ID list
-	 * @throws MaintenanceFatalError
 	 */
 	private function getTopics(): array {
 		$allTopics = array_keys( $this->taskTypesAndTopics->getTopics() );

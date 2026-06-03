@@ -12,7 +12,6 @@ use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\Maintenance\MaintenanceFatalError;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\User;
@@ -192,18 +191,12 @@ class PurgeExpiredMentorStatus extends Maintenance {
 		}
 	}
 
-	/**
-	 * @throws MaintenanceFatalError
-	 */
 	private function getMentorEntries( array $config ): array {
 		return array_map( function ( int $userId ) {
 			return $this->userFactory->newFromId( $userId );
 		}, array_keys( $config[CommunityStructuredMentorWriter::CONFIG_KEY] ) );
 	}
 
-	/**
-	 * @throws MaintenanceFatalError
-	 */
 	private function deleteTimestampsFromConfig( array $config, array $batch ): void {
 		foreach ( $batch as $mentorId ) {
 			unset( $config[CommunityStructuredMentorWriter::CONFIG_KEY][$mentorId]['awayTimestamp'] );
