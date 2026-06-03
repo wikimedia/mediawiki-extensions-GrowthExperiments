@@ -126,15 +126,10 @@ class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {
 		);
 		$this->assertEquals( 21, $mainStash->get( $lastPageIdKey ) );
 
-		$this->assertOutputPrePostShutdown(
-			<<<EXPECTED_OUTPUT
-Setting lastPageId in stash: 21
-Successfully set lastPageId in stash
-Exiting.
-
-EXPECTED_OUTPUT
-			,
-			false,
+		$this->expectOutputString(
+			"Setting lastPageId in stash: 21\n" .
+			"Successfully set lastPageId in stash\n" .
+			"Exiting.\n"
 		);
 	}
 }
