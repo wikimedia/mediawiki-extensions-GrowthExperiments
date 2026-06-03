@@ -74,7 +74,7 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|beaivi|beaivvi}}",
 	"growthexperiments-homepage-impact-recent-activity-contribs-count-text": "{{PLURAL:$1|rievdadus|rievdadusa}}",
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|rievdadus|rievdadusa}} $2",
-	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "Čájeheamit artihkkaliin maid {{GENDER:|don}} leat rievdadan",
+	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label": "{{PLURAL:|čájeheami|1=čájeheapmi}} artihkkaliin maid {{GENDER:|don}} leat rievdadan",
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "Čájeheamit rievdaduvvon artihkkaliin",
 	"growthexperiments-homepage-impact-scores-edit-count": "Rievdadusat oktiibuot",
 	"growthexperiments-homepage-impact-scores-reverted-edit-count": "Máhcahuvvon rievdadusat",

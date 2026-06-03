@@ -367,7 +367,7 @@
 	"growthexperiments-addlink-pagenotfound": "\"$1\" 문서가 존재하지 않습니다",
 	"growthexperiments-addlink-revdeleted": "\"$2\"의 $1 판에 접근할 수 없습니다",
 	"growthexperiments-addlink-wrongmodel": "\"$2\"의 $1 은 위키텍스트가 아닙니다",
-	"growthexperiments-addlink-invalidjson": "\"$1\"에 대한 링크 추천 서비스의 응답이 잘못됨",
+	"growthexperiments-addlink-invalidjson": "\"$1\"에 대한 링크 추천 서비스의 응답이 유효하지 않음",
 	"growthexperiments-addlink-serviceerror": "\"$1\"에 대한 링크 추천 서비스의 응답에 오류가 있음: $2",
 	"growthexperiments-addlink-notinstore": "\"$1\"에 대한 링크 추천을 찾을 수 없음",
 	"growthexperiments-addlink-duplicatesubmission": "이미 검토된 \"$1\" 판에 대한 링크 제안 검토를 제출하려고 했습니다.",
