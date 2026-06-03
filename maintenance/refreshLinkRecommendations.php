@@ -363,7 +363,15 @@ class RefreshLinkRecommendations extends Maintenance {
 				return true;
 			} else {
 				$error = $this->statusFormatter->getWikiText( $status, [ 'lang' => 'en' ] );
-				$this->verboseLog( "$error\n" );
+				if ( $this->hasOption( 'verbose' ) ) {
+					// The "checking candidate" entry was printed, print the status itself too
+					$this->error( $error );
+				} else {
+					$this->error(
+						'    while processing ' . $pageIdentity->__toString()
+						. ', an error occured: ' . $error
+					);
+				}
 			}
 		} catch ( DBReadOnlyError ) {
 			// This is a long-running script, read-only state can change in the middle.
