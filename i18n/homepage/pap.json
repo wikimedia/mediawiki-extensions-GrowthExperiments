@@ -4,5 +4,13 @@
 			"Kallmemel"
 		]
 	},
-	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "Aktualmente, bo sekuensia di mas largu ta un dia. Bo a logra esaki riba $2."
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Haló}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "Dèshbort",
+	"tooltip-pt-homepage": "{{GENDER:|Bo}} página prinsipal",
+	"growthexperiments-homepage-impact-recent-activity-title-third-person": "Aktividat resiente (lastu $1 {{PLURAL:$1|dia}})",
+	"growthexperiments-homepage-impact-recent-activity-last-edit-text": "Último adaptashon",
+	"growthexperiments-homepage-impact-recent-activity-best-streak-text": "Mihó sekuensia",
+	"growthexperiments-homepage-impact-recent-activity-streak-count-text": "$1 {{PLURAL:$1|dia}}",
+	"growthexperiments-homepage-impact-scores-thanks-count": "Danki risibí",
+	"growthexperiments-homepage-impact-scores-best-streak-info-data-text-single-day": "Aktualmente, bo mihó sekuensia ta un dia. Bo a logra esaki riba $2."
 }
