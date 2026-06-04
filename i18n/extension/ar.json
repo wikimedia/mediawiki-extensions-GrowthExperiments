@@ -167,7 +167,7 @@
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-help-text": "عند تفعيل هذه المِيزة، يُزال المرشَدون تلقائيًا من برنامَج الإرشاد بعد بلوغهم الحدين المطلوبين. ويبقى بإمكانهم الحصول على مرشِد من خلال صفحتهم الرئيسة.",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "عدد التعديلات",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "عمر الحساب (بالأيام)",
-	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-control-label": "هل يجب أن التعليم على المرشدين غير النشطين بـ غير متوفّر؟",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-control-label": "التعليم على المرشدين غير النشطين بـ غير متوفّر",
 	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-help-text": "في حال تفعيل هذا الخيار، سيتم تصنيف المرشدين الذين لا يُجرون أي تعديلات خلال عدد محدد من الأيام على أنهم غير نشطين. وستُحدد مدة عدم النشاط بشهر واحد، أو حتى يتم حذف المرشد (انظر أدناه).",
 	"communityconfiguration-mentorship-gementorshipautoawayedafterdays-label": "عدد الأيام التي سيتم فيها تلقائيًا التعليم على المحرر بـ غير متوفّر إذا كان غير نشط",
 	"communityconfiguration-mentorship-gementorshipshouldbeautoremoved-control-label": "هل يجب إزالة المرشدين غير النشطين من الإرشاد؟",
