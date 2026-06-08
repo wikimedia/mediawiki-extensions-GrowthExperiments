@@ -8,7 +8,8 @@
 			"Klaas van Buiten",
 			"Mainframe98",
 			"Mar(c)",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Welkom}}, $1!",
@@ -52,7 +53,7 @@
 	"welcomesurvey-question-languages-placeholder": "Voeg {{PLURAL:$1|een taal|maximaal $1 talen}} toe...",
 	"welcomesurvey-question-languages-maximum": "U hebt het maximum aantal talen toegevoegd.",
 	"welcomesurvey-reminder": "Help ons uw Wikipedia-ervaring te verbeteren door een paar vrijblijvende vragen te beantwoorden in onze welkomstenquête. $1",
-	"welcomesurvey-reminder-link": "De enquête invullen",
+	"welcomesurvey-reminder-link": "De vragenlijst invullen",
 	"welcomesurvey-reminder-dismiss": "Sluiten",
 	"welcomesurvey-mideditsignup-title": "Welkom, $1!",
 	"welcomesurvey-mideditsignup-body": "Bedankt voor het bewerken! U kunt nu de uitwerking van uw bijdragen zien en meer wijzigingsvoorstellen op uw startpagina krijgen.",

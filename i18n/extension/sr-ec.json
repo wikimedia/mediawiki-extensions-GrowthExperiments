@@ -83,6 +83,8 @@
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-control-label": "Искључи искусне новајлије из менторства",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "Број измена",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "Старост налога (у данима)",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-control-label": "Означи неактивне менторе одсутним",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoremoved-control-label": "Уклони неактивне менторе из менторства",
 	"communityconfiguration-growthhomepage-title": "Почетна страница за новајлије",
 	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-label": "Подстрек",
 	"communityconfiguration-growthsuggestededits-title": "Предложене измене",
