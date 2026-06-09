@@ -118,7 +118,11 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 			$this->output( FormatJson::encode( $deletions, true ) . "\n" );
 			$this->output( "Would save:\n" );
 			$this->output( FormatJson::encode( $config, true ) . "\n" );
-			$validationStatus = $provider->getValidator()->validateStrictly( $config );
+			$validationStatus = $provider->getValidator()->validateStrictly(
+				// IValidator::validateStrictly is not subject to any config normalization, it validates directly
+				// the PHP types received in $config to the types defined in MentorListSchema.
+				FormatJson::decode( FormatJson::encode( $config ) )
+			);
 			$this->output( "Validation status:\n" );
 			$this->output( $validationStatus->__toString() );
 			$this->output( "\n" );
