@@ -11,6 +11,7 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
+use Psr\Log\NullLogger;
 use StatusValue;
 
 /**
@@ -84,7 +85,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$taskTypes,
 			$topics
 		);
-		$suggester->setLogger( $this->logger );
+		$suggester->setLogger( $this->logger ?? new NullLogger() );
 		return $suggester;
 	}
 

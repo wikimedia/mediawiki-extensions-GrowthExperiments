@@ -11,6 +11,7 @@ use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\Status\StatusFormatter;
+use Psr\Log\NullLogger;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 
@@ -66,7 +67,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$topics,
 			$this->statsFactory
 		);
-		$suggester->setLogger( $this->logger );
+		$suggester->setLogger( $this->logger ?? new NullLogger() );
 		return $suggester;
 	}
 
