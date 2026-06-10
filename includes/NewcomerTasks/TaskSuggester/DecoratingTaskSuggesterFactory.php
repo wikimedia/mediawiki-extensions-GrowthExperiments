@@ -59,7 +59,7 @@ class DecoratingTaskSuggesterFactory extends TaskSuggesterFactory {
 				'assertClass' => TaskSuggester::class,
 			] );
 			if ( $suggester instanceof LoggerAwareInterface ) {
-				$suggester->setLogger( $this->logger );
+				$suggester->setLogger( $this->logger ?? new NullLogger() );
 			}
 		}
 		return $suggester;
