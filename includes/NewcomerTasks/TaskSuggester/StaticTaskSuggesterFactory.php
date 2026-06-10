@@ -22,7 +22,7 @@ use StatusValue;
  *         } );
  *     };
  */
-class StaticTaskSuggesterFactory extends TaskSuggesterFactory {
+class StaticTaskSuggesterFactory extends ErrorCapableTaskSuggesterFactory {
 
 	private TaskSuggester $taskSuggester;
 

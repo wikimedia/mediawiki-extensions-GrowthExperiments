@@ -10,7 +10,7 @@ use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\StatusFormatter;
 use Psr\Log\NullLogger;
 
-abstract class SearchTaskSuggesterFactory extends TaskSuggesterFactory {
+abstract class SearchTaskSuggesterFactory extends ErrorCapableTaskSuggesterFactory {
 
 	public function __construct(
 		protected TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -18,8 +18,9 @@ abstract class SearchTaskSuggesterFactory extends TaskSuggesterFactory {
 		protected SearchStrategy $searchStrategy,
 		protected NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		protected LinkBatchFactory $linkBatchFactory,
-		protected StatusFormatter $statusFormatter
+		StatusFormatter $statusFormatter
 	) {
+		parent::__construct( $statusFormatter );
 		$this->logger = new NullLogger();
 	}
 
