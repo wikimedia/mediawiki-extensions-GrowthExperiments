@@ -13,6 +13,7 @@ use MediaWiki\Status\StatusFormatter;
 use MediaWikiUnitTestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Log\NullLogger;
 use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\ObjectFactory\ObjectFactory;
@@ -27,11 +28,12 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 		$innerSuggester = new StaticTaskSuggester( [] );
 		$innerFactory = new StaticTaskSuggesterFactory(
 			$innerSuggester,
-			$this->createNoOpMock( StatusFormatter::class )
+			$this->createNoOpMock( StatusFormatter::class ),
+			new NullLogger()
 		);
 
 		$objectFactory = new ObjectFactory( $this->getEmptyContainer() );
-		$factory = new DecoratingTaskSuggesterFactory( $innerFactory, $objectFactory, [] );
+		$factory = new DecoratingTaskSuggesterFactory( $innerFactory, $objectFactory, [], new NullLogger() );
 		$this->assertSame( $innerSuggester, $factory->create() );
 
 		$factory = new DecoratingTaskSuggesterFactory( $innerFactory, $objectFactory, [
@@ -44,7 +46,7 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 					new JsonCodec(),
 				],
 			],
-		] );
+		], new NullLogger() );
 		$suggester = $factory->create();
 		$this->assertInstanceOf( CacheDecorator::class, $suggester );
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );

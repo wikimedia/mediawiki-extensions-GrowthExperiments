@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Status\StatusFormatter;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 
 /**
@@ -14,8 +15,10 @@ use StatusValue;
 abstract class ErrorCapableTaskSuggesterFactory extends TaskSuggesterFactory {
 
 	public function __construct(
-		protected StatusFormatter $statusFormatter
+		protected StatusFormatter $statusFormatter,
+		LoggerInterface $logger
 	) {
+		parent::__construct( $logger );
 	}
 
 	/**

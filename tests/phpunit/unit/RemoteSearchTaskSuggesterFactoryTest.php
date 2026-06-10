@@ -14,6 +14,7 @@ use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentityValue;
+use Psr\Log\NullLogger;
 use StatusValue;
 
 /**
@@ -53,6 +54,7 @@ class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTes
 			$statusFormatterFactory,
 			'https://example.com',
 			$this->getTopicRegistry( $topics ),
+			new NullLogger(),
 		);
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {

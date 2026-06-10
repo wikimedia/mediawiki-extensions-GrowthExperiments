@@ -64,7 +64,8 @@ class GrowthExperimentsBench {
 		}
 		$taskSuggesterFactory = new StaticTaskSuggesterFactory(
 			$tasks,
-			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
+			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+			$growthServices->getLogger()
 		);
 		$this->taskSuggester = $taskSuggesterFactory->create();
 		$this->linkRecommendationFilter = $growthServices->getLinkRecommendationFilter();

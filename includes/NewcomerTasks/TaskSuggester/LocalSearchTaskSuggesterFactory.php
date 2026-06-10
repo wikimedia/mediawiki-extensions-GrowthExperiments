@@ -11,7 +11,7 @@ use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\Status\StatusFormatter;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 
@@ -29,7 +29,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		LinkBatchFactory $linkBatchFactory,
 		private StatsFactory $statsFactory,
 		StatusFormatter $statusFormatter,
-		private ITopicRegistry $topicRegistry
+		private ITopicRegistry $topicRegistry,
+		LoggerInterface $logger
 	) {
 		parent::__construct(
 			$taskTypeHandlerRegistry,
@@ -37,7 +38,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$searchStrategy,
 			$newcomerTasksUserOptionsLookup,
 			$linkBatchFactory,
-			$statusFormatter
+			$statusFormatter,
+			$logger
 		);
 	}
 
@@ -67,7 +69,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$topics,
 			$this->statsFactory
 		);
-		$suggester->setLogger( $this->logger ?? new NullLogger() );
+		$suggester->setLogger( $this->logger );
 		return $suggester;
 	}
 

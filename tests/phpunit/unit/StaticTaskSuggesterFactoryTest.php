@@ -12,6 +12,7 @@ use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Psr\Log\NullLogger;
 use StatusValue;
 
 /**
@@ -25,10 +26,12 @@ class StaticTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 		$task = new Task( $taskType, new TitleValue( NS_MAIN, 'Task' ) );
 
 		$suggester = new StaticTaskSuggester( [ $task ] );
-		$factory = new StaticTaskSuggesterFactory( $suggester, $this->createNoOpMock( StatusFormatter::class ) );
+		$factory = new StaticTaskSuggesterFactory(
+			$suggester, $this->createNoOpMock( StatusFormatter::class ), new NullLogger() );
 		$this->assertSame( $suggester, $factory->create() );
 
-		$factory = new StaticTaskSuggesterFactory( [ $task ], $this->createNoOpMock( StatusFormatter::class ) );
+		$factory = new StaticTaskSuggesterFactory(
+			[ $task ], $this->createNoOpMock( StatusFormatter::class ), new NullLogger() );
 		$suggester = $factory->create();
 		$this->assertInstanceOf( StaticTaskSuggester::class, $suggester );
 		$this->assertSame( [ $task ], iterator_to_array( $suggester->suggest( $user, new TaskSetFilters() ) ) );
@@ -39,7 +42,7 @@ class StaticTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 			->method( 'getWikiText' )
 			->with( $error, [ 'lang' => 'en' ] )
 			->willReturn( '' );
-		$factory = new StaticTaskSuggesterFactory( $error, $statusFormatterWithErrorMock );
+		$factory = new StaticTaskSuggesterFactory( $error, $statusFormatterWithErrorMock, new NullLogger() );
 		$suggester = $factory->create();
 		$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $suggester );
 		$this->assertSame( $error, $suggester->suggest( $user, new TaskSetFilters() ) );

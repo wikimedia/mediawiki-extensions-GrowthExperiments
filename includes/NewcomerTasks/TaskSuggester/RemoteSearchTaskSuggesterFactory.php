@@ -11,7 +11,7 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 
 /**
@@ -35,6 +35,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param StatusFormatter $statusFormatter
 	 * @param string $apiUrl Base URL of the remote API (ending with 'api.php').
 	 * @param ITopicRegistry $topicRegistry
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -46,7 +47,8 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		LinkBatchFactory $linkBatchFactory,
 		StatusFormatter $statusFormatter,
 		string $apiUrl,
-		ITopicRegistry $topicRegistry
+		ITopicRegistry $topicRegistry,
+		LoggerInterface $logger
 	) {
 		parent::__construct(
 			$taskTypeHandlerRegistry,
@@ -54,7 +56,8 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$searchStrategy,
 			$newcomerTasksUserOptionsLookup,
 			$linkBatchFactory,
-			$statusFormatter
+			$statusFormatter,
+			$logger
 		);
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
@@ -85,7 +88,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$taskTypes,
 			$topics
 		);
-		$suggester->setLogger( $this->logger ?? new NullLogger() );
+		$suggester->setLogger( $this->logger );
 		return $suggester;
 	}
 

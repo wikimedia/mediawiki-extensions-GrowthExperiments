@@ -5,7 +5,6 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 use Wikimedia\ObjectFactory\ObjectFactory;
 
 /**
@@ -31,22 +30,18 @@ class DecoratingTaskSuggesterFactory extends TaskSuggesterFactory {
 	 * @param ObjectFactory $objectFactory
 	 * @param array $decorators A list of ObjectFactory specifications for the decorators.
 	 *   The decorated suggester is passed via the 'extraArgs' option.
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		TaskSuggesterFactory $taskSuggesterFactory,
 		ObjectFactory $objectFactory,
-		array $decorators
+		array $decorators,
+		LoggerInterface $logger
 	) {
+		parent::__construct( $logger );
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->objectFactory = $objectFactory;
 		$this->decorators = $decorators;
-		$this->logger = new NullLogger();
-	}
-
-	/** @inheritDoc */
-	public function setLogger( LoggerInterface $logger ): void {
-		$this->logger = $logger;
-		$this->taskSuggesterFactory->setLogger( $logger );
 	}
 
 	/** @inheritDoc */
@@ -59,7 +54,7 @@ class DecoratingTaskSuggesterFactory extends TaskSuggesterFactory {
 				'assertClass' => TaskSuggester::class,
 			] );
 			if ( $suggester instanceof LoggerAwareInterface ) {
-				$suggester->setLogger( $this->logger ?? new NullLogger() );
+				$suggester->setLogger( $this->logger );
 			}
 		}
 		return $suggester;

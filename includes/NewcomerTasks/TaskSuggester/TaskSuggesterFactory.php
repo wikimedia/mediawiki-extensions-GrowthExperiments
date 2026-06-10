@@ -3,12 +3,14 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 
-abstract class TaskSuggesterFactory implements LoggerAwareInterface {
+abstract class TaskSuggesterFactory {
 
-	use LoggerAwareTrait;
+	public function __construct(
+		protected LoggerInterface $logger
+	) {
+	}
 
 	/**
 	 * @param ConfigurationLoader|null $customConfigurationLoader Configuration loader to use instead of the default;

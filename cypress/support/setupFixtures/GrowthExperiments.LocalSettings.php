@@ -65,6 +65,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 			$reviseToneTaskType,
 			$services
 		): TaskSuggesterFactory {
+			$growthServices = GrowthExperimentsServices::wrap( $services );
 			$staticSuggesterFactory = new StaticTaskSuggesterFactory( [
 				new Task( $linkRecommendationTaskType, new TitleValue( NS_MAIN, 'Douglas Adams' ) ),
 				new Task(
@@ -78,9 +79,9 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, "Kristallsee" ) ),
 				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, "Eldfjall" ) ),
 				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
-			], $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ) );
+			], $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+				$growthServices->getLogger() );
 
-			$growthServices = GrowthExperimentsServices::wrap( $services );
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
 				$staticSuggesterFactory,
 				$services->getObjectFactory(),
@@ -95,7 +96,8 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 							$growthServices->getGrowthExperimentsCampaignConfig()
 						]
 					],
-				]
+				],
+				$growthServices->getLogger()
 			);
 
 			return $taskSuggesterFactory;

@@ -13,6 +13,7 @@ use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\User\UserIdentityValue;
+use Psr\Log\NullLogger;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 
@@ -51,7 +52,8 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 			$this->createNoOpMock( LinkBatchFactory::class ),
 			StatsFactory::newNull(),
 			$statusFormatterFactory,
-			$this->getTopicRegistry( $topics )
+			$this->getTopicRegistry( $topics ),
+			new NullLogger()
 		);
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {

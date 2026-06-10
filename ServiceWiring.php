@@ -1067,6 +1067,7 @@ return [
 	): TaskSuggesterFactory {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$growthConfig = $growthServices->getGrowthConfig();
+		$logger = $growthServices->getLogger();
 
 		$taskTypeHandlerRegistry = $growthServices->getTaskTypeHandlerRegistry();
 		$configLoader = $growthServices->getNewcomerTasksConfigurationLoader();
@@ -1085,7 +1086,8 @@ return [
 				$services->getLinkBatchFactory(),
 				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 				$growthConfig->get( 'GENewcomerTasksRemoteApiUrl' ),
-				$growthServices->getTopicRegistry()
+				$growthServices->getTopicRegistry(),
+				$logger
 			);
 		} elseif ( $isCirrusSearchLoadedAndConfigured ) {
 			$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory(
@@ -1097,7 +1099,8 @@ return [
 				$services->getLinkBatchFactory(),
 				$services->getStatsFactory(),
 				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
-				$growthServices->getTopicRegistry()
+				$growthServices->getTopicRegistry(),
+				$logger
 			);
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
 				$taskSuggesterFactory,
@@ -1125,7 +1128,8 @@ return [
 							$growthServices->getGrowthExperimentsCampaignConfig(),
 						],
 					],
-				]
+				],
+				$logger
 			);
 		} else {
 			$taskSuggesterFactory = new StaticTaskSuggesterFactory(
@@ -1136,10 +1140,10 @@ return [
 						'tasksuggesterfactory-not-configured'
 					) )
 				),
-				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
+				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+				$logger
 			);
 		}
-		$taskSuggesterFactory->setLogger( $growthServices->getLogger() );
 		return $taskSuggesterFactory;
 	},
 

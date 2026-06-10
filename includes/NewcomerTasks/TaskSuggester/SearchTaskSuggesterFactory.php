@@ -8,7 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\StatusFormatter;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 
 abstract class SearchTaskSuggesterFactory extends ErrorCapableTaskSuggesterFactory {
 
@@ -18,10 +18,10 @@ abstract class SearchTaskSuggesterFactory extends ErrorCapableTaskSuggesterFacto
 		protected SearchStrategy $searchStrategy,
 		protected NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		protected LinkBatchFactory $linkBatchFactory,
-		StatusFormatter $statusFormatter
+		StatusFormatter $statusFormatter,
+		LoggerInterface $logger
 	) {
-		parent::__construct( $statusFormatter );
-		$this->logger = new NullLogger();
+		parent::__construct( $statusFormatter, $logger );
 	}
 
 }

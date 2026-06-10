@@ -13,6 +13,7 @@ use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Tests\Api\ApiTestCase;
+use Psr\Log\NullLogger;
 use StatusValue;
 
 /**
@@ -52,7 +53,8 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			new Task( $taskType1, $titleFactory->newFromID( $copyedit2['id'] ) ),
 			new Task( $taskType3, $titleFactory->newFromID( $update2['id'] ) ),
 			new Task( $taskType1, $titleFactory->newFromID( $copyedit3['id'] ) ),
-		], $this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ) );
+		], $this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+			new NullLogger() );
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2, $taskType3 ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
@@ -101,7 +103,8 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$suggesterFactory = new StaticTaskSuggesterFactory( [
 			new Task( $taskType, $titleFactory->newFromID( $task1['id'] ) ),
 			new Task( $taskType, $titleFactory->newFromID( $task2['id'] ) ),
-		], $this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ) );
+		], $this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+			new NullLogger() );
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
@@ -124,7 +127,8 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			new ErrorForwardingTaskSuggester(
 				StatusValue::newFatal( new ApiRawMessage( 'foo' ) )
 			),
-			$this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
+			$this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+			new NullLogger()
 		);
 		$configurationLoader = new StaticConfigurationLoader( [] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
@@ -143,7 +147,8 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$topic2 = new Topic( 'science' );
 		$suggesterFactory = new StaticTaskSuggesterFactory(
 			[],
-			$this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
+			$this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+			new NullLogger()
 		);
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2 ] );
 		$topicRegistry = new StaticTopicRegistry( [ $topic1, $topic2 ] );
@@ -168,7 +173,8 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		// Make sure loading errors do not break parameter info
 		$suggesterFactory = new StaticTaskSuggesterFactory(
 			[],
-			$this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
+			$this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+			new NullLogger()
 		);
 		$configurationLoader = new StaticConfigurationLoader( StatusValue::newFatal( 'foo' ),
 			StatusValue::newFatal( 'bar' ) );

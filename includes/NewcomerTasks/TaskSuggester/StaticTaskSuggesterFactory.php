@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use MediaWiki\Status\StatusFormatter;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 
 /**
@@ -18,7 +19,8 @@ use StatusValue;
  *             return new StaticTaskSuggesterFactory( [
  *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
  *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
- *             ], $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ) );
+ *             ], $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+ *                 LoggerFactory::getInstance( 'GrowthExperiments' ) );
  *         } );
  *     };
  */
@@ -31,9 +33,10 @@ class StaticTaskSuggesterFactory extends ErrorCapableTaskSuggesterFactory {
 	 *   suggestions to create a StaticTaskSuggester with, or an error to create an
 	 *   ErrorForwardingTaskSuggester with.
 	 * @param StatusFormatter $statusFormatter
+	 * @param LoggerInterface $logger
 	 */
-	public function __construct( $taskSuggester, StatusFormatter $statusFormatter ) {
-		parent::__construct( $statusFormatter );
+	public function __construct( $taskSuggester, StatusFormatter $statusFormatter, LoggerInterface $logger ) {
+		parent::__construct( $statusFormatter, $logger );
 
 		if ( $taskSuggester instanceof TaskSuggester ) {
 			$this->taskSuggester = $taskSuggester;
