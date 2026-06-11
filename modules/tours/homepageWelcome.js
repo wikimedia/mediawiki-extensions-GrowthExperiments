@@ -1,9 +1,5 @@
 ( function ( gt ) {
-	const HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
-		tourUtils = require( './tourUtils.js' ),
-		homepageModuleLogger = new HomepageModuleLogger(
-			mw.config.get( 'wgGEHomepagePageviewToken' ),
-		),
+	const tourUtils = require( './tourUtils.js' ),
 		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' );
 
 	/**
@@ -14,36 +10,6 @@
 			'growthexperiments-tour-homepage-welcome',
 			'1',
 		);
-	}
-
-	/**
-	 * @param {Object} guider The guider configuration object
-	 * @param {boolean} isAlternativeClose Legacy parameter, should be ignored.
-	 * @param {string} closeMethod Guider close method: 'xButton', 'escapeKey', 'clickOutside'
-	 */
-	function logTourCloseAndMarkAsComplete( guider, isAlternativeClose, closeMethod ) {
-		const type = {
-			xButton: 'close-icon',
-			escapeKey: 'should-not-happen',
-			clickOutside: 'outside-click',
-		}[ closeMethod ];
-
-		markTourAsSeen();
-		homepageModuleLogger.log( 'generic', 'desktop', 'welcome-close', { type: type } );
-	}
-
-	/**
-	 * Annoyingly, the tour builder declares the 'end' button in such a way that it breaks
-	 * the onClick and onClose callbacks. Set up logging via a manual onclick handler instead.
-	 *
-	 * This method can be passed as an onShow handler.
-	 *
-	 * @param {Object} guider The guider configuration object
-	 */
-	function setupCloseButtonLogging( guider ) {
-		guider.elem.find( '.guidedtour-end-button, .guidedtour-next-button' ).click( () => {
-			homepageModuleLogger.log( 'generic', 'desktop', 'welcome-close', { type: 'button' } );
-		} );
 	}
 
 	let step;
@@ -70,11 +36,8 @@
 				// callback, and define a fake next step and use its onShow callback instead.
 				action: 'next',
 			} ],
-			onShow: function () {
-				markTourAsSeen();
-				setupCloseButtonLogging( this );
-			},
-			onClose: logTourCloseAndMarkAsComplete,
+			onShow: markTourAsSeen,
+			onClose: markTourAsSeen,
 		} ) );
 		welcomeTour.step( {
 			name: 'fake',
@@ -107,13 +70,9 @@
 				action: 'end',
 				namemsg: 'growthexperiments-tour-response-button-okay',
 			} ],
-			onShow: function () {
-				markTourAsSeen();
-				setupCloseButtonLogging( this );
-			},
-			onClose: logTourCloseAndMarkAsComplete,
+			onShow: markTourAsSeen,
+			onClose: markTourAsSeen,
 		} ) );
 	}
 	mw.guidedTour.launchTour( 'homepage_welcome' );
-	homepageModuleLogger.log( 'generic', 'desktop', 'welcome-impression' );
 }( mw.guidedTour ) );

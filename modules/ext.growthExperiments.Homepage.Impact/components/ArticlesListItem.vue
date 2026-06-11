@@ -61,7 +61,6 @@
 					:anchor="windowName !== 'ArticlesListItemVueTests' ? clockToggleButton : null"
 					placement="top-start"
 					:render-in-place="true"
-					@update:open="onPopoverToggleChange"
 				>
 					<c-text
 						class="ext-growthExperiments-ArticleListItem__tooltip-text"
@@ -75,7 +74,7 @@
 </template>
 
 <script>
-const { computed, ref, inject } = require( 'vue' );
+const { computed, ref } = require( 'vue' );
 const {
 	CdxIcon,
 	CdxThumbnail,
@@ -112,16 +111,10 @@ module.exports = exports = {
 	setup() {
 		const clockToggleButton = ref( null );
 		const showPopover = ref( false );
-		const logger = inject( 'logger' );
 		const windowName = computed( () => window.name );
-		const onPopoverToggleChange = ( value ) => {
-			const action = value ? 'open-nopageviews-tooltip' : 'close-nopageviews-tooltip';
-			logger.log( 'impact', action );
-		};
 		return {
 			cdxIconClock,
 			clockToggleButton,
-			onPopoverToggleChange,
 			showPopover,
 			xAccessor,
 			yAccessor,

@@ -21,13 +21,11 @@ const TopicSelectionWidget = require( './TopicSelectionWidget.js' ),
  *   difficulty panel
  * @param {boolean} config.activateWhenDone Whether to activate suggested edits when the user
  *   finishes the dialog
- * @param {HomepageModuleLogger} logger
  * @param {mw.libs.ge.DataStore} rootStore
  * @constructor
  */
-function StartEditingDialog( config, logger, rootStore ) {
+function StartEditingDialog( config, rootStore ) {
 	StartEditingDialog.super.call( this, config );
-	this.logger = logger;
 	this.module = config.module;
 	this.mode = config.mode;
 	this.trigger = config.trigger;
@@ -140,10 +138,6 @@ StartEditingDialog.prototype.initialize = function () {
 
 	this.swipeCard.setToStartHandler( this.swapPanel.bind( this, 'difficulty' ) );
 	this.swipeCard.setToEndHandler( this.swapPanel.bind( this, 'intro' ) );
-
-	if ( this.useTopicMatchMode ) {
-		this.logger.log( this.module, this.mode, 'se-topicmatchmode-impression' );
-	}
 };
 
 /**
@@ -267,19 +261,14 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 			if ( !action || action === 'close' ) {
 				// If !action, then the parent method will already have closed the dialog
 				// If action === 'close', then we need to close the dialog ourselves
-				this.logger.log( this.module, this.mode, 'se-cancel-activation', { trigger: this.trigger } );
 				if ( action === 'close' ) {
 					this.close( { action: action } );
 				}
 			}
 			if ( action === 'done' ) {
-				// Used in varant C, technically it just closes the dialog but conceptually it's
-				// closed to accepting it, so log it as an activation
-				this.logger.log( this.module, this.mode, 'se-activate', { trigger: this.trigger } );
 				this.close( { action: action } );
 			}
 			if ( action === 'difficulty' ) {
-				this.logger.log( this.module, this.mode, 'se-cta-difficulty', { trigger: this.trigger } );
 				this.articleCounterPanelLayout.toggle( this.useTaskTypeSelector );
 				this.swapPanel( 'difficulty' );
 				// Force scroll position to top.
@@ -287,7 +276,6 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 			}
 			if ( action === 'back' ) {
 				this.articleCounterPanelLayout.toggle( this.showingTopicSelector() );
-				this.logger.log( this.module, this.mode, 'se-cta-back', { trigger: this.trigger } );
 				this.swapPanel( 'intro' );
 			}
 			if ( action === 'activate' ) {
@@ -299,25 +287,21 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				const settings = {
 					'growthexperiments-homepage-suggestededits-activated': 1,
 				};
-				const logData = { trigger: this.trigger };
 				if ( this.topicSelector ) {
 					settings[ SUGGESTED_EDITS_CONFIG.GENewcomerTasksTopicFiltersPref ] =
 						this.topicSelector.getSelectedTopics().length > 0 ?
 							JSON.stringify( this.topicSelector.getSelectedTopics() ) :
 							null;
-					logData.topics = this.topicSelector.getSelectedTopics();
 				}
 				if ( this.taskTypeSelector ) {
 					settings[ 'growthexperiments-homepage-se-filters' ] =
 						this.taskTypeSelector.getSelected().length > 0 ?
 							JSON.stringify( this.taskTypeSelector.getSelected() ) :
 							null;
-					logData.taskTypes = this.taskTypeSelector.getSelected();
 				}
 				return new mw.Api().saveOptions( settings )
 					.then( () => {
 						mw.user.options.set( settings );
-						this.logger.log( this.module, this.mode, 'se-activate', logData );
 						return this.setupSuggestedEditsModule();
 					} ).then( () => {
 						dialog.close( { action: 'activate' } );
@@ -480,35 +464,10 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 
 		if ( this.useTopicSelector ) {
 			this.topicSelector.connect( this, {
-				selectAll: function ( groupId ) {
-					this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-select-all', {
-						isCta: true,
-						topicGroup: groupId,
-					} );
-				},
-				removeAll: function ( groupId ) {
-					this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-remove-all', {
-						isCta: true,
-						topicGroup: groupId,
-					} );
-				},
 				// The "select all" buttons fire many toggleSelection events at once, so
 				// debounce them.
 				toggleSelection: 'updateMatchCountDebounced',
-				toggleMatchMode: function ( matchMode ) {
-					this.updateMatchCount();
-					this.logger.log(
-						this.module,
-						this.mode,
-						// Possible event names are:
-						// 'se-topicmatchmode-or'
-						// 'se-topicmatchmode-and'
-						'se-topicmatchmode-' + matchMode.toLowerCase(),
-						{
-							topicsMatchMode: matchMode,
-						},
-					);
-				},
+				toggleMatchMode: 'updateMatchCount',
 			} );
 			const $topicSelectorWrapper = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )

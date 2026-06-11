@@ -10,11 +10,10 @@ const CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
  * @param {boolean} config.topicMatching If the topic filters should be enabled in the UI.
  * @param {boolean} config.useTopicMatchMode If topic match mode feature is enabled in the UI
  * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
- * @param {HomepageModuleLogger} logger
  * @param {mw.libs.ge.DataStore} rootStore
  * @constructor
  */
-function FiltersButtonGroupWidget( config, logger, rootStore ) {
+function FiltersButtonGroupWidget( config, rootStore ) {
 	const DifficultyFiltersDialog = require( './DifficultyFiltersDialog.js' ),
 		TopicFiltersDialog = require( './TopicFiltersDialog.js' ),
 		windowManager = new OO.ui.WindowManager( { modal: true } ),
@@ -41,31 +40,6 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 			},
 			search: function () {
 				this.emit( 'search' );
-			},
-			toggleMatchMode: function ( matchMode ) {
-				logger.log(
-					'suggested-edits',
-					config.mode,
-					// Possible event names are:
-					// 'se-topicmatchmode-or'
-					// 'se-topicmatchmode-and'
-					'se-topicmatchmode-' + matchMode.toLowerCase(),
-					{
-						topicsMatchMode: matchMode,
-					},
-				);
-			},
-			selectAll: function ( groupId ) {
-				logger.log( 'suggested-edits', config.mode, 'se-topicfilter-select-all', {
-					isCta: false,
-					topicGroup: groupId,
-				} );
-			},
-			removeAll: function ( groupId ) {
-				logger.log( 'suggested-edits', config.mode, 'se-topicfilter-remove-all', {
-					isCta: false,
-					topicGroup: groupId,
-				} );
 			},
 			cancel: [ 'emit', 'cancel' ],
 		} );
@@ -95,53 +69,18 @@ function FiltersButtonGroupWidget( config, logger, rootStore ) {
 	} );
 	windows.push( this.taskTypeFiltersDialog );
 
-	this.taskTypeFiltersDialog.$element
-		.on( 'click', '.suggested-edits-create-article-additional-msg a', () => {
-			logger.log( 'suggested-edits', config.mode, 'link-click',
-				{ linkId: 'se-create-info' } );
-		} );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( 'body' ).append( windowManager.$element );
 	windowManager.addWindows( windows );
 	this.difficultyFilterButtonWidget.on( 'click', () => {
-		const lifecycle = windowManager.openWindow( this.taskTypeFiltersDialog );
-		logger.log( 'suggested-edits', config.mode, 'se-taskfilter-open' );
+		windowManager.openWindow( this.taskTypeFiltersDialog );
 		this.emit( 'open' );
-		lifecycle.closing.then( ( data ) => {
-			if ( data && data.action === 'done' ) {
-				logger.log( 'suggested-edits', config.mode, 'se-taskfilter-done',
-					{ taskTypes: this.taskTypeFiltersDialog.getEnabledFilters() } );
-			} else {
-				logger.log( 'suggested-edits', config.mode, 'se-taskfilter-cancel',
-					{ taskTypes: this.taskTypeFiltersDialog.getEnabledFilters() } );
-			}
-		} );
 	} );
 
 	if ( this.topicFilterButtonWidget ) {
 		this.topicFilterButtonWidget.on( 'click', () => {
-			const lifecycle = windowManager.openWindow( this.topicFiltersDialog );
-			logger.log( 'suggested-edits', config.mode, 'se-topicfilter-open', {
-				topics: this.topicFiltersDialog.getEnabledFilters().getTopics(),
-			} );
-			if ( config.useTopicMatchMode ) {
-				logger.log( 'suggested-edits', config.mode, 'se-topicmatchmode-impression' );
-			}
+			windowManager.openWindow( this.topicFiltersDialog );
 			this.emit( 'open' );
-			lifecycle.closing.then( ( data ) => {
-				const closeExtraData = {
-					topics: this.topicFiltersDialog.getEnabledFilters().getTopics(),
-				};
-				if ( config.useTopicMatchMode ) {
-					closeExtraData.topicsMatchMode = this.topicFiltersDialog.getEnabledFilters()
-						.getTopicsMatchMode();
-				}
-				if ( data && data.action === 'done' ) {
-					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-done', closeExtraData );
-				} else {
-					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-cancel', closeExtraData );
-				}
-			} );
 		} );
 	}
 

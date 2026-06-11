@@ -112,53 +112,6 @@
 	}
 
 	/**
-	 * Max length for user_variant field in legacy HomepageModule schema.
-	 * Format: "exp1:variant1;exp2:variant2".
-	 */
-	const USER_VARIANT_MAX_LENGTH = 512;
-
-	/**
-	 * Get user variant for legacy HomepageModule schema (user_variant field).
-	 *
-	 * The HomepageModule schema requires user_variant to be a string. When the user
-	 * is not enrolled in any experiment (getUserVariant returns null), we use
-	 * 'unsampled'.
-	 *
-	 * Uses all active experiments from TestKitchen when available, formatted as
-	 * "exp1:variant1;exp2:variant2", truncated to USER_VARIANT_MAX_LENGTH if needed.
-	 * When TestKitchen is not available, only uses wgGEDefaultUserVariant when it
-	 * is a string (e.g. $wgGEDefaultUserVariant = 'control').
-	 *
-	 * @return {string} Variant string: 'exp1:variant1;exp2:variant2', 'control',
-	 *   'treatment', 'unsampled', or a value from wgGEDefaultUserVariant
-	 */
-	function getUserVariantForLegacySchema() {
-		const tkConfig = mw.config.get( 'wgTestKitchenUserExperiments' );
-		if ( tkConfig && tkConfig.active_experiments && mw.testKitchen ) {
-			const parts = [];
-			for ( const exp of tkConfig.active_experiments ) {
-				const expName = typeof exp === 'string' ? exp : exp.name;
-				const variant = getUserVariant( expName );
-				if ( typeof variant === 'string' ) {
-					parts.push( expName + ':' + variant );
-				}
-			}
-			if ( parts.length > 0 ) {
-				const result = parts.join( ';' );
-				return result.length <= USER_VARIANT_MAX_LENGTH ?
-					result :
-					result.slice( 0, USER_VARIANT_MAX_LENGTH );
-			}
-			return 'unsampled';
-		}
-		const defaultVariantConfig = mw.config.get( 'wgGEDefaultUserVariant' );
-		if ( typeof defaultVariantConfig === 'string' ) {
-			return defaultVariantConfig;
-		}
-		return 'unsampled';
-	}
-
-	/**
 	 * Format title to be used in URLs
 	 *
 	 * @param {string} title
@@ -243,7 +196,6 @@
 		removeQueryParam: removeQueryParam,
 		isValidEditor: isValidEditor,
 		getUserVariant: getUserVariant,
-		getUserVariantForLegacySchema: getUserVariantForLegacySchema,
 		formatTitle: formatTitle,
 		getSuggestedEditsFeedUrl: getSuggestedEditsFeedUrl,
 		getIntlLocale: getIntlLocale,

@@ -1,13 +1,5 @@
 ( function () {
 
-	function updateQuestionsCountInModuleActionData( moduleName, unarchivedCount, archivedCount ) {
-		const key = 'wgGEHomepageModuleActionData-' + moduleName,
-			moduleActionData = mw.config.get( key ) || {};
-		moduleActionData.unarchivedQuestions = unarchivedCount;
-		moduleActionData.archivedQuestions = archivedCount;
-		mw.config.set( key, moduleActionData );
-	}
-
 	/**
 	 * @param {string} moduleName The name of the module (impact, help, mentorship, start)
 	 * @param {string} questionsSelector The selector to use for finding recent questions in the
@@ -37,8 +29,6 @@
 				$( 'body' ),
 			questionsSelector = '.recent-questions-growthexperiments-' + sourceName + '-questions',
 			$container = $overlay.find( '.growthexperiments-homepage-module-' + moduleName );
-		let archivedCount = 0,
-			unarchivedCount = 0;
 
 		new mw.Api().get( {
 			action: 'homepagequestionstore',
@@ -60,18 +50,6 @@
 				if ( !data.homepagequestionstore.questions ) {
 					return;
 				}
-				data.homepagequestionstore.questions.forEach( ( questionRecord ) => {
-					if ( questionRecord.isArchived ) {
-						archivedCount++;
-					} else {
-						unarchivedCount++;
-					}
-				} );
-				updateQuestionsCountInModuleActionData(
-					moduleName,
-					unarchivedCount,
-					archivedCount,
-				);
 				updateHomepageModuleHtml( moduleName, questionsSelector, questionStoreHtml );
 			} );
 	}

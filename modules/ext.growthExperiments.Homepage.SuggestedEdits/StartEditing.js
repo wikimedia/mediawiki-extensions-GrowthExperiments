@@ -1,9 +1,5 @@
 ( function () {
 	const StartEditingDialog = require( './StartEditingDialog.js' ),
-		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
-		logger = new Logger(
-			mw.config.get( 'wgGEHomepagePageviewToken' ),
-		),
 		rootStore = require( 'ext.growthExperiments.DataStore' );
 	let isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ),
 		// We pretend the module is activated on mobile for the purposes of the start editing
@@ -31,7 +27,7 @@
 			useTopicSelector: !shouldSuggestedEditsAppearActivated,
 			useTaskTypeSelector: !shouldSuggestedEditsAppearActivated,
 			activateWhenDone: !isSuggestedEditsActivated,
-		}, logger, rootStore );
+		}, rootStore );
 		if ( !modalWindowManager ) {
 			modalWindowManager = new OO.ui.WindowManager( {
 				modal: true,
@@ -39,8 +35,6 @@
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$( 'body' ).append( modalWindowManager.$element );
 		}
-
-		logger.log( module, mode, 'se-cta-click', { trigger: trigger } );
 
 		modalWindowManager.addWindows( [ dialog ] );
 		const lifecycle = modalWindowManager.openWindow( dialog );
@@ -127,7 +121,7 @@
 			useTaskTypeSelector: true,
 			activateWhenDone: true,
 			useTopicMatchMode: useTopicMatchMode,
-		}, logger, rootStore );
+		}, rootStore );
 
 		dialog.on( 'activation', () => {
 			isSuggestedEditsActivated = true;
@@ -137,8 +131,6 @@
 		$startEditingModule.append( windowManager.$element );
 		windowManager.addWindows( [ dialog ] );
 		windowManager.openWindow( dialog );
-
-		logger.log( 'suggested-edits', mode, 'se-cta-click', { trigger: 'impression' } );
 	}
 
 	/**

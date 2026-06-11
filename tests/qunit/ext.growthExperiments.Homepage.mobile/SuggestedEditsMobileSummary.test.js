@@ -39,7 +39,6 @@ QUnit.test( 'should show MobileNoTasksWidget if there is no task preview ', func
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
-		homepageModuleLogger: { log() {} },
 	}, store );
 	module.initialize().then( () => {
 		assert.true( [ ...module.$content[ 0 ].classList ].includes( 'growthexperiments-suggestededits-mobilesummary-notasks-widget' ) );
@@ -62,7 +61,6 @@ QUnit.test( 'should hide page views in SmallTaskCard if task preview is availabl
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
-		homepageModuleLogger: { log() {} },
 	}, store );
 	module.initialize().then( () => {
 		const $content = module.$content;
@@ -76,7 +74,6 @@ QUnit.test( 'should show MobileNoTasksWidget for updateUiBasedOnState if there i
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
-		homepageModuleLogger: { log() {} },
 	}, store );
 	store.newcomerTasks.currentTaskIndex = -1;
 	module.updateUiBasedOnState();
@@ -87,7 +84,6 @@ QUnit.test( 'should show the preview for the current task for updateUiBasedOnSta
 	const module = new SuggestedEditsMobileSummary( {
 		$element: $( '<div>' ),
 		newcomerTaskLogger: { log() {} },
-		homepageModuleLogger: { log() {} },
 	}, store );
 	const task = {
 		title: 'Article title',

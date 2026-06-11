@@ -366,7 +366,6 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 			this.preloadExtraDataForUpcomingTask();
 		}
 
-		this.synchronizeExtraData();
 		deferred.resolve();
 	} ).catch( ( error ) => {
 		// Don't update the loading state if the promise is aborted (the next promise is still in progress)
@@ -607,30 +606,6 @@ NewcomerTasksStore.prototype.maybeUpdateQualityGateConfig = function ( taskData 
  */
 NewcomerTasksStore.prototype.lessResultsThanRequested = function ( count ) {
 	return count <= this.api.pageSize;
-};
-
-/**
- * Update wgGEHomepageModuleActionData-suggested-edits with the latest states
- *
- * FIXME logger is getting topics and topics match mode data from extraData so the global value has
- * to be kept in sync with those in the store
- */
-NewcomerTasksStore.prototype.synchronizeExtraData = function () {
-	// HomepageModuleLogger adds this to the log data automatically
-	let extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' );
-	if ( !extraData ) {
-		// when initializing the module on the client side, this is not set
-		extraData = {};
-		mw.config.set( 'wgGEHomepageModuleActionData-suggested-edits', extraData );
-	}
-	extraData.taskTypes = this.filters.getSelectedTaskTypes();
-	if ( this.filters.topicsEnabled ) {
-		extraData.topics = this.filters.getTopicsQuery().getTopics();
-		if ( this.filters.shouldUseTopicMatchMode ) {
-			extraData.topicsMatchMode = this.filters.getTopicsQuery().getTopicsMatchMode();
-		}
-	}
-	extraData.taskCount = this.getTaskCount();
 };
 
 module.exports = NewcomerTasksStore;

@@ -1,11 +1,7 @@
 const mobile = require( 'mobile.startup' );
 ( function () {
 	'use strict';
-	const HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
-		NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
-		homepageModuleLogger = new HomepageModuleLogger(
-			mw.config.get( 'wgGEHomepagePageviewToken' ),
-		),
+	const NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' ),
 		isMobile = OO.ui.isMobile(),
 		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ),
 		newcomerTaskLogger = new NewcomerTaskLogger(),
@@ -46,7 +42,6 @@ const mobile = require( 'mobile.startup' );
 			// Matches routes like /homepage/moduleName or /homepage/moduleName/action
 			// FIXME or describe why it is okay
 			routeRegex = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/;
-		let currentModule = null;
 
 		/**
 		 * Extract module detail HTML, heading and RL modules config var.
@@ -58,47 +53,6 @@ const mobile = require( 'mobile.startup' );
 			const data = mw.config.get( 'homepagemodules' )[ moduleName ];
 			data.$overlay = $overlayModules.find( '[data-module-name="' + moduleName + '"]' );
 			return data;
-		}
-
-		function getSubmodules( moduleName ) {
-			// HACK: extract submodule info from the module HTML
-			return $( getModuleData( moduleName ).overlay )
-				.find( '.growthexperiments-homepage-module' )
-				.toArray()
-				.map( ( moduleElement ) => $( moduleElement ).data( 'module-name' ) )
-				// With the current HTML structure, this shouldn't return the module itself,
-				// but filter it out just to be sure
-				.filter( ( submodule ) => submodule !== moduleName );
-		}
-
-		function handleRouteChange( path ) {
-			const matches = path.match( routeRegex ),
-				newModule = matches ? matches[ 1 ] : null;
-
-			// Log mobile-overlay open/close when navigating to / away from a module
-			// We can't do this in a show/hide event handler on the overlay itself, because it
-			// gets hidden then shown again when opening and closing the question dialog
-			// (due to navigation from #/homepage/moduleName to #homepage/moduleName/question)
-			// The allowed module names are defined in /analytics/legacy/homepagemodule/.
-			if ( newModule !== currentModule ) {
-				// Log null -> module as opening (impression) and module -> null as closing.
-				// Log module -> another module as opening but not closing, since there is
-				// no closing intent on the part of the user in that case.
-				if ( newModule === null ) {
-					// Navigating away from a module: log closing the overlay
-					homepageModuleLogger.log( currentModule, 'mobile-overlay', 'close' );
-				} else {
-					// Navigating to a module: log impression
-					homepageModuleLogger.log( newModule, 'mobile-overlay', 'impression' );
-
-					// Find submodules in the new module, and log impressions for them
-					getSubmodules( newModule ).forEach( ( submodule ) => {
-						homepageModuleLogger.log( submodule, 'mobile-overlay', 'impression' );
-					} );
-				}
-			}
-
-			currentModule = newModule;
 		}
 
 		overlayManager.add( routeRegex, ( moduleName ) => {
@@ -119,13 +73,6 @@ const mobile = require( 'mobile.startup' );
 			}
 			return overlays[ moduleName ];
 		} );
-
-		router.on( 'route', ( ev ) => {
-			handleRouteChange( ev.path );
-		} );
-
-		// Initialize state for handleRouteChange, and log initial impression if needed
-		handleRouteChange( router.getPath() );
 
 		$summaryModulesContainer.on( 'click', summaryModulesOverlayLinksSelector, function ( e ) {
 			e.preventDefault();
@@ -187,7 +134,6 @@ const mobile = require( 'mobile.startup' );
 			// FIXME: in a follow-up, convert these messages to something besides variant
 			//   C/D, e.g. "se-activated" / "se-unactivated"
 			variantKey = isSuggestedEditsActivated ? 'd' : 'c';
-		let buttonClicked = false;
 
 		if ( mw.user.options.get( welcomeNoticeSeenPreference ) ) {
 			return;
@@ -231,19 +177,11 @@ const mobile = require( 'mobile.startup' );
 			onBeforeHide: function () {
 				markAsSeen();
 				setPreventScrolling( false );
-				if ( !buttonClicked ) {
-					homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close',
-						{ type: 'outside-click' } );
-				}
 			},
 		} );
 		document.body.appendChild( welcomeDrawer.$el[ 0 ] );
 		welcomeDrawer.$el.find( '.homepage-welcome-notice' ).on( 'click', () => {
-			buttonClicked = true;
 			markAsSeen();
-			homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close', {
-				type: 'button',
-			} );
 			// Launch the start editing dialog for mobile users who haven't activated
 			// the module yet.
 			// TODO: We should probably use mw.hook instead of mw.track/trackSubscribe
@@ -258,7 +196,6 @@ const mobile = require( 'mobile.startup' );
 			setPreventScrolling( false );
 		} );
 		welcomeDrawer.show().then( setPreventScrolling.bind( null, true ) );
-		homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-impression' );
 	}
 
 	/**
@@ -271,7 +208,6 @@ const mobile = require( 'mobile.startup' );
 				const suggestedEditsMobileSummary = new SuggestedEditsMobileSummary( {
 					$element: $( module ),
 					newcomerTaskLogger: newcomerTaskLogger,
-					homepageModuleLogger: homepageModuleLogger,
 				}, rootStore );
 
 				suggestedEditsMobileSummary.initialize();

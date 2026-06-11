@@ -12,13 +12,11 @@ const TaskPreviewWidget = require( './TaskPreviewWidget.js' ),
  * @param {Object} config
  * @param {jQuery} config.$element
  * @param {mw.libs.ge.NewcomerTaskLogger} config.newcomerTaskLogger
- * @param {mw.libs.ge.HomepageModuleLogger} config.homepageModuleLogger
  * @param {mw.libs.ge.DataStore} rootStore
  */
 function SuggestedEditsMobileSummary( config, rootStore ) {
 	SuggestedEditsMobileSummary.super.call( this );
 	this.newcomerTaskLogger = config.newcomerTaskLogger;
-	this.homepageModuleLogger = config.homepageModuleLogger;
 	this.rootStore = rootStore;
 	this.tasksStore = rootStore.newcomerTasks;
 	this.$element = config.$element;
@@ -72,7 +70,6 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 	const taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ],
 		tasksStore = this.tasksStore,
 		newcomerTaskLogger = this.newcomerTaskLogger,
-		homepageModuleLogger = this.homepageModuleLogger,
 		deferred = $.Deferred();
 
 	if ( taskPreviewData && taskPreviewData.title ) {
@@ -80,20 +77,6 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 		tasksStore.fetchExtraDataForCurrentTask( 'mobilesummary' ).then( () => {
 			const task = tasksStore.getCurrentTask();
 			newcomerTaskLogger.log( task, 0 );
-			homepageModuleLogger.log(
-				'suggested-edits',
-				'mobile-summary',
-				'se-task-impression',
-				{ newcomerTaskToken: task.token },
-			);
-		} ).catch( ( jqXHR, textStatus, errorThrown ) => {
-			// Error loading extra data for the task
-			homepageModuleLogger.log(
-				'suggested-edits',
-				'mobile-summary',
-				'se-task-pseudo-impression',
-				{ type: 'error', errorMessage: textStatus + ' ' + errorThrown },
-			);
 		} ).always( () => {
 			this.showPreviewForCurrentTask();
 			deferred.resolve();
@@ -105,12 +88,6 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 
 	} else if ( taskPreviewData && taskPreviewData.error ) {
 		// Error loading the task, on the server side
-		homepageModuleLogger.log(
-			'suggested-edits',
-			'mobile-summary',
-			'se-task-pseudo-impression',
-			{ type: 'error', errorMessage: taskPreviewData.error },
-		);
 		deferred.reject();
 	}
 
@@ -130,9 +107,6 @@ SuggestedEditsMobileSummary.prototype.enableSuggestedEditsActivation = function 
 		new mw.Api().saveOptions( activationSettings ).then( () => {
 			mw.user.options.set( activationSettings );
 		} );
-		// Set state to activated so that HomepageLogger uses correct value for
-		// subsequent log events.
-		mw.config.set( 'wgGEHomepageModuleState-suggested-edits', 'activated' );
 		$element.off( 'click', onModuleClicked );
 	} );
 };

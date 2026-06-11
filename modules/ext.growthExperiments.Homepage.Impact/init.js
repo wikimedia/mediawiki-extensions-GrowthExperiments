@@ -5,8 +5,6 @@
 	const useMWRestApi = require( './composables/useMWRestApi.js' );
 	const { convertNumber } = require( '../utils/filters.js' );
 	const { hasIntl } = require( '../utils/Utils.js' );
-	const HomepageLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' );
-	const logger = require( '../vue-components/plugins/logger.js' );
 	const relevantUserId = mw.config.get( 'GEImpactRelevantUserId' );
 
 	/**
@@ -97,13 +95,6 @@
 		app.provide( 'RENDER_MODE', mode );
 		app.provide( 'IMPACT_MAX_EDITS', mw.config.get( 'GEImpactMaxEdits' ) );
 		app.provide( 'IMPACT_MAX_THANKS', mw.config.get( 'GEImpactMaxThanks' ) );
-		app.use( logger, {
-			mode,
-			logger: new HomepageLogger(
-				mw.config.get( 'wgGEHomepagePageviewToken' ),
-				mw.config.get( 'wgGEDisableLogging' )
-			)
-		} );
 		app.mount( mountPoint );
 		return app;
 	};

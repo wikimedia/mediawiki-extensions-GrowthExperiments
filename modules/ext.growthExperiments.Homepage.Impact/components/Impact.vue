@@ -11,7 +11,6 @@
 				:render-third-person="renderThirdPerson"
 				:has-intl="hasIntl"
 				:data="data"
-				@interaction="$log( 'impact', $event )"
 			></c-score-cards>
 		</div>
 		<div v-if="data && hasIntl">

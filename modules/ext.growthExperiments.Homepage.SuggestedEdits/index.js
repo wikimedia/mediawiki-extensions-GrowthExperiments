@@ -1,7 +1,6 @@
 ( function () {
 	const ErrorCardWidget = require( './ErrorCardWidget.js' ),
 		NoResultsWidget = require( './NoResultsWidget.js' ),
-		Logger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
 		SuggestedEditsModule = require( './SuggestedEditsModule.js' ),
 		StartEditing = require( './StartEditing.js' ),
 		rootStore = require( 'ext.growthExperiments.DataStore' ),
@@ -40,9 +39,6 @@
 				mode: mode,
 				qualityGateConfig: taskPreviewData.qualityGateConfig || {},
 			},
-			new Logger(
-				mw.config.get( 'wgGEHomepagePageviewToken' ),
-			),
 			rootStore,
 		);
 

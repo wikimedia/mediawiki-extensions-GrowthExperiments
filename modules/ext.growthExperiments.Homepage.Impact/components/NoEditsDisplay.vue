@@ -11,8 +11,6 @@
 				:icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-count' ).text()"
 				:info-header-icon="cdxIconInfoFilled"
 				:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-thanks-info-label' ).text()"
-				@open="$log( 'impact', 'open-thanks-info-tooltip' );"
-				@close="$log( 'impact', 'close-thanks-info-tooltip' );"
 			>
 				<c-text
 					size="md"
@@ -44,8 +42,6 @@
 				:icon-label="$i18n( 'growthexperiments-homepage-impact-recent-activity-best-streak-text' ).text()"
 				:info-header-icon="cdxIconInfoFilled"
 				:info-icon-label="$i18n( 'growthexperiments-homepage-impact-scores-streak-info-label' ).text()"
-				@open="$log( 'impact', 'open-streak-info-tooltip' );"
-				@close="$log( 'impact', 'close-streak-info-tooltip' );"
 			>
 				<!-- &#8211; is the code for the en dash character: — -->
 				<c-text

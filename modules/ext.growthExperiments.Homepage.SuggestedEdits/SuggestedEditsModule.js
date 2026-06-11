@@ -26,13 +26,11 @@ const EditCardWidget = require( './EditCardWidget.js' ),
  * @param {jQuery} config.$nav Navigation element (if navigation is separate from $element)
  * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
  * @param {Object} config.qualityGateConfig Quality gate configuration exported from TaskSet.php
- * @param {HomepageModuleLogger} logger
  * @param {mw.libs.ge.DataStore} rootStore
  */
-function SuggestedEditsModule( config, logger, rootStore ) {
+function SuggestedEditsModule( config, rootStore ) {
 	SuggestedEditsModule.super.call( this, config );
 	this.config = config;
-	this.logger = logger;
 	this.mode = config.mode;
 	this.currentCard = null;
 	this.editWidget = null;
@@ -44,7 +42,7 @@ function SuggestedEditsModule( config, logger, rootStore ) {
 		topicMatching: this.filtersStore.topicsEnabled,
 		useTopicMatchMode: this.filtersStore.shouldUseTopicMatchMode,
 		mode: this.mode,
-	}, logger, rootStore )
+	}, rootStore )
 		.connect( this, {
 			search: 'fetchTasksAndUpdateView',
 			done: 'filterSelection',
@@ -181,16 +179,11 @@ SuggestedEditsModule.prototype.filterSelection = function ( filtersDialogDeferre
  * by rendering an error card.
  */
 SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function () {
-	return this.tasksStore.fetchTasks( 'suggestedEditsModule.fetchTasksAndUpdateView' ).then( () => {
-		this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
-		return $.Deferred().resolve().promise();
-	} ).catch( ( message ) => {
+	return this.tasksStore.fetchTasks( 'suggestedEditsModule.fetchTasksAndUpdateView' ).then( () => $.Deferred().resolve().promise() ).catch( ( message ) => {
 		if ( message === 'abort' ) {
 			// XHR abort, not a real error
 			return;
 		}
-		this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
-			{ type: 'error', errorMessage: message } );
 		return this.showCard( new ErrorCardWidget() );
 	} );
 };
@@ -223,31 +216,23 @@ SuggestedEditsModule.prototype.updatePreviousNextButtons = function () {
 
 /**
  * Show the next card if it's available
- *
- * @param {boolean} [isSwipe] Whether the action is triggered via swipe action
  */
-SuggestedEditsModule.prototype.onNextCard = function ( isSwipe ) {
-	const action = isSwipe ? 'se-task-navigation-swipe' : 'se-task-navigation';
+SuggestedEditsModule.prototype.onNextCard = function () {
 	if ( this.currentCard instanceof EndOfQueueWidget ) {
 		return;
 	}
 	this.isGoingBack = false;
-	this.logger.log( 'suggested-edits', this.mode, action, { dir: 'next' } );
 	this.tasksStore.showNextTask();
 };
 
 /**
  * Show the previous card if it's available
- *
- * @param {boolean} [isSwipe] Whether the action is triggered via swipe action
  */
-SuggestedEditsModule.prototype.onPreviousCard = function ( isSwipe ) {
-	const action = isSwipe ? 'se-task-navigation-swipe' : 'se-task-navigation';
+SuggestedEditsModule.prototype.onPreviousCard = function () {
 	if ( this.tasksStore.getQueuePosition() === 0 ) {
 		return;
 	}
 	this.isGoingBack = true;
-	this.logger.log( 'suggested-edits', this.mode, action, { dir: 'prev' } );
 	this.tasksStore.showPreviousTask();
 };
 
@@ -276,7 +261,7 @@ SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
 			new TaskExplanationWidget( {
 				taskType: currentTask.tasktype,
 				mode: this.mode,
-			}, this.logger, ALL_TASK_TYPES ).$element,
+			}, ALL_TASK_TYPES ).$element,
 		);
 	}
 	$explanationElement.toggle( !!currentTask );
@@ -338,20 +323,15 @@ SuggestedEditsModule.prototype.setMatchModeAndSave = function ( mode ) {
 SuggestedEditsModule.prototype.showCard = function ( card ) {
 	this.currentCard = null;
 
-	// TODO should we log something on non-card impressions?
 	if ( card ) {
 		this.currentCard = card;
 	} else if ( this.tasksStore.isTaskQueueEmpty() ) {
-		this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
-			{ type: 'empty' } );
 		this.currentCard = new NoResultsWidget( {
 			topicMatching: this.filtersStore.topicsEnabled,
 			topicMatchModeIsAND: this.filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND,
 			setMatchModeOr: this.setMatchModeAndSave.bind( this, TOPIC_MATCH_MODES.OR ),
 		} );
 	} else if ( !this.tasksStore.getCurrentTask() ) {
-		this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
-			{ type: 'end' } );
 		this.currentCard = new EndOfQueueWidget( { topicMatching: this.filtersStore.topicsEnabled } );
 	} else {
 		this.currentCard = new EditCardWidget(
@@ -360,12 +340,6 @@ SuggestedEditsModule.prototype.showCard = function ( card ) {
 	}
 	if ( this.currentCard instanceof EditCardWidget ) {
 		this.logCardData();
-		this.logger.log(
-			'suggested-edits',
-			this.mode,
-			'se-task-impression',
-			{ newcomerTaskToken: this.tasksStore.getNewcomerTaskToken() },
-		);
 	}
 	this.updateCardElement( OO.ui.isMobile() ).then( this.updateControls.bind( this ) );
 
@@ -478,10 +452,10 @@ SuggestedEditsModule.prototype.setupSwipeNavigation = function () {
 		isHorizontal: true,
 	} );
 	this.swipeCard.setToStartHandler( () => {
-		this.onNextCard( true );
+		this.onNextCard();
 	} );
 	this.swipeCard.setToEndHandler( () => {
-		this.onPreviousCard( true );
+		this.onPreviousCard();
 	} );
 
 	// Disable scrolling on the body when the overlay is shown
@@ -503,13 +477,9 @@ SuggestedEditsModule.prototype.updateControls = function () {
 
 /**
  * Log click events on the task card or on the edit button
- *
- * @param {string} action Either 'se-task-click' or 'se-edit-button-click'
  */
-SuggestedEditsModule.prototype.logEditTaskClick = function ( action ) {
-	const task = this.tasksStore.getCurrentTask();
+SuggestedEditsModule.prototype.logEditTaskClick = function () {
 	this.logCardData();
-	this.logger.log( 'suggested-edits', this.mode, action, { newcomerTaskToken: task.token } );
 };
 
 /**
@@ -552,7 +522,7 @@ SuggestedEditsModule.prototype.setupClickLogging = function () {
 		.on( 'click', () => {
 			if ( newUrl ) {
 				// Only log if this is a task card, not the skeleton loading card
-				this.logEditTaskClick( 'se-task-click' );
+				this.logEditTaskClick();
 			}
 		} );
 };
@@ -637,7 +607,7 @@ SuggestedEditsModule.prototype.setupEditWidget = function ( $container ) {
 		if ( this.editWidget.isDisabled() ) {
 			return;
 		}
-		this.logEditTaskClick( 'se-edit-button-click' );
+		this.logEditTaskClick();
 	} );
 };
 

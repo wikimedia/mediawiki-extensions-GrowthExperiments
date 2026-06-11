@@ -123,26 +123,6 @@ describe( 'NoEditsDisplay', () => {
 		expect( global.window.history.replaceState ).toHaveBeenNthCalledWith( 1, null, null, '#/homepage/suggested-edits' );
 		expect( global.window.dispatchEvent ).toHaveBeenNthCalledWith( 1, new HashChangeEvent( 'hashchange' ) );
 	} );
-	it( 'logs scorecard interactions', () => {
-		const logSpy = jest.fn();
-		const wrapper = renderComponent( {
-			userName: 'Alice',
-			isDisabled: false,
-			isActivated: true,
-			data: null
-		}, {
-			$log: logSpy
-		} );
-		const scorecards = wrapper.findAllComponents( CScoreCard );
-		scorecards[ 0 ].vm.$emit( 'open' );
-		expect( logSpy ).toHaveBeenNthCalledWith( 1, 'impact', 'open-thanks-info-tooltip' );
-		scorecards[ 0 ].vm.$emit( 'close' );
-		expect( logSpy ).toHaveBeenNthCalledWith( 2, 'impact', 'close-thanks-info-tooltip' );
-		scorecards[ 1 ].vm.$emit( 'open' );
-		expect( logSpy ).toHaveBeenNthCalledWith( 3, 'impact', 'open-streak-info-tooltip' );
-		scorecards[ 1 ].vm.$emit( 'close' );
-		expect( logSpy ).toHaveBeenNthCalledWith( 4, 'impact', 'close-streak-info-tooltip' );
-	} );
 	it( 'displays different limits for edits and thanks in tooltips', () => {
 		const props = {
 			userName: 'Alice',

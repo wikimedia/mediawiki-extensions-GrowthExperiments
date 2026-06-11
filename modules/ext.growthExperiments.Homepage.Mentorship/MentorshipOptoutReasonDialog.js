@@ -1,11 +1,7 @@
 ( function () {
 	'use strict';
 
-	const AdaptiveSelectWidget = require( '../ui-components/AdaptiveSelectWidget.js' ),
-		HomepageModuleLogger = require( '../ext.growthExperiments.Homepage.Logger/index.js' ),
-		homepageModuleLogger = new HomepageModuleLogger(
-			mw.config.get( 'wgGEHomepagePageviewToken' ),
-		);
+	const AdaptiveSelectWidget = require( '../ui-components/AdaptiveSelectWidget.js' );
 
 	/**
 	 * @class mw.libs.ge.MentorshipOptoutReasonDialog
@@ -63,12 +59,6 @@
 
 	/** @inheritDoc **/
 	MentorshipOptoutReasonDialog.prototype.getActionProcess = function ( action ) {
-		if ( action === 'done' ) {
-			homepageModuleLogger.log( 'mentorship', this.mode, 'mentorship-optout', {
-				reasons: this.reasonSelect.findSelection(),
-			} );
-		}
-
 		return MentorshipOptoutReasonDialog.super.prototype.getActionProcess.call( this, action );
 	};
 

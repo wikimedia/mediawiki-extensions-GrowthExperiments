@@ -10,12 +10,11 @@
 	 * @param {Object} config
 	 * @param {string} [config.taskType] The task type (e.g. "copyedit").
 	 * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
-	 * @param {HomepageModuleLogger} logger
 	 * @param {Object} TASK_TYPES Data about each task type
 	 *
 	 * @constructor
 	 */
-	function TaskExplanationWidget( config, logger, TASK_TYPES ) {
+	function TaskExplanationWidget( config, TASK_TYPES ) {
 		TaskExplanationWidget.super.call( this, config );
 
 		this.taskType = config.taskType;
@@ -23,7 +22,6 @@
 		if ( !this.taskTypeData ) {
 			throw new Error( 'Unknown task type ' + this.taskType );
 		}
-		this.logger = logger;
 		this.mode = config.mode;
 
 		this.$element.append(
@@ -110,8 +108,6 @@
 					document.body.appendChild( drawer.$el[ 0 ] );
 					drawer.show();
 				}
-				this.logger.log( 'suggested-edits', this.mode, 'se-explanation-' +
-					( show ? 'open' : 'close' ), { taskType: this.taskType } );
 			}.bind( this ),
 		} );
 		return popupButtonWidget;
@@ -149,11 +145,7 @@
 		return $( '<p>' )
 			.append( $( '<a>' )
 				.text( mw.message( 'growthexperiments-homepage-suggestededits-tasktype-learn-more' ).text() )
-				.attr( 'href', mw.util.getUrl( this.taskTypeData.learnMoreLink ) )
-				.on( 'click', () => {
-					this.logger.log( 'suggested-edits', this.mode, 'se-explanation-link-click',
-						{ taskType: this.taskType } );
-				} ),
+				.attr( 'href', mw.util.getUrl( this.taskTypeData.learnMoreLink ) ),
 			);
 	};
 
