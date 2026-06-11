@@ -141,9 +141,4 @@ class WelcomeSurveyReminder extends BaseModule {
 		return $this->getBodyContent();
 	}
 
-	/** @inheritDoc */
-	public function getState() {
-		return $this->canRender() ? self::MODULE_STATE_ACTIVATED : self::MODULE_STATE_UNACTIVATED;
-	}
-
 }

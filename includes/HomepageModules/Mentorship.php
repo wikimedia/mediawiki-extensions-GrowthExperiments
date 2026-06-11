@@ -238,31 +238,6 @@ class Mentorship extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getActionData() {
-		$archivedQuestions = 0;
-		$unarchivedQuestions = 0;
-		foreach ( $this->getRecentQuestions() as $questionRecord ) {
-			if ( $questionRecord->isArchived() ) {
-				$archivedQuestions++;
-			} else {
-				$unarchivedQuestions++;
-			}
-		}
-
-		return array_merge(
-			parent::getActionData(),
-			[
-				'mentorEditCount' => $this->userEditTracker->getUserEditCount( $this->getMentor() ),
-				'mentorLastActive' => $this->userEditTracker->getLatestEditTimestamp( $this->getMentor() ),
-				'archivedQuestions' => $archivedQuestions,
-				'unarchivedQuestions' => $unarchivedQuestions,
-			]
-		);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function canRender() {
 		return $this->mentorManager->getMentorshipStateForUser(
 			$this->getUser()

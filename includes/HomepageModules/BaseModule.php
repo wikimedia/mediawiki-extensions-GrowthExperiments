@@ -14,13 +14,10 @@ use MediaWiki\Html\Html;
 abstract class BaseModule extends DashboardModule {
 
 	protected const BASE_CSS_CLASS = 'growthexperiments-homepage-module';
-	protected const MODULE_STATE_COMPLETE = 'complete';
-	protected const MODULE_STATE_INCOMPLETE = 'incomplete';
 	protected const MODULE_STATE_ACTIVATED = 'activated';
 	protected const MODULE_STATE_UNACTIVATED = 'unactivated';
 	protected const MODULE_STATE_NOEMAIL = 'noemail';
 	protected const MODULE_STATE_UNCONFIRMED = 'unconfirmed';
-	protected const MODULE_STATE_NOTRENDERED = 'notrendered';
 
 	/** @var Config */
 	private $wikiConfig;
@@ -135,16 +132,6 @@ abstract class BaseModule extends DashboardModule {
 	}
 
 	/**
-	 * Override this function to provide the state of this module. It will
-	 * be included in 'state' for all HomepageModule events.
-	 *
-	 * @return string
-	 */
-	public function getState() {
-		return '';
-	}
-
-	/**
 	 * Override this function to provide the action data of this module. It will
 	 * be included in 'action_data' for HomepageModule events.
 	 *
@@ -183,7 +170,6 @@ abstract class BaseModule extends DashboardModule {
 			'ext.growthExperiments.icons',
 		] );
 		$out->addJsConfigVars( [
-			'wgGEHomepageModuleState-' . $this->getName() => $this->getState(),
 			'wgGEHomepageModuleActionData-' . $this->getName() => $this->getActionData(),
 		] );
 	}

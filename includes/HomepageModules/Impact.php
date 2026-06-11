@@ -4,7 +4,6 @@ namespace GrowthExperiments\HomepageModules;
 
 use Exception;
 use GrowthExperiments\UserDatabaseHelper;
-use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactStore;
@@ -306,7 +305,9 @@ class Impact extends BaseModule {
 	}
 
 	/**
-	 * @inheritDoc
+	 * Gets the module state. Used only for analytics, in HomepageVisit events.
+	 *
+	 * @return string
 	 */
 	public function getState() {
 		if ( ( $this->canRender()
@@ -343,29 +344,6 @@ class Impact extends BaseModule {
 			$data['impact'] = $formattedUserImpact;
 		}
 		return $data;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getActionData(): array {
-		$userImpact = $this->getUserImpact();
-		$data = [
-			'no_cached_user_impact' => !$userImpact,
-		];
-		if ( $userImpact ) {
-			$formattedUserImpact = $this->getFormattedUserImpact();
-			$data = [
-				'timeframe_in_days' => ComputedUserImpactLookup::PAGEVIEW_DAYS,
-				'timeframe_edits_count' => $userImpact->getTotalEditsCount(),
-				'thanks_count' => $userImpact->getReceivedThanksCount(),
-				'last_edit_timestamp' => $userImpact->getLastEditTimestamp(),
-				'longest_streak_days_count' => $userImpact->getLongestEditingStreakCount(),
-				'top_articles_views_count' => $formattedUserImpact['topViewedArticlesCount'],
-				'total_pageviews_count' => $formattedUserImpact['totalPageviewsCount'],
-			];
-		}
-		return array_merge( parent::getActionData(), $data );
 	}
 
 	/**

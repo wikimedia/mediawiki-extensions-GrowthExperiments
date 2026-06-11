@@ -361,13 +361,6 @@ class SuggestedEdits extends BaseModule {
 		return $userOptionsLookup->getBoolOption( $user, self::ACTIVATED_PREF );
 	}
 
-	/** @inheritDoc */
-	public function getState() {
-		return self::isActivated( $this->getContext()->getUser(), $this->userOptionsManager ) ?
-			self::MODULE_STATE_ACTIVATED :
-			self::MODULE_STATE_UNACTIVATED;
-	}
-
 	/**
 	 * Get a suggested task set, with in-process caching.
 	 * @return TaskSet|StatusValue
@@ -834,26 +827,12 @@ class SuggestedEdits extends BaseModule {
 	protected function getActionData() {
 		$user = $this->getContext()->getUser();
 		$taskSet = $this->getTaskSet();
-		$topics = null;
-		if ( $taskSet instanceof TaskSet ) {
-			$topics = $taskSet->getFilters()->getTopicFilters();
-			$topicsMatchMode = $taskSet->getFilters()->getTopicFiltersMode();
-		}
 
-		// these will be updated on the client side as needed
 		$data = [
 			'taskTypes' => $this->taskTypeManager->getTaskTypesForUser( $user ),
 			'unavailableTaskTypes' => $this->taskTypeManager->getUnavailableTaskTypes( $user ),
 			'taskCount' => ( $taskSet instanceof TaskSet ) ? $taskSet->getTotalCount() : 0,
 		];
-		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsManager ) ) {
-			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopics( $user );
-			if ( $this->isTopicMatchModeEnabled( $this->getContext(), $this->userOptionsManager ) ) {
-				$data['topicsMatchMode'] = $topicsMatchMode ??
-					$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
-			}
-
-		}
 		return array_merge( parent::getActionData(), $data );
 	}
 
