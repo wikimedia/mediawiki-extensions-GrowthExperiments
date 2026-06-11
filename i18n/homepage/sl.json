@@ -116,7 +116,7 @@
 	"growthexperiments-homepage-impact-error-data-not-found-subtext": "Razmislite o urejanju in boljši seznanitvi s projektom {{SITENAME}}, nato pa se vrnite in si oglejte podatke o {{GENDER:|svojem}} urejevalskem vplivu.",
 	"growthexperiments-homepage-impact-error-data-not-found-subtext-third-person": "Vrnite se pozneje, da si ogledate podrobnosti vpliva urejanja.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Opmniki foruma za pomoč",
-	"growthexperiments-tour-response-tip-text": "Ko bo objavljen odgovor na {{GENDER:$1|vaše}} vprašanje, {{GENDER:$1|boste tu prejeli}} novo obvestilo.",
+	"growthexperiments-tour-response-tip-text": "Ko bo objavljen odgovor na {{GENDER:$1|vaše}} vprašanje, {{GENDER:$1|boste tu prejeli}} novo opozorilo.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Obvestila {{GENDER:$1|mentorja|mentorice|mentorja_ice}}",
 	"growthexperiments-tour-mentor-response-tip-personal-text": "Ko bo{{GENDER:$1|}} {{GENDER:$2|vaš mentor odgovoril|vaša mentorica odgovorila|vaš_a mentor_ica odgovoril_a}}, {{GENDER:$1|boste tu prejeli}} novo obvestilo.",
 	"growthexperiments-tour-response-button-okay": "Razumem",

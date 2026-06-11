@@ -8,7 +8,8 @@
 			"Klaas van Buiten",
 			"Mainframe98",
 			"Mar(c)",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Welkom}}, $1!",
@@ -54,7 +55,7 @@
 	"welcomesurvey-question-user-research-label": "Ik wil per e-mail benaderd worden over deelname aan gebruikersonderzoek",
 	"welcomesurvey-question-user-research-help": "Als u hiervoor kiest, kunnen we in de toekomst contact met u opnemen voor onderzoek om onze diensten te verbeteren.",
 	"welcomesurvey-reminder": "Help ons uw Wikipedia-ervaring te verbeteren door een paar vrijblijvende vragen te beantwoorden in onze welkomstenquête. $1",
-	"welcomesurvey-reminder-link": "De enquête invullen",
+	"welcomesurvey-reminder-link": "De vragenlijst invullen",
 	"welcomesurvey-reminder-dismiss": "Sluiten",
 	"welcomesurvey-mideditsignup-title": "Welkom, $1!",
 	"welcomesurvey-mideditsignup-body": "Bedankt voor het bewerken! U kunt nu de uitwerking van uw bijdragen zien en meer wijzigingsvoorstellen op uw startpagina krijgen.",
