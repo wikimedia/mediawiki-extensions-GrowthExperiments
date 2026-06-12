@@ -8,7 +8,8 @@
 			"Klaas van Buiten",
 			"Mainframe98",
 			"Mar(c)",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Welkom}}, $1!",
@@ -18,7 +19,7 @@
 	"welcomesurvey-save-btn": "Voltooien",
 	"welcomesurvey-skip-btn": "Deze vragen {{GENDER:$1|overslaan}}",
 	"welcomesurvey-close-btn": "Sluiten en teruggaan naar $1",
-	"welcomesurvey-privacy-policy-link-text": "Leer meer over data bij nieuwe editors",
+	"welcomesurvey-privacy-policy-link-text": "Leer meer over gegevens over nieuwe bewerkers",
 	"welcomesurvey-privacy-footer-text": "De Wikimedia Foundation gebruikt {{GENDER:$1|uw}} antwoorden om u te helpen bij het bewerken van {{SITENAME}}. [$2 Lees meer in onze privacyverklaring].",
 	"welcomesurvey-sidebar-editing-title": "Beginnen met bewerken",
 	"welcomesurvey-sidebar-editing-text": "Bijna elke pagina kan door iedereen bewerkt worden, en elk uur worden honderden bewerkingen gedaan om inhoud toe te voegen, fouten te verbeteren en leesbaarheid te vergroten. Indien {{GENDER:$1|u geïnteresseerd bent}} om bij te dragen, kunnen de volgende pagina's nuttig zijn voor {{GENDER:$1|u}}.",
@@ -52,7 +53,7 @@
 	"welcomesurvey-question-languages-placeholder": "Voeg {{PLURAL:$1|een taal|maximaal $1 talen}} toe...",
 	"welcomesurvey-question-languages-maximum": "U hebt het maximum aantal talen toegevoegd.",
 	"welcomesurvey-reminder": "Help ons uw Wikipedia-ervaring te verbeteren door een paar vrijblijvende vragen te beantwoorden in onze welkomstenquête. $1",
-	"welcomesurvey-reminder-link": "De enquête invullen",
+	"welcomesurvey-reminder-link": "De vragenlijst invullen",
 	"welcomesurvey-reminder-dismiss": "Sluiten",
 	"welcomesurvey-mideditsignup-title": "Welkom, $1!",
 	"welcomesurvey-mideditsignup-body": "Bedankt voor het bewerken! U kunt nu de uitwerking van uw bijdragen zien en meer wijzigingsvoorstellen op uw startpagina krijgen.",

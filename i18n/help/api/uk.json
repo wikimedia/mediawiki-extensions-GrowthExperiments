@@ -3,7 +3,8 @@
 		"authors": [
 			"Piramidion",
 			"Renamerr",
-			"Ата"
+			"Ата",
+			"Movses"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Працювати із запитаннями поточного користувача, поставленими через довідкову панель.",
@@ -15,5 +16,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Панель «Запитати в інших» (стара назва)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Панель «Запитати свого наставника» на домашній сторінці новачка (стара назва)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Відповідна назва (якщо вибрано), яку слід включити разом із запитанням.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Ви маєте бути авторизовані, щоб поставити запитання."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Ви маєте бути авторизовані, щоб поставити запитання.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Ви не можете поставити запитання своєму наставнику, якщо у вас немає наставника."
 }

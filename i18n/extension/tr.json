@@ -12,7 +12,8 @@
 			"MuratTheTurkish",
 			"Rapsar",
 			"SaldırganSincap",
-			"ToprakM"
+			"ToprakM",
+			"HakanIST"
 		]
 	},
 	"growthexperiments-desc": "Bu eklenti, Growth ekibinin yaptığı deneyleri içeriyor.",
@@ -85,5 +86,8 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Burada tanımlanan şablonları içeren maddeler, kullanıcılara bu görev türü için görev olarak gösterilmeyecektir.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Burada tanımlanan kategorileri içeren maddeler, kullanıcılara bu görev türü için görev olarak gösterilmeyecektir.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Bilgi kutusu şablonları",
-	"specialpages-group-growth-tools": "Büyüme araçları"
+	"growthexperiments-info-tooltip-close-label": "Kapat",
+	"specialpages-group-growth-tools": "Büyüme araçları",
+	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Başlık",
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Hayır"
 }
