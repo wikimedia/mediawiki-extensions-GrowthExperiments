@@ -130,8 +130,8 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 			__METHOD__
 		);
 		if ( $this->accessToken ) {
-			// TODO: Support app authentication with client ID / secret
-			// https://api.wikimedia.org/wiki/Documentation/Getting_started/Authentication#App_authentication
+			// TODO: Support client credentials flow with client ID / secret
+			// https://www.mediawiki.org/wiki/Wikimedia_APIs/Authentication#Client_credentials_flow
 			$request->setHeader( 'Authorization', "Bearer $this->accessToken" );
 		}
 		$request->setHeader( 'Content-Type', 'application/json' );
