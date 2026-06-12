@@ -24,17 +24,15 @@
 		font-weight: bold;
 	}
 
-	.oo-ui-iconWidget {
-		margin-right: 0.5em;
+	.growthexperiments-homepage-startemail-icon {
+		margin-right: @spacing-50;
+		.cdx-mixin-css-icon( @cdx-icon-message );
+		// Match the alignment from -address-wrapper
+		vertical-align: middle;
 
-		&:not( .oo-ui-image-progressive ) {
-			// Simulate #555, closest to @color-subtle
-			opacity: @opacity-icon-subtle;
-		}
-
-		body.mw-special-Homepage.growthexperiments-homepage-mobile-summary & {
-			// Make sure font size is consistent between desktop and mobile
-			font-size: 0.875em;
+		&.noemail {
+			.cdx-mixin-css-icon( @cdx-icon-message, @background-color-progressive );
+			vertical-align: middle;
 		}
 	}
 }

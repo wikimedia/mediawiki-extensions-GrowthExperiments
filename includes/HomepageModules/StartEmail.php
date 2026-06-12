@@ -6,7 +6,6 @@ use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
-use OOUI\IconWidget;
 
 class StartEmail extends BaseModule {
 
@@ -33,14 +32,6 @@ class StartEmail extends BaseModule {
 		} else {
 			$this->emailState = self::MODULE_STATE_NOEMAIL;
 		}
-	}
-
-	/** @inheritDoc */
-	protected function getModuleStyles() {
-		return array_merge(
-			parent::getModuleStyles(),
-			[ 'oojs-ui.styles.icons-alerts' ]
-		);
 	}
 
 	/** @inheritDoc */
@@ -91,13 +82,14 @@ class StartEmail extends BaseModule {
 
 	/**
 	 * Get the icon to put before the email address ('message' icon, either black or blue)
-	 * @return IconWidget
 	 */
-	protected function getEmailIcon() {
-		return new IconWidget( [
-			'icon' => 'message',
-			'flags' => $this->emailState === self::MODULE_STATE_NOEMAIL ? [ 'progressive' ] : [],
-		] );
+	protected function getEmailIcon(): string {
+		return Html::rawElement( 'span',
+			[
+				'class' => 'growthexperiments-homepage-startemail-icon' .
+					( $this->emailState === self::MODULE_STATE_NOEMAIL ? ' noemail' : '' ),
+			]
+		);
 	}
 
 	/**
