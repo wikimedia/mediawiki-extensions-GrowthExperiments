@@ -36,33 +36,15 @@ class MentorStatusManager {
 	/** @var string Preference key to store mentor's away timestamp */
 	public const MENTOR_AWAY_TIMESTAMP_PREF = 'growthexperiments-mentor-away-timestamp';
 
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
-
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var UserFactory */
-	private $userFactory;
-
-	private BlockManager $blockManager;
-
-	private IConnectionProvider $connectionProvider;
-
 	private HashBagOStuff $inprocessCache;
 
 	public function __construct(
-		UserOptionsManager $userOptionsManager,
-		UserIdentityLookup $userIdentityLookup,
-		UserFactory $userFactory,
-		BlockManager $blockManager,
-		IConnectionProvider $connectionProvider
+		private readonly UserOptionsManager $userOptionsManager,
+		private readonly UserIdentityLookup $userIdentityLookup,
+		private readonly UserFactory $userFactory,
+		private readonly BlockManager $blockManager,
+		private readonly IConnectionProvider $connectionProvider
 	) {
-		$this->userOptionsManager = $userOptionsManager;
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->userFactory = $userFactory;
-		$this->blockManager = $blockManager;
-		$this->connectionProvider = $connectionProvider;
 		$this->inprocessCache = new HashBagOStuff();
 	}
 
