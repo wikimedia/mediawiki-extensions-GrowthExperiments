@@ -3,6 +3,7 @@
 namespace GrowthExperiments\MentorDashboard\MentorTools;
 
 use GrowthExperiments\Config\Validation\StatusAwayValidator;
+use MediaWiki\Block\BlockManager;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -44,6 +45,8 @@ class MentorStatusManager {
 	/** @var UserFactory */
 	private $userFactory;
 
+	private BlockManager $blockManager;
+
 	private IConnectionProvider $connectionProvider;
 
 	private HashBagOStuff $inprocessCache;
@@ -52,11 +55,13 @@ class MentorStatusManager {
 		UserOptionsManager $userOptionsManager,
 		UserIdentityLookup $userIdentityLookup,
 		UserFactory $userFactory,
+		BlockManager $blockManager,
 		IConnectionProvider $connectionProvider
 	) {
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userFactory = $userFactory;
+		$this->blockManager = $blockManager;
 		$this->connectionProvider = $connectionProvider;
 		$this->inprocessCache = new HashBagOStuff();
 	}
@@ -129,8 +134,11 @@ class MentorStatusManager {
 	private function getAwayReasonUncached( UserIdentity $mentor, int $flags = 0 ): ?string {
 		// NOTE: (b)lock checking must be first. This is to make canChangeStatus() work for mentors
 		// who are blocked _and_ (manually) away.
-		$block = $this->userFactory->newFromUserIdentity( $mentor )
-			->getBlock( $flags );
+		// Use BlockManager directly (rather than User::getBlock()) and pass a null request, so that
+		// IP/cookie blocks tied to the current request are ignored. Those blocks only affect the
+		// mentor's own requests, not their mentees, so they must not mark the mentor as away (T426465).
+		$fromReplica = !DBAccessObjectUtils::hasFlags( $flags, IDBAccessObject::READ_LATEST );
+		$block = $this->blockManager->getBlock( $mentor, null, $fromReplica );
 		if ( $block !== null && $block->isSitewide() ) {
 			return self::AWAY_BECAUSE_BLOCK;
 		}

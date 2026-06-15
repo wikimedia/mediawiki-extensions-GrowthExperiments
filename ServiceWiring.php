@@ -731,6 +731,7 @@ return [
 			$services->getUserOptionsManager(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
+			$services->getBlockManager(),
 			$services->getConnectionProvider(),
 		);
 	},

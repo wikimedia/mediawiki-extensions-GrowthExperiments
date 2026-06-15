@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use MediaWiki\Block\AbstractBlock;
+use MediaWiki\Block\BlockManager;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
@@ -26,7 +27,7 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	private function getMockUserFactory( bool $userIsBlocked = false ): UserFactory {
+	private function getMockUserFactory(): UserFactory {
 		$userIdentity = $this->getTestMentor();
 		$user = $this->createMock( User::class );
 		$user->method( 'getName' )
@@ -34,19 +35,27 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$user->method( 'getId' )
 			->willReturn( $userIdentity->getId() );
 
-		if ( $userIsBlocked ) {
-			$block = $this->createMock( AbstractBlock::class );
-			$block->method( 'isSitewide' )
-				->willReturn( true );
-			$user->method( 'getBlock' )
-				->willReturn( $block );
-		}
-
 		$userFactory = $this->createMock( UserFactory::class );
 		$userFactory->method( 'newFromUserIdentity' )
 			->with( $userIdentity )
 			->willReturn( $user );
 		return $userFactory;
+	}
+
+	private function getMockBlockManager( bool $userIsBlocked ): BlockManager {
+		$blockManager = $this->createMock( BlockManager::class );
+		$block = null;
+		if ( $userIsBlocked ) {
+			$block = $this->createMock( AbstractBlock::class );
+			$block->method( 'isSitewide' )
+				->willReturn( true );
+		}
+		// A null request must be passed so that request-scoped (IP/cookie) blocks are ignored
+		// (T426465).
+		$blockManager->method( 'getBlock' )
+			->with( $this->getTestMentor(), null )
+			->willReturn( $block );
+		return $blockManager;
 	}
 
 	/**
@@ -69,7 +78,8 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		return new MentorStatusManager(
 			$userOptionsManager,
 			$this->createMock( UserIdentityLookup::class ),
-			$this->getMockUserFactory( $isMentorBlocked ),
+			$this->getMockUserFactory(),
+			$this->getMockBlockManager( $isMentorBlocked ),
 			$this->createMock( IConnectionProvider::class )
 		);
 	}
@@ -186,7 +196,8 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$manager = new MentorStatusManager(
 			$userOptionsManager,
 			$this->createMock( UserIdentityLookup::class ),
-			$this->getMockUserFactory( $isMentorBlocked ),
+			$this->getMockUserFactory(),
+			$this->getMockBlockManager( $isMentorBlocked ),
 			$this->createMock( IConnectionProvider::class )
 		);
 
