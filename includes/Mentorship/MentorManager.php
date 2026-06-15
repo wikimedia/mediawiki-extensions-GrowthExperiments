@@ -6,9 +6,9 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use InvalidArgumentException;
+use MediaWiki\Block\BlockManager;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use Psr\Log\LoggerInterface;
@@ -32,7 +32,7 @@ class MentorManager implements IMentorManager {
 		private MentorStore $mentorStore,
 		private MentorStatusManager $mentorStatusManager,
 		private MentorProvider $mentorProvider,
-		private UserFactory $userFactory,
+		private BlockManager $blockManager,
 		private UserIdentityUtils $userIdentityUtils,
 		private UserOptionsLookup $userOptionsLookup,
 		private UserOptionsManager $userOptionsManager,
@@ -44,7 +44,11 @@ class MentorManager implements IMentorManager {
 	 * @inheritDoc
 	 */
 	public function isUserIneligibleForMentorship( UserIdentity $user ): bool {
-		$block = $this->userFactory->newFromUserIdentity( $user )->getBlock();
+		// Use BlockManager directly (rather than User::getBlock()) and pass a null request, so that
+		// IP/cookie blocks tied to the current request are ignored. Those blocks only affect the
+		// user's own requests, and eligibility is also evaluated for other users (e.g. when
+		// assigning a mentor) or with no request at all (background reassignment jobs) (T426465).
+		$block = $this->blockManager->getBlock( $user, null );
 		return $this->getMentorshipStateForUser( $user ) === self::MENTORSHIP_OPTED_OUT ||
 			( $block && $block->isIndefinite() );
 	}

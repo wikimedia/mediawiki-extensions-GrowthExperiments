@@ -683,7 +683,7 @@ return [
 			$geServices->getMentorStore(),
 			$geServices->getMentorStatusManager(),
 			$geServices->getMentorProvider(),
-			$services->getUserFactory(),
+			$services->getBlockManager(),
 			$services->getUserIdentityUtils(),
 			$services->getUserOptionsLookup(),
 			$services->getUserOptionsManager(),
