@@ -8,9 +8,9 @@ use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditions;
 use GrowthExperiments\MentorDashboard\PersonalizedPraise\PraiseworthyConditionsLookup;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
+use MediaWiki\Block\BlockManager;
 use MediaWiki\User\Options\UserOptionsLookup;
-use MediaWiki\User\User;
-use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\Utils\MWTimestamp;
 use MediaWikiUnitTestCase;
@@ -60,18 +60,17 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 				[ $mentee, PraiseworthyConditionsLookup::WAS_PRAISED_PREF, IDBAccessObject::READ_NORMAL, false ],
 			] );
 
-		$userMock = $this->createMock( User::class );
-		$userMock->expects( $this->once() )
+		$blockManagerMock = $this->createMock( BlockManager::class );
+		$blockManagerMock->expects( $this->once() )
 			->method( 'getBlock' )
+			->with( $mentee, null )
 			->willReturn( null );
-		$userMock->expects( $this->once() )
+
+		$userIdentityUtilsMock = $this->createMock( UserIdentityUtils::class );
+		$userIdentityUtilsMock->expects( $this->once() )
 			->method( 'isNamed' )
-			->willReturn( true );
-		$userFactoryMock = $this->createMock( UserFactory::class );
-		$userFactoryMock->expects( $this->once() )
-			->method( 'newFromUserIdentity' )
 			->with( $mentee )
-			->willReturn( $userMock );
+			->willReturn( true );
 
 		$menteeImpactMock = $this->createMock( UserImpact::class );
 		$menteeImpactMock->expects( $this->once() )
@@ -90,7 +89,8 @@ class PraiseworthyConditionsLookupTest extends MediaWikiUnitTestCase {
 		$conditionsLookup = new PraiseworthyConditionsLookup(
 			$settingsMock,
 			$userOptionsLookupMock,
-			$userFactoryMock,
+			$blockManagerMock,
+			$userIdentityUtilsMock,
 			$mentorManagerMock
 		);
 		$this->assertEquals(

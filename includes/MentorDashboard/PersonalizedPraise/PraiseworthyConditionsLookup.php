@@ -8,9 +8,10 @@ use DateTime;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\UserImpact\UserImpact;
+use MediaWiki\Block\BlockManager;
 use MediaWiki\User\Options\UserOptionsLookup;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityUtils;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 use Wikimedia\Timestamp\TimestampFormat;
 
@@ -19,11 +20,6 @@ use Wikimedia\Timestamp\TimestampFormat;
  */
 class PraiseworthyConditionsLookup {
 
-	private PersonalizedPraiseSettings $settings;
-	private UserOptionsLookup $userOptionsLookup;
-	private UserFactory $userFactory;
-	private IMentorManager $mentorManager;
-
 	public const WAS_PRAISED_PREF = 'growthexperiments-mentorship-was-praised';
 	public const SKIPPED_UNTIL_PREF = 'growthexperiments-personalized-praise-skipped-until';
 
@@ -31,15 +27,12 @@ class PraiseworthyConditionsLookup {
 	public const SKIP_MENTEES_FOR_DAYS = 10;
 
 	public function __construct(
-		PersonalizedPraiseSettings $settings,
-		UserOptionsLookup $userOptionsLookup,
-		UserFactory $userFactory,
-		IMentorManager $mentorManager
+		private readonly PersonalizedPraiseSettings $settings,
+		private readonly UserOptionsLookup $userOptionsLookup,
+		private readonly BlockManager $blockManager,
+		private readonly UserIdentityUtils $userIdentityUtils,
+		private readonly IMentorManager $mentorManager
 	) {
-		$this->settings = $settings;
-		$this->userOptionsLookup = $userOptionsLookup;
-		$this->userFactory = $userFactory;
-		$this->mentorManager = $mentorManager;
 	}
 
 	/**
@@ -136,11 +129,13 @@ class PraiseworthyConditionsLookup {
 		// state. Personalized praise is not directly tied to Homepage, so relying on the
 		// preference value alone is sufficient.
 
-		$menteeUser = $this->userFactory->newFromUserIdentity( $mentee );
+		// Use BlockManager directly (rather than User::getBlock()) with a null request, so that
+		// IP/cookie blocks tied to the current request are ignored. Praiseworthiness is
+		// evaluated in maintenance scripts, so only user-specific blocks matter. (T426465).
 		return $this->userOptionsLookup->getBoolOption( $mentee, HomepageHooks::HOMEPAGE_PREF_ENABLE ) &&
 			$this->mentorManager->getMentorshipStateForUser( $mentee ) === IMentorManager::MENTORSHIP_ENABLED &&
-			$menteeUser->isNamed() &&
-			$menteeUser->getBlock() === null &&
+			$this->userIdentityUtils->isNamed( $mentee ) &&
+			$this->blockManager->getBlock( $mentee, null ) === null &&
 			!$this->wasMenteePraised( $mentee ) &&
 			!$this->isMenteeSkipped( $mentee );
 	}
