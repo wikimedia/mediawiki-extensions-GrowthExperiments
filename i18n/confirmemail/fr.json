@@ -5,12 +5,17 @@
 			"Gomoko",
 			"Nicolas NALLET",
 			"Pols12",
+			"SleaY",
 			"Tgr",
 			"Thibaut120094",
 			"Verdy p",
 			"Wladek92"
 		]
 	},
+	"growthexperiments-createacct-username-learn-more": "En savoir plus",
+	"growthexperiments-confirmemail-emaildescription": "Une adresse courriel est requise pour récupérer votre compte si vous perdez votre mot de passe ou si vous vous connectez depuis un emplacement inconnu ou un nouveau navigateur.",
+	"growthexperiments-confirmemail-email-optional": "Adresse de courriel",
+	"growthexperiments-confirmemail-email-recommended-flag": "(recommandé)",
 	"growthexperiments-confirmemail-emailhelp": "Un courriel est nécessaire pour récupérer votre compte en cas de perte de votre mot de passe.",
 	"growthexperiments-confirmemail-emailrecommended": "Adresse courriel (recommandée)",
 	"growthexperiments-confirmemail-emailwarning": "Vous devriez avoir reçu un courriel de notre part vous permettant de vérifier votre adresse.",
