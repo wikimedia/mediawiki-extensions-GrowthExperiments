@@ -626,6 +626,8 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 				$this->logger->warning( 'PageImages returned 0-height image for page {title}, {fileName}', [
 					'title' => $title->getDBkey(),
 					'fileName' => $imageFile->getName(),
+					'mimeType' => $imageFile->getMimeType(),
+					'mediaType' => $imageFile->getMediaType(),
 				] );
 			}
 
