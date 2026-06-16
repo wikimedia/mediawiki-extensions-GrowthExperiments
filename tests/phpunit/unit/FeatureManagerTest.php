@@ -39,7 +39,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 	public static function provideCreateAccountV1Scenarios(): iterable {
 		yield 'anon, mobile, not treatment group' => [
 			'anon',
-			SkinMinerva::class,
+			static fn () => SkinMinerva::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => null,
@@ -50,7 +50,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		yield 'anon, mobile, in treatment group' => [
 			'anon',
-			SkinMinerva::class,
+			static fn () => SkinMinerva::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
@@ -61,7 +61,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		yield 'not anon, mobile, in treatment group' => [
 			'logged-in',
-			SkinMinerva::class,
+			static fn () => SkinMinerva::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
@@ -72,7 +72,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		yield 'anon, not mobile, in treatment group' => [
 			'anon',
-			Skin::class,
+			static fn () => Skin::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
@@ -83,7 +83,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		yield 'anon, mobile, in treatment group, not enwiki' => [
 			'anon',
-			SkinMinerva::class,
+			static fn () => SkinMinerva::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V1 => IExperimentManager::VARIANT_TREATMENT,
@@ -101,10 +101,14 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testShouldShowCreateAccountV1(
 		string $userType,
-		string $skinClass,
+		\Closure $getSkinClass,
 		array $overrides,
 		bool $expectedResult
 	): void {
+		if ( !class_exists( SkinMinerva::class ) ) {
+			$this->markTestSKipped( 'Minerva is not available' );
+		}
+
 		if ( $userType === 'logged-in' ) {
 			$user = $this->createMock( User::class );
 			$user->method( 'isAnon' )->willReturn( false );
@@ -114,7 +118,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		}
 
 		/** @var Skin $skin */
-		$skin = $this->createMock( $skinClass );
+		$skin = $this->createMock( $getSkinClass() );
 
 		$sut = $this->getFeatureManager( $overrides );
 		$actualResult = $sut->shouldShowCreateAccountV1( $user, $skin );
