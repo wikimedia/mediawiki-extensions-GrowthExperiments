@@ -17,7 +17,7 @@
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hallo}} $2,\n\nBedankt voor het toevoegen van een e-mail aan uw {{SITENAME}}-account, geregistreerd vanaf IP-adres $1.\n\nKlik op de onderstaande knop om dit te bevestigen als het e-mailadres dat u aan uw account \"$2\" wilt koppelen:\n\n$3\n\nLet op: deze bevestigingscode <strong>vervalt op $4</strong>.\n\nBedankt,\n\n{{SITENAME}}\n\n----\n\nOm de bevestiging van het e-mailadres te annuleren (omdat je het account niet hebt geregistreerd of om een andere reden), klik je op deze annuleringslink:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "E-mailadres bevestigen",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hallo}} $2,\n\nBedankt voor het toevoegen van een e-mail aan uw {{SITENAME}}-account, geregistreerd vanaf IP-adres $1.\n\nKlik op de onderstaande koppeling om dit te bevestigen als het e-mailadres dat u aan uw account \"$2\" wilt koppelen:\n\n$3\n\nLet op: deze bevestigingscode verloopt bij $4.\n\nBedankt,\n\n{{SITENAME}}\n\n----\n\nOm de bevestiging van het e-mailadres te annuleren (omdat je het account niet hebt geregistreerd of om een andere reden), klik je op deze annuleringskoppeling:\n\n$5",
-	"growthexperiments-signupcampaign-title": "Bedankt voor het doneren! Word nu lid van de gemeenschap van redacteuren die Wikipedia vandaag beter maken",
+	"growthexperiments-signupcampaign-title": "Bedankt voor het doneren! Word nu lid van de gemeenschap van bewerkers die Wikipedia vandaag beter maken",
 	"growthexperiments-signupcampaign-body": "Het bewerken van Wikipedia kan zo simpel zijn als het toevoegen van een koppeling of het wijzigen van een woord. Ontvang suggesties voor pagina's in {{GENDER:|uw}} interessante onderwerpen nadat u uw account heeft aangemaakt!",
 	"growthexperiments-marketingvideocampaign-title": "Wikipedia is gebouwd door mensen zoals jij",
 	"growthexperiments-marketingvideocampaign-body": "280.000 bewerkers werken elke maand vrijwillig mee - doe jij ook mee?\n\nWe weten dat het maken van je eerste bewerking vaak intimiderend kan zijn, maar het is eigenlijk vrij eenvoudig. Vraag het maar aan onze toegewijde vrijwilligers, die je erover vertellen in deze video:",
@@ -25,11 +25,11 @@
 	"growthexperiments-signupcampaign-bullet1": "Voorgestelde artikelen in {{GENDER:|uw}} interesses",
 	"growthexperiments-signupcampaign-bullet2": "Vraag om hulp van een ervaren bewerker",
 	"growthexperiments-signupcampaign-bullet3": "Begin met kleine, gemakkelijke bewerkingen",
-	"growthexperiments-thankyoupage-title": "Wat fijn dat je een donateur bent. Maak een account aan om Wikipedia te kunnen bewerken en verbeteren.",
-	"growthexperiments-thankyoupage-body": "Wikipedia wordt gecreëerd door mensen zoals u die met elkaar werken. Het bewerken van een pagina is gemakkelijker dan u denkt!\n\nMet een account heb je toegang tot:",
+	"growthexperiments-thankyoupage-title": "Wat fijn dat u donateur bent. Maak een account aan om Wikipedia te kunnen bewerken en verbeteren.",
+	"growthexperiments-thankyoupage-body": "Wikipedia wordt gecreëerd door mensen zoals u die met elkaar werken. Het bewerken van een pagina is gemakkelijker dan u denkt!\n\nMet een account hebt u toegang tot:",
 	"growthexperiments-thankyoupage-body-mobile": "Wikipedia wordt gemaakt door mensen zoals u die met elkaar werken. Het bewerken van een pagina is gemakkelijker dan u denkt!",
 	"growthexperiments-thankyoupage-bullet1": "Eenvoudige taken die bij {{#FORMAL:uw|je}} interesses passen",
 	"growthexperiments-thankyoupage-bullet2": "Hulp en begeleiding tijdens het bewerken",
-	"growthexperiments-thankyoupage-bullet3": "Inzicht in hoeveel mensen je werk bekijken",
-	"growthexperiments-campaigns-footer": "Als je op deze pagina een account aanmaakt, wordt die voor ervarings- en analysedoeleinden aan deze campagne gekoppeld."
+	"growthexperiments-thankyoupage-bullet3": "Inzicht in hoeveel mensen uw werk bekijken",
+	"growthexperiments-campaigns-footer": "Als u op deze pagina een account aanmaakt, wordt die voor ervarings- en analysedoeleinden aan deze campagne gekoppeld."
 }

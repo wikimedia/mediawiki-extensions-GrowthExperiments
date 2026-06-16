@@ -300,7 +300,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Навука, тэхніка і матэматыка",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Культура",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Рэгіёны",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Мерапрыемства кампаніі",
+	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Падзея кампаніі",
 	"growthexperiments-homepage-suggestededits-articletopic-invalid-topic": "{{PLURAL:$2|Нераспазнаная назва тэмы|Нераспазнаныя назвы тэмаў}} для ключавога слова <kbd>growtharticletopic:</kbd>: $1",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Няслушная канфігурацыя прапанаваных правак: благая структура",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Няслушная канфігурацыя прапанаваных правак для задання тыпу «$1»: «$2» павінна быць цэлым лікам",

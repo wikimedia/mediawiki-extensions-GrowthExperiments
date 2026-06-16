@@ -5,7 +5,8 @@
 			"Maksim L.",
 			"No Sleep till Krupki",
 			"Plaga med",
-			"Tomato Cream"
+			"Tomato Cream",
+			"Ucukor"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Вітаем}}, $1!",
@@ -28,7 +29,7 @@
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Каб дадаць або змяніць звесткі ў артыкуле Вікіпедыі",
 	"welcomesurvey-question-reason-option-add-image-label": "Каб дадаць фатаграфію або выяву ў артыкул Вікіпедыі",
 	"welcomesurvey-question-reason-option-new-page-label": "Каб стварыць новы артыкул у Вікіпедыі",
-	"welcomesurvey-question-reason-option-program-participant-label": "Я ўдзельнічаю ў праграме, класе або мерапрыемстве",
+	"welcomesurvey-question-reason-option-program-participant-label": "Я ўдзельнічаю ў праграме, класе або падзеі",
 	"welcomesurvey-question-reason-option-read-label": "Каб чытаць Вікіпедыю",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Іншая прычына",
 	"welcomesurvey-question-reason-option-other-label": "Іншае (калі ласка, апішыце)",
