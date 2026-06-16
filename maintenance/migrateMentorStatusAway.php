@@ -46,6 +46,9 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 	protected function doDBUpdates(): LoggedUpdateOutcome {
 		$this->initServices();
 
+		$successStatus = $this->hasOption( 'dry-run' ) ? LoggedUpdateOutcome::SIMULATED :
+			LoggedUpdateOutcome::COMPLETE;
+
 		$user = User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] );
 		if ( !$user ) {
 			$this->fatalError( 'Failed to create user' );
@@ -55,7 +58,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 		$store = $provider->getStore();
 		if ( $store instanceof WikiPageStore && !$store->getConfigurationTitle()->exists() ) {
 			$this->output( "No configuration page found, skipping..." );
-			return LoggedUpdateOutcome::COMPLETE;
+			return $successStatus;
 		}
 		// $this->titleFactory->newFromTextThrow( $this->configLocation );
 		$loadStatus = $provider->loadValidConfigurationUncached();
@@ -76,7 +79,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 
 		if ( !$config[ CommunityStructuredMentorWriter::CONFIG_KEY ] ) {
 			$this->output( "No mentors found in config, skipping migration.\n" );
-			return LoggedUpdateOutcome::COMPLETE;
+			return $successStatus;
 		}
 
 		foreach ( $config[ CommunityStructuredMentorWriter::CONFIG_KEY ] as $mentorId => $mentorData ) {
@@ -104,11 +107,7 @@ class MigrateMentorStatusAway extends LoggedUpdateMaintenance {
 		if ( !$additions && !$deletions ) {
 			$this->output( "Nothing new to save, skipping\n" );
 
-			if ( $this->hasOption( 'dry-run' ) ) {
-				return LoggedUpdateOutcome::SIMULATED;
-			} else {
-				return LoggedUpdateOutcome::COMPLETE;
-			}
+			return $successStatus;
 		}
 		if ( $this->hasOption( 'dry-run' ) ) {
 			$this->output( "There are changes:\n" );
