@@ -40,7 +40,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 	public static function provideCreateAccountV2Scenarios(): iterable {
 		yield 'anon, mobile, not treatment group' => [
 			'anon',
-			SkinMinerva::class,
+			static fn () => SkinMinerva::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => null,
@@ -52,7 +52,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		yield 'anon, mobile, in treatment group' => [
 			'anon',
-			SkinMinerva::class,
+			static fn () => SkinMinerva::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
@@ -64,7 +64,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		yield 'anon, mobile, in treatment group via request' => [
 			'anon',
-			SkinMinerva::class,
+			static fn () => SkinMinerva::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => null,
@@ -76,7 +76,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		yield 'not anon, mobile, in treatment group' => [
 			'logged-in',
-			SkinMinerva::class,
+			static fn () => SkinMinerva::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
@@ -88,7 +88,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		yield 'anon, not mobile, in treatment group' => [
 			'anon',
-			Skin::class,
+			static fn () => Skin::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
@@ -100,7 +100,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		yield 'anon, mobile, in treatment group, not enwiki' => [
 			'anon',
-			SkinMinerva::class,
+			static fn () => SkinMinerva::class,
 			[
 				'defaultVariant' => [
 					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
@@ -119,11 +119,15 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testShouldShowCreateAccountV2(
 		string $userType,
-		string $skinClass,
+		\Closure $getSkinClass,
 		array $overrides,
 		?array $requestOverride,
 		bool $expectedResult
 	): void {
+		if ( !class_exists( SkinMinerva::class ) ) {
+			$this->markTestSKipped( 'Minerva is not available' );
+		}
+
 		if ( $userType === 'logged-in' ) {
 			$user = $this->createMock( User::class );
 			$user->method( 'isAnon' )->willReturn( false );
@@ -133,7 +137,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		}
 
 		/** @var Skin $skin */
-		$skin = $this->createMock( $skinClass );
+		$skin = $this->createMock( $getSkinClass() );
 		$request = $this->createMock( WebRequest::class );
 		$request->method( 'getArray' )
 			->with( 'experiments' )
