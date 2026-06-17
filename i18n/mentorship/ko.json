@@ -70,7 +70,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-text": "멘토링을 영구적으로 그만두고 싶은 경우, Special:QuitMentorship을 통해 가능합니다. \"OK\"를 누르면 해당 문서로 이동합니다.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "멘토 상태",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "활동 중",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "부재중",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "부재 중",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "$1까지 자리를 비웠으므로 멘티는 일시적으로 다른 멘토에게 재배정됩니다.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-block": "{{GENDER:|당신}}은 현재 차단되었습니다. {{GENDER:|당신}}의 상태는 일시적으로 \"부재중\"으로 설정되었으며, {{GENDER:|당신}}의 멘티는 일시적으로 다른 멘토에게 배정되었습니다. {{GENDER:|당신}}의 차단이 해제되거나 차단 기간이 만료되면, {{GENDER:|당신}}의 상태는 \"활동 중\"으로 설정되고 {{GENDER:|당신}}의 멘티는 다시 {{GENDER:|당신}}에게 배정됩니다.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-error-cannot-be-changed-block": "{{GENDER:|당신}}은 현재 차단되었습니다. 차단된 상태에서는 {{GENDER:|당신}}의 멘토링 상태를 변경할 수 없습니다.",

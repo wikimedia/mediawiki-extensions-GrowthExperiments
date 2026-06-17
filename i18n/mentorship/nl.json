@@ -81,7 +81,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Als ‘afwezig’ instellen",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Annuleren",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pauzeren",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Als {{GENDER:|u}} gedurende een bepaalde periode (meer dan 1 week) geen mentor kan zijn, kan {{GENDER:|u}} {{GENDER:|zichzelf}} als afwezig instellen. In die periode krijgt een andere mentor vragen van {{GENDER:|uw}} leerlingen.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "Als {{GENDER:|u}} gedurende een specifieke periode (meer dan 1 week) geen mentor kan zijn, kan {{GENDER:|u}} {{GENDER:|zichzelf}} als afwezig instellen. In die periode krijgt een andere mentor vragen van {{GENDER:|uw}} leerlingen.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "U bent weg gedurende:",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dagen",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh": "Het maximum aantal dagen dat een mentor afwezig kan zijn is $1 (één jaar).",
