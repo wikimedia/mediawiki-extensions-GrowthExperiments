@@ -4,6 +4,7 @@ namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\Mentorship\Cleaner\LastActionTimestampLookup;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorRemover;
 use GrowthExperiments\Mentorship\Provider\IMentorWriter;
@@ -18,7 +19,6 @@ use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\Utils\MWTimestamp;
@@ -30,7 +30,7 @@ class SpecialManageMentors extends SpecialPage {
 
 	public function __construct(
 		private UserIdentityLookup $userIdentityLookup,
-		private UserEditTracker $userEditTracker,
+		private LastActionTimestampLookup $lastActionTimestampLookup,
 		private MentorProvider $mentorProvider,
 		private IMentorWriter $mentorWriter,
 		private MentorStatusManager $mentorStatusManager,
@@ -72,7 +72,9 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	private function getLastActiveTimestamp( UserIdentity $user ): MWTimestamp {
-		return new MWTimestamp( $this->userEditTracker->getLatestEditTimestamp( $user ) );
+		return new MWTimestamp(
+			$this->lastActionTimestampLookup->getLastActionTimestampForUser( $user ) ?? 0
+		);
 	}
 
 	private function makeUserLink( UserIdentity $user ): string {

@@ -2937,7 +2937,7 @@
 			"class": "GrowthExperiments\\Specials\\SpecialManageMentors",
 			"services": [
 				"UserIdentityLookup",
-				"UserEditTracker",
+				"GrowthExperimentsLastActionTimestampLookup",
 				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorWriter",
 				"GrowthExperimentsMentorStatusManager",

@@ -68,7 +68,7 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 
 		return new SpecialManageMentors(
 			$this->getServiceContainer()->getUserIdentityLookup(),
-			$this->getServiceContainer()->getUserEditTracker(),
+			$geServices->getLastActionTimestampLookup(),
 			$geServices->getMentorProvider(),
 			$geServices->getMentorWriter(),
 			$geServices->getMentorStatusManager(),
