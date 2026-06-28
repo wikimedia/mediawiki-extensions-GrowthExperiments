@@ -51,7 +51,7 @@ class QuestionFormatter {
 				],
 				$this->questionRecord->getQuestionText()
 			)
-		) .	$this->getPostedOnHtml();
+		) . $this->getPostedOnHtml();
 	}
 
 	private function formatArchived(): string {

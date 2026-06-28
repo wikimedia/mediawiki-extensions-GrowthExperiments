@@ -67,7 +67,7 @@ Cypress.Commands.add( 'setUserOptions', ( options ): void => {
 	 * There are several tests that reuse existing user sessions for performance reasons.
 	 * To reduce the likelihood of tests accidentally depending on each other via user options,
 	 * this method resets all options except those in the parameter back to defaults and
-	 * enforces that only options which have a defined default here can be overriden by the
+	 * enforces that only options which have a defined default here can be overridden by the
 	 * parameter.
 	 */
 	const defaultUserOptions = {

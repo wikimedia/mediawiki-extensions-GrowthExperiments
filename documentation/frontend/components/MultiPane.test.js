@@ -75,7 +75,7 @@ describe( 'MultiPane', () => {
 		} );
 	} );
 
-	it( 'currentStep prop value should react to rigth swipe gestures and navigate back', () => {
+	it( 'currentStep prop value should react to right swipe gestures and navigate back', () => {
 		const wrapper = renderComponent(
 			{
 				currentStep: 2,
