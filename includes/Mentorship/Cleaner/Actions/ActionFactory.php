@@ -37,7 +37,7 @@ class ActionFactory {
 	];
 
 	/** @var IAction[] Map of class name => instance of action */
-	private array $instanceCache;
+	private array $instanceCache = [];
 
 	public function __construct(
 		private ServiceOptions $options,
