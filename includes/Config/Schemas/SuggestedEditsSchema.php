@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Config\Schemas;
 
 use GrowthExperiments\Config\Schemas\Converters\SuggestedEditsSchemaConverter_2_0_0;
@@ -12,12 +14,12 @@ use MediaWiki\Extension\CommunityConfiguration\Schemas\MediaWiki\MediaWikiDefini
 
 // phpcs:disable Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
 class SuggestedEditsSchema extends JsonSchema {
-	public const VERSION = '2.0.0';
-	public const SCHEMA_PREVIOUS_VERSION = '1.0.0';
-	public const SCHEMA_CONVERTER = SuggestedEditsSchemaConverter_2_0_0::class;
+	public const string VERSION = '2.0.0';
+	public const string SCHEMA_PREVIOUS_VERSION = '1.0.0';
+	public const string SCHEMA_CONVERTER = SuggestedEditsSchemaConverter_2_0_0::class;
 
-	public const MAX_INFOBOX_TEMPLATES = 800;
-	public const GEInfoboxTemplates = [
+	public const int MAX_INFOBOX_TEMPLATES = 800;
+	public const array GEInfoboxTemplates = [
 		self::TYPE => self::TYPE_ARRAY,
 		self::ITEMS => [
 			self::TYPE => self::TYPE_STRING,
@@ -29,28 +31,28 @@ class SuggestedEditsSchema extends JsonSchema {
 	];
 
 	// ***** TEMPLATE BASED TASKS *****
-	public const copyedit = [
+	public const array copyedit = [
 		self::REF => [ 'class' => GrowthDefinitions::class, 'field' => 'TEMPLATE_BASED_TASK' ],
 	];
 
-	public const expand = [
+	public const array expand = [
 		self::REF => [ 'class' => GrowthDefinitions::class, 'field' => 'TEMPLATE_BASED_TASK' ],
 	];
 
-	public const links = [
+	public const array links = [
 		self::REF => [ 'class' => GrowthDefinitions::class, 'field' => 'TEMPLATE_BASED_TASK' ],
 	];
 
-	public const references = [
+	public const array references = [
 		self::REF => [ 'class' => GrowthDefinitions::class, 'field' => 'TEMPLATE_BASED_TASK' ],
 	];
 
-	public const update = [
+	public const array update = [
 		self::REF => [ 'class' => GrowthDefinitions::class, 'field' => 'TEMPLATE_BASED_TASK' ],
 	];
 
 	// ***** STRUCTURED TASKS *****
-	public const image_recommendation = [
+	public const array image_recommendation = [
 		self::TYPE => self::TYPE_OBJECT,
 		self::PROPERTIES => [
 			'disabled' => [
@@ -76,7 +78,7 @@ class SuggestedEditsSchema extends JsonSchema {
 		],
 	];
 
-	public const section_image_recommendation = [
+	public const array section_image_recommendation = [
 		self::TYPE => self::TYPE_OBJECT,
 		self::PROPERTIES => [
 			'disabled' => [
@@ -102,7 +104,7 @@ class SuggestedEditsSchema extends JsonSchema {
 		],
 	];
 
-	public const link_recommendation = [
+	public const array link_recommendation = [
 		self::TYPE => self::TYPE_OBJECT,
 		self::PROPERTIES => [
 			'disabled' => [

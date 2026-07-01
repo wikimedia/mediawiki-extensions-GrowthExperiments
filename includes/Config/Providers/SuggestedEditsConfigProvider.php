@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Config\Providers;
 
 use GrowthExperiments\FeatureManager;
@@ -13,7 +15,7 @@ use stdClass;
 
 class SuggestedEditsConfigProvider extends DataProvider {
 
-	private const MAP_TASKS_PER_GROUP = [
+	private const array MAP_TASKS_PER_GROUP = [
 		'copyedit' => 'easy',
 		'links' => 'easy',
 		'references' => 'medium',
@@ -24,15 +26,15 @@ class SuggestedEditsConfigProvider extends DataProvider {
 		'link_recommendation' => 'easy',
 		'revise_tone' => 'easy',
 	];
-	private const DEFAULT_GROUP = 'unknown';
+	private const string DEFAULT_GROUP = 'unknown';
 
-	private const MAP_TASK_TYPES = [
+	private const array MAP_TASK_TYPES = [
 		'image_recommendation' => 'image-recommendation',
 		'section_image_recommendation' => 'section-image-recommendation',
 		'link_recommendation' => 'link-recommendation',
 		'revise_tone' => 'revise-tone',
 	];
-	private const DEFAULT_TASK_TYPE = 'template-based';
+	private const string DEFAULT_TASK_TYPE = 'template-based';
 
 	public function __construct(
 		ProviderServicesContainer $providerServicesContainer,
