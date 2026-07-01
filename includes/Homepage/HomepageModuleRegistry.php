@@ -113,7 +113,6 @@ class HomepageModuleRegistry {
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getGrowthExperimentsCampaignConfig(),
-					$growthServices->getFeatureManager(),
 					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null,
 					$growthServices->getNewcomerTasksConfigurationLoader(),
 					$growthServices->getNewcomerTasksUserOptionsLookup(),

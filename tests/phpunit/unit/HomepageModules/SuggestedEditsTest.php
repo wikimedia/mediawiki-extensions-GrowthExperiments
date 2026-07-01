@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
@@ -69,84 +68,6 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$this->assertCount( 1, $widgetItems );
 	}
 
-	public function testAddsReviseToneIfNotInitiated(): void {
-		if ( !interface_exists( PageViewService::class ) ) {
-			$this->markTestSkipped( 'PageViewService not installed' );
-		}
-		$taskTypeManager = $this->createMock( TaskTypeManager::class );
-		$taskTypeManager->method( 'getTaskTypesForUser' )->willReturn( [ 'copyedit' ] );
-		$user = $this->createMock( User::class );
-		$userOptionsManagerMock = $this->createMock( UserOptionsManager::class );
-		$userOptionsManagerMock->method( 'getOption' )->willReturnCallback( static function ( $user, $option ) {
-			return match ( $option ) {
-				'growthexperiments-revise-tone-treatment-initiated' => null,
-				default => null,
-			};
-		}
-		);
-		$expectedSets = [
-			[
-				$user,
-				'growthexperiments-revise-tone-treatment-initiated',
-				true,
-			],
-			[
-				$user,
-				'growthexperiments-homepage-se-filters',
-				'["copyedit","revise-tone"]',
-			],
-		];
-		$userOptionsManagerMock->expects( $this->exactly( 2 ) )
-			->method( 'setOption' )
-			->willReturnCallback( function (
-				UserIdentity $user,
-				string $option,
-				mixed $value
-			) use ( &$expectedSets )  {
-				$this->assertSame(
-					array_shift( $expectedSets ),
-					[ $user, $option, $value ]
-				);
-			} );
-
-		$featureManagerMock = $this->createMock( FeatureManager::class );
-		$featureManagerMock->method( 'shouldShowReviseToneTasksForUser' )->willReturn( true );
-		$suggestedEdits = $this->getSuggestedEdits( [
-			'user' => $user,
-			'userOptionsManager' => $userOptionsManagerMock,
-			'featureManager' => $featureManagerMock,
-			'taskTypeManager' => $taskTypeManager,
-		] );
-
-		$suggestedEdits->render( SuggestedEdits::RENDER_DESKTOP );
-	}
-
-	public function testAddsNoReviseToneIfInitiated(): void {
-		$taskTypeManager = $this->createMock( TaskTypeManager::class );
-		$taskTypeManager->method( 'getTaskTypesForUser' )->willReturn( [ 'copyedit' ] );
-		$user = $this->createMock( User::class );
-		$userOptionsManagerMock = $this->createMock( UserOptionsManager::class );
-		$userOptionsManagerMock->method( 'getOption' )->willReturnCallback( static function ( $user, $option ) {
-			return match ( $option ) {
-				'growthexperiments-revise-tone-treatment-initiated' => true,
-				default => null,
-			};
-		}
-		);
-		$userOptionsManagerMock->expects( $this->never() )->method( 'setOption' );
-
-		$featureManagerMock = $this->createMock( FeatureManager::class );
-		$featureManagerMock->method( 'shouldShowReviseToneTasksForUser' )->willReturn( true );
-		$suggestedEdits = $this->getSuggestedEdits( [
-			'user' => $user,
-			'userOptionsManager' => $userOptionsManagerMock,
-			'featureManager' => $featureManagerMock,
-			'taskTypeManager' => $taskTypeManager,
-		] );
-
-		$suggestedEdits->render( SuggestedEdits::RENDER_DESKTOP );
-	}
-
 	private function getSuggestedEdits( array $overrides = [] ): SuggestedEdits {
 		if ( !interface_exists( PageViewService::class ) ) {
 			$this->markTestSkipped( 'PageViewService not installed' );
@@ -188,13 +109,6 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$contextMock->method( 'msg' )
 			->willReturn( $this->getMockMessage() );
 
-		if ( isset( $overrides[ 'featureManager' ] ) ) {
-			$featureManagerMock = $overrides[ 'featureManager' ];
-		} else {
-			$featureManagerMock = $this->createMock( FeatureManager::class );
-			$featureManagerMock->method( 'shouldShowReviseToneTasksForUser' )->willReturn( false );
-		}
-
 		$pageViewServiceMock = $this->createMock( PageViewService::class );
 		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_HARD );
 		$staticConfigLoader = new StaticConfigurationLoader( [ $taskType ] );
@@ -233,7 +147,6 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$contextMock,
 			GlobalVarConfig::newInstance(),
 			$campaignConfig,
-			$featureManagerMock,
 			$pageViewServiceMock,
 			$staticConfigLoader,
 			$newcomerTasksUserOptionsLookupMock,

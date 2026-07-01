@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
@@ -130,7 +129,6 @@ class SuggestedEdits extends BaseModule {
 		IContextSource $context,
 		Config $wikiConfig,
 		private CampaignConfig $campaignConfig,
-		private readonly FeatureManager $featureManager,
 		private ?PageViewService $pageViewService,
 		private ConfigurationLoader $configurationLoader,
 		private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
@@ -376,29 +374,6 @@ class SuggestedEdits extends BaseModule {
 			// TODO also reset cache in ImageRecommendationFilter
 		}
 		$taskTypes = $this->taskTypeManager->getTaskTypesForUser( $user );
-
-		if (
-			$this->featureManager->shouldShowReviseToneTasksForUser( $user ) &&
-			!$this->userOptionsManager->getOption( $user, 'growthexperiments-revise-tone-treatment-initiated' )
-		) {
-			// TODO: Remove after end of ReviseTone A/B test: T409466
-			$this->userOptionsManager->setOption(
-				$user,
-				'growthexperiments-revise-tone-treatment-initiated',
-				true,
-			);
-			$taskTypes = array_unique( [
-				...$taskTypes,
-				ReviseToneTaskTypeHandler::TASK_TYPE_ID,
-			] );
-			$this->userOptionsManager->setOption(
-				$user,
-				self::TASKTYPES_PREF,
-				json_encode( $taskTypes ),
-			);
-			$this->userOptionsManager->saveOptions( $user );
-		}
-
 		$topics = $this->newcomerTasksUserOptionsLookup->getTopics( $user );
 		$topicsMatchMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
 		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics, $topicsMatchMode );
