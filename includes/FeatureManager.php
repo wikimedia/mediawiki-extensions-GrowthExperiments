@@ -7,7 +7,6 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Skin\Skin;
 use MediaWiki\User\User;
-use MediaWiki\User\UserIdentity;
 
 class FeatureManager {
 	private IExperimentManager $experimentManager;
@@ -44,14 +43,6 @@ class FeatureManager {
 			$this->extensionRegistry->isLoaded( 'VisualEditor' );
 	}
 
-	public function isReviseToneTasksTypeEnabled(): bool {
-		return $this->isNewcomerTasksAvailable() &&
-			// CirrusSearch is not available in patchdemo
-			// $extensionRegistry->isLoaded( 'CirrusSearch' ) &&
-			$this->extensionRegistry->isLoaded( 'VisualEditor' ) &&
-			$this->growthConfig->get( 'GEReviseToneSuggestedEditEnabled' );
-	}
-
 	/**
 	 * Should TestKitchen extension be used?
 	 *
@@ -59,13 +50,6 @@ class FeatureManager {
 	 */
 	public function useTestKitchen(): bool {
 		return $this->extensionRegistry->isLoaded( 'TestKitchen' );
-	}
-
-	public function shouldShowReviseToneTasksForUser( UserIdentity $user ): bool {
-		return $this->isReviseToneTasksTypeEnabled() && (
-			$this->experimentManager->getAssignedGroup( IExperimentManager::REVISE_TONE_EXPERIMENT ) ===
-				IExperimentManager::VARIANT_TREATMENT
-			);
 	}
 
 	public function shouldShowCreateAccountV2( ?User $user, Skin $skin, WebRequest $request ): bool {

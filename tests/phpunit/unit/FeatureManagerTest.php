@@ -14,28 +14,12 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Skin\Skin;
 use MediaWiki\User\User;
-use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
  * @covers \GrowthExperiments\FeatureManager
  */
 class FeatureManagerTest extends MediaWikiUnitTestCase {
-	public function testShouldShowReviseToneTasksForUser() {
-		$sut = $this->getFeatureManager( [ 'defaultVariant' => [
-			'growthexperiments-revise-tone' => 'treatment',
-		] ] );
-		$user = new UserIdentityValue( 0, __CLASS__ );
-		$this->assertTrue( $sut->shouldShowReviseToneTasksForUser( $user ) );
-	}
-
-	public function testShouldNotShowReviseToneTasksForUser() {
-		$sut = $this->getFeatureManager( [ 'defaultVariant' => [
-			'growthexperiments-revise-tone' => 'control',
-		] ] );
-		$user = new UserIdentityValue( 0, __CLASS__ );
-		$this->assertFalse( $sut->shouldShowReviseToneTasksForUser( $user ) );
-	}
 
 	public static function provideCreateAccountV2Scenarios(): iterable {
 		yield 'anon, mobile, not treatment group' => [
