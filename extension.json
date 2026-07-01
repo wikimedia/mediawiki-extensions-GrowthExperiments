@@ -642,15 +642,6 @@
 				"GrowthExperimentsUserImpactLookup_Computed",
 				"MainConfig"
 			]
-		},
-		{
-			"events": [
-				"PageLatestRevisionChanged"
-			],
-			"class": "GrowthExperiments\\NewcomerTasks\\MediaWikiEventIngress\\ReviseToneExperimentEditIngress",
-			"services": [
-				"GrowthExperimentsReviseToneExperimentInteractionLogger"
-			]
 		}
 	],
 	"ResourceFileModulePaths": {
@@ -1145,7 +1136,6 @@
 				"SuggestionGroupWidget.js",
 				"../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
-				"../ext.growthExperiments.StructuredTask/revisetone/useExperiment.js",
 				"../ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"../utils/Utils.js",
 				"../utils/IconUtils.js",
@@ -1372,7 +1362,6 @@
 				"ext.growthExperiments.StructuredTask/addsectionimage/RecommendedSectionImageRejectionDialog.js",
 				"ext.growthExperiments.StructuredTask/revisetone/ReviseToneInitializer.js",
 				"ext.growthExperiments.StructuredTask/revisetone/GrowthSuggestionToneCheck.js",
-				"ext.growthExperiments.StructuredTask/revisetone/useExperiment.js",
 				"utils/SimpleLevenshtein.js",
 				"utils/Utils.js",
 				"ui-components/HelpPanelButton.js",
@@ -1597,13 +1586,10 @@
 				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/QuizGame.vue",
 				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/ReviseToneOnboarding.vue",
 				"ext.growthExperiments.StructuredTask.PreEdit/revisetone/quizData.json",
-				"ext.growthExperiments.StructuredTask/revisetone/useExperiment.js",
-				"ext.growthExperiments.StructuredTask/revisetone/ReviseToneInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask.PreEdit/App.vue",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
-				"ext.growthExperiments.StructuredTask/revisetone/useExperiment.js",
 				"vue-components/MultiPane.vue",
 				"ui-components/MultiPaneDialog.js",
 				"ui-components/SwipePane.js",

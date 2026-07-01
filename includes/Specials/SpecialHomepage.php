@@ -3,14 +3,12 @@
 namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\DashboardModule\IDashboardModule;
-use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\Mentorship\IMentorManager;
-use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
@@ -47,7 +45,6 @@ class SpecialHomepage extends SpecialPage {
 		private readonly Config $wikiConfig,
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly TitleFactory $titleFactory,
-		private readonly ReviseToneExperimentInteractionLogger $experimentInteractionLogger,
 	) {
 		parent::__construct( 'Homepage' );
 		$this->pageviewToken = $this->generatePageviewToken();
@@ -131,15 +128,8 @@ class SpecialHomepage extends SpecialPage {
 				$this->isMobile,
 				$modules
 			);
-			DeferredUpdates::addCallableUpdate( function () use ( $logger ) {
+			DeferredUpdates::addCallableUpdate( static function () use ( $logger ) {
 				$logger->log();
-				// Log page visits with the SE module enabled for the refined experiment exposure metric, remove after
-				// T407802 is concluded
-				if ( SuggestedEdits::isEnabledForAnyone( $this->wikiConfig ) ) {
-					$this->experimentInteractionLogger->log( 'experiment_exposure', [
-						'instrument_name' => 'Newcomer\'s homepage visited with SE module enabled',
-					] );
-				}
 			} );
 
 		}
@@ -459,19 +449,6 @@ class SpecialHomepage extends SpecialPage {
 				->setLabel( 'action', $statsAction )
 				->increment();
 
-		if ( $taskTypeId === ReviseToneTaskTypeHandler::TASK_TYPE_ID ) {
-			$this->experimentInteractionLogger->log( 'click', [
-				'instrument_name' => 'Revise tone homepage card click',
-				'action_source' => 'Suggested-Edits-1',
-				'action_subtype' => 'revise-tone-card',
-			] );
-		} elseif ( $taskTypeId === 'copyedit' ) {
-			$this->experimentInteractionLogger->log( 'click', [
-				'instrument_name' => 'Copyedit homepage card click',
-				'action_source' => 'Suggested-Edits-1',
-				'action_subtype' => 'copyedit-card',
-			] );
-		}
 		$this->getOutput()->redirect(
 			$title->getFullUrlForRedirect( $redirectParams )
 		);

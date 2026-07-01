@@ -37,7 +37,6 @@ describe( 'ReviseToneOnboarding', () => {
 						getFallbackLanguageChain: jest.fn( () => [ 'en' ] ),
 					} ) ),
 					'mw.track': jest.fn(),
-					experiment: null,
 				},
 				stubs: {
 					teleport: true,

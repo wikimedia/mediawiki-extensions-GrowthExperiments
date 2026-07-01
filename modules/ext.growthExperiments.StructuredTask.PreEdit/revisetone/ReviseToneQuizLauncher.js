@@ -1,8 +1,7 @@
 ( function () {
 	'use strict';
 
-	const reviseToneOnboardingPrefName = 'growthexperiments-revisetone-onboarding',
-		useExperiment = require( '../../ext.growthExperiments.StructuredTask/revisetone/useExperiment.js' );
+	const reviseToneOnboardingPrefName = 'growthexperiments-revisetone-onboarding';
 
 	/**
 	 * Launch the Revise Tone onboarding quiz dialog.
@@ -31,7 +30,6 @@
 			app.provide( 'mw.user', mw.user );
 			app.provide( 'mw.hook', mw.hook );
 			app.provide( 'mw.track', mw.track );
-			app.provide( 'experiment', useExperiment() );
 
 			// Create or reuse mount point
 			let mountPoint = document.querySelector( '.growth-experiments-structuredtask-preedit-vue-app' );

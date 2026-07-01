@@ -184,7 +184,6 @@ class HomepageHooks implements
 					'GrowthExperimentsCommunityConfig',
 					'UserOptionsManager',
 					'TitleFactory',
-					'GrowthExperimentsReviseToneExperimentInteractionLogger',
 				],
 			];
 			if ( $pageViewInfoEnabled ) {

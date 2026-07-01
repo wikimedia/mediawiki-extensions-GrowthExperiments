@@ -5,7 +5,6 @@ namespace GrowthExperiments;
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
-use GrowthExperiments\EventLogging\ReviseToneExperimentInteractionLogger;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
@@ -411,10 +410,6 @@ class GrowthExperimentsServices {
 
 	public function getReviseToneRecommendationProvider(): RecommendationProvider {
 		return $this->coreServices->get( 'GrowthExperimentsReviseToneRecommendationProvider' );
-	}
-
-	public function getReviseToneExperimentInteractionLogger(): ReviseToneExperimentInteractionLogger {
-		return $this->coreServices->get( 'GrowthExperimentsReviseToneExperimentInteractionLogger' );
 	}
 
 	public function getReviseToneWeightedTagManager(): ReviseToneWeightedTagManager {

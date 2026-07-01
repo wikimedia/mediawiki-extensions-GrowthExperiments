@@ -41,19 +41,6 @@ const OnboardingDialog = require( '../common/OnboardingDialog.vue' );
 const QuizGame = require( './QuizGame.vue' );
 const quizData = require( './quizData.json' );
 const { computed, defineComponent, inject, ref, reactive } = require( 'vue' );
-const normalizeResults = ( results ) => {
-	const getOptionsMap = ( options ) => options.reduce( ( acc, curr ) => {
-		acc[ curr.label ] = curr.correct || false;
-		return acc;
-	}, {} );
-	return results.reduce( ( acc, curr, index ) => {
-		const optionsMap = getOptionsMap( quizData[ index ].options );
-		acc.push( optionsMap[ curr ] );
-		return acc;
-	}, [] )
-	// REVIEW format is 'correct,unanswered,incorrect,correct,unanswered', we could do counters instead
-		.map( ( v ) => v ? 'correct' : typeof v === 'boolean' ? 'incorrect' : 'unanswered' ).toString();
-};
 
 // @vue/component
 module.exports = defineComponent( {
@@ -71,7 +58,6 @@ module.exports = defineComponent( {
 		const mwHook = inject( 'mw.hook' );
 		const mwTrack = inject( 'mw.track' );
 		const mwLanguage = inject( 'mw.language' );
-		const experiment = inject( 'experiment' );
 		const open = ref( true );
 		// null stands for an unanswered quiz at the array's index
 		const quizResults = reactive( Array( quizData.length ).fill( null ) );
@@ -80,13 +66,6 @@ module.exports = defineComponent( {
 		const stepperLabelText = computed(
 			() => i18n( 'growthexperiments-structuredtask-onboarding-dialog-progress', currentStep.value, totalSteps ).text(),
 		);
-		if ( experiment ) {
-			experiment.send( 'impression', {
-				/* eslint-disable camelcase */
-				instrument_name: 'Revise tone onboarding dialog impression',
-				action_source: `Quiz-step-${ currentStep.value }`,
-			} );
-		}
 		const onStepChange = ( newVal ) => {
 			currentStep.value = newVal;
 		};
@@ -100,21 +79,7 @@ module.exports = defineComponent( {
 			// Mark onboarding as seen for this user so it is not shown again.
 			new Api().saveOption( props.prefName, '1' );
 		};
-		const reset = ( closeEventData ) => {
-			if ( experiment ) {
-				experiment.send( 'click', {
-					/* eslint-disable camelcase */
-					instrument_name: 'Revise tone onboarding dialog end click',
-					action_subtype: ( {
-						primary: 'get-started',
-						quiet: 'skip',
-						unknown: 'dismiss',
-					} )[ closeEventData.closeSource ],
-					action_source: `Quiz-step-${ currentStep.value }`,
-					action_context: normalizeResults( quizResults ),
-					/* eslint-enable camelcase */
-				} );
-			}
+		const reset = () => {
 			// Reset each game result in the rare case the dialog is re-opened
 			quizResults.forEach( ( _, index, arr ) => {
 				arr[ index ] = null;

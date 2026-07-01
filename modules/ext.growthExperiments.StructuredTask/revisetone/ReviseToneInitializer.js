@@ -1,9 +1,7 @@
 const SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
 const suggestedEditSession = SuggestedEditSession.getInstance();
 const GrowthSuggestionToneCheck = require( './GrowthSuggestionToneCheck.js' );
-const useExperiment = require( './useExperiment.js' );
 const simpleLevenshtein = require( '../../utils/SimpleLevenshtein.js' );
-const experiment = useExperiment();
 
 class ReviseToneInitializer {
 
@@ -132,13 +130,6 @@ class ReviseToneInitializer {
 				},
 			);
 			ve.init.target.tryTeardown().then( this.showCancelledPostEditDialog );
-			experiment.send( 'click', {
-				/* eslint-disable camelcase */
-				action_subtype: 'decline',
-				action_source: 'EditCheck-1',
-				instrument_name: 'Click on decline revise tone',
-				/* eslint-enable camelcase */
-			} );
 		}
 	}
 
@@ -186,12 +177,6 @@ class ReviseToneInitializer {
 				// Focus the tone action and scroll it into view.
 				ve.init.target.editcheckController.ensureActionIsShown( action, true );
 			}
-		} );
-		experiment.send( 'page-visited', {
-			/* eslint-disable camelcase */
-			action_source: 'EditCheck-1',
-			instrument_name: 'Article with revise tone recommendation page visited',
-			/* eslint-enable camelcase */
 		} );
 	}
 

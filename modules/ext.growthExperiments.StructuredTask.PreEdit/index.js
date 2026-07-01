@@ -263,10 +263,7 @@ module.exports = ( function () {
 	} else if ( isReviseTone ) {
 		useNewOnboarding = true;
 		shouldShowOnboarding = !mw.user.options.get( reviseToneOnboardingPrefName );
-		const ReviseToneInteractionLogger = require(
-			'../ext.growthExperiments.StructuredTask/revisetone/ReviseToneInteractionLogger.js',
-		);
-		logger = new ReviseToneInteractionLogger();
+		logger = { log: () => {} };
 		setupOnboarding();
 		// Set up hook for Help Panel to launch the quiz
 		mw.hook( 'growthExperiments.reviseTone.showOnboardingFromHelpPanel' ).add(
