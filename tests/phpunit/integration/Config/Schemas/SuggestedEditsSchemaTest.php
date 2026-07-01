@@ -37,8 +37,6 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 	public function testDefaultTaskTypesDataWithEmptyConfig(): void {
 		$this->overrideConfigValues( [
 			'GEReviseToneSuggestedEditEnabled' => true,
-			'GEReviseToneExcludedTemplates' => [],
-			'GEReviseToneExcludedCategories' => [],
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GENewcomerTasksImageRecommendationsEnabled' => true,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => true,
@@ -229,8 +227,6 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 	public function testDefaultTaskTypesDataWithPartialConfig(): void {
 		$this->overrideConfigValues( [
 			'GEReviseToneSuggestedEditEnabled' => true,
-			'GEReviseToneExcludedTemplates' => [ 'Foo' ],
-			'GEReviseToneExcludedCategories' => [ 'Bar' ],
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GENewcomerTasksImageRecommendationsEnabled' => true,
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => true,
@@ -420,8 +416,8 @@ JSON;
 					'filterIcon' => 'robot',
 					'descriptionMessageKey' => 'growthexperiments-homepage-suggestededits-tasktype-machine-description',
 				],
-				'excludedTemplates' => [ [ 10, 'Foo' ] ],
-				'excludedCategories' => [ [ 14, 'Bar' ] ],
+				'excludedTemplates' => [],
+				'excludedCategories' => [],
 				'_type_' => 'GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskType',
 			],
 		], self::removeComplexMarkers( $jsonCodec->toJsonArray(

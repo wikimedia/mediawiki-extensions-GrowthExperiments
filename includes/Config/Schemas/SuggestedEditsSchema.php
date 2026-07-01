@@ -164,4 +164,20 @@ class SuggestedEditsSchema extends JsonSchema {
 			],
 		],
 	];
+
+	public const array revise_tone = [
+		self::TYPE => self::TYPE_OBJECT,
+		self::PROPERTIES => [
+			'disabled' => [
+				self::TYPE => self::TYPE_BOOLEAN,
+				self::DEFAULT => false,
+			],
+			'excludedTemplates' => [
+				self::REF => [ 'class' => MediaWikiDefinitions::class, 'field' => 'PageTitles' ],
+			],
+			'excludedCategories' => [
+				self::REF => [ 'class' => MediaWikiDefinitions::class, 'field' => 'PageTitles' ],
+			],
+		],
+	];
 }

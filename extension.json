@@ -699,10 +699,7 @@
 			"ProviderClasses": {
 				"GrowthSuggestedEdits": {
 					"class": "GrowthExperiments\\Config\\Providers\\SuggestedEditsConfigProvider",
-					"services": [
-						"MainConfig",
-						"GrowthExperimentsFeatureManager"
-					]
+					"services": []
 				},
 				"GrowthMentorList": {
 					"class": "GrowthExperiments\\Config\\Providers\\MentorListConfigProvider"
@@ -2897,14 +2894,6 @@
 		"GEReviseToneSuggestedEditEnabled": {
 			"value": false,
 			"description": "Enable the Revise Tone feature so newcomers can spot non-neutral wording and receive in-context guidance to help users rewrite a sentence in a more encyclopedic tone."
-		},
-		"GEReviseToneExcludedTemplates": {
-			"value": [],
-			"description": "List of templates used for excluding articles for the ReviseTone task"
-		},
-		"GEReviseToneExcludedCategories": {
-			"value": [],
-			"description": "List of categories used for excluding articles for the ReviseTone task"
 		},
 		"GEReviseToneParagraphScoreThreshold": {
 			"value": 0.8,

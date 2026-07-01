@@ -52,6 +52,9 @@ class CommunityConfigurationHooks implements
 				if ( !$this->config->get( 'GENewcomerTasksSectionImageRecommendationsEnabled' ) ) {
 					unset( $rootSchema['properties']['section_image_recommendation'] );
 				}
+				if ( !$this->config->get( 'GEReviseToneSuggestedEditEnabled' ) ) {
+					unset( $rootSchema['properties']['revise_tone'] );
+				}
 				break;
 			case 'GrowthHomepage':
 				if ( !SuggestedEdits::isEnabledForAnyone( $this->config ) ) {

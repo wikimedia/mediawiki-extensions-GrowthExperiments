@@ -118,4 +118,14 @@ return (object) array(
      'minimumLinkScore' => 0.6,
      'maximumEditsTaskIsAvailable' => 'no',
   ),
+   'revise_tone' => 
+  (object) array(
+     'disabled' => false,
+     'excludedTemplates' => 
+    array (
+    ),
+     'excludedCategories' => 
+    array (
+    ),
+  ),
 );

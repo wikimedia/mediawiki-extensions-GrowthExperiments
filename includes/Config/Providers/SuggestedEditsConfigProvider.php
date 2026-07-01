@@ -4,8 +4,6 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\Config\Providers;
 
-use GrowthExperiments\FeatureManager;
-use MediaWiki\Config\Config;
 use MediaWiki\Extension\CommunityConfiguration\Provider\DataProvider;
 use MediaWiki\Extension\CommunityConfiguration\Provider\ProviderServicesContainer;
 use MediaWiki\Extension\CommunityConfiguration\Store\IConfigurationStore;
@@ -42,8 +40,6 @@ class SuggestedEditsConfigProvider extends DataProvider {
 		array $options,
 		IConfigurationStore $store,
 		IValidator $validator,
-		private readonly Config $config,
-		private readonly FeatureManager $featureManager,
 	) {
 		parent::__construct( $providerServicesContainer, $providerId, $options, $store, $validator );
 	}
@@ -53,13 +49,6 @@ class SuggestedEditsConfigProvider extends DataProvider {
 		if ( $result->isOK() ) {
 			$data = $result->getValue();
 			unset( $data->GEInfoboxTemplates );
-
-			if ( $this->featureManager->isReviseToneTasksTypeEnabled() ) {
-				// TODO: move to community config for full production deployment T396162
-				$data->revise_tone = (object)[];
-				$data->revise_tone->excludedTemplates = $this->config->get( 'GEReviseToneExcludedTemplates' );
-				$data->revise_tone->excludedCategories = $this->config->get( 'GEReviseToneExcludedCategories' );
-			}
 
 			// Priorly 'group' and 'type' were added using IConfigurationProvider::addAutocomputedProperties
 			// but that results in these being written in config pages when running migrateConfig.php

@@ -149,6 +149,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Yes, after 50 total edits",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Yes, after 75 total edits",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Yes, after 150 total edits",
+	"communityconfiguration-growthsuggestededits-revise_tone-label": "Revise Tone (Structured task)",
+	"communityconfiguration-growthsuggestededits-revise_tone-disabled-control-label": "The task is disabled.",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedtemplates-label": "Articles containing templates defined here will not be shown to users as tasks for this task type",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedcategories-label": "Articles containing categories defined here will not be shown to users as tasks for this task type",
 	"growthexperiments-addlink-done-button": "Done",
 	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Cleanup expired away timestamps"
 }

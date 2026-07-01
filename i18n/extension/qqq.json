@@ -163,6 +163,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Field label for Suggested Edits form in Community configuration, informs about the number of total edits \"Add a link\" task will be restricted",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Field label for Suggested Edits form in Community configuration, informs about the number of total edits \"Add a link\" task will be restricted",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Field label for Suggested Edits form in Community configuration, informs about the number of total edits \"Add a link\" task will be restricted",
+	"communityconfiguration-growthsuggestededits-revise_tone-label": "Field label for Suggested Edits in Community configuration\n\nThe text between parentheses refers to GrowthExperiments's feature [[mw:Growth/Personalized first day/Structured tasks]]",
+	"communityconfiguration-growthsuggestededits-revise_tone-disabled-control-label": "Field label for Suggested Edits in Community configuration",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedtemplates-label": "Field label for Suggested Edits in Community configuration",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedcategories-label": "Field label for Suggested Edits in Community configuration",
 	"growthexperiments-addlink-done-button": "Label for the completion button in the AddLink dialog when the user has rejected at least one link suggestion and accepted none. This replaces the default 'Publish changes' label in this specific scenario.",
 	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Edit summary wikitext used by the maintenance task for purging mentor away timestamps that have expired in MediaWiki:GrowthMentorList.json"
 }
