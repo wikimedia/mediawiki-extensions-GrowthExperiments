@@ -850,7 +850,6 @@ return [
 	): NewcomerTasksUserOptionsLookup {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new NewcomerTasksUserOptionsLookup(
-			$growthServices->getFeatureManager(),
 			$services->getUserOptionsLookup(),
 			$services->getMainConfig(),
 			$growthServices->getNewcomerTasksConfigurationLoader()

@@ -7,8 +7,7 @@
  * - ../utils/Utils.js
  */
 ( function () {
-	const Utils = require( '../utils/Utils.js' ),
-		OLD_LINK_TASK_TYPE = 'links',
+	const OLD_LINK_TASK_TYPE = 'links',
 		OLD_COPYEDIT_TASK_TYPE = 'copyedit',
 		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
 		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
@@ -79,13 +78,9 @@
 	 */
 	function areReviseToneRecommendationsEnabled() {
 		const config = require( './config.json' ),
-			taskTypes = require( './TaskTypes.json' ),
-			isReviseToneEnabled = config.GEReviseToneSuggestedEditEnabled &&
+			taskTypes = require( './TaskTypes.json' );
+		return config.GEReviseToneSuggestedEditEnabled &&
 				REVISE_TONE_TASK_TYPE in taskTypes;
-
-		// TODO: remove after experiment is concluded, T407802
-		const assignedGroup = Utils.getUserVariant( 'growthexperiments-revise-tone' );
-		return assignedGroup === 'treatment' && isReviseToneEnabled;
 	}
 
 	/**

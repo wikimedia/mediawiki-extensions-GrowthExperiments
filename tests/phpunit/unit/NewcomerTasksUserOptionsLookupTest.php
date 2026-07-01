@@ -2,9 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
-use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -13,10 +11,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\StaticExperimentManager;
 use MediaWiki\Config\HashConfig;
-use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -52,10 +47,12 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
-		$featureManager = $this->getFeatureManager();
 
-		$lookup = new NewcomerTasksUserOptionsLookup( $featureManager, $userOptionsLookup,
-			$config, $this->getConfigurationLoader( [ 'copyedit', 'links' ] ) );
+		$lookup = new NewcomerTasksUserOptionsLookup(
+			$userOptionsLookup,
+			$config,
+			$this->getConfigurationLoader( [ 'copyedit', 'links' ] ),
+		);
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'ores' ], $lookup->getTopics( $user1 ) );
 		$this->assertSame( SearchStrategy::TOPIC_MATCH_MODE_OR, $lookup->getTopicsMatchMode( $user1 ) );
@@ -74,7 +71,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
 		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
 	}
@@ -106,10 +103,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
-		$featureManager = $this->getFeatureManager();
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
@@ -119,7 +115,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$config->set( 'GENewcomerTasksImageRecommendationsEnabled', true );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit', 'image-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
@@ -149,10 +145,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
-		$featureManager = $this->getFeatureManager();
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
@@ -160,51 +155,10 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$config->set( 'GENewcomerTasksSectionImageRecommendationsEnabled', true );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader()
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit', 'section-image-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
-	}
-
-	/**
-	 * @covers ::getTaskTypeFilter
-	 * @covers ::areReviseToneRecommendationsEnabled
-	 * @covers ::filterTaskTypes
-	 */
-	public function testReviseToneRecommendationAbTest() {
-		$user1 = new UserIdentityValue( 1, 'User1' );
-		$user2 = new UserIdentityValue( 2, 'User2' );
-		$reviseToneTaskType = ReviseToneTaskTypeHandler::TASK_TYPE_ID;
-		$userOptionsLookup = new StaticUserOptionsLookup( [
-			'User1' => [],
-			'User2' => [
-				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit", "' . $reviseToneTaskType . '" ]',
-			],
-		] );
-		$config = new HashConfig( [
-			'GENewcomerTasksLinkRecommendationsEnabled' => false,
-			'GELinkRecommendationsFrontendEnabled' => false,
-			'GENewcomerTasksImageRecommendationsEnabled' => false,
-			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
-			'GEReviseToneSuggestedEditEnabled' => false,
-		] );
-		$featureManager = $this->getFeatureManager();
-
-		$lookup = new NewcomerTasksUserOptionsLookup(
-			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
-		);
-		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
-
-		$featureManager = $this->getFeatureManager( [
-			IExperimentManager::REVISE_TONE_EXPERIMENT => IExperimentManager::VARIANT_TREATMENT,
-		] );
-
-		$lookup = new NewcomerTasksUserOptionsLookup(
-			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
-		);
-		$this->assertSame( [ 'revise-tone', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
-		$this->assertSame( [ 'revise-tone' ], $lookup->getTaskTypeFilter( $user2 ) );
 	}
 
 	/**
@@ -212,7 +166,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetDefaultTaskTypes() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
-		$featureManager = $this->getFeatureManager();
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [],
 		] );
@@ -230,7 +183,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			$sectionImageTaskType => new TaskType( $sectionImageTaskType, 'easy' ),
 		] );
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$featureManager, $userOptionsLookup, $config, $configurationLoader
+			$userOptionsLookup, $config, $configurationLoader
 		);
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
 
@@ -258,9 +211,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
 			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
-		$featureManager = $this->getFeatureManager();
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$featureManager, $userOptionsLookup, $config, $this->getConfigurationLoader( [ 'copyedit' ] )
+			$userOptionsLookup, $config, $this->getConfigurationLoader( [ 'copyedit' ] )
 		);
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
@@ -285,27 +237,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			}, $taskTypes ) )
 		);
 		return $configurationLoader;
-	}
-
-	/**
-	 * Provide a configured FeatureManager with all relevant config feature flags enabled
-	 *
-	 * @param array|string|null $defaultVariant
-	 * @return FeatureManager
-	 */
-	private function getFeatureManager( $defaultVariant = null ): FeatureManager {
-		$extensionRegistryMock = $this->createMock( ExtensionRegistry::class );
-		$extensionRegistryMock->method( 'isLoaded' )->willReturn( true );
-
-		$config = new HashConfig( [
-			'GEReviseToneSuggestedEditEnabled' => true,
-			'GEHomepageSuggestedEditsEnabled' => true,
-		] );
-		$sut = new FeatureManager( $extensionRegistryMock, $config );
-		$sut->setExperimentManager( new StaticExperimentManager( new ServiceOptions( [ 'GEHomepageDefaultVariant' ], [
-			'GEHomepageDefaultVariant' => $defaultVariant ?: 'control',
-		] ) ) );
-		return $sut;
 	}
 
 }

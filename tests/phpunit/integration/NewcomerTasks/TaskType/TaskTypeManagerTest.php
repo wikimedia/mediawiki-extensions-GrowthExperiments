@@ -4,8 +4,6 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\StaticExperimentManager;
-use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\User\User;
@@ -48,18 +46,6 @@ class TaskTypeManagerTest extends MediaWikiIntegrationTestCase {
 		$user = $this->createUserWithEdits( 21 );
 		$this->overrideConfigValues( [
 			'GEReviseToneSuggestedEditEnabled' => true,
-		] );
-		$this->overrideMwServices( null, [
-			'GrowthExperimentsExperimentUserManager' => static function () {
-				return new StaticExperimentManager(
-					new ServiceOptions(
-						[ 'GEHomepageDefaultVariant' ],
-						[ 'GEHomepageDefaultVariant' => [
-							'growthexperiments-revise-tone' => 'treatment',
-						] ],
-					),
-				);
-			},
 		] );
 		$sut = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getTaskTypeManager();
 		$this->setMaxEditsTaskIsAvailableInConfig( '20' );

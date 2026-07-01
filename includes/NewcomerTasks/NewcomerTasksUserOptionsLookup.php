@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -19,7 +18,6 @@ use MediaWiki\User\UserIdentity;
  */
 class NewcomerTasksUserOptionsLookup {
 	public function __construct(
-		private readonly FeatureManager $featureManager,
 		private readonly UserOptionsLookup $userOptionsLookup,
 		private readonly Config $config,
 		private readonly ConfigurationLoader $configurationLoader
@@ -120,17 +118,17 @@ class NewcomerTasksUserOptionsLookup {
 	}
 
 	/**
-	 * Check if section-level image recommendations are enabled. When true, the
-	 * section-image-recommendation task type should be made available to the user.
-	 * @note This has to be equivalent to areSectionImageRecommendationsEnabled in TaskTypesAbFilter.js
-	 * @param UserIdentity $user
+	 * Check if revise-tone recommendations are enabled. When true, the
+	 * revise-tone task type should be made available to the user.
+	 * @note This has to be equivalent to areReviseToneRecommendationsEnabled in TaskTypesAbFilter.js
 	 * @return bool
 	 */
-	public function areReviseToneRecommendationsEnabled( UserIdentity $user ): bool {
-		$areReviseToneRecommendationsEnabled = array_key_exists( ReviseToneTaskTypeHandler::TASK_TYPE_ID,
-				$this->configurationLoader->getTaskTypes() );
-		// TODO: remove after experiment is concluded, T407802
-		return $areReviseToneRecommendationsEnabled && $this->featureManager->shouldShowReviseToneTasksForUser( $user );
+	public function areReviseToneRecommendationsEnabled(): bool {
+		return $this->config->get( 'GEReviseToneSuggestedEditEnabled' ) &&
+			array_key_exists(
+				ReviseToneTaskTypeHandler::TASK_TYPE_ID,
+				$this->configurationLoader->getTaskTypes()
+			);
 	}
 
 	/**
@@ -157,7 +155,7 @@ class NewcomerTasksUserOptionsLookup {
 	private function getDefaultTaskTypes( UserIdentity $user ): array {
 		// This doesn't do anything useful right now, but we want to preserve the ability
 		// to determine the default task types dynamically for A/B testing.
-		return SuggestedEdits::getDefaultTaskTypes( $this->config );
+		return SuggestedEdits::getDefaultTaskTypes();
 	}
 
 	/**
@@ -175,7 +173,7 @@ class NewcomerTasksUserOptionsLookup {
 		} else {
 			$map += [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];
 		}
-		if ( $this->areReviseToneRecommendationsEnabled( $user ) ) {
+		if ( $this->areReviseToneRecommendationsEnabled() ) {
 			$map += [ 'copyedit' => ReviseToneTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
 			$map += [ ReviseToneTaskTypeHandler::TASK_TYPE_ID => 'copyedit' ];

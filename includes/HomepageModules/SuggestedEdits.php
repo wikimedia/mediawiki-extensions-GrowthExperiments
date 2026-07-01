@@ -16,7 +16,6 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\ReviseToneTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
@@ -74,7 +73,7 @@ class SuggestedEdits extends BaseModule {
 	 *
 	 * Access this via self::getDefaultTaskTypes
 	 */
-	private const DEFAULT_TASK_TYPES = [ 'copyedit', 'links', 'link-recommendation' ];
+	private const DEFAULT_TASK_TYPES = [ 'copyedit', 'links', 'link-recommendation', 'revise-tone' ];
 
 	/**
 	 * Used to keep track of the state of user interactions with suggested edits per type per skin.
@@ -146,12 +145,8 @@ class SuggestedEdits extends BaseModule {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig );
 	}
 
-	public static function getDefaultTaskTypes( Config $mainConfig ): array {
-		$defaultTasks = self::DEFAULT_TASK_TYPES;
-		if ( $mainConfig->get( 'GEReviseToneSuggestedEditEnabled' ) ) {
-			$defaultTasks[] = ReviseToneTaskTypeHandler::TASK_TYPE_ID;
-		}
-		return $defaultTasks;
+	public static function getDefaultTaskTypes(): array {
+		return self::DEFAULT_TASK_TYPES;
 	}
 
 	/** @inheritDoc */

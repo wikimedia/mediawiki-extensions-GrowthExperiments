@@ -1017,7 +1017,7 @@ class HomepageHooks implements
 	 */
 	public static function getDefaultTaskTypesJson( RL\Context $context ) {
 		// Like with getTaskTypesJson, we ignore user-specific filtering here.
-		return SuggestedEdits::getDefaultTaskTypes( $context->getResourceLoader()->getConfig() );
+		return SuggestedEdits::getDefaultTaskTypes();
 	}
 
 	/**
