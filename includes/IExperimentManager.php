@@ -26,10 +26,4 @@ interface IExperimentManager {
 	 * @return string|null
 	 */
 	public function getAssignedGroup( string $experimentName ): ?string;
-
-	/**
-	 * Return group assignments for the known experiments,
-	 * @return array<string,string|null> Array of experiment => assignment
-	 */
-	public function getAssignments(): array;
 }

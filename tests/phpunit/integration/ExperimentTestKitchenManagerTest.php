@@ -2,9 +2,6 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
-use GrowthExperiments\ExperimentTestKitchenManager;
-use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\IExperimentManager;
 use MediaWiki\Extension\TestKitchen\Sdk\Experiment;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWikiIntegrationTestCase;
@@ -50,15 +47,6 @@ class ExperimentTestKitchenManagerTest extends MediaWikiIntegrationTestCase {
 				],
 			],
 		] );
-	}
-
-	public function testGetAssignments() {
-		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
-		$experimentUserManager = $growthServices->getExperimentUserManager();
-		$this->assertInstanceOf( ExperimentTestKitchenManager::class, $experimentUserManager );
-		$assignments = $experimentUserManager->getAssignments();
-		$this->assertSame( IExperimentManager::EXPERIMENTS, array_keys( $assignments ) );
-		$this->assertSame( [ 'control', 'control', 'control' ], array_values( $assignments ) );
 	}
 
 }

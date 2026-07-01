@@ -12,14 +12,6 @@ class StaticExperimentManager implements IExperimentManager {
 	public function __construct( private readonly ServiceOptions $options ) {
 	}
 
-	public function getAssignments(): array {
-		return array_reduce(
-			self::EXPERIMENTS,
-			fn ( $carry, $expName ) => $carry + [ $expName => $this->getAssignedGroup( $expName ) ],
-			[]
-		);
-	}
-
 	public function getAssignedGroup( string $experimentName ): ?string {
 		$experimentsConfigSpec = $this->options->get( 'GEHomepageDefaultVariant' );
 		$group = null;

@@ -22,15 +22,6 @@ class ExperimentTestKitchenManager implements IExperimentManager {
 		return $exp;
 	}
 
-	public function getAssignments(): array {
-		$variants = [];
-		foreach ( static::EXPERIMENTS as $experimentName ) {
-			$experiment = $this->experimentManager->getExperiment( $experimentName );
-			$variants[ $experimentName ] = $experiment->getAssignedGroup();
-		}
-		return $variants;
-	}
-
 	public function getAssignedGroup( string $experimentName ): ?string {
 		return $this->experimentManager->getExperiment( $experimentName )->getAssignedGroup();
 	}

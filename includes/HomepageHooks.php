@@ -87,7 +87,6 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
-use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonWidget;
 use StatusValue;
 use stdClass;
@@ -704,7 +703,6 @@ class HomepageHooks implements
 			return;
 		}
 
-		$context = RequestContext::getMain();
 		$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_ENABLE, 1 );
 		$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_PT_LINK, 1 );
 		// Default option is that the user has seen the tours/notices (so we don't prompt
@@ -733,32 +731,6 @@ class HomepageHooks implements
 				IMentorManager::MENTORSHIP_DISABLED
 			);
 		}
-		$wiki = WikiMap::getCurrentWikiId();
-		// Try to log newly registered account experiment exposure. Wrapped in a deferred update because
-		// CentralAuth generates the central user in a onLocalUserCreated hook, hence the order of execution is
-		// not guaranteed.
-		if ( $this->featureManager->useTestKitchen() ) {
-			DeferredUpdates::addCallableUpdate( function () use ( $wiki ) {
-				$assignments = $this->experimentManager->getAssignments();
-				if ( count( $assignments ) === 0 ) {
-					return;
-				}
-				foreach ( $assignments as $experiment => $variant ) {
-					if ( !$variant ) {
-						continue;
-					}
-					$this->statsFactory
-						->withComponent( 'GrowthExperiments' )
-						->getCounter( 'user_variant_total' )
-						->setLabel( 'wiki', $wiki )
-						->setLabel( 'variant', $variant )
-						->setLabel( 'experiment', $experiment )
-						->increment();
-				}
-			} );
-
-		}
-
 		// Place an empty user impact object in the database table cache, to avoid
 		// making an extra HTTP request on first visit to Special:Homepage.
 		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
@@ -774,7 +746,7 @@ class HomepageHooks implements
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			// Populate the cache of tasks with default task/topic selections
 			// so that when the user lands on Special:Homepage, the request to retrieve tasks
-			// will pull from the cached TaskSet instead of doing time consuming search queries.
+			// will pull from the cached TaskSet instead of doing time-consuming search queries.
 			// With nuances in how mobile/desktop users are onboarded, this may not be always
 			// necessary but does no harm to run for all newly created users.
 			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
