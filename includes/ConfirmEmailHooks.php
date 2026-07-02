@@ -9,7 +9,6 @@ use MediaWiki\Auth\Hook\AuthPreserveQueryParamsHook;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Skin\Skin;
@@ -80,7 +79,6 @@ class ConfirmEmailHooks implements
 
 		// Load JS that displays a message informing the user that a verification email is coming
 		$context->getOutput()->addModules( 'ext.growthExperiments.Account' );
-		$context->getOutput()->addJsConfigVars( 'confirmemail', true );
 		$context->getOutput()->addModuleStyles( 'ext.growthExperiments.Account.styles' );
 
 		$this->recordBaseline( $context->getUser(), $context->getSkin() );
@@ -111,10 +109,6 @@ class ConfirmEmailHooks implements
 			if ( isset( $formDescriptor['retype'] ) ) {
 				$formDescriptor['retype']['end-icon-class'] = 'growthexperiments-password-reveal-icon';
 			}
-			// Default GrowthExperience, applies to unsampled and control
-		} elseif ( isset( $formDescriptor['email'] ) && !$config->get( MainConfigNames::EmailConfirmToEdit ) ) {
-			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';
-			$formDescriptor['email']['help-message'] = 'growthexperiments-confirmemail-emailhelp';
 		}
 	}
 

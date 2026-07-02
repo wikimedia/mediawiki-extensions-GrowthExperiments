@@ -1990,13 +1990,11 @@
 		"ext.growthExperiments.Account": {
 			"packageFiles": [
 				"ext.growthExperiments.Account/index.js",
-				"ext.growthExperiments.Account/ConfirmEmail.js",
 				"ext.growthExperiments.Account/ULSTagMultiselectWidget.js",
 				"ext.growthExperiments.Account/WelcomeSurvey.js",
 				"ext.growthExperiments.Account/WE18ExperimentV1.js"
 			],
 			"messages": [
-				"growthexperiments-confirmemail-emailwarning",
 				"welcomesurvey-question-languages-placeholder",
 				"welcomesurvey-question-languages-maximum"
 			],
