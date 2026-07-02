@@ -158,6 +158,15 @@ class VariantHooks implements
 			return false;
 		}
 
+		if ( $this->featureManager->shouldShowCreateAccountNoBenefitsTreatment(
+			$info['context']->getUser(),
+			$skin,
+			$info['context']->getRequest()
+		) ) {
+			$html = '';
+			return false;
+		}
+
 		if ( $this->shouldShowNewLandingPageHtml( $info['context'] ) ) {
 			// campaign
 			$options['beforeForm'] = $skin instanceof SkinMinerva;

@@ -148,6 +148,117 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expectedResult, $actualResult );
 	}
 
+	public static function provideNoDesktopBenefitsScenarios(): iterable {
+		yield 'anon, not mobile, in treatment group' => [
+			'anon',
+			static fn () => Skin::class,
+			[
+				'defaultVariant' => [
+					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => IExperimentManager::VARIANT_TREATMENT,
+				],
+			],
+			null,
+			true,
+		];
+
+		yield 'anon, mobile, not treatment group' => [
+			'anon',
+			static fn () => SkinMinerva::class,
+			[
+				'defaultVariant' => [
+					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => null,
+				],
+			],
+			null,
+			false,
+		];
+
+		yield 'anon, mobile, in treatment group' => [
+			'anon',
+			static fn () => SkinMinerva::class,
+			[
+				'defaultVariant' => [
+					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => IExperimentManager::VARIANT_TREATMENT,
+				],
+			],
+			null,
+			false,
+		];
+
+		yield 'anon, mobile, in treatment group via request' => [
+			'anon',
+			static fn () => SkinMinerva::class,
+			[
+				'defaultVariant' => [
+					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => null,
+				],
+			],
+			[ IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP . ':' . IExperimentManager::VARIANT_TREATMENT ],
+			false,
+		];
+
+		yield 'not anon, not mobile, in treatment group' => [
+			'logged-in',
+			static fn () => Skin::class,
+			[
+				'defaultVariant' => [
+					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => IExperimentManager::VARIANT_TREATMENT,
+				],
+			],
+			null,
+			false,
+		];
+
+		yield 'anon, not mobile, in treatment group, not enwiki' => [
+			'anon',
+			static fn () => Skin::class,
+			[
+				'defaultVariant' => [
+					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => IExperimentManager::VARIANT_TREATMENT,
+				],
+				'config' => [
+					'DBname' => 'dewiki',
+				],
+			],
+			null,
+			false,
+		];
+	}
+
+	/**
+	 * @dataProvider provideNoDesktopBenefitsScenarios
+	 */
+	public function testShouldShowNoDesktopBenefits(
+		string $userType,
+		\Closure $getSkinClass,
+		array $overrides,
+		?array $requestOverride,
+		bool $expectedResult
+	): void {
+		if ( !class_exists( SkinMinerva::class ) ) {
+			$this->markTestSKipped( 'Minerva is not available' );
+		}
+
+		if ( $userType === 'logged-in' ) {
+			$user = $this->createMock( User::class );
+			$user->method( 'isAnon' )->willReturn( false );
+		} else {
+			$user = $this->createMock( User::class );
+			$user->method( 'isAnon' )->willReturn( true );
+		}
+
+		/** @var Skin $skin */
+		$skin = $this->createMock( $getSkinClass() );
+		$request = $this->createMock( WebRequest::class );
+		$request->method( 'getArray' )
+			->with( 'experiments' )
+			->willReturn( $requestOverride ?? [] );
+
+		$sut = $this->getFeatureManager( $overrides );
+		$actualResult = $sut->shouldShowCreateAccountNoBenefitsTreatment( $user, $skin, $request );
+		$this->assertSame( $expectedResult, $actualResult );
+	}
+
 	/**
 	 * Provide a configured FeatureManager with all relevant config feature flags enabled
 	 *

@@ -75,7 +75,10 @@ class FeatureManager {
 		$experimentGroupFromManager = $this->experimentManager->getAssignedGroup(
 			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2
 		);
-		$experimentGroupFromRequest = $this->getExperimentEnrollmentGroupFromRequest( $request );
+		$experimentGroupFromRequest = $this->getExperimentEnrollmentGroupFromRequest(
+			$request,
+			IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2
+		);
 
 		$isTreatmentGroup = ( $experimentGroupFromManager === IExperimentManager::VARIANT_TREATMENT ) ||
 			( $experimentGroupFromRequest === IExperimentManager::VARIANT_TREATMENT );
@@ -83,10 +86,28 @@ class FeatureManager {
 		return $isAnon && $isMobile && $isEnWiki && $isTreatmentGroup;
 	}
 
-	private function getExperimentEnrollmentGroupFromRequest( WebRequest $request ): string {
+	public function shouldShowCreateAccountNoBenefitsTreatment( ?User $user, Skin $skin, WebRequest $request ): bool {
+		$isAnon = $user === null || $user->isAnon();
+		$isDesktop = !Util::isMobile( $skin );
+		$isEnWiki = $this->growthConfig->get( 'DBname' ) === 'enwiki';
+		$experimentGroupFromManager = $this->experimentManager->getAssignedGroup(
+			IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP
+		);
+		$experimentGroupFromRequest = $this->getExperimentEnrollmentGroupFromRequest(
+			$request,
+			IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP
+		);
+
+		$isTreatmentGroup = ( $experimentGroupFromManager === IExperimentManager::VARIANT_TREATMENT ) ||
+			( $experimentGroupFromRequest === IExperimentManager::VARIANT_TREATMENT );
+
+		return $isAnon && $isDesktop && $isEnWiki && $isTreatmentGroup;
+	}
+
+	private function getExperimentEnrollmentGroupFromRequest( WebRequest $request, string $experimentName ): string {
 		$experimentUrlString = array_find(
 			$request->getArray( 'experiments' ) ?? [],
-			static fn ( $value ) => str_starts_with( $value, IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 ),
+			static fn ( $value ) => str_starts_with( $value, $experimentName ),
 		);
 		if ( !$experimentUrlString ) {
 			return 'unsampled';
