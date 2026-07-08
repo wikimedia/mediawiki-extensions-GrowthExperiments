@@ -182,7 +182,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Your}} question is now on your mentor's talk page, which is where {{GENDER:$1|he|she|they}} will answer it as soon as {{GENDER:$1|he|she|they}} can.",
 	"growthexperiments-homepage-mentorship-view-question-text": "View {{GENDER:$2|your}} question on your {{GENDER:$1|mentor's}} talk page.",
 	"growthexperiments-homepage-mentorship-question-subject": "Question from [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Question from [[User:$1|$1]] on [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Question from [[User:$1|$1]] on [[:$2|$2]]",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]]'s mentor <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> is away.",
 	"growthexperiments-homepage-mentorship-system-message": "Note: $1",
 	"growthexperiments-specialimpact-title": "Impact",
