@@ -7,10 +7,13 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Media\MediaTransformOutput;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Title\Title;
+use PageImages\PageImages;
 use StatusValue;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 use Wikimedia\Timestamp\TimestampFormat;
@@ -268,6 +271,85 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertSame( $expectedDays, array_keys( $dailyArticleViews['Test_2']['views'] ) );
 		$this->assertSame( 202, $dailyArticleViews['Test_2']['views']['2022-10-02'] );
 		$this->assertSame( 530, $dailyArticleViews['Test_5']['views']['2022-10-30'] );
+	}
+
+	/**
+	 * Run getExpensiveUserImpact() for a single edited article whose PageImages image is the
+	 * given file, and return that article's entry from getDailyArticleViews().
+	 *
+	 * @param File $imageFile The file PageImages::getImage() should return for the article.
+	 * @return array The 'Test_1' entry of the daily article views.
+	 */
+	private function getArticleImpactForPageImage( File $imageFile ): array {
+		$this->markTestSkippedIfExtensionNotLoaded( 'PageViewInfo' );
+		$this->markTestSkippedIfExtensionNotLoaded( 'PageImages' );
+
+		$status = StatusValue::newGood();
+		$user = $this->getMutableTestUser()->getUser();
+		ConvertibleTimestamp::setFakeTime( '20221001120000' );
+		$status->merge( $this->editPage( 'Test 1', 'test edit', '', NS_MAIN, $user ) );
+		$this->assertStatusGood( $status );
+
+		$pageViewService = $this->createNoOpMock( PageViewService::class, [ 'getPageData' ] );
+		$pageViewService->method( 'getPageData' )->willReturnCallback( static function ( array $titles, int $days ) {
+			$data = [];
+			foreach ( range( 1, 31 ) as $day ) {
+				$paddedDay = str_pad( $day, 2, '0', STR_PAD_LEFT );
+				$data['Test 1']["2022-10-$paddedDay"] = 100 + $day;
+			}
+			$status = StatusValue::newGood( $data );
+			$status->successCount = count( $data );
+			$status->success = array_fill_keys( array_keys( $data ), true );
+			return $status;
+		} );
+		$this->setService( 'PageViewService', $pageViewService );
+
+		$pageImages = $this->createMock( PageImages::class );
+		$pageImages->method( 'getImage' )->willReturn( $imageFile );
+		$this->setService( 'PageImages.PageImages', $pageImages );
+
+		/** @var ComputedUserImpactLookup $userImpactLookup */
+		$userImpactLookup = $this->getServiceContainer()->get( 'GrowthExperimentsUserImpactLookup_Computed' );
+		$userImpact = $userImpactLookup->getExpensiveUserImpact( $user );
+
+		$dailyArticleViews = $userImpact->getDailyArticleViews();
+		$this->assertArrayHasKey( 'Test_1', $dailyArticleViews );
+		return $dailyArticleViews['Test_1'];
+	}
+
+	public function testGetUserImpactExpensive_pageImagePropagated() {
+		$thumbnail = $this->createMock( MediaTransformOutput::class );
+		$thumbnail->method( 'getUrl' )->willReturn( 'https://example.com/thumb.png' );
+		$imageFile = $this->createMock( File::class );
+		$imageFile->method( 'getMimeType' )->willReturn( 'image/jpeg' );
+		$imageFile->method( 'getHeight' )->willReturn( 80 );
+		$imageFile->method( 'getWidth' )->willReturn( 160 );
+		// Landscape image (ratio > 1): the thumbnail width is scaled from its dimensions rather
+		// than the 40px default. floor( 40 / 80 * 160 ) = 80.
+		$imageFile->expects( $this->once() )->method( 'transform' )
+			->with( [ 'width' => 80 ] )
+			->willReturn( $thumbnail );
+
+		$article = $this->getArticleImpactForPageImage( $imageFile );
+		$this->assertSame( 'https://example.com/thumb.png', $article['imageUrl'] );
+	}
+
+	public function testGetUserImpactExpensive_pdfPageImageSkipped() {
+		// Simulate PageImages returning a PDF, which reports a 0 height and would otherwise
+		// produce a broken thumbnail. The PDF guard should skip it entirely (T429314).
+		$thumbnail = $this->createMock( MediaTransformOutput::class );
+		$thumbnail->method( 'getUrl' )->willReturn( 'https://example.com/thumb.png' );
+		$pdfFile = $this->createMock( File::class );
+		$pdfFile->method( 'getMimeType' )->willReturn( 'application/pdf' );
+		$pdfFile->method( 'getHeight' )->willReturn( 0 );
+		$pdfFile->method( 'getWidth' )->willReturn( 100 );
+		$pdfFile->method( 'getName' )->willReturn( 'Some.pdf' );
+		$pdfFile->method( 'getMediaType' )->willReturn( 'OFFICE' );
+		$pdfFile->method( 'transform' )->willReturn( $thumbnail );
+
+		$article = $this->getArticleImpactForPageImage( $pdfFile );
+		// Without the PDF guard, imageUrl would be set to the (broken) thumbnail URL.
+		$this->assertArrayNotHasKey( 'imageUrl', $article );
 	}
 
 }
