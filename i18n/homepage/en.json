@@ -3,6 +3,7 @@
 		"authors": []
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hello}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Newcomer homepage",
 	"growthexperiments-homepage-tab": "Homepage",
 	"tooltip-pt-homepage": "{{GENDER:|Your}} homepage",
 	"prefs-homepage": "Newcomer editor features",

@@ -21,8 +21,9 @@ use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\SpecialPage\UnlistedSpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\Utils\MWCryptRand;
@@ -30,7 +31,7 @@ use MediaWiki\WikiMap\WikiMap;
 use Throwable;
 use Wikimedia\Stats\StatsFactory;
 
-class SpecialHomepage extends UnlistedSpecialPage {
+class SpecialHomepage extends SpecialPage {
 
 	/**
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.
@@ -76,6 +77,7 @@ class SpecialHomepage extends UnlistedSpecialPage {
 		}
 
 		$out = $this->getContext()->getOutput();
+		$out->setPageTitleMsg( $this->getPageTitleMsg() );
 		$this->isMobile = Util::isMobile( $out->getSkin() );
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
@@ -157,11 +159,22 @@ class SpecialHomepage extends UnlistedSpecialPage {
 	}
 
 	/**
-	 * Overridden in order to inject the current user's name as message parameter
-	 *
 	 * @inheritDoc
+	 * @see self::getPageTitleMsg(), for a h1-suitable header
 	 */
 	public function getDescription() {
+		return $this->msg( 'growthexperiments-homepage-specialpage-list' );
+	}
+
+	/**
+	 * Headline of the page suitable for the h1 tag
+	 *
+	 * This is intentionally different from getDescription(), which is used
+	 * for description of this page from other places.
+	 *
+	 * @see self::getDescription()
+	 */
+	private function getPageTitleMsg(): Message {
 		return $this->msg( 'growthexperiments-homepage-specialpage-title' )
 			->params( $this->getUser()->getName() );
 	}
