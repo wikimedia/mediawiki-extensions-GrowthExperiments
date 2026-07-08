@@ -112,7 +112,7 @@ class TaskTypeManager {
 		$filtered = [];
 		$editCount = $this->userEditTracker->getUserEditCount( $user );
 		if ( !$this->taskTypes ) {
-			return [];
+			return [ $taskTypesToFilter, $filtered ];
 		}
 		if (
 			!$editCount ||
