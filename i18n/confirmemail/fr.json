@@ -12,13 +12,8 @@
 			"Wladek92"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Votre nom d'utilisateur est public et ne peut pas être rendu privé plus tard.",
 	"growthexperiments-createacct-username-learn-more": "En savoir plus",
-	"growthexperiments-confirmemail-emaildescription": "Une adresse courriel est requise pour récupérer votre compte si vous perdez votre mot de passe ou si vous vous connectez depuis un emplacement inconnu ou un nouveau navigateur.",
-	"growthexperiments-confirmemail-email-optional": "Adresse de courriel",
-	"growthexperiments-confirmemail-email-recommended-flag": "(recommandé)",
-	"growthexperiments-confirmemail-emailhelp": "Un courriel est nécessaire pour récupérer votre compte en cas de perte de votre mot de passe.",
-	"growthexperiments-confirmemail-emailrecommended": "Adresse courriel (recommandée)",
-	"growthexperiments-confirmemail-emailwarning": "Vous devriez avoir reçu un courriel de notre part vous permettant de vérifier votre adresse.",
 	"growthexperiments-signupcampaign-title": "Merci d’avoir donné ! Rejoignez maintenant la communauté des rédacteurs qui améliorent Wikipédia chaque jour.",
 	"growthexperiments-signupcampaign-body": "Rédiger ou modifier Wikipédia peut être aussi simple qu’ajouter un lien ou modifier un mot. Obtenez des suggestions pour les articles de  {{GENDER:|vos}} centres d’intérêt après avoir créé votre compte !",
 	"growthexperiments-signupcampaign-bullet1": "Articles suggérés de {{GENDER:|vos}} centres d’intérêt",

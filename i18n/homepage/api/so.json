@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Hel su’aalaha si habaysan loo qaabeeyey ee lagu soo gudbiyo iyada oo loo marayo modules-ka bogga hore",
+	"apihelp-homepagequestionstore-param-questionformat": "Qaabka loo soo celinayo su’aalaha, tusaale ahaan HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Goobta lagu kaydiyo su’aalaha.",
+	"apihelp-homepagequestionstore-param-userid": "Aqoonsiga isticmaalaha ee lagu helayo su’aalaha.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Su’aalo lama helin.",
+	"apihelp-growthsetmentor-summary": "U qoondee hagaha isticmaalaha. Isbeddelkan si furan ayaa loo diiwaangelin doonaa.",
+	"apihelp-growthsetmentor-param-mentee": "Magaca isticmaalaha ee qofka la hagayo",
+	"apihelp-growthsetmentor-param-mentor": "Magaca isticmaalaha ee qofka la hagayo",
+	"apihelp-growthsetmentor-param-reason": "Sababta isbeddelka",
+	"apihelp-query+growthimagesuggestiondata-summary": "Haddii la heli karo, soo hel xogta soo jeedinta sawirrada ee la xiriirta [https://www.mediawiki.org/wiki/wikitech:Add_Image].",
+	"apihelp-query+growthimagesuggestiondata-param-tasktype": "Aqoonsiga nooca hawsha (si loo caddeeyo in xogta la soo saarayo ay tahay mid ku saabsan soo jeedinta sawirrada heer maqaal ama heer qayb maqaal)",
+	"growthexperiments-homepage-imagesuggestiondata-not-in-config": "Aqoonsiga nooca hawsha '$1' lagama helin habaynta wiki-ga.",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Burinta soo jeedinta sawir.",
+	"apihelp-growthinvalidateimagerecommendation-extended-description": "Marka la waco API-kan:\n\n* Waxa uu dib u dejinayaa [https://www.mediawiki.org/wiki/wikitech:Add_Image calaamadda miisaanka leh ee \"hasrecommendation:image\"] ee maqaalka, si maqaalka aan mar dambe loogu soo celin natiijooyinka raadinta ee soo jeedinta sawirrada.\n\n* Waxa uu ku darayaa maqaalka kayd muddo gaaban lagu hayo, kaas oo ay isticmaasho qaabka ImageRecommendationFilter ee [https://www.mediawiki.org/wiki/Extension:GrowthExperiments GrowthExperiments] si uu u go’aamiyo in maqaalka laga reebo liiska hawlaha la soo jeediyay ee isticmaalaha marka laga eego [[Special:Homepage]] ama API-ga [[Special:ApiHelp/query+growthtasks|action=query&list=growthtasks]].\n\n* Waxa uu abuuraa oo diraa dhacdo loo diro EventGate kuna socota durdur [https://schema.wikimedia.org/#!/secondary/jsonschema/mediawiki/page/image-suggestions-feedback image-suggestion-feedback]. Tani waxay caawisaa hagaajinta nidaamka soo-jeedinta sawirrada, maadaama koodhka dhuumaha uu tixgelin karo jawaab celinta isticmaalayaasha marka la soo saarayo talooyinka.\n\nFaahfaahin dheeraad ah: [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Structured_tasks/Add_an_image mediawiki.org]",
+	"apihelp-growthinvalidateimagerecommendation-param-tasktype": "Nooca hawsha (heer maqaal ama heer qayb maqaal)",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Cinwaanka maqaalka ay hawsha soo jeedinta sawirku ku saabsan tahay",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "Magaca faylka sawirka ee aan hore loo sii raacin, tusaale <kbd>Foo.jpg</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "Cinwaanka qaybta maqaalka ee soo jeedinta sawirka ku saabsan tahay, tusaale <kbd>Taariikh</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Lambarka 1 ee qaybta maqaalka ee soo jeedinta sawirku ku saabsan tahay, tusaale <kbd>3</kbd>",
+	"apihelp-query+linkrecommendations-summary": "Soo hel soo jeedinta xiriirrada ee bog gaar ah",
+	"apihelp-query+linkrecommendations-example-1": "Hel soo jeedinta xiriirrada ee bogga leh aqoonsiga 123",
+	"apihelp-query+linkrecommendations-example-2": "Hel ilaa 5 soo jeedin oo xiriir ah oo loogu talagalay bogga leh aqoonsiga 456",
+	"apihelp-query+linkrecommendations-param-pageid": "Aqoonsiga bogga ee laga soo saarayo soo jeedinta xiriirrada."
+}

@@ -6,9 +6,6 @@
 			"Vodnokon4e"
 		]
 	},
-	"growthexperiments-confirmemail-emailhelp": "Необходима е електронна поща за възстановяване на акаунта Ви, ако загубите паролата си.",
-	"growthexperiments-confirmemail-emailrecommended": "Адрес на електронна поща (препоръчително)",
-	"growthexperiments-confirmemail-emailwarning": "Моля, потърсете електронна поща от нас, за да потвърдите адреса си.",
 	"growthexperiments-signupcampaign-title": "Благодарим Ви за дарението! Присъединете се към общността на редакторите, които правят Уикипедия по-добра днес",
 	"growthexperiments-signupcampaign-body": "Редактирането на Уикипедия може да бъде толкова просто, като добавяне на връзка или промяна на дума. Получавайте предложения за статии по темите, които {{GENDER:|Ви}} интересуват, след като създадете своя акаунт!",
 	"growthexperiments-signupcampaign-bullet1": "Предложени статии според {{GENDER:|Вашите}} интереси",

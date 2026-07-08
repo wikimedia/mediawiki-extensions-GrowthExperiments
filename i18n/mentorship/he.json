@@ -9,7 +9,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "למשתמש הזה אין חונך",
-	"growthexperiments-exception-no-mentored-text": "לחשבון הזה לא מוקצה חונך, מה שאומר שאי־אפשר לשלוח ממנו שאלות לחונך",
+	"growthexperiments-exception-no-mentored-text": "{{GENDER:$1|למשתמש הזה|למשתמשת הזאת}} לא מוקצה חונך, מה שאומר {{GENDER:$1|שהוא לא יכול|שהיא לא יכולה}} לשלוח לחונך שאלות",
 	"growthexperiments-mentor-dashboard-title": "לוח בקרה לחונכים",
 	"growthexperiments-mentor-dashboard-pt-link": "לוח בקרה לחונכים",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "כדי להפעיל את לוח הבקרה לחונכים, {{GENDER:|אתה צריך|את צריכה}} קודם [[$1|להירשם {{GENDER:|כחונך|כחונכת}}]].",
@@ -246,5 +246,7 @@
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "רק משתמשים שעשו לפחות {{PLURAL:$1|עריכה אחת|$1 עריכות}} וצברו לפחות {{PLURAL:$2|יום נוכחות אחד|יומיים נוכחות|$2 ימי נוכחות}} יכולים להירשם כחונכים.",
 	"tag-mentor_list_change": "שינוי רשימת החונכים",
 	"tag-mentor_list_change-description": "תג שחל על עריכות שבוצעו ברשימת החונכים המובנית באמצעות GrowthExperiments",
-	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "החונכות מושבתת כרגע. מפעילי יכולים להפעיל חונכות דרך [[$1]]."
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "החונכות מושבתת כרגע. מפעילי יכולים להפעיל חונכות דרך [[$1]].",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "סימון חשבון חונך $1 בתור \"לא בסביבה\", לא היה פעיל {{PLURAL:|יום אחד|יומיים|$2 ימים}}",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "הסרת חונך $1, לא היה פעיל {{PLURAL:|יום אחד|יומיים|$2 ימים}}"
 }

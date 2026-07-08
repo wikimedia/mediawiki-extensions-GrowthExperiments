@@ -535,7 +535,7 @@
 	"growthexperiments-addimage-onboarding-content-decision-image-alt-text": "문서 삽화입니다. 이미지는 문서용으로 제안되었습니다. 제안 내용에는 세 가지 옵션을 나타내는 아이콘 버튼이 있습니다. 체크 표시는 제안을 수락하는 것이고, 엑스 표시는 제안을 거부하는 것이며, 화살표는 다음 단계로 이동하는 것입니다.",
 	"growthexperiments-addsectionimage-onboarding-content-step1-title": "이미지는 사람들이 주제에 관해 알아볼 수 있도록 도와주지만, 수많은 문서에는 이미지가 없습니다.",
 	"growthexperiments-addsectionimage-onboarding-content-step1-alt-text": "문서 문단의 삽화입니다. 문서 문단 삽화 옆에는 로봇이 달 이미지를 문서에 추가해야 할지를 묻고 있습니다.",
-	"growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph1": "{{GENDER:|당신은}} 제안된 이미지가 특정 문단에 배치되어도 좋을지를 결정하게 됩니다.",
+	"growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph1": "{{GENDER:|당신은}} 제안된 이미지가 위키백과 문서의 특정 문단에 배치되어도 좋을지를 결정하게 됩니다.",
 	"growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph2": "제안은 기계적으로 생성되며 일부는 부정확할 수 있습니다. {{GENDER:|당신은}} 이 제안들을 받아들일지, 아니면 거절할지를 결정하게 됩니다.",
 	"growthexperiments-addsectionimage-onboarding-content-step1-body-paragraph3": "이미지는 위키백과가 사용하는 자유로이 라이선스되는 이미지의 모음집인 위키미디어 공용으로부터 가져옵니다.",
 	"growthexperiments-addsectionimage-onboarding-content-step2-title": "제안된 이미지 보기",

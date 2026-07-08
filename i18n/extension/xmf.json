@@ -4,15 +4,6 @@
 			"Narazeni"
 		]
 	},
-	"growthexperiments-edit-config-last-edit": "[[$3]]: ეკონიათ გაახალჷ [[User:$1|$1]]-ქ $2 დღაშ უწმოხ.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: ეკონიათ გაახალჷ უჩინებუ მახვარებუქ $1 დღაშ უწმოხ.",
-	"growthexperiments-edit-config-help-panel-post-on-top-true": "ხასჷლაშ ჟილე",
-	"growthexperiments-edit-config-help-panel-post-on-top-false": "ხასჷლაშ თუდო",
-	"growthexperiments-edit-config-help-panel-ask-mentor-true": "მენტორეფი",
-	"growthexperiments-edit-config-mentorship-enabled-true": "ქო",
-	"growthexperiments-edit-config-mentorship-enabled-false": "ვარი",
-	"growthexperiments-edit-config-newcomertasks": "მერზიებული რედაქტირაფეფი",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "ინფოდაფაშ თანგეფი",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-5-label": "ქო, გვალო 5 რედაქტირაფაშ უკული",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-20-label": "ქო, გვალო 20 რედაქტირაფაშ უკული",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "ქო, გვალო 75 რედაქტირაფაშ უკული",

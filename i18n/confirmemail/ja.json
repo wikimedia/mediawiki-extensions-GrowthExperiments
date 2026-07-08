@@ -8,9 +8,6 @@
 			"UsagiNeko"
 		]
 	},
-	"growthexperiments-confirmemail-emailhelp": "もしパスワードを忘れてしまったとき、メールを登録してあると回復できます。",
-	"growthexperiments-confirmemail-emailrecommended": "メールアドレス (推奨)",
-	"growthexperiments-confirmemail-emailwarning": "登録されたアドレスを確定するため、こちらからお送りするメールをお待ちください。",
 	"growthexperiments-signupcampaign-title": "寄付をありがとうございます！今すぐウィキペディアをより良くする編集者のコミュニティに参加してください",
 	"growthexperiments-signupcampaign-body": "ウィキペディアの編集は、例えばリンクを追加したり単語を変更したりするなどから取り組めます。まずアカウントを作成すると、{{GENDER:|皆さん}}の興味があるトピックの記事が提案されます。",
 	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|皆さん}}が興味を持っている分野のおすすめ記事",
