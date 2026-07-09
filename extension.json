@@ -2007,7 +2007,6 @@
 			"styles": [
 				"ext.growthExperiments.Account.styles/DonorSignupCampaign.less",
 				"ext.growthExperiments.Account.styles/SpecialContributions.less",
-				"ext.growthExperiments.Account.styles/WE18ExperimentV1.less",
 				"ext.growthExperiments.Account.styles/WelcomeSurvey.less"
 			]
 		},

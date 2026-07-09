@@ -9,7 +9,6 @@ use MediaWiki\Auth\Hook\AuthPreserveQueryParamsHook;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
@@ -74,7 +73,6 @@ class ConfirmEmailHooks implements
 			return;
 		}
 
-		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$context = RequestContext::getMain();
 
 		// Load JS that displays a message informing the user that a verification email is coming
@@ -88,28 +86,6 @@ class ConfirmEmailHooks implements
 			$context->getRequest(),
 			$formDescriptor,
 		);
-		$shouldShowV2 = $this->featureManager->shouldShowCreateAccountV2(
-			$context->getUser(),
-			$context->getSkin(),
-			$context->getRequest(),
-		);
-		if ( $shouldShowV2 ) {
-			// Send a hint for experiment styles to kick-in. Experiment styles:
-			// - GrowthExperiments/modules/ext.growthExperiments.Account.styles/WE18ExperimentV1.less
-			$context->getOutput()->addBodyClasses( [
-				'we-1-8-account-creation-form-v2-treatment',
-				'wiki-' . $config->get( 'DBname' ),
-			] );
-			$context->getOutput()->addJsConfigVars( 'GECreateAccountExperimentV2', $shouldShowV2 );
-			$formDescriptor['createaccount']['size'] = 'large';
-			if ( isset( $formDescriptor['password'] ) ) {
-				$formDescriptor['password']['end-icon-class'] = 'growthexperiments-password-reveal-icon';
-			}
-
-			if ( isset( $formDescriptor['retype'] ) ) {
-				$formDescriptor['retype']['end-icon-class'] = 'growthexperiments-password-reveal-icon';
-			}
-		}
 	}
 
 	/**
