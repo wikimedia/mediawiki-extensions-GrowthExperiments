@@ -37,7 +37,7 @@ class NewcomerTasksUserOptionsLookup {
 		if ( !$taskTypes ) {
 			$taskTypes = $this->getDefaultTaskTypes( $user );
 		}
-		return $this->filterNonExistentTaskTypes( $this->convertTaskTypes( $taskTypes, $user ) );
+		return $this->convertTaskTypes( $taskTypes, $user );
 	}
 
 	/**
@@ -190,6 +190,11 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Convert task types which the user is not supposed to see, given the link recommendation
 	 * configuration, to the closest task type available to them.
+	 *
+	 * A conversion-map fallback target is not guaranteed to be configured on the current wiki
+	 * (e.g. "revise-tone" maps to "copyedit" when Revise Tone is disabled, but "copyedit" may
+	 * not be a configured task type). Such non-existent task types are filtered out so callers
+	 * always receive IDs that resolve via ConfigurationLoader::getTaskTypes().
 	 * @param string[] $taskTypes Task types IDs.
 	 * @param UserIdentity $user
 	 * @return string[] Converted task types IDs. Array keys are not preserved.
@@ -199,7 +204,7 @@ class NewcomerTasksUserOptionsLookup {
 		$taskTypes = array_map( static function ( string $taskType ) use ( $map ) {
 			return $map[$taskType] ?? $taskType;
 		}, $taskTypes );
-		return array_unique( array_filter( $taskTypes ) );
+		return $this->filterNonExistentTaskTypes( array_unique( array_filter( $taskTypes ) ) );
 	}
 
 	/**
