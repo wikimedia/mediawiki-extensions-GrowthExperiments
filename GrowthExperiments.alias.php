@@ -278,10 +278,16 @@ $specialPageAliases['mr'] = [
 
 /** Malay (Bahasa Melayu) */
 $specialPageAliases['ms'] = [
-	'WelcomeSurvey' => [ 'Penyiasatan_Selamat_Datang' ],
-	'Homepage' => [ 'Laman_Utama' ],
-	'Impact' => [ 'Kesan' ],
-	'ClaimMentee' => [ 'Tuntut_pendatang_baru' ],
+	'WelcomeSurvey' => [ 'Tinjauan_aluan', 'Penyiasatan_Selamat_Datang' ],
+	'Homepage' => [ 'Laman_pemula', 'Laman_Utama' ],
+	'Impact' => [ 'Impak', 'Kesan' ],
+	'ClaimMentee' => [ 'Tuntut_menti', 'Tuntut_pendatang_baru' ],
+	'NewcomerTasksInfo' => [ 'Tugasan_pengguna_baharu' ],
+	'EditGrowthConfig' => [ 'Sunting_konfigurasi_Growth' ],
+	'MentorDashboard' => [ 'Papan_pemuka_mentor' ],
+	'QuitMentorship' => [ 'Keluar_daripada_sesi_bimbingan' ],
+	'ManageMentors' => [ 'Urus_mentor' ],
+	'EnrollAsMentor' => [ 'Daftar_sebagai_mentor' ],
 ];
 
 /** Norwegian Bokmål (norsk bokmål) */
