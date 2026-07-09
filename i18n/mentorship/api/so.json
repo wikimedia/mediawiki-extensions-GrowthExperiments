@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Calaamadee ama ka qaad calaamadda la tashanayaasha inuu yahay xiddig leh ee isticmaalaha hadda (si gaar ah ayaa loo kaydiyaa lamana diiwaangeliyo)",
+	"apihelp-growthstarmentee-param-gesaction": "Ficilka la qaadayo (<kbd>star</kbd> ama <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "La tashanaha laga saarayo xiddiga",
+	"apihelp-query+growthstarredmentees-summary": "Hel liiska La tashanayaasha xiddigga loo saaray ee lataliyaha hadda soo galay",
+	"apihelp-growthsetmentorstatus-summary": "Deji xaaladda latalinta isticmaalaha hadda mid firfircoon/maqan",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Xaalad cusub",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Marka lataliye loo dejinayo maqan, waa in la cayimaa muddada maqnaanshaha (maalmo ahaan).",
+	"apihelp-query+growthmentorstatus-summary": "Hubi xaaladda latalinta ee isticmaalaha hadda",
+	"apihelp-growthmentordashboardupdatedata-summary": "Qorshee cusboonaysiin degdeg ah oo lagu sameeyo module-ka guudmar La tashanayaasha ee dashboard-ka lataliyaha. Waxaad kaliya qorsheyn kartaa hal cusboonaysiin labadii saacadoodba mar sababo la xiriira waxqabadka.",
+	"apihelp-growthsetmenteestatus-summary": "Deji xaaladda La tashanaha (waxay u oggolaanaysaa La-tashanayaasha inay shiddaan/damiyyaan module-ka latalinta, ama inay gebi ahaanba ka baxaan, taas oo tirtiraysa xiriirka La tashane/Lataliye).",
+	"apihelp-growthsetmenteestatus-param-state": "Xaaladda cusub ee La tashanaha (digniin: haddii tan loo dejiyo ka-bixid, waxay si joogto ah u tirtiraysaa xiriirka La tashane/Lataliye)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Module-ka latalinta waa la shiday",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Module-ka latalinta si buuxda ayaa loo damiyay. Tani badanaa waxaa dejisa software-ka waxaana loo isticmaalaa tijaabooyinka A/B.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "La-tashanaha ayaa ka baxay latalinta; xiriirka La-tashane/Lataliye waa la tirtiri doonaa, module-ka latalintana waxaa lagu beddeli doonaa ikhtiyaar dib loogu soo noqon karo.",
+	"apihelp-query+growthmenteestatus-summary": "Hubi xaaladda La-tashanaha ee isticmaalaha hadda; eeg dukumeentiga action=growthsetmenteestatus si aad u hesho faahfaahin ku saabsan xaaladaha kala duwan ee shaqsiyeed.",
+	"apihelp-query+growthmentormentee-summary": "Hel dhammaan La tashanayaasha loo qoondeeyay Lataliye la bixiyay",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Lataliyaha laga raadinayo La tashanayaasha",
+	"apihelp-growthmanagementorlist-summary": "Maamul macluumaadka ku jira liiska lataliyeyaasha ee qaabaysan (badanaa lagu kaydiyo [[MediaWiki:GrowthMentors.json]]). Module-kan waxaa isticmaali kara lataliyeyaasha hadda iyo kuwa mustaqbalka (si ay isu daraan ama u beddelaan faahfaahintooda) iyo sidoo kale maamulayaasha (dhammaan isticmaaleyaasha).",
+	"apihelp-growthmanagementorlist-param-geaction": "Ficil",
+	"apihelp-growthmanagementorlist-param-message": "Fariinta hordhaca ah (isticmaal xaraf madhan si aad u isticmaasho fariinta lataliyaha ee caadiga ah)",
+	"apihelp-growthmanagementorlist-param-weight": "Dhererka",
+	"apihelp-growthmanagementorlist-param-isaway": "Lataliyuhu ma maqan yahay hadda? Waa in la dejiyo (si caadi ah waa false).",
+	"apihelp-growthmanagementorlist-param-awaytimestamp": "Ila iyo goorma ayuu lataliyuhu maqnaanayaa? Ugu badnaan waa 1 sano laga bilaabo maanta. Lama tixgeliyo haddii isaway ay tahay true.",
+	"apihelp-growthmanagementorlist-param-summary": "Sababta isbeddelka",
+	"apihelp-growthmanagementorlist-param-username": "Magaca isticmaalaha lataliyaha uu isbeddelku saameeyay. Haddii aan la bixin, waxaa la adeegsanayaa isticmaalaha hadda soo galay. Waxa kaliya isticmaali kara isticmaaleyaasha leh oggolaansho gaar ah.",
+	"growthexperiments-api-managementors-error-no-away-timestamp": "Haddii isaway ay tahay true, markaa waa in la bixiyo awaytimestamp.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-summary": "Waxay baabi'isaa talo la tashanayaasha lagu ammaanay oo ku jira module-ka ammaanta shakhsiyeed ee dashboard-ka lataliyaha.",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "La tashanaha la burinayo taladiisa",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "Sababta loo burinayo talada",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "Ka bood sababta loo burinayo talada",
+	"apihelp-query+growthmentorlist-summary": "Liiska dhammaan lataliyeyaasha"
+}

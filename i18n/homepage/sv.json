@@ -12,7 +12,8 @@
 			"Sebastian Berlin (WMSE)",
 			"Technic2",
 			"WikiPhoenix",
-			"Stefan2255"
+			"Stefan2255",
+			"Larske"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
@@ -446,7 +447,7 @@
 	"growthexperiments-addimage-inspector-show-button": "Visa bildförslag",
 	"growthexperiments-addimage-inspector-help-button": "Få hjälp med att redigera",
 	"growthexperiments-addimage-inspector-details-button": "Visa bilddetaljer",
-	"growthexperiments-addimage-inspector-description-placeholder": "Inge beskrivning tillgänglig",
+	"growthexperiments-addimage-inspector-description-placeholder": "Ingen beskrivning tillgänglig",
 	"growthexperiments-addsectionimage-inspector-title": "Lägg till en bild till ett artikelavsnitt",
 	"growthexperiments-addsectionimage-inspector-cta": "Lägg till bild till artikelavsnittet \"$1\"?",
 	"growthexperiments-addimage-detailsdialog-header": "Bilddetaljer",
