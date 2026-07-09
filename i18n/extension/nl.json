@@ -162,6 +162,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Ja, na 50 bewerkingen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ja, na 75 bewerkingen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ja, na 150 bewerkingen",
+	"communityconfiguration-growthsuggestededits-revise_tone-label": "Toon aanpassen (gestructureerde taak)",
+	"communityconfiguration-growthsuggestededits-revise_tone-disabled-control-label": "De taak is uitgeschakeld.",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedtemplates-label": "Artikelen die hier gedefinieerde sjablonen bevatten worden niet aan gebruikers getoond als taken voor dit taaktype",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedcategories-label": "Artikelen die hier gedefinieerde categorieën bevatten worden niet aan gebruikers getoond als taken voor dit taaktype",
 	"growthexperiments-addlink-done-button": "Klaar",
 	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Opruiming verlopen tijdsaanduidingen"
 }
