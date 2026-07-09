@@ -128,6 +128,16 @@ class LevelingUpManager {
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$taskTypesGroupedByDifficulty = [];
 		foreach ( $taskTypesToGroup as $taskTypeId ) {
+			if ( !isset( $taskTypes[$taskTypeId] ) ) {
+				// Defensive: a caller passed a task type ID that is not among the configured
+				// task types (e.g. a conversion-map fallback target that this wiki does not
+				// have configured). Skip it rather than fatalling on a null dereference.
+				$this->logger->warning(
+					'Skipping unknown task type {taskTypeId} when grouping by difficulty.',
+					[ 'taskTypeId' => $taskTypeId ]
+				);
+				continue;
+			}
 			$taskType = $taskTypes[$taskTypeId];
 			$taskTypesGroupedByDifficulty[$taskType->getDifficulty()][] = $taskType->getId();
 		}

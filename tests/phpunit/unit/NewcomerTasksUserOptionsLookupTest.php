@@ -219,6 +219,40 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * A conversion-map fallback target may not be configured on the wiki. When Revise Tone is
+	 * disabled, "revise-tone" converts to "copyedit"; if "copyedit" is not a configured task
+	 * type, convertTaskTypes() must not emit it (it would later fatal on a null dereference in
+	 * LevelingUpManager::getTaskTypesGroupedByDifficulty()). Regression test for T431668.
+	 * @covers ::convertTaskTypes
+	 * @covers ::filterNonExistentTaskTypes
+	 * @covers ::getConversionMap
+	 */
+	public function testConvertTaskTypesFiltersNonExistentFallback() {
+		$user = new UserIdentityValue( 1, 'User1' );
+		$config = new HashConfig( [
+			'GENewcomerTasksLinkRecommendationsEnabled' => false,
+			'GELinkRecommendationsFrontendEnabled' => false,
+			'GENewcomerTasksImageRecommendationsEnabled' => false,
+			'GENewcomerTasksSectionImageRecommendationsEnabled' => false,
+			'GEReviseToneSuggestedEditEnabled' => false,
+		] );
+		$reviseTone = ReviseToneTaskTypeHandler::TASK_TYPE_ID;
+
+		// "copyedit" is not configured here, so the revise-tone => copyedit fallback resolves
+		// to a task type that does not exist: it must be dropped, not returned.
+		$lookupWithout = new NewcomerTasksUserOptionsLookup(
+			new StaticUserOptionsLookup( [] ), $config, $this->getConfigurationLoader( [ $reviseTone ] )
+		);
+		$this->assertSame( [], $lookupWithout->convertTaskTypes( [ $reviseTone ], $user ) );
+
+		// When "copyedit" is configured, the fallback resolves and is returned.
+		$lookupWith = new NewcomerTasksUserOptionsLookup(
+			new StaticUserOptionsLookup( [] ), $config, $this->getConfigurationLoader( [ 'copyedit', $reviseTone ] )
+		);
+		$this->assertSame( [ 'copyedit' ], $lookupWith->convertTaskTypes( [ $reviseTone ], $user ) );
+	}
+
+	/**
 	 * @param string[]|null $taskTypes
 	 * @return ConfigurationLoader
 	 */
