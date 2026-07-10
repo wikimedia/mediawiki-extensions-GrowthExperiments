@@ -14,7 +14,8 @@
 			"Siam2019",
 			"Thas Tayapongsak",
 			"Thastp",
-			"Trisorn Triboon"
+			"Trisorn Triboon",
+			"Wutkh"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|สวัสดี}} {{bidi:$1}}!",
@@ -339,6 +340,7 @@
 	"growthexperiments-homepage-mentorship-confirm-dialog-cancel": "ยกเลิก",
 	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "ดำเนินการต่อ",
 	"growthexperiments-homepage-mentorship-ellipsis-menu-about": "เกี่ยวกับเมนเทอร์",
+	"growthexperiments-homepage-mentorship-ellipsis-menu-optout": "ออกจากโครงการพี่เลี้ยง",
 	"growthexperiments-homepage-mentorship-optout-cancel": "ยกเลิก",
 	"growthexperiments-homepage-mentorship-optout-confirmation-done": "เสร็จสิ้น",
 	"growthexperiments-homepage-mentorship-about-header": "เกี่ยวกับเมนเทอร์",

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Maaree su'aalaha la soo dhigay qaybta caawinaadda ee isticmaalaha hadda.",
+	"apihelp-helppanelquestionposter-param-body": "Qoraalka su'aasha uu bixiyay isticmaalahu.",
+	"apihelp-helppanelquestionposter-param-source": "Habka loo soo dhigay su'aasha.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Qaybta \"Weydiiso miiska caawinaadda\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Qaybta \"Weydiiso hagahaaga\" ee barta hore ee ku cusubka",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Muuqaalka \"Weydiiso hagahaaga\" ee qaybta caawinaadda",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Qaybta \"Weydiiso miiska caawinaadda\" (magacii hore)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Qaybta \"Weydiiso hagahaaga\" ee barta hore ee ku cusubka (magacii hore)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Cinwaanka khuseeya, haddii la doorto, ee lagu darayo su'aasha.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Waa inaad soo gashid si aad su'aal u weydiiso.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Ma weydiin kartid su'aal hagahaaga haddii aadan lahayn hage."
+}

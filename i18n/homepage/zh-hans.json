@@ -420,6 +420,7 @@
 	"growthexperiments-addlink-context-button-reject": "否",
 	"growthexperiments-addlink-context-button-help": "获取编辑帮助",
 	"growthexperiments-addlink-context-button-next": "下一个",
+	"growthexperiments-addlink-context-button-prev": "上一个",
 	"growthexperiments-addlink-context-button-show-suggestion": "展示链接建议",
 	"growthexperiments-addlink-rejectiondialog-title": "这个链接有什么问题？",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|您}}的回答可以改善未来提供的建议。",

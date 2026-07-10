@@ -12,6 +12,7 @@
 			"SleaY"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Votre nom d'utilisateur est public et ne peut pas être rendu privé plus tard.",
 	"growthexperiments-createacct-username-learn-more": "En savoir plus",
 	"growthexperiments-confirmemail-emaildescription": "Une adresse courriel est requise pour récupérer votre compte si vous perdez votre mot de passe ou si vous vous connectez depuis un emplacement inconnu ou un nouveau navigateur.",
 	"growthexperiments-confirmemail-email-optional": "Adresse de courriel",
