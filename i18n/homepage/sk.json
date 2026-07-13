@@ -139,7 +139,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Vaša}} otázka je teraz na diskusnej stránke {{GENDER:$1|vášho mentora|vašej mentorky}}, kde ju zodpovie hneď, ako bude môcť.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Pozrite sa na {{GENDER:$2|svoju}} otázku na diskusnej stránke {{GENDER:$1|vášho mentora|vašej mentorky}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Otázka od [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Otázka od redaktora [[User:$1|$1]] dňa [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Otázka od redaktora [[User:$1|$1]] dňa [[:$2|$2]]",
 	"growthexperiments-specialimpact-title": "Dosah vašich príspevkov",
 	"growthexperiments-specialimpact-showing-for-other-user": "Zobrazujem dáta o dosahu príspevkov používateľa $1",
 	"growthexperiments-specialimpact-invalid-username": "Chýbajúce alebo neplatné používateľské meno.",

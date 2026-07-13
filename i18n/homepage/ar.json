@@ -192,7 +192,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|سؤالك}} موجود الآن على صفحة نقاش {{GENDER:$1|مرشدك|مرشدتك}}، و{{GENDER:$1|سيجيب|ستجيب}} عليه في أسرع وقت ممكن.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|شاهد|شاهدي}} سؤالك على صفحة نقاش {{GENDER:$1|مرشدك|مرشدتك}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "سؤال من [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "سؤال من [[User:$1|$1]] على [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "سؤال من [[User:$1|$1]] على [[:$2|$2]]",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "المرشد/ة الخاص/ـة بـ [[User:$1|$1]]، <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> متغيب/ـة حاليًا.",
 	"growthexperiments-homepage-mentorship-system-message": "ملاحظة: $1",
 	"growthexperiments-specialimpact-title": "التأثير",

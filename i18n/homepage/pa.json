@@ -119,7 +119,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|ਸਰਗਰਮ}} $2 {{PLURAL:$2|ਦਿਨ}} ਪਹਿਲਾਂ",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|ਆਪਣੇ}} {{GENDER:$1|ਸਲਾਹਕਾਰ}} ਨੂੰ ਸਵਾਲ ਪੁੱਛੋ",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] ਤੋਂ ਸਵਾਲ",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[$2]] ਉੱਤੇ [[User:$1|$1]] ਤੋਂ ਸਵਾਲ",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[:$2|$2]] ਉੱਤੇ [[User:$1|$1]] ਤੋਂ ਸਵਾਲ",
 	"growthexperiments-homepage-mentorship-system-message": "ਨੋਟ: $1",
 	"growthexperiments-specialimpact-title": "ਪ੍ਰਭਾਵ",
 	"growthexperiments-specialimpact-invalid-username": "ਗੁੰਮ ਜਾਂ ਅਵੈਧ ਵਰਤੋਂਕਾਰ ਨਾਮ।",

@@ -145,7 +145,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktif}} $2 {{PLURAL:$2|dina}} sané lintang",
 	"growthexperiments-homepage-mentorship-dialog-title": "Takonin {{GENDER:$1|méntor}} {{GENDER:$2|ragané}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Patakon uli [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Patakon uli [[User:$1|$1]] di [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Patakon uli [[User:$1|$1]] di [[:$2|$2]]",
 	"growthexperiments-homepage-mentorship-system-message": "Catetan: $1",
 	"growthexperiments-specialimpact-title": "Puara",
 	"growthexperiments-specialimpact-showing-for-other-user": "Sinahang pingaruh data saking $1",

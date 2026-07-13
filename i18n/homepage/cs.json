@@ -187,7 +187,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Vaše}} otázka je nyní na diskusi {{GENDER:$1|vašeho mentora|vaší mentorky}}, kde ji zodpoví, hned jak bude moct.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Podívejte se na {{GENDER:$2|svoji}} otázku na diskusi {{GENDER:$1|vašeho mentora|vaší mentorky}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Otázka od wikipedisty [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Otázka od uživatele [[User:$1|$1]]: [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Otázka od uživatele [[User:$1|$1]]: [[:$2|$2]]",
 	"growthexperiments-homepage-mentorship-system-message": "Poznámka: $1",
 	"growthexperiments-specialimpact-title": "Dosah vašich příspěvků",
 	"growthexperiments-specialimpact-showing-for-other-user": "Zobrazuji data o dosahu příspěvků {{GENDER:$1|uživatele|uživatelky}} $1",

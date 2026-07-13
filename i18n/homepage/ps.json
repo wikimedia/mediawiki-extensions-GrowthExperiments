@@ -173,7 +173,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|ستاسو}} پوښتنه اوس ستاسو د لارښود د خبرو اترو مخ کې ده، {{GENDER:$1|هغه|هغوی}} به ډېر ژر ستاسو ځواب ووايي.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|خپله}} پوښتنه د خپل {{GENDER:$1|لارښود}} د خبرو اترو مخ کې کتل.",
 	"growthexperiments-homepage-mentorship-question-subject": "د [[User:$1|$1]] پوښتنه",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "په [[$2]] کې د [[User:$1|$1]] پوښتنه",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "په [[:$2|$2]] کې د [[User:$1|$1]] پوښتنه",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "د [[User:$1|$1]] لارښود <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> لرې دی.",
 	"growthexperiments-homepage-mentorship-system-message": "يادښت: $1",
 	"growthexperiments-specialimpact-title": "اغېز",

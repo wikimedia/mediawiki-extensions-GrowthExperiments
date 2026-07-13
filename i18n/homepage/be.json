@@ -165,7 +165,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Ваша}} пытанне цяпер на старонцы абмеркавання {{GENDER:$1|вашага настаўніка, дзе ён|вашай настаўніцы, дзе яна}} адкажа на яго, як толькі зможа.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Праглядзіце {{GENDER:$2|ваша}} пытанне на старонцы размоў {{GENDER:$1|вашага настаўніка|вашай настаўніцы}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Пытанне ад [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Пытанне ад [[User:$1|$1]] на старонцы [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Пытанне ад [[User:$1|$1]] на старонцы [[:$2|$2]]",
 	"growthexperiments-specialimpact-title": "Уплыў",
 	"growthexperiments-specialimpact-showing-for-other-user": "Паказ даных уплыву ўдзельніка $1",
 	"growthexperiments-specialimpact-invalid-username": "Імя ўдзельніка адсутнічае ці з’яўляецца няслушным.",

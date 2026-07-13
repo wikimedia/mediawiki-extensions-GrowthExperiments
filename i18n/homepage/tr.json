@@ -197,7 +197,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Sorunuz}} artık danışmanınızın mesaj sayfasındadır. Bu soruya en kısa sürede cevap {{GENDER:$1|verecektir}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|Sorunuzu}} {{GENDER:$1|danışmanınızın}} mesaj sayfasında görüntüleyin.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] adlı kullanıcıdan soru",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] adlı kullanıcıdan [[$2]] hakkında soru",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] adlı kullanıcıdan [[:$2|$2]] hakkında soru",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]] kullanıcısının danışmanı <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> uzakta.",
 	"growthexperiments-homepage-mentorship-system-message": "Not: $1",
 	"growthexperiments-specialimpact-title": "Etki",

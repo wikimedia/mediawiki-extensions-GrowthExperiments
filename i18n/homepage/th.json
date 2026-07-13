@@ -135,7 +135,7 @@
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "หน้าพูดคุย{{GENDER:$1|ของผู้ให้คำปรึกษา}}{{GENDER:$2|ของคุณ}}",
 	"growthexperiments-homepage-mentorship-view-question-text": "ดูคำถามของ{{GENDER:$2|คุณ}}ในหน้าพูดคุยของ{{GENDER:$1|เมนเทอร์}}",
 	"growthexperiments-homepage-mentorship-question-subject": "คำถามจาก[[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "คำถามจาก[[User:$1|$1]]เกี่ยวกับ[[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "คำถามจาก[[User:$1|$1]]เกี่ยวกับ[[:$2|$2]]",
 	"growthexperiments-specialimpact-title": "ผลกระทบ",
 	"growthexperiments-specialimpact-invalid-username": "ไม่พบชื่อผู้ใช้หรือไม่ถูกต้อง",
 	"growthexperiments-homepage-claimmentee-no-user": "ไม่มีผู้รักคำปรึกษาในชื่อนี้",

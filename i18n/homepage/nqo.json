@@ -140,7 +140,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|ߌ ߟߊ߫}} ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߦߴߌ ߟߊ߫ ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ ߟߊ߫ ߞߎߡߊ߫ ߞߐߜߍ ߟߋ߬ ߘߐ߫ ߡߎ߬ߕߎ߲߫߸ ߡߍ߲ ߦߋ߫ {{GENDER:$1|ߊ߬ (ߗ)|ߊ߬ (ߡ)|ߊ߬ߟߎ߫}} ߘߌߣߴߊ߬ ߖߋ߬ߓߌ߬ ߖߏߣߊ߫ {{GENDER:$1|ߊ߬ (ߗ)||ߊ߬ (ߡ)|ߊ߬ߟߎ߫}} ߘߌ߫ ߛߴߊ߬ ߞߍ߫ ߟߊ߫ ߕߎ߬ߡߊ ߡߍ߲ ߠߊ߫.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|ߌ ߟߊ߫}} ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߟߎ߬ ߦߋ߫ ߌ ߟߊ߫ {{GENDER:$1|ߟߊ߬ߟߌ߰ߟߌ߬ߟߊ}} ߟߊ߫ ߞߎߡߊ߫ ߞߐߜߍ ߘߐ߫.",
 	"growthexperiments-homepage-mentorship-question-subject": "ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߡߍ߲ ߝߘߊߣߍ߲߫ ߦߋ߫ [[User:$1|$1]] ߟߊ߫",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߡߍ߲ ߝߘߊߣߍ߲߫ ߦߋ߫ [[User:$1|$1]] ߟߊ߫ [[$2]] ߞߊ߲߬",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "ߢߌ߬ߣߌ߲߬ߞߊ߬ߟߌ ߡߍ߲ ߝߘߊߣߍ߲߫ ߦߋ߫ [[User:$1|$1]] ߟߊ߫ [[:$2|$2]] ߞߊ߲߬",
 	"growthexperiments-specialimpact-title": "ߓߍ߲߬ߢߐ߲߰ߦߊ",
 	"growthexperiments-specialimpact-showing-for-other-user": "ߓߍ߲߬ߢߐ߲߰ߦߊ ߓߟߏߡߟߊ ߦߌ߬ߘߊ߬ߟߌ ߦߴߌ ߘߐ߫ $1 ߢߍ߫",
 	"growthexperiments-specialimpact-invalid-username": "ߊ߬ ߕߍ߫ ߦߋ߲߬ ߟߊ߬ߓߊ߰ߙߊ߬ߕߐ߯ ߝߍ߬ߡߊ.",

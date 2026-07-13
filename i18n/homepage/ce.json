@@ -171,7 +171,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Хьан}} хаттар хӀинца хьан {{GENDER:$1|Ӏуьналчин}} дийцарийн агӀонан тӀехь ду, цигахь {{GENDER:$1|цо}} шен йиш ма хилла жоп лур ду.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Хьажа {{GENDER:$2|хьан}} хаттаре {{GENDER:$1|Ӏуьналчин}} дийцарийн агӀонан тӀехь.",
 	"growthexperiments-homepage-mentorship-question-subject": "Хаттар [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] хаттар [[$2]] тӀехь",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] хаттар [[:$2|$2]] тӀехь",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Хьехамхо [[User:$1|$1]] <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> вац(йац).",
 	"growthexperiments-homepage-mentorship-system-message": "Билгалдаккхар: $1",
 	"growthexperiments-specialimpact-title": "Ӏаткъам",

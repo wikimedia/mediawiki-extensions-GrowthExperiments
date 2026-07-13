@@ -157,7 +157,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2| तपाईंको}} प्रश्न अब तपाईंको सल्लाहकारको वार्ता पृष्ठमा छ, जहाँ {{GENDER:$1|उहाँ|उनी|उनी}}ले सकेसम्म चाँडो जवाफ दिनेछन्।",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|आफ्नो}} {{GENDER:$1|सल्लाहकार}}को वार्ता पृष्ठमा प्रश्न हेर्नुहोस्।",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]बाट प्रश्न",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[$2]]मा [[User:$1|$1]]को प्रश्न",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[:$2|$2]]मा [[User:$1|$1]]को प्रश्न",
 	"growthexperiments-specialimpact-title": "प्रभाव",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1को लागि प्रभाव डेटा देखाउँदै",
 	"growthexperiments-specialimpact-invalid-username": "हराइरहेको वा अवैध प्रयोगकर्ता नाम।",

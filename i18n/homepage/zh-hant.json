@@ -178,7 +178,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|您的}}問題目前在{{GENDER:$1|他|她|他們}}的對話頁裡，{{GENDER:$1|他|她|他們}}會在那兒盡快回答。",
 	"growthexperiments-homepage-mentorship-view-question-text": "在您{{GENDER:$1|導師}}的對話頁檢視{{GENDER:$2|您的}}問題。",
 	"growthexperiments-homepage-mentorship-question-subject": "來自[[User:$1|$1]]的問題",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "來自[[User:$1|$1]]對於[[$2]]的問題",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "來自[[User:$1|$1]]對於[[:$2|$2]]的問題",
 	"growthexperiments-specialimpact-title": "影響",
 	"growthexperiments-specialimpact-showing-for-other-user": "顯示對於$1的影響資料",
 	"growthexperiments-specialimpact-invalid-username": "缺少或無效的使用者名稱。",

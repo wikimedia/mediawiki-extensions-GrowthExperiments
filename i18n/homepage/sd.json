@@ -136,7 +136,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|توھان جو}} سوال توھان کي سکيا ڏيندڙ جي بحث صفحي تي موجود آھي، جتي {{GENDER:$1|ھو|ھو|اھي}} جڏھن چاھين جواب ڏئي سگهي {{GENDER:$1|ٿو|ٿي|ٿا}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|توھان جو}} پڇيل سوال {{GENDER:$1|سکيا ڏيندڙ}} جي بحث صفحي تي ڏسو.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] پاران سوال",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[$2]] تي [[User:$1|$1]] پاران ڪيل سوال",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[:$2|$2]] تي [[User:$1|$1]] پاران ڪيل سوال",
 	"growthexperiments-specialimpact-title": "اثر",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 جو اثر ڏيکاريندي",
 	"growthexperiments-specialimpact-invalid-username": "کٽل يا ناقابلِڪار واپرائيندڙنانءُ",

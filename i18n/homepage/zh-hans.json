@@ -54,6 +54,7 @@
 			"科劳",
 			"羊羊32521",
 			"落花有意12138",
+			"郭佳昌",
 			"魔琴"
 		]
 	},
@@ -225,7 +226,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|您的}}问题现在已在您导师的讨论页上，{{GENDER:$1|您的导师}}会尽快回答您的问题。",
 	"growthexperiments-homepage-mentorship-view-question-text": "在{{GENDER:$1|导师的}}讨论页查看{{GENDER:$2|您的}}问题",
 	"growthexperiments-homepage-mentorship-question-subject": "来自[[User:$1|$1]]的问题",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "来自[[User:$1|$1]]关于[[$2]]的问题",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "来自[[User:$1|$1]]关于[[:$2|$2]]的问题",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]]的导师<span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>已离开。",
 	"growthexperiments-homepage-mentorship-system-message": "注：$1",
 	"growthexperiments-specialimpact-title": "影响力",

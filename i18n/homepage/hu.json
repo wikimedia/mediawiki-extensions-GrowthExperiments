@@ -171,7 +171,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "A {{GENDER:$2|kérdésed}} most a mentorod vitalapján van, aki ott fog {{GENDER:$1|válaszolni}}, amint tud.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Kérdésed megtekintése a mentorod vitalapján.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] kérdése",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] kérdése a(z) [[$2]] lapról",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] kérdése a(z) [[:$2|$2]] lapról",
 	"growthexperiments-specialimpact-title": "Hatás",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 eddigi teljesítménye",
 	"growthexperiments-specialimpact-invalid-username": "Hiányzó vagy érvénytelen szerkesztőnév.",

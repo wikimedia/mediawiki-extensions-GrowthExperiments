@@ -154,7 +154,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Jūsų}} klausimas paskelbtas {{GENDER:$1|mentoriaus|mentorės}} aptarimo puslapyje, kur {{GENDER:$1|jis|ji}} į klausimą atsakys kaip galima greičiau.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Peržiūrėti {{GENDER:$2|savo}} klausimą savo {{GENDER:$1|mentoriaus|mentorės}} aptarimo puslapyje.",
 	"growthexperiments-homepage-mentorship-question-subject": "Klausimas iš [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Klausimas iš [[User:$1|$1]], [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Klausimas iš [[User:$1|$1]], [[:$2|$2]]",
 	"growthexperiments-specialimpact-title": "Poveikis",
 	"growthexperiments-specialimpact-showing-for-other-user": "Rodomi $1 poveikio duomenys",
 	"growthexperiments-specialimpact-invalid-username": "Trūksta arba neteisingas naudotojo vardas.",

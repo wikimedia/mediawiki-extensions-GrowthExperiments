@@ -185,7 +185,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Din}} fråga finns nu på din fadders diskussionssida, där {{GENDER:$1|han|hon|hen}} kan besvara den så fort {{GENDER:$1|han|hon|hen}} kan.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Visa {{GENDER:$2|din}} fråga på din {{GENDER:$1|fadders}} diskussionsida.",
 	"growthexperiments-homepage-mentorship-question-subject": "Frågor från [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Fråga från [[User:$1|$1]] på [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Fråga från [[User:$1|$1]] på [[:$2|$2]]",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]]s mentor <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> är bortrest.",
 	"growthexperiments-homepage-mentorship-system-message": "Obs: $1",
 	"growthexperiments-specialimpact-title": "Påverkan",

@@ -174,7 +174,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|మీ}} ప్రశ్న ఇపుడు మీ గురువు గారి చర్చ పేజీలో ఉంది. {{GENDER:$1|ఆయన|ఆమె|వారు}} దాన్ని చూడగానే ఆక్కడే సమాధానమిస్తారు.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|మీ}} ప్రశ్నను మీ {{GENDER:$1|గురువు గారి}} చర్చ పేజీలో చూడండి.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] అడుగుతున్న ప్రశ్న",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[$2]] గురించి [[User:$1|$1]] అడుగుతున్న ప్రశ్న",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[:$2|$2]] గురించి [[User:$1|$1]] అడుగుతున్న ప్రశ్న",
 	"growthexperiments-specialimpact-title": "ప్రభావం",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 గారి ప్రభావాన్ని తెలిపే డేటాను చూపుతున్నాం",
 	"growthexperiments-specialimpact-invalid-username": "వాడుకరిపేరు ఇవ్వలేదు లేదా అది తప్పుది.",

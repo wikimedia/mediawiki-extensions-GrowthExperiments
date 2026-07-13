@@ -179,7 +179,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|La tua}} domanda è ora nella pagina di discussione del tuo tutor, dove {{GENDER:$1|lui|lei}} ti potrà rispondere il prima possibile.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Vedi {{GENDER:$2|le tue}} domande sulla pagina di discussione {{GENDER:$1|del tuo|della tua}} tutor.",
 	"growthexperiments-homepage-mentorship-question-subject": "Domanda da [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Domanda da [[User:$1|$1]] su [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Domanda da [[User:$1|$1]] su [[:$2|$2]]",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "<span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span>, il tutor di [[User:$1|$1]], è assente.",
 	"growthexperiments-homepage-mentorship-system-message": "Nota: $1",
 	"growthexperiments-specialimpact-title": "Impatto",

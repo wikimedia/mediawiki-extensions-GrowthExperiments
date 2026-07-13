@@ -215,7 +215,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Votre}} question est maintenant sur la page de discussion de votre {{GENDER:$1|mentor|mentore}}, qui est l’endroit où {{GENDER:$1|il|elle}} pourra y répondre aussi vite que possible.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Afficher {{GENDER:$2|votre}} question sur la page de discussion de {{GENDER:$2|votre}} {{GENDER:$1|tuteur|tutrice}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Question de [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Question de [[User:$1|$1]] sur [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Question de [[User:$1|$1]] sur [[:$2|$2]]",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Le mentor de [[User:$1|$1]] <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> est absent.",
 	"growthexperiments-homepage-mentorship-system-message": "Note : $1",
 	"growthexperiments-specialimpact-title": "Impact",

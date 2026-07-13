@@ -178,7 +178,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "A {{GENDER:$2|sua}} pergunta está agora na página de discussão {{GENDER:$1|do seu mentor, onde ele|da sua mentora, onde ela}} irá responder-lhe logo que possa.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Ver {{GENDER:$2|sua}} pergunta na página de discussão do(a) {{GENDER:$1|mentor|mentora}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Pergunta de [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pergunta de [[User:$1|$1]] no [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pergunta de [[User:$1|$1]] no [[:$2|$2]]",
 	"growthexperiments-specialimpact-title": "Impacto",
 	"growthexperiments-specialimpact-showing-for-other-user": "Mostrando dados de impacto por $1",
 	"growthexperiments-specialimpact-invalid-username": "Nome de usuário ausente ou inválido.",

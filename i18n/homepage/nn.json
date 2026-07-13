@@ -81,7 +81,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Sjå dei andre samtalane til {{GENDER:$1|fadderen}} {{GENDER:$2|din}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Spør {{GENDER:$1|fadderen}} {{GENDER:$2|din}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Spørsmål frå [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Spørsmål frå [[User:$1|$1]] på [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Spørsmål frå [[User:$1|$1]] på [[:$2|$2]]",
 	"growthexperiments-specialimpact-invalid-username": "Manglande eller ugyldig brukarnamn.",
 	"growthexperiments-homepage-claimmentee-no-user": "Fadderbarnet finst ikkje",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Du}} er allereie fadder for {{GENDER:$1|$1}}",

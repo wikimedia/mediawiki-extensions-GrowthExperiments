@@ -148,7 +148,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Vaše}} pitanje se sada nalazi na stranici za razgovor {{GENDER:$1|mentora|mentorke}}, gde će {{GENDER:$1|on|ona}} odgovoriti na njega čim bude {{GENDER:$1|mogao|mogla}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Prikaži {{GENDER:$2|moje}} pitanje na stranici za razgovor {{GENDER:$1|mentora|mentorke}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Pitanje korisnika [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pitanje korisnika [[User:$1|$1]] sa stranice [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pitanje korisnika [[User:$1|$1]] sa stranice [[:$2|$2]]",
 	"growthexperiments-specialimpact-title": "Uticaj",
 	"growthexperiments-specialimpact-showing-for-other-user": "Prikazuju se podaci o uticaju ($1)",
 	"growthexperiments-specialimpact-invalid-username": "Korisničko ime nedostaje ili nije važeće.",

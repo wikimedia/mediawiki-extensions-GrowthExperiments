@@ -98,7 +98,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "Adess {{GENDER:$2|la toa}} domanda l'è in la pagina de ciciarada del {{GENDER:$1|to sonsijer|toa consijera}}, che l'è 'l post indove che {{GENDER:$1|lù el|lee la}} rispondarà a la prima ocasion.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Varda {{GENDER:$2|i to}} domande in su la pagina de ciciarada {{GENDER:$1|del to consijer|de la toa consjera}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Domanda {{GENDER:$1|del|de la}} [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Domanda {{GENDER:$1|del|de la}} [[User:$1|$1]] in su [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Domanda {{GENDER:$1|del|de la}} [[User:$1|$1]] in su [[:$2|$2]]",
 	"growthexperiments-specialimpact-invalid-username": "Nom de l'utent che ghe cala o che l'è minga bon.",
 	"growthexperiments-homepage-enable-preference": "Per dàgh l'ablitazziona la pagina inizzial di utent novei, visita i impostazzion di funzionalità per i noeuv contributor rivad in di [[Special:Preferences#mw-prefsection-personal-homepage|preferenze]].",
 	"growthexperiments-homepage-contributions-zero-title": "Finadess {{GENDER:$1|t'hee}} fad nanca ona contribuzzion.",

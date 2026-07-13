@@ -156,6 +156,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Так, після 50 редагувань загалом",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Так, після 75 редагувань загалом",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Так, після 150 редагувань загалом",
+	"communityconfiguration-growthsuggestededits-revise_tone-label": "Виправити тон (структуроване завдання)",
+	"communityconfiguration-growthsuggestededits-revise_tone-disabled-control-label": "Завдання вимкнено.",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedtemplates-label": "Статті, що містять визначені тут шаблони, не показуватимуться користувачам як завдання для цього типу завдань.",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedcategories-label": "Статті, що містять визначені тут категорії, не показуватимуться користувачам як завдання для цього типу завдань.",
 	"growthexperiments-addlink-done-button": "Готово",
 	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Очищення застарілих часових міток"
 }

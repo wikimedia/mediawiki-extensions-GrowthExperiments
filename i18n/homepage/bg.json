@@ -117,7 +117,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Прегледайте другите разговори на {{GENDER:$2|Вашия}} {{GENDER:$1|ментор}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Попитайте {{GENDER:$1|Вашия}} {{GENDER:$2|ментор}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Въпрос от [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Въпрос от [[User:$1|$1]] относно [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Въпрос от [[User:$1|$1]] относно [[:$2|$2]]",
 	"growthexperiments-specialimpact-title": "Въздействие",
 	"growthexperiments-specialimpact-invalid-username": "Липсващо или невалидно потребителско име",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Вече {{GENDER:$2|наставлявате}} {{GENDER:$1|$1}}",

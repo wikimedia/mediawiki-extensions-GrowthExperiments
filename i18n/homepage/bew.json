@@ -127,7 +127,7 @@
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Deleng perhadring laèn deri {{GENDER:$2|lu punya}} {{GENDER:$1|mursid}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Tanya ama {{GENDER:$2|lu punya}} {{GENDER:$1|mursid}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Pertanyaan deri [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pertanyaan deri [[User:$1|$1]] di [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pertanyaan deri [[User:$1|$1]] di [[:$2|$2]]",
 	"growthexperiments-specialimpact-title": "Sawaban",
 	"growthexperiments-specialimpact-showing-for-other-user": "Ngasi unjuk data sawaban bakal $1",
 	"growthexperiments-specialimpact-invalid-username": "Nama pemaké kaga' ada atawa kaga' aci.",

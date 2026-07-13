@@ -170,7 +170,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "Partanyaan {{GENDER:$2|Sanak}} alah ado di laman rundiang pambimbiang Sanak. Partanyaan ka dijawek dek {{GENDER:$1|inyo}} sacapeknyo.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Caliak partanyaan {{GENDER:$2|Sanak}} di laman runadiang {{GENDER:$1|pambimbiang}} Sanak.",
 	"growthexperiments-homepage-mentorship-question-subject": "Partanyaan dari [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Partanyaan dari [[User:$1|$1]] di [[$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Partanyaan dari [[User:$1|$1]] di [[:$2|$2]]",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "Pambimbiang [[User:$1|$1]]<span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> sadang indak ado.",
 	"growthexperiments-homepage-mentorship-system-message": "Catatan: $1",
 	"growthexperiments-specialimpact-title": "Dampak",
