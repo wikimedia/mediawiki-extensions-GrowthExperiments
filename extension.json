@@ -413,10 +413,12 @@
 			"services": [
 				"UserOptionsManager",
 				"GrowthExperimentsCampaignConfig",
+				"MainConfig",
 				"SpecialPageFactory",
 				"GrowthExperimentsExperimentUserManager",
 				"GrowthExperimentsCampaignLoader",
-				"GrowthExperimentsFeatureManager"
+				"GrowthExperimentsFeatureManager",
+				"StatsFactory"
 			]
 		},
 		"visualeditor": {
@@ -443,13 +445,7 @@
 		},
 		"confirmEmail": {
 			"class": "GrowthExperiments\\ConfirmEmailHooks",
-			"services": [
-				"TitleFactory",
-				"GrowthExperimentsFeatureManager",
-				"MainConfig",
-				"GrowthExperimentsExperimentUserManager",
-				"StatsFactory"
-			]
+			"services": []
 		}
 	},
 	"Hooks": {
@@ -512,7 +508,6 @@
 		"LoadExtensionSchemaUpdates": "schema",
 		"AuthPreserveQueryParams": "confirmEmail",
 		"LocalUserCreated": [
-			"confirmEmail",
 			"helppanel",
 			"homepage",
 			"mentor",

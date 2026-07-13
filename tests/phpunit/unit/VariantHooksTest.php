@@ -15,6 +15,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @coversDefaultClass \GrowthExperiments\VariantHooks
@@ -87,6 +88,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 		return new VariantHooks(
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$this->createNoOpMock( CampaignConfig::class ),
+			new HashConfig( [] ),
 			$this->createNoOpMock( SpecialPageFactory::class ),
 			new StaticExperimentManager( new ServiceOptions(
 				StaticExperimentManager::CONSTRUCTOR_OPTIONS,
@@ -96,6 +98,7 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 			) ),
 			$this->createNoOpMock( CampaignLoader::class ),
 			$featureManager,
+			StatsFactory::newNull()
 		);
 	}
 

@@ -4,9 +4,12 @@ namespace GrowthExperiments;
 
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
+use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -20,6 +23,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Specials\Hook\PostLoginRedirectHook;
 use MediaWiki\Specials\Hook\SpecialCreateAccountBenefitsHook;
 use MediaWiki\User\Options\UserOptionsManager;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Hooks related to feature flags used for A/B testing and opt-in.
@@ -42,10 +46,12 @@ class VariantHooks implements
 	public function __construct(
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly CampaignConfig $campaignConfig,
+		private readonly Config $mainConfig,
 		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly IExperimentManager $experimentManager,
 		private readonly CampaignLoader $campaignLoader,
 		private readonly FeatureManager $featureManager,
+		private readonly StatsFactory $statsFactory,
 	) {
 	}
 
@@ -90,6 +96,35 @@ class VariantHooks implements
 				'default' => $campaign,
 			];
 		}
+
+		if ( $action === AuthManager::ACTION_CREATE ) {
+			$this->recordBaseline( $campaign );
+		}
+	}
+
+	private function recordBaseline( string $campaign ): void {
+		$context = RequestContext::getMain();
+		$user = $context->getUser();
+		$skin = $context->getSkin();
+		if ( $user === null || $user->isAnon() ) {
+			$userType = 'anon';
+		} elseif ( $user->isTemp() ) {
+			$userType = 'temp';
+		} else {
+			$userType = 'named';
+		}
+
+		$campaignLabelToTrack = $this->getCampaignLabelForTracking( $campaign );
+		$wikiName = $this->mainConfig->get( MainConfigNames::DBname );
+		$isMobile = Util::isMobile( $skin );
+
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'baseline_account_creation_forms_opened_total' )
+			->setLabel( 'wiki', $wikiName )
+			->setLabel( 'platform', $isMobile ? 'mobile' : 'desktop' )
+			->setLabel( 'usertype', $userType )
+			->setLabel( 'campaign', $campaignLabelToTrack )
+			->increment();
 	}
 
 	/**
@@ -104,6 +139,8 @@ class VariantHooks implements
 		if ( $this->campaignConfig->isGrowthCampaign( $campaign ) ) {
 			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $campaign );
 		}
+
+		$this->recordAccountCreations( $campaign );
 	}
 
 	/**
@@ -194,5 +231,30 @@ class VariantHooks implements
 			}
 		}
 		return false;
+	}
+
+	private function recordAccountCreations( string $campaign ): void {
+		$campaignLabelToTrack = $this->getCampaignLabelForTracking( $campaign );
+		$context = RequestContext::getMain();
+		$isMobile = Util::isMobile( $context->getSkin() );
+		$hasEmail = $context->getRequest()->getVal( 'email', '' ) !== '';
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'account_creations_total' )
+			->setLabel( 'wiki', $this->mainConfig->get( MainConfigNames::DBname ) )
+			->setLabel( 'platform', $isMobile ? 'mobile' : 'desktop' )
+			->setLabel( 'hasEmail', $hasEmail ? 'Yes' : 'No' )
+			->setLabel( 'campaign', $campaignLabelToTrack )
+			->increment();
+	}
+
+	private function getCampaignLabelForTracking( string $campaign ): string {
+		if ( $campaign === '' ) {
+			$campaignToTrack = 'none';
+		} elseif ( $this->campaignConfig->isGrowthCampaign( $campaign ) ) {
+			$campaignToTrack = $campaign;
+		} else {
+			$campaignToTrack = 'other';
+		}
+		return $campaignToTrack;
 	}
 }
