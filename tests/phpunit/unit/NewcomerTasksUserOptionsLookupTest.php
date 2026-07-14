@@ -15,6 +15,7 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup
@@ -226,6 +227,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	 * @covers ::convertTaskTypes
 	 * @covers ::filterNonExistentTaskTypes
 	 * @covers ::getConversionMap
+	 * @covers ::taskTypeOrFalse
 	 */
 	public function testConvertTaskTypesFiltersNonExistentFallback() {
 		$user = new UserIdentityValue( 1, 'User1' );
@@ -243,12 +245,16 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$lookupWithout = new NewcomerTasksUserOptionsLookup(
 			new StaticUserOptionsLookup( [] ), $config, $this->getConfigurationLoader( [ $reviseTone ] )
 		);
+		$lookupWithoutWrapper = TestingAccessWrapper::newFromObject( $lookupWithout );
+		$this->assertFalse( $lookupWithoutWrapper->getConversionMap( $user )[$reviseTone] );
 		$this->assertSame( [], $lookupWithout->convertTaskTypes( [ $reviseTone ], $user ) );
 
 		// When "copyedit" is configured, the fallback resolves and is returned.
 		$lookupWith = new NewcomerTasksUserOptionsLookup(
 			new StaticUserOptionsLookup( [] ), $config, $this->getConfigurationLoader( [ 'copyedit', $reviseTone ] )
 		);
+		$lookupWithWrapper = TestingAccessWrapper::newFromObject( $lookupWith );
+		$this->assertSame( 'copyedit', $lookupWithWrapper->getConversionMap( $user )[$reviseTone] );
 		$this->assertSame( [ 'copyedit' ], $lookupWith->convertTaskTypes( [ $reviseTone ], $user ) );
 	}
 

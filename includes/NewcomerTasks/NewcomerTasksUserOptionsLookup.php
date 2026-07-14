@@ -159,6 +159,17 @@ class NewcomerTasksUserOptionsLookup {
 	}
 
 	/**
+	 * Returns the given task type if it's available, or false if it is not.
+	 *
+	 * @param string $taskTypeId
+	 * @return string|false
+	 */
+	private function taskTypeOrFalse( string $taskTypeId ) {
+		return array_key_exists( $taskTypeId, $this->configurationLoader->getTaskTypes() ) ?
+			$taskTypeId : false;
+	}
+
+	/**
 	 * Get mapping of task types which the user is not supposed to see to a similar task type
 	 * or false (meaning nothing should be shown instead).
 	 * Identical to TaskTypesAbFilter.getConversionMap().
@@ -171,12 +182,12 @@ class NewcomerTasksUserOptionsLookup {
 		if ( $this->areLinkRecommendationsEnabled( $user ) ) {
 			$map += [ 'links' => LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
-			$map += [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];
+			$map += [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => $this->taskTypeOrFalse( 'links' ) ];
 		}
 		if ( $this->areReviseToneRecommendationsEnabled() ) {
 			$map += [ 'copyedit' => ReviseToneTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
-			$map += [ ReviseToneTaskTypeHandler::TASK_TYPE_ID => 'copyedit' ];
+			$map += [ ReviseToneTaskTypeHandler::TASK_TYPE_ID => $this->taskTypeOrFalse( 'copyedit' ) ];
 		}
 		if ( !$this->areImageRecommendationsEnabled() ) {
 			$map += [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => false ];
