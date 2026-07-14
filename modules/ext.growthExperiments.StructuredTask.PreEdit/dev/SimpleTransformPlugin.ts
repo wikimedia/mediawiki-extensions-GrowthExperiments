@@ -23,11 +23,11 @@ const transformPlugin = (
 		callbackArray?: transformCallback[];
 		excludePatterns?: string[];
 	},
-): { name: string; transform: ( string: string, filePath: string ) => ( boolean | string ) } => ( {
+): { name: string; transform: ( string: string, filePath: string ) => string | null } => ( {
 	name: 'transformPlugin',
 	transform: ( string: string, filePath: string ) => {
 		if ( checkExcludeStatus( filePath, excludePatterns ) ) {
-			return false;
+			return null;
 		}
 		return transform( string, callbackArray );
 	},

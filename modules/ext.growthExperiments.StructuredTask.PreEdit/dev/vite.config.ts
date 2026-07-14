@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-// @ts-expect-error Something is strange about that plugin's types, but it works
 import vue from '@vitejs/plugin-vue';
 import transformPlugin from './SimpleTransformPlugin';
 

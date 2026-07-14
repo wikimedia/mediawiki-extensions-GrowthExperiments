@@ -3,7 +3,7 @@
 		"target": "esnext",
 		"lib": [ "es6", "dom" ],
 		"types": [ "cypress", "node", "@wikimedia/types-wikimedia" ],
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 		"allowSyntheticDefaultImports": true
 	},
