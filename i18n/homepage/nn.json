@@ -163,6 +163,7 @@
 	"log-action-filter-growthexperiments-addlink": "Lenkjeframlegg",
 	"log-action-filter-growthexperiments-addimage": "Biletframlegg",
 	"growthexperiments-addlink-summary-summary": "Lenkjeframlegg: $1 {{PLURAL:$1|lenkje lagd|lenkjer lagde}} til.",
+	"newcomertasksinfo-no-data": "Ingen data tilgjengeleg.",
 	"growthexperiments-homepage-impact-contributions-link": "Syn alle endringane",
 	"echo-category-title-ge-newcomer": "Nybyrjarfunksjonar"
 }

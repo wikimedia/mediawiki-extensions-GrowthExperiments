@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "د نوي‌راغلو کسانو لپاره د مناسبې دندې سپارښتنې ترلاسه‌کول.",
+	"apihelp-query+growthtasks-param-topics": "د دندې وړانديزونو کې د غوره‌توب لپاره د ليکنې سکالوگانې.",
+	"apihelp-query+growthtasks-param-topicsmode": "سکالوگانو لپاره انډوليز ونگ‌ډول.",
+	"apihelp-query+growthtasks-param-limit": "د بېرته راستنېدو لپاره د دندو وړانديزونو ډېر شمېر.",
+	"apihelp-query+growthtasks-param-excludepageids": "د مخ پېژند چې له تپوسه بايد وويستل شي.",
+	"apierror-growthexperiments-addlink-handler-notfound": "د تړوني سپارښتنې ريکارډ ونه موندل شو",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "د ناڅاپي تړوني سپارښتنې موخې: $1"
+}

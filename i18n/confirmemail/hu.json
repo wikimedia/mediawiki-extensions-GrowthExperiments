@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Lois131",
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"EHughes"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|mi ez?]])",
@@ -21,5 +22,11 @@
 	"growthexperiments-signupcampaign-bullet1": "Javasolt cikkek az érdeklődési köröd szerint",
 	"growthexperiments-signupcampaign-bullet2": "Kérj segítséget egy tapasztalt szerkesztőtől",
 	"growthexperiments-signupcampaign-bullet3": "Kezdd kis, egyszerű szerkesztésekkel",
+	"growthexperiments-thankyoupage-title": "Köszönjük a támogatásodat! Regisztrálj egy fiókot, hogy elkezdhesd szerkeszteni és fejleszteni a Wikipédiát.",
+	"growthexperiments-thankyoupage-body": "A Wikipédiát hozzád hasonló emberek építik közösen. Egy szócikk szerkesztése könnyebb, mint gondolnád!\n\nEgy felhasználói fiókkal az alábbiakhoz lesz hozzáférésed:",
+	"growthexperiments-thankyoupage-body-mobile": "A Wikipédiát hozzád hasonló emberek építik közösen. Egy szócikk szerkesztése könnyebb, mint gondolnád!",
+	"growthexperiments-thankyoupage-bullet1": "Az érdeklődési körödnek megfelelő egyszerű feladatok;",
+	"growthexperiments-thankyoupage-bullet2": "Segítség és útmutatás a szerkesztés során;",
+	"growthexperiments-thankyoupage-bullet3": "Statisztikák arról, hogy hányan olvasták az általad szerkesztett szócikkeket.",
 	"growthexperiments-campaigns-footer": "Ha ezen az oldalon létrehozod a saját fiókodat, az tapasztalati és elemzési célokra ehhez a kampányhoz lesz társítva."
 }

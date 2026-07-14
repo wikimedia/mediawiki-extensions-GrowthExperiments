@@ -93,7 +93,7 @@
 	"growthexperiments-rcfilters-mentorship-title": "Mentorluq",
 	"growthexperiments-rcfilters-mentorship-starred-label": "Ulduzlanmış tələbələriniz",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Mentor idarəetmə {{GENDER:|panelinizdəki}} sizə təyin edilmiş ulduzlanmış istifadəçilər",
-	"growthexperiments-rcfilters-mentorship-unstarred-label": "Ulduzlanmamış istifadəçiləriniz",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "Ulduzlanmamış tələbələriniz",
 	"growthexperiments-rcfilters-mentorship-unstarred-desc": "{{GENDER:|Sizə}} təyin edilmiş digər istifadəçilər",
 	"growthexperiments-quit-mentorship-title": "Mentorluqdan ayrıl",
 	"growthexperiments-quit-mentorship-error-not-a-mentor": "{{GENDER:|Siz}} mentor deyilsiniz.",

@@ -30,7 +30,7 @@
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Add Image 플러그인 데이터에서 'accepted' 매개변수는 불리언이어야 합니다, 현재 값은 $1 입니다",
 	"apierror-growthexperiments-addimage-handler-reason-missing": "Add Image 플러그인 데이터에서 'reasons' 매개변수가 누락되었습니다",
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Add Image 플러그인 데이터에서 'reasons' 매개변수는 배열이어야 합니다, 현재 값은 $1 입니다",
-	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reasons'에 대해 '$1' 항목이 잘못되었습니다, 다음 중 하나여야 합니다: $2",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reasons' 매개변수에 대해 '$1' 항목이 잘못되었습니다, 다음 중 하나여야 합니다: $2",
 	"apierror-growthexperiments-addimage-handler-section-title-missing": "Add Image 플러그인 데이터에서 'sectionTitle' 매개변수가 누락되었습니다",
 	"apierror-growthexperiments-addimage-handler-section-title-wrongtype": "Add Image 플러그인 데이터에서 'sectionTitle' 매개변수는 null이어야 합니다, 현재 값은 $1 입니다",
 	"apierror-growthexperiments-addimage-handler-section-number-missing": "Add Image 플러그인 데이터에서 'sectionNumber' 매개변수가 누락되었습니다",

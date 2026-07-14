@@ -4,7 +4,8 @@
 			"Naufal06",
 			"Notanotheramy",
 			"Rachmat04",
-			"BAPerdana-WMF"
+			"BAPerdana-WMF",
+			"Bayahiu"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Dapatkan saranan tugas yang sesuai bagi pendatang baru.",
@@ -15,7 +16,7 @@
 	"apihelp-query+growthtasks-param-limit": "Jumlah maksimum saranan tugas yang perlu tampil.",
 	"apihelp-query+growthtasks-param-excludepageids": "ID halaman untuk dikecualikan dari kueri.",
 	"apihelp-query+growthtasks-param-debug": "Tambah data awakutu (''debug'') pada keluaran.",
-	"apihelp-query+growthtasks-example-1": "Dapatkan saranan tugas untuk tugas berbentuk penyutingan naskah untuk pengguna sekarang.",
+	"apihelp-query+growthtasks-example-1": "Dapatkan saranan tugas berjenis penyuntingan naskah bagi pengguna saat ini.",
 	"apihelp-query+growthtasks-example-2": "Dapatkan saranan tugas untuk pengguna sekarang, dengan informasi lebih lengkap tentang halaman.",
 	"apihelp-query+growthnextsuggestedtasktype-summary": "Dapatkan jenis tugas yang disarankan untuk pengguna coba berikutnya.",
 	"apihelp-query+growthnextsuggestedtasktype-param-activetasktype": "Jenis tugas yang saat ini sedang dikerjakan pengguna.",

@@ -11,7 +11,8 @@
 			"Railfail536",
 			"Tar Lócesilion",
 			"The Polish",
-			"Woytecr"
+			"Woytecr",
+			"PanWor"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Witaj}}, $1!",
@@ -22,7 +23,7 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Pomiń}} tę ankietę",
 	"welcomesurvey-close-btn": "Zamknij i wróć na stronę $1",
 	"welcomesurvey-privacy-policy-link-text": "Poznaj więcej danych o nowicjuszach",
-	"welcomesurvey-privacy-footer-text": "Fundacja Wikimedia wykorzysta {{GENDER:$1|Twoje}} odpowiedzi, aby pomóc Ci rozpocząć edytowanie {{GENDER:D.lp|{{SITENAME}}}}. [$2 Dowiedz się więcej w naszym oświadczeniu o ochronie prywatności].",
+	"welcomesurvey-privacy-footer-text": "Wikimedia Foundation wykorzysta {{GENDER:$1|Twoje}} odpowiedzi, aby pomóc Ci rozpocząć edytowanie {{GRAMMAR:D.lp|{{SITENAME}}}}. [$2 Dowiedz się więcej w naszym oświadczeniu o ochronie prywatności].",
 	"welcomesurvey-sidebar-editing-title": "Pierwsze kroki w edytowaniu",
 	"welcomesurvey-sidebar-editing-text": "Każdy może edytować prawie wszystkie strony. Każdej godziny wykonywane są setki zmian mające na celu dodanie nowej treści, poprawienie błędów czy usprawnienie czytelności. Poniższe strony mogą ci pomóc, jeżeli jesteś zainteresowan{{GENDER:$1|y|a|y}} pomocą.",
 	"welcomesurvey-sidebar-editing-link1-text": "Samouczek",

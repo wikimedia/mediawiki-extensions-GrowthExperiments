@@ -161,7 +161,7 @@
 	"growthexperiments-homepage-recent-questions-archived": "archiviato",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Questa domanda è stata archiviata, probabilmente perché era stata fatta molto tempo fa.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$2|Il|La|Il}} {{GENDER:$1|tuo}} tutor",
-	"growthexperiments-homepage-mentorship-preintro": "Ti abbiamo assegnato un utente esperto per rispondere alle tue domande riguardo le modifiche.",
+	"growthexperiments-homepage-mentorship-preintro": "Ti abbiamo assegnato un utente esperto per rispondere alle tue domande riguardo alle modifiche.",
 	"growthexperiments-homepage-mentorship-learn-more": "Leggi di più riguardo i tutor.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|modifica|modifiche}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Attivo|Attiva}} oggi",

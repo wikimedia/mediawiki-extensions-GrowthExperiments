@@ -13,5 +13,9 @@
 	"apihelp-growthsetmentor-param-mentee": "لارزدکړي کارن‌نوم",
 	"apihelp-growthsetmentor-param-mentor": "لارښود کارن‌نوم",
 	"apihelp-growthsetmentor-param-reason": "د بدلون لامل",
-	"apihelp-growthinvalidateimagerecommendation-summary": "د انځور سپارښتنې بې‌باوره کول."
+	"apihelp-query+growthimagesuggestiondata-summary": " که شتون ولري د [https://www.mediawiki.org/wiki/wikitech:Add_Image انځور وړانديز اړوند اومتوکي] راوړل",
+	"apihelp-growthinvalidateimagerecommendation-summary": "د انځور سپارښتنې بې‌باوره کول.",
+	"apihelp-growthinvalidateimagerecommendation-param-filename": "د انځور سپارښتنې لپاره نامخکېنی دوتنې نوم د بېلگې په توگه <kbd>Foo\n.jpg</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "د هغې برخې سرليک چې د هغې لپاره د انځور وړاندئز شوی د بېلگې په توگه <kbd>پېښليک</kbd>",
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "د ۱ پربنسټ د هغه برخې ليکلړ چې د هغې لپاره د انځور وړانديز شوی د بېلگې په توگه <kbd>۳</kbd>"
 }
