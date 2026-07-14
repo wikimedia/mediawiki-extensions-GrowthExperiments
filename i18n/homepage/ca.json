@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alan Mena",
+			"AlbertRA",
 			"Amadalvarez",
 			"Arnaugir",
 			"Fitoschido",
@@ -22,6 +23,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hola}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Espai de progrés d'usuari",
 	"growthexperiments-homepage-tab": "Espai de progrés d'usuari",
 	"tooltip-pt-homepage": "{{GENDER:|La teva}} pàgina d'inici",
 	"prefs-homepage": "Eines per a l'usuari nouvingut",

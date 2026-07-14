@@ -151,5 +151,7 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "بله، پس از ۵۰ ویرایش",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "بله، پس از ۷۵ ویرایش",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "بله، پس از ۱۵۰ ویرایش",
+	"communityconfiguration-growthsuggestededits-revise_tone-label": "اصلاح لحن (وظیفهٔ ساختاریافته)",
+	"communityconfiguration-growthsuggestededits-revise_tone-disabled-control-label": "وظیفه غیرفعال است.",
 	"growthexperiments-addlink-done-button": "انجام شد"
 }

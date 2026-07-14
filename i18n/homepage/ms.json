@@ -7,6 +7,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Apa khabar}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Laman pemula pengguna baharu",
 	"growthexperiments-homepage-tab": "Laman pemula",
 	"tooltip-pt-homepage": "Laman pemula {{GENDER:|anda}}",
 	"prefs-homepage": "Ciri penyunting pengguna baharu",

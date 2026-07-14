@@ -9,6 +9,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salam}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Yeni istifadəçi ana səhifəsi",
 	"growthexperiments-homepage-tab": "Ana səhifə",
 	"tooltip-pt-homepage": "{{GENDER:|Sənin}} ana səhifən",
 	"prefs-homepage": "Yeni istifadəçi redaktor özəllikləri",
@@ -82,8 +83,8 @@
 	"growthexperiments-homepage-impact-scores-thanks-count": "Qəbul edilən təşəkkürlər",
 	"growthexperiments-homepage-impact-scores-over-limit": "$1+",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Təşəkkürün necə işlədiyi haqqında ətraflı məlumat",
-	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} {{GENDER:|sizin}} kimi redaktorlar icması tərəfindən yazılır.\nEtdiyiniz redaktəyə görə digər istifadəçilər sizə təşəkkür edə bilər və başqalarının redaktəsinə görə də siz təşəkkür edə bilərsiniz. Bu saya sadəcə son $2 redaktəyə alınan təşəkkürlər aiddir.",
-	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} redaktorlar icması tərəfindən yaradılmışdır. İstənilən redaktora etdiyi redaktə üçün başqası təşəkkür edə bilər. Alınan təşəkkürlərin sayı burada göstərilir. Bu saya sadəcə son $1 redaktəyə alınan təşəkkürlər aiddir.",
+	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{SITENAME}} {{GENDER:|sizin}} kimi redaktorlar icması tərəfindən yazılır.\nEtdiyiniz redaktəyə görə digər istifadəçi sizə təşəkkür edə bilər və başqalarının redaktəsinə görə də siz təşəkkür edə bilərsiniz. Bu, maksimum $2 təşəkkürü göstərir, aktual rəqəm daha yüksək ola bilər.",
+	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{SITENAME}} redaktorlar icması tərəfindən yaradılmışdır. İstənilən redaktora etdiyi redaktə üçün başqası təşəkkür edə bilər. Alınan təşəkkürlərin sayı burada göstərilir. Bu, maksimum $1 təşəkkürü göstərir, aktual rəqəm daha yüksək ola bilər.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "Bu, ən azı bir redaktə {{GENDER:|etdiyiniz}} ardıcıl günlərin ən yüksək sayıdır. Bu saya sadəcə son $2 redaktədəki ardıcıl redaktələr aiddir.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "Bu, ən azı bir redaktə etdiyiniz ardıcıl günlərin ən yüksək sayıdır. Bu saya sadəcə son $1 redaktədəki ardıcıl redaktələr aiddir.",
 	"growthexperiments-homepage-impact-scores-streak-info-label": "Ən uzun ardıcıllıq haqqında daha çox məlumat",

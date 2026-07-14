@@ -7,6 +7,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ola}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Páxina de inicio para as persoas principiantes",
 	"growthexperiments-homepage-tab": "Páxina principal",
 	"tooltip-pt-homepage": "A {{GENDER:|túa}} páxina principal",
 	"prefs-homepage": "Funcións para os editores novos",

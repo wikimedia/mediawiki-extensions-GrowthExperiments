@@ -24,6 +24,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Startpagina voor nieuwkomers",
 	"growthexperiments-homepage-tab": "Startpagina",
 	"tooltip-pt-homepage": "{{GENDER:|Uw}} startpagina",
 	"prefs-homepage": "Bewerkingsfuncties voor nieuwkomers",

@@ -17,6 +17,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Tulokkaan aloitussivu",
 	"growthexperiments-homepage-tab": "Aloitussivu",
 	"tooltip-pt-homepage": "{{GENDER:|Oma}} aloitussivusi",
 	"prefs-homepage": "Aloittelevan muokkaajan toiminnot",
