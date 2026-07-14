@@ -206,7 +206,7 @@ abstract class QuestionPoster {
 		$target = Title::makeTitle(
 			$this->getTargetTitle()->getNamespace(),
 			$this->getTargetTitle()->getDBkey(),
-			$fragment
+			ltrim( $fragment, '#' )
 		);
 		$this->setResultUrl( $target->getLinkURL() );
 		$tagId = str_replace( ' ', '_', $tag );

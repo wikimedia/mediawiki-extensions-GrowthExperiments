@@ -79,6 +79,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
+		$this->assertStringNotContainsString( '##', $questionPoster->getResultUrl() );
 		$page = $this->getServiceContainer()->getWikiPageFactory()
 			->newFromTitle( Title::newFromText( 'HelpDeskTest' ) );
 		$this->assertMatchesRegularExpression(
@@ -113,6 +114,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
+		$this->assertStringNotContainsString( '##', $questionPoster->getResultUrl() );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$this->assertMatchesRegularExpression(
 			'/a great question/',
