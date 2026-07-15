@@ -511,7 +511,6 @@
 		],
 		"LoadExtensionSchemaUpdates": "schema",
 		"AuthPreserveQueryParams": "confirmEmail",
-		"CreateAccountShouldShowUsernamePolicyPopover": "confirmEmail",
 		"LocalUserCreated": [
 			"confirmEmail",
 			"helppanel",
