@@ -12,6 +12,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Nytilkommen hjemmeside",
 	"growthexperiments-homepage-tab": "Forside",
 	"tooltip-pt-homepage": "{{GENDER:|Din}} forside",
 	"prefs-homepage": "Funktioner for nybegyndere",

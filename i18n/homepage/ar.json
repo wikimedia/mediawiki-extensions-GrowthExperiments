@@ -25,6 +25,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "لوحة المستخدم للوافد الجديد",
 	"growthexperiments-homepage-tab": "لوحة {{GENDER:|المستخدم|المستخدمة}}",
 	"tooltip-pt-homepage": "لوحة {{GENDER:|المستخدم|المستخدمة}} الخاصة بك",
 	"prefs-homepage": "مزايا التحرير للوافدين الجدد",
