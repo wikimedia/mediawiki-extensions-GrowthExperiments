@@ -4,5 +4,14 @@
 			"شاه زمان پټان"
 		]
 	},
-	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "د \"لارښود مېز کې پوښتل\" منځدړه"
+	"apihelp-helppanelquestionposter-summary": "د اوسني کارن لپاره د لارښود منځدړې له لارې خپرې شوې پوښتنې سمبالول.",
+	"apihelp-helppanelquestionposter-param-body": "د کارن له خوا چمتو شوې پوښتنې ليک.",
+	"apihelp-helppanelquestionposter-param-source": "هغه چلندلار چې له مخې يې پوښتنه خپره شوې ده.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "د \"لارښود مېز کې پوښتل\" منځدړه",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "د نوي‌راغلي کورمخ کې د \"له خپل لارښود يې وپوښتئ\" منځدړه",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "په لارښود منځدړه کې د \"له خپل لارښود نه پوښتنه وکړئ\" سکرين",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"لارښود مېز کې پوښتل\" منځدړه (زوړ نوم)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "د نوي‌راغلي کورمخ کې د \"له خپل لارښود نه پوښتنه وکړئ\" منځدړه (زوړ نوم)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "له پوښتنې سره اړوند سرليک، که ټاکلی وي؛ نو راويې‌نغاړئ.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "د پوښتنې پوښتلو لپاره تاسو بايد ننوتلي ياست."
 }
