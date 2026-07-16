@@ -14,6 +14,32 @@ describe( 'MenteeOverview', () => {
 	let menteeActions, userPreferencesActions, userPreferencesGetters, menteeGetters;
 	let store;
 
+	// Build a store from the current mock closures. Getters must be finalised before
+	// calling this: Vuex captures the getter references at construction, so a test that
+	// overrides a getter has to rebuild rather than mutate an already-mounted store.
+	const buildStore = () => new Vuex.Store( {
+		modules: {
+			mentees: {
+				actions: menteeActions,
+				getters: menteeGetters,
+				namespaced: true
+			},
+			userPreferences: {
+				actions: userPreferencesActions,
+				getters: userPreferencesGetters,
+				namespaced: true
+			}
+		}
+	} );
+
+	const mountOverview = ( storeInstance = store ) => shallowMount( MenteeOverview, {
+		global: {
+			mocks: {
+				$store: storeInstance
+			}
+		}
+	} );
+
 	beforeEach( () => {
 		menteeActions = {
 			getAllMentees: jest.fn( () => $.Deferred().resolve().promise() ),
@@ -36,33 +62,14 @@ describe( 'MenteeOverview', () => {
 				onlyStarred: false
 			} ) )
 		};
-		store = new Vuex.Store( {
-			modules: {
-				mentees: {
-					actions: menteeActions,
-					getters: menteeGetters,
-					namespaced: true
-				},
-				userPreferences: {
-					actions: userPreferencesActions,
-					getters: userPreferencesGetters,
-					namespaced: true
-				}
-			}
-		} );
+		store = buildStore();
 		// Use a well-known window name to have the component avoid passing an anchor to CdxPopover.
 		// CdxPopover needs to be shallow rendered for reasons outlined above, and vue-test-utils
 		// is unable to stringify references holding an HTML element.
 		global.window.name = 'MenteeOverviewJestTests';
 	} );
 	it( 'it dispatches "mentees/getAllMentees" when mounted', () => {
-		shallowMount( MenteeOverview, {
-			global: {
-				mocks: {
-					$store: store
-				}
-			}
-		} );
+		mountOverview();
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 1 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 1, expect.any( Object ), {
 			limit: 10,
@@ -73,13 +80,7 @@ describe( 'MenteeOverview', () => {
 	} );
 
 	it( 'it dispatches "mentees/getAllMentees" when "DataTable" navigates a page', () => {
-		const wrapper = shallowMount( MenteeOverview, {
-			global: {
-				mocks: {
-					$store: store
-				}
-			}
-		} );
+		const wrapper = mountOverview();
 		wrapper.findComponent( DataTable ).vm.$emit( 'update:next-page' );
 		wrapper.findComponent( DataTable ).vm.$emit( 'update:prev-page' );
 		// 1st time in MenteeOverview.created
@@ -94,13 +95,7 @@ describe( 'MenteeOverview', () => {
 		);
 	} );
 	it( 'it dispatches "mentees/getAllMentees" when "DataTable" updates the limit and saves it', () => {
-		const wrapper = shallowMount( MenteeOverview, {
-			global: {
-				mocks: {
-					$store: store
-				}
-			}
-		} );
+		const wrapper = mountOverview();
 
 		wrapper.findComponent( DataTable ).vm.$emit( 'update:limit', 15 );
 		// 1st time in MenteeOverview.created
@@ -112,13 +107,7 @@ describe( 'MenteeOverview', () => {
 		expect( menteeActions.savePresets ).toHaveBeenCalledTimes( 1 );
 	} );
 	it( 'it dispatches "mentees/getAllMentees" when "DataTable" updates the sorting', () => {
-		const wrapper = shallowMount( MenteeOverview, {
-			global: {
-				mocks: {
-					$store: store
-				}
-			}
-		} );
+		const wrapper = mountOverview();
 
 		wrapper.findComponent( DataTable ).vm.$emit( 'update:sorting', { sortBy: 'questions', order: 'asc' } );
 		// 1st time in MenteeOverview.created
@@ -133,27 +122,7 @@ describe( 'MenteeOverview', () => {
 		// forces page 1 (resetting) rather than echoing whatever page the caller was
 		// on, guarding the same class of regression as T432190.
 		menteeGetters.currentPage = jest.fn( () => 2 );
-		const storeOnPageTwo = new Vuex.Store( {
-			modules: {
-				mentees: {
-					actions: menteeActions,
-					getters: menteeGetters,
-					namespaced: true
-				},
-				userPreferences: {
-					actions: userPreferencesActions,
-					getters: userPreferencesGetters,
-					namespaced: true
-				}
-			}
-		} );
-		const wrapper = shallowMount( MenteeOverview, {
-			global: {
-				mocks: {
-					$store: storeOnPageTwo
-				}
-			}
-		} );
+		const wrapper = mountOverview( buildStore() );
 
 		const update = {
 			editCountMin: 10,
@@ -175,27 +144,7 @@ describe( 'MenteeOverview', () => {
 		// dashboard shows "No mentees found" (T432190). Selecting a suggestion must
 		// reset the page so the match is visible again.
 		menteeGetters.currentPage = jest.fn( () => 2 );
-		const storeOnPageTwo = new Vuex.Store( {
-			modules: {
-				mentees: {
-					actions: menteeActions,
-					getters: menteeGetters,
-					namespaced: true
-				},
-				userPreferences: {
-					actions: userPreferencesActions,
-					getters: userPreferencesGetters,
-					namespaced: true
-				}
-			}
-		} );
-		const wrapper = shallowMount( MenteeOverview, {
-			global: {
-				mocks: {
-					$store: storeOnPageTwo
-				}
-			}
-		} );
+		const wrapper = mountOverview( buildStore() );
 
 		wrapper.findComponent( MenteeSearch ).vm.$emit( 'update:selected', 'Laura' );
 		// 1st time in MenteeOverview.created
@@ -207,27 +156,7 @@ describe( 'MenteeOverview', () => {
 	} );
 	it( 'it displays the no results view when the API returns 0 mentees', () => {
 		menteeGetters.allMentees = jest.fn( () => ( [] ) );
-		const storeWithoutMentees = new Vuex.Store( {
-			modules: {
-				mentees: {
-					actions: menteeActions,
-					getters: menteeGetters,
-					namespaced: true
-				},
-				userPreferences: {
-					actions: userPreferencesActions,
-					getters: userPreferencesGetters,
-					namespaced: true
-				}
-			}
-		} );
-		const wrapper = shallowMount( MenteeOverview, {
-			global: {
-				mocks: {
-					$store: storeWithoutMentees
-				}
-			}
-		} );
+		const wrapper = mountOverview( buildStore() );
 
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 1 );
 		const noResults = wrapper.findComponent( NoResults );
