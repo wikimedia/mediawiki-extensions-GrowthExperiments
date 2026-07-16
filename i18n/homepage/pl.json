@@ -376,7 +376,7 @@
 	"growthexperiments-templatecollectionfeature-invalid-collection": "Niepoprawny zbiór szablonów „$1”.",
 	"growthexperiments-addlink-pagenotfound": "Strona „$1” nie istnieje",
 	"growthexperiments-addlink-revdeleted": "Wersja $1 strony „$2” jest niedostępna",
-	"growthexperiments-addlink-wrongmodel": "Wersja $1 strony „$2” nie zawiera wikitekstu",
+	"growthexperiments-addlink-wrongmodel": "Wersja $1 strony „$2” nie zawiera wikikodu",
 	"growthexperiments-addlink-invalidjson": "Odpowiedź usługi rekomendowania linków dla strony „$1” jest nieprawidłowa",
 	"growthexperiments-addlink-serviceerror": "Usługa rekomendowania linków zwróćiła błąd dla strony „$1”: $2",
 	"growthexperiments-addlink-notinstore": "Nie odnaleziono sugerowanych linków dla „$1”",
