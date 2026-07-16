@@ -15,7 +15,7 @@ exports[`PersonalizedPraise NoResult when no mentees 1`] = `
     <button
       aria-label="growthexperiments-mentor-dashboard-personalized-praise-info-icon-label"
       aria-pressed="false"
-      class="cdx-toggle-button cdx-toggle-button--quiet cdx-toggle-button--toggled-off cdx-toggle-button--icon-only ext-growthExperiments-PersonalizedPraise__info-button"
+      class="cdx-toggle-button cdx-toggle-button--size-medium cdx-toggle-button--quiet cdx-toggle-button--toggled-off cdx-toggle-button--icon-only ext-growthExperiments-PersonalizedPraise__info-button"
       type="button"
     >
       
@@ -46,12 +46,14 @@ exports[`PersonalizedPraise NoResult when no mentees 1`] = `
 			-->
     <cdx-popover-stub
       closebuttonlabel="Close"
+      hidebackdrop="false"
       icon="info-icon"
       open="false"
       placement="bottom-start"
       renderinplace="true"
       stackedactions="false"
       title="growthexperiments-mentor-dashboard-personalized-praise-info-headline"
+      usebottomsheet="false"
       useclosebutton="true"
     />
   </div>
@@ -120,6 +122,7 @@ exports[`PersonalizedPraise full data when has mentees 1`] = `
       disabled="false"
       modelvalue="false"
       quiet="true"
+      size="medium"
     />
     <!--
 				CdxPopover uses the floating-ui library in a way that causes infinite recursion when
@@ -130,12 +133,14 @@ exports[`PersonalizedPraise full data when has mentees 1`] = `
 			-->
     <cdx-popover-stub
       closebuttonlabel="Close"
+      hidebackdrop="false"
       icon="info-icon"
       open="false"
       placement="bottom-start"
       renderinplace="true"
       stackedactions="false"
       title="growthexperiments-mentor-dashboard-personalized-praise-info-headline"
+      usebottomsheet="false"
       useclosebutton="true"
     />
   </div>

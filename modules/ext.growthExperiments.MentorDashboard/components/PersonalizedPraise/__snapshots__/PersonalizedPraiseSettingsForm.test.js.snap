@@ -57,7 +57,7 @@ exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
               <!--v-if-->
               <g>
                 <path
-                  d="m17.5 4.75-7.5 7.5-7.5-7.5L1 6.25l9 9 9-9z"
+                  d="m16.707 8.017-6 5.983H9.293l-6-5.983 1.414-1.414L10 11.896l5.293-5.293z"
                 />
               </g>
             </svg>

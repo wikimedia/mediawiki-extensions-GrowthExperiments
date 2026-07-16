@@ -85,7 +85,7 @@ exports[`ScoreCard renders correctly info slot 1`] = `
       <button
         aria-label="the label for the info icon"
         aria-pressed="false"
-        class="cdx-toggle-button cdx-toggle-button--quiet cdx-toggle-button--toggled-off cdx-toggle-button--icon-only ext-growthExperiments-ScoreCards__info-button"
+        class="cdx-toggle-button cdx-toggle-button--size-medium cdx-toggle-button--quiet cdx-toggle-button--toggled-off cdx-toggle-button--icon-only ext-growthExperiments-ScoreCards__info-button"
         type="button"
       >
         
@@ -115,6 +115,15 @@ exports[`ScoreCard renders correctly info slot 1`] = `
 					window name to avoid passing the anchor in this case.
 				-->
       <!--teleport start-->
+      <!--v-if-->
+      <transition-stub
+        appear="true"
+        css="true"
+        name="cdx-popover-floating"
+        persisted="false"
+      >
+        <!--v-if-->
+      </transition-stub>
       <!--v-if-->
       <!--teleport end-->
     </span>
