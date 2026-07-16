@@ -194,3 +194,49 @@ QUnit.test( 'getRenderData: with specified render width', ( assert ) => {
 		},
 	);
 } );
+
+QUnit.test( 'getRenderData: snaps the source width to a standard thumbnail size (T428797)', function ( assert ) {
+	// The snapping itself is core's responsibility (and is tested there); here we only
+	// verify that getImageRenderData delegates the target source width to the core
+	// helper and uses its result to build the thumbnail URL.
+	const adjustStub = this.sandbox.stub( mw.util, 'adjustThumbWidthForSteps' ).returns( 330 );
+	const viewport = {
+		innerHeight: 629,
+		innerWidth: 375,
+		devicePixelRatio: 2,
+	};
+	const renderWidth = 160;
+	assert.deepEqual(
+		AddImageUtils.getImageRenderData( getMetadata(), viewport, renderWidth ), {
+			src: getThumbUrl( 330 ),
+			maxWidth: renderWidth,
+		},
+	);
+	// targetSrcWidth = renderWidth * devicePixelRatio = 320.
+	assert.true(
+		adjustStub.calledOnceWithExactly( 320, 1024, false ),
+		'adjustThumbWidthForSteps called with the target source width, original width and isVectorized',
+	);
+} );
+
+QUnit.test( 'getRenderData: passes isVectorized through to the width adjustment', function ( assert ) {
+	const adjustStub = this.sandbox.stub( mw.util, 'adjustThumbWidthForSteps' ).returns( 330 );
+	const viewport = {
+		innerHeight: 629,
+		innerWidth: 375,
+		devicePixelRatio: 2,
+	};
+	// A vector enters the resize branch even when the target width exceeds the original.
+	const metadata = getMetadata( { isVectorized: true, originalWidth: 100 } );
+	const renderWidth = 160;
+	assert.deepEqual(
+		AddImageUtils.getImageRenderData( metadata, viewport, renderWidth ), {
+			src: getThumbUrl( 330 ),
+			maxWidth: renderWidth,
+		},
+	);
+	assert.true(
+		adjustStub.calledOnceWithExactly( 320, 100, true ),
+		'adjustThumbWidthForSteps called with isVectorized = true',
+	);
+} );
