@@ -5,6 +5,7 @@ const { shallowMount } = require( '@vue/test-utils' );
 const Vuex = require( 'vuex' );
 const MenteeOverview = require( './MenteeOverview.vue' );
 const MenteeFilters = require( './MenteeFilters.vue' );
+const MenteeSearch = require( './MenteeSearch.vue' );
 const NoResults = require( './NoResults.vue' );
 const DataTable = require( '../DataTable/DataTable.vue' );
 const menteesJSON = require( '../../../../tests/qunit/__mocks__/mentees.json' );
@@ -150,6 +151,42 @@ describe( 'MenteeOverview', () => {
 			expect.any( Object ), update
 		);
 		expect( menteeActions.savePresets ).toHaveBeenCalledTimes( 1 );
+	} );
+	it( 'it dispatches "mentees/getAllMentees" resetting the page when "MenteeSearch" selects a username', () => {
+		// Put the component on page 2, which is where the bug reproduced: a username
+		// match that lives on page 1 falls outside the page-2 offset window and the
+		// dashboard shows "No mentees found" (T432190). Selecting a suggestion must
+		// reset the page so the match is visible again.
+		menteeGetters.currentPage = jest.fn( () => 2 );
+		const storeOnPageTwo = new Vuex.Store( {
+			modules: {
+				mentees: {
+					actions: menteeActions,
+					getters: menteeGetters,
+					namespaced: true
+				},
+				userPreferences: {
+					actions: userPreferencesActions,
+					getters: userPreferencesGetters,
+					namespaced: true
+				}
+			}
+		} );
+		const wrapper = shallowMount( MenteeOverview, {
+			global: {
+				mocks: {
+					$store: storeOnPageTwo
+				}
+			}
+		} );
+
+		wrapper.findComponent( MenteeSearch ).vm.$emit( 'update:selected', 'Laura' );
+		// 1st time in MenteeOverview.created
+		// 2nd time in MenteeOverview.onMenteeSearchSelection
+		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 2 );
+		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 2,
+			expect.any( Object ), { prefix: 'Laura', page: 1 }
+		);
 	} );
 	it( 'it displays the no results view when the API returns 0 mentees', () => {
 		menteeGetters.allMentees = jest.fn( () => ( [] ) );

@@ -290,7 +290,7 @@ module.exports = exports = {
 				} );
 		},
 		onMenteeSearchSelection( value ) {
-			this.$store.dispatch( 'mentees/getAllMentees', { prefix: value } );
+			this.$store.dispatch( 'mentees/getAllMentees', { prefix: value, page: 1 } );
 		},
 		navigateToPrevPage() {
 			this.$store.dispatch( 'mentees/getAllMentees', { page: this.currentPage - 1 } );
