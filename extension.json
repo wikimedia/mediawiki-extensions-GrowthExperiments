@@ -1977,8 +1977,7 @@
 			"packageFiles": [
 				"ext.growthExperiments.Account/index.js",
 				"ext.growthExperiments.Account/ULSTagMultiselectWidget.js",
-				"ext.growthExperiments.Account/WelcomeSurvey.js",
-				"ext.growthExperiments.Account/WE18ExperimentV1.js"
+				"ext.growthExperiments.Account/WelcomeSurvey.js"
 			],
 			"messages": [
 				"welcomesurvey-question-languages-placeholder",
