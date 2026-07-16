@@ -39,7 +39,14 @@
 			// smaller than the original image width). For vectors, the thumbnail can be used since
 			// the asset dimension doesn't really matter.
 			if ( targetSrcWidth < originalWidth || metadata.isVectorized ) {
-				imageSrc = thumb.resizeUrl( targetSrcWidth );
+				// upload.wikimedia.org only serves thumbnails whose width is in the
+				// configured allowlist (config.ThumbnailSteps); arbitrary widths return
+				// HTTP 400 (T428797). Snap the source width up to the nearest allowed
+				// step and let the browser downscale to the display width.
+				const adjustedWidth = mw.util.adjustThumbWidthForSteps(
+					targetSrcWidth, originalWidth, metadata.isVectorized,
+				);
+				imageSrc = thumb.resizeUrl( adjustedWidth );
 				maxWidth = Math.floor( renderWidth );
 			} else if ( metadata.mustRender ) {
 				imageSrc = thumb.resizeUrl( originalWidth );
