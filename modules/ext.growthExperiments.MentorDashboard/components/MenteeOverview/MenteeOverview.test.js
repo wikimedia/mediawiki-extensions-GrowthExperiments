@@ -128,11 +128,29 @@ describe( 'MenteeOverview', () => {
 			expect.any( Object ), { sortBy: 'questions', order: 'asc' }
 		);
 	} );
-	it( 'it dispatches "mentees/getAllMentees" when "MenteeFilters" updates the filters and saves them', () => {
+	it( 'it dispatches "mentees/getAllMentees" resetting the page when "MenteeFilters" updates the filters and saves them', () => {
+		// Start on page 2 and emit filters without a page: this proves the handler
+		// forces page 1 (resetting) rather than echoing whatever page the caller was
+		// on, guarding the same class of regression as T432190.
+		menteeGetters.currentPage = jest.fn( () => 2 );
+		const storeOnPageTwo = new Vuex.Store( {
+			modules: {
+				mentees: {
+					actions: menteeActions,
+					getters: menteeGetters,
+					namespaced: true
+				},
+				userPreferences: {
+					actions: userPreferencesActions,
+					getters: userPreferencesGetters,
+					namespaced: true
+				}
+			}
+		} );
 		const wrapper = shallowMount( MenteeOverview, {
 			global: {
 				mocks: {
-					$store: store
+					$store: storeOnPageTwo
 				}
 			}
 		} );
@@ -140,15 +158,14 @@ describe( 'MenteeOverview', () => {
 		const update = {
 			editCountMin: 10,
 			editCountMax: 100,
-			onlyStarred: true,
-			page: 1
+			onlyStarred: true
 		};
 		wrapper.findComponent( MenteeFilters ).vm.$emit( 'update:filters', update );
 		// 1st time in MenteeOverview.created
 		// 2nd time in MenteeOverview.updateFilters
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 2 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 2,
-			expect.any( Object ), update
+			expect.any( Object ), Object.assign( {}, update, { page: 1 } )
 		);
 		expect( menteeActions.savePresets ).toHaveBeenCalledTimes( 1 );
 	} );
