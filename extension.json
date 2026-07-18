@@ -451,7 +451,6 @@
 	"Hooks": {
 		"APIGetAllowedParams": "visualeditor",
 		"AuthChangeFormFields": [
-			"confirmEmail",
 			"variant",
 			"mentor"
 		],
@@ -1966,11 +1965,11 @@
 				"growthexperiments-homepage-suggestededits-tasktype-name-revise-tone"
 			]
 		},
-		"ext.growthExperiments.Account": {
+		"ext.growthExperiments.WelcomeSurvey": {
 			"packageFiles": [
-				"ext.growthExperiments.Account/index.js",
-				"ext.growthExperiments.Account/ULSTagMultiselectWidget.js",
-				"ext.growthExperiments.Account/WelcomeSurvey.js"
+				"ext.growthExperiments.WelcomeSurvey/index.js",
+				"ext.growthExperiments.WelcomeSurvey/ULSTagMultiselectWidget.js",
+				"ext.growthExperiments.WelcomeSurvey/WelcomeSurvey.js"
 			],
 			"messages": [
 				"welcomesurvey-question-languages-placeholder",
