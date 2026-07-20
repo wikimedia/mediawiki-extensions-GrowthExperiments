@@ -23,6 +23,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
+	"growthexperiments-homepage-specialpage-list": "신입 사용자 홈페이지",
 	"growthexperiments-homepage-tab": "홈페이지",
 	"tooltip-pt-homepage": "{{GENDER:|홈페이지}}",
 	"prefs-homepage": "새 편집자 기능",

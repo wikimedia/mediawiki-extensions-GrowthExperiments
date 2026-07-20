@@ -151,6 +151,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "هو، وروسته له ۵۰ ټولټال سمونونو",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "هو، وروسته له ټولټال ۷۵ سمونونو",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "هو، وروسته له ټولټال ۱۵۰ سمونونو",
+	"communityconfiguration-growthsuggestededits-revise_tone-label": "وينگ بيارغاونه (جوړښت شوې دنده)",
+	"communityconfiguration-growthsuggestededits-revise_tone-disabled-control-label": "دنده ناچارن‌شوې ده.",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedtemplates-label": "هغه ليکنې چې دلته تعريف شوې کينډۍ لري د دې دندې ډول لپاره به کارنانو ته د ندو په توگه ونه ښودل شي",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedcategories-label": "هغه ليکنې چې دلته تعريف شوې وېشنيزې لري د دې دندې ډول لپاره به کارنانو ته د ندو په توگه ونه ښودل شي",
 	"growthexperiments-addlink-done-button": "وشو",
 	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "له نېټې اوښتې وخت‌ټاپې سپاکول"
 }

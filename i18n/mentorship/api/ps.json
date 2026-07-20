@@ -12,6 +12,8 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "نوی دريځ",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "کله چې لارښود د لرې په توگه وټاکئ؛ دا بايد د لرې دريځ اوږدوالی ولري ( په ورځو)",
 	"apihelp-query+growthmentorstatus-summary": "د اوسني لارښود دريځ تپوس کول",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "د لارښودۍ چلنوال چارن شوی دی",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "د لارزدکړو د تپوس لپاره لارښود",
 	"apihelp-growthmanagementorlist-param-geaction": "چاره",
 	"apihelp-growthmanagementorlist-param-message": "پېژندون پيغام (د تلواله لارښود پيغام لپاره تشه لړۍ وکاروئ)",
 	"apihelp-growthmanagementorlist-param-weight": "دروندوالی",
