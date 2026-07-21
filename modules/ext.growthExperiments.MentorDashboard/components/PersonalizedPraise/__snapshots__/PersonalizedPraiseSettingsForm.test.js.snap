@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PersonalizedPraiseSettingsForm it renders with correct defaults 1`] = `
+exports[`PersonalizedPraiseSettingsForm renders with correct defaults 1`] = `
 <form
   id="personalized-praise-settings-form"
 >

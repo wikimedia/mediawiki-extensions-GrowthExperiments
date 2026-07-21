@@ -3,7 +3,7 @@ const PersonalizedPraiseSettingsForm = require( './PersonalizedPraiseSettingsFor
 
 describe( 'PersonalizedPraiseSettingsForm', () => {
 
-	it( 'it renders with correct defaults', () => {
+	it( 'renders with correct defaults', () => {
 		const wrapper = mount( PersonalizedPraiseSettingsForm, {
 			props: {
 				minEdits: 1,

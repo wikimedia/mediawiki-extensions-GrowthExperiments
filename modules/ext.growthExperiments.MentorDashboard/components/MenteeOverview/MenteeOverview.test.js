@@ -68,7 +68,7 @@ describe( 'MenteeOverview', () => {
 		// is unable to stringify references holding an HTML element.
 		global.window.name = 'MenteeOverviewJestTests';
 	} );
-	it( 'it dispatches "mentees/getAllMentees" when mounted', () => {
+	it( 'dispatches "mentees/getAllMentees" when mounted', () => {
 		mountOverview();
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 1 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 1, expect.any( Object ), {
@@ -79,7 +79,7 @@ describe( 'MenteeOverview', () => {
 		} );
 	} );
 
-	it( 'it dispatches "mentees/getAllMentees" when "DataTable" navigates a page', () => {
+	it( 'dispatches "mentees/getAllMentees" when "DataTable" navigates a page', () => {
 		const wrapper = mountOverview();
 		wrapper.findComponent( DataTable ).vm.$emit( 'update:next-page' );
 		wrapper.findComponent( DataTable ).vm.$emit( 'update:prev-page' );
@@ -94,7 +94,7 @@ describe( 'MenteeOverview', () => {
 			expect.any( Object ), { page: 0 }
 		);
 	} );
-	it( 'it dispatches "mentees/getAllMentees" when "DataTable" updates the limit and saves it', () => {
+	it( 'dispatches "mentees/getAllMentees" when "DataTable" updates the limit and saves it', () => {
 		const wrapper = mountOverview();
 
 		wrapper.findComponent( DataTable ).vm.$emit( 'update:limit', 15 );
@@ -106,7 +106,7 @@ describe( 'MenteeOverview', () => {
 		);
 		expect( menteeActions.savePresets ).toHaveBeenCalledTimes( 1 );
 	} );
-	it( 'it dispatches "mentees/getAllMentees" when "DataTable" updates the sorting', () => {
+	it( 'dispatches "mentees/getAllMentees" when "DataTable" updates the sorting', () => {
 		const wrapper = mountOverview();
 
 		wrapper.findComponent( DataTable ).vm.$emit( 'update:sorting', { sortBy: 'questions', order: 'asc' } );
@@ -117,7 +117,7 @@ describe( 'MenteeOverview', () => {
 			expect.any( Object ), { sortBy: 'questions', order: 'asc' }
 		);
 	} );
-	it( 'it dispatches "mentees/getAllMentees" resetting the page when "MenteeFilters" updates the filters and saves them', () => {
+	it( 'dispatches "mentees/getAllMentees" resetting the page when "MenteeFilters" updates the filters and saves them', () => {
 		// Start on page 2 and emit filters without a page: this proves the handler
 		// forces page 1 (resetting) rather than echoing whatever page the caller was
 		// on, guarding the same class of regression as T432190.
@@ -138,7 +138,7 @@ describe( 'MenteeOverview', () => {
 		);
 		expect( menteeActions.savePresets ).toHaveBeenCalledTimes( 1 );
 	} );
-	it( 'it dispatches "mentees/getAllMentees" resetting the page when "MenteeSearch" selects a username', () => {
+	it( 'dispatches "mentees/getAllMentees" resetting the page when "MenteeSearch" selects a username', () => {
 		// Put the component on page 2, which is where the bug reproduced: a username
 		// match that lives on page 1 falls outside the page-2 offset window and the
 		// dashboard shows "No mentees found" (T432190). Selecting a suggestion must
@@ -154,7 +154,7 @@ describe( 'MenteeOverview', () => {
 			expect.any( Object ), { prefix: 'Laura', page: 1 }
 		);
 	} );
-	it( 'it displays the no results view when the API returns 0 mentees', () => {
+	it( 'displays the no results view when the API returns 0 mentees', () => {
 		menteeGetters.allMentees = jest.fn( () => ( [] ) );
 		const wrapper = mountOverview( buildStore() );
 

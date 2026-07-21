@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MenteeFiltersForm it should localise numbers in the recent edits 1`] = `
+exports[`MenteeFiltersForm should localise numbers in the recent edits 1`] = `
 <form
   class="ext-growthExperiments-MenteeFiltersForm"
   id="mentee-filters-form"

@@ -2,7 +2,7 @@ const { mount } = require( '@vue/test-utils' );
 const MenteeFiltersForm = require( './MenteeFiltersForm.vue' );
 
 describe( 'MenteeFiltersForm', () => {
-	it( 'it should localise numbers in the recent edits', () => {
+	it( 'should localise numbers in the recent edits', () => {
 		const wrapper = mount( MenteeFiltersForm, {
 			global: {
 				mocks: {
