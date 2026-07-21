@@ -115,7 +115,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|ویرایش}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "بازدید‌ها از ویرایش‌های اخیر (۶۰ روز گذشته):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "بازدید مقاله‌هایی که ویرایش کردید را بررسی کنید",
-	"growthexperiments-homepage-impact-unactivated-subheader-text": "۰ ویرایش تا اینجا",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "۰ ویرایش در مقاله‌ها تا اینجا",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "با ویرایش موضوعاتی که برای {{GENDER:|شما}} اهمیت بیشتری دارند، به گسترش دانش آزاد در جهان کمک کنید.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "ویرایش‌های پیشنهادی را ببینید",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "کار را با چند <strong>ویرایش پیشنهادی</strong> آغاز کنید و سپس در اینجا ببینید که چند نفر در حال مشاهدهٔ مشارکت‌های {{GENDER:|شما}} هستند.",
@@ -184,7 +184,7 @@
 	"growthexperiments-specialimpact-title": "تأثیر",
 	"growthexperiments-specialimpact-showing-for-other-user": "نمایش داده‌های تاثیرات $1",
 	"growthexperiments-specialimpact-invalid-username": "نام کاربری پیدا نشد یا معتبر نیست.",
-	"growthexperiments-specialimpact-invalid-inclusion-without-username": "پارامتر نام کاربری در صفحهٔ ویژهٔ گنجانده‌شدهٔ اثرگذاری موجود نیست.",
+	"growthexperiments-specialimpact-invalid-inclusion-without-username": "هنگام گنجاندن صفحهٔ ویژه «اثرگذاری»، باید نام کاربری به عنوان اولین پارامتر ارائه شود.",
 	"growthexperiments-homepage-claimmentee-no-user": "کارآموز وجود ندارد",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|شما}} در حال حاضر مربی {{GENDER:$1|$1}} هستید",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} از مربی‌گری انصراف داد",
@@ -227,6 +227,8 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 میلیون",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 میلیارد",
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 بیلیون",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title": "در حال حاضر هیچ وظیفه ساختاریافته‌ای در دسترس نیست.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "سعی کنید موضوعات و انواع وظیفه بیشتری را انتخاب کنید یا بعداً دوباره بررسی کنید.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "امروز داوطب‌هایی مانند شما در بهبود {{SITENAME}} مشارکت داشته‌اند. شما هم به آن‌ها بپیوندید!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "مشاهده همهٔ پیشنهادها",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "اصلاح املا، دستور زبان، و لحن",
@@ -437,6 +439,7 @@
 	"growthexperiments-addlink-onboarding-content-about-image-alt-text": "تصویری از مقالهٔ ماه که در کنار آن رباتی قرار گرفته یک پیشنهاد ماشینی را ارائه کرده است - سؤال می‌کند که یک واژه در مقالهٔ ماه باید به مقالهٔ پنیر پیوند داده شود یا خیر.",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "رهنمودها",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>مفهوم‌هایی را که ممکن است خواننده بخواهد دربارۀ آنها بیشتر بیاموزد پیوند دهید.</li><li>مطمئن شوید که پیوند به مقالهٔ درست هدایت می‌شود.</li><li>واژگان بدیهی، سال‌ها یا تاریخ‌ها را پیوند ندهید.</li><li>اگر {{GENDER:$1|مطمئن نیستید}}، از آن صرف نظر کنید.</li>",
+	"growthexperiments-addlink-onboarding-content-linking-image-alt-text": "تصویر جمله‌ای از یک مقاله که پیشنهادهای پیوند برای دو کلمه مختلف را نشان می‌دهد. در کنار پیشنهاد، یک آیکون تیک آبی و یک آیکون ضربدر قرمز برای گزینه‌های پذیرش یا رد پیشنهاد وجود دارد.",
 	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "رد کردن همه",
 	"growthexperiments-structuredtask-onboarding-dialog-title": "معرفی",
 	"growthexperiments-structuredtask-onboarding-dialog-progress": "$1 از $2",
@@ -601,5 +604,7 @@
 	"growthexperiments-levelingup-keepgoing-notification-header": "برای توسعه دادن مهارت‌های ویرایشی {{GENDER:$2|خود}} به انجام ویرایش‌های پیشنهادی ادامه دهید",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "انجام یک ویرایش پیشنهادی",
 	"echo-category-title-ge-newcomer": "ویژگی‌های رشد",
-	"echo-pref-tooltip-ge-newcomer": "مرا از وظایف تازه‌واردان و سایر ویژگی‌های طراحی‌شده برای کمک به کاربران جدید آگاه کن."
+	"echo-pref-tooltip-ge-newcomer": "مرا از وظایف تازه‌واردان و سایر ویژگی‌های طراحی‌شده برای کمک به کاربران جدید آگاه کن.",
+	"growthexperiments-homepage-community-updates-header": "به‌روزرسانی‌های جامعه",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "اطلاعات بیشتر"
 }
