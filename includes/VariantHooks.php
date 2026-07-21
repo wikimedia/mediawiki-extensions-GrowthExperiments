@@ -16,7 +16,6 @@ use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\Skin\Hook\SkinAddFooterLinksHook;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
-use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Specials\Hook\PostLoginRedirectHook;
 use MediaWiki\Specials\Hook\SpecialCreateAccountBenefitsHook;
@@ -34,8 +33,7 @@ class VariantHooks implements
 	ResourceLoaderExcludeUserOptionsHook,
 	ResourceLoaderGetConfigVarsHook,
 	SkinAddFooterLinksHook,
-	SpecialCreateAccountBenefitsHook,
-	SpecialPageBeforeExecuteHook
+	SpecialCreateAccountBenefitsHook
 {
 
 	/** @var string User option name for storing the campaign associated with account creation */
@@ -196,30 +194,5 @@ class VariantHooks implements
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Remove the default Minerva "warning" that only serves aesthetic purposes but
-	 * do not remove real warnings.
-	 * @inheritDoc
-	 */
-	public function onSpecialPageBeforeExecute( $special, $subPage ) {
-		if ( $special->getName() !== 'CreateAccount'
-			|| !$special->getSkin() instanceof SkinMinerva
-		) {
-			return;
-		}
-
-		$context = $special->getContext();
-		if (
-			$this->shouldShowNewLandingPageHtml( $context ) ||
-			$this->featureManager->shouldShowCreateAccountV2(
-				$context->getUser(), $context->getSkin(), $context->getRequest()
-			)
-		) {
-			if ( $special->getRequest()->getVal( 'notice' ) === 'mobile-frontend-generic-login-new' ) {
-				$special->getRequest()->setVal( 'notice', null );
-			}
-		}
 	}
 }

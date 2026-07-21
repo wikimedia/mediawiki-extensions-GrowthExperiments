@@ -560,7 +560,6 @@
 			"welcomeSurvey"
 		],
 		"SpecialPageBeforeExecute": [
-			"variant",
 			"welcomeSurvey"
 		],
 		"UserGetDefaultOptions": [
