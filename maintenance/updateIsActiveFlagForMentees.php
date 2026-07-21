@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Maintenance;
 
+use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Maintenance\Maintenance;
@@ -9,7 +10,6 @@ use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
-use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Timestamp\TimestampFormat;
 
 // @codeCoverageIgnoreStart
@@ -25,7 +25,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 	private UserIdentityLookup $userIdentityLookup;
 	private UserEditTracker $userEditTracker;
 	private UserRegistrationLookup $userRegistrationLookup;
-	private ILoadBalancer $growthLoadBalancer;
+	private GrowthConnectionProvider $growthConnectionProvider;
 	private MentorStore $mentorStore;
 
 	public function __construct() {
@@ -49,7 +49,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
 		$this->userRegistrationLookup = $services->getUserRegistrationLookup();
 		$this->userEditTracker = $services->getUserEditTracker();
-		$this->growthLoadBalancer = $geServices->getLoadBalancer();
+		$this->growthConnectionProvider = $geServices->getGrowthConnectionProvider();
 		$this->mentorStore = $geServices->getMentorStore();
 	}
 
@@ -59,7 +59,7 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 	public function execute() {
 		$this->initServices();
 
-		$dbr = $this->growthLoadBalancer->getConnection( DB_REPLICA );
+		$dbr = $this->growthConnectionProvider->getReplicaDatabase();
 		$menteeIds = $dbr->newSelectQueryBuilder()
 			->select( 'gemm_mentee_id' )
 			->from( 'growthexperiments_mentor_mentee' )

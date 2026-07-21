@@ -59,9 +59,9 @@ class ReassignMentees extends Maintenance {
 	private function init() {
 		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$growthLb = $growthServices->getLoadBalancer();
+		$growthConnectionProvider = $growthServices->getGrowthConnectionProvider();
 
-		$this->growthDbr = $growthLb->getConnection( DB_REPLICA );
+		$this->growthDbr = $growthConnectionProvider->getReplicaDatabase();
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
 		$this->mentorProvider = $growthServices->getMentorProvider();
 		$this->reassignMenteesFactory = $growthServices->getReassignMenteesFactory();

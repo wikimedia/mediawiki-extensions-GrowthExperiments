@@ -73,7 +73,6 @@ use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 use Psr\Log\LoggerInterface;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * A simple wrapper for MediaWikiServices, to support type safety when accessing
@@ -115,8 +114,8 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsCommunityConfig' );
 	}
 
-	public function getLoadBalancer(): ILoadBalancer {
-		return $this->coreServices->getDBLoadBalancerFactory()->getLoadBalancer( SchemaHooks::VIRTUAL_DOMAIN );
+	public function getGrowthConnectionProvider(): GrowthConnectionProvider {
+		return $this->coreServices->get( 'GrowthExperimentsConnectionProvider' );
 	}
 
 	public function getExperimentUserManager(): IExperimentManager {

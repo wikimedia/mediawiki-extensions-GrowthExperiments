@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationMetadata;
@@ -24,7 +25,7 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 	public function testGrowthexperimentsLinkRecommendationsCrud(): void {
 		$store = new LinkRecommendationStore(
 			$this->getServiceContainer()->getConnectionProvider(),
-			$this->getServiceContainer()->getDBLoadBalancer(),
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getGrowthConnectionProvider(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getLinkBatchFactory(),
 			$this->getServiceContainer()->getPageStore(),

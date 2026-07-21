@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\UserImpact;
 
+use GrowthExperiments\GrowthConnectionProvider;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\IDBAccessObject;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 class DatabaseUserImpactStore implements UserImpactStore {
 
@@ -13,12 +13,9 @@ class DatabaseUserImpactStore implements UserImpactStore {
 	/** @internal only exposed for tests */
 	public const TABLE_NAME = 'growthexperiments_user_impact';
 
-	private ILoadBalancer $loadBalancer;
-
 	public function __construct(
-		ILoadBalancer $loadBalancer
+		private GrowthConnectionProvider $connectionProvider
 	) {
-		$this->loadBalancer = $loadBalancer;
 	}
 
 	/** @inheritDoc */
@@ -38,7 +35,7 @@ class DatabaseUserImpactStore implements UserImpactStore {
 		}
 
 		$userImpacts = array_fill_keys( $userIds, null );
-		$queryBuilder = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+		$queryBuilder = $this->connectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
 			->select( [ 'geui_user_id', 'geui_data' ] )
 			->from( self::TABLE_NAME )
 			->where( [ 'geui_user_id' => $userIds ] )
@@ -65,8 +62,8 @@ class DatabaseUserImpactStore implements UserImpactStore {
 	 * @return void
 	 */
 	public function setUserImpact( UserImpact $userImpact ): void {
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
-		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$dbr = $this->connectionProvider->getReplicaDatabase();
+		$dbw = $this->connectionProvider->getPrimaryDatabase();
 
 		$data = [
 			'geui_data' => gzdeflate( json_encode( $userImpact, JSON_UNESCAPED_UNICODE ) ),

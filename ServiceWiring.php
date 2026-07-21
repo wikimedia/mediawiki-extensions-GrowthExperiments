@@ -7,6 +7,7 @@ use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
@@ -227,6 +228,10 @@ return [
 
 	'GrowthExperimentsConfig' => static function ( MediaWikiServices $services ): Config {
 		return $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
+	},
+
+	'GrowthExperimentsConnectionProvider' => static function ( MediaWikiServices $services ): GrowthConnectionProvider {
+		return new GrowthConnectionProvider( $services->getConnectionProvider() );
 	},
 
 	'GrowthExperimentsEventGateImageSuggestionFeedbackUpdater' => static function (
@@ -528,7 +533,7 @@ return [
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new LinkRecommendationStore(
 			$services->getConnectionProvider(),
-			$geServices->getLoadBalancer(),
+			$geServices->getGrowthConnectionProvider(),
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory(),
 			$services->getPageStore(),
@@ -558,6 +563,7 @@ return [
 		return new LinkRecommendationUpdater(
 			$growthServices->getLogger(),
 			$services->getConnectionProvider(),
+			$growthServices->getGrowthConnectionProvider(),
 			$services->getRevisionStore(),
 			$services->getNameTableStoreFactory()->getChangeTagDef(),
 			$services->getPageProps(),
@@ -624,7 +630,7 @@ return [
 		return new DatabaseMenteeOverviewDataProvider(
 			$services->getMainWANObjectCache(),
 			$geServices->getMentorStore(),
-			$geServices->getLoadBalancer()
+			$geServices->getGrowthConnectionProvider()
 		);
 	},
 
@@ -652,7 +658,7 @@ return [
 			$geServices->getMentorStore(),
 			$services->getUserOptionsManager(),
 			$services->getDBLoadBalancerFactory(),
-			$geServices->getLoadBalancer()
+			$geServices->getGrowthConnectionProvider()
 		);
 	},
 
@@ -747,7 +753,7 @@ return [
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
 			$services->getJobQueueGroup(),
-			$geServices->getLoadBalancer(),
+			$geServices->getGrowthConnectionProvider(),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
 				MW_ENTRY_POINT === 'cli' ||
 				RequestContext::getMain()->getRequest()->wasPosted()
@@ -962,7 +968,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new ReassignMenteesFactory(
 			$growthServices->getLogger(),
-			$growthServices->getLoadBalancer(),
+			$growthServices->getGrowthConnectionProvider(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStore(),
 			$growthServices->getChangeMentorFactory(),
@@ -1259,7 +1265,7 @@ return [
 		MediaWikiServices $services
 	): UserImpactLookup {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		return new DatabaseUserImpactStore( $growthServices->getLoadBalancer() );
+		return new DatabaseUserImpactStore( $growthServices->getGrowthConnectionProvider() );
 	},
 
 	'GrowthExperimentsUserImpactUpdater' => static function (

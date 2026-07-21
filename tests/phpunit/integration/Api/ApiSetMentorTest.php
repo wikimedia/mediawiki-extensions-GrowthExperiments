@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -14,7 +15,6 @@ use MediaWiki\User\UserIdentityLookup;
 use PHPUnit\Framework\Constraint\Constraint;
 use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\ObjectCache\WANObjectCache;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * @group API
@@ -198,7 +198,7 @@ class ApiSetMentorTest extends ApiTestCase {
 				$this->createMock( UserFactory::class ),
 				$this->createMock( UserIdentityLookup::class ),
 				$this->createMock( JobQueueGroup::class ),
-				$this->createNoOpMock( ILoadBalancer::class ),
+				$this->createNoOpMock( GrowthConnectionProvider::class ),
 				true,
 				true,
 			] )

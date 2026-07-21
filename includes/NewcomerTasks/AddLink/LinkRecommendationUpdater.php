@@ -6,6 +6,7 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use CirrusSearch\WeightedTagsUpdater;
 use Exception;
+use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -47,6 +48,7 @@ class LinkRecommendationUpdater {
 	/**
 	 * @param LoggerInterface $logger
 	 * @param IConnectionProvider $connectionProvider
+	 * @param GrowthConnectionProvider $growthConnectionProvider
 	 * @param RevisionStore $revisionStore
 	 * @param NameTableStore $changeDefNameTableStore
 	 * @param PageProps $pageProps
@@ -62,6 +64,7 @@ class LinkRecommendationUpdater {
 	public function __construct(
 		private LoggerInterface $logger,
 		private IConnectionProvider $connectionProvider,
+		private GrowthConnectionProvider $growthConnectionProvider,
 		private RevisionStore $revisionStore,
 		private NameTableStore $changeDefNameTableStore,
 		private PageProps $pageProps,
@@ -162,7 +165,7 @@ class LinkRecommendationUpdater {
 		// and the search index getting out of sync by wrapping the insert into a
 		// transaction (in general start/endAtomic doesn't guarantee that but this method
 		// will usually be called from maintenance scripts).
-		$db = $this->linkRecommendationStore->getGrowthDB( DB_PRIMARY );
+		$db = $this->growthConnectionProvider->getPrimaryDatabase();
 		$db->startAtomic( __METHOD__, IDatabase::ATOMIC_CANCELABLE );
 		$this->linkRecommendationStore->insertExistingLinkRecommendation( $recommendation );
 

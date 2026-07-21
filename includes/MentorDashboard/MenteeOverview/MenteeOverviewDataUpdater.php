@@ -4,11 +4,11 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
+use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
-use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Timestamp\TimestampFormat;
 
@@ -21,30 +21,18 @@ use Wikimedia\Timestamp\TimestampFormat;
 class MenteeOverviewDataUpdater {
 	public const LAST_UPDATE_PREFERENCE = 'growthexperiments-mentor-dashboard-last-update';
 
-	private UncachedMenteeOverviewDataProvider $uncachedMenteeOverviewDataProvider;
-	private MenteeOverviewDataProvider $menteeOverviewDataProvider;
-	private MentorStore $mentorStore;
-	private UserOptionsManager $userOptionsManager;
-	private LBFactory $lbFactory;
-	private ILoadBalancer $growthLoadBalancer;
 	private int $batchSize = 100;
 	private array $mentorProfilingInfo = [];
 
 	public function __construct(
-		UncachedMenteeOverviewDataProvider $uncachedMenteeOverviewDataProvider,
-		MenteeOverviewDataProvider $menteeOverviewDataProvider,
-		MentorStore $mentorStore,
-		UserOptionsManager $userOptionsManager,
-		LBFactory $lbFactory,
-		ILoadBalancer $growthLoadBalancer
+		private UncachedMenteeOverviewDataProvider $uncachedMenteeOverviewDataProvider,
+		private MenteeOverviewDataProvider $menteeOverviewDataProvider,
+		private MentorStore $mentorStore,
+		private UserOptionsManager $userOptionsManager,
+		private LBFactory $lbFactory,
+		private GrowthConnectionProvider $growthConnectionProvider
 	) {
-		$this->uncachedMenteeOverviewDataProvider = $uncachedMenteeOverviewDataProvider;
 		$this->uncachedMenteeOverviewDataProvider->setBatchSize( $this->batchSize );
-		$this->menteeOverviewDataProvider = $menteeOverviewDataProvider;
-		$this->mentorStore = $mentorStore;
-		$this->userOptionsManager = $userOptionsManager;
-		$this->lbFactory = $lbFactory;
-		$this->growthLoadBalancer = $growthLoadBalancer;
 	}
 
 	public function setBatchSize( int $batchSize ): void {
@@ -65,8 +53,8 @@ class MenteeOverviewDataUpdater {
 
 		$thisBatch = 0;
 
-		$dbw = $this->growthLoadBalancer->getConnection( DB_PRIMARY );
-		$dbr = $this->growthLoadBalancer->getConnection( DB_REPLICA );
+		$dbw = $this->growthConnectionProvider->getPrimaryDatabase();
+		$dbr = $this->growthConnectionProvider->getReplicaDatabase();
 
 		$data = $this->uncachedMenteeOverviewDataProvider->getFormattedDataForMentor( $mentor );
 		$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );

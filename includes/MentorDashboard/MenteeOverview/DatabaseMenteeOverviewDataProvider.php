@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
+use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\User\UserIdentity;
 use stdClass;
 use Wikimedia\ObjectCache\WANObjectCache;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * Data provider for MenteeOverview module
@@ -20,18 +20,11 @@ use Wikimedia\Rdbms\ILoadBalancer;
  */
 class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
-	private MentorStore $mentorStore;
-	private ILoadBalancer $growthLB;
-	protected WANObjectCache $wanCache;
-
 	public function __construct(
-		WANObjectCache $wanCache,
-		MentorStore $mentorStore,
-		ILoadBalancer $growthLB
+		protected WANObjectCache $wanCache,
+		private MentorStore $mentorStore,
+		private GrowthConnectionProvider $growthConnectionProvider
 	) {
-		$this->wanCache = $wanCache;
-		$this->mentorStore = $mentorStore;
-		$this->growthLB = $growthLB;
 	}
 
 	private function makeCacheKey( UserIdentity $mentor ): string {
@@ -78,7 +71,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 				$menteeIds = array_map( static fn ( UserIdentity $user ) => $user->getId(), $mentees );
 
-				$res = $this->growthLB->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+				$res = $this->growthConnectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
 					->select( [ 'mentee_id', 'mentee_data' ] )
 					->from( 'growthexperiments_mentee_data' )
 					->where( [ 'mentee_id' => $menteeIds ] )
@@ -104,7 +97,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array|null Formatted data if exists; null otherwise
 	 */
 	public function getFormattedDataForMentee( UserIdentity $mentee ): ?array {
-		$res = $this->growthLB->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+		$res = $this->growthConnectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
 			->select( [ 'mentee_id', 'mentee_data' ] )
 			->from( 'growthexperiments_mentee_data' )
 			->conds( [

@@ -34,7 +34,7 @@ class DeleteExpiredUserImpactData extends Maintenance {
 	public function execute() {
 		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$dbw = $growthServices->getLoadBalancer()->getConnection( DB_PRIMARY );
+		$dbw = $growthServices->getGrowthConnectionProvider()->getPrimaryDatabase();
 
 		$expiry = $this->getOption( 'expiry', '30days' );
 		$expiryTimestamp = $this->getTimestampFromRelativeDate( $expiry );

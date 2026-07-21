@@ -4,12 +4,12 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\Maintenance;
 
+use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\UserIdentityLookup;
-use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Stats\StatsFactory;
 
 // @codeCoverageIgnoreStart
@@ -24,7 +24,7 @@ class UpdateMenteeData extends Maintenance {
 
 	private MenteeOverviewDataUpdater $menteeOverviewDataUpdater;
 	private MentorProvider $mentorProvider;
-	private ILoadBalancer $growthLoadBalancer;
+	private GrowthConnectionProvider $growthConnectionProvider;
 	private StatsFactory $statsFactory;
 	private UserIdentityLookup $userIdentityLookup;
 	private array $detailedProfilingInfo = [];
@@ -53,7 +53,7 @@ class UpdateMenteeData extends Maintenance {
 		$this->menteeOverviewDataUpdater = $geServices->getMenteeOverviewDataUpdater();
 		$this->menteeOverviewDataUpdater->setBatchSize( $this->getBatchSize() );
 		$this->mentorProvider = $geServices->getMentorProvider();
-		$this->growthLoadBalancer = $geServices->getLoadBalancer();
+		$this->growthConnectionProvider = $geServices->getGrowthConnectionProvider();
 		$this->statsFactory = $services->getStatsFactory();
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
 	}
@@ -96,7 +96,7 @@ class UpdateMenteeData extends Maintenance {
 		}
 
 		$allUpdatedMenteeIds = [];
-		$dbw = $this->growthLoadBalancer->getConnection( DB_PRIMARY );
+		$dbw = $this->growthConnectionProvider->getPrimaryDatabase();
 		foreach ( $mentors as $mentor ) {
 			$updatedMenteeIds = $this->menteeOverviewDataUpdater->updateDataForMentor( $mentor );
 			$allUpdatedMenteeIds = array_merge( $allUpdatedMenteeIds, $updatedMenteeIds );

@@ -2,19 +2,19 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 class ReassignMenteesFactory {
 
 	public function __construct(
 		private LoggerInterface $logger,
-		private ILoadBalancer $dbLoadBalancer,
+		private GrowthConnectionProvider $growthConnectionProvider,
 		private IMentorManager $mentorManager,
 		private MentorStore $mentorStore,
 		private ChangeMentorFactory $changeMentorFactory,
@@ -30,7 +30,7 @@ class ReassignMenteesFactory {
 	): ReassignMentees {
 		$reassignMentees = new ReassignMentees(
 			$this->logger,
-			$this->dbLoadBalancer->getConnection( DB_PRIMARY ),
+			$this->growthConnectionProvider->getPrimaryDatabase(),
 			$this->mentorManager,
 			$this->mentorStore,
 			$this->changeMentorFactory,

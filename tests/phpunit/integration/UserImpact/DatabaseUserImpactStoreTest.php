@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\EditingStreak;
 use GrowthExperiments\UserImpact\ExpensiveUserImpact;
@@ -18,7 +19,10 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetSetUserImpact() {
 		ConvertibleTimestamp::setFakeTime( time() );
-		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer() );
+		$store = new DatabaseUserImpactStore(
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+				->getGrowthConnectionProvider()
+		);
 		$user = $this->getTestUser()->getUserIdentity();
 		$user2 = $this->getMutableTestUser()->getUserIdentity();
 		$user3 = $this->getMutableTestUser()->getUserIdentity();
@@ -64,7 +68,10 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetSetExpensiveUserImpact() {
 		ConvertibleTimestamp::setFakeTime( time() );
-		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer() );
+		$store = new DatabaseUserImpactStore(
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+				->getGrowthConnectionProvider()
+		);
 		$user = $this->getTestUser()->getUserIdentity();
 
 		$expensiveUserImpact = new ExpensiveUserImpact(
@@ -93,7 +100,10 @@ class DatabaseUserImpactStoreTest extends MediaWikiIntegrationTestCase {
 
 	public function testUpdateUserImpact() {
 		ConvertibleTimestamp::setFakeTime( time() );
-		$store = new DatabaseUserImpactStore( $this->getServiceContainer()->getDBLoadBalancer() );
+		$store = new DatabaseUserImpactStore(
+			GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+				->getGrowthConnectionProvider()
+		);
 		$user = $this->getTestUser()->getUserIdentity();
 
 		$userImpact = new UserImpact(

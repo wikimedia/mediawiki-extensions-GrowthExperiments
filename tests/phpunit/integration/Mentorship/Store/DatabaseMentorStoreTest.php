@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\User\UserIdentity;
@@ -17,12 +18,13 @@ use Wikimedia\TestingAccessWrapper;
 class DatabaseMentorStoreTest extends MentorStoreTestCase {
 
 	protected function getStore( bool $wasPosted ): MentorStore {
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		return new DatabaseMentorStore(
 			$this->wanCache,
 			$this->getServiceContainer()->getUserFactory(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
 			$this->getServiceContainer()->getJobQueueGroup(),
-			$this->getServiceContainer()->getDBLoadBalancer(),
+			$geServices->getGrowthConnectionProvider(),
 			$wasPosted
 		);
 	}

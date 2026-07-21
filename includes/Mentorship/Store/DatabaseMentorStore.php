@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
+use GrowthExperiments\GrowthConnectionProvider;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\User\UserFactory;
@@ -9,9 +10,8 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\ObjectCache\WANObjectCache;
-use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IDBAccessObject;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class DatabaseMentorStore extends MentorStore {
 
@@ -20,7 +20,7 @@ class DatabaseMentorStore extends MentorStore {
 		private UserFactory $userFactory,
 		private UserIdentityLookup $userIdentityLookup,
 		private JobQueueGroup $jobQueueGroup,
-		private ILoadBalancer $loadBalancer,
+		private GrowthConnectionProvider $growthConnectionProvider,
 		bool $wasPosted,
 	) {
 		parent::__construct( $wanCache, $wasPosted );
@@ -61,11 +61,11 @@ class DatabaseMentorStore extends MentorStore {
 		return new UserIdentityValue( $user->getId(), $user->getName() );
 	}
 
-	private function getDBByFlags( int $flags ): IDatabase {
+	private function getDBByFlags( int $flags ): IReadableDatabase {
 		if ( ( $flags & IDBAccessObject::READ_LATEST ) == IDBAccessObject::READ_LATEST ) {
-			$db = $this->loadBalancer->getConnection( DB_PRIMARY );
+			$db = $this->growthConnectionProvider->getPrimaryDatabase();
 		} else {
-			$db = $this->loadBalancer->getConnection( DB_REPLICA );
+			$db = $this->growthConnectionProvider->getReplicaDatabase();
 		}
 		return $db;
 	}
@@ -141,7 +141,7 @@ class DatabaseMentorStore extends MentorStore {
 		?UserIdentity $mentor,
 		string $mentorRole
 	): void {
-		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$dbw = $this->growthConnectionProvider->getPrimaryDatabase();
 		if ( $mentor === null ) {
 			$dbw->newDeleteQueryBuilder()
 				->deleteFrom( 'growthexperiments_mentor_mentee' )
@@ -202,7 +202,7 @@ class DatabaseMentorStore extends MentorStore {
 		UserIdentity $mentee,
 		bool $isActive
 	): void {
-		$this->loadBalancer->getConnection( DB_PRIMARY )->newUpdateQueryBuilder()
+		$this->growthConnectionProvider->getPrimaryDatabase()->newUpdateQueryBuilder()
 			->update( 'growthexperiments_mentor_mentee' )
 			->set( [ 'gemm_mentee_is_active' => $isActive ] )
 			->where( [
@@ -222,7 +222,7 @@ class DatabaseMentorStore extends MentorStore {
 			return null;
 		}
 
-		return (bool)$this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+		return (bool)$this->growthConnectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
 			->select( 'gemm_mentee_is_active' )
 			->from( 'growthexperiments_mentor_mentee' )
 			->where( [
