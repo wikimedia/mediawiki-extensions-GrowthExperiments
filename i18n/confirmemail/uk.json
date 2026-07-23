@@ -8,6 +8,8 @@
 			"Ата"
 		]
 	},
+	"growthexperiments-createacct-username-description": "Ваше ім'я користувача є публічним і не може бути зроблене приватним пізніше.",
+	"growthexperiments-createacct-username-learn-more": "Дізнатися більше",
 	"growthexperiments-signupcampaign-title": "Дякуємо за пожертвування! Тепер приєднуйтесь до спільноти редакторів, які роблять Вікіпедію кращою сьогодні",
 	"growthexperiments-signupcampaign-body": "Редагувати Вікіпедію можна так само просто, як додати посилання або змінити слово. Отримайте пропозиції щодо статей, які {{GENDER:|вас}} цікавлять, після створення облікового запису!",
 	"growthexperiments-signupcampaign-bullet1": "Пропоновані статті за {{GENDER:|вашими}} інтересами",

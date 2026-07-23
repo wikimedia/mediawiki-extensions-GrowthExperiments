@@ -16,6 +16,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Привіт}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Головна сторінка новачка",
 	"growthexperiments-homepage-tab": "Домашня сторінка",
 	"tooltip-pt-homepage": "{{GENDER:|Ваша}} домашня сторінка",
 	"prefs-homepage": "Можливості нового редактора",
