@@ -1,0 +1,5 @@
+{
+	"extends": "./tsconfig.json",
+	"include": [ "modules/index.d.ts", "modules/vue-components/InterestSelector.vue" ],
+	"vueCompilerOptions": { "skipTemplateCodegen": true }
+}

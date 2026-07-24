@@ -90,6 +90,7 @@ const mw = {
 	Title: TitleMock,
 	util: {
 		getUrl: jest.fn(),
+		debounce: jest.fn( ( fn ) => fn ),
 	},
 	Rest: RestMock,
 	testKitchen: testKitchenMock,
