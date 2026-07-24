@@ -441,7 +441,7 @@
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-message": "په دې ليکنه کې نور وړانديزونه د لاسرسي وړ نه دي.",
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "بېرته وړانديز شوو سمونونو ته گرځېدل",
 	"growthexperiments-addlink-summary-title": "لنډيز",
-	"growthexperiments-addlink-summary-column-header-suggestion": "وړانديزونه",
+	"growthexperiments-addlink-summary-column-header-suggestion": "وړانديز",
 	"growthexperiments-addlink-summary-column-header-linked": "تړل‌شوی؟",
 	"growthexperiments-addlink-summary-copyrightwarning": "د دې خپرولو سره، {{GENDER:|تاسو}} د [https://foundation.wikimedia.org/wiki/Terms_of_Use کارولو منښتونو] سره همغږي ياست او خپلې ونډې مو د [https://creativecommons.org/licenses/by-sa/4.0/ CC BY-SA 4.0] او [https://www.gnu.org/licenses/fdl-1.3.html GFDL 1.3]  منښتليکونو لاندې خپروئ.",
 	"growthexperiments-addlink-summary-summary": "د تړوني وړانديزونو ځانگړنه: $1 {{PLURAL:$1|تړونی ورگډشوی|تړوني ورگډشوي}}.",
