@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Campaigns\CampaignLoader;
-use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\StaticExperimentManager;
 use GrowthExperiments\VariantHooks;
@@ -83,8 +82,6 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 	}
 
 	private function getVariantHooksMock(): VariantHooks {
-		$featureManager = $this->createMock( FeatureManager::class );
-		$featureManager->method( 'useTestKitchen' )->willReturn( false );
 		return new VariantHooks(
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$this->createNoOpMock( CampaignConfig::class ),
@@ -97,7 +94,6 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 				] ),
 			) ),
 			$this->createNoOpMock( CampaignLoader::class ),
-			$featureManager,
 			StatsFactory::newNull()
 		);
 	}

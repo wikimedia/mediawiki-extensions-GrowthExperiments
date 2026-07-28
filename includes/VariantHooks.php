@@ -7,10 +7,8 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
-use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\MainConfigNames;
-use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader as RL;
@@ -21,7 +19,6 @@ use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Specials\Hook\PostLoginRedirectHook;
-use MediaWiki\Specials\Hook\SpecialCreateAccountBenefitsHook;
 use MediaWiki\User\Options\UserOptionsManager;
 use Wikimedia\Stats\StatsFactory;
 
@@ -36,8 +33,7 @@ class VariantHooks implements
 	PostLoginRedirectHook,
 	ResourceLoaderExcludeUserOptionsHook,
 	ResourceLoaderGetConfigVarsHook,
-	SkinAddFooterLinksHook,
-	SpecialCreateAccountBenefitsHook
+	SkinAddFooterLinksHook
 {
 
 	/** @var string User option name for storing the campaign associated with account creation */
@@ -50,7 +46,6 @@ class VariantHooks implements
 		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly IExperimentManager $experimentManager,
 		private readonly CampaignLoader $campaignLoader,
-		private readonly FeatureManager $featureManager,
 		private readonly StatsFactory $statsFactory,
 	) {
 	}
@@ -176,61 +171,8 @@ class VariantHooks implements
 		) {
 			return;
 		}
-		$footerItems['signupcampaign-legal'] = CampaignBenefitsBlock::getLegalFooter( $context );
+		$footerItems['signupcampaign-legal'] = $context->msg( 'growthexperiments-campaigns-footer' )->parse();
 		$context->getOutput()->addModuleStyles( [ 'ext.growthExperiments.Account.styles' ] );
-	}
-
-	/** @inheritDoc */
-	public function onSpecialCreateAccountBenefits( ?string &$html, array $info, array &$options ) {
-		$skin = $info['context']->getSkin();
-
-		if ( $this->featureManager->shouldShowCreateAccountV2(
-			$info['context']->getUser(),
-			$skin,
-			$info['context']->getRequest()
-		) ) {
-			$html = '';
-			return false;
-		}
-
-		if ( $this->featureManager->shouldShowCreateAccountNoBenefitsTreatment(
-			$info['context']->getUser(),
-			$skin,
-			$info['context']->getRequest()
-		) ) {
-			$html = '';
-			return false;
-		}
-
-		if ( $this->shouldShowNewLandingPageHtml( $info['context'] ) ) {
-			// campaign
-			$options['beforeForm'] = $skin instanceof SkinMinerva;
-			$benefitsBlock = new CampaignBenefitsBlock( $info['context'], $info['form'], $this->campaignConfig );
-			$html = $benefitsBlock->getHtml();
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * Check if the campaign field is set.
-	 * @param IContextSource $context
-	 * @return bool
-	 */
-	private function shouldShowNewLandingPageHtml( IContextSource $context ): bool {
-		$campaignValue = $context->getRequest()->getRawVal( 'campaign' );
-		$campaignName = $this->campaignConfig->getCampaignIndexFromCampaignTerm( $campaignValue );
-		if ( $campaignName ) {
-			$signupPageTemplate = $this->campaignConfig->getSignupPageTemplate( $campaignName );
-			if ( in_array( $signupPageTemplate, [ 'hero' ], true ) ) {
-				return true;
-			} elseif ( $signupPageTemplate !== null ) {
-				Util::logText( 'Unknown signup page template',
-					[ 'campaign' => $campaignName, 'template' => $signupPageTemplate ] );
-			}
-		}
-		return false;
 	}
 
 	private function recordAccountCreations( string $campaign ): void {

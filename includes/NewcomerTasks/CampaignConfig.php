@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
-use GrowthExperiments\Specials\CampaignBenefitsBlock;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
@@ -262,26 +261,6 @@ class CampaignConfig {
 			return null;
 		}
 		return $this->config[ $campaign ][ $campaignConfigurationIndex ] ?? null;
-	}
-
-	/**
-	 * Get the ID of a custom template to use for the signup page.
-	 * @param string $campaign
-	 * @return string|null
-	 * @see CampaignBenefitsBlock::getCampaignTemplateHtml()
-	 */
-	public function getSignupPageTemplate( string $campaign ): ?string {
-		return $this->getConfigValue( $campaign, 'signupPageTemplate' );
-	}
-
-	/**
-	 * Get the parameters to pass to the template from getSignupPageTemplate()
-	 * @param string $campaign
-	 * @return array
-	 */
-	public function getSignupPageTemplateParameters( string $campaign ): array {
-		return $this->getConfigValue( $campaign,
-			'signupPageTemplateParameters' ) ?? [];
 	}
 
 }
