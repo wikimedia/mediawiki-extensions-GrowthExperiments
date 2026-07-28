@@ -45,11 +45,16 @@ class CleanMentorList extends Maintenance {
 
 		$this->initServices();
 
+		$startTime = microtime( true );
 		$status = $this->mentorListCleaner->processMentors( RequestContext::getMain() );
+		$duration = microtime( true ) - $startTime;
 		if ( $status->isOK() ) {
-			$this->output( 'Completed successfully!' . PHP_EOL );
+			$this->output(
+				'Completed successfully! Duration: ' . $duration . ' seconds.' . PHP_EOL
+			);
 		} else {
 			$this->output( $this->statusFormatter->getWikiText( $status, [ 'lang' => 'en' ] ) );
+			$this->output( 'Duration: ' . $duration . ' seconds.' );
 		}
 	}
 }
