@@ -279,6 +279,9 @@
 		"includes/Rest/growthexperiments.v0.json"
 	],
 	"HookHandlers": {
+		"accountsetup": {
+			"class": "GrowthExperiments\\AccountSetup\\AccountSetupHooks"
+		},
 		"communityconfig": {
 			"class": "GrowthExperiments\\Config\\CommunityConfigurationHooks",
 			"services": [
@@ -490,6 +493,7 @@
 			"mentor"
 		],
 		"GetPreferences": [
+			"accountsetup",
 			"helppanel",
 			"homepage",
 			"mentordashboard",
