@@ -17,14 +17,15 @@ class EditData {
 
 	/**
 	 * @param array<int,int> $editCountByNamespace Number of edits made by the user per namespace ID.
-	 * @param array<string,int> $editCountByDay Number of article-space edits made by the user
+	 * @param array<string,int> $editCountByDay Number of edits (in any namespace) made by the user
 	 *   by day. The format matches {@see UserImpact::getEditCountByDay()}.
 	 * @param array<string,int> $editCountByTaskType Number of newcomer task edits per task type
 	 *  {@see UserImpact::getEditCountByTaskType()}.
 	 * @param int $revertedEditCount Number of edits by the user that got reverted (determined by
 	 * the mw-reverted tag).
 	 * @param int $newcomerTaskEditCount Number of edits with "newcomer task" tag (suggested edits).
-	 * @param string|null $lastEditTimestamp MW_TS date of last article-space edit.
+	 * @param string|null $lastEditTimestamp MW_TS date of the user's last edit in any namespace
+	 *   (excluding edits to redirects).
 	 * @param array[] $editedArticles List of article-space titles the user has edited, sorted from
 	 *   most recently edited to least recently edited. Keyed by article title (in dbkey format),
 	 *   the value is an array with 'oldestEdit' and 'newestEdit' fields, each with an MW_TS date.
@@ -59,7 +60,7 @@ class EditData {
 	}
 
 	/**
-	 * Number of article-space edits made by the user by day.
+	 * Number of edits (in any namespace) made by the user by day.
 	 * Days are interpreted according to the wiki's timezone default offset.
 	 * @return array<string,int> Same as UserImpact::getEditCountByDay().
 	 * @see $wgLocalTZoffset
@@ -93,7 +94,7 @@ class EditData {
 	}
 
 	/**
-	 * MW_TS date of last article-space edit.
+	 * MW_TS date of the user's last edit in any namespace (excluding edits to redirects).
 	 * @return string|null
 	 */
 	public function getLastEditTimestamp(): ?string {

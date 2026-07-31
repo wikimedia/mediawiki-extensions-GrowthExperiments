@@ -143,7 +143,7 @@ class UserImpact implements JsonSerializable, JsonCodecable {
 	}
 
 	/**
-	 * Map of day => number of article-space edits the user made on that day.
+	 * Map of day => number of edits (in any namespace) the user made on that day.
 	 * Indexed with ISO 8601 dates, e.g. '2022-08-25'; in ascending order by date.
 	 * Dates aren't contiguous. Might exclude edits made many edits ago.
 	 * @return array<string,int>
