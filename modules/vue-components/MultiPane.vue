@@ -50,7 +50,7 @@ module.exports = exports = defineComponent( {
 		const isRtl = computed( () => computedDir.value === 'rtl' );
 		const computedTransitionSet = computed( () => isRtl.value ?
 			{ next: TRANSITION_NAMES.LEFT, prev: TRANSITION_NAMES.RIGHT } :
-			{ next: TRANSITION_NAMES.RIGHT, prev: TRANSITION_NAMES.LEFT }
+			{ next: TRANSITION_NAMES.RIGHT, prev: TRANSITION_NAMES.LEFT },
 		);
 		const computedTransitionName = computed( () => computedTransitionSet.value[ currentNavigation.value ] );
 

@@ -218,12 +218,12 @@ module.exports = exports = {
 			return this.renderThirdPerson ?
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text-third-person',
-					this.$filters.convertNumber( this.maxThanks )
+					this.$filters.convertNumber( this.maxThanks ),
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text',
 					'', // used to be the username
-					this.$filters.convertNumber( this.maxThanks )
+					this.$filters.convertNumber( this.maxThanks ),
 				).text();
 		},
 		lastEditFormattedTimeAgo() {
@@ -235,11 +235,11 @@ module.exports = exports = {
 		longestEditingStreakCount() {
 			if ( this.data && this.data.longestEditingStreak ) {
 				const bestStreakDaysLocalisedCount = this.$filters.convertNumber(
-					this.data.longestEditingStreak.datePeriod.days
+					this.data.longestEditingStreak.datePeriod.days,
 				);
 				return this.$i18n(
 					'growthexperiments-homepage-impact-recent-activity-streak-count-text',
-					bestStreakDaysLocalisedCount
+					bestStreakDaysLocalisedCount,
 				).text();
 			}
 			return NO_DATA_CHARACTER;
@@ -278,12 +278,12 @@ module.exports = exports = {
 			return this.renderThirdPerson ?
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text-third-person',
-					this.$filters.convertNumber( this.maxEdits )
+					this.$filters.convertNumber( this.maxEdits ),
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text',
 					'', // used to be the username
-					this.$filters.convertNumber( this.maxEdits )
+					this.$filters.convertNumber( this.maxEdits ),
 				).text();
 		},
 		longestEditingStreakSecondParagraph() {

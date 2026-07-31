@@ -281,7 +281,7 @@ module.exports = exports = {
 				.then( ( starredMentees ) => {
 					this.rows.forEach( ( mentee ) => {
 						mentee.isStarred = starredMentees
-							.indexOf( Number( mentee.user_id ) ) !== -1;
+							.includes( Number( mentee.user_id ) );
 					} );
 				}, ( err ) => {
 					// TODO add UI error handling & logging

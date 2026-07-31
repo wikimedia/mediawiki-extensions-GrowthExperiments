@@ -5,7 +5,7 @@
 	],
 	"compilerOptions": {
 		"moduleResolution": "bundler",
-		"lib": [ "ES2015", "DOM" ],
+		"lib": [ "ES2019", "DOM" ],
 		"module": "ESNext",
 		"strict": true,
 		"allowJs": true,
