@@ -11,6 +11,7 @@
 		"/quickstarttips/{skin}/{editor}/{tasktypeid}/{uselang}": {
 			"get": {
 				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-quickstarttips",
+				"x-i18n-summary": "rest-endpoint-summ-get-growthexperiments-quickstarttips",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\TipsHandler",
 					"services": [
@@ -24,6 +25,7 @@
 		"/suggestions/addlink/{title}": {
 			"get": {
 				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-suggestions-addlink",
+				"x-i18n-summary": "rest-endpoint-summ-get-growthexperiments-suggestions-addlink",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSuggestionsHandler",
 					"services": [
@@ -36,6 +38,7 @@
 		"/suggestions/addimage/feedback/{title}": {
 			"put": {
 				"x-i18n-description": "rest-endpoint-desc-put-growthexperiments-suggestions-addimage-feedback",
+				"x-i18n-summary": "rest-endpoint-summ-put-growthexperiments-suggestions-addimage-feedback",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\AddImageFeedbackHandler",
 					"services": [
@@ -50,6 +53,7 @@
 		"/suggestions/info": {
 			"get": {
 				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-suggestions-info",
+				"x-i18n-summary": "rest-endpoint-summ-get-growthexperiments-suggestions-info",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\SuggestionsInfoHandler",
 					"services": [
@@ -63,6 +67,7 @@
 		"/mentees": {
 			"get": {
 				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-mentees",
+				"x-i18n-summary": "rest-endpoint-summ-get-growthexperiments-mentees",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\MenteesHandler",
 					"services": [
@@ -79,6 +84,7 @@
 		"/mentees/prefixsearch/{prefix}": {
 			"get": {
 				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-mentees-prefixsearch",
+				"x-i18n-summary": "rest-endpoint-summ-get-growthexperiments-mentees-prefixsearch",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\MenteesPrefixSearchHandler",
 					"services": [
@@ -90,6 +96,7 @@
 		"/newcomertask/complete": {
 			"post": {
 				"x-i18n-description": "rest-endpoint-desc-post-growthexperiments-newcomertask-complete",
+				"x-i18n-summary": "rest-endpoint-summ-post-growthexperiments-newcomertask-complete",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\NewcomerTaskCompleteHandler",
 					"services": [
@@ -101,6 +108,7 @@
 		"/welcomesurvey/skip": {
 			"post": {
 				"x-i18n-description": "rest-endpoint-desc-post-growthexperiments-welcomesurvey-skip",
+				"x-i18n-summary": "rest-endpoint-summ-post-growthexperiments-welcomesurvey-skip",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\WelcomeSurveySkipHandler",
 					"services": [
@@ -112,6 +120,7 @@
 		"/user-impact/{user}": {
 			"get": {
 				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-user-impact",
+				"x-i18n-summary": "rest-endpoint-summ-get-growthexperiments-user-impact",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
 					"services": [
@@ -126,6 +135,7 @@
 			},
 			"post": {
 				"x-i18n-description": "rest-endpoint-desc-post-growthexperiments-user-impact",
+				"x-i18n-summary": "rest-endpoint-summ-post-growthexperiments-user-impact",
 				"handler": {
 					"class": "GrowthExperiments\\Rest\\Handler\\UserImpactHandler",
 					"services": [
