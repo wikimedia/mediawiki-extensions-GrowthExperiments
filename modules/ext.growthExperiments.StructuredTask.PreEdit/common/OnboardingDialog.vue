@@ -300,7 +300,6 @@ module.exports = exports = defineComponent( {
 	* https://phabricator.wikimedia.org/T336265
 	*/
 
-	// stylelint-disable selector-class-pattern
 	&.cdx-dialog {
 		.cdx-dialog__body,
 		.cdx-dialog__header {
@@ -311,7 +310,6 @@ module.exports = exports = defineComponent( {
 			padding: @spacing-100 @spacing-150;
 		}
 	}
-	// stylelint-enable selector-class-pattern
 
 	&__header {
 		&__top_row {

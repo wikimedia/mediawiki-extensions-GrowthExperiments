@@ -218,7 +218,7 @@ module.exports = exports = {
 			outline: @outline-base--focus;
 		}
 	}
-	/* stylelint-disable-next-line no-descending-specificity */
+
 	&:disabled {
 		background-color: @background-color-disabled-subtle;
 		color: @color-disabled;
@@ -228,7 +228,6 @@ module.exports = exports = {
 		// This has never gone through design review and was a hack to increase
 		// color contrast.
 		// text-shadow: @text-shadow-base--disabled;
-		/* stylelint-disable-next-line no-descending-specificity */
 		~ .ext-growthExperiments-NumberInput__icon {
 			color: @color-disabled;
 			pointer-events: none;
