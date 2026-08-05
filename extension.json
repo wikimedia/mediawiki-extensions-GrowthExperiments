@@ -644,14 +644,6 @@
 		"remoteExtPath": "GrowthExperiments/modules"
 	},
 	"attributes": {
-		"EventLogging": {
-			"Schemas": {
-				"HelpPanel": "/analytics/legacy/helppanel/1.4.1",
-				"HomepageModule": "/analytics/legacy/homepagemodule/1.6.7",
-				"NewcomerTask": "/analytics/legacy/newcomertask/1.2.0",
-				"HomepageVisit": "/analytics/legacy/homepagevisit/1.6.2"
-			}
-		},
 		"CirrusSearch": {
 			"RescoreProfiles": {
 				"growth_underlinked": {
@@ -793,9 +785,111 @@
 					}
 				}
 			}
+		},
+		"EventLogging": {
+			"Schemas": {
+				"HelpPanel": "/analytics/legacy/helppanel/1.4.1",
+				"HomepageModule": "/analytics/legacy/homepagemodule/1.6.7",
+				"NewcomerTask": "/analytics/legacy/newcomertask/1.2.0",
+				"HomepageVisit": "/analytics/legacy/homepagevisit/1.6.2"
+			}
+		},
+		"PersonalDashboard": {
+			"Modules": {
+				"ext.personalDashboard.mentorship": {
+					"class": "GrowthExperiments\\PersonalDashboard\\Mentorship",
+					"services": [
+						"GrowthExperimentsMentorManager",
+						"UserEditTracker",
+						"UserFactory",
+						"GenderCache"
+					]
+				}
+			},
+			"ModuleGroups": {
+				"home": {
+					"description": "Newcomer Homepage modules reimagined for the Personal Dashboard",
+					"version": 0,
+					"groups": [
+						{
+							"name": "main",
+							"enabled": true,
+							"subgroups": [
+								{
+									"name": "primary",
+									"enabled": true,
+									"modules": [
+										{
+											"name": "ext.personalDashboard.mentorship",
+											"enabled": true
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
 		}
 	},
 	"ResourceModules": {
+		"ext.growthExperiments.PersonalDashboard.Mentorship.styles": {
+			"localBasePath": "modules/ext.growthExperiments.PersonalDashboard.Mentorship.styles",
+			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.PersonalDashboard.Mentorship.styles",
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexStyleOnly": true,
+			"codexComponents": [
+				"CdxButton"
+			],
+			"styles": [
+				"index.less"
+			]
+		},
+		"ext.growthExperiments.PersonalDashboard.Mentorship": {
+			"localBasePath": "modules/ext.growthExperiments.PersonalDashboard.Mentorship",
+			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.PersonalDashboard.Mentorship",
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexComponents": [
+				"CdxButton",
+				"CdxDialog",
+				"CdxField",
+				"CdxTextArea"
+			],
+			"packageFiles": [
+				"init.js",
+				"QuestionDialog.vue",
+				"MentorshipStatusDialog.vue",
+				"AboutMentorshipDialog.vue",
+				"state.js"
+			],
+			"dependencies": [
+				"vue",
+				"mediawiki.api"
+			],
+			"messages": [
+				"growthexperiments-help-panel-question-placeholder",
+				"growthexperiments-help-panel-submit-question-button-text",
+				"growthexperiments-homepage-mentorship-question-error",
+				"growthexperiments-homepage-mentorship-confirm-dialog-cancel",
+				"growthexperiments-homepage-mentorship-confirm-dialog-continue",
+				"growthexperiments-homepage-mentorship-confirm-dialog-header",
+				"growthexperiments-homepage-mentorship-confirm-dialog-text",
+				"growthexperiments-homepage-mentorship-optout-cancel",
+				"growthexperiments-homepage-mentorship-optout-confirmation-done",
+				"growthexperiments-homepage-mentorship-optout-header",
+				"growthexperiments-homepage-mentorship-optout-optout",
+				"growthexperiments-homepage-mentorship-optout-text",
+				"growthexperiments-homepage-mentorship-ellipsis-menu-about",
+				"growthexperiments-homepage-mentorship-ellipsis-menu-optout",
+				"growthexperiments-homepage-mentorship-about-header",
+				"growthexperiments-homepage-mentorship-about-subheader-mentor",
+				"growthexperiments-homepage-mentorship-about-mentor-par1",
+				"growthexperiments-homepage-mentorship-about-mentor-par2",
+				"growthexperiments-homepage-mentorship-about-subheader-optout",
+				"growthexperiments-homepage-mentorship-about-optout-par1",
+				"growthexperiments-homepage-mentorship-about-done"
+			]
+		},
 		"ext.growthExperiments.NotificationsTracking": {
 			"localBasePath": "modules/ext.growthExperiments.NotificationsTracking",
 			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.NotificationsTracking",

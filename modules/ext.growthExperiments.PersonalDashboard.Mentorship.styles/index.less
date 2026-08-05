@@ -1,0 +1,105 @@
+@import 'mediawiki.skin.variables.less';
+
+.personal-dashboard-mentorship {
+	&__info {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: @spacing-25;
+	}
+
+	&__name {
+		font-weight: @font-weight-bold;
+	}
+
+	&__meta {
+		color: @color-subtle;
+		font-size: @font-size-small;
+	}
+
+	&__intro {
+		margin: @spacing-50 0;
+	}
+
+	// The mentor's own words, rendered as the Codex "Block quote" named style
+	// (serif is the distinguishing signal); the mentor name above is the
+	// attribution.
+	&__quote {
+		margin: @spacing-50 0;
+		font-family: @font-family-serif;
+	}
+
+	&__ask {
+		margin-top: @spacing-50;
+	}
+
+	&__conversations {
+		display: block;
+	}
+
+	&__about,
+	&__optout,
+	&__optin {
+		margin-top: @spacing-50;
+	}
+
+	&__status-error {
+		margin-top: @spacing-50;
+		color: @color-error;
+	}
+}
+
+// Opt out goes through the API, so its control does nothing without JavaScript;
+// hide it. The opt-in card has no no-JS action at all, so hide the whole card
+// rather than leave explanatory text with no way forward.
+.client-nojs {
+	.personal-dashboard-mentorship__about,
+	.personal-dashboard-mentorship__optout {
+		display: none;
+	}
+
+	.personal-dashboard-mentorship-optin-card {
+		display: none;
+	}
+}
+
+// Recent questions are secondary to the mentor, so the whole section is a
+// de-emphasized subtle panel (GrowthExperiments' RecentQuestionsFormatter owns
+// these class names). Questions are separated by spacing, not bullets, for a
+// cleaner list. Scoped under the module wrapper so the h3 rule outweighs the
+// skin's default heading size (same class-specificity, later source order).
+.personal-dashboard-module .recent-questions-growthexperiments-mentor-questions {
+	margin-top: @spacing-100;
+	padding: @spacing-75;
+	background-color: @background-color-neutral-subtle;
+	border-radius: @border-radius-base;
+
+	// No panel before the mentee has asked anything. The formatter still emits an
+	// empty wrapper, which stays in the DOM as the target the poster swaps into.
+	&:empty {
+		display: none;
+	}
+
+	h3 {
+		margin: 0 0 @spacing-50 0;
+		font-size: @font-size-small;
+		font-weight: @font-weight-bold;
+		color: @color-subtle;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li + li {
+		margin-top: @spacing-75;
+	}
+
+	.question-posted-on {
+		display: block;
+		color: @color-subtle;
+		font-size: @font-size-small;
+	}
+}
