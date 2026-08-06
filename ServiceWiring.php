@@ -968,12 +968,12 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new ReassignMenteesFactory(
 			$growthServices->getLogger(),
-			$growthServices->getGrowthConnectionProvider(),
 			$growthServices->getMentorManager(),
 			$growthServices->getMentorStore(),
 			$growthServices->getChangeMentorFactory(),
 			$services->getJobQueueGroupFactory(),
-			$services->getUserFactory()
+			$services->getUserFactory(),
+			$services->getLockManager()
 		);
 	},
 

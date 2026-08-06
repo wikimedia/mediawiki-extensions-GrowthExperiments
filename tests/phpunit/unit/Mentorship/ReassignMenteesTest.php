@@ -17,7 +17,8 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\LockManager\ILockManager;
+use Wikimedia\ScopedCallback;
 
 /**
  * @covers \GrowthExperiments\Mentorship\ReassignMentees
@@ -31,12 +32,6 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		?ChangeMentorFactory $changeMentorFactoryMock = null,
 		?IContextSource $contextMock = null
 	): ReassignMentees {
-		$dbw = $this->createMock( IDatabase::class );
-		$dbw->method( 'lock' )
-			->willReturn( true );
-		$dbw->method( 'unlock' )
-			->willReturn( true );
-
 		$user = $this->createNoOpMock( User::class, [ 'isHidden' ] );
 		$user->method( 'isHidden' )
 			->willReturn( false );
@@ -44,14 +39,20 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		$userFactory->method( 'newFromUserIdentity' )
 			->willReturn( $user );
 
+		$lockManager = $this->createNoOpMock( ILockManager::class, [ 'scopedLock' ] );
+		$lockManager->expects( $this->once() )
+			->method( 'scopedLock' )
+			->with( 'GrowthExperiments-ReassignMentees-123' )
+			->willReturn( $this->createNoOpMock( ScopedCallback::class ) );
+
 		return new ReassignMentees(
 			new NullLogger(),
-			$dbw,
 			$mentorManagerMock ?? $this->createNoOpMock( IMentorManager::class ),
 			$mentorStoreMock ?? $this->createNoOpMock( MentorStore::class ),
 			$changeMentorFactoryMock ?? $this->createNoOpMock( ChangeMentorFactory::class ),
 			$this->createNoOpMock( JobQueueGroupFactory::class ),
 			$userFactory,
+			$lockManager,
 			$mentor,
 			$mentor,
 			$contextMock ?? $this->createNoOpMock( IContextSource::class )

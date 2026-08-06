@@ -2,24 +2,24 @@
 
 namespace GrowthExperiments\Mentorship;
 
-use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
+use Wikimedia\LockManager\ILockManager;
 
 class ReassignMenteesFactory {
 
 	public function __construct(
 		private LoggerInterface $logger,
-		private GrowthConnectionProvider $growthConnectionProvider,
 		private IMentorManager $mentorManager,
 		private MentorStore $mentorStore,
 		private ChangeMentorFactory $changeMentorFactory,
 		private JobQueueGroupFactory $jobQueueGroupFactory,
-		private UserFactory $userFactory
+		private UserFactory $userFactory,
+		private ILockManager $lockManager
 	) {
 	}
 
@@ -30,12 +30,12 @@ class ReassignMenteesFactory {
 	): ReassignMentees {
 		$reassignMentees = new ReassignMentees(
 			$this->logger,
-			$this->growthConnectionProvider->getPrimaryDatabase(),
 			$this->mentorManager,
 			$this->mentorStore,
 			$this->changeMentorFactory,
 			$this->jobQueueGroupFactory,
 			$this->userFactory,
+			$this->lockManager,
 			$performer,
 			$mentor,
 			$messageLocalizer

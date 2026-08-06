@@ -6,7 +6,6 @@ namespace GrowthExperiments\Maintenance;
 
 use CirrusSearch\Query\ArticleTopicFeature;
 use Generator;
-use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationEvalStatus;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
@@ -33,6 +32,7 @@ use MediaWiki\WikiMap\WikiMap;
 use RuntimeException;
 use StatusValue;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
+use Wikimedia\LockManager\ILockManager;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Stats\StatsFactory;
 
@@ -54,10 +54,10 @@ class RefreshLinkRecommendations extends Maintenance {
 	private StatusFormatter $statusFormatter;
 	private TitleFactory $titleFactory;
 	private LinkBatchFactory $linkBatchFactory;
+	private ILockManager $lockManager;
 	private ConfigurationLoader $configurationLoader;
 	private TaskSuggester $taskSuggester;
 	private LinkRecommendationUpdater $linkRecommendationUpdater;
-	private GrowthConnectionProvider $growthConnectionProvider;
 	private LinkRecommendationTaskType $recommendationTaskType;
 	private User $searchUser;
 	private StatsFactory $statsFactory;
@@ -113,8 +113,9 @@ class RefreshLinkRecommendations extends Maintenance {
 		}
 		$this->initServices();
 		$this->initConfig();
-		$lockName = 'GrowthExperiments-RefreshLinkRecommendations-' . WikiMap::getCurrentWikiId();
-		if ( !$this->growthConnectionProvider->getPrimaryDatabase()->lock( $lockName, __METHOD__, 0 ) ) {
+
+		$lock = $this->lockManager->scopedLock( 'GrowthExperiments-RefreshLinkRecommendations' );
+		if ( !$lock ) {
 			$this->output( "Previous invocation of the script is still running\n" );
 			return;
 		}
@@ -277,9 +278,9 @@ class RefreshLinkRecommendations extends Maintenance {
 		);
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
+		$this->lockManager = $services->getLockManager();
 		$this->taskSuggester = $growthServices->getTaskSuggesterFactory()->create( $this->configurationLoader );
 		$this->linkRecommendationUpdater = $growthServices->getLinkRecommendationUpdater();
-		$this->growthConnectionProvider = $growthServices->getGrowthConnectionProvider();
 		$this->statsFactory = $services->getStatsFactory()->withComponent( 'GrowthExperiments' );
 	}
 

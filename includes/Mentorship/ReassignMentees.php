@@ -8,21 +8,20 @@ use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\LockManager\ILockManager;
 
 class ReassignMentees {
 
 	public function __construct(
 		private LoggerInterface $logger,
-		private IDatabase $dbw,
 		private IMentorManager $mentorManager,
 		private MentorStore $mentorStore,
 		private ChangeMentorFactory $changeMentorFactory,
 		private JobQueueGroupFactory $jobQueueGroupFactory,
 		private UserFactory $userFactory,
+		private ILockManager $lockManager,
 		private UserIdentity $performer,
 		private UserIdentity $mentor,
 		private MessageLocalizer $messageLocalizer
@@ -111,9 +110,8 @@ class ReassignMentees {
 		string $reassignMessageKey,
 		...$reassignMessageAdditionalParams
 	): bool {
-		$lockName = 'GrowthExperiments-ReassignMentees-' . $this->mentor->getId() .
-			WikiMap::getCurrentWikiId();
-		if ( !$this->dbw->lock( $lockName, __METHOD__, 0 ) ) {
+		$lock = $this->lockManager->scopedLock( 'GrowthExperiments-ReassignMentees-' . $this->mentor->getId() );
+		if ( !$lock ) {
 			$this->logger->warning(
 				__METHOD__ . ' failed to acquire a lock for {mentor}', [
 					'mentor' => $this->mentor->getName(),
@@ -208,11 +206,6 @@ class ReassignMentees {
 			);
 		}
 
-		if ( !$this->dbw->unlock( $lockName, __METHOD__ ) ) {
-			$this->logger->error( 'ReassignMentees failed to release its lock', [
-				'mentor' => $this->mentor->getName(),
-			] );
-		}
 		return true;
 	}
 }
