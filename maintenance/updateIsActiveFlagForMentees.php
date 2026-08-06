@@ -70,47 +70,40 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 			->caller( __METHOD__ )
 			->fetchFieldValues();
 
-		$thisBatch = 0;
-		foreach ( $menteeIds as $menteeId ) {
-			$menteeUser = $this->userIdentityLookup->getUserIdentityByUserId( $menteeId );
-			if ( !$menteeUser ) {
-				$this->output(
-					"Deleting mentor/mentee relationship for $menteeId, user identity not found.\n"
-				);
-				$this->mentorStore->dropMenteeRelationship(
-					// user does not exist; MentorStore only makes use of the user ID,
-					// so construct UserIdentity manually for easier deletion.
-					new UserIdentityValue( $menteeId, 'Mentee' )
-				);
-				continue;
-			}
-
-			$lastActivityTimestamp = $this->userEditTracker->getLatestEditTimestamp( $menteeUser );
-			if ( $lastActivityTimestamp === false ) {
-				$lastActivityTimestamp = $this->userRegistrationLookup->getRegistration( $menteeUser );
-			}
-
-			$timeDelta = (int)wfTimestamp() - (int)wfTimestamp(
-				TimestampFormat::UNIX,
-				$lastActivityTimestamp
-			);
-
-			if (
-				$lastActivityTimestamp === null ||
-				$timeDelta > (int)$this->getConfig()->get( 'RCMaxAge' )
-			) {
-				if ( $thisBatch === 0 ) {
-					$this->beginTransactionRound( __METHOD__ );
+		foreach ( $this->newBatchIterator( $menteeIds ) as $menteeBatch ) {
+			$this->beginTransactionRound( __METHOD__ );
+			foreach ( $menteeBatch as $menteeId ) {
+				$menteeUser = $this->userIdentityLookup->getUserIdentityByUserId( $menteeId );
+				if ( !$menteeUser ) {
+					$this->output(
+						"Deleting mentor/mentee relationship for $menteeId, user identity not found.\n"
+					);
+					$this->mentorStore->dropMenteeRelationship(
+						// user does not exist; MentorStore only makes use of the user ID,
+						// so construct UserIdentity manually for easier deletion.
+						new UserIdentityValue( $menteeId, 'Mentee' )
+					);
+					continue;
 				}
 
-				$this->mentorStore->markMenteeAsInactive( $menteeUser );
-				$thisBatch++;
+				$lastActivityTimestamp = $this->userEditTracker->getLatestEditTimestamp( $menteeUser );
+				if ( $lastActivityTimestamp === false ) {
+					$lastActivityTimestamp = $this->userRegistrationLookup->getRegistration( $menteeUser );
+				}
 
-				if ( $thisBatch >= $this->getBatchSize() ) {
-					$this->commitTransactionRound( __METHOD__ );
-					$thisBatch = 0;
+				$timeDelta = (int)wfTimestamp() - (int)wfTimestamp(
+					TimestampFormat::UNIX,
+					$lastActivityTimestamp
+				);
+
+				if (
+					$lastActivityTimestamp === null ||
+					$timeDelta > (int)$this->getConfig()->get( 'RCMaxAge' )
+				) {
+					$this->mentorStore->markMenteeAsInactive( $menteeUser );
 				}
 			}
+			$this->commitTransactionRound( __METHOD__ );
 		}
 	}
 }
