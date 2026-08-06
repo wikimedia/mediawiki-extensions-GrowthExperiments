@@ -45,6 +45,8 @@
 
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$( '.welcomesurvey-languages' ).addClass( 'welcomesurvey-languages-loaded' );
+
+			return widgetInstance;
 		},
 	};
 }() );

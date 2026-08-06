@@ -6,9 +6,11 @@ namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Util;
 use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Message\Message;
@@ -33,6 +35,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly WelcomeSurveyFactory $welcomeSurveyFactory,
 		private readonly WelcomeSurveyLogger $welcomeSurveyLogger,
+		private readonly ?ExperimentManager $experimentManager,
 	) {
 		parent::__construct( 'WelcomeSurvey' );
 	}
@@ -72,6 +75,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		}
 		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.Account.styles' );
 		$this->getOutput()->addJsConfigVars( 'welcomesurvey', true );
+		$this->getOutput()->addModules( 'ext.growthExperiments.WelcomeSurvey' );
 		parent::execute( $par );
 	}
 
@@ -222,6 +226,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$this->welcomeSurveyLogger->logInteraction( self::ACTION_SUBMIT_SUCCESS );
 
 		if ( $save ) {
+			$this->maybeSendExperimentSurveyCompletedEvent( $data );
 			// show confirmation page
 			$returnToQueryArray = wfCgiToArray( $returnToQuery );
 			$returnToQueryArray['_welcomesurveytoken'] = $token;
@@ -243,6 +248,17 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		}
 
 		return true;
+	}
+
+	private function maybeSendExperimentSurveyCompletedEvent( array $data ): void {
+		$hasReasonResponse = isset( $data['reason'] ) && $data['reason'] !== 'placeholder';
+		$hasEditingResponse = isset( $data['edited'] ) && $data['edited'] !== 'placeholder';
+
+		if ( $hasReasonResponse && $hasEditingResponse ) {
+			$this->experimentManager
+				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AA_TEST )
+				->send( 'welcome_survey_account_setup_submitted_complete' );
+		}
 	}
 
 	private function showConfirmationPage( string $to, string $query ): void {

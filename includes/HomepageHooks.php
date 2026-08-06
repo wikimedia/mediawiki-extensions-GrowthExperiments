@@ -184,6 +184,9 @@ class HomepageHooks implements
 					'UserOptionsManager',
 					'TitleFactory',
 				],
+				'optional_services' => [
+					'TestKitchen.ExperimentManager',
+				],
 			];
 			if ( $pageViewInfoEnabled ) {
 				$list['Impact'] = [

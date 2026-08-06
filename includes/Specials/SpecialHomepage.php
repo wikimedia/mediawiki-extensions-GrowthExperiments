@@ -8,6 +8,7 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
@@ -17,6 +18,7 @@ use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\UserNotLoggedIn;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
@@ -45,6 +47,7 @@ class SpecialHomepage extends SpecialPage {
 		private readonly Config $wikiConfig,
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly TitleFactory $titleFactory,
+		private readonly ?ExperimentManager $experimentManager,
 	) {
 		parent::__construct( 'Homepage' );
 		$this->pageviewToken = $this->generatePageviewToken();
@@ -72,6 +75,8 @@ class SpecialHomepage extends SpecialPage {
 		if ( $this->handleNewcomerTask( $par ) ) {
 			return;
 		}
+
+		$this->maybeSendExperimentEmailEvent();
 
 		$out = $this->getContext()->getOutput();
 		$out->setPageTitleMsg( $this->getPageTitleMsg() );
@@ -132,6 +137,16 @@ class SpecialHomepage extends SpecialPage {
 				$logger->log();
 			} );
 
+		}
+	}
+
+	private function maybeSendExperimentEmailEvent(): void {
+		$user = $this->getUser();
+		$email = $user->getEmail();
+		if ( $email !== '' ) {
+			$this->experimentManager
+				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AA_TEST )
+				->send( 'user_has_email' );
 		}
 	}
 

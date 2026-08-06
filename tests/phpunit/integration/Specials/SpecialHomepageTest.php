@@ -43,6 +43,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$communityConfigServices->getMediaWikiConfigRouter(),
 			$this->getServiceContainer()->getUserOptionsManager(),
 			$this->getServiceContainer()->getTitleFactory(),
+			null,
 		);
 	}
 

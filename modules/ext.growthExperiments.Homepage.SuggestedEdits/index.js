@@ -9,6 +9,14 @@
 		filtersStore = rootStore.newcomerTasks.filters;
 	let suggestedEditsModule;
 
+	function sendExperimentPageVisitEvent() {
+		mw.loader.using( 'ext.testKitchen' ).then( async () => {
+			const experiment = await mw.tk.getExperiment( 'de-1-3-1-specialhomepage-onboarding-aa-test' );
+			experiment.send( 'page_visit', {}, [ 'page_namespace_id', 'page_title' ] );
+		} );
+	}
+	sendExperimentPageVisitEvent();
+
 	/**
 	 * Set up the suggested edits module within the given container.
 	 *

@@ -13,6 +13,7 @@ use MediaWiki\Config\Config;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
@@ -43,6 +44,7 @@ class WelcomeSurveyHooks implements
 		private readonly WelcomeSurveyFactory $welcomeSurveyFactory,
 		private readonly CampaignConfig $campaignConfig,
 		private readonly CampaignLoader $campaignLoader,
+		private readonly ?ExperimentManager $experimentManager,
 	) {
 	}
 
@@ -59,7 +61,8 @@ class WelcomeSurveyHooks implements
 					$this->welcomeSurveyFactory,
 					new WelcomeSurveyLogger(
 						LoggerFactory::getInstance( 'GrowthExperiments' )
-					)
+					),
+					$this->experimentManager,
 				);
 			};
 		}

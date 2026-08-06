@@ -334,6 +334,7 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 			$welcomeSurveyFactory,
 			$campaignConfig,
 			$campaignLoader,
+			null,
 		);
 	}
 }
