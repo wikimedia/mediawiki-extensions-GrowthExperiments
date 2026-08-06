@@ -218,7 +218,7 @@
 	"growthexperiments-manage-mentors-add-mentor-username": "Benotzernumm vum Mentor fir derbäizesetzen",
 	"growthexperiments-manage-mentors-add-mentor-reason": "Grond fir de Mentor derbäizesetzen",
 	"growthexperiments-manage-mentors-add-mentor-success": "{{GENDER:$1|De Benotzer|D'Benotzering}} $1 gouf als {{GENDER:$1|Mentor|Mentorin}} derbäigesat.",
-	"growthexperiments-manage-mentors-return-back": "Dir kënnt [[Special:ManageMentors|zréck]] op d'Lëscht vun de Mentore goen.",
+	"growthexperiments-manage-mentors-return-back": "Dir kënnt [[Special:ManageMentors|zeréck]] op d'Lëscht vun de Mentore goen.",
 	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "$1 als Mentor derbäisetzen",
 	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "$1 als Mentor derbäisetzen: $2",
 	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Mech selwer als Mentor derbäigesat",
