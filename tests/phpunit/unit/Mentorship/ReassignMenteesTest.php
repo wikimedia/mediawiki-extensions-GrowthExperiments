@@ -123,17 +123,6 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 		$normalMentee = new UserIdentityValue( 2, 'Normal Mentee' );
 		$mentees = [ $blockedMentee, $normalMentee ];
 
-		$menteeUser = $this->createNoOpMock( User::class, [ 'isHidden' ] );
-		$menteeUser->method( 'isHidden' )
-			->willReturn( false );
-		$userFactory = $this->createMock( UserFactory::class );
-		$userFactory->method( 'newFromUserIdentity' )
-			->willReturn( $menteeUser );
-
-		$dbw = $this->createMock( IDatabase::class );
-		$dbw->method( 'lock' )->willReturn( true );
-		$dbw->method( 'unlock' )->willReturn( true );
-
 		$msg = $this->createMock( Message::class );
 		$msg->method( 'text' )->willReturn( 'foo' );
 		$context = $this->createMock( IContextSource::class );
@@ -172,16 +161,11 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			->with( $normalMentee, $mentor )
 			->willReturn( $changeMentor );
 
-		$reassignMentees = new ReassignMentees(
-			new NullLogger(),
-			$dbw,
+		$reassignMentees = $this->newReassignMentees(
+			$mentor,
 			$mentorManager,
 			$mentorStore,
 			$changeMentorFactory,
-			$this->createNoOpMock( JobQueueGroupFactory::class ),
-			$userFactory,
-			$mentor,
-			$mentor,
 			$context
 		);
 
