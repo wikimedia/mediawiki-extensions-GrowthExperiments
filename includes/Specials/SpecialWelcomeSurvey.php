@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
@@ -9,6 +11,7 @@ use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Status\Status;
@@ -17,27 +20,21 @@ use MediaWiki\Utils\MWTimestamp;
 
 class SpecialWelcomeSurvey extends FormSpecialPage {
 
-	public const ACTION_VIEW = 'view';
-	public const ACTION_SUBMIT_ATTEMPT = 'submit_attempt';
-	public const ACTION_SAVE = 'save';
-	public const ACTION_SKIP = 'skip';
-	public const ACTION_SUBMIT_SUCCESS = 'submit_success';
-	public const ACTION_SHOW_CONFIRMATION_PAGE = 'show_confirmation_page';
+	public const string ACTION_VIEW = 'view';
+	public const string ACTION_SUBMIT_ATTEMPT = 'submit_attempt';
+	public const string ACTION_SAVE = 'save';
+	public const string ACTION_SKIP = 'skip';
+	public const string ACTION_SUBMIT_SUCCESS = 'submit_success';
+	public const string ACTION_SHOW_CONFIRMATION_PAGE = 'show_confirmation_page';
 
 	private string $groupName;
-	private SpecialPageFactory $specialPageFactory;
-	private WelcomeSurveyFactory $welcomeSurveyFactory;
-	private WelcomeSurveyLogger $welcomeSurveyLogger;
 
 	public function __construct(
-		SpecialPageFactory $specialPageFactory,
-		WelcomeSurveyFactory $welcomeSurveyFactory,
-		WelcomeSurveyLogger $welcomeSurveyLogger
+		private readonly SpecialPageFactory $specialPageFactory,
+		private readonly WelcomeSurveyFactory $welcomeSurveyFactory,
+		private readonly WelcomeSurveyLogger $welcomeSurveyLogger,
 	) {
 		parent::__construct( 'WelcomeSurvey' );
-		$this->specialPageFactory = $specialPageFactory;
-		$this->welcomeSurveyFactory = $welcomeSurveyFactory;
-		$this->welcomeSurveyLogger = $welcomeSurveyLogger;
 	}
 
 	/** @inheritDoc */
@@ -46,21 +43,21 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	}
 
 	/** @inheritDoc */
-	protected function getGroupName() {
+	protected function getGroupName(): string {
 		return 'growth-tools';
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function getDisplayFormat() {
+	protected function getDisplayFormat(): string {
 		return 'ooui';
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( $par ) {
+	public function execute( $par ): void {
 		$this->initializeWelcomeSurveyLogger();
 		if ( !$par && !$this->getRequest()->wasPosted() ) {
 			$this->welcomeSurveyLogger->logInteraction( self::ACTION_VIEW );
@@ -83,7 +80,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 *
 	 * @inheritDoc
 	 */
-	public function getDescription() {
+	public function getDescription(): Message {
 		return $this->msg( strtolower( $this->mName ) )
 			->params( $this->getUser()->getName() );
 	}
@@ -91,7 +88,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	/**
 	 * @inheritDoc
 	 */
-	public function doesWrites() {
+	public function doesWrites(): bool {
 		return true;
 	}
 
@@ -99,7 +96,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 * Handle the /skip endpoint, used to dismiss reminder notices about the survey
 	 * as a no-JS fallback to the /growthexperiments/v0/welcomesurvey/skip API.
 	 */
-	protected function processSkip() {
+	protected function processSkip(): void {
 		$output = $this->getOutput();
 
 		// Don't do writes on GET. There is no legitimate way to get here with a GET query
@@ -125,7 +122,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 * Get an HTMLForm descriptor array
 	 * @return array
 	 */
-	protected function getFormFields() {
+	protected function getFormFields(): array {
 		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $this->getContext() );
 		$this->groupName = $welcomeSurvey->getGroup( true );
 		$questions = $welcomeSurvey->getQuestions( $this->groupName );
@@ -162,7 +159,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	/**
 	 * @inheritDoc
 	 */
-	protected function alterForm( HTMLForm $form ) {
+	protected function alterForm( HTMLForm $form ): void {
 		$form->setId( 'welcome-survey-form' );
 
 		// subtitle
@@ -202,7 +199,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 * @param array $data
 	 * @return bool|string|array|Status As documented for HTMLForm::trySubmit.
 	 */
-	public function onSubmit( array $data ) {
+	public function onSubmit( array $data ): Status|bool|array|string {
 		$this->initializeWelcomeSurveyLogger();
 
 		$request = $this->getRequest();
@@ -248,7 +245,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		return true;
 	}
 
-	private function showConfirmationPage( string $to, string $query ) {
+	private function showConfirmationPage( string $to, string $query ): void {
 		$this->getOutput()->setPageTitleMsg( $this->msg( 'welcomesurvey-save-confirmation-title' ) );
 		HomepageHooks::isHomepageEnabled( $this->getUser() ) ?
 			$this->showHomepageAwareConfirmationPage( $to, $query ) :
@@ -256,7 +253,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$this->welcomeSurveyLogger->logInteraction( self::ACTION_SHOW_CONFIRMATION_PAGE );
 	}
 
-	private function showHomepageAwareConfirmationPage( string $to, string $query ) {
+	private function showHomepageAwareConfirmationPage( string $to, string $query ): void {
 		$title = Title::newFromText( $to ) ?: $this->specialPageFactory->getTitleForAlias( 'Homepage' );
 		if ( $title->isMainPage() ) {
 			$title = $this->specialPageFactory->getTitleForAlias( 'Homepage' );
@@ -273,7 +270,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		);
 	}
 
-	private function showDefaultConfirmationPage( string $to, string $query ) {
+	private function showDefaultConfirmationPage( string $to, string $query ): void {
 		$this->getOutput()->addHTML(
 			Html::rawElement(
 				'div',
@@ -300,7 +297,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 * @return string
 	 * @throws ConfigException
 	 */
-	private function getCloseButtonHtml( Title $title, $query ) {
+	private function getCloseButtonHtml( Title $title, $query ): string {
 		return $this->getConfirmationButtonsWrapper(
 			Html::linkButton(
 				$this->msg( 'welcomesurvey-close-btn', $title->getPrefixedText() )->text(),
@@ -349,7 +346,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		);
 	}
 
-	private function redirect( string $to, string $query ) {
+	private function redirect( string $to, string $query ): void {
 		$title = Title::newFromText( $to ) ?: Title::newMainPage();
 		$this->getOutput()->redirect( $title->getFullUrlForRedirect( $query ) );
 	}
@@ -409,7 +406,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	/**
 	 * Load ResourceLoader module dependencies defined by questions.
 	 */
-	private function loadDependencies( array $questions ) {
+	private function loadDependencies( array $questions ): void {
 		array_walk( $questions, function ( $question ) {
 			$this->getOutput()->addModules( $question['dependencies']['modules'] ?? '' );
 		} );

@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments;
 
 use GrowthExperiments\Campaigns\CampaignLoader;
@@ -24,7 +26,6 @@ use MediaWiki\Specials\SpecialCreateAccount;
 use MediaWiki\Specials\SpecialUserLogin;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
-use MediaWiki\User\User;
 
 class WelcomeSurveyHooks implements
 	GetPreferencesHook,
@@ -35,33 +36,22 @@ class WelcomeSurveyHooks implements
 	BeforePageDisplayHook
 {
 
-	private Config $config;
-	private TitleFactory $titleFactory;
-	private SpecialPageFactory $specialPageFactory;
-	private WelcomeSurveyFactory $welcomeSurveyFactory;
-	private CampaignConfig $campaignConfig;
-
 	public function __construct(
-		Config $config,
-		TitleFactory $titleFactory,
-		SpecialPageFactory $specialPageFactory,
-		WelcomeSurveyFactory $welcomeSurveyFactory,
-		CampaignConfig $campaignConfig,
+		private readonly Config $config,
+		private readonly TitleFactory $titleFactory,
+		private readonly SpecialPageFactory $specialPageFactory,
+		private readonly WelcomeSurveyFactory $welcomeSurveyFactory,
+		private readonly CampaignConfig $campaignConfig,
 		private readonly CampaignLoader $campaignLoader,
 	) {
-		$this->config = $config;
-		$this->titleFactory = $titleFactory;
-		$this->specialPageFactory = $specialPageFactory;
-		$this->welcomeSurveyFactory = $welcomeSurveyFactory;
-		$this->campaignConfig = $campaignConfig;
 	}
 
 	/**
 	 * Register WelcomeSurvey special page.
 	 *
-	 * @param array &$list
+	 * @inheritDoc
 	 */
-	public function onSpecialPage_initList( &$list ) {
+	public function onSpecialPage_initList( &$list ): bool {
 		if ( $this->isWelcomeSurveyEnabled() ) {
 			$list[ 'WelcomeSurvey' ] = function () {
 				return new SpecialWelcomeSurvey(
@@ -73,20 +63,21 @@ class WelcomeSurveyHooks implements
 				);
 			};
 		}
+		return true;
 	}
 
 	/**
 	 * Register preference to save the Welcome survey responses.
 	 *
-	 * @param User $user
-	 * @param array &$preferences
+	 * @inheritDoc
 	 */
-	public function onGetPreferences( $user, &$preferences ) {
+	public function onGetPreferences( $user, &$preferences ): bool {
 		if ( $this->isWelcomeSurveyEnabled() ) {
 			$preferences[WelcomeSurvey::SURVEY_PROP] = [
 				'type' => 'api',
 			];
 		}
+		return true;
 	}
 
 	private function isWelcomeSurveyEnabled(): bool {
@@ -95,9 +86,6 @@ class WelcomeSurveyHooks implements
 
 	/**
 	 * Check if a given title + query string means some kind of editor is open.
-	 * @param Title|null $title
-	 * @param array|null $query
-	 * @return bool
 	 */
 	private function isEditing( ?Title $title, ?array $query = null ): bool {
 		return $title && $title->canExist() && (
@@ -114,9 +102,8 @@ class WelcomeSurveyHooks implements
 	 * True if the user started the registration process while in the middle of editing.
 	 * @param string|null $returnTo returnto parameter. Read from URL if omitted.
 	 * @param string|string[]|null $returnToQuery returntoquery parameter. Read from URL if omitted.
-	 * @return bool
 	 */
-	private function userWasEditing( ?string $returnTo = null, $returnToQuery = null ): bool {
+	private function userWasEditing( ?string $returnTo = null, string|array|null $returnToQuery = null ): bool {
 		$context = RequestContext::getMain();
 		$returnTo ??= $context->getRequest()->getText( 'returnto' );
 		$returntoTitle = ( $returnTo !== '' ) ? $this->titleFactory->newFromText( $returnTo ) : null;
@@ -129,7 +116,7 @@ class WelcomeSurveyHooks implements
 	}
 
 	/** @inheritDoc */
-	public function onSpecialPageBeforeExecute( $special, $subPage ) {
+	public function onSpecialPageBeforeExecute( $special, $subPage ): bool {
 		$context = $special->getContext();
 		$user = $context->getUser();
 		if ( $special instanceof SpecialUserLogin && $user->isAnon() ) {
@@ -148,6 +135,7 @@ class WelcomeSurveyHooks implements
 			$context->getOutput()->addModules( 'ext.growthExperiments.MidEditSignup' );
 			$context->getOutput()->addJsConfigVars( 'wgGEMidEditSignup', true );
 		}
+		return true;
 	}
 
 	/** @inheritDoc */
@@ -172,18 +160,19 @@ class WelcomeSurveyHooks implements
 	}
 
 	/** @inheritDoc */
-	public function onLocalUserCreated( $user, $autocreated ) {
+	public function onLocalUserCreated( $user, $autocreated ): bool {
 		if ( $user->isTemp() ) {
-			return;
+			return true;
 		}
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $user );
 		if ( $autocreated || !$this->shouldShowWelcomeSurvey( $context ) ) {
-			return;
+			return true;
 		}
 		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $context );
 		$group = $welcomeSurvey->getGroup();
 		$welcomeSurvey->saveGroup( $group );
+		return true;
 	}
 
 	private function addAccountJustCreatedToQuery( string $query ): string {
@@ -253,14 +242,14 @@ class WelcomeSurveyHooks implements
 	}
 
 	/** @inheritDoc */
-	public function onPostLoginRedirect( &$returnTo, &$returnToQuery, &$type ) {
+	public function onPostLoginRedirect( &$returnTo, &$returnToQuery, &$type ): bool {
 		$context = RequestContext::getMain();
 		if ( $type !== 'signup'
 			 // handled by onCentralAuthPostLoginRedirect
 			|| ExtensionRegistry::getInstance()->isLoaded( 'CentralAuth' )
 			|| !$this->shouldShowWelcomeSurvey( $context )
 		) {
-			return;
+			return true;
 		}
 
 		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $context );
@@ -268,7 +257,7 @@ class WelcomeSurveyHooks implements
 		$welcomeSurvey->saveGroup( $group );
 
 		if ( $this->userWasEditing( $returnTo, $returnToQuery ) ) {
-			return;
+			return true;
 		}
 
 		$oldReturnTo = $returnTo;
