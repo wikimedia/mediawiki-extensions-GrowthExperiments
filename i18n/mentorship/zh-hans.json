@@ -13,6 +13,7 @@
 			"Lantianjialiang",
 			"Peterxy",
 			"Peterxy12",
+			"Quaff5353",
 			"Stang",
 			"Stevenliuyi",
 			"SunAfterRain",
@@ -26,7 +27,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "用户未接受指导",
-	"growthexperiments-exception-no-mentored-text": "用户没有导师，这代表他们无法向导师提问",
+	"growthexperiments-exception-no-mentored-text": "用户没有导师，这意味着{{GENDER:$1|he|she|they}}无法向{{GENDER:$1|his|her|their}}的导师提问",
 	"growthexperiments-mentor-dashboard-title": "导师面板",
 	"growthexperiments-mentor-dashboard-pt-link": "导师面板",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "{{GENDER:|您}}必须先[[$1|登记成为一名导师]]才能启用导师面板。",

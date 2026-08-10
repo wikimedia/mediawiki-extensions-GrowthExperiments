@@ -316,6 +316,7 @@
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|Theema|Theemen}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Alles uwielen",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "All ewechhuelen",
+	"growthexperiments-interest-selector-no-results-found": "Keng Resultater fonnt.",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Wielt e puer Theemen aus, fir déi {{GENDER:$1|Dir}} gären Ännerunge maache géift",
 	"growthexperiments-homepage-claimmentee-title": "Mentoréierten iwwerhuelen",
 	"growthexperiments-homepage-claimmentee-pretext": "Dës Säit erméiglecht {{GENDER:$1|Iech}} de Mentor vun engem Mentoréierten op {{GENDER:$1|Iech}} selwer z'änneren. Et gëtt recommandéiert vun dëser Funktioun bei Benotzer Gebrauch ze maachen, déi {{GENDER:$1|Dir}} kënnt oder déi {{GENDER:$1|Dir}} am Kader vun engem Cours mentoréiert.",
