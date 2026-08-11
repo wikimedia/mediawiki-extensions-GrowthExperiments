@@ -7,9 +7,10 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\Registration\UserRegistrationLookup;
-use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
+use Psr\Log\LoggerInterface;
 use Wikimedia\Timestamp\TimestampFormat;
 
 // @codeCoverageIgnoreStart
@@ -23,10 +24,10 @@ require_once "$IP/maintenance/Maintenance.php";
 class UpdateIsActiveFlagForMentees extends Maintenance {
 
 	private UserIdentityLookup $userIdentityLookup;
-	private UserEditTracker $userEditTracker;
 	private UserRegistrationLookup $userRegistrationLookup;
 	private GrowthConnectionProvider $growthConnectionProvider;
 	private MentorStore $mentorStore;
+	private LoggerInterface $logger;
 
 	public function __construct() {
 		parent::__construct();
@@ -48,9 +49,31 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 
 		$this->userIdentityLookup = $services->getUserIdentityLookup();
 		$this->userRegistrationLookup = $services->getUserRegistrationLookup();
-		$this->userEditTracker = $services->getUserEditTracker();
 		$this->growthConnectionProvider = $geServices->getGrowthConnectionProvider();
 		$this->mentorStore = $geServices->getMentorStore();
+		$this->logger = $geServices->getLogger();
+	}
+
+	/**
+	 * @param int[] $userIds
+	 * @return array<int, string> Timestamps keyed by user ID
+	 */
+	private function getLastEditsBatched( array $userIds ): array {
+		// TODO: This should be upstreamed, ideally...
+		$result = $this->getReplicaDB()->newSelectQueryBuilder()
+			->select( [ 'actor_user', 'last_edit' => 'MAX(rev_timestamp)' ] )
+			->from( 'revision' )
+			->join( 'actor', conds: [ 'actor_id=rev_actor' ] )
+			->where( [ 'actor_user' => $userIds ] )
+			->groupBy( 'actor_user' )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+
+		$output = [];
+		foreach ( $result as $row ) {
+			$output[$row->actor_user] = $row->last_edit;
+		}
+		return $output;
 	}
 
 	/**
@@ -69,26 +92,22 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 			] )
 			->caller( __METHOD__ )
 			->fetchFieldValues();
+		$menteeIds = array_map( 'intval', $menteeIds );
 
 		foreach ( $this->newBatchIterator( $menteeIds ) as $menteeBatch ) {
-			$this->beginTransactionRound( __METHOD__ );
-			foreach ( $menteeBatch as $menteeId ) {
-				$menteeUser = $this->userIdentityLookup->getUserIdentityByUserId( $menteeId );
-				if ( !$menteeUser ) {
-					$this->output(
-						"Deleting mentor/mentee relationship for $menteeId, user identity not found.\n"
-					);
-					$this->mentorStore->dropMenteeRelationship(
-						// user does not exist; MentorStore only makes use of the user ID,
-						// so construct UserIdentity manually for easier deletion.
-						new UserIdentityValue( $menteeId, 'Mentee' )
-					);
-					continue;
-				}
+			// Convert iterator to array, as we need to traverse it multiple times, which would
+			// not work otherwise.
+			$menteeUsers = iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
+				->whereUserIds( $menteeBatch )
+				->fetchUserIdentities() );
+			$latestEdits = $this->getLastEditsBatched( $menteeBatch );
+			$registrations = $this->userRegistrationLookup->getRegistrationBatch( $menteeUsers );
 
-				$lastActivityTimestamp = $this->userEditTracker->getLatestEditTimestamp( $menteeUser );
-				if ( $lastActivityTimestamp === false ) {
-					$lastActivityTimestamp = $this->userRegistrationLookup->getRegistration( $menteeUser );
+			$this->beginTransactionRound( __METHOD__ );
+			foreach ( $menteeUsers as $menteeUser ) {
+				$lastActivityTimestamp = $latestEdits[$menteeUser->getId()] ?? null;
+				if ( $lastActivityTimestamp === null ) {
+					$lastActivityTimestamp = $registrations[$menteeUser->getId()] ?? null;
 				}
 
 				$timeDelta = (int)wfTimestamp() - (int)wfTimestamp(
@@ -102,6 +121,25 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 				) {
 					$this->mentorStore->markMenteeAsInactive( $menteeUser );
 				}
+			}
+
+			$idsToDrop = array_diff(
+				$menteeBatch,
+				array_map( static fn ( UserIdentity $user ) => $user->getId(), $menteeUsers )
+			);
+			foreach ( $idsToDrop as $idToDrop ) {
+				$this->output(
+					"Deleting mentor/mentee relationship for $idToDrop, user identity not found.\n"
+				);
+				$this->logger->warning(
+					__CLASS__ . ' encountered an invalid row in growthexperiments_mentor_mentee',
+					[ 'menteeId' => $idToDrop ],
+				);
+				$this->mentorStore->dropMenteeRelationship(
+					// user does not exist; MentorStore only makes use of the user ID,
+					// so construct UserIdentity manually for easier deletion.
+					new UserIdentityValue( $idToDrop, 'Mentee' )
+				);
 			}
 			$this->commitTransactionRound( __METHOD__ );
 		}

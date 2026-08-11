@@ -6,9 +6,11 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Maintenance\UpdateIsActiveFlagForMentees;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Tests\Helpers\CreateMenteeHelpers;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
+use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -62,6 +64,10 @@ class UpdateIsActiveFlagForMenteesTest extends MaintenanceBaseTestCase {
 			'no registration'
 		);
 
+		// ID high enough to not exist naturally in tests
+		$invalidMentee = new UserIdentityValue( 123_321, 'Mentee' );
+		$mentorStore->setMentorForUser( $invalidMentee, $mentor, MentorStore::ROLE_PRIMARY );
+
 		// Run event ingresses queued by the edits (PageLatestRevisionChangedIngress calls
 		// markMenteeAsActive) now, so they cannot fire during the maintenance script's
 		// transaction rounds and re-activate a mentee the script marked as inactive
@@ -112,6 +118,10 @@ class UpdateIsActiveFlagForMenteesTest extends MaintenanceBaseTestCase {
 		$this->assertFalse(
 			$mentorStore->isMenteeActive( $menteeWithoutRegistration ),
 			'Mentee with no edits and no known registration should be marked as inactive'
+		);
+		$this->assertNull(
+			$mentorStore->isMenteeActive( $invalidMentee ),
+			'Invalid mentee should be dropped by updateIsActiveFlagForMentees'
 		);
 	}
 }
