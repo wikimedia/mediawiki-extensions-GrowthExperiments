@@ -123,6 +123,10 @@ class UpdateIsActiveFlagForMentees extends Maintenance {
 				}
 			}
 
+			// Drop rows for non-existing users
+			// This is here, because growthexperiments_mentor_mentee writes and main DB writes
+			// are on different DB servers, and multi-DB transactions do not exist. More detailed
+			// explanation is at T323128 and T434522.
 			$idsToDrop = array_diff(
 				$menteeBatch,
 				array_map( static fn ( UserIdentity $user ) => $user->getId(), $menteeUsers )
