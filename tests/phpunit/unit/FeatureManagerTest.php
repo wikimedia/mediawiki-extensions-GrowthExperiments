@@ -5,15 +5,8 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\FeatureManager;
-use GrowthExperiments\IExperimentManager;
-use GrowthExperiments\StaticExperimentManager;
 use MediaWiki\Config\HashConfig;
-use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\Request\WebRequest;
-use MediaWiki\Skin\Skin;
-use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 
 /**
@@ -21,226 +14,129 @@ use MediaWikiUnitTestCase;
  */
 class FeatureManagerTest extends MediaWikiUnitTestCase {
 
-	public static function provideCreateAccountV2Scenarios(): iterable {
-		yield 'anon, mobile, not treatment group' => [
-			'anon',
-			static fn () => SkinMinerva::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => null,
-				],
+	/**
+	 * @dataProvider provideIsLinkRecommendationsAvailable
+	 */
+	public function testIsLinkRecommendationsAvailable(
+		array $registeredExtensions,
+		bool $suggestedEditsEnabled,
+		bool $linkRecommendationsEnabled,
+		bool $expected
+	): void {
+		$featureManager = $this->getFeatureManager( [
+			'registeredExtensions' => $registeredExtensions,
+			'config' => [
+				'GEHomepageSuggestedEditsEnabled' => $suggestedEditsEnabled,
+				'GENewcomerTasksLinkRecommendationsEnabled' => $linkRecommendationsEnabled,
 			],
-			null,
+		] );
+
+		$this->assertSame( $expected, $featureManager->isLinkRecommendationsAvailable() );
+	}
+
+	public static function provideIsLinkRecommendationsAvailable(): iterable {
+		$allExtensionsLoaded = [ 'WikimediaMessages', 'VisualEditor', 'CirrusSearch' ];
+
+		yield 'All dependencies satisfied, link recommendations should be available' => [
+			$allExtensionsLoaded,
+			true,
+			true,
+			true,
+		];
+		yield 'WikimediaMessages not loaded, link recommendations should not be available' => [
+			[ 'VisualEditor', 'CirrusSearch' ],
+			true,
+			true,
 			false,
 		];
+		yield 'VisualEditor not loaded, link recommendations should not be available' => [
+			[ 'WikimediaMessages', 'CirrusSearch' ],
+			true,
+			true,
+			false,
+		];
+		yield 'CirrusSearch not loaded, link recommendations should not be available' => [
+			[ 'WikimediaMessages', 'VisualEditor' ],
+			true,
+			true,
+			false,
+		];
+		yield 'GEHomepageSuggestedEditsEnabled is false, link recommendations should not be available' => [
+			$allExtensionsLoaded,
+			false,
+			true,
+			false,
+		];
+		yield 'GENewcomerTasksLinkRecommendationsEnabled is false, link recommendations should not be available' => [
+			$allExtensionsLoaded,
+			true,
+			false,
+			false,
+		];
+	}
 
-		yield 'anon, mobile, in treatment group' => [
-			'anon',
-			static fn () => SkinMinerva::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
-				],
-			],
-			null,
+	public static function provideAreImageRecommendationDependenciesSatisfied(): iterable {
+		$allExtensionsLoaded = [ 'WikimediaMessages', 'VisualEditor', 'CirrusSearch' ];
+
+		yield 'all dependencies satisfied' => [
+			$allExtensionsLoaded,
+			true,
 			true,
 		];
 
-		yield 'anon, mobile, in treatment group via request' => [
-			'anon',
-			static fn () => SkinMinerva::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => null,
-				],
-			],
-			[ IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 . ':' . IExperimentManager::VARIANT_TREATMENT ],
+		yield 'WikimediaMessages not loaded' => [
+			[ 'VisualEditor', 'CirrusSearch' ],
 			true,
-		];
-
-		yield 'not anon, mobile, in treatment group' => [
-			'logged-in',
-			static fn () => SkinMinerva::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
-				],
-			],
-			null,
 			false,
 		];
 
-		yield 'anon, not mobile, in treatment group' => [
-			'anon',
-			static fn () => Skin::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
-				],
-			],
-			null,
+		yield 'VisualEditor not loaded' => [
+			[ 'WikimediaMessages', 'CirrusSearch' ],
+			true,
 			false,
 		];
 
-		yield 'anon, mobile, in treatment group, not enwiki' => [
-			'anon',
-			static fn () => SkinMinerva::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::ACCOUNT_CREATION_FORM_EXPERIMENT_V2 => IExperimentManager::VARIANT_TREATMENT,
-				],
-				'config' => [
-					'DBname' => 'dewiki',
-				],
-			],
-			null,
+		yield 'CirrusSearch not loaded' => [
+			[ 'WikimediaMessages', 'VisualEditor' ],
+			true,
+			false,
+		];
+
+		yield 'GEHomepageSuggestedEditsEnabled disabled' => [
+			$allExtensionsLoaded,
+			false,
 			false,
 		];
 	}
 
 	/**
-	 * @dataProvider provideCreateAccountV2Scenarios
+	 * @dataProvider provideAreImageRecommendationDependenciesSatisfied
 	 */
-	public function testShouldShowCreateAccountV2(
-		string $userType,
-		\Closure $getSkinClass,
-		array $overrides,
-		?array $requestOverride,
-		bool $expectedResult
+	public function testAreImageRecommendationDependenciesSatisfied(
+		array $registeredExtensions,
+		bool $suggestedEditsEnabled,
+		bool $expected
 	): void {
-		if ( !class_exists( SkinMinerva::class ) ) {
-			$this->markTestSKipped( 'Minerva is not available' );
-		}
-
-		if ( $userType === 'logged-in' ) {
-			$user = $this->createMock( User::class );
-			$user->method( 'isAnon' )->willReturn( false );
-		} else {
-			$user = $this->createMock( User::class );
-			$user->method( 'isAnon' )->willReturn( true );
-		}
-
-		/** @var Skin $skin */
-		$skin = $this->createMock( $getSkinClass() );
-		$request = $this->createMock( WebRequest::class );
-		$request->method( 'getArray' )
-			->with( 'experiments' )
-			->willReturn( $requestOverride ?? [] );
-
-		$sut = $this->getFeatureManager( $overrides );
-		$actualResult = $sut->shouldShowCreateAccountV2( $user, $skin, $request );
-		$this->assertSame( $expectedResult, $actualResult );
+		$sut = $this->getFeatureManager( [
+			'registeredExtensions' => $registeredExtensions,
+			'config' => [ 'GEHomepageSuggestedEditsEnabled' => $suggestedEditsEnabled ],
+		] );
+		$this->assertSame( $expected, $sut->areImageRecommendationDependenciesSatisfied() );
 	}
 
-	public static function provideNoDesktopBenefitsScenarios(): iterable {
-		yield 'anon, not mobile, in treatment group' => [
-			'anon',
-			static fn () => Skin::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => IExperimentManager::VARIANT_TREATMENT,
-				],
-			],
-			null,
-			true,
-		];
-
-		yield 'anon, mobile, not treatment group' => [
-			'anon',
-			static fn () => SkinMinerva::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => null,
-				],
-			],
-			null,
-			false,
-		];
-
-		yield 'anon, mobile, in treatment group' => [
-			'anon',
-			static fn () => SkinMinerva::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => IExperimentManager::VARIANT_TREATMENT,
-				],
-			],
-			null,
-			false,
-		];
-
-		yield 'anon, mobile, in treatment group via request' => [
-			'anon',
-			static fn () => SkinMinerva::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => null,
-				],
-			],
-			[ IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP . ':' . IExperimentManager::VARIANT_TREATMENT ],
-			false,
-		];
-
-		yield 'not anon, not mobile, in treatment group' => [
-			'logged-in',
-			static fn () => Skin::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => IExperimentManager::VARIANT_TREATMENT,
-				],
-			],
-			null,
-			false,
-		];
-
-		yield 'anon, not mobile, in treatment group, not enwiki' => [
-			'anon',
-			static fn () => Skin::class,
-			[
-				'defaultVariant' => [
-					IExperimentManager::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP => IExperimentManager::VARIANT_TREATMENT,
-				],
-				'config' => [
-					'DBname' => 'dewiki',
-				],
-			],
-			null,
-			false,
-		];
+	public static function provideAreLinkRecommendationsEnabled(): iterable {
+		yield 'enabled' => [ true, true ];
+		yield 'disabled' => [ false, false ];
 	}
 
 	/**
-	 * @dataProvider provideNoDesktopBenefitsScenarios
+	 * @dataProvider provideAreLinkRecommendationsEnabled
 	 */
-	public function testShouldShowNoDesktopBenefits(
-		string $userType,
-		\Closure $getSkinClass,
-		array $overrides,
-		?array $requestOverride,
-		bool $expectedResult
-	): void {
-		if ( !class_exists( SkinMinerva::class ) ) {
-			$this->markTestSKipped( 'Minerva is not available' );
-		}
-
-		if ( $userType === 'logged-in' ) {
-			$user = $this->createMock( User::class );
-			$user->method( 'isAnon' )->willReturn( false );
-		} else {
-			$user = $this->createMock( User::class );
-			$user->method( 'isAnon' )->willReturn( true );
-		}
-
-		/** @var Skin $skin */
-		$skin = $this->createMock( $getSkinClass() );
-		$request = $this->createMock( WebRequest::class );
-		$request->method( 'getArray' )
-			->with( 'experiments' )
-			->willReturn( $requestOverride ?? [] );
-
-		$sut = $this->getFeatureManager( $overrides );
-		$actualResult = $sut->shouldShowCreateAccountNoBenefitsTreatment( $user, $skin, $request );
-		$this->assertSame( $expectedResult, $actualResult );
+	public function testAreLinkRecommendationsEnabled( bool $configValue, bool $expected ): void {
+		$sut = $this->getFeatureManager( [
+			'config' => [ 'GENewcomerTasksLinkRecommendationsEnabled' => $configValue ],
+		] );
+		$this->assertSame( $expected, $sut->areLinkRecommendationsEnabled() );
 	}
 
 	/**
@@ -265,10 +161,6 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			'GEHomepageSuggestedEditsEnabled' => true,
 			'DBname' => 'enwiki',
 		], $overrides['config'] ?? [] ) );
-		$sut = new FeatureManager( $extensionRegistryMock, $config );
-		$sut->setExperimentManager( new StaticExperimentManager( new ServiceOptions( [ 'GEHomepageDefaultVariant' ], [
-			'GEHomepageDefaultVariant' => $overrides['defaultVariant'] ?? 'control',
-		] ) ) );
-		return $sut;
+		return new FeatureManager( $extensionRegistryMock, $config );
 	}
 }

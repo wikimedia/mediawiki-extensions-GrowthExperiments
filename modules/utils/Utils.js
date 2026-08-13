@@ -78,40 +78,6 @@
 	}
 
 	/**
-	 * Get the variant the user is assigned to, for A/B testing and gradual rollouts.
-	 *
-	 * @param {string} experimentName
-	 * @return {string|null}
-	 */
-	function getUserVariant( experimentName ) {
-		let assignedGroup = null;
-
-		// Try TestKitchen variant retrieval
-		if ( mw && mw.testKitchen ) {
-			const exp = mw.testKitchen.compat.getExperiment( experimentName );
-			return exp.getAssignedGroup();
-		}
-		// Try GrowthExperiments static variant retrieval
-		const defaultVariantConfig = mw.config.get( 'wgGEDefaultUserVariant' );
-		if ( defaultVariantConfig ) {
-			if ( typeof defaultVariantConfig === 'string' ) {
-				assignedGroup = defaultVariantConfig;
-			}
-			if ( Array.isArray( defaultVariantConfig ) ) {
-				assignedGroup = defaultVariantConfig[ experimentName ] || null;
-			}
-		}
-		// Mimic mpo behavior from TestKitchen, used for testing in environments without TK
-		const urlOverrideQuery = new URLSearchParams( window.location.search ).get( 'mpo' );
-		const [ overrideExperiment, overrideGroup ] = urlOverrideQuery ? urlOverrideQuery.split( ':' ) : [ null, null ];
-		if ( overrideExperiment === experimentName ) {
-			assignedGroup = overrideGroup;
-		}
-
-		return assignedGroup;
-	}
-
-	/**
 	 * Format title to be used in URLs
 	 *
 	 * @param {string} title
@@ -195,7 +161,6 @@
 		serializeActionData: serializeActionData,
 		removeQueryParam: removeQueryParam,
 		isValidEditor: isValidEditor,
-		getUserVariant: getUserVariant,
 		formatTitle: formatTitle,
 		getSuggestedEditsFeedUrl: getSuggestedEditsFeedUrl,
 		getIntlLocale: getIntlLocale,

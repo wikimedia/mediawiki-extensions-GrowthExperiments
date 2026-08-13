@@ -1,29 +1,16 @@
 <?php
+
+declare( strict_types = 1 );
+
 namespace GrowthExperiments;
 
 /**
- * An implementation of IExperimentManager should be capable of returning a variant
- * for a given experiment if the user is sampled in the experiment.
+ * This interface holds constants for experiments that we may wish to use across our code-base instead of magic strings.
+ * This interface is not intended to be implemented.
  */
 interface IExperimentManager {
 
-	public const VARIANT_CONTROL = 'control';
-	public const VARIANT_TREATMENT = 'treatment';
-	public const ACCOUNT_CREATION_FORM_EXPERIMENT_V1 = 'we-1-8-account-creation-form-v1';
-	public const ACCOUNT_CREATION_FORM_EXPERIMENT_V2 = 'we-1-8-account-creation-form-v2';
-	public const CREATE_ACCOUNT_NO_BENEFITS_DESKTOP = 'we-1-8-account-creation-no-desktop-benefits';
+	public const string VARIANT_CONTROL = 'control';
+	public const string VARIANT_TREATMENT = 'treatment';
 
-	// TODO: valid experiments and variants should/could be read from config
-	public const EXPERIMENTS = [
-		self::ACCOUNT_CREATION_FORM_EXPERIMENT_V1,
-		self::ACCOUNT_CREATION_FORM_EXPERIMENT_V2,
-		self::CREATE_ACCOUNT_NO_BENEFITS_DESKTOP,
-	];
-
-	/**
-	 * Return the group assigned to a user for a given experiment
-	 * @param string $experimentName
-	 * @return string|null
-	 */
-	public function getAssignedGroup( string $experimentName ): ?string;
 }

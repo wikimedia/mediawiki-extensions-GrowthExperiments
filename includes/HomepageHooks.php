@@ -145,7 +145,6 @@ class HomepageHooks implements
 		FormatterFactory $formatterFactory,
 		private ConfigurationLoader $configurationLoader,
 		private CampaignConfig $campaignConfig,
-		private IExperimentManager $experimentManager,
 		private TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		private TaskSuggesterFactory $taskSuggesterFactory,
 		private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,

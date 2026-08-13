@@ -5,7 +5,6 @@ use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
-use GrowthExperiments\ExperimentTestKitchenManager;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -14,7 +13,6 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
-use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
@@ -105,7 +103,6 @@ use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
-use GrowthExperiments\StaticExperimentManager;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
@@ -247,32 +244,14 @@ return [
 		);
 	},
 
-	'GrowthExperimentsExperimentUserManager' => static function (
-		MediaWikiServices $services
-	): IExperimentManager {
-		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$manager = new FeatureManager( $services->getExtensionRegistry(), $growthServices->getGrowthConfig() );
-		if ( $manager->useTestKitchen() ) {
-			return new ExperimentTestKitchenManager( $services->getService( 'TestKitchen.ExperimentManager' ) );
-		}
-		return new StaticExperimentManager(
-			new ServiceOptions(
-				StaticExperimentManager::CONSTRUCTOR_OPTIONS,
-				$services->getMainConfig()
-			),
-		);
-	},
-
 	'GrowthExperimentsFeatureManager' => static function (
 		MediaWikiServices $services
 	): FeatureManager {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$manager = new FeatureManager(
+		return new FeatureManager(
 			$services->getExtensionRegistry(),
 			$growthServices->getGrowthConfig(),
 		);
-		$manager->setExperimentManager( $growthServices->getExperimentUserManager() );
-		return $manager;
 	},
 
 	'GrowthExperimentsHelpPanel' => static function (

@@ -325,7 +325,6 @@
 				"FormatterFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsCampaignConfig",
-				"GrowthExperimentsExperimentUserManager",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
@@ -419,7 +418,6 @@
 				"GrowthExperimentsCampaignConfig",
 				"MainConfig",
 				"SpecialPageFactory",
-				"GrowthExperimentsExperimentUserManager",
 				"GrowthExperimentsCampaignLoader",
 				"StatsFactory"
 			]
@@ -538,7 +536,6 @@
 			"mentoruseroptions",
 			"variant"
 		],
-		"ResourceLoaderGetConfigVars": "variant",
 		"ResourceLoaderRegisterModules": "tour",
 		"SpecialContributionsBeforeMainOutput": "homepage",
 		"SidebarBeforeOutput": "homepage",
@@ -2626,10 +2623,6 @@
 		"WelcomeSurveyReminderExpiry": {
 			"description": "Number of days a reminder on Special:Homepage should be shown for if the user has not filled out the welcome survey yet. Set to 0 to disable the reminder.",
 			"value": 30
-		},
-		"GEHomepageDefaultVariant": {
-			"description": "Experiment variant to use for users on sites where TestKitchen is not available (non-WMF). Valid values: virtually anything, there's no validation, in practice this should be a string representing a valid variant name for the current experiment.",
-			"value": "control"
 		},
 		"GEMentorshipNewAccountEnablePercentage": {
 			"description": "Percentage of new homepage-enabled users who will receive the mentorship module.",

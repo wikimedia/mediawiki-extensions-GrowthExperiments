@@ -118,10 +118,6 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsConnectionProvider' );
 	}
 
-	public function getExperimentUserManager(): IExperimentManager {
-		return $this->coreServices->get( 'GrowthExperimentsExperimentUserManager' );
-	}
-
 	public function getGrowthExperimentsInteractionLogger(): GrowthExperimentsInteractionLogger {
 		return $this->coreServices->get( 'GrowthExperimentsInteractionLogger' );
 	}

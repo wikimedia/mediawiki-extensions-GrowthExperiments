@@ -13,7 +13,6 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
-use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\Skin\Hook\SkinAddFooterLinksHook;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
@@ -32,7 +31,6 @@ class VariantHooks implements
 	LocalUserCreatedHook,
 	PostLoginRedirectHook,
 	ResourceLoaderExcludeUserOptionsHook,
-	ResourceLoaderGetConfigVarsHook,
 	SkinAddFooterLinksHook
 {
 
@@ -44,7 +42,6 @@ class VariantHooks implements
 		private readonly CampaignConfig $campaignConfig,
 		private readonly Config $mainConfig,
 		private readonly SpecialPageFactory $specialPageFactory,
-		private readonly IExperimentManager $experimentManager,
 		private readonly CampaignLoader $campaignLoader,
 		private readonly StatsFactory $statsFactory,
 	) {
@@ -65,13 +62,6 @@ class VariantHooks implements
 		$keysToExclude = array_merge( $keysToExclude, [
 			self::GROWTH_CAMPAIGN,
 		] );
-	}
-
-	/** @inheritDoc */
-	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		if ( $this->experimentManager instanceof StaticExperimentManager ) {
-			$vars['wgGEDefaultUserVariant'] = $config->get( 'GEHomepageDefaultVariant' );
-		}
 	}
 
 	/**

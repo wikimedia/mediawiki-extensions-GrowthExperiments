@@ -4,12 +4,9 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
-use GrowthExperiments\StaticExperimentManager;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\HashConfig;
-use MediaWiki\Config\ServiceOptions;
 use MediaWiki\ResourceLoader as RL;
-use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
@@ -57,21 +54,6 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::onResourceLoaderGetConfigVars
-	 */
-	public function testOnResourceLoaderGetConfigVars() {
-		$vars = [];
-		$this->getVariantHooksMock()->onResourceLoaderGetConfigVars(
-			$vars,
-			$this->createNoOpMock( Skin::class ),
-			new HashConfig( [ 'GEHomepageDefaultVariant' => 'control' ] )
-		);
-		$this->assertArrayEquals( [
-			'wgGEDefaultUserVariant' => 'control',
-		], $vars );
-	}
-
-	/**
 	 * @covers ::onLocalUserCreated
 	 */
 	public function testOnLocalUserCreated() {
@@ -87,12 +69,6 @@ class VariantHooksTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( CampaignConfig::class ),
 			new HashConfig( [] ),
 			$this->createNoOpMock( SpecialPageFactory::class ),
-			new StaticExperimentManager( new ServiceOptions(
-				StaticExperimentManager::CONSTRUCTOR_OPTIONS,
-				new HashConfig( [
-					'GEHomepageDefaultVariant' => 'control',
-				] ),
-			) ),
 			$this->createNoOpMock( CampaignLoader::class ),
 			StatsFactory::newNull()
 		);

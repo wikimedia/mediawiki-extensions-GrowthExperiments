@@ -17,7 +17,7 @@ describe( 'Revise Tone', () => {
 	describe( 'On desktop', () => {
 
 		it( 'Shows the Revise Tone Edit Check', () => {
-			cy.visit( 'index.php?title=Special:Homepage&mpo=growthexperiments-revise-tone:treatment' );
+			cy.visit( 'index.php?title=Special:Homepage' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
 			homepage.suggestedEditsCardLink.click();
@@ -31,7 +31,7 @@ describe( 'Revise Tone', () => {
 
 		// Flaky: T407152 - The Edit Check disappears after selecting the first item in the survey?
 		it.skip( 'Closes the Editor when declining Edits and suggests a new task', () => {
-			cy.visit( 'index.php?title=Special:Homepage&mpo=growthexperiments-revise-tone:treatment' );
+			cy.visit( 'index.php?title=Special:Homepage' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
 			homepage.suggestedEditsCardLink.click();
@@ -46,7 +46,7 @@ describe( 'Revise Tone', () => {
 
 		// Flaky: T407152 - The save button is not clickable after editing the suggested pragraph?
 		it.skip( 'Shows the Revise Tone Edit Check and tags edits', () => {
-			cy.visit( 'index.php?title=Special:Homepage&mpo=growthexperiments-revise-tone:treatment' );
+			cy.visit( 'index.php?title=Special:Homepage' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
 			homepage.suggestedEditsCardLink.click();
@@ -81,7 +81,7 @@ describe( 'Revise Tone', () => {
 		// Flaky: T422469 - fails to find .ve-ui-editCheck-gutter-action-warning despite it being visible?
 		it.skip( 'Shows the Revise Tone Edit Check', () => {
 			cy.viewport( 360, 780 );
-			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile&mpo=growthexperiments-revise-tone:treatment' );
+			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
 			homepage.suggestedEditsNextButton.click();
@@ -106,7 +106,7 @@ describe( 'Revise Tone', () => {
 
 		// Flaky: T407152 - The Edit Check disappears after selecting the first item in the survey?
 		it.skip( 'Closes the Editor when declining Edits and suggests a new task', () => {
-			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile&mpo=growthexperiments-revise-tone:treatment' );
+			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
 			homepage.suggestedEditsNextButton.click();
@@ -132,7 +132,7 @@ describe( 'Revise Tone', () => {
 
 		// Flaky: T407152
 		it.skip( 'Shows the Revise Tone Edit Check and tags edits', () => {
-			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile&mpo=growthexperiments-revise-tone:treatment' );
+			cy.visit( 'index.php?title=Special:Homepage/suggested-edits&mobileaction=toggle_view_mobile' );
 			homepage.suggestedEditsCardTitle.should( 'have.text', 'Kristallsee' );
 			homepage.suggestedEditsCardLink.should( 'not.have.attr', 'href', '#' );
 			homepage.suggestedEditsNextButton.click();

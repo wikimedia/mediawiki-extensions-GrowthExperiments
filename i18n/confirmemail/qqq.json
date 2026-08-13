@@ -9,7 +9,5 @@
 			"Xiplus"
 		]
 	},
-	"growthexperiments-createacct-username-description": "Description for the username field on the create account form.",
-	"growthexperiments-createacct-username-learn-more": "link-text for a link to learn more about username policies of a wiki. Will be shown next to {{msg-mw|growthexperiments-createacct-username-description}}",
 	"growthexperiments-campaigns-footer": "Legal notice shown for custom campaign signup pages."
 }

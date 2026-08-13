@@ -110,7 +110,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			$services->getFormatterFactory(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getGrowthExperimentsCampaignConfig(),
-			$growthServices->getExperimentUserManager(),
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
