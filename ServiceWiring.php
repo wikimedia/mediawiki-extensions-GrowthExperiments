@@ -3,7 +3,6 @@
 use CirrusSearch\CirrusSearchServices;
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
-use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthConnectionProvider;
@@ -378,12 +377,6 @@ return [
 			$services->getConnectionProvider(),
 			$services->getUserOptionsLookup()
 		);
-	},
-
-	'GrowthExperimentsInteractionLogger' => static function (
-		MediaWikiServices $services
-	): GrowthExperimentsInteractionLogger {
-		return new GrowthExperimentsInteractionLogger();
 	},
 
 	'GrowthExperimentsLastActionTimestampLookup' => static function (

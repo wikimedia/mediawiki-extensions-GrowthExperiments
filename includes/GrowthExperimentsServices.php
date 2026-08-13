@@ -3,7 +3,6 @@
 namespace GrowthExperiments;
 
 use GrowthExperiments\Campaigns\CampaignLoader;
-use GrowthExperiments\EventLogging\GrowthExperimentsInteractionLogger;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
@@ -116,10 +115,6 @@ class GrowthExperimentsServices {
 
 	public function getGrowthConnectionProvider(): GrowthConnectionProvider {
 		return $this->coreServices->get( 'GrowthExperimentsConnectionProvider' );
-	}
-
-	public function getGrowthExperimentsInteractionLogger(): GrowthExperimentsInteractionLogger {
-		return $this->coreServices->get( 'GrowthExperimentsInteractionLogger' );
 	}
 
 	public function getHelpPanel(): HelpPanel {
