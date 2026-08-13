@@ -46,7 +46,8 @@ class MentorListConfigProvider extends DataProvider {
 	public function alwaysStoreValidConfiguration(
 		$newConfig,
 		Authority $authority,
-		string $summary = ''
+		string $summary = '',
+		?string $version = null,
 	): StatusValue {
 		// needed, as CommunityConfiguration expects an object
 		// REVIEW: Do we want to keep this? See T369608.
