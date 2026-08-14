@@ -15,10 +15,5 @@
 	},
 	"growthexperiments-createacct-username-description": "您的用户名是公开的，且无法在之后设置为私密。",
 	"growthexperiments-createacct-username-learn-more": "了解更多",
-	"growthexperiments-signupcampaign-title": "感谢捐款！现在就加入编辑者群体来让维基百科更完善吧",
-	"growthexperiments-signupcampaign-body": "编辑维基百科可以简单到只是添加链接或更改字词。您创建账号后可获取{{GENDER:|您}}感兴趣的主题的条目推荐！",
-	"growthexperiments-signupcampaign-bullet1": "{{GENDER:|您}}感兴趣的推荐条目",
-	"growthexperiments-signupcampaign-bullet2": "向一名有经验的编辑者寻求帮助",
-	"growthexperiments-signupcampaign-bullet3": "从简短、轻松的编辑开始",
 	"growthexperiments-campaigns-footer": "在此页创建{{GENDER:|您}}的账号后，它将与此活动相关联，以用于体验和分析目的。"
 }

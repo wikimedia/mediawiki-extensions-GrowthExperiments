@@ -11,10 +11,5 @@
 	},
 	"growthexperiments-createacct-username-description": "Käyttäjänimesi on julkinen eikä siitä voi myöhemmin tehdä yksityistä.",
 	"growthexperiments-createacct-username-learn-more": "Lisätietoja",
-	"growthexperiments-signupcampaign-title": "Kiitos lahjoituksesta! Liity Wikipediaa parantavien muokkaajien yhteisöön jo tänään",
-	"growthexperiments-signupcampaign-body": "Wikipedian muokkaaminen voi olla yhtä helppoa kuin linkin lisääminen tai yhden sanan vaihtaminen. Saat ehdotuksia artikkeleista {{GENDER:|sinua}} kiinnostavista aiheista tunnuksen luomisen jälkeen!",
-	"growthexperiments-signupcampaign-bullet1": "Ehdotetut artikkelit {{GENDER:|kiinnostuksen kohteistasi}}",
-	"growthexperiments-signupcampaign-bullet2": "Pyydä apua kokeneelta muokkaajalta",
-	"growthexperiments-signupcampaign-bullet3": "Aloita pienistä ja helpoista muokkauksista",
 	"growthexperiments-campaigns-footer": "Luomalla {{GENDER:|tunnuksesi}} tällä sivulla se liitetään tähän kampanjaan kokemus- ja analyysitarkoituksia varten."
 }

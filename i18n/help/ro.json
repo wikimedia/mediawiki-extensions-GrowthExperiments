@@ -4,7 +4,8 @@
 			"Carcassonne93",
 			"Cezar",
 			"NGC 54",
-			"Paloi Sciurala"
+			"Paloi Sciurala",
+			"TiberiuFr25"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activați panoul de ajutor al editorului",
@@ -37,7 +38,7 @@
 	"growthexperiments-help-panel-postedit-footer": "Vedeți toate editările sugerate",
 	"growthexperiments-help-panel-postedit-suggestededits-levelingup-info": "{{GENDER:|Schimbați-vă}} filtrele pentru subiect și sarcină de le editările sugerate pentru mai multe articole de editat.",
 	"growthexperiments-help-panel-postedit-suggestededits-levelingup-title": "Nicio sugestie pe baza filtrelor {{GENDER:|dvs.}}",
-	"growthexperiments-help-panel-postedit-suggestededits-title": "Editări sugerate",
+	"growthexperiments-help-panel-postedit-suggestededits-title": "Modificări sugerate",
 	"growthexperiments-help-panel-postedit-suggestededits-info": "Alți utilizatori de la {{SITENAME}} au găsit articole ce necesită muncă. Continuați {{GENDER:|să}} editați navigând aceste editări sugerate.",
 	"growthexperiments-help-panel-postedit-trynewtask-toast-message": "Felicitări pentru publicarea unei alte editări sugerate!",
 	"growthexperiments-help-panel-postedit-trynewtask-try-button-text": "Încercați o sarcină nouă",
@@ -58,7 +59,7 @@
 	"growthexperiments-help-panel-question-subject-template-with-title": "Întrebare de la panoul de ajutor pe [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Întrebare privitoare la modulul de ajutor din pagina acasă a utilizatorului",
 	"growthexperiments-help-panel-question-post-error": "A apărut o eroare când s-a încercat publicare întrebării dvs. Puteți încerca din nou sau puteți vizita $1 în browser-ul dvs. și să vă adăugați întrebarea manual.",
-	"growthexperiments-help-panel-suggestededits-title": "Editări sugerate",
+	"growthexperiments-help-panel-suggestededits-title": "Modificări sugerate",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Sfaturi de început rapid",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Gata?</strong> Apăsați „{{int:vector-view-edit}}” pentru a începe.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Gata?</strong> Deschideți secțiunea pe care doriți să o editați și apăsați pictograma creion.",
@@ -178,7 +179,7 @@
 	"growthexperiments-help-panel-search-no-results": "Nu s-a găsit vreun rezultat.",
 	"tag-help_panel_question": "Întrebare de la panoul de ajutor",
 	"tag-help_panel_question-description": "Editare făcută de la funcția de publicare a unei întrebări a panoului de ajutor",
-	"growthexperiments-help-panel-button-preheader-suggested-edits": "Editări sugerate",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modificări sugerate",
 	"growthexperiments-help-panel-button-header-ask-help": "Întrebați la biroul de ajutor",
 	"growthexperiments-help-panel-button-header-ask-help-mentor": "{{GENDER:|Cereți}} ajutor mentorului {{GENDER:$1|dvs.}}",
 	"growthexperiments-help-panel-button-header-general-help": "Ajutor de editare general",
