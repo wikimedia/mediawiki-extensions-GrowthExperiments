@@ -7,7 +7,8 @@
 			"Firilacroco",
 			"NGC 54",
 			"Paloi Sciurala",
-			"Strainu"
+			"Strainu",
+			"Vellion Eagle"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bun-venit}}, {{bidi:$1}}!",
@@ -572,6 +573,7 @@
 	"growthexperiments-homepage-special-contribute-cta": "Vezi editări sugerate",
 	"growthexperiments-homepage-impact-contributions-link": "Vezi toate editările",
 	"growthexperiments-levelingup-getstarted-notification-header": "Încercați o editare sugerată și începeți să vă clădiți abilitățile de {{GENDER:$2|editare}}",
+	"growthexperiments-levelingup-getstarted-noedits-notification-header": "{{GENDER:$2|Interesat|Interesată|Interesat}} de editarea {{SITENAME}}? Cunoștințele dvs. se alătură unei comunități formată din milioane de oameni.",
 	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Încercați editări sugerate",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Ați}} efectuat $3 {{PLURAL:$3|editare sugerată|editări sugerate}}. Continuați pentru a deprinde mai multe abilități noi.",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Efectuați o editare sugerată",
