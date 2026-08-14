@@ -157,9 +157,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			} );
 
 		$config = new HashConfig( array_merge( [
-			'GEReviseToneSuggestedEditEnabled' => true,
 			'GEHomepageSuggestedEditsEnabled' => true,
-			'DBname' => 'enwiki',
 		], $overrides['config'] ?? [] ) );
 		return new FeatureManager( $extensionRegistryMock, $config );
 	}
