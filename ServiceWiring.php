@@ -247,9 +247,15 @@ return [
 		MediaWikiServices $services
 	): FeatureManager {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$tkExperimentManager = $services->has( 'TestKitchen.ExperimentManager' ) ?
+			$services->get( 'TestKitchen.ExperimentManager' ) :
+			null;
 		return new FeatureManager(
 			$services->getExtensionRegistry(),
 			$growthServices->getGrowthConfig(),
+			$services->getUserRegistrationLookup(),
+			$growthServices->getLogger(),
+			$tkExperimentManager,
 		);
 	},
 

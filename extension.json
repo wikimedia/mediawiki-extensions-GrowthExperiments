@@ -2976,6 +2976,10 @@
 		"GEReviseToneRecommendationProvider": {
 			"description": "Corresponding Recommendation Provider to use for the Revise Tone recommendations; can be 'production' (ApiReviseToneRecommendationProvider), or 'subpage' (SubpageReviseToneRecommendationProvider).",
 			"value": "production"
+		},
+		"GEAccountSetupExperimentStartRegistrationDate": {
+			"description": "The experiment will only consider new users that register after the given date. ISO",
+			"value": null
 		}
 	},
 	"SpecialPages": {

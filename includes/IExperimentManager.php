@@ -13,5 +13,6 @@ interface IExperimentManager {
 	public const string VARIANT_CONTROL = 'control';
 	public const string VARIANT_TREATMENT = 'treatment';
 	public const string DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AA_TEST = 'de-1-3-1-specialhomepage-onboarding-aa-test';
+	public const string DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST = 'de-1-3-1-specialhomepage-onboarding-ab-test';
 
 }
