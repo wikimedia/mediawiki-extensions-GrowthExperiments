@@ -17,10 +17,6 @@
 		]
 	},
 	"growthexperiments-desc": "{{desc|name=GrowthExperiments|url=https://www.mediawiki.org/wiki/Extension:GrowthExperiments}}",
-	"growthexperiments-config-validator-datatype-mismatch": "Error returned by validator of Growth config (Special:EditGrowthConfig)\n\n$1 is a variable name, $2 and $3 are data types.",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Error returned by validator of Growth config\n\n{{doc-growthexperiments-community-configuration}}",
-	"growthexperiments-config-validator-array-toobig": "Error returned by validator of Growth config (Special:EditGrowthConfig)\n\n$1 is a variable name, $2 is the number of maximum allowed items.\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-info-tooltip-close-label": "Accessibility label text for the close button in informational tooltips of the GrowthExperiments extension.\n\n{{doc-growthexperiments-homepage}}",
 	"specialpages-group-growth-tools": "{{doc-special-group|that=Provide tools for newcomers|like=[[Special:ClaimMentee]], [[Special:Homepage]], [[Special:MentorDashboard]], etc. Developed and supported by [[m:Growth|Growth team]].}}",
 	"communityconfiguration-communityupdates-description": "Description of the Community configuration editor form for the Community updates homepage module",
