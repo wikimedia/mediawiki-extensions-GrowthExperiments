@@ -12,7 +12,5 @@
 			"Wladek92"
 		]
 	},
-	"growthexperiments-createacct-username-description": "Votre nom d'utilisateur est public et ne peut pas être rendu privé plus tard.",
-	"growthexperiments-createacct-username-learn-more": "En savoir plus",
 	"growthexperiments-campaigns-footer": "En créant {{GENDER:}}votre compte depuis cette page, il sera associé à cette campagne à des fins d’expérimentation et d’analyse."
 }

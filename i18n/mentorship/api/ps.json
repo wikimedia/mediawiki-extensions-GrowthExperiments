@@ -13,6 +13,7 @@
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "کله چې لارښود د لرې په توگه وټاکئ؛ دا بايد د لرې دريځ اوږدوالی ولري ( په ورځو)",
 	"apihelp-query+growthmentorstatus-summary": "د اوسني لارښود دريځ تپوس کول",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "د لارښودۍ چلنوال چارن شوی دی",
+	"apihelp-query+growthmentormentee-summary": "ورکړل‌شوي لارښود ته د ورسپارل‌شويو ټولو لارزدکړو ترلاسه کول",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "د لارزدکړو د تپوس لپاره لارښود",
 	"apihelp-growthmanagementorlist-param-geaction": "چاره",
 	"apihelp-growthmanagementorlist-param-message": "پېژندون پيغام (د تلواله لارښود پيغام لپاره تشه لړۍ وکاروئ)",
@@ -20,5 +21,8 @@
 	"apihelp-growthmanagementorlist-param-isaway": "ايا لارښود اوس لرې دی؟ بايد وټاکل شي (تلواليز ناسم ته)",
 	"apihelp-growthmanagementorlist-param-awaytimestamp": "لارښود تر څه وخته لرې وي؟ له نن څخه ډېر وخت تر يو کال پورې دی. له پامه غورځول کېږي پرته له دې چې isaway رښتيا وي.",
 	"apihelp-growthmanagementorlist-param-summary": "د بدلون لامل",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-mentee": "د لارزدکړي هېڅ‌کول",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-reason": "د وړانديز د هېڅ‌کولو لامل",
+	"apihelp-growthinvalidatepersonalizedpraisesuggestion-param-skipreason": "د وړانديز د هېڅ‌کولو لامل پرېښودل",
 	"apihelp-query+growthmentorlist-summary": "ټول لارښودانو لړليکول"
 }
