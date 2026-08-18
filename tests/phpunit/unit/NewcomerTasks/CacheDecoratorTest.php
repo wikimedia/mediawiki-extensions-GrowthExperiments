@@ -8,8 +8,9 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
 use MediaWiki\Title\TitleValue;
@@ -27,14 +28,8 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideSuggest
 	 * @param array $calls List of arrays with:
-	 *   - suggest: [ 'expect' => array, 'return' => Task[]|StatusValue ] | null
-	 *   - filter: [ array $expects, Task[]|StatusValue $returns ] | null
-	 *   - user: UserIdentity
-	 *   - taskTypeFilter: string[]
-	 *   - topicFilter: string[]
-	 *   - limit: int|null
-	 *   - offset: int|null
-	 *   - options: array
+	 * - suggester TaskSuggester
+	 * - args array: Arguments to TaskSuggester::suggest()
 	 * @param TaskSet|StatusValue|Exception $expectedResult
 	 */
 	public function testSuggest(
@@ -45,33 +40,17 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 		$mockJobQueueGroup = $this->createNoOpMock( JobQueueGroup::class, [ 'lazyPush' ] );
 		$mockListener = $this->createNoOpMock( TaskSetListener::class, [ 'run' ] );
 		foreach ( $calls as $i => $call ) {
-			$mockedMethods = [ 'suggest', 'filter' ];
-			$suggester = $this->createNoOpMock( TaskSuggester::class, $mockedMethods );
-			foreach ( $mockedMethods as $method ) {
-				if ( $call[$method] ) {
-					if ( isset( $call[$method]['return-argument'] ) ) {
-						$suggester->expects( $this->once() )
-							->method( $method )
-							->with( ...$call[$method]['expect'] )
-							->willReturnArgument( $call[$method]['return-argument'] );
-					} else {
-						$suggester->expects( $this->once() )
-							->method( $method )
-							->with( ...$call[$method]['expect'] )
-							->willReturn( $call[$method]['return'] );
-					}
-				} else {
-					$suggester->expects( $this->never() )
-						->method( $method );
-				}
-			}
 			if ( $expectedResult instanceof Exception && $i === count( $calls ) - 1 ) {
 				$this->expectException( get_class( $expectedResult ) );
 			}
-			$cacheDecorator = new CacheDecorator( $suggester, $mockJobQueueGroup, $cache,
-				$mockListener, new JsonCodec() );
-			$result = $cacheDecorator->suggest( $call['user'], $call['taskSetFilters'],
-				$call['limit'], $call['offset'], $call['options'] );
+			$cacheDecorator = new CacheDecorator(
+				$call['suggester'],
+				$mockJobQueueGroup,
+				$cache,
+				$mockListener,
+				new JsonCodec()
+			);
+			$result = $cacheDecorator->suggest( ...$call['args'] );
 		}
 		if ( !( $expectedResult instanceof Exception ) ) {
 			$this->assertEquals( $expectedResult, $result );
@@ -80,50 +59,62 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 
 	public static function provideSuggest() {
 		$user = new UserIdentityValue( 1000, 'Test' );
-		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$copyeditType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$linksType = new TaskType( 'links', TaskType::DIFFICULTY_EASY );
 		// Use tasksets consisting of one task only, so we don't have to deal with randomization
 		// of the task order messing up assertions.
 		$taskSetFilters = new TaskSetFilters( [ 'copyedit' ], [] );
 		$taskSetFilterLinks = new TaskSetFilters( [ 'links' ], [] );
 		$taskSetFilterArt = new TaskSetFilters( [ 'copyedit' ], [ 'arts' ] );
-		$taskset = new TaskSet( [
-			new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
-		], 5, 0, $taskSetFilters );
-		$taskset2 = new TaskSet( [
-			new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
-		], 5, 0, $taskSetFilters );
+
+		$taskA = new Task( $copyeditType, new TitleValue( NS_MAIN, 'Foo' ) );
+		$taskB = new Task( $linksType, new TitleValue( NS_MAIN, 'Bar' ) );
+		$taskC = new Task( $copyeditType, new TitleValue( NS_MAIN, 'Foo' ) );
+		$taskC->setTopics( [ new Topic( 'arts' ) ] );
+
+		$suggesterA = new StaticTaskSuggester( [ $taskA ] );
+		$suggesterB = new StaticTaskSuggester( [ $taskB ] );
+		$suggesterC = new StaticTaskSuggester( [ $taskC ] );
+
+		$suggesterFailA = new class( [ $taskA ] )  extends StaticTaskSuggester {
+			public function suggest(
+				$user,
+				$taskSetFilters,
+				$limit = null,
+				$offset = null,
+				$options = []
+			) {
+				return StatusValue::newFatal( 'error' );
+			}
+		};
 
 		return [
 			'taskset on cache miss' => [
 				'calls' => [
 					[
-						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
-							'return' => $taskset,
+						'suggester' => $suggesterA,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilters,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'filter' => null,
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilters,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 				],
-				'expectedResult' => $taskset,
+				'expectedResult' => new TaskSet( [ $taskA ], 1, 0, $taskSetFilters ),
 			],
 			'error on cache miss' => [
 				'calls' => [
 					[
-						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
-							'return' => StatusValue::newFatal( 'error' ),
+						'suggester' => $suggesterFailA,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilters,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'filter' => null,
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilters,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 				],
 				'expectedResult' => StatusValue::newFatal( 'error' ),
@@ -131,118 +122,102 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 			'cache hit with cached taskset' => [
 				'calls' => [
 					[
-						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
-							'return' => $taskset,
+						'suggester' => $suggesterA,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilters,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'filter' => null,
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilters,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 					[
-						'suggest' => null,
-						'filter' => [
-							'expect' => [ $user, $taskset ],
-							'return-argument' => 1,
+						'suggester' => $suggesterFailA,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilters,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilters,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 				],
-				'expectedResult' => $taskset,
+				'expectedResult' => new TaskSet( [ $taskA ], 1, 0, $taskSetFilters ),
 			],
 			'cache hit with cached error' => [
 				'calls' => [
 					[
-						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
-							'return' => StatusValue::newFatal( 'error' ),
+						'suggester' => $suggesterFailA,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilters,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'filter' => null,
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilters,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 					[
-						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
-							'return' => $taskset,
+						'suggester' => $suggesterB,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilterLinks,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'filter' => null,
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilters,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 				],
-				'expectedResult' => $taskset,
+				'expectedResult' => new TaskSet( [ $taskB ], 1, 0, $taskSetFilterLinks ),
 			],
 			'cache miss due to task filter' => [
 				'calls' => [
 					[
-						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
-							'return' => $taskset,
+						'suggester' => $suggesterA,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilters,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'filter' => null,
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilters,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 					[
-						'suggest' => [
-							'expect' => [ $user, $taskSetFilterLinks, 15, 0, [ 'excludePageIds' => [] ] ],
-							'return' => $taskset2,
+						'suggester' => $suggesterB,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilterLinks,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'filter' => null,
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilterLinks,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 				],
-				'expectedResult' => $taskset2,
+				'expectedResult' => new TaskSet( [ $taskB ], 1, 0, $taskSetFilterLinks ),
 			],
 			'cache miss due to topic filter' => [
 				'calls' => [
 					[
-						'suggest' => [
-							'expect' => [ $user, $taskSetFilters, 15, 0, [ 'excludePageIds' => [] ] ],
-							'return' => $taskset,
+						'suggester' => $suggesterA,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilters,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'filter' => null,
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilters,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 					[
-						'suggest' => [
-							'expect' => [ $user, $taskSetFilterArt, 15, 0, [ 'excludePageIds' => [] ] ],
-							'return' => $taskset2,
+						'suggester' => $suggesterC,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilterArt,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
 						],
-						'filter' => null,
-						'user' => $user,
-						'taskSetFilters' => $taskSetFilterArt,
-						'limit' => 15,
-						'offset' => 0,
-						'options' => [],
 					],
 				],
-				'expectedResult' => $taskset2,
+				'expectedResult' => new TaskSet( [ $taskC ], 1, 0, $taskSetFilterArt ),
 			],
 		];
 	}

@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Json\JsonCodec;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -20,7 +21,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideSuggest
 	 */
-	public function testSuggest(
+	public function testSuggestAndFilter(
 		$taskSetFilters, $limit, $offset,
 		$expectedTitles, $expectedTotalCount, $expectedOffset
 	) {
@@ -63,6 +64,16 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$this->assertTaskSetEqualsTitles( $expectedTitles, $taskSet );
 		$this->assertSame( $expectedTotalCount, $taskSet->getTotalCount() );
 		$this->assertSame( $expectedOffset, $taskSet->getOffset() );
+
+		$filtered = $suggester->filter( $user, $taskSet );
+		$this->assertSame( $expectedTotalCount, $filtered->getTotalCount() );
+		$this->assertSame( $expectedOffset, $filtered->getOffset() );
+
+		$jsonCodec = new JsonCodec();
+		$taskSetSerDer = $jsonCodec->deserialize( $jsonCodec->serialize( $taskSet ), TaskSet::class );
+		$filtered = $suggester->filter( $user, $taskSetSerDer );
+		$this->assertSame( $expectedTotalCount, $filtered->getTotalCount() );
+		$this->assertSame( $expectedOffset, $filtered->getOffset() );
 	}
 
 	public static function provideSuggest() {

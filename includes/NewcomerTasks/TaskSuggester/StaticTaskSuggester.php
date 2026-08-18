@@ -60,14 +60,21 @@ class StaticTaskSuggester implements TaskSuggester {
 			}
 		);
 		return new TaskSet( array_slice( $filteredTasks, $offset ?? 0, $limit ),
-			count( $filteredTasks ), $offset ?: 0, new TaskSetFilters() );
+			count( $filteredTasks ), $offset ?: 0, $taskSetFilters );
 	}
 
 	/** @inheritDoc */
 	public function filter( UserIdentity $user, TaskSet $taskSet ) {
-		$tasks = array_filter( iterator_to_array( $taskSet ), function ( Task $task ) {
-			return in_array( $task, $this->tasks, true );
-		} );
+		$tasks = [];
+		foreach ( $taskSet as $task ) {
+			// Avoid in_array, because that relies on object identity, which is lost
+			// between CacheDecorator::serialize and CacheDecorator::deserialize
+			foreach ( $this->tasks as $expectedTask ) {
+				if ( $expectedTask->toJsonArray() == $task->toJsonArray() ) {
+					$tasks[] = $task;
+				}
+			}
+		}
 		$newTaskSet = new TaskSet( $tasks, $taskSet->getTotalCount(), $taskSet->getOffset(),
 			$taskSet->getFilters() );
 		$newTaskSet->setDebugData( $taskSet->getDebugData() );
