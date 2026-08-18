@@ -8,7 +8,7 @@ use GrowthExperiments\ErrorException;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
-use MediaWiki\Extension\Notifications\DbFactory;
+use MediaWiki\Extension\Notifications\DbDomains;
 use MediaWiki\Extension\Notifications\Mapper\NotificationMapper;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\User;
@@ -133,7 +133,8 @@ class NewcomerMilestoneIngressTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function clearEchoData(): void {
-		$db = DbFactory::newFromDefault()->getEchoDb( DB_PRIMARY );
+		$db = $this->getServiceContainer()->getConnectionProvider()
+			->getPrimaryDatabase( DbDomains::VIRTUAL_DOMAIN );
 		$db->newDeleteQueryBuilder()
 			->deleteFrom( 'echo_event' )
 			->where( ISQLPlatform::ALL_ROWS )
