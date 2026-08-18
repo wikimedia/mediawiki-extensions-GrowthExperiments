@@ -138,14 +138,7 @@ class PurgeExpiredMentorStatus extends Maintenance {
 	private function purgeConfig(): void {
 		$configStatus = $this->mentorListProvider->loadValidConfiguration();
 		if ( !$configStatus->isOK() ) {
-			$err = $this->statusFormatter->getWikiText( $configStatus, [ 'lang' => 'en' ] );
-			if ( $configStatus->hasMessage( 'growthexperiments-mentor-list-missing-key' ) ) {
-				$this->output( "Initial config is invalid, skipping because: " );
-				$this->output( $err );
-				$this->output( ".\n" );
-				return;
-			}
-			$this->fatalError( $err );
+			$this->fatalError( $this->statusFormatter->getWikiText( $configStatus, [ 'lang' => 'en' ] ) );
 		}
 		$deletedCount = 0;
 		$config = $configStatus->getValue();

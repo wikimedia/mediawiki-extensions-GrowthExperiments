@@ -234,14 +234,13 @@ class SiteNoticeGenerator {
 
 		$user = $skin->getUser();
 		$location = ( $contextName === 'specialwelcomesurvey' ) ? 'homepage' : 'nonhomepage';
-		$msgHeaderKey = "growthexperiments-homepage-discovery-mobile-$location-banner-header";
 		$msgBodyKey = "growthexperiments-homepage-discovery-mobile-$location-banner-text";
 
 		$closeButton = new IconWidget( [ 'icon' => 'close',
 			'classes' => [ 'mw-ge-homepage-discovery-banner-close' ] ] );
 		$arrowToMenu = Html::element( 'div', [ 'class' => 'mw-ge-homepage-discovery-arrow' ] );
 		$message = Html::rawElement( 'div', [ 'class' => 'mw-ge-homepage-discovery-message' ],
-			$this->getHeader( $output, $user, $msgHeaderKey, $location ) .
+			$this->getHeader( $output, $user, $location ) .
 			$this->getDiscoveryTextWithAvatarIcon( $output, $user, $msgBodyKey )
 		);
 
@@ -275,21 +274,22 @@ class SiteNoticeGenerator {
 	 *
 	 * @param OutputPage $output
 	 * @param UserIdentity $user
-	 * @param string $msgHeaderKey
 	 * @param string $location
 	 * @return string
 	 */
 	private function getHeader(
 		OutputPage $output,
 		UserIdentity $user,
-		string $msgHeaderKey,
 		string $location
 	): string {
 		if ( $location === 'homepage' ) {
 			return '';
 		}
 		return Html::element( 'h2', [],
-			$output->msg( $msgHeaderKey, $user->getName() )->text()
+			$output->msg(
+				'growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header',
+				$user->getName()
+			)->text()
 		);
 	}
 
