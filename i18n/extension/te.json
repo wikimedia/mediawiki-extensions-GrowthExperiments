@@ -8,10 +8,6 @@
 		]
 	},
 	"growthexperiments-desc": "గ్రోత్ బృందం చేసిన ప్రయోగాలు ఈ పొడిగింతలో ఉంటాయి.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> అనేది <code>$2</code> అయి ఉండాల్సింది, కానీ <code>$3</code> లాగా ఉంది",
-	"growthexperiments-config-validator-contentmodel-mismatch": "కంటెంటు రకం సరిపోలడం లేదు: GrowthExperiments కాన్ఫిగ్ ఫైలు JSON కంటెంటు మోడలు అయి ఉండాలి, $1 అని కనబడింది",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "చెల్లని టాస్కు రకం హాండ్లర్ ఐడి: <code>$1</code> చెల్లదు",
-	"growthexperiments-config-validator-array-toobig": "$1 లో మరీ ఎక్కువ ఐటములున్నాయి (గరిష్ఠంగా $2 ఉండవచ్చు)",
 	"growthexperiments-info-tooltip-close-label": "మూసివేయి",
 	"specialpages-group-growth-tools": "గ్రోత్ ఉపకరణాలు",
 	"communityconfiguration-communityupdates-description": "సముదాయానికి సంబంధించిన ముఖ్యమైన వార్తలు, కార్యక్రమాలు,  వికీప్రాజెక్టుల వంటి వాటిని కొత్తవారి హోంపేజీలో ప్రదర్శించడం",

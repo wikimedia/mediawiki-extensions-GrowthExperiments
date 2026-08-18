@@ -5,9 +5,6 @@
 		]
 	},
 	"growthexperiments-desc": "Šis paplašinājums satur eksperimentus, ko veic Izaugsmes komanda (Growth team).",
-	"growthexperiments-config-validator-datatype-mismatch": "Tika gaidīts, ka <code>$1</code> būs <code>$2</code>, bet ir <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Satura modeļa neatbilstība: GrowthExperiments konfigurācijas failam jābūt JSON satura modelim, noteikts $1",
-	"growthexperiments-config-validator-array-toobig": "$1 satur pārāk daudz vienumu (atļauti ne vairāk kā $2)",
 	"growthexperiments-info-tooltip-close-label": "Aizvērt",
 	"communityconfiguration-communityupdates-title": "Kopienas jaunumi"
 }

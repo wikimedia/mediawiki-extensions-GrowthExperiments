@@ -15,8 +15,6 @@
 		]
 	},
 	"growthexperiments-desc": "Ekstensi ini berisi uji coba yang dilakukan oleh tim Pertumbuhan.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> harusnya merupakan <code>$2</code>, bukan <code>$3</code>",
-	"growthexperiments-config-validator-array-toobig": "$1 punya terlalu banyak butir (paling banyak $2 yang dibolehkan)",
 	"growthexperiments-info-tooltip-close-label": "Tutup",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Judul",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Halaman pembicaraan pembimbing",

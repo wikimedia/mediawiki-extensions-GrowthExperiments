@@ -11,10 +11,6 @@
 		]
 	},
 	"growthexperiments-desc": "يحتوي هذا الملحق على تجارب أنجزها فريق النمو.",
-	"growthexperiments-config-validator-datatype-mismatch": "من المتوقّع لـ<code>$1</code> أن يكون <code>$2</code>، لكنّه <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "محتوى النموذج غير مطابق: ملفّ التكوين لـ GrowthExperiments يجب أن يتكوّن من نموذج محتوى JSON، تم العثور على $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "معرّف معالج نوع المهمة غير صالح: قيمة <code>$1</code> غير صابحة",
-	"growthexperiments-config-validator-array-toobig": "$1 يحتوي على عدد كبير جدًا من العناصر ($2 كحدّ أقصى متاح)",
 	"growthexperiments-info-tooltip-close-label": "إغلاق",
 	"specialpages-group-growth-tools": "أدوات النمو",
 	"communityconfiguration-communityupdates-description": "شاركوا أخبار المجتمع المهمة، أو الحملات، أو الأحداث، أو مشاريع الويكي على الصفحة الرئيسية للوافدين الجدد.",

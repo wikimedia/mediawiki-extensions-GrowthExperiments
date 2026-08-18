@@ -15,10 +15,6 @@
 		]
 	},
 	"growthexperiments-desc": "Phần mở rộng này chứa các thử nghiệm được thực hiện bởi nhóm Tăng trưởng.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> phải là <code>$2</code>, nhưng thay vào đó lại là <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Nội dung-mô hình không phù hợp: File cấu hình GrowthExperiments phải chứa mô hình nội dung JSON, phát hiện $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID xử lý loại nhiệm vụ không hợp lệ: <code>$1</code> không phải một giá trị hợp lệ",
-	"growthexperiments-config-validator-array-toobig": "$1 có quá nhiều mục (cho phép tối đa $2 mục)",
 	"growthexperiments-info-tooltip-close-label": "Đóng",
 	"specialpages-group-growth-tools": "Các công cụ Tăng trưởng",
 	"communityconfiguration-communityupdates-description": "Chia sẻ tin tức cộng đồng quan trọng, chiến dịch, sự kiện hoặc dự án wiki trên trang nhà dành cho người mới.",

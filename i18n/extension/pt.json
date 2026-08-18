@@ -7,10 +7,6 @@
 		]
 	},
 	"growthexperiments-desc": "Esta extensão contém experiências feitas pela equipa de Crescimento (''Growth team'').",
-	"growthexperiments-config-validator-datatype-mismatch": "É esperado que <code>$1</code> seja do tipo <code>$2</code>, mas é do tipo <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Discrepância do modelo de conteúdo: o ficheiro de configuração das experiências de crescimento GrowthExperiments tem de ter um modelo de conteúdo JSON, foi detetado $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Identificador inválido da rotina de tratamento do tipo de tarefa: <code>$1</code> não é um valor válido",
-	"growthexperiments-config-validator-array-toobig": "$1 tem demasiados elementos (o máximo permitido é $2)",
 	"growthexperiments-info-tooltip-close-label": "Fechar",
 	"specialpages-group-growth-tools": "Ferramentas de crescimento"
 }

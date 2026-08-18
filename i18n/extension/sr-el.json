@@ -3,8 +3,6 @@
 		"authors": []
 	},
 	"growthexperiments-desc": "Ovaj dodatak sadrži projekte Tima za razvoj.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> je trebalo da bude <code>$2</code>, ali je <code>$3</code>",
-	"growthexperiments-config-validator-array-toobig": "$1 ima previše stavki (maksimum: $2)",
 	"growthexperiments-info-tooltip-close-label": "Zatvori",
 	"specialpages-group-growth-tools": "Mentorstvo",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Naslov",

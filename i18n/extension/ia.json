@@ -6,10 +6,6 @@
 		]
 	},
 	"growthexperiments-desc": "Iste extension contine experimentos facite per le equipa de Growth.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> deberea esser <code>$2</code>, ma es <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Modello de contento non correspondente: le file de configuration de GrowthExperiments debe haber un modello de contento JSON, ma le modello detegite es $1.",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de gestion de typo de travalio non valide: <code>$1</code> non es un valor valide",
-	"growthexperiments-config-validator-array-toobig": "$1 ha troppo de elementos (le maximo permittite es $2)",
 	"growthexperiments-info-tooltip-close-label": "Clauder",
 	"specialpages-group-growth-tools": "Utensiles de crescentia",
 	"communityconfiguration-communityupdates-description": "Le pagina de initio pro novicios es pro condivider novas, campanias, eventos o WikiProjectos importante del communitate.",

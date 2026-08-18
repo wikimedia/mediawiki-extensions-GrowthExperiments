@@ -13,10 +13,6 @@
 		]
 	},
 	"growthexperiments-desc": "To rozszerzenie zawiera eksperymentalne funkcje wykonane przez Zespół Growth.",
-	"growthexperiments-config-validator-datatype-mismatch": "oczekiwany typ danych dla <code>$1</code> to <code>$2</code>, ale podano <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "niewłaściwy model zawartości: strona konfiguracji GrowthExperiments musi mieć model zawartości \"JSON\", a obecnie ma $1.",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Błędny identyfikator komponentu obsługującego podany typ zadania. <code>$1</code> nie jest poprawną wartością",
-	"growthexperiments-config-validator-array-toobig": "$1 zawiera za dużo elementów (maksimum to $2)",
 	"growthexperiments-info-tooltip-close-label": "Zamknij",
 	"specialpages-group-growth-tools": "Narzędzia Growth",
 	"communityconfiguration-communityupdates-description": "Udostępnij ważne wiadomości społecznościowe, kampanie, wydarzenia lub projekty Wiki na stronie domowej nowicjuszy.",

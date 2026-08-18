@@ -5,10 +5,6 @@
 		]
 	},
 	"growthexperiments-desc": "Kordhintani waxay ka kooban tahay tijaabooyin ay sameeyeen kooxda Growth.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> waxaa la filayay inuu noqdo <code>$2</code>, laakiin waa <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Iswaafaqla’aan nooca nuxurka ah: Faylka qaabaynta GrowthExperiments waa inuu lahaadaa nooca nuxurka JSON, balse $1 ayaa la helay",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Aqoonsiga maamulaha nooca hawsha waa khalad: <code>$1</code> ma aha qiime sax ah",
-	"growthexperiments-config-validator-array-toobig": "$1 wuxuu leeyahay walxo aad u badan (ugu badnaan $2 ayaa la oggol yahay)",
 	"growthexperiments-info-tooltip-close-label": "Xir",
 	"specialpages-group-growth-tools": "Qalabka Growth",
 	"communityconfiguration-communityupdates-description": "La wadaag wararka muhiimka ah ee bulshada, ololayaasha, dhacdooyinka, ama Mashaariicda Wiki bogga hore ee isticmaalayaasha cusub.",

@@ -6,10 +6,6 @@
 		]
 	},
 	"growthexperiments-desc": "Esta extensión contén experimentos realizados polo equipo de crecemento.",
-	"growthexperiments-config-validator-datatype-mismatch": "Espérase que <code>$1</code> sexa <code>$2</code>, pero é <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Incompatibilidade do modelo de contido: o ficheiro de configuración dos experimentos de crecemento debe ter un modelo de contido JSON, mais detectouse $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Identificador do xestor de tipo de tarefa non válido: <code>$1</code> non é un valor válido",
-	"growthexperiments-config-validator-array-toobig": "$1 ten demasiados elementos (máximo permitido: $2)",
 	"growthexperiments-info-tooltip-close-label": "Pechar",
 	"specialpages-group-growth-tools": "Ferramentas de crecemento",
 	"communityconfiguration-communityupdates-description": "Comparte noticias importantes da comunidade, campañas, eventos ou wikiproxectos na páxina de inicio das persoas principiantes.",

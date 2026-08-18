@@ -17,10 +17,6 @@
 		]
 	},
 	"growthexperiments-desc": "此擴充功能包含由 Growth 團隊完成的試驗。",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>應該是<code>$2</code>，但是<code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "內容模型不匹配：GrowthExperiments 的設定檔必須是 JSON 內容模型，但是目前設定檔的內容模型是 $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "無效的任務類型處理程序ID：<code>$1</code>不是有效的數值。",
-	"growthexperiments-config-validator-array-toobig": "$1的項目太多（最多 $2 個）",
 	"growthexperiments-info-tooltip-close-label": "關閉",
 	"specialpages-group-growth-tools": "Growth 工具",
 	"communityconfiguration-communityupdates-title": "社群新訊",

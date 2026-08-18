@@ -6,10 +6,6 @@
 		]
 	},
 	"growthexperiments-desc": "Denne udvidelse indeholder eksperimenter som udføres af Growth-teamet.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> forventes at være <code>$2</code>, men er <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Uoverensstemmelse mellem indhold og model: GrowthExperiments-konfigurationsfilen skal have en JSON-indholdsmodel, $1 registreret",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Ugyldigt opgavetypehåndterings-ID: <code>$1</code> er ikke en gyldig værdi",
-	"growthexperiments-config-validator-array-toobig": "$1 har for mange elementer (maksimalt $2 tilladte)",
 	"growthexperiments-info-tooltip-close-label": "Luk",
 	"specialpages-group-growth-tools": "Vækstværktøjer",
 	"communityconfiguration-communityupdates-description": "Del vigtige nyheder fra fællesskabet, kampagner, begivenheder eller WikiProjekter på nytilkomnes hjemmeside.",

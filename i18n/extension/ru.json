@@ -23,10 +23,6 @@
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
-	"growthexperiments-config-validator-datatype-mismatch": "Ожидается, что <code>$1</code> это <code>$2</code>, а это <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Несоответствие модели содержимого: файл конфигурации GrowthExperiments должен иметь модель содержимого JSON, обнаружено $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Недействителен идентификатор обработчика типа задачи: <code>$1</code> недопустимое значение",
-	"growthexperiments-config-validator-array-toobig": "$1 имеет слишком много элементов (максимальное число - $2)",
 	"growthexperiments-info-tooltip-close-label": "Закрыть",
 	"specialpages-group-growth-tools": "Инструменты от команды роста",
 	"communityconfiguration-communityupdates-description": "Делитесь важными новостями сообщества, кампаниями, мероприятиями или вики-проектами на домашней странице новичков.",

@@ -6,7 +6,6 @@
 		]
 	},
 	"growthexperiments-desc": "ਇਸ ਐਕਸਟੈਂਸ਼ਨ ਵਿੱਚ ਗ੍ਰੋਥ ਟੀਮ ਦੁਆਰਾ ਕੀਤੇ ਗਏ ਪ੍ਰਯੋਗ ਸ਼ਾਮਲ ਹਨ।",
-	"growthexperiments-config-validator-array-toobig": "$1 ਵਿੱਚ ਬਹੁਤ ਸਾਰੀਆਂ ਆਈਟਮਾਂ ਹਨ (ਵੱਧ ਤੋਂ ਵੱਧ $2 ਦੀ ਇਜਾਜ਼ਤ ਹੈ)",
 	"growthexperiments-info-tooltip-close-label": "ਬੰਦ ਕਰੋ",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "ਸਿਰਲੇਖ",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailfile-label": "ਤਸਵੀਰ",

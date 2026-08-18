@@ -5,10 +5,6 @@
 		]
 	},
 	"growthexperiments-desc": "Ekstensi iko barisi pacuboan nan dibuek dek Tim Patumbuahan",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> diarokan manjadi <code>$2</code>, tapi adolah <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Model isi indak cocok: bakeh wujuik GrowthExperiments musti barupo model isi JSON, $1 tapantau",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID panangan jinih tugas nan indak sah: <code>$1</code> indak nilai nan sah",
-	"growthexperiments-config-validator-array-toobig": "$1 talalu banyak butia (paliang banyak buliah $2)",
 	"growthexperiments-info-tooltip-close-label": "Tutuik",
 	"specialpages-group-growth-tools": "Alaik untuak patumbuahan",
 	"communityconfiguration-communityupdates-description": "Bagikan barito komunitas nan pantiang, kampanye, kajadian, atau WikiProyek di palanta pandatang baru.",

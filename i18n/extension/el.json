@@ -7,6 +7,5 @@
 		]
 	},
 	"growthexperiments-desc": "Αυτή η επέκταση περιέχει πειράματα που γίνονται από την ομάδα Ανάπτυξης",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> αναμένεται να είναι <code>$2</code>, αλλά είναι <code>$3</code>",
 	"communityconfiguration-mentorship-gementorshipshouldbeautoremoved-help-text": "Εάν επιλεγεί, οι καθοδηγητές που δεν κάνουν καμία επεξεργασία εντός ενός καθορισμένου αριθμού ημερών θα απομακρύνονται από την καθοδήγηση. Οι καθοδηγούμενοί τους θα ανατίθενται σε άλλους."
 }

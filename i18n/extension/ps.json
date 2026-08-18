@@ -5,10 +5,6 @@
 		]
 	},
 	"growthexperiments-desc": "دا شاتاړی د ودې ډلې له خوا ترسره شوې ازمېښتونه لري.",
-	"growthexperiments-config-validator-datatype-mismatch": "تمه کېده چې <code>$1</code> به <code>$2</code> وي؛ خو <code>$3</code> دی",
-	"growthexperiments-config-validator-contentmodel-mismatch": "د منځپانگيزې نمونې ناانډولي: ودې‌ازمېښتونه ترتيب دوتنه بايد جی‌اېس‌او‌اېن منځپانگيزه نمونه ولري؛ خو $1 وموندل شو.",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "د چار ډول سمبالگر ناسم پېژند: <code>$1</code> باوري ارزښت نه دی",
-	"growthexperiments-config-validator-array-toobig": "$1 گڼ توکي لري (ډېرترډېره $2 توکي اجازه لري)",
 	"growthexperiments-info-tooltip-close-label": "تړل",
 	"specialpages-group-growth-tools": "د ودې توکي",
 	"communityconfiguration-communityupdates-description": "د ټولنې ارزښتمن خبرونه، ټاکنيزې‌سيالۍ، پېښې، يا ويکي‌پروژې د نوي‌راغلي کورمخ باندې شريکول.",

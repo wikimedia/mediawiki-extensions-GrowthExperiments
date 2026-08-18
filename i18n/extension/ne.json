@@ -7,7 +7,6 @@
 		]
 	},
 	"growthexperiments-desc": "यस विस्तारमा ग्रोथ टोलीद्वारा गरिएका प्रयोगहरू समावेश छन्।",
-	"growthexperiments-config-validator-array-toobig": "$1मा धेरै वस्तुहरू छन् (अधिकतम $2 लाई अनुमति दिइएको छ)",
 	"specialpages-group-growth-tools": "वृद्धि उपकरणहरू",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-help-desk-page-label": "सहायता केन्द्र",
 	"communityconfiguration-helppanel-gehelppanelhelpdeskpostontop-option-bottom-label": "पृष्ठको तल",

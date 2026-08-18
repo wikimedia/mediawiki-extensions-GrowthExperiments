@@ -12,10 +12,6 @@
 		]
 	},
 	"growthexperiments-desc": "Quest'estensione contiene esperimenti effettuati dal Growth team",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> dovrebbe essere <code>$2</code>, ma è <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Discrepanza del modello di contenuto: il file di configurazione di GrowthExperiments deve avere un modello di contenuto JSON, rilevato $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID del gestore del tipo di attività invalido: <code>$1</code> non è un valore valido",
-	"growthexperiments-config-validator-array-toobig": "$1 ha troppi elementi (massimo $2 permess{{PLURAL:$2|o|i}})",
 	"growthexperiments-info-tooltip-close-label": "Chiudi",
 	"specialpages-group-growth-tools": "Strumenti Growth",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontentbody-description": "Un messaggio informativo breve e amichevole per suscitare interesse.",

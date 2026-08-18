@@ -5,10 +5,6 @@
 		]
 	},
 	"growthexperiments-desc": "Додатоков содржи опити направени од екипата за раст.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> се очекува да биде <code>$2</code>, но е <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Несовпаѓање во содржинскиот модел: податотеката со поставки на GrowthExperiments мора да биде со моделот JSON, а пронајдов $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Неважечка назнака на ракувач со видови задачи: <code>$1</code> не е важечка вредност",
-	"growthexperiments-config-validator-array-toobig": "$1 има премногу ставки (дозволени се највеќе $2)",
 	"growthexperiments-info-tooltip-close-label": "Затвори",
 	"specialpages-group-growth-tools": "Алатки за раст"
 }

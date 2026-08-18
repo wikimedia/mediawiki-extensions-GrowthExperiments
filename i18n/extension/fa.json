@@ -12,9 +12,6 @@
 		]
 	},
 	"growthexperiments-desc": "این افزونه شامل آزمایش‌هایی است که توسط تیم توسعه انجام شده.",
-	"growthexperiments-config-validator-datatype-mismatch": "انتظار می‌رفت که <code>$1</code> برابر <code>$2</code> باشد، اما <code>$3</code> بود",
-	"growthexperiments-config-validator-contentmodel-mismatch": "عدم تطابق مدل محتوا: فایل پیکربندی GrowthExperiments باید دارای مدل محتوای جی‌سان باشد، اما $1 شناسایی شد",
-	"growthexperiments-config-validator-array-toobig": "تعداد آیتم‌های $1 بیش از اندازه است (حداکثر $2 آیتم مجاز است)",
 	"growthexperiments-info-tooltip-close-label": "بستن",
 	"specialpages-group-growth-tools": "ابزارهای توسعه",
 	"communityconfiguration-communityupdates-description": "اشتراک‌گذاری اخبار مهم اجتماع، پویش‌ها، رویدادها یا ویکی‌پروژه‌ها در صفحهٔ اصلی تازه‌واردان.",

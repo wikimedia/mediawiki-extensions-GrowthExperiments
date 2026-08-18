@@ -17,8 +17,6 @@
 		]
 	},
 	"growthexperiments-desc": "Bu eklenti, Growth ekibinin yaptığı deneyleri içeriyor.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>, <code>$2</code> olması bekleniyordu, ancak <code>$3</code> oldu",
-	"growthexperiments-config-validator-contentmodel-mismatch": "İçerik-model uyumsuz: GrowthExperiments yapılandırma dosyası JSON içerik modeli olmalıdır, $1 algılandı",
 	"growthexperiments-info-tooltip-close-label": "Kapat",
 	"specialpages-group-growth-tools": "Büyüme araçları",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Başlık",

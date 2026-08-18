@@ -5,10 +5,6 @@
 		]
 	},
 	"growthexperiments-desc": "Denne utvidelsen inneholder eksperimenter som gjøres av Growth-teamet.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> er forventet å være <code>$2</code>, men er <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Innholdsmodellen matcher ikke: GrowthExperiments' konfigurasjonsfil må ha innholdsmodellen JSON, men $1 ble returnert",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Ugyldig oppgavetype-ID: <code>$1</code> er ikke en gyldig verdi",
-	"growthexperiments-config-validator-array-toobig": "$1 har for mange elementer (maksimalt $2 tillatt)",
 	"growthexperiments-info-tooltip-close-label": "Lukk",
 	"specialpages-group-growth-tools": "Growth-verktøy",
 	"communityconfiguration-communityupdates-description": "Del viktige nyheter, kampanjer, arrangementer eller wikiprosjekter på nybegynnernes hjemmeside.",

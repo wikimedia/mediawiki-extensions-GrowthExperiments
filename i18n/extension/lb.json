@@ -7,10 +7,6 @@
 		]
 	},
 	"growthexperiments-desc": "An dëser Erweiderung sinn Experimenter vum „Growth Team“ dran.",
-	"growthexperiments-config-validator-datatype-mismatch": "Als <code>$1</code> gouf <code>$2</code> erwaart, mä et ass awer <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Konflikt tëscht Inhalt a Modell: d'Konfiguratiounsdatei vu GrowthExperiments muss e JSON-Inhaltsmodell hunn, $1 detektéiert",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Ongülteg Handler-ID vum Aufgabentyp: <code>$1</code> ass kee gültege Wäert",
-	"growthexperiments-config-validator-array-toobig": "$1 huet ze vill Elementer (maximal $2 erlaabt)",
 	"growthexperiments-info-tooltip-close-label": "Zoumaachen",
 	"specialpages-group-growth-tools": "Growth-Tools",
 	"communityconfiguration-communityupdates-description": "Deelt wichteg Neiegkeeten aus der Communautéit, Campagnen, Evenementer oder WikiProjeten op der Startsäit fir Neier.",

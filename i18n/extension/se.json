@@ -7,10 +7,6 @@
 		]
 	},
 	"growthexperiments-desc": "Dán viiddidanoasis leat Growth-joavkku geahččaleamit.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> lea vurdojuvvon leat <code>$2</code>, muhto lea <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Sisdoallomálle ii dorjojuvvo: GrowthExperiments' konfigurašuvdnafiillas ferte leat JSON sisdoallomálle, muhto $1 máhcahuvvui",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Dohkkemeahttumis bargobihttá-ID: <code>$1</code> ii leat gustovaš árvi",
-	"growthexperiments-config-validator-array-toobig": "$1 leat beare máŋga elemeantta (eanemus $2 lobálaš)",
 	"growthexperiments-info-tooltip-close-label": "Gidde",
 	"communityconfiguration-helppanel-title": "Veahkkepanela",
 	"communityconfiguration-helppanel-gehelppanelaskmentor-option-mentor-talk-page-label": "Fáttarságastallansiiddut",

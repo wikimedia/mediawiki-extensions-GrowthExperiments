@@ -11,9 +11,5 @@
 		]
 	},
 	"growthexperiments-desc": "Ez a kiterjesztés a Növekedés (Growth) csapat kísérleteit tartalmazza.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> várt típusa <code>$2</code>, de a tényleges típus <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Rossz tartalomtípus: a GrowthExperiments konfigurációs fájlnak JSON típusúnak kell lennie, de az észlelt típus $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Érvénytelen feladattípuskezelő-azonosító: a(z) <code>$1</code> nem egy érvényes érték",
-	"growthexperiments-config-validator-array-toobig": "A(z) $1 túl sok elemet tartalmaz (legfeljebb $2 elem engedélyezett)",
 	"specialpages-group-growth-tools": "Segédeszközök új szerkesztőknek"
 }

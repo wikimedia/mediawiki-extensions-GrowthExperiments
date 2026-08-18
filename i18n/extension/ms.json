@@ -6,10 +6,6 @@
 		]
 	},
 	"growthexperiments-desc": "Sambungan ini mengandungi eksperimen yang dilakukan oleh pasukan Growth.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> dijangka sebagai <code>$2</code>, tetapi menjadi <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Ketidakpadanan model kandungan: Fail konfigurasi GrowthExperiments mesti mempunyai model kandungan JSON, $1 dikesan",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID pengendali jenis tugas tidak sah: <code>$1</code> bukan nilai yang sah",
-	"growthexperiments-config-validator-array-toobig": "$1 mempunyai terlalu banyak item (maksimum $2 dibenarkan)",
 	"growthexperiments-info-tooltip-close-label": "Tutup",
 	"specialpages-group-growth-tools": "Alat perkakas Growth",
 	"communityconfiguration-communityupdates-description": "Kongsi berita komuniti, kempen, acara atau WikiProjek yang penting di laman pemula pengguna baharu.",

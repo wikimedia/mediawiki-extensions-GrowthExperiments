@@ -5,9 +5,5 @@
 		]
 	},
 	"growthexperiments-desc": "Ekstensi niki misi uji coba ané kajalanang olih tim Growth.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> patutné dadi <code>$2</code>, ten <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Model kontén ten patuh: Berkas konfigurasi GrowthExperiments patut ngelah model kontén JSON, $1 kacunduk",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID panampi soroh tugas ten valid: <code>$1</code> ten nilai sané valid",
-	"growthexperiments-config-validator-array-toobig": "$1 bes liunan item (paling liu $2 kadadiang)",
 	"specialpages-group-growth-tools": "Piranti Growth"
 }

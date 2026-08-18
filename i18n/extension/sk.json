@@ -7,8 +7,6 @@
 		]
 	},
 	"growthexperiments-desc": "Toto rozšírenie obsahuje experimenty tímu Growth.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> sollte <code>$2</code> sein, ist aber <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Unstimmigkeit des Inhaltsmodells: GrowthExperiments-Konfigurationsdatei muss JSON-Inhaltsmodell haben, es wurde aber $1 festgestellt",
 	"specialpages-group-growth-tools": "Funkcie pre podporu nováčikov (Growth)",
 	"communityconfiguration-growthsuggestededits-links-label": "Pridanie odkazov medzi článkami"
 }

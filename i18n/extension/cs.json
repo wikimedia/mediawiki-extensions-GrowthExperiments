@@ -11,10 +11,6 @@
 		]
 	},
 	"growthexperiments-desc": "Toto rozšíření obsahuje experimenty týmu Growth.",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> by mělo být <code>$2</code>, ale je <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Model obsahu stránky se neshoduje: Konfigurace rozšíření GrowthExperiments musí mít model JSON, ale má $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Neplatné ID typu úkolu: <code>$1</code> není platná hodnota",
-	"growthexperiments-config-validator-array-toobig": "$1 má příliš mnoho položek (povoleno maximálně $2)",
 	"growthexperiments-info-tooltip-close-label": "Zavřít",
 	"specialpages-group-growth-tools": "Growth funkce",
 	"communityconfiguration-communityupdates-title": "Komunitní aktuality",

@@ -5,9 +5,5 @@
 			"Leepamela"
 		]
 	},
-	"growthexperiments-desc": "Lokhu kwandiswa kuqukethe ukuhlolwa okwenziwa ithimba le-Growth.",
-	"growthexperiments-config-validator-datatype-mismatch": "U-<code>$1</code> kulindeleke ukuthi abe ngu-<code>$2</code>, kodwa ngu-<code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Ukungafani kwemodeli yokuqukethwe: Ifayela lokulungisa le-GrowthExperiments kufanele libe nemodeli yokuqukethwe ye-JSON, kutholwe $1",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "I-ID yesibambi sohlobo lomsebenzi engavumelekile: <code>$1</code> akulona inani elivumelekile",
-	"growthexperiments-config-validator-array-toobig": "I-$1 inezinto eziningi kakhulu (ubukhulu obungu-$2 buvunyelwe)"
+	"growthexperiments-desc": "Lokhu kwandiswa kuqukethe ukuhlolwa okwenziwa ithimba le-Growth."
 }

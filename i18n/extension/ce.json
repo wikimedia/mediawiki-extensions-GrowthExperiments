@@ -5,10 +5,6 @@
 		]
 	},
 	"growthexperiments-desc": "ХӀара шордар «Кхиаран» тобано бинчу талламийн жамӀ ду.",
-	"growthexperiments-config-validator-datatype-mismatch": "Хьоьжу, <code>$1</code> хӀокхуьнга <code>$2</code>, иза ду <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Чулацаман модель нийса ца хилар: GrowthExperiments конфигурацин файлан хила йеза JSON чулацаман модель, $1 карийна",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ТӀедиллинчун тайпанан идентификатор нийса йац: <code>$1</code> нийса доцу маьӀна",
-	"growthexperiments-config-validator-array-toobig": "$1 тӀех дукха элементаш йу (максимум терахь $2 ду)",
 	"growthexperiments-info-tooltip-close-label": "ДӀачӀагӀа",
 	"specialpages-group-growth-tools": "Дебаран командера гӀирс",
 	"communityconfiguration-communityupdates-description": "Мехала йукъараллин керланаш, кампанеш, хиламаш, йа вики-проекташ йаржор цӀерачу агӀонан тӀехь.",

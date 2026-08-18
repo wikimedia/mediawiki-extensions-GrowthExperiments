@@ -12,9 +12,6 @@
 		]
 	},
 	"growthexperiments-desc": "この拡張機能は Growth チームが完了した実験を含んでいます。",
-	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>の<code>$3</code>は、\n<code>$2</code>に要訂正です",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Content-model が一致しません: GrowthExperiments config ファイルは JSON コンテンツモデルが必要ですが、 $1 を検出しました",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "タスク種別のハンドラ ID: が無効です:<code>$1</code> は無効な値です",
 	"growthexperiments-info-tooltip-close-label": "閉じる",
 	"specialpages-group-growth-tools": "Growthツール",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesenabled-control-label": "オンにする",
