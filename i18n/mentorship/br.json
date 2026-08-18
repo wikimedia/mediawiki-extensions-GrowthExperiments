@@ -53,7 +53,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Kemmit {{GENDER:|ho}} siloù evit kavout deskarded.",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-headline": "Kemmoù diwezhañ degaset gant {{GENDER:|ho}} deskarded",
 	"growthexperiments-mentor-dashboard-mentee-overview-recent-edits-text": "Gallout a {{GENDER:|rit}} gwelet ar c'hemmoù bet degaset gant {{GENDER:|ho}} holl zeskarded en ur weladenniñ ar [$1 gwel silet eus ar c'hemmoù diwezhañ]-mañ.",
-	"growthexperiments-mentor-dashboard-mentee-overview-error-title": "Ur fazi dianav ez eus bet o kargañ roll an deskarded",
+	"growthexperiments-mentor-dashboard-mentee-overview-error-title": "Ur fazi dianav zo bet o kargañ roll an deskarded",
 	"growthexperiments-mentor-dashboard-mentee-overview-error-notification": "C’hoarvezet ez eus bet ur fazi dianav. Klaskit en-dro diwezhatoc’h mar plij.",
 	"growthexperiments-mentor-dashboard-resources-link-manage-mentors": "Merañ ar ventored",
 	"growthexperiments-mentor-dashboard-resources-link-view-mentor-list": "Gwelet roll ar ventored",
