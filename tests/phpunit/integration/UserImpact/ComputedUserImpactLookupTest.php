@@ -25,6 +25,8 @@ use Wikimedia\Timestamp\TimestampFormat;
 class ComputedUserImpactLookupTest extends ApiTestCase {
 
 	public function testGetUserImpact_empty() {
+		// FeatureManager::isNewcomerTasksAvailable() requires WikimediaMessages
+		$this->markTestSkippedIfExtensionNotLoaded( 'WikimediaMessages' );
 		$this->overrideConfigValue( 'GEReviseToneSuggestedEditEnabled', true );
 		// This is a lazy way of ensuring that the tag exists. Revision 1 is the main page,
 		// created by the installer.
@@ -39,7 +41,7 @@ class ComputedUserImpactLookupTest extends ApiTestCase {
 		$this->assertTrue( $userIdentity->equals( $userImpact->getUser() ) );
 		$this->assertSame( [], $userImpact->getEditCountByNamespace() );
 		$this->assertSame( [], $userImpact->getEditCountByDay() );
-		$this->assertEqualsCanonicalizing(
+		$this->assertEquals(
 			array_fill_keys( [
 				'expand', 'links', 'references', 'update', 'copyedit',
 				'image-recommendation', 'section-image-recommendation',
