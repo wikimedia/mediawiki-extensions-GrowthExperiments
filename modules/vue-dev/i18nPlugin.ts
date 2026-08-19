@@ -1,8 +1,11 @@
-import messages from '../../../i18n/homepage/en.json';
+import homepageMessages from '../../i18n/homepage/en.json';
+import extensionMessages from '../../i18n/extension/en.json';
 // the import below requires eslint-plugin-n with version v17.11.0 and `"ignoreTypeImport": true,` config
 // eslint-disable-next-line n/no-missing-import
 import MediaWiki from '@wikimedia/types-wikimedia';
 import { App } from 'vue';
+
+const messages = { ...homepageMessages, ...extensionMessages };
 
 type FakeMessage = Partial<ReturnType<MediaWiki['message']>>;
 const fakeMessage = ( key: string, ...params: ( string|number )[] ): FakeMessage => {

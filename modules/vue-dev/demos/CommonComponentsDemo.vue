@@ -45,7 +45,7 @@
 </template>
 
 <script>
-const OnboardingDialog = require( '../../common/OnboardingDialog.vue' );
+const OnboardingDialog = require( '../../ext.growthExperiments.StructuredTask.PreEdit/common/OnboardingDialog.vue' );
 const { defineComponent, ref, computed } = require( 'vue' );
 
 // @vue/component

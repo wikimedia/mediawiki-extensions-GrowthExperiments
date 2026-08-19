@@ -5,6 +5,7 @@ import transformPlugin from './SimpleTransformPlugin';
 module.exports = defineConfig( {
 	plugins: [
 		transformPlugin( {
+			excludePatterns: [ 'node_modules' ],
 			callbackArray: [
 				( str: string ) => str.replace( /const \{([\s\w,]+)\} = require\( '([.@\w/-]+)' \);/gm, 'import {$1} from \'$2\';' ),
 				( str: string ) => str.replace( /const ([\s\w,]+) = require\( '([.@\w/-]+)' \);/gm, 'import $1 from \'$2\';' ),
@@ -25,8 +26,8 @@ module.exports = defineConfig( {
 		preprocessorOptions: {
 			less: {
 				paths: [
-					'../../../../../skins/Vector/resources/mediawiki.less/vector-2022/',
-					'../../../../../resources/src/mediawiki.less/',
+					'../../../../skins/Vector/resources/mediawiki.less/vector-2022/',
+					'../../../../resources/src/mediawiki.less/',
 				],
 			},
 		},

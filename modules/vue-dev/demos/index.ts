@@ -1,5 +1,5 @@
 // @ts-expect-error importing types from .vue file does not work yet?
-import App from '../../App.vue';
+import App from '../../ext.growthExperiments.StructuredTask.PreEdit/App.vue';
 // @ts-expect-error importing types from .vue file does not work yet?
 import ReviseToneQuizPillDemo from './ReviseToneQuizPillDemo.vue';
 // @ts-expect-error importing types from .vue file does not work yet?

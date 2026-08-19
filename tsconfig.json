@@ -1,7 +1,7 @@
 {
 	"include": [
 		"modules/index.d.ts",
-		"modules/ext.growthExperiments.StructuredTask.PreEdit/dev/**/*.ts"
+		"modules/vue-dev/**/*.ts"
 	],
 	"compilerOptions": {
 		"moduleResolution": "bundler",

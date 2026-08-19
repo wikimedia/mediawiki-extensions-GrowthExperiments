@@ -18,7 +18,7 @@
 		"jest-update": "jest -u",
 		"coverage": "npm run test:jest",
 		"rollup": "rollup -c",
-		"dev:structured-task": "cd modules/ext.growthExperiments.StructuredTask.PreEdit/dev && vite"
+		"dev": "cd modules/vue-dev && vite"
 	},
 	"devDependencies": {
 		"@babel/preset-env": "^7.28.3",

@@ -20,8 +20,8 @@
 <script>
 const { defineComponent, ref } = require( 'vue' );
 const { CdxButton } = require( '@wikimedia/codex' );
-const QuizGame = require( '../../revisetone/QuizGame.vue' );
-const DATA = require( '../../revisetone/quizData.json' );
+const QuizGame = require( '../../ext.growthExperiments.StructuredTask.PreEdit/revisetone/QuizGame.vue' );
+const DATA = require( '../../ext.growthExperiments.StructuredTask.PreEdit/revisetone/quizData.json' );
 
 // @vue/component
 module.exports = defineComponent( {
