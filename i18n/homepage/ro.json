@@ -8,7 +8,8 @@
 			"NGC 54",
 			"Paloi Sciurala",
 			"Strainu",
-			"Vellion Eagle"
+			"Vellion Eagle",
+			"TiberiuFr25"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bun-venit}}, {{bidi:$1}}!",
@@ -68,7 +69,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Corectare și adăugare de legături spre alte articole.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Adăugare de surse de încredere și actualizare de articole care sunt inactuale.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Creare de articole noi și extindere de articole scurte.",
-	"growthexperiments-homepage-suggested-edits-header": "Editări sugerate",
+	"growthexperiments-homepage-suggested-edits-header": "Modificări sugerate",
 	"growthexperiments-homepage-impact-header": "Impactul {{GENDER:$1|dvs.}}",
 	"growthexperiments-homepage-impact-no-js-fallback": "Vă rugăm să activați JavaScript pentru a vizualiza această componentă.",
 	"growthexperiments-homepage-impact-recent-activity-title": "Activitatea {{GENDER:|voastră}} recentă (din {{PLURAL:$2|ultima zi|ultimele $2 zile}})",
@@ -570,7 +571,7 @@
 	"growthexperiments-homepage-mentorship-about-subheader-optout": "Renunțarea la mentor",
 	"growthexperiments-homepage-mentorship-about-optout-par1": "Selectați butonul de mai jos pentru a renunța dacă momentan {{GENDER:|preferați}} să nu aveți un anumit mentor atribuit {{GENDER:|vouă}}. {{GENDER:|Puteți}} obține un nou mentor oricând {{GENDER:|dacă}} vă {{GENDER:|răzgândiți}}.",
 	"growthexperiments-homepage-mentorship-about-done": "Realizat",
-	"growthexperiments-homepage-special-contribute-title": "Editări sugerate",
+	"growthexperiments-homepage-special-contribute-title": "Modificări sugerate",
 	"growthexperiments-homepage-special-contribute-description": "Efectuați schimbări mici și ușoare (de exemplu, adăugați o legătură sau corectați) pentru a îmbunătăți articole existente.",
 	"growthexperiments-homepage-special-contribute-cta": "Vezi editări sugerate",
 	"growthexperiments-homepage-impact-contributions-link": "Vezi toate editările",
