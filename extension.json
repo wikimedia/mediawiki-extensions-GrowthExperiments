@@ -799,6 +799,13 @@
 						"UserFactory",
 						"GenderCache"
 					]
+				},
+				"ext.growthExperiments.impact": {
+					"class": "GrowthExperiments\\PersonalDashboard\\Impact",
+					"services": [
+						"GrowthExperimentsUserDatabaseHelper",
+						"UserOptionsLookup"
+					]
 				}
 			},
 			"ModuleGroups": {
@@ -821,6 +828,22 @@
 									]
 								}
 							]
+						},
+						{
+							"name": "sidebar",
+							"enabled": true,
+							"subgroups": [
+								{
+									"name": "primary",
+									"enabled": true,
+									"modules": [
+										{
+											"name": "ext.growthExperiments.impact",
+											"enabled": true
+										}
+									]
+								}
+							]
 						}
 					]
 				}
@@ -828,6 +851,16 @@
 		}
 	},
 	"ResourceModules": {
+		"ext.growthExperiments.PersonalDashboard.Impact.styles": {
+			"styles": [
+				"vue-components/Skeleton.less",
+				"ext.growthExperiments.Homepage.Impact/styles/Impact.less",
+				"ext.growthExperiments.Homepage.Impact/components/Impact.less",
+				"ext.growthExperiments.Homepage.Impact/components/LayoutWrapper.less",
+				"vue-components/CScoreCard.less",
+				"vue-components/CScoreCards.less"
+			]
+		},
 		"ext.growthExperiments.PersonalDashboard.Mentorship.styles": {
 			"localBasePath": "modules/ext.growthExperiments.PersonalDashboard.Mentorship.styles",
 			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.PersonalDashboard.Mentorship.styles",
