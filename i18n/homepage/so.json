@@ -164,6 +164,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Firfircoon}} $2 {{PLURAL:$2|maalmo|maalmood}} ka hor",
 	"growthexperiments-homepage-mentorship-intro": "Isticmaalahaan {{GENDER:$1| ee khibrada leh}} wuu ogyahay in aa cusubtahay wuuna kaa {{GENDER:$2| caawin karaa}} tafatirka.",
 	"growthexperiments-homepage-mentorship-question-button": "Weydii {{GENDER:$2|kaaga}} {{GENDER:$1|hagaha}} su'aal",
+	"growthexperiments-homepage-mentorship-question-error": "Waxbaa khaldamay markii su'aashaada la dirayay. Fadlan mar kale isku day.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Eeg {{GENDER:$2|kaaga}} {{GENDER:$1|hagahaaga}} wadahadaladiisa kale",
 	"growthexperiments-homepage-mentorship-dialog-title": "Weydii {{GENDER:$2|kaaga}} {{GENDER:$1|hagaha}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Markaad su'aal weydiisid, waxay noqonaysaa <strong>mid si guud u daabacan</strong> iyadoo ku hoos qoran magacaaga isticmaalaha ee {{GENDER:$2|kaaga}}, \"$2\", kuna socota $3, taasoo ah meesha {{GENDER:$1|isaga|iyada|ay}} ka heli karaan kuna ka jawaabi karaan su'aashaada.",

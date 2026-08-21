@@ -21,6 +21,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Das Lotsen-Modul ist aktiviert",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Das Lotsen-Modul ist vollständig deaktiviert. Dies wird normalerweise von der Software festgelegt und für A/B-Tests verwendet.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee hat sich von der Lotsenschaft abgemeldet; Mentee/Lotsen-Beziehung wird gelöscht, das Lotsen-Modul wird durch eine Möglichkeit ersetzt, sich wieder anzumelden",
+	"apierror-growthexperiments-setmenteestatus-no-change": "An deinem Lotsen-Status hat sich nichts geändert.",
 	"apihelp-query+growthmenteestatus-summary": "Mentee-Status des aktuellen Benutzers abfragen; siehe Dokumentation von action=growthsetmenteestatus für detaillierte Informationen zu einzelnen Status.",
 	"apihelp-query+growthmentormentee-summary": "Abrufen aller Mentees, die einem bestimmten Lotsen zugeordnet sind.",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Lotse, dessen Mentees abgefragt werden sollen",

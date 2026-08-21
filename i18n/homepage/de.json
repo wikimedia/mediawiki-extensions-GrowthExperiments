@@ -195,6 +195,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "Vor {{PLURAL:$2|einem Tag|$2 Tagen}} {{GENDER:$1|aktiv}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Dieser erfahrene Benutzer|Diese erfahrene Benutzerin}} weiß, dass du neu bist, und kann {{GENDER:$2|dir}} bei Fragen weiterhelfen.",
 	"growthexperiments-homepage-mentorship-question-button": "Stelle {{GENDER:$2|}}{{GENDER:$1|deinem Lotsen|deiner Lotsin}} eine Frage",
+	"growthexperiments-homepage-mentorship-question-error": "Beim Absenden deiner Frage ist ein Fehler aufgetreten. Bitte versuche es erneut.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Sieh {{GENDER:$2|dir}} andere Konversationen {{GENDER:$1|deines Lotsen|deiner Lotsin}} an.",
 	"growthexperiments-homepage-mentorship-dialog-title": "Frage {{GENDER:$2|}}{{GENDER:$1|deinen Lotsen|deine Lotsin}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Wenn du eine Frage stellst, ist sie unter {{GENDER:$2|deinem}} Benutzernamen „$2“ auf $3 <strong>veröffentlicht</strong>, auf der {{GENDER:$1|dieser|diese}} die Frage finden und darauf antworten kann.",
