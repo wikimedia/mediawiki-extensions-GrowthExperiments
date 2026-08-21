@@ -4,7 +4,8 @@
 			"Dan Mihai Pitea",
 			"JaimeDes",
 			"NGC 54",
-			"Paloi Sciurala"
+			"Paloi Sciurala",
+			"TiberiuFr25"
 		]
 	},
 	"growthexperiments-desc": "Această extensie conține experimente realizate de echipa Growth.",
@@ -145,7 +146,7 @@
 	"communityconfiguration-growthhomepage-gelevelingupgetstartedmaxtotaledits-help-text": "Numărul maxim de editări pe care îl poate avea un nou-venit pentru a se califica pentru primirea acestei notificări. Dacă este setat la 0, niciun nou-venit nu va primi această notificare. Cu cât este mai mare numărul, cu atât mai mulți nou-veniți vor primi această notificare. Această notificare este trimisă numai nou-veniților care nu au îndeplinit Editări sugerate.",
 	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-label": "Continuați să primiți notificări",
 	"communityconfiguration-growthhomepage-gelevelingupkeepgoingnotificationthresholdsmaximum-help-text": "Numărul maxim de editări pe care îl poate îndeplini un nou-venit pentru a se califica pentru primirea acestei notificări. Dacă este setat la 0,</br> niciun nou-venit nu va primi această notificare. Cu cât este mai mare numărul, cu atât mai mulți nou-veniți vor primi această notificare. Această notificare este trimisă numai nou-veniților care au îndeplinit deja cel puțin o singură Editare sugerată.",
-	"communityconfiguration-growthsuggestededits-title": "Editări sugerate",
+	"communityconfiguration-growthsuggestededits-title": "Modificări sugerate",
 	"communityconfiguration-growthsuggestededits-description": "Personalizează funcția de editări sugerate a paginii acasă a nou-venitului.",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-label": "Formate de infocasetă",
 	"communityconfiguration-growthsuggestededits-geinfoboxtemplates-help-text": "Aceste formate sunt necesare pentru funcția funcția sarcinii de sugestii de imagini pentru nou-veniți. Articolele care conțin aceste formate nu vor fi listate ca sarcini de sugestii de imagini.",
