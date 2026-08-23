@@ -110,13 +110,13 @@ class LinkRecommendationUpdater {
 			$revId,
 			IDBAccessObject::READ_LATEST,
 		);
-		if ( $recommendationState === LinkRecommendationStore::RECOMMENDATION_AVAILABLE ) {
+		if ( $recommendationState === LinkRecommendationState::AVAILABLE ) {
 			return $this->failure(
 				'link recommendation already stored',
 				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_ALREADY_STORED
 			);
 		}
-		if ( $recommendationState === LinkRecommendationStore::RECOMMENDATION_NOT_AVAILABLE && !$force ) {
+		if ( $recommendationState === LinkRecommendationState::NOT_AVAILABLE && !$force ) {
 			return $this->failure(
 				'link recommendation known to not exist',
 				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_KNOWN_UNAVAILABLE

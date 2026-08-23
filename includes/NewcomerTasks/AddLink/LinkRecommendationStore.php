@@ -4,9 +4,9 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
-use DomainException;
 use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\Util;
+use JsonException;
 use MediaWiki\Deferred\LinksUpdate\TemplateLinksTable;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\LinkBatchFactory;
@@ -18,6 +18,7 @@ use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 use stdClass;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -27,10 +28,6 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
  * Service that handles access to the link recommendation related database tables.
  */
 class LinkRecommendationStore {
-
-	public const RECOMMENDATION_AVAILABLE = 'recommendation_available';
-	public const RECOMMENDATION_NOT_AVAILABLE = 'recommendation_not_available';
-	public const RECOMMENDATION_UNKNOWN = 'recommendation_unknown';
 
 	public function __construct(
 		private IConnectionProvider $connectionProvider,
@@ -127,12 +124,10 @@ class LinkRecommendationStore {
 	}
 
 	/**
-	 * TODO: replace return values with ENUM once PHP 8.1 is available
 	 * @param int $revId
 	 * @param int $flags IDBAccessObject flags
-	 * @return string One of the LinkRecommendationStore::RECOMMENDATION_* constants
 	 */
-	public function getRecommendationStateByRevision( int $revId, int $flags = 0 ): string {
+	public function getRecommendationStateByRevision( int $revId, int $flags = 0 ): LinkRecommendationState {
 		$recommendationData = $this->getGrowthDBByFlags( $flags )->newSelectQueryBuilder()
 			->select( [ 'gelr_data' ] )
 			->from( 'growthexperiments_link_recommendations' )
@@ -142,12 +137,12 @@ class LinkRecommendationStore {
 			->fetchField();
 
 		if ( $recommendationData === false ) {
-			return self::RECOMMENDATION_UNKNOWN;
+			return LinkRecommendationState::UNKNOWN;
 		}
 		if ( $recommendationData === null ) {
-			return self::RECOMMENDATION_NOT_AVAILABLE;
+			return LinkRecommendationState::NOT_AVAILABLE;
 		}
-		return self::RECOMMENDATION_AVAILABLE;
+		return LinkRecommendationState::AVAILABLE;
 	}
 
 	/**
@@ -444,6 +439,7 @@ class LinkRecommendationStore {
 	 * @param stdClass[] $rows
 	 * @param int $flags IDBAccessObject flags
 	 * @return LinkRecommendation[]
+	 * @throws JsonException When gelr_data contains invalid JSON.
 	 */
 	private function getLinkRecommendationsFromRows( array $rows, int $flags = 0 ): array {
 		if ( !$rows ) {
@@ -472,11 +468,9 @@ class LinkRecommendationStore {
 			if ( $row->gelr_data === null ) {
 				throw new \InvalidArgumentException( __METHOD__ . ' called with row with null data' );
 			}
-			// TODO use JSON_THROW_ON_ERROR once we require PHP 7.3
-			$data = json_decode( $row->gelr_data, true );
-			if ( $data === null ) {
-				throw new DomainException( 'Invalid JSON: ' . json_last_error_msg() );
-			}
+			$data = json_decode( $row->gelr_data, associative: true, flags: JSON_THROW_ON_ERROR );
+			Assert::invariant( is_array( $data ), 'json_decode failed' );
+
 			$linkTarget = $linkTargets[$row->gelr_page] ?? null;
 			if ( !$linkTarget ) {
 				continue;

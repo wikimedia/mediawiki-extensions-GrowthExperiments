@@ -8,6 +8,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationMetadata;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationState;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\NullLinkRecommendation;
 use MediaWiki\Revision\RevisionRecord;
@@ -92,7 +93,7 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( 'v1', $linkRecommendation->getMetadata()->getApplicationVersion() );
 		$this->assertSame( $timestamp, $linkRecommendation->getMetadata()->getTaskTimestamp() );
 		$this->assertSame(
-			LinkRecommendationStore::RECOMMENDATION_AVAILABLE,
+			LinkRecommendationState::AVAILABLE,
 			$store->getRecommendationStateByRevision( $revisionIds['T2']['r3'] )
 		);
 
@@ -110,7 +111,7 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull( $store->getByRevId( $revisionIds['T3']['r3'] ) );
 		$this->assertNull( $store->getByPageId( $pageIds['T3'] ) );
 		$this->assertSame(
-			LinkRecommendationStore::RECOMMENDATION_UNKNOWN,
+			LinkRecommendationState::UNKNOWN,
 			$store->getRecommendationStateByRevision( $revisionIds['T3']['r3'] )
 		);
 
@@ -118,7 +119,7 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull( $store->getByRevId( $revisionIds['T5']['r3'] ) );
 		$this->assertNull( $store->getByPageId( $pageIds['T5'] ) );
 		$this->assertSame(
-			LinkRecommendationStore::RECOMMENDATION_NOT_AVAILABLE,
+			LinkRecommendationState::NOT_AVAILABLE,
 			$store->getRecommendationStateByRevision( $revisionIds['T5']['r3'] )
 		);
 
@@ -159,7 +160,7 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull( $store->getByPageId( $pageIds['T1'] ) );
 		$this->assertNull( $store->getByPageId( $pageIds['T4'] ) );
 		$this->assertSame(
-			LinkRecommendationStore::RECOMMENDATION_UNKNOWN,
+			LinkRecommendationState::UNKNOWN,
 			$store->getRecommendationStateByRevision( $revisionIds['T5']['r3'] )
 		);
 	}
