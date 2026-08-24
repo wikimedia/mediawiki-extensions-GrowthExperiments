@@ -13,7 +13,7 @@ export const mwConfigMock = {
 	get: ( key: string ): unknown => {
 		const values: Record<string, unknown> = {
 			wgSiteName: 'Dev Wiki',
-			GEInterestArticles: [],
+			wgGEInterestArticles: [],
 		};
 		if ( !( key in values ) ) {
 			// eslint-disable-next-line no-console

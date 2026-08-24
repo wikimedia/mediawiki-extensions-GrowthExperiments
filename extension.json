@@ -864,6 +864,55 @@
 		}
 	},
 	"ResourceModules": {
+		"ext.growthExperiments.AccountSetup": {
+			"localBasePath": "modules/ext.growthExperiments.AccountSetup",
+			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.AccountSetup",
+			"packageFiles": [
+				"init.js",
+				"AccountSetup.vue",
+				"AccountSetupStore.js",
+				"../vue-components/InterestSelector.vue",
+				{
+					"name": "codex-icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconPrevious",
+						"cdxIconClose"
+					]
+				}
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.user",
+				"mediawiki.util",
+				"@wikimedia/codex",
+				"vue",
+				"pinia"
+			],
+			"messages": [
+				"growthexperiments-account-setup-a11y-title",
+				"growthexperiments-account-setup-skip-a11y-label",
+				"growthexperiments-account-setup-back-a11y-label",
+				"growthexperiments-account-setup-step-counter",
+				"growthexperiments-account-setup-step-1-title",
+				"growthexperiments-account-setup-step-1-progress-button",
+				"growthexperiments-account-setup-step-2-title",
+				"growthexperiments-account-setup-step-2-skip-button",
+				"growthexperiments-account-setup-step-3-title",
+				"growthexperiments-account-setup-step-3-finish-button",
+				"growthexperiments-account-setup-motivation-option-reading-title",
+				"growthexperiments-account-setup-motivation-option-reading-description",
+				"growthexperiments-account-setup-motivation-option-editing-title",
+				"growthexperiments-account-setup-motivation-option-editing-description",
+				"growthexperiments-account-setup-motivation-option-both-title",
+				"growthexperiments-account-setup-motivation-option-both-description",
+				"growthexperiments-interest-selector-no-results-found",
+				"growthexperiments-interest-selector-a11y-label",
+				"growthexperiments-interest-selector-placeholder",
+				"growthexperiments-interest-selector-related-articles-heading",
+				"growthexperiments-interest-selector-success"
+			]
+		},
 		"ext.growthExperiments.PersonalDashboard.Impact.styles": {
 			"styles": [
 				"vue-components/Skeleton.less",

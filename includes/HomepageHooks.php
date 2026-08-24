@@ -182,6 +182,7 @@ class HomepageHooks implements
 					'GrowthExperimentsCommunityConfig',
 					'UserOptionsManager',
 					'TitleFactory',
+					'GrowthExperimentsFeatureManager',
 				],
 				'optional_services' => [
 					'TestKitchen.ExperimentManager',

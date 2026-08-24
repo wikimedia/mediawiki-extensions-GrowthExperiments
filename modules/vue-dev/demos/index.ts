@@ -4,8 +4,12 @@ import App from '../../ext.growthExperiments.StructuredTask.PreEdit/App.vue';
 import ReviseToneQuizPillDemo from './ReviseToneQuizPillDemo.vue';
 // @ts-expect-error importing types from .vue file does not work yet?
 import CommonComponentsDemo from './CommonComponentsDemo.vue';
+// @ts-expect-error importing types from .vue file does not work yet?
+import AccountSetupDemo from './AccountSetupDemo.vue';
+
 export default {
 	'Main App': App,
 	'Revise Tone quiz pill': ReviseToneQuizPillDemo,
 	'Common components demo': CommonComponentsDemo,
+	'Account Setup onboarding': AccountSetupDemo,
 };

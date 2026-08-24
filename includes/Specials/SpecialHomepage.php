@@ -2,8 +2,10 @@
 
 namespace GrowthExperiments\Specials;
 
+use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
@@ -13,6 +15,7 @@ use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
+use JsonException;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -47,6 +50,7 @@ class SpecialHomepage extends SpecialPage {
 		private readonly Config $wikiConfig,
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly TitleFactory $titleFactory,
+		private readonly FeatureManager $featureManager,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
 		parent::__construct( 'Homepage' );
@@ -81,6 +85,45 @@ class SpecialHomepage extends SpecialPage {
 		$out = $this->getContext()->getOutput();
 		$out->setPageTitleMsg( $this->getPageTitleMsg() );
 		$this->isMobile = Util::isMobile( $out->getSkin() );
+
+		$user = $this->getUser();
+		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+			$accountSetupMotivation = $this->userOptionsManager->getOption(
+				$user,
+				AccountSetupHooks::ACCOUNT_SETUP_MOTIVATION_PROP,
+			);
+
+			if ( !$accountSetupMotivation ) {
+				$out->addModules( 'ext.growthExperiments.AccountSetup' );
+				$out->addHTML( Html::element( 'div', [ 'id' => 'growthexperiments-account_setup' ] ) );
+			}
+
+			$interestArticlesEncoded = $this->userOptionsManager->getOption(
+				$user,
+				AccountSetupHooks::INTEREST_ARTICLES_PROP,
+			);
+			if ( $interestArticlesEncoded ) {
+				try {
+					$interestArticles = json_decode( $interestArticlesEncoded, flags: JSON_THROW_ON_ERROR );
+					if ( !is_array( $interestArticles ) || !array_reduce(
+						$interestArticles,
+						static fn ( $carry, $item ) => $carry && is_string( $item ),
+						true
+						) ) {
+						// If this is not an array of strings, then the user has probably messed with it => ignore.
+						$interestArticles = [];
+					}
+				} catch ( JsonException ) {
+					$interestArticles = [];
+				}
+			} else {
+				$interestArticles = [];
+			}
+			$out->addJsConfigVars( [
+				'wgGEInterestArticles' => $interestArticles,
+			] );
+		}
+
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
 		] );

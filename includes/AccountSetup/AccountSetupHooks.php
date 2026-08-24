@@ -27,6 +27,12 @@ class AccountSetupHooks implements
 
 	public const string INTEREST_ARTICLES_PROP = 'growthexperiments-interest-articles-editing';
 
+	/**
+	 * One of the following values:
+	 * reading, editing, both, skipped
+	 */
+	public const string ACCOUNT_SETUP_MOTIVATION_PROP = 'growthexperiments-account-setup-motivation';
+
 	public function __construct(
 		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly FeatureManager $featureManager,
@@ -43,6 +49,9 @@ class AccountSetupHooks implements
 	 */
 	public function onGetPreferences( $user, &$preferences ): void {
 		$preferences[self::INTEREST_ARTICLES_PROP] = [
+			'type' => 'api',
+		];
+		$preferences[self::ACCOUNT_SETUP_MOTIVATION_PROP] = [
 			'type' => 'api',
 		];
 	}
