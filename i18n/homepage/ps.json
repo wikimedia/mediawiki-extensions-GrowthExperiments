@@ -164,6 +164,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|ورځ|ورځې}} مخکې {{GENDER:$1|کارنده و|کارنده وو}}",
 	"growthexperiments-homepage-mentorship-intro": "دا {{GENDER:$1|ماهره کارن}} پوهېږي چې {{GENDER:$2|تاسو}} نوي ياست او کولی شي له {{GENDER:$2|تاسو}} سره په سمون کولو کې مرسته وکړي.",
 	"growthexperiments-homepage-mentorship-question-button": "له {{GENDER:$2|خپل}} {{GENDER:$1|لارښود}} نه پوښتنه وکړئ",
+	"growthexperiments-homepage-mentorship-question-error": "د پوښتنې خپرولو پرمهال يو څه ناسم پېښ شول. مهرباني وکړئ بيا هڅه وکړئ.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "د {{GENDER:$2|خپل}} {{GENDER:$1|لارښود}} نورې مرکې کتل",
 	"growthexperiments-homepage-mentorship-dialog-title": "له {{GENDER:$2|خپل}} {{GENDER:$1|لارښود}} نه پوښتنه وکړئ",
 	"growthexperiments-homepage-mentorship-questionreview-header": "کله چې تاسو يوه پوښتنه وکړئ، دا به {{GENDER:$2|ستاسو}} کارن‌نوم لاندې د \"$2\" څخه $3 ته <strong>په ټولگړې بڼه خپره شي</strong> چېرته چې {{GENDER:$1|هغه|هغوی}} کولی شئ دا ومومي او ستاسو پوښتنې ته ځواب ووايي.",

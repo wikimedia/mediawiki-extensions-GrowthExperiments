@@ -59,6 +59,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
+	"growthexperiments-homepage-specialpage-list": "新手主页",
 	"growthexperiments-homepage-tab": "主页",
 	"tooltip-pt-homepage": "{{GENDER:|您}}的首页",
 	"prefs-homepage": "新手编者功能",
@@ -363,6 +364,8 @@
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1个{{PLURAL:$1|主题}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "全选",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "全部删除",
+	"growthexperiments-interest-selector-no-results-found": "未找到结果。",
+	"growthexperiments-interest-selector-related-articles-heading": "相关条目",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "选择一些{{GENDER:$1|您}}感兴趣的主题进行编辑",
 	"growthexperiments-homepage-claimmentee-title": "认领学员",
 	"growthexperiments-homepage-claimmentee-pretext": "此页面允许{{GENDER:$1|您}}将学员的导师更改为{{GENDER:$1|你自己}}。建议{{GENDER:$1|你}}作为用户了解，或{{GENDER:$1|你}}作为用户在课程中使用此功能。",

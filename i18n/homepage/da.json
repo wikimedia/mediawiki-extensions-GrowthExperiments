@@ -170,6 +170,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktiv}} for $2 {{PLURAL:$2|dag|dage}} siden",
 	"growthexperiments-homepage-mentorship-intro": "Denne {{GENDER:$1|erfarne bruger}} ved, at du er ny, og kan hjælpe {{GENDER:$2|dig}} med at redigere.",
 	"growthexperiments-homepage-mentorship-question-button": "Stil {{GENDER:$2|din}} {{GENDER:$1|mentor}} et spørgsmål",
+	"growthexperiments-homepage-mentorship-question-error": "Noget gik galt under afsendelsen af dit spørgsmål. Prøv igen.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Vis {{GENDER:$2|din}} {{GENDER:$1|mentors}} andre samtaler",
 	"growthexperiments-homepage-mentorship-dialog-title": "Spørg {{GENDER:$2|din}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Når du stiller et spørgsmål, bliver det <strong>offentliggjort</strong> under {{GENDER:$2| dit}} brugernavn, \"$2\", på $3, hvilket er hvor {{GENDER:$1|han|hun|de}} kan finde og svare på dit spørgsmål.",

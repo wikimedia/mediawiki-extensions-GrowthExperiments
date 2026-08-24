@@ -9,6 +9,7 @@
 			"Josefine Hellroth Larsson (WMSE)",
 			"Larske",
 			"Mjälten",
+			"Nirmos (Wikimedia)",
 			"Sabelöga",
 			"Sebastian Berlin (WMSE)",
 			"Stefan2255",
@@ -17,6 +18,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Hemsida för nybörjare",
 	"growthexperiments-homepage-tab": "Hemsida",
 	"tooltip-pt-homepage": "{{GENDER:|Din}} hemsida",
 	"prefs-homepage": "Funktioner för nybörjarredigerare",

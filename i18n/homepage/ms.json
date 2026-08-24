@@ -166,6 +166,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktif}} $2 {{PLURAL:$2|hari}} lalu",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Pengguna berpengalaman}} ini tahu anda merupakan pengguna baharu dan boleh membantu {{GENDER:$2|anda}} dari segi penyuntingan.",
 	"growthexperiments-homepage-mentorship-question-button": "Tanya {{GENDER:$1|mentor}} {{GENDER:$2|anda}} satu soalan",
+	"growthexperiments-homepage-mentorship-question-error": "Ada masalah semasa menyiarkan soalan anda. Sila cuba lagi.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Lihat perbualan lain {{GENDER:$1|mentor}} {{GENDER:$2|anda}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Tanya {{GENDER:$1|mentor}} {{GENDER:$2|anda}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Apabila anda bertanya soalan, soalan itu akan <strong>diterbitkan secara terbuka</strong> di bawah {{GENDER:$2|nama pengguna}} anda \"$2\" pada $3 , yang merupakan tempat {{GENDER:$1|dia}} boleh mencari dan menjawab pertanyaan anda.",

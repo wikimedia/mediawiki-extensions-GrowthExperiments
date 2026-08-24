@@ -168,6 +168,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|gün}} əvvəl {{GENDER:$1|aktiv olub}}",
 	"growthexperiments-homepage-mentorship-intro": "Bu {{GENDER:$1|təcrübəli istifadəçi}} sizin yeni istifadəçi olduğunuzu bilir və {{GENDER:$2|sizə}} redaktə ilə bağlı kömək edə bilər.",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$1|Mentoruna}} {{GENDER:$2|sual}} ver",
+	"growthexperiments-homepage-mentorship-question-error": "Sualınızı paylaşarkən xəta baş verdi. Zəhmət olmasa, yenidən cəhd edin.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$1|Mentorunun}} {{GENDER:$2|digər}} müzakirələrinə bax",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$1|Mentorundan}} {{GENDER:$2|soruş}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Sual verdiyinizdə, o, {{GENDER:$1|mentorunuzun}} cavab verməsi üçün sizin adınızla ($2) hərkəsə açıq şəkildə $3 səhifəsində paylaşılır.",

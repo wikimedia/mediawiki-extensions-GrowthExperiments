@@ -19,6 +19,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "O módulo de mentoría está activado",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "O módulo de mentoría está totalmente desactivado. Normalmente isto está establecido polo software e utilízase para probas A/B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "O aprendiz abandonou a mentoría; eliminarase a relación entre aprendiz/mentor, substituirase o módulo de mentoría pola posibilidade de volvelo activar",
+	"apierror-growthexperiments-setmenteestatus-no-change": "Non se fixo ningún cambio na túa situación de mentoría.",
 	"apihelp-query+growthmenteestatus-summary": "Consultar o estado de aprendiz do usuario actual; consulta a documentación de \"action=growthsetmenteestatus\" para obter información detallada sobre os estados individuais.",
 	"apihelp-query+growthmentormentee-summary": "Obter todos os aprendices asignados a un mentor determinado",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor para o que consultar os aprendices",

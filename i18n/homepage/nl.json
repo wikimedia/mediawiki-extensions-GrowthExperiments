@@ -182,6 +182,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Actief}} $2 {{PLURAL:$2|dag|dagen}} geleden",
 	"growthexperiments-homepage-mentorship-intro": "Deze {{GENDER:$1|ervaren gebruiker}} weet dat u nieuw bent en kan {{GENDER:$2|u}} helpen met bewerken.",
 	"growthexperiments-homepage-mentorship-question-button": "Stel {{GENDER:$2|uw}} {{GENDER:$1|mentor}} een vraag",
+	"growthexperiments-homepage-mentorship-question-error": "Er is iets misgegaan bij het plaatsen van uw vraag. Probeer het opnieuw.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Bekijk andere gesprekken van {{GENDER:$2|uw}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Vraag {{GENDER:$2|uw}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Wanneer u een vraag stelt, wordt deze <strong>openbaar gepubliceerd</strong> onder {{GENDER:$2|uw}} gebruikersnaam, \"$2\", op $3, waar {{GENDER:$1|hij|zij|die}} uw vraag kan vinden en beantwoorden.",

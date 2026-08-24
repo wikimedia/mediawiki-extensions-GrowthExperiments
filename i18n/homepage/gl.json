@@ -167,6 +167,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Activo|Activa}} hai $2 {{PLURAL:$2|día|días}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Este usuario|Esta usuaria}} sabe que es {{GENDER:$2|novato|novata}} e pode axudarte a editar.",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|Fai}} unha pregunta {{GENDER:$1|ao teu mentor|á túa mentora}}",
+	"growthexperiments-homepage-mentorship-question-error": "Houbo un problema ao publicar a túa pregunta. Inténtao de novo.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|Ver}} as outras conversas {{GENDER:$1|do teu mentor|da túa mentora}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Pregunta}} {{GENDER:$1|ao teu mentor|á túa mentora}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Cando {{GENDER:$2|formulas}} unha pregunta, esta <strong>publícase para todo o mundo</strong> co teu nome de usuario, \"$2\", $3, que é onde {{GENDER:$1|pode}} encontrar a túa pregunta e respondela.",
