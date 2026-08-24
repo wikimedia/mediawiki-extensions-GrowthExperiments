@@ -26,8 +26,8 @@
 				{{ $i18n( 'growthexperiments-interest-selector-related-articles-heading' ).text() }}
 			</h2>
 			<ul
-				class="ext-growthExperiments-interest-selector-related-articles-list"
 				v-if="relatedArticles.length"
+				class="ext-growthExperiments-interest-selector-related-articles-list"
 			>
 				<li
 					v-for="article in relatedArticles"

@@ -20,6 +20,8 @@ const fakeMessage = ( key: string, ...params: ( string|number )[] ): FakeMessage
 	return {
 		text,
 		parse: text,
+		// @ts-expect-error technically not public, but available and used when no specific method is called
+		toString: () => 'Use explicitly .text() or .parse() on $i18n(...)!',
 	};
 };
 

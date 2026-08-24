@@ -72,6 +72,17 @@ export const mwTrackMock = function mwTrack( topic: string, value: number, extra
 	console.debug( `mwTrack( ${ topic }, ${ value }, ${ JSON.stringify( extraData ) } )` );
 };
 
+type DebouncedCallback = ( ...args: unknown[] ) => void;
+export const mwUtilMock = {
+	debounce( func: DebouncedCallback, wait = 0 ): DebouncedCallback {
+		let timeout: ReturnType<typeof setTimeout>|undefined;
+		return ( ...args: unknown[] ): void => {
+			clearTimeout( timeout );
+			timeout = setTimeout( () => func( ...args ), wait );
+		};
+	},
+};
+
 /**
  * Install a global `window.mw` stub for components that still access the `mw`
  * global directly instead of using injected endpoints (e.g. AccountSetup).
@@ -91,5 +102,6 @@ export const installMwGlobalStub = (): void => {
 		},
 		hook: mwHookMock,
 		track: mwTrackMock,
+		util: mwUtilMock,
 	};
 };

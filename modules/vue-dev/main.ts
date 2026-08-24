@@ -1,4 +1,5 @@
 import { App, Component, createApp } from 'vue';
+import { createPinia } from 'pinia';
 import '@wikimedia/codex/dist/codex.style.css';
 import '@wikimedia/codex-design-tokens/theme-wikimedia-ui-root.css';
 import '@wikimedia/codex-design-tokens/theme-wikimedia-ui.css';
@@ -27,6 +28,7 @@ const bootstrap = (): void => {
 			prefName: 'checkbox-mock-option-name',
 		} );
 
+		devApp.use( createPinia() );
 		devApp.use( loggerPlugin, {
 			mode: 'dev',
 			logger: console,

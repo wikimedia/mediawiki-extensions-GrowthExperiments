@@ -56,6 +56,7 @@
 		"less": "^4.2.0",
 		"moment": "^2.29.4",
 		"npm-run-all2": "^8.0.4",
+		"pinia": "3.0.4",
 		"postcss-less": "6.0.0",
 		"rollup": "3.30.0",
 		"stylelint-config-wikimedia": "0.19.3",
