@@ -44,6 +44,7 @@ class WelcomeSurveyHooks implements
 		private readonly WelcomeSurveyFactory $welcomeSurveyFactory,
 		private readonly CampaignConfig $campaignConfig,
 		private readonly CampaignLoader $campaignLoader,
+		private readonly FeatureManager $featureManager,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
 	}
@@ -277,7 +278,8 @@ class WelcomeSurveyHooks implements
 		return $this->isWelcomeSurveyEnabled()
 			&& !$context->getUser()->isTemp()
 			&& !$this->campaignConfig->shouldSkipWelcomeSurvey( $this->campaignLoader->getCampaign() )
-			&& !$loginHelper->isDisplayModePopup();
+			&& !$loginHelper->isDisplayModePopup()
+			&& !$this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser() );
 	}
 
 }

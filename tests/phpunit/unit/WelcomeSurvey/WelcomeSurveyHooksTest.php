@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Campaigns\CampaignLoader;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\WelcomeSurvey;
 use GrowthExperiments\WelcomeSurveyFactory;
@@ -318,6 +319,8 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 			[ 'Homepage', $homepageTitle ],
 			[ 'WelcomeSurvey', $welcomeSurveyTitle ],
 		] );
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( false );
 
 		$campaignConfig = $this->createMock( CampaignConfig::class );
 		$campaignConfig->method( 'isGrowthCampaign' )->willReturn(
@@ -334,6 +337,7 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 			$welcomeSurveyFactory,
 			$campaignConfig,
 			$campaignLoader,
+			$featureManager,
 			null,
 		);
 	}

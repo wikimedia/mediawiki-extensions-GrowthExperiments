@@ -281,7 +281,14 @@
 	],
 	"HookHandlers": {
 		"accountsetup": {
-			"class": "GrowthExperiments\\AccountSetup\\AccountSetupHooks"
+			"class": "GrowthExperiments\\AccountSetup\\AccountSetupHooks",
+			"services": [
+				"SpecialPageFactory",
+				"GrowthExperimentsFeatureManager",
+				"TitleFactory",
+				"ExtensionRegistry",
+				"UserIdentityUtils"
+			]
 		},
 		"communityconfig": {
 			"class": "GrowthExperiments\\Config\\CommunityConfigurationHooks",
@@ -441,7 +448,8 @@
 				"SpecialPageFactory",
 				"GrowthExperimentsWelcomeSurveyFactory",
 				"GrowthExperimentsCampaignConfig",
-				"GrowthExperimentsCampaignLoader"
+				"GrowthExperimentsCampaignLoader",
+				"GrowthExperimentsFeatureManager"
 			],
 			"optional_services": [
 				"TestKitchen.ExperimentManager"
@@ -471,6 +479,7 @@
 			"mentor"
 		],
 		"CentralAuthPostLoginRedirect": [
+			"accountsetup",
 			"welcomeSurvey"
 		],
 		"ChangesListSpecialPageStructuredFilters": "mentorfilters",
@@ -520,6 +529,7 @@
 		"MessageCacheFetchOverrides": "earlylifecycle",
 		"ParserFirstCallInit": "parserfunctions",
 		"PostLoginRedirect": [
+			"accountsetup",
 			"variant",
 			"welcomeSurvey"
 		],
