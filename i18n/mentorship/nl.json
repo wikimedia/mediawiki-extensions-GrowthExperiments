@@ -207,7 +207,7 @@
 	"growthexperiments-manage-mentors-edit-intro-msg": "Inleidend bericht",
 	"growthexperiments-manage-mentors-edit-is-auto-assigned": "Wordt automatisch toegewezen aan nieuwkomers?",
 	"growthexperiments-manage-mentors-edit-weight": "Aantal toegewezen nieuwkomers",
-	"growthexperiments-manage-mentors-edit-is-away": "Is weg?",
+	"growthexperiments-manage-mentors-edit-is-away": "Is afwezig?",
 	"growthexperiments-manage-mentors-edit-is-away-blocked": "De mentor “$1” is momenteel geblokkeerd en diens afwezigheidsstatus kan niet worden gewijzigd.",
 	"growthexperiments-manage-mentors-edit-away-until": "Afwezig tot",
 	"growthexperiments-manage-mentors-edit-reason": "Reden",
