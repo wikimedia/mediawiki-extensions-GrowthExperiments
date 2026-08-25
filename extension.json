@@ -446,10 +446,6 @@
 			"optional_services": [
 				"TestKitchen.ExperimentManager"
 			]
-		},
-		"confirmEmail": {
-			"class": "GrowthExperiments\\ConfirmEmailHooks",
-			"services": []
 		}
 	},
 	"Hooks": {
@@ -510,7 +506,6 @@
 			"mentor"
 		],
 		"LoadExtensionSchemaUpdates": "schema",
-		"AuthPreserveQueryParams": "confirmEmail",
 		"LocalUserCreated": [
 			"helppanel",
 			"homepage",
