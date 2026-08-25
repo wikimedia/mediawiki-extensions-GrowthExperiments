@@ -1237,6 +1237,7 @@
 				"growthexperiments-info-tooltip-close-label"
 			],
 			"dependencies": [
+				"mediawiki.api",
 				"mediawiki.user",
 				"moment",
 				"vue",

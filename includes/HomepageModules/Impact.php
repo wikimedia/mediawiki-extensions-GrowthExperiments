@@ -10,6 +10,7 @@ use GrowthExperiments\UserImpact\UserImpactStore;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\MainConfigNames;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -61,6 +62,11 @@ class Impact extends BaseModule {
 			'GEImpactIsSuggestedEditsActivatedForUser' => $this->isSuggestedEditsActivatedForUser,
 			'GEImpactMaxEdits' => $this->getConfig()->get( 'GEUserImpactMaxEdits' ),
 			'GEImpactMaxThanks' => $this->getConfig()->get( 'GEUserImpactMaxThanks' ),
+			'GEImpactUseWikibaseLabels' => in_array(
+				'wikibase-item',
+				$this->getConfig()->get( MainConfigNames::NamespaceContentModels ),
+				true
+			),
 		];
 	}
 

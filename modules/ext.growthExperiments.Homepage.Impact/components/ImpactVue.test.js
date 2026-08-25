@@ -7,7 +7,7 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconInfo: '',
 	cdxIconInfoFilled: ''
 } ), { virtual: true } );
-const { mount } = require( '@vue/test-utils' );
+const { mount, flushPromises } = require( '@vue/test-utils' );
 const Impact = require( './Impact.vue' );
 const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 const RecentActivity = require( './RecentActivity.vue' );
@@ -48,7 +48,7 @@ const impactServerData = () => ( {
 	},
 	totalPageviewsCount: 100,
 	recentEditsWithoutPageviews: {
-		article1: {
+		Q42: {
 			firstEditDate: '2022-12-14',
 			newestEdit: '20221214185420'
 		},
@@ -112,6 +112,8 @@ describe( 'ImpactVue', () => {
 			switch ( key ) {
 				case 'wgUserLanguage':
 					return 'en';
+				case 'GEImpactUseWikibaseLabels':
+					return false;
 				case 'wgTranslateNumerals':
 					return false;
 				case 'homepagemobile':
@@ -150,5 +152,44 @@ describe( 'ImpactVue', () => {
 		} );
 		expect( wrapper.findAllComponents( RecentActivity ) ).toHaveLength( 0 );
 		expect( wrapper.text() ).not.toContain( 'growthexperiments-homepage-impact-recent-activity-title' );
+	} );
+	it( 'shows Wikidata Item labels instead of QIDs', async () => {
+		global.mw.config.get.mockImplementation( ( key ) => {
+			switch ( key ) {
+				case 'wgUserLanguage':
+					return 'en';
+				case 'GEImpactUseWikibaseLabels':
+					return true;
+				case 'wgTranslateNumerals':
+					return false;
+				case 'homepagemobile':
+					return false;
+				default:
+					throw new Error( 'Unkown key: ' + key );
+			}
+		} );
+
+		global.mw.Api = jest.fn().mockImplementation( () => ( {
+			get: jest.fn().mockResolvedValue( {
+				query: {
+					pages: [
+						{
+							title: 'Q42',
+							terms: {
+								label: [ 'Test Item Label' ]
+							}
+						}
+					]
+				}
+			} )
+		} ) );
+
+		const wrapper = renderComponent();
+
+		await flushPromises();
+
+		const articlesList = wrapper.findComponent( ArticlesList );
+
+		expect( articlesList.vm.labels.Q42 ).toBe( 'Test Item Label' );
 	} );
 } );

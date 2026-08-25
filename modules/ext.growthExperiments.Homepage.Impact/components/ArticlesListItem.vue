@@ -14,7 +14,7 @@
 				weight="bold"
 				class="ext-growthExperiments-ArticleListItem__info__title"
 			>
-				{{ article.title }}
+				{{ label || article.title }}
 			</c-text>
 		</a>
 		<div class="ext-growthExperiments-ArticleListItem__pageviews">
@@ -106,6 +106,10 @@ module.exports = exports = {
 		article: {
 			type: Object,
 			required: true
+		},
+		label: {
+			type: String,
+			default: ''
 		}
 	},
 	setup() {
