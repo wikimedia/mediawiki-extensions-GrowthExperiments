@@ -143,7 +143,8 @@ class AccountSetupHooks implements
 	 * But since the two hooks handle returnToQuery differently, its new value is returned and handled by the caller.
 	 */
 	private function maybeRedirectToHomepage( string &$returnTo, array $returnToQuery ): ?array {
-		$user = RequestContext::getMain()->getUser();
+		$context = RequestContext::getMain();
+		$user = $context->getUser();
 		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
 			return null;
 		}
@@ -158,6 +159,10 @@ class AccountSetupHooks implements
 		}
 
 		$returnTo = $homepageLinkText;
+		if ( $context->getRequest()->getRawVal( 'mpo' ) ) {
+			$returnToQuery['mpo'] = $context->getRequest()->getRawVal( 'mpo' );
+		}
+
 		// TODO: figure out what we want/need to do with existing values of $returnToQuery
 		return $returnToQuery;
 	}

@@ -32,6 +32,11 @@ $wgParsoidSettings['wt2htmlLimits']['wikitextSize'] = 100 * 1024;
 $wgParsoidSettings['html2wtLimits']['htmlSize'] = 500 * 1024;
 $wgGEDeveloperSetup = true;
 
+// region AccountSetup
+$wgGEAccountSetupExperimentStartRegistrationDate = '1970-01-01T00:00:00';
+$wgTestKitchenEnableExperiments = true;
+// endregion
+
 $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services ) {
 	$copyEditTaskType = new TemplateBasedTaskType(
 		'copyedit',
