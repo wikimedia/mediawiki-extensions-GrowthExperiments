@@ -15,7 +15,6 @@
 	"welcomesurvey-save-btn": "Bitir",
 	"welcomesurvey-skip-btn": "Bu anketi {{GENDER:$1|atla}}",
 	"welcomesurvey-close-btn": "Kapat ve $1 sayfasına geri dön",
-	"welcomesurvey-privacy-policy-link-text": "Yeni editörlerdeki veriler hakkında daha fazla bilgi edinin",
 	"welcomesurvey-privacy-footer-text": "Wikimedia Vakfı {{GENDER:$1|yanıtlarınızı}} {{SITENAME}} sitesini düzenlemeye başlamanıza yardımcı olmak için kullanacak. [$2 Daha fazla bilgiyi gizlilik bildirimimizde bulabilirsiniz].",
 	"welcomesurvey-sidebar-editing-title": "Düzenleyerek başlangıç yapın",
 	"welcomesurvey-sidebar-editing-text": "Hemen hemen bütün sayfalar herkes tarafından düzenlenebilir ve içerik eklemek, hataları düzeltmek ve okunabilirliği artırmak için her gün yüzlerce değişiklik yapılır. Aşağıdaki sayfalar, {{GENDER:$1|ilgileniyorsanız}} katkıda bulunmanıza yardımcı olabilir.",

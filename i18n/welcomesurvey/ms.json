@@ -12,7 +12,6 @@
 	"welcomesurvey-save-btn": "Selesai",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Langkau}} tinjauan ini",
 	"welcomesurvey-close-btn": "Tutup dan kembali ke $1",
-	"welcomesurvey-privacy-policy-link-text": "Ketahui lebih lanjut tentang data pada alat sunting baharu",
 	"welcomesurvey-privacy-footer-text": "Yayasan Wikimedia akan menggunakan {{GENDER:$1| jawapan anda}} untuk membantu anda mula menyunting {{SITENAME}}. [$2 Ketahui lebih lanjut dalam penyata privasi kami].",
 	"welcomesurvey-sidebar-editing-title": "Mula dengan menyunting",
 	"welcomesurvey-sidebar-editing-text": "Hampir setiap halaman boleh disunting oleh sesiapa sahaja, dan beratus-ratus perubahan dibuat setiap jam untuk menambah kandungan, membetulkan kesilapan dan meningkatkan kebolehbacaan. Halaman berikut boleh membantu jika {{GENDER:$1|anda berminat}} untuk menyumbang.",

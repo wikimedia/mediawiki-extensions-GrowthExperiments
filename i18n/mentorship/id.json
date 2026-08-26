@@ -136,8 +136,6 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "Metrik murid yang layak dipuji",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-positive-message-help-text": "Dalam pesan positif baku, $1 secara otomatis diganti dengan nama pengguna yang dibimbing dan $2 dengan nama pengguna pembimbing (jika ada).",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-pretext": "{{GENDER:|Anda}} akan diberi tahu saat seorang murid layak untuk dipuji:",
-	"growthexperiments-mentor-list-missing-key": "Kunci <code>$1</code> tidak ada",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "Definisi guru berisi kunci tak terduga <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Guru $1 sudah ditambahkan ke daftar guru",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Guru $1 tidak ada di daftar guru",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Guru $1 bukanlah pengguna terdaftar",

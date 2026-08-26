@@ -12,7 +12,6 @@
 	"welcomesurvey-save-btn": "Dokončiť",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Preskočiť}} tento prieskum",
 	"welcomesurvey-close-btn": "Zavrieť a ísť späť na stránku $1",
-	"welcomesurvey-privacy-policy-link-text": "Viac informácií o údajoch o nových redaktoroch",
 	"welcomesurvey-privacy-footer-text": "Nadácia Wikimedia {{GENDER:$1|vaše}} odpovede použije nato, aby vám pomohla začať editovať {{GRAMMAR:akuzatív|{{SITENAME}}}}. [$2 Zistiť viac v našom prehlásení o ochrane osobných údajov].",
 	"welcomesurvey-sidebar-editing-title": "Začať s editáciou",
 	"welcomesurvey-sidebar-editing-text": "Takmer každá stránka môže byť upravovaná kýmkoľvek a každú hodinu sú vykonané desiatky zmien pridavajúce obsah, opravujúce chyby a vylepšujúce čitateľnosť. Nasledujúce stránky vám môžu pomôcť, pokiaľ {{GENDER:$1|chcete}} do Wikipédie tiež prispievať.",

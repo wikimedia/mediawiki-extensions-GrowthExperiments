@@ -11,7 +11,6 @@
 	"welcomesurvey-save-btn": "Qeda",
 	"welcomesurvey-skip-btn": "{{GENDER:$1| Yeqa}} le nhlolovo",
 	"welcomesurvey-close-btn": "Vala bese ubuyela ku- $1",
-	"welcomesurvey-privacy-policy-link-text": "Funda kabanzi mayelana nedatha yabahleli abasha",
 	"welcomesurvey-privacy-footer-text": "I-Wikimedia Foundation izosebenzisa {{GENDER:$1| zakho}} ukukusiza ukuthi uqale ukuhlela i-{{SITENAME}}. [ $2 Funda okwengeziwe esitatimendeni sethu sobumfihlo].",
 	"welcomesurvey-sidebar-editing-title": "Ukuqalisa ngokuhlela",
 	"welcomesurvey-sidebar-editing-text": "Cishe wonke amakhasi angahlelwa yinoma ubani, futhi amakhulu ezinguquko enziwa njalo ngehora ukuze kwengezwe okuqukethwe, kulungiswe amaphutha, futhi kuthuthukiswe ukufundeka. Amakhasi alandelayo angasiza uma {{GENDER:$1| unentshisekelo}} ekunikeleni.",

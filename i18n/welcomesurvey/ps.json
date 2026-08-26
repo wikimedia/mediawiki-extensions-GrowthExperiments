@@ -11,7 +11,6 @@
 	"welcomesurvey-save-btn": "پای",
 	"welcomesurvey-skip-btn": "دا اندغوښتنه {{GENDER:$1|پرېږدئ}}",
 	"welcomesurvey-close-btn": "تړل او بېرته $1 ته ورتلل",
-	"welcomesurvey-privacy-policy-link-text": "د نوو سمونگرانو د اومتوک اړوند لا ډېر ولولئ",
 	"welcomesurvey-privacy-footer-text": "د ويکي‌رسنۍ بنسټ به {{GENDER:$1|ستاسو}} ځوابونو څخه کار واخلي؛ ترڅو تاسو سره د {{SITENAME}} سمون پيلولو کې مرسته وکړئ. [$2 زموږ د پټنتيا پرېکړه‌ليک په اړه نور مالومات ترلاسه کړئ].",
 	"welcomesurvey-sidebar-editing-title": "سمون سره پيل کول",
 	"welcomesurvey-sidebar-editing-text": "تقريباً هر مخ د هر چا له خوا سمېدای شي، او په هره گړۍ کې سلگونه بدلونونه د منځپانگې ورگډولو، تېروتنو سمولو او د لوستلو وړتيا ښه کولو لپاره ترسره کېږي. که د ونډې اخيستلو لېوالتيا لرئ؛ نو لاندې مخونه له {{GENDER:$1|تاسو}} سره مرسته کولی شي.",

@@ -16,7 +16,6 @@
 	"welcomesurvey-save-btn": "Заврши",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескочи}} анкету",
 	"welcomesurvey-close-btn": "Затвори и врати ме на страницу $1",
-	"welcomesurvey-privacy-policy-link-text": "Детаљније",
 	"welcomesurvey-sidebar-editing-title": "Започните уређивање",
 	"welcomesurvey-sidebar-editing-text": "Свако може да уређује готово сваку страницу. Сваког сата уредници објаве неколико стотина измена додајући садржај, исправљајући грешке и побољшавајући читљивост. Следеће странице вам могу бити од помоћи {{GENDER:$1|ако желите}} да допринесете.",
 	"welcomesurvey-sidebar-editing-link1-text": "Упутство",

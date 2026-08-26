@@ -20,7 +20,6 @@
 	"welcomesurvey-save-btn": "Termina",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Salta}} questo sondaggio",
 	"welcomesurvey-close-btn": "Chiudi e torna a $1",
-	"welcomesurvey-privacy-policy-link-text": "Ulteriori informazioni sui dati sui nuovi utenti",
 	"welcomesurvey-privacy-footer-text": "Wikimedia Foundation userà le {{GENDER:$1|tue}} risposte per aiutarti a contribuire a {{SITENAME}}. [$2 Leggi di più nella nostra informativa sulla privacy].",
 	"welcomesurvey-sidebar-editing-title": "Inizia a contribuire",
 	"welcomesurvey-sidebar-editing-text": "Quasi ogni pagina può venire modificata da chiunque. Centinaia di modifiche sono effettuate ogni ora per aggiungere contenuti, correggere errori e migliorare la leggibilità delle voci. Le seguenti pagine potranno aiutarti se sei interessat{{GENDER:$1|o|a|o/a}} a contribuire.",

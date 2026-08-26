@@ -162,8 +162,6 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Vurke",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Gaskkalduhte",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "Du persovnnalaš giitámušaid ásahusat leat vurkejuvvon.",
-	"growthexperiments-mentor-list-missing-key": "Čoavdda <code>$1</code> váilu",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "Fáttardefinišuvdna sisttisdoallá vuordemeahttun čoavdaga <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Fáttar $1 lei juo fáttarlisttus ovdalaččas.",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Fáttar $1 ii leat fáttarlisttus",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Fáttar $1 ii leat registrerejuvvon geavaheaddji",

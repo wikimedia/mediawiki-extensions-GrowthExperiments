@@ -15,7 +15,6 @@
 	"welcomesurvey-save-btn": "Приключване",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескачане}} на проучването",
 	"welcomesurvey-close-btn": "Затваряне и връщане обратно към $1",
-	"welcomesurvey-privacy-policy-link-text": "Научете повече за данните на нови редактори",
 	"welcomesurvey-sidebar-editing-title": "Как да започнем с редактирането",
 	"welcomesurvey-sidebar-editing-text": "Почти всяка страница може да бъде редактирана от всеки и всеки час се правят стотици промени за добавяне на съдържание, коригиране на грешки и подобряване на четливостта. Следващите страници могат да Ви помогнат, ако сте {{GENDER:$1|заинтересувани}} да допринасяте.",
 	"welcomesurvey-sidebar-editing-link1-text": "Ръководство",

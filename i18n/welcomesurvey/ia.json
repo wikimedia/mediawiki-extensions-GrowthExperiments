@@ -11,7 +11,6 @@
 	"welcomesurvey-save-btn": "Finir",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Saltar}} iste inquesta",
 	"welcomesurvey-close-btn": "Clauder e retornar a $1",
-	"welcomesurvey-privacy-policy-link-text": "Apprender plus sur datas sur nove redactores",
 	"welcomesurvey-privacy-footer-text": "Le Fundation Wikimedia usara {{GENDER:$1|tu}} responsas pro adjutar te a comenciar a modificar {{SITENAME}}. [$2 Lege plus in nostre declaration de confidentialitate].",
 	"welcomesurvey-sidebar-editing-title": "Comenciar a modificar",
 	"welcomesurvey-sidebar-editing-text": "Quasi omne pagina pote esser modificate per omnes, e centos de cambiamentos es facite cata hora pro adder contento, corriger errores e meliorar legibilitate. Le sequente paginas pote adjutar si {{GENDER:$1|tu ha interesse}} in contribuer.",

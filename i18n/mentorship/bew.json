@@ -122,8 +122,6 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never": "Kaga' perna",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Simpen",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Urungin",
-	"growthexperiments-mentor-list-missing-key": "Koncian <code>$1</code> kaga' ada",
-	"growthexperiments-mentor-list-unexpected-key-mentor": "Penerangan mursid ada koncian nyang kaga' keancer <code>$1</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Mursid $1 udah ditambahin ke daptar mursid",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Mursid $1 kaga' ada di daptar mursid",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Mursid $1 bukan pemaké kedaptar",

@@ -18,6 +18,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Module-ka latalinta waa la shiday",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Module-ka latalinta si buuxda ayaa loo damiyay. Tani badanaa waxaa dejisa software-ka waxaana loo isticmaalaa tijaabooyinka A/B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "La-tashanaha ayaa ka baxay latalinta; xiriirka La-tashane/Lataliye waa la tirtiri doonaa, module-ka latalintana waxaa lagu beddeli doonaa ikhtiyaar dib loogu soo noqon karo.",
+	"apierror-growthexperiments-setmenteestatus-no-change": "Wax isbeddel ah laguma samayn xaaladdaada hagitaan.",
 	"apihelp-query+growthmenteestatus-summary": "Hubi xaaladda La-tashanaha ee isticmaalaha hadda; eeg dukumeentiga action=growthsetmenteestatus si aad u hesho faahfaahin ku saabsan xaaladaha kala duwan ee shaqsiyeed.",
 	"apihelp-query+growthmentormentee-summary": "Hel dhammaan La tashanayaasha loo qoondeeyay Lataliye la bixiyay",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Lataliyaha laga raadinayo La tashanayaasha",

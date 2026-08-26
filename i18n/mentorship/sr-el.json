@@ -129,8 +129,6 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never": "Nikad",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "Sačuvaj",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "Otkaži",
-	"growthexperiments-mentor-list-missing-key": "Ključ <code>$1</code> nedostaje",
-	"growthexperiments-mentor-list-datatype-mismatch": "<code>$1</code> je trebalo da bude <code>$2</code>, ali je <code>$3</code>",
 	"growthexperiments-mentor-writer-error-already-added": "Mentor $1 je već dodat na spisak mentora",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "Mentor $1 nije na spisku mentora",
 	"growthexperiments-mentor-writer-error-anonymous-user": "Mentor $1 nije registrovan korisnik",

@@ -18,7 +18,6 @@
 	"welcomesurvey-save-btn": "Valmis",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Ohita}} tämä kysely",
 	"welcomesurvey-close-btn": "Sulje ja palaa sivulle $1",
-	"welcomesurvey-privacy-policy-link-text": "Lisätietoja uusien käyttäjien tiedoista",
 	"welcomesurvey-privacy-footer-text": "Wikimedia-säätiö käyttää {{GENDER:$1|vastauksiasi}} auttaakseen sinua {{GRAMMAR:genitive|{{SITENAME}}}} muokkaamisen aloittamisessa. [$2 Lisätietoja löytyy tietosuojaselosteestamme].",
 	"welcomesurvey-sidebar-editing-title": "Muokkaamisen aloittaminen",
 	"welcomesurvey-sidebar-editing-text": "Lähes kaikkia sivuja voi muokata kuka tahansa, ja joka tunti tehdään satoja muutoksia, joilla lisätään sisältöä, korjataan virheitä ja parannetaan luettavuutta. Seuraavista sivuista voi olla apua, jos {{GENDER:$1|olet kiinnostunut}} muokkaamista.",

@@ -12,7 +12,6 @@
 	"welcomesurvey-save-btn": "Dhammaadka",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Ka bood}} sahankan",
 	"welcomesurvey-close-btn": "Xir oo ku noqo $1",
-	"welcomesurvey-privacy-policy-link-text": "Wax badan ka baro xogta ku saabsan tafatirayaasha cusub",
 	"welcomesurvey-privacy-footer-text": "Mu'asasada Wikimedia waxay isticmaali doontaa {{GENDER:$1|jawaabahaaga}} si ay kaaga caawiso inaad bilowdo tafatirka {{SITENAME}}. [$2 Wax badan ka ogow bayaankayaga asturnaanta].",
 	"welcomesurvey-sidebar-editing-title": "Bilaabidda tafatirka",
 	"welcomesurvey-sidebar-editing-text": "Ku dhawaad bog kasta qof walba wuu tafatiri karaa, waxaana saacad kasta la sameeyaa boqolaal isbeddel si loogu daro nuxur, loo saxo khaladaad, loona hagaajiyo akhris-fudaydka. Bogagga soo socda ayaa ku caawin kara haddii {{GENDER:$1|aad xiisaynayso}} inaad wax ku biiriso.",

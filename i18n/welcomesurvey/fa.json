@@ -21,7 +21,6 @@
 	"welcomesurvey-save-btn": "پایان",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|رد کردن}} این پیمایش",
 	"welcomesurvey-close-btn": "برای برگشتن به $1 صفحه را ببندید",
-	"welcomesurvey-privacy-policy-link-text": "در مورد داده‌ها از کاربران تازه‌وارد بیشتر بخوانید",
 	"welcomesurvey-sidebar-editing-title": "آغاز ویرایش",
 	"welcomesurvey-sidebar-editing-text": "تقریباً هر صفحه‌ای می‌تواند توسط هر کسی ویرایش شود، و صدها تغییر در هر ساعت برای افزودن محتوا، اصلاح اشتباهات، و بهبود خوانایی صورت می‌گیرد. اگر به مشارکت در این زمینه \n علاقه‌مندید صفحه‌های زیر می‌توانند به شما {{GENDER:$1|کمک کنند}}.",
 	"welcomesurvey-sidebar-editing-link1-text": "خودآموز",

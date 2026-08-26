@@ -135,7 +135,6 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-save": "محفوظ کریں",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-cancel": "منسوخ کریں",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-success": "آپ کی مخصوص ترتیباتِ ستائش کو محفوظ کر لیا گیا۔",
-	"growthexperiments-mentor-list-missing-key": "<code>$1</code> کلید موجود نہیں",
 	"growthexperiments-mentor-writer-error-already-added": "مرشد $1 پہلے سے مرشدین کی فہرست میں موجود ہے",
 	"growthexperiments-mentor-writer-error-not-in-the-list": "مرشد $1 مرشدین کی فہرست میں نہیں ہیں",
 	"growthexperiments-mentor-writer-error-anonymous-user": "مرشد $1 کا کھاتہ نہیں ہے",

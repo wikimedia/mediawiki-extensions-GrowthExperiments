@@ -13,7 +13,6 @@
 	"welcomesurvey-save-btn": "Finalizare",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Omiteți}} acest sondaj",
 	"welcomesurvey-close-btn": "Închide și mergeți înapoi la $1",
-	"welcomesurvey-privacy-policy-link-text": "Aflați mai multe despre datele despre editorii noi",
 	"welcomesurvey-privacy-footer-text": "Fundația Wikimedia va utiliza răspunsurile {{GENDER:$1|dvs.}} pentru a vă ajuta să începeți să editați {{SITENAME}}. [$2 Aflați mai multe în declarația noastră de confidențialitate].",
 	"welcomesurvey-sidebar-editing-title": "Începeți cu editarea",
 	"welcomesurvey-sidebar-editing-text": "Aproape orice pagină poate fi editată de oricine, și multe schimbări sunt făcute în fiecare oră pentru a adăuga conținut, corecta greșeli și îmbunătăți lizibilitatea. Următoarele pagini vă pot ajuta dacă {{GENDER:$1|vă interesează}} să contribuiți.",

@@ -17,7 +17,6 @@
 	"welcomesurvey-save-btn": "Beenden",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Überspringe}} diese Umfrage",
 	"welcomesurvey-close-btn": "Schließen und zurück zu $1",
-	"welcomesurvey-privacy-policy-link-text": "Mehr erfahren",
 	"welcomesurvey-privacy-footer-text": "Die Wikimedia Foundation wird {{GENDER:$1|deine}} Antworten verwenden, um dir bei der Bearbeitung von {{SITENAME}} zu helfen. [$2 Weitere Informationen in unserer Datenschutzerklärung].",
 	"welcomesurvey-sidebar-editing-title": "Mit dem Bearbeiten anfangen",
 	"welcomesurvey-sidebar-editing-text": "Fast jede Seite kann von jedem bearbeitet werden und jede Stunde werden Hunderte von Änderungen durchgeführt, um Inhalte hinzuzufügen, Fehler zu korrigieren oder die Lesbarkeit zu verbessern. Die folgenden Seiten können helfen, falls du an einer Mitwirkung {{GENDER:$1|interessiert bist}}.",
