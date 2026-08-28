@@ -51,4 +51,8 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 // Ignore VisualEditor stubs
 $cfg['exclude_file_list'][] = '../../extensions/VisualEditor/.phan/stubs/MobileContext.php';
 
+// Ignore PersonalDashboard stubs
+$cfg['exclude_file_list'][] = '../../extensions/PersonalDashboard/.phan/stubs/ExperimentInterface.php';
+$cfg['exclude_file_list'][] = '../../extensions/PersonalDashboard/.phan/stubs/ExperimentManagerInterface.php';
+
 return $cfg;
