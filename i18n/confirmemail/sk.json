@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"KormiSK",
-			"Luky001"
+			"Luky001",
+			"Wizzard"
 		]
 	},
 	"growthexperiments-createacct-username-description": "Vaše užívateľské meno je verejné a neskôr sa nebude dať schovať.",
 	"growthexperiments-confirmemail-emailhelp": "E-mail potrebujeme nato, aby sme vám mohli obnoviť prístup k účtu, pokiaľ prídete o heslo.",
 	"growthexperiments-confirmemail-emailrecommended": "E-mailová adresa (odporúčané)",
-	"growthexperiments-confirmemail-emailwarning": "Prosím, pozrite sa do svojho e-mailu a overte svoju e-mailovú adresu."
+	"growthexperiments-confirmemail-emailwarning": "Prosím, pozrite sa do svojho e-mailu a overte svoju e-mailovú adresu.",
+	"growthexperiments-campaigns-footer": "Vytvorením {{GENDER:|vášho}} účtu na tejto stránke sa účet priradí k tejto kampani na účely prispôsobenia prostredia a analýzy."
 }
