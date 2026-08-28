@@ -62,7 +62,9 @@ class NewcomerMilestoneIngress extends DomainEventIngress implements
 		PageLatestRevisionChangedEvent $event
 	): void {
 		$extensionRegistry = ExtensionRegistry::getInstance();
-		if ( !$extensionRegistry->isLoaded( 'Echo' ) ) {
+		// Echo is needed for sending a notification,
+		// PageViewInfo is needed for adding the view count to the notification.
+		if ( !$extensionRegistry->isLoaded( 'Echo' ) || !$extensionRegistry->isLoaded( 'PageViewInfo' ) ) {
 			return;
 		}
 		$user = $event->getPerformer();

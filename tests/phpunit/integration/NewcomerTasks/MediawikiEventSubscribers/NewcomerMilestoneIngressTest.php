@@ -25,6 +25,7 @@ class NewcomerMilestoneIngressTest extends MediaWikiIntegrationTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->markTestSkippedIfExtensionNotLoaded( 'Echo' );
+		$this->markTestSkippedIfExtensionNotLoaded( 'PageViewInfo' );
 		$this->overrideConfigValues( [
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 		] );
