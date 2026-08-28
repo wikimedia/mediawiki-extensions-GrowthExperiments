@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use MediaWiki\Config\Config;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentCoordinatorInterface;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\Registration\UserRegistrationLookup;
@@ -18,6 +19,7 @@ class FeatureManager {
 		private readonly UserRegistrationLookup $userRegistrationLookup,
 		private readonly LoggerInterface $logger,
 		private readonly ?ExperimentManagerInterface $experimentManager = null,
+		private readonly ?ExperimentCoordinatorInterface $experimentCoordinator = null,
 	) {
 	}
 
@@ -45,8 +47,13 @@ class FeatureManager {
 
 	/**
 	 * @param UserIdentity $user The current user
+	 * @param bool $userCreatedInThisRequest set to true if this is called in onLocalUserCreated or similar
+	 *                                       to ensure the ExperimentManager is aware of the user
 	 */
-	public function isEarlyOnboardingExperimentTreatment( UserIdentity $user ): bool {
+	public function isEarlyOnboardingExperimentTreatment(
+		UserIdentity $user,
+		bool $userCreatedInThisRequest = false
+	): bool {
 		if ( !$this->experimentManager ) {
 			return false;
 		}
@@ -66,6 +73,18 @@ class FeatureManager {
 			return false;
 		}
 
+		if ( $userCreatedInThisRequest ) {
+			if ( $this->experimentCoordinator ) {
+				$this->experimentCoordinator->updateUser( $user );
+			} else {
+				$this->logger->error(
+					'TestKitchen ExperimentCoordinator missing but experiment user adjustment requested.',
+					[
+						'exception' => new \RuntimeException,
+					]
+				);
+			}
+		}
 		$experiment = $this->experimentManager->getExperiment(
 			IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST
 		);
@@ -73,7 +92,9 @@ class FeatureManager {
 			return false;
 		}
 
-		$registrationDate = $this->userRegistrationLookup->getFirstRegistration( $user );
+		$registrationDate = $userCreatedInThisRequest ?
+			wfTimestamp( TimestampFormat::MW ) :
+			$this->userRegistrationLookup->getFirstRegistration( $user );
 		if ( !$registrationDate ) {
 			return false;
 		}

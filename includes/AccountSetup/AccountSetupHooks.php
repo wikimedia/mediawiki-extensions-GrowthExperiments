@@ -5,20 +5,26 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\AccountSetup;
 
 use GrowthExperiments\FeatureManager;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CentralAuth\Hooks\CentralAuthPostLoginRedirectHook;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Specials\Hook\PostLoginRedirectHook;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 
 class AccountSetupHooks implements
 	GetPreferencesHook,
+	LocalUserCreatedHook,
 	PostLoginRedirectHook
 {
+
 	public const string INTEREST_ARTICLES_PROP = 'growthexperiments-interest-articles-editing';
 
 	public function __construct(
@@ -27,6 +33,8 @@ class AccountSetupHooks implements
 		private readonly TitleFactory $titleFactory,
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly UserIdentityUtils $userIdentityUtils,
+		private readonly UserOptionsManager $userOptionsManager,
+		private readonly RedirectLookup $redirectLookup,
 	) {
 	}
 
@@ -61,6 +69,21 @@ class AccountSetupHooks implements
 				// mobile editor
 				|| str_starts_with( $title->getFragment(), '/editor/' )
 			);
+	}
+
+	/** @inheritDoc */
+	public function onLocalUserCreated( $user, $autocreated ): bool {
+		if ( $user->isTemp() || $autocreated ) {
+			return true;
+		}
+
+		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user, true ) ) {
+			return true;
+		}
+
+		$returnTo = RequestContext::getMain()->getRequest()->getText( 'returnto' );
+		$this->saveOriginArticleAsInterest( $user, $returnTo );
+		return true;
 	}
 
 	/**
@@ -130,4 +153,45 @@ class AccountSetupHooks implements
 		return $returnToQuery;
 	}
 
+	private function saveOriginArticleAsInterest( UserIdentity $user, string $returnTo ): void {
+		$initialInterestTitle = $this->getSignupTitleForInterest( $returnTo );
+		if ( $initialInterestTitle ) {
+			$interestArticlesToStore = json_encode(
+				[ $initialInterestTitle->getPrefixedText() ],
+				JSON_THROW_ON_ERROR
+			);
+			$this->userOptionsManager->setOption(
+				$user,
+				self::INTEREST_ARTICLES_PROP,
+				$interestArticlesToStore
+			);
+		}
+	}
+
+	private function getSignupTitleForInterest( string $returnTo ): ?Title {
+		$title = $this->titleFactory->newFromText( $returnTo );
+		if ( $title === null ) {
+			return null;
+		}
+		if ( !$title->canExist() ) {
+			return null;
+		}
+		if ( !$title->isContentPage() ) {
+			return null;
+		}
+		$redirectTitle = $this->redirectLookup->getRedirectTarget( $title );
+		if ( $redirectTitle ) {
+			$title = $this->titleFactory->newFromLinkTarget( $redirectTitle );
+		}
+		if ( !$title->exists() ) {
+			return null;
+		}
+		if ( !$title->inNamespace( NS_MAIN ) ) {
+			return null;
+		}
+		if ( $title->isMainPage() ) {
+			return null;
+		}
+		return $title;
+	}
 }

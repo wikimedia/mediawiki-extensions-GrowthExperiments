@@ -6,10 +6,13 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\FeatureManager;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWikiUnitTestCase;
 
@@ -253,6 +256,44 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 'signup', $type );
 	}
 
+	public function testOnLocalUserCreatedSkippedForTempUser(): void {
+		$sut = $this->newAccountSetupHooks( [
+			'featureManager' => $this->createNoOpMock( FeatureManager::class ),
+		] );
+
+		$this->assertTrue( $sut->onLocalUserCreated( $this->newUser( true ), false ) );
+	}
+
+	public function testOnLocalUserCreatedSkippedForAutocreatedUser(): void {
+		$sut = $this->newAccountSetupHooks( [
+			'featureManager' => $this->createNoOpMock( FeatureManager::class ),
+		] );
+
+		$this->assertTrue( $sut->onLocalUserCreated( $this->newUser(), true ) );
+	}
+
+	/**
+	 * The user is new in this request. The hook must tell FeatureManager, so that it
+	 * updates the experiment user before it reads the assigned group.
+	 */
+	public function testOnLocalUserCreatedSkippedOutsideTreatmentGroup(): void {
+		$user = $this->newUser();
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->expects( $this->once() )
+			->method( 'isEarlyOnboardingExperimentTreatment' )
+			->with( $user, true )
+			->willReturn( false );
+		$sut = $this->newAccountSetupHooks( [ 'featureManager' => $featureManager ] );
+
+		$this->assertTrue( $sut->onLocalUserCreated( $user, false ) );
+	}
+
+	private function newUser( bool $isTemp = false ): User {
+		$user = $this->createMock( User::class );
+		$user->method( 'isTemp' )->willReturn( $isTemp );
+		return $user;
+	}
+
 	private function newAccountSetupHooks( array $overrides = [] ): AccountSetupHooks {
 		$homepageTitle = $this->createMock( Title::class );
 		$homepageTitle->method( 'getPrefixedText' )->willReturn( 'Special:Homepage' );
@@ -261,9 +302,12 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 			->with( 'Homepage' )
 			->willReturn( $homepageTitle );
 
-		$featureManager = $this->createMock( FeatureManager::class );
-		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )
-			->willReturn( $overrides['earlyOnboarding'] ?? false );
+		$featureManager = $overrides['featureManager'] ?? null;
+		if ( !$featureManager ) {
+			$featureManager = $this->createMock( FeatureManager::class );
+			$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )
+				->willReturn( $overrides['earlyOnboarding'] ?? false );
+		}
 
 		$titleFactory = $this->createMock( TitleFactory::class );
 		if ( isset( $overrides['returnToTitle'] ) ) {
@@ -287,7 +331,9 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 			$featureManager,
 			$titleFactory,
 			$extensionRegistry,
-			$userIdentityUtils
+			$userIdentityUtils,
+			$this->createNoOpMock( UserOptionsManager::class ),
+			$this->createNoOpMock( RedirectLookup::class ),
 		);
 	}
 

@@ -287,7 +287,9 @@
 				"GrowthExperimentsFeatureManager",
 				"TitleFactory",
 				"ExtensionRegistry",
-				"UserIdentityUtils"
+				"UserIdentityUtils",
+				"UserOptionsManager",
+				"RedirectLookup"
 			]
 		},
 		"communityconfig": {
@@ -516,6 +518,7 @@
 		],
 		"LoadExtensionSchemaUpdates": "schema",
 		"LocalUserCreated": [
+			"accountsetup",
 			"helppanel",
 			"homepage",
 			"mentor",

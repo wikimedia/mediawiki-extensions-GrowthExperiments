@@ -248,15 +248,19 @@ return [
 		MediaWikiServices $services
 	): FeatureManager {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$tkExperimentManager = $services->has( 'TestKitchen.ExperimentManager' ) ?
-			$services->get( 'TestKitchen.ExperimentManager' ) :
-			null;
+		$tkExperimentCoordinator = null;
+		$tkExperimentManager = null;
+		if ( $services->has( 'TestKitchen.ExperimentManager' ) ) {
+			$tkExperimentManager = $services->get( 'TestKitchen.ExperimentManager' );
+			$tkExperimentCoordinator = $services->get( 'TestKitchen.ExperimentCoordinator' );
+		}
 		return new FeatureManager(
 			$services->getExtensionRegistry(),
 			$growthServices->getGrowthConfig(),
 			$services->getUserRegistrationLookup(),
 			$growthServices->getLogger(),
 			$tkExperimentManager,
+			$tkExperimentCoordinator,
 		);
 	},
 

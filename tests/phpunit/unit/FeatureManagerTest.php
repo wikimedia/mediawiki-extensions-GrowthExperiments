@@ -7,6 +7,7 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\IExperimentManager;
 use MediaWiki\Config\HashConfig;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentCoordinatorInterface;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentInterface;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -221,9 +222,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		?string $registrationDate,
 		bool $expected
 	): void {
-		if ( !interface_exists( ExperimentInterface::class ) ) {
-			$this->markTestSkipped( 'TestKitchen extension is not installed.' );
-		}
+		$this->skipIfTestKitchenIsMissing();
 
 		$user = new UserIdentityValue( 1, 'TestUser' );
 
@@ -255,6 +254,81 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * The SDK starts before the account exists. For a user created in this request,
+	 * the coordinator must update its user identifier before the group is read.
+	 */
+	public function testIsEarlyOnboardingExperimentTreatmentUpdatesTheExperimentUserForANewAccount(): void {
+		$this->skipIfTestKitchenIsMissing();
+		$user = new UserIdentityValue( 1, 'TestUser' );
+		$experimentCoordinator = $this->createMock( ExperimentCoordinatorInterface::class );
+		$experimentCoordinator->expects( $this->once() )
+			->method( 'updateUser' )
+			->with( $user );
+
+		$featureManager = $this->getFeatureManagerForTreatment( $user, $experimentCoordinator );
+
+		$this->assertTrue( $featureManager->isEarlyOnboardingExperimentTreatment( $user, true ) );
+	}
+
+	public function testIsEarlyOnboardingExperimentTreatmentKeepsTheExperimentUserForAnOlderAccount(): void {
+		$this->skipIfTestKitchenIsMissing();
+		$user = new UserIdentityValue( 1, 'TestUser' );
+		$experimentCoordinator = $this->createNoOpMock( ExperimentCoordinatorInterface::class );
+
+		$featureManager = $this->getFeatureManagerForTreatment( $user, $experimentCoordinator );
+
+		$this->assertTrue( $featureManager->isEarlyOnboardingExperimentTreatment( $user ) );
+	}
+
+	/**
+	 * ServiceWiring gives the coordinator together with the manager. If it is absent,
+	 * the group is still read, but from the identifier of the anonymous user.
+	 */
+	public function testIsEarlyOnboardingExperimentTreatmentLogsAMissingExperimentCoordinator(): void {
+		$this->skipIfTestKitchenIsMissing();
+		$user = new UserIdentityValue( 1, 'TestUser' );
+		$logger = $this->createMock( LoggerInterface::class );
+		$logger->expects( $this->once() )->method( 'error' );
+
+		$featureManager = $this->getFeatureManagerForTreatment( $user, null, $logger );
+
+		$this->assertTrue( $featureManager->isEarlyOnboardingExperimentTreatment( $user, true ) );
+	}
+
+	private function skipIfTestKitchenIsMissing(): void {
+		if ( !interface_exists( ExperimentInterface::class ) ) {
+			$this->markTestSkipped( 'TestKitchen extension is not installed.' );
+		}
+	}
+
+	/**
+	 * Provide a FeatureManager which puts $user into the early onboarding treatment group.
+	 */
+	private function getFeatureManagerForTreatment(
+		UserIdentityValue $user,
+		?ExperimentCoordinatorInterface $experimentCoordinator,
+		?LoggerInterface $logger = null
+	): FeatureManager {
+		$experimentMock = $this->createMock( ExperimentInterface::class );
+		$experimentMock->method( 'isAssignedGroup' )->willReturn( true );
+		$experimentManagerMock = $this->createMock( ExperimentManagerInterface::class );
+		$experimentManagerMock->method( 'getExperiment' )->willReturn( $experimentMock );
+
+		$userRegistrationLookupMock = $this->createMock( UserRegistrationLookup::class );
+		$userRegistrationLookupMock->method( 'getFirstRegistration' )
+			->with( $user )
+			->willReturn( '20260101000001' );
+
+		return $this->getFeatureManager( [
+			'config' => [ 'GEAccountSetupExperimentStartRegistrationDate' => '20260101000000' ],
+			'userRegistrationLookup' => $userRegistrationLookupMock,
+			'experimentManager' => $experimentManagerMock,
+			'experimentCoordinator' => $experimentCoordinator,
+			'logger' => $logger,
+		] );
+	}
+
+	/**
 	 * Provide a configured FeatureManager with all relevant config feature flags enabled
 	 *
 	 * @param array $overrides
@@ -280,8 +354,9 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			$extensionRegistryMock,
 			$config,
 			$userRegistrationLookupMock,
-			$this->createNoOpMock( LoggerInterface::class ),
-			$overrides['experimentManager'] ?? null
+			$overrides['logger'] ?? $this->createNoOpMock( LoggerInterface::class ),
+			$overrides['experimentManager'] ?? null,
+			$overrides['experimentCoordinator'] ?? null,
 		);
 	}
 }
