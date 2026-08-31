@@ -71,6 +71,29 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	}
 
 	/**
+	 * @covers ::execute
+	 */
+	public function testReadingRecommendationsModuleRendersWhenEnabled() {
+		$this->overrideConfigValue( 'GEHomepageReadingRecommendationsEnabled', true );
+		$user = $this->enableHomepageForTesting();
+		$response = $this->executeSpecialPage( '', null, null, $user );
+		$this->assertStringContainsString(
+			'growthexperiments-homepage-module-reading-recommendations',
+			$response[0]
+		);
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testReadingRecommendationsModuleHiddenWhenDisabled() {
+		$this->overrideConfigValue( 'GEHomepageReadingRecommendationsEnabled', false );
+		$user = $this->enableHomepageForTesting();
+		$response = $this->executeSpecialPage( '', null, null, $user );
+		$this->assertStringNotContainsString( 'reading-recommendations', $response[0] );
+	}
+
+	/**
 	 * @dataProvider provideTestMissingParametersToNewcomerTaskSubpath
 	 * @covers ::handleNewcomerTask
 	 * @param array $params

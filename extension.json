@@ -2848,6 +2848,10 @@
 				"personalized-praise": true
 			}
 		},
+		"GEHomepageReadingRecommendationsEnabled": {
+			"description": "Enable the reading recommendations module on the newcomer homepage.",
+			"value": false
+		},
 		"GEHomepageSuggestedEditsEnabled": {
 			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",
 			"value": true

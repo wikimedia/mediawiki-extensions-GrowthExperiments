@@ -10,6 +10,7 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\MentorshipOptIn;
+use GrowthExperiments\HomepageModules\ReadingRecommendations;
 use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\StartEmail;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -215,6 +216,16 @@ class HomepageModuleRegistry {
 					$services->getTitleFactory(),
 					$services->getMainWANObjectCache(),
 					$services->getHttpRequestFactory()
+				);
+			},
+			ReadingRecommendations::MODULE_ID => static function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				return new ReadingRecommendations(
+					$context,
+					$growthServices->getGrowthWikiConfig()
 				);
 			},
 		];

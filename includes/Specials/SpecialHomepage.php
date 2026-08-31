@@ -9,6 +9,7 @@ use GrowthExperiments\FeatureManager;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
+use GrowthExperiments\HomepageModules\ReadingRecommendations;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Mentorship\IMentorManager;
@@ -252,6 +253,9 @@ class SpecialHomepage extends SpecialPage {
 				$mentorshipState === IMentorManager::MENTORSHIP_ENABLED,
 			'mentorship-optin' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
 				$mentorshipState === IMentorManager::MENTORSHIP_OPTED_OUT,
+			ReadingRecommendations::MODULE_ID => $this->getConfig()->get(
+				'GEHomepageReadingRecommendationsEnabled'
+			),
 			'help' => true,
 		] );
 		$modules = [];
@@ -272,8 +276,12 @@ class SpecialHomepage extends SpecialPage {
 			'main' => [
 				'primary' => [ 'banner', 'welcomesurveyreminder', 'startemail' ],
 				'secondary' => $isSuggestedEditsEnabled ?
-					[ 'start-startediting', 'suggested-edits' ] :
-					[ 'impact' ],
+					[
+						'start-startediting',
+						'suggested-edits',
+						ReadingRecommendations::MODULE_ID,
+					] :
+					[ 'impact', ReadingRecommendations::MODULE_ID ],
 			],
 			'sidebar' => [
 				'primary' => array_merge(
