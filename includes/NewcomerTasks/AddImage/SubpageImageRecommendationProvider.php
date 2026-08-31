@@ -107,7 +107,7 @@ class SubpageImageRecommendationProvider
 						$services->getContentLanguage()->getFallbackLanguages(),
 						$services->getLanguageNameUtils(),
 						new DerivativeContext( RequestContext::getMain() ),
-						$services->getSiteStore()
+						$services->getSiteLookup()
 					),
 					$growthServices->getImageRecommendationApiHandler()
 				);

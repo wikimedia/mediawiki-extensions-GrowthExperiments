@@ -7,7 +7,7 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Site\Site;
-use MediaWiki\Site\SiteStore;
+use MediaWiki\Site\SiteLookup;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider
@@ -122,8 +122,8 @@ class ImageRecommendationMetadataProviderTest extends \MediaWikiIntegrationTestC
 		], $overrides );
 	}
 
-	private function getMockSiteLookup(): SiteStore {
-		$siteLookup = $this->createMock( SiteStore::class );
+	private function getMockSiteLookup(): SiteLookup {
+		$siteLookup = $this->createMock( SiteLookup::class );
 		$siteLookup->method( 'getSite' )->willReturnCallback(
 			function ( $siteId ) {
 				$site = $this->createMock( Site::class );

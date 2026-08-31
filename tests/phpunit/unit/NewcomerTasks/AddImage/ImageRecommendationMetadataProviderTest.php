@@ -8,7 +8,7 @@ use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Language\Language;
 use MediaWiki\Language\LanguageNameUtils;
 use MediaWiki\Site\Site;
-use MediaWiki\Site\SiteStore;
+use MediaWiki\Site\SiteLookup;
 use MediaWikiUnitTestCase;
 use StatusValue;
 
@@ -180,7 +180,7 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 			$this->getImageDescription( [
 				'en' => 'Description',
 			] ) );
-		$siteLookup = $this->createMock( SiteStore::class );
+		$siteLookup = $this->createMock( SiteLookup::class );
 		$siteLookup->method( 'getSite' )->willReturn( null );
 		$metadataProvider = new ImageRecommendationMetadataProvider(
 			$metadataService,
@@ -340,8 +340,8 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 		return $localizer;
 	}
 
-	private function getMockSiteLookup(): SiteStore {
-		$siteLookup = $this->createMock( SiteStore::class );
+	private function getMockSiteLookup(): SiteLookup {
+		$siteLookup = $this->createMock( SiteLookup::class );
 		$siteLookup->method( 'getSite' )->willReturnCallback(
 			function ( $siteId ) {
 				$site = $this->createMock( Site::class );
