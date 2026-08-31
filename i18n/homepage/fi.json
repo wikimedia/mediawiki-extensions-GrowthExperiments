@@ -13,6 +13,7 @@
 			"Rönttönen",
 			"Samoasambia",
 			"Veikk0.ma",
+			"Wikipeedikko",
 			"Yupik"
 		]
 	},
@@ -149,6 +150,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktiivinen}} $2 {{PLURAL:$2|päivä|päivää}} sitten",
 	"growthexperiments-homepage-mentorship-intro": "Tämä {{GENDER:$1|kokenut käyttäjä}} tietää, että olet uusi, ja hän voi auttaa {{GENDER:$2|sinua}} muokkaamisessa.",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|Kysy}} {{GENDER:$1|mentoriltasi}}",
+	"growthexperiments-homepage-mentorship-question-error": "Kysymystäsi lähetettäessä tapahtui virhe. Yritä uudelleen.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Katso {{GENDER:$2|mentorisi}} {{GENDER:$1|muut}} keskustelut",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Kysy}} {{GENDER:$1|mentoriltasi}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Kun esität kysymyksen, se <strong>lisätään julkisesti</strong> käyttäjänimesi (”$2”) kanssa $3, jossa {{GENDER:$1|hän}} voi lukea kysymyksesi ja vastata siihen.",

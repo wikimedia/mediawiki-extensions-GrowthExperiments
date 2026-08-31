@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"MITO",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Wikipeedikko"
 		]
 	},
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Uusi tila",
+	"apierror-growthexperiments-setmenteestatus-no-change": "Mentorointiasemaasi ei tehty muutoksia.",
 	"apihelp-growthmanagementorlist-param-geaction": "Toiminto",
 	"apihelp-growthmanagementorlist-param-summary": "Syy muutokselle"
 }
