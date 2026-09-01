@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
@@ -24,6 +25,7 @@ use MediaWiki\Page\LinkBatch;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\Status;
 use MediaWiki\Status\StatusFormatter;
+use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleParser;
@@ -31,7 +33,9 @@ use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\LogLevel;
 use StatusValue;
+use TestLogger;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester
@@ -72,7 +76,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
 			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $statusFormatter,
-			$requestFactory, $titleFactory,
+			$this->getMockTitleParser(), $requestFactory, $titleFactory,
 			'https://example.com', $taskTypes, $topics );
 
 		$taskSet = $suggester->suggest( $user, $taskSetFilters, $limit );
@@ -89,6 +93,116 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$actualTaskData = $this->taskSetToArray( $taskSet );
 			$this->assertArrayEquals( $expectedTaskData, $actualTaskData, false, false );
 		}
+	}
+
+	public function testSuggestWithInterests() {
+		$user = new UserIdentityValue( 1, 'Foo' );
+		$taskTypes = self::getTaskTypes( [ 'copyedit' => [ 'Copy-1' ] ] );
+
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
+		$requestFactory = $this->getMockRequestFactory( [
+			[
+				'params' => [
+					'srsearch' => 'hastemplate:"Copy-1" morelikethis:"Albert_Einstein"',
+					'srsort' => 'relevance',
+				],
+				'response' => [
+					'query' => [
+						'search' => [
+							[ 'ns' => 0, 'title' => 'Foo' ],
+						],
+						'searchinfo' => [ 'totalhits' => 10 ],
+					],
+				],
+			],
+			[
+				'params' => [
+					'srsearch' => 'hastemplate:"Copy-1" morelikethis:"Coffee"',
+					'srsort' => 'relevance',
+				],
+				'response' => [
+					'query' => [
+						'search' => [
+							[ 'ns' => 0, 'title' => 'Bar' ],
+						],
+						'searchinfo' => [ 'totalhits' => 5 ],
+					],
+				],
+			],
+		] );
+
+		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
+			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
+			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
+			$requestFactory, $this->getMockTitleFactory(),
+			'https://example.com', $taskTypes, [] );
+
+		$taskSetFilters = new TaskSetFilters( [ 'copyedit' ], [], null,
+			[ 'Albert Einstein', 'Coffee' ] );
+		$taskSet = $suggester->suggest( $user, $taskSetFilters );
+
+		$this->assertInstanceOf( TaskSet::class, $taskSet );
+		$this->assertTrue( $taskSet->filtersEqual( $taskSetFilters ) );
+		// Every task is tagged with the interest that produced it.
+		$interestsByTitle = [];
+		foreach ( $taskSet as $task ) {
+			$topics = $task->getTopics();
+			$this->assertCount( 1, $topics );
+			$this->assertInstanceOf( InterestBasedTopic::class, $topics[0] );
+			$interestsByTitle[$task->getTitle()->getDBkey()] = $topics[0]->getId();
+		}
+		$this->assertSame( [
+			'Foo' => 'Albert Einstein',
+			'Bar' => 'Coffee',
+		], $interestsByTitle );
+	}
+
+	public function testSuggestWithInterestsSkipsInvalidTitles() {
+		$user = new UserIdentityValue( 1, 'Foo' );
+		$taskTypes = self::getTaskTypes( [ 'copyedit' => [ 'Copy-1' ] ] );
+
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
+		// The request factory mock asserts that exactly one request is made: neither
+		// the malformed interest nor the non-main-namespace interest may become
+		// a search query.
+		$requestFactory = $this->getMockRequestFactory( [
+			[
+				'params' => [
+					'srsearch' => 'hastemplate:"Copy-1" morelikethis:"Coffee"',
+					'srsort' => 'relevance',
+				],
+				'response' => [
+					'query' => [
+						'search' => [
+							[ 'ns' => 0, 'title' => 'Bar' ],
+						],
+						'searchinfo' => [ 'totalhits' => 5 ],
+					],
+				],
+			],
+		] );
+
+		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
+			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
+			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
+			$requestFactory, $this->getMockTitleFactory(),
+			'https://example.com', $taskTypes, [] );
+		$logger = new TestLogger( true );
+		$suggester->setLogger( $logger );
+
+		$taskSet = $suggester->suggest( $user,
+			new TaskSetFilters( [ 'copyedit' ], [], null, [ '<bad>', 'Talk:Baz', 'Coffee' ] ) );
+
+		$this->assertInstanceOf( TaskSet::class, $taskSet );
+		$this->assertCount( 1, $taskSet );
+		$task = iterator_to_array( $taskSet )[0];
+		$this->assertSame( 'Coffee', $task->getTopics()[0]->getId() );
+		$this->assertSame( [
+			[ LogLevel::WARNING, 'Skipping malformed interest title: {interest}' ],
+			[ LogLevel::WARNING, 'Skipping interest that is not a plain main-namespace title: {interest}' ],
+		], $logger->getBuffer() );
 	}
 
 	public static function provideSuggest() {
@@ -425,7 +539,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
 			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $statusFormatter,
-			$requestFactory, $titleFactory,
+			$this->getMockTitleParser(), $requestFactory, $titleFactory,
 			'https://example.com', $taskTypes, $topics );
 
 		$filteredTaskSet = $suggester->filter( $user, $taskSet );
@@ -641,6 +755,31 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			return $title;
 		} );
 		return $titleFactory;
+	}
+
+	/**
+	 * A parser which handles main-namespace and talk-namespace titles and
+	 * throws for titles that start with '<'.
+	 * @return TitleParser|MockObject
+	 */
+	private function getMockTitleParser() {
+		// The real constructor calls wfMessage(), which needs services.
+		$malformedTitleException = $this->createMock( MalformedTitleException::class );
+		$titleParser = $this->createNoOpMock( TitleParser::class, [ 'parseTitle' ] );
+		$titleParser->method( 'parseTitle' )->willReturnCallback(
+			static function ( $text ) use ( $malformedTitleException ) {
+				if ( str_starts_with( $text, '<' ) ) {
+					throw $malformedTitleException;
+				}
+				$namespace = NS_MAIN;
+				if ( str_starts_with( $text, 'Talk:' ) ) {
+					$namespace = NS_TALK;
+					$text = substr( $text, strlen( 'Talk:' ) );
+				}
+				return new TitleValue( $namespace, strtr( $text, ' ', '_' ) );
+			}
+		);
+		return $titleParser;
 	}
 
 	/**

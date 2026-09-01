@@ -12,6 +12,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\Status\StatusFormatter;
+use MediaWiki\Title\TitleParser;
 use MediaWiki\User\UserIdentityValue;
 use Psr\Log\NullLogger;
 use StatusValue;
@@ -52,6 +53,7 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 			$this->createNoOpMock( LinkBatchFactory::class ),
 			StatsFactory::newNull(),
 			$statusFormatterFactory,
+			$this->createNoOpMock( TitleParser::class ),
 			$this->getTopicRegistry( $topics ),
 			new NullLogger()
 		);

@@ -1060,6 +1060,7 @@ return [
 				$services->getTitleFactory(),
 				$services->getLinkBatchFactory(),
 				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+				$services->getTitleParser(),
 				$growthConfig->get( 'GENewcomerTasksRemoteApiUrl' ),
 				$growthServices->getTopicRegistry(),
 				$logger
@@ -1074,6 +1075,7 @@ return [
 				$services->getLinkBatchFactory(),
 				$services->getStatsFactory(),
 				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+				$services->getTitleParser(),
 				$growthServices->getTopicRegistry(),
 				$logger
 			);

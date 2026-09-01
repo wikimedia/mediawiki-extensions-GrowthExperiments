@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
@@ -66,17 +67,34 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 		$taskSetFilters = new TaskSetFilters( [ 'copyedit' ], [] );
 		$taskSetFilterLinks = new TaskSetFilters( [ 'links' ], [] );
 		$taskSetFilterArt = new TaskSetFilters( [ 'copyedit' ], [ 'arts' ] );
+		$taskSetFilterCoffeeTopic = new TaskSetFilters( [ 'copyedit' ], [ 'Coffee' ] );
+		$taskSetFilterCoffeeInterest = new TaskSetFilters( [ 'copyedit' ], [], null, [ 'Coffee' ] );
+		$taskSetFilterTeaInterest = new TaskSetFilters( [ 'copyedit' ], [], null, [ 'Tea' ] );
 
 		$taskA = new Task( $copyeditType, new TitleValue( NS_MAIN, 'Foo' ) );
 		$taskB = new Task( $linksType, new TitleValue( NS_MAIN, 'Bar' ) );
 		$taskC = new Task( $copyeditType, new TitleValue( NS_MAIN, 'Foo' ) );
 		$taskC->setTopics( [ new Topic( 'arts' ) ] );
+		$taskD = new Task( $copyeditType, new TitleValue( NS_MAIN, 'Espresso' ) );
+		$taskD->setTopics( [ new InterestBasedTopic( 'Coffee', new TitleValue( NS_MAIN, 'Coffee' ) ) ] );
 
 		$suggesterA = new StaticTaskSuggester( [ $taskA ] );
 		$suggesterB = new StaticTaskSuggester( [ $taskB ] );
 		$suggesterC = new StaticTaskSuggester( [ $taskC ] );
+		$suggesterD = new StaticTaskSuggester( [ $taskD ] );
 
 		$suggesterFailA = new class( [ $taskA ] )  extends StaticTaskSuggester {
+			public function suggest(
+				$user,
+				$taskSetFilters,
+				$limit = null,
+				$offset = null,
+				$options = []
+			) {
+				return StatusValue::newFatal( 'error' );
+			}
+		};
+		$suggesterFailD = new class( [ $taskD ] ) extends StaticTaskSuggester {
 			public function suggest(
 				$user,
 				$taskSetFilters,
@@ -218,6 +236,81 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 					],
 				],
 				'expectedResult' => new TaskSet( [ $taskC ], 1, 0, $taskSetFilterArt ),
+			],
+			'cache miss due to interest filter change' => [
+				'calls' => [
+					[
+						'suggester' => $suggesterD,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilterCoffeeInterest,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
+						],
+					],
+					[
+						'suggester' => $suggesterA,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilterTeaInterest,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
+						],
+					],
+				],
+				'expectedResult' => new TaskSet( [ $taskA ], 1, 0, $taskSetFilterTeaInterest ),
+			],
+			'cache miss when interests replace topics with the same value' => [
+				'calls' => [
+					[
+						'suggester' => $suggesterD,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilterCoffeeTopic,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
+						],
+					],
+					[
+						'suggester' => $suggesterA,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilterCoffeeInterest,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
+						],
+					],
+				],
+				'expectedResult' => new TaskSet( [ $taskA ], 1, 0, $taskSetFilterCoffeeInterest ),
+			],
+			'cache hit with same interests' => [
+				'calls' => [
+					[
+						'suggester' => $suggesterD,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilterCoffeeInterest,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
+						],
+					],
+					[
+						'suggester' => $suggesterFailD,
+						'args' => [
+							'user' => $user,
+							'taskSetFilters' => $taskSetFilterCoffeeInterest,
+							'limit' => 15,
+							'offset' => 0,
+							'options' => [],
+						],
+					],
+				],
+				'expectedResult' => new TaskSet( [ $taskD ], 1, 0, $taskSetFilterCoffeeInterest ),
 			],
 		];
 	}

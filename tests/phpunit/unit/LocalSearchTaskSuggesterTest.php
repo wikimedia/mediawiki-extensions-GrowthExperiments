@@ -16,6 +16,7 @@ use MediaWiki\Search\SearchEngine;
 use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\Status\Status;
 use MediaWiki\Status\StatusFormatter;
+use MediaWiki\Title\TitleParser;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
@@ -59,6 +60,7 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->getNewcomerTasksUserOptionsLookup(),
 			$this->createNoOpMock( LinkBatchFactory::class ),
 			$this->createNoOpMock( StatusFormatter::class ),
+			$this->createNoOpMock( TitleParser::class ),
 			[],
 			[],
 			$this->getStatsFactory()

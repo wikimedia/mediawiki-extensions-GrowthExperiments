@@ -13,6 +13,7 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleParser;
 use MediaWiki\User\UserIdentityValue;
 use Psr\Log\NullLogger;
 use StatusValue;
@@ -52,6 +53,7 @@ class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTes
 			$this->createNoOpMock( TitleFactory::class ),
 			$this->createNoOpMock( LinkBatchFactory::class ),
 			$statusFormatterFactory,
+			$this->createNoOpMock( TitleParser::class ),
 			'https://example.com',
 			$this->getTopicRegistry( $topics ),
 			new NullLogger(),

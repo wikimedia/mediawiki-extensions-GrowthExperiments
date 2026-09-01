@@ -12,6 +12,7 @@ use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\Status\StatusFormatter;
+use MediaWiki\Title\TitleParser;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
@@ -30,6 +31,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		LinkBatchFactory $linkBatchFactory,
 		private readonly StatsFactory $statsFactory,
 		StatusFormatter $statusFormatter,
+		TitleParser $titleParser,
 		private readonly ITopicRegistry $topicRegistry,
 		LoggerInterface $logger
 	) {
@@ -40,6 +42,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$newcomerTasksUserOptionsLookup,
 			$linkBatchFactory,
 			$statusFormatter,
+			$titleParser,
 			$logger
 		);
 	}
@@ -65,6 +68,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->newcomerTasksUserOptionsLookup,
 			$this->linkBatchFactory,
 			$this->statusFormatter,
+			$this->titleParser,
 			$taskTypes,
 			$topics,
 			$this->statsFactory

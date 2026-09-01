@@ -11,6 +11,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use MediaWiki\Message\Message;
@@ -18,6 +19,8 @@ use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\ISearchResultSet;
 use MediaWiki\Search\SearchResult;
 use MediaWiki\Status\StatusFormatter;
+use MediaWiki\Title\MalformedTitleException;
+use MediaWiki\Title\TitleParser;
 use MediaWiki\User\UserIdentity;
 use MultipleIterator;
 use Psr\Log\LoggerAwareInterface;
@@ -48,6 +51,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param StatusFormatter $statusFormatter
+	 * @param TitleParser $titleParser
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
 	 */
@@ -57,6 +61,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		private readonly NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		private readonly LinkBatchFactory $linkBatchFactory,
 		private readonly StatusFormatter $statusFormatter,
+		private readonly TitleParser $titleParser,
 		array $taskTypes,
 		array $topics
 	) {
@@ -139,11 +144,19 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			);
 		}
 
-		// FIXME these and task types should have similar validation rules
-		$topics = array_values( array_intersect_key(
-			$this->topics,
-			array_flip( $taskSetFilters->getTopicFilters() )
-		) );
+		if ( $taskSetFilters->getInterestFilters() ) {
+			// Interests are per-user article titles, not part of the topic registry,
+			// so they are built from the filters instead of looked up. The TaskSetFilters
+			// constructor guarantees that topic filters and interest filters are not
+			// both set.
+			$topics = $this->getTopicsFromInterests( $taskSetFilters->getInterestFilters() );
+		} else {
+			// FIXME these and task types should have similar validation rules
+			$topics = array_values( array_intersect_key(
+				$this->topics,
+				array_flip( $taskSetFilters->getTopicFilters() )
+			) );
+		}
 
 		$limit ??= self::DEFAULT_LIMIT;
 		// FIXME we are completely ignoring offset for now because 1) doing offsets when we are
@@ -245,6 +258,37 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	): ISearchResultSet|StatusValue;
 
 	/**
+	 * Turn interests (prefixed article titles) into interest-based topics.
+	 * Interests with an invalid title are skipped, like unknown topic IDs are.
+	 * @param string[] $interests
+	 * @return InterestBasedTopic[]
+	 */
+	private function getTopicsFromInterests( array $interests ): array {
+		$topics = [];
+		foreach ( $interests as $interest ) {
+			try {
+				$title = $this->titleParser->parseTitle( $interest );
+			} catch ( MalformedTitleException ) {
+				$this->logger->warning( 'Skipping malformed interest title: {interest}', [
+					'interest' => $interest,
+				] );
+				continue;
+			}
+			// InterestBasedTopic requires a plain main-namespace title: the morelikethis
+			// term and the JSON serialization only use the namespace and the DB key.
+			if ( $title->getNamespace() !== NS_MAIN || $title->isExternal() || $title->hasFragment() ) {
+				$this->logger->warning(
+					'Skipping interest that is not a plain main-namespace title: {interest}',
+					[ 'interest' => $interest ]
+				);
+				continue;
+			}
+			$topics[] = new InterestBasedTopic( $interest, $title );
+		}
+		return $topics;
+	}
+
+	/**
 	 * Copy topic data from the tasks in $sourceTaskSet to the tasks in $targetTasks.
 	 * @param TaskSet $sourceTaskSet
 	 * @param Task[] $targetTasks
@@ -308,6 +352,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			array_keys( $this->taskTypes ), true );
 		// There should be at most one topic (otherwise we won't need the compare logic).
 		// No topic precedes any topic (although that comparison should never happen).
+		// Interest-based topics are never in $this->topics; for them array_search()
+		// returns false on both sides, so the topic tiebreaker is a no-op.
 		$topicPosFirst = $first->getTopics() ? array_search( $first->getTopics()[0]->getId(),
 			array_keys( $this->topics ), true ) : -9999;
 		$topicPosSecond = $second->getTopics() ? array_search( $second->getTopics()[0]->getId(),

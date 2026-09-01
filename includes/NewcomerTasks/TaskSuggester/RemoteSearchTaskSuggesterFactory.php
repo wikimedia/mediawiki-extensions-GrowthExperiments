@@ -12,6 +12,7 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleParser;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 
@@ -29,6 +30,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param StatusFormatter $statusFormatter
+	 * @param TitleParser $titleParser
 	 * @param string $apiUrl Base URL of the remote API (ending with 'api.php').
 	 * @param ITopicRegistry $topicRegistry
 	 * @param LoggerInterface $logger
@@ -42,6 +44,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		private readonly TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
 		StatusFormatter $statusFormatter,
+		TitleParser $titleParser,
 		private readonly string $apiUrl,
 		private readonly ITopicRegistry $topicRegistry,
 		LoggerInterface $logger
@@ -53,6 +56,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$newcomerTasksUserOptionsLookup,
 			$linkBatchFactory,
 			$statusFormatter,
+			$titleParser,
 			$logger
 		);
 	}
@@ -73,6 +77,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->newcomerTasksUserOptionsLookup,
 			$this->linkBatchFactory,
 			$this->statusFormatter,
+			$this->titleParser,
 			$this->requestFactory,
 			$this->titleFactory,
 			$this->apiUrl,
