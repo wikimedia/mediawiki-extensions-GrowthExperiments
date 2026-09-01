@@ -15,4 +15,7 @@
 			<property name="multiLine" value="true" />
 		</properties>
 	</rule>
+	<rule ref="Generic.PHP.RequireStrictTypes">
+		<include-pattern>AccountSetup</include-pattern>
+	</rule>
 </ruleset>
