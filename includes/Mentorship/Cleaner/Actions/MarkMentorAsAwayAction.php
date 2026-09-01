@@ -17,6 +17,11 @@ use Wikimedia\Timestamp\TimestampFormat;
 
 class MarkMentorAsAwayAction implements IAction {
 
+	/**
+	 * Keep a ~day more than cleanMentorList.php's run frequency (currently runs every ~3 days).
+	 */
+	private const int PROLONG_AWAYNESS_SECONDS_BEFORE = 4 * 86_400;
+
 	public function __construct(
 		private MentorProvider $mentorProvider,
 		private IMentorWriter $mentorWriter,
@@ -34,6 +39,26 @@ class MarkMentorAsAwayAction implements IAction {
 	}
 
 	public function check( UserIdentity $user ): bool {
+		if ( !$this->mentorStatusManager->canChangeStatus( $user )->isOK() ) {
+			// Means the user is forcefully marked as away already (block, ...); no point in
+			// running our stuff.
+			return false;
+		}
+		if ( $this->mentorStatusManager->getMentorStatus( $user ) === MentorStatusManager::STATUS_AWAY ) {
+			// Only renew the awayness when it expires in less than PROLONG_AWAYNESS_SECONDS_BEFORE
+			// seconds. This will avoid repetitive updates to the list of mentors. See T436659
+			// for more details. If needed, the mentor's awayness will be restored before it clears.
+			$secondsUntilBack = (int)ConvertibleTimestamp::convert(
+				TimestampFormat::UNIX, $this->mentorStatusManager->getMentorBackTimestamp( $user )
+			) - (int)ConvertibleTimestamp::now( TimestampFormat::UNIX );
+
+			// If the mentor is back in less than the allowed time, they'll be checked for
+			// inactivity and processed normally.
+			if ( $secondsUntilBack > self::PROLONG_AWAYNESS_SECONDS_BEFORE ) {
+				return false;
+			}
+		}
+
 		$lastEditTimestamp = $this->lastActionTimestampLookup->getLastActionTimestampForUser( $user );
 		if ( !$lastEditTimestamp ) {
 			return true;
