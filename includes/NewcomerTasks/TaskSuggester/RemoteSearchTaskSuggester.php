@@ -61,7 +61,6 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 			// Convenient for debugging. Production setups should use LocalSearchTaskSuggester anyway.
 			'errorlang' => 'en',
 		];
-		// FIXME quick fix: don't randomize if we use morelike, seems to conflict
 		if ( $query->getSort() ) {
 			$params['srsort'] = $query->getSort();
 		}

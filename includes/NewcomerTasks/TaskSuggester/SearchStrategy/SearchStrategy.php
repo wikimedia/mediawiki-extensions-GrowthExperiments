@@ -5,7 +5,9 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\TaskType\Util;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
+use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use Wikimedia\Assert\Assert;
@@ -56,11 +58,35 @@ class SearchStrategy {
 		// Empty topic array means doing a single search with no topic filter
 		$topics = $topics ?: [ null ];
 		$allTopicsAreOres = $this->isOresTopicSet( $topics );
+		$allTopicsAreInterests = $this->isInterestTopicSet( $topics );
 		foreach ( $taskTypes as $taskType ) {
 			$typeTerm = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )
 				->getSearchTerm( $taskType );
 			$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
 			$excludedPageIdTerm = $excludePageIds ? $this->getExcludedPageIdTerm( $excludePageIds ) : null;
+			if ( $allTopicsAreInterests ) {
+				// One single-title morelikethis query per interest. Interests ignore the
+				// topic match mode: an intersection of morelikethis queries makes no sense.
+				foreach ( $topics as $topic ) {
+					$query = $this->getPerTopicQuery(
+						$topic, $typeTerm, $pageIdTerm, $excludedPageIdTerm, $taskType
+					);
+					// Random sorting conflicts with morelikethis (see I945554c3fc);
+					// relevance is also what Cirrus requires for the rescore profile
+					// to apply.
+					$query->setSort( 'relevance' );
+					if (
+						$taskType instanceof LinkRecommendationTaskType
+						&& $taskType->getUnderlinkedWeight() > 0
+						&& !$pageIdTerm
+					) {
+						// Prefer underlinked articles, see the comment below.
+						$query->setRescoreProfile( SearchQuery::RESCORE_UNDERLINKED );
+					}
+					$queries[$query->getId()] = $query;
+				}
+				continue;
+			}
 			if ( $topicsFilterMode === self::TOPIC_MATCH_MODE_AND ) {
 				$query = $this->getMultiTopicIntersectionQuery(
 					$topics, $typeTerm, $pageIdTerm, $excludedPageIdTerm, $taskType
@@ -108,12 +134,24 @@ class SearchStrategy {
 	 */
 	protected function validateParams( array $taskTypes, array $topics ) {
 		Assert::parameterElementType( TaskType::class, $taskTypes, '$taskTypes' );
-		Assert::parameterElementType( [ OresBasedTopic::class, CampaignTopic::class ], $topics, '$topics' );
+		Assert::parameterElementType( [ OresBasedTopic::class, CampaignTopic::class,
+			InterestBasedTopic::class ], $topics, '$topics' );
+		$interestTopicCount = count( array_filter( $topics, static function ( $topic ) {
+			return $topic instanceof InterestBasedTopic;
+		} ) );
+		Assert::parameter( $interestTopicCount === 0 || $interestTopicCount === count( $topics ),
+			'$topics', 'must not mix interest-based topics with other topics' );
 	}
 
 	private function isOresTopicSet( array $topics ): bool {
 		return array_reduce( $topics, static function ( $allAreOres, $topic ) {
 			return $allAreOres && $topic instanceof OresBasedTopic;
+		}, true );
+	}
+
+	private function isInterestTopicSet( array $topics ): bool {
+		return array_reduce( $topics, static function ( $allAreInterests, $topic ) {
+			return $allAreInterests && $topic instanceof InterestBasedTopic;
 		}, true );
 	}
 
@@ -127,6 +165,9 @@ class SearchStrategy {
 			$topicTerm = $this->getOresBasedTopicTerm( [ $topic ] );
 		} elseif ( $topic instanceof CampaignTopic ) {
 			$topicTerm = $topic->getSearchExpression();
+		} elseif ( $topic instanceof InterestBasedTopic ) {
+			// A single title per query: interest queries are never pipe-merged.
+			$topicTerm = 'morelikethis:' . Util::escapeSearchTitleList( [ $topic->getTitle() ] );
 		}
 		return $topicTerm;
 	}

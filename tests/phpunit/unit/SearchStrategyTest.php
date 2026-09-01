@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
@@ -12,10 +13,12 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
+use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
+use Wikimedia\Assert\ParameterAssertionException;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy
@@ -138,6 +141,135 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		] );
 	}
 
+	public function testGetQueriesForInterests() {
+		$taskType = new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY,
+			[], [ new TitleValue( NS_TEMPLATE, 'Copyedit' ) ], [ new TitleValue( NS_TEMPLATE, 'DontCopyedit' ) ] );
+		$interest1 = new InterestBasedTopic( 'Albert Einstein',
+			new TitleValue( NS_MAIN, 'Albert_Einstein' ) );
+		$interest2 = new InterestBasedTopic( 'What Is "Life"?',
+			new TitleValue( NS_MAIN, 'What_Is_"Life"?' ) );
+
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
+		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
+		$taskTypeHandler->method( 'getSearchTerm' )
+			->willReturn( 'hastemplate:"Copyedit" -hastemplate:"DontCopyedit"' );
+
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
+
+		$queries = $searchStrategy->getQueries( [ $taskType ], [ $interest1, $interest2 ] );
+		$this->assertCount( 2, $queries );
+		$this->assertTaskTypeInQueries( $queries, [ 'copyedit' ] );
+		$this->assertTopicsInQueries( $queries, [ 'Albert Einstein', 'What Is "Life"?' ] );
+		$this->assertQueryStrings( $queries, [
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" morelikethis:"Albert_Einstein"',
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" morelikethis:"What_Is_\"Life\"\?"',
+		] );
+		$this->assertSortInQueries( $queries, 'relevance' );
+		foreach ( $queries as $query ) {
+			$this->assertNull( $query->getRescoreProfile() );
+		}
+	}
+
+	public function testGetQueriesForInterestsPerTaskType() {
+		$taskType1 = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$taskType2 = new TaskType( 'expand', TaskType::DIFFICULTY_MEDIUM );
+		$interest1 = new InterestBasedTopic( 'Coffee', new TitleValue( NS_MAIN, 'Coffee' ) );
+		$interest2 = new InterestBasedTopic( 'Tea', new TitleValue( NS_MAIN, 'Tea' ) );
+
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
+		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
+		$taskTypeHandler->method( 'getSearchTerm' )
+			->willReturnOnConsecutiveCalls(
+				'hastemplate:"Copyedit"',
+				'hastemplate:"Expand"'
+			);
+
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
+
+		$queries = $searchStrategy->getQueries( [ $taskType1, $taskType2 ], [ $interest1, $interest2 ] );
+		$this->assertCount( 4, $queries );
+		$this->assertTaskTypeInQueries( $queries, [ 'copyedit', 'expand' ] );
+		$this->assertQueryStrings( $queries, [
+			'hastemplate:"Copyedit" morelikethis:"Coffee"',
+			'hastemplate:"Copyedit" morelikethis:"Tea"',
+			'hastemplate:"Expand" morelikethis:"Coffee"',
+			'hastemplate:"Expand" morelikethis:"Tea"',
+		] );
+		$this->assertSortInQueries( $queries, 'relevance' );
+	}
+
+	public function testGetQueriesForInterestsUnderlinked() {
+		// Default settings have an underlinked weight of 0.5.
+		$taskType = new LinkRecommendationTaskType( 'link-recommendation', TaskType::DIFFICULTY_EASY );
+		$interest1 = new InterestBasedTopic( 'Coffee', new TitleValue( NS_MAIN, 'Coffee' ) );
+		$interest2 = new InterestBasedTopic( 'Tea', new TitleValue( NS_MAIN, 'Tea' ) );
+
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
+		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
+		$taskTypeHandler->method( 'getSearchTerm' )->willReturn( 'hasrecommendation:link' );
+
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
+
+		$queries = $searchStrategy->getQueries( [ $taskType ], [ $interest1, $interest2 ] );
+		$this->assertCount( 2, $queries );
+		$this->assertSortInQueries( $queries, 'relevance' );
+		// Every per-interest query must carry the underlinked rescore profile, not just the last one.
+		foreach ( $queries as $query ) {
+			$this->assertSame( SearchQuery::RESCORE_UNDERLINKED, $query->getRescoreProfile() );
+		}
+
+		// With a page ID restriction, the rescore profile is not used.
+		$restrictedQueries = $searchStrategy->getQueries( [ $taskType ], [ $interest1, $interest2 ],
+			[ 1, 2, 3 ] );
+		$this->assertCount( 2, $restrictedQueries );
+		$this->assertQueryStrings( $restrictedQueries, [
+			'hasrecommendation:link morelikethis:"Coffee" pageid:1|2|3',
+			'hasrecommendation:link morelikethis:"Tea" pageid:1|2|3',
+		] );
+		$this->assertSortInQueries( $restrictedQueries, 'relevance' );
+		foreach ( $restrictedQueries as $query ) {
+			$this->assertNull( $query->getRescoreProfile() );
+		}
+	}
+
+	public function testGetQueriesRejectsMixedInterests() {
+		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$oresTopic = new OresBasedTopic( 'art', 'culture', [ 'painting' ] );
+		$interest = new InterestBasedTopic( 'Coffee', new TitleValue( NS_MAIN, 'Coffee' ) );
+
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
+
+		$this->expectException( ParameterAssertionException::class );
+		$searchStrategy->getQueries( [ $taskType ], [ $oresTopic, $interest ] );
+	}
+
+	public function testGetQueriesForInterestsIgnoresAndMode() {
+		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$interest1 = new InterestBasedTopic( 'Coffee', new TitleValue( NS_MAIN, 'Coffee' ) );
+		$interest2 = new InterestBasedTopic( 'Tea', new TitleValue( NS_MAIN, 'Tea' ) );
+
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
+		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
+		$taskTypeHandler->method( 'getSearchTerm' )->willReturn( 'hastemplate:"Copyedit"' );
+
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
+
+		$queries = $searchStrategy->getQueries( [ $taskType ], [ $interest1, $interest2 ],
+			null, null, SearchStrategy::TOPIC_MATCH_MODE_AND );
+		$this->assertCount( 2, $queries );
+		$this->assertArrayEquals( [ 'copyedit:Coffee', 'copyedit:Tea' ], array_keys( $queries ) );
+		$this->assertQueryStrings( $queries, [
+			'hastemplate:"Copyedit" morelikethis:"Coffee"',
+			'hastemplate:"Copyedit" morelikethis:"Tea"',
+		] );
+		$this->assertSortInQueries( $queries, 'relevance' );
+	}
+
 	private function assertIntersectionTopicsInQueries( $queries, $topicIds ) {
 		[ $query1, $query2 ] = array_values( $queries );
 		foreach ( $topicIds as $id ) {
@@ -179,9 +311,15 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [], $diff );
 	}
 
+	private function assertSortInQueries( $queries, $expectedSort ) {
+		foreach ( $queries as $query ) {
+			$this->assertSame( $expectedSort, $query->getSort() );
+		}
+	}
+
 	/**
-	 * Assert that the set of $strings is the same as the set of $queries.
-	 * The sets must have exactly two elements.
+	 * Assert that each expected query string is present in the queries. Extra queries are
+	 * not detected; pair with assertCount to check set equality.
 	 * @param array $queries
 	 * @param array $expectedQueryStrings
 	 */
