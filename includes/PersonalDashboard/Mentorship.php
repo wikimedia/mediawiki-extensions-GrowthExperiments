@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\PersonalDashboard;
 
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
@@ -32,12 +34,7 @@ use MediaWiki\User\UserFactory;
  */
 class Mentorship extends BaseModule {
 
-	private const MSG_PREFIX = 'growthexperiments-homepage-mentorship-';
-
-	private IMentorManager $mentorManager;
-	private UserEditTracker $userEditTracker;
-	private UserFactory $userFactory;
-	private GenderCache $genderCache;
+	private const string MSG_PREFIX = 'growthexperiments-homepage-mentorship-';
 
 	/** @var Mentor|null|false The effective mentor, resolved once; false until resolved. */
 	private $mentor = false;
@@ -47,16 +44,12 @@ class Mentorship extends BaseModule {
 
 	public function __construct(
 		IContextSource $context,
-		IMentorManager $mentorManager,
-		UserEditTracker $userEditTracker,
-		UserFactory $userFactory,
-		GenderCache $genderCache
+		private readonly IMentorManager $mentorManager,
+		private readonly UserEditTracker $userEditTracker,
+		private readonly UserFactory $userFactory,
+		private readonly GenderCache $genderCache
 	) {
 		parent::__construct( $context );
-		$this->mentorManager = $mentorManager;
-		$this->userEditTracker = $userEditTracker;
-		$this->userFactory = $userFactory;
-		$this->genderCache = $genderCache;
 	}
 
 	/**

@@ -16,6 +16,6 @@
 		</properties>
 	</rule>
 	<rule ref="Generic.PHP.RequireStrictTypes">
-		<include-pattern>AccountSetup</include-pattern>
+		<include-pattern>(AccountSetup|PersonalDashboard)</include-pattern>
 	</rule>
 </ruleset>

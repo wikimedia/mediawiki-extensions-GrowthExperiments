@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\PersonalDashboard;
 
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -22,19 +24,14 @@ use MediaWiki\User\Options\UserOptionsLookup;
  */
 class Impact extends BaseModule {
 
-	private UserDatabaseHelper $userDatabaseHelper;
-	private UserOptionsLookup $userOptionsLookup;
-
 	private ?array $hasMainspaceEditsCache = null;
 
 	public function __construct(
 		IContextSource $context,
-		UserDatabaseHelper $userDatabaseHelper,
-		UserOptionsLookup $userOptionsLookup
+		private readonly UserDatabaseHelper $userDatabaseHelper,
+		private readonly UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( $context );
-		$this->userDatabaseHelper = $userDatabaseHelper;
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
