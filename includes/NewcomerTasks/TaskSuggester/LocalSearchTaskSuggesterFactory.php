@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
@@ -25,11 +26,11 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		private SearchEngineFactory $searchEngineFactory,
+		private readonly SearchEngineFactory $searchEngineFactory,
 		LinkBatchFactory $linkBatchFactory,
-		private StatsFactory $statsFactory,
+		private readonly StatsFactory $statsFactory,
 		StatusFormatter $statusFormatter,
-		private ITopicRegistry $topicRegistry,
+		private readonly ITopicRegistry $topicRegistry,
 		LoggerInterface $logger
 	) {
 		parent::__construct(
@@ -43,11 +44,10 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		);
 	}
 
-	/**
-	 * @param ConfigurationLoader|null $customConfigurationLoader
-	 * @return LocalSearchTaskSuggester|ErrorForwardingTaskSuggester
-	 */
-	public function create( ?ConfigurationLoader $customConfigurationLoader = null ) {
+	/** @inheritDoc */
+	public function create(
+		?ConfigurationLoader $customConfigurationLoader = null
+	): LocalSearchTaskSuggester|ErrorForwardingTaskSuggester {
 		$configurationLoader = $customConfigurationLoader ?? $this->configurationLoader;
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {

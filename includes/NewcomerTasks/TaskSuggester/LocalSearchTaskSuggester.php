@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
@@ -7,7 +8,9 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\ISearchResultSet;
@@ -26,9 +29,20 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 
 	private StatsFactory $statsFactory;
 
+	/**
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
+	 * @param SearchEngineFactory $searchEngineFactory
+	 * @param SearchStrategy $searchStrategy
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
+	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param StatusFormatter $statusFormatter
+	 * @param TaskType[] $taskTypes
+	 * @param Topic[] $topics
+	 * @param StatsFactory $statsFactory
+	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		private SearchEngineFactory $searchEngineFactory,
+		private readonly SearchEngineFactory $searchEngineFactory,
 		SearchStrategy $searchStrategy,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkBatchFactory $linkBatchFactory,
@@ -39,7 +53,6 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
 			$linkBatchFactory, $statusFormatter, $taskTypes, $topics );
-		$this->searchEngineFactory = $searchEngineFactory;
 		$this->statsFactory = $statsFactory->withComponent( 'GrowthExperiments' );
 	}
 
@@ -50,7 +63,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
-	) {
+	): TaskSet|StatusValue {
 		$start = microtime( true );
 		$suggest = parent::suggest( $user, $taskSetFilters, $limit, $offset, $options );
 		$suggestTimeInSeconds = microtime( true ) - $start;
@@ -63,7 +76,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	}
 
 	/** @inheritDoc */
-	public function filter( UserIdentity $user, TaskSet $taskSet ) {
+	public function filter( UserIdentity $user, TaskSet $taskSet ): TaskSet|StatusValue {
 		$start = microtime( true );
 		$filter = parent::filter( $user, $taskSet );
 		$filterTimeInSeconds = microtime( true ) - $start;
@@ -75,15 +88,13 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		return $filter;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function search(
 		SearchQuery $query,
 		int $limit,
 		int $offset,
 		bool $debug
-	) {
+	): ISearchResultSet|StatusValue {
 		$start = microtime( true );
 		$searchEngine = $this->searchEngineFactory->create();
 		$searchEngine->setLimitOffset( $limit, $offset );

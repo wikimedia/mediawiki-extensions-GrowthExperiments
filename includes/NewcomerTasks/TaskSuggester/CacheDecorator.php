@@ -1,11 +1,11 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
-use LogicException;
 use MediaWiki\JobQueue\Exceptions\JobQueueError;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
@@ -26,34 +26,14 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 
 	private const CACHE_VERSION = 5;
 
-	/** @var TaskSuggester */
-	private $taskSuggester;
-
-	/** @var WANObjectCache */
-	private $cache;
-
-	/** @var JobQueueGroup */
-	private $jobQueueGroup;
-
-	/** @var TaskSetListener */
-	private $taskSetListener;
-
-	/** @var JsonCodec */
-	private $jsonCodec;
-
 	public function __construct(
-		TaskSuggester $taskSuggester,
-		JobQueueGroup $jobQueueGroup,
-		WANObjectCache $cache,
-		TaskSetListener $taskSetListener,
-		JsonCodec $jsonCodec
+		private readonly TaskSuggester $taskSuggester,
+		private readonly JobQueueGroup $jobQueueGroup,
+		private readonly WANObjectCache $cache,
+		private readonly TaskSetListener $taskSetListener,
+		private readonly JsonCodec $jsonCodec
 	) {
-		$this->taskSuggester = $taskSuggester;
-		$this->cache = $cache;
-		$this->jobQueueGroup = $jobQueueGroup;
 		$this->logger = new NullLogger();
-		$this->taskSetListener = $taskSetListener;
-		$this->jsonCodec = $jsonCodec;
 	}
 
 	/** @inheritDoc */
@@ -63,7 +43,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
-	) {
+	): TaskSet|StatusValue {
 		$useCache = $options['useCache'] ?? true;
 		$resetCache = $options['resetCache'] ?? false;
 		$revalidateCache = $options['revalidateCache'] ?? true;
@@ -201,14 +181,11 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 	}
 
 	/** @inheritDoc */
-	public function filter( UserIdentity $user, TaskSet $taskSet ) {
+	public function filter( UserIdentity $user, TaskSet $taskSet ): TaskSet|StatusValue {
 		return $this->taskSuggester->filter( $user, $taskSet );
 	}
 
-	/**
-	 * @param TaskSet|StatusValue $taskSet
-	 */
-	private function runTaskSetListener( $taskSet ) {
+	private function runTaskSetListener( TaskSet|StatusValue $taskSet ): void {
 		if ( $taskSet instanceof StatusValue ) {
 			return;
 		}
@@ -217,27 +194,19 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 
 	/**
 	 * Serialize a value for caching. Serializing StatusValue is left to the default caching logic.
-	 * @param TaskSet|StatusValue $value
-	 * @return string|StatusValue
 	 */
-	private function serialize( $value ) {
+	private function serialize( TaskSet|StatusValue $value ): string|StatusValue {
 		if ( $value instanceof TaskSet ) {
 			return $this->jsonCodec->serialize( $value );
-		} elseif ( $value instanceof StatusValue ) {
-			return $value;
-		} else {
-			$type = get_debug_type( $value );
-			throw new LogicException( 'Unexpected type ' . $type );
 		}
+		return $value;
 	}
 
 	/**
 	 * Deserialize a cached value. StatusValue is handled by PHP serialization so we just pass
 	 * it through here.
-	 * @param string|StatusValue $value
-	 * @return TaskSet|StatusValue
 	 */
-	private function deserialize( $value ) {
+	private function deserialize( string|StatusValue $value ): TaskSet|StatusValue {
 		if ( $value instanceof StatusValue ) {
 			return $value;
 		} else {

@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\Task;
 
@@ -16,34 +17,21 @@ class TaskSetFilters implements JsonCodecable {
 
 	use JsonCodecableTrait;
 
-	/**
-	 * @var string[] List of task type IDs to limit the suggestions to.
-	 *   An empty array means no filtering.
-	 */
-	private $taskTypeFilters;
-	/**
-	 * @var string[] List of topic IDs to limit the suggestions to.
-	 *   An empty array means no filtering.
-	 */
-	private $topicFilters;
-	/**
-	 * @var string|null Matching mode for topics. One of: 'AND', 'OR'.
-	 * @see SearchStrategy::TOPIC_MATCH_MODES
-	 */
-	private $topicFiltersMode;
+	private string $topicFiltersMode;
 
 	/**
-	 * @param string[] $taskTypeFilters
-	 * @param string[] $topicFilters
-	 * @param string|null $topicFiltersMode
+	 * @param string[] $taskTypeFilters List of task type IDs to limit the suggestions to.
+	 *   An empty array means no filtering.
+	 * @param string[] $topicFilters List of topic IDs to limit the suggestions to.
+	 *   An empty array means no filtering.
+	 * @param string|null $topicFiltersMode Matching mode for topics. One of: 'AND', 'OR'.
+	 * @see SearchStrategy::TOPIC_MATCH_MODES
 	 */
 	public function __construct(
-		array $taskTypeFilters = [],
-		array $topicFilters = [],
+		private array $taskTypeFilters = [],
+		private array $topicFilters = [],
 		?string $topicFiltersMode = null
 	) {
-		$this->taskTypeFilters = $taskTypeFilters;
-		$this->topicFilters = $topicFilters;
 		$this->topicFiltersMode = $topicFiltersMode ?? SearchStrategy::TOPIC_MATCH_MODE_OR;
 	}
 

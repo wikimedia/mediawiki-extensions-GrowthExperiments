@@ -1,17 +1,22 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\FauxSearchResultSet;
+use MediaWiki\Search\ISearchResultSet;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
+use StatusValue;
 
 /**
  * Suggest edits based on searching a wiki (potentially a different one) via the API.
@@ -20,24 +25,32 @@ use MediaWiki\Title\TitleFactory;
  */
 class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 
-	/** @var string Remote API URL including api.php */
-	private string $apiUrl;
-
+	/**
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
+	 * @param SearchStrategy $searchStrategy
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
+	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param StatusFormatter $statusFormatter
+	 * @param HttpRequestFactory $requestFactory
+	 * @param TitleFactory $titleFactory
+	 * @param string $apiUrl Remote API URL including api.php
+	 * @param TaskType[] $taskTypes
+	 * @param Topic[] $topics
+	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchStrategy $searchStrategy,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkBatchFactory $linkBatchFactory,
 		StatusFormatter $statusFormatter,
-		private HttpRequestFactory $requestFactory,
-		private TitleFactory $titleFactory,
-		string $apiUrl,
+		private readonly HttpRequestFactory $requestFactory,
+		private readonly TitleFactory $titleFactory,
+		private readonly string $apiUrl,
 		array $taskTypes,
 		array $topics
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
 			$linkBatchFactory, $statusFormatter, $taskTypes, $topics );
-		$this->apiUrl = $apiUrl;
 	}
 
 	/** @inheritDoc */
@@ -46,7 +59,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		int $limit,
 		int $offset,
 		bool $debug
-	) {
+	): ISearchResultSet|StatusValue {
 		// We randomize the results so offsets are meaningless.
 		// TODO use fixed random seed.
 		$params = [

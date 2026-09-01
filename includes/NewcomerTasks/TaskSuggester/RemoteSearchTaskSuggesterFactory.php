@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
@@ -19,11 +20,6 @@ use StatusValue;
  */
 class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 
-	private HttpRequestFactory $requestFactory;
-	private TitleFactory $titleFactory;
-	private string $apiUrl;
-	private ITopicRegistry $topicRegistry;
-
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
@@ -42,12 +38,12 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		HttpRequestFactory $requestFactory,
-		TitleFactory $titleFactory,
+		private readonly HttpRequestFactory $requestFactory,
+		private readonly TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
 		StatusFormatter $statusFormatter,
-		string $apiUrl,
-		ITopicRegistry $topicRegistry,
+		private readonly string $apiUrl,
+		private readonly ITopicRegistry $topicRegistry,
 		LoggerInterface $logger
 	) {
 		parent::__construct(
@@ -59,17 +55,12 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$statusFormatter,
 			$logger
 		);
-		$this->requestFactory = $requestFactory;
-		$this->titleFactory = $titleFactory;
-		$this->apiUrl = $apiUrl;
-		$this->topicRegistry = $topicRegistry;
 	}
 
-	/**
-	 * @param ConfigurationLoader|null $customConfigurationLoader
-	 * @return RemoteSearchTaskSuggester|ErrorForwardingTaskSuggester
-	 */
-	public function create( ?ConfigurationLoader $customConfigurationLoader = null ) {
+	/** @inheritDoc */
+	public function create(
+		?ConfigurationLoader $customConfigurationLoader = null
+	): RemoteSearchTaskSuggester|ErrorForwardingTaskSuggester {
 		$configurationLoader = $customConfigurationLoader ?? $this->configurationLoader;
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {

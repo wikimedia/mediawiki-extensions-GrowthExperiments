@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
@@ -35,23 +36,11 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	// Keep this in sync with GrowthTasksApi.js#fetchTasks
 	public const DEFAULT_LIMIT = 15;
 
-	/** @var TaskTypeHandlerRegistry */
-	private $taskTypeHandlerRegistry;
-
-	/** @var SearchStrategy */
-	protected $searchStrategy;
-
-	/** @var NewcomerTasksUserOptionsLookup */
-	private $newcomerTasksUserOptionsLookup;
-
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
-
 	/** @var TaskType[] id => TaskType */
-	protected $taskTypes = [];
+	protected array $taskTypes = [];
 
 	/** @var Topic[] id => Topic */
-	protected $topics = [];
+	protected array $topics = [];
 
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
@@ -63,18 +52,14 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param Topic[] $topics
 	 */
 	public function __construct(
-		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
-		SearchStrategy $searchStrategy,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		LinkBatchFactory $linkBatchFactory,
-		private StatusFormatter $statusFormatter,
+		private readonly TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
+		protected readonly SearchStrategy $searchStrategy,
+		private readonly NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		private readonly LinkBatchFactory $linkBatchFactory,
+		private readonly StatusFormatter $statusFormatter,
 		array $taskTypes,
 		array $topics
 	) {
-		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
-		$this->searchStrategy = $searchStrategy;
-		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->linkBatchFactory = $linkBatchFactory;
 		foreach ( $taskTypes as $taskType ) {
 			$this->taskTypes[$taskType->getId()] = $taskType;
 		}
@@ -91,13 +76,13 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
-	) {
+	): TaskSet|StatusValue {
 		return $this->doSuggest( null, $user, $taskSetFilters, $limit, $offset,
 			$options );
 	}
 
 	/** @inheritDoc */
-	public function filter( UserIdentity $user, TaskSet $taskSet ) {
+	public function filter( UserIdentity $user, TaskSet $taskSet ): TaskSet|StatusValue {
 		$taskTypes = $taskSet->getFilters()->getTaskTypeFilters();
 
 		$pageTitles = array_map( static function ( Task $task ) {
@@ -132,7 +117,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param int|null $limit
 	 * @param int|null $offset
 	 * @param array $options Same as in suggest().
-	 * @return TaskSet|StatusValue
 	 * @suppress PhanUnusedPrivateMethodParameter $offset
 	 */
 	private function doSuggest(
@@ -142,7 +126,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		?int $limit = null,
 		?int $offset = null,
 		array $options = []
-	) {
+	): TaskSet|StatusValue {
 		$debug = $options['debug'] ?? false;
 
 		// We generally don't try to handle task type filtering for the A/B test (T278123) here
@@ -252,21 +236,20 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param int $limit
 	 * @param int $offset
 	 * @param bool $debug Store debug data so it can be set in setDebugData()
-	 * @return ISearchResultSet|StatusValue Search results, or StatusValue on error.
 	 */
 	abstract protected function search(
 		SearchQuery $query,
 		int $limit,
 		int $offset,
 		bool $debug
-	);
+	): ISearchResultSet|StatusValue;
 
 	/**
 	 * Copy topic data from the tasks in $sourceTaskSet to the tasks in $targetTasks.
 	 * @param TaskSet $sourceTaskSet
 	 * @param Task[] $targetTasks
 	 */
-	private function mapTopicData( TaskSet $sourceTaskSet, array $targetTasks ) {
+	private function mapTopicData( TaskSet $sourceTaskSet, array $targetTasks ): void {
 		$taskMap = [];
 		foreach ( $sourceTaskSet as $task ) {
 			$key = $task->getTitle()->getNamespace() . ':' . $task->getTitle()->getDBkey();
@@ -285,7 +268,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * Set extra debug data. Only called in debug mode.
 	 * @param TaskSet $taskSet
 	 * @param SearchQuery[] $queries
-	 * @return void
 	 */
 	private function setDebugData( TaskSet $taskSet, array $queries ): void {
 		$debugUrls = [];
@@ -302,7 +284,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param Task[] $suggestions
 	 * @return Task[]
 	 */
-	private function deduplicateSuggestions( array $suggestions ) {
+	private function deduplicateSuggestions( array $suggestions ): array {
 		/** @var Task[] $deduped */
 		$deduped = [];
 		foreach ( $suggestions as $suggestion ) {
@@ -318,9 +300,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * Compare two tasks for sorting. Return an integer, like strcmp & co.
 	 * Task types that come first in the configured task type list take precedence. Otherwise,
 	 * it's topics that come first.
-	 * @param Task $first
-	 * @param Task $second
-	 * @return int
 	 */
 	private function compareTasks( Task $first, Task $second ): int {
 		$taskTypePosFirst = array_search( $first->getTaskType()->getId(),
