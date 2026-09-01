@@ -52,6 +52,24 @@ class MarkMentorAsAwayActionTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	private function newMentorStatusManagerMock(
+		UserIdentity $expectedMentor,
+		string $status = MentorStatusManager::STATUS_ACTIVE,
+		?string $backTimestamp = null
+	): MentorStatusManager {
+		$mentorStatusManager = $this->createMock( MentorStatusManager::class );
+		$mentorStatusManager->method( 'canChangeStatus' )
+			->with( $expectedMentor )
+			->willReturn( StatusValue::newGood() );
+		$mentorStatusManager->method( 'getMentorStatus' )
+			->with( $expectedMentor )
+			->willReturn( $status );
+		$mentorStatusManager->method( 'getMentorBackTimestamp' )
+			->with( $expectedMentor )
+			->willReturn( $backTimestamp );
+		return $mentorStatusManager;
+	}
+
 	public function testIsEnabled() {
 		$this->assertTrue( $this->newAction( isEnabled: true )->isEnabled() );
 		$this->assertFalse( $this->newAction( isEnabled: false )->isEnabled() );
@@ -66,9 +84,64 @@ class MarkMentorAsAwayActionTest extends MediaWikiUnitTestCase {
 			->willReturn( null );
 
 		$this->assertTrue(
-			$this->newAction( lastActionTimestampLookup: $lookup )->check( $user ),
+			$this->newAction(
+				mentorStatusManager: $this->newMentorStatusManagerMock( $user ),
+				lastActionTimestampLookup: $lookup
+			)->check( $user ),
 			'A mentor with no recorded action should be eligible'
 		);
+	}
+
+	public function testCheckCannotChangeStatus() {
+		$user = new UserIdentityValue( 1, 'Mentor' );
+		$mentorStatusManager = $this->createNoOpMock( MentorStatusManager::class, [ 'canChangeStatus' ] );
+		$mentorStatusManager->method( 'canChangeStatus' )
+			->with( $user )
+			->willReturn( StatusValue::newFatal( 'mock-error' ) );
+
+		$this->assertFalse(
+			$this->newAction(
+				mentorStatusManager: $mentorStatusManager,
+				lastActionTimestampLookup: $this->createNoOpMock( LastActionTimestampLookup::class )
+			)->check( $user ),
+			'A mentor whose status cannot be changed (eg. because of a block) should not be eligible'
+		);
+	}
+
+	/**
+	 * @dataProvider provideCheckAwayMentor
+	 */
+	public function testCheckAwayMentor( string $backTimestamp, ?string $lastEditTimestamp, bool $expected ) {
+		ConvertibleTimestamp::setFakeTime( self::NOW );
+		$user = new UserIdentityValue( 1, 'Mentor' );
+		$lookup = $this->createMock( LastActionTimestampLookup::class );
+		$lookup->method( 'getLastActionTimestampForUser' )
+			->willReturn( $lastEditTimestamp );
+
+		$action = $this->newAction(
+			mentorStatusManager: $this->newMentorStatusManagerMock(
+				$user,
+				MentorStatusManager::STATUS_AWAY,
+				$backTimestamp
+			),
+			lastActionTimestampLookup: $lookup
+		);
+		$this->assertSame( $expected, $action->check( $user ) );
+	}
+
+	public static function provideCheckAwayMentor() {
+		// NOW is 20220101120000 and the renewal window is 4 days. A null last edit
+		// timestamp would make check() return true, so expecting false for it proves
+		// the away guard returned early.
+		return [
+			'away well past the renewal window is not eligible' => [ '20220110120000', null, false ],
+			'awayness expiring exactly at the window boundary is checked for inactivity' =>
+				[ '20220105120000', '20210101120000', true ],
+			'awayness expiring within the window and still inactive is eligible' =>
+				[ '20220103120000', '20210101120000', true ],
+			'awayness expiring within the window but recently active is not eligible' =>
+				[ '20220103120000', '20211231120000', false ],
+		];
 	}
 
 	/**
@@ -82,6 +155,7 @@ class MarkMentorAsAwayActionTest extends MediaWikiUnitTestCase {
 			->willReturn( $lastEditTimestamp );
 
 		$action = $this->newAction(
+			mentorStatusManager: $this->newMentorStatusManagerMock( $user ),
 			lastActionTimestampLookup: $lookup,
 			minDaysSinceLastEdit: $minDaysSinceLastEdit
 		);
@@ -106,7 +180,10 @@ class MarkMentorAsAwayActionTest extends MediaWikiUnitTestCase {
 
 		$this->expectException( LogicException::class );
 		$this->expectExceptionMessage( 'Mentor edited in the future' );
-		$this->newAction( lastActionTimestampLookup: $lookup )->check( $user );
+		$this->newAction(
+			mentorStatusManager: $this->newMentorStatusManagerMock( $user ),
+			lastActionTimestampLookup: $lookup
+		)->check( $user );
 	}
 
 	public function testPerform() {
