@@ -801,7 +801,7 @@
 		},
 		"PersonalDashboard": {
 			"Modules": {
-				"ext.personalDashboard.mentorship": {
+				"ext.growthExperiments.mentorship": {
 					"class": "GrowthExperiments\\PersonalDashboard\\Mentorship",
 					"services": [
 						"GrowthExperimentsMentorManager",
@@ -832,7 +832,7 @@
 									"enabled": true,
 									"modules": [
 										{
-											"name": "ext.personalDashboard.mentorship",
+											"name": "ext.growthExperiments.mentorship",
 											"enabled": true
 										}
 									]
