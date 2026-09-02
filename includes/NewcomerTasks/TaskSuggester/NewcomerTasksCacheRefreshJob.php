@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
@@ -15,27 +16,19 @@ class NewcomerTasksCacheRefreshJob extends Job {
 
 	public const JOB_NAME = 'newcomerTasksCacheRefreshJob';
 
-	private UserIdentityLookup $userIdentityLookup;
-	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
-	private TaskSuggesterFactory $taskSuggesterFactory;
-
 	/** @inheritDoc */
 	public function __construct(
 		array $params,
-		UserIdentityLookup $userIdentityLookup,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		TaskSuggesterFactory $taskSuggesterFactory
+		private readonly UserIdentityLookup $userIdentityLookup,
+		private readonly NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		private readonly TaskSuggesterFactory $taskSuggesterFactory
 	) {
 		parent::__construct( self::JOB_NAME, $params );
 		$this->removeDuplicates = true;
-
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->taskSuggesterFactory = $taskSuggesterFactory;
 	}
 
 	/** @inheritDoc */
-	public function run() {
+	public function run(): bool {
 		$taskSuggester = $this->taskSuggesterFactory->create();
 		$userIdentity = $this->userIdentityLookup->getUserIdentityByUserId( $this->params['userId'] );
 		if ( $userIdentity === null ) {

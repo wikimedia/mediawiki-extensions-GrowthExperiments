@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks;
 
@@ -223,7 +224,7 @@ class NewcomerTasksUserOptionsLookup {
 	 * @param string[] $taskTypesToFilter Task types IDs.
 	 * @return string[] Filtered task types IDs.
 	 */
-	private function filterNonExistentTaskTypes( array $taskTypesToFilter ) {
+	private function filterNonExistentTaskTypes( array $taskTypesToFilter ): array {
 		$allTaskTypes = $this->configurationLoader->getTaskTypes();
 		return array_values( array_filter( $taskTypesToFilter,
 			static function ( $taskTypeId ) use ( $allTaskTypes ) {
@@ -239,10 +240,10 @@ class NewcomerTasksUserOptionsLookup {
 	 * @return array|null User preferences as a list of strings, or null of the preference was
 	 *   missing or invalid.
 	 */
-	private function getJsonListOption( UserIdentity $user, string $pref ) {
+	private function getJsonListOption( UserIdentity $user, string $pref ): ?array {
 		$stored = $this->userOptionsLookup->getOption( $user, $pref );
 		if ( $stored ) {
-			$stored = json_decode( $stored, true );
+			$stored = json_decode( (string)$stored, true );
 		}
 		// sanity check
 		if ( !is_array( $stored ) || array_filter( $stored, 'is_string' ) !== $stored ) {
@@ -257,7 +258,7 @@ class NewcomerTasksUserOptionsLookup {
 	 * @param string $pref
 	 * @return string|null User preference as a string, or null if the preference is invalid
 	 */
-	private function getStringOption( UserIdentity $user, string $pref ) {
+	private function getStringOption( UserIdentity $user, string $pref ): ?string {
 		$stored = $this->userOptionsLookup->getOption( $user, $pref );
 
 		if ( !is_string( $stored ) ) {
