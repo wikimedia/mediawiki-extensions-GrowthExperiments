@@ -92,6 +92,12 @@
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-help-text": "启用此功能后，学员在达到两个阈值后将自动退出导师计划。他们仍然可以从个人主页找到导师。",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "编辑数",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "账号年龄（天数）",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-control-label": "将不活跃的导师标记为“离开”",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-help-text": "导师将被标记为“离开”状态，最长可达1个月，或直至达到移除阈值。",
+	"communityconfiguration-mentorship-gementorshipautoawayedafterdays-label": "标记为“离开”前，连续数天未活动",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoremoved-control-label": "将不活跃的导师从指导计划中移除。",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoremoved-help-text": "他们的学员将被重新分配给其他导师。",
+	"communityconfiguration-mentorship-gementorshipautoremovedafterdays-label": "移除前数天无活动",
 	"communityconfiguration-growthhomepage-title": "新手引导",
 	"communityconfiguration-growthhomepage-description": "通过在注册后提供帮助及升级通知来自定义新账号持有者的引导体验。",
 	"communityconfiguration-growthhomepage-info-text": "新手主页（[[Special:Homepage]]）为新账号持有者提供指引。注册后，如果新账号持有者表示其希望创建条目或向维基百科添加新图片，我们会建议先尝试更小的编辑以起步，并且提供进一步指引的链接。",
@@ -168,6 +174,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "是，总共修改了50次。",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "是，总共修改了75次。",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "是，之后总共修改了150次",
+	"communityconfiguration-growthsuggestededits-revise_tone-label": "修改语气（结构化任务）",
+	"communityconfiguration-growthsuggestededits-revise_tone-disabled-control-label": "该任务已禁用。",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedtemplates-label": "含有此处定义的模板的条目将不会包含在此种任务中显示给用户",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedcategories-label": "含有此处定义的分类的条目将不会包含在此种任务中显示给用户",
 	"growthexperiments-addlink-done-button": "完成",
 	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "清理过期时间戳"
 }

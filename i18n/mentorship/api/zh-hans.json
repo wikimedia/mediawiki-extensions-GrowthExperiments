@@ -4,6 +4,7 @@
 			"BlackShadowG",
 			"Peterxy",
 			"Peterxy12",
+			"Shizhao",
 			"Xiplus"
 		]
 	},
@@ -21,6 +22,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "导师模块已启用",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "导师计划模块完全停用，这通常是由软件设置并用于A/B测试。",
 	"apihelp-growthsetmenteestatus-param-state-optout": "学员从导师计划退出；学员和导师的关系将会被删除，导师计划模块将被替换成可以重新加入",
+	"apierror-growthexperiments-setmenteestatus-no-change": "您的导师身份没有改变。",
 	"apihelp-query+growthmenteestatus-summary": "查询目前用户的学员状态，请查看action=growthsetmenteestatus的文件以了解个别状态的详细信息。",
 	"apihelp-query+growthmentormentee-summary": "获取分配给指定导师的全部学员。",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "要查询学员的导师",

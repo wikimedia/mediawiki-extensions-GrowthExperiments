@@ -14,6 +14,7 @@
 			"Peterxy",
 			"Peterxy12",
 			"Quaff5353",
+			"Shizhao",
 			"Stang",
 			"Stevenliuyi",
 			"SunAfterRain",
@@ -259,5 +260,7 @@
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "只有拥有至少$1次{{PLURAL:$1|编辑}}及注册$2{{PLURAL:$2|天}}的用户可以注册为导师。",
 	"tag-mentor_list_change": "导师清单的变更",
 	"tag-mentor_list_change-description": "标签应用于通过GrowthExperiments对结构化导师清单所做的编辑",
-	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "导师计划目前已关闭。管理员可以通过[[$1]]来开启导师计划。"
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "导师计划目前已关闭。管理员可以通过[[$1]]来开启导师计划。",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "导师$1标记为离开，不活跃$2天",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "移除导师$1，已不活跃$2天"
 }
