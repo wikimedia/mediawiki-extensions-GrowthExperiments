@@ -485,10 +485,14 @@ $specialPageAliases['ur'] = [
 $specialPageAliases['vi'] = [
 	'WelcomeSurvey' => [ 'Bảng_câu_hỏi_chào_mừng' ],
 	'Homepage' => [ 'Trang_nhà' ],
+	'Impact' => [ 'Ảnh_hưởng' ],
 	'ClaimMentee' => [ 'Nhận_Người_được_cố_vấn' ],
+	'NewcomerTasksInfo' => [ 'Thông_tin_Nhiệm_vụ_người_mới' ],
 	'EditGrowthConfig' => [ 'Sửa_đổi_cấu_hình_Tăng_Trưởng' ],
 	'MentorDashboard' => [ 'Bảng_điều_khiển_cố_vấn' ],
 	'QuitMentorship' => [ 'Ngừng_làm_cố_vấn' ],
+	'ManageMentors' => [ 'Quản_lý_cố_vấn' ],
+	'EnrollAsMentor' => [ 'Đăng_ký_làm_cố_vấn' ],
 ];
 
 /** Chinese */
