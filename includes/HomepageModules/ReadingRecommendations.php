@@ -10,6 +10,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
 use UnexpectedValueException;
+use Wikimedia\Minify\CSSMin;
 
 /**
  * The reading recommendations module, which will show article recommendations
@@ -87,7 +88,10 @@ class ReadingRecommendations extends BaseModule {
 	protected function getModuleStyles() {
 		return array_merge(
 			parent::getModuleStyles(),
-			[ 'oojs-ui.styles.icons-content' ]
+			[
+				'oojs-ui.styles.icons-content',
+				'ext.growthExperiments.Homepage.ReadingRecommendations.styles',
+			]
 		);
 	}
 
@@ -152,37 +156,60 @@ class ReadingRecommendations extends BaseModule {
 		);
 	}
 
+	/**
+	 * One recommendation as a Codex CSS-only link card, the same classes the
+	 * Vue CdxCard renders, so the page does not shift when the app mounts.
+	 */
 	private function getListItemHtml( array $item ): string {
-		$html = '';
 		if ( $item['thumbnail'] ) {
-			$html .= Html::element( 'img', [
-				'src' => $item['thumbnail']['url'],
-				'width' => $item['thumbnail']['width'],
-				'height' => $item['thumbnail']['height'],
-				'alt' => '',
+			// CSSMin quotes and escapes the URL, so it cannot close url() and append
+			// further declarations. CdxThumbnail escapes the same characters.
+			$thumbnailContent = Html::element( 'span', [
+				'class' => 'cdx-thumbnail__image',
+				'style' => 'background-image: ' . CSSMin::buildUrlValue( $item['thumbnail']['url'] ) . ';',
 			] );
+		} else {
+			$thumbnailContent = Html::rawElement(
+				'span',
+				[ 'class' => 'cdx-thumbnail__placeholder' ],
+				Html::element( 'span', [ 'class' => 'cdx-thumbnail__placeholder__icon' ] )
+			);
 		}
-		$html .= Html::element( 'a', [ 'href' => $item['url'] ], $item['title'] );
+		$text = Html::element(
+			'span',
+			[ 'class' => 'cdx-card__text__title' ],
+			$item['title']
+		);
 		if ( $item['description'] !== null ) {
-			$html .= Html::element(
-				'p',
-				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
+			$text .= Html::element(
+				'span',
+				[ 'class' => 'cdx-card__text__description' ],
 				$item['description']
 			);
 		}
 		if ( $item['relatedTo'] !== null ) {
-			$html .= Html::element(
-				'p',
-				[ 'class' => 'growthexperiments-reading-recommendations-list-related-to' ],
+			$text .= Html::element(
+				'span',
+				[ 'class' => 'cdx-card__text__supporting-text' ],
 				$this->getContext()->msg(
 					'growthexperiments-homepage-reading-recommendations-related-to'
 				)->params( $item['relatedTo'] )->text()
 			);
 		}
+		$card = Html::rawElement(
+			'a',
+			[ 'class' => 'cdx-card cdx-card--is-link', 'href' => $item['url'] ],
+			Html::rawElement(
+				'span',
+				[ 'class' => 'cdx-thumbnail cdx-card__thumbnail' ],
+				$thumbnailContent
+			) .
+			Html::rawElement( 'span', [ 'class' => 'cdx-card__text' ], $text )
+		);
 		return Html::rawElement(
 			'li',
 			[ 'class' => 'growthexperiments-reading-recommendations-list-item' ],
-			$html
+			$card
 		);
 	}
 

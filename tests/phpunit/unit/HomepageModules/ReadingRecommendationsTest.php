@@ -235,9 +235,37 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 			[ $item + [ 'description' => null, 'thumbnail' => null, 'relatedTo' => null ] ],
 			$data['recommendations']
 		);
-		$this->assertStringContainsString( '<a href="/wiki/Example">Example</a>', $html );
-		$this->assertStringNotContainsString( '<img', $html );
-		$this->assertStringNotContainsString( '<p ', $html );
+		$this->assertStringContainsString(
+			'<a class="cdx-card cdx-card--is-link" href="/wiki/Example">',
+			$html
+		);
+		$this->assertStringContainsString( '<span class="cdx-card__text__title">Example</span>', $html );
+		// A card without a thumbnail still reserves the space, with the placeholder icon.
+		$this->assertStringContainsString( 'cdx-thumbnail__placeholder', $html );
+		$this->assertStringNotContainsString( 'cdx-thumbnail__image', $html );
+		$this->assertStringNotContainsString( 'cdx-card__text__description', $html );
+		$this->assertStringNotContainsString( 'cdx-card__text__supporting-text', $html );
+	}
+
+	public function testHostileThumbnailUrlStaysInsideTheCssUrlValue() {
+		$item = [
+			'title' => 'Example',
+			'url' => '/wiki/Example',
+			'pageId' => 1,
+			'thumbnail' => [
+				'url' => 'https://ok.example/a.png); background-image: url(https://evil.example/b.png',
+				'width' => 80,
+				'height' => 80,
+			],
+		];
+		$path = $this->createFixtureFile( json_encode( [ $item ], JSON_THROW_ON_ERROR ) );
+
+		$html = $this->getModule( $path, true )->render( ReadingRecommendations::RENDER_DESKTOP );
+
+		// The whole URL is one quoted url() value, so the second declaration is inert.
+		$this->assertStringContainsString( 'background-image: url(&quot;https://ok.example/a.png);', $html );
+		$this->assertStringNotContainsString( 'url(https://ok.example/a.png)', $html );
+		$this->assertStringNotContainsString( 'url(https://evil.example/b.png)', $html );
 	}
 
 	public function testMobileSummaryHasNoDetailsView() {

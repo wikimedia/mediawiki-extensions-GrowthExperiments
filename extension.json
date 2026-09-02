@@ -1459,6 +1459,17 @@
 				"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button"
 			]
 		},
+		"ext.growthExperiments.Homepage.ReadingRecommendations.styles": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexComponents": [
+				"CdxCard",
+				"CdxThumbnail"
+			],
+			"codexStyleOnly": true,
+			"styles": [
+				"ext.growthExperiments.Homepage.ReadingRecommendations.styles/ReadingRecommendations.less"
+			]
+		},
 		"ext.growthExperiments.Homepage.styles": {
 			"class": "GrowthExperiments\\ResourceLoaderFileModuleWithLessVars",
 			"styles": [
