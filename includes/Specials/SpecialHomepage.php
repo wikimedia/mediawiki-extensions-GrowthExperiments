@@ -95,7 +95,7 @@ class SpecialHomepage extends SpecialPage {
 
 		if ( $this->isMobile ) {
 			if (
-				array_key_exists( $par, $modules ) &&
+				array_key_exists( $par ?? '', $modules ) &&
 				$modules[$par]->supports( IDashboardModule::RENDER_MOBILE_DETAILS )
 			) {
 				$mode = IDashboardModule::RENDER_MOBILE_DETAILS;
