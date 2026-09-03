@@ -230,6 +230,11 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		}
 
 		$suggestions = $this->deduplicateSuggestions( $suggestions );
+		if ( $taskSetFilters->getInterestFilters() ) {
+			// The same article is often similar to several interests, so the summed
+			// hit counts promise more tasks than the deduplicated set delivers.
+			$totalCount = count( $suggestions );
+		}
 
 		$taskSet = new TaskSet(
 			$suggestions,

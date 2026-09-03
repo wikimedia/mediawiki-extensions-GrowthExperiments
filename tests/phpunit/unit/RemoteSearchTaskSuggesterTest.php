@@ -144,6 +144,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 		$this->assertInstanceOf( TaskSet::class, $taskSet );
 		$this->assertTrue( $taskSet->filtersEqual( $taskSetFilters ) );
+		// The count is the size of the deduplicated set, not the sum of the hit counts.
+		$this->assertSame( 2, $taskSet->getTotalCount() );
 		// Every task is tagged with the interest that produced it.
 		$interestsByTitle = [];
 		foreach ( $taskSet as $task ) {
@@ -203,6 +205,48 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			[ LogLevel::WARNING, 'Skipping malformed interest title: {interest}' ],
 			[ LogLevel::WARNING, 'Skipping interest that is not a plain main-namespace title: {interest}' ],
 		], $logger->getBuffer() );
+	}
+
+	public function testSuggestWithInterestsCountsDeduplicatedTasks() {
+		$user = new UserIdentityValue( 1, 'Foo' );
+		$taskTypes = self::getTaskTypes( [ 'copyedit' => [ 'Copy-1' ] ] );
+
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
+		// Both interests find the same article.
+		$requestFactory = $this->getMockRequestFactory( [
+			[
+				'params' => [ 'srsearch' => 'hastemplate:"Copy-1" morelikethis:"Albert_Einstein"' ],
+				'response' => [
+					'query' => [
+						'search' => [ [ 'ns' => 0, 'title' => 'Foo' ] ],
+						'searchinfo' => [ 'totalhits' => 10 ],
+					],
+				],
+			],
+			[
+				'params' => [ 'srsearch' => 'hastemplate:"Copy-1" morelikethis:"Coffee"' ],
+				'response' => [
+					'query' => [
+						'search' => [ [ 'ns' => 0, 'title' => 'Foo' ] ],
+						'searchinfo' => [ 'totalhits' => 5 ],
+					],
+				],
+			],
+		] );
+
+		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
+			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
+			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
+			$requestFactory, $this->getMockTitleFactory(),
+			'https://example.com', $taskTypes, [] );
+
+		$taskSet = $suggester->suggest( $user,
+			new TaskSetFilters( [ 'copyedit' ], [], null, [ 'Albert Einstein', 'Coffee' ] ) );
+
+		$this->assertInstanceOf( TaskSet::class, $taskSet );
+		$this->assertCount( 1, $taskSet );
+		$this->assertSame( 1, $taskSet->getTotalCount() );
 	}
 
 	public static function provideSuggest() {
