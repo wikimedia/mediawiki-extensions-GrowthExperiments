@@ -12,7 +12,8 @@
 		"commonjs": true
 	},
 	"rules": {
-		"max-len": "warn"
+		"max-len": "warn",
+		"mediawiki/no-unlabeled-buttonwidget": "off"
 	},
 	"overrides": [
 		{
@@ -23,12 +24,18 @@
 			],
 			"rules": {
 				"max-len": "off",
-				"vue/component-name-in-template-casing": [ "error", "kebab-case" ],
-				"vue/max-len": [ "error", {
-					"code": 120,
-					"template": 120,
-					"comments": 120
-				} ],
+				"vue/component-name-in-template-casing": [
+					"error",
+					"kebab-case"
+				],
+				"vue/max-len": [
+					"error",
+					{
+						"code": 120,
+						"template": 120,
+						"comments": 120
+					}
+				],
 				"vue/no-unsupported-features": [
 					"error",
 					{
@@ -39,13 +46,17 @@
 			}
 		},
 		{
-			"files": [ "**/*.js" ],
+			"files": [
+				"**/*.js"
+			],
 			"extends": [
 				"wikimedia/client"
 			]
 		},
 		{
-			"files": [ "**/*.test.js" ],
+			"files": [
+				"**/*.test.js"
+			],
 			"env": {
 				"jest": true
 			}

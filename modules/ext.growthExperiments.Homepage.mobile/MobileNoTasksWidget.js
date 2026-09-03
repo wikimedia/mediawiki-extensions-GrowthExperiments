@@ -7,7 +7,6 @@
  * @extends OO.ui.Widget
  * @constructor
  */
-/* eslint-disable mediawiki/class-doc */
 
 function MobileNoTasksWidget() {
 	const baseClass = 'growthexperiments-suggestededits-mobilesummary-notasks-widget';

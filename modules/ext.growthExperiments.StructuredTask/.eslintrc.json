@@ -1,5 +1,10 @@
 {
 	"globals": {
 		"ve": "readonly"
+	},
+	"rules": {
+		"mediawiki/no-unlabeled-buttonwidget": "off",
+		"jsdoc/check-tag-names": "off",
+		"jsdoc/require-throws-type": "off"
 	}
 }

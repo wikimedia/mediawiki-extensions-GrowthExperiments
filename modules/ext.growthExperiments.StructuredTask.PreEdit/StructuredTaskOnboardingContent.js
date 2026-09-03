@@ -15,7 +15,6 @@ StructuredTaskOnboardingContent.prototype.createPanel = function (
 	title, $content, heroImageClassName, heroImageAltText,
 ) {
 	const $heroElement = heroImageClassName ?
-		// eslint-disable-next-line mediawiki/class-doc
 		$( '<div>' ).addClass( [
 			heroImageClassName,
 			'structuredtask-onboarding-content-image',
@@ -24,7 +23,6 @@ StructuredTaskOnboardingContent.prototype.createPanel = function (
 				role: 'img',
 				'aria-label': heroImageAltText,
 			} ) : '';
-	// eslint-disable-next-line mediawiki/class-doc
 	return new OO.ui.PanelLayout( {
 		content: [
 			$heroElement,

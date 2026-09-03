@@ -16,7 +16,9 @@
 		"ecmaVersion": 8
 	},
 	"rules": {
-		"max-len": "off"
+		"max-len": "off",
+		"mediawiki/no-unlabeled-buttonwidget": "off",
+		"jsdoc/valid-types": "off"
 	},
 	"settings": {
 		"jsdoc": {
@@ -37,7 +39,9 @@
 	},
 	"overrides": [
 		{
-			"files": [ "**/*.test.js" ],
+			"files": [
+				"**/*.test.js"
+			],
 			"extends": [
 				"wikimedia/server"
 			],
