@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\Api;
 
@@ -32,36 +33,19 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  */
 class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
-	private TaskSuggesterFactory $taskSuggesterFactory;
-	private ConfigurationLoader $configurationLoader;
-	private LinkRecommendationFilter $linkRecommendationFilter;
-	private ImageRecommendationFilter $imageRecommendationFilter;
-	private ProtectionFilter $protectionFilter;
-	private JobQueueGroup $jobQueueGroup;
-	private ITopicRegistry $topicRegistry;
-	private FeatureManager $featureManager;
-
 	public function __construct(
 		ApiQuery $queryModule,
 		string $moduleName,
-		JobQueueGroup $jobQueueGroup,
-		TaskSuggesterFactory $taskSuggesterFactory,
-		ConfigurationLoader $configurationLoader,
-		LinkRecommendationFilter $linkRecommendationFilter,
-		ImageRecommendationFilter $imageRecommendationFilter,
-		ProtectionFilter $protectionFilter,
-		ITopicRegistry $topicRegistry,
-		FeatureManager $featureManager
+		private readonly JobQueueGroup $jobQueueGroup,
+		private readonly TaskSuggesterFactory $taskSuggesterFactory,
+		private readonly ConfigurationLoader $configurationLoader,
+		private readonly LinkRecommendationFilter $linkRecommendationFilter,
+		private readonly ImageRecommendationFilter $imageRecommendationFilter,
+		private readonly ProtectionFilter $protectionFilter,
+		private readonly ITopicRegistry $topicRegistry,
+		private readonly FeatureManager $featureManager,
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
-		$this->taskSuggesterFactory = $taskSuggesterFactory;
-		$this->configurationLoader = $configurationLoader;
-		$this->linkRecommendationFilter = $linkRecommendationFilter;
-		$this->imageRecommendationFilter = $imageRecommendationFilter;
-		$this->protectionFilter = $protectionFilter;
-		$this->jobQueueGroup = $jobQueueGroup;
-		$this->topicRegistry = $topicRegistry;
-		$this->featureManager = $featureManager;
 	}
 
 	/** @inheritDoc */
