@@ -3,8 +3,7 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use LogicException;
 use MediaWiki\JobQueue\Job;
 use MediaWiki\User\UserIdentityLookup;
@@ -20,7 +19,7 @@ class NewcomerTasksCacheRefreshJob extends Job {
 	public function __construct(
 		array $params,
 		private readonly UserIdentityLookup $userIdentityLookup,
-		private readonly NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		private readonly TaskSetFiltersFactory $taskSetFiltersFactory,
 		private readonly TaskSuggesterFactory $taskSuggesterFactory
 	) {
 		parent::__construct( self::JOB_NAME, $params );
@@ -38,11 +37,7 @@ class NewcomerTasksCacheRefreshJob extends Job {
 		}
 		$taskSuggester->suggest(
 			$userIdentity,
-			new TaskSetFilters(
-				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $userIdentity ),
-				$this->newcomerTasksUserOptionsLookup->getTopics( $userIdentity ),
-				$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $userIdentity )
-			),
+			$this->taskSetFiltersFactory->newFromUser( $userIdentity ),
 			SearchTaskSuggester::DEFAULT_LIMIT,
 			null,
 			[ 'useCache' => false ]

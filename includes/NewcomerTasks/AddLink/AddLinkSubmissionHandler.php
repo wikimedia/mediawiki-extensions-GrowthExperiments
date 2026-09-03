@@ -3,10 +3,9 @@
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -38,7 +37,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 	private LinkRecommendationStore $linkRecommendationStore;
 	private LinkBatchFactory $linkBatchFactory;
 	private TaskSuggesterFactory $taskSuggesterFactory;
-	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private TaskSetFiltersFactory $taskSetFiltersFactory;
 	private LoggerInterface $logger;
 
 	public function __construct(
@@ -49,7 +48,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		TitleFactory $titleFactory,
 		UserIdentityUtils $userIdentityUtils,
 		TaskSuggesterFactory $taskSuggesterFactory,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		TaskSetFiltersFactory $taskSetFiltersFactory,
 		LoggerInterface $logger
 	) {
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
@@ -59,7 +58,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->userIdentityUtils = $userIdentityUtils;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
-		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->taskSetFiltersFactory = $taskSetFiltersFactory;
 		$this->logger = $logger;
 	}
 
@@ -149,11 +148,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 		$warnings = [];
 		$taskSet = $this->taskSuggesterFactory->create()->suggest(
 			$user,
-			new TaskSetFilters(
-				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-				$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
-				$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
-			)
+			$this->taskSetFiltersFactory->newFromUser( $user )
 		);
 		if ( $taskSet instanceof TaskSet ) {
 			$qualityGateConfig = $taskSet->getQualityGateConfig();

@@ -12,7 +12,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
@@ -113,10 +113,9 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_HARD );
 		$staticConfigLoader = new StaticConfigurationLoader( [ $taskType ] );
 		$newcomerTasksUserOptionsLookupMock = $this->createMock( NewcomerTasksUserOptionsLookup::class );
-		$newcomerTasksUserOptionsLookupMock->method( 'getTopics' )
-			->willReturn( [] );
-		$newcomerTasksUserOptionsLookupMock->method( 'getTopicsMatchMode' )
-			->willReturn( SearchStrategy::TOPIC_MATCH_MODE_OR );
+		$taskSetFiltersFactoryMock = $this->createMock( TaskSetFiltersFactory::class );
+		$taskSetFiltersFactoryMock->method( 'newFromUser' )
+			->willReturn( new TaskSetFilters( [ 'foo' ] ) );
 
 		$taskSuggester = new StaticTaskSuggester(
 			[ new Task( $taskType, new TitleValue( 0, 'foo' ) ) ]
@@ -150,6 +149,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$pageViewServiceMock,
 			$staticConfigLoader,
 			$newcomerTasksUserOptionsLookupMock,
+			$taskSetFiltersFactoryMock,
 			$taskSuggester,
 			$titleFactoryMock,
 			$protectionFilter,

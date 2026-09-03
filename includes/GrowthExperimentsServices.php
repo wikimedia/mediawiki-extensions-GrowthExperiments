@@ -60,6 +60,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ReviseTone\ReviseToneWeightedTagManager;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
@@ -295,6 +296,10 @@ class GrowthExperimentsServices {
 
 	public function getSuggestionsInfo(): NewcomerTasksInfo {
 		return $this->coreServices->get( 'GrowthExperimentsSuggestionsInfo' );
+	}
+
+	public function getTaskSetFiltersFactory(): TaskSetFiltersFactory {
+		return $this->coreServices->get( 'GrowthExperimentsTaskSetFiltersFactory' );
 	}
 
 	public function getTaskSuggesterFactory(): TaskSuggesterFactory {

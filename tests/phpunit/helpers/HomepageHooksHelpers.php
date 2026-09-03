@@ -8,7 +8,7 @@ use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
@@ -48,7 +48,7 @@ trait HomepageHooksHelpers {
 			$this->createNoOpMock( CampaignConfig::class ),
 			$this->createNoOpMock( TaskTypeHandlerRegistry::class ),
 			$this->createNoOpMock( TaskSuggesterFactory::class ),
-			$this->createNoOpMock( NewcomerTasksUserOptionsLookup::class ),
+			$this->createNoOpMock( TaskSetFiltersFactory::class ),
 			$specialPageFactoryMock ?? $this->createNoOpMock( SpecialPageFactory::class ),
 			$this->createNoOpMock( NewcomerTasksChangeTagsManager::class ),
 			$this->createNoOpMock( UserImpactLookup::class ),

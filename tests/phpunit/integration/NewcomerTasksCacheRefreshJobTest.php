@@ -15,15 +15,11 @@ class NewcomerTasksCacheRefreshJobTest extends MediaWikiIntegrationTestCase {
 		$job = $this->getServiceContainer()->getJobFactory()->newJob(
 			NewcomerTasksCacheRefreshJob::JOB_NAME, [
 				'userId' => 1,
-				'taskTypeFilters' => [ 'copyedit' ],
-				'topicFilters' => [ 'sociology' ],
-				'limit' => 10,
 			]
 		);
 
-		$params = $job->getParams();
-		$this->assertArrayHasKey( 'taskTypeFilters', $params );
-		$this->assertSame( [ 'copyedit' ], $params['taskTypeFilters'] );
+		$this->assertInstanceOf( NewcomerTasksCacheRefreshJob::class, $job );
+		$this->assertSame( 1, $job->getParams()['userId'] );
 	}
 
 }

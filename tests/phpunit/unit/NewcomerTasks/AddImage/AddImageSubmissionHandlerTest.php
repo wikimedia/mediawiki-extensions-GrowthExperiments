@@ -5,7 +5,7 @@ namespace GrowthExperiments\Tests\Unit;
 use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
@@ -34,7 +34,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 		$handler = new AddImageSubmissionHandler(
 			$weightedTagsUpdaterMock,
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
-			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
+			$this->createMock( TaskSetFiltersFactory::class ),
 			$this->createMock( WANObjectCache::class ),
 			$userIdentityUtilsMock,
 			$this->createMock( EventGateImageSuggestionFeedbackUpdater::class )
@@ -133,7 +133,7 @@ class AddImageSubmissionHandlerTest extends MediaWikiUnitTestCase {
 		$handler = new AddImageSubmissionHandler(
 			$weightedTagsUpdaterMock,
 			$this->createMock( LocalSearchTaskSuggesterFactory::class ),
-			$this->createMock( NewcomerTasksUserOptionsLookup::class ),
+			$this->createMock( TaskSetFiltersFactory::class ),
 			$this->createMock( WANObjectCache::class ),
 			$userIdentityUtils,
 			$this->createMock( EventGateImageSuggestionFeedbackUpdater::class )

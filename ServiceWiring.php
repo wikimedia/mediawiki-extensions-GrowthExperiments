@@ -82,6 +82,7 @@ use GrowthExperiments\NewcomerTasks\ReviseTone\NullReviseToneRecommendationProvi
 use GrowthExperiments\NewcomerTasks\ReviseTone\ReviseToneWeightedTagManager;
 use GrowthExperiments\NewcomerTasks\ReviseTone\SubpageReviseToneRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
@@ -158,7 +159,7 @@ return [
 		return new AddImageSubmissionHandler(
 			$weightedTagsUpdater,
 			$geServices->getTaskSuggesterFactory(),
-			$geServices->getNewcomerTasksUserOptionsLookup(),
+			$geServices->getTaskSetFiltersFactory(),
 			$services->getMainWANObjectCache(),
 			$services->getUserIdentityUtils(),
 			$geServices->getEventGateImageSuggestionFeedbackUpdater(),
@@ -177,7 +178,7 @@ return [
 			$services->getTitleFactory(),
 			$services->getUserIdentityUtils(),
 			$growthServices->getTaskSuggesterFactory(),
-			$growthServices->getNewcomerTasksUserOptionsLookup(),
+			$growthServices->getTaskSetFiltersFactory(),
 			$growthServices->getLogger()
 		);
 	},
@@ -411,7 +412,7 @@ return [
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getUserImpactLookup(),
 			$growthServices->getTaskSuggesterFactory(),
-			$growthServices->getNewcomerTasksUserOptionsLookup(),
+			$growthServices->getTaskSetFiltersFactory(),
 			$growthServices->getLogger(),
 			$growthServices->getGrowthWikiConfig(),
 		);
@@ -1034,6 +1035,15 @@ return [
 				$growthServices->getTopicRegistry()
 			),
 			$services->getMainWANObjectCache()
+		);
+	},
+
+	'GrowthExperimentsTaskSetFiltersFactory' => static function (
+		MediaWikiServices $services
+	): TaskSetFiltersFactory {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new TaskSetFiltersFactory(
+			$growthServices->getNewcomerTasksUserOptionsLookup(),
 		);
 	},
 

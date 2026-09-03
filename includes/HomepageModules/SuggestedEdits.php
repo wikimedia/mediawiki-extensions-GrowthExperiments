@@ -13,6 +13,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
@@ -131,6 +132,7 @@ class SuggestedEdits extends BaseModule {
 		private ?PageViewService $pageViewService,
 		private ConfigurationLoader $configurationLoader,
 		private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		private TaskSetFiltersFactory $taskSetFiltersFactory,
 		private TaskSuggester $taskSuggester,
 		private TitleFactory $titleFactory,
 		private ProtectionFilter $protectionFilter,
@@ -369,9 +371,7 @@ class SuggestedEdits extends BaseModule {
 			// TODO also reset cache in ImageRecommendationFilter
 		}
 		$taskTypes = $this->taskTypeManager->getTaskTypesForUser( $user );
-		$topics = $this->newcomerTasksUserOptionsLookup->getTopics( $user );
-		$topicsMatchMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
-		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics, $topicsMatchMode );
+		$taskSetFilters = $this->taskSetFiltersFactory->newFromUser( $user, $taskTypes );
 		$tasks = $this->taskSuggester->suggest( $user, $taskSetFilters, null, null,
 			$suggesterOptions );
 		if ( $tasks instanceof TaskSet ) {

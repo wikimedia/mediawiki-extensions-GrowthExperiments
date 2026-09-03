@@ -116,6 +116,7 @@ class HomepageModuleRegistry {
 					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null,
 					$growthServices->getNewcomerTasksConfigurationLoader(),
 					$growthServices->getNewcomerTasksUserOptionsLookup(),
+					$growthServices->getTaskSetFiltersFactory(),
 					$growthServices->getTaskSuggesterFactory()->create(),
 					$services->getTitleFactory(),
 					$growthServices->getProtectionFilter(),

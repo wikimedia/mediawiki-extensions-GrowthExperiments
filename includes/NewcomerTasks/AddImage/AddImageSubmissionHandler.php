@@ -6,10 +6,9 @@ use CirrusSearch\WeightedTagsUpdater;
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\EventBus\EventGateImageSuggestionFeedbackUpdater;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\SubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationBaseTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
@@ -61,7 +60,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 
 	private ?WeightedTagsUpdater $weightedTagsUpdater;
 	private TaskSuggesterFactory $taskSuggesterFactory;
-	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private TaskSetFiltersFactory $taskSetFiltersFactory;
 	private WANObjectCache $cache;
 	private UserIdentityUtils $userIdentityUtils;
 
@@ -70,14 +69,14 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 	public function __construct(
 		?WeightedTagsUpdater $weightedTagsUpdater,
 		TaskSuggesterFactory $taskSuggesterFactory,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		TaskSetFiltersFactory $taskSetFiltersFactory,
 		WANObjectCache $cache,
 		UserIdentityUtils $userIdentityUtils,
 		?EventGateImageSuggestionFeedbackUpdater $eventGateImageFeedbackUpdater
 	) {
 		$this->weightedTagsUpdater = $weightedTagsUpdater;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
-		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->taskSetFiltersFactory = $taskSetFiltersFactory;
 		$this->cache = $cache;
 		$this->userIdentityUtils = $userIdentityUtils;
 		$this->eventGateImageFeedbackUpdater = $eventGateImageFeedbackUpdater;
@@ -135,11 +134,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Sub
 		$taskSuggester = $this->taskSuggesterFactory->create();
 		$taskSet = $taskSuggester->suggest(
 			$user,
-			new TaskSetFilters(
-				$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-				$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
-				$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
-			)
+			$this->taskSetFiltersFactory->newFromUser( $user )
 		);
 		if ( $taskSet instanceof TaskSet ) {
 			$qualityGateConfig = $taskSet->getQualityGateConfig();

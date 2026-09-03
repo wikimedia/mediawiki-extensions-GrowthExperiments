@@ -5,9 +5,8 @@ namespace GrowthExperiments\LevelingUp;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
@@ -58,7 +57,7 @@ class LevelingUpManager {
 	private ConfigurationLoader $configurationLoader;
 	private UserImpactLookup $userImpactLookup;
 	private TaskSuggesterFactory $taskSuggesterFactory;
-	private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup;
+	private TaskSetFiltersFactory $taskSetFiltersFactory;
 	private LoggerInterface $logger;
 	private Config $growthConfig;
 	private const KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM = 1;
@@ -74,7 +73,7 @@ class LevelingUpManager {
 		ConfigurationLoader $configurationLoader,
 		UserImpactLookup $userImpactLookup,
 		TaskSuggesterFactory $taskSuggesterFactory,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		TaskSetFiltersFactory $taskSetFiltersFactory,
 		LoggerInterface $logger,
 		Config $growthConfig
 	) {
@@ -89,7 +88,7 @@ class LevelingUpManager {
 		$this->configurationLoader = $configurationLoader;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
-		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->taskSetFiltersFactory = $taskSetFiltersFactory;
 		$this->logger = $logger;
 		$this->growthConfig = $growthConfig;
 	}
@@ -235,15 +234,16 @@ class LevelingUpManager {
 		// Find any task type that has fewer than GELevelingUpManagerTaskTypeCountThresholdMultiple completed
 		// tasks, and offer it as the next task type.
 		$taskSuggester = $this->taskSuggesterFactory->create();
-		$topicFilters = $this->newcomerTasksUserOptionsLookup->getTopics( $userIdentity );
-		$topicMatchMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $userIdentity );
 		foreach ( $taskTypes as $candidateTaskTypeId ) {
 			if ( $editCountByTaskType[$candidateTaskTypeId] < $levelingUpThreshold ) {
 				// Validate that tasks exist for the task type (e.g. link-recommendation
 				// may exist as a task type, but there are zero items available in the task pool)
 				$suggestions = $taskSuggester->suggest(
 					new UserIdentityValue( 0, 'LevelingUpManager' ),
-					new TaskSetFilters( [ $candidateTaskTypeId ], $topicFilters, $topicMatchMode ),
+					$this->taskSetFiltersFactory->newFromUser(
+						$userIdentity,
+						[ $candidateTaskTypeId ]
+					),
 					1,
 					null,
 					[ 'useCache' => false ]

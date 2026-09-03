@@ -18,10 +18,9 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
@@ -147,7 +146,7 @@ class HomepageHooks implements
 		private CampaignConfig $campaignConfig,
 		private TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		private TaskSuggesterFactory $taskSuggesterFactory,
-		private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		private TaskSetFiltersFactory $taskSetFiltersFactory,
 		private SpecialPageFactory $specialPageFactory,
 		private NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
 		private UserImpactLookup $userImpactLookup,
@@ -390,10 +389,9 @@ class HomepageHooks implements
 
 					$taskSet = $this->taskSuggesterFactory->create()->suggest(
 						$context->getUser(),
-						new TaskSetFilters(
-							$userTaskTypes,
-							$this->newcomerTasksUserOptionsLookup->getTopics( $context->getUser() ),
-							$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $context->getUser() )
+						$this->taskSetFiltersFactory->newFromUser(
+							$context->getUser(),
+							$userTaskTypes
 						),
 						1
 					);
@@ -754,10 +752,9 @@ class HomepageHooks implements
 				$taskSuggester = $this->taskSuggesterFactory->create();
 				$taskSuggester->suggest(
 					$user,
-					new TaskSetFilters(
-						$this->taskTypeManager->getTaskTypesForUser( $user ),
-						$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
-						$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
+					$this->taskSetFiltersFactory->newFromUser(
+						$user,
+						$this->taskTypeManager->getTaskTypesForUser( $user )
 					)
 				);
 			} );

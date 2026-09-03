@@ -66,7 +66,7 @@
 			"class": "GrowthExperiments\\NewcomerTasks\\TaskSuggester\\NewcomerTasksCacheRefreshJob",
 			"services": [
 				"UserIdentityLookup",
-				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
+				"GrowthExperimentsTaskSetFiltersFactory",
 				"GrowthExperimentsTaskSuggesterFactory"
 			]
 		},
@@ -334,7 +334,7 @@
 				"GrowthExperimentsCampaignConfig",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"GrowthExperimentsTaskSuggesterFactory",
-				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
+				"GrowthExperimentsTaskSetFiltersFactory",
 				"SpecialPageFactory",
 				"GrowthExperimentsNewcomerTasksChangeTagsManager",
 				"GrowthExperimentsUserImpactLookup_Computed",

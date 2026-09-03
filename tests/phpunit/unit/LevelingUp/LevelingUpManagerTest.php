@@ -7,8 +7,8 @@ use GrowthExperiments\LevelingUp\NotificationGetStartedJob;
 use GrowthExperiments\LevelingUp\NotificationKeepGoingJob;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -292,7 +292,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		?ConfigurationLoader $configurationLoader = null,
 		?UserImpactLookup $userImpactLookup = null,
 		?TaskSuggesterFactory $taskSuggesterFactory = null,
-		?NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup = null,
+		?TaskSetFiltersFactory $taskSetFiltersFactory = null,
 		?ServiceOptions $serviceOptions = null,
 		?Config $growthConfig = null,
 		?UserEditTracker $userEditTracker = null,
@@ -316,7 +316,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$configurationLoader ?? $this->getConfigurationLoader(),
 			$userImpactLookup ?? $this->getUserImpactLookup(),
 			$taskSuggesterFactory ?? $this->getTaskSuggesterFactory(),
-			$newcomerTasksUserOptionsLookup ?? $this->getNewcomerTasksUserOptionsLookup(),
+			$taskSetFiltersFactory ?? $this->getTaskSetFiltersFactory(),
 			new NullLogger(),
 			$growthConfig
 		);
@@ -354,8 +354,8 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		return $this->createMock( TaskSuggester::class );
 	}
 
-	private function getNewcomerTasksUserOptionsLookup(): NewcomerTasksUserOptionsLookup {
-		return $this->createMock( NewcomerTasksUserOptionsLookup::class );
+	private function getTaskSetFiltersFactory(): TaskSetFiltersFactory {
+		return $this->createMock( TaskSetFiltersFactory::class );
 	}
 
 	/**
