@@ -30,15 +30,20 @@ class InterestBasedTopic extends Topic {
 		private readonly LinkTarget $title,
 	) {
 		parent::__construct( $id );
-		if (
-			$title->hasFragment() ||
-			$title->isExternal() ||
-			!$title->inNamespace( NS_MAIN )
-		) {
+		if ( !self::isValidTitle( $title ) ) {
 			throw new LogicException(
 				'InterestBasedTopic requires local title in ns 0 and no fragment but got ' . (string)$title
 			);
 		}
+	}
+
+	/**
+	 * Check if a title can stand for an interest.
+	 */
+	public static function isValidTitle( LinkTarget $title ): bool {
+		return !$title->hasFragment()
+			&& !$title->isExternal()
+			&& $title->inNamespace( NS_MAIN );
 	}
 
 	/**

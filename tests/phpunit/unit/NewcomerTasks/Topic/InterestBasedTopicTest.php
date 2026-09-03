@@ -22,6 +22,22 @@ class InterestBasedTopicTest extends MediaWikiUnitTestCase {
 		$this->assertNull( $topic->getGroupId() );
 	}
 
+	/**
+	 * @dataProvider provideIsValidTitle
+	 */
+	public function testIsValidTitle( TitleValue $title, bool $expected ): void {
+		$this->assertSame( $expected, InterestBasedTopic::isValidTitle( $title ) );
+	}
+
+	public static function provideIsValidTitle(): array {
+		return [
+			'article' => [ new TitleValue( NS_MAIN, 'Coffee' ), true ],
+			'talk page' => [ new TitleValue( NS_TALK, 'Coffee' ), false ],
+			'fragment' => [ new TitleValue( NS_MAIN, 'Coffee', 'History' ), false ],
+			'interwiki' => [ new TitleValue( NS_MAIN, 'Coffee', '', 'en' ), false ],
+		];
+	}
+
 	public function testJsonSerialization(): void {
 		// JsonCodec isn't stable to construct but there is no better way in a unit test.
 		$codec = new JsonCodec();

@@ -6,10 +6,12 @@ namespace GrowthExperiments\Api;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
+use GrowthExperiments\NewcomerTasks\InterestValidator;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\NewcomerTasksCacheRefreshJob;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
@@ -22,8 +24,10 @@ use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryGeneratorBase;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
 use StatusValue;
+use Wikimedia\Message\ListType;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
@@ -44,6 +48,8 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		private readonly ProtectionFilter $protectionFilter,
 		private readonly ITopicRegistry $topicRegistry,
 		private readonly FeatureManager $featureManager,
+		private readonly TaskSetFiltersFactory $taskSetFiltersFactory,
+		private readonly InterestValidator $interestValidator,
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
 	}
@@ -71,9 +77,24 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$offset = $params['offset'];
 		$debug = $params['debug'];
 		$excludePageIds = $params['excludepageids'] ?? [];
+		// The topics parameter defaults to an empty array, which counts as set.
+		$this->requireMaxOneParameter(
+			[ 'topics' => $topics ?: null, 'interests' => $params['interests'] ],
+			'topics', 'interests'
+		);
+		if ( $params['interests'] !== null ) {
+			$interests = $this->getUsableInterests( $params['interests'] );
+		} else {
+			// Explicit topics win over stored interests; TaskSetFilters allows only one
+			// of the two.
+			$interests = $topics ? [] : $this->taskSetFiltersFactory->getInterestFilters( $user );
+		}
+		// The cache holds one task set per user. Skip it when the front end loads more tasks
+		// (exclude page IDs) and when it previews an unsaved interest selection.
+		$useCache = !$excludePageIds && $params['interests'] === null;
 
 		$taskSuggester = $this->taskSuggesterFactory->create();
-		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics, $topicsMode );
+		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics, $topicsMode, $interests );
 
 		/** @var TaskSet $tasks */
 		$tasks = $taskSuggester->suggest(
@@ -84,10 +105,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			[
 				'debug' => $debug,
 				'excludePageIds' => $excludePageIds,
-				// Don't use the cache if exclude page IDs has been provided;
-				// the page IDs are supplied if we are attempting to load more
-				// tasks into the queue in the front end.
-				'useCache' => !$excludePageIds,
+				'useCache' => $useCache,
 			]
 		);
 		if ( $tasks instanceof StatusValue ) {
@@ -153,7 +171,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				$result->addValue( $basePath, 'debug', $tasks->getDebugData() );
 			}
 		}
-		if ( !$excludePageIds ) {
+		if ( $useCache ) {
 			// Refresh the cached suggestions via the job queue when the user hasn't asked to exclude
 			// page IDs. This makes the API endpoint behave in the same way as SuggestedEdits.php on
 			// Special:Homepage. If we don't do this, then repeat queries to this API endpoint with the same user
@@ -212,6 +230,12 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			'topicsmode' => [
 				ParamValidator::PARAM_TYPE => SearchStrategy::TOPIC_MATCH_MODES,
 			],
+			'interests' => [
+				ParamValidator::PARAM_TYPE => 'title',
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_ISMULTI_LIMIT1 => TaskSetFiltersFactory::MAX_INTERESTS,
+				ParamValidator::PARAM_ISMULTI_LIMIT2 => TaskSetFiltersFactory::MAX_INTERESTS,
+			],
 			'limit' => [
 				ParamValidator::PARAM_TYPE => 'limit',
 				IntegerDef::PARAM_MAX => 250,
@@ -234,6 +258,36 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				ParamValidator::PARAM_ISMULTI_LIMIT2 => 1000,
 			],
 		];
+	}
+
+	/**
+	 * Remove the interests that cannot get suggestions, and warn about them so that the
+	 * caller can tell the user why the selection gives fewer suggestions than expected.
+	 * Fail when no value of the selection can get suggestions.
+	 * @param string[] $interests Prefixed titles, already validated by the title parameter type.
+	 * @return string[] The interests that can get suggestions.
+	 */
+	private function getUsableInterests( array $interests ): array {
+		[ 'valid' => $usable, 'invalid' => $unusable ] = $this->interestValidator->validate( $interests );
+		if ( $unusable ) {
+			$unusableList = Message::listParam( $unusable, ListType::COMMA );
+			if ( $usable ) {
+				$this->addWarning( [
+					'apiwarn-growthexperiments-unusable-interests',
+					$unusableList,
+					count( $unusable ),
+				] );
+			} else {
+				// The caller asked for suggestions about these interests. The unfiltered
+				// suggestions are no answer to that request.
+				$this->dieWithError( [
+					'apierror-growthexperiments-no-usable-interests',
+					$unusableList,
+					count( $unusable ),
+				] );
+			}
+		}
+		return $usable;
 	}
 
 	/**

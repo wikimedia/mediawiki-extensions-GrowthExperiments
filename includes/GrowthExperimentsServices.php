@@ -53,6 +53,7 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
+use GrowthExperiments\NewcomerTasks\InterestValidator;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
@@ -260,6 +261,10 @@ class GrowthExperimentsServices {
 
 	public function getImageRecommendationFilter(): ImageRecommendationFilter {
 		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationFilter' );
+	}
+
+	public function getInterestValidator(): InterestValidator {
+		return $this->coreServices->get( 'GrowthExperimentsInterestValidator' );
 	}
 
 	public function getPersonalizedPraiseLogger(): PersonalizedPraiseLogger {

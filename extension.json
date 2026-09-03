@@ -229,7 +229,9 @@
 				"GrowthExperimentsImageRecommendationFilter",
 				"GrowthExperimentsProtectionFilter",
 				"GrowthExperimentsTopicRegistry",
-				"GrowthExperimentsFeatureManager"
+				"GrowthExperimentsFeatureManager",
+				"GrowthExperimentsTaskSetFiltersFactory",
+				"GrowthExperimentsInterestValidator"
 			]
 		},
 		"growthstarredmentees": {

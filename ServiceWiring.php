@@ -71,6 +71,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
+use GrowthExperiments\NewcomerTasks\InterestValidator;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
@@ -388,6 +389,12 @@ return [
 			$services->getConnectionProvider(),
 			$services->getUserOptionsLookup()
 		);
+	},
+
+	'GrowthExperimentsInterestValidator' => static function (
+		MediaWikiServices $services
+	): InterestValidator {
+		return new InterestValidator( $services->getTitleParser() );
 	},
 
 	'GrowthExperimentsLastActionTimestampLookup' => static function (

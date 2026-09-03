@@ -2,10 +2,17 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\AccountSetup\AccountSetupHooks;
+use GrowthExperiments\FeatureManager;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -13,6 +20,8 @@ use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Tests\Api\ApiTestCase;
+use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 use Psr\Log\NullLogger;
 use StatusValue;
 
@@ -122,6 +131,185 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->assertMatchesRegularExpression( "/^[a-z0-9]{32}+$/", $page['token'] );
 	}
 
+	public function testInterestsParam() {
+		$recorder = $this->setUpRecordingTaskSuggester();
+
+		$this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'growthtasks',
+			'gttasktypes' => 'copyedit',
+			'gtinterests' => 'Albert Einstein|coffee',
+		] );
+
+		$this->assertSame( [ 'Albert Einstein', 'Coffee' ], $recorder->filters->getInterestFilters() );
+		$this->assertSame( [], $recorder->filters->getTopicFilters() );
+		$this->assertSame( [ 'copyedit' ], $recorder->filters->getTaskTypeFilters() );
+		$this->assertFalse( $recorder->options['useCache'] );
+	}
+
+	/**
+	 * The interests that cannot get suggestions do not reach the task suggester, and the
+	 * response says which ones the module dropped.
+	 * @dataProvider provideUnusableInterests
+	 * @param string $interests
+	 * @param string[] $expectedInterests
+	 * @param string|null $expectedWarning
+	 */
+	public function testInterestsDropsUnusableValues(
+		string $interests, array $expectedInterests, ?string $expectedWarning
+	) {
+		$recorder = $this->setUpRecordingTaskSuggester();
+
+		[ $data ] = $this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'growthtasks',
+			'gttasktypes' => 'copyedit',
+			'gtinterests' => $interests,
+			'errorformat' => 'plaintext',
+			'errorlang' => 'en',
+		] );
+
+		$this->assertSame( $expectedInterests, $recorder->filters->getInterestFilters() );
+		$this->assertSame( $expectedWarning, $data['warnings'][0]['text'] ?? null );
+		// An explicit selection stays a preview, even when nothing of it can be used.
+		$this->assertFalse( $recorder->options['useCache'] );
+	}
+
+	public static function provideUnusableInterests(): array {
+		return [
+			'usable interests do not warn' => [
+				'Coffee|Tea', [ 'Coffee', 'Tea' ], null,
+			],
+			'a talk page cannot be an interest' => [
+				'Coffee|Talk:Tea',
+				[ 'Coffee' ],
+				'Only articles can be interests. This value is ignored: Talk:Tea.',
+			],
+		];
+	}
+
+	/**
+	 * A selection which cannot get any suggestion is a mistake of the caller. The unfiltered
+	 * suggestions are no answer to it, so the module fails instead.
+	 */
+	public function testInterestsRejectsSelectionWithoutUsableValues() {
+		$this->setUpRecordingTaskSuggester();
+		$this->expectApiErrorCode( 'growthexperiments-no-usable-interests' );
+		$this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'growthtasks',
+			'gttasktypes' => 'copyedit',
+			'gtinterests' => 'Talk:Tea|File:Coffee.png',
+		] );
+	}
+
+	public function testInterestsRejectsInvalidTitle() {
+		$this->setUpRecordingTaskSuggester();
+		$this->expectApiErrorCode( 'badtitle' );
+		$this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'growthtasks',
+			'gtinterests' => 'Coffee|[[x',
+		] );
+	}
+
+	public function testInterestsRejectsMoreThanTen() {
+		$this->setUpRecordingTaskSuggester();
+		$interests = array_map( static fn ( int $i ) => "Interest $i", range( 1, 11 ) );
+		$this->expectApiErrorCode( 'toomanyvalues' );
+		$this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'growthtasks',
+			'gtinterests' => implode( '|', $interests ),
+		] );
+	}
+
+	public function testInterestsAndTopicsAreExclusive() {
+		$this->setUpRecordingTaskSuggester();
+		$this->setService( 'GrowthExperimentsTopicRegistry', new StaticTopicRegistry( [ new Topic( 'art' ) ] ) );
+		$this->expectApiErrorCode( 'invalidparammix' );
+		$this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'growthtasks',
+			'gttopics' => 'art',
+			'gtinterests' => 'Coffee',
+		] );
+	}
+
+	/**
+	 * @dataProvider provideStoredInterests
+	 */
+	public function testStoredInterestsFallback( bool $isTreatment, array $expectedFilterJson ) {
+		$recorder = $this->setUpRecordingTaskSuggester();
+		$user = $this->setUpUserWithStoredInterests( $isTreatment );
+
+		$this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'growthtasks',
+			'gttasktypes' => 'copyedit',
+		], null, null, $user );
+
+		$this->assertSame( $expectedFilterJson, $recorder->filters->toJsonArray() );
+		$this->assertTrue( $recorder->options['useCache'] );
+	}
+
+	public static function provideStoredInterests(): array {
+		return [
+			'treatment user gets stored interests' => [
+				true,
+				[
+					'task' => [ 'copyedit' ],
+					'topic' => [],
+					'topicMode' => 'OR',
+					'interests' => [ 'Albert Einstein', 'Coffee' ],
+				],
+			],
+			'control user filters are unchanged' => [
+				false,
+				[
+					'task' => [ 'copyedit' ],
+					'topic' => [],
+					'topicMode' => 'OR',
+				],
+			],
+		];
+	}
+
+	/**
+	 * An empty gtinterests= is an explicit empty selection, not an absent parameter.
+	 * @dataProvider provideInterestsWithoutValues
+	 */
+	public function testInterestsWithoutValues(
+		?string $interests, array $expectedInterests, bool $expectedUseCache
+	) {
+		$recorder = $this->setUpRecordingTaskSuggester();
+		$user = $this->setUpUserWithStoredInterests( true );
+
+		$params = [
+			'action' => 'query',
+			'list' => 'growthtasks',
+			'gttasktypes' => 'copyedit',
+		];
+		if ( $interests !== null ) {
+			$params['gtinterests'] = $interests;
+		}
+		$this->doApiRequest( $params, null, null, $user );
+
+		$this->assertSame( $expectedInterests, $recorder->filters->getInterestFilters() );
+		$this->assertSame( $expectedUseCache, $recorder->options['useCache'] );
+	}
+
+	public static function provideInterestsWithoutValues(): array {
+		return [
+			'absent parameter uses the stored interests' => [
+				null, [ 'Albert Einstein', 'Coffee' ], true,
+			],
+			'empty parameter selects no interests' => [
+				'', [], false,
+			],
+		];
+	}
+
 	public function testError() {
 		$suggesterFactory = new StaticTaskSuggesterFactory(
 			new ErrorForwardingTaskSuggester(
@@ -168,6 +356,12 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			$data['paraminfo']['modules'][0]['parameters'][0]['type'] );
 		$this->assertSame( [ 'art', 'science' ],
 			$data['paraminfo']['modules'][0]['parameters'][1]['type'] );
+		$interestsParam = $data['paraminfo']['modules'][0]['parameters'][3];
+		$this->assertSame( 'interests', $interestsParam['name'] );
+		$this->assertSame( 'title', $interestsParam['type'] );
+		$this->assertTrue( $interestsParam['multi'] );
+		$this->assertSame( TaskSetFiltersFactory::MAX_INTERESTS, $interestsParam['limit'] );
+		$this->assertSame( TaskSetFiltersFactory::MAX_INTERESTS, $interestsParam['highlimit'] );
 		$this->assertArrayHasKey( 'paraminfo', $data );
 
 		// Make sure loading errors do not break parameter info
@@ -183,6 +377,67 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		[ $data ] = $this->doApiRequest( [ 'action' => 'paraminfo',
 			'modules' => 'query+growthtasks' ] );
 		$this->assertArrayHasKey( 'paraminfo', $data );
+	}
+
+	/**
+	 * Create a user with two stored interests, and a filters factory that puts the user in the
+	 * given group of the early-onboarding experiment.
+	 */
+	private function setUpUserWithStoredInterests( bool $isTreatment ): User {
+		$user = $this->getTestUser()->getUser();
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption( $user, AccountSetupHooks::INTEREST_ARTICLES_PROP,
+			json_encode( [ 'Albert Einstein', 'Coffee' ] ) );
+		$userOptionsManager->saveOptions( $user );
+
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( $isTreatment );
+		$featureManager->method( 'isNewcomerTasksAvailable' )->willReturn( true );
+		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$this->setService( 'GrowthExperimentsTaskSetFiltersFactory',
+			new TaskSetFiltersFactory(
+				$growthServices->getNewcomerTasksUserOptionsLookup(),
+				$featureManager
+			)
+		);
+		return $user;
+	}
+
+	/**
+	 * Replace the task suggester with one that records the filters and options it receives.
+	 * @return TaskSuggester&object{filters: ?TaskSetFilters, options: array}
+	 */
+	private function setUpRecordingTaskSuggester() {
+		$recorder = new class implements TaskSuggester {
+			public ?TaskSetFilters $filters = null;
+			public array $options = [];
+
+			/** @inheritDoc */
+			public function suggest(
+				UserIdentity $user,
+				TaskSetFilters $taskSetFilters,
+				?int $limit = null,
+				?int $offset = null,
+				array $options = []
+			) {
+				$this->filters = $taskSetFilters;
+				$this->options = $options;
+				return new TaskSet( [], 0, 0, $taskSetFilters );
+			}
+
+			/** @inheritDoc */
+			public function filter( UserIdentity $user, TaskSet $taskSet ) {
+				return $taskSet;
+			}
+		};
+		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', new StaticTaskSuggesterFactory(
+			$recorder,
+			$this->getServiceContainer()->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
+			new NullLogger()
+		) );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader',
+			new StaticConfigurationLoader( [ new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ) ] ) );
+		return $recorder;
 	}
 
 	/**

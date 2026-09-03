@@ -279,9 +279,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 				] );
 				continue;
 			}
-			// InterestBasedTopic requires a plain main-namespace title: the morelikethis
-			// term and the JSON serialization only use the namespace and the DB key.
-			if ( $title->getNamespace() !== NS_MAIN || $title->isExternal() || $title->hasFragment() ) {
+			if ( !InterestBasedTopic::isValidTitle( $title ) ) {
 				$this->logger->warning(
 					'Skipping interest that is not a plain main-namespace title: {interest}',
 					[ 'interest' => $interest ]
