@@ -123,7 +123,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Wiadomość powitalna",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "Twoja wiadomość powitalna została zmieniona na „$1”.",
 	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-title": "Podziękowania za dobrą robotę!",
-	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Cześć $1, z tej strony Twój przewodnik. Dziękujemy za Twój wkład. Widzę, że {{GENDER:$1|byłeś|byłaś|byłeś(-aś)}} {{GENDER:$1|zajęty|zajęta|zajęty(-a)}} edytowaniem i chciałem tylko poświęcić chwilę, aby Ci podziękować. Mam nadzieję, że nadal będziesz się angażować! Jeśli będziesz {{GENDER:$1|miał|miała|miał(-a)}} jakieś pytania, napisz wiadomość na mojej stronie dyskusji. Pozdrawiam!",
+	"growthexperiments-mentor-dashboard-personalized-praise-praise-message-message": "Cześć, $1, z tej strony Twój przewodnik. Dziękujemy za Twój wkład. Widzę, że {{GENDER:$1|byłeś zajęty edytowaniem|byłaś zajęta edytowaniem|masz za sobą sporo pracy przy edytowaniu}}. Chcę poświęcić chwilę, żeby Ci podziękować i wyrazić nadzieję, że zostaniesz z nami na dłużej. Jeśli będziesz {{GENDER:$1|miał|miała|mieć}} jakieś pytania, śmiało zostaw wiadomość na mojej stronie dyskusji. Pozdrawiam!",
 	"growthexperiments-mentor-dashboard-personalized-praise-title": "Wyślij pochwałę",
 	"growthexperiments-mentor-dashboard-personalized-praise-intro": "Pozytywne komunikaty od doświadczonych użytkowników i mentorów zwiększą retencję nowych redaktorów.",
 	"growthexperiments-mentor-dashboard-personalized-praise-info-icon-label": "Więcej informacji o module Spersonalizowane pochwały.",

@@ -25,7 +25,7 @@
 	"welcomesurvey-privacy-policy-link-text": "Poznaj więcej danych o nowicjuszach",
 	"welcomesurvey-privacy-footer-text": "Wikimedia Foundation wykorzysta {{GENDER:$1|Twoje}} odpowiedzi, aby pomóc Ci rozpocząć edytowanie {{GRAMMAR:D.lp|{{SITENAME}}}}. [$2 Dowiedz się więcej w naszym oświadczeniu o ochronie prywatności].",
 	"welcomesurvey-sidebar-editing-title": "Pierwsze kroki w edytowaniu",
-	"welcomesurvey-sidebar-editing-text": "Każdy może edytować prawie wszystkie strony. Każdej godziny wykonywane są setki zmian mające na celu dodanie nowej treści, poprawienie błędów czy usprawnienie czytelności. Poniższe strony mogą Ci pomóc, jeżeli chcesz wnieść swój wkład.",
+	"welcomesurvey-sidebar-editing-text": "Każdy może edytować prawie wszystkie strony. Każdej godziny wykonywane są setki zmian mające na celu dodanie nowej treści, poprawienie błędów czy usprawnienie czytelności. Poniższe strony mogą {{GENDER:$1|Ci pomóc}}, jeżeli chcesz wnieść swój wkład.",
 	"welcomesurvey-sidebar-editing-link1-text": "Samouczek",
 	"welcomesurvey-sidebar-editing-link1-title": "Pomoc:Samouczek/dla_początkujących",
 	"welcomesurvey-sidebar-editing-link2-text": "Forum pomocy",
