@@ -174,6 +174,9 @@ class WelcomeSurveyHooks implements
 		if ( $autocreated || !$this->shouldShowWelcomeSurvey( $context ) ) {
 			return true;
 		}
+		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser(), true ) ) {
+			return true;
+		}
 		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $context );
 		$group = $welcomeSurvey->getGroup();
 		$welcomeSurvey->saveGroup( $group );
@@ -207,6 +210,9 @@ class WelcomeSurveyHooks implements
 		$context = RequestContext::getMain();
 		if ( !$this->shouldShowWelcomeSurvey( $context ) ) {
 			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
+			return true;
+		}
+		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser() ) ) {
 			return true;
 		}
 
@@ -256,6 +262,9 @@ class WelcomeSurveyHooks implements
 		) {
 			return true;
 		}
+		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser() ) ) {
+			return true;
+		}
 
 		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $context );
 		$group = $welcomeSurvey->getGroup();
@@ -279,8 +288,7 @@ class WelcomeSurveyHooks implements
 		return $this->isWelcomeSurveyEnabled()
 			&& !$context->getUser()->isTemp()
 			&& !$this->campaignConfig->shouldSkipWelcomeSurvey( $this->campaignLoader->getCampaign() )
-			&& !$loginHelper->isDisplayModePopup()
-			&& !$this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser() );
+			&& !$loginHelper->isDisplayModePopup();
 	}
 
 }
