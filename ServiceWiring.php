@@ -1044,6 +1044,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new TaskSetFiltersFactory(
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
+			$growthServices->getFeatureManager(),
 		);
 	},
 

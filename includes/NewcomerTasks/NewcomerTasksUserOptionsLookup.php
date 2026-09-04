@@ -3,6 +3,7 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks;
 
+use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -78,6 +79,17 @@ class NewcomerTasksUserOptionsLookup {
 	 */
 	public function getTopicFilterWithoutFallback( UserIdentity $user ): ?array {
 		return $this->getJsonListOption( $user, SuggestedEdits::TOPICS_ORES_PREF );
+	}
+
+	/**
+	 * Get the given user's stored interests.
+	 * @param UserIdentity $user
+	 * @return string[] A list of prefixed article titles, or an empty array when the
+	 *   preference is missing or invalid.
+	 * @see \GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic
+	 */
+	public function getInterests( UserIdentity $user ): array {
+		return $this->getJsonListOption( $user, AccountSetupHooks::INTEREST_ARTICLES_PROP ) ?? [];
 	}
 
 	/**

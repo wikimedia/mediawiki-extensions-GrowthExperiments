@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -256,6 +257,28 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$lookupWithWrapper = TestingAccessWrapper::newFromObject( $lookupWith );
 		$this->assertSame( 'copyedit', $lookupWithWrapper->getConversionMap( $user )[$reviseTone] );
 		$this->assertSame( [ 'copyedit' ], $lookupWith->convertTaskTypes( [ $reviseTone ], $user ) );
+	}
+
+	/**
+	 * @covers ::getInterests
+	 */
+	public function testGetInterests() {
+		$userOptionsLookup = new StaticUserOptionsLookup( [
+			'User1' => [ AccountSetupHooks::INTEREST_ARTICLES_PROP => '[ "Coffee", "Tea" ]' ],
+			'User2' => [ AccountSetupHooks::INTEREST_ARTICLES_PROP => '[ 1 ]' ],
+		] );
+		$lookup = new NewcomerTasksUserOptionsLookup(
+			$userOptionsLookup,
+			new HashConfig( [] ),
+			$this->getConfigurationLoader()
+		);
+
+		$this->assertSame(
+			[ 'Coffee', 'Tea' ],
+			$lookup->getInterests( new UserIdentityValue( 1, 'User1' ) )
+		);
+		$this->assertSame( [], $lookup->getInterests( new UserIdentityValue( 2, 'User2' ) ) );
+		$this->assertSame( [], $lookup->getInterests( new UserIdentityValue( 3, 'User3' ) ) );
 	}
 
 	/**
