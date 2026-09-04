@@ -5,7 +5,8 @@
 			"GuoPC",
 			"Peterxy12",
 			"Xiplus",
-			"Peterxy"
+			"Peterxy",
+			"Shizhao"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "获取适合编辑新手的任务建议。",
@@ -37,7 +38,20 @@
 	"apierror-growthexperiments-addimage-handler-reason-missing": "添加图像插件数据中缺少'reasons'参数",
 	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "添加图像插件数据中的'reasons'参数应该是一个数组，实际为$1",
 	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "'reasons'参数的项目'$1'无效，应该是以下项目之一：$2",
+	"apierror-growthexperiments-addimage-handler-section-title-missing": "添加图像插件数据中缺少“sectionTitle”参数",
 	"apierror-growthexperiments-addimage-handler-section-title-wrongtype": "在新增图片外挂数据中的“sectionTitle”参数应为null，实际为$1",
+	"apierror-growthexperiments-addimage-handler-section-number-missing": "添加图像插件数据中缺少“sectionNumber”参数",
+	"apierror-growthexperiments-addimage-handler-section-number-wrongtype": "在“添加图像”插件数据中，“sectionNumber”参数必须为空，值为$1",
+	"apierror-growthexperiments-addsectionimage-handler-section-title-wrongtype": "在“添加版块图像”插件数据中，“sectionTitle”参数必须为字符串，值为$1",
+	"apierror-growthexperiments-addsectionimage-handler-section-number-wrongtype": "在“添加章节图像”插件数据中，“sectionNumber”参数必须为整数，值为$1",
 	"apierror-growthexperiments-addlink-handler-notfound": "找不到链接建议纪录",
-	"apierror-growthexperiments-addlink-handler-wrongtargets": "未预期的链接建议目标：$1"
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "未预期的链接建议目标：$1",
+	"growthexperiments-underlinked-rescore-profile": "GrowthExperiments链接推荐中使用的内部重新评分配置文件，用于优先考虑链接数量不足的文章。如果链接推荐功能被禁用，则此功能无效。",
+	"growthexperiments-addimage-feedback-accepted-editrevid": "当<var>accepted</var>参数设置为<kbd>true</kbd>时， <var>editRevId</var>参数是必需的。",
+	"growthexperiments-addimage-feedback-rejected-editrevid": "当<var>accepted</var>参数设置为<kbd>false</kbd>时，不能使用<var>editRevId</var>参数。",
+	"growthexperiments-addimage-feedback-accepted-caption": "当<var>接受的</var>参数设置为<kbd>true</kbd>时，<var>caption</var>参数是必需的。",
+	"growthexperiments-addimage-feedback-revid-nonexistent": "未找到<var>editRevId</var>中指定的修订版本。",
+	"growthexperiments-addimage-feedback-invalid-revid-wrong-page": "<var>editRevId</var>中指定的修订版本属于另一个页面。",
+	"apihelp-growthinvalidaterevisetonerecommendation-summary": "针对特定页面提出“修改语气”的建议。",
+	"apihelp-growthinvalidaterevisetonerecommendation-param-title": "要删除推荐的页面标题（不带命名空间）。"
 }
