@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\ResponseFactory;
 use MediaWiki\Title\TitleValue;
@@ -25,7 +24,7 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler::run
 	 */
 	public function testRun() {
-		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$features = $geServices->getFeatureManager();
 		if ( !$features->isNewcomerTasksAvailable() ) {
 			$this->markTestSkipped( 'NewcomerTasks is not available.' );
@@ -67,7 +66,7 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 		] );
 		$handler = new AddLinkSuggestionsHandler(
 			$linkRecommendationHelper,
-			GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getFeatureManager()
+			$geServices->getFeatureManager()
 		);
 		$this->setResponseFactory( $handler );
 
@@ -95,7 +94,7 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 		] );
 		$handler = new AddLinkSuggestionsHandler(
 			$linkRecommendationHelperNoMetadata,
-			GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getFeatureManager()
+			$geServices->getFeatureManager()
 		);
 		$this->setResponseFactory( $handler );
 

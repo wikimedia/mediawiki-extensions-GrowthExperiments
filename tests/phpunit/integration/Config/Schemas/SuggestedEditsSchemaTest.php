@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Extension\CommunityConfiguration\Tests\SchemaProviderTestCase;
-use MediaWiki\MediaWikiServices;
 use MockMessageLocalizer;
 use StatusValue;
 use Wikimedia\JsonCodec\Hint;
@@ -44,7 +43,8 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 
 		$this->getNonexistingTestPage( 'MediaWiki:GrowthExperimentsSuggestedEdits.json' );
 
-		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$services = $this->getServiceContainer();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
 		$configurationValidator->setMessageLocalizer( new MockMessageLocalizer() );
 		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
@@ -62,7 +62,7 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 			);
 		}
 
-		$jsonCodec = MediaWikiServices::getInstance()->getJsonCodec();
+		$jsonCodec = $services->getJsonCodec();
 		$this->assertEquals( [
 			[
 				'id' => 'copyedit',
@@ -258,7 +258,8 @@ JSON;
 
 		$this->editPage( 'MediaWiki:GrowthExperimentsSuggestedEdits.json', $partialConfigJson );
 
-		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$services = $this->getServiceContainer();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
 		$configurationValidator->setMessageLocalizer( new MockMessageLocalizer() );
 		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
@@ -276,7 +277,7 @@ JSON;
 			);
 		}
 
-		$jsonCodec = MediaWikiServices::getInstance()->getJsonCodec();
+		$jsonCodec = $services->getJsonCodec();
 		$this->assertEquals( [
 			[
 				'id' => 'copyedit',
