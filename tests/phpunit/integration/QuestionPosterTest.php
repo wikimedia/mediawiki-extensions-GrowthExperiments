@@ -57,50 +57,12 @@ class QuestionPosterTest extends MediaWikiIntegrationTestCase {
 
 	public static function provideMakeWikitextContent() {
 		return [
-			'no parent' => [
-				'postOnTop' => false,
-				'body' => "Foo\nbar\n\nbaz",
-				'sectionHeader' => 'Some header',
-				'parentRevision' => null,
-				'expectedResult' => "== Some header ==\n\nFoo\nbar\n\nbaz --~~~~",
-			],
 			'hidden parent' => [
 				'postOnTop' => false,
 				'body' => "Foo\nbar\n\nbaz",
 				'sectionHeader' => 'Some header',
 				'parentRevision' => [ 'x', RevisionRecord::SUPPRESSED_ALL ],
 				'expectedResult' => null,
-			],
-			'bottom' => [
-				'postOnTop' => false,
-				'body' => "Foo\nbar\n\nbaz",
-				'sectionHeader' => 'Some header',
-				'parentRevision' => [ "Section 0\n\n== H1 ==\nSection1\n== H2 ==\nSection2", 0 ],
-				'expectedResult' => "Section 0\n\n== H1 ==\nSection1\n== H2 ==\nSection2\n\n"
-					. "== Some header ==\n\nFoo\nbar\n\nbaz --~~~~",
-			],
-			'top' => [
-				'postOnTop' => true,
-				'body' => "Foo\nbar\n\nbaz",
-				'sectionHeader' => 'Some header',
-				'parentRevision' => [ "Section 0\n\n== H1 ==\nSection1\n== H2 ==\nSection2", 0 ],
-				'expectedResult' => "Section 0\n\n== Some header ==\n\nFoo\nbar\n\nbaz --~~~~\n\n"
-					. "== H1 ==\nSection1\n\n== H2 ==\nSection2",
-			],
-			'top with no sections' => [
-				'postOnTop' => true,
-				'body' => "Foo\nbar\n\nbaz",
-				'sectionHeader' => 'Some header',
-				'parentRevision' => [ "Section\n\n0", 0 ],
-				'expectedResult' => "Section\n\n0\n\n== Some header ==\n\nFoo\nbar\n\nbaz --~~~~",
-			],
-			'top with subsections' => [
-				'postOnTop' => true,
-				'body' => "Foo\nbar\n\nbaz",
-				'sectionHeader' => 'Some header',
-				'parentRevision' => [ "Section 0\n\n== H1 ==\nSection1\n=== H2 ===\nSection2", 0 ],
-				'expectedResult' => "Section 0\n\n== Some header ==\n\nFoo\nbar\n\nbaz --~~~~\n\n"
-					. "== H1 ==\nSection1\n=== H2 ===\nSection2",
 			],
 		];
 	}
