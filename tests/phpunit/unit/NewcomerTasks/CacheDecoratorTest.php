@@ -8,13 +8,16 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
 use MediaWiki\Title\TitleValue;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use StatusValue;
@@ -25,6 +28,15 @@ use Wikimedia\ObjectCache\WANObjectCache;
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator
  */
 class CacheDecoratorTest extends MediaWikiUnitTestCase {
+
+	private WANObjectCache $cache;
+	private UserIdentityValue $user;
+
+	protected function setUp(): void {
+		parent::setUp();
+		$this->cache = new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
+		$this->user = new UserIdentityValue( 1000, 'Test' );
+	}
 
 	/**
 	 * @dataProvider provideSuggest
@@ -37,20 +49,11 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 		array $calls,
 		$expectedResult
 	) {
-		$cache = new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
-		$mockJobQueueGroup = $this->createNoOpMock( JobQueueGroup::class, [ 'lazyPush' ] );
-		$mockListener = $this->createNoOpMock( TaskSetListener::class, [ 'run' ] );
 		foreach ( $calls as $i => $call ) {
 			if ( $expectedResult instanceof Exception && $i === count( $calls ) - 1 ) {
 				$this->expectException( get_class( $expectedResult ) );
 			}
-			$cacheDecorator = new CacheDecorator(
-				$call['suggester'],
-				$mockJobQueueGroup,
-				$cache,
-				$mockListener,
-				new JsonCodec()
-			);
+			$cacheDecorator = $this->newCacheDecorator( $call['suggester'] );
 			$result = $cacheDecorator->suggest( ...$call['args'] );
 		}
 		if ( !( $expectedResult instanceof Exception ) ) {
@@ -313,6 +316,187 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 				'expectedResult' => new TaskSet( [ $taskD ], 1, 0, $taskSetFilterCoffeeInterest ),
 			],
 		];
+	}
+
+	/**
+	 * The pool the decorator asks the inner suggester for, and the limit a request serves,
+	 * are two separate numbers. The filters of the task set decide the size of the pool, the
+	 * requested limit does not.
+	 * @dataProvider providePoolSize
+	 */
+	public function testPoolSize( TaskSetFilters $filters, int $expectedPoolSize ) {
+		$recorder = $this->newRecordingTaskSuggester();
+
+		$this->newCacheDecorator( $recorder )->suggest( $this->user, $filters, 5 );
+
+		$this->assertSame( $expectedPoolSize, $recorder->calls[0]['limit'] );
+	}
+
+	public static function providePoolSize(): array {
+		return [
+			'unfiltered' => [
+				new TaskSetFilters( [ 'copyedit' ] ), SearchTaskSuggester::DEFAULT_LIMIT,
+			],
+			'topics' => [
+				new TaskSetFilters( [ 'copyedit' ], [ 'arts' ] ), SearchTaskSuggester::DEFAULT_LIMIT,
+			],
+		];
+	}
+
+	/**
+	 * A request for more tasks than the pool holds cannot be served from the cache. The
+	 * suggested edits module asks for DEFAULT_LIMIT plus a lookahead, so the size of the pool
+	 * decides if the module reads the cache or searches again.
+	 * @dataProvider provideLimitsAroundThePool
+	 * @param TaskSetFilters $filters
+	 * @param int $limit
+	 * @param int $expectedCalls How often the decorator asked the inner suggester.
+	 */
+	public function testLimitAroundThePool( TaskSetFilters $filters, int $limit, int $expectedCalls ) {
+		$recorder = $this->newRecordingTaskSuggester();
+		$decorator = $this->newCacheDecorator( $recorder );
+
+		$decorator->suggest( $this->user, $filters, $limit );
+		$decorator->suggest( $this->user, $filters, $limit );
+
+		$this->assertCount( $expectedCalls, $recorder->calls );
+	}
+
+	public static function provideLimitsAroundThePool(): array {
+		$topics = new TaskSetFilters( [ 'copyedit' ], [ 'arts' ] );
+		return [
+			'topics, inside the pool' => [ $topics, SearchTaskSuggester::DEFAULT_LIMIT, 1 ],
+			'topics, above the pool' => [ $topics, SearchTaskSuggester::DEFAULT_LIMIT + 1, 2 ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideOptionSemantics
+	 * @param array[] $optionsPerCall Options for each suggest() call, in order.
+	 * @param int $expectedCalls How often the decorator asked the inner suggester.
+	 */
+	public function testOptionSemantics( array $optionsPerCall, int $expectedCalls ) {
+		$recorder = $this->newRecordingTaskSuggester();
+		$decorator = $this->newCacheDecorator( $recorder );
+
+		foreach ( $optionsPerCall as $options ) {
+			$decorator->suggest( $this->user, new TaskSetFilters( [ 'copyedit' ] ), null, null, $options );
+		}
+
+		$this->assertCount( $expectedCalls, $recorder->calls );
+	}
+
+	public static function provideOptionSemantics(): array {
+		return [
+			'a stored task set is served from the cache' => [ [ [], [] ], 1 ],
+			'useCache=false does not store the task set' => [ [ [ 'useCache' => false ], [] ], 2 ],
+			'resetCache=true regenerates and stores the task set' => [
+				[ [], [ 'resetCache' => true ], [] ], 2,
+			],
+			'debug=true ignores a stored task set' => [ [ [], [ 'debug' => true ] ], 2 ],
+			'debug=true does not store the task set' => [ [ [ 'debug' => true ], [] ], 2 ],
+		];
+	}
+
+	/**
+	 * The excluded page IDs are the only option the decorator passes on when it regenerates
+	 * the task set.
+	 */
+	public function testExcludePageIdsReachTheSuggesterOnACacheMiss() {
+		$recorder = $this->newRecordingTaskSuggester();
+
+		$this->newCacheDecorator( $recorder )->suggest(
+			$this->user,
+			new TaskSetFilters( [ 'copyedit' ] ),
+			null,
+			null,
+			[ 'excludePageIds' => [ 11, 12 ], 'revalidateCache' => false ]
+		);
+
+		$this->assertSame( [ 'excludePageIds' => [ 11, 12 ] ], $recorder->calls[0]['options'] );
+	}
+
+	/**
+	 * A topic-based task set serves every task of the pool.
+	 */
+	public function testTopicTaskSetIsUnchanged() {
+		$pool = $this->newPool( new Topic( 'arts' ), 10 );
+
+		$taskSet = $this->newCacheDecorator( new StaticTaskSuggester( $pool ) )->suggest(
+			$this->user, new TaskSetFilters( [ 'copyedit' ], [ 'arts' ] )
+		);
+
+		$this->assertSame( 10, $taskSet->getTotalCount() );
+		$this->assertArrayEquals( $this->titlesOf( $pool ), $this->titlesOf( $taskSet ) );
+	}
+
+	private function newCacheDecorator( TaskSuggester $taskSuggester ): CacheDecorator {
+		return new CacheDecorator(
+			$taskSuggester,
+			$this->createNoOpMock( JobQueueGroup::class, [ 'lazyPush' ] ),
+			$this->cache,
+			$this->createNoOpMock( TaskSetListener::class, [ 'run' ] ),
+			new JsonCodec()
+		);
+	}
+
+	/**
+	 * A task suggester which records the limit and the options of every suggest() call.
+	 * @return TaskSuggester&object{calls: array[]}
+	 */
+	private function newRecordingTaskSuggester() {
+		return new class implements TaskSuggester {
+			/** @var array[] One entry per call, with the keys 'limit' and 'options'. */
+			public array $calls = [];
+
+			/** @inheritDoc */
+			public function suggest(
+				UserIdentity $user,
+				TaskSetFilters $taskSetFilters,
+				?int $limit = null,
+				?int $offset = null,
+				array $options = []
+			) {
+				$this->calls[] = [ 'limit' => $limit, 'options' => $options ];
+				return new TaskSet(
+					[ new Task( new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
+						new TitleValue( NS_MAIN, 'Foo' ) ) ],
+					1, 0, $taskSetFilters
+				);
+			}
+
+			/** @inheritDoc */
+			public function filter( UserIdentity $user, TaskSet $taskSet ) {
+				return $taskSet;
+			}
+		};
+	}
+
+	/**
+	 * Build $count tasks about one topic, titled after it.
+	 * @return Task[]
+	 */
+	private function newPool( Topic $topic, int $count ): array {
+		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$tasks = [];
+		for ( $i = 1; $i <= $count; $i++ ) {
+			$task = new Task( $taskType, new TitleValue( NS_MAIN, $topic->getId() . "-$i" ) );
+			$task->setTopics( [ $topic ] );
+			$tasks[] = $task;
+		}
+		return $tasks;
+	}
+
+	/**
+	 * @param iterable<Task> $tasks A TaskSet or a list of tasks.
+	 * @return string[]
+	 */
+	private function titlesOf( iterable $tasks ): array {
+		$titles = [];
+		foreach ( $tasks as $task ) {
+			$titles[] = $task->getTitle()->getDBkey();
+		}
+		return $titles;
 	}
 
 }
