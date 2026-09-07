@@ -1,4 +1,5 @@
 <?php
+declare( strict_types = 1 );
 
 namespace GrowthExperiments\NewcomerTasks\Task;
 
@@ -26,43 +27,35 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonCodecabl
 	use JsonCodecableTrait;
 
 	/** @var Task[] */
-	private $tasks;
+	private array $tasks;
 
-	/** @var int Size of the full result set (can be larger than the size of this result set). */
-	private $totalCount;
-
-	/** @var int Offset within the full result set. */
-	private $offset;
+	/** @var Task[] Invalid tasks that are part of this task set. */
+	private array $invalidTasks;
 
 	/** @var array Arbitrary non-task-specific debug data */
-	private $debugData = [];
+	private array $debugData = [];
 
-	/** @var TaskSetFilters The task and topic filters used to generate this task set. */
-	private $filters;
-
-	/** @var array */
-	private $qualityGateConfig = [];
-
-	/** @var array Invalid tasks that are part of this task set. */
-	private $invalidTasks = [];
+	private array $qualityGateConfig = [];
 
 	/**
 	 * @param Task[] $tasks
 	 * @param int $totalCount Size of the full result set
 	 *   (can be larger than the size of this result set).
 	 * @param int $offset Offset within the full result set.
-	 * @param TaskSetFilters $filters
+	 * @param TaskSetFilters $filters The task, topic and interest filters used to generate
+	 *   this task set.
 	 * @param Task[] $invalidTasks Tasks that were part of the TaskSet, but are not considered valid.
 	 */
 	public function __construct(
-		array $tasks, $totalCount, $offset, TaskSetFilters $filters, array $invalidTasks = []
+		array $tasks,
+		private readonly int $totalCount,
+		private readonly int $offset,
+		private readonly TaskSetFilters $filters,
+		array $invalidTasks = []
 	) {
 		Assert::parameterElementType( Task::class, $tasks, '$tasks' );
 		$this->tasks = array_values( $tasks );
 		$this->invalidTasks = array_values( $invalidTasks );
-		$this->totalCount = $totalCount;
-		$this->offset = $offset;
-		$this->filters = $filters;
 	}
 
 	/**
@@ -122,17 +115,15 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonCodecabl
 	 * In other words, getTotalCount is the number of suggestions matching some set of conditions
 	 * while the suggestions returned by iterating the TaskSet are the result of
 	 * further restricting that set with some limit/offset.
-	 * @return int
 	 */
-	public function getTotalCount() {
+	public function getTotalCount(): int {
 		return $this->totalCount - count( $this->invalidTasks );
 	}
 
 	/**
 	 * Offset within the full result set.
-	 * @return int
 	 */
-	public function getOffset() {
+	public function getOffset(): int {
 		return $this->offset;
 	}
 
@@ -172,8 +163,6 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonCodecabl
 
 	/**
 	 * Compare this TaskSet's filters with another set of filters.
-	 * @param TaskSetFilters $filters
-	 * @return bool
 	 */
 	public function filtersEqual( TaskSetFilters $filters ): bool {
 		return $this->filters->toJsonArray() === $filters->toJsonArray();
@@ -243,9 +232,6 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonCodecabl
 
 	/**
 	 * Check whether the task set contains a task for the specified page
-	 *
-	 * @param ProperPageIdentity $page
-	 * @return bool
 	 */
 	public function containsPage( ProperPageIdentity $page ): bool {
 		foreach ( $this->tasks as $task ) {
