@@ -66,6 +66,12 @@
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-enabled-help-text": "Apabila diaktifkan, menti akan secara automatik dikeluarkan daripada sesi bimbingan selepas mencapai kedua-dua nilai ambang tersebut. Mereka masih boleh mendapatkan mentor dari laman pemula mereka.",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mineditcount-label": "Bilangan suntingan",
 	"communityconfiguration-mentorship-gementorshipstartoptedoutthresholds-mintenureindays-label": "Usia akaun (dalam hari)",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-control-label": "Tandakan mentor yang tidak aktif sebagai Tidak Hadir",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoawayed-help-text": "Mentor akan ditandakan sebagai Tidak Hadir sehingga 1 bulan, atau sehingga mereka mencapai ambang penyingkiran.",
+	"communityconfiguration-mentorship-gementorshipautoawayedafterdays-label": "Hari tidak aktif sebelum ditanda sebagai Tidak Hadir",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoremoved-control-label": "Singkirkan mentor yang tidak aktif daripada sesi bimbingan",
+	"communityconfiguration-mentorship-gementorshipshouldbeautoremoved-help-text": "Mentinya akan ditugaskan semula kepada mentor lain.",
+	"communityconfiguration-mentorship-gementorshipautoremovedafterdays-label": "Hari tidak aktif sebelum penyingkiran",
 	"communityconfiguration-growthhomepage-title": "Penyertaan pengguna baharu",
 	"communityconfiguration-growthhomepage-description": "Peribadikan penyertaan untuk pemegang akaun baharu melalui bantuan pasca-pendaftaran serta pemberitahuan tingkat aras peribadi.",
 	"communityconfiguration-growthhomepage-info-text": "Laman pemula Pengguna Baharu ([[Special:Homepage]]) menyediakan panduan untuk pemegang akaun baharu. Semasa pendaftaran, jika pemegang akaun baharu menyatakan mereka ingin mencipta rencana atau menambah imej baharu pada Wikipedia, kami mengesyorkan mereka buat suntingan yang lebih kecil terlebih dahulu pada peringkat permulaan, dan seterusnya menyediakan pautan untuk panduan selanjutnya.",
@@ -142,6 +148,10 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Ya, selepas jumlah 50 suntingan",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ya, selepas jumlah 75 suntingan",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ya, selepas jumlah 150 suntingan",
+	"communityconfiguration-growthsuggestededits-revise_tone-label": "Semak Semula Nada (Tugasan Berstruktur)",
+	"communityconfiguration-growthsuggestededits-revise_tone-disabled-control-label": "Tugasan tersebut telah dilumpuhkan.",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedtemplates-label": "Rencana yang mengandungi templat yang ditakrifkan di sini tidak akan ditunjukkan kepada pengguna sebagai tugasan untuk jenis tugasan ini.",
+	"communityconfiguration-growthsuggestededits-revise_tone-excludedcategories-label": "Rencana yang mengandungi kategori yang ditakrifkan di sini tidak akan ditunjukkan kepada pengguna sebagai tugasan untuk jenis tugasan ini.",
 	"growthexperiments-addlink-done-button": "Siap",
-	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Tugas penyelenggaraan, pembersihan tamat tempoh cap masa"
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Bersihkan cap masa ketidakaktifan yang telah tamat tempoh"
 }

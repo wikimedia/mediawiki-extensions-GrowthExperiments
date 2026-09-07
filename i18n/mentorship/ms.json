@@ -4,6 +4,8 @@
 			"Hakimi97"
 		]
 	},
+	"growthexperiments-exception-not-mentored": "Pengguna yang tidak dibimbing",
+	"growthexperiments-exception-no-mentored-text": "Pengguna yang tidak ada mentor, maksudnya {{GENDER:$1|dia}} tidak boleh bertanya soalan kepada mentor{{GENDER:$1|nya}}",
 	"growthexperiments-mentor-dashboard-title": "Papan pemuka mentor",
 	"growthexperiments-mentor-dashboard-pt-link": "Papan pemuka mentor",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Untuk mendayakan papan pemuka mentor, {{GENDER:|anda}} perlu terlebih dahulu [[$1|mendaftar sebagai seorang mentor]].",
@@ -236,5 +238,7 @@
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Hanya pengguna dengan sekurang-kurangnya $1 {{PLURAL:$1|suntingan}} dan $2 {{PLURAL:$2|hari}} kehadiran boleh mendaftar menjadi seorang mentor.",
 	"tag-mentor_list_change": "Tukar senarai mentor",
 	"tag-mentor_list_change-description": "Teg digunakan pada suntingan yang dibuat pada senarai mentor berstruktur melalui GrowthExperiments",
-	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Ciri bimbingan kini ditutup. Penyelia boleh buka semula ciri bimbingan melalui [[$1]]."
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Ciri bimbingan kini ditutup. Penyelia boleh buka semula ciri bimbingan melalui [[$1]].",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "Menandakan mentor $1 sebagai tidak hadir, tidak aktif selama $2 hari",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "Mengalih keluar mentor $1, tidak aktif selama $2 hari"
 }

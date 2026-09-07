@@ -13,5 +13,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panel \"Tanya meja bantuan\" (nama lama)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel \"Tanya mentor anda\" pada laman pemula pengguna baharu (nama lama)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Tajuk yang berkaitan, jika dipilih, akan disertakan bersama soalan.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Anda mesti log masuk untuk bertanya soalan."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Anda mesti log masuk untuk bertanya soalan.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Anda tidak boleh bertanya soalan kepada mentor anda jika anda tidak mempunyai mentor."
 }
