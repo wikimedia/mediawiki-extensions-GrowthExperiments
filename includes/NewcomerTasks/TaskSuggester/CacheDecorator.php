@@ -51,7 +51,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 		$debug = $options['debug'] ?? false;
 		$limit ??= SearchTaskSuggester::DEFAULT_LIMIT;
 
-		if ( $debug || $limit > SearchTaskSuggester::DEFAULT_LIMIT ) {
+		if ( $debug || $limit > $this->getPoolSize() ) {
 			return $this->taskSuggester->suggest( $user, $taskSetFilters, $limit, $offset, $options );
 		}
 
@@ -76,7 +76,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 				$result = $this->taskSuggester->suggest(
 					$user,
 					$taskSetFilters,
-					SearchTaskSuggester::DEFAULT_LIMIT,
+					$this->getPoolSize(),
 					null,
 					[ 'excludePageIds' => $excludePageIds ]
 				);
@@ -183,6 +183,14 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 	/** @inheritDoc */
 	public function filter( UserIdentity $user, TaskSet $taskSet ): TaskSet|StatusValue {
 		return $this->taskSuggester->filter( $user, $taskSet );
+	}
+
+	/**
+	 * The number of tasks the decorator asks the inner suggester for. The cached task set is
+	 * a pool, and one request serves some of it, so the two are separate numbers.
+	 */
+	private function getPoolSize(): int {
+		return SearchTaskSuggester::DEFAULT_LIMIT;
 	}
 
 	private function runTaskSetListener( TaskSet|StatusValue $taskSet ): void {
