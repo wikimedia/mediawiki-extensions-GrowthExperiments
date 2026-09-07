@@ -1198,6 +1198,8 @@ return [
 								$services->getStatsFactory()
 							),
 							$services->getJsonCodec(),
+							$services->getLinkBatchFactory(),
+							$services->getTitleFactory(),
 						],
 					],
 					[

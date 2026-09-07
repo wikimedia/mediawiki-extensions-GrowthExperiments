@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
@@ -200,6 +201,111 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			'Foo' => 'Albert Einstein',
 			'Bar' => 'Coffee',
 		], $interestsByTitle );
+	}
+
+	public function testSuggestWithInterestsBalancesThePoolAcrossQueries() {
+		$user = new UserIdentityValue( 1, 'Foo' );
+		$taskTypes = self::getTaskTypes( [ 'copyedit' => [ 'Copy-1' ], 'link' => [ 'Link-1' ] ] );
+		$interests = array_map( static fn ( int $i ) => "Interest $i", range( 1, 10 ) );
+
+		// Ten interests times two task types is twenty queries for a pool of fifty, so each
+		// query asks for its share of the pool plus slack, and each returns that many
+		// distinct articles.
+		$expectedQueryLimit = 5;
+		$requests = [];
+		foreach ( [ 'Copy-1', 'Link-1' ] as $template ) {
+			foreach ( $interests as $interest ) {
+				$requests[] = [
+					'params' => [
+						'srsearch' => 'hastemplate:"' . $template . '" morelikethis:"'
+							. strtr( $interest, ' ', '_' ) . '"',
+						'srlimit' => (string)$expectedQueryLimit,
+					],
+					'response' => [
+						'query' => [
+							'search' => array_map(
+								static fn ( int $i ) => [ 'ns' => 0, 'title' => "$template-$interest-$i" ],
+								range( 1, $expectedQueryLimit )
+							),
+							'searchinfo' => [ 'totalhits' => 1000 ],
+						],
+					],
+				];
+			}
+		}
+
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry,
+			$this->getMockSearchStrategy( $taskTypeHandlerRegistry ),
+			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
+			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
+			$this->getMockRequestFactory( $requests ), $this->getMockTitleFactory(),
+			'https://example.com', $taskTypes, [] );
+
+		$taskSet = $suggester->suggest( $user,
+			new TaskSetFilters( [ 'copyedit', 'link' ], [], null, $interests ),
+			CacheDecorator::INTEREST_POOL_SIZE );
+
+		$this->assertInstanceOf( TaskSet::class, $taskSet );
+		$this->assertCount( CacheDecorator::INTEREST_POOL_SIZE, $taskSet );
+		// Every interest reaches the pool, because the queries are read in turn.
+		$interestsInPool = [];
+		foreach ( $taskSet as $task ) {
+			$interestsInPool[$task->getTopics()[0]->getId()] = true;
+		}
+		$this->assertSame( $interests, array_keys( $interestsInPool ) );
+	}
+
+	/**
+	 * The same article is often similar to several interests. The pool must still reach its
+	 * target size when enough distinct articles match.
+	 */
+	public function testSuggestWithInterestsFillsThePoolWhenInterestsOverlap() {
+		$user = new UserIdentityValue( 1, 'Foo' );
+		$taskTypes = self::getTaskTypes( [ 'copyedit' => [ 'Copy-1' ], 'link' => [ 'Link-1' ] ] );
+		$interests = array_map( static fn ( int $i ) => "Interest $i", range( 1, 10 ) );
+
+		// Interests come in pairs which find the same articles, so half of the results are
+		// duplicates. Five distinct groups times five results times two task types is fifty
+		// distinct articles, exactly the target pool size.
+		$queryLimit = 5;
+		$requests = [];
+		foreach ( [ 'Copy-1', 'Link-1' ] as $template ) {
+			foreach ( $interests as $index => $interest ) {
+				$group = intdiv( $index, 2 );
+				$requests[] = [
+					'params' => [
+						'srsearch' => 'hastemplate:"' . $template . '" morelikethis:"'
+							. strtr( $interest, ' ', '_' ) . '"',
+						'srlimit' => (string)$queryLimit,
+					],
+					'response' => [
+						'query' => [
+							'search' => array_map(
+								static fn ( int $i ) => [ 'ns' => 0, 'title' => "$template-$group-$i" ],
+								range( 1, $queryLimit )
+							),
+							'searchinfo' => [ 'totalhits' => 1000 ],
+						],
+					],
+				];
+			}
+		}
+
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry,
+			$this->getMockSearchStrategy( $taskTypeHandlerRegistry ),
+			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
+			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
+			$this->getMockRequestFactory( $requests ), $this->getMockTitleFactory(),
+			'https://example.com', $taskTypes, [] );
+
+		$taskSet = $suggester->suggest( $user,
+			new TaskSetFilters( [ 'copyedit', 'link' ], [], null, $interests ),
+			CacheDecorator::INTEREST_POOL_SIZE );
+
+		$this->assertInstanceOf( TaskSet::class, $taskSet );
+		$this->assertCount( CacheDecorator::INTEREST_POOL_SIZE, $taskSet );
 	}
 
 	public function testSuggestWithInterestsSkipsInvalidTitles() {

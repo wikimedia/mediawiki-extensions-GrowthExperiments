@@ -82,16 +82,21 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			[ 'topics' => $topics ?: null, 'interests' => $params['interests'] ],
 			'topics', 'interests'
 		);
-		if ( $params['interests'] !== null ) {
+		$isPreviewingInterests = $params['interests'] !== null;
+		if ( $isPreviewingInterests ) {
 			$interests = $this->getUsableInterests( $params['interests'] );
 		} else {
 			// Explicit topics win over stored interests; TaskSetFilters allows only one
 			// of the two.
 			$interests = $topics ? [] : $this->taskSetFiltersFactory->getInterestFilters( $user );
 		}
-		// The cache holds one task set per user. Skip it when the front end loads more tasks
-		// (exclude page IDs) and when it previews an unsaved interest selection.
-		$useCache = !$excludePageIds && $params['interests'] === null;
+		$isInterestTaskSet = (bool)$interests;
+		// The cache holds one task set per user. An interest task set is a pool which is
+		// deeper than one request serves, so loading more tasks reads that pool and
+		// subtracts the articles the front end already has. Topic-based and unfiltered
+		// requests still need a live search to load more. Skip the cache when the front end
+		// previews an unsaved interest selection.
+		$useCache = !$isPreviewingInterests && ( !$excludePageIds || $isInterestTaskSet );
 
 		$taskSuggester = $this->taskSuggesterFactory->create();
 		$taskSetFilters = new TaskSetFilters( $taskTypes, $topics, $topicsMode, $interests );
@@ -171,11 +176,13 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				$result->addValue( $basePath, 'debug', $tasks->getDebugData() );
 			}
 		}
-		if ( $useCache ) {
+		if ( $useCache && !$isInterestTaskSet ) {
 			// Refresh the cached suggestions via the job queue when the user hasn't asked to exclude
 			// page IDs. This makes the API endpoint behave in the same way as SuggestedEdits.php on
 			// Special:Homepage. If we don't do this, then repeat queries to this API endpoint with the same user
 			// ID and without `pageids` set will result in returning the same cached task set.
+			// An interest task set does not need this: each request serves a different random
+			// slice of the cached pool, and a rebuild costs one search per interest per task type.
 			if ( !$user->isNamed() ) {
 				\MediaWiki\Logger\LoggerFactory::getInstance( 'GrowthExperiments' )->error(
 					'Scheduling NewcomerTasksCacheRefreshJob for non-named user',

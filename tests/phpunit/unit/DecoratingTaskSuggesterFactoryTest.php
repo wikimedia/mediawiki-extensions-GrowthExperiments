@@ -9,7 +9,9 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Status\StatusFormatter;
+use MediaWiki\Title\TitleFactory;
 use MediaWikiUnitTestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -44,6 +46,8 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 					new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 					$this->createMock( TaskSetListener::class ),
 					new JsonCodec(),
+					$this->createMock( LinkBatchFactory::class ),
+					$this->createMock( TitleFactory::class ),
 				],
 			],
 		], new NullLogger() );

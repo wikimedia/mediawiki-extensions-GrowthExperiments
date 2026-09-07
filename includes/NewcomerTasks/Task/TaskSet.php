@@ -162,6 +162,16 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonCodecabl
 	}
 
 	/**
+	 * Keep only the given tasks, in the given order. The metadata about the full result
+	 * set does not change.
+	 * @param Task[] $tasks Tasks which are part of this task set.
+	 */
+	public function retainTasks( array $tasks ): void {
+		Assert::parameterElementType( Task::class, $tasks, '$tasks' );
+		$this->tasks = array_values( $tasks );
+	}
+
+	/**
 	 * Compare this TaskSet's filters with another set of filters.
 	 */
 	public function filtersEqual( TaskSetFilters $filters ): bool {

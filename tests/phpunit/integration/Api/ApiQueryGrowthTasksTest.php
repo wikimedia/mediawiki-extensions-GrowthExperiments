@@ -310,6 +310,33 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		];
 	}
 
+	/**
+	 * Loading more tasks reads the cached pool for an interest task set, and needs a live
+	 * search for a topic-based or unfiltered one.
+	 * @dataProvider provideLoadMore
+	 */
+	public function testLoadMore( bool $isTreatment, bool $expectedUseCache ) {
+		$recorder = $this->setUpRecordingTaskSuggester();
+		$user = $this->setUpUserWithStoredInterests( $isTreatment );
+
+		$this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'growthtasks',
+			'gttasktypes' => 'copyedit',
+			'gtexcludepageids' => '11|12',
+		], null, null, $user );
+
+		$this->assertSame( $expectedUseCache, $recorder->options['useCache'] );
+		$this->assertSame( [ 11, 12 ], $recorder->options['excludePageIds'] );
+	}
+
+	public static function provideLoadMore(): array {
+		return [
+			'interest task set reads the pool' => [ true, true ],
+			'control task set searches again' => [ false, false ],
+		];
+	}
+
 	public function testError() {
 		$suggesterFactory = new StaticTaskSuggesterFactory(
 			new ErrorForwardingTaskSuggester(

@@ -39,6 +39,13 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	// Keep this in sync with GrowthTasksApi.js#fetchTasks
 	public const DEFAULT_LIMIT = 15;
 
+	/**
+	 * Extra results to request per interest query, above the balanced share of the pool.
+	 * Duplicate articles and queries with no results make a strict share reach less than
+	 * the target pool size.
+	 */
+	private const INTEREST_QUERY_SLACK = 2;
+
 	/** @var TaskType[] id => TaskType */
 	protected array $taskTypes = [];
 
@@ -144,7 +151,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			);
 		}
 
-		if ( $taskSetFilters->getInterestFilters() ) {
+		if ( $taskSetFilters->isInterestBased() ) {
 			// Interests are per-user article titles, not part of the topic registry,
 			// so they are built from the filters instead of looked up. The TaskSetFilters
 			// constructor guarantees that topic filters and interest filters are not
@@ -193,8 +200,14 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			$options['excludePageIds'] ?? null,
 			$taskSetFilters->getTopicFiltersMode()
 		);
+		// One interest query per interest per task type makes the fan-out large, so each
+		// query only asks for its share of the pool. This also lets every interest
+		// contribute, instead of the first queries filling the pool on their own.
+		$queryLimit = $taskSetFilters->isInterestBased()
+			? $this->getInterestQueryLimit( $limit, count( $queries ) )
+			: $limit;
 		foreach ( $queries as $query ) {
-			$matches = $this->search( $query, $limit, $offset, $debug );
+			$matches = $this->search( $query, $queryLimit, $offset, $debug );
 			if ( $matches instanceof StatusValue ) {
 				// Only log when there's a logger; Status::getWikiText would break unit tests.
 				if ( !$this->logger instanceof NullLogger ) {
@@ -202,7 +215,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 						'message' => $this->statusFormatter->getWikiText( $matches, [ 'lang' => 'en' ] ),
 						'searchTerm' => $query->getQueryString(),
 						'queryId' => $query->getId(),
-						'limit' => $limit,
+						'limit' => $queryLimit,
 						'offset' => $offset,
 					] );
 				}
@@ -231,7 +244,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		}
 
 		$suggestions = $this->deduplicateSuggestions( $suggestions );
-		if ( $taskSetFilters->getInterestFilters() ) {
+		if ( $taskSetFilters->isInterestBased() ) {
 			// The same article is often similar to several interests, so the summed
 			// hit counts promise more tasks than the deduplicated set delivers.
 			$totalCount = count( $suggestions );
@@ -262,6 +275,16 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		int $offset,
 		bool $debug
 	): ISearchResultSet|StatusValue;
+
+	/**
+	 * How many results one interest query asks for. Every interest gets the same share of the
+	 * pool, so that each one contributes and no query costs as much as the whole pool.
+	 * @param int $poolSize Number of tasks the caller wants.
+	 * @param int $queryCount One query per interest per task type.
+	 */
+	private function getInterestQueryLimit( int $poolSize, int $queryCount ): int {
+		return min( $poolSize, (int)ceil( $poolSize / $queryCount ) + self::INTEREST_QUERY_SLACK );
+	}
 
 	/**
 	 * Turn interests (prefixed article titles) into interest-based topics.

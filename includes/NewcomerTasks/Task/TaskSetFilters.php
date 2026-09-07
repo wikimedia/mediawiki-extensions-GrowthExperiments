@@ -77,6 +77,14 @@ class TaskSetFilters implements JsonCodecable {
 		return $this->interestFilters;
 	}
 
+	/**
+	 * Whether the task set comes from the user's interests. Interests and topics are
+	 * mutually exclusive, so this also tells the two kinds of task set apart.
+	 */
+	public function isInterestBased(): bool {
+		return (bool)$this->interestFilters;
+	}
+
 	/** @inheritDoc */
 	public function toJsonArray(): array {
 		$json = [
