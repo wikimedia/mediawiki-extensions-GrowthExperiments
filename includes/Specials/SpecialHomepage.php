@@ -64,6 +64,22 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
+	 * Record visits to the Homepage for the "Special:Homepage impressions" guardrail metric
+	 *
+	 * Should only be called for real visits to the Homepage, not when we're merely showing the AccountSetup dialog
+	 * over it.
+	 */
+	private function sendExperimentPageVisitEvent(): void {
+		if ( !$this->experimentManager ) {
+			return;
+		}
+		$experiment = $this->experimentManager->getExperiment(
+			IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST
+		);
+		$experiment->send( 'page_visit', [], [ 'page_namespace_id', 'page_title' ] );
+	}
+
+	/**
 	 * @inheritDoc
 	 * @param string $par
 	 * @throws ConfigException
@@ -97,6 +113,8 @@ class SpecialHomepage extends SpecialPage {
 			if ( !$accountSetupMotivation ) {
 				$out->addModules( 'ext.growthExperiments.AccountSetup' );
 				$out->addHTML( Html::element( 'div', [ 'id' => 'growthexperiments-account_setup' ] ) );
+			} else {
+				$this->sendExperimentPageVisitEvent();
 			}
 
 			$interestArticlesEncoded = $this->userOptionsManager->getOption(
@@ -123,6 +141,8 @@ class SpecialHomepage extends SpecialPage {
 			$out->addJsConfigVars( [
 				'wgGEInterestArticles' => $interestArticles,
 			] );
+		} else {
+			$this->sendExperimentPageVisitEvent();
 		}
 
 		$out->addJsConfigVars( [
