@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
@@ -93,6 +94,47 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$actualTaskData = $this->taskSetToArray( $taskSet );
 			$this->assertArrayEquals( $expectedTaskData, $actualTaskData, false, false );
 		}
+	}
+
+	/**
+	 * One query per task type, and an article can carry the templates of several task types.
+	 * The duplicates must not use up the limit while distinct articles are still available.
+	 */
+	public function testSuggestFillsTheLimitWhenQueriesFindTheSameArticles() {
+		$user = new UserIdentityValue( 1, 'Foo' );
+		$taskTypes = self::getTaskTypes( [ 'copyedit' => [ 'Copy-1' ], 'link' => [ 'Link-1' ] ] );
+
+		// Both queries find the same fifteen articles, so half of the thirty results are
+		// duplicates of the other half.
+		$articles = array_map(
+			static fn ( int $i ) => [ 'ns' => 0, 'title' => "Article-$i" ],
+			range( 1, SearchTaskSuggester::DEFAULT_LIMIT )
+		);
+		$requests = [];
+		foreach ( [ 'Copy-1', 'Link-1' ] as $template ) {
+			$requests[] = [
+				'params' => [ 'srsearch' => 'hastemplate:"' . $template . '"' ],
+				'response' => [
+					'query' => [
+						'search' => $articles,
+						'searchinfo' => [ 'totalhits' => 1000 ],
+					],
+				],
+			];
+		}
+
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry,
+			$this->getMockSearchStrategy( $taskTypeHandlerRegistry ),
+			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
+			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
+			$this->getMockRequestFactory( $requests ), $this->getMockTitleFactory(),
+			'https://example.com', $taskTypes, [] );
+
+		$taskSet = $suggester->suggest( $user, new TaskSetFilters( [ 'copyedit', 'link' ] ) );
+
+		$this->assertInstanceOf( TaskSet::class, $taskSet );
+		$this->assertCount( SearchTaskSuggester::DEFAULT_LIMIT, $taskSet );
 	}
 
 	public function testSuggestWithInterests() {

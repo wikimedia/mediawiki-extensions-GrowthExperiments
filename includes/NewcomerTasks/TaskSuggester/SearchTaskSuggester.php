@@ -212,7 +212,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			$matchIterator->attachIterator( Util::getIteratorFromTraversable( $matches ), $query->getId() );
 		}
 
-		$taskCount = 0;
+		$articles = [];
 		$suggestions = [];
 		foreach ( $matchIterator as $matchSlice ) {
 			/** @var SearchResult $match */
@@ -220,10 +220,11 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 				// TODO: Filter out pages that are protected.
 				$query = $queries[$queryId];
 				$taskType = $query->getTaskType();
-				$suggestions[] = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )
+				$suggestion = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )
 					->createTaskFromSearchResult( $query, $match );
-				$taskCount++;
-				if ( $taskCount >= $limit ) {
+				$suggestions[] = $suggestion;
+				$articles[$this->getArticleKey( $suggestion )] = true;
+				if ( count( $articles ) >= $limit ) {
 					break 2;
 				}
 			}
@@ -299,12 +300,10 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	private function mapTopicData( TaskSet $sourceTaskSet, array $targetTasks ): void {
 		$taskMap = [];
 		foreach ( $sourceTaskSet as $task ) {
-			$key = $task->getTitle()->getNamespace() . ':' . $task->getTitle()->getDBkey();
-			$taskMap[$key] = $task;
+			$taskMap[$this->getArticleKey( $task )] = $task;
 		}
 		foreach ( $targetTasks as $task ) {
-			$key = $task->getTitle()->getNamespace() . ':' . $task->getTitle()->getDBkey();
-			$sourceTask = $taskMap[$key] ?? null;
+			$sourceTask = $taskMap[$this->getArticleKey( $task )] ?? null;
 			if ( $sourceTask ) {
 				$task->setTopics( $sourceTask->getTopics() );
 			}
@@ -327,6 +326,13 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	}
 
 	/**
+	 * A key which is the same for two tasks about the same article.
+	 */
+	private function getArticleKey( Task $task ): string {
+		return $task->getTitle()->getNamespace() . ':' . $task->getTitle()->getDBkey();
+	}
+
+	/**
 	 * Make sure there's only one task per article, even if an article is multiple task types / topics.
 	 * @param Task[] $suggestions
 	 * @return Task[]
@@ -335,7 +341,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		/** @var Task[] $deduped */
 		$deduped = [];
 		foreach ( $suggestions as $suggestion ) {
-			$key = $suggestion->getTitle()->getNamespace() . ':' . $suggestion->getTitle()->getDBkey();
+			$key = $this->getArticleKey( $suggestion );
 			if ( !isset( $deduped[$key] ) || $this->compareTasks( $suggestion, $deduped[$key] ) < 0 ) {
 				$deduped[$key] = $suggestion;
 			}
