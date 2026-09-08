@@ -96,6 +96,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$this->assertArrayHasKey( ReadingRecommendations::MODULE_ID, $homepageModules );
 		$readingRecommendations = $homepageModules[ReadingRecommendations::MODULE_ID];
 		$this->assertSame( [], $readingRecommendations['recommendations'] );
+		$this->assertFalse( $readingRecommendations['hasInterests'] );
 	}
 
 	/**

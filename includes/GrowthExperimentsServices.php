@@ -69,6 +69,7 @@ use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
+use GrowthExperiments\ReadingRecommendations\InterestArticlesLookup;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
@@ -293,6 +294,10 @@ class GrowthExperimentsServices {
 
 	public function getQuestionPosterFactory(): QuestionPosterFactory {
 		return $this->coreServices->get( 'GrowthExperimentsQuestionPosterFactory' );
+	}
+
+	public function getInterestArticlesLookup(): InterestArticlesLookup {
+		return $this->coreServices->get( 'GrowthExperimentsInterestArticlesLookup' );
 	}
 
 	public function getReadingRecommendationsFeaturedArticlePool(): FeaturedArticlePool {

@@ -168,6 +168,73 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 		$module->getJsData( ReadingRecommendations::RENDER_DESKTOP );
 	}
 
+	public function testUserWithoutInterestsKeepsThePersonalizeCta() {
+		$rows = self::getFixture();
+		$generalRows = array_values( array_filter( $rows, static fn ( array $row ) => $row['relatedTo'] === null ) );
+		$html = $this->getModule( null, false, $generalRows )->render( ReadingRecommendations::RENDER_DESKTOP );
+
+		$this->assertStringContainsString(
+			'growthexperiments-homepage-reading-recommendations-personalize-title',
+			$html
+		);
+		$this->assertStringContainsString( 'growthexperiments-reading-recommendations-list', $html );
+	}
+
+	public function testUserWithInterestsDropsThePersonalizeCta() {
+		$html = $this->getModule( null, false, self::getFixture(), null, true )
+			->render( ReadingRecommendations::RENDER_DESKTOP );
+
+		$this->assertStringNotContainsString(
+			'growthexperiments-homepage-reading-recommendations-personalize-title',
+			$html
+		);
+	}
+
+	/**
+	 * A user whose related-article searches all failed still has interests, so
+	 * the call to action stays away even though no row is interest-based.
+	 *
+	 * @dataProvider provideRenderModes
+	 */
+	public function testUserWithInterestsAndAGeneralOnlyListDropsThePersonalizeCta(
+		string $mode,
+		string $ctaMessage
+	) {
+		$rows = self::getFixture();
+		$generalRows = array_values( array_filter( $rows, static fn ( array $row ) => $row['relatedTo'] === null ) );
+		$module = $this->getModule( null, false, $generalRows, null, true );
+
+		$html = $module->render( $mode );
+
+		$this->assertStringNotContainsString( $ctaMessage, $html );
+		$this->assertStringContainsString( 'growthexperiments-reading-recommendations-list', $html );
+		$this->assertTrue( $module->getJsData( $mode )['hasInterests'] );
+	}
+
+	/**
+	 * @dataProvider provideRenderModes
+	 */
+	public function testExportsWhetherTheUserHasInterests( string $mode ) {
+		$this->assertFalse( $this->getModule()->getJsData( $mode )['hasInterests'] );
+		$this->assertTrue( $this->getModule( null, false, [], null, true )->getJsData( $mode )['hasInterests'] );
+	}
+
+	/**
+	 * In developer setup the fixture stands in for the service, so the flag and
+	 * the call to action follow the fixture rows and not the preference.
+	 */
+	public function testFixtureDrivesTheInterestsFlag() {
+		$module = $this->getModule( self::FIXTURE_PATH, true );
+
+		$html = $module->render( ReadingRecommendations::RENDER_DESKTOP );
+
+		$this->assertTrue( $module->getJsData( ReadingRecommendations::RENDER_DESKTOP )['hasInterests'] );
+		$this->assertStringNotContainsString(
+			'growthexperiments-homepage-reading-recommendations-personalize-title',
+			$html
+		);
+	}
+
 	public function testFixtureExportsEveryCardState() {
 		$data = $this->getModule( self::FIXTURE_PATH, true )->getJsData( ReadingRecommendations::RENDER_DESKTOP );
 
@@ -305,13 +372,15 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 	 * @param bool $developerSetup
 	 * @param array[] $formattedRows What the formatter mock returns
 	 * @param ReadingRecommendationsService|null $service
+	 * @param bool $hasInterests What the service mock reports
 	 * @return ReadingRecommendations
 	 */
 	private function getModule(
 		?string $fixtureFile = null,
 		bool $developerSetup = false,
 		array $formattedRows = [],
-		?ReadingRecommendationsService $service = null
+		?ReadingRecommendationsService $service = null,
+		bool $hasInterests = false
 	): ReadingRecommendations {
 		$contextMock = $this->createMock( IContextSource::class );
 		$contextMock->method( 'getOutput' )
@@ -329,6 +398,7 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 		if ( !$service ) {
 			$service = $this->createMock( ReadingRecommendationsService::class );
 			$service->method( 'getRecommendations' )->willReturn( [] );
+			$service->method( 'hasInterests' )->willReturn( $hasInterests );
 		}
 		$formatter = $this->createMock( ReadingRecommendationsFormatter::class );
 		$formatter->method( 'format' )->willReturn( $formattedRows );

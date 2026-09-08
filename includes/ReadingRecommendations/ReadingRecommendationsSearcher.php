@@ -42,6 +42,26 @@ class ReadingRecommendationsSearcher {
 	}
 
 	/**
+	 * Articles similar to an interest article, most relevant first.
+	 *
+	 * @param LinkTarget $interest
+	 * @param int $limit
+	 * @return ReadingRecommendationsSearchResult
+	 */
+	public function findRelated( LinkTarget $interest, int $limit ): ReadingRecommendationsSearchResult {
+		// morelike: is greedy, so the validated title can be passed as its entire
+		// value. Quoting it would make the quotes part of the title. Exclusions are
+		// filtered in PHP by the caller so relevance determines the result order.
+		return $this->search(
+			'morelike:' . $interest->getDBkey(),
+			$limit,
+			'interest',
+			null,
+			null
+		);
+	}
+
+	/**
 	 * Random articles from a category, stable for a given seed.
 	 *
 	 * @param LinkTarget $category
@@ -62,7 +82,7 @@ class ReadingRecommendationsSearcher {
 	/**
 	 * @param string $query
 	 * @param int $limit
-	 * @param string $source Metric label for the kind of search
+	 * @param string $source Metric label, 'interest' or 'featured'
 	 * @param string|null $sort
 	 * @param int|null $seed
 	 * @return ReadingRecommendationsSearchResult

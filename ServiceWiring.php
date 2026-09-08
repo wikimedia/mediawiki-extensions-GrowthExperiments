@@ -105,6 +105,7 @@ use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
+use GrowthExperiments\ReadingRecommendations\InterestArticlesLookup;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
@@ -392,6 +393,17 @@ return [
 		return new ImageRecommendationSubmissionLogFactory(
 			$services->getConnectionProvider(),
 			$services->getUserOptionsLookup()
+		);
+	},
+
+	'GrowthExperimentsInterestArticlesLookup' => static function (
+		MediaWikiServices $services
+	): InterestArticlesLookup {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new InterestArticlesLookup(
+			$services->getUserOptionsLookup(),
+			$services->getTitleParser(),
+			$growthServices->getLogger()
 		);
 	},
 
@@ -1002,7 +1014,10 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new ReadingRecommendationsService(
 			new ServiceOptions( ReadingRecommendationsService::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
-			$growthServices->getReadingRecommendationsFeaturedArticlePool()
+			$services->getWANObjectCache(),
+			$growthServices->getInterestArticlesLookup(),
+			$growthServices->getReadingRecommendationsFeaturedArticlePool(),
+			$growthServices->getReadingRecommendationsSearcher()
 		);
 	},
 

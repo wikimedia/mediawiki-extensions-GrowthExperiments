@@ -34,6 +34,8 @@ class ReadingRecommendations extends BaseModule {
 	private ReadingRecommendationsService $recommendationsService;
 	private ReadingRecommendationsFormatter $formatter;
 	private ?array $recommendations = null;
+	private bool $usesFixture = false;
+	private ?bool $userHasInterests = null;
 
 	/**
 	 * No details view: the mobile tile shows the same list as desktop.
@@ -63,6 +65,7 @@ class ReadingRecommendations extends BaseModule {
 		// There is no details view, so skip BaseModule's overlay pre-render in
 		// mobile summary mode; it would render the list a second time.
 		return [
+			'hasInterests' => $this->userHasInterests(),
 			'recommendations' => $this->getRecommendations(),
 			'renderMode' => $mode,
 		];
@@ -100,25 +103,27 @@ class ReadingRecommendations extends BaseModule {
 	/** @inheritDoc */
 	protected function getBody() {
 		// The div becomes the mount point for the Vue app.
+		$html = '';
+		if ( $this->shouldShowPersonalizeCta() ) {
+			$html .= Html::element(
+				'h3',
+				[],
+				$this->getContext()->msg(
+					'growthexperiments-homepage-reading-recommendations-personalize-title'
+				)->text()
+			) .
+			Html::element(
+				'p',
+				[],
+				$this->getContext()->msg(
+					'growthexperiments-homepage-reading-recommendations-personalize-text'
+				)->text()
+			);
+		}
 		return Html::rawElement(
 			'div',
 			[ 'id' => 'reading-recommendations-vue-root' ],
-			$this->getListHtml() ?: (
-				Html::element(
-					'h3',
-					[],
-					$this->getContext()->msg(
-						'growthexperiments-homepage-reading-recommendations-personalize-title'
-					)->text()
-				) .
-				Html::element(
-					'p',
-					[],
-					$this->getContext()->msg(
-						'growthexperiments-homepage-reading-recommendations-personalize-text'
-					)->text()
-				)
-			)
+			$html . $this->getListHtml()
 		);
 	}
 
@@ -126,17 +131,34 @@ class ReadingRecommendations extends BaseModule {
 	protected function getMobileSummaryBody() {
 		// The div becomes the mount point for the Vue app on the mobile summary
 		// tile. The id differs from the desktop one on purpose.
-		return Html::rawElement(
-			'div',
-			[ 'id' => 'reading-recommendations-vue-root--mobile' ],
-			$this->getListHtml() ?: Html::element(
+		$html = '';
+		if ( $this->shouldShowPersonalizeCta() ) {
+			$html .= Html::element(
 				'p',
 				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
 				$this->getContext()->msg(
 					'growthexperiments-homepage-reading-recommendations-personalize-text'
 				)->text()
-			)
+			);
+		}
+		return Html::rawElement(
+			'div',
+			[ 'id' => 'reading-recommendations-vue-root--mobile' ],
+			$html . $this->getListHtml()
 		);
+	}
+
+	/**
+	 * The personalize call to action invites the user to pick interest
+	 * articles, so it shows exactly when they have not picked any. It must not
+	 * depend on what is in today's list: a user who has picked interests but
+	 * whose related-article searches came back empty has still personalized
+	 * their reads, and would otherwise see the invitation come and go with the
+	 * health of the search backend. The Vue app makes the same decision from
+	 * the exported hasInterests, so the two cannot disagree when it mounts.
+	 */
+	private function shouldShowPersonalizeCta(): bool {
+		return !$this->userHasInterests();
 	}
 
 	/**
@@ -226,10 +248,45 @@ class ReadingRecommendations extends BaseModule {
 	 * @return array[]
 	 */
 	private function getRecommendations(): array {
-		$this->recommendations ??= $this->loadFixture() ?: $this->formatter->format(
-			$this->recommendationsService->getRecommendations( $this->getContext()->getUser() )
-		);
+		if ( $this->recommendations === null ) {
+			$fixtureRows = $this->loadFixture();
+			$this->usesFixture = (bool)$fixtureRows;
+			$this->recommendations = $fixtureRows ?: $this->formatter->format(
+				$this->recommendationsService->getRecommendations( $this->getContext()->getUser() )
+			);
+		}
 		return $this->recommendations;
+	}
+
+	/**
+	 * Whether the user has picked interest articles, for the Vue app to choose
+	 * between the interest picker call to action and the header control, and
+	 * for the pre-mount call to action above.
+	 *
+	 * The developer fixture replaces the service output, so in that mode the
+	 * flag comes from the fixture rows instead of the preference, which keeps
+	 * the fixture able to exercise both states.
+	 */
+	private function userHasInterests(): bool {
+		if ( $this->userHasInterests === null ) {
+			$rows = $this->getRecommendations();
+			$this->userHasInterests = $this->usesFixture
+				? $this->hasInterestBasedRow( $rows )
+				: $this->recommendationsService->hasInterests( $this->getContext()->getUser() );
+		}
+		return $this->userHasInterests;
+	}
+
+	/**
+	 * @param array[] $rows
+	 */
+	private function hasInterestBasedRow( array $rows ): bool {
+		foreach ( $rows as $row ) {
+			if ( $row['relatedTo'] !== null ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

@@ -24,6 +24,46 @@ use Wikimedia\Stats\StatsFactory;
  */
 class ReadingRecommendationsSearcherTest extends MediaWikiUnitTestCase {
 
+	public function testFindRelated() {
+		$titles = [ new TitleValue( NS_MAIN, 'Brooklyn' ) ];
+		$searchEngine = $this->getMockSearchEngine(
+			'morelike:New_York_City',
+			$this->getResultSet( $titles )
+		);
+		$searchEngine->expects( $this->once() )
+			->method( 'setLimitOffset' )
+			->with( 10, 0 );
+		$searchEngine->expects( $this->once() )
+			->method( 'setNamespaces' )
+			->with( [ NS_MAIN ] );
+		$searchEngine->expects( $this->once() )
+			->method( 'setShowSuggestion' )
+			->with( false );
+		$searchEngine->expects( $this->never() )->method( 'setSort' );
+		$searchEngine->expects( $this->never() )->method( 'setFeatureData' );
+
+		$searcher = $this->getSearcher( $searchEngine );
+		$this->assertSearchResult(
+			$titles,
+			false,
+			$searcher->findRelated( new TitleValue( NS_MAIN, 'New_York_City' ), 10 )
+		);
+	}
+
+	public function testFindRelatedDoesNotQuoteTitle() {
+		$searchEngine = $this->getMockSearchEngine(
+			'morelike:Who_Framed_Roger_Rabbit?',
+			$this->getResultSet( [] )
+		);
+
+		$searcher = $this->getSearcher( $searchEngine );
+		$this->assertSearchResult(
+			[],
+			false,
+			$searcher->findRelated( new TitleValue( NS_MAIN, 'Who_Framed_Roger_Rabbit?' ), 10 )
+		);
+	}
+
 	public function testFindFeatured() {
 		$titles = [ new TitleValue( NS_MAIN, 'Sun' ) ];
 		$searchEngine = $this->getMockSearchEngine(
@@ -105,6 +145,11 @@ class ReadingRecommendationsSearcherTest extends MediaWikiUnitTestCase {
 			null,
 			StatsFactory::newNull(),
 			new NullLogger()
+		);
+		$this->assertSearchResult(
+			[],
+			false,
+			$searcher->findRelated( new TitleValue( NS_MAIN, 'Cat' ), 10 )
 		);
 		$this->assertSearchResult(
 			[],
