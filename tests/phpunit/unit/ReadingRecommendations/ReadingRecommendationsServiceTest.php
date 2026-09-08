@@ -7,6 +7,7 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
 use GrowthExperiments\ReadingRecommendations\InterestArticlesLookup;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendation;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsCachePolicy;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearchResult;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
@@ -283,6 +284,32 @@ class ReadingRecommendationsServiceTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [], $service->getRecommendations( $this->user ) );
 	}
 
+	public function testCacheDisabledRecomputesEveryRequest() {
+		$searcher = $this->createMock( ReadingRecommendationsSearcher::class );
+		$searcher->expects( $this->exactly( 2 ) )
+			->method( 'findRelated' )
+			->willReturn( ReadingRecommendationsSearchResult::newSuccess( $this->titles( 'Felidae' ) ) );
+		$service = $this->newService(
+			$this->titles( 'Cat' ), [], [], null, $searcher, cacheEnabled: false );
+
+		$first = $service->getRecommendations( $this->user );
+		$second = $service->getRecommendations( $this->user );
+		$this->assertEquals( $first, $second );
+	}
+
+	public function testCacheDisabledSettingIgnoredWithoutDeveloperSetup() {
+		$searcher = $this->createMock( ReadingRecommendationsSearcher::class );
+		$searcher->expects( $this->once() )
+			->method( 'findRelated' )
+			->willReturn( ReadingRecommendationsSearchResult::newSuccess( $this->titles( 'Felidae' ) ) );
+		$service = $this->newService(
+			$this->titles( 'Cat' ), [], [], null, $searcher,
+			cacheEnabled: false, developerSetup: false );
+
+		$first = $service->getRecommendations( $this->user );
+		$this->assertEquals( $first, $service->getRecommendations( $this->user ) );
+	}
+
 	public function testSecondCallIsACacheHit() {
 		$searcher = $this->createMock( ReadingRecommendationsSearcher::class );
 		$searcher->expects( $this->once() )
@@ -384,6 +411,8 @@ class ReadingRecommendationsServiceTest extends MediaWikiUnitTestCase {
 	 * @param ReadingRecommendationsSearcher|MockObject|null $searcher
 	 * @param InterestArticlesLookup|MockObject|null $lookup
 	 * @param WANObjectCache|null $wanCache
+	 * @param bool $cacheEnabled
+	 * @param bool $developerSetup
 	 * @return ReadingRecommendationsService
 	 */
 	private function newService(
@@ -393,7 +422,9 @@ class ReadingRecommendationsServiceTest extends MediaWikiUnitTestCase {
 		$pool = null,
 		$searcher = null,
 		$lookup = null,
-		?WANObjectCache $wanCache = null
+		?WANObjectCache $wanCache = null,
+		bool $cacheEnabled = true,
+		bool $developerSetup = true
 	): ReadingRecommendationsService {
 		if ( !$lookup ) {
 			$lookup = $this->createMock( InterestArticlesLookup::class );
@@ -421,7 +452,14 @@ class ReadingRecommendationsServiceTest extends MediaWikiUnitTestCase {
 			$wanCache ?? new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 			$lookup,
 			$pool,
-			$searcher
+			$searcher,
+			new ReadingRecommendationsCachePolicy( new ServiceOptions(
+				ReadingRecommendationsCachePolicy::CONSTRUCTOR_OPTIONS,
+				[
+					'GEReadingRecommendationsCacheEnabled' => $cacheEnabled,
+					'GEDeveloperSetup' => $developerSetup,
+				]
+			) )
 		);
 	}
 }

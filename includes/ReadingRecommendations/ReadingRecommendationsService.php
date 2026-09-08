@@ -6,6 +6,7 @@ namespace GrowthExperiments\ReadingRecommendations;
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\ObjectCache\WANObjectCache;
@@ -36,14 +37,17 @@ class ReadingRecommendationsService {
 	public const CANDIDATES_PER_INTEREST = 50;
 	public const CACHE_VERSION = 1;
 
-	public const CONSTRUCTOR_OPTIONS = WikiDay::CONSTRUCTOR_OPTIONS;
+	public const CONSTRUCTOR_OPTIONS = [
+		MainConfigNames::Localtimezone,
+	];
 
 	public function __construct(
 		private readonly ServiceOptions $options,
 		private readonly WANObjectCache $wanCache,
 		private readonly InterestArticlesLookup $interestArticlesLookup,
 		private readonly FeaturedArticlePool $featuredArticlePool,
-		private readonly ReadingRecommendationsSearcher $searcher
+		private readonly ReadingRecommendationsSearcher $searcher,
+		private readonly ReadingRecommendationsCachePolicy $cachePolicy
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 	}
@@ -64,7 +68,7 @@ class ReadingRecommendationsService {
 	 * @return ReadingRecommendation[]
 	 */
 	public function getRecommendations( UserIdentity $user ): array {
-		$day = WikiDay::today( $this->options );
+		$day = WikiDay::today( $this->options->get( MainConfigNames::Localtimezone ) );
 		$interests = $this->interestArticlesLookup->getInterests( $user );
 		if ( !$interests ) {
 			return array_map(
@@ -94,7 +98,7 @@ class ReadingRecommendationsService {
 					$selection['recommendations']
 				);
 			},
-			[ 'version' => self::CACHE_VERSION ]
+			$this->cachePolicy->getCacheOptions( self::CACHE_VERSION )
 		);
 		return array_map( [ ReadingRecommendation::class, 'fromArray' ], $rows );
 	}
@@ -203,7 +207,7 @@ class ReadingRecommendationsService {
 					$searchResult->getTitles()
 				);
 			},
-			[ 'version' => self::CACHE_VERSION ]
+			$this->cachePolicy->getCacheOptions( self::CACHE_VERSION )
 		);
 		return array_map(
 			static fn ( array $row ) => new TitleValue( $row['ns'], $row['dbkey'] ),

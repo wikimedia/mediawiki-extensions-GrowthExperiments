@@ -106,6 +106,7 @@ use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
 use GrowthExperiments\ReadingRecommendations\InterestArticlesLookup;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsCachePolicy;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
@@ -968,6 +969,17 @@ return [
 		);
 	},
 
+	'GrowthExperimentsReadingRecommendationsCachePolicy' => static function (
+		MediaWikiServices $services
+	): ReadingRecommendationsCachePolicy {
+		return new ReadingRecommendationsCachePolicy(
+			new ServiceOptions(
+				ReadingRecommendationsCachePolicy::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			)
+		);
+	},
+
 	'GrowthExperimentsReadingRecommendationsFeaturedArticlePool' => static function (
 		MediaWikiServices $services
 	): FeaturedArticlePool {
@@ -977,6 +989,7 @@ return [
 			$services->getWANObjectCache(),
 			$services->getTitleParser(),
 			$growthServices->getReadingRecommendationsSearcher(),
+			$growthServices->getReadingRecommendationsCachePolicy(),
 			$growthServices->getLogger()
 		);
 	},
@@ -1017,7 +1030,8 @@ return [
 			$services->getWANObjectCache(),
 			$growthServices->getInterestArticlesLookup(),
 			$growthServices->getReadingRecommendationsFeaturedArticlePool(),
-			$growthServices->getReadingRecommendationsSearcher()
+			$growthServices->getReadingRecommendationsSearcher(),
+			$growthServices->getReadingRecommendationsCachePolicy()
 		);
 	},
 

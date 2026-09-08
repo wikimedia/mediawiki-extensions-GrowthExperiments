@@ -6,8 +6,6 @@ namespace GrowthExperiments\ReadingRecommendations;
 
 use DateTimeImmutable;
 use DateTimeZone;
-use MediaWiki\Config\ServiceOptions;
-use MediaWiki\MainConfigNames;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -18,21 +16,18 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class WikiDay {
 
-	public const CONSTRUCTOR_OPTIONS = [
-		MainConfigNames::Localtimezone,
-	];
-
 	private function __construct(
 		private readonly string $date,
 		private readonly int $dayNumber
 	) {
 	}
 
-	public static function today( ServiceOptions $options ): self {
-		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$timezone = $options->get( MainConfigNames::Localtimezone ) ?? 'UTC';
+	/**
+	 * @param string|null $timezone Value of $wgLocaltimezone; null means UTC.
+	 */
+	public static function today( ?string $timezone ): self {
 		$now = ( new DateTimeImmutable( '@' . ConvertibleTimestamp::time() ) )
-			->setTimezone( new DateTimeZone( $timezone ) );
+			->setTimezone( new DateTimeZone( $timezone ?? 'UTC' ) );
 		return new self(
 			$now->format( 'Y-m-d' ),
 			intdiv( $now->getTimestamp() + $now->getOffset(), 86400 )

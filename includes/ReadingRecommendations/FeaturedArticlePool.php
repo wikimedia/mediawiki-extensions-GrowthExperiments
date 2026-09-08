@@ -33,6 +33,7 @@ class FeaturedArticlePool {
 		private readonly WANObjectCache $wanCache,
 		private readonly TitleParser $titleParser,
 		private readonly ReadingRecommendationsSearcher $searcher,
+		private readonly ReadingRecommendationsCachePolicy $cachePolicy,
 		private readonly LoggerInterface $logger
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
@@ -86,7 +87,7 @@ class FeaturedArticlePool {
 					'error' => $searchResult->isError(),
 				];
 			},
-			[ 'version' => self::CACHE_VERSION ]
+			$this->cachePolicy->getCacheOptions( self::CACHE_VERSION )
 		);
 		if ( $result['error'] ) {
 			return ReadingRecommendationsSearchResult::newError();

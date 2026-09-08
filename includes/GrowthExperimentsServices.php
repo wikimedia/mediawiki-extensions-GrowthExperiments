@@ -70,6 +70,7 @@ use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
 use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
 use GrowthExperiments\ReadingRecommendations\InterestArticlesLookup;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsCachePolicy;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
@@ -298,6 +299,10 @@ class GrowthExperimentsServices {
 
 	public function getInterestArticlesLookup(): InterestArticlesLookup {
 		return $this->coreServices->get( 'GrowthExperimentsInterestArticlesLookup' );
+	}
+
+	public function getReadingRecommendationsCachePolicy(): ReadingRecommendationsCachePolicy {
+		return $this->coreServices->get( 'GrowthExperimentsReadingRecommendationsCachePolicy' );
 	}
 
 	public function getReadingRecommendationsFeaturedArticlePool(): FeaturedArticlePool {

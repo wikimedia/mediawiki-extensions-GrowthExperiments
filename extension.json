@@ -2873,6 +2873,10 @@
 			"description": "Full title of the category the reading recommendations general pool draws from, e.g. 'Category:Featured articles'. When empty, the pool is empty.",
 			"value": ""
 		},
+		"GEReadingRecommendationsCacheEnabled": {
+			"description": "Reuse the daily reading recommendations caches. Set to false to recompute on every request; that is only honored when GEDeveloperSetup is also enabled, so a production wiki cannot turn the caches off. Every page view then runs the searches again.",
+			"value": true
+		},
 		"GEHomepageSuggestedEditsEnabled": {
 			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",
 			"value": true

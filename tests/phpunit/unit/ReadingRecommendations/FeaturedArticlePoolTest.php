@@ -5,11 +5,11 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsCachePolicy;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearchResult;
 use GrowthExperiments\ReadingRecommendations\WikiDay;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\MainConfigNames;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\Title\TitleValue;
@@ -123,23 +123,54 @@ class FeaturedArticlePoolTest extends MediaWikiUnitTestCase {
 		$this->assertPoolResult( [], false, $pool->getPool( $this->getDay() ) );
 	}
 
+	public function testCacheDisabledSettingIgnoredWithoutDeveloperSetup() {
+		ConvertibleTimestamp::setFakeTime( '2026-09-01T12:00:00Z' );
+		$searcher = $this->createMock( ReadingRecommendationsSearcher::class );
+		$searcher->expects( $this->once() )
+			->method( 'findFeatured' )
+			->willReturn( ReadingRecommendationsSearchResult::newSuccess(
+				[ new TitleValue( NS_MAIN, 'F1' ) ]
+			) );
+		$pool = $this->getPool( $searcher, cacheEnabled: false, developerSetup: false );
+
+		$expected = [ new TitleValue( NS_MAIN, 'F1' ) ];
+		$this->assertPoolResult( $expected, false, $pool->getPool( $this->getDay() ) );
+		$this->assertPoolResult( $expected, false, $pool->getPool( $this->getDay() ) );
+	}
+
+	public function testCacheDisabledSearchesEveryCall() {
+		ConvertibleTimestamp::setFakeTime( '2026-09-01T12:00:00Z' );
+		$searcher = $this->createMock( ReadingRecommendationsSearcher::class );
+		$searcher->expects( $this->exactly( 2 ) )
+			->method( 'findFeatured' )
+			->willReturn( ReadingRecommendationsSearchResult::newSuccess(
+				[ new TitleValue( NS_MAIN, 'F1' ) ]
+			) );
+		$pool = $this->getPool( $searcher, cacheEnabled: false );
+
+		$expected = [ new TitleValue( NS_MAIN, 'F1' ) ];
+		$this->assertPoolResult( $expected, false, $pool->getPool( $this->getDay() ) );
+		$this->assertPoolResult( $expected, false, $pool->getPool( $this->getDay() ) );
+	}
+
 	private function getDay(): WikiDay {
-		return WikiDay::today( new ServiceOptions(
-			WikiDay::CONSTRUCTOR_OPTIONS,
-			[ MainConfigNames::Localtimezone => 'UTC' ]
-		) );
+		return WikiDay::today( 'UTC' );
 	}
 
 	/**
 	 * @param ReadingRecommendationsSearcher|MockObject $searcher
 	 * @param string $categoryConfig
 	 * @param WANObjectCache|null $wanCache
+	 * @param bool $cacheEnabled
+	 * @param bool $developerSetup
 	 * @return FeaturedArticlePool
 	 */
 	private function getPool(
 		$searcher,
 		string $categoryConfig = 'Category:Featured articles',
-		?WANObjectCache $wanCache = null
+		?WANObjectCache $wanCache = null,
+		bool $cacheEnabled = true,
+		bool $developerSetup = true
 	) {
 		$titleParser = $this->createMock( TitleParser::class );
 		// A mocked exception: the real constructor needs globals unit tests lack.
@@ -158,6 +189,13 @@ class FeaturedArticlePoolTest extends MediaWikiUnitTestCase {
 			$wanCache ?? new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 			$titleParser,
 			$searcher,
+			new ReadingRecommendationsCachePolicy( new ServiceOptions(
+				ReadingRecommendationsCachePolicy::CONSTRUCTOR_OPTIONS,
+				[
+					'GEReadingRecommendationsCacheEnabled' => $cacheEnabled,
+					'GEDeveloperSetup' => $developerSetup,
+				]
+			) ),
 			new NullLogger()
 		);
 	}

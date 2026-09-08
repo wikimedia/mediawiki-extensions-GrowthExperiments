@@ -10,6 +10,7 @@ recommendations experiment (T435396) and is off by default.
 | --- | --- | --- |
 | `$wgGEHomepageReadingRecommendationsEnabled` | `false` | Shows the module on Special:Homepage. |
 | `$wgGEHomepageReadingRecommendationsFeaturedCategory` | `""` | Full title of the category the general recommendations draw from, for example `Category:Featured articles`. Empty means no general recommendations. |
+| `$wgGEReadingRecommendationsCacheEnabled` | `true` | Reuse the daily caches. `false` recomputes on every request and is honored only when `$wgGEDeveloperSetup` is also `true`. |
 | `$wgGEReadingRecommendationsFixtureFile` | `null` | Path of a JSON file whose rows the module shows instead of computed recommendations. Honored only when `$wgGEDeveloperSetup` is also `true`. |
 
 ## Developing the UI without CirrusSearch
@@ -34,6 +35,10 @@ in your own fixture if your wiki uses a different article path. The sample
 articles may also need to be created or imported before their links resolve.
 
 Omitted `description`, `thumbnail`, and `relatedTo` fields default to null.
+
+When running the real pipeline locally, `$wgGEReadingRecommendationsCacheEnabled = false;`
+makes seeded content, configuration changes and interest edits show up
+immediately instead of after the daily rollover.
 
 ## Data the module exports
 
@@ -136,3 +141,8 @@ divided by the number of articles in the category.
 | Featured pool | wiki, date, category, pool size | everyone on the wiki | one day, five minutes after a failed search |
 | Related candidates | wiki, interest | everyone with that interest | one week, not cached after a failed search |
 | Recommendation list | wiki, date, hash of the interest list | users whose interest lists are identical and in the same order, so rarely more than one user | one day |
+
+Turning `$wgGEReadingRecommendationsCacheEnabled` off recomputes all three on
+every request, but since the picks depend only on the date and the interests,
+the result is identical unless the underlying pages, the category or the
+search configuration changed.
