@@ -2,17 +2,29 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use JsonException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\Logger\LoggerFactory;
+use UnexpectedValueException;
 
 /**
- * Placeholder for the reading recommendations module, which will show article
- * recommendations based on the user's interests.
+ * The reading recommendations module, which will show article recommendations
+ * based on the user's interests.
+ *
+ * The recommendations are exported through getJsData() for the Vue app and
+ * rendered as a plain list inside the mount div, so they show without
+ * JavaScript and before the app mounts. For now the only source is a fixture
+ * file named by GEReadingRecommendationsFixtureFile, read when GEDeveloperSetup
+ * is also enabled; see docs/ReadingRecommendations.md. The service that
+ * computes real recommendations comes with T436682.
  */
 class ReadingRecommendations extends BaseModule {
 
 	public const MODULE_ID = 'reading-recommendations';
+
+	private ?array $recommendations = null;
 
 	/**
 	 * No details view: the mobile tile shows the same list as desktop.
@@ -28,6 +40,19 @@ class ReadingRecommendations extends BaseModule {
 		Config $wikiConfig
 	) {
 		parent::__construct( self::MODULE_ID, $context, $wikiConfig );
+	}
+
+	/** @inheritDoc */
+	public function getJsData( $mode ) {
+		if ( !$this->supports( $mode ) ) {
+			return [];
+		}
+		// There is no details view, so skip BaseModule's overlay pre-render in
+		// mobile summary mode; it would render the list a second time.
+		return [
+			'recommendations' => $this->getRecommendations(),
+			'renderMode' => $mode,
+		];
 	}
 
 	/** @inheritDoc */
@@ -62,16 +87,35 @@ class ReadingRecommendations extends BaseModule {
 		return Html::rawElement(
 			'div',
 			[ 'id' => 'reading-recommendations-vue-root' ],
-			Html::element(
-				'h3',
-				[],
-				$this->getContext()->msg(
-					'growthexperiments-homepage-reading-recommendations-personalize-title'
-				)->text()
-			) .
-			Html::element(
+			$this->getListHtml() ?: (
+				Html::element(
+					'h3',
+					[],
+					$this->getContext()->msg(
+						'growthexperiments-homepage-reading-recommendations-personalize-title'
+					)->text()
+				) .
+				Html::element(
+					'p',
+					[],
+					$this->getContext()->msg(
+						'growthexperiments-homepage-reading-recommendations-personalize-text'
+					)->text()
+				)
+			)
+		);
+	}
+
+	/** @inheritDoc */
+	protected function getMobileSummaryBody() {
+		// The div becomes the mount point for the Vue app on the mobile summary
+		// tile. The id differs from the desktop one on purpose.
+		return Html::rawElement(
+			'div',
+			[ 'id' => 'reading-recommendations-vue-root--mobile' ],
+			$this->getListHtml() ?: Html::element(
 				'p',
-				[],
+				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
 				$this->getContext()->msg(
 					'growthexperiments-homepage-reading-recommendations-personalize-text'
 				)->text()
@@ -79,23 +123,125 @@ class ReadingRecommendations extends BaseModule {
 		);
 	}
 
-	/** @inheritDoc */
-	protected function getMobileSummaryBody() {
-		// The div becomes the mount point for the Vue app on the mobile summary tile.
-		// The id differs from the desktop one on purpose. On the mobile summary page
-		// BaseModule::getJsData() also pre-renders getBody() into the hidden overlay
-		// container, even for modules without a details view, so both are in the DOM
-		// at once. Once the body renders real content, override getJsData() to skip
-		// the overlay instead of rendering the list twice.
-		return Html::element(
-			'div',
-			[
-				'id' => 'reading-recommendations-vue-root--mobile',
-				'class' => 'growthexperiments-homepage-module-text-light',
-			],
-			$this->getContext()->msg(
-				'growthexperiments-homepage-reading-recommendations-personalize-text'
-			)->text()
+	/**
+	 * The recommendations as a plain list, or an empty string when there are none.
+	 */
+	private function getListHtml(): string {
+		$recommendations = $this->getRecommendations();
+		if ( !$recommendations ) {
+			return '';
+		}
+		$itemsHtml = '';
+		foreach ( $recommendations as $item ) {
+			$itemsHtml .= $this->getListItemHtml( $item );
+		}
+		return Html::rawElement(
+			'ul',
+			[ 'class' => 'growthexperiments-reading-recommendations-list' ],
+			$itemsHtml
 		);
+	}
+
+	private function getListItemHtml( array $item ): string {
+		$html = '';
+		if ( $item['thumbnail'] ) {
+			$html .= Html::element( 'img', [
+				'src' => $item['thumbnail']['url'],
+				'width' => $item['thumbnail']['width'],
+				'height' => $item['thumbnail']['height'],
+				'alt' => '',
+			] );
+		}
+		$html .= Html::element( 'a', [ 'href' => $item['url'] ], $item['title'] );
+		if ( $item['description'] !== null ) {
+			$html .= Html::element(
+				'p',
+				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
+				$item['description']
+			);
+		}
+		if ( $item['relatedTo'] !== null ) {
+			$html .= Html::element(
+				'p',
+				[ 'class' => 'growthexperiments-reading-recommendations-list-related-to' ],
+				$this->getContext()->msg(
+					'growthexperiments-homepage-reading-recommendations-related-to'
+				)->params( $item['relatedTo'] )->text()
+			);
+		}
+		return Html::rawElement(
+			'li',
+			[ 'class' => 'growthexperiments-reading-recommendations-list-item' ],
+			$html
+		);
+	}
+
+	/**
+	 * The recommendations to show, as the rows the Vue app receives.
+	 *
+	 * @return array[]
+	 */
+	private function getRecommendations(): array {
+		$this->recommendations ??= $this->loadFixture();
+		return $this->recommendations;
+	}
+
+	/**
+	 * The rows from the developer fixture file, or an empty list when unavailable or invalid.
+	 *
+	 * @return array[]
+	 */
+	private function loadFixture(): array {
+		$config = $this->getContext()->getConfig();
+		$path = $config->get( 'GEReadingRecommendationsFixtureFile' );
+		if ( !$path || !$config->get( 'GEDeveloperSetup' ) || !is_readable( $path ) ) {
+			return [];
+		}
+		try {
+			$json = file_get_contents( $path );
+			if ( $json === false ) {
+				throw new UnexpectedValueException( 'Could not read the fixture file.' );
+			}
+			$items = json_decode( $json, true, 512, JSON_THROW_ON_ERROR );
+			if ( !is_array( $items ) || !array_is_list( $items ) ) {
+				throw new UnexpectedValueException( 'Expected a list of recommendations.' );
+			}
+			foreach ( $items as $index => $item ) {
+				if ( !is_array( $item ) ||
+					!is_string( $item['title'] ?? null ) ||
+					!is_string( $item['url'] ?? null ) ||
+					!is_int( $item['pageId'] ?? null )
+				) {
+					throw new UnexpectedValueException(
+						"Recommendation $index requires a string title and url, and an integer pageId."
+					);
+				}
+				$item += [ 'description' => null, 'thumbnail' => null, 'relatedTo' => null ];
+				foreach ( [ 'description', 'relatedTo' ] as $field ) {
+					if ( $item[$field] !== null && !is_string( $item[$field] ) ) {
+						throw new UnexpectedValueException( "Recommendation $index: $field must be a string or null." );
+					}
+				}
+				$thumbnail = $item['thumbnail'];
+				if ( $thumbnail !== null && (
+					!is_array( $thumbnail ) ||
+					!is_string( $thumbnail['url'] ?? null ) ||
+					!is_int( $thumbnail['width'] ?? null ) ||
+					!is_int( $thumbnail['height'] ?? null )
+				) ) {
+					throw new UnexpectedValueException(
+						"Recommendation $index: thumbnail requires a string url and integer width and height."
+					);
+				}
+				$items[$index] = $item;
+			}
+			return $items;
+		} catch ( JsonException | UnexpectedValueException $e ) {
+			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+				'Unable to load reading recommendations fixture {path}: {error}',
+				[ 'path' => $path, 'error' => $e->getMessage() ]
+			);
+			return [];
+		}
 	}
 }
