@@ -68,6 +68,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
@@ -289,6 +291,14 @@ class GrowthExperimentsServices {
 
 	public function getQuestionPosterFactory(): QuestionPosterFactory {
 		return $this->coreServices->get( 'GrowthExperimentsQuestionPosterFactory' );
+	}
+
+	public function getReadingRecommendationsFormatter(): ReadingRecommendationsFormatter {
+		return $this->coreServices->get( 'GrowthExperimentsReadingRecommendationsFormatter' );
+	}
+
+	public function getReadingRecommendationsService(): ReadingRecommendationsService {
+		return $this->coreServices->get( 'GrowthExperimentsReadingRecommendationsService' );
 	}
 
 	public function getReassignMenteesFactory(): ReassignMenteesFactory {

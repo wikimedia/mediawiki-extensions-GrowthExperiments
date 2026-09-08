@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
 use JsonException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
@@ -13,17 +15,21 @@ use UnexpectedValueException;
  * The reading recommendations module, which will show article recommendations
  * based on the user's interests.
  *
- * The recommendations are exported through getJsData() for the Vue app and
- * rendered as a plain list inside the mount div, so they show without
- * JavaScript and before the app mounts. For now the only source is a fixture
- * file named by GEReadingRecommendationsFixtureFile, read when GEDeveloperSetup
- * is also enabled; see docs/ReadingRecommendations.md. The service that
- * computes real recommendations comes with T436682.
+ * The recommendations come from ReadingRecommendationsService and are put
+ * into the export shape by ReadingRecommendationsFormatter. They are exported
+ * through getJsData() for the Vue app and rendered as a plain list inside the
+ * mount div, so they show without JavaScript and before the app mounts.
+ *
+ * A fixture file named by GEReadingRecommendationsFixtureFile replaces the
+ * service output when GEDeveloperSetup is also enabled; see
+ * docs/ReadingRecommendations.md.
  */
 class ReadingRecommendations extends BaseModule {
 
 	public const MODULE_ID = 'reading-recommendations';
 
+	private ReadingRecommendationsService $recommendationsService;
+	private ReadingRecommendationsFormatter $formatter;
 	private ?array $recommendations = null;
 
 	/**
@@ -37,9 +43,13 @@ class ReadingRecommendations extends BaseModule {
 
 	public function __construct(
 		IContextSource $context,
-		Config $wikiConfig
+		Config $wikiConfig,
+		ReadingRecommendationsService $recommendationsService,
+		ReadingRecommendationsFormatter $formatter
 	) {
 		parent::__construct( self::MODULE_ID, $context, $wikiConfig );
+		$this->recommendationsService = $recommendationsService;
+		$this->formatter = $formatter;
 	}
 
 	/** @inheritDoc */
@@ -182,7 +192,9 @@ class ReadingRecommendations extends BaseModule {
 	 * @return array[]
 	 */
 	private function getRecommendations(): array {
-		$this->recommendations ??= $this->loadFixture();
+		$this->recommendations ??= $this->loadFixture() ?: $this->formatter->format(
+			$this->recommendationsService->getRecommendations( $this->getContext()->getUser() )
+		);
 		return $this->recommendations;
 	}
 

@@ -104,6 +104,8 @@ use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
@@ -950,6 +952,24 @@ return [
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' )
 		);
+	},
+
+	'GrowthExperimentsReadingRecommendationsFormatter' => static function (
+		MediaWikiServices $services
+	): ReadingRecommendationsFormatter {
+		return new ReadingRecommendationsFormatter(
+			$services->getTitleFactory(),
+			$services->getLinkBatchFactory(),
+			$services->getSearchResultThumbnailProvider(),
+			$services->getTitleFormatter(),
+			$services->hasService( 'WikibaseClient.DescriptionLookup' )
+				? $services->getService( 'WikibaseClient.DescriptionLookup' )
+				: null
+		);
+	},
+
+	'GrowthExperimentsReadingRecommendationsService' => static function (): ReadingRecommendationsService {
+		return new ReadingRecommendationsService();
 	},
 
 	'GrowthExperimentsReassignMenteesFactory' => static function (

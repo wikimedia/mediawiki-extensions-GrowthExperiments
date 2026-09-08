@@ -4,9 +4,11 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\HomepageModules\ReadingRecommendations;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialHomepage;
 use InvalidArgumentException;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Http\MWHttpRequest;
@@ -76,11 +78,24 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	public function testReadingRecommendationsModuleRendersWhenEnabled() {
 		$this->overrideConfigValue( 'GEHomepageReadingRecommendationsEnabled', true );
 		$user = $this->enableHomepageForTesting();
-		$response = $this->executeSpecialPage( '', null, null, $user );
+		$context = RequestContext::getMain();
+		$context->setAuthority( $user );
+		$context->setLanguage( 'qqx' );
+		$response = $this->executeSpecialPage( context: $context );
 		$this->assertStringContainsString(
 			'growthexperiments-homepage-module-reading-recommendations',
 			$response[0]
 		);
+		// The Vue mount div renders even when the recommendations list is
+		// empty, which it is here: the placeholder service returns none.
+		$this->assertStringContainsString( 'reading-recommendations-vue-root', $response[0] );
+
+		$jsConfigVars = $context->getOutput()->getJsConfigVars();
+		$this->assertArrayHasKey( 'homepagemodules', $jsConfigVars );
+		$homepageModules = $jsConfigVars['homepagemodules'];
+		$this->assertArrayHasKey( ReadingRecommendations::MODULE_ID, $homepageModules );
+		$readingRecommendations = $homepageModules[ReadingRecommendations::MODULE_ID];
+		$this->assertSame( [], $readingRecommendations['recommendations'] );
 	}
 
 	/**

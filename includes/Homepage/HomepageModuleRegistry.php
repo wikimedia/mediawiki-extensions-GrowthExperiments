@@ -225,7 +225,9 @@ class HomepageModuleRegistry {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				return new ReadingRecommendations(
 					$context,
-					$growthServices->getGrowthWikiConfig()
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getReadingRecommendationsService(),
+					$growthServices->getReadingRecommendationsFormatter()
 				);
 			},
 		];

@@ -3,9 +3,12 @@
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\HomepageModules\ReadingRecommendations;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
 use OOUI\Theme;
@@ -129,6 +132,40 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 		$this->assertArrayNotHasKey( 'overlay', $data );
 	}
 
+	/**
+	 * @dataProvider provideRenderModes
+	 */
+	public function testFormatterOutputIsRenderedAndExported( string $mode ) {
+		$rows = self::getFixture();
+		$module = $this->getModule( null, false, $rows );
+
+		$html = $module->render( $mode );
+		$data = $module->getJsData( $mode );
+
+		$this->assertStringContainsString( 'growthexperiments-reading-recommendations-list', $html );
+		$this->assertStringContainsString( htmlspecialchars( $rows[0]['title'] ), $html );
+		$this->assertSame( $rows, $data['recommendations'] );
+	}
+
+	public function testFixtureFileReplacesFormatterOutput() {
+		$module = $this->getModule( self::FIXTURE_PATH, true, [ [ 'title' => 'From the formatter' ] ] );
+
+		$data = $module->getJsData( ReadingRecommendations::RENDER_DESKTOP );
+
+		$this->assertSame( self::getFixture(), $data['recommendations'] );
+	}
+
+	public function testRecommendationsAreComputedOnce() {
+		$service = $this->createMock( ReadingRecommendationsService::class );
+		$service->expects( $this->once() )
+			->method( 'getRecommendations' )
+			->willReturn( [] );
+		$module = $this->getModule( null, false, [], $service );
+
+		$module->render( ReadingRecommendations::RENDER_DESKTOP );
+		$module->getJsData( ReadingRecommendations::RENDER_DESKTOP );
+	}
+
 	public function testFixtureExportsEveryCardState() {
 		$data = $this->getModule( self::FIXTURE_PATH, true )->getJsData( ReadingRecommendations::RENDER_DESKTOP );
 
@@ -214,9 +251,18 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 		$this->assertStringNotContainsString( 'growthexperiments-homepage-module-header-nav-icon', $html );
 	}
 
+	/**
+	 * @param string|null $fixtureFile
+	 * @param bool $developerSetup
+	 * @param array[] $formattedRows What the formatter mock returns
+	 * @param ReadingRecommendationsService|null $service
+	 * @return ReadingRecommendations
+	 */
 	private function getModule(
 		?string $fixtureFile = null,
-		bool $developerSetup = false
+		bool $developerSetup = false,
+		array $formattedRows = [],
+		?ReadingRecommendationsService $service = null
 	): ReadingRecommendations {
 		$contextMock = $this->createMock( IContextSource::class );
 		$contextMock->method( 'getOutput' )
@@ -228,7 +274,17 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 			] ) );
 		$contextMock->method( 'msg' )
 			->willReturnCallback( fn ( string $key ) => $this->getMockMessage( $key ) );
-		return new ReadingRecommendations( $contextMock, new HashConfig( [] ) );
+		$contextMock->method( 'getUser' )
+			->willReturn( $this->createMock( User::class ) );
+
+		if ( !$service ) {
+			$service = $this->createMock( ReadingRecommendationsService::class );
+			$service->method( 'getRecommendations' )->willReturn( [] );
+		}
+		$formatter = $this->createMock( ReadingRecommendationsFormatter::class );
+		$formatter->method( 'format' )->willReturn( $formattedRows );
+
+		return new ReadingRecommendations( $contextMock, new HashConfig( [] ), $service, $formatter );
 	}
 
 	private function createFixtureFile( string $json ): string {

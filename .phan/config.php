@@ -20,6 +20,7 @@ $cfg['directory_list'] = array_merge(
 		'../../extensions/TestKitchen',
 		'../../extensions/Thanks',
 		'../../extensions/VisualEditor',
+		'../../extensions/Wikibase/client',
 		'../../extensions/WikimediaMessages',
 		'../../skins/MinervaNeue',
 	]
@@ -43,6 +44,7 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 		'../../extensions/TestKitchen',
 		'../../extensions/Thanks',
 		'../../extensions/VisualEditor',
+		'../../extensions/Wikibase/client',
 		'../../extensions/WikimediaMessages',
 		'../../skins/MinervaNeue',
 	]

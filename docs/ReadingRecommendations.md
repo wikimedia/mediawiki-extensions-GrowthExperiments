@@ -50,5 +50,8 @@ show without JavaScript and before the app mounts. Each row has:
 | `url` | string | Link to the article. |
 | `pageId` | integer | |
 
+`ReadingRecommendationsFormatter` builds these rows, and its integration test
+asserts that they match the committed fixture, so the two cannot drift apart.
+
 The service that computes real recommendations from the user's interests and
 the wiki's Featured articles is tracked in T436682.
