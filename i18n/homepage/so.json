@@ -603,6 +603,9 @@
 	"echo-pref-tooltip-ge-newcomer": "I ogeysii hawlaha isticmaalayaasha cusub iyo astaamo kale oo loogu talagalay in lagu caawiyo isticmaalayaasha cusub.",
 	"growthexperiments-homepage-community-updates-header": "Cusboonaysiinta bulshada",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Wax badan baro",
+	"growthexperiments-homepage-reading-recommendations-header": "Akhrisyada maalinlaha ah",
+	"growthexperiments-homepage-reading-recommendations-personalize-title": "Shakhsiyayso akhrisyadaada maalinlaha ah",
+	"growthexperiments-homepage-reading-recommendations-personalize-text": "Dooro mowduucyada aad xiisaynayso si loo shakhsiyeeyo talooyinka akhriskaaga maalinlaha ah.",
 	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|tifatir|tifatirro}}, hambalyo! Maqaallada {{GENDER:$2|aad}} wax ka beddeshay waxay heleen $3 {{PLURAL:$3|aragti|aragtiyo}} dhawaan. Tafatirrada la soo jeediyay ee la heli karo way is beddeleen.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Isku day tafatirro kale"
 }

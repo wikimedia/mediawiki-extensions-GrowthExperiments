@@ -498,5 +498,8 @@
 	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "Prova modifiche suggerite",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Fai una modifica suggerita",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Ulteriori informazioni",
+	"growthexperiments-homepage-reading-recommendations-header": "Letture quotidiane",
+	"growthexperiments-homepage-reading-recommendations-personalize-title": "Personalizza le tue letture quotidiane",
+	"growthexperiments-homepage-reading-recommendations-personalize-text": "Seleziona gli argomenti di tuo interesse per personalizzare i suggerimenti di lettura giornalieri.",
 	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|modifica|modifiche}}, congratulazioni! Le pagine che {{GENDER:$2|hai}} modificato hanno ricevuto $3 {{PLURAL:$3|visualizzazione|visualizzazioni}} di recente. Le modifiche suggerite disponibili sono cambiate."
 }

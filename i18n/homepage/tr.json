@@ -29,6 +29,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Merhaba}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Yeni kullanıcı anasayfası",
 	"growthexperiments-homepage-tab": "Anasayfa",
 	"tooltip-pt-homepage": "{{GENDER:|Sizin}} ana sayfanız",
 	"prefs-homepage": "Yeni gelen düzenleyici özellikleri",

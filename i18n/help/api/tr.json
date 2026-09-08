@@ -3,6 +3,7 @@
 		"authors": [
 			"BaRaN6161 TURK",
 			"Hedda",
+			"Leo",
 			"ToprakM"
 		]
 	},
@@ -15,5 +16,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Danışma masasına sorun\" paneli (eski ad)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Yeni gelen ana sayfadaki \"Danışmanınıza\" paneli (eski ad)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Seçiliyse, soruya dahil etmek için ilgili başlık.",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Soru sormak için giriş yapmalısınız."
+	"apierror-mustbeloggedin-helppanelquestionposter": "Soru sormak için giriş yapmalısınız.",
+	"apierror-mustbementored-mentorshipmodulequestionposter": "Eğer bir danışmanınız yoksa, danışmanınıza soru soramazsınız."
 }

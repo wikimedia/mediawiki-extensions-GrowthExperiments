@@ -634,6 +634,9 @@
 	"echo-pref-tooltip-ge-newcomer": "Benachrichtigen Sie mich über Aufgaben für Neueinsteiger und andere Funktionen, die neuen Benutzern helfen sollen.",
 	"growthexperiments-homepage-community-updates-header": "Community-Updates",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Weitere Informationen",
+	"growthexperiments-homepage-reading-recommendations-header": "Tägliche Lektüre",
+	"growthexperiments-homepage-reading-recommendations-personalize-title": "Personalisiere deine täglichen Lektüre",
+	"growthexperiments-homepage-reading-recommendations-personalize-text": "Wähle Interessensgebiete aus, um deine täglichen Lesevorschläge zu personalisieren.",
 	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}}, Glückwunsch! Artikel, die {{GENDER:$2|du}} bearbeitet hast, wurden kürzlich {{PLURAL:$3|einmal|$3 Mal}} aufgerufen. Verfügbare Bearbeitungsvorschläge haben sich geändert.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Probiere andere Änderungen aus"
 }
