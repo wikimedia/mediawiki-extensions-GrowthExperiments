@@ -209,7 +209,7 @@ class SpecialHomepage extends SpecialPage {
 		$email = $user->getEmail();
 		if ( $email !== '' ) {
 			$this->experimentManager
-				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AA_TEST )
+				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST )
 				->send( 'user_has_email' );
 		}
 	}

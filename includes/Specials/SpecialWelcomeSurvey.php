@@ -256,7 +256,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 
 		if ( $hasReasonResponse && $hasEditingResponse ) {
 			$this->experimentManager
-				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AA_TEST )
+				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST )
 				->send( 'welcome_survey_account_setup_submitted_complete' );
 		}
 	}

@@ -16,7 +16,7 @@
 
 	function instrumentWelcomeSurvey( languageSelectorWidgetInstance = null ) {
 		mw.loader.using( [ 'ext.testKitchen', 'ext.wikimediaEvents.testKitchen' ] ).then( async () => {
-			const experiment = await mw.tk.getExperiment( 'de-1-3-1-specialhomepage-onboarding-aa-test' );
+			const experiment = await mw.tk.getExperiment( 'de-1-3-1-specialhomepage-onboarding-ab-test' );
 			experiment.sendExposure();
 
 			let started = false;
