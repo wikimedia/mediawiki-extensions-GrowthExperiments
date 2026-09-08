@@ -21,6 +21,17 @@ installMwGlobalStub();
 const appSelect = document.querySelector( '.app-selector' );
 let currentApp:( App|null ) = null;
 
+const mockExperiment = {
+	sendExposure: () => {
+		// eslint-disable-next-line no-console
+		console.log( 'exposure sent' );
+	},
+	send: ( action: string, interActionData = {}, contextualAttributes = [] ) => {
+		// eslint-disable-next-line no-console
+		console.log( 'experiment event sent:', { action, interActionData, contextualAttributes } );
+	},
+};
+
 const bootstrap = (): void => {
 	const createDemoApp = ( app: Component ): App<Element> => {
 		const devApp = createApp( app, {
@@ -41,6 +52,7 @@ const bootstrap = (): void => {
 		devApp.provide( 'mw.hook', mwHookMock );
 		devApp.provide( 'mw.track', mwTrackMock );
 		devApp.provide( 'mwApi', mwForeignApiMock );
+		devApp.provide( 'experiment', mockExperiment );
 
 		devApp.mount( '#app' );
 

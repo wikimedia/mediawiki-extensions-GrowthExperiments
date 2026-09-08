@@ -147,7 +147,7 @@
 </template>
 
 <script>
-const { defineComponent, ref } = require( 'vue' );
+const { defineComponent, ref, inject, onMounted, watch } = require( 'vue' );
 const { storeToRefs } = require( 'pinia' );
 const { CdxDialog, CdxButton, CdxCard, CdxIcon } = require( '@wikimedia/codex' );
 const { cdxIconPrevious, cdxIconClose } = require( './codex-icons.json' );
@@ -167,25 +167,87 @@ module.exports = defineComponent( {
 	setup() {
 		const store = useAccountSetupStore();
 		const { step, chips, modulePreset } = storeToRefs( store );
+		const experiment = inject( 'experiment' );
+
+		onMounted( () => {
+			experiment.sendExposure();
+			experiment.send(
+				'impression',
+				{
+					// eslint-disable-next-line camelcase
+					element_friendly_name: 'WelcomeSurvey/AccountSetup skip button',
+				},
+			);
+		} );
 
 		async function saveAndGoToHome() {
+			experiment.send(
+				'click',
+				{
+					// eslint-disable-next-line camelcase
+					element_friendly_name: 'WelcomeSurvey/AccountSetup save button',
+				},
+			);
+			if ( store.modulePreset !== 'skipped' && chips.value.length >= 3 ) {
+				experiment.send( 'welcome_survey_account_setup_submitted_complete' );
+			}
 			await store.saveInterestArticles();
 			window.location.reload();
 		}
 
 		async function skipAndGoToHome() {
+			experiment.send(
+				'click',
+				{
+					// eslint-disable-next-line camelcase
+					element_friendly_name: 'WelcomeSurvey/AccountSetup skip button',
+				},
+			);
 			await store.saveInitialModulePreset();
 			window.location.reload();
 		}
+
+		let accountSetupStartedSent = false;
 
 		/**
 		 * @param {'both'|'editing'|'reading'|'skipped'} accountType
 		 */
 		function accountTypeClicked( accountType ) {
+			if ( accountType !== 'skipped' && !accountSetupStartedSent ) {
+				accountSetupStartedSent = true;
+				experiment.send(
+					'welcome_survey_account_setup_started',
+				);
+			}
 			modulePreset.value = accountType;
 			store.saveInitialModulePreset();
 			store.stepForward();
 		}
+
+		function updateChips( newChips ) {
+			if ( !accountSetupStartedSent ) {
+				accountSetupStartedSent = true;
+				experiment.send(
+					'welcome_survey_account_setup_started',
+				);
+			}
+			store.updateChips( newChips );
+		}
+
+		let saveButtonImpressionSent = false;
+		watch( step, ( newStep ) => {
+			if ( newStep === 2 && !saveButtonImpressionSent ) {
+				saveButtonImpressionSent = true;
+				experiment.send(
+					'impression',
+					{
+						// eslint-disable-next-line camelcase
+						element_friendly_name: 'WelcomeSurvey/AccountSetup save button',
+					},
+				);
+
+			}
+		} );
 
 		const open = ref( true );
 
@@ -195,7 +257,7 @@ module.exports = defineComponent( {
 		return {
 			open,
 			chips,
-			updateChips: store.updateChips,
+			updateChips,
 			goToNextScreen: store.stepForward,
 			goToPreviousScreen: store.stepBack,
 			step,
