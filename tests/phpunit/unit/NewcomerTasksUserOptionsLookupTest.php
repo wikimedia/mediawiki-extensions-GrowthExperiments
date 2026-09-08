@@ -19,15 +19,10 @@ use MediaWikiUnitTestCase;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass \GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup
+ * @covers \GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup
  */
 class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @covers ::getTopics
-	 * @covers ::getTaskTypeFilter
-	 * @covers ::getJsonListOption
-	 */
 	public function testSuggest() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
 		$user2 = new UserIdentityValue( 2, 'User2' );
@@ -78,11 +73,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
 	}
 
-	/**
-	 * @covers ::getTaskTypeFilter
-	 * @covers ::areImageRecommendationsEnabled
-	 * @covers ::filterTaskTypes
-	 */
 	public function testImageRecommendationAbTest() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
 		$user2 = new UserIdentityValue( 2, 'User2' );
@@ -125,11 +115,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [ 'copyedit', 'image-recommendation' ], $lookup->getTaskTypeFilter( $user4 ) );
 	}
 
-	/**
-	 * @covers ::getTaskTypeFilter
-	 * @covers ::areSectionImageRecommendationsEnabled
-	 * @covers ::filterTaskTypes
-	 */
 	public function testSectionImageRecommendationAbTest() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
 		$user2 = new UserIdentityValue( 2, 'User2' );
@@ -163,9 +148,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [ 'copyedit', 'section-image-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
 	}
 
-	/**
-	 * @covers ::getDefaultTaskTypes
-	 */
 	public function testGetDefaultTaskTypes() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
 		$userOptionsLookup = new StaticUserOptionsLookup( [
@@ -193,10 +175,6 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
 	}
 
-	/**
-	 * @covers ::getTaskTypeFilter
-	 * @covers ::getDefaultTaskTypes
-	 */
 	public function testCommunityConfiguration() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
 		$user2 = new UserIdentityValue( 2, 'User2' );
@@ -224,11 +202,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	 * A conversion-map fallback target may not be configured on the wiki. When Revise Tone is
 	 * disabled, "revise-tone" converts to "copyedit"; if "copyedit" is not a configured task
 	 * type, convertTaskTypes() must not emit it (it would later fatal on a null dereference in
-	 * LevelingUpManager::getTaskTypesGroupedByDifficulty()). Regression test for T431668.
-	 * @covers ::convertTaskTypes
-	 * @covers ::filterNonExistentTaskTypes
-	 * @covers ::getConversionMap
-	 * @covers ::taskTypeOrFalse
+	 * LevelingUpManager::getTaskTypesGroupedByDifficulty()). The link-recommendation => links
+	 * fallback behaves the same way. Regression test for T431668.
 	 */
 	public function testConvertTaskTypesFiltersNonExistentFallback() {
 		$user = new UserIdentityValue( 1, 'User1' );
@@ -240,28 +215,37 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$reviseTone = ReviseToneTaskTypeHandler::TASK_TYPE_ID;
+		$linkRecommendation = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
 
-		// "copyedit" is not configured here, so the revise-tone => copyedit fallback resolves
-		// to a task type that does not exist: it must be dropped, not returned.
+		// Neither "copyedit" nor "links" is configured here, so both fallbacks resolve to a task
+		// type that does not exist: they must be dropped, not returned.
 		$lookupWithout = new NewcomerTasksUserOptionsLookup(
-			new StaticUserOptionsLookup( [] ), $config, $this->getConfigurationLoader( [ $reviseTone ] )
+			new StaticUserOptionsLookup( [] ), $config,
+			$this->getConfigurationLoader( [ $reviseTone, $linkRecommendation ] )
 		);
 		$lookupWithoutWrapper = TestingAccessWrapper::newFromObject( $lookupWithout );
-		$this->assertFalse( $lookupWithoutWrapper->getConversionMap( $user )[$reviseTone] );
-		$this->assertSame( [], $lookupWithout->convertTaskTypes( [ $reviseTone ], $user ) );
+		$mapWithout = $lookupWithoutWrapper->getConversionMap( $user );
+		$this->assertFalse( $mapWithout[$reviseTone] );
+		$this->assertFalse( $mapWithout[$linkRecommendation] );
+		$this->assertSame(
+			[], $lookupWithout->convertTaskTypes( [ $reviseTone, $linkRecommendation ], $user )
+		);
 
-		// When "copyedit" is configured, the fallback resolves and is returned.
+		// When "copyedit" and "links" are configured, the fallbacks resolve and are returned.
 		$lookupWith = new NewcomerTasksUserOptionsLookup(
-			new StaticUserOptionsLookup( [] ), $config, $this->getConfigurationLoader( [ 'copyedit', $reviseTone ] )
+			new StaticUserOptionsLookup( [] ), $config,
+			$this->getConfigurationLoader( [ 'copyedit', 'links', $reviseTone, $linkRecommendation ] )
 		);
 		$lookupWithWrapper = TestingAccessWrapper::newFromObject( $lookupWith );
-		$this->assertSame( 'copyedit', $lookupWithWrapper->getConversionMap( $user )[$reviseTone] );
-		$this->assertSame( [ 'copyedit' ], $lookupWith->convertTaskTypes( [ $reviseTone ], $user ) );
+		$mapWith = $lookupWithWrapper->getConversionMap( $user );
+		$this->assertSame( 'copyedit', $mapWith[$reviseTone] );
+		$this->assertSame( 'links', $mapWith[$linkRecommendation] );
+		$this->assertSame(
+			[ 'copyedit', 'links' ],
+			$lookupWith->convertTaskTypes( [ $reviseTone, $linkRecommendation ], $user )
+		);
 	}
 
-	/**
-	 * @covers ::getInterests
-	 */
 	public function testGetInterests() {
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [ AccountSetupHooks::INTEREST_ARTICLES_PROP => '[ "Coffee", "Tea" ]' ],

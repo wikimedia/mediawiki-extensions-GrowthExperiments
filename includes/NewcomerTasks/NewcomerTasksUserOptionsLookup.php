@@ -173,11 +173,8 @@ class NewcomerTasksUserOptionsLookup {
 
 	/**
 	 * Returns the given task type if it's available, or false if it is not.
-	 *
-	 * @param string $taskTypeId
-	 * @return string|false
 	 */
-	private function taskTypeOrFalse( string $taskTypeId ) {
+	private function taskTypeOrFalse( string $taskTypeId ): string|false {
 		return array_key_exists( $taskTypeId, $this->configurationLoader->getTaskTypes() ) ?
 			$taskTypeId : false;
 	}
