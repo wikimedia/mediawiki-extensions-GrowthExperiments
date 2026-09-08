@@ -2963,7 +2963,7 @@
 		},
 		"GELinkRecommendationsRefreshByIteratingThroughAllTitles": {
 			"description": "Whether to refresh link recommendations by iterating through all titles. Temporary config while rolling out this new system, see T386250",
-			"value": false
+			"value": true
 		},
 		"GETopicsMatchModeEnabled": {
 			"description": "Global ON/OFF switch for the topics match mode UI feature.",
