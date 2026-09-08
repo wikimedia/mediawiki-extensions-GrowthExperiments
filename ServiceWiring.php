@@ -104,7 +104,9 @@ use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
+use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
@@ -954,6 +956,19 @@ return [
 		);
 	},
 
+	'GrowthExperimentsReadingRecommendationsFeaturedArticlePool' => static function (
+		MediaWikiServices $services
+	): FeaturedArticlePool {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new FeaturedArticlePool(
+			new ServiceOptions( FeaturedArticlePool::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
+			$services->getWANObjectCache(),
+			$services->getTitleParser(),
+			$growthServices->getReadingRecommendationsSearcher(),
+			$growthServices->getLogger()
+		);
+	},
+
 	'GrowthExperimentsReadingRecommendationsFormatter' => static function (
 		MediaWikiServices $services
 	): ReadingRecommendationsFormatter {
@@ -968,8 +983,27 @@ return [
 		);
 	},
 
-	'GrowthExperimentsReadingRecommendationsService' => static function (): ReadingRecommendationsService {
-		return new ReadingRecommendationsService();
+	'GrowthExperimentsReadingRecommendationsSearcher' => static function (
+		MediaWikiServices $services
+	): ReadingRecommendationsSearcher {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$isCirrusSearchLoadedAndConfigured = ExtensionRegistry::getInstance()->isLoaded( 'CirrusSearch' )
+			&& $services->getSearchEngineConfig()->getSearchType() === 'CirrusSearch';
+		return new ReadingRecommendationsSearcher(
+			$isCirrusSearchLoadedAndConfigured ? $services->getSearchEngineFactory() : null,
+			$services->getStatsFactory(),
+			$growthServices->getLogger()
+		);
+	},
+
+	'GrowthExperimentsReadingRecommendationsService' => static function (
+		MediaWikiServices $services
+	): ReadingRecommendationsService {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new ReadingRecommendationsService(
+			new ServiceOptions( ReadingRecommendationsService::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
+			$growthServices->getReadingRecommendationsFeaturedArticlePool()
+		);
 	},
 
 	'GrowthExperimentsReassignMenteesFactory' => static function (

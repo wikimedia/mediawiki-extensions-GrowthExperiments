@@ -87,7 +87,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$response[0]
 		);
 		// The Vue mount div renders even when the recommendations list is
-		// empty, which it is here: the placeholder service returns none.
+		// empty, which it is here: no Featured category is configured.
 		$this->assertStringContainsString( 'reading-recommendations-vue-root', $response[0] );
 
 		$jsConfigVars = $context->getOutput()->getJsConfigVars();

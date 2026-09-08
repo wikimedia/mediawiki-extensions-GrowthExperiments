@@ -2869,6 +2869,10 @@
 			"description": "Path of a JSON file whose rows the reading recommendations module shows instead of computed recommendations, so the UI can be developed without CirrusSearch. Only honored when GEDeveloperSetup is also enabled. See docs/ReadingRecommendations.md.",
 			"value": null
 		},
+		"GEHomepageReadingRecommendationsFeaturedCategory": {
+			"description": "Full title of the category the reading recommendations general pool draws from, e.g. 'Category:Featured articles'. When empty, the pool is empty.",
+			"value": ""
+		},
 		"GEHomepageSuggestedEditsEnabled": {
 			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",
 			"value": true

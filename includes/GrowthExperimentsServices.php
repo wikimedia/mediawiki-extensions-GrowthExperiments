@@ -68,7 +68,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
+use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
+use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
@@ -293,8 +295,16 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsQuestionPosterFactory' );
 	}
 
+	public function getReadingRecommendationsFeaturedArticlePool(): FeaturedArticlePool {
+		return $this->coreServices->get( 'GrowthExperimentsReadingRecommendationsFeaturedArticlePool' );
+	}
+
 	public function getReadingRecommendationsFormatter(): ReadingRecommendationsFormatter {
 		return $this->coreServices->get( 'GrowthExperimentsReadingRecommendationsFormatter' );
+	}
+
+	public function getReadingRecommendationsSearcher(): ReadingRecommendationsSearcher {
+		return $this->coreServices->get( 'GrowthExperimentsReadingRecommendationsSearcher' );
 	}
 
 	public function getReadingRecommendationsService(): ReadingRecommendationsService {
