@@ -63,6 +63,7 @@ class WelcomeSurveyHooks implements
 					new WelcomeSurveyLogger(
 						LoggerFactory::getInstance( 'GrowthExperiments' )
 					),
+					$this->featureManager,
 					$this->experimentManager,
 				);
 			};

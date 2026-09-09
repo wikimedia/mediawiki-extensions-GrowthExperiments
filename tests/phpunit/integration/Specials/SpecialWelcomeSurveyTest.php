@@ -28,6 +28,7 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 			$services->getSpecialPageFactory(),
 			$growthExperimentsServices->getWelcomeSurveyFactory(),
 			new WelcomeSurveyLogger( new NullLogger() ),
+			$growthExperimentsServices->getFeatureManager(),
 			null
 		);
 	}

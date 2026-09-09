@@ -15,6 +15,10 @@
 	}
 
 	function instrumentWelcomeSurvey( languageSelectorWidgetInstance = null ) {
+
+		if ( !mw.config.get( 'isEarlyOnboardingExperimentControl' ) ) {
+			return;
+		}
 		mw.loader.using( [ 'ext.testKitchen', 'ext.wikimediaEvents.testKitchen' ] ).then( async () => {
 			const experiment = await mw.tk.getExperiment( 'de-1-3-1-specialhomepage-onboarding-ab-test' );
 			experiment.sendExposure();

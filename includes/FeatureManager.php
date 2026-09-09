@@ -46,11 +46,49 @@ class FeatureManager {
 	}
 
 	/**
+	 * @param UserIdentity $userIdentity the current user
+	 */
+	public function isEarlyOnboardingExperimentControl( UserIdentity $userIdentity ): bool {
+		if ( !$this->experimentManager ) {
+			return false;
+		}
+
+		if ( !$this->isEarlyOnboardingExperimentEligible( $userIdentity ) ) {
+			return false;
+		}
+
+		$experiment = $this->experimentManager->getExperiment(
+			IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST
+		);
+
+		return $experiment->isAssignedGroup( IExperimentManager::VARIANT_CONTROL );
+	}
+
+	/**
 	 * @param UserIdentity $user The current user
 	 * @param bool $userCreatedInThisRequest set to true if this is called in onLocalUserCreated or similar
 	 *                                       to ensure the ExperimentManager is aware of the user
 	 */
 	public function isEarlyOnboardingExperimentTreatment(
+		UserIdentity $user,
+		bool $userCreatedInThisRequest = false
+	): bool {
+		if ( !$this->experimentManager ) {
+			return false;
+		}
+
+		if ( !$this->isEarlyOnboardingExperimentEligible( $user, $userCreatedInThisRequest ) ) {
+			return false;
+		}
+
+		$experiment = $this->experimentManager->getExperiment(
+			IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST
+		);
+
+		return $experiment->isAssignedGroup( IExperimentManager::VARIANT_TREATMENT );
+	}
+
+	private function isEarlyOnboardingExperimentEligible(
 		UserIdentity $user,
 		bool $userCreatedInThisRequest = false
 	): bool {
@@ -84,12 +122,6 @@ class FeatureManager {
 					]
 				);
 			}
-		}
-		$experiment = $this->experimentManager->getExperiment(
-			IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST
-		);
-		if ( !$experiment->isAssignedGroup( IExperimentManager::VARIANT_TREATMENT ) ) {
-			return false;
 		}
 
 		$registrationDate = $userCreatedInThisRequest ?

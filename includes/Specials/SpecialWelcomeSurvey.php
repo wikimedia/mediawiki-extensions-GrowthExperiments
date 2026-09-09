@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Util;
@@ -35,6 +36,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly WelcomeSurveyFactory $welcomeSurveyFactory,
 		private readonly WelcomeSurveyLogger $welcomeSurveyLogger,
+		private readonly FeatureManager $featureManager,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
 		parent::__construct( 'WelcomeSurvey' );
@@ -74,7 +76,13 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			return;
 		}
 		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.Account.styles' );
-		$this->getOutput()->addJsConfigVars( 'welcomesurvey', true );
+		$isEarlyOnboardingExperimentControlGroup = $this->featureManager->isEarlyOnboardingExperimentControl(
+			$this->getUser()
+		);
+		$this->getOutput()->addJsConfigVars( [
+			'welcomesurvey' => true,
+			'isEarlyOnboardingExperimentControl' => $isEarlyOnboardingExperimentControlGroup,
+		] );
 		$this->getOutput()->addModules( 'ext.growthExperiments.WelcomeSurvey' );
 		parent::execute( $par );
 	}
