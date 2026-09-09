@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\HomepageModules\ReadingRecommendations;

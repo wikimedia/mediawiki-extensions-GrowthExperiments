@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
@@ -27,7 +29,7 @@ use Wikimedia\Minify\CSSMin;
  */
 class ReadingRecommendations extends BaseModule {
 
-	public const MODULE_ID = 'reading-recommendations';
+	public const string MODULE_ID = 'reading-recommendations';
 
 	private ReadingRecommendationsService $recommendationsService;
 	private ReadingRecommendationsFormatter $formatter;
