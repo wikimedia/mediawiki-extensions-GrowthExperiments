@@ -68,8 +68,7 @@ class TaskTypeHandlerRegistryTest extends MediaWikiIntegrationTestCase {
 				$growthServices->getNewcomerTasksConfigurationValidator(),
 				$services->getTitleParser(),
 				$growthServices->getLinkRecommendationProvider(),
-				$growthServices->getAddLinkSubmissionHandler(),
-				$growthServices->getGrowthConfig()
+				$growthServices->getAddLinkSubmissionHandler()
 			);
 		} elseif ( $expectedTaskTypeId === 'image-recommendation' ) {
 			$taskTypeHandler = new ImageRecommendationTaskTypeHandler(

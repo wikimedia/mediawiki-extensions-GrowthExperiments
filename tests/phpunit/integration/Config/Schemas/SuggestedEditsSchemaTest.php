@@ -189,7 +189,6 @@ class SuggestedEditsSchemaTest extends SchemaProviderTestCase {
 				'excludedTemplates' => [],
 				'excludedCategories' => [],
 				'settings' => [
-					'minimumTasksPerTopic' => 500,
 					'minimumLinksPerTask' => 2,
 					'minimumLinkScore' => 0.6,
 					'maximumLinksPerTask' => 10,
@@ -391,7 +390,6 @@ JSON;
 				'excludedTemplates' => [],
 				'excludedCategories' => [],
 				'settings' => [
-					'minimumTasksPerTopic' => 500,
 					'minimumLinksPerTask' => 2,
 					'minimumLinkScore' => 0.6,
 					'maximumLinksPerTask' => 10,

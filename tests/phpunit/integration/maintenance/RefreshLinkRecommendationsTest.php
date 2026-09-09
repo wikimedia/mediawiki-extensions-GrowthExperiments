@@ -24,8 +24,6 @@ class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {
 
 	public function testIteratingThroughAllPages_storesHandoverAfterLimitReached(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
-
-		$this->overrideConfigValue( 'GELinkRecommendationsRefreshByIteratingThroughAllTitles', true );
 		ConvertibleTimestamp::setFakeTime( '20210101000000' );
 
 		$fakeResponse = [
@@ -69,7 +67,6 @@ class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {
 	public function testIteratingThroughAllPages_pickupAtStoredPageId(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
 
-		$this->overrideConfigValue( 'GELinkRecommendationsRefreshByIteratingThroughAllTitles', true );
 		$this->getExistingTestPage();
 		$this->getExistingTestPage( Title::newFromText( 'Template:NotInMainNamespace1' ) );
 		$this->getExistingTestPage();

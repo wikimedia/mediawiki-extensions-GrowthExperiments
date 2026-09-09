@@ -26,52 +26,10 @@ class TopicDecoratorTest extends MediaWikiUnitTestCase {
 		$configurationLoader = new TopicDecorator(
 			$this->getConfigurationLoaderMock( $taskTypes ),
 			$this->getTopicRegistryMock( $topics ),
-			false,
-			[]
+			false
 		);
 		$this->assertArrayEquals( $configurationLoader->loadTaskTypes(), $taskTypes );
 		$this->assertArrayEquals( $configurationLoader->getTopics(), $topics );
-	}
-
-	public function testUseGrowthTopicsWithAdditionalTaskTypes() {
-		$taskTypes = [
-			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
-		];
-		$topics = [
-			new Topic( 'topic1' ),
-		];
-		$additionalTaskTypes = [
-			new TaskType( '_null', TaskType::DIFFICULTY_HARD ),
-		];
-		$configurationLoader = new TopicDecorator(
-			$this->getConfigurationLoaderMock( $taskTypes ),
-			$this->getTopicRegistryMock( $topics ),
-			false,
-			$additionalTaskTypes,
-		);
-		$this->assertArrayEquals(
-			$configurationLoader->loadTaskTypes(),
-			array_merge( $taskTypes, $additionalTaskTypes )
-		);
-	}
-
-	public function testUseOresTopicsWithAdditionalTaskTypes() {
-		$taskTypes = [
-			new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY ),
-		];
-		$additionalTaskTypes = [
-			new TaskType( '_null', TaskType::DIFFICULTY_HARD ),
-		];
-		$configurationLoader = new TopicDecorator(
-			$this->getConfigurationLoaderMock( $taskTypes ),
-			$this->getTopicRegistryMock( [ new Topic( 'topic1' ) ] ),
-			true,
-			$additionalTaskTypes
-		);
-		$this->assertArrayEquals(
-			$configurationLoader->loadTaskTypes(),
-			array_merge( $taskTypes, $additionalTaskTypes )
-		);
 	}
 
 	private function getConfigurationLoaderMock( $taskTypes = [] ): ConfigurationLoader {

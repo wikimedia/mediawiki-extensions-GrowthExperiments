@@ -3,14 +3,12 @@
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use CirrusSearch\Query\ArticleTopicFeature;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\RawOresTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use StatusValue;
 
 /**
- * Configuration loader for customizing topic types (ores or growth) and task types;
+ * Configuration loader for customizing topic types (ores or growth);
  * used in listTaskCounts maintenance script
  */
 class TopicDecorator implements ConfigurationLoader, ITopicRegistry {
@@ -23,37 +21,26 @@ class TopicDecorator implements ConfigurationLoader, ITopicRegistry {
 	/** @var bool */
 	private $useOresTopics;
 
-	/**
-	 * @var TaskType[]
-	 */
-	private $extraTaskTypes;
 	private ITopicRegistry $topicRegistry;
 
 	/**
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param ITopicRegistry $topicRegistry
 	 * @param bool $useOresTopics Whether raw ORES topic should be used
-	 * @param TaskType[] $extraTaskTypes Extra task types to extend the task configuration with.
 	 */
 	public function __construct(
 		ConfigurationLoader $configurationLoader,
 		ITopicRegistry $topicRegistry,
-		bool $useOresTopics,
-		array $extraTaskTypes = []
+		bool $useOresTopics
 	) {
 		$this->configurationLoader = $configurationLoader;
 		$this->useOresTopics = $useOresTopics;
-		$this->extraTaskTypes = $extraTaskTypes;
 		$this->topicRegistry = $topicRegistry;
 	}
 
 	/** @inheritDoc */
 	public function loadTaskTypes() {
-		$taskTypes = $this->configurationLoader->loadTaskTypes();
-		if ( $taskTypes instanceof StatusValue ) {
-			return $taskTypes;
-		}
-		return array_merge( $taskTypes, $this->extraTaskTypes );
+		return $this->configurationLoader->loadTaskTypes();
 	}
 
 	private function loadTopics(): array {
@@ -83,7 +70,6 @@ class TopicDecorator implements ConfigurationLoader, ITopicRegistry {
 
 	/** @inheritDoc */
 	public function getDisabledTaskTypes(): array {
-		// Extra task types are never disabled.
 		return $this->configurationLoader->getDisabledTaskTypes();
 	}
 

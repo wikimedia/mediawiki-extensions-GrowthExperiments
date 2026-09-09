@@ -24,8 +24,7 @@ class TopicDecoratorTest extends MediaWikiIntegrationTestCase {
 		$configurationLoader = new TopicDecorator(
 			$this->getConfigurationLoaderMock( $taskTypes ),
 			new StaticTopicRegistry( [ new Topic( 'topic1' ) ] ),
-			true,
-			[]
+			true
 		);
 		$this->assertArrayEquals( $configurationLoader->loadTaskTypes(), $taskTypes );
 		foreach ( $configurationLoader->getTopics() as $topic ) {

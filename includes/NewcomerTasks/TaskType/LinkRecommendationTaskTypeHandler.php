@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use InvalidArgumentException;
 use LogicException;
-use MediaWiki\Config\Config;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Title\TitleParser;
 use Wikimedia\Message\MessageSpecifier;
@@ -25,21 +24,13 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** The tag prefix used for CirrusSearch\Wikimedia\WeightedTags. */
 	public const WEIGHTED_TAG_PREFIX = 'recommendation.link';
 
-	private readonly LinkRecommendationProvider $recommendationProvider;
-	private readonly AddLinkSubmissionHandler $submissionHandler;
-	private readonly Config $config;
-
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser,
-		LinkRecommendationProvider $recommendationProvider,
-		AddLinkSubmissionHandler $submissionHandler,
-		Config $config
+		private readonly LinkRecommendationProvider $recommendationProvider,
+		private readonly AddLinkSubmissionHandler $submissionHandler
 	) {
 		parent::__construct( $configurationValidator, $titleParser );
-		$this->recommendationProvider = $recommendationProvider;
-		$this->submissionHandler = $submissionHandler;
-		$this->config = $config;
 	}
 
 	/** @inheritDoc */
@@ -73,7 +64,6 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 		$extraData = [ 'learnMoreLink' => $config['learnmore'] ?? null ];
 		// FIXME add settings validation
 		$settings = array_intersect_key( $config, LinkRecommendationTaskType::DEFAULT_SETTINGS );
-		$settings['minimumTasksPerTopic'] = $this->config->get( 'GELinkRecommendationMinimumTasksPerTopic' );
 		$settings['maximumEditsTaskIsAvailable'] = $this->parseMaximumEditsTaskIsAvailable(
 			$config['maximumEditsTaskIsAvailable']
 		);

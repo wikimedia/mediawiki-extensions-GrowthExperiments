@@ -9,7 +9,8 @@ use MediaWiki\User\UserIdentity;
 use StatusValue;
 
 /**
- * A fake submission handler for usage alongside NullTaskTypeHandler.
+ * A submission handler that accepts everything. Use it for task type handlers that
+ * do not handle submissions.
  */
 class NullSubmissionHandler extends AbstractSubmissionHandler implements SubmissionHandler {
 

@@ -7,8 +7,6 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 class LinkRecommendationTaskType extends TaskType {
 
-	/** @see ::getMinimumTasksPerTopic */
-	public const FIELD_MIN_TASKS_PER_TOPIC = 'minimumTasksPerTopic';
 	/** @see :getMinimumLinksPerTask */
 	public const FIELD_MIN_LINKS_PER_TASK = 'minimumLinksPerTask';
 	/** @see :getMinimumLinkScore */
@@ -38,7 +36,6 @@ class LinkRecommendationTaskType extends TaskType {
 	public const REJECTION_EXCLUSION_LIMIT = 2;
 
 	public const DEFAULT_SETTINGS = [
-		self::FIELD_MIN_TASKS_PER_TOPIC => 500,
 		self::FIELD_MIN_LINKS_PER_TASK => 2,
 		self::FIELD_MIN_LINK_SCORE => 0.6,
 		self::FIELD_MAX_LINKS_PER_TASK => 10,
@@ -56,7 +53,6 @@ class LinkRecommendationTaskType extends TaskType {
 	/** @inheritDoc */
 	protected const IS_MACHINE_SUGGESTION = true;
 
-	protected int $minimumTasksPerTopic;
 	protected int $minimumLinksPerTask;
 	protected float $minimumLinkScore;
 	protected int $maximumLinksPerTask;
@@ -85,7 +81,6 @@ class LinkRecommendationTaskType extends TaskType {
 	) {
 		parent::__construct( $id, $difficulty, $extraData, $excludedTemplates, $excludedCategories );
 		$settings += self::DEFAULT_SETTINGS;
-		$this->minimumTasksPerTopic = $settings[self::FIELD_MIN_TASKS_PER_TOPIC];
 		$this->minimumLinksPerTask = $settings[self::FIELD_MIN_LINKS_PER_TASK];
 		$this->minimumLinkScore = $settings[self::FIELD_MIN_LINK_SCORE];
 		$this->maximumLinksPerTask = $settings[self::FIELD_MAX_LINKS_PER_TASK];
@@ -98,15 +93,6 @@ class LinkRecommendationTaskType extends TaskType {
 		$this->underlinkedWeight = $settings[self::FIELD_UNDERLINKED_WEIGHT];
 		$this->underlinkedMinLength = $settings[self::FIELD_UNDERLINKED_MIN_LENGTH];
 		$this->maximumEditsTaskIsAvailable = $settings[self::FIELD_MAX_EDITS_TASK_AVAILABLE];
-	}
-
-	/**
-	 * Try to have at least this many link recommendations prepared for each ORES topic.
-	 * Recommendations are filled up every hour to this level.
-	 * Note: these are individual ORES topics, not the combined Growth topics defined in WikimediaTopicRegistry
-	 */
-	public function getMinimumTasksPerTopic(): int {
-		return $this->minimumTasksPerTopic;
 	}
 
 	/**
@@ -256,7 +242,6 @@ class LinkRecommendationTaskType extends TaskType {
 	public function toJsonArray(): array {
 		return parent::toJsonArray() + [
 				'settings' => [
-					'minimumTasksPerTopic' => $this->minimumTasksPerTopic,
 					'minimumLinksPerTask' => $this->minimumLinksPerTask,
 					'minimumLinkScore' => $this->minimumLinkScore,
 					'maximumLinksPerTask' => $this->maximumLinksPerTask,

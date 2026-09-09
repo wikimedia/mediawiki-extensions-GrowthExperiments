@@ -4,32 +4,18 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\Maintenance;
 
-use CirrusSearch\Query\ArticleTopicFeature;
-use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationEvalStatus;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\CommunityConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
-use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\TaskType\NullTaskTypeHandler;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Status\StatusFormatter;
-use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
-use MediaWiki\User\User;
 use MediaWiki\WikiMap\WikiMap;
-use RuntimeException;
 use StatusValue;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\LockManager\ILockManager;
@@ -45,21 +31,16 @@ require_once "$IP/maintenance/Maintenance.php";
 // @codeCoverageIgnoreEnd
 
 /**
- * Update the growthexperiments_link_recommendations table to ensure there are enough
- * recommendations for all topics
+ * Update the growthexperiments_link_recommendations table. The script iterates through all
+ * articles of the wiki and checks each article for link recommendations.
  */
 class RefreshLinkRecommendations extends Maintenance {
 
 	private Config $growthConfig;
 	private StatusFormatter $statusFormatter;
 	private TitleFactory $titleFactory;
-	private LinkBatchFactory $linkBatchFactory;
 	private ILockManager $lockManager;
-	private ConfigurationLoader $configurationLoader;
-	private TaskSuggester $taskSuggester;
 	private LinkRecommendationUpdater $linkRecommendationUpdater;
-	private LinkRecommendationTaskType $recommendationTaskType;
-	private User $searchUser;
 	private StatsFactory $statsFactory;
 	private array $metrics = [];
 	private array $seen = [];
@@ -69,22 +50,19 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->requireExtension( 'GrowthExperiments' );
 		$this->requireExtension( 'CirrusSearch' );
 
-		$this->addDescription( 'Update the growthexperiments_link_recommendations table to ensure '
-			. 'there are enough recommendations for all topics.' );
-		$this->addOption( 'topic', 'Only update articles in the given ORES topic.', false, true );
+		$this->addDescription( 'Update the growthexperiments_link_recommendations table. The script '
+			. 'iterates through all articles of the wiki and checks them for link recommendations.' );
 		$this->addOption( 'page', 'Only update a specific page.', false, true );
 		$this->addOption( 'force', 'Generate recommendations even if they fail quality criteria.' );
 		$this->addOption(
 			'limit',
-			// phpcs:ignore Generic.Files.LineLength.TooLong
-			'approximate Number of pages to process overall. Only used when GELinkRecommendationsRefreshByIteratingThroughAllTitles is true in settings. Default: 5000',
+			'Approximate number of pages to process overall. Default: 5000',
 			false,
 			true,
 		);
 		$this->addOption(
 			'setLastPageIdInStash',
-			// phpcs:ignore Generic.Files.LineLength.TooLong
-			'Only sets the lastPageId in the stash where the script will start from in the next run if GELinkRecommendationsRefreshByIteratingThroughAllTitles is true',
+			'Only set the lastPageId in the stash. The next run starts at this page ID.',
 			false,
 			true,
 		);
@@ -103,7 +81,7 @@ class RefreshLinkRecommendations extends Maintenance {
 	}
 
 	public function execute(): void {
-		$this->initGrowthConfig();
+		$this->initServices();
 		if ( !$this->growthConfig->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$this->output( "Disabled\n" );
 			return;
@@ -111,8 +89,6 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->output( "Local tasks disabled\n" );
 			return;
 		}
-		$this->initServices();
-		$this->initConfig();
 
 		$lock = $this->lockManager->scopedLock( 'GrowthExperiments-RefreshLinkRecommendations' );
 		if ( !$lock ) {
@@ -140,18 +116,12 @@ class RefreshLinkRecommendations extends Maintenance {
 			return;
 		}
 
-		$iterateThroughAllPages = $this->growthConfig->get( 'GELinkRecommendationsRefreshByIteratingThroughAllTitles' );
 		$sessionDurationCounter = $this->statsFactory->getCounter( 'refreshLinks_session_seconds_total' )
-			->setLabel( 'wiki', WikiMap::getCurrentWikiId() );
-		if ( $iterateThroughAllPages ) {
-			$sessionDurationCounter->setLabel( 'type', 'by_iterating_pages' );
-			$startNanoSeconds = hrtime( true );
-			$this->refreshByIteratingThroughAllPages( $force );
-		} else {
-			$sessionDurationCounter->setLabel( 'type', 'by_ores_topic' );
-			$startNanoSeconds = hrtime( true );
-			$this->refreshViaOresTopics( $force );
-		}
+			->setLabel( 'wiki', WikiMap::getCurrentWikiId() )
+			// Only one refresh mode is left. Keep the label, because dashboards use it.
+			->setLabel( 'type', 'by_iterating_pages' );
+		$startNanoSeconds = hrtime( true );
+		$this->refreshByIteratingThroughAllPages( $force );
 		$durationSeconds = ceil( ( hrtime( true ) - $startNanoSeconds ) / 1e9 );
 		$sessionDurationCounter->incrementBy( $durationSeconds );
 
@@ -244,108 +214,15 @@ class RefreshLinkRecommendations extends Maintenance {
 		}
 	}
 
-	protected function initGrowthConfig(): void {
-		// Needs to be separate from initServices/initConfig as checking whether the script
-		// should run on a given wiki relies on this, but initServices/initConfig will break
-		// on some wikis where the script is not supposed to run and the task configuration
-		// is missing.
+	protected function initServices(): void {
 		$services = $this->getServiceContainer();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$this->growthConfig = $growthServices->getGrowthConfig();
-	}
-
-	protected function initServices(): void {
-		// Extend the task type configuration with a custom "candidate" task type, which
-		// finds articles which do not have link recommendations.
-		$linkRecommendationCandidateTaskType = NullTaskTypeHandler::getNullTaskType(
-			'_nolinkrecommendations', '-hasrecommendation:link' );
-
-		$services = $this->getServiceContainer();
 		$this->statusFormatter = $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() );
-		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
-		if ( $newcomerTaskConfigurationLoader instanceof CommunityConfigurationLoader ) {
-			// Pretend link-recommendation is enabled (T371316)
-			// Task suggester cannot be adapted to query disabled task types, because it is also
-			// used in Homepage (where the disabled flag has to be honored).
-			$newcomerTaskConfigurationLoader->enableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
-		}
-		$this->configurationLoader = new TopicDecorator(
-			$newcomerTaskConfigurationLoader,
-			$growthServices->getTopicRegistry(),
-			true,
-			[ $linkRecommendationCandidateTaskType ]
-		);
 		$this->titleFactory = $services->getTitleFactory();
-		$this->linkBatchFactory = $services->getLinkBatchFactory();
 		$this->lockManager = $services->getLockManager();
-		$this->taskSuggester = $growthServices->getTaskSuggesterFactory()->create( $this->configurationLoader );
 		$this->linkRecommendationUpdater = $growthServices->getLinkRecommendationUpdater();
 		$this->statsFactory = $services->getStatsFactory()->withComponent( 'GrowthExperiments' );
-	}
-
-	protected function initConfig(): void {
-		$taskTypes = $this->configurationLoader->getTaskTypes();
-		$taskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
-		if ( !$taskType || !$taskType instanceof LinkRecommendationTaskType ) {
-			$this->fatalError( sprintf( "'%s' is not a link recommendation task type",
-				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) );
-		} else {
-			$this->recommendationTaskType = $taskType;
-		}
-		$this->searchUser = User::newSystemUser( 'Maintenance script', [ 'steal' => true ] );
-	}
-
-	/**
-	 * @return string[]
-	 */
-	private function getOresTopics(): array {
-		$topic = $this->getOption( 'topic' );
-		$oresTopics = array_keys( ArticleTopicFeature::TERMS_TO_LABELS );
-		if ( $topic ) {
-			$oresTopics = array_intersect( $oresTopics, [ $topic ] );
-			if ( !$oresTopics ) {
-				$this->fatalError( "invalid topic $topic" );
-			}
-		}
-		return $oresTopics;
-	}
-
-	/**
-	 * @param string $oresTopic
-	 * @return Generator<Title[]>
-	 */
-	private function findArticlesInTopic( string $oresTopic ) {
-		$batchSize = $this->getBatchSize();
-		do {
-			$this->output( "    fetching $batchSize tasks...\n" );
-			$candidates = $this->taskSuggester->suggest(
-				$this->searchUser,
-				new TaskSetFilters(
-					[ '_nolinkrecommendations' ],
-					[ $oresTopic ]
-				),
-				$batchSize,
-				null,
-				[ 'debug' => true ]
-			);
-			if ( $candidates instanceof StatusValue ) {
-				// FIXME exiting will make the cronjob unreliable. Not exiting might result
-				//  in an infinite error loop. Neither looks like a great option.
-				throw new RuntimeException( 'Search error: '
-					. $this->statusFormatter->getWikiText( $candidates, [ 'lang' => 'en' ] ) );
-			}
-
-			$linkTargets = $titles = [];
-			foreach ( $candidates as $candidate ) {
-				$linkTargets[] = $candidate->getTitle();
-			}
-			$this->linkBatchFactory->newLinkBatch( $linkTargets )->execute();
-			foreach ( $linkTargets as $linkTarget ) {
-				$titles[] = $this->titleFactory->newFromLinkTarget( $linkTarget );
-			}
-			yield $titles;
-		} while ( $candidates->count() );
 	}
 
 	/**
@@ -411,66 +288,6 @@ class RefreshLinkRecommendations extends Maintenance {
 	private function verboseLog( string $message ): void {
 		if ( $this->hasOption( 'verbose' ) ) {
 			$this->output( $message );
-		}
-	}
-
-	public function refreshViaOresTopics( bool $force ): void {
-		$oresTopics = $this->getOresTopics();
-		foreach ( $oresTopics as $oresTopic ) {
-			$this->output( "  processing topic $oresTopic...\n" );
-			$suggestions = $this->taskSuggester->suggest(
-				$this->searchUser,
-				new TaskSetFilters(
-					[ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ],
-					[ $oresTopic ]
-				),
-				1,
-				0,
-				// Enabling the debug flag is relatively harmless, and disables all caching,
-				// which we need here. useCache would prevent reading the cache, but would
-				// still write it, which would be just a waste of space.
-				[ 'debug' => true ]
-			);
-
-			// TaskSuggester::suggest() only returns StatusValue when there's an error.
-			if ( $suggestions instanceof StatusValue ) {
-				$this->error( $this->statusFormatter->getWikiText( $suggestions, [ 'lang' => 'en' ] ) );
-				continue;
-			}
-
-			$totalExistingSuggestionsCount = $suggestions->getTotalCount();
-			$recommendationsNeeded = $this->recommendationTaskType->getMinimumTasksPerTopic()
-				- $totalExistingSuggestionsCount;
-
-			if ( $recommendationsNeeded <= 0 ) {
-				$this->output( "    no new tasks needed, $totalExistingSuggestionsCount existing suggestions\n" );
-				continue;
-			}
-			$this->output( "    $recommendationsNeeded new tasks needed\n" );
-			foreach ( $this->findArticlesInTopic( $oresTopic ) as $titleBatch ) {
-				$recommendationsFound = 0;
-				$this->beginTransactionRound( __METHOD__ );
-				foreach ( $titleBatch as $title ) {
-					// TODO filter out protected pages. Needs to be batched. Or wait for T259346.
-					$success = $this->processCandidate( $title->toPageIdentity(), $force );
-					if ( $success ) {
-						$recommendationsFound++;
-						$recommendationsNeeded--;
-						if ( $recommendationsNeeded <= 0 ) {
-							$this->commitTransactionRound( __METHOD__ );
-							break 2;
-						}
-					}
-				}
-				$this->commitTransactionRound( __METHOD__ );
-				// findArticlesInTopic() picks articles at random, so we need to abort the loop
-				// at some point. Do it when no new tasks were generated from the current batch.
-				if ( $recommendationsFound === 0 ) {
-					break;
-				}
-			}
-			$this->output( ( $recommendationsNeeded === 0 ) ? "    task pool filled\n"
-				: "    topic exhausted, $recommendationsNeeded tasks still needed\n" );
 		}
 	}
 

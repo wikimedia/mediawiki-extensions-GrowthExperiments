@@ -2898,8 +2898,7 @@
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
 						"TitleParser",
 						"GrowthExperimentsLinkRecommendationProvider",
-						"GrowthExperimentsAddLinkSubmissionHandler",
-						"GrowthExperimentsConfig"
+						"GrowthExperimentsAddLinkSubmissionHandler"
 					]
 				},
 				"image-recommendation": {
@@ -2928,9 +2927,6 @@
 						"GrowthExperimentsReviseToneRecommendationProvider",
 						"MainConfig"
 					]
-				},
-				"null": {
-					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\NullTaskTypeHandler"
 				}
 			}
 		},
@@ -2963,10 +2959,6 @@
 		},
 		"GELinkRecommendationsFrontendEnabled": {
 			"description": "Global ON/OFF switch for the link recommendations feature. Depending on the state, either the 'links' or the 'link-recommendation' task type is hidden. Can be overridden by SuggestedEdits::LINK_RECOMMENDATIONS_ENABLED_PREF.",
-			"value": true
-		},
-		"GELinkRecommendationsRefreshByIteratingThroughAllTitles": {
-			"description": "Whether to refresh link recommendations by iterating through all titles. Temporary config while rolling out this new system, see T386250",
 			"value": true
 		},
 		"GETopicsMatchModeEnabled": {
@@ -3059,10 +3051,6 @@
 		"GECommunityUpdatesEnabled": {
 			"description": "Are Community Updates enabled?",
 			"value": true
-		},
-		"GELinkRecommendationMinimumTasksPerTopic": {
-			"value": 500,
-			"description": "Minimum number of link recommendation tasks to maintain per ORES topic."
 		},
 		"GEUserImpactMaxEdits": {
 			"value": 1000,
