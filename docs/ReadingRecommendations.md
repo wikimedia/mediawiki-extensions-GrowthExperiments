@@ -13,15 +13,38 @@ recommendations experiment (T435396) and is off by default.
 | `$wgGEReadingRecommendationsCacheEnabled` | `true` | Reuse the daily caches. `false` recomputes on every request and is honored only when `$wgGEDeveloperSetup` is also `true`. |
 | `$wgGEReadingRecommendationsFixtureFile` | `null` | Path of a JSON file whose rows the module shows instead of computed recommendations. Honored only when `$wgGEDeveloperSetup` is also `true`. |
 
-## Developing the UI without CirrusSearch
+## Local development
+
+Include the following LocalSettings:
+
+```php
+// Enable the Reading Recommendations module.
+$wgGEHomepageReadingRecommendationsEnabled = true;
+
+// Newcomer task config; helpful for populating more of the newcomer homepage.
+$wgGEDeveloperSetup = true;
+$wgGENewcomerTasksRemoteApiUrl = 'https://en.wikipedia.org/w/api.php';
+$wgGENewcomerTasksRemoteArticleOrigin = 'https://en.wikipedia.org';
+$wgGENewcomerTasksImageRecommendationsEnabled = false;
+$wgGENewcomerTasksSectionImageRecommendationsEnabled = false;
+$wgGENewcomerTasksLinkRecommendationsEnabled = true;
+$wgGEReviseToneSuggestedEditEnabled = true;
+$wgGEReviseToneParagraphScoreThreshold = 0.79;
+
+// Get summaries and thumbnails for the task cards from English Wikipedia.
+$wgGERestbaseUrl = 'https://en.wikipedia.org/api/rest_v1';
+
+```
+
+Then follow the instructions below depending on whether you want search working locally.
+
+### Developing the UI without CirrusSearch
 
 The module can serve a fixture file, so the interface can be built and checked
 on a bare wiki with no search stack, no Wikibase and no PageImages. Add to
 LocalSettings.php:
 
 ```php
-$wgGEHomepageReadingRecommendationsEnabled = true;
-$wgGEDeveloperSetup = true;
 $wgGEReadingRecommendationsFixtureFile = "$IP/extensions/GrowthExperiments/modules/ext.growthExperiments.Homepage.ReadingRecommendations/fixtures/recommendations.json";
 ```
 
@@ -39,6 +62,83 @@ Omitted `description`, `thumbnail`, and `relatedTo` fields default to null.
 When running the real pipeline locally, `$wgGEReadingRecommendationsCacheEnabled = false;`
 makes seeded content, configuration changes and interest edits show up
 immediately instead of after the daily rollover.
+
+### Developing with CirrusSearch
+
+#### Initial setup
+
+First, set up CirrusSearch locally, e.g. with [MediaWiki Docker](https://www.mediawiki.org/wiki/MediaWiki-Docker/Extension/CirrusSearch).
+
+Next, configure the following LocalSettings:
+
+```php
+// For CirrusSearch.
+require_once "$IP/extensions/CirrusSearch/tests/jenkins/FullyFeaturedConfig.php";
+if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
+	$wgCirrusSearchServers = [
+		[
+			"host" => "opensearch"
+		]
+	];
+}
+wfLoadExtension( 'CirrusSearch' );
+
+$wgCirrusSearchMaintenanceTimeout = 3600;
+$wgCirrusSearchMasterTimeout = '5m';
+
+// Loosen MoreLikeThis thresholds so morelike: returns results on a small
+// local corpus (defaults need each term in at least 2 documents).
+$wgCirrusSearchMoreLikeThisConfig = [
+	'min_doc_freq' => 1,
+	'max_doc_freq' => null,
+	'max_query_terms' => 25,
+	'min_term_freq' => 2,
+	'min_word_length' => 3,
+	'max_word_length' => 0,
+	'minimum_should_match' => '30%',
+];
+
+// For Reading Recommendations.
+// Unset the fixture file if you set it while developing without CirrusSearch;
+// it takes precedence over computed recommendations.
+$wgGEReadingRecommendationsFixtureFile = null;
+$wgGEReadingRecommendationsCacheEnabled = false;
+$wgGEHomepageReadingRecommendationsFeaturedCategory = 'Category:Featured articles';
+```
+
+#### Testing general recommendations
+
+Add the category configured in `$wgGEHomepageReadingRecommendationsFeaturedCategory` to a few local
+articles. You can do this by adding the following to the article source:
+
+```
+[[Category:Featured articles]]
+```
+
+You'll also need to create that category page if it doesn't exist locally. You should now be able
+to see general reading recommendations on Special:Homepage.
+
+#### Interest-based recommendations
+
+This works via morelike search, so you need two connected articles and an interest
+pointing at one of them:
+
+1. Create the article you will use as an interest, e.g. "Jazz". Import it from a wiki
+   or add some dummy content.
+2. Create a second article that names the first one at least twice, e.g. "Jazz fusion"
+   with the first paragraph of the enwiki article pasted in, which uses the word "jazz"
+   several times.
+3. Add the first article to your local account's topics of interest by running this in
+   the browser console:
+
+   ```js
+   new mw.Api().saveOption(
+     'growthexperiments-interest-articles-editing',
+     JSON.stringify(['Jazz'])
+   );
+   ```
+4. Reload Special:Homepage. You should now see "Jazz fusion" as a reading
+   recommendation.
 
 ## Data the module exports
 
