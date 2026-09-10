@@ -249,6 +249,25 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 		$this->assertStringNotContainsString( 'cdx-card__text__supporting-text', $html );
 	}
 
+	public function testRelatedToLabelIsPrecededByTheLinkIcon() {
+		$item = [
+			'title' => 'Example',
+			'url' => '/wiki/Example',
+			'pageId' => 1,
+			'relatedTo' => 'Interest',
+		];
+		$path = $this->createFixtureFile( json_encode( [ $item ], JSON_THROW_ON_ERROR ) );
+
+		$html = $this->getModule( $path, true )->render( ReadingRecommendations::RENDER_DESKTOP );
+
+		$this->assertStringContainsString(
+			'<span class="cdx-card__text__supporting-text">' .
+				'<span class="growthexperiments-reading-recommendations-related-to-icon"></span>' .
+				'growthexperiments-homepage-reading-recommendations-related-to</span>',
+			$html
+		);
+	}
+
 	public function testHostileThumbnailUrlStaysInsideTheCssUrlValue() {
 		$item = [
 			'title' => 'Example',

@@ -190,12 +190,17 @@ class ReadingRecommendations extends BaseModule {
 			);
 		}
 		if ( $item['relatedTo'] !== null ) {
-			$text .= Html::element(
+			$text .= Html::rawElement(
 				'span',
 				[ 'class' => 'cdx-card__text__supporting-text' ],
+				// A decorative CSS-only 'link' icon, standing in for the CdxIcon the
+				// Vue app renders in front of the same label.
+				Html::element( 'span', [
+					'class' => 'growthexperiments-reading-recommendations-related-to-icon',
+				] ) .
 				$this->getContext()->msg(
 					'growthexperiments-homepage-reading-recommendations-related-to'
-				)->params( $item['relatedTo'] )->text()
+				)->params( $item['relatedTo'] )->escaped()
 			);
 		}
 		$card = Html::rawElement(
