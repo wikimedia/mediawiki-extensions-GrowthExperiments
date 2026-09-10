@@ -1101,6 +1101,7 @@
 				"growthexperiments-homepage-welcome-notice-button-text-variant-d",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-mobilesummary-footer-button",
+				"growthexperiments-homepage-suggestededits-mobilesummary-select-interests-button",
 				"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title",
 				"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle",
 				"growthexperiments-homepage-suggestededits-mobilesummary-footer"
@@ -1293,6 +1294,7 @@
 			"packageFiles": [
 				"index.js",
 				"../ext.growthExperiments.DataStore/TopicFilters.js",
+				"../ext.growthExperiments.DataStore/InterestFilters.js",
 				"SuggestedEditsModule.js",
 				"EditCardWidget.js",
 				"EndOfQueueWidget.js",
@@ -1306,6 +1308,7 @@
 				"FiltersDialog.js",
 				"DifficultyFiltersDialog.js",
 				"TopicFiltersDialog.js",
+				"InterestSelectorDialog.vue",
 				"MatchModeSelectWidget.js",
 				"ArticleCountWidget.js",
 				"NewcomerTaskLogger.js",
@@ -1321,7 +1324,8 @@
 				"../utils/Utils.js",
 				"../utils/IconUtils.js",
 				"../ui-components/SuggestedEditsPeek.js",
-				"../ui-components/SwipePane.js"
+				"../ui-components/SwipePane.js",
+				"../vue-components/InterestSelector.vue"
 			],
 			"styles": [
 				"ArticleCountWidget.less",
@@ -1333,6 +1337,8 @@
 				"TopicSelectionWidget.less"
 			],
 			"dependencies": [
+				"@wikimedia/codex",
+				"vue",
 				"mediawiki.api",
 				"mediawiki.jqueryMsg",
 				"mediawiki.language",
@@ -1448,15 +1454,25 @@
 				"growthexperiments-homepage-suggestededits-tasktype-time-expand",
 				"growthexperiments-homepage-suggestededits-topic-filter-select-interests",
 				"growthexperiments-homepage-suggestededits-topics-button-topic-count",
+				"growthexperiments-homepage-suggestededits-interest-filter-select-interests",
+				"growthexperiments-homepage-suggestededits-interests-button-interest-count",
 				"growthexperiments-homepage-suggestededits-topic-filters-title",
+				"growthexperiments-homepage-suggestededits-interest-filters-title",
 				"growthexperiments-homepage-suggestededits-topic-filters-close",
+				"growthexperiments-homepage-suggestededits-interest-filters-close",
+				"growthexperiments-homepage-suggestededits-interest-filters-cancel",
 				"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header",
 				"growthexperiments-addimage-daily-task-limit-exceeded",
 				"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button",
 				"growthexperiments-addsectionimage-daily-task-limit-exceeded",
 				"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button",
 				"growthexperiments-addlink-daily-task-limit-exceeded",
-				"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button"
+				"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button",
+				"growthexperiments-interest-selector-no-results-found",
+				"growthexperiments-interest-selector-a11y-label",
+				"growthexperiments-interest-selector-placeholder",
+				"growthexperiments-interest-selector-related-articles-heading",
+				"growthexperiments-interest-selector-success"
 			]
 		},
 		"ext.growthExperiments.Homepage.ReadingRecommendations.styles": {

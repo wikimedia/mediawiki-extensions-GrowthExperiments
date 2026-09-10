@@ -4,6 +4,62 @@ const CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES;
 
 /**
+ * Shared "is the interest selector open?" flag, backing the one Vue app mounted for the page.
+ *
+ * The module can be rendered more than once (on mobile, once for the server-rendered summary
+ * and again when the overlay HTML loads), so the app is created lazily and reused rather than
+ * mounted per widget.
+ *
+ * @type {Object|null} A Vue ref, or null before the app is created.
+ */
+let interestSelectorOpen = null;
+
+/**
+ * Get the shared flag controlling the interest selector, mounting its Vue app on first use.
+ *
+ * Also subscribes to the hook that other modules use to ask for the selector. That hook has to
+ * be the trigger rather than the route, because the mobile overlay is built once and cached, so
+ * a second visit to the same route neither rebuilds this widget nor re-reads the URL.
+ *
+ * mw.hook remembers its last fire, so a request made before this module finished loading still
+ * reaches the handler registered here.
+ *
+ * @return {Object} A Vue ref holding whether the interest selector is open.
+ */
+function getInterestSelectorOpenRef() {
+	if ( interestSelectorOpen ) {
+		return interestSelectorOpen;
+	}
+	const Vue = require( 'vue' );
+	const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
+	interestSelectorOpen = Vue.ref( false );
+	const mountPoint = document.createElement( 'div' );
+	mountPoint.classList.add( 'growth-experiments-interest-selector-vue-app' );
+	document.body.appendChild( mountPoint );
+	Vue.createMwApp( {
+		render: () => Vue.h( InterestSelectorDialog, {
+			open: interestSelectorOpen.value,
+			'onUpdate:open': ( value ) => {
+				interestSelectorOpen.value = value;
+			},
+		} ),
+	} ).mount( mountPoint );
+	// The selector is mounted on the body rather than inside the mobile overlay, so closing
+	// the overlay would otherwise leave it hanging over the summary. Its own watcher discards
+	// whatever was selected, the same as any other dismissal.
+	// Subscribed before the request below so that, in the unlikely event both hooks have
+	// already been fired by the time this runs, the request to open wins.
+	mw.hook( 'growthExperiments.mobileOverlayClosed.suggested-edits' ).add( () => {
+		interestSelectorOpen.value = false;
+	} );
+	// Keep the hook name in sync with SuggestedEditsMobileSummary.js, which fires it.
+	mw.hook( 'growthExperiments.openInterestSelector' ).add( () => {
+		interestSelectorOpen.value = true;
+	} );
+	return interestSelectorOpen;
+}
+
+/**
  * @extends OO.ui.ButtonGroupWidget
  *
  * @param {Object} config Configuration options
@@ -23,6 +79,7 @@ function FiltersButtonGroupWidget( config, rootStore ) {
 	this.mode = config.mode;
 	this.topicMatching = config.topicMatching;
 	this.filtersStore = rootStore.newcomerTasks.filters;
+	this.interestsEnabled = this.filtersStore.interestsEnabled;
 
 	if ( this.topicMatching ) {
 		const shouldShowFunnelAddIcon = config.useTopicMatchMode && this.filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND;
@@ -34,17 +91,22 @@ function FiltersButtonGroupWidget( config, rootStore ) {
 			indicator: config.mode === 'desktop' ? null : 'down',
 		} );
 		buttonWidgets.push( this.topicFilterButtonWidget );
-		this.topicFiltersDialog = new TopicFiltersDialog( rootStore ).connect( this, {
-			done: function ( promise ) {
-				this.emit( 'done', promise );
-			},
-			search: function () {
-				this.emit( 'search' );
-			},
-			cancel: [ 'emit', 'cancel' ],
-		} );
-		this.topicFiltersDialog.$element.addClass( 'suggested-edits-topic-filters' );
-		windows.push( this.topicFiltersDialog );
+		if ( this.interestsEnabled ) {
+			this.topicFilterButtonWidget.$element.addClass( 'interest-filter-button' );
+			this.showInterestSelector = getInterestSelectorOpenRef();
+		} else {
+			this.topicFiltersDialog = new TopicFiltersDialog( rootStore ).connect( this, {
+				done: function ( promise ) {
+					this.emit( 'done', promise );
+				},
+				search: function () {
+					this.emit( 'search' );
+				},
+				cancel: [ 'emit', 'cancel' ],
+			} );
+			this.topicFiltersDialog.$element.addClass( 'suggested-edits-topic-filters' );
+			windows.push( this.topicFiltersDialog );
+		}
 	}
 
 	// Button label is set in #updateButtonLabelAndIcon
@@ -79,6 +141,15 @@ function FiltersButtonGroupWidget( config, rootStore ) {
 
 	if ( this.topicFilterButtonWidget ) {
 		this.topicFilterButtonWidget.on( 'click', () => {
+			if ( this.interestsEnabled ) {
+				this.showInterestSelector.value = true;
+				// No 'open' event here. It backs up the task queue so that cancelling the OOUI
+				// dialog can restore it, and it makes SuggestedEditsModule hold off on
+				// redrawing the card until 'done' or 'cancel' arrives. Closing the interest
+				// selector applies the selection instead of offering a cancel, so neither
+				// event is ever emitted and 'open' would leave the card frozen.
+				return;
+			}
 			windowManager.openWindow( this.topicFiltersDialog );
 			this.emit( 'open' );
 		} );
@@ -144,6 +215,38 @@ FiltersButtonGroupWidget.prototype.updateLoadingState = function ( state ) {
 };
 
 /**
+ * Label the filter button with the user's interests.
+ *
+ * Keep this function in sync with HomepageModules\SuggestedEdits::getInterestFilterButtonWidget()
+ *
+ * TODO: The topic branch of updateButtonLabelAndIcon() nudges the user towards the dialog with
+ * the progressive flag and a pulsating dot until they have engaged with it, keyed on
+ * preferences.topicFilters being null rather than on the current selection being empty. There is
+ * no such first-run nudge here, and adding one needs that same distinction, which the interests
+ * are currently missing: wgGEInterestArticles is an empty array both for users who never picked
+ * interests and for users who picked some and then removed them all. Disambiguating it means
+ * reading growthexperiments-interest-articles-editing and telling an unset preference from a
+ * stored empty list.
+ */
+FiltersButtonGroupWidget.prototype.updateInterestButtonLabel = function () {
+	const interests = this.filtersStore.getSelectedInterests();
+	let label;
+	if ( !interests.length ) {
+		label = mw.message(
+			'growthexperiments-homepage-suggestededits-interest-filter-select-interests',
+		).text();
+	} else if ( interests.length < 3 ) {
+		label = interests.join( mw.msg( 'comma-separator' ) );
+	} else {
+		label = mw.message(
+			'growthexperiments-homepage-suggestededits-interests-button-interest-count',
+		).params( [ mw.language.convertNumber( interests.length ) ] ).text();
+	}
+	this.topicFilterButtonWidget.setLabel( label );
+	this.topicFilterButtonWidget.setIcon( 'funnel' );
+};
+
+/**
  * Update the button label and icon depending on task types selected.
  *
  * Keep this function in sync with HomepageModules\SuggestedEdits::getFiltersButtonGroupWidget()
@@ -163,7 +266,9 @@ FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon = function (
 	let topicLabel = '',
 		separator = '';
 
-	if ( this.topicFilterButtonWidget ) {
+	if ( this.topicFilterButtonWidget && this.interestsEnabled ) {
+		this.updateInterestButtonLabel();
+	} else if ( this.topicFilterButtonWidget ) {
 		if ( !topicSearch.hasFilters() ) {
 			this.topicFilterButtonWidget.setLabel(
 				mw.message( 'growthexperiments-homepage-suggestededits-topic-filter-select-interests' ).text(),

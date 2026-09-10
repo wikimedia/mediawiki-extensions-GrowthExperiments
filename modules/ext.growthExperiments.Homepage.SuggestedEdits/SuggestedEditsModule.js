@@ -54,7 +54,9 @@ function SuggestedEditsModule( config, rootStore ) {
 	// Topic filters will be null if the user never set them.
 	// It's possible that topic filters is an empty array if the user set,
 	// saved, then unset the topics.
-	if ( !this.filtersStore.preferences.topicFilters ) {
+	// Users filtering by interests are left out: the topic preference does not describe their
+	// filter state, so it cannot say whether they have engaged with the filter button.
+	if ( !this.filtersStore.interestsEnabled && !this.filtersStore.preferences.topicFilters ) {
 		this.filters.$element.find( '.topic-filter-button' )
 			.append( $( '<div>' ).addClass( 'mw-pulsating-dot' ) );
 	}

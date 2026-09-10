@@ -318,7 +318,7 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 
 	this.apiPromise = this.api.fetchTasks(
 		this.filters.getTaskTypesQuery(),
-		this.filters.getTopicsQuery(),
+		this.filters.getFiltersQuery(),
 		apiConfig );
 
 	this.apiPromise.then( ( data ) => {
@@ -339,6 +339,13 @@ NewcomerTasksStore.prototype.fetchTasks = function ( context, config ) {
 		this.tasksFetchedCount = data.tasks.length;
 		this.currentTaskIndex = 0;
 		const assertFiltersAreEqual = () => {
+			if ( this.filters.interestsEnabled ) {
+				// The comparison below only covers topics, which are not what these
+				// suggestions were filtered by, so it cannot tell a changed selection from an
+				// unchanged one. Leave the preloaded task out rather than risk showing a card
+				// that belongs to the previous selection.
+				return false;
+			}
 			const prefs = this.api.getPreferences();
 			return prefs.taskTypes === this.filters.taskTypes &&
 				prefs.topicFilters.topics.toString() === this.filters.topics.toString() &&
@@ -439,7 +446,7 @@ NewcomerTasksStore.prototype.fetchMoreTasks = function ( context ) {
 
 	this.apiFetchMoreTasksPromise = this.api.fetchTasks(
 		this.filters.getTaskTypesQuery(),
-		this.filters.getTopicsQuery(),
+		this.filters.getFiltersQuery(),
 		config,
 	);
 

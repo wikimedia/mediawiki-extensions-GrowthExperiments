@@ -25,8 +25,20 @@ const getFiltersStore = () => {
 		backupState() {},
 		getTaskTypesQuery() {},
 		getTopicsQuery() {},
+		// The mocked user is in the control group, so the filters are topic based.
+		interestsEnabled: false,
+		getFiltersQuery() {
+			return this.getTopicsQuery();
+		},
+		selectsInterests() {
+			return false;
+		},
 		getSelectedTaskTypes() {},
-		getSelectedTopics() {}
+		getSelectedTopics() {},
+		getSelectedInterests() {
+			return [];
+		},
+		setSelectedInterests() {}
 	};
 };
 

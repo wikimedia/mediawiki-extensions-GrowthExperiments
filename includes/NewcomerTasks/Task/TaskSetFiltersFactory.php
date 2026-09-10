@@ -26,6 +26,21 @@ class TaskSetFiltersFactory {
 	}
 
 	/**
+	 * Whether the suggestions for the given user are limited by their interests rather than by
+	 * their topic preferences.
+	 *
+	 * This is the condition newFromUser() branches on. Callers that present the filters to the
+	 * user must ask this rather than testing the experiment themselves, so that what they show
+	 * cannot disagree with the filters the suggestions were built from.
+	 *
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function usesInterestFilters( UserIdentity $user ): bool {
+		return $this->featureManager->isEarlyOnboardingExperimentTreatment( $user );
+	}
+
+	/**
 	 * Get the interests that limit the suggestions for the given user.
 	 * @param UserIdentity $user
 	 * @return string[] A list of at most MAX_INTERESTS prefixed article titles. Empty when
@@ -34,7 +49,7 @@ class TaskSetFiltersFactory {
 	 * @see \GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic
 	 */
 	public function getInterestFilters( UserIdentity $user ): array {
-		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+		if ( !$this->usesInterestFilters( $user ) ) {
 			return [];
 		}
 		return $this->readInterests( $user );
@@ -55,7 +70,7 @@ class TaskSetFiltersFactory {
 	public function newFromUser( UserIdentity $user, ?array $taskTypeFilters = null ): TaskSetFilters {
 		$taskTypeFilters ??= $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
 		$topicsMatchMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
-		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+		if ( $this->usesInterestFilters( $user ) ) {
 			return new TaskSetFilters( $taskTypeFilters, [], $topicsMatchMode, $this->readInterests( $user ) );
 		}
 		return new TaskSetFilters(

@@ -6,6 +6,7 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Interwiki\ClassicInterwikiLookup;
 use MediaWiki\MainConfigNames;
@@ -16,14 +17,15 @@ use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 
 /**
- * Integration test for the interest article which AccountSetupHooks stores at account creation.
+ * Integration test for the user options which AccountSetupHooks stores at account creation:
+ * the interest article, and the suggested edits activation flag.
  *
  * The unit test covers the branches of the hook with mocked collaborators. This test
  * runs the same code path against the real core services, to show that:
  * - TitleFactory normalises the returnto value into a Title.
  * - Title::isContentPage() agrees with the $wgContentNamespaces configuration.
  * - RedirectLookup resolves a real redirect page from the database.
- * - UserOptionsManager writes the interest article to user_properties.
+ * - UserOptionsManager writes both options to user_properties.
  *
  * @covers \GrowthExperiments\AccountSetup\AccountSetupHooks
  * @group Database
@@ -160,6 +162,49 @@ class AccountSetupHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull( $this->getStoredInterestArticles() );
 	}
 
+	public function testTreatmentUserGetsSuggestedEditsActivated(): void {
+		$this->runLocalUserCreated( [ 'returnto' => 'Growth article' ] );
+
+		$this->assertTrue( $this->isSuggestedEditsActivated() );
+	}
+
+	/**
+	 * Activation does not depend on the returnto value, unlike the interest article.
+	 */
+	public function testTreatmentUserWithoutReturnToGetsSuggestedEditsActivated(): void {
+		$this->runLocalUserCreated( [] );
+
+		$this->assertTrue( $this->isSuggestedEditsActivated() );
+	}
+
+	public function testUserOutsideTheTreatmentGroupGetsNoSuggestedEditsActivation(): void {
+		$this->runLocalUserCreated( [ 'returnto' => 'Growth article' ], isTreatment: false );
+
+		$this->assertFalse( $this->isSuggestedEditsActivated() );
+	}
+
+	public function testAutocreatedUserGetsNoSuggestedEditsActivation(): void {
+		$this->runLocalUserCreated( [ 'returnto' => 'Growth article' ], autocreated: true );
+
+		$this->assertFalse( $this->isSuggestedEditsActivated() );
+	}
+
+	/**
+	 * The flag stands in for the activation which the StartEditing module performs for users
+	 * outside the treatment group, so it has to outlive the account creation request.
+	 */
+	public function testSuggestedEditsActivationIsWrittenToTheDatabase(): void {
+		$this->runLocalUserCreated( [ 'returnto' => 'Growth article' ] );
+		// AuthManager calls User::saveSettings() right after the LocalUserCreated hook.
+		$this->user->saveSettings();
+
+		// Drop the in-process options cache, to read the value back from user_properties.
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->clearUserOptionsCache( $this->user );
+
+		$this->assertTrue( SuggestedEdits::isActivated( $this->user, $userOptionsManager ) );
+	}
+
 	/**
 	 * @param array $requestValues Query values of the account creation request
 	 */
@@ -187,6 +232,16 @@ class AccountSetupHooksTest extends MediaWikiIntegrationTestCase {
 			return null;
 		}
 		return json_decode( $storedValue, true, 512, JSON_THROW_ON_ERROR );
+	}
+
+	/**
+	 * Whether the hook marked suggested edits as activated, as SpecialHomepage reads it.
+	 */
+	private function isSuggestedEditsActivated(): bool {
+		return SuggestedEdits::isActivated(
+			$this->user,
+			$this->getServiceContainer()->getUserOptionsManager()
+		);
 	}
 
 	private function newAccountSetupHooks( bool $isTreatment = true ): AccountSetupHooks {

@@ -15,6 +15,8 @@ const SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits
  * default is 1
  * @param {number} [config.taskPosition] The position of the current task within the queue,
  * 1 based index, default is 1
+ * @param {boolean} [config.selectsInterests] Whether the call to action should offer to select
+ * interests, rather than to see more suggestions. See FiltersStore.prototype.selectsInterests.
  */
 function TaskPreviewWidget( config ) {
 	const defaultConfig = {
@@ -41,14 +43,24 @@ function TaskPreviewWidget( config ) {
 		taskUrl: null,
 	} );
 
+	// Keep in sync with HomepageModules\SuggestedEdits::getMobileSummaryBody(), which renders
+	// this button on the server.
+	const ctaClasses = [ 'suggested-edits-preview-cta-button' ];
+	if ( config.selectsInterests ) {
+		ctaClasses.push( 'suggested-edits-preview-select-interests' );
+	}
 	this.ctaButton = new OO.ui.Element( {
 		classes: [ 'suggested-edits-preview-footer' ],
 		content: [
 			new OO.ui.ButtonWidget( {
-				classes: [ 'suggested-edits-preview-cta-button' ],
+				classes: ctaClasses,
 				$button: $( '<span>' ),
 				flags: [ 'primary', 'progressive' ],
-				label: mw.message(
+				// The following messages are used here:
+				// * growthexperiments-homepage-suggestededits-mobilesummary-footer-button
+				// * growthexperiments-homepage-suggestededits-mobilesummary-select-interests-button
+				label: mw.message( config.selectsInterests ?
+					'growthexperiments-homepage-suggestededits-mobilesummary-select-interests-button' :
 					'growthexperiments-homepage-suggestededits-mobilesummary-footer-button',
 				).text(),
 			} ),

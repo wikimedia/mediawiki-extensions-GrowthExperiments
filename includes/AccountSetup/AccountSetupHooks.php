@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\AccountSetup;
 
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CentralAuth\Hooks\CentralAuthPostLoginRedirectHook;
@@ -92,6 +93,7 @@ class AccountSetupHooks implements
 
 		$returnTo = RequestContext::getMain()->getRequest()->getText( 'returnto' );
 		$this->saveOriginArticleAsInterest( $user, $returnTo );
+		$this->saveSuggestedEditsActivatedFlag( $user );
 		return true;
 	}
 
@@ -165,6 +167,20 @@ class AccountSetupHooks implements
 
 		// TODO: figure out what we want/need to do with existing values of $returnToQuery
 		return $returnToQuery;
+	}
+
+	/**
+	 * Mark suggested edits as activated for users in the early onboarding experiment treatment
+	 * group.
+	 *
+	 * Those users are onboarded through the account setup flow, so they never get the StartEditing
+	 * module, which is what normally sets this flag. Without it the suggested edits module would
+	 * stay in its uninitiated state (hidden on desktop) and their task edits would not be tagged.
+	 *
+	 * @see \GrowthExperiments\Specials\SpecialHomepage::getModules()
+	 */
+	private function saveSuggestedEditsActivatedFlag( UserIdentity $user ): void {
+		$this->userOptionsManager->setOption( $user, SuggestedEdits::ACTIVATED_PREF, 1 );
 	}
 
 	private function saveOriginArticleAsInterest( UserIdentity $user, string $returnTo ): void {

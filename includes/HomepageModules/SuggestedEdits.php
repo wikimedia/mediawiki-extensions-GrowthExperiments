@@ -475,10 +475,18 @@ class SuggestedEdits extends BaseModule {
 		$showTaskPreview = $tasks instanceof TaskSet && $tasks->count() > 0;
 
 		if ( $showTaskPreview ) {
+			// Users who filter by interests but have not picked any are looking at the
+			// unfiltered pool, so the button offers to narrow it down instead of leading
+			// further into it. Keep in sync with TaskPreviewWidget.js, which rebuilds this
+			// button when the task queue changes.
+			$selectsInterests = $this->selectsInterests();
 			$button = new ButtonWidget( [
-				'label' => $this->getContext()->msg(
+				'label' => $this->getContext()->msg( $selectsInterests ?
+					'growthexperiments-homepage-suggestededits-mobilesummary-select-interests-button' :
 					'growthexperiments-homepage-suggestededits-mobilesummary-footer-button' )->text(),
-				'classes' => [ 'suggested-edits-preview-cta-button' ],
+				'classes' => $selectsInterests ?
+					[ 'suggested-edits-preview-cta-button', 'suggested-edits-preview-select-interests' ] :
+					[ 'suggested-edits-preview-cta-button' ],
 				'flags' => [ 'primary', 'progressive' ],
 				// Avoid nesting links, browsers will break markup
 				'button' => new Tag( 'span' ),
@@ -524,6 +532,58 @@ class SuggestedEdits extends BaseModule {
 	}
 
 	/**
+	 * Whether the module should offer to select interests rather than to see more suggestions.
+	 *
+	 * True for users who filter by interests but have not stored any, who are therefore being
+	 * shown the unfiltered pool of suggestions.
+	 *
+	 * @note Keep in sync with FiltersStore.prototype.selectsInterests
+	 */
+	private function selectsInterests(): bool {
+		$user = $this->getContext()->getUser();
+		return $this->taskSetFiltersFactory->usesInterestFilters( $user )
+			&& !$this->taskSetFiltersFactory->getInterestFilters( $user );
+	}
+
+	/**
+	 * Build the button that opens the interest selector, for users whose suggestions are
+	 * limited by their interests rather than by their topic preferences.
+	 *
+	 * This function should be kept in sync with the interest branch of
+	 * FiltersButtonGroupWidget.prototype.updateButtonLabelAndIcon
+	 *
+	 * TODO: The topic filter button carries a pulsating dot and the progressive flag until the
+	 * user has engaged with it, keyed on their topic preference being null rather than on the
+	 * current selection being empty (see getFiltersButtonGroupWidget()). There is no such
+	 * first-run nudge here, and adding one needs that same distinction, which the interests are
+	 * currently missing: SpecialHomepage exports wgGEInterestArticles as an empty array both for
+	 * users who never picked interests and for users who picked some and then removed them all.
+	 * Disambiguating it means reading growthexperiments-interest-articles-editing and telling an
+	 * unset preference from a stored empty list.
+	 */
+	private function getInterestFilterButtonWidget( UserIdentity $user ): ButtonWidget {
+		$interests = $this->taskSetFiltersFactory->getInterestFilters( $user );
+		if ( !$interests ) {
+			$label = $this->getContext()
+				->msg( 'growthexperiments-homepage-suggestededits-interest-filter-select-interests' )
+				->text();
+		} elseif ( count( $interests ) < 3 ) {
+			$label = implode( $this->getContext()->msg( 'comma-separator' )->text(), $interests );
+		} else {
+			$label = $this->getContext()
+				->msg( 'growthexperiments-homepage-suggestededits-interests-button-interest-count' )
+				->numParams( count( $interests ) )
+				->text();
+		}
+		return new ButtonWidget( [
+			'label' => $label,
+			'classes' => [ 'topic-matching', 'topic-filter-button', 'interest-filter-button' ],
+			'indicator' => $this->getMode() === self::RENDER_DESKTOP ? null : 'down',
+			'icon' => 'funnel',
+		] );
+	}
+
+	/**
 	 * Generate a button group widget with task and topic filters.
 	 *
 	 * This function should be kept in sync with
@@ -532,7 +592,9 @@ class SuggestedEdits extends BaseModule {
 	private function getFiltersButtonGroupWidget(): ButtonGroupWidget {
 		$buttons = [];
 		$user = $this->getContext()->getUser();
-		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsManager ) ) {
+		if ( $this->taskSetFiltersFactory->usesInterestFilters( $user ) ) {
+			$buttons[] = $this->getInterestFilterButtonWidget( $user );
+		} elseif ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsManager ) ) {
 			// topicPreferences will be an empty array if the user had saved topics
 			// in the past, or null if they have never saved topics
 			$topicPreferences = $this->newcomerTasksUserOptionsLookup
@@ -815,6 +877,11 @@ class SuggestedEdits extends BaseModule {
 				$this->getContext(),
 				$this->userOptionsManager
 			),
+			// Whether to filter by the user's interests instead of by their topic preferences.
+			// Asking the factory rather than the experiment directly keeps the front end in
+			// step with the filters the suggestions were actually built from.
+			'GEHomepageSuggestedEditsEnableInterests' => $this->taskSetFiltersFactory
+				->usesInterestFilters( $this->getContext()->getUser() ),
 		];
 	}
 

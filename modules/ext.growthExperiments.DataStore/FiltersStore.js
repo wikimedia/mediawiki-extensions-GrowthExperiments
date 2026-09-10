@@ -3,6 +3,7 @@ const GrowthTasksApi = require( './GrowthTasksApi.js' ),
 	aqsConfig = require( './AQSConfig.json' ),
 	suggestedEditsConfig = require( './config.json' ),
 	TopicFilters = require( './TopicFilters.js' ),
+	InterestFilters = require( './InterestFilters.js' ),
 	CONSTANTS = require( './constants.js' ),
 	TOPIC_MATCH_MODES = CONSTANTS.TOPIC_MATCH_MODES,
 	TOPIC_DATA = CONSTANTS.TOPIC_DATA;
@@ -32,6 +33,17 @@ function FiltersStore() {
 	this.topicGroups = this.formatTopicGroups( TOPIC_DATA );
 	/** @property {boolean} topicsEnabled Whether topic selection is supported */
 	this.topicsEnabled = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
+	/**
+	 * @property {boolean} interestsEnabled Whether the suggestions are limited by the user's
+	 * interests instead of by their topic preferences. Exported by SuggestedEdits.php from
+	 * TaskSetFiltersFactory, which is what the suggestions themselves are built from.
+	 */
+	this.interestsEnabled = !!mw.config.get( 'GEHomepageSuggestedEditsEnableInterests' );
+	/**
+	 * @property {string[]} interests Prefixed article titles the user picked as interests.
+	 * Only meaningful when interestsEnabled; empty otherwise.
+	 */
+	this.interests = mw.config.get( 'wgGEInterestArticles' ) || [];
 	/** @property {boolean} shouldUseTopicMatchMode Whether AND/OR topic toggle is supported */
 	this.shouldUseTopicMatchMode = mw.config.get( 'wgGETopicsMatchModeEnabled' );
 	/** @property {string} topicsMatchMode Topic match mode ('AND', 'OR') */
@@ -57,6 +69,41 @@ OO.mixinClass( FiltersStore, OO.EventEmitter );
  */
 FiltersStore.prototype.getSelectedTopics = function () {
 	return this.topics;
+};
+
+/**
+ * Whether the module should offer to select interests rather than to see more suggestions
+ *
+ * True for users who filter by interests but have not stored any, who are therefore being
+ * shown the unfiltered pool of suggestions.
+ *
+ * Keep this function in sync with HomepageModules\\SuggestedEdits::selectsInterests()
+ *
+ * @return {boolean}
+ */
+FiltersStore.prototype.selectsInterests = function () {
+	return this.interestsEnabled && !this.getSelectedInterests().length;
+};
+
+/**
+ * Get the interests the user selected
+ *
+ * @return {string[]} Prefixed article titles.
+ */
+FiltersStore.prototype.getSelectedInterests = function () {
+	return this.interests;
+};
+
+/**
+ * Replace the selected interests if the suggestions are limited by interests
+ *
+ * @param {string[]} newInterests Prefixed article titles.
+ */
+FiltersStore.prototype.setSelectedInterests = function ( newInterests ) {
+	if ( !this.interestsEnabled ) {
+		return;
+	}
+	this.interests = newInterests;
 };
 
 /**
@@ -93,6 +140,23 @@ FiltersStore.prototype.getTopicsQuery = function () {
 		return new TopicFilters( topicFiltersConfig );
 	}
 	return null;
+};
+
+/**
+ * Get the filters to search with, which are the user's interests or their topics depending on
+ * which of the two limits their suggestions
+ *
+ * The returned InterestFilters carries no explicit selection, so the API is called without the
+ * interests parameter and falls back to the interests stored for the user. That is what lets it
+ * serve the result from its cache.
+ *
+ * @return {mw.libs.ge.InterestFilters|mw.libs.ge.TopicFilters|null}
+ */
+FiltersStore.prototype.getFiltersQuery = function () {
+	if ( this.interestsEnabled ) {
+		return new InterestFilters();
+	}
+	return this.getTopicsQuery();
 };
 
 /**

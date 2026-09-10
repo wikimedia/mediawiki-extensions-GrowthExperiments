@@ -211,6 +211,7 @@ const mobile = require( 'mobile.startup' );
 				}, rootStore );
 
 				suggestedEditsMobileSummary.initialize();
+				suggestedEditsMobileSummary.enableInterestSelector();
 				if ( !isSuggestedEditsActivated ) {
 					suggestedEditsMobileSummary.enableSuggestedEditsActivation();
 				}

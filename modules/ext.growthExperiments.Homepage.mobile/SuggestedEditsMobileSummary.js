@@ -2,6 +2,11 @@ const TaskPreviewWidget = require( './TaskPreviewWidget.js' ),
 	MobileNoTasksWidget = require( './MobileNoTasksWidget.js' );
 
 /**
+ * Route that opens the suggested edits overlay, which is where the interest selector lives.
+ */
+const SUGGESTED_EDITS_ROUTE = '#/homepage/suggested-edits';
+
+/**
  * Mobile-summary view of the suggested edits module
  *
  * @class mw.libs.ge.SuggestedEditsMobileSummary
@@ -58,6 +63,7 @@ SuggestedEditsMobileSummary.prototype.showPreviewForCurrentTask = function () {
 		taskPosition: this.tasksStore.getQueuePosition() + 1,
 		taskCount: this.tasksStore.getTaskCount(),
 		taskTypes: this.rootStore.CONSTANTS.ALL_TASK_TYPES,
+		selectsInterests: this.tasksStore.filters.selectsInterests(),
 	} ) );
 };
 
@@ -92,6 +98,26 @@ SuggestedEditsMobileSummary.prototype.initialize = function () {
 	}
 
 	return deferred.promise();
+};
+
+/**
+ * Send the call to action that offers to select interests to the interest selector, instead of
+ * letting it fall through to the link that wraps the whole module.
+ *
+ * The button is a span inside that link (browsers break nested links), so the click has to be
+ * stopped here before the delegated handler in index.js navigates to the plain overlay route.
+ */
+SuggestedEditsMobileSummary.prototype.enableInterestSelector = function () {
+	this.$element.on( 'click', '.suggested-edits-preview-select-interests', ( e ) => {
+		e.preventDefault();
+		e.stopPropagation();
+		// Open the module, which brings in the code that owns the selector, and ask for the
+		// selector itself. The request is a hook rather than a route because the overlay is
+		// cached after its first visit, so routing to it a second time runs no new code.
+		// Keep the hook name in sync with FiltersButtonGroupWidget.js, which handles it.
+		require( 'mediawiki.router' ).navigate( SUGGESTED_EDITS_ROUTE );
+		mw.hook( 'growthExperiments.openInterestSelector' ).fire();
+	} );
 };
 
 /**
