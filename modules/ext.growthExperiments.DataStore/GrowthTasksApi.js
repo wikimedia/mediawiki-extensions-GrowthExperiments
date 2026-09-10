@@ -109,8 +109,10 @@
 	 * Has no side effects.
 	 *
 	 * @param {string[]} taskTypes List of task IDs.
-	 * @param {mw.libs.ge.TopicFilters} [topicFilters] A TopicFilters object containing a list
-	 * of topic IDs and the match mode
+	 * @param {mw.libs.ge.TopicFilters|mw.libs.ge.InterestFilters} [filters] The filters to limit
+	 * the search to: either a TopicFilters object containing a list of topic IDs and the match
+	 * mode, or an InterestFilters object containing a list of article titles. The two are
+	 * mutually exclusive; the API rejects a request carrying both.
 	 * @param {Object} [config] Additional configuration.
 	 * @param {boolean} [config.getDescription] Include Wikidata description into the data.
 	 *   This probably won't work well with a large size setting.
@@ -132,7 +134,7 @@
 	 *     task list length.
 	 *   - tasks: a list of task data objects
 	 */
-	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, topicFilters, config ) {
+	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, filters, config ) {
 		const startTime = mw.now(),
 			self = this,
 			url = new URL( window.location.href );
@@ -175,11 +177,24 @@
 			formatversion: 2,
 			uselang: mw.config.get( 'wgUserLanguage' ),
 		};
-		if ( topicFilters && topicFilters.hasFilters() ) {
-			apiParams.ggttopics = topicFilters.getTopics();
-		}
-		if ( topicFilters && topicFilters.getTopicsMatchMode() ) {
-			apiParams.ggttopicsmode = topicFilters.getTopicsMatchMode();
+		// Tell the two filter kinds apart by their methods rather than with instanceof: this
+		// file and the filter classes are bundled in more than one ResourceLoader package
+		// module, and each bundle gets its own copy of them, so filters built in one bundle
+		// are not instances of another bundle's class.
+		if ( filters && typeof filters.getInterests === 'function' ) {
+			// Only send the parameter for an explicit selection. Leaving it out is what makes
+			// the API filter by the interests stored for the user and serve its cached task
+			// set, so sending an empty list here is a different request, not a no-op.
+			if ( filters.hasSelection() ) {
+				apiParams.ggtinterests = filters.getInterests();
+			}
+		} else if ( filters ) {
+			if ( filters.hasFilters() ) {
+				apiParams.ggttopics = filters.getTopics();
+			}
+			if ( filters.getTopicsMatchMode() ) {
+				apiParams.ggttopicsmode = filters.getTopicsMatchMode();
+			}
 		}
 		if ( config.excludePageIds && config.excludePageIds.length ) {
 			apiParams.ggtexcludepageids = config.excludePageIds;

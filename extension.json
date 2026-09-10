@@ -2584,6 +2584,7 @@
 				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
 				"ext.growthExperiments.DataStore/Topics.js",
 				"ext.growthExperiments.DataStore/TopicFilters.js",
+				"ext.growthExperiments.DataStore/InterestFilters.js",
 				"ext.growthExperiments.DataStore/constants.js",
 				"utils/Utils.js",
 				{
@@ -2698,6 +2699,7 @@
 			"tests/qunit/ext.growthExperiments.Homepage.mobile/SuggestedEditsMobileSummary.test.js",
 			"modules/ext.growthExperiments.DataStore/constants.js",
 			"modules/ext.growthExperiments.DataStore/TopicFilters.js",
+			"modules/ext.growthExperiments.DataStore/InterestFilters.js",
 			"modules/ext.growthExperiments.DataStore/GrowthTasksApi.js",
 			"tests/qunit/ext.growthExperiments.DataStore/GrowthTasksApi.test.js",
 			"modules/ext.growthExperiments.DataStore/Topics.js",

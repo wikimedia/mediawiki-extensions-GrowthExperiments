@@ -2,6 +2,7 @@
 const GrowthTasksApi = require( '../../../modules/ext.growthExperiments.DataStore/GrowthTasksApi.js' );
 const { TOPIC_MATCH_MODES } = require( '../../../modules/ext.growthExperiments.DataStore/constants.js' );
 const TopicFilters = require( '../../../modules/ext.growthExperiments.DataStore/TopicFilters.js' );
+const InterestFilters = require( '../../../modules/ext.growthExperiments.DataStore/InterestFilters.js' );
 
 QUnit.module( 'ext.growthExperiments.DataStore/GrowthTasksApi.js', QUnit.newMwEnvironment( {} ) );
 
@@ -116,6 +117,57 @@ QUnit.test( 'should send topic match mode even if topics are empty and use confi
 			done();
 		} );
 	} );
+
+QUnit.test( 'should send the interests parameter for an explicit interest selection', function ( assert ) {
+	const done = assert.async();
+	const api = new GrowthTasksApi( {
+		taskTypes: {
+			copyedit: {
+				id: 'copyedit',
+			},
+		},
+		suggestedEditsConfig: {
+			GENewcomerTasksTopicFiltersPref: 'preference-name',
+			GESearchTaskSuggesterDefaultLimit: 20,
+		},
+	} );
+	const interestFilters = new InterestFilters( {
+		interests: [ 'Toad', 'Elephant' ],
+	} );
+
+	const responseMock = {
+		batchcomplete: true,
+		query: {
+			pages: [],
+		},
+		growthtasks: {
+			totalCount: 0,
+		},
+	};
+	this.sandbox.stub( mw.Api.prototype, 'get' ).returns(
+		$.Deferred().resolve( responseMock ).promise( {
+			abort: function () {},
+		} ),
+	);
+	const expectedParams = {
+		action: 'query',
+		formatversion: 2,
+		generator: 'growthtasks',
+		ggtlimit: 25,
+		ggttasktypes: [ 'copyedit' ],
+		ggtinterests: [ 'Toad', 'Elephant' ],
+		piprop: 'name|original|thumbnail',
+		pithumbsize: 330,
+		prop: 'info|revisions|pageimages',
+		rvprop: 'ids',
+		uselang: 'qqx',
+	};
+	api.fetchTasks( [ 'copyedit' ], interestFilters ).then( () => {
+		assert.strictEqual( mw.Api.prototype.get.calledOnce, true );
+		assert.deepEqual( mw.Api.prototype.get.getCall( 0 ).args[ 0 ], expectedParams );
+		done();
+	} );
+} );
 
 QUnit.test( 'should read topic filters and topics match mode preferences', function ( assert ) {
 	const api = new GrowthTasksApi( {
