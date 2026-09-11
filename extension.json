@@ -827,6 +827,15 @@
 						"GrowthExperimentsUserDatabaseHelper",
 						"UserOptionsLookup"
 					]
+				},
+				"ext.growthExperiments.PersonalDashboard.SuggestedEdits": {
+					"class": "GrowthExperiments\\PersonalDashboard\\SuggestedEdits",
+					"services": [
+						"GrowthExperimentsFeatureManager",
+						"GrowthExperimentsNewcomerTasksUserOptionsLookup",
+						"GrowthExperimentsTaskSetFiltersFactory",
+						"UserOptionsLookup"
+					]
 				}
 			},
 			"ModuleGroups": {
@@ -842,6 +851,11 @@
 									"name": "primary",
 									"enabled": true,
 									"modules": [
+										{
+											"name": "ext.growthExperiments.PersonalDashboard.SuggestedEdits",
+											"enabled": true,
+											"style": "thin"
+										},
 										{
 											"name": "ext.growthExperiments.mentorship",
 											"enabled": true
@@ -924,6 +938,55 @@
 		"ext.growthExperiments.AccountSetup.styles": {
 			"styles": [
 				"ext.growthExperiments.AccountSetup/AccountSetupStyles.less"
+			]
+		},
+		"ext.growthExperiments.PersonalDashboard.SuggestedEdits": {
+			"localBasePath": "modules/ext.growthExperiments.PersonalDashboard.SuggestedEdits",
+			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.PersonalDashboard.SuggestedEdits",
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexComponents": [
+				"CdxIcon"
+			],
+			"packageFiles": [
+				"index.js",
+				"App.vue",
+				"TaskCard.vue",
+				"useSuggestedEditsFeed.js",
+				"../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
+				{
+					"name": "icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconChartBar",
+						"cdxIconConfigure",
+						"cdxIconLightbulb"
+					]
+				}
+			],
+			"dependencies": [
+				"vue",
+				"mediawiki.api",
+				"mediawiki.util",
+				"ext.growthExperiments.DataStore"
+			],
+			"messages": [
+				"growthexperiments-homepage-suggestededits-about-body",
+				"growthexperiments-homepage-suggestededits-menu-about",
+				"growthexperiments-homepage-suggestededits-menu-button-label",
+				"growthexperiments-homepage-suggestededits-menu-interests",
+				"growthexperiments-homepage-suggestededits-menu-tasktypes",
+				"growthexperiments-homepage-suggestededits-mobilesummary-footer-button",
+				"growthexperiments-homepage-suggestededits-no-results",
+				"growthexperiments-homepage-suggestededits-progress-bar-aria-label",
+				"growthexperiments-homepage-suggestededits-tasktype-name-copyedit",
+				"growthexperiments-homepage-suggestededits-tasktype-name-expand",
+				"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation",
+				"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation",
+				"growthexperiments-homepage-suggestededits-tasktype-name-links",
+				"growthexperiments-homepage-suggestededits-tasktype-name-references",
+				"growthexperiments-homepage-suggestededits-tasktype-name-revise-tone",
+				"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation",
+				"growthexperiments-homepage-suggestededits-tasktype-name-update"
 			]
 		},
 		"ext.growthExperiments.PersonalDashboard.Impact.styles": {

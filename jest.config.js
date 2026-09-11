@@ -52,6 +52,7 @@ module.exports = {
 		'./modules/ext.growthExperiments.MentorDashboard',
 		'./modules/ext.growthExperiments.Homepage.Impact',
 		'./modules/ext.growthExperiments.StructuredTask.PreEdit',
+		'./modules/ext.growthExperiments.PersonalDashboard.SuggestedEdits',
 		'./modules/utils',
 		'./modules/vue-components',
 	],

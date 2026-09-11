@@ -65,6 +65,7 @@ const mw = {
 		error: jest.fn(),
 		warn: jest.fn(),
 	},
+	track: jest.fn(),
 	config: {
 		get: jest.fn(),
 		set: jest.fn(),
