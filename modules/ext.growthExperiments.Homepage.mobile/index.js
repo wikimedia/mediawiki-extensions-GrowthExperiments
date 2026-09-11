@@ -123,7 +123,14 @@ const mobile = require( 'mobile.startup' );
 	/**
 	 * Show welcome drawer for users who haven't already seen it.
 	 */
-	function maybeShowWelcomeDrawer() {
+	async function maybeShowWelcomeDrawer() {
+		const earlyOnboardingExperiment = await mw.tk.getExperiment(
+			'de-1-3-1-specialhomepage-onboarding-ab-test',
+		);
+		if ( earlyOnboardingExperiment && earlyOnboardingExperiment.isAssignedGroup( 'treatment' ) ) {
+			return;
+		}
+
 		// Even though this drawer isn't really a tour, we reuse the preference
 		// set on desktop since if the user has seen the tour on desktop they
 		// should not see the drawer on mobile, and vice versa.

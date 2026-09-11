@@ -2,11 +2,15 @@
 
 namespace GrowthExperiments;
 
+use GrowthExperiments\Homepage\SiteNoticeGenerator;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
+use MediaWiki\Skin\Hook\SiteNoticeAfterHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsLookup;
 
@@ -14,7 +18,8 @@ class TourHooks implements
 	BeforePageDisplayHook,
 	ResourceLoaderRegisterModulesHook,
 	GetPreferencesHook,
-	UserGetDefaultOptionsHook
+	UserGetDefaultOptionsHook,
+	SiteNoticeAfterHook
 {
 
 	public const TOUR_COMPLETED_HELP_PANEL = 'growthexperiments-tour-help-panel';
@@ -22,12 +27,11 @@ class TourHooks implements
 	public const TOUR_COMPLETED_HOMEPAGE_WELCOME = 'growthexperiments-tour-homepage-welcome';
 	public const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
 
-	private UserOptionsLookup $userOptionsLookup;
-
 	public function __construct(
-		UserOptionsLookup $userOptionsLookup
+		private readonly UserOptionsLookup $userOptionsLookup,
+		private readonly FeatureManager $featureManager,
+		private readonly JobQueueGroup $jobQueueGroup,
 	) {
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/** @inheritDoc */
@@ -47,6 +51,63 @@ class TourHooks implements
 				$this->userOptionsLookup
 			);
 		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onSiteNoticeAfter( &$siteNotice, $skin ) {
+		$user = $skin->getUser();
+		if ( !HomepageHooks::isHomepageEnabled( $user ) ) {
+			return true;
+		}
+		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+			return true;
+		}
+
+		$out = $skin->getOutput();
+		$title = $out->getTitle();
+		if ( !$title || !$title->isContentPage() ) {
+			return true;
+		}
+
+		$welcomeOption = $this->userOptionsLookup->getOption( $user, self::TOUR_COMPLETED_HOMEPAGE_WELCOME );
+		if (
+			$welcomeOption !== '0.5'
+		) {
+			return true;
+		}
+
+		$request = $out->getRequest();
+		if ( self::isEditorOpen( $request ) || self::isSuggestedEditRequest( $request ) ) {
+			return true;
+		}
+
+		if ( Util::isMobile( $skin ) ) {
+			global $wgMinervaEnableSiteNotice;
+			$siteNoticeGenerator = new SiteNoticeGenerator(
+				$this->userOptionsLookup,
+				$this->jobQueueGroup,
+			);
+			return $siteNoticeGenerator->setNotice(
+				'returnToHomepage',
+				$siteNotice,
+				$skin,
+				$wgMinervaEnableSiteNotice
+			);
+		} else {
+			$out->addModules( 'ext.guidedTour.tour.homepage_return' );
+			return true;
+		}
+	}
+
+	private static function isEditorOpen( WebRequest $request ): bool {
+		return in_array( $request->getVal( 'action', 'view' ), [ 'edit', 'submit' ], true )
+			|| $request->getCheck( 'veaction' );
+	}
+
+	private static function isSuggestedEditRequest( WebRequest $request ): bool {
+		return $request->getBool( 'gesuggestededit' ) || $request->getCheck( 'geclickid' );
 	}
 
 	/**
@@ -98,6 +159,16 @@ class TourHooks implements
 					'growthexperiments-tour-response-button-okay',
 				],
 			],
+			'ext.guidedTour.tour.homepage_return' => $moduleTemplate + [
+					'packageFiles' => [
+						'tours/returnToHomepage.js',
+						'tours/tourUtils.js',
+					],
+					'messages' => [
+						'growthexperiments-tour-return-to-homepage',
+						'growthexperiments-tour-response-button-okay',
+					],
+				],
 			'ext.guidedTour.tour.homepage_discovery' => $moduleTemplate + [
 				'packageFiles' => [
 					'tours/homepageDiscovery.js',

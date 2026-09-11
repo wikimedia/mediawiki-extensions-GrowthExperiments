@@ -419,7 +419,9 @@
 		"tour": {
 			"class": "GrowthExperiments\\TourHooks",
 			"services": [
-				"UserOptionsLookup"
+				"UserOptionsLookup",
+				"GrowthExperimentsFeatureManager",
+				"JobQueueGroup"
 			]
 		},
 		"variant": {
@@ -552,7 +554,10 @@
 		"ResourceLoaderRegisterModules": "tour",
 		"SpecialContributionsBeforeMainOutput": "homepage",
 		"SidebarBeforeOutput": "homepage",
-		"SiteNoticeAfter": "homepage",
+		"SiteNoticeAfter": [
+			"homepage",
+			"tour"
+		],
 		"SkinAddFooterLinks": "variant",
 		"SkinMinervaOptionsInit": [
 			"GrowthExperiments\\HomepageHooks::onSkinMinervaOptionsInit"

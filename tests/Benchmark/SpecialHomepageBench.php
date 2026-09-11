@@ -38,6 +38,7 @@ class SpecialHomepageBench extends GrowthExperimentsBench {
 			$userOptionManager,
 			$services->getTitleFactory(),
 			$growthExperimentsServices->getFeatureManager(),
+			$services->getJobQueueGroup(),
 			null,
 		);
 		$context = new DerivativeContext( RequestContext::getMain() );

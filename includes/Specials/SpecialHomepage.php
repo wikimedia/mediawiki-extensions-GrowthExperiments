@@ -24,12 +24,14 @@ use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Html\Html;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\Options\UserOptionsUpdateJob;
 use MediaWiki\Utils\MWCryptRand;
 use MediaWiki\WikiMap\WikiMap;
 use Throwable;
@@ -52,6 +54,7 @@ class SpecialHomepage extends SpecialPage {
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly TitleFactory $titleFactory,
 		private readonly FeatureManager $featureManager,
+		private readonly JobQueueGroup $jobQueueGroup,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
 		parent::__construct( 'Homepage' );
@@ -115,6 +118,12 @@ class SpecialHomepage extends SpecialPage {
 				$out->addHTML( Html::element( 'div', [ 'id' => 'growthexperiments-account_setup' ] ) );
 			} else {
 				$this->sendExperimentPageVisitEvent();
+				if ( $this->userOptionsManager->getOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME ) === 0 ) {
+					$this->jobQueueGroup->lazyPush( new UserOptionsUpdateJob( [
+						'userId' => $user->getId(),
+						'options' => [ TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME => '0.5' ],
+					] ) );
+				}
 			}
 		} else {
 			$this->sendExperimentPageVisitEvent();
@@ -168,12 +177,14 @@ class SpecialHomepage extends SpecialPage {
 			}
 		} else {
 			$mode = IDashboardModule::RENDER_DESKTOP;
-			Util::maybeAddGuidedTour(
-				$out,
-				TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME,
-				'ext.guidedTour.tour.homepage_welcome',
-				$this->userOptionsManager
-			);
+			if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+				Util::maybeAddGuidedTour(
+					$out,
+					TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME,
+					'ext.guidedTour.tour.homepage_welcome',
+					$this->userOptionsManager
+				);
+			}
 			$this->renderDesktop();
 		}
 

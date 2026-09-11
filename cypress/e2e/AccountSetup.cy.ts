@@ -30,6 +30,11 @@ describe( 'Account Setup', () => {
 
 		cy.get( '[data-test-id="account-setup-step-3-finish"]' ).click();
 
+		cy.get( '#growthexperiments-homepage-module-suggested-edits' ).should( 'exist' ).scrollIntoView();
 		cy.get( '#growthexperiments-homepage-module-suggested-edits' ).should( 'be.visible' );
+		cy.get( '.homepage-welcome-notice' ).should( 'not.exist' );
+
+		cy.visit( 'index.php?title=JR-430_Mountaineer' );
+		cy.get( '.mw-ge-homepage-discovery-banner-mobile' ).should( 'be.visible' );
 	} );
 } );

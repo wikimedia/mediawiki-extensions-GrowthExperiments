@@ -49,6 +49,20 @@ class SiteNoticeGenerator {
 					return $this->setDiscoverySiteNotice( $siteNotice, $skin, $name, $minervaEnableSiteNotice );
 				}
 				break;
+			case 'returnToHomepage':
+				if ( Util::isMobile( $skin ) ) {
+					$this->setMobileDiscoverySiteNotice(
+						$siteNotice,
+						$skin->getOutput(),
+						$minervaEnableSiteNotice,
+						$skin->getUser()->getName(),
+						'growthexperiments-homepage-return-to-banner',
+						null,
+						'ext-growthexperiments-homepage-return-to-banner'
+					);
+					return false;
+				}
+				break;
 			default:
 				return $this->maybeShowIfUserAbandonedWelcomeSurvey(
 					$siteNotice,
@@ -230,6 +244,7 @@ class SiteNoticeGenerator {
 		string $userName,
 		string $bodyMsgKey,
 		?string $headerMsgKey,
+		?string $extraClass = null
 	) {
 		$output->enableOOUI();
 		$output->addModuleStyles( [
@@ -257,10 +272,14 @@ class SiteNoticeGenerator {
 			$this->getDiscoveryTextWithAvatarIcon( $output, $userName, $bodyMsgKey )
 		);
 
+		$classes = [ 'mw-ge-homepage-discovery-banner-mobile' ];
+		if ( $extraClass ) {
+			$classes[] = $extraClass;
+		}
 		$siteNotice = Html::rawElement(
 			'div',
-			[ 'class' =>
-				'mw-ge-homepage-discovery-banner-mobile',
+			[
+				'class' => $classes,
 			],
 			$closeButton . $message . $arrowToMenu
 		);

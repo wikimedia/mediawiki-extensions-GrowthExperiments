@@ -183,6 +183,7 @@ class HomepageHooks implements
 					'UserOptionsManager',
 					'TitleFactory',
 					'GrowthExperimentsFeatureManager',
+					'JobQueueGroup',
 				],
 				'optional_services' => [
 					'TestKitchen.ExperimentManager',
@@ -927,7 +928,15 @@ class HomepageHooks implements
 	 */
 	public function onSiteNoticeAfter( &$siteNotice, $skin ) {
 		global $wgMinervaEnableSiteNotice;
-		if ( self::isHomepageEnabled( $skin->getUser() ) ) {
+		$user = $skin->getUser();
+		if ( self::isHomepageEnabled( $user ) ) {
+			if (
+				$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) &&
+				$skin->getTitle()->isSpecial( 'Homepage' )
+			) {
+				return true;
+			}
+
 			$siteNoticeGenerator = new SiteNoticeGenerator(
 				$this->userOptionsLookup,
 				$this->jobQueueGroup,
