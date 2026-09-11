@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
-use MediaWiki\Config\HashConfig;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Language\Language;
 use MediaWiki\Minerva\Skins\SkinMinerva;
@@ -43,7 +42,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock(),
-			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			HomepageHooks::CONFIRMEMAIL_QUERY_PARAM,
@@ -75,7 +73,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock(),
-			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'specialwelcomesurvey',
@@ -108,7 +105,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock(),
-			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'welcomesurvey-originalcontext',
@@ -148,7 +144,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock(),
-			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'specialwelcomesurvey',
@@ -159,10 +154,11 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
-			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
 			'<p>growthexperiments-homepage-discovery-mobile-homepage-banner-text</p>' .
-			'</div><span %s></span></div>',
+			'</div><span %s></span>' .
+			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
+			'</div>',
 			$siteNotice
 		);
 	}
@@ -181,7 +177,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock(),
-			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'welcomesurvey-originalcontext',
@@ -192,52 +187,12 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
+			'<div class="mw-ge-homepage-discovery-message">' .
+			'<h2>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header</h2>' .
+			'<p>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text</p>' .
+			'</div><span %s></span>' .
 			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
-			'<div class="mw-ge-homepage-discovery-message">' .
-			'<h2>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header</h2>' .
-			'<p>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text</p>' .
-			'</div><span %s></span></div>',
-			$siteNotice
-		);
-	}
-
-	public function testSetDiscoverySiteMobileNoticeWelcomeSurveyOriginalContext_PersonalMenu() {
-		if ( !class_exists( SkinMinerva::class ) ) {
-			$this->markTestSkipped( 'Minerva is not available.' );
-		}
-		$skinMock = $this->getSkinMock( SkinMinerva::class );
-		$skinMock->getUser()->method( 'getName' )
-			->willReturn( 'Bar' );
-		$skinMock->getTitle()->method( 'isSpecial' )
-			->willReturn( false );
-		$siteNotice = '';
-		$minervaEnableNotice = false;
-		$siteNoticeGenerator = new SiteNoticeGenerator(
-			$this->getUserOptionsLookupMock(),
-			$this->getJobQueueGroupMock(),
-			new HashConfig( [
-				'MinervaPersonalMenu' => [
-					'loggedin' => true,
-				],
-			] ),
-		);
-		$siteNoticeGenerator->setNotice(
-			'welcomesurvey-originalcontext',
-			$siteNotice,
-			$skinMock,
-			$minervaEnableNotice
-		);
-		$this->assertTrue( $minervaEnableNotice );
-		$classString = implode( ' ', [
-			'mw-ge-homepage-discovery-banner-mobile',
-			'mw-ge-homepage-discovery-banner-mobile__with-personal-menu',
-		] );
-		$this->assertStringMatchesFormat(
-			'<div class="' . $classString . '">' .
-			'<div class="mw-ge-homepage-discovery-message">' .
-			'<h2>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header</h2>' .
-			'<p>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text</p>' .
-			'</div><span %s></span><div class="mw-ge-homepage-discovery-arrow"></div></div>',
+			'</div>',
 			$siteNotice
 		);
 	}
@@ -264,7 +219,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock(),
-			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'',
@@ -308,7 +262,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$siteNoticeGenerator = new SiteNoticeGenerator(
 			$this->getUserOptionsLookupMock(),
 			$this->getJobQueueGroupMock(),
-			new HashConfig(),
 		);
 		$siteNoticeGenerator->setNotice(
 			'',

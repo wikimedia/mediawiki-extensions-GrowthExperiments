@@ -931,7 +931,6 @@ class HomepageHooks implements
 			$siteNoticeGenerator = new SiteNoticeGenerator(
 				$this->userOptionsLookup,
 				$this->jobQueueGroup,
-				$this->config,
 			);
 			return $siteNoticeGenerator->setNotice(
 				$skin->getRequest()->getVal( 'source' ),

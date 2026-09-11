@@ -4,7 +4,6 @@ namespace GrowthExperiments\Homepage;
 
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
-use MediaWiki\Config\Config;
 use MediaWiki\Html\Html;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Output\OutputPage;
@@ -20,7 +19,6 @@ class SiteNoticeGenerator {
 	public function __construct(
 		private readonly UserOptionsLookup $userOptionsLookup,
 		private readonly JobQueueGroup $jobQueueGroup,
-		private readonly Config $mainConfig,
 	) {
 	}
 
@@ -244,25 +242,13 @@ class SiteNoticeGenerator {
 			$this->getDiscoveryTextWithAvatarIcon( $output, $user, $msgBodyKey )
 		);
 
-		if (
-			$this->mainConfig->has( 'MinervaPersonalMenu' ) &&
-			isset( $this->mainConfig->get( 'MinervaPersonalMenu' )['loggedin'] ) &&
-			$this->mainConfig->get( 'MinervaPersonalMenu' )['loggedin']
-		) {
-			$siteNotice = Html::rawElement(
-				'div',
-				[ 'class' =>
-					'mw-ge-homepage-discovery-banner-mobile mw-ge-homepage-discovery-banner-mobile__with-personal-menu',
-				],
-				$message . $closeButton . $arrowToMenu
-			);
-		} else {
-			$siteNotice = Html::rawElement(
-				'div',
-				[ 'class' => 'mw-ge-homepage-discovery-banner-mobile' ],
-				$arrowToMenu . $message . $closeButton
-			);
-		}
+		$siteNotice = Html::rawElement(
+			'div',
+			[ 'class' =>
+				'mw-ge-homepage-discovery-banner-mobile',
+			],
+			$message . $closeButton . $arrowToMenu
+		);
 
 		$minervaEnableSiteNotice = true;
 	}

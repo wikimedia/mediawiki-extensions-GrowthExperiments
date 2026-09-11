@@ -7,14 +7,16 @@
 .mw-ge-homepage-discovery-banner-mobile {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: flex-start;
+	justify-content: space-between;
 	// positioning parent for the close button
 	position: relative;
 	// padding-left is 14px (see below) for .header-container left padding + 0.615em
 	// for half of hamburger icon width - 11px for arrow left edge / tip distance)
 	// need a separate -left rule to not break CSSJanus
 	padding: 14px 46px;
-	padding-left: calc( ~'3px + 0.625em' );
+	// padding left unset?
+	padding-right: calc( ~'3px + 0.625em' );
 	box-shadow: 0 2px 3px 0 rgba( 0, 0, 0, 0.15 );
 
 	// this is tailored to Minerva's hamburger menu so don't show it on other skins
@@ -22,20 +24,13 @@
 		flex-shrink: 0;
 		width: 64px;
 		height: 54px;
-		margin-right: 25px;
+		margin-left: 25px;
+		transform: scaleX( -1 );
 
 		@media all and ( min-width: @min-width-breakpoint-tablet ) {
 			// We use a different arrow image  (wider but less tall) for tablets
 			width: 103px;
 			height: 42px;
-		}
-
-		@media all and ( min-width: @hamburger-header-maxwidth ) {
-			// Normally on wide screens the main body has width: 90%, the header has a 16px padding
-			// and then width: 90% within that, so it ends up being ~14px narrower. They both have
-			// the same max-width though, so once they hit that they will have the same width, at
-			// which point we need to adjust for that 14px change in the hamburger position.
-			margin-left: -14px;
 		}
 
 		/* @embed */
@@ -48,12 +43,12 @@
 	}
 
 	.mw-ge-homepage-discovery-message {
-		flex-grow: 1;
+		padding-left: 50px;
 
 		@media all and ( min-width: @min-width-breakpoint-tablet ) {
 			text-align: center;
 			// awkward way to compensate for the arrow
-			padding-right: 103px;
+			padding-left: 103px;
 		}
 
 		h2 {
@@ -82,38 +77,12 @@
 	.mw-ge-homepage-discovery-banner-close {
 		position: absolute;
 		top: 14px;
-		right: 14px;
+		left: 14px;
 		cursor: pointer;
 		opacity: @opacity-icon-subtle;
 
 		.client-nojs & {
 			display: none;
-		}
-	}
-
-	&__with-personal-menu {
-		align-items: flex-start;
-		padding-left: unset;
-		padding-right: calc( ~'3px + 0.625em' );
-
-		.mw-ge-homepage-discovery-banner-close {
-			right: unset;
-			left: 14px;
-		}
-
-		.skin-minerva & .mw-ge-homepage-discovery-arrow {
-			margin-left: 25px;
-			margin-right: unset;
-			transform: scaleX( -1 );
-		}
-
-		.mw-ge-homepage-discovery-message {
-			padding-left: 50px;
-
-			@media all and ( min-width: @min-width-breakpoint-tablet ) {
-				padding: unset;
-				padding-left: 103px;
-			}
 		}
 	}
 }
