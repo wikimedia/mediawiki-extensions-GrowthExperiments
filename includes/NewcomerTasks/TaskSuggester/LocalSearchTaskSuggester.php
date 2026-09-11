@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Page\LinkBatchFactory;
@@ -52,7 +53,8 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		TitleParser $titleParser,
 		array $taskTypes,
 		array $topics,
-		StatsFactory $statsFactory
+		StatsFactory $statsFactory,
+		private readonly string $wikiId,
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
 			$linkBatchFactory, $statusFormatter, $titleParser, $taskTypes, $topics );
@@ -67,26 +69,29 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		?int $offset = null,
 		array $options = []
 	): TaskSet|StatusValue {
-		$start = microtime( true );
-		$suggest = parent::suggest( $user, $taskSetFilters, $limit, $offset, $options );
-		$suggestTimeInSeconds = microtime( true ) - $start;
-		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
+		$queryType = $taskSetFilters->getInterestFilters() ? 'interests' : 'topics';
+		$timer = $this->statsFactory->getTiming( 'search_task_suggester_seconds' )
 			->setLabel( 'task_suggester', 'local' )
 			->setLabel( 'action', 'suggest' )
-			->observeSeconds( $suggestTimeInSeconds );
+			->setLabel( 'wiki', $this->wikiId )
+			->setLabel( 'query_type', $queryType )
+			->start();
+		$suggest = parent::suggest( $user, $taskSetFilters, $limit, $offset, $options );
+		$timer->stop();
 
 		return $suggest;
 	}
 
 	/** @inheritDoc */
 	public function filter( UserIdentity $user, TaskSet $taskSet ): TaskSet|StatusValue {
-		$start = microtime( true );
-		$filter = parent::filter( $user, $taskSet );
-		$filterTimeInSeconds = microtime( true ) - $start;
-		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
+		$timer = $this->statsFactory->getTiming( 'search_task_suggester_seconds' )
 			->setLabel( 'task_suggester', 'local' )
 			->setLabel( 'action', 'filter' )
-			->observeSeconds( $filterTimeInSeconds );
+			->setLabel( 'wiki', $this->wikiId )
+			->setLabel( 'query_type', $taskSet->getFilters()->getInterestFilters() ? 'interests' : 'topics' )
+			->start();
+		$filter = parent::filter( $user, $taskSet );
+		$timer->stop();
 
 		return $filter;
 	}
@@ -96,9 +101,15 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		SearchQuery $query,
 		int $limit,
 		int $offset,
-		bool $debug
+		bool $debug,
 	): ISearchResultSet|StatusValue {
-		$start = microtime( true );
+		$isInterestsQuery = $query->getTopics() && $query->getTopics()[0] instanceof InterestBasedTopic;
+		$timer = $this->statsFactory->getTiming( 'search_task_suggester_seconds' )
+			->setLabel( 'task_suggester', 'local' )
+			->setLabel( 'action', 'search' )
+			->setLabel( 'wiki', $this->wikiId )
+			->setLabel( 'query_type', $isInterestsQuery ? 'interests' : 'topics' )
+			->start();
 		$searchEngine = $this->searchEngineFactory->create();
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setNamespaces( [ NS_MAIN ] );
@@ -139,18 +150,14 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			$query->setDebugUrl( SpecialPage::getTitleFor( 'Search' )
 				->getFullURL( $params, false, PROTO_CANONICAL ) );
 		}
-		$elapsedInSeconds = microtime( true ) - $start;
+		$timer->setLabel( 'status', $matches instanceof ISearchResultSet ? 'success' : 'error' );
+		$timer->stop();
 		$this->logger->debug( 'LocalSearchTaskSuggester query', [
 			'query' => $query->getQueryString(),
 			'sort' => $query->getSort(),
 			'limit' => $limit,
 			'success' => $matches instanceof ISearchResultSet,
-			'elapsedTime' => $elapsedInSeconds,
 		] );
-		$this->statsFactory->getTiming( 'search_task_suggester_seconds' )
-			->setLabel( 'task_suggester', 'local' )
-			->setLabel( 'action', 'search' )
-			->observeSeconds( $elapsedInSeconds );
 
 		return $matches;
 	}

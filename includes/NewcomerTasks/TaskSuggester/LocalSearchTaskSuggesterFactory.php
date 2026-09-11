@@ -13,6 +13,7 @@ use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Search\SearchEngineFactory;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleParser;
+use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
@@ -71,7 +72,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->titleParser,
 			$taskTypes,
 			$topics,
-			$this->statsFactory
+			$this->statsFactory,
+			WikiMap::getCurrentWikiId(),
 		);
 		$suggester->setLogger( $this->logger );
 		return $suggester;

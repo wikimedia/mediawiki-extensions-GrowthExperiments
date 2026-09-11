@@ -20,7 +20,6 @@ use MediaWiki\Title\TitleParser;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
-use Wikimedia\Stats\Metrics\TimingMetric;
 use Wikimedia\Stats\StatsFactory;
 use Wikimedia\TestingAccessWrapper;
 
@@ -63,7 +62,8 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( TitleParser::class ),
 			[],
 			[],
-			$this->getStatsFactory()
+			StatsFactory::newUnitTestingHelper()->getStatsFactory(),
+			'somewiki'
 		);
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 
@@ -174,17 +174,5 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$lookup = $this->createNoOpMock( NewcomerTasksUserOptionsLookup::class, [ 'filterTaskTypes' ] );
 		$lookup->method( 'filterTaskTypes' )->willReturnArgument( 0 );
 		return $lookup;
-	}
-
-	private function getStatsFactory(): StatsFactory {
-		$stats = $this->createMock( StatsFactory::class );
-		$this->setService( 'StatsFactory', $stats );
-		$stats->method( 'withComponent' )->willReturnSelf();
-
-		$timing = $this->createMock( TimingMetric::class );
-		$timing->method( 'setLabel' )->willReturnSelf();
-		$stats->method( 'getTiming' )->willReturn( $timing );
-
-		return $stats;
 	}
 }
