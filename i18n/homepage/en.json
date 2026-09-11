@@ -622,7 +622,7 @@
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Learn more",
 	"growthexperiments-homepage-reading-recommendations-header": "Daily reads",
 	"growthexperiments-homepage-reading-recommendations-personalize-title": "Personalize your daily reads",
-	"growthexperiments-homepage-reading-recommendations-personalize-text": "Select topics of interest to personalize your daily reading suggestions.",
+	"growthexperiments-homepage-reading-recommendations-personalize-text": "Select topics of interest to personalize your daily reading recommendations.",
 	"growthexperiments-homepage-reading-recommendations-related-to": "Related to $1",
 	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|edit|edits}}, congrats! Articles {{GENDER:$2|you’ve}} edited received $3 {{PLURAL:$3|view|views}} recently. Available suggested edits have changed.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Try other edits"
