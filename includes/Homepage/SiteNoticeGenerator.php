@@ -10,7 +10,6 @@ use MediaWiki\Output\OutputPage;
 use MediaWiki\Skin\Skin;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsUpdateJob;
-use MediaWiki\User\UserIdentity;
 use OOUI\IconWidget;
 
 class SiteNoticeGenerator {
@@ -133,8 +132,19 @@ class SiteNoticeGenerator {
 		&$siteNotice, Skin $skin, $contextName, &$minervaEnableSiteNotice
 	) {
 		if ( Util::isMobile( $skin ) ) {
-			$this->setMobileDiscoverySiteNotice( $siteNotice, $skin, $contextName,
-				$minervaEnableSiteNotice );
+			$location = ( $contextName === 'specialwelcomesurvey' ) ? 'homepage' : 'nonhomepage';
+			$msgBodyKey = "growthexperiments-homepage-discovery-mobile-$location-banner-text";
+			$headerMsgKey = $location === 'homepage' ?
+				null : 'growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header';
+
+			$this->setMobileDiscoverySiteNotice(
+				$siteNotice,
+				$skin->getOutput(),
+				$minervaEnableSiteNotice,
+				$skin->getUser()->getName(),
+				$msgBodyKey,
+				$headerMsgKey
+			);
 			$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin );
 		} else {
 			$this->setDesktopDiscoverySiteNotice( $siteNotice, $skin, $contextName );
@@ -205,7 +215,7 @@ class SiteNoticeGenerator {
 					$output->msg( $msgHeaderKey, $username )->text() ) .
 				$this->getDiscoveryTextWithAvatarIcon(
 					$output,
-					$skin->getUser(),
+					$skin->getUser()->getName(),
 					$msgBodyKey,
 					'mw-ge-homepage-discovery-nojs-banner-text'
 				)
@@ -213,16 +223,14 @@ class SiteNoticeGenerator {
 		);
 	}
 
-	/**
-	 * @param string &$siteNotice
-	 * @param Skin $skin
-	 * @param string $contextName
-	 * @param bool &$minervaEnableSiteNotice
-	 */
 	private function setMobileDiscoverySiteNotice(
-		&$siteNotice, Skin $skin, $contextName, &$minervaEnableSiteNotice
+		string &$siteNotice,
+		OutputPage $output,
+		?bool &$minervaEnableSiteNotice,
+		string $userName,
+		string $bodyMsgKey,
+		?string $headerMsgKey,
 	) {
-		$output = $skin->getOutput();
 		$output->enableOOUI();
 		$output->addModuleStyles( [
 			'oojs-ui.styles.icons-user',
@@ -230,16 +238,23 @@ class SiteNoticeGenerator {
 		] );
 		$output->addModules( 'ext.growthExperiments.HomepageDiscovery' );
 
-		$user = $skin->getUser();
-		$location = ( $contextName === 'specialwelcomesurvey' ) ? 'homepage' : 'nonhomepage';
-		$msgBodyKey = "growthexperiments-homepage-discovery-mobile-$location-banner-text";
+		if ( $headerMsgKey === null ) {
+			$header = '';
+		} else {
+			$header = Html::element( 'h2', [],
+				$output->msg(
+					$headerMsgKey,
+					$userName,
+				)->text()
+			);
+		}
 
 		$closeButton = new IconWidget( [ 'icon' => 'close',
 			'classes' => [ 'mw-ge-homepage-discovery-banner-close' ] ] );
 		$arrowToMenu = Html::element( 'div', [ 'class' => 'mw-ge-homepage-discovery-arrow' ] );
 		$message = Html::rawElement( 'div', [ 'class' => 'mw-ge-homepage-discovery-message' ],
-			$this->getHeader( $output, $user, $location ) .
-			$this->getDiscoveryTextWithAvatarIcon( $output, $user, $msgBodyKey )
+			$header .
+			$this->getDiscoveryTextWithAvatarIcon( $output, $userName, $bodyMsgKey )
 		);
 
 		$siteNotice = Html::rawElement(
@@ -253,43 +268,17 @@ class SiteNoticeGenerator {
 		$minervaEnableSiteNotice = true;
 	}
 
-	/**
-	 * Get the header (H2) element for the site notice.
-	 *
-	 * If the user is on the homepage, no header is shown.
-	 *
-	 * @param OutputPage $output
-	 * @param UserIdentity $user
-	 * @param string $location
-	 * @return string
-	 */
-	private function getHeader(
-		OutputPage $output,
-		UserIdentity $user,
-		string $location
-	): string {
-		if ( $location === 'homepage' ) {
-			return '';
-		}
-		return Html::element( 'h2', [],
-			$output->msg(
-				'growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header',
-				$user->getName()
-			)->text()
-		);
-	}
-
 	private function getDiscoveryTextWithAvatarIcon(
-		OutputPage $output, UserIdentity $user, string $msgBodyKey, string $class = ''
+		OutputPage $output, string $userName, string $msgBodyKey, string $class = ''
 	): string {
 		return Html::rawElement( 'p', [ 'class' => $class ],
 			$output->msg( $msgBodyKey )
-				->params( $user->getName() )
+				->params( $userName )
 				->rawParams(
 					new IconWidget( [ 'icon' => 'userAvatar' ] ) .
 					// add a word joiner to make the icon stick to the name
 					\UtfNormal\Utils::codepointToUtf8( 0x2060 ) .
-					Html::element( 'span', [], $user->getName() )
+					Html::element( 'span', [], $userName )
 				)->parse()
 		);
 	}
