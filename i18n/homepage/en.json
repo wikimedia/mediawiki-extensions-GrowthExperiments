@@ -627,6 +627,7 @@
 	"growthexperiments-homepage-community-updates-header": "Community Updates",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Learn more",
 	"growthexperiments-homepage-reading-recommendations-header": "Daily reads",
+	"growthexperiments-homepage-reading-recommendations-empty": "No reading recommendations today. Check back tomorrow.",
 	"growthexperiments-homepage-reading-recommendations-personalize-title": "Personalize your daily reads",
 	"growthexperiments-homepage-reading-recommendations-personalize-text": "Select topics of interest to personalize your daily reading recommendations.",
 	"growthexperiments-homepage-reading-recommendations-related-to": "Related to $1",

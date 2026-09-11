@@ -212,6 +212,52 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * Neither the pool nor any interest yielded an article. The call to action
+	 * stays away, so without the empty state the module would be a bare header.
+	 *
+	 * @dataProvider provideRenderModes
+	 */
+	public function testUserWithInterestsAndAnEmptyListGetsTheEmptyState( string $mode, string $ctaMessage ) {
+		$html = $this->getModule( null, false, [], null, true )->render( $mode );
+
+		$this->assertStringContainsString(
+			'growthexperiments-homepage-reading-recommendations-empty',
+			$html
+		);
+		$this->assertStringContainsString( 'growthexperiments-homepage-module-text-light', $html );
+		$this->assertStringNotContainsString( $ctaMessage, $html );
+		$this->assertStringNotContainsString( 'growthexperiments-reading-recommendations-list', $html );
+	}
+
+	/**
+	 * The call to action already explains the empty module, so the two never
+	 * show together.
+	 *
+	 * @dataProvider provideRenderModes
+	 */
+	public function testUserWithoutInterestsAndAnEmptyListKeepsOnlyTheCta( string $mode, string $ctaMessage ) {
+		$html = $this->getModule()->render( $mode );
+
+		$this->assertStringContainsString( $ctaMessage, $html );
+		$this->assertStringNotContainsString(
+			'growthexperiments-homepage-reading-recommendations-empty',
+			$html
+		);
+	}
+
+	/**
+	 * @dataProvider provideRenderModes
+	 */
+	public function testNonEmptyListHasNoEmptyState( string $mode ) {
+		$html = $this->getModule( null, false, self::getFixture(), null, true )->render( $mode );
+
+		$this->assertStringNotContainsString(
+			'growthexperiments-homepage-reading-recommendations-empty',
+			$html
+		);
+	}
+
+	/**
 	 * @dataProvider provideRenderModes
 	 */
 	public function testExportsWhetherTheUserHasInterests( string $mode ) {

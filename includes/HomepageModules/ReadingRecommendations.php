@@ -162,12 +162,18 @@ class ReadingRecommendations extends BaseModule {
 	}
 
 	/**
-	 * The recommendations as a plain list, or an empty string when there are none.
+	 * The recommendations as a plain list, or the empty state when there are none.
+	 *
+	 * A user who has picked interests gets a short empty state, because
+	 * neither the Featured pool nor any of their interests yielded an article
+	 * and the module would otherwise be a bare header. A user who has picked
+	 * no interests gets the personalize call to action instead, which already
+	 * accounts for the empty module, so the two never show together.
 	 */
 	private function getListHtml(): string {
 		$recommendations = $this->getRecommendations();
 		if ( !$recommendations ) {
-			return '';
+			return $this->shouldShowPersonalizeCta() ? '' : $this->getEmptyStateHtml();
 		}
 		$itemsHtml = '';
 		foreach ( $recommendations as $item ) {
@@ -177,6 +183,20 @@ class ReadingRecommendations extends BaseModule {
 			'ul',
 			[ 'class' => 'growthexperiments-reading-recommendations-list' ],
 			$itemsHtml
+		);
+	}
+
+	/**
+	 * The empty state, in the same light text style as the mobile summary call
+	 * to action, so it reads as module chrome and not as a recommendation.
+	 */
+	private function getEmptyStateHtml(): string {
+		return Html::element(
+			'p',
+			[ 'class' => 'growthexperiments-homepage-module-text-light' ],
+			$this->getContext()->msg(
+				'growthexperiments-homepage-reading-recommendations-empty'
+			)->text()
 		);
 	}
 
