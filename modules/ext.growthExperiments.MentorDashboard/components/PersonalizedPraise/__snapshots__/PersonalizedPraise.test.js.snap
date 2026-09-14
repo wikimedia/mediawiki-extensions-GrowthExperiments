@@ -46,6 +46,7 @@ exports[`PersonalizedPraise NoResult when no mentees 1`] = `
 			-->
     <cdx-popover-stub
       closebuttonlabel="Close"
+      hidearrow="false"
       hidebackdrop="false"
       icon="info-icon"
       open="false"
@@ -53,7 +54,7 @@ exports[`PersonalizedPraise NoResult when no mentees 1`] = `
       renderinplace="true"
       stackedactions="false"
       title="growthexperiments-mentor-dashboard-personalized-praise-info-headline"
-      usebottomsheet="false"
+      usebottomsheet="never"
       useclosebutton="true"
     />
   </div>
@@ -133,6 +134,7 @@ exports[`PersonalizedPraise full data when has mentees 1`] = `
 			-->
     <cdx-popover-stub
       closebuttonlabel="Close"
+      hidearrow="false"
       hidebackdrop="false"
       icon="info-icon"
       open="false"
@@ -140,7 +142,7 @@ exports[`PersonalizedPraise full data when has mentees 1`] = `
       renderinplace="true"
       stackedactions="false"
       title="growthexperiments-mentor-dashboard-personalized-praise-info-headline"
-      usebottomsheet="false"
+      usebottomsheet="never"
       useclosebutton="true"
     />
   </div>
