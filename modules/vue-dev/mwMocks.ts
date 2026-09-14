@@ -14,6 +14,7 @@ export const mwConfigMock = {
 		const values: Record<string, unknown> = {
 			wgSiteName: 'Dev Wiki',
 			wgGEInterestArticles: [],
+			wgGENewcomerTasksMaxInterestsForQueries: 10,
 		};
 		if ( !( key in values ) ) {
 			// eslint-disable-next-line no-console

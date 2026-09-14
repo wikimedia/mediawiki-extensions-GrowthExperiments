@@ -107,7 +107,7 @@ module.exports = exports = defineComponent( {
 	},
 	emits: [ 'update:chips' ],
 	setup( props, { emit } ) {
-		const SOFT_MAX_NUMBER_OF_INTERESTS = 10;
+		const SOFT_MAX_NUMBER_OF_INTERESTS = mw.config.get( 'wgGENewcomerTasksMaxInterestsForQueries' );
 		const MAX_NUMBER_OF_RELATED_ARTICLES = 5;
 		// Unit separator: a control character, so it cannot occur in a page name.
 		const PAGE_NAME_SEPARATOR = '\u001F';

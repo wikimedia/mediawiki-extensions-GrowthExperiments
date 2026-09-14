@@ -26,19 +26,9 @@
 function InterestFilters( config ) {
 	config = config || {};
 	this.interests = Array.isArray( config.interests ) ?
-		config.interests.slice( 0, InterestFilters.MAX_INTERESTS ) :
+		config.interests.slice( 0, mw.config.get( 'wgGENewcomerTasksMaxInterestsForQueries' ) ) :
 		null;
 }
-
-/**
- * The largest number of interests the growth tasks API considers. Truncate in the constructor to
- * avoid sending more.
- *
- * Keep in sync with TaskSetFiltersFactory::MAX_INTERESTS.
- *
- * @type {number}
- */
-InterestFilters.MAX_INTERESTS = 10;
 
 /**
  * Will return true if an explicit interest selection was given, including an empty one.

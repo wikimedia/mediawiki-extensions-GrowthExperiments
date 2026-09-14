@@ -119,6 +119,7 @@ QUnit.test( 'should send topic match mode even if topics are empty and use confi
 	} );
 
 QUnit.test( 'should send the interests parameter for an explicit interest selection', function ( assert ) {
+	mw.config.set( 'wgGENewcomerTasksMaxInterestsForQueries', 10 );
 	const done = assert.async();
 	const api = new GrowthTasksApi( {
 		taskTypes: {

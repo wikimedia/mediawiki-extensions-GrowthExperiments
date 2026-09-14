@@ -32,6 +32,18 @@ function chipsUpTo( count ) {
 	return Array.from( { length: count }, ( _unused, i ) => ( { label: `page${ i }`, value: `page${ i }` } ) );
 }
 
+const config = new Map( [
+	[ 'wgGENewcomerTasksMaxInterestsForQueries', 10 ],
+] );
+const mwConfig = { get: jest.fn( ( key ) => {
+	if ( !config.has( key ) ) {
+		throw new Error( `unexpected key "${ key }"` );
+	}
+	return config.get( key );
+} ) };
+
+mw.config = mwConfig;
+
 describe( 'InterestSelector', () => {
 	it( 'renders i18n-driven placeholder and heading text', () => {
 		const mwApi = { get: jest.fn().mockResolvedValue( { query: { pages: {} } } ) };
