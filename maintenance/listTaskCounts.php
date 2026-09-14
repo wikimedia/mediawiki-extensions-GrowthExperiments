@@ -38,7 +38,7 @@ class ListTaskCounts extends Maintenance {
 		$this->addOption( 'topic', 'Topics to query, specify multiple times for multiple ' .
 									  'topics. Defaults to all topics.', false, true, false, true );
 		$this->addOption( 'topictype', "Topic type to use ('ores' or 'growth').", false, true );
-		$this->addOption( 'statsd', 'Send topic counts to statsd. For link recommendations only.' );
+		$this->addOption( 'statsd', 'Send the number of tasks for each task type to statsd.' );
 		$this->addOption( 'output', "'ascii-table' (default), 'json' or 'none'", false, true );
 	}
 
