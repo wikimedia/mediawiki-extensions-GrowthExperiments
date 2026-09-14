@@ -116,37 +116,35 @@ class SpecialHomepage extends SpecialPage {
 			} else {
 				$this->sendExperimentPageVisitEvent();
 			}
-
-			$interestArticlesEncoded = $this->userOptionsManager->getOption(
-				$user,
-				AccountSetupHooks::INTEREST_ARTICLES_PROP,
-			);
-			if ( $interestArticlesEncoded ) {
-				try {
-					$interestArticles = json_decode( $interestArticlesEncoded, flags: JSON_THROW_ON_ERROR );
-					if ( !is_array( $interestArticles ) || !array_reduce(
-						$interestArticles,
-						static fn ( $carry, $item ) => $carry && is_string( $item ),
-						true
-						) ) {
-						// If this is not an array of strings, then the user has probably messed with it => ignore.
-						$interestArticles = [];
-					}
-				} catch ( JsonException ) {
-					$interestArticles = [];
-				}
-			} else {
-				$interestArticles = [];
-			}
-			$out->addJsConfigVars( [
-				'wgGEInterestArticles' => $interestArticles,
-			] );
 		} else {
 			$this->sendExperimentPageVisitEvent();
 		}
 
+		$interestArticlesEncoded = $this->userOptionsManager->getOption(
+			$user,
+			AccountSetupHooks::INTEREST_ARTICLES_PROP,
+		);
+		if ( $interestArticlesEncoded ) {
+			try {
+				$interestArticles = json_decode( $interestArticlesEncoded, flags: JSON_THROW_ON_ERROR );
+				if ( !is_array( $interestArticles ) || !array_reduce(
+					$interestArticles,
+					static fn ( $carry, $item ) => $carry && is_string( $item ),
+					true
+					) ) {
+					// If this is not an array of strings, then the user has probably messed with it => ignore.
+					$interestArticles = [];
+				}
+			} catch ( JsonException ) {
+				$interestArticles = [];
+			}
+		} else {
+			$interestArticles = [];
+		}
+
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
+			'wgGEInterestArticles' => $interestArticles,
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();
@@ -159,7 +157,7 @@ class SpecialHomepage extends SpecialPage {
 
 		if ( $this->isMobile ) {
 			if (
-				array_key_exists( $par ?? '', $modules ) &&
+				array_key_exists( $par, $modules ) &&
 				$modules[$par]->supports( IDashboardModule::RENDER_MOBILE_DETAILS )
 			) {
 				$mode = IDashboardModule::RENDER_MOBILE_DETAILS;

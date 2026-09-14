@@ -1475,9 +1475,37 @@
 				"growthexperiments-interest-selector-success"
 			]
 		},
+		"ext.growthExperiments.Homepage.ReadingRecommendations": {
+			"localBasePath": "modules/ext.growthExperiments.Homepage.ReadingRecommendations",
+			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.Homepage.ReadingRecommendations",
+			"packageFiles": [
+				"init.js",
+				"InterestSelectorDialog.vue",
+				"../vue-components/InterestSelector.vue"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.user",
+				"mediawiki.util",
+				"@wikimedia/codex",
+				"vue",
+				"pinia"
+			],
+			"messages": [
+				"growthexperiments-interest-selector-no-results-found",
+				"growthexperiments-interest-selector-a11y-label",
+				"growthexperiments-interest-selector-placeholder",
+				"growthexperiments-interest-selector-related-articles-heading",
+				"growthexperiments-interest-selector-success",
+				"growthexperiments-interest-selector-dialog-title",
+				"growthexperiments-interest-selector-dialog-save-button-label",
+				"growthexperiments-interest-selector-dialog-cancel-button-label"
+			]
+		},
 		"ext.growthExperiments.Homepage.ReadingRecommendations.styles": {
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"codexComponents": [
+				"CdxButton",
 				"CdxCard",
 				"CdxThumbnail"
 			],

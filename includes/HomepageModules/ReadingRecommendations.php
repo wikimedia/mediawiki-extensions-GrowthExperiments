@@ -90,6 +90,11 @@ class ReadingRecommendations extends BaseModule {
 	}
 
 	/** @inheritDoc */
+	protected function getModules() {
+		return [ 'ext.growthExperiments.Homepage.ReadingRecommendations' ];
+	}
+
+	/** @inheritDoc */
 	protected function getModuleStyles() {
 		return array_merge(
 			parent::getModuleStyles(),
@@ -100,24 +105,67 @@ class ReadingRecommendations extends BaseModule {
 		);
 	}
 
-	/** @inheritDoc */
-	protected function getBody() {
-		// The div becomes the mount point for the Vue app.
+	private function getBodyContent(): string {
 		$html = '';
 		if ( $this->shouldShowPersonalizeCta() ) {
-			$html .= Html::element(
+			$title = Html::element(
 				'h3',
-				[],
+				[ 'class' => 'growthexperiments-reading-recommendations-cta__title cdx-card__text__title' ],
 				$this->getContext()->msg(
 					'growthexperiments-homepage-reading-recommendations-personalize-title'
 				)->text()
-			) .
-			Html::element(
-				'p',
-				[],
-				$this->getContext()->msg(
-					'growthexperiments-homepage-reading-recommendations-personalize-text'
-				)->text()
+			);
+			$body = Html::rawElement(
+				'span',
+				[ 'class' => 'growthexperiments-reading-recommendations-cta__body' ],
+				Html::element(
+					'p',
+					[],
+					$this->getContext()->msg(
+						'growthexperiments-homepage-reading-recommendations-personalize-text'
+					)->text()
+				) .
+				Html::rawElement(
+					'button',
+					[
+						'id' => 'growthexperiments-reading-recommendations-personalize-button',
+						'class' => 'cdx-button cdx-button--action-progressive',
+						'type' => 'button',
+					],
+					Html::element(
+						'span',
+						[ 'class' => 'growthexperiments-reading-recommendations-icon--configure cdx-button__icon' ],
+						''
+					) .
+					$this->getContext()->msg(
+						'growthexperiments-homepage-reading-recommendations-personalize-cta'
+					)->text()
+				)
+			);
+
+			$html .= Html::rawElement(
+				'span',
+				[ 'class' => 'growthexperiments-reading-recommendations-cta cdx-card' ],
+				$title . $body
+			);
+		} else {
+			$buttonClasses = 'cdx-button cdx-button--weight-quiet cdx-button--icon-only';
+			$customClass = 'growthexperiments-reading-recommendations-interest-selector-launch';
+			$html .= Html::rawElement(
+				'button',
+				[
+					'id' => 'growthexperiments-reading-recommendations-personalize-button',
+					'class' => $buttonClasses . ' ' . $customClass,
+					'type' => 'button',
+					'aria-label' => $this->getContext()->msg(
+						'growthexperiments-homepage-reading-recommendations-personalize-cta'
+					)->text(),
+				],
+				Html::element(
+					'span',
+					[ 'class' => 'growthexperiments-reading-recommendations-icon--configure cdx-button__icon' ],
+					''
+				)
 			);
 		}
 		return Html::rawElement(
@@ -127,25 +175,14 @@ class ReadingRecommendations extends BaseModule {
 		);
 	}
 
+		/** @inheritDoc */
+	protected function getBody() {
+		return $this->getBodyContent();
+	}
+
 	/** @inheritDoc */
 	protected function getMobileSummaryBody() {
-		// The div becomes the mount point for the Vue app on the mobile summary
-		// tile. The id differs from the desktop one on purpose.
-		$html = '';
-		if ( $this->shouldShowPersonalizeCta() ) {
-			$html .= Html::element(
-				'p',
-				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
-				$this->getContext()->msg(
-					'growthexperiments-homepage-reading-recommendations-personalize-text'
-				)->text()
-			);
-		}
-		return Html::rawElement(
-			'div',
-			[ 'id' => 'reading-recommendations-vue-root--mobile' ],
-			$html . $this->getListHtml()
-		);
+		return $this->getBodyContent();
 	}
 
 	/**

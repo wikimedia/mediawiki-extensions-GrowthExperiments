@@ -2,6 +2,8 @@
 
 // Overspecify MinervaNeue's `.content ul` here as well.
 .growthexperiments-homepage-module-reading-recommendations {
+	position: relative;
+
 	.growthexperiments-reading-recommendations-list {
 		list-style: none;
 		margin: 0;
@@ -30,5 +32,30 @@
 	.growthexperiments-reading-recommendations-related-to-icon {
 		.cdx-mixin-css-icon( @cdx-icon-link, @color-subtle, @size-icon-small );
 		margin-right: @spacing-25;
+	}
+
+	.growthexperiments-reading-recommendations-cta {
+		flex-direction: column;
+		margin-bottom: @spacing-75;
+
+		// Reset card title styles on this h3.
+		&__title {
+			font-size: @font-size-medium;
+			line-height: @line-height-small;
+			font-weight: @font-weight-bold;
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	.growthexperiments-reading-recommendations-icon--configure {
+		.cdx-mixin-css-icon( @cdx-icon-configure, @param-is-button-icon: true );
+	}
+
+	.growthexperiments-reading-recommendations-interest-selector-launch {
+		position: absolute;
+		// Match base module padding.
+		top: @spacing-100;
+		right: @spacing-100;
 	}
 }
