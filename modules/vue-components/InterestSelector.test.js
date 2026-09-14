@@ -33,7 +33,7 @@ function chipsUpTo( count ) {
 }
 
 describe( 'InterestSelector', () => {
-	it( 'renders i18n-driven placeholder, aria-label and heading text', () => {
+	it( 'renders i18n-driven placeholder and heading text', () => {
 		const mwApi = { get: jest.fn().mockResolvedValue( { query: { pages: {} } } ) };
 
 		const wrapper = mount( InterestSelector, {
@@ -43,9 +43,6 @@ describe( 'InterestSelector', () => {
 
 		expect( wrapper.find( 'input' ).attributes( 'placeholder' ) ).toBe(
 			'growthexperiments-interest-selector-placeholder',
-		);
-		expect( wrapper.find( 'input' ).attributes( 'aria-label' ) ).toBe(
-			'growthexperiments-interest-selector-a11y-label',
 		);
 		expect( wrapper.find( '.ext-growthExperiments-interest-selector-related-articles' ).text() ).toBe(
 			'growthexperiments-interest-selector-related-articles-heading',

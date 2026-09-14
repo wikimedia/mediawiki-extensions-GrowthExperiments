@@ -3,7 +3,11 @@
 		<cdx-field
 			:status="status"
 			:messages="validationMessages"
+			hide-label
 		>
+			<template #label>
+				{{ $i18n( 'growthexperiments-interest-selector-a11y-label' ).text() }}
+			</template>
 			<cdx-multiselect-lookup
 				v-model:input-chips="wrappedChips"
 				v-model:selected="selection"
@@ -12,7 +16,6 @@
 				:menu-items="menuItems"
 				:menu-config="menuConfig"
 				:placeholder="$i18n( 'growthexperiments-interest-selector-placeholder' ).text()"
-				:aria-label="$i18n( 'growthexperiments-interest-selector-a11y-label' ).text()"
 				@update:input-value="onUpdateInputValueDebounced"
 				@load-more="onLoadMore"
 			>
