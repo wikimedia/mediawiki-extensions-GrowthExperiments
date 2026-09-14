@@ -106,6 +106,8 @@ module.exports = exports = defineComponent( {
 	setup( props, { emit } ) {
 		const SOFT_MAX_NUMBER_OF_INTERESTS = 10;
 		const MAX_NUMBER_OF_RELATED_ARTICLES = 5;
+		// Unit separator: a control character, so it cannot occur in a page name.
+		const PAGE_NAME_SEPARATOR = '\u001F';
 		const relatedArticleCache = new Map();
 		/**
 		 * @type {MwApi} mwApi
@@ -252,13 +254,19 @@ module.exports = exports = defineComponent( {
 			) );
 		}
 
-		watch( wrappedChips, ( newChips ) => {
-			if ( newChips.length === 0 ) {
+		// Watch a stable key rather than the chips array itself: CdxMultiselectLookup
+		// re-emits update:input-chips with an identical-but-new array whenever
+		// `selected` changes, which would otherwise refetch on every selection.
+		const selectedPageNamesKey = computed(
+			() => wrappedChips.value.map( ( chip ) => chip.value ).join( PAGE_NAME_SEPARATOR ),
+		);
+
+		watch( selectedPageNamesKey, ( key ) => {
+			if ( key === '' ) {
 				updateRelatedArticlesNoSeeds();
 				return;
 			}
-			const pageNames = newChips.map( ( chip ) => chip.value );
-			updateRelatedArticlesFromSelectedPages( pageNames );
+			updateRelatedArticlesFromSelectedPages( key.split( PAGE_NAME_SEPARATOR ) );
 		}, { immediate: true } );
 
 		/**

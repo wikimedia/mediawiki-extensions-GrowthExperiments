@@ -274,6 +274,40 @@ describe( 'InterestSelector', () => {
 		] );
 	} );
 
+	it( 'fetches related articles only once per clicked related article', async () => {
+		const mwApiGet = jest.fn().mockResolvedValue( { query: { pages: {
+			1: { title: 'relatedPage' },
+		} } } );
+		const mwApi = { get: mwApiGet };
+
+		const wrapper = mount( InterestSelector, {
+			props: {
+				chips: [ { label: 'seed', value: 'seed' } ],
+				'onUpdate:chips': ( newChips ) => wrapper.setProps( { chips: newChips } ),
+			},
+			global: { provide: { mwApi: mwApi } },
+		} );
+		await flushPromises();
+		await nextTick();
+		mwApiGet.mockClear();
+
+		await wrapper.find( '.ext-growthExperiments-interest-selector-related-article-list-item button' ).trigger( 'click' );
+		await flushPromises();
+
+		// Clicking a card updates both `chips` and `selection`, and
+		// CdxMultiselectLookup's `selected` watcher then re-emits
+		// `update:input-chips` with an identical-but-new array. That redundant
+		// emit must not trigger a second fetch.
+		const morelikeCalls = mwApiGet.mock.calls.filter(
+			( [ params ] ) => params.gsrsearch === 'morelike:relatedPage',
+		);
+		expect( morelikeCalls ).toHaveLength( 1 );
+		// 'seed' was already fetched and cached before the click.
+		expect( mwApiGet ).not.toHaveBeenCalledWith(
+			expect.objectContaining( { gsrsearch: 'morelike:seed' } ),
+		);
+	} );
+
 	it( 'never fetches related articles when mounted at or above the soft interest limit', async () => {
 		const mwApiGet = jest.fn().mockResolvedValue( { query: { pages: {} } } );
 		const mwApi = { get: mwApiGet };
