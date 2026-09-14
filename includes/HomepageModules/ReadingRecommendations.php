@@ -242,6 +242,7 @@ class ReadingRecommendations extends BaseModule {
 	 * Vue CdxCard renders, so the page does not shift when the app mounts.
 	 */
 	private function getListItemHtml( array $item ): string {
+		$isInterestBased = false;
 		if ( $item['thumbnail'] ) {
 			// CSSMin quotes and escapes the URL, so it cannot close url() and append
 			// further declarations. CdxThumbnail escapes the same characters.
@@ -269,6 +270,7 @@ class ReadingRecommendations extends BaseModule {
 			);
 		}
 		if ( $item['relatedTo'] !== null ) {
+			$isInterestBased = true;
 			$text .= Html::rawElement(
 				'span',
 				[ 'class' => 'cdx-card__text__supporting-text' ],
@@ -284,7 +286,11 @@ class ReadingRecommendations extends BaseModule {
 		}
 		$card = Html::rawElement(
 			'a',
-			[ 'class' => 'cdx-card cdx-card--is-link', 'href' => $item['url'] ],
+			[
+				'class' => 'cdx-card cdx-card--is-link',
+				'href' => $item['url'],
+				'data-is-interest-based' => $isInterestBased,
+			],
 			Html::rawElement(
 				'span',
 				[ 'class' => 'cdx-thumbnail cdx-card__thumbnail' ],
