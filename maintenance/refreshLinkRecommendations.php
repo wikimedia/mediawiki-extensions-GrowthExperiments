@@ -11,7 +11,6 @@ use GrowthExperiments\WikiConfigException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
@@ -43,7 +42,6 @@ class RefreshLinkRecommendations extends Maintenance {
 	private LinkRecommendationUpdater $linkRecommendationUpdater;
 	private StatsFactory $statsFactory;
 	private array $metrics = [];
-	private array $seen = [];
 
 	public function __construct() {
 		parent::__construct();
@@ -235,7 +233,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->verboseLog( "    checking candidate " . $pageIdentity->__toString() . "... " );
 		try {
 			$status = $this->linkRecommendationUpdater->processCandidate( $pageIdentity, $force );
-			$this->trackProcessingOutcome( $pageIdentity, $status );
+			$this->trackProcessingOutcome( $status );
 			if ( $status->isOK() ) {
 				$this->verboseLog( "success, updating index\n" );
 				return true;
@@ -266,13 +264,7 @@ class RefreshLinkRecommendations extends Maintenance {
 	 * The metrics will be sent to statslib when the script is done in
 	 * the private ::sendMetricsToStatslib method.
 	 */
-	private function trackProcessingOutcome( PageIdentity $page, StatusValue $candidateStatus ): void {
-		if ( isset( $this->seen[$page->__toString()] ) ) {
-			// don't double-count
-			return;
-		}
-		$this->seen[$page->__toString()] = true;
-
+	private function trackProcessingOutcome( StatusValue $candidateStatus ): void {
 		if ( $candidateStatus->isGood() ) {
 			$metricKey = 'success';
 		} elseif ( $candidateStatus instanceof LinkRecommendationEvalStatus ) {
