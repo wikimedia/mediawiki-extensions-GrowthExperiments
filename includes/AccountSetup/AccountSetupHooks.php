@@ -12,6 +12,7 @@ use MediaWiki\Extension\CentralAuth\Hooks\CentralAuthPostLoginRedirectHook;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Skin\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Specials\Hook\PostLoginRedirectHook;
 use MediaWiki\Title\Title;
@@ -23,6 +24,7 @@ use MediaWiki\User\UserIdentityUtils;
 class AccountSetupHooks implements
 	GetPreferencesHook,
 	LocalUserCreatedHook,
+	SkinAfterBottomScriptsHook,
 	PostLoginRedirectHook
 {
 
@@ -43,6 +45,27 @@ class AccountSetupHooks implements
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly RedirectLookup $redirectLookup,
 	) {
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onSkinAfterBottomScripts( $skin, &$text ): true {
+		if ( !$skin->getTitle()->isSpecial( 'Homepage' ) ) {
+			return true;
+		}
+		$user = $skin->getUser();
+		if ( !$user->isNamed() ) {
+			return true;
+		}
+		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+			return true;
+		}
+		if ( $this->userOptionsManager->getOption( $user, self::ACCOUNT_SETUP_MOTIVATION_PROP ) !== null ) {
+			return true;
+		}
+		$text .= '<div id="growthexperiments-initial-backdrop"></div>';
+		return true;
 	}
 
 	/**

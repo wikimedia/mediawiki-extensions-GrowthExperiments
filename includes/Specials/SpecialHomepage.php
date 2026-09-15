@@ -114,6 +114,7 @@ class SpecialHomepage extends SpecialPage {
 			);
 
 			if ( !$accountSetupMotivation ) {
+				$out->addModuleStyles( 'ext.growthExperiments.AccountSetup.styles' );
 				$out->addModules( 'ext.growthExperiments.AccountSetup' );
 				$out->addHTML( Html::element( 'div', [ 'id' => 'growthexperiments-account_setup' ] ) );
 			} else {

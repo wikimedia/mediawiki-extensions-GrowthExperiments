@@ -178,6 +178,12 @@ module.exports = defineComponent( {
 					element_friendly_name: 'WelcomeSurvey/AccountSetup skip button',
 				},
 			);
+			setTimeout( () => {
+				const initialBackdrop = document.getElementById( 'growthexperiments-initial-backdrop' );
+				if ( initialBackdrop ) {
+					initialBackdrop.remove();
+				}
+			}, 300 );
 		} );
 
 		async function saveAndGoToHome() {
