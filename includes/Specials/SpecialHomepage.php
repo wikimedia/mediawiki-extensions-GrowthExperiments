@@ -140,9 +140,9 @@ class SpecialHomepage extends SpecialPage {
 				try {
 					$interestArticles = json_decode( $interestArticlesEncoded, flags: JSON_THROW_ON_ERROR );
 					if ( !is_array( $interestArticles ) || !array_reduce(
-						$interestArticles,
-						static fn ( $carry, $item ) => $carry && is_string( $item ),
-						true
+							$interestArticles,
+							static fn ( $carry, $item ) => $carry && is_string( $item ),
+							true
 						) ) {
 						// If this is not an array of strings, then the user has probably messed with it => ignore.
 						$interestArticles = [];
@@ -206,7 +206,7 @@ class SpecialHomepage extends SpecialPage {
 			->observeSeconds( $overallSsrTimeInSeconds );
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&
-			 count( $modules ) ) {
+			count( $modules ) ) {
 			$logger = new SpecialHomepageLogger(
 				$this->pageviewToken,
 				$this->getContext()->getUser(),
@@ -303,13 +303,30 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
+	 * @param string[][][] $moduleGroups
+	 * @phan-param array{main:array<array>,sidebar:array<array>} $moduleGroups
+	 * @return string[][][]
+	 */
+	private function determineDesktopModuleOrderBasedOnExperiment( array $moduleGroups ): array {
+		$readingMotivated = $this->userOptionsManager->getOption( $this->getUser(),
+			AccountSetupHooks::ACCOUNT_SETUP_MOTIVATION_PROP ) == "reading";
+		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $this->getUser() ) && $readingMotivated ) {
+			$mainSecondaryGroup = array_diff( $moduleGroups['main']['secondary'],
+				[ ReadingRecommendations::MODULE_ID ] );
+			array_unshift( $mainSecondaryGroup, ReadingRecommendations::MODULE_ID );
+			$moduleGroups['main']['secondary'] = $mainSecondaryGroup;
+		}
+		return $moduleGroups;
+	}
+
+	/**
 	 * @return string[][][]
 	 */
 	private function getModuleGroups(): array {
 		$isSuggestedEditsEnabled = SuggestedEdits::isEnabledForAnyone(
 			$this->getContext()->getConfig()
 		);
-		return [
+		$moduleGroups = [
 			'main' => [
 				'primary' => [ 'banner', 'welcomesurveyreminder', 'startemail' ],
 				'secondary' => $isSuggestedEditsEnabled ?
@@ -328,6 +345,7 @@ class SpecialHomepage extends SpecialPage {
 				'secondary' => [ 'mentorship', 'mentorship-optin', 'help' ],
 			],
 		];
+		return $this->determineDesktopModuleOrderBasedOnExperiment( $moduleGroups );
 	}
 
 	/**
@@ -394,19 +412,38 @@ class SpecialHomepage extends SpecialPage {
 		$this->getOutput()->addHTML( $html );
 	}
 
+	/**
+	 * @return string[]
+	 */
+	private function determineMobileModuleOrderBasedOnExperiment(): array {
+		$moduleGroups = $this->getModuleGroups();
+		$moduleNames = [];
+
+		array_push( $moduleNames, ...$moduleGroups['main']['primary'] );
+		array_push( $moduleNames, ...$moduleGroups['main']['secondary'] );
+		array_push( $moduleNames, ...$moduleGroups['sidebar']['primary'] );
+		array_push( $moduleNames, ...$moduleGroups['sidebar']['secondary'] );
+
+		return $moduleNames;
+	}
+
 	private function renderMobileSummary() {
 		$out = $this->getContext()->getOutput();
 		$modules = $this->getModules( true );
+		$moduleNamesInOrder = $this->determineMobileModuleOrderBasedOnExperiment();
 		$isOpeningOverlay = $this->getContext()->getRequest()->getFuzzyBool( 'overlay' );
 		$out->addBodyClasses( [
 			'growthexperiments-homepage-mobile-summary',
 			$isOpeningOverlay ? 'growthexperiments-homepage-mobile-summary--opening-overlay' : '',
 		] );
-		foreach ( $modules as $moduleName => $module ) {
+		foreach ( $moduleNamesInOrder as $moduleName ) {
+			if ( !isset( $modules[ $moduleName ] ) ) {
+				continue;
+			}
 			$startTime = microtime( true );
 
-			$module->setPageURL( $this->getPageTitle()->getLinkURL() );
-			$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_MOBILE_SUMMARY );
+			$modules[$moduleName]->setPageURL( $this->getPageTitle()->getLinkURL() );
+			$html = $this->getModuleRenderHtmlSafe( $modules[$moduleName], IDashboardModule::RENDER_MOBILE_SUMMARY );
 			$this->getOutput()->addHTML( $html );
 
 			$this->recordModuleRenderingTime(

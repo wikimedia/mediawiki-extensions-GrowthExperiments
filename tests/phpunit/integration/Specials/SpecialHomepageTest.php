@@ -2,19 +2,23 @@
 
 namespace GrowthExperiments\Tests\Integration;
 
+use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\ReadingRecommendations;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialHomepage;
+use HamcrestPHPUnitIntegration;
 use InvalidArgumentException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Http\MWHttpRequest;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
+use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 
 /**
@@ -22,6 +26,7 @@ use MediaWiki\User\User;
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialHomepage
  */
 class SpecialHomepageTest extends SpecialPageTestBase {
+	use HamcrestPHPUnitIntegration;
 
 	use \MockHttpTrait;
 
@@ -120,6 +125,133 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	}
 
 	/**
+	 * @covers ::execute
+	 */
+	public function testReadingRecommendationsModuleIsLaterWhenUserSelectsEditingOnDesktop() {
+		$user = $this->enableHomepageForTesting();
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption( $user, AccountSetupHooks::ACCOUNT_SETUP_MOTIVATION_PROP, "editing" );
+		$userOptionsManager->saveOptions( $user );
+
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+
+		$response = $this->executeSpecialPage( '', null, null, $user );
+
+		$pageOutput = $response[0];
+		$this->assertThatHamcrest( 'Reading recommendations appears after editing module',
+			$pageOutput,
+			stringContainsInOrder( 'data-module-name="suggested-edits"', 'data-module-name="reading-recommendations"' )
+		);
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testReadingRecommendationsModuleIsLaterWhenUserSelectsEditingOnMobile() {
+		$context = RequestContext::getMain();
+		$user = $this->enableHomepageForTesting();
+		$context->setAuthority( $user );
+		$context->setLanguage( 'qqx' );
+		$context->setTitle( Title::newFromText( 'Homepage' ) );
+		$skinFactory = MediaWikiServices::getInstance()->getSkinFactory();
+		$context->setSkin( $skinFactory->makeSkin( 'minerva' ) );
+
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+
+		$homepage = $this->newSpecialPage();
+
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption( $user, AccountSetupHooks::ACCOUNT_SETUP_MOTIVATION_PROP, "editing" );
+		$userOptionsManager->saveOptions( $user );
+
+		$response = $this->executeSpecialPage( '', null, null, $user );
+
+		$pageOutput = $response[0];
+		$this->assertThatHamcrest( 'Reading recommendations appears after editing module',
+			$pageOutput,
+			stringContainsInOrder( 'data-module-name="suggested-edits"', 'data-module-name="reading-recommendations"' )
+		);
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testHomepageLoadsCorrectModuleOrderOnMobileWhenCommunityUpdatesDisabled() {
+		$this->overrideConfigValue( 'GECommunityUpdatesEnabled', false );
+		$user = $this->enableHomepageForTestingWithReadingUser();
+		$context = RequestContext::getMain();
+		$context->setAuthority( $user );
+		$context->setLanguage( 'qqx' );
+		$context->setTitle( Title::newFromText( 'Homepage' ) );
+		$skinFactory = MediaWikiServices::getInstance()->getSkinFactory();
+		$context->setSkin( $skinFactory->makeSkin( 'minerva' ) );
+
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+
+		$response = $this->executeSpecialPage( '', null, null, $user, $context );
+
+		$pageOutput = $response[0];
+		$this->assertThatHamcrest( 'Reading recommendations appears before other modules',
+			$pageOutput,
+			stringContainsInOrder( 'data-module-name="reading-recommendations"',
+				'data-module-name="suggested-edits"', 'data-module-name="impact"', 'data-module-name="help"' )
+		);
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testReadingRecommendationsModuleFirstWhenUserSelectedReadingAsAccountMotivationOnDesktop() {
+		$user = $this->enableHomepageForTestingWithReadingUser();
+
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+
+		$response = $this->executeSpecialPage( '', null, null, $user );
+
+		$pageOutput = $response[0];
+		$this->assertThatHamcrest( 'Reading recommendations appears before other modules',
+			$pageOutput,
+			stringContainsInOrder( 'data-module-name="reading-recommendations"',
+			'data-module-name="suggested-edits"', 'data-module-name="impact"', 'data-module-name="help"' )
+		);
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testReadingRecommendationsModuleFirstWhenUserSelectedReadingAsAccountMotivationOnMobile() {
+		$user = $this->enableHomepageForTestingWithReadingUser();
+
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+
+		$context = RequestContext::getMain();
+		$context->setAuthority( $user );
+		$context->setLanguage( 'qqx' );
+		$context->setTitle( Title::newFromText( 'Homepage' ) );
+		$skinFactory = MediaWikiServices::getInstance()->getSkinFactory();
+		$context->setSkin( $skinFactory->makeSkin( 'minerva' ) );
+
+		$response = $this->executeSpecialPage( '', null, null, $user, $context );
+
+		$pageOutput = $response[0];
+		$this->assertThatHamcrest( 'Reading recommendations appears before other modules',
+			$pageOutput,
+			stringContainsInOrder( 'data-module-name="reading-recommendations"',
+			'data-module-name="suggested-edits"', 'data-module-name="impact"', 'data-module-name="help"' )
+		);
+	}
+
+	/**
 	 * @dataProvider provideTestMissingParametersToNewcomerTaskSubpath
 	 * @covers ::handleNewcomerTask
 	 * @param array $params
@@ -140,6 +272,20 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		);
 		$this->expectExceptionMessage( $message );
 		$this->executeSpecialPage( 'newcomertask/' . $titleId, $request, null, $user );
+	}
+
+	private function enableHomepageForTestingWithReadingUser(): User {
+		$this->overrideConfigValues( [
+			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTitle',
+		] );
+		$user = $this->getMutableTestUser()->getUser();
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_ENABLE, 1 );
+		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_PT_LINK, 1 );
+		$userOptionsManager->setOption( $user, AccountSetupHooks::ACCOUNT_SETUP_MOTIVATION_PROP, "reading" );
+		$userOptionsManager->saveOptions( $user );
+
+		return $user;
 	}
 
 	private function enableHomepageForTesting(): User {
