@@ -16,6 +16,16 @@
 		}
 	}
 
+	.cdx-card__text__description {
+		overflow: hidden;
+		// Keep long Wikidata descriptions to two lines.
+		display: -webkit-box;
+		// Both properties are needed for widest browser support.
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+
 	// Add subtle color to the mixin.
 	.growthexperiments-reading-recommendations-related-to-icon {
 		.cdx-mixin-css-icon( @cdx-icon-link, @color-subtle, @size-icon-small );
