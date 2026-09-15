@@ -609,6 +609,10 @@
 	"echo-pref-tooltip-ge-newcomer": "Giv mig besked om opgaver for nybegyndere og andre funktioner designet til at hjælpe nye brugere.",
 	"growthexperiments-homepage-community-updates-header": "Opdateringer fra fællesskabet",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lær mere",
+	"growthexperiments-homepage-reading-recommendations-header": "Daglig læsning",
+	"growthexperiments-homepage-reading-recommendations-personalize-title": "Tilpas dine daglige læsninger",
+	"growthexperiments-homepage-reading-recommendations-personalize-text": "Vælg emner af interesse for at personliggøre dine daglige læseanbefalinger.",
+	"growthexperiments-homepage-reading-recommendations-related-to": "Relateret til $1",
 	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|redigering|redigeringer}}, tillykke! Artikler, som {{GENDER:$2|du}} har redigeret, har for nylig modtaget $3 {{PLURAL:$3|visning|visninger}}. Tilgængelige foreslåede redigeringer er ændret.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Prøv andre redigeringer"
 }

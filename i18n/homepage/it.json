@@ -175,9 +175,9 @@
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Puoi}} sempre premere $2 in cima alla pagina per tornare qui.",
 	"growthexperiments-homepage-discovery-thanks-header": "Grazie per aver creato la {{GENDER:$1|tua}} utenza!",
 	"growthexperiments-homepage-discovery-thanks-text": "Premi $2 in cima alla pagina per visitare la {{GENDER:$1|tua}} pagina iniziale ed iniziare.",
-	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Puoi}} sempre aprire il menu laterale e premere $2 per tornare qui",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Puoi}} sempre aprire il menu utenza e premere $2 per tornare qui.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Inizia qui!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Apri il menu laterale e  premi $2 per visitare la {{GENDER:$1|tua}} pagina iniziale.",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Apri il menu utenza e premi $2 per visitare la {{GENDER:$1|tua}} pagina iniziale.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> di <strong>$2</strong> {{PLURAL:$2|suggerimento|suggerimenti}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Fine",
 	"growthexperiments-homepage-suggestededits-pager-loading": "Caricamento…",
@@ -500,6 +500,6 @@
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Ulteriori informazioni",
 	"growthexperiments-homepage-reading-recommendations-header": "Letture quotidiane",
 	"growthexperiments-homepage-reading-recommendations-personalize-title": "Personalizza le tue letture quotidiane",
-	"growthexperiments-homepage-reading-recommendations-personalize-text": "Seleziona gli argomenti di tuo interesse per personalizzare i suggerimenti di lettura giornalieri.",
+	"growthexperiments-homepage-reading-recommendations-personalize-text": "Seleziona gli argomenti di tuo interesse per personalizzare i consigli di lettura giornalieri.",
 	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|modifica|modifiche}}, congratulazioni! Le pagine che {{GENDER:$2|hai}} modificato hanno ricevuto $3 {{PLURAL:$3|visualizzazione|visualizzazioni}} di recente. Le modifiche suggerite disponibili sono cambiate."
 }

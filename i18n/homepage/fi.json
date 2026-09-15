@@ -615,6 +615,10 @@
 	"echo-pref-tooltip-ge-newcomer": "Ilmoita uusien tulokkaiden tehtävistä ja muista uusien käyttäjien avuksi tarkoitetuista ominaisuuksista",
 	"growthexperiments-homepage-community-updates-header": "Yhteisön ilmoitukset",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Lisätietoja",
+	"growthexperiments-homepage-reading-recommendations-header": "Päivän lukuehdotukset",
+	"growthexperiments-homepage-reading-recommendations-personalize-title": "Mukauta päivittäiset lukuehdotuksesi",
+	"growthexperiments-homepage-reading-recommendations-personalize-text": "Valitse kiinnostuksen kohteesi mukauttaaksesi päivittäiset lukusuosituksesi.",
+	"growthexperiments-homepage-reading-recommendations-related-to": "Liittyy artikkeliin $1",
 	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|muokkaus|muokkausta}}, onnittelut! {{GENDER:$2|Muokkaamiasi}} artikkeleita on katsottu $3 {{PLURAL:$3|kerran|kertaa}} viime aikoina. Saatavilla olevat ehdotetut muokkaukset ovat muuttuneet.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Kokeile muita muokkauksia"
 }

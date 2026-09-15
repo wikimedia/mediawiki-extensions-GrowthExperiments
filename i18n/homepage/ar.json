@@ -628,6 +628,10 @@
 	"echo-pref-tooltip-ge-newcomer": "إعلامي بالمهام الخاصة بالوافدين الجدد والميزات الأخرى المصممة لمساعدة المستخدمين الجدد.",
 	"growthexperiments-homepage-community-updates-header": "تحديثات المجتمع",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "معرفة المزيد",
+	"growthexperiments-homepage-reading-recommendations-header": "قراءات يومية",
+	"growthexperiments-homepage-reading-recommendations-personalize-title": "خصّص قراءاتك اليومية",
+	"growthexperiments-homepage-reading-recommendations-personalize-text": "اختيار المواضيع التي تهمكم لتخصيص توصيات القراءة اليومية الخاصة بكم.",
+	"growthexperiments-homepage-reading-recommendations-related-to": "متعلق بـ $1",
 	"growthexperiments-addalink-milestone-notification-header": "{{PLURAL:$1|0|تعديل واحد|تعديلان|$1 تعديلات|$1 تعديلًا|$1 تعديل}}، تهانينا! المقالات التي {{GENDER:$2|قمتَ|قمتِ}} بتعديلها تلقّت {{PLURAL:$3|0|مشاهدة واحدة|مشاهدتين|$3 مشاهدات|$3 مشاهدةً|$3 مشاهدة}} مؤخرًا. التعديلات المقترحة المتاحة قد تغيّرت.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "{{GENDER:|جرّب|جرّبي}} تعديلات أخرى"
 }

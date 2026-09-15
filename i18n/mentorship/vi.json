@@ -17,7 +17,7 @@
 		]
 	},
 	"growthexperiments-exception-not-mentored": "Người dùng không có cố vấn",
-	"growthexperiments-exception-no-mentored-text": "Người dùng không có cố vấn để đặt câu hỏi.",
+	"growthexperiments-exception-no-mentored-text": "{{GENDER:$1|Người dùng}} không có cố vấn để đặt câu hỏi.",
 	"growthexperiments-mentor-dashboard-title": "Bảng điều khiển cố vấn",
 	"growthexperiments-mentor-dashboard-pt-link": "Bảng điều khiển cố vấn",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Để bật trang chủ cố vấn, trước hết {{GENDER:|bạn}} cần phải [[$1|đăng ký làm cố vấn]].",
@@ -249,5 +249,7 @@
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Chỉ các thành viên có ít nhất $1 {{PLURAL:$1|edit|sửa đổi}} và đã mở tài khoản {{PLURAL:$2|day|ngày}} mới có thể đăng ký làm cố vấn.",
 	"tag-mentor_list_change": "Thay đổi về danh sách cố vấn",
 	"tag-mentor_list_change-description": "Đã áp dụng thẻ cho các sửa đổi được thực hiện cho danh sách cố vấn có cấu trúc thông qua GrowthExperiments",
-	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Tính năng cố vấn hiện đang bị tắt. Bảo quản viên có thể bật tính năng cố vấn thông qua [[$1]]."
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "Tính năng cố vấn hiện đang bị tắt. Bảo quản viên có thể bật tính năng cố vấn thông qua [[$1]].",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "Đánh dấu cố vấn $1 là vắng mặt vì không hoạt động trong $2 ngày",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "Xóa cố vấn $1 vì không hoạt động trong $2 ngày"
 }

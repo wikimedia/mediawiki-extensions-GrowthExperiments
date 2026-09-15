@@ -41,5 +41,6 @@
 	"growthexperiments-addimage-caption-title": "Ƙara take",
 	"growthexperiments-structuredtask-user-error": "Ba za mu iya ajiye {{GENDER: | your}} gyara ba saboda {{GENDER: | you}} ba a sake shiga ba. Da fatan za a shiga kuma a sake gwadawa.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Shiga",
-	"growthexperiments-structuredtask-anonuser": "An daina amfani da mai amfani."
+	"growthexperiments-structuredtask-anonuser": "An daina amfani da mai amfani.",
+	"growthexperiments-homepage-reading-recommendations-related-to": "Yana da dangantaka da"
 }

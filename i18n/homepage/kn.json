@@ -3,6 +3,7 @@
 		"authors": [
 			"Anzx",
 			"Mahadevaiah Siddaiah",
+			"Vishwanatha Badikana",
 			"~aanzx",
 			"ಮಲ್ನಾಡಾಚ್ ಕೊಂಕ್ಣೊ"
 		]
@@ -96,5 +97,6 @@
 	"growthexperiments-addimage-skip-dialog-cancel": "ರದ್ದುಮಾಡಿ",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "ಈ ಲೇಖನದ ಭಾಷೆಯಲ್ಲಿ ಬರೆಯಿರಿ: $1",
 	"growthexperiments-structuredtask-user-error-login-cta": "ಲಾಗ್ ಇನ್",
-	"growthexperiments-addimage-summary-label": "ಸಾರಾಂಶ"
+	"growthexperiments-addimage-summary-label": "ಸಾರಾಂಶ",
+	"growthexperiments-homepage-reading-recommendations-related-to": "$1 ಗೆ ಸಂಬಂಧಿಸಿದೆ"
 }
