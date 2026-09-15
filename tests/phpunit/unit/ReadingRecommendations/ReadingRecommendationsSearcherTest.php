@@ -40,7 +40,9 @@ class ReadingRecommendationsSearcherTest extends MediaWikiUnitTestCase {
 			->method( 'setShowSuggestion' )
 			->with( false );
 		$searchEngine->expects( $this->never() )->method( 'setSort' );
-		$searchEngine->expects( $this->never() )->method( 'setFeatureData' );
+		$searchEngine->expects( $this->once() )
+			->method( 'setFeatureData' )
+			->with( 'interwiki', false );
 
 		$searcher = $this->getSearcher( $searchEngine );
 		$this->assertSearchResult(
@@ -75,9 +77,12 @@ class ReadingRecommendationsSearcherTest extends MediaWikiUnitTestCase {
 		$searchEngine->expects( $this->once() )
 			->method( 'setSort' )
 			->with( 'random' );
-		$searchEngine->expects( $this->once() )
+		$features = [];
+		$searchEngine->expects( $this->exactly( 2 ) )
 			->method( 'setFeatureData' )
-			->with( 'random_seed', 42 );
+			->willReturnCallback( static function ( $feature, $value ) use ( &$features ) {
+				$features[$feature] = $value;
+			} );
 
 		$searcher = $this->getSearcher( $searchEngine );
 		$this->assertSearchResult(
@@ -85,6 +90,7 @@ class ReadingRecommendationsSearcherTest extends MediaWikiUnitTestCase {
 			false,
 			$searcher->findFeatured( new TitleValue( NS_CATEGORY, 'Featured_articles' ), 50, 42 )
 		);
+		$this->assertSame( [ 'interwiki' => false, 'random_seed' => 42 ], $features );
 	}
 
 	public function testFindFeaturedWithoutRandomSort() {
@@ -95,7 +101,9 @@ class ReadingRecommendationsSearcherTest extends MediaWikiUnitTestCase {
 		$searchEngine->method( 'getValidSorts' )
 			->willReturn( [ 'relevance' ] );
 		$searchEngine->expects( $this->never() )->method( 'setSort' );
-		$searchEngine->expects( $this->never() )->method( 'setFeatureData' );
+		$searchEngine->expects( $this->once() )
+			->method( 'setFeatureData' )
+			->with( 'interwiki', false );
 
 		$searcher = $this->getSearcher( $searchEngine );
 		$this->assertSearchResult(

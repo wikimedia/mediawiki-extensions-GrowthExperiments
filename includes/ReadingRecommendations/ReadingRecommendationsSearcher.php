@@ -106,6 +106,8 @@ class ReadingRecommendationsSearcher {
 			$searchEngine->setLimitOffset( $limit, 0 );
 			$searchEngine->setNamespaces( [ NS_MAIN ] );
 			$searchEngine->setShowSuggestion( false );
+			// Recommendations only consume results from the local wiki.
+			$searchEngine->setFeatureData( 'interwiki', false );
 			if ( $sort !== null && in_array( $sort, $searchEngine->getValidSorts(), true ) ) {
 				$searchEngine->setSort( $sort );
 				if ( $seed !== null ) {
