@@ -154,9 +154,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
+			'<span %s></span>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
 			'<p>growthexperiments-homepage-discovery-mobile-homepage-banner-text</p>' .
-			'</div><span %s></span>' .
+			'</div>' .
 			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
 			'</div>',
 			$siteNotice
@@ -187,10 +188,11 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
+			'<span %s></span>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
 			'<h2>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header</h2>' .
 			'<p>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text</p>' .
-			'</div><span %s></span>' .
+			'</div>' .
 			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
 			'</div>',
 			$siteNotice

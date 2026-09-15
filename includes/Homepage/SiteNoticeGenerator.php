@@ -262,7 +262,7 @@ class SiteNoticeGenerator {
 			[ 'class' =>
 				'mw-ge-homepage-discovery-banner-mobile',
 			],
-			$message . $closeButton . $arrowToMenu
+			$closeButton . $message . $arrowToMenu
 		);
 
 		$minervaEnableSiteNotice = true;

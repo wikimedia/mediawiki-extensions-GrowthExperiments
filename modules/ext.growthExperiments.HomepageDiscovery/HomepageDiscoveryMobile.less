@@ -1,9 +1,5 @@
 @import 'mediawiki.skin.variables.less';
 
-// The header holding the hamburger icon has max-width: @contentMaxWidthTablet and width: 90%
-// so it stops growing at @contentMaxWidthTablet / 0.9 pixels.
-@hamburger-header-maxwidth: ( @min-width-breakpoint-desktop - 6.7em ) / 0.9;
-
 .mw-ge-homepage-discovery-banner-mobile {
 	display: flex;
 	flex-direction: row;
@@ -11,20 +7,15 @@
 	justify-content: space-between;
 	// positioning parent for the close button
 	position: relative;
-	// padding-left is 14px (see below) for .header-container left padding + 0.615em
-	// for half of hamburger icon width - 11px for arrow left edge / tip distance)
-	// need a separate -left rule to not break CSSJanus
-	padding: 14px 46px;
-	// padding left unset?
-	padding-right: calc( ~'3px + 0.625em' );
+	padding: 14px;
 	box-shadow: 0 2px 3px 0 rgba( 0, 0, 0, 0.15 );
+	gap: 0.5em;
 
 	// this is tailored to Minerva's hamburger menu so don't show it on other skins
 	.skin-minerva & .mw-ge-homepage-discovery-arrow {
 		flex-shrink: 0;
 		width: 64px;
 		height: 54px;
-		margin-left: 25px;
 		transform: scaleX( -1 );
 
 		@media all and ( min-width: @min-width-breakpoint-tablet ) {
@@ -43,13 +34,7 @@
 	}
 
 	.mw-ge-homepage-discovery-message {
-		padding-left: 50px;
-
-		@media all and ( min-width: @min-width-breakpoint-tablet ) {
-			text-align: center;
-			// awkward way to compensate for the arrow
-			padding-left: 103px;
-		}
+		text-align: center;
 
 		h2 {
 			font-size: 1em;
@@ -75,9 +60,6 @@
 	}
 
 	.mw-ge-homepage-discovery-banner-close {
-		position: absolute;
-		top: 14px;
-		left: 14px;
 		cursor: pointer;
 		opacity: @opacity-icon-subtle;
 
