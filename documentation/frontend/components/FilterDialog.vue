@@ -133,14 +133,12 @@ export default {
 	* REVIEW: the following overwrite is set to avoid a duplicated border if
 	* the dialog has scrollable content
 	*/
-	// stylelint-disable-next-line selector-class-pattern
 	&.cdx-dialog--dividers {
-		// stylelint-disable-next-line selector-class-pattern
 		.cdx-dialog__header {
 			padding-bottom: 0;
 			border-bottom: 0;
 		}
-		// stylelint-disable-next-line selector-class-pattern
+
 		.cdx-dialog__footer {
 			padding-top: 0;
 			border-top: 0;

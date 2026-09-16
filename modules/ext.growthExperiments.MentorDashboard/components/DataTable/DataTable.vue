@@ -194,14 +194,12 @@ module.exports = exports = {
 			}
 
 			@media screen {
-				// stylelint-disable-next-line selector-class-pattern
 				html.skin-theme-clientpref-night & {
 					filter: invert( 1 );
 				}
 			}
 
 			@media screen and ( prefers-color-scheme: dark ) {
-				// stylelint-disable-next-line selector-class-pattern
 				html.skin-theme-clientpref-os & {
 					filter: invert( 1 );
 				}

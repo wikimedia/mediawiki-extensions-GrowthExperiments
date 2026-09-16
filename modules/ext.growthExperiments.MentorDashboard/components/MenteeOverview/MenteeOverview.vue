@@ -364,7 +364,6 @@ module.exports = exports = {
 	}
 }
 
-/* stylelint-disable-next-line selector-class-pattern */
 .skin-minerva {
 	.ext-growthExperiments-MenteeOverview {
 		// Override Minerva's default top margin for `.content table` elements

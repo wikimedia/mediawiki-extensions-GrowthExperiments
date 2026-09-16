@@ -284,7 +284,6 @@ export default {
 	* https://phabricator.wikimedia.org/T336265
 	*/
 
-	// stylelint-disable selector-class-pattern
 	&.cdx-dialog--dividers,
 	&.cdx-dialog--has-custom-header,
 	&.cdx-dialog--has-custom-footer {
@@ -302,7 +301,6 @@ export default {
 			padding-top: 0;
 		}
 	}
-	// stylelint-enable selector-class-pattern
 
 	&__header {
 		padding-inline: @spacing-150 @spacing-75;
