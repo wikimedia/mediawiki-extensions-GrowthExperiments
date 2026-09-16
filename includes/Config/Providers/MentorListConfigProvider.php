@@ -9,7 +9,7 @@ use StatusValue;
 
 class MentorListConfigProvider extends DataProvider {
 
-	private function manipulateStatus( StatusValue $status ): StatusValue {
+	protected function finalizeLoadedStatus( StatusValue $status ): StatusValue {
 		if ( $status->isOK() ) {
 			$status->setResult(
 				true,
@@ -19,14 +19,6 @@ class MentorListConfigProvider extends DataProvider {
 			);
 		}
 		return $status;
-	}
-
-	public function loadValidConfiguration(): StatusValue {
-		return $this->manipulateStatus( parent::loadValidConfiguration() );
-	}
-
-	public function loadValidConfigurationUncached(): StatusValue {
-		return $this->manipulateStatus( parent::loadValidConfigurationUncached() );
 	}
 
 	/** @inheritDoc */
@@ -39,7 +31,7 @@ class MentorListConfigProvider extends DataProvider {
 		// needed, as CommunityConfiguration expects an object
 		// REVIEW: Do we want to keep this? See T369608.
 		$newConfig = FormatJson::decode( FormatJson::encode( $newConfig ), false );
-		return parent::storeValidConfiguration( $newConfig, $authority, $summary );
+		return parent::storeValidConfiguration( $newConfig, $authority, $summary, $version );
 	}
 
 	/** @inheritDoc */
@@ -52,6 +44,6 @@ class MentorListConfigProvider extends DataProvider {
 		// needed, as CommunityConfiguration expects an object
 		// REVIEW: Do we want to keep this? See T369608.
 		$newConfig = FormatJson::decode( FormatJson::encode( $newConfig ), false );
-		return parent::alwaysStoreValidConfiguration( $newConfig, $authority, $summary );
+		return parent::alwaysStoreValidConfiguration( $newConfig, $authority, $summary, $version );
 	}
 }
