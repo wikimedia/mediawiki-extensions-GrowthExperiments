@@ -413,5 +413,11 @@ module.exports = exports = defineComponent( {
 			cursor: pointer;
 		}
 	}
+
+	/* stylelint-disable-next-line selector-class-pattern */
+	.cdx-chip-input__input {
+		// TODO: Remove once this has been fixed in Codex, refer to T438046.
+		box-sizing: border-box;
+	}
 }
 </style>
