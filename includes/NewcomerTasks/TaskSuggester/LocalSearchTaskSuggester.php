@@ -70,9 +70,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		array $options = []
 	): TaskSet|StatusValue {
 		$queryType = $taskSetFilters->getInterestFilters() ? 'interests' : 'topics';
-		$timer = $this->statsFactory->getTiming( 'search_task_suggester_seconds' )
-			->setLabel( 'task_suggester', 'local' )
-			->setLabel( 'action', 'suggest' )
+		$timer = $this->statsFactory->getTiming( 'local_search_task_suggester_suggest_seconds' )
 			->setLabel( 'wiki', $this->wikiId )
 			->setLabel( 'query_type', $queryType )
 			->start();
@@ -84,9 +82,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 
 	/** @inheritDoc */
 	public function filter( UserIdentity $user, TaskSet $taskSet ): TaskSet|StatusValue {
-		$timer = $this->statsFactory->getTiming( 'search_task_suggester_seconds' )
-			->setLabel( 'task_suggester', 'local' )
-			->setLabel( 'action', 'filter' )
+		$timer = $this->statsFactory->getTiming( 'local_search_task_suggester_filter_seconds' )
 			->setLabel( 'wiki', $this->wikiId )
 			->setLabel( 'query_type', $taskSet->getFilters()->getInterestFilters() ? 'interests' : 'topics' )
 			->start();
@@ -104,9 +100,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		bool $debug,
 	): ISearchResultSet|StatusValue {
 		$isInterestsQuery = $query->getTopics() && $query->getTopics()[0] instanceof InterestBasedTopic;
-		$timer = $this->statsFactory->getTiming( 'search_task_suggester_seconds' )
-			->setLabel( 'task_suggester', 'local' )
-			->setLabel( 'action', 'search' )
+		$timer = $this->statsFactory->getTiming( 'local_search_task_suggester_search_seconds' )
 			->setLabel( 'wiki', $this->wikiId )
 			->setLabel( 'query_type', $isInterestsQuery ? 'interests' : 'topics' )
 			->start();
