@@ -56,5 +56,6 @@ $cfg['exclude_file_list'][] = '../../extensions/VisualEditor/.phan/stubs/MobileC
 // Ignore PersonalDashboard stubs
 $cfg['exclude_file_list'][] = '../../extensions/PersonalDashboard/.phan/stubs/ExperimentInterface.php';
 $cfg['exclude_file_list'][] = '../../extensions/PersonalDashboard/.phan/stubs/ExperimentManagerInterface.php';
+$cfg['exclude_file_list'][] = '../../extensions/PersonalDashboard/.phan/stubs/DescriptionLookup.php';
 
 return $cfg;
