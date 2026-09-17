@@ -569,12 +569,9 @@ return [
 		}
 		return new LinkRecommendationUpdater(
 			$growthServices->getLogger(),
-			$services->getConnectionProvider(),
 			$growthServices->getGrowthConnectionProvider(),
 			$services->getRevisionStore(),
-			$services->getNameTableStoreFactory()->getChangeTagDef(),
 			$services->getPageProps(),
-			$services->getChangeTagsStore(),
 			$services->getWikiPageFactory(),
 			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 			$growthServices->getNewcomerTasksConfigurationLoader(),

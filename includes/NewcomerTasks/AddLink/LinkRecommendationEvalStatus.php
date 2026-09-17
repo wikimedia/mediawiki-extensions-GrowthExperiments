@@ -18,8 +18,7 @@ class LinkRecommendationEvalStatus extends StatusValue {
 	public const NOT_GOOD_CAUSE_DISAMBIGUATION_PAGE = 'disambiguation_page';
 	public const NOT_GOOD_CAUSE_EXCLUDED_CATEGORY = 'excluded_category';
 	public const NOT_GOOD_CAUSE_EXCLUDED_TEMPLATE = 'excluded_template';
-	public const NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION = 'last_edit_link_recommendation';
-	public const NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION_REVERT = 'last_edit_link_recommendation_revert';
+	public const NOT_GOOD_CAUSE_HAS_PRIOR_SUBMISSION = 'has_prior_submission';
 	public const NOT_GOOD_CAUSE_OTHER = 'other';
 
 	public function getLinkRecommendation(): LinkRecommendation {
