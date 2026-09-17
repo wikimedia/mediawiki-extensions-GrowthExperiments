@@ -10,6 +10,7 @@ use JsonException;
 use MediaWiki\Deferred\LinksUpdate\TemplateLinksTable;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\LinkBatchFactory;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\PageRecord;
 use MediaWiki\Page\PageStore;
 use MediaWiki\Title\TitleFactory;
@@ -420,6 +421,27 @@ class LinkRecommendationStore {
 			->select( '*' )
 			->from( 'growthexperiments_link_submissions' )
 			->where( [ 'gels_revision' => $linkRecommendation->getRevisionId() ] )
+			->caller( __METHOD__ )->fetchRowCount();
+	}
+
+	/**
+	 * Check if there is a submission on a given page
+	 *
+	 * This checks across all revisions of the page.
+	 *
+	 * @param PageIdentity $page
+	 * @param int $flags IDBAccessObject flags
+	 * @return bool
+	 */
+	public function hasSubmissionOnPage( PageIdentity $page, int $flags = 0 ): bool {
+		return (bool)$this->getGrowthDBByFlags( $flags )->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'growthexperiments_link_submissions' )
+			->where( [
+				'gels_page' => $page->getId(),
+				'gels_feedback' => [ 'a', 'r' ],
+			] )
+			->limit( 1 )
 			->caller( __METHOD__ )->fetchRowCount();
 	}
 

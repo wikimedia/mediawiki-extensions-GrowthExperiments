@@ -11,8 +11,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\WikiConfigException;
-use MediaWiki\ChangeTags\ChangeTags;
-use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
@@ -24,14 +22,12 @@ use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\Status\StatusFormatter;
-use MediaWiki\Storage\NameTableStore;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\Utils\MWTimestamp;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Rdbms\DBReadOnlyError;
-use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Timestamp\TimestampFormat;
@@ -47,12 +43,9 @@ class LinkRecommendationUpdater {
 
 	/**
 	 * @param LoggerInterface $logger
-	 * @param IConnectionProvider $connectionProvider
 	 * @param GrowthConnectionProvider $growthConnectionProvider
 	 * @param RevisionStore $revisionStore
-	 * @param NameTableStore $changeDefNameTableStore
 	 * @param PageProps $pageProps
-	 * @param ChangeTagsStore $changeTagsStore
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param StatusFormatter $statusFormatter
 	 * @param ConfigurationLoader $configurationLoader
@@ -63,12 +56,9 @@ class LinkRecommendationUpdater {
 	 */
 	public function __construct(
 		private LoggerInterface $logger,
-		private IConnectionProvider $connectionProvider,
 		private GrowthConnectionProvider $growthConnectionProvider,
 		private RevisionStore $revisionStore,
-		private NameTableStore $changeDefNameTableStore,
 		private PageProps $pageProps,
-		private ChangeTagsStore $changeTagsStore,
 		private WikiPageFactory $wikiPageFactory,
 		private StatusFormatter $statusFormatter,
 		private ConfigurationLoader $configurationLoader,
@@ -245,7 +235,15 @@ class LinkRecommendationUpdater {
 			);
 		}
 
-		// 5. exclude pages that have one of the configured excluded categories
+		// 5. exclude pages that already have a prior submission
+		if ( $this->linkRecommendationStore->hasSubmissionOnPage( $pageIdentity ) ) {
+			return $this->failure(
+				'has a prior submission already',
+				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_HAS_PRIOR_SUBMISSION
+			);
+		}
+
+		// 6. exclude pages that have one of the configured excluded categories
 		$wikipage = $this->wikiPageFactory->newFromID(
 			$pageIdentity->getId()
 		);
@@ -267,7 +265,7 @@ class LinkRecommendationUpdater {
 			);
 		}
 
-		// 6. exclude pages that have one of the configured excluded templates
+		// 7. exclude pages that have one of the configured excluded templates
 		$excludedTemplates = $this->getLinkRecommendationTaskType()->getExcludedTemplates();
 		$numberOfExcludedTemplatesOnPage = $this->linkRecommendationStore->getNumberOfExcludedTemplatesOnPage(
 			$pageIdentity->getId(),
@@ -280,43 +278,6 @@ class LinkRecommendationUpdater {
 			);
 		}
 
-		// 7. exclude pages where the last edit is a link recommendation edit or its revert.
-		$dbr = $this->connectionProvider->getReplicaDatabase();
-		$tags = $this->changeTagsStore->getTagsWithData( $dbr, null, $revision->getId() );
-		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
-			return $this->failure(
-				'last edit is a link recommendation',
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION
-			);
-		}
-		$revertTagData = null;
-		foreach ( ChangeTags::REVERT_TAGS as $revertTagName ) {
-			if ( !empty( $tags[$revertTagName] ) ) {
-				$revertTagData = json_decode( $tags[$revertTagName], true );
-				break;
-			}
-		}
-		if ( is_array( $revertTagData ) ) {
-			$linkRecommendationChangeTagId = $this->changeDefNameTableStore
-				->acquireId( LinkRecommendationTaskTypeHandler::CHANGE_TAG );
-			$revertedAddLinkEditCount = $dbr->newSelectQueryBuilder()
-				->from( 'revision' )
-				->join( 'change_tag', null, [ 'rev_id = ct_rev_id' ] )
-				->where( [
-					'rev_page' => $pageIdentity->getId(),
-					$dbr->expr( 'rev_id', '<=', (int)$revertTagData['newestRevertedRevId'] ),
-					$dbr->expr( 'rev_id', '>=', (int)$revertTagData['oldestRevertedRevId'] ),
-					'ct_tag_id' => $linkRecommendationChangeTagId,
-				] )
-				->caller( __METHOD__ )
-				->fetchRowCount();
-			if ( $revertedAddLinkEditCount > 0 ) {
-				return $this->failure(
-					'last edit reverts a link recommendation edit',
-					LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_LAST_EDIT_LINK_RECOMMENDATION_REVERT
-				);
-			}
-		}
 		return StatusValue::newGood();
 	}
 
