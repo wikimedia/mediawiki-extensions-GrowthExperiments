@@ -108,7 +108,10 @@ class SpecialHomepage extends SpecialPage {
 		$this->isMobile = Util::isMobile( $out->getSkin() );
 
 		$user = $this->getUser();
-		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+		if (
+			$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ||
+			$this->getConfig()->get( 'GEHomepageReadingRecommendationsEnabled' )
+		) {
 			$out->addJsConfigVars( 'wgGENewcomerTasksMaxInterestsForQueries', TaskSetFiltersFactory::MAX_INTERESTS );
 			$accountSetupMotivation = $this->userOptionsManager->getOption(
 				$user,
@@ -128,35 +131,37 @@ class SpecialHomepage extends SpecialPage {
 					] ) );
 				}
 			}
+
+			$interestArticlesEncoded = $this->userOptionsManager->getOption(
+				$user,
+				AccountSetupHooks::INTEREST_ARTICLES_PROP,
+			);
+			if ( $interestArticlesEncoded ) {
+				try {
+					$interestArticles = json_decode( $interestArticlesEncoded, flags: JSON_THROW_ON_ERROR );
+					if ( !is_array( $interestArticles ) || !array_reduce(
+						$interestArticles,
+						static fn ( $carry, $item ) => $carry && is_string( $item ),
+						true
+						) ) {
+						// If this is not an array of strings, then the user has probably messed with it => ignore.
+						$interestArticles = [];
+					}
+				} catch ( JsonException ) {
+					$interestArticles = [];
+				}
+			} else {
+				$interestArticles = [];
+			}
+			$out->addJsConfigVars( [
+				'wgGEInterestArticles' => $interestArticles,
+			] );
 		} else {
 			$this->sendExperimentPageVisitEvent();
 		}
 
-		$interestArticlesEncoded = $this->userOptionsManager->getOption(
-			$user,
-			AccountSetupHooks::INTEREST_ARTICLES_PROP,
-		);
-		if ( $interestArticlesEncoded ) {
-			try {
-				$interestArticles = json_decode( $interestArticlesEncoded, flags: JSON_THROW_ON_ERROR );
-				if ( !is_array( $interestArticles ) || !array_reduce(
-					$interestArticles,
-					static fn ( $carry, $item ) => $carry && is_string( $item ),
-					true
-					) ) {
-					// If this is not an array of strings, then the user has probably messed with it => ignore.
-					$interestArticles = [];
-				}
-			} catch ( JsonException ) {
-				$interestArticles = [];
-			}
-		} else {
-			$interestArticles = [];
-		}
-
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
-			'wgGEInterestArticles' => $interestArticles,
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();
@@ -267,6 +272,9 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function getModules( bool $isMobile, $par = '' ) {
 		$mentorshipState = $this->mentorManager->getMentorshipStateForUser( $this->getUser() );
+		$showReadingRecs = $this->getConfig()->get( 'GEHomepageReadingRecommendationsEnabled' ) ||
+			$this->featureManager->isEarlyOnboardingExperimentTreatment( $this->getUser() );
+
 		$moduleConfig = array_filter( [
 			'banner' => true,
 			'welcomesurveyreminder' => true,
@@ -285,9 +293,7 @@ class SpecialHomepage extends SpecialPage {
 				$mentorshipState === IMentorManager::MENTORSHIP_ENABLED,
 			'mentorship-optin' => $this->wikiConfig->get( 'GEMentorshipEnabled' ) &&
 				$mentorshipState === IMentorManager::MENTORSHIP_OPTED_OUT,
-			ReadingRecommendations::MODULE_ID => $this->getConfig()->get(
-				'GEHomepageReadingRecommendationsEnabled'
-			),
+			ReadingRecommendations::MODULE_ID => $showReadingRecs,
 			'help' => true,
 		] );
 		$modules = [];
