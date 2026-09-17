@@ -167,7 +167,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Subm
 				// FIXME T283606: In theory if $editRevId is set (this is a real edit, not a null edit that
 				//   happens when the user accepted nothing), we can leave search index updates to the
 				//   SearchDataForIndex hook. In practice that does not work because we delete the DB row
-				//   here so the hook logic will assume there's nothing to do. Might want to improve that
+				//   here so the hook logic will assume there’s nothing to do. Might want to improve that
 				//   in the future.
 				true
 			);

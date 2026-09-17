@@ -109,7 +109,7 @@ class ImageRecommendationMetadataService {
 			'action' => 'query',
 			// The File namespace name might be in a different language locally than on the
 			// repo wiki; in theory, even the canonical namespace name might be different as
-			// it's configurable. Just hardcode the standard name.
+			// it’s configurable. Just hardcode the standard name.
 			'titles' => 'File:' . $file->getTitle()->getDBkey(),
 			'prop' => 'categories|pageterms',
 			'clshow' => '!hidden',

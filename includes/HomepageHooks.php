@@ -323,7 +323,7 @@ class HomepageHooks implements
 					),
 				],
 				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' ),
-				// Always output, it's used throughout the suggested editing session.
+				// Always output, it’s used throughout the suggested editing session.
 				'wgGELevelingUpEnabledForUser' => $isLevelingUpEnabledForUser,
 			] );
 		}
@@ -339,7 +339,7 @@ class HomepageHooks implements
 			// needs to be associated with happen early on page load so setting this
 			// on the JS side might be too late. So, we use JS to propagate the clickId
 			// to all edit links, and then use this code to set the JS variable for the
-			// pageview that's initiated by clicking on the edit link. This might be overkill.
+			// pageview that’s initiated by clicking on the edit link. This might be overkill.
 			$out->addJsConfigVars( [
 				'wgWMESchemaEditAttemptStepSessionId' => $clickId,
 			] );

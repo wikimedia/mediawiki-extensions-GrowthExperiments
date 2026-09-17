@@ -280,7 +280,7 @@ class SpecialHomepage extends SpecialPage {
 			'welcomesurveyreminder' => true,
 			'startemail' => !$this->getUser()->isEmailConfirmed(),
 			// Only load start-startediting code (the uninitiated view of suggested edits) for desktop users who
-			// haven't activated SE yet.
+			// haven’t activated SE yet.
 			'start-startediting' => SuggestedEdits::isEnabledForAnyone(
 				$this->getContext()->getConfig()
 			) && ( !$par && !$isMobile &&
@@ -493,7 +493,7 @@ class SpecialHomepage extends SpecialPage {
 		}
 		$title = $this->titleFactory->newFromID( $titleId );
 		if ( !$title ) {
-			// Will bring the user back to Special:Homepage, since we couldn't load a title.
+			// Will bring the user back to Special:Homepage, since we couldn’t load a title.
 			return false;
 		}
 

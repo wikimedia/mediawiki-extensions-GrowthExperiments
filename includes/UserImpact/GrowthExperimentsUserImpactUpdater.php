@@ -74,7 +74,7 @@ class GrowthExperimentsUserImpactUpdater {
 
 		$this->jobQueueGroup->push( new JobSpecification( RefreshUserImpactJob::JOB_NAME, [
 			'impactDataBatch' => [ $userIdentity->getId() => null ],
-			// We want to regenerate the page view data, so set staleBefore that's
+			// We want to regenerate the page view data, so set staleBefore that’s
 			// guaranteed to result in cache invalidation
 			'staleBefore' => MWTimestamp::time() + ExpirationAwareness::TTL_SECOND,
 		] ) );

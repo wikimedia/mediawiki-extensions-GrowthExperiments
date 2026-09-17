@@ -229,7 +229,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			$imageSubmissionHandler->invalidateRecommendation(
 				$taskType,
 				$pageIdentity,
-				// We need to pass a user ID for event logging purposes. We can't easily
+				// We need to pass a user ID for event logging purposes. We can’t easily
 				// access a user ID here; passing 0 for an anonymous user seems OK.
 				0,
 				null,
@@ -240,7 +240,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			return $status;
 		}
 		// If $status is bad but $images is not empty (fetching some but not all images failed),
-		// we can just ignore the errors, they won't be a problem for the recommendation workflow.
+		// we can just ignore the errors, they won’t be a problem for the recommendation workflow.
 		return new ImageRecommendation( $linkTarget, $images, $datasetId );
 	}
 

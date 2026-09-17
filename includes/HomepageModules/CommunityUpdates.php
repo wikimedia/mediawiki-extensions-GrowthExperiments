@@ -166,7 +166,7 @@ class CommunityUpdates extends BaseModule {
 		$status = Util::getJsonUrl(
 			$this->httpRequestFactory,
 			$url,
-			// Assume we're on the same wikifarm, this enhances request with extra headers that
+			// Assume we’re on the same wikifarm, this enhances request with extra headers that
 			// are ocassionally useful for debugging
 			true
 		);

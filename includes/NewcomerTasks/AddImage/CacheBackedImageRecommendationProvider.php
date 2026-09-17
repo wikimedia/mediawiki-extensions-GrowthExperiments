@@ -69,7 +69,7 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 		$wasCacheHit = true;
 		$dataToBeReturned = $cache->getWithSetCallback(
 			self::makeKey( $cache, $taskType->getId(), $title->getDBkey() ),
-			// The recommendation won't change, but other metadata might and caching
+			// The recommendation won’t change, but other metadata might and caching
 			// for longer might be problematic if e.g. the image got vandalized.
 			$cache::TTL_MINUTE * 5,
 			static function ( $oldValue, &$ttl ) use (
@@ -85,9 +85,9 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 			}
 		);
 
-		// When TaskSetListener->run calls the method, we're warming the cache and do not want to track hit/miss rates.
+		// When TaskSetListener->run calls the method, we’re warming the cache and do not want to track hit/miss rates.
 		// We want to instrument cache misses when we get here from the ::get method,
-		// because that's called in BeforePageDisplay where we expect to have a cached result.
+		// because that’s called in BeforePageDisplay where we expect to have a cached result.
 		if ( $fname === __CLASS__ . '::get' ) {
 			$statsFactory->withComponent( 'GrowthExperiments' )
 				->getCounter( 'cache_backed_image_recommendation_provider_total' )
