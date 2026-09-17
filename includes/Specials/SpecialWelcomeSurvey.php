@@ -262,10 +262,24 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$hasReasonResponse = isset( $data['reason'] ) && $data['reason'] !== 'placeholder';
 		$hasEditingResponse = isset( $data['edited'] ) && $data['edited'] !== 'placeholder';
 
+		$experiment = $this->experimentManager
+			?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST );
+
+		if ( !$experiment ) {
+			return;
+		}
+
 		if ( $hasReasonResponse && $hasEditingResponse ) {
-			$this->experimentManager
-				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST )
-				->send( 'welcome_survey_account_setup_submitted_complete' );
+			$experiment->send( 'welcome_survey_account_setup_submitted_complete' );
+		}
+
+		if ( isset( $data['reason'] ) ) {
+			$experiment->send(
+				'welcome_survey_account_setup_motivation_saved',
+				[
+					'action_context' => $data['reason'] !== 'placeholder' ? $data['reason'] : 'skipped',
+				],
+			);
 		}
 	}
 

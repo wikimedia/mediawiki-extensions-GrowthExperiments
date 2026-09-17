@@ -1,11 +1,12 @@
 const { defineStore } = require( 'pinia' );
-const { ref } = require( 'vue' );
+const { ref, inject } = require( 'vue' );
 
 module.exports = defineStore( 'accountSetup', () => {
 	const api = new mw.Api();
 
 	const step = ref( 0 );
 	const modulePreset = ref( 'skipped' );
+	const experiment = inject( 'experiment' );
 
 	const storedInterestArticles = mw.config.get( 'wgGEInterestArticles', [] );
 
@@ -20,6 +21,13 @@ module.exports = defineStore( 'accountSetup', () => {
 	}
 
 	async function saveInitialModulePreset() {
+		experiment.send(
+			'welcome_survey_account_setup_motivation_saved',
+			{
+				// eslint-disable-next-line camelcase
+				action_context: modulePreset.value,
+			},
+		);
 		return api.saveOption( 'growthexperiments-account-setup-motivation', modulePreset.value ).catch( ( error ) => {
 			mw.errorLogger.logError(
 				new Error( 'AccountSetup: failed to save motivation: ' + error ),
