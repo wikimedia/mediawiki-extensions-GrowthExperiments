@@ -23,6 +23,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Domovská stránka nováčka",
 	"growthexperiments-homepage-tab": "Domovská stránka",
 	"tooltip-pt-homepage": "{{GENDER:|Vaše}} Domovská stránka",
 	"prefs-homepage": "Funkce pro podporu nováčků",

@@ -613,6 +613,7 @@
 	"growthexperiments-homepage-community-updates-header": "Actualizacións da comunidade",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Máis información",
 	"growthexperiments-homepage-reading-recommendations-header": "Lecturas diarias",
+	"growthexperiments-homepage-reading-recommendations-empty": "Hoxe non hai recomendacións de lectura. Volve mañá.",
 	"growthexperiments-homepage-reading-recommendations-personalize-title": "Personaliza as túas lecturas diarias",
 	"growthexperiments-homepage-reading-recommendations-personalize-text": "Selecciona temas de interese para personalizar as túas recomendacións de lectura diarias.",
 	"growthexperiments-homepage-reading-recommendations-related-to": "Relacionado con \"$1\"",

@@ -296,6 +296,9 @@
 	"growthexperiments-interest-selector-a11y-label": "Maraqlarını seç",
 	"growthexperiments-interest-selector-related-articles-heading": "Əlaqəli məqalələr",
 	"growthexperiments-interest-selector-success": "Hər şey hazırdır! Eviniz fərdiləşdirilib və hazırdır.",
+	"growthexperiments-interest-selector-dialog-title": "Maraqlarınızı seçin",
+	"growthexperiments-interest-selector-dialog-save-button-label": "Hazırdır",
+	"growthexperiments-interest-selector-dialog-cancel-button-label": "İmtina",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Maraq {{GENDER:$1|dairənizə}} aid olan mövzuları seçin",
 	"growthexperiments-homepage-claimmentee-title": "İstifadəçi tələb et",
 	"growthexperiments-homepage-claimmentee-pretext": "Bu səhifə istifadəçinin mentorunu {{GENDER:$1|özünüzə}} dəyişmək imkanı verir. Tanıdığınız istifadəçilərdə ya da mentorluq etdiyiniz istifadəçilərdə bunu istifadə etməyiniz tövsiyə edilir.",
@@ -614,9 +617,11 @@
 	"growthexperiments-homepage-community-updates-header": "İcma Yeniləmələri",
 	"growthexperiments-homepage-communityupdates-calltoaction-button": "Daha ətraflı",
 	"growthexperiments-homepage-reading-recommendations-header": "Gündəlik oxumalar",
+	"growthexperiments-homepage-reading-recommendations-empty": "Bu gün oxumaq üçün tövsiyə yoxdur. Sabah yenidən yoxlayın.",
 	"growthexperiments-homepage-reading-recommendations-personalize-title": "Gündəlik oxumalarınızı fərdiləşdirin",
 	"growthexperiments-homepage-reading-recommendations-personalize-text": "Gündəlik oxu tövsiyələrinizi fərdiləşdirmək üçün maraqlı mövzular seçin.",
 	"growthexperiments-homepage-reading-recommendations-related-to": "$1 ilə əlaqəli",
+	"growthexperiments-homepage-reading-recommendations-personalize-cta": "Maraqlarınızı seçin",
 	"growthexperiments-addalink-milestone-notification-header": "$1 {{PLURAL:$1|redaktə}}, təbriklər! Redaktə {{GENDER:$2|etdiyiniz}} məqalələrə bu yaxınlarda $3 {{PLURAL:$1|oxunuş}} gəlib. Mövcud təklif edilən redaktələr dəyişdirilib.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Digər redaktələri sına"
 }

@@ -191,7 +191,7 @@
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|U}} kunt altijd op $2 klikken bovenaan de pagina om hier terug te keren.",
 	"growthexperiments-homepage-discovery-thanks-header": "Bedankt voor het aanmaken van een {{GENDER:$1|uw}} account!",
 	"growthexperiments-homepage-discovery-thanks-text": "Klik op $2 bovenaan de pagina om naar {{GENDER:$1|uw}} startpagina te gaan en aan de slag te gaan.",
-	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|U}} kunt altijd het accountenu openen en op $2 tikken om hier terug te keren.",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|U}} kunt altijd het accountmenu openen en op $2 tikken om hier terug te keren.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Begin hier!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Open het accountmenu en tik op $2 om naar {{GENDER:$1|uw}} startpagina te gaan.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> van <strong>$2</strong> {{PLURAL:$2|suggestie|suggesties}}",

@@ -24,6 +24,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>जब आपने अपना खाता बनाया था, तब आपने कहा था कि आप कोई फ़ोटो या चित्र जोड़ना चाहते हैं।</strong> यह सम्पादन करने का एक महत्वपूर्ण मगर चुनौतीपूर्ण तरीका है, इसलिए हम आपको पहले कुछ सरल सम्पादन करने की सलाह देते हैं। अगर आप सीधे फ़ोटो या चित्र ही जोड़ना चाहते हैं तो आप [$1 यहाँ पर जान सकते हैं] कि ऐसा कैसे करना है।",
 	"growthexperiments-homepage-discovery-thanks-text": "{{GENDER:$1|अपने}} मुख पृष्ठ पर जाने और आरंभ करने के लिए पृष्ठ के शीर्ष पर $2 पर क्लिक करें।",
 	"growthexperiments-homepage-suggestededits-pager-loading": "लोड हो रहा है…",
+	"growthexperiments-homepage-suggestededits-interest-filters-close": "हो गया",
+	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "रद्द करें",
 	"right-setmentor": "सदस्य का उपदेशक सेट करना",
 	"action-setmentor": "सदस्य का उपदेशक सेट करने",
 	"right-managementors": "उपदेशक प्रबंधित करना",
