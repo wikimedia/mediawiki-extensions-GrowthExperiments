@@ -23,22 +23,22 @@ mw.loader.using( [ 'ext.testKitchen' ] ).then( async () => {
 } );
 
 if ( !launchButton ) {
-	throw new Error( 'Launch button not found' );
-} else {
-	launchButton.addEventListener( 'click', ( event ) => {
-		event.preventDefault();
-
-		const container = document.createElement( 'div' );
-		document.body.appendChild( container );
-
-		const app = createMwApp( InterestSelectorDialog, {
-			onDismiss: () => cleanup(),
-		} );
-		app.mount( container );
-
-		function cleanup() {
-			app.unmount();
-			container.remove();
-		}
-	} );
+	return;
 }
+
+launchButton.addEventListener( 'click', ( event ) => {
+	event.preventDefault();
+
+	const container = document.createElement( 'div' );
+	document.body.appendChild( container );
+
+	const app = createMwApp( InterestSelectorDialog, {
+		onDismiss: () => cleanup(),
+	} );
+	app.mount( container );
+
+	function cleanup() {
+		app.unmount();
+		container.remove();
+	}
+} );
