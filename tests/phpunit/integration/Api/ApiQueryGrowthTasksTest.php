@@ -18,6 +18,8 @@ use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Api\ApiUsageException;
+use MediaWiki\Config\HashConfig;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\User;
@@ -387,8 +389,11 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->assertSame( 'interests', $interestsParam['name'] );
 		$this->assertSame( 'title', $interestsParam['type'] );
 		$this->assertTrue( $interestsParam['multi'] );
-		$this->assertSame( TaskSetFiltersFactory::MAX_INTERESTS, $interestsParam['limit'] );
-		$this->assertSame( TaskSetFiltersFactory::MAX_INTERESTS, $interestsParam['highlimit'] );
+		$this->assertSame( $this->getConfVar( 'GENewcomerTasksMaxInterestsForQueries' ), $interestsParam['limit'] );
+		$this->assertSame(
+			$this->getConfVar( 'GENewcomerTasksMaxInterestsForQueries' ),
+			$interestsParam['highlimit']
+		);
 		$this->assertArrayHasKey( 'paraminfo', $data );
 
 		// Make sure loading errors do not break parameter info
@@ -424,7 +429,14 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->setService( 'GrowthExperimentsTaskSetFiltersFactory',
 			new TaskSetFiltersFactory(
 				$growthServices->getNewcomerTasksUserOptionsLookup(),
-				$featureManager
+				$featureManager,
+				new ServiceOptions(
+					TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+					new HashConfig( [
+						'GENewcomerTasksMaxInterestsForQueries' =>
+							$this->getConfVar( 'GENewcomerTasksMaxInterestsForQueries' ),
+					] ),
+				),
 			)
 		);
 		return $user;

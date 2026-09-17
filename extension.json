@@ -3142,6 +3142,14 @@
 		"GEAccountSetupExperimentStartRegistrationDate": {
 			"description": "The experiment will only consider new users that register after the given date. ISO",
 			"value": null
+		},
+		"GENewcomerTasksInterestBasedTaskPoolSize": {
+			"description": "The maximum pool of interest-based tasks to build and cache for each user. Can be reduced to soften the load on the search cluster. See also GENewcomerTasksMaxInterestsForQueries config option. Never set below 20, because that would cause ALL requests to be uncached!",
+			"value": 50
+		},
+		"GENewcomerTasksMaxInterestsForQueries": {
+			"description": "The maximum number of user-provided interests to take into account when fetching new tasks with 'morelikethis:'. This will momentarily cause more queries due to the cache being invalidated for them, but should over time soften the load on the search cluster. See also GENewcomerTasksInterestBasedTaskPoolSize config option.",
+			"value": 10
 		}
 	},
 	"SpecialPages": {

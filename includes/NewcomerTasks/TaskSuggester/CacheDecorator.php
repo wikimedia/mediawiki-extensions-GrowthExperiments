@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\JobQueue\Exceptions\JobQueueError;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
@@ -27,13 +28,11 @@ use Wikimedia\ObjectCache\WANObjectCache;
  */
 class CacheDecorator implements TaskSuggester {
 
+	public const array CONSTRUCTOR_OPTIONS = [
+		'GENewcomerTasksInterestBasedTaskPoolSize',
+	];
 	private const CACHE_VERSION = 6;
-
-	/**
-	 * Target size of the cached pool of interest-based tasks. Telemetry from the
-	 * early-onboarding experiment should drive any change to it (T435365).
-	 */
-	public const INTEREST_POOL_SIZE = 50;
+	private readonly int $interestTaskPoolSize;
 
 	public function __construct(
 		private readonly TaskSuggester $taskSuggester,
@@ -44,7 +43,15 @@ class CacheDecorator implements TaskSuggester {
 		private readonly LinkBatchFactory $linkBatchFactory,
 		private readonly TitleFactory $titleFactory,
 		private readonly LoggerInterface $logger,
+		private readonly ServiceOptions $options,
 	) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
+		$this->interestTaskPoolSize = max( 20, $this->options->get( 'GENewcomerTasksInterestBasedTaskPoolSize' ) );
+		if ( $this->options->get( 'GENewcomerTasksInterestBasedTaskPoolSize' ) < 20 ) {
+			$this->logger->error(
+				'The config option GENewcomerTasksInterestBasedTaskPoolSize has a minimum limit of 20.'
+			);
+		}
 	}
 
 	/** @inheritDoc */
@@ -220,7 +227,7 @@ class CacheDecorator implements TaskSuggester {
 	 */
 	private function getPoolSize( TaskSetFilters $taskSetFilters ): int {
 		return $taskSetFilters->isInterestBased()
-			? self::INTEREST_POOL_SIZE
+			? $this->interestTaskPoolSize
 			: SearchTaskSuggester::DEFAULT_LIMIT;
 	}
 

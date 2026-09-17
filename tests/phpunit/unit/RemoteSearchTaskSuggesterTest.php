@@ -7,7 +7,6 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
@@ -49,6 +48,11 @@ use TestLogger;
  * @covers \GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler::createTaskFromSearchResult
  */
 class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
+
+	/**
+	 * See also GENewcomerTasksInterestBasedTaskPoolSize
+	 */
+	private const int DEFAULT_INTEREST_TASK_POOL_SIZE = 50;
 
 	/**
 	 * @dataProvider provideSuggest
@@ -244,10 +248,10 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 		$taskSet = $suggester->suggest( $user,
 			new TaskSetFilters( [ 'copyedit', 'link' ], [], null, $interests ),
-			CacheDecorator::INTEREST_POOL_SIZE );
+			self::DEFAULT_INTEREST_TASK_POOL_SIZE );
 
 		$this->assertInstanceOf( TaskSet::class, $taskSet );
-		$this->assertCount( CacheDecorator::INTEREST_POOL_SIZE, $taskSet );
+		$this->assertCount( self::DEFAULT_INTEREST_TASK_POOL_SIZE, $taskSet );
 		// Every interest reaches the pool, because the queries are read in turn.
 		$interestsInPool = [];
 		foreach ( $taskSet as $task ) {
@@ -302,10 +306,10 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 		$taskSet = $suggester->suggest( $user,
 			new TaskSetFilters( [ 'copyedit', 'link' ], [], null, $interests ),
-			CacheDecorator::INTEREST_POOL_SIZE );
+			self::DEFAULT_INTEREST_TASK_POOL_SIZE );
 
 		$this->assertInstanceOf( TaskSet::class, $taskSet );
-		$this->assertCount( CacheDecorator::INTEREST_POOL_SIZE, $taskSet );
+		$this->assertCount( self::DEFAULT_INTEREST_TASK_POOL_SIZE, $taskSet );
 	}
 
 	public function testSuggestWithInterestsSkipsInvalidTitles() {

@@ -8,6 +8,8 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use MediaWiki\Config\HashConfig;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -25,7 +27,13 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 	public function testNewFromUserUsesThePreferences(): void {
 		$factory = new TaskSetFiltersFactory(
 			$this->getUserOptionsLookup(),
-			$this->getFeatureManager( false )
+			$this->getFeatureManager( false ),
+			new ServiceOptions(
+				TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GENewcomerTasksMaxInterestsForQueries' => 10,
+				] ),
+			),
 		);
 
 		$this->assertEquals(
@@ -37,7 +45,16 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 	public function testNewFromUserWithExplicitTaskTypes(): void {
 		$userOptionsLookup = $this->getUserOptionsLookup();
 		$userOptionsLookup->expects( $this->never() )->method( 'getTaskTypeFilter' );
-		$factory = new TaskSetFiltersFactory( $userOptionsLookup, $this->getFeatureManager( false ) );
+		$factory = new TaskSetFiltersFactory(
+			$userOptionsLookup,
+			$this->getFeatureManager( false ),
+			new ServiceOptions(
+				TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GENewcomerTasksMaxInterestsForQueries' => 10,
+				] ),
+			),
+		);
 
 		$this->assertEquals(
 			new TaskSetFilters( [ 'links' ], [ 'ores' ], SearchStrategy::TOPIC_MATCH_MODE_AND ),
@@ -48,7 +65,13 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 	public function testNewFromUserIgnoresTheInterestsOfAControlUser(): void {
 		$factory = new TaskSetFiltersFactory(
 			$this->getUserOptionsLookup( self::TWELVE_INTERESTS ),
-			$this->getFeatureManager( false )
+			$this->getFeatureManager( false ),
+			new ServiceOptions(
+				TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GENewcomerTasksMaxInterestsForQueries' => 10,
+				] ),
+			),
 		);
 
 		$this->assertEquals(
@@ -61,14 +84,24 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 		$userOptionsLookup = $this->getUserOptionsLookup( self::TWELVE_INTERESTS );
 		$userOptionsLookup->expects( $this->never() )->method( 'getTopics' );
 		$userOptionsLookup->expects( $this->once() )->method( 'getTopicsMatchMode' );
-		$factory = new TaskSetFiltersFactory( $userOptionsLookup, $this->getFeatureManager( true ) );
+		$maxInterests = 9;
+		$factory = new TaskSetFiltersFactory(
+			$userOptionsLookup,
+			$this->getFeatureManager( true ),
+			new ServiceOptions(
+				TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GENewcomerTasksMaxInterestsForQueries' => $maxInterests,
+				] ),
+			),
+		);
 
 		$this->assertEquals(
 			new TaskSetFilters(
 				[ 'copyedit' ],
 				[],
 				SearchStrategy::TOPIC_MATCH_MODE_AND,
-				array_slice( self::TWELVE_INTERESTS, 0, TaskSetFiltersFactory::MAX_INTERESTS )
+				array_slice( self::TWELVE_INTERESTS, 0, $maxInterests )
 			),
 			$factory->newFromUser( $this->getUser() )
 		);
@@ -77,7 +110,13 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 	public function testNewFromUserGivesATreatmentUserWithoutInterestsNoFilters(): void {
 		$factory = new TaskSetFiltersFactory(
 			$this->getUserOptionsLookup(),
-			$this->getFeatureManager( true )
+			$this->getFeatureManager( true ),
+			new ServiceOptions(
+				TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GENewcomerTasksMaxInterestsForQueries' => 10,
+				] ),
+			),
 		);
 
 		$this->assertEquals(
@@ -88,18 +127,27 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 
 	public function testGetInterestFilters(): void {
 		$user = $this->getUser();
+		$maxInterests = 9;
+		$options = new ServiceOptions(
+			TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+			new HashConfig( [
+				'GENewcomerTasksMaxInterestsForQueries' => $maxInterests,
+			] ),
+		);
 		$controlFactory = new TaskSetFiltersFactory(
 			$this->getUserOptionsLookup( self::TWELVE_INTERESTS ),
-			$this->getFeatureManager( false )
+			$this->getFeatureManager( false ),
+			$options,
 		);
 		$treatmentFactory = new TaskSetFiltersFactory(
 			$this->getUserOptionsLookup( self::TWELVE_INTERESTS ),
-			$this->getFeatureManager( true )
+			$this->getFeatureManager( true ),
+			$options,
 		);
 
 		$this->assertSame( [], $controlFactory->getInterestFilters( $user ) );
 		$this->assertSame(
-			array_slice( self::TWELVE_INTERESTS, 0, TaskSetFiltersFactory::MAX_INTERESTS ),
+			array_slice( self::TWELVE_INTERESTS, 0, $maxInterests ),
 			$treatmentFactory->getInterestFilters( $user )
 		);
 	}

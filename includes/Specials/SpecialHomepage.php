@@ -13,7 +13,6 @@ use GrowthExperiments\HomepageModules\ReadingRecommendations;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Mentorship\IMentorManager;
-use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
@@ -112,7 +111,10 @@ class SpecialHomepage extends SpecialPage {
 		if (
 			$this->featureManager->isEarlyOnboardingExperimentTreatment( $user )
 		) {
-			$out->addJsConfigVars( 'wgGENewcomerTasksMaxInterestsForQueries', TaskSetFiltersFactory::MAX_INTERESTS );
+			$out->addJsConfigVars(
+				'wgGENewcomerTasksMaxInterestsForQueries',
+				$this->getConfig()->get( 'GENewcomerTasksMaxInterestsForQueries' )
+			);
 			$accountSetupMotivation = $this->userOptionsManager->getOption(
 				$user,
 				AccountSetupHooks::ACCOUNT_SETUP_MOTIVATION_PROP,

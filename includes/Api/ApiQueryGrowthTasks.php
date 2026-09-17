@@ -240,8 +240,10 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			'interests' => [
 				ParamValidator::PARAM_TYPE => 'title',
 				ParamValidator::PARAM_ISMULTI => true,
-				ParamValidator::PARAM_ISMULTI_LIMIT1 => TaskSetFiltersFactory::MAX_INTERESTS,
-				ParamValidator::PARAM_ISMULTI_LIMIT2 => TaskSetFiltersFactory::MAX_INTERESTS,
+				ParamValidator::PARAM_ISMULTI_LIMIT1 =>
+					$this->getConfig()->get( 'GENewcomerTasksMaxInterestsForQueries' ),
+				ParamValidator::PARAM_ISMULTI_LIMIT2 =>
+					$this->getConfig()->get( 'GENewcomerTasksMaxInterestsForQueries' ),
 			],
 			'limit' => [
 				ParamValidator::PARAM_TYPE => 'limit',

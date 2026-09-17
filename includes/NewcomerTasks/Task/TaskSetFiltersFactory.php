@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\Task;
 
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -16,13 +17,16 @@ use MediaWiki\User\UserIdentity;
  */
 class TaskSetFiltersFactory {
 
-	/** The maximum number of interests used for suggestions. */
-	public const int MAX_INTERESTS = 10;
+	public const array CONSTRUCTOR_OPTIONS = [
+		'GENewcomerTasksMaxInterestsForQueries',
+	];
 
 	public function __construct(
 		private readonly NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		private readonly FeatureManager $featureManager,
+		private readonly ServiceOptions $options,
 	) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 	}
 
 	/**
@@ -88,7 +92,7 @@ class TaskSetFiltersFactory {
 		return array_slice(
 			$this->newcomerTasksUserOptionsLookup->getInterests( $user ),
 			0,
-			self::MAX_INTERESTS
+			$this->options->get( 'GENewcomerTasksMaxInterestsForQueries' ),
 		);
 	}
 

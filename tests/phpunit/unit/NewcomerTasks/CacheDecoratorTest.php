@@ -15,6 +15,8 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Config\HashConfig;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Json\JsonCodec;
@@ -38,6 +40,7 @@ use Wikimedia\ObjectCache\WANObjectCache;
  */
 class CacheDecoratorTest extends MediaWikiUnitTestCase {
 
+	private const int INTEREST_TASK_POOL_SIZE = 40;
 	private WANObjectCache $cache;
 	private UserIdentityValue $user;
 	/** @var JobSpecification[] Jobs the decorator pushed. */
@@ -353,7 +356,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 			],
 			'interests' => [
 				new TaskSetFilters( [ 'copyedit' ], [], null, [ 'Coffee' ] ),
-				CacheDecorator::INTEREST_POOL_SIZE,
+				self::INTEREST_TASK_POOL_SIZE,
 			],
 		];
 	}
@@ -385,7 +388,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 			'topics, above the pool' => [ $topics, SearchTaskSuggester::DEFAULT_LIMIT + 1, 2 ],
 			'interests, module fetch with lookahead' => [ $interests, 20, 1 ],
 			'interests, above the pool' => [
-				$interests, CacheDecorator::INTEREST_POOL_SIZE + 1, 2,
+				$interests, self::INTEREST_TASK_POOL_SIZE + 1, 2,
 			],
 		];
 	}
@@ -652,6 +655,12 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( LinkBatchFactory::class, [ 'newLinkBatch' ] ),
 			$this->newTitleFactory( $pageIds ),
 			$logger ?? new NullLogger(),
+			new ServiceOptions(
+				CacheDecorator::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GENewcomerTasksInterestBasedTaskPoolSize' => self::INTEREST_TASK_POOL_SIZE,
+				] ),
+			),
 		];
 		$args[5]->method( 'newLinkBatch' )->willReturn(
 			$this->createNoOpMock( LinkBatch::class, [ 'setCaller', 'execute' ] )

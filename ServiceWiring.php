@@ -1139,6 +1139,10 @@ return [
 		return new TaskSetFiltersFactory(
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
 			$growthServices->getFeatureManager(),
+			new ServiceOptions(
+				TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+				$growthServices->getGrowthConfig(),
+			),
 		);
 	},
 
@@ -1201,6 +1205,10 @@ return [
 							$services->getLinkBatchFactory(),
 							$services->getTitleFactory(),
 							$growthServices->getLogger(),
+							new ServiceOptions(
+								CacheDecorator::CONSTRUCTOR_OPTIONS,
+								$growthServices->getGrowthConfig(),
+							),
 						],
 					],
 					[

@@ -7,6 +7,8 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
+use MediaWiki\Config\HashConfig;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\JsonCodec;
 use MediaWiki\Page\LinkBatchFactory;
@@ -49,6 +51,12 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 					$this->createMock( LinkBatchFactory::class ),
 					$this->createMock( TitleFactory::class ),
 					new NullLogger(),
+					new ServiceOptions(
+						CacheDecorator::CONSTRUCTOR_OPTIONS,
+						new HashConfig( [
+							'GENewcomerTasksInterestBasedTaskPoolSize' => 50,
+						] ),
+					),
 				],
 			],
 		], new NullLogger() );
