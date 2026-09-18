@@ -10,8 +10,6 @@
 	"rest-endpoint-summ-get-growthexperiments-suggestions-addlink": "Get link suggestions for a page",
 	"rest-endpoint-desc-put-growthexperiments-suggestions-addimage-feedback": "Records feedback, by the current user, on image suggestions for page content.",
 	"rest-endpoint-summ-put-growthexperiments-suggestions-addimage-feedback": "Provide feedback for page image suggestions",
-	"rest-endpoint-desc-get-growthexperiments-suggestions-info": "Shows information useful for monitoring link and image suggestions, broken down by topic.",
-	"rest-endpoint-summ-get-growthexperiments-suggestions-info": "Get suggestion information",
 	"rest-endpoint-desc-get-growthexperiments-mentees": "Returns info about the mentees being mentored by a given user.",
 	"rest-endpoint-summ-get-growthexperiments-mentees": "Get mentees",
 	"rest-endpoint-desc-get-growthexperiments-mentees-prefixsearch": "Returns info about the mentees being mentored by a given user, filtered by mentee name prefix.",

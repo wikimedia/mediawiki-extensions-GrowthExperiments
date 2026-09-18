@@ -10,8 +10,6 @@
 	"rest-endpoint-summ-get-growthexperiments-suggestions-addlink": "{{Experimental}} REST API endpoint summary for the endpoint to get page link suggestions",
 	"rest-endpoint-desc-put-growthexperiments-suggestions-addimage-feedback": "{{Experimental}} REST API endpoint description for the endpoint to record feedback on image suggestions",
 	"rest-endpoint-summ-put-growthexperiments-suggestions-addimage-feedback": "{{Experimental}} REST API endpoint summary for the endpoint to record feedback on image suggestions",
-	"rest-endpoint-desc-get-growthexperiments-suggestions-info": "{{Experimental}} REST API endpoint description for the endpoint to get info useful for monitoring suggestions",
-	"rest-endpoint-summ-get-growthexperiments-suggestions-info": "{{Experimental}} REST API endpoint summary for the endpoint to get info useful for monitoring suggestions",
 	"rest-endpoint-desc-get-growthexperiments-mentees": "{{Experimental}} REST API endpoint description for the endpoint to get info for mentees of a mentor",
 	"rest-endpoint-summ-get-growthexperiments-mentees": "{{Experimental}} REST API endpoint summary for the endpoint to get info for mentees of a mentor",
 	"rest-endpoint-desc-get-growthexperiments-mentees-prefixsearch": "{{Experimental}} REST API endpoint description for the endpoint to get info for mentees of a mentor, filtered by mentee name prefix",

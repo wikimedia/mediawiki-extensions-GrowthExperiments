@@ -50,20 +50,6 @@
 				}
 			}
 		},
-		"/suggestions/info": {
-			"get": {
-				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-suggestions-info",
-				"x-i18n-summary": "rest-endpoint-summ-get-growthexperiments-suggestions-info",
-				"handler": {
-					"class": "GrowthExperiments\\Rest\\Handler\\SuggestionsInfoHandler",
-					"services": [
-						"GrowthExperimentsSuggestionsInfo",
-						"MainWANObjectCache",
-						"GrowthExperimentsFeatureManager"
-					]
-				}
-			}
-		},
 		"/mentees": {
 			"get": {
 				"x-i18n-description": "rest-endpoint-desc-get-growthexperiments-mentees",
