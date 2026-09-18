@@ -85,19 +85,20 @@ class SpecialHomepage extends SpecialPage {
 
 	/**
 	 * @inheritDoc
-	 * @param string $par
+	 * @param string|null $subPage
 	 * @throws ConfigException
 	 * @throws ErrorPageError
 	 * @throws UserNotLoggedIn
 	 */
-	public function execute( $par = '' ) {
+	public function execute( $subPage = '' ) {
+		$subPage ??= '';
 		$startTime = microtime( true );
 		$this->requireNamedUser();
-		parent::execute( $par );
+		parent::execute( $subPage );
 		$this->handleDisabledPreference();
-		// Redirect the user to the newcomer task if the page ID in $par can be used
+		// Redirect the user to the newcomer task if the page ID in $subPage can be used
 		// to construct a Title object.
-		if ( $this->handleNewcomerTask( $par ) ) {
+		if ( $this->handleNewcomerTask( $subPage ) ) {
 			return;
 		}
 
@@ -170,15 +171,15 @@ class SpecialHomepage extends SpecialPage {
 		$out->addHTML( Html::openElement( 'div', [
 			'class' => 'growthexperiments-homepage-container',
 		] ) );
-		$modules = $this->getModules( $this->isMobile, $par );
+		$modules = $this->getModules( $this->isMobile, $subPage );
 
 		if ( $this->isMobile ) {
 			if (
-				array_key_exists( $par, $modules ) &&
-				$modules[$par]->supports( IDashboardModule::RENDER_MOBILE_DETAILS )
+				array_key_exists( $subPage, $modules ) &&
+				$modules[$subPage]->supports( IDashboardModule::RENDER_MOBILE_DETAILS )
 			) {
 				$mode = IDashboardModule::RENDER_MOBILE_DETAILS;
-				$this->renderMobileDetails( $modules[$par] );
+				$this->renderMobileDetails( $modules[$subPage] );
 			} else {
 				$mode = IDashboardModule::RENDER_MOBILE_SUMMARY;
 				$this->renderMobileSummary();
