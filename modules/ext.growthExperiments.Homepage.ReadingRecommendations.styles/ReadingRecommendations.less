@@ -35,6 +35,7 @@
 	}
 
 	.growthexperiments-reading-recommendations-cta {
+		background-color: @background-color-neutral-subtle;
 		flex-direction: column;
 		margin-bottom: @spacing-75;
 
@@ -45,6 +46,12 @@
 			font-weight: @font-weight-bold;
 			margin: 0;
 			padding: 0;
+		}
+	}
+
+	#growthexperiments-reading-recommendations-personalize-button {
+		@media ( max-width: @max-width-breakpoint-mobile ) {
+			width: @size-full;
 		}
 	}
 
