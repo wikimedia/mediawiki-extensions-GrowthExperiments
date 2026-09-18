@@ -8,7 +8,6 @@ recommendations experiment (T435396) and is off by default.
 
 | Setting | Default | Purpose |
 | --- | --- | --- |
-| `$wgGEHomepageReadingRecommendationsEnabled` | `false` | Shows the module on Special:Homepage. |
 | `$wgGEHomepageReadingRecommendationsFeaturedCategory` | `""` | Full title of the category the general recommendations draw from, for example `Category:Featured articles`. Empty means no general recommendations. |
 | `$wgGEReadingRecommendationsCacheEnabled` | `true` | Reuse the daily caches. `false` recomputes on every request and is honored only when `$wgGEDeveloperSetup` is also `true`. |
 | `$wgGEReadingRecommendationsFixtureFile` | `null` | Path of a JSON file whose rows the module shows instead of computed recommendations. Honored only when `$wgGEDeveloperSetup` is also `true`. |
@@ -18,9 +17,6 @@ recommendations experiment (T435396) and is off by default.
 Include the following LocalSettings:
 
 ```php
-// Enable the Reading Recommendations module.
-$wgGEHomepageReadingRecommendationsEnabled = true;
-
 // Newcomer task config; helpful for populating more of the newcomer homepage.
 $wgGEDeveloperSetup = true;
 $wgGENewcomerTasksRemoteApiUrl = 'https://en.wikipedia.org/w/api.php';
@@ -30,7 +26,7 @@ $wgGENewcomerTasksSectionImageRecommendationsEnabled = false;
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGEReviseToneSuggestedEditEnabled = true;
 $wgGEReviseToneParagraphScoreThreshold = 0.79;
-
+$wgGEAccountSetupExperimentStartRegistrationDate = '1970-01-01T00:00:00';
 // Get summaries and thumbnails for the task cards from English Wikipedia.
 $wgGERestbaseUrl = 'https://en.wikipedia.org/api/rest_v1';
 
@@ -38,7 +34,21 @@ $wgGERestbaseUrl = 'https://en.wikipedia.org/api/rest_v1';
 
 Then follow the instructions below depending on whether you want search working locally.
 
-### Developing the UI without CirrusSearch
+### Quickstart
+
+* Visit Special:Homepage and
+* Enable experiment with adding URL param `?mpo=de-1-3-1-specialhomepage-onboarding-ab-test:treatment`
+* You should see a popup.
+* Click "Reading and exploring"
+* Click "Go to your home"
+* Confirm "Daily reads" in on the page.
+
+To reset and cause the dialog to open again run:
+```
+new mw.Api().saveOptions( { 'growthexperiments-account-setup-motivation': '' } )
+```
+
+#### Developing the UI without CirrusSearch
 
 The module can serve a fixture file, so the interface can be built and checked
 on a bare wiki with no search stack, no Wikibase and no PageImages. Add to

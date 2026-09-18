@@ -2920,10 +2920,6 @@
 				"personalized-praise": true
 			}
 		},
-		"GEHomepageReadingRecommendationsEnabled": {
-			"description": "Enable the reading recommendations module on the newcomer homepage.",
-			"value": false
-		},
 		"GEReadingRecommendationsFixtureFile": {
 			"description": "Path of a JSON file whose rows the reading recommendations module shows instead of computed recommendations, so the UI can be developed without CirrusSearch. Only honored when GEDeveloperSetup is also enabled. See docs/ReadingRecommendations.md.",
 			"value": null
