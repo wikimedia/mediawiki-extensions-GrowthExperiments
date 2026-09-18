@@ -6,28 +6,32 @@
 	>
 		<div class="ext-growthExperiments-interest-selector-dialog">
 			<p
-				aria-live="polite"
 				v-if="taskCount !== null"
 				v-i18n-html:growthexperiments-homepage-suggestededits-difficulty-filters-article-count="[ taskCount ]"
+				aria-live="polite"
 				class="ext-growthExperiments-interest-selector-dialog__task-count"
 			></p>
 			<interest-selector
 				v-model:chips="chips"
 			></interest-selector>
-			<cdx-button
-				class="ext-growthExperiments-interest-selector-dialog__save"
-				action="progressive"
-				weight="primary"
-				@click="saveSelection"
+			<div
+				class="ext-growthExperiments-interest-selector-dialog__buttons"
 			>
-				{{ $i18n( 'growthexperiments-homepage-suggestededits-interest-filters-close' ).text() }}
-			</cdx-button>
-			<cdx-button
-				class="ext-growthExperiments-interest-selector-dialog__cancel"
-				@click="cancelSelection"
-			>
-				{{ $i18n( 'growthexperiments-homepage-suggestededits-interest-filters-cancel' ).text() }}
-			</cdx-button>
+				<cdx-button
+					class="ext-growthExperiments-interest-selector-dialog__save"
+					action="progressive"
+					weight="primary"
+					@click="saveSelection"
+				>
+					{{ $i18n( 'growthexperiments-homepage-suggestededits-interest-filters-close' ).text() }}
+				</cdx-button>
+				<cdx-button
+					class="ext-growthExperiments-interest-selector-dialog__cancel"
+					@click="cancelSelection"
+				>
+					{{ $i18n( 'growthexperiments-homepage-suggestededits-interest-filters-cancel' ).text() }}
+				</cdx-button>
+			</div>
 		</div>
 	</cdx-dialog>
 </template>
@@ -183,6 +187,13 @@ module.exports = exports = defineComponent( {
 @import 'mediawiki.skin.variables.less';
 
 .ext-growthExperiments-interest-selector-dialog {
+  &__buttons {
+    margin-top: @spacing-100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 	&__save,
 	&__cancel {
 		width: 100%;

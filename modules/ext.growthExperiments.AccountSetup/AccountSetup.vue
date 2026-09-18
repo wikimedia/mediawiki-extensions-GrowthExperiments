@@ -96,17 +96,21 @@
 			</h3>
 			<interest-selector
 				:chips="chips"
+				class="ext-growthExperiments-account-setup__interest-selector"
 				@update:chips="updateChips"
 			></interest-selector>
 		</div>
 
 		<template #footer>
-			<div v-if="step === 0">
+			<div
+				v-if="step === 0"
+				class="ext-growthExperiments-account-setup-footer"
+			>
 				<cdx-button
 					weight="primary"
 					action="progressive"
 					size="large"
-					class="ext-growthExperiments-account-setup-footer-buttons"
+					class="ext-growthExperiments-account-setup-footer__button--full-width"
 					@click="goToNextScreen"
 				>
 					<span
@@ -116,23 +120,29 @@
 					</span>
 				</cdx-button>
 			</div>
-			<div v-else-if="step === 1">
+			<div
+				v-else-if="step === 1"
+				class="ext-growthExperiments-account-setup-footer"
+			>
 				<cdx-button
 					weight="quiet"
 					action="default"
 					size="large"
-					class="ext-growthExperiments-account-setup-footer-buttons"
+					class="ext-growthExperiments-account-setup-footer__button--full-width"
 					@click="() => accountTypeClicked( 'skipped' )"
 				>
 					{{ $i18n( 'growthexperiments-account-setup-step-2-skip-button' ).text() }}
 				</cdx-button>
 			</div>
-			<div v-else>
+			<div
+				v-else
+				class="ext-growthExperiments-account-setup-footer"
+			>
 				<cdx-button
 					:weight="chips.length >= 3 ? 'primary' : 'quiet'"
 					:action="chips.length >= 3 ? 'progressive' : 'default'"
 					size="large"
-					class="ext-growthExperiments-account-setup-footer-buttons"
+					class="ext-growthExperiments-account-setup-footer__button--full-width"
 					@click="saveAndGoToHome"
 				>
 					<span
@@ -288,6 +298,10 @@ module.exports = defineComponent( {
 }
 
 .ext-growthExperiments-account-setup {
+  @media ( min-width: @min-width-breakpoint-tablet ) {
+    max-height: 40rem;
+  }
+
 	.cdx-dialog__header {
 		padding: 0;
 	}
@@ -298,12 +312,12 @@ module.exports = defineComponent( {
 
 	&-header {
 		display: flex;
-		padding: @spacing-125 @spacing-100 @spacing-75 @spacing-100;
+		padding: @spacing-100 @spacing-150 @spacing-50;
 		justify-content: space-between;
 		align-items: flex-start;
 
 		&__counter {
-			align-self: stretch;
+			align-self: center;
 			color: @color-subtle;
 			text-align: right;
 			font-family: @font-family-base;
@@ -358,9 +372,26 @@ module.exports = defineComponent( {
 		line-height: @line-height-x-large;
 	}
 
-	&-footer-buttons {
-		width: 100%;
-	}
+  &-step-3-heading,
+  &-step-2-heading,
+  &-step-1-heading {
+    padding: @spacing-100 @spacing-0 @spacing-0;
+    // Reset MW heading margins
+    margin: 0;
+  }
+
+  &__interest-selector {
+    margin-top: @spacing-75;
+  }
+
+	&-footer {
+    display: flex;
+    justify-content: center;
+
+    &__button--full-width {
+      width: 100%;
+    }
+  }
 
 	&-transparent-button {
 		background: none;
