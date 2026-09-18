@@ -110,8 +110,7 @@ class SpecialHomepage extends SpecialPage {
 
 		$user = $this->getUser();
 		if (
-			$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ||
-			$this->getConfig()->get( 'GEHomepageReadingRecommendationsEnabled' )
+			$this->featureManager->isEarlyOnboardingExperimentTreatment( $user )
 		) {
 			$out->addJsConfigVars( 'wgGENewcomerTasksMaxInterestsForQueries', TaskSetFiltersFactory::MAX_INTERESTS );
 			$accountSetupMotivation = $this->userOptionsManager->getOption(
@@ -273,8 +272,7 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function getModules( bool $isMobile, $par = '' ) {
 		$mentorshipState = $this->mentorManager->getMentorshipStateForUser( $this->getUser() );
-		$showReadingRecs = $this->getConfig()->get( 'GEHomepageReadingRecommendationsEnabled' ) ||
-			$this->featureManager->isEarlyOnboardingExperimentTreatment( $this->getUser() );
+		$showReadingRecs = $this->featureManager->isEarlyOnboardingExperimentTreatment( $this->getUser() );
 
 		$moduleConfig = array_filter( [
 			'banner' => true,

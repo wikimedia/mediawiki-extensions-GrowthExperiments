@@ -77,9 +77,13 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	/**
 	 * @covers ::execute
 	 */
-	public function testReadingRecommendationsModuleRendersWhenEnabled() {
-		$this->overrideConfigValue( 'GEHomepageReadingRecommendationsEnabled', true );
+	public function testReadingRecommendationsModuleRendersWhenInEarlyOnboardingTreatmentGroup() {
 		$user = $this->enableHomepageForTesting();
+
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+
 		$context = RequestContext::getMain();
 		$context->setAuthority( $user );
 		$context->setLanguage( 'qqx' );
@@ -104,40 +108,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	/**
 	 * @covers ::execute
 	 */
-	public function testReadingRecommendationsModuleHiddenWhenDisabled() {
-		$this->overrideConfigValue( 'GEHomepageReadingRecommendationsEnabled', false );
-		$user = $this->enableHomepageForTesting();
-		$response = $this->executeSpecialPage( '', null, null, $user );
-		$this->assertStringNotContainsString( 'reading-recommendations', $response[0] );
-	}
-
-	/**
-	 * @covers ::execute
-	 */
-	public function testReadingRecommendationsModuleRendersWhenInEarlyOnboardingTreatmentGroup() {
-		$this->overrideConfigValue( 'GEHomepageReadingRecommendationsEnabled', false );
-		$user = $this->enableHomepageForTesting();
-
-		$featureManager = $this->createMock( FeatureManager::class );
-		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
-		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
-
-		$context = RequestContext::getMain();
-		$context->setAuthority( $user );
-		$context->setLanguage( 'qqx' );
-		$response = $this->executeSpecialPage( context: $context );
-		$this->assertStringContainsString(
-			'growthexperiments-homepage-module-reading-recommendations',
-			$response[0]
-		);
-		$this->assertStringContainsString( 'reading-recommendations-vue-root', $response[0] );
-	}
-
-	/**
-	 * @covers ::execute
-	 */
 	public function testReadingRecommendationsModuleHiddenWhenNotInEarlyOnboardingTreatmentGroup() {
-		$this->overrideConfigValue( 'GEHomepageReadingRecommendationsEnabled', false );
 		$user = $this->enableHomepageForTesting();
 
 		$featureManager = $this->createMock( FeatureManager::class );
