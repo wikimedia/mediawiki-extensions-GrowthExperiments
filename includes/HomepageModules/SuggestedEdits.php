@@ -2,9 +2,11 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
@@ -125,6 +127,8 @@ class SuggestedEdits extends BaseModule {
 
 	private ?NavigationWidgetFactory $navigationWidgetFactory = null;
 
+	private ?string $experimentArm = null;
+
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
@@ -142,7 +146,8 @@ class SuggestedEdits extends BaseModule {
 		private ImageRecommendationFilter $imageRecommendationFilter,
 		private StatsFactory $statsFactory,
 		private ITopicRegistry $topicRegistry,
-		private TaskTypeManager $taskTypeManager
+		private TaskTypeManager $taskTypeManager,
+		private FeatureManager $featureManager
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig );
 	}
@@ -252,6 +257,31 @@ class SuggestedEdits extends BaseModule {
 	}
 
 	/**
+	 * Get the early-onboarding experiment group of the user.
+	 *
+	 * The two groups build the queue from different filters, so an empty queue can
+	 * have a different rate in each group.
+	 *
+	 * @return string one of ['treatment', 'control', 'none']
+	 */
+	private function getExperimentArmLabel(): string {
+		if ( $this->experimentArm ) {
+			return $this->experimentArm;
+		}
+
+		$user = $this->getContext()->getUser();
+		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+			$this->experimentArm = IExperimentManager::VARIANT_TREATMENT;
+		} elseif ( $this->featureManager->isEarlyOnboardingExperimentControl( $user ) ) {
+			$this->experimentArm = IExperimentManager::VARIANT_CONTROL;
+		} else {
+			$this->experimentArm = 'none';
+		}
+
+		return $this->experimentArm;
+	}
+
+	/**
 	 * @param string $mode one of the self::RENDER_* constants
 	 * @param string $status one of ['ok', 'empty', 'error', 'total']
 	 * @return void
@@ -276,6 +306,7 @@ class SuggestedEdits extends BaseModule {
 			->setLabel( 'wiki', $wiki )
 			->setLabel( 'platform', $platform )
 			->setLabel( 'status', $status )
+			->setLabel( 'arm', $this->getExperimentArmLabel() )
 			->increment();
 	}
 

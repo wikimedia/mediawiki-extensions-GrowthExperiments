@@ -127,7 +127,8 @@ class HomepageModuleRegistry {
 					$growthServices->getImageRecommendationFilter(),
 					$services->getStatsFactory(),
 					$growthServices->getTopicRegistry(),
-					$growthServices->getTaskTypeManager()
+					$growthServices->getTaskTypeManager(),
+					$growthServices->getFeatureManager()
 				);
 			},
 

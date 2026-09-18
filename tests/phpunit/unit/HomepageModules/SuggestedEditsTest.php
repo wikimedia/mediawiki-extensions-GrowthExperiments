@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
@@ -159,7 +160,8 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$imageRecommendationFilter,
 			StatsFactory::newNull(),
 			$this->createMock( ITopicRegistry::class ),
-			$overrides[ 'taskTypeManager' ] ?? $this->createMock( TaskTypeManager::class )
+			$overrides[ 'taskTypeManager' ] ?? $this->createMock( TaskTypeManager::class ),
+			$this->createMock( FeatureManager::class ),
 		) extends SuggestedEdits {
 
 			public function resetTaskCache(
