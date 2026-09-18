@@ -382,6 +382,7 @@
 	"growthexperiments-addlink-context-button-reject": "Không",
 	"growthexperiments-addlink-context-button-help": "Yêu cầu trợ giúp sửa đổi",
 	"growthexperiments-addlink-context-button-next": "Tiếp theo",
+	"growthexperiments-addlink-context-button-prev": "Trước",
 	"growthexperiments-addlink-context-button-show-suggestion": "Hiển thị gợi ý liên kết",
 	"growthexperiments-addlink-rejectiondialog-title": "Tại sao đây không phải một liên kết tốt?",
 	"growthexperiments-addlink-rejectiondialog-message": "Câu trả lời {{GENDER:$1|của bạn}} giúp cải thiện các gợi ý trong tương lai.",

@@ -239,5 +239,5 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Ya, selepas jumlah 75 suntingan",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Ya, selepas jumlah 150 suntingan",
 	"growthexperiments-addlink-done-button": "Siap",
-	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Tugas penyelenggaraan, pembersihan tamat tempoh cap masa"
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Bersihkan cap masa ketidakaktifan yang telah tamat tempoh"
 }
