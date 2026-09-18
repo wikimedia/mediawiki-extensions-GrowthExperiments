@@ -173,6 +173,8 @@
 	"growthexperiments-homepage-welcomesurvey-default-close": "{{GENDER:$1|Ana səhifənə}} get",
 	"growthexperiments-tour-welcome-description-c": "Buraya qayıtmaq üçün həmişə istifadəçi {{GENDER:$1|adınıza}} klikləyə bilərsiniz. Ana səhifənizdəki <b>tövsiyə olunan redaktələr</b> haqqında daha çox öyrənmək üçün davam edin.",
 	"growthexperiments-tour-welcome-description-d": "Buraya qayıtmaq üçün həmişə istifadəçi {{GENDER:$1|adınıza}} klikləyə bilərsiniz. Ana səhifənizdə tövsiyə olunan redaktələrə baxa, mentorunuza sual verə və təsirinizə baxa bilərsiniz.",
+	"growthexperiments-tour-return-to-homepage": "{{GENDER:$1|Siz}} istifadəçi adınızı klikləyərək həmişə ana səhifənizə qayıda bilərsiniz.",
+	"growthexperiments-homepage-return-to-banner": "{{GENDER:$1|Siz}} həmişə ana səhifənizə qayıda bilərsiniz: hesab menyusunu açın və '''$2''' düyməsinə klikləyin.",
 	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|Ana səhifənə}} xoş gəlmisən!",
 	"growthexperiments-homepage-discovery-banner-text": "Buraya qayıtmaq üçün həmişə səhifənin yuxarısındakı $2 düyməsinə klikləyə {{GENDER:$1|bilərsiniz}}.",
 	"growthexperiments-homepage-discovery-thanks-header": "{{GENDER:$1|Hesabınızı}} yaratdığınız üçün təşəkkür edirik!",

@@ -172,6 +172,8 @@
 	"growthexperiments-homepage-welcomesurvey-default-close": "Vai á {{GENDER:$1|túa}} páxina de inicio",
 	"growthexperiments-tour-welcome-description-c": "Sempre podes facer clic no teu nome de {{GENDER:$1|usuario|usuaria}} para volver aquí. Aprende coas <b>edicións suxeridas</b> na túa páxina de inicio.",
 	"growthexperiments-tour-welcome-description-d": "Sempre podes facer clic no teu nome de {{GENDER:$1|usuario|usuaria}} para volver aquí. Na túa páxina de inicio podes atopar edicións suxeridas, formular preguntas ao teu mentor e ver o teu impacto.",
+	"growthexperiments-tour-return-to-homepage": "Sempre podes facer clic no teu nome de {{GENDER:$1|usuario|usuaria}} para volver á túa páxina de inicio.",
+	"growthexperiments-homepage-return-to-banner": "Sempre {{GENDER:$1|podes}} facer volver á túa páxina de inicio: abre o menú da conta e toca '''$2'''.",
 	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|Benvido|Benvida}} á túa páxina de inicio!",
 	"growthexperiments-homepage-discovery-banner-text": "Sempre {{GENDER:$1|podes}} facer clic na icona $2 da parte superior para volver aquí.",
 	"growthexperiments-homepage-discovery-thanks-header": "Grazas por creares a {{GENDER:$1|túa}} conta!",
@@ -295,6 +297,9 @@
 	"growthexperiments-interest-selector-a11y-label": "Selecciona os teus intereses",
 	"growthexperiments-interest-selector-related-articles-heading": "Artigos relacionados",
 	"growthexperiments-interest-selector-success": "Todo listo! A túa páxina de inicio está personalizada e lista.",
+	"growthexperiments-interest-selector-dialog-title": "Seleccionar intereses",
+	"growthexperiments-interest-selector-dialog-save-button-label": "Feito",
+	"growthexperiments-interest-selector-dialog-cancel-button-label": "Cancelar",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Escolle algúns temas nos que esteas {{GENDER:$1|interesado|interesada}} en editar",
 	"growthexperiments-homepage-claimmentee-title": "Reclamar aprendiz",
 	"growthexperiments-homepage-claimmentee-pretext": "Esta páxina permite mudar {{GENDER:$1|o mentor|a mentora}} doutra persoa por ti. Recoméndase utilizar esta función para os usuarios coñezas ou para os usuarios que titorizas nun curso.",
@@ -617,6 +622,7 @@
 	"growthexperiments-homepage-reading-recommendations-personalize-title": "Personaliza as túas lecturas diarias",
 	"growthexperiments-homepage-reading-recommendations-personalize-text": "Selecciona temas de interese para personalizar as túas recomendacións de lectura diarias.",
 	"growthexperiments-homepage-reading-recommendations-related-to": "Relacionado con \"$1\"",
+	"growthexperiments-homepage-reading-recommendations-personalize-cta": "Seleccionar os intereses",
 	"growthexperiments-addalink-milestone-notification-header": "Parabéns {{PLURAL:$1|pola edición|polas $1 edicións}}! Os artigos que {{GENDER:$2|editaches}} recibiron $3 {{PLURAL:$3|visita|visitas}}. Cambiaron as edicións suxeridas dispoñibles.",
 	"growthexperiments-addalink-milestone-notification-call-to-action-label": "Probar outras modificacións"
 }
