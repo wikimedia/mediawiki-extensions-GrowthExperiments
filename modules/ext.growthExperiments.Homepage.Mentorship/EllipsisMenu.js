@@ -100,10 +100,18 @@
 
 		// connect to the #growthexperiments-homepage-mentorship-learn-more link, if available
 		$homepageContainer.find( '#growthexperiments-homepage-mentorship-learn-more' ).on( 'click', ( e ) => {
+			// Allow modified clicks / middle-click / open-in-new-tab to follow the real href (T312046).
+			if ( e.which !== 1 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey ) {
+				return;
+			}
 			e.preventDefault();
-
 			ellipsisMenu.showAboutMentorshipModal();
 		} );
+
+		// Open the about dialog when arriving via the learn-more URL (new tab / shared link).
+		if ( mw.util.getParamValue( 'geMentorshipAbout' ) ) {
+			ellipsisMenu.showAboutMentorshipModal();
+		}
 
 		// add the ellipsis menu to the page, if applicable
 		const $ellipsis = $homepageContainer.find( '#mw-ge-homepage-mentorship-ellipsis' );

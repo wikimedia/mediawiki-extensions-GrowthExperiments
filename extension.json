@@ -1270,6 +1270,7 @@
 				"mediawiki.api",
 				"mediawiki.jqueryMsg",
 				"mediawiki.router",
+				"mediawiki.util",
 				"oojs-ui-widgets"
 			],
 			"messages": [

@@ -392,6 +392,13 @@ class Mentorship extends BaseModule {
 	}
 
 	private function getAboutMentorshipElement(): string {
+		// Real URL so open-in-new-tab / middle-click works (T312046).
+		// Context title can be null in tests without a page context; fall back to '#'.
+		$title = $this->getContext()->getTitle();
+		$learnMoreHref = $title
+			? $title->getLinkURL( [ 'geMentorshipAbout' => '1' ] )
+			: '#';
+
 		return Html::rawElement(
 			'p',
 			[ 'class' => 'growthexperiments-homepage-mentorship-about' ],
@@ -408,7 +415,7 @@ class Mentorship extends BaseModule {
 					'a',
 					[
 						'id' => 'growthexperiments-homepage-mentorship-learn-more',
-						'href' => '#',
+						'href' => $learnMoreHref,
 					],
 					$this->msg( 'growthexperiments-homepage-mentorship-learn-more' )->text()
 				),
