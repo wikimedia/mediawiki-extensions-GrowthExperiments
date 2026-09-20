@@ -23,24 +23,20 @@ class ReadingRecommendationsCachePolicyTest extends MediaWikiUnitTestCase {
 		) );
 	}
 
-	public function testCacheEnabledPassesTheVersionThrough() {
-		$this->assertSame(
-			[ 'version' => 3 ],
-			$this->getPolicy( true, true )->getCacheOptions( 3 )
-		);
+	public function testShouldUseCacheWhenEnabled() {
+		// Default
+		$this->assertTrue( $this->getPolicy( true, false )->shouldUseCache() );
 	}
 
-	public function testCacheDisabledRejectsAnyStoredValue() {
-		$this->assertSame(
-			[ 'version' => 3, 'minAsOf' => INF ],
-			$this->getPolicy( false, true )->getCacheOptions( 3 )
-		);
+	public function testShouldUseCacheWhenDev() {
+		$this->assertTrue( $this->getPolicy( true, true )->shouldUseCache() );
 	}
 
-	public function testCacheDisabledIsIgnoredWithoutDeveloperSetup() {
-		$this->assertSame(
-			[ 'version' => 3 ],
-			$this->getPolicy( false, false )->getCacheOptions( 3 )
-		);
+	public function testShouldUseCacheWhenDisabled() {
+		$this->assertTrue( $this->getPolicy( false, false )->shouldUseCache() );
+	}
+
+	public function testShouldUseCacheWhenDisabledAndDev() {
+		$this->assertFalse( $this->getPolicy( false, true )->shouldUseCache() );
 	}
 }

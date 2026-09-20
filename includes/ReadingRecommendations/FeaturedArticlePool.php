@@ -87,8 +87,16 @@ class FeaturedArticlePool {
 					'error' => $searchResult->isError(),
 				];
 			},
-			$this->cachePolicy->getCacheOptions( self::CACHE_VERSION )
+			[
+				'version' => self::CACHE_VERSION,
+				'touchedCallback' => function () {
+					if ( !$this->cachePolicy->shouldUseCache() ) {
+						return INF;
+					}
+				},
+			]
 		);
+
 		if ( $result['error'] ) {
 			return ReadingRecommendationsSearchResult::newError();
 		}

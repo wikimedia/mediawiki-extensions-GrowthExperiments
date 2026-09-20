@@ -98,7 +98,14 @@ class ReadingRecommendationsService {
 					$selection['recommendations']
 				);
 			},
-			$this->cachePolicy->getCacheOptions( self::CACHE_VERSION )
+			[
+				'version' => self::CACHE_VERSION,
+				'touchedCallback' => function () {
+					if ( !$this->cachePolicy->shouldUseCache() ) {
+						return INF;
+					}
+				},
+			]
 		);
 		return array_map( [ ReadingRecommendation::class, 'fromArray' ], $rows );
 	}
@@ -207,7 +214,14 @@ class ReadingRecommendationsService {
 					$searchResult->getTitles()
 				);
 			},
-			$this->cachePolicy->getCacheOptions( self::CACHE_VERSION )
+			[
+				'version' => self::CACHE_VERSION,
+				'touchedCallback' => function () {
+					if ( !$this->cachePolicy->shouldUseCache() ) {
+						return INF;
+					}
+				},
+			]
 		);
 		return array_map(
 			static fn ( array $row ) => new TitleValue( $row['ns'], $row['dbkey'] ),
