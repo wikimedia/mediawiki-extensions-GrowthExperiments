@@ -72,30 +72,30 @@ module.exports = exports = defineComponent( {
 @import 'mediawiki.skin.variables.less';
 
 .ext-growthExperiments-QuizGame {
-  width: 100%;
-  background-color: @background-color-base;
+	width: 100%;
+	background-color: @background-color-base;
 
-  &__introduction {
-    background-color: @background-color-neutral-subtle;
-    padding: @size-75 @size-150 @size-75 @size-275;
+	&__introduction {
+		background-color: @background-color-neutral-subtle;
+		padding: @size-75 @size-150 @size-75 @size-275;
 
-    i,
- .example {
-      font-size: @font-size-medium;
-      line-height: @line-height-medium;
-    }
+		i,
+		.example {
+			font-size: @font-size-medium;
+			line-height: @line-height-medium;
+		}
 
-    &__label {
-      color: @color-subtle;
-    }
-  }
+		&__label {
+			color: @color-subtle;
+		}
+	}
 
-  &__pills {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: @size-75 @size-150;
-    gap: @spacing-75;
-  }
+	&__pills {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: @size-75 @size-150;
+		gap: @spacing-75;
+	}
 }
 </style>

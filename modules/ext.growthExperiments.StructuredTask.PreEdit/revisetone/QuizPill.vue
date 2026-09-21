@@ -149,73 +149,73 @@ module.exports = exports = defineComponent( {
 @import 'mediawiki.skin.variables.less';
 
 .ext-growthExperiments-ReviseTone-QuizPill {
-  margin: 0;
-  width: @size-full;
+	margin: 0;
+	width: @size-full;
 
-  &-Pill {
-    display: flex;
-    align-items: center;
-    padding-left: @size-75;
-    padding-top: @size-75;
-    padding-bottom: @size-75;
-    gap: @size-50;
-    width: auto;
-    min-width: auto;
-    border-radius: @border-radius-pill;
-    border: @border-width-base solid @border-color-interactive;
-    background-color: @background-color-base;
+	&-Pill {
+		display: flex;
+		align-items: center;
+		padding-left: @size-75;
+		padding-top: @size-75;
+		padding-bottom: @size-75;
+		gap: @size-50;
+		width: auto;
+		min-width: auto;
+		border-radius: @border-radius-pill;
+		border: @border-width-base solid @border-color-interactive;
+		background-color: @background-color-base;
 
-    &:focus:not( :active ):not( .ext-growthExperiments-ReviseTone-QuizPill-Pill--not-interactable ) {
-      outline: @outline-base--focus;
-      border-color: @border-color-progressive--focus;
-      box-shadow: @box-shadow-inset-small @box-shadow-color-progressive--focus;
-    }
+		&:focus:not( :active ):not( .ext-growthExperiments-ReviseTone-QuizPill-Pill--not-interactable ) {
+			outline: @outline-base--focus;
+			border-color: @border-color-progressive--focus;
+			box-shadow: @box-shadow-inset-small @box-shadow-color-progressive--focus;
+		}
 
-    &--notice:not( .ext-growthExperiments-ReviseTone-QuizPill-Pill--not-interactable ) {
-      cursor: pointer;
+		&--notice:not( .ext-growthExperiments-ReviseTone-QuizPill-Pill--not-interactable ) {
+			cursor: pointer;
 
-      &:hover {
-        background-color: @background-color-interactive;
-      }
-    }
+			&:hover {
+				background-color: @background-color-interactive;
+			}
+		}
 
-    .cdx-icon {
-      color: inherit;
-    }
+		.cdx-icon {
+			color: inherit;
+		}
 
-    &--success {
-      color: @color-success;
-      border-color: @border-color-success;
-      background-color: @background-color-success-subtle;
-    }
+		&--success {
+			color: @color-success;
+			border-color: @border-color-success;
+			background-color: @background-color-success-subtle;
+		}
 
-    &--error {
-      color: @color-error;
-      border-color: @border-color-error;
-      background-color: @background-color-error-subtle;
-    }
+		&--error {
+			color: @color-error;
+			border-color: @border-color-error;
+			background-color: @background-color-error-subtle;
+		}
 
-    &__content {
-      overflow: hidden;
-      display: -webkit-box;
-      line-clamp: 1;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-    }
-  }
+		&__content {
+			overflow: hidden;
+			display: -webkit-box;
+			line-clamp: 1;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+		}
+	}
 
-  &-Description {
-    width: auto;
-    margin-top: @size-25;
-    color: @color-success;
-    font-size: @font-size-small;
-    font-weight: @font-weight-bold;
-    line-height: @line-height-x-small;
+	&-Description {
+		width: auto;
+		margin-top: @size-25;
+		color: @color-success;
+		font-size: @font-size-small;
+		font-weight: @font-weight-bold;
+		line-height: @line-height-x-small;
 
-    .cdx-learn-more-link {
-      .cdx-mixin-link();
-    }
-  }
+		.cdx-learn-more-link {
+			.cdx-mixin-link();
+		}
+	}
 }
 </style>
 `

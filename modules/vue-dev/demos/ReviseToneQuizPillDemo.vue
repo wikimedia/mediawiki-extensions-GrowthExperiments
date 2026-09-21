@@ -46,7 +46,7 @@ module.exports = defineComponent( {
 
 <style lang="less">
 .ReviseToneQuizPillDemo--game {
-  margin: 0 auto;
-  width: 400px;
+	margin: 0 auto;
+	width: 400px;
 }
 </style>

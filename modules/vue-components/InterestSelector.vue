@@ -381,9 +381,9 @@ module.exports = exports = defineComponent( {
 	.ext-growthExperiments-interest-selector {
 		&-related-articles {
 			color: @color-subtle;
-      margin: 0 0 @spacing-25;
-      padding: 0;
-      border: 0;
+			margin: 0 0 @spacing-25;
+			padding: 0;
+			border: 0;
 
 			/* UI Text Bold */
 			font-family: @font-family-base;
@@ -415,14 +415,14 @@ module.exports = exports = defineComponent( {
 			font: inherit;
 			cursor: pointer;
 
-      .cdx-card {
-        &:hover {
-          border-width: @border-width-base;
-          border-color: var( --border-color-interactive--hover, #27292d );
-          transition-property: background-color, color, border-color, box-shadow;
-          transition-duration: 0.1s;
-        }
-      }
+			.cdx-card {
+				&:hover {
+					border-width: @border-width-base;
+					border-color: var( --border-color-interactive--hover, #27292d );
+					transition-property: background-color, color, border-color, box-shadow;
+					transition-duration: 0.1s;
+				}
+			}
 		}
 	}
 

@@ -187,12 +187,12 @@ module.exports = exports = defineComponent( {
 @import 'mediawiki.skin.variables.less';
 
 .ext-growthExperiments-interest-selector-dialog {
-  &__buttons {
-    margin-top: @spacing-100;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+	&__buttons {
+		margin-top: @spacing-100;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
 	&__save,
 	&__cancel {

@@ -298,9 +298,9 @@ module.exports = defineComponent( {
 }
 
 .ext-growthExperiments-account-setup {
-  @media ( min-width: @min-width-breakpoint-tablet ) {
-    max-height: 40rem;
-  }
+	@media ( min-width: @min-width-breakpoint-tablet ) {
+		max-height: 40rem;
+	}
 
 	.cdx-dialog__header {
 		padding: 0;
@@ -372,26 +372,26 @@ module.exports = defineComponent( {
 		line-height: @line-height-x-large;
 	}
 
-  &-step-3-heading,
-  &-step-2-heading,
-  &-step-1-heading {
-    padding: @spacing-100 @spacing-0 @spacing-0;
-    // Reset MW heading margins
-    margin: 0;
-  }
+	&-step-3-heading,
+	&-step-2-heading,
+	&-step-1-heading {
+		padding: @spacing-100 @spacing-0 @spacing-0;
+		// Reset MW heading margins
+		margin: 0;
+	}
 
-  &__interest-selector {
-    margin-top: @spacing-75;
-  }
+	&__interest-selector {
+		margin-top: @spacing-75;
+	}
 
 	&-footer {
-    display: flex;
-    justify-content: center;
+		display: flex;
+		justify-content: center;
 
-    &__button--full-width {
-      width: 100%;
-    }
-  }
+		&__button--full-width {
+			width: 100%;
+		}
+	}
 
 	&-transparent-button {
 		background: none;
