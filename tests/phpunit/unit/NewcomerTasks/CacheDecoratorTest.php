@@ -26,6 +26,8 @@ use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use StatusValue;
 use TestLogger;
 use Wikimedia\ObjectCache\HashBagOStuff;
@@ -546,9 +548,8 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 		$this->newCacheDecorator( new StaticTaskSuggester( $pool ), $pageIds )
 			->suggest( $this->user, $filters, 5 );
 
-		$cacheDecorator = $this->newCacheDecorator( new StaticTaskSuggester( $pool ), $pageIds );
 		$logger = new TestLogger( true, null, true );
-		$cacheDecorator->setLogger( $logger );
+		$cacheDecorator = $this->newCacheDecorator( new StaticTaskSuggester( $pool ), $pageIds, logger: $logger );
 
 		$taskSet = $cacheDecorator->suggest( $this->user, $filters, 5, null, [
 			'revalidateCache' => false,
@@ -633,7 +634,8 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 	private function newCacheDecorator(
 		TaskSuggester $taskSuggester,
 		array $pageIds = [],
-		?callable $shuffleList = null
+		?callable $shuffleList = null,
+		?LoggerInterface $logger = null,
 	): CacheDecorator {
 		$jobQueueGroup = $this->createNoOpMock( JobQueueGroup::class, [ 'lazyPush' ] );
 		$jobQueueGroup->method( 'lazyPush' )->willReturnCallback(
@@ -649,6 +651,7 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 			new JsonCodec(),
 			$this->createNoOpMock( LinkBatchFactory::class, [ 'newLinkBatch' ] ),
 			$this->newTitleFactory( $pageIds ),
+			$logger ?? new NullLogger(),
 		];
 		$args[5]->method( 'newLinkBatch' )->willReturn(
 			$this->createNoOpMock( LinkBatch::class, [ 'setCaller', 'execute' ] )

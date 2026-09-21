@@ -14,9 +14,7 @@ use MediaWiki\Json\JsonCodec;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\ObjectCache\WANObjectCache;
 
@@ -27,9 +25,7 @@ use Wikimedia\ObjectCache\WANObjectCache;
  * interest-based task sets the pool is served as a fresh random slice on every read; for
  * topic-based and unfiltered task sets the pool is the size of one request.
  */
-class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
-
-	use LoggerAwareTrait;
+class CacheDecorator implements TaskSuggester {
 
 	private const CACHE_VERSION = 6;
 
@@ -46,9 +42,9 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 		private readonly TaskSetListener $taskSetListener,
 		private readonly JsonCodec $jsonCodec,
 		private readonly LinkBatchFactory $linkBatchFactory,
-		private readonly TitleFactory $titleFactory
+		private readonly TitleFactory $titleFactory,
+		private readonly LoggerInterface $logger,
 	) {
-		$this->logger = new NullLogger();
 	}
 
 	/** @inheritDoc */

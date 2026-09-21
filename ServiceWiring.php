@@ -1200,6 +1200,7 @@ return [
 							$services->getJsonCodec(),
 							$services->getLinkBatchFactory(),
 							$services->getTitleFactory(),
+							$growthServices->getLogger(),
 						],
 					],
 					[

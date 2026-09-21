@@ -48,6 +48,7 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 					new JsonCodec(),
 					$this->createMock( LinkBatchFactory::class ),
 					$this->createMock( TitleFactory::class ),
+					new NullLogger(),
 				],
 			],
 		], new NullLogger() );
