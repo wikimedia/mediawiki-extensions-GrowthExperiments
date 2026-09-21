@@ -51,6 +51,7 @@ module.exports = {
 		'./modules/ext.growthExperiments.DataStore',
 		'./modules/ext.growthExperiments.MentorDashboard',
 		'./modules/ext.growthExperiments.Homepage.Impact',
+		'./modules/ext.growthExperiments.Homepage.ReadingRecommendations',
 		'./modules/ext.growthExperiments.StructuredTask.PreEdit',
 		'./modules/ext.growthExperiments.PersonalDashboard.SuggestedEdits',
 		'./modules/utils',

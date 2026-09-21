@@ -386,6 +386,35 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	/**
+	 * The click handler in init.js reads `data-is-interest-based` off the anchor to tell an
+	 * interest-based recommendation from a general one, so the attribute has to be there for a row
+	 * that came from an interest and gone for one that did not. `Html::expandAttributes()` drops a
+	 * false value, which keeps the general card from carrying the truthy string "0".
+	 */
+	public function testInterestBasedCardsAreMarkedForTheClickHandler() {
+		$general = [ 'title' => 'General', 'url' => '/wiki/General', 'pageId' => 1 ];
+		$interest = [
+			'title' => 'Interest',
+			'url' => '/wiki/Interest',
+			'pageId' => 2,
+			'relatedTo' => 'Interest article',
+		];
+		$path = $this->createFixtureFile( json_encode( [ $general, $interest ], JSON_THROW_ON_ERROR ) );
+
+		$html = $this->getModule( $path, true )->render( ReadingRecommendations::RENDER_DESKTOP );
+
+		$this->assertStringContainsString(
+			'<a class="cdx-card cdx-card--is-link" href="/wiki/Interest" data-is-interest-based="1">',
+			$html
+		);
+		$this->assertStringContainsString(
+			'<a class="cdx-card cdx-card--is-link" href="/wiki/General">',
+			$html
+		);
+		$this->assertSame( 1, substr_count( $html, 'data-is-interest-based' ) );
+	}
+
 	public function testHostileThumbnailUrlStaysInsideTheCssUrlValue() {
 		$item = [
 			'title' => 'Example',

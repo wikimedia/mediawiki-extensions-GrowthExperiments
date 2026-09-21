@@ -59,6 +59,17 @@ const testKitchenMock = {
 	},
 };
 
+// mw.tk is an alias for mw.testKitchen. getExperiment() always resolves to an
+// ExperimentInterface: an UnenrolledExperiment, whose methods all no-op, when the
+// user is not enrolled. Tests that care about the events substitute their own.
+const tkMock = {
+	getExperiment: jest.fn().mockResolvedValue( {
+		getAssignedGroup: jest.fn().mockReturnValue( null ),
+		isAssignedGroup: jest.fn(),
+		send: jest.fn(),
+	} ),
+};
+
 // Mock MW object
 const mw = {
 	log: {
@@ -94,7 +105,11 @@ const mw = {
 		debounce: jest.fn( ( fn ) => fn ),
 	},
 	Rest: RestMock,
+	loader: {
+		using: jest.fn().mockResolvedValue( undefined ),
+	},
 	testKitchen: testKitchenMock,
+	tk: tkMock,
 	// other mw properties as needed...
 };
 
