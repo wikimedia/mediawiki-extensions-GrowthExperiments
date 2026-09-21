@@ -108,6 +108,8 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setNamespaces( [ NS_MAIN ] );
 		$searchEngine->setShowSuggestion( false );
+		// Only consume results from the local wiki.
+		$searchEngine->setFeatureData( 'interwiki', false );
 		$searchEngine->setFeatureData(
 			SearchEngine::FT_QUERY_INDEP_PROFILE_TYPE,
 			$query->getRescoreProfile() ?? 'classic_noboostlinks'
