@@ -8,7 +8,6 @@
 		"no-descending-specificity": null,
 		"declaration-property-unit-disallowed-list": null,
 		"declaration-no-important": null,
-		"declaration-property-value-no-unknown": null,
 		"declaration-property-value-keyword-no-deprecated": null,
 		"selector-class-pattern": null
 	},
