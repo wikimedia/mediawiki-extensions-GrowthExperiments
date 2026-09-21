@@ -298,6 +298,7 @@
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "选择主题",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "完成",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "完成",
+	"growthexperiments-homepage-suggestededits-interest-filters-close": "完成",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "已找到<strong>$1</strong>个{{PLURAL:$1|条目}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "编修",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "查找参考文献",
