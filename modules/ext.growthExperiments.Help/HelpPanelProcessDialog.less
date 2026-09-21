@@ -102,13 +102,11 @@
 	// when the pending effect is being shown
 	.oo-ui-window-head:not( .oo-ui-pendingElement-pending ) {
 		body.ltr & {
-			background:
- linear-gradient( @headBgColor, @headBgColor ) 200% ~'/' 50% 100% no-repeat,linear-gradient( @headBgColor, @headBgColor ) 300% ~'/' 50% 100% no-repeat;
+			background: linear-gradient( @headBgColor, @headBgColor ) 200% ~'/' 50% 100% no-repeat, linear-gradient( @headBgColor, @headBgColor ) 300% ~'/' 50% 100% no-repeat;
 		}
 
 		body.rtl & {
-			background:
- linear-gradient( @headBgColor, @headBgColor ) -200% ~'/' 50% 100% no-repeat,linear-gradient( @headBgColor, @headBgColor ) -100% ~'/' 50% 100% no-repeat;
+			background: linear-gradient( @headBgColor, @headBgColor ) -200% ~'/' 50% 100% no-repeat, linear-gradient( @headBgColor, @headBgColor ) -100% ~'/' 50% 100% no-repeat;
 		}
 	}
 
@@ -119,8 +117,7 @@
 			// This rule is the same in LTR and RTL, but we need the extra selectors for specificity
 			body.ltr &:not( .oo-ui-pendingElement-pending ),
 			body.rtl &:not( .oo-ui-pendingElement-pending ) {
-				background:
- linear-gradient( @headBgColor, @headBgColor ) 0 ~'/' 50% 100% no-repeat,linear-gradient( @headBgColor, @headBgColor ) 100% ~'/' 50% 100% no-repeat;
+				background: linear-gradient( @headBgColor, @headBgColor ) 0 ~'/' 50% 100% no-repeat, linear-gradient( @headBgColor, @headBgColor ) 100% ~'/' 50% 100% no-repeat;
 			}
 		}
 	}

@@ -7,7 +7,6 @@
 		"selector-max-id": null,
 		"no-descending-specificity": null,
 		"declaration-property-unit-disallowed-list": null,
-		"@stylistic/declaration-colon-space-after": null,
 		"declaration-no-important": null,
 		"declaration-property-value-no-unknown": null,
 		"declaration-property-value-keyword-no-deprecated": null,
