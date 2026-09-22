@@ -194,7 +194,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 
-		$response = $this->executeSpecialPage( '', null, null, $user, $context );
+		$response = $this->executeSpecialPage( '', null, null, $user, false, $context );
 
 		$pageOutput = $response[0];
 		$this->assertThatHamcrest( 'Reading recommendations appears before other modules',
@@ -241,7 +241,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$skinFactory = MediaWikiServices::getInstance()->getSkinFactory();
 		$context->setSkin( $skinFactory->makeSkin( 'minerva' ) );
 
-		$response = $this->executeSpecialPage( '', null, null, $user, $context );
+		$response = $this->executeSpecialPage( '', null, null, $user, false, $context );
 
 		$pageOutput = $response[0];
 		$this->assertThatHamcrest( 'Reading recommendations appears before other modules',
