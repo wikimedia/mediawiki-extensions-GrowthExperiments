@@ -134,6 +134,7 @@ module.exports = exports = defineComponent( {
 		const menuConfig = {
 			boldLabel: true,
 			visibleItemLimit: 6,
+			showThumbnail: true,
 		};
 
 		let fetchArticlesContinue = 0;
@@ -143,7 +144,7 @@ module.exports = exports = defineComponent( {
 		 * @param {string} searchTerm
 		 * @param {boolean} [shouldContinue] Optional result offset
 		 *
-		 * @return {Promise<{title:string;description?:string}[]>}
+		 * @return {Promise<{title:string;description?:string;thumbnail?:{source:string}}[]>}
 		 */
 		async function fetchResults( searchTerm, shouldContinue = false ) {
 			/**
@@ -151,7 +152,7 @@ module.exports = exports = defineComponent( {
 			 */
 			const params = {
 				action: 'query',
-				prop: 'description',
+				prop: 'description|pageimages',
 				generator: 'prefixsearch',
 				gpslimit: '10',
 				gpssearch: searchTerm,
@@ -301,6 +302,7 @@ module.exports = exports = defineComponent( {
 						label: page.title,
 						value: page.title,
 						description: page.description,
+						thumbnail: page.thumbnail ? { url: page.thumbnail.source } : null,
 					} ) );
 				} )
 				.catch( () => {
@@ -333,6 +335,7 @@ module.exports = exports = defineComponent( {
 						label: result.title,
 						value: result.title,
 						description: result.description,
+						thumbnail: result.thumbnail ? { url: result.thumbnail.source } : null,
 					} ) );
 
 					// Update menuItems.

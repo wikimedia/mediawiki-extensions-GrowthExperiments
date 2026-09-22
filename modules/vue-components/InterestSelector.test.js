@@ -184,7 +184,7 @@ describe( 'InterestSelector', () => {
 	it( 'populates menu items from search results', async () => {
 		const mwApi = makeMwApi( {
 			prefixsearch: { query: { pages: {
-				1: { title: 'Found page', description: 'a description' },
+				1: { title: 'Found page', description: 'a description', thumbnail: { source: 'https://example.com' } },
 			} } },
 		} );
 
@@ -199,7 +199,12 @@ describe( 'InterestSelector', () => {
 		await flushPromises();
 
 		expect( wrapper.vm.menuItems ).toEqual( [
-			{ label: 'Found page', value: 'Found page', description: 'a description' },
+			{
+				label: 'Found page',
+				value: 'Found page',
+				description: 'a description',
+				thumbnail: { url: 'https://example.com' },
+			},
 		] );
 	} );
 
@@ -228,7 +233,7 @@ describe( 'InterestSelector', () => {
 			// Response to the load-more request.
 			.mockResolvedValueOnce( { query: { pages: {
 				1: { title: 'page1', description: '' },
-				2: { title: 'page2', description: '' },
+				2: { title: 'page2', description: '', thumbnail: { source: 'https://example.com' } },
 			} } } );
 		const mwApi = { get: mwApiGet };
 
@@ -248,8 +253,8 @@ describe( 'InterestSelector', () => {
 
 		// page1 is already in the menu, so only page2 gets appended.
 		expect( wrapper.vm.menuItems ).toEqual( [
-			{ label: 'page1', value: 'page1', description: '' },
-			{ label: 'page2', value: 'page2', description: '' },
+			{ label: 'page1', value: 'page1', description: '', thumbnail: null },
+			{ label: 'page2', value: 'page2', description: '', thumbnail: { url: 'https://example.com' } },
 		] );
 	} );
 
