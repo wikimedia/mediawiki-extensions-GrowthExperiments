@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationEvalStatus;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationMetadata;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
+use GrowthExperiments\NewcomerTasks\AddLink\NotGoodCause;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -61,7 +62,7 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 		$this->assertStatusNotOK( $actualProcessingStatus );
 		$this->assertInstanceOf( LinkRecommendationEvalStatus::class, $actualProcessingStatus );
 		$this->assertSame(
-			LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_EXCLUDED_TEMPLATE,
+			NotGoodCause::EXCLUDED_TEMPLATE,
 			$actualProcessingStatus->getNotGoodCause()
 		);
 	}
@@ -100,7 +101,7 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 		$this->assertStatusNotOK( $actualProcessingStatus );
 		$this->assertInstanceOf( LinkRecommendationEvalStatus::class, $actualProcessingStatus );
 		$this->assertSame(
-			LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_EXCLUDED_CATEGORY,
+			NotGoodCause::EXCLUDED_CATEGORY,
 			$actualProcessingStatus->getNotGoodCause()
 		);
 	}
@@ -160,7 +161,7 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 		$this->assertStatusNotOK( $actualProcessingStatus );
 		$this->assertInstanceOf( LinkRecommendationEvalStatus::class, $actualProcessingStatus );
 		$this->assertSame(
-			LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_HAS_PRIOR_SUBMISSION,
+			NotGoodCause::HAS_PRIOR_SUBMISSION,
 			$actualProcessingStatus->getNotGoodCause()
 		);
 	}
@@ -177,7 +178,7 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 		$this->assertStatusNotOK( $actualProcessingStatus );
 		$this->assertInstanceOf( LinkRecommendationEvalStatus::class, $actualProcessingStatus );
 		$this->assertSame(
-			LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_MINIMUM_TIME_DID_NOT_PASS,
+			NotGoodCause::MINIMUM_TIME_DID_NOT_PASS,
 			$actualProcessingStatus->getNotGoodCause()
 		);
 	}

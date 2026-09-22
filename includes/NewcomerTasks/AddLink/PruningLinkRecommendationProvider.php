@@ -120,7 +120,7 @@ class PruningLinkRecommendationProvider implements LinkRecommendationProvider {
 		$returnStatus->setNumberOfPrunedExcludedLinks( $prunedExcludedLinksCounter );
 
 		if ( !$goodLinks ) {
-			$returnStatus->setNotGoodCause( LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_ALL_RECOMMENDATIONS_PRUNED );
+			$returnStatus->setNotGoodCause( NotGoodCause::ALL_RECOMMENDATIONS_PRUNED );
 			// Message used for debugging, keep it in English to reduce translator burden.
 			return $returnStatus->warning( 'rawmessage',
 				'All of the links in the recommendation have been pruned' );

@@ -10,17 +10,6 @@ use StatusValue;
  */
 class LinkRecommendationEvalStatus extends StatusValue {
 
-	public const NOT_GOOD_CAUSE_ALL_RECOMMENDATIONS_PRUNED = 'all_recommendations_pruned';
-	public const NOT_GOOD_CAUSE_ALREADY_STORED = 'already_stored';
-	public const NOT_GOOD_CAUSE_KNOWN_UNAVAILABLE = 'known_unavailable';
-	public const NOT_GOOD_CAUSE_GOOD_LINKS_COUNT_TOO_SMALL = 'good_links_count_too_small';
-	public const NOT_GOOD_CAUSE_MINIMUM_TIME_DID_NOT_PASS = 'minimum_time_since_last_edit_did_not_pass';
-	public const NOT_GOOD_CAUSE_DISAMBIGUATION_PAGE = 'disambiguation_page';
-	public const NOT_GOOD_CAUSE_EXCLUDED_CATEGORY = 'excluded_category';
-	public const NOT_GOOD_CAUSE_EXCLUDED_TEMPLATE = 'excluded_template';
-	public const NOT_GOOD_CAUSE_HAS_PRIOR_SUBMISSION = 'has_prior_submission';
-	public const NOT_GOOD_CAUSE_OTHER = 'other';
-
 	public function getLinkRecommendation(): LinkRecommendation {
 		if ( !$this->isGood() ) {
 			throw new \LogicException( 'Cannot get LinkRecommendation from a failed status' );
@@ -57,7 +46,7 @@ class LinkRecommendationEvalStatus extends StatusValue {
 		$this->statusData['numberOfPrunedExcludedLinks'] = $numberOfPrunedExcludedLinks;
 	}
 
-	public function setNotGoodCause( string $cause ): void {
+	public function setNotGoodCause( NotGoodCause $cause ): void {
 		if ( !$this->statusData ) {
 			$this->statusData = [];
 		}
@@ -65,12 +54,14 @@ class LinkRecommendationEvalStatus extends StatusValue {
 		$this->statusData['notGoodCause'] = $cause;
 	}
 
-	public function getNotGoodCause(): string {
+	public function getNotGoodCause(): NotGoodCause {
 		if ( $this->isGood() ) {
 			throw new \LogicException( 'Status is good.' );
 		}
 
-		return $this->statusData['notGoodCause'] ?? self::NOT_GOOD_CAUSE_OTHER;
+		$cause = $this->statusData['notGoodCause'] ?? null;
+
+		return $cause instanceof NotGoodCause ? $cause : NotGoodCause::OTHER;
 	}
 
 	public function getNumberOfPrunedRedLinks(): int {

@@ -103,13 +103,13 @@ class LinkRecommendationUpdater {
 		if ( $recommendationState === LinkRecommendationState::AVAILABLE ) {
 			return $this->failure(
 				'link recommendation already stored',
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_ALREADY_STORED
+				NotGoodCause::ALREADY_STORED
 			);
 		}
 		if ( $recommendationState === LinkRecommendationState::NOT_AVAILABLE && !$force ) {
 			return $this->failure(
 				'link recommendation known to not exist',
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_KNOWN_UNAVAILABLE
+				NotGoodCause::KNOWN_UNAVAILABLE
 			);
 		}
 
@@ -119,8 +119,7 @@ class LinkRecommendationUpdater {
 		);
 		if ( !$recommendationStatus->isGood() ) {
 			if (
-				$recommendationStatus->getNotGoodCause() ===
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_ALL_RECOMMENDATIONS_PRUNED &&
+				$recommendationStatus->getNotGoodCause() === NotGoodCause::ALL_RECOMMENDATIONS_PRUNED &&
 				$recommendationStatus->getNumberOfPrunedRedLinks() === 0
 			) {
 				$this->linkRecommendationStore->insertNoLinkRecommendationFound(
@@ -223,7 +222,7 @@ class LinkRecommendationUpdater {
 		if ( time() - $revisionTime < $this->getLinkRecommendationTaskType()->getMinimumTimeSinceLastEdit() ) {
 			return $this->failure(
 				'minimum time since last edit did not pass',
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_MINIMUM_TIME_DID_NOT_PASS
+				NotGoodCause::MINIMUM_TIME_DID_NOT_PASS
 			);
 		}
 
@@ -231,7 +230,7 @@ class LinkRecommendationUpdater {
 		if ( $this->pageProps->getProperties( $pageIdentity, 'disambiguation' ) ) {
 			return $this->failure(
 				'disambiguation page',
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_DISAMBIGUATION_PAGE
+				NotGoodCause::DISAMBIGUATION_PAGE
 			);
 		}
 
@@ -239,7 +238,7 @@ class LinkRecommendationUpdater {
 		if ( $this->linkRecommendationStore->hasSubmissionOnPage( $pageIdentity ) ) {
 			return $this->failure(
 				'has a prior submission already',
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_HAS_PRIOR_SUBMISSION
+				NotGoodCause::HAS_PRIOR_SUBMISSION
 			);
 		}
 
@@ -261,7 +260,7 @@ class LinkRecommendationUpdater {
 		if ( array_intersect( $pageCategories, $excludedCategories ) ) {
 			return $this->failure(
 				'has excluded category',
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_EXCLUDED_CATEGORY
+				NotGoodCause::EXCLUDED_CATEGORY
 			);
 		}
 
@@ -274,7 +273,7 @@ class LinkRecommendationUpdater {
 		if ( $numberOfExcludedTemplatesOnPage !== 0 ) {
 			return $this->failure(
 				'has excluded template',
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_EXCLUDED_TEMPLATE
+				NotGoodCause::EXCLUDED_TEMPLATE
 			);
 		}
 
@@ -344,7 +343,7 @@ class LinkRecommendationUpdater {
 		) {
 			return $this->failure(
 				"number of good links too small ($goodLinkCount)",
-				LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_GOOD_LINKS_COUNT_TOO_SMALL
+				NotGoodCause::GOOD_LINKS_COUNT_TOO_SMALL
 			);
 		}
 
@@ -377,13 +376,10 @@ class LinkRecommendationUpdater {
 
 	/**
 	 * Convenience shortcut for making StatusValue objects with non-localized messages.
-	 * @param string $error
-	 * @param string $cause one of the LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_* constants
-	 * @return StatusValue
 	 */
 	private function failure(
 		string $error,
-		string $cause = LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_OTHER
+		NotGoodCause $cause = NotGoodCause::OTHER
 	): StatusValue {
 		$status = LinkRecommendationEvalStatus::newFatal( new RawMessage( $error ) );
 		$status->setNotGoodCause( $cause );

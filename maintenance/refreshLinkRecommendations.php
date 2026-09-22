@@ -7,6 +7,7 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationEvalStatus;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
+use GrowthExperiments\NewcomerTasks\AddLink\NotGoodCause;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
@@ -268,9 +269,9 @@ class RefreshLinkRecommendations extends Maintenance {
 		if ( $candidateStatus->isGood() ) {
 			$metricKey = 'success';
 		} elseif ( $candidateStatus instanceof LinkRecommendationEvalStatus ) {
-			$metricKey = $candidateStatus->getNotGoodCause();
+			$metricKey = $candidateStatus->getNotGoodCause()->value;
 		} else {
-			$metricKey = LinkRecommendationEvalStatus::NOT_GOOD_CAUSE_OTHER;
+			$metricKey = NotGoodCause::OTHER->value;
 		}
 
 		$this->metrics[$metricKey] ??= 0;
