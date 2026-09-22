@@ -4,6 +4,15 @@ const CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES;
 
 /**
+ * Icon for the topic filter button when it selects interests instead of topics.
+ *
+ * Keep in sync with HomepageModules\SuggestedEdits::INTEREST_FILTER_ICON.
+ *
+ * @type {string}
+ */
+const INTEREST_FILTER_ICON = 'configure';
+
+/**
  * Shared "is the interest selector open?" flag, backing the one Vue app mounted for the page.
  *
  * The module can be rendered more than once (on mobile, once for the server-rendered summary
@@ -83,10 +92,14 @@ function FiltersButtonGroupWidget( config, rootStore ) {
 
 	if ( this.topicMatching ) {
 		const shouldShowFunnelAddIcon = config.useTopicMatchMode && this.filtersStore.topicsMatchMode === TOPIC_MATCH_MODES.AND;
+		// When interests are enabled the button opens the interest selector, not the topic
+		// filters dialog, so it gets its own icon.
+		const topicFilterIcon = this.interestsEnabled ? INTEREST_FILTER_ICON :
+			( shouldShowFunnelAddIcon ? 'funnel-add' : 'funnel' );
 		// Button label is set in #updateButtonLabelAndIcon
 		// eslint-disable-next-line mediawiki/no-unlabeled-buttonwidget
 		this.topicFilterButtonWidget = new OO.ui.ButtonWidget( {
-			icon: shouldShowFunnelAddIcon ? 'funnel-add' : 'funnel',
+			icon: topicFilterIcon,
 			classes: [ 'topic-matching', 'topic-filter-button' ],
 			indicator: config.mode === 'desktop' ? null : 'down',
 		} );
@@ -243,7 +256,7 @@ FiltersButtonGroupWidget.prototype.updateInterestButtonLabel = function () {
 		).params( [ mw.language.convertNumber( interests.length ) ] ).text();
 	}
 	this.topicFilterButtonWidget.setLabel( label );
-	this.topicFilterButtonWidget.setIcon( 'funnel' );
+	this.topicFilterButtonWidget.setIcon( INTEREST_FILTER_ICON );
 };
 
 /**

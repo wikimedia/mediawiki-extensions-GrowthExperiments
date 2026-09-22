@@ -79,6 +79,13 @@ class SuggestedEdits extends BaseModule {
 	private const DEFAULT_TASK_TYPES = [ 'copyedit', 'links', 'link-recommendation', 'revise-tone' ];
 
 	/**
+	 * Icon for the topic filter button when it selects interests instead of topics.
+	 *
+	 * Keep in sync with INTEREST_FILTER_ICON in FiltersButtonGroupWidget.js.
+	 */
+	private const INTEREST_FILTER_ICON = 'configure';
+
+	/**
 	 * Used to keep track of the state of user interactions with suggested edits per type per skin.
 	 * See also HomepageHooks::onLocalUserCreated
 	 */
@@ -610,7 +617,7 @@ class SuggestedEdits extends BaseModule {
 			'label' => $label,
 			'classes' => [ 'topic-matching', 'topic-filter-button', 'interest-filter-button' ],
 			'indicator' => $this->getMode() === self::RENDER_DESKTOP ? null : 'down',
-			'icon' => 'funnel',
+			'icon' => self::INTEREST_FILTER_ICON,
 		] );
 	}
 
