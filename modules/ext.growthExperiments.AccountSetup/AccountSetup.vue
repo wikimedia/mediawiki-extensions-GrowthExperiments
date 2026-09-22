@@ -49,6 +49,7 @@
 			</h3>
 			<button
 				class="ext-growthExperiments-account-setup-transparent-button"
+				data-test-id="account-setup-step-2-reading"
 				@click="() => accountTypeClicked( 'reading' )"
 			>
 				<cdx-card>
