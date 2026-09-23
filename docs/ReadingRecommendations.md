@@ -36,17 +36,35 @@ Then follow the instructions below depending on whether you want search working 
 
 ### Quickstart
 
-* Visit Special:Homepage and
-* Enable experiment with adding URL param `?mpo=de-1-3-1-specialhomepage-onboarding-ab-test:treatment`
-* You should see a popup.
-* Click "Reading and exploring"
-* Click "Go to your home"
-* Confirm "Daily reads" in on the page.
+1. Visit Special:Homepage and
+2. Enable experiment with adding URL param `?mpo=de-1-3-1-specialhomepage-onboarding-ab-test:treatment`, alternatively set cookie override as explained below.
+3. You should be facing an onboarding dialog "What brings you to Wikipedia?".
+4. Click "Reading and exploring" or (as another test case, click on "skip")
+   1. In "What are 3 of your interests?" do not select any interests → to output general
+      reading recommendations).
+   2. Alternatively, select some interests to output interest-based reading recommendations.
+5. Click "Go to your home"
+6. Confirm "Daily reads" is on the Special:Homepage, displaying reading recommendations and the
+   button "Select interests"
 
-To reset and cause the dialog to open again run:
+Alternatively to adding the URL param, you could also set the override cookie once in the browser
+DevTools console:
+```javascript
+mw.loader.using( 'ext.testKitchen' ).then( () => mw.testKitchen.overrideExperimentGroup( 'de-1-3-1-specialhomepage-onboarding-ab-test', 'treatment' ) );
 ```
-new mw.Api().saveOptions( { 'growthexperiments-account-setup-motivation': '' } )
+
+To reset the setup motivation and make the dialog open again run:
+```javascript
+new mw.Api().saveOptions( { 'growthexperiments-account-setup-motivation': null } )
 ```
+
+Please note, that different test wikis may have different setups and the experiment might not
+be available on all of them. Examples given:
+* For local environment or test 2 wiki: use URL param like
+  https://test2.wikipedia.org/wiki/Special:Homepage?mpo=de-1-3-1-specialhomepage-onboarding-ab-test:treatment
+* For test 1 wiki: it will only work with a new user accounts registered after 9 September 2026 and
+URL param
+  user accounts  there: https://test.wikipedia.org/wiki/Special:Homepage?mpo=de-1-3-1-specialhomepage-onboarding-ab-test:treatment
 
 #### Developing the UI without CirrusSearch
 
