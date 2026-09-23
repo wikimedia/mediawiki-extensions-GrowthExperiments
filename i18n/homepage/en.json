@@ -309,6 +309,7 @@
 	"growthexperiments-interest-selector-a11y-label": "Select your interests",
 	"growthexperiments-interest-selector-related-articles-heading": "Related articles",
 	"growthexperiments-interest-selector-random-articles-heading": "Random articles",
+	"growthexperiments-interest-selector-no-related-articles-found": "0 related articles found",
 	"growthexperiments-interest-selector-success": "All set! Your Home is personalized and ready.",
 	"growthexperiments-interest-selector-dialog-title": "Select interests",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Done",

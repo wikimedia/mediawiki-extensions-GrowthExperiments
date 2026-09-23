@@ -57,9 +57,15 @@
 				</li>
 			</ul>
 			<cdx-progress-bar
-				v-else
+				v-else-if="isSearching"
 				inline
 			></cdx-progress-bar>
+			<p
+				v-else
+				class="ext-growthExperiments-interest-selector-related-articles__none-found"
+			>
+				{{ $i18n( 'growthexperiments-interest-selector-no-related-articles-found' ).text() }}
+			</p>
 		</section>
 	</div>
 </template>
@@ -207,6 +213,8 @@ module.exports = exports = defineComponent( {
 			selection.value = [ ...selection.value, cardArticle.value ];
 		}
 
+		const isSearching = ref( false );
+
 		/**
 		 * @param {string[]} pagenames
 		 * @return {Promise<void>}
@@ -221,9 +229,11 @@ module.exports = exports = defineComponent( {
 				return;
 			}
 
+			isSearching.value = true;
 			const relatedArticleDataResponses = await Promise.all(
 				pagenames.map( fetchRelatedArticles ),
 			);
+			isSearching.value = false;
 			let relatedArticleData = Object.values( Object.assign( {}, ...relatedArticleDataResponses ) );
 
 			relatedArticleData = relatedArticleData.filter( ( article ) => !pagenames.includes( article.title ) );
@@ -238,6 +248,7 @@ module.exports = exports = defineComponent( {
 		}
 
 		async function updateRelatedArticlesNoSeeds() {
+			isSearching.value = true;
 			const data = await mwApi.get( {
 				action: 'query',
 				prop: 'pageimages',
@@ -246,6 +257,7 @@ module.exports = exports = defineComponent( {
 				gsrsearch: 'Wikipedia',
 				gsrsort: 'random',
 			} );
+			isSearching.value = false;
 
 			if ( !data.query || !data.query.pages ) {
 				relatedArticles.value = [];
@@ -367,6 +379,7 @@ module.exports = exports = defineComponent( {
 			inputValue,
 			menuItems,
 			menuConfig,
+			isSearching,
 			relatedArticles,
 			onUpdateInputValueDebounced,
 			onLoadMore,
@@ -398,6 +411,13 @@ module.exports = exports = defineComponent( {
 			font-style: normal;
 			font-weight: bold;
 			line-height: @line-height-small;
+
+			&__none-found {
+				color: @color-subtle;
+				margin: 0;
+				font-family: @font-family-base;
+				line-height: @line-height-small;
+			}
 		}
 
 		&-related-articles-list {
