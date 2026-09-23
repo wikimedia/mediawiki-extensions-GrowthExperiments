@@ -49,7 +49,7 @@ describe( 'InterestSelector', () => {
 		const mwApi = { get: jest.fn().mockResolvedValue( { query: { pages: {} } } ) };
 
 		const wrapper = mount( InterestSelector, {
-			props: { chips: [] },
+			props: { chips: [ { value: 'Abc' } ] },
 			global: { provide: { mwApi: mwApi } },
 		} );
 
@@ -58,6 +58,19 @@ describe( 'InterestSelector', () => {
 		);
 		expect( wrapper.find( '.ext-growthExperiments-interest-selector-related-articles' ).text() ).toBe(
 			'growthexperiments-interest-selector-related-articles-heading',
+		);
+	} );
+
+	it( 'renders heading text for random articles if no chips selected', () => {
+		const mwApi = { get: jest.fn().mockResolvedValue( { query: { pages: {} } } ) };
+
+		const wrapper = mount( InterestSelector, {
+			props: { chips: [] },
+			global: { provide: { mwApi: mwApi } },
+		} );
+
+		expect( wrapper.find( '.ext-growthExperiments-interest-selector-related-articles' ).text() ).toBe(
+			'growthexperiments-interest-selector-random-articles-heading',
 		);
 	} );
 

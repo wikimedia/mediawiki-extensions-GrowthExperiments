@@ -334,6 +334,7 @@
 	"growthexperiments-interest-selector-placeholder": "Placeholder in Interest Selector's search field for the user to search for articles that interest them.",
 	"growthexperiments-interest-selector-a11y-label": "Hidden label for the search input in the Interest Selector which is used to search for articles that interest them",
 	"growthexperiments-interest-selector-related-articles-heading": "Sub-heading for a section of dynamically updated cards that are related to the articles that the user selected as interests",
+	"growthexperiments-interest-selector-random-articles-heading": "Sub-heading for a section with cards for random articles if the user has selected no interests",
 	"growthexperiments-interest-selector-success": "Success message below the search input informing the user that they selected enough articles as interests and that it is time to move on.",
 	"growthexperiments-interest-selector-dialog-title": "Title of the interest selector dialog when shown as a standalone form.",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Label for the save button on the interest selector dialog when shown as a standalone form.",

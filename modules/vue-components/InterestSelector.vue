@@ -26,7 +26,11 @@
 		</cdx-field>
 		<section>
 			<h2 class="ext-growthExperiments-interest-selector-related-articles">
-				{{ $i18n( 'growthexperiments-interest-selector-related-articles-heading' ).text() }}
+				{{
+					wrappedChips.length === 0 ?
+						$i18n( 'growthexperiments-interest-selector-random-articles-heading' ).text() :
+						$i18n( 'growthexperiments-interest-selector-related-articles-heading' ).text()
+				}}
 			</h2>
 			<ul
 				v-if="relatedArticles.length"
