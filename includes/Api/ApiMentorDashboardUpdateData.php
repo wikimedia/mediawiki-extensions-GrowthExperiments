@@ -38,9 +38,11 @@ class ApiMentorDashboardUpdateData extends ApiBase {
 			$this->dieWithError( [ 'actionthrottledtext' ] );
 		}
 
-		$this->jobQueueGroup->lazyPush( new JobSpecification( MenteeOverviewUpdateDataForMentorJob::JOB_NAME, [
-			'mentorId' => $this->getUser()->getId(),
-		] ) );
+		$this->jobQueueGroup->lazyPush( new JobSpecification(
+			MenteeOverviewUpdateDataForMentorJob::JOB_NAME,
+			[ 'mentorId' => $this->getUser()->getId() ],
+			[ 'removeDuplicates' => true ]
+		) );
 
 		$this->getResult()->addValue( null, $this->getModuleName(), [
 			'status' => 'ok',

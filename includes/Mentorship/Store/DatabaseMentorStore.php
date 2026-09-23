@@ -184,11 +184,20 @@ class DatabaseMentorStore extends MentorStore {
 				$mentorRole
 			);
 		} else {
-			$this->jobQueueGroup->lazyPush( new JobSpecification( SetUserMentorDatabaseJob::JOB_NAME, [
-				'menteeId' => $mentee->getId(),
-				'mentorId' => $mentor ? $mentor->getId() : null,
-				'roleId' => $mentorRole,
-			] ) );
+			$this->jobQueueGroup->lazyPush( new JobSpecification(
+				SetUserMentorDatabaseJob::JOB_NAME,
+				[
+					'menteeId' => $mentee->getId(),
+					'mentorId' => $mentor ? $mentor->getId() : null,
+					'roleId' => $mentorRole,
+				],
+				[
+					'removeDuplicates' => true,
+					// Keep the first job for a mentee and a role. A later job must not
+					// replace the mentor that the first job stores.
+					'removeDuplicatesIgnoreParams' => [ 'mentorId' ],
+				]
+			) );
 		}
 	}
 

@@ -5,6 +5,8 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\TestingAccessWrapper;
@@ -31,6 +33,71 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 
 	protected function getJobType(): string {
 		return 'setUserMentorDatabaseJob';
+	}
+
+	/**
+	 * @param JobSpecification[] &$pushedJobs Collects the jobs the store pushes
+	 */
+	private function getStoreWithJobRecorder( array &$pushedJobs ): DatabaseMentorStore {
+		$jobQueueGroup = $this->createNoOpMock( JobQueueGroup::class, [ 'lazyPush' ] );
+		$jobQueueGroup->method( 'lazyPush' )->willReturnCallback(
+			static function ( $job ) use ( &$pushedJobs ) {
+				$pushedJobs[] = $job;
+			}
+		);
+
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		return new DatabaseMentorStore(
+			$this->wanCache,
+			$this->getServiceContainer()->getUserFactory(),
+			$this->getServiceContainer()->getUserIdentityLookup(),
+			$jobQueueGroup,
+			$geServices->getGrowthConnectionProvider(),
+			false
+		);
+	}
+
+	/**
+	 * Two mentor changes for one mentee must collapse into one job.
+	 *
+	 * The queue reads the deduplication options from the pushed object, and the pushed
+	 * object is a JobSpecification. It never reads SetUserMentorDatabaseJob, so a job class
+	 * that declares ignoreDuplicates() does not deduplicate anything (T418194).
+	 */
+	public function testSetMentorJobDeduplicates() {
+		$mentee = $this->getMutableTestUser()->getUser();
+		$otherMentee = $this->getMutableTestUser()->getUser();
+		$mentor = $this->getMutableTestUser()->getUser();
+		$otherMentor = $this->getMutableTestUser()->getUser();
+
+		$pushedJobs = [];
+		$store = $this->getStoreWithJobRecorder( $pushedJobs );
+		$store->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
+		$store->setMentorForUser( $mentee, $otherMentor, MentorStore::ROLE_PRIMARY );
+		$store->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_BACKUP );
+		$store->setMentorForUser( $otherMentee, $mentor, MentorStore::ROLE_PRIMARY );
+
+		[ $job, $sameMenteeOtherMentor, $backupRoleJob, $otherMenteeJob ] = $pushedJobs;
+
+		$this->assertTrue(
+			$job->ignoreDuplicates(),
+			'the job must opt into deduplication, or the queue keeps every copy'
+		);
+		$this->assertSame(
+			$job->getDeduplicationInfo(),
+			$sameMenteeOtherMentor->getDeduplicationInfo(),
+			'a second mentor must not make a second job for one mentee'
+		);
+		$this->assertNotSame(
+			$job->getDeduplicationInfo(),
+			$backupRoleJob->getDeduplicationInfo(),
+			'the two mentor roles must never deduplicate against each other'
+		);
+		$this->assertNotSame(
+			$job->getDeduplicationInfo(),
+			$otherMenteeJob->getDeduplicationInfo(),
+			'jobs for different mentees must never deduplicate against each other'
+		);
 	}
 
 	public function testGetSetJob() {

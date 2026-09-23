@@ -23,7 +23,6 @@ class NewcomerTasksCacheRefreshJob extends Job {
 		private readonly TaskSuggesterFactory $taskSuggesterFactory
 	) {
 		parent::__construct( self::JOB_NAME, $params );
-		$this->removeDuplicates = true;
 	}
 
 	/** @inheritDoc */

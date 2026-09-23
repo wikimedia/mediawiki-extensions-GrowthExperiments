@@ -26,7 +26,6 @@ class MenteeOverviewUpdateDataForMentorJob extends Job {
 		MenteeOverviewDataUpdater $menteeOverviewDataUpdater
 	) {
 		parent::__construct( self::JOB_NAME, $params );
-		$this->removeDuplicates = true;
 
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->menteeOverviewDataUpdater = $menteeOverviewDataUpdater;

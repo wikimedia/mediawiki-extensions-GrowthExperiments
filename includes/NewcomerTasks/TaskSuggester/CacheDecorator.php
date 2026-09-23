@@ -119,12 +119,16 @@ class CacheDecorator implements TaskSuggester {
 								);
 							}
 							$this->jobQueueGroup->lazyPush(
-								new JobSpecification( NewcomerTasksCacheRefreshJob::JOB_NAME, [
-									'userId' => $user->getId(),
-									'jobReleaseTimestamp' => (int)wfTimestamp() +
-										// Process the job the day before the cache expires.
-										( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
-								] )
+								new JobSpecification(
+									NewcomerTasksCacheRefreshJob::JOB_NAME,
+									[
+										'userId' => $user->getId(),
+										'jobReleaseTimestamp' => (int)wfTimestamp() +
+											// Process the job the day before the cache expires.
+											( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
+									],
+									[ 'removeDuplicates' => true ]
+								)
 							);
 						} catch ( JobQueueError ) {
 							// Ignore jobqueue errors.

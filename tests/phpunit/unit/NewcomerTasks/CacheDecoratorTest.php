@@ -540,6 +540,34 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * Two cache misses for one user must collapse into one refresh job.
+	 *
+	 * The queue reads the deduplication options from the pushed object, and the pushed
+	 * object is a JobSpecification. It never reads NewcomerTasksCacheRefreshJob, so a job
+	 * class that sets $removeDuplicates does not deduplicate anything (T418194).
+	 */
+	public function testRefreshJobDeduplicates() {
+		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$topicTask = new Task( $taskType, new TitleValue( NS_MAIN, 'Arts-1' ) );
+		$topicTask->setTopics( [ new Topic( 'arts' ) ] );
+
+		$this->newCacheDecorator( new StaticTaskSuggester( [ $topicTask ] ) )
+			->suggest( $this->user, new TaskSetFilters( [ 'copyedit' ], [ 'arts' ] ), 5 );
+
+		[ $job ] = $this->pushedJobs;
+
+		$this->assertTrue(
+			$job->ignoreDuplicates(),
+			'the job must opt into deduplication, or the queue keeps every copy'
+		);
+		$this->assertSame(
+			[ 'userId' => $this->user->getId() ],
+			$job->getDeduplicationInfo()['params'],
+			'the delay must not make two refreshes for one user look different'
+		);
+	}
+
+	/**
 	 * The hit log reports how deep the cached pool is, which the order and the excluded
 	 * pages must not change.
 	 */

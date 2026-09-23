@@ -193,9 +193,11 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				);
 			}
 			$this->jobQueueGroup->lazyPush(
-				new JobSpecification( NewcomerTasksCacheRefreshJob::JOB_NAME, [
-					'userId' => $user->getId(),
-				] )
+				new JobSpecification(
+					NewcomerTasksCacheRefreshJob::JOB_NAME,
+					[ 'userId' => $user->getId() ],
+					[ 'removeDuplicates' => true ]
+				)
 			);
 		}
 	}

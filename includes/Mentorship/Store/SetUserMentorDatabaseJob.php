@@ -26,31 +26,9 @@ class SetUserMentorDatabaseJob extends Job {
 		DatabaseMentorStore $databaseMentorStore
 	) {
 		parent::__construct( self::JOB_NAME, $params );
-		$this->removeDuplicates = true;
 
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->databaseMentorStore = $databaseMentorStore;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function ignoreDuplicates() {
-		return true;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getDeduplicationInfo() {
-		$info = parent::getDeduplicationInfo();
-
-		// avoid overriding the stored mentorId for the same menteeId multiple times
-		if ( isset( $info['params']['mentorId'] ) ) {
-			unset( $info['params']['mentorId'] );
-		}
-
-		return $info;
 	}
 
 	/**
