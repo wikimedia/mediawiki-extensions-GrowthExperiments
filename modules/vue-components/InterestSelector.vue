@@ -12,7 +12,7 @@
 				v-model:input-chips="wrappedChips"
 				v-model:selected="selection"
 				v-model:input-value="inputValue"
-				:separate-input="true"
+				:separate-input="wrappedChips.length > 0"
 				:menu-items="menuItems"
 				:menu-config="menuConfig"
 				:placeholder="$i18n( 'growthexperiments-interest-selector-placeholder' ).text()"
