@@ -1,0 +1,17 @@
+{
+	"wiki": "enwiki",
+	"article_id": "4567",
+	"revision_id": "890123",
+	"text": "The Cretan lyra is quite simply the most magnificent and soul-stirring instrument in the whole of the Mediterranean!",
+	"prediction": {
+		"status_code": 200,
+		"model_name": "edit-check",
+		"model_version": "v1",
+		"check_type": "tone",
+		"language": "en",
+		"page_title": "Cretan lyra",
+		"prediction": true,
+		"probability": 0.88,
+		"details": {}
+	}
+}

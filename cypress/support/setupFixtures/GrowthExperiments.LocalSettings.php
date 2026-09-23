@@ -80,6 +80,18 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, "Kristallsee" ) ),
 				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, "Eldfjall" ) ),
 				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
+				/*
+				 * Appended, so the tasks above keep the positions the browser tests
+				 * assert. A patchdemo wiki reaches only revise-tone tasks: link
+				 * recommendations need database rows nothing on the wiki can write,
+				 * and copyedit is rewritten to revise-tone before the request leaves
+				 * the client.
+				 * Three is also the dashboard feed's summary size, so a fourth is
+				 * what makes it offer the full list at all.
+				 */
+				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, '4-8-2' ) ),
+				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, 'Classical kemençe' ) ),
+				new Task( $reviseToneTaskType, new TitleValue( NS_MAIN, 'Cretan lyra' ) ),
 			], $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
 				$growthServices->getLogger() );
 
@@ -115,6 +127,14 @@ $wgHooks['ContentHandlerDefaultModelFor'][] =
 	[ SubpageReviseToneRecommendationProvider::class, 'onContentHandlerDefaultModelFor' ];
 // Use Commons as a foreign file repository.
 $wgUseInstantCommons = true;
+
+/*
+ * Let the task cards show a description without a Wikibase repo behind them. The local
+ * source of prop=description reads the SHORTDESC parser function, which Wikibase only
+ * hooks up when this is on, so leaving it off keeps the description slot empty on a
+ * client-only wiki. Harmless where Wikibase is absent: nothing reads the setting.
+ */
+$wgWBClientSettings['allowLocalShortDesc'] = true;
 
 /*
  * Set up service URL for links.
