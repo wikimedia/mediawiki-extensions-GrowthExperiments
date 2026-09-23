@@ -66,7 +66,18 @@ class ReassignMentees {
 		}
 
 		$jobQueueGroup->lazyPush(
-			new JobSpecification( ReassignMenteesJob::JOB_NAME, $jobParams )
+			new JobSpecification(
+				ReassignMenteesJob::JOB_NAME,
+				$jobParams,
+				[
+					'removeDuplicates' => true,
+					'removeDuplicatesIgnoreParams' => [
+						'performerId',
+						'reassignMessageKey',
+						'reassignMessageAdditionalParams',
+					],
+				]
+			)
 		);
 	}
 

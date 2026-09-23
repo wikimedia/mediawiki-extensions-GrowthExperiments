@@ -8,7 +8,10 @@ use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\ReassignMentees;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\JobQueue\JobQueue;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Message\Message;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
@@ -56,6 +59,85 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			$mentor,
 			$mentor,
 			$contextMock ?? $this->createNoOpMock( IContextSource::class )
+		);
+	}
+
+	/**
+	 * Build a ReassignMentees that records the jobs it pushes.
+	 *
+	 * @param UserIdentity $mentor
+	 * @param UserIdentity $performer
+	 * @param JobSpecification[] &$pushedJobs Collects every pushed job
+	 */
+	private function newReassignMenteesForScheduling(
+		UserIdentity $mentor,
+		UserIdentity $performer,
+		array &$pushedJobs
+	): ReassignMentees {
+		$jobQueueGroup = $this->createNoOpMock( JobQueueGroup::class, [ 'get', 'lazyPush' ] );
+		$jobQueueGroup->method( 'get' )
+			->willReturn( $this->createMock( JobQueue::class ) );
+		$jobQueueGroup->method( 'lazyPush' )
+			->willReturnCallback( static function ( $job ) use ( &$pushedJobs ) {
+				$pushedJobs[] = $job;
+			} );
+		$jobQueueGroupFactory = $this->createNoOpMock(
+			JobQueueGroupFactory::class,
+			[ 'makeJobQueueGroup' ]
+		);
+		$jobQueueGroupFactory->method( 'makeJobQueueGroup' )
+			->willReturn( $jobQueueGroup );
+
+		return new ReassignMentees(
+			new NullLogger(),
+			$this->createNoOpMock( IMentorManager::class ),
+			$this->createNoOpMock( MentorStore::class ),
+			$this->createNoOpMock( ChangeMentorFactory::class ),
+			$jobQueueGroupFactory,
+			$this->createNoOpMock( UserFactory::class ),
+			$this->createNoOpMock( ILockManager::class ),
+			$performer,
+			$mentor,
+			$this->createNoOpMock( IContextSource::class )
+		);
+	}
+
+	/**
+	 * Two reassignments for one mentor must collapse into one job (T322374).
+	 *
+	 * The queue reads the deduplication options from the pushed object, and the pushed
+	 * object is a JobSpecification. It never reads ReassignMenteesJob, so a job class that
+	 * declares ignoreDuplicates() does not deduplicate anything (T418194).
+	 */
+	public function testScheduleReassignMenteesJobDeduplicates() {
+		$mentor = new UserIdentityValue( 123, 'Mentor' );
+		$otherMentor = new UserIdentityValue( 456, 'Other Mentor' );
+		$performer = new UserIdentityValue( 321, 'Performer' );
+		$otherPerformer = new UserIdentityValue( 654, 'Other Performer' );
+
+		$pushedJobs = [];
+		$this->newReassignMenteesForScheduling( $mentor, $performer, $pushedJobs )
+			->scheduleReassignMenteesJob( 'first-message', 'Mentor' );
+		$this->newReassignMenteesForScheduling( $mentor, $otherPerformer, $pushedJobs )
+			->scheduleReassignMenteesJob( 'second-message', 'Something else' );
+		$this->newReassignMenteesForScheduling( $otherMentor, $performer, $pushedJobs )
+			->scheduleReassignMenteesJob( 'first-message', 'Other Mentor' );
+
+		[ $job, $sameMentorOtherPerformer, $otherMentorJob ] = $pushedJobs;
+
+		$this->assertTrue(
+			$job->ignoreDuplicates(),
+			'the job must opt into deduplication, or the queue keeps every copy'
+		);
+		$this->assertSame(
+			$job->getDeduplicationInfo(),
+			$sameMentorOtherPerformer->getDeduplicationInfo(),
+			'performer and message must not make two jobs for one mentor look different'
+		);
+		$this->assertNotSame(
+			$job->getDeduplicationInfo(),
+			$otherMentorJob->getDeduplicationInfo(),
+			'jobs for different mentors must never deduplicate against each other'
 		);
 	}
 
