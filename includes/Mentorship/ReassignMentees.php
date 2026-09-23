@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Language\MessageLocalizer;
@@ -37,7 +38,29 @@ class ReassignMentees {
 	 */
 	public function scheduleReassignMenteesJob(
 		string $reassignMessageKey,
-	   ...$reassignMessageAdditionalParams
+			   ...$reassignMessageAdditionalParams
+	) {
+		// Use deferred updates to ensure the job release timestamp is computed at the time when
+		// the job is actually sent (lazyPush uses a deferred update itself).
+		// Without this, jobReleaseTimestamp in doScheduleReassignMenteesJob is not taking effect
+		// at all.
+		DeferredUpdates::addCallableUpdate(
+			function () use ( $reassignMessageKey, $reassignMessageAdditionalParams ) {
+				$this->doScheduleReassignMenteesJob( $reassignMessageKey, $reassignMessageAdditionalParams );
+			}
+		);
+	}
+
+	/**
+	 * Actually schedule a new job to reassign mentees
+	 *
+	 * @param string $reassignMessageKey
+	 * @param mixed[] $reassignMessageAdditionalParams
+	 * @return void
+	 */
+	private function doScheduleReassignMenteesJob(
+		string $reassignMessageKey,
+		array $reassignMessageAdditionalParams
 	) {
 		$this->logger->info(
 			'ReassignMentees schedules ' . ReassignMenteesJob::JOB_NAME . ' for {mentor}',

@@ -8,6 +8,7 @@ use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\ReassignMentees;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\JobQueue\JobQueue;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
@@ -122,6 +123,10 @@ class ReassignMenteesTest extends MediaWikiUnitTestCase {
 			->scheduleReassignMenteesJob( 'second-message', 'Something else' );
 		$this->newReassignMenteesForScheduling( $otherMentor, $performer, $pushedJobs )
 			->scheduleReassignMenteesJob( 'first-message', 'Other Mentor' );
+
+		// scheduleReassignMenteesJob defers the push, to compute the job release
+		// timestamp at push time (T418194). Run the queue to get the jobs.
+		DeferredUpdates::doUpdates();
 
 		[ $job, $sameMentorOtherPerformer, $otherMentorJob ] = $pushedJobs;
 
