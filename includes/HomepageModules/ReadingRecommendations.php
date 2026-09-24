@@ -80,7 +80,7 @@ class ReadingRecommendations extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getHeaderIconName() {
-		return 'articles';
+		return '';
 	}
 
 	/**
@@ -122,7 +122,6 @@ class ReadingRecommendations extends BaseModule {
 		return array_merge(
 			parent::getModuleStyles(),
 			[
-				'oojs-ui.styles.icons-content',
 				'ext.growthExperiments.Homepage.ReadingRecommendations.styles',
 			]
 		);
