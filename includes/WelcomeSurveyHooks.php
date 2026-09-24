@@ -212,7 +212,7 @@ class WelcomeSurveyHooks implements
 			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
 			return true;
 		}
-		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser() ) ) {
+		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser(), true ) ) {
 			return true;
 		}
 

@@ -170,7 +170,7 @@ class AccountSetupHooks implements
 	private function maybeRedirectToHomepage( string &$returnTo, array $returnToQuery ): ?array {
 		$context = RequestContext::getMain();
 		$user = $context->getUser();
-		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user, true ) ) {
 			return null;
 		}
 
