@@ -13,7 +13,8 @@
 			"Mardetanha",
 			"Mohammad ebz",
 			"Reza1615",
-			"LProfo"
+			"LProfo",
+			"Arian Ar"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|درود}}، {{bidi:$1}}!",
@@ -185,6 +186,7 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "پرسش {{GENDER:$2|خود}} در صفحهٔ بحث {{GENDER:$1|مربی‌تان}} را مشاهده کنید.",
 	"growthexperiments-homepage-mentorship-question-subject": "پرسش [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "پرسش [[User:$1|$1]] درباره [[$2]]",
+	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "مربی [[User:$1|$1]] <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]/span> غایب است.",
 	"growthexperiments-homepage-mentorship-system-message": "توجه: $1",
 	"growthexperiments-specialimpact-title": "تأثیر",
 	"growthexperiments-specialimpact-showing-for-other-user": "نمایش داده‌های تاثیرات $1",
