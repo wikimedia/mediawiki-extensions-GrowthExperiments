@@ -3,6 +3,7 @@
 		v-model:open="wrappedOpen"
 		:use-close-button="true"
 		:title="$i18n( 'growthexperiments-homepage-suggestededits-interest-filters-title' ).text()"
+		:fixed-height="true"
 	>
 		<div class="ext-growthExperiments-interest-selector-dialog">
 			<p
