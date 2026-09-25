@@ -1,9 +1,23 @@
 @import 'mediawiki.skin.variables.less';
 
-// Overspecify MinervaNeue's `.content ul` here as well.
 .growthexperiments-homepage-module-reading-recommendations {
 	position: relative;
 
+	.growthexperiments-homepage-module-header-text {
+		font-size: @font-size-small;
+	}
+
+	// For accessibility, 'Daily reads' is an h2, not it's parent,
+	// so we need it to inherit Vector header styles.
+	&.growthexperiments-homepage-module-desktop .growthexperiments-homepage-module-header-text {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font: inherit;
+		color: inherit;
+	}
+
+	// Overspecify MinervaNeue's `.content ul` here as well.
 	.growthexperiments-reading-recommendations-list {
 		list-style: none;
 		margin: 0;
@@ -55,11 +69,11 @@
 			margin: 0;
 			padding: 0;
 		}
-	}
 
-	#growthexperiments-reading-recommendations-personalize-button {
-		@media ( max-width: @max-width-breakpoint-mobile ) {
-			width: @size-full;
+		#growthexperiments-reading-recommendations-personalize-button {
+			@media ( max-width: @max-width-breakpoint-mobile ) {
+				width: @size-full;
+			}
 		}
 	}
 
@@ -68,9 +82,6 @@
 	}
 
 	.growthexperiments-reading-recommendations-interest-selector-launch {
-		position: absolute;
-		// Match base module padding.
-		top: @spacing-100;
-		right: @spacing-100;
+		flex-shrink: 0;
 	}
 }
