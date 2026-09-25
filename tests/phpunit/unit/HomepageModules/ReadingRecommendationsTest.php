@@ -208,6 +208,11 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 
 		$this->assertStringNotContainsString( $ctaMessage, $html );
 		$this->assertStringContainsString( 'growthexperiments-reading-recommendations-list', $html );
+		$this->assertMatchesRegularExpression(
+			'/<h2 class="growthexperiments-homepage-module-header-text">[^<]*<\/h2>' .
+			'<button[^>]*growthexperiments-reading-recommendations-interest-selector-launch/',
+			$html
+		);
 		$this->assertTrue( $module->getJsData( $mode )['hasInterests'] );
 	}
 

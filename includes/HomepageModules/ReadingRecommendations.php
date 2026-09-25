@@ -83,10 +83,33 @@ class ReadingRecommendations extends BaseModule {
 		return 'articles';
 	}
 
+	/**
+	 * A flex row rather than the heading, so the launch button is not part of
+	 * the heading's accessible name.
+	 *
+	 * @inheritDoc
+	 */
+	protected function getHeaderTag() {
+		return 'div';
+	}
+
+	/** @inheritDoc */
+	protected function getHeaderTextElement() {
+		return Html::element(
+			'h2',
+			[ 'class' => static::BASE_CSS_CLASS . '-header-text' ],
+			$this->getHeaderText()
+		);
+	}
+
+	/** @inheritDoc */
+	protected function getHeader() {
+		return parent::getHeader() . $this->getPersonalizeLaunchButton();
+	}
+
 	/** @inheritDoc */
 	protected function getMobileSummaryHeader() {
-		// Title only, without the arrow that would point to a details view.
-		return $this->getHeaderTextElement();
+		return $this->getHeader();
 	}
 
 	/** @inheritDoc */
@@ -148,25 +171,6 @@ class ReadingRecommendations extends BaseModule {
 				[ 'class' => 'growthexperiments-reading-recommendations-cta cdx-card' ],
 				$title . $body
 			);
-		} else {
-			$buttonClasses = 'cdx-button cdx-button--weight-quiet cdx-button--icon-only';
-			$customClass = 'growthexperiments-reading-recommendations-interest-selector-launch';
-			$html .= Html::rawElement(
-				'button',
-				[
-					'id' => 'growthexperiments-reading-recommendations-personalize-button',
-					'class' => $buttonClasses . ' ' . $customClass,
-					'type' => 'button',
-					'aria-label' => $this->getContext()->msg(
-						'growthexperiments-homepage-reading-recommendations-personalize-cta'
-					)->text(),
-				],
-				Html::element(
-					'span',
-					[ 'class' => 'growthexperiments-reading-recommendations-icon--configure cdx-button__icon' ],
-					''
-				)
-			);
 		}
 		return Html::rawElement(
 			'div',
@@ -183,6 +187,32 @@ class ReadingRecommendations extends BaseModule {
 	/** @inheritDoc */
 	protected function getMobileSummaryBody() {
 		return $this->getBodyContent();
+	}
+
+	/**
+	 * Icon button for the header, shown once the user has picked interests.
+	 */
+	private function getPersonalizeLaunchButton(): string {
+		if ( $this->shouldShowPersonalizeCta() ) {
+			return '';
+		}
+		return Html::rawElement(
+			'button',
+			[
+				'id' => 'growthexperiments-reading-recommendations-personalize-button',
+				'class' => 'cdx-button cdx-button--weight-quiet cdx-button--icon-only ' .
+					'growthexperiments-reading-recommendations-interest-selector-launch',
+				'type' => 'button',
+				'aria-label' => $this->getContext()->msg(
+					'growthexperiments-homepage-reading-recommendations-personalize-cta'
+				)->text(),
+			],
+			Html::element(
+				'span',
+				[ 'class' => 'growthexperiments-reading-recommendations-icon--configure cdx-button__icon' ],
+				''
+			)
+		);
 	}
 
 	/**
