@@ -324,6 +324,8 @@
 	"growthexperiments-interest-selector-placeholder": "Artikel und Themen suchen",
 	"growthexperiments-interest-selector-a11y-label": "Wähle deinen Interessen",
 	"growthexperiments-interest-selector-related-articles-heading": "Verwandte Artikel",
+	"growthexperiments-interest-selector-random-articles-heading": "Zufällige Artikel",
+	"growthexperiments-interest-selector-no-related-articles-found": "0 verwandte Artikel gefunden",
 	"growthexperiments-interest-selector-success": "Alles ist fertig! Ihr Zuhause ist personalisiert und bereit.",
 	"growthexperiments-interest-selector-dialog-title": "Interessen auswählen",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Erledigt",

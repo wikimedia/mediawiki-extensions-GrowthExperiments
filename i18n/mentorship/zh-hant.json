@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Addonian1123",
 			"BlackShadowG",
 			"Ericliu1912",
 			"Kly",
@@ -30,7 +31,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "圖例",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "標記學員",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "使用者名稱",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "復原編輯次數",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "被還原次數",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "封鎖次數",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "詢問{{GENDER:|導師}}的問題",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "編輯次數",
@@ -163,8 +164,8 @@
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-title": "設定",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-headline": "值得稱讚學員指標",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-edits-within-timeframe": "一定時間範圍內的編輯次數",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts": "學員可以擁有的最多回退次數",
-	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts-help": "若此欄位為空，會忽略學員的已回退編輯次數",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts": "學員允許的最大還原次數",
+	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-max-reverts-help": "若此欄位為空，則忽略學員的還原次數",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours": "最近 48 小時",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week": "最近 1 週",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks": "最近 2 週",

@@ -293,6 +293,8 @@
 	"growthexperiments-interest-selector-placeholder": "Raadi maqaallo iyo mowduucyo",
 	"growthexperiments-interest-selector-a11y-label": "Dooro waxyaabaha aad xiisaynayso",
 	"growthexperiments-interest-selector-related-articles-heading": "Maqaallo la xiriira",
+	"growthexperiments-interest-selector-random-articles-heading": "Maqaallo aan kala sooc lahayn",
+	"growthexperiments-interest-selector-no-related-articles-found": "0 maqaal oo la xiriira lama helin",
 	"growthexperiments-interest-selector-success": "Wax walba waa diyaar! Boggaaga Hore waa mid shaqsi ah oo waa diyaar.",
 	"growthexperiments-interest-selector-dialog-title": "Dooro waxyaabaha aad xiisaynayso",
 	"growthexperiments-interest-selector-dialog-save-button-label": "La dhammeeyay",

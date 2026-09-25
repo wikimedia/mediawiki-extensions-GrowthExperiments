@@ -297,6 +297,8 @@
 	"growthexperiments-interest-selector-placeholder": "Məqalələr və mövzular axtar",
 	"growthexperiments-interest-selector-a11y-label": "Maraqlarını seç",
 	"growthexperiments-interest-selector-related-articles-heading": "Əlaqəli məqalələr",
+	"growthexperiments-interest-selector-random-articles-heading": "Təsadüfi məqalələr",
+	"growthexperiments-interest-selector-no-related-articles-found": "0 əlaqəli məqalə tapıldı",
 	"growthexperiments-interest-selector-success": "Hər şey hazırdır! Eviniz fərdiləşdirilib və hazırdır.",
 	"growthexperiments-interest-selector-dialog-title": "Maraqlarınızı seçin",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Hazırdır",
