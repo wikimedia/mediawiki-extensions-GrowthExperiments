@@ -289,11 +289,13 @@ class HomepageHooks implements
 			return;
 		}
 
+		if ( !self::isHomepageEnabled( $context->getUser() ) ) {
+			return;
+		}
+
 		$isSuggestedEditsEnabled = SuggestedEdits::isEnabledForAnyone( $context->getConfig() );
 		if (
-			Util::isMobile( $skin ) &&
-			// Optimisation: isHomepageEnabled() is non-trivial, check it last
-			self::isHomepageEnabled( $skin->getUser() )
+			Util::isMobile( $skin )
 		) {
 			$out->addModuleStyles( 'ext.growthExperiments.mobileMenu.icons' );
 		}
