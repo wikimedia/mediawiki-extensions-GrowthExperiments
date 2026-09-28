@@ -31,10 +31,12 @@ class AccountSetupHooks implements
 	public const string INTEREST_ARTICLES_PROP = 'growthexperiments-interest-articles-editing';
 
 	/**
-	 * One of the following values:
-	 * reading, editing, both, skipped
+	 * One of the values in ACCOUNT_SETUP_MOTIVATIONS.
 	 */
 	public const string ACCOUNT_SETUP_MOTIVATION_PROP = 'growthexperiments-account-setup-motivation';
+
+	/** Valid values of the ACCOUNT_SETUP_MOTIVATION_PROP preference. */
+	public const array ACCOUNT_SETUP_MOTIVATIONS = [ 'reading', 'editing', 'both', 'skipped' ];
 
 	public function __construct(
 		private readonly SpecialPageFactory $specialPageFactory,
