@@ -88,6 +88,12 @@ module.exports = exports = {
 				}
 			);
 		}
+	},
+	mounted: function () {
+		// TODO: Codex removes the scroll lock of other open dialogs when this one mounts closed. Refer to T439397.
+		window.setTimeout( () => {
+			mw.track( 'Growth.ImpactAppMounted' );
+		} );
 	}
 };
 </script>

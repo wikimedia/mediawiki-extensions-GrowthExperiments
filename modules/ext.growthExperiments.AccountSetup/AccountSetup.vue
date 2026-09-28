@@ -180,6 +180,10 @@ module.exports = defineComponent( {
 		const experiment = inject( 'experiment' );
 
 		onMounted( () => {
+			// TODO: Codex removes the scroll lock of other open dialogs when this one mounts closed. Refer to T439397.
+			mw.trackSubscribe( 'Growth.ImpactAppMounted', () => {
+				document.body.style.overflow = 'hidden';
+			} );
 			experiment.sendExposure();
 			experiment.send(
 				'impression',
