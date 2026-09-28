@@ -92,9 +92,10 @@ body.mw-special-Homepage {
 	&.growthexperiments-homepage-mobile-summary {
 		// Enforce a minimum width to avoid breaking the connecting lines of the start modules.
 		min-width: 320px;
-		// Make sure the body is the containing block for fixed positioned elements such as dialogs
-		// Without this, overlays have incorrect widths on Firefox Android.
-		transform: translate( 0 );
+		// Fix dialog widths on Firefox Android (T281288). Only in overlays, see T439038.
+		.overlay-enabled & {
+			transform: translate( 0 );
+		}
 
 		&--opening-overlay {
 			// Hide the homepage when the overlay should be shown directly
