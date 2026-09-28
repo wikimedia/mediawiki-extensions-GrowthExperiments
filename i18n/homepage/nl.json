@@ -312,6 +312,8 @@
 	"growthexperiments-interest-selector-placeholder": "Pagina's en onderwerpen zoeken",
 	"growthexperiments-interest-selector-a11y-label": "Selecteer uw interesses",
 	"growthexperiments-interest-selector-related-articles-heading": "Gerelateerde pagina's",
+	"growthexperiments-interest-selector-random-articles-heading": "Willekeurige artikelen",
+	"growthexperiments-interest-selector-no-related-articles-found": "0 gerelateerde artikelen gevonden",
 	"growthexperiments-interest-selector-success": "Alles is klaar! Uw startpagina is gepersonaliseerd en gereed.",
 	"growthexperiments-interest-selector-dialog-title": "Selecteer interesses",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Klaar",

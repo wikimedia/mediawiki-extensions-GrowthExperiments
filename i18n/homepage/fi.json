@@ -309,6 +309,8 @@
 	"growthexperiments-interest-selector-placeholder": "Hae artikkeleita ja aiheita",
 	"growthexperiments-interest-selector-a11y-label": "Valitse kiinnostuksen kohteesi",
 	"growthexperiments-interest-selector-related-articles-heading": "Liittyvät artikkelit",
+	"growthexperiments-interest-selector-random-articles-heading": "Satunnainen artikkeli",
+	"growthexperiments-interest-selector-no-related-articles-found": "Liittyviä artikeleita ei löytynyt",
 	"growthexperiments-interest-selector-success": "Kaikki valmista! Aloitussivusi on personoitu ja käyttövalmis.",
 	"growthexperiments-interest-selector-dialog-title": "Valitse kiinnostuksen kohteet",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Valmis",

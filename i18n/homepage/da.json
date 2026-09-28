@@ -299,6 +299,8 @@
 	"growthexperiments-interest-selector-placeholder": "Søg i artikler og emner",
 	"growthexperiments-interest-selector-a11y-label": "Vælg dine interesser",
 	"growthexperiments-interest-selector-related-articles-heading": "Relaterede artikler",
+	"growthexperiments-interest-selector-random-articles-heading": "Tilfældige artikler",
+	"growthexperiments-interest-selector-no-related-articles-found": "0 relaterede artikler fundet",
 	"growthexperiments-interest-selector-success": "Alt er klar! Dit hjem er personligt tilpasset og klar.",
 	"growthexperiments-interest-selector-dialog-title": "Vælg interesser",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Færdig",

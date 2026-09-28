@@ -296,6 +296,8 @@
 	"growthexperiments-interest-selector-placeholder": "Procurar artigos e temas",
 	"growthexperiments-interest-selector-a11y-label": "Selecciona os teus intereses",
 	"growthexperiments-interest-selector-related-articles-heading": "Artigos relacionados",
+	"growthexperiments-interest-selector-random-articles-heading": "Artigos ao chou",
+	"growthexperiments-interest-selector-no-related-articles-found": "Non se atopou ningún artigo relacionado",
 	"growthexperiments-interest-selector-success": "Todo listo! A túa páxina de inicio está personalizada e lista.",
 	"growthexperiments-interest-selector-dialog-title": "Seleccionar intereses",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Feito",

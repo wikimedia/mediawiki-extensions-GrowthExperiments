@@ -10,6 +10,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|မင်္ဂလာပါ}}၊ {{bidi:$1}}။",
+	"growthexperiments-homepage-specialpage-list": "အသစ်ရောက်လာသူ ဗဟိုစာမျက်နှာ",
 	"growthexperiments-homepage-tab": "ဗဟိုစာမျက်နှာ",
 	"tooltip-pt-homepage": "{{GENDER:|သင်၏}} ဗဟိုစာမျက်နှာ",
 	"prefs-homepage": "အသစ်ရောက်လာသူ တည်းဖြတ်မှုအင်္ဂါရပ်များ",

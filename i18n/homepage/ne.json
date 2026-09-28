@@ -242,6 +242,7 @@
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|विषय|विषयहरू}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "सबै चयन गर्नुहोस्",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "सबै हटाउनुहोस्",
+	"growthexperiments-interest-selector-no-related-articles-found": "० सम्बन्धित लेखहरू भेटिए",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "सम्पादन गर्न रुचि {{GENDER:$1|राख्नुभएको}} केही विषयहरू छान्नुहोस्",
 	"growthexperiments-homepage-claimmentee-title": "विद्यार्थी छनोट गर्नुहोस्",
 	"growthexperiments-homepage-claimmentee-pretext": "यो पृष्ठले {{GENDER:$1|तपाईंलाई}} विद्यार्थीको सल्लाहकार आफैंमा परिवर्तन गर्न अनुमति दिन्छ। {{GENDER:$1|तपाईंले}} चिनेका प्रयोगकर्ताहरू वा {{GENDER:$1|तपाईंले}} पाठ्यक्रममा सल्लाह दिनुभएको प्रयोगकर्ताहरूका लागि यो सुविधा प्रयोग गर्न सिफारिस गरिन्छ।",

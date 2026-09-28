@@ -295,6 +295,8 @@
 	"growthexperiments-interest-selector-placeholder": "Cari rencana dan topik",
 	"growthexperiments-interest-selector-a11y-label": "Pilih minat anda",
 	"growthexperiments-interest-selector-related-articles-heading": "Rencana berkaitan",
+	"growthexperiments-interest-selector-random-articles-heading": "Rencana rawak",
+	"growthexperiments-interest-selector-no-related-articles-found": "0 rencana berkaitan ditemui",
 	"growthexperiments-interest-selector-success": "Semua siap! Laman pemula anda telah diperibadikan untuk anda dan siap sedia.",
 	"growthexperiments-interest-selector-dialog-title": "Pilih minat",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Selesai",

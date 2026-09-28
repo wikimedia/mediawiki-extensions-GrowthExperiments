@@ -310,6 +310,8 @@
 	"growthexperiments-interest-selector-placeholder": "חיפוש ערכים ונושאים",
 	"growthexperiments-interest-selector-a11y-label": "בחירת תחומי עניין",
 	"growthexperiments-interest-selector-related-articles-heading": "ערכים קשורים",
+	"growthexperiments-interest-selector-random-articles-heading": "ערכים אקראיים",
+	"growthexperiments-interest-selector-no-related-articles-found": "לא נמצאו ערכים קשורים",
 	"growthexperiments-interest-selector-success": "הכל בוצע! דף הבית שלך מותאם אישית ומוכן.",
 	"growthexperiments-interest-selector-dialog-title": "בחירת תחומי עניין",
 	"growthexperiments-interest-selector-dialog-save-button-label": "סיום",

@@ -20,7 +20,7 @@
 	"growthexperiments-help-panel-home-title": "Hëllef beim Ännere kréien",
 	"growthexperiments-help-panel-postedit-success-message-published": "Dir hutt eng Ännerung verëffentlecht. Merci a maacht weider esou!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Dir hutt eng Ännerung gespäichert. Merci a maacht weider esou!",
-	"growthexperiments-help-panel-postedit-success-message-notsaved": "Merci fir d'Iwwerpréiwe vun de Virschléi. Weider esou!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "{{GENDER:Dir}} hutt e Virschlag iwwerpréift. Merci a weider esou!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "All d'Artikele vun haut fir Biller bäizesetze si vollstänneg. Gutt gemaacht!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-section-image-recommendation": "All d'Artikele vun haut mat Virschléi fir Abschnitts-Biller bäizesetze si vollstänneg. Gutt gemaacht!",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation": "All d'Artikele vun haut mat Link-Virschléi si vollstänneg. Gutt gemaacht!",

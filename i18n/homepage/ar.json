@@ -19,6 +19,7 @@
 			"NEHAOUA",
 			"Shbib Al-Subaie",
 			"Sonic N800",
+			"Trizek (WMF)",
 			"XIDME",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
@@ -317,6 +318,8 @@
 	"growthexperiments-interest-selector-placeholder": "البحث عن المقالات والمواضيع",
 	"growthexperiments-interest-selector-a11y-label": "اختيار اهتماماتك",
 	"growthexperiments-interest-selector-related-articles-heading": "مقالات ذات صلة",
+	"growthexperiments-interest-selector-random-articles-heading": "مقالات عشوائية",
+	"growthexperiments-interest-selector-no-related-articles-found": "لم يتم العثور على أي مقالات ذات صلة",
 	"growthexperiments-interest-selector-success": "تمام! صفحتك الرئيسية مُخصّصة وجاهزة.",
 	"growthexperiments-interest-selector-dialog-title": "اختيار الاهتمامات",
 	"growthexperiments-interest-selector-dialog-save-button-label": "تم",

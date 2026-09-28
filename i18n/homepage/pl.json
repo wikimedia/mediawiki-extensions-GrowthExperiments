@@ -307,6 +307,8 @@
 	"growthexperiments-homepage-suggestededits-interests-button-interest-count": "$1 {{PLURAL:$1|zainteresowanie|zainteresowania|zainteresowań}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Zaznacz wszystko",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Usuń wszystko",
+	"growthexperiments-interest-selector-random-articles-heading": "Losowe artykuły",
+	"growthexperiments-interest-selector-no-related-articles-found": "Nie znaleziono żadnych powiązanych artykułów",
 	"growthexperiments-interest-selector-dialog-title": "Wybierz zainteresowania",
 	"growthexperiments-interest-selector-dialog-save-button-label": "Gotowe",
 	"growthexperiments-interest-selector-dialog-cancel-button-label": "Anuluj",
