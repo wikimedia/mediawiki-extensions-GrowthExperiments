@@ -71,15 +71,24 @@ class SpecialHomepage extends SpecialPage {
 	 *
 	 * Should only be called for real visits to the Homepage, not when we're merely showing the AccountSetup dialog
 	 * over it.
+	 *
+	 * GrowthBook metrics read a single source table, so the account setup motivation has to travel on the
+	 * `page_visit` event itself.
+	 *
+	 * @param string|null $motivation The visiting user's ACCOUNT_SETUP_MOTIVATION_PROP, if they have one.
 	 */
-	private function sendExperimentPageVisitEvent(): void {
+	private function sendExperimentPageVisitEvent( ?string $motivation = null ): void {
 		if ( !$this->experimentManager ) {
 			return;
 		}
 		$experiment = $this->experimentManager->getExperiment(
 			IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST
 		);
-		$experiment->send( 'page_visit', [], [ 'page_namespace_id', 'page_title' ] );
+		$interactionData = [];
+		if ( in_array( $motivation, AccountSetupHooks::ACCOUNT_SETUP_MOTIVATIONS, true ) ) {
+			$interactionData['action_context'] = json_encode( [ 'user_motivation' => $motivation ] );
+		}
+		$experiment->send( 'page_visit', $interactionData, [ 'page_namespace_id', 'page_title' ] );
 	}
 
 	/**
@@ -128,7 +137,7 @@ class SpecialHomepage extends SpecialPage {
 				$out->addModules( 'ext.growthExperiments.AccountSetup' );
 				$out->addHTML( Html::element( 'div', [ 'id' => 'growthexperiments-account_setup' ] ) );
 			} else {
-				$this->sendExperimentPageVisitEvent();
+				$this->sendExperimentPageVisitEvent( $accountSetupMotivation );
 				if ( $this->userOptionsManager->getOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME ) === 0 ) {
 					$this->jobQueueGroup->lazyPush( new UserOptionsUpdateJob( [
 						'userId' => $user->getId(),
