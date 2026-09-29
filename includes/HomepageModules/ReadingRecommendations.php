@@ -152,7 +152,7 @@ class ReadingRecommendations extends BaseModule {
 					'button',
 					[
 						'id' => 'growthexperiments-reading-recommendations-personalize-button',
-						'class' => 'cdx-button cdx-button--action-progressive',
+						'class' => 'cdx-button cdx-button--action-progressive cdx-button--weight-primary',
 						'type' => 'button',
 					],
 					Html::element(
