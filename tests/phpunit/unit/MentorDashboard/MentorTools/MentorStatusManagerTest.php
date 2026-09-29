@@ -13,10 +13,12 @@ use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
- * @coversDefaultClass \GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager
+ * @covers \GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager
  */
 class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 
@@ -85,7 +87,6 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getMentorBackTimestamp
 	 * @dataProvider provideTimestamps
 	 * @param string|null $expectedTS
 	 * @param string|null $rawTS
@@ -118,7 +119,6 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 	 * @param string|null $expectedReason
 	 * @param string|null $rawTS
 	 * @param bool $isMentorBlocked
-	 * @covers ::getAwayReason
 	 * @dataProvider provideGetAwayReason
 	 */
 	public function testGetAwayReason(
@@ -145,7 +145,6 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getMentorStatus
 	 * @dataProvider provideTestStatuses
 	 * @param string|null $expectedStatus
 	 * @param string|null $rawTS
@@ -175,7 +174,6 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::markMentorAsActive
 	 * @param bool $isMentorBlocked
 	 * @dataProvider provideMarkMentorAsActive
 	 */
@@ -217,5 +215,42 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 			'not blocked' => [ false ],
 			'blocked' => [ true ],
 		];
+	}
+
+	/**
+	 * The away mentors are read once for each request, and again after an away status change
+	 * (T439638)
+	 */
+	public function testGetAwayMentorsIsMemoized() {
+		$queryBuilder = $this->createMock( SelectQueryBuilder::class );
+		$queryBuilder->method( 'select' )->willReturnSelf();
+		$queryBuilder->method( 'from' )->willReturnSelf();
+		$queryBuilder->method( 'where' )->willReturnSelf();
+		$queryBuilder->method( 'recency' )->willReturnSelf();
+		$queryBuilder->method( 'caller' )->willReturnSelf();
+		$queryBuilder->method( 'fetchFieldValues' )->willReturn( [] );
+
+		$database = $this->createMock( IReadableDatabase::class );
+		$database->method( 'newSelectQueryBuilder' )->willReturn( $queryBuilder );
+
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$connectionProvider->expects( $this->exactly( 2 ) )
+			->method( 'getReplicaDatabase' )
+			->willReturn( $database );
+
+		$manager = new MentorStatusManager(
+			$this->createMock( UserOptionsManager::class ),
+			$this->createMock( UserIdentityLookup::class ),
+			$this->getMockUserFactory(),
+			$this->getMockBlockManager( false ),
+			$connectionProvider
+		);
+
+		$this->assertSame( [], $manager->getAwayMentors() );
+		$this->assertSame( [], $manager->getAwayMentors() );
+
+		$manager->invalidateAwayReasonCache( $this->getTestMentor() );
+
+		$this->assertSame( [], $manager->getAwayMentors() );
 	}
 }

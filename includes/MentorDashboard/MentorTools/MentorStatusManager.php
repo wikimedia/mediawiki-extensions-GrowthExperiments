@@ -37,6 +37,8 @@ class MentorStatusManager {
 	public const MENTOR_AWAY_TIMESTAMP_PREF = 'growthexperiments-mentor-away-timestamp';
 
 	private HashBagOStuff $inprocessCache;
+	/** @var UserIdentity[]|null */
+	private ?array $awayMentors = null;
 
 	public function __construct(
 		private readonly UserOptionsManager $userOptionsManager,
@@ -81,6 +83,7 @@ class MentorStatusManager {
 
 	public function invalidateAwayReasonCache( UserIdentity $mentor ): void {
 		$this->inprocessCache->delete( $this->makeAwayReasonCacheKey( $mentor ) );
+		$this->awayMentors = null;
 	}
 
 	/**
@@ -207,6 +210,25 @@ class MentorStatusManager {
 	 * @return UserIdentity[]
 	 */
 	public function getAwayMentors( int $flags = 0 ): array {
+		if ( DBAccessObjectUtils::hasFlags( $flags, IDBAccessObject::READ_LATEST ) ) {
+			$this->awayMentors = null;
+		} elseif ( $this->awayMentors !== null ) {
+			return $this->awayMentors;
+		}
+
+		$this->awayMentors = $this->getAwayMentorsUncached( $flags );
+		return $this->awayMentors;
+	}
+
+	/**
+	 * Get mentors marked as away
+	 *
+	 * This bypasses caching.
+	 *
+	 * @param int $flags bitfield; consists of IDBAccessObject::READ_* constants
+	 * @return UserIdentity[]
+	 */
+	private function getAwayMentorsUncached( int $flags ): array {
 		$db = DBAccessObjectUtils::getDBFromRecency( $this->connectionProvider, $flags );
 
 		// This should be okay, as up_property is an index, and we won't
