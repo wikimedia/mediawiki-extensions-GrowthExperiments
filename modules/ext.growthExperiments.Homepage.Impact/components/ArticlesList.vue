@@ -43,16 +43,16 @@ module.exports = exports = {
 		}
 
 		new mw.Api().get( {
-			action: 'query',
-			prop: 'pageterms',
-			titles: this.items.slice( 0, 50 ).map( ( item ) => item.title ),
-			wbptterms: 'label',
-			wbptlanguage: mw.config.get( 'wgUserLanguage' ),
-			formatversion: 2
+			action: 'wbgetentities',
+			ids: this.items.slice( 0, 50 ).map( ( item ) => item.title ),
+			props: 'labels',
+			languages: mw.config.get( 'wgUserLanguage' ),
+			languagefallback: 1
 		} ).then( ( response ) => {
-			for ( const page of response.query.pages || [] ) {
-				if ( page.terms && page.terms.label ) {
-					this.labels[ page.title ] = page.terms.label[ 0 ];
+			for ( const [ id, entity ] of Object.entries( response.entities || {} ) ) {
+				const label = Object.values( entity.labels || {} )[ 0 ];
+				if ( label ) {
+					this.labels[ id ] = label.value;
 				}
 			}
 		} ).catch( () => {

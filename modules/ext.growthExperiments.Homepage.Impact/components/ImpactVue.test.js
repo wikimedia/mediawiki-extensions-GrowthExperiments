@@ -52,15 +52,15 @@ const impactServerData = () => ( {
 			firstEditDate: '2022-12-14',
 			newestEdit: '20221214185420'
 		},
-		article2: {
+		Q43: {
 			firstEditDate: '2022-12-14',
 			newestEdit: '20221214171252'
 		},
-		article3: {
+		Q44: {
 			firstEditDate: '2022-12-14',
 			newestEdit: '20221214171038'
 		},
-		article4: {
+		Q45: {
 			firstEditDate: '2022-12-14',
 			newestEdit: '20221214121242'
 		}
@@ -154,6 +154,12 @@ describe( 'ImpactVue', () => {
 		expect( wrapper.text() ).not.toContain( 'growthexperiments-homepage-impact-recent-activity-title' );
 	} );
 	it( 'shows Wikidata Item labels instead of QIDs', async () => {
+		global.mw.Title.prototype.getMainText
+			.mockReturnValueOnce( 'Q42' )
+			.mockReturnValueOnce( 'Q43' )
+			.mockReturnValueOnce( 'Q44' )
+			.mockReturnValueOnce( 'Q45' );
+
 		global.mw.config.get.mockImplementation( ( key ) => {
 			switch ( key ) {
 				case 'wgUserLanguage':
@@ -165,31 +171,37 @@ describe( 'ImpactVue', () => {
 				case 'homepagemobile':
 					return false;
 				default:
-					throw new Error( 'Unkown key: ' + key );
+					throw new Error( 'Unknown key: ' + key );
 			}
 		} );
 
-		global.mw.Api = jest.fn().mockImplementation( () => ( {
-			get: jest.fn().mockResolvedValue( {
-				query: {
-					pages: [
-						{
-							title: 'Q42',
-							terms: {
-								label: [ 'Test Item Label' ]
-							}
-						}
-					]
+		const get = jest.fn().mockResolvedValue( {
+			entities: {
+				Q42: {
+					id: 'Q42',
+					labels: { en: { language: 'en', value: 'Test Item Label' } }
+				},
+				Q43: {
+					id: 'Q43',
+					missing: ''
 				}
-			} )
-		} ) );
+			}
+		} );
+		global.mw.Api = jest.fn().mockImplementation( () => ( { get } ) );
 
 		const wrapper = renderComponent();
-
 		await flushPromises();
 
-		const articlesList = wrapper.findComponent( ArticlesList );
+		expect( get ).toHaveBeenCalledWith( {
+			action: 'wbgetentities',
+			ids: [ 'Q42', 'Q43', 'Q44', 'Q45' ],
+			props: 'labels',
+			languages: 'en',
+			languagefallback: 1
+		} );
 
+		const articlesList = wrapper.findComponent( ArticlesList );
 		expect( articlesList.vm.labels.Q42 ).toBe( 'Test Item Label' );
+		expect( articlesList.vm.labels.Q43 ).toBeUndefined();
 	} );
 } );
