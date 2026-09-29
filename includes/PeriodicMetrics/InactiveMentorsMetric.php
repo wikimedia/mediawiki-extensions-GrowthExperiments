@@ -30,7 +30,7 @@ class InactiveMentorsMetric implements IMetric {
 	public function calculate(): int {
 		$inactiveMentors = 0;
 		foreach ( $this->mentorProvider->getAutoAssignedMentors() as $mentor ) {
-			$lastEditTimestamp = $this->userEditTracker->getLatestEditTimestamp( $mentor );
+			$lastEditTimestamp = $this->userEditTracker->getLatestEditTimestamp( $mentor->getUserIdentity() );
 			$secondsSinceLastEdit = (int)MWTimestamp::now( TimestampFormat::UNIX ) -
 				(int)MWTimestamp::getInstance( $lastEditTimestamp )->getTimestamp( TimestampFormat::UNIX );
 

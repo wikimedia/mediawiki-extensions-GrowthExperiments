@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship\Provider;
 
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
@@ -50,45 +51,54 @@ abstract class MentorProvider {
 	 * @return bool
 	 */
 	public function isMentor( UserIdentity $user ): bool {
-		return $user->isRegistered() && array_reduce(
-				$this->getMentors(),
-				static function ( bool $carry, UserIdentity $mentorUser ) use ( $user ) {
-					if ( $carry ) {
-						return true;
-					}
-					return $user->equals( $mentorUser );
-				},
-				false
-			);
+		return $user->isRegistered() && isset( $this->getMentors()[$user->getId()] );
 	}
 
 	/**
 	 * Get all mentors, regardless on their auto-assignment status
-	 * @return UserIdentity[] List of mentors
+	 * @return Mentor[] List of mentors, keyed by user ID
 	 */
 	abstract public function getMentors(): array;
 
 	/**
 	 * Get all the mentors who are automatically assigned to mentees.
-	 * @return UserIdentity[] List of mentors.
+	 * @return Mentor[] List of mentors, keyed by user ID
 	 */
-	abstract public function getAutoAssignedMentors(): array;
+	public function getAutoAssignedMentors(): array {
+		return array_filter(
+			$this->getMentors(),
+			static fn ( Mentor $mentor ) => $mentor->getWeight() !== IMentorWeights::WEIGHT_NONE
+		);
+	}
 
 	/**
 	 * Get weighted list of automatically assigned mentors
 	 *
 	 * If a mentor is configured to receive more mentees than others, the returned array will
-	 * have their name multiple times.
+	 * have them multiple times.
 	 *
-	 * @return UserIdentity[] Array of mentors
+	 * @return Mentor[] Array of mentors
 	 */
-	abstract public function getWeightedAutoAssignedMentors(): array;
+	public function getWeightedAutoAssignedMentors(): array {
+		$result = [];
+		foreach ( $this->getAutoAssignedMentors() as $mentor ) {
+			for ( $i = 0; $i < $mentor->getWeight(); $i++ ) {
+				$result[] = $mentor;
+			}
+		}
+		return $result;
+	}
 
 	/**
 	 * Get a list of mentors who are not automatically assigned to mentees.
-	 * @return UserIdentity[] List of mentors.
+	 * @return Mentor[] List of mentors, keyed by user ID
 	 */
-	abstract public function getManuallyAssignedMentors(): array;
+	public function getManuallyAssignedMentors(): array {
+		return array_filter(
+			$this->getMentors(),
+			static fn ( Mentor $mentor ) => $mentor->getWeight() === IMentorWeights::WEIGHT_NONE
+		);
+	}
 
 	/**
 	 * Invalidate any cached mentor data

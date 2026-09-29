@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use Closure;
 use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use MediaWiki\User\UserIdentity;
 
@@ -16,7 +17,7 @@ class Mentor implements IMentorWeights {
 
 	private UserIdentity $mentorUser;
 	private ?string $introText;
-	private string $defaultIntroText;
+	private string|Closure $defaultIntroText;
 	/** @var int One of Mentor::WEIGHT_* */
 	private int $weight;
 	private ?string $statusAwayTimestamp;
@@ -24,14 +25,15 @@ class Mentor implements IMentorWeights {
 	/**
 	 * @param UserIdentity $mentorUser
 	 * @param string|null $introText if null, $defaultIntroText will be used instead
-	 * @param string $defaultIntroText
+	 * @param string|Closure $defaultIntroText A Closure must return a string. It is called
+	 * only when $introText is null.
 	 * @param int $weight
 	 * @param string|null $statusAwayTimestamp
 	 */
 	public function __construct(
 		UserIdentity $mentorUser,
 		?string $introText,
-		string $defaultIntroText,
+		string|Closure $defaultIntroText,
 		int $weight,
 		?string $statusAwayTimestamp = null
 	) {
@@ -55,10 +57,15 @@ class Mentor implements IMentorWeights {
 
 	/**
 	 * Returns the introduction text for a mentor.
-	 * @return string
 	 */
-	public function getIntroText() {
-		return $this->introText ?? $this->defaultIntroText;
+	public function getIntroText(): string {
+		if ( $this->introText !== null ) {
+			return $this->introText;
+		}
+		if ( $this->defaultIntroText instanceof Closure ) {
+			return ( $this->defaultIntroText )();
+		}
+		return $this->defaultIntroText;
 	}
 
 	/**

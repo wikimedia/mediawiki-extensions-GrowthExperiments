@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use ArrayIterator;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorProvider;
-use Iterator;
 use MediaWiki\Extension\CommunityConfiguration\Provider\IConfigurationProvider;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Message\Message;
@@ -65,6 +65,42 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		$provider->method( 'loadValidConfiguration' )
 			->willReturn( Status::newGood( self::TEST_MENTOR_DATA ) );
 		return $provider;
+	}
+
+	/**
+	 * @return UserIdentity[] The mentor users as the UserIdentityLookup resolves them
+	 */
+	private static function getMentorUserIdentities(): array {
+		$users = [];
+		foreach ( self::USERNAME_MAP as $userId => $userName ) {
+			$users[] = new UserIdentityValue( $userId, $userName );
+		}
+		return $users;
+	}
+
+	/**
+	 * @return UserIdentityLookup|MockObject A lookup that refuses per-user resolution (T439638)
+	 */
+	private function getMockUserIdentityLookup() {
+		$queryBuilder = $this->createMock( UserSelectQueryBuilder::class );
+		$queryBuilder->method( 'whereUserIds' )->willReturnSelf();
+		$queryBuilder->method( 'registered' )->willReturnSelf();
+		$queryBuilder->method( 'caller' )->willReturnSelf();
+		$queryBuilder->method( 'fetchUserIdentities' )
+			->willReturn( new ArrayIterator( self::getMentorUserIdentities() ) );
+
+		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
+		$userIdentityLookup->method( 'newSelectQueryBuilder' )->willReturn( $queryBuilder );
+		$userIdentityLookup->expects( $this->never() )->method( 'getUserIdentityByUserId' );
+		return $userIdentityLookup;
+	}
+
+	private function getWanCache(): WANObjectCache {
+		return new WANObjectCache( [
+			'cache' => new HashBagOStuff(),
+			'logger' => new NullLogger(),
+			'asyncHandler' => null,
+		] );
 	}
 
 	private function getMockStatusFormatter() {
@@ -259,26 +295,18 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideGetMentors
 	 */
 	public function testGetMentors( array $expectedIds, string $methodToCall ) {
-		$mockIterator = $this->createMock( Iterator::class );
-
 		$queryBuilder = $this->createMock( UserSelectQueryBuilder::class );
 		$queryBuilder->expects( $this->once() )->method( 'whereUserIds' )
-			->with( $expectedIds )->willReturnSelf();
+			->with( array_keys( self::USERNAME_MAP ) )->willReturnSelf();
 		$queryBuilder->method( 'registered' )->willReturnSelf();
 		$queryBuilder->method( 'caller' )->willReturnSelf();
 		$queryBuilder->method( 'fetchUserIdentities' )
-			->willReturn( $mockIterator );
+			->willReturn( new ArrayIterator( self::getMentorUserIdentities() ) );
 
 		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
 		$userIdentityLookup->expects( $this->once() )->method( 'newSelectQueryBuilder' )
 			->willReturn( $queryBuilder );
-
-		$cache = new HashBagOStuff();
-		$wanCache = new WANObjectCache( [
-			'cache' => $cache,
-			'logger' => new NullLogger(),
-			'asyncHandler' => null,
-		] );
+		$userIdentityLookup->expects( $this->never() )->method( 'getUserIdentityByUserId' );
 
 		$provider = new CommunityStructuredMentorProvider(
 			new NullLogger(),
@@ -286,10 +314,10 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 			$this->getMockMessageLocalizer(),
 			$this->getMockConfigurationProvider(),
 			$this->getMockStatusFormatter(),
-			$wanCache
+			$this->getWanCache()
 		);
 
-		$provider->$methodToCall();
+		$this->assertSame( $expectedIds, array_keys( $provider->$methodToCall() ) );
 	}
 
 	public static function provideGetMentors() {
@@ -301,36 +329,59 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testGetWeightedAutoAssignedMentors() {
-		$userIdentities = self::USERNAME_MAP;
-		array_walk( $userIdentities, static function ( &$user, $userId ) {
-			$user = new UserIdentityValue( $userId, $user );
-		} );
-
-		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
-		$userIdentityLookup->expects( $this->atLeastOnce() )
-			->method( 'getUserIdentityByUserId' )
-			->willReturnCallback( static function ( $userId ) use ( $userIdentities ) {
-				return $userIdentities[$userId] ?? null;
-			} );
-
 		$provider = new CommunityStructuredMentorProvider(
 			new NullLogger(),
-			$userIdentityLookup,
+			$this->getMockUserIdentityLookup(),
 			$this->getMockMessageLocalizer(),
 			$this->getMockConfigurationProvider(),
 			$this->getMockStatusFormatter(),
-			$this->createMock( WANObjectCache::class )
+			$this->getWanCache()
 		);
 
 		$result = $provider->getWeightedAutoAssignedMentors();
 
-		$names = array_map( static fn ( UserIdentity $user ) => $user->getName(), $result );
+		$names = array_map(
+			static fn ( Mentor $mentor ) => $mentor->getUserIdentity()->getName(),
+			$result
+		);
 
 		$expected = [
 			'TestMentor1', 'TestMentor1',
 			'TestMentor2', 'TestMentor2', 'TestMentor2', 'TestMentor2',
 		];
 
-		$this->assertEquals( $expected, $names );
+		$this->assertSame( $expected, $names );
+	}
+
+	/**
+	 * @param int $userId
+	 * @param string $userName
+	 * @param bool $expected
+	 * @dataProvider provideIsMentor
+	 */
+	public function testIsMentor( int $userId, string $userName, bool $expected ) {
+		$provider = new CommunityStructuredMentorProvider(
+			new NullLogger(),
+			$this->getMockUserIdentityLookup(),
+			$this->getMockMessageLocalizer(),
+			$this->getMockConfigurationProvider(),
+			$this->getMockStatusFormatter(),
+			$this->getWanCache()
+		);
+
+		$this->assertSame(
+			$expected,
+			$provider->isMentor( new UserIdentityValue( $userId, $userName ) )
+		);
+	}
+
+	public static function provideIsMentor() {
+		return [
+			'automatically assigned mentor' => [ 123, 'TestMentor1', true ],
+			'manually assigned mentor' => [ 33, 'TestMentor3', true ],
+			'opted out mentor' => [ 789, 'TestMentor4', true ],
+			'not a mentor' => [ 999, 'TestUser', false ],
+			'anonymous user' => [ 0, '1.2.3.4', false ],
+		];
 	}
 }

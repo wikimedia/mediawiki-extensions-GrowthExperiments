@@ -71,9 +71,7 @@ class ReassignMentees extends Maintenance {
 	 * @return UserIdentity[]
 	 */
 	private function getAllUnofficialMentors(): array {
-		$officialMentorIds = array_map( static function ( UserIdentity $user ) {
-			return $user->getId();
-		}, $this->mentorProvider->getMentors() );
+		$officialMentorIds = array_keys( $this->mentorProvider->getMentors() );
 
 		$unofficialMentorIds = $this->growthDbr->newSelectQueryBuilder()
 			->select( 'gemm_mentor_id' )

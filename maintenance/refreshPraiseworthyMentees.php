@@ -51,9 +51,10 @@ class RefreshPraiseworthyMentees extends Maintenance {
 			return;
 		}
 
-		$mentors = $this->mentorProvider->getMentors();
-		foreach ( $mentors as $mentor ) {
-			$this->praiseworthyMenteeSuggester->refreshPraiseworthyMenteesForMentor( $mentor );
+		foreach ( $this->mentorProvider->getMentors() as $mentor ) {
+			$this->praiseworthyMenteeSuggester->refreshPraiseworthyMenteesForMentor(
+				$mentor->getUserIdentity()
+			);
 		}
 
 		$this->output( "Done\n" );

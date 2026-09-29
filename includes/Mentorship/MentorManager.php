@@ -193,6 +193,11 @@ class MentorManager implements IMentorManager {
 			$excluded,
 			$this->mentorStatusManager->getAwayMentors()
 		);
+		$excludedIds = [];
+		foreach ( $excluded as $excludedUser ) {
+			$excludedIds[$excludedUser->getId()] = true;
+		}
+
 		$autoAssignedMentors = $this->mentorProvider->getWeightedAutoAssignedMentors();
 		if ( count( $autoAssignedMentors ) === 0 ) {
 			$this->logger->debug(
@@ -203,7 +208,10 @@ class MentorManager implements IMentorManager {
 			);
 			return null;
 		}
-		$autoAssignedMentors = array_diff( $autoAssignedMentors, $excluded );
+		$autoAssignedMentors = array_filter(
+			$autoAssignedMentors,
+			static fn ( Mentor $mentor ) => !isset( $excludedIds[$mentor->getUserIdentity()->getId()] )
+		);
 		if ( count( $autoAssignedMentors ) === 0 ) {
 			$this->logger->debug(
 				'Mentorship: No mentor available for {user} but excluded users',
@@ -213,7 +221,10 @@ class MentorManager implements IMentorManager {
 			);
 			return null;
 		}
-		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors, [ $mentee ] ) );
+		$autoAssignedMentors = array_values( array_filter(
+			$autoAssignedMentors,
+			static fn ( Mentor $mentor ) => $mentor->getUserIdentity()->getId() !== $mentee->getId()
+		) );
 		if ( count( $autoAssignedMentors ) === 0 ) {
 			$this->logger->debug(
 				'Mentorship: No mentor available for {user} but themselves',
@@ -224,7 +235,7 @@ class MentorManager implements IMentorManager {
 			return null;
 		}
 
-		return $autoAssignedMentors[ rand( 0, count( $autoAssignedMentors ) - 1 ) ];
+		return $autoAssignedMentors[ rand( 0, count( $autoAssignedMentors ) - 1 ) ]->getUserIdentity();
 	}
 
 	private function getMentorshipStateForUserInternal( UserIdentity $user ): int {

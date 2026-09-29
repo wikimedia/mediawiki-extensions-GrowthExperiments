@@ -25,13 +25,11 @@ class ApiQueryMentorList extends ApiQueryBase {
 	 */
 	public function execute() {
 		$result = [];
-		$mentorUsers = $this->mentorProvider->getMentors();
-		foreach ( $mentorUsers as $mentorUser ) {
-			$mentor = $this->mentorProvider->newMentorFromUserIdentity( $mentorUser );
-			$result[$mentorUser->getId()] = CommunityStructuredMentorWriter::serializeMentor( $mentor );
+		foreach ( $this->mentorProvider->getMentors() as $userId => $mentor ) {
+			$result[$userId] = CommunityStructuredMentorWriter::serializeMentor( $mentor );
 
 			// for convenience of the consumers
-			$result[$mentorUser->getId()]['username'] = $mentorUser->getName();
+			$result[$userId]['username'] = $mentor->getUserIdentity()->getName();
 		}
 
 		// NOTE: Continuation support is not implemented, because all mentors are always

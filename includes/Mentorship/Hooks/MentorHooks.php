@@ -357,7 +357,7 @@ class MentorHooks implements
 		}
 		$mentors = $this->mentorProvider->getMentors();
 		foreach ( $mentors as $mentor ) {
-			if ( $mentor->getName() === $oldName ) {
+			if ( $mentor->getUserIdentity()->getName() === $oldName ) {
 				$this->mentorProvider->invalidateMentorsCache();
 				break;
 			}

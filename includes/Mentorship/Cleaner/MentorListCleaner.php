@@ -31,15 +31,16 @@ class MentorListCleaner {
 			}
 
 			foreach ( $mentors as $mentor ) {
-				if ( !$action->check( $mentor ) ) {
+				$mentorUser = $mentor->getUserIdentity();
+				if ( !$action->check( $mentorUser ) ) {
 					$this->logger->info( '{action}::check returned false for {mentor}', [
 						'action' => $actionName,
-						'mentor' => $mentor->getName(),
+						'mentor' => $mentorUser->getName(),
 					] );
 					continue;
 				}
 
-				$status->merge( $action->perform( $mentor, $messageLocalizer ) );
+				$status->merge( $action->perform( $mentorUser, $messageLocalizer ) );
 			}
 		}
 

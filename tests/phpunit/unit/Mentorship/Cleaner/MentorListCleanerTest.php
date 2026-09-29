@@ -2,11 +2,13 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Cleaner\Actions\ActionFactory;
 use GrowthExperiments\Mentorship\Cleaner\Actions\IAction;
 use GrowthExperiments\Mentorship\Cleaner\Actions\MarkMentorAsAwayAction;
 use GrowthExperiments\Mentorship\Cleaner\Actions\RemoveMentorAction;
 use GrowthExperiments\Mentorship\Cleaner\MentorListCleaner;
+use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\User\UserIdentityValue;
@@ -52,12 +54,13 @@ class MentorListCleanerTest extends MediaWikiUnitTestCase {
 	public function testProcessMentorsEnabled() {
 		$messageLocalizer = $this->createNoOpMock( MessageLocalizer::class );
 		$status = StatusValue::newFatal( 'error' );
-		$mentor = new UserIdentityValue( 1, 'Admin' );
+		$mentorUser = new UserIdentityValue( 1, 'Admin' );
+		$mentor = new Mentor( $mentorUser, null, '', IMentorWeights::WEIGHT_NORMAL );
 		$factory = $this->createNoOpMock( ActionFactory::class, [ 'newFromClassName' ] );
 		$factory
 			->expects( $this->exactly( count( ActionFactory::ACTIONS ) ) )
 			->method( 'newFromClassName' )
-			->willReturnCallback( function ( $className ) use ( $mentor, $messageLocalizer, $status ) {
+			->willReturnCallback( function ( $className ) use ( $mentorUser, $messageLocalizer, $status ) {
 				if ( $className === MarkMentorAsAwayAction::class ) {
 					$action = $this->createMock( IAction::class );
 					$action->expects( $this->once() )
@@ -65,7 +68,7 @@ class MentorListCleanerTest extends MediaWikiUnitTestCase {
 						->willReturn( true );
 					$action->expects( $this->once() )
 						->method( 'check' )
-						->with( $mentor )
+						->with( $mentorUser )
 						->willReturn( false );
 					$action->expects( $this->never() )
 						->method( 'perform' );
@@ -77,11 +80,11 @@ class MentorListCleanerTest extends MediaWikiUnitTestCase {
 						->willReturn( true );
 					$action->expects( $this->once() )
 						->method( 'check' )
-						->with( $mentor )
+						->with( $mentorUser )
 						->willReturn( true );
 					$action->expects( $this->once() )
 						->method( 'perform' )
-						->with( $mentor, $messageLocalizer )
+						->with( $mentorUser, $messageLocalizer )
 						->willReturn( $status );
 					return $action;
 				}

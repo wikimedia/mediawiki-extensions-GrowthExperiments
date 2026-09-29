@@ -4,6 +4,7 @@ namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\MenteeGraduationProcessor;
+use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\UserIdentityLookup;
@@ -60,7 +61,10 @@ class GraduateEligibleMentees extends Maintenance {
 			}
 			$mentors = [ $mentor ];
 		} else {
-			$mentors = $this->mentorProvider->getMentors();
+			$mentors = array_map(
+				static fn ( Mentor $mentor ) => $mentor->getUserIdentity(),
+				$this->mentorProvider->getMentors()
+			);
 		}
 
 		$graduatedNo = 0;

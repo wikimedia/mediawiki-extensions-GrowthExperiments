@@ -7,6 +7,7 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\GrowthConnectionProvider;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
+use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\UserIdentityLookup;
@@ -92,7 +93,10 @@ class UpdateMenteeData extends Maintenance {
 			}
 			$mentors = [ $user ];
 		} else {
-			$mentors = $this->mentorProvider->getMentors();
+			$mentors = array_map(
+				static fn ( Mentor $mentor ) => $mentor->getUserIdentity(),
+				$this->mentorProvider->getMentors()
+			);
 		}
 
 		$allUpdatedMenteeIds = [];

@@ -194,23 +194,21 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
-	 * @param UserIdentity[] $mentors
+	 * @param Mentor[] $mentors
 	 * @return string
 	 */
 	private function getMentorsTableBody( array $mentors ): string {
 		// sort mentors alphabetically
 		usort(
 			$mentors,
-			static fn ( UserIdentity $a, UserIdentity $b ) => $a->getName() <=> $b->getName()
+			static fn ( Mentor $a, Mentor $b ) =>
+				$a->getUserIdentity()->getName() <=> $b->getUserIdentity()->getName()
 		);
 
 		$mentorsHtml = [];
 		$i = 1;
 		foreach ( $mentors as $mentor ) {
-			$mentorsHtml[] = $this->getMentorAsHtmlRow(
-				$this->mentorProvider->newMentorFromUserIdentity( $mentor ),
-				$i
-			);
+			$mentorsHtml[] = $this->getMentorAsHtmlRow( $mentor, $i );
 			$i++;
 		}
 
@@ -218,7 +216,7 @@ class SpecialManageMentors extends SpecialPage {
 	}
 
 	/**
-	 * @param UserIdentity[] $mentors
+	 * @param Mentor[] $mentors
 	 * @return string
 	 */
 	private function getMentorsTable( array $mentors ): string {
