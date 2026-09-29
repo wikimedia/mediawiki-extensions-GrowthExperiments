@@ -20,6 +20,8 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 	private UserIdentityLookup $userIdentityLookup;
 	private MessageLocalizer $messageLocalizer;
 	private ?array $mentorUsers = null;
+	private ?array $cachedMentorData = null;
+	private ?array $mentors = null;
 	private WANObjectCache $cache;
 	private const CACHE_TTL = 86400;
 
@@ -87,11 +89,24 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 	}
 
 	/**
+	 * Get the mentor list configuration, memoized for the request
+	 *
+	 * IConfigurationProvider::loadValidConfiguration() copies the whole list through
+	 * json_encode()/json_decode() on every call.
+	 *
+	 * @return array
+	 */
+	private function getCachedMentorData(): array {
+		$this->cachedMentorData ??= $this->getMentorData();
+		return $this->cachedMentorData;
+	}
+
+	/**
 	 * @param UserIdentity $mentor
 	 * @return array|null
 	 */
 	private function getMentorDataForUser( UserIdentity $mentor ): ?array {
-		return $this->getMentorData()[$mentor->getId()] ?? null;
+		return $this->getCachedMentorData()[$mentor->getId()] ?? null;
 	}
 
 	/**
@@ -160,7 +175,7 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 			$cacheKey,
 			self::CACHE_TTL,
 			function () use ( $method ) {
-				$mentorIds = array_keys( $this->getMentorData() );
+				$mentorIds = array_keys( $this->getCachedMentorData() );
 				if ( $mentorIds === [] ) {
 					return [];
 				}
@@ -179,7 +194,11 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 	 * @inheritDoc
 	 */
 	public function getMentors(): array {
-		$mentorData = $this->getMentorData();
+		if ( $this->mentors !== null ) {
+			return $this->mentors;
+		}
+
+		$mentorData = $this->getCachedMentorData();
 		$mentors = [];
 		foreach ( $this->getMentorUsers() as $mentorUser ) {
 			$userId = $mentorUser->getId();
@@ -191,7 +210,9 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 				$mentorUser
 			);
 		}
-		return $mentors;
+
+		$this->mentors = $mentors;
+		return $this->mentors;
 	}
 
 	/**
@@ -202,5 +223,7 @@ class CommunityStructuredMentorProvider extends MentorProvider {
 
 		// Reset in-memory cache
 		$this->mentorUsers = null;
+		$this->cachedMentorData = null;
+		$this->mentors = null;
 	}
 }

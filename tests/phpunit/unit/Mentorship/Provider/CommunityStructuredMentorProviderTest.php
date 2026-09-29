@@ -328,6 +328,46 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		];
 	}
 
+	/**
+	 * The mentor list is read once for each request, however many accessors ask for it (T439638)
+	 */
+	public function testMentorListIsMemoized() {
+		$ccProvider = $this->createMock( IConfigurationProvider::class );
+		$ccProvider->expects( $this->once() )
+			->method( 'loadValidConfiguration' )
+			->willReturn( Status::newGood( self::TEST_MENTOR_DATA ) );
+
+		$queryBuilder = $this->createMock( UserSelectQueryBuilder::class );
+		$queryBuilder->method( 'whereUserIds' )->willReturnSelf();
+		$queryBuilder->method( 'registered' )->willReturnSelf();
+		$queryBuilder->method( 'caller' )->willReturnSelf();
+		$queryBuilder->method( 'fetchUserIdentities' )
+			->willReturn( new ArrayIterator( self::getMentorUserIdentities() ) );
+
+		$userIdentityLookup = $this->createMock( UserIdentityLookup::class );
+		$userIdentityLookup->expects( $this->once() )
+			->method( 'newSelectQueryBuilder' )
+			->willReturn( $queryBuilder );
+		$userIdentityLookup->expects( $this->never() )->method( 'getUserIdentityByUserId' );
+
+		$provider = new CommunityStructuredMentorProvider(
+			new NullLogger(),
+			$userIdentityLookup,
+			$this->getMockMessageLocalizer(),
+			$ccProvider,
+			$this->getMockStatusFormatter(),
+			$this->getWanCache()
+		);
+
+		$provider->getAutoAssignedMentors();
+		$provider->getWeightedAutoAssignedMentors();
+		$provider->getManuallyAssignedMentors();
+		$provider->newMentorFromUserIdentity( new UserIdentityValue( 123, 'TestMentor1' ) );
+		$provider->isMentor( new UserIdentityValue( 456, 'TestMentor2' ) );
+
+		$this->assertCount( 4, $provider->getMentors() );
+	}
+
 	public function testGetWeightedAutoAssignedMentors() {
 		$provider = new CommunityStructuredMentorProvider(
 			new NullLogger(),
