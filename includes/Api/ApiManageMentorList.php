@@ -65,10 +65,10 @@ class ApiManageMentorList extends ApiBase {
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $mentorUser );
 
 		if ( $params['message'] !== null ) {
-			$mentor->setIntroText( $params['message'] !== '' ? $params['message'] : null );
+			$mentor = $mentor->withIntroText( $params['message'] !== '' ? $params['message'] : null );
 		}
 		if ( $params['weight'] !== null ) {
-			$mentor->setWeight( (int)$params['weight'] );
+			$mentor = $mentor->withWeight( (int)$params['weight'] );
 		}
 
 		// ensure awaytimestamp is provided when isaway=true
@@ -88,9 +88,9 @@ class ApiManageMentorList extends ApiBase {
 			if ( !$validationStatus->isOK() ) {
 				$this->dieStatus( $validationStatus );
 			}
-			$mentor->setAwayTimestamp( $awayTimestamp );
+			$mentor = $mentor->withAwayTimestamp( $awayTimestamp );
 		} else {
-			$mentor->setAwayTimestamp( null );
+			$mentor = $mentor->withAwayTimestamp( null );
 		}
 
 		switch ( $params['geaction'] ) {

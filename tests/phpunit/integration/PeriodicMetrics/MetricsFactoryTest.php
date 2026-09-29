@@ -29,12 +29,12 @@ class MetricsFactoryTest extends MediaWikiIntegrationTestCase {
 		$metricsFactory = $geServices->getMetricsFactory();
 
 		$userOne = $this->getMutableTestUser()->getUser();
-		$mentorOne = $mentorProvider->newMentorFromUserIdentity( $userOne );
-		$mentorOne->setWeight( Mentor::WEIGHT_NONE );
+		$mentorOne = $mentorProvider->newMentorFromUserIdentity( $userOne )
+			->withWeight( Mentor::WEIGHT_NONE );
 
 		$userTwo = $this->getMutableTestUser()->getUser();
-		$mentorTwo = $mentorProvider->newMentorFromUserIdentity( $userTwo );
-		$mentorTwo->setWeight( Mentor::WEIGHT_HIGH );
+		$mentorTwo = $mentorProvider->newMentorFromUserIdentity( $userTwo )
+			->withWeight( Mentor::WEIGHT_HIGH );
 
 		$this->assertStatusOK(
 			$mentorWriter->addMentor( $mentorOne, $mentorOne->getUserIdentity(), '' )

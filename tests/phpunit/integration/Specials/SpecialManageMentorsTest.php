@@ -41,8 +41,8 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$this->mentorUser = $this->getMutableTestUser()->getUserIdentity();
 		$mentor = $geServices->getMentorProvider()
-			->newMentorFromUserIdentity( $this->mentorUser );
-		$mentor->setIntroText( 'this is intro' );
+			->newMentorFromUserIdentity( $this->mentorUser )
+			->withIntroText( 'this is intro' );
 		$this->assertStatusGood( $geServices->getMentorWriter()
 			->addMentor(
 				$mentor,

@@ -67,8 +67,8 @@ class ManageMentorsAddMentor extends ManageMentorsAbstractForm {
 			);
 		}
 
-		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
-		$mentor->setWeight( IMentorWeights::WEIGHT_NONE );
+		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser )
+			->withWeight( IMentorWeights::WEIGHT_NONE );
 
 		return Status::wrap( $this->mentorWriter->addMentor(
 			$mentor,

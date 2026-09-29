@@ -6,7 +6,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use MediaWiki\User\UserIdentity;
 
 /**
- * A value object representing a Growth mentor
+ * An immutable value object representing a Growth mentor
  *
  * This class should be aware of all aspects involved in being a Growth mentor (including the
  * mentor's custom introduction message, if there is any, or whether they're automatically
@@ -74,16 +74,31 @@ class Mentor implements IMentorWeights {
 
 	/**
 	 * @param string|null $introText Null to use the default message
+	 * @return self A copy with the given introduction text
 	 */
-	public function setIntroText( ?string $introText ): void {
-		$this->introText = $introText;
+	public function withIntroText( ?string $introText ): self {
+		$mentor = clone $this;
+		$mentor->introText = $introText;
+		return $mentor;
 	}
 
-	public function setWeight( int $weight ): void {
-		$this->weight = $weight;
+	/**
+	 * @param int $weight One of Mentor::WEIGHT_*
+	 * @return self A copy with the given weight
+	 */
+	public function withWeight( int $weight ): self {
+		$mentor = clone $this;
+		$mentor->weight = $weight;
+		return $mentor;
 	}
 
-	public function setAwayTimestamp( ?string $statusAwayTimestamp ): void {
-		$this->statusAwayTimestamp = $statusAwayTimestamp;
+	/**
+	 * @param string|null $statusAwayTimestamp
+	 * @return self A copy with the given away timestamp
+	 */
+	public function withAwayTimestamp( ?string $statusAwayTimestamp ): self {
+		$mentor = clone $this;
+		$mentor->statusAwayTimestamp = $statusAwayTimestamp;
+		return $mentor;
 	}
 }

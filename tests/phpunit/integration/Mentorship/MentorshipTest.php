@@ -79,8 +79,7 @@ class MentorshipTest extends MediaWikiIntegrationTestCase {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$mentor = $growthServices->getMentorProvider()->newMentorFromUserIdentity(
 			$this->getTestUser( 'sysop' )->getUser()
-		);
-		$mentor->setIntroText( 'description' );
+		)->withIntroText( 'description' );
 		$this->assertStatusGood( $growthServices->getMentorWriter()->addMentor(
 			$mentor,
 			$mentor->getUserIdentity(),

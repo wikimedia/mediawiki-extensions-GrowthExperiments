@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Cleaner\Actions\MarkMentorAsAwayAction;
 use GrowthExperiments\Mentorship\Cleaner\LastActionTimestampLookup;
@@ -194,10 +195,7 @@ class MarkMentorAsAwayActionTest extends MediaWikiUnitTestCase {
 
 		$user = new UserIdentityValue( 1, 'Mentor' );
 
-		$mentor = $this->createMock( Mentor::class );
-		$mentor->expects( $this->once() )
-			->method( 'setAwayTimestamp' )
-			->with( $expectedAwayTimestamp );
+		$mentor = new Mentor( $user, null, '', IMentorWeights::WEIGHT_NORMAL );
 
 		$mentorProvider = $this->createMock( MentorProvider::class );
 		$mentorProvider->expects( $this->once() )
@@ -227,7 +225,9 @@ class MarkMentorAsAwayActionTest extends MediaWikiUnitTestCase {
 		$mentorWriter->expects( $this->once() )
 			->method( 'changeMentor' )
 			->with(
-				$mentor,
+				$this->callback(
+					static fn ( Mentor $mentor ) => $mentor->getStatusAwayTimestamp() === $expectedAwayTimestamp
+				),
 				$this->callback( static fn ( UserIdentity $performer ) => $performer->getName() === 'SystemPerformer' ),
 				'the summary'
 			)

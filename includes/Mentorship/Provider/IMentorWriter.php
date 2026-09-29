@@ -68,7 +68,7 @@ interface IMentorWriter {
 	 * This will change all options of a given mentor
 	 * to those contained in the Mentor object passed.
 	 *
-	 * Use Mentor::set* methods to change the options.
+	 * Use Mentor::with* methods to change the options.
 	 *
 	 * @param Mentor $mentor
 	 * @param UserIdentity $performer User who performed the action

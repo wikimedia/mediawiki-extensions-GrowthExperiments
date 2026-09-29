@@ -74,11 +74,10 @@ class MarkMentorAsAwayAction implements IAction {
 	}
 
 	public function perform( UserIdentity $user, MessageLocalizer $messageLocalizer ): StatusValue {
-		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $user );
-
 		$awayTimestamp = ExpiryDef::normalizeExpiry( sprintf( '%d days', $this->awayDurationInDays ) )
 			->getTimestamp( TimestampFormat::MW );
-		$mentor->setAwayTimestamp( $awayTimestamp );
+		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $user )
+			->withAwayTimestamp( $awayTimestamp );
 
 		$result = StatusValue::newGood();
 		$result->merge( $this->mentorStatusManager->markMentorAsAwayTimestamp( $user, $awayTimestamp ) );

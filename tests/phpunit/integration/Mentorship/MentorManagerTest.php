@@ -123,8 +123,8 @@ class MentorManagerTest extends MediaWikiIntegrationTestCase {
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
-		$mentor = $geServices->getMentorProvider()->newMentorFromUserIdentity( $mentorUser );
-		$mentor->setIntroText( 'This is a sample text.' );
+		$mentor = $geServices->getMentorProvider()->newMentorFromUserIdentity( $mentorUser )
+			->withIntroText( 'This is a sample text.' );
 		$this->assertStatusGood( $geServices->getMentorWriter()->addMentor( $mentor, $mentorUser, '' ) );
 
 		$mentee = $this->getMutableTestUser()->getUser();

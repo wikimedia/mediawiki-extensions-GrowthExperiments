@@ -8,13 +8,10 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\Mentorship\Mentor
+ * @covers \GrowthExperiments\Mentorship\Mentor
  */
 class MentorTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @covers ::__construct
-	 */
 	public function testConstruct() {
 		$mentor = new Mentor(
 			new UserIdentityValue( 123, 'Mentor' ),
@@ -25,9 +22,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf( Mentor::class, $mentor );
 	}
 
-	/**
-	 * @covers ::getUserIdentity
-	 */
 	public function testGetUserIdentity() {
 		$mentorUserIdentity = new UserIdentityValue( 123, 'Mentor' );
 		$mentor = new Mentor(
@@ -43,8 +37,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param string|null $introText
 	 * @dataProvider provideGetIntroText
-	 * @covers ::getIntroText
-	 * @covers ::hasCustomIntroText
 	 */
 	public function testGetIntroText( ?string $introText ) {
 		$mentor = new Mentor(
@@ -72,7 +64,6 @@ class MentorTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param int $weight
-	 * @covers ::getWeight
 	 * @dataProvider provideGetWeight
 	 */
 	public function testGetWeight( int $weight ) {
@@ -94,12 +85,7 @@ class MentorTest extends MediaWikiUnitTestCase {
 		];
 	}
 
-	/**
-	 * @covers ::getIntroText
-	 * @covers ::hasCustomIntroText
-	 * @covers ::setIntroText
-	 */
-	public function testSetIntroText() {
+	public function testWithIntroText() {
 		$mentor = new Mentor(
 			new UserIdentityValue( 123, 'Mentor' ),
 			null,
@@ -110,16 +96,15 @@ class MentorTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( 'foo', $mentor->getIntroText() );
 		$this->assertFalse( $mentor->hasCustomIntroText() );
 
-		$mentor->setIntroText( 'baz' );
-		$this->assertEquals( 'baz', $mentor->getIntroText() );
-		$this->assertTrue( $mentor->hasCustomIntroText() );
+		$newMentor = $mentor->withIntroText( 'baz' );
+		$this->assertEquals( 'baz', $newMentor->getIntroText() );
+		$this->assertTrue( $newMentor->hasCustomIntroText() );
+
+		$this->assertEquals( 'foo', $mentor->getIntroText() );
+		$this->assertFalse( $mentor->hasCustomIntroText() );
 	}
 
-	/**
-	 * @covers ::getWeight
-	 * @covers ::setWeight
-	 */
-	public function testSetWeight() {
+	public function testWithWeight() {
 		$mentor = new Mentor(
 			new UserIdentityValue( 123, 'Mentor' ),
 			null,
@@ -129,7 +114,27 @@ class MentorTest extends MediaWikiUnitTestCase {
 
 		$this->assertEquals( IMentorWeights::WEIGHT_NORMAL, $mentor->getWeight() );
 
-		$mentor->setWeight( IMentorWeights::WEIGHT_LOW );
-		$this->assertEquals( IMentorWeights::WEIGHT_LOW, $mentor->getWeight() );
+		$newMentor = $mentor->withWeight( IMentorWeights::WEIGHT_LOW );
+		$this->assertEquals( IMentorWeights::WEIGHT_LOW, $newMentor->getWeight() );
+
+		$this->assertEquals( IMentorWeights::WEIGHT_NORMAL, $mentor->getWeight() );
+	}
+
+	public function testWithAwayTimestamp() {
+		$mentor = new Mentor(
+			new UserIdentityValue( 123, 'Mentor' ),
+			null,
+			'foo',
+			IMentorWeights::WEIGHT_NORMAL,
+			'20260101000000'
+		);
+
+		$this->assertSame( '20260101000000', $mentor->getStatusAwayTimestamp() );
+
+		$newMentor = $mentor->withAwayTimestamp( '20260202000000' );
+		$this->assertSame( '20260202000000', $newMentor->getStatusAwayTimestamp() );
+		$this->assertNull( $mentor->withAwayTimestamp( null )->getStatusAwayTimestamp() );
+
+		$this->assertSame( '20260101000000', $mentor->getStatusAwayTimestamp() );
 	}
 }

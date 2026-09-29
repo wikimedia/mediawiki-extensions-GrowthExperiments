@@ -131,9 +131,9 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
-		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->getUser() );
-		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
-		$mentor->setWeight( (int)$data['weight'] );
+		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->getUser() )
+			->withIntroText( $data['message'] !== '' ? $data['message'] : null )
+			->withWeight( (int)$data['weight'] );
 
 		return Status::wrap( $this->mentorWriter->addMentor(
 			$mentor,

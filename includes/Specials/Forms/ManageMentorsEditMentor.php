@@ -127,18 +127,18 @@ class ManageMentorsEditMentor extends ManageMentorsAbstractForm {
 			return $canUpdateStatus;
 		}
 
-		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser );
-		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
-		$mentor->setWeight( (int)$data['weight'] );
+		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->mentorUser )
+			->withIntroText( $data['message'] !== '' ? $data['message'] : null )
+			->withWeight( (int)$data['weight'] );
 		$awayTimestamp = $data['isAway'] ? $data['awayTimestamp'] : null;
 		if ( $awayTimestamp ) {
 			$validationStatus = StatusAwayValidator::validateTimestamp( $awayTimestamp, $this->mentorUser->getId() );
 			if ( !$validationStatus->isOK() ) {
 				return Status::wrap( $validationStatus );
 			}
-			$mentor->setAwayTimestamp( $awayTimestamp );
+			$mentor = $mentor->withAwayTimestamp( $awayTimestamp );
 		} else {
-			$mentor->setAwayTimestamp( null );
+			$mentor = $mentor->withAwayTimestamp( null );
 		}
 
 		$status = Status::newGood();
