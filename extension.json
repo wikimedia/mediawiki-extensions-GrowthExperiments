@@ -929,6 +929,7 @@
 				"growthexperiments-account-setup-motivation-option-both-title",
 				"growthexperiments-account-setup-motivation-option-both-description",
 				"growthexperiments-interest-selector-no-results-found",
+				"growthexperiments-interest-selector-no-related-articles-found",
 				"growthexperiments-interest-selector-a11y-label",
 				"growthexperiments-interest-selector-placeholder",
 				"growthexperiments-interest-selector-related-articles-heading",
@@ -1546,6 +1547,7 @@
 				"growthexperiments-addlink-daily-task-limit-exceeded",
 				"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button",
 				"growthexperiments-interest-selector-no-results-found",
+				"growthexperiments-interest-selector-no-related-articles-found",
 				"growthexperiments-interest-selector-a11y-label",
 				"growthexperiments-interest-selector-placeholder",
 				"growthexperiments-interest-selector-related-articles-heading",
@@ -1571,6 +1573,7 @@
 			],
 			"messages": [
 				"growthexperiments-interest-selector-no-results-found",
+				"growthexperiments-interest-selector-no-related-articles-found",
 				"growthexperiments-interest-selector-a11y-label",
 				"growthexperiments-interest-selector-placeholder",
 				"growthexperiments-interest-selector-related-articles-heading",
