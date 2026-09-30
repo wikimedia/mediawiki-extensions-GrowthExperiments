@@ -1,5 +1,6 @@
 const Vue = require( 'vue' );
 const Pinia = require( 'pinia' );
+const sendOnboardingReadyEvent = require( '../utils/sendOnboardingReadyEvent.js' );
 
 ( async function () {
 	const platform = mw.config.get( 'skin' ) === 'minerva' ? 'mobile' : 'desktop';
@@ -27,9 +28,11 @@ const Pinia = require( 'pinia' );
 	app.provide( 'experiment', experiment );
 	app.mount( '#growthexperiments-account_setup' );
 	trackPhase( 'mounted' );
+	const mountedMs = performance.now();
 	mw.track(
 		'stats.mediawiki_GrowthExperiments_onboarding_ready_seconds',
-		performance.now(),
+		mountedMs,
 		{ group: 'treatment', platform, wiki },
 	);
+	sendOnboardingReadyEvent( experiment, mountedMs );
 }() );

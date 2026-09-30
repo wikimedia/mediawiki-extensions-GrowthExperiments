@@ -79,6 +79,11 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$isEarlyOnboardingExperimentControlGroup = $this->featureManager->isEarlyOnboardingExperimentControl(
 			$this->getUser()
 		);
+		if ( $isEarlyOnboardingExperimentControlGroup && !$this->getRequest()->wasPosted() ) {
+			$this->experimentManager
+				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST )
+				->sendExposure();
+		}
 		$this->getOutput()->addJsConfigVars( [
 			'welcomesurvey' => true,
 			'isEarlyOnboardingExperimentControl' => $isEarlyOnboardingExperimentControlGroup,

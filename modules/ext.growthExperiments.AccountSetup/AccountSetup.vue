@@ -185,7 +185,6 @@ module.exports = defineComponent( {
 			mw.trackSubscribe( 'Growth.ImpactAppMounted', () => {
 				document.body.style.overflow = 'hidden';
 			} );
-			experiment.sendExposure();
 			experiment.send(
 				'impression',
 				{

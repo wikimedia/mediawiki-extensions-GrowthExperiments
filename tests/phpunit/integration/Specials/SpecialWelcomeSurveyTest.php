@@ -3,13 +3,17 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use GrowthExperiments\WelcomeSurvey;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentInterface;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\Utils\MWTimestamp;
+use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IDBAccessObject;
 
@@ -18,6 +22,8 @@ use Wikimedia\Rdbms\IDBAccessObject;
  * @group Database
  */
 class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
+	private ?ExperimentManager $experimentManager = null;
+
 	/**
 	 * @inheritDoc
 	 */
@@ -29,7 +35,7 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 			$growthExperimentsServices->getWelcomeSurveyFactory(),
 			new WelcomeSurveyLogger( new NullLogger() ),
 			$growthExperimentsServices->getFeatureManager(),
-			null
+			$this->experimentManager
 		);
 	}
 
@@ -74,6 +80,56 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 			'_render_date' => null,
 			'_counter' => 1,
 		], $surveyAnswer );
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testSendsExposureWhenFormIsShownToControlGroup(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
+		$this->mockEarlyOnboardingControl( true );
+		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->once() );
+
+		$this->executeSpecialPage( '', null, 'en', $this->getTestUser()->getUser() );
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testDoesNotSendExposureWhenFormIsPosted(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
+		$this->mockEarlyOnboardingControl( true );
+		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->never() );
+
+		$request = new FauxRequest( [ 'reason' => 'placeholder' ], true );
+		$this->executeSpecialPage( '', $request, 'en', $this->getMutableTestUser()->getUser() );
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testDoesNotSendExposureOutsideControlGroup(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
+		$this->mockEarlyOnboardingControl( false );
+		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->never() );
+
+		$this->executeSpecialPage( '', null, 'en', $this->getTestUser()->getUser() );
+	}
+
+	private function mockEarlyOnboardingControl( bool $isControl ): void {
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentControl' )->willReturn( $isControl );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+	}
+
+	private function newExperimentManagerExpectingExposures(
+		InvocationOrder $expectedExposures
+	): ExperimentManager {
+		$experiment = $this->createMock( ExperimentInterface::class );
+		$experiment->expects( $expectedExposures )->method( 'sendExposure' );
+		$experimentManager = $this->createMock( ExperimentManager::class );
+		$experimentManager->method( 'getExperiment' )->willReturn( $experiment );
+		return $experimentManager;
 	}
 
 }
