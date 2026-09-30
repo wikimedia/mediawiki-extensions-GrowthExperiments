@@ -19,6 +19,25 @@
 		if ( !mw.config.get( 'isEarlyOnboardingExperimentControl' ) ) {
 			return;
 		}
+
+		// The form works before JS runs, so the first paint is when the user can act.
+		new PerformanceObserver( ( list, observer ) => {
+			const firstContentfulPaint = list.getEntriesByName( 'first-contentful-paint' )[ 0 ];
+			if ( !firstContentfulPaint ) {
+				return;
+			}
+			observer.disconnect();
+			mw.track(
+				'stats.mediawiki_GrowthExperiments_onboarding_ready_seconds',
+				firstContentfulPaint.startTime,
+				{
+					group: 'control',
+					platform: mw.config.get( 'skin' ) === 'minerva' ? 'mobile' : 'desktop',
+					wiki: mw.config.get( 'wgDBname' ),
+				},
+			);
+		} ).observe( { type: 'paint', buffered: true } );
+
 		mw.loader.using( [ 'ext.testKitchen', 'ext.wikimediaEvents.testKitchen' ] ).then( async () => {
 			const experiment = await mw.tk.getExperiment( 'de-1-3-1-specialhomepage-onboarding-ab-test' );
 			experiment.sendExposure();
