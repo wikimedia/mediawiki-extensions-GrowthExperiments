@@ -200,8 +200,13 @@ module.exports = defineComponent( {
 				}
 			}, 300 );
 		} );
+		let skipOrFinishWasClicked = false;
 
 		async function saveAndGoToHome() {
+			if ( skipOrFinishWasClicked ) {
+				return;
+			}
+			skipOrFinishWasClicked = true;
 			experiment.send(
 				'click',
 				{
@@ -217,6 +222,10 @@ module.exports = defineComponent( {
 		}
 
 		async function skipAndGoToHome() {
+			if ( skipOrFinishWasClicked ) {
+				return;
+			}
+			skipOrFinishWasClicked = true;
 			experiment.send(
 				'click',
 				{
