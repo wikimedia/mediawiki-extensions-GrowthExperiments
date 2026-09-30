@@ -894,6 +894,7 @@
 				"AccountSetup.vue",
 				"AccountSetupStore.js",
 				"../vue-components/InterestSelector.vue",
+				"../utils/sendOnboardingReadyEvent.js",
 				{
 					"name": "codex-icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
@@ -2295,7 +2296,8 @@
 			"packageFiles": [
 				"ext.growthExperiments.WelcomeSurvey/index.js",
 				"ext.growthExperiments.WelcomeSurvey/ULSTagMultiselectWidget.js",
-				"ext.growthExperiments.WelcomeSurvey/WelcomeSurvey.js"
+				"ext.growthExperiments.WelcomeSurvey/WelcomeSurvey.js",
+				"utils/sendOnboardingReadyEvent.js"
 			],
 			"messages": [
 				"welcomesurvey-question-languages-placeholder",

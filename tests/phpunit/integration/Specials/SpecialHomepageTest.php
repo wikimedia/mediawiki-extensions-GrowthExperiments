@@ -14,12 +14,15 @@ use InvalidArgumentException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentInterface;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
+use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 
 /**
  * @group Database
@@ -29,6 +32,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	use HamcrestPHPUnitIntegration;
 
 	use \MockHttpTrait;
+
+	private ?ExperimentManager $experimentManager = null;
 
 	/**
 	 * @inheritDoc
@@ -53,7 +58,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$this->getServiceContainer()->getTitleFactory(),
 			$growthExperimentsServices->getFeatureManager(),
 			$this->getServiceContainer()->getJobQueueGroup(),
-			null,
+			$this->experimentManager,
 		);
 	}
 
@@ -108,6 +113,48 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$readingRecommendations = $homepageModules[ReadingRecommendations::MODULE_ID];
 		$this->assertSame( [], $readingRecommendations['recommendations'] );
 		$this->assertFalse( $readingRecommendations['hasInterests'] );
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testSendsExposureWhenAccountSetupIsShown(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
+		$user = $this->enableHomepageForTesting();
+		$this->mockEarlyOnboardingTreatment();
+		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->once() );
+
+		$response = $this->executeSpecialPage( '', null, null, $user );
+		$this->assertStringContainsString( 'growthexperiments-account_setup', $response[0] );
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testDoesNotSendExposureWhenAccountSetupIsDone(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
+		$user = $this->enableHomepageForTestingWithReadingUser();
+		$this->mockEarlyOnboardingTreatment();
+		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->never() );
+
+		$response = $this->executeSpecialPage( '', null, null, $user );
+		$this->assertStringNotContainsString( 'growthexperiments-account_setup', $response[0] );
+	}
+
+	private function mockEarlyOnboardingTreatment(): void {
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+	}
+
+	private function newExperimentManagerExpectingExposures(
+		InvocationOrder $expectedExposures
+	): ExperimentManager {
+		$experiment = $this->createMock( ExperimentInterface::class );
+		$experiment->expects( $expectedExposures )->method( 'sendExposure' );
+		$experimentManager = $this->createMock( ExperimentManager::class );
+		$experimentManager->method( 'getExperiment' )->willReturn( $experiment );
+		return $experimentManager;
 	}
 
 	/**
