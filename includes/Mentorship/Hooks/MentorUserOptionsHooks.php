@@ -21,12 +21,21 @@ class MentorUserOptionsHooks implements
 	ResourceLoaderExcludeUserOptionsHook
 {
 
+	/**
+	 * Whether the mentee dismissed the intro message of the Personal Dashboard
+	 * mentorship module. Not on that module class, which needs PersonalDashboard.
+	 */
+	public const string PREINTRO_DISMISSED_PREF = 'growthexperiments-personaldashboard-mentorship-preintro-dismissed';
+
 	/** @inheritDoc */
 	public function onGetPreferences( $user, &$preferences ) {
 		$preferences[ MentorManager::MENTORSHIP_ENABLED_PREF ] = [
 			'type' => 'api',
 		];
 		$preferences[ MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF ] = [
+			'type' => 'api',
+		];
+		$preferences[ self::PREINTRO_DISMISSED_PREF ] = [
 			'type' => 'api',
 		];
 	}
@@ -37,6 +46,7 @@ class MentorUserOptionsHooks implements
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		$defaultOptions += [
 			MentorManager::MENTORSHIP_ENABLED_PREF => MentorManager::MENTORSHIP_ENABLED,
+			self::PREINTRO_DISMISSED_PREF => 0,
 		];
 	}
 
@@ -47,6 +57,7 @@ class MentorUserOptionsHooks implements
 	): void {
 		$keysToExclude = array_merge( $keysToExclude, [
 			MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF,
+			self::PREINTRO_DISMISSED_PREF,
 		] );
 	}
 

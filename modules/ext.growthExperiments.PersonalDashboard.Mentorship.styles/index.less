@@ -1,66 +1,148 @@
 @import 'mediawiki.skin.variables.less';
 
-.personal-dashboard-mentorship {
-	&__info {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: baseline;
-		gap: @spacing-25;
+// Scoped under the module wrapper so these outweigh the skin's blockquote margin
+// and the Codex button's max-width.
+.personal-dashboard-module .personal-dashboard-mentorship {
+	&__message {
+		margin-bottom: @spacing-75;
 	}
 
-	&__name {
+	&__message-dismiss-icon {
+		.cdx-mixin-css-icon( @cdx-icon-close, @param-is-button-icon: true );
+	}
+
+	// Codex has no avatar component, so the card thumbnail is the design's
+	// initial in a circle. The initial is in a data attribute, because Codex PHP
+	// does not put text in a thumbnail.
+	&__avatar {
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: @size-250;
+		height: @size-250;
+		border-radius: @border-radius-circle;
+		background-color: @background-color-inverted;
+		color: @color-inverted;
+		font-size: @font-size-large;
 		font-weight: @font-weight-bold;
+
+		&::before {
+			content: attr( data-initial );
+		}
+
+		.cdx-thumbnail__placeholder {
+			display: none;
+		}
 	}
 
-	&__meta {
-		color: @color-subtle;
-		font-size: @font-size-small;
+	// The name link covers the whole card, so the card is a link for mouse
+	// and touch, but screen readers get only the name as the link text.
+	&__card-link {
+		color: inherit;
+
+		&:hover,
+		&:focus {
+			// Transparent, not 0: forced-colors mode draws it, but not the
+			// box-shadow ring.
+			outline: 1px solid transparent;
+			text-decoration: none;
+		}
+
+		// Over the card border, so the focus ring can replace it.
+		&::after {
+			content: '';
+			position: absolute;
+			top: -1px;
+			right: -1px;
+			bottom: -1px;
+			left: -1px;
+			border-radius: @border-radius-base;
+		}
+
+		// The Codex focus style of a link card. On the overlay, not with
+		// :has() on the card, which older browsers do not support.
+		&:focus-visible::after {
+			box-shadow: inset 0 0 0 2px @box-shadow-color-progressive--focus;
+		}
 	}
 
-	&__intro {
-		margin: @spacing-50 0;
-	}
-
-	// The mentor's own words, rendered as the Codex "Block quote" named style
-	// (serif is the distinguishing signal); the mentor name above is the
-	// attribution.
+	// The Codex description wrapper has the top margin already.
+	&__intro,
 	&__quote {
-		margin: @spacing-50 0;
-		font-family: @font-family-serif;
-	}
-
-	&__ask {
-		margin-top: @spacing-50;
-	}
-
-	&__conversations {
 		display: block;
+		margin: 0;
+		color: @color-base;
 	}
 
-	&__about,
-	&__optout,
+	// The skin styles the rest of the quote, as design asks.
+	&__quote {
+		padding-right: @spacing-75;
+	}
+
+	// Subtle, because it stands in for the mentor's intro when there is no mentor.
+	&__optin-text {
+		margin: @spacing-25 0 0;
+		color: @color-subtle;
+	}
+
+	&__ask,
 	&__optin {
-		margin-top: @spacing-50;
+		display: flex;
+		width: 100%;
+		max-width: none;
+		margin-top: @spacing-75;
+		.wrap-label();
+	}
+}
+
+// Codex keeps a button label on one line. Full-width buttons have no max-width
+// to truncate at, so a long label overflows; wrap it.
+.wrap-label() {
+	white-space: normal;
+	overflow-wrap: anywhere;
+	// An <a> fake button does not get the centring a <button> gets.
+	text-align: center;
+}
+
+// The panels teleport to <body>, outside the module wrapper.
+.personal-dashboard-mentorship {
+	// Focused by script only, to keep focus off its link. It is not
+	// interactive, so it gets no focus ring.
+	&__notice:focus {
+		outline: 0;
 	}
 
 	&__status-error {
 		margin-top: @spacing-50;
 		color: @color-error;
 	}
+
+	// Full-width and stacked in the bottom sheet, as design shows.
+	&__status-actions {
+		display: flex;
+		flex-direction: column;
+		gap: @spacing-50;
+		margin-top: @spacing-100;
+
+		.cdx-button {
+			max-width: none;
+			.wrap-label();
+		}
+	}
+
+	// In a dialog, a row at the end, as in the Codex dialog footer. The
+	// primary button is first in the DOM there too, so it shows last.
+	.cdx-dialog &__status-actions {
+		flex-direction: row-reverse;
+		gap: @spacing-75;
+	}
 }
 
-// Opt out goes through the API, so its control does nothing without JavaScript;
-// hide it. The opt-in card has no no-JS action at all, so hide the whole card
-// rather than leave explanatory text with no way forward.
-.client-nojs {
-	.personal-dashboard-mentorship__about,
-	.personal-dashboard-mentorship__optout {
-		display: none;
-	}
-
-	.personal-dashboard-mentorship-optin-card {
-		display: none;
-	}
+// The opt-in card has no no-JS action at all, so hide the whole card rather
+// than leave explanatory text with no way forward.
+.client-nojs .personal-dashboard-mentorship__message-dismiss,
+.client-nojs .personal-dashboard-mentorship-optin-card {
+	display: none;
 }
 
 // Recent questions are secondary to the mentor, so the whole section is a

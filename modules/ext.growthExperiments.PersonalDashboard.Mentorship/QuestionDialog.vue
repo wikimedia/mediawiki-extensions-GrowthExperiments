@@ -1,12 +1,12 @@
 <template>
 	<cdx-dialog
-		v-model:open="state.open"
+		v-model:open="openInternal"
+		class="personal-dashboard-mentorship__question-dialog"
 		:title="dialogTitle"
 		:use-close-button="true"
 		:primary-action="primaryAction"
-		:default-action="defaultAction"
+		:stacked-actions="true"
 		@primary="onPrimary"
-		@default="state.open = false"
 	>
 		<template v-if="status === 'done'">
 			<p>{{ confirmation }}</p>
@@ -15,16 +15,30 @@
 			</p>
 		</template>
 		<template v-else>
-			<!-- eslint-disable-next-line vue/no-v-html -->
-			<div v-html="notice"></div>
+			<!-- eslint-disable vue/no-v-html -->
+			<div
+				ref="noticeRef"
+				class="personal-dashboard-mentorship__notice"
+				tabindex="-1"
+				v-html="notice"
+			></div>
+			<!-- eslint-enable vue/no-v-html -->
 			<cdx-field :status="fieldStatus" :messages="fieldMessages">
+				<template #label>
+					{{ fieldLabel }}
+				</template>
 				<cdx-text-area
 					v-model="question"
-					:aria-label="dialogTitle"
 					:placeholder="placeholder"
 					:disabled="status === 'sending'"
 				></cdx-text-area>
 			</cdx-field>
+		</template>
+		<template v-if="copyrightWarning && status !== 'done'" #footer-text>
+			<!-- Parsed server-side from an interface message. Design wants it
+			here, though the slot is a <p> and the warning is in a <div>. -->
+			<!-- eslint-disable-next-line vue/no-v-html -->
+			<span v-html="copyrightWarning"></span>
 		</template>
 	</cdx-dialog>
 </template>
@@ -32,34 +46,26 @@
 <script>
 const { defineComponent, computed, ref, watch } = require( 'vue' );
 const { CdxDialog, CdxField, CdxTextArea } = require( './codex.js' );
-const state = require( './state.js' );
+const apiErrorText = require( './apiErrorText.js' );
 
-// ext.personalDashboard.common carries PersonalDashboard's shared client utils.
-// It is only registered when PersonalDashboard is installed, which is exactly
-// when this module renders, so treat it as a soft dependency rather than a hard
-// ResourceLoader one: load it lazily and fall back to a generic error if absent.
-let parseApiStatus = null;
-if ( mw.loader.getState( 'ext.personalDashboard.common' ) !== null ) {
-	mw.loader.using( 'ext.personalDashboard.common' ).then( ( require ) => {
-		parseApiStatus = require( 'ext.personalDashboard.common' ).utils.parseApiStatus;
-	} ).catch( () => {
-		// Leave parseApiStatus null; error reporting falls back to the generic message.
-	} );
-}
-
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'MentorshipQuestionDialog',
 	components: { CdxDialog, CdxField, CdxTextArea },
 	props: {
+		open: { type: Boolean, default: false },
 		dialogTitle: { type: String, required: true },
 		notice: { type: String, required: true },
+		// Parsed HTML, or '' when a hook removed the warning.
+		copyrightWarning: { type: String, default: '' },
 		confirmation: { type: String, required: true },
 		viewText: { type: String, required: true },
 		storage: { type: String, required: true },
 	},
-	setup( props ) {
+	emits: [ 'update:open' ],
+	setup( props, { emit } ) {
 		const question = ref( '' );
 		// editing -> sending -> done, or -> error (retryable from editing).
+		// invalid: publish was clicked with an empty question.
 		const status = ref( 'editing' );
 		// The API's own error text when a post fails, so a blocked or rate-limited
 		// user sees why rather than a generic "try again" they'll retry forever.
@@ -67,16 +73,29 @@ module.exports = defineComponent( {
 		// The posted question's URL, handed back by the poster for the "view your
 		// question" link.
 		const viewUrl = ref( null );
+		const noticeRef = ref( null );
 		const api = new mw.Api();
+
+		const openInternal = computed( {
+			get: () => props.open,
+			set: ( value ) => emit( 'update:open', value ),
+		} );
 
 		// A reopen starts fresh: never show a stale confirmation, error, or a
 		// previous draft after the dialog has been closed.
-		watch( () => state.open, ( isOpen ) => {
+		watch( () => props.open, ( isOpen ) => {
 			if ( isOpen ) {
 				status.value = 'editing';
 				question.value = '';
 				apiError.value = null;
 				viewUrl.value = null;
+				// CdxDialog focuses the notice's talk page link. Design wants
+				// nothing focused, so move focus to the notice after Codex.
+				setTimeout( () => {
+					if ( noticeRef.value ) {
+						noticeRef.value.focus( { preventScroll: true } );
+					}
+				} );
 			}
 		} );
 
@@ -88,19 +107,28 @@ module.exports = defineComponent( {
 			{
 				label: mw.msg( 'growthexperiments-help-panel-submit-question-button-text' ),
 				actionType: 'progressive',
-				disabled: status.value === 'sending' || question.value.trim() === '',
+				disabled: status.value === 'sending',
 			},
 		);
-		const defaultAction = computed( () => status.value === 'done' ?
-			undefined :
-			{ label: mw.msg( 'growthexperiments-homepage-mentorship-confirm-dialog-cancel' ) },
-		);
-		const fieldStatus = computed( () => status.value === 'error' ? 'error' : 'default' );
-		const fieldMessages = computed( () => status.value === 'error' ?
-			{ error: apiError.value ||
-				mw.msg( 'growthexperiments-home-mentorship-question-error' ) } :
-			{},
-		);
+		const fieldStatus = computed( () => [ 'error', 'invalid' ].includes( status.value ) ?
+			'error' : 'default' );
+		const fieldMessages = computed( () => {
+			if ( status.value === 'invalid' ) {
+				return { error: mw.msg( 'growthexperiments-homepage-mentorship-question-empty' ) };
+			}
+			if ( status.value === 'error' ) {
+				return { error: apiError.value ||
+					mw.msg( 'growthexperiments-home-mentorship-question-error' ) };
+			}
+			return {};
+		} );
+
+		// Codex guidelines prefer a validation message over a disabled button.
+		watch( question, () => {
+			if ( status.value === 'invalid' ) {
+				status.value = 'editing';
+			}
+		} );
 
 		function submit() {
 			status.value = 'sending';
@@ -120,11 +148,8 @@ module.exports = defineComponent( {
 				refreshRecentQuestions();
 			} ).catch( ( code, result ) => {
 				status.value = 'error';
-				// Surface the API's reason (blocked, read-only, rate limited) when
-				// there is one; fall back to the generic retry message otherwise.
-				const messages = parseApiStatus && result && result.errors ?
-					parseApiStatus( result.errors ) : [];
-				apiError.value = messages.join( '\n' ) || null;
+				// The generic retry message shows when the API gives no reason.
+				apiError.value = apiErrorText( result );
 			} );
 		}
 
@@ -151,20 +176,23 @@ module.exports = defineComponent( {
 
 		function onPrimary() {
 			if ( status.value === 'done' ) {
-				state.open = false;
+				openInternal.value = false;
+			} else if ( question.value.trim() === '' ) {
+				status.value = 'invalid';
 			} else {
 				submit();
 			}
 		}
 
 		return {
-			state,
+			openInternal,
 			question,
 			status,
 			viewUrl,
+			noticeRef,
+			fieldLabel: mw.msg( 'growthexperiments-help-panel-questionreview-label' ),
 			placeholder: mw.msg( 'growthexperiments-help-panel-question-placeholder' ),
 			primaryAction,
-			defaultAction,
 			fieldStatus,
 			fieldMessages,
 			onPrimary,

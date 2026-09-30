@@ -826,9 +826,10 @@
 					"class": "GrowthExperiments\\PersonalDashboard\\Mentorship",
 					"services": [
 						"GrowthExperimentsMentorManager",
-						"UserEditTracker",
+						"UserRegistrationLookup",
 						"UserFactory",
-						"GenderCache"
+						"GenderCache",
+						"UserOptionsLookup"
 					]
 				},
 				"ext.growthExperiments.impact": {
@@ -1089,7 +1090,10 @@
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"codexStyleOnly": true,
 			"codexComponents": [
-				"CdxButton"
+				"CdxButton",
+				"CdxCard",
+				"CdxMessage",
+				"CdxThumbnail"
 			],
 			"styles": [
 				"index.less"
@@ -1107,10 +1111,10 @@
 			],
 			"packageFiles": [
 				"init.js",
+				"App.vue",
 				"QuestionDialog.vue",
-				"MentorshipStatusDialog.vue",
-				"AboutMentorshipDialog.vue",
-				"state.js"
+				"MentorshipStatus.vue",
+				"apiErrorText.js"
 			],
 			"dependencies": [
 				"vue",
@@ -1118,26 +1122,26 @@
 			],
 			"messages": [
 				"growthexperiments-help-panel-question-placeholder",
+				"growthexperiments-help-panel-questionreview-label",
 				"growthexperiments-help-panel-submit-question-button-text",
 				"growthexperiments-home-mentorship-question-error",
+				"growthexperiments-homepage-mentorship-question-empty",
 				"growthexperiments-homepage-mentorship-confirm-dialog-cancel",
 				"growthexperiments-homepage-mentorship-confirm-dialog-continue",
 				"growthexperiments-homepage-mentorship-confirm-dialog-header",
 				"growthexperiments-homepage-mentorship-confirm-dialog-text",
+				"growthexperiments-homepage-mentorship-optin-button",
 				"growthexperiments-homepage-mentorship-optout-cancel",
 				"growthexperiments-homepage-mentorship-optout-confirmation-done",
 				"growthexperiments-homepage-mentorship-optout-header",
 				"growthexperiments-homepage-mentorship-optout-optout",
 				"growthexperiments-homepage-mentorship-optout-text",
+				"growthexperiments-homepage-mentorship-menu-button-label",
 				"growthexperiments-homepage-mentorship-ellipsis-menu-about",
 				"growthexperiments-homepage-mentorship-ellipsis-menu-optout",
 				"growthexperiments-homepage-mentorship-about-header",
-				"growthexperiments-homepage-mentorship-about-subheader-mentor",
 				"growthexperiments-homepage-mentorship-about-mentor-par1",
-				"growthexperiments-homepage-mentorship-about-mentor-par2",
-				"growthexperiments-homepage-mentorship-about-subheader-optout",
-				"growthexperiments-homepage-mentorship-about-optout-par1",
-				"growthexperiments-homepage-mentorship-about-done"
+				"growthexperiments-homepage-mentorship-about-mentor-par2"
 			]
 		},
 		"ext.growthExperiments.mobileMenu.icons": {

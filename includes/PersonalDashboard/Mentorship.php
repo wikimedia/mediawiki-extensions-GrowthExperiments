@@ -7,30 +7,40 @@ namespace GrowthExperiments\PersonalDashboard;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\HomepageModules\Mentorship as HomepageMentorship;
 use GrowthExperiments\HomepageModules\RecentQuestionsFormatter;
+use GrowthExperiments\Mentorship\Hooks\MentorUserOptionsHooks;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use MediaWiki\Cache\GenderCache;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\EditPage\EditPage;
 use MediaWiki\Extension\PersonalDashboard\Modules\BaseModule;
 use MediaWiki\Html\Html;
 use MediaWiki\Title\Title;
-use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\Utils\MWTimestamp;
+use Wikimedia\Codex\Component\HtmlSnippet;
+use Wikimedia\Codex\Localization\MediaWikiLocalization;
+use Wikimedia\Codex\Utility\Codex;
 
 /**
  * A lightweight Codex reimagining of the Newcomer Homepage mentorship module for
  * the Personal Dashboard. It reuses GrowthExperiments' mentor data services but
  * renders its own card rather than wrapping the live OOUI module.
  *
- * Rendered server-side: the card body (mentor identity, activity, intro) is plain
- * HTML a no-JS visitor gets whole. The one interactive element, the "ask a
- * question" call to action, is a real link to the mentor's talk page new-section
- * editor; the poster behavior module upgrades that click into a Codex dialog.
+ * Rendered server-side: the card body (mentor identity, tenure, intro) is plain
+ * HTML a no-JS visitor gets whole. The "ask a question" call to action is a real
+ * link to the mentor's talk page new-section editor; the behavior module upgrades
+ * that click into a Codex dialog. The header menu (opt out or in, about mentors)
+ * holds client state, so only the behavior module renders it.
  *
  * The mentor shown is the effective mentor, which already routes around an away
  * primary to the backup, so this is the mentor who will actually answer, both in
- * the card and as the question's destination.
+ * the card and as the question's destination. A notice tells the mentee when
+ * this is not their usual mentor.
  */
 class Mentorship extends BaseModule {
 
@@ -45,9 +55,10 @@ class Mentorship extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		private readonly IMentorManager $mentorManager,
-		private readonly UserEditTracker $userEditTracker,
+		private readonly UserRegistrationLookup $userRegistrationLookup,
 		private readonly UserFactory $userFactory,
-		private readonly GenderCache $genderCache
+		private readonly GenderCache $genderCache,
+		private readonly UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( $context );
 	}
@@ -105,6 +116,15 @@ class Mentorship extends BaseModule {
 		return true;
 	}
 
+	/**
+	 * Both card states get the menu. The behavior module teleports it into the
+	 * slot, because the island loader skips server-rendered modules.
+	 * @return bool
+	 */
+	protected function hasHeaderMenu(): bool {
+		return true;
+	}
+
 	/** @inheritDoc */
 	protected function getModuleStyles(): array {
 		return [ 'ext.growthExperiments.PersonalDashboard.Mentorship.styles' ];
@@ -129,29 +149,45 @@ class Mentorship extends BaseModule {
 	 * @inheritDoc
 	 */
 	public function getJsConfigVars(): array {
+		// The special page calls this for every supported module, also one that
+		// does not render. Skip the message parsing and gender lookup then.
+		if ( !$this->canRender() ) {
+			return [];
+		}
+		$vars = [
+			'wgGrowthExperimentsMentorship' => [
+				'headerSlot' => 'pd-header-slot-' . $this->getName(),
+				'optedOut' => $this->getMentorshipState() === IMentorManager::MENTORSHIP_OPTED_OUT,
+				'preintroDismissedPref' => MentorUserOptionsHooks::PREINTRO_DISMISSED_PREF,
+			],
+		];
 		$mentor = $this->getMentor();
 		if ( !$mentor ) {
-			return [];
+			return $vars;
 		}
 		$mentorName = $mentor->getUserIdentity()->getName();
 		$userName = $this->getUser()->getName();
 		// The public-posting notice embeds a link to the mentor's talk page. It is
 		// the same message the Homepage module's dialog shows; the link is a raw
 		// HTML param because rawParams() is substituted after parse() runs.
-		$talkLink = Html::element(
+		$talkLinkHtml = Html::element(
 			'a',
 			[ 'href' => $this->getMentorTalkPage()->getLinkURL() ],
 			$this->msg( self::MSG_PREFIX . 'questionreview-header-mentor-talk-link-text' )
 				->params( $mentorName, $userName )->text()
 		);
-		return [
+		return $vars + [
 			'wgGrowthExperimentsMentorshipPoster' => [
 				'dialogTitle' => $this->msg( self::MSG_PREFIX . 'dialog-title' )
 					->params( $mentorName, $userName )->text(),
 				'notice' => $this->msg( self::MSG_PREFIX . 'questionreview-header' )
 					->params( $mentorName, $userName )
-					->rawParams( $talkLink )
+					->rawParams( $talkLinkHtml )
 					->parse(),
+				// The question is saved on the mentor's talk page, so use its warning.
+				'copyrightWarning' => EditPage::getCopyrightWarning(
+					$this->getMentorTalkPage(), 'parse', $this
+				),
 				'confirmation' => $this->msg( self::MSG_PREFIX . 'confirmation-text' )
 					->params( $mentorName, $userName )->text(),
 				'viewText' => $this->msg( self::MSG_PREFIX . 'view-question-text' )
@@ -186,30 +222,102 @@ class Mentorship extends BaseModule {
 	}
 
 	/** @inheritDoc */
-	protected function getSubheaderText(): string {
-		if ( $this->getMentorshipState() === IMentorManager::MENTORSHIP_OPTED_OUT ) {
-			return '';
-		}
-		$mentor = $this->getMentor();
-		if ( !$mentor ) {
-			return '';
-		}
-		return $this->msg( self::MSG_PREFIX . 'preintro' )
-			->params( $mentor->getUserIdentity()->getName() )
-			->text();
-	}
-
-	/** @inheritDoc */
 	protected function getBody(): string {
 		if ( $this->getMentorshipState() === IMentorManager::MENTORSHIP_OPTED_OUT ) {
-			return $this->getOptInCard();
+			return $this->getOptInCardHtml();
 		}
 		return implode( "\n", [
-			$this->getMentorInfo(),
-			$this->getIntro(),
-			$this->getQuestionButton(),
-			$this->getRecentQuestions(),
+			$this->getAwayNoticeHtml() ?? $this->getPreintroHtml(),
+			$this->getMentorCardHtml(),
+			$this->getQuestionButtonHtml(),
+			$this->getRecentQuestionsHtml(),
 		] );
+	}
+
+	/**
+	 * Why the mentee has a mentor, as a notice above the mentor card. It replaces
+	 * the subheader, because design shows it as a message and not as header text.
+	 * Once dismissed, it does not show again.
+	 * @return string
+	 */
+	private function getPreintroHtml(): string {
+		if ( $this->userOptionsLookup->getBoolOption(
+			$this->getUser(), MentorUserOptionsHooks::PREINTRO_DISMISSED_PREF
+		) ) {
+			return '';
+		}
+		return $this->getMessageHtml(
+			'personal-dashboard-mentorship__preintro',
+			$this->msg( self::MSG_PREFIX . 'preintro' )
+				->params( $this->getMentorName() )
+				->escaped()
+		);
+	}
+
+	/**
+	 * When the usual mentor is away, the shown mentor is the backup. Tell the
+	 * mentee, with links to both. Not affected by the intro dismissal, because the
+	 * mentee must know this each time.
+	 * @return string|null Null when the usual mentor is the shown mentor.
+	 */
+	private function getAwayNoticeHtml(): ?string {
+		$primary = $this->mentorManager->getMentorForUserIfExists( $this->getUser() );
+		if ( !$primary || $primary->getUserIdentity()->equals( $this->getMentor()->getUserIdentity() ) ) {
+			return null;
+		}
+		$primaryUser = $primary->getUserIdentity();
+		return $this->getMessageHtml(
+			'personal-dashboard-mentorship__away',
+			$this->msg( self::MSG_PREFIX . 'away-notice' )
+				->rawParams(
+					$this->getUserPageLinkHtml( $this->getMentor()->getUserIdentity() ),
+					$this->getUserPageLinkHtml( $primaryUser )
+				)
+				->params( $primaryUser->getName() )
+				->escaped()
+		);
+	}
+
+	/**
+	 * A plain link: a mentor with no user page must not get a red link to the
+	 * edit form.
+	 * @param UserIdentity $user
+	 * @return string
+	 */
+	private function getUserPageLinkHtml( UserIdentity $user ): string {
+		return Html::rawElement(
+			'a',
+			[ 'href' => $this->userFactory->newFromUserIdentity( $user )->getUserPage()->getLinkURL() ],
+			Html::element( 'bdi', [], $user->getName() )
+		);
+	}
+
+	/**
+	 * A dismissable Codex notice message. The behavior module does the dismissal,
+	 * so the button is hidden without JS.
+	 * @param string $class
+	 * @param string $html The message content, already escaped.
+	 * @return string
+	 */
+	private function getMessageHtml( string $class, string $html ): string {
+		$codex = $this->getCodex();
+		// Codex PHP has no dismiss button, so it goes in the content. The Codex
+		// styles position it against the message, so it looks the same.
+		$dismissHtml = $codex->button()
+			->setIconOnly( true )
+			->setWeight( 'quiet' )
+			->setIconClass( 'personal-dashboard-mentorship__message-dismiss-icon' )
+			->setAttributes( [
+				'class' => 'cdx-message__dismiss-button personal-dashboard-mentorship__message-dismiss',
+				'aria-label' => $this->msg( 'cdx-message-dismiss-button-label' )->text(),
+			] )
+			->getHtml();
+		return $codex->message()
+			->setContent( new HtmlSnippet( $html . $dismissHtml ) )
+			->setAttributes( [
+				'class' => "cdx-message--user-dismissable personal-dashboard-mentorship__message $class",
+			] )
+			->getHtml();
 	}
 
 	/**
@@ -218,7 +326,7 @@ class Mentorship extends BaseModule {
 	 * writes to this same store, so a question asked here shows up on re-render.
 	 * @return string
 	 */
-	private function getRecentQuestions(): string {
+	private function getRecentQuestionsHtml(): string {
 		$questions = QuestionStoreFactory::newFromContextAndStorage(
 			$this->getContext(),
 			HomepageMentorship::QUESTION_PREF
@@ -230,140 +338,75 @@ class Mentorship extends BaseModule {
 		) )->format();
 	}
 
-	/** @inheritDoc */
-	protected function getFooter(): string {
-		if ( $this->getMentorshipState() === IMentorManager::MENTORSHIP_OPTED_OUT ) {
-			return '';
-		}
-		return $this->getConversationsLink() . "\n" . $this->getAboutLink() . "\n" . $this->getOptOutLink();
-	}
-
-	/**
-	 * A link to the mentor's talk page, where their other conversations live.
-	 * @return string
-	 */
-	private function getConversationsLink(): string {
-		return Html::element(
-			'a',
-			[
-				'class' => 'personal-dashboard-mentorship__conversations',
-				'href' => $this->getMentorTalkPage()->getLinkURL(),
-			],
-			$this->msg( self::MSG_PREFIX . 'mentor-conversations' )
-				->params( $this->getMentorName(), $this->getUser()->getName() )
-				->text()
-		);
-	}
-
-	/**
-	 * A quiet control that opens the existing "about mentorship" info dialog,
-	 * ported from the Homepage module's ellipsis menu. It is hidden without JS,
-	 * since there is no plain-HTML rendering of the dialog content.
-	 * @return string
-	 */
-	private function getAboutLink(): string {
-		return Html::element(
-			'button',
-			[
-				'type' => 'button',
-				'class' => [
-					'cdx-button',
-					'cdx-button--weight-quiet',
-					'personal-dashboard-mentorship__about',
-				],
-			],
-			$this->msg( self::MSG_PREFIX . 'ellipsis-menu-about' )->text()
-		);
-	}
-
-	/**
-	 * A quiet control to opt out of mentorship. The behavior module upgrades the
-	 * click into a Codex confirm dialog; it is hidden without JS, since there is
-	 * no plain-HTML opt-out path.
-	 * @return string
-	 */
-	private function getOptOutLink(): string {
-		return Html::element(
-			'button',
-			[
-				'type' => 'button',
-				'class' => [
-					'cdx-button',
-					'cdx-button--weight-quiet',
-					'personal-dashboard-mentorship__optout',
-				],
-			],
-			$this->msg( self::MSG_PREFIX . 'ellipsis-menu-optout' )->text()
-		);
-	}
-
 	/**
 	 * The opt-in card an opted-out user sees in place of the mentor card: what a
-	 * mentor is for, and a button to get one. The button is hidden without JS,
-	 * like the opt-out control, since opting in also goes through the API.
+	 * mentor is for, and a button to get one. The card is hidden without JS,
+	 * because opting in goes through the API.
 	 * @return string
 	 */
-	private function getOptInCard(): string {
-		$text = Html::element(
+	private function getOptInCardHtml(): string {
+		$textHtml = Html::element(
 			'p',
-			[ 'class' => 'personal-dashboard-mentorship__intro' ],
+			[ 'class' => 'personal-dashboard-mentorship__optin-text' ],
 			$this->msg( self::MSG_PREFIX . 'optin-text' )->text()
 		);
-		$button = Html::element(
-			'button',
-			[
-				'type' => 'button',
-				'class' => [
-					'cdx-button',
-					'cdx-button--action-progressive',
-					'cdx-button--weight-primary',
-					'personal-dashboard-mentorship__optin',
-				],
-			],
-			$this->msg( self::MSG_PREFIX . 'optin-button' )->text()
-		);
-		return $text . $button;
+		$buttonHtml = $this->getCodex()->button()
+			->setLabel( $this->msg( self::MSG_PREFIX . 'optin-button' )->text() )
+			->setAttributes( [ 'class' => 'personal-dashboard-mentorship__optin' ] )
+			->getHtml();
+		return $textHtml . $buttonHtml;
 	}
 
 	/**
-	 * The mentor's username, their edit count, and when they were last active, so
-	 * the mentee can see they are a real, recently active editor.
+	 * The mentor as a Codex card: an initial avatar, the username linked to their
+	 * user page, their intro, and how long they have edited.
 	 * @return string
 	 */
-	private function getMentorInfo(): string {
+	private function getMentorCardHtml(): string {
+		$codex = $this->getCodex();
 		$mentorUser = $this->getMentor()->getUserIdentity();
+		$mentorName = $mentorUser->getName();
 
-		$name = Html::rawElement(
+		// Only the name is a link, so screen readers read the intro as text. CSS
+		// stretches it over the card, so the whole card is a link, as design asks.
+		$titleHtml = Html::rawElement(
 			'a',
 			[
-				'class' => 'personal-dashboard-mentorship__name',
+				'class' => 'personal-dashboard-mentorship__card-link',
 				'href' => $this->userFactory->newFromUserIdentity( $mentorUser )->getUserPage()->getLinkURL(),
 			],
-			Html::element( 'bdi', [], $mentorUser->getName() )
+			Html::element( 'bdi', [], $mentorName )
 		);
 
-		// getUserEditCount() is null for a user we can't count; skip the count
-		// rather than show a misleading "0 edits" for an active mentor. The name
-		// and meta are flex siblings, so the separator lives only between the two
-		// meta items and never dangles when the name wraps.
-		$meta = [];
-		$editCount = $this->userEditTracker->getUserEditCount( $mentorUser );
-		if ( is_int( $editCount ) ) {
-			$meta[] = $this->msg( self::MSG_PREFIX . 'mentor-edits' )->numParams( $editCount )->text();
-		}
-		$meta[] = HomepageMentorship::getMentorLastActive(
-			$mentorUser, $this->getUser(), $this->getContext(), $this->userEditTracker
-		);
+		// Codex has no avatar component yet, so the thumbnail shows the design's
+		// initial in a circle (with CSS). Decorative: the name follows it.
+		$avatar = $codex->thumbnail()
+			->setAttributes( [
+				'class' => 'personal-dashboard-mentorship__avatar',
+				// Not ?:, which would drop an initial of "0".
+				'data-initial' => (string)grapheme_substr( $mentorName, 0, 1 ),
+				'aria-hidden' => 'true',
+			] );
 
-		return Html::rawElement(
-			'div',
-			[ 'class' => 'personal-dashboard-mentorship__info' ],
-			$name . Html::element(
-				'span',
-				[ 'class' => 'personal-dashboard-mentorship__meta' ],
-				implode( ' • ', $meta )
-			)
-		);
+		// Accounts from before registration was logged have no timestamp; leave
+		// the line out, not guess.
+		$registration = $this->userRegistrationLookup->getRegistration( $mentorUser );
+		$supportingText = $registration ? $this->msg( self::MSG_PREFIX . 'mentor-editing-since' )
+			->params( $this->getContext()->getLanguage()->formatNumNoSeparators(
+				MWTimestamp::getInstance( $registration )->format( 'Y' )
+			) )
+			->params( $mentorName )
+			->text() : '';
+
+		// Not setTitle(): it calls trim() on an HtmlSnippet, which is a TypeError.
+		return $codex->card(
+			title: new HtmlSnippet( $titleHtml ),
+			description: new HtmlSnippet( $this->getIntroHtml() ),
+			supportingText: $supportingText,
+			thumbnail: $avatar,
+			// For the Codex link card hover style.
+			attributes: [ 'class' => 'cdx-card--is-link personal-dashboard-mentorship__card' ]
+		)->getHtml();
 	}
 
 	/**
@@ -371,7 +414,7 @@ class Mentorship extends BaseModule {
 	 * blurb about what a mentor is for.
 	 * @return string
 	 */
-	private function getIntro(): string {
+	private function getIntroHtml(): string {
 		$mentor = $this->getMentor();
 		if ( $mentor->hasCustomIntroText() ) {
 			// The mentor's own words, so render them as a quote; the mentor name
@@ -381,17 +424,19 @@ class Mentorship extends BaseModule {
 				$mentor->getIntroText(),
 				MentorProvider::INTRO_TEXT_LENGTH
 			);
+			// A <blockquote> in the description <span> is not valid HTML, but
+			// browsers keep it there, and design wants the skin's quote style.
+			// dir=auto so a content-language intro (which may be RTL) lays out
+			// by its own direction inside an interface of any direction.
 			return Html::element(
 				'blockquote',
-				// dir=auto so a content-language intro (which may be RTL) lays out
-				// by its own direction inside an interface of any direction.
 				[ 'class' => 'personal-dashboard-mentorship__quote', 'dir' => 'auto' ],
 				$introText
 			);
 		}
 		// A generic description of what a mentor is for, not the mentor's words.
 		return Html::element(
-			'p',
+			'span',
 			[ 'class' => 'personal-dashboard-mentorship__intro' ],
 			$this->msg( self::MSG_PREFIX . 'intro' )
 				->params( $this->getMentorName(), $this->getUser()->getName() )
@@ -406,27 +451,25 @@ class Mentorship extends BaseModule {
 	 * dialog instead.
 	 * @return string
 	 */
-	private function getQuestionButton(): string {
+	private function getQuestionButtonHtml(): string {
 		$href = $this->getMentorTalkPage()->getLocalURL( [
 			'action' => 'edit',
 			'section' => 'new',
 			'preloadtitle' => $this->getQuestionSubject(),
 		] );
-		return Html::element(
-			'a',
-			[
-				'class' => [
-					'cdx-button',
-					'cdx-button--action-progressive',
-					'cdx-button--weight-primary',
-					'personal-dashboard-mentorship__ask',
-				],
-				'href' => $href,
-			],
-			$this->msg( self::MSG_PREFIX . 'question-button' )
-				->params( $this->getMentorName(), $this->getUser()->getName() )
-				->text()
-		);
+		return $this->getCodex()->button()
+			->setLabel(
+				$this->msg( self::MSG_PREFIX . 'question-button' )
+					->params( $this->getMentorName(), $this->getUser()->getName() )
+					->text()
+			)
+			->setHref( $href )
+			->setAttributes( [ 'class' => 'personal-dashboard-mentorship__ask' ] )
+			->getHtml();
+	}
+
+	private function getCodex(): Codex {
+		return new Codex( new MediaWikiLocalization( $this->getContext() ) );
 	}
 
 	/**
