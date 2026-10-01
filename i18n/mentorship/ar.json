@@ -15,7 +15,7 @@
 			"محمد أحمد عبد الفتاح"
 		]
 	},
-	"growthexperiments-exception-not-mentored": "لا يتلقى المستخدم أي توجيه.",
+	"growthexperiments-exception-not-mentored": "لا يتلقى المستخدم أي إرشاد.",
 	"growthexperiments-exception-no-mentored-text": "ليس لدى المستخدم مرشد، مما يعني أن {{GENDER:$1|هو|هي|هم}} لا يستطيع طرح سؤال على مرشده {{GENDER:$1|مرشده|مرشدتها|مرشدهم}}",
 	"growthexperiments-mentor-dashboard-title": "لوحة المرشدين",
 	"growthexperiments-mentor-dashboard-pt-link": "لوحة المرشدين",

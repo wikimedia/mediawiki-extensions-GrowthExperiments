@@ -8,6 +8,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Tere}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Uue kasutaja koduleht",
 	"growthexperiments-homepage-tab": "Koduleht",
 	"tooltip-pt-homepage": "{{GENDER:|Sinu}} koduleht",
 	"prefs-homepage": "Uue kasutaja funktsioonid",
@@ -57,8 +58,8 @@
 	"growthexperiments-homepage-impact-edited-articles-trend-chart-count-label-third-person": "vaatamist muudetud artiklites",
 	"growthexperiments-homepage-impact-scores-edit-count": "Kokku muudatusi",
 	"growthexperiments-homepage-impact-scores-thanks-count": "Vastu võetud tänuavaldusi",
-	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{GRAMMAR:genitive|{{SITENAME}}}} autorid on sinusugused kaastöölised. Teised saavad {{GENDER:|sind}} tehtud muudatuse eest tänada ning saad omakorda teisi nende tehtud muudatuste eest tänada. See arv sisaldab vaid sinu viimase $2 muudatuse kohta saadetud tänuavaldusi.",
-	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{GRAMMAR:partitive|{{SITENAME}}}} koostab kaastööliste kogukond. Iga kaastööline saab teist tänada. Siin näidatakse, mitu korda on kasutajale tänu avaldatud. See arv sisaldab vaid viimase $1 muudatuse kohta saadetud tänuavaldusi.",
+	"growthexperiments-homepage-impact-scores-thanks-info-text": "{{GRAMMAR:genitive|{{SITENAME}}}} autorid on sinusugused kaastöölised. Teine kaastööline saab {{GENDER:|sind}} tehtud muudatuse eest tänada ning saad omakorda teisi nende tehtud muudatuste eest tänada. See näitaja kuvatab maksimaalselt $2 tänuavaldust, tegelik arv võib olla suurem.",
+	"growthexperiments-homepage-impact-scores-thanks-info-text-third-person": "{{GRAMMAR:partitive|{{SITENAME}}}} koostab kaastööliste kogukond. Iga kaastööline saab teist tänada. Siin näidatakse, mitu korda on kasutajale tänu avaldatud. See näitaja kuvatab kõige rohkem $1 tänuavaldust, tegelik arv võib olla suurem.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text": "See on suurim arv järjestikuseid päevi, mil {{GENDER:|oled}} teinud vähemalt ühe muudatuse. See arv põhineb vaid sinu viimase $2 muudatusega seotud tegutsemisperioodidel.",
 	"growthexperiments-homepage-impact-scores-best-streak-info-text-third-person": "See on suurim arv järjestikuseid päevi, mil tehti vähemalt üks muudatus. See arv põhineb vaid viimase $1 muudatusega seotud tegutsemisperioodidel.",
 	"growthexperiments-homepage-impact-subheader-text": "Enim vaadatud (pärast {{GENDER:|sinu}} muudatust)",
