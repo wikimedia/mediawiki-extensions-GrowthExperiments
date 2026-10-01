@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": []
 	},
+	"growthexperiments-home-specialpage-title": "{{GENDER:$1|Hello}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hello}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-list": "Newcomer homepage",
+	"growthexperiments-home-tab": "Home",
 	"growthexperiments-homepage-tab": "Homepage",
 	"tooltip-pt-homepage": "{{GENDER:|Your}} homepage",
 	"prefs-homepage": "Newcomer editor features",
@@ -167,6 +169,7 @@
 	"growthexperiments-homepage-claimmentee-no-user": "Mentee doesn't exist",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|You}} already mentor {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} opted out of mentorship",
+	"growthexperiments-home-enable-preference": "To enable Home, visit your \"Newcomer editor features\" settings in [[Special:Preferences#mw-prefsection-personal-homepage|Preferences]].",
 	"growthexperiments-homepage-enable-preference": "To enable the newcomer homepage, visit your \"Newcomer editor features\" settings in [[Special:Preferences#mw-prefsection-personal-homepage|Preferences]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|You}} have not yet made any contributions.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Visit {{GENDER:$1|your}} homepage to get started with editing!",

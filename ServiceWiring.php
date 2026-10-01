@@ -266,6 +266,7 @@ return [
 			$services->getExtensionRegistry(),
 			$growthServices->getGrowthConfig(),
 			$services->getUserRegistrationLookup(),
+			$services->getUserOptionsLookup(),
 			$growthServices->getLogger(),
 			$tkExperimentManager,
 			$tkExperimentCoordinator,

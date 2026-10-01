@@ -15,6 +15,7 @@ $specialPageAliases = [];
 /** English (English) */
 $specialPageAliases['en'] = [
 	'WelcomeSurvey' => [ 'WelcomeSurvey' ],
+	'Home' => [ 'Home' ],
 	'Homepage' => [ 'Homepage' ],
 	'Impact' => [ 'Impact' ],
 	'ClaimMentee' => [ 'ClaimMentee' ],

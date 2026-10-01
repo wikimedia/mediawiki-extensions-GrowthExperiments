@@ -28,8 +28,10 @@
 			"Zoranzoki21"
 		]
 	},
+	"growthexperiments-home-specialpage-title": "Title of [[Special:Home]], which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage, which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-specialpage-list": "Description label for Special:Homepage, which is displayed at Special:SpecialPages",
+	"growthexperiments-home-tab": "Label for [[Special:Home]]. Used as the name of the page in [[Special:SpecialPages]], and as the title of the error page shown to a user who visits the page without the newcomer editor features preference enabled.\n{{Identical|Home}}",
 	"growthexperiments-homepage-tab": "Label of the homepage tab.\n{{Identical|Homepage}}\n\n{{doc-growthexperiments-homepage}}",
 	"tooltip-pt-homepage": "Tooltip shown when hovering the mouse over the link to your own Homepage in the upper-side personal toolbox.\n\n{{doc-growthexperiments-homepage}}",
 	"prefs-homepage": "Text of the section header for the \"Newcomer homepage\" section in Special:Preferences.\n\n{{doc-growthexperiments-homepage}}",
@@ -193,6 +195,7 @@
 	"growthexperiments-homepage-claimmentee-no-user": "Error message to show if a non-existent user was used in Special:ClaimMentee\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Error message to show if claiming user and current mentor is the same in Special:ClaimMentee\n\nParameters:\n* $1 - mentee's username\n* $2 - mentor's raw username, for use in GENDER\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "Error message to show in Special:ClaimMentee if the claimed user has opted out of mentorship\n\nParameters:\n* $1 - mentee's username\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-home-enable-preference": "Text with link to [Special:Preferences#mw-prefsection-personal-homepage] to show if a user visits [Special:Home] but has not set the preference to enable the newcomer editor features\n\nRelated: {{msg-mw|growthexperiments-homepage-enable-preference}}, {{msg-mw|prefs-homepage}} and {{msg-mw|growthexperiments-homepage-enable}}",
 	"growthexperiments-homepage-enable-preference": "Text with link to [Special:Preferences#mw-prefsection-personal-homepage] to show if users visits [Special:Homepage] but has not set the preference to enable the homepage\n\nRelated: {{msg-mw|prefs-homepage}} and {{msg-mw|growthexperiments-homepage-enable}}\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-contributions-zero-title": "Title text (bolded) shown on Special:Contributions if the user has no edits. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Subtitle text shown on Special:Contributions if the user has no edits, directing them to Special:Homepage. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",

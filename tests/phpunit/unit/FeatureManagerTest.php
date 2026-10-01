@@ -5,12 +5,14 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\IExperimentManager;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentCoordinatorInterface;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentInterface;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -144,6 +146,50 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			'config' => [ 'GEHomeEnabled' => $configValue ],
 		] );
 		$this->assertSame( $expected, $featureManager->isGEHomeEnabled() );
+	}
+
+	public static function provideIsHomeAvailable(): iterable {
+		yield 'flag on, PersonalDashboard loaded' => [ true, true, true ];
+		yield 'flag on, PersonalDashboard not loaded' => [ true, false, false ];
+		yield 'flag off, PersonalDashboard loaded' => [ false, true, false ];
+		yield 'flag off, PersonalDashboard not loaded' => [ false, false, false ];
+	}
+
+	/**
+	 * @dataProvider provideIsHomeAvailable
+	 */
+	public function testIsHomeAvailable(
+		bool $homeEnabled, bool $dashboardLoaded, bool $expected
+	): void {
+		$featureManager = $this->getFeatureManager( [
+			'registeredExtensions' => $dashboardLoaded ? [ 'PersonalDashboard' ] : [],
+			'config' => [ 'GEHomeEnabled' => $homeEnabled ],
+		] );
+		$this->assertSame( $expected, $featureManager->isHomeAvailable() );
+	}
+
+	public static function provideIsHomeEnabledForUser(): iterable {
+		yield 'available, preference on' => [ true, true, true, true ];
+		yield 'available, preference off' => [ true, true, false, false ];
+		yield 'flag off, preference on' => [ false, true, true, false ];
+		yield 'PersonalDashboard not loaded, preference on' => [ true, false, true, false ];
+	}
+
+	/**
+	 * @dataProvider provideIsHomeEnabledForUser
+	 */
+	public function testIsHomeEnabledForUser(
+		bool $homeEnabled, bool $dashboardLoaded, bool $preferenceEnabled, bool $expected
+	): void {
+		$featureManager = $this->getFeatureManager( [
+			'registeredExtensions' => $dashboardLoaded ? [ 'PersonalDashboard' ] : [],
+			'config' => [ 'GEHomeEnabled' => $homeEnabled ],
+			'userOptions' => [ HomepageHooks::HOMEPAGE_PREF_ENABLE => $preferenceEnabled ],
+		] );
+		$this->assertSame(
+			$expected,
+			$featureManager->isHomeEnabledForUser( new UserIdentityValue( 1, 'Alice' ) )
+		);
 	}
 
 	public static function provideAreLinkRecommendationsEnabled(): iterable {
@@ -378,10 +424,18 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		], $overrides['config'] ?? [] ) );
 		$userRegistrationLookupMock = $overrides['userRegistrationLookup']
 			?? $this->createMock( UserRegistrationLookup::class );
+		$userOptions = $overrides['userOptions'] ?? [];
+		$userOptionsLookupMock = $this->createMock( UserOptionsLookup::class );
+		$userOptionsLookupMock
+			->method( 'getBoolOption' )
+			->willReturnCallback( static function ( $user, string $option ) use ( $userOptions ): bool {
+				return (bool)( $userOptions[$option] ?? false );
+			} );
 		return new FeatureManager(
 			$extensionRegistryMock,
 			$config,
 			$userRegistrationLookupMock,
+			$userOptionsLookupMock,
 			$overrides['logger'] ?? $this->createNoOpMock( LoggerInterface::class ),
 			$overrides['experimentManager'] ?? null,
 			$overrides['experimentCoordinator'] ?? null,

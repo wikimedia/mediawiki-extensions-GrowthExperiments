@@ -21,6 +21,11 @@
 			"VisualEditor": "*"
 		}
 	},
+	"suggests": {
+		"extensions": {
+			"PersonalDashboard": "*"
+		}
+	},
 	"AutoloadNamespaces": {
 		"GrowthExperiments\\": "includes/"
 	},

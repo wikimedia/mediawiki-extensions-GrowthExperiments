@@ -6,6 +6,7 @@ use MediaWiki\Config\Config;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentCoordinatorInterface;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
@@ -17,6 +18,7 @@ class FeatureManager {
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly Config $growthConfig,
 		private readonly UserRegistrationLookup $userRegistrationLookup,
+		private readonly UserOptionsLookup $userOptionsLookup,
 		private readonly LoggerInterface $logger,
 		private readonly ?ExperimentManagerInterface $experimentManager = null,
 		private readonly ?ExperimentCoordinatorInterface $experimentCoordinator = null,
@@ -25,6 +27,36 @@ class FeatureManager {
 
 	public function isGEHomeEnabled(): bool {
 		return $this->growthConfig->get( 'GEHomeEnabled' );
+	}
+
+	/**
+	 * Does this wiki have Home?
+	 *
+	 * The wiki level flag must be on, and PersonalDashboard must be loaded.
+	 * PersonalDashboard serves Special:Home and is an optional dependency.
+	 */
+	public function isHomeAvailable(): bool {
+		return $this->isGEHomeEnabled()
+			&& $this->extensionRegistry->isLoaded( 'PersonalDashboard' );
+	}
+
+	/**
+	 * Can this user use Home?
+	 *
+	 * The wiki must have the feature, and the user must have the newcomer
+	 * homepage enabled. The pilot cohort comes from the users that have the
+	 * homepage, so Home uses the same preference. Revisit this after the pilot.
+	 *
+	 * The wiki level state is also tested here. Entry points other than
+	 * Special:Home ask this question, and they must stay off on a wiki that
+	 * does not have the feature.
+	 */
+	public function isHomeEnabledForUser( UserIdentity $user ): bool {
+		return $this->isHomeAvailable()
+			&& $this->userOptionsLookup->getBoolOption(
+				$user,
+				HomepageHooks::HOMEPAGE_PREF_ENABLE
+			);
 	}
 
 	public function areLinkRecommendationsEnabled(): bool {

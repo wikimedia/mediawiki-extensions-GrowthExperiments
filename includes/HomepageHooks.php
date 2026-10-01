@@ -35,6 +35,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\Specials\SpecialClaimMentee;
+use GrowthExperiments\Specials\SpecialHome;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use GrowthExperiments\Specials\SpecialNewcomerTasksInfo;
@@ -165,12 +166,24 @@ class HomepageHooks implements
 	}
 
 	/**
-	 * Register Homepage, Impact, ClaimMentee and NewcomerTasksInfo special pages.
+	 * Register Home, Homepage, Impact, ClaimMentee and NewcomerTasksInfo special pages.
 	 *
 	 * @param array &$list
 	 * @throws ConfigException
 	 */
 	public function onSpecialPage_initList( &$list ) {
+		// The per-user gate stays in SpecialHome, because its error page tells the
+		// user to change a preference, which only helps on a wiki that has the feature.
+		if ( $this->featureManager->isHomeAvailable() ) {
+			$list['Home'] = [
+				'class' => SpecialHome::class,
+				'services' => [
+					'PersonalDashboardPageDependencies',
+					'GrowthExperimentsFeatureManager',
+				],
+			];
+		}
+
 		if ( self::isHomepageEnabled() ) {
 			$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 			$list['Homepage'] = [
