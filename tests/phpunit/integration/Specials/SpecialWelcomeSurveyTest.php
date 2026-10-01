@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use GrowthExperiments\WelcomeSurvey;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentInterface;
@@ -130,6 +131,71 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 		$experimentManager = $this->createMock( ExperimentManager::class );
 		$experimentManager->method( 'getExperiment' )->willReturn( $experiment );
 		return $experimentManager;
+	}
+
+	public static function provideExperimentEvents(): iterable {
+		yield 'saved reader answer' => [
+			[ 'save' => '1', 'reason' => 'read', 'wpedited' => 'yes-few' ],
+			[
+				[ 'welcome_survey_account_setup_submitted_complete', [] ],
+				[ 'welcome_survey_account_setup_motivation_saved', [
+					'action_context' => 'reading',
+					'action_subtype' => 'read',
+				] ],
+			],
+		];
+		yield 'saved editor answer' => [
+			[ 'save' => '1', 'reason' => 'add-image', 'wpedited' => 'placeholder' ],
+			[
+				[ 'welcome_survey_account_setup_motivation_saved', [
+					'action_context' => 'editing',
+					'action_subtype' => 'add-image',
+				] ],
+			],
+		];
+		yield 'saved without reason' => [
+			[ 'save' => '1', 'reason' => 'placeholder', 'wpedited' => 'yes-few' ],
+			[
+				[ 'welcome_survey_account_setup_motivation_saved', [ 'action_context' => 'skipped' ] ],
+			],
+		];
+		yield 'skipped with reason selected' => [
+			[ 'skip' => 'skip', 'reason' => 'read', 'wpedited' => 'yes-few' ],
+			[
+				[ 'welcome_survey_account_setup_motivation_saved', [ 'action_context' => 'skipped' ] ],
+			],
+		];
+	}
+
+	/**
+	 * @covers ::onSubmit
+	 * @dataProvider provideExperimentEvents
+	 */
+	public function testSendsExperimentEvents( array $params, array $expectedEvents ): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
+		$user = $this->getMutableTestUser()->getUser();
+		$this->getServiceContainer()->getUserOptionsManager()->setOption(
+			$user,
+			WelcomeSurvey::SURVEY_PROP,
+			FormatJson::encode( [ '_group' => 'control', '_render_date' => '20200505120000' ] )
+		);
+
+		$sentEvents = [];
+		$experiment = $this->createMock( ExperimentInterface::class );
+		$experiment->method( 'send' )->willReturnCallback(
+			static function ( string $action, ?array $interactionData = [] ) use ( &$sentEvents ) {
+				$sentEvents[] = [ $action, $interactionData ];
+			}
+		);
+		$this->experimentManager = $this->createMock( ExperimentManager::class );
+		$this->experimentManager->method( 'getExperiment' )
+			->with( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST )
+			->willReturn( $experiment );
+
+		$request = new FauxRequest( $params + [ '_group' => 'control', 'wplanguages' => [ 'en' ] ], true );
+		$this->executeSpecialPage( '', $request, 'en', $user );
+
+		$this->assertSame( $expectedEvents, $sentEvents );
 	}
 
 }

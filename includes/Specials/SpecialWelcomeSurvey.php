@@ -30,6 +30,20 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	public const string ACTION_SUBMIT_SUCCESS = 'submit_success';
 	public const string ACTION_SHOW_CONFIRMATION_PAGE = 'show_confirmation_page';
 
+	/**
+	 * Maps Welcome Survey `reason` answers onto the motivation values sent by the
+	 * AccountSetup treatment, so both experiment groups can be compared on the same events.
+	 */
+	private const array REASON_TO_MOTIVATION = [
+		'read' => 'reading',
+		'edit-typo' => 'editing',
+		'edit-info-add-change' => 'editing',
+		'add-image' => 'editing',
+		'new-page' => 'editing',
+		'program-participant' => 'editing',
+		'other' => 'other',
+	];
+
 	private string $groupName;
 
 	public function __construct(
@@ -238,8 +252,9 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 
 		$this->welcomeSurveyLogger->logInteraction( self::ACTION_SUBMIT_SUCCESS );
 
+		$this->maybeSendExperimentSurveyEvents( $data, $save );
+
 		if ( $save ) {
-			$this->maybeSendExperimentSurveyCompletedEvent( $data );
 			// show confirmation page
 			$returnToQueryArray = wfCgiToArray( $returnToQuery );
 			$returnToQueryArray['_welcomesurveytoken'] = $token;
@@ -263,10 +278,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		return true;
 	}
 
-	private function maybeSendExperimentSurveyCompletedEvent( array $data ): void {
-		$hasReasonResponse = isset( $data['reason'] ) && $data['reason'] !== 'placeholder';
-		$hasEditingResponse = isset( $data['edited'] ) && $data['edited'] !== 'placeholder';
-
+	private function maybeSendExperimentSurveyEvents( array $data, bool $save ): void {
 		$experiment = $this->experimentManager
 			?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST );
 
@@ -274,18 +286,28 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			return;
 		}
 
-		if ( $hasReasonResponse && $hasEditingResponse ) {
+		$hasReasonResponse = isset( $data['reason'] ) && $data['reason'] !== 'placeholder';
+		$hasEditingResponse = isset( $data['edited'] ) && $data['edited'] !== 'placeholder';
+
+		if ( $save && $hasReasonResponse && $hasEditingResponse ) {
 			$experiment->send( 'welcome_survey_account_setup_submitted_complete' );
 		}
 
-		if ( isset( $data['reason'] ) ) {
-			$experiment->send(
-				'welcome_survey_account_setup_motivation_saved',
-				[
-					'action_context' => $data['reason'] !== 'placeholder' ? $data['reason'] : 'skipped',
-				],
-			);
+		if ( !isset( $data['reason'] ) ) {
+			return;
 		}
+
+		// Skipping discards the answers, so report it like the AccountSetup skip.
+		if ( $save && $hasReasonResponse ) {
+			$interactionData = [
+				'action_context' => self::REASON_TO_MOTIVATION[$data['reason']] ?? 'other',
+				// Keep the more detailed answer, which AccountSetup has no equivalent for.
+				'action_subtype' => $data['reason'],
+			];
+		} else {
+			$interactionData = [ 'action_context' => 'skipped' ];
+		}
+		$experiment->send( 'welcome_survey_account_setup_motivation_saved', $interactionData );
 	}
 
 	private function showConfirmationPage( string $to, string $query ): void {
