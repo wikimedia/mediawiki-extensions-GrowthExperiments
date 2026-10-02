@@ -21,7 +21,8 @@
 			"Sonic N800",
 			"XIDME",
 			"ديفيد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Trizek (WMF)"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
@@ -492,7 +493,7 @@
 	"growthexperiments-addimage-inspector-cta": "إضافة هذه الصورة إلى مطلع المقالة؟",
 	"growthexperiments-addimage-inspector-yes-button": "نعم",
 	"growthexperiments-addimage-inspector-no-button": "لا",
-	"growthexperiments-addimage-inspector-skip-button": "غير {{GENDER:|متيقّن|متيقّنة}}",
+	"growthexperiments-addimage-inspector-skip-button": "لست {{GENDER:|متيقّن|متيقّنة}}",
 	"growthexperiments-addimage-inspector-show-button": "إظهار اقتراح الصّور",
 	"growthexperiments-addimage-inspector-help-button": "{{GENDER:|احصل|احصلي}} على مساعدة في التحرير",
 	"growthexperiments-addimage-inspector-details-button": "إظهار تفاصيل الصورة",
