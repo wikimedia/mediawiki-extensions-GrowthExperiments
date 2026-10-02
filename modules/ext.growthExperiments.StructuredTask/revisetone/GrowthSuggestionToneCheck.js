@@ -31,11 +31,13 @@ GrowthSuggestionToneCheck.prototype.getModifiedContentBranchNodes = function ( d
 		this,
 		documentModel,
 	);
-	return [ ...actuallyModifiedBranchNodes, ...this.constructor.static.overrides.keys() ];
+	// An override node can also be modified. Return it once, or it gets two actions.
+	return Array.from( new Set( [ ...actuallyModifiedBranchNodes, ...this.constructor.static.overrides.keys() ] ) );
 };
 
-GrowthSuggestionToneCheck.prototype.canBeShown = function () {
-	return true;
+GrowthSuggestionToneCheck.prototype.canBeShown = function ( documentModel, suggestion ) {
+	// Suggestions are suppressed while this runs, so don't say this would show
+	return !suggestion;
 };
 
 module.exports = GrowthSuggestionToneCheck;
