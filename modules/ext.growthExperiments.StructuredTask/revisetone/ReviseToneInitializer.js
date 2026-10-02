@@ -47,7 +47,10 @@ class ReviseToneInitializer {
 		);
 
 		mw.hook( 've.newTarget' ).add( ( target ) => {
-			ve.init.target.editcheckController.suppressSuggestionDisplay( true );
+			if ( this.isInitialEditSession ) {
+				target.editcheckController.suppressSuggestionDisplay( true );
+				this.isInitialEditSession = false;
+			}
 			if ( target.surface ) {
 				mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 			} else {
@@ -56,7 +59,7 @@ class ReviseToneInitializer {
 					mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 				} );
 			}
-			target.once( 'teardown', this.restoreDefaultToneCheck );
+			target.once( 'teardown', () => this.restoreDefaultToneCheck( target ) );
 		} );
 	}
 
@@ -71,10 +74,10 @@ class ReviseToneInitializer {
 		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
 			() => {
 				mw.hook( 've.newTarget' ).add( ( target ) => {
-					ve.init.target.editcheckController.suppressSuggestionDisplay( true );
 					if ( !this.isInitialEditSession ) {
 						return;
 					}
+					target.editcheckController.suppressSuggestionDisplay( true );
 					this.isInitialEditSession = false;
 					if ( target.surface ) {
 						this.showToneEditCheck();
@@ -83,15 +86,16 @@ class ReviseToneInitializer {
 							this.showToneEditCheck();
 						} );
 					}
-					target.once( 'teardown', this.restoreDefaultToneCheck );
+					target.once( 'teardown', () => this.restoreDefaultToneCheck( target ) );
 				} );
 			},
 		);
 	}
 
-	restoreDefaultToneCheck() {
+	restoreDefaultToneCheck( target ) {
 		mw.editcheck.editCheckFactory.unregister( GrowthSuggestionToneCheck );
 		mw.editcheck.editCheckFactory.register( mw.editcheck.ToneCheck, mw.editcheck.ToneCheck.static.name );
+		target.editcheckController.suppressSuggestionDisplay( false );
 	}
 
 	handleEditCheckDialogEvents( name, { action } ) {
