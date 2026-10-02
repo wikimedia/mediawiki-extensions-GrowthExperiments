@@ -6,20 +6,21 @@
 		:primary-action="primaryAction"
 		:default-action="defaultAction"
 		:fixed-height="true"
+		class="ext-growthExperiments-interest-selector-dialog"
 		@primary="saveSelection"
 		@default="cancelSelection"
 	>
-		<div class="ext-growthExperiments-interest-selector-dialog">
-			<p
-				v-if="taskCount !== null"
-				v-i18n-html:growthexperiments-homepage-suggestededits-interest-selector-article-count="[ taskCount ]"
-				aria-live="polite"
-				class="ext-growthExperiments-interest-selector-dialog__task-count"
-			></p>
-			<interest-selector
-				v-model:chips="chips"
-			></interest-selector>
-		</div>
+		<!-- TODO: https://phabricator.wikimedia.org/T439958 -->
+		<!-- We currently use a separate <p>, instead of the subtitle prop, because of accessibility concerns. -->
+		<p
+			v-if="taskCount !== null"
+			v-i18n-html:growthexperiments-homepage-suggestededits-interest-selector-article-count="[ taskCount ]"
+			aria-live="polite"
+			class="ext-growthExperiments-interest-selector-dialog__task-count"
+		></p>
+		<interest-selector
+			v-model:chips="chips"
+		></interest-selector>
 	</cdx-dialog>
 </template>
 
@@ -177,3 +178,19 @@ module.exports = exports = defineComponent( {
 	},
 } );
 </script>
+
+<style lang="less">
+.ext-growthExperiments-interest-selector-dialog {
+	&__task-count {
+		margin-top: 0;
+	}
+
+	.cdx-dialog__header {
+		padding-bottom: 0;
+	}
+
+	.cdx-dialog__body {
+		padding-top: 0;
+	}
+}
+</style>
