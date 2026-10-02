@@ -3,43 +3,29 @@
 		v-model:open="wrappedOpen"
 		:use-close-button="true"
 		:title="$i18n( 'growthexperiments-homepage-suggestededits-interest-filters-title' ).text()"
+		:primary-action="primaryAction"
+		:default-action="defaultAction"
 		:fixed-height="true"
+		@primary="saveSelection"
+		@default="cancelSelection"
 	>
 		<div class="ext-growthExperiments-interest-selector-dialog">
 			<p
 				v-if="taskCount !== null"
-				v-i18n-html:growthexperiments-homepage-suggestededits-difficulty-filters-article-count="[ taskCount ]"
+				v-i18n-html:growthexperiments-homepage-suggestededits-interest-selector-article-count="[ taskCount ]"
 				aria-live="polite"
 				class="ext-growthExperiments-interest-selector-dialog__task-count"
 			></p>
 			<interest-selector
 				v-model:chips="chips"
 			></interest-selector>
-			<div
-				class="ext-growthExperiments-interest-selector-dialog__buttons"
-			>
-				<cdx-button
-					class="ext-growthExperiments-interest-selector-dialog__save"
-					action="progressive"
-					weight="primary"
-					@click="saveSelection"
-				>
-					{{ $i18n( 'growthexperiments-homepage-suggestededits-interest-filters-close' ).text() }}
-				</cdx-button>
-				<cdx-button
-					class="ext-growthExperiments-interest-selector-dialog__cancel"
-					@click="cancelSelection"
-				>
-					{{ $i18n( 'growthexperiments-homepage-suggestededits-interest-filters-cancel' ).text() }}
-				</cdx-button>
-			</div>
 		</div>
 	</cdx-dialog>
 </template>
 
 <script>
 const { defineComponent, toRef, ref, watch } = require( 'vue' );
-const { CdxButton, CdxDialog, useModelWrapper } = require( '@wikimedia/codex' );
+const { CdxDialog, useModelWrapper } = require( '@wikimedia/codex' );
 const InterestSelector = require( '../vue-components/InterestSelector.vue' );
 const InterestFilters = require( '../ext.growthExperiments.DataStore/InterestFilters.js' );
 const rootStore = require( 'ext.growthExperiments.DataStore' );
@@ -52,7 +38,6 @@ const INTERESTS_PREF = 'growthexperiments-interest-articles-editing';
 module.exports = exports = defineComponent( {
 	name: 'InterestSelectorDialog',
 	components: {
-		CdxButton,
 		CdxDialog,
 		InterestSelector,
 	},
@@ -73,6 +58,13 @@ module.exports = exports = defineComponent( {
 		// for the user's language. Null while it is unknown, which hides the message.
 		const taskCount = ref( null );
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
+		const primaryAction = {
+			label: mw.msg( 'growthexperiments-homepage-suggestededits-interest-filters-close' ),
+			actionType: 'progressive',
+		};
+		const defaultAction = {
+			label: mw.msg( 'growthexperiments-homepage-suggestededits-interest-filters-cancel' ),
+		};
 
 		/** @type {jQuery.Promise|null} */
 		let countRequest = null;
@@ -175,34 +167,13 @@ module.exports = exports = defineComponent( {
 
 		return {
 			chips,
-			taskCount,
 			wrappedOpen,
+			taskCount,
+			primaryAction,
+			defaultAction,
 			saveSelection,
 			cancelSelection,
 		};
 	},
 } );
 </script>
-
-<style lang="less">
-@import 'mediawiki.skin.variables.less';
-
-.ext-growthExperiments-interest-selector-dialog {
-	&__buttons {
-		margin-top: @spacing-100;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	&__save,
-	&__cancel {
-		width: 100%;
-		justify-content: center;
-	}
-
-	&__cancel {
-		margin-top: @spacing-50;
-	}
-}
-</style>

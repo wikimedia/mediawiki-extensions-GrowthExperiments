@@ -270,6 +270,7 @@
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "Done",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "Cancel",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|article|articles}} found",
+	"growthexperiments-homepage-suggestededits-interest-selector-article-count": "$1 {{PLURAL:$1|article|articles}} found",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Copyedit",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Find references",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Update articles",
