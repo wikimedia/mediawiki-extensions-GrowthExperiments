@@ -28,7 +28,7 @@ class StaticImageRecommendationProvider implements ImageRecommendationProvider {
 	 *   not present in $recommendations. When unset, will throw an error for such titles.
 	 */
 	public function __construct( array $recommendations, $default ) {
-		$this->recommendations = array_map( [ $this, 'normalize' ], $recommendations );
+		$this->recommendations = array_map( $this->normalize( ... ), $recommendations );
 		$this->default = $default ? $this->normalize( $default ) : null;
 	}
 

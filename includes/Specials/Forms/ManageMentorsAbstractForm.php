@@ -20,7 +20,7 @@ abstract class ManageMentorsAbstractForm extends OOUIHTMLForm {
 			$messagePrefix
 		);
 
-		$this->setSubmitCallback( [ $this, 'onSubmit' ] );
+		$this->setSubmitCallback( $this->onSubmit( ... ) );
 	}
 
 	/**

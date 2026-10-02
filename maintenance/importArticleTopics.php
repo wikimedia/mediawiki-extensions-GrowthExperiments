@@ -161,7 +161,7 @@ class ImportArticleTopics extends Maintenance {
 			}
 			$pages = preg_split( '/\n/', $pages, flags: PREG_SPLIT_NO_EMPTY );
 			foreach ( array_chunk( $pages, $batchSize ) as $pageBatch ) {
-				$titleBatch = array_filter( array_map( [ $this->titleFactory, 'newFromText' ], $pageBatch ) );
+				$titleBatch = array_filter( array_map( $this->titleFactory->newFromText( ... ), $pageBatch ) );
 				$this->linkBatchFactory->newLinkBatch( $titleBatch )->execute();
 				yield $titleBatch;
 			}

@@ -107,7 +107,7 @@ class ReadingRecommendationsService {
 				},
 			]
 		);
-		return array_map( [ ReadingRecommendation::class, 'fromArray' ], $rows );
+		return array_map( ReadingRecommendation::fromArray( ... ), $rows );
 	}
 
 	/**
