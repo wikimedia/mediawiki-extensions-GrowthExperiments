@@ -5,21 +5,28 @@ const sendOnboardingReadyEvent = require( '../utils/sendOnboardingReadyEvent.js'
 ( async function () {
 	const platform = mw.config.get( 'skin' ) === 'minerva' ? 'mobile' : 'desktop';
 	const wiki = mw.config.get( 'wgDBname' );
-	function trackPhase( phase ) {
+	function trackStep( step, durationMs ) {
 		mw.track(
-			'stats.mediawiki_GrowthExperiments_account_setup_phase_seconds',
-			performance.now(),
-			{ phase, platform, wiki },
+			'stats.mediawiki_GrowthExperiments_account_setup_step_seconds',
+			durationMs,
+			{ step, platform, wiki },
 		);
 	}
 
-	trackPhase( 'module_executed' );
+	const moduleExecutedMs = performance.now();
+	const navigationEntry = performance.getEntriesByType( 'navigation' )[ 0 ];
+	if ( navigationEntry && navigationEntry.responseStart > 0 ) {
+		trackStep( 'first_byte', navigationEntry.responseStart );
+		trackStep( 'first_byte_to_module', moduleExecutedMs - navigationEntry.responseStart );
+	}
+
 	const pinia = Pinia.createPinia();
 	const AccountSetupApp = require( './AccountSetup.vue' );
 
 	await mw.loader.using( [ 'ext.testKitchen' ] );
 	const experiment = await mw.tk.getExperiment( 'de-1-3-1-specialhomepage-onboarding-ab-test' );
-	trackPhase( 'testkitchen_ready' );
+	const testKitchenReadyMs = performance.now();
+	trackStep( 'testkitchen_wait', testKitchenReadyMs - moduleExecutedMs );
 
 	const app = Vue.createMwApp( AccountSetupApp );
 	app.use( pinia );
@@ -27,8 +34,8 @@ const sendOnboardingReadyEvent = require( '../utils/sendOnboardingReadyEvent.js'
 
 	app.provide( 'experiment', experiment );
 	app.mount( '#growthexperiments-account_setup' );
-	trackPhase( 'mounted' );
 	const mountedMs = performance.now();
+	trackStep( 'mount', mountedMs - testKitchenReadyMs );
 	mw.track(
 		'stats.mediawiki_GrowthExperiments_onboarding_ready_seconds',
 		mountedMs,
