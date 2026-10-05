@@ -17,6 +17,8 @@ use MediaWiki\Utils\MWTimestamp;
 use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IDBAccessObject;
+use Wikimedia\Stats\StatsFactory;
+use Wikimedia\Stats\UnitTestingHelper;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Specials\SpecialWelcomeSurvey
@@ -24,6 +26,7 @@ use Wikimedia\Rdbms\IDBAccessObject;
  */
 class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 	private ?ExperimentManager $experimentManager = null;
+	private ?UnitTestingHelper $statsHelper = null;
 
 	/**
 	 * @inheritDoc
@@ -36,6 +39,7 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 			$growthExperimentsServices->getWelcomeSurveyFactory(),
 			new WelcomeSurveyLogger( new NullLogger() ),
 			$growthExperimentsServices->getFeatureManager(),
+			( $this->statsHelper ?? StatsFactory::newUnitTestingHelper() )->getStatsFactory(),
 			$this->experimentManager
 		);
 	}
@@ -94,6 +98,34 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->never() );
 
 		$this->executeSpecialPage( '', null, 'en', $this->getTestUser()->getUser() );
+	}
+
+	/**
+	 * @covers ::onSubmit
+	 * @dataProvider provideCountsReason
+	 */
+	public function testCountsReason( array $params, string $expectedSelector ): void {
+		$this->statsHelper = StatsFactory::newUnitTestingHelper();
+		$request = new FauxRequest( $params + [ 'wpedited' => 'placeholder', 'wplanguages' => [ 'en' ] ], true );
+
+		$this->executeSpecialPage( '', $request, 'en', $this->getMutableTestUser()->getUser() );
+
+		$this->assertSame( 1, $this->statsHelper->count( $expectedSelector ) );
+	}
+
+	public static function provideCountsReason(): iterable {
+		yield 'answered and saved' => [
+			[ 'reason' => 'read', 'save' => 1 ],
+			'GrowthExperiments.welcome_survey_reason_total{reason=read,motivation=reading}',
+		];
+		yield 'saved without an answer' => [
+			[ 'reason' => 'placeholder', 'save' => 1 ],
+			'GrowthExperiments.welcome_survey_reason_total{reason=not_answered,motivation=skipped}',
+		];
+		yield 'skipped' => [
+			[ 'reason' => 'read' ],
+			'GrowthExperiments.welcome_survey_reason_total{reason=skipped,motivation=skipped}',
+		];
 	}
 
 	private function mockEarlyOnboardingControl( bool $isControl ): void {

@@ -24,6 +24,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Specials\Hook\PostLoginRedirectHook;
 use MediaWiki\Specials\SpecialCreateAccount;
 use MediaWiki\Specials\SpecialUserLogin;
+use Wikimedia\Stats\StatsFactory;
 
 class WelcomeSurveyHooks implements
 	GetPreferencesHook,
@@ -42,6 +43,7 @@ class WelcomeSurveyHooks implements
 		private readonly CampaignLoader $campaignLoader,
 		private readonly FeatureManager $featureManager,
 		private readonly PostSignupOnboardingEligibility $onboardingEligibility,
+		private readonly StatsFactory $statsFactory,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
 	}
@@ -61,6 +63,7 @@ class WelcomeSurveyHooks implements
 						LoggerFactory::getInstance( 'GrowthExperiments' )
 					),
 					$this->featureManager,
+					$this->statsFactory,
 					$this->experimentManager,
 				);
 			};

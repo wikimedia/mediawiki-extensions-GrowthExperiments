@@ -201,6 +201,26 @@ module.exports = defineComponent( {
 		} );
 		let skipOrFinishWasClicked = false;
 
+		let motivationCounted = false;
+		/**
+		 * @param {'both'|'editing'|'reading'|'skipped'} motivation
+		 */
+		function countMotivation( motivation ) {
+			if ( motivationCounted ) {
+				return;
+			}
+			motivationCounted = true;
+			mw.track(
+				'stats.mediawiki_GrowthExperiments_account_setup_motivation_total',
+				1,
+				{
+					motivation,
+					platform: mw.config.get( 'skin' ) === 'minerva' ? 'mobile' : 'desktop',
+					wiki: mw.config.get( 'wgDBname' ),
+				},
+			);
+		}
+
 		async function saveAndGoToHome() {
 			if ( skipOrFinishWasClicked ) {
 				return;
@@ -216,6 +236,7 @@ module.exports = defineComponent( {
 			if ( store.modulePreset !== 'skipped' && chips.value.length >= 3 ) {
 				experiment.send( 'welcome_survey_account_setup_submitted_complete' );
 			}
+			countMotivation( store.modulePreset );
 			await store.saveInterestArticles();
 			window.location.reload();
 		}
@@ -232,6 +253,7 @@ module.exports = defineComponent( {
 					element_friendly_name: 'WelcomeSurvey/AccountSetup skip button',
 				},
 			);
+			countMotivation( store.modulePreset );
 			await store.saveInitialModulePreset();
 			window.location.reload();
 		}

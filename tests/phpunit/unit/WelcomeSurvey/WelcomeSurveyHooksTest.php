@@ -19,6 +19,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @covers \GrowthExperiments\WelcomeSurveyHooks
@@ -339,6 +340,7 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 			$campaignLoader,
 			$featureManager,
 			new PostSignupOnboardingEligibility( $config, $titleFactory, $campaignConfig, $campaignLoader ),
+			StatsFactory::newUnitTestingHelper()->getStatsFactory(),
 			null,
 		);
 	}

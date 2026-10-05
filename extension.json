@@ -464,7 +464,8 @@
 				"GrowthExperimentsCampaignConfig",
 				"GrowthExperimentsCampaignLoader",
 				"GrowthExperimentsFeatureManager",
-				"GrowthExperimentsPostSignupOnboardingEligibility"
+				"GrowthExperimentsPostSignupOnboardingEligibility",
+				"StatsFactory"
 			],
 			"optional_services": [
 				"TestKitchen.ExperimentManager"

@@ -20,6 +20,8 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Utils\MWTimestamp;
+use MediaWiki\WikiMap\WikiMap;
+use Wikimedia\Stats\StatsFactory;
 
 class SpecialWelcomeSurvey extends FormSpecialPage {
 
@@ -51,6 +53,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		private readonly WelcomeSurveyFactory $welcomeSurveyFactory,
 		private readonly WelcomeSurveyLogger $welcomeSurveyLogger,
 		private readonly FeatureManager $featureManager,
+		private readonly StatsFactory $statsFactory,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
 		parent::__construct( 'WelcomeSurvey' );
@@ -247,6 +250,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 
 		$this->welcomeSurveyLogger->logInteraction( self::ACTION_SUBMIT_SUCCESS );
 
+		$this->countReason( $data, $save );
 		$this->maybeSendExperimentSurveyEvents( $data, $save );
 
 		if ( $save ) {
@@ -292,17 +296,43 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			return;
 		}
 
-		// Skipping discards the answers, so report it like the AccountSetup skip.
+		$interactionData = [ 'action_context' => self::getMotivation( $data, $save ) ];
 		if ( $save && $hasReasonResponse ) {
-			$interactionData = [
-				'action_context' => self::REASON_TO_MOTIVATION[$data['reason']] ?? 'other',
-				// Keep the more detailed answer, which AccountSetup has no equivalent for.
-				'action_subtype' => $data['reason'],
-			];
-		} else {
-			$interactionData = [ 'action_context' => 'skipped' ];
+			// Keep the more detailed answer, which AccountSetup has no equivalent for.
+			$interactionData['action_subtype'] = $data['reason'];
 		}
 		$experiment->send( 'welcome_survey_account_setup_motivation_saved', $interactionData );
+	}
+
+	private function countReason( array $data, bool $save ): void {
+		if ( !isset( $data['reason'] ) ) {
+			return;
+		}
+
+		if ( !$save ) {
+			$reason = 'skipped';
+		} elseif ( $data['reason'] === 'placeholder' ) {
+			$reason = 'not_answered';
+		} else {
+			$reason = $data['reason'];
+		}
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'welcome_survey_reason_total' )
+			->setLabel( 'reason', $reason )
+			->setLabel( 'motivation', self::getMotivation( $data, $save ) )
+			->setLabel( 'platform', Util::isMobile( $this->getSkin() ) ? 'mobile' : 'desktop' )
+			->setLabel( 'wiki', WikiMap::getCurrentWikiId() )
+			->increment();
+	}
+
+	/**
+	 * Skipping discards the answers, so report it like the AccountSetup skip.
+	 */
+	private static function getMotivation( array $data, bool $save ): string {
+		if ( !$save || ( $data['reason'] ?? 'placeholder' ) === 'placeholder' ) {
+			return 'skipped';
+		}
+		return self::REASON_TO_MOTIVATION[$data['reason']] ?? 'other';
 	}
 
 	private function showConfirmationPage( string $to, string $query ): void {
