@@ -34,6 +34,13 @@ class HomepageSchema_2_0_0 extends JsonSchema {
 		self::DEFAULT => 10,
 	];
 
+	// TODO remove once migration for adding GELevelingUpKeepGoingNotificationThresholdsMaximum is run, T366139
+	public const GELevelingUpKeepGoingNotificationThresholds = [
+		self::TYPE => self::TYPE_INTEGER,
+		self::MINIMUM => 0,
+		self::DEFAULT => 4,
+	];
+
 	/**
 	 * Maximum threshold for "keep going" notifications.
 	 * This value determines when users stop receiving "keep going" notifications
