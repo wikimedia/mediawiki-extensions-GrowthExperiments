@@ -687,7 +687,6 @@ class HomepageHooks implements
 		$keysToExclude = array_merge( $keysToExclude, [
 			self::HOMEPAGE_PREF_ENABLE,
 			self::HOMEPAGE_PREF_PT_LINK,
-			self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN,
 			Mentorship::QUESTION_PREF,
 			SuggestedEdits::PREACTIVATED_PREF,
 		] );
