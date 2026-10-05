@@ -258,6 +258,7 @@
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "Feito",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "Cancelar",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|Atopouse <strong>$1</strong> artigo|Atopáronse <strong>$1</strong> artigos}}",
+	"growthexperiments-homepage-suggestededits-interest-selector-article-count": "{{PLURAL:$1|Atopouse un artigo|Atopáronse $1 artigos}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Revisar",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Atopar referencias",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Actualizar artigos",

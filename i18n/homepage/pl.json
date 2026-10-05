@@ -273,6 +273,7 @@
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "Gotowe",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "Anuluj",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{plural:$1|znaleziony artykuł|znalezione artykuły|znalezionych artykułów}}",
+	"growthexperiments-homepage-suggestededits-interest-selector-article-count": "Znaleziono $1 {{PLURAL:$1|artykuł|artykuły|artykułów}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Redakcja",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Szukanie przypisów",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aktualizacja artykułów",

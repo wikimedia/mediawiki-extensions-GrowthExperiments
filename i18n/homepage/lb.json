@@ -252,6 +252,7 @@
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "Fäerdeg",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "Ofbriechen",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|Artikel|Artikelen}} fonnt",
+	"growthexperiments-homepage-suggestededits-interest-selector-article-count": "$1 {{PLURAL:$1|Artikel|Artikele}} fonnt",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Lektoréieren",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Referenze fannen",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Artikelen aktualiséieren",

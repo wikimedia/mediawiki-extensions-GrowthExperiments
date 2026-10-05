@@ -280,6 +280,7 @@
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "تم",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "إلغاء",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "عُثِر على <strong>{{PLURAL:$1|$1 من المقالات|مقالة واحدة|مقالتين اثنتين|$1 مقالات|$1 مقالة}}</strong>",
+	"growthexperiments-homepage-suggestededits-interest-selector-article-count": "{{PLURAL:$1|لا توجد مقالات|وجدت مقالة واحدة|وجدت مقالتان|وجدت $1 مقالات|وجدت $1 مقالة}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "تحرير النسخ",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "إيجاد مراجع",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "تحديث مقالات",

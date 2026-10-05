@@ -9,6 +9,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Добре дошъл|Добре дошла}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Начална страница за новодошли",
 	"growthexperiments-homepage-tab": "Начална страница",
 	"tooltip-pt-homepage": "{{GENDER:|Вашата}} начална страница",
 	"prefs-homepage": "Възможности за начинаещи редактори",
