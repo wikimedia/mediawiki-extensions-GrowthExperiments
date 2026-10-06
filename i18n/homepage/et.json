@@ -280,7 +280,9 @@
 	"log-action-filter-growthexperiments-addimage": "Pildisoovitus",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|on}} {{GENDER:$3|sinu}} uus mentor.",
 	"growthexperiments-notification-body-mentor-change": "Põhjus: $1",
+	"growthexperiments-notification-body-mentor-change-new": "Sinu varasem {{GENDER:$1|mentor}} $1 ei ole enam sinu mentor.",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Ütle}} tere enda uuele {{GENDER:$2|mentorile}}!",
+	"growthexperiments-notification-learn-more": "Saa rohkem teada {{GENDER:$1|enda}} uue {{GENDER:$2|mentori}} kohta",
 	"right-setmentor": "Määrata kasutajale mentor",
 	"action-setmentor": "kasutajale mentorit määrata",
 	"right-managementors": "Hallata mentorite loendit",
@@ -480,6 +482,11 @@
 	"growthexperiments-homepage-special-contribute-description": "Tee väikseid ja lihtsaid muudatusi, näiteks lisa link või keeletoimeta, et täiustada olemasolevaid artikleid.",
 	"growthexperiments-homepage-special-contribute-cta": "Vaata soovitatud muudatusi",
 	"growthexperiments-homepage-impact-contributions-link": "Vaata kõiki muudatusi",
+	"growthexperiments-levelingup-getstarted-notification-header": "Proovi soovitatud muudatusi ja alusta {{GENDER:$2|enda}} toimetamisoskuste lihvimist",
+	"growthexperiments-levelingup-getstarted-notification-call-to-action-label": "Proovi soovitatud muudatusi",
+	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|Oled}} teinud $3 soovitatud {{PLURAL:$3|muudatuse|muudatust}}. Jätka, et lihvida uusi oskusi.",
+	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "Tee soovitatud muudatus",
 	"echo-category-title-ge-newcomer": "Growthi funktsioonid",
-	"echo-pref-tooltip-ge-newcomer": "Teavita mind uue kasutaja ülesannetest ja teistest funktsioonidest, mis on koostatud, et aidata uusi kasutajaid."
+	"echo-pref-tooltip-ge-newcomer": "Teavita mind uue kasutaja ülesannetest ja teistest funktsioonidest, mis on koostatud, et aidata uusi kasutajaid.",
+	"growthexperiments-homepage-community-updates-header": "Kogukonna teadaanded"
 }
