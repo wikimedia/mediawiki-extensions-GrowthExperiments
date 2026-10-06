@@ -130,9 +130,6 @@ class SpecialHomepage extends SpecialPage {
 			);
 
 			if ( !$accountSetupMotivation ) {
-				$this->experimentManager
-					?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST )
-					->sendExposure();
 				$out->addModuleStyles( 'ext.growthExperiments.AccountSetup.styles' );
 				$out->addModules( 'ext.growthExperiments.AccountSetup' );
 				$out->addHTML( Html::element( 'div', [ 'id' => 'growthexperiments-account_setup' ] ) );
