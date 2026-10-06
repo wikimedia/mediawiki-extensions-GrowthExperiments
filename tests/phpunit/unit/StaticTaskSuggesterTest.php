@@ -171,6 +171,24 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 		];
 	}
 
+	public function testFilterMatchesNewTaskForSamePage() {
+		$user = new UserIdentityValue( 1, 'Foo' );
+		$copyedit = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$link = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
+		$suggester = new StaticTaskSuggester( [
+			new Task( $copyedit, new TitleValue( NS_MAIN, 'Copyedit 1' ) ),
+		] );
+
+		$filtered = $suggester->filter( $user, new TaskSet( [
+			new Task( $copyedit, new TitleValue( NS_MAIN, 'Copyedit_1' ) ),
+			new Task( $link, new TitleValue( NS_MAIN, 'Copyedit_1' ) ),
+			new Task( $copyedit, new TitleValue( NS_MAIN, 'Copyedit_2' ) ),
+		], 3, 0, new TaskSetFilters() ) );
+
+		$this->assertTaskSetEqualsTitles( [ 'Copyedit 1' ], $filtered );
+		$this->assertSame( 'copyedit', $filtered[0]->getTaskType()->getId() );
+	}
+
 	/**
 	 * @param string[] $expectedTitles
 	 * @param TaskSet $taskSet

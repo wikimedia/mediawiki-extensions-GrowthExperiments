@@ -67,11 +67,16 @@ class StaticTaskSuggester implements TaskSuggester {
 	public function filter( UserIdentity $user, TaskSet $taskSet ) {
 		$tasks = [];
 		foreach ( $taskSet as $task ) {
-			// Avoid in_array, because that relies on object identity, which is lost
-			// between CacheDecorator::serialize and CacheDecorator::deserialize
+			// Match by task type and page, like SearchTaskSuggester::filter(), not by token.
 			foreach ( $this->tasks as $expectedTask ) {
-				if ( $expectedTask->toJsonArray() == $task->toJsonArray() ) {
+				if ( $expectedTask->getTaskType()->getId() === $task->getTaskType()->getId()
+					&& $expectedTask->getTitle()->getNamespace() === $task->getTitle()->getNamespace()
+					// Fixture titles can have spaces in the DB key.
+					&& strtr( $expectedTask->getTitle()->getDBkey(), ' ', '_' )
+						=== strtr( $task->getTitle()->getDBkey(), ' ', '_' )
+				) {
 					$tasks[] = $task;
+					break;
 				}
 			}
 		}
