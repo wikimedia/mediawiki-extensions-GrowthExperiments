@@ -272,6 +272,7 @@
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "סיום",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "ביטול",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|נמצא ערך <strong>אחד</strong>|נמצאו <strong>$1</strong> ערכים}}",
+	"growthexperiments-homepage-suggestededits-interest-selector-article-count": "{{PLURAL:$1|נמצא ערך אחד|נמצאו $1 ערכים}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "הגהה",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "מציאת מקורות",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "עדכון ערכים",

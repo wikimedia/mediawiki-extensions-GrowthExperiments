@@ -112,7 +112,7 @@
 	"growthexperiments-homepage-discovery-banner-header": "Добре дошли във {{GENDER:$1|Вашата}} начална страница!",
 	"growthexperiments-homepage-discovery-thanks-header": "Благодарим Ви, че {{GENDER:$1|си}} създадохте сметка!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Започнете оттук!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Отворете страничното меню и докоснете $2, за да посетите {{GENDER:$1|Вашата}} начална страница.",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Отворете менюто на сметката и докоснете $2, за да посетите {{GENDER:$1|вашата}} начална страница.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> от <strong>$2</strong> {{PLURAL:$2|предложение|предложения}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Край",
 	"growthexperiments-homepage-suggestededits-pager-loading": "Зареждане…",
