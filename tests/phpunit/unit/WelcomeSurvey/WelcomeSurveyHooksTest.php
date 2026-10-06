@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\AccountSetup\PostSignupOnboardingEligibility;
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
@@ -332,12 +333,12 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 		$campaignLoader = $this->createMock( CampaignLoader::class );
 		return new WelcomeSurveyHooks(
 			$config,
-			$titleFactory,
 			$specialPageFactory,
 			$welcomeSurveyFactory,
 			$campaignConfig,
 			$campaignLoader,
 			$featureManager,
+			new PostSignupOnboardingEligibility( $config, $titleFactory, $campaignConfig, $campaignLoader ),
 			null,
 		);
 	}
