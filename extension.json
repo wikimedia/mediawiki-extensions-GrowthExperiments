@@ -291,7 +291,8 @@
 				"ExtensionRegistry",
 				"UserIdentityUtils",
 				"UserOptionsManager",
-				"RedirectLookup"
+				"RedirectLookup",
+				"GrowthExperimentsPostSignupOnboardingEligibility"
 			]
 		},
 		"communityconfig": {
@@ -450,12 +451,12 @@
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
 			"services": [
 				"MainConfig",
-				"TitleFactory",
 				"SpecialPageFactory",
 				"GrowthExperimentsWelcomeSurveyFactory",
 				"GrowthExperimentsCampaignConfig",
 				"GrowthExperimentsCampaignLoader",
-				"GrowthExperimentsFeatureManager"
+				"GrowthExperimentsFeatureManager",
+				"GrowthExperimentsPostSignupOnboardingEligibility"
 			],
 			"optional_services": [
 				"TestKitchen.ExperimentManager"

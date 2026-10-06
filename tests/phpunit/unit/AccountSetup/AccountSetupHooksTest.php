@@ -5,7 +5,11 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\AccountSetup\AccountSetupHooks;
+use GrowthExperiments\AccountSetup\PostSignupOnboardingEligibility;
+use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\NewcomerTasks\CampaignConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPageFactory;
@@ -334,6 +338,12 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 			$userIdentityUtils,
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$this->createNoOpMock( RedirectLookup::class ),
+			new PostSignupOnboardingEligibility(
+				new HashConfig( [ 'WelcomeSurveyEnabled' => true ] ),
+				$titleFactory,
+				$this->createNoOpMock( CampaignConfig::class ),
+				$this->createNoOpMock( CampaignLoader::class ),
+			),
 		);
 	}
 
