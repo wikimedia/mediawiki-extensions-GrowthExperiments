@@ -293,6 +293,9 @@
 				"UserOptionsManager",
 				"RedirectLookup",
 				"GrowthExperimentsPostSignupOnboardingEligibility"
+			],
+			"optional_services": [
+				"TestKitchen.ExperimentManager"
 			]
 		},
 		"communityconfig": {

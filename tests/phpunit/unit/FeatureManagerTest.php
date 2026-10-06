@@ -270,6 +270,19 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $featureManager->isEarlyOnboardingExperimentTreatment( $user, true ) );
 	}
 
+	public function testIsEarlyOnboardingExperimentControlUpdatesTheExperimentUserForANewAccount(): void {
+		$this->skipIfTestKitchenIsMissing();
+		$user = new UserIdentityValue( 1, 'TestUser' );
+		$experimentCoordinator = $this->createMock( ExperimentCoordinatorInterface::class );
+		$experimentCoordinator->expects( $this->once() )
+			->method( 'updateUser' )
+			->with( $user );
+
+		$featureManager = $this->getFeatureManagerForTreatment( $user, $experimentCoordinator );
+
+		$this->assertTrue( $featureManager->isEarlyOnboardingExperimentControl( $user, true ) );
+	}
+
 	public function testIsEarlyOnboardingExperimentTreatmentKeepsTheExperimentUserForAnOlderAccount(): void {
 		$this->skipIfTestKitchenIsMissing();
 		$user = new UserIdentityValue( 1, 'TestUser' );
@@ -302,7 +315,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * Provide a FeatureManager which puts $user into the early onboarding treatment group.
+	 * Provide a FeatureManager which reports $user as assigned to any early onboarding group.
 	 */
 	private function getFeatureManagerForTreatment(
 		UserIdentityValue $user,

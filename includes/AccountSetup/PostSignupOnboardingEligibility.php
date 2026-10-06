@@ -41,6 +41,18 @@ class PostSignupOnboardingEligibility {
 	}
 
 	/**
+	 * True if the signup leads to the onboarding flow: the Welcome Survey for the control group,
+	 * or the Account Setup flow for the treatment group.
+	 *
+	 * @param IContextSource $context
+	 * @param string $returnTo
+	 * @param string[] $returnToQuery
+	 */
+	public function shouldStartOnboarding( IContextSource $context, string $returnTo, array $returnToQuery ): bool {
+		return $this->canShowOnboarding( $context ) && !$this->userWasEditing( $returnTo, $returnToQuery );
+	}
+
+	/**
 	 * True if the user started the registration process while in the middle of editing.
 	 *
 	 * @param string $returnTo
