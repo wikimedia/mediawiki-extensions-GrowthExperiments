@@ -19,7 +19,9 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\Recommendation;
+use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
@@ -54,6 +56,8 @@ use MediaWiki\Html\Html;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Language\FormatterFactory;
 use MediaWiki\Language\MessageLocalizer;
+use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\SkinOptions;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
@@ -125,6 +129,11 @@ class HomepageHooks implements
 	public const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
 	private const VE_PREF_DISABLE_BETA = 'visualeditor-betatempdisable';
 	private const VE_PREF_EDITOR = 'visualeditor-editor';
+	/**
+	 * Click IDs which GrowthExperiments makes: a page view token (32 base-32 characters)
+	 * or mw.user.generateRandomSessionId() (20 hex characters).
+	 */
+	private const CLICK_ID_REGEX = '/^(?:[0-9a-v]{32}|[0-9a-f]{20})$/';
 	private ?MessageLocalizer $messageLocalizer;
 	private ?OutputPage $outputPage;
 	private ?UserIdentity $userIdentity;
@@ -381,6 +390,7 @@ class HomepageHooks implements
 			}
 
 			if ( $taskType ) {
+				$this->checkClickIdFormat( $clickId, $taskType );
 				$levelingUpTryNewTaskOptOuts = $this->userOptionsLookup->getOption(
 					$context->getUser(),
 					LevelingUpManager::TASK_TYPE_PROMPT_OPT_OUTS_PREF,
@@ -394,9 +404,14 @@ class HomepageHooks implements
 				] );
 
 				if ( $recommendationProvider ) {
-					$recommendation = $recommendationProvider->get( $context->getTitle(), $taskType );
+					$isTask = $this->isSuggestedTask( $context->getUser(), $taskType, $context->getTitle(), $clickId );
+					$recommendation = $isTask
+						? $recommendationProvider->get( $context->getTitle(), $taskType )
+						: null;
 					if ( $recommendation instanceof Recommendation ) {
 						$serializedRecommendation = $recommendation->toArray();
+					} elseif ( $recommendation === null ) {
+						$serializedRecommendation = [ 'error' => 'The page is not a ' . $taskType->getId() . ' task' ];
 					} else {
 						Util::logStatus( $recommendation );
 						$serializedRecommendation = [
@@ -529,6 +544,65 @@ class HomepageHooks implements
 				$skin->getOutput()->addModules( 'skins.minerva.talk' );
 			}
 		}
+	}
+
+	/**
+	 * Check in the search index that the page is a task of the given type. Task links do not
+	 * always come from the task feed: some tools make them by hand for any page.
+	 */
+	private function isSuggestedTask(
+		UserIdentity $user, TaskType $taskType, LinkTarget $title, string $clickId
+	): bool {
+		$taskSet = new TaskSet(
+			[ new Task( $taskType, $title ) ],
+			1,
+			0,
+			new TaskSetFilters( [ $taskType->getId() ] )
+		);
+		$filteredTaskSet = $this->taskSuggesterFactory->create()->filter( $user, $taskSet );
+		if ( !$filteredTaskSet instanceof TaskSet ) {
+			// Do not block real tasks when the search backend fails.
+			Util::logStatus( $filteredTaskSet );
+			return true;
+		}
+		if ( $filteredTaskSet->count() ) {
+			return true;
+		}
+
+		LoggerFactory::getInstance( 'GrowthExperiments' )->info(
+			'Page {title} from a task link is not a {task_type} task',
+			[
+				'title' => $title->getDBkey(),
+				'task_type' => $taskType->getId(),
+				'click_id' => $clickId,
+			]
+		);
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'suggested_edit_link_not_a_task_total' )
+			->setLabel( 'task_type', $taskType->getId() )
+			->increment();
+		return false;
+	}
+
+	/**
+	 * Log a click ID which GrowthExperiments did not make. Task links are not for later use,
+	 * thus such a link usually comes from a tool which makes task links by hand.
+	 */
+	private function checkClickIdFormat( string $clickId, TaskType $taskType ): void {
+		if ( preg_match( self::CLICK_ID_REGEX, $clickId ) ) {
+			return;
+		}
+		LoggerFactory::getInstance( 'GrowthExperiments' )->info(
+			'Task link for a {task_type} task has a click ID with an unknown format',
+			[
+				'task_type' => $taskType->getId(),
+				'click_id' => $clickId,
+			]
+		);
+		$this->statsFactory->withComponent( 'GrowthExperiments' )
+			->getCounter( 'suggested_edit_link_unknown_click_id_total' )
+			->setLabel( 'task_type', $taskType->getId() )
+			->increment();
 	}
 
 	private static function titleIsUserPageOrUserTalk( Title $title, User $user ): bool {

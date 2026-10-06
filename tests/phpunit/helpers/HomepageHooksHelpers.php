@@ -34,7 +34,9 @@ trait HomepageHooksHelpers {
 		?TitleFactory $titleFactoryMock = null,
 		?SpecialPageFactory $specialPageFactoryMock = null,
 		?UserOptionsLookup $userOptionsLookup = null,
-		?ConfigurationLoader $configurationLoaderMock = null
+		?ConfigurationLoader $configurationLoaderMock = null,
+		?TaskSuggesterFactory $taskSuggesterFactory = null,
+		?StatsFactory $statsFactory = null
 	): HomepageHooks {
 		return new HomepageHooks(
 			$config ?? new HashConfig( [] ),
@@ -43,13 +45,13 @@ trait HomepageHooksHelpers {
 			$this->createNoOpMock( UserIdentityUtils::class ),
 			$this->createNoOpMock( NamespaceInfo::class ),
 			$titleFactoryMock ?? $this->createNoOpMock( TitleFactory::class ),
-			$this->createNoOpMock( StatsFactory::class ),
+			$statsFactory ?? $this->createNoOpMock( StatsFactory::class ),
 			$this->createNoOpMock( JobQueueGroup::class ),
 			$this->createNoOpMock( FormatterFactory::class, [ 'getStatusFormatter' ] ),
 			$configurationLoaderMock ?? $this->createNoOpMock( ConfigurationLoader::class ),
 			$this->createNoOpMock( CampaignConfig::class ),
 			$this->createNoOpMock( TaskTypeHandlerRegistry::class ),
-			$this->createNoOpMock( TaskSuggesterFactory::class ),
+			$taskSuggesterFactory ?? $this->createNoOpMock( TaskSuggesterFactory::class ),
 			$this->createNoOpMock( TaskSetFiltersFactory::class ),
 			$specialPageFactoryMock ?? $this->createNoOpMock( SpecialPageFactory::class ),
 			$this->createNoOpMock( NewcomerTasksChangeTagsManager::class ),

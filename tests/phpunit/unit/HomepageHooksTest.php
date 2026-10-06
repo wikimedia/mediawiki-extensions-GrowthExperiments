@@ -5,6 +5,10 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\Tests\Helpers\HomepageHooksHelpers;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Language\MessageLocalizer;
@@ -13,9 +17,12 @@ use MediaWiki\Output\OutputPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use Wikimedia\Stats\StatsFactory;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \GrowthExperiments\HomepageHooks
@@ -118,5 +125,69 @@ class HomepageHooksTest extends MediaWikiUnitTestCase {
 		$homepageHooks->onContributeCards( $cards );
 		$this->assertArrayEquals( [], $cards, false, true,
 			'No card should be shown when SuggestedEdits is disabled even if Homepage is enabled' );
+	}
+
+	public static function provideIsSuggestedTask(): iterable {
+		yield 'page is a task' => [ true, [] ];
+		yield 'page is not a task' => [
+			false,
+			[ 'mediawiki.GrowthExperiments.suggested_edit_link_not_a_task_total:1|c|#task_type:revise_tone' ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideIsSuggestedTask
+	 */
+	public function testIsSuggestedTask( bool $isTask, array $expectedMetrics ): void {
+		$taskType = new TaskType( 'revise-tone', TaskType::DIFFICULTY_EASY );
+		$title = new TitleValue( NS_MAIN, 'Dhaka_Mail' );
+		$user = new UserIdentityValue( 1, 'Newcomer' );
+
+		$taskSuggester = $this->createMock( TaskSuggester::class );
+		$taskSuggester->expects( $this->once() )
+			->method( 'filter' )
+			->willReturnCallback( function ( $filterUser, TaskSet $taskSet ) use ( $user, $isTask ) {
+				$this->assertSame( $user, $filterUser );
+				$this->assertSame( [ 'revise-tone' ], $taskSet->getFilters()->getTaskTypeFilters() );
+				$this->assertSame( 'Dhaka_Mail', $taskSet[0]->getTitle()->getDBkey() );
+				return new TaskSet( $isTask ? iterator_to_array( $taskSet ) : [], 1, 0, $taskSet->getFilters() );
+			} );
+		$taskSuggesterFactory = $this->createMock( TaskSuggesterFactory::class );
+		$taskSuggesterFactory->method( 'create' )->willReturn( $taskSuggester );
+		$statsHelper = StatsFactory::newUnitTestingHelper();
+
+		$homepageHooks = TestingAccessWrapper::newFromObject( $this->getHomepageHooksMock(
+			null, null, null, null, null, $taskSuggesterFactory, $statsHelper->getStatsFactory()
+		) );
+
+		$this->assertSame( $isTask, $homepageHooks->isSuggestedTask( $user, $taskType, $title, 'smartedit' ) );
+		$this->assertSame( $expectedMetrics, $statsHelper->consumeAllFormatted() );
+	}
+
+	public static function provideCheckClickIdFormat(): iterable {
+		yield 'page view token' => [ 'c5mq3pjo9l5qqjc2k34vhe5v5qn7r3uh', [] ];
+		yield 'random session ID' => [ '0a1b2c3d4e5f60718293', [] ];
+		yield 'made by hand' => [
+			'smartedit',
+			[ 'mediawiki.GrowthExperiments.suggested_edit_link_unknown_click_id_total:1|c|#task_type:revise_tone' ],
+		];
+		yield 'hex but too long' => [
+			'0a1b2c3d4e5f607182930',
+			[ 'mediawiki.GrowthExperiments.suggested_edit_link_unknown_click_id_total:1|c|#task_type:revise_tone' ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideCheckClickIdFormat
+	 */
+	public function testCheckClickIdFormat( string $clickId, array $expectedMetrics ): void {
+		$statsHelper = StatsFactory::newUnitTestingHelper();
+		$homepageHooks = TestingAccessWrapper::newFromObject( $this->getHomepageHooksMock(
+			null, null, null, null, null, null, $statsHelper->getStatsFactory()
+		) );
+
+		$homepageHooks->checkClickIdFormat( $clickId, new TaskType( 'revise-tone', TaskType::DIFFICULTY_EASY ) );
+
+		$this->assertSame( $expectedMetrics, $statsHelper->consumeAllFormatted() );
 	}
 }
