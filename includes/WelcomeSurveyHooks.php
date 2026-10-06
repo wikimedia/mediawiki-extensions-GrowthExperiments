@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments;
 
+use GrowthExperiments\AccountSetup\PostSignupOnboardingEligibility;
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
@@ -11,7 +12,6 @@ use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\DerivativeContext;
-use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Logger\LoggerFactory;
@@ -21,12 +21,9 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use MediaWiki\Specials\Helpers\LoginHelper;
 use MediaWiki\Specials\Hook\PostLoginRedirectHook;
 use MediaWiki\Specials\SpecialCreateAccount;
 use MediaWiki\Specials\SpecialUserLogin;
-use MediaWiki\Title\Title;
-use MediaWiki\Title\TitleFactory;
 
 class WelcomeSurveyHooks implements
 	GetPreferencesHook,
@@ -39,12 +36,12 @@ class WelcomeSurveyHooks implements
 
 	public function __construct(
 		private readonly Config $config,
-		private readonly TitleFactory $titleFactory,
 		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly WelcomeSurveyFactory $welcomeSurveyFactory,
 		private readonly CampaignConfig $campaignConfig,
 		private readonly CampaignLoader $campaignLoader,
 		private readonly FeatureManager $featureManager,
+		private readonly PostSignupOnboardingEligibility $onboardingEligibility,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
 	}
@@ -89,37 +86,6 @@ class WelcomeSurveyHooks implements
 		return $this->config->get( 'WelcomeSurveyEnabled' );
 	}
 
-	/**
-	 * Check if a given title + query string means some kind of editor is open.
-	 */
-	private function isEditing( ?Title $title, ?array $query = null ): bool {
-		return $title && $title->canExist() && (
-			// normal editor, VE with some settings
-			( $query['action'] ?? null ) === 'edit'
-			// VE
-			|| ( $query['veaction'] ?? null ) === 'edit'
-			// mobile editor
-			|| str_starts_with( $title->getFragment(), '/editor/' )
-		);
-	}
-
-	/**
-	 * True if the user started the registration process while in the middle of editing.
-	 * @param string|null $returnTo returnto parameter. Read from URL if omitted.
-	 * @param string|string[]|null $returnToQuery returntoquery parameter. Read from URL if omitted.
-	 */
-	private function userWasEditing( ?string $returnTo = null, string|array|null $returnToQuery = null ): bool {
-		$context = RequestContext::getMain();
-		$returnTo ??= $context->getRequest()->getText( 'returnto' );
-		$returntoTitle = ( $returnTo !== '' ) ? $this->titleFactory->newFromText( $returnTo ) : null;
-		if ( $returnToQuery === null ) {
-			$returnToQuery = wfCgiToArray( $context->getRequest()->getText( 'returntoquery' ) );
-		} elseif ( is_string( $returnToQuery ) ) {
-			$returnToQuery = wfCgiToArray( $returnToQuery );
-		}
-		return $this->isEditing( $returntoTitle, $returnToQuery );
-	}
-
 	/** @inheritDoc */
 	public function onSpecialPageBeforeExecute( $special, $subPage ): bool {
 		$context = $special->getContext();
@@ -133,9 +99,13 @@ class WelcomeSurveyHooks implements
 			}
 		} elseif (
 			$special instanceof SpecialCreateAccount
-			&& $user->isAnon() && $this->userWasEditing()
+			&& $user->isAnon()
+			&& $this->onboardingEligibility->userWasEditing(
+				$context->getRequest()->getText( 'returnto' ),
+				wfCgiToArray( $context->getRequest()->getText( 'returntoquery' ) )
+			)
 			&& !Util::isMobile( $context->getSkin() )
-			&& $this->shouldShowWelcomeSurvey( $context )
+			&& $this->onboardingEligibility->canShowOnboarding( $context )
 		) {
 			$context->getOutput()->addModules( 'ext.growthExperiments.MidEditSignup' );
 			$context->getOutput()->addJsConfigVars( 'wgGEMidEditSignup', true );
@@ -157,7 +127,7 @@ class WelcomeSurveyHooks implements
 				( $out->getJsConfigVars()['wgPostEdit'] ?? false )
 				// Also load the module if the editor is open, as some editors save without
 				// reloading the page.
-				|| $this->isEditing( $out->getTitle(), $out->getRequest()->getQueryValues() )
+				|| $this->onboardingEligibility->isEditing( $out->getTitle(), $out->getRequest()->getQueryValues() )
 			)
 		) {
 			$out->addModules( 'ext.growthExperiments.MidEditSignup' );
@@ -171,7 +141,7 @@ class WelcomeSurveyHooks implements
 		}
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $user );
-		if ( $autocreated || !$this->shouldShowWelcomeSurvey( $context ) ) {
+		if ( $autocreated || !$this->onboardingEligibility->canShowOnboarding( $context ) ) {
 			return true;
 		}
 		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser(), true ) ) {
@@ -208,7 +178,7 @@ class WelcomeSurveyHooks implements
 		}
 
 		$context = RequestContext::getMain();
-		if ( !$this->shouldShowWelcomeSurvey( $context ) ) {
+		if ( !$this->onboardingEligibility->canShowOnboarding( $context ) ) {
 			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
 			return true;
 		}
@@ -223,7 +193,7 @@ class WelcomeSurveyHooks implements
 			return true;
 		}
 
-		if ( $this->userWasEditing( $returnTo, $returnToQuery ) ) {
+		if ( $this->onboardingEligibility->userWasEditing( $returnTo, wfCgiToArray( $returnToQuery ) ) ) {
 			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
 			return true;
 		}
@@ -258,7 +228,7 @@ class WelcomeSurveyHooks implements
 		if ( $type !== 'signup'
 			 // handled by onCentralAuthPostLoginRedirect
 			|| ExtensionRegistry::getInstance()->isLoaded( 'CentralAuth' )
-			|| !$this->shouldShowWelcomeSurvey( $context )
+			|| !$this->onboardingEligibility->canShowOnboarding( $context )
 		) {
 			return true;
 		}
@@ -270,7 +240,7 @@ class WelcomeSurveyHooks implements
 		$group = $welcomeSurvey->getGroup();
 		$welcomeSurvey->saveGroup( $group );
 
-		if ( $this->userWasEditing( $returnTo, $returnToQuery ) ) {
+		if ( $this->onboardingEligibility->userWasEditing( $returnTo, $returnToQuery ) ) {
 			return true;
 		}
 
@@ -281,14 +251,6 @@ class WelcomeSurveyHooks implements
 		$returnToQuery = $welcomeSurvey->getRedirectUrlQuery( $group, $oldReturnTo, wfArrayToCgi( $oldReturnToQuery ) );
 		$type = 'successredirect';
 		return false;
-	}
-
-	private function shouldShowWelcomeSurvey( IContextSource $context ): bool {
-		$loginHelper = new LoginHelper( $context );
-		return $this->isWelcomeSurveyEnabled()
-			&& !$context->getUser()->isTemp()
-			&& !$this->campaignConfig->shouldSkipWelcomeSurvey( $this->campaignLoader->getCampaign() )
-			&& !$loginHelper->isDisplayModePopup();
 	}
 
 }

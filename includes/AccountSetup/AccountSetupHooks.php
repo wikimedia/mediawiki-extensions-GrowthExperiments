@@ -46,6 +46,7 @@ class AccountSetupHooks implements
 		private readonly UserIdentityUtils $userIdentityUtils,
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly RedirectLookup $redirectLookup,
+		private readonly PostSignupOnboardingEligibility $onboardingEligibility,
 	) {
 	}
 
@@ -80,30 +81,6 @@ class AccountSetupHooks implements
 		$preferences[self::ACCOUNT_SETUP_MOTIVATION_PROP] = [
 			'type' => 'api',
 		];
-	}
-
-	/**
-	 * True if the user started the registration process while in the middle of editing.
-	 * @param string $returnTo
-	 * @param string[] $returnToQuery
-	 */
-	private function userWasEditing( string $returnTo, array $returnToQuery ): bool {
-		$returntoTitle = ( $returnTo !== '' ) ? $this->titleFactory->newFromText( $returnTo ) : null;
-		return $this->isEditing( $returntoTitle, $returnToQuery );
-	}
-
-	/**
-	 * Check if a given title + query string means some kind of editor is open.
-	 */
-	private function isEditing( ?Title $title, array $query ): bool {
-		return $title && $title->canExist() && (
-				// normal editor, VE with some settings
-				( $query['action'] ?? null ) === 'edit'
-				// VE
-				|| ( $query['veaction'] ?? null ) === 'edit'
-				// mobile editor
-				|| str_starts_with( $title->getFragment(), '/editor/' )
-			);
 	}
 
 	/** @inheritDoc */
@@ -176,7 +153,7 @@ class AccountSetupHooks implements
 			return null;
 		}
 
-		if ( $this->userWasEditing( $returnTo, $returnToQuery ) ) {
+		if ( $this->onboardingEligibility->userWasEditing( $returnTo, $returnToQuery ) ) {
 			return null;
 		}
 

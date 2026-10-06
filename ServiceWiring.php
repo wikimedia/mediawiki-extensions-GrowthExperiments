@@ -1,6 +1,7 @@
 <?php
 
 use CirrusSearch\CirrusSearchServices;
+use GrowthExperiments\AccountSetup\PostSignupOnboardingEligibility;
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\Config\MediaWikiConfigReaderWrapper;
 use GrowthExperiments\EventLogging\PersonalizedPraiseLogger;
@@ -901,6 +902,18 @@ return [
 			$services->getUserFactory(),
 			$services->getTitleFactory(),
 			$services->getRevisionLookup()
+		);
+	},
+
+	'GrowthExperimentsPostSignupOnboardingEligibility' => static function (
+		MediaWikiServices $services
+	): PostSignupOnboardingEligibility {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new PostSignupOnboardingEligibility(
+			$services->getMainConfig(),
+			$services->getTitleFactory(),
+			$geServices->getGrowthExperimentsCampaignConfig(),
+			$services->get( 'GrowthExperimentsCampaignLoader' ),
 		);
 	},
 
