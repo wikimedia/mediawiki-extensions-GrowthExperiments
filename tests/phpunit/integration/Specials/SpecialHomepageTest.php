@@ -116,29 +116,18 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	}
 
 	/**
+	 * AccountSetupHooks sends the exposure after the signup. The page must not send it again.
+	 *
 	 * @covers ::execute
 	 */
-	public function testSendsExposureWhenAccountSetupIsShown(): void {
+	public function testDoesNotSendExposureWhenAccountSetupIsShown(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
 		$user = $this->enableHomepageForTesting();
-		$this->mockEarlyOnboardingTreatment();
-		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->once() );
-
-		$response = $this->executeSpecialPage( '', null, null, $user );
-		$this->assertStringContainsString( 'growthexperiments-account_setup', $response[0] );
-	}
-
-	/**
-	 * @covers ::execute
-	 */
-	public function testDoesNotSendExposureWhenAccountSetupIsDone(): void {
-		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
-		$user = $this->enableHomepageForTestingWithReadingUser();
 		$this->mockEarlyOnboardingTreatment();
 		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->never() );
 
 		$response = $this->executeSpecialPage( '', null, null, $user );
-		$this->assertStringNotContainsString( 'growthexperiments-account_setup', $response[0] );
+		$this->assertStringContainsString( 'growthexperiments-account_setup', $response[0] );
 	}
 
 	private function mockEarlyOnboardingTreatment(): void {

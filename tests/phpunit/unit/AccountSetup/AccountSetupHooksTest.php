@@ -8,10 +8,15 @@ use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\AccountSetup\PostSignupOnboardingEligibility;
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use MediaWiki\Config\HashConfig;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentInterface;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
@@ -19,6 +24,7 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWikiUnitTestCase;
+use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 
 /**
  * @covers \GrowthExperiments\AccountSetup\AccountSetupHooks
@@ -292,6 +298,83 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $sut->onLocalUserCreated( $user, false ) );
 	}
 
+	public static function provideExposure(): iterable {
+		yield 'treatment' => [ [ 'earlyOnboarding' => true ], true ];
+		yield 'control' => [ [ 'control' => true ], true ];
+		yield 'not in the experiment' => [ [], false ];
+		yield 'treatment, user was editing' => [
+			[ 'earlyOnboarding' => true, 'returnToTitle' => [ 'canExist' => true, 'fragment' => '' ] ],
+			false,
+			[ 'action' => 'edit' ],
+		];
+		yield 'control, user was editing' => [
+			[ 'control' => true, 'returnToTitle' => [ 'canExist' => true, 'fragment' => '' ] ],
+			false,
+			[ 'action' => 'edit' ],
+		];
+		yield 'treatment, campaign skips onboarding' => [
+			[ 'earlyOnboarding' => true, 'skipCampaign' => true ],
+			false,
+		];
+		yield 'control, popup signup' => [ [ 'control' => true, 'request' => [ 'display' => 'popup' ] ], false ];
+	}
+
+	/**
+	 * @dataProvider provideExposure
+	 */
+	public function testOnPostLoginRedirectSendsExposure(
+		array $overrides, bool $expectExposure, array $returnToQuery = []
+	): void {
+		$this->skipIfTestKitchenIsMissing();
+		$sut = $this->newAccountSetupHooks( $overrides + [
+			'experimentManager' => $this->newExperimentManagerExpectingExposures(
+				$expectExposure ? $this->once() : $this->never()
+			),
+		] );
+		$returnTo = 'Foo:Bar';
+		$type = 'signup';
+
+		$sut->onPostLoginRedirect( $returnTo, $returnToQuery, $type );
+	}
+
+	/**
+	 * The redirect does not depend on the exposure checks. The treatment group still gets
+	 * the Account Setup flow after a signup from a campaign that skips the Welcome Survey.
+	 */
+	public function testOnPostLoginRedirectRedirectsTreatmentWithoutExposure(): void {
+		$this->skipIfTestKitchenIsMissing();
+		$sut = $this->newAccountSetupHooks( [
+			'earlyOnboarding' => true,
+			'skipCampaign' => true,
+			'experimentManager' => $this->newExperimentManagerExpectingExposures( $this->never() ),
+		] );
+		$returnTo = 'Foo:Bar';
+		$returnToQuery = [];
+		$type = 'signup';
+
+		$sut->onPostLoginRedirect( $returnTo, $returnToQuery, $type );
+
+		$this->assertSame( 'Special:Homepage', $returnTo );
+	}
+
+	private function skipIfTestKitchenIsMissing(): void {
+		if ( !interface_exists( ExperimentManagerInterface::class ) ) {
+			$this->markTestSkipped( 'TestKitchen extension is not installed.' );
+		}
+	}
+
+	private function newExperimentManagerExpectingExposures(
+		InvocationOrder $expectedExposures
+	): ExperimentManagerInterface {
+		$experiment = $this->createMock( ExperimentInterface::class );
+		$experiment->expects( $expectedExposures )->method( 'sendExposure' );
+		$experimentManager = $this->createMock( ExperimentManagerInterface::class );
+		$experimentManager->method( 'getExperiment' )
+			->with( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST )
+			->willReturn( $experiment );
+		return $experimentManager;
+	}
+
 	private function newUser( bool $isTemp = false ): User {
 		$user = $this->createMock( User::class );
 		$user->method( 'isTemp' )->willReturn( $isTemp );
@@ -311,7 +394,16 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 			$featureManager = $this->createMock( FeatureManager::class );
 			$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )
 				->willReturn( $overrides['earlyOnboarding'] ?? false );
+			$featureManager->method( 'isEarlyOnboardingExperimentControl' )
+				->willReturn( $overrides['control'] ?? false );
 		}
+
+		$context = RequestContext::getMain();
+		$context->setUser( $this->newUser( $overrides['isTemp'] ?? false ) );
+		$context->setRequest( new FauxRequest( $overrides['request'] ?? [] ) );
+
+		$campaignConfig = $this->createMock( CampaignConfig::class );
+		$campaignConfig->method( 'shouldSkipWelcomeSurvey' )->willReturn( $overrides['skipCampaign'] ?? false );
 
 		$titleFactory = $this->createMock( TitleFactory::class );
 		if ( isset( $overrides['returnToTitle'] ) ) {
@@ -341,9 +433,10 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 			new PostSignupOnboardingEligibility(
 				new HashConfig( [ 'WelcomeSurveyEnabled' => true ] ),
 				$titleFactory,
-				$this->createNoOpMock( CampaignConfig::class ),
-				$this->createNoOpMock( CampaignLoader::class ),
+				$campaignConfig,
+				$this->createMock( CampaignLoader::class ),
 			),
+			$overrides['experimentManager'] ?? null,
 		);
 	}
 

@@ -6,9 +6,11 @@ namespace GrowthExperiments\AccountSetup;
 
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\IExperimentManager;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CentralAuth\Hooks\CentralAuthPostLoginRedirectHook;
+use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -47,6 +49,7 @@ class AccountSetupHooks implements
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly RedirectLookup $redirectLookup,
 		private readonly PostSignupOnboardingEligibility $onboardingEligibility,
+		private readonly ?ExperimentManagerInterface $experimentManager = null,
 	) {
 	}
 
@@ -149,7 +152,20 @@ class AccountSetupHooks implements
 	private function maybeRedirectToHomepage( string &$returnTo, array $returnToQuery ): ?array {
 		$context = RequestContext::getMain();
 		$user = $context->getUser();
-		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user, true ) ) {
+		$isTreatment = $this->featureManager->isEarlyOnboardingExperimentTreatment( $user, true );
+		$isControl = $this->featureManager->isEarlyOnboardingExperimentControl( $user, true );
+		$shouldStartOnboarding = $this->onboardingEligibility->shouldStartOnboarding(
+			$context,
+			$returnTo,
+			$returnToQuery
+		);
+		if ( $shouldStartOnboarding && ( $isTreatment || $isControl ) ) {
+			$this->experimentManager
+				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST )
+				->sendExposure();
+		}
+
+		if ( !$isTreatment ) {
 			return null;
 		}
 

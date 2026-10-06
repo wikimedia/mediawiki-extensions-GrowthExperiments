@@ -84,34 +84,13 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 	}
 
 	/**
+	 * AccountSetupHooks sends the exposure after the signup. The page must not send it again.
+	 *
 	 * @covers ::execute
 	 */
-	public function testSendsExposureWhenFormIsShownToControlGroup(): void {
+	public function testDoesNotSendExposureWhenFormIsShownToControlGroup(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
 		$this->mockEarlyOnboardingControl( true );
-		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->once() );
-
-		$this->executeSpecialPage( '', null, 'en', $this->getTestUser()->getUser() );
-	}
-
-	/**
-	 * @covers ::execute
-	 */
-	public function testDoesNotSendExposureWhenFormIsPosted(): void {
-		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
-		$this->mockEarlyOnboardingControl( true );
-		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->never() );
-
-		$request = new FauxRequest( [ 'reason' => 'placeholder' ], true );
-		$this->executeSpecialPage( '', $request, 'en', $this->getMutableTestUser()->getUser() );
-	}
-
-	/**
-	 * @covers ::execute
-	 */
-	public function testDoesNotSendExposureOutsideControlGroup(): void {
-		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
-		$this->mockEarlyOnboardingControl( false );
 		$this->experimentManager = $this->newExperimentManagerExpectingExposures( $this->never() );
 
 		$this->executeSpecialPage( '', null, 'en', $this->getTestUser()->getUser() );
