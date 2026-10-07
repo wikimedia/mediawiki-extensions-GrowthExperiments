@@ -44,13 +44,13 @@
 			<task-types-dialog
 				:open="openPanel === 'taskTypes'"
 				@update:open="closePanel"
-				@saved="reload"></task-types-dialog>
+				@saved="onTaskTypesSaved"></task-types-dialog>
 		</module-header-menu>
 	</teleport>
 </template>
 
 <script>
-const { defineComponent, ref } = require( 'vue' );
+const { computed, defineComponent, ref } = require( 'vue' );
 const {
 	FeedPanel,
 	FULL_LIMIT,
@@ -59,6 +59,7 @@ const {
 } = require( 'ext.personalDashboard.common' );
 const TaskCard = require( './TaskCard.vue' );
 const TaskTypesDialog = require( './TaskTypesDialog.vue' );
+const { newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
 const { useSuggestedEditsFeed } = require( './useSuggestedEditsFeed.js' );
 const { cdxIconChartBar, cdxIconConfigure } = require( './icons.json' );
 
@@ -100,6 +101,8 @@ module.exports = defineComponent( {
 		// than a flag each: the menu opens one panel at a time.
 		const openPanel = ref( null );
 
+		const selectedTaskTypeCount = ref( newcomerTasks.filters.getSelectedTaskTypes().length );
+
 		// Here rather than in mounted(): load() raises the loading flag before it
 		// awaits anything, and mounted() runs after the first render, so deferring
 		// it paints the empty-state line for a frame on every mount.
@@ -113,14 +116,17 @@ module.exports = defineComponent( {
 			closePanel: () => {
 				openPanel.value = null;
 			},
-			reload: () => load( FULL_LIMIT ),
+			onTaskTypesSaved: () => {
+				selectedTaskTypeCount.value = newcomerTasks.filters.getSelectedTaskTypes().length;
+				load( FULL_LIMIT );
+			},
 			/*
 			 * The interests item does not open anything yet. The interest picker,
 			 * though it is Vue, is written against the whole Codex library rather
 			 * than the tree-shaken subset an island gets. Reusing it is its own
 			 * task (T439432); the item is here so the menu reads as designed.
 			 */
-			menuItems: [
+			menuItems: computed( () => [
 				{
 					value: 'interests',
 					label: mw.msg( 'growthexperiments-homepage-suggestededits-menu-interests' ),
@@ -129,9 +135,13 @@ module.exports = defineComponent( {
 				{
 					value: 'taskTypes',
 					label: mw.msg( 'growthexperiments-homepage-suggestededits-menu-tasktypes' ),
+					description: mw.message(
+						'growthexperiments-homepage-suggestededits-menu-tasktypes-selected',
+						mw.language.convertNumber( selectedTaskTypeCount.value ),
+					).text(),
 					icon: cdxIconChartBar,
 				},
-			],
+			] ),
 			// The footer, not a third ordinary item: design shows a divider above
 			// it, and that is what Codex gives a menu footer.
 			menuFooterItem: {
