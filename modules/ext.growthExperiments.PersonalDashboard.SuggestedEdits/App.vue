@@ -41,6 +41,10 @@
 				@update:open="closePanel">
 				<p>{{ aboutBody }}</p>
 			</module-panel>
+			<task-types-dialog
+				:open="openPanel === 'taskTypes'"
+				@update:open="closePanel"
+				@saved="reload"></task-types-dialog>
 		</module-header-menu>
 	</teleport>
 </template>
@@ -54,6 +58,7 @@ const {
 	ModulePanel,
 } = require( 'ext.personalDashboard.common' );
 const TaskCard = require( './TaskCard.vue' );
+const TaskTypesDialog = require( './TaskTypesDialog.vue' );
 const { useSuggestedEditsFeed } = require( './useSuggestedEditsFeed.js' );
 const { cdxIconChartBar, cdxIconConfigure } = require( './icons.json' );
 
@@ -63,6 +68,7 @@ module.exports = defineComponent( {
 		ModuleHeaderMenu,
 		ModulePanel,
 		TaskCard,
+		TaskTypesDialog,
 	},
 	// The compact/full island props (detail, focused, active) are never declared
 	// here: they ride in $attrs and are forwarded untouched to the scaffold,
@@ -107,12 +113,12 @@ module.exports = defineComponent( {
 			closePanel: () => {
 				openPanel.value = null;
 			},
+			reload: () => load( FULL_LIMIT ),
 			/*
-			 * Neither filter item opens anything yet. The task type picker is
-			 * still OOUI (TaskTypeSelectionWidget.js), and the interest picker,
+			 * The interests item does not open anything yet. The interest picker,
 			 * though it is Vue, is written against the whole Codex library rather
-			 * than the tree-shaken subset an island gets. Reusing either is its
-			 * own task; the items are here so the menu reads as designed.
+			 * than the tree-shaken subset an island gets. Reusing it is its own
+			 * task (T439432); the item is here so the menu reads as designed.
 			 */
 			menuItems: [
 				{

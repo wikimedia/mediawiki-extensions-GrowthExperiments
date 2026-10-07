@@ -952,12 +952,17 @@
 			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.PersonalDashboard.SuggestedEdits",
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"codexComponents": [
-				"CdxIcon"
+				"CdxCheckbox",
+				"CdxDialog",
+				"CdxField",
+				"CdxIcon",
+				"CdxMessage"
 			],
 			"packageFiles": [
 				"index.js",
 				"App.vue",
 				"TaskCard.vue",
+				"TaskTypesDialog.vue",
 				"useSuggestedEditsFeed.js",
 				"../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 				{
@@ -973,11 +978,21 @@
 			"dependencies": [
 				"vue",
 				"mediawiki.api",
+				"mediawiki.jqueryMsg",
+				"mediawiki.language",
 				"mediawiki.util",
 				"ext.growthExperiments.DataStore"
 			],
 			"messages": [
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label",
 				"growthexperiments-homepage-suggestededits-about-body",
+				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
+				"growthexperiments-homepage-suggestededits-difficulty-filters-cancel",
+				"growthexperiments-homepage-suggestededits-difficulty-filters-close",
+				"growthexperiments-homepage-suggestededits-difficulty-filters-subtitle-count",
+				"growthexperiments-homepage-suggestededits-difficulty-filters-title",
 				"growthexperiments-homepage-suggestededits-menu-about",
 				"growthexperiments-homepage-suggestededits-menu-button-label",
 				"growthexperiments-homepage-suggestededits-menu-interests",
@@ -985,6 +1000,7 @@
 				"growthexperiments-homepage-suggestededits-mobilesummary-footer-button",
 				"growthexperiments-homepage-suggestededits-no-results",
 				"growthexperiments-homepage-suggestededits-progress-bar-aria-label",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-tasktype-name-copyedit",
 				"growthexperiments-homepage-suggestededits-tasktype-name-expand",
 				"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation",
