@@ -180,9 +180,14 @@ module.exports = exports = defineComponent( {
 </script>
 
 <style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .ext-growthExperiments-interest-selector-dialog {
 	&__task-count {
 		margin-top: 0;
+		color: @color-subtle;
+		font-size: @font-size-medium;
+		line-height: @line-height-small;
 	}
 
 	.cdx-dialog__header {
