@@ -38,9 +38,16 @@ export default defineConfig( {
 				LocalSettingsSetup.overrideLocalSettings();
 				await LocalSettingsSetup.resetPhpFpmOpCache();
 
+				if ( process.env.MW_SKIP_MAINTENANCE ) {
+					console.log( 'Skipping GrowthExperiments:PrepareBrowserTests maintenance script' );
+					return;
+				}
+
 				const ip = process.env.MW_INSTALL_PATH || '../..';
 				const command = process.env.MW_MAINTENANCE_COMMAND || 'php';
-				const maintScriptRunnerArgs = process.env.MW_MAINTENANCE_ARGS ? process.env.MW_MAINTENANCE_ARGS.split( ' ' ) : [ 'maintenance/run.php' ];
+				const maintScriptRunnerArgs = process.env.MW_MAINTENANCE_ARGS ?
+					process.env.MW_MAINTENANCE_ARGS.split( ' ' ) :
+					[ 'maintenance/run.php' ];
 				const maintScriptResult = childProcess.spawnSync(
 					command,
 					[
@@ -49,6 +56,9 @@ export default defineConfig( {
 					],
 					{ cwd: ip },
 				);
+				if ( maintScriptResult.error ) {
+					throw maintScriptResult.error;
+				}
 				console.log( 'stdout:' );
 				console.log( String( maintScriptResult.stdout ) );
 				console.log( 'stderr:' );

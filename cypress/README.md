@@ -10,12 +10,18 @@ export MEDIAWIKI_USER=an_admin_username
 export MEDIAWIKI_PASSWORD=the_password_for_that_user
 ```
 
-In running the tests in headless mode requires executing a maintenance script.
+Running the tests in headless mode requires executing a maintenance script.
 If that works for your local setup in a non-standard way (i.e., not using `php` and `maintenance/run.php`),
 then you can configure your custom setup with further variables:
 ```bash
 export MW_MAINTENANCE_COMMAND=mw
 export MW_MAINTENANCE_ARGS='docker mediawiki mwscript --'
+```
+
+If you are running the tests in an environment without PHP (such as `fresh-node`)
+or have already prepared your test database, you can skip running the maintenance script:
+```bash
+export MW_SKIP_MAINTENANCE=1
 ```
 
 ## Run the tests
