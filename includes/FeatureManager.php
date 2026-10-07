@@ -23,6 +23,10 @@ class FeatureManager {
 	) {
 	}
 
+	public function isGEHomeEnabled(): bool {
+		return $this->growthConfig->get( 'GEHomeEnabled' );
+	}
+
 	public function areLinkRecommendationsEnabled(): bool {
 		return $this->growthConfig->get( 'GENewcomerTasksLinkRecommendationsEnabled' );
 	}
