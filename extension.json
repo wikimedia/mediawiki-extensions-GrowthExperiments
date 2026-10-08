@@ -2945,7 +2945,7 @@
 		},
 		"GEHomeEnabled": {
 			"description": "Feature flag that controls if the Home experience shipped in November 2026 is enabled",
-			"value": "false"
+			"value": false
 		},
 		"WelcomeSurveyEnabled": {
 			"description": "Global ON/OFF switch for the Welcome survey feature.",
