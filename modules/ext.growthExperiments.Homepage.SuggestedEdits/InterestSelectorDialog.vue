@@ -49,7 +49,7 @@ module.exports = exports = defineComponent( {
 			default: false,
 		},
 	},
-	emits: [ 'update:open' ],
+	emits: [ 'update:open', 'saved' ],
 	setup( props, { emit } ) {
 		const tasksStore = rootStore.newcomerTasks;
 		const filtersStore = tasksStore.filters;
@@ -117,12 +117,14 @@ module.exports = exports = defineComponent( {
 		}, { immediate: true } );
 
 		/**
-		 * Store the selection, rebuild the task queue from it and close the dialog.
+		 * Store the selection, report it and close the dialog.
 		 *
-		 * The queue is fetched without passing any interests, so that the API reads the ones
-		 * just stored and can cache the result. That only works once the preference has been
-		 * written, hence the refetch waiting on the save. The store is updated before the
-		 * dialog closes, so that dismissing it afterwards has nothing to discard.
+		 * The caller rebuilds its own suggestions, because the dashboard island and the
+		 * Homepage module hold different ones. "saved" waits on the save: the caller asks
+		 * the API without any interests, so that it reads the ones just stored and can cache
+		 * the result, and that only works once the preference is written. The store is
+		 * updated before the dialog closes, so that dismissing it afterwards has nothing to
+		 * discard.
 		 */
 		function saveSelection() {
 			const interests = chips.value.map( ( chip ) => chip.value );
@@ -133,7 +135,7 @@ module.exports = exports = defineComponent( {
 				filtersStore.setSelectedInterests( interests );
 				mw.user.options.set( INTERESTS_PREF, prefValue );
 				new mw.Api().saveOption( INTERESTS_PREF, prefValue ).then(
-					() => tasksStore.fetchTasks( 'interestSelectorDialog.saveSelection' ),
+					() => emit( 'saved' ),
 				).catch( ( error ) => {
 					mw.errorLogger.logError(
 						new Error( 'Unable to save selected interests: ' + error ),

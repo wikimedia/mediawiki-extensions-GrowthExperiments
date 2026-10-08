@@ -41,6 +41,7 @@ function getInterestSelectorOpenRef() {
 	}
 	const Vue = require( 'vue' );
 	const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
+	const rootStore = require( 'ext.growthExperiments.DataStore' );
 	interestSelectorOpen = Vue.ref( false );
 	const mountPoint = document.createElement( 'div' );
 	mountPoint.classList.add( 'growth-experiments-interest-selector-vue-app' );
@@ -51,6 +52,9 @@ function getInterestSelectorOpenRef() {
 			'onUpdate:open': ( value ) => {
 				interestSelectorOpen.value = value;
 			},
+			// The dialog stores the selection but rebuilds no suggestions, because each
+			// of its callers holds its own. This one holds the module's task queue.
+			onSaved: () => rootStore.newcomerTasks.fetchTasks( 'interestSelectorDialog.saveSelection' ),
 		} ),
 	} ).mount( mountPoint );
 	// The selector is mounted on the body rather than inside the mobile overlay, so closing

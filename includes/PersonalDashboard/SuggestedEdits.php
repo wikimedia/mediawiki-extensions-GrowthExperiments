@@ -7,7 +7,6 @@ namespace GrowthExperiments\PersonalDashboard;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits as HomepageSuggestedEdits;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
-use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\PersonalDashboard\Modules\BaseModule;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -33,7 +32,6 @@ class SuggestedEdits extends BaseModule {
 		IContextSource $context,
 		private readonly FeatureManager $featureManager,
 		private readonly NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		private readonly TaskSetFiltersFactory $taskSetFiltersFactory,
 		private readonly UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( $context, shouldWrapModuleWithLink: true );
@@ -91,14 +89,25 @@ class SuggestedEdits extends BaseModule {
 			 */
 			'GESuggestedEditsDescriptionsAvailable' =>
 				ExtensionRegistry::getInstance()->isLoaded( 'WikibaseClient' ),
-			// What FiltersStore chooses between topics and interests on. Ask the factory
-			// rather than the experiment, so the front end cannot disagree with it.
+			// What FiltersStore chooses between topics and interests on.
 			'GEHomepageSuggestedEditsEnableTopics' => HomepageSuggestedEdits::isTopicMatchingEnabled(
 				$this->getContext(),
 				$this->userOptionsLookup
 			),
-			'GEHomepageSuggestedEditsEnableInterests' => $this->taskSetFiltersFactory
-				->usesInterestFilters( $this->getUser() ),
+			// Home filters by interests for every user it serves, and not only for the users
+			// that the experiment gives interest filters to. FiltersStore reads this flag.
+			// GrowthTasksApi then sends the useinterests parameter, which makes the API
+			// apply the stored interests for these users too.
+			'GEHomepageSuggestedEditsEnableInterests' => true,
+			// The number of interests above which the selector stops suggesting more.
+			// Keep the name: the shared interest selector reads it, and Special:Homepage
+			// gives it the same one.
+			'wgGENewcomerTasksMaxInterestsForQueries' => $this->getConfig()
+				->get( 'GENewcomerTasksMaxInterestsForQueries' ),
+			// The interests the user stored. FiltersStore reads them for the menu and
+			// for the selector, which otherwise opens empty and saves over them.
+			'wgGEInterestArticles' => $this->newcomerTasksUserOptionsLookup
+				->getInterests( $this->getUser() ),
 		];
 	}
 }

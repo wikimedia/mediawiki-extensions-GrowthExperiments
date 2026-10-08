@@ -187,6 +187,12 @@
 			// set, so sending an empty list here is a different request, not a no-op.
 			if ( filters.hasSelection() ) {
 				apiParams.ggtinterests = filters.getInterests();
+			} else {
+				// The caller asks for the stored interests, so tell the API that this surface
+				// filters by interests. The API reads them for the users in the experiment
+				// anyway, and this adds the users of a surface that filters by interests for
+				// everyone it serves.
+				apiParams.ggtuseinterests = 1;
 			}
 		} else if ( filters ) {
 			if ( filters.hasFilters() ) {

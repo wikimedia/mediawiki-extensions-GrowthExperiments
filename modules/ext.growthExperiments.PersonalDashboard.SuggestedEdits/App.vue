@@ -45,6 +45,11 @@
 				:open="openPanel === 'taskTypes'"
 				@update:open="closePanel"
 				@saved="onTaskTypesSaved"></task-types-dialog>
+			<interest-selector-dialog
+				:stacked-actions="true"
+				:open="openPanel === 'interests'"
+				@update:open="closePanel"
+				@saved="onInterestsSaved"></interest-selector-dialog>
 		</module-header-menu>
 	</teleport>
 </template>
@@ -59,6 +64,7 @@ const {
 } = require( 'ext.personalDashboard.common' );
 const TaskCard = require( './TaskCard.vue' );
 const TaskTypesDialog = require( './TaskTypesDialog.vue' );
+const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
 const { newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
 const { useSuggestedEditsFeed } = require( './useSuggestedEditsFeed.js' );
 const { cdxIconChartBar, cdxIconConfigure } = require( './icons.json' );
@@ -66,6 +72,7 @@ const { cdxIconChartBar, cdxIconConfigure } = require( './icons.json' );
 module.exports = defineComponent( {
 	components: {
 		FeedPanel,
+		InterestSelectorDialog,
 		ModuleHeaderMenu,
 		ModulePanel,
 		TaskCard,
@@ -120,12 +127,9 @@ module.exports = defineComponent( {
 				selectedTaskTypeCount.value = newcomerTasks.filters.getSelectedTaskTypes().length;
 				load( FULL_LIMIT );
 			},
-			/*
-			 * The interests item does not open anything yet. The interest picker,
-			 * though it is Vue, is written against the whole Codex library rather
-			 * than the tree-shaken subset an island gets. Reusing it is its own
-			 * task (T439432); the item is here so the menu reads as designed.
-			 */
+			// The dialog saves the interests, and the API reads them for itself, so the
+			// feed only has to ask again.
+			onInterestsSaved: () => load( FULL_LIMIT ),
 			menuItems: computed( () => [
 				{
 					value: 'interests',

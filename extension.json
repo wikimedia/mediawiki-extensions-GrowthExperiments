@@ -842,7 +842,6 @@
 					"services": [
 						"GrowthExperimentsFeatureManager",
 						"GrowthExperimentsNewcomerTasksUserOptionsLookup",
-						"GrowthExperimentsTaskSetFiltersFactory",
 						"UserOptionsLookup"
 					]
 				}
@@ -970,11 +969,15 @@
 			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.PersonalDashboard.SuggestedEdits",
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"codexComponents": [
+				"CdxCard",
 				"CdxCheckbox",
 				"CdxDialog",
 				"CdxField",
 				"CdxIcon",
-				"CdxMessage"
+				"CdxMessage",
+				"CdxMultiselectLookup",
+				"CdxProgressBar",
+				"useModelWrapper"
 			],
 			"packageFiles": [
 				"index.js",
@@ -982,6 +985,15 @@
 				"TaskCard.vue",
 				"TaskTypesDialog.vue",
 				"useSuggestedEditsFeed.js",
+				{
+					"name": "InterestSelectorDialog.vue",
+					"file": "../ext.growthExperiments.Homepage.SuggestedEdits/InterestSelectorDialog.vue"
+				},
+				{
+					"name": "InterestSelector.vue",
+					"file": "../vue-components/InterestSelector.vue"
+				},
+				"../ext.growthExperiments.DataStore/InterestFilters.js",
 				"../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
 				{
 					"name": "icons.json",
@@ -999,6 +1011,7 @@
 				"mediawiki.jqueryMsg",
 				"mediawiki.language",
 				"mediawiki.util",
+				"mediawiki.user",
 				"ext.growthExperiments.DataStore"
 			],
 			"messages": [
@@ -1011,6 +1024,10 @@
 				"growthexperiments-homepage-suggestededits-difficulty-filters-close",
 				"growthexperiments-homepage-suggestededits-difficulty-filters-subtitle-count",
 				"growthexperiments-homepage-suggestededits-difficulty-filters-title",
+				"growthexperiments-homepage-suggestededits-interest-filters-cancel",
+				"growthexperiments-homepage-suggestededits-interest-filters-close",
+				"growthexperiments-homepage-suggestededits-interest-filters-title",
+				"growthexperiments-homepage-suggestededits-interest-selector-article-count",
 				"growthexperiments-homepage-suggestededits-menu-about",
 				"growthexperiments-homepage-suggestededits-menu-button-label",
 				"growthexperiments-homepage-suggestededits-menu-interests",
@@ -1028,7 +1045,14 @@
 				"growthexperiments-homepage-suggestededits-tasktype-name-references",
 				"growthexperiments-homepage-suggestededits-tasktype-name-revise-tone",
 				"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation",
-				"growthexperiments-homepage-suggestededits-tasktype-name-update"
+				"growthexperiments-homepage-suggestededits-tasktype-name-update",
+				"growthexperiments-interest-selector-a11y-label",
+				"growthexperiments-interest-selector-no-related-articles-found",
+				"growthexperiments-interest-selector-no-results-found",
+				"growthexperiments-interest-selector-placeholder",
+				"growthexperiments-interest-selector-random-articles-heading",
+				"growthexperiments-interest-selector-related-articles-heading",
+				"growthexperiments-interest-selector-success"
 			]
 		},
 		"ext.growthExperiments.PersonalDashboard.Impact.styles": {

@@ -83,12 +83,18 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			'topics', 'interests'
 		);
 		$isPreviewingInterests = $params['interests'] !== null;
+		// The surface that asks says whether it filters by interests for every user it serves.
+		// Special:Home does that. Every other surface leaves the choice to the experiment.
+		$surfaceUsesInterests = $params['useinterests'];
 		if ( $isPreviewingInterests ) {
 			$interests = $this->getUsableInterests( $params['interests'] );
 		} else {
 			// Explicit topics win over stored interests; TaskSetFilters allows only one
 			// of the two.
-			$interests = $topics ? [] : $this->taskSetFiltersFactory->getInterestFilters( $user );
+			$interests = $topics ? [] : $this->taskSetFiltersFactory->getInterestFilters(
+				$user,
+				$surfaceUsesInterests
+			);
 		}
 		$isInterestTaskSet = (bool)$interests;
 		// The cache holds one task set per user. An interest task set is a pool which is
@@ -257,6 +263,10 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				IntegerDef::PARAM_MIN => 1,
 				IntegerDef::PARAM_IGNORE_RANGE => false,
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
+			],
+			'useinterests' => [
+				ParamValidator::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_DEFAULT => false,
 			],
 			'debug' => [
 				ParamValidator::PARAM_TYPE => 'boolean',

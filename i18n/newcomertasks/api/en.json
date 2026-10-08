@@ -8,6 +8,7 @@
 	"apihelp-query+growthtasks-param-topics": "Article topics to prefer in task suggestions.",
 	"apihelp-query+growthtasks-param-topicsmode": "Matching mode for topics.",
 	"apihelp-query+growthtasks-param-interests": "Titles of articles that stand for the user's interests. Suggestions come from articles similar to them. Defaults to the user's stored interests. Cannot be combined with <var>$1topics</var>.",
+	"apihelp-query+growthtasks-param-useinterests": "Filter by the interests stored for the user, even when the suggestions for the user would otherwise follow their topic preferences. Ignored when <var>$1interests</var> or <var>$1topics</var> is given.",
 	"apihelp-query+growthtasks-param-limit": "Maximum number of task suggestions to return.",
 	"apihelp-query+growthtasks-param-excludepageids": "Page IDs to exclude from the query.",
 	"apihelp-query+growthtasks-param-debug": "Add debug data to the output.",

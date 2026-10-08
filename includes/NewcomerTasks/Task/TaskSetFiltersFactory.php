@@ -38,22 +38,32 @@ class TaskSetFiltersFactory {
 	 * cannot disagree with the filters the suggestions were built from.
 	 *
 	 * @param UserIdentity $user
+	 * @param bool $surfaceUsesInterests True when the surface that asks filters by interests
+	 *   for every user it serves. Special:Home does that. Special:Homepage leaves the choice
+	 *   to the experiment, so it keeps the default.
 	 * @return bool
 	 */
-	public function usesInterestFilters( UserIdentity $user ): bool {
-		return $this->featureManager->isEarlyOnboardingExperimentTreatment( $user );
+	public function usesInterestFilters(
+		UserIdentity $user,
+		bool $surfaceUsesInterests = false
+	): bool {
+		return $surfaceUsesInterests
+			|| $this->featureManager->isEarlyOnboardingExperimentTreatment( $user );
 	}
 
 	/**
 	 * Get the interests that limit the suggestions for the given user.
 	 * @param UserIdentity $user
-	 * @return string[] A list of at most MAX_INTERESTS prefixed article titles. Empty when
-	 *   the user is not in the treatment group of the early-onboarding experiment, or has no
-	 *   interests stored.
+	 * @param bool $surfaceUsesInterests See usesInterestFilters().
+	 * @return string[] A list of at most MAX_INTERESTS prefixed article titles. Empty when the
+	 *   suggestions do not follow the interests of the user, or the user has none stored.
 	 * @see \GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic
 	 */
-	public function getInterestFilters( UserIdentity $user ): array {
-		if ( !$this->usesInterestFilters( $user ) ) {
+	public function getInterestFilters(
+		UserIdentity $user,
+		bool $surfaceUsesInterests = false
+	): array {
+		if ( !$this->usesInterestFilters( $user, $surfaceUsesInterests ) ) {
 			return [];
 		}
 		return $this->readInterests( $user );
