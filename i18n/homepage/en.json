@@ -202,6 +202,7 @@
 	"growthexperiments-homepage-suggestededits-progress-bar-aria-label": "Loading suggested edits",
 	"growthexperiments-homepage-suggestededits-menu-button-label": "Suggested edits options",
 	"growthexperiments-homepage-suggestededits-menu-interests": "Interests",
+	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=None selected|$1 selected}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Types of edits",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "$1 selected",
 	"growthexperiments-homepage-suggestededits-menu-about": "About Suggested edits",

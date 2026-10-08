@@ -110,6 +110,8 @@ module.exports = defineComponent( {
 
 		const selectedTaskTypeCount = ref( newcomerTasks.filters.getSelectedTaskTypes().length );
 
+		const selectedInterestCount = ref( newcomerTasks.filters.getSelectedInterests().length );
+
 		// Here rather than in mounted(): load() raises the loading flag before it
 		// awaits anything, and mounted() runs after the first render, so deferring
 		// it paints the empty-state line for a frame on every mount.
@@ -129,11 +131,18 @@ module.exports = defineComponent( {
 			},
 			// The dialog saves the interests, and the API reads them for itself, so the
 			// feed only has to ask again.
-			onInterestsSaved: () => load( FULL_LIMIT ),
+			onInterestsSaved: () => {
+				selectedInterestCount.value = newcomerTasks.filters.getSelectedInterests().length;
+				load( FULL_LIMIT );
+			},
 			menuItems: computed( () => [
 				{
 					value: 'interests',
 					label: mw.msg( 'growthexperiments-homepage-suggestededits-menu-interests' ),
+					description: mw.message(
+						'growthexperiments-homepage-suggestededits-menu-interests-selected',
+						mw.language.convertNumber( selectedInterestCount.value ),
+					).text(),
 					icon: cdxIconConfigure,
 				},
 				{
