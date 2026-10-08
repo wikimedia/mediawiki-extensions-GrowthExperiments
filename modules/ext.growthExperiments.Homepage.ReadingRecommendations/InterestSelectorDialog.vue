@@ -17,8 +17,8 @@
 
 <script>
 const { defineComponent, ref, computed } = require( 'vue' );
-const { CdxDialog } = require( '@wikimedia/codex' );
-const InterestSelector = require( '../vue-components/InterestSelector.vue' );
+const { CdxDialog } = require( './codex.js' );
+const InterestSelector = require( './InterestSelector.vue' );
 
 // @vue/component
 module.exports = defineComponent( {

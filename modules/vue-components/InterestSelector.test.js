@@ -1,4 +1,5 @@
 'use strict';
+jest.mock( './codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
 const { mount, flushPromises } = require( '@vue/test-utils' );
 const { nextTick } = require( 'vue' );
 const InterestSelector = require( './InterestSelector.vue' );

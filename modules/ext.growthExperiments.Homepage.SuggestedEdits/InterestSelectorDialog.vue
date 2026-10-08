@@ -26,8 +26,8 @@
 
 <script>
 const { defineComponent, toRef, ref, watch } = require( 'vue' );
-const { CdxDialog, useModelWrapper } = require( '@wikimedia/codex' );
-const InterestSelector = require( '../vue-components/InterestSelector.vue' );
+const { CdxDialog, useModelWrapper } = require( './codex.js' );
+const InterestSelector = require( './InterestSelector.vue' );
 const InterestFilters = require( '../ext.growthExperiments.DataStore/InterestFilters.js' );
 const rootStore = require( 'ext.growthExperiments.DataStore' );
 

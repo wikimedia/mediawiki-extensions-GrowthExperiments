@@ -1,4 +1,15 @@
 'use strict';
+// ResourceLoader gives this module a tree-shaken Codex at "./codex.js", and the shared
+// interest selector a name at the module root. Neither file is on disk, so supply both
+// here. Each path is the one the file that requires it uses: "./codex.js" for the dialog
+// below, and "../vue-components/codex.js" for the selector itself.
+jest.mock( './codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
+jest.mock( '../vue-components/codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
+jest.mock(
+	'./InterestSelector.vue',
+	() => require( '../vue-components/InterestSelector.vue' ),
+	{ virtual: true },
+);
 
 const EXPERIMENT_NAME = 'de-1-3-1-specialhomepage-onboarding-ab-test';
 

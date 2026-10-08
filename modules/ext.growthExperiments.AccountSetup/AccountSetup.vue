@@ -160,10 +160,10 @@
 <script>
 const { defineComponent, ref, inject, onMounted, watch } = require( 'vue' );
 const { storeToRefs } = require( 'pinia' );
-const { CdxDialog, CdxButton, CdxCard, CdxIcon } = require( '@wikimedia/codex' );
+const { CdxDialog, CdxButton, CdxCard, CdxIcon } = require( './codex.js' );
 const { cdxIconPrevious, cdxIconClose } = require( './codex-icons.json' );
 const useAccountSetupStore = require( './AccountSetupStore.js' );
-const InterestSelector = require( '../vue-components/InterestSelector.vue' );
+const InterestSelector = require( './InterestSelector.vue' );
 
 // @vue/component
 module.exports = defineComponent( {

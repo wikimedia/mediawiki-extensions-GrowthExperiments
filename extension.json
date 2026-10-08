@@ -893,11 +893,25 @@
 		"ext.growthExperiments.AccountSetup": {
 			"localBasePath": "modules/ext.growthExperiments.AccountSetup",
 			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.AccountSetup",
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexComponents": [
+				"CdxButton",
+				"CdxCard",
+				"CdxDialog",
+				"CdxField",
+				"CdxIcon",
+				"CdxMultiselectLookup",
+				"CdxProgressBar",
+				"useModelWrapper"
+			],
 			"packageFiles": [
 				"init.js",
 				"AccountSetup.vue",
 				"AccountSetupStore.js",
-				"../vue-components/InterestSelector.vue",
+				{
+					"name": "InterestSelector.vue",
+					"file": "../vue-components/InterestSelector.vue"
+				},
 				"../utils/sendOnboardingReadyEvent.js",
 				{
 					"name": "codex-icons.json",
@@ -912,7 +926,6 @@
 				"mediawiki.api",
 				"mediawiki.user",
 				"mediawiki.util",
-				"@wikimedia/codex",
 				"vue",
 				"pinia"
 			],
@@ -1391,6 +1404,15 @@
 		"ext.growthExperiments.Homepage.SuggestedEdits": {
 			"localBasePath": "modules/ext.growthExperiments.Homepage.SuggestedEdits",
 			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.Homepage.SuggestedEdits",
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexComponents": [
+				"CdxCard",
+				"CdxDialog",
+				"CdxField",
+				"CdxMultiselectLookup",
+				"CdxProgressBar",
+				"useModelWrapper"
+			],
 			"packageFiles": [
 				"index.js",
 				"../ext.growthExperiments.DataStore/TopicFilters.js",
@@ -1425,7 +1447,10 @@
 				"../utils/IconUtils.js",
 				"../ui-components/SuggestedEditsPeek.js",
 				"../ui-components/SwipePane.js",
-				"../vue-components/InterestSelector.vue"
+				{
+					"name": "InterestSelector.vue",
+					"file": "../vue-components/InterestSelector.vue"
+				}
 			],
 			"styles": [
 				"ArticleCountWidget.less",
@@ -1437,7 +1462,6 @@
 				"TopicSelectionWidget.less"
 			],
 			"dependencies": [
-				"@wikimedia/codex",
 				"vue",
 				"mediawiki.api",
 				"mediawiki.jqueryMsg",
@@ -1581,16 +1605,27 @@
 		"ext.growthExperiments.Homepage.ReadingRecommendations": {
 			"localBasePath": "modules/ext.growthExperiments.Homepage.ReadingRecommendations",
 			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.Homepage.ReadingRecommendations",
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexComponents": [
+				"CdxCard",
+				"CdxDialog",
+				"CdxField",
+				"CdxMultiselectLookup",
+				"CdxProgressBar",
+				"useModelWrapper"
+			],
 			"packageFiles": [
 				"init.js",
 				"InterestSelectorDialog.vue",
-				"../vue-components/InterestSelector.vue"
+				{
+					"name": "InterestSelector.vue",
+					"file": "../vue-components/InterestSelector.vue"
+				}
 			],
 			"dependencies": [
 				"mediawiki.api",
 				"mediawiki.user",
 				"mediawiki.util",
-				"@wikimedia/codex",
 				"vue",
 				"pinia"
 			],

@@ -72,7 +72,7 @@
 
 <script>
 const { defineComponent, ref, watch, toRef, inject, computed } = require( 'vue' );
-const { CdxMultiselectLookup, CdxCard, CdxField, CdxProgressBar, useModelWrapper } = require( '@wikimedia/codex' );
+const { CdxMultiselectLookup, CdxCard, CdxField, CdxProgressBar, useModelWrapper } = require( './codex.js' );
 
 /**
  * @import {Ref} from "vue"
