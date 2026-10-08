@@ -319,10 +319,6 @@ module.exports = defineComponent( {
 		padding: 0;
 	}
 
-	.cdx-dialog__body {
-		height: 100%;
-	}
-
 	&-header {
 		display: flex;
 		padding: @spacing-100 @spacing-150 @spacing-50;
@@ -341,12 +337,17 @@ module.exports = defineComponent( {
 		}
 	}
 
+	.cdx-dialog__body:has( .ext-growthExperiments-account-setup-step-1 ) {
+		height: 100%;
+	}
+
 	&-step-1 {
 		height: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
+		flex-grow: 1;
 
 		&-heading {
 			border: 0;
