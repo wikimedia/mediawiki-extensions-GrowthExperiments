@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Tests\Integration;
 
 use CirrusSearch\HashSearchConfig;
@@ -32,7 +34,7 @@ use Wikimedia\TestingAccessWrapper;
 class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	use HomepageHooksHelpers;
 
-	public function testGetTaskTypesJson() {
+	public function testGetTaskTypesJson(): void {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
 			->onlyMethods( [ 'loadTaskTypes' ] )
 			->getMockForAbstractClass();
@@ -51,7 +53,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @throws ErrorException
 	 */
-	public function testGetTaskTypesJsonParsesNonbreakingSpaceCorrectly() {
+	public function testGetTaskTypesJsonParsesNonbreakingSpaceCorrectly(): void {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
 			->onlyMethods( [ 'loadTaskTypes' ] )
 			->getMockForAbstractClass();
@@ -76,7 +78,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertStringNotContainsString( '&#160', $configData["tt1"]["extraMessages"]["unavailable"] );
 	}
 
-	public function testGetTaskTypesJson_error() {
+	public function testGetTaskTypesJson_error(): void {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
 			->onlyMethods( [ 'loadTaskTypes' ] )
 			->getMockForAbstractClass();
@@ -89,7 +91,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( [ '_error' => '(foo)' ], $configData );
 	}
 
-	public function testGetAQSConfigJson() {
+	public function testGetAQSConfigJson(): void {
 		$config = HomepageHooks::getAQSConfigJson();
 		$this->assertInstanceOf( stdClass::class, $config );
 		$this->assertObjectHasProperty( 'project', $config );
@@ -123,7 +125,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public function testOnRecentChange_save() {
+	public function testOnRecentChange_save(): void {
 		// FIXME: These tests should cover a success case as well, and should
 		// use a data provider for the test cases.
 		$this->overrideConfigValue( 'GEHomepageSuggestedEditsEnabled', true );
@@ -162,7 +164,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertArrayEquals( [ 'foo' ], $recentChange->getAttribute( 'tags' ) );
 	}
 
-	public static function provideTestNewUserProperties() {
+	public static function provideTestNewUserProperties(): iterable {
 		return [
 			[ true, true, IMentorManager::MENTORSHIP_ENABLED, [
 				'GEMentorshipNewAccountEnablePercentage' => 100,

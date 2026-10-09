@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\HomepageHooks;
@@ -16,22 +18,16 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
- * @coversDefaultClass \GrowthExperiments\HomepageHooks
+ * @covers \GrowthExperiments\HomepageHooks
  */
 class HomepageHooksTest extends MediaWikiUnitTestCase {
 	use HomepageHooksHelpers;
 
-	/**
-	 * @covers ::__construct
-	 */
-	public function testConstruct() {
+	public function testConstruct(): void {
 		$this->assertInstanceOf( HomepageHooks::class, $this->getHomepageHooksMock() );
 	}
 
-	/**
-	 * @covers ::onContributeCards
-	 */
-	public function testOnContributeCards() {
+	public function testOnContributeCards(): void {
 		$titleFactoryMock = $this->createMock( TitleFactory::class );
 		$specialPageFactoryMock = $this->createMock( SpecialPageFactory::class );
 		$specialPageFactoryMock->method( 'getLocalNameFor' )
