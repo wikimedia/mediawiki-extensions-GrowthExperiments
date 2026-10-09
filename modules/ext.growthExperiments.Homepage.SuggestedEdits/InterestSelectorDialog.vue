@@ -5,7 +5,7 @@
 		:title="$i18n( 'growthexperiments-homepage-suggestededits-interest-filters-title' ).text()"
 		:primary-action="primaryAction"
 		:default-action="defaultAction"
-		:fixed-height="true"
+		:fixed-height="isMobile"
 		class="ext-growthExperiments-interest-selector-dialog"
 		@primary="saveSelection"
 		@default="cancelSelection"
@@ -166,7 +166,10 @@ module.exports = exports = defineComponent( {
 				.map( ( title ) => ( { label: title, value: title } ) );
 		} );
 
+		const isMobile = mw.config.get( 'skin' ) === 'minerva';
+
 		return {
+			isMobile,
 			chips,
 			wrappedOpen,
 			taskCount,
@@ -197,5 +200,10 @@ module.exports = exports = defineComponent( {
 	.cdx-dialog__body {
 		padding-top: 0;
 	}
+}
+
+.skin-vector-2022 .ext-growthExperiments-interest-selector-dialog {
+	// Fix the height on desktop so that the layout does not shift when selecting interests.
+	height: 48rem;
 }
 </style>
