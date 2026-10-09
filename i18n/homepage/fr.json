@@ -44,7 +44,8 @@
 			"WillyM",
 			"Wladek92",
 			"Jérémy-Günther-Heinz Jähnick",
-			"NClara"
+			"NClara",
+			"Antimuonium"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Bonjour {{bidi:$1}} !",
@@ -442,7 +443,7 @@
 	"growthexperiments-revisetone-onboarding-dialog-skip-label": "{{GENDER:|}}Je connais déjà cela",
 	"growthexperiments-revisetone-onboarding-example-label": "Exemple",
 	"growthexperiments-revisetone-onboarding-main-prompt": "Quel mot nécessite une révision ?",
-	"growthexperiments-revisetone-onboarding-introduction": "Avant de commencer, testes {{GENDER:|}}tes compétences.",
+	"growthexperiments-revisetone-onboarding-introduction": "Avant de commencer, teste {{GENDER:|}}tes compétences.",
 	"growthexperiments-revisetone-onboarding-answer-none": "Aucun (c'est bien comme ça)",
 	"growthexperiments-revisetone-onboarding-step1-title": "{{GENDER:|Repère}} l'expression excessivement positive.",
 	"growthexperiments-revisetone-onboarding-step1-example-sentence": "Elle est née dans la belle ville de…",
