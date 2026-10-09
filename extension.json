@@ -1066,6 +1066,13 @@
 				"growthexperiments-interest-selector-success"
 			]
 		},
+		"ext.growthExperiments.Home.styles": {
+			"localBasePath": "modules/ext.growthExperiments.Home.styles",
+			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.Home.styles",
+			"skinStyles": {
+				"minerva": "minerva.less"
+			}
+		},
 		"ext.growthExperiments.PersonalDashboard.Impact.styles": {
 			"styles": [
 				"vue-components/Skeleton.less",

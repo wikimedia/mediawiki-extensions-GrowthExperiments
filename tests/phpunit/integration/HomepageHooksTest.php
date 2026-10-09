@@ -17,11 +17,16 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\Tests\Helpers\HomepageHooksHelpers;
+use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookRunner;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\ResourceLoader as RL;
+use MediaWiki\Skin\SkinTemplate;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use StatusValue;
 use stdClass;
@@ -123,6 +128,114 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			$growthServices->getLevelingUpManager(),
 			$growthServices->getFeatureManager()
 		);
+	}
+
+	/**
+	 * A user that has Home gets a tab to Special:Home, and not to
+	 * Special:Homepage.
+	 */
+	public function testTheDashboardTabPointsAtHomeForAHomeUser() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'PersonalDashboard' );
+		$this->overrideConfigValue( 'GEHomeEnabled', true );
+		$user = $this->newUserWithHomepagePreference();
+
+		$links = $this->runNavigationHook( $user, $user->getUserPage() );
+		$tab = $links['associated-pages']['homepage'];
+
+		$this->assertSame(
+			SpecialPage::getTitleFor( 'Home' )->getLocalURL( wfArrayToCgi( [
+				'source' => 'userpagetab',
+				'namespace' => NS_USER,
+			] ) ),
+			$tab['href'],
+			'The tab points at Special:Home, and it keeps the source of the Homepage tab'
+		);
+		// The context language is qqx, so a message shows as its key.
+		$this->assertSame( '(growthexperiments-home-tab)', $tab['text'] );
+	}
+
+	/**
+	 * A wiki without Home keeps the Special:Homepage tab.
+	 */
+	public function testTheDashboardTabPointsAtHomepageWithoutHome() {
+		$this->overrideConfigValue( 'GEHomeEnabled', false );
+		$user = $this->newUserWithHomepagePreference();
+
+		$links = $this->runNavigationHook( $user, $user->getUserPage() );
+		$tab = $links['associated-pages']['homepage'];
+
+		$this->assertSame(
+			SpecialPage::getTitleFor( 'Homepage' )->getLocalURL( wfArrayToCgi( [
+				'source' => 'userpagetab',
+				'namespace' => NS_USER,
+			] ) ),
+			$tab['href']
+		);
+		$this->assertSame( '(growthexperiments-homepage-tab)', $tab['text'] );
+	}
+
+	/**
+	 * Special:Home carries the same tabs as Special:Homepage, and its own tab
+	 * is the selected one.
+	 */
+	public function testSpecialHomeGetsTheTabs() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'PersonalDashboard' );
+		$this->overrideConfigValue( 'GEHomeEnabled', true );
+		$user = $this->newUserWithHomepagePreference();
+		// A tab of a page that does not exist points at the edit form. Create
+		// the two pages, so the tabs show the plain page URL.
+		$this->insertPage( $user->getUserPage() );
+		$this->insertPage( $user->getTalkPage() );
+
+		$links = $this->runNavigationHook( $user, SpecialPage::getTitleFor( 'Home' ) );
+		$tabs = $links['associated-pages'];
+
+		$this->assertSame(
+			[ 'homepage', 'user', 'user_talk' ],
+			array_keys( $tabs ),
+			'Special:Home shows the dashboard, user and talk tabs'
+		);
+		$this->assertStringContainsString( 'selected', $tabs['homepage']['class'] );
+		$this->assertSame(
+			SpecialPage::getTitleFor( 'Home' )->getLocalURL(),
+			$tabs['homepage']['href'],
+			'The tab of the page the user looks at carries no source'
+		);
+		$this->assertSame( $user->getUserPage()->getLocalURL(), $tabs['user']['href'] );
+		$this->assertSame( $user->getTalkPage()->getLocalURL(), $tabs['user_talk']['href'] );
+	}
+
+	private function newUserWithHomepagePreference(): User {
+		$user = $this->getMutableTestUser()->getUser();
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_ENABLE, 1 );
+		$userOptionsManager->saveOptions( $user );
+		return $user;
+	}
+
+	/**
+	 * Run the navigation hook for a user on a page, and give back the links.
+	 *
+	 * @param User $user
+	 * @param Title $title
+	 * @return array
+	 */
+	private function runNavigationHook( User $user, Title $title ): array {
+		$context = new DerivativeContext( RequestContext::getMain() );
+		$context->setUser( $user );
+		$context->setTitle( $title );
+		$context->setLanguage( 'qqx' );
+
+		$skin = new SkinTemplate( [ 'name' => 'test' ] );
+		$skin->setContext( $context );
+
+		$links = [
+			'associated-pages' => [],
+			'user-page' => [],
+			'user-menu' => [],
+		];
+		$this->getHomepageHooks()->onSkinTemplateNavigation__Universal( $skin, $links );
+		return $links;
 	}
 
 	public function testOnRecentChange_save(): void {

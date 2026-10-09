@@ -51,6 +51,9 @@ class SpecialHome extends AbstractSpecialDashboard {
 				'growthexperiments-home-enable-preference'
 			);
 		}
+
+		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.Home.styles' );
+
 		// TODO handle /newcomertask route. Currently PersonalDashboard.SuggestedEdits/TaskCard.vue and PostEditPanel.js
 		// hardcode the page URL Special:Homepage/newcomertask so the post-edit panel tasks point back to Homepage
 		// instead of Home

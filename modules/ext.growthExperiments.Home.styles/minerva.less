@@ -1,0 +1,40 @@
+@import 'mediawiki.skin.variables.less';
+
+// Special:Home shows the same tabs as the user page and the user talk page
+// (HomepageHooks::onSkinMinervaOptionsInit sets SkinOptions::TABS_ON_SPECIALS,
+// and HomepageHooks::onSkinTemplateNavigation__Universal puts the three pages
+// in one tab set). The user reads the three pages as one place, so their
+// titles must look the same.
+//
+// Minerva gives a content title a serif face, but MobileFrontend adds the
+// mobile.special.styles module to each special page in mobile view
+// (MobileFrontendHooks::onSpecialPageBeforeExecute). Its Minerva skinStyle
+// makes all .ns-special titles bold, sans-serif and 1.5em, which suits a
+// form-like special page. This rule puts the content title styles back for
+// Special:Home only.
+//
+// The two modules have no guaranteed load order. Thus this selector wins on
+// specificity: 0,3,1 against the 0,3,0 of the size and weight rule and the
+// 0,2,1 of the font-family rule.
+body.mw-special-Home .mw-body .mw-first-heading {
+	font-family: @font-family-serif;
+	// Minerva keeps its heading sizes private, in
+	// minerva.less/minerva.variables.less. This value is a copy of its
+	// @font-size-h1.
+	font-size: 1.7em;
+	font-weight: @font-weight-normal;
+}
+
+// Minerva puts no space below the tab strip. On a content page the page
+// actions menu does that work: it is a bordered block that comes after the
+// tabs in .heading-holder, which has no bottom padding of its own
+// (skins.minerva.styles/pageactions.less). SkinMinerva::hasPageActions()
+// returns false for each special page, so that block is absent here and the
+// tabs touch the content. Desktop does not show this, because Vector gives
+// #mw-content-text a top margin.
+//
+// 12px here plus the 6px padding below each tab make a gap of 18px, which
+// agrees with the desktop gap and with the 12px above the tabs.
+body.mw-special-Home .minerva__tab-container {
+	margin-bottom: @spacing-75;
+}

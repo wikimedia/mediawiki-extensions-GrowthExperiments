@@ -263,6 +263,18 @@ class HomepageHooks implements
 	}
 
 	/**
+	 * @param UserIdentity|null $user
+	 * @return bool
+	 */
+	public static function isHomeEnabled( ?UserIdentity $user = null ): bool {
+		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		return (
+			$user === null ||
+			$geServices->getFeatureManager()->isHomeEnabledForUser( $user )
+		);
+	}
+
+	/**
 	 * Similar to ::isHomepageEnabled, but using dependency-injected services.
 	 *
 	 * @param UserIdentity $user
@@ -467,10 +479,14 @@ class HomepageHooks implements
 	) {
 		$title = $skin->getTitle();
 		if ( $title && (
+			$title->isSpecial( 'Home' ) ||
 			$title->isSpecial( 'Homepage' ) ||
 			self::titleIsUserPageOrUserTalk( $title, $skin->getUser() )
 		) ) {
-			if ( self::isHomepageEnabled( $skin->getUser() ) ) {
+			if (
+				self::isHomepageEnabled( $skin->getUser() ) ||
+				self::isHomeEnabled( $skin->getUser() )
+			) {
 				$skinOptions->setMultiple( [
 					SkinOptions::TALK_AT_TOP => true,
 					SkinOptions::TABS_ON_SPECIALS => true,
@@ -480,7 +496,10 @@ class HomepageHooks implements
 	}
 
 	/**
-	 * Make sure user pages have "User", "talk" and "homepage" tabs.
+	 * Make sure user pages have "User", "talk" and dashboard tabs.
+	 *
+	 * The dashboard tab points at Special:Home for a user that has Home, and at
+	 * Special:Homepage for every other user. Both pages carry the same tabs.
 	 *
 	 * @param SkinTemplate $skin
 	 * @param array &$links
@@ -494,22 +513,23 @@ class HomepageHooks implements
 		$this->personalUrlsBuilder( $skin, $links, $user );
 
 		$title = $skin->getTitle();
+		$homeTitle = SpecialPage::getTitleFor( 'Home' );
 		$homepageTitle = SpecialPage::getTitleFor( 'Homepage' );
 		$userpage = $user->getUserPage();
 		$usertalk = $user->getTalkPage();
 
-		$isHomepage = $title->equals( $homepageTitle );
+		$isOneOfGrowthHomePages = $title->equals( $homeTitle ) || $title->equals( $homepageTitle );
 		$isUserSpace = $title->equals( $userpage ) || $title->isSubpageOf( $userpage );
 		$isUserTalkSpace = $title->equals( $usertalk ) || $title->isSubpageOf( $usertalk );
 
 		$menuKey = 'associated-pages';
-		if ( $isHomepage || $isUserSpace || $isUserTalkSpace ) {
+		if ( $isOneOfGrowthHomePages || $isUserSpace || $isUserTalkSpace ) {
 			unset( $links[$menuKey]['special'] );
 			unset( $links[$menuKey]['user'] );
 			unset( $links[$menuKey]['user_talk'] );
 
 			// T250554: If user currently views a subpage, direct him to the subpage talk page
-			if ( !$isHomepage ) {
+			if ( !$isOneOfGrowthHomePages ) {
 				$subjectpage = $this->namespaceInfo->getSubjectPage( $title );
 				$talkpage = $this->namespaceInfo->getTalkPage( $title );
 
@@ -524,12 +544,23 @@ class HomepageHooks implements
 				$talkpage = $usertalk;
 			}
 
-			$homepageUrlQuery = $isHomepage ? '' : wfArrayToCgi( [
+			// If Home is enabled for the user, it will precede Homepage navigation
+			// from User and Discussio pages.
+			$oneOfGrowthHomeTitles = $this->featureManager->isHomeEnabledForUser( $user ) ? $homeTitle : $homepageTitle;
+			$someHomeTitle = $isOneOfGrowthHomePages ? $title : $oneOfGrowthHomeTitles;
+			$someHomeLabel = $someHomeTitle->equals( $homeTitle )
+				? 'growthexperiments-home-tab'
+				: 'growthexperiments-homepage-tab';
+
+			// Keep the source values of the Homepage tabs. The destination page
+			// tells Home traffic and Homepage traffic apart, so the funnel stays
+			// comparable across the move.
+			$homepageUrlQuery = $isOneOfGrowthHomePages ? '' : wfArrayToCgi( [
 				'source' => $isUserSpace ? 'userpagetab' : 'usertalkpagetab',
 				'namespace' => $title->getNamespace(),
 			] );
 			$links[$menuKey]['homepage'] = $skin->tabAction(
-				$homepageTitle, 'growthexperiments-homepage-tab', $isHomepage, $homepageUrlQuery
+				$someHomeTitle, $someHomeLabel, $isOneOfGrowthHomePages, $homepageUrlQuery
 			);
 
 			$links[$menuKey]['user'] = $skin->tabAction(
