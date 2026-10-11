@@ -16,6 +16,12 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\TitleValue;
 
+// Use the same article path in the CLI and under php-fpm. Parsoid output that
+// the CLI puts in the parser cache contains the article path in its
+// <base href> and link hrefs. The path-info form is also the form that
+// production uses. (T440804)
+$wgUsePathInfo = true;
+
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
 
