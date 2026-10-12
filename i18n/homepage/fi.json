@@ -17,6 +17,7 @@
 			"Yupik"
 		]
 	},
+	"growthexperiments-home-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-list": "Tulokkaan aloitussivu",
 	"growthexperiments-homepage-tab": "Aloitussivu",
@@ -267,6 +268,7 @@
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Valitse aiheet",
 	"growthexperiments-homepage-suggestededits-interest-filters-title": "Valitse kiinnostuksen kohteet",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Valmis",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-cancel": "Peruuta",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Valmis",
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "Valmis",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "Peruuta",

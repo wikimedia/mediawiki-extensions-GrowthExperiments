@@ -21,7 +21,9 @@
 			"Woytecr"
 		]
 	},
+	"growthexperiments-home-specialpage-title": "{{GENDER:$1|Witaj}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Witaj}}, {{bidi:$1}}!",
+	"growthexperiments-home-tab": "Strona domowa",
 	"growthexperiments-homepage-tab": "Strona domowa",
 	"tooltip-pt-homepage": "{{GENDER:|Twoja}} strona domowa",
 	"prefs-homepage": "Strona domowa dla nowicjuszy",
