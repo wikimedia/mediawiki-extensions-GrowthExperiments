@@ -89,13 +89,6 @@ class LevelingUpHooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$user = $out->getUser();
-		if (
-			$user->isRegistered()
-			&& LevelingUpManager::isEnabledForUser( $user, $this->config )
-			&& $this->config->get( 'GELevelingUpNotificationsTrackingEnabled' )
-		) {
-			$out->addModules( 'ext.growthExperiments.NotificationsTracking' );
-		}
 		// VE sets a query parameter, but there is no elegant way to detect post-edit reloads
 		// in the wikitext editor. Check the JS variable that it uses to configure the notice.
 		$isPostEditReload = $out->getRequest()->getCheck( 'venotify' )
