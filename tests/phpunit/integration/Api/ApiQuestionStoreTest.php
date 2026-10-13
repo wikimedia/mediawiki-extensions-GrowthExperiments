@@ -84,6 +84,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 			$context,
+			$context,
 			'foo'
 		);
 

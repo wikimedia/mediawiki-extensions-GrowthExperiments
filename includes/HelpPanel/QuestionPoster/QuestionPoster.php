@@ -14,6 +14,7 @@ use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\UserNotLoggedIn;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPageFactory;
@@ -61,6 +62,7 @@ abstract class QuestionPoster {
 		private bool $confirmEditInstalled,
 		private bool $flowInstalled,
 		private IContextSource $context,
+		protected MessageLocalizer $messageLocalizer,
 		string $body,
 		private string $relevantTitleRaw = ''
 	) {
@@ -109,6 +111,16 @@ abstract class QuestionPoster {
 		}
 
 		return $title->getPrefixedText();
+	}
+
+	/**
+	 * Return the content model of the relevant title, where available.
+	 *
+	 * @return string|null
+	 */
+	public function getLinkTargetContentModel(): ?string {
+		$title = $this->getRelevantTitle();
+		return $title?->getContentModel();
 	}
 
 	/**

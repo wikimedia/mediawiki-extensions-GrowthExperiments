@@ -7,6 +7,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\UserNotMentoredException;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
@@ -32,6 +33,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 		bool $confirmEditInstalled,
 		bool $flowInstalled,
 		IContextSource $context,
+		MessageLocalizer $messageLocalizer,
 		string $body,
 		string $relevantTitleRaw = ''
 	) {
@@ -44,6 +46,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 			$confirmEditInstalled,
 			$flowInstalled,
 			$context,
+			$messageLocalizer,
 			$body,
 			$relevantTitleRaw
 		);
@@ -69,16 +72,35 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 * @inheritDoc
 	 */
 	protected function getSectionHeaderTemplate() {
-		return $this->getWikitextLinkTarget() ?
-			$this->getContext()
-				->msg( 'growthexperiments-homepage-mentorship-question-subject-with-title' )
-				->plaintextParams( $this->getContext()->getUser()->getName() )
-				->params( $this->getWikitextLinkTarget() )
-				->inContentLanguage()->text() :
-			$this->getContext()
+		if ( !$this->getWikitextLinkTarget() ) {
+			return $this->messageLocalizer
 				->msg( 'growthexperiments-homepage-mentorship-question-subject' )
 				->plaintextParams( $this->getContext()->getUser()->getName() )
-				->inContentLanguage()->text();
+				->inContentLanguage()->plain();
+		}
+		$contentModel = $this->getLinkTargetContentModel();
+		// T437928 - we want to display the description for Wikibase content models (e.g. item, property)
+		// and the most straightforward way to do that is to have the wikitext for this message include a
+		// Lua template to expand the description in the user language (e.g. {{Q|Q12}}). But we do not know
+		// if such a template exists on the target wiki.
+		// Let the community managing the target wiki take responsibility for the existence of a message
+		// for the target content type (i.e. '...-subject-with-title-wikibase-item'), and ensuring that the
+		// template mentioned in the translation also exists on the wiki.
+		$titleMsg = 'growthexperiments-homepage-mentorship-question-subject-with-title-' . $contentModel;
+		if ( !$this->messageLocalizer->msg( $titleMsg )->exists() ) {
+			$titleMsg = 'growthexperiments-homepage-mentorship-question-subject-with-title';
+		}
+		/**
+		 * Expected messages here are:
+		 *  - growthexperiments-homepage-mentorship-question-subject-with-title
+		 *  - growthexperiments-homepage-mentorship-question-subject-with-title-wikibase-item
+		 *  - growthexperiments-homepage-mentorship-question-subject-with-title-wikibase-property
+		 */
+		return $this->messageLocalizer
+				->msg( $titleMsg )
+				->plaintextParams( $this->getContext()->getUser()->getName() )
+				->params( $this->getWikitextLinkTarget() )
+				->inContentLanguage()->plain();
 	}
 
 	/**
@@ -123,14 +145,14 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	}
 
 	private function wrapSystemMessage( string $message ): string {
-		return $this->getContext()
+		return $this->messageLocalizer
 			->msg( 'growthexperiments-homepage-mentorship-system-message' )
 			->plaintextParams( $message )
 			->inContentLanguage()->plain();
 	}
 
 	private function getAwayDisclaimerText( string $mentorUsername, string $menteeUsername ): string {
-		$disclaimer = $this->getContext()
+		$disclaimer = $this->messageLocalizer
 			->msg( 'growthexperiments-homepage-mentorship-question-disclaimer-mentor-away' )
 			->plaintextParams( $menteeUsername, $mentorUsername )
 			->inContentLanguage()->plain();

@@ -78,6 +78,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 				true,
 				true,
 				$ctx,
+				$ctx,
 				'test-body',
 				] )
 			->getMockForAbstractClass();

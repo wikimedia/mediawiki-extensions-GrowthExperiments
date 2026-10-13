@@ -5,6 +5,7 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 use GrowthExperiments\HelpPanel;
 use LogicException;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
@@ -30,6 +31,7 @@ class HelpdeskQuestionPoster extends QuestionPoster {
 		bool $confirmEditInstalled,
 		bool $flowInstalled,
 		IContextSource $context,
+		MessageLocalizer $messageLocalizer,
 		string $body,
 		string $relevantTitleRaw = ''
 	) {
@@ -42,6 +44,7 @@ class HelpdeskQuestionPoster extends QuestionPoster {
 			$confirmEditInstalled,
 			$flowInstalled,
 			$context,
+			$messageLocalizer,
 			$body,
 			$relevantTitleRaw
 		);

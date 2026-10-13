@@ -12,7 +12,10 @@ use GrowthExperiments\Mentorship\UserNotMentoredException;
 use MediaWiki\Content\WikitextContent;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Language\MessageLocalizer;
+use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -75,9 +78,48 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster::__construct
+	 * @dataProvider provideTestSectionHeader
+	 */
+	public function testSectionHeader(
+		string $contentModel,
+		?string $expectedResult,
+		bool $translationExists
+	) {
+		$mentorUser = $this->getTestSysop()->getUser();
+		$mentorUser->setName( 'Mentor' );
+		$messageLocalizer = $this->createMock( MessageLocalizer::class );
+		$matcher = $this->exactly( 2 );
+		$messageLocalizer->expects( $matcher )
+			->method( 'msg' )
+			->willReturnCallback( function ( string $key ) use ( $matcher, $translationExists ) {
+				return match ( $matcher->getInvocationCount() ) {
+					1 => $this->createConfiguredMock( Message::class, [
+						'exists' => $translationExists,
+					] ),
+					2 => new Message( 'growthexperiments-homepage-mentorship-question-subject-with-title' ),
+				};
+			} );
+		$module = $this->getQuestionPosterModule( $mentorUser, $messageLocalizer );
+		$wrappedQuestionPoster = TestingAccessWrapper::newFromObject( $module );
+		$wrappedQuestionPoster->postedOnTimestamp = 2;
+		$wrappedQuestionPoster->existingQuestionsByUser = [];
+		$wrappedQuestionPoster->relevantTitleRaw = 'title';
+		$wrappedQuestionPoster->relevantTitle = $this->createMock( Title::class );
+		$wrappedQuestionPoster->relevantTitle->method( 'getPrefixedText' )->willReturn( 'ArticleTitle' );
+		$wrappedQuestionPoster->relevantTitle->method( 'getContentModel' )->willReturn( $contentModel );
+
+		$wrappedQuestionPoster->setSectionHeader();
+		$actualResult = $wrappedQuestionPoster->makeWikitextContent();
+
+		$this->assertInstanceOf( WikitextContent::class, $actualResult );
+		$this->assertEquals( $expectedResult, $actualResult->getText() );
+	}
+
+	/**
 	 * @return MentorQuestionPoster|mixed|MockObject
 	 */
-	private function getQuestionPosterModule( ?User $mentorUser ) {
+	private function getQuestionPosterModule( ?User $mentorUser, ?MessageLocalizer $messageLocalizer = null ) {
 		$wikiPageFactory = $this->getServiceContainer()->getWikiPageFactory();
 		$titleFactory = $this->getServiceContainer()->getTitleFactory();
 		$permissionManager = $this->getServiceContainer()->getPermissionManager();
@@ -109,6 +151,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 				ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
 				ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
 				$context,
+				$messageLocalizer ?? $context,
 				'foo',
 			] )
 			->getMockForAbstractClass();
@@ -124,6 +167,39 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			'Mentor is not away' => [
 				false,
 				null,
+			],
+		];
+	}
+
+	public static function provideTestSectionHeader() {
+		return [
+			'Page is article' => [
+				'article',
+				'== Question from [[User:Mentee|Mentee]] on [[:ArticleTitle|ArticleTitle]]' .
+				" (00:00, 1 January 1970) ==\n" .
+				'foo --~~~~',
+				true,
+			],
+			'Page is item' => [
+				'wikibase-item',
+				'== Question from [[User:Mentee|Mentee]] on [[:ArticleTitle|ArticleTitle]]' .
+				" (00:00, 1 January 1970) ==\n" .
+				'foo --~~~~',
+				true,
+			],
+			'Page is property' => [
+				'wikibase-property',
+				'== Question from [[User:Mentee|Mentee]] on [[:ArticleTitle|ArticleTitle]]' .
+				" (00:00, 1 January 1970) ==\n" .
+				'foo --~~~~',
+				true,
+			],
+			'Page is unknown content model' => [
+				'wikibase-unproperty',
+				'== Question from [[User:Mentee|Mentee]] on [[:ArticleTitle|ArticleTitle]]' .
+				" (00:00, 1 January 1970) ==\n" .
+				'foo --~~~~',
+				false,
 			],
 		];
 	}
