@@ -1,10 +1,12 @@
 <template>
 	<cdx-dialog
 		v-model:open="open"
+		:use-close-button="true"
 		:title="$i18n( 'growthexperiments-interest-selector-dialog-title' ).text()"
 		class="ext-growthExperiments-reading-recommendations-interest-selector-dialog"
 		:primary-action="primaryAction"
 		:default-action="defaultAction"
+		:fixed-height="isMobile"
 		@primary="onSave"
 		@default="onCancel"
 		@update:open="onUpdateOpen"
@@ -84,7 +86,10 @@ module.exports = defineComponent( {
 			}
 		}
 
+		const isMobile = mw.config.get( 'skin' ) === 'minerva';
+
 		return {
+			isMobile,
 			open,
 			primaryAction,
 			defaultAction,
@@ -96,3 +101,10 @@ module.exports = defineComponent( {
 	},
 } );
 </script>
+
+<style lang="less">
+.skin-vector-2022 .ext-growthExperiments-reading-recommendations-interest-selector-dialog {
+	// Fix the height on desktop so that the layout does not shift when selecting interests.
+	height: 48rem;
+}
+</style>
