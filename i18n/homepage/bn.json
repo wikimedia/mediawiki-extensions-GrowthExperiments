@@ -22,7 +22,9 @@
 			"খাত্তাব হাসান"
 		]
 	},
+	"growthexperiments-home-specialpage-title": "{{GENDER:$1|স্বাগতম}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|স্বাগতম}}, {{bidi:$1}}!",
+	"growthexperiments-home-tab": "প্রধান পাতা",
 	"growthexperiments-homepage-tab": "নীড়পাতা",
 	"tooltip-pt-homepage": "{{GENDER:|আপনার}} নীড়পাতা",
 	"prefs-homepage": "নবাগতদের সম্পাদনা বৈশিষ্ট্যাবলী",

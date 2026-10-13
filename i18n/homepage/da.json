@@ -11,8 +11,10 @@
 			"Steenth"
 		]
 	},
+	"growthexperiments-home-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-list": "Nytilkommen hjemmeside",
+	"growthexperiments-home-tab": "Hjem",
 	"growthexperiments-homepage-tab": "Forside",
 	"tooltip-pt-homepage": "{{GENDER:|Din}} forside",
 	"prefs-homepage": "Funktioner for nybegyndere",
@@ -164,6 +166,7 @@
 	"growthexperiments-homepage-claimmentee-no-user": "Nybegynderen findes ikke.",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Du}} er allerede mentor for {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} har valgt at ikke have en mentor",
+	"growthexperiments-home-enable-preference": "For at aktivere Hjem, skal du gå til dine indstillinger for \"Funktioner til nybegyndere\" i [[Special:Preferences#mw-prefsection-personal-homepage|Indstillinger]].",
 	"growthexperiments-homepage-enable-preference": "For at etablere nybegynder-forsiden skal du gå ind i indstillingerne for \"funktioner for nybegyndere\" i [[Special:Preferences#mw-prefsection-personal-homepage|Indstillinger]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Du}} har endnu ikke lavet nogen bidrag.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Besøg {{GENDER:$1|din}} forside for at komme i gang med at redigere!",
