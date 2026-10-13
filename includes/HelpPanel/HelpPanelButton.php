@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HelpPanel;
 
 class HelpPanelButton extends \OOUI\ButtonWidget {
+	// This will infuse to a ToggleButtonWidget, but that doesn't exist as a no-JS widget.
 
 	public function __construct( array $config = [] ) {
 		// HelpPanelButton default config values need to be in sync with
@@ -12,11 +13,11 @@ class HelpPanelButton extends \OOUI\ButtonWidget {
 		$config = array_merge( [
 			'id' => 'mw-ge-help-panel-cta-button',
 			'classes' => [ 'mw-ge-help-panel-button' ],
+			'size' => 'large',
 			'target' => '_blank',
 			'invisibleLabel' => true,
 			'infusable' => true,
 			'icon' => 'help',
-			'indicator' => 'up',
 			'flags' => [ 'progressive' ],
 		], $config );
 

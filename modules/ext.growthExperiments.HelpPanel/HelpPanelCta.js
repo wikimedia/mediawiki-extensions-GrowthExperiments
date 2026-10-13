@@ -222,7 +222,7 @@
 					helpPanelShouldOpen: true,
 				} );
 				helpPanelProcessDialog.updateEditMode();
-				helpCtaButton.setOpen( true );
+				helpCtaButton.setValue( true );
 			} );
 			lifecycle.closing.then( () => {
 				if ( OO.ui.isMobile() ) {
@@ -233,7 +233,7 @@
 				}
 				$buttonWrapper.removeClass( 'mw-ge-help-panel-opened' );
 				helpPanelProcessDialog.setGuidanceAutoAdvance( false );
-				helpCtaButton.setOpen( false );
+				helpCtaButton.setValue( false );
 			} );
 			return lifecycle;
 		}
@@ -372,7 +372,7 @@
 							// Make sure annotation is visible.
 							$( document ).scrollTop( prevScrollPosition );
 							if ( helpPanelButton ) {
-								helpPanelButton.setOpen( false );
+								helpPanelButton.setValue( false );
 							}
 						} );
 					},

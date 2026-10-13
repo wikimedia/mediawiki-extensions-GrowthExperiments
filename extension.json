@@ -2429,9 +2429,6 @@
 					"file": "../images/suggestededits/Topic-general-64w.svg"
 				},
 				"robot-black": "ext.growthExperiments.StructuredTask/robot-black.svg",
-				"chevron-down": {
-					"file": "../images/chevron-down.svg"
-				},
 				"close-destructive": {
 					"file": "../images/close-destructive.svg"
 				},
