@@ -58,10 +58,11 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::submit
 	 */
 	public function testSubmitExistingTarget() {
+		$title = Title::makeTitle( self::getDefaultWikitextNS(), 'HelpDeskTest' );
 		$this->overrideProviderConfig( [
-			'GEHelpPanelHelpDeskTitle' => 'HelpDeskTest',
+			'GEHelpPanelHelpDeskTitle' => $title->getPrefixedDBkey(),
 		], 'HelpPanel' );
-		$this->insertPage( 'HelpDeskTest', '' );
+		$this->insertPage( $title, '' );
 
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$questionPoster = new HelpdeskQuestionPoster(
@@ -81,7 +82,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		$this->assertGreaterThan( 0, $revision );
 		$this->assertStringNotContainsString( '##', $questionPoster->getResultUrl() );
 		$page = $this->getServiceContainer()->getWikiPageFactory()
-			->newFromTitle( Title::newFromText( 'HelpDeskTest' ) );
+			->newFromTitle( $title );
 		$this->assertMatchesRegularExpression(
 			'/a great question/',
 			$page->getContent()->getSection( 1 )->serialize()
@@ -93,7 +94,10 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::submit
 	 */
 	public function testSubmitNewTarget() {
-		$title = $this->getNonexistingTestPage()->getTitle();
+		$title = Title::makeTitle(
+			self::getDefaultWikitextNS(),
+			'TestSubmitNewTarget'
+		);
 		$this->overrideProviderConfig( [
 			'GEHelpPanelHelpDeskTitle' => $title->getPrefixedDBkey(),
 		], 'HelpPanel' );
@@ -126,10 +130,13 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::validateRelevantTitle
 	 */
 	public function testValidateRelevantTitle() {
+		$namespace = self::getDefaultWikitextNS();
+		$namespaceName = $this->getServiceContainer()->getNamespaceInfo()->getCanonicalName( $namespace );
 		$this->overrideProviderConfig( [
-			'GEHelpPanelHelpDeskTitle' => 'sample',
+			'GEHelpPanelHelpDeskTitle' => $namespaceName . ':sample',
 		], 'HelpPanel' );
-		$this->insertPage( 'sample' );
+		$title = Title::newFromText( 'sample', $namespace );
+		$this->insertPage( $title );
 
 		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$questionPoster = new HelpdeskQuestionPoster(
