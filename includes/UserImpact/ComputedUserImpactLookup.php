@@ -613,7 +613,11 @@ class ComputedUserImpactLookup implements UserImpactLookup {
 			// PageImages can return non-image files such as PDFs (T429314), which have no
 			// usable height and cannot be turned into a page thumbnail. Skip them instead of
 			// attempting a transform that yields a broken thumbnail and a 0-height warning.
-			if ( $imageFile->getMimeType() === 'application/pdf' ) {
+			$unusableMimeTypes = [
+				'application/pdf',
+				'image/vnd.djvu',
+			];
+			if ( in_array( $imageFile->getMimeType(), $unusableMimeTypes, true ) ) {
 				return null;
 			}
 			$options = [
