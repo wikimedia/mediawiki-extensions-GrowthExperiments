@@ -62,14 +62,33 @@ class HelpdeskQuestionPoster extends QuestionPoster {
 	 * @inheritDoc
 	 */
 	protected function getSectionHeaderTemplate() {
-		return $this->getWikitextLinkTarget() ?
-			$this->getContext()
-				->msg( 'growthexperiments-help-panel-question-subject-template-with-title' )
-				->params( $this->getWikitextLinkTarget() )
-				->inContentLanguage()->text() :
-			$this->getContext()
+		if ( !$this->getWikitextLinkTarget() ) {
+			return $this->messageLocalizer
 				->msg( 'growthexperiments-help-panel-question-subject-template' )
-				->inContentLanguage()->text();
+				->inContentLanguage()->plain();
+		}
+		$contentModel = $this->getLinkTargetContentModel();
+		// T437928 - we want to display the description for Wikibase content models (e.g. item, property)
+		// and the most straightforward way to do that is to have the wikitext for this message include a
+		// Lua template to expand the description in the user language (e.g. {{Q|Q12}}). But we do not know
+		// if such a template exists on the target wiki.
+		// Let the community managing the target wiki take responsibility for the existence of a message
+		// for the target content type (i.e. '...-subject-template-with-title-wikibase-item'), and ensuring
+		// that the template mentioned in the translation also exists on the wiki.
+		$titleMsg = 'growthexperiments-help-panel-question-subject-template-with-title-' . $contentModel;
+		if ( !$this->messageLocalizer->msg( $titleMsg )->exists() ) {
+			$titleMsg = 'growthexperiments-help-panel-question-subject-template-with-title';
+		}
+		/**
+		 * Expected messages here are:
+		 *  - growthexperiments-help-panel-question-subject-template-with-title
+		 *  - growthexperiments-help-panel-question-subject-template-with-title-wikibase-item
+		 *  - growthexperiments-help-panel-question-subject-template-with-title-wikibase-property
+		 */
+		return $this->messageLocalizer
+				->msg( $titleMsg )
+				->params( $this->getWikitextLinkTarget() )
+				->inContentLanguage()->plain();
 	}
 
 	/**
