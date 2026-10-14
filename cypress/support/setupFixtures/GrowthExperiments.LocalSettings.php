@@ -22,6 +22,10 @@ use MediaWiki\Title\TitleValue;
 // production uses. (T440804)
 $wgUsePathInfo = true;
 
+// Register Special:Home. The flag is off by default, so the page does not exist
+// without it. The page also needs the PersonalDashboard extension, which renders it.
+$wgGEHomeEnabled = true;
+
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
 
