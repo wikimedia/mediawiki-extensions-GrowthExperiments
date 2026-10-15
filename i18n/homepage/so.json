@@ -193,6 +193,7 @@
 	"growthexperiments-homepage-suggestededits-progress-bar-aria-label": "Soo dejinta wax ka beddellada la soo jeediyay",
 	"growthexperiments-homepage-suggestededits-menu-button-label": "Ikhtiyaarrada wax ka beddellada la soo jeediyay",
 	"growthexperiments-homepage-suggestededits-menu-interests": "Danaha",
+	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Midna lama dooran|$1 la doortay}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Noocyada wax ka beddellada",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "$1 la doortay",
 	"growthexperiments-homepage-suggestededits-menu-about": "Ku saabsan wax ka beddellada la soo jeediyay",

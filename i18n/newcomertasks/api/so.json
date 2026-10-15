@@ -10,6 +10,7 @@
 	"apihelp-query+growthtasks-param-topics": "Mawduucyada maqaalka ee la doorbidayo marka la soo jeedinayo hawlaha.",
 	"apihelp-query+growthtasks-param-topicsmode": "Habka iswaafajinta ee mawduucyada",
 	"apihelp-query+growthtasks-param-interests": "Cinwaannada maqaallada ee matala danaha isticmaalaha. Talooyinku waxay ka yimaadaan maqaallo la mid ah kuwaas. Sida caadiga ah waxay ku salaysan yihiin danaha uu isticmaaluhu kaydiyey. Lama isku dari karo <var>$1topics</var>.",
+	"apihelp-query+growthtasks-param-useinterests": "Ku shaandhee danaha loo kaydiyay isticmaalaha, xitaa marka soo jeedinnada isticmaaluhu ay haddii kale raaci lahaayeen dookhyadiisa mawduucyada. Waa la iska indho tiraa marka la bixiyo <var>$1interests</var> ama <var>$1topics</var>.",
 	"apihelp-query+growthtasks-param-limit": "Tirada ugu badan ee talooyinka hawlaha ee la soo celinayo.",
 	"apihelp-query+growthtasks-param-excludepageids": "Aqoonsiyada bogagga ee laga reebayo su'aasha.",
 	"apihelp-query+growthtasks-param-debug": "Ku dar xogta cillad bixinta wax-soo saarka.",
