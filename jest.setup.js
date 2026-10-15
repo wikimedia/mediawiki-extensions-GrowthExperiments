@@ -85,6 +85,7 @@ const mw = {
 		text: jest.fn( () => key ),
 		parse: jest.fn(),
 	} ) ),
+	msg: jest.fn( ( key ) => key ),
 	user: {
 		getId: jest.fn(),
 		getName: jest.fn(),

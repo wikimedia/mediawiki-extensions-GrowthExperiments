@@ -33,14 +33,11 @@
 			:footer-item="menuFooterItem"
 			:button-label="menuButtonLabel"
 			@select="openPanel = $event">
-			<module-panel
+			<about-panel
 				:open="openPanel === 'about'"
 				:anchor="anchor"
 				:is-narrow="isNarrow"
-				:title="aboutTitle"
-				@update:open="closePanel">
-				<p>{{ aboutBody }}</p>
-			</module-panel>
+				@update:open="closePanel"></about-panel>
 			<task-types-dialog
 				:open="openPanel === 'taskTypes'"
 				@update:open="closePanel"
@@ -60,8 +57,8 @@ const {
 	FeedPanel,
 	FULL_LIMIT,
 	ModuleHeaderMenu,
-	ModulePanel,
 } = require( 'ext.personalDashboard.common' );
+const AboutPanel = require( './AboutPanel.vue' );
 const TaskCard = require( './TaskCard.vue' );
 const TaskTypesDialog = require( './TaskTypesDialog.vue' );
 const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
@@ -71,10 +68,10 @@ const { cdxIconChartBar, cdxIconConfigure } = require( './icons.json' );
 
 module.exports = defineComponent( {
 	components: {
+		AboutPanel,
 		FeedPanel,
 		InterestSelectorDialog,
 		ModuleHeaderMenu,
-		ModulePanel,
 		TaskCard,
 		TaskTypesDialog,
 	},
@@ -165,9 +162,6 @@ module.exports = defineComponent( {
 			noResultsLabel: mw.msg( 'growthexperiments-homepage-suggestededits-no-results' ),
 			progressBarAriaLabel: mw.msg( 'growthexperiments-homepage-suggestededits-progress-bar-aria-label' ),
 			menuButtonLabel: mw.msg( 'growthexperiments-homepage-suggestededits-menu-button-label' ),
-			// The menu item names the panel it opens, so both read one message.
-			aboutTitle: mw.msg( 'growthexperiments-homepage-suggestededits-menu-about' ),
-			aboutBody: mw.msg( 'growthexperiments-homepage-suggestededits-about-body' ),
 		};
 	},
 	computed: {

@@ -983,9 +983,16 @@
 			"packageFiles": [
 				"index.js",
 				"App.vue",
+				"AboutPanel.vue",
 				"TaskCard.vue",
 				"TaskTypesDialog.vue",
 				"useSuggestedEditsFeed.js",
+				{
+					"name": "config.json",
+					"config": [
+						"GEHomepageSuggestedEditsRecommendationsUrl"
+					]
+				},
 				{
 					"name": "InterestSelectorDialog.vue",
 					"file": "../ext.growthExperiments.Homepage.SuggestedEdits/InterestSelectorDialog.vue"
@@ -1016,10 +1023,12 @@
 				"ext.growthExperiments.DataStore"
 			],
 			"messages": [
+				"growthexperiments-home-suggestededits-about-intro",
+				"growthexperiments-home-suggestededits-about-purpose",
+				"growthexperiments-home-suggestededits-about-recommendations",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label",
-				"growthexperiments-homepage-suggestededits-about-body",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
 				"growthexperiments-homepage-suggestededits-difficulty-filters-cancel",
 				"growthexperiments-homepage-suggestededits-difficulty-filters-close",
@@ -3090,6 +3099,10 @@
 		"GEHomepageSuggestedEditsEnableTopics": {
 			"description": "Enable topic filters for suggested edits",
 			"value": true
+		},
+		"GEHomepageSuggestedEditsRecommendationsUrl": {
+			"description": "URL of the documentation that explains how the suggested edits recommender system works. The \"About Suggested edits\" panel on the Personal Dashboard links to it. Set it to a local help page to document the recommender system on this wiki.",
+			"value": "https://www.mediawiki.org/wiki/Special:MyLanguage/Home/Recommendations"
 		},
 		"GENewcomerTasksTaskTypeHandlers": {
 			"description": "Used for registering TaskTypeHandlers to the TaskTypeHandlerRegistry. An associative array with handler ID => handler specification, which is an ObjectFactory specification or a factory callable. Handlers IDs correspond to the 'type' parameters in the task config page.",
