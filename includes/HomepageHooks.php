@@ -36,6 +36,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
+use GrowthExperiments\PersonalDashboard\HomeOnboardingActionLookup;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHome;
 use GrowthExperiments\Specials\SpecialHomepage;
@@ -189,6 +190,7 @@ class HomepageHooks implements
 				'services' => [
 					'PersonalDashboardPageDependencies',
 					'GrowthExperimentsFeatureManager',
+					'GrowthExperimentsHomeOnboardingActionLookup',
 				],
 			];
 		}
@@ -712,6 +714,14 @@ class HomepageHooks implements
 			'type' => 'api',
 		];
 
+		$preferences[ HomeOnboardingActionLookup::INTRO_SEEN_PREF ] = [
+			'type' => 'api',
+		];
+
+		$preferences[ HomeOnboardingActionLookup::INTERESTS_NOTICE_INTERACTED_PREF ] = [
+			'type' => 'api',
+		];
+
 		$preferences[ Mentorship::QUESTION_PREF ] = [
 			'type' => 'api',
 		];
@@ -795,6 +805,8 @@ class HomepageHooks implements
 			SuggestedEdits::TOPICS_MATCH_MODE_PREF => SearchStrategy::TOPIC_MATCH_MODE_OR,
 			self::HOMEPAGE_PREF_ENABLE => false,
 			self::HOMEPAGE_PREF_PT_LINK => false,
+			HomeOnboardingActionLookup::INTRO_SEEN_PREF => false,
+			HomeOnboardingActionLookup::INTERESTS_NOTICE_INTERACTED_PREF => false,
 		];
 	}
 

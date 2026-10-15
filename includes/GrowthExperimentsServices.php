@@ -68,6 +68,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
+use GrowthExperiments\PersonalDashboard\HomeOnboardingActionLookup;
 use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
 use GrowthExperiments\ReadingRecommendations\InterestArticlesLookup;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsCachePolicy;
@@ -127,6 +128,10 @@ class GrowthExperimentsServices {
 
 	public function getHelpPanel(): HelpPanel {
 		return $this->coreServices->get( 'GrowthExperimentsHelpPanel' );
+	}
+
+	public function getHomeOnboardingActionLookup(): HomeOnboardingActionLookup {
+		return $this->coreServices->get( 'GrowthExperimentsHomeOnboardingActionLookup' );
 	}
 
 	public function getHomepageModuleRegistry(): HomepageModuleRegistry {

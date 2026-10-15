@@ -105,6 +105,7 @@ use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\StaticTopicRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PeriodicMetrics\MetricsFactory;
+use GrowthExperiments\PersonalDashboard\HomeOnboardingActionLookup;
 use GrowthExperiments\ReadingRecommendations\FeaturedArticlePool;
 use GrowthExperiments\ReadingRecommendations\InterestArticlesLookup;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsCachePolicy;
@@ -283,6 +284,15 @@ return [
 			$services->getTitleFactory(),
 			$services->getNamespaceInfo(),
 			$services->getUserOptionsLookup()
+		);
+	},
+
+	'GrowthExperimentsHomeOnboardingActionLookup' => static function (
+		MediaWikiServices $services
+	): HomeOnboardingActionLookup {
+		return new HomeOnboardingActionLookup(
+			$services->getUserOptionsLookup(),
+			GrowthExperimentsServices::wrap( $services )->getNewcomerTasksUserOptionsLookup()
 		);
 	},
 

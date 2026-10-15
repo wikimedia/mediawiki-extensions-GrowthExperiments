@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\PersonalDashboard\HomeOnboardingActionLookup;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\PersonalDashboard\Specials\AbstractSpecialDashboard;
 use MediaWiki\Extension\PersonalDashboard\Specials\DashboardPageDependencies;
@@ -24,6 +25,7 @@ class SpecialHome extends AbstractSpecialDashboard {
 	public function __construct(
 		DashboardPageDependencies $dependencies,
 		private readonly FeatureManager $featureManager,
+		private readonly HomeOnboardingActionLookup $homeOnboardingActionLookup,
 	) {
 		parent::__construct( $dependencies );
 	}
@@ -54,6 +56,10 @@ class SpecialHome extends AbstractSpecialDashboard {
 
 		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.Home.styles' );
 
+		$this->getOutput()->addJsConfigVars(
+			'wgGEHomeOnboardingAction',
+			$this->homeOnboardingActionLookup->getAction( $this->getUser() )
+		);
 		// TODO handle /newcomertask route. Currently PersonalDashboard.SuggestedEdits/TaskCard.vue and PostEditPanel.js
 		// hardcode the page URL Special:Homepage/newcomertask so the post-edit panel tasks point back to Homepage
 		// instead of Home

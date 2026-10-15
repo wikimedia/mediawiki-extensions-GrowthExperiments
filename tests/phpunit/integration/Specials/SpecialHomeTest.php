@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\PersonalDashboard\HomeOnboardingActionLookup;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
@@ -75,6 +76,18 @@ class SpecialHomeTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame(
 			'home',
 			$output->getJsConfigVars()['wgPersonalDashboardModuleGroup'] ?? null
+		);
+	}
+
+	public function testTheOnboardingActionIsInTheJsConfigVars() {
+		$this->overrideConfigValue( 'GEHomeEnabled', true );
+		$user = $this->newUserWithHomepagePreference();
+
+		[ , $output ] = $this->runSpecialPage( $user );
+
+		$this->assertSame(
+			HomeOnboardingActionLookup::ACTION_WELCOME_BACK,
+			$output->getJsConfigVars()['wgGEHomeOnboardingAction'] ?? null
 		);
 	}
 
