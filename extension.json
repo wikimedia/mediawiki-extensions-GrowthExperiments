@@ -154,7 +154,8 @@
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsChangeMentorFactory",
-				"UserIdentityUtils"
+				"UserIdentityUtils",
+				"UserFactory"
 			]
 		},
 		"growthstarmentee": {
