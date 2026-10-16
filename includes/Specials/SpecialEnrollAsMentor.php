@@ -131,9 +131,13 @@ class SpecialEnrollAsMentor extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
+		$weight = (int)$data['weight'];
+		if ( !in_array( $weight, IMentorWeights::WEIGHTS, true ) ) {
+			$weight = IMentorWeights::WEIGHT_NORMAL;
+		}
 		$mentor = $this->mentorProvider->newMentorFromUserIdentity( $this->getUser() );
 		$mentor->setIntroText( $data['message'] !== '' ? $data['message'] : null );
-		$mentor->setWeight( (int)$data['weight'] );
+		$mentor->setWeight( $weight );
 
 		return Status::wrap( $this->mentorWriter->addMentor(
 			$mentor,
