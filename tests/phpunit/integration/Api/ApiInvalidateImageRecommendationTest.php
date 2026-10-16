@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Tests\Api\ApiTestCase;
+use MediaWiki\User\User;
 
 /**
  * @group API
@@ -39,6 +40,21 @@ class ApiInvalidateImageRecommendationTest extends ApiTestCase {
 				'status' => 'ok',
 			],
 		], $result[ 0 ] );
+	}
+
+	public function testFailsOnAnonRequest() {
+		$this->insertConfigPage();
+		$this->insertPage( 'Title1' );
+		$this->setService(
+			'GrowthExperimentsAddImageSubmissionHandler',
+			$this->createNoOpMock( AddImageSubmissionHandler::class )
+		);
+		$this->expectApiErrorCode( 'mustbeloggedin-generic' );
+		$this->doApiRequestWithToken( [
+			'action' => 'growthinvalidateimagerecommendation',
+			'title' => 'Title1',
+			'filename' => 'Foo.jpg',
+		], null, new User() );
 	}
 
 	public function testNonExistentPage() {
