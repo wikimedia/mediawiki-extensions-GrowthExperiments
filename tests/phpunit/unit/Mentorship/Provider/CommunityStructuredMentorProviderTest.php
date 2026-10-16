@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\Unit;
 
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Provider\CommunityStructuredMentorProvider;
 use Iterator;
@@ -60,10 +61,10 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		789 => 'TestMentor4',
 	];
 
-	private function getMockConfigurationProvider() {
+	private function getMockConfigurationProvider( array $mentorData = self::TEST_MENTOR_DATA ) {
 		$provider = $this->createMock( IConfigurationProvider::class );
 		$provider->method( 'loadValidConfiguration' )
-			->willReturn( Status::newGood( self::TEST_MENTOR_DATA ) );
+			->willReturn( Status::newGood( $mentorData ) );
 		return $provider;
 	}
 
@@ -332,5 +333,34 @@ class CommunityStructuredMentorProviderTest extends MediaWikiUnitTestCase {
 		];
 
 		$this->assertEquals( $expected, $names );
+	}
+
+	public static function provideStoredWeight() {
+		return [
+			'negative' => [ -1, IMentorWeights::WEIGHT_NORMAL ],
+			'huge' => [ 1000000000, IMentorWeights::WEIGHT_NORMAL ],
+			'between supported weights' => [ 3, IMentorWeights::WEIGHT_NORMAL ],
+			'supported' => [ IMentorWeights::WEIGHT_LOW, IMentorWeights::WEIGHT_LOW ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideStoredWeight
+	 */
+	public function testUnsupportedStoredWeightIsNormal( int $storedWeight, int $expectedWeight ) {
+		$provider = new CommunityStructuredMentorProvider(
+			new NullLogger(),
+			$this->createMock( UserIdentityLookup::class ),
+			$this->getMockMessageLocalizer(),
+			$this->getMockConfigurationProvider( [ 'Mentors' => [
+				123 => [ 'message' => null, 'weight' => $storedWeight, 'username' => 'TestMentor1' ],
+			] ] ),
+			$this->getMockStatusFormatter(),
+			$this->createMock( WANObjectCache::class )
+		);
+
+		$mentor = $provider->newMentorFromUserIdentity( new UserIdentityValue( 123, 'TestMentor1' ) );
+
+		$this->assertSame( $expectedWeight, $mentor->getWeight() );
 	}
 }
