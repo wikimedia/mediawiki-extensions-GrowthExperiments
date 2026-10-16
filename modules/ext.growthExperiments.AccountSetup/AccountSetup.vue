@@ -383,9 +383,10 @@ module.exports = defineComponent( {
 		}
 
 		&-image {
-			background: url( ../../images/accountsetup/bg_confetti_small.gif ) transparent 50% / cover no-repeat;
-			height: 256px;
-			width: 256px;
+			background: url( ../../images/accountsetup/bg_confetti_small.gif ) transparent 50% / contain no-repeat;
+			width: 100%;
+			max-width: @size-1600;
+			aspect-ratio: 320 / 292;
 		}
 	}
 
