@@ -3,8 +3,10 @@
 namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\Specials\SpecialEnrollAsMentor;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\Request\FauxResponse;
 use MediaWiki\SpecialPage\SpecialPage;
 use PermissionsError;
@@ -86,5 +88,23 @@ class SpecialEnrollAsMentorTest extends SpecialPageTestBase {
 		/** @var string $html */
 		[ $html, ] = $this->executeSpecialPage( '', null, null, $user );
 		$this->assertNotEmpty( $html );
+	}
+
+	/**
+	 * @covers ::onSubmit
+	 */
+	public function testIgnoresUnsupportedWeight() {
+		$this->setGroupPermissions( '*', 'enrollasmentor', true );
+		$user = $this->getTestUser()->getUser();
+		$request = new FauxRequest( [ 'wpmessage' => '', 'wpweight' => '-1' ], true );
+
+		$this->executeSpecialPage( '', $request, null, $user );
+
+		$mentorProvider = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getMentorProvider();
+		$this->assertTrue( $mentorProvider->isMentor( $user ) );
+		$this->assertSame(
+			IMentorWeights::WEIGHT_NORMAL,
+			$mentorProvider->newMentorFromUserIdentity( $user )->getWeight()
+		);
 	}
 }

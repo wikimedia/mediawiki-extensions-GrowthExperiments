@@ -77,7 +77,11 @@ abstract class AbstractStructuredMentorProvider extends MentorProvider {
 		UserIdentity $mentorUser,
 		?UserIdentity $menteeUser = null
 	): Mentor {
-		$weight = $mentorData['weight'] ?? IMentorWeights::WEIGHT_NORMAL;
+		$weight = (int)( $mentorData['weight'] ?? IMentorWeights::WEIGHT_NORMAL );
+		if ( !in_array( $weight, IMentorWeights::WEIGHTS, true ) ) {
+			// The mentor list page is wiki-editable, so it can hold an unsupported weight.
+			$weight = IMentorWeights::WEIGHT_NORMAL;
+		}
 		if (
 			$mentorData &&
 			array_key_exists( 'automaticallyAssigned', $mentorData ) &&
