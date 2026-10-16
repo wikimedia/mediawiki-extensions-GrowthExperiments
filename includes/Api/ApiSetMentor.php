@@ -10,6 +10,7 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -28,6 +29,9 @@ class ApiSetMentor extends ApiBase {
 	/** @var UserIdentityUtils */
 	private $userIdentityUtils;
 
+	/** @var UserFactory */
+	private $userFactory;
+
 	/**
 	 * @param ApiMain $mainModule
 	 * @param string $moduleName
@@ -35,6 +39,7 @@ class ApiSetMentor extends ApiBase {
 	 * @param MentorProvider $mentorProvider
 	 * @param ChangeMentorFactory $changeMentorFactory
 	 * @param UserIdentityUtils $userIdentityUtils
+	 * @param UserFactory $userFactory
 	 */
 	public function __construct(
 		ApiMain $mainModule,
@@ -42,7 +47,8 @@ class ApiSetMentor extends ApiBase {
 		MentorManager $mentorManager,
 		MentorProvider $mentorProvider,
 		ChangeMentorFactory $changeMentorFactory,
-		UserIdentityUtils $userIdentityUtils
+		UserIdentityUtils $userIdentityUtils,
+		UserFactory $userFactory
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
@@ -50,6 +56,7 @@ class ApiSetMentor extends ApiBase {
 		$this->mentorProvider = $mentorProvider;
 		$this->changeMentorFactory = $changeMentorFactory;
 		$this->userIdentityUtils = $userIdentityUtils;
+		$this->userFactory = $userFactory;
 	}
 
 	/**
@@ -109,7 +116,9 @@ class ApiSetMentor extends ApiBase {
 			'status' => 'ok',
 			'mentee' => $mentee,
 			'newMentor' => $mentor,
-			'oldMentor' => $oldMentorObj instanceof Mentor ? $oldMentorObj->getUserIdentity() : false,
+			'oldMentor' => $oldMentorObj instanceof Mentor &&
+				!$this->userFactory->newFromUserIdentity( $oldMentorObj->getUserIdentity() )->isHidden()
+				? $oldMentorObj->getUserIdentity() : false,
 		] );
 	}
 

@@ -5,6 +5,7 @@ namespace GrowthExperiments\Mentorship;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use LogPage;
 use ManualLogEntry;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Notifications\Model\Event;
@@ -108,6 +109,10 @@ class ChangeMentor {
 		$logEntry->setPerformer( $this->performer );
 		$logEntry->setTarget( $this->getMenteeUser()->getUserPage() );
 		$logEntry->setComment( $reason );
+		if ( $this->isHidden( $this->mentor ) ) {
+			// The log params and the reassignment comment hold the name, so it must not be public.
+			$logEntry->setDeleted( LogPage::SUPPRESSED_ACTION | LogPage::DELETED_COMMENT );
+		}
 		if ( $forceBot ) {
 			// Don't spam RecentChanges with bulk changes (T304428)
 			$logEntry->setForceBotFlag( true );
@@ -139,7 +144,7 @@ class ChangeMentor {
 			] );
 		$status = Status::newGood();
 
-		if ( !$this->getMenteeUser()->isNamed() ) {
+		if ( !$this->getMenteeUser()->isNamed() || $this->getMenteeUser()->isHidden() ) {
 			$this->logger->info(
 				'Mentor change for {mentee} from {oldMentor} to {newMentor}'
 				. ' did not succeed, because the mentee doesn\'t exist', [
@@ -148,6 +153,10 @@ class ChangeMentor {
 					'newMentor' => $this->newMentor
 				] );
 			$status->fatal( 'growthexperiments-homepage-claimmentee-no-user' );
+			return $status;
+		}
+		if ( $this->isHidden( $this->newMentor ) ) {
+			$status->fatal( 'noname' );
 			return $status;
 		}
 		if ( $this->mentor && $this->mentor->equals( $this->newMentor ) ) {
@@ -181,13 +190,16 @@ class ChangeMentor {
 					'mentee' => $this->mentee,
 					'performer' => $this->performer
 				] );
+				$extraData = [
+					'mentee' => $this->mentee->getId(),
+				];
+				if ( $this->mentor !== null && !$this->isHidden( $this->mentor ) ) {
+					$extraData['oldMentor'] = $this->mentor->getName();
+				}
 				Event::create( [
 					'type' => 'mentor-changed',
 					'title' => $this->getMenteeUser()->getUserPage(),
-					'extra' => [
-						'mentee' => $this->mentee->getId(),
-						'oldMentor' => $this->mentor->getName(),
-					],
+					'extra' => $extraData,
 					'agent' => $this->newMentor,
 				] );
 
@@ -306,6 +318,10 @@ class ChangeMentor {
 		}
 
 		return $status;
+	}
+
+	private function isHidden( ?UserIdentity $user ): bool {
+		return $user !== null && $this->userFactory->newFromUserIdentity( $user )->isHidden();
 	}
 
 	private function getMenteeUser(): User {

@@ -64,6 +64,13 @@ class UserImpactHandler extends SimpleHandler {
 	 * @throws Exception
 	 */
 	public function run( UserIdentity $user ) {
+		// Same rule as Special:Impact: a hidden user's impact data is only for viewers with hideuser.
+		if (
+			$this->userFactory->newFromUserIdentity( $user )->isHidden() &&
+			!$this->getAuthority()->isAllowed( 'hideuser' )
+		) {
+			throw new HttpException( 'Impact data not found for user', 404 );
+		}
 		$start = microtime( true );
 		$userImpact = $this->getUserImpact( $user );
 		$validParams = $this->getValidatedParams();
