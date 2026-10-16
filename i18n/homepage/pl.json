@@ -205,6 +205,7 @@
 	"growthexperiments-homepage-suggestededits-progress-bar-aria-label": "Wczytywanie sugerowanych edycji",
 	"growthexperiments-homepage-suggestededits-menu-button-label": "Opcje sugerowanych edycji",
 	"growthexperiments-homepage-suggestededits-menu-interests": "Zainteresowania",
+	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Nie wybrano zainteresowania|$1 wybrane|$1 wybrane|$1 wybranych|$1 wybranego}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Rodzaje edycji",
 	"growthexperiments-homepage-suggestededits-menu-about": "O sugerowanych edycjach",
 	"growthexperiments-homepage-suggestededits-about-body": "Sugerowanie edycji ma pomóc Ci nauczyć się edytować i doskonalić swoje umiejętności niezbędne do pracy nad większymi rodzajami zmian.",

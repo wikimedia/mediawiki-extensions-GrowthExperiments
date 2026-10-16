@@ -224,6 +224,7 @@
 	"growthexperiments-homepage-suggestededits-progress-bar-aria-label": "Lade vorgeschlagene Änderungen",
 	"growthexperiments-homepage-suggestededits-menu-button-label": "Vorschläge für Bearbeitungsoptionen",
 	"growthexperiments-homepage-suggestededits-menu-interests": "Interessen",
+	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Keine ausgewählt|$1 ausgewählt}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Bearbeitungstypen",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "$1 ausgewählt",
 	"growthexperiments-homepage-suggestededits-menu-about": "Über vorgeschlagene Bearbeitungen",

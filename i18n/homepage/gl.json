@@ -196,6 +196,7 @@
 	"growthexperiments-homepage-suggestededits-progress-bar-aria-label": "Cargando as edicións suxeridas",
 	"growthexperiments-homepage-suggestededits-menu-button-label": "Opcións das edición suxeridas",
 	"growthexperiments-homepage-suggestededits-menu-interests": "Intereses",
+	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Ningún seleccionado|$1 seleccionados}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Tipos de edicións",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "$1 {{PLURAL:$1|seleccionado|seleccionados}}",
 	"growthexperiments-homepage-suggestededits-menu-about": "Sobre as edicións suxeridas",

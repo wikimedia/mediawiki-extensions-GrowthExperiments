@@ -213,6 +213,7 @@
 	"growthexperiments-homepage-suggestededits-progress-bar-aria-label": "جارٍ تحميل التعديلات المقترحة",
 	"growthexperiments-homepage-suggestededits-menu-button-label": "خيارات التعديل المقترحة",
 	"growthexperiments-homepage-suggestededits-menu-interests": "الاهتمامات",
+	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=لم يتم تحديد أي شيء|تم تحديد $1}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "أنواع التعديلات",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "تم اختيار $1",
 	"growthexperiments-homepage-suggestededits-menu-about": "عن التعديلات المقترحة",

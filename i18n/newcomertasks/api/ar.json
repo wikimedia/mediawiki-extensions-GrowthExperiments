@@ -12,6 +12,7 @@
 	"apihelp-query+growthtasks-param-topics": "مواضيع المقالات المحبّذة في اقتراح المهام.",
 	"apihelp-query+growthtasks-param-topicsmode": "وضع المطابقة للمواضيع.",
 	"apihelp-query+growthtasks-param-interests": "عناوين المقالات التي تعكس اهتمامات المستخدم. وتأتي الاقتراحات من مقالات مشابهة لها. وتُعرض الاهتمامات المحفوظة للمستخدم افتراضيًا. ولا يمكن دمجها مع <var>$1topics</var> .",
+	"apihelp-query+growthtasks-param-useinterests": "تصفية حسب اهتمامات المستخدم المخزنة، حتى عندما تتبع اقتراحات المستخدم تفضيلات الموضوع الخاصة بهم. يتم التجاهل عند تحديد <var>$1interests</var> أو <var>$1topics</var>.",
 	"apihelp-query+growthtasks-param-limit": "العدد الأقصى من المهام المقترحة.",
 	"apihelp-query+growthtasks-param-excludepageids": "معرّفات الصفحات المُراد استبعادها من الاستعلام.",
 	"apihelp-query+growthtasks-param-debug": "أضف تصدير بيانات التصحيح.",

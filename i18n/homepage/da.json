@@ -199,6 +199,7 @@
 	"growthexperiments-homepage-suggestededits-progress-bar-aria-label": "Indlæser foreslåede redigeringer",
 	"growthexperiments-homepage-suggestededits-menu-button-label": "Foreslåede redigeringsmuligheder",
 	"growthexperiments-homepage-suggestededits-menu-interests": "Interesser",
+	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Ingen valgt|$1 valgt}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Typer af redigeringer",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "$1 valgt",
 	"growthexperiments-homepage-suggestededits-menu-about": "Om foreslåede redigeringer",
