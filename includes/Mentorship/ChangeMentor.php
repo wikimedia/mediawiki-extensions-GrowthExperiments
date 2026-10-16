@@ -7,6 +7,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Logging\LogPage;
 use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
@@ -106,6 +107,10 @@ class ChangeMentor {
 		$logEntry->setPerformer( $this->performer );
 		$logEntry->setTarget( $this->getMenteeUser()->getUserPage() );
 		$logEntry->setComment( $reason );
+		if ( $this->isHidden( $this->mentor ) ) {
+			// The log params and the reassignment comment hold the name, so it must not be public.
+			$logEntry->setDeleted( LogPage::SUPPRESSED_ACTION | LogPage::DELETED_COMMENT );
+		}
 		if ( $forceBot ) {
 			// Don't spam RecentChanges with bulk changes (T304428)
 			$logEntry->setForceBotFlag( true );
@@ -135,7 +140,7 @@ class ChangeMentor {
 			] );
 		$status = Status::newGood();
 
-		if ( !$this->getMenteeUser()->isNamed() ) {
+		if ( !$this->getMenteeUser()->isNamed() || $this->getMenteeUser()->isHidden() ) {
 			$this->logger->info(
 				'Mentor change for {mentee} from {oldMentor} to {newMentor}'
 				. ' did not succeed, because the mentee doesn\'t exist', [
@@ -144,6 +149,10 @@ class ChangeMentor {
 					'newMentor' => $this->newMentor,
 				] );
 			$status->fatal( 'growthexperiments-homepage-claimmentee-no-user' );
+			return $status;
+		}
+		if ( $this->isHidden( $this->newMentor ) ) {
+			$status->fatal( 'noname' );
 			return $status;
 		}
 		if ( $this->mentor && $this->mentor->equals( $this->newMentor ) ) {
@@ -180,7 +189,7 @@ class ChangeMentor {
 				$extraData = [
 					'mentee' => $this->mentee->getId(),
 				];
-				if ( $this->mentor !== null ) {
+				if ( $this->mentor !== null && !$this->isHidden( $this->mentor ) ) {
 					$extraData['oldMentor'] = $this->mentor->getName();
 				}
 				Event::create( [
@@ -305,6 +314,10 @@ class ChangeMentor {
 		}
 
 		return $status;
+	}
+
+	private function isHidden( ?UserIdentity $user ): bool {
+		return $user !== null && $this->userFactory->newFromUserIdentity( $user )->isHidden();
 	}
 
 	private function getMenteeUser(): User {
