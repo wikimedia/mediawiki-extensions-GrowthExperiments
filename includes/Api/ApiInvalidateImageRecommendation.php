@@ -67,6 +67,10 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 	 * @throws ApiUsageException
 	 */
 	public function execute() {
+		if ( !$this->getUser()->isNamed() ) {
+			$this->dieWithError( [ 'apierror-mustbeloggedin-generic' ] );
+		}
+
 		$params = $this->extractRequestParams();
 		// This API is used by external clients for their own structured task workflows so
 		// include disabled task types.
