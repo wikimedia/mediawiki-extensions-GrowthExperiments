@@ -162,7 +162,9 @@ class WelcomeSurveyHooks implements
 		return wfArrayToCgi( $asArray );
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @see CentralAuthPostLoginRedirectHook::onCentralAuthPostLoginRedirect
+	 */
 	public function onCentralAuthPostLoginRedirect(
 		string &$returnTo, string &$returnToQuery, bool $stickHTTPS, string $type, string &$injectedHtml
 	): bool {
