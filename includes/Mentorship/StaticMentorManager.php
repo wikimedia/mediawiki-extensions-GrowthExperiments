@@ -55,7 +55,6 @@ class StaticMentorManager implements IMentorManager {
 			$this->getMentorForUserSafe( $menteeUser, MentorStore::ROLE_BACKUP );
 	}
 
-	/** @inheritDoc */
 	public function newMentorFromUserIdentity(
 		UserIdentity $mentorUser,
 		?UserIdentity $menteeUser = null
