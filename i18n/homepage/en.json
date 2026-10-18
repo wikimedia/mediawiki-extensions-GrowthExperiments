@@ -204,7 +204,7 @@
 	"growthexperiments-homepage-suggestededits-menu-interests": "Interests",
 	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=None selected|$1 selected}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Types of edits",
-	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "$1 selected",
+	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "{{PLURAL:|$1 selected}}",
 	"growthexperiments-homepage-suggestededits-menu-about": "About Suggested edits",
 	"growthexperiments-home-suggestededits-about-intro": "Wikipedia is built by people like you working together.",
 	"growthexperiments-home-suggestededits-about-purpose": "Suggested edits help you find articles that need improvement.",
