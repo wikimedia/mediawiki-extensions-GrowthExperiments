@@ -90,7 +90,7 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @param string[] $options
-	 * @return string Script ouput
+	 * @return string Script output
 	 */
 	private function runScript( array $options ) {
 		ob_start();
