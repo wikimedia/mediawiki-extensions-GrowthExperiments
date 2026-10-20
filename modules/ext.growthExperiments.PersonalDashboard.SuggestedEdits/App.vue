@@ -135,18 +135,18 @@ module.exports = defineComponent( {
 			menuItems: computed( () => [
 				{
 					value: 'interests',
-					label: mw.msg( 'growthexperiments-homepage-suggestededits-menu-interests' ),
+					label: mw.msg( 'growthexperiments-home-suggestededits-menu-interests' ),
 					description: mw.message(
-						'growthexperiments-homepage-suggestededits-menu-interests-selected',
+						'growthexperiments-home-suggestededits-menu-interests-selected',
 						mw.language.convertNumber( selectedInterestCount.value ),
 					).text(),
 					icon: cdxIconConfigure,
 				},
 				{
 					value: 'taskTypes',
-					label: mw.msg( 'growthexperiments-homepage-suggestededits-menu-tasktypes' ),
+					label: mw.msg( 'growthexperiments-home-suggestededits-menu-tasktypes' ),
 					description: mw.message(
-						'growthexperiments-homepage-suggestededits-menu-tasktypes-selected',
+						'growthexperiments-home-suggestededits-menu-tasktypes-selected',
 						mw.language.convertNumber( selectedTaskTypeCount.value ),
 					).text(),
 					icon: cdxIconChartBar,
@@ -156,12 +156,12 @@ module.exports = defineComponent( {
 			// it, and that is what Codex gives a menu footer.
 			menuFooterItem: {
 				value: 'about',
-				label: mw.msg( 'growthexperiments-homepage-suggestededits-menu-about' ),
+				label: mw.msg( 'growthexperiments-home-suggestededits-menu-about' ),
 			},
 			footerLabel: mw.msg( 'growthexperiments-homepage-suggestededits-mobilesummary-footer-button' ),
 			noResultsLabel: mw.msg( 'growthexperiments-homepage-suggestededits-no-results' ),
-			progressBarAriaLabel: mw.msg( 'growthexperiments-homepage-suggestededits-progress-bar-aria-label' ),
-			menuButtonLabel: mw.msg( 'growthexperiments-homepage-suggestededits-menu-button-label' ),
+			progressBarAriaLabel: mw.msg( 'growthexperiments-home-suggestededits-progress-bar-aria-label' ),
+			menuButtonLabel: mw.msg( 'growthexperiments-home-suggestededits-menu-button-label' ),
 		};
 	},
 	computed: {

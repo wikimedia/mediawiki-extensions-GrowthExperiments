@@ -152,7 +152,7 @@ describe( 'TaskTypesDialog', () => {
 		await flushPromises();
 
 		expect( wrapper.find( '.cdx-dialog__header__subtitle' ).text() ).toBe(
-			'growthexperiments-homepage-suggestededits-difficulty-filters-subtitle-count 42',
+			'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count 42',
 		);
 		mw.message.mockImplementation( originalMessage );
 	} );

@@ -152,7 +152,7 @@ module.exports = exports = defineComponent( {
 				return '';
 			}
 			return mw.message(
-				'growthexperiments-homepage-suggestededits-difficulty-filters-subtitle-count',
+				'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count',
 				mw.language.convertNumber( count.value ),
 			).text();
 		} );
@@ -180,7 +180,7 @@ module.exports = exports = defineComponent( {
 			primaryAction,
 			save,
 			defaultAction: {
-				label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-cancel' ).text(),
+				label: mw.message( 'growthexperiments-home-suggestededits-difficulty-filters-cancel' ).text(),
 			},
 			title: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-title' ).text(),
 			emptySelectionLabel: mw.message(

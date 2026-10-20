@@ -162,7 +162,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|天}}前{{GENDER:$1|活動}}",
 	"growthexperiments-homepage-mentorship-intro": "此位{{GENDER:$1|具經驗的使用者}}了解您是新手，並可以協助{{GENDER:$2|您}}在編輯上的問題。",
 	"growthexperiments-homepage-mentorship-question-button": "詢問{{GENDER:$2|您的}}{{GENDER:$1|導師}}一個問題",
-	"growthexperiments-homepage-mentorship-question-error": "發佈您的問題時發生了錯誤。請再試一次。",
+	"growthexperiments-home-mentorship-question-error": "發佈您的問題時發生了錯誤。請再試一次。",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "檢視{{GENDER:$2|您}}{{GENDER:$1|導師}}的其它交談",
 	"growthexperiments-homepage-mentorship-dialog-title": "詢問{{GENDER:$2|您的}}{{GENDER:$1|導師}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "當您詢問問題時，會以{{GENDER:$2|您的}}使用者名稱「$2」來<strong>公開發佈</strong>到$3，{{GENDER:$1|他|她|他}}會在那裡看到並回覆您的問題。",

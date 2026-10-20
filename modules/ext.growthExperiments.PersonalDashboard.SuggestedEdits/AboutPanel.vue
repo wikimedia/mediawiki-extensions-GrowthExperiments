@@ -43,7 +43,7 @@ module.exports = exports = defineComponent( {
 	setup() {
 		return {
 			// The menu item names the panel it opens, so both read one message.
-			title: mw.msg( 'growthexperiments-homepage-suggestededits-menu-about' ),
+			title: mw.msg( 'growthexperiments-home-suggestededits-menu-about' ),
 			intro: mw.msg( 'growthexperiments-home-suggestededits-about-intro' ),
 			purpose: mw.msg( 'growthexperiments-home-suggestededits-about-purpose' ),
 			// The wiki sets where the documentation is. The link markup stays in

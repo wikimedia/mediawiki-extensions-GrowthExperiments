@@ -181,7 +181,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Actif|Active}} il y a $2 {{PLURAL:$2|jour|jours}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Cet utilisateur expérimenté|Cette utilisatrice expérimentée}} sait que vous êtes {{GENDER:$2|nouveau|nouvelle}} et peut vous aider à modifier les pages.",
 	"growthexperiments-homepage-mentorship-question-button": "Poser une question à {{GENDER:$2|votre}} {{GENDER:$1|mentor|mentore}}",
-	"growthexperiments-homepage-mentorship-question-error": "Une erreur s'est produite lors de l'envoi de votre question. Veuillez réessayer.",
+	"growthexperiments-home-mentorship-question-error": "Une erreur s'est produite lors de l'envoi de votre question. Veuillez réessayer.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Afficher les autres conversations de {{GENDER:$2|votre}} {{GENDER:$1|mentor|mentore}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Demander à {{GENDER:$2|votre}} {{GENDER:$1|mentor|mentore}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Quand vous posez une question, elle est <strong>publiée publiquement</strong> sous {{GENDER:$2|votre}} nom {{GENDER:$2|d’utilisateur|d’utilisatrice}} « $2 », sur la $3 qui est l’endroit où {{GENDER:$1|il|elle|l’on}} peut trouver et répondre à votre question.",

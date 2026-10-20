@@ -98,7 +98,7 @@ module.exports = defineComponent( {
 		const fieldStatus = computed( () => status.value === 'error' ? 'error' : 'default' );
 		const fieldMessages = computed( () => status.value === 'error' ?
 			{ error: apiError.value ||
-				mw.msg( 'growthexperiments-homepage-mentorship-question-error' ) } :
+				mw.msg( 'growthexperiments-home-mentorship-question-error' ) } :
 			{},
 		);
 
