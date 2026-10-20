@@ -199,7 +199,7 @@
 	"growthexperiments-homepage-suggestededits-menu-interests": "Maraqlar",
 	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Heç biri seçilməyib|$1 seçilib}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Redaktə növləri",
-	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "$1 ədəd seçildi",
+	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "{{PLURAL:|$1 ədəd seçildi}}",
 	"growthexperiments-homepage-suggestededits-menu-about": "Tövsiyə edilən redaktələr haqqında",
 	"growthexperiments-home-suggestededits-about-intro": "Vikipediya sizin kimi insanların birgə əməyi ilə yaradılır.",
 	"growthexperiments-home-suggestededits-about-purpose": "Təklif olunan düzəlişlər təkmilləşdirilməyə ehtiyacı olan məqalələri tapmağınıza kömək edir.",

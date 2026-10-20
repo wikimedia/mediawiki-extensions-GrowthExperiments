@@ -201,7 +201,7 @@
 	"growthexperiments-homepage-suggestededits-menu-interests": "Interesser",
 	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Ingen valgt|$1 valgt}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Typer af redigeringer",
-	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "$1 valgt",
+	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "{{PLURAL:|$1 valgt}}",
 	"growthexperiments-homepage-suggestededits-menu-about": "Om foreslåede redigeringer",
 	"growthexperiments-home-suggestededits-about-intro": "Wikipedia er bygget af folk som dig, der arbejder sammen.",
 	"growthexperiments-home-suggestededits-about-purpose": "Foreslåede redigeringer hjælper dig med at finde artikler, der skal forbedres.",

@@ -201,6 +201,7 @@
 	"growthexperiments-homepage-suggestededits-edit-card": "편집",
 	"growthexperiments-homepage-suggestededits-no-more-results": "제안 더 없음",
 	"growthexperiments-homepage-suggestededits-no-results": "제안이 없습니다",
+	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "{{PLURAL:|$1개 선택됨}}",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "편집 제안을 찾으려면 난이도를 조절하세요.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "편집 제안을 찾으려면 관심사를 변경하거나 난이도를 조절하세요.",
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "더 많은 결과를 보려면 {{GENDER:$1|필터}} 설정을 \"적어도 선택한 1개의 주제와 일치\"로 바꾸세요",

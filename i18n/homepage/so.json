@@ -195,7 +195,7 @@
 	"growthexperiments-homepage-suggestededits-menu-interests": "Danaha",
 	"growthexperiments-homepage-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Midna lama dooran|$1 la doortay}}",
 	"growthexperiments-homepage-suggestededits-menu-tasktypes": "Noocyada wax ka beddellada",
-	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "$1 la doortay",
+	"growthexperiments-homepage-suggestededits-menu-tasktypes-selected": "{{PLURAL:|$1 la doortay}}",
 	"growthexperiments-homepage-suggestededits-menu-about": "Ku saabsan wax ka beddellada la soo jeediyay",
 	"growthexperiments-home-suggestededits-about-intro": "Wikipedia waxaa dhisa dad adiga oo kale ah oo wada shaqaynaya.",
 	"growthexperiments-home-suggestededits-about-purpose": "Wax ka beddellada la soo jeediyay waxay kaa caawinayaan inaad hesho maqaallada u baahan hagaajin.",
