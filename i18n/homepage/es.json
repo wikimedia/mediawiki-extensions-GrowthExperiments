@@ -225,7 +225,7 @@
 	"growthexperiments-homepage-contributions-zero-title": "Aún no {{GENDER:$1|has}} realizado ninguna contribución.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "¡Visita {{GENDER:$1|tu}} página de inicio para comenzar a editar!",
 	"growthexperiments-homepage-contributions-zero-button": "Ir a {{GENDER:$1|tu}} página de inicio",
-	"growthexperiments-tour-welcome-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}} a tu página de inicio!",
+	"growthexperiments-tour-welcome-title": "¡Te damos la bienvenida a {{GENDER:$1|tu}} página de inicio!",
 	"growthexperiments-tour-welcome-description": "Siempre puedes volver a hacer clic en tu nombre de {{GENDER:$1|usuario|usuaria}} para volver aquí.",
 	"growthexperiments-tour-discovery-title": "¡Comienza aquí!",
 	"growthexperiments-tour-discovery-description": "Haz clic en tu nombre de {{GENDER:$1|usuario|usuaria}} para ver tu página de inicio.",

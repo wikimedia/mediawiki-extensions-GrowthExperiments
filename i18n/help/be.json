@@ -6,7 +6,8 @@
 			"No Sleep till Krupki",
 			"Plaga med",
 			"Tomato Cream",
-			"Ucukor"
+			"Ucukor",
+			"Vlad5250"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Уключыць акенца дапамогі рэдактарам",
@@ -29,12 +30,17 @@
 	"growthexperiments-help-panel-postedit-header": "Наступныя крокі",
 	"growthexperiments-help-panel-postedit-subheader-image-recommendation": "Іншыя спосабы рабіць праўкі",
 	"growthexperiments-help-panel-postedit-subheader2-image-recommendation": "Паспрабуйце іншы тып праўкі або вярніцеся заўтра, каб атрымаць дадатковыя прапановы выяваў.",
+	"growthexperiments-help-panel-postedit-subheader-section-image-recommendation": "Іншыя спосабы рабіць праўкі",
 	"growthexperiments-help-panel-postedit-subheader-link-recommendation": "Іншыя спосабы рабіць праўкі",
 	"growthexperiments-help-panel-postedit-subheader2-link-recommendation": "Паспрабуйце іншы тып праўкі або вярніцеся заўтра, каб атрымаць дадатковыя прапановы спасылак.",
 	"growthexperiments-help-panel-postedit-subheader": "Правіць іншую прапанову:",
 	"growthexperiments-help-panel-postedit-subheader-notsaved": "Наступная прапанова:",
 	"growthexperiments-help-panel-postedit-footer": "Паглядзець усе прапанаваныя праўкі",
+	"growthexperiments-help-panel-postedit-suggestededits-title": "Прапанаваныя праўкі",
 	"growthexperiments-help-panel-postedit-suggestededits-info": "Іншыя карыстальнікі пляцоўкі {{SITENAME}} знайшлі артыкулы, якія патрабуюць працы. Працягвайце {{GENDER:|вашу}} праўку, праглядаючы гэтыя прапанаваныя змены.",
+	"growthexperiments-help-panel-postedit-trynewtask-nothanks-button-text": "Не, дзякуй",
+	"growthexperiments-help-panel-postedit-trynewtask-dontshowagain-checkbox": "Больш не паказваць",
+	"growthexperiments-help-panel-postedit-nonsuggested-nothanks-button-text": "Не, дзякуй",
 	"growthexperiments-help-panel-questionreview-title": "Запытаць у Службе падтрымкі",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Задайце пытанне свайму настаўніку",
 	"growthexperiments-help-panel-questionreview-header": "Калі вы адпраўляеце пытанне, яно <strong>публікуецца</strong> пад вашым імем карыстальніка, «$2», на старонку $1, дзе іншы рэдактар-добраахвотнік паспрабуе даць адказ на працягу наступнага дня або каля таго.",

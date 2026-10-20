@@ -8,7 +8,8 @@
 			"Plaga med",
 			"Tomato Cream",
 			"Tīgelika",
-			"Ucukor"
+			"Ucukor",
+			"Vlad5250"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панэль настаўніка",
@@ -44,6 +45,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label": "Разгарнуць форму фільтраў падапечных",
 	"growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label": "Згарнуць форму фільтраў падапечных",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Пошук",
+	"growthexperiments-mentor-dashboard-mentee-overview-talk": "размовы",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "актыўны $1 таму",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "невядомае",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Паказаць $1",
@@ -120,6 +122,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel": "Скасаваць",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label": "Уступнае паведамленне",
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "Паведамленне, якое {{GENDER:|вы}} выкарыстоўваеце, каб прадставіцца зменена на «$1».",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-previous-icon-label": "Папярэдняя старонка",
+	"growthexperiments-mentor-dashboard-personalized-praise-page-next-icon-label": "Наступная старонка",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Скасаваць",
 	"growthexperiments-mentor-list-missing-key": "Ключ <code>$1</code> адсутнічае",
 	"growthexperiments-mentor-list-datatype-mismatch": "Чакаецца, што <code>$1</code> будзе <code>$2</code>, але зараз гэта <code>$3</code>",
