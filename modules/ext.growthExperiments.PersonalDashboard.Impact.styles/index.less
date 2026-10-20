@@ -1,0 +1,39 @@
+@import 'mediawiki.skin.variables.less';
+
+// The 16px padding of the Homepage module, and on the dashboard the Codex card
+// border, as on the feed cards. Without JS, the body is empty, so it has neither.
+.personal-dashboard-module {
+	.client-js &-impact > &-section-body {
+		padding: @spacing-100;
+
+		// The score cards go past the top padding, as they go past the side
+		// padding (CScoreCards.less). They start at the card border or the header
+		// divider, and the content below them is inset.
+		.ext-growthExperiments-ScoreCards {
+			margin-top: -@spacing-100;
+		}
+	}
+
+	.client-js &-impact:not( &--focused ) > &-section-body {
+		border: @border-base;
+		border-radius: @border-radius-base;
+	}
+
+	// The skeleton score cards, from Impact.php and from the app while it loads,
+	// get the height of the loaded cards, so the module does not grow. A loaded
+	// card is 102px high, and 110px on a narrow viewport, where the labels wrap,
+	// minus the CScoreCard.less padding. The body class beats the Impact.less
+	// rule, which the app loads again after this file.
+	&-impact > &-section-body .ext-growthExperiments-ScoreCards .ext-growthExperiments-ScoreCard {
+		min-height: ( 102 - 24 - 16 ) * 1px;
+
+		@media screen and ( max-width: @max-width-breakpoint-mobile ) {
+			min-height: ( 110 - 24 - 16 ) * 1px;
+		}
+	}
+
+	// Without JS, no app replaces the skeleton, so hide it.
+	.client-nojs &-impact .ext-growthExperiments-impact-app-root {
+		display: none;
+	}
+}

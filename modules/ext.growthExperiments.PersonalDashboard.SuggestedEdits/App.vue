@@ -14,21 +14,23 @@
 			module-name="ext.growthExperiments.PersonalDashboard.SuggestedEdits"
 			:is-narrow="isNarrow"
 			summary-mode="card"
-			footer-id="growthexperiments-suggested-edits-see-all"
-			:footer-label="footerLabel"
-			:progress-bar-aria-label="progressBarAriaLabel">
+			expand-in-place
+			:show-more-aria-label
+			:show-less-aria-label
+			:empty-label>
 			<template #item="{ item }">
 				<task-card
 					:task="item"
 					:position="feedState.items.indexOf( item )"></task-card>
 			</template>
+			<!-- The design shows empty cards with the large thumbnail while the tasks load. -->
+			<template #loading-card>
+				<feed-card
+					:thumbnail="null"
+					thumbnail-size="large"
+					force-thumbnail></feed-card>
+			</template>
 		</feed-panel>
-
-		<!-- The scaffold renders nothing for an empty feed, and a card whose body
-			is blank reads as broken rather than as "nothing to suggest today". -->
-		<p v-if="isEmpty">
-			{{ noResultsLabel }}
-		</p>
 	</div>
 
 	<!-- The menu button belongs in the module header, which the server renders.
@@ -63,6 +65,7 @@
 <script>
 const { computed, defineComponent, nextTick, ref } = require( 'vue' );
 const {
+	FeedCard,
 	FeedPanel,
 	FULL_LIMIT,
 	ModuleHeaderMenu,
@@ -91,6 +94,7 @@ const INTERESTS_NOTICE_ACTIONS = [ 'show-no-interests-notice', 'show-welcome-bac
 module.exports = exports = defineComponent( {
 	components: {
 		AboutPanel,
+		FeedCard,
 		FeedPanel,
 		InterestSelectorDialog,
 		InterestsNotice,
@@ -246,26 +250,11 @@ module.exports = exports = defineComponent( {
 				value: 'about',
 				label: mw.msg( 'growthexperiments-home-suggestededits-menu-about' ),
 			},
-			footerLabel: mw.msg( 'growthexperiments-homepage-suggestededits-mobilesummary-footer-button' ),
-			noResultsLabel: mw.msg( 'growthexperiments-homepage-suggestededits-no-results' ),
-			progressBarAriaLabel: mw.msg( 'growthexperiments-home-suggestededits-progress-bar-aria-label' ),
+			showMoreAriaLabel: mw.msg( 'growthexperiments-home-suggestededits-show-more-aria-label' ),
+			showLessAriaLabel: mw.msg( 'growthexperiments-home-suggestededits-show-less-aria-label' ),
+			emptyLabel: mw.msg( 'growthexperiments-home-suggestededits-empty' ),
 			menuButtonLabel: mw.msg( 'growthexperiments-home-suggestededits-menu-button-label' ),
 		};
 	},
-	computed: {
-		isEmpty() {
-			return !this.feedState.isLoading &&
-				!this.feedState.error &&
-				!this.feedState.items.length;
-		},
-	},
 } );
 </script>
-
-<style lang="less">
-@import 'mediawiki.skin.variables.less';
-
-.personal-dashboard-module-SuggestedEdits .personal-dashboard-module-section-body {
-	margin: @spacing-0;
-}
-</style>

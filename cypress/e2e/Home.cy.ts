@@ -33,9 +33,9 @@ describe( 'Special:Home', () => {
 			// in Special:SpecialPages.
 			home.title.should( 'contain', username );
 
-			// Both cards come from the server, and both bodies come from an island
-			// the dashboard app teleports in. Assert on the body, so the test fails
-			// when the island does not mount.
+			// Both cards come from the server. The client code fills both bodies:
+			// the Suggested Edits island and the Impact Vue app. Assert on the
+			// bodies, so the test fails when the client code does not mount.
 			home.module( SUGGESTED_EDITS_MODULE ).should( 'be.visible' );
 			// The card of the grid is always a summary, on every viewport.
 			home.suggestedEditsCards.should( 'have.length', 3 );
@@ -81,14 +81,26 @@ describe( 'Special:Home', () => {
 		} );
 	} );
 
-	it( 'opens the full list of suggestions from the card footer', () => {
+	it( 'the show more button adds suggestions to the card on a wide viewport', () => {
 		cy.loginAsUser( 'GE-Home' );
 		cy.visit( 'index.php?title=Special:Home' );
 
-		home.suggestedEditsSeeAllButton.click();
+		home.suggestedEditsShowMoreButton.click();
 
-		// The module leaves its card and becomes the whole view. It keeps the one
-		// instance, so there is still a single set of cards, now the full list.
+		home.suggestedEditsCards.should( 'have.length.greaterThan', 3 );
+		home.focusedView.should( 'not.exist' );
+		cy.location( 'href' ).should( 'not.contain', SUGGESTED_EDITS_MODULE );
+	} );
+
+	it( 'the show more button opens the full list of suggestions on a narrow viewport', () => {
+		cy.viewport( 375, 667 );
+		cy.loginAsUser( 'GE-Home' );
+		cy.visit( 'index.php?title=Special:Home' );
+
+		home.suggestedEditsShowMoreButton.click();
+
+		// The module leaves its card and becomes the whole view. It keeps one
+		// instance, so there is one set of cards, which shows the full list.
 		home.focusedView.should( 'be.visible' );
 		home.suggestedEditsCards.should( 'have.length.greaterThan', 3 );
 		// The route of the module is in the URL, so the view survives a reload and

@@ -4,6 +4,7 @@
 		:url="url"
 		:aria-label="task.title"
 		:thumbnail="thumbnail"
+		thumbnail-size="large"
 		force-thumbnail
 	>
 		<template #header>
@@ -12,13 +13,13 @@
 			</span>
 		</template>
 
-		<template #meta>
-			<cdx-icon :icon="cdxIconLightbulb" size="small"></cdx-icon>
-			{{ taskTypeName }}
-		</template>
-
 		<template v-if="task.description" #description>
 			{{ task.description }}
+		</template>
+
+		<template #supporting-text>
+			<cdx-icon :icon="cdxIconLightbulb" size="small"></cdx-icon>
+			{{ taskTypeName }}
 		</template>
 	</feed-card>
 </template>
@@ -118,14 +119,17 @@ module.exports = exports = defineComponent( {
 </script>
 
 <style lang="less">
-// The card chrome (the whole-card link, the visited state and the row layout)
-// lives in FeedCard; only what is specific to a suggested edit is here.
+@import 'mediawiki.skin.variables.less';
+
+// FeedCard has the card chrome: the whole-card link and the row layout. This file
+// styles only what is specific to a suggested edit.
 .growthexperiments-suggested-edits__card {
-	// The design reads title, then description, then the task type, where
-	// FeedCard stacks meta above description. Reordered here rather than
-	// there: the text-only feeds want the order FeedCard already has.
-	.personal-dashboard-feed__card__meta {
-		order: 1;
+	// The design shows the task type in the progressive color, not the Codex gray.
+	.cdx-card__text__supporting-text {
+		&,
+		.cdx-icon {
+			color: @color-progressive;
+		}
 	}
 }
 </style>

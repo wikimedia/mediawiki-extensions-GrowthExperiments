@@ -30,9 +30,10 @@ class SpecialHome {
 		return cy.get( '.growthexperiments-suggested-edits__card' );
 	}
 
-	// The footer control that opens the full list of suggestions.
-	public get suggestedEditsSeeAllButton(): ReturnType<typeof cy.get> {
-		return cy.get( '#growthexperiments-suggested-edits-see-all' );
+	// The show more button, found by its accessible name: it adds suggestions to the
+	// card, or opens the full list on a narrow viewport.
+	public get suggestedEditsShowMoreButton(): ReturnType<typeof cy.get> {
+		return cy.get( 'button[aria-label="Show more suggested edits"]' );
 	}
 
 	public get interestsNotice(): ReturnType<typeof cy.get> {

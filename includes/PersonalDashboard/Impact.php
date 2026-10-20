@@ -70,11 +70,11 @@ class Impact extends BaseModule {
 	}
 
 	/**
-	 * The skeleton the Vue app hydrates into, plus a no-JS fallback. Mirrors
-	 * the desktop path of the Homepage module's getBody(): the client
-	 * init.js picks a render mode from a 'homepagemodules' config var that
-	 * only the Homepage sets, so absent that, it always falls back to
-	 * desktop and mounts here.
+	 * The skeleton the Vue app hydrates into. The dashboard shows its own no-JS
+	 * notice. Mirrors the desktop path of the Homepage module's getBody(): the
+	 * client init.js picks a render mode from a 'homepagemodules' config var that
+	 * only the Homepage sets, so absent that, it always falls back to desktop and
+	 * mounts here.
 	 * @inheritDoc
 	 */
 	protected function getBody(): string {
@@ -84,10 +84,6 @@ class Impact extends BaseModule {
 					'class' => 'ext-growthExperiments-impact-app-root',
 				],
 				$this->getBaseMarkup()
-			) .
-			Html::element( 'p',
-				[ 'class' => 'growthexperiments-homepage-impact-no-js-fallback' ],
-				$this->msg( 'growthexperiments-homepage-impact-no-js-fallback' )->text()
 			);
 	}
 

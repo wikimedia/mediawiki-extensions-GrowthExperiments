@@ -37,6 +37,7 @@ jest.mock( './useSuggestedEditsFeed.js', () => ( {
 } ) );
 jest.mock( 'ext.personalDashboard.common', () => ( {
 	FULL_LIMIT: 20,
+	FeedCard: { render: () => null },
 	FeedPanel: { render: () => null },
 	ModuleHeaderMenu: {
 		name: 'ModuleHeaderMenu',

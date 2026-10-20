@@ -9,18 +9,18 @@ use GrowthExperiments\HomepageModules\SuggestedEdits as HomepageSuggestedEdits;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\PersonalDashboard\Modules\BaseModule;
+use MediaWiki\Extension\PersonalDashboard\Modules\FeedLoadingMarkup;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\Options\UserOptionsLookup;
 
 /**
- * The Newcomer Homepage Suggested Edits module reimagined for the Personal
- * Dashboard: a three-card preview of recommended articles on the dashboard, the
- * full ranked list behind "see all suggestions".
+ * The Newcomer Homepage Suggested Edits module for the Personal Dashboard: a
+ * short preview of recommended articles that grows in place on a wide viewport,
+ * and the full ranked list in the focused view of the module.
  *
  * An island, unlike the Mentorship and Impact cards beside it. The body is a
  * relevance-ranked list the client fetches from list=growthtasks, so there is no
- * server render to progressively enhance; the card header links to the focused
- * view, which is what a no-JS visitor gets instead.
+ * server render to progressively enhance.
  *
  * The mobile swipe pane stays with the Homepage module for now. Cards link
  * through Special:Homepage/newcomertask, so structured tasks do start from
@@ -34,7 +34,9 @@ class SuggestedEdits extends BaseModule {
 		private readonly NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		private readonly UserOptionsLookup $userOptionsLookup
 	) {
-		parent::__construct( $context, shouldWrapModuleWithLink: true );
+		// The design has no link on the module header. On a narrow viewport, the
+		// show more button opens the focused view.
+		parent::__construct( $context );
 	}
 
 	/**
@@ -64,10 +66,17 @@ class SuggestedEdits extends BaseModule {
 	}
 
 	/**
-	 * Design puts the filter controls and an explanation of the module behind a
-	 * menu in the header. Opting in also drops the header's forward arrow, which
-	 * the menu button replaces; "see all suggestions" in the footer is still the
-	 * way through to the full list.
+	 * The loading cards of the island, so the card has its loaded height from the
+	 * first paint.
+	 * @inheritDoc
+	 */
+	protected function getLoadingMarkup(): string {
+		return FeedLoadingMarkup::getHtml( $this, 'large', $this->isFocused() );
+	}
+
+	/**
+	 * The design puts the filter controls and the module explanation in a header
+	 * menu. On a narrow viewport, the show more button leads to the full list.
 	 * @inheritDoc
 	 */
 	protected function hasHeaderMenu(): bool {

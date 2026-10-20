@@ -119,7 +119,12 @@ describe( 'Special:Homepage', () => {
 
 			// The task cards on Home still link to Special:Homepage/newcomertask (T439433).
 			// That subpage does not redirect to Home.
-			home.suggestedEditsCards.first().find( 'a' ).first()
+			// A card is the CdxCard link itself, or it holds an overlay link. Accept both,
+			// so that PersonalDashboard can change the card link without failing this test.
+			home.suggestedEditsCards.first()
+				.then( ( $card ) => (
+					$card.is( 'a' ) ? $card : $card.find( '.personal-dashboard-feed__card__link' )
+				) )
 				.should( 'have.attr', 'href' ).and( 'contain', 'newcomertask' )
 				.then( ( href ) => {
 					cy.visit( String( href ) );

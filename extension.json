@@ -1032,6 +1032,7 @@
 				"growthexperiments-home-suggestededits-about-recommendations",
 				"growthexperiments-home-suggestededits-difficulty-filters-cancel",
 				"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count",
+				"growthexperiments-home-suggestededits-empty",
 				"growthexperiments-home-suggestededits-interests-notice",
 				"growthexperiments-home-suggestededits-interests-notice-button",
 				"growthexperiments-home-suggestededits-menu-about",
@@ -1040,7 +1041,8 @@
 				"growthexperiments-home-suggestededits-menu-interests-selected",
 				"growthexperiments-home-suggestededits-menu-tasktypes",
 				"growthexperiments-home-suggestededits-menu-tasktypes-selected",
-				"growthexperiments-home-suggestededits-progress-bar-aria-label",
+				"growthexperiments-home-suggestededits-show-less-aria-label",
+				"growthexperiments-home-suggestededits-show-more-aria-label",
 				"growthexperiments-home-welcome-back-select-interests",
 				"growthexperiments-home-welcome-back-text",
 				"growthexperiments-home-welcome-back-title",
@@ -1054,8 +1056,6 @@
 				"growthexperiments-homepage-suggestededits-interest-filters-close",
 				"growthexperiments-homepage-suggestededits-interest-filters-title",
 				"growthexperiments-homepage-suggestededits-interest-selector-article-count",
-				"growthexperiments-homepage-suggestededits-mobilesummary-footer-button",
-				"growthexperiments-homepage-suggestededits-no-results",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-tasktype-name-copyedit",
 				"growthexperiments-homepage-suggestededits-tasktype-name-expand",
@@ -1089,7 +1089,8 @@
 				"ext.growthExperiments.Homepage.Impact/components/Impact.less",
 				"ext.growthExperiments.Homepage.Impact/components/LayoutWrapper.less",
 				"vue-components/CScoreCard.less",
-				"vue-components/CScoreCards.less"
+				"vue-components/CScoreCards.less",
+				"ext.growthExperiments.PersonalDashboard.Impact.styles/index.less"
 			]
 		},
 		"ext.growthExperiments.PersonalDashboard.Mentorship.styles": {

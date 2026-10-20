@@ -95,7 +95,8 @@ class ImpactTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertIsString( $body );
 		$this->assertStringContainsString( 'id="impact-vue-root"', $body );
-		$this->assertStringContainsString( 'growthexperiments-homepage-impact-no-js-fallback', $body );
+		// The dashboard shows its own no-JS notice.
+		$this->assertStringNotContainsString( 'growthexperiments-homepage-impact-no-js-fallback', $body );
 	}
 
 	public function testGetModuleStyles() {
