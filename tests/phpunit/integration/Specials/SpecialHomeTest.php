@@ -146,6 +146,29 @@ class SpecialHomeTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
+	public function testThePageDoesNotBlowUpWhenCommunityUpdatesIsDisabled() {
+		$this->overrideConfigValue( 'GEHomeEnabled', true );
+		$this->overrideConfigValue( 'GECommunityUpdatesEnabled', false );
+		$user = $this->newUserWithHomepagePreference();
+		[ , $output ] = $this->runSpecialPage( $user );
+
+			$this->assertNotNull( $output->getPageTitle(),
+				'page title should load when community updates is disabled' );
+	}
+
+	public function testThePageDoesNotIncludeCommunityUpdatesWhenCommunityUpdatesIsDisabled() {
+		$this->overrideConfigValue( 'GEHomeEnabled', true );
+		$this->overrideConfigValue( 'GECommunityUpdatesEnabled', false );
+		$user = $this->newUserWithHomepagePreference();
+		[ , $output ] = $this->runSpecialPage( $user );
+
+		$communityUpdates = $output->getJsConfigVars()['wgPersonalDashboardGroups'][1]['subgroups'][0]['modules'][0];
+		$this->assertEquals( 'ext.growthExperiments.communityUpdates', $communityUpdates['name'],
+			'The tested module should be community updates' );
+		$this->assertFalse( $communityUpdates['enabled'],
+			'The community updates module should be disabled' );
+	}
+
 	private function newUserWithHomepagePreference(): User {
 		$user = $this->getMutableTestUser()->getUser();
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();

@@ -846,6 +846,19 @@
 						"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 						"UserOptionsLookup"
 					]
+				},
+				"ext.growthExperiments.communityUpdates": {
+					"class": "GrowthExperiments\\PersonalDashboard\\CommunityUpdates",
+					"services": [
+						"UserEditTracker",
+						"CommunityConfiguration.ProviderFactory",
+						"LinkRenderer",
+						"TitleFactory",
+						"WANObjectCache",
+						"HttpRequestFactory",
+						"GrowthExperimentsConfig",
+						"GrowthExperimentsLogger"
+					]
 				}
 			},
 			"ModuleGroups": {
@@ -878,6 +891,10 @@
 									"name": "primary",
 									"enabled": true,
 									"modules": [
+										{
+											"name": "ext.growthExperiments.communityUpdates",
+											"enabled": true
+										},
 										{
 											"name": "ext.growthExperiments.impact",
 											"enabled": true
@@ -1160,6 +1177,18 @@
 				"growthexperiments-homepage-mentorship-about-header",
 				"growthexperiments-homepage-mentorship-about-mentor-par1",
 				"growthexperiments-homepage-mentorship-about-mentor-par2"
+			]
+		},
+		"ext.growthExperiments.PersonalDashboard.CommunityUpdates.styles": {
+			"localBasePath": "modules/ext.growthExperiments.PersonalDashboard.CommunityUpdates.styles",
+			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.PersonalDashboard.CommunityUpdates.styles",
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexStyleOnly": true,
+			"codexComponents": [
+				"CdxCard"
+			],
+			"styles": [
+				"index.less"
 			]
 		},
 		"ext.growthExperiments.mobileMenu.icons": {
