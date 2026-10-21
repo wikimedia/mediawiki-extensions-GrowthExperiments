@@ -46,6 +46,14 @@ describe( 'AboutPanel', () => {
 		);
 	} );
 
+	it( 'keeps the external link icon off the recommendations link', () => {
+		const wrapper = mount( AboutPanel, { props: { open: true } } );
+
+		// Minerva adds the icon to `a.external`. `plainlinks` removes it.
+		expect( wrapper.findAll( '.module-panel p' )[ 2 ].classes() )
+			.toContain( 'plainlinks' );
+	} );
+
 	it( 'reports itself closed so the menu above can close it', async () => {
 		const wrapper = mount( AboutPanel, { props: { open: true } } );
 
