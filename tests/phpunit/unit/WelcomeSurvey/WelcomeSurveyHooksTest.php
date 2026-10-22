@@ -247,6 +247,23 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 				'returnVal' => true,
 			],
 		];
+
+		yield 'wiki with Home' => [
+			[
+				'returnTo' => 'Special:AccountSetup',
+				'returnToQuery' => 'baz=fizz',
+				'type' => 'signup',
+			],
+			[
+				'home' => true,
+				'request' => new FauxRequest( [] ),
+			],
+			[
+				'returnTo' => 'Special:AccountSetup',
+				'returnToQuery' => 'baz=fizz',
+				'returnVal' => true,
+			],
+		];
 	}
 
 	/**
@@ -323,6 +340,7 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 		] );
 		$featureManager = $this->createMock( FeatureManager::class );
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( false );
+		$featureManager->method( 'isHomeAvailable' )->willReturn( $overrides['home'] ?? false );
 
 		$campaignConfig = $this->createMock( CampaignConfig::class );
 		$campaignConfig->method( 'isGrowthCampaign' )->willReturn(

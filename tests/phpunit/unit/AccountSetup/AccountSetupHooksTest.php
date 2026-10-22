@@ -162,6 +162,73 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 				'type' => 'successredirect',
 			],
 		];
+
+		yield 'signup, wiki with Home' => [
+			[
+				'home' => true,
+			],
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => [ 'baz' => 'fizz' ],
+				'type' => 'signup',
+			],
+			[
+				'returnTo' => 'Special:AccountSetup',
+				'returnToQuery' => [ 'baz' => 'fizz' ],
+				'type' => 'successredirect',
+			],
+		];
+
+		yield 'signup, wiki with Home, user was editing' => [
+			[
+				'home' => true,
+				'returnToTitle' => [ 'canExist' => true, 'fragment' => '' ],
+			],
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => [ 'action' => 'edit' ],
+				'type' => 'signup',
+			],
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => [ 'action' => 'edit' ],
+				'type' => 'signup',
+			],
+		];
+
+		yield 'signup, wiki with Home, campaign skips onboarding' => [
+			[
+				'home' => true,
+				'skipCampaign' => true,
+			],
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => [ 'baz' => 'fizz' ],
+				'type' => 'signup',
+			],
+			[
+				'returnTo' => 'Special:AccountSetup',
+				'returnToQuery' => [ 'baz' => 'fizz' ],
+				'type' => 'successredirect',
+			],
+		];
+
+		yield 'signup, wiki with Home, popup signup' => [
+			[
+				'home' => true,
+				'request' => [ 'display' => 'popup' ],
+			],
+			[
+				'returnTo' => 'Foo:Bar',
+				'returnToQuery' => [ 'baz' => 'fizz' ],
+				'type' => 'signup',
+			],
+			[
+				'returnTo' => 'Special:AccountSetup',
+				'returnToQuery' => [ 'baz' => 'fizz' ],
+				'type' => 'successredirect',
+			],
+		];
 	}
 
 	/**
@@ -317,6 +384,8 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 			false,
 		];
 		yield 'control, popup signup' => [ [ 'control' => true, 'request' => [ 'display' => 'popup' ] ], false ];
+		yield 'wiki with Home, treatment' => [ [ 'home' => true, 'earlyOnboarding' => true ], false ];
+		yield 'wiki with Home, control' => [ [ 'home' => true, 'control' => true ], false ];
 	}
 
 	/**
@@ -385,13 +454,19 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 		$homepageTitle = $this->createMock( Title::class );
 		$homepageTitle->method( 'getPrefixedText' )->willReturn( 'Special:Homepage' );
 		$specialPageFactory = $this->createMock( SpecialPageFactory::class );
+		$accountSetupTitle = $this->createMock( Title::class );
+		$accountSetupTitle->method( 'getPrefixedText' )->willReturn( 'Special:AccountSetup' );
 		$specialPageFactory->method( 'getTitleForAlias' )
-			->with( 'Homepage' )
-			->willReturn( $homepageTitle );
+			->willReturnMap( [
+				[ 'Homepage', $homepageTitle ],
+				[ 'AccountSetup', $accountSetupTitle ],
+			] );
 
 		$featureManager = $overrides['featureManager'] ?? null;
 		if ( !$featureManager ) {
 			$featureManager = $this->createMock( FeatureManager::class );
+			$featureManager->method( 'isHomeAvailable' )
+				->willReturn( $overrides['home'] ?? false );
 			$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )
 				->willReturn( $overrides['earlyOnboarding'] ?? false );
 			$featureManager->method( 'isEarlyOnboardingExperimentControl' )

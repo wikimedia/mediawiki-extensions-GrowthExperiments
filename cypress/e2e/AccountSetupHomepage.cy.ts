@@ -1,4 +1,10 @@
-describe( 'Account Setup', () => {
+describe( 'Account Setup on Special:Homepage', () => {
+	beforeEach( () => {
+		// The experiment runs only on wikis without Home.
+		// See GrowthExperiments.LocalSettings.php.
+		cy.setCookie( 'GECypressNoHome', '1' );
+	} );
+
 	it( 'shows new Account Setup if user is in treatment group on mobile', () => {
 		cy.viewport( 360, 780 );
 		cy.visit( 'index.php?title=JR-430_Mountaineer&mobileaction=toggle_view_mobile' );

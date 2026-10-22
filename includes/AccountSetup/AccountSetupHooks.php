@@ -98,7 +98,10 @@ class AccountSetupHooks implements
 			return true;
 		}
 
-		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user, true ) ) {
+		if (
+			!$this->featureManager->isHomeAvailable() &&
+			!$this->featureManager->isEarlyOnboardingExperimentTreatment( $user, true )
+		) {
 			return true;
 		}
 
@@ -120,7 +123,7 @@ class AccountSetupHooks implements
 
 		$originalReturnToQuery = wfCgiToArray( $returnToQuery );
 
-		$newReturnToQuery = $this->maybeRedirectToHomepage( $returnTo, $originalReturnToQuery );
+		$newReturnToQuery = $this->maybeRedirectToOnboarding( $returnTo, $originalReturnToQuery );
 		if ( $newReturnToQuery !== null ) {
 			$returnToQuery = wfArrayToCgi( $newReturnToQuery );
 		}
@@ -139,7 +142,7 @@ class AccountSetupHooks implements
 
 		$originalReturnTo = $returnTo;
 
-		$newReturnToQuery = $this->maybeRedirectToHomepage( $returnTo, $returnToQuery );
+		$newReturnToQuery = $this->maybeRedirectToOnboarding( $returnTo, $returnToQuery );
 
 		if ( $newReturnToQuery !== null ) {
 			$returnToQuery = $newReturnToQuery;
@@ -152,11 +155,20 @@ class AccountSetupHooks implements
 	}
 
 	/**
-	 * This method is intended to adjust both its parameters if the user should be redirected to the Homepage.
+	 * This method is intended to adjust both its parameters if the user should be redirected to the account setup.
+	 * That is Special:AccountSetup on wikis with Home, and Special:Homepage for the experiment treatment group.
 	 * But since the two hooks handle returnToQuery differently, its new value is returned and handled by the caller.
 	 */
-	private function maybeRedirectToHomepage( string &$returnTo, array $returnToQuery ): ?array {
+	private function maybeRedirectToOnboarding( string &$returnTo, array $returnToQuery ): ?array {
 		$context = RequestContext::getMain();
+		if ( $this->featureManager->isHomeAvailable() ) {
+			if ( $this->onboardingEligibility->userWasEditing( $returnTo, $returnToQuery ) ) {
+				return null;
+			}
+			$returnTo = $this->specialPageFactory->getTitleForAlias( 'AccountSetup' )->getPrefixedText();
+			return $returnToQuery;
+		}
+
 		$user = $context->getUser();
 		$isTreatment = $this->featureManager->isEarlyOnboardingExperimentTreatment( $user, true );
 		$isControl = $this->featureManager->isEarlyOnboardingExperimentControl( $user, true );
@@ -194,8 +206,8 @@ class AccountSetupHooks implements
 	}
 
 	/**
-	 * Mark suggested edits as activated for users in the early onboarding experiment treatment
-	 * group.
+	 * Mark suggested edits as activated for users on wikis with Home, and for users in the early
+	 * onboarding experiment treatment group.
 	 *
 	 * Those users are onboarded through the account setup flow, so they never get the StartEditing
 	 * module, which is what normally sets this flag. Without it the suggested edits module would

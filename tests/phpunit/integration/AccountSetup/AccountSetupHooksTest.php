@@ -162,6 +162,38 @@ class AccountSetupHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull( $this->getStoredInterestArticles() );
 	}
 
+	public function testUserOnWikiWithHomeIsRedirectedToAccountSetup(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'PersonalDashboard' );
+		$this->overrideConfigValue( 'GEHomeEnabled', true );
+		RequestContext::getMain()->setUser( $this->user );
+		$returnTo = 'Growth article';
+		$returnToQuery = [];
+		$type = 'signup';
+
+		$this->assertTrue( $this->newAccountSetupHooks( false, true )->onPostLoginRedirect(
+			$returnTo,
+			$returnToQuery,
+			$type
+		) );
+
+		$accountSetupTitleText = $this->getServiceContainer()->getSpecialPageFactory()
+			->getTitleForAlias( 'AccountSetup' )
+			->getPrefixedText();
+		$this->assertSame( $accountSetupTitleText, $returnTo );
+		$this->assertSame( 'successredirect', $type );
+	}
+
+	/**
+	 * On wikis with Home, all new accounts get the account setup flow, so they need the same data as the
+	 * experiment treatment group.
+	 */
+	public function testUserOnWikiWithHomeGetsInterestArticleAndSuggestedEditsActivated(): void {
+		$this->runLocalUserCreated( [ 'returnto' => 'Growth article' ], isTreatment: false, isHomeAvailable: true );
+
+		$this->assertSame( [ 'Growth article' ], $this->getStoredInterestArticles() );
+		$this->assertTrue( $this->isSuggestedEditsActivated() );
+	}
+
 	public function testTreatmentUserGetsSuggestedEditsActivated(): void {
 		$this->runLocalUserCreated( [ 'returnto' => 'Growth article' ] );
 
@@ -211,12 +243,14 @@ class AccountSetupHooksTest extends MediaWikiIntegrationTestCase {
 	private function runLocalUserCreated(
 		array $requestValues,
 		bool $autocreated = false,
-		bool $isTreatment = true
+		bool $isTreatment = true,
+		bool $isHomeAvailable = false
 	): void {
 		RequestContext::getMain()->setRequest( new FauxRequest( $requestValues ) );
 
 		$this->assertTrue(
-			$this->newAccountSetupHooks( $isTreatment )->onLocalUserCreated( $this->user, $autocreated )
+			$this->newAccountSetupHooks( $isTreatment, $isHomeAvailable )
+				->onLocalUserCreated( $this->user, $autocreated )
 		);
 	}
 
@@ -244,10 +278,15 @@ class AccountSetupHooksTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	private function newAccountSetupHooks( bool $isTreatment = true ): AccountSetupHooks {
+	private function newAccountSetupHooks(
+		bool $isTreatment = true,
+		bool $isHomeAvailable = false
+	): AccountSetupHooks {
 		$featureManager = $this->createMock( FeatureManager::class );
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )
 			->willReturn( $isTreatment );
+		$featureManager->method( 'isHomeAvailable' )
+			->willReturn( $isHomeAvailable );
 
 		// CentralAuth has its own redirect hook. Mock the registry, so that the result
 		// does not depend on the extensions of the local installation.

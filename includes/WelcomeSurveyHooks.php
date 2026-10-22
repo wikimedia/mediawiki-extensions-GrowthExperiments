@@ -147,7 +147,11 @@ class WelcomeSurveyHooks implements
 		if ( $autocreated || !$this->onboardingEligibility->canShowOnboarding( $context ) ) {
 			return true;
 		}
-		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser(), true ) ) {
+		// Wikis with Home use the account setup flow instead of the Welcome Survey.
+		if (
+			$this->featureManager->isHomeAvailable() ||
+			$this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser(), true )
+		) {
 			return true;
 		}
 		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $context );
@@ -187,7 +191,10 @@ class WelcomeSurveyHooks implements
 			$returnToQuery = $this->addAccountJustCreatedToQuery( $returnToQuery );
 			return true;
 		}
-		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser(), true ) ) {
+		if (
+			$this->featureManager->isHomeAvailable() ||
+			$this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser(), true )
+		) {
 			return true;
 		}
 
@@ -237,7 +244,10 @@ class WelcomeSurveyHooks implements
 		) {
 			return true;
 		}
-		if ( $this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser() ) ) {
+		if (
+			$this->featureManager->isHomeAvailable() ||
+			$this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser() )
+		) {
 			return true;
 		}
 

@@ -7,6 +7,9 @@ const guidedTour = new GuidedTour();
 describe( 'Special:Homepage', () => {
 
 	it( 'shows the normal experience and modules for users not in an experiment', () => {
+		// The Welcome Survey shows only on wikis without Home.
+		// See GrowthExperiments.LocalSettings.php.
+		cy.setCookie( 'GECypressNoHome', '1' );
 		cy.viewport( 360, 780 );
 		cy.visit( 'index.php?title=JR-430_Mountaineer&mobileaction=toggle_view_mobile' );
 

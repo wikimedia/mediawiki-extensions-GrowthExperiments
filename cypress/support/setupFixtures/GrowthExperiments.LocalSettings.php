@@ -25,6 +25,12 @@ $wgUsePathInfo = true;
 // Register Special:Home. The flag is off by default, so the page does not exist
 // without it. The page also needs the PersonalDashboard extension, which renders it.
 $wgGEHomeEnabled = true;
+// Signups on a wiki with Home skip the Welcome Survey and the DE 1.3.1 experiment.
+// Specs for those flows set this cookie to get a wiki without Home. Cypress sends it
+// with every request until the test ends.
+if ( ( $_COOKIE['GECypressNoHome'] ?? '' ) === '1' ) {
+	$wgGEHomeEnabled = false;
+}
 
 $wgGENewcomerTasksLinkRecommendationsEnabled = true;
 $wgGELinkRecommendationsFrontendEnabled = true;
