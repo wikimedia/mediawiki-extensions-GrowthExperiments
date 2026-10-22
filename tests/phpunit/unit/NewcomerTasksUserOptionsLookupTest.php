@@ -263,9 +263,13 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'User2' => [ AccountSetupHooks::INTEREST_ARTICLES_PROP => '[ 1 ]' ],
 		] );
 
+		$invalidInterests = [ 'Tea' ];
 		$interestValidator = $this->createMock( InterestValidator::class );
 		$interestValidator->method( 'validate' )->willReturnCallback(
-			static fn ( $interests ) => [ 'valid' => $interests, 'invalid' => [] ],
+			static fn ( $interests ) => [
+				'valid' => array_values( array_diff( $interests, $invalidInterests ) ),
+				'invalid' => array_values( array_intersect( $interests, $invalidInterests ) ),
+			],
 		);
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
@@ -276,7 +280,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		);
 
 		$this->assertSame(
-			[ 'Coffee', 'Tea' ],
+			[ 'Coffee' ],
 			$lookup->getValidatedInterests( new UserIdentityValue( 1, 'User1' ) )
 		);
 		$this->assertSame( [], $lookup->getValidatedInterests( new UserIdentityValue( 2, 'User2' ) ) );
