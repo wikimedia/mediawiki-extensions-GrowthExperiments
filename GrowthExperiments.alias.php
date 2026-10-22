@@ -2,9 +2,13 @@
 /**
  * Aliases for
  *   Special:WelcomeSurvey
+ *   Special:Home
  *   Special:Homepage
  *   Special:Impact
  *   Special:ClaimMentee
+ *
+ * Do not use a Homepage alias for Home. An alias can belong to one special page
+ * only, and Special:Homepage stays on the wikis that do not have Home.
  *
  * @file
  * @ingroup Extensions
@@ -31,6 +35,7 @@ $specialPageAliases['en'] = [
 /** Arabic */
 $specialPageAliases['ar'] = [
 	'WelcomeSurvey' => [ 'استطلاع_ترحيبي' ],
+	'Home' => [ 'الرئيسية' ],
 	'Homepage' => [ 'صفحة_رئيسية', 'لوحة_مستخدم' ],
 	'Impact' => [ 'تأثير' ],
 	'ClaimMentee' => [ 'مطالبة_مرشد' ],
@@ -58,6 +63,7 @@ $specialPageAliases['az'] = [
 /** Bangla (বাংলা) */
 $specialPageAliases['bn'] = [
 	'WelcomeSurvey' => [ 'স্বাগত_জরিপ' ],
+	'Home' => [ 'হোম' ],
 	'Homepage' => [ 'নীড়পাতা' ],
 	'Impact' => [ 'প্রভাব' ],
 	'ClaimMentee' => [ 'পরামর্শগ্রহীতা_দাবিকরণ' ],
@@ -87,6 +93,7 @@ $specialPageAliases['ca'] = [
 /** čeština (Czech) */
 $specialPageAliases['cs'] = [
 	'WelcomeSurvey' => [ 'Uvítací_dotazník', 'Uvitaci_dotaznik' ],
+	'Home' => [ 'Domů' ],
 	'Homepage' => [ 'Domovská_stránka' ],
 	'Impact' => [ 'Dosah_příspěvků' ],
 	'ClaimMentee' => [ 'Převzít_nováčka' ],
@@ -133,6 +140,7 @@ $specialPageAliases['eo'] = [
 /** Spanish (español) */
 $specialPageAliases['es'] = [
 	'WelcomeSurvey' => [ 'Encuesta_de_bienvenida' ],
+	'Home' => [ 'Inicio' ],
 	'Homepage' => [ 'Página_inicial' ],
 	'Impact' => [ 'Impacto', 'Incidencia' ],
 	'ClaimMentee' => [ 'Reclamar_nuevo_usuario' ],
@@ -151,6 +159,7 @@ $specialPageAliases['fa'] = [
 /** French (français) */
 $specialPageAliases['fr'] = [
 	'WelcomeSurvey' => [ 'Suivi_des_premiers_clics' ],
+	'Home' => [ 'Accueil' ],
 	'Homepage' => [ 'Accueil_de_l’espace_personnel' ],
 	'Impact' => [ 'Impact' ],
 	'ClaimMentee' => [ 'Revendiquer un novice' ],
@@ -486,6 +495,7 @@ $specialPageAliases['ur'] = [
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = [
 	'WelcomeSurvey' => [ 'Bảng_câu_hỏi_chào_mừng' ],
+	'Home' => [ 'Nhà' ],
 	'Homepage' => [ 'Trang_nhà' ],
 	'Impact' => [ 'Ảnh_hưởng' ],
 	'ClaimMentee' => [ 'Nhận_Người_được_cố_vấn' ],
@@ -500,6 +510,7 @@ $specialPageAliases['vi'] = [
 /** Chinese */
 $specialPageAliases['zh'] = [
 	'WelcomeSurvey' => [ 'WelcomeSurvey' ],
+	'Home' => [ 'Home' ],
 	'Homepage' => [ 'Homepage' ],
 	'Impact' => [ 'Impact' ],
 	'ClaimMentee' => [ 'ClaimMentee' ],
@@ -514,6 +525,7 @@ $specialPageAliases['zh'] = [
 /** Simplified Chinese */
 $specialPageAliases['zh-hans'] = [
 	'WelcomeSurvey' => [ '欢迎调查' ],
+	'Home' => [ '主页' ],
 	'Homepage' => [ '新手主页', '首页' ],
 	'Impact' => [ '影响力', '影响' ],
 	'ClaimMentee' => [ '认领学员' ],
@@ -528,6 +540,7 @@ $specialPageAliases['zh-hans'] = [
 /** Traditional Chinese */
 $specialPageAliases['zh-hant'] = [
 	'WelcomeSurvey' => [ '歡迎調查' ],
+	'Home' => [ '主頁' ],
 	'Homepage' => [ '新手主頁', '首頁' ],
 	'Impact' => [ '影響' ],
 	'ClaimMentee' => [ '認領學員' ],
