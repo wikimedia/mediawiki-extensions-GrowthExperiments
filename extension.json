@@ -864,10 +864,6 @@
 											"name": "ext.growthExperiments.PersonalDashboard.SuggestedEdits",
 											"enabled": true,
 											"style": "thin"
-										},
-										{
-											"name": "ext.growthExperiments.mentorship",
-											"enabled": true
 										}
 									]
 								}
@@ -883,6 +879,10 @@
 									"modules": [
 										{
 											"name": "ext.growthExperiments.impact",
+											"enabled": true
+										},
+										{
+											"name": "ext.growthExperiments.mentorship",
 											"enabled": true
 										}
 									]
