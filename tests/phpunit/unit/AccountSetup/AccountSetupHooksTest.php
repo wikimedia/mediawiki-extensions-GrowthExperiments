@@ -31,6 +31,12 @@ use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
  */
 class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 
+	protected function tearDown(): void {
+		// newAccountSetupHooks() changes the global request and user. Other test classes read them.
+		RequestContext::resetMain();
+		parent::tearDown();
+	}
+
 	public static function provideOnPostLoginRedirect(): iterable {
 		yield 'not signup' => [
 			[],
@@ -207,9 +213,9 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 				'type' => 'signup',
 			],
 			[
-				'returnTo' => 'Special:AccountSetup',
+				'returnTo' => 'Foo:Bar',
 				'returnToQuery' => [ 'baz' => 'fizz' ],
-				'type' => 'successredirect',
+				'type' => 'signup',
 			],
 		];
 
@@ -224,9 +230,9 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 				'type' => 'signup',
 			],
 			[
-				'returnTo' => 'Special:AccountSetup',
+				'returnTo' => 'Foo:Bar',
 				'returnToQuery' => [ 'baz' => 'fizz' ],
-				'type' => 'successredirect',
+				'type' => 'signup',
 			],
 		];
 	}
@@ -406,15 +412,21 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 		$sut->onPostLoginRedirect( $returnTo, $returnToQuery, $type );
 	}
 
+	public static function provideTreatmentSignupsWithoutOnboarding(): iterable {
+		yield 'campaign skips onboarding' => [ [ 'skipCampaign' => true ] ];
+		yield 'popup signup' => [ [ 'request' => [ 'display' => 'popup' ] ] ];
+	}
+
 	/**
-	 * The redirect does not depend on the exposure checks. The treatment group still gets
-	 * the Account Setup flow after a signup from a campaign that skips the Welcome Survey.
+	 * The treatment group gets no Account Setup after signups that skip the Welcome Survey,
+	 * for example the reading list bookmark CTA campaign (T442187).
+	 *
+	 * @dataProvider provideTreatmentSignupsWithoutOnboarding
 	 */
-	public function testOnPostLoginRedirectRedirectsTreatmentWithoutExposure(): void {
+	public function testOnPostLoginRedirectSkipsTreatmentWithoutOnboarding( array $overrides ): void {
 		$this->skipIfTestKitchenIsMissing();
-		$sut = $this->newAccountSetupHooks( [
+		$sut = $this->newAccountSetupHooks( $overrides + [
 			'earlyOnboarding' => true,
-			'skipCampaign' => true,
 			'experimentManager' => $this->newExperimentManagerExpectingExposures( $this->never() ),
 		] );
 		$returnTo = 'Foo:Bar';
@@ -423,7 +435,8 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 
 		$sut->onPostLoginRedirect( $returnTo, $returnToQuery, $type );
 
-		$this->assertSame( 'Special:Homepage', $returnTo );
+		$this->assertSame( 'Foo:Bar', $returnTo );
+		$this->assertSame( 'signup', $type );
 	}
 
 	private function skipIfTestKitchenIsMissing(): void {

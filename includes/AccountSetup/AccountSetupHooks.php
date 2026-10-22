@@ -162,7 +162,7 @@ class AccountSetupHooks implements
 	private function maybeRedirectToOnboarding( string &$returnTo, array $returnToQuery ): ?array {
 		$context = RequestContext::getMain();
 		if ( $this->featureManager->isHomeAvailable() ) {
-			if ( $this->onboardingEligibility->userWasEditing( $returnTo, $returnToQuery ) ) {
+			if ( !$this->onboardingEligibility->shouldStartOnboarding( $context, $returnTo, $returnToQuery ) ) {
 				return null;
 			}
 			$returnTo = $this->specialPageFactory->getTitleForAlias( 'AccountSetup' )->getPrefixedText();
@@ -187,7 +187,7 @@ class AccountSetupHooks implements
 			return null;
 		}
 
-		if ( $this->onboardingEligibility->userWasEditing( $returnTo, $returnToQuery ) ) {
+		if ( !$shouldStartOnboarding ) {
 			return null;
 		}
 
