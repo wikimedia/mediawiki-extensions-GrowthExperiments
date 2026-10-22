@@ -167,7 +167,7 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 		$userOptionsLookup->method( 'getTopics' )->willReturn( [ 'ores' ] );
 		$userOptionsLookup->method( 'getTopicsMatchMode' )
 			->willReturn( SearchStrategy::TOPIC_MATCH_MODE_AND );
-		$userOptionsLookup->method( 'getInterests' )->willReturn( $interests );
+		$userOptionsLookup->method( 'getValidatedInterests' )->willReturn( $interests );
 		return $userOptionsLookup;
 	}
 

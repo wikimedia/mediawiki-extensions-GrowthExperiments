@@ -107,7 +107,7 @@ class SuggestedEdits extends BaseModule {
 			// The interests the user stored. FiltersStore reads them for the menu and
 			// for the selector, which otherwise opens empty and saves over them.
 			'wgGEInterestArticles' => $this->newcomerTasksUserOptionsLookup
-				->getInterests( $this->getUser() ),
+				->getValidatedInterests( $this->getUser() ),
 		];
 	}
 }

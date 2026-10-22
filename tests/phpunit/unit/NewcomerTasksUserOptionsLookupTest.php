@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\InterestValidator;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
@@ -49,6 +50,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			$userOptionsLookup,
 			$config,
 			$this->getConfigurationLoader( [ 'copyedit', 'links' ] ),
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'ores' ], $lookup->getTopics( $user1 ) );
@@ -68,7 +70,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader(),
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$this->assertSame( [ 'copyedit', 'link-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
 	}
@@ -97,7 +100,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		] );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader(),
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
@@ -107,7 +111,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$config->set( 'GENewcomerTasksImageRecommendationsEnabled', true );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader(),
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit', 'image-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
@@ -134,7 +139,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		] );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader(),
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
@@ -142,7 +148,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$config->set( 'GENewcomerTasksSectionImageRecommendationsEnabled', true );
 
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$userOptionsLookup, $config, $this->getConfigurationLoader()
+			$userOptionsLookup, $config, $this->getConfigurationLoader(),
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit', 'section-image-recommendation' ], $lookup->getTaskTypeFilter( $user2 ) );
@@ -167,7 +174,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			$sectionImageTaskType => new TaskType( $sectionImageTaskType, 'easy' ),
 		] );
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$userOptionsLookup, $config, $configurationLoader
+			$userOptionsLookup, $config, $configurationLoader,
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
 
@@ -192,7 +200,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GEReviseToneSuggestedEditEnabled' => false,
 		] );
 		$lookup = new NewcomerTasksUserOptionsLookup(
-			$userOptionsLookup, $config, $this->getConfigurationLoader( [ 'copyedit' ] )
+			$userOptionsLookup, $config, $this->getConfigurationLoader( [ 'copyedit' ] ),
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
@@ -221,7 +230,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		// type that does not exist: they must be dropped, not returned.
 		$lookupWithout = new NewcomerTasksUserOptionsLookup(
 			new StaticUserOptionsLookup( [] ), $config,
-			$this->getConfigurationLoader( [ $reviseTone, $linkRecommendation ] )
+			$this->getConfigurationLoader( [ $reviseTone, $linkRecommendation ] ),
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$lookupWithoutWrapper = TestingAccessWrapper::newFromObject( $lookupWithout );
 		$mapWithout = $lookupWithoutWrapper->getConversionMap( $user );
@@ -234,7 +244,8 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		// When "copyedit" and "links" are configured, the fallbacks resolve and are returned.
 		$lookupWith = new NewcomerTasksUserOptionsLookup(
 			new StaticUserOptionsLookup( [] ), $config,
-			$this->getConfigurationLoader( [ 'copyedit', 'links', $reviseTone, $linkRecommendation ] )
+			$this->getConfigurationLoader( [ 'copyedit', 'links', $reviseTone, $linkRecommendation ] ),
+			$this->createNoOpMock( InterestValidator::class ),
 		);
 		$lookupWithWrapper = TestingAccessWrapper::newFromObject( $lookupWith );
 		$mapWith = $lookupWithWrapper->getConversionMap( $user );
@@ -246,23 +257,30 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function testGetInterests() {
+	public function testGetValidatedInterests() {
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [ AccountSetupHooks::INTEREST_ARTICLES_PROP => '[ "Coffee", "Tea" ]' ],
 			'User2' => [ AccountSetupHooks::INTEREST_ARTICLES_PROP => '[ 1 ]' ],
 		] );
+
+		$interestValidator = $this->createMock( InterestValidator::class );
+		$interestValidator->method( 'validate' )->willReturnCallback(
+			static fn ( $interests ) => [ 'valid' => $interests, 'invalid' => [] ],
+		);
+
 		$lookup = new NewcomerTasksUserOptionsLookup(
 			$userOptionsLookup,
 			new HashConfig( [] ),
-			$this->getConfigurationLoader()
+			$this->getConfigurationLoader(),
+			$interestValidator,
 		);
 
 		$this->assertSame(
 			[ 'Coffee', 'Tea' ],
-			$lookup->getInterests( new UserIdentityValue( 1, 'User1' ) )
+			$lookup->getValidatedInterests( new UserIdentityValue( 1, 'User1' ) )
 		);
-		$this->assertSame( [], $lookup->getInterests( new UserIdentityValue( 2, 'User2' ) ) );
-		$this->assertSame( [], $lookup->getInterests( new UserIdentityValue( 3, 'User3' ) ) );
+		$this->assertSame( [], $lookup->getValidatedInterests( new UserIdentityValue( 2, 'User2' ) ) );
+		$this->assertSame( [], $lookup->getValidatedInterests( new UserIdentityValue( 3, 'User3' ) ) );
 	}
 
 	/**

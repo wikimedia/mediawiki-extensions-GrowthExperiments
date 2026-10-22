@@ -863,7 +863,8 @@ return [
 		return new NewcomerTasksUserOptionsLookup(
 			$services->getUserOptionsLookup(),
 			$services->getMainConfig(),
-			$growthServices->getNewcomerTasksConfigurationLoader()
+			$growthServices->getNewcomerTasksConfigurationLoader(),
+			$growthServices->getInterestValidator(),
 		);
 	},
 

@@ -22,7 +22,8 @@ class NewcomerTasksUserOptionsLookup {
 	public function __construct(
 		private readonly UserOptionsLookup $userOptionsLookup,
 		private readonly Config $config,
-		private readonly ConfigurationLoader $configurationLoader
+		private readonly ConfigurationLoader $configurationLoader,
+		private readonly InterestValidator $interestValidator,
 	) {
 	}
 
@@ -82,14 +83,22 @@ class NewcomerTasksUserOptionsLookup {
 	}
 
 	/**
-	 * Get the given user's stored interests.
+	 * Get the given user's stored interests, filtered to only the valid ones.
+	 *
 	 * @param UserIdentity $user
 	 * @return string[] A list of prefixed article titles, or an empty array when the
-	 *   preference is missing or invalid.
-	 * @see \GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic
+	 *    preference is missing or invalid.
+	 *
+	 * @see \GrowthExperiments\NewcomerTasks\InterestValidator for validation
+	 * @see \GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic for usage
 	 */
-	public function getInterests( UserIdentity $user ): array {
-		return $this->getJsonListOption( $user, AccountSetupHooks::INTEREST_ARTICLES_PROP ) ?? [];
+	public function getValidatedInterests( UserIdentity $user ): array {
+		$allInterests = $this->getJsonListOption( $user, AccountSetupHooks::INTEREST_ARTICLES_PROP ) ?? [];
+		if ( !$allInterests ) {
+			return [];
+		}
+		$validationResult = $this->interestValidator->validate( $allInterests );
+		return $validationResult['valid'];
 	}
 
 	/**

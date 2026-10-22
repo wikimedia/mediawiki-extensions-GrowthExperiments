@@ -205,6 +205,7 @@ class HomepageHooks implements
 					'UserOptionsManager',
 					'TitleFactory',
 					'GrowthExperimentsFeatureManager',
+					'GrowthExperimentsNewcomerTasksUserOptionsLookup',
 					'JobQueueGroup',
 				],
 				'optional_services' => [

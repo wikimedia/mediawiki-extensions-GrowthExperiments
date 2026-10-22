@@ -13,10 +13,10 @@ use GrowthExperiments\HomepageModules\ReadingRecommendations;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Mentorship\IMentorManager;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use InvalidArgumentException;
-use JsonException;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -54,6 +54,7 @@ class SpecialHomepage extends SpecialPage {
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly TitleFactory $titleFactory,
 		private readonly FeatureManager $featureManager,
+		private readonly NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		private readonly JobQueueGroup $jobQueueGroup,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
@@ -143,27 +144,7 @@ class SpecialHomepage extends SpecialPage {
 				}
 			}
 
-			$interestArticlesEncoded = $this->userOptionsManager->getOption(
-				$user,
-				AccountSetupHooks::INTEREST_ARTICLES_PROP,
-			);
-			if ( $interestArticlesEncoded ) {
-				try {
-					$interestArticles = json_decode( $interestArticlesEncoded, flags: JSON_THROW_ON_ERROR );
-					if ( !is_array( $interestArticles ) || !array_reduce(
-							$interestArticles,
-							static fn ( $carry, $item ) => $carry && is_string( $item ),
-							true
-						) ) {
-						// If this is not an array of strings, then the user has probably messed with it => ignore.
-						$interestArticles = [];
-					}
-				} catch ( JsonException ) {
-					$interestArticles = [];
-				}
-			} else {
-				$interestArticles = [];
-			}
+			$interestArticles = $this->newcomerTasksUserOptionsLookup->getValidatedInterests( $user );
 			$out->addJsConfigVars( [
 				'wgGEInterestArticles' => $interestArticles,
 			] );

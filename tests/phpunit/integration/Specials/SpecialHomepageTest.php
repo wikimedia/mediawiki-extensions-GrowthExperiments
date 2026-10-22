@@ -57,6 +57,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$this->getServiceContainer()->getUserOptionsManager(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$growthExperimentsServices->getFeatureManager(),
+			$growthExperimentsServices->getNewcomerTasksUserOptionsLookup(),
 			$this->getServiceContainer()->getJobQueueGroup(),
 			$this->experimentManager,
 		);

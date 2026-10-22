@@ -100,7 +100,7 @@ class TaskSetFiltersFactory {
 	 */
 	private function readInterests( UserIdentity $user ): array {
 		return array_slice(
-			$this->newcomerTasksUserOptionsLookup->getInterests( $user ),
+			$this->newcomerTasksUserOptionsLookup->getValidatedInterests( $user ),
 			0,
 			$this->options->get( 'GENewcomerTasksMaxInterestsForQueries' ),
 		);

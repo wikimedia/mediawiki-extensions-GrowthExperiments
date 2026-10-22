@@ -38,6 +38,7 @@ class SpecialHomepageBench extends GrowthExperimentsBench {
 			$userOptionManager,
 			$services->getTitleFactory(),
 			$growthExperimentsServices->getFeatureManager(),
+			$growthExperimentsServices->getNewcomerTasksUserOptionsLookup(),
 			$services->getJobQueueGroup(),
 			null,
 		);
