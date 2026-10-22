@@ -198,7 +198,7 @@ describe( 'InterestSelector', () => {
 	it( 'populates menu items from search results', async () => {
 		const mwApi = makeMwApi( {
 			prefixsearch: { query: { pages: {
-				1: { title: 'Found page', description: 'a description', thumbnail: { source: 'https://example.com' } },
+				1: { title: 'Found page', ns: 0, description: 'a description', thumbnail: { source: 'https://example.com' } },
 			} } },
 		} );
 
@@ -222,6 +222,26 @@ describe( 'InterestSelector', () => {
 		] );
 	} );
 
+	it( 'ignores invalid search results', async () => {
+		const mwApi = makeMwApi( {
+			prefixsearch: { query: { pages: {
+				1: { title: 'Found page', ns: -1, description: 'a description', thumbnail: { source: 'https://example.com' } },
+			} } },
+		} );
+
+		const wrapper = mount( InterestSelector, {
+			props: { chips: [] },
+			global: { provide: { mwApi: mwApi } },
+		} );
+		await flushPromises();
+
+		wrapper.vm.inputValue = 'Found';
+		wrapper.vm.onUpdateInputValueDebounced( 'Found' );
+		await flushPromises();
+
+		expect( wrapper.vm.menuItems ).toEqual( [] );
+	} );
+
 	it( 'clears menu items when the search input is cleared', async () => {
 		const mwApi = makeMwApi( {} );
 		const wrapper = mount( InterestSelector, {
@@ -242,12 +262,12 @@ describe( 'InterestSelector', () => {
 			.mockResolvedValueOnce( { query: { pages: {} } } )
 			// Response to the prefixsearch triggered by typing "page".
 			.mockResolvedValueOnce( { query: { pages: {
-				1: { title: 'page1', description: '' },
+				1: { title: 'page1', description: '', ns: 0 },
 			} } } )
 			// Response to the load-more request.
 			.mockResolvedValueOnce( { query: { pages: {
-				1: { title: 'page1', description: '' },
-				2: { title: 'page2', description: '', thumbnail: { source: 'https://example.com' } },
+				1: { title: 'page1', description: '', ns: 0 },
+				2: { title: 'page2', description: '', thumbnail: { source: 'https://example.com' }, ns: 0 },
 			} } } );
 		const mwApi = { get: mwApiGet };
 

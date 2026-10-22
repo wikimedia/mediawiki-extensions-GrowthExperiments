@@ -154,7 +154,7 @@ module.exports = exports = defineComponent( {
 		 * @param {string} searchTerm
 		 * @param {boolean} [shouldContinue] Optional result offset
 		 *
-		 * @return {Promise<{title:string;description?:string;thumbnail?:{source:string}}[]>}
+		 * @return {Promise<{title:string;ns:number;description?:string;thumbnail?:{source:string}}[]>}
 		 */
 		async function fetchResults( searchTerm, shouldContinue = false ) {
 			/**
@@ -290,6 +290,14 @@ module.exports = exports = defineComponent( {
 		}, { immediate: true } );
 
 		/**
+		 * @param {{ns: number}} page
+		 * @return {boolean}
+		 */
+		function isValidInterestTitle( { ns } ) {
+			return ns === 0;
+		}
+
+		/**
 		 * Handle lookup input.
 		 *
 		 * @param {string} value The new input value
@@ -308,8 +316,8 @@ module.exports = exports = defineComponent( {
 						return;
 					}
 
-					// Reset the menu items if there are no results.
-					if ( !pages || pages.length === 0 ) {
+					pages = pages.filter( isValidInterestTitle );
+					if ( pages.length === 0 ) {
 						menuItems.value = [];
 						return;
 					}
@@ -343,6 +351,7 @@ module.exports = exports = defineComponent( {
 
 			fetchResults( inputValue.value, true )
 				.then( ( searchResults ) => {
+					searchResults = searchResults.filter( isValidInterestTitle );
 					if ( searchResults.length === 0 ) {
 						return;
 					}
