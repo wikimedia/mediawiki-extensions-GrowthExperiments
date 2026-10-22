@@ -287,6 +287,32 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [], $lookup->getValidatedInterests( new UserIdentityValue( 3, 'User3' ) ) );
 	}
 
+	public function testGetValidatedInterestsValidatesEachUserOnce() {
+		$userOptionsLookup = new StaticUserOptionsLookup( [
+			'User1' => [ AccountSetupHooks::INTEREST_ARTICLES_PROP => '[ "Coffee" ]' ],
+			'User2' => [ AccountSetupHooks::INTEREST_ARTICLES_PROP => '[ "Tea" ]' ],
+		] );
+
+		$interestValidator = $this->createMock( InterestValidator::class );
+		$interestValidator->expects( $this->exactly( 2 ) )->method( 'validate' )->willReturnCallback(
+			static fn ( $interests ) => [ 'valid' => $interests, 'invalid' => [] ],
+		);
+
+		$lookup = new NewcomerTasksUserOptionsLookup(
+			$userOptionsLookup,
+			new HashConfig( [] ),
+			$this->getConfigurationLoader(),
+			$interestValidator,
+		);
+
+		$user1 = new UserIdentityValue( 1, 'User1' );
+		$user2 = new UserIdentityValue( 2, 'User2' );
+		$this->assertSame( [ 'Coffee' ], $lookup->getValidatedInterests( $user1 ) );
+		$this->assertSame( [ 'Coffee' ], $lookup->getValidatedInterests( $user1 ) );
+		$this->assertSame( [ 'Tea' ], $lookup->getValidatedInterests( $user2 ) );
+		$this->assertSame( [ 'Tea' ], $lookup->getValidatedInterests( $user2 ) );
+	}
+
 	/**
 	 * @param string[]|null $taskTypes
 	 * @return ConfigurationLoader

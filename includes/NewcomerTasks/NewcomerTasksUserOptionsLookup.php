@@ -19,6 +19,10 @@ use MediaWiki\User\UserIdentity;
  * Retrieves user settings related to newcomer tasks.
  */
 class NewcomerTasksUserOptionsLookup {
+
+	/** @var array<int,string[]> Validated interests by user ID, for one request. */
+	private array $validatedInterestsByUser = [];
+
 	public function __construct(
 		private readonly UserOptionsLookup $userOptionsLookup,
 		private readonly Config $config,
@@ -85,6 +89,11 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Get the given user's stored interests, filtered to only the valid ones.
 	 *
+	 * A Special:Homepage render asks for the same user at least four times: for the
+	 * wgGEInterestArticles config variable, for the task set filters, for the interest filter
+	 * button, and for the check whether the user selected interests. The result is kept for
+	 * the request, so that only the first ask parses the stored titles.
+	 *
 	 * @param UserIdentity $user
 	 * @return string[] A list of prefixed article titles, or an empty array when the
 	 *    preference is missing or invalid.
@@ -93,6 +102,16 @@ class NewcomerTasksUserOptionsLookup {
 	 * @see \GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic for usage
 	 */
 	public function getValidatedInterests( UserIdentity $user ): array {
+		$userId = $user->getId();
+		$this->validatedInterestsByUser[$userId] ??= $this->readValidatedInterests( $user );
+		return $this->validatedInterestsByUser[$userId];
+	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @return string[] See getValidatedInterests().
+	 */
+	private function readValidatedInterests( UserIdentity $user ): array {
 		$allInterests = $this->getJsonListOption( $user, AccountSetupHooks::INTEREST_ARTICLES_PROP ) ?? [];
 		if ( !$allInterests ) {
 			return [];
