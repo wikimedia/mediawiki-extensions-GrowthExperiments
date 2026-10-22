@@ -11,6 +11,7 @@ use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CentralAuth\Hooks\CentralAuthPostLoginRedirectHook;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
+use MediaWiki\Html\Html;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -57,11 +58,16 @@ class AccountSetupHooks implements
 	 * @inheritDoc
 	 */
 	public function onSkinAfterBottomScripts( $skin, &$text ): true {
-		if ( !$skin->getTitle()->isSpecial( 'Homepage' ) ) {
-			return true;
-		}
+		$title = $skin->getTitle();
 		$user = $skin->getUser();
 		if ( !$user->isNamed() ) {
+			return true;
+		}
+		if ( $title->isSpecial( 'AccountSetup' ) ) {
+			$text .= Html::rawElement( 'div', [ 'id' => 'growthexperiments-initial-backdrop' ] );
+			return true;
+		}
+		if ( !$title->isSpecial( 'Homepage' ) ) {
 			return true;
 		}
 		if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
@@ -70,7 +76,7 @@ class AccountSetupHooks implements
 		if ( $this->userOptionsManager->getOption( $user, self::ACCOUNT_SETUP_MOTIVATION_PROP ) !== null ) {
 			return true;
 		}
-		$text .= '<div id="growthexperiments-initial-backdrop"></div>';
+		$text .= Html::rawElement( 'div', [ 'id' => 'growthexperiments-initial-backdrop' ] );
 		return true;
 	}
 

@@ -18,6 +18,7 @@
 	},
 	"growthexperiments-desc": "{{desc|name=GrowthExperiments|url=https://www.mediawiki.org/wiki/Extension:GrowthExperiments}}",
 	"growthexperiments-info-tooltip-close-label": "Accessibility label text for the close button in informational tooltips of the GrowthExperiments extension.\n\n{{doc-growthexperiments-homepage}}",
+	"accountsetup": "Title of [[Special:AccountSetup]], the page where new accounts set up their interests after signup.\n\nSee [[mw:Home#Streamlining_early_onboarding]]",
 	"growthexperiments-account-setup-a11y-title": "Title of the account setup modal. It is not visible but available to screen readers.\n\nSee [[mw:Home#Streamlining_early_onboarding]]",
 	"growthexperiments-account-setup-skip-a11y-label": "Accessibility label of an icon-only button to skip the initial account setup.\n\nSee [[mw:Home#Streamlining_early_onboarding]]",
 	"growthexperiments-account-setup-back-a11y-label": "Accessibility label of an icon-only button to go one screen back in the initial account setup.\n\nSee [[mw:Home#Streamlining_early_onboarding]]",

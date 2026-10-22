@@ -221,6 +221,14 @@ module.exports = defineComponent( {
 			);
 		}
 
+		function goToHome() {
+			if ( mw.config.get( 'wgGEAccountSetupOnHome' ) ) {
+				window.location.replace( mw.util.getUrl( 'Special:Home' ) );
+			} else {
+				window.location.reload();
+			}
+		}
+
 		async function saveAndGoToHome() {
 			if ( skipOrFinishWasClicked ) {
 				return;
@@ -238,7 +246,7 @@ module.exports = defineComponent( {
 			}
 			countMotivation( store.modulePreset );
 			await store.saveInterestArticles();
-			window.location.reload();
+			goToHome();
 		}
 
 		async function skipAndGoToHome() {
@@ -255,7 +263,7 @@ module.exports = defineComponent( {
 			);
 			countMotivation( store.modulePreset );
 			await store.saveInitialModulePreset();
-			window.location.reload();
+			goToHome();
 		}
 
 		let accountSetupStartedSent = false;
@@ -327,7 +335,8 @@ module.exports = defineComponent( {
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
 
-.growthexperiments-homepage-desktop .cdx-dialog-backdrop {
+.growthexperiments-homepage-desktop .cdx-dialog-backdrop,
+.growthexperiments-account-setup-page .cdx-dialog-backdrop {
 	background: @background-color-backdrop-light;
 	backdrop-filter: blur( 30px );
 }

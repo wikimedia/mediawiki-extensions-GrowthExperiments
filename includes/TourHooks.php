@@ -36,9 +36,10 @@ class TourHooks implements
 
 	/** @inheritDoc */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		// Show the discovery tour if the user isn't on WelcomeSurvey or Homepage.
+		// Show the discovery tour if the user isn't on WelcomeSurvey, AccountSetup or Homepage.
 		// If they have already seen the welcome tour, don't show the discovery one.
 		if ( !$out->getTitle()->isSpecial( 'WelcomeSurvey' ) &&
+			 !$out->getTitle()->isSpecial( 'AccountSetup' ) &&
 			 !$out->getTitle()->isSpecial( 'Homepage' ) &&
 			 HomepageHooks::isHomepageEnabled( $out->getUser() ) &&
 			 !Util::isMobile( $skin ) &&

@@ -36,6 +36,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeManager;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
 use GrowthExperiments\PersonalDashboard\HomeOnboardingActionLookup;
+use GrowthExperiments\Specials\SpecialAccountSetup;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHome;
 use GrowthExperiments\Specials\SpecialHomepage;
@@ -188,6 +189,14 @@ class HomepageHooks implements
 					'PersonalDashboardPageDependencies',
 					'GrowthExperimentsFeatureManager',
 					'GrowthExperimentsHomeOnboardingActionLookup',
+				],
+			];
+			$list['AccountSetup'] = [
+				'class' => SpecialAccountSetup::class,
+				'services' => [
+					'GrowthExperimentsFeatureManager',
+					'UserOptionsLookup',
+					'GrowthExperimentsNewcomerTasksUserOptionsLookup',
 				],
 			];
 		}
@@ -1063,6 +1072,10 @@ class HomepageHooks implements
 				$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) &&
 				$skin->getTitle()->isSpecial( 'Homepage' )
 			) {
+				return true;
+			}
+			// The account setup dialog covers the page, so the user cannot see a notice there.
+			if ( $skin->getTitle()->isSpecial( 'AccountSetup' ) ) {
 				return true;
 			}
 

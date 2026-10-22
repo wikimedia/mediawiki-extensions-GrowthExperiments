@@ -23,8 +23,14 @@ const sendOnboardingReadyEvent = require( '../utils/sendOnboardingReadyEvent.js'
 	const pinia = Pinia.createPinia();
 	const AccountSetupApp = require( './AccountSetup.vue' );
 
-	await mw.loader.using( [ 'ext.testKitchen' ] );
-	const experiment = await mw.tk.getExperiment( 'de-1-3-1-specialhomepage-onboarding-ab-test' );
+	let experiment;
+	try {
+		await mw.loader.using( [ 'ext.testKitchen' ] );
+		experiment = await mw.tk.getExperiment( 'de-1-3-1-specialhomepage-onboarding-ab-test' );
+	} catch ( _ignored ) {
+		experiment = { send: () => {} };
+	}
+
 	const testKitchenReadyMs = performance.now();
 	trackStep( 'testkitchen_wait', testKitchenReadyMs - moduleExecutedMs );
 
@@ -34,12 +40,21 @@ const sendOnboardingReadyEvent = require( '../utils/sendOnboardingReadyEvent.js'
 
 	app.provide( 'experiment', experiment );
 	app.mount( '#growthexperiments-account_setup' );
+	if ( mw.config.get( 'wgGEAccountSetupOnHome' ) ) {
+		// mw.Api runs option saves in sequence. This save ends before the skip or finish saves.
+		new mw.Api().saveOption( 'growthexperiments-home-intro-seen', 1 ).catch( ( error ) => {
+			mw.errorLogger.logError(
+				new Error( 'AccountSetup: failed to save intro seen: ' + error ),
+				'error.growthexperiments',
+			);
+		} );
+	}
 	const mountedMs = performance.now();
 	trackStep( 'mount', mountedMs - testKitchenReadyMs );
 	mw.track(
 		'stats.mediawiki_GrowthExperiments_onboarding_ready_seconds',
 		mountedMs,
-		{ group: 'treatment', platform, wiki },
+		{ group: mw.config.get( 'wgGEAccountSetupOnHome' ) ? 'home' : 'treatment', platform, wiki },
 	);
 	sendOnboardingReadyEvent( experiment, mountedMs );
 }() );
