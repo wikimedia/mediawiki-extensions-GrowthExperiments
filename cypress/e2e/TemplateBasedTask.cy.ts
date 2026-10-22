@@ -9,6 +9,12 @@ const guidedTour = new GuidedTour();
 const tryNewTask = new TryNewTask();
 
 describe( 'Template-based tasks', () => {
+	beforeEach( () => {
+		// This spec tests Special:Homepage. Turn off Home, so that Special:Homepage
+		// does not redirect to Special:Home. See GrowthExperiments.LocalSettings.php.
+		cy.setCookie( 'GECypressNoHome', '1' );
+	} );
+
 	// See T384601
 	it.skip( 'saves change tags for unstructured task edits made via VisualEditor', () => {
 		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: {

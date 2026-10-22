@@ -6,6 +6,10 @@ describe( 'Add Image Structured Task', () => {
 
 	it( 'desktop: user can view image info and image details', () => {
 		cy.loginAsUser( 'GE-Alice' );
+		// This spec tests Special:Homepage. Turn off Home, so that Special:Homepage
+		// does not redirect to Special:Home. See GrowthExperiments.LocalSettings.php.
+		// Set the cookie after cy.loginAsUser, because cy.session clears the cookies.
+		cy.setCookie( 'GECypressNoHome', '1' );
 		cy.setUserOptions( {
 			'growthexperiments-addimage-onboarding': '1',
 			'growthexperiments-addimage-caption-onboarding': '1',
@@ -45,6 +49,10 @@ describe( 'Add Image Structured Task', () => {
 
 	it( 'mobile: user can close the image suggestion UI', () => {
 		cy.loginAsUser( 'GE-Alice' );
+		// This spec tests Special:Homepage. Turn off Home, so that Special:Homepage
+		// does not redirect to Special:Home. See GrowthExperiments.LocalSettings.php.
+		// Set the cookie after cy.loginAsUser, because cy.session clears the cookies.
+		cy.setCookie( 'GECypressNoHome', '1' );
 		cy.setUserOptions( {
 			'growthexperiments-addimage-onboarding': '1',
 			'growthexperiments-addimage-caption-onboarding': '1',

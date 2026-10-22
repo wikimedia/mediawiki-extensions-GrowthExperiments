@@ -10,6 +10,10 @@ describe( 'Add a Link', () => {
 	it( 'link inspector can be used to accept/reject links and save an article.', () => {
 		const addlinkArticle = 'Douglas Adams';
 		cy.loginAsUser( 'GE-Alice' );
+		// This spec tests Special:Homepage. Turn off Home, so that Special:Homepage
+		// does not redirect to Special:Home. See GrowthExperiments.LocalSettings.php.
+		// Set the cookie after cy.loginAsUser, because cy.session clears the cookies.
+		cy.setCookie( 'GECypressNoHome', '1' );
 		cy.setUserOptions( {
 			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'link-recommendation' ] ),
 		} );

@@ -1,8 +1,12 @@
 import Homepage from '../pageObjects/SpecialHomepage.page';
 import GuidedTour from '../pageObjects/GuidedTour.module';
+import SpecialHome from '../pageObjects/SpecialHome.page';
 
 const homepage = new Homepage();
 const guidedTour = new GuidedTour();
+const home = new SpecialHome();
+
+const SUGGESTED_EDITS_MODULE = 'ext.growthExperiments.PersonalDashboard.SuggestedEdits';
 
 describe( 'Special:Homepage', () => {
 
@@ -87,5 +91,42 @@ describe( 'Special:Homepage', () => {
 		homepage.suggestedEditsNextButton.click();
 		homepage.suggestedEditsCardTitle.should( 'have.text', 'No more suggestions' );
 		homepage.suggestedEditsNextButton.should( 'have.attr', 'aria-disabled', 'true' );
+	} );
+
+	// The test LocalSettings turn on Home, so Special:Homepage redirects to Special:Home.
+	describe( 'on a wiki with Home', () => {
+
+		it( 'redirects to Special:Home', () => {
+			cy.loginAsUser( 'GE-HomepageRedirect' );
+			cy.visit( 'index.php?title=Special:Homepage' );
+
+			cy.location( 'href' ).should( 'contain', 'Special:Home' )
+				.and( 'not.contain', 'Special:Homepage' );
+			home.module( SUGGESTED_EDITS_MODULE ).should( 'be.visible' );
+		} );
+
+		it( 'sends an anonymous visitor to the login form for Special:Home', () => {
+			// Cypress clears the cookies between the tests, so this visit is anonymous.
+			cy.visit( 'index.php?title=Special:Homepage' );
+
+			cy.get( '#wpName1' ).should( 'be.visible' );
+			cy.location( 'href' ).should( 'contain', 'returnto=Special%3AHome' );
+		} );
+
+		it( 'opens the task article from a Home task card', () => {
+			cy.loginAsUser( 'GE-HomepageRedirect' );
+			cy.visit( 'index.php?title=Special:Home' );
+
+			// The task cards on Home still link to Special:Homepage/newcomertask (T439433).
+			// That subpage does not redirect to Home.
+			home.suggestedEditsCards.first().find( 'a' ).first()
+				.should( 'have.attr', 'href' ).and( 'contain', 'newcomertask' )
+				.then( ( href ) => {
+					cy.visit( String( href ) );
+				} );
+
+			cy.location( 'href' ).should( 'not.contain', 'Special:Home' );
+			cy.location( 'search' ).should( 'contain', 'gesuggestededit=1' );
+		} );
 	} );
 } );

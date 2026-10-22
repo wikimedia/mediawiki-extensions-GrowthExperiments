@@ -19,6 +19,7 @@ use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
@@ -34,6 +35,13 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	use \MockHttpTrait;
 
 	private ?ExperimentManager $experimentManager = null;
+
+	protected function setUp(): void {
+		parent::setUp();
+		// Special:Homepage redirects to Special:Home when Home is available.
+		// Turn Home off, so that the result does not depend on the local settings.
+		$this->overrideConfigValue( 'GEHomeEnabled', false );
+	}
 
 	/**
 	 * @inheritDoc
@@ -134,6 +142,16 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	private function mockEarlyOnboardingTreatment(): void {
 		$featureManager = $this->createMock( FeatureManager::class );
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+	}
+
+	/**
+	 * Make Home available without PersonalDashboard. CI does not always load
+	 * PersonalDashboard, and FeatureManager::isHomeAvailable() requires it.
+	 */
+	private function mockHomeAvailable(): void {
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isHomeAvailable' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 	}
 
@@ -286,6 +304,70 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			stringContainsInOrder( 'data-module-name="reading-recommendations"',
 			'data-module-name="suggested-edits"', 'data-module-name="impact"', 'data-module-name="help"' )
 		);
+	}
+
+	/**
+	 * @covers ::maybeRedirectToHome
+	 * @dataProvider provideRedirectToHome
+	 */
+	public function testRedirectsToHomeWhenHomeIsAvailable( string $subPage ) {
+		$this->mockHomeAvailable();
+		$context = new RequestContext();
+		$context->setRequest( new FauxRequest( [ 'source' => 'personaltoolslink' ] ) );
+
+		$this->executeSpecialPage( $subPage, null, null, null, false, $context );
+
+		$this->assertSame(
+			SpecialPage::getTitleFor( 'Home' )->getFullUrlForRedirect( [ 'source' => 'personaltoolslink' ] ),
+			$context->getOutput()->getRedirect()
+		);
+	}
+
+	public static function provideRedirectToHome(): array {
+		return [
+			'no subpage' => [ '' ],
+			'mobile module subpage' => [ 'impact' ],
+		];
+	}
+
+	/**
+	 * @covers ::maybeRedirectToHome
+	 */
+	public function testDoesNotRedirectToHomeWhenHomeIsNotAvailable() {
+		$this->overrideConfigValue( 'GEHomeEnabled', false );
+		$user = $this->enableHomepageForTesting();
+		$context = new RequestContext();
+		$context->setAuthority( $user );
+
+		$response = $this->executeSpecialPage( '', null, null, $user, false, $context );
+
+		$this->assertSame( '', $context->getOutput()->getRedirect() );
+		$this->assertStringContainsString( 'growthexperiments-homepage-container', $response[0] );
+	}
+
+	/**
+	 * @covers ::maybeRedirectToHome
+	 * @covers ::handleNewcomerTask
+	 */
+	public function testNewcomerTaskSubpageDoesNotRedirectToHome() {
+		$this->mockHomeAvailable();
+		$page = $this->getExistingTestPage();
+		$user = $this->enableHomepageForTesting();
+		$context = new RequestContext();
+		$context->setRequest( new FauxRequest( [
+			'geclickid' => 'abc',
+			'genewcomertasktoken' => 'def',
+			'getasktype' => 'copyedit',
+		] ) );
+		$context->setAuthority( $user );
+
+		$this->executeSpecialPage(
+			'newcomertask/' . $page->getId(), null, null, $user, false, $context
+		);
+
+		$redirect = $context->getOutput()->getRedirect();
+		$this->assertStringContainsString( wfUrlencode( $page->getTitle()->getPrefixedDBkey() ), $redirect );
+		$this->assertStringContainsString( 'gesuggestededit=1', $redirect );
 	}
 
 	/**

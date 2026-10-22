@@ -22,6 +22,10 @@ describe( 'Revise Tone', () => {
 
 	beforeEach( () => {
 		cy.loginAsUser( 'GE-Alice' );
+		// This spec tests Special:Homepage. Turn off Home, so that Special:Homepage
+		// does not redirect to Special:Home. See GrowthExperiments.LocalSettings.php.
+		// Set the cookie after cy.loginAsUser, because cy.session clears the cookies.
+		cy.setCookie( 'GECypressNoHome', '1' );
 		cy.setUserOptions( {
 			'growthexperiments-revisetone-onboarding': '0',
 			'growthexperiments-homepage-se-filters': JSON.stringify( [ 'revise-tone', 'image-recommendation' ] ),

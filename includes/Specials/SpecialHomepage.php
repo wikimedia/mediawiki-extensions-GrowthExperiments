@@ -101,6 +101,9 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	public function execute( $subPage = '' ) {
 		$subPage ??= '';
+		if ( $this->maybeRedirectToHome( $subPage ) ) {
+			return;
+		}
 		$startTime = microtime( true );
 		$this->requireNamedUser();
 		parent::execute( $subPage );
@@ -221,6 +224,31 @@ class SpecialHomepage extends SpecialPage {
 				?->getExperiment( IExperimentManager::DE_1_3_1_SPECIALHOMEPAGE_ONBOARDING_AB_TEST )
 				->send( 'user_has_email' );
 		}
+	}
+
+	/**
+	 * On a wiki that has Home, send the user to Special:Home.
+	 *
+	 * The redirect keeps the query parameters and drops the subpage. Special:Home
+	 * does the login and preference checks. The newcomertask route does not
+	 * redirect, because the task cards on Home still link to it while T439433 is open.
+	 *
+	 * @param string $subPage
+	 * @return bool True if the user is redirected
+	 */
+	private function maybeRedirectToHome( string $subPage ): bool {
+		if (
+			!$this->featureManager->isHomeAvailable() ||
+			str_starts_with( $subPage, 'newcomertask/' )
+		) {
+			return false;
+		}
+		$query = $this->getRequest()->getQueryValuesOnly();
+		unset( $query['title'] );
+		$this->getOutput()->redirect(
+			SpecialPage::getTitleFor( 'Home' )->getFullUrlForRedirect( $query )
+		);
+		return true;
 	}
 
 	/**

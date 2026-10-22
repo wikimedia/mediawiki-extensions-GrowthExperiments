@@ -1,4 +1,10 @@
 describe( 'Impact', () => {
+	beforeEach( () => {
+		// This spec tests Special:Homepage. Turn off Home, so that Special:Homepage
+		// does not redirect to Special:Home. See GrowthExperiments.LocalSettings.php.
+		cy.setCookie( 'GECypressNoHome', '1' );
+	} );
+
 	it( 'shows the user\'s edits on Special:Impact and Special:Homepage', () => {
 		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'Alice' } ).then( ( { username, password }: { username: string; password: string } ) => {
 			cy.task( 'MwApi:Edit', {

@@ -37,6 +37,10 @@ describe( 'Mentorship module on Special:Homepage', () => {
 	beforeEach( () => {
 		// A mentor is assigned to this user on their first Special:Homepage view.
 		cy.loginAsUser( 'GE-LearnMoreMentee' );
+		// This spec tests Special:Homepage. Turn off Home, so that Special:Homepage
+		// does not redirect to Special:Home. See GrowthExperiments.LocalSettings.php.
+		// Set the cookie after cy.loginAsUser, because cy.session clears the cookies.
+		cy.setCookie( 'GECypressNoHome', '1' );
 	} );
 
 	it( 'points "Learn more" at a URL that can be opened in a new tab', () => {
