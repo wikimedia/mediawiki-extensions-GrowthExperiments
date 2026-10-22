@@ -12,6 +12,7 @@
 	"apihelp-query+growthtasks-param-topics": "Artikelonderwerpen die de voorkeur hebben in taaksuggesties.",
 	"apihelp-query+growthtasks-param-topicsmode": "Overeenkomstmodus voor onderwerpen.",
 	"apihelp-query+growthtasks-param-interests": "Titels van pagina's die de interesses van de gebruiker weerspiegelen. Suggesties komen van pagina's die daarop lijken. Standaard worden de opgeslagen interesses van de gebruiker gebruikt. Kan niet worden gecombineerd met <var>$1topics</var>.",
+	"apihelp-query+growthtasks-param-useinterests": "Filteren op basis van de opgeslagen interesses van de gebruiker, zelfs als de suggesties voor de gebruiker anders zouden aansluiten bij hun onderwerpvoorkeuren. Negeer dit filter als er <var>$1interests</var> of <var>$1topics</var> worden opgegeven.",
 	"apihelp-query+growthtasks-param-limit": "Maximaal aantal taaksuggesties om te retourneren.",
 	"apihelp-query+growthtasks-param-excludepageids": "ID’s van pagina’s die moeten worden uitgesloten van de query.",
 	"apihelp-query+growthtasks-param-debug": "Foutopsporingsgegevens toevoegen aan de uitvoer.",
