@@ -248,7 +248,7 @@
 	"growthexperiments-home-suggestededits-menu-interests": "兴趣",
 	"growthexperiments-home-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=未选择|已选择$1个}}",
 	"growthexperiments-home-suggestededits-menu-tasktypes": "编辑类型",
-	"growthexperiments-home-suggestededits-menu-tasktypes-selected": "已选中$1类",
+	"growthexperiments-home-suggestededits-menu-tasktypes-selected": "{{PLURAL:|已选中$1类}}",
 	"growthexperiments-home-suggestededits-menu-about": "关于编辑建议",
 	"growthexperiments-home-suggestededits-about-intro": "维基百科是由同您一样的人们齐心协力建设而成的。",
 	"growthexperiments-home-suggestededits-about-purpose": "编辑建议可以帮助您找到需要改进的条目。",
