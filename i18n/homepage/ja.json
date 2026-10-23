@@ -293,6 +293,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "記事同士をつなぐリンクを追加",
 	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "画像のない記事に画像を追加",
 	"growthexperiments-homepage-suggestededits-tasktype-name-section-image-recommendation": "お勧めの画像を記事の節に追加",
+	"growthexperiments-homepage-suggestededits-tasktype-time-revise-tone": "5–10 分",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "機械のおすすめ",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "より限定的な結果を得るには、「選択したトピックのすべてに合致」を選択してください",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "選択したトピックのすべてに合致",
@@ -373,6 +374,7 @@
 	"growthexperiments-addlink-context-button-reject": "いいえ",
 	"growthexperiments-addlink-context-button-help": "編集のヘルプを受ける",
 	"growthexperiments-addlink-context-button-next": "次へ",
+	"growthexperiments-addlink-context-button-prev": "前へ",
 	"growthexperiments-addlink-context-button-show-suggestion": "リンクの提案を表示",
 	"growthexperiments-addlink-rejectiondialog-title": "なぜこれは良いリンクではないのですか？",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|皆さん}}の答えで、AIによるお勧めの質が向上されます。",
@@ -531,6 +533,9 @@
 	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "おすすめ編集を試してみる",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|あなたはこれまでに}}{{PLURAL:$3|おすすめ編集}}を$3件、手がけました。続きに取り組んで、新しい技能を身につけてください。",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "おすすめの編集をする",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "他の編集を試す",
 	"echo-category-title-ge-newcomer": "Growth 機能",
-	"echo-pref-tooltip-ge-newcomer": "新規利用者向けのタスクや、新規利用者を支援するよう設計されたその他の機能について通知する。"
+	"echo-pref-tooltip-ge-newcomer": "新規利用者向けのタスクや、新規利用者を支援するよう設計されたその他の機能について通知する。",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "詳細",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "他の編集を試す"
 }
