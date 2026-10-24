@@ -233,25 +233,6 @@ class SuggestedEdits extends BaseModule {
 			ExtensionRegistry::getInstance()->isLoaded( 'WikimediaMessages' );
 	}
 
-	/**
-	 * Check whether topic match mode has been enabled for the context user.
-	 * Note that even with topic match mode is disabled, all the relevant backend functionality
-	 * should still work (but logging and UI will be different).
-	 * @param IContextSource $context
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @return bool
-	 */
-	private function isTopicMatchModeEnabled(
-		IContextSource $context,
-		UserOptionsLookup $userOptionsLookup
-	) {
-		return self::isTopicMatchingEnabled( $context, $userOptionsLookup ) &&
-			$this->campaignConfig->isUserInCampaign(
-				$context->getUser(),
-				'growth-glam-2022'
-			);
-	}
-
 	/** @inheritDoc */
 	public function getHtml() {
 		// This method will be called both directly by the homepage and by getJsData() in
