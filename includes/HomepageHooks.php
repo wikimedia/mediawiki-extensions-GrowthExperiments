@@ -7,7 +7,6 @@ use CirrusSearch\Search\Rescore\BoostFunctionBuilder;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use Elastica\Query\MatchNone;
-use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -121,8 +120,6 @@ class HomepageHooks implements
 	RecentChange_saveHook,
 	ContributeCardsHook
 {
-	use GrowthConfigLoaderStaticTrait;
-
 	public const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
 	public const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
 	/** @var string User options key for storing whether the user has seen the notice. */
@@ -1201,6 +1198,7 @@ class HomepageHooks implements
 	public static function getSuggestedEditsConfigJson(
 		RL\Context $context, Config $config
 	) {
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		// Note: GELinkRecommendationsEnabled / GEImageRecommendationsEnabled reflect PHP configuration.
 		// Checking whether these task types have been disabled in community configuration is the
 		// frontend code's responsibility (handled in TaskTypeAbFilter).
@@ -1210,7 +1208,7 @@ class HomepageHooks implements
 				$config->get( 'GEApiQueryGrowthTasksLookaheadSize' ),
 			'GERestbaseUrl' => Util::getRestbaseUrl( $config ),
 			'GENewcomerTasksRemoteArticleOrigin' => $config->get( 'GENewcomerTasksRemoteArticleOrigin' ),
-			'GEHomepageSuggestedEditsIntroLinks' => self::getGrowthWikiConfig()
+			'GEHomepageSuggestedEditsIntroLinks' => $growthServices->getGrowthWikiConfig()
 				->get( 'GEHomepageSuggestedEditsIntroLinks' ),
 			'GENewcomerTasksTopicFiltersPref' => SuggestedEdits::TOPICS_ORES_PREF,
 			'GELinkRecommendationsEnabled' => $config->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
