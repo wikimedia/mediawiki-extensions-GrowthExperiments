@@ -279,6 +279,8 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Done",
 	"growthexperiments-home-suggestededits-difficulty-filters-cancel": "Cancel",
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "$1 {{PLURAL:$1|suggested edit|suggested edits}} found",
+	"growthexperiments-home-suggestededits-interests-notice": "Get articles that match your interests.",
+	"growthexperiments-home-suggestededits-interests-notice-button": "Select interests",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Done",
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "Done",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "Cancel",

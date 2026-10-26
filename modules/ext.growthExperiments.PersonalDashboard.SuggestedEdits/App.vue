@@ -1,5 +1,10 @@
 <template>
 	<div class="growthexperiments-suggested-edits">
+		<interests-notice
+			v-if="showInterestsNotice"
+			@select-interests="openPanel = 'interests'"
+			@dismiss="onInterestsNoticeDismissed"></interests-notice>
+
 		<feed-panel
 			v-bind="{ ...$attrs, ...feedState }"
 			module-name="ext.growthExperiments.PersonalDashboard.SuggestedEdits"
@@ -52,7 +57,7 @@
 </template>
 
 <script>
-const { computed, defineComponent, ref } = require( 'vue' );
+const { computed, defineComponent, nextTick, ref } = require( 'vue' );
 const {
 	FeedPanel,
 	FULL_LIMIT,
@@ -62,15 +67,26 @@ const AboutPanel = require( './AboutPanel.vue' );
 const TaskCard = require( './TaskCard.vue' );
 const TaskTypesDialog = require( './TaskTypesDialog.vue' );
 const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
+const InterestsNotice = require( './InterestsNotice.vue' );
 const { newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
 const { useSuggestedEditsFeed } = require( './useSuggestedEditsFeed.js' );
 const { cdxIconChartBar, cdxIconConfigure } = require( './icons.json' );
 
-module.exports = defineComponent( {
+/** Keep in sync with HomeOnboardingActionLookup::INTERESTS_NOTICE_INTERACTED_PREF. */
+const INTERESTS_NOTICE_INTERACTED_PREF = 'growthexperiments-home-interests-notice-interacted';
+/**
+ * The HomeOnboardingActionLookup::ACTION_* values that show the notice. The
+ * welcome back dialog shows on top of it, and the notice stays when the user
+ * closes the dialog.
+ */
+const INTERESTS_NOTICE_ACTIONS = [ 'show-no-interests-notice', 'show-welcome-back' ];
+
+module.exports = exports = defineComponent( {
 	components: {
 		AboutPanel,
 		FeedPanel,
 		InterestSelectorDialog,
+		InterestsNotice,
 		ModuleHeaderMenu,
 		TaskCard,
 		TaskTypesDialog,
@@ -98,7 +114,7 @@ module.exports = defineComponent( {
 			default: false,
 		},
 	},
-	setup() {
+	setup( props ) {
 		const { feedState, load } = useSuggestedEditsFeed();
 
 		// Which panel the menu has opened, or null for none. One value rather
@@ -109,6 +125,38 @@ module.exports = defineComponent( {
 
 		const selectedInterestCount = ref( newcomerTasks.filters.getSelectedInterests().length );
 
+		// Only Special:Home sets the action, so other dashboards never show the notice.
+		const showInterestsNotice = ref(
+			INTERESTS_NOTICE_ACTIONS.includes( mw.config.get( 'wgGEHomeOnboardingAction' ) ),
+		);
+
+		// The notice holds the focus when it goes, or it gave the focus to the
+		// interest selector, which gives the focus back to it on close. Without
+		// the notice the focus goes to <body>. Move the focus to the module menu,
+		// because the user selects interests there from now on.
+		const hideInterestsNotice = () => {
+			showInterestsNotice.value = false;
+			nextTick( () => {
+				const header = props.headerTarget && document.querySelector( props.headerTarget );
+				const menuButton = header && header.querySelector(
+					'.personal-dashboard-module-menu__button > .cdx-button',
+				);
+				if ( menuButton ) {
+					menuButton.focus();
+				}
+			} );
+		};
+
+		const onInterestsNoticeDismissed = () => {
+			hideInterestsNotice();
+			new mw.Api().saveOption( INTERESTS_NOTICE_INTERACTED_PREF, 1 ).catch( ( error ) => {
+				mw.errorLogger.logError(
+					new Error( 'Unable to save the interests notice dismissal: ' + error ),
+					'error.growthexperiments',
+				);
+			} );
+		};
+
 		// Here rather than in mounted(): load() raises the loading flag before it
 		// awaits anything, and mounted() runs after the first render, so deferring
 		// it paints the empty-state line for a frame on every mount.
@@ -117,10 +165,26 @@ module.exports = defineComponent( {
 		return {
 			feedState,
 			openPanel,
+			showInterestsNotice,
 			// A panel only ever reports itself closed: it is opened from the menu
-			// above, never by its own model.
+			// above or from the interests notice, never by its own model.
 			closePanel: () => {
+				const interestsClosed = openPanel.value === 'interests';
 				openPanel.value = null;
+				// When the user leaves the interest selector with no interests, the
+				// notice is dismissed. It does not matter if the user opened the
+				// selector from the notice or from the menu. Every exit of the
+				// dialog counts: "Done", "Cancel", the close button and Esc. The
+				// dialog updates the store before it closes, so the store holds the
+				// result of "Done" here. Cancelled selections are discarded, so they
+				// also leave the store empty.
+				if (
+					interestsClosed &&
+					showInterestsNotice.value &&
+					!newcomerTasks.filters.getSelectedInterests().length
+				) {
+					onInterestsNoticeDismissed();
+				}
 			},
 			onTaskTypesSaved: () => {
 				selectedTaskTypeCount.value = newcomerTasks.filters.getSelectedTaskTypes().length;
@@ -130,8 +194,14 @@ module.exports = defineComponent( {
 			// feed only has to ask again.
 			onInterestsSaved: () => {
 				selectedInterestCount.value = newcomerTasks.filters.getSelectedInterests().length;
+				// No preference to save: with interests stored, the server does not
+				// ask for the notice again.
+				if ( selectedInterestCount.value > 0 && showInterestsNotice.value ) {
+					hideInterestsNotice();
+				}
 				load( FULL_LIMIT );
 			},
+			onInterestsNoticeDismissed,
 			menuItems: computed( () => [
 				{
 					value: 'interests',

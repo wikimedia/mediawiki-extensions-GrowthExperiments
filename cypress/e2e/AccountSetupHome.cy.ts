@@ -41,8 +41,9 @@ describe( 'Account Setup on a wiki with Home', () => {
 		//       time during the tests, so do not assert on it here.
 	} );
 
-	it( 'goes to Home when the user skips Account Setup', () => {
-		cy.visit( 'index.php?title=JR-430_Mountaineer' );
+	it( 'goes to Home when the user skips Account Setup, and shows the "no interests" notice until the user dismisses it', () => {
+		// Sign up from the Main Page. It is not saved as an interest, so the user has none.
+		cy.visit( 'index.php' );
 		cy.get( '#pt-createaccount-2' ).click();
 		signUp();
 
@@ -51,6 +52,24 @@ describe( 'Account Setup on a wiki with Home', () => {
 
 		cy.location( 'href' ).should( 'contain', 'Special:Home' );
 		home.module( SUGGESTED_EDITS_MODULE ).should( 'be.visible' );
+
+		home.interestsNotice.should( 'be.visible' );
+		// The glob matches the full URL, and mw.Api puts the action in the query string.
+		cy.intercept( 'POST', '**/api.php*', ( req ) => {
+			// Home saves other options too. Match only the dismissal.
+			if ( String( req.body ).includes( 'growthexperiments-home-interests-notice-interacted' ) ) {
+				req.alias = 'saveDismissal';
+			}
+		} );
+		home.interestsNoticeDismissButton.click();
+		home.interestsNotice.should( 'not.exist' );
+		// The notice saves the dismissal and does not wait for the save, so wait
+		// for it here. Otherwise the reload can come before the save.
+		cy.wait( '@saveDismissal' );
+
+		cy.reload();
+		home.module( SUGGESTED_EDITS_MODULE ).should( 'be.visible' );
+		home.interestsNotice.should( 'not.exist' );
 	} );
 
 	it( 'shows Account Setup on mobile', () => {

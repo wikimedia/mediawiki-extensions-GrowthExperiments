@@ -35,6 +35,14 @@ class SpecialHome {
 		return cy.get( '#growthexperiments-suggested-edits-see-all' );
 	}
 
+	public get interestsNotice(): ReturnType<typeof cy.get> {
+		return cy.get( '.growthexperiments-interests-notice' );
+	}
+
+	public get interestsNoticeDismissButton(): ReturnType<typeof cy.get> {
+		return cy.get( '.growthexperiments-interests-notice .cdx-message__dismiss-button' );
+	}
+
 	public get impactTotalEdits(): ReturnType<typeof cy.get> {
 		return cy.get( '[data-link-id="impact-total-edits"]' );
 	}

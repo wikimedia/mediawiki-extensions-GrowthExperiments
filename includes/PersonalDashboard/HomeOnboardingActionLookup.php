@@ -13,7 +13,7 @@ class HomeOnboardingActionLookup {
 
 	/** The user saw Account Setup on Home, or the welcome back dialog. */
 	public const INTRO_SEEN_PREF = 'growthexperiments-home-intro-seen';
-	/** The user selected interests from the notice, or dismissed it. */
+	/** The user dismissed the "no interests" notice. */
 	public const INTERESTS_NOTICE_INTERACTED_PREF = 'growthexperiments-home-interests-notice-interacted';
 
 	/** Show the "no interests" notice. */
