@@ -27,7 +27,7 @@ class HomepageParserFunctions {
 		$username
 	): string {
 		$menteeUser = $userFactory->newFromName( $username );
-		if ( $menteeUser === null ) {
+		if ( $menteeUser === null || !$menteeUser->isNamed() ) {
 			return '';
 		}
 
