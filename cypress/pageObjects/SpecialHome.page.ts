@@ -43,6 +43,14 @@ class SpecialHome {
 		return cy.get( '.growthexperiments-interests-notice .cdx-message__dismiss-button' );
 	}
 
+	public get welcomeBackDialog(): ReturnType<typeof cy.get> {
+		return cy.get( '.growthexperiments-welcome-back-dialog' );
+	}
+
+	public get welcomeBackDialogCloseButton(): ReturnType<typeof cy.get> {
+		return cy.get( '.growthexperiments-welcome-back-dialog .cdx-dialog__header__close-button' );
+	}
+
 	public get impactTotalEdits(): ReturnType<typeof cy.get> {
 		return cy.get( '[data-link-id="impact-total-edits"]' );
 	}

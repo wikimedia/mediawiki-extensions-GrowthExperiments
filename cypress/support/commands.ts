@@ -76,6 +76,9 @@ Cypress.Commands.add( 'setUserOptions', ( options ): void => {
 		'growthexperiments-addimage-onboarding': null,
 		'growthexperiments-addimage-caption-onboarding': null,
 		'growthexperiments-revisetone-onboarding': null,
+		// Without this option, Special:Home shows the welcome back dialog. The
+		// dialog is modal, so it blocks the page under it.
+		'growthexperiments-home-intro-seen': '1',
 	};
 	cy.visit( '/index.php' );
 	cy.window().its( 'mw.Api' ).should( 'exist' );

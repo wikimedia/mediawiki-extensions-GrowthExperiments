@@ -23,6 +23,9 @@ describe( 'Special:Home', () => {
 				summary: 'GrowthExperiments Cypress browser test edit',
 			} );
 			cy.loginViaApi( username, password );
+			// The defaults mark the intro as seen, so the welcome back dialog
+			// does not show.
+			cy.setUserOptions( {} );
 
 			cy.visit( 'index.php?title=Special:Home' );
 
@@ -39,6 +42,42 @@ describe( 'Special:Home', () => {
 
 			home.module( IMPACT_MODULE ).should( 'be.visible' );
 			home.impactTotalEdits.should( 'have.text', '1' );
+		} );
+	} );
+
+	it( 'welcomes back a user who did not see the intro, and keeps the "no interests" notice', () => {
+		// A new user from the API has Home enabled, no interests and no "intro
+		// seen" option. Do not call cy.setUserOptions: its defaults set that option.
+		cy.task( 'MwApi:CreateUser', { usernamePrefix: 'GE-HomeWelcomeBack' } ).then( ( { username, password }: {
+			username: string;
+			password: string;
+		} ) => {
+			cy.loginViaApi( username, password );
+
+			// The glob matches the full URL, and mw.Api puts the action in the query string.
+			cy.intercept( 'POST', '**/api.php*', ( req ) => {
+				// Home saves other options too. Match only the "intro seen" option.
+				if ( String( req.body ).includes( 'growthexperiments-home-intro-seen' ) ) {
+					req.alias = 'saveIntroSeen';
+				}
+			} );
+			cy.visit( 'index.php?title=Special:Home' );
+
+			home.welcomeBackDialog.should( 'be.visible' ).and( 'contain', username );
+			// The dialog saves the option when it shows. It does not wait for the
+			// save, so wait for it here. Otherwise the reload can come before the save.
+			cy.wait( '@saveIntroSeen' );
+
+			home.welcomeBackDialogCloseButton.click();
+			home.welcomeBackDialog.should( 'not.exist' );
+			// Closing the dialog is not a dismissal of the notice.
+			home.interestsNotice.should( 'be.visible' );
+
+			// The dialog shows one time only.
+			cy.reload();
+			home.module( SUGGESTED_EDITS_MODULE ).should( 'be.visible' );
+			home.interestsNotice.should( 'be.visible' );
+			home.welcomeBackDialog.should( 'not.exist' );
 		} );
 	} );
 

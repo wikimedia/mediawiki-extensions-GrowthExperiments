@@ -5,6 +5,10 @@
 			@select-interests="openPanel = 'interests'"
 			@dismiss="onInterestsNoticeDismissed"></interests-notice>
 
+		<welcome-back-dialog
+			v-model:open="showWelcomeBack"
+			@select-interests="openInterestsFromWelcomeBack"></welcome-back-dialog>
+
 		<feed-panel
 			v-bind="{ ...$attrs, ...feedState }"
 			module-name="ext.growthExperiments.PersonalDashboard.SuggestedEdits"
@@ -68,12 +72,15 @@ const TaskCard = require( './TaskCard.vue' );
 const TaskTypesDialog = require( './TaskTypesDialog.vue' );
 const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
 const InterestsNotice = require( './InterestsNotice.vue' );
+const WelcomeBackDialog = require( './WelcomeBackDialog.vue' );
 const { newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
 const { useSuggestedEditsFeed } = require( './useSuggestedEditsFeed.js' );
 const { cdxIconChartBar, cdxIconConfigure } = require( './icons.json' );
 
 /** Keep in sync with HomeOnboardingActionLookup::INTERESTS_NOTICE_INTERACTED_PREF. */
 const INTERESTS_NOTICE_INTERACTED_PREF = 'growthexperiments-home-interests-notice-interacted';
+/** Keep in sync with HomeOnboardingActionLookup::ACTION_WELCOME_BACK. */
+const WELCOME_BACK_ACTION = 'show-welcome-back';
 /**
  * The HomeOnboardingActionLookup::ACTION_* values that show the notice. The
  * welcome back dialog shows on top of it, and the notice stays when the user
@@ -90,6 +97,7 @@ module.exports = exports = defineComponent( {
 		ModuleHeaderMenu,
 		TaskCard,
 		TaskTypesDialog,
+		WelcomeBackDialog,
 	},
 	// The compact/full island props (detail, focused, active) are never declared
 	// here: they ride in $attrs and are forwarded untouched to the scaffold,
@@ -130,6 +138,9 @@ module.exports = exports = defineComponent( {
 			INTERESTS_NOTICE_ACTIONS.includes( mw.config.get( 'wgGEHomeOnboardingAction' ) ),
 		);
 
+		// The dialog saves that the user saw it.
+		const showWelcomeBack = ref( mw.config.get( 'wgGEHomeOnboardingAction' ) === WELCOME_BACK_ACTION );
+
 		// The notice holds the focus when it goes, or it gave the focus to the
 		// interest selector, which gives the focus back to it on close. Without
 		// the notice the focus goes to <body>. Move the focus to the module menu,
@@ -166,14 +177,17 @@ module.exports = exports = defineComponent( {
 			feedState,
 			openPanel,
 			showInterestsNotice,
+			showWelcomeBack,
 			// A panel only ever reports itself closed: it is opened from the menu
-			// above or from the interests notice, never by its own model.
+			// above, from the interests notice or from the welcome back dialog, never
+			// by its own model.
 			closePanel: () => {
 				const interestsClosed = openPanel.value === 'interests';
 				openPanel.value = null;
 				// When the user leaves the interest selector with no interests, the
 				// notice is dismissed. It does not matter if the user opened the
-				// selector from the notice or from the menu. Every exit of the
+				// selector from the notice, from the menu or from the welcome back
+				// dialog. Every exit of the
 				// dialog counts: "Done", "Cancel", the close button and Esc. The
 				// dialog updates the store before it closes, so the store holds the
 				// result of "Done" here. Cancelled selections are discarded, so they
@@ -185,6 +199,10 @@ module.exports = exports = defineComponent( {
 				) {
 					onInterestsNoticeDismissed();
 				}
+			},
+			openInterestsFromWelcomeBack: () => {
+				showWelcomeBack.value = false;
+				openPanel.value = 'interests';
 			},
 			onTaskTypesSaved: () => {
 				selectedTaskTypeCount.value = newcomerTasks.filters.getSelectedTaskTypes().length;

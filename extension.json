@@ -990,6 +990,7 @@
 				"TaskCard.vue",
 				"TaskTypesDialog.vue",
 				"useSuggestedEditsFeed.js",
+				"WelcomeBackDialog.vue",
 				{
 					"name": "config.json",
 					"config": [
@@ -1040,6 +1041,9 @@
 				"growthexperiments-home-suggestededits-menu-tasktypes",
 				"growthexperiments-home-suggestededits-menu-tasktypes-selected",
 				"growthexperiments-home-suggestededits-progress-bar-aria-label",
+				"growthexperiments-home-welcome-back-select-interests",
+				"growthexperiments-home-welcome-back-text",
+				"growthexperiments-home-welcome-back-title",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label",

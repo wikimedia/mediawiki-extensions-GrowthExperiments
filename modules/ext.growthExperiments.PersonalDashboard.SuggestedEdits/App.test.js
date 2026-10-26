@@ -5,7 +5,7 @@
  * InterestSelectorDialog.vue is mapped in from another directory, and
  * ext.personalDashboard.common comes from a sibling extension, so none of them
  * exist here on disk for jest to resolve. The panels and the feed are stubbed:
- * these tests only cover the interests notice.
+ * these tests only cover the interests notice and the welcome back dialog.
  */
 jest.mock( './codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
 jest.mock( './icons.json', () => ( {
@@ -21,6 +21,12 @@ jest.mock( './InterestSelectorDialog.vue', () => ( {
 	emits: [ 'update:open', 'saved' ],
 	render: () => null,
 } ), { virtual: true } );
+jest.mock( './WelcomeBackDialog.vue', () => ( {
+	name: 'WelcomeBackDialog',
+	props: [ 'open' ],
+	emits: [ 'update:open', 'select-interests' ],
+	render: () => null,
+} ) );
 
 const mockLoad = jest.fn();
 jest.mock( './useSuggestedEditsFeed.js', () => ( {
@@ -268,5 +274,87 @@ describe( 'App interests notice', () => {
 
 			expect( document.activeElement ).toBe( document.body );
 		} );
+	} );
+} );
+
+describe( 'App welcome back dialog', () => {
+	/**
+	 * @param {Object} wrapper
+	 * @return {Object} the wrapper of the welcome back dialog
+	 */
+	function welcomeBack( wrapper ) {
+		return wrapper.findComponent( { name: 'WelcomeBackDialog' } );
+	}
+
+	beforeEach( () => {
+		mockSaveOption.mockReset().mockResolvedValue( {} );
+		mockFilters.getSelectedInterests.mockReturnValue( [] );
+		global.mw.Api = jest.fn( () => ( { saveOption: mockSaveOption } ) );
+		global.mw.errorLogger = { logError: jest.fn() };
+	} );
+
+	it( 'opens the dialog', () => {
+		const wrapper = mountApp( 'show-welcome-back' );
+
+		expect( welcomeBack( wrapper ).props( 'open' ) ).toBe( true );
+	} );
+
+	it.each( [
+		'show-no-interests-notice',
+		null,
+	] )( 'does not open the dialog for the %s action', ( action ) => {
+		const wrapper = mountApp( action );
+
+		expect( welcomeBack( wrapper ).props( 'open' ) ).toBe( false );
+	} );
+
+	it( 'opens the interest selector from the dialog', async () => {
+		const wrapper = mountApp( 'show-welcome-back' );
+
+		welcomeBack( wrapper ).vm.$emit( 'select-interests' );
+		await wrapper.vm.$nextTick();
+
+		expect( welcomeBack( wrapper ).props( 'open' ) ).toBe( false );
+		expect( interestSelector( wrapper ).props( 'open' ) ).toBe( true );
+	} );
+
+	it( 'keeps the notice when the user closes the dialog', async () => {
+		const wrapper = mountApp( 'show-welcome-back' );
+
+		welcomeBack( wrapper ).vm.$emit( 'update:open', false );
+		await wrapper.vm.$nextTick();
+
+		expect( welcomeBack( wrapper ).props( 'open' ) ).toBe( false );
+		expect( wrapper.find( '.growthexperiments-interests-notice' ).exists() ).toBe( true );
+		expect( mockSaveOption ).not.toHaveBeenCalledWith(
+			'growthexperiments-home-interests-notice-interacted', 1,
+		);
+	} );
+
+	it( 'dismisses the notice when the selector opened from the dialog closes without interests', async () => {
+		const wrapper = mountApp( 'show-welcome-back' );
+		welcomeBack( wrapper ).vm.$emit( 'select-interests' );
+		await wrapper.vm.$nextTick();
+
+		interestSelector( wrapper ).vm.$emit( 'update:open', false );
+		await wrapper.vm.$nextTick();
+
+		expect( wrapper.find( '.growthexperiments-interests-notice' ).exists() ).toBe( false );
+		expect( mockSaveOption ).toHaveBeenCalledWith(
+			'growthexperiments-home-interests-notice-interacted', 1,
+		);
+	} );
+
+	it( 'hides the notice when the user saves interests from the dialog', async () => {
+		const wrapper = mountApp( 'show-welcome-back' );
+		welcomeBack( wrapper ).vm.$emit( 'select-interests' );
+		await wrapper.vm.$nextTick();
+		mockFilters.getSelectedInterests.mockReturnValue( [ 'Dandelion' ] );
+
+		interestSelector( wrapper ).vm.$emit( 'update:open', false );
+		interestSelector( wrapper ).vm.$emit( 'saved' );
+		await wrapper.vm.$nextTick();
+
+		expect( wrapper.find( '.growthexperiments-interests-notice' ).exists() ).toBe( false );
 	} );
 } );
