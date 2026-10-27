@@ -5,7 +5,7 @@
 			:menu-items="menuItems"
 			:footer-item="menuFooterItem"
 			:button-label="menuButtonLabel"
-			@select="openPanel = $event"
+			@select="menuItemClick"
 		>
 			<module-panel
 				:open="openPanel === 'status'"
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-const { defineComponent, ref, onMounted, onUnmounted } = require( 'vue' );
+const { defineComponent, inject, ref, onMounted, onUnmounted } = require( 'vue' );
 // init.js loads this module before it requires this file.
 const { ModuleHeaderMenu, ModulePanel } = require( 'ext.personalDashboard.common' );
 const MentorshipStatus = require( './MentorshipStatus.vue' );
@@ -87,6 +87,7 @@ module.exports = exports = defineComponent( {
 		const openPanel = ref( null );
 		const questionOpen = ref( false );
 		const statusAction = props.optedOut ? 'optin' : 'optout';
+		const instrumentation = inject( 'HOME_MODULE_INSTRUMENTATION' );
 		// Closing mid-request would hide the result: a reload into the state the
 		// user thought they cancelled, or an error nobody sees.
 		const statusBusy = ref( false );
@@ -94,11 +95,19 @@ module.exports = exports = defineComponent( {
 			openPanel.value = null;
 		};
 
+		const menuItemClick = ( menuItemValue ) => {
+			if ( menuItemValue === 'about' ) {
+				instrumentation.sendClick( 'module_mentorship_link_about' );
+			}
+			openPanel.value = menuItemValue;
+		};
+
 		// The server-rendered buttons stay the entry points; this only takes over
 		// their clicks. The ask link keeps its href as the no-JS fallback.
 		const controls = [
 			[ '.personal-dashboard-mentorship__ask', () => {
 				questionOpen.value = true;
+				instrumentation.sendClick( 'module_mentorship_link_ask' );
 			} ],
 			[ '.personal-dashboard-mentorship__optin', () => {
 				openPanel.value = 'status';
@@ -139,6 +148,7 @@ module.exports = exports = defineComponent( {
 			questionOpen,
 			statusAction,
 			statusBusy,
+			menuItemClick,
 			closePanel,
 			closeStatus: () => {
 				if ( !statusBusy.value ) {

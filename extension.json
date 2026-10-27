@@ -1144,6 +1144,7 @@
 			],
 			"packageFiles": [
 				"init.js",
+				"../ext.growthExperiments.Home/HomeInstrumentation.js",
 				"App.vue",
 				"QuestionDialog.vue",
 				"MentorshipStatus.vue",
