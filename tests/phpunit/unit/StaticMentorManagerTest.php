@@ -13,14 +13,7 @@ use MediaWikiUnitTestCase;
  */
 class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @var ?Mentor
-	 */
 	protected ?Mentor $mentor1 = null;
-
-	/**
-	 * @var ?Mentor
-	 */
 	protected ?Mentor $mentor2 = null;
 
 	protected function setUp(): void {

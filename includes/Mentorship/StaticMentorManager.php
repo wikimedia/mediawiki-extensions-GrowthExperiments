@@ -55,18 +55,6 @@ class StaticMentorManager implements IMentorManager {
 			$this->getMentorForUserSafe( $menteeUser, MentorStore::ROLE_BACKUP );
 	}
 
-	public function newMentorFromUserIdentity(
-		UserIdentity $mentorUser,
-		?UserIdentity $menteeUser = null
-	): Mentor {
-		foreach ( $this->mentors as $mentee => $mentor ) {
-			if ( $mentor->getUserIdentity()->equals( $mentorUser ) ) {
-				return $mentor;
-			}
-		}
-		throw new InvalidArgumentException( 'Invalid mentor passed' );
-	}
-
 	/** @inheritDoc */
 	public function getMentorshipStateForUser( UserIdentity $user ): int {
 		return IMentorManager::MENTORSHIP_ENABLED;
