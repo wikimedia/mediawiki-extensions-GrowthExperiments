@@ -29,6 +29,7 @@ module.exports = {
 	collectCoverage: true,
 	collectCoverageFrom: [
 		'modules/ext.growthExperiments.MentorDashboard/**/*.(js|vue)',
+		'modules/ext.growthExperiments.Home/**/*.js',
 		'modules/ext.growthExperiments.Homepage.Impact/**/*.(js|vue)',
 		'modules/ext.growthExperiments.StructuredTask.PreEdit/**/*.(js|vue)',
 		'modules/utils/**/*.js',
@@ -49,6 +50,7 @@ module.exports = {
 	// A list of paths to directories that Jest should use to search for files in.
 	roots: [
 		'./modules/ext.growthExperiments.DataStore',
+		'./modules/ext.growthExperiments.Home',
 		'./modules/ext.growthExperiments.MentorDashboard',
 		'./modules/ext.growthExperiments.Homepage.Impact',
 		'./modules/ext.growthExperiments.Homepage.ReadingRecommendations',

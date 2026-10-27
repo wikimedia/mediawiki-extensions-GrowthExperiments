@@ -1075,6 +1075,15 @@
 				"growthexperiments-interest-selector-success"
 			]
 		},
+		"ext.growthExperiments.Home": {
+			"localBasePath": "modules/ext.growthExperiments.Home",
+			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.Home",
+			"packageFiles": [
+				"init.js",
+				"instrumentation.js",
+				"HomeInstrumentation.js"
+			]
+		},
 		"ext.growthExperiments.Home.styles": {
 			"localBasePath": "modules/ext.growthExperiments.Home.styles",
 			"remoteExtPath": "GrowthExperiments/modules/ext.growthExperiments.Home.styles",

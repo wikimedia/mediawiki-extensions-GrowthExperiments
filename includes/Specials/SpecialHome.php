@@ -54,6 +54,7 @@ class SpecialHome extends AbstractSpecialDashboard {
 			);
 		}
 
+		$this->getOutput()->addModules( 'ext.growthExperiments.Home' );
 		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.Home.styles' );
 
 		$this->getOutput()->addJsConfigVars(
