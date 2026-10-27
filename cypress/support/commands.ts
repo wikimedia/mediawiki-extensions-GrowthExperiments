@@ -16,11 +16,12 @@ Cypress.Commands.add( 'loginViaApi', ( username: string, password: string ): voi
 } );
 
 Cypress.Commands.add( 'loginAsAdmin', (): void => {
-	const config = Cypress.env();
-	login(
-		config.mediawikiAdminUsername,
-		config.mediawikiAdminPassword,
-	);
+	cy.env<{ mediawikiAdminUsername: string; mediawikiAdminPassword: string }>( [
+		'mediawikiAdminUsername',
+		'mediawikiAdminPassword',
+	] ).then( ( { mediawikiAdminUsername, mediawikiAdminPassword } ) => {
+		login( mediawikiAdminUsername, mediawikiAdminPassword );
+	} );
 } );
 
 Cypress.Commands.add( 'loginAsUser', ( usernamePrefix: string ): void => {

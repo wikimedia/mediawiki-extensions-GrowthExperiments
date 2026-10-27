@@ -19,6 +19,9 @@ process.env.REST_BASE_URL = process.env.MW_SERVER + process.env.MW_SCRIPT_PATH +
 export default defineConfig( {
 	retries: 2,
 	experimentalFastVisibility: true,
+	// Code in the browser cannot read Cypress.env(). The env holds the admin
+	// credentials. Use cy.env() to read them.
+	allowCypressEnv: false,
 	e2e: {
 		supportFile: 'cypress/support/e2e.ts',
 		baseUrl: process.env.MW_SERVER + process.env.MW_SCRIPT_PATH,
