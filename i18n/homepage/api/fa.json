@@ -3,7 +3,8 @@
 		"authors": [
 			"FarsiNevis",
 			"Jeeputer",
-			"Reza1615"
+			"Reza1615",
+			"LProfo"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "تهیهٔ سوالات قالب‌بندی شده ارسال‌شده از طریق ماژول‌های صفحهٔ اصلی",
@@ -11,7 +12,7 @@
 	"apihelp-homepagequestionstore-param-storage": "محل ذخیرهٔ پرسش‌ها.",
 	"apihelp-homepagequestionstore-param-userid": "شناسهٔ کاربر برای تهیهٔ سوالات برایش.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "پرسشی پیدا نشد.",
-	"apihelp-growthsetmentor-summary": "مربی کاربر را مشخص کنید. تغییر به طور عمومی ثبت خواهد شد.",
+	"apihelp-growthsetmentor-summary": "مربی کاربر را مشخص کنید. تغییر به‌طور عمومی ثبت خواهد شد.",
 	"apihelp-growthsetmentor-param-mentee": "نام کاربری کارآموز",
 	"apihelp-growthsetmentor-param-mentor": "نام کاربری مربی",
 	"apihelp-growthsetmentor-param-reason": "دلیل تغییر"

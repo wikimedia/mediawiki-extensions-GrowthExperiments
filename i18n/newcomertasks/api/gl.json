@@ -11,6 +11,7 @@
 	"apihelp-query+growthtasks-param-topics": "Temas de artigo preferidos para as suxestións de tarefas.",
 	"apihelp-query+growthtasks-param-topicsmode": "Modo de coincidencia dos temas.",
 	"apihelp-query+growthtasks-param-interests": "Títulos de artigos que representan os intereses do usuario. As suxestións proveñen de artigos semellantes a eses intereses. Por defecto, os intereses almacenados do usuario. Non se pode combinar con <var>$1topics</var>.",
+	"apihelp-query+growthtasks-param-useinterests": "Filtrar polos intereses almacenados para o usuario, mesmo cando as suxestións para o usuario seguirían as súas preferencias de temas. Ignórase cando se indican <var>$1interests</var> ou <var>$1topics</var>.",
 	"apihelp-query+growthtasks-param-limit": "Número máximo de suxestións de tarefas a devolver.",
 	"apihelp-query+growthtasks-param-excludepageids": "Identificadores de páxina a excluír da consulta.",
 	"apihelp-query+growthtasks-param-debug": "Engadir os datos de depuración á saída.",

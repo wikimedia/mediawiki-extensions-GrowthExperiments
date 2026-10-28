@@ -18,8 +18,10 @@
 			"ערן"
 		]
 	},
+	"growthexperiments-home-specialpage-title": "{{GENDER:$1|שלום}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|שלום}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-list": "דף הבית לחדשים",
+	"growthexperiments-home-tab": "דף הבית",
 	"growthexperiments-homepage-tab": "דף הבית",
 	"tooltip-pt-homepage": "דף הבית {{GENDER:|שלך}}",
 	"prefs-homepage": "אפשרויות לעורכים מתחילים",
@@ -171,6 +173,7 @@
 	"growthexperiments-homepage-claimmentee-no-user": "החניך אינו קיים",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|אתה כבר חונך|את כבר חונכת}} את $1",
 	"growthexperiments-homepage-claimmentee-opt-out": "$1 {{GENDER:$1|יצא|יצאה}} לחונכות",
+	"growthexperiments-home-enable-preference": "כדי להפעיל את דף הבית, נא לבקר בלשונית \"אפשרויות לעורכים מתחילים\" ב[[Special:Preferences#mw-prefsection-personal-homepage|העדפות]].",
 	"growthexperiments-homepage-enable-preference": "כדי להפעיל את דף הבית למתחילים, {{GENDER:|בקר|בקרי}} בלשונית \"אפשרויות לעורכים מתחילים\" ב[[Special:Preferences#mw-prefsection-personal-homepage|העדפות]].",
 	"growthexperiments-homepage-contributions-zero-title": "עדיין לא {{GENDER:$1|עשית}} שום תרומה.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "{{GENDER:$1|בקר|בקרי}} בדף הבית שלך כדי להתחיל לערוך!",

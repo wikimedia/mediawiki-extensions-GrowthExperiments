@@ -162,7 +162,7 @@
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|De(n) $1|D'$1}} huet sech aus dem Mentoreprogramm ofgemellt",
 	"growthexperiments-homepage-enable-preference": "Fir d'Startsäit fir Neier z'aktivéieren, gitt op „Funktioune fir nei Editeuren“ an Ären\n [[Special:Preferences#mw-prefsection-personal-homepage|Astellungen]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Dir}} hutt nach keng Kontributioune gemaach.",
-	"growthexperiments-homepage-contributions-zero-subtitle": "Gitt op {{GENDER:$1|Är}} Startsäit fir mam Änneren unzefänken!",
+	"growthexperiments-homepage-contributions-zero-subtitle": "Gitt op {{GENDER:$1|Är}} Startsäit, fir mam Änneren unzefänken!",
 	"growthexperiments-homepage-contributions-zero-button": "Gitt op {{GENDER:$1|Är}} Startsäit",
 	"growthexperiments-tour-welcome-title": "Wëllkomm op {{GENDER:$1|Ärer}} Startsäit!",
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Dir}} kënnt zu all Moment op {{GENDER:$1|Äre}} Benotzernumm klicke fir heihinner zréckzekommen.",

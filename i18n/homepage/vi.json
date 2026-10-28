@@ -16,8 +16,10 @@
 			"Vinhtantran"
 		]
 	},
+	"growthexperiments-home-specialpage-title": "{{GENDER:$1|Xin chào}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Xin chào}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-list": "Trang nhà cho người mới",
+	"growthexperiments-home-tab": "Trang nhà",
 	"growthexperiments-homepage-tab": "Trang nhà",
 	"tooltip-pt-homepage": "Trang chính {{GENDER:|của bạn}}",
 	"prefs-homepage": "Tính năng dành cho người mới tham gia",
@@ -169,6 +171,7 @@
 	"growthexperiments-homepage-claimmentee-no-user": "Người được cố vấn không tồn tại",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Bạn}} đã làm cố vấn cho {{GENDER:$1|$1}} rồi",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} đã rời khỏi vai trò cố vấn",
+	"growthexperiments-home-enable-preference": "Để bật Trang nhà, hãy vào phần “Tính năng dành cho biên tập viên mới” trong [[Special:Preferences#mw-prefsection-personal-homepage|tùy chọn]].",
 	"growthexperiments-homepage-enable-preference": "Để bật trang chủ của người mới, hãy truy cập cài đặt “Tính năng dành cho người mới tham gia” trong [[Special:Preferences#mw-prefsection-personal-homepage|Tùy chọn]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Bạn}} vẫn chưa có đóng góp nào.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Hãy ghé thăm trang nhà {{GENDER:$1|của bạn}} để bắt đầu sửa đổi!",
