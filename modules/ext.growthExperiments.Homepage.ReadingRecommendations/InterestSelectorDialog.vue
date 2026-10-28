@@ -48,7 +48,9 @@ module.exports = defineComponent( {
 		const api = new mw.Api();
 		const storedInterestArticles = mw.config.get( 'wgGEInterestArticles', [] );
 
-		const chips = ref( storedInterestArticles.map( ( articleName ) => ( { label: articleName, value: articleName } ) ) );
+		const chips = ref( storedInterestArticles.map(
+			( articleName ) => ( { label: articleName, value: articleName } ),
+		) );
 
 		async function saveInterestArticles() {
 			const pageNames = chips.value.map( ( chip ) => chip.value );

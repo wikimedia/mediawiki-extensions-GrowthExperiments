@@ -7,8 +7,9 @@
 		@update:open="$emit( 'update:open', $event )">
 		<p>{{ intro }}</p>
 		<p>{{ purpose }}</p>
-		<!-- eslint-disable-next-line max-len -->
-		<p v-i18n-html:growthexperiments-home-suggestededits-about-recommendations="[ recommendationsUrl ]" class="plainlinks"></p>
+		<p
+			v-i18n-html:growthexperiments-home-suggestededits-about-recommendations="[ recommendationsUrl ]"
+			class="plainlinks"></p>
 	</module-panel>
 </template>
 

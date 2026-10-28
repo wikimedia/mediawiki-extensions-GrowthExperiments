@@ -45,6 +45,33 @@
 		},
 		{
 			"files": [
+				"**/*.vue"
+			],
+			"rules": {
+				"vue/component-name-in-template-casing": [
+					"error",
+					"kebab-case"
+				],
+				"vue/max-len": [
+					"error",
+					{
+						"code": 120,
+						"template": 120,
+						"comments": 120
+					}
+				],
+				"vue/multi-word-component-names": [
+					"error",
+					{
+						"ignores": [
+							"Impact"
+						]
+					}
+				]
+			}
+		},
+		{
+			"files": [
 				"**/*.js",
 				"**/*.vue"
 			],
