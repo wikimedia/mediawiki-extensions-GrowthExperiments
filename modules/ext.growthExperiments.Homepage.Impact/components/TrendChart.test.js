@@ -1,3 +1,5 @@
+'use strict';
+
 const { mount } = require( '@vue/test-utils' );
 const TrendChart = require( './TrendChart.vue' );
 
@@ -5,20 +7,20 @@ const renderComponent = ( { props = {}, provide = {} } = {} ) => mount( TrendCha
 	props,
 	global: {
 		stubs: {
-			CSparkline: true
+			CSparkline: true,
 		},
 		provide: Object.assign( {
 			RENDER_MODE: 'desktop',
 			RELEVANT_USER_USERNAME: 'Alice',
 			RENDER_IN_THIRD_PERSON: false,
-			BROWSER_HAS_INTL: true
+			BROWSER_HAS_INTL: true,
 		}, provide ),
 		mocks: {
 			$filters: {
-				convertNumber: jest.fn( ( x ) => `${ x }` )
-			}
-		}
-	}
+				convertNumber: jest.fn( ( x ) => `${ x }` ),
+			},
+		},
+	},
 } );
 
 describe( 'TrendChart', () => {
@@ -34,8 +36,8 @@ describe( 'TrendChart', () => {
 				id: 'some-id',
 				countLabel: 'some-count-label',
 				chartTitle: 'some-title',
-				pageviewTotal: 123012000
-			}
+				pageviewTotal: 123012000,
+			},
 		} );
 
 		expect( wrapper.text() ).toContain( 'some-count-label' );
@@ -53,11 +55,11 @@ describe( 'TrendChart', () => {
 				id: 'some-id',
 				countLabel: 'some-count-label',
 				chartTitle: 'some-title',
-				pageviewTotal: 123012000
+				pageviewTotal: 123012000,
 			},
 			provide: {
-				BROWSER_HAS_INTL: false
-			}
+				BROWSER_HAS_INTL: false,
+			},
 		} );
 
 		expect( wrapper.text() ).toContain( 'some-count-label' );

@@ -1,3 +1,5 @@
+'use strict';
+
 jest.mock( '../icons.json', () => ( {} ), { virtual: true } );
 const { shallowMount, mount } = require( '@vue/test-utils' );
 const DataTableCellValue = require( './DataTableCellValue.vue' );
@@ -7,8 +9,8 @@ describe( 'DataTableCellValue', () => {
 		const wrapper = shallowMount( DataTableCellValue, {
 			props: {
 				value: 10,
-				align: 'center'
-			}
+				align: 'center',
+			},
 		} );
 
 		expect( wrapper.text() ).toContain( '10' );
@@ -18,8 +20,8 @@ describe( 'DataTableCellValue', () => {
 	it( 'renders the given slot', () => {
 		const wrapper = mount( DataTableCellValue, {
 			slots: {
-				default: 'Main Content'
-			}
+				default: 'Main Content',
+			},
 		} );
 
 		expect( wrapper.text() ).toContain( 'Main Content' );

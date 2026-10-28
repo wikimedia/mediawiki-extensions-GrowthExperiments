@@ -31,13 +31,13 @@ module.exports = exports = {
 		return {
 			cdxIconSearch,
 			selection,
-			searchTerm
+			searchTerm,
 		};
 	},
 	computed: {
 		menuItems() {
 			return this.$store.getters[ 'menteesSearch/allMentees' ];
-		}
+		},
 	},
 	methods: {
 		// TODO: this should be debounced.
@@ -49,7 +49,7 @@ module.exports = exports = {
 
 			this.searchTerm = value;
 			this.$store.dispatch( 'menteesSearch/findMenteesByTextQuery', { query: value } );
-		}
-	}
+		},
+	},
 };
 </script>

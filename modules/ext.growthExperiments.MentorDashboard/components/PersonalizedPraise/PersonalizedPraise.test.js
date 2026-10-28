@@ -1,10 +1,12 @@
+'use strict';
+
 jest.mock( '../../../vue-components/icons.json', () => ( {
 	cdxIconNext: 'next-icon',
 	cdxIconPrevious: 'previous-icon',
 	cdxIconSettings: 'settings-icon',
 	cdxIconUserAvatar: 'user-avatar-icon',
 	cdxIconInfo: 'info-icon',
-	cdxIconClose: 'close-icon'
+	cdxIconClose: 'close-icon',
 } ), { virtual: true } );
 const { mount, shallowMount } = require( '@vue/test-utils' );
 const Vuex = require( 'vuex' );
@@ -21,7 +23,7 @@ describe( 'PersonalizedPraise', () => {
 			fetchMentees: jest.fn( () => $.Deferred().resolve().promise() ),
 			previousPage: jest.fn( () => $.Deferred().resolve().promise() ),
 			nextPage: jest.fn( () => $.Deferred().resolve().promise() ),
-			saveSettings: jest.fn( () => $.Deferred().resolve().promise() )
+			saveSettings: jest.fn( () => $.Deferred().resolve().promise() ),
 		};
 		praiseworthyMenteesGetters = {
 			totalPages: jest.fn( () => {
@@ -50,17 +52,17 @@ describe( 'PersonalizedPraise', () => {
 				days: 14,
 				messageSubject: 'Message subject',
 				messageText: 'Message text',
-				notificationFrequency: 0
-			} ) )
+				notificationFrequency: 0,
+			} ) ),
 		};
 		store = new Vuex.Store( {
 			modules: {
 				praiseworthyMentees: {
 					actions: praiseworthyMenteesActions,
 					getters: praiseworthyMenteesGetters,
-					namespaced: true
-				}
-			}
+					namespaced: true,
+				},
+			},
 		} );
 		// Use a well-known window name to have the component avoid passing an anchor to CdxPopover.
 		// CdxPopover needs to be shallow rendered for reasons outlined above, and vue-test-utils
@@ -73,19 +75,19 @@ describe( 'PersonalizedPraise', () => {
 		const wrapper = mount( PersonalizedPraise, {
 			global: {
 				stubs: {
-					CdxPopover: true
+					CdxPopover: true,
 				},
 				provide: {
-					$log: jest.fn()
+					$log: jest.fn(),
 				},
 				mocks: {
 					log: jest.fn(),
 					$store: store,
 					$filters: {
-						convertNumber: jest.fn( ( x ) => `${ x }` )
-					}
-				}
-			}
+						convertNumber: jest.fn( ( x ) => `${ x }` ),
+					},
+				},
+			},
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );
@@ -95,16 +97,16 @@ describe( 'PersonalizedPraise', () => {
 		const wrapper = shallowMount( PersonalizedPraise, {
 			global: {
 				provide: {
-					$log: jest.fn()
+					$log: jest.fn(),
 				},
 				mocks: {
 					log: jest.fn(),
 					$store: store,
 					$filters: {
-						convertNumber: jest.fn( ( x ) => `${ x }` )
-					}
-				}
-			}
+						convertNumber: jest.fn( ( x ) => `${ x }` ),
+					},
+				},
+			},
 		} );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );

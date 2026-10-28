@@ -17,12 +17,12 @@ MentorMessageChangeDialog.static.actions = [
 	{
 		action: 'save',
 		label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-save' ),
-		flags: [ 'primary', 'progressive' ]
+		flags: [ 'primary', 'progressive' ],
 	},
 	{
 		label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-cancel' ),
-		flags: 'safe'
-	}
+		flags: 'safe',
+	},
 ];
 
 /** @inheritDoc **/
@@ -31,18 +31,18 @@ MentorMessageChangeDialog.prototype.initialize = function () {
 
 	this.mentorMessageInput = new OO.ui.TextInputWidget( {
 		value: mw.config.get( 'GEMentorDashboardMentorIntroMessage' ),
-		maxLength: mw.config.get( 'GEMentorDashboardMentorIntroMessageMaxLength' )
+		maxLength: mw.config.get( 'GEMentorDashboardMentorIntroMessageMaxLength' ),
 	} );
 	this.mentorMessageInput.connect( this, {
-		change: [ 'updateRemainingMessageLength' ]
+		change: [ 'updateRemainingMessageLength' ],
 	} );
 
 	this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
 	this.content.$element.append(
 		new OO.ui.FieldLayout( this.mentorMessageInput, {
 			align: 'top',
-			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label' )
-		} ).$element
+			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-message-label' ),
+		} ).$element,
 	);
 	this.$body.append( this.content.$element );
 };
@@ -66,14 +66,14 @@ MentorMessageChangeDialog.prototype.getActionProcess = function ( action ) {
 			return new mw.Api().postWithToken( 'csrf', {
 				action: 'growthmanagementorlist',
 				geaction: 'change',
-				message: newMessage
+				message: newMessage,
 			} ).then( () => {
 				mw.notify(
 					mw.msg(
 						'growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success',
-						newMessage
+						newMessage,
 					),
-					{ type: 'info' }
+					{ type: 'info' },
 				);
 
 				dialog.emit( 'messageset', newMessage );
@@ -81,7 +81,7 @@ MentorMessageChangeDialog.prototype.getActionProcess = function ( action ) {
 			} ).catch( ( errorCode, data ) => {
 				mw.notify(
 					data.error.info,
-					{ type: 'error' }
+					{ type: 'error' },
 				);
 				dialog.close( { action: action } );
 			} );
@@ -96,7 +96,7 @@ MentorMessageChangeDialog.prototype.getActionProcess = function ( action ) {
  */
 MentorMessageChangeDialog.prototype.updateRemainingMessageLength = function () {
 	this.mentorMessageInput.setLabel( String(
-		mw.config.get( 'GEMentorDashboardMentorIntroMessageMaxLength' ) - this.mentorMessageInput.getInputLength()
+		mw.config.get( 'GEMentorDashboardMentorIntroMessageMaxLength' ) - this.mentorMessageInput.getInputLength(),
 	) );
 };
 

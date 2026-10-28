@@ -11,14 +11,14 @@
 			'rest.php',
 			'growthexperiments',
 			'v0',
-			'mentees'
+			'mentees',
 		].join( '/' );
 
 		this.apiParams = {
 			order: 'desc',
 			sortby: 'last_active',
 			limit: 10,
-			offset: 0
+			offset: 0,
 		};
 		this.nonFilterKeys = [ 'order', 'sortby', 'limit', 'offset', 'uselang' ];
 		this.page = 0;
@@ -133,7 +133,7 @@
 	MenteeOverviewApi.prototype.getStarredMenteesAPI = function () {
 		return ( new mw.Api().get( {
 			action: 'query',
-			list: 'growthstarredmentees'
+			list: 'growthstarredmentees',
 		} ) ).then( ( data ) => {
 			const mentees = [];
 			for ( let i = 0; i < data.growthstarredmentees.mentees.length; i++ ) {
@@ -151,15 +151,15 @@
 		return new mw.Api().postWithToken( 'csrf', {
 			action: 'growthstarmentee',
 			gesaction: 'star',
-			gesmentee: '#' + userId
+			gesmentee: '#' + userId,
 		} ).then(
 			// Do not use this.starredMentees directly, as that might not be inited yet
 			() => menteeOverviewApi.getStarredMentees().then(
 				// REVIEW consider rephrasing the comment.
 				// In case GetStarredMentees fallbacked to API, this is actually
 				// not neeeded. Since this is a set, it doesn't matter much.
-				() => menteeOverviewApi.starredMentees.push( Number( userId ) )
-			)
+				() => menteeOverviewApi.starredMentees.push( Number( userId ) ),
+			),
 		);
 	};
 
@@ -168,22 +168,22 @@
 		return new mw.Api().postWithToken( 'csrf', {
 			action: 'growthstarmentee',
 			gesaction: 'unstar',
-			gesmentee: '#' + userId
+			gesmentee: '#' + userId,
 		} ).then(
 			// Do not use this.starredMentees directly, as that might not be inited yet
 			() => menteeOverviewApi.getStarredMentees().then( () => {
 				// Remove mentee ID from list of starred mentees; In case GetStarredMentees
 				// fallbacked to API, this is actually not necessary, but it shouldn't hurt.
 				menteeOverviewApi.starredMentees = menteeOverviewApi.starredMentees.filter(
-					( el ) => el !== Number( userId )
+					( el ) => el !== Number( userId ),
 				);
-			} )
+			} ),
 		);
 	};
 
 	MenteeOverviewApi.prototype.isMenteeStarred = function ( userId ) {
 		return this.getStarredMentees().then(
-			( mentees ) => mentees.includes( Number( userId ) )
+			( mentees ) => mentees.includes( Number( userId ) ),
 		);
 	};
 

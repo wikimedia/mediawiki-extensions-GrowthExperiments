@@ -100,12 +100,12 @@ const CNumberInput = require( '../CNumberInput/CNumberInput.vue' );
 const TIME_AGO_LABELS = {
 	DAYS: {
 		label: 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title',
-		values: [ 1, 7, 14 ]
+		values: [ 1, 7, 14 ],
 	},
 	MONTHS: {
 		label: 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title',
-		values: [ 30, 60, 180 ]
-	}
+		values: [ 30, 60, 180 ],
+	},
 };
 
 // @vue/component
@@ -115,13 +115,13 @@ module.exports = exports = {
 		CNumberInput,
 		CdxButton,
 		CdxCheckbox,
-		HorizontalDivider
+		HorizontalDivider,
 	},
 	props: {
 		activeDaysAgo: { type: Number, default: undefined },
 		editCountMin: { type: [ Number, String ], default: undefined },
 		editCountMax: { type: [ Number, String ], default: undefined },
-		onlyStarred: { type: Boolean, default: false }
+		onlyStarred: { type: Boolean, default: false },
 	},
 	emits: [ 'close', 'update:filters' ],
 	data() {
@@ -130,8 +130,8 @@ module.exports = exports = {
 				activeDaysAgo: this.activeDaysAgo,
 				editCountMin: this.editCountMin,
 				editCountMax: this.editCountMax,
-				onlyStarred: this.onlyStarred
-			}
+				onlyStarred: this.onlyStarred,
+			},
 		};
 	},
 	computed: {
@@ -144,10 +144,10 @@ module.exports = exports = {
 					altText: this.$i18n(
 						TIME_AGO_LABELS.DAYS.label,
 						val,
-						localisedNumber
+						localisedNumber,
 					).text(),
 					displayText: localisedNumber,
-					value: val
+					value: val,
 				};
 			} );
 		},
@@ -161,13 +161,13 @@ module.exports = exports = {
 					altText: this.$i18n(
 						TIME_AGO_LABELS.MONTHS.label,
 						displayNumber,
-						localisedNumber
+						localisedNumber,
 					).text(),
 					displayText: localisedNumber,
-					value: val
+					value: val,
 				};
 			} );
-		}
+		},
 	},
 	methods: {
 		onFiltersUpdate() {
@@ -177,7 +177,7 @@ module.exports = exports = {
 				// are used to remove the filter
 				activeDaysAgo: this.formData.activeDaysAgo && Number( this.formData.activeDaysAgo ),
 				editCountMin: this.formData.editCountMin && Number( this.formData.editCountMin ),
-				editCountMax: this.formData.editCountMax && Number( this.formData.editCountMax )
+				editCountMax: this.formData.editCountMax && Number( this.formData.editCountMax ),
 			};
 			this.$emit( 'update:filters', filters );
 		},
@@ -190,11 +190,11 @@ module.exports = exports = {
 		},
 		onOnlyStarredUpdate( value ) {
 			this.formData.onlyStarred = value;
-		}
+		},
 	},
 	mounted() {
 		this.$refs.formRef.focus();
-	}
+	},
 };
 </script>
 

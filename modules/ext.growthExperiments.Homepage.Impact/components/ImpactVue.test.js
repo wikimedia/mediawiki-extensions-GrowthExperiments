@@ -1,3 +1,5 @@
+'use strict';
+
 jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconEdit: '',
 	cdxIconUserTalk: '',
@@ -5,7 +7,7 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconChart: '',
 	cdxIconClose: 'Some truthy icon',
 	cdxIconInfo: '',
-	cdxIconInfoFilled: ''
+	cdxIconInfoFilled: '',
 } ), { virtual: true } );
 const { mount, flushPromises } = require( '@vue/test-utils' );
 const Impact = require( './Impact.vue' );
@@ -22,14 +24,14 @@ const impactServerData = () => ( {
 	userName: 'Newcomer12',
 	receivedThanksCount: 0,
 	editCountByNamespace: [
-		4
+		4,
 	],
 	editCountByDay: {
-		'2022-12-14': 4
+		'2022-12-14': 4,
 	},
 	timeZone: [
 		'System|0',
-		0
+		0,
 	],
 	newcomerTaskEditCount: 1,
 	lastEditTimestamp: 1671044060,
@@ -38,45 +40,45 @@ const impactServerData = () => ( {
 		datePeriod: {
 			start: '2022-12-14',
 			end: '2022-12-14',
-			days: 1
+			days: 1,
 		},
-		totalEditCountForPeriod: 4
+		totalEditCountForPeriod: 4,
 	},
 	totalEditsCount: 4,
 	dailyTotalViews: {
-		'2022-12-14': 100
+		'2022-12-14': 100,
 	},
 	totalPageviewsCount: 100,
 	recentEditsWithoutPageviews: {
 		Q42: {
 			firstEditDate: '2022-12-14',
-			newestEdit: '20221214185420'
+			newestEdit: '20221214185420',
 		},
 		Q43: {
 			firstEditDate: '2022-12-14',
-			newestEdit: '20221214171252'
+			newestEdit: '20221214171252',
 		},
 		Q44: {
 			firstEditDate: '2022-12-14',
-			newestEdit: '20221214171038'
+			newestEdit: '20221214171038',
 		},
 		Q45: {
 			firstEditDate: '2022-12-14',
-			newestEdit: '20221214121242'
-		}
+			newestEdit: '20221214121242',
+		},
 	},
 	topViewedArticles: [],
-	topViewedArticlesCount: 12
+	topViewedArticlesCount: 12,
 } );
 
 const NO_PERSON_KEYS = [
 	'growthexperiments-homepage-impact-edited-articles-trend-chart-title',
-	'growthexperiments-homepage-impact-contributions-link'
+	'growthexperiments-homepage-impact-contributions-link',
 ];
 const THIRD_PERSON_KEYS = [
 	'growthexperiments-homepage-impact-recent-activity-title',
 	'growthexperiments-homepage-impact-edited-articles-trend-chart-count-label',
-	'growthexperiments-homepage-impact-subheader-text'
+	'growthexperiments-homepage-impact-subheader-text',
 ];
 const ALL_KEYS = [ ...NO_PERSON_KEYS, ...THIRD_PERSON_KEYS ];
 
@@ -93,15 +95,15 @@ const renderComponent = ( { props = {}, provide = {} } = {} ) => {
 				IMPACT_MAX_EDITS: 1000,
 				IMPACT_MAX_THANKS: 1000,
 				logger: {
-					log: jest.fn()
-				}
+					log: jest.fn(),
+				},
 			}, provide ),
 			mocks: {
 				$filters: {
-					convertNumber: jest.fn( ( x ) => `${ x }` )
-				}
-			}
-		}
+					convertNumber: jest.fn( ( x ) => `${ x }` ),
+				},
+			},
+		},
 	} );
 };
 
@@ -135,7 +137,7 @@ describe( 'ImpactVue', () => {
 	} );
 	it( 'displays other person texts', () => {
 		const wrapper = renderComponent( {
-			provide: { RENDER_IN_THIRD_PERSON: true }
+			provide: { RENDER_IN_THIRD_PERSON: true },
 		} );
 		for ( const key of NO_PERSON_KEYS ) {
 			expect( wrapper.text() ).toContain( key );
@@ -147,8 +149,8 @@ describe( 'ImpactVue', () => {
 	it( 'hides the recent activity section if Intl is not present', () => {
 		const wrapper = renderComponent( {
 			provide: {
-				BROWSER_HAS_INTL: false
-			}
+				BROWSER_HAS_INTL: false,
+			},
 		} );
 		expect( wrapper.findAllComponents( RecentActivity ) ).toHaveLength( 0 );
 		expect( wrapper.text() ).not.toContain( 'growthexperiments-homepage-impact-recent-activity-title' );
@@ -179,13 +181,13 @@ describe( 'ImpactVue', () => {
 			entities: {
 				Q42: {
 					id: 'Q42',
-					labels: { en: { language: 'en', value: 'Test Item Label' } }
+					labels: { en: { language: 'en', value: 'Test Item Label' } },
 				},
 				Q43: {
 					id: 'Q43',
-					missing: ''
-				}
-			}
+					missing: '',
+				},
+			},
 		} );
 		global.mw.Api = jest.fn().mockImplementation( () => ( { get } ) );
 
@@ -197,7 +199,7 @@ describe( 'ImpactVue', () => {
 			ids: [ 'Q42', 'Q43', 'Q44', 'Q45' ],
 			props: 'labels',
 			languages: 'en',
-			languagefallback: 1
+			languagefallback: 1,
 		} );
 
 		const articlesList = wrapper.findComponent( ArticlesList );

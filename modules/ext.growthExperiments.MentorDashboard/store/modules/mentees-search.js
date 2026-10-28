@@ -4,20 +4,20 @@ const API_URL = [
 	'growthexperiments',
 	'v0',
 	'mentees',
-	'prefixsearch'
+	'prefixsearch',
 ].join( '/' );
 const LIMIT = 10;
 
 // initial state
 const storeState = {
 	all: [],
-	isReady: false
+	isReady: false,
 };
 
 // getters
 const getters = {
 	allMentees: ( state ) => state.all,
-	isReady: ( state ) => state.isReady
+	isReady: ( state ) => state.isReady,
 };
 
 // actions
@@ -28,13 +28,13 @@ const actions = {
 			.then( ( resp ) => {
 				const aggregatedMentees = resp.usernames.map( ( username ) => ( {
 					label: username,
-					value: username
+					value: username,
 				} ) );
 				context.commit( 'setMentees', aggregatedMentees );
 			} ).always( () => {
 				context.commit( 'setReady', true );
 			} );
-	}
+	},
 };
 
 // mutations
@@ -44,7 +44,7 @@ const mutations = {
 	},
 	setReady: function ( state, isReady ) {
 		state.isReady = isReady;
-	}
+	},
 };
 
 module.exports = exports = {
@@ -53,5 +53,5 @@ module.exports = exports = {
 	state: storeState,
 	getters: getters,
 	actions: actions,
-	mutations: mutations
+	mutations: mutations,
 };

@@ -23,13 +23,13 @@
 				items: [
 					new OO.ui.MenuOptionWidget( {
 						data: 'quit',
-						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit' )
-					} )
-				]
-			}
+						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit' ),
+					} ),
+				],
+			},
 		} );
 		this.menu.getMenu().connect( this, {
-			choose: [ 'onMenuItemSelected' ]
+			choose: [ 'onMenuItemSelected' ],
 		} );
 
 		this.$element.empty().append( this.menu.$element );
@@ -49,8 +49,8 @@
 				OO.ui.confirm(
 					mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-text' ),
 					{
-						title: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-headline' )
-					}
+						title: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-cog-menu-quit-headline' ),
+					},
 				).then( ( confirmed ) => {
 					if ( confirmed ) {
 						window.location.href = new mw.Title( 'Special:QuitMentorship' ).getUrl();

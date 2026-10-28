@@ -31,7 +31,7 @@ MentorDashboardLogger.prototype.log = function ( module, action, extraData ) {
 		module: module,
 		is_mobile: this.isMobile,
 		user_id: this.userId,
-		pageview_token: this.pageviewToken
+		pageview_token: this.pageviewToken,
 		/* eslint-enable camelcase */
 	};
 	event.$schema = this.schema;

@@ -14,5 +14,5 @@ module.exports = exports = {
 			const logger = new MentorDashboardLogger( pageviewToken );
 			logger.log( module, action, extraData || {} );
 		} );
-	}
+	},
 };

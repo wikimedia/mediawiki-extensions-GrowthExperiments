@@ -29,14 +29,14 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CText,
-		CScoreCards
+		CScoreCards,
 	},
 	setup() {
 		const userName = inject( 'RELEVANT_USER_USERNAME' );
 		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
 		return {
 			userName,
-			renderThirdPerson
+			renderThirdPerson,
 		};
 	},
 	computed: {
@@ -49,8 +49,8 @@ module.exports = exports = {
 			return this.renderThirdPerson ?
 				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-subtext-third-person' ).text() :
 				this.$i18n( 'growthexperiments-homepage-impact-error-data-not-found-subtext' ).text();
-		}
-	}
+		},
+	},
 };
 </script>
 

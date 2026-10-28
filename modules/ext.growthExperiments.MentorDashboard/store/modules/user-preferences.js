@@ -4,7 +4,7 @@
 
 // initial state
 const storeState = {
-	isLoading: false
+	isLoading: false,
 };
 
 const personalizedPraiseSettings = mw.config.get( 'GEPersonalizedPraiseSettings' );
@@ -18,7 +18,7 @@ const getters = {
 		const json = mw.user.options.get( name );
 		return JSON.parse( json );
 	},
-	isLoading: ( state ) => state.isLoading
+	isLoading: ( state ) => state.isLoading,
 };
 
 // actions
@@ -31,7 +31,7 @@ const actions = {
 			.always( () => {
 				context.commit( 'setLoading', false );
 			} );
-	}
+	},
 
 };
 
@@ -39,7 +39,7 @@ const actions = {
 const mutations = {
 	setLoading: function ( state, isLoading ) {
 		state.isLoading = isLoading;
-	}
+	},
 };
 
 module.exports = exports = {
@@ -48,5 +48,5 @@ module.exports = exports = {
 	state: storeState,
 	getters: getters,
 	actions: actions,
-	mutations: mutations
+	mutations: mutations,
 };

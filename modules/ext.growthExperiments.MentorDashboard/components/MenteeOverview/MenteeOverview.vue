@@ -107,9 +107,9 @@ const MENTEES_TABLE_COLUMNS = [
 				isStarred: mentee.isStarred,
 				userPageExists: mentee.userpage_exists,
 				userTalkExists: mentee.usertalk_exists,
-				userIsHidden: mentee.user_is_hidden
+				userIsHidden: mentee.user_is_hidden,
 			};
-		}
+		},
 	},
 	{
 		label: 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration',
@@ -124,7 +124,7 @@ const MENTEES_TABLE_COLUMNS = [
 				return mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-registered-unknown' );
 			}
 			return mentee.registration.human;
-		}
+		},
 	},
 	{
 		label: 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions',
@@ -135,7 +135,7 @@ const MENTEES_TABLE_COLUMNS = [
 		sortBy: 'questions',
 		data( mentee ) {
 			return mentee.questions;
-		}
+		},
 	},
 	{
 		label: 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount',
@@ -146,7 +146,7 @@ const MENTEES_TABLE_COLUMNS = [
 		sortBy: 'editcount',
 		data( mentee ) {
 			return mentee.editcount;
-		}
+		},
 	},
 	{
 		label: 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts',
@@ -157,7 +157,7 @@ const MENTEES_TABLE_COLUMNS = [
 		sortBy: 'reverted',
 		data( mentee ) {
 			return mentee.reverted;
-		}
+		},
 	},
 	{
 		label: 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks',
@@ -168,8 +168,8 @@ const MENTEES_TABLE_COLUMNS = [
 		sortBy: 'blocks',
 		data( mentee ) {
 			return mentee.blocks;
-		}
-	}
+		},
+	},
 ];
 
 // @vue/component
@@ -183,7 +183,7 @@ module.exports = exports = {
 		NoResults,
 		LegendBox,
 		CdxToggleButton,
-		CdxPopover
+		CdxPopover,
 	},
 	setup() {
 		const showPopover = ref( false );
@@ -193,13 +193,13 @@ module.exports = exports = {
 			infoToggleButton,
 			cdxIconError,
 			cdxIconClock,
-			cdxIconInfo
+			cdxIconInfo,
 		};
 	},
 	data() {
 		return {
 			columns: MENTEES_TABLE_COLUMNS.map( ( {
-				cellComponent, cellProps, data, icon, key, label, sortBy, orderInLegend
+				cellComponent, cellProps, data, icon, key, label, sortBy, orderInLegend,
 			} ) => {
 				const identity = ( x ) => x;
 				return {
@@ -211,9 +211,9 @@ module.exports = exports = {
 					sortBy,
 
 					label: this.$i18n( label ).text(),
-					data: data || identity
+					data: data || identity,
 				};
-			} )
+			} ),
 		};
 	},
 	computed: {
@@ -243,11 +243,11 @@ module.exports = exports = {
 			return this.columns.concat( {
 				icon: 'cdxIconStar',
 				orderInLegend: 0,
-				label: this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-star' ).text()
+				label: this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-star' ).text(),
 			} )
 				.sort( ( a, b ) => a.orderInLegend - b.orderInLegend )
 				.map( ( { icon, label } ) => ( {
-					icon, label
+					icon, label,
 				} ) );
 		},
 		limit() {
@@ -259,7 +259,7 @@ module.exports = exports = {
 				editCountMin,
 				editCountMax,
 				activeDaysAgo,
-				onlyStarred
+				onlyStarred,
 			};
 		},
 		hasData() {
@@ -267,7 +267,7 @@ module.exports = exports = {
 		},
 		doesFilterOutMentees() {
 			return this.$store.getters[ 'mentees/doesFilterOutMentees' ];
-		}
+		},
 	},
 	methods: {
 		// TODO move main logic to mentees store
@@ -306,17 +306,17 @@ module.exports = exports = {
 		},
 		updateMenteeFilters( value ) {
 			this.$store.dispatch( 'mentees/getAllMentees', Object.assign( {}, value, {
-				page: 1
+				page: 1,
 			} ) );
 			this.$store.dispatch( 'mentees/savePresets' );
 		},
 		updateSorting( value ) {
 			this.$store.dispatch( 'mentees/getAllMentees', value );
-		}
+		},
 	},
 	created() {
 		this.$store.dispatch( 'mentees/getAllMentees', this.menteeFilters );
-	}
+	},
 };
 </script>
 

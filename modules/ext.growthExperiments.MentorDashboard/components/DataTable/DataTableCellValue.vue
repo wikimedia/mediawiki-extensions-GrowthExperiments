@@ -13,10 +13,10 @@ module.exports = exports = {
 		align: {
 			type: String,
 			default: 'left',
-			validator: alignValidator
+			validator: alignValidator,
 		},
-		value: { type: [ String, Number, Boolean ], default: null }
-	}
+		value: { type: [ String, Number, Boolean ], default: null },
+	},
 };
 </script>
 

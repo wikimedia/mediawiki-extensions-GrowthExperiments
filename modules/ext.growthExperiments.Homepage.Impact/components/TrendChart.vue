@@ -37,36 +37,36 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CSparkline,
-		CText
+		CText,
 	},
 	props: {
 		id: {
 			type: String,
-			required: true
+			required: true,
 		},
 		chartTitle: {
 			type: String,
-			required: true
+			required: true,
 		},
 		countLabel: {
 			type: String,
-			default: null
+			default: null,
 		},
 		pageviewTotal: {
 			type: Number,
-			default: null
+			default: null,
 		},
 		data: {
 			type: Array,
-			default: () => ( [] )
-		}
+			default: () => ( [] ),
+		},
 	},
 	setup() {
 		const hasIntl = inject( 'BROWSER_HAS_INTL' );
 		return {
 			hasIntl,
 			xAccessor,
-			yAccessor
+			yAccessor,
 		};
 	},
 	computed: {
@@ -79,8 +79,8 @@ module.exports = exports = {
 			} else {
 				return this.$filters.convertNumber( this.pageviewTotal );
 			}
-		}
-	}
+		},
+	},
 };
 </script>
 

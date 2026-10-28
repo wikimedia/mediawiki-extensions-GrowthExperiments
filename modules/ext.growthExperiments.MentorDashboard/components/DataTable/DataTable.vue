@@ -80,20 +80,20 @@ module.exports = exports = {
 		DataTablePagination,
 		DataTableCellLink,
 		DataTableCellValue,
-		DataTableCellMentee
+		DataTableCellMentee,
 	},
 	props: {
 		captionText: { type: String, default: undefined },
 		columns: { type: Array, required: true },
 		data: { type: Object, default: () => ( { rows: [], totalPages: 0 } ) },
-		limit: { type: Number, default: LIMIT_OPTIONS[ 1 ] }
+		limit: { type: Number, default: LIMIT_OPTIONS[ 1 ] },
 	},
 	emits: [
 		'toggle-starred',
 		'update:sorting',
 		'update:limit',
 		'update:prev-page',
-		'update:next-page'
+		'update:next-page',
 	],
 	data() {
 		return {
@@ -104,16 +104,16 @@ module.exports = exports = {
 			fields: this.columns.map( ( column ) => Object.assign( {}, column, {
 				cellProps( mentee ) {
 					return Object.assign( {}, column.cellProps, {
-						value: column.data( mentee )
+						value: column.data( mentee ),
 					} );
-				}
-			} ) )
+				},
+			} ) ),
 		};
 	},
 	computed: {
 		limitedRows() {
 			return this.data.rows.slice( 0, this.limit );
-		}
+		},
 	},
 	methods: {
 		onSortColumnClick( field ) {
@@ -132,13 +132,13 @@ module.exports = exports = {
 			this.sortBy = field.sortBy;
 			this.$emit( 'update:sorting', {
 				order: this.order === 'ascending' ? 'asc' : 'desc',
-				sortBy: this.sortBy
+				sortBy: this.sortBy,
 			} );
 		},
 		onLimitChange( value ) {
 			this.$emit( 'update:limit', value );
-		}
-	}
+		},
+	},
 };
 </script>
 

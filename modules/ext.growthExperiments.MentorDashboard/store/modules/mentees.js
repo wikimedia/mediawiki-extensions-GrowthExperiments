@@ -8,21 +8,21 @@ const createDefaultPresets = () => ( {
 	editCountMin: 1,
 	editCountMax: 500,
 	onlyStarred: false,
-	activeDaysAgo: undefined
+	activeDaysAgo: undefined,
 } );
 
 const getInitialPresetsWithFallback = () => {
 	let initialPresets = createDefaultPresets();
 	try {
 		const savedPresets = userPreferences.getters.getPreferenceByName(
-			MENTEE_OVERVIEW_PRESETS_PREF
+			MENTEE_OVERVIEW_PRESETS_PREF,
 		);
 		initialPresets = {
 			limit: savedPresets.usersToShow,
 			editCountMin: savedPresets.filters.minedits,
 			editCountMax: savedPresets.filters.maxedits,
 			onlyStarred: savedPresets.filters.onlystarred,
-			activeDaysAgo: savedPresets.filters.activedaysago
+			activeDaysAgo: savedPresets.filters.activedaysago,
 		};
 	} catch ( err ) {
 		if ( err instanceof SyntaxError ) {
@@ -52,7 +52,7 @@ const storeState = {
 	editCountMin: initalPresets.editCountMin,
 	editCountMax: initalPresets.editCountMax,
 	onlyStarred: initalPresets.onlyStarred,
-	activeDaysAgo: initalPresets.activeDaysAgo
+	activeDaysAgo: initalPresets.activeDaysAgo,
 
 };
 
@@ -66,12 +66,12 @@ const getters = {
 		editCountMin,
 		editCountMax,
 		onlyStarred,
-		activeDaysAgo
+		activeDaysAgo,
 	} ),
 	isReady: ( state ) => state.isReady,
 	hasError: ( state ) => state.hasError,
 	totalPages: ( state ) => state.totalPages,
-	doesFilterOutMentees: () => api.doesFilterOutMentees()
+	doesFilterOutMentees: () => api.doesFilterOutMentees(),
 };
 
 // Utils
@@ -91,19 +91,19 @@ const removeEmpty = ( obj ) => {
 };
 
 const filtersToPresets = ( {
-	limit, editCountMin, editCountMax, onlyStarred, activeDaysAgo
+	limit, editCountMin, editCountMax, onlyStarred, activeDaysAgo,
 } ) => ( {
 	usersToShow: limit,
 	filters: {
 		activedaysago: activeDaysAgo,
 		maxedits: editCountMax,
 		minedits: editCountMin,
-		onlystarred: onlyStarred
-	}
+		onlystarred: onlyStarred,
+	},
 } );
 
 const filtersToParams = ( {
-	editCountMin, editCountMax, onlyStarred, activeDaysAgo, sortBy, order, prefix
+	editCountMin, editCountMax, onlyStarred, activeDaysAgo, sortBy, order, prefix,
 } ) => ( {
 	order,
 	prefix,
@@ -111,7 +111,7 @@ const filtersToParams = ( {
 	maxedits: editCountMax,
 	minedits: editCountMin,
 	onlystarred: onlyStarred,
-	sortby: sortBy
+	sortby: sortBy,
 } );
 
 // TODO validate should not commit changes, separate validation
@@ -158,7 +158,7 @@ const validateAndApplyFilters = ( context, filters = {} ) => {
 
 const mwLink = ( title, ...args ) => ( {
 	href: mw.util.getUrl( title, ...args ),
-	text: title
+	text: title,
 } );
 
 const aggregateMentees = ( mentees, starredMentees ) => mentees.map( ( mentee ) => Object.assign(
@@ -169,26 +169,26 @@ const aggregateMentees = ( mentees, starredMentees ) => mentees.map( ( mentee ) 
 		questions: {
 			value: mw.language.convertNumber( mentee.questions ),
 			link: mwLink( `Special:Contributions/${ mentee.username }`, {
-				tagfilter: tagsToFilterBy.questions.join( '|' )
-			} )
+				tagfilter: tagsToFilterBy.questions.join( '|' ),
+			} ),
 		},
 		editcount: {
 			value: mw.language.convertNumber( mentee.editcount ),
-			link: mwLink( `Special:Contributions/${ mentee.username }` )
+			link: mwLink( `Special:Contributions/${ mentee.username }` ),
 		},
 		reverted: {
 			value: mw.language.convertNumber( mentee.reverted ),
 			link: mwLink( `Special:Contributions/${ mentee.username }`, {
-				tagfilter: tagsToFilterBy.reverted.join( '|' )
-			} )
+				tagfilter: tagsToFilterBy.reverted.join( '|' ),
+			} ),
 		},
 		blocks: {
 			value: mw.language.convertNumber( mentee.blocks ),
 			link: mwLink( 'Special:Log/block', {
-				page: 'User:' + mentee.username
-			} )
-		}
-	}
+				page: 'User:' + mentee.username,
+			} ),
+		},
+	},
 ) );
 
 // actions
@@ -203,7 +203,7 @@ const actions = {
 
 		return $.when(
 			api.getMenteeData(),
-			api.getStarredMentees()
+			api.getStarredMentees(),
 		).then( ( mentees, starredMentees ) => {
 			// api.getTotalPages() needs to be run after api.getMenteeData(), consider
 			// aggregating the pages count to mentee data response
@@ -228,7 +228,7 @@ const actions = {
 
 		return context.dispatch( 'userPreferences/saveOption', {
 			name: MENTEE_OVERVIEW_PRESETS_PREF,
-			value: cleanedPresets
+			value: cleanedPresets,
 		}, { root: true } );
 	},
 	recordError: function ( context, errorDetails ) {
@@ -236,15 +236,15 @@ const actions = {
 
 		mw.notify(
 			mw.message( 'growthexperiments-mentor-dashboard-mentee-overview-error-notification' ).text(),
-			{ type: 'error' }
+			{ type: 'error' },
 		);
 
 		mw.log.error( 'Unable to fetch mentees: ' + JSON.stringify( errorDetails ) );
 		mw.errorLogger.logError(
 			new Error( 'Unable to fetch mentees: ' + JSON.stringify( errorDetails ) ),
-			'error.growthexperiments'
+			'error.growthexperiments',
 		);
-	}
+	},
 };
 
 // mutations
@@ -284,7 +284,7 @@ const mutations = {
 	},
 	SET_ERROR: function ( state, hasError ) {
 		state.hasError = hasError;
-	}
+	},
 };
 
 module.exports = exports = {
@@ -299,5 +299,5 @@ module.exports = exports = {
 	state: storeState,
 	getters: getters,
 	actions: actions,
-	mutations: mutations
+	mutations: mutations,
 };

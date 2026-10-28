@@ -1,3 +1,5 @@
+'use strict';
+
 const { mount } = require( '@vue/test-utils' );
 const MenteeFiltersForm = require( './MenteeFiltersForm.vue' );
 
@@ -7,10 +9,10 @@ describe( 'MenteeFiltersForm', () => {
 			global: {
 				mocks: {
 					$filters: {
-						convertNumber: jest.fn( ( x ) => `localised-${ x }` )
-					}
-				}
-			}
+						convertNumber: jest.fn( ( x ) => `localised-${ x }` ),
+					},
+				},
+			},
 		} );
 
 		expect( wrapper.element ).toMatchSnapshot();

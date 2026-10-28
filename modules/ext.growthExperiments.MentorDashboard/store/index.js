@@ -9,8 +9,8 @@ const store = createStore( {
 		mentees,
 		menteesSearch,
 		userPreferences,
-		praiseworthyMentees
-	}
+		praiseworthyMentees,
+	},
 } );
 
 module.exports = exports = store;

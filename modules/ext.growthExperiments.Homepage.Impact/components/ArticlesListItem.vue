@@ -79,7 +79,7 @@ const {
 	CdxIcon,
 	CdxThumbnail,
 	CdxPopover,
-	CdxToggleButton
+	CdxToggleButton,
 } = require( '@wikimedia/codex' );
 const { cdxIconClock } = require( '../../vue-components/icons.json' );
 const CText = require( '../../vue-components/CText.vue' );
@@ -96,21 +96,21 @@ module.exports = exports = {
 		CdxToggleButton,
 		CdxThumbnail,
 		CText,
-		CSparkline
+		CSparkline,
 	},
 	props: {
 		index: {
 			type: Number,
-			required: true
+			required: true,
 		},
 		article: {
 			type: Object,
-			required: true
+			required: true,
 		},
 		label: {
 			type: String,
-			default: ''
-		}
+			default: '',
+		},
 	},
 	setup() {
 		const clockToggleButton = ref( null );
@@ -122,9 +122,9 @@ module.exports = exports = {
 			showPopover,
 			xAccessor,
 			yAccessor,
-			windowName
+			windowName,
 		};
-	}
+	},
 };
 </script>
 

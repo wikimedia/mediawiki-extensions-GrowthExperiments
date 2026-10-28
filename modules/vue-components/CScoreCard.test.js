@@ -1,3 +1,5 @@
+'use strict';
+
 jest.mock( './icons.json', () => ( {
 	cdxIconClose: 'Some truthy icon',
 	cdxIconInfo: '',

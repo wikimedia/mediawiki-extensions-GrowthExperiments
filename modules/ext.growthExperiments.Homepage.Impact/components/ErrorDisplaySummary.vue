@@ -29,13 +29,13 @@ module.exports = exports = {
 	components: {
 		CText,
 		CdxIcon,
-		InfoBoxes
+		InfoBoxes,
 	},
 	setup() {
 		return {
-			cdxIconAlert
+			cdxIconAlert,
 		};
-	}
+	},
 };
 </script>
 

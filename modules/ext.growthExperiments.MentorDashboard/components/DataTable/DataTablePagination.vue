@@ -37,17 +37,17 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxIcon,
-		CdxButton
+		CdxButton,
 	},
 	props: {
 		currentPage: { type: Number, default: 1 },
-		totalPages: { type: Number, required: true }
+		totalPages: { type: Number, required: true },
 	},
 	emits: [ 'prev', 'next' ],
 	setup() {
 		return {
 			cdxIconNext,
-			cdxIconPrevious
+			cdxIconPrevious,
 		};
 	},
 	computed: {
@@ -55,10 +55,10 @@ module.exports = exports = {
 			return this.$i18n(
 				'growthexperiments-mentor-dashboard-mentee-overview-page-counter',
 				this.$filters.convertNumber( this.currentPage ),
-				this.$filters.convertNumber( this.totalPages )
+				this.$filters.convertNumber( this.totalPages ),
 			);
-		}
-	}
+		},
+	},
 };
 </script>
 

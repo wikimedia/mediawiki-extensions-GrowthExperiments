@@ -78,17 +78,17 @@ module.exports = exports = {
 		CScoreCards,
 		ArticlesList,
 		RecentActivity,
-		TrendChart
+		TrendChart,
 	},
 	props: {
 		userName: {
 			type: String,
-			required: true
+			required: true,
 		},
 		data: {
 			type: Object,
-			required: true
-		}
+			required: true,
+		},
 	},
 	emits: [ 'mounted' ],
 	setup() {
@@ -103,31 +103,31 @@ module.exports = exports = {
 			hasIntl,
 			DEFAULT_STREAK_TIME_FRAME,
 			isMobileHomepage,
-			renderThirdPerson
+			renderThirdPerson,
 		};
 	},
 	computed: {
 		chartTitle() {
 			return this.$i18n(
 				'growthexperiments-homepage-impact-edited-articles-trend-chart-title',
-				this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME )
+				this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME ),
 			).text();
 		},
 		recentActivityTitleText() {
 			return this.renderThirdPerson ?
 				this.$i18n(
 					'growthexperiments-homepage-impact-recent-activity-title-third-person',
-					this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME )
+					this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME ),
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-recent-activity-title',
 					'', // used to be the username
-					this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME )
+					this.$filters.convertNumber( DEFAULT_STREAK_TIME_FRAME ),
 				).text();
 		},
 		contributionsLinkText() {
 			return this.$i18n(
-				'growthexperiments-homepage-impact-contributions-link'
+				'growthexperiments-homepage-impact-contributions-link',
 			).text();
 		},
 		contributionsUrl() {
@@ -142,10 +142,10 @@ module.exports = exports = {
 			return this.renderThirdPerson ?
 				this.$i18n( 'growthexperiments-homepage-impact-subheader-text-third-person' ).text() :
 				this.$i18n( 'growthexperiments-homepage-impact-subheader-text' ).text();
-		}
+		},
 	},
 	mounted() {
 		this.$emit( 'mounted' );
-	}
+	},
 };
 </script>

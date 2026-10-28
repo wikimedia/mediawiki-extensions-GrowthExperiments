@@ -15,12 +15,12 @@
 		{
 			action: 'save',
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit' ),
-			flags: [ 'primary', 'progressive' ]
+			flags: [ 'primary', 'progressive' ],
 		},
 		{
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel' ),
-			flags: 'safe'
-		}
+			flags: 'safe',
+		},
 	];
 
 	AwaySettingsDialog.prototype.initialize = function () {
@@ -32,17 +32,17 @@
 			max: MAX_DAYS_AWAY,
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label' ),
 			step: 1,
-			required: true
+			required: true,
 		} );
 		this.awayForDays.connect( this, {
-			change: [ 'onAwayForDaysChanged' ]
+			change: [ 'onAwayForDaysChanged' ],
 		} );
 
 		this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
 		this.content.$element.append(
 			$( '<p>' ).text( mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text' ) ),
 			$( '<h3>' ).text( mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for' ) ),
-			this.awayForDays.$element
+			this.awayForDays.$element,
 		);
 		this.$body.append( this.content.$element );
 	};
@@ -52,7 +52,7 @@
 		return AwaySettingsDialog.super.prototype.getSetupProcess.call( this, data )
 			.next( () => {
 				dialog.getActions().setAbilities( {
-					save: false
+					save: false,
 				} );
 			} );
 	};
@@ -60,7 +60,7 @@
 	AwaySettingsDialog.prototype.onAwayForDaysChanged = function () {
 		const awayDaysNum = parseInt( this.awayForDays.getValue() );
 		this.getActions().setAbilities( {
-			save: !isNaN( awayDaysNum )
+			save: !isNaN( awayDaysNum ),
 		} );
 	};
 
@@ -74,7 +74,7 @@
 				if ( awayForDays > MAX_DAYS_AWAY ) {
 					mw.notify(
 						mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-toohigh', MAX_DAYS_AWAY ),
-						{ type: 'error' }
+						{ type: 'error' },
 					);
 					return;
 				}
@@ -86,18 +86,18 @@
 					action: 'growthmanagementorlist',
 					geaction: 'change',
 					isaway: true,
-					awaytimestamp: backAtTimestamp.toISOString()
+					awaytimestamp: backAtTimestamp.toISOString(),
 				} ).then( ( data ) => {
 					mw.notify(
 						mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away' ),
-						{ type: 'info' }
+						{ type: 'info' },
 					);
 					dialog.emit( 'awayset', data.growthmanagementorlist.mentor.awayTimestampHuman );
 					dialog.close( { action: action } );
 				} ).catch( ( errorCode, response ) => {
 					mw.notify(
 						response.error.info,
-						{ type: 'error' }
+						{ type: 'error' },
 					);
 				} );
 			} );

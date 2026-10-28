@@ -125,7 +125,7 @@ const { CdxButton } = require( '@wikimedia/codex' );
 const {
 	cdxIconUserTalk,
 	cdxIconChart,
-	cdxIconInfoFilled
+	cdxIconInfoFilled,
 } = require( '../../vue-components/icons.json' );
 const CScoreCard = require( '../../vue-components/CScoreCard.vue' );
 const CText = require( '../../vue-components/CText.vue' );
@@ -137,25 +137,25 @@ module.exports = exports = {
 	components: {
 		CdxButton,
 		CText,
-		CScoreCard
+		CScoreCard,
 	},
 	props: {
 		userName: {
 			type: String,
-			required: true
+			required: true,
 		},
 		data: {
 			type: Object,
-			default: null
+			default: null,
 		},
 		isDisabled: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		isActivated: {
 			type: Boolean,
-			default: false
-		}
+			default: false,
+		},
 	},
 	setup( props ) {
 		const renderMode = inject( 'RENDER_MODE' );
@@ -166,7 +166,7 @@ module.exports = exports = {
 			if ( !props.isActivated ) {
 				mw.track( 'growthexperiments.startediting', {
 					moduleName: 'impact',
-					trigger: 'impact'
+					trigger: 'impact',
 				} );
 				return;
 			}
@@ -187,7 +187,7 @@ module.exports = exports = {
 			cdxIconChart,
 			cdxIconInfoFilled,
 			maxEdits,
-			maxThanks
+			maxThanks,
 		};
 	},
 	computed: {
@@ -206,33 +206,33 @@ module.exports = exports = {
 			return this.renderThirdPerson ?
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text-third-person',
-					this.$filters.convertNumber( this.maxThanks )
+					this.$filters.convertNumber( this.maxThanks ),
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-thanks-info-text',
 					'', // used to be the username
-					this.$filters.convertNumber( this.maxThanks )
+					this.$filters.convertNumber( this.maxThanks ),
 				).text();
 		},
 		longestEditingStreakFirstParagraph() {
 			return this.renderThirdPerson ?
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text-third-person',
-					this.$filters.convertNumber( this.maxEdits )
+					this.$filters.convertNumber( this.maxEdits ),
 				).text() :
 				this.$i18n(
 					'growthexperiments-homepage-impact-scores-best-streak-info-text',
 					'', // used to be the username
-					this.$filters.convertNumber( this.maxEdits )
+					this.$filters.convertNumber( this.maxEdits ),
 				).text();
 		},
 		thanksUrl() {
 			return mw.util.getUrl( 'Special:Log', {
 				type: 'thanks',
-				page: this.userName
+				page: this.userName,
 			} );
-		}
-	}
+		},
+	},
 };
 </script>
 

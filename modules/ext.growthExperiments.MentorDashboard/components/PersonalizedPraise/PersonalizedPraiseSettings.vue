@@ -38,10 +38,10 @@ module.exports = exports = {
 		CdxButton,
 		CdxIcon,
 		CdxDialog,
-		PersonalizedPraiseSettingsForm
+		PersonalizedPraiseSettingsForm,
 	},
 	props: {
-		settingsData: { type: Object, required: true }
+		settingsData: { type: Object, required: true },
 	},
 	emits: [ 'update:settings' ],
 	setup() {
@@ -51,7 +51,7 @@ module.exports = exports = {
 		return {
 			open,
 			log,
-			cdxIconSettings
+			cdxIconSettings,
 		};
 	},
 	methods: {
@@ -60,16 +60,16 @@ module.exports = exports = {
 			this.open = false;
 			mw.notify(
 				this.$i18n( 'growthexperiments-mentor-dashboard-personalized-praise-settings-success' ),
-				{ type: 'success' }
+				{ type: 'success' },
 			);
 			this.log( 'pp-settings-saved', $event );
-		}
+		},
 	},
 	watch: {
 		open( val ) {
 			this.log( val ? 'pp-settings-impression' : 'pp-settings-closed' );
-		}
-	}
+		},
+	},
 };
 </script>
 

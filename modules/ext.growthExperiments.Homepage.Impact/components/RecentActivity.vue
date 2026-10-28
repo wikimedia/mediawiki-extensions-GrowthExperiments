@@ -48,21 +48,21 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CText,
-		StreakGraph
+		StreakGraph,
 	},
 	props: {
 		isMobile: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		contribs: {
 			type: Object,
-			default: null
+			default: null,
 		},
 		timeFrame: {
 			type: Number,
-			required: true
-		}
+			required: true,
+		},
 	},
 	computed: {
 		contribsCount() {
@@ -88,7 +88,7 @@ module.exports = exports = {
 			date.setDate( date.getDate() - ( this.timeFrame - 1 ) );
 			const intlLocale = getIntlLocale();
 			return new Intl.DateTimeFormat( intlLocale, DATE_FORMAT ).format( date );
-		}
+		},
 	},
 	methods: {
 		getStreakColumnValue( index ) {
@@ -105,13 +105,13 @@ module.exports = exports = {
 				return this.$i18n(
 					'growthexperiments-homepage-impact-recent-activity-streak-data-text',
 					mw.language.convertNumber( this.contribs.entries[ index ] ),
-					date
+					date,
 				).text();
 			}
 
 			return date;
-		}
-	}
+		},
+	},
 };
 </script>
 

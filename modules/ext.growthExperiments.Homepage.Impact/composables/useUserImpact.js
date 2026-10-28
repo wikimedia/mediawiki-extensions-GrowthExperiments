@@ -42,7 +42,7 @@ const getContribsFromToday = ( contribDays, timeFrameInDays ) => {
 	return {
 		keys: keys.slice().reverse(),
 		entries: entries.slice().reverse(),
-		count: sum( entries )
+		count: sum( entries ),
 	};
 };
 
@@ -66,7 +66,7 @@ const quantizeViews = ( items, n = 6 ) => {
 		.fill()
 		.map( () => items.splice( 0, chunkSize ) )
 		.map( ( chunk ) => Object.assign( chunk[ 0 ], {
-			views: sum( chunk.map( ( item ) => item.views ) )
+			views: sum( chunk.map( ( item ) => item.views ) ),
 		} ) );
 	return result;
 };
@@ -101,7 +101,7 @@ function useUserImpact( timeFrame, initialData ) {
 			dailyTotalViews,
 			totalPageviewsCount,
 			topViewedArticles,
-			recentEditsWithoutPageviews
+			recentEditsWithoutPageviews,
 		} = initialData;
 
 		// Fall back to empty array if no page view data (clock icon scenario)
@@ -110,7 +110,7 @@ function useUserImpact( timeFrame, initialData ) {
 			.sort()
 			.map( ( key ) => ( {
 				date: new Date( key ),
-				views: viewsByDay[ key ]
+				views: viewsByDay[ key ],
 			} ) );
 
 		/**
@@ -134,13 +134,13 @@ function useUserImpact( timeFrame, initialData ) {
 					views: {
 						href: articleData.pageviewsUrl,
 						count: articleData.viewsCount,
-						entries: quantizeViews( toPageviewsArray( articleData.views ) )
+						entries: quantizeViews( toPageviewsArray( articleData.views ) ),
 					},
 					image: {
 						href: articleData.imageUrl,
 						// TODO add captions as thumbnail alt text T322319
-						altText: title.getNameText()
-					}
+						altText: title.getNameText(),
+					},
 				};
 			} );
 		}
@@ -156,12 +156,12 @@ function useUserImpact( timeFrame, initialData ) {
 			totalEditsCount,
 			articlesViewsCount: totalPageviewsCount,
 			contributions: getContribsFromToday( editCountByDay, timeFrame ),
-			dailyTotalViews: toPageviewsArray( dailyTotalViews )
+			dailyTotalViews: toPageviewsArray( dailyTotalViews ),
 		};
 	} );
 }
 
 module.exports = exports = {
 	useUserImpact,
-	quantizeViews
+	quantizeViews,
 };

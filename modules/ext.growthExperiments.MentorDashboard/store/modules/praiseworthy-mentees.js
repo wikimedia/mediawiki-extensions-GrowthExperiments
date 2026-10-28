@@ -5,7 +5,7 @@ const getInitialSettings = () => {
 	let savedSettings;
 	try {
 		savedSettings = userPreferences.getters.getPreferenceByName(
-			PERSONALIZED_PRAISE_SETTINGS_PREF
+			PERSONALIZED_PRAISE_SETTINGS_PREF,
 		);
 	} catch ( err ) {
 		if ( err instanceof SyntaxError ) {
@@ -22,7 +22,7 @@ const getInitialSettings = () => {
 const storeState = {
 	mentees: [],
 	currentPage: 0,
-	settings: getInitialSettings()
+	settings: getInitialSettings(),
 };
 
 // getters
@@ -31,7 +31,7 @@ const getters = {
 	// pages are 0-index in state.mentees, 1-index in the pagination UI
 	currentPage: ( state ) => state.currentPage + 1,
 	mentee: ( state ) => state.mentees[ state.currentPage ],
-	settings: ( state ) => state.settings
+	settings: ( state ) => state.settings,
 };
 
 // actions
@@ -65,13 +65,13 @@ const actions = {
 		new mw.Api().postWithToken( 'csrf', {
 			action: 'edit',
 			title: mw.config.get( 'GEPraiseworthyMessageUserTitle' ),
-			text: settings.messageText || ''
+			text: settings.messageText || '',
 		} );
 		context.dispatch( 'userPreferences/saveOption', {
 			name: PERSONALIZED_PRAISE_SETTINGS_PREF,
-			value: settings
+			value: settings,
 		}, { root: true } );
-	}
+	},
 };
 
 // mutations
@@ -95,7 +95,7 @@ const mutations = {
 	},
 	SET_SETTINGS: function ( state, settings ) {
 		state.settings = settings;
-	}
+	},
 };
 
 module.exports = exports = {
@@ -103,5 +103,5 @@ module.exports = exports = {
 	state: storeState,
 	getters: getters,
 	actions: actions,
-	mutations: mutations
+	mutations: mutations,
 };

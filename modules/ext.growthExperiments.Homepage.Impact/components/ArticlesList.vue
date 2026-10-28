@@ -24,17 +24,17 @@ module.exports = exports = {
 	components: {
 		ArticlesListItem,
 		CList,
-		CListItem
+		CListItem,
 	},
 	props: {
 		items: {
 			type: Array,
-			default: () => ( [] )
-		}
+			default: () => ( [] ),
+		},
 	},
 	data() {
 		return {
-			labels: {}
+			labels: {},
 		};
 	},
 	mounted() {
@@ -47,7 +47,7 @@ module.exports = exports = {
 			ids: this.items.slice( 0, 50 ).map( ( item ) => item.title ),
 			props: 'labels',
 			languages: mw.config.get( 'wgUserLanguage' ),
-			languagefallback: 1
+			languagefallback: 1,
 		} ).then( ( response ) => {
 			for ( const [ id, entity ] of Object.entries( response.entities || {} ) ) {
 				const label = Object.values( entity.labels || {} )[ 0 ];
@@ -57,6 +57,6 @@ module.exports = exports = {
 			}
 		} ).catch( () => {
 		} );
-	}
+	},
 };
 </script>

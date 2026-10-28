@@ -28,16 +28,16 @@ const icons = require( '../../../vue-components/icons.json' );
 module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
-		CdxIcon
+		CdxIcon,
 	},
 	props: {
-		items: { type: Array, required: true }
+		items: { type: Array, required: true },
 	},
 	setup() {
 		return {
-			icons
+			icons,
 		};
-	}
+	},
 };
 </script>
 

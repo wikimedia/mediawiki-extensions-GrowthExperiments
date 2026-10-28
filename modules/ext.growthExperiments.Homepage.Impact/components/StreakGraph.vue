@@ -26,39 +26,39 @@ const CText = require( '../../vue-components/CText.vue' );
 module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
-		CText
+		CText,
 	},
 	props: {
 		startLabel: {
 			type: String,
-			required: true
+			required: true,
 		},
 		endLabel: {
 			type: String,
-			required: true
+			required: true,
 		},
 		columns: {
 			type: Number,
-			default: 30
+			default: 30,
 		},
 		getColumnTitleFn: {
 			type: Function,
-			default: ( x ) => x
+			default: ( x ) => x,
 		},
 		getColumnValueFn: {
 			type: Function,
-			required: true
+			required: true,
 		},
 		backgroundColor: {
 			type: String,
 			// @colorGray200
-			default: '#eaecf0'
+			default: '#eaecf0',
 		},
 		fillColor: {
 			type: String,
 			// @colorBlue600
-			default: '#36c'
-		}
+			default: '#36c',
+		},
 	},
 	setup() {
 		return {};
@@ -67,19 +67,19 @@ module.exports = exports = {
 		graphStyles() {
 			const minWidth = Math.floor( 160 / this.columns );
 			return {
-				'grid-template-columns': `repeat(${ this.columns }, minmax(${ minWidth }px, 1fr))`
+				'grid-template-columns': `repeat(${ this.columns }, minmax(${ minWidth }px, 1fr))`,
 			};
-		}
+		},
 	},
 	methods: {
 		getColumnStyle( index ) {
 			const contribPercentage = this.getColumnValueFn( index );
 			return {
 				// eslint-disable-next-line vue/max-len
-				'background-image': `linear-gradient(0deg, ${ this.fillColor } ${ contribPercentage }%, ${ this.backgroundColor } 0)`
+				'background-image': `linear-gradient(0deg, ${ this.fillColor } ${ contribPercentage }%, ${ this.backgroundColor } 0)`,
 			};
-		}
-	}
+		},
+	},
 };
 </script>
 

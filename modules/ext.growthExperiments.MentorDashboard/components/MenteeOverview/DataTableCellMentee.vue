@@ -47,16 +47,16 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		CdxButton,
-		CdxIcon
+		CdxIcon,
 	},
 	props: {
-		value: { type: Object, required: true }
+		value: { type: Object, required: true },
 	},
 	emits: [ 'toggle-starred' ],
 	setup() {
 		return {
 			cdxIconStar,
-			cdxIconUnStar
+			cdxIconUnStar,
 		};
 	},
 	computed: {
@@ -70,13 +70,13 @@ module.exports = exports = {
 		},
 		usertalkHref() {
 			return ( new mw.Title( this.value.username, 3 ) ).getUrl();
-		}
+		},
 	},
 	methods: {
 		toggleStarred() {
 			this.$emit( 'toggle-starred', { starred: this.value.isStarred, userId: this.value.userId } );
-		}
-	}
+		},
+	},
 };
 </script>
 

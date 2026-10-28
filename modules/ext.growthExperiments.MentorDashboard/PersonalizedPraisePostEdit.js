@@ -6,10 +6,10 @@
 				$( '<span>' ).html(
 					mw.message(
 						'growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-success',
-						mw.config.get( 'wgGEMentorDashboardPersonalizedPraiseMenteeGender' )
-					).parse()
+						mw.config.get( 'wgGEMentorDashboardPersonalizedPraiseMenteeGender' ),
+					).parse(),
 				),
-				{ type: 'success' }
+				{ type: 'success' },
 			);
 
 			// reset URL params and JS config variables

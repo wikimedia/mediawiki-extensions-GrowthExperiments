@@ -6,5 +6,5 @@ const NO_DATA_CHARACTER = '...';
 
 exports = module.exports = {
 	DEFAULT_STREAK_TIME_FRAME,
-	NO_DATA_CHARACTER
+	NO_DATA_CHARACTER,
 };

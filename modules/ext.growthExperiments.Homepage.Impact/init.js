@@ -19,7 +19,7 @@
 		const exportedDataConfigKeys = {
 			Impact: 'specialimpact',
 			Homepage: 'homepagemodules',
-			Included: 'specialimpact:included'
+			Included: 'specialimpact:included',
 		};
 		const configKey = exportedDataConfigKeys[ specialPageTitle ];
 		return mw.config.get( configKey, {} ).impact;
@@ -117,13 +117,13 @@
 					data,
 					error,
 					mountPoint: '#impact-vue-root--mobile',
-					mode: renderMode
+					mode: renderMode,
 				} );
 				createApp( {
 					data,
 					error,
 					mountPoint: '#impact-vue-root',
-					mode: 'mobile-overlay'
+					mode: 'mobile-overlay',
 				} );
 				break;
 			case 'mobile-details':
@@ -132,7 +132,7 @@
 					data,
 					error,
 					mountPoint: '#impact-vue-root',
-					mode: 'mobile-details'
+					mode: 'mobile-details',
 				} );
 				break;
 			case 'desktop':
@@ -141,7 +141,7 @@
 					data,
 					error,
 					mountPoint: '#impact-vue-root',
-					mode: renderMode
+					mode: renderMode,
 				} );
 				break;
 			default:
@@ -153,6 +153,6 @@
 
 	getUserImpactData( relevantUserId ).then(
 		( data ) => initializeModule( data, null ),
-		( error ) => initializeModule( null, error )
+		( error ) => initializeModule( null, error ),
 	);
 }() );

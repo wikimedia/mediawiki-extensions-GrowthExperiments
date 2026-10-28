@@ -1,3 +1,5 @@
+'use strict';
+
 const { quantizeViews } = require( './useUserImpact.js' );
 
 const createArticleViews = ( numberOfItems ) => new Array( numberOfItems )

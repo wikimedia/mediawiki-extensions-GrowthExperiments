@@ -116,7 +116,7 @@ module.exports = exports = {
 		CdxTextInput,
 		CdxButton,
 		CNumberInput,
-		CText
+		CText,
 	},
 	props: {
 		minEdits: { type: Number, default: undefined },
@@ -124,7 +124,7 @@ module.exports = exports = {
 		days: { type: Number, default: undefined },
 		messageSubject: { type: String, default: undefined },
 		messageText: { type: String, default: undefined },
-		notificationFrequency: { type: Number, default: undefined }
+		notificationFrequency: { type: Number, default: undefined },
 	},
 	emits: [ 'update:settings', 'close' ],
 	data() {
@@ -135,14 +135,14 @@ module.exports = exports = {
 				days: this.days,
 				messageSubject: this.messageSubject,
 				messageText: this.messageText,
-				notificationFrequency: this.notificationFrequency
-			}
+				notificationFrequency: this.notificationFrequency,
+			},
 		};
 	},
 	computed: {
 		areNotificationsEnabled() {
 			return mw.config.get( 'GEPersonalizedPraiseNotificationsEnabled' );
-		}
+		},
 	},
 	methods: {
 		onSettingsUpdate() {
@@ -156,65 +156,65 @@ module.exports = exports = {
 			return [
 				{
 					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours'
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-48-hours',
 					).text(),
-					value: 2
+					value: 2,
 				},
 				{
 					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week'
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-week',
 					).text(),
-					value: 7
+					value: 7,
 				},
 				{
 					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks'
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-2-weeks',
 					).text(),
-					value: 14
+					value: 14,
 				},
 				{
 					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month'
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-praiseworthy-metric-timeframe-month',
 					).text(),
-					value: 30
-				}
+					value: 30,
+				},
 			];
 		},
 		notificationFrequencyItems() {
 			return [
 				{
 					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately'
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-immediately',
 					).text(),
-					value: 0
+					value: 0,
 				},
 				{
 					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily'
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-daily',
 					).text(),
-					value: 24
+					value: 24,
 				},
 				{
 					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly'
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-weekly',
 					).text(),
-					value: 168
+					value: 168,
 				},
 				{
 					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly'
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-monthly',
 					).text(),
-					value: 720
+					value: 720,
 				},
 				{
 					label: this.$i18n(
-						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never'
+						'growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-never',
 					).text(),
-					value: -1
-				}
+					value: -1,
+				},
 			];
-		}
-	}
+		},
+	},
 };
 </script>
 

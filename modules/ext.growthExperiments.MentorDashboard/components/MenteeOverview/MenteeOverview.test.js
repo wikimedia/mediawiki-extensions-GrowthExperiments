@@ -1,5 +1,7 @@
+'use strict';
+
 jest.mock( '../../../vue-components/icons.json', () => ( {
-	cdxIconError: ''
+	cdxIconError: '',
 } ), { virtual: true } );
 const { shallowMount } = require( '@vue/test-utils' );
 const Vuex = require( 'vuex' );
@@ -22,34 +24,34 @@ describe( 'MenteeOverview', () => {
 			mentees: {
 				actions: menteeActions,
 				getters: menteeGetters,
-				namespaced: true
+				namespaced: true,
 			},
 			userPreferences: {
 				actions: userPreferencesActions,
 				getters: userPreferencesGetters,
-				namespaced: true
-			}
-		}
+				namespaced: true,
+			},
+		},
 	} );
 
 	const mountOverview = ( storeInstance = store ) => shallowMount( MenteeOverview, {
 		global: {
 			mocks: {
-				$store: storeInstance
-			}
-		}
+				$store: storeInstance,
+			},
+		},
 	} );
 
 	beforeEach( () => {
 		menteeActions = {
 			getAllMentees: jest.fn( () => $.Deferred().resolve().promise() ),
-			savePresets: jest.fn( () => $.Deferred().resolve().promise() )
+			savePresets: jest.fn( () => $.Deferred().resolve().promise() ),
 		};
 		userPreferencesGetters = {
-			getPreferenceByName: jest.fn( () => ( x ) => x )
+			getPreferenceByName: jest.fn( () => ( x ) => x ),
 		};
 		userPreferencesActions = {
-			saveOption: jest.fn( () => $.Deferred().resolve().promise() )
+			saveOption: jest.fn( () => $.Deferred().resolve().promise() ),
 		};
 		menteeGetters = {
 			isReady: jest.fn( () => true ),
@@ -59,8 +61,8 @@ describe( 'MenteeOverview', () => {
 				limit: 10,
 				editCountMin: 0,
 				editCountMax: 500,
-				onlyStarred: false
-			} ) )
+				onlyStarred: false,
+			} ) ),
 		};
 		store = buildStore();
 		// Use a well-known window name to have the component avoid passing an anchor to CdxPopover.
@@ -75,7 +77,7 @@ describe( 'MenteeOverview', () => {
 			limit: 10,
 			editCountMin: 0,
 			editCountMax: 500,
-			onlyStarred: false
+			onlyStarred: false,
 		} );
 	} );
 
@@ -88,10 +90,10 @@ describe( 'MenteeOverview', () => {
 		// 3rd time in MenteeOverview.navigateToPrevPage
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 3 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 2,
-			expect.any( Object ), { page: 2 }
+			expect.any( Object ), { page: 2 },
 		);
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 3,
-			expect.any( Object ), { page: 0 }
+			expect.any( Object ), { page: 0 },
 		);
 	} );
 	it( 'dispatches "mentees/getAllMentees" when "DataTable" updates the limit and saves it', () => {
@@ -102,7 +104,7 @@ describe( 'MenteeOverview', () => {
 		// 2nd time in MenteeOverview.updateLimit
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 2 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 2,
-			expect.any( Object ), { limit: 15, page: 1 }
+			expect.any( Object ), { limit: 15, page: 1 },
 		);
 		expect( menteeActions.savePresets ).toHaveBeenCalledTimes( 1 );
 	} );
@@ -114,7 +116,7 @@ describe( 'MenteeOverview', () => {
 		// 2nd time in MenteeOverview.updateSorting
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 2 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 2,
-			expect.any( Object ), { sortBy: 'questions', order: 'asc' }
+			expect.any( Object ), { sortBy: 'questions', order: 'asc' },
 		);
 	} );
 	it( 'dispatches "mentees/getAllMentees" resetting the page when "MenteeFilters" updates the filters and saves them', () => {
@@ -127,14 +129,14 @@ describe( 'MenteeOverview', () => {
 		const update = {
 			editCountMin: 10,
 			editCountMax: 100,
-			onlyStarred: true
+			onlyStarred: true,
 		};
 		wrapper.findComponent( MenteeFilters ).vm.$emit( 'update:filters', update );
 		// 1st time in MenteeOverview.created
 		// 2nd time in MenteeOverview.updateFilters
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 2 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 2,
-			expect.any( Object ), Object.assign( {}, update, { page: 1 } )
+			expect.any( Object ), Object.assign( {}, update, { page: 1 } ),
 		);
 		expect( menteeActions.savePresets ).toHaveBeenCalledTimes( 1 );
 	} );
@@ -151,7 +153,7 @@ describe( 'MenteeOverview', () => {
 		// 2nd time in MenteeOverview.onMenteeSearchSelection
 		expect( menteeActions.getAllMentees ).toHaveBeenCalledTimes( 2 );
 		expect( menteeActions.getAllMentees ).toHaveBeenNthCalledWith( 2,
-			expect.any( Object ), { prefix: 'Laura', page: 1 }
+			expect.any( Object ), { prefix: 'Laura', page: 1 },
 		);
 	} );
 	it( 'displays the no results view when the API returns 0 mentees', () => {

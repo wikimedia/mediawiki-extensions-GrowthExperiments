@@ -24,29 +24,29 @@
 					new OO.ui.MenuOptionWidget( {
 						icon: 'play',
 						data: 'active',
-						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active' )
+						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active' ),
 					} ),
 					new OO.ui.MenuOptionWidget( {
 						icon: 'pause',
 						data: 'away',
-						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away' )
-					} )
-				]
-			}
+						label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away' ),
+					} ),
+				],
+			},
 		} );
 		const itemToSelect = this.mentorStatusDropdown.getMenu().findItemFromData(
-			$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown select' ).val()
+			$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown select' ).val(),
 		);
 		this.mentorStatusDropdown.getMenu().selectItem( itemToSelect );
 		this.mentorStatusDropdown.setIcon( itemToSelect.getIcon() );
 		this.mentorStatusDropdown.getMenu().connect( this, {
-			choose: [ 'onMentorStatusDropdownChanged' ]
+			choose: [ 'onMentorStatusDropdownChanged' ],
 		} );
 
 		const $statusDropdownDiv = $( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown' );
 		this.mentorStatusDropdown.setDisabled( $statusDropdownDiv.find( 'select' ).prop( 'disabled' ) );
 		$statusDropdownDiv.replaceWith(
-			this.mentorStatusDropdown.$element
+			this.mentorStatusDropdown.$element,
 		);
 
 		this.$mentorAwayMessage = $( '#growthexperiments-mentor-dashboard-module-mentor-tools-status-away-message' );
@@ -61,51 +61,51 @@
 					padded: true,
 					$content: $( '<div>' ).append(
 						$( '<p>' ).html( mw.message( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1' ).parse() ),
-						$( '<p>' ).html( mw.message( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2' ).parse() )
-					)
-				}
-			} ).$element
+						$( '<p>' ).html( mw.message( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2' ).parse() ),
+					),
+				},
+			} ).$element,
 		);
 		const weightOptions = [
 			new OO.ui.MenuOptionWidget( {
 				data: 0,
-				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none' )
+				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-none' ),
 			} ),
 			new OO.ui.MenuOptionWidget( {
 				data: 1,
-				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low' )
+				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low' ),
 			} ),
 			new OO.ui.MenuOptionWidget( {
 				data: 2,
-				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium' )
+				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium' ),
 			} ),
 			new OO.ui.MenuOptionWidget( {
 				data: 4,
-				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high' )
-			} )
+				label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high' ),
+			} ),
 		];
 		this.mentorWeightDropdown = new OO.ui.DropdownWidget( {
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium' ),
 			id: 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown',
 			menu: {
-				items: weightOptions
-			}
+				items: weightOptions,
+			},
 		} );
 
 		// Populated via PHP, see MentorTools::getBody (search for getMentorWeight)
 		this.mentorWeightDropdown.getMenu().selectItem(
 			this.mentorWeightDropdown.getMenu().findItemFromData(
 				Number(
-					$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown select' ).val()
-				)
-			)
+					$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown select' ).val(),
+				),
+			),
 		);
 
 		this.mentorWeightDropdown.getMenu().connect( this, {
-			choose: [ 'onMentorWeightDropdownChanged' ]
+			choose: [ 'onMentorWeightDropdownChanged' ],
 		} );
 		$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown' ).replaceWith(
-			this.mentorWeightDropdown.$element
+			this.mentorWeightDropdown.$element,
 		);
 
 		this.windowManager = new OO.ui.WindowManager();
@@ -114,18 +114,18 @@
 		this.awaySettingsDialog = new AwaySettingsDialog();
 		this.awaySettingsDialog.connect( this, {
 			awayset: [ 'onMentorBackTimestampChanged' ],
-			cancel: [ 'onAwaySettingsDialogCancelled' ]
+			cancel: [ 'onAwaySettingsDialogCancelled' ],
 		} );
 		this.windowManager.addWindows( [ this.awaySettingsDialog ] );
 
 		this.mentorMessageChangeDialog = new MentorMessageChangeDialog();
 		this.mentorMessageChangeDialog.connect( this, {
-			messageset: [ 'onMentorMessageChanged' ]
+			messageset: [ 'onMentorMessageChanged' ],
 		} );
 
 		this.mentorMessageEditBtn = OO.ui.infuse( this.$body.find( '#growthexperiments-mentor-dashboard-mentor-tools-signup-button' ) );
 		this.mentorMessageEditBtn.connect( this, {
-			click: [ 'onMentorMessageEditButtonClicked' ]
+			click: [ 'onMentorMessageEditButtonClicked' ],
 		} );
 		this.windowManager.addWindows( [ this.mentorMessageChangeDialog ] );
 	}
@@ -142,17 +142,17 @@
 			new mw.Api().postWithToken( 'csrf', {
 				action: 'growthmanagementorlist',
 				geaction: 'change',
-				isaway: false
+				isaway: false,
 			} ).then( () => {
 				mw.notify(
 					mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active' ),
-					{ type: 'info' }
+					{ type: 'info' },
 				);
 				mentorTools.onMentorBackTimestampChanged( null );
 			} ).catch( () => {
 				mw.notify(
 					mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown' ),
-					{ type: 'error' }
+					{ type: 'error' },
 				);
 			} );
 		}
@@ -166,7 +166,7 @@
 		return new mw.Api().postWithToken( 'csrf', {
 			action: 'growthmanagementorlist',
 			geaction: 'change',
-			weight: Number( selectedItem.getData() )
+			weight: Number( selectedItem.getData() ),
 		} );
 	};
 
@@ -177,14 +177,14 @@
 			mw.notify(
 				mw.msg(
 					'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed',
-					selectedItem.getLabel()
+					selectedItem.getLabel(),
 				),
-				{ type: 'info' }
+				{ type: 'info' },
 			);
 		} ).catch( () => {
 			mw.notify(
 				mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-error-unknown' ),
-				{ type: 'error' }
+				{ type: 'error' },
 			);
 		} );
 	};
@@ -201,7 +201,7 @@
 		} else {
 			this.$mentorAwayMessage.text( mw.msg(
 				'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message',
-				backtimestamp
+				backtimestamp,
 			) );
 		}
 	};
@@ -212,7 +212,7 @@
 
 	MentorTools.prototype.onMentorMessageChanged = function ( message ) {
 		this.$body.find( '#growthexperiments-mentor-dashboard-module-mentor-tools-message-content' ).text(
-			message
+			message,
 		);
 	};
 

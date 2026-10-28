@@ -17,12 +17,12 @@ const DataTableCellValue = require( './DataTableCellValue.vue' );
 module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
-		DataTableCellValue
+		DataTableCellValue,
 	},
 	props: {
 		align: { type: String, default: 'left', validator: alignValidator },
 		fieldName: { type: String, required: true },
-		value: { type: Object, required: true }
-	}
+		value: { type: Object, required: true },
+	},
 };
 </script>

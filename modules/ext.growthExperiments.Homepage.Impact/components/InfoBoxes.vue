@@ -38,13 +38,13 @@ const { NO_DATA_CHARACTER } = require( '../constants.js' );
 module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
-		CText
+		CText,
 	},
 	props: {
 		data: {
 			type: Object,
-			default: null
-		}
+			default: null,
+		},
 	},
 	computed: {
 		lastEditFormattedTimeAgo() {
@@ -57,14 +57,14 @@ module.exports = exports = {
 				return NO_DATA_CHARACTER;
 			}
 			const bestStreakDaysLocalisedCount = this.$filters.convertNumber(
-				this.data.longestEditingStreak.datePeriod.days
+				this.data.longestEditingStreak.datePeriod.days,
 			);
 			return this.$i18n(
 				'growthexperiments-homepage-impact-recent-activity-streak-count-text',
-				bestStreakDaysLocalisedCount
+				bestStreakDaysLocalisedCount,
 			).text();
-		}
-	}
+		},
+	},
 };
 </script>
 

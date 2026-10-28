@@ -13,7 +13,7 @@ function useMWRestApi( url ) {
 		// back to the cache table in a deferred update, and that isn't allowed with GET.
 		rest.post(
 			// unref() unwraps potential refs
-			unref( url )
+			unref( url ),
 		).then( ( json ) => ( data.value = json ) )
 			.catch( ( errorType, err ) => {
 				error.value = err;

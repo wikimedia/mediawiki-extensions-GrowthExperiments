@@ -55,10 +55,10 @@ module.exports = exports = {
 		CdxButton,
 		CdxIcon,
 		CScoreCards,
-		SkipMenteeDialog
+		SkipMenteeDialog,
 	},
 	props: {
-		mentee: { type: Object, required: true }
+		mentee: { type: Object, required: true },
 	},
 	emits: [ 'skip' ],
 	setup() {
@@ -66,12 +66,12 @@ module.exports = exports = {
 
 		return {
 			log,
-			cdxIconUserAvatar
+			cdxIconUserAvatar,
 		};
 	},
 	data() {
 		return {
-			numberOfTalkPagePosts: undefined
+			numberOfTalkPagePosts: undefined,
 		};
 	},
 	computed: {
@@ -80,7 +80,7 @@ module.exports = exports = {
 		},
 		userTalkHref() {
 			return ( new mw.Title( this.mentee.userName, 3 ) ).getUrl();
-		}
+		},
 	},
 	methods: {
 		getNumberOfTalkPagePosts() {
@@ -96,7 +96,7 @@ module.exports = exports = {
 					format: 'json',
 					submodule: 'view-topiclist',
 					page: talkPageName,
-					formatversion: 2
+					formatversion: 2,
 				} ).then( ( data ) => {
 					this.numberOfTalkPagePosts = data.flow[ 'view-topiclist' ].result.topiclist.roots.length;
 				} );
@@ -104,7 +104,7 @@ module.exports = exports = {
 				new mw.Api().get( {
 					action: 'parse',
 					page: talkPageName,
-					formatversion: 2
+					formatversion: 2,
 				} ).then( ( data ) => {
 					const talkPosts = data.parse.text.match( / mw-heading2 /g );
 					// NOTE: When there is no 2nd level heading, .match() can return null.
@@ -123,12 +123,12 @@ module.exports = exports = {
 		onPraiseButtonClicked() {
 			const userName = this.mentee.userName;
 			this.log( 'pp-praise-mentee', {
-				menteeUserId: this.mentee.userId
+				menteeUserId: this.mentee.userId,
 			} );
 			return new mw.Api().postWithToken( 'csrf', {
 				action: 'growthinvalidatepersonalizedpraisesuggestion',
 				mentee: userName,
-				reason: 'praised'
+				reason: 'praised',
 			} ).then( () => {
 				// redirect the user
 				window.location.href = ( new mw.Title( userName, 3 ) ).getUrl() + '?' + $.param( {
@@ -139,14 +139,14 @@ module.exports = exports = {
 					preload: mw.config.get( 'GEPraiseworthyMessageTitle' ),
 					preloadparams: [
 						userName,
-						mw.user.getName()
+						mw.user.getName(),
 					],
-					gepersonalizedpraise: 1
+					gepersonalizedpraise: 1,
 				} );
 			} ).catch( ( error ) => {
 				mw.notify(
 					mw.msg( 'growthexperiments-mentor-dashboard-personalized-praise-send-appreciation-error-unknown' ),
-					{ type: 'error' }
+					{ type: 'error' },
 				);
 				mw.log.error( error );
 			} );
@@ -156,13 +156,13 @@ module.exports = exports = {
 				action: 'growthinvalidatepersonalizedpraisesuggestion',
 				mentee: this.mentee.userName,
 				reason: 'skipped',
-				skipreason: reason
+				skipreason: reason,
 			} ).then( () => {
 				// Pass the event up to PersonalizedPraise.vue, to remove the mentee w/o the need for a reload
 				this.$emit( 'skip', this.mentee, reason );
 			} );
-		}
-	}
+		},
+	},
 };
 </script>
 

@@ -37,17 +37,17 @@ module.exports = exports = {
 	components: {
 		CdxButton,
 		CdxIcon,
-		CText
+		CText,
 	},
 	props: {
 		currentPage: { type: Number, required: true },
-		totalPages: { type: Number, required: true }
+		totalPages: { type: Number, required: true },
 	},
 	emits: [ 'previous', 'next' ],
 	setup() {
 		return {
 			cdxIconPrevious,
-			cdxIconNext
+			cdxIconNext,
 		};
 	},
 	computed: {
@@ -56,8 +56,8 @@ module.exports = exports = {
 		},
 		nextButtonDisabled() {
 			return this.currentPage >= this.totalPages;
-		}
-	}
+		},
+	},
 };
 </script>
 

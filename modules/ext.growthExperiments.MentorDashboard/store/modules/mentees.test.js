@@ -1,6 +1,8 @@
+'use strict';
+
 jest.mock( '../../../ext.growthExperiments.MentorDashboard/store/MenteeOverviewApi.js' );
 jest.mock( '../Tags.json', () => ( {
-	questions: []
+	questions: [],
 } ), { virtual: true } );
 
 const jsonStoredPresets =
@@ -9,8 +11,8 @@ const jsonStoredPresets =
 		filters: {
 			minedits,
 			maxedits,
-			onlystarred
-		}
+			onlystarred,
+		},
 	} );
 
 describe( 'utils', () => {
@@ -30,7 +32,7 @@ describe( 'utils', () => {
 			editCountMin,
 			editCountMax,
 			onlyStarred,
-			activeDaysAgo
+			activeDaysAgo,
 		} = initalPresets;
 
 		const state = {
@@ -43,7 +45,7 @@ describe( 'utils', () => {
 			editCountMin,
 			editCountMax,
 			onlyStarred,
-			activeDaysAgo
+			activeDaysAgo,
 
 		};
 
@@ -51,7 +53,7 @@ describe( 'utils', () => {
 		expect( mw.log.error ).toBeCalledTimes( 0 );
 		expect( mw.log.warn ).toBeCalledTimes( 2 );
 		expect( mw.log.warn ).toHaveBeenNthCalledWith( 2,
-			'Failed parsing JSON stored preference growthexperiments-mentee-overview-presets'
+			'Failed parsing JSON stored preference growthexperiments-mentee-overview-presets',
 		);
 	} );
 
@@ -62,7 +64,7 @@ describe( 'utils', () => {
 			editCountMax: undefined,
 			editCountMin: 15,
 			onlyStarred: true,
-			activeDaysAgo: undefined
+			activeDaysAgo: undefined,
 		};
 		global.mw.user.options.get = jest.fn( () => jsonStoredPresets( mockPresets ) );
 		const { getInitialPresetsWithFallback, getters } = require( './mentees.js' );
@@ -74,7 +76,7 @@ describe( 'utils', () => {
 			editCountMin,
 			editCountMax,
 			onlyStarred,
-			activeDaysAgo
+			activeDaysAgo,
 		} = initalPresets;
 
 		const state = {
@@ -87,7 +89,7 @@ describe( 'utils', () => {
 			editCountMin,
 			editCountMax,
 			onlyStarred,
-			activeDaysAgo
+			activeDaysAgo,
 		};
 
 		expect( getters.filters( state ) ).toEqual( expectedPresets );
@@ -97,16 +99,16 @@ describe( 'utils', () => {
 		const { validateAndApplyFilters } = require( './mentees.js' );
 		const mockContext = {
 			getters: { filters: {} },
-			commit: jest.fn()
+			commit: jest.fn(),
 		};
 		const res1 = validateAndApplyFilters( mockContext, {
 			editCountMin: 'a',
-			editCountMax: ''
+			editCountMax: '',
 		} );
 
 		const expectedValidFilters = {
 			editCountMax: undefined,
-			activeDaysAgo: undefined
+			activeDaysAgo: undefined,
 		};
 		expect( res1 ).toBe( true );
 		expect( mockContext.commit ).toHaveBeenNthCalledWith( 1, 'SET_FILTERS', expectedValidFilters );
@@ -172,7 +174,7 @@ describe( 'actions', () => {
 			editCountMin: 0,
 			editCountMax: 100,
 			onlyStarred: false,
-			activeDaysAgo: undefined
+			activeDaysAgo: undefined,
 		};
 
 		const getters = {
@@ -181,8 +183,8 @@ describe( 'actions', () => {
 				editCountMin: state.editCountMin,
 				editCountMax: state.editCountMax,
 				onlyStarred: state.onlyStarred,
-				activeDaysAgo: state.activeDaysAgo
-			}
+				activeDaysAgo: state.activeDaysAgo,
+			},
 		};
 
 		testAction( actions.getAllMentees, { limit: 10 }, { state, getters }, [
@@ -193,19 +195,19 @@ describe( 'actions', () => {
 				editCountMin: 0,
 				editCountMax: 100,
 				onlyStarred: false,
-				activeDaysAgo: undefined
+				activeDaysAgo: undefined,
 			} },
 			{ type: 'SET_API_FILTERS', payload: {
 				limit: 5,
 				editCountMin: 0,
 				editCountMax: 100,
 				onlyStarred: false,
-				activeDaysAgo: undefined
+				activeDaysAgo: undefined,
 			} },
 			{ type: 'SET_PAGES', payload: 0 },
 			{ type: 'SET_MENTEES', payload: [] },
 			{ type: 'SET_ERROR', payload: false },
-			{ type: 'SET_READY', payload: true }
+			{ type: 'SET_READY', payload: true },
 		], done );
 	} );
 	it( 'should get mentees data and starred mentees with a given filter', ( done ) => {
@@ -228,7 +230,7 @@ describe( 'actions', () => {
 			editCountMin: 0,
 			editCountMax: 100,
 			onlyStarred: false,
-			activeDaysAgo: undefined
+			activeDaysAgo: undefined,
 		};
 
 		const getters = {
@@ -237,8 +239,8 @@ describe( 'actions', () => {
 				editCountMin: state.editCountMin,
 				editCountMax: state.editCountMax,
 				onlyStarred: state.onlyStarred,
-				activeDaysAgo: state.activeDaysAgo
-			}
+				activeDaysAgo: state.activeDaysAgo,
+			},
 		};
 
 		testAction( actions.getAllMentees, { editCountMin: 1 }, { state, getters }, [
@@ -248,19 +250,19 @@ describe( 'actions', () => {
 				editCountMin: 1,
 				editCountMax: 100,
 				onlyStarred: false,
-				activeDaysAgo: undefined
+				activeDaysAgo: undefined,
 			} },
 			{ type: 'SET_API_FILTERS', payload: {
 				limit: 5,
 				editCountMin: 1,
 				editCountMax: 100,
 				onlyStarred: false,
-				activeDaysAgo: undefined
+				activeDaysAgo: undefined,
 			} },
 			{ type: 'SET_PAGES', payload: 0 },
 			{ type: 'SET_MENTEES', payload: [] },
 			{ type: 'SET_ERROR', payload: false },
-			{ type: 'SET_READY', payload: true }
+			{ type: 'SET_READY', payload: true },
 		], done );
 	} );
 	it( 'should get mentees data and starred mentees with removed filters', ( done ) => {
@@ -283,7 +285,7 @@ describe( 'actions', () => {
 			editCountMin: 0,
 			editCountMax: 100,
 			onlyStarred: false,
-			activeDaysAgo: undefined
+			activeDaysAgo: undefined,
 		};
 
 		const getters = {
@@ -292,8 +294,8 @@ describe( 'actions', () => {
 				editCountMin: state.editCountMin,
 				editCountMax: state.editCountMax,
 				onlyStarred: state.onlyStarred,
-				activeDaysAgo: state.activeDaysAgo
-			}
+				activeDaysAgo: state.activeDaysAgo,
+			},
 		};
 
 		testAction( actions.getAllMentees, { editCountMin: '' }, { state, getters }, [
@@ -303,19 +305,19 @@ describe( 'actions', () => {
 				editCountMin: undefined,
 				editCountMax: 100,
 				onlyStarred: false,
-				activeDaysAgo: undefined
+				activeDaysAgo: undefined,
 			} },
 			{ type: 'SET_API_FILTERS', payload: {
 				limit: 5,
 				editCountMin: undefined,
 				editCountMax: 100,
 				onlyStarred: false,
-				activeDaysAgo: undefined
+				activeDaysAgo: undefined,
 			} },
 			{ type: 'SET_PAGES', payload: 0 },
 			{ type: 'SET_MENTEES', payload: [] },
 			{ type: 'SET_ERROR', payload: false },
-			{ type: 'SET_READY', payload: true }
+			{ type: 'SET_READY', payload: true },
 		], done );
 	} );
 	it( 'should use filters in store when saving presets', ( done ) => {
@@ -333,8 +335,8 @@ describe( 'actions', () => {
 				editCountMin: 1,
 				editCountMax: 100,
 				onlyStarred: true,
-				activeDaysAgo: 60
-			}
+				activeDaysAgo: 60,
+			},
 		};
 
 		const dispatch = jest.fn( () => $.Deferred().resolve().promise() );
@@ -351,13 +353,13 @@ describe( 'actions', () => {
 								minedits: 1,
 								maxedits: 100,
 								onlystarred: true,
-								activedaysago: 60
-							}
-						}
+								activedaysago: 60,
+							},
+						},
 					},
 					{
-						root: true
-					}
+						root: true,
+					},
 				);
 				done();
 			} )

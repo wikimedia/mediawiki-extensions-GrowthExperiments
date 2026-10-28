@@ -5,7 +5,7 @@
 <script>
 // @vue/component
 module.exports = exports = {
-	compilerOptions: { whitespace: 'condense' }
+	compilerOptions: { whitespace: 'condense' },
 };
 </script>
 

@@ -30,14 +30,14 @@
 	const createApp = ( wrapper, mountPoint, module ) => {
 		const app = Vue.createMwApp( wrapper );
 		app.config.globalProperties.$filters = {
-			convertNumber
+			convertNumber,
 		};
 		// Mentor dashboard has no official mobile support (pending T279965)
 		app.provide( 'RENDER_MODE', 'desktop' );
 		app.use( store )
 			.use( loggerPlugin, {
 				module: module,
-				pageviewToken: mw.config.get( 'wgGEMentorDashboardPageviewToken' )
+				pageviewToken: mw.config.get( 'wgGEMentorDashboardPageviewToken' ),
 			} )
 			.mount( mountPoint );
 	};
@@ -48,12 +48,12 @@
 	createApp(
 		require( './components/MenteeOverview/MenteeOverview.vue' ),
 		'#vue-root',
-		'mentee-overview'
+		'mentee-overview',
 	);
 	createApp(
 		require( './components/PersonalizedPraise/PersonalizedPraise.vue' ),
 		'#vue-root-personalizedpraise',
-		'personalized-praise'
+		'personalized-praise',
 	);
 
 }() );

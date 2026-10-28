@@ -47,7 +47,7 @@ module.exports = exports = {
 		NoEditsDisplay,
 		ErrorDisplay,
 		ErrorDisplaySummary,
-		Layout
+		Layout,
 	},
 	setup() {
 		const renderMode = inject( 'RENDER_MODE' );
@@ -72,7 +72,7 @@ module.exports = exports = {
 			errorComponent,
 			data: impactData,
 			// TODO: how to give user error feedback?
-			error: fetchError
+			error: fetchError,
 		};
 	},
 	methods: {
@@ -84,17 +84,17 @@ module.exports = exports = {
 				{
 					// eslint-disable-next-line camelcase
 					render_mode: normalizeLabelForStats( inject( 'RENDER_MODE' ) ),
-					wiki: mw.config.get( 'wgDBname' )
-				}
+					wiki: mw.config.get( 'wgDBname' ),
+				},
 			);
-		}
+		},
 	},
 	mounted: function () {
 		// TODO: Codex removes the scroll lock of other open dialogs when this one mounts closed. Refer to T439397.
 		window.setTimeout( () => {
 			mw.track( 'Growth.ImpactAppMounted' );
 		} );
-	}
+	},
 };
 </script>
 

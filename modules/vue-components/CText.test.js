@@ -1,3 +1,5 @@
+'use strict';
+
 const { mount } = require( '@vue/test-utils' );
 const CText = require( './CText.vue' );
 

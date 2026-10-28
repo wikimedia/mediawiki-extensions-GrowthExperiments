@@ -49,15 +49,15 @@ module.exports = exports = {
 		/* eslint-disable-next-line vue/no-unused-properties */
 		modelValue: {
 			type: Number,
-			default: null
+			default: null,
 		},
 		/**
 		 * Whether the input is disabled.
 		 */
 		disabled: {
 			type: Boolean,
-			default: false
-		}
+			default: false,
+		},
 	},
 	emits: [
 		/**
@@ -89,7 +89,7 @@ module.exports = exports = {
 		 *
 		 * @property {FocusEvent} event
 		 */
-		'blur'
+		'blur',
 	],
 	setup( props, { emit, attrs } ) {
 		// Take the modelValue provided by the parent component via v-model and
@@ -102,10 +102,10 @@ module.exports = exports = {
 		const {
 			rootClasses,
 			rootStyle,
-			otherAttrs
+			otherAttrs,
 		} = useSplitAttributes( attrs, internalClasses );
 		const inputClasses = computed( () => ( {
-			'ext-growthExperiments-NumberInput__input--has-value': !!wrappedModel.value
+			'ext-growthExperiments-NumberInput__input--has-value': !!wrappedModel.value,
 		} ) );
 
 		// Emit other events to the parent in case they're needed.
@@ -130,7 +130,7 @@ module.exports = exports = {
 			onInput,
 			onChange,
 			onFocus,
-			onBlur
+			onBlur,
 		};
 	},
 	methods: {
@@ -141,8 +141,8 @@ module.exports = exports = {
 		 */
 		focus() {
 			this.$refs.input.focus();
-		}
-	}
+		},
+	},
 };
 </script>
 

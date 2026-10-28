@@ -1,3 +1,5 @@
+'use strict';
+
 jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconEdit: '',
 	cdxIconUserTalk: '',
@@ -5,7 +7,7 @@ jest.mock( '../../vue-components/icons.json', () => ( {
 	cdxIconChart: '',
 	cdxIconClose: '',
 	cdxIconInfo: '',
-	cdxIconInfoFilled: ''
+	cdxIconInfoFilled: '',
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
 const NoEditsDisplay = require( './NoEditsDisplay.vue' );
@@ -18,14 +20,14 @@ const renderComponent = ( props, mocks = {}, renderMode = 'desktop' ) => mount( 
 			RENDER_MODE: renderMode,
 			RENDER_IN_THIRD_PERSON: false,
 			IMPACT_MAX_EDITS: 1000,
-			IMPACT_MAX_THANKS: 1000
+			IMPACT_MAX_THANKS: 1000,
 		},
 		mocks: Object.assign( {
 			$filters: {
-				convertNumber: jest.fn( ( x ) => `${ x }` )
-			}
-		}, mocks )
-	}
+				convertNumber: jest.fn( ( x ) => `${ x }` ),
+			},
+		}, mocks ),
+	},
 } );
 
 describe( 'NoEditsDisplay', () => {
@@ -34,8 +36,8 @@ describe( 'NoEditsDisplay', () => {
 			userName: 'Alice',
 			isDisabled: true,
 			data: {
-				receivedThanksCount: 123
-			}
+				receivedThanksCount: 123,
+			},
 		};
 		const desktopWrapper = renderComponent( props, {}, 'desktop' );
 		expect( desktopWrapper.findAllComponents( CScoreCard ) ).toHaveLength( 2 );
@@ -59,21 +61,21 @@ describe( 'NoEditsDisplay', () => {
 			userName: 'Alice',
 			isDisabled: true,
 			data: {
-				receivedThanksCount: 123
-			}
+				receivedThanksCount: 123,
+			},
 		};
 		const wrapper = renderComponent( props, {
-			$log: jest.fn()
+			$log: jest.fn(),
 		} );
 		const scorecards = wrapper.findAllComponents( CScoreCard );
 		scorecards[ 0 ].find( '.ext-growthExperiments-ScoreCards__info-button' ).trigger( 'click' );
 		scorecards[ 1 ].find( '.ext-growthExperiments-ScoreCards__info-button' ).trigger( 'click' );
 		wrapper.vm.$nextTick().then( () => {
 			expect( wrapper.text() ).toContain(
-				'growthexperiments-homepage-impact-scores-thanks-info-text:[,1000]'
+				'growthexperiments-homepage-impact-scores-thanks-info-text:[,1000]',
 			);
 			expect( wrapper.text() ).toContain(
-				'growthexperiments-homepage-impact-scores-best-streak-info-text:[,1000]'
+				'growthexperiments-homepage-impact-scores-best-streak-info-text:[,1000]',
 			);
 		} );
 	} );
@@ -82,7 +84,7 @@ describe( 'NoEditsDisplay', () => {
 			userName: 'Alice',
 			isDisabled: false,
 			isActivated: false,
-			data: null
+			data: null,
 		}, {}, 'mobile-overlay' );
 		const button = overlayWrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
 		expect( button.text() ).toBe( 'growthexperiments-homepage-impact-unactivated-suggested-edits-link' );
@@ -94,7 +96,7 @@ describe( 'NoEditsDisplay', () => {
 			userName: 'Alice',
 			isDisabled: false,
 			isActivated: false,
-			data: null
+			data: null,
 		}, {}, 'mobile-overlay' );
 		const button = wrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
 		global.mw.track = jest.fn();
@@ -104,7 +106,7 @@ describe( 'NoEditsDisplay', () => {
 		expect( global.mw.track ).toHaveBeenNthCalledWith(
 			1,
 			'growthexperiments.startediting',
-			{ moduleName: 'impact', trigger: 'impact' }
+			{ moduleName: 'impact', trigger: 'impact' },
 		);
 	} );
 	it( 'button navigates to suggested edits if activated', () => {
@@ -112,7 +114,7 @@ describe( 'NoEditsDisplay', () => {
 			userName: 'Alice',
 			isDisabled: false,
 			isActivated: true,
-			data: null
+			data: null,
 		}, {}, 'mobile-overlay' );
 		const button = wrapper.get( '[data-link-id="impact-see-suggested-edits"]' );
 		global.window.history.replaceState = jest.fn();
@@ -128,8 +130,8 @@ describe( 'NoEditsDisplay', () => {
 			userName: 'Alice',
 			isDisabled: true,
 			data: {
-				receivedThanksCount: 123
-			}
+				receivedThanksCount: 123,
+			},
 		};
 
 		const wrapper = mount( NoEditsDisplay, {
@@ -139,18 +141,18 @@ describe( 'NoEditsDisplay', () => {
 					RENDER_MODE: 'desktop',
 					RENDER_IN_THIRD_PERSON: false,
 					IMPACT_MAX_EDITS: 5000,
-					IMPACT_MAX_THANKS: 2000
+					IMPACT_MAX_THANKS: 2000,
 				},
 				mocks: {
 					$filters: {
-						convertNumber: jest.fn( ( x ) => `${ x }` )
+						convertNumber: jest.fn( ( x ) => `${ x }` ),
 					},
 					$log: jest.fn(),
 					$i18n: jest.fn( ( key, ...args ) => ( {
-						text: () => `${ key }:[${ args.join( ',' ) }]`
-					} ) )
-				}
-			}
+						text: () => `${ key }:[${ args.join( ',' ) }]`,
+					} ) ),
+				},
+			},
 		} );
 
 		const scorecards = wrapper.findAllComponents( CScoreCard );
@@ -160,11 +162,11 @@ describe( 'NoEditsDisplay', () => {
 		return wrapper.vm.$nextTick().then( () => {
 			// Thanks tooltip should use IMPACT_MAX_THANKS value
 			expect( wrapper.text() ).toContain(
-				'growthexperiments-homepage-impact-scores-thanks-info-text:[,2000]'
+				'growthexperiments-homepage-impact-scores-thanks-info-text:[,2000]',
 			);
 			// Streak tooltip should use IMPACT_MAX_EDITS value
 			expect( wrapper.text() ).toContain(
-				'growthexperiments-homepage-impact-scores-best-streak-info-text:[,5000]'
+				'growthexperiments-homepage-impact-scores-best-streak-info-text:[,5000]',
 			);
 		} );
 	} );

@@ -31,21 +31,21 @@ module.exports = exports = {
 	components: {
 		CdxButton,
 		CdxIcon,
-		MenteeFiltersForm
+		MenteeFiltersForm,
 	},
 	props: {
-		data: { type: Object, required: true }
+		data: { type: Object, required: true },
 	},
 	emits: [ 'update:filters' ],
 	setup() {
 		return {
 			cdxIconExpand,
-			cdxIconCollapse
+			cdxIconCollapse,
 		};
 	},
 	data() {
 		return {
-			showFiltersForm: false
+			showFiltersForm: false,
 		};
 	},
 	computed: {
@@ -53,7 +53,7 @@ module.exports = exports = {
 			return this.showFiltersForm ?
 				this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-collapse-icon-label' ).text() :
 				this.$i18n( 'growthexperiments-mentor-dashboard-mentee-overview-filters-expand-icon-label' ).text();
-		}
+		},
 	},
 	methods: {
 		onClickOutside( e ) {
@@ -70,14 +70,14 @@ module.exports = exports = {
 		onFiltersUpdate( $event ) {
 			this.$emit( 'update:filters', $event );
 			this.hide();
-		}
+		},
 	},
 	mounted() {
 		window.addEventListener( 'click', this.onClickOutside );
 	},
 	unmounted() {
 		window.removeEventListener( 'click', this.onClickOutside );
-	}
+	},
 };
 </script>
 

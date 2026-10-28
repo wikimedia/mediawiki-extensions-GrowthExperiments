@@ -15,17 +15,17 @@ const { CdxSelect } = require( '@wikimedia/codex' );
 module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
-		CdxSelect
+		CdxSelect,
 	},
 	props: {
 		limitOptions: { type: Array, required: true },
-		limit: { type: Number, required: true }
+		limit: { type: Number, required: true },
 	},
 	emits: [ 'update' ],
 	data() {
 		const selection = this.limit ? this.limit : this.limitOptions[ 0 ].value;
 		return {
-			selection: selection
+			selection: selection,
 		};
 	},
 	computed: {
@@ -33,12 +33,12 @@ module.exports = exports = {
 			return this.limitOptions.map( ( optionValue ) => ( {
 				label: this.$i18n(
 					'growthexperiments-mentor-dashboard-mentee-overview-show-entries',
-					this.$filters.convertNumber( optionValue )
+					this.$filters.convertNumber( optionValue ),
 				).text(),
-				value: optionValue
+				value: optionValue,
 			} ) );
-		}
-	}
+		},
+	},
 };
 </script>
 

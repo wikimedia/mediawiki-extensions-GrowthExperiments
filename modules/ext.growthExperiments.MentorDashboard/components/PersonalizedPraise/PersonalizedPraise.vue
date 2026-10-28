@@ -82,7 +82,7 @@ module.exports = exports = {
 		PersonalizedPraiseSettings,
 		PersonalizedPraisePagination,
 		UserCard,
-		NoResults
+		NoResults,
 	},
 	setup() {
 		const log = inject( '$log' );
@@ -92,7 +92,7 @@ module.exports = exports = {
 			log,
 			cdxIconInfo,
 			showPopover,
-			infoToggleButton
+			infoToggleButton,
 		};
 	},
 	computed: {
@@ -113,18 +113,18 @@ module.exports = exports = {
 		},
 		settings() {
 			return this.$store.getters[ 'praiseworthyMentees/settings' ];
-		}
+		},
 	},
 	methods: {
 		previousMentee() {
 			this.log( 'pp-prev-page', {
-				mentee: JSON.stringify( this.mentee )
+				mentee: JSON.stringify( this.mentee ),
 			} );
 			this.$store.dispatch( 'praiseworthyMentees/previousPage' );
 		},
 		nextMentee() {
 			this.log( 'pp-next-page', {
-				mentee: JSON.stringify( this.mentee )
+				mentee: JSON.stringify( this.mentee ),
 			} );
 			this.$store.dispatch( 'praiseworthyMentees/nextPage' );
 		},
@@ -133,15 +133,15 @@ module.exports = exports = {
 		},
 		onMenteeSkipped( mentee ) {
 			this.$store.dispatch( 'praiseworthyMentees/removeMentee', mentee );
-		}
+		},
 	},
 	created() {
 		this.$store.dispatch( 'praiseworthyMentees/fetchMentees' );
 		this.log( 'impression', {
 			totalMentees: this.totalPages,
-			mentee: JSON.stringify( this.mentee )
+			mentee: JSON.stringify( this.mentee ),
 		} );
-	}
+	},
 };
 </script>
 

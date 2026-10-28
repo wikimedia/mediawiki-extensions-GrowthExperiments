@@ -28,9 +28,9 @@ module.exports = exports = {
 		 */
 		renderMode: {
 			type: String,
-			default: 'desktop'
-		}
-	}
+			default: 'desktop',
+		},
+	},
 };
 </script>
 

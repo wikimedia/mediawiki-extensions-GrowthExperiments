@@ -10,7 +10,7 @@
 	}
 
 	$( '#pt-mentordashboard a' ).append(
-		$( '<div>' ).addClass( 'mw-pulsating-dot' )
+		$( '<div>' ).addClass( 'mw-pulsating-dot' ),
 	);
 
 }() );

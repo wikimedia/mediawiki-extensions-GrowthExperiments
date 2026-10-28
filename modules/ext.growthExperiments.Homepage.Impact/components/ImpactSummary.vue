@@ -27,17 +27,17 @@ module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
 		TrendChart,
-		InfoBoxes
+		InfoBoxes,
 	},
 	props: {
 		data: {
 			type: Object,
-			required: true
-		}
+			required: true,
+		},
 	},
 	emits: [ 'mounted' ],
 	mounted() {
 		this.$emit( 'mounted' );
-	}
+	},
 };
 </script>

@@ -51,7 +51,7 @@ const SKIP_REASONS = [
 	'already-praised',
 	'not-praiseworthy',
 	'not-now',
-	'other'
+	'other',
 ];
 
 // @vue/component
@@ -60,10 +60,10 @@ module.exports = exports = {
 	components: {
 		CdxButton,
 		CdxDialog,
-		CdxRadio
+		CdxRadio,
 	},
 	props: {
-		mentee: { type: Object, required: true }
+		mentee: { type: Object, required: true },
 	},
 	emits: [ 'skip' ],
 	setup( props, { emit } ) {
@@ -82,7 +82,7 @@ module.exports = exports = {
 				// * growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-other
 				'growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-reason-' + x,
 				[ menteeGender.value ] ).text(),
-			value: x
+			value: x,
 		} ) ) );
 
 		function onSkipButtonClicked() {
@@ -101,16 +101,16 @@ module.exports = exports = {
 			onSkipButtonClicked,
 			onSubmit,
 			reasonItems,
-			menteeGender
+			menteeGender,
 		};
 	},
 	watch: {
 		open( val ) {
 			this.log( val ? 'pp-skip-mentee' : 'pp-skip-mentee-close', {
-				menteeUserId: this.mentee.userId
+				menteeUserId: this.mentee.userId,
 			} );
-		}
-	}
+		},
+	},
 };
 </script>
 

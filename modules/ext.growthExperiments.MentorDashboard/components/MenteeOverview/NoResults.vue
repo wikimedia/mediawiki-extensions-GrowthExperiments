@@ -22,14 +22,14 @@ const { cdxIconError } = require( '../../../vue-components/icons.json' );
 module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
 	components: {
-		CdxIcon
+		CdxIcon,
 	},
 	props: {
 		description: { type: String, default: null },
 		iconLabel: { type: String, required: true },
 		text: { type: String, required: true },
-		icon: { type: String, required: true, default: cdxIconError }
-	}
+		icon: { type: String, required: true, default: cdxIconError },
+	},
 };
 </script>
 
