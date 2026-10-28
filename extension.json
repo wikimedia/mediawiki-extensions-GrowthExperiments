@@ -1000,6 +1000,7 @@
 				"CdxIcon",
 				"CdxMessage",
 				"CdxMultiselectLookup",
+				"CdxPopover",
 				"CdxProgressBar",
 				"useModelWrapper"
 			],
@@ -1080,6 +1081,8 @@
 				"growthexperiments-homepage-suggestededits-interest-filters-close",
 				"growthexperiments-homepage-suggestededits-interest-filters-title",
 				"growthexperiments-homepage-suggestededits-interest-selector-article-count",
+				"growthexperiments-home-suggestededits-popover-button",
+				"growthexperiments-home-suggestededits-popover-content",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-tasktype-name-copyedit",
 				"growthexperiments-homepage-suggestededits-tasktype-name-expand",

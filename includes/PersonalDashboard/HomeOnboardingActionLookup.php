@@ -15,6 +15,8 @@ class HomeOnboardingActionLookup {
 	public const INTRO_SEEN_PREF = 'growthexperiments-home-intro-seen';
 	/** The user dismissed the "no interests" notice. */
 	public const INTERESTS_NOTICE_INTERACTED_PREF = 'growthexperiments-home-interests-notice-interacted';
+	/** The user closed the "select interests" popover. */
+	public const INTERESTS_POPOVER_DISMISSED_PREF = 'growthexperiments-home-interests-popover-dismissed';
 
 	/** Show the "no interests" notice. */
 	public const ACTION_INTERESTS_NOTICE = 'show-no-interests-notice';

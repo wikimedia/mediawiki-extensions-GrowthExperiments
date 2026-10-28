@@ -717,6 +717,10 @@ class HomepageHooks implements
 			'type' => 'api',
 		];
 
+		$preferences[ HomeOnboardingActionLookup::INTERESTS_POPOVER_DISMISSED_PREF ] = [
+			'type' => 'api',
+		];
+
 		$preferences[ Mentorship::QUESTION_PREF ] = [
 			'type' => 'api',
 		];
@@ -802,6 +806,7 @@ class HomepageHooks implements
 			self::HOMEPAGE_PREF_PT_LINK => false,
 			HomeOnboardingActionLookup::INTRO_SEEN_PREF => false,
 			HomeOnboardingActionLookup::INTERESTS_NOTICE_INTERACTED_PREF => false,
+			HomeOnboardingActionLookup::INTERESTS_POPOVER_DISMISSED_PREF => false,
 		];
 	}
 

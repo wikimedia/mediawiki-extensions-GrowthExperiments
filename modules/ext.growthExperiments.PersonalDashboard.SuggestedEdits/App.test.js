@@ -50,7 +50,7 @@ jest.mock( 'ext.personalDashboard.common', () => ( {
 	ModuleHeaderMenu: {
 		name: 'ModuleHeaderMenu',
 		props: [ 'menuItems', 'footerItem', 'buttonLabel' ],
-		emits: [ 'select' ],
+		emits: [ 'select', 'button-click', 'menu-open' ],
 		render() {
 			return this.$slots.default( { anchor: null } );
 		},
@@ -89,7 +89,7 @@ function mountApp( action ) {
 	);
 	return mount( App, {
 		props: { headerTarget: '#header' },
-		global: { stubs: { teleport: true } },
+		global: { stubs: { teleport: true, CdxPopover: true } },
 	} );
 }
 

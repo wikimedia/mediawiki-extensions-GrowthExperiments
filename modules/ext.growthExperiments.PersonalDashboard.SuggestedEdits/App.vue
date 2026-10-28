@@ -43,7 +43,18 @@
 			:menu-items="menuItems"
 			:footer-item="menuFooterItem"
 			:button-label="menuButtonLabel"
-			@select="openPanel = $event">
+			@select="openPanel = $event"
+			@menu-open="menuOpen">
+			<cdx-popover
+				v-model:open="shouldPopoverBeOpen"
+				class="personal-dashboard-select-interests__popover"
+				:anchor="anchor"
+				:render-in-place="true"
+				placement="left"
+				:primary-action="defaultPopoverAction"
+				@primary="popoverGotItAction">
+				{{ popoverContent }}
+			</cdx-popover>
 			<about-panel
 				:open="openPanel === 'about'"
 				:anchor="anchor"
@@ -56,7 +67,7 @@
 			<interest-selector-dialog
 				:stacked-actions="true"
 				:open="openPanel === 'interests'"
-				@update:open="closePanel"
+				@update:open="closeInterestSelectorPanel"
 				@saved="onInterestsSaved"></interest-selector-dialog>
 		</module-header-menu>
 	</teleport>
@@ -64,6 +75,7 @@
 
 <script>
 const { computed, defineComponent, nextTick, ref } = require( 'vue' );
+const { CdxPopover } = require( './codex.js' );
 const {
 	FeedCard,
 	FeedPanel,
@@ -90,6 +102,8 @@ const {
 const INTERESTS_NOTICE_INTERACTED_PREF = 'growthexperiments-home-interests-notice-interacted';
 /** Keep in sync with HomeOnboardingActionLookup::ACTION_WELCOME_BACK. */
 const WELCOME_BACK_ACTION = 'show-welcome-back';
+/** The below constant should be equal to HomeOnboardingActionLookup::INTERESTS_POPOVER_DISMISSED_PREF. */
+const INTERESTS_POPOVER_DISMISSED_PREF = 'growthexperiments-home-interests-popover-dismissed';
 /**
  * The HomeOnboardingActionLookup::ACTION_* values that show the notice. The
  * welcome back dialog shows on top of it, and the notice stays when the user
@@ -140,6 +154,7 @@ function getTaskTypesMenuIcon( selectedIds ) {
 module.exports = exports = defineComponent( {
 	components: {
 		AboutPanel,
+		CdxPopover,
 		FeedCard,
 		FeedPanel,
 		InterestSelectorDialog,
@@ -175,6 +190,11 @@ module.exports = exports = defineComponent( {
 	setup( props ) {
 		const { feedState, load } = useSuggestedEditsFeed();
 
+		const defaultPopoverAction = { label: mw.msg( 'growthexperiments-home-suggestededits-popover-button' ),
+			actionType: 'progressive' };
+		const shouldPopoverBeOpen = ref( false );
+		const popoverDismissed = ref( mw.user.options.get( INTERESTS_POPOVER_DISMISSED_PREF ) === '1' );
+		let popoverPending = false;
 		// Which panel the menu has opened, or null for none. One value rather
 		// than a flag each: the menu opens one panel at a time.
 		const openPanel = ref( null );
@@ -192,6 +212,17 @@ module.exports = exports = defineComponent( {
 
 		// The dialog saves that the user saw it.
 		const showWelcomeBack = ref( mw.config.get( 'wgGEHomeOnboardingAction' ) === WELCOME_BACK_ACTION );
+
+		const menuOpen = () => {
+			shouldPopoverBeOpen.value = false;
+		};
+
+		const possiblyShowPopover = () => {
+			if ( !popoverDismissed.value && popoverPending ) {
+				shouldPopoverBeOpen.value = true;
+				popoverPending = false;
+			}
+		};
 
 		// The notice holds the focus when it goes, or it gave the focus to the
 		// interest selector, which gives the focus back to it on close. Without
@@ -211,10 +242,44 @@ module.exports = exports = defineComponent( {
 		};
 
 		const onInterestsNoticeDismissed = () => {
+			popoverPending = true;
+			showInterestsNotice.value = false;
 			hideInterestsNotice();
+			possiblyShowPopover();
 			new mw.Api().saveOption( INTERESTS_NOTICE_INTERACTED_PREF, 1 ).catch( ( error ) => {
 				mw.errorLogger.logError(
 					new Error( 'Unable to save the interests notice dismissal: ' + error ),
+					'error.growthexperiments',
+				);
+			} );
+		};
+
+		const closePanel = () => {
+			const interestsClosed = openPanel.value === 'interests';
+			openPanel.value = null;
+			// When the user leaves the interest selector with no interests, the
+			// notice is dismissed. It does not matter if the user opened the
+			// selector from the notice, from the menu or from the welcome back
+			// dialog. Every exit of the
+			// dialog counts: "Done", "Cancel", the close button and Esc. The
+			// dialog updates the store before it closes, so the store holds the
+			// result of "Done" here. Cancelled selections are discarded, so they
+			// also leave the store empty.
+			if (
+				interestsClosed &&
+					showInterestsNotice.value &&
+					!newcomerTasks.filters.getSelectedInterests().length
+			) {
+				onInterestsNoticeDismissed();
+			}
+		};
+
+		const popoverGotItAction = () => {
+			shouldPopoverBeOpen.value = false;
+			popoverDismissed.value = true;
+			new mw.Api().saveOption( INTERESTS_POPOVER_DISMISSED_PREF, 1 ).catch( ( error ) => {
+				mw.errorLogger.logError(
+					new Error( 'Unable to save the interests popover dismissal: ' + error ),
 					'error.growthexperiments',
 				);
 			} );
@@ -226,30 +291,21 @@ module.exports = exports = defineComponent( {
 		load( FULL_LIMIT );
 
 		return {
+			defaultPopoverAction,
 			feedState,
 			openPanel,
+			// A panel only ever reports itself closed: it is opened from the menu
+			// above or from the interests notice, never by its own model.
+			menuOpen,
+			closePanel,
+			popoverGotItAction,
+			shouldPopoverBeOpen,
 			showInterestsNotice,
 			showWelcomeBack,
-			// A panel only ever reports itself closed: it is opened from the menu
-			// above, from the interests notice or from the welcome back dialog, never
-			// by its own model.
-			closePanel: () => {
-				const interestsClosed = openPanel.value === 'interests';
-				openPanel.value = null;
-				// When the user leaves the interest selector with no interests, the
-				// notice is dismissed. It does not matter if the user opened the
-				// selector from the notice, from the menu or from the welcome back
-				// dialog. Every exit of the
-				// dialog counts: "Done", "Cancel", the close button and Esc. The
-				// dialog updates the store before it closes, so the store holds the
-				// result of "Done" here. Cancelled selections are discarded, so they
-				// also leave the store empty.
-				if (
-					interestsClosed &&
-					showInterestsNotice.value &&
-					!newcomerTasks.filters.getSelectedInterests().length
-				) {
-					onInterestsNoticeDismissed();
+			closeInterestSelectorPanel() {
+				closePanel();
+				if ( popoverPending ) {
+					possiblyShowPopover();
 				}
 			},
 			openInterestsFromWelcomeBack: () => {
@@ -265,11 +321,14 @@ module.exports = exports = defineComponent( {
 			// The dialog saves the interests, and the API reads them for itself, so the
 			// feed only has to ask again.
 			onInterestsSaved: () => {
+				// Only display the interests popover if saving interests removes the interests notice.
 				selectedInterestCount.value = newcomerTasks.filters.getSelectedInterests().length;
+				popoverPending = showInterestsNotice.value;
 				// No preference to save: with interests stored, the server does not
 				// ask for the notice again.
 				if ( selectedInterestCount.value > 0 && showInterestsNotice.value ) {
 					hideInterestsNotice();
+					possiblyShowPopover();
 				}
 				load( FULL_LIMIT );
 			},
@@ -300,6 +359,7 @@ module.exports = exports = defineComponent( {
 				value: 'about',
 				label: mw.msg( 'growthexperiments-home-suggestededits-menu-about' ),
 			},
+			popoverContent: mw.msg( 'growthexperiments-home-suggestededits-popover-content' ),
 			showMoreAriaLabel: mw.msg( 'growthexperiments-home-suggestededits-show-more-aria-label' ),
 			showLessAriaLabel: mw.msg( 'growthexperiments-home-suggestededits-show-less-aria-label' ),
 			emptyLabel: mw.msg( 'growthexperiments-home-suggestededits-empty' ),
