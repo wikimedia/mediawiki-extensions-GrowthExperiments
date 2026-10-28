@@ -1,7 +1,5 @@
 import homepageMessages from '../../i18n/homepage/en.json';
 import extensionMessages from '../../i18n/extension/en.json';
-// the import below requires eslint-plugin-n with version v17.11.0 and `"ignoreTypeImport": true,` config
-// eslint-disable-next-line n/no-missing-import
 import MediaWiki from '@wikimedia/types-wikimedia';
 import { App } from 'vue';
 

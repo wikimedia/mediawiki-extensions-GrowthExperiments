@@ -1,7 +1,0 @@
-{
-	"rules": {
-		"n/no-missing-import": [ "error", {
-			"tryExtensions": [ ".js", ".json", ".node", ".ts" ]
-		} ]
-	}
-}
