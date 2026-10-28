@@ -1343,6 +1343,7 @@
 			],
 			"packageFiles": [
 				"ext.growthExperiments.Homepage.Impact/init.js",
+				"ext.growthExperiments.Home/HomeInstrumentation.js",
 				"ext.growthExperiments.Homepage.Impact/constants.js",
 				"ext.growthExperiments.Homepage.Impact/composables/useMWRestApi.js",
 				"ext.growthExperiments.Homepage.Impact/composables/useUserImpact.js",

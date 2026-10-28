@@ -94,6 +94,7 @@ const renderComponent = ( { props = {}, provide = {} } = {} ) => {
 				BROWSER_HAS_INTL: true,
 				IMPACT_MAX_EDITS: 1000,
 				IMPACT_MAX_THANKS: 1000,
+				HOME_MODULE_INSTRUMENTATION: { sendClick: jest.fn() },
 				logger: {
 					log: jest.fn(),
 				},
@@ -205,5 +206,15 @@ describe( 'ImpactVue', () => {
 		const articlesList = wrapper.findComponent( ArticlesList );
 		expect( articlesList.vm.labels.Q42 ).toBe( 'Test Item Label' );
 		expect( articlesList.vm.labels.Q43 ).toBeUndefined();
+	} );
+	it( 'sends a click event for the "View all edits" link', () => {
+		const instrumentation = { sendClick: jest.fn() };
+		const wrapper = renderComponent( {
+			provide: { HOME_MODULE_INSTRUMENTATION: instrumentation },
+		} );
+
+		wrapper.find( '[data-link-id="impact-contributions"]' ).trigger( 'click' );
+
+		expect( instrumentation.sendClick ).toHaveBeenCalledWith( 'module_impact_view_all' );
 	} );
 } );

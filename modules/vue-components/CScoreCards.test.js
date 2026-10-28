@@ -107,4 +107,23 @@ describe( 'ScoreCards', () => {
 
 		expect( wrapper.vm.receivedThanksCount ).toBe( '2000+' );
 	} );
+	it( 'sends a click event for the total edits link', () => {
+		const instrumentation = { sendClick: jest.fn() };
+		const wrapper = renderComponent( {
+			props: { data: useUserImpact( 60, jsonData ).value },
+			provide: { HOME_MODULE_INSTRUMENTATION: instrumentation },
+		} );
+
+		wrapper.find( '[data-link-id="impact-total-edits"]' ).trigger( 'click' );
+
+		expect( instrumentation.sendClick ).toHaveBeenCalledWith( 'module_impact_total_edits' );
+	} );
+	it( 'works without instrumentation, as on the mentor dashboard', () => {
+		const wrapper = renderComponent( {
+			props: { data: useUserImpact( 60, jsonData ).value },
+		} );
+
+		expect( () => wrapper.find( '[data-link-id="impact-total-edits"]' ).trigger( 'click' ) )
+			.not.toThrow();
+	} );
 } );

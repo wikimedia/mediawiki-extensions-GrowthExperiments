@@ -52,6 +52,7 @@
 					data-link-id="impact-contributions"
 					:href="contributionsUrl"
 					class="ext-growthExperiments-Impact__contributions-link"
+					@click="instrumentation.sendClick( 'module_impact_view_all' )"
 				>
 					{{ contributionsLinkText }}
 				</a>
@@ -98,12 +99,14 @@ module.exports = exports = {
 		const isMobileHomepage = mw.config.get( 'homepagemobile' );
 		const renderThirdPerson = inject( 'RENDER_IN_THIRD_PERSON' );
 		const hasIntl = inject( 'BROWSER_HAS_INTL' );
+		const instrumentation = inject( 'HOME_MODULE_INSTRUMENTATION' );
 
 		return {
 			hasIntl,
 			DEFAULT_STREAK_TIME_FRAME,
 			isMobileHomepage,
 			renderThirdPerson,
+			instrumentation,
 		};
 	},
 	computed: {

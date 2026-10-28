@@ -11,6 +11,7 @@
 					:href="contributionsUrl"
 					class="ext-growthExperiments-ScoreCards__link"
 					data-link-id="impact-total-edits"
+					@click="instrumentation.sendClick( 'module_impact_total_edits' )"
 				>
 					{{ totalEditsCount }}
 				</a>
@@ -181,6 +182,8 @@ module.exports = exports = {
 	setup() {
 		const maxEdits = inject( 'IMPACT_MAX_EDITS' );
 		const maxThanks = inject( 'IMPACT_MAX_THANKS' );
+		// MentorDashboard also uses this component, without instrumentation.
+		const instrumentation = inject( 'HOME_MODULE_INSTRUMENTATION', { sendClick: () => {} } );
 		return {
 			cdxIconEdit,
 			cdxIconEditUndo,
@@ -190,6 +193,7 @@ module.exports = exports = {
 			cdxIconInfoFilled,
 			maxEdits,
 			maxThanks,
+			instrumentation,
 		};
 	},
 	computed: {

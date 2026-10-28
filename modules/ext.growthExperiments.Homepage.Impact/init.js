@@ -5,7 +5,17 @@
 	const useMWRestApi = require( './composables/useMWRestApi.js' );
 	const { convertNumber } = require( '../utils/filters.js' );
 	const { hasIntl } = require( '../utils/Utils.js' );
+	const {
+		createHomeModuleInstrumentation,
+		useHomeInstrument,
+	} = require( '../ext.growthExperiments.Home/HomeInstrumentation.js' );
 	const relevantUserId = mw.config.get( 'GEImpactRelevantUserId' );
+	const instrumentation = createHomeModuleInstrumentation(
+		'ext.growthExperiments.impact',
+		'module_impact',
+	);
+
+	useHomeInstrument( instrumentation );
 
 	/**
 	 * Maybe retrieve server exported data for the impact module
@@ -95,6 +105,7 @@
 		app.provide( 'RENDER_MODE', mode );
 		app.provide( 'IMPACT_MAX_EDITS', mw.config.get( 'GEImpactMaxEdits' ) );
 		app.provide( 'IMPACT_MAX_THANKS', mw.config.get( 'GEImpactMaxThanks' ) );
+		app.provide( 'HOME_MODULE_INSTRUMENTATION', instrumentation );
 		app.mount( mountPoint );
 		return app;
 	};
@@ -149,6 +160,9 @@
 				// logging unrecgnized modes.
 				throw new Error( `Unrecognized homepage module render mode: ${ renderMode }` );
 		}
+		// eslint-disable-next-line camelcase
+		instrumentation.sendModuleReady( error === null ? {} : { fetch_error: true } );
+		instrumentation.recordModuleShownAfterVisibleOnce();
 	};
 
 	getUserImpactData( relevantUserId ).then(

@@ -6,6 +6,7 @@
 			:href="article.href"
 			:data-link-data="article.views.count"
 			data-link-id="impact-article-title"
+			@click="instrumentation.sendClick( 'module_impact_article_link' )"
 		>
 			<cdx-thumbnail :thumbnail="{ url: article.image.href }">
 			</cdx-thumbnail>
@@ -25,6 +26,7 @@
 				:href="article.views.href"
 				:data-link-data="article.views.count"
 				data-link-id="impact-pageviews"
+				@click="instrumentation.sendClick( 'module_impact_article_stat' )"
 			>
 				<c-text
 					weight="bold"
@@ -74,7 +76,7 @@
 </template>
 
 <script>
-const { computed, ref } = require( 'vue' );
+const { computed, inject, ref } = require( 'vue' );
 const {
 	CdxIcon,
 	CdxThumbnail,
@@ -116,6 +118,7 @@ module.exports = exports = {
 		const clockToggleButton = ref( null );
 		const showPopover = ref( false );
 		const windowName = computed( () => window.name );
+		const instrumentation = inject( 'HOME_MODULE_INSTRUMENTATION' );
 		return {
 			cdxIconClock,
 			clockToggleButton,
@@ -123,6 +126,7 @@ module.exports = exports = {
 			xAccessor,
 			yAccessor,
 			windowName,
+			instrumentation,
 		};
 	},
 };
