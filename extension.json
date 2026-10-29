@@ -1013,6 +1013,7 @@
 				"TaskTypesDialog.vue",
 				"useSuggestedEditsFeed.js",
 				"WelcomeBackDialog.vue",
+				"../ext.growthExperiments.Home/HomeInstrumentation.js",
 				{
 					"name": "config.json",
 					"config": [

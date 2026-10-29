@@ -5,7 +5,8 @@
  * InterestSelectorDialog.vue is mapped in from another directory, and
  * ext.personalDashboard.common comes from a sibling extension, so none of them
  * exist here on disk for jest to resolve. The panels and the feed are stubbed:
- * these tests only cover the interests notice and the welcome back dialog.
+ * these tests cover the interests notice, the welcome back dialog, the menu
+ * icon and the instrumentation.
  */
 jest.mock( './codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
 jest.mock( './icons.json', () => ( {
@@ -16,7 +17,11 @@ jest.mock( './icons.json', () => ( {
 	cdxIconLevelThree: 'level-three',
 } ), { virtual: true } );
 jest.mock( './AboutPanel.vue', () => ( { render: () => null } ) );
-jest.mock( './TaskCard.vue', () => ( { render: () => null } ) );
+jest.mock( './TaskCard.vue', () => ( {
+	name: 'TaskCard',
+	props: [ 'task', 'position' ],
+	render: () => require( 'vue' ).h( 'div' ),
+} ) );
 jest.mock( './TaskTypesDialog.vue', () => ( {
 	name: 'TaskTypesDialog',
 	props: [ 'open' ],
@@ -36,17 +41,26 @@ jest.mock( './WelcomeBackDialog.vue', () => ( {
 	render: () => null,
 } ) );
 
-const mockLoad = jest.fn();
+const mockLoad = jest.fn( () => Promise.resolve() );
+const mockFeedState = { items: [], isLoading: true, error: null };
 jest.mock( './useSuggestedEditsFeed.js', () => ( {
 	useSuggestedEditsFeed: () => ( {
-		feedState: { items: [], isLoading: true, error: null },
+		feedState: mockFeedState,
 		load: mockLoad,
 	} ),
 } ) );
 jest.mock( 'ext.personalDashboard.common', () => ( {
 	FULL_LIMIT: 20,
 	FeedCard: { render: () => null },
-	FeedPanel: { render: () => null },
+	FeedPanel: {
+		props: [ 'items' ],
+		render() {
+			return require( 'vue' ).h(
+				'div',
+				this.items.map( ( item ) => this.$slots.item( { item } ) ),
+			);
+		},
+	},
 	ModuleHeaderMenu: {
 		name: 'ModuleHeaderMenu',
 		props: [ 'menuItems', 'footerItem', 'buttonLabel' ],
@@ -78,6 +92,11 @@ const { mount, flushPromises } = require( '@vue/test-utils' );
 const App = require( './App.vue' );
 
 const mockSaveOption = jest.fn();
+const mockInstrumentation = {
+	recordModuleShownAfterVisibleOnce: jest.fn(),
+	sendClick: jest.fn(),
+	sendModuleReady: jest.fn(),
+};
 
 /**
  * @param {string|null} action Value of wgGEHomeOnboardingAction
@@ -89,7 +108,10 @@ function mountApp( action ) {
 	);
 	return mount( App, {
 		props: { headerTarget: '#header' },
-		global: { stubs: { teleport: true, CdxPopover: true } },
+		global: {
+			provide: { HOME_MODULE_INSTRUMENTATION: mockInstrumentation },
+			stubs: { teleport: true, CdxPopover: true },
+		},
 	} );
 }
 
@@ -421,5 +443,174 @@ describe( 'App welcome back dialog', () => {
 		await wrapper.vm.$nextTick();
 
 		expect( wrapper.find( '.growthexperiments-interests-notice' ).exists() ).toBe( false );
+	} );
+} );
+
+describe( 'App instrumentation', () => {
+	/**
+	 * @param {Object} wrapper
+	 * @return {Object} the wrapper of the module header menu
+	 */
+	function headerMenu( wrapper ) {
+		return wrapper.findComponent( { name: 'ModuleHeaderMenu' } );
+	}
+
+	beforeEach( () => {
+		mockLoad.mockClear();
+		mockInstrumentation.recordModuleShownAfterVisibleOnce.mockClear();
+		mockInstrumentation.sendClick.mockClear();
+		mockInstrumentation.sendModuleReady.mockClear();
+		mockFilters.getSelectedInterests.mockReturnValue( [ 'Dandelion', 'Tulip' ] );
+		mockFilters.getSelectedTaskTypes.mockReturnValue( [ 'copyedit' ] );
+	} );
+
+	afterEach( () => {
+		mockFeedState.items = [];
+		mockFeedState.error = null;
+	} );
+
+	it( 'sends module_ready and module_shown after the feed loads', async () => {
+		mountApp( null );
+		expect( mockInstrumentation.sendModuleReady ).not.toHaveBeenCalled();
+		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).not.toHaveBeenCalled();
+
+		await flushPromises();
+
+		expect( mockInstrumentation.sendModuleReady ).toHaveBeenCalledTimes( 1 );
+		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledTimes( 1 );
+		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith( {
+			// eslint-disable-next-line camelcase
+			has_suggestions: false,
+			interests: 2,
+			// eslint-disable-next-line camelcase
+			task_types: 1,
+			// eslint-disable-next-line camelcase
+			has_error: false,
+		} );
+	} );
+
+	it( 'sends has_suggestions when the feed has tasks', async () => {
+		mockLoad.mockImplementationOnce( () => {
+			mockFeedState.items = [ { title: 'Dandelion', tasktype: 'copyedit' } ];
+			return Promise.resolve();
+		} );
+		mountApp( null );
+
+		await flushPromises();
+
+		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith(
+			// eslint-disable-next-line camelcase
+			expect.objectContaining( { has_suggestions: true } ),
+		);
+	} );
+
+	it( 'sends has_error when the feed fails to load', async () => {
+		mockLoad.mockImplementationOnce( () => {
+			mockFeedState.error = new Error( 'http' );
+			return Promise.resolve();
+		} );
+		mountApp( null );
+
+		await flushPromises();
+
+		expect( mockInstrumentation.sendModuleReady ).toHaveBeenCalledTimes( 1 );
+		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith(
+			// eslint-disable-next-line camelcase
+			expect.objectContaining( { has_suggestions: false, has_error: true } ),
+		);
+	} );
+
+	it( 'sends a click and closes the popover when the menu opens', () => {
+		const wrapper = mountApp( null );
+		wrapper.vm.shouldPopoverBeOpen = true;
+
+		headerMenu( wrapper ).vm.$emit( 'menu-open' );
+
+		expect( mockInstrumentation.sendClick ).toHaveBeenCalledWith( 'module_suggested_edits_options' );
+		expect( wrapper.vm.shouldPopoverBeOpen ).toBe( false );
+	} );
+
+	it.each( [
+		[ 'interests', 'module_suggested_edits_option_interests' ],
+		[ 'taskTypes', 'module_suggested_edits_option_types' ],
+	] )( 'sends a click when the user selects the "%s" menu item', ( menuValue, friendlyName ) => {
+		const wrapper = mountApp( null );
+
+		headerMenu( wrapper ).vm.$emit( 'select', menuValue );
+
+		expect( mockInstrumentation.sendClick ).toHaveBeenCalledTimes( 1 );
+		expect( mockInstrumentation.sendClick ).toHaveBeenCalledWith( friendlyName );
+	} );
+
+	it( 'sends no click when the user selects the about menu item', () => {
+		const wrapper = mountApp( null );
+
+		headerMenu( wrapper ).vm.$emit( 'select', 'about' );
+
+		expect( mockInstrumentation.sendClick ).not.toHaveBeenCalled();
+	} );
+
+	it( 'sends a click with the task type when the user clicks a task card', async () => {
+		mockFeedState.items = [
+			{ title: 'Dandelion', tasktype: 'copyedit' },
+			{ title: 'Tulip', tasktype: 'references' },
+		];
+		const wrapper = mountApp( null );
+
+		await wrapper.findAllComponents( { name: 'TaskCard' } )[ 1 ].trigger( 'click' );
+
+		expect( mockInstrumentation.sendClick ).toHaveBeenCalledWith(
+			'module_suggested_edits_suggestion',
+			// eslint-disable-next-line camelcase
+			{ suggestion_type: 'references' },
+		);
+	} );
+
+	it( 'sends a click and module_shown again when the types dialog is saved', async () => {
+		const wrapper = mountApp( null );
+		await flushPromises();
+		mockInstrumentation.recordModuleShownAfterVisibleOnce.mockClear();
+		mockFilters.getSelectedTaskTypes.mockReturnValue( [ 'copyedit', 'links', 'expand' ] );
+
+		wrapper.findComponent( { name: 'TaskTypesDialog' } ).vm.$emit( 'saved' );
+		await flushPromises();
+
+		expect( mockInstrumentation.sendClick ).toHaveBeenCalledWith(
+			'module_suggested_edits_option_types_done',
+		);
+		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith( {
+			// eslint-disable-next-line camelcase
+			has_suggestions: false,
+			interests: 2,
+			// eslint-disable-next-line camelcase
+			task_types: 3,
+			// eslint-disable-next-line camelcase
+			has_error: false,
+		} );
+		expect( mockInstrumentation.sendModuleReady ).toHaveBeenCalledTimes( 1 );
+	} );
+
+	it( 'sends a click and module_shown again when interests are saved', async () => {
+		const wrapper = mountApp( null );
+		await flushPromises();
+		mockInstrumentation.recordModuleShownAfterVisibleOnce.mockClear();
+		mockFilters.getSelectedInterests.mockReturnValue( [ 'Dandelion' ] );
+
+		interestSelector( wrapper ).vm.$emit( 'saved' );
+		await flushPromises();
+
+		expect( mockInstrumentation.sendClick ).toHaveBeenCalledWith(
+			'module_suggested_edits_option_interests_done',
+		);
+		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith( {
+			// eslint-disable-next-line camelcase
+			has_suggestions: false,
+			interests: 1,
+			// eslint-disable-next-line camelcase
+			task_types: 1,
+			// eslint-disable-next-line camelcase
+			has_error: false,
+		} );
+		expect( mockInstrumentation.sendModuleReady ).toHaveBeenCalledTimes( 1 );
 	} );
 } );

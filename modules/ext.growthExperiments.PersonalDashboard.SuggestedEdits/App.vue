@@ -21,7 +21,9 @@
 			<template #item="{ item }">
 				<task-card
 					:task="item"
-					:position="feedState.items.indexOf( item )"></task-card>
+					:position="feedState.items.indexOf( item )"
+					@click="() => onTaskCardClick( item.tasktype )"
+				></task-card>
 			</template>
 			<!-- The design shows empty cards with the large thumbnail while the tasks load. -->
 			<template #loading-card>
@@ -43,8 +45,9 @@
 			:menu-items="menuItems"
 			:footer-item="menuFooterItem"
 			:button-label="menuButtonLabel"
-			@select="openPanel = $event"
-			@menu-open="menuOpen">
+			@select="onThreeDotMenuItemSelect"
+			@menu-open="onThreeDotMenuOpen"
+		>
 			<cdx-popover
 				v-model:open="shouldPopoverBeOpen"
 				class="personal-dashboard-select-interests__popover"
@@ -74,7 +77,7 @@
 </template>
 
 <script>
-const { computed, defineComponent, nextTick, ref } = require( 'vue' );
+const { computed, defineComponent, nextTick, ref, inject } = require( 'vue' );
 const { CdxPopover } = require( './codex.js' );
 const {
 	FeedCard,
@@ -189,6 +192,7 @@ module.exports = exports = defineComponent( {
 	},
 	setup( props ) {
 		const { feedState, load } = useSuggestedEditsFeed();
+		const instrumentation = inject( 'HOME_MODULE_INSTRUMENTATION' );
 
 		const defaultPopoverAction = { label: mw.msg( 'growthexperiments-home-suggestededits-popover-button' ),
 			actionType: 'progressive' };
@@ -213,9 +217,10 @@ module.exports = exports = defineComponent( {
 		// The dialog saves that the user saw it.
 		const showWelcomeBack = ref( mw.config.get( 'wgGEHomeOnboardingAction' ) === WELCOME_BACK_ACTION );
 
-		const menuOpen = () => {
+		function onThreeDotMenuOpen() {
 			shouldPopoverBeOpen.value = false;
-		};
+			instrumentation.sendClick( 'module_suggested_edits_options' );
+		}
 
 		const possiblyShowPopover = () => {
 			if ( !popoverDismissed.value && popoverPending ) {
@@ -285,18 +290,57 @@ module.exports = exports = defineComponent( {
 			} );
 		};
 
+		function sendModuleShownOnceWhenVisible() {
+			instrumentation.recordModuleShownAfterVisibleOnce(
+				{
+					// eslint-disable-next-line camelcase
+					has_suggestions: feedState.items.length > 0,
+					interests: selectedInterestCount.value,
+					// eslint-disable-next-line camelcase
+					task_types: selectedTaskTypeCount.value,
+					// eslint-disable-next-line camelcase
+					has_error: feedState.error !== null,
+				},
+			);
+		}
+
 		// Here rather than in mounted(): load() raises the loading flag before it
 		// awaits anything, and mounted() runs after the first render, so deferring
 		// it paints the empty-state line for a frame on every mount.
-		load( FULL_LIMIT );
+		load( FULL_LIMIT ).then( () => {
+			instrumentation.sendModuleReady();
+			sendModuleShownOnceWhenVisible();
+		} );
+
+		/**
+		 * @param {string} menuValue
+		 */
+		function onThreeDotMenuItemSelect( menuValue ) {
+			if ( menuValue === 'interests' ) {
+				instrumentation.sendClick( 'module_suggested_edits_option_interests' );
+			} else if ( menuValue === 'taskTypes' ) {
+				instrumentation.sendClick( 'module_suggested_edits_option_types' );
+			}
+			openPanel.value = menuValue;
+		}
+
+		/**
+		 * @param {string} cardTaskType
+		 */
+		function onTaskCardClick( cardTaskType ) {
+			// eslint-disable-next-line camelcase
+			instrumentation.sendClick( 'module_suggested_edits_suggestion', { suggestion_type: cardTaskType } );
+		}
 
 		return {
 			defaultPopoverAction,
+			onThreeDotMenuOpen,
+			onThreeDotMenuItemSelect,
+			onTaskCardClick,
 			feedState,
 			openPanel,
 			// A panel only ever reports itself closed: it is opened from the menu
 			// above or from the interests notice, never by its own model.
-			menuOpen,
 			closePanel,
 			popoverGotItAction,
 			shouldPopoverBeOpen,
@@ -316,7 +360,10 @@ module.exports = exports = defineComponent( {
 				const selected = newcomerTasks.filters.getSelectedTaskTypes();
 				selectedTaskTypeCount.value = selected.length;
 				taskTypesIcon.value = getTaskTypesMenuIcon( selected );
-				load( FULL_LIMIT );
+				load( FULL_LIMIT ).then( () => {
+					sendModuleShownOnceWhenVisible();
+				} );
+				instrumentation.sendClick( 'module_suggested_edits_option_types_done' );
 			},
 			// The dialog saves the interests, and the API reads them for itself, so the
 			// feed only has to ask again.
@@ -330,7 +377,10 @@ module.exports = exports = defineComponent( {
 					hideInterestsNotice();
 					possiblyShowPopover();
 				}
-				load( FULL_LIMIT );
+				load( FULL_LIMIT ).then( () => {
+					sendModuleShownOnceWhenVisible();
+				} );
+				instrumentation.sendClick( 'module_suggested_edits_option_interests_done' );
 			},
 			onInterestsNoticeDismissed,
 			menuItems: computed( () => [

@@ -10,9 +10,26 @@
  * islands in <suspense>, so App.vue resolves in place with no loading gap of our
  * own to render.
  */
-const { defineAsyncComponent } = require( 'vue' );
+const { defineAsyncComponent, defineComponent, h, provide } = require( 'vue' );
+const {
+	createHomeModuleInstrumentation,
+	useHomeInstrument,
+} = require( '../ext.growthExperiments.Home/HomeInstrumentation.js' );
+const instrumentation = createHomeModuleInstrumentation(
+	'ext.growthExperiments.PersonalDashboard.SuggestedEdits',
+	'module_suggested_edits',
+);
+useHomeInstrument( instrumentation );
 
 module.exports = defineAsyncComponent(
-	() => mw.loader.using( 'ext.personalDashboard.common' )
-		.then( () => require( './App.vue' ) ),
+	() => mw.loader.using( 'ext.personalDashboard.common' ).then( () => {
+		const App = require( './App.vue' );
+		return defineComponent( {
+			name: 'SuggestedEditsInstrumented',
+			setup() {
+				provide( 'HOME_MODULE_INSTRUMENTATION', instrumentation );
+				return () => h( App );
+			},
+		} );
+	} ),
 );

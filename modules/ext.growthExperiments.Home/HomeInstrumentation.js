@@ -37,12 +37,18 @@ function createHomeModuleInstrumentation( moduleElementId, elementFriendlyName )
 
 	/**
 	 * @param {string} friendlyName The element_friendly_name of the clicked element
+	 * @param {?Object} [context] More data for action_context
 	 */
-	instrumentation.sendClick = ( friendlyName ) => {
-		instrumentation.send( 'click', {
+	instrumentation.sendClick = ( friendlyName, context = null ) => {
+		const interactionData = {
 			// eslint-disable-next-line camelcase
 			element_friendly_name: friendlyName,
-		} );
+		};
+		if ( context !== null ) {
+			// eslint-disable-next-line camelcase
+			interactionData.action_context = JSON.stringify( context );
+		}
+		instrumentation.send( 'click', interactionData );
 	};
 
 	/**
