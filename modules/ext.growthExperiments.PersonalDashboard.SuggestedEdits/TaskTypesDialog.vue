@@ -158,10 +158,12 @@ module.exports = exports = defineComponent( {
 		} );
 
 		// The count can be wrong when no task type is selected (T369742), so check both.
+		// The count is null when the count request fails. Do not let the user save a
+		// selection that can have no tasks.
 		const primaryAction = computed( () => ( {
 			label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-close' ).text(),
 			actionType: 'progressive',
-			disabled: !selected.value.length || isCounting.value || count.value === 0,
+			disabled: !selected.value.length || isCounting.value || !count.value,
 		} ) );
 
 		const save = () => {

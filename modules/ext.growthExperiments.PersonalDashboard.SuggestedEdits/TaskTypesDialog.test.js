@@ -169,6 +169,33 @@ describe( 'TaskTypesDialog', () => {
 		expect( wrapper.find( '.cdx-dialog__header__subtitle' ).exists() ).toBe( false );
 	} );
 
+	it( 'blocks Done when counting fails', async () => {
+		const wrapper = await mountOpen( [ 'copyedit' ] );
+		expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
+		mockApi.fetchTasks.mockImplementation(
+			() => $.Deferred().reject( 'cirrussearch-too-busy-error' ).promise( { abort: jest.fn() } ),
+		);
+
+		await checkbox( wrapper, 'expand' ).setValue( true );
+		await flushPromises();
+
+		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
+	} );
+
+	it( 'unblocks Done when a count arrives after a failed count', async () => {
+		mockApi.fetchTasks.mockImplementation(
+			() => $.Deferred().reject( 'http' ).promise( { abort: jest.fn() } ),
+		);
+		const wrapper = await mountOpen( [ 'copyedit' ] );
+		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
+		mockApi.fetchTasks.mockImplementation( () => countResponse( 42 ) );
+
+		await checkbox( wrapper, 'expand' ).setValue( true );
+		await flushPromises();
+
+		expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
+	} );
+
 	it( 'blocks Done and shows an error when nothing is selected', async () => {
 		const wrapper = await mountOpen( [] );
 
@@ -217,11 +244,17 @@ describe( 'TaskTypesDialog', () => {
 	} );
 
 	it( 'ignores an aborted count request', async () => {
-		mockApi.fetchTasks.mockImplementation(
-			() => $.Deferred().reject( 'abort' ).promise( { abort: jest.fn() } ),
-		);
+		const pending = $.Deferred();
+		const abort = jest.fn( () => pending.reject( 'http' ) );
+		mockApi.fetchTasks.mockImplementation( () => pending.promise( { abort } ) );
 		const wrapper = await mountOpen( [ 'copyedit' ] );
+		mockApi.fetchTasks.mockImplementation( () => countResponse( 42 ) );
 
+		await checkbox( wrapper, 'expand' ).setValue( true );
+		await flushPromises();
+
+		expect( abort ).toHaveBeenCalled();
+		expect( wrapper.find( '.cdx-dialog__header__subtitle' ).exists() ).toBe( true );
 		expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
 	} );
 
