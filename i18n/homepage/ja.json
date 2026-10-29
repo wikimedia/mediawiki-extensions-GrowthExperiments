@@ -533,6 +533,9 @@
 	"growthexperiments-levelingup-reengage-notification-call-to-action-label": "おすすめ編集を試してみる",
 	"growthexperiments-levelingup-keepgoing-notification-header": "{{GENDER:$2|あなたはこれまでに}}{{PLURAL:$3|おすすめ編集}}を$3件、手がけました。続きに取り組んで、新しい技能を身につけてください。",
 	"growthexperiments-levelingup-keepgoing-notification-call-to-action-label": "おすすめの編集をする",
+	"growthexperiments-levelingup-keepgoing-exploring-notification-call-to-action-label": "他の編集を試す",
 	"echo-category-title-ge-newcomer": "Growth 機能",
-	"echo-pref-tooltip-ge-newcomer": "新規利用者向けのタスクや、新規利用者を支援するよう設計されたその他の機能について通知する。"
+	"echo-pref-tooltip-ge-newcomer": "新規利用者向けのタスクや、新規利用者を支援するよう設計されたその他の機能について通知する。",
+	"growthexperiments-homepage-communityupdates-calltoaction-button": "詳細",
+	"growthexperiments-addalink-milestone-notification-call-to-action-label": "他の編集を試す"
 }

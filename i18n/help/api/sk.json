@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Spracovať otázky aktuálneho používateľa odoslané cez panel pomoci.",
+	"apihelp-helppanelquestionposter-param-body": "Text otázky zadaný používateľom.",
+	"apihelp-helppanelquestionposter-param-source": "Spôsob, ktorým bola otázka odoslaná.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panel „Opýtajte sa poradne“",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panel „Opýtajte sa svojho mentora“ na domovskej stránke nováčika",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Obrazovka „Opýtajte sa svojho mentora“ v paneli pomoci",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panel „Opýtajte sa poradne“ (starý názov)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel „Opýtajte sa svojho mentora“ na domovskej stránke nováčika (starý názov)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Súvisiaci názov, ak je vybraný, ktorý sa pripojí k otázke.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Na položenie otázky musíte byť prihlásený."
+}
