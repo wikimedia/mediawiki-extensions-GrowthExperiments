@@ -321,6 +321,8 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "完成",
 	"growthexperiments-home-suggestededits-difficulty-filters-cancel": "取消",
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "找到$1个{{PLURAL:$1|编辑建议}}",
+	"growthexperiments-home-suggestededits-interests-notice": "获取符合您兴趣的条目。",
+	"growthexperiments-home-suggestededits-interests-notice-button": "选择兴趣",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "完成",
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "完成",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "取消",

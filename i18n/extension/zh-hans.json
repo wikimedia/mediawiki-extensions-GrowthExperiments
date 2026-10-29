@@ -33,6 +33,7 @@
 	},
 	"growthexperiments-desc": "这个扩展包括了 Growth 团队的试验性功能。",
 	"growthexperiments-info-tooltip-close-label": "关闭",
+	"accountsetup": "账号设置",
 	"growthexperiments-account-setup-a11y-title": "账号设置",
 	"growthexperiments-account-setup-skip-a11y-label": "跳过",
 	"growthexperiments-account-setup-back-a11y-label": "返回",

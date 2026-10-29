@@ -268,6 +268,8 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Oldu",
 	"growthexperiments-home-suggestededits-difficulty-filters-cancel": "İmtina",
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "$1 {{PLURAL:$1|təklif olunan redaktə}} tapıldı",
+	"growthexperiments-home-suggestededits-interests-notice": "Maraqlarınıza uyğun məqalələr əldə edin.",
+	"growthexperiments-home-suggestededits-interests-notice-button": "Maraqlarını seç",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Oldu",
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "Oldu",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "İmtina",
