@@ -209,9 +209,15 @@ abstract class QuestionPoster {
 		}
 
 		$this->revisionId = $newRev->getId();
-		$fragment = MediaWikiServices::getInstance()
-				->getParser()
-				->guessSectionNameFromWikiText( $this->getSectionHeader() );
+		$services = MediaWikiServices::getInstance();
+		// Expand the templates in the header, so that the fragment is the same as the heading anchor.
+		$expandedSectionHeader = $services->getMessageParser()->transform(
+			$this->getSectionHeader(),
+			false,
+			$this->getTargetTitle()->getPageLanguage(),
+			$this->getTargetTitle()
+		);
+		$fragment = $services->getParser()->guessSectionNameFromWikiText( $expandedSectionHeader );
 
 		// NOTE: Don't call setFragment() on the original Title, that may corrupt the internal
 		//       cache of Title objects.

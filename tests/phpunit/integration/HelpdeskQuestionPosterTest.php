@@ -257,6 +257,44 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
+	/**
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::submit
+	 */
+	public function testResultUrlFragmentMatchesExpandedHeading() {
+		$title = Title::makeTitle( self::getDefaultWikitextNS(), 'HelpDeskTest' );
+		$this->overrideProviderConfig( [
+			'GEHelpPanelHelpDeskTitle' => $title->getPrefixedDBkey(),
+		], 'HelpPanel' );
+		$this->insertPage( $title, '' );
+
+		$geServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
+		$context = $this->buildContext();
+		$questionPoster = new class(
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getRedirectLookup(),
+			$this->getServiceContainer()->getPermissionManager(),
+			$this->getServiceContainer()->getStatsFactory(),
+			$geServices->getHelpPanel(),
+			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ),
+			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ),
+			$context,
+			$context,
+			'a great question'
+		) extends HelpdeskQuestionPoster {
+			/** @inheritDoc */
+			protected function getSectionHeaderTemplate() {
+				return 'Question on {{lc:EXPANDED}}';
+			}
+		};
+		$questionPoster->submit();
+
+		$linkAnchor = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title )
+			->getParserOutput()->getTOCData()->getSections()[0]->linkAnchor;
+		$this->assertStringContainsString( 'expanded', $linkAnchor );
+		$this->assertSame( $linkAnchor, parse_url( $questionPoster->getResultUrl(), PHP_URL_FRAGMENT ) );
+	}
+
 	private function buildContext() {
 		if ( $this->mutableTestUser === null ) {
 			$this->mutableTestUser = $this->getMutableTestUser()->getUser();
