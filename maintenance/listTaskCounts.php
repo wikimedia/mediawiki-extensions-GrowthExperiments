@@ -164,11 +164,6 @@ class ListTaskCounts extends Maintenance {
 			->withComponent( 'GrowthExperiments' )
 			->getCounter( 'tasktype_count' );
 		foreach ( $taskTypeCounts as $taskTypeId => $taskTypeCount ) {
-			// SuggestionsInfo uses -1 when the search for the task type fails.
-			if ( $taskTypeCount < 0 ) {
-				$this->error( "Cannot get the task count for task type $taskTypeId" );
-				continue;
-			}
 			$counter
 				->setLabel( 'wiki', $wiki )
 				->setLabel( 'tasktype', $taskTypeId )
