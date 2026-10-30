@@ -278,6 +278,8 @@
 	"growthexperiments-home-suggestededits-difficulty-filters-cancel": "Peruuta",
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "$1 {{PLURAL:$1|ehdotettu muokkaus|ehdotettua muokkausta}} löytyi",
 	"growthexperiments-home-suggestededits-interests-notice-button": "Valitse kiinnostuksen kohteet",
+	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|Tervetuloa takaisin}}, {{bidi:$1}}!",
+	"growthexperiments-home-welcome-back-select-interests": "Valitse kiinnostuksen kohteet",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Valmis",
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "Valmis",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "Peruuta",
