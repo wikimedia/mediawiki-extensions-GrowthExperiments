@@ -6,6 +6,7 @@ namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomeAvailability;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Interwiki\ClassicInterwikiLookup;
@@ -285,8 +286,8 @@ class AccountSetupHooksTest extends MediaWikiIntegrationTestCase {
 		$featureManager = $this->createMock( FeatureManager::class );
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )
 			->willReturn( $isTreatment );
-		$featureManager->method( 'isHomeAvailable' )
-			->willReturn( $isHomeAvailable );
+		$featureManager->method( 'getHomeAvailability' )
+			->willReturn( $isHomeAvailable ? HomeAvailability::Wikiwide : HomeAvailability::Unavailable );
 
 		// CentralAuth has its own redirect hook. Mock the registry, so that the result
 		// does not depend on the extensions of the local installation.

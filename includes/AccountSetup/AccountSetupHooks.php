@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\AccountSetup;
 
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomeAvailability;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\IExperimentManager;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
@@ -99,7 +100,7 @@ class AccountSetupHooks implements
 		}
 
 		if (
-			!$this->featureManager->isHomeAvailable() &&
+			$this->featureManager->getHomeAvailability() !== HomeAvailability::Wikiwide &&
 			!$this->featureManager->isEarlyOnboardingExperimentTreatment( $user, true )
 		) {
 			return true;
@@ -161,7 +162,7 @@ class AccountSetupHooks implements
 	 */
 	private function maybeRedirectToOnboarding( string &$returnTo, array $returnToQuery ): ?array {
 		$context = RequestContext::getMain();
-		if ( $this->featureManager->isHomeAvailable() ) {
+		if ( $this->featureManager->getHomeAvailability() === HomeAvailability::Wikiwide ) {
 			if ( !$this->onboardingEligibility->shouldStartOnboarding( $context, $returnTo, $returnToQuery ) ) {
 				return null;
 			}

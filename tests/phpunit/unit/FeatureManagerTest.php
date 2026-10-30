@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomeAvailability;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\IExperimentManager;
 use MediaWiki\Config\HashConfig;
@@ -133,24 +134,24 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $sut->areImageRecommendationDependenciesSatisfied() );
 	}
 
-	public static function provideIsHomeAvailable(): iterable {
-		yield 'flag on, PersonalDashboard loaded' => [ true, true, true ];
-		yield 'flag on, PersonalDashboard not loaded' => [ true, false, false ];
-		yield 'flag off, PersonalDashboard loaded' => [ false, true, false ];
-		yield 'flag off, PersonalDashboard not loaded' => [ false, false, false ];
+	public static function provideGetHomeAvailability(): iterable {
+		yield 'flag on, PersonalDashboard loaded' => [ true, true, HomeAvailability::Wikiwide ];
+		yield 'flag on, PersonalDashboard not loaded' => [ true, false, HomeAvailability::Unavailable ];
+		yield 'flag off, PersonalDashboard loaded' => [ false, true, HomeAvailability::Unavailable ];
+		yield 'flag off, PersonalDashboard not loaded' => [ false, false, HomeAvailability::Unavailable ];
 	}
 
 	/**
-	 * @dataProvider provideIsHomeAvailable
+	 * @dataProvider provideGetHomeAvailability
 	 */
-	public function testIsHomeAvailable(
-		bool $homeEnabled, bool $dashboardLoaded, bool $expected
+	public function testGetHomeAvailability(
+		bool $homeEnabled, bool $dashboardLoaded, HomeAvailability $expected
 	): void {
 		$featureManager = $this->getFeatureManager( [
 			'registeredExtensions' => $dashboardLoaded ? [ 'PersonalDashboard' ] : [],
 			'config' => [ 'GEHomeEnabled' => $homeEnabled ],
 		] );
-		$this->assertSame( $expected, $featureManager->isHomeAvailable() );
+		$this->assertSame( $expected, $featureManager->getHomeAvailability() );
 	}
 
 	public static function provideIsHomeEnabledForUser(): iterable {

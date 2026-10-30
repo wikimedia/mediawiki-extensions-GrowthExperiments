@@ -26,14 +26,19 @@ class FeatureManager {
 	}
 
 	/**
-	 * Does this wiki have Home?
+	 * How does this wiki give Home to its users?
 	 *
-	 * The wiki level flag must be on, and PersonalDashboard must be loaded.
 	 * PersonalDashboard serves Special:Home and is an optional dependency.
+	 * Without it, Home is not available.
 	 */
-	public function isHomeAvailable(): bool {
-		return $this->growthConfig->get( 'GEHomeEnabled' )
-			&& $this->extensionRegistry->isLoaded( 'PersonalDashboard' );
+	public function getHomeAvailability(): HomeAvailability {
+		if ( !$this->extensionRegistry->isLoaded( 'PersonalDashboard' ) ) {
+			return HomeAvailability::Unavailable;
+		}
+		if ( $this->growthConfig->get( 'GEHomeEnabled' ) ) {
+			return HomeAvailability::Wikiwide;
+		}
+		return HomeAvailability::Unavailable;
 	}
 
 	/**
@@ -48,7 +53,7 @@ class FeatureManager {
 	 * does not have the feature.
 	 */
 	public function isHomeEnabledForUser( UserIdentity $user ): bool {
-		return $this->isHomeAvailable()
+		return $this->getHomeAvailability() === HomeAvailability::Wikiwide
 			&& $this->userOptionsLookup->getBoolOption(
 				$user,
 				HomepageHooks::HOMEPAGE_PREF_ENABLE

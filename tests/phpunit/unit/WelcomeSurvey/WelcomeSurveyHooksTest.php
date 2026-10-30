@@ -7,6 +7,7 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\AccountSetup\PostSignupOnboardingEligibility;
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomeAvailability;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\WelcomeSurvey;
 use GrowthExperiments\WelcomeSurveyFactory;
@@ -255,7 +256,7 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 				'type' => 'signup',
 			],
 			[
-				'home' => true,
+				'homeAvailability' => HomeAvailability::Wikiwide,
 				'request' => new FauxRequest( [] ),
 			],
 			[
@@ -340,7 +341,8 @@ class WelcomeSurveyHooksTest extends MediaWikiUnitTestCase {
 		] );
 		$featureManager = $this->createMock( FeatureManager::class );
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( false );
-		$featureManager->method( 'isHomeAvailable' )->willReturn( $overrides['home'] ?? false );
+		$featureManager->method( 'getHomeAvailability' )
+			->willReturn( $overrides['homeAvailability'] ?? HomeAvailability::Unavailable );
 
 		$campaignConfig = $this->createMock( CampaignConfig::class );
 		$campaignConfig->method( 'isGrowthCampaign' )->willReturn(

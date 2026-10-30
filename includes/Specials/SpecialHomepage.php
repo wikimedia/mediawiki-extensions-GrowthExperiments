@@ -6,6 +6,7 @@ use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomeAvailability;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
@@ -238,7 +239,7 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function maybeRedirectToHome( string $subPage ): bool {
 		if (
-			!$this->featureManager->isHomeAvailable() ||
+			$this->featureManager->getHomeAvailability() !== HomeAvailability::Wikiwide ||
 			str_starts_with( $subPage, 'newcomertask/' )
 		) {
 			return false;

@@ -8,6 +8,7 @@ use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\AccountSetup\PostSignupOnboardingEligibility;
 use GrowthExperiments\Campaigns\CampaignLoader;
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomeAvailability;
 use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use MediaWiki\Config\HashConfig;
@@ -171,7 +172,7 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 
 		yield 'signup, wiki with Home' => [
 			[
-				'home' => true,
+				'homeAvailability' => HomeAvailability::Wikiwide,
 			],
 			[
 				'returnTo' => 'Foo:Bar',
@@ -187,7 +188,7 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 
 		yield 'signup, wiki with Home, user was editing' => [
 			[
-				'home' => true,
+				'homeAvailability' => HomeAvailability::Wikiwide,
 				'returnToTitle' => [ 'canExist' => true, 'fragment' => '' ],
 			],
 			[
@@ -204,7 +205,7 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 
 		yield 'signup, wiki with Home, campaign skips onboarding' => [
 			[
-				'home' => true,
+				'homeAvailability' => HomeAvailability::Wikiwide,
 				'skipCampaign' => true,
 			],
 			[
@@ -221,7 +222,7 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 
 		yield 'signup, wiki with Home, popup signup' => [
 			[
-				'home' => true,
+				'homeAvailability' => HomeAvailability::Wikiwide,
 				'request' => [ 'display' => 'popup' ],
 			],
 			[
@@ -362,6 +363,7 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 	public function testOnLocalUserCreatedSkippedOutsideTreatmentGroup(): void {
 		$user = $this->newUser();
 		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'getHomeAvailability' )->willReturn( HomeAvailability::Unavailable );
 		$featureManager->expects( $this->once() )
 			->method( 'isEarlyOnboardingExperimentTreatment' )
 			->with( $user, true )
@@ -390,8 +392,14 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 			false,
 		];
 		yield 'control, popup signup' => [ [ 'control' => true, 'request' => [ 'display' => 'popup' ] ], false ];
-		yield 'wiki with Home, treatment' => [ [ 'home' => true, 'earlyOnboarding' => true ], false ];
-		yield 'wiki with Home, control' => [ [ 'home' => true, 'control' => true ], false ];
+		yield 'wiki with Home, treatment' => [
+			[ 'homeAvailability' => HomeAvailability::Wikiwide, 'earlyOnboarding' => true ],
+			false,
+		];
+		yield 'wiki with Home, control' => [
+			[ 'homeAvailability' => HomeAvailability::Wikiwide, 'control' => true ],
+			false,
+		];
 	}
 
 	/**
@@ -478,8 +486,8 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 		$featureManager = $overrides['featureManager'] ?? null;
 		if ( !$featureManager ) {
 			$featureManager = $this->createMock( FeatureManager::class );
-			$featureManager->method( 'isHomeAvailable' )
-				->willReturn( $overrides['home'] ?? false );
+			$featureManager->method( 'getHomeAvailability' )
+				->willReturn( $overrides['homeAvailability'] ?? HomeAvailability::Unavailable );
 			$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )
 				->willReturn( $overrides['earlyOnboarding'] ?? false );
 			$featureManager->method( 'isEarlyOnboardingExperimentControl' )

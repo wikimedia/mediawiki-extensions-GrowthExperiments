@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\AccountSetup\AccountSetupHooks;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\HomeAvailability;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\ReadingRecommendations;
 use GrowthExperiments\Mentorship\StaticMentorManager;
@@ -23,6 +24,7 @@ use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 
 /**
@@ -99,7 +101,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	public function testReadingRecommendationsModuleRendersWhenInEarlyOnboardingTreatmentGroup() {
 		$user = $this->enableHomepageForTesting();
 
-		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager = $this->newFeatureManagerMock();
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 
@@ -140,19 +142,30 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	}
 
 	private function mockEarlyOnboardingTreatment(): void {
-		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager = $this->newFeatureManagerMock();
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 	}
 
 	/**
 	 * Make Home available without PersonalDashboard. CI does not always load
-	 * PersonalDashboard, and FeatureManager::isHomeAvailable() requires it.
+	 * PersonalDashboard, and FeatureManager::getHomeAvailability() requires it.
 	 */
 	private function mockHomeAvailable(): void {
-		$featureManager = $this->createMock( FeatureManager::class );
-		$featureManager->method( 'isHomeAvailable' )->willReturn( true );
+		$featureManager = $this->newFeatureManagerMock( HomeAvailability::Wikiwide );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+	}
+
+	/**
+	 * HomepageHooks::onSpecialPage_initList() reads the Home availability from
+	 * the service. PHPUnit cannot make up an enum return value.
+	 */
+	private function newFeatureManagerMock(
+		HomeAvailability $homeAvailability = HomeAvailability::Unavailable
+	): FeatureManager&MockObject {
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'getHomeAvailability' )->willReturn( $homeAvailability );
+		return $featureManager;
 	}
 
 	private function newExperimentManagerExpectingExposures(
@@ -171,7 +184,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	public function testReadingRecommendationsModuleHiddenWhenNotInEarlyOnboardingTreatmentGroup() {
 		$user = $this->enableHomepageForTesting();
 
-		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager = $this->newFeatureManagerMock();
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( false );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 
@@ -188,7 +201,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$userOptionsManager->setOption( $user, AccountSetupHooks::ACCOUNT_SETUP_MOTIVATION_PROP, "editing" );
 		$userOptionsManager->saveOptions( $user );
 
-		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager = $this->newFeatureManagerMock();
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 
@@ -213,7 +226,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$skinFactory = MediaWikiServices::getInstance()->getSkinFactory();
 		$context->setSkin( $skinFactory->makeSkin( 'minerva' ) );
 
-		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager = $this->newFeatureManagerMock();
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 
@@ -245,7 +258,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$skinFactory = MediaWikiServices::getInstance()->getSkinFactory();
 		$context->setSkin( $skinFactory->makeSkin( 'minerva' ) );
 
-		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager = $this->newFeatureManagerMock();
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 
@@ -265,7 +278,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	public function testReadingRecommendationsModuleFirstWhenUserSelectedReadingAsAccountMotivationOnDesktop() {
 		$user = $this->enableHomepageForTestingWithReadingUser();
 
-		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager = $this->newFeatureManagerMock();
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 
@@ -285,7 +298,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	public function testReadingRecommendationsModuleFirstWhenUserSelectedReadingAsAccountMotivationOnMobile() {
 		$user = $this->enableHomepageForTestingWithReadingUser();
 
-		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager = $this->newFeatureManagerMock();
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 

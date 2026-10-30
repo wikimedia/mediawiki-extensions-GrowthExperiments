@@ -149,7 +149,7 @@ class WelcomeSurveyHooks implements
 		}
 		// Wikis with Home use the account setup flow instead of the Welcome Survey.
 		if (
-			$this->featureManager->isHomeAvailable() ||
+			$this->featureManager->getHomeAvailability() === HomeAvailability::Wikiwide ||
 			$this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser(), true )
 		) {
 			return true;
@@ -192,7 +192,7 @@ class WelcomeSurveyHooks implements
 			return true;
 		}
 		if (
-			$this->featureManager->isHomeAvailable() ||
+			$this->featureManager->getHomeAvailability() === HomeAvailability::Wikiwide ||
 			$this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser(), true )
 		) {
 			return true;
@@ -245,7 +245,7 @@ class WelcomeSurveyHooks implements
 			return true;
 		}
 		if (
-			$this->featureManager->isHomeAvailable() ||
+			$this->featureManager->getHomeAvailability() === HomeAvailability::Wikiwide ||
 			$this->featureManager->isEarlyOnboardingExperimentTreatment( $context->getUser() )
 		) {
 			return true;

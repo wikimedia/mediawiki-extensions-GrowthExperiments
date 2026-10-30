@@ -175,7 +175,7 @@ class HomepageHooks implements
 	public function onSpecialPage_initList( &$list ) {
 		// The per-user gate stays in SpecialHome, because its error page tells the
 		// user to change a preference, which only helps on a wiki that has the feature.
-		if ( $this->featureManager->isHomeAvailable() ) {
+		if ( $this->featureManager->getHomeAvailability() !== HomeAvailability::Unavailable ) {
 			$list['Home'] = [
 				'class' => SpecialHome::class,
 				'services' => [

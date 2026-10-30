@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests\Integration;
 use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\HomeAvailability;
 use GrowthExperiments\IExperimentManager;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use GrowthExperiments\WelcomeSurvey;
@@ -130,6 +131,7 @@ class SpecialWelcomeSurveyTest extends SpecialPageTestBase {
 
 	private function mockEarlyOnboardingControl( bool $isControl ): void {
 		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'getHomeAvailability' )->willReturn( HomeAvailability::Unavailable );
 		$featureManager->method( 'isEarlyOnboardingExperimentControl' )->willReturn( $isControl );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 	}
