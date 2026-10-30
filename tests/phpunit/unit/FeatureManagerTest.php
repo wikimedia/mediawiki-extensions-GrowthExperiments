@@ -133,21 +133,6 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $sut->areImageRecommendationDependenciesSatisfied() );
 	}
 
-	public static function provideIsGEHomeEnabled(): iterable {
-		yield 'enabled' => [ true, true ];
-		yield 'disabled' => [ false, false ];
-	}
-
-	/**
-	 * @dataProvider provideIsGEHomeEnabled
-	 */
-	public function testIsGEHomeEnabled( bool $configValue, bool $expected ): void {
-		$featureManager = $this->getFeatureManager( [
-			'config' => [ 'GEHomeEnabled' => $configValue ],
-		] );
-		$this->assertSame( $expected, $featureManager->isGEHomeEnabled() );
-	}
-
 	public static function provideIsHomeAvailable(): iterable {
 		yield 'flag on, PersonalDashboard loaded' => [ true, true, true ];
 		yield 'flag on, PersonalDashboard not loaded' => [ true, false, false ];

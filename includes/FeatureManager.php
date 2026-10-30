@@ -25,10 +25,6 @@ class FeatureManager {
 	) {
 	}
 
-	public function isGEHomeEnabled(): bool {
-		return $this->growthConfig->get( 'GEHomeEnabled' );
-	}
-
 	/**
 	 * Does this wiki have Home?
 	 *
@@ -36,7 +32,7 @@ class FeatureManager {
 	 * PersonalDashboard serves Special:Home and is an optional dependency.
 	 */
 	public function isHomeAvailable(): bool {
-		return $this->isGEHomeEnabled()
+		return $this->growthConfig->get( 'GEHomeEnabled' )
 			&& $this->extensionRegistry->isLoaded( 'PersonalDashboard' );
 	}
 
