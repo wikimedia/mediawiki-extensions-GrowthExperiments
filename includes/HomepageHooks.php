@@ -182,6 +182,7 @@ class HomepageHooks implements
 					'PersonalDashboardPageDependencies',
 					'GrowthExperimentsFeatureManager',
 					'GrowthExperimentsHomeOnboardingActionLookup',
+					'UserOptionsLookup',
 				],
 			];
 			$list['AccountSetup'] = [

@@ -135,21 +135,34 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	public static function provideGetHomeAvailability(): iterable {
-		yield 'flag on, PersonalDashboard loaded' => [ true, true, HomeAvailability::Wikiwide ];
-		yield 'flag on, PersonalDashboard not loaded' => [ true, false, HomeAvailability::Unavailable ];
-		yield 'flag off, PersonalDashboard loaded' => [ false, true, HomeAvailability::Unavailable ];
-		yield 'flag off, PersonalDashboard not loaded' => [ false, false, HomeAvailability::Unavailable ];
+		$allExtensions = [ 'PersonalDashboard', 'BetaFeatures' ];
+		yield 'both flags off' => [ $allExtensions, false, false, HomeAvailability::Unavailable ];
+		yield 'Home flag on' => [ $allExtensions, true, false, HomeAvailability::Wikiwide ];
+		yield 'both flags on, Home flag wins' => [ $allExtensions, true, true, HomeAvailability::Wikiwide ];
+		yield 'beta flag on' => [ $allExtensions, false, true, HomeAvailability::BetaFeature ];
+		yield 'beta flag on, BetaFeatures not loaded' => [
+			[ 'PersonalDashboard' ], false, true, HomeAvailability::Unavailable,
+		];
+		yield 'Home flag on, PersonalDashboard not loaded' => [
+			[ 'BetaFeatures' ], true, false, HomeAvailability::Unavailable,
+		];
+		yield 'beta flag on, PersonalDashboard not loaded' => [
+			[ 'BetaFeatures' ], false, true, HomeAvailability::Unavailable,
+		];
 	}
 
 	/**
 	 * @dataProvider provideGetHomeAvailability
 	 */
 	public function testGetHomeAvailability(
-		bool $homeEnabled, bool $dashboardLoaded, HomeAvailability $expected
+		array $registeredExtensions, bool $homeEnabled, bool $betaFeatureEnabled, HomeAvailability $expected
 	): void {
 		$featureManager = $this->getFeatureManager( [
-			'registeredExtensions' => $dashboardLoaded ? [ 'PersonalDashboard' ] : [],
-			'config' => [ 'GEHomeEnabled' => $homeEnabled ],
+			'registeredExtensions' => $registeredExtensions,
+			'config' => [
+				'GEHomeEnabled' => $homeEnabled,
+				'GEHomeBetaFeatureEnabled' => $betaFeatureEnabled,
+			],
 		] );
 		$this->assertSame( $expected, $featureManager->getHomeAvailability() );
 	}
@@ -175,6 +188,28 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame(
 			$expected,
 			$featureManager->isHomeEnabledForUser( new UserIdentityValue( 1, 'Alice' ) )
+		);
+	}
+
+	public static function provideIsHomeBetaFeatureEnabledByUserWhenHomeIsNotABetaFeature(): iterable {
+		yield 'Home unavailable' => [ false ];
+		yield 'Home wiki-wide' => [ true ];
+	}
+
+	/**
+	 * The BetaFeature availability case calls BetaFeatures, which needs the global
+	 * service container. SpecialHomeTest tests that case.
+	 *
+	 * @dataProvider provideIsHomeBetaFeatureEnabledByUserWhenHomeIsNotABetaFeature
+	 */
+	public function testIsHomeBetaFeatureEnabledByUserWhenHomeIsNotABetaFeature( bool $homeEnabled ): void {
+		$featureManager = $this->getFeatureManager( [
+			'registeredExtensions' => [ 'PersonalDashboard', 'BetaFeatures' ],
+			'config' => [ 'GEHomeEnabled' => $homeEnabled ],
+			'userOptions' => [ 'growthexperiments-home-betafeature' => true ],
+		] );
+		$this->assertFalse(
+			$featureManager->isHomeBetaFeatureEnabledByUser( new UserIdentityValue( 1, 'Alice' ) )
 		);
 	}
 
@@ -522,6 +557,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		$config = new HashConfig( array_merge( [
 			'GEHomepageSuggestedEditsEnabled' => true,
 			'GEEarlyOnboardingScaled' => false,
+			'GEHomeBetaFeatureEnabled' => false,
 		], $overrides['config'] ?? [] ) );
 		$userRegistrationLookupMock = $overrides['userRegistrationLookup']
 			?? $this->createMock( UserRegistrationLookup::class );

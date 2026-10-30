@@ -148,11 +148,12 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	}
 
 	/**
-	 * Make Home available without PersonalDashboard. CI does not always load
-	 * PersonalDashboard, and FeatureManager::getHomeAvailability() requires it.
+	 * Enable Home without PersonalDashboard. CI does not always load
+	 * PersonalDashboard, and FeatureManager::isHomeEnabledForUser() requires it.
 	 */
-	private function mockHomeAvailable(): void {
+	private function mockHomeEnabledForUser(): void {
 		$featureManager = $this->newFeatureManagerMock( HomeAvailability::Wikiwide );
+		$featureManager->method( 'isHomeEnabledForUser' )->willReturn( true );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 	}
 
@@ -323,8 +324,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 * @covers ::maybeRedirectToHome
 	 * @dataProvider provideRedirectToHome
 	 */
-	public function testRedirectsToHomeWhenHomeIsAvailable( string $subPage ) {
-		$this->mockHomeAvailable();
+	public function testRedirectsToHomeWhenHomeIsEnabledForUser( string $subPage ) {
+		$this->mockHomeEnabledForUser();
 		$context = new RequestContext();
 		$context->setRequest( new FauxRequest( [ 'source' => 'personaltoolslink' ] ) );
 
@@ -346,8 +347,29 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	/**
 	 * @covers ::maybeRedirectToHome
 	 */
-	public function testDoesNotRedirectToHomeWhenHomeIsNotAvailable() {
+	public function testDoesNotRedirectToHomeWhenHomeIsNotEnabledForUser() {
 		$this->overrideConfigValue( 'GEHomeEnabled', false );
+		$user = $this->enableHomepageForTesting();
+		$context = new RequestContext();
+		$context->setAuthority( $user );
+
+		$response = $this->executeSpecialPage( '', null, null, $user, false, $context );
+
+		$this->assertSame( '', $context->getOutput()->getRedirect() );
+		$this->assertStringContainsString( 'growthexperiments-homepage-container', $response[0] );
+	}
+
+	/**
+	 * @covers ::maybeRedirectToHome
+	 */
+	public function testDoesNotRedirectToHomeWhenTheUserHasNotEnabledTheBetaFeature() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'PersonalDashboard' );
+		$this->markTestSkippedIfExtensionNotLoaded( 'BetaFeatures' );
+		$this->overrideConfigValues( [
+			'GEHomeEnabled' => false,
+			'GEHomeBetaFeatureEnabled' => true,
+			'BetaFeaturesAllowList' => null,
+		] );
 		$user = $this->enableHomepageForTesting();
 		$context = new RequestContext();
 		$context->setAuthority( $user );
@@ -363,7 +385,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 * @covers ::handleNewcomerTask
 	 */
 	public function testNewcomerTaskSubpageDoesNotRedirectToHome() {
-		$this->mockHomeAvailable();
+		$this->mockHomeEnabledForUser();
 		$page = $this->getExistingTestPage();
 		$user = $this->enableHomepageForTesting();
 		$context = new RequestContext();

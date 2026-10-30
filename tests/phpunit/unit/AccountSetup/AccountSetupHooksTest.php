@@ -15,6 +15,7 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentInterface;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
@@ -465,6 +466,39 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 		return $experimentManager;
 	}
 
+	public function testOnGetBetaFeaturePreferencesAddsTheHomeBetaFeature(): void {
+		$sut = $this->newAccountSetupHooks( [
+			'homeAvailability' => HomeAvailability::BetaFeature,
+			'mainConfig' => [ MainConfigNames::ExtensionAssetsPath => 'example/dir' ],
+		] );
+		$betaPrefs = [];
+
+		$sut->onGetBetaFeaturePreferences( $this->newUser(), $betaPrefs );
+
+		$this->assertArrayHasKey( 'growthexperiments-home-betafeature', $betaPrefs );
+		$this->assertSame(
+			'growthexperiments-home-betafeature-label',
+			$betaPrefs['growthexperiments-home-betafeature']['label-message']
+		);
+	}
+
+	public static function provideOnGetBetaFeaturePreferencesSkipped(): iterable {
+		yield 'Home unavailable' => [ HomeAvailability::Unavailable ];
+		yield 'Home on for the whole wiki' => [ HomeAvailability::Wikiwide ];
+	}
+
+	/**
+	 * @dataProvider provideOnGetBetaFeaturePreferencesSkipped
+	 */
+	public function testOnGetBetaFeaturePreferencesSkipped( HomeAvailability $homeAvailability ): void {
+		$sut = $this->newAccountSetupHooks( [ 'homeAvailability' => $homeAvailability ] );
+		$betaPrefs = [];
+
+		$sut->onGetBetaFeaturePreferences( $this->newUser(), $betaPrefs );
+
+		$this->assertSame( [], $betaPrefs );
+	}
+
 	private function newUser( bool $isTemp = false ): User {
 		$user = $this->createMock( User::class );
 		$user->method( 'isTemp' )->willReturn( $isTemp );
@@ -518,6 +552,11 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 		$userIdentityUtils->method( 'isTemp' )
 			->willReturn( $overrides['isTemp'] ?? false );
 
+		$mainConfig = [ 'WelcomeSurveyEnabled' => true ];
+		if ( isset( $overrides['mainConfig'] ) ) {
+			$mainConfig = array_merge( $mainConfig, $overrides['mainConfig'] );
+		}
+
 		return new AccountSetupHooks(
 			$specialPageFactory,
 			$featureManager,
@@ -527,11 +566,12 @@ class AccountSetupHooksTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( UserOptionsManager::class ),
 			$this->createNoOpMock( RedirectLookup::class ),
 			new PostSignupOnboardingEligibility(
-				new HashConfig( [ 'WelcomeSurveyEnabled' => true ] ),
+				new HashConfig( $mainConfig ),
 				$titleFactory,
 				$campaignConfig,
 				$this->createMock( CampaignLoader::class ),
 			),
+			new HashConfig( $mainConfig ),
 			$overrides['experimentManager'] ?? null,
 		);
 	}

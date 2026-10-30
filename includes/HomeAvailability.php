@@ -11,5 +11,7 @@ namespace GrowthExperiments;
  */
 enum HomeAvailability {
 	case Unavailable;
+	/** Users opt in through the BetaFeatures extension. */
+	case BetaFeature;
 	case Wikiwide;
 }

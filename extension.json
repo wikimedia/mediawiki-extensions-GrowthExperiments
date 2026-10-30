@@ -300,7 +300,8 @@
 				"UserIdentityUtils",
 				"UserOptionsManager",
 				"RedirectLookup",
-				"GrowthExperimentsPostSignupOnboardingEligibility"
+				"GrowthExperimentsPostSignupOnboardingEligibility",
+				"MainConfig"
 			],
 			"optional_services": [
 				"TestKitchen.ExperimentManager"
@@ -516,6 +517,9 @@
 		"FormatAutocomments": [
 			"homepage",
 			"mentor"
+		],
+		"GetBetaFeaturePreferences": [
+			"accountsetup"
 		],
 		"GetPreferences": [
 			"accountsetup",
@@ -3063,7 +3067,11 @@
 			}
 		},
 		"GEHomeEnabled": {
-			"description": "Feature flag that controls if the Home experience shipped in November 2026 is enabled",
+			"description": "Feature flag that controls if the Home experience shipped in November 2026 is enabled for all users",
+			"value": false
+		},
+		"GEHomeBetaFeatureEnabled": {
+			"description": "Feature flag that controls if the Home experience shipped in November 2026 is enabled as a beta-feature. Ignored if GEHomeEnabled is true.",
 			"value": false
 		},
 		"GEEarlyOnboardingScaled": {

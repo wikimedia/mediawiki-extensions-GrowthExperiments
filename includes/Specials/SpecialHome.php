@@ -5,11 +5,14 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\FeatureManager;
+use GrowthExperiments\HomeAvailability;
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\PersonalDashboard\HomeOnboardingActionLookup;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\PersonalDashboard\Specials\AbstractSpecialDashboard;
 use MediaWiki\Extension\PersonalDashboard\Specials\DashboardPageDependencies;
 use MediaWiki\Message\Message;
+use MediaWiki\User\Options\UserOptionsLookup;
 
 /**
  * Home, at Special:Home.
@@ -26,6 +29,7 @@ class SpecialHome extends AbstractSpecialDashboard {
 		DashboardPageDependencies $dependencies,
 		private readonly FeatureManager $featureManager,
 		private readonly HomeOnboardingActionLookup $homeOnboardingActionLookup,
+		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
 		parent::__construct( $dependencies );
 	}
@@ -47,10 +51,24 @@ class SpecialHome extends AbstractSpecialDashboard {
 
 		// Gate Home to users who already have the Homepage, this is only for the pilot
 		// wikis release of this feature, needs revisit after.
-		if ( !$this->featureManager->isHomeEnabledForUser( $this->getUser() ) ) {
+		$user = $this->getUser();
+		if ( !$this->featureManager->isHomeEnabledForUser( $user ) ) {
+			$needsBetaPref = $this->featureManager->getHomeAvailability() === HomeAvailability::BetaFeature
+				&& !$this->featureManager->isHomeBetaFeatureEnabledByUser( $user );
+			$needsNewcomerPref = !$this->userOptionsLookup->getBoolOption(
+				$user,
+				HomepageHooks::HOMEPAGE_PREF_ENABLE
+			);
+
+			$messageKey = match ( true ) {
+				$needsBetaPref && $needsNewcomerPref => 'growthexperiments-home-enable-preference-newcomer-and-beta',
+				$needsBetaPref && !$needsNewcomerPref => 'growthexperiments-home-enable-preference-beta',
+				default => 'growthexperiments-home-enable-preference',
+			};
+
 			throw new ErrorPageError(
 				'growthexperiments-home-tab',
-				'growthexperiments-home-enable-preference'
+				$messageKey
 			);
 		}
 
@@ -59,7 +77,7 @@ class SpecialHome extends AbstractSpecialDashboard {
 
 		$this->getOutput()->addJsConfigVars(
 			'wgGEHomeOnboardingAction',
-			$this->homeOnboardingActionLookup->getAction( $this->getUser() )
+			$this->homeOnboardingActionLookup->getAction( $user )
 		);
 		// TODO handle /newcomertask route. Currently PersonalDashboard.SuggestedEdits/TaskCard.vue and PostEditPanel.js
 		// hardcode the page URL Special:Homepage/newcomertask so the post-edit panel tasks point back to Homepage

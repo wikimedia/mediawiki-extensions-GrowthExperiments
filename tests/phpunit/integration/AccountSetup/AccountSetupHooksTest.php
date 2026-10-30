@@ -306,6 +306,7 @@ class AccountSetupHooksTest extends MediaWikiIntegrationTestCase {
 			$services->getUserOptionsManager(),
 			$services->getRedirectLookup(),
 			$services->get( 'GrowthExperimentsPostSignupOnboardingEligibility' ),
+			$services->getMainConfig(),
 		);
 	}
 

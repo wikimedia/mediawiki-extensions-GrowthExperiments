@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use MediaWiki\Config\Config;
+use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentCoordinatorInterface;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -38,6 +39,12 @@ class FeatureManager {
 		if ( $this->growthConfig->get( 'GEHomeEnabled' ) ) {
 			return HomeAvailability::Wikiwide;
 		}
+		if (
+			$this->growthConfig->get( 'GEHomeBetaFeatureEnabled' )
+			&& $this->extensionRegistry->isLoaded( 'BetaFeatures' )
+		) {
+			return HomeAvailability::BetaFeature;
+		}
 		return HomeAvailability::Unavailable;
 	}
 
@@ -53,11 +60,22 @@ class FeatureManager {
 	 * does not have the feature.
 	 */
 	public function isHomeEnabledForUser( UserIdentity $user ): bool {
-		return $this->getHomeAvailability() === HomeAvailability::Wikiwide
+		$isHomeAvailableToUser = match ( $this->getHomeAvailability() ) {
+			HomeAvailability::Unavailable => false,
+			HomeAvailability::BetaFeature =>
+				BetaFeatures::isFeatureEnabled( $user, 'growthexperiments-home-betafeature' ),
+			HomeAvailability::Wikiwide => true,
+		};
+		return $isHomeAvailableToUser
 			&& $this->userOptionsLookup->getBoolOption(
 				$user,
 				HomepageHooks::HOMEPAGE_PREF_ENABLE
 			);
+	}
+
+	public function isHomeBetaFeatureEnabledByUser( UserIdentity $userIdentity ): bool {
+		return $this->getHomeAvailability() === HomeAvailability::BetaFeature &&
+			BetaFeatures::isFeatureEnabled( $userIdentity, 'growthexperiments-home-betafeature' );
 	}
 
 	public function areLinkRecommendationsEnabled(): bool {

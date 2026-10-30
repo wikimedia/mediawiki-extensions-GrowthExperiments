@@ -239,8 +239,13 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function maybeRedirectToHome( string $subPage ): bool {
 		if (
-			$this->featureManager->getHomeAvailability() !== HomeAvailability::Wikiwide ||
 			str_starts_with( $subPage, 'newcomertask/' )
+		) {
+			return false;
+		}
+		if (
+			$this->featureManager->getHomeAvailability() !== HomeAvailability::Wikiwide &&
+			!$this->featureManager->isHomeBetaFeatureEnabledByUser( $this->getUser() )
 		) {
 			return false;
 		}

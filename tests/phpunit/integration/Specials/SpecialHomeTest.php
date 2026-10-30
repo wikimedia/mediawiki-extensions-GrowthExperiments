@@ -25,6 +25,7 @@ class SpecialHomeTest extends MediaWikiIntegrationTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->markTestSkippedIfExtensionNotLoaded( 'PersonalDashboard' );
+		$this->overrideConfigValue( 'GEHomeBetaFeatureEnabled', false );
 	}
 
 	/**
@@ -169,10 +170,76 @@ class SpecialHomeTest extends MediaWikiIntegrationTestCase {
 			'The community updates module should be disabled' );
 	}
 
+	public function testThePageIsRegisteredWhenOnlyTheBetaFeatureFlagIsOn() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'BetaFeatures' );
+		$this->overrideConfigValues( [
+			'GEHomeEnabled' => false,
+			'GEHomeBetaFeatureEnabled' => true,
+		] );
+
+		$this->assertTrue( $this->getServiceContainer()->getSpecialPageFactory()->exists( 'Home' ) );
+	}
+
+	public static function provideBetaFeatureErrorPage(): iterable {
+		yield 'no preference' => [ false, false, 'growthexperiments-home-enable-preference-newcomer-and-beta' ];
+		yield 'homepage preference only' => [ true, false, 'growthexperiments-home-enable-preference-beta' ];
+		yield 'beta feature only' => [ false, true, 'growthexperiments-home-enable-preference' ];
+	}
+
+	/**
+	 * @dataProvider provideBetaFeatureErrorPage
+	 */
+	public function testBetaFeatureErrorPage(
+		bool $homepagePreference, bool $betaFeature, string $expectedMessageKey
+	) {
+		$this->setUpBetaFeature();
+		$user = $this->newUserWithOptions( [
+			HomepageHooks::HOMEPAGE_PREF_ENABLE => $homepagePreference,
+			'growthexperiments-home-betafeature' => $betaFeature,
+		] );
+
+		try {
+			$this->runSpecialPage( $user );
+			$this->fail( 'SpecialHome must refuse a user without both preferences' );
+		} catch ( ErrorPageError $e ) {
+			$this->assertSame( $expectedMessageKey, $e->msg );
+		}
+	}
+
+	public function testUserWithBothPreferencesGetsTheHomeModuleGroup() {
+		$this->setUpBetaFeature();
+		$user = $this->newUserWithOptions( [
+			HomepageHooks::HOMEPAGE_PREF_ENABLE => true,
+			'growthexperiments-home-betafeature' => true,
+		] );
+
+		[ , $output ] = $this->runSpecialPage( $user );
+
+		$this->assertSame(
+			'home',
+			$output->getJsConfigVars()['wgPersonalDashboardModuleGroup'] ?? null
+		);
+	}
+
+	private function setUpBetaFeature(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'BetaFeatures' );
+		$this->overrideConfigValues( [
+			'GEHomeEnabled' => false,
+			'GEHomeBetaFeatureEnabled' => true,
+			'BetaFeaturesAllowList' => null,
+		] );
+	}
+
 	private function newUserWithHomepagePreference(): User {
+		return $this->newUserWithOptions( [ HomepageHooks::HOMEPAGE_PREF_ENABLE => true ] );
+	}
+
+	private function newUserWithOptions( array $options ): User {
 		$user = $this->getMutableTestUser()->getUser();
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
-		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_ENABLE, 1 );
+		foreach ( $options as $option => $value ) {
+			$userOptionsManager->setOption( $user, $option, $value ? 1 : 0 );
+		}
 		$userOptionsManager->saveOptions( $user );
 		return $user;
 	}

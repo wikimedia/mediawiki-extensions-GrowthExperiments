@@ -61,7 +61,10 @@ class SpecialAccountSetupTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testThePageIsNotRegisteredWhenTheWikiFlagIsOff(): void {
-		$this->overrideConfigValue( 'GEHomeEnabled', false );
+		$this->overrideConfigValues( [
+			'GEHomeEnabled' => false,
+			'GEHomeBetaFeatureEnabled' => false,
+		] );
 
 		$this->assertFalse( $this->getServiceContainer()->getSpecialPageFactory()->exists( 'AccountSetup' ) );
 	}

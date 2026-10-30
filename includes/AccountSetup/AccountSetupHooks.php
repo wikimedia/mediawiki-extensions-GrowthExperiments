@@ -9,10 +9,12 @@ use GrowthExperiments\HomeAvailability;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\IExperimentManager;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\CentralAuth\Hooks\CentralAuthPostLoginRedirectHook;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManagerInterface;
 use MediaWiki\Html\Html;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -22,6 +24,7 @@ use MediaWiki\Specials\Hook\PostLoginRedirectHook;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 
@@ -51,6 +54,7 @@ class AccountSetupHooks implements
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly RedirectLookup $redirectLookup,
 		private readonly PostSignupOnboardingEligibility $onboardingEligibility,
+		private readonly Config $mainConfig,
 		private readonly ?ExperimentManagerInterface $experimentManager = null,
 	) {
 	}
@@ -78,6 +82,25 @@ class AccountSetupHooks implements
 			return true;
 		}
 		$text .= Html::rawElement( 'div', [ 'id' => 'growthexperiments-initial-backdrop' ] );
+		return true;
+	}
+
+	public function onGetBetaFeaturePreferences( User $user, array &$betaPrefs ): bool {
+		if ( $this->featureManager->getHomeAvailability() !== HomeAvailability::BetaFeature ) {
+			return true;
+		}
+
+		$extensionAssetsPath = $this->mainConfig->get( MainConfigNames::ExtensionAssetsPath );
+
+		$betaPrefs['growthexperiments-home-betafeature'] = [
+			'label-message' => 'growthexperiments-home-betafeature-label',
+			'desc-message' => 'growthexperiments-home-betafeature-description',
+			'screenshot' => $extensionAssetsPath . '/GrowthExperiments/images/home-beta-feature.svg',
+			'info-link' => 'https://www.mediawiki.org/wiki/Special:MyLanguage/Home/Deployment',
+			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Home',
+			'exempt-from-auto-enrollment' => true,
+		];
+
 		return true;
 	}
 
