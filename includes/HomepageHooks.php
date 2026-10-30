@@ -137,8 +137,6 @@ class HomepageHooks implements
 	private ?OutputPage $outputPage;
 	private ?UserIdentity $userIdentity;
 
-	/** @var bool Are we in a context where it is safe to access the primary DB? */
-	private $canAccessPrimary;
 	private StatusFormatter $statusFormatter;
 
 	public function __construct(
@@ -166,11 +164,6 @@ class HomepageHooks implements
 	) {
 		// Ideally RequestContext would be injected but the way hook handlers are defined makes that hard.
 		$this->statusFormatter = $formatterFactory->getStatusFormatter( RequestContext::getMain() );
-
-		// Ideally this would be injected but the way hook handlers are defined makes that hard.
-		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
-			|| MW_ENTRY_POINT === 'cli'
-			|| RequestContext::getMain()->getRequest()->wasPosted();
 	}
 
 	/**
