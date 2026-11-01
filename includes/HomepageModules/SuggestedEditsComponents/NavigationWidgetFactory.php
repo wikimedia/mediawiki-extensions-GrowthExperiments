@@ -11,9 +11,6 @@ use OOUI\Tag;
 
 class NavigationWidgetFactory {
 
-	/** @var TaskSet|\StatusValue */
-	private $taskSet;
-
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
@@ -34,7 +31,6 @@ class NavigationWidgetFactory {
 		MessageLocalizer $messageLocalizer, $taskSet
 	) {
 		$this->messageLocalizer = $messageLocalizer;
-		$this->taskSet = $taskSet;
 		$this->task = $taskSet instanceof TaskSet && $taskSet->count() ? $taskSet[0] : null;
 		$this->error = $taskSet instanceof \StatusValue ? $taskSet : null;
 	}
