@@ -206,7 +206,6 @@
 	"growthexperiments-homepage-suggestededits-edit-card": "Muokkaa",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Ei enempää ehdotuksia",
 	"growthexperiments-homepage-suggestededits-no-results": "Ehdotuksia ei löytynyt",
-	"growthexperiments-home-suggestededits-progress-bar-aria-label": "Ladataan ehdotettuja muokkauksia",
 	"growthexperiments-home-suggestededits-menu-button-label": "Ehdotettujen muokkausten asetukset",
 	"growthexperiments-home-suggestededits-menu-interests": "Kiinnostuksen kohteet",
 	"growthexperiments-home-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Ei yhtään valittua|$1 valittu}}",

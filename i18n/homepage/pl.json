@@ -205,7 +205,6 @@
 	"growthexperiments-homepage-suggestededits-edit-card": "Edytuj",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Brak dalszych sugestii",
 	"growthexperiments-homepage-suggestededits-no-results": "Nie odnaleziono sugestii",
-	"growthexperiments-home-suggestededits-progress-bar-aria-label": "Wczytywanie sugerowanych edycji",
 	"growthexperiments-home-suggestededits-menu-button-label": "Opcje sugerowanych edycji",
 	"growthexperiments-home-suggestededits-menu-interests": "Zainteresowania",
 	"growthexperiments-home-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Nie wybrano zainteresowania|$1 wybrane|$1 wybrane|$1 wybranych|$1 wybranego}}",

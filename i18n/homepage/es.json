@@ -234,7 +234,6 @@
 	"growthexperiments-homepage-suggestededits-edit-card": "Editar",
 	"growthexperiments-homepage-suggestededits-no-more-results": "No hay más sugerencias",
 	"growthexperiments-homepage-suggestededits-no-results": "No se encontraron sugerencias",
-	"growthexperiments-home-suggestededits-progress-bar-aria-label": "Cargando ediciones sugeridas",
 	"growthexperiments-home-suggestededits-menu-button-label": "Opciones de edición sugeridas",
 	"growthexperiments-home-suggestededits-menu-interests": "Intereses",
 	"growthexperiments-home-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=No seleccionado|$1 seleccionado}}",

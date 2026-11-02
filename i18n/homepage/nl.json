@@ -212,7 +212,6 @@
 	"growthexperiments-homepage-suggestededits-edit-card": "Bewerken",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Geen voorstellen meer",
 	"growthexperiments-homepage-suggestededits-no-results": "Geen voorstellen gevonden",
-	"growthexperiments-home-suggestededits-progress-bar-aria-label": "Voorgestelde bewerkingen laden",
 	"growthexperiments-home-suggestededits-menu-button-label": "Opties voor voorgestelde bewerkingen",
 	"growthexperiments-home-suggestededits-menu-interests": "Interesses",
 	"growthexperiments-home-suggestededits-menu-interests-selected": "{{PLURAL:$1|0=Geen|$1}} geselecteerd",

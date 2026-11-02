@@ -256,6 +256,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fäerdeg",
 	"growthexperiments-home-suggestededits-difficulty-filters-cancel": "Ofbriechen",
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "$1 {{PLURAL:$1|Ännerungsvirschlag|Ännerungsvirschléi}} fonnt",
+	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|Wëllkomm zeréck}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fäerdeg",
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "Fäerdeg",
 	"growthexperiments-homepage-suggestededits-interest-filters-cancel": "Ofbriechen",
