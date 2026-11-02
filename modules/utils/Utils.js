@@ -131,12 +131,18 @@
 	 * @return {Intl.Locale}
 	 */
 	function getIntlLocale() {
-		// Only specify user language and leave locale resolution to Intl instead of
-		// using the MediaWiki fallback chain. This might or might not be a good idea.
-		const language = mw.config.get( 'wgUserLanguage' ),
-			languageOptions = mw.config.get( 'wgTranslateNumerals' ) ? {} : { numberingSystem: 'latn' };
+		// Try the reader's language and each fallback, and use English only if the browser refuses them all.
+		const languageOptions = mw.config.get( 'wgTranslateNumerals' ) ? {} : { numberingSystem: 'latn' };
+		for ( const code of mw.language.getFallbackLanguageChain() ) {
+			try {
+				// eslint-disable-next-line compat/compat
+				return new Intl.Locale( mw.language.bcp47( code ), languageOptions );
+			} catch ( e ) {
+				// This language is one the browser refuses. Try the next one.
+			}
+		}
 		// eslint-disable-next-line compat/compat
-		return new Intl.Locale( language, languageOptions );
+		return new Intl.Locale( 'en', languageOptions );
 	}
 
 	/**

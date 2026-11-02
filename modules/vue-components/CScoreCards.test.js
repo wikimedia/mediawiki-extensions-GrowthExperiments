@@ -10,6 +10,7 @@ jest.mock( './icons.json', () => ( {
 	cdxIconInfoFilled: '',
 } ), { virtual: true } );
 const { mount } = require( '@vue/test-utils' );
+const { formatRelativeTimeOrDate } = jest.requireMock( 'mediawiki.DateFormatter' );
 const ScoreCards = require( './CScoreCards.vue' );
 const { useUserImpact } = require( '../ext.growthExperiments.Homepage.Impact/composables/useUserImpact.js' );
 const jsonData = require( './__mocks__/serverExportedData.json' );
@@ -37,8 +38,13 @@ const renderComponent = ( { props = {}, provide = {} } = {} ) => mount( ScoreCar
 
 describe( 'ScoreCards', () => {
 	beforeAll( () => {
-		// Moment will use Date.now() when parsing "lastEditTimestamp" with moment().fromNow().
-		// The lastEditTimestamp in /__mocks__/serverExportedData.json is for the Dec 14 2022.
+		mw.config.get = jest.fn( ( key ) => {
+			if ( key === 'wgUserLanguage' ) {
+				return 'en';
+			}
+		} );
+		// formatRelativeTimeOrDate reads the current time.
+		// The lastEditTimestamp in /__mocks__/serverExportedData.json is for 14 Dec 2022.
 		const JS_DATE_A_MONTH_AFTER_LAST_EDIT = new Date( '2023-01-14' );
 		jest.useFakeTimers();
 		jest.setSystemTime( JS_DATE_A_MONTH_AFTER_LAST_EDIT );
@@ -66,11 +72,16 @@ describe( 'ScoreCards', () => {
 			.mockReturnValue( 'http://default.url' )
 			.mockReturnValueOnce( 'http://contributions.url' )
 			.mockReturnValueOnce( 'http://thanks.url' );
+		formatRelativeTimeOrDate.mockClear();
 		const wrapper = renderComponent( {
 			props: {
 				data: useUserImpact( 60, jsonData ).value,
 			},
 		} );
+		expect( formatRelativeTimeOrDate ).toHaveBeenCalledWith(
+			new Date( jsonData.lastEditTimestamp * 1000 ),
+		);
+		expect( wrapper.text() ).toContain( 'Mocked time ago' );
 		expect( wrapper.element ).toMatchSnapshot();
 	} );
 	it( 'displays the formatted limit in the over-limit message', () => {

@@ -182,7 +182,7 @@ exports[`ScoreCards renders correctly with data 1`] = `
         class="ext-growthExperiments-CText ext-growthExperiments-CText--size-md ext-growthExperiments-CText--weight-bold"
       >
         
-        a month ago
+        Mocked time ago
         
       </span>
       

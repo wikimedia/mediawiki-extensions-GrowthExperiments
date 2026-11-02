@@ -30,9 +30,9 @@
 </template>
 
 <script>
-const moment = require( 'moment' );
 const CText = require( '../../vue-components/CText.vue' );
 const { NO_DATA_CHARACTER } = require( '../constants.js' );
+const { formatRelativeTimeOrDate } = require( 'mediawiki.DateFormatter' );
 
 // @vue/component
 module.exports = exports = {
@@ -49,7 +49,7 @@ module.exports = exports = {
 	computed: {
 		lastEditFormattedTimeAgo() {
 			return this.data ?
-				moment( this.data.lastEditTimestamp * 1000 ).fromNow() :
+				formatRelativeTimeOrDate( new Date( this.data.lastEditTimestamp * 1000 ) ) :
 				NO_DATA_CHARACTER;
 		},
 		longestEditingStreakCountText() {

@@ -108,7 +108,7 @@
 
 <script>
 const { inject } = require( 'vue' );
-const moment = require( 'moment' );
+const { formatRelativeTimeOrDate } = require( 'mediawiki.DateFormatter' );
 const { getIntlLocale } = require( '../utils/Utils.js' );
 const CScoreCard = require( './CScoreCard.vue' );
 const CText = require( './CText.vue' );
@@ -232,7 +232,7 @@ module.exports = exports = {
 		},
 		lastEditFormattedTimeAgo() {
 			if ( this.data && this.data.lastEditTimestamp ) {
-				return moment( this.data.lastEditTimestamp * 1000 ).fromNow();
+				return formatRelativeTimeOrDate( new Date( this.data.lastEditTimestamp * 1000 ) );
 			}
 			return NO_DATA_CHARACTER;
 		},

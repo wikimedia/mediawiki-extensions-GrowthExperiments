@@ -1,5 +1,10 @@
 /* global jest:false */
 'use strict';
+
+jest.mock( 'mediawiki.DateFormatter', () => ( {
+	formatRelativeTimeOrDate: jest.fn( () => 'Mocked time ago' ),
+} ), { virtual: true } );
+
 const { config } = require( '@vue/test-utils' );
 
 /**
@@ -96,6 +101,8 @@ const mw = {
 	},
 	language: {
 		convertNumber: jest.fn( ( x ) => x ),
+		// A test can replace this stand-in for the wiki's language converter.
+		bcp47: jest.fn( ( code ) => code ),
 		getFallbackLanguageChain: function () {
 			return [ 'en' ];
 		},

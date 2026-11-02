@@ -1436,8 +1436,9 @@
 			],
 			"dependencies": [
 				"mediawiki.api",
+				"mediawiki.DateFormatter",
+				"mediawiki.language",
 				"mediawiki.user",
-				"moment",
 				"vue",
 				"@wikimedia/codex"
 			]
@@ -2783,6 +2784,7 @@
 				"mediawiki.language",
 				"mediawiki.language.names",
 				"mediawiki.api",
+				"mediawiki.DateFormatter",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-movement",
@@ -2795,8 +2797,7 @@
 				"mediawiki.widgets.UserInputWidget",
 				"vue",
 				"vuex",
-				"@wikimedia/codex",
-				"moment"
+				"@wikimedia/codex"
 			]
 		},
 		"ext.growthExperiments.MentorDashboard.styles": {
