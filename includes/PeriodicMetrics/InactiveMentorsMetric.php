@@ -44,13 +44,6 @@ class InactiveMentorsMetric implements IMetric {
 	/**
 	 * @inheritDoc
 	 */
-	public function getStatsdKey(): string {
-		return 'GrowthExperiments.Mentorship.InactiveMentors';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function getStatsLibKey(): string {
 		return 'mentorship_inactive_mentors';
 	}

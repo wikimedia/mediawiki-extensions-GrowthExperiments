@@ -24,14 +24,6 @@ class AutoAssignedMentorsMetric implements IMetric {
 
 	/**
 	 * @inheritDoc
-	 * @deprecated Will be removed when StatsD support is dropped. Use getStatsLibKey() instead.
-	 */
-	public function getStatsdKey(): string {
-		return 'GrowthExperiments.Mentorship.AutoMentors';
-	}
-
-	/**
-	 * @inheritDoc
 	 */
 	public function getStatsLibKey(): string {
 		return 'mentorship_automentors';
