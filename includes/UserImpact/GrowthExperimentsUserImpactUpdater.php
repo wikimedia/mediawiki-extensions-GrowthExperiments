@@ -9,6 +9,7 @@ use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -22,18 +23,23 @@ class GrowthExperimentsUserImpactUpdater {
 		private UserEditTracker $userEditTracker,
 		private UserRegistrationLookup $userRegistrationLookup,
 		private JobQueueGroup $jobQueueGroup,
+		private UserFactory $userFactory,
 	) {
 	}
 
 	/**
 	 * Account is considered to be in the Impact module data cohort if:
 	 * - is registered (named or temp), AND
+	 * - is not a bot, AND
 	 * - has edited, AND
 	 * - created in the last year OR edited within the last 7 days
 	 */
 	public function userIsInCohort( UserIdentity $userIdentity ): bool {
 		// UserImpact isn't for legacy IP actors.
 		if ( !$userIdentity->isRegistered() ) {
+			return false;
+		}
+		if ( $this->userFactory->newFromUserIdentity( $userIdentity )->isBot() ) {
 			return false;
 		}
 		$lastEditTimestamp = $this->userEditTracker->getLatestEditTimestamp(

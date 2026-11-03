@@ -1394,6 +1394,7 @@ return [
 			$services->getUserEditTracker(),
 			$services->getUserRegistrationLookup(),
 			$services->getJobQueueGroup(),
+			$services->getUserFactory(),
 		);
 	},
 
