@@ -11,6 +11,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use MediaWiki\Block\BlockManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
@@ -53,6 +54,7 @@ class LevelingUpManager {
 	private UserOptionsLookup $userOptionsLookup;
 	private UserFactory $userFactory;
 	private UserEditTracker $userEditTracker;
+	private BlockManager $blockManager;
 	private JobQueueGroup $jobQueueGroup;
 	private ConfigurationLoader $configurationLoader;
 	private UserImpactLookup $userImpactLookup;
@@ -69,6 +71,7 @@ class LevelingUpManager {
 		UserOptionsLookup $userOptionsLookup,
 		UserFactory $userFactory,
 		UserEditTracker $userEditTracker,
+		BlockManager $blockManager,
 		JobQueueGroup $jobQueueGroup,
 		ConfigurationLoader $configurationLoader,
 		UserImpactLookup $userImpactLookup,
@@ -84,6 +87,7 @@ class LevelingUpManager {
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userFactory = $userFactory;
 		$this->userEditTracker = $userEditTracker;
+		$this->blockManager = $blockManager;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->configurationLoader = $configurationLoader;
 		$this->userImpactLookup = $userImpactLookup;
@@ -339,16 +343,24 @@ class LevelingUpManager {
 		return $impact->getNewcomerTaskEditCount();
 	}
 
+	private function isBlocked( UserIdentity $userIdentity ): bool {
+		// Use a null request. This ignores IP blocks that apply to the current request (T426465).
+		return $this->blockManager->getBlock( $userIdentity, null ) !== null;
+	}
+
 	/**
 	 * Whether to send the keep going notification to a user.
 	 *
-	 * Note that this only checks the edit thresholds; the event should be enqueued
-	 * at account creation time with a job release timestamp of 48 hours.
+	 * Note that this only checks the block status and the edit thresholds; the event should
+	 * be enqueued at account creation time with a job release timestamp of 48 hours.
 	 *
 	 * @param UserIdentity $userIdentity
 	 * @return bool
 	 */
 	public function shouldSendKeepGoingNotification( UserIdentity $userIdentity ): bool {
+		if ( $this->isBlocked( $userIdentity ) ) {
+			return false;
+		}
 		$suggestedEditCount = $this->getSuggestedEditsCount( $userIdentity );
 		return $suggestedEditCount >= self::KEEP_GOING_NOTIFICATION_THRESHOLD_MINIMUM
 			&& $suggestedEditCount <= $this->growthConfig->get( 'GELevelingUpKeepGoingNotificationThresholdsMaximum' );
@@ -361,7 +373,8 @@ class LevelingUpManager {
 	 * @return bool
 	 */
 	public function shouldSendGetStartedNotification( UserIdentity $userIdentity ): bool {
-		return $this->userEditTracker->getUserEditCount( $userIdentity ) === 0;
+		return !$this->isBlocked( $userIdentity ) &&
+			$this->userEditTracker->getUserEditCount( $userIdentity ) === 0;
 	}
 
 	/**
@@ -373,7 +386,8 @@ class LevelingUpManager {
 	public function shouldSendReEngageNotification( UserIdentity $userIdentity ): bool {
 		$maxEdits = (int)$this->growthConfig->get( 'GELevelingUpGetStartedMaxTotalEdits' );
 
-		return $this->getSuggestedEditsCount( $userIdentity ) === 0 &&
+		return !$this->isBlocked( $userIdentity ) &&
+			$this->getSuggestedEditsCount( $userIdentity ) === 0 &&
 			$this->userEditTracker->getUserEditCount( $userIdentity ) > 0 &&
 			$this->userEditTracker->getUserEditCount( $userIdentity ) <= $maxEdits;
 	}

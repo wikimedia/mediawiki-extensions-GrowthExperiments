@@ -448,6 +448,7 @@ return [
 			$services->getUserOptionsLookup(),
 			$services->getUserFactory(),
 			$services->getUserEditTracker(),
+			$services->getBlockManager(),
 			$services->getJobQueueGroup(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getUserImpactLookup(),

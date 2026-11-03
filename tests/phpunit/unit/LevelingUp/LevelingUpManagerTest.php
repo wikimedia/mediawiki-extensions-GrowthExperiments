@@ -14,6 +14,8 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\UserImpact\UserImpact;
 use GrowthExperiments\UserImpact\UserImpactLookup;
+use MediaWiki\Block\AbstractBlock;
+use MediaWiki\Block\BlockManager;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
@@ -296,6 +298,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 		?ServiceOptions $serviceOptions = null,
 		?Config $growthConfig = null,
 		?UserEditTracker $userEditTracker = null,
+		?BlockManager $blockManager = null,
 	): LevelingUpManager {
 		$defaultConfigValues = $this->getDefaultConfigValues();
 		$serviceOptions ??= new ServiceOptions(
@@ -312,6 +315,7 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			$userOptionsLookup ?? $this->getUserOptionsLookup(),
 			$this->createNoOpAbstractMock( UserFactory::class ),
 			$userEditTracker ?? $this->createNoOpAbstractMock( UserEditTracker::class ),
+			$blockManager ?? $this->createMock( BlockManager::class ),
 			$jobQueueGroup ?? $this->createNoOpMock( JobQueueGroup::class ),
 			$configurationLoader ?? $this->getConfigurationLoader(),
 			$userImpactLookup ?? $this->getUserImpactLookup(),
@@ -536,6 +540,69 @@ class LevelingUpManagerTest extends MediaWikiUnitTestCase {
 			'Has edits and no suggested edits below max' => [ 0, 1, 5, true ],
 			'At maximum threshold' => [ 0, 5, 5, true ],
 			'Above maximum threshold' => [ 0, 6, 5, false ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideShouldSendNotificationBlocked
+	 */
+	public function testShouldSendNotificationBlocked(
+		string $methodName,
+		int $suggestedEditCount,
+		int $editCount
+	) {
+		$userIdentity = new UserIdentityValue( 1, 'TestUser' );
+
+		$blockManager = $this->createMock( BlockManager::class );
+		$blockManager->method( 'getBlock' )
+			->with( $userIdentity, null )
+			->willReturn( $this->createMock( AbstractBlock::class ) );
+
+		$userImpact = $this->createMock( UserImpact::class );
+		$userImpact->method( 'getNewcomerTaskEditCount' )
+			->willReturn( $suggestedEditCount );
+		$userImpactLookup = $this->createMock( UserImpactLookup::class );
+		$userImpactLookup->expects( $this->never() )
+			->method( 'getUserImpact' )
+			->willReturn( $userImpact );
+
+		$userEditTracker = $this->createMock( UserEditTracker::class );
+		$userEditTracker->method( 'getUserEditCount' )
+			->willReturn( $editCount );
+
+		$growthConfig = new HashConfig( [
+			'GELevelingUpKeepGoingNotificationThresholdsMaximum' => 5,
+			'GELevelingUpGetStartedMaxTotalEdits' => 10,
+		] );
+
+		$levelingUpManager = $this->getLevelingUpManager(
+			null,
+			null,
+			null,
+			$userImpactLookup,
+			null,
+			null,
+			null,
+			$growthConfig,
+			$userEditTracker,
+			$blockManager
+		);
+
+		$this->assertFalse( $levelingUpManager->$methodName( $userIdentity ) );
+	}
+
+	/**
+	 * The edit counts make the user eligible for the notification if the user is not blocked.
+	 *
+	 * Structure: [ methodName, suggestedEditCount, editCount ]
+	 *
+	 * @return array
+	 */
+	public static function provideShouldSendNotificationBlocked() {
+		return [
+			'Keep going' => [ 'shouldSendKeepGoingNotification', 1, 1 ],
+			'Get started' => [ 'shouldSendGetStartedNotification', 0, 0 ],
+			'Re-engage' => [ 'shouldSendReEngageNotification', 0, 1 ],
 		];
 	}
 
