@@ -3,10 +3,8 @@
 namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
-use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
-use MediaWiki\Context\RequestContext;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\Topic\ITopicRegistry;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\WikiMap\WikiMap;
@@ -24,9 +22,8 @@ require_once "$IP/maintenance/Maintenance.php";
  */
 class ListTaskCounts extends Maintenance {
 
-	/** @var string 'growth' or 'ores' */
-	private string $topicType;
-	private TopicDecorator $taskTypesAndTopics;
+	private ConfigurationLoader $configurationLoader;
+	private ITopicRegistry $topicRegistry;
 
 	public function __construct() {
 		parent::__construct();
@@ -37,7 +34,6 @@ class ListTaskCounts extends Maintenance {
 									  'task types. Defaults to all task types.', false, true, false, true );
 		$this->addOption( 'topic', 'Topics to query, specify multiple times for multiple ' .
 									  'topics. Defaults to all topics.', false, true, false, true );
-		$this->addOption( 'topictype', "Topic type to use ('ores' or 'growth').", false, true );
 		$this->addOption( 'statsd', 'Send the number of tasks for each task type to statsd.' );
 		$this->addOption( 'output', "'ascii-table' (default), 'json' or 'none'", false, true );
 	}
@@ -54,17 +50,8 @@ class ListTaskCounts extends Maintenance {
 			return;
 		}
 
-		$this->topicType = $this->getOption( 'topictype', 'growth' );
-		if ( !in_array( $this->topicType, [ 'ores', 'growth' ], true ) ) {
-			$this->fatalError( 'topictype must be one of: growth, ores' );
-		}
-
-		$newcomerTaskConfigurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
-		$this->taskTypesAndTopics = new TopicDecorator(
-			$newcomerTaskConfigurationLoader,
-			$growthServices->getTopicRegistry(),
-			$this->topicType == 'ores'
-		);
+		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+		$this->topicRegistry = $growthServices->getTopicRegistry();
 
 		$taskTypes = $this->getTaskTypes();
 		$topics = $this->getTopics();
@@ -81,7 +68,7 @@ class ListTaskCounts extends Maintenance {
 	 * @return string[] task type ID list
 	 */
 	private function getTaskTypes(): array {
-		$allTaskTypes = array_keys( $this->taskTypesAndTopics->getTaskTypes() );
+		$allTaskTypes = array_keys( $this->configurationLoader->getTaskTypes() );
 		$taskTypes = $this->getOption( 'tasktype', $allTaskTypes );
 		if ( array_diff( $taskTypes, $allTaskTypes ) ) {
 			$this->fatalError( 'Invalid task types: ' . implode( ', ', array_diff( $taskTypes, $allTaskTypes ) ) );
@@ -96,7 +83,7 @@ class ListTaskCounts extends Maintenance {
 	 * @return string[] topic ID list
 	 */
 	private function getTopics(): array {
-		$allTopics = array_keys( $this->taskTypesAndTopics->getTopics() );
+		$allTopics = array_keys( $this->topicRegistry->getTopicsMap() );
 		$topics = $this->getOption( 'topic', $allTopics );
 		if ( array_diff( $topics, $allTopics ) ) {
 			$this->fatalError( 'Invalid topics: ' . implode( ', ', array_diff( $topics, $allTopics ) ) );
@@ -118,26 +105,10 @@ class ListTaskCounts extends Maintenance {
 	 */
 	private function getStats( $taskTypes, $topics ): array {
 		$taskCounts = $taskTypeCounts = $topicCounts = [];
-		$mwServices = $this->getServiceContainer();
-		$services = GrowthExperimentsServices::wrap( $mwServices );
-		// Cache stats for Growth topics since they're also used in SpecialNewcomerTasksInfo
-		$shouldCacheStats = $this->topicType === 'growth';
-		$suggestionsInfoService = new SuggestionsInfo(
-			$mwServices->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
-			$services->getTaskSuggesterFactory(),
-			$services->getTaskTypeHandlerRegistry(),
-			$this->taskTypesAndTopics,
-			$this->taskTypesAndTopics
-		);
-		if ( $shouldCacheStats ) {
-			$suggestionsInfo = new CachedSuggestionsInfo(
-				$suggestionsInfoService,
-				$mwServices->getMainWANObjectCache()
-			);
-		} else {
-			$suggestionsInfo = $suggestionsInfoService;
-		}
-		$info = $suggestionsInfo->getInfo( [ 'resetCache' => true ] );
+		// Refresh the cached stats, as SpecialNewcomerTasksInfo uses them too.
+		$info = GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getSuggestionsInfo()
+			->getInfo( [ 'resetCache' => true ] );
 
 		$topicsInfo = $info['topics'] ?? [];
 		$tasksInfo = $info['tasks'] ?? [];

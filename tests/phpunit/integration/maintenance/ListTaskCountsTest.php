@@ -4,7 +4,6 @@ declare( strict_types = 1 );
 
 namespace GrowthExperiments\Tests\Integration;
 
-use CirrusSearch\Query\ArticleTopicFeature;
 use GrowthExperiments\Maintenance\ListTaskCounts;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\Task;
@@ -118,10 +117,6 @@ class ListTaskCountsTest extends MaintenanceBaseTestCase {
 	}
 
 	public static function provideInvalidOptions(): iterable {
-		yield 'invalid topic type' => [
-			[ 'topictype' => 'foo' ],
-			'topictype must be one of: growth, ores',
-		];
 		yield 'invalid task type' => [
 			[ 'tasktype' => [ 'copyedit', 'foo' ] ],
 			'Invalid task types: foo',
@@ -191,25 +186,6 @@ class ListTaskCountsTest extends MaintenanceBaseTestCase {
 		$cachedInfo = $this->getCachedInfo();
 		$this->assertIsArray( $cachedInfo );
 		$this->assertSame( 4, $cachedInfo['totalCount'] );
-	}
-
-	public function testOresTopics(): void {
-		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
-
-		$this->runScript( [ 'output' => 'json', 'topictype' => 'ores' ] );
-
-		$result = FormatJson::decode( $this->getActualOutputForAssertion(), true );
-		$oresTopics = array_keys( ArticleTopicFeature::TERMS_TO_LABELS );
-		$this->assertSame( $oresTopics, array_keys( $result['topicCounts'] ) );
-		$this->assertSame( $oresTopics, array_keys( $result['taskCounts']['copyedit'] ) );
-		$this->assertSame( [ 'copyedit' => 3, 'links' => 1 ], $result['taskTypeCounts'] );
-		$this->assertSame( 2, $result['topicCounts']['biography'] );
-		$this->assertSame( 1, $result['taskCounts']['copyedit']['biography'] );
-		$this->assertSame( 1, $result['taskCounts']['links']['biography'] );
-		// The 'art' Growth topic is not an ORES topic.
-		$this->assertArrayNotHasKey( 'art', $result['topicCounts'] );
-		// Only Growth topic counts are cached for Special:NewcomerTasksInfo.
-		$this->assertFalse( $this->getCachedInfo() );
 	}
 
 	public function testStatsd(): void {

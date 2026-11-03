@@ -4,7 +4,6 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\TopicDecorator;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
@@ -57,11 +56,6 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}
-		if ( $configurationLoader instanceof TopicDecorator ) {
-			$topics = $configurationLoader->getTopics();
-		} else {
-			$topics = $this->topicRegistry->getTopics();
-		}
 		$suggester = new LocalSearchTaskSuggester(
 			$this->taskTypeHandlerRegistry,
 			$this->searchEngineFactory,
@@ -71,7 +65,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->statusFormatter,
 			$this->titleParser,
 			$taskTypes,
-			$topics,
+			$this->topicRegistry->getTopics(),
 			$this->statsFactory,
 			WikiMap::getCurrentWikiId(),
 		);
