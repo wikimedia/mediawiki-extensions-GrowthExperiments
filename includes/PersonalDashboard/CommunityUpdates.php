@@ -119,7 +119,8 @@ class CommunityUpdates extends BaseModule {
 			$thumbnail = $this->getThumbnail( $config->GEHomepageCommunityUpdatesThumbnailFile->title );
 		}
 
-		return Html::rawElement( 'div', [ 'class' => 'cdx-card-content' ],
+		return Html::rawElement( 'div', [ 'class' => 'cdx-card' ],
+			Html::rawElement( 'div', [ 'class' => 'cdx-card-content' ],
 			$thumbnail .
 			Html::rawElement(
 				'div', [ 'class' => 'cdx-card__text__title' ], HtmlArmor::getHtml( $contentTitle )
@@ -127,7 +128,7 @@ class CommunityUpdates extends BaseModule {
 			Html::rawElement(
 				'div', [ 'class' => 'cdx-card__text__description' ], HtmlArmor::getHtml( $contentBody )
 			) . $link
-		);
+		) );
 	}
 
 	private function getThumbnail( string $fileTitle ): string {
