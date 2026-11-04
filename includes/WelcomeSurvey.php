@@ -283,20 +283,6 @@ class WelcomeSurvey {
 				)->parse() ),
 				"cssclass" => "welcomesurvey-privacy-info",
 			],
-			"mentor-info" => [
-				"type" => "info",
-				"label-message" => [ "welcomesurvey-question-mentor-info",
-					$this->context->getUser()->getName() ],
-				"cssclass" => "welcomesurvey-mentor-info",
-				"group" => "email",
-			],
-			"mentor" => [
-				"type" => "check",
-				"label-message" => [ "welcomesurvey-question-mentor-label",
-					$this->context->getUser()->getName() ],
-				"cssclass" => "welcomesurvey-mentor-check",
-				"group" => "email",
-			],
 			"email" => [
 				"type" => "email",
 				"label-message" => "welcomesurvey-question-email-label",
