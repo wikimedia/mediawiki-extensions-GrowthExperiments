@@ -5,10 +5,7 @@
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "{{doc-apihelp-summary|homepagequestionstore}}",
-	"apihelp-homepagequestionstore-param-questionformat": "{{doc-apihelp-param|homepagequestionstore|questionformat}}",
 	"apihelp-homepagequestionstore-param-storage": "{{doc-apihelp-param|homepagequestionstore|storage}}",
-	"apihelp-homepagequestionstore-param-userid": "{{doc-apihelp-param|homepagequestionstore|userid}}",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Message to show in API response if no question are found for user.",
 	"apihelp-growthsetmentor-summary": "{{doc-apihelp-summary|growthsetmentor}}",
 	"apihelp-growthsetmentor-param-mentee": "{{doc-apihelp-param|growthsetmentor|mentee}}",
 	"apihelp-growthsetmentor-param-mentor": "{{doc-apihelp-param|growthsetmentor|mentor}}",
@@ -22,9 +19,5 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "{{doc-apihelp-param|growthinvalidateimagerecommendation|title}}",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "{{doc-apihelp-param|growthinvalidateimagerecommendation|filename}}",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "{{doc-apihelp-param|growthinvalidateimagerecommendation|sectiontitle}}",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "{{doc-apihelp-param|growthinvalidateimagerecommendation|sectionnumber}}",
-	"apihelp-query+linkrecommendations-summary": "{{doc-apihelp-summary|query+linkrecommendations}}",
-	"apihelp-query+linkrecommendations-example-1": "{{doc-apihelp-example|query+linkrecommendations}}",
-	"apihelp-query+linkrecommendations-example-2": "{{doc-apihelp-example|query+linkrecommendations}}",
-	"apihelp-query+linkrecommendations-param-pageid": "{{doc-apihelp-param|query+linkrecommendations|pageid}}"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "{{doc-apihelp-param|growthinvalidateimagerecommendation|sectionnumber}}"
 }

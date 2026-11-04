@@ -63,8 +63,6 @@ const { CdxIcon, CdxToggleButton, CdxPopover } = require( '@wikimedia/codex' );
 const { cdxIconInfo } = require( './icons.json' );
 const CText = require( './CText.vue' );
 
-// Uses the following message keys:
-// growthexperiments-info-tooltip-close-label
 // @vue/component
 module.exports = exports = {
 	compilerOptions: { whitespace: 'condense' },
