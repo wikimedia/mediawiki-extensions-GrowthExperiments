@@ -62,11 +62,8 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	}
 
 	/** @inheritDoc */
-	public function create(
-		?ConfigurationLoader $customConfigurationLoader = null
-	): RemoteSearchTaskSuggester|ErrorForwardingTaskSuggester {
-		$configurationLoader = $customConfigurationLoader ?? $this->configurationLoader;
-		$taskTypes = $configurationLoader->loadTaskTypes();
+	public function create(): RemoteSearchTaskSuggester|ErrorForwardingTaskSuggester {
+		$taskTypes = $this->configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}

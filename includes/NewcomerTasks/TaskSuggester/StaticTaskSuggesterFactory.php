@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use MediaWiki\Status\StatusFormatter;
 use Psr\Log\LoggerInterface;
 use StatusValue;
@@ -48,7 +47,7 @@ class StaticTaskSuggesterFactory extends ErrorCapableTaskSuggesterFactory {
 	}
 
 	/** @inheritDoc */
-	public function create( ?ConfigurationLoader $customConfigurationLoader = null ) {
+	public function create() {
 		return $this->taskSuggester;
 	}
 

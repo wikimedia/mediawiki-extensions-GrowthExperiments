@@ -48,11 +48,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	}
 
 	/** @inheritDoc */
-	public function create(
-		?ConfigurationLoader $customConfigurationLoader = null
-	): LocalSearchTaskSuggester|ErrorForwardingTaskSuggester {
-		$configurationLoader = $customConfigurationLoader ?? $this->configurationLoader;
-		$taskTypes = $configurationLoader->loadTaskTypes();
+	public function create(): LocalSearchTaskSuggester|ErrorForwardingTaskSuggester {
+		$taskTypes = $this->configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}

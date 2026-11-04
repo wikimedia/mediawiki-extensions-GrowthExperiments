@@ -26,7 +26,7 @@ class SuggestionsInfo implements NewcomerTasksInfo {
 	/** @inheritDoc */
 	public function getInfo( array $options = [] ): array {
 		$user = new UserIdentityValue( 0, 'SuggestionsInfo' );
-		$taskSuggester = $this->taskSuggesterFactory->create( $this->configurationLoader );
+		$taskSuggester = $this->taskSuggesterFactory->create();
 		$taskTypes = $this->configurationLoader->loadTaskTypes();
 		$topics = $this->topicRegistry->getTopics();
 		$data = [];

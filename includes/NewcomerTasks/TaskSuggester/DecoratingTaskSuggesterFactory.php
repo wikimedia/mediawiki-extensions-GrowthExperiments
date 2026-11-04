@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectFactory\ObjectFactory;
@@ -45,8 +44,8 @@ class DecoratingTaskSuggesterFactory extends TaskSuggesterFactory {
 	}
 
 	/** @inheritDoc */
-	public function create( ?ConfigurationLoader $customConfigurationLoader = null ) {
-		$suggester = $this->taskSuggesterFactory->create( $customConfigurationLoader );
+	public function create() {
+		$suggester = $this->taskSuggesterFactory->create();
 		foreach ( $this->decorators as $spec ) {
 			$suggester = $this->objectFactory->createObject( $spec, [
 				'allowCallable' => true,
