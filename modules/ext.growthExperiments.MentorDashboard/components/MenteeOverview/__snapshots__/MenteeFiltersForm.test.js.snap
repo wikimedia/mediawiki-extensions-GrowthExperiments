@@ -65,24 +65,24 @@ exports[`MenteeFiltersForm should localise numbers in the recent edits 1`] = `
       >
         
         <button
-          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title:[1,localised-1]"
           class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
+          title="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title:[1,localised-1]"
         >
           
           localised-1
           
         </button>
         <button
-          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title:[7,localised-7]"
           class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
+          title="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title:[7,localised-7]"
         >
           
           localised-7
           
         </button>
         <button
-          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title:[14,localised-14]"
           class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
+          title="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title:[14,localised-14]"
         >
           
           localised-14
@@ -102,24 +102,24 @@ exports[`MenteeFiltersForm should localise numbers in the recent edits 1`] = `
       >
         
         <button
-          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title:[1,localised-1]"
           class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
+          title="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title:[1,localised-1]"
         >
           
           localised-1
           
         </button>
         <button
-          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title:[2,localised-2]"
           class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
+          title="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title:[2,localised-2]"
         >
           
           localised-2
           
         </button>
         <button
-          alt="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title:[6,localised-6]"
           class="cdx-button cdx-button--action-default cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
+          title="growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title:[6,localised-6]"
         >
           
           localised-6

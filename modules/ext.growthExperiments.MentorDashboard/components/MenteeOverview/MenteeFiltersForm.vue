@@ -46,7 +46,7 @@
 						:weight="option.selected ? 'primary' : undefined"
 						:action="option.selected ? 'progressive' : undefined"
 						:class="{ 'button-group__button--selected': option.selected }"
-						:alt="option.altText"
+						:title="option.title"
 						@click.prevent="onDaysAgoUpdate( option.value )"
 					>
 						{{ option.displayText }}
@@ -63,7 +63,7 @@
 						:key="option.value"
 						:weight="option.selected ? 'primary' : undefined"
 						:action="option.selected ? 'progressive' : undefined"
-						:alt="option.altText"
+						:title="option.title"
 						@click.prevent="onDaysAgoUpdate( option.value )"
 					>
 						{{ option.displayText }}
@@ -103,7 +103,7 @@ const TIME_AGO_LABELS = {
 		values: [ 1, 7, 14 ],
 	},
 	MONTHS: {
-		label: 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-months-ago-days-title',
+		label: 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title',
 		values: [ 30, 60, 180 ],
 	},
 };
@@ -141,7 +141,7 @@ module.exports = exports = {
 				return {
 					selected: this.formData.activeDaysAgo === val,
 
-					altText: this.$i18n(
+					title: this.$i18n(
 						TIME_AGO_LABELS.DAYS.label,
 						val,
 						localisedNumber,
@@ -158,7 +158,7 @@ module.exports = exports = {
 				return {
 					selected: this.formData.activeDaysAgo === val,
 
-					altText: this.$i18n(
+					title: this.$i18n(
 						TIME_AGO_LABELS.MONTHS.label,
 						displayNumber,
 						localisedNumber,
