@@ -47,29 +47,9 @@
 <script>
 const { defineComponent, inject, ref, onMounted, onUnmounted } = require( 'vue' );
 // init.js loads this module before it requires this file.
-const { ModuleHeaderMenu, ModulePanel } = require( 'ext.personalDashboard.common' );
+const { useViewport, ModuleHeaderMenu, ModulePanel } = require( 'ext.personalDashboard.common' );
 const MentorshipStatus = require( './MentorshipStatus.vue' );
 const QuestionDialog = require( './QuestionDialog.vue' );
-
-// PersonalDashboard's own breakpoint, which its island loader reads the same way.
-// The loader skips server-rendered modules, so this module cannot get isNarrow
-// from it.
-// FIXME: Use useViewport() when ext.personalDashboard.common exports it. It is
-// in ext.personalDashboard.special now, which does not export its files.
-function useIsNarrow() {
-	const container = document.querySelector( '.personal-dashboard-container' );
-	const breakpoint = ( container && parseInt(
-		getComputedStyle( container ).getPropertyValue( '--personal-dashboard-mobile-breakpoint' ), 10,
-	) ) || 639;
-	const mql = window.matchMedia( '(max-width: ' + breakpoint + 'px)' );
-	const isNarrow = ref( mql.matches );
-	function onChange( event ) {
-		isNarrow.value = event.matches;
-	}
-	onMounted( () => mql.addEventListener( 'change', onChange ) );
-	onUnmounted( () => mql.removeEventListener( 'change', onChange ) );
-	return isNarrow;
-}
 
 module.exports = exports = defineComponent( {
 	name: 'MentorshipApp',
@@ -94,6 +74,7 @@ module.exports = exports = defineComponent( {
 		const closePanel = () => {
 			openPanel.value = null;
 		};
+		const { isNarrow } = useViewport();
 
 		const menuItemClick = ( menuItemValue ) => {
 			if ( menuItemValue === 'about' ) {
@@ -143,7 +124,7 @@ module.exports = exports = defineComponent( {
 
 		return {
 			headerTarget: '#' + CSS.escape( props.headerSlot ),
-			isNarrow: useIsNarrow(),
+			isNarrow,
 			openPanel,
 			questionOpen,
 			statusAction,
