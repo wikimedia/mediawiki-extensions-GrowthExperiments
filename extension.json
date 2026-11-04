@@ -712,11 +712,6 @@
 					"class": "GrowthExperiments\\Config\\Providers\\MentorListConfigProvider"
 				}
 			},
-			"Validators": {
-				"GrowthMentorship": {
-					"class": "GrowthExperiments\\Config\\Validation\\CommunityStructuredMentorListValidator"
-				}
-			},
 			"Providers": {
 				"HelpPanel": {
 					"store": {
