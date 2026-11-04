@@ -10,6 +10,7 @@
 	},
 	"growthexperiments-home-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
+	"growthexperiments-home-tab": "Hjem",
 	"growthexperiments-homepage-tab": "Hjemmeside",
 	"tooltip-pt-homepage": "{{GENDER:|Din}} hjemmeside",
 	"prefs-homepage": "Funksjoner for nybegynnere",
