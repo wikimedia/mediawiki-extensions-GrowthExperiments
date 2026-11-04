@@ -11,7 +11,6 @@ use MediaWiki\Exception\MWExceptionHandler;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Language\RawMessage;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
@@ -19,18 +18,15 @@ use MediaWiki\Minerva\Skins\SkinMinerva;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Parser\Sanitizer;
 use MediaWiki\Skin\Skin;
-use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWiki\Utils\MWCryptRand;
-use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LogLevel;
 use RuntimeException;
 use StatusValue;
 use Throwable;
 use Traversable;
-use UnexpectedValueException;
 use Wikimedia\NormalizedException\NormalizedException;
 
 class Util {
@@ -287,34 +283,6 @@ class Util {
 			}
 		}
 		return $status;
-	}
-
-	/**
-	 * Get the action=raw URL for a (probably remote) title.
-	 * Normal title methods would return nice URLs, which are usually disallowed for action=raw.
-	 * We assume both wikis use the same URL structure.
-	 * @param LinkTarget $title
-	 * @param TitleFactory $titleFactory
-	 * @return string
-	 */
-	public static function getRawUrl(
-		LinkTarget $title,
-		TitleFactory $titleFactory,
-		UrlUtils $urlUtils
-	) {
-		// Use getFullURL to get the interwiki domain.
-		$url = $titleFactory->newFromLinkTarget( $title )->getFullURL();
-		$parts = $urlUtils->parse( (string)$urlUtils->expand( $url, PROTO_CANONICAL ) );
-		if ( !$parts ) {
-			throw new UnexpectedValueException( 'URL is expected to be valid' );
-		}
-		$baseUrl = $parts['scheme'] . $parts['delimiter'] . $parts['host'];
-		if ( isset( $parts['port'] ) && $parts['port'] ) {
-			$baseUrl .= ':' . $parts['port'];
-		}
-
-		$localPageTitle = $titleFactory->makeTitle( $title->getNamespace(), $title->getDBkey() );
-		return $baseUrl . $localPageTitle->getLocalURL( [ 'action' => 'raw' ] );
 	}
 
 	/**

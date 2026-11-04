@@ -23,12 +23,6 @@ class MentorStatusManager {
 	/** @var string Mentor status */
 	public const STATUS_AWAY = 'away';
 
-	/** @var string[] List of MentorStatusManager::STATUS_* constants */
-	public const STATUSES = [
-		self::STATUS_ACTIVE,
-		self::STATUS_AWAY,
-	];
-
 	public const AWAY_BECAUSE_TIMESTAMP = 'timestamp';
 	public const AWAY_BECAUSE_BLOCK = 'block';
 	public const AWAY_BECAUSE_LOCK = 'lock';

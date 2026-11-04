@@ -58,17 +58,6 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 		'istype-depicts' => 'unknown',
 	];
 
-	// FIXME not used for now as kinds change too often.
-	private const KIND_TO_TASK_TYPE_ID = [
-		'istype-lead-image' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		'istype-wikidata-image' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		'istype-commons-category' => ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		'istype-section-topics' => SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		'istype-section-topics-p18' => SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		'istype-section-alignment' => SectionImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-		'istype-depicts' => 'ignored',
-	];
-
 	/**
 	 * @param HttpRequestFactory $httpRequestFactory
 	 * @param string $url Image recommendation service root URL

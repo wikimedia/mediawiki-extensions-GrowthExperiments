@@ -120,19 +120,6 @@ class CampaignConfig {
 	}
 
 	/**
-	 * Get the topic IDs to exclude for the specified campaign
-	 *
-	 * @param string $campaign
-	 * @return ?string
-	 */
-	public function getCampaignPattern( string $campaign ): ?string {
-		if ( array_key_exists( $campaign, $this->config ) ) {
-			return $this->config[ $campaign ][ 'pattern' ];
-		}
-		return null;
-	}
-
-	/**
 	 * Get the name/index of the campaign matching the "campaign" query parameter value.
 	 * In case of multiple matches the first one in the config array takes precedence.
 	 * @see VariantHooks::onLocalUserCreated()
@@ -161,24 +148,6 @@ class CampaignConfig {
 		}
 
 		return $this->getCampaignIndexFromCampaignTerm( $campaignParameter ) !== null;
-	}
-
-	/**
-	 * Check whether the user is in the specified campaign
-	 *
-	 * @param UserIdentity $user
-	 * @param string $campaign
-	 * @return bool
-	 */
-	public function isUserInCampaign( UserIdentity $user, string $campaign ): bool {
-		$campaignPattern = $this->getCampaignPattern( $campaign );
-		if ( $this->userOptionsLookup && $campaignPattern ) {
-			$userCampaign = $this->userOptionsLookup->getOption(
-				$user, VariantHooks::GROWTH_CAMPAIGN
-			);
-			return $userCampaign && preg_match( $campaignPattern, $userCampaign );
-		}
-		return false;
 	}
 
 	/**

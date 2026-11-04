@@ -207,15 +207,6 @@ class UserImpact implements JsonSerializable, JsonCodecable {
 	}
 
 	/**
-	 * Total number of edits for the user's longest editing streak.
-	 *
-	 * @return int Number of edits the user had in their longest editing streak
-	 */
-	public function getLongestEditingStreakCount(): int {
-		return $this->longestEditingStreak->getTotalEditCountForPeriod();
-	}
-
-	/**
 	 * Helper method for newFromJsonArray.
 	 */
 	protected static function newEmpty(): self {

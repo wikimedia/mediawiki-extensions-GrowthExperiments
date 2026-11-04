@@ -46,10 +46,6 @@ class Task implements JsonCodecable {
 		return $this->token;
 	}
 
-	public function setToken( string $token ): void {
-		$this->token = $token;
-	}
-
 	public function getTaskType(): TaskType {
 		return $this->taskType;
 	}

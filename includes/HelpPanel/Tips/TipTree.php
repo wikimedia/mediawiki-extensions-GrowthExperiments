@@ -6,7 +6,6 @@ abstract class TipTree {
 
 	public const TIP_DATA_TYPE_PLAIN_MESSAGE = 'message';
 	public const TIP_DATA_TYPE_TEXT_VARIANT = 'text-variant';
-	public const TIP_DATA_TYPE_IMAGE = 'image';
 	public const TIP_DATA_TYPE_OOUI_ICON = 'icon';
 	public const TIP_DATA_TYPE_TITLE = 'title';
 	public const TIP_TYPE_MAIN_MULTIPLE_MAX_NODES = 3;
@@ -30,7 +29,6 @@ abstract class TipTree {
 		'main',
 		'main-multiple',
 		'example',
-		'graphic',
 		'text',
 	];
 

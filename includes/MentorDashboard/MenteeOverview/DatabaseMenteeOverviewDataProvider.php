@@ -85,32 +85,4 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			}
 		);
 	}
-
-	/**
-	 * Fetch MenteeOverview data for a given mentee
-	 *
-	 * This is useful in other parts of GrowthExperiments that wish
-	 * to reuse data MenteeOverview has available (Personalized praise, for
-	 * example).
-	 *
-	 * @param UserIdentity $mentee
-	 * @return array|null Formatted data if exists; null otherwise
-	 */
-	public function getFormattedDataForMentee( UserIdentity $mentee ): ?array {
-		$res = $this->growthConnectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
-			->select( [ 'mentee_id', 'mentee_data' ] )
-			->from( 'growthexperiments_mentee_data' )
-			->conds( [
-				'mentee_id' => $mentee->getId(),
-			] )
-			->caller( __METHOD__ )
-			->fetchRow();
-
-		if ( !$res ) {
-			// mentee not found
-			return null;
-		}
-
-		return $this->formatDataForMentee( $res );
-	}
 }

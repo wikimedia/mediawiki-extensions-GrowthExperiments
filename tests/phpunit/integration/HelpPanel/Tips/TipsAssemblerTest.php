@@ -29,7 +29,7 @@ class TipsAssemblerTest extends MediaWikiIntegrationTestCase {
 		}
 		$configurationLoader = new StaticConfigurationLoader( [ $config['tasktype'] ] );
 		$tipsAssembler = new TipsAssembler(
-			new TipNodeRenderer( '' )
+			new TipNodeRenderer()
 		);
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$tipsAssembler->setMessageLocalizer( $context );

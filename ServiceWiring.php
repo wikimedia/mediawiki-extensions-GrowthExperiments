@@ -116,7 +116,6 @@ use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
 use GrowthExperiments\UserImpact\GrowthExperimentsUserImpactUpdater;
-use GrowthExperiments\UserImpact\SubpageUserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\WelcomeSurveyFactory;
@@ -1294,9 +1293,7 @@ return [
 	'GrowthExperimentsTipNodeRenderer' => static function (
 		MediaWikiServices $services
 	): TipNodeRenderer {
-		return new TipNodeRenderer(
-			$services->getMainConfig()->get( MainConfigNames::ExtensionAssetsPath )
-		);
+		return new TipNodeRenderer();
 	},
 
 	'GrowthExperimentsTipsAssembler' => static function (
@@ -1424,15 +1421,6 @@ return [
 		}
 		// MediaWikiServices insists on service factories returning an object, so wrap it into one
 		return (object)[ 'project' => $project ];
-	},
-
-	'_GrowthExperimentsUserImpactLookup_Subpage' => static function (
-		MediaWikiServices $services
-	): UserImpactLookup {
-		return new SubpageUserImpactLookup(
-			$services->getWikiPageFactory(),
-			$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() )
-		);
 	},
 
 ];

@@ -25,8 +25,6 @@ class WelcomeSurveyLogger {
 	private $isMobile;
 	/** @var User */
 	private $user;
-	/** @var array */
-	private $loggedActions = [];
 
 	public function __construct( LoggerInterface $logger ) {
 		$this->logger = $logger;
@@ -52,8 +50,6 @@ class WelcomeSurveyLogger {
 			'returnto_param_is_present' => ( $this->webRequest->getVal( '_returnto' ) ??
 				$this->webRequest->getVal( 'returnto' ) ) !== null,
 		];
-		// Used for integration testing, see SpecialWelcomeSurveyTest.php.
-		$this->loggedActions[] = $event;
 		// Used to keep track of whether the user is logged out when submitting the form. See
 		// WelcomeSurveyHooks::onSpecialPageBeforeExecute
 		$this->webRequest->response()->setCookie( self::INTERACTION_PHASE_COOKIE, $action );
@@ -92,14 +88,6 @@ class WelcomeSurveyLogger {
 		$event['token'] ??= $this->webRequest->getCookie( self::WELCOME_SURVEY_TOKEN, null, '' );
 
 		EventLogging::submit( self::STREAM_NAME, $event );
-	}
-
-	/**
-	 * @internal Used for integration testing.
-	 * @return array
-	 */
-	public function getLoggedActions(): array {
-		return $this->loggedActions;
 	}
 
 }

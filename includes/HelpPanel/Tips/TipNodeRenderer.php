@@ -14,11 +14,6 @@ use OOUI\IconWidget;
 class TipNodeRenderer {
 
 	private MessageLocalizer $messageLocalizer;
-	private string $extensionAssetsPath;
-
-	public function __construct( string $extensionAssetsPath ) {
-		$this->extensionAssetsPath = $extensionAssetsPath;
-	}
 
 	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ) {
 		$this->messageLocalizer = $messageLocalizer;
@@ -36,20 +31,18 @@ class TipNodeRenderer {
 	 */
 	public function render( array $nodes, string $skinName, string $dir ): array {
 		OutputPage::setupOOUI( $skinName, $dir );
-		return array_values( array_map( function ( $node ) use ( $skinName, $dir ) {
-			return $this->buildHtml( $node, $skinName, $dir );
+		return array_values( array_map( function ( $node ) use ( $skinName ) {
+			return $this->buildHtml( $node, $skinName );
 		}, $nodes ) );
 	}
 
-	private function buildHtml( TipNode $node, string $skin, string $dir ): string {
+	private function buildHtml( TipNode $node, string $skin ): string {
 		switch ( $node->getType() ) {
 			case 'header':
 			case 'main':
 			case 'main-multiple':
 			case 'text':
 				return $this->mainAndTextRender( $node, $skin );
-			case 'graphic':
-				return $this->graphicRender( $node, $dir );
 			case 'example':
 				return $this->exampleRender( $node );
 			default:
@@ -114,28 +107,6 @@ class TipNodeRenderer {
 			$messageKey .= $messageKeyVariant;
 		}
 		return $messageKey;
-	}
-
-	private function graphicRender( TipNode $node, string $dir ): string {
-		if ( !$node->getData()[0]['type'] || $node->getData()[0]['type'] !== 'image' ) {
-			return '';
-		}
-		return Html::rawElement( 'img', [
-			'class' => $this->getBaseCssClasses( $node->getType() ),
-			'src' => $this->getImageSourcePath(
-				$node->getData()[0]['data']['filename'],
-				$node->getData()[0]['data']['suffix'],
-				$dir
-			),
-			// Leaving alt blank per T245786#6115403; screen readers
-			// should ignore this decorative image.
-			'alt' => '',
-		] );
-	}
-
-	private function getImageSourcePath( string $filename, string $suffix, string $dir ): string {
-		return $this->extensionAssetsPath . '/GrowthExperiments/images/' .
-			$filename . '-' . $dir . '.' . $suffix;
 	}
 
 	private function exampleRender( TipNode $node ): string {
