@@ -91,6 +91,11 @@ class FeatureManager {
 		UserIdentity $userIdentity,
 		bool $userCreatedInThisRequest = false
 	): bool {
+		// When the experiment is scaled, no user is in the control group.
+		if ( $this->growthConfig->get( 'GEEarlyOnboardingScaled' ) ) {
+			return false;
+		}
+
 		if ( !$this->experimentManager ) {
 			return false;
 		}
@@ -115,6 +120,12 @@ class FeatureManager {
 		UserIdentity $user,
 		bool $userCreatedInThisRequest = false
 	): bool {
+		// When the experiment is scaled, all users that registered after the start date get the treatment.
+		// The experiment assignment is not read, so TestKitchen is not necessary.
+		if ( $this->growthConfig->get( 'GEEarlyOnboardingScaled' ) ) {
+			return $this->isRegisteredAfterEarlyOnboardingStart( $user, $userCreatedInThisRequest );
+		}
+
 		if ( !$this->experimentManager ) {
 			return false;
 		}
@@ -137,19 +148,8 @@ class FeatureManager {
 		if ( !$this->experimentManager ) {
 			return false;
 		}
-		$configuredExperimentStartDate = $this->growthConfig->get( 'GEAccountSetupExperimentStartRegistrationDate' );
-		if ( !$configuredExperimentStartDate ) {
-			return false;
-		}
-		$experimentStartDate = wfTimestamp( TimestampFormat::MW, $configuredExperimentStartDate );
-		if ( $experimentStartDate === false ) {
-			$this->logger->error(
-				'Configured timestamp for GEAccountSetupExperimentStartRegistrationDate is invalid!',
-				[
-					'exception' => new \RuntimeException,
-					'configuredTimestamp' => $configuredExperimentStartDate,
-				]
-			);
+
+		if ( !$this->isRegisteredAfterEarlyOnboardingStart( $user, $userCreatedInThisRequest ) ) {
 			return false;
 		}
 
@@ -164,6 +164,29 @@ class FeatureManager {
 					]
 				);
 			}
+		}
+
+		return true;
+	}
+
+	private function isRegisteredAfterEarlyOnboardingStart(
+		UserIdentity $user,
+		bool $userCreatedInThisRequest
+	): bool {
+		$configuredExperimentStartDate = $this->growthConfig->get( 'GEAccountSetupExperimentStartRegistrationDate' );
+		if ( !$configuredExperimentStartDate ) {
+			return false;
+		}
+		$experimentStartDate = wfTimestamp( TimestampFormat::MW, $configuredExperimentStartDate );
+		if ( $experimentStartDate === false ) {
+			$this->logger->error(
+				'Configured timestamp for GEAccountSetupExperimentStartRegistrationDate is invalid!',
+				[
+					'exception' => new \RuntimeException,
+					'configuredTimestamp' => $configuredExperimentStartDate,
+				]
+			);
+			return false;
 		}
 
 		$registrationDate = $userCreatedInThisRequest ?

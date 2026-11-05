@@ -193,81 +193,163 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $sut->areLinkRecommendationsEnabled() );
 	}
 
-	public static function provideIsEarlyOnboardingExperimentTreatment(): iterable {
+	public static function provideEarlyOnboardingExperimentGroup(): iterable {
 		yield 'no experiment manager configured' => [
 			'experimentManager' => null,
 			'startDate' => '20260101000000',
 			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
 			'registrationDate' => '20260201000000',
-			'expected' => false,
+			'expectedTreatment' => false,
+			'expectedControl' => false,
 		];
 		yield 'no experiment start date configured' => [
 			'experimentManager' => 'mock',
 			'startDate' => null,
 			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
 			'registrationDate' => '20260201000000',
-			'expected' => false,
+			'expectedTreatment' => false,
+			'expectedControl' => false,
 		];
-		yield 'user not assigned to the treatment group' => [
+		yield 'user registered after the experiment start date and is in the control group' => [
 			'experimentManager' => 'mock',
 			'startDate' => '20260101000000',
 			'assignedGroup' => IExperimentManager::VARIANT_CONTROL,
 			'registrationDate' => '20260201000000',
-			'expected' => false,
+			'expectedTreatment' => false,
+			'expectedControl' => true,
+		];
+		yield 'user registered after the experiment start date and is not enrolled' => [
+			'experimentManager' => 'mock',
+			'startDate' => '20260101000000',
+			'assignedGroup' => null,
+			'registrationDate' => '20260201000000',
+			'expectedTreatment' => false,
+			'expectedControl' => false,
 		];
 		yield 'user has no registration date' => [
 			'experimentManager' => 'mock',
 			'startDate' => '20260101000000',
 			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
 			'registrationDate' => null,
-			'expected' => false,
+			'expectedTreatment' => false,
+			'expectedControl' => false,
 		];
 		yield 'user registered before the experiment start date' => [
 			'experimentManager' => 'mock',
 			'startDate' => '20260101000000',
 			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
 			'registrationDate' => '20251231235959',
-			'expected' => false,
+			'expectedTreatment' => false,
+			'expectedControl' => false,
+		];
+		yield 'control user registered before the experiment start date' => [
+			'experimentManager' => 'mock',
+			'startDate' => '20260101000000',
+			'assignedGroup' => IExperimentManager::VARIANT_CONTROL,
+			'registrationDate' => '20251231235959',
+			'expectedTreatment' => false,
+			'expectedControl' => false,
 		];
 		yield 'user registered exactly on the experiment start date' => [
 			'experimentManager' => 'mock',
 			'startDate' => '20260101000000',
 			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
 			'registrationDate' => '20260101000000',
-			'expected' => false,
+			'expectedTreatment' => false,
+			'expectedControl' => false,
 		];
 		yield 'user registered after the experiment start date and is in the treatment group' => [
 			'experimentManager' => 'mock',
 			'startDate' => '20260101000000',
 			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
 			'registrationDate' => '20260101000001',
-			'expected' => true,
+			'expectedTreatment' => true,
+			'expectedControl' => false,
 		];
 		yield 'experiment start date configured as ISO 8601, user registered after it' => [
 			'experimentManager' => 'mock',
 			'startDate' => '2026-01-01T00:00:00Z',
 			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
 			'registrationDate' => '20260101000001',
-			'expected' => true,
+			'expectedTreatment' => true,
+			'expectedControl' => false,
 		];
 		yield 'experiment start date configured as ISO 8601, user registered before it' => [
 			'experimentManager' => 'mock',
 			'startDate' => '2026-01-01T00:00:00Z',
 			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
 			'registrationDate' => '20251231235959',
-			'expected' => false,
+			'expectedTreatment' => false,
+			'expectedControl' => false,
+		];
+		yield 'scaled, control user after start' => [
+			'experimentManager' => 'mock',
+			'startDate' => '2026-01-01T00:00:00Z',
+			'assignedGroup' => IExperimentManager::VARIANT_CONTROL,
+			'registrationDate' => '20261231235959',
+			'expectedTreatment' => true,
+			'expectedControl' => false,
+			'scaled' => true,
+		];
+		yield 'scaled, treatment user after start' => [
+			'experimentManager' => 'mock',
+			'startDate' => '20260101000000',
+			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
+			'registrationDate' => '20260201000000',
+			'expectedTreatment' => true,
+			'expectedControl' => false,
+			'scaled' => true,
+		];
+		// After the experiment ends, every user is unenrolled.
+		yield 'scaled, unenrolled user after start' => [
+			'experimentManager' => 'mock',
+			'startDate' => '20260101000000',
+			'assignedGroup' => null,
+			'registrationDate' => '20260201000000',
+			'expectedTreatment' => true,
+			'expectedControl' => false,
+			'scaled' => true,
+		];
+		yield 'scaled, user registered before start' => [
+			'experimentManager' => 'mock',
+			'startDate' => '20260101000000',
+			'assignedGroup' => IExperimentManager::VARIANT_CONTROL,
+			'registrationDate' => '20251231235959',
+			'expectedTreatment' => false,
+			'expectedControl' => false,
+			'scaled' => true,
+		];
+		yield 'scaled, no experiment start date configured' => [
+			'experimentManager' => 'mock',
+			'startDate' => null,
+			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
+			'registrationDate' => '20260201000000',
+			'expectedTreatment' => false,
+			'expectedControl' => false,
+			'scaled' => true,
+		];
+		yield 'scaled, no experiment manager configured' => [
+			'experimentManager' => null,
+			'startDate' => '20260101000000',
+			'assignedGroup' => IExperimentManager::VARIANT_TREATMENT,
+			'registrationDate' => '20260201000000',
+			'expectedTreatment' => true,
+			'expectedControl' => false,
+			'scaled' => true,
 		];
 	}
 
 	/**
-	 * @dataProvider provideIsEarlyOnboardingExperimentTreatment
+	 * @dataProvider provideEarlyOnboardingExperimentGroup
 	 */
-	public function testIsEarlyOnboardingExperimentTreatment(
+	public function testEarlyOnboardingExperimentGroup(
 		?string $experimentManager,
 		?string $startDate,
-		string $assignedGroup,
+		?string $assignedGroup,
 		?string $registrationDate,
-		bool $expected
+		bool $expectedTreatment,
+		bool $expectedControl,
+		bool $scaled = false,
 	): void {
 		$this->skipIfTestKitchenIsMissing();
 
@@ -277,8 +359,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		if ( $experimentManager !== null ) {
 			$experimentMock = $this->createMock( ExperimentInterface::class );
 			$experimentMock->method( 'isAssignedGroup' )
-				->with( IExperimentManager::VARIANT_TREATMENT )
-				->willReturn( $assignedGroup === IExperimentManager::VARIANT_TREATMENT );
+				->willReturnCallback( static fn ( string $group ) => $group === $assignedGroup );
 
 			$experimentManagerMock = $this->createMock( ExperimentManagerInterface::class );
 			$experimentManagerMock->method( 'getExperiment' )
@@ -292,12 +373,24 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 			->willReturn( $registrationDate );
 
 		$featureManager = $this->getFeatureManager( [
-			'config' => [ 'GEAccountSetupExperimentStartRegistrationDate' => $startDate ],
+			'config' => [
+				'GEAccountSetupExperimentStartRegistrationDate' => $startDate,
+				'GEEarlyOnboardingScaled' => $scaled,
+			],
 			'userRegistrationLookup' => $userRegistrationLookupMock,
 			'experimentManager' => $experimentManagerMock,
 		] );
 
-		$this->assertSame( $expected, $featureManager->isEarlyOnboardingExperimentTreatment( $user ) );
+		$this->assertSame(
+			$expectedTreatment,
+			$featureManager->isEarlyOnboardingExperimentTreatment( $user ),
+			'isEarlyOnboardingExperimentTreatment'
+		);
+		$this->assertSame(
+			$expectedControl,
+			$featureManager->isEarlyOnboardingExperimentControl( $user ),
+			'isEarlyOnboardingExperimentControl'
+		);
 	}
 
 	/**
@@ -355,6 +448,27 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $featureManager->isEarlyOnboardingExperimentTreatment( $user, true ) );
 	}
 
+	/**
+	 * After the experiment ends, a new account is not enrolled. The scaled flag
+	 * still gives it the treatment, and does not use TestKitchen.
+	 */
+	public function testScaledEarlyOnboardingGivesTreatmentToANewAccountWithoutTestKitchen(): void {
+		$this->skipIfTestKitchenIsMissing();
+		$user = new UserIdentityValue( 1, 'TestUser' );
+
+		$featureManager = $this->getFeatureManager( [
+			'config' => [
+				'GEAccountSetupExperimentStartRegistrationDate' => '20260101000000',
+				'GEEarlyOnboardingScaled' => true,
+			],
+			'experimentManager' => $this->createNoOpMock( ExperimentManagerInterface::class ),
+			'experimentCoordinator' => $this->createNoOpMock( ExperimentCoordinatorInterface::class ),
+		] );
+
+		$this->assertTrue( $featureManager->isEarlyOnboardingExperimentTreatment( $user, true ) );
+		$this->assertFalse( $featureManager->isEarlyOnboardingExperimentControl( $user, true ) );
+	}
+
 	private function skipIfTestKitchenIsMissing(): void {
 		if ( !interface_exists( ExperimentInterface::class ) ) {
 			$this->markTestSkipped( 'TestKitchen extension is not installed.' );
@@ -407,6 +521,7 @@ class FeatureManagerTest extends MediaWikiUnitTestCase {
 
 		$config = new HashConfig( array_merge( [
 			'GEHomepageSuggestedEditsEnabled' => true,
+			'GEEarlyOnboardingScaled' => false,
 		], $overrides['config'] ?? [] ) );
 		$userRegistrationLookupMock = $overrides['userRegistrationLookup']
 			?? $this->createMock( UserRegistrationLookup::class );
