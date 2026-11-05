@@ -75,6 +75,7 @@ use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsCachePolicy;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
+use GrowthExperiments\Specials\Forms\ManageMentorsFormFactory;
 use GrowthExperiments\UserImpact\UserImpactFormatter;
 use GrowthExperiments\UserImpact\UserImpactLookup;
 use GrowthExperiments\UserImpact\UserImpactStore;
@@ -168,6 +169,10 @@ class GrowthExperimentsServices {
 
 	public function getTopicRegistry(): ITopicRegistry {
 		return $this->coreServices->get( 'GrowthExperimentsTopicRegistry' );
+	}
+
+	public function getManageMentorsFormFactory(): ManageMentorsFormFactory {
+		return $this->coreServices->get( 'GrowthExperimentsManageMentorsFormFactory' );
 	}
 
 	public function getMenteeGraduation(): MenteeGraduation {

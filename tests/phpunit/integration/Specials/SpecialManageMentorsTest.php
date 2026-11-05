@@ -22,6 +22,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * @covers \GrowthExperiments\Specials\Forms\ManageMentorsEditMentor
  * @covers \GrowthExperiments\Specials\Forms\ManageMentorsAddMentor
  * @covers \GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor
+ * @covers \GrowthExperiments\Specials\Forms\ManageMentorsFormFactory
  * @group Database
  */
 class SpecialManageMentorsTest extends SpecialPageTestBase {
@@ -70,9 +71,8 @@ class SpecialManageMentorsTest extends SpecialPageTestBase {
 			$this->getServiceContainer()->getUserIdentityLookup(),
 			$geServices->getLastActionTimestampLookup(),
 			$geServices->getMentorProvider(),
-			$geServices->getMentorWriter(),
 			$geServices->getMentorStatusManager(),
-			$geServices->getMentorRemover(),
+			$geServices->getManageMentorsFormFactory(),
 			$growthWikiConfig
 		);
 	}

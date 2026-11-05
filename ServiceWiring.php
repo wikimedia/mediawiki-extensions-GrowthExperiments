@@ -112,6 +112,7 @@ use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsCachePolicy;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsFormatter;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsSearcher;
 use GrowthExperiments\ReadingRecommendations\ReadingRecommendationsService;
+use GrowthExperiments\Specials\Forms\ManageMentorsFormFactory;
 use GrowthExperiments\UserDatabaseHelper;
 use GrowthExperiments\UserImpact\ComputedUserImpactLookup;
 use GrowthExperiments\UserImpact\DatabaseUserImpactStore;
@@ -606,6 +607,14 @@ return [
 
 	'GrowthExperimentsLogger' => static function (): LoggerInterface {
 		return LoggerFactory::getInstance( 'GrowthExperiments' );
+	},
+
+	'GrowthExperimentsManageMentorsFormFactory' => static function (
+		MediaWikiServices $services
+	): ManageMentorsFormFactory {
+		return new ManageMentorsFormFactory(
+			$services->getObjectFactory()
+		);
 	},
 
 	'GrowthExperimentsMenteeGraduation' => static function (

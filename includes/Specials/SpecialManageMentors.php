@@ -6,13 +6,9 @@ use GrowthExperiments\MentorDashboard\MentorTools\IMentorWeights;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Cleaner\LastActionTimestampLookup;
 use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\Mentorship\MentorRemover;
-use GrowthExperiments\Mentorship\Provider\IMentorWriter;
 use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Specials\Forms\ManageMentorsAbstractForm;
-use GrowthExperiments\Specials\Forms\ManageMentorsAddMentor;
-use GrowthExperiments\Specials\Forms\ManageMentorsEditMentor;
-use GrowthExperiments\Specials\Forms\ManageMentorsRemoveMentor;
+use GrowthExperiments\Specials\Forms\ManageMentorsFormFactory;
 use LogicException;
 use MediaWiki\Config\Config;
 use MediaWiki\Exception\PermissionsError;
@@ -32,9 +28,8 @@ class SpecialManageMentors extends SpecialPage {
 		private UserIdentityLookup $userIdentityLookup,
 		private LastActionTimestampLookup $lastActionTimestampLookup,
 		private MentorProvider $mentorProvider,
-		private IMentorWriter $mentorWriter,
 		private MentorStatusManager $mentorStatusManager,
-		private MentorRemover $mentorRemover,
+		private ManageMentorsFormFactory $manageMentorsFormFactory,
 		private Config $wikiConfig
 	) {
 		parent::__construct( 'ManageMentors' );
@@ -295,39 +290,6 @@ class SpecialManageMentors extends SpecialPage {
 		);
 	}
 
-	/**
-	 * @param string $action
-	 * @param UserIdentity|null $mentorUser
-	 * @return ManageMentorsAbstractForm|null
-	 */
-	private function getFormByAction( string $action, ?UserIdentity $mentorUser ): ?ManageMentorsAbstractForm {
-		switch ( $action ) {
-			case 'remove-mentor':
-				return new ManageMentorsRemoveMentor(
-					$this->mentorRemover,
-					$mentorUser,
-					$this->getContext()
-				);
-			case 'add-mentor':
-				return new ManageMentorsAddMentor(
-					$this->userIdentityLookup,
-					$this->mentorProvider,
-					$this->mentorWriter,
-					$this->getContext()
-				);
-			case 'edit-mentor':
-				return new ManageMentorsEditMentor(
-					$this->mentorProvider,
-					$this->mentorWriter,
-					$this->mentorStatusManager,
-					$mentorUser,
-					$this->getContext()
-				);
-			default:
-				return null;
-		}
-	}
-
 	private function parseSubpage( ?string $par ): ?array {
 		if ( !$par ) {
 			return null;
@@ -373,7 +335,11 @@ class SpecialManageMentors extends SpecialPage {
 			return true;
 		}
 
-		$form = $this->getFormByAction( $action, $mentorUser );
+		$form = $this->manageMentorsFormFactory->getFormByAction(
+			$action,
+			$mentorUser,
+			$this->getContext()
+		);
 		if ( !$form ) {
 			return false;
 		}
