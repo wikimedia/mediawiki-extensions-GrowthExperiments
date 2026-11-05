@@ -385,6 +385,7 @@
 	"growthexperiments-addlink-skip-reject": "Rever novamente",
 	"grant-managementorship": "Gerir mentoria",
 	"newcomertasksinfo": "Tarefas para recém-chegados",
+	"newcomertasksinfo-not-available": "As tarefas para recém-chegados não estão habilitadas nesta wiki.",
 	"newcomertasksinfo-no-data": "Não há dados disponíveis.",
 	"newcomertasksinfo-config-form-info": "A configuração das tarefas para iniciantes pode ser visualizada e alterada em [[Special:CommunityConfiguration/GrowthSuggestedEdits]].",
 	"newcomertasksinfo-table-header-task-type": "Tipo de tarefa",
