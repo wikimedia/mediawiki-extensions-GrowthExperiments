@@ -111,9 +111,11 @@ RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendati
 		this.isAnimating = true;
 		// Delay animation to account for ToggleButtonWidget's transition
 		setTimeout( () => {
-			this.animateNewContent( this.$labelPreviewTextContainer );
-			this.animateNewContent( this.$linkPreviewContainer );
-			this.animateNewContent( this.$acceptanceButtonsContainer ).then( () => {
+			$.when(
+				this.animateNewContent( this.$labelPreviewTextContainer ),
+				this.animateNewContent( this.$linkPreviewContainer ),
+				this.animateNewContent( this.$acceptanceButtonsContainer ),
+			).then( () => {
 				this.isAnimating = false;
 				this.updateActionButtonsMode();
 			} );
@@ -217,6 +219,9 @@ RecommendedLinkToolbarDialogMobile.prototype.animateNewContent = function ( $con
 	$realCurrent.on( 'transitionend', function removeFakeCurrent() {
 		$fakeCurrent.remove();
 		$container.removeClass( [ 'animating', 'ready-to-animate' ] );
+		// prepareAnimatedContent fixed the height to match the old content. Clear it
+		// now, in case the new content needs more room (T399992).
+		$container.css( 'height', '' );
 		$realCurrent.off( 'transitionend', removeFakeCurrent );
 		deferred.resolve();
 	} );

@@ -32,6 +32,11 @@
 	&-progress-title {
 		font-weight: bold;
 		margin-left: 9px;
+		// Let a long title wrap onto more lines. If a single word is too long
+		// to fit, end it with "…" instead of letting it spill out (T399992).
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	&-labelPreview {
@@ -59,12 +64,20 @@
 
 		&-content {
 			flex-grow: 1;
+			min-width: 0;
 		}
 
 		.mw-ge-recommendedLinkToolbarDialog-linkPreview-link {
-			.rel-line-height( @parentFontSize: 16px, @targetLineHeight: 16px );
+			.rel-line-height( @parentFontSize: 16px, @targetLineHeight: 20px );
 			font-weight: bold;
 			color: @color-progressive;
+			// Same as the header title: wrap long titles, and end a word that's
+			// too long to fit with "…" (T399992).
+			display: inline-block;
+			vertical-align: top;
+			max-width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		// OOUI icon is shown when the article doesn't have an image.
@@ -279,7 +292,7 @@
 
 		.mw-ge-recommendedLinkToolbarDialog-linkPreview {
 			.mw-ge-recommendedLinkToolbarDialog-linkPreview-link {
-				.rel-line-height( @parentFontSize: 14px, @targetLineHeight: 16px );
+				.rel-line-height( @parentFontSize: 14px, @targetLineHeight: 18px );
 				margin-left: 0;
 
 				&::after {

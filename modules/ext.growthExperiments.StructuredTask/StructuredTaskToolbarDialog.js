@@ -82,6 +82,16 @@ StructuredTaskToolbarDialog.prototype.onDialogKeyDown = function ( e ) {
 };
 
 /**
+ * @inheritdoc
+ */
+StructuredTaskToolbarDialog.prototype.updateSize = function () {
+	StructuredTaskToolbarDialog.super.prototype.updateSize.apply( this, arguments );
+	// A long title can make the header taller. Save its height, so the CSS for
+	// the collapsed dialog and the help button can use it (T399992).
+	this.$element[ 0 ].style.setProperty( '--ge-head-height', this.$head.outerHeight() + 'px' );
+};
+
+/**
  * Hide the dialog if it's not already hidden and if animation is not in progress
  * and show the re-open dialog button
  */

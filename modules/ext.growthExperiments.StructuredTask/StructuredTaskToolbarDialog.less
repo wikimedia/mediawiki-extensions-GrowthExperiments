@@ -17,18 +17,20 @@
 		}
 
 		&.collapsed {
-			transform: translateY( ~'calc(100% - @{navHeight})' );
+			// When collapsed, try to keep the whole header in view, even if it is
+			// taller than usual (T399992).
+			transform: translateY( ~'calc(100% - var(--ge-head-height, @{navHeight}))' );
 		}
 
 		.oo-ui-window-head {
-			height: @navHeight;
+			min-height: @navHeight;
 		}
 	}
 
 	.mw-ge-help-panel-button {
 		position: absolute;
 		// button is always above the header
-		top: ~'calc(-1 * ( @{navHeight} + 16px) )';
+		top: ~'calc(-1 * ( var(--ge-head-height, @{navHeight}) + 16px) )';
 		right: 8px;
 	}
 
@@ -37,6 +39,9 @@
 	}
 
 	.oo-ui-window-head {
+		// VisualEditor sets the header height to 0. Undo that, so the header can
+		// grow when a long title needs more than one line (T399992).
+		height: auto;
 		min-height: 44px;
 		padding: 0 16px;
 		display: flex;

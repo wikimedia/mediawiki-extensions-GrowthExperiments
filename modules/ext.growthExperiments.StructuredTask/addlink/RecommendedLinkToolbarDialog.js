@@ -727,6 +727,7 @@ RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
 
 	this.fetchArticleExtract().then( ( extract ) => {
 		$extract.text( extract );
+		this.updateSize();
 	} );
 
 	return $linkPreviewBody;
@@ -802,6 +803,9 @@ RecommendedLinkToolbarDialog.prototype.updateProgressIndicators = function () {
  */
 RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 	if ( !this.nextButton ) {
+		// With only one suggestion there are no nav buttons to arrange, but we still
+		// resize, in case a long title would otherwise cut off the buttons (T399992).
+		this.updateSize();
 		return;
 	}
 	let acceptanceButtonsWidth = this.acceptanceButtonsWidth || this.$acceptanceButtonGroup.width(),
