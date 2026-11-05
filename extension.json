@@ -1026,8 +1026,11 @@
 					"name": "icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
 					"callbackParam": [
-						"cdxIconChartBar",
 						"cdxIconConfigure",
+						"cdxIconLevelNone",
+						"cdxIconLevelOne",
+						"cdxIconLevelTwo",
+						"cdxIconLevelThree",
 						"cdxIconLightbulb"
 					]
 				}

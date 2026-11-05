@@ -76,9 +76,15 @@ const TaskTypesDialog = require( './TaskTypesDialog.vue' );
 const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
 const InterestsNotice = require( './InterestsNotice.vue' );
 const WelcomeBackDialog = require( './WelcomeBackDialog.vue' );
-const { newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
+const { CONSTANTS, newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
 const { useSuggestedEditsFeed } = require( './useSuggestedEditsFeed.js' );
-const { cdxIconChartBar, cdxIconConfigure } = require( './icons.json' );
+const {
+	cdxIconConfigure,
+	cdxIconLevelNone,
+	cdxIconLevelOne,
+	cdxIconLevelTwo,
+	cdxIconLevelThree,
+} = require( './icons.json' );
 
 /** Keep in sync with HomeOnboardingActionLookup::INTERESTS_NOTICE_INTERACTED_PREF. */
 const INTERESTS_NOTICE_INTERACTED_PREF = 'growthexperiments-home-interests-notice-interacted';
@@ -90,6 +96,46 @@ const WELCOME_BACK_ACTION = 'show-welcome-back';
  * closes the dialog.
  */
 const INTERESTS_NOTICE_ACTIONS = [ 'show-no-interests-notice', 'show-welcome-back' ];
+
+/**
+ * Pick the Types of edits menu icon from the selected task types.
+ * Use the hardest selected difficulty: hard beats medium, medium beats easy.
+ * If nothing is selected, use the empty level icon.
+ *
+ * @param {string[]} selectedIds Selected task type IDs
+ * @return {string|Object} Codex icon
+ */
+function getTaskTypesMenuIcon( selectedIds ) {
+	const iconByDifficulty = {
+		easy: cdxIconLevelOne,
+		medium: cdxIconLevelTwo,
+		hard: cdxIconLevelThree,
+	};
+	const rankByDifficulty = {
+		easy: 1,
+		medium: 2,
+		hard: 3,
+	};
+
+	let hardestDifficulty = null;
+	for ( const id of selectedIds ) {
+		const difficulty = CONSTANTS.ALL_TASK_TYPES[ id ] &&
+			CONSTANTS.ALL_TASK_TYPES[ id ].difficulty;
+		if ( !rankByDifficulty[ difficulty ] ) {
+			continue;
+		}
+		if (
+			hardestDifficulty === null ||
+			rankByDifficulty[ difficulty ] > rankByDifficulty[ hardestDifficulty ]
+		) {
+			hardestDifficulty = difficulty;
+		}
+	}
+
+	return hardestDifficulty ?
+		iconByDifficulty[ hardestDifficulty ] :
+		cdxIconLevelNone;
+}
 
 module.exports = exports = defineComponent( {
 	components: {
@@ -133,7 +179,9 @@ module.exports = exports = defineComponent( {
 		// than a flag each: the menu opens one panel at a time.
 		const openPanel = ref( null );
 
-		const selectedTaskTypeCount = ref( newcomerTasks.filters.getSelectedTaskTypes().length );
+		const selectedTaskTypes = newcomerTasks.filters.getSelectedTaskTypes();
+		const selectedTaskTypeCount = ref( selectedTaskTypes.length );
+		const taskTypesIcon = ref( getTaskTypesMenuIcon( selectedTaskTypes ) );
 
 		const selectedInterestCount = ref( newcomerTasks.filters.getSelectedInterests().length );
 
@@ -209,7 +257,9 @@ module.exports = exports = defineComponent( {
 				openPanel.value = 'interests';
 			},
 			onTaskTypesSaved: () => {
-				selectedTaskTypeCount.value = newcomerTasks.filters.getSelectedTaskTypes().length;
+				const selected = newcomerTasks.filters.getSelectedTaskTypes();
+				selectedTaskTypeCount.value = selected.length;
+				taskTypesIcon.value = getTaskTypesMenuIcon( selected );
 				load( FULL_LIMIT );
 			},
 			// The dialog saves the interests, and the API reads them for itself, so the
@@ -241,7 +291,7 @@ module.exports = exports = defineComponent( {
 						'growthexperiments-home-suggestededits-menu-tasktypes-selected',
 						mw.language.convertNumber( selectedTaskTypeCount.value ),
 					).text(),
-					icon: cdxIconChartBar,
+					icon: taskTypesIcon.value,
 				},
 			] ),
 			// The footer, not a third ordinary item: design shows a divider above

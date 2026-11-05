@@ -9,12 +9,20 @@
  */
 jest.mock( './codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
 jest.mock( './icons.json', () => ( {
-	cdxIconChartBar: '<path d="M1"/>',
 	cdxIconConfigure: '<path d="M2"/>',
+	cdxIconLevelNone: 'level-none',
+	cdxIconLevelOne: 'level-one',
+	cdxIconLevelTwo: 'level-two',
+	cdxIconLevelThree: 'level-three',
 } ), { virtual: true } );
 jest.mock( './AboutPanel.vue', () => ( { render: () => null } ) );
 jest.mock( './TaskCard.vue', () => ( { render: () => null } ) );
-jest.mock( './TaskTypesDialog.vue', () => ( { render: () => null } ) );
+jest.mock( './TaskTypesDialog.vue', () => ( {
+	name: 'TaskTypesDialog',
+	props: [ 'open' ],
+	emits: [ 'update:open', 'saved' ],
+	render: () => null,
+} ) );
 jest.mock( './InterestSelectorDialog.vue', () => ( {
 	name: 'InterestSelectorDialog',
 	props: [ 'open', 'stackedActions' ],
@@ -54,6 +62,15 @@ const mockFilters = {
 	getSelectedTaskTypes: jest.fn( () => [] ),
 };
 jest.mock( 'ext.growthExperiments.DataStore', () => ( {
+	CONSTANTS: {
+		ALL_TASK_TYPES: {
+			copyedit: { difficulty: 'easy' },
+			links: { difficulty: 'easy' },
+			references: { difficulty: 'medium' },
+			update: { difficulty: 'medium' },
+			expand: { difficulty: 'hard' },
+		},
+	},
 	newcomerTasks: { filters: mockFilters },
 } ), { virtual: true } );
 
@@ -275,6 +292,53 @@ describe( 'App interests notice', () => {
 
 			expect( document.activeElement ).toBe( document.body );
 		} );
+	} );
+} );
+
+describe( 'App types of edits menu icon', () => {
+	/**
+	 * @param {Object} wrapper
+	 * @return {Object} the Types of edits menu item
+	 */
+	function taskTypesMenuItem( wrapper ) {
+		return wrapper.findComponent( { name: 'ModuleHeaderMenu' } )
+			.props( 'menuItems' )
+			.find( ( item ) => item.value === 'taskTypes' );
+	}
+
+	beforeEach( () => {
+		mockLoad.mockClear();
+		mockFilters.getSelectedInterests.mockReturnValue( [] );
+		mockFilters.getSelectedTaskTypes.mockReturnValue( [] );
+	} );
+
+	it.each( [
+		[ [], 'level-none' ],
+		[ [ 'copyedit' ], 'level-one' ],
+		[ [ 'copyedit', 'links' ], 'level-one' ],
+		[ [ 'references' ], 'level-two' ],
+		[ [ 'copyedit', 'references' ], 'level-two' ],
+		[ [ 'expand' ], 'level-three' ],
+		[ [ 'copyedit', 'expand' ], 'level-three' ],
+		[ [ 'references', 'expand' ], 'level-three' ],
+	] )( 'uses the hardest difficulty icon for %j', ( selected, expectedIcon ) => {
+		mockFilters.getSelectedTaskTypes.mockReturnValue( selected );
+		const wrapper = mountApp( null );
+
+		expect( taskTypesMenuItem( wrapper ).icon ).toBe( expectedIcon );
+	} );
+
+	it( 'updates the icon after the types dialog is saved', async () => {
+		mockFilters.getSelectedTaskTypes.mockReturnValue( [ 'copyedit' ] );
+		const wrapper = mountApp( null );
+		expect( taskTypesMenuItem( wrapper ).icon ).toBe( 'level-one' );
+
+		mockFilters.getSelectedTaskTypes.mockReturnValue( [ 'copyedit', 'expand' ] );
+		wrapper.findComponent( { name: 'TaskTypesDialog' } ).vm.$emit( 'saved' );
+		await wrapper.vm.$nextTick();
+
+		expect( taskTypesMenuItem( wrapper ).icon ).toBe( 'level-three' );
+		expect( mockLoad ).toHaveBeenCalledWith( 20 );
 	} );
 } );
 
