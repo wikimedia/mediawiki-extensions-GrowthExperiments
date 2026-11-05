@@ -273,6 +273,12 @@ class MentorHooks implements
 	 * @inheritDoc
 	 */
 	public function onUserGetRights( $user, &$rights ) {
+		if ( !$user->isNamed() ) {
+			// Non-named users cannot have any rights; this is here for performance (to save on
+			// loading CommunityConfiguration).
+			return;
+		}
+
 		if ( !$this->wikiConfig->get( 'GEMentorshipAutomaticEligibility' ) ) {
 			return;
 		}
