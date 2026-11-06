@@ -31,7 +31,8 @@ const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
 
 const textSelector = '.cdx-dialog__footer__text .ext-growthExperiments-CLiveRegion__text';
 const announcerSelector = '.cdx-dialog__footer__text [role="status"]';
-const countMessage = 'growthexperiments-homepage-suggestededits-interest-selector-article-count';
+const findingMessage = 'growthexperiments-home-suggestededits-filters-finding';
+const countMessage = 'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count';
 
 /**
  * Make a count request that the test resolves.
@@ -70,10 +71,10 @@ describe( 'InterestSelectorDialog', () => {
 		await flushPromises();
 	}
 
-	it( 'renders the live region in the footer before the count is known', async () => {
+	it( 'shows that it is finding suggested edits in the footer before the count is known', async () => {
 		await mountOpenDialog();
 		expect( wrapper.find( announcerSelector ).exists() ).toBe( true );
-		expect( wrapper.find( textSelector ).element.textContent ).toBe( '\u00a0' );
+		expect( wrapper.find( textSelector ).text() ).toBe( findingMessage );
 	} );
 
 	it( 'shows the count when it is known', async () => {
@@ -90,7 +91,7 @@ describe( 'InterestSelectorDialog', () => {
 			expect( firstRequest.request.abort ).toHaveBeenCalled();
 		} );
 
-		it( 'does not show the old count when it opens again', async () => {
+		it( 'shows that it is finding suggested edits, not the old count, when it opens again', async () => {
 			await mountOpenDialog();
 			firstRequest.resolve( 5 );
 			await flushPromises();
@@ -100,7 +101,7 @@ describe( 'InterestSelectorDialog', () => {
 			await wrapper.setProps( { open: false } );
 			await wrapper.setProps( { open: true } );
 
-			expect( wrapper.find( textSelector ).element.textContent ).toBe( '\u00a0' );
+			expect( wrapper.find( textSelector ).text() ).toBe( findingMessage );
 		} );
 	} );
 } );

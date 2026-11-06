@@ -1024,6 +1024,10 @@
 					"file": "../vue-components/useLiveRegion.js"
 				},
 				{
+					"name": "useSuggestedEditsCount.js",
+					"file": "../ext.growthExperiments.Homepage.SuggestedEdits/useSuggestedEditsCount.js"
+				},
+				{
 					"name": "InterestSelector.vue",
 					"file": "../vue-components/InterestSelector.vue"
 				},
@@ -1080,7 +1084,7 @@
 				"growthexperiments-homepage-suggestededits-interest-filters-cancel",
 				"growthexperiments-homepage-suggestededits-interest-filters-close",
 				"growthexperiments-homepage-suggestededits-interest-filters-title",
-				"growthexperiments-homepage-suggestededits-interest-selector-article-count",
+				"growthexperiments-home-suggestededits-filters-finding",
 				"growthexperiments-home-suggestededits-popover-button",
 				"growthexperiments-home-suggestededits-popover-content",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
@@ -1550,6 +1554,7 @@
 					"name": "useLiveRegion.js",
 					"file": "../vue-components/useLiveRegion.js"
 				},
+				"useSuggestedEditsCount.js",
 				{
 					"name": "InterestSelector.vue",
 					"file": "../vue-components/InterestSelector.vue"
@@ -1621,7 +1626,8 @@
 				"growthexperiments-homepage-suggestededits-topics-match-mode-any",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
 				"growthexperiments-homepage-suggestededits-difficulty-filters-article-count",
-				"growthexperiments-homepage-suggestededits-interest-selector-article-count",
+				"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count",
+				"growthexperiments-home-suggestededits-filters-finding",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-topics-more",
 				"growthexperiments-homepage-suggestededits-topics-selectall",

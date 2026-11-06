@@ -1,8 +1,14 @@
 'use strict';
 
 jest.mock( './codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
-// CLiveRegion.vue is mapped in from another directory, so it does not exist here on disk.
+// CLiveRegion.vue and useSuggestedEditsCount.js are mapped in from other directories, so they
+// do not exist here on disk.
 jest.mock( './CLiveRegion.vue', () => require( '../vue-components/CLiveRegion.vue' ), { virtual: true } );
+jest.mock(
+	'./useSuggestedEditsCount.js',
+	() => require( '../ext.growthExperiments.Homepage.SuggestedEdits/useSuggestedEditsCount.js' ),
+	{ virtual: true },
+);
 
 const mockApi = { fetchTasks: jest.fn() };
 const mockFilters = {
@@ -54,6 +60,9 @@ jest.mock( 'ext.growthExperiments.DataStore', () => ( {
 
 const { mount, flushPromises } = require( '@vue/test-utils' );
 const TaskTypesDialog = require( './TaskTypesDialog.vue' );
+
+const FINDING_MESSAGE = 'growthexperiments-home-suggestededits-filters-finding';
+const COUNT_MESSAGE = 'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count';
 
 /**
  * @param {number} count Value the count request resolves with
@@ -146,12 +155,10 @@ describe( 'TaskTypesDialog', () => {
 
 		expect( wrapper.find( '.cdx-dialog__header__subtitle' ).exists() ).toBe( false );
 		expect( wrapper.find( '.cdx-dialog__footer__text [role="status"]' ).exists() ).toBe( true );
-		expect( countText( wrapper ).text() ).toBe(
-			'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count',
-		);
+		expect( countText( wrapper ).text() ).toBe( COUNT_MESSAGE );
 	} );
 
-	it( 'does not show the old count when it opens again', async () => {
+	it( 'shows that it is finding suggested edits, not the old count, when it opens again', async () => {
 		const wrapper = await mountOpen( [ 'copyedit' ] );
 		mockApi.fetchTasks.mockImplementation( () => $.Deferred().promise( { abort: jest.fn() } ) );
 
@@ -159,7 +166,7 @@ describe( 'TaskTypesDialog', () => {
 		await wrapper.setProps( { open: true } );
 		await flushPromises();
 
-		expect( countText( wrapper ).element.textContent ).toBe( '\u00a0' );
+		expect( countText( wrapper ).text() ).toBe( FINDING_MESSAGE );
 	} );
 
 	it( 'counts again when the selection changes', async () => {
@@ -173,19 +180,14 @@ describe( 'TaskTypesDialog', () => {
 		);
 	} );
 
-	it( 'keeps the last count while the next one loads', async () => {
-		const originalMessage = mw.message.getMockImplementation();
-		mw.message.mockImplementation( ( key, ...params ) => ( { text: () => [ key, ...params ].join( ' ' ) } ) );
+	it( 'shows that it is finding suggested edits while the next count loads', async () => {
 		const wrapper = await mountOpen( [ 'copyedit' ] );
 		mockApi.fetchTasks.mockImplementation( () => $.Deferred().promise( { abort: jest.fn() } ) );
 
 		await checkbox( wrapper, 'expand' ).setValue( true );
 		await flushPromises();
 
-		expect( countText( wrapper ).text() ).toBe(
-			'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count 42',
-		);
-		mw.message.mockImplementation( originalMessage );
+		expect( countText( wrapper ).text() ).toBe( FINDING_MESSAGE );
 	} );
 
 	it( 'hides the count when counting fails', async () => {
@@ -200,26 +202,11 @@ describe( 'TaskTypesDialog', () => {
 		expect( countText( wrapper ).element.textContent ).toBe( '\u00a0' );
 	} );
 
-	it( 'blocks Done when counting fails', async () => {
+	it( 'keeps Done enabled when counting fails', async () => {
 		const wrapper = await mountOpen( [ 'copyedit' ] );
-		expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
 		mockApi.fetchTasks.mockImplementation(
 			() => $.Deferred().reject( 'cirrussearch-too-busy-error' ).promise( { abort: jest.fn() } ),
 		);
-
-		await checkbox( wrapper, 'expand' ).setValue( true );
-		await flushPromises();
-
-		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
-	} );
-
-	it( 'unblocks Done when a count arrives after a failed count', async () => {
-		mockApi.fetchTasks.mockImplementation(
-			() => $.Deferred().reject( 'http' ).promise( { abort: jest.fn() } ),
-		);
-		const wrapper = await mountOpen( [ 'copyedit' ] );
-		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
-		mockApi.fetchTasks.mockImplementation( () => countResponse( 42 ) );
 
 		await checkbox( wrapper, 'expand' ).setValue( true );
 		await flushPromises();
@@ -234,44 +221,35 @@ describe( 'TaskTypesDialog', () => {
 		expect( wrapper.find( '.cdx-message--error' ).exists() ).toBe( true );
 	} );
 
-	it( 'blocks Done when no task matches', async () => {
+	it( 'keeps Done enabled when no task matches', async () => {
 		mockApi.fetchTasks.mockImplementation( () => countResponse( 0 ) );
 		const wrapper = await mountOpen( [ 'copyedit' ] );
 
-		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
+		expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
 	} );
 
-	it( 'blocks Done until the count for a new selection arrives', async () => {
-		mockApi.fetchTasks.mockImplementation( () => countResponse( 0 ) );
+	it( 'keeps Done enabled while the count loads', async () => {
 		const wrapper = await mountOpen( [ 'copyedit' ] );
-		const pending = $.Deferred();
-		mockApi.fetchTasks.mockImplementation( () => pending.promise( { abort: jest.fn() } ) );
+		mockApi.fetchTasks.mockImplementation( () => $.Deferred().promise( { abort: jest.fn() } ) );
 
 		await checkbox( wrapper, 'expand' ).setValue( true );
 		await flushPromises();
-		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
 
-		pending.resolve( { count: 0, tasks: [] } );
-		await flushPromises();
-		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
+		expect( countText( wrapper ).text() ).toBe( FINDING_MESSAGE );
+		expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
 	} );
 
 	it( 'ignores a count that arrives for an older selection', async () => {
-		let runDebounced;
-		mw.util.debounce.mockImplementationOnce( ( fn ) => {
-			runDebounced = fn;
-			return () => {};
-		} );
 		const older = $.Deferred();
 		mockApi.fetchTasks.mockImplementation( () => older.promise( { abort: jest.fn() } ) );
 		const wrapper = await mountOpen( [ 'copyedit' ] );
-		runDebounced();
+		mockApi.fetchTasks.mockImplementation( () => $.Deferred().promise( { abort: jest.fn() } ) );
 
 		await checkbox( wrapper, 'expand' ).setValue( true );
 		older.resolve( { count: 5, tasks: [] } );
 		await flushPromises();
 
-		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
+		expect( countText( wrapper ).text() ).toBe( FINDING_MESSAGE );
 	} );
 
 	it( 'ignores an aborted count request', async () => {
@@ -285,9 +263,7 @@ describe( 'TaskTypesDialog', () => {
 		await flushPromises();
 
 		expect( abort ).toHaveBeenCalled();
-		expect( countText( wrapper ).text() ).toBe(
-			'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count',
-		);
+		expect( countText( wrapper ).text() ).toBe( COUNT_MESSAGE );
 		expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
 	} );
 

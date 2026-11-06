@@ -47,6 +47,7 @@ const { computed, defineComponent, ref, watch } = require( 'vue' );
 const { CdxCheckbox, CdxDialog, CdxField, CdxMessage } = require( './codex.js' );
 const { CONSTANTS, newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
 const CLiveRegion = require( './CLiveRegion.vue' );
+const useSuggestedEditsCount = require( './useSuggestedEditsCount.js' );
 
 const DIFFICULTIES = [ 'easy', 'medium', 'hard' ];
 
@@ -102,41 +103,18 @@ module.exports = exports = defineComponent( {
 
 		// A local copy, so that Cancel discards the changes without a store rollback.
 		const selected = ref( [] );
-		// null while the count is not known.
-		const count = ref( null );
-		const isCounting = ref( false );
-		let countRequest = null;
-
-		const fetchCount = mw.util.debounce( () => {
-			// A debounced call can arrive after the dialog closes.
-			if ( !props.open ) {
-				return;
-			}
-			const request = api.fetchTasks( selected.value, filters.getFiltersQuery(), {
-				context: 'personaldashboard_suggestededits_filters',
-			} );
-			countRequest = request;
-			request.then( ( result ) => {
-				if ( countRequest === request ) {
-					count.value = result.count;
-					isCounting.value = false;
-				}
-			}, () => {
-				// GrowthTasksApi logs real errors. An abort means a newer request runs.
-				if ( countRequest === request ) {
-					count.value = null;
-					isCounting.value = false;
-				}
-			} );
-		}, 300 );
+		const {
+			message: countMessage,
+			update: updateCount,
+			reset: resetCount,
+		} = useSuggestedEditsCount( ( taskTypes ) => api.fetchTasks(
+			taskTypes,
+			filters.getFiltersQuery(),
+			{ context: 'personaldashboard_suggestededits_filters' },
+		) );
 
 		watch( selected, () => {
-			if ( countRequest ) {
-				countRequest.abort();
-				countRequest = null;
-			}
-			isCounting.value = true;
-			fetchCount();
+			updateCount( selected.value.slice() );
 		}, { deep: true } );
 
 		watch( () => props.open, ( isOpen ) => {
@@ -146,11 +124,7 @@ module.exports = exports = defineComponent( {
 				// The count is for a selection that is saved or discarded now. Remove it, and
 				// stop a count that has not finished, so that the dialog does not show it when
 				// it opens again.
-				if ( countRequest ) {
-					countRequest.abort();
-					countRequest = null;
-				}
-				count.value = null;
+				resetCount();
 			}
 		}, { immediate: true } );
 
@@ -159,24 +133,13 @@ module.exports = exports = defineComponent( {
 			set: ( value ) => emit( 'update:open', value ),
 		} );
 
-		// Keep the last count while the next one loads, as InterestSelectorDialog does.
-		const countMessage = computed( () => {
-			if ( count.value === null ) {
-				return '';
-			}
-			return mw.message(
-				'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count',
-				mw.language.convertNumber( count.value ),
-			).text();
-		} );
-
-		// The count can be wrong when no task type is selected (T369742), so check both.
-		// The count is null when the count request fails. Do not let the user save a
-		// selection that can have no tasks.
+		// Do not block Done while the count loads, or when it is zero or fails: the user
+		// decides. An empty selection has no task types to search, and the count for it can
+		// be wrong (T369742), so do not let the user save it.
 		const primaryAction = computed( () => ( {
 			label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-close' ).text(),
 			actionType: 'progressive',
-			disabled: !selected.value.length || isCounting.value || !count.value,
+			disabled: !selected.value.length,
 		} ) );
 
 		const save = () => {

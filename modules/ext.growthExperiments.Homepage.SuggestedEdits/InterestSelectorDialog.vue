@@ -22,14 +22,14 @@
 </template>
 
 <script>
-const { defineComponent, computed, toRef, ref, watch } = require( 'vue' );
+const { defineComponent, toRef, ref, watch } = require( 'vue' );
 const { CdxDialog, useModelWrapper } = require( './codex.js' );
 const InterestSelector = require( './InterestSelector.vue' );
 const CLiveRegion = require( './CLiveRegion.vue' );
+const useSuggestedEditsCount = require( './useSuggestedEditsCount.js' );
 const InterestFilters = require( '../ext.growthExperiments.DataStore/InterestFilters.js' );
 const rootStore = require( 'ext.growthExperiments.DataStore' );
 
-const COUNT_DEBOUNCE_MS = 300;
 /** Keep in sync with AccountSetupHooks::INTEREST_ARTICLES_PROP. */
 const INTERESTS_PREF = 'growthexperiments-interest-articles-editing';
 
@@ -54,13 +54,6 @@ module.exports = exports = defineComponent( {
 		const filtersStore = tasksStore.filters;
 		const chips = ref( filtersStore.getSelectedInterests()
 			.map( ( title ) => ( { label: title, value: title } ) ) );
-		// The number of suggestions available for the current selection, already formatted
-		// for the user's language. Null while it is unknown, which hides the message.
-		const taskCount = ref( null );
-		const taskCountMessage = computed( () => taskCount.value === null ? '' : mw.message(
-			'growthexperiments-homepage-suggestededits-interest-selector-article-count',
-			taskCount.value,
-		).text() );
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const primaryAction = {
 			label: mw.msg( 'growthexperiments-homepage-suggestededits-interest-filters-close' ),
@@ -70,57 +63,35 @@ module.exports = exports = defineComponent( {
 			label: mw.msg( 'growthexperiments-homepage-suggestededits-interest-filters-cancel' ),
 		};
 
-		/** @type {jQuery.Promise|null} */
-		let countRequest = null;
-
 		/**
 		 * Look up how many suggestions the given selection has.
 		 *
 		 * The selection has not been saved, so it is passed to the API explicitly. That is what
 		 * makes the API search for this selection rather than the interests stored for the user,
 		 * at the cost of bypassing its cache.
-		 *
-		 * @param {{label: string, value: string}[]} selectedChips
 		 */
-		function updateTaskCount( selectedChips ) {
-			// A debounced call can arrive after the dialog closes.
-			if ( !wrappedOpen.value ) {
-				return;
-			}
-			if ( countRequest ) {
-				countRequest.abort();
-			}
-			countRequest = tasksStore.api.fetchTasks(
-				tasksStore.filters.getTaskTypesQuery(),
-				new InterestFilters( {
-					interests: selectedChips.map( ( chip ) => chip.value ),
-				} ),
-				// Only the count is needed, but the size still has to match the one the task
-				// queue is fetched with. For interests the API reports how many suggestions
-				// the request collected rather than how many exist, so asking for fewer tasks
-				// here would report a smaller number than the pager goes on to show.
-				{ context: 'interestSelectorDialog.updateTaskCount' },
-			);
-			countRequest.then( ( data ) => {
-				taskCount.value = mw.language.convertNumber( data.count );
-			} ).catch( ( error ) => {
-				// A superseded request is not a failure; the one replacing it sets the count.
-				if ( error !== 'abort' ) {
-					taskCount.value = null;
-				}
-			} );
-		}
-
-		const updateTaskCountDebounced = mw.util.debounce(
-			updateTaskCount, COUNT_DEBOUNCE_MS,
-		);
+		const {
+			message: taskCountMessage,
+			update: updateTaskCount,
+			reset: resetTaskCount,
+		} = useSuggestedEditsCount( ( selectedChips ) => tasksStore.api.fetchTasks(
+			tasksStore.filters.getTaskTypesQuery(),
+			new InterestFilters( {
+				interests: selectedChips.map( ( chip ) => chip.value ),
+			} ),
+			// Only the count is needed, but the size still has to match the one the task
+			// queue is fetched with. For interests the API reports how many suggestions
+			// the request collected rather than how many exist, so asking for fewer tasks
+			// here would report a smaller number than the pager goes on to show.
+			{ context: 'interestSelectorDialog.updateTaskCount' },
+		) );
 
 		// The dialog is mounted with the page, so only look up counts once it is open.
 		watch( [ chips, wrappedOpen ], ( [ selectedChips, isOpen ] ) => {
 			if ( !isOpen ) {
 				return;
 			}
-			updateTaskCountDebounced( selectedChips );
+			updateTaskCount( selectedChips );
 		}, { immediate: true } );
 
 		/**
@@ -175,10 +146,7 @@ module.exports = exports = defineComponent( {
 				.map( ( title ) => ( { label: title, value: title } ) );
 			// The count is for the discarded selection. Remove it, and stop a lookup that has
 			// not finished, so that the dialog does not show it when it opens again.
-			if ( countRequest ) {
-				countRequest.abort();
-			}
-			taskCount.value = null;
+			resetTaskCount();
 		} );
 
 		const isMobile = mw.config.get( 'skin' ) === 'minerva';
