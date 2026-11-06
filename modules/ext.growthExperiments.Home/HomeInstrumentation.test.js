@@ -211,7 +211,7 @@ describe( 'createHomeModuleInstrumentation', () => {
 			expect( IntersectionObserverMock.instances ).toHaveLength( 0 );
 		} );
 
-		it( 'sends module_shown once, when the module is fully visible', () => {
+		it( 'sends module_shown once, when half of the module is visible', () => {
 			document.body.innerHTML = `<div id="${ MODULE_ID }"></div>`;
 			const moduleElement = document.getElementById( MODULE_ID );
 			const instrumentation = newInstrumentation();
@@ -226,11 +226,12 @@ describe( 'createHomeModuleInstrumentation', () => {
 			expect( observer.options ).toEqual( { threshold: 0.5 } );
 			expect( observer.observe ).toHaveBeenCalledWith( moduleElement );
 
-			observer.trigger( 0.5 );
+			observer.trigger( 0 );
+			observer.trigger( 0.49 );
 			expect( sender.send ).not.toHaveBeenCalled();
 			expect( observer.unobserve ).not.toHaveBeenCalled();
 
-			observer.trigger( 1 );
+			observer.trigger( 0.5 );
 			expect( sender.send ).toHaveBeenCalledTimes( 1 );
 			expect( sender.send ).toHaveBeenCalledWith(
 				'module_shown',
@@ -252,7 +253,7 @@ describe( 'createHomeModuleInstrumentation', () => {
 			instrumentation( sender );
 
 			instrumentation.recordModuleShownAfterVisibleOnce();
-			IntersectionObserverMock.instances[ 0 ].trigger( 1 );
+			IntersectionObserverMock.instances[ 0 ].trigger( 0.7 );
 
 			expect( sender.send ).toHaveBeenCalledWith(
 				'module_shown',

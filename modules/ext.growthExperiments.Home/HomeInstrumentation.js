@@ -62,7 +62,7 @@ function createHomeModuleInstrumentation( moduleElementId, elementFriendlyName )
 	};
 
 	/**
-	 * Send module_shown when the user first sees all of the module.
+	 * Send module_shown when the user first sees at least half of the module.
 	 *
 	 * @param {Object} [context] Data for action_context
 	 */
@@ -72,7 +72,7 @@ function createHomeModuleInstrumentation( moduleElementId, elementFriendlyName )
 			return;
 		}
 		const observer = new IntersectionObserver( ( entries ) => {
-			if ( entries[ 0 ].intersectionRatio !== 1 ) {
+			if ( entries[ 0 ].intersectionRatio < 0.5 ) {
 				return;
 			}
 			const interactionData = {
