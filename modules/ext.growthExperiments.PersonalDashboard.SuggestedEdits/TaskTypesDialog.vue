@@ -3,7 +3,6 @@
 		v-model:open="openInternal"
 		class="growthexperiments-task-types-dialog"
 		:title="title"
-		:subtitle="subtitle"
 		:use-close-button="true"
 		:primary-action="primaryAction"
 		:default-action="defaultAction"
@@ -35,6 +34,11 @@
 				</template>
 			</cdx-checkbox>
 		</cdx-field>
+		<!-- Always render the region, also while the count is unknown. Screen readers do not
+		announce a change to a live region that they did not find before the change. -->
+		<template #footer-text>
+			<c-live-region :message="countMessage" visible></c-live-region>
+		</template>
 	</cdx-dialog>
 </template>
 
@@ -42,6 +46,7 @@
 const { computed, defineComponent, ref, watch } = require( 'vue' );
 const { CdxCheckbox, CdxDialog, CdxField, CdxMessage } = require( './codex.js' );
 const { CONSTANTS, newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
+const CLiveRegion = require( './CLiveRegion.vue' );
 
 const DIFFICULTIES = [ 'easy', 'medium', 'hard' ];
 
@@ -63,7 +68,7 @@ function getDescription( taskType ) {
 
 module.exports = exports = defineComponent( {
 	name: 'TaskTypesDialog',
-	components: { CdxCheckbox, CdxDialog, CdxField, CdxMessage },
+	components: { CdxCheckbox, CdxDialog, CdxField, CdxMessage, CLiveRegion },
 	props: {
 		open: {
 			type: Boolean,
@@ -103,6 +108,10 @@ module.exports = exports = defineComponent( {
 		let countRequest = null;
 
 		const fetchCount = mw.util.debounce( () => {
+			// A debounced call can arrive after the dialog closes.
+			if ( !props.open ) {
+				return;
+			}
 			const request = api.fetchTasks( selected.value, filters.getFiltersQuery(), {
 				context: 'personaldashboard_suggestededits_filters',
 			} );
@@ -134,10 +143,14 @@ module.exports = exports = defineComponent( {
 			if ( isOpen ) {
 				selected.value = filters.getSelectedTaskTypes().slice();
 			} else {
+				// The count is for a selection that is saved or discarded now. Remove it, and
+				// stop a count that has not finished, so that the dialog does not show it when
+				// it opens again.
 				if ( countRequest ) {
 					countRequest.abort();
 					countRequest = null;
 				}
+				count.value = null;
 			}
 		}, { immediate: true } );
 
@@ -147,7 +160,7 @@ module.exports = exports = defineComponent( {
 		} );
 
 		// Keep the last count while the next one loads, as InterestSelectorDialog does.
-		const subtitle = computed( () => {
+		const countMessage = computed( () => {
 			if ( count.value === null ) {
 				return '';
 			}
@@ -178,7 +191,7 @@ module.exports = exports = defineComponent( {
 			groups,
 			selected,
 			openInternal,
-			subtitle,
+			countMessage,
 			primaryAction,
 			save,
 			defaultAction: {

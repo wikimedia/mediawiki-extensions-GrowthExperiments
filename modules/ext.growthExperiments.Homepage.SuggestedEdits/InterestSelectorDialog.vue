@@ -10,24 +10,22 @@
 		@primary="saveSelection"
 		@default="cancelSelection"
 	>
-		<!-- TODO: https://phabricator.wikimedia.org/T439958 -->
-		<!-- We currently use a separate <p>, instead of the subtitle prop, because of accessibility concerns. -->
-		<p
-			v-if="taskCount !== null"
-			v-i18n-html:growthexperiments-homepage-suggestededits-interest-selector-article-count="[ taskCount ]"
-			aria-live="polite"
-			class="ext-growthExperiments-interest-selector-dialog__task-count"
-		></p>
 		<interest-selector
 			v-model:chips="chips"
 		></interest-selector>
+		<!-- Always render the region, also while the count is unknown. Screen readers do not
+		announce a change to a live region that they did not find before the change. -->
+		<template #footer-text>
+			<c-live-region :message="taskCountMessage" visible></c-live-region>
+		</template>
 	</cdx-dialog>
 </template>
 
 <script>
-const { defineComponent, toRef, ref, watch } = require( 'vue' );
+const { defineComponent, computed, toRef, ref, watch } = require( 'vue' );
 const { CdxDialog, useModelWrapper } = require( './codex.js' );
 const InterestSelector = require( './InterestSelector.vue' );
+const CLiveRegion = require( './CLiveRegion.vue' );
 const InterestFilters = require( '../ext.growthExperiments.DataStore/InterestFilters.js' );
 const rootStore = require( 'ext.growthExperiments.DataStore' );
 
@@ -40,6 +38,7 @@ module.exports = exports = defineComponent( {
 	name: 'InterestSelectorDialog',
 	components: {
 		CdxDialog,
+		CLiveRegion,
 		InterestSelector,
 	},
 	props: {
@@ -58,6 +57,10 @@ module.exports = exports = defineComponent( {
 		// The number of suggestions available for the current selection, already formatted
 		// for the user's language. Null while it is unknown, which hides the message.
 		const taskCount = ref( null );
+		const taskCountMessage = computed( () => taskCount.value === null ? '' : mw.message(
+			'growthexperiments-homepage-suggestededits-interest-selector-article-count',
+			taskCount.value,
+		).text() );
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 		const primaryAction = {
 			label: mw.msg( 'growthexperiments-homepage-suggestededits-interest-filters-close' ),
@@ -80,6 +83,10 @@ module.exports = exports = defineComponent( {
 		 * @param {{label: string, value: string}[]} selectedChips
 		 */
 		function updateTaskCount( selectedChips ) {
+			// A debounced call can arrive after the dialog closes.
+			if ( !wrappedOpen.value ) {
+				return;
+			}
 			if ( countRequest ) {
 				countRequest.abort();
 			}
@@ -166,6 +173,12 @@ module.exports = exports = defineComponent( {
 			}
 			chips.value = filtersStore.getSelectedInterests()
 				.map( ( title ) => ( { label: title, value: title } ) );
+			// The count is for the discarded selection. Remove it, and stop a lookup that has
+			// not finished, so that the dialog does not show it when it opens again.
+			if ( countRequest ) {
+				countRequest.abort();
+			}
+			taskCount.value = null;
 		} );
 
 		const isMobile = mw.config.get( 'skin' ) === 'minerva';
@@ -174,7 +187,7 @@ module.exports = exports = defineComponent( {
 			isMobile,
 			chips,
 			wrappedOpen,
-			taskCount,
+			taskCountMessage,
 			primaryAction,
 			defaultAction,
 			saveSelection,
@@ -186,23 +199,6 @@ module.exports = exports = defineComponent( {
 
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
-
-.ext-growthExperiments-interest-selector-dialog {
-	&__task-count {
-		margin-top: 0;
-		color: @color-subtle;
-		font-size: @font-size-medium;
-		line-height: @line-height-small;
-	}
-
-	.cdx-dialog__header {
-		padding-bottom: 0;
-	}
-
-	.cdx-dialog__body {
-		padding-top: 0;
-	}
-}
 
 .skin-vector-2022 .ext-growthExperiments-interest-selector-dialog {
 	// Fix the height on desktop so that the layout does not shift when selecting interests.

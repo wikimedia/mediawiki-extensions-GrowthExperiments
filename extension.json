@@ -1016,6 +1016,14 @@
 					"file": "../ext.growthExperiments.Homepage.SuggestedEdits/InterestSelectorDialog.vue"
 				},
 				{
+					"name": "CLiveRegion.vue",
+					"file": "../vue-components/CLiveRegion.vue"
+				},
+				{
+					"name": "useLiveRegion.js",
+					"file": "../vue-components/useLiveRegion.js"
+				},
+				{
 					"name": "InterestSelector.vue",
 					"file": "../vue-components/InterestSelector.vue"
 				},
@@ -1534,6 +1542,14 @@
 				"../utils/IconUtils.js",
 				"../ui-components/SuggestedEditsPeek.js",
 				"../ui-components/SwipePane.js",
+				{
+					"name": "CLiveRegion.vue",
+					"file": "../vue-components/CLiveRegion.vue"
+				},
+				{
+					"name": "useLiveRegion.js",
+					"file": "../vue-components/useLiveRegion.js"
+				},
 				{
 					"name": "InterestSelector.vue",
 					"file": "../vue-components/InterestSelector.vue"

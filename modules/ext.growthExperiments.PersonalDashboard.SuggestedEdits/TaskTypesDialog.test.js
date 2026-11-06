@@ -1,6 +1,8 @@
 'use strict';
 
 jest.mock( './codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
+// CLiveRegion.vue is mapped in from another directory, so it does not exist here on disk.
+jest.mock( './CLiveRegion.vue', () => require( '../vue-components/CLiveRegion.vue' ), { virtual: true } );
 
 const mockApi = { fetchTasks: jest.fn() };
 const mockFilters = {
@@ -86,6 +88,14 @@ function checkbox( wrapper, id ) {
 
 /**
  * @param {Object} wrapper
+ * @return {Object} the visible text of the count in the footer
+ */
+function countText( wrapper ) {
+	return wrapper.find( '.cdx-dialog__footer__text .ext-growthExperiments-CLiveRegion__text' );
+}
+
+/**
+ * @param {Object} wrapper
  * @return {Object} the primary (Done) button
  */
 function doneButton( wrapper ) {
@@ -131,6 +141,27 @@ describe( 'TaskTypesDialog', () => {
 		);
 	} );
 
+	it( 'shows the count in a live region in the footer, not in the header', async () => {
+		const wrapper = await mountOpen( [ 'copyedit' ] );
+
+		expect( wrapper.find( '.cdx-dialog__header__subtitle' ).exists() ).toBe( false );
+		expect( wrapper.find( '.cdx-dialog__footer__text [role="status"]' ).exists() ).toBe( true );
+		expect( countText( wrapper ).text() ).toBe(
+			'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count',
+		);
+	} );
+
+	it( 'does not show the old count when it opens again', async () => {
+		const wrapper = await mountOpen( [ 'copyedit' ] );
+		mockApi.fetchTasks.mockImplementation( () => $.Deferred().promise( { abort: jest.fn() } ) );
+
+		await wrapper.setProps( { open: false } );
+		await wrapper.setProps( { open: true } );
+		await flushPromises();
+
+		expect( countText( wrapper ).element.textContent ).toBe( '\u00a0' );
+	} );
+
 	it( 'counts again when the selection changes', async () => {
 		const wrapper = await mountOpen( [ 'copyedit' ] );
 
@@ -151,7 +182,7 @@ describe( 'TaskTypesDialog', () => {
 		await checkbox( wrapper, 'expand' ).setValue( true );
 		await flushPromises();
 
-		expect( wrapper.find( '.cdx-dialog__header__subtitle' ).text() ).toBe(
+		expect( countText( wrapper ).text() ).toBe(
 			'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count 42',
 		);
 		mw.message.mockImplementation( originalMessage );
@@ -166,7 +197,7 @@ describe( 'TaskTypesDialog', () => {
 		await checkbox( wrapper, 'expand' ).setValue( true );
 		await flushPromises();
 
-		expect( wrapper.find( '.cdx-dialog__header__subtitle' ).exists() ).toBe( false );
+		expect( countText( wrapper ).element.textContent ).toBe( '\u00a0' );
 	} );
 
 	it( 'blocks Done when counting fails', async () => {
@@ -254,7 +285,9 @@ describe( 'TaskTypesDialog', () => {
 		await flushPromises();
 
 		expect( abort ).toHaveBeenCalled();
-		expect( wrapper.find( '.cdx-dialog__header__subtitle' ).exists() ).toBe( true );
+		expect( countText( wrapper ).text() ).toBe(
+			'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count',
+		);
 		expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
 	} );
 

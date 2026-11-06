@@ -1,0 +1,106 @@
+'use strict';
+
+/*
+ * CodexModule generates codex.js at ResourceLoader time, and CLiveRegion.vue and
+ * InterestSelector.vue are mapped in from another directory, so none of them exist here on
+ * disk for jest to resolve. The interest selector is stubbed: these tests only cover the
+ * article count.
+ */
+jest.mock( './codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
+jest.mock( './CLiveRegion.vue', () => require( '../vue-components/CLiveRegion.vue' ), { virtual: true } );
+jest.mock( './InterestSelector.vue', () => ( {
+	name: 'InterestSelector',
+	props: [ 'chips' ],
+	emits: [ 'update:chips' ],
+	render: () => null,
+} ), { virtual: true } );
+
+const mockFetchTasks = jest.fn();
+jest.mock( 'ext.growthExperiments.DataStore', () => ( {
+	newcomerTasks: {
+		filters: {
+			getSelectedInterests: () => [ 'Botany' ],
+			getTaskTypesQuery: () => [],
+		},
+		api: { fetchTasks: mockFetchTasks },
+	},
+} ), { virtual: true } );
+
+const { mount, flushPromises } = require( '@vue/test-utils' );
+const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
+
+const textSelector = '.cdx-dialog__footer__text .ext-growthExperiments-CLiveRegion__text';
+const announcerSelector = '.cdx-dialog__footer__text [role="status"]';
+const countMessage = 'growthexperiments-homepage-suggestededits-interest-selector-article-count';
+
+/**
+ * Make a count request that the test resolves.
+ *
+ * @return {{request: Promise, resolve: Function}}
+ */
+function makeRequest() {
+	let resolve;
+	const request = new Promise( ( res ) => {
+		resolve = ( count ) => res( { count } );
+	} );
+	request.abort = jest.fn();
+	return { request, resolve };
+}
+
+describe( 'InterestSelectorDialog', () => {
+	let firstRequest, wrapper;
+
+	beforeEach( () => {
+		firstRequest = makeRequest();
+		mockFetchTasks.mockReset().mockReturnValueOnce( firstRequest.request );
+	} );
+
+	afterEach( () => {
+		wrapper.unmount();
+	} );
+
+	// CdxDialog changes the elements around it when it opens and closes, so it needs a
+	// document. It does this one tick after mount, so wait for it before the test closes it.
+	async function mountOpenDialog() {
+		wrapper = mount( InterestSelectorDialog, {
+			props: { open: true },
+			attrs: { renderInPlace: true },
+			attachTo: document.body,
+		} );
+		await flushPromises();
+	}
+
+	it( 'renders the live region in the footer before the count is known', async () => {
+		await mountOpenDialog();
+		expect( wrapper.find( announcerSelector ).exists() ).toBe( true );
+		expect( wrapper.find( textSelector ).element.textContent ).toBe( '\u00a0' );
+	} );
+
+	it( 'shows the count when it is known', async () => {
+		await mountOpenDialog();
+		firstRequest.resolve( 5 );
+		await flushPromises();
+		expect( wrapper.find( textSelector ).text() ).toBe( countMessage );
+	} );
+
+	describe( 'when the dialog closes', () => {
+		it( 'stops a count request that has not finished', async () => {
+			await mountOpenDialog();
+			await wrapper.setProps( { open: false } );
+			expect( firstRequest.request.abort ).toHaveBeenCalled();
+		} );
+
+		it( 'does not show the old count when it opens again', async () => {
+			await mountOpenDialog();
+			firstRequest.resolve( 5 );
+			await flushPromises();
+
+			const secondRequest = makeRequest();
+			mockFetchTasks.mockReturnValueOnce( secondRequest.request );
+			await wrapper.setProps( { open: false } );
+			await wrapper.setProps( { open: true } );
+
+			expect( wrapper.find( textSelector ).element.textContent ).toBe( '\u00a0' );
+		} );
+	} );
+} );
