@@ -192,3 +192,16 @@ module.exports = exports = defineComponent( {
 	},
 } );
 </script>
+
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
+
+.skin-vector-2022 .growthexperiments-task-types-dialog {
+	// Fix the height on desktop. Keep it the same as in InterestSelectorDialog, so that the
+	// two dialogs are consistent when the user switches between them. There is no Codex token
+	// for 48rem. On a short screen, keep the Codex limit, so that the dialog stays in the
+	// viewport.
+	// Escape the value. Less has its own min() function, which drops the calc().
+	height: ~'min( 48rem, calc( @{size-viewport-height-full} - @{size-200} ) )';
+}
+</style>
