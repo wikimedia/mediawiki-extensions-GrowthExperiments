@@ -5,10 +5,7 @@
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "ЦӀерачу агӀонан модулехула чудехкина форматехь долу хаттарш схьаэца.",
-	"apihelp-homepagequestionstore-param-questionformat": "Хаттарш чудаларан формат, масала, HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Хаттарийн ларма",
-	"apihelp-homepagequestionstore-param-userid": "Хаттарш схьаэца леррина декъашхочун идентификатор.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Хаттарш ца карийна.",
 	"apihelp-growthsetmentor-summary": "Цхьана декъашхочунна хьехамхо хӀотто. Хийцамаш дӀайазбийр бу нахана хьалха.",
 	"apihelp-growthsetmentor-param-mentee": "Ӏамархочун аккаунт",
 	"apihelp-growthsetmentor-param-mentor": "Хьехамхочун цӀе",
@@ -22,9 +19,5 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Сурт кховдийна болчу йаззаман цӀе",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "Сурт рекомендаци дина префикс йоцу файлан цӀе, масала, <kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "Сурт рекомендаци деш долчу декъан цӀе, масала, <kbd>Истори</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Сурт рекомендаци деш долчу декъан 1-чу бух тӀехь индекс, масала <kbd>3</kbd>",
-	"apihelp-query+linkrecommendations-summary": "Схьаэца хьажоргийн рекомендацеш билгалчу агӀонна",
-	"apihelp-query+linkrecommendations-example-1": "123 идентификатор йолчу агӀонна хьажоргийн рекомендацеш схьаэца",
-	"apihelp-query+linkrecommendations-example-2": "456 идентификатор йолчу агӀонна 5 кхаччалц хьажоргийн рекомендацеш схьаэца",
-	"apihelp-query+linkrecommendations-param-pageid": "АгӀонан идентификатор, цунна лерина хьажоргийн рекомендацеш схьаэца."
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Сурт рекомендаци деш долчу декъан 1-чу бух тӀехь индекс, масала <kbd>3</kbd>"
 }

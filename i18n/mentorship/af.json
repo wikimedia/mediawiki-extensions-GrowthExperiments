@@ -5,7 +5,6 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Jou}} mentees",
-	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Sien {{GENDER:|jou}} mentees hieronder. Gebruik die filters om te verander watter mentees gewys word.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Aantal teruggerolde wysigings",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Aantal wysigings",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filters",

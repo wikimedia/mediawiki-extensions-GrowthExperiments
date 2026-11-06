@@ -25,7 +25,6 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|আপোনাৰ}} প্ৰভাৱ",
 	"growthexperiments-homepage-impact-subheader-text": "{{GENDER:|আপুনি}} সম্পাদনা কৰা প্ৰবন্ধবোৰ আনে পঢ়িছে!",
 	"growthexperiments-homepage-impact-article-link-tooltip": "প্ৰবন্ধলৈ যাওক",
-	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "বুজিছোঁ",
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "এতিয়ালৈকে কোনো সম্পাদনা কৰা নাই",
 	"growthexperiments-tour-response-button-okay": "বুজিছোঁ",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "আজি {{GENDER:$1|সক্ৰিয় আছিল}}",

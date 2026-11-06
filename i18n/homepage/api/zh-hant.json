@@ -7,10 +7,7 @@
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "取得透過首頁模組所發佈的格式化問題",
-	"apihelp-homepagequestionstore-param-questionformat": "回傳問題的格式，例如：HTML。",
 	"apihelp-homepagequestionstore-param-storage": "問題的存放位置。",
-	"apihelp-homepagequestionstore-param-userid": "用來取得問題的使用者 ID。",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "查無問題。",
 	"apihelp-growthsetmentor-summary": "設定使用者的導師。變更會公開記錄。",
 	"apihelp-growthsetmentor-param-mentee": "學員的使用者名稱",
 	"apihelp-growthsetmentor-param-mentor": "導師的使用者名稱",
@@ -24,9 +21,5 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "條目標題圖片推薦任務用於",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "用於圖片推薦的無前綴檔案名稱，例如：<kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "圖片推薦所在章節的標題，例如：<kbd>歷史</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "圖片推薦所在章節從 1 開始的索引，例如：<kbd>3</kbd>",
-	"apihelp-query+linkrecommendations-summary": "檢索特定頁面的連結建議",
-	"apihelp-query+linkrecommendations-example-1": "取得頁面 ID 為 123 的連結推薦",
-	"apihelp-query+linkrecommendations-example-2": "取得頁面 ID 為 456 的最多 5 個連結推薦",
-	"apihelp-query+linkrecommendations-param-pageid": "若要檢索連結推薦的頁面 ID。"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "圖片推薦所在章節從 1 開始的索引，例如：<kbd>3</kbd>"
 }

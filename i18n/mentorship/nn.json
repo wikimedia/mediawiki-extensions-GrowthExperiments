@@ -8,7 +8,6 @@
 	"growthexperiments-mentor-dashboard-pt-link": "Kontrollpanel for fadrar",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "For å slå på kontrollpanelet for fadrar må {{GENDER:|du}} først [[$1|melde deg opp som fadder]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Fadderbarna {{GENDER:|dine}}",
-	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Sjå fadderbarna {{GENDER:|dine}} nedanfor. Bruk filtera for å endra kva for fadderbarn som vert vist.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Kven er i tabellen {{GENDER:|din}}?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Meir informasjon om kven som er i tabellen {{GENDER:|din}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Tydingar",

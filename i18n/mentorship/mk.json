@@ -10,7 +10,6 @@
 	"growthexperiments-mentor-dashboard-must-be-mentor": "За да овозможите управувачница за подочувач, најпрво {{GENDER:|ќе треба}} да [[$1|се пријавите за подучувач]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Пред да може да се користи управувачницата на подучувачот, ќе треба да се постави список на подочвувачи. Администраторот може да се послужи со [[Special:EditGrowthConfig]] за таа цел.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Ваши}} подученици",
-	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Погледајте ги {{GENDER:|вашите}} подученици подолу. Послужете се со филтрите за да ги измените прикажаните подученици.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Табелата бара JavaScript. Овозможете го за да можете да го користите модулов.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Кој е на {{GENDER:|вашата}} табела?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "На табелава се прикажани {{GENDER:|вашите}} подученици чии сметки се создадени во изминативе две недели или имаат уредувано во изминативе шест месеци, и имаат овозможено [https://mediawiki.org/wiki/Special:MyLanguage/Growth/Feature_summary#NH страница на новодојден]. Податоците се подновуваат на секои три часа.",

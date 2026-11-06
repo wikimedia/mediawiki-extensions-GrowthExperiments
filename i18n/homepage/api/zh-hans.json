@@ -8,10 +8,7 @@
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "获取通过主页模块发布，并且已格式化的问题",
-	"apihelp-homepagequestionstore-param-questionformat": "此属性为以上问题将被返回的格式；例如：HTML。",
 	"apihelp-homepagequestionstore-param-storage": "问题的存储位置",
-	"apihelp-homepagequestionstore-param-userid": "用于获取问题的用户ID。",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "找不到问题。",
 	"apihelp-growthsetmentor-summary": "设置用户的导师。该变更将被公开记录。",
 	"apihelp-growthsetmentor-param-mentee": "学员的用户名",
 	"apihelp-growthsetmentor-param-mentor": "导师的用户名",
@@ -25,9 +22,5 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "条目标题图片推荐任务用于",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "用于图片推荐的无前缀文件名称，例如：<kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "图片推荐所在章节的标题，例如：<kbd>历史</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "图片推荐所在章节从1开始的索引，例如：<kbd>3</kbd>",
-	"apihelp-query+linkrecommendations-summary": "检索特定页面的链接建议",
-	"apihelp-query+linkrecommendations-example-1": "获取页面ID为123的链接推荐",
-	"apihelp-query+linkrecommendations-example-2": "获取页面ID为456的最多5个链接推荐",
-	"apihelp-query+linkrecommendations-param-pageid": "若要检索链接推荐的页面ID。"
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "图片推荐所在章节从1开始的索引，例如：<kbd>3</kbd>"
 }

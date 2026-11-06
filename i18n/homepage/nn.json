@@ -36,8 +36,6 @@
 	"growthexperiments-homepage-impact-recent-activity-streak-data-text": "$1 {{PLURAL:$1|endring|endringar}} $2",
 	"growthexperiments-homepage-impact-scores-thanks-info-label": "Meir informasjon om korleis takking fungerer",
 	"growthexperiments-homepage-impact-subheader-text": "Mest vist (sidan endringa {{GENDER:|di}})",
-	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> endringar i artiklar",
-	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|endring|endringar}} i andre slags sider (sjå {{PLURAL:$1|2=båe|alle}})",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Gå til artikkelen",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Sjå detaljerte sidesyningar",
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 endringar hittil",

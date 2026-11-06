@@ -8,10 +8,7 @@
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "{{GENDER:|احصل|احصلي}} على أسئلة منسقة منشورة عبر وحدات لوحة {{GENDER:|المستخدم|المستخدمة}}",
-	"apihelp-homepagequestionstore-param-questionformat": "التنسيق لإرجاع الأسئلة، مثل HTML.",
 	"apihelp-homepagequestionstore-param-storage": "موقع تخزين الأسئلة.",
-	"apihelp-homepagequestionstore-param-userid": "معرف المستخدم للحصول على أسئلة من أجله.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "لم يُعثر على أسئلة.",
 	"apihelp-growthsetmentor-summary": "تعيين مرشدي المستخدمين. سيتم نشر التغييرات علنا.",
 	"apihelp-growthsetmentor-param-mentee": "اسم المستخدم للمُرشَد(ة)",
 	"apihelp-growthsetmentor-param-mentor": "اسم المستخدم للمُرشِد(ة)",
@@ -25,9 +22,5 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "عنوان المقالة الخاصة بمهمة اقتراح الصورة",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "اسم المِلَفّ، دون البادئة، لاقتراح الصورة، على سبيل المثال <kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "عنوان القسم الذي يوصى له بصورة، على سبيل المثال <kbd>التاريخ</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "الفِهْرِس القائم على 1 للقسم الذي يوصى له بصورة، على سبيل المثال <kbd>3</kbd>",
-	"apihelp-query+linkrecommendations-summary": "استرداد اقتراحات الروابط لصفحة محددة",
-	"apihelp-query+linkrecommendations-example-1": "الحصول على اقتراحات لروابط الصفحة ذات المعرّف 123",
-	"apihelp-query+linkrecommendations-example-2": "الحصول على ما يصل إلى 5 اقتراحات لروابط الصفحة ذات الهوية 456",
-	"apihelp-query+linkrecommendations-param-pageid": "معرف الصفحة التي سيتم استرداد اقتراحات الروابط الخاصة بها."
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "الفِهْرِس القائم على 1 للقسم الذي يوصى له بصورة، على سبيل المثال <kbd>3</kbd>"
 }

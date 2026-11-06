@@ -5,10 +5,7 @@
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Dapatkan soalan berformat yang disiarkan melalui modul laman pemula",
-	"apihelp-homepagequestionstore-param-questionformat": "Format untuk mengembalikan soalan, cth HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Lokasi penyimpanan soalan.",
-	"apihelp-homepagequestionstore-param-userid": "ID pengguna untuk mendapatkan soalan.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Tiada soalan ditemui.",
 	"apihelp-growthsetmentor-summary": "Tetapkan mentor pengguna. Perubahan akan dilog secara terbuka.",
 	"apihelp-growthsetmentor-param-mentee": "Nama pengguna menti",
 	"apihelp-growthsetmentor-param-mentor": "Nama pengguna mentor",
@@ -22,9 +19,5 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "Tajuk rencana tugasan berkaitan fungsi pengesyoran imej",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "Nama fail yang tidak ditetapkan awalan untuk pengesyoran imej, cth <kbd>Foo.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "Tajuk bahagian untuk pengesyoran imej, cth <kbd>Sejarah</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Indeks berasas 1 untuk fungsi bahagian yang dicadangkan imej, cth <kbd>3</kbd>",
-	"apihelp-query+linkrecommendations-summary": "Dapatkan pengesyoran pautan untuk halaman tertentu",
-	"apihelp-query+linkrecommendations-example-1": "Dapatkan pengesyoran pautan untuk halaman dengan ID 123",
-	"apihelp-query+linkrecommendations-example-2": "Dapatkan sehingga 5 pengesyoran pautan untuk halaman dengan ID 456",
-	"apihelp-query+linkrecommendations-param-pageid": "ID halaman untuk mendapatkan pengesyoran pautan."
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "Indeks berasas 1 untuk fungsi bahagian yang dicadangkan imej, cth <kbd>3</kbd>"
 }

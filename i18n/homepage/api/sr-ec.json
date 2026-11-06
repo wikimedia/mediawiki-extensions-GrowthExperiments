@@ -6,10 +6,7 @@
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Прибављање форматираних питања постављених путем модулâ за почетну страницу",
-	"apihelp-homepagequestionstore-param-questionformat": "Формат у ком ће се вратити питања, на пример HTML",
 	"apihelp-homepagequestionstore-param-storage": "Складишна локација питања",
-	"apihelp-homepagequestionstore-param-userid": "Кориснички ID за који ће се прибавити питања",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Ниједно питање није пронађено.",
 	"apihelp-growthsetmentor-summary": "Постављање ментора кориницима; промена ће бити јавно забележена.",
 	"apihelp-growthsetmentor-param-mentee": "Корисничко име новајлије",
 	"apihelp-growthsetmentor-param-mentor": "Корисничко име ментора",

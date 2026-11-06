@@ -6,10 +6,7 @@
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Anasayfa modülleri aracılığıyla yayınlanan biçimlendirilmiş sorular alın",
-	"apihelp-homepagequestionstore-param-questionformat": "Soruları döndürme biçimi, ör. HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Soruların saklanacağı yer.",
-	"apihelp-homepagequestionstore-param-userid": "Sorular için kullanıcı kimliği.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Soru bulunamadı.",
 	"apihelp-growthsetmentor-summary": "Kullanıcının danışmanını ayarlayın. Değişiklik herkese açık olarak kaydedilecek.",
 	"apihelp-growthsetmentor-param-mentee": "Danışmanlık edinen kullanıcının kullanıcı adı",
 	"apihelp-growthsetmentor-param-mentor": "Danışmanın kullanıcı adı",

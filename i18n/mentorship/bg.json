@@ -28,7 +28,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-message-change-dialog-success": "{{GENDER:|Вашето}} приветствено съобщение беше променено на „$1“.",
 	"growthexperiments-mentor-dashboard-personalized-praise-skip-mentee-cancel": "Отказ",
 	"growthexperiments-mentor-dashboard-personalized-praise-settings-notifications-headline": "Известия",
-	"growthexperiments-mentor-writer-error-message-too-long": "Приветственото съобщение е твърде дълго (потребителско ID: $2). Максималната дължина е $1.",
 	"growthexperiments-manage-mentors-title": "Управление на менторите",
 	"growthexperiments-manage-mentors-pretext-regular": "Администраторите могат да премахват ментори, които нарушават стандартите или правилата на общността. Те могат също така да редактират опциите, свързани с менторството, като например приветственото им съобщение.",
 	"growthexperiments-manage-mentors-none": "Няма",

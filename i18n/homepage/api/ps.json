@@ -5,10 +5,7 @@
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "د کورمخ چلنوالو له لارې د خپرو شوو بڼل‌شوو پوښتنو ترلاسه کول",
-	"apihelp-homepagequestionstore-param-questionformat": "د پوښتنو د بېرته‌گرځولو بڼه، د بېلگې په توگه اېچ‌ټي‌اېم‌اېل.",
 	"apihelp-homepagequestionstore-param-storage": "د پوښتنو زېرمه‌کولو ځای.",
-	"apihelp-homepagequestionstore-param-userid": "د پوښتنو ترلاسه کولو لپاره د کارن پېژند.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "هېڅ پوښتنې ونه موندل شوې.",
 	"apihelp-growthsetmentor-summary": "کارن لارښود ټاکي. بدلون به په ټولواله ډول ثبت شي.",
 	"apihelp-growthsetmentor-param-mentee": "لارزدکړي کارن‌نوم",
 	"apihelp-growthsetmentor-param-mentor": "لارښود کارن‌نوم",
@@ -22,9 +19,5 @@
 	"apihelp-growthinvalidateimagerecommendation-param-title": "د هغه ليکنې سرليک چې د انځور سپارښتنې دنده د هغې لپاره شوې",
 	"apihelp-growthinvalidateimagerecommendation-param-filename": "د انځور سپارښتنې لپاره نامخکېنی دوتنې نوم د بېلگې په توگه <kbd>Foo\n.jpg</kbd>",
 	"apihelp-growthinvalidateimagerecommendation-param-sectiontitle": "د هغې برخې سرليک چې د هغې لپاره د انځور وړاندئز شوی د بېلگې په توگه <kbd>پېښليک</kbd>",
-	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "د ۱ پربنسټ د هغه برخې ليکلړ چې د هغې لپاره د انځور وړانديز شوی د بېلگې په توگه <kbd>۳</kbd>",
-	"apihelp-query+linkrecommendations-summary": "د يو ځانگړي مخ لپاره د تړوني سپارښتنې ترلاسه کول",
-	"apihelp-query+linkrecommendations-example-1": "د ۱۲۳ پېژند سره د مخ لپاره د تړوني سپارښته ترلاسه کول",
-	"apihelp-query+linkrecommendations-example-2": "د هر مخ لپاره تر ۵ تړونی وړانديزونه د ۴۵۶ پېژند سره ترلاسه کول",
-	"apihelp-query+linkrecommendations-param-pageid": "د هغه مخ پېژند چې د تړوني سپارښتنې يې بياترلاسه کېږي."
+	"apihelp-growthinvalidateimagerecommendation-param-sectionnumber": "د ۱ پربنسټ د هغه برخې ليکلړ چې د هغې لپاره د انځور وړانديز شوی د بېلگې په توگه <kbd>۳</kbd>"
 }

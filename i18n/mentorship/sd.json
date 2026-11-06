@@ -10,7 +10,6 @@
 	"growthexperiments-mentor-dashboard-must-be-mentor": "سکيا ڏيندڙن جي ڊيشبورڊ کي فعال ڪرڻ لاءِ، {{GENDER:|توھان}} کي پھريان [[$1| بطور ھڪ سکيا ڏيندڙ طور داخلا]] جي ضرورت آھي.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "ان کان اڳ جو سکيا ڏيندڙن جي ڊيشبورڊ کي استعمال ڪري سگهجي، پھريان سکيا ڏيندڙن جي فھرست کي ترتيب ڏيڻ جي ضرورت آھي. ڪو منتظم [[Special:EditGrowthConfig]] کي استعمال ڪري ايئن ڪري سگهي ٿو.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|توھان}} جي سکيا ھيٺ",
-	"growthexperiments-mentor-dashboard-mentee-overview-intro": "{{GENDER:|توھان}} جي سکيا ھيٺ واپرائيندڙ ھيٺ ڏسي سگهو ٿا. ڪھڙا سکيا وٺندڙ ظاھر ٿين، ان لاءِ ڇاڻي جو استعمال ڪيو.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "خانا ڏيکارڻ لاءِ جاوا اسڪرپٽ جي ضرورت آھي. ھن ماڊيول کي ڏسڻ لاءِ پھرين جاوا اسڪرپٽ کي فعال ڪيو.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "{{GENDER:|توھان}} جي خاني ۾ ڪير آھي؟",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "وڌيڪ ڄاڻيو تہ {{GENDER:|توھان}} جي خاني ۾ ڪير آھي",

@@ -10,7 +10,6 @@
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Evit gweredekaat taolenn-stur ar mentor e {{GENDER:|rankit}} [[$1|lakaat oc’h anv evel mentor]] da gentañ.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "A-raok ma c'hallfe bezañ implijet taolenn-stur ar mentor e ranker kefluniañ roll ar mentored da gentañ. Gallout a ra ur merour ober gant [[Special:EditGrowthConfig]] evit se.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Ho}} teskarded",
-	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Setu {{GENDER:|ho}} teskarded amañ dindan. Gant ar siloù e c’hallit kemmañ pere a vo diskouezet.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Rekis eo JavaScript evit an daolenn. Gweredekait JavaScript evit gallout implijout ar vodulenn-mañ.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Piv a zo en {{GENDER:|ho}} taolenn?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-icon-label": "Muioc'h a ditouroù diwar-benn piv a zo en {{GENDER:|ho}} taolenn",

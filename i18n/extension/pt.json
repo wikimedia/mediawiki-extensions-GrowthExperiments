@@ -8,7 +8,6 @@
 		]
 	},
 	"growthexperiments-desc": "Esta extensão contém experiências feitas pela equipa de Crescimento (''Growth team'').",
-	"growthexperiments-info-tooltip-close-label": "Fechar",
 	"specialpages-group-growth-tools": "Ferramentas de crescimento",
 	"communityconfiguration-growthsuggestededits-info-text": "As Edições sugeridas ajudam os recém-chegados a dar os primeiros passos na edição. Os recém-chegados na web e na web móvel têm acesso às “Edições sugeridas” através da sua página inicial para recém-chegados. As Edições sugeridas recebem a etiqueta “Tarefa para recém-chegados“. <br><em>Observe que as atualizações neste formulário não afetarão as sugestões de edição nos aplicativos da Wikipédia para iOS e Android. Entre em contato com a equipe de aplicações através de [https://www.mediawiki.org/wiki/Talk:Wikimedia_Apps Discussão:Aplicações da Wikimedia] para discutir os recursos da aplicação móvel.</em>\n\nAlguns tipos de tarefas para recém-chegados são exibidos por meio de modelos de manutenção. Os artigos que contêm esses modelos são adicionados ao feed “Edições sugeridas” da página inicial. Para saber quantos artigos estão disponíveis para cada tipo de tarefa, consulte [[Special:NewcomerTasksInfo]]."
 }
