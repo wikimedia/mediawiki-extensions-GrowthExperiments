@@ -22,6 +22,12 @@
 			"rules": {
 				"selector-class-pattern": "^(mw|oo-ui|cdx|client|skin|ext-growthExperiments)-"
 			}
+		},
+		{
+			"files": [ "**/*.vue" ],
+			"rules": {
+				"declaration-no-important": true
+			}
 		}
 	]
 }
