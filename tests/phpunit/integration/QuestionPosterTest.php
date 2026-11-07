@@ -62,7 +62,8 @@ class QuestionPosterTest extends MediaWikiIntegrationTestCase {
 				'body' => "Foo\nbar\n\nbaz",
 				'sectionHeader' => 'Some header',
 				'parentRevision' => null,
-				'expectedResult' => "== Some header ==\nFoo\nbar\n\nbaz --~~~~",
+				'expectedResult' => WikitextContent::getSectionHeader( 'Some header' )
+					. "Foo\nbar\n\nbaz --~~~~",
 			],
 			'hidden parent' => [
 				'postOnTop' => false,
@@ -77,30 +78,31 @@ class QuestionPosterTest extends MediaWikiIntegrationTestCase {
 				'sectionHeader' => 'Some header',
 				'parentRevision' => [ "Section 0\n\n== H1 ==\nSection1\n== H2 ==\nSection2", 0 ],
 				'expectedResult' => "Section 0\n\n== H1 ==\nSection1\n== H2 ==\nSection2\n\n"
-					. "== Some header ==\nFoo\nbar\n\nbaz --~~~~",
+					. WikitextContent::getSectionHeader( 'Some header' ) . "Foo\nbar\n\nbaz --~~~~",
 			],
 			'top' => [
 				'postOnTop' => true,
 				'body' => "Foo\nbar\n\nbaz",
 				'sectionHeader' => 'Some header',
 				'parentRevision' => [ "Section 0\n\n== H1 ==\nSection1\n== H2 ==\nSection2", 0 ],
-				'expectedResult' => "Section 0\n\n== Some header ==\nFoo\nbar\n\nbaz --~~~~\n\n"
-					. "== H1 ==\nSection1\n\n== H2 ==\nSection2",
+				'expectedResult' => "Section 0\n\n" . WikitextContent::getSectionHeader( 'Some header' )
+					. "Foo\nbar\n\nbaz --~~~~\n\n== H1 ==\nSection1\n\n== H2 ==\nSection2",
 			],
 			'top with no sections' => [
 				'postOnTop' => true,
 				'body' => "Foo\nbar\n\nbaz",
 				'sectionHeader' => 'Some header',
 				'parentRevision' => [ "Section\n\n0", 0 ],
-				'expectedResult' => "Section\n\n0\n\n== Some header ==\nFoo\nbar\n\nbaz --~~~~",
+				'expectedResult' => "Section\n\n0\n\n" . WikitextContent::getSectionHeader( 'Some header' )
+					. "Foo\nbar\n\nbaz --~~~~",
 			],
 			'top with subsections' => [
 				'postOnTop' => true,
 				'body' => "Foo\nbar\n\nbaz",
 				'sectionHeader' => 'Some header',
 				'parentRevision' => [ "Section 0\n\n== H1 ==\nSection1\n=== H2 ===\nSection2", 0 ],
-				'expectedResult' => "Section 0\n\n== Some header ==\nFoo\nbar\n\nbaz --~~~~\n\n"
-					. "== H1 ==\nSection1\n=== H2 ===\nSection2",
+				'expectedResult' => "Section 0\n\n" . WikitextContent::getSectionHeader( 'Some header' )
+					. "Foo\nbar\n\nbaz --~~~~\n\n== H1 ==\nSection1\n=== H2 ===\nSection2",
 			],
 		];
 	}
