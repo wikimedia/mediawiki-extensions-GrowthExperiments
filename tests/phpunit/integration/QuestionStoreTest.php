@@ -10,6 +10,7 @@ use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Request\FauxRequest;
 use MediaWikiIntegrationTestCase;
+use Psr\Log\NullLogger;
 
 /**
  * @group Database
@@ -30,7 +31,8 @@ class QuestionStoreTest extends MediaWikiIntegrationTestCase {
 			$services->getUserOptionsManager(),
 			$services->getUserOptionsLookup(),
 			$services->getJobQueueGroup(),
-			RequestContext::getMain()->getRequest()->wasPosted()
+			RequestContext::getMain()->getRequest()->wasPosted(),
+			new NullLogger()
 		);
 		$this->assertInstanceOf( QuestionStore::class, $questionStore );
 	}

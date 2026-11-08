@@ -4,10 +4,10 @@ namespace GrowthExperiments\EventLogging;
 
 use GrowthExperiments\HomepageModules\Impact;
 use MediaWiki\Extension\EventLogging\EventLogging;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\User\User;
+use Psr\Log\LoggerInterface;
 
 class SpecialHomepageLogger {
 
@@ -32,6 +32,7 @@ class SpecialHomepageLogger {
 	 * @var User
 	 */
 	private $user;
+	private LoggerInterface $logger;
 
 	/**
 	 * @param string $pageviewToken
@@ -40,19 +41,22 @@ class SpecialHomepageLogger {
 	 * @param bool $isMobile
 	 * @param array $modules Associative array of modules used on the homepage. Keys are module names,
 	 *   values are arbitrary.
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		$pageviewToken,
 		User $user,
 		WebRequest $request,
 		$isMobile,
-		array $modules
+		array $modules,
+		LoggerInterface $logger
 	) {
 		$this->pageviewToken = $pageviewToken;
 		$this->user = $user;
 		$this->modules = $modules;
 		$this->request = $request;
 		$this->isMobile = $isMobile;
+		$this->logger = $logger;
 	}
 
 	private function getEmailState(): string {
@@ -110,7 +114,7 @@ class SpecialHomepageLogger {
 			$event['impact_module_state'] = $impactModule->getState();
 		} else {
 			// Should not happen; it is a required schema field.
-			LoggerFactory::getInstance( 'GrowthExperiments' )
+			$this->logger
 				->error( 'Could not set HomepageVisit.impact_module_state schema field' );
 		}
 

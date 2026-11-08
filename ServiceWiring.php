@@ -396,6 +396,7 @@ return [
 			$growthServices->getImageRecommendationApiHandler(),
 			$growthServices->getImageRecommendationMetadataProvider(),
 			$growthServices->getAddImageSubmissionHandler(),
+			$growthServices->getLogger(),
 			$services->getMainConfig()->get( 'GEDeveloperSetup' )
 		);
 	},
@@ -825,7 +826,8 @@ return [
 			$services->getConnectionProvider(),
 			$services->getUserIdentityUtils(),
 			$services->getChangeTagsStore(),
-			$services->getStatsFactory()
+			$services->getStatsFactory(),
+			$growthServices->getLogger()
 		);
 	},
 

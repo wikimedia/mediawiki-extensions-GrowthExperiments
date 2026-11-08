@@ -25,6 +25,7 @@ use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentityUtils;
+use Psr\Log\NullLogger;
 use Wikimedia\Stats\StatsFactory;
 
 trait HomepageHooksHelpers {
@@ -59,7 +60,8 @@ trait HomepageHooksHelpers {
 			$this->createNoOpMock( UserImpactStore::class ),
 			$this->createNoOpMock( TaskTypeManager::class ),
 			$this->createNoOpMock( LevelingUpManager::class ),
-			$this->createNoOpMock( FeatureManager::class )
+			$this->createNoOpMock( FeatureManager::class ),
+			new NullLogger()
 		);
 	}
 

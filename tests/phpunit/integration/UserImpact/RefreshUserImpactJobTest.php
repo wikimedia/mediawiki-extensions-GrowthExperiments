@@ -71,7 +71,8 @@ class RefreshUserImpactJobTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getUserFactory(),
 			$growthServices->getUserImpactStore(),
 			$growthServices->getUserImpactLookup(),
-			$growthServices->getUserImpactFormatter()
+			$growthServices->getUserImpactFormatter(),
+			$growthServices->getLogger()
 		);
 		$job->run();
 

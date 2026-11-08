@@ -10,7 +10,7 @@ use JsonException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
-use MediaWiki\Logger\LoggerFactory;
+use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
 use Wikimedia\Minify\CSSMin;
 
@@ -33,6 +33,7 @@ class ReadingRecommendations extends BaseModule {
 
 	private ReadingRecommendationsService $recommendationsService;
 	private ReadingRecommendationsFormatter $formatter;
+	private LoggerInterface $logger;
 	private ?array $recommendations = null;
 	private bool $usesFixture = false;
 	private ?bool $userHasInterests = null;
@@ -50,11 +51,13 @@ class ReadingRecommendations extends BaseModule {
 		IContextSource $context,
 		Config $wikiConfig,
 		ReadingRecommendationsService $recommendationsService,
-		ReadingRecommendationsFormatter $formatter
+		ReadingRecommendationsFormatter $formatter,
+		LoggerInterface $logger
 	) {
 		parent::__construct( self::MODULE_ID, $context, $wikiConfig );
 		$this->recommendationsService = $recommendationsService;
 		$this->formatter = $formatter;
+		$this->logger = $logger;
 	}
 
 	/** @inheritDoc */
@@ -432,7 +435,7 @@ class ReadingRecommendations extends BaseModule {
 			}
 			return $items;
 		} catch ( JsonException | UnexpectedValueException $e ) {
-			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+			$this->logger->warning(
 				'Unable to load reading recommendations fixture {path}: {error}',
 				[ 'path' => $path, 'error' => $e->getMessage() ]
 			);

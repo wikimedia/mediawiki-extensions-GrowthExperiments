@@ -23,6 +23,7 @@ use MediaWiki\Title\TitleValue;
 use MediaWikiIntegrationTestCase;
 use MockTitleTrait;
 use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\NullLogger;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 use Wikimedia\Stats\StatsUtils;
@@ -88,7 +89,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			StatsFactory::newNull(),
 			$apiHandler,
 			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class )
+			$this->createMock( AddImageSubmissionHandler::class ),
+			new NullLogger()
 		);
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
@@ -172,7 +174,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			$unitTestingHelper->getStatsFactory(),
 			$apiHandler,
 			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class )
+			$this->createMock( AddImageSubmissionHandler::class ),
+			new NullLogger()
 		);
 
 		$provider->get( new TitleValue( NS_MAIN, '15' ), $taskType );
@@ -231,7 +234,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			StatsFactory::newNull(),
 			$apiHandler,
 			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class )
+			$this->createMock( AddImageSubmissionHandler::class ),
+			new NullLogger()
 		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
@@ -276,7 +280,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			StatsFactory::newNull(),
 			$apiHandler,
 			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class )
+			$this->createMock( AddImageSubmissionHandler::class ),
+			new NullLogger()
 		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof StatusValue );
@@ -326,7 +331,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			StatsFactory::newNull(),
 			$apiHandler,
 			$metadataProvider,
-			$this->createMock( AddImageSubmissionHandler::class )
+			$this->createMock( AddImageSubmissionHandler::class ),
+			new NullLogger()
 		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof ImageRecommendation );

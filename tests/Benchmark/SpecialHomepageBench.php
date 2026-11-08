@@ -40,6 +40,7 @@ class SpecialHomepageBench extends GrowthExperimentsBench {
 			$growthExperimentsServices->getFeatureManager(),
 			$growthExperimentsServices->getNewcomerTasksUserOptionsLookup(),
 			$services->getJobQueueGroup(),
+			$growthExperimentsServices->getLogger(),
 			null,
 		);
 		$context = new DerivativeContext( RequestContext::getMain() );

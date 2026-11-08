@@ -23,18 +23,14 @@ use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\User\UserIdentity;
 use MultipleIterator;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\NullLogger;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Message\ListType;
 
 /**
  * Shared functionality for local and remote search.
  */
-abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterface {
-
-	use LoggerAwareTrait;
+abstract class SearchTaskSuggester implements TaskSuggester {
 
 	// Keep this in sync with GrowthTasksApi.js#fetchTasks
 	public const DEFAULT_LIMIT = 15;
@@ -61,6 +57,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param TitleParser $titleParser
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		private readonly TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -70,7 +67,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		private readonly StatusFormatter $statusFormatter,
 		private readonly TitleParser $titleParser,
 		array $taskTypes,
-		array $topics
+		array $topics,
+		protected readonly LoggerInterface $logger
 	) {
 		foreach ( $taskTypes as $taskType ) {
 			$this->taskTypes[$taskType->getId()] = $taskType;
@@ -78,7 +76,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		foreach ( $topics as $topic ) {
 			$this->topics[$topic->getId()] = $topic;
 		}
-		$this->logger = new NullLogger();
 	}
 
 	/** @inheritDoc */
@@ -209,16 +206,13 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		foreach ( $queries as $query ) {
 			$matches = $this->search( $query, $queryLimit, $offset, $debug );
 			if ( $matches instanceof StatusValue ) {
-				// Only log when there's a logger; Status::getWikiText would break unit tests.
-				if ( !$this->logger instanceof NullLogger ) {
-					$this->logger->warning( 'Search error: {message}', [
-						'message' => $this->statusFormatter->getWikiText( $matches, [ 'lang' => 'en' ] ),
-						'searchTerm' => $query->getQueryString(),
-						'queryId' => $query->getId(),
-						'limit' => $queryLimit,
-						'offset' => $offset,
-					] );
-				}
+				$this->logger->warning( 'Search error: {message}', [
+					'message' => $this->statusFormatter->getWikiText( $matches, [ 'lang' => 'en' ] ),
+					'searchTerm' => $query->getQueryString(),
+					'queryId' => $query->getId(),
+					'limit' => $queryLimit,
+					'offset' => $offset,
+				] );
 				return $matches;
 			}
 			$totalCount += $matches->getTotalHits();

@@ -17,7 +17,6 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\WelcomeSurveyReminder;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use OutOfBoundsException;
@@ -128,7 +127,8 @@ class HomepageModuleRegistry {
 					$services->getStatsFactory(),
 					$growthServices->getTopicRegistry(),
 					$growthServices->getTaskTypeManager(),
-					$growthServices->getFeatureManager()
+					$growthServices->getFeatureManager(),
+					$growthServices->getLogger()
 				);
 			},
 
@@ -208,7 +208,7 @@ class HomepageModuleRegistry {
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				return new CommunityUpdates(
-					LoggerFactory::getInstance( 'GrowthExperiments' ),
+					$growthServices->getLogger(),
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					CommunityConfigurationServices::wrap( $services )->getConfigurationProviderFactory(),
@@ -228,7 +228,8 @@ class HomepageModuleRegistry {
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getReadingRecommendationsService(),
-					$growthServices->getReadingRecommendationsFormatter()
+					$growthServices->getReadingRecommendationsFormatter(),
+					$growthServices->getLogger()
 				);
 			},
 		];

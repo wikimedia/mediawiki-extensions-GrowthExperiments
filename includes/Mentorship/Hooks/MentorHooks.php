@@ -19,7 +19,6 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\Notifications\AttributeManager;
 use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\Hook\FormatAutocommentsHook;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\RenameUser\Hook\RenameUserCompleteHook;
@@ -47,8 +46,6 @@ class MentorHooks implements
 	RenameUserCompleteHook
 {
 
-	private LoggerInterface $logger;
-
 	public function __construct(
 		private Config $wikiConfig,
 		private UserIdentityLookup $userIdentityLookup,
@@ -57,9 +54,8 @@ class MentorHooks implements
 		private MentorProvider $mentorProvider,
 		private MentorStore $mentorStore,
 		private UserRegistrationLookup $userRegistrationLookup,
+		private LoggerInterface $logger,
 	) {
-		// TODO: This is not a service (yet), but should be
-		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 	}
 
 	/**

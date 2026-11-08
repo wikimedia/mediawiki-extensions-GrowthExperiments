@@ -26,7 +26,6 @@ use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
 use MediaWiki\Html\Html;
 use MediaWiki\JobQueue\JobQueueGroup;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -35,6 +34,7 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\Options\UserOptionsUpdateJob;
 use MediaWiki\Utils\MWCryptRand;
 use MediaWiki\WikiMap\WikiMap;
+use Psr\Log\LoggerInterface;
 use Throwable;
 use Wikimedia\Stats\StatsFactory;
 
@@ -57,6 +57,7 @@ class SpecialHomepage extends SpecialPage {
 		private readonly FeatureManager $featureManager,
 		private readonly NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		private readonly JobQueueGroup $jobQueueGroup,
+		private readonly LoggerInterface $logger,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
 		parent::__construct( 'Homepage' );
@@ -208,7 +209,8 @@ class SpecialHomepage extends SpecialPage {
 				$this->getContext()->getUser(),
 				$this->getRequest(),
 				$this->isMobile,
-				$modules
+				$modules,
+				$this->logger
 			);
 			DeferredUpdates::addCallableUpdate( static function () use ( $logger ) {
 				$logger->log();
@@ -579,7 +581,7 @@ class SpecialHomepage extends SpecialPage {
 				'Invalid parameters passed to Special:Homepage/newcomertask. Missing params: %s',
 				implode( ',', $missing )
 			);
-			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorMessage );
+			$this->logger->error( $errorMessage );
 			if ( $this->getConfig()->get( 'GEDeveloperSetup' ) ) {
 				// For developer setup wikis (local + beta/CI), throw an exception so we can
 				// catch the issue in testing/CI. For production, we should

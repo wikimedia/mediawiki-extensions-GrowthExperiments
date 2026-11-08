@@ -93,7 +93,8 @@
 				"MainConfig",
 				"UserIdentityLookup",
 				"GrowthExperimentsMentorStore",
-				"GrowthExperimentsReassignMenteesFactory"
+				"GrowthExperimentsReassignMenteesFactory",
+				"GrowthExperimentsLogger"
 			]
 		},
 		"menteeOverviewUpdateDataForMentor": {
@@ -112,7 +113,8 @@
 				"UserFactory",
 				"GrowthExperimentsUserImpactStore",
 				"GrowthExperimentsUserImpactLookup",
-				"GrowthExperimentsUserImpactFormatter"
+				"GrowthExperimentsUserImpactFormatter",
+				"GrowthExperimentsLogger"
 			]
 		},
 		"notificationKeepGoingJob": {
@@ -194,7 +196,8 @@
 				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorStore",
 				"GrowthExperimentsPraiseworthyMenteeSuggester",
-				"GrowthExperimentsPersonalizedPraiseLogger"
+				"GrowthExperimentsPersonalizedPraiseLogger",
+				"GrowthExperimentsLogger"
 			]
 		},
 		"growthinvalidateimagerecommendation": {
@@ -203,7 +206,8 @@
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsAddImageSubmissionHandler",
 				"TitleFactory",
-				"GrowthExperimentsFeatureManager"
+				"GrowthExperimentsFeatureManager",
+				"GrowthExperimentsLogger"
 			]
 		},
 		"growthinvalidaterevisetonerecommendation": {
@@ -222,7 +226,8 @@
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"MainConfig",
 				"TitleFactory",
-				"GrowthExperimentsFeatureManager"
+				"GrowthExperimentsFeatureManager",
+				"GrowthExperimentsLogger"
 			]
 		}
 	},
@@ -239,7 +244,8 @@
 				"GrowthExperimentsTopicRegistry",
 				"GrowthExperimentsFeatureManager",
 				"GrowthExperimentsTaskSetFiltersFactory",
-				"GrowthExperimentsInterestValidator"
+				"GrowthExperimentsInterestValidator",
+				"GrowthExperimentsLogger"
 			]
 		},
 		"growthstarredmentees": {
@@ -358,7 +364,8 @@
 				"GrowthExperimentsUserImpactStore",
 				"GrowthExperimentsTaskTypeManager",
 				"GrowthExperimentsLevelingUpManager",
-				"GrowthExperimentsFeatureManager"
+				"GrowthExperimentsFeatureManager",
+				"GrowthExperimentsLogger"
 			]
 		},
 		"impact": {
@@ -389,7 +396,8 @@
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorProvider",
 				"GrowthExperimentsMentorStore",
-				"UserRegistrationLookup"
+				"UserRegistrationLookup",
+				"GrowthExperimentsLogger"
 			]
 		},
 		"mentordashboard": {
@@ -463,7 +471,8 @@
 				"GrowthExperimentsCampaignLoader",
 				"GrowthExperimentsFeatureManager",
 				"GrowthExperimentsPostSignupOnboardingEligibility",
-				"StatsFactory"
+				"StatsFactory",
+				"GrowthExperimentsLogger"
 			],
 			"optional_services": [
 				"TestKitchen.ExperimentManager"

@@ -26,6 +26,7 @@ use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Message\ListType;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -50,6 +51,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		private readonly FeatureManager $featureManager,
 		private readonly TaskSetFiltersFactory $taskSetFiltersFactory,
 		private readonly InterestValidator $interestValidator,
+		private readonly LoggerInterface $logger,
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
 	}
@@ -190,7 +192,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			// An interest task set does not need this: each request serves a different random
 			// slice of the cached pool, and a rebuild costs one search per interest per task type.
 			if ( !$user->isNamed() ) {
-				\MediaWiki\Logger\LoggerFactory::getInstance( 'GrowthExperiments' )->error(
+				$this->logger->error(
 					'Scheduling NewcomerTasksCacheRefreshJob for non-named user',
 					[
 						'userId' => $user->getId(),

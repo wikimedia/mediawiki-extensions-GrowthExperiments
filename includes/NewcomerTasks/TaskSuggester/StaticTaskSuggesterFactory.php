@@ -19,7 +19,7 @@ use StatusValue;
  *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
  *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
  *             ], $services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),
- *                 LoggerFactory::getInstance( 'GrowthExperiments' ) );
+ *                 GrowthExperimentsServices::wrap( $services )->getLogger() );
  *         } );
  *     };
  */

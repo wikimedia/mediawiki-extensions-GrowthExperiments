@@ -3,7 +3,6 @@
 namespace GrowthExperiments\UserImpact;
 
 use MediaWiki\JobQueue\Job;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\Utils\MWTimestamp;
@@ -53,7 +52,8 @@ class RefreshUserImpactJob extends Job {
 		UserFactory $userFactory,
 		UserImpactStore $userImpactStore,
 		UserImpactLookup $userImpactLookup,
-		UserImpactFormatter $userImpactFormatter
+		UserImpactFormatter $userImpactFormatter,
+		LoggerInterface $logger
 	) {
 		parent::__construct( self::JOB_NAME, $params );
 
@@ -62,9 +62,7 @@ class RefreshUserImpactJob extends Job {
 		$this->userImpactStore = $userImpactStore;
 		$this->userImpactLookup = $userImpactLookup;
 		$this->userImpactFormatter = $userImpactFormatter;
-
-		// TODO: this is not a service yet, but should be
-		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
+		$this->logger = $logger;
 
 		if ( array_key_exists( 'impactDataBatch', $params ) ) {
 			$this->impactDataBatch = $params['impactDataBatch'];

@@ -19,6 +19,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
+use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Stats\StatsFactory;
 
@@ -202,6 +203,7 @@ class NewcomerTaskCompleteHandlerTest extends \MediaWikiUnitTestCase {
 			$userIdentityUtils,
 			$this->createMock( ChangeTagsStore::class ),
 			StatsFactory::newNull(),
+			new NullLogger(),
 			new HashConfig( $config ),
 			$user
 		);

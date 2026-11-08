@@ -21,6 +21,7 @@ use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\User\UserIdentity;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 
@@ -42,6 +43,8 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
 	 * @param StatsFactory $statsFactory
+	 * @param string $wikiId
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -55,9 +58,10 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		array $topics,
 		StatsFactory $statsFactory,
 		private readonly string $wikiId,
+		LoggerInterface $logger,
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
-			$linkBatchFactory, $statusFormatter, $titleParser, $taskTypes, $topics );
+			$linkBatchFactory, $statusFormatter, $titleParser, $taskTypes, $topics, $logger );
 		$this->statsFactory = $statsFactory->withComponent( 'GrowthExperiments' );
 	}
 

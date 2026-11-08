@@ -10,12 +10,12 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\WikiMap\WikiMap;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Stats\StatsFactory;
@@ -42,6 +42,7 @@ class NewcomerTasksChangeTagsManager {
 
 	private ChangeTagsStore $changeTagsStore;
 	private StatsFactory $statsFactory;
+	private LoggerInterface $logger;
 
 	/**
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -52,6 +53,7 @@ class NewcomerTasksChangeTagsManager {
 	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param ChangeTagsStore $changeTagsStore
 	 * @param StatsFactory $statsFactory
+	 * @param LoggerInterface $logger
 	 * @param Config|null $config
 	 * @param UserIdentity|null $user
 	 * FIXME $config and $user should be mandatory and injected by a factory
@@ -65,6 +67,7 @@ class NewcomerTasksChangeTagsManager {
 		UserIdentityUtils $userIdentityUtils,
 		ChangeTagsStore $changeTagsStore,
 		StatsFactory $statsFactory,
+		LoggerInterface $logger,
 		?Config $config = null,
 		?UserIdentity $user = null
 	) {
@@ -78,6 +81,7 @@ class NewcomerTasksChangeTagsManager {
 		$this->config = $config;
 		$this->user = $user;
 		$this->statsFactory = $statsFactory;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -134,7 +138,7 @@ class NewcomerTasksChangeTagsManager {
 			null,
 			$userIdentity
 		);
-		LoggerFactory::getInstance( 'GrowthExperiments' )->debug(
+		$this->logger->debug(
 			'ChangeTagsStore::updateTags() result in NewcomerTaskCompleteHandler: ' . json_encode( $result )
 		);
 		// This is needed for non-VE edits.

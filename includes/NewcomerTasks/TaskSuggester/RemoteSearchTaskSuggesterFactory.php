@@ -68,7 +68,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			return $this->createError( $taskTypes );
 		}
 		$topics = $this->topicRegistry->getTopics();
-		$suggester = new RemoteSearchTaskSuggester(
+		return new RemoteSearchTaskSuggester(
 			$this->taskTypeHandlerRegistry,
 			$this->searchStrategy,
 			$this->newcomerTasksUserOptionsLookup,
@@ -79,10 +79,9 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->titleFactory,
 			$this->apiUrl,
 			$taskTypes,
-			$topics
+			$topics,
+			$this->logger
 		);
-		$suggester->setLogger( $this->logger );
-		return $suggester;
 	}
 
 }

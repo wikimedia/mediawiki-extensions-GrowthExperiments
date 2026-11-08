@@ -35,6 +35,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LogLevel;
+use Psr\Log\NullLogger;
 use StatusValue;
 use TestLogger;
 
@@ -76,14 +77,14 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
 		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
 		$linkBatchFactory = $this->getMockLinkBatchFactory();
-		$statusFormatter = $this->createNoOpMock( StatusFormatter::class );
+		$statusFormatter = $this->createMock( StatusFormatter::class );
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
 
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
 			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $statusFormatter,
 			$this->getMockTitleParser(), $requestFactory, $titleFactory,
-			'https://example.com', $taskTypes, $topics );
+			'https://example.com', $taskTypes, $topics, new NullLogger() );
 
 		$taskSet = $suggester->suggest( $user, $taskSetFilters, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {
@@ -134,7 +135,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
 			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
 			$this->getMockRequestFactory( $requests ), $this->getMockTitleFactory(),
-			'https://example.com', $taskTypes, [] );
+			'https://example.com', $taskTypes, [], new NullLogger() );
 
 		$taskSet = $suggester->suggest( $user, new TaskSetFilters( [ 'copyedit', 'link' ] ) );
 
@@ -183,7 +184,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
 			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
 			$requestFactory, $this->getMockTitleFactory(),
-			'https://example.com', $taskTypes, [] );
+			'https://example.com', $taskTypes, [], new NullLogger() );
 
 		$taskSetFilters = new TaskSetFilters( [ 'copyedit' ], [], null,
 			[ 'Albert Einstein', 'Coffee' ] );
@@ -244,7 +245,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
 			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
 			$this->getMockRequestFactory( $requests ), $this->getMockTitleFactory(),
-			'https://example.com', $taskTypes, [] );
+			'https://example.com', $taskTypes, [], new NullLogger() );
 
 		$taskSet = $suggester->suggest( $user,
 			new TaskSetFilters( [ 'copyedit', 'link' ], [], null, $interests ),
@@ -302,7 +303,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
 			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
 			$this->getMockRequestFactory( $requests ), $this->getMockTitleFactory(),
-			'https://example.com', $taskTypes, [] );
+			'https://example.com', $taskTypes, [], new NullLogger() );
 
 		$taskSet = $suggester->suggest( $user,
 			new TaskSetFilters( [ 'copyedit', 'link' ], [], null, $interests ),
@@ -338,13 +339,12 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 		] );
 
+		$logger = new TestLogger( true );
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
 			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
 			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
 			$requestFactory, $this->getMockTitleFactory(),
-			'https://example.com', $taskTypes, [] );
-		$logger = new TestLogger( true );
-		$suggester->setLogger( $logger );
+			'https://example.com', $taskTypes, [], $logger );
 
 		$taskSet = $suggester->suggest( $user,
 			new TaskSetFilters( [ 'copyedit' ], [], null, [ '<bad>', 'Talk:Baz', 'Coffee' ] ) );
@@ -391,7 +391,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->getNewcomerTasksUserOptionsLookup(), $this->getMockLinkBatchFactory(),
 			$this->createNoOpMock( StatusFormatter::class ), $this->getMockTitleParser(),
 			$requestFactory, $this->getMockTitleFactory(),
-			'https://example.com', $taskTypes, [] );
+			'https://example.com', $taskTypes, [], new NullLogger() );
 
 		$taskSet = $suggester->suggest( $user,
 			new TaskSetFilters( [ 'copyedit' ], [], null, [ 'Albert Einstein', 'Coffee' ] ) );
@@ -731,12 +731,12 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$linkBatchFactory = $this->getMockLinkBatchFactory( $pageIds );
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
-		$statusFormatter = $this->createNoOpMock( StatusFormatter::class );
+		$statusFormatter = $this->createMock( StatusFormatter::class );
 
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
 			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $statusFormatter,
 			$this->getMockTitleParser(), $requestFactory, $titleFactory,
-			'https://example.com', $taskTypes, $topics );
+			'https://example.com', $taskTypes, $topics, new NullLogger() );
 
 		$filteredTaskSet = $suggester->filter( $user, $taskSet );
 		if ( $expectedTaskSet instanceof StatusValue ) {

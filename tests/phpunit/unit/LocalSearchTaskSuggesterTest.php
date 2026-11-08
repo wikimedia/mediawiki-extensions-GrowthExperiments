@@ -19,6 +19,7 @@ use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleParser;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\NullLogger;
 use StatusValue;
 use Wikimedia\Stats\StatsFactory;
 use Wikimedia\TestingAccessWrapper;
@@ -63,7 +64,8 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			[],
 			[],
 			StatsFactory::newUnitTestingHelper()->getStatsFactory(),
-			'somewiki'
+			'somewiki',
+			new NullLogger()
 		);
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 

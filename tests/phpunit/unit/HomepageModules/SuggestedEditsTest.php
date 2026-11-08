@@ -36,6 +36,7 @@ use MediaWikiTestCaseTrait;
 use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
 use OOUI\Theme;
+use Psr\Log\NullLogger;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IConnectionProvider;
@@ -162,6 +163,7 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 			$this->createMock( ITopicRegistry::class ),
 			$overrides[ 'taskTypeManager' ] ?? $this->createMock( TaskTypeManager::class ),
 			$this->createMock( FeatureManager::class ),
+			new NullLogger(),
 		) extends SuggestedEdits {
 
 			public function resetTaskCache(

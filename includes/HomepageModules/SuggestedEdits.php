@@ -29,7 +29,6 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\PageViewInfo\PageViewService;
 use MediaWiki\Html\Html;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\StatusFormatter;
@@ -43,6 +42,7 @@ use OOUI\ButtonWidget;
 use OOUI\HtmlSnippet;
 use OOUI\IconWidget;
 use OOUI\Tag;
+use Psr\Log\LoggerInterface;
 use RuntimeException;
 use StatusValue;
 use Wikimedia\Message\MessageParam;
@@ -154,7 +154,8 @@ class SuggestedEdits extends BaseModule {
 		private StatsFactory $statsFactory,
 		private ITopicRegistry $topicRegistry,
 		private TaskTypeManager $taskTypeManager,
-		private FeatureManager $featureManager
+		private FeatureManager $featureManager,
+		private LoggerInterface $logger
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig );
 	}
@@ -277,7 +278,7 @@ class SuggestedEdits extends BaseModule {
 	private function trackQueueStatus( string $mode, string $status ): void {
 		if ( !in_array( $status, [ 'ok', 'empty', 'error', 'total' ] ) ) {
 			// Should never happen
-			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+			$this->logger->warning(
 				__METHOD__ . ' called with unexpected status: {status}',
 				[
 					'status' => $status,

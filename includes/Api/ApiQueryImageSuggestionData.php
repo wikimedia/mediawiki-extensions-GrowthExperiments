@@ -15,10 +15,9 @@ use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Api\IApiMessage;
 use MediaWiki\Config\Config;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Assert\Assert;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -31,13 +30,13 @@ use Wikimedia\ParamValidator\ParamValidator;
  * - Image suggestion metadata is cached
  */
 class ApiQueryImageSuggestionData extends ApiQueryBase {
-	use LoggerAwareTrait;
 
 	private ImageRecommendationProvider $imageRecommendationProvider;
 	private ConfigurationLoader $configurationLoader;
 	private Config $config;
 	private TitleFactory $titleFactory;
 	private FeatureManager $featureManager;
+	private LoggerInterface $logger;
 
 	public function __construct(
 		ApiQuery $mainModule,
@@ -46,7 +45,8 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		ConfigurationLoader $configurationLoader,
 		Config $config,
 		TitleFactory $titleFactory,
-		FeatureManager $featureManager
+		FeatureManager $featureManager,
+		LoggerInterface $logger
 	) {
 		parent::__construct( $mainModule, $moduleName, 'gisd' );
 		$this->imageRecommendationProvider = $imageRecommendationProvider;
@@ -54,8 +54,7 @@ class ApiQueryImageSuggestionData extends ApiQueryBase {
 		$this->config = $config;
 		$this->titleFactory = $titleFactory;
 		$this->featureManager = $featureManager;
-
-		$this->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		$this->logger = $logger;
 	}
 
 	/** @inheritDoc */

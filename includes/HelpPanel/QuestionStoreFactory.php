@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HelpPanel;
 
+use GrowthExperiments\GrowthExperimentsServices;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 
@@ -20,7 +21,8 @@ class QuestionStoreFactory {
 			$services->getUserOptionsManager(),
 			$services->getUserOptionsLookup(),
 			$services->getJobQueueGroup(),
-			$context->getRequest()->wasPosted()
+			$context->getRequest()->wasPosted(),
+			GrowthExperimentsServices::wrap( $services )->getLogger()
 		);
 	}
 

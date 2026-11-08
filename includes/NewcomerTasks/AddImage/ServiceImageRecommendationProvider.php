@@ -10,11 +10,11 @@ use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Stats\StatsFactory;
@@ -32,6 +32,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	private ImageRecommendationApiHandler $apiHandler;
 	private ImageRecommendationMetadataProvider $metadataProvider;
 	private AddImageSubmissionHandler $imageSubmissionHandler;
+	private LoggerInterface $logger;
 	private bool $geDeveloperSetup;
 	private int $maxSuggestionsToProcess = 1;
 
@@ -41,6 +42,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		ImageRecommendationApiHandler $apiHandler,
 		ImageRecommendationMetadataProvider $metadataProvider,
 		AddImageSubmissionHandler $imageSubmissionHandler,
+		LoggerInterface $logger,
 		bool $geDeveloperSetup = false
 	) {
 		$this->titleFactory = $titleFactory;
@@ -48,6 +50,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$this->apiHandler = $apiHandler;
 		$this->metadataProvider = $metadataProvider;
 		$this->imageSubmissionHandler = $imageSubmissionHandler;
+		$this->logger = $logger;
 		$this->geDeveloperSetup = $geDeveloperSetup;
 	}
 
@@ -93,7 +96,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		if ( $data === null ) {
 			$errorMessage = __METHOD__ . ': Unable to decode JSON response for page {title}: {response}';
 			$errorContext = [ 'title' => $titleTextSafe, 'response' => $response ];
-			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorMessage, $errorContext );
+			$this->logger->error( $errorMessage, $errorContext );
 			return StatusValue::newFatal( new RawMessage(
 				"Unable to decode JSON response for page $1: $2",
 				[ $titleTextSafe, $response ]

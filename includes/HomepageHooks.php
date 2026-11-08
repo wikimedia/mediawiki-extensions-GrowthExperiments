@@ -58,7 +58,6 @@ use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Language\FormatterFactory;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\SkinOptions;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
@@ -93,6 +92,7 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
 use OOUI\ButtonWidget;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 use stdClass;
 use Wikimedia\Rdbms\IDBAccessObject;
@@ -160,7 +160,8 @@ class HomepageHooks implements
 		private UserImpactStore $userImpactStore,
 		private TaskTypeManager $taskTypeManager,
 		private LevelingUpManager $levelingUpManager,
-		private FeatureManager $featureManager
+		private FeatureManager $featureManager,
+		private LoggerInterface $logger
 	) {
 		// Ideally RequestContext would be injected but the way hook handlers are defined makes that hard.
 		$this->statusFormatter = $formatterFactory->getStatusFormatter( RequestContext::getMain() );
@@ -209,6 +210,7 @@ class HomepageHooks implements
 					'GrowthExperimentsFeatureManager',
 					'GrowthExperimentsNewcomerTasksUserOptionsLookup',
 					'JobQueueGroup',
+					'GrowthExperimentsLogger',
 				],
 				'optional_services' => [
 					'TestKitchen.ExperimentManager',
@@ -603,7 +605,7 @@ class HomepageHooks implements
 			return true;
 		}
 
-		LoggerFactory::getInstance( 'GrowthExperiments' )->info(
+		$this->logger->info(
 			'Page {title} from a task link is not a {task_type} task',
 			[
 				'title' => $title->getDBkey(),
@@ -626,7 +628,7 @@ class HomepageHooks implements
 		if ( preg_match( self::CLICK_ID_REGEX, $clickId ) ) {
 			return;
 		}
-		LoggerFactory::getInstance( 'GrowthExperiments' )->info(
+		$this->logger->info(
 			'Task link for a {task_type} task has a click ID with an unknown format',
 			[
 				'task_type' => $taskType->getId(),

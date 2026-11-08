@@ -8,7 +8,6 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Language\Language;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
@@ -17,6 +16,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\Options\UserOptionsUpdateJob;
 use MediaWiki\User\User;
+use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Timestamp\TimestampFormat;
 
@@ -34,6 +34,7 @@ class QuestionStore {
 	private UserOptionsLookup $userOptionsLookup;
 	private JobQueueGroup $jobQueueGroup;
 	private bool $wasPosted;
+	private LoggerInterface $logger;
 
 	public function __construct(
 		User $user,
@@ -43,7 +44,8 @@ class QuestionStore {
 		UserOptionsManager $userOptionsManager,
 		UserOptionsLookup $userOptionsLookup,
 		JobQueueGroup $jobQueueGroup,
-		bool $wasPosted
+		bool $wasPosted,
+		LoggerInterface $logger
 	) {
 		$this->user = $user;
 		$this->preference = $preference;
@@ -53,6 +55,7 @@ class QuestionStore {
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->wasPosted = $wasPosted;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -180,7 +183,7 @@ class QuestionStore {
 		$formattedQuestions = $this->encodeQuestionsToJson( $questionRecords );
 		$storage = $this->preference;
 		if ( strlen( $formattedQuestions ) >= self::BLOB_SIZE ) {
-			LoggerFactory::getInstance( 'GrowthExperiments' )
+			$this->logger
 				->warning( 'Unable to save question records for user {userId} because they are too big.',
 					[
 						'userId' => $this->user->getId(),

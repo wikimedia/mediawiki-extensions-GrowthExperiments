@@ -14,6 +14,7 @@ use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
 use OOUI\Theme;
+use Psr\Log\NullLogger;
 
 /**
  * @covers \GrowthExperiments\HomepageModules\ReadingRecommendations
@@ -483,7 +484,9 @@ class ReadingRecommendationsTest extends MediaWikiUnitTestCase {
 		$formatter = $this->createMock( ReadingRecommendationsFormatter::class );
 		$formatter->method( 'format' )->willReturn( $formattedRows );
 
-		return new ReadingRecommendations( $contextMock, new HashConfig( [] ), $service, $formatter );
+		return new ReadingRecommendations(
+			$contextMock, new HashConfig( [] ), $service, $formatter, new NullLogger()
+		);
 	}
 
 	private function createFixtureFile( string $json ): string {

@@ -14,7 +14,6 @@ use MediaWiki\Config\Config;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\TestKitchen\Sdk\ExperimentManager;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -24,6 +23,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Specials\Hook\PostLoginRedirectHook;
 use MediaWiki\Specials\SpecialCreateAccount;
 use MediaWiki\Specials\SpecialUserLogin;
+use Psr\Log\LoggerInterface;
 use Wikimedia\Stats\StatsFactory;
 
 class WelcomeSurveyHooks implements
@@ -44,6 +44,7 @@ class WelcomeSurveyHooks implements
 		private readonly FeatureManager $featureManager,
 		private readonly PostSignupOnboardingEligibility $onboardingEligibility,
 		private readonly StatsFactory $statsFactory,
+		private readonly LoggerInterface $logger,
 		private readonly ?ExperimentManager $experimentManager,
 	) {
 	}
@@ -59,9 +60,7 @@ class WelcomeSurveyHooks implements
 				return new SpecialWelcomeSurvey(
 					$this->specialPageFactory,
 					$this->welcomeSurveyFactory,
-					new WelcomeSurveyLogger(
-						LoggerFactory::getInstance( 'GrowthExperiments' )
-					),
+					new WelcomeSurveyLogger( $this->logger ),
 					$this->featureManager,
 					$this->statsFactory,
 					$this->experimentManager,
@@ -96,7 +95,7 @@ class WelcomeSurveyHooks implements
 		if ( $special instanceof SpecialUserLogin && $user->isAnon() ) {
 			$request = $context->getRequest();
 			if ( $user->isAnon() && $request->getCookie( WelcomeSurveyLogger::INTERACTION_PHASE_COOKIE ) ) {
-				$welcomeSurveyLogger = new WelcomeSurveyLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+				$welcomeSurveyLogger = new WelcomeSurveyLogger( $this->logger );
 				$welcomeSurveyLogger->initialize( $request, $user, Util::isMobile( $context->getSkin() ) );
 				$welcomeSurveyLogger->logInteraction( WelcomeSurveyLogger::WELCOME_SURVEY_LOGGED_OUT );
 			}

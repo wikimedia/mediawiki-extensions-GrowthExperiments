@@ -6,7 +6,6 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\JobQueue\Job;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserIdentityLookup;
 use Psr\Log\LoggerInterface;
 
@@ -32,7 +31,8 @@ class ReassignMenteesJob extends Job {
 		Config $config,
 		UserIdentityLookup $userIdentityLookup,
 		MentorStore $mentorStore,
-		ReassignMenteesFactory $reassignMenteesFactory
+		ReassignMenteesFactory $reassignMenteesFactory,
+		LoggerInterface $logger
 	) {
 		parent::__construct( self::JOB_NAME, $params );
 
@@ -40,9 +40,7 @@ class ReassignMenteesJob extends Job {
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->mentorStore = $mentorStore;
 		$this->reassignMenteesFactory = $reassignMenteesFactory;
-
-		// TODO: this is not a service yet, but should be
-		$this->logger = LoggerFactory::getInstance( 'GrowthExperiments' );
+		$this->logger = $logger;
 	}
 
 	private function getBatchSize(): int {

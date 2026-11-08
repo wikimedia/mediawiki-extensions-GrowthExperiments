@@ -53,7 +53,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}
-		$suggester = new LocalSearchTaskSuggester(
+		return new LocalSearchTaskSuggester(
 			$this->taskTypeHandlerRegistry,
 			$this->searchEngineFactory,
 			$this->searchStrategy,
@@ -65,9 +65,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->topicRegistry->getTopics(),
 			$this->statsFactory,
 			WikiMap::getCurrentWikiId(),
+			$this->logger,
 		);
-		$suggester->setLogger( $this->logger );
-		return $suggester;
 	}
 
 }

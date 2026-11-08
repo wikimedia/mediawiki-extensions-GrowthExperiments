@@ -8,9 +8,9 @@ use GrowthExperiments\Mentorship\Provider\MentorProvider;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\User\UserIdentity;
+use Psr\Log\LoggerInterface;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
@@ -20,6 +20,7 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 	private PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester;
 
 	private PersonalizedPraiseLogger $personalizedPraiseLogger;
+	private LoggerInterface $logger;
 
 	public function __construct(
 		ApiMain $mainModule,
@@ -27,7 +28,8 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 		MentorProvider $mentorProvider,
 		MentorStore $mentorStore,
 		PraiseworthyMenteeSuggester $praiseworthyMenteeSuggester,
-		PersonalizedPraiseLogger $personalizedPraiseLogger
+		PersonalizedPraiseLogger $personalizedPraiseLogger,
+		LoggerInterface $logger
 	) {
 		parent::__construct( $mainModule, $moduleName );
 
@@ -35,6 +37,7 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 		$this->mentorStore = $mentorStore;
 		$this->praiseworthyMenteeSuggester = $praiseworthyMenteeSuggester;
 		$this->personalizedPraiseLogger = $personalizedPraiseLogger;
+		$this->logger = $logger;
 	}
 
 	/** @inheritDoc */
@@ -60,7 +63,7 @@ class ApiInvalidatePersonalizedPraiseSuggestion extends ApiBase {
 
 		$mentor = $this->mentorStore->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
 		if ( !$mentor ) {
-			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+			$this->logger->warning(
 				'ApiInvalidatePersonalizedPraiseSuggestion failed to load mentor for {mentee}',
 				[ 'mentee' => $mentee->getName() ]
 			);

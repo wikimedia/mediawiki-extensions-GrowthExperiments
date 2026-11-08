@@ -17,6 +17,7 @@ use MediaWiki\Search\ISearchResultSet;
 use MediaWiki\Status\StatusFormatter;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleParser;
+use Psr\Log\LoggerInterface;
 use StatusValue;
 
 /**
@@ -38,6 +39,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param string $apiUrl Remote API URL including api.php
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -50,10 +52,11 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		private readonly TitleFactory $titleFactory,
 		private readonly string $apiUrl,
 		array $taskTypes,
-		array $topics
+		array $topics,
+		LoggerInterface $logger
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
-			$linkBatchFactory, $statusFormatter, $titleParser, $taskTypes, $topics );
+			$linkBatchFactory, $statusFormatter, $titleParser, $taskTypes, $topics, $logger );
 	}
 
 	/** @inheritDoc */

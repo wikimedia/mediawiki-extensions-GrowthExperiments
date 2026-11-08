@@ -11,10 +11,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskTypeH
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Title\TitleFactory;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use Wikimedia\Assert\Assert;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -25,7 +24,6 @@ use Wikimedia\ParamValidator\ParamValidator;
  * when the article already has an image). See mw.libs.ge.AddImageArticleTarget.
  */
 class ApiInvalidateImageRecommendation extends ApiBase {
-	use LoggerAwareTrait;
 
 	public function __construct(
 		ApiMain $mainModule,
@@ -33,11 +31,10 @@ class ApiInvalidateImageRecommendation extends ApiBase {
 		private ConfigurationLoader $configurationLoader,
 		private AddImageSubmissionHandler $imageSubmissionHandler,
 		private TitleFactory $titleFactory,
-		private FeatureManager $featureManager
+		private FeatureManager $featureManager,
+		private LoggerInterface $logger
 	) {
 		parent::__construct( $mainModule, $moduleName );
-
-		$this->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 	}
 
 	/**
