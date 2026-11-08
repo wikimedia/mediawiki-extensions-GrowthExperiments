@@ -1284,7 +1284,9 @@ return [
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
 			$services->getUserEditTracker(),
 			$growthServices->getNewcomerTasksConfigurationLoader(),
-			$growthServices->getLevelingUpManager()
+			$growthServices->getLevelingUpManager(),
+			$services->getMainWANObjectCache(),
+			$growthServices->getTaskSetFiltersFactory()
 		);
 	},
 

@@ -5,8 +5,10 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 class TaskTypeManager {
 
@@ -22,6 +24,8 @@ class TaskTypeManager {
 		private UserEditTracker $userEditTracker,
 		private ConfigurationLoader $configurationLoader,
 		private LevelingUpManager $levelingUpManager,
+		private WANObjectCache $cache,
+		private TaskSetFiltersFactory $taskSetFiltersFactory,
 	) {
 	}
 
@@ -144,12 +148,39 @@ class TaskTypeManager {
 	 * @return string|null
 	 */
 	private function getSuggestedTaskTypeForUser( UserIdentity $userIdentity, string $lastUnavailableTask ): ?string {
-		return $this->levelingUpManager->suggestNewTaskTypeForUser(
-			$userIdentity,
-			$lastUnavailableTask,
-			false,
-			$this->getAvailableTaskTypes( $userIdentity ),
-			true
+		$availableTaskTypes = $this->getAvailableTaskTypes( $userIdentity );
+		return $this->cache->getWithSetCallback(
+			$this->cache->makeKey(
+				'GrowthExperiments-TaskTypeManager-suggestedNextTask',
+				$userIdentity->getId(),
+				// The suggestion uses the edit counts by task type. Only an edit can change them.
+				(int)$this->userEditTracker->getUserEditCount( $userIdentity ),
+				md5( json_encode( [
+					$lastUnavailableTask,
+					$availableTaskTypes,
+					// The suggestion searches with these filters. LevelingUpManager sets the task types.
+					$this->taskSetFiltersFactory->newFromUser( $userIdentity, [] )->toJsonArray(),
+				] ) )
+			),
+			$this->cache::TTL_HOUR,
+			// Note caching null is a deliberate decision. It can be returned in three cases:
+			// - No task type has tasks. LevelingUpManager does one search for each task type
+			//   to find this, so this is the most expensive result and should be cached to
+			//   prevent issues like T422288.
+			// - The user opted out of the prompts for this task type. This is a permanent
+			//   scenario, so caching is useful.
+			// - The user impact is not available. This error can be temporary. The cache then
+			//   keeps the null result until the TTL ends or the user edits.
+			// The only situation in which caching null might produce harm is the last one.
+			// However, the cost of the other two outweights that, and detecting which one caused
+			// the null to be returned is non-trivial from here.
+			fn () => $this->levelingUpManager->suggestNewTaskTypeForUser(
+				$userIdentity,
+				$lastUnavailableTask,
+				false,
+				$availableTaskTypes,
+				true
+			)
 		);
 	}
 
