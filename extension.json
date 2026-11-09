@@ -3219,8 +3219,8 @@
 			"value": true
 		},
 		"GEImageRecommendationServiceUrl": {
-			"description": "Root URL of the image recommendation service (no trailing slash).",
-			"value": false
+			"description": "URL used by the image recommendation API handler (see GEImageRecommendationApiHandler). For the 'production' and 'mvp' handlers: root URL of the image recommendation service, without a trailing slash. For the 'actionapi' handler: URL of api.php on a wiki that has GrowthExperiments installed, such as 'https://en.wikipedia.org/w/api.php'.",
+			"value": null
 		},
 		"GEImageRecommendationServiceHttpProxy": {
 			"description": "HTTP proxy for the service specified via GEImageRecommendationServiceUrl.",

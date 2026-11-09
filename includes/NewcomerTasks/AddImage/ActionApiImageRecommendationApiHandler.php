@@ -24,17 +24,17 @@ use StatusValue;
  */
 class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHandler {
 
-	/** @var string api.php URL */
-	private string $apiUrl;
-	/** @var string MediaWiki OAuth 2 access token for upstream wiki */
-	private string $accessToken;
+	/** @var string|null api.php URL */
+	private ?string $apiUrl;
+	/** @var string|null MediaWiki OAuth 2 access token for upstream wiki */
+	private ?string $accessToken;
 
 	public function __construct(
 		private StatusFormatter $statusFormatter,
 		private HttpRequestFactory $httpRequestFactory,
 		private LoggerInterface $logger,
-		string $apiUrl,
-		string $accessToken
+		?string $apiUrl,
+		?string $accessToken
 	) {
 		$this->apiUrl = $apiUrl;
 		$this->accessToken = $accessToken;
@@ -42,6 +42,17 @@ class ActionApiImageRecommendationApiHandler implements ImageRecommendationApiHa
 
 	/** @inheritDoc */
 	public function getApiRequest( Title $title, TaskType $taskType ) {
+		if ( !$this->apiUrl ) {
+			return StatusValue::newFatal( 'rawmessage',
+				'Image Suggestions API URL is not configured ' .
+				'(set $wgGEImageRecommendationServiceUrl)' );
+		}
+		if ( !$this->accessToken ) {
+			return StatusValue::newFatal( 'rawmessage',
+				'Image Suggestions API access token is not configured ' .
+				'(set $wgGEImageRecommendationServiceAccessToken)' );
+		}
+
 		// Ideally we'd use Util::getApiUrl() + maybe handle continuation, but the
 		// RecommendationProvider/ApiHandler split prevents that.
 		$url = wfAppendQuery( $this->apiUrl, [

@@ -23,7 +23,7 @@ class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler 
 	/** @var HttpRequestFactory */
 	private $httpRequestFactory;
 
-	/** @var string */
+	/** @var string|null */
 	private $url;
 
 	/** @var string|null */
@@ -49,7 +49,7 @@ class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler 
 
 	/**
 	 * @param HttpRequestFactory $httpRequestFactory
-	 * @param string $url Image recommendation service root URL
+	 * @param string|null $url Image recommendation service root URL
 	 * @param string $wikiProject Wiki project (e.g. 'wikipedia')
 	 * @param string $wikiLanguage Wiki language code
 	 * @param string|null $proxyUrl HTTP proxy to use for $url
@@ -59,7 +59,7 @@ class MvpImageRecommendationApiHandler implements ImageRecommendationApiHandler 
 	 */
 	public function __construct(
 		HttpRequestFactory $httpRequestFactory,
-		string $url,
+		?string $url,
 		string $wikiProject,
 		string $wikiLanguage,
 		?string $proxyUrl,

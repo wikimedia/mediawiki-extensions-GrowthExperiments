@@ -8,7 +8,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Http\MWHttpRequest;
 use MediaWiki\Status\StatusFormatter;
+use MediaWiki\Title\Title;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 use StatusValue;
@@ -17,6 +19,64 @@ use StatusValue;
  * @covers \GrowthExperiments\NewcomerTasks\AddImage\ActionApiImageRecommendationApiHandler
  */
 class ActionApiImageRecommendationApiHandlerTest extends MediaWikiUnitTestCase {
+
+	public function testGetApiRequest() {
+		$request = $this->createMock( MWHttpRequest::class );
+		$request->expects( $this->once() )
+			->method( 'setHeader' )
+			->with( 'Authorization', 'Bearer abcd1234' );
+		$httpRequestFactory = $this->createMock( HttpRequestFactory::class );
+		$httpRequestFactory->expects( $this->once() )
+			->method( 'create' )
+			->with( $this->stringStartsWith( 'https://example.com/w/api.php?action=query' ) )
+			->willReturn( $request );
+		$title = $this->createMock( Title::class );
+		$title->method( 'getPrefixedText' )->willReturn( 'Foo' );
+		$apiHandler = new ActionApiImageRecommendationApiHandler(
+			$this->createNoOpMock( StatusFormatter::class ),
+			$httpRequestFactory,
+			new NullLogger(),
+			'https://example.com/w/api.php',
+			'abcd1234'
+		);
+
+		$result = $apiHandler->getApiRequest(
+			$title,
+			new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY )
+		);
+
+		$this->assertSame( $request, $result );
+	}
+
+	/**
+	 * @dataProvider provideMissingConfiguration
+	 */
+	public function testGetApiRequestWithMissingConfiguration( ?string $apiUrl, ?string $accessToken ) {
+		$apiHandler = new ActionApiImageRecommendationApiHandler(
+			$this->createNoOpMock( StatusFormatter::class ),
+			$this->createNoOpMock( HttpRequestFactory::class ),
+			new NullLogger(),
+			$apiUrl,
+			$accessToken
+		);
+
+		$result = $apiHandler->getApiRequest(
+			$this->createNoOpMock( Title::class ),
+			new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY )
+		);
+
+		$this->assertInstanceOf( StatusValue::class, $result );
+		$this->assertStatusError( 'rawmessage', $result );
+	}
+
+	public static function provideMissingConfiguration(): array {
+		return [
+			'null access token' => [ 'https://example.com/w/api.php', null ],
+			'empty access token' => [ 'https://example.com/w/api.php', '' ],
+			'null URL' => [ null, 'abcd1234' ],
+			'empty URL' => [ '', 'abcd1234' ],
+		];
+	}
 
 	/**
 	 * @dataProvider provideGetSuggestionDataFromApiResponse

@@ -29,7 +29,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 	/** @var HttpRequestFactory */
 	private $httpRequestFactory;
 
-	/** @var string */
+	/** @var string|null */
 	private $url;
 
 	/** @var string */
@@ -60,7 +60,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 
 	/**
 	 * @param HttpRequestFactory $httpRequestFactory
-	 * @param string $url Image recommendation service root URL
+	 * @param string|null $url Image recommendation service root URL
 	 * @param string $wikiId Project ID (for example, 'enwiki')
 	 * @param GlobalIdGenerator $globalIdGenerator GlobalIdGenerator, used to convert UUID to timestamp
 	 * 	when sorting the suggestions
@@ -71,7 +71,7 @@ class ProductionImageRecommendationApiHandler implements ImageRecommendationApiH
 	 */
 	public function __construct(
 		HttpRequestFactory $httpRequestFactory,
-		string $url,
+		?string $url,
 		string $wikiId,
 		GlobalIdGenerator $globalIdGenerator,
 		?int $requestTimeout,
