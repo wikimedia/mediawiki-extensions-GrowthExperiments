@@ -96,11 +96,6 @@ RecommendedLinkToolbarDialog.prototype.getSetupProcess = function ( data ) {
 		}, this );
 };
 
-/** @inheritDoc */
-RecommendedLinkToolbarDialog.prototype.scrollToToolbarDialogTarget = function () {
-	return this.scrollToAnnotationView( this.getAnnotationViewAtIndex( this.currentIndex ) );
-};
-
 // Event Handlers
 
 /**

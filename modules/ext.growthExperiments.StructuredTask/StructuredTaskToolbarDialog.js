@@ -207,17 +207,4 @@ StructuredTaskToolbarDialog.prototype.moveDialogToSurfaceView = function () {
 	this.surface.getView().$element.append( this.$element );
 };
 
-/**
- * Position the VE surface so that the place where the toolbar dialog is supposed to be is
- * visible and convenient to interact with.
- *
- * @return {jQuery.Promise}
- */
-StructuredTaskToolbarDialog.prototype.scrollToToolbarDialogTarget = function () {
-	// Child classes should override this.
-	// FIXME we could probably just scroll to the dialog's location instead if we unhid it
-	//   before scrolling.
-	return $.Deferred().resolve();
-};
-
 module.exports = StructuredTaskToolbarDialog;

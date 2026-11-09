@@ -31,11 +31,6 @@ RecommendedSectionImageToolbarDialog.prototype.afterSetupProcess = function () {
 	RecommendedSectionImageToolbarDialog.super.prototype.afterSetupProcess.call( this );
 };
 
-/** @inheritDoc **/
-RecommendedImageToolbarDialog.prototype.scrollToToolbarDialogTarget = function () {
-	return this.getArticleTarget().scrollToTargetSection();
-};
-
 /**
  * Override the CTA text to include the section.
  */
