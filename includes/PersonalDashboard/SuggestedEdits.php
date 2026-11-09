@@ -9,7 +9,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits as HomepageSuggestedEdits;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\PersonalDashboard\Modules\BaseModule;
-use MediaWiki\Extension\PersonalDashboard\Modules\FeedLoadingMarkup;
+use MediaWiki\Extension\PersonalDashboard\Modules\Trait\FeedLoadingMarkup;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\Options\UserOptionsLookup;
 
@@ -27,6 +27,8 @@ use MediaWiki\User\Options\UserOptionsLookup;
  * here, without the quality gate the Homepage carousel runs before navigating.
  */
 class SuggestedEdits extends BaseModule {
+
+	use FeedLoadingMarkup;
 
 	public function __construct(
 		IContextSource $context,
@@ -71,7 +73,7 @@ class SuggestedEdits extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getLoadingMarkup(): string {
-		return FeedLoadingMarkup::getHtml( $this, 'large', $this->isFocused() );
+		return $this->getFeedLoadingMarkup( 'large' );
 	}
 
 	/**
