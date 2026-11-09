@@ -29,7 +29,7 @@ use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 
 /**
  * @group Database
- * @coversDefaultClass \GrowthExperiments\Specials\SpecialHomepage
+ * @covers \GrowthExperiments\Specials\SpecialHomepage
  */
 class SpecialHomepageTest extends SpecialPageTestBase {
 	use HamcrestPHPUnitIntegration;
@@ -74,9 +74,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers \GrowthExperiments\Specials\SpecialHomepage::handleDisabledPreference
-	 */
 	public function testHomepageDoesNotRenderWhenPreferenceIsDisabled() {
 		$user = $this->getTestUser()->getUser();
 
@@ -86,19 +83,12 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$this->executeSpecialPage( '', null, null, $user );
 	}
 
-	/**
-	 * @covers \GrowthExperiments\Specials\SpecialHomepage::handleDisabledPreference
-	 * @covers \GrowthExperiments\Specials\SpecialHomepage::execute
-	 */
 	public function testHomepageRendersWhenPreferenceIsEnabled() {
 		$user = $this->enableHomepageForTesting();
 		$response = $this->executeSpecialPage( '', null, null, $user );
 		$this->assertStringContainsString( 'growthexperiments-homepage-container', $response[0] );
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testReadingRecommendationsModuleRendersWhenInEarlyOnboardingTreatmentGroup() {
 		$user = $this->enableHomepageForTesting();
 
@@ -129,8 +119,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 
 	/**
 	 * AccountSetupHooks sends the exposure after the signup. The page must not send it again.
-	 *
-	 * @covers ::execute
 	 */
 	public function testDoesNotSendExposureWhenAccountSetupIsShown(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'TestKitchen' );
@@ -180,9 +168,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		return $experimentManager;
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testReadingRecommendationsModuleHiddenWhenNotInEarlyOnboardingTreatmentGroup() {
 		$user = $this->enableHomepageForTesting();
 
@@ -194,9 +179,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$this->assertStringNotContainsString( 'reading-recommendations', $response[0] );
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testReadingRecommendationsModuleIsLaterWhenUserSelectsEditingOnDesktop() {
 		$user = $this->enableHomepageForTesting();
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
@@ -216,9 +198,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testReadingRecommendationsModuleIsLaterWhenUserSelectsEditingOnMobile() {
 		$context = RequestContext::getMain();
 		$user = $this->enableHomepageForTesting();
@@ -247,9 +226,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testHomepageLoadsCorrectModuleOrderOnMobileWhenCommunityUpdatesDisabled() {
 		$this->overrideConfigValue( 'GECommunityUpdatesEnabled', false );
 		$user = $this->enableHomepageForTestingWithReadingUser();
@@ -274,9 +250,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testReadingRecommendationsModuleFirstWhenUserSelectedReadingAsAccountMotivationOnDesktop() {
 		$user = $this->enableHomepageForTestingWithReadingUser();
 
@@ -294,9 +267,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testReadingRecommendationsModuleFirstWhenUserSelectedReadingAsAccountMotivationOnMobile() {
 		$user = $this->enableHomepageForTestingWithReadingUser();
 
@@ -322,7 +292,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	}
 
 	/**
-	 * @covers ::maybeRedirectToHome
 	 * @dataProvider provideRedirectToHome
 	 */
 	public function testRedirectsToHomeWhenHomeIsEnabledForUser( string $subPage ) {
@@ -345,9 +314,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		];
 	}
 
-	/**
-	 * @covers ::maybeRedirectToHome
-	 */
 	public function testDoesNotRedirectToHomeWhenHomeIsNotEnabledForUser() {
 		$this->overrideConfigValue( 'GEHomeEnabled', false );
 		$user = $this->enableHomepageForTesting();
@@ -360,9 +326,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( 'growthexperiments-homepage-container', $response[0] );
 	}
 
-	/**
-	 * @covers ::maybeRedirectToHome
-	 */
 	public function testDoesNotRedirectToHomeWhenTheUserHasNotEnabledTheBetaFeature() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'PersonalDashboard' );
 		$this->markTestSkippedIfExtensionNotLoaded( 'BetaFeatures' );
@@ -381,10 +344,29 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( 'growthexperiments-homepage-container', $response[0] );
 	}
 
-	/**
-	 * @covers ::maybeRedirectToHome
-	 * @covers ::handleNewcomerTask
-	 */
+	public function testRedirectsToHomeWhenTheUserHasEnabledTheBetaFeature() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'PersonalDashboard' );
+		$this->markTestSkippedIfExtensionNotLoaded( 'BetaFeatures' );
+		$this->overrideConfigValues( [
+			'GEHomeEnabled' => false,
+			'GEHomeBetaFeatureEnabled' => true,
+			'BetaFeaturesAllowList' => null,
+		] );
+		$user = $this->enableHomepageForTesting();
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption( $user, 'growthexperiments-home-betafeature', 1 );
+		$userOptionsManager->saveOptions( $user );
+		$context = new RequestContext();
+		$context->setAuthority( $user );
+
+		$this->executeSpecialPage( '', null, null, $user, false, $context );
+
+		$this->assertSame(
+			SpecialPage::getTitleFor( 'Home' )->getFullUrlForRedirect(),
+			$context->getOutput()->getRedirect()
+		);
+	}
+
 	public function testNewcomerTaskSubpageDoesNotRedirectToHome() {
 		$this->mockHomeEnabledForUser();
 		$page = $this->getExistingTestPage();
@@ -408,7 +390,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 
 	/**
 	 * @dataProvider provideTestMissingParametersToNewcomerTaskSubpath
-	 * @covers ::handleNewcomerTask
 	 * @param array $params
 	 * @param array $expectedMissingParams
 	 */
