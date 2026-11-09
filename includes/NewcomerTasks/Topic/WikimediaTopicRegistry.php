@@ -285,8 +285,6 @@ class WikimediaTopicRegistry implements ITopicRegistry {
 		$this->messageLocalizer = $messageLocalizer;
 	}
 
-	// TODO: add test coverage for the sorting
-
 	/**
 	 * Sorts topics in-place, based on the group configuration and alphabetically within that.
 	 * @param Topic[] &$topics

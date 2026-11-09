@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\NewcomerTasks\Topic\WikimediaTopicRegistry;
+use MediaWiki\Collation\Collation;
 use MediaWiki\Collation\CollationFactory;
 use MediaWiki\Collation\UppercaseCollation;
 use MediaWiki\Extension\WikimediaMessages\ArticleTopicFiltersRegistry;
@@ -101,11 +102,111 @@ class WikimediaTopicRegistryTest extends MediaWikiUnitTestCase {
 			->getMock();
 		$registry->method( 'getAllTopics' )
 			->willReturn( $topics );
-
-		// FIXME: sortTopics be also tested instead of mocked but the ArticleTopicFiltersRegistry::getTopicMessages
-		// call in OresBasedTopic::getName requires work to be extracted or mocked
 		$registry->method( 'sortTopics' )
 			->willReturnArgument( 0 );
 		return $registry;
+	}
+
+	public function testGetAllTopics(): void {
+		if ( !class_exists( ArticleTopicFiltersRegistry::class ) ) {
+			$this->markTestSkipped( 'Extension WikimediaMessages is required for this test' );
+		}
+
+		$registry = new WikimediaTopicRegistry(
+			$this->createNoOpMock( MessageLocalizer::class ),
+			$this->createNoOpMock( CollationFactory::class )
+		);
+		$this->assertSame( ArticleTopicFiltersRegistry::getTopicList(), $registry->getAllTopics() );
+	}
+
+	public function testGetTopicsReturnsCachedTopics(): void {
+		$registry = $this->getWikimediaTopicRegistry( [ 'africa', 'women' ] );
+		$this->assertSame( $registry->getTopics(), $registry->getTopics() );
+	}
+
+	public function testGetTopicsMap(): void {
+		$registry = $this->getWikimediaTopicRegistry( [ 'africa', 'unknown', 'women' ] );
+		$topicsMap = $registry->getTopicsMap();
+
+		$this->assertSame( [ 'africa', 'women' ], array_keys( $topicsMap ) );
+		foreach ( $topicsMap as $topicId => $topic ) {
+			$this->assertSame( $topicId, $topic->getId() );
+		}
+	}
+
+	public function testSortTopics(): void {
+		$registry = $this->getSortingWikimediaTopicRegistry( $this->getMessageLocalizer( [
+			'topic-a' => 'Zulu',
+			'topic-b' => 'Alpha',
+			'topic-c' => 'Mike',
+			'topic-d' => 'Bravo',
+		] ) );
+		$topics = [
+			new Topic( 'topic-a', 'culture' ),
+			new Topic( 'topic-b', 'culture' ),
+			new Topic( 'topic-c', 'science' ),
+			new Topic( 'topic-d', 'science' ),
+		];
+
+		$registry->sortTopics( $topics, [ 'science', 'culture' ] );
+		$this->assertSame( [ 'topic-d', 'topic-c', 'topic-b', 'topic-a' ], $this->getTopicIds( $topics ) );
+	}
+
+	public function testSortTopicsWithoutTopics(): void {
+		$registry = new WikimediaTopicRegistry(
+			$this->createNoOpMock( MessageLocalizer::class ),
+			$this->createNoOpMock( CollationFactory::class )
+		);
+		$topics = [];
+
+		$registry->sortTopics( $topics, [ 'culture' ] );
+		$this->assertSame( [], $topics );
+	}
+
+	public function testSetMessageLocalizer(): void {
+		$registry = $this->getSortingWikimediaTopicRegistry( $this->createNoOpMock( MessageLocalizer::class ) );
+		$registry->setMessageLocalizer( $this->getMessageLocalizer( [
+			'topic-a' => 'Zulu',
+			'topic-b' => 'Alpha',
+		] ) );
+		$topics = [
+			new Topic( 'topic-a', 'culture' ),
+			new Topic( 'topic-b', 'culture' ),
+		];
+
+		$registry->sortTopics( $topics, [ 'culture' ] );
+		$this->assertSame( [ 'topic-b', 'topic-a' ], $this->getTopicIds( $topics ) );
+	}
+
+	private function getSortingWikimediaTopicRegistry( MessageLocalizer $messageLocalizer ): WikimediaTopicRegistry {
+		$collation = $this->createMock( Collation::class );
+		$collation->method( 'getSortKey' )
+			->willReturnArgument( 0 );
+		$collationFactory = $this->createMock( CollationFactory::class );
+		$collationFactory->method( 'getCategoryCollation' )
+			->willReturn( $collation );
+		return new WikimediaTopicRegistry( $messageLocalizer, $collationFactory );
+	}
+
+	/**
+	 * @param string[] $topicNames Topic names, keyed by topic ID
+	 */
+	private function getMessageLocalizer( array $topicNames ): MessageLocalizer {
+		$messages = [];
+		foreach ( $topicNames as $topicId => $topicName ) {
+			$messages["growthexperiments-homepage-suggestededits-topic-name-$topicId"] = $topicName;
+		}
+		$messageLocalizer = $this->createMock( MessageLocalizer::class );
+		$messageLocalizer->method( 'msg' )
+			->willReturnCallback( fn ( string $key ) => $this->getMockMessage( $messages[$key] ) );
+		return $messageLocalizer;
+	}
+
+	/**
+	 * @param Topic[] $topics
+	 * @return string[]
+	 */
+	private function getTopicIds( array $topics ): array {
+		return array_map( static fn ( Topic $topic ) => $topic->getId(), $topics );
 	}
 }
