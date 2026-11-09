@@ -25,7 +25,7 @@ describe( 'Add Image Structured Task', () => {
 
 		// view image info
 		cy.get( '.mw-ge-recommendedImageToolbarDialog-details-button' ).click();
-		cy.get( '.oo-ui-messageDialog-message' ).should( 'contain.text', 'File:Mamoul biscotti libanesi.jpg' );
+		cy.get( '.oo-ui-messageDialog-message' ).should( 'contain.text', 'Mamoul biscotti libanesi.jpg' );
 
 		// close image info
 		cy.get( '.oo-ui-messageDialog-actions .oo-ui-buttonElement-button' ).click();
@@ -35,7 +35,7 @@ describe( 'Add Image Structured Task', () => {
 
 		// view image details
 		cy.get( '.mw-ge-recommendedImage-detailsButton' ).click();
-		cy.get( '.mw-ge-addImageDetailsDialog-fields' ).should( 'contain.text', 'File:Mamoul biscotti libanesi.jpg' );
+		cy.get( '.mw-ge-addImageDetailsDialog-fields' ).should( 'contain.text', 'Mamoul biscotti libanesi.jpg' );
 
 		// close image details
 		cy.get( '.oo-ui-messageDialog-actions .oo-ui-buttonElement-button' ).click();

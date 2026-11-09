@@ -1,24 +1,22 @@
 {
-	"seed": "",
-	"pages": [
+	"rows": [
 		{
-			"project": "enwiki",
-			"page": "Foo",
-			"page_id": 47438319,
-			"suggestions": [
-				{
-					"filename": "File:Mamoul_biscotti_libanesi.jpg",
-					"confidence_rating": "medium",
-					"source": {
-						"name": "ima",
-						"details": {
-							"from": "wikipedia",
-							"found_on": "nlwiki",
-							"dataset_id": "0f256bbe-8100-4e7e-acef-a3a5f1407cc2"
-						}
-					}
-				}
-			]
+			"wiki": "enwiki",
+			"page_id": 9211559,
+			"id": "784fca88-da30-11f1-84d7-e43d1a540f8e",
+			"image": "Mamoul_biscotti_libanesi.jpg",
+			"confidence": 80,
+			"found_on": [
+				"nlwiki"
+			],
+			"kind": [
+				"istype-lead-image"
+			],
+			"origin_wiki": "commonswiki",
+			"page_qid": "Q725125",
+			"page_rev": 1368489594,
+			"section_heading": null,
+			"section_index": null
 		}
 	]
 }

@@ -134,7 +134,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 	);
 };
 
-$wgGEImageRecommendationApiHandler = 'mvp';
+$wgGEImageRecommendationApiHandler = 'production';
 // Set up SubpageImageRecommendationProvider, which will take the suggestion from the article's /addimage.json subpage
 $wgHooks['MediaWikiServices'][] = [ SubpageImageRecommendationProvider::class, 'onMediaWikiServices' ];
 $wgHooks['ContentHandlerDefaultModelFor'][] =
