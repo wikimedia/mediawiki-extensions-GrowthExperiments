@@ -59,8 +59,6 @@ class SuggestedEdits extends BaseModule {
 	 * onboarding dialog). Might be ignored in some situations.
 	 */
 	public const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
-	/** User preference to track that suggested edits were enabled this user automatically on signup. Not used. */
-	public const PREACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-preactivated';
 	/** User preference used to remember the user's topic selection, when using ORES topics. */
 	public const TOPICS_ORES_PREF = 'growthexperiments-homepage-se-ores-topic-filters';
 	/** User preference used to remember the user's topic mode selection, when using any type of topics. */

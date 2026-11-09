@@ -725,10 +725,6 @@ class HomepageHooks implements
 			'type' => 'api',
 		];
 
-		$preferences[ SuggestedEdits::PREACTIVATED_PREF ] = [
-			'type' => 'api',
-		];
-
 		$preferences[ SuggestedEdits::TOPICS_ORES_PREF ] = [
 			'type' => 'api',
 		];
@@ -785,7 +781,6 @@ class HomepageHooks implements
 			self::HOMEPAGE_PREF_ENABLE,
 			self::HOMEPAGE_PREF_PT_LINK,
 			Mentorship::QUESTION_PREF,
-			SuggestedEdits::PREACTIVATED_PREF,
 		] );
 	}
 
