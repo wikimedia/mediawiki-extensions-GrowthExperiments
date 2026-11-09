@@ -1384,9 +1384,7 @@
 						"cdxIconClock",
 						"cdxIconEdit",
 						"cdxIconUserTalk",
-						"cdxIconClock",
 						"cdxIconChart",
-						"cdxIconClose",
 						"cdxIconInfo",
 						"cdxIconInfoFilled",
 						"cdxIconAlert"
@@ -2467,18 +2465,6 @@
 				}
 			},
 			"images": {
-				"growth-previous": {
-					"file": {
-						"ltr": "../images/arrowPrevious-ltr.svg",
-						"rtl": "../images/arrowPrevious-rtl.svg"
-					}
-				},
-				"askQuestion": {
-					"file": {
-						"ltr": "../images/askQuestion-ltr.svg",
-						"rtl": "../images/askQuestion-rtl.svg"
-					}
-				},
 				"suggestedEdits": {
 					"file": "../images/suggestededits/Topic-general-64w.svg"
 				},
@@ -2511,12 +2497,6 @@
 					"file": {
 						"ltr": "../images/difficulty-hard-ltr.svg",
 						"rtl": "../images/difficulty-hard-rtl.svg"
-					}
-				},
-				"difficulty-easy-bw": {
-					"file": {
-						"ltr": "../images/difficulty-easy-bw-ltr.svg",
-						"rtl": "../images/difficulty-easy-bw-rtl.svg"
 					}
 				},
 				"funnel-add": {
@@ -2590,7 +2570,6 @@
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
 					"callbackParam": [
 						"cdxIconUserActive",
-						"cdxIconUpTriangle",
 						"cdxIconClock",
 						"cdxIconHelp",
 						"cdxIconInfo",
@@ -2606,11 +2585,9 @@
 						"cdxIconCollapse",
 						"cdxIconError",
 						"cdxIconSearch",
-						"cdxIconClose",
 						"cdxIconUserAvatar",
 						"cdxIconUserTalk",
 						"cdxIconChart",
-						"cdxIconAlert",
 						"cdxIconSettings"
 					]
 				},
