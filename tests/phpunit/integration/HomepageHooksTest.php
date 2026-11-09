@@ -392,10 +392,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testOnCirrusSearchAddQueryFeaturesLoadsCollectionsOnUse() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
-		$featureManager = $this->createMock( FeatureManager::class );
-		$featureManager->method( 'isNewcomerTasksAvailable' )->willReturn( true );
-		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
-
 		$loads = 0;
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
 		$configurationLoader->method( 'getTaskTypes' )->willReturnCallback( static function () use ( &$loads ) {
@@ -410,24 +406,53 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			];
 		} );
 		$configurationLoader->method( 'loadInfoboxTemplates' )->willReturn( [ 'Template:Infobox person' ] );
+
+		$feature = $this->runOnCirrusSearchAddQueryFeatures( $configurationLoader );
+		$this->assertSame( 0, $loads );
+
+		$warningCollector = $this->createNoOpMock( WarningCollector::class );
+		$this->assertSame(
+			[ 'templates' => [ 'Template:Copyedit' ] ],
+			$feature->parseValue( 'hastemplatecollection', 'copyedit', 'copyedit', '', '', $warningCollector )
+		);
+		$this->assertSame(
+			[ 'templates' => [ 'Template:Infobox person' ] ],
+			$feature->parseValue( 'hastemplatecollection', 'infobox', 'infobox', '', '', $warningCollector )
+		);
+		$this->assertSame( 1, $loads );
+	}
+
+	/**
+	 * When the Suggested Edits configuration is not valid, the infobox collection is empty.
+	 */
+	public function testOnCirrusSearchAddQueryFeaturesInvalidConfiguration() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+		$configurationLoader = $this->createMock( ConfigurationLoader::class );
+		$configurationLoader->method( 'getTaskTypes' )->willReturn( [] );
+		$configurationLoader->method( 'loadInfoboxTemplates' )->willReturn( StatusValue::newFatal( 'test' ) );
+
+		$feature = $this->runOnCirrusSearchAddQueryFeatures( $configurationLoader );
+		$this->assertSame(
+			[ 'templates' => [] ],
+			$feature->parseValue(
+				'hastemplatecollection', 'infobox', 'infobox', '', '', $this->createNoOpMock( WarningCollector::class )
+			)
+		);
+	}
+
+	private function runOnCirrusSearchAddQueryFeatures(
+		ConfigurationLoader $configurationLoader
+	): TemplateCollectionFeature {
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isNewcomerTasksAvailable' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
 		$extraFeatures = [];
 		HomepageHooks::onCirrusSearchAddQueryFeatures( new HashSearchConfig( [] ), $extraFeatures );
 		$this->assertCount( 1, $extraFeatures );
 		$this->assertInstanceOf( TemplateCollectionFeature::class, $extraFeatures[0] );
-		$this->assertSame( 0, $loads );
-
-		$warningCollector = $this->createNoOpMock( WarningCollector::class );
-		$this->assertSame(
-			[ 'templates' => [ 'Template:Copyedit' ] ],
-			$extraFeatures[0]->parseValue( 'hastemplatecollection', 'copyedit', 'copyedit', '', '', $warningCollector )
-		);
-		$this->assertSame(
-			[ 'templates' => [ 'Template:Infobox person' ] ],
-			$extraFeatures[0]->parseValue( 'hastemplatecollection', 'infobox', 'infobox', '', '', $warningCollector )
-		);
-		$this->assertSame( 1, $loads );
+		return $extraFeatures[0];
 	}
 
 }

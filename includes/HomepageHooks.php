@@ -1358,11 +1358,9 @@ class HomepageHooks implements
 				$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 				$taskTypes = $configurationLoader->getTaskTypes();
 				$infoboxTemplates = $configurationLoader->loadInfoboxTemplates();
-				// FIXME remove once GrowthExperiments drops support for CC1.0
-				if ( $infoboxTemplates instanceof StatusValue ) {
-					$infoboxTemplates = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplates' );
-				}
-				$collections = [ 'infobox' => $infoboxTemplates ];
+				$collections = [
+					'infobox' => $infoboxTemplates instanceof StatusValue ? [] : $infoboxTemplates,
+				];
 				foreach ( $taskTypes as $taskType ) {
 					if ( $taskType instanceof TemplateBasedTaskType ) {
 						$collections[$taskType->getId()] = $taskType->getTemplates();
