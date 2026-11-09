@@ -565,7 +565,7 @@
 	 * - Structured task with non-null edits: manually set postEditDialogNeedsToBeShown
 	 *   flag via StructuredTaskArticleTarget.saveComplete (the page is reloaded upon save,
 	 *   unlike regular edits in order to change the article target, see T308046)
-	 * - Unstructured task: via postEdit or postEditMobile hooks
+	 * - Unstructured task: via the postEdit hook
 	 * - Unstructured task on mobile, or some VE edge cases, when maybeShowPostEditDialog was
 	 *   called during save, detected that the page is about to be reloaded, and set the
 	 *   postEditDialogNeedsToBeShown flag.

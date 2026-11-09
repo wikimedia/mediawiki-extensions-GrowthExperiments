@@ -51,7 +51,6 @@
 		// We are at step #2, maybe. Postedit detection is cookie-based and thus unreliable.
 		// The hook won't run on false positives so that's fine.
 		mw.hook( 'postEdit' ).add( showMidEditSignupDialog );
-		mw.hook( 'postEditMobile' ).add( showMidEditSignupDialog );
 	}
 
 }() );
