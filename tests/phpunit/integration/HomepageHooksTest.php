@@ -6,7 +6,9 @@ namespace GrowthExperiments\Tests\Integration;
 
 use CirrusSearch\HashSearchConfig;
 use CirrusSearch\Search\SearchContext;
+use CirrusSearch\WarningCollector;
 use GrowthExperiments\ErrorException;
+use GrowthExperiments\FeatureManager;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -16,6 +18,8 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilde
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\TemplateCollectionFeature;
 use GrowthExperiments\Tests\Helpers\HomepageHooksHelpers;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\RequestContext;
@@ -26,6 +30,7 @@ use MediaWiki\ResourceLoader as RL;
 use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use StatusValue;
@@ -379,6 +384,50 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		$extraFeatures = [];
 		HomepageHooks::onCirrusSearchAddQueryFeatures( $searchConfig, $extraFeatures );
 		$this->assertSame( [], $extraFeatures );
+	}
+
+	/**
+	 * onCirrusSearchAddQueryFeatures must load the task types only when a query uses
+	 * the hastemplatecollection keyword, not for each full-text search.
+	 */
+	public function testOnCirrusSearchAddQueryFeaturesLoadsCollectionsOnUse() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+		$featureManager = $this->createMock( FeatureManager::class );
+		$featureManager->method( 'isNewcomerTasksAvailable' )->willReturn( true );
+		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
+
+		$loads = 0;
+		$configurationLoader = $this->createMock( ConfigurationLoader::class );
+		$configurationLoader->method( 'getTaskTypes' )->willReturnCallback( static function () use ( &$loads ) {
+			$loads++;
+			return [
+				'copyedit' => new TemplateBasedTaskType(
+					'copyedit', TaskType::DIFFICULTY_EASY, [], [ new TitleValue( NS_TEMPLATE, 'Copyedit' ) ]
+				),
+				'link-recommendation' => new LinkRecommendationTaskType(
+					'link-recommendation', TaskType::DIFFICULTY_EASY, []
+				),
+			];
+		} );
+		$configurationLoader->method( 'loadInfoboxTemplates' )->willReturn( [ 'Template:Infobox person' ] );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
+
+		$extraFeatures = [];
+		HomepageHooks::onCirrusSearchAddQueryFeatures( new HashSearchConfig( [] ), $extraFeatures );
+		$this->assertCount( 1, $extraFeatures );
+		$this->assertInstanceOf( TemplateCollectionFeature::class, $extraFeatures[0] );
+		$this->assertSame( 0, $loads );
+
+		$warningCollector = $this->createNoOpMock( WarningCollector::class );
+		$this->assertSame(
+			[ 'templates' => [ 'Template:Copyedit' ] ],
+			$extraFeatures[0]->parseValue( 'hastemplatecollection', 'copyedit', 'copyedit', '', '', $warningCollector )
+		);
+		$this->assertSame(
+			[ 'templates' => [ 'Template:Infobox person' ] ],
+			$extraFeatures[0]->parseValue( 'hastemplatecollection', 'infobox', 'infobox', '', '', $warningCollector )
+		);
+		$this->assertSame( 1, $loads );
 	}
 
 }

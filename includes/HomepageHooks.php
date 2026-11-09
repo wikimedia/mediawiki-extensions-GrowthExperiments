@@ -1353,23 +1353,25 @@ class HomepageHooks implements
 		if ( !$growthServices->getFeatureManager()->isNewcomerTasksAvailable() ) {
 			return;
 		}
-		$growthServices = GrowthExperimentsServices::wrap( $mwServices );
-		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
-		$taskTypes = $configurationLoader->getTaskTypes();
-		$infoboxTemplates = $configurationLoader->loadInfoboxTemplates();
-		// FIXME remove once GrowthExperiments drops support for CC1.0
-		if ( $infoboxTemplates instanceof StatusValue ) {
-			$infoboxTemplates = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplates' );
-		}
-		$templateCollectionFeature = new TemplateCollectionFeature(
-			'infobox', $infoboxTemplates, $mwServices->getTitleFactory()
+		$extraFeatures[] = new TemplateCollectionFeature(
+			static function () use ( $growthServices ): array {
+				$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+				$taskTypes = $configurationLoader->getTaskTypes();
+				$infoboxTemplates = $configurationLoader->loadInfoboxTemplates();
+				// FIXME remove once GrowthExperiments drops support for CC1.0
+				if ( $infoboxTemplates instanceof StatusValue ) {
+					$infoboxTemplates = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplates' );
+				}
+				$collections = [ 'infobox' => $infoboxTemplates ];
+				foreach ( $taskTypes as $taskType ) {
+					if ( $taskType instanceof TemplateBasedTaskType ) {
+						$collections[$taskType->getId()] = $taskType->getTemplates();
+					}
+				}
+				return $collections;
+			},
+			$mwServices->getTitleFactory()
 		);
-		foreach ( $taskTypes as $taskType ) {
-			if ( $taskType instanceof TemplateBasedTaskType ) {
-				$templateCollectionFeature->addCollection( $taskType->getId(), $taskType->getTemplates() );
-			}
-		}
-		$extraFeatures[] = $templateCollectionFeature;
 	}
 
 	/** @inheritDoc */

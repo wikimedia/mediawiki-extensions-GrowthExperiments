@@ -10,6 +10,7 @@ use CirrusSearch\Query\SimpleKeywordFeature;
 use CirrusSearch\Search\Filters;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\WarningCollector;
+use Closure;
 use Elastica\Query\AbstractQuery;
 use GrowthExperiments\Config\Schemas\SuggestedEditsSchema;
 use MediaWiki\Linker\LinkTarget;
@@ -31,7 +32,9 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	 */
 	public const MAX_TEMPLATES_IN_COLLECTION = SuggestedEditsSchema::MAX_INFOBOX_TEMPLATES;
 
-	private array $templates;
+	private Closure $collectionsCallback;
+	/** @var array<string,string[]|LinkTarget[]>|null */
+	private ?array $templates = null;
 	private TitleFactory $titleFactory;
 
 	/** @inheritDoc */
@@ -40,40 +43,47 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	}
 
 	/**
-	 * @param string $collectionName
-	 * @param string[]|LinkTarget[] $templates
+	 * @param Closure():(array<string,string[]|LinkTarget[]>) $collectionsCallback Returns the
+	 *   template collections, keyed by collection name. It is called once, when a query uses
+	 *   the keyword.
 	 * @param TitleFactory $titleFactory
 	 */
-	public function __construct( string $collectionName, array $templates, TitleFactory $titleFactory ) {
+	public function __construct( Closure $collectionsCallback, TitleFactory $titleFactory ) {
+		$this->collectionsCallback = $collectionsCallback;
 		$this->titleFactory = $titleFactory;
-		$this->addCollection( $collectionName, $templates );
 	}
 
 	/**
-	 * @param string $collectionName
-	 * @param string[]|LinkTarget[] $templates
+	 * @return array<string,string[]|LinkTarget[]>
 	 */
-	public function addCollection( string $collectionName, array $templates ): void {
-		Assert::parameter(
-			count( $templates ) <= self::MAX_TEMPLATES_IN_COLLECTION,
-			'$templates',
-			'Maximum ' . self::MAX_TEMPLATES_IN_COLLECTION . ' templates allowed in collection.'
-		);
-		$this->templates[$collectionName] = $templates;
+	private function getCollections(): array {
+		if ( $this->templates === null ) {
+			$collections = ( $this->collectionsCallback )();
+			foreach ( $collections as $collectionName => $templates ) {
+				Assert::postcondition(
+					count( $templates ) <= self::MAX_TEMPLATES_IN_COLLECTION,
+					'Maximum ' . self::MAX_TEMPLATES_IN_COLLECTION .
+						" templates allowed in collection \"$collectionName\"."
+				);
+			}
+			$this->templates = $collections;
+		}
+		return $this->templates;
 	}
 
 	/** @inheritDoc */
 	public function parseValue(
 		$key, $value, $quotedValue, $valueDelimiter, $suffix, WarningCollector $warningCollector
 	) {
+		$collections = $this->getCollections();
 		// If an undefined collection name is used in the user-provided input, then just return no results.
-		if ( !isset( $this->templates[$value] ) ) {
+		if ( !isset( $collections[$value] ) ) {
 			$warningCollector->addWarning( 'growthexperiments-templatecollectionfeature-invalid-collection',
 				$value );
 			return [ 'templates' => [] ];
 		}
 		$templates = [];
-		foreach ( $this->templates[$value] as $template ) {
+		foreach ( $collections[$value] as $template ) {
 			if ( $template instanceof TitleValue ) {
 				$title = $this->titleFactory->newFromLinkTarget( $template );
 			} else {
