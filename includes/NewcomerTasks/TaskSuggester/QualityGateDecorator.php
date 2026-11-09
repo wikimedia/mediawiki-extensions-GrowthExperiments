@@ -21,45 +21,18 @@ use MediaWiki\User\UserIdentity;
  * A TaskSuggester decorator that injects data for task type "quality gates" into a TaskSet.
  */
 class QualityGateDecorator implements TaskSuggester {
-
-	/** @var TaskSuggester */
-	private $taskSuggester;
-
-	/** @var ImageRecommendationSubmissionLogFactory */
-	private $imageRecommendationSubmissionLogFactory;
-
-	/** @var LinkRecommendationSubmissionLogFactory */
-	private $linkRecommendationSubmissionLogFactory;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
-	/** @var int */
-	private $imageRecommendationCountForUser;
-
-	/** @var int */
-	private $linkRecommendationCountForUser;
-
-	private SectionImageRecommendationSubmissionLogFactory $sectionImageRecommendationSubmissionLogFactory;
+	private ?int $imageRecommendationCountForUser = null;
+	private ?int $linkRecommendationCountForUser = null;
 	private ?int $sectionImageRecommendationCountForUser = null;
 
-	/** @var CampaignConfig */
-	private $campaignConfig;
-
 	public function __construct(
-		TaskSuggester $taskSuggester,
-		ConfigurationLoader $configurationLoader,
-		ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory,
-		SectionImageRecommendationSubmissionLogFactory $sectionImageRecommendationSubmissionLogFactory,
-		LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory,
-		CampaignConfig $campaignConfig
+		private readonly TaskSuggester $taskSuggester,
+		private readonly ConfigurationLoader $configurationLoader,
+		private readonly ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory,
+		private readonly SectionImageRecommendationSubmissionLogFactory $sectionImageRecommendationSubmissionLogFactory,
+		private readonly LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory,
+		private readonly CampaignConfig $campaignConfig
 	) {
-		$this->taskSuggester = $taskSuggester;
-		$this->imageRecommendationSubmissionLogFactory = $imageRecommendationSubmissionLogFactory;
-		$this->sectionImageRecommendationSubmissionLogFactory = $sectionImageRecommendationSubmissionLogFactory;
-		$this->configurationLoader = $configurationLoader;
-		$this->linkRecommendationSubmissionLogFactory = $linkRecommendationSubmissionLogFactory;
-		$this->campaignConfig = $campaignConfig;
 	}
 
 	/** @inheritDoc */
@@ -141,7 +114,7 @@ class QualityGateDecorator implements TaskSuggester {
 	private function getImageRecommendationTasksDoneByUserForCurrentDay(
 		UserIdentity $user
 	): int {
-		if ( $this->imageRecommendationCountForUser ) {
+		if ( $this->imageRecommendationCountForUser !== null ) {
 			return $this->imageRecommendationCountForUser;
 		}
 		$imageRecommendationSubmissionLog =
@@ -171,7 +144,7 @@ class QualityGateDecorator implements TaskSuggester {
 	private function getLinkRecommendationTasksDoneByUserForCurrentDay(
 		UserIdentity $user
 	): int {
-		if ( $this->linkRecommendationCountForUser ) {
+		if ( $this->linkRecommendationCountForUser !== null ) {
 			return $this->linkRecommendationCountForUser;
 		}
 		$linkRecommendationSubmissionLog =
@@ -201,7 +174,7 @@ class QualityGateDecorator implements TaskSuggester {
 	private function getSectionImageRecommendationTasksDoneByUserForCurrentDay(
 		UserIdentity $user
 	): int {
-		if ( $this->sectionImageRecommendationCountForUser ) {
+		if ( $this->sectionImageRecommendationCountForUser !== null ) {
 			return $this->sectionImageRecommendationCountForUser;
 		}
 		$sectionImageRecommendationSubmissionLog =
