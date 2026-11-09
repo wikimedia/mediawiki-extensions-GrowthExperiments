@@ -73,7 +73,7 @@ class SubpageImageRecommendationProvider
 		'@phan-var ImageRecommendationBaseTaskType $taskType';
 		/** @var ImageRecommendationBaseTaskType $taskType */
 
-		if ( isset( $data['pages'] ) || isset( $data['rows'] ) || isset( $data['query']['pages'] ) ) {
+		if ( isset( $data['rows'] ) || isset( $data['query']['pages'] ) ) {
 			// This is the format used by the Image Suggestions API. It is not really useful
 			// as a serialization format but easy to obtain for actual wiki pages so allow it
 			// as a convenience.

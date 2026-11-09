@@ -3219,11 +3219,7 @@
 			"value": true
 		},
 		"GEImageRecommendationServiceUrl": {
-			"description": "URL used by the image recommendation API handler (see GEImageRecommendationApiHandler). For the 'production' and 'mvp' handlers: root URL of the image recommendation service, without a trailing slash. For the 'actionapi' handler: URL of api.php on a wiki that has GrowthExperiments installed, such as 'https://en.wikipedia.org/w/api.php'.",
-			"value": null
-		},
-		"GEImageRecommendationServiceHttpProxy": {
-			"description": "HTTP proxy for the service specified via GEImageRecommendationServiceUrl.",
+			"description": "URL used by the image recommendation API handler (see GEImageRecommendationApiHandler). For the 'production' handler: root URL of the image recommendation service, without a trailing slash. For the 'actionapi' handler: URL of api.php on a wiki that has GrowthExperiments installed, such as 'https://en.wikipedia.org/w/api.php'.",
 			"value": null
 		},
 		"GEImageRecommendationServiceUseTitles": {
@@ -3231,7 +3227,7 @@
 			"value": true
 		},
 		"GEImageRecommendationApiHandler": {
-			"description": "Corresponding API handler to use for the (top-level and section-level) image recommendations; can be 'production' (ProductionImageRecommendationApiHandler), 'mvp' (MvpImageRecommendationApiHandler) or 'actionapi' (ActionApiImageRecommendationApiHandler). See these classes for more information.",
+			"description": "Corresponding API handler to use for the (top-level and section-level) image recommendations; can be 'production' (ProductionImageRecommendationApiHandler) or 'actionapi' (ActionApiImageRecommendationApiHandler). See these classes for more information.",
 			"value": "actionapi"
 		},
 		"GEImageRecommendationServiceWikiIdMasquerade": {

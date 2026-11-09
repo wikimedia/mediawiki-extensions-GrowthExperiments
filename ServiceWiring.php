@@ -50,7 +50,6 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
-use GrowthExperiments\NewcomerTasks\AddImage\MvpImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ProductionImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
@@ -318,15 +317,6 @@ return [
 				$config->get( 'GEImageRecommendationServiceUseTitles' ),
 				!$config->get( 'GEDeveloperSetup' )
 			);
-		} elseif ( $apiHandlerType === 'mvp' ) {
-			return new MvpImageRecommendationApiHandler(
-				$services->getHttpRequestFactory(),
-				$config->get( 'GEImageRecommendationServiceUrl' ),
-				'wikipedia',
-				$services->getContentLanguageCode()->toString(),
-				$config->get( 'GEImageRecommendationServiceHttpProxy' ),
-				null,
-				$config->get( 'GEImageRecommendationServiceUseTitles' ) );
 		} elseif ( $apiHandlerType === 'actionapi' ) {
 			return new ActionApiImageRecommendationApiHandler(
 				$services->getFormatterFactory()->getStatusFormatter( RequestContext::getMain() ),

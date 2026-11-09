@@ -7,7 +7,7 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendation;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationData;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationImage;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
-use GrowthExperiments\NewcomerTasks\AddImage\MvpImageRecommendationApiHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\ProductionImageRecommendationApiHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\SectionImageRecommendationTaskType;
@@ -37,53 +37,37 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 
 	use MockTitleTrait;
 
+	private const SUGGESTIONS_URL = 'http://example.com/public/image_suggestions/suggestions/enwiki/';
+	// The production handler sorts by the timestamp in the dataset ID. Thus it must be a UUIDv1.
+	private const DATASET_ID = '784fca88-da30-11f1-84d7-e43d1a540f8e';
+
 	/**
 	 * @covers ::get
 	 * @covers ::processApiResponseData
 	 */
 	public function testGet() {
 		$titleFactory = $this->getTitleFactory();
-		$url = 'http://example.com';
-		$wikiProject = 'wikipedia';
-		$wikiLanguage = 'en';
 		$metadataProvider = $this->createMock(
 			ImageRecommendationMetadataProvider::class
 		);
 		$metadataProvider->method( 'getFileMetadata' )->willReturn( self::metadataFactory() );
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
-		$useTitle = true;
-		$apiHandler = new MvpImageRecommendationApiHandler(
-			$this->getHttpRequestFactory( [
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 400, [] ],
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/11?source=ima' => [ 200, '{{{' ],
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/12?source=ima' => [ 200,
-					[ 'pages' => [] ] ],
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/13?source=ima' => [ 200,
-					[ 'pages' => [ [ 'suggestions' => [] ] ] ] ],
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/14?source=ima' => [ 200,
-					[ 'pages' => [ [ 'suggestions' => [
-						[ 'filename' => '14_1.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
-						] ] ],
-						[ 'filename' => '14_2.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
-						] ] ],
-					] ] ] ] ],
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/15?source=ima' => [ 200,
-					[ 'pages' => [ [ 'suggestions' => [
-						[ 'filename' => '15.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'wikipedia', 'found_on' => 'enwiki,dewiki', 'dataset_id' => 'x',
-						] ] ],
-					] ] ] ] ],
-			] ),
-			$url,
-			$wikiProject,
-			$wikiLanguage,
-			null,
-			null,
-			$useTitle
-		);
+		$apiHandler = $this->getApiHandler( [
+			self::SUGGESTIONS_URL . '10' => [ 400, [] ],
+			self::SUGGESTIONS_URL . '11' => [ 200, '{{{' ],
+			self::SUGGESTIONS_URL . '12' => [ 200, [ 'rows' => [] ] ],
+			self::SUGGESTIONS_URL . '13' => [ 200, [ 'rows' => [
+				self::makeRow( '13.png', 'istype-section-topics', [], 'Section', 1 ),
+			] ] ],
+			self::SUGGESTIONS_URL . '14' => [ 200, [ 'rows' => [
+				self::makeRow( '14_1.png', 'istype-wikidata-image' ),
+				self::makeRow( '14_2.png', 'istype-commons-category' ),
+			] ] ],
+			self::SUGGESTIONS_URL . '15' => [ 200, [ 'rows' => [
+				self::makeRow( '15.png', 'istype-lead-image', [ 'enwiki', 'dewiki' ] ),
+			] ] ],
+		] );
 		$provider = new ServiceImageRecommendationProvider(
 			$titleFactory,
 			StatsFactory::newNull(),
@@ -112,7 +96,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIDATA, $recommendation->getImages()[0]->getSource() );
 		$this->assertSame( ImageRecommendationImage::SOURCE_COMMONS, $recommendation->getImages()[1]->getSource() );
 		$this->assertSame( [], $recommendation->getImages()[0]->getProjects() );
-		$this->assertSame( 'x', $recommendation->getDatasetId() );
+		$this->assertSame( self::DATASET_ID, $recommendation->getDatasetId() );
 
 		$provider->setMaxSuggestionsToProcess( 1 );
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '14' ), $taskType );
@@ -142,31 +126,16 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	 */
 	public function testGet_instrumentation( TaskType $taskType ) {
 		$titleFactory = $this->getTitleFactory();
-		$url = 'http://example.com';
-		$wikiProject = 'wikipedia';
-		$wikiLanguage = 'en';
 		$metadataProvider = $this->createMock(
 			ImageRecommendationMetadataProvider::class
 		);
 		$metadataProvider->method( 'getFileMetadata' )->willReturn( self::metadataFactory() );
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
-		$useTitle = true;
-		$apiHandler = new MvpImageRecommendationApiHandler(
-			$this->getHttpRequestFactory( [
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/15?source=ima' => [ 200,
-					[ 'pages' => [ [ 'suggestions' => [
-						[ 'filename' => '15.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'wikipedia', 'found_on' => 'enwiki,dewiki', 'dataset_id' => 'x',
-						] ] ],
-					] ] ] ] ],
-			] ),
-			$url,
-			$wikiProject,
-			$wikiLanguage,
-			null,
-			null,
-			$useTitle
-		);
+		$apiHandler = $this->getApiHandler( [
+			self::SUGGESTIONS_URL . '15' => [ 200, [ 'rows' => [
+				self::makeRow( '15.png', 'istype-lead-image', [ 'enwiki', 'dewiki' ] ),
+			] ] ],
+		] );
 
 		$unitTestingHelper = StatsFactory::newUnitTestingHelper();
 		$provider = new ServiceImageRecommendationProvider(
@@ -205,30 +174,21 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	/**
 	 * @covers ::get
 	 */
-	public function testGet_Id() {
+	public function testGet_UseTitles() {
 		$titleFactory = $this->getTitleFactory();
-		$url = 'http://example.com';
-		$wikiProject = 'wikipedia';
-		$wikiLanguage = 'en';
 		$metadataProvider = $this->createMock(
 			ImageRecommendationMetadataProvider::class
 		);
 		$metadataProvider->method( 'getFileMetadata' )->willReturn( self::metadataFactory() );
 		$metadataProvider->method( 'getMetadata' )->willReturn( self::metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
-		$useTitle = false;
-		$apiHandler = new MvpImageRecommendationApiHandler(
-			$this->getHttpRequestFactory( [
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages?source=ima&id=10' => [ 200,
-					[ 'pages' => [] ] ],
-			] ),
-			$url,
-			$wikiProject,
-			$wikiLanguage,
-			null,
-			null,
-			$useTitle
-		);
+		$apiHandler = $this->getApiHandler( [
+			'http://example.com/private/image_suggestions/title_cache/enwiki/10' => [ 200,
+				[ 'rows' => [ [ 'page_id' => 1234 ] ] ] ],
+			self::SUGGESTIONS_URL . '1234' => [ 200, [ 'rows' => [
+				self::makeRow( '1234.png', 'istype-lead-image' ),
+			] ] ],
+		], true );
 		$provider = new ServiceImageRecommendationProvider(
 			$titleFactory,
 			StatsFactory::newNull(),
@@ -238,7 +198,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			new NullLogger()
 		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
-		$this->assertInstanceOf( StatusValue::class, $recommendation );
+		$this->assertInstanceOf( ImageRecommendation::class, $recommendation );
+		$this->assertSame( '1234.png', $recommendation->getImages()[0]->getImageTitle()->getDBkey() );
 	}
 
 	/**
@@ -246,35 +207,18 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	 */
 	public function testMetadataError() {
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
-		$url = 'http://example.com';
-		$wikiProject = 'wikipedia';
-		$wikiLanguage = 'en';
 		$metadataProvider = $this->createMock(
 			ImageRecommendationMetadataProvider::class
 		);
 		$metadataProvider->method( 'getFileMetadata' )->willReturn(
 			StatusValue::newFatal( 'rawmessage', 'No metadata' )
 		);
-		$useTitle = true;
-		$apiHandler = new MvpImageRecommendationApiHandler(
-			$this->getHttpRequestFactory( [
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
-					[ 'pages' => [ [ 'suggestions' => [
-						[ 'filename' => '1.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
-						] ] ],
-						[ 'filename' => '2.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
-						] ] ],
-					] ] ] ] ],
-			] ),
-			$url,
-			$wikiProject,
-			$wikiLanguage,
-			null,
-			null,
-			$useTitle
-		);
+		$apiHandler = $this->getApiHandler( [
+			self::SUGGESTIONS_URL . '10' => [ 200, [ 'rows' => [
+				self::makeRow( '1.png', 'istype-wikidata-image' ),
+				self::makeRow( '2.png', 'istype-commons-category' ),
+			] ] ],
+		] );
 		$provider = new ServiceImageRecommendationProvider(
 			$this->getTitleFactory(),
 			StatsFactory::newNull(),
@@ -292,9 +236,6 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	 */
 	public function testPartialMetadataError() {
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
-		$url = 'http://example.com';
-		$wikiProject = 'wikipedia';
-		$wikiLanguage = 'en';
 		$metadataProvider = $this->createMock(
 			ImageRecommendationMetadataProvider::class
 		);
@@ -306,26 +247,12 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 				return self::metadataFactory();
 			}
 		} );
-		$useTitle = true;
-		$apiHandler = new MvpImageRecommendationApiHandler(
-			$this->getHttpRequestFactory( [
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
-					[ 'pages' => [ [ 'suggestions' => [
-						[ 'filename' => 'Bad.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
-						] ] ],
-						[ 'filename' => 'Good.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
-						] ] ],
-					] ] ] ] ],
-			] ),
-			$url,
-			$wikiProject,
-			$wikiLanguage,
-			null,
-			null,
-			$useTitle
-		);
+		$apiHandler = $this->getApiHandler( [
+			self::SUGGESTIONS_URL . '10' => [ 200, [ 'rows' => [
+				self::makeRow( 'Bad.png', 'istype-wikidata-image' ),
+				self::makeRow( 'Good.png', 'istype-commons-category' ),
+			] ] ],
+		] );
 		$provider = new ServiceImageRecommendationProvider(
 			$this->getTitleFactory(),
 			StatsFactory::newNull(),
@@ -398,7 +325,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 
 	/**
 	 * @dataProvider provideProcessApiResponseData
-	 * @param array $data API response data.
+	 * @param ImageRecommendationData[] $data Suggestion data from the API handler.
 	 * @param array|null $expectedResult Expected result of ImageRecommendation::toArray, or null
 	 *   on error.
 	 * @covers ::processApiResponseData
@@ -413,7 +340,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			$taskType,
 			PageIdentityValue::localIdentity( 0, NS_MAIN, 'Foo' ),
 			'Foo',
-			$this->formatOldApiResponse( $data, $taskType ),
+			$data,
 			$mockMetadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
 		);
@@ -427,7 +354,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 
 	/**
 	 * @dataProvider provideProcessApiResponseDataFilter
-	 * @param array $data API response data.
+	 * @param ImageRecommendationData[] $data Suggestion data from the API handler.
 	 * @param array|null $expectedResult Expected result of ImageRecommendation::toArray, or null
 	 *   on error.
 	 * @covers ::processApiResponseData
@@ -456,7 +383,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			$taskType,
 			PageIdentityValue::localIdentity( 0, NS_MAIN, 'Foo' ),
 			'Foo',
-			$this->formatOldApiResponse( $data, $taskType ),
+			$data,
 			$metadataProvider,
 			$this->createMock( AddImageSubmissionHandler::class )
 		);
@@ -467,7 +394,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 
 	/**
 	 * @dataProvider provideProcessApiResponseDataNoSuggestions
-	 * @param array $data API response data.
+	 * @param ImageRecommendationData[] $data Suggestion data from the API handler.
 	 * @covers ::processApiResponseData
 	 */
 	public function testProvideProcessApiResponseDataNoSuggestions( array $data ) {
@@ -494,7 +421,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			$taskType,
 			PageIdentityValue::localIdentity( 0, NS_MAIN, $titleText ),
 			$titleText,
-			$this->formatOldApiResponse( $data, $taskType ),
+			$data,
 			$metadataProvider,
 			$submissionHandler
 		);
@@ -514,32 +441,15 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	}
 
 	public static function provideProcessApiResponseDataFilter(): array {
-		$validSource = [
-			'from' => 'wikipedia',
-			'found_on' => 'enwiki,dewiki',
-			'dataset_id' => '1.23',
-		];
-		$validSuggestions = [
-			[
-				'filename' => 'TooNarrow.png',
-				'source' => [ 'details' => $validSource ],
-			],
-			[
-				'filename' => 'WideEnough.png',
-				'source' => [ 'details' => $validSource ],
-			],
-			[
-				'filename' => 'NoWidthInformed.png',
-				'source' => [ 'details' => $validSource ],
-			],
-			[
-				'filename' => 'InvalidMediaType.png',
-				'source' => [ 'details' => $validSource ],
-			],
-		];
+		$validSuggestions = array_map(
+			static fn ( string $filename ) => new ImageRecommendationData(
+				$filename, 'wikipedia', 'enwiki,dewiki', '1.23'
+			),
+			[ 'TooNarrow.png', 'WideEnough.png', 'NoWidthInformed.png', 'InvalidMediaType.png' ]
+		);
 
 		return [
-			'valid' => [ [ 'pages' => [ [ 'suggestions' => $validSuggestions ] ] ], [
+			'valid' => [ $validSuggestions, [
 				'titleNamespace' => 0,
 				'titleText' => 'Foo',
 				'images' => [
@@ -567,56 +477,30 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	}
 
 	public static function provideProcessApiResponseData(): array {
-		$validSource = [
-			'from' => 'wikipedia',
-			'found_on' => 'enwiki,dewiki',
-			'dataset_id' => '1.23',
-		];
-		$validSuggestion = [
-			'filename' => 'Foo.png',
-			'source' => [ 'details' => $validSource ],
-		];
-		$secondValidSuggestion = [
-			'filename' => 'bar.png',
-			'source' => [ 'details' => $validSource ],
-		];
+		$validSuggestion = new ImageRecommendationData( 'Foo.png', 'wikipedia', 'enwiki,dewiki', '1.23' );
+		$secondValidSuggestion = new ImageRecommendationData( 'bar.png', 'wikipedia', 'enwiki,dewiki', '1.23' );
 
 		return [
-			'no page' => [ [ 'pages' => [] ], null ],
-			'no suggestions' => [ [ 'pages' => [
-				[ 'suggestions' => [] ],
-			] ], null ],
-			'invalid filename' => [ [ 'pages' => [
-				[ 'suggestions' => [
-					[ 'filename' => [] ] + $validSuggestion,
-				] ],
-			] ], null ],
-			'invalid filename #2' => [ [ 'pages' => [
-				[ 'suggestions' => [
-					[ 'filename' => 'Foo<script>.png' ] + $validSuggestion,
-				] ],
-			] ], null ],
-			'invalid from' => [ [ 'pages' => [
-				[ 'suggestions' => [
-					[ 'source' => [ 'details' => [ 'from' => true ] + $validSource ] ] + $validSuggestion,
-				] ],
-			] ], null ],
-			'invalid from #2' => [ [ 'pages' => [
-				[ 'suggestions' => [
-					[ 'source' => [ 'details' => [ 'from' => 'foo' ] + $validSource ] ] + $validSuggestion,
-				] ],
-			] ], null ],
-			'invalid found_on' => [ [ 'pages' => [
-				[ 'suggestions' => [
-					[ 'source' => [ 'details' => [ 'found_on' => true ] + $validSource ] ] + $validSuggestion,
-				] ],
-			] ], null ],
-			'invalid dataset_id' => [ [ 'pages' => [
-				[ 'suggestions' => [
-					[ 'source' => [ 'details' => [ 'dataset_id' => true ] + $validSource ] ] + $validSuggestion,
-				] ],
-			] ], null ],
-			'valid' => [ [ 'pages' => [ [ 'suggestions' => [ $validSuggestion, $secondValidSuggestion ] ] ] ], [
+			'no suggestions' => [ [], null ],
+			'invalid filename' => [ [
+				new ImageRecommendationData( [], 'wikipedia', 'enwiki,dewiki', '1.23' ),
+			], null ],
+			'invalid filename #2' => [ [
+				new ImageRecommendationData( 'Foo<script>.png', 'wikipedia', 'enwiki,dewiki', '1.23' ),
+			], null ],
+			'invalid source' => [ [
+				new ImageRecommendationData( 'Foo.png', true, 'enwiki,dewiki', '1.23' ),
+			], null ],
+			'invalid source #2' => [ [
+				new ImageRecommendationData( 'Foo.png', 'foo', 'enwiki,dewiki', '1.23' ),
+			], null ],
+			'invalid projects' => [ [
+				new ImageRecommendationData( 'Foo.png', 'wikipedia', true, '1.23' ),
+			], null ],
+			'invalid dataset ID' => [ [
+				new ImageRecommendationData( 'Foo.png', 'wikipedia', 'enwiki,dewiki', true ),
+			], null ],
+			'valid' => [ [ $validSuggestion, $secondValidSuggestion ], [
 				'titleNamespace' => 0,
 				'titleText' => 'Foo',
 				'images' => [
@@ -644,25 +528,12 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	}
 
 	public static function provideProcessApiResponseDataNoSuggestions(): array {
-		$validSource = [
-			'from' => 'wikipedia',
-			'found_on' => 'enwiki,dewiki',
-			'dataset_id' => '1.23',
-		];
-		$validSuggestions = [
-			[
-				'filename' => 'TooNarrow.png',
-				'source' => [ 'details' => $validSource ],
-			],
-			[
-				'filename' => 'NoWidthInformed.png',
-				'source' => [ 'details' => $validSource ],
-			],
-		];
-
 		return [
-			'all filtered' => [ [ 'pages' => [ [ 'suggestions' => $validSuggestions ] ] ] ],
-			'no suggestions' => [ [ 'pages' => [ [ 'suggestions' => [] ] ] ] ],
+			'all filtered' => [ [
+				new ImageRecommendationData( 'TooNarrow.png', 'wikipedia', 'enwiki,dewiki', '1.23' ),
+				new ImageRecommendationData( 'NoWidthInformed.png', 'wikipedia', 'enwiki,dewiki', '1.23' ),
+			] ],
+			'no suggestions' => [ [] ],
 		];
 	}
 
@@ -711,16 +582,47 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		return $factory;
 	}
 
-	private function formatOldApiResponse( array $data, TaskType $taskType ): array {
-		$apiHandler = new MvpImageRecommendationApiHandler(
-			$this->createNoOpMock( HttpRequestFactory::class ),
-			'https://example.com',
-			'wikipedia',
-			'en',
+	/**
+	 * @param array[] $responseMap URL => [ status code, response body ]
+	 * @param bool $useTitles
+	 * @return ProductionImageRecommendationApiHandler
+	 */
+	private function getApiHandler(
+		array $responseMap,
+		bool $useTitles = false
+	): ProductionImageRecommendationApiHandler {
+		return new ProductionImageRecommendationApiHandler(
+			$this->getHttpRequestFactory( $responseMap ),
+			'http://example.com',
+			'enwiki',
+			$this->getServiceContainer()->getGlobalIdGenerator(),
 			null,
-			null,
-			false
+			$useTitles
 		);
-		return $apiHandler->getSuggestionDataFromApiResponse( $data, $taskType );
+	}
+
+	/**
+	 * Make one row of an image suggestions service response.
+	 */
+	private static function makeRow(
+		string $image,
+		string $kind,
+		array $foundOn = [],
+		?string $sectionHeading = null,
+		?int $sectionIndex = null
+	): array {
+		return [
+			'wiki' => 'enwiki',
+			'page_id' => 1,
+			'id' => self::DATASET_ID,
+			'image' => $image,
+			'confidence' => 80,
+			'found_on' => $foundOn,
+			'kind' => [ $kind ],
+			'origin_wiki' => 'commonswiki',
+			'page_rev' => 1,
+			'section_heading' => $sectionHeading,
+			'section_index' => $sectionIndex,
+		];
 	}
 }

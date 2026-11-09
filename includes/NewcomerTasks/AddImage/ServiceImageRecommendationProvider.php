@@ -21,7 +21,6 @@ use Wikimedia\Stats\StatsFactory;
 
 /**
  * Provides image recommendations via the Image Suggestion API.
- * @see mvp API: https://image-suggestion-api.wmcloud.org/?doc
  * @see production API: https://wikitech.wikimedia.org/wiki/Image-suggestion
  * @see https://phabricator.wikimedia.org/project/profile/5253/
  */
