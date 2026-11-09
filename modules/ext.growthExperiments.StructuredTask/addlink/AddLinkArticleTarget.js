@@ -96,12 +96,6 @@ AddLinkArticleTarget.prototype.selectFirstRecommendation = function () {
 	this.getSurface().executeCommand( 'recommendedLink' );
 };
 
-/** @override **/
-AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
-	// Don't restore the saved scroll position, because we've selected the first link recommendation
-	// and scrolled to it
-};
-
 /**
  * Find all mwGeRecommendedLink annotations in the document, and build a data structure with their
  * IDs and SurfaceFragments representing the range they cover. If the annotations move around

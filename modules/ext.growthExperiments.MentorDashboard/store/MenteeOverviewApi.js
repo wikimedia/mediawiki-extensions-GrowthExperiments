@@ -91,10 +91,6 @@
 		this.apiParams.limit = value;
 	};
 
-	MenteeOverviewApi.prototype.getLimit = function () {
-		return this.apiParams.limit;
-	};
-
 	MenteeOverviewApi.prototype.setPage = function ( value ) {
 		this.page = value;
 	};
@@ -178,12 +174,6 @@
 					( el ) => el !== Number( userId ),
 				);
 			} ),
-		);
-	};
-
-	MenteeOverviewApi.prototype.isMenteeStarred = function ( userId ) {
-		return this.getStarredMentees().then(
-			( mentees ) => mentees.includes( Number( userId ) ),
 		);
 	};
 

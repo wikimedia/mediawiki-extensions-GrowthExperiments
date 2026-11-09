@@ -130,15 +130,4 @@ SuggestionGroupWidget.prototype.isEverythingSelected = function () {
 	return this.getItems().every( ( suggestion ) => suggestion.confirmed );
 };
 
-/**
- * Get the data of the selected suggestions.
- *
- * @return {Object[]} Data object for each suggestion that is selected
- */
-SuggestionGroupWidget.prototype.getSelectedSuggestions = function () {
-	return this.getItems()
-		.filter( ( suggestion ) => suggestion.confirmed )
-		.map( ( suggestion ) => suggestion.suggestionData );
-};
-
 module.exports = SuggestionGroupWidget;
