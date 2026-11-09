@@ -300,7 +300,7 @@ class Mentorship extends BaseModule {
 	 * @return string
 	 */
 	private function getMessageHtml( string $class, string $html ): string {
-		$codex = $this->getCodex();
+		$codex = $this->newCodex();
 		// Codex PHP has no dismiss button, so it goes in the content. The Codex
 		// styles position it against the message, so it looks the same.
 		$dismissHtml = $codex->button()
@@ -350,7 +350,7 @@ class Mentorship extends BaseModule {
 			[ 'class' => 'personal-dashboard-mentorship__optin-text' ],
 			$this->msg( self::MSG_PREFIX . 'optin-text' )->text()
 		);
-		$buttonHtml = $this->getCodex()->button()
+		$buttonHtml = $this->newCodex()->button()
 			->setLabel( $this->msg( self::MSG_PREFIX . 'optin-button' )->text() )
 			->setAttributes( [ 'class' => 'personal-dashboard-mentorship__optin' ] )
 			->getHtml();
@@ -363,7 +363,7 @@ class Mentorship extends BaseModule {
 	 * @return string
 	 */
 	private function getMentorCardHtml(): string {
-		$codex = $this->getCodex();
+		$codex = $this->newCodex();
 		$mentorUser = $this->getMentor()->getUserIdentity();
 		$mentorName = $mentorUser->getName();
 
@@ -457,7 +457,7 @@ class Mentorship extends BaseModule {
 			'section' => 'new',
 			'preloadtitle' => $this->getQuestionSubject(),
 		] );
-		return $this->getCodex()->button()
+		return $this->newCodex()->button()
 			->setLabel(
 				$this->msg( self::MSG_PREFIX . 'question-button' )
 					->params( $this->getMentorName(), $this->getUser()->getName() )
@@ -468,7 +468,7 @@ class Mentorship extends BaseModule {
 			->getHtml();
 	}
 
-	private function getCodex(): Codex {
+	private function newCodex(): Codex {
 		return new Codex( new MediaWikiLocalization( $this->getContext() ) );
 	}
 
