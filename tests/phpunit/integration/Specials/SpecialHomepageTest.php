@@ -115,6 +115,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$readingRecommendations = $homepageModules[ReadingRecommendations::MODULE_ID];
 		$this->assertSame( [], $readingRecommendations['recommendations'] );
 		$this->assertFalse( $readingRecommendations['hasInterests'] );
+		$this->assertTrue( $jsConfigVars['wgGEEarlyOnboardingTreatment'] );
 	}
 
 	/**
@@ -175,8 +176,11 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( false );
 		$this->setService( 'GrowthExperimentsFeatureManager', $featureManager );
 
-		$response = $this->executeSpecialPage( '', null, null, $user );
+		$context = RequestContext::getMain();
+		$context->setAuthority( $user );
+		$response = $this->executeSpecialPage( context: $context );
 		$this->assertStringNotContainsString( 'reading-recommendations', $response[0] );
+		$this->assertFalse( $context->getOutput()->getJsConfigVars()['wgGEEarlyOnboardingTreatment'] );
 	}
 
 	public function testReadingRecommendationsModuleIsLaterWhenUserSelectsEditingOnDesktop() {

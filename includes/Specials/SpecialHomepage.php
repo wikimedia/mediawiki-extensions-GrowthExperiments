@@ -123,9 +123,8 @@ class SpecialHomepage extends SpecialPage {
 		$this->isMobile = Util::isMobile( $out->getSkin() );
 
 		$user = $this->getUser();
-		if (
-			$this->featureManager->isEarlyOnboardingExperimentTreatment( $user )
-		) {
+		$isEarlyOnboardingTreatment = $this->featureManager->isEarlyOnboardingExperimentTreatment( $user );
+		if ( $isEarlyOnboardingTreatment ) {
 			$out->addJsConfigVars(
 				'wgGENewcomerTasksMaxInterestsForQueries',
 				$this->getConfig()->get( 'GENewcomerTasksMaxInterestsForQueries' )
@@ -159,6 +158,9 @@ class SpecialHomepage extends SpecialPage {
 
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
+			// The client must not read the Test Kitchen assignment for this decision.
+			// When GEEarlyOnboardingScaled is true, the assignment is not the source of truth.
+			'wgGEEarlyOnboardingTreatment' => $isEarlyOnboardingTreatment,
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();
@@ -182,7 +184,7 @@ class SpecialHomepage extends SpecialPage {
 			}
 		} else {
 			$mode = IDashboardModule::RENDER_DESKTOP;
-			if ( !$this->featureManager->isEarlyOnboardingExperimentTreatment( $user ) ) {
+			if ( !$isEarlyOnboardingTreatment ) {
 				Util::maybeAddGuidedTour(
 					$out,
 					TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME,

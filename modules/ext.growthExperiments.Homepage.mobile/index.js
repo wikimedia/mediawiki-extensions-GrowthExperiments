@@ -123,11 +123,9 @@ const mobile = require( 'mobile.startup' );
 	/**
 	 * Show welcome drawer for users who haven't already seen it.
 	 */
-	async function maybeShowWelcomeDrawer() {
-		const earlyOnboardingExperiment = await mw.tk.getExperiment(
-			'de-1-3-1-specialhomepage-onboarding-ab-test',
-		);
-		if ( earlyOnboardingExperiment && earlyOnboardingExperiment.isAssignedGroup( 'treatment' ) ) {
+	function maybeShowWelcomeDrawer() {
+		// The server decides the early onboarding group. It also respects GEEarlyOnboardingScaled.
+		if ( mw.config.get( 'wgGEEarlyOnboardingTreatment' ) ) {
 			return;
 		}
 
