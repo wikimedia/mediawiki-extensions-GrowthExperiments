@@ -385,8 +385,9 @@ module.exports = exports = defineComponent( {
 				instrumentation.sendClick( 'module_suggested_edits_option_types_done' );
 			},
 			// The dialog saves the interests, and the API reads them for itself, so the
-			// feed only has to ask again.
-			onInterestsSaved: () => {
+			// feed only has to ask again. Start the load now, so that the feed shows the
+			// loading cards immediately. The feed waits for the save before it asks.
+			onInterestsSaved: ( saving ) => {
 				// Only display the interests popover if saving interests removes the interests notice.
 				selectedInterestCount.value = newcomerTasks.filters.getSelectedInterests().length;
 				popoverPending = showInterestsNotice.value;
@@ -396,7 +397,7 @@ module.exports = exports = defineComponent( {
 					hideInterestsNotice();
 					possiblyShowPopover();
 				}
-				load( FULL_LIMIT ).then( () => {
+				load( FULL_LIMIT, saving ).then( () => {
 					sendModuleShownOnceWhenVisible();
 				} );
 				instrumentation.sendClick( 'module_suggested_edits_option_interests_done' );

@@ -123,11 +123,13 @@ module.exports = exports = defineComponent( {
 		 * Store the selection, report it and close the dialog.
 		 *
 		 * The caller rebuilds its own suggestions, because the dashboard island and the
-		 * Homepage module hold different ones. "saved" waits on the save: the caller asks
-		 * the API without any interests, so that it reads the ones just stored and can cache
-		 * the result, and that only works once the preference is written. The store is
-		 * updated before the dialog closes, so that dismissing it afterwards has nothing to
-		 * discard.
+		 * Homepage module hold different ones. "saved" does not wait for the save, so that
+		 * the caller can show that it loads immediately. It gives the caller a promise for
+		 * the save. The caller asks the API without any interests, so that the API reads the
+		 * ones just stored and can cache the result. Thus, the caller must wait for the
+		 * promise before it asks. The promise resolves also when the save fails. This dialog
+		 * logs the failure. The store is updated before the dialog closes, so that dismissing
+		 * it afterwards has nothing to discard.
 		 */
 		function saveSelection() {
 			const interests = chips.value.map( ( chip ) => chip.value );
@@ -137,14 +139,13 @@ module.exports = exports = defineComponent( {
 				// reading the interests sees the new selection without reloading the page.
 				filtersStore.setSelectedInterests( interests );
 				mw.user.options.set( INTERESTS_PREF, prefValue );
-				new mw.Api().saveOption( INTERESTS_PREF, prefValue ).then(
-					() => emit( 'saved' ),
-				).catch( ( error ) => {
+				const saving = new mw.Api().saveOption( INTERESTS_PREF, prefValue ).catch( ( error ) => {
 					mw.errorLogger.logError(
 						new Error( 'Unable to save selected interests: ' + error ),
 						'error.growthexperiments',
 					);
 				} );
+				emit( 'saved', saving );
 			}
 			wrappedOpen.value = false;
 		}

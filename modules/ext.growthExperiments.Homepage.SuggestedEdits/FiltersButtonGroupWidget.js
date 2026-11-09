@@ -53,8 +53,11 @@ function getInterestSelectorOpenRef() {
 				interestSelectorOpen.value = value;
 			},
 			// The dialog stores the selection but rebuilds no suggestions, because each
-			// of its callers holds its own. This one holds the module's task queue.
-			onSaved: () => rootStore.newcomerTasks.fetchTasks( 'interestSelectorDialog.saveSelection' ),
+			// of its callers holds its own. This one holds the module's task queue. The
+			// queue reads the stored interests, so wait for the save before it asks.
+			onSaved: ( saving ) => saving.then(
+				() => rootStore.newcomerTasks.fetchTasks( 'interestSelectorDialog.saveSelection' ),
+			),
 		} ),
 	} ).mount( mountPoint );
 	// The selector is mounted on the body rather than inside the mobile overlay, so closing

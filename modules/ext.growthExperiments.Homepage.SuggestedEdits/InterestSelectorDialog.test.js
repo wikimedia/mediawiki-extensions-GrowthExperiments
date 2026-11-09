@@ -3,8 +3,8 @@
 /*
  * CodexModule generates codex.js at ResourceLoader time, and CLiveRegion.vue and
  * InterestSelector.vue are mapped in from another directory, so none of them exist here on
- * disk for jest to resolve. The interest selector is stubbed: these tests only cover the
- * article count.
+ * disk for jest to resolve. The interest selector is stubbed: these tests change the
+ * selection through its v-model.
  */
 jest.mock( './codex.js', () => require( '@wikimedia/codex' ), { virtual: true } );
 jest.mock( './CLiveRegion.vue', () => require( '../vue-components/CLiveRegion.vue' ), { virtual: true } );
@@ -16,12 +16,14 @@ jest.mock( './InterestSelector.vue', () => ( {
 } ), { virtual: true } );
 
 const mockFetchTasks = jest.fn();
+const mockFilters = {
+	getSelectedInterests: jest.fn(),
+	getTaskTypesQuery: () => [],
+	setSelectedInterests: jest.fn(),
+};
 jest.mock( 'ext.growthExperiments.DataStore', () => ( {
 	newcomerTasks: {
-		filters: {
-			getSelectedInterests: () => [ 'Botany' ],
-			getTaskTypesQuery: () => [],
-		},
+		filters: mockFilters,
 		api: { fetchTasks: mockFetchTasks },
 	},
 } ), { virtual: true } );
@@ -56,15 +58,30 @@ function makeRequest() {
 }
 
 describe( 'InterestSelectorDialog', () => {
-	let firstRequest, wrapper;
+	let firstRequest, wrapper, saveOption, originalApi, originalUser, originalErrorLogger;
 
 	beforeEach( () => {
 		firstRequest = makeRequest();
-		mockFetchTasks.mockReset().mockReturnValueOnce( firstRequest.request );
+		// Later count requests do not finish, unless a test sets them.
+		mockFetchTasks.mockReset()
+			.mockImplementation( () => makeRequest().request )
+			.mockReturnValueOnce( firstRequest.request );
+		mockFilters.getSelectedInterests.mockReset().mockReturnValue( [ 'Botany' ] );
+		mockFilters.setSelectedInterests.mockReset();
+		saveOption = jest.fn();
+		originalApi = mw.Api;
+		originalUser = mw.user;
+		originalErrorLogger = mw.errorLogger;
+		mw.Api = jest.fn( () => ( { saveOption } ) );
+		mw.user = Object.assign( {}, originalUser, { options: { set: jest.fn() } } );
+		mw.errorLogger = { logError: jest.fn() };
 	} );
 
 	afterEach( () => {
 		wrapper.unmount();
+		mw.Api = originalApi;
+		mw.user = originalUser;
+		mw.errorLogger = originalErrorLogger;
 	} );
 
 	// CdxDialog changes the elements around it when it opens and closes, so it needs a
@@ -158,6 +175,79 @@ describe( 'InterestSelectorDialog', () => {
 			await wrapper.setProps( { open: true } );
 
 			expect( wrapper.find( textSelector ).text() ).toBe( findingMessage );
+		} );
+	} );
+
+	/**
+	 * @param {string[]} titles
+	 */
+	async function select( titles ) {
+		wrapper.findComponent( { name: 'InterestSelector' } ).vm.$emit(
+			'update:chips',
+			titles.map( ( title ) => ( { label: title, value: title } ) ),
+		);
+		await flushPromises();
+	}
+
+	async function clickDone() {
+		await wrapper.find( '.cdx-dialog__footer__primary-action' ).trigger( 'click' );
+	}
+
+	describe( 'when the user clicks Done', () => {
+		it( 'reports the save and closes before the save ends', async () => {
+			saveOption.mockReturnValue( $.Deferred().promise() );
+			await mountOpenDialog();
+			await select( [ 'Botany', 'Geology' ] );
+
+			await clickDone();
+
+			expect( mockFilters.setSelectedInterests ).toHaveBeenCalledWith( [ 'Botany', 'Geology' ] );
+			expect( wrapper.emitted( 'saved' ) ).toHaveLength( 1 );
+			expect( wrapper.emitted( 'update:open' ) ).toEqual( [ [ false ] ] );
+		} );
+
+		it( 'gives a promise that resolves when the save ends', async () => {
+			let endSave;
+			saveOption.mockReturnValue( new Promise( ( resolve ) => {
+				endSave = resolve;
+			} ) );
+			await mountOpenDialog();
+			await select( [ 'Geology' ] );
+			await clickDone();
+			const saving = wrapper.emitted( 'saved' )[ 0 ][ 0 ];
+			const resolved = jest.fn();
+			saving.then( resolved );
+
+			await flushPromises();
+			expect( resolved ).not.toHaveBeenCalled();
+
+			endSave( {} );
+			await flushPromises();
+			expect( resolved ).toHaveBeenCalled();
+		} );
+
+		it( 'gives a promise that resolves when the save fails, and logs the failure', async () => {
+			saveOption.mockRejectedValue( 'http' );
+			await mountOpenDialog();
+			await select( [ 'Geology' ] );
+			await clickDone();
+			const resolved = jest.fn();
+
+			wrapper.emitted( 'saved' )[ 0 ][ 0 ].then( resolved );
+			await flushPromises();
+
+			expect( resolved ).toHaveBeenCalled();
+			expect( mw.errorLogger.logError ).toHaveBeenCalled();
+		} );
+
+		it( 'does not save or report when the selection did not change', async () => {
+			await mountOpenDialog();
+
+			await clickDone();
+
+			expect( saveOption ).not.toHaveBeenCalled();
+			expect( wrapper.emitted( 'saved' ) ).toBeUndefined();
+			expect( wrapper.emitted( 'update:open' ) ).toEqual( [ [ false ] ] );
 		} );
 	} );
 } );

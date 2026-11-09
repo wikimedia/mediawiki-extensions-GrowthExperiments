@@ -164,12 +164,23 @@ describe( 'App interests notice', () => {
 		mockLoad.mockClear();
 		mockFilters.getSelectedInterests.mockReturnValue( [ 'Dandelion' ] );
 
-		interestSelector( wrapper ).vm.$emit( 'saved' );
+		interestSelector( wrapper ).vm.$emit( 'saved', Promise.resolve() );
 		await wrapper.vm.$nextTick();
 
 		expect( wrapper.find( '.growthexperiments-interests-notice' ).exists() ).toBe( false );
-		expect( mockLoad ).toHaveBeenCalledWith( 20 );
+		expect( mockLoad ).toHaveBeenCalledWith( 20, expect.any( Promise ) );
 		expect( mockSaveOption ).not.toHaveBeenCalled();
+	} );
+
+	it( 'reloads the feed immediately, and gives it the save to wait for', () => {
+		const wrapper = mountApp( null );
+		mockLoad.mockClear();
+		// The save does not end in this test.
+		const saving = new Promise( () => {} );
+
+		interestSelector( wrapper ).vm.$emit( 'saved', saving );
+
+		expect( mockLoad ).toHaveBeenCalledWith( 20, saving );
 	} );
 
 	// The dialog reports each exit ("Done", "Cancel", the close button, Esc) as

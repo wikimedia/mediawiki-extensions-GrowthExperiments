@@ -23,11 +23,16 @@ let lastItems = [];
  * Fetch the viewer's suggested edits, most relevant first.
  *
  * @param {number} limit Maximum number of items to return
+ * @param {jQuery.Promise|Promise} [ready] Wait for this promise before the query. Use it
+ *  when a filter preference is still being saved, because the API reads the stored
+ *  preference. The feed shows that it loads while it waits. The promise must not reject.
  * @return {Promise<Object[]>} Feed items
  * @throws {Error} If the task query fails
  */
-async function fetchSuggestedEdits( limit ) {
+async function fetchSuggestedEdits( limit, ready ) {
 	let result;
+
+	await ready;
 
 	try {
 		/*
