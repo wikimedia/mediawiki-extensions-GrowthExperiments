@@ -12,7 +12,6 @@ use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Page\ProperPageIdentity;
-use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -21,8 +20,7 @@ use MediaWiki\User\UserIdentity;
  */
 class LevelingUpHooks implements
 	BeforePageDisplayHook,
-	VisualEditorApiVisualEditorEditPostSaveHook,
-	UserGetDefaultOptionsHook
+	VisualEditorApiVisualEditorEditPostSaveHook
 {
 
 	private Config $config;
@@ -165,12 +163,6 @@ class LevelingUpHooks implements
 		$icons['growthexperiments-addalink-milestone'] = [
 			'path' => 'GrowthExperiments/images/addalink-milestone.svg',
 		];
-	}
-
-	/** @inheritDoc */
-	public function onUserGetDefaultOptions( &$defaultOptions ) {
-		$defaultOptions['echo-subscriptions-email-ge-newcomer'] = true;
-		$defaultOptions['echo-subscriptions-web-ge-newcomer'] = true;
 	}
 
 }

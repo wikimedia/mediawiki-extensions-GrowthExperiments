@@ -594,15 +594,6 @@
 		"SpecialPageBeforeExecute": [
 			"welcomeSurvey"
 		],
-		"UserGetDefaultOptions": [
-			"helppanel",
-			"homepage",
-			"mentordashboard",
-			"mentoruseroptions",
-			"personalizedpraise",
-			"tour",
-			"levelingup"
-		],
 		"UserGetRights": "mentor",
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
 		"VisualEditorApiVisualEditorEditPostSave": [
@@ -3342,6 +3333,32 @@
 			"description": "The maximum number of user-provided interests to take into account when fetching new tasks with 'morelikethis:'. This will momentarily cause more queries due to the cache being invalidated for them, but should over time soften the load on the search cluster. See also GENewcomerTasksInterestBasedTaskPoolSize config option.",
 			"value": 10
 		}
+	},
+	"DefaultUserOptions": {
+		"growthexperiments-help-panel-tog-help-panel": false,
+		"homepage_mobile_discovery_notice_seen": true,
+		"growthexperiments-homepage-suggestededits-guidance-blue-dot": "{\"vector\":{\"link-recommendation\":true,\"image-recommendation\":true},\"minerva\":{\"link-recommendation\":true,\"image-recommendation\":true}}",
+		"growthexperiments-homepage-se-topic-filters-mode": "OR",
+		"growthexperiments-homepage-enable": false,
+		"growthexperiments-homepage-pt-link": false,
+		"growthexperiments-home-intro-seen": false,
+		"growthexperiments-home-interests-notice-interacted": false,
+		"growthexperiments-home-interests-popover-dismissed": false,
+		"growthexperiments-starred-mentees": "",
+		"growthexperiments-mentor-dashboard-seen": 0,
+		"growthexperiments-mentor-dashboard-last-update": null,
+		"growthexperiments-mentee-overview-presets": "{\"usersToShow\":10,\"filters\":{\"minedits\":1,\"maxedits\":500}}",
+		"growthexperiments-homepage-mentorship-enabled": 1,
+		"growthexperiments-personaldashboard-mentorship-preintro-dismissed": 0,
+		"growthexperiments-mentorship-was-praised": false,
+		"growthexperiments-personalized-praise-skipped-until": null,
+		"growthexperiments-personalized-praise-settings": "{}",
+		"growthexperiments-tour-help-panel": true,
+		"growthexperiments-tour-homepage-mentorship": true,
+		"growthexperiments-tour-homepage-welcome": true,
+		"growthexperiments-tour-homepage-discovery": true,
+		"echo-subscriptions-email-ge-newcomer": true,
+		"echo-subscriptions-web-ge-newcomer": true
 	},
 	"SpecialPages": {
 		"MentorDashboard": {

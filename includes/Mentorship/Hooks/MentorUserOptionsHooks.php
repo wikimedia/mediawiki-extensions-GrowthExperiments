@@ -7,7 +7,6 @@ use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
-use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 
 /**
  * Mentorship-related hooks that touch user-preferences
@@ -17,7 +16,6 @@ use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
  */
 class MentorUserOptionsHooks implements
 	GetPreferencesHook,
-	UserGetDefaultOptionsHook,
 	ResourceLoaderExcludeUserOptionsHook
 {
 
@@ -37,16 +35,6 @@ class MentorUserOptionsHooks implements
 		];
 		$preferences[ self::PREINTRO_DISMISSED_PREF ] = [
 			'type' => 'api',
-		];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function onUserGetDefaultOptions( &$defaultOptions ) {
-		$defaultOptions += [
-			MentorManager::MENTORSHIP_ENABLED_PREF => MentorManager::MENTORSHIP_ENABLED,
-			self::PREINTRO_DISMISSED_PREF => 0,
 		];
 	}
 

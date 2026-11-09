@@ -18,14 +18,12 @@ use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
-use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use MediaWiki\User\UserEditTracker;
 
 class HelpPanelHooks implements
 	GetPreferencesHook,
-	UserGetDefaultOptionsHook,
 	ResourceLoaderExcludeUserOptionsHook,
 	LocalUserCreatedHook,
 	BeforePageDisplayHook,
@@ -72,17 +70,6 @@ class HelpPanelHooks implements
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
 		$preferences[HelpdeskQuestionPoster::QUESTION_PREF] = [ 'type' => 'api' ];
-	}
-
-	/**
-	 * Register default preferences for Help Panel.
-	 *
-	 * @param array &$defaultOptions
-	 */
-	public function onUserGetDefaultOptions( &$defaultOptions ) {
-		$defaultOptions += [
-			self::HELP_PANEL_PREFERENCES_TOGGLE => false,
-		];
 	}
 
 	/** @inheritDoc */

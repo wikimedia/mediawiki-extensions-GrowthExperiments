@@ -21,11 +21,9 @@ use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\UnderlinkedFunctionScoreBuilder;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
@@ -84,7 +82,6 @@ use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\Hook\ConfirmEmailCompleteHook;
-use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
@@ -108,7 +105,6 @@ class HomepageHooks implements
 	SkinTemplateNavigation__UniversalHook,
 	SidebarBeforeOutputHook,
 	GetPreferencesHook,
-	UserGetDefaultOptionsHook,
 	ResourceLoaderExcludeUserOptionsHook,
 	LocalUserCreatedHook,
 	ListDefinedTagsHook,
@@ -778,36 +774,6 @@ class HomepageHooks implements
 				'type' => 'api',
 			];
 		}
-	}
-
-	/**
-	 * Register defaults for homepage-related preferences.
-	 *
-	 * @param array &$defaultOptions
-	 */
-	public function onUserGetDefaultOptions( &$defaultOptions ) {
-		$defaultOptions += [
-			// Set discovery notice seen flag to true; it will be changed for new users in the
-			// LocalUserCreated hook.
-			self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN => true,
-			// Disable blue dot on Edit tab for link-recommendation tasks.
-			SuggestedEdits::GUIDANCE_BLUE_DOT_PREF => json_encode( [
-				'vector' => [
-					LinkRecommendationTaskTypeHandler::ID => true,
-					ImageRecommendationTaskTypeHandler::ID => true,
-				],
-				'minerva' => [
-					LinkRecommendationTaskTypeHandler::ID => true,
-					ImageRecommendationTaskTypeHandler::ID => true,
-				],
-			] ),
-			SuggestedEdits::TOPICS_MATCH_MODE_PREF => SearchStrategy::TOPIC_MATCH_MODE_OR,
-			self::HOMEPAGE_PREF_ENABLE => false,
-			self::HOMEPAGE_PREF_PT_LINK => false,
-			HomeOnboardingActionLookup::INTRO_SEEN_PREF => false,
-			HomeOnboardingActionLookup::INTERESTS_NOTICE_INTERACTED_PREF => false,
-			HomeOnboardingActionLookup::INTERESTS_POPOVER_DISMISSED_PREF => false,
-		];
 	}
 
 	/** @inheritDoc */

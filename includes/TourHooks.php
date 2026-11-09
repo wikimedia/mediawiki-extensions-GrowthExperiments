@@ -11,14 +11,12 @@ use MediaWiki\Request\WebRequest;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\Skin\Hook\SiteNoticeAfterHook;
-use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\Options\UserOptionsLookup;
 
 class TourHooks implements
 	BeforePageDisplayHook,
 	ResourceLoaderRegisterModulesHook,
 	GetPreferencesHook,
-	UserGetDefaultOptionsHook,
 	SiteNoticeAfterHook
 {
 
@@ -212,30 +210,6 @@ class TourHooks implements
 			];
 			$preferences[self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY] = [
 				'type' => 'api',
-			];
-		}
-	}
-
-	/**
-	 * Register default preferences for tours.
-	 *
-	 * Default is to set their visibility to true (seen), and in the LocalUserCreated
-	 * hook we'll set these preferences back to false (unseen).
-	 *
-	 * @inheritDoc
-	 */
-	public function onUserGetDefaultOptions( &$defaultOptions ) {
-		if ( !self::growthTourDependenciesLoaded() ) {
-			return;
-		}
-		$defaultOptions += [
-			self::TOUR_COMPLETED_HELP_PANEL => true,
-		];
-		if ( HomepageHooks::isHomepageEnabled() ) {
-			$defaultOptions += [
-				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => true,
-				self::TOUR_COMPLETED_HOMEPAGE_WELCOME => true,
-				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY => true,
 			];
 		}
 	}

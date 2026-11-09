@@ -7,15 +7,12 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\Modules\MenteeOverview;
 use MediaWiki\ChangeTags\ChangeTags;
-use MediaWiki\Json\FormatJson;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderExcludeUserOptionsHook;
-use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 
 class MentorDashboardHooks implements
 	GetPreferencesHook,
-	UserGetDefaultOptionsHook,
 	ResourceLoaderExcludeUserOptionsHook
 {
 	/**
@@ -33,25 +30,6 @@ class MentorDashboardHooks implements
 		];
 		$preferences[ MenteeOverview::PRESETS_PREF ] = [
 			'type' => 'api',
-		];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function onUserGetDefaultOptions( &$defaultOptions ) {
-		// This is here to make use of the constant
-		$defaultOptions += [
-			StarredMenteesStore::STARRED_MENTEES_PREFERENCE => '',
-			MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 0,
-			MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE => null,
-			MenteeOverview::PRESETS_PREF => FormatJson::encode( [
-				'usersToShow' => 10,
-				'filters' => [
-					'minedits' => 1,
-					'maxedits' => 500,
-				],
-			] ),
 		];
 	}
 
