@@ -198,7 +198,6 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new CampaignConfig(
 			$growthServices->getGrowthConfig()->get( 'GECampaigns' ) ?? [],
-			$growthServices->getGrowthConfig()->get( 'GECampaignTopics' ) ?? [],
 			$services->getUserOptionsLookup()
 		);
 	},
@@ -1320,16 +1319,10 @@ return [
 		MediaWikiServices $services
 	): ITopicRegistry {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikimediaMessages' ) ) {
-			$growthServices = GrowthExperimentsServices::wrap( $services );
-			$registry = new WikimediaTopicRegistry(
+			return new WikimediaTopicRegistry(
 				RequestContext::getMain(),
 				$services->getCollationFactory()
 			);
-			$registry->setCampaignConfigCallback( static function () use ( $growthServices ) {
-				return $growthServices->getGrowthExperimentsCampaignConfig();
-			} );
-
-			return $registry;
 		}
 		return new StaticTopicRegistry();
 	},

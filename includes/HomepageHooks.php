@@ -14,7 +14,6 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
 use GrowthExperiments\Mentorship\IMentorManager;
 use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\Recommendation;
@@ -150,7 +149,6 @@ class HomepageHooks implements
 		private JobQueueGroup $jobQueueGroup,
 		FormatterFactory $formatterFactory,
 		private ConfigurationLoader $configurationLoader,
-		private CampaignConfig $campaignConfig,
 		private TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		private TaskSuggesterFactory $taskSuggesterFactory,
 		private TaskSetFiltersFactory $taskSetFiltersFactory,
@@ -459,14 +457,9 @@ class HomepageHooks implements
 			}
 		}
 
-		// Config vars used to modify the suggested edits topics based on campaign
-		// (see ext.growthExperiments.Homepage.SuggestedEdits/Topics.js)
 		if ( ( !$skin->getTitle() || $skin->getTitle()->isSpecial( 'Homepage' ) ) &&
 			SuggestedEdits::isEnabledForAnyone( $context->getConfig() ) ) {
 			$out->addJsConfigVars( [
-				'wgGETopicsToExclude' => $this->campaignConfig->getTopicsToExcludeForUser(
-					$context->getUser()
-				),
 				'wgGETopicsMatchModeEnabled' => $this->config->get( 'GETopicsMatchModeEnabled' ),
 			] );
 		}

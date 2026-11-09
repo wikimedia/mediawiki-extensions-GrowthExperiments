@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests\Unit;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
-use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
@@ -143,11 +142,9 @@ class SuggestedEditsTest extends MediaWikiUnitTestCase {
 		$imageRecommendationFilter = new ImageRecommendationFilter(
 			$this->createMock( WANObjectCache::class )
 		);
-		$campaignConfig = new CampaignConfig( [] );
 		return new class(
 			$contextMock,
 			GlobalVarConfig::newInstance(),
-			$campaignConfig,
 			$pageViewServiceMock,
 			$staticConfigLoader,
 			$newcomerTasksUserOptionsLookupMock,

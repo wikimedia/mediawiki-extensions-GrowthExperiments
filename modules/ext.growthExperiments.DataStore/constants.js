@@ -16,7 +16,7 @@ module.exports = {
 	/** @property {Object} DEFAULT_TASK_TYPES Default task types for the user */
 	DEFAULT_TASK_TYPES: TaskTypesAbFilter.getDefaultTaskTypes(),
 	/** @property {Object} TOPIC_DATA All topics available to the user */
-	TOPIC_DATA: require( './Topics.js' ),
+	TOPIC_DATA: require( './Topics.json' ),
 	EVENTS: {
 		FILTER_SELECTION_CHANGED: 'filterSelectionChanged',
 		TASK_QUEUE_CHANGED: 'taskQueueChanged',

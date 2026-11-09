@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TemplateBasedTaskSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use MediaWiki\Title\TitleParser;
@@ -31,8 +30,6 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 			[], [ new TitleValue( NS_TEMPLATE, 'Copyedit' ) ], [ new TitleValue( NS_TEMPLATE, 'DontCopyedit' ) ] );
 		$oresTopic1 = new OresBasedTopic( 'art', 'culture', [ 'painting', 'drawing' ] );
 		$oresTopic2 = new OresBasedTopic( 'science', 'stem', [ 'physics', 'biology' ] );
-		$campaignTopic1 = new CampaignTopic( 'biology', 'hastemplate:Taxobox' );
-		$campaignTopic2 = new CampaignTopic( 'argentina', 'hastemplate:Argentina' );
 
 		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
@@ -58,16 +55,6 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:painting|drawing|physics|biology ' .
 			'pageid:1|2|3',
 		] );
-
-		$searchExpressionBasedTopicQueries = $searchStrategy->getQueries( [ $taskType ],
-			[ $campaignTopic1, $campaignTopic2 ] );
-		$this->assertCount( 2, $searchExpressionBasedTopicQueries );
-		$this->assertTaskTypeInQueries( $searchExpressionBasedTopicQueries, [ 'copyedit' ] );
-		$this->assertTopicsInQueries( $searchExpressionBasedTopicQueries, [ 'biology', 'argentina' ] );
-		$this->assertQueryStrings( $searchExpressionBasedTopicQueries, [
-			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" hastemplate:Taxobox',
-			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" hastemplate:Argentina',
-		] );
 	}
 
 	public function testGetQueriesAll() {
@@ -75,7 +62,6 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$taskType2 = new TaskType( 'image-recommendation', TaskType::DIFFICULTY_MEDIUM );
 		$oresTopic1 = new OresBasedTopic( 'literature', 'culture', [ 'literature', 'books' ] );
 		$oresTopic2 = new OresBasedTopic( 'music', 'culture', [ 'music' ] );
-		$campaignTopic = new CampaignTopic( 'argentina', 'growtharticle:argentina' );
 
 		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
@@ -90,7 +76,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 
 		$queries = $searchStrategy->getQueries(
 			[ $taskType1, $taskType2 ],
-			[ $campaignTopic, $oresTopic1, $oresTopic2 ],
+			[ $oresTopic1, $oresTopic2 ],
 			null,
 			null,
 			SearchStrategy::TOPIC_MATCH_MODE_AND
@@ -98,10 +84,10 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 
 		$this->assertCount( 2, $queries );
 		$this->assertTaskTypeInQueries( $queries, [ 'link-recommendation', 'image-recommendation' ] );
-		$this->assertIntersectionTopicsInQueries( $queries, [ 'literature', 'music', 'argentina' ] );
+		$this->assertIntersectionTopicsInQueries( $queries, [ 'literature', 'music' ] );
 		$this->assertQueryStrings( $queries, [
-			'hasrecommendation:image growtharticle:argentina articletopic:literature|books articletopic:music',
-			'hasrecommendation:link growtharticle:argentina articletopic:literature|books articletopic:music',
+			'hasrecommendation:image articletopic:literature|books articletopic:music',
+			'hasrecommendation:link articletopic:literature|books articletopic:music',
 		] );
 	}
 

@@ -6,7 +6,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\Util;
-use GrowthExperiments\NewcomerTasks\Topic\CampaignTopic;
 use GrowthExperiments\NewcomerTasks\Topic\InterestBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -134,8 +133,7 @@ class SearchStrategy {
 	 */
 	protected function validateParams( array $taskTypes, array $topics ) {
 		Assert::parameterElementType( TaskType::class, $taskTypes, '$taskTypes' );
-		Assert::parameterElementType( [ OresBasedTopic::class, CampaignTopic::class,
-			InterestBasedTopic::class ], $topics, '$topics' );
+		Assert::parameterElementType( [ OresBasedTopic::class, InterestBasedTopic::class ], $topics, '$topics' );
 		$interestTopicCount = count( array_filter( $topics, static function ( $topic ) {
 			return $topic instanceof InterestBasedTopic;
 		} ) );
@@ -163,36 +161,11 @@ class SearchStrategy {
 		$topicTerm = null;
 		if ( $topic instanceof OresBasedTopic ) {
 			$topicTerm = $this->getOresBasedTopicTerm( [ $topic ] );
-		} elseif ( $topic instanceof CampaignTopic ) {
-			$topicTerm = $topic->getSearchExpression();
 		} elseif ( $topic instanceof InterestBasedTopic ) {
 			// A single title per query: interest queries are never pipe-merged.
 			$topicTerm = 'morelikethis:' . Util::escapeSearchTitleList( [ $topic->getTitle() ] );
 		}
 		return $topicTerm;
-	}
-
-	/**
-	 * @param Topic[] $topics
-	 * @return string|null
-	 */
-	protected function getTopicsTerms( array $topics ): ?string {
-		$topicsByType = [ [], [] ];
-		foreach ( $topics as $topic ) {
-			if ( $topic instanceof OresBasedTopic ) {
-				array_push( $topicsByType[0], $topic );
-			} elseif ( $topic instanceof CampaignTopic ) {
-				array_push( $topicsByType[1], $topic->getSearchExpression() );
-			}
-		}
-		$terms = [];
-		if ( count( $topicsByType[0] ) > 0 ) {
-			array_push( $terms, $this->getOresBasedTopicTerm( $topicsByType[0] ) );
-		}
-		if ( count( $topicsByType[1] ) > 0 ) {
-			array_push( $terms, implode( ' ', $topicsByType[1] ) );
-		}
-		return implode( ' ', $terms );
 	}
 
 	private function getPageIdTerm( array $pageIds ): string {
@@ -276,7 +249,7 @@ class SearchStrategy {
 	): SearchQuery {
 		$topicTerm = '';
 		if ( $topics[0] !== null ) {
-			$topicTerm = $this->getTopicsTerms( $topics );
+			$topicTerm = $this->getOresBasedTopicTerm( $topics );
 		}
 		$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
 			$pageIdTerm, $excludedPageIdTerm ] ) );

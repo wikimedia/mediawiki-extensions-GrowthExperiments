@@ -7,7 +7,6 @@ use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
 use GrowthExperiments\IExperimentManager;
-use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
@@ -139,7 +138,6 @@ class SuggestedEdits extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		private CampaignConfig $campaignConfig,
 		private ?PageViewService $pageViewService,
 		private ConfigurationLoader $configurationLoader,
 		private NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
@@ -619,11 +617,6 @@ class SuggestedEdits extends BaseModule {
 			// in the past, or null if they have never saved topics
 			$topicPreferences = $this->newcomerTasksUserOptionsLookup
 				->getTopicFilterWithoutFallback( $user );
-			$excludedTopics = $this->campaignConfig->getTopicsToExcludeForUser( $user );
-			// Filter out campaign-specific topics that are no longer available
-			if ( $topicPreferences && count( $excludedTopics ) ) {
-				$topicPreferences = array_diff( $topicPreferences, $excludedTopics );
-			}
 			$topicData = $this->topicRegistry->getTopicsMap();
 			$topicLabel = '';
 			$addPulsatingDot = false;

@@ -7,7 +7,6 @@ namespace GrowthExperiments\Tests\Helpers;
 use GrowthExperiments\FeatureManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\LevelingUp\LevelingUpManager;
-use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFiltersFactory;
@@ -50,7 +49,6 @@ trait HomepageHooksHelpers {
 			$this->createNoOpMock( JobQueueGroup::class ),
 			$this->createNoOpMock( FormatterFactory::class, [ 'getStatusFormatter' ] ),
 			$configurationLoaderMock ?? $this->createNoOpMock( ConfigurationLoader::class ),
-			$this->createNoOpMock( CampaignConfig::class ),
 			$this->createNoOpMock( TaskTypeHandlerRegistry::class ),
 			$taskSuggesterFactory ?? $this->createNoOpMock( TaskSuggesterFactory::class ),
 			$this->createNoOpMock( TaskSetFiltersFactory::class ),

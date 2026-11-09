@@ -181,8 +181,6 @@ class WikimediaTopicRegistry implements ITopicRegistry {
 	/** @var Topic[]|null */
 	private ?array $topics;
 
-	/** @var ?callable */
-	private $campaignConfigCallback;
 	private CollationFactory $collationFactory;
 	private MessageLocalizer $messageLocalizer;
 
@@ -230,13 +228,6 @@ class WikimediaTopicRegistry implements ITopicRegistry {
 
 		$this->sortTopics( $topics, self::GROWTH_ORES_TOPIC_GROUPS );
 
-		// FIXME T301030 remove when campaign is done.
-		$campaignTopics = array_map( static function ( $topic ) {
-			return new CampaignTopic( $topic[ 'id' ], $topic[ 'searchExpression' ] );
-		}, $this->getCampaignTopics() );
-
-		array_unshift( $topics, ...$campaignTopics );
-
 		$this->topics = $topics;
 
 		return $topics;
@@ -248,24 +239,6 @@ class WikimediaTopicRegistry implements ITopicRegistry {
 		return array_combine( array_map( static function ( Topic $topic ) {
 			return $topic->getId();
 		}, $topics ), $topics );
-	}
-
-	/**
-	 * Get campaign-specific topics
-	 */
-	private function getCampaignTopics(): array {
-		if ( is_callable( $this->campaignConfigCallback ) ) {
-			$getCampaignConfig = $this->campaignConfigCallback;
-			return $getCampaignConfig()->getCampaignTopics();
-		}
-		return [];
-	}
-
-	/**
-	 * Set the callback used to retrieve CampaignConfig, used to show campaign-specific topics
-	 */
-	public function setCampaignConfigCallback( callable $callback ) {
-		$this->campaignConfigCallback = $callback;
 	}
 
 	/**

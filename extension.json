@@ -354,7 +354,6 @@
 				"JobQueueGroup",
 				"FormatterFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
-				"GrowthExperimentsCampaignConfig",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsTaskSetFiltersFactory",
@@ -2823,7 +2822,6 @@
 				"ext.growthExperiments.DataStore/store.js",
 				"ext.growthExperiments.DataStore/GrowthTasksApi.js",
 				"ext.growthExperiments.DataStore/TaskTypesAbFilter.js",
-				"ext.growthExperiments.DataStore/Topics.js",
 				"ext.growthExperiments.DataStore/TopicFilters.js",
 				"ext.growthExperiments.DataStore/InterestFilters.js",
 				"ext.growthExperiments.DataStore/constants.js",
@@ -2943,7 +2941,6 @@
 			"modules/ext.growthExperiments.DataStore/InterestFilters.js",
 			"modules/ext.growthExperiments.DataStore/GrowthTasksApi.js",
 			"tests/qunit/ext.growthExperiments.DataStore/GrowthTasksApi.test.js",
-			"modules/ext.growthExperiments.DataStore/Topics.js",
 			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/FiltersButtonGroupWidget.test.js",
 			"modules/ui-components/SwipePane.js",
 			"tests/qunit/ext.growthExperiments.Homepage.SuggestedEdits/StartEditingDialog.test.js",
@@ -3280,11 +3277,7 @@
 			]
 		},
 		"GECampaigns": {
-			"description": "A map of campaign ID to campaign configuration. Campaign configuration currently includes these fields:\n* pattern: a regexp matched against the \"campaign\" request parameter during signup to determine whether the user should be included in some campaign\n* topics: an array of topic IDs (which are defined in GECampaignTopics) to include on the top of the topic selector as custom topics\n\nExamples can be found at https://www.mediawiki.org/wiki/Extension:GrowthExperiments/Technical_documentation/Special:EditGrowthConfig.",
-			"value": {}
-		},
-		"GECampaignTopics": {
-			"description": "Mapping of topic IDs to its search expression, used to show campaign-specific topics in the suggested edits module. Examples can be found at https://www.mediawiki.org/wiki/Extension:GrowthExperiments/Technical_documentation/Special:EditGrowthConfig.",
+			"description": "A map of campaign ID to campaign configuration. Campaign configuration currently includes these fields:\n* pattern: a regexp matched against the \"campaign\" request parameter during signup to determine whether the user should be included in some campaign\n\nExamples can be found at https://www.mediawiki.org/wiki/Extension:GrowthExperiments/Technical_documentation/Special:EditGrowthConfig.",
 			"value": {}
 		},
 		"WelcomeSurveyExperimentalGroups": {
