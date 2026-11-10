@@ -212,9 +212,15 @@ class LinkRecommendationUpdater {
 		// 2. the article must match size conditions.
 		$wordCount = preg_match_all( '/\w+/', $content->getText() );
 		if ( $wordCount < $this->getLinkRecommendationTaskType()->getMinimumWordCount() ) {
-			return $this->failure( "word count too small ($wordCount)" );
+			return $this->failure(
+				"word count too small ($wordCount)",
+				NotGoodCause::WORD_COUNT_TOO_SMALL
+			);
 		} elseif ( $wordCount > $this->getLinkRecommendationTaskType()->getMaximumWordCount() ) {
-			return $this->failure( "word count too large ($wordCount)" );
+			return $this->failure(
+				"word count too large ($wordCount)",
+				NotGoodCause::WORD_COUNT_TOO_LARGE
+			);
 		}
 
 		// 3. exclude articles which have been edited very recently.
@@ -294,7 +300,10 @@ class LinkRecommendationUpdater {
 	): StatusValue {
 		if ( $recommendation->getRevisionId() !== $revision->getId() ) {
 			// Some kind of race condition? Generating another task is easy so just discard this.
-			return $this->failure( 'revision ID mismatch' );
+			return $this->failure(
+				'revision ID mismatch',
+				NotGoodCause::REVISION_ID_MISMATCH
+			);
 		}
 
 		// T291253
@@ -305,7 +314,10 @@ class LinkRecommendationUpdater {
 				IDBAccessObject::READ_LATEST
 			)
 		) {
-			return $this->failure( 'submission already exists for revision ' . $revision->getId() );
+			return $this->failure(
+				'submission already exists for revision ' . $revision->getId(),
+				NotGoodCause::HAS_PRIOR_SUBMISSION
+			);
 		}
 
 		// We could check here for more race conditions, ie. whether the revision in the

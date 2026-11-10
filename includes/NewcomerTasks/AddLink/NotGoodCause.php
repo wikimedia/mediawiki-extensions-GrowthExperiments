@@ -39,6 +39,15 @@ enum NotGoodCause: string {
 	/** The page has a prior link recommendation submission. */
 	case HAS_PRIOR_SUBMISSION = 'has_prior_submission';
 
+	/** The page has less words than the task type needs. */
+	case WORD_COUNT_TOO_SMALL = 'word_count_too_small';
+
+	/** The page has more words than the task type allows. */
+	case WORD_COUNT_TOO_LARGE = 'word_count_too_large';
+
+	/** The recommendation is for a different revision than the current revision of the page. */
+	case REVISION_ID_MISMATCH = 'revision_id_mismatch';
+
 	/** No more specific cause applies. */
 	case OTHER = 'other';
 }

@@ -166,6 +166,44 @@ class LinkRecommendationUpdaterTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
+	public static function provideWordCountLimits(): iterable {
+		yield 'too small' => [
+			[ LinkRecommendationTaskType::FIELD_MIN_WORD_COUNT => 100 ],
+			NotGoodCause::WORD_COUNT_TOO_SMALL,
+		];
+		yield 'too large' => [
+			[ LinkRecommendationTaskType::FIELD_MAX_WORD_COUNT => 1 ],
+			NotGoodCause::WORD_COUNT_TOO_LARGE,
+		];
+	}
+
+	/**
+	 * @dataProvider provideWordCountLimits
+	 */
+	public function testProcessCandidateWordCount( array $settings, NotGoodCause $expectedCause ): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+
+		$page = $this->getExistingTestPage();
+
+		$fakeConfigLoader = new StaticConfigurationLoader( [
+			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => new LinkRecommendationTaskType(
+				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
+				TaskType::DIFFICULTY_EASY,
+				$settings,
+			),
+		] );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $fakeConfigLoader );
+
+		/** @var LinkRecommendationUpdater $updater */
+		$updater = $this->getServiceContainer()->getService( 'GrowthExperimentsLinkRecommendationUpdater' );
+
+		$actualProcessingStatus = $updater->processCandidate( $page );
+
+		$this->assertStatusNotOK( $actualProcessingStatus );
+		$this->assertInstanceOf( LinkRecommendationEvalStatus::class, $actualProcessingStatus );
+		$this->assertSame( $expectedCause, $actualProcessingStatus->getNotGoodCause() );
+	}
+
 	public function testProcessCandidateRecentlyEdited(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
 
