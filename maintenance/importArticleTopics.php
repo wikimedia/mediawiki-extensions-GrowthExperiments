@@ -116,7 +116,7 @@ class ImportArticleTopics extends Maintenance {
 		$this->weightedTagsUpdater = $cirrusSearchServices->getWeightedTagsUpdater();
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
-		$this->isBeta = preg_match( '/\.beta\.wmflabs\./', $this->getConfig()->get( 'Server' ) );
+		$this->isBeta = preg_match( '/\.beta\.wmcloud\./', $this->getConfig()->get( 'Server' ) );
 
 		$this->topicSource = $this->getOption( 'topicSource', self::TOPIC_SOURCE_PROD );
 		if ( !in_array( $this->topicSource, [ self::TOPIC_SOURCE_PROD, self::TOPIC_SOURCE_RANDOM ] ) ) {
@@ -268,7 +268,7 @@ class ImportArticleTopics extends Maintenance {
 	private function getApiUrl(): string {
 		$title = Title::newFromText( 'Title' );
 		$devUrl = $title->getFullURL();
-		$prodUrl = preg_replace( '/\.beta\.wmflabs\./', '.', $devUrl );
+		$prodUrl = preg_replace( '/\.beta\.wmcloud\./', '.', $devUrl );
 		if ( $devUrl === $prodUrl ) {
 			// Ensure we are not doing something unexpected, such as accidentally running in production
 			$this->fatalError( 'Could not guess production URL' );
