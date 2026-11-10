@@ -42,6 +42,7 @@ jest.mock( './WelcomeBackDialog.vue', () => ( {
 } ) );
 
 const mockLoad = jest.fn( () => Promise.resolve() );
+const mockMenuFocus = jest.fn();
 const mockFeedState = { items: [], isLoading: true, error: null };
 jest.mock( './useSuggestedEditsFeed.js', () => ( {
 	useSuggestedEditsFeed: () => ( {
@@ -65,6 +66,7 @@ jest.mock( 'ext.personalDashboard.common', () => ( {
 		name: 'ModuleHeaderMenu',
 		props: [ 'menuItems', 'footerItem', 'buttonLabel' ],
 		emits: [ 'select', 'button-click', 'menu-open' ],
+		methods: { focus: mockMenuFocus },
 		render() {
 			return this.$slots.default( { anchor: null } );
 		},
@@ -272,19 +274,8 @@ describe( 'App interests notice', () => {
 	} );
 
 	describe( 'focus after the notice goes', () => {
-		let menuButton;
-
 		beforeEach( () => {
-			// The module header that the server renders, with the menu button
-			// that the real ModuleHeaderMenu puts in it.
-			document.body.innerHTML =
-				'<div id="header"><div class="personal-dashboard-module-menu__button">' +
-				'<button class="cdx-button"></button></div></div>';
-			menuButton = document.querySelector( '#header .cdx-button' );
-		} );
-
-		afterEach( () => {
-			document.body.innerHTML = '';
+			mockMenuFocus.mockClear();
 		} );
 
 		it( 'moves the focus to the menu button when the user dismisses the notice', async () => {
@@ -293,7 +284,7 @@ describe( 'App interests notice', () => {
 			await wrapper.find( '.cdx-message__dismiss-button' ).trigger( 'click' );
 			await wrapper.vm.$nextTick();
 
-			expect( document.activeElement ).toBe( menuButton );
+			expect( mockMenuFocus ).toHaveBeenCalled();
 		} );
 
 		it( 'moves the focus to the menu button when the selector closes without interests', async () => {
@@ -303,7 +294,7 @@ describe( 'App interests notice', () => {
 			interestSelector( wrapper ).vm.$emit( 'update:open', false );
 			await wrapper.vm.$nextTick();
 
-			expect( document.activeElement ).toBe( menuButton );
+			expect( mockMenuFocus ).toHaveBeenCalled();
 		} );
 
 		it( 'moves the focus to the menu button when interests are saved', async () => {
@@ -313,7 +304,7 @@ describe( 'App interests notice', () => {
 			interestSelector( wrapper ).vm.$emit( 'saved' );
 			await wrapper.vm.$nextTick();
 
-			expect( document.activeElement ).toBe( menuButton );
+			expect( mockMenuFocus ).toHaveBeenCalled();
 		} );
 
 		it( 'does not move the focus when no notice shows', async () => {
@@ -323,7 +314,7 @@ describe( 'App interests notice', () => {
 			interestSelector( wrapper ).vm.$emit( 'saved' );
 			await wrapper.vm.$nextTick();
 
-			expect( document.activeElement ).toBe( document.body );
+			expect( mockMenuFocus ).not.toHaveBeenCalled();
 		} );
 	} );
 } );

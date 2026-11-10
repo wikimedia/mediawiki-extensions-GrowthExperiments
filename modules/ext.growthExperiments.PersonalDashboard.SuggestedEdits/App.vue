@@ -41,6 +41,7 @@
 		the in-page frame, since either stands in for the whole card. -->
 	<teleport v-if="headerTarget" :to="headerTarget">
 		<module-header-menu
+			ref="headerMenu"
 			v-slot="{ anchor }"
 			:menu-items="menuItems"
 			:footer-item="menuFooterItem"
@@ -193,7 +194,7 @@ module.exports = exports = defineComponent( {
 			default: false,
 		},
 	},
-	setup( props ) {
+	setup() {
 		const { feedState, load } = useSuggestedEditsFeed();
 		const instrumentation = inject( 'HOME_MODULE_INSTRUMENTATION' );
 
@@ -202,6 +203,8 @@ module.exports = exports = defineComponent( {
 		const shouldPopoverBeOpen = ref( false );
 		const popoverDismissed = ref( mw.user.options.get( INTERESTS_POPOVER_DISMISSED_PREF ) === '1' );
 		let popoverPending = false;
+		// Null when the frame gives no header slot, so no menu shows.
+		const headerMenu = ref( null );
 		// Which panel the menu has opened, or null for none. One value rather
 		// than a flag each: the menu opens one panel at a time.
 		const openPanel = ref( null );
@@ -239,12 +242,8 @@ module.exports = exports = defineComponent( {
 		const hideInterestsNotice = () => {
 			showInterestsNotice.value = false;
 			nextTick( () => {
-				const header = props.headerTarget && document.querySelector( props.headerTarget );
-				const menuButton = header && header.querySelector(
-					'.personal-dashboard-module-menu__button > .cdx-button',
-				);
-				if ( menuButton ) {
-					menuButton.focus();
+				if ( headerMenu.value ) {
+					headerMenu.value.focus();
 				}
 			} );
 		};
@@ -348,6 +347,7 @@ module.exports = exports = defineComponent( {
 			onThreeDotMenuItemSelect,
 			onTaskCardClick,
 			feedState,
+			headerMenu,
 			openPanel,
 			// A panel only ever reports itself closed: it is opened from the menu
 			// above or from the interests notice, never by its own model.
