@@ -220,7 +220,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Automātiskie ieteikumi",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Atbilst visām atlasītajām tēmām",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Atbilst vismaz vienai atlasītajai tēmai",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampaņas pasākums",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Nederīga ieteikto labojumu konfigurācija: nepareiza struktūra",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Nederīga ieteikto labojumu konfigurācija: nederīgs <code>type</code> parametrs $1 uzdevuma veidam $2 - jābūt vienam no $3",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Nederīga ieteikto labojumu konfigurācija: nederīgs veidnes nosaukums $1 uzdevuma veidam $2",

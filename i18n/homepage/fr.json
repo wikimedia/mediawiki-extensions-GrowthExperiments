@@ -312,7 +312,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Choisir l’option pour « Correspondre à tous les sujets sélectionnés » pour des résultats plus spécifiques",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Correspondre à tous les sujets sélectionnés",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Correspondre à au moins un sujet sélectionné",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Événement de la campagne",
 	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1 modification{{PLURAL:$1||s}}, félicitations ! Les modifications suggérées disponibles ont changé.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuration des modifications suggérées non valide : mauvaise structure",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuration des modifications suggérées non valide pour le type de tâche « $1 » : « $2 » doit être un nombre entier.",

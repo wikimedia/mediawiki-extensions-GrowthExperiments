@@ -255,7 +255,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Za natančnejše zadetke izberite možnost »Ujemanje z vsemi izbranimi temami«.",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Ujemanje z vsemi izbranimi temami",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Ujemanje z vsaj eno izbrano temo",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Dogodek kampanje",
 	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}}, čestitamo! Razpoložljiva predlagana urejanja so se spremenila.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Neveljavna konfiguracija predlaganih urejanj: strukturna napaka",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Neveljavna predlagana konfiguracija urejanja za vrsto nalog »$1«: »$2« mora biti celo število",

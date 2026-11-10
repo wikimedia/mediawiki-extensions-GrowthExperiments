@@ -305,7 +305,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Chọn tùy chọn \"So khớp tất cả các chủ đề đã chọn\" để có kết quả cụ thể hơn",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Khớp tất cả các chủ đề được chọn",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Khớp với ít nhất một chủ đề được chọn",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Sự kiện chiến dịch",
 	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "Bạn đã thực hiện $1 {{PLURAL:$1|}} sửa đổi, xin chúc mừng! Các gợi ý khả dụng đã thay đổi.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "cấu hình sửa đổi gợi ý không hợp lệ: cấu trúc sai",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Cấu hình sửa đổi gợi ý không hợp lệ cho loại tác vụ \"$1\": \"$2\" phải là số nguyên",

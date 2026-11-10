@@ -276,7 +276,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "보다 구체적인 결과를 얻으려면 \"선택한 모든 주제와 일치\" 옵션을 선택하십시오",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "선택한 모든 주제와 일치",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "적어도 선택한 1개의 주제와 일치",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "캠페인 이벤트",
 	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1번째 {{PLURAL:$1|편집}}을 달성하셨습니다, 축하합니다! 제안 편집 항목이 변경되었습니다.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "추천 문서 설정의 구조가 잘못되었습니다",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "작업 유형 \"$1\"에 대한 잘못된 제안 편집 구성: \"$2\"은(는) 정수여야 함",

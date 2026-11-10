@@ -269,7 +269,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "د نورو مشخصو پايلو لپاره \"ټولو ټاکل‌شوو سکالوگانو سره ورته‌والی\" خوښنه غوره کړئ.",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "ټولې ټاکلې سکالوگانې سره پرتلل",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "ټولې ټاکلې سکالوگانې سره پرتلل",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "ټاکنيزې‌سيالۍ پېښه",
 	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "مبارک شه! $1 وړانديز {{PLURAL:$1|شوی سمون بدل شوی دی|شوي سمونونه بدل شوې دي}}.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "د وړانديزشوو سمونونو ناسم ترتيب: خراب جوړښت",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "د \"$1\" دندې ډول لپاره د وړانديزشوو سمونونو ناسم ترتيب : \"$2\" بايد بشپړه‌شمېره وي",

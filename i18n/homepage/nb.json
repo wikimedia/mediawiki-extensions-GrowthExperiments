@@ -269,7 +269,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Velg alternativet for å «matche alle valgte emner» for mer spesifikke resultater",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Match alle valgte emner",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Match minst ett valgt emne",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Kampanjehendelse",
 	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1 {{PLURAL:$1|redigering|redigeringer}}, gratulerer!\nHvilke foreslåtte redigeringer som er tilgjengelige har blitt oppdatert.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ugyldig konfigurasjon for foreslåtte redigeringer: ugyldig struktur",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Ugyldig konfigurasjon for foreslåtte endringer for oppgavetypen «$1»: «$2» må være et heltall",

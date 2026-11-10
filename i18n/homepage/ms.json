@@ -291,7 +291,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Pilih pilihan tersebut untuk \"Padankan semua topik yang dipilih\" supaya mendapat hasil yang lebih khusus",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Padankan semua topik yang dipilih",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Padankan sekurang-kurangnya satu topik yang dipilih",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Acara kempen",
 	"growthexperiments-homepage-suggestededits-addlink-unavailable-text": "$1 {{PLURAL:$1|suntingan}}, tahniah! Suntingan cadangan yang tersedia telah berubah.",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Konfigurasi suntingan yang dicadangkan tidak sah: struktur buruk",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Konfigurasi suntingan yang dicadangkan tidak sah untuk jenis tugas \"$1\": \"$2\" mestilah nombor integer",

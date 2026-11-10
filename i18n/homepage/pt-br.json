@@ -252,7 +252,6 @@
 	"growthexperiments-homepage-suggestededits-topics-match-mode-description": "Escolha a opção \"Corresponder a todos os tópicos selecionados\" para resultados mais específicos",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-all": "Corresponder a todos os tópicos selecionados",
 	"growthexperiments-homepage-suggestededits-topics-match-mode-any": "Corresponder a pelo menos um tópico selecionado",
-	"growthexperiments-homepage-suggestededits-topic-group-name-campaign": "Evento de campanha",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuração de edições sugeridas inválida: estrutura incorreta",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Configuração de edições sugeridas inválida para o tipo de tarefa \"$1\": \"$2\" tem de ser um número inteiro",
 	"growthexperiments-homepage-suggestededits-config-toosmall": "Configuração de edições sugeridas inválida para o tipo de tarefa \"$1\": \"$2\" tem de ser maior do que $3",
