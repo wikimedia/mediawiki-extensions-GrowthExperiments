@@ -3,7 +3,8 @@
 		"authors": [
 			"Emma Franzen",
 			"Hamilton Abreu",
-			"JaimeDes"
+			"JaimeDes",
+			"GoEThe"
 		]
 	},
 	"growthexperiments-desc": "Esta extensão contém experiências feitas pela equipa de Crescimento (''Growth team'').",
@@ -104,5 +105,6 @@
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Notificação para experimentar as Edições Sugeridas",
 	"growthexperiments-edit-config-try-suggested-edits-notification-description": "Número máximo de edições que um recém-chegado pode ter para ser candidato a receber esta notificação. Se definido como 0, nenhum recém-chegado receberá esta notificação. Quanto maior o número, mais recém-chegados receberão esta notificação. Esta notificação é enviada apenas a recém-chegados que não concluíram as edições sugeridas.",
 	"growthexperiments-edit-config-keep-going-notification-title": "Notificação para continuar",
-	"growthexperiments-edit-config-keep-going-notification-description": "Número máximo de edições que um recém-chegado pode concluir para ser candidato a receber esta notificação. Se definido como 0, nenhum recém-chegado receberá esta notificação. Quanto maior for o número, mais recém-chegados receberão esta notificação. A notificação é enviada apenas a recém-chegados que já concluíram pelo menos uma edição sugerida."
+	"growthexperiments-edit-config-keep-going-notification-description": "Número máximo de edições que um recém-chegado pode concluir para ser candidato a receber esta notificação. Se definido como 0, nenhum recém-chegado receberá esta notificação. Quanto maior for o número, mais recém-chegados receberão esta notificação. A notificação é enviada apenas a recém-chegados que já concluíram pelo menos uma edição sugerida.",
+	"communityconfiguration-growthsuggestededits-info-text": "As Edições sugeridas ajudam os recém-chegados a dar os primeiros passos na edição. Os recém-chegados na web e na web móvel têm acesso às “Edições sugeridas” através da sua página inicial para recém-chegados. As Edições sugeridas recebem a etiqueta “Tarefa para recém-chegados“. <br><em>Observe que as atualizações neste formulário não afetarão as sugestões de edição nos aplicativos da Wikipédia para iOS e Android. Entre em contato com a equipe de aplicações através de [https://www.mediawiki.org/wiki/Talk:Wikimedia_Apps Discussão:Aplicações da Wikimedia] para discutir os recursos da aplicação móvel.</em>\n\nAlguns tipos de tarefas para recém-chegados são exibidos por meio de modelos de manutenção. Os artigos que contêm esses modelos são adicionados ao feed “Edições sugeridas” da página inicial. Para saber quantos artigos estão disponíveis para cada tipo de tarefa, consulte [[Special:NewcomerTasksInfo]]."
 }

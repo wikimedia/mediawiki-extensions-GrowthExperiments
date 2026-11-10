@@ -228,7 +228,7 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 milj.",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 mrd.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-title": "Strukturoituja tehtäviä ei ole saatavilla tällä hetkellä.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "Yritä valita lisää aiheita tai tehtävätyyppejä tai palaa myöhemmin takaisin.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-notasks-subtitle": "Kokeile valita lisää aiheita tai tehtävätyyppejä tai palaa takaisin myöhemmin.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Sinun kaltaisesti vapaaehtoiset ovat tänään muokanneet {{GRAMMAR:partitive|{{SITENAME}}}}. Liity mukaan!",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Katso kaikki ehdotukset",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Korjaa oikeinkirjoitusta, kielioppia ja tyyliä",
