@@ -3,32 +3,25 @@
 
 	/**
 	 * A TagMultiselectWidget with the input widget overridden to launch
-	 * the jQuery ULS widget on desktop, and the language picker overlay on
-	 * mobile.
+	 * the jQuery ULS widget.
 	 *
 	 * @param {Object} config
 	 * @constructor
 	 */
 	const ULSTagMultiselectWidget = function UlsTagMultiselectWidget( config ) {
-		const shouldUseLanguageOverlay = OO.ui.isMobile() &&
-			mw.loader.getState( 'mobile.startup' ) === 'loaded';
 		ULSTagMultiselectWidget.super.call( this, config );
 		this.$element.on( 'click', ( e ) => {
 			// Intercept clicks to the built-in input widget which we don't
 			// care about, and redirect them to ULS.
 			e.stopPropagation();
 
-			// Don't open ULS or the language overlay if we're at the tag limit
+			// Don't open ULS if we're at the tag limit
 			if ( !this.isUnderLimit() ) {
 				return;
 			}
 
-			if ( shouldUseLanguageOverlay ) {
-				this.emit( 'inputFocus' );
-			} else {
-				this.initializeUls();
-				this.$uls.trigger( 'click' );
-			}
+			this.initializeUls();
+			this.$uls.trigger( 'click' );
 		} );
 		// This is done here rather than when instantiating the widget so that
 		// we can get the display name for the content language, rather than the

@@ -4,10 +4,6 @@
 	module.exports = {
 		setupLanguageSelector: function () {
 			const ULSTagMultiselectWidget = require( './ULSTagMultiselectWidget.js' ),
-				shouldUseLanguageInfoOverlay = OO.ui.isMobile() &&
-					mw.loader.getState( 'mobile.startup' ) === 'loaded',
-				/** @type {OO.Router} */
-				router = require( 'mediawiki.router' ),
 				langCodeMap = $.uls.data.getAutonyms(),
 				languageMax = 10;
 
@@ -20,17 +16,6 @@
 				allowedValues: Object.keys( langCodeMap ),
 				allowArbitrary: false,
 				allowEditTags: false,
-			} );
-
-			if ( shouldUseLanguageInfoOverlay ) {
-				widgetInstance.on( 'inputFocus', () => {
-					// FIXME: navigate is deprecated but navigateTo doesn't seem to trigger
-					// the language searcher overlay.
-					router.navigate( '/languages/all/no-suggestions' );
-				} );
-			}
-			mw.hook( 'mobileFrontend.languageSearcher.linkClick' ).add( ( lang ) => {
-				widgetInstance.addLanguageByCode( lang );
 			} );
 
 			const $warning = $( '<div>' )
