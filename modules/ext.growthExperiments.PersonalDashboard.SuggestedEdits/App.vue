@@ -66,12 +66,15 @@
 			<task-types-dialog
 				:open="openPanel === 'taskTypes'"
 				@update:open="closePanel"
-				@saved="onTaskTypesSaved"></task-types-dialog>
+				@saved="onTaskTypesSaved"
+				@switch="switchPanel( 'interests' )"></task-types-dialog>
 			<interest-selector-dialog
 				:stacked-actions="true"
 				:open="openPanel === 'interests'"
+				switchable
 				@update:open="closeInterestSelectorPanel"
-				@saved="onInterestsSaved"></interest-selector-dialog>
+				@saved="onInterestsSaved"
+				@switch="switchPanel( 'taskTypes' )"></interest-selector-dialog>
 		</module-header-menu>
 	</teleport>
 </template>
@@ -279,6 +282,13 @@ module.exports = exports = defineComponent( {
 			}
 		};
 
+		const closeInterestSelectorPanel = () => {
+			closePanel();
+			if ( popoverPending ) {
+				possiblyShowPopover();
+			}
+		};
+
 		const popoverGotItAction = () => {
 			shouldPopoverBeOpen.value = false;
 			popoverDismissed.value = true;
@@ -346,11 +356,20 @@ module.exports = exports = defineComponent( {
 			shouldPopoverBeOpen,
 			showInterestsNotice,
 			showWelcomeBack,
-			closeInterestSelectorPanel() {
-				closePanel();
-				if ( popoverPending ) {
-					possiblyShowPopover();
+			closeInterestSelectorPanel,
+			/**
+			 * Close the open filter dialog, and open the other one. The closed dialog
+			 * discards its unsaved changes, as when the user cancels it.
+			 *
+			 * @param {string} panel The panel to open: 'interests' or 'taskTypes'
+			 */
+			switchPanel: ( panel ) => {
+				if ( openPanel.value === 'interests' ) {
+					closeInterestSelectorPanel();
+				} else {
+					closePanel();
 				}
+				openPanel.value = panel;
 			},
 			openInterestsFromWelcomeBack: () => {
 				showWelcomeBack.value = false;

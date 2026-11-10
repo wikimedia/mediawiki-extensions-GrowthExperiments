@@ -3,16 +3,17 @@ const { computed, onScopeDispose, readonly, ref } = require( 'vue' );
 const COUNT_DEBOUNCE_MS = 300;
 const FINDING_MESSAGE = 'growthexperiments-home-suggestededits-filters-finding';
 const COUNT_MESSAGE = 'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count';
+const NONE_MESSAGE = 'growthexperiments-home-suggestededits-filters-none';
 
 /**
- * @typedef {'idle'|'loading'|'found'|'error'} SuggestedEditsCountStatus
+ * @typedef {'idle'|'loading'|'found'|'none'|'error'} SuggestedEditsCountStatus
  */
 
 /**
  * @typedef {Object} SuggestedEditsCount
  * @property {Readonly<Ref<SuggestedEditsCountStatus>>} status State of the count
  * @property {Readonly<Ref<number|null>>} count The number of suggested edits, or null when
- *  the status is not "found"
+ *  the status is not "found" or "none"
  * @property {ComputedRef<string>} message Status message for the user. It is empty when the
  *  status is "idle" or "error".
  * @property {function(*): void} update Count the suggested edits for a selection
@@ -64,7 +65,7 @@ function useSuggestedEditsCount( fetchCount ) {
 			}
 			request = null;
 			count.value = data.count;
-			status.value = 'found';
+			status.value = data.count === 0 ? 'none' : 'found';
 		}, () => {
 			// GrowthTasksApi logs real errors. An aborted request has an older generation.
 			if ( requestGeneration !== generation ) {
@@ -106,6 +107,9 @@ function useSuggestedEditsCount( fetchCount ) {
 		}
 		if ( status.value === 'found' ) {
 			return mw.message( COUNT_MESSAGE, mw.language.convertNumber( count.value ) ).text();
+		}
+		if ( status.value === 'none' ) {
+			return mw.message( NONE_MESSAGE ).text();
 		}
 		return '';
 	} );

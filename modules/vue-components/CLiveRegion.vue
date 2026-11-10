@@ -1,8 +1,5 @@
 <template>
-	<span
-		class="ext-growthExperiments-CLiveRegion"
-		:class="{ 'ext-growthExperiments-CLiveRegion--visible': visible }"
-	>
+	<span class="ext-growthExperiments-CLiveRegion">
 		<span
 			v-if="visible"
 			class="ext-growthExperiments-CLiveRegion__text"
@@ -33,8 +30,9 @@ const useLiveRegion = require( './useLiveRegion.js' );
  * shown text always takes at least one line, so that the layout does not move when the
  * message changes between empty and set.
  *
- * Content is in `<span>` elements, so the component can go in a `<p>`, for example the
- * `footer-text` slot of CdxDialog.
+ * The component is inline, and its content is in `<span>` elements. Thus, it can go in a
+ * `<p>`, for example the `footer-text` slot of CdxDialog, and other text can follow the
+ * message on the same line.
  */
 // @vue/component
 module.exports = exports = {
@@ -116,10 +114,6 @@ module.exports = exports = {
 	// Keep the absolutely positioned announcer next to the component, so that it does not
 	// change the scroll size of an ancestor.
 	position: relative;
-
-	&--visible {
-		display: block;
-	}
 
 	&__announcer {
 		display: block;

@@ -63,6 +63,12 @@ const TaskTypesDialog = require( './TaskTypesDialog.vue' );
 
 const FINDING_MESSAGE = 'growthexperiments-home-suggestededits-filters-finding';
 const COUNT_MESSAGE = 'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count';
+const NONE_MESSAGE = 'growthexperiments-home-suggestededits-filters-none';
+
+// Render the message as a link, so that the tests can click it.
+const linkDirective = ( el, binding ) => {
+	el.innerHTML = `<a href="${ binding.value[ 0 ] }">${ binding.arg }</a>`;
+};
 
 /**
  * @param {number} count Value the count request resolves with
@@ -80,7 +86,10 @@ async function mountOpen( storedTaskTypes ) {
 	mockFilters.getSelectedTaskTypes.mockReturnValue( storedTaskTypes );
 	const wrapper = mount( TaskTypesDialog, {
 		props: { open: true },
-		global: { stubs: { teleport: true } },
+		global: {
+			stubs: { teleport: true },
+			directives: { 'i18n-html': linkDirective },
+		},
 	} );
 	await flushPromises();
 	return wrapper;
@@ -101,6 +110,14 @@ function checkbox( wrapper, id ) {
  */
 function countText( wrapper ) {
 	return wrapper.find( '.cdx-dialog__footer__text .ext-growthExperiments-CLiveRegion__text' );
+}
+
+/**
+ * @param {Object} wrapper
+ * @return {Object} the link to the other dialog in the footer
+ */
+function switchLink( wrapper ) {
+	return wrapper.find( '.cdx-dialog__footer__text a' );
 }
 
 /**
@@ -219,6 +236,37 @@ describe( 'TaskTypesDialog', () => {
 
 		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
 		expect( wrapper.find( '.cdx-message--error' ).exists() ).toBe( true );
+	} );
+
+	it( 'links to the interests dialog after the status when no task matches', async () => {
+		mockApi.fetchTasks.mockImplementation( () => countResponse( 0 ) );
+		const wrapper = await mountOpen( [ 'copyedit' ] );
+
+		expect( countText( wrapper ).text() ).toBe( NONE_MESSAGE );
+		expect( switchLink( wrapper ).text() ).toBe(
+			'growthexperiments-home-suggestededits-difficulty-filters-none-hint',
+		);
+		// Screen readers announce only the status.
+		expect( wrapper.find( '.ext-growthExperiments-CLiveRegion a' ).exists() ).toBe( false );
+		// A space separates the hint from the status.
+		expect(
+			wrapper.find( '.growthexperiments-task-types-dialog__switch-hint' ).element.textContent,
+		).toMatch( /^ \S/ );
+	} );
+
+	it( 'asks the parent to switch to the interests dialog when the user clicks the link', async () => {
+		mockApi.fetchTasks.mockImplementation( () => countResponse( 0 ) );
+		const wrapper = await mountOpen( [ 'copyedit' ] );
+
+		await switchLink( wrapper ).trigger( 'click' );
+
+		expect( wrapper.emitted( 'switch' ) ).toHaveLength( 1 );
+	} );
+
+	it( 'does not link to the interests dialog when tasks match', async () => {
+		const wrapper = await mountOpen( [ 'copyedit' ] );
+
+		expect( switchLink( wrapper ).exists() ).toBe( false );
 	} );
 
 	it( 'keeps Done enabled when no task matches', async () => {

@@ -6,6 +6,7 @@ const useSuggestedEditsCount = require( './useSuggestedEditsCount.js' );
 
 const FINDING_MESSAGE = 'growthexperiments-home-suggestededits-filters-finding';
 const COUNT_MESSAGE = 'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count';
+const NONE_MESSAGE = 'growthexperiments-home-suggestededits-filters-none';
 
 /**
  * Make a count request that the test settles.
@@ -67,6 +68,20 @@ describe( 'useSuggestedEditsCount', () => {
 		expect( status.value ).toBe( 'found' );
 		expect( count.value ).toBe( 1 );
 		expect( message.value ).toBe( `${ COUNT_MESSAGE } 1` );
+	} );
+
+	it( 'shows that no suggested edits match when the count is zero', async () => {
+		const pending = makeRequest();
+		fetchCount.mockReturnValue( pending.request );
+		const { status, count, message, update } = setup();
+
+		update( [ 'copyedit' ] );
+		pending.resolve( 0 );
+		await flushPromises();
+
+		expect( status.value ).toBe( 'none' );
+		expect( count.value ).toBe( 0 );
+		expect( message.value ).toBe( NONE_MESSAGE );
 	} );
 
 	it( 'shows that it is finding suggested edits while the next count loads', async () => {

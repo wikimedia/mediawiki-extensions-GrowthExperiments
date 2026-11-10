@@ -37,7 +37,23 @@
 		<!-- Always render the region, also while the count is unknown. Screen readers do not
 		announce a change to a live region that they did not find before the change. -->
 		<template #footer-text>
-			<c-live-region :message="countMessage" visible></c-live-region>
+			<c-live-region
+				:class="{ 'growthexperiments-task-types-dialog__live-region--none': countStatus === 'none' }"
+				:message="countMessage"
+				visible
+			></c-live-region>
+			<!-- Outside the live region: screen readers announce only the status. The space
+			separates the hint from the status. Vue removes a plain space at the start of an
+			element, so use an interpolation. -->
+			<!-- eslint-disable vue/no-useless-mustaches -->
+			<span
+				v-if="countStatus === 'none'"
+				class="growthexperiments-task-types-dialog__switch-hint"
+			>{{ ' ' }}<span
+				v-i18n-html:growthexperiments-home-suggestededits-difficulty-filters-none-hint="[ switchUrl ]"
+				@click="onSwitchHintClick"
+			></span></span>
+			<!-- eslint-enable vue/no-useless-mustaches -->
 		</template>
 	</cdx-dialog>
 </template>
@@ -76,7 +92,7 @@ module.exports = exports = defineComponent( {
 			default: false,
 		},
 	},
-	emits: [ 'update:open', 'saved' ],
+	emits: [ 'update:open', 'saved', 'switch' ],
 	setup( props, { emit } ) {
 		const { api, filters } = newcomerTasks;
 		const allTaskTypes = CONSTANTS.ALL_TASK_TYPES;
@@ -104,6 +120,7 @@ module.exports = exports = defineComponent( {
 		// A local copy, so that Cancel discards the changes without a store rollback.
 		const selected = ref( [] );
 		const {
+			status: countStatus,
 			message: countMessage,
 			update: updateCount,
 			reset: resetCount,
@@ -127,6 +144,21 @@ module.exports = exports = defineComponent( {
 				resetCount();
 			}
 		}, { immediate: true } );
+
+		// jqueryMsg accepts only a path or a URL as a link target. Link to the current page,
+		// and open the other dialog when the user clicks the link.
+		const switchUrl = mw.util.getUrl();
+
+		/**
+		 * @param {MouseEvent} event
+		 */
+		const onSwitchHintClick = ( event ) => {
+			if ( !event.target.closest( 'a' ) ) {
+				return;
+			}
+			event.preventDefault();
+			emit( 'switch' );
+		};
 
 		const openInternal = computed( {
 			get: () => props.open,
@@ -155,6 +187,9 @@ module.exports = exports = defineComponent( {
 			selected,
 			openInternal,
 			countMessage,
+			countStatus,
+			switchUrl,
+			onSwitchHintClick,
 			primaryAction,
 			save,
 			defaultAction: {
@@ -172,12 +207,28 @@ module.exports = exports = defineComponent( {
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
 
-.skin-vector-2022 .growthexperiments-task-types-dialog {
-	// Fix the height on desktop. Keep it the same as in InterestSelectorDialog, so that the
-	// two dialogs are consistent when the user switches between them. There is no Codex token
-	// for 48rem. On a short screen, keep the Codex limit, so that the dialog stays in the
-	// viewport.
-	// Escape the value. Less has its own min() function, which drops the calc().
-	height: ~'min( 48rem, calc( @{size-viewport-height-full} - @{size-200} ) )';
+.growthexperiments-task-types-dialog {
+	.skin-vector-2022 & {
+		// Fix the height on desktop. Keep it the same as in InterestSelectorDialog, so that the
+		// two dialogs are consistent when the user switches between them. There is no Codex token
+		// for 48rem. On a short screen, keep the Codex limit, so that the dialog stays in the
+		// viewport.
+		// Escape the value. Less has its own min() function, which drops the calc().
+		height: ~'min( 48rem, calc( @{size-viewport-height-full} - @{size-200} ) )';
+	}
+
+	&__live-region--none {
+		font-weight: @font-weight-bold;
+	}
+
+	&__switch-hint a {
+		font-weight: @font-weight-bold;
+
+		&:visited {
+			// The link points at the current page, so the browser always shows it as visited.
+			// It acts as a button, so keep the unvisited link color.
+			color: @color-progressive;
+		}
+	}
 }
 </style>

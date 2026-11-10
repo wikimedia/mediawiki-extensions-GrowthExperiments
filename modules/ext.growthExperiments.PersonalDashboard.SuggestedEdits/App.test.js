@@ -25,13 +25,13 @@ jest.mock( './TaskCard.vue', () => ( {
 jest.mock( './TaskTypesDialog.vue', () => ( {
 	name: 'TaskTypesDialog',
 	props: [ 'open' ],
-	emits: [ 'update:open', 'saved' ],
+	emits: [ 'update:open', 'saved', 'switch' ],
 	render: () => null,
 } ) );
 jest.mock( './InterestSelectorDialog.vue', () => ( {
 	name: 'InterestSelectorDialog',
-	props: [ 'open', 'stackedActions' ],
-	emits: [ 'update:open', 'saved' ],
+	props: { open: Boolean, stackedActions: Boolean, switchable: Boolean },
+	emits: [ 'update:open', 'saved', 'switch' ],
 	render: () => null,
 } ), { virtual: true } );
 jest.mock( './WelcomeBackDialog.vue', () => ( {
@@ -612,5 +612,64 @@ describe( 'App instrumentation', () => {
 			has_error: false,
 		} );
 		expect( mockInstrumentation.sendModuleReady ).toHaveBeenCalledTimes( 1 );
+	} );
+} );
+
+describe( 'App switching filter dialogs', () => {
+	/**
+	 * @param {Object} wrapper
+	 * @return {Object} the wrapper of the stubbed types of edits dialog
+	 */
+	function taskTypesDialog( wrapper ) {
+		return wrapper.findComponent( { name: 'TaskTypesDialog' } );
+	}
+
+	beforeEach( () => {
+		mockSaveOption.mockReset().mockResolvedValue( {} );
+		mockFilters.getSelectedInterests.mockReturnValue( [ 'Dandelion' ] );
+		mockFilters.getSelectedTaskTypes.mockReturnValue( [ 'copyedit' ] );
+		global.mw.Api = jest.fn( () => ( { saveOption: mockSaveOption } ) );
+	} );
+
+	it( 'lets the interest selector link to the other dialog', () => {
+		const wrapper = mountApp( null );
+
+		expect( interestSelector( wrapper ).props( 'switchable' ) ).toBe( true );
+	} );
+
+	it( 'closes the interest selector and opens the types of edits dialog', async () => {
+		const wrapper = mountApp( null );
+		wrapper.findComponent( { name: 'ModuleHeaderMenu' } ).vm.$emit( 'select', 'interests' );
+		await wrapper.vm.$nextTick();
+
+		interestSelector( wrapper ).vm.$emit( 'switch' );
+		await wrapper.vm.$nextTick();
+
+		expect( interestSelector( wrapper ).props( 'open' ) ).toBe( false );
+		expect( taskTypesDialog( wrapper ).props( 'open' ) ).toBe( true );
+	} );
+
+	it( 'closes the types of edits dialog and opens the interest selector', async () => {
+		const wrapper = mountApp( null );
+		wrapper.findComponent( { name: 'ModuleHeaderMenu' } ).vm.$emit( 'select', 'taskTypes' );
+		await wrapper.vm.$nextTick();
+
+		taskTypesDialog( wrapper ).vm.$emit( 'switch' );
+		await wrapper.vm.$nextTick();
+
+		expect( taskTypesDialog( wrapper ).props( 'open' ) ).toBe( false );
+		expect( interestSelector( wrapper ).props( 'open' ) ).toBe( true );
+	} );
+
+	it( 'dismisses the notice when the user leaves the interest selector without interests', async () => {
+		mockFilters.getSelectedInterests.mockReturnValue( [] );
+		const wrapper = mountApp( 'show-no-interests-notice' );
+		await wrapper.find( '.growthexperiments-interests-notice__button' ).trigger( 'click' );
+
+		interestSelector( wrapper ).vm.$emit( 'switch' );
+		await wrapper.vm.$nextTick();
+
+		expect( wrapper.find( '.growthexperiments-interests-notice' ).exists() ).toBe( false );
+		expect( taskTypesDialog( wrapper ).props( 'open' ) ).toBe( true );
 	} );
 } );

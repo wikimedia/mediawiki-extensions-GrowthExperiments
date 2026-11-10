@@ -16,13 +16,29 @@
 		<!-- Always render the region, also while the count is unknown. Screen readers do not
 		announce a change to a live region that they did not find before the change. -->
 		<template #footer-text>
-			<c-live-region :message="taskCountMessage" visible></c-live-region>
+			<c-live-region
+				:class="{ 'ext-growthExperiments-interest-selector-dialog__live-region--none': taskCountStatus === 'none' }"
+				:message="taskCountMessage"
+				visible
+			></c-live-region>
+			<!-- Outside the live region: screen readers announce only the status. The space
+			separates the hint from the status. Vue removes a plain space at the start of an
+			element, so use an interpolation. -->
+			<!-- eslint-disable vue/no-useless-mustaches -->
+			<span
+				v-if="showSwitchHint"
+				class="ext-growthExperiments-interest-selector-dialog__switch-hint"
+			>{{ ' ' }}<span
+				v-i18n-html:growthexperiments-home-suggestededits-interest-filters-none-hint="[ switchUrl ]"
+				@click="onSwitchHintClick"
+			></span></span>
+			<!-- eslint-enable vue/no-useless-mustaches -->
 		</template>
 	</cdx-dialog>
 </template>
 
 <script>
-const { defineComponent, toRef, ref, watch } = require( 'vue' );
+const { computed, defineComponent, toRef, ref, watch } = require( 'vue' );
 const { CdxDialog, useModelWrapper } = require( './codex.js' );
 const InterestSelector = require( './InterestSelector.vue' );
 const CLiveRegion = require( './CLiveRegion.vue' );
@@ -47,8 +63,16 @@ module.exports = exports = defineComponent( {
 			type: Boolean,
 			default: false,
 		},
+		/**
+		 * Whether to link to the types of edits dialog when no suggested edits match. Set it
+		 * only when the parent handles the "switch" event.
+		 */
+		switchable: {
+			type: Boolean,
+			default: false,
+		},
 	},
-	emits: [ 'update:open', 'saved' ],
+	emits: [ 'update:open', 'saved', 'switch' ],
 	setup( props, { emit } ) {
 		const tasksStore = rootStore.newcomerTasks;
 		const filtersStore = tasksStore.filters;
@@ -71,6 +95,7 @@ module.exports = exports = defineComponent( {
 		 * at the cost of bypassing its cache.
 		 */
 		const {
+			status: taskCountStatus,
 			message: taskCountMessage,
 			update: updateTaskCount,
 			reset: resetTaskCount,
@@ -149,6 +174,24 @@ module.exports = exports = defineComponent( {
 			resetTaskCount();
 		} );
 
+		const showSwitchHint = computed(
+			() => props.switchable && taskCountStatus.value === 'none',
+		);
+		// jqueryMsg accepts only a path or a URL as a link target. Link to the current page,
+		// and open the other dialog when the user clicks the link.
+		const switchUrl = mw.util.getUrl();
+
+		/**
+		 * @param {MouseEvent} event
+		 */
+		function onSwitchHintClick( event ) {
+			if ( !event.target.closest( 'a' ) ) {
+				return;
+			}
+			event.preventDefault();
+			emit( 'switch' );
+		}
+
 		const isMobile = mw.config.get( 'skin' ) === 'minerva';
 
 		return {
@@ -156,6 +199,10 @@ module.exports = exports = defineComponent( {
 			chips,
 			wrappedOpen,
 			taskCountMessage,
+			taskCountStatus,
+			showSwitchHint,
+			switchUrl,
+			onSwitchHintClick,
 			primaryAction,
 			defaultAction,
 			saveSelection,
@@ -168,12 +215,28 @@ module.exports = exports = defineComponent( {
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
 
-.skin-vector-2022 .ext-growthExperiments-interest-selector-dialog {
-	// Fix the height on desktop so that the layout does not shift when selecting interests.
-	// Keep it the same as in TaskTypesDialog, so that the two dialogs are consistent when
-	// the user switches between them. There is no Codex token for 48rem. On a short screen,
-	// keep the Codex limit, so that the dialog stays in the viewport.
-	// Escape the value. Less has its own min() function, which drops the calc().
-	height: ~'min( 48rem, calc( @{size-viewport-height-full} - @{size-200} ) )';
+.ext-growthExperiments-interest-selector-dialog {
+	.skin-vector-2022 & {
+		// Fix the height on desktop so that the layout does not shift when selecting interests.
+		// Keep it the same as in TaskTypesDialog, so that the two dialogs are consistent when
+		// the user switches between them. There is no Codex token for 48rem. On a short screen,
+		// keep the Codex limit, so that the dialog stays in the viewport.
+		// Escape the value. Less has its own min() function, which drops the calc().
+		height: ~'min( 48rem, calc( @{size-viewport-height-full} - @{size-200} ) )';
+	}
+
+	&__live-region--none {
+		font-weight: @font-weight-bold;
+	}
+
+	&__switch-hint a {
+		font-weight: @font-weight-bold;
+
+		&:visited {
+			// The link points at the current page, so the browser always shows it as visited.
+			// It acts as a button, so keep the unvisited link color.
+			color: @color-progressive;
+		}
+	}
 }
 </style>
