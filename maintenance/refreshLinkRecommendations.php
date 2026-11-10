@@ -231,24 +231,19 @@ class RefreshLinkRecommendations extends Maintenance {
 	 * @return bool Whether a new task was generated.
 	 */
 	private function processCandidate( ProperPageIdentity $pageIdentity, bool $force = false ): bool {
-		$this->verboseLog( "    checking candidate " . $pageIdentity->__toString() . "... " );
+		$prefix = '    checking candidate ' . $pageIdentity->__toString() . '... ';
 		try {
 			$status = $this->linkRecommendationUpdater->processCandidate( $pageIdentity, $force );
 			$this->trackProcessingOutcome( $status );
 			if ( $status->isOK() ) {
-				$this->verboseLog( "success, updating index\n" );
+				$this->verboseLog( $prefix . "success, updating index\n" );
 				return true;
+			}
+			$message = $this->statusFormatter->getWikiText( $status, [ 'lang' => 'en' ] );
+			if ( $this->isExpectedSkip( $status ) ) {
+				$this->verboseLog( $prefix . $message . "\n" );
 			} else {
-				$error = $this->statusFormatter->getWikiText( $status, [ 'lang' => 'en' ] );
-				if ( $this->hasOption( 'verbose' ) ) {
-					// The "checking candidate" entry was printed, print the status itself too
-					$this->error( $error );
-				} else {
-					$this->error(
-						'    while processing ' . $pageIdentity->__toString()
-						. ', an error occured: ' . $error
-					);
-				}
+				$this->error( $prefix . 'error: ' . $message );
 			}
 		} catch ( DBReadOnlyError ) {
 			// This is a long-running script, read-only state can change in the middle.
@@ -276,6 +271,15 @@ class RefreshLinkRecommendations extends Maintenance {
 
 		$this->metrics[$metricKey] ??= 0;
 		$this->metrics[$metricKey]++;
+	}
+
+	/**
+	 * A specific NotGoodCause means that the page is not a good candidate. This is a normal result.
+	 * Other statuses mean that the processing failed.
+	 */
+	private function isExpectedSkip( StatusValue $status ): bool {
+		return $status instanceof LinkRecommendationEvalStatus
+			&& $status->getNotGoodCause() !== NotGoodCause::OTHER;
 	}
 
 	private function verboseLog( string $message ): void {

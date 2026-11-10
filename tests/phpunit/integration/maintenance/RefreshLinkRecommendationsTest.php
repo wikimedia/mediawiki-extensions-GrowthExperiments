@@ -9,6 +9,7 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use MediaWiki\Title\Title;
 use MockHttpTrait;
 use Wikimedia\ObjectCache\BagOStuff;
+use Wikimedia\TestingAccessWrapper;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -100,6 +101,63 @@ class RefreshLinkRecommendationsTest extends MaintenanceBaseTestCase {
 			$mainStash->get( $lastPageIdKey ),
 			'lastPageId should be cleared after run reaching the end of pages available',
 		);
+	}
+
+	/**
+	 * @return string The regex-quoted prefix of the output line for the page
+	 */
+	private function runOnOnePage( array $serviceResponse, array $options ): string {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
+		$this->overrideConfigValue( 'GELinkRecommendationServiceUrl', 'https://linkrecommendation.test' );
+		$this->installMockHttp( json_encode( $serviceResponse ) );
+
+		ConvertibleTimestamp::setFakeTime( '20210101000000' );
+		$page = $this->getExistingTestPage();
+		ConvertibleTimestamp::setFakeTime( null );
+
+		$this->maintenance->loadParamsAndArgs( null, $options );
+		$this->getServiceContainer()->resetServiceForTesting( 'GrowthExperimentsNewcomerTasksConfigurationLoader' );
+		$this->maintenance->execute();
+
+		$pageName = $page->getTitle()->toPageIdentity()->__toString();
+		return preg_quote( "    checking candidate $pageName... ", '/' );
+	}
+
+	public function testVerbosePrintsRoutineSkipToStdoutOnOneLine(): void {
+		$this->maintenance = $this->createMaintenanceWithMarkedErrors();
+		$prefix = $this->runOnOnePage( [ 'links' => [], 'meta' => [] ], [ 'verbose' => true ] );
+
+		$this->expectOutputRegex(
+			'/^' . $prefix . 'All of the links in the recommendation have been pruned$/m'
+		);
+	}
+
+	public function testDefaultModeHidesRoutineSkip(): void {
+		$this->maintenance = $this->createMaintenanceWithMarkedErrors();
+		$this->runOnOnePage( [ 'links' => [], 'meta' => [] ], [] );
+
+		$this->expectOutputRegex( '/^(?!.*have been pruned).*$/s' );
+	}
+
+	public function testDefaultModePrintsErrorToStderrOnOneLine(): void {
+		$this->maintenance = $this->createMaintenanceWithMarkedErrors();
+		$prefix = $this->runOnOnePage( [ 'error' => 'Test service failure' ], [] );
+
+		$this->expectOutputRegex( '/^STDERR:' . $prefix . 'error: .*Test service failure/m' );
+	}
+
+	/**
+	 * Under PHPUnit, Maintenance::error() prints to stdout. Mark its output to make the stream visible.
+	 */
+	private function createMaintenanceWithMarkedErrors(): TestingAccessWrapper {
+		$maintenance = TestingAccessWrapper::newFromObject( new class extends RefreshLinkRecommendations {
+			/** @inheritDoc */
+			protected function error( $err ) {
+				parent::error( 'STDERR:' . $err );
+			}
+		} );
+		$maintenance->isTesting = true;
+		return $maintenance;
 	}
 
 	public function testCanSetLastPageIdInStashManually(): void {
