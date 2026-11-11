@@ -231,11 +231,47 @@ describe( 'TaskTypesDialog', () => {
 		expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
 	} );
 
-	it( 'blocks Done and shows an error when nothing is selected', async () => {
-		const wrapper = await mountOpen( [] );
+	describe( 'when nothing is selected', () => {
+		// All task types that the user can select. The unavailable one is not in the list.
+		const ALL_IDS = [ 'copyedit', 'revise-tone', 'expand' ];
 
-		expect( doneButton( wrapper ).attributes() ).toHaveProperty( 'disabled' );
-		expect( wrapper.find( '.cdx-message--error' ).exists() ).toBe( true );
+		it( 'counts all task types, and shows no error', async () => {
+			const wrapper = await mountOpen( [] );
+
+			expect( mockApi.fetchTasks ).toHaveBeenLastCalledWith(
+				ALL_IDS, null, expect.anything(),
+			);
+			expect( countText( wrapper ).text() ).toBe( COUNT_MESSAGE );
+			expect( wrapper.find( '.cdx-message--error' ).exists() ).toBe( false );
+			expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
+		} );
+
+		it( 'counts all task types when the user clears the last one', async () => {
+			const wrapper = await mountOpen( [ 'copyedit' ] );
+			mockApi.fetchTasks.mockImplementation(
+				() => $.Deferred().promise( { abort: jest.fn() } ),
+			);
+
+			await checkbox( wrapper, 'copyedit' ).setValue( false );
+
+			expect( mockApi.fetchTasks ).toHaveBeenLastCalledWith(
+				ALL_IDS, null, expect.anything(),
+			);
+			expect( countText( wrapper ).text() ).toBe( FINDING_MESSAGE );
+			expect( wrapper.find( '.cdx-message--error' ).exists() ).toBe( false );
+			expect( doneButton( wrapper ).attributes() ).not.toHaveProperty( 'disabled' );
+		} );
+
+		it( 'stores all task types on Done', async () => {
+			const wrapper = await mountOpen( [ 'copyedit' ] );
+
+			await checkbox( wrapper, 'copyedit' ).setValue( false );
+			await flushPromises();
+			await doneButton( wrapper ).trigger( 'click' );
+
+			expect( mockFilters.setSelectedTaskTypes ).toHaveBeenCalledWith( ALL_IDS );
+			expect( wrapper.emitted( 'saved' ) ).toHaveLength( 1 );
+		} );
 	} );
 
 	it( 'links to the interests dialog after the status when no task matches', async () => {

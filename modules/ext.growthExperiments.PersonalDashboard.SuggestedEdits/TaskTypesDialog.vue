@@ -1,6 +1,6 @@
 <template>
 	<cdx-dialog
-		v-model:open="openInternal"
+		v-model:open="wrappedOpen"
 		class="growthexperiments-task-types-dialog"
 		:title="title"
 		:use-close-button="true"
@@ -8,13 +8,7 @@
 		:default-action="defaultAction"
 		:stacked-actions="true"
 		@primary="save"
-		@default="openInternal = false">
-		<cdx-message
-			v-if="!selected.length"
-			type="error"
-			:inline="true">
-			{{ emptySelectionLabel }}
-		</cdx-message>
+		@default="wrappedOpen = false">
 		<cdx-field
 			v-for="group in groups"
 			:key="group.difficulty"
@@ -59,13 +53,14 @@
 </template>
 
 <script>
-const { computed, defineComponent, ref, watch } = require( 'vue' );
-const { CdxCheckbox, CdxDialog, CdxField, CdxMessage } = require( './codex.js' );
+const { computed, defineComponent, ref, toRef, watch } = require( 'vue' );
+const { CdxCheckbox, CdxDialog, CdxField, useModelWrapper } = require( './codex.js' );
 const { CONSTANTS, newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
 const CLiveRegion = require( './CLiveRegion.vue' );
 const useSuggestedEditsCount = require( './useSuggestedEditsCount.js' );
 
 const DIFFICULTIES = [ 'easy', 'medium', 'hard' ];
+const allTaskTypes = CONSTANTS.ALL_TASK_TYPES;
 
 /**
  * @param {Object} taskType Task type data from TaskTypes.json
@@ -83,9 +78,34 @@ function getDescription( taskType ) {
 	return null;
 }
 
+// Task types that configuration disables are not in ALL_TASK_TYPES at all.
+const groups = DIFFICULTIES.map( ( difficulty ) => ( {
+	difficulty,
+	// The following messages are used here:
+	// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label
+	// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label
+	// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label
+	label: mw.message(
+		'growthexperiments-homepage-startediting-dialog-difficulty-level-' + difficulty + '-label',
+	).text(),
+	taskTypes: Object.keys( allTaskTypes )
+		.filter( ( id ) => allTaskTypes[ id ].difficulty === difficulty )
+		.map( ( id ) => ( {
+			id,
+			label: allTaskTypes[ id ].messages.label,
+			disabled: !!allTaskTypes[ id ].disabled,
+			description: getDescription( allTaskTypes[ id ] ),
+		} ) ),
+} ) ).filter( ( group ) => group.taskTypes.length );
+
+const allTaskTypeIds = groups
+	.flatMap( ( group ) => group.taskTypes )
+	.filter( ( taskType ) => !taskType.disabled )
+	.map( ( taskType ) => taskType.id );
+
 module.exports = exports = defineComponent( {
 	name: 'TaskTypesDialog',
-	components: { CdxCheckbox, CdxDialog, CdxField, CdxMessage, CLiveRegion },
+	components: { CdxCheckbox, CdxDialog, CdxField, CLiveRegion },
 	props: {
 		open: {
 			type: Boolean,
@@ -95,30 +115,12 @@ module.exports = exports = defineComponent( {
 	emits: [ 'update:open', 'saved', 'switch' ],
 	setup( props, { emit } ) {
 		const { api, filters } = newcomerTasks;
-		const allTaskTypes = CONSTANTS.ALL_TASK_TYPES;
-
-		// Task types that configuration disables are not in ALL_TASK_TYPES at all.
-		const groups = DIFFICULTIES.map( ( difficulty ) => ( {
-			difficulty,
-			// The following messages are used here:
-			// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label
-			// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label
-			// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label
-			label: mw.message(
-				'growthexperiments-homepage-startediting-dialog-difficulty-level-' + difficulty + '-label',
-			).text(),
-			taskTypes: Object.keys( allTaskTypes )
-				.filter( ( id ) => allTaskTypes[ id ].difficulty === difficulty )
-				.map( ( id ) => ( {
-					id,
-					label: allTaskTypes[ id ].messages.label,
-					disabled: !!allTaskTypes[ id ].disabled,
-					description: getDescription( allTaskTypes[ id ] ),
-				} ) ),
-		} ) ).filter( ( group ) => group.taskTypes.length );
-
 		// A local copy, so that Cancel discards the changes without a store rollback.
 		const selected = ref( [] );
+		// An empty selection means all task types. Return a new array each time, so that the
+		// count updates also when the selection stays empty.
+		const effectiveSelection = computed( () => ( selected.value.length ?
+			selected.value : allTaskTypeIds ).slice() );
 		const {
 			status: countStatus,
 			message: countMessage,
@@ -130,8 +132,8 @@ module.exports = exports = defineComponent( {
 			{ context: 'personaldashboard_suggestededits_filters' },
 		) );
 
-		watch( selected, () => {
-			updateCount( selected.value.slice() );
+		watch( effectiveSelection, ( taskTypes ) => {
+			updateCount( taskTypes.slice() );
 		}, { deep: true } );
 
 		watch( () => props.open, ( isOpen ) => {
@@ -160,22 +162,17 @@ module.exports = exports = defineComponent( {
 			emit( 'switch' );
 		};
 
-		const openInternal = computed( {
-			get: () => props.open,
-			set: ( value ) => emit( 'update:open', value ),
-		} );
+		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 
 		// Do not block Done while the count loads, or when it is zero or fails: the user
-		// decides. An empty selection has no task types to search, and the count for it can
-		// be wrong (T369742), so do not let the user save it.
-		const primaryAction = computed( () => ( {
+		// decides. An empty selection means all task types, see effectiveSelection.
+		const primaryAction = {
 			label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-close' ).text(),
 			actionType: 'progressive',
-			disabled: !selected.value.length,
-		} ) );
+		};
 
 		const save = () => {
-			filters.setSelectedTaskTypes( selected.value.slice() );
+			filters.setSelectedTaskTypes( effectiveSelection.value.slice() );
 			// The feed does not wait for the save: fetchTasks sends the task types itself.
 			filters.savePreferences();
 			emit( 'saved' );
@@ -185,7 +182,7 @@ module.exports = exports = defineComponent( {
 		return {
 			groups,
 			selected,
-			openInternal,
+			wrappedOpen,
 			countMessage,
 			countStatus,
 			switchUrl,
@@ -196,9 +193,6 @@ module.exports = exports = defineComponent( {
 				label: mw.message( 'growthexperiments-home-suggestededits-difficulty-filters-cancel' ).text(),
 			},
 			title: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-title' ).text(),
-			emptySelectionLabel: mw.message(
-				'growthexperiments-homepage-suggestededits-difficulty-filter-error',
-			).text(),
 		};
 	},
 } );
