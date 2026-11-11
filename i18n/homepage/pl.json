@@ -165,7 +165,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Twoje}} pytanie trafiło na stronę dyskusji przewodni{{GENDER:$1|ka|czki}}. Odpowie tam na nie, jak tylko będzie {{GENDER:$1|mógł|mogła}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Zobacz {{GENDER:$2|swoje}} pytanie na stronie dyskusji {{GENDER:$1|swojego przewodnika|swojej przewodniczki}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Pytanie [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pytanie od {{GENDER:$1|użytkownika|użytkowniczki}} [[User:$1|$1]] odnośnie artykułu [[:$2|$2]]",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "Pytanie od {{GENDER:$1|użytkownika|użytkowniczki}} [[User:$1|$1]] odnośnie do artykułu [[:$2|$2]]",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "{{GENDER:$2|Przewodnik|Przewodniczka}} {{GENDER:$1|użytkownika|użytkowniczki}} [[User:$1|$1]], <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> jest {{GENDER:$2|niedostępny|niedostępna}}.",
 	"growthexperiments-homepage-mentorship-system-message": "Uwaga: $1",
 	"growthexperiments-specialimpact-title": "Wpływ",
