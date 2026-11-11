@@ -165,7 +165,7 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 		const surface = this.getRoot().getSurface().getSurface(),
 			recommendation = this.getModel().getAttribute( 'recommendation' ),
 			recommendationIndex = this.getModel().getAttribute( 'recommendationIndex' );
-		surface.dialogs.openWindow( 'addImageDetails', {
+		surface.getModalDialogs().openWindow( 'addImageDetails', {
 			recommendation: recommendation,
 			logSource: 'caption_entry',
 			imageIndex: recommendationIndex,

@@ -218,7 +218,7 @@ RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
  */
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 	const rejectionReasons = ve.init.target.recommendationRejectionReasons,
-		rejectionDialogLifecycle = this.surface.dialogs.openWindow(
+		rejectionDialogLifecycle = this.surface.getModalDialogs().openWindow(
 			'recommendedImageRejection', rejectionReasons ),
 		// eslint-disable-next-line camelcase
 		metadataOverride = { active_interface: 'rejection_dialog' },
@@ -256,7 +256,7 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 	this.logger.log( 'suggestion_skip', this.getSuggestionLogActionData() );
 	// eslint-disable-next-line camelcase
 	const logMetadata = { active_interface: 'skip_dialog' },
-		openSkipDialogPromise = this.surface.dialogs.openWindow( 'structuredTaskMessage', {
+		openSkipDialogPromise = this.surface.getModalDialogs().openWindow( 'structuredTaskMessage', {
 			title: mw.message( 'growthexperiments-addimage-skip-dialog-title' ).text(),
 			message: mw.message( 'growthexperiments-addimage-skip-dialog-body' ).text(),
 			actions: [
@@ -299,7 +299,7 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 		logMetadata = { active_interface: 'imageviewer_dialog' },
 		actionData = this.getSuggestionLogActionData();
 
-	const openImageViewerDialogPromise = surface.dialogs.openWindow(
+	const openImageViewerDialogPromise = surface.getModalDialogs().openWindow(
 		'recommendedImageViewer',
 		imageData.metadata,
 	);
@@ -312,7 +312,7 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 	} );
 
 	this.showInternalRoute( 'imageviewer', () => {
-		const currentWindow = surface.dialogs.currentWindow;
+		const currentWindow = surface.getModalDialogs().currentWindow;
 		if ( currentWindow ) {
 			currentWindow.close();
 		}
@@ -322,7 +322,7 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function () {
 	const surface = this.surface,
 		imageData = this.images[ this.currentIndex ];
-	surface.dialogs.openWindow( 'addImageDetails', {
+	surface.getModalDialogs().openWindow( 'addImageDetails', {
 		recommendation: imageData,
 		logSource: 'toolbar_dialog',
 		imageIndex: this.currentIndex,

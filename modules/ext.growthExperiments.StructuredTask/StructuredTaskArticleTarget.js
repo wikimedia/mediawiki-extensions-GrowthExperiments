@@ -144,7 +144,7 @@ StructuredTaskArticleTarget.prototype.initAutosave = function () {
  */
 StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMode ) {
 	const deferred = $.Deferred(),
-		confirmationDialogPromise = this.surface.dialogs.openWindow( 'editModeConfirmation' );
+		confirmationDialogPromise = this.surface.getModalDialogs().openWindow( 'editModeConfirmation' );
 
 	confirmationDialogPromise.opening.then( () => {
 		this.logger.log(
@@ -260,7 +260,7 @@ StructuredTaskArticleTarget.prototype.toggleInternalRouting = function ( isInter
  * @override
  */
 StructuredTaskArticleTarget.prototype.saveErrorNewUser = function ( username ) {
-	const saveDialog = this.surface.getDialogs().currentWindow;
+	const saveDialog = this.surface.getModalDialogs().currentWindow;
 	saveDialog.showUserError( username );
 	// HACK: Resolve in order to stop the ProcessDialog's loading state instead of rejecting
 	// with an error in order to show a custom message instead
@@ -274,7 +274,7 @@ StructuredTaskArticleTarget.prototype.saveErrorNewUser = function ( username ) {
  */
 StructuredTaskArticleTarget.prototype.confirmLeavingSuggestionsMode = function () {
 	const deferred = $.Deferred();
-	const abandonEditDialogPromise = this.getSurface().dialogs.openWindow( 'abandonedit' ),
+	const abandonEditDialogPromise = this.getSurface().getModalDialogs().openWindow( 'abandonedit' ),
 		// eslint-disable-next-line camelcase
 		metadataOverride = { active_interface: 'abandonedit_dialog' };
 

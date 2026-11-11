@@ -445,7 +445,7 @@ AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
 		// eslint-disable-next-line camelcase
 		active_interface: 'outdatedsuggestions_dialog',
 	} );
-	this.getSurface().getDialogs().currentWindow.close();
+	this.getSurface().getModalDialogs().currentWindow.close();
 	window.onbeforeunload = null;
 	$( window ).off( 'beforeunload' );
 	OO.ui.alert( mw.message( 'growthexperiments-addlink-suggestions-outdated' ).text(), {

@@ -666,7 +666,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 
 	let openDialogPromise;
 	if ( !shouldCheckPref ) {
-		openDialogPromise = this.surface.dialogs.openWindow( dialogName );
+		openDialogPromise = this.surface.getModalDialogs().openWindow( dialogName );
 		openDialogPromise.opening.then( () => {
 			logCaptionInfoDialog( 'impression', 'help' );
 		} );
@@ -683,7 +683,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 
 	if ( !mw.user.options.get( this.ADD_IMAGE_CAPTION_ONBOARDING_PREF ) ) {
 		this.hasShownCaptionOnboarding = true;
-		openDialogPromise = this.surface.dialogs.openWindow(
+		openDialogPromise = this.surface.getModalDialogs().openWindow(
 			dialogName,
 			{ shouldShowDismissField: true },
 		);

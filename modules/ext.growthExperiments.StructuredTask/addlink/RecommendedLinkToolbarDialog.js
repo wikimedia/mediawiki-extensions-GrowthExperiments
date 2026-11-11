@@ -308,7 +308,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		// impression and close events.
 		this.updateAnnotation( fragment, annotation, attributes );
 
-		const openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
+		const openRejectionDialogWindowPromise = this.surface.getModalDialogs().openWindow(
 			'recommendedLinkRejection', this.currentDataModel.getRejectionReason() );
 
 		openRejectionDialogWindowPromise.opening.then( () => {
@@ -857,7 +857,7 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 	// eslint-disable-next-line camelcase
 	const logMetadata = { active_interface: 'skipall_dialog' };
 	this.logger.log( 'impression', {}, logMetadata );
-	this.surface.dialogs.openWindow( 'structuredTaskMessage', {
+	this.surface.getModalDialogs().openWindow( 'structuredTaskMessage', {
 		title: mw.message( 'growthexperiments-addlink-skip-title' ).text(),
 		message: mw.message( 'growthexperiments-addlink-skip-body' ).text(),
 		actions: [
