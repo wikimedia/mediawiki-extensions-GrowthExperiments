@@ -35,6 +35,13 @@ use StatusValue;
  */
 class ApiQueryGrowthTasksTest extends ApiTestCase {
 
+	public function addDBDataOnce() {
+		// Interests are only used when their article exists (T441415).
+		foreach ( [ 'Albert Einstein', 'Coffee', 'Tea' ] as $title ) {
+			$this->insertPage( $title );
+		}
+	}
+
 	public function testNotLoggedIn() {
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'You must be logged in.' );

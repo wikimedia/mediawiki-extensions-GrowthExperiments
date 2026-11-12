@@ -4,6 +4,9 @@ declare( strict_types = 1 );
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\InterestValidator;
+use MediaWiki\Page\ExistingPageRecord;
+use MediaWiki\Page\PageLookup;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\Title\TitleValue;
@@ -36,7 +39,13 @@ class InterestValidatorTest extends MediaWikiUnitTestCase {
 	 * @param string[] $expectedInvalid
 	 */
 	public function testValidate( array $interests, array $expectedValid, array $expectedInvalid ): void {
-		$validator = new InterestValidator( $this->getTitleParser() );
+		$pageLookup = $this->createMock( PageLookup::class );
+		$pageLookup->method( 'getPageByName' )->willReturn( $this->createMock( ExistingPageRecord::class ) );
+		$validator = new InterestValidator(
+			$this->getTitleParser(),
+			$pageLookup,
+			$this->createNoOpMock( RedirectLookup::class )
+		);
 
 		$this->assertSame(
 			[ 'valid' => $expectedValid, 'invalid' => $expectedInvalid ],

@@ -413,7 +413,11 @@ return [
 	'GrowthExperimentsInterestValidator' => static function (
 		MediaWikiServices $services
 	): InterestValidator {
-		return new InterestValidator( $services->getTitleParser() );
+		return new InterestValidator(
+			$services->getTitleParser(),
+			$services->getPageStore(),
+			$services->getRedirectLookup()
+		);
 	},
 
 	'GrowthExperimentsLastActionTimestampLookup' => static function (
