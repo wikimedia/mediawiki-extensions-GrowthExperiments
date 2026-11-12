@@ -63,7 +63,7 @@ $specialPageAliases['az'] = [
 /** Bangla (বাংলা) */
 $specialPageAliases['bn'] = [
 	'WelcomeSurvey' => [ 'স্বাগত_জরিপ' ],
-	'Home' => [ 'হোম' ],
+	'Home' => [ 'নীড়', 'হোম' ],
 	'Homepage' => [ 'নীড়পাতা' ],
 	'Impact' => [ 'প্রভাব' ],
 	'ClaimMentee' => [ 'পরামর্শগ্রহীতা_দাবিকরণ' ],
