@@ -4,7 +4,8 @@
 			"Alesaru",
 			"NGC 54",
 			"Paloi Sciurala",
-			"Strainu"
+			"Strainu",
+			"Vellion Eagle"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Pagina mentorului",
@@ -212,7 +213,7 @@
 	"growthexperiments-manage-mentors-return-back": "Vă puteți [[Special:ManageMentors|întoarce]] la lista mentorilor.",
 	"growthexperiments-manage-mentors-summary-add-admin-no-reason": "Se adaugă $1 ca mentor",
 	"growthexperiments-manage-mentors-summary-add-admin-with-reason": "Adaug pe $1 ca mentor: $2",
-	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Mă adaug ca mentore ca mentor",
+	"growthexperiments-manage-mentors-summary-add-self-no-reason": "Mă adaug ca mentor",
 	"growthexperiments-manage-mentors-summary-add-self-with-reason": "Mă adaug ca mentor: $2",
 	"growthexperiments-manage-mentors-summary-change-admin-no-reason": "Schimb opțiunile de mentorat ale lui $1",
 	"growthexperiments-manage-mentors-summary-change-admin-with-reason": "Modificarea opțiunilor de mentorat pentru $1: $2",
