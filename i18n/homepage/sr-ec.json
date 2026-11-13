@@ -11,6 +11,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здраво}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "Почетна за новајлије",
 	"growthexperiments-homepage-tab": "Почетна",
 	"tooltip-pt-homepage": "{{GENDER:|Ваша}} почетна страница",
 	"prefs-homepage": "Уређивачки алати за новајлије",

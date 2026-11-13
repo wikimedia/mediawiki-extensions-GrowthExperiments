@@ -296,7 +296,7 @@
 	"growthexperiments-home-suggestededits-interests-notice": "احصل على مقالات تتناسب مع اهتماماتك",
 	"growthexperiments-home-suggestededits-interests-notice-button": "اختيار اهتماماتك",
 	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|مرحباً بعودتك}}، {{bidi:$1}}!",
-	"growthexperiments-home-welcome-back-text": "اختر بعض الاهتمامات، وسيعرض لك الاستقبال مقالات متعلقة بها.",
+	"growthexperiments-home-welcome-back-text": "يمكنك الآن تخصيص استقبالك بناءً على اهتماماتك.",
 	"growthexperiments-home-welcome-back-select-interests": "اختيار اهتماماتك",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "نُفّذ",
 	"growthexperiments-homepage-suggestededits-interest-filters-close": "تم",
