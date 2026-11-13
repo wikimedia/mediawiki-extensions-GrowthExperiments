@@ -81,7 +81,7 @@ describe( 'Revise Tone', () => {
 			cy.intercept( 'POST', '**/models/edit-check:predict*', { body: response } ).as( 'getEditCheckPrediction' );
 			const peacockParagraphLength = 109;
 			const deleteParagraph = '{backspace}'.repeat( peacockParagraphLength );
-			cy.get( '#Tourism_and_Recreation + p' ).type( deleteParagraph + 'Kristallsee attracts approximately 25,000 visitors annually, primarily during the summer months from June to September.' );
+			cy.contains( '.ve-ce-surface h2', 'Tourism and Recreation' ).next( 'p' ).type( deleteParagraph + 'Kristallsee attracts approximately 25,000 visitors annually, primarily during the summer months from June to September.' );
 
 			cy.get( '.ve-ui-toolbar-saveButton' ).should( 'be.visible' ).click();
 			cy.get( '.ve-ui-mwSaveDialog .oo-ui-processDialog-actions-primary' ).should( 'be.visible' ).click();
@@ -167,7 +167,7 @@ describe( 'Revise Tone', () => {
 			cy.intercept( 'POST', '**/models/edit-check:predict*', { body: response } ).as( 'getEditCheckPrediction' );
 			const peacockParagraphLength = 103;
 			const deleteParagraph = '{backspace}'.repeat( peacockParagraphLength );
-			cy.get( '#Tourism_and_Hiking + p' ).type( deleteParagraph + 'Eldfjall attracts approximately 25,000 visitors annually, primarily during the summer months from June to September.' );
+			cy.contains( '.ve-ce-surface h2', 'Tourism and Hiking' ).next( 'p' ).type( deleteParagraph + 'Eldfjall attracts approximately 25,000 visitors annually, primarily during the summer months from June to September.' );
 
 			cy.get( '.ve-ui-toolbar-saveButton' ).should( 'be.visible' ).click();
 			cy.get( '.ve-ui-mwSaveDialog .oo-ui-processDialog-actions-primary' ).should( 'be.visible' ).click();
