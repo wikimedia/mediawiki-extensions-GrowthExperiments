@@ -233,7 +233,7 @@
 	"growthexperiments-addlink-summary-title": "Резюме",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Предложение",
 	"growthexperiments-addlink-summary-column-header-linked": "Свързани?",
-	"growthexperiments-addlink-summary-summary": "Възможност за предлагане на препратки: {{PLURAL:$1|Добавена е|Добавени са}} $1 {{PLURAL:$1|препратка|препратки}}.",
+	"growthexperiments-addlink-summary-summary": "Функционалност за предлагане на препратки: {{PLURAL:$1|Добавена е|Добавени са}} $1 {{PLURAL:$1|препратка|препратки}}.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Пропуснахте}} всички предложения за тази статия.",
 	"growthexperiments-addlink-skip-body": "{{GENDER:|Сигурни ли сте}}, че  не искате да приемете или отхвърлите никакви предложения?",
 	"growthexperiments-addlink-skip-accept": "Пропускане на всички",
