@@ -7,7 +7,7 @@
 	"growthexperiments-homepage-specialpage-list": "Newcomer homepage",
 	"growthexperiments-home-tab": "Home",
 	"growthexperiments-home-betafeature-label": "Home",
-	"growthexperiments-home-betafeature-description": "Home is a personal page that helps readers and newer contributors get started editing, see the impact of their edits, and connect with their mentor. Home will replace the [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage Newcomer Homepage], and additional features will be added after the initial release.",
+	"growthexperiments-home-betafeature-description": "[[Special:Home|Home]] is a personal page that helps readers and newer contributors get started editing, see the impact of their edits, and connect with their mentor. Home will replace the [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage Newcomer Homepage], and additional features will be added after the initial release.",
 	"growthexperiments-homepage-tab": "Homepage",
 	"tooltip-pt-homepage": "{{GENDER:|Your}} homepage",
 	"prefs-homepage": "Newcomer editor features",
