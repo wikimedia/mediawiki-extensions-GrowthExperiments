@@ -90,10 +90,14 @@ class MentorListCleanerTest extends MediaWikiUnitTestCase {
 				}
 			} );
 
-		$mentorProvider = $this->createNoOpMock( MentorProvider::class, [ 'getMentors' ] );
+		$mentorProvider = $this->createNoOpMock( MentorProvider::class, [ 'getMentors', 'isMentor' ] );
 		$mentorProvider->expects( $this->once() )
 			->method( 'getMentors' )
 			->willReturn( [ $mentor ] );
+		$mentorProvider->expects( $this->exactly( count( ActionFactory::ACTIONS ) ) )
+			->method( 'isMentor' )
+			->with( $mentorUser )
+			->willReturn( true );
 
 		$cleaner = new MentorListCleaner(
 			$factory,
@@ -101,5 +105,49 @@ class MentorListCleanerTest extends MediaWikiUnitTestCase {
 			new NullLogger()
 		);
 		$this->assertStatusMessagesExactly( $status, $cleaner->processMentors( $messageLocalizer ) );
+	}
+
+	public function testProcessMentorsSkipsRemovedMentor() {
+		$messageLocalizer = $this->createNoOpMock( MessageLocalizer::class );
+		$mentorUser = new UserIdentityValue( 1, 'Admin' );
+		$mentor = new Mentor( $mentorUser, null, '', IMentorWeights::WEIGHT_NORMAL );
+
+		$removeAction = $this->createMock( IAction::class );
+		$removeAction->method( 'isEnabled' )->willReturn( true );
+		$removeAction->expects( $this->once() )
+			->method( 'check' )
+			->with( $mentorUser )
+			->willReturn( true );
+		$removeAction->expects( $this->once() )
+			->method( 'perform' )
+			->with( $mentorUser, $messageLocalizer )
+			->willReturn( StatusValue::newGood() );
+
+		$markAsAwayAction = $this->createMock( IAction::class );
+		$markAsAwayAction->method( 'isEnabled' )->willReturn( true );
+		$markAsAwayAction->expects( $this->never() )->method( 'check' );
+		$markAsAwayAction->expects( $this->never() )->method( 'perform' );
+
+		$factory = $this->createNoOpMock( ActionFactory::class, [ 'newFromClassName' ] );
+		$factory->method( 'newFromClassName' )
+			->willReturnMap( [
+				[ RemoveMentorAction::class, $removeAction ],
+				[ MarkMentorAsAwayAction::class, $markAsAwayAction ],
+			] );
+
+		$mentorProvider = $this->createNoOpMock( MentorProvider::class, [ 'getMentors', 'isMentor' ] );
+		$mentorProvider->method( 'getMentors' )->willReturn( [ $mentor ] );
+		// The mentor is removed by RemoveMentorAction, so they are not a mentor afterwards
+		$mentorProvider->expects( $this->exactly( 2 ) )
+			->method( 'isMentor' )
+			->with( $mentorUser )
+			->willReturnOnConsecutiveCalls( true, false );
+
+		$cleaner = new MentorListCleaner(
+			$factory,
+			$mentorProvider,
+			new NullLogger()
+		);
+		$this->assertStatusGood( $cleaner->processMentors( $messageLocalizer ) );
 	}
 }

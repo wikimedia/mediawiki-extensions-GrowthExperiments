@@ -22,8 +22,10 @@ class ActionFactory {
 	 * @see self::newFromClassName()
 	 */
 	public const ACTIONS = [
-		MarkMentorAsAwayAction::class,
+		// NOTE: Keep RemoveMentorAction first, so that if the mentor should be removed, none of
+		// the other actions need to do anything. See T444824.
 		RemoveMentorAction::class,
+		MarkMentorAsAwayAction::class,
 	];
 
 	/**

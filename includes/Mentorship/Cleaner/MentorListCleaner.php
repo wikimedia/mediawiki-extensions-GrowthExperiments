@@ -32,6 +32,16 @@ class MentorListCleaner {
 
 			foreach ( $mentors as $mentor ) {
 				$mentorUser = $mentor->getUserIdentity();
+				if ( !$this->mentorProvider->isMentor( $mentorUser ) ) {
+					$this->logger->info(
+						'Skipping {mentor} for {action} in ' . __METHOD__ . ', not a mentor anymore',
+						[
+							'action' => $actionName,
+							'mentor' => $mentorUser->getName(),
+						]
+					);
+					continue;
+				}
 				if ( !$action->check( $mentorUser ) ) {
 					$this->logger->info( '{action}::check returned false for {mentor}', [
 						'action' => $actionName,
