@@ -56,6 +56,7 @@
 const { computed, defineComponent, ref, toRef, watch } = require( 'vue' );
 const { CdxCheckbox, CdxDialog, CdxField, useModelWrapper } = require( './codex.js' );
 const { CONSTANTS, newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
+const InterestFilters = require( '../ext.growthExperiments.DataStore/InterestFilters.js' );
 const CLiveRegion = require( './CLiveRegion.vue' );
 const useSuggestedEditsCount = require( './useSuggestedEditsCount.js' );
 
@@ -128,7 +129,10 @@ module.exports = exports = defineComponent( {
 			reset: resetCount,
 		} = useSuggestedEditsCount( ( taskTypes ) => api.fetchTasks(
 			taskTypes,
-			filters.getFiltersQuery(),
+			// Send the interests, so that the API does not use its cache. The cache holds one task
+			// set per user. A request with other task types replaces it, and the next feed load
+			// must build it again.
+			new InterestFilters( { interests: filters.getSelectedInterests() } ),
 			{ context: 'personaldashboard_suggestededits_filters' },
 		) );
 

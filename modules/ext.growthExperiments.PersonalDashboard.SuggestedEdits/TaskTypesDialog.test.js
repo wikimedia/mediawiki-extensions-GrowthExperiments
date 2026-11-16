@@ -13,7 +13,7 @@ jest.mock(
 const mockApi = { fetchTasks: jest.fn() };
 const mockFilters = {
 	getSelectedTaskTypes: jest.fn(),
-	getFiltersQuery: jest.fn( () => null ),
+	getSelectedInterests: jest.fn( () => [ 'Botany' ] ),
 	setSelectedTaskTypes: jest.fn(),
 	savePreferences: jest.fn(),
 };
@@ -64,6 +64,8 @@ const TaskTypesDialog = require( './TaskTypesDialog.vue' );
 const FINDING_MESSAGE = 'growthexperiments-home-suggestededits-filters-finding';
 const COUNT_MESSAGE = 'growthexperiments-home-suggestededits-difficulty-filters-subtitle-count';
 const NONE_MESSAGE = 'growthexperiments-home-suggestededits-filters-none';
+// The interest filters that the count requests send: the stored interests of mockFilters.
+const STORED_INTERESTS = expect.objectContaining( { interests: [ 'Botany' ] } );
 
 // Render the message as a link, so that the tests can click it.
 const linkDirective = ( el, binding ) => {
@@ -163,7 +165,7 @@ describe( 'TaskTypesDialog', () => {
 		expect( checkbox( wrapper, 'copyedit' ).element.checked ).toBe( true );
 		expect( checkbox( wrapper, 'expand' ).element.checked ).toBe( false );
 		expect( mockApi.fetchTasks ).toHaveBeenLastCalledWith(
-			[ 'copyedit' ], null, expect.anything(),
+			[ 'copyedit' ], STORED_INTERESTS, expect.anything(),
 		);
 	} );
 
@@ -193,8 +195,16 @@ describe( 'TaskTypesDialog', () => {
 		await flushPromises();
 
 		expect( mockApi.fetchTasks ).toHaveBeenLastCalledWith(
-			[ 'copyedit', 'expand' ], null, expect.anything(),
+			[ 'copyedit', 'expand' ], STORED_INTERESTS, expect.anything(),
 		);
+	} );
+
+	it( 'sends the interests, so that the API does not replace its cached suggestions', async () => {
+		await mountOpen( [ 'copyedit' ] );
+
+		const filters = mockApi.fetchTasks.mock.lastCall[ 1 ];
+		expect( filters.hasSelection() ).toBe( true );
+		expect( filters.getInterests() ).toEqual( [ 'Botany' ] );
 	} );
 
 	it( 'shows that it is finding suggested edits while the next count loads', async () => {
@@ -239,7 +249,7 @@ describe( 'TaskTypesDialog', () => {
 			const wrapper = await mountOpen( [] );
 
 			expect( mockApi.fetchTasks ).toHaveBeenLastCalledWith(
-				ALL_IDS, null, expect.anything(),
+				ALL_IDS, STORED_INTERESTS, expect.anything(),
 			);
 			expect( countText( wrapper ).text() ).toBe( COUNT_MESSAGE );
 			expect( wrapper.find( '.cdx-message--error' ).exists() ).toBe( false );
@@ -255,7 +265,7 @@ describe( 'TaskTypesDialog', () => {
 			await checkbox( wrapper, 'copyedit' ).setValue( false );
 
 			expect( mockApi.fetchTasks ).toHaveBeenLastCalledWith(
-				ALL_IDS, null, expect.anything(),
+				ALL_IDS, STORED_INTERESTS, expect.anything(),
 			);
 			expect( countText( wrapper ).text() ).toBe( FINDING_MESSAGE );
 			expect( wrapper.find( '.cdx-message--error' ).exists() ).toBe( false );
