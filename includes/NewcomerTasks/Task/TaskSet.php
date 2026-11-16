@@ -59,9 +59,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonCodecabl
 	}
 
 	/**
-	 * @inheritDoc
-	 * @phan-suppress-next-line PhanTypeMismatchDeclaredReturn
-	 * @return Traversable|Task[]
+	 * @return Traversable<Task>
 	 */
 	public function getIterator(): Traversable {
 		return new ArrayIterator( $this->tasks );
