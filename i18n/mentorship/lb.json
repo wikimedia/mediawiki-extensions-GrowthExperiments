@@ -235,5 +235,7 @@
 	"growthexperiments-mentorship-enrollasmentor-error-not-autoeligible": "Nëmme Benotzer, déi mindestens $1 {{PLURAL:$1|Ännerung|Ännerunge}} a(n) $2 {{PLURAL:$2|Dag|Deeg}} Presenz hunn, kënne sech als Mentor aschreiwen.",
 	"tag-mentor_list_change": "Ännerung vun der Lëscht vun de Mentoren",
 	"tag-mentor_list_change-description": "Markéierung fir Ännerungen, déi iwwer GrowthExperiments un der strukturéierter Lëscht vun de Mentore gemaach goufen",
-	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "De Mentoreprogramm ass aktuell desaktivéiert. Administrateure kënnen en iwwer [[$1]] aktivéieren."
+	"growthexperiments-mentor-dashboard-mentorship-disabled-with-link": "De Mentoreprogramm ass aktuell desaktivéiert. Administrateure kënnen en iwwer [[$1]] aktivéieren.",
+	"growthexperiments-mentor-list-cleaner-mark-mentor-as-away-action": "Mentor $1 als net do markéiert, inaktiv zanter $2 Deeg",
+	"growthexperiments-mentor-list-cleaner-remove-mentor-action": "Mentor $1 entfernt, inaktiv zanter $2 Deeg"
 }
