@@ -112,6 +112,16 @@ module.exports = exports = defineComponent( {
 			type: Boolean,
 			default: false,
 		},
+		/**
+		 * Get the count of the stored selection, if the parent has it. The function returns a
+		 * promise that resolves with an object that has a `count` property, or null. The
+		 * dialog opens with the stored selection, so it shows this count when it opens, and
+		 * it does not ask for it.
+		 */
+		getSavedCount: {
+			type: Function,
+			default: null,
+		},
 	},
 	emits: [ 'update:open', 'saved', 'switch' ],
 	setup( props, { emit } ) {
@@ -126,6 +136,7 @@ module.exports = exports = defineComponent( {
 			status: countStatus,
 			message: countMessage,
 			update: updateCount,
+			show: showCount,
 			reset: resetCount,
 		} = useSuggestedEditsCount( ( taskTypes ) => api.fetchTasks(
 			taskTypes,
@@ -136,14 +147,26 @@ module.exports = exports = defineComponent( {
 			{ context: 'personaldashboard_suggestededits_filters' },
 		) );
 
+		// True from the moment the dialog opens until the first count. That count is for the
+		// stored selection.
+		let isOpening = false;
+
 		watch( effectiveSelection, ( taskTypes ) => {
+			const savedCount = isOpening && props.getSavedCount && props.getSavedCount();
+			isOpening = false;
+			if ( savedCount ) {
+				showCount( savedCount );
+				return;
+			}
 			updateCount( taskTypes.slice() );
 		}, { deep: true } );
 
 		watch( () => props.open, ( isOpen ) => {
 			if ( isOpen ) {
+				isOpening = true;
 				selected.value = filters.getSelectedTaskTypes().slice();
 			} else {
+				isOpening = false;
 				// The count is for a selection that is saved or discarded now. Remove it, and
 				// stop a count that has not finished, so that the dialog does not show it when
 				// it opens again.

@@ -109,6 +109,33 @@ describe( 'InterestSelectorDialog', () => {
 		expect( wrapper.find( textSelector ).text() ).toBe( countMessage );
 	} );
 
+	describe( 'when the parent has the count of the stored selection', () => {
+		it( 'shows that count when it opens, without a request', async () => {
+			await mountOpenDialog( { getSavedCount: () => Promise.resolve( { count: 0 } ) } );
+
+			expect( mockFetchTasks ).not.toHaveBeenCalled();
+			expect( wrapper.find( textSelector ).text() ).toBe( noneMessage );
+		} );
+
+		it( 'asks for the count when the selection changes', async () => {
+			await mountOpenDialog( { getSavedCount: () => Promise.resolve( { count: 0 } ) } );
+
+			wrapper.findComponent( { name: 'InterestSelector' } ).vm.$emit(
+				'update:chips', [ { label: 'Fungi', value: 'Fungi' } ],
+			);
+			await flushPromises();
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 1 );
+			expect( wrapper.find( textSelector ).text() ).toBe( findingMessage );
+		} );
+
+		it( 'asks for the count when it opens and the parent does not have it', async () => {
+			await mountOpenDialog( { getSavedCount: () => null } );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 1 );
+		} );
+	} );
+
 	describe( 'when no suggested edits match', () => {
 		it( 'links to the types of edits dialog after the status', async () => {
 			await mountOpenDialog( { switchable: true } );

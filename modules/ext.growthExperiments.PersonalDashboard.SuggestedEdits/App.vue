@@ -66,6 +66,7 @@
 				@update:open="closePanel"></about-panel>
 			<task-types-dialog
 				:open="openPanel === 'taskTypes'"
+				:get-saved-count="getSavedCount"
 				@update:open="closePanel"
 				@saved="onTaskTypesSaved"
 				@switch="switchPanel( 'interests' )"></task-types-dialog>
@@ -73,6 +74,7 @@
 				:stacked-actions="true"
 				:open="openPanel === 'interests'"
 				switchable
+				:get-saved-count="getSavedCount"
 				@update:open="closeInterestSelectorPanel"
 				@saved="onInterestsSaved"
 				@switch="switchPanel( 'taskTypes' )"></interest-selector-dialog>
@@ -195,7 +197,7 @@ module.exports = exports = defineComponent( {
 		},
 	},
 	setup() {
-		const { feedState, load } = useSuggestedEditsFeed();
+		const { feedState, load, getSavedCount } = useSuggestedEditsFeed();
 		const instrumentation = inject( 'HOME_MODULE_INSTRUMENTATION' );
 
 		const defaultPopoverAction = { label: mw.msg( 'growthexperiments-home-suggestededits-popover-button' ),
@@ -348,6 +350,7 @@ module.exports = exports = defineComponent( {
 			onTaskCardClick,
 			feedState,
 			headerMenu,
+			getSavedCount,
 			openPanel,
 			// A panel only ever reports itself closed: it is opened from the menu
 			// above or from the interests notice, never by its own model.

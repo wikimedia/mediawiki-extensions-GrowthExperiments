@@ -71,6 +71,16 @@ module.exports = exports = defineComponent( {
 			type: Boolean,
 			default: false,
 		},
+		/**
+		 * Get the count of the stored selection, if the parent has it. The function returns a
+		 * promise that resolves with an object that has a `count` property, or null. The
+		 * dialog opens with the stored selection, so it shows this count when it opens, and
+		 * it does not ask for it.
+		 */
+		getSavedCount: {
+			type: Function,
+			default: null,
+		},
 	},
 	emits: [ 'update:open', 'saved', 'switch' ],
 	setup( props, { emit } ) {
@@ -98,6 +108,7 @@ module.exports = exports = defineComponent( {
 			status: taskCountStatus,
 			message: taskCountMessage,
 			update: updateTaskCount,
+			show: showTaskCount,
 			reset: resetTaskCount,
 		} = useSuggestedEditsCount( ( selectedChips ) => tasksStore.api.fetchTasks(
 			tasksStore.filters.getTaskTypesQuery(),
@@ -112,8 +123,14 @@ module.exports = exports = defineComponent( {
 		) );
 
 		// The dialog is mounted with the page, so only look up counts once it is open.
-		watch( [ chips, wrappedOpen ], ( [ selectedChips, isOpen ] ) => {
+		watch( [ chips, wrappedOpen ], ( [ selectedChips, isOpen ], previous ) => {
 			if ( !isOpen ) {
+				return;
+			}
+			const isOpening = !previous || !previous[ 1 ];
+			const savedCount = isOpening && props.getSavedCount && props.getSavedCount();
+			if ( savedCount ) {
+				showTaskCount( savedCount );
 				return;
 			}
 			updateTaskCount( selectedChips );

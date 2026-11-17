@@ -82,12 +82,13 @@ function countResponse( count ) {
 
 /**
  * @param {string[]} storedTaskTypes
+ * @param {Object} [props]
  * @return {Promise<Object>} the mounted wrapper, with the first count request settled
  */
-async function mountOpen( storedTaskTypes ) {
+async function mountOpen( storedTaskTypes, props = {} ) {
 	mockFilters.getSelectedTaskTypes.mockReturnValue( storedTaskTypes );
 	const wrapper = mount( TaskTypesDialog, {
-		props: { open: true },
+		props: Object.assign( { open: true }, props ),
 		global: {
 			stubs: { teleport: true },
 			directives: { 'i18n-html': linkDirective },
@@ -372,6 +373,51 @@ describe( 'TaskTypesDialog', () => {
 		expect( mockFilters.savePreferences ).toHaveBeenCalled();
 		expect( wrapper.emitted( 'saved' ) ).toHaveLength( 1 );
 		expect( wrapper.emitted( 'update:open' ) ).toEqual( [ [ false ] ] );
+	} );
+
+	describe( 'when the parent has the count of the stored selection', () => {
+		it( 'shows that count when it opens, without a request', async () => {
+			const getSavedCount = jest.fn( () => Promise.resolve( { count: 0 } ) );
+			const wrapper = await mountOpen( [ 'copyedit' ], { getSavedCount } );
+
+			expect( mockApi.fetchTasks ).not.toHaveBeenCalled();
+			expect( countText( wrapper ).text() ).toBe( NONE_MESSAGE );
+		} );
+
+		it( 'asks for the count when the selection changes', async () => {
+			const getSavedCount = jest.fn( () => Promise.resolve( { count: 0 } ) );
+			const wrapper = await mountOpen( [ 'copyedit' ], { getSavedCount } );
+
+			await checkbox( wrapper, 'expand' ).setValue( true );
+			await flushPromises();
+
+			expect( mockApi.fetchTasks ).toHaveBeenCalledTimes( 1 );
+			expect( countText( wrapper ).text() ).toBe( COUNT_MESSAGE );
+		} );
+
+		it( 'shows that count again when it opens again', async () => {
+			const getSavedCount = jest.fn( () => Promise.resolve( { count: 0 } ) );
+			const wrapper = await mountOpen( [ 'copyedit' ], { getSavedCount } );
+			await checkbox( wrapper, 'expand' ).setValue( true );
+			await flushPromises();
+
+			await wrapper.setProps( { open: false } );
+			await wrapper.setProps( { open: true } );
+			await flushPromises();
+
+			expect( getSavedCount ).toHaveBeenCalledTimes( 2 );
+			expect( mockApi.fetchTasks ).toHaveBeenCalledTimes( 1 );
+			expect( countText( wrapper ).text() ).toBe( NONE_MESSAGE );
+		} );
+	} );
+
+	it( 'asks for the count when it opens and the parent does not have it', async () => {
+		const getSavedCount = jest.fn( () => null );
+		const wrapper = await mountOpen( [ 'copyedit' ], { getSavedCount } );
+
+		expect( getSavedCount ).toHaveBeenCalled();
+		expect( mockApi.fetchTasks ).toHaveBeenCalledTimes( 1 );
+		expect( countText( wrapper ).text() ).toBe( COUNT_MESSAGE );
 	} );
 
 	it( 'leaves the store alone on Cancel', async () => {

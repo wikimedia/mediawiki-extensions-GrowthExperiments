@@ -19,6 +19,19 @@ const { api, filters } = newcomerTasks;
 // unchanged rather than blanking it.
 let lastItems = [];
 
+// The count of the last load, and the stored selection that the load asked for. A
+// filter dialog opens with the stored selection, so it can show this count, and it
+// does not have to ask again.
+let savedCount = null;
+
+/**
+ * @return {string} Identifies the stored selection. It changes when the user saves
+ *   other task types or interests.
+ */
+function getStoredSelectionKey() {
+	return JSON.stringify( [ filters.getTaskTypesQuery(), filters.getSelectedInterests() ] );
+}
+
 /**
  * Fetch the viewer's suggested edits, most relevant first.
  *
@@ -41,7 +54,7 @@ async function fetchSuggestedEdits( limit, ready ) {
 		 * keeps one task set per user, so a request that disagrees with the
 		 * Homepage's evicts it and pays for a fresh search.
 		 */
-		result = await api.fetchTasks( filters.getTaskTypesQuery(), filters.getFiltersQuery(), {
+		const request = api.fetchTasks( filters.getTaskTypesQuery(), filters.getFiltersQuery(), {
 			// prop=description comes from Wikibase Client, so asking for it on a
 			// wiki without that extension fails the whole query rather than just
 			// leaving the field out. The module tells us whether to ask.
@@ -49,6 +62,21 @@ async function fetchSuggestedEdits( limit, ready ) {
 			size: limit,
 			context: 'personaldashboard_suggestededits',
 		} );
+		// The size of the request does not change the count: the API counts a pool of
+		// tasks that has a fixed size. A new promise, so that a dialog cannot abort the
+		// request of the feed.
+		const count = {
+			key: getStoredSelectionKey(),
+			promise: Promise.resolve( request ).then( ( data ) => ( { count: data.count } ) ),
+		};
+		savedCount = count;
+		count.promise.catch( () => {
+			// A dialog that opens after the failure asks for the count itself.
+			if ( savedCount === count ) {
+				savedCount = null;
+			}
+		} );
+		result = await request;
 	} catch ( reason ) {
 		// An abort is not a failure: GrowthTasksApi routes it through the same
 		// rejection channel with isRealError false, and the Homepage module guards
@@ -74,11 +102,29 @@ async function fetchSuggestedEdits( limit, ready ) {
 const { feedState, load } = useFeedState( fetchSuggestedEdits );
 
 /**
- * @return {{feedState: Object, load: function(number): Promise<void>}} The
- *   shared feed contract for this module (see useFeedState.js), and its loader.
+ * Get the count of the stored selection, from the last load.
+ *
+ * The stored selection changes before the next load gives its count: when the user
+ * saves, during the save, when the save fails, and when the next load does not start
+ * because a load continues (see useFeedState). Then there is no count.
+ *
+ * @return {Promise<{count: number}>|null} Resolves with the count, also while the load
+ *   continues. Null when no load gave the count of the stored selection.
+ */
+function getSavedCount() {
+	return savedCount && savedCount.key === getStoredSelectionKey() ?
+		savedCount.promise :
+		null;
+}
+
+/**
+ * @return {{feedState: Object, load: function(number): Promise<void>,
+ *   getSavedCount: function(): (Promise<{count: number}>|null)}} The shared feed
+ *   contract for this module (see useFeedState.js), its loader, and the count of the
+ *   stored selection.
  */
 function useSuggestedEditsFeed() {
-	return { feedState, load };
+	return { feedState, load, getSavedCount };
 }
 
 module.exports = { useSuggestedEditsFeed };

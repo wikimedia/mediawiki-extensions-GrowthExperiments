@@ -176,6 +176,63 @@ describe( 'useSuggestedEditsCount', () => {
 		expect( message.value ).toBe( '' );
 	} );
 
+	describe( 'show()', () => {
+		it( 'shows that it is finding suggested edits, then the count, without a request', async () => {
+			const other = makeRequest();
+			const { status, count, show } = setup();
+
+			show( other.request );
+			expect( status.value ).toBe( 'loading' );
+
+			other.resolve( 3 );
+			await flushPromises();
+			expect( fetchCount ).not.toHaveBeenCalled();
+			expect( status.value ).toBe( 'found' );
+			expect( count.value ).toBe( 3 );
+		} );
+
+		it( 'does not stop the other request when the count changes or stops', () => {
+			const other = makeRequest();
+			fetchCount.mockReturnValue( makeRequest().request );
+			const { show, update, reset } = setup();
+
+			show( other.request );
+			update( [ 'copyedit' ] );
+			show( other.request );
+			reset();
+
+			expect( other.request.abort ).not.toHaveBeenCalled();
+		} );
+
+		it( 'ignores the other request after update()', async () => {
+			const other = makeRequest();
+			const pending = makeRequest();
+			fetchCount.mockReturnValue( pending.request );
+			const { count, show, update } = setup();
+
+			show( other.request );
+			update( [ 'copyedit' ] );
+			other.resolve( 3 );
+			await flushPromises();
+			expect( count.value ).toBeNull();
+
+			pending.resolve( 7 );
+			await flushPromises();
+			expect( count.value ).toBe( 7 );
+		} );
+
+		it( 'stops the request of update()', () => {
+			const pending = makeRequest();
+			fetchCount.mockReturnValue( pending.request );
+			const { show, update } = setup();
+
+			update( [ 'copyedit' ] );
+			show( makeRequest().request );
+
+			expect( pending.request.abort ).toHaveBeenCalled();
+		} );
+	} );
+
 	it( 'stops the request when its scope stops', () => {
 		const pending = makeRequest();
 		fetchCount.mockReturnValue( pending.request );

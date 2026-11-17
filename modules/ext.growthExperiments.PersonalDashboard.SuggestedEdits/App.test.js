@@ -24,13 +24,13 @@ jest.mock( './TaskCard.vue', () => ( {
 } ) );
 jest.mock( './TaskTypesDialog.vue', () => ( {
 	name: 'TaskTypesDialog',
-	props: [ 'open' ],
+	props: [ 'open', 'getSavedCount' ],
 	emits: [ 'update:open', 'saved', 'switch' ],
 	render: () => null,
 } ) );
 jest.mock( './InterestSelectorDialog.vue', () => ( {
 	name: 'InterestSelectorDialog',
-	props: { open: Boolean, stackedActions: Boolean, switchable: Boolean },
+	props: { open: Boolean, stackedActions: Boolean, switchable: Boolean, getSavedCount: Function },
 	emits: [ 'update:open', 'saved', 'switch' ],
 	render: () => null,
 } ), { virtual: true } );
@@ -44,10 +44,12 @@ jest.mock( './WelcomeBackDialog.vue', () => ( {
 const mockLoad = jest.fn( () => Promise.resolve() );
 const mockMenuFocus = jest.fn();
 const mockFeedState = { items: [], isLoading: true, error: null };
+const mockGetSavedCount = jest.fn();
 jest.mock( './useSuggestedEditsFeed.js', () => ( {
 	useSuggestedEditsFeed: () => ( {
 		feedState: mockFeedState,
 		load: mockLoad,
+		getSavedCount: mockGetSavedCount,
 	} ),
 } ) );
 jest.mock( 'ext.personalDashboard.common', () => ( {
@@ -673,5 +675,15 @@ describe( 'App switching filter dialogs', () => {
 
 		expect( wrapper.find( '.growthexperiments-interests-notice' ).exists() ).toBe( false );
 		expect( taskTypesDialog( wrapper ).props( 'open' ) ).toBe( true );
+	} );
+} );
+
+describe( 'App filter dialogs', () => {
+	it( 'gives both dialogs the count of the feed', () => {
+		const wrapper = mountApp( null );
+
+		expect( wrapper.findComponent( { name: 'TaskTypesDialog' } ).props( 'getSavedCount' ) )
+			.toBe( mockGetSavedCount );
+		expect( interestSelector( wrapper ).props( 'getSavedCount' ) ).toBe( mockGetSavedCount );
 	} );
 } );

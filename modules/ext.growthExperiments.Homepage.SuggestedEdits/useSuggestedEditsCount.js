@@ -17,6 +17,7 @@ const NONE_MESSAGE = 'growthexperiments-home-suggestededits-filters-none';
  * @property {ComputedRef<string>} message Status message for the user. It is empty when the
  *  status is "idle" or "error".
  * @property {function(*): void} update Count the suggested edits for a selection
+ * @property {function(Promise): void} show Show a count that another request gets
  * @property {function(): void} reset Stop the count, and go back to the "idle" status
  */
 
@@ -50,16 +51,12 @@ function useSuggestedEditsCount( fetchCount ) {
 	}
 
 	/**
-	 * @param {*} selection
+	 * @param {jQuery.Promise|Promise} pending Resolves with an object that has a `count`
+	 *  property
 	 * @param {number} requestGeneration
 	 */
-	function fetch( selection, requestGeneration ) {
-		if ( requestGeneration !== generation ) {
-			return;
-		}
-		const thisRequest = fetchCount( selection );
-		request = thisRequest;
-		thisRequest.then( ( data ) => {
+	function track( pending, requestGeneration ) {
+		pending.then( ( data ) => {
 			if ( requestGeneration !== generation ) {
 				return;
 			}
@@ -76,6 +73,18 @@ function useSuggestedEditsCount( fetchCount ) {
 		} );
 	}
 
+	/**
+	 * @param {*} selection
+	 * @param {number} requestGeneration
+	 */
+	function fetch( selection, requestGeneration ) {
+		if ( requestGeneration !== generation ) {
+			return;
+		}
+		request = fetchCount( selection );
+		track( request, requestGeneration );
+	}
+
 	const fetchDebounced = mw.util.debounce( fetch, COUNT_DEBOUNCE_MS );
 
 	/**
@@ -89,6 +98,23 @@ function useSuggestedEditsCount( fetchCount ) {
 		count.value = null;
 		status.value = 'loading';
 		fetchDebounced( selection, generation );
+	}
+
+	/**
+	 * Show a count that another request gets, for example the request of the feed.
+	 *
+	 * Do not wait for the debounce. Do not stop the other request when the count changes or
+	 * stops, because the other request can have other users.
+	 *
+	 * @param {jQuery.Promise|Promise} pending Resolves with an object that has a `count`
+	 *  property
+	 */
+	function show( pending ) {
+		abortRequest();
+		generation++;
+		count.value = null;
+		status.value = 'loading';
+		track( pending, generation );
 	}
 
 	/**
@@ -121,6 +147,7 @@ function useSuggestedEditsCount( fetchCount ) {
 		count: readonly( count ),
 		message,
 		update,
+		show,
 		reset,
 	};
 }
