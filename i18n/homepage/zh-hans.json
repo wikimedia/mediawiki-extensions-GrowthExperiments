@@ -64,7 +64,7 @@
 	"growthexperiments-homepage-specialpage-list": "新手主页",
 	"growthexperiments-home-tab": "主页",
 	"growthexperiments-home-betafeature-label": "主页",
-	"growthexperiments-home-betafeature-description": "主页是旨在帮助读者和新手贡献者开始编辑、查看其编辑产生的影响，并与导师联系的个人页面。主页将会取代[https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage 新手主页]，并在首次发布后陆续添加更多功能。",
+	"growthexperiments-home-betafeature-description": "[[Special:Home|主页]]是旨在帮助读者和新手贡献者开始编辑、查看其编辑产生的影响，并与导师联系的个人页面。主页将会取代[https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage 新手主页]，并在首次发布后陆续添加更多功能。",
 	"growthexperiments-homepage-tab": "主页",
 	"tooltip-pt-homepage": "{{GENDER:|您}}的首页",
 	"prefs-homepage": "新手编者功能",

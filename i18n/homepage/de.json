@@ -41,7 +41,7 @@
 	"growthexperiments-homepage-specialpage-list": "Neulings-Startseite",
 	"growthexperiments-home-tab": "Startseite",
 	"growthexperiments-home-betafeature-label": "Startseite",
-	"growthexperiments-home-betafeature-description": "Die Startseite ist eine persönliche Seite, die Lesern und neuen Mitwirkenden den Einstieg ins Bearbeiten erleichtert, die Auswirkungen ihrer Änderungen sichtbar macht und die Verbindung zu ihrem Lotsen ermöglicht. Die Startseite ersetzt die bisherige Seite „Newcomer Homepage“ (https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage  Newcomer Homepage). Nach der ersten Veröffentlichung werden weitere Funktionen hinzugefügt.",
+	"growthexperiments-home-betafeature-description": "Die [[Special:Home|Startseite]] ist eine persönliche Seite, die Lesern und neuen Mitwirkenden den Einstieg ins Bearbeiten erleichtert, die Auswirkungen ihrer Änderungen sichtbar macht und die Verbindung zu ihrem Lotsen ermöglicht. Die Startseite ersetzt die bisherige Seite „Newcomer Homepage“ (https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage  Newcomer Homepage). Nach der ersten Veröffentlichung werden weitere Funktionen hinzugefügt.",
 	"growthexperiments-homepage-tab": "Startseite",
 	"tooltip-pt-homepage": "{{GENDER:|Deine}} Hauptseite",
 	"prefs-homepage": "Merkmale des Neulings-Editors",
