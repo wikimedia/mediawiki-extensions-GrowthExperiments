@@ -190,7 +190,7 @@
 	"growthexperiments-homepage-claimmentee-no-user": "Mentoroitavaa ei ole olemassa",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Olet}} jo käyttäjän {{GENDER:$1|$1}} mentori",
 	"growthexperiments-homepage-claimmentee-opt-out": "{{GENDER:$1|$1}} ei ole mukana mentoroinnissa",
-	"growthexperiments-homepage-enable-preference": "Ottaaksesi käyttöön tulokkaan aloitussivun, käy muuttamassa ”Aloittelevan muokkaajan toiminnot” -valintoja [[Special:Preferences#mw-prefsection-personal-homepage|asetuksissa]].",
+	"growthexperiments-homepage-enable-preference": "Ottaaksesi käyttöön tulokkaan aloitussivun käy muuttamassa ”Aloittelevan muokkaajan toiminnot” -valintoja [[Special:Preferences#mw-prefsection-personal-homepage|asetuksissasi]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Et}} ole tehnyt vielä yhtään muokkausta.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Vieraile {{GENDER:$1|aloitussivullasi}} ja aloita muokkaaminen!",
 	"growthexperiments-homepage-contributions-zero-button": "Siirry {{GENDER:$1|aloitussivullesi}}",
