@@ -238,7 +238,7 @@
 	"growthexperiments-home-suggestededits-menu-about": "Sobre Ediciones sugeridas",
 	"growthexperiments-home-suggestededits-about-intro": "Wikipedia está construida gracias a la colaboración de personas como tú.",
 	"growthexperiments-home-suggestededits-about-purpose": "Las sugerencias de edición te ayudan a encontrar artículos que necesitan mejoras.",
-	"growthexperiments-home-suggestededits-about-recommendations": "Las [Recomendaciones de $1] se basan en los intereses y los tipos de ediciones que hayas seleccionado. Puedes modificarlos en cualquier momento.",
+	"growthexperiments-home-suggestededits-about-recommendations": "Las [$1 recomendaciones] se basan en los intereses y los tipos de ediciones que hayas seleccionado. Puedes modificarlos en cualquier momento.",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Selecciona otros niveles de dificultad para encontrar ediciones sugeridas.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Selecciona otros intereses o niveles de dificultad para encontrar ediciones sugeridas.",
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Modifica {{GENDER:$1|tu}} filtro a \"Mostrar al menos uno de estos temas\" para más resultados",

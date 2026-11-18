@@ -2,11 +2,26 @@
 	"@metadata": {
 		"authors": [
 			"Jmarchn",
+			"Lluis tgn",
 			"Paucabot",
 			"Skurz0",
 			"Townie",
 			"Xavier Dengra"
 		]
 	},
-	"growthexperiments-desc": "Aquesta extensió conté proves en marxa per part de l'equip de Creixement."
+	"growthexperiments-desc": "Aquesta extensió conté proves en marxa per part de l'equip de Creixement.",
+	"accountsetup": "Configuració del compte",
+	"growthexperiments-account-setup-a11y-title": "Configuració del compte",
+	"growthexperiments-account-setup-skip-a11y-label": "Omet",
+	"growthexperiments-account-setup-back-a11y-label": "Enrere",
+	"growthexperiments-account-setup-step-counter": "$1 de $2",
+	"growthexperiments-account-setup-step-1-title": "Us donem la benvinguda a la $1, $2!",
+	"growthexperiments-account-setup-step-1-progress-button": "Personalitza la teva pàgina d'inici",
+	"growthexperiments-account-setup-step-2-title": "Què et porta a la $1?",
+	"growthexperiments-account-setup-step-2-skip-button": "Omet",
+	"growthexperiments-account-setup-step-3-title": "Quins són tres dels teus interessos?",
+	"growthexperiments-account-setup-step-3-finish-button": "Vés a la teva pàgina d'inici",
+	"growthexperiments-account-setup-motivation-option-reading-title": "Llegeix i explora",
+	"growthexperiments-account-setup-motivation-option-reading-description": "Descobreix, desa articles i juga a jocs.",
+	"growthexperiments-account-setup-motivation-option-editing-title": "Edita i contribueix"
 }

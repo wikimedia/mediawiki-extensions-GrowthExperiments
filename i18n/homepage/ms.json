@@ -3,6 +3,7 @@
 		"authors": [
 			"CyberTroopers",
 			"Hakimi97",
+			"Sergi0",
 			"Tofeiku"
 		]
 	},
@@ -209,7 +210,7 @@
 	"growthexperiments-home-suggestededits-menu-about": "Mengenai Suntingan yang dicadangkan",
 	"growthexperiments-home-suggestededits-about-intro": "Wikipedia dibina oleh orang seperti anda yang bekerjasama.",
 	"growthexperiments-home-suggestededits-about-purpose": "Suntingan yang dicadangkan membantu anda mencari rencana yang perlu ditambah baik.",
-	"growthexperiments-home-suggestededits-about-recommendations": "[ $1 Cadangan] adalah berdasarkan minat dan jenis suntingan yang anda pilih. Anda boleh mengubahnya pada bila-bila masa.",
+	"growthexperiments-home-suggestededits-about-recommendations": "[$1 Cadangan] adalah berdasarkan minat dan jenis suntingan yang anda pilih. Anda boleh mengubahnya pada bila-bila masa.",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Pilih tahap kesukaran lain untuk mencari suntingan yang dicadangkan.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Pilih minat atau tahap kesukaran lain untuk mencari suntingan yang dicadangkan.",
 	"growthexperiments-homepage-suggestededits-select-other-topic-mode": "Tukar tetapan penapis {{GENDER:$1|anda}} kepada \"Padankan sekurang-kurangnya satu topik yang dipilih\" untuk mendapat lebih banyak hasil",

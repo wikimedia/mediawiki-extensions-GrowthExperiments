@@ -30,7 +30,7 @@
 	"growthexperiments-homepage-specialpage-list": "لوحة المستخدم للوافد الجديد",
 	"growthexperiments-home-tab": "الاستقبال",
 	"growthexperiments-home-betafeature-label": "الاستقبال",
-	"growthexperiments-home-betafeature-description": "الاستقبال صفحة شخصية تساعد القراء والمساهمين الجدد على البدء في التحرير، ورؤية أثر تعديلاتهم، والتواصل مع مُرشدهم. سيحل الاستقبال محل [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage صفحة الاستقبال للوافدين الجدد]، وستُضاف ميزات إضافية بعد الإصدار الأولي.",
+	"growthexperiments-home-betafeature-description": "[[Special:Home|الاستقبال]] صفحة شخصية تساعد القراء والمساهمين الجدد على البدء في التحرير، ورؤية أثر تعديلاتهم، والتواصل مع مُرشدهم. سيحل الاستقبال محل [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage صفحة الاستقبال للوافدين الجدد]، وستُضاف ميزات إضافية بعد الإصدار الأولي.",
 	"growthexperiments-homepage-tab": "لوحة {{GENDER:|المستخدم|المستخدمة}}",
 	"tooltip-pt-homepage": "لوحة {{GENDER:|المستخدم|المستخدمة}} الخاصة بك",
 	"prefs-homepage": "مزايا التحرير للوافدين الجدد",
