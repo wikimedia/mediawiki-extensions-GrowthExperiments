@@ -36,18 +36,6 @@
 				:message="countMessage"
 				visible
 			></c-live-region>
-			<!-- Outside the live region: screen readers announce only the status. The space
-			separates the hint from the status. Vue removes a plain space at the start of an
-			element, so use an interpolation. -->
-			<!-- eslint-disable vue/no-useless-mustaches -->
-			<span
-				v-if="countStatus === 'none'"
-				class="growthexperiments-task-types-dialog__switch-hint"
-			>{{ ' ' }}<span
-				v-i18n-html:growthexperiments-home-suggestededits-difficulty-filters-none-hint="[ switchUrl ]"
-				@click="onSwitchHintClick"
-			></span></span>
-			<!-- eslint-enable vue/no-useless-mustaches -->
 		</template>
 	</cdx-dialog>
 </template>
@@ -123,7 +111,7 @@ module.exports = exports = defineComponent( {
 			default: null,
 		},
 	},
-	emits: [ 'update:open', 'saved', 'switch' ],
+	emits: [ 'update:open', 'saved' ],
 	setup( props, { emit } ) {
 		const { api, filters } = newcomerTasks;
 		// A local copy, so that Cancel discards the changes without a store rollback.
@@ -174,21 +162,6 @@ module.exports = exports = defineComponent( {
 			}
 		}, { immediate: true } );
 
-		// jqueryMsg accepts only a path or a URL as a link target. Link to the current page,
-		// and open the other dialog when the user clicks the link.
-		const switchUrl = mw.util.getUrl();
-
-		/**
-		 * @param {MouseEvent} event
-		 */
-		const onSwitchHintClick = ( event ) => {
-			if ( !event.target.closest( 'a' ) ) {
-				return;
-			}
-			event.preventDefault();
-			emit( 'switch' );
-		};
-
 		const wrappedOpen = useModelWrapper( toRef( props, 'open' ), emit, 'update:open' );
 
 		// Do not block Done while the count loads, or when it is zero or fails: the user
@@ -212,8 +185,6 @@ module.exports = exports = defineComponent( {
 			wrappedOpen,
 			countMessage,
 			countStatus,
-			switchUrl,
-			onSwitchHintClick,
 			primaryAction,
 			save,
 			defaultAction: {
@@ -240,16 +211,6 @@ module.exports = exports = defineComponent( {
 
 	&__live-region--none {
 		font-weight: @font-weight-bold;
-	}
-
-	&__switch-hint a {
-		font-weight: @font-weight-bold;
-
-		&:visited {
-			// The link points at the current page, so the browser always shows it as visited.
-			// It acts as a button, so keep the unvisited link color.
-			color: @color-progressive;
-		}
 	}
 }
 </style>

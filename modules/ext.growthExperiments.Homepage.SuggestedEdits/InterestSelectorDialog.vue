@@ -21,24 +21,12 @@
 				:message="taskCountMessage"
 				visible
 			></c-live-region>
-			<!-- Outside the live region: screen readers announce only the status. The space
-			separates the hint from the status. Vue removes a plain space at the start of an
-			element, so use an interpolation. -->
-			<!-- eslint-disable vue/no-useless-mustaches -->
-			<span
-				v-if="showSwitchHint"
-				class="ext-growthExperiments-interest-selector-dialog__switch-hint"
-			>{{ ' ' }}<span
-				v-i18n-html:growthexperiments-home-suggestededits-interest-filters-none-hint="[ switchUrl ]"
-				@click="onSwitchHintClick"
-			></span></span>
-			<!-- eslint-enable vue/no-useless-mustaches -->
 		</template>
 	</cdx-dialog>
 </template>
 
 <script>
-const { computed, defineComponent, toRef, ref, watch } = require( 'vue' );
+const { defineComponent, toRef, ref, watch } = require( 'vue' );
 const { CdxDialog, useModelWrapper } = require( './codex.js' );
 const InterestSelector = require( './InterestSelector.vue' );
 const CLiveRegion = require( './CLiveRegion.vue' );
@@ -64,14 +52,6 @@ module.exports = exports = defineComponent( {
 			default: false,
 		},
 		/**
-		 * Whether to link to the types of edits dialog when no suggested edits match. Set it
-		 * only when the parent handles the "switch" event.
-		 */
-		switchable: {
-			type: Boolean,
-			default: false,
-		},
-		/**
 		 * Get the count of the stored selection, if the parent has it. The function returns a
 		 * promise that resolves with an object that has a `count` property, or null. The
 		 * dialog opens with the stored selection, so it shows this count when it opens, and
@@ -82,7 +62,7 @@ module.exports = exports = defineComponent( {
 			default: null,
 		},
 	},
-	emits: [ 'update:open', 'saved', 'switch' ],
+	emits: [ 'update:open', 'saved' ],
 	setup( props, { emit } ) {
 		const tasksStore = rootStore.newcomerTasks;
 		const filtersStore = tasksStore.filters;
@@ -192,24 +172,6 @@ module.exports = exports = defineComponent( {
 			resetTaskCount();
 		} );
 
-		const showSwitchHint = computed(
-			() => props.switchable && taskCountStatus.value === 'none',
-		);
-		// jqueryMsg accepts only a path or a URL as a link target. Link to the current page,
-		// and open the other dialog when the user clicks the link.
-		const switchUrl = mw.util.getUrl();
-
-		/**
-		 * @param {MouseEvent} event
-		 */
-		function onSwitchHintClick( event ) {
-			if ( !event.target.closest( 'a' ) ) {
-				return;
-			}
-			event.preventDefault();
-			emit( 'switch' );
-		}
-
 		const isMobile = mw.config.get( 'skin' ) === 'minerva';
 
 		return {
@@ -218,9 +180,6 @@ module.exports = exports = defineComponent( {
 			wrappedOpen,
 			taskCountMessage,
 			taskCountStatus,
-			showSwitchHint,
-			switchUrl,
-			onSwitchHintClick,
 			primaryAction,
 			defaultAction,
 			saveSelection,
@@ -245,16 +204,6 @@ module.exports = exports = defineComponent( {
 
 	&__live-region--none {
 		font-weight: @font-weight-bold;
-	}
-
-	&__switch-hint a {
-		font-weight: @font-weight-bold;
-
-		&:visited {
-			// The link points at the current page, so the browser always shows it as visited.
-			// It acts as a button, so keep the unvisited link color.
-			color: @color-progressive;
-		}
 	}
 }
 </style>
