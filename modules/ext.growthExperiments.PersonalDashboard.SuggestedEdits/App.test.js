@@ -43,7 +43,7 @@ jest.mock( './WelcomeBackDialog.vue', () => ( {
 
 const mockLoad = jest.fn( () => Promise.resolve() );
 const mockMenuFocus = jest.fn();
-const mockFeedState = { items: [], isLoading: true, error: null };
+const mockFeedState = require( 'vue' ).reactive( { items: [], isLoading: true, error: null } );
 const mockGetSavedCount = jest.fn();
 jest.mock( './useSuggestedEditsFeed.js', () => ( {
 	useSuggestedEditsFeed: () => ( {
@@ -56,7 +56,8 @@ jest.mock( 'ext.personalDashboard.common', () => ( {
 	FULL_LIMIT: 20,
 	FeedCard: { render: () => null },
 	FeedPanel: {
-		props: [ 'items' ],
+		name: 'FeedPanel',
+		props: [ 'items', 'emptyLabel' ],
 		render() {
 			return require( 'vue' ).h(
 				'div',
@@ -96,6 +97,7 @@ const { mount, flushPromises } = require( '@vue/test-utils' );
 const App = require( './App.vue' );
 
 const mockSaveOption = jest.fn();
+global.mw.storage = { session: { get: jest.fn( () => null ), set: jest.fn() } };
 const mockInstrumentation = {
 	recordModuleShownAfterVisibleOnce: jest.fn(),
 	sendClick: jest.fn(),
@@ -104,9 +106,10 @@ const mockInstrumentation = {
 
 /**
  * @param {string|null} action Value of wgGEHomeOnboardingAction
+ * @param {Object} [options] More mount options
  * @return {Object} the mounted wrapper
  */
-function mountApp( action ) {
+function mountApp( action, options ) {
 	mw.config.get.mockImplementation(
 		( key ) => ( key === 'wgGEHomeOnboardingAction' ? action : undefined ),
 	);
@@ -116,6 +119,7 @@ function mountApp( action ) {
 			provide: { HOME_MODULE_INSTRUMENTATION: mockInstrumentation },
 			stubs: { teleport: true, CdxPopover: true },
 		},
+		...options,
 	} );
 }
 
@@ -485,6 +489,7 @@ describe( 'App instrumentation', () => {
 		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith( {
 			// eslint-disable-next-line camelcase
 			has_suggestions: false,
+			fallback: 'none_found',
 			interests: 2,
 			// eslint-disable-next-line camelcase
 			task_types: 1,
@@ -504,7 +509,7 @@ describe( 'App instrumentation', () => {
 
 		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith(
 			// eslint-disable-next-line camelcase
-			expect.objectContaining( { has_suggestions: true } ),
+			expect.objectContaining( { has_suggestions: true, fallback: 'not_used' } ),
 		);
 	} );
 
@@ -520,7 +525,7 @@ describe( 'App instrumentation', () => {
 		expect( mockInstrumentation.sendModuleReady ).toHaveBeenCalledTimes( 1 );
 		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith(
 			// eslint-disable-next-line camelcase
-			expect.objectContaining( { has_suggestions: false, has_error: true } ),
+			expect.objectContaining( { has_suggestions: false, fallback: 'not_used', has_error: true } ),
 		);
 	} );
 
@@ -585,6 +590,7 @@ describe( 'App instrumentation', () => {
 		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith( {
 			// eslint-disable-next-line camelcase
 			has_suggestions: false,
+			fallback: 'none_found',
 			interests: 2,
 			// eslint-disable-next-line camelcase
 			task_types: 3,
@@ -609,6 +615,7 @@ describe( 'App instrumentation', () => {
 		expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith( {
 			// eslint-disable-next-line camelcase
 			has_suggestions: false,
+			fallback: 'none_found',
 			interests: 1,
 			// eslint-disable-next-line camelcase
 			task_types: 1,
@@ -626,5 +633,221 @@ describe( 'App filter dialogs', () => {
 		expect( wrapper.findComponent( { name: 'TaskTypesDialog' } ).props( 'getSavedCount' ) )
 			.toBe( mockGetSavedCount );
 		expect( interestSelector( wrapper ).props( 'getSavedCount' ) ).toBe( mockGetSavedCount );
+	} );
+} );
+
+describe( 'App no match notice', () => {
+	/**
+	 * @param {Object} wrapper
+	 * @return {Object} the wrapper of the no match notice
+	 */
+	function noMatchNotice( wrapper ) {
+		return wrapper.findComponent( { name: 'NoMatchNotice' } );
+	}
+
+	beforeEach( () => {
+		mockLoad.mockClear();
+		mockMenuFocus.mockClear();
+		mockFilters.getSelectedInterests.mockReturnValue( [ 'Dandelion' ] );
+		mockFilters.getSelectedTaskTypes.mockReturnValue( [ 'copyedit' ] );
+		mw.storage.session.get.mockReset().mockReturnValue( null );
+		mw.storage.session.set.mockClear();
+		mockFeedState.isLoading = false;
+	} );
+
+	afterEach( () => {
+		mockFeedState.isLoading = true;
+		mockFeedState.items = [];
+		mockFeedState.error = null;
+	} );
+
+	it( 'shows the notice instead of the empty state when no tasks match', () => {
+		const wrapper = mountApp( null );
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( true );
+		expect( wrapper.findComponent( { name: 'FeedPanel' } ).props( 'emptyLabel' ) ).toBe( '' );
+	} );
+
+	it( 'does not show the notice while the first load continues', () => {
+		mockFeedState.isLoading = true;
+		const wrapper = mountApp( null );
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( false );
+	} );
+
+	it( 'does not show the notice for the empty feed before the first load', () => {
+		mockLoad.mockImplementationOnce( () => {
+			mockFeedState.isLoading = true;
+			return new Promise( () => {} );
+		} );
+		const wrapper = mountApp( null );
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( false );
+	} );
+
+	it( 'does not save the interests notice dismissal when the no match notice replaces it', async () => {
+		mockFilters.getSelectedInterests.mockReturnValue( [] );
+		mockSaveOption.mockReset().mockResolvedValue( {} );
+		global.mw.Api = jest.fn( () => ( { saveOption: mockSaveOption } ) );
+		const wrapper = mountApp( 'show-no-interests-notice' );
+
+		noMatchNotice( wrapper ).vm.$emit( 'select-interests' );
+		await flushPromises();
+		interestSelector( wrapper ).vm.$emit( 'update:open', false );
+		await flushPromises();
+
+		expect( mockSaveOption ).not.toHaveBeenCalled();
+		expect( mockMenuFocus ).not.toHaveBeenCalled();
+	} );
+
+	it( 'does not show the notice when tasks match', () => {
+		mockFeedState.items = [ { id: 'Dandelion', title: 'Dandelion', tasktype: 'copyedit' } ];
+		const wrapper = mountApp( null );
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( false );
+	} );
+
+	it( 'shows the notice with the fallback items', () => {
+		mockFeedState.items = [ { id: 'Tulip', title: 'Tulip', tasktype: 'copyedit', isFallback: true } ];
+		const wrapper = mountApp( null );
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( true );
+		expect( wrapper.findAllComponents( { name: 'TaskCard' } ) ).toHaveLength( 1 );
+	} );
+
+	it( 'hides the notice when the next load gives matching tasks instead of fallback items', async () => {
+		mockFeedState.items = [ { id: 'Tulip', title: 'Tulip', tasktype: 'copyedit', isFallback: true } ];
+		const wrapper = mountApp( null );
+
+		mockFeedState.isLoading = true;
+		await flushPromises();
+		mockFeedState.items = [ { id: 'Dandelion', title: 'Dandelion', tasktype: 'copyedit', isFallback: false } ];
+		mockFeedState.isLoading = false;
+		await flushPromises();
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( false );
+	} );
+
+	it( 'keeps the fallback items when the user dismisses the notice', async () => {
+		mockFeedState.items = [ { id: 'Tulip', title: 'Tulip', tasktype: 'copyedit', isFallback: true } ];
+		const wrapper = mountApp( null );
+
+		noMatchNotice( wrapper ).vm.$emit( 'dismiss' );
+		await flushPromises();
+
+		expect( wrapper.findAllComponents( { name: 'TaskCard' } ) ).toHaveLength( 1 );
+	} );
+
+	it.each( [ 'selected_task_types', 'all_task_types' ] )(
+		'sends the %s fallback tier and no suggestions when the feed shows fallback items',
+		async ( fallbackTier ) => {
+			mockInstrumentation.recordModuleShownAfterVisibleOnce.mockClear();
+			mockFeedState.items = [
+				{ id: 'Tulip', title: 'Tulip', tasktype: 'copyedit', isFallback: true, fallbackTier },
+			];
+			mountApp( null );
+
+			await flushPromises();
+
+			expect( mockInstrumentation.recordModuleShownAfterVisibleOnce ).toHaveBeenCalledWith(
+				// eslint-disable-next-line camelcase
+				expect.objectContaining( { has_suggestions: false, fallback: fallbackTier } ),
+			);
+		},
+	);
+
+	it( 'does not show the notice when the load fails', () => {
+		mockFeedState.error = new Error( 'http' );
+		const wrapper = mountApp( null );
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( false );
+	} );
+
+	it( 'keeps the notice while the feed loads again', async () => {
+		const wrapper = mountApp( null );
+
+		mockFeedState.isLoading = true;
+		await flushPromises();
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( true );
+	} );
+
+	it( 'hides the notice when the next load gives tasks', async () => {
+		const wrapper = mountApp( null );
+
+		mockFeedState.isLoading = true;
+		await flushPromises();
+		mockFeedState.items = [ { id: 'Dandelion', title: 'Dandelion', tasktype: 'copyedit' } ];
+		mockFeedState.isLoading = false;
+		await flushPromises();
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( false );
+	} );
+
+	it( 'opens the interest selector from the notice', async () => {
+		const wrapper = mountApp( null );
+
+		noMatchNotice( wrapper ).vm.$emit( 'select-interests' );
+		await flushPromises();
+
+		expect( interestSelector( wrapper ).props( 'open' ) ).toBe( true );
+	} );
+
+	it( 'opens the types of edits dialog from the notice', async () => {
+		const wrapper = mountApp( null );
+
+		noMatchNotice( wrapper ).vm.$emit( 'select-task-types' );
+		await flushPromises();
+
+		expect( wrapper.findComponent( { name: 'TaskTypesDialog' } ).props( 'open' ) ).toBe( true );
+	} );
+
+	it( 'hides the notice for the session and shows the empty state when the user dismisses it', async () => {
+		const wrapper = mountApp( null );
+
+		noMatchNotice( wrapper ).vm.$emit( 'dismiss' );
+		await flushPromises();
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( false );
+		expect( mw.storage.session.set ).toHaveBeenCalledWith(
+			'ge-home-suggestededits-nomatch-notice-dismissed', '1',
+		);
+		expect( wrapper.findComponent( { name: 'FeedPanel' } ).props( 'emptyLabel' ) )
+			.toBe( 'growthexperiments-home-suggestededits-empty' );
+	} );
+
+	it( 'does not show the notice when the user dismissed it in this session', () => {
+		mw.storage.session.get.mockReturnValue( '1' );
+		const wrapper = mountApp( null );
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( false );
+	} );
+
+	it( 'shows the no match notice instead of the interests notice', () => {
+		mockFilters.getSelectedInterests.mockReturnValue( [] );
+		const wrapper = mountApp( 'show-no-interests-notice' );
+
+		expect( noMatchNotice( wrapper ).exists() ).toBe( true );
+		expect( wrapper.findComponent( { name: 'InterestsNotice' } ).exists() ).toBe( false );
+	} );
+
+	it( 'moves the focus to the menu button when the notice goes with the focus', async () => {
+		const wrapper = mountApp( null, { attachTo: document.body } );
+		wrapper.find( '.growthexperiments-nomatch-notice button' ).element.focus();
+
+		noMatchNotice( wrapper ).vm.$emit( 'dismiss' );
+		await flushPromises();
+
+		expect( mockMenuFocus ).toHaveBeenCalledTimes( 1 );
+		wrapper.unmount();
+	} );
+
+	it( 'does not move the focus when the notice goes without the focus', async () => {
+		const wrapper = mountApp( null );
+
+		noMatchNotice( wrapper ).vm.$emit( 'dismiss' );
+		await flushPromises();
+
+		expect( mockMenuFocus ).not.toHaveBeenCalled();
 	} );
 } );

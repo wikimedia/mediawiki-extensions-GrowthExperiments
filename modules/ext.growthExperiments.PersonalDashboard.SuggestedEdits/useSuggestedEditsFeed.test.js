@@ -13,6 +13,7 @@ const mockFilters = {
 	getSelectedInterests: jest.fn(),
 };
 jest.mock( 'ext.growthExperiments.DataStore', () => ( {
+	CONSTANTS: { AVAILABLE_TASK_TYPE_IDS: [ 'copyedit', 'expand' ] },
 	newcomerTasks: { api: { fetchTasks: mockFetchTasks }, filters: mockFilters },
 } ), { virtual: true } );
 
@@ -20,11 +21,22 @@ const { flushPromises } = require( '@vue/test-utils' );
 
 /**
  * @param {number} count
+ * @param {string[]} [titles] Titles of the tasks
  * @return {Object} An abortable jQuery promise, like GrowthTasksApi.fetchTasks returns
  */
-function tasksResponse( count ) {
-	return $.Deferred().resolve( { count, tasks: [ { title: 'Dandelion' } ] } )
+function tasksResponse( count, titles = [ 'Dandelion' ] ) {
+	return $.Deferred().resolve( { count, tasks: titles.map( ( title ) => ( { title } ) ) } )
 		.promise( { abort: jest.fn() } );
+}
+
+/**
+ * @param {Object} interestFilters The filters argument of a fetchTasks call
+ * @return {string[]|null} The interests that the request sends, or null for none
+ */
+function sentInterests( interestFilters ) {
+	return interestFilters && interestFilters.hasSelection() ?
+		interestFilters.getInterests() :
+		null;
 }
 
 describe( 'useSuggestedEditsFeed', () => {
@@ -49,7 +61,7 @@ describe( 'useSuggestedEditsFeed', () => {
 		expect( mockFetchTasks ).toHaveBeenCalledWith(
 			[ 'copyedit' ], null, expect.objectContaining( { size: 20 } ),
 		);
-		expect( items ).toEqual( [ { id: 'Dandelion', title: 'Dandelion' } ] );
+		expect( items ).toEqual( [ { id: 'Dandelion', title: 'Dandelion', isFallback: false } ] );
 	} );
 
 	it( 'waits for the given promise before it asks for the tasks', async () => {
@@ -121,6 +133,163 @@ describe( 'useSuggestedEditsFeed', () => {
 			await flushPromises();
 
 			expect( getSavedCount() ).toBeNull();
+		} );
+	} );
+
+	describe( 'the fallback items', () => {
+		beforeEach( () => {
+			mockFetchTasks
+				.mockImplementationOnce( () => tasksResponse( 0, [] ) )
+				.mockImplementation( () => tasksResponse( 30, [ 'Tulip' ] ) );
+		} );
+
+		it( 'are not requested when tasks match the selection', async () => {
+			mockFetchTasks.mockReset().mockImplementation( () => tasksResponse( 12 ) );
+			const { load } = useSuggestedEditsFeed();
+
+			await load( 10 );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 1 );
+		} );
+
+		it( 'ignore the interests and keep the task types when no tasks match', async () => {
+			const { load } = useSuggestedEditsFeed();
+
+			const items = await load( 10 );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 2 );
+			const [ taskTypes, interestFilters, config ] = mockFetchTasks.mock.calls[ 1 ];
+			expect( taskTypes ).toEqual( [ 'copyedit' ] );
+			expect( sentInterests( interestFilters ) ).toEqual( [] );
+			expect( config ).toEqual( expect.objectContaining( {
+				size: 10,
+				context: 'personaldashboard_suggestededits_fallback',
+			} ) );
+			expect( items ).toEqual( [
+				{ id: 'Tulip', title: 'Tulip', isFallback: true, fallbackTier: 'selected_task_types' },
+			] );
+		} );
+
+		it( 'ask for all available task types when no tasks match the selected task types', async () => {
+			mockFetchTasks.mockReset()
+				.mockImplementationOnce( () => tasksResponse( 0, [] ) )
+				.mockImplementationOnce( () => tasksResponse( 0, [] ) )
+				.mockImplementation( () => tasksResponse( 30, [ 'Tulip' ] ) );
+			const { load } = useSuggestedEditsFeed();
+
+			const items = await load( 10 );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 3 );
+			const [ taskTypes, interestFilters, config ] = mockFetchTasks.mock.calls[ 2 ];
+			expect( taskTypes ).toEqual( [ 'copyedit', 'expand' ] );
+			expect( sentInterests( interestFilters ) ).toEqual( [] );
+			expect( config ).toEqual( expect.objectContaining( {
+				context: 'personaldashboard_suggestededits_fallback_all',
+			} ) );
+			expect( items ).toEqual( [
+				{ id: 'Tulip', title: 'Tulip', isFallback: true, fallbackTier: 'all_task_types' },
+			] );
+		} );
+
+		it( 'ask only for all available task types when the user has no interests', async () => {
+			mockFilters.getSelectedInterests.mockReturnValue( [] );
+			const { load } = useSuggestedEditsFeed();
+
+			await load( 10 );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 2 );
+			expect( mockFetchTasks.mock.calls[ 1 ][ 0 ] ).toEqual( [ 'copyedit', 'expand' ] );
+		} );
+
+		it( 'ask only once when the user selected all available task types', async () => {
+			mockFilters.getTaskTypesQuery.mockReturnValue( [ 'copyedit', 'expand' ] );
+			mockFetchTasks.mockReset().mockImplementation( () => tasksResponse( 0, [] ) );
+			const { load } = useSuggestedEditsFeed();
+
+			const items = await load( 10 );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 2 );
+			expect( items ).toEqual( [] );
+		} );
+
+		it( 'are empty when no tasks match any task type', async () => {
+			mockFetchTasks.mockReset().mockImplementation( () => tasksResponse( 0, [] ) );
+			const { load } = useSuggestedEditsFeed();
+
+			const items = await load( 10 );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 3 );
+			expect( items ).toEqual( [] );
+		} );
+
+		it( 'are the same in the next load with the same task types', async () => {
+			const { load } = useSuggestedEditsFeed();
+			const first = await load( 10 );
+			mockFetchTasks.mockImplementationOnce( () => tasksResponse( 0, [] ) );
+			mockFilters.getSelectedInterests.mockReturnValue( [ 'Fungi' ] );
+
+			const second = await load( 10 );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 3 );
+			expect( second ).toEqual( first );
+		} );
+
+		it( 'get the tier of the request that gives them, also when they are stored', async () => {
+			mockFilters.getTaskTypesQuery.mockReturnValue( [ 'copyedit', 'expand' ] );
+			const { load } = useSuggestedEditsFeed();
+			const first = await load( 10 );
+			expect( first[ 0 ].fallbackTier ).toBe( 'selected_task_types' );
+			// Without interests, only the request for all the task types is sent. It has the
+			// same key as the request for the selected task types above.
+			mockFetchTasks.mockImplementationOnce( () => tasksResponse( 0, [] ) );
+			mockFilters.getSelectedInterests.mockReturnValue( [] );
+
+			const second = await load( 10 );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 3 );
+			expect( second[ 0 ].fallbackTier ).toBe( 'all_task_types' );
+		} );
+
+		it( 'are requested again for other task types', async () => {
+			const { load } = useSuggestedEditsFeed();
+			await load( 10 );
+			mockFetchTasks.mockImplementationOnce( () => tasksResponse( 0, [] ) );
+			mockFilters.getTaskTypesQuery.mockReturnValue( [ 'expand' ] );
+
+			await load( 10 );
+
+			expect( mockFetchTasks ).toHaveBeenCalledTimes( 4 );
+			expect( mockFetchTasks.mock.calls[ 3 ][ 0 ] ).toEqual( [ 'expand' ] );
+		} );
+
+		it( 'do not change the count of the stored selection', async () => {
+			const { load, getSavedCount } = useSuggestedEditsFeed();
+
+			await load( 10 );
+
+			await expect( getSavedCount() ).resolves.toEqual( { count: 0 } );
+		} );
+
+		it( 'keep the last items when the fallback request is aborted', async () => {
+			mockFetchTasks.mockReset()
+				.mockImplementationOnce( () => tasksResponse( 12 ) )
+				.mockImplementationOnce( () => tasksResponse( 0, [] ) )
+				.mockImplementationOnce( () => $.Deferred().reject( 'abort' ).promise( { abort: jest.fn() } ) );
+			const { load } = useSuggestedEditsFeed();
+			const first = await load( 10 );
+
+			const second = await load( 10 );
+
+			expect( second ).toBe( first );
+		} );
+
+		it( 'fail the load when the fallback request fails', async () => {
+			mockFetchTasks.mockReset()
+				.mockImplementationOnce( () => tasksResponse( 0, [] ) )
+				.mockImplementationOnce( () => $.Deferred().reject( 'http' ).promise( { abort: jest.fn() } ) );
+			const { load } = useSuggestedEditsFeed();
+
+			await expect( load( 10 ) ).rejects.toThrow( 'http' );
 		} );
 	} );
 } );

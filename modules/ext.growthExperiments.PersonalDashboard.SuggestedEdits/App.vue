@@ -1,7 +1,15 @@
 <template>
 	<div class="growthexperiments-suggested-edits">
+		<no-match-notice
+			v-if="showNoMatchNotice"
+			ref="noMatchNotice"
+			@select-interests="openPanel = 'interests'"
+			@select-task-types="openPanel = 'taskTypes'"
+			@dismiss="onNoMatchNoticeDismissed"></no-match-notice>
+
+		<!-- The no match notice also tells the user to select interests. -->
 		<interests-notice
-			v-if="showInterestsNotice"
+			v-if="showInterestsNotice && !showNoMatchNotice"
 			@select-interests="openPanel = 'interests'"
 			@dismiss="onInterestsNoticeDismissed"></interests-notice>
 
@@ -85,7 +93,7 @@
 </template>
 
 <script>
-const { computed, defineComponent, nextTick, ref, inject } = require( 'vue' );
+const { computed, defineComponent, nextTick, ref, inject, watch } = require( 'vue' );
 const { CdxPopover } = require( './codex.js' );
 const {
 	FeedCard,
@@ -99,6 +107,7 @@ const TaskCard = require( './TaskCard.vue' );
 const TaskTypesDialog = require( './TaskTypesDialog.vue' );
 const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
 const InterestsNotice = require( './InterestsNotice.vue' );
+const NoMatchNotice = require( './NoMatchNotice.vue' );
 const WelcomeBackDialog = require( './WelcomeBackDialog.vue' );
 const { CONSTANTS, newcomerTasks } = require( 'ext.growthExperiments.DataStore' );
 const { useSuggestedEditsFeed } = require( './useSuggestedEditsFeed.js' );
@@ -122,6 +131,11 @@ const INTERESTS_POPOVER_DISMISSED_PREF = 'growthexperiments-home-interests-popov
  * closes the dialog.
  */
 const INTERESTS_NOTICE_ACTIONS = [ 'show-no-interests-notice', 'show-welcome-back' ];
+/**
+ * The session storage key for the dismissal of the no match notice. The notice
+ * shows again in a new session.
+ */
+const NO_MATCH_NOTICE_DISMISSED_KEY = 'ge-home-suggestededits-nomatch-notice-dismissed';
 
 /**
  * Pick the Types of edits menu icon from the selected task types.
@@ -163,6 +177,34 @@ function getTaskTypesMenuIcon( selectedIds ) {
 		cdxIconLevelNone;
 }
 
+/**
+ * @param {Object[]} items Feed items
+ * @return {boolean} Whether no suggested edits match the selection. Then the items are
+ *   fallback items, or there are no items.
+ */
+function isNoMatch( items ) {
+	return items.length === 0 || items[ 0 ].isFallback;
+}
+
+/**
+ * @param {Object[]} items Feed items
+ * @param {Error|null} error The error of the last load
+ * @return {string} What filled the feed when no suggested edits matched the selection:
+ *   - not_used: suggested edits matched the selection, or the load failed
+ *   - selected_task_types: fallback items of the selected task types, for all interests
+ *   - all_task_types: fallback items of all the task types that the user can get
+ *   - none_found: no fallback items
+ */
+function getFallbackTier( items, error ) {
+	if ( error ) {
+		return 'not_used';
+	}
+	if ( !items.length ) {
+		return 'none_found';
+	}
+	return items[ 0 ].fallbackTier || 'not_used';
+}
+
 module.exports = exports = defineComponent( {
 	components: {
 		AboutPanel,
@@ -172,6 +214,7 @@ module.exports = exports = defineComponent( {
 		InterestSelectorDialog,
 		InterestsNotice,
 		ModuleHeaderMenu,
+		NoMatchNotice,
 		QualityGateDialog,
 		TaskCard,
 		TaskTypesDialog,
@@ -234,6 +277,38 @@ module.exports = exports = defineComponent( {
 		const showQualityGate = ref( false );
 		const qualityGateTaskType = ref( null );
 
+		// True when no suggested edits matched the selection in the last load, which
+		// ended with no error. Then the feed shows fallback items or none. A load
+		// does not change it, so that the notice stays while the feed loads again
+		// after the user changes the filters. The watcher that sets it starts after
+		// the first load starts.
+		const hasNoMatch = ref( false );
+		const noMatchNoticeDismissed = ref(
+			mw.storage.session.get( NO_MATCH_NOTICE_DISMISSED_KEY ) === '1',
+		);
+		const showNoMatchNotice = computed( () => hasNoMatch.value && !noMatchNoticeDismissed.value );
+		const noMatchNotice = ref( null );
+
+		// When the notice goes, it can hold the focus: the user dismissed it, or a
+		// dialog opened from it gave the focus back to it. Without the notice the
+		// focus goes to <body>. Move the focus to the module menu, where the user
+		// changes the filters. The watcher runs before the notice leaves the DOM.
+		watch( showNoMatchNotice, ( shown ) => {
+			const element = noMatchNotice.value && noMatchNotice.value.$el;
+			if ( !shown && element && element.contains( document.activeElement ) ) {
+				nextTick( () => {
+					if ( headerMenu.value ) {
+						headerMenu.value.focus();
+					}
+				} );
+			}
+		} );
+
+		const onNoMatchNoticeDismissed = () => {
+			noMatchNoticeDismissed.value = true;
+			mw.storage.session.set( NO_MATCH_NOTICE_DISMISSED_KEY, '1' );
+		};
+
 		function onThreeDotMenuOpen() {
 			shouldPopoverBeOpen.value = false;
 			instrumentation.sendClick( 'module_suggested_edits_options' );
@@ -282,10 +357,12 @@ module.exports = exports = defineComponent( {
 			// dialog counts: "Done", "Cancel", the close button and Esc. The
 			// dialog updates the store before it closes, so the store holds the
 			// result of "Done" here. Cancelled selections are discarded, so they
-			// also leave the store empty.
+			// also leave the store empty. The user did not see the notice when the
+			// no match notice replaces it, so do not dismiss it then.
 			if (
 				interestsClosed &&
 					showInterestsNotice.value &&
+					!showNoMatchNotice.value &&
 					!newcomerTasks.filters.getSelectedInterests().length
 			) {
 				onInterestsNoticeDismissed();
@@ -313,8 +390,11 @@ module.exports = exports = defineComponent( {
 		function sendModuleShownOnceWhenVisible() {
 			instrumentation.recordModuleShownAfterVisibleOnce(
 				{
+					// Only the suggested edits that match the selection. The fallback items
+					// do not count, so the meaning stays the same as before the fallback.
 					// eslint-disable-next-line camelcase
-					has_suggestions: feedState.items.length > 0,
+					has_suggestions: !isNoMatch( feedState.items ),
+					fallback: getFallbackTier( feedState.items, feedState.error ),
 					interests: selectedInterestCount.value,
 					// eslint-disable-next-line camelcase
 					task_types: selectedTaskTypeCount.value,
@@ -331,6 +411,18 @@ module.exports = exports = defineComponent( {
 			instrumentation.sendModuleReady();
 			sendModuleShownOnceWhenVisible();
 		} );
+
+		// After load(), because load() sets the loading flag. Before the first load,
+		// the feed has no items, and the notice must not show for that state.
+		watch(
+			() => [ feedState.isLoading, feedState.error, feedState.items ],
+			() => {
+				if ( !feedState.isLoading ) {
+					hasNoMatch.value = !feedState.error && isNoMatch( feedState.items );
+				}
+			},
+			{ immediate: true },
+		);
 
 		/**
 		 * @param {string} menuValue
@@ -378,6 +470,9 @@ module.exports = exports = defineComponent( {
 			popoverGotItAction,
 			shouldPopoverBeOpen,
 			showInterestsNotice,
+			showNoMatchNotice,
+			noMatchNotice,
+			onNoMatchNoticeDismissed,
 			showWelcomeBack,
 			closeInterestSelectorPanel,
 			openInterestsFromWelcomeBack: () => {
@@ -441,7 +536,11 @@ module.exports = exports = defineComponent( {
 			popoverContent: mw.msg( 'growthexperiments-home-suggestededits-popover-content' ),
 			showMoreAriaLabel: mw.msg( 'growthexperiments-home-suggestededits-show-more-aria-label' ),
 			showLessAriaLabel: mw.msg( 'growthexperiments-home-suggestededits-show-less-aria-label' ),
-			emptyLabel: mw.msg( 'growthexperiments-home-suggestededits-empty' ),
+			// The no match notice replaces the empty state. After the user dismisses
+			// the notice, the empty state shows, so that the module is not blank.
+			emptyLabel: computed( () => ( showNoMatchNotice.value ?
+				'' :
+				mw.msg( 'growthexperiments-home-suggestededits-empty' ) ) ),
 			menuButtonLabel: mw.msg( 'growthexperiments-home-suggestededits-menu-button-label' ),
 		};
 	},
