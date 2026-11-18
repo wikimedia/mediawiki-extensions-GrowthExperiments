@@ -165,6 +165,7 @@
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]-এর প্রশ্ন",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[:$2|$2]] নিয়ে [[User:$1|$1]]-এর প্রশ্ন",
 	"growthexperiments-homepage-mentorship-question-disclaimer-mentor-away": "[[User:$1|$1]]-এর মেন্টর <span class=\"plainlinks\">[{{fullurl:User:$2}} $2]</span> বর্তমানে অনুপস্থিত আছেন।",
+	"growthexperiments-homepage-mentorship-system-message": "টীকা: $1",
 	"growthexperiments-specialimpact-title": "প্রভাব",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1-এর প্রভাবের উপাত্ত দেখানো হচ্ছে",
 	"growthexperiments-specialimpact-invalid-username": "অনুপস্থিত অথবা ভুল ব্যবহারকারী নাম।",

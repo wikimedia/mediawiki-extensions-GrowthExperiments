@@ -19,6 +19,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "D'Mentoremodul ass aktivéiert",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "D'Mentoremodul ass vollstänneg desaktivéiert. Dat gëtt normalerweis vun der Software festgeluecht a gëtt fir A/B-Tester benotzt.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Mentoréierten huet sech aus dem Mentoreprogramm ofgemellt; d'Mentoréierten/Mentor-Relatioun gëtt geläscht, d'Mentoremodul gëtt duerch d'Méiglechkeet sech erëm unzemellen ersat",
+	"apierror-growthexperiments-setmenteestatus-no-change": "Et gouf keng Ännerung un Ärem Mentorestatus gemaach.",
 	"apihelp-query+growthmenteestatus-summary": "De Mentoréiertestatus vum aktuelle Benotzer offroen; kuckt d'Dokumentatioun vun action=growthsetmenteestatus fir detailléiert Informatiounen iwwer eenzel Statussen.",
 	"apihelp-query+growthmentormentee-summary": "All Mentoréierter ofruffen, déi engem bestëmmte Mentor zougewise goufen",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor, deem seng Mentoréierter ofgefrot solle ginn",
