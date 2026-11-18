@@ -87,10 +87,7 @@ const groups = DIFFICULTIES.map( ( difficulty ) => ( {
 		} ) ),
 } ) ).filter( ( group ) => group.taskTypes.length );
 
-const allTaskTypeIds = groups
-	.flatMap( ( group ) => group.taskTypes )
-	.filter( ( taskType ) => !taskType.disabled )
-	.map( ( taskType ) => taskType.id );
+const allTaskTypeIds = CONSTANTS.AVAILABLE_TASK_TYPE_IDS;
 
 module.exports = exports = defineComponent( {
 	name: 'TaskTypesDialog',

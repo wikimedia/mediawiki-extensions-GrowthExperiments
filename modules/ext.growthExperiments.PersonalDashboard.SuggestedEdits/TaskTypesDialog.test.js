@@ -54,6 +54,7 @@ jest.mock( 'ext.growthExperiments.DataStore', () => ( {
 				iconData: {},
 			},
 		},
+		AVAILABLE_TASK_TYPE_IDS: [ 'copyedit', 'revise-tone', 'expand' ],
 	},
 	newcomerTasks: { api: mockApi, filters: mockFilters },
 } ), { virtual: true } );
