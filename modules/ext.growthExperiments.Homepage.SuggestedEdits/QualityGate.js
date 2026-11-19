@@ -144,6 +144,18 @@ QualityGate.prototype.handleGateFailure = function ( taskType, gate ) {
 };
 
 /**
+ * Log that the dialog for a failed gate is shown.
+ *
+ * Use this when the caller shows its own dialog, not the alert dialog of this class.
+ *
+ * @param {string} taskType
+ * @param {string} gate The ID of the failed gate, e.g. 'dailyLimit'
+ */
+QualityGate.prototype.logImpression = function ( taskType, gate ) {
+	this.loggers[ taskType ].log( 'impression', gate, this.config.loggerMetadataOverrides );
+};
+
+/**
  * Show an alert dialog for dailyLimit gate for image-recommendation task type.
  */
 QualityGate.prototype.showImageRecommendationDailyLimitAlertDialog = function () {

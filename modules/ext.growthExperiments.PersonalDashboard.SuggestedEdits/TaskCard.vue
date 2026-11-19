@@ -6,6 +6,7 @@
 		:thumbnail="thumbnail"
 		thumbnail-size="large"
 		force-thumbnail
+		@click.capture="showQualityGateFeedback"
 	>
 		<template #header>
 			<span class="growthexperiments-suggested-edits__card__title">
@@ -30,6 +31,7 @@ const { CdxIcon } = require( './codex.js' );
 const { FeedCard } = require( 'ext.personalDashboard.common' );
 const NewcomerTaskLogger = require( '../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js' );
 const { cdxIconLightbulb } = require( './icons.json' );
+const QualityGate = require( '../ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js' );
 
 const newcomerTaskLogger = new NewcomerTaskLogger();
 
@@ -46,8 +48,23 @@ module.exports = exports = defineComponent( {
 		// returned; the NewcomerTask schema records it as ordinal_position.
 		position: { type: Number, default: 0 },
 	},
-	setup() {
-		return { cdxIconLightbulb };
+	emits: [ 'quality-gate-failed' ],
+	setup( props, { emit } ) {
+		function showQualityGateFeedback( event ) {
+			// The dashboard does not fill the task store, so the gate uses the
+			// config of the task.
+			const qualityGate = QualityGate.newFromTask( props.task, {
+				pageviewToken: mw.config.get( 'wgPersonalDashboardPageviewToken' ),
+			} );
+			const gate = qualityGate.getFailedGate( props.task.tasktype );
+			if ( gate ) {
+				event.preventDefault();
+				qualityGate.logImpression( props.task.tasktype, gate );
+				// The parent owns the dialog, so that all cards share one dialog.
+				emit( 'quality-gate-failed', props.task.tasktype );
+			}
+		}
+		return { cdxIconLightbulb, showQualityGateFeedback };
 	},
 	computed: {
 		// null rather than omitted where the article has no image: paired with

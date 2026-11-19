@@ -1,6 +1,14 @@
 'use strict';
 
 /*
+ * The quality gate loggers need OO.inheritClass and the SuggestedEditSession
+ * module when they load. The jest setup has neither, and these tests do not
+ * examine the loggers.
+ */
+jest.mock( '../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js', () => jest.fn() );
+jest.mock( '../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js', () => jest.fn() );
+
+/*
  * CodexModule generates codex.js and icons.json at ResourceLoader time and
  * ext.personalDashboard.common comes from a sibling extension, so none of the
  * three exist on disk for jest to resolve.

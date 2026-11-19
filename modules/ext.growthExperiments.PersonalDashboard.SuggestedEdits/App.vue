@@ -9,6 +9,10 @@
 			v-model:open="showWelcomeBack"
 			@select-interests="openInterestsFromWelcomeBack"></welcome-back-dialog>
 
+		<quality-gate-dialog
+			v-model:open="showQualityGate"
+			:task-type="qualityGateTaskType"></quality-gate-dialog>
+
 		<feed-panel
 			v-bind="{ ...$attrs, ...feedState }"
 			module-name="ext.growthExperiments.PersonalDashboard.SuggestedEdits"
@@ -23,6 +27,7 @@
 					:task="item"
 					:position="feedState.items.indexOf( item )"
 					@click="() => onTaskCardClick( item.tasktype )"
+					@quality-gate-failed="onQualityGateFailed"
 				></task-card>
 			</template>
 			<!-- The design shows empty cards with the large thumbnail while the tasks load. -->
@@ -89,6 +94,7 @@ const {
 	ModuleHeaderMenu,
 } = require( 'ext.personalDashboard.common' );
 const AboutPanel = require( './AboutPanel.vue' );
+const QualityGateDialog = require( './QualityGateDialog.vue' );
 const TaskCard = require( './TaskCard.vue' );
 const TaskTypesDialog = require( './TaskTypesDialog.vue' );
 const InterestSelectorDialog = require( './InterestSelectorDialog.vue' );
@@ -166,6 +172,7 @@ module.exports = exports = defineComponent( {
 		InterestSelectorDialog,
 		InterestsNotice,
 		ModuleHeaderMenu,
+		QualityGateDialog,
 		TaskCard,
 		TaskTypesDialog,
 		WelcomeBackDialog,
@@ -221,6 +228,11 @@ module.exports = exports = defineComponent( {
 
 		// The dialog saves that the user saw it.
 		const showWelcomeBack = ref( mw.config.get( 'wgGEHomeOnboardingAction' ) === WELCOME_BACK_ACTION );
+
+		// The task type stays set when the dialog closes, so the text does not
+		// disappear while the dialog fades out.
+		const showQualityGate = ref( false );
+		const qualityGateTaskType = ref( null );
 
 		function onThreeDotMenuOpen() {
 			shouldPopoverBeOpen.value = false;
@@ -340,11 +352,22 @@ module.exports = exports = defineComponent( {
 			instrumentation.sendClick( 'module_suggested_edits_suggestion', { suggestion_type: cardTaskType } );
 		}
 
+		/**
+		 * @param {string} cardTaskType The type of the task that failed a quality gate
+		 */
+		function onQualityGateFailed( cardTaskType ) {
+			qualityGateTaskType.value = cardTaskType;
+			showQualityGate.value = true;
+		}
+
 		return {
 			defaultPopoverAction,
 			onThreeDotMenuOpen,
 			onThreeDotMenuItemSelect,
 			onTaskCardClick,
+			onQualityGateFailed,
+			qualityGateTaskType,
+			showQualityGate,
 			feedState,
 			headerMenu,
 			getSavedCount,

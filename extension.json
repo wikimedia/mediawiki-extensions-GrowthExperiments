@@ -1000,6 +1000,7 @@
 				"App.vue",
 				"AboutPanel.vue",
 				"InterestsNotice.vue",
+				"QualityGateDialog.vue",
 				"TaskCard.vue",
 				"TaskTypesDialog.vue",
 				"useSuggestedEditsFeed.js",
@@ -1033,6 +1034,11 @@
 				},
 				"../ext.growthExperiments.DataStore/InterestFilters.js",
 				"../ext.growthExperiments.Homepage.SuggestedEdits/NewcomerTaskLogger.js",
+				"../ext.growthExperiments.Homepage.SuggestedEdits/QualityGate.js",
+				"../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
+				"../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
+				"../ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
+				"../utils/Utils.js",
 				{
 					"name": "icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
@@ -1053,9 +1059,17 @@
 				"mediawiki.language",
 				"mediawiki.util",
 				"mediawiki.user",
-				"ext.growthExperiments.DataStore"
+				"oojs",
+				"ext.growthExperiments.DataStore",
+				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"messages": [
+				"growthexperiments-addimage-daily-task-limit-exceeded",
+				"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button",
+				"growthexperiments-addlink-daily-task-limit-exceeded",
+				"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button",
+				"growthexperiments-addsectionimage-daily-task-limit-exceeded",
+				"growthexperiments-addsectionimage-daily-task-limit-exceeded-dialog-button",
 				"growthexperiments-home-suggestededits-about-intro",
 				"growthexperiments-home-suggestededits-about-purpose",
 				"growthexperiments-home-suggestededits-about-recommendations",
