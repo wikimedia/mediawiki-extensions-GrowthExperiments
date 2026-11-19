@@ -2,11 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Brahim-essaidi",
-			"Hakim1bal"
+			"Hakim1bal",
+			"Daoudsfouli"
 		]
 	},
 	"growthexperiments-homepage-email-header-startemail": "ⵉⵎⴰⵢⵍ: $1",
 	"growthexperiments-homepage-email-changelink": "ⵙⵏⴼⵍ",
+	"growthexperiments-homepage-startediting-dialog-intro-forward": "ⵣⴷⵉ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "ⵙⵖⵣⵏ",
-	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "ⵥⵕ ⵉⵙⵓⵎⴰⵔ ⵎⴰⵕⵕⴰ"
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "ⵥⵕ ⵉⵙⵓⵎⴰⵔ ⵎⴰⵕⵕⴰ",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "ⵣⴷⵉ",
+	"growthexperiments-homepage-mentorship-confirm-dialog-continue": "ⵣⴷⵉ"
 }
