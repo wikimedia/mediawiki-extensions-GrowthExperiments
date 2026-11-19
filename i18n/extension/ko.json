@@ -11,6 +11,13 @@
 		]
 	},
 	"growthexperiments-desc": "이 확장 기능은 성장 팀의 실험적인 기능을 포함합니다.",
+	"accountsetup": "계정 설정",
+	"growthexperiments-account-setup-a11y-title": "계정 설정",
+	"growthexperiments-account-setup-skip-a11y-label": "건너뛰기",
+	"growthexperiments-account-setup-back-a11y-label": "뒤로",
+	"growthexperiments-account-setup-step-counter": "$2 중 $1",
+	"growthexperiments-account-setup-step-1-title": "$1에 오신 것을 환영합니다, $2님!",
+	"growthexperiments-account-setup-step-2-skip-button": "건너뛰기",
 	"specialpages-group-growth-tools": "성장 도구",
 	"communityconfiguration-communityupdates-description": "신규 사용자 홈페이지에 중요한 커뮤니티 소식, 캠페인, 이벤트 또는 위키프로젝트를 공유하세요.",
 	"communityconfiguration-communityupdates-info-text": "이 [[mw:Special:MyLanguage/Growth/Community_Updates|커뮤니티 업데이트]] 모듈은 홈페이지에 표시되며 중요한 커뮤니티 소식, 캠페인, 이벤트 또는 위키프로젝트를 공유하는 데 사용되어야 합니다. [https://meta.wikimedia.org/wiki/Special:MyLanguage/Movement_Strategy/Recommendations/Identify_Topics_for_Impact#Changes_and_Actions 운동 전략의 \"영향력 있는 주제\"] 권장 사항을 뒷받침하는 업데이트에 우선순위를 두어야 합니다.",
