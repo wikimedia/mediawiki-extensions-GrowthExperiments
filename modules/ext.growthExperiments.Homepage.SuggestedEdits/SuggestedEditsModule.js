@@ -9,8 +9,6 @@ const EditCardWidget = require( './EditCardWidget.js' ),
 	NewcomerTaskLogger = require( './NewcomerTaskLogger.js' ),
 	SwipePane = require( '../ui-components/SwipePane.js' ),
 	QualityGate = require( './QualityGate.js' ),
-	ImageSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js' ),
-	LinkSuggestionInteractionLogger = require( '../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js' ),
 	CONSTANTS = require( 'ext.growthExperiments.DataStore' ).CONSTANTS,
 	TOPIC_MATCH_MODES = CONSTANTS.TOPIC_MATCH_MODES,
 	ALL_TASK_TYPES = CONSTANTS.ALL_TASK_TYPES;
@@ -554,33 +552,9 @@ SuggestedEditsModule.prototype.setupEditTypeTracking = function () {
 SuggestedEditsModule.prototype.setupQualityGateClickHandling = function ( $element ) {
 	$element.on( 'click', () => {
 		if ( this.currentCard instanceof EditCardWidget ) {
-			const qualityGate = new QualityGate( {
-				gates: this.currentCard.data.qualityGateIds || [],
+			const qualityGate = QualityGate.newFromTask( this.currentCard.data, {
+				pageviewToken: mw.config.get( 'wgGEHomepagePageviewToken' ),
 				gateConfig: this.tasksStore.getQualityGateConfig(),
-				/* eslint-disable camelcase */
-				loggers: {
-					'image-recommendation': new ImageSuggestionInteractionLogger( {
-						is_mobile: OO.ui.isMobile(),
-						active_interface: 'qualitygate_dialog',
-					} ),
-					'section-image-recommendation': new ImageSuggestionInteractionLogger( {
-						is_mobile: OO.ui.isMobile(),
-						active_interface: 'qualitygate_dialog',
-					} ),
-					'link-recommendation': new LinkSuggestionInteractionLogger( {
-						is_mobile: OO.ui.isMobile(),
-						active_interface: 'qualitygate_dialog',
-					} ),
-				},
-				loggerMetadataOverrides: {
-					newcomer_task_token: this.currentCard.data.token,
-					homepage_pageview_token: mw.config.get(
-						'wgGEHomepagePageviewToken',
-					),
-					page_id: this.currentCard.getPageId(),
-					page_title: this.currentCard.getDbKey(),
-				},
-				/* eslint-enable camelcase */
 			} );
 			return qualityGate.checkAll( this.currentCard.data.tasktype );
 		}

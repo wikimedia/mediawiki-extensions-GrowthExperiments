@@ -1,5 +1,12 @@
 'use strict';
 
+const ImageSuggestionInteractionLogger = require(
+	'../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js',
+);
+const LinkSuggestionInteractionLogger = require(
+	'../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js',
+);
+
 /**
  * @param {Object} config
  * @param {string[]} config.gates
@@ -45,10 +52,54 @@ function QualityGate( config ) {
 		},
 	};
 	this.loggers = config.loggers;
-	// Used for alert dialogs.
-	this.windowManager = new OO.ui.WindowManager();
-	$( document.body ).append( this.windowManager.$element );
+	// Used for alert dialogs. showAlertDialog() creates it, so the gate check needs no OOUI.
+	this.windowManager = null;
 }
+
+/**
+ * Make a quality gate for a task, with the loggers for the quality gate dialog.
+ *
+ * @param {mw.libs.ge.TaskData} task
+ * @param {Object} options
+ * @param {string|null} options.pageviewToken The pageview token of the page that shows the task
+ * @param {Object} [options.gateConfig] Quality gate config. The default is the config of the task.
+ * @return {QualityGate}
+ */
+QualityGate.newFromTask = function ( task, options ) {
+	/* eslint-disable camelcase */
+	const loggerConfig = {
+		is_mobile: mw.config.get( 'skin' ) === 'minerva',
+		active_interface: 'qualitygate_dialog',
+	};
+	return new QualityGate( {
+		gates: task.qualityGateIds || [],
+		gateConfig: options.gateConfig || task.qualityGateConfig || {},
+		loggers: {
+			'image-recommendation': new ImageSuggestionInteractionLogger( loggerConfig ),
+			'section-image-recommendation': new ImageSuggestionInteractionLogger( loggerConfig ),
+			'link-recommendation': new LinkSuggestionInteractionLogger( loggerConfig ),
+		},
+		loggerMetadataOverrides: {
+			newcomer_task_token: task.token,
+			homepage_pageview_token: options.pageviewToken,
+			page_id: task.pageId,
+			page_title: task.title,
+		},
+	} );
+	/* eslint-enable camelcase */
+};
+
+/**
+ * @param {string} taskType
+ * @return {string|null} The ID of the failed gate, null if no gate failed.
+ */
+QualityGate.prototype.getFailedGate = function ( taskType ) {
+	const handlers = this.checkHandlers[ taskType ] || {};
+	const failedGate = this.config.gates.find(
+		( gate ) => handlers[ gate ] && !handlers[ gate ](),
+	);
+	return failedGate || null;
+};
 
 /**
  * Check all quality gates for a task type.
@@ -60,15 +111,12 @@ function QualityGate( config ) {
  * @return {boolean} Whether the task passed the gates.
  */
 QualityGate.prototype.checkAll = function ( taskType ) {
-	return this.config.gates.every( ( gate ) => {
-		if ( this.checkHandlers[ taskType ][ gate ] ) {
-			if ( !this.checkHandlers[ taskType ][ gate ]() ) {
-				this.handleGateFailure( taskType, gate );
-				return false;
-			}
-		}
-		return true;
-	} );
+	const gate = this.getFailedGate( taskType );
+	if ( gate ) {
+		this.handleGateFailure( taskType, gate );
+		return false;
+	}
+	return true;
 };
 
 /**
@@ -146,6 +194,10 @@ QualityGate.prototype.showAlertDialog = function ( qualityGateId, message, actio
 		// * ge-qualitygate-alert-dialog-dailyLimit
 		// * eslint insists on having one more line here
 		.addClass( 'ge-qualitygate-alert-dialog-' + qualityGateId );
+	if ( !this.windowManager ) {
+		this.windowManager = new OO.ui.WindowManager();
+		$( document.body ).append( this.windowManager.$element );
+	}
 	this.windowManager.addWindows( [ messageDialog ] );
 	return this.windowManager.openWindow( messageDialog, {
 		message: message,
