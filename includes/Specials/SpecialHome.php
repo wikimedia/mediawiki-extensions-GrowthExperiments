@@ -94,16 +94,6 @@ class SpecialHome extends AbstractSpecialDashboard {
 		return 'home';
 	}
 
-	/**
-	 * Report the render timings under this extension's own component, to tell
-	 * them apart from the PersonalDashboard timings in Grafana.
-	 *
-	 * @inheritDoc
-	 */
-	protected function getStatsComponent(): string {
-		return 'GrowthExperiments';
-	}
-
 	/** @inheritDoc */
 	protected function getGroupName(): string {
 		return 'growth-tools';
