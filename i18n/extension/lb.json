@@ -239,5 +239,6 @@
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-50-label": "Jo, no insgesamt 50 Ännerungen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-75-label": "Jo, no insgesamt 75 Ännerungen",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-150-label": "Jo, no insgesamt 150 Ännerungen",
-	"growthexperiments-addlink-done-button": "Fäerdeg"
+	"growthexperiments-addlink-done-button": "Fäerdeg",
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Botze vun ofgelafenen Zäitstempelen"
 }
