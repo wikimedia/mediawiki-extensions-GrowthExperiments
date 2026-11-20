@@ -8,6 +8,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Pozdravljeni}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-list": "Domača stran novinca",
+	"growthexperiments-home-betafeature-description": "[[Special:Home|Začetna stran]] je osebna stran, ki bralcem in novim sodelavcem pomaga začeti urejati, videti vpliv svojih urejanj in se povezati s svojim mentorjem. Začetna stran bo nadomestila [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage Domačo stran za novince], dodatne funkcije pa bodo dodane po začetni izdaji.",
 	"growthexperiments-homepage-tab": "Domača stran",
 	"tooltip-pt-homepage": "{{GENDER:|Vaša}} domača stran",
 	"prefs-homepage": "Možnosti urejanja za novince",
