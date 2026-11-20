@@ -1816,6 +1816,7 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskMessageDialog.js",
 				"ext.growthExperiments.StructuredTask/MachineSuggestionsBack.js",
+				"ext.growthExperiments.StructuredTask/updateMobileEditorHistory.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkTargetInitializer.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/addlink/dmRecommendedLinkAnnotation.js",

@@ -1,7 +1,7 @@
 const StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskArticleTarget = StructuredTask.StructuredTaskArticleTarget,
 	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
-	router = require( 'mediawiki.router' );
+	updateMobileEditorHistory = StructuredTask.updateMobileEditorHistory;
 
 /**
  * MobileArticleTarget for structured task editing flow
@@ -55,20 +55,10 @@ StructuredTaskMobileArticleTarget.prototype.setupToolbar = function () {
 };
 
 /**
- * Update history as if the user had navigated from read mode to edit mode
- *
- * This allows the close button to take the user to the article's read mode
- * instead of Special:Homepage and for OO.RouteReferenceMapper to show abandonededit dialog
- * which relies on hashchange event.
- *
  * @override
  */
 StructuredTaskMobileArticleTarget.prototype.updateHistory = function () {
-	// We don't use router to navigate here to avoid firing events
-	history.replaceState( null, document.title, location.pathname + location.search );
-	history.pushState( null, document.title, location.pathname + location.search + '#/editor/all' );
-	// Update oldHash state in router as we bypassed router
-	router.oldHash = '/editor/all';
+	updateMobileEditorHistory();
 	this.maybeUpdateMobileEditorPreference();
 };
 

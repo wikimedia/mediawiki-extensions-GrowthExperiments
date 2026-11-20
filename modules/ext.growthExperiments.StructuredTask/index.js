@@ -63,6 +63,7 @@ module.exports = {
 	StructuredTaskArticleTarget: require( './StructuredTaskArticleTarget.js' ),
 	StructuredTaskSaveDialog: require( './StructuredTaskSaveDialog.js' ),
 	MachineSuggestionsMode: require( './MachineSuggestionsMode.js' ),
+	updateMobileEditorHistory: require( './updateMobileEditorHistory.js' ),
 
 	// Lazy-load files specific to a task type.
 	addLink: addLink,
