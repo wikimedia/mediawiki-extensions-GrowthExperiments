@@ -2,6 +2,7 @@ const SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSessio
 const suggestedEditSession = SuggestedEditSession.getInstance();
 const GrowthSuggestionToneCheck = require( './GrowthSuggestionToneCheck.js' );
 const simpleLevenshtein = require( '../../utils/SimpleLevenshtein.js' );
+const updateMobileEditorHistory = require( '../updateMobileEditorHistory.js' );
 
 class ReviseToneInitializer {
 
@@ -79,12 +80,14 @@ class ReviseToneInitializer {
 					}
 					target.editcheckController.suppressSuggestionDisplay( true );
 					this.isInitialEditSession = false;
-					if ( target.surface ) {
+					const onSurfaceReady = () => {
+						updateMobileEditorHistory();
 						this.showToneEditCheck();
+					};
+					if ( target.surface ) {
+						onSurfaceReady();
 					} else {
-						target.once( 'surfaceReady', () => {
-							this.showToneEditCheck();
-						} );
+						target.once( 'surfaceReady', onSurfaceReady );
 					}
 					target.once( 'teardown', () => this.restoreDefaultToneCheck( target ) );
 				} );
