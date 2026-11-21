@@ -184,11 +184,11 @@ class GrowthExperimentsServices {
 	}
 
 	public function getMenteeOverviewDataProvider(): MenteeOverviewDataProvider {
-		return $this->getDatabaseMenteeOverviewDataProvider();
+		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProvider' );
 	}
 
 	public function getDatabaseMenteeOverviewDataProvider(): DatabaseMenteeOverviewDataProvider {
-		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProvider' );
+		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProviderDatabase' );
 	}
 
 	public function getUncachedMenteeOverviewDataProvider(): UncachedMenteeOverviewDataProvider {
