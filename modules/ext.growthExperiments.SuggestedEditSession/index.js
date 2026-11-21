@@ -708,6 +708,7 @@
 			'link-recommendation',
 			'image-recommendation',
 			'section-image-recommendation',
+			'revise-tone',
 		].includes( taskType );
 	};
 

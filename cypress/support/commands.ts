@@ -98,7 +98,10 @@ Cypress.Commands.add( 'setUserOptions', ( options ): void => {
 	} );
 } );
 
-Cypress.Commands.add( 'assertTagsOfCurrentPageRevision', ( expectedTags: string[] ): void => {
+Cypress.Commands.add( 'assertTagsOfCurrentPageRevision', (
+	expectedTags: string[],
+	unexpectedTags: string[] = [],
+): void => {
 	cy.window().its( 'mw.config' ).invoke( 'get', 'wgCurRevisionId' ).then( ( revId ) => {
 		cy.request( {
 			method: 'GET',
@@ -122,6 +125,7 @@ Cypress.Commands.add( 'assertTagsOfCurrentPageRevision', ( expectedTags: string[
 
 			const tags = firstPage.revisions[ 0 ].tags;
 			expect( tags ).to.include.members( expectedTags );
+			unexpectedTags.forEach( ( tag ) => expect( tags ).not.to.include( tag ) );
 		} );
 	} );
 } );
@@ -138,6 +142,7 @@ declare global {
 			setUserOptions( options: Record<string, string> ): Chainable<JQuery<HTMLElement>>;
 			assertTagsOfCurrentPageRevision(
 				expectedTags: string[],
+				unexpectedTags?: string[],
 			): Chainable<JQuery<HTMLElement>>;
 		}
 	}

@@ -4,6 +4,9 @@ const GrowthSuggestionToneCheck = require( './GrowthSuggestionToneCheck.js' );
 const simpleLevenshtein = require( '../../utils/SimpleLevenshtein.js' );
 const updateMobileEditorHistory = require( '../updateMobileEditorHistory.js' );
 
+const TASK_TYPE_ID = 'revise-tone';
+const PLUGIN_NAME = 'ge-task-' + TASK_TYPE_ID;
+
 class ReviseToneInitializer {
 
 	// TODO: use private class fields once Grade A support is raised to at least Safari 15, see T395347
@@ -50,6 +53,7 @@ class ReviseToneInitializer {
 		mw.hook( 've.newTarget' ).add( ( target ) => {
 			if ( this.isInitialEditSession ) {
 				target.editcheckController.suppressSuggestionDisplay( true );
+				this.addTaskPluginData( target );
 				this.isInitialEditSession = false;
 			}
 			if ( target.surface ) {
@@ -79,6 +83,7 @@ class ReviseToneInitializer {
 						return;
 					}
 					target.editcheckController.suppressSuggestionDisplay( true );
+					this.addTaskPluginData( target );
 					this.isInitialEditSession = false;
 					const onSurfaceReady = () => {
 						updateMobileEditorHistory();
@@ -99,6 +104,26 @@ class ReviseToneInitializer {
 		mw.editcheck.editCheckFactory.unregister( GrowthSuggestionToneCheck );
 		mw.editcheck.editCheckFactory.register( mw.editcheck.ToneCheck, mw.editcheck.ToneCheck.static.name );
 		target.editcheckController.suppressSuggestionDisplay( false );
+		this.removeTaskPluginData( target );
+	}
+
+	addTaskPluginData( target ) {
+		const plugins = target.saveFields.plugins ? target.saveFields.plugins() : [];
+		target.saveFields.plugins = () => [ ...plugins, PLUGIN_NAME ];
+		target.saveFields[ 'data-' + PLUGIN_NAME ] = () => JSON.stringify( { taskType: TASK_TYPE_ID } );
+	}
+
+	removeTaskPluginData( target ) {
+		delete target.saveFields[ 'data-' + PLUGIN_NAME ];
+		if ( !target.saveFields.plugins ) {
+			return;
+		}
+		const plugins = target.saveFields.plugins().filter( ( name ) => name !== PLUGIN_NAME );
+		if ( plugins.length ) {
+			target.saveFields.plugins = () => plugins;
+		} else {
+			delete target.saveFields.plugins;
+		}
 	}
 
 	handleEditCheckDialogEvents( name, { action } ) {

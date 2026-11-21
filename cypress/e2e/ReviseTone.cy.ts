@@ -89,6 +89,16 @@ describe( 'Revise Tone', () => {
 			keepGoingModule.postEditDrawer.should( 'be.visible' );
 			keepGoingModule.smallTaskCardLink.should( 'have.attr', 'href' );
 			cy.assertTagsOfCurrentPageRevision( [ 'newcomer task', 'newcomer task revise tone' ] );
+
+			cy.window().its( 'mw.config' ).invoke( 'get', 'wgCurRevisionId' ).then( ( taskRevisionId ) => {
+				cy.scrollTo( 'top' );
+				cy.get( '#ca-ve-edit' ).should( 'be.visible' ).click();
+				cy.contains( '.ve-ce-surface h2', 'Ecology' ).next( 'p' ).type( ' Follow-up edit.' );
+				cy.get( '.ve-ui-toolbar-saveButton' ).should( 'be.visible' ).click();
+				cy.get( '.ve-ui-mwSaveDialog .oo-ui-processDialog-actions-primary' ).should( 'be.visible' ).click();
+				cy.window().its( 'mw.config' ).invoke( 'get', 'wgCurRevisionId' ).should( 'not.equal', taskRevisionId );
+			} );
+			cy.assertTagsOfCurrentPageRevision( [ 'visualeditor' ], [ 'newcomer task', 'newcomer task revise tone' ] );
 		} );
 	} );
 
