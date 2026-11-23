@@ -273,8 +273,6 @@
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "{{PLURAL:$1|Atopouse unha edición suxerida|Atopáronse $1 edicións suxeridas}}",
 	"growthexperiments-home-suggestededits-filters-finding": "Buscando as edicións suxeridas...",
 	"growthexperiments-home-suggestededits-filters-none": "Non se atopou ningunha edición suxerida.",
-	"growthexperiments-home-suggestededits-interest-filters-none-hint": "Selecciona outros intereses ou [$1 tipos de edicións].",
-	"growthexperiments-home-suggestededits-difficulty-filters-none-hint": "Selecciona outros tipos de edicións ou [$1 intereses].",
 	"growthexperiments-home-suggestededits-interests-notice": "Obtén artigos que coincidan cos teus intereses.",
 	"growthexperiments-home-suggestededits-interests-notice-button": "Seleccionar intereses",
 	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|Benvido|Benvida}} de novo, {{bidi:$1}}!",

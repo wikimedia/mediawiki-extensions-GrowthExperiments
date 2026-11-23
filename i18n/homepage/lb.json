@@ -279,8 +279,6 @@
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "$1 {{PLURAL:$1|Ännerungsvirschlag|Ännerungsvirschléi}} fonnt",
 	"growthexperiments-home-suggestededits-filters-finding": "Et ginn Ännerungsvirschléi gesicht...",
 	"growthexperiments-home-suggestededits-filters-none": "Keng Ännerungsvirschléi fonnt.",
-	"growthexperiments-home-suggestededits-interest-filters-none-hint": "Wielt aner Interessen oder [$1 Ännerungstyppen] aus.",
-	"growthexperiments-home-suggestededits-difficulty-filters-none-hint": "Wielt aner Ännerungstyppen oder [$1 Interessen] aus.",
 	"growthexperiments-home-suggestededits-interests-notice": "Fir Artikelen ze kréien, déi Ären Interessen entspriechen.",
 	"growthexperiments-home-suggestededits-interests-notice-button": "Interessen auswielen",
 	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|Wëllkomm zeréck}}, {{bidi:$1}}!",

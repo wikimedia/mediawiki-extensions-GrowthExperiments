@@ -327,8 +327,6 @@
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "找到$1个{{PLURAL:$1|编辑建议}}",
 	"growthexperiments-home-suggestededits-filters-finding": "正在查找编辑建议…",
 	"growthexperiments-home-suggestededits-filters-none": "未找到编辑建议。",
-	"growthexperiments-home-suggestededits-interest-filters-none-hint": "选择其他兴趣或[$1 编辑类型]。",
-	"growthexperiments-home-suggestededits-difficulty-filters-none-hint": "选择其他编辑类型或[$1 兴趣]。",
 	"growthexperiments-home-suggestededits-interests-notice": "获取符合您兴趣的条目。",
 	"growthexperiments-home-suggestededits-interests-notice-button": "选择兴趣",
 	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|欢迎回来}}，{{bidi:$1}}！",

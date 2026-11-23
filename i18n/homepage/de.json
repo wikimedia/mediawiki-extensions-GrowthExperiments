@@ -301,8 +301,6 @@
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "$1 {{PLURAL:$1|vorgeschlagene Bearbeitung|vorgeschlagene Bearbeitungen}} gefunden",
 	"growthexperiments-home-suggestededits-filters-finding": "Vorgeschlagene Änderungen werden gesucht …",
 	"growthexperiments-home-suggestededits-filters-none": "Es wurden keine Änderungsvorschläge gefunden.",
-	"growthexperiments-home-suggestededits-interest-filters-none-hint": "Wähle andere Interessen oder [$1 Arten von Bearbeitungen].",
-	"growthexperiments-home-suggestededits-difficulty-filters-none-hint": "Wähle andere Bearbeitungsarten oder [$1 Interessen].",
 	"growthexperiments-home-suggestededits-interests-notice": "Erhalte Artikel, die deinen Interessen entsprechen.",
 	"growthexperiments-home-suggestededits-interests-notice-button": "Interessen auswählen",
 	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|Willkommen zurück}}, {{bidi:$1}}!",

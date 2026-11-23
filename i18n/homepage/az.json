@@ -274,8 +274,6 @@
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "$1 {{PLURAL:$1|təklif olunan redaktə}} tapıldı",
 	"growthexperiments-home-suggestededits-filters-finding": "Təklif olunan redaktələr tapılır...",
 	"growthexperiments-home-suggestededits-filters-none": "Təklif olunan redaktə tapılmadı.",
-	"growthexperiments-home-suggestededits-interest-filters-none-hint": "Digər maraq dairələrini və ya [$1 redaktə növlərini] seçin.",
-	"growthexperiments-home-suggestededits-difficulty-filters-none-hint": "Digər redaktə növlərini və ya [$1 maraq dairələrini] seçin.",
 	"growthexperiments-home-suggestededits-interests-notice": "Maraqlarınıza uyğun məqalələr əldə edin.",
 	"growthexperiments-home-suggestededits-interests-notice-button": "Maraqlarını seç",
 	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|Yenidən xoş gəlmisiniz}}, {{bidi:$1}}!",

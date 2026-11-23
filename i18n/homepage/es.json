@@ -319,8 +319,6 @@
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "Se han encontrado $1 {{PLURAL:$1|modificación sugerida|modificaciones sugeridas}}",
 	"growthexperiments-home-suggestededits-filters-finding": "Buscando ediciones sugeridas...",
 	"growthexperiments-home-suggestededits-filters-none": "Ninguna edición sugerida encontrada.",
-	"growthexperiments-home-suggestededits-interest-filters-none-hint": "Selecciona otros intereses o [$1 tipos de ediciones].",
-	"growthexperiments-home-suggestededits-difficulty-filters-none-hint": "Selecciona otros tipos de ediciones o [$1 intereses].",
 	"growthexperiments-home-suggestededits-interests-notice": "Obtén artículos que encajen con tus intereses.",
 	"growthexperiments-home-suggestededits-interests-notice-button": "Selecciona intereses",
 	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|Te damos la bienvenida de nuevo}}, {{bidi:$1}}!",

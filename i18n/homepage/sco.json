@@ -7,8 +7,6 @@
 	},
 	"growthexperiments-home-suggestededits-filters-finding": "Findin suggestit edits...",
 	"growthexperiments-home-suggestededits-filters-none": "Nae suggestit edits fund.",
-	"growthexperiments-home-suggestededits-interest-filters-none-hint": "Select ither interests or [$1 types o edits].",
-	"growthexperiments-home-suggestededits-difficulty-filters-none-hint": "Select ither types o edits or [$1 interests].",
 	"growthexperiments-structuredtask-editmode-selection-label": "Switch eediter",
 	"growthexperiments-structuredtask-editmode-selection-visual": "Visual eeditin",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Cancel"

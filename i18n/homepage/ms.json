@@ -273,8 +273,6 @@
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "$1 {{PLURAL:$1|suntingan yang dicadangkan}} ditemui",
 	"growthexperiments-home-suggestededits-filters-finding": "Mencari suntingan yang dicadangkan...",
 	"growthexperiments-home-suggestededits-filters-none": "Tiada suntingan yang dicadangkan ditemui.",
-	"growthexperiments-home-suggestededits-interest-filters-none-hint": "Pilih minat atau [$1 jenis suntingan] lain.",
-	"growthexperiments-home-suggestededits-difficulty-filters-none-hint": "Pilih jenis suntingan atau [$1 minat] lain.",
 	"growthexperiments-home-suggestededits-interests-notice": "Dapatkan rencana yang sesuai dengan minat anda.",
 	"growthexperiments-home-suggestededits-interests-notice-button": "Pilih minat",
 	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|Selamat kembali}}, {{bidi:$1}}!",

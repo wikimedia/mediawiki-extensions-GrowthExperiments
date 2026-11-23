@@ -286,8 +286,6 @@
 	"growthexperiments-home-suggestededits-difficulty-filters-subtitle-count": "$1 {{PLURAL:$1|ehdotettu muokkaus|ehdotettua muokkausta}} löytyi",
 	"growthexperiments-home-suggestededits-filters-finding": "Haetaan ehdotettuja muokkauksia...",
 	"growthexperiments-home-suggestededits-filters-none": "Ehdotettuja muokkauksia ei löytynyt.",
-	"growthexperiments-home-suggestededits-interest-filters-none-hint": "Valitse muita kiinnostuksen kohteita tai [$1 muokkaustyyppejä].",
-	"growthexperiments-home-suggestededits-difficulty-filters-none-hint": "Valitse muita muokkaustyyppejä tai [$1 kiinnostuksen kohteita].",
 	"growthexperiments-home-suggestededits-interests-notice": "Saa muokkausehdotuksia artikkeleista, jotka vastaavat kiinnostuksiasi.",
 	"growthexperiments-home-suggestededits-interests-notice-button": "Valitse kiinnostuksen kohteet",
 	"growthexperiments-home-welcome-back-title": "{{GENDER:$1|Tervetuloa takaisin}}, {{bidi:$1}}!",
