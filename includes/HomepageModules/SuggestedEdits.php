@@ -888,11 +888,6 @@ class SuggestedEdits extends BaseModule {
 				$this->getContext(),
 				$this->userOptionsManager
 			),
-			// Whether to filter by the user's interests instead of by their topic preferences.
-			// Asking the factory rather than the experiment directly keeps the front end in
-			// step with the filters the suggestions were actually built from.
-			'GEHomepageSuggestedEditsEnableInterests' => $this->taskSetFiltersFactory
-				->usesInterestFilters( $this->getContext()->getUser() ),
 		];
 	}
 

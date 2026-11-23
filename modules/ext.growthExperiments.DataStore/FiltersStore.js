@@ -35,8 +35,8 @@ function FiltersStore() {
 	this.topicsEnabled = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
 	/**
 	 * @property {boolean} interestsEnabled Whether the suggestions are limited by the user's
-	 * interests instead of by their topic preferences. Exported by SuggestedEdits.php from
-	 * TaskSetFiltersFactory, which is what the suggestions themselves are built from.
+	 * interests instead of by their topic preferences. Exported by
+	 * HomepageHooks::onBeforePageDisplay().
 	 */
 	this.interestsEnabled = !!mw.config.get( 'GEHomepageSuggestedEditsEnableInterests' );
 	/**

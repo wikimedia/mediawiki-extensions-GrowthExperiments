@@ -105,11 +105,6 @@ class SuggestedEdits extends BaseModule {
 				$this->getContext(),
 				$this->userOptionsLookup
 			),
-			// Home filters by interests for every user it serves, and not only for the users
-			// that the experiment gives interest filters to. FiltersStore reads this flag.
-			// GrowthTasksApi then sends the useinterests parameter, which makes the API
-			// apply the stored interests for these users too.
-			'GEHomepageSuggestedEditsEnableInterests' => true,
 			// The number of interests above which the selector stops suggesting more.
 			// Keep the name: the shared interest selector reads it, and Special:Homepage
 			// gives it the same one.
