@@ -1,7 +1,6 @@
 const SmallTaskCard = require( '../ext.growthExperiments.Homepage.SuggestedEdits/' +
 	'SmallTaskCard.js' ),
 	SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
-	PagerWidget = require( '../ext.growthExperiments.Homepage.SuggestedEdits/PagerWidget.js' ),
 	PostEditToastMessage = require( './PostEditToastMessage.js' ),
 	Utils = require( '../utils/Utils.js' ),
 	rootStore = require( 'ext.growthExperiments.DataStore' ),
@@ -57,8 +56,6 @@ function PostEditPanel( config ) {
 	} );
 	this.prevButton.connect( this, { click: [ 'onPrevButtonClicked' ] } );
 	this.nextButton.connect( this, { click: [ 'onNextButtonClicked' ] } );
-	this.pager = new PagerWidget();
-	this.pager.setLoadingMessage();
 	this.togglePrevNavigation( false );
 	this.toggleNextNavigation( false );
 
@@ -322,22 +319,20 @@ PostEditPanel.prototype.updateTask = function ( task ) {
 };
 
 /**
- * Update the pager text and navigation arrows state
+ * Update the navigation arrows state
  */
 PostEditPanel.prototype.updateNavigation = function () {
 	this.toggleNavigation( true );
 	this.togglePrevNavigation( this.tasksStore.hasPreviousTask() );
 	this.toggleNextNavigation( this.tasksStore.hasNextTask() );
-	this.updatePager( this.tasksStore.getQueuePosition() + 1, this.tasksStore.getTaskCount() );
 };
 
 /**
- * Toggle the pager text and navigation arrows
+ * Toggle the navigation arrows
  *
  * @param {boolean} show Make element visible, omit to toggle visibility
  */
 PostEditPanel.prototype.toggleNavigation = function ( show ) {
-	this.pager.toggle( show );
 	this.prevButton.toggle( show );
 	this.nextButton.toggle( show );
 };
@@ -454,11 +449,9 @@ PostEditPanel.prototype.onPrevButtonClicked = function () {
  */
 PostEditPanel.prototype.getTaskNavigation = function () {
 	const $navigation = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigation' ),
-		$indicator = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigationIndicator' ),
 		$buttons = $( '<div>' ).addClass( 'mw-ge-help-panel-postedit-navigationButtons' );
-	$indicator.append( this.pager.$element );
 	$buttons.append( [ this.prevButton.$element, this.nextButton.$element ] );
-	$navigation.append( [ $indicator, $buttons ] );
+	$navigation.append( $buttons );
 	return $navigation;
 };
 
@@ -478,19 +471,6 @@ PostEditPanel.prototype.togglePrevNavigation = function ( isPrevNavigationEnable
  */
 PostEditPanel.prototype.toggleNextNavigation = function ( isNextNavigationEnabled ) {
 	this.nextButton.setDisabled( !isNextNavigationEnabled );
-};
-
-/**
- * Update the pager with the latest task position
- *
- * @param {number} currentTaskPosition Current position of the task shown; 1-based index
- * @param {number} totalTasks Number of tasks in the queue
- */
-PostEditPanel.prototype.updatePager = function ( currentTaskPosition, totalTasks ) {
-	if ( !this.pager.isVisible() ) {
-		this.pager.toggle( true );
-	}
-	this.pager.setMessage( currentTaskPosition, totalTasks );
 };
 
 module.exports = PostEditPanel;
