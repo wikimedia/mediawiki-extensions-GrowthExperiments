@@ -55,6 +55,10 @@ class SpecialHome {
 	public get impactTotalEdits(): ReturnType<typeof cy.get> {
 		return cy.get( '[data-link-id="impact-total-edits"]' );
 	}
+
+	public get surveyLink(): ReturnType<typeof cy.get> {
+		return cy.get( '.personal-dashboard-survey' );
+	}
 }
 
 export default SpecialHome;

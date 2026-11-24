@@ -861,6 +861,7 @@
 				"home": {
 					"description": "Newcomer Homepage modules reimagined for the Personal Dashboard",
 					"version": 0,
+					"betaFeedback": "https://wikimediafoundation.limesurvey.net/179424?lang=$1",
 					"groups": [
 						{
 							"name": "main",

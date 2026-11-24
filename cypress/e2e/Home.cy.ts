@@ -42,6 +42,10 @@ describe( 'Special:Home', () => {
 
 			home.module( IMPACT_MODULE ).should( 'be.visible' );
 			home.impactTotalEdits.should( 'have.text', '1' );
+			home.surveyLink.within( () => {
+				cy.get( 'a' ).should( 'have.attr', 'href',
+					'https://wikimediafoundation.limesurvey.net/179424?lang=en' );
+			} );
 		} );
 	} );
 
