@@ -178,7 +178,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "{{GENDER:$1|Ανοίξτε}} το πλευρικό μενού και να πατήστε στο $2 για να επισκεφτείτε την αρχική σελίδα σας.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> από <strong>$2</strong> {{PLURAL:$2|πρόταση|προτάσεις}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Τέλος",
-	"growthexperiments-homepage-suggestededits-pager-loading": "Φόρτωση…",
+	"growthexperiments-homepage-suggestededits-pager-loading": "Φορτώνει…",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 επισκέψεις (τελευταίες 60 ημέρες)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Προηγούμενη προτεινόμενη επεξεργασία",
 	"growthexperiments-homepage-suggestededits-next-card": "Επόμενη προτεινόμενη επεξεργασία",
