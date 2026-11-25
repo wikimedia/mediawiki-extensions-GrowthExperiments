@@ -56,7 +56,7 @@
 	"growthexperiments-home-betafeature-description": "[[Special:Home|Accueil]] est une page personnelle qui permet aux lecteurs et aux nouveaux contributeurs de commencer à éditer, de constater l’impact de leurs modifications et d’entrer en contact avec leur mentor. Accueil remplacera la [https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Personalized_first_day/Newcomer_homepage Page d’accueil des nouveaux utilisateurs] et des fonctionnalités supplémentaires seront ajoutées après la version initiale.",
 	"growthexperiments-homepage-tab": "Page d’accueil",
 	"tooltip-pt-homepage": "Votre page d’accueil",
-	"prefs-homepage": "Fonctionnalités de l’éditeur pour les novices",
+	"prefs-homepage": "Fonctionnalités de l’éditeur novices",
 	"growthexperiments-homepage-enable": "Afficher la page d’accueil des novices",
 	"growthexperiments-homepage-pt-link": "Accéder à la page d’accueil des novices en cliquant sur son nom d’{{GENDER:|utilisateur|utilisatrice}} dans les liens personnels",
 	"growthexperiments-homepage-email-header-startemail": "Courriel : $1",

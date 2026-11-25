@@ -12,6 +12,15 @@
 		]
 	},
 	"growthexperiments-desc": "Detta tillägg innehåller experiment som utförs av Growth-teamet.",
+	"accountsetup": "Kontouppsättning",
+	"growthexperiments-account-setup-a11y-title": "Kontouppsättning",
+	"growthexperiments-account-setup-skip-a11y-label": "Hoppa över",
+	"growthexperiments-account-setup-back-a11y-label": "Tillbaka",
+	"growthexperiments-account-setup-step-counter": "$1 av $2",
+	"growthexperiments-account-setup-step-1-title": "Välkommen till $1, $2!",
+	"growthexperiments-account-setup-step-1-progress-button": "Anpassa ditt Hem",
+	"growthexperiments-account-setup-step-2-title": "Vad för dig till $1?",
+	"growthexperiments-account-setup-step-2-skip-button": "Hoppa över",
 	"communityconfiguration-communityupdates-description": "Dela viktiga nyheter från gemenskapen, kampanjer, evenemang eller WikiProjekt på nybörjarhemsidan.",
 	"communityconfiguration-communityupdates-info-text": "Denna [[mw:Special:MyLanguage/Growth/Community_Updates|gemenskapsuppdateringarmodul]] visas på hemsidan och bör användas för att dela viktiga gemenskapsnyheter, kampanjer, evenemang eller WikiProjekt. Prioritet bör ges till uppdateringar som stöder [https://meta.wikimedia.org/wiki/Special:MyLanguage/Movement_Strategy/Recommendations/Identify_Topics_for_Impact#Changes_and_Actions rörelsens strategiska rekommendation om \"Topics for Impact\"].",
 	"communityconfiguration-communityupdates-title": "Gemenskapsuppdateringar",
@@ -31,5 +40,6 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Om din bild har en transparent bakgrund kan den vara svår att se i mörkt läge. Om texten eller ikonen är mörk kan en vit bakgrund säkerställa att den förblir synlig i mörkt läge.",
 	"communityconfiguration-helppanel-title": "Hjälppanel",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Sluta föreslå uppgifter som \"Lägg till en länk\" baserat på nykomlingars totala redigeringar",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Nej"
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Nej",
+	"growthexperiments-addlink-done-button": "Klar"
 }
