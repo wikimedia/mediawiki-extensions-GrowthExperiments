@@ -24,6 +24,7 @@
 	},
 	"growthexperiments-home-specialpage-title": "{{GENDER:$1|স্বাগতম}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|স্বাগতম}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-list": "নবাগতদের নীড়পাতা",
 	"growthexperiments-home-tab": "প্রধান পাতা",
 	"growthexperiments-homepage-tab": "নীড়পাতা",
 	"tooltip-pt-homepage": "{{GENDER:|আপনার}} নীড়পাতা",
