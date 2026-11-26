@@ -83,7 +83,7 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 	public function testNewFromUserFiltersATreatmentUserByInterests(): void {
 		$userOptionsLookup = $this->getUserOptionsLookup( self::TWELVE_INTERESTS );
 		$userOptionsLookup->expects( $this->never() )->method( 'getTopics' );
-		$userOptionsLookup->expects( $this->once() )->method( 'getTopicsMatchMode' );
+		$userOptionsLookup->expects( $this->never() )->method( 'getTopicsMatchMode' );
 		$maxInterests = 9;
 		$factory = new TaskSetFiltersFactory(
 			$userOptionsLookup,
@@ -99,9 +99,7 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 		$this->assertEquals(
 			new TaskSetFilters(
 				[ 'copyedit' ],
-				[],
-				SearchStrategy::TOPIC_MATCH_MODE_AND,
-				array_slice( self::TWELVE_INTERESTS, 0, $maxInterests )
+				interestFilters: array_slice( self::TWELVE_INTERESTS, 0, $maxInterests )
 			),
 			$factory->newFromUser( $this->getUser() )
 		);
@@ -122,9 +120,7 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 		$this->assertEquals(
 			new TaskSetFilters(
 				[ 'copyedit' ],
-				[],
-				SearchStrategy::TOPIC_MATCH_MODE_AND,
-				array_slice( self::TWELVE_INTERESTS, 0, 10 )
+				interestFilters: array_slice( self::TWELVE_INTERESTS, 0, 10 )
 			),
 			$factory->newFromUser( $this->getUser() )
 		);
@@ -143,7 +139,7 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 		);
 
 		$this->assertEquals(
-			new TaskSetFilters( [ 'copyedit' ], topicFiltersMode: SearchStrategy::TOPIC_MATCH_MODE_AND ),
+			new TaskSetFilters( [ 'copyedit' ] ),
 			$factory->newFromUser( $this->getUser() )
 		);
 	}

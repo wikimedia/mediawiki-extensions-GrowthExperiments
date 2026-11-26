@@ -75,14 +75,13 @@ class TaskSetFiltersFactory {
 	 */
 	public function newFromUser( UserIdentity $user, ?array $taskTypeFilters = null ): TaskSetFilters {
 		$taskTypeFilters ??= $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
-		$topicsMatchMode = $this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user );
 		if ( $this->usesInterestFilters( $user ) ) {
-			return new TaskSetFilters( $taskTypeFilters, [], $topicsMatchMode, $this->readInterests( $user ) );
+			return new TaskSetFilters( $taskTypeFilters, interestFilters: $this->readInterests( $user ) );
 		}
 		return new TaskSetFilters(
 			$taskTypeFilters,
 			$this->newcomerTasksUserOptionsLookup->getTopics( $user ),
-			$topicsMatchMode
+			$this->newcomerTasksUserOptionsLookup->getTopicsMatchMode( $user )
 		);
 	}
 
