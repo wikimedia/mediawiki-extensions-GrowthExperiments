@@ -107,6 +107,29 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	public function testNewFromUserFiltersAHomeUserByInterests(): void {
+		$factory = new TaskSetFiltersFactory(
+			$this->getUserOptionsLookup( self::TWELVE_INTERESTS ),
+			$this->getFeatureManager( false, true ),
+			new ServiceOptions(
+				TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GENewcomerTasksMaxInterestsForQueries' => 10,
+				] ),
+			),
+		);
+
+		$this->assertEquals(
+			new TaskSetFilters(
+				[ 'copyedit' ],
+				[],
+				SearchStrategy::TOPIC_MATCH_MODE_AND,
+				array_slice( self::TWELVE_INTERESTS, 0, 10 )
+			),
+			$factory->newFromUser( $this->getUser() )
+		);
+	}
+
 	public function testNewFromUserGivesATreatmentUserWithoutInterestsNoFilters(): void {
 		$factory = new TaskSetFiltersFactory(
 			$this->getUserOptionsLookup(),
@@ -152,6 +175,33 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	/**
+	 * @dataProvider provideUsesInterestFilters
+	 */
+	public function testUsesInterestFilters( bool $isTreatment, bool $isHomeEnabled, bool $expected ): void {
+		$factory = new TaskSetFiltersFactory(
+			$this->getUserOptionsLookup(),
+			$this->getFeatureManager( $isTreatment, $isHomeEnabled ),
+			new ServiceOptions(
+				TaskSetFiltersFactory::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [
+					'GENewcomerTasksMaxInterestsForQueries' => 10,
+				] ),
+			),
+		);
+
+		$this->assertSame( $expected, $factory->usesInterestFilters( $this->getUser() ) );
+	}
+
+	public static function provideUsesInterestFilters(): array {
+		return [
+			'control user without Home' => [ false, false, false ],
+			'treatment user without Home' => [ true, false, true ],
+			'control user with Home' => [ false, true, true ],
+			'treatment user with Home' => [ true, true, true ],
+		];
+	}
+
 	private function getUser(): UserIdentityValue {
 		return new UserIdentityValue( 1, 'User1' );
 	}
@@ -171,9 +221,10 @@ class TaskSetFiltersFactoryTest extends MediaWikiUnitTestCase {
 		return $userOptionsLookup;
 	}
 
-	private function getFeatureManager( bool $isTreatment ): FeatureManager {
+	private function getFeatureManager( bool $isTreatment, bool $isHomeEnabled = false ): FeatureManager {
 		$featureManager = $this->createMock( FeatureManager::class );
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( $isTreatment );
+		$featureManager->method( 'isHomeEnabledForUser' )->willReturn( $isHomeEnabled );
 		return $featureManager;
 	}
 

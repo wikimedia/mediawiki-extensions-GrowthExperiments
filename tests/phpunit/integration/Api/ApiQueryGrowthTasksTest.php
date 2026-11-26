@@ -248,9 +248,11 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 	/**
 	 * @dataProvider provideStoredInterests
 	 */
-	public function testStoredInterestsFallback( bool $isTreatment, array $expectedFilterJson ) {
+	public function testStoredInterestsFallback(
+		bool $isTreatment, bool $isHomeEnabled, array $expectedFilterJson
+	) {
 		$recorder = $this->setUpRecordingTaskSuggester();
-		$user = $this->setUpUserWithStoredInterests( $isTreatment );
+		$user = $this->setUpUserWithStoredInterests( $isTreatment, $isHomeEnabled );
 
 		$this->doApiRequest( [
 			'action' => 'query',
@@ -266,6 +268,17 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		return [
 			'treatment user gets stored interests' => [
 				true,
+				false,
+				[
+					'task' => [ 'copyedit' ],
+					'topic' => [],
+					'topicMode' => 'OR',
+					'interests' => [ 'Albert Einstein', 'Coffee' ],
+				],
+			],
+			'Home user gets stored interests' => [
+				false,
+				true,
 				[
 					'task' => [ 'copyedit' ],
 					'topic' => [],
@@ -274,6 +287,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 				],
 			],
 			'control user filters are unchanged' => [
+				false,
 				false,
 				[
 					'task' => [ 'copyedit' ],
@@ -420,9 +434,9 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 	/**
 	 * Create a user with two stored interests, and a filters factory that puts the user in the
-	 * given group of the early-onboarding experiment.
+	 * given group of the early-onboarding experiment and gives the user Special:Home or not.
 	 */
-	private function setUpUserWithStoredInterests( bool $isTreatment ): User {
+	private function setUpUserWithStoredInterests( bool $isTreatment, bool $isHomeEnabled = false ): User {
 		$user = $this->getTestUser()->getUser();
 		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
 		$userOptionsManager->setOption( $user, AccountSetupHooks::INTEREST_ARTICLES_PROP,
@@ -431,6 +445,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 		$featureManager = $this->createMock( FeatureManager::class );
 		$featureManager->method( 'isEarlyOnboardingExperimentTreatment' )->willReturn( $isTreatment );
+		$featureManager->method( 'isHomeEnabledForUser' )->willReturn( $isHomeEnabled );
 		$featureManager->method( 'isNewcomerTasksAvailable' )->willReturn( true );
 		$growthServices = GrowthExperimentsServices::wrap( $this->getServiceContainer() );
 		$this->setService( 'GrowthExperimentsTaskSetFiltersFactory',

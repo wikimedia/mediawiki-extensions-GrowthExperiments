@@ -351,12 +351,8 @@ class HomepageHooks implements
 					$context,
 					$this->userOptionsLookup
 				),
-				// Special:Home filters by interests for all its users, not only for the users in the experiment.
 				'GEHomepageSuggestedEditsEnableInterests' =>
-					$this->taskSetFiltersFactory->usesInterestFilters(
-						$context->getUser(),
-						$this->featureManager->isHomeEnabledForUser( $context->getUser() ),
-					),
+					$this->taskSetFiltersFactory->usesInterestFilters( $context->getUser() ),
 				'wgGESuggestedEditsTaskTypes' => [
 					'taskTypes' => $this->taskTypeManager->getTaskTypesForUser( $context->getUser() ),
 					'unavailableTaskTypes' => $this->taskTypeManager->getUnavailableTaskTypes(
