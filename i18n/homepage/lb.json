@@ -144,7 +144,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "Viru(n) $2 {{PLURAL:$2|Dag|Deeg}} {{GENDER:$1|aktiv}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Dëse routinéierte Benotzer|Dës routinéiert Benotzerin}} weess, datt Dir nei sidd, a kann Iech bei {{GENDER:$2|Ären}} Ännerungen hëllefen.",
 	"growthexperiments-homepage-mentorship-question-button": "Stellt {{GENDER:$2|{{GENDER:$1|Ärem Mentor|Ärer Mentorin}}}} eng Fro",
-	"growthexperiments-home-mentorship-question-error": "Beim Ofschécke vun Ärer Fro ass eppes schif gaangen. Probéiert wgl. nach eng Kéier.",
+	"growthexperiments-home-mentorship-question-error": "Beim Ofschécke vun Ärer Fro ass eppes schifgaangen. Probéiert wgl. nach eng Kéier.",
 	"growthexperiments-homepage-mentorship-question-empty": "Schreift Är Fro, fir se ze verëffentlechen.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Kuckt déi aner Konversatioune vun {{GENDER:$2|{{GENDER:$1|Ärem Mentor|Ärer Mentorin}}}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Frot {{GENDER:$2|{{GENDER:$1|Äre Mentor|Är Mentorin}}}}",
