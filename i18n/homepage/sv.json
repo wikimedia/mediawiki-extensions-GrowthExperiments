@@ -383,6 +383,7 @@
 	"growthexperiments-addlink-context-button-reject": "Nej",
 	"growthexperiments-addlink-context-button-help": "Få hjälp med att redigera",
 	"growthexperiments-addlink-context-button-next": "Nästa",
+	"growthexperiments-addlink-context-button-prev": "Föregående",
 	"growthexperiments-addlink-context-button-show-suggestion": "Visa länkförslag",
 	"growthexperiments-addlink-rejectiondialog-title": "Varför är detta inte en bra länk?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Dina}} svar förbättrar kvalitén på framtida förslag.",

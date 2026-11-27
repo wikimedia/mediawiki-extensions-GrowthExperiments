@@ -340,7 +340,7 @@
 	"growthexperiments-notification-body-mentor-change": "لامل: $1",
 	"growthexperiments-notification-body-mentor-change-new": "{{GENDER:|ستاسو}} پخوانی {{GENDER:$1|لارښود}} $1 نور {{GENDER:|ستاسو}} {{GENDER:$1|لارښود}} نه دی.",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|خپل}} نوي {{GENDER:$2|لارښود}} ته سلام {{GENDER:$3|وکړه!}}",
-	"growthexperiments-homepage-claimmentee-must-be-mentor": "د [ځانگړي:لارزدکړي‌غوښتنه|ځانگړي:لارزکړي‌غټښتنې] لپاره {{GENDER:$1|تاسو}} بايد په [[$2]] د لارښود په توگه لړليک شوي اوسئ",
+	"growthexperiments-homepage-claimmentee-must-be-mentor": "د [Special:ClaimMentee|ځانگړي:لارزدکړي‌غوښتنې] لپاره {{GENDER:$1|تاسو}} بايد په [[$2]] د لارښود په توگه لړليک شوي اوسئ",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "د لارښودانو لړليک په ناسم ډول ترتيب شوي دی.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "([[$1]]) لارښودانو لړليک شتون نه لري يا ناسم ترتيب شوی دی.",
 	"growthexperiments-notification-learn-more": "د {{GENDER:$1|خپل}} نوي {{GENDER:$2|لارښود}} په اړه نور زده کړئ",

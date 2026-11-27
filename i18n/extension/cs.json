@@ -107,6 +107,7 @@
 	"growthexperiments-edit-config-level-up-notifications-description": "Tyto notifikace jsou nováčkům zasílány 48 hodin po vytvoření jejich uživatelského účtu. Jejich cílem je zvýšit pravděpodobnost, že nováček bude v týdnu po odeslání notifikace editovat.",
 	"growthexperiments-edit-config-try-suggested-edits-notification-title": "Upozornění \"Vyzkoušejte editační tipy\"",
 	"growthexperiments-edit-config-keep-going-notification-title": "Upozornění \"Jen tak dál\"",
+	"communityconfiguration-communityupdates-description": "Sdílejte důležité novinky z komunity, kampaně, události nebo WikiProjekty na domovské stránce nováčků.",
 	"communityconfiguration-communityupdates-title": "Komunitní aktuality",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesenabled-control-label": "Zapnuto",
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatescontenttitle-label": "Titulek",
@@ -180,5 +181,7 @@
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-excludedtemplates-label": "Články obsahující šablony definované zde nebudou navrženy uživatelům jako tipy tohoto druhu.",
 	"communityconfiguration-growthsuggestededits-section_image_recommendation-excludedcategories-label": "Články zařazené do některé kategorie zde zahrnuté nebudou navrženy uživatelům jako tipy tohoto druhu",
 	"communityconfiguration-growthsuggestededits-link_recommendation-disabled-control-label": "Tento tip je vypnut.",
-	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Minimální požadované skóre odkazu"
+	"communityconfiguration-growthsuggestededits-link_recommendation-minimumlinkscore-label": "Minimální požadované skóre odkazu",
+	"growthexperiments-addlink-done-button": "Hotovo",
+	"growthexperiments-maintenance-config-change-summary-purge-timestamps": "Úklid vypršených časových značek nepřítomností"
 }

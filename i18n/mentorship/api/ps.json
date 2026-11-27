@@ -12,6 +12,7 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "نوی دريځ",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "کله چې لارښود د لرې په توگه وټاکئ؛ دا بايد د لرې دريځ اوږدوالی ولري ( په ورځو)",
 	"apihelp-query+growthmentorstatus-summary": "د اوسني لارښود دريځ تپوس کول",
+	"apihelp-growthmentordashboardupdatedata-summary": "د لارښود ليددړه کې د لارزدکړي ټول‌کتنې چلنوال ناسمدوديزه هم‌مهالېدنې مهالوېش کړئ. تاسو کولی شئ د چارترسراوي د لاملونو له کبله يوازې هر دوه گړيو کې يوه هم‌مهالېدنه مهالوېشولی شئ.",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "د لارښودۍ چلنوال چارن شوی دی",
 	"apihelp-query+growthmentormentee-summary": "ورکړل‌شوي لارښود ته د ورسپارل‌شويو ټولو لارزدکړو ترلاسه کول",
 	"apihelp-query+growthmentormentee-param-gemmmentor": "د لارزدکړو د تپوس لپاره لارښود",

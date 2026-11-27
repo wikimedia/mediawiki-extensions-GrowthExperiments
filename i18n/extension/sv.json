@@ -103,5 +103,6 @@
 	"communityconfiguration-communityupdates-gehomepagecommunityupdatesthumbnailadddarkmodebackground-help-text": "Om din bild har en transparent bakgrund kan den vara svår att se i mörkt läge. Om texten eller ikonen är mörk kan en vit bakgrund säkerställa att den förblir synlig i mörkt läge.",
 	"communityconfiguration-helppanel-title": "Hjälppanel",
 	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-label": "Sluta föreslå uppgifter som \"Lägg till en länk\" baserat på nykomlingars totala redigeringar",
-	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Nej"
+	"communityconfiguration-growthsuggestededits-link_recommendation-maximumeditstaskisavailable-option-no-label": "Nej",
+	"growthexperiments-addlink-done-button": "Klar"
 }

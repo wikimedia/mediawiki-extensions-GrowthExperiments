@@ -360,7 +360,7 @@
 	"action-setmentor": "назначение наставника участнику",
 	"right-managementors": "Управление списком наставников",
 	"action-managementors": "управление списком наставников",
-	"right-enrollasmentor": "Запишитесь в качестве {{GENDER:|наставника|наставницы}}",
+	"right-enrollasmentor": "Запись в качестве {{GENDER:|наставника|наставницы}}",
 	"action-enrollasmentor": "запишитесь в качестве {{GENDER:|наставника|наставницы}}",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Больше информации об этой предложенной правке",
 	"growthexperiments-homepage-suggestededits-more-info": "Подробнее о предлагаемых правках",
